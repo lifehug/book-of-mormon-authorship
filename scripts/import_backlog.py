@@ -2,7 +2,9 @@
 
 Dry run by default: prints what would be created and writes the full issue bodies to
 ``--out``. Pass ``--apply`` to create things with ``gh``. Safe to re-run: existing labels
-are updated in place, and milestones or issues whose title already exists are skipped.
+are updated in place, milestones whose title already exists are skipped, and existing
+issues (matched by their ``BOM-NN`` prefix) are skipped unless ``--sync`` is also given,
+in which case their title and body are updated from the backlog.
 
 Issue titles are prefixed ``BOM-NN`` and ``#N`` references in bodies become ``BOM-NN``,
 because the repository's old issues and PRs already occupy GitHub numbers 1-10.
@@ -97,25 +99,34 @@ def gh(*args: str, capture: bool = True) -> str:
     return result.stdout if capture else ""
 
 
-def existing_titles(kind: str) -> set[str]:
-    if kind == "issue":
-        out = gh("issue", "list", "--state", "all", "--limit", "500", "--json", "title")
-        return {row["title"] for row in json.loads(out)}
+def existing_milestones() -> set[str]:
     out = gh("api", "--paginate", "repos/{owner}/{repo}/milestones?state=all", "--jq", ".[].title")
-    return set(out.split())
+    return set(out.splitlines())
+
+
+def existing_issues() -> dict[str, int]:
+    """Map ``BOM-NN`` prefix to GitHub issue number for issues that already exist."""
+    out = gh("issue", "list", "--state", "all", "--limit", "500", "--json", "number,title")
+    found = {}
+    for row in json.loads(out):
+        if m := re.match(r"(BOM-\d{2}) ", row["title"]):
+            found[m.group(1)] = row["number"]
+    return found
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     parser.add_argument("--apply", action="store_true", help="create labels, milestones, issues")
+    parser.add_argument("--sync", action="store_true", help="with --apply: update existing issues")
     parser.add_argument("--out", type=Path, help="dry run: write full issue bodies here")
     parser.add_argument("--backlog", type=Path, default=BACKLOG)
     args = parser.parse_args(argv)
 
     phases, issues = parse(args.backlog.read_text(encoding="utf-8"))
     numbers = [i.number for i in issues]
-    if numbers != list(range(1, len(issues) + 1)):
-        raise SystemExit(f"issue numbers are not 1..N in order: {numbers}")
+    if sorted(numbers) != list(range(1, len(issues) + 1)) or len(set(numbers)) != len(numbers):
+        raise SystemExit(f"issue numbers are not a permutation of 1..N: {numbers}")
+    issues.sort(key=lambda i: i.number)
 
     print(f"{len(phases)} phases, {len(issues)} issues\n")
     print("LABELS / MILESTONES")
@@ -147,7 +158,7 @@ def main(argv: list[str] | None = None) -> int:
         )  # fmt: skip
         print(f"  label {p.label}")
 
-    have_ms = existing_titles("milestone")
+    have_ms = existing_milestones()
     for p in phases.values():
         if p.milestone in have_ms:
             print(f"  milestone exists: {p.milestone}")
@@ -158,12 +169,20 @@ def main(argv: list[str] | None = None) -> int:
         )  # fmt: skip
         print(f"  milestone {p.milestone}")
 
-    have_issues = existing_titles("issue")
+    have_issues = existing_issues()
     for i in issues:
-        if i.gh_title in have_issues:
-            print(f"  issue exists: {i.gh_title}")
-            continue
         p = phases[i.phase]
+        if (num := have_issues.get(bom_id(i.number))) is not None:
+            if not args.sync:
+                print(f"  issue exists: {i.gh_title} (#{num})")
+                continue
+            gh(
+                "issue", "edit", str(num),
+                "--title", i.gh_title, "--body", i.body(p),
+                "--add-label", p.label, "--milestone", p.milestone,
+            )  # fmt: skip
+            print(f"  synced {i.gh_title} (#{num})")
+            continue
         url = gh(
             "issue", "create",
             "--title", i.gh_title, "--body", i.body(p),

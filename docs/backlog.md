@@ -3,7 +3,7 @@
 
 ## How to use this backlog
 
-The project is finished when all 38 issues below are closed, in order, with their outputs published. Each `###` heading is one issue, numbered so dependencies always point backwards.
+The project is finished when all 39 issues below are closed, in dependency order, with their outputs published. Each `###` heading is one issue. Numbers are stable IDs: #1-#38 were numbered so dependencies point backwards, and issues added later (#39 onward) keep their number and state where they sit in the sequence.
 
 Every issue has the same four parts:
 
@@ -43,6 +43,8 @@ Phase 0 locks the questions and the method before any data is touched, so neithe
 
 - [ ] State the three questions: Q1 attribution (open-set), Q2 textual borrowing, Q3 linguistic dating
 - [ ] List candidate authors and control groups, plus the rule for adding new ones later
+- [ ] State the purpose of the author sweep (#39): a book this long is rarely its author's only writing, so the sweep checks whether anyone in the 1780-1830 record matches. Say what each outcome means: a strong, historically plausible match is a lead; no match means no author in the corpus resembles the text, which is reported as-is and not interpreted further
+- [ ] Define the candidate promotion rule: the sweep runs only on a pre-designated discovery half of the Book of Mormon segments; a lead that beats the null threshold and has historical plausibility is added by dated public amendment and then tested with the confirmatory methods on the other half only
 - [ ] Define each method, its features, and what result counts as a match, a non-match, or inconclusive
 - [ ] Define the validation benchmark the methods must pass before the Book of Mormon is run
 - [ ] State known limits: dictation, scribes, small Joseph Smith sample
@@ -162,6 +164,7 @@ Phase 1 collects every usable English text from 1780-1830, plus the Book of Morm
 - [ ] Normalize author names and dates
 - [ ] Detect duplicate editions with MinHash or similar, keeping the earliest
 - [ ] Tag genre (sermon, history, fiction, periodical, pseudo-biblical, other)
+- [ ] Aggregate word counts per normalized author across all their works, so the author sweep (#39) has author-level units with known sample sizes
 
 **Done when:** `catalog.parquet` exists with a dedup report.
 **Depends on:** #7-#11.
@@ -392,6 +395,22 @@ Phase 5 builds the new tools: a language model that has never seen the Book of M
 **Done when:** benchmark results are published.
 **Depends on:** #19, #21.
 
+### #39 Build and validate the corpus-wide author sweep
+
+**Goal:** a tested way to search every author in the 1780-1830 corpus for the closest stylistic match, so candidates nobody has proposed can surface as leads.
+
+Reasoning: a work of this length is rarely its author's only writing, so if the author published anything else in the period, it should be findable. The sweep either identifies close candidates with the evidence behind them, or shows that nobody in the corpus is close. It is exploratory by design: it produces leads for a later pre-registered iteration, never an attribution on its own, and it makes no claim beyond the corpus.
+
+- [ ] Build author-level units from the catalog (#12): every normalized author with at least the minimum word count set in #2, with KJV masking (#16) and spelling normalization (#15) applied
+- [ ] Index every author with the style embeddings (#30) and at least one classical method (#20), so a lead has to show up under two independent signals
+- [ ] Calibrate a null distribution: query held-out books by known corpus authors and record the rank of the true author; then remove the true author and record how close the best false match looks
+- [ ] Set the lead threshold from that null (for example: the true author ranks first in at least X% of held-out queries, and a lead must beat the Y-th percentile of best-false-match scores)
+- [ ] Define the discovery/confirmation split of Book of Mormon segments (#17) and record it before the blind run
+- [ ] Define the lead report format: author, works, word count, score, null percentile, genre, and an access and plausibility column to be filled from #33
+
+**Done when:** the author index and calibration report are published, and the sweep passes the null test on held-out known authors. The sweep is run on the sealed text only in #32.
+**Depends on:** #12, #15, #16, #17, #20, #21, #30.
+
 ## Phase 6 — Verification and synthesis
 
 Phase 6 stress-tests the methods, runs the sealed analysis blind, and combines textual results with historical evidence.
@@ -413,11 +432,12 @@ Phase 6 stress-tests the methods, runs the sealed analysis blind, and combines t
 
 - [ ] A second person relabels Book of Mormon segments and mixes in decoy segments from known authors
 - [ ] Run classical methods (#20), authorial models (#28), dating (#29), and embeddings (#30)
+- [ ] Run the author sweep (#39) on the discovery half only; save the ranked lead list with null percentiles and sample sizes, hashed with the other outputs
 - [ ] Unblind only after all outputs are saved and hashed
 - [ ] Run leave-one-candidate-out tests
 
 **Done when:** hashed blind outputs and the unblinded results are published, decoys correctly identified.
-**Depends on:** #22, #26, #28-#31.
+**Depends on:** #22, #26, #28-#31, #39.
 
 ### #33 Gather access evidence
 
@@ -463,6 +483,7 @@ Phase 7 writes up the results, releases everything, and puts the work through ou
 
 - [ ] Draft methods, validation, results, and limitations sections
 - [ ] List every deviation from the pre-registration
+- [ ] Report the author sweep's leads as exploratory, with the historical plausibility check, and state what a second pre-registered iteration would test
 - [ ] Share the draft with the #3 advisors and publish their responses alongside it
 - [ ] Post to a preprint server (arXiv cs.CL, or SocArXiv/OSF)
 

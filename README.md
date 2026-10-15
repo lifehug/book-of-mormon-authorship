@@ -70,9 +70,9 @@ Three things are possible today that were not in 2013.
 
 ## How we intend to do it
 
-The work is 38 issues in eight phases. Each issue has one deliverable and closes only when
+The work is 39 issues in eight phases. Each issue has one deliverable and closes only when
 that deliverable is published. The full backlog is in `docs/backlog.md` and mirrored as
-GitHub issues `BOM-01` to `BOM-38`.
+GitHub issues `BOM-01` to `BOM-39`.
 
 **Phase 0, Foundations.** Before touching any data, we write down the questions, the
 methods, and the thresholds that will count as a match, a non-match, or inconclusive, and
@@ -110,13 +110,17 @@ semantic search the same way. Have a model triage the hits and a human review ev
 that searches the training data for Book of Mormon strings. Fine-tune one model per
 candidate and per control group. Build a dating classifier on dated text from 1473 to 1830
 and test whether mere King James imitation shifts its estimate. Build style embeddings as an
-independent cross-check. Every model is validated on the Phase 3 benchmark before it ever
-sees the Book of Mormon.
+independent cross-check. Build the corpus-wide author sweep: a book this long is rarely its
+author's only writing, so we index every author in the 1780-1830 record to find the closest
+matches, if any, and calibrate how close a false match can look by chance. Every model is
+validated on the Phase 3 benchmark before it ever sees the Book of Mormon.
 
 **Phase 6, Verification and synthesis.** Test whether a writer imitating biblical style can
 fool each method, and down-weight the ones that are fooled. Then run the blind analysis: a
 second person relabels the Book of Mormon segments, mixes in decoys from known authors, and
-only after every output is saved and hashed do we unblind. Add the historical evidence: what
+only after every output is saved and hashed do we unblind. The author sweep runs on a
+pre-designated half of the segments and produces ranked leads; a lead can enter the candidate
+list only by dated amendment, and is then tested on the other half. Add the historical evidence: what
 books were available near Palmyra before 1829, and what the manuscript's dictation errors
 and scribe changes show. Combine every line of evidence in a Bayesian model with sensitivity
 analysis, and report where the methods agree and where they conflict.
