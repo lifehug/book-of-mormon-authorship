@@ -88,6 +88,7 @@ def parse(text: str) -> list[dict]:
     page_no = None
     pending_title: list[str] = []
     ended = False
+    after_chapter = False
 
     def flush() -> None:
         nonlocal buf, para_no, buf_page
@@ -130,7 +131,8 @@ def parse(text: str) -> list[dict]:
                 flush()
                 chapter = roman(m.group(1))
                 para_no = 0
-                kind = "synopsis"
+                kind = "body"
+                after_chapter = True
                 pending_title = []
                 continue
             if TITLE_RE.match(line) and not any(c.isdigit() for c in stripped):
@@ -174,6 +176,10 @@ def parse(text: str) -> list[dict]:
                     kind = "body"
             if not buf:
                 buf_page = page_no
+                if after_chapter:
+                    # A chapter synopsis starts flush left; a body paragraph is indented.
+                    kind = "synopsis" if indent < 2 else "body"
+                    after_chapter = False
             buf.append(line)
     flush()
     records = [r for r in records if r["book"] is not None or r["kind"] == "preface"]

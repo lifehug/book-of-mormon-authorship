@@ -79,15 +79,20 @@ class Mapper:
     """Piecewise-linear map from positions in text A to positions in text B."""
 
     def __init__(self, chain: list[tuple[int, int]], len_a: int, len_b: int):
-        self.xs = [0] + [i for i, _ in chain] + [len_a]
-        self.ys = [0] + [j for _, j in chain] + [len_b]
+        self.xs = [i for i, _ in chain]
+        self.ys = [j for _, j in chain]
+        self.len_b = len_b
 
     def __call__(self, i: int) -> int:
+        """Interpolate between anchors; outside the anchored span, move token for token."""
+        if not self.xs:
+            return min(i, self.len_b - 1)
+        if i <= self.xs[0]:
+            return max(0, self.ys[0] - (self.xs[0] - i))
+        if i >= self.xs[-1]:
+            return min(self.len_b - 1, self.ys[-1] + (i - self.xs[-1]))
         k = bisect.bisect_right(self.xs, i) - 1
-        k = max(0, min(k, len(self.xs) - 2))
         x0, x1, y0, y1 = self.xs[k], self.xs[k + 1], self.ys[k], self.ys[k + 1]
-        if x1 == x0:
-            return y0
         return y0 + round((i - x0) * (y1 - y0) / (x1 - x0))
 
 
