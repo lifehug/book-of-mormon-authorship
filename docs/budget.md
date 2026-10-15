@@ -106,6 +106,56 @@ An Ultra makes the project fully self-contained with no cloud account; it is onl
 the machine has other uses. No benchmark exists for MLX training at this model size, so the base-model estimate is from
 FLOPs and the M5 Pro's 307 GB/s memory bandwidth; re-check with the 125M pilot before deciding.
 
+## 4b. Decision (2026-10-15): Mac mini plus rented H100
+
+Primary machine: Mac mini M5 Pro, 18-core CPU, 20-core GPU, 64 GB, 1 TB SSD, plus a 2 TB
+external SSD. Cloud GPU only for the 300M base model and any rerun. No Mac Studio.
+
+### Cash costs
+
+| Item | Cost | When |
+| --- | --- | --- |
+| Mac mini M5 Pro 18/20-core, 64 GB, 1 TB | about $3,199 | now |
+| 2 TB external SSD | $150-200 | now |
+| Rented H100 for the base model, with one rerun in reserve | $150-300 | BOM-27 |
+| Rented H100 for anything else that proves too slow locally | $100-200 reserve | Phase 5 |
+| LLM API calls (OCR sample, parallel triage) | $100-200 | BOM-14, BOM-26 |
+| Off-site backup of working data, optional | about $10/month | Phase 1 onward |
+| OSF, GitHub, Hugging Face, Zenodo | $0 | |
+| Journal fees: DHQ is free; DSH has an optional open-access charge | $0-3,000 | BOM-38, optional |
+| **Total excluding the Mac** | **about $500-900** | |
+| **Total including the Mac** | **about $3,700-4,300** | |
+
+### Effort and timeline
+
+Effort is working days of focused time for one person using Claude Code, covering data
+wrangling, review, writing, and runs. Wall-clock compute runs unattended on the Mac and
+overlaps with the next issue's work. Phase 0 is done except for opening accounts.
+
+| Phase | Issues | Effort (working days) | Unattended compute | Notes |
+| --- | --- | --- | --- | --- |
+| 1 Corpus | BOM-05 to BOM-13 | 25-40 | 1-2 weeks of downloads and dedup | HathiTrust access, if requested, can add weeks of waiting; proceed on Harvard, IA, and Chronicling America meanwhile |
+| 2 Preparation | BOM-14 to BOM-19 | 20-30 | 1 week of OCR fixes, normalization, passim alignment to the KJV | ends with the Zenodo DOI |
+| 3 Classical and validation | BOM-20 to BOM-22 | 20-32 | hours | replication of five prior studies is the long pole |
+| 4 Borrowing | BOM-23 to BOM-26 | 16-27 | 2 weeks: passim over the corpus, passage embeddings on the Mac | human review of parallels is the owner's own time |
+| 5 AI-era methods | BOM-27 to BOM-30, BOM-39 | 25-40 | 1 week local pilot, 1 day rented H100, days of fine-tunes and indexing | |
+| 6 Verification | BOM-31 to BOM-35 | 21-36 | days | the blind run needs a second person for a few hours to relabel segments; access and manuscript evidence are archival work |
+| 7 Publish | BOM-36 to BOM-38 | 18-30 | none | plus 3-9 months waiting on peer review |
+| **Total** | **35 issues remaining** | **145-235 working days** | **about 6-8 weeks, mostly overlapped** | |
+
+Calendar time at three paces:
+
+| Pace | Working days per week | Calendar to preprint (BOM-36) | To the end of peer review |
+| --- | --- | --- | --- |
+| Side project | 1 | 2.5-4 years | add 3-9 months |
+| Half time | 2.5 | 12-20 months | add 3-9 months |
+| Full time | 5 | 7-10 months | add 3-9 months |
+
+Compute never sets the pace on this plan; the owner's working days do. The items that can
+only be done by a person, and that Claude Code does not shorten, are sourcing candidate
+texts (BOM-13), hand-reviewing parallels (BOM-26), the archival access and manuscript work
+(BOM-33, BOM-34), and writing the paper (BOM-36).
+
 ## 5. Accounts and access
 
 | Service | Purpose | Status | Notes |
@@ -114,7 +164,7 @@ FLOPs and the M5 Pro's 307 GB/s memory bandwidth; re-check with the 125M pilot b
 | GitHub | code and backlog | done | lifehug/book-of-mormon-authorship |
 | Hugging Face | models (BOM-27 to BOM-30) and large derived datasets | needed | public repos; chunk files to 20 GB or under; check the current storage quota for free accounts before uploading |
 | Zenodo | corpus v1.0 manifests and results with DOIs (BOM-19, BOM-37) | needed | 50 GB per record, 100 files; one-time increase to 200 GB on request. Cleaned corpus text goes to Hugging Face, Zenodo holds manifests, derived tables, and the datasheet |
-| GPU cloud | training | needed, provider to be chosen | see section 4 |
+| GPU cloud | the base-model run only | needed; RunPod Secure Cloud or Lambda, owner to open | see section 4 and 4b |
 | HathiTrust Research Center | full text beyond Extracted Features | needed only if BOM-08 finds gaps Institutional Books does not cover | non-member accounts are available for researchers; public-domain-only Data Capsules are the route; in-copyright access is member-only and not needed here |
 | Harvard Institutional Data Initiative | Institutional Books 1.0 | none; open on Hugging Face, non-commercial terms | |
 
