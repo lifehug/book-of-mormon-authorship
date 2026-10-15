@@ -164,9 +164,11 @@ texts (BOM-13), hand-reviewing parallels (BOM-26), the archival access and manus
 | GitHub | code and backlog | done | lifehug/book-of-mormon-authorship |
 | Hugging Face | models (BOM-27 to BOM-30) and large derived datasets | done, account `etherfuse`, write token stored locally | public repos; chunk files to 20 GB or under; check the current storage quota before uploading |
 | Zenodo | corpus v1.0 manifests and results with DOIs (BOM-19, BOM-37) | done, linked to GitHub; every tagged release gets a DOI automatically | 50 GB per record, 100 files; one-time increase to 200 GB on request. Cleaned corpus text goes to Hugging Face, Zenodo holds manifests, derived tables, and the datasheet |
-| GPU cloud | the base-model run only | needed; RunPod Secure Cloud or Lambda, owner to open | see section 4 and 4b |
-| HathiTrust Research Center | full text beyond Extracted Features | needed only if BOM-08 finds gaps Institutional Books does not cover | non-member accounts are available for researchers; public-domain-only Data Capsules are the route; in-copyright access is member-only and not needed here |
+| GPU cloud | the base-model run only | done, RunPod; restricted API key stored locally; no pods or endpoints running as of 2026-10-15 | see section 4 and 4b |
+| HathiTrust Research Center | full text beyond Extracted Features | deferred: request only if BOM-08 measures a real gap after the Harvard pull | non-member accounts are available for researchers; public-domain-only Data Capsules are the route; in-copyright access is member-only and not needed here |
 | Harvard Institutional Data Initiative | Institutional Books 1.0 | none; open on Hugging Face, non-commercial terms | |
+
+Local credential files (never in the repo): `~/.config/osf/token`, `~/.config/huggingface/token`, `~/.config/runpod/token`, each mode 600.
 
 ## 6. Actuals
 
