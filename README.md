@@ -173,6 +173,7 @@ independent scrutiny can do so by pull request, and their critique will be recor
 Watch the issues. Each one is titled `BOM-NN`, labeled by phase, and closes with a link to
 its published output. Issues #1 to #10 are from the repository's 2016 incarnation and are
 closed. `docs/background.md` has the prior studies, sources, and limits in more detail.
+A running, informal account of the work with examples, in the owner's voice: `paper/blog.md`.
 
 ## Repository layout
 
