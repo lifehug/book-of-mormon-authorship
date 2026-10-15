@@ -118,8 +118,9 @@ validated on the Phase 3 benchmark before it ever sees the Book of Mormon.
 
 **Phase 6, Verification and synthesis.** Test whether a writer imitating biblical style can
 fool each method, and down-weight the ones that are fooled. Then run the blind analysis: a
-second person relabels the Book of Mormon segments, mixes in decoys from known authors, and
-only after every output is saved and hashed do we unblind. The author sweep runs on a
+sealing script relabels the Book of Mormon segments, mixes in decoys from known authors, and
+keeps the key outside the repository; the analysis runs in a fresh session that never sees
+the key, and only after every output is saved and hashed do we unblind. The author sweep runs on a
 pre-designated half of the segments and produces ranked leads; a lead can enter the candidate
 list only by dated amendment, and is then tested on the other half. Add the historical evidence: what
 books were available near Palmyra before 1829, and what the manuscript's dictation errors
@@ -127,9 +128,10 @@ and scribe changes show. Combine every line of evidence in a Bayesian model with
 analysis, and report where the methods agree and where they conflict.
 
 **Phase 7, Publish.** Write the paper against the pre-registration, listing every deviation,
-with the advisors' responses alongside. Post a preprint. Release code, data, and models with
-a one-command reproduction, plus a web explorer where anyone can click a passage and see its
-parallels, scores, and dating estimate. Submit for peer review and answer reviewers in public.
+with the simulated reviewers' responses alongside. Post a preprint. Release code, data, and
+models with a one-command reproduction, plus a web explorer where anyone can click a passage
+and see its parallels, scores, and dating estimate. Then put the paper through a simulated
+peer review by an AI model that sees only the released materials, and answer it in public.
 
 ## What this can and cannot settle
 
@@ -157,6 +159,14 @@ positive result. The analysis plan itself is `paper/preregistration.md`.
   uses their published methods.
 - **Publish as you go.** Code here, data manifests and models on Hugging Face or Zenodo
   with DOIs.
+
+## Who is doing this
+
+One person with AI assistance. There are no external advisors, no second analyst, and no
+journal submission. Every review step in the plan is simulated by an AI model and is labeled
+as such wherever it appears. That is a real limit on the independence of the review, and the
+project states it rather than implying otherwise. Anyone who wants to supply the missing
+independent scrutiny can do so by pull request, and their critique will be recorded unchanged.
 
 ## Following along
 

@@ -432,7 +432,8 @@ Phase 6 stress-tests the methods, runs the sealed analysis blind, and combines t
 
 **Goal:** score the sealed text with every validated method, without the analyst knowing which segments are which.
 
-- [ ] A second person relabels Book of Mormon segments and mixes in decoy segments from known authors
+- [ ] A sealing script relabels Book of Mormon segments with opaque identifiers and mixes in decoy segments from known authors; it writes the key outside the repository and commits the SHA-256 hashes of the key and of the relabeled set
+- [ ] Run the analysis in a fresh session with no access to the key or to the sealing script's output log
 - [ ] Run classical methods (#20), authorial models (#28), dating (#29), and embeddings (#30)
 - [ ] Run the author sweep (#39) on the discovery half only; save the ranked lead list with null percentiles and sample sizes, hashed with the other outputs
 - [ ] Unblind only after all outputs are saved and hashed
@@ -486,7 +487,7 @@ Phase 7 writes up the results, releases everything, and puts the work through ou
 - [ ] Draft methods, validation, results, and limitations sections
 - [ ] List every deviation from the pre-registration
 - [ ] Report the author sweep's leads as exploratory, with the historical plausibility check, and state what a second pre-registered iteration would test
-- [ ] Share the draft with the #3 advisors and publish their responses alongside it
+- [ ] Run the three simulated reviewers from #3 against the full draft with an AI model, and publish their objections and the responses alongside it, labeled simulated
 - [ ] Post to a preprint server (arXiv cs.CL, or SocArXiv/OSF)
 
 **Done when:** the preprint is live.
@@ -504,13 +505,16 @@ Phase 7 writes up the results, releases everything, and puts the work through ou
 **Done when:** a fresh machine reproduces the headline results from the release and the explorer is live.
 **Depends on:** #36.
 
-### #38 Submit for peer review and respond
+### #38 Simulated peer review and response
 
-**Goal:** independent expert scrutiny on the record.
+**Goal:** the strongest critique an AI reviewer can produce, answered on the record.
 
-- [ ] Submit to a journal such as *Digital Scholarship in the Humanities* or *Digital Humanities Quarterly*
-- [ ] Respond to reviews with public, dated revisions
-- [ ] Log public critiques and replication attempts in the repo
+Decision 2026-10-15: no journal submission. Peer review is simulated by an AI model acting as reviewer and labeled as such; the project is one person with AI assistance.
 
-**Done when:** the paper is accepted or a final response to reviewers is published.
+- [ ] Build a reviewer setup that sees only the preprint, the pre-registration, and the released code and data, not the working sessions that produced them
+- [ ] Run at least three independent review passes (methods, statistics, historical claims) and publish the reviews verbatim
+- [ ] Respond to every point with public, dated revisions or a recorded disagreement
+- [ ] Log any real critiques and replication attempts that arrive in the repo
+
+**Done when:** the reviews, responses, and final revision are published, all labeled as simulated review.
 **Depends on:** #36, #37.

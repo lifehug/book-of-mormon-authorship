@@ -122,7 +122,7 @@ external SSD. Cloud GPU only for the 300M base model and any rerun. No Mac Studi
 | LLM API calls (OCR sample, parallel triage) | $100-200 | BOM-14, BOM-26 |
 | Off-site backup of working data, optional | about $10/month | Phase 1 onward |
 | OSF, GitHub, Hugging Face, Zenodo | $0 | |
-| Journal fees: DHQ is free; DSH has an optional open-access charge | $0-3,000 | BOM-38, optional |
+| Journal fees | $0 | no submission; peer review is simulated |
 | **Total excluding the Mac** | **about $500-900** | |
 | **Total including the Mac** | **about $3,700-4,300** | |
 
@@ -139,17 +139,17 @@ overlaps with the next issue's work. Phase 0 is done except for opening accounts
 | 3 Classical and validation | BOM-20 to BOM-22 | 20-32 | hours | replication of five prior studies is the long pole |
 | 4 Borrowing | BOM-23 to BOM-26 | 16-27 | 2 weeks: passim over the corpus, passage embeddings on the Mac | human review of parallels is the owner's own time |
 | 5 AI-era methods | BOM-27 to BOM-30, BOM-39 | 25-40 | 1 week local pilot, 1 day rented H100, days of fine-tunes and indexing | |
-| 6 Verification | BOM-31 to BOM-35 | 21-36 | days | the blind run needs a second person for a few hours to relabel segments; access and manuscript evidence are archival work |
-| 7 Publish | BOM-36 to BOM-38 | 18-30 | none | plus 3-9 months waiting on peer review |
-| **Total** | **35 issues remaining** | **145-235 working days** | **about 6-8 weeks, mostly overlapped** | |
+| 6 Verification | BOM-31 to BOM-35 | 21-36 | days | the blind run is sealed by script; access and manuscript evidence are archival work |
+| 7 Publish | BOM-36 to BOM-38 | 16-26 | hours of AI review runs | no journal wait; peer review is simulated |
+| **Total** | **35 issues remaining** | **143-231 working days** | **about 6-8 weeks, mostly overlapped** | |
 
 Calendar time at three paces:
 
-| Pace | Working days per week | Calendar to preprint (BOM-36) | To the end of peer review |
-| --- | --- | --- | --- |
-| Side project | 1 | 2.5-4 years | add 3-9 months |
-| Half time | 2.5 | 12-20 months | add 3-9 months |
-| Full time | 5 | 7-10 months | add 3-9 months |
+| Pace | Working days per week | Calendar to the end (BOM-38) |
+| --- | --- | --- |
+| Side project | 1 | 2.5-4 years |
+| Half time | 2.5 | 12-20 months |
+| Full time | 5 | 7-10 months |
 
 Compute never sets the pace on this plan; the owner's working days do. The items that can
 only be done by a person, and that Claude Code does not shorten, are sourcing candidate

@@ -203,9 +203,12 @@ from the synthesis.
 
 ## 8. Blind procedure
 
-A second person relabels the Book of Mormon segments with opaque identifiers and mixes in decoy
-segments from known candidates and controls at a ratio of at least 1 decoy per 4 segments. All
-methods run on the mixed set. Outputs are saved and their hashes committed before the key is
+A sealing script relabels the Book of Mormon segments with opaque identifiers and mixes in
+decoy segments from known candidates and controls at a ratio of at least 1 decoy per 4
+segments (amended from "a second person"; see section 11). The script writes the key to a
+file outside the repository and commits the SHA-256 hashes of the key and of the relabeled
+set. The analysis runs in a fresh session with no access to the key. All methods run on the
+mixed set. Outputs are saved and their hashes committed before the key is
 revealed. Decoys must be identified at the benchmark accuracy or the run is repeated with the
 fault documented. Leave-one-candidate-out runs follow.
 
@@ -225,11 +228,27 @@ weight at or above 80%, half weight from 60% to 80%, dropped below 60%.
 - A sweep with no leads says nothing beyond the corpus.
 - The candidate corpora are themselves of uneven provenance (dictated, edited, posthumously
   published), and each sample's provenance is recorded.
+- All review in this project (adversarial, draft, and peer) is simulated by an AI model and
+  conducted by the same person who runs the analysis. It is not independent scrutiny.
 
 ## 11. Amendments
 
-None. Every later change is listed here with its date and reason, and the original stays on
-OSF unchanged.
+Every change is listed here with its date and reason, and the original stays on OSF unchanged.
+
+**Amendment 1, 2026-10-15, before any data work.** The project is conducted by one person
+with AI assistance, so every step that assumed another person is replaced by a scripted or
+AI-simulated equivalent, labeled as such:
+
+- Section 8: the blind run's relabeling and decoy mixing is done by a sealing script with a
+  committed hash of the key, not by a second person, and the analysis runs in a fresh session
+  without the key.
+- Paper review (BOM-36): the three simulated reviewer stances from the adversarial review are
+  run against the full draft by an AI model, in place of advisors.
+- Peer review (BOM-38): simulated by an AI model that sees only the released materials; no
+  journal submission is planned. Reviews and responses are published verbatim.
+
+No hypothesis, method, threshold, candidate, or data rule changes. The limit on review
+independence is stated in section 10.
 
 ## 12. Reporting commitments
 
