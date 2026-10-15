@@ -13,12 +13,15 @@ manifests in `data/manifests/`.
 | `hathitrust.jsonl.gz` | `python -m ingest.hathitrust catalog --hathifile hathi_full_20261001.txt.gz` | HathiTrust public-domain English volumes with rights date 1780-1830: 135,035 rows (gzipped JSON Lines; read with `gzip.open`) from the monthly hathifile (https://www.hathitrust.org/files/hathifiles/, 2026-10-01 edition), each flagged `in_harvard` by `hvd.` id prefix or OCLC match against the Harvard catalog. 107,178 are not in the Harvard slice. |
 | `hathitrust_summary.md` | same | overlap, contributors, decades |
 | `hathitrust_ids_not_in_harvard.txt` | same catalog | the 107,178 HathiTrust ids (one per line) to request as a public-domain dataset from HathiTrust |
+| `internet_archive.jsonl.gz` | `python -m ingest.internet_archive catalog` | Internet Archive scrape API, `mediatype:texts`, English, dated 1780-1830: 307,567 items with identifier, title, creator, year, publisher, language, subject (first 8), collection, imagecount, downloads, plus `has_text_likely` and `harvard_overlap` flags (fetched 2026-10-15). Gzipped because the plain JSONL is over GitHub's file limit. |
+| `internet_archive_summary.md` | same | counts by year, top collections, Harvard overlap |
 
 ## Pulling the text (data machine)
 
 ```
 python -m ingest.institutional_books pull      # ~44 GB; needs a Hugging Face token whose account accepted the dataset terms
 python -m ingest.eebo_tcp pull                  # ~25 GB of TEI XML plus extracted text; no account needed
+python -m ingest.internet_archive pull --skip-harvard-overlap   # IA OCR (_djvu.txt), roughly 80 GB; no account needed
 ```
 
 ## Terms
@@ -28,5 +31,7 @@ python -m ingest.eebo_tcp pull                  # ~25 GB of TEI XML plus extract
   contributed by Harvard Library, https://institutional.org/institutional-books. The text is
   never published by this project; corpus v1.0 (BOM-19) ships the catalog, manifests, and
   derived statistics for it.
+- Internet Archive: items are mostly public-domain imprints; rights vary by item and are not
+  re-checked here. The text stays on local disk; only the catalog and manifests are committed.
 - TCP: Phase I texts are CC0; later texts carry their terms in the TEI header. Evans and ECCO
   texts are public-domain source material.
