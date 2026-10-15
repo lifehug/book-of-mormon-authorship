@@ -90,6 +90,23 @@ def parse(text: str) -> list[dict]:
     ended = False
     after_chapter = False
 
+    def emit_title() -> None:
+        nonlocal pending_title, kind
+        records.append(
+            {
+                "seq": len(records) + 1,
+                "book": book,
+                "chapter": 0,
+                "para": 0,
+                "kind": "title",
+                "page_start": page_no,
+                "page_end": page_no,
+                "text": " ".join(pending_title),
+            }
+        )
+        pending_title = []
+        kind = "body"
+
     def flush() -> None:
         nonlocal buf, para_no, buf_page
         joined = join_lines(buf)
@@ -128,6 +145,8 @@ def parse(text: str) -> list[dict]:
                 continue
             m = CHAPTER_RE.match(line)
             if m and book:
+                if pending_title:
+                    emit_title()
                 flush()
                 chapter = roman(m.group(1))
                 para_no = 0
@@ -153,20 +172,7 @@ def parse(text: str) -> list[dict]:
                     kind = "preface"
                     continue
             if pending_title:
-                records.append(
-                    {
-                        "seq": len(records) + 1,
-                        "book": book,
-                        "chapter": 0,
-                        "para": 0,
-                        "kind": "title",
-                        "page_start": page_no,
-                        "page_end": page_no,
-                        "text": " ".join(pending_title),
-                    }
-                )
-                pending_title = []
-                kind = "body"
+                emit_title()
             if not stripped:
                 continue
             indent = len(line) - len(line.lstrip(" "))
@@ -188,7 +194,9 @@ def parse(text: str) -> list[dict]:
     if known:
         for r in records:
             if r["page_start"] is None and r["book"] is not None:
-                r["page_start"] = r["page_end"] = known[0] - 1
+                r["page_start"] = known[0] - 1
+                if r["page_end"] is None:
+                    r["page_end"] = r["page_start"]
     return records
 
 
