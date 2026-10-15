@@ -38,7 +38,9 @@ KEEP = [
     "rights_date_used", "pub_place", "lang", "bib_fmt", "description",
 ]  # fmt: skip
 HARVARD_CATALOG = Path("data/catalog/institutional_books.jsonl")
-OUT = Path("data/catalog/hathitrust.jsonl")
+OUT = Path(
+    "data/catalog/hathitrust.jsonl.gz"
+)  # 135k rows; gzipped to stay well under GitHub limits
 SUMMARY = Path("data/catalog/hathitrust_summary.md")
 YEAR_MIN, YEAR_MAX = 1780, 1830
 PD_RIGHTS = {"pd", "pdus", "cc-zero", "cc-by-4.0", "cc-by-3.0"}
@@ -92,7 +94,7 @@ def catalog(hathifile: Path) -> int:
             row["in_harvard"] = row["harvard_scan"] or row["harvard_oclc_match"]
             kept.append(row)
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    with OUT.open("w", encoding="utf-8") as fh:
+    with gzip.open(OUT, "wt", encoding="utf-8") as fh:
         for r in kept:
             fh.write(json.dumps(r, ensure_ascii=False) + "\n")
     SUMMARY.write_text(summarize(kept, scanned, hathifile.name), encoding="utf-8")
