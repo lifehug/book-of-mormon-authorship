@@ -35,16 +35,20 @@ are not redistributed here. Anyone can rebuild the full directory with the comma
 
 Public domain. Both files are committed.
 
-- `1830/jenson-reproduction-1830.txt`: Thomas A. Jenson's 2012 typed reproduction of the
-  first edition, checked against scans, preserving spelling, errors, page breaks, and
-  numbering. Internet Archive item `book-of-mormon-1830-digital-replica`, Creative Commons
-  Public Domain Mark. This is the primary 1830 text.
+- `1830/jenson-reproduction-1830.pdf` and `.txt`: Thomas A. Jenson's 2012 typed
+  reproduction of the first edition, checked against scans, preserving spelling, errors,
+  page breaks, and numbering. Internet Archive item `book-of-mormon-1830-digital-replica`,
+  Creative Commons Public Domain Mark. This is the primary 1830 text. The `.txt` is the
+  PDF's own text layer extracted with `pdftotext -layout` (poppler), not the Internet
+  Archive's `_djvu.txt`, which is a re-OCR of the PDF and contains errors. It keeps the
+  running page headers (for example "FIRST BOOK OF NEPHI.  7") and soft hyphens (U+00AD) at
+  line-end word breaks; downstream code removes both.
   https://archive.org/details/book-of-mormon-1830-digital-replica
 - `1830/pittsburgh-scan-ocr-1830.txt`: raw OCR of a scanned first-edition copy, University of
   Pittsburgh Library System, Internet Archive item `bookofmormonacco1830smit`. Used only to
   cross-check the reproduction; expect OCR errors.
   https://archive.org/details/bookofmormonacco1830smit
-- Rebuild: `curl -L` the `_djvu.txt` file of each item, or re-run `scripts/fetch_1830.sh`.
+- Rebuild: `scripts/fetch_1830.sh` (needs `pdftotext` from poppler).
 
 ## 4. Fetch etiquette
 
