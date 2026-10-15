@@ -74,6 +74,27 @@ and the blind run, where a lost job costs a day; a marketplace (Vast or RunPod C
 the short jobs. Budget line: **$1,000 for GPUs, $300 for CPU boxes, $200 for API calls, $120
 for a year of storage, total about $1,600**, with the GPU line the one to watch.
 
+## 4a. Local machine option: Mac mini
+
+A 2026 Mac mini with M5 Pro (18-core CPU, 20-core GPU, 64 GB unified memory, 1 TB SSD) plus
+a 2 TB external SSD can run everything in this plan except the base-model training.
+
+| Workload | On the Mac mini | Notes |
+| --- | --- | --- |
+| Ingest, dedup, OCR fixes, normalization, masking, segmentation, classical stylometry, synthesis | yes | CPU-bound; most of the project |
+| passim text reuse | yes, days | run it over a week rather than renting a 64-core box |
+| Passage embeddings over the corpus | yes, days | small sentence model via MLX or PyTorch MPS; overnight runs for about a week |
+| Authorial fine-tunes (~15 small models) | yes, hours each | MLX |
+| Sweep index, benchmark, imitation, blind runs | yes | inference only |
+| 125M pilot base model on ~5B tokens | borderline, about a week | useful once to debug the pipeline |
+| 300M base model on ~10B tokens | no, roughly 3-4 weeks continuous | rent an H100: 15-25 hours core, $150-300 with reruns |
+
+Memory: 24 GB is too small once the FAISS index and a fine-tune are resident together; 64 GB
+is the right configuration. With the Mac as the primary machine the cloud lines shrink to
+roughly **$400-600**: the base-model run, a small reserve for a second run, and API calls.
+No benchmark exists for MLX training at this model size, so the base-model estimate is from
+FLOPs and the M5 Pro's 307 GB/s memory bandwidth; re-check with the 125M pilot before deciding.
+
 ## 5. Accounts and access
 
 | Service | Purpose | Status | Notes |
