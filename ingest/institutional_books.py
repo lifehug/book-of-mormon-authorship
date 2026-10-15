@@ -63,12 +63,24 @@ def parse_year(s: str | None) -> int | None:
 
 
 def in_window(rec: dict) -> bool:
-    y1, y2 = parse_year(rec.get("date1_src")), parse_year(rec.get("date2_src"))
-    years = [y for y in (y1, y2) if y]
-    if not years:
-        return False
-    # date1 is the publication date for single-date records; for ranges, use the earliest
-    return YEAR_MIN <= min(years) <= YEAR_MAX
+    """Publication date (``date1_src``) inside the window. ``date2_src`` is ignored: for
+    reprints and collections it carries the original or end date (Faraday's 1859 collected
+    papers show 1821 there), and we want what was printed in the period."""
+    y1 = parse_year(rec.get("date1_src"))
+    return y1 is not None and YEAR_MIN <= y1 <= YEAR_MAX
+
+
+def date_kind(rec: dict) -> str:
+    t = (rec.get("date_types_src") or "").lower()
+    if "continuing resource" in t:
+        return "serial"
+    if "reprint" in t:
+        return "reprint"
+    if "multiple" in t:
+        return "multiple"
+    if "questionable" in t:
+        return "questionable"
+    return "single"
 
 
 def is_english(rec: dict) -> bool:
@@ -91,9 +103,8 @@ def catalog(out: Path = CATALOG, summary: Path = SUMMARY) -> int:
         for rec in pf.read_row_group(rg, columns=cols).to_pylist():
             total += 1
             if is_english(rec) and in_window(rec):
-                rec["year"] = min(
-                    y for y in (parse_year(rec["date1_src"]), parse_year(rec["date2_src"])) if y
-                )
+                rec["year"] = parse_year(rec["date1_src"])
+                rec["date_kind"] = date_kind(rec)
                 kept.append(rec)
     kept.sort(key=lambda r: (r["year"], r["barcode_src"]))
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -123,9 +134,13 @@ def summarize(kept: list[dict], total: int) -> str:
         f"- Volumes flagged as likely duplicates of another volume: {dup:,}",
         f"- OCR score (generated), median: {sorted(ocr)[len(ocr) // 2] if ocr else 'n/a'}",
         "",
-        "Filter: `language_gen` (or `language_src`) is `eng`, and the earliest four-digit year in "
-        "`date1_src`/`date2_src` falls in 1780-1830. Records whose dates have placeholder digits "
-        "(for example `18uu`) are excluded.",
+        "Filter: `language_gen` (or `language_src`) is `eng`, and the publication year "
+        "(`date1_src`) falls in 1780-1830. `date2_src` is ignored because for reprints and "
+        "collections it holds the original or end date. Placeholder dates (`18uu`) are excluded. "
+        "`date_kind` flags serials (where `date1_src` is the run's start year, so the volume's "
+        "own year must be checked in BOM-12), reprints, multiple, and questionable dates.",
+        "",
+        f"- By date kind: {dict(Counter(r['date_kind'] for r in kept))}",
         "",
         "| Year | Volumes | Tokens |",
         "| --- | --- | --- |",
@@ -135,8 +150,15 @@ def summarize(kept: list[dict], total: int) -> str:
     return "\n".join(lines) + "\n"
 
 
+TEXT_COLS = {"text_by_page_src": "text_src", "text_by_page_gen": "text_gen"}
+
+
 def pull(limit: int | None, delay: float) -> int:
-    import pyarrow.compute as pc
+    """Each shard holds 100 volumes in one row group, so a shard with any wanted barcode is
+    read whole for the text columns (about 69 MB per shard, ~700 GB of transfer for the full
+    slice); only the ~44 GB per column that matches is written to disk. Both the raw OCR
+    (``text_src``) and Harvard's cleaned OCR (``text_gen``) are kept, one file per volume,
+    pages separated by form feeds."""
     import pyarrow.parquet as pq
     from huggingface_hub import HfApi, HfFileSystem
 
@@ -144,13 +166,12 @@ def pull(limit: int | None, delay: float) -> int:
     if not tok:
         raise SystemExit("no Hugging Face token at ~/.config/huggingface/token")
     wanted = {json.loads(line)["barcode_src"] for line in CATALOG.open(encoding="utf-8")}
-    text_dir = CORPUS / "text"
-    text_dir.mkdir(parents=True, exist_ok=True)
-    done = {p.stem for p in text_dir.glob("*.txt")}
+    dirs = {col: CORPUS / sub for col, sub in TEXT_COLS.items()}
+    for d in dirs.values():
+        d.mkdir(parents=True, exist_ok=True)
+    done = {p.stem for p in dirs["text_by_page_gen"].glob("*.txt")}
     todo = wanted - done
-    print(
-        f"catalog: {len(wanted):,} volumes; already on disk: {len(done):,}; to fetch: {len(todo):,}"
-    )
+    print(f"catalog: {len(wanted):,} volumes; on disk: {len(done):,}; to fetch: {len(todo):,}")
     if not todo:
         return 0
     api = HfApi(token=tok)
@@ -159,44 +180,35 @@ def pull(limit: int | None, delay: float) -> int:
     )
     fs = HfFileSystem(token=tok)
     progress = CORPUS / "pull_progress.json"
-    seen_shards = set(json.load(progress.open())) if progress.exists() else set()
+    seen = set(json.load(progress.open())) if progress.exists() else set()
     fetched = 0
-    text_col = None
     for shard in shards:
-        if shard in seen_shards:
+        if shard in seen:
             continue
         with fs.open(f"datasets/{FULL_REPO}/{shard}", "rb") as fh:
             pf = pq.ParquetFile(fh)
-            if text_col is None:
-                names = pf.schema_arrow.names
-                text_col = next((n for n in names if "text_by_page" in n), None) or next(
-                    n for n in names if n.startswith("text")
-                )
-                print("text column:", text_col)
             codes = pf.read(columns=["barcode_src"]).column(0).to_pylist()
-            hits = [i for i, c in enumerate(codes) if c in todo]
+            hits = {c for c in codes if c in todo}
             if hits:
-                tbl = pf.read(columns=["barcode_src", text_col])
-                mask = pc.is_in(
-                    tbl.column("barcode_src"), value_set=__import__("pyarrow").array(list(todo))
-                )
-                for row in tbl.filter(mask).to_pylist():
-                    pages = row[text_col]
-                    text = "\n\f\n".join(pages) if isinstance(pages, list) else str(pages)
-                    (text_dir / f"{row['barcode_src']}.txt").write_text(text, encoding="utf-8")
+                tbl = pf.read(columns=["barcode_src", *TEXT_COLS])
+                for row in tbl.to_pylist():
+                    if row["barcode_src"] not in hits:
+                        continue
+                    for col, d in dirs.items():
+                        pages = row[col] or []
+                        text = "\n\f\n".join(pg or "" for pg in pages)
+                        (d / f"{row['barcode_src']}.txt").write_text(text, encoding="utf-8")
                     fetched += 1
                     if limit and fetched >= limit:
-                        print(f"stopped at --limit {limit}")
+                        print(f"stopped at --limit {limit} after {fetched} volume(s)")
                         return 0
-        seen_shards.add(shard)
-        json.dump(sorted(seen_shards), progress.open("w"))
-        if len(seen_shards) % 100 == 0:
-            print(
-                f"  shards {len(seen_shards)}/{len(shards)}, volumes fetched {fetched:,}",
-                flush=True,
-            )
-        time.sleep(delay)
-    print(f"done: fetched {fetched:,} volumes into {text_dir}")
+        seen.add(shard)
+        json.dump(sorted(seen), progress.open("w"))
+        if len(seen) % 100 == 0:
+            print(f"  shards {len(seen):,}/{len(shards):,}, volumes {fetched:,}", flush=True)
+        if delay:
+            time.sleep(delay)
+    print(f"done: fetched {fetched:,} volumes into {CORPUS}")
     return 0
 
 
