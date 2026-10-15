@@ -38,7 +38,7 @@ Accessed DATE.
 
 Subject: Research dataset request: public domain English text, 1780-1830 (ht_text_pd_open_access)
 
-Researchers: David Taylor, independent researcher, United States; sole user of the data.
+From: <requester address, withheld>. Researchers: David Taylor, independent researcher, United States; sole user of the data.
 Dataset: ht_text_pd_open_access; subset of English volumes with rights dates 1780-1830
 (135,035 in the 2026-10-01 hathifile; about 31,000 after excluding Google-digitized and
 Harvard-available volumes); ID list linked above. Research: pre-registered computational
