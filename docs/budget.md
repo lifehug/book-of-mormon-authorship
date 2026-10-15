@@ -92,7 +92,18 @@ a 2 TB external SSD can run everything in this plan except the base-model traini
 Memory: 24 GB is too small once the FAISS index and a fine-tune are resident together; 64 GB
 is the right configuration. With the Mac as the primary machine the cloud lines shrink to
 roughly **$400-600**: the base-model run, a small reserve for a second run, and API calls.
-No benchmark exists for MLX training at this model size, so the base-model estimate is from
+Mac Studio comparison, scaled from the mini estimate by memory bandwidth (optimistic by up to
+a third, since Apple GPUs do not scale linearly for training):
+
+| Machine | Bandwidth | 300M model, 10B tokens | 125M pilot, 5B tokens |
+| --- | --- | --- | --- |
+| Mac mini M5 Pro, 20-core GPU | 307 GB/s | 25-40 days | about a week |
+| Mac Studio M5 Max, 40-core GPU | 614 GB/s | 12-20 days | 3-4 days |
+| Mac Studio M5 Ultra, 80-core GPU | 1.2 TB/s | 6-10 days | about 2 days |
+| Rented H100 | 3.35 TB/s | 15-25 hours | 3-5 hours |
+
+An Ultra makes the project fully self-contained with no cloud account; it is only worth it if
+the machine has other uses. No benchmark exists for MLX training at this model size, so the base-model estimate is from
 FLOPs and the M5 Pro's 307 GB/s memory bandwidth; re-check with the 125M pilot before deciding.
 
 ## 5. Accounts and access
