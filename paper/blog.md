@@ -322,6 +322,41 @@ Matthew, and Romans, and *the* ranks first and *unto* lands in the top 30. That'
 biblical register showing up in the numbers, which is the whole reason the masking step
 exists.
 
+### BOM-13, first half: what the candidates actually left behind
+
+Before any attribution test can run, each candidate needs a pile of their own words. I went
+looking for every digitized text by the eight of them, with who physically wrote it, when, and
+whether anyone is allowed to redistribute it. Thirty-eight sources. Here's the part that
+matters:
+
+| Candidate | Words written before 1830 | Words total |
+| --- | --- | --- |
+| Joseph Smith | about 11,500, all dictated to scribes; none in his own hand | about 20,000 |
+| Oliver Cowdery | about 2,500, much of it quoting the Book of Mormon | about 25,000 |
+| Sidney Rigdon | none digitized | about 55,000 (1836-40) |
+| Parley P. Pratt | none (nothing published before 1835) | about 98,000 |
+| W. W. Phelps | none digitized | about 15,000 |
+| Solomon Spalding | about 40,000 (one manuscript, c. 1812) | about 40,000 |
+| Ethan Smith | about 400,000 | about 400,000 |
+| Gilbert Hunt | about 60,000 (*The Late War*, 1816) | about 60,000 |
+
+Three things fall out of that table. First, the pre-registration's warning about Joseph Smith
+was right: there's no pre-1830 text in his own handwriting at all, and the dictated material
+sits right at the floor where methods stop being reliable. Second, for Rigdon, Pratt, and
+Phelps, everything we have was written after they'd read the Book of Mormon, and exposure to
+a text can pull your style toward it. Phelps ran a newspaper in Canandaigua from 1828 to 1831,
+the *Ontario Phoenix*, which would be perfect, and nobody has digitized it. Third, the two
+non-Mormon candidates, Ethan Smith and Gilbert Hunt, are the best-documented people in the
+list by a mile, which is the opposite of what you'd want if you were trying to rig this.
+
+One small call I had to make: Joseph Smith's 1829 preface to the Book of Mormon is in his
+voice and predates publication, and I left it out of his sample, because it's part of the book
+being tested and that text is sealed.
+
+The fetcher is written and tested on two public items. Rigdon's 1838 Fourth of July oration
+came down first: 5,621 words that begin, in the OCR, with the Far West crowd and end with the
+"salt sermon" everyone remembers it for.
+
 ## What's next
 
 Set up the Mac mini, run the two corpus pulls there, then BOM-08 through BOM-10: HathiTrust
@@ -332,7 +367,7 @@ America newspapers.
 
 ## Log
 
-- **2026-10-15, later.** BOM-20 library built ahead of the corpus (37 tests). BOM-08 measured: HathiTrust holds 107,178 period volumes Harvard lacks. BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
+- **2026-10-15, later.** BOM-13 sources inventoried (38; four candidates have no pre-1830 text). BOM-20 library built ahead of the corpus (37 tests). BOM-08 measured: HathiTrust holds 107,178 period volumes Harvard lacks. BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
 - **2026-10-15.** BOM-01 to BOM-06 closed. Repo reset, plan registered on OSF (amendment 1
   the same day: one person plus AI, every human-review step replaced with a labeled
   simulation), budget set (Mac mini plus a rented H100), three Book of Mormon witnesses
