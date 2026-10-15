@@ -10,6 +10,8 @@ manifests in `data/manifests/`.
 | `institutional_books_summary.md` | same | counts and tokens by year |
 | `tcp.jsonl` | `python -m ingest.eebo_tcp catalog` | Text Creation Partnership index: 61,315 texts (EEBO 1473-1700, Evans American imprints to 1800, ECCO 18th century) with id, date, author, title, pages, raw-file URL (fetched 2026-10-15). |
 | `tcp_summary.md` | same | counts by collection, status, decade |
+| `hathitrust.jsonl` | `python -m ingest.hathitrust catalog --hathifile hathi_full_20261001.txt.gz` | HathiTrust public-domain English volumes with rights date 1780-1830: 135,035 rows from the monthly hathifile (https://www.hathitrust.org/files/hathifiles/, 2026-10-01 edition), each flagged `in_harvard` by `hvd.` id prefix or OCLC match against the Harvard catalog. 107,178 are not in the Harvard slice. |
+| `hathitrust_summary.md` | same | overlap, contributors, decades |
 
 ## Pulling the text (data machine)
 

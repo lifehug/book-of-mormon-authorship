@@ -274,6 +274,29 @@ tested it on three, and the first one it grabbed was the Bay Psalm Book of 1640:
 That's the first book printed in British North America, keyed by hand, dropping into my
 corpus folder. Those 25 GB are queued for the mini too.
 
+### BOM-08: HathiTrust, or the one I expected to skip
+
+I assumed HathiTrust would add little, because Harvard's scans are in HathiTrust and both come
+from the same Google Books scanning. So I checked before deciding. HathiTrust publishes its
+entire catalog as one 1.2 GB file every month, 19.7 million rows. I filtered it the same way
+as Harvard's: English, public domain, published 1780 to 1830.
+
+| | |
+| --- | --- |
+| HathiTrust volumes in the window | 135,035 |
+| Of those, already in the Harvard slice | 27,857 |
+| Not in Harvard | 107,178 (87,200 books, 18,317 serial volumes) |
+
+Four times what Harvard alone gives me. The biggest contributors of the extra volumes are the
+New York Public Library (20,161), Michigan (14,496), and the University of California
+(19,157 across two campuses). That's a lot of American printing Harvard didn't shelve. So the
+"probably skip" became "definitely get," with one catch: HathiTrust doesn't let you bulk
+download full text without a Research Center account. The open alternative is their Extracted
+Features set, which gives word counts per page for every volume but not the running text.
+Word counts are enough for the classic stylometry and part of the dating work; they're useless
+for finding borrowed passages. So the request for Research Center access goes in, and the word
+counts fill the gap meanwhile.
+
 ## What's next
 
 Set up the Mac mini, run the two corpus pulls there, then BOM-08 through BOM-10: HathiTrust
@@ -284,7 +307,7 @@ America newspapers.
 
 ## Log
 
-- **2026-10-15, later.** BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
+- **2026-10-15, later.** BOM-08 measured: HathiTrust holds 107,178 period volumes Harvard lacks. BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
 - **2026-10-15.** BOM-01 to BOM-06 closed. Repo reset, plan registered on OSF (amendment 1
   the same day: one person plus AI, every human-review step replaced with a labeled
   simulation), budget set (Mac mini plus a rented H100), three Book of Mormon witnesses
