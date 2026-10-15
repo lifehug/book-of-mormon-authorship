@@ -20,7 +20,7 @@ import json
 import sys
 from pathlib import Path
 
-from ingest.align import Mapper, load_jsonl, monotone_chain, ngram_anchors, tokens
+from ingest.align import COVER_MIN, Mapper, load_jsonl, monotone_chain, ngram_anchors, tokens
 
 
 def paragraph_diffs(edition: list[dict], pages: list[dict]) -> list[dict]:
@@ -40,9 +40,13 @@ def paragraph_diffs(edition: list[dict], pages: list[dict]) -> list[dict]:
     rows = []
     for q, r in enumerate(ed_recs):
         e0, e1 = ed_bounds[q], ed_bounds[q + 1]
-        # covered only if an anchor falls inside the paragraph
-        k = bisect.bisect_left(anchored_ed, e0)
-        if k >= len(anchored_ed) or anchored_ed[k] >= e1:
+        # covered only if anchors span at least half the paragraph's words
+        k0 = bisect.bisect_left(anchored_ed, e0)
+        k1 = bisect.bisect_left(anchored_ed, e1)
+        hit: set[int] = set()
+        for i in anchored_ed[k0:k1]:
+            hit.update(range(i, min(i + 5, e1)))
+        if len(hit) < COVER_MIN * (e1 - e0):
             rows.append({"seq": r["seq"], "book": r["book"], "chapter": r["chapter"],
                          "words": e1 - e0, "covered": False})  # fmt: skip
             continue

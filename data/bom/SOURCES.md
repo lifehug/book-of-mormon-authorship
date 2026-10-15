@@ -56,7 +56,21 @@ The Joseph Smith Papers site has no robots.txt and no bulk download. The fetcher
 itself, requests one page every 1.5 seconds, and resumes from the files already on disk.
 Fetched 2026-10-15.
 
-## 5. Manifests
+## 5. Derived outputs (committed; they contain numbers and references, not manuscript text)
+
+| File | What it is |
+| --- | --- |
+| `1830/edition_1830.jsonl` | the 1830 text as books, chapters, paragraphs, pages (`ingest.edition_1830`) |
+| `jsp_printers_toc.json`, `jsp_original_toc.json` | the Papers' page-level tables of contents with modern references |
+| `align_printers.jsonl`, `align_original.jsonl` | per manuscript page: 1830 paragraphs it carries, scribes, anchor count (`ingest.align`) |
+| `align_*_paragraphs.jsonl` | per 1830 paragraph: manuscript pages, scribes, coverage fraction |
+| `diff_printers.jsonl`, `diff_original.jsonl` | per 1830 paragraph: word-level similarity to the manuscript (`ingest.diff_report`) |
+| `reports/align_*.md`, `reports/diff_*.md` | summaries of the two above |
+| `reports/original_extant.md` (+ `.jsonl`) | which pages of the original manuscript survive, with gap notes (`ingest.extant`) |
+
+Rebuild all of them with `scripts/build_bom.sh`.
+
+## 6. Manifests
 
 After a rebuild, verify against the committed manifests:
 

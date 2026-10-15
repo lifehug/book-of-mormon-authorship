@@ -101,6 +101,9 @@ def load_jsonl(path: Path) -> list[dict]:
         return [json.loads(line) for line in fh if line.strip()]
 
 
+COVER_MIN = 0.5  # a paragraph counts as covered when anchors span at least half its words
+
+
 def align(edition: list[dict], pages: list[dict]) -> tuple[list[dict], dict]:
     ed_recs = [r for r in edition if r["book"] is not None and r["kind"] in ("body", "synopsis")]
     ed_tokens: list[str] = []
@@ -108,56 +111,76 @@ def align(edition: list[dict], pages: list[dict]) -> tuple[list[dict], dict]:
     for r in ed_recs:
         ed_bounds.append(len(ed_tokens))
         ed_tokens.extend(tokens(r["text"]))
+    ed_bounds.append(len(ed_tokens))
     ms_tokens: list[str] = []
     ms_bounds: list[int] = []
     for p in pages:
         ms_bounds.append(len(ms_tokens))
         ms_tokens.extend(tokens(p["text"]))
+    ms_bounds.append(len(ms_tokens))
     anchors = ngram_anchors(ms_tokens, ed_tokens)
     chain = monotone_chain(anchors)
-    to_ed = Mapper(chain, len(ms_tokens), len(ed_tokens))
 
     def para_at(tok: int) -> int:
         return max(0, bisect.bisect_right(ed_bounds, tok) - 1)
 
-    covered: dict[int, list[dict]] = {}
+    def page_at(tok: int) -> int:
+        return max(0, bisect.bisect_right(ms_bounds, tok) - 1)
+
+    # Which 1830 tokens does each page's text actually hit, paragraph by paragraph?
+    covered_tokens: dict[int, set[int]] = {}
+    page_paras: dict[int, set[int]] = {}
+    para_pages: dict[int, set[int]] = {}
+    for i, j in chain:
+        pg, q = page_at(i), para_at(j)
+        page_paras.setdefault(pg, set()).add(q)
+        para_pages.setdefault(q, set()).add(pg)
+        covered_tokens.setdefault(q, set()).update(range(j, min(j + N, ed_bounds[q + 1])))
+
     page_rows = []
     for k, p in enumerate(pages):
-        start = ms_bounds[k]
-        end = ms_bounds[k + 1] if k + 1 < len(ms_bounds) else len(ms_tokens)
-        if end - start < N:
-            page_rows.append({"page": p["page"], "tokens": end - start, "para_first": None})
-            continue
-        e0, e1 = to_ed(start), max(to_ed(end - 1), to_ed(start))
-        p0, p1 = para_at(e0), para_at(e1)
-        page_rows.append(
-            {
-                "page": p["page"],
-                "editorial_page": p.get("editorialPageNumber"),
-                "tokens": end - start,
-                "scribes": [s.get("name") for s in p.get("scribes") or []],
-                "book_first": ed_recs[p0]["book"],
-                "chapter_first": ed_recs[p0]["chapter"],
-                "para_first": ed_recs[p0]["seq"],
-                "book_last": ed_recs[p1]["book"],
-                "chapter_last": ed_recs[p1]["chapter"],
-                "para_last": ed_recs[p1]["seq"],
-            }
-        )
-        for q in range(p0, p1 + 1):
-            covered.setdefault(q, []).append(page_rows[-1])
+        qs = sorted(page_paras.get(k, ()))
+        row = {
+            "page": p["page"],
+            "editorial_page": p.get("editorialPageNumber"),
+            "tokens": ms_bounds[k + 1] - ms_bounds[k],
+            "scribes": [s.get("name") for s in p.get("scribes") or []],
+            "anchors": sum(1 for i, _ in chain if ms_bounds[k] <= i < ms_bounds[k + 1]),
+        }
+        if qs:
+            row.update(
+                {
+                    "book_first": ed_recs[qs[0]]["book"],
+                    "chapter_first": ed_recs[qs[0]]["chapter"],
+                    "para_first": ed_recs[qs[0]]["seq"],
+                    "book_last": ed_recs[qs[-1]]["book"],
+                    "chapter_last": ed_recs[qs[-1]]["chapter"],
+                    "para_last": ed_recs[qs[-1]]["seq"],
+                    "paragraphs": len(qs),
+                }
+            )
+        else:
+            row["para_first"] = None
+        page_rows.append(row)
+
     para_rows = []
     for q, r in enumerate(ed_recs):
-        cov = covered.get(q, [])
+        words = ed_bounds[q + 1] - ed_bounds[q]
+        frac = len(covered_tokens.get(q, ())) / max(1, words)
+        pgs = sorted(para_pages.get(q, ()))
         para_rows.append(
             {
                 "seq": r["seq"],
                 "book": r["book"],
                 "chapter": r["chapter"],
                 "para": r["para"],
-                "words": len(tokens(r["text"])),
-                "pages": [c["page"] for c in cov],
-                "scribes": sorted({s for c in cov for s in c.get("scribes", [])}),
+                "words": words,
+                "coverage": round(frac, 3),
+                "covered": frac >= COVER_MIN,
+                "pages": [pages[k]["page"] for k in pgs],
+                "scribes": sorted(
+                    {s.get("name") for k in pgs for s in pages[k].get("scribes") or [] if s}
+                ),
             }
         )
     stats = {
@@ -168,18 +191,19 @@ def align(edition: list[dict], pages: list[dict]) -> tuple[list[dict], dict]:
         "pages": len(pages),
         "pages_aligned": sum(1 for r in page_rows if r.get("para_first")),
         "paragraphs": len(para_rows),
-        "paragraphs_covered": sum(1 for r in para_rows if r["pages"]),
+        "paragraphs_covered": sum(1 for r in para_rows if r["covered"]),
+        "words_covered": sum(len(v) for v in covered_tokens.values()),
     }
     return page_rows, {"paragraphs": para_rows, "stats": stats}
 
 
 def report(stats: dict, para_rows: list[dict], label: str) -> str:
-    uncovered = [r for r in para_rows if not r["pages"]]
+    uncovered = [r for r in para_rows if not r["covered"]]
     by_book: dict[str, list[int]] = {}
     for r in para_rows:
         by_book.setdefault(r["book"], [0, 0])
         by_book[r["book"]][0] += 1
-        by_book[r["book"]][1] += bool(r["pages"])
+        by_book[r["book"]][1] += bool(r["covered"])
     lines = [f"# Alignment report: {label}", ""]
     lines.append(
         f"- Manuscript tokens: {stats['ms_tokens']:,}; 1830 tokens: {stats['ed_tokens']:,}"
@@ -188,6 +212,10 @@ def report(stats: dict, para_rows: list[dict], label: str) -> str:
         f"- Unique shared 5-gram anchors: {stats['anchors']:,}; monotone chain: {stats['chain']:,}"
     )
     lines.append(f"- Pages aligned: {stats['pages_aligned']} of {stats['pages']}")
+    lines.append(
+        f"- 1830 words reached by an anchor: {stats['words_covered']:,} of {stats['ed_tokens']:,}"
+        f" ({100 * stats['words_covered'] / max(1, stats['ed_tokens']):.1f}%)"
+    )
     lines.append(
         f"- 1830 paragraphs covered: {stats['paragraphs_covered']} of {stats['paragraphs']}"
         f" ({100 * stats['paragraphs_covered'] / max(1, stats['paragraphs']):.1f}%)"
