@@ -147,6 +147,7 @@ positive result. The analysis plan itself is `paper/preregistration.md`.
 ## Rules we have bound ourselves to
 
 - **Pre-register first.** The analysis plan is frozen on OSF before analysis begins.
+  OSF project: https://osf.io/ebpcw/ (the registration link is added here once it is frozen).
 - **Adversarial review, simulated.** The protocol is attacked from both sides in writing
   before results exist (`paper/adversarial-review.md`). No external scholar has approved it;
   the file says so and stays open to real dissent.
