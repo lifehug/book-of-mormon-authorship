@@ -10,9 +10,12 @@ eventually the paper. Everything is public as it is produced.
 
 ## The three questions
 
-1. **Attribution.** Does the text resemble the writing of any named candidate: Joseph Smith,
-   Oliver Cowdery, Sidney Rigdon, Solomon Spalding, Ethan Smith, Gilbert Hunt, or others? The
-   test is open-set, so "none of the above" is always an allowed result.
+1. **Attribution.** Does the text resemble the writing of any named candidate? The
+   pre-registered list is Joseph Smith, Oliver Cowdery, Sidney Rigdon, Parley P. Pratt,
+   W. W. Phelps, Solomon Spalding, Ethan Smith, and Gilbert Hunt. The test is open-set, so
+   "none of the above" is always an allowed result. A corpus-wide search for stylistically
+   similar authors runs alongside as an exploratory step; anyone it surfaces can be added to
+   the list only by dated public amendment and then tested on data not used to find them.
 2. **Borrowing.** Which earlier texts share wording or ideas with it, and is each overlap more
    than you would expect by chance from two books in the same genre and period?
 3. **Dating.** When does its grammar and vocabulary come from? Some argue for early modern
