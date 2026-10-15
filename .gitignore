@@ -1,5 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
 
-/.gradle
-/.idea
-/build
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
 
+# Data: raw and derived files are never committed, only their manifests
+data/*
+!data/README.md
+!data/manifests/
+!data/manifests/**
+
+# Models and large artifacts
+models/
+*.pt
+*.safetensors
+*.bin

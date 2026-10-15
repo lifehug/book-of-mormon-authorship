@@ -1,0 +1,493 @@
+<!-- Source of truth for the work plan. Issue numbers here (#N) map to GitHub issues titled BOM-NN. -->
+# Issue Backlog (exported from the planning doc)
+
+## How to use this backlog
+
+The project is finished when all 38 issues below are closed, in order, with their outputs published. Each `###` heading is one issue, numbered so dependencies always point backwards.
+
+Every issue has the same four parts:
+
+- **Goal:** the one outcome the issue delivers.
+- **Tasks:** checkboxes to tick as you go.
+- **Done when:** the test that closes the issue, usually a published artifact (code, dataset, model, report).
+- **Depends on:** issues that must be closed first.
+
+To load these into GitHub, split this section on `### ` headings, and create one issue per chunk with `gh issue create --title ... --body ... --label phase-N`. Use the phase number as the label and one GitHub milestone per phase.
+
+Ground rules for every issue:
+
+- Publish as you go: code to the repo, data manifests and models to Hugging Face or Zenodo with a DOI.
+- Never change the pre-registered analysis plan (issue #2) without a dated, public amendment.
+- The Book of Mormon text stays sealed from all model training and tuning until Phase 6, except where an issue says otherwise.
+
+## Phase 0 — Foundations
+
+Phase 0 locks the questions and the method before any data is touched, so neither side can say the result was steered.
+
+### #1 Set up the repository and project structure
+
+**Goal:** a public repo with the skeleton every later issue plugs into.
+
+- [ ] Use the original 2016 repo, lifehug/book-of-mormon-1830-frequency-analysis, as the project's home: clear out its old contents and start fresh, with MIT for code and CC-BY for derived data
+- [ ] Create folders: `ingest/`, `metadata/`, `ocr_fix/`, `kjv_mask/`, `segment/`, `classic/`, `reuse/`, `semantic/`, `timelocked_lm/`, `alm/`, `dating/`, `style_embed/`, `eval/`, `paper/`
+- [ ] Set up Python environment (uv or poetry), linting, tests, and CI
+- [ ] Add a data-versioning approach (DVC or manifests with checksums)
+- [ ] Create phase labels and milestones; import this backlog as issues
+
+**Done when:** CI passes on an empty skeleton and all 38 issues exist in GitHub.
+**Depends on:** none.
+
+### #2 Write and publish the pre-registration
+
+**Goal:** a timestamped analysis plan that fixes questions, methods, and decision thresholds in advance.
+
+- [ ] State the three questions: Q1 attribution (open-set), Q2 textual borrowing, Q3 linguistic dating
+- [ ] List candidate authors and control groups, plus the rule for adding new ones later
+- [ ] Define each method, its features, and what result counts as a match, a non-match, or inconclusive
+- [ ] Define the validation benchmark the methods must pass before the Book of Mormon is run
+- [ ] State known limits: dictation, scribes, small Joseph Smith sample
+- [ ] Register on OSF (osf.io) and link from the README
+
+**Done when:** the OSF registration is public and frozen.
+**Depends on:** #1.
+
+### #3 Recruit advisors and set up adversarial collaboration
+
+**Goal:** at least one believing and one critical scholar approve the method before results exist.
+
+- [ ] Identify candidates: a BYU-associated stylometrist, a critical historian of early Mormonism, and a computational stylometry academic outside the debate
+- [ ] Send each the draft pre-registration and invite written objections
+- [ ] Revise #2 with their input, logging every change
+- [ ] Get written sign-off on the protocol, or record their dissent publicly
+
+**Done when:** a signed or recorded position from each advisor is in the repo.
+**Depends on:** #2 draft (finalize #2 after this issue).
+
+### #4 Set the compute and budget plan
+
+**Goal:** a known cost and set of accounts so nothing stalls mid-project.
+
+- [ ] Estimate storage for raw and cleaned corpora
+- [ ] Estimate GPU hours for #27 (time-locked model) and #28 (authorial models)
+- [ ] Open accounts: Hugging Face, a GPU cloud, Zenodo, OSF
+- [ ] Request HathiTrust Research Center access if needed
+
+**Done when:** a budget table and active accounts are documented in the repo.
+**Depends on:** #1.
+
+## Phase 1 — Build the corpus
+
+Phase 1 collects every usable English text from 1780-1830, plus the Book of Mormon base texts and an early modern comparison set. Each ingest issue outputs a manifest (ID, title, author, date, source URL, checksum) and raw text.
+
+### #5 Ingest the Book of Mormon base texts
+
+**Goal:** clean, verse-aligned digital copies of the earliest texts.
+
+- [ ] Pull transcriptions of the original manuscript, printer's manuscript, and 1830 edition from the Joseph Smith Papers
+- [ ] Record which portions of the original manuscript survive and use the printer's manuscript for the gaps
+- [ ] Align all three at the verse/paragraph level
+- [ ] Store scribe attribution per passage where known
+
+**Done when:** `data/bom/` holds three aligned texts with a manifest and a diff report.
+**Depends on:** #1.
+
+### #6 Ingest the KJV and other biblical baselines
+
+**Goal:** the exact Bible text that would have been in Smith's hands.
+
+- [ ] Pull an early 19th-century American printing of the KJV, including the Apocrypha
+- [ ] Store it verse-indexed for alignment in #16
+
+**Done when:** a verse-indexed KJV with manifest is committed.
+**Depends on:** #1.
+
+### #7 Ingest Harvard Institutional Books 1.0
+
+**Goal:** the largest clean public-domain book source, filtered to the period.
+
+- [ ] Download the dataset from the Institutional Data Initiative's Hugging Face release
+- [ ] Filter to English volumes dated 1780-1830 and keep OCR quality scores
+- [ ] Write the manifest and raw text
+
+**Done when:** filtered volumes and manifest are stored, with counts by year.
+**Depends on:** #4.
+
+### #8 Ingest HathiTrust public-domain volumes
+
+**Goal:** fill gaps not covered by Harvard's collection.
+
+- [ ] Query HathiTrust for English, public domain, 1780-1830
+- [ ] Pull full text through the Research Center or Extracted Features where full text is restricted
+- [ ] Write the manifest
+
+**Done when:** manifest and text stored, with overlap against #7 measured.
+**Depends on:** #4.
+
+### #9 Ingest Internet Archive texts
+
+**Goal:** capture American imprints and pamphlets missing from #7 and #8.
+
+- [ ] Use the Internet Archive API to search by date range and language
+- [ ] Download OCR text and metadata, respecting rate limits
+
+**Done when:** manifest and text stored.
+**Depends on:** #4.
+
+### #10 Ingest Chronicling America newspapers
+
+**Goal:** period newspaper prose, especially New York, Pennsylvania, and Ohio papers.
+
+- [ ] Pull OCR text via the Library of Congress API for 1800-1830
+- [ ] Prioritize papers circulating near Palmyra and Manchester, NY (for example the *Wayne Sentinel*)
+- [ ] Split pages into articles where feasible
+
+**Done when:** article-level text with manifest is stored.
+**Depends on:** #4.
+
+### #11 Ingest the early modern English corpus (EEBO-TCP)
+
+**Goal:** a dated 1473-1700 comparison set for the dating classifier.
+
+- [ ] Download EEBO-TCP Phase I and II public texts
+- [ ] Keep dates and genre metadata
+
+**Done when:** EEBO-TCP texts and manifest are stored.
+**Depends on:** #4.
+
+### #12 Normalize metadata and deduplicate
+
+**Goal:** one record per work, so reprints don't inflate counts.
+
+- [ ] Merge manifests from #7-#11 into one catalog
+- [ ] Normalize author names and dates
+- [ ] Detect duplicate editions with MinHash or similar, keeping the earliest
+- [ ] Tag genre (sermon, history, fiction, periodical, pseudo-biblical, other)
+
+**Done when:** `catalog.parquet` exists with a dedup report.
+**Depends on:** #7-#11.
+
+### #13 Assemble the candidate author corpora
+
+**Goal:** verified writing samples for each named candidate.
+
+- [ ] Joseph Smith: pre-1830 letters, 1832 history, early revelations, with dictated and handwritten texts flagged separately
+- [ ] Oliver Cowdery, Sidney Rigdon, Parley P. Pratt, W. W. Phelps
+- [ ] Solomon Spalding's *Manuscript Story* (Oberlin)
+- [ ] Ethan Smith (*View of the Hebrews*) and Gilbert Hunt (*The Late War*)
+- [ ] Record word count per author and flag any below 10,000 words
+
+**Done when:** a candidate table with sources and word counts is published.
+**Depends on:** #12.
+
+## Phase 2 — Clean and prepare the text
+
+Phase 2 turns raw OCR into analysis-ready text and ends with a frozen, citable corpus release.
+
+### #14 Clean OCR and score quality
+
+**Goal:** readable text with a measured error rate per volume.
+
+- [ ] Fix the long 'ſ' misread as 'f', rejoin end-of-line hyphens, strip running headers and page numbers
+- [ ] Use an LLM to correct OCR on a sample, and measure its error rate against hand-corrected pages
+- [ ] Score each volume and set a minimum quality cutoff in the pre-registration
+
+**Done when:** cleaned text plus a quality score per volume, with the measured correction accuracy published.
+**Depends on:** #12.
+
+### #15 Normalize spelling and orthography
+
+**Goal:** consistent tokens across 1500-1830 spelling variation.
+
+- [ ] Build a variant-spelling map (for example VARD-style normalization)
+- [ ] Keep both original and normalized versions so features can use either
+
+**Done when:** normalized text exists alongside originals, with the mapping table published.
+**Depends on:** #14.
+
+### #16 Align and mask KJV quotations
+
+**Goal:** separate biblical quotation from original composition in the Book of Mormon and in every control text.
+
+- [ ] Align Book of Mormon text against the KJV from #6 using passim or local alignment
+- [ ] Tag spans as verbatim quote, close paraphrase, or original
+- [ ] Apply the same masking to candidate and control texts
+
+**Done when:** masked versions exist and a report gives the percentage of Book of Mormon text removed.
+**Depends on:** #5, #6, #15.
+
+### #17 Segment the Book of Mormon
+
+**Goal:** analysis units that can test internal-narrator and dictation-order hypotheses.
+
+- [ ] Segment by internal narrator (Nephi, Jacob, Mormon, Moroni, and so on)
+- [ ] Segment by dictation order and by scribe
+- [ ] Produce fixed-length chunks (for example 2,000 and 5,000 words) for each scheme
+
+**Done when:** segment files and a segment table are published.
+**Depends on:** #16.
+
+### #18 Build the control sets
+
+**Goal:** genre-matched comparison groups so style isn't confused with genre.
+
+- [ ] Pseudo-biblical texts (Leacock, Snowden, Linning, Hunt, plus every other example found in the catalog)
+- [ ] Sermons and religious tracts from the 1820s
+- [ ] Histories and Native American origin texts
+- [ ] General prose baseline (fiction and periodicals)
+
+**Done when:** each control set is listed with size and sources.
+**Depends on:** #12, #15.
+
+### #19 Freeze and publish corpus v1.0
+
+**Goal:** a citable snapshot everything later is run against.
+
+- [ ] Freeze catalog, cleaned text, masks, segments, candidate and control sets
+- [ ] Publish manifests and derived data on Zenodo with a DOI, linking to sources rather than re-hosting where licenses require
+- [ ] Write a datasheet describing coverage and known gaps
+
+**Done when:** the DOI is live and referenced in the README.
+**Depends on:** #13-#18.
+
+## Phase 3 — Classical stylometry and validation
+
+Phase 3 proves the toolkit works on known answers and reproduces earlier studies before it touches the questioned text.
+
+### #20 Build the classical stylometry library
+
+**Goal:** tested implementations of the standard methods in `classic/`.
+
+- [ ] Feature extraction: most-frequent words, function words, character n-grams, POS n-grams
+- [ ] Burrows' Delta and its variants (Cosine Delta, Eder's Delta)
+- [ ] General Imposters method for open-set verification
+- [ ] Extended nearest shrunken centroid (ENSC) to match Fields et al. (2011)
+- [ ] Unit tests on toy data
+
+**Done when:** all methods pass tests and run on the frozen corpus.
+**Depends on:** #19.
+
+### #21 Build and pass the validation benchmark
+
+**Goal:** show each method recovers known authorship in conditions like the Book of Mormon's.
+
+- [ ] Federalist Papers (classic sanity check)
+- [ ] Pseudo-biblical texts with known authors, held out
+- [ ] Dictated texts with known authors
+- [ ] Open-set cases where the true author is deliberately left out, checking that methods answer 'none of the above'
+- [ ] Report accuracy, false positives, and minimum sample sizes per method
+
+**Done when:** the benchmark report is published and each method's pass/fail against the pre-registered threshold is recorded.
+**Depends on:** #20.
+
+### #22 Replicate prior Book of Mormon studies
+
+**Goal:** reproduce the published results before adding new ones.
+
+- [ ] Larsen, Rencher and Layton (1980) word-frequency analysis
+- [ ] Holmes (1992) vocabulary-richness analysis
+- [ ] Jockers, Witten and Criddle (2008) nearest shrunken centroids, including the closed-set flaw
+- [ ] Fields, Schaalje and Roper (2011) ENSC
+- [ ] Johnson and Johnson (2013) rare 4-grams against *The Late War*
+- [ ] Note where results match, differ, and why
+
+**Done when:** a replication report is published. This issue runs on the Book of Mormon only with the published methods, not the new ones.
+**Depends on:** #21.
+
+## Phase 4 — Borrowing and parallels
+
+Phase 4 maps which earlier texts share wording or ideas with the Book of Mormon, and measures whether each overlap beats chance.
+
+### #23 Run exact text-reuse detection
+
+**Goal:** every verbatim or near-verbatim passage shared with the corpus.
+
+- [ ] Run passim over the KJV-masked Book of Mormon against the frozen corpus
+- [ ] Store each alignment with source, location, length, and similarity
+- [ ] Run the same against 3-5 control books (for example Luke, *The Late War*, a sermon collection) to see typical overlap levels
+
+**Done when:** an alignment table for the Book of Mormon and controls is published.
+**Depends on:** #19.
+
+### #24 Score rare phrases against a proper null model
+
+**Goal:** fix the main weakness of the 2013 rare 4-gram study.
+
+- [ ] Compute phrase rarity across the whole deduplicated corpus
+- [ ] Normalize for book length and genre
+- [ ] Build a null distribution by scoring hundreds of random period books the same way
+- [ ] Report each source's score as a percentile against that null, with confidence intervals
+
+**Done when:** a ranked source list with percentiles is published, including where Luke and *The Late War* fall.
+**Depends on:** #23.
+
+### #25 Search for semantic parallels
+
+**Goal:** find paraphrase, shared story patterns, and sermon structure that exact matching misses.
+
+- [ ] Embed every sentence/passage in the corpus with a sentence-embedding model
+- [ ] Build a FAISS index and query it with each Book of Mormon passage
+- [ ] Use the same null-model approach as #24 to set significance thresholds
+
+**Done when:** a semantic-parallel table with scores and thresholds is published.
+**Depends on:** #19.
+
+### #26 Triage and human review of parallels
+
+**Goal:** separate meaningful parallels from biblical or generic ones.
+
+- [ ] Use an LLM to sort hits into biblical, generic idiom, or specific, with its reasoning logged
+- [ ] Have a human review every 'specific' hit and a random sample of the rest
+- [ ] Measure LLM-human agreement and report it
+
+**Done when:** a reviewed parallel list and agreement statistic are published.
+**Depends on:** #24, #25.
+
+## Phase 5 — AI-era methods
+
+Phase 5 builds the new tools: a language model that has never seen the Book of Mormon, per-author models on top of it, a dating classifier, and style embeddings. Every model is validated on the #21 benchmark before the Book of Mormon is scored.
+
+### #27 Train the time-locked language model
+
+**Goal:** a model trained only on 1780-1830 English, with no exposure to the Book of Mormon or modern text.
+
+- [ ] Build the training set from corpus v1.0, excluding the Book of Mormon and all post-1830 text
+- [ ] Run a contamination check: search the training set for long Book of Mormon strings and remove hits
+- [ ] Train a tokenizer on period text
+- [ ] Train a small GPT-style model (roughly 100-300M parameters) with held-out validation
+- [ ] Publish the model card, training config, and loss curves
+
+**Done when:** the model and its card are on Hugging Face and the contamination report is clean.
+**Depends on:** #19, #4.
+
+### #28 Fine-tune authorial language models
+
+**Goal:** one model per candidate author, following Huang, Murakami and Grieve's ALM method.
+
+- [ ] Fine-tune a copy of #27 on each candidate's corpus from #13, plus each control group
+- [ ] Validate on held-out text from each author and on the #21 benchmark
+- [ ] Record per-author sample size and flag unreliable models
+
+**Done when:** all authorial models pass the benchmark threshold or are marked as failed.
+**Depends on:** #27, #21.
+
+### #29 Build the linguistic dating classifier
+
+**Goal:** estimate when a passage's grammar and vocabulary come from.
+
+- [ ] Train on dated text: EEBO-TCP (1473-1700), 18th-century texts, and 1780-1830 texts
+- [ ] Use grammatical features (verb forms, pronouns, syntax) separately from vocabulary
+- [ ] Validate on held-out dated texts and on pseudo-biblical texts with known dates
+- [ ] Test whether KJV imitation alone shifts the predicted date
+
+**Done when:** the classifier's accuracy on held-out dated text is published.
+**Depends on:** #11, #18, #19.
+
+### #30 Build style embeddings as a cross-check
+
+**Goal:** an independent authorship signal from a different model family.
+
+- [ ] Train or adapt an authorship-embedding model (for example LUAR-style) on period text
+- [ ] Validate on the #21 benchmark
+
+**Done when:** benchmark results are published.
+**Depends on:** #19, #21.
+
+## Phase 6 — Verification and synthesis
+
+Phase 6 stress-tests the methods, runs the sealed analysis blind, and combines textual results with historical evidence.
+
+### #31 Test robustness to deliberate imitation
+
+**Goal:** know whether a writer imitating KJV style can fool each method.
+
+- [ ] Assemble texts where known 1800s authors wrote in imitation biblical style alongside their normal prose
+- [ ] Check whether each method still identifies the real author
+- [ ] Report which methods are robust and which are fooled
+
+**Done when:** an imitation-robustness table is published and weak methods are down-weighted per the pre-registration.
+**Depends on:** #21, #28, #30.
+
+### #32 Run the blind analysis on the Book of Mormon
+
+**Goal:** score the sealed text with every validated method, without the analyst knowing which segments are which.
+
+- [ ] A second person relabels Book of Mormon segments and mixes in decoy segments from known authors
+- [ ] Run classical methods (#20), authorial models (#28), dating (#29), and embeddings (#30)
+- [ ] Unblind only after all outputs are saved and hashed
+- [ ] Run leave-one-candidate-out tests
+
+**Done when:** hashed blind outputs and the unblinded results are published, decoys correctly identified.
+**Depends on:** #22, #26, #28-#31.
+
+### #33 Gather access evidence
+
+**Goal:** establish which candidate sources Joseph Smith could plausibly have read before 1829.
+
+- [ ] Compile the Manchester rental library holdings list
+- [ ] List local newspapers and what they printed or advertised (including bookseller ads)
+- [ ] Score each candidate source from #26 for documented availability
+
+**Done when:** an access table with sources is published.
+**Depends on:** #26.
+
+### #34 Gather manuscript and dictation evidence
+
+**Goal:** bring the physical evidence of how the text was produced into the analysis.
+
+- [ ] Catalog dictation-type errors in the original manuscript (misheard words, spelling corrections)
+- [ ] Map scribe changes and check whether style shifts track scribes or narrators
+- [ ] Summarize the production timeline (roughly April-June 1829)
+
+**Done when:** a manuscript-evidence report is published.
+**Depends on:** #5, #32.
+
+### #35 Combine everything in a Bayesian model
+
+**Goal:** one transparent estimate that weighs all lines of evidence.
+
+- [ ] Define hypotheses: each candidate, the internal narrators, and 'author not in set'
+- [ ] Turn each result (#24, #26, #29, #32, #33, #34) into a likelihood with stated uncertainty
+- [ ] Run sensitivity analysis on priors and on each evidence weight
+- [ ] Report where the methods agree and where they conflict
+
+**Done when:** posterior results, code, and sensitivity tables are published.
+**Depends on:** #32-#34.
+
+## Phase 7 — Publish
+
+Phase 7 writes up the results, releases everything, and puts the work through outside review. Closing #38 closes the project.
+
+### #36 Write the paper and post a preprint
+
+**Goal:** a full write-up that reports results against the pre-registration, including null and conflicting findings.
+
+- [ ] Draft methods, validation, results, and limitations sections
+- [ ] List every deviation from the pre-registration
+- [ ] Share the draft with the #3 advisors and publish their responses alongside it
+- [ ] Post to a preprint server (arXiv cs.CL, or SocArXiv/OSF)
+
+**Done when:** the preprint is live.
+**Depends on:** #35.
+
+### #37 Release code, data, models, and an explorer
+
+**Goal:** anyone can rerun every result and browse the findings.
+
+- [ ] Tag a release of the repo with a one-command reproduction script
+- [ ] Publish all models (#27, #28, #29, #30) on Hugging Face
+- [ ] Publish results data on Zenodo with a DOI
+- [ ] Build a web explorer where readers can click a Book of Mormon passage and see its parallels, scores, and dating estimate
+
+**Done when:** a fresh machine reproduces the headline results from the release and the explorer is live.
+**Depends on:** #36.
+
+### #38 Submit for peer review and respond
+
+**Goal:** independent expert scrutiny on the record.
+
+- [ ] Submit to a journal such as *Digital Scholarship in the Humanities* or *Digital Humanities Quarterly*
+- [ ] Respond to reviews with public, dated revisions
+- [ ] Log public critiques and replication attempts in the repo
+
+**Done when:** the paper is accepted or a final response to reviewers is published.
+**Depends on:** #36, #37.
