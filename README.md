@@ -76,9 +76,10 @@ GitHub issues `BOM-01` to `BOM-39`.
 
 **Phase 0, Foundations.** Before touching any data, we write down the questions, the
 methods, and the thresholds that will count as a match, a non-match, or inconclusive, and
-register that plan on OSF with a timestamp. Then we ask a believing stylometrist, a critical
-historian, and a neutral computational linguist to attack the plan and revise it with their
-objections on record. Any change after registration is a dated public amendment.
+register that plan on OSF with a timestamp. Then we write out the strongest objections a
+sympathetic stylometrist, a critical historian, and a neutral computational linguist would
+raise, answer them, and revise the plan with every change on record. That review is simulated,
+not external, and is labeled as such; real objections are welcome by pull request. Any change after registration is a dated public amendment.
 
 **Phase 1, Build the corpus.** Ingest the earliest Book of Mormon texts (original manuscript,
 printer's manuscript, 1830 edition) from the Joseph Smith Papers, a period King James Bible,
@@ -141,13 +142,14 @@ parallels, scores, and dating estimate. Submit for peer review and answer review
   dropped, whatever answer it would have given.
 
 The design commits us to reporting nulls, conflicts, and "inconclusive" as readily as any
-positive result.
+positive result. The analysis plan itself is `paper/preregistration.md`.
 
 ## Rules we have bound ourselves to
 
 - **Pre-register first.** The analysis plan is frozen on OSF before analysis begins.
-- **Adversarial review.** Scholars from both sides approve the protocol, or their dissent is
-  published, before results exist.
+- **Adversarial review, simulated.** The protocol is attacked from both sides in writing
+  before results exist (`paper/adversarial-review.md`). No external scholar has approved it;
+  the file says so and stays open to real dissent.
 - **The text is sealed.** The Book of Mormon is excluded from all model training and tuning
   until the blind run in Phase 6. The one exception is the replication of prior studies, which
   uses their published methods.

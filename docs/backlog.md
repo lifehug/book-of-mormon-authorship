@@ -53,16 +53,18 @@ Phase 0 locks the questions and the method before any data is touched, so neithe
 **Done when:** the OSF registration is public and frozen.
 **Depends on:** #1.
 
-### #3 Recruit advisors and set up adversarial collaboration
+### #3 Simulated adversarial review of the protocol
 
-**Goal:** at least one believing and one critical scholar approve the method before results exist.
+**Goal:** the strongest objections a sympathetic stylometrist, a critical historian, and a neutral computational linguist would raise, written out and answered before results exist.
 
-- [ ] Identify candidates: a BYU-associated stylometrist, a critical historian of early Mormonism, and a computational stylometry academic outside the debate
-- [ ] Send each the draft pre-registration and invite written objections
-- [ ] Revise #2 with their input, logging every change
-- [ ] Get written sign-off on the protocol, or record their dissent publicly
+Decision 2026-10-15: the owner is not recruiting external advisors. The review is simulated and labeled as such everywhere it is cited. Real reviewers remain welcome by pull request.
 
-**Done when:** a signed or recorded position from each advisor is in the repo.
+- [ ] Write each simulated reviewer's objections against the draft pre-registration, as strongly as possible
+- [ ] Answer each objection and revise #2, logging every change
+- [ ] Label the review as simulated in the review file, the README, and the pre-registration
+- [ ] Keep the file open for real objections and dissent by pull request
+
+**Done when:** `paper/adversarial-review.md` is in the repo with objections, responses, and the resulting changes, clearly labeled as simulated.
 **Depends on:** #2 draft (finalize #2 after this issue).
 
 ### #4 Set the compute and budget plan
