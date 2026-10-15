@@ -1,8 +1,9 @@
 # Book of Mormon base texts: sources and how to recreate `data/bom/`
 
-Only this file, the 1830 edition texts, and the checksum manifests are committed. The
-manuscript transcripts are copyright Intellectual Reserve, Inc. (Joseph Smith Papers) and
-are not redistributed here. Anyone can rebuild the full directory with the commands below.
+Only this file, the 1830 edition texts, the derived tables, and the checksum manifests are
+committed. The manuscript transcripts are copyright Intellectual Reserve, Inc. (Joseph Smith
+Papers) and are not redistributed here: they live in `data/private/bom/`, which is the
+owner's private data repo (section 7). Anyone can rebuild them with the commands below.
 
 ## 1. Printer's manuscript (1829-1830)
 
@@ -16,9 +17,10 @@ are not redistributed here. Anyone can rebuild the full directory with the comma
   every page); they are in the print facsimile edition.
 - Scribe information: the page JSON carries `scribes` per page and inline notes such as
   "Oliver Cowdery handwriting begins", which the fetcher keeps in `editorial_notes`.
-- Rebuild: `uv run python -m ingest.jsp printers` writes `raw/jsp/printers/NNNN.json` (one
-  per page, the page's full embedded JSON) and `jsp_printers.jsonl` (one record per page:
-  text, editorial page number, scribes, notes, table-of-contents entry).
+- Rebuild: `uv run python -m ingest.jsp printers` writes `data/private/bom/raw/jsp/printers/NNNN.json`
+  (one per page, the page's full embedded JSON) and `data/private/bom/jsp_printers.jsonl`
+  (one record per page: text, editorial page number, scribes, notes, table-of-contents entry).
+  The table of contents goes to `data/bom/jsp_printers_toc.json` (committed).
 
 ## 2. Original manuscript (1828-1829)
 
@@ -76,4 +78,22 @@ After a rebuild, verify against the committed manifests:
 
 ```
 uv run python -m metadata.manifest verify data/bom data/manifests/bom.jsonl
+uv run python -m metadata.manifest verify data/private/bom data/manifests/bom-private.jsonl
 ```
+
+## 7. The private data repo
+
+Licensed texts are kept in a separate private repository, `lifehug/bom-authorship-data`,
+cloned into `data/private/` by `scripts/data_clone.sh` (the public repo ignores that path).
+It mirrors the `data/` layout, so licensed inputs are read from `data/private/<dataset>/` and
+public ones from `data/<dataset>/`. It exists to sync the owner's machines and as a backup; it
+is not shared.
+
+If you are reproducing this project without access to it:
+
+1. Create your own private repo and set `BOM_DATA_REPO=git@github.com:you/your-data.git`
+   before running `scripts/data_clone.sh`, or just `mkdir -p data/private`.
+2. Run the fetchers listed in this file; they write into `data/private/`.
+3. Verify with the `bom-private.jsonl` manifest above. Matching checksums mean your copy is
+   byte-identical to the one used here.
+4. Keep it private; the sources' licenses do not allow redistribution.

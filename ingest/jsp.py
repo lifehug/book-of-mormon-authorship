@@ -6,9 +6,9 @@ JSON Lines file with the fields the project uses: transcript (original inscripti
 as the site presents them), editorial page number, handwriting and scribe notes, footnotes,
 and table-of-contents entry.
 
-The transcripts are copyright Intellectual Reserve, Inc. They are stored under ``data/``
-(gitignored) for research use and are not redistributed; only the checksum manifest is
-committed.
+The transcripts are copyright Intellectual Reserve, Inc. They are stored under
+``data/private/`` (the private data repo, see ``scripts/data_clone.sh``) and are not
+redistributed; the public repo commits only their checksum manifest.
 
 Usage::
 
@@ -102,7 +102,8 @@ def run(doc: str, out_dir: Path, delay: float, limit: int | None) -> Path:
         json.dump(props, open(first, "w", encoding="utf-8"))
         time.sleep(delay)
     total = int(props["summary"]["numberOfPages"])
-    toc_path = out_dir / f"jsp_{doc}_toc.json"
+    toc_path = Path("data/bom") / f"jsp_{doc}_toc.json"
+    toc_path.parent.mkdir(parents=True, exist_ok=True)
     json.dump(props.get("tableOfContents", []), open(toc_path, "w", encoding="utf-8"), indent=1)
     if limit:
         total = min(total, limit)
@@ -128,7 +129,7 @@ def run(doc: str, out_dir: Path, delay: float, limit: int | None) -> Path:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("doc", choices=sorted(DOCS))
-    ap.add_argument("--out", type=Path, default=Path("data/bom"))
+    ap.add_argument("--out", type=Path, default=Path("data/private/bom"))
     ap.add_argument("--delay", type=float, default=1.5, help="seconds between requests")
     ap.add_argument("--limit", type=int, help="fetch only the first N pages (testing)")
     a = ap.parse_args(argv)

@@ -180,8 +180,10 @@ Each top-level package owns one stage of the pipeline and its README names the i
 serves: `ingest/`, `metadata/`, `ocr_fix/`, `kjv_mask/`, `segment/`, `classic/`,
 `reuse/`, `semantic/`, `timelocked_lm/`, `alm/`, `dating/`, `style_embed/`, `eval/`, `paper/`.
 
-- `data/` holds raw and derived data (gitignored). Only checksum manifests under
-  `data/manifests/` are tracked. See `docs/data-versioning.md`.
+- `data/` holds public source texts, derived tables, and checksum manifests. Licensed texts
+  that cannot be redistributed live in a separate private repo cloned into `data/private/`
+  by `scripts/data_clone.sh`; their checksums are public, so a rebuilt copy can be verified.
+  See `docs/data-versioning.md` and `data/bom/SOURCES.md`.
 - `docs/` holds the backlog, background, and design notes.
 - `scripts/` holds one-off tooling such as the backlog importer.
 - `tests/` holds the test suite.

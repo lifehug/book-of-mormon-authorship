@@ -72,22 +72,19 @@ chmod 700 ~/.config/osf ~/.config/huggingface ~/.config/runpod
 # then scp each token file from the desktop and chmod 600 it
 ```
 
-## 6. Rebuild or copy the data gathered so far
+## 6. Get the data
 
-Either re-fetch (reproducible, about an hour for the manuscripts):
-
-```sh
-scripts/fetch_1830.sh
-uv run python -m ingest.jsp printers
-uv run python -m ingest.jsp original
-```
-
-or copy from the desktop and verify against the manifest:
+Public data comes with the clone. Licensed data comes from the private data repo:
 
 ```sh
-rsync -av --progress dave@desktop:~/Workspace/book-of-mormon-1830-frequency-analysis/data/ data/
+scripts/data_clone.sh          # clones lifehug/bom-authorship-data into data/private/
 uv run python -m metadata.manifest verify data/bom data/manifests/bom.jsonl
+uv run python -m metadata.manifest verify data/private/bom data/manifests/bom-private.jsonl
 ```
+
+From then on, `git -C data/private pull` and `git -C data/private push` keep the two machines
+in step; the public repo never sees that directory. Re-fetching from the sources is always
+possible too (`scripts/fetch_1830.sh`, `uv run python -m ingest.jsp printers|original`).
 
 `data/bom/SOURCES.md` lists every source and its rebuild command.
 

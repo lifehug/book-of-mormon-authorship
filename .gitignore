@@ -27,6 +27,9 @@ data/bom/*
 !data/bom/diff_*.jsonl
 !data/bom/jsp_*_toc.json
 
+# Private data repo (lifehug/bom-authorship-data), cloned by scripts/data_clone.sh
+data/private/
+
 # Models and large artifacts
 models/
 *.pt
