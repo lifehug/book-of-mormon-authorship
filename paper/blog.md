@@ -359,6 +359,21 @@ sleep with the dead, than be oppressed among the living." You can also see the s
 work in it: the printer's line comes through as "fRINTED AT THE JOURNAL OEFICK." That kind of
 noise is what the cleanup step in Phase 2 is for.
 
+### BOM-09, first half: the Internet Archive, and why "more" isn't automatically better
+
+The Internet Archive has no gate and no terms beyond "don't be a jerk," so I pulled its whole
+catalog for English texts dated 1780-1830 through their scrape API. Five and a half minutes,
+307,567 items. About 28,000 of them are the same title and year as something in Harvard's
+slice; 251,000 are not, and would come to about 80 GB of OCR text.
+
+That number is bigger than Harvard and HathiTrust put together, and it's also less trustworthy.
+The top collections tell the story: 86,600 items in "americana," which is what I want, but
+also 69,000 periodicals, 170,000 items from microfilm scanning projects, and a run of
+European-library scans somebody tagged as English. And 11,896 items carry the date 1800
+exactly, three times what a normal year gets. That's a placeholder date, not a publishing
+boom. So the Archive gets pulled, but the catalog-cleaning step is going to earn its keep
+on this one, and the counts above will shrink.
+
 ## What's next
 
 Set up the Mac mini, run the two corpus pulls there, then BOM-08 through BOM-10: HathiTrust
@@ -369,7 +384,7 @@ America newspapers.
 
 ## Log
 
-- **2026-10-15, later.** BOM-13 sources inventoried (38; four candidates have no pre-1830 text). BOM-20 library built ahead of the corpus (37 tests). BOM-08 measured: HathiTrust holds 107,178 period volumes Harvard lacks. BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
+- **2026-10-15, later.** BOM-09 catalog built (307,567 Internet Archive items). BOM-13 sources inventoried (38; four candidates have no pre-1830 text). BOM-20 library built ahead of the corpus (37 tests). BOM-08 measured: HathiTrust holds 107,178 period volumes Harvard lacks. BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
 - **2026-10-15.** BOM-01 to BOM-06 closed. Repo reset, plan registered on OSF (amendment 1
   the same day: one person plus AI, every human-review step replaced with a labeled
   simulation), budget set (Mac mini plus a rented H100), three Book of Mormon witnesses
