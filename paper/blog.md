@@ -354,8 +354,10 @@ voice and predates publication, and I left it out of his sample, because it's pa
 being tested and that text is sealed.
 
 The fetcher is written and tested on two public items. Rigdon's 1838 Fourth of July oration
-came down first: 5,621 words that begin, in the OCR, with the Far West crowd and end with the
-"salt sermon" everyone remembers it for.
+came down first, 5,621 words of OCR that open with the title page's epigraph: "Better far
+sleep with the dead, than be oppressed among the living." You can also see the scanner's
+work in it: the printer's line comes through as "fRINTED AT THE JOURNAL OEFICK." That kind of
+noise is what the cleanup step in Phase 2 is for.
 
 ## What's next
 
