@@ -12,11 +12,11 @@ tokens (Institutional Books: 242B tokens over 983,004 volumes); the 1780-1830 En
 
 | Dataset | Raw size kept | Notes |
 | --- | --- | --- |
-| Institutional Books 1.0, English 1780-1830 | 60-100 GB | 50-80k volumes, 12-20B tokens. Filter on the metadata parquet first; stream the text, do not mirror the full ~1 TB release |
+| Institutional Books 1.0, English 1780-1830 | about 44 GB (measured from the catalog, 2026-10-15) | 32,132 volumes, 10.5B tokens; the public metadata dataset gives the exact slice before any text is pulled. Terms: noncommercial, no redistribution |
 | HathiTrust public domain 1780-1830 | 10-30 GB | Extracted Features for everything; full text only where the Data Capsule allows export |
 | Internet Archive, 1780-1830 American imprints | 10-20 GB | OCR text plus metadata |
 | Chronicling America, 1800-1830 | under 5 GB | pre-1830 coverage is thin; article-level split adds little |
-| EEBO-TCP Phases I and II | 10 GB | 53,831 TEI XML texts, ~2 GB zipped |
+| TCP texts (EEBO, Evans, ECCO) | about 25 GB XML | 61,315 TEI files, one per GitHub repo; includes Evans American imprints to 1800 and ECCO 18th century |
 | Book of Mormon texts, KJV, candidate corpora | under 1 GB | |
 | **Raw total** | **about 100-170 GB** | |
 | Cleaned, normalized, masked copies (about 3x raw) | 300-500 GB | keep originals and every derived version |

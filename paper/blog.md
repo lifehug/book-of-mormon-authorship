@@ -224,15 +224,58 @@ scanned Bible has two columns and marginal cross-references, and my diff was swe
 margins into every verse. Nonsense number, caught it, replaced the measure. The point of
 writing this stuff down as I go is that you get to see the wrong turns too.
 
+### BOM-07 and BOM-11, first half: knowing what to download before downloading it
+
+The comparison corpus is the big one, and my MacBook has 130 GB free, so I did the part that
+doesn't need disk space. Harvard publishes the catalog of all 983,004 books separately from
+the text, as one 300 MB file, no sign-up required. I pulled that and filtered it to English
+volumes dated 1780 to 1830:
+
+| | |
+| --- | --- |
+| Volumes | 32,132 |
+| Tokens | 10.5 billion |
+| Text on disk | about 44 GB |
+| Median OCR quality score | 99 out of 100 |
+| Flagged as likely duplicates of another volume | 2,768 |
+
+Half what I'd guessed, which is a nice surprise. One catalog row looks like this, and it's a
+book that matters for this project:
+
+> `View of the Hebrews; or, The tribes of Israel in America`, Ethan Smith, 1825, 
+> about 64,000 tokens, OCR score 99
+
+That's the 1825 second edition of the book people have argued since the 1920s was a source for
+the Book of Mormon. Harvard has the 1823 first edition too. Both will be in the corpus without
+me hand-picking them, which is the point: the comparison set is everything printed, not the
+books one side or the other wants to talk about.
+
+The text itself is gated behind a terms-of-use click (noncommercial, no redistribution), so
+the actual 44 GB pull is a one-line command queued for the Mac mini, and the text will never
+be in the public repo. Only the catalog and the checksums are.
+
+Same pattern for the early modern set. The Text Creation Partnership keeps 61,315 hand-keyed
+transcriptions on GitHub, one repository per book: 53,830 from Early English Books Online
+(1473-1700), plus 5,012 early American imprints and 2,473 eighteenth-century texts I hadn't
+counted on. The American set alone has 1,982 texts from 1780-1800. I wrote the fetcher,
+tested it on three, and the first one it grabbed was the Bay Psalm Book of 1640:
+
+> THE VVHOLE BOOKE OF PSALMES Faithfully TRANSLATED into ENGLISH Metre.
+
+That's the first book printed in British North America, keyed by hand, dropping into my
+corpus folder. Those 25 GB are queued for the mini too.
+
 ## What's next
 
-BOM-07: Harvard's Institutional Books. Filter 983,004 volumes down to English, 1780-1830, and
-pull just that slice. That's the first big piece of the comparison corpus.
+Set up the Mac mini, run the two corpus pulls there, then BOM-08 through BOM-10: HathiTrust
+(probably skipped if it adds little over Harvard), the Internet Archive, and the Chronicling
+America newspapers.
 
 ---
 
 ## Log
 
+- **2026-10-15, later.** BOM-07 and BOM-11 catalogs built (32,132 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
 - **2026-10-15.** BOM-01 to BOM-06 closed. Repo reset, plan registered on OSF (amendment 1
   the same day: one person plus AI, every human-review step replaced with a labeled
   simulation), budget set (Mac mini plus a rented H100), three Book of Mormon witnesses

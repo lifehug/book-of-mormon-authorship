@@ -113,3 +113,21 @@ Either drive the mini over SSH from a Claude Code session on the desktop, or ins
 Code on the mini and run sessions there for the long jobs. Both work; the repo is the shared
 state. The blind run (BOM-32) must be run on the mini in a fresh session that has never seen
 the sealed key.
+
+## 10. Corpus pulls queued for this machine
+
+Run each under tmux. Both are resumable; rerun the same command after any interruption.
+
+```sh
+# Harvard Institutional Books, 1780-1830 English slice (BOM-07): ~44 GB, 32,132 volumes.
+# First accept the dataset terms on huggingface.co with the account whose token is in
+# ~/.config/huggingface/token (institutional/institutional-books-hl).
+uv run python -m ingest.institutional_books pull 2>&1 | tee logs/ib_pull.log
+uv run python -m metadata.manifest build data/corpus/institutional_books/text -o data/manifests/institutional_books.jsonl
+
+# Text Creation Partnership: EEBO, Evans, ECCO (BOM-11): ~25 GB, 61,315 texts, no account.
+uv run python -m ingest.eebo_tcp pull 2>&1 | tee logs/tcp_pull.log
+uv run python -m metadata.manifest build data/corpus/tcp/text -o data/manifests/tcp.jsonl
+```
+
+Then commit the two manifests and close BOM-07 and BOM-11 with the counts.

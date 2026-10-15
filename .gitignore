@@ -28,6 +28,11 @@ data/bom/*
 !data/bom/jsp_*_toc.json
 !data/kjv/
 !data/kjv/**
+!data/catalog/
+!data/catalog/**
+
+# Large corpora: local disk only, never a git repo; tracked by manifests
+data/corpus/
 
 # Private data repo (lifehug/bom-authorship-data), cloned by scripts/data_clone.sh
 data/private/
