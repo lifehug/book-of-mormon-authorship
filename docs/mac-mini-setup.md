@@ -119,7 +119,7 @@ the sealed key.
 Run each under tmux. Both are resumable; rerun the same command after any interruption.
 
 ```sh
-# Harvard Institutional Books, 1780-1830 English slice (BOM-07): ~44 GB, 32,132 volumes.
+# Harvard Institutional Books, 1780-1830 English slice (BOM-07): ~44 GB on disk per OCR version (raw and cleaned, both kept), ~700 GB of transfer, 31,958 volumes.
 # First accept the dataset terms on huggingface.co with the account whose token is in
 # ~/.config/huggingface/token (institutional/institutional-books-hl).
 uv run python -m ingest.institutional_books pull 2>&1 | tee logs/ib_pull.log

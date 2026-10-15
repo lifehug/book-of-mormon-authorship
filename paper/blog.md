@@ -233,11 +233,11 @@ volumes dated 1780 to 1830:
 
 | | |
 | --- | --- |
-| Volumes | 32,132 |
+| Volumes | 31,958 |
 | Tokens | 10.5 billion |
 | Text on disk | about 44 GB |
 | Median OCR quality score | 99 out of 100 |
-| Flagged as likely duplicates of another volume | 2,768 |
+| Flagged as likely duplicates of another volume | 2,732 |
 
 Half what I'd guessed, which is a nice surprise. One catalog row looks like this, and it's a
 book that matters for this project:
@@ -249,6 +249,15 @@ That's the 1825 second edition of the book people have argued since the 1920s wa
 the Book of Mormon. Harvard has the 1823 first edition too. Both will be in the corpus without
 me hand-picking them, which is the point: the comparison set is everything printed, not the
 books one side or the other wants to talk about.
+
+My first cut of that filter kept 32,132 volumes. Then the test download handed me Michael
+Faraday's collected papers, printed in 1859. The catalog has two date fields, and for reprints
+and collections the second one holds the original date; Faraday's said 1821, and my rule took
+the earlier of the two. Wrong rule. What I want is what was printed in the period, so the
+filter now uses the publication date only, and 174 reprints and collections dropped out. The
+catalog also flags about 13,000 volumes of periodicals, where the date on record is the year
+the periodical started, not the year of that volume; sorting those out is a job for the
+deduplication step.
 
 The text itself is gated behind a terms-of-use click (noncommercial, no redistribution), so
 the actual 44 GB pull is a one-line command queued for the Mac mini, and the text will never
@@ -275,7 +284,7 @@ America newspapers.
 
 ## Log
 
-- **2026-10-15, later.** BOM-07 and BOM-11 catalogs built (32,132 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
+- **2026-10-15, later.** BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
 - **2026-10-15.** BOM-01 to BOM-06 closed. Repo reset, plan registered on OSF (amendment 1
   the same day: one person plus AI, every human-review step replaced with a labeled
   simulation), budget set (Mac mini plus a rented H100), three Book of Mormon witnesses

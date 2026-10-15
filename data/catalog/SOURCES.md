@@ -6,7 +6,7 @@ manifests in `data/manifests/`.
 
 | File | Built by | What it is |
 | --- | --- | --- |
-| `institutional_books.jsonl` | `python -m ingest.institutional_books catalog` | Harvard Institutional Books 1.0, English volumes dated 1780-1830: 32,132 rows from the public metadata dataset `institutional/institutional-books-hl-metadata` (fetched 2026-10-15). Fields: barcode, title, author, dates, page and token counts, language, subject, OCR scores, likely duplicates, identifiers, HathiTrust link. |
+| `institutional_books.jsonl` | `python -m ingest.institutional_books catalog` | Harvard Institutional Books 1.0, English volumes dated 1780-1830: 31,958 rows (publication year 1780-1830, English) from the public metadata dataset `institutional/institutional-books-hl-metadata` (fetched 2026-10-15). Fields: barcode, title, author, dates, page and token counts, language, subject, OCR scores, likely duplicates, identifiers, HathiTrust link. |
 | `institutional_books_summary.md` | same | counts and tokens by year |
 | `tcp.jsonl` | `python -m ingest.eebo_tcp catalog` | Text Creation Partnership index: 61,315 texts (EEBO 1473-1700, Evans American imprints to 1800, ECCO 18th century) with id, date, author, title, pages, raw-file URL (fetched 2026-10-15). |
 | `tcp_summary.md` | same | counts by collection, status, decade |

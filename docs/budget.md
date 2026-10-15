@@ -12,7 +12,7 @@ tokens (Institutional Books: 242B tokens over 983,004 volumes); the 1780-1830 En
 
 | Dataset | Raw size kept | Notes |
 | --- | --- | --- |
-| Institutional Books 1.0, English 1780-1830 | about 44 GB (measured from the catalog, 2026-10-15) | 32,132 volumes, 10.5B tokens; the public metadata dataset gives the exact slice before any text is pulled. Terms: noncommercial, no redistribution |
+| Institutional Books 1.0, English 1780-1830 | about 44 GB (measured from the catalog, 2026-10-15) | 31,958 volumes, 10.5B tokens; about 700 GB of transfer because shards must be read whole; the public metadata dataset gives the exact slice before any text is pulled. Terms: noncommercial, no redistribution |
 | HathiTrust public domain 1780-1830 | 10-30 GB | Extracted Features for everything; full text only where the Data Capsule allows export |
 | Internet Archive, 1780-1830 American imprints | 10-20 GB | OCR text plus metadata |
 | Chronicling America, 1800-1830 | under 5 GB | pre-1830 coverage is thin; article-level split adds little |
