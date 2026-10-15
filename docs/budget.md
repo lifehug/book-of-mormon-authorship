@@ -162,7 +162,7 @@ texts (BOM-13), hand-reviewing parallels (BOM-26), the archival access and manus
 | --- | --- | --- | --- |
 | OSF | pre-registration | done, https://osf.io/ebpcw/ | registration https://osf.io/6ugxc/ |
 | GitHub | code and backlog | done | lifehug/book-of-mormon-authorship |
-| Hugging Face | models (BOM-27 to BOM-30) and large derived datasets | needed | public repos; chunk files to 20 GB or under; check the current storage quota for free accounts before uploading |
+| Hugging Face | models (BOM-27 to BOM-30) and large derived datasets | done, account `etherfuse`, write token stored locally | public repos; chunk files to 20 GB or under; check the current storage quota before uploading |
 | Zenodo | corpus v1.0 manifests and results with DOIs (BOM-19, BOM-37) | needed | 50 GB per record, 100 files; one-time increase to 200 GB on request. Cleaned corpus text goes to Hugging Face, Zenodo holds manifests, derived tables, and the datasheet |
 | GPU cloud | the base-model run only | needed; RunPod Secure Cloud or Lambda, owner to open | see section 4 and 4b |
 | HathiTrust Research Center | full text beyond Extracted Features | needed only if BOM-08 finds gaps Institutional Books does not cover | non-member accounts are available for researchers; public-domain-only Data Capsules are the route; in-copyright access is member-only and not needed here |
