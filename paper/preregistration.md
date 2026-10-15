@@ -1,8 +1,9 @@
 # Pre-registration: Book of Mormon Authorship
 
-**Status:** draft v0.2, 2026-10-15, revised after the simulated adversarial review in
-`paper/adversarial-review.md`. Not yet registered. Once registered on OSF this document is
-frozen; later changes are dated amendments listed in section 11.
+**Status:** v0.2, registered on OSF 2026-10-15 as https://osf.io/6ugxc/ (frozen after the
+48-hour approval window), revised after the simulated adversarial review in
+`paper/adversarial-review.md`. This document is now frozen; later changes are dated amendments
+listed in section 11.
 
 **Author:** Dave Taylor. **Repository:** https://github.com/lifehug/book-of-mormon-authorship
 
