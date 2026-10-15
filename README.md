@@ -185,6 +185,7 @@ serves: `ingest/`, `metadata/`, `ocr_fix/`, `kjv_mask/`, `segment/`, `classic/`,
 - `docs/` holds the backlog, background, and design notes.
 - `scripts/` holds one-off tooling such as the backlog importer.
 - `tests/` holds the test suite.
+- `docs/mac-mini-setup.md` is the one-time setup for the headless machine that holds the data.
 
 ## Development
 
