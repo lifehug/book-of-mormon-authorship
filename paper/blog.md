@@ -297,6 +297,31 @@ Word counts are enough for the classic stylometry and part of the dating work; t
 for finding borrowed passages. So the request for Research Center access goes in, and the word
 counts fill the gap meanwhile.
 
+### BOM-20, built early: the classic toolkit
+
+The classical stylometry methods don't need the corpus to be written, only to be run, so I
+built them ahead while the downloads wait. Four methods, each with tests on made-up authors
+whose word habits I control, so I know what the right answer is:
+
+- **Burrows' Delta** and its cosine and Eder variants. Take the few hundred most frequent
+  words, turn each text into a profile of how often it uses them, standardize, and measure
+  distance. On five synthetic authors it got 20 of 20 attributions right.
+- **General Imposters.** The open-set one. Instead of asking "which candidate is closest," it
+  asks "is the candidate closer than a crowd of random imposters, and does that hold up when I
+  keep changing which words I look at?" The score is the fraction of trials the candidate
+  wins. True author: 1.0. Someone else: about 0.03.
+- **Nearest shrunken centroids** with the "none of the above" extension that the 2011 BYU
+  study introduced. My version of their rule is written down in the code with the reasoning,
+  because I couldn't check it against their paper line by line yet; the replication step will.
+- **A decision rule** that turns a score into match, non-match, or inconclusive using
+  thresholds calibrated at 5% false positives and 5% false negatives, exactly as the
+  pre-registration says.
+
+One sanity check on real text: run the word-frequency profiler over Genesis, Exodus,
+Matthew, and Romans, and *the* ranks first and *unto* lands in the top 30. That's the
+biblical register showing up in the numbers, which is the whole reason the masking step
+exists.
+
 ## What's next
 
 Set up the Mac mini, run the two corpus pulls there, then BOM-08 through BOM-10: HathiTrust
@@ -307,7 +332,7 @@ America newspapers.
 
 ## Log
 
-- **2026-10-15, later.** BOM-08 measured: HathiTrust holds 107,178 period volumes Harvard lacks. BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
+- **2026-10-15, later.** BOM-20 library built ahead of the corpus (37 tests). BOM-08 measured: HathiTrust holds 107,178 period volumes Harvard lacks. BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
 - **2026-10-15.** BOM-01 to BOM-06 closed. Repo reset, plan registered on OSF (amendment 1
   the same day: one person plus AI, every human-review step replaced with a labeled
   simulation), budget set (Mac mini plus a rented H100), three Book of Mormon witnesses
