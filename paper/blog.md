@@ -294,8 +294,16 @@ New York Public Library (20,161), Michigan (14,496), and the University of Calif
 download full text without a Research Center account. The open alternative is their Extracted
 Features set, which gives word counts per page for every volume but not the running text.
 Word counts are enough for the classic stylometry and part of the dating work; they're useless
-for finding borrowed passages. So the request for Research Center access goes in, and the word
-counts fill the gap meanwhile.
+for finding borrowed passages. So the request goes in, and the word counts fill the gap meanwhile.
+
+Then it got more specific. HathiTrust's dataset program is an emailed proposal, and the
+answer depends on who scanned the book. Of the 107,178 volumes Harvard lacks, 75,984 were
+scanned by Google, and Google-scanned text only goes to institutions that have signed an
+agreement with Google, which an independent researcher hasn't. Another 24,261 were scanned by
+the Internet Archive, and those I can get from the Archive directly. The remaining 7,000 or
+so, scanned by Yale, McGill, the Getty, Cornell and others, anyone can download in full. So
+the honest expectation is: about 31,000 of those volumes for sure, 76,000 more if HathiTrust
+says yes to a person without a university behind him. I'll report what they say.
 
 ### BOM-20, built early: the classic toolkit
 
