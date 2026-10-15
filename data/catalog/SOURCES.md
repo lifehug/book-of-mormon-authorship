@@ -10,12 +10,15 @@ manifests in `data/manifests/`.
 | `institutional_books_summary.md` | same | counts and tokens by year |
 | `tcp.jsonl` | `python -m ingest.eebo_tcp catalog` | Text Creation Partnership index: 61,315 texts (EEBO 1473-1700, Evans American imprints to 1800, ECCO 18th century) with id, date, author, title, pages, raw-file URL (fetched 2026-10-15). |
 | `tcp_summary.md` | same | counts by collection, status, decade |
+| `internet_archive.jsonl.gz` | `python -m ingest.internet_archive catalog` | Internet Archive scrape API, `mediatype:texts`, English, dated 1780-1830: 307,567 items with identifier, title, creator, year, publisher, language, subject (first 8), collection, imagecount, downloads, plus `has_text_likely` and `harvard_overlap` flags (fetched 2026-10-15). Gzipped because the plain JSONL is over GitHub's file limit. |
+| `internet_archive_summary.md` | same | counts by year, top collections, Harvard overlap |
 
 ## Pulling the text (data machine)
 
 ```
 python -m ingest.institutional_books pull      # ~44 GB; needs a Hugging Face token whose account accepted the dataset terms
 python -m ingest.eebo_tcp pull                  # ~25 GB of TEI XML plus extracted text; no account needed
+python -m ingest.internet_archive pull --skip-harvard-overlap   # IA OCR (_djvu.txt), roughly 80 GB; no account needed
 ```
 
 ## Terms
@@ -25,5 +28,7 @@ python -m ingest.eebo_tcp pull                  # ~25 GB of TEI XML plus extract
   contributed by Harvard Library, https://institutional.org/institutional-books. The text is
   never published by this project; corpus v1.0 (BOM-19) ships the catalog, manifests, and
   derived statistics for it.
+- Internet Archive: items are mostly public-domain imprints; rights vary by item and are not
+  re-checked here. The text stays on local disk; only the catalog and manifests are committed.
 - TCP: Phase I texts are CC0; later texts carry their terms in the TEI header. Evans and ECCO
   texts are public-domain source material.

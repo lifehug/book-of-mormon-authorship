@@ -116,7 +116,7 @@ the sealed key.
 
 ## 10. Corpus pulls queued for this machine
 
-Run each under tmux. Both are resumable; rerun the same command after any interruption.
+Run each under tmux. All are resumable; rerun the same command after any interruption.
 
 ```sh
 # Harvard Institutional Books, 1780-1830 English slice (BOM-07): ~44 GB on disk per OCR version (raw and cleaned, both kept), ~700 GB of transfer, 31,958 volumes.
@@ -128,6 +128,10 @@ uv run python -m metadata.manifest build data/corpus/institutional_books/text -o
 # Text Creation Partnership: EEBO, Evans, ECCO (BOM-11): ~25 GB, 61,315 texts, no account.
 uv run python -m ingest.eebo_tcp pull 2>&1 | tee logs/tcp_pull.log
 uv run python -m metadata.manifest build data/corpus/tcp/text -o data/manifests/tcp.jsonl
+
+# Internet Archive OCR, 1780-1830 English, skipping titles already in Harvard (BOM-09): roughly 250,000 items, ~80 GB, no account. Polite: 1 request/second.
+uv run python -m ingest.internet_archive pull --skip-harvard-overlap 2>&1 | tee logs/ia_pull.log
+uv run python -m metadata.manifest build data/corpus/internet_archive/text -o data/manifests/internet_archive.jsonl
 ```
 
-Then commit the two manifests and close BOM-07 and BOM-11 with the counts.
+Then commit the two manifests and close BOM-07, BOM-09 and BOM-11 with the counts.
