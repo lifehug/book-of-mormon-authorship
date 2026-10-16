@@ -8,14 +8,22 @@
 
 ``pull``
     Downloads each item's ``<identifier>_djvu.txt`` OCR into
-    ``data/corpus/internet_archive/text/<identifier>.txt``. Resumable, polite (one request
-    per ``--delay`` seconds, backoff on 429/503), failures logged to ``failed.txt``.
-    ``--skip-harvard-overlap`` skips items whose title and year match a Harvard row.
+    ``data/corpus/internet_archive/text/<identifier>.txt``. Resumable, polite, failures
+    logged to ``failed.txt``. ``--skip-harvard-overlap`` skips items whose title and year
+    match a Harvard row.
+
+    ``--workers N`` fetches N items at a time, each worker waiting ``--delay`` seconds
+    between its own requests. The Archive's guidance is about four concurrent downloads with
+    a one-second delay, and says more than three or four connections can itself trigger rate
+    limiting, so ``MAX_WORKERS`` caps it at 4. If the Archive ever answers 429 or 503 -- the
+    codes that mean "slow down" -- every worker stops after its current item rather than
+    retrying around it. Observed 500s are the Archive's own faults, retried per ``fetch``.
 
 Usage::
 
     python -m ingest.internet_archive catalog
-    python -m ingest.internet_archive pull [--limit N] [--delay S] [--skip-harvard-overlap]
+    python -m ingest.internet_archive pull [--limit N] [--delay S] [--workers N]
+                                           [--skip-harvard-overlap]
 """
 
 from __future__ import annotations
@@ -25,11 +33,13 @@ import gzip
 import json
 import re
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from collections import Counter
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 SCRAPE_URL = "https://archive.org/services/search/v1/scrape"
@@ -47,6 +57,13 @@ USER_AGENT = "bom-authorship-research/0.1 (+https://github.com/lifehug/book-of-m
 YEAR_MIN, YEAR_MAX = 1780, 1830
 # Collections that are not scanned books with OCR text (audio/video/web/data dumps).
 NO_OCR_COLLECTIONS = {"etree", "audio", "movies", "podcasts", "web", "tvarchive"}
+# https://archive.org/developers/bots.html: about four concurrent downloads with a one-second
+# delay. More than three or four connections can itself trigger rate limiting, so asking for
+# more would likely be both rude and slower.
+MAX_WORKERS = 4
+# Set when the Archive answers 429 or 503. Those are the codes that mean "slow down", and the
+# answer is to stop, not to route around them.
+THROTTLED = threading.Event()
 
 
 def fetch(url: str, retries: int = 6) -> bytes:
@@ -60,6 +77,8 @@ def fetch(url: str, retries: int = 6) -> bytes:
         except urllib.error.HTTPError as exc:
             if exc.code in (404, 403, 401):
                 raise
+            if exc.code in (429, 503):
+                THROTTLED.set()
             wait = 15 * 2**attempt if exc.code in (429, 503) else 5 * (attempt + 1)
             ra = exc.headers.get("Retry-After") if exc.headers else None
             if ra and ra.isdigit():
@@ -215,10 +234,16 @@ def summarize(recs: list[dict], scraped: int, harvard_rows: int) -> str:
     return "\n".join(lines) + "\n"
 
 
-def pull(limit: int | None, delay: float, skip_overlap: bool, ids_file: Path | None = None) -> int:
+def pull(
+    limit: int | None,
+    delay: float,
+    skip_overlap: bool,
+    ids_file: Path | None = None,
+    workers: int = 1,
+) -> int:
     """``ids_file``: pull exactly these identifiers (one per line) instead of the catalog
     selection; used for HathiTrust volumes that the Archive digitized (ingest.hathitrust
-    map-ia)."""
+    map-ia). ``workers`` is capped at ``MAX_WORKERS``; ``limit`` caps items attempted."""
     if ids_file:
         ids = [ln.strip() for ln in ids_file.open(encoding="utf-8") if ln.strip()]
         recs = [{"identifier": i} for i in ids]
@@ -238,30 +263,51 @@ def pull(limit: int | None, delay: float, skip_overlap: bool, ids_file: Path | N
         r for r in recs if not (txt_dir / f"{r['identifier']}.txt").exists()
         and r["identifier"] not in skip
     ]  # fmt: skip
-    print(f"{len(recs):,} items in scope; {len(todo):,} to fetch")
-    n = 0
-    for r in todo:
+    if limit:
+        todo = todo[:limit]
+    workers = max(1, min(workers, MAX_WORKERS))
+    print(f"{len(recs):,} items in scope; {len(todo):,} to fetch; {workers} worker(s)")
+    lock = threading.Lock()
+    done = 0
+
+    def one(r: dict) -> None:
+        nonlocal done
+        if THROTTLED.is_set():
+            return
         ident = r["identifier"]
         try:
             data = fetch(DOWNLOAD_URL.format(id=urllib.parse.quote(ident)))
         except urllib.error.HTTPError as exc:
-            with failed.open("a") as fh:
+            with lock, failed.open("a") as fh:
                 fh.write(f"{ident}\t{exc.code}\n")
             time.sleep(delay)
-            continue
+            return
         except Exception as exc:  # noqa: BLE001
-            with failed.open("a") as fh:
+            with lock, failed.open("a") as fh:
                 fh.write(f"{ident}\terror {exc}\n")
-            continue
+            return
         (txt_dir / f"{ident}.txt").write_bytes(data)
-        n += 1
-        if n % 200 == 0:
-            print(f"  fetched {n:,}/{len(todo):,}", flush=True)
-        if limit and n >= limit:
-            print(f"stopped at --limit {limit}")
-            break
+        with lock:
+            done += 1
+            seen = done
+        if seen % 200 == 0:
+            print(f"  fetched {seen:,}/{len(todo):,}", flush=True)
         time.sleep(delay)
-    print(f"fetched {n:,} texts into {CORPUS}")
+
+    if workers == 1:
+        for r in todo:
+            if THROTTLED.is_set():
+                break
+            one(r)
+    else:
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            list(pool.map(one, todo))
+    if THROTTLED.is_set():
+        print(
+            "stopped: the Archive answered 429 or 503. Re-run later, with fewer workers.",
+            file=sys.stderr,
+        )
+    print(f"fetched {done:,} texts into {CORPUS}")
     return 0
 
 
@@ -275,10 +321,13 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--delay", type=float, default=1.0)
     p.add_argument("--skip-harvard-overlap", action="store_true")
     p.add_argument("--ids", type=Path, help="pull exactly these identifiers, one per line")
+    p.add_argument(
+        "--workers", type=int, default=1, help=f"concurrent fetches, capped at {MAX_WORKERS}"
+    )
     a = ap.parse_args(argv)
     if a.cmd == "catalog":
         return catalog(a.delay)
-    return pull(a.limit, a.delay, a.skip_harvard_overlap, a.ids)
+    return pull(a.limit, a.delay, a.skip_harvard_overlap, a.ids, a.workers)
 
 
 if __name__ == "__main__":
