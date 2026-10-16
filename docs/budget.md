@@ -24,9 +24,15 @@ tokens (Institutional Books: 242B tokens over 983,004 volumes); the 1780-1830 En
 | Models and checkpoints | 50 GB | 300M-parameter base (~1.2 GB fp32) plus ~15 fine-tunes and training checkpoints |
 | **Working total** | **about 0.5-0.8 TB** | plan for 1 TB of fast local disk plus off-site copy |
 
-Storage cost: a 1 TB external SSD or the existing machine for working data; off-site copy on
-object storage at roughly $6/TB/month (Backblaze B2 class) or a Hugging Face dataset repo.
-Call it **$10/month**.
+Storage cost: a **2 TB external SSD**, $150-200; off-site copy on object storage at roughly
+$6/TB/month (Backblaze B2 class) or a Hugging Face dataset repo. Call it **$10/month**.
+
+The external drive is required, not optional. The machine's internal disk is 256 GB (about
+107 GB free as of 2026-10-15), which cannot hold even the 100-170 GB of raw corpora, let
+alone the 300-500 GB of derived copies. 2 TB rather than 1 TB because the working total is
+already 0.5-0.8 TB, leaving a 1 TB drive no headroom for staging the off-site copy; the price
+difference is about $50. Mount it and point `data/` at it per `docs/mac-mini-setup.md`
+section 4.
 
 ## 2. GPU hours
 
@@ -74,7 +80,11 @@ and the blind run, where a lost job costs a day; a marketplace (Vast or RunPod C
 the short jobs. Budget line: **$1,000 for GPUs, $300 for CPU boxes, $200 for API calls, $120
 for a year of storage, total about $1,600**, with the GPU line the one to watch.
 
-## 4a. Local machine option: Mac mini
+## 4a. Local machine option: Mac mini (superseded — see 4b and 4c)
+
+> This section evaluates a machine that was **not** bought. It is kept for the reasoning and
+> for the Mac Studio comparison. For what actually runs on the hardware on hand, read section
+> 4c; every "yes" below assumes 64 GB and does not transfer to a 16 GB machine.
 
 A 2026 Mac mini with M5 Pro (18-core CPU, 20-core GPU, 64 GB unified memory, 1 TB SSD) plus
 a 2 TB external SSD can run everything in this plan except the base-model training.
@@ -106,25 +116,65 @@ An Ultra makes the project fully self-contained with no cloud account; it is onl
 the machine has other uses. No benchmark exists for MLX training at this model size, so the base-model estimate is from
 FLOPs and the M5 Pro's 307 GB/s memory bandwidth; re-check with the 125M pilot before deciding.
 
-## 4b. Decision (2026-10-15): Mac mini plus rented H100
+## 4b. Decision (2026-10-15): the existing Mac mini plus rented H100
 
-Primary machine: Mac mini M5 Pro, 18-core CPU, 20-core GPU, 64 GB, 1 TB SSD, plus a 2 TB
-external SSD. Cloud GPU only for the 300M base model and any rerun. No Mac Studio.
+Primary machine: the Mac mini already on hand — **M4, 10-core CPU (4P/6E), 16 GB unified
+memory, 256 GB internal SSD** — plus a 2 TB external SSD for `data/`. Cloud GPU for the 300M
+base model and for any job that does not fit in 16 GB. No new Mac.
+
+**Revised the same day, 2026-10-15.** The first version of this section specified a Mac mini
+M5 Pro (18-core CPU, 20-core GPU, 64 GB, 1 TB SSD) at about $3,199. That machine was never
+bought. Measuring the actual hardware showed an M4 with 16 GB and a 256 GB internal disk, so
+section 4a's "on the Mac mini" verdicts — all written for 64 GB — no longer hold as stated.
+The decision is to proceed on the existing machine and rent compute for the jobs it cannot
+hold, rather than spend $3,199 on a projection. Section 4c records what that costs us.
+
+The only hardware purchase is the external SSD. The internal 256 GB disk cannot hold even the
+raw corpora (100-170 GB) alongside macOS and the derived copies; `data/` moves to the external
+drive per `docs/mac-mini-setup.md` section 4.
 
 ### Cash costs
 
 | Item | Cost | When |
 | --- | --- | --- |
-| Mac mini M5 Pro 18/20-core, 64 GB, 1 TB | about $3,199 | now |
-| 2 TB external SSD | $150-200 | now |
+| Mac mini | **$0** | already owned (M4, 16 GB, 256 GB) |
+| 2 TB external SSD | $150-200 | now — the one purchase |
 | Rented H100 for the base model, with one rerun in reserve | $150-300 | BOM-27 |
-| Rented H100 for anything else that proves too slow locally | $100-200 reserve | Phase 5 |
+| Rented compute for jobs that exceed 16 GB (see 4c) | $250-600 | BOM-23, BOM-25, Phase 5 |
 | LLM API calls (OCR sample, parallel triage) | $100-200 | BOM-14, BOM-26 |
 | Off-site backup of working data, optional | about $10/month | Phase 1 onward |
 | OSF, GitHub, Hugging Face, Zenodo | $0 | |
 | Journal fees | $0 | no submission; peer review is simulated |
-| **Total excluding the Mac** | **about $500-900** | |
-| **Total including the Mac** | **about $3,700-4,300** | |
+| **Total** | **about $650-1,300** | |
+
+Against the superseded plan's $3,700-4,300, this saves roughly $2,400-3,600 up front and
+moves part of it into rented compute, paid only as each job needs it.
+
+## 4c. What 16 GB costs us
+
+Section 4a's table assumed 64 GB and a 20-core GPU. On 16 GB and a 10-core M4, the verdicts
+change for a minority of issues. Everything not listed here is unaffected: it is CPU- and
+disk-bound, and runs locally as planned.
+
+| Workload | Issue | 64 GB plan | On this machine |
+| --- | --- | --- | --- |
+| Phase 1 ingest, dedup | BOM-05 to BOM-13 | yes | yes — network- and disk-bound, not memory-bound |
+| OCR fixes, normalization, masking, segmentation | BOM-14 to BOM-19 | yes | yes, slower on 10 cores; streams document-at-a-time |
+| Classical stylometry | BOM-20 to BOM-22 | yes | yes — small feature matrices |
+| passim text reuse | BOM-23 | yes, days | **rent, or chunk heavily**; already budgeted at $100-300 cloud in section 3 |
+| Passage embeddings and FAISS index | BOM-25, BOM-30, BOM-39 | yes, days | **index does not fit in RAM**; use an on-disk or IVF-PQ compressed index, or rent |
+| Authorial fine-tunes (~15 small models) | BOM-28 | yes, hours each | likely yes via MLX; re-measure on the first one |
+| 125M pilot base model | BOM-27 | about a week | no — rent |
+| 300M base model | BOM-27 | no, rent | no — rent, unchanged |
+| Blind run, imitation tests, synthesis | BOM-31 to BOM-35 | yes | yes — inference and CPU |
+
+The net effect is that BOM-23 and the index-building half of BOM-25/BOM-30/BOM-39 move from
+"local, days" to "rented or redesigned". Both were already partly cloud lines, which is why
+the cash total moves by only a few hundred dollars.
+
+These are projections from the memory figures, not measurements. The first real datapoint is
+whichever of BOM-23 or BOM-25 is reached first; record the actual in section 6 and revise this
+table rather than trusting it.
 
 ### Effort and timeline
 
@@ -174,7 +224,12 @@ Local credential files (never in the repo): `~/.config/osf/token`, `~/.config/hu
 
 | Item | Planned | Actual | Issue | Date |
 | --- | --- | --- | --- | --- |
-| | | | | |
+| Primary machine | Mac mini M5 Pro, 64 GB, 1 TB, about $3,199 | Mac mini M4 (Mac16,10), 10-core, 16 GB, 256 GB internal — already owned, $0 | BOM-04 | 2026-10-15 |
+| External SSD | 2 TB, $150-200 | on order | BOM-04 | 2026-10-15 |
+| Internal disk free before Phase 1 | n/a | 107 GB, after reclaiming about 59 GB (dead Colima VM and its orphaned Lima datadisk, 53 GB; ollama install and one unused model, 5 GB) | BOM-07 | 2026-10-15 |
+| Institutional Books 1780-1830 English slice | 5-8% of the collection | 31,958 volumes of 983,004 (3.3%), 10.47B tokens, about 44 GB of text; an independent 48-shard sample read 2.6% | BOM-07 | 2026-10-15 |
+| Institutional Books metadata scan | n/a | about 1.3 min at 32 threads: `date1_src` and `language_gen` are separate columns, so the slice is identified by column-pruned Parquet reads before any text is pulled | BOM-07 | 2026-10-15 |
+| Institutional Books transfer | about 700 GB | confirmed as the right order: each shard is one row group of 100 rows, so there is no row-level pushdown, and at a 3.3% hit rate about 96% of the 9,831 shards hold at least one wanted volume and must be read whole | BOM-07 | 2026-10-15 |
 
 ## Sources
 

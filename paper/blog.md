@@ -424,16 +424,58 @@ The fetcher respects the Library's limits, which are strict: 20 catalog requests
 states are 3,472 pages, about an hour, and that's running on my laptop as I write this. The
 rest of the 159,000, roughly two days at the limit, waits for the mini.
 
+## The mini turned out to be the mini I already own
+
+The budget said buy a Mac mini M5 Pro, 64 GB, 1 TB, about $3,199. I never bought it. When I
+actually looked at the machine the data was supposed to live on, it's an M4 with 10 cores,
+16 GB of memory and a 256 GB disk. Less than half the memory the plan called "too small".
+
+So I changed the plan instead of the hardware. Use this machine, rent an H100 when a job needs
+one, and buy the one thing that genuinely can't be worked around: a 2 TB external SSD, $150 to
+$200. That saves about $3,000 up front and moves a few hundred of it into rented compute, paid
+only when a job actually needs it. The thing a drive can't fix is memory. Two jobs want more
+than 16 GB: passim, the text-reuse alignment, and the FAISS index for the passage search. Both
+were already partly cloud lines in the budget, so the total moved by a few hundred dollars, not
+a few thousand.
+
+First I had to find room on the 256 GB disk. 48 GB free isn't enough for anything. The culprit
+was a Colima VM I'd stopped using on October 5th, sitting there at 53 GB. Worth knowing:
+`colima delete` doesn't actually give you the space back. It removes the VM and leaves the Lima
+datadisk orphaned in `~/.colima/_lima/_disks/` — 85.9 GB on paper, 53 GB real, with its
+`in_use_by` symlink dangling at nothing. I deleted that by hand. Ollama and one model I hadn't
+touched in seven months went too. 59 GB back, 107 GB free.
+
+Then I talked myself into a mistake worth writing down. The Harvard dataset is 946 GB. I
+noticed that the publication date and the language are their own columns in the Parquet files,
+which means you can read just those two columns and find your slice without downloading any
+book text. It works beautifully: all 9,831 shards scanned in about 1.3 minutes. So I told
+myself the pull was only about 25 GB of transfer and the 700 GB in the budget was wrong.
+
+It isn't wrong. Each shard is a single row group of 100 volumes. Column pruning gets you the
+metadata cheaply, but there's no row-level pushdown — to pull the text of one volume you read
+essentially that whole 87 MB shard. The slice is 31,958 volumes out of 983,004, which is 3.3%,
+and at that rate roughly 96% of the shards hold at least one book I want. So you read almost
+all of them. About 700 GB of transfer for 44 GB of text, exactly as written. The cheap trick
+was real and the conclusion I drew from it was not.
+
+The pull is running now, against the internal disk, and I'll move `data/corpus/` to the SSD
+when it shows up.
+
 ## What's next
 
-Set up the Mac mini, run the two corpus pulls there, then BOM-08 through BOM-10: HathiTrust
-(probably skipped if it adds little over Harvard), the Internet Archive, and the Chronicling
-America newspapers.
+Finish the BOM-07 pull, then BOM-09 through BOM-11: the Internet Archive, the Chronicling
+America newspapers, and the TCP texts. HathiTrust (BOM-08) is probably skipped if it adds
+little over Harvard.
 
 ---
 
 ## Log
 
+- **2026-10-15, later still.** Hardware decision revised (BOM-04): no $3,199 Mac: use the M4
+  mini already on hand (10-core, 16 GB, 256 GB), buy a 2 TB external SSD, rent an H100 for the
+  base model and for anything that won't fit in 16 GB. Budget drops from about $3,700-4,300 to
+  about $650-1,300. 59 GB reclaimed on the mini (an orphaned Colima datadisk `colima delete`
+  left behind, plus ollama). BOM-07 pull started against the internal disk.
 - **2026-10-15, later.** BOM-10 catalog built (159,146 newspaper pages; New York has 47). BOM-09 catalog built (307,567 Internet Archive items). BOM-13 sources inventoried (38; four candidates have no pre-1830 text). BOM-20 library built ahead of the corpus (37 tests). BOM-08 measured: HathiTrust holds 107,178 period volumes Harvard lacks. BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
 - **2026-10-15.** BOM-01 to BOM-06 closed. Repo reset, plan registered on OSF (amendment 1
   the same day: one person plus AI, every human-review step replaced with a labeled

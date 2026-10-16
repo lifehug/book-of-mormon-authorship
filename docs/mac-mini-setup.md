@@ -1,9 +1,14 @@
 # Setting up the Mac mini as the project's data machine
 
-The Mac mini (M5 Pro, 64 GB, 1 TB plus a 2 TB external SSD) is the single home for `data/`,
-for every long-running job, and for the blind run's sealed key. The desktop and this repo stay
-the source of truth for code; the mini is the source of truth for data. Do this once when the
-machine arrives.
+The Mac mini (M4, 10-core, 16 GB, 256 GB internal plus a 2 TB external SSD) is the single home
+for `data/`, for every long-running job, and for the blind run's sealed key. The desktop and
+this repo stay the source of truth for code; the mini is the source of truth for data. Do this
+once when the machine arrives.
+
+The external SSD is required: the 256 GB internal disk cannot hold the corpora. Until it is
+mounted, Phase 1 pulls that fit in the free internal space may run against `data/` directly and
+be moved afterwards. See `docs/budget.md` sections 1, 4b and 4c for the hardware decision and
+for which jobs this machine cannot run on 16 GB.
 
 ## 1. Base tools
 
@@ -118,6 +123,10 @@ the sealed key.
 
 Run each under tmux. All are resumable; rerun the same command after any interruption.
 
+Status, 2026-10-15: the BOM-07 pull is running on the mini under `nohup`, logging to
+`logs/ib_pull.log`, against the internal disk while the external SSD is in transit. Move
+`data/corpus/` to the SSD when it arrives and rerun the same command to resume.
+
 ```sh
 # Harvard Institutional Books, 1780-1830 English slice (BOM-07): ~44 GB on disk per OCR version (raw and cleaned, both kept), ~700 GB of transfer, 31,958 volumes.
 # First accept the dataset terms on huggingface.co with the account whose token is in
@@ -134,7 +143,7 @@ uv run python -m ingest.internet_archive pull --skip-harvard-overlap 2>&1 | tee 
 uv run python -m metadata.manifest build data/corpus/internet_archive/text -o data/manifests/internet_archive.jsonl
 ```
 
-Then commit the two manifests and close BOM-07, BOM-09 and BOM-11 with the counts.
+```sh
 # Chronicling America newspapers 1800-1830 (BOM-10): 159,146 pages of OCR text (est. 2-5 GB), no account; ~1-2 days at the rate limit.
 # Text service limit is 150 requests/minute; the default delay keeps under it. Failures go to
 # data/corpus/chronicling_america/failed.txt. Add --states NY,PA,OH to do the priority states first.
@@ -142,4 +151,4 @@ uv run python -m ingest.chronicling_america pull 2>&1 | tee logs/ca_pull.log
 uv run python -m metadata.manifest build data/corpus/chronicling_america/text -o data/manifests/chronicling_america.jsonl
 ```
 
-Then commit the three manifests and close BOM-07, BOM-10 and BOM-11 with the counts.
+Then commit the four manifests and close BOM-07, BOM-09, BOM-10 and BOM-11 with the counts.
