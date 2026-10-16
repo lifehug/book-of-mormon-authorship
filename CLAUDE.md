@@ -78,3 +78,10 @@ conversational, short sentences, concrete, no jargon.
 - Issue references are `BOM-NN`, never `#N` (GitHub #1-#10 are the old 2016 items).
 - Fetchers identify themselves, rate-limit, and resume from what is on disk.
 - Commit messages end with the Claude co-author line the harness supplies.
+- **Never hard-code an analytic value.** Thresholds, cutoffs, chunk sizes, seeds and model
+  choices come from `config/preregistered.yaml` via `metadata.config.load()`, and every output
+  is stamped with `metadata.config.sha256_of_config()`. The file holds only choices already
+  pinned in the pre-registration; its `pending_amendment` list names those still needing a
+  dated OSF amendment, which is the owner's to make. A value not in the config and not in that
+  list means you are about to invent one: add it to `pending_amendment` instead. BOM-40 extends
+  the file to the remaining stages and adds the multiverse runner.
