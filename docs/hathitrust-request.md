@@ -27,7 +27,9 @@ available to an independent researcher), Internet Archive 24,261 (fetch from the
 directly, BOM-09), other 6,933 (in `ht_text_pd_open_access`, and downloadable in full from
 babel.hathitrust.org by anyone).
 
-Request sent: (date to fill in). Reply: (to fill in).
+Request sent: 2026-10-15 from davidjamestaylor@gmail.com. Reply: (to fill in).
+
+Note on the Google-digitized set: the Distribution Agreement covers researchers at a signatory institution; alumni status is not a research affiliation. A current researcher at a listed institution could be the primary requester, in which case the data stays on their servers (HathiTrust's dispersed-team rule) and that part of the analysis would run there.
 
 Citation format once used: HathiTrust. English-language public domain print, 1780-1830
 (subset). Distributed by HathiTrust (Requesting and Using Research Datasets).
