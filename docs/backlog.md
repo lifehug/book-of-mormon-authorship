@@ -162,6 +162,7 @@ Phase 1 collects every usable English text from 1780-1830, plus the Book of Morm
 
 **Goal:** one record per work, so reprints don't inflate counts.
 
+- [ ] Read `corpus.dedup` (method, shingle, threshold, keep) from `config/preregistered.yaml` via `metadata.config.load()`; stamp outputs with `sha256_of_config()`. `corpus.language_filter` is unregistered: use `pending_amendment`, do not invent a value (BOM-40)
 - [ ] Merge manifests from #7-#11 into one catalog
 - [ ] Normalize author names and dates
 - [ ] Detect duplicate editions with MinHash or similar, keeping the earliest
@@ -192,6 +193,7 @@ Phase 2 turns raw OCR into analysis-ready text and ends with a frozen, citable c
 
 **Goal:** readable text with a measured error rate per volume.
 
+- [ ] Read `corpus.ocr_max_cer` (0.10) from `config/preregistered.yaml` via `metadata.config.load()`; stamp outputs with `sha256_of_config()`. Do not hard-code the cutoff (BOM-40)
 - [ ] Fix the long 'ſ' misread as 'f', rejoin end-of-line hyphens, strip running headers and page numbers
 - [ ] Use an LLM to correct OCR on a sample, and measure its error rate against hand-corrected pages
 - [ ] Score each volume and set a minimum quality cutoff in the pre-registration
@@ -203,6 +205,7 @@ Phase 2 turns raw OCR into analysis-ready text and ends with a frozen, citable c
 
 **Goal:** consistent tokens across 1500-1830 spelling variation.
 
+- [ ] `corpus.spelling_normalization` is unregistered. Pin the method and variant map by dated amendment before using it, then read it from `config/preregistered.yaml`; it is listed in `pending_amendment` until then (BOM-40)
 - [ ] Build a variant-spelling map (for example VARD-style normalization)
 - [ ] Keep both original and normalized versions so features can use either
 
@@ -213,6 +216,7 @@ Phase 2 turns raw OCR into analysis-ready text and ends with a frozen, citable c
 
 **Goal:** separate biblical quotation from original composition in the Book of Mormon and in every control text.
 
+- [ ] Read `kjv_mask.verbatim` and `kjv_mask.paraphrase` thresholds from `config/preregistered.yaml` via `metadata.config.load()`; stamp outputs with `sha256_of_config()`. `kjv_mask.edition` and the passim parameters are unregistered and sit in `pending_amendment` (BOM-40)
 - [ ] Align Book of Mormon text against the KJV from #6 using passim or local alignment
 - [ ] Tag spans as verbatim quote, close paraphrase, or original
 - [ ] Apply the same masking to candidate and control texts
@@ -224,6 +228,7 @@ Phase 2 turns raw OCR into analysis-ready text and ends with a frozen, citable c
 
 **Goal:** analysis units that can test internal-narrator and dictation-order hypotheses.
 
+- [ ] Read `segmentation.ways`, `chunk_words` and `split.stratify_by` from `config/preregistered.yaml` via `metadata.config.load()`; stamp outputs with `sha256_of_config()`. The split **seed** and the boundary file are unregistered and sit in `pending_amendment`: pin the seed by dated amendment before any split is drawn, or the split is unreproducible (BOM-40)
 - [ ] Segment by internal narrator (Nephi, Jacob, Mormon, Moroni, and so on)
 - [ ] Segment by dictation order and by scribe
 - [ ] Produce fixed-length chunks (for example 2,000 and 5,000 words) for each scheme

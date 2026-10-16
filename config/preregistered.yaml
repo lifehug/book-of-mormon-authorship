@@ -1,0 +1,85 @@
+# The project's analytic choices. The pipeline reads values from here, never from
+# hard-coded defaults. Changing any value means a different results folder (BOM-40).
+#
+# SCOPE OF THIS FILE AS IT STANDS: only choices already PINNED in the pre-registration
+# are present. Every value below was checked against paper/preregistration.md and cites
+# its section. Choices not yet registered are NOT here, even as placeholders, so that
+# nothing in this file can be mistaken for a registered decision; they are named in
+# `pending_amendment` at the end and must be pinned by dated OSF amendment before BOM-21.
+#
+# Sections for the classical methods, language models, dating, embeddings and the
+# decision rules arrive with BOM-40 proper, once BOM-20 closes.
+
+version: 0.1
+preregistration: https://osf.io/6ugxc/
+covers: [BOM-12, BOM-14, BOM-15, BOM-16, BOM-17]
+
+corpus:
+  # 4.1, 4.3
+  date_range: [1780, 1830]
+  sources:
+    - institutional_books
+    - hathitrust
+    - internet_archive
+    - chronicling_america
+    - eebo_tcp
+  # 4.3: volumes whose estimated OCR character error rate exceeds 10% are excluded.
+  # Taken from the source's quality score, or our own sample-based estimate where none exists.
+  ocr_max_cer: 0.10
+  # 4.3: reprints and later editions collapse to the earliest edition.
+  dedup:
+    method: minhash
+    shingle: 5
+    threshold: 0.8
+    keep: earliest
+
+sealing:
+  # 4.2: drop any training volume containing a Book of Mormon string of >= 12 tokens.
+  contamination_min_tokens: 12
+
+kjv_mask:
+  # 4.4: alignment to the KJV with passim; spans are verbatim, close paraphrase, or original.
+  verbatim:
+    min_identity: 0.90
+    min_tokens: 8
+  paraphrase:
+    min_identity: 0.60
+    max_identity: 0.90
+    min_tokens: 8
+
+segmentation:
+  # 4.5: three segmentations (narrator, dictation order, scribe), each cut into fixed chunks.
+  ways: [narrator, dictation_order, scribe]
+  chunk_words: [2000, 5000]
+  split:
+    # 4.5: 5,000-word chunks are assigned to a discovery or confirmation half by a
+    # seeded random draw stratified by narrator. The procedure is registered; the seed is not.
+    applies_to_chunk_words: 5000
+    stratify_by: narrator
+    # seed: see pending_amendment
+
+# Choices these Phase 2 stages need that the pre-registration does not yet fix. Each must be
+# pinned by dated amendment before BOM-21 calibration starts (BOM-40). Absent from the config
+# above on purpose: an unregistered value written here would read as a registered one.
+pending_amendment:
+  - key: corpus.spelling_normalization
+    issue: BOM-15
+    note: method and variant map; the backlog says VARD-style
+  - key: corpus.genre_tagging
+    issue: BOM-18
+    note: how a volume gets labeled sermon, pseudo-biblical, and so on
+  - key: corpus.language_filter
+    issue: BOM-12
+    note: English only; detection method unstated
+  - key: kjv_mask.edition
+    issue: BOM-06
+    note: which KJV edition is the baseline; the text is pulled, the choice is not registered
+  - key: kjv_mask.passim
+    issue: BOM-16
+    note: alignment parameters, n-gram size and gap settings
+  - key: segmentation.boundaries_file
+    issue: BOM-17
+    note: the actual narrator, dictation-order and scribe boundary file; commit it and cite its hash
+  - key: segmentation.split.seed
+    issue: BOM-17
+    note: the procedure is pinned at 4.5, the seed value is not; reproducibility is undefined until it is
