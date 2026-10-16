@@ -13,6 +13,7 @@ manifests in `data/manifests/`.
 | `hathitrust.jsonl.gz` | `python -m ingest.hathitrust catalog --hathifile hathi_full_20261001.txt.gz` | HathiTrust public-domain English volumes with rights date 1780-1830: 135,035 rows (gzipped JSON Lines; read with `gzip.open`) from the monthly hathifile (https://www.hathitrust.org/files/hathifiles/, 2026-10-01 edition), each flagged `in_harvard` by `hvd.` id prefix or OCLC match against the Harvard catalog. 107,178 are not in the Harvard slice. |
 | `hathitrust_summary.md` | same | overlap, contributors, decades |
 | `hathitrust_ids_not_in_harvard.txt` | same catalog | the 107,178 HathiTrust ids (one per line) to request as a public-domain dataset from HathiTrust |
+| `hathitrust_ia_map.jsonl`, `hathitrust_ia_ids.txt` | `python -m ingest.hathitrust map-ia` | the Archive-digitized HathiTrust volumes resolved to Internet Archive identifiers by ark id, and the id list for `ingest.internet_archive pull --ids` |
 | `internet_archive.jsonl.gz` | `python -m ingest.internet_archive catalog` | Internet Archive scrape API, `mediatype:texts`, English, dated 1780-1830: 307,567 items with identifier, title, creator, year, publisher, language, subject (first 8), collection, imagecount, downloads, plus `has_text_likely` and `harvard_overlap` flags (fetched 2026-10-15). Gzipped because the plain JSONL is over GitHub's file limit. |
 | `internet_archive_summary.md` | same | counts by year, top collections, Harvard overlap |
 

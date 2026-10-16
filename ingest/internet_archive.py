@@ -215,12 +215,19 @@ def summarize(recs: list[dict], scraped: int, harvard_rows: int) -> str:
     return "\n".join(lines) + "\n"
 
 
-def pull(limit: int | None, delay: float, skip_overlap: bool) -> int:
-    with gzip.open(CATALOG, "rt", encoding="utf-8") as fh:
-        recs = [json.loads(line) for line in fh]
-    recs = [r for r in recs if r["has_text_likely"]]
-    if skip_overlap:
-        recs = [r for r in recs if not r["harvard_overlap"]]
+def pull(limit: int | None, delay: float, skip_overlap: bool, ids_file: Path | None = None) -> int:
+    """``ids_file``: pull exactly these identifiers (one per line) instead of the catalog
+    selection; used for HathiTrust volumes that the Archive digitized (ingest.hathitrust
+    map-ia)."""
+    if ids_file:
+        ids = [ln.strip() for ln in ids_file.open(encoding="utf-8") if ln.strip()]
+        recs = [{"identifier": i} for i in ids]
+    else:
+        with gzip.open(CATALOG, "rt", encoding="utf-8") as fh:
+            recs = [json.loads(line) for line in fh]
+        recs = [r for r in recs if r["has_text_likely"]]
+        if skip_overlap:
+            recs = [r for r in recs if not r["harvard_overlap"]]
     txt_dir = CORPUS / "text"
     txt_dir.mkdir(parents=True, exist_ok=True)
     failed = CORPUS / "failed.txt"
@@ -267,10 +274,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--limit", type=int)
     p.add_argument("--delay", type=float, default=1.0)
     p.add_argument("--skip-harvard-overlap", action="store_true")
+    p.add_argument("--ids", type=Path, help="pull exactly these identifiers, one per line")
     a = ap.parse_args(argv)
     if a.cmd == "catalog":
         return catalog(a.delay)
-    return pull(a.limit, a.delay, a.skip_harvard_overlap)
+    return pull(a.limit, a.delay, a.skip_harvard_overlap, a.ids)
 
 
 if __name__ == "__main__":
