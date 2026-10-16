@@ -305,6 +305,17 @@ so, scanned by Yale, McGill, the Getty, Cornell and others, anyone can download 
 the honest expectation is: about 31,000 of those volumes for sure, 76,000 more if HathiTrust
 says yes to a person without a university behind him. I'll report what they say.
 
+Two things I could do without asking anyone, so I did them. HathiTrust's research center runs
+an open file server with "extracted features" for 18.7 million volumes: for every page, how
+many times each word appears and what part of speech it is, but never the running text. I
+fetched three volumes to check the format. Lord Lyttelton's letters, 1807, 304 pages, and
+page 11 has 204 tokens including *exposures* once and *writing* twice. That's enough for the
+word-frequency methods, which is most of the classical toolkit, so all 107,178 volumes go in
+that form. And the 26,000-odd volumes that the Internet Archive scanned for HathiTrust still
+exist on the Archive under their own names; I matched them up by their ark identifiers, and
+25,689 were already sitting in the Archive catalog I'd built an hour earlier. So the
+"reachable" number is real, and most of it was reachable all along.
+
 ### BOM-20, built early: the classic toolkit
 
 The classical stylometry methods don't need the corpus to be written, only to be run, so I
