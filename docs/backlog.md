@@ -271,6 +271,31 @@ Phase 3 proves the toolkit works on known answers and reproduces earlier studies
 **Done when:** all methods pass tests and run on the frozen corpus.
 **Depends on:** #19.
 
+### #40 Central configuration file and multiverse runner
+
+**Goal:** every analytic choice lives in one versioned config file, the whole pipeline reads only from it, and anyone can rerun everything with different choices and compare outcomes.
+
+Rerunning the code reproduces our choices, including the bad ones. A single config file lets anyone change a choice and rerun the pipeline to see whether the conclusion holds. Running many reasonable configurations at once is a multiverse analysis (Steegen et al., 2016) or specification-curve analysis (Simonsohn, Simmons and Nelson, 2020).
+
+- [ ] Create `config/preregistered.yaml` holding every analytic choice, with values copied from the pre-registration; each entry cites its pre-registration section
+- [ ] Pin every choice currently UNPINNED or CODE ONLY, by dated amendment to the pre-registration, before #21 calibration starts. The inventory is in the issue body on GitHub; roughly 25 choices
+- [ ] Register ENSC `shrinkage` first and by name. `classic/ensc.py` defaults it to `0.0`, so nearest *shrunken* centroids currently runs as plain nearest centroids. #22 replicates Jockers, Witten and Criddle (2008), who used NSC, so an unregistered zero here is not a tuning detail
+- [ ] Refactor so no module hard-codes an analytic value; code defaults must match the config or be removed. Known gaps: General Imposters trials, feature fraction and distance (`classic/imposters.py`); ENSC shrinkage and alpha (`classic/ensc.py`); and `classic/features.py`, which uses `top_n=300` at line 22 but defaults to `100` at line 174
+- [ ] Define the seed hierarchy explicitly: either one root seed derives `segmentation.split.seed`, `blind.decoy_seed` and the imposters seed, or each is pinned separately. Reproducibility is undefined until this is stated
+- [ ] Tag every config key with its recompute tier: `feature` (rerun from cached features, CPU-minutes), `corpus` (re-runs OCR fixes, normalization, masking and segmentation, about a week of compute per value), `model` (retrain, 15-25 H100-hours per value)
+- [ ] Add a single entry point, e.g. `uv run bom run --config config/preregistered.yaml --out results/<config-hash>/`
+- [ ] Stamp every output with the SHA-256 of the config file and the git commit
+- [ ] Add `config/multiverse.yaml` listing a plausible range per choice. Range over the `feature` tier by default (for example MFW 100/300/1000, ENSC shrinkage values, distances); `corpus` and `model` tier sweeps are opt-in and must carry their cost estimate in the file
+- [ ] Add a multiverse runner that enumerates or samples combinations, runs them, and draws a specification curve: for each conclusion (each candidate supported or not, each significant parallel, the dating window), the share of configurations that agree
+- [ ] Commit `config/multiverse.yaml` and its hash before the blind run (#32), same as the thresholds, so the ranges can't be chosen after seeing results
+- [ ] Document in the README: the official result is the pre-registered config; the multiverse is a robustness check; anyone can add a config file by pull request and post their result
+
+**Done when:** a fresh clone reproduces the benchmark results from `preregistered.yaml`, an alternate config produces a different results folder with its own hash, and the multiverse runner produces a specification curve on benchmark data.
+**Depends on:** #2, #20.
+**Blocks:** #21, #23, #25, #27, #29, and everything downstream of those; all read their analytic choices from the config.
+
+Note on ordering: this issue's number is higher than the issues it blocks, so the "work the lowest-numbered open issue" rule would otherwise route around it and leave it until last, after the analyses it governs. The blocked issues carry `#40` in their own **Depends on** lines to prevent that.
+
 ### #21 Build and pass the validation benchmark
 
 **Goal:** show each method recovers known authorship in conditions like the Book of Mormon's.
@@ -282,7 +307,7 @@ Phase 3 proves the toolkit works on known answers and reproduces earlier studies
 - [ ] Report accuracy, false positives, and minimum sample sizes per method
 
 **Done when:** the benchmark report is published and each method's pass/fail against the pre-registered threshold is recorded.
-**Depends on:** #20.
+**Depends on:** #20, #40.
 
 ### #22 Replicate prior Book of Mormon studies
 
@@ -311,7 +336,7 @@ Phase 4 maps which earlier texts share wording or ideas with the Book of Mormon,
 - [ ] Run the same against 3-5 control books (for example Luke, *The Late War*, a sermon collection) to see typical overlap levels
 
 **Done when:** an alignment table for the Book of Mormon and controls is published.
-**Depends on:** #19.
+**Depends on:** #19, #40.
 
 ### #24 Score rare phrases against a proper null model
 
@@ -334,7 +359,7 @@ Phase 4 maps which earlier texts share wording or ideas with the Book of Mormon,
 - [ ] Use the same null-model approach as #24 to set significance thresholds
 
 **Done when:** a semantic-parallel table with scores and thresholds is published.
-**Depends on:** #19.
+**Depends on:** #19, #40.
 
 ### #26 Triage and human review of parallels
 
@@ -362,7 +387,7 @@ Phase 5 builds the new tools: a language model that has never seen the Book of M
 - [ ] Publish the model card, training config, and loss curves
 
 **Done when:** the model and its card are on Hugging Face and the contamination report is clean.
-**Depends on:** #19, #4.
+**Depends on:** #19, #4, #40.
 
 ### #28 Fine-tune authorial language models
 
@@ -385,7 +410,7 @@ Phase 5 builds the new tools: a language model that has never seen the Book of M
 - [ ] Test whether KJV imitation alone shifts the predicted date
 
 **Done when:** the classifier's accuracy on held-out dated text is published.
-**Depends on:** #11, #18, #19.
+**Depends on:** #11, #18, #19, #40.
 
 ### #30 Build style embeddings as a cross-check
 
@@ -438,6 +463,7 @@ Phase 6 stress-tests the methods, runs the sealed analysis blind, and combines t
 - [ ] Run the author sweep (#39) on the discovery half only; save the ranked lead list with null percentiles and sample sizes, hashed with the other outputs
 - [ ] Unblind only after all outputs are saved and hashed
 - [ ] Run leave-one-candidate-out tests
+- [ ] Run the multiverse (#40) inside the blind session, after the official pre-registered run and before unblinding, using the `config/multiverse.yaml` committed and hashed beforehand; hash its outputs with the rest
 
 **Done when:** hashed blind outputs and the unblinded results are published, decoys correctly identified.
 **Depends on:** #22, #26, #28-#31, #39.
@@ -486,6 +512,7 @@ Phase 7 writes up the results, releases everything, and puts the work through ou
 
 - [ ] Draft methods, validation, results, and limitations sections
 - [ ] List every deviation from the pre-registration
+- [ ] Report the specification curve from #40 beside the official result: for each conclusion, the share of configurations that agree, and name any conclusion that holds only under the pre-registered configuration
 - [ ] Report the author sweep's leads as exploratory, with the historical plausibility check, and state what a second pre-registered iteration would test
 - [ ] Run the three simulated reviewers from #3 against the full draft with an AI model, and publish their objections and the responses alongside it, labeled simulated
 - [ ] Post to a preprint server (arXiv cs.CL, or SocArXiv/OSF)
