@@ -28,6 +28,10 @@ python -m ingest.internet_archive pull --skip-harvard-overlap   # IA OCR (_djvu.
 python -m ingest.chronicling_america pull        # OCR text of ~158,000 newspaper pages; no account; ~120 requests/minute
 ```
 
+The New York, Pennsylvania, and Ohio pages (`pull --states NY,PA,OH`, 3,472 pages, 7 titles)
+were pulled on 2026-10-15; their checksums are `data/manifests/chronicling_america_nypaoh.jsonl`.
+Re-running the same command on another machine reproduces them.
+
 ## Terms
 
 - Institutional Books: noncommercial use, no redistribution, attribution required:
