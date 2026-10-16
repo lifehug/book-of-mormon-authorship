@@ -27,7 +27,10 @@ available to an independent researcher), Internet Archive 24,261 (fetch from the
 directly, BOM-09), other 6,933 (in `ht_text_pd_open_access`, and downloadable in full from
 babel.hathitrust.org by anyone).
 
-Request sent: 2026-10-15 from <requester address, withheld>. Reply: (to fill in).
+Request sent: 2026-10-15 from <requester address, withheld>. Reply: HathiTrust opened ticket
+GS-17502 and sent the non-Google-digitized researcher agreement; signed and returned
+2026-10-16. Its wording and a plain-English gloss are in `docs/hathitrust-researcher-agreement.md`.
+Approval, static IP, and rsync are pending.
 
 Note on the Google-digitized set: the Distribution Agreement covers researchers at a signatory institution; alumni status is not a research affiliation. A current researcher at a listed institution could be the primary requester, in which case the data stays on their servers (HathiTrust's dispersed-team rule) and that part of the analysis would run there.
 
