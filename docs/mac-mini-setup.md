@@ -156,12 +156,20 @@ the sealed key.
 
 Run each under tmux. All are resumable; rerun the same command after any interruption.
 
-Status, 2026-10-15: the BOM-07 pull is running on the mini under `nohup`, logging to
-`logs/ib_pull.log`, against the internal disk while the external SSD is in transit. Move
-`data/corpus/` to the SSD when it arrives and rerun the same command to resume.
+Status, 2026-10-16: the BOM-07 pull is **done** — 9,831 shards, 31,958 volumes, 73 GiB, no
+failures, 11h38m wall. `data/corpus/` lives on the SSD. BOM-09, BOM-10 (the remaining states)
+and BOM-11 are still queued.
+
+Disable Spotlight on the SSD before the next pull. Indexing 73 GiB of plain text built an
+index of roughly 57 GiB — bigger than half the corpus — and competes for I/O with the ingest:
 
 ```sh
-# Harvard Institutional Books, 1780-1830 English slice (BOM-07): ~44 GB on disk per OCR version (raw and cleaned, both kept), ~700 GB of transfer, 31,958 volumes.
+sudo mdutil -i off /Volumes/bomdata && sudo mdutil -E /Volumes/bomdata
+```
+
+```sh
+# Harvard Institutional Books, 1780-1830 English slice (BOM-07): DONE 2026-10-16. 73 GiB on disk
+# (37 GiB raw OCR + 37 GiB cleaned, both kept), ~700 GB of transfer, 31,958 volumes, 11h38m.
 # First accept the dataset terms on huggingface.co with the account whose token is in
 # ~/.config/huggingface/token (institutional/institutional-books-hl).
 uv run python -m ingest.institutional_books pull 2>&1 | tee logs/ib_pull.log

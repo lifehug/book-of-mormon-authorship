@@ -12,13 +12,13 @@ tokens (Institutional Books: 242B tokens over 983,004 volumes); the 1780-1830 En
 
 | Dataset | Raw size kept | Notes |
 | --- | --- | --- |
-| Institutional Books 1.0, English 1780-1830 | about 44 GB (measured from the catalog, 2026-10-15) | 31,958 volumes, 10.5B tokens; about 700 GB of transfer because shards must be read whole; the public metadata dataset gives the exact slice before any text is pulled. Terms: noncommercial, no redistribution |
+| Institutional Books 1.0, English 1780-1830 | **73 GiB measured on disk, 2026-10-16** (37 GiB raw OCR + 37 GiB cleaned OCR; the earlier 44 GB estimate counted one version) | 31,958 volumes, 10.5B tokens; about 700 GB of transfer because shards must be read whole; the public metadata dataset gives the exact slice before any text is pulled. Terms: noncommercial, no redistribution |
 | HathiTrust public domain 1780-1830 | about 150 GB if full text is obtained | 135,035 volumes measured 2026-10-15, 107,178 not in Harvard (87,200 books, 18,317 serial volumes); four times the Harvard slice. Full text needs Research Center access; Extracted Features (word counts per page) are open |
 | Internet Archive, 1780-1830 American imprints | 10-20 GB | OCR text plus metadata |
 | Chronicling America, 1800-1830 | under 5 GB | pre-1830 coverage is thin; article-level split adds little |
 | TCP texts (EEBO, Evans, ECCO) | about 25 GB XML | 61,315 TEI files, one per GitHub repo; includes Evans American imprints to 1800 and ECCO 18th century |
 | Book of Mormon texts, KJV, candidate corpora | under 1 GB | |
-| **Raw total** | **about 100-170 GB** | |
+| **Raw total** | **about 130-200 GB**, or 280-350 GB if HathiTrust full text is obtained | revised 2026-10-16 after measuring Institutional Books |
 | Cleaned, normalized, masked copies (about 3x raw) | 300-500 GB | keep originals and every derived version |
 | Passage embeddings and FAISS index | 50-100 GB | ~100M passages at 384 dims, fp16, plus a compressed index |
 | Models and checkpoints | 50 GB | 300M-parameter base (~1.2 GB fp32) plus ~15 fine-tunes and training checkpoints |
@@ -26,6 +26,14 @@ tokens (Institutional Books: 242B tokens over 983,004 volumes); the 1780-1830 En
 
 Storage cost: a **2 TB external SSD**, $150-200; off-site copy on object storage at roughly
 $6/TB/month (Backblaze B2 class) or a Hugging Face dataset repo. Call it **$10/month**.
+
+**Count OCR versions, not volumes.** Institutional Books ships two per volume — Harvard's raw
+OCR and their cleaned OCR — and the pull keeps both, which is why it measured 73 GiB against a
+44 GB estimate. Check the same before trusting the other rows: Internet Archive's `_djvu.txt`
+is one version, but TCP ships TEI XML plus extracted text, and BOM-14's OCR correction adds a
+third copy of whatever it touches. The 3x multiplier on the derived-copies row below assumes
+one source version; with two it is 6x of a single version, which is the number that matters for
+the external drive.
 
 The external drive is required, not optional. The machine's internal disk is 256 GB (about
 107 GB free as of 2026-10-15), which cannot hold even the 100-170 GB of raw corpora, let
@@ -230,6 +238,10 @@ Local credential files (never in the repo): `~/.config/osf/token`, `~/.config/hu
 | Institutional Books 1780-1830 English slice | 5-8% of the collection | 31,958 volumes of 983,004 (3.3%), 10.47B tokens, about 44 GB of text; an independent 48-shard sample read 2.6% | BOM-07 | 2026-10-15 |
 | Institutional Books metadata scan | n/a | about 1.3 min at 32 threads: `date1_src` and `language_gen` are separate columns, so the slice is identified by column-pruned Parquet reads before any text is pulled | BOM-07 | 2026-10-15 |
 | Institutional Books transfer | about 700 GB | confirmed as the right order: each shard is one row group of 100 rows, so there is no row-level pushdown, and at a 3.3% hit rate about 96% of the 9,831 shards hold at least one wanted volume and must be read whole | BOM-07 | 2026-10-15 |
+| Institutional Books on disk | about 44 GB | **73 GiB**: 37 GiB raw OCR + 37 GiB cleaned OCR, both kept, 31,958 volumes each. The estimate counted one version | BOM-07 | 2026-10-16 |
+| Institutional Books pull, wall time | not estimated | 11h38m on the Mac mini (18:00 to 05:38, including a 2-minute stop to move `data/corpus` to the external SSD), about 12 shards/min, no failed shards | BOM-07 | 2026-10-16 |
+| External SSD | 2 TB, $150-200 | Samsung T7 2 TB, APFS case-sensitive and journaled, mounted `/Volumes/bomdata`; 130 GiB of its 1.8 TiB used, of which 73 GiB is corpus and about 57 GiB is a Spotlight index that should be disabled | BOM-04 | 2026-10-16 |
+| T7 read throughput | not estimated | about 470 MB/s: each 37 GiB manifest build hashed in 79s | BOM-07 | 2026-10-16 |
 
 ## Sources
 
