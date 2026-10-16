@@ -17,7 +17,7 @@ services 150/minute, one hour block when exceeded. Defaults here are 3.5 s betwe
 calls and 0.5 s between text calls, with exponential backoff on HTTP 429.
 
 ``catalog``
-    Writes ``data/catalog/chronicling_america.jsonl`` (one row per page: page url, lccn,
+    Writes ``data/catalog/chronicling_america.jsonl.gz`` (one row per page: page url, lccn,
     title, date, state, city, edition, sequence, OCR url) and
     ``data/catalog/chronicling_america_summary.md``. About 250 API requests.
 
@@ -35,6 +35,7 @@ Usage::
 from __future__ import annotations
 
 import argparse
+import gzip
 import json
 import re
 import sys
@@ -52,7 +53,7 @@ TEXT_URL = (
     "https://tile.loc.gov/text-services/word-coordinates-service"
     "?segment={segment}&format=alto_xml&full_text=1"
 )
-CATALOG = Path("data/catalog/chronicling_america.jsonl")
+CATALOG = Path("data/catalog/chronicling_america.jsonl.gz")  # 159k rows; gzipped for GitHub
 SUMMARY = Path("data/catalog/chronicling_america_summary.md")
 CORPUS = Path("data/corpus/chronicling_america")
 USER_AGENT = "bom-authorship-research/0.1 (+https://github.com/lifehug/book-of-mormon-authorship)"
@@ -179,7 +180,7 @@ def catalog(delay: float) -> int:
         sp += 1
         time.sleep(delay)
     CATALOG.parent.mkdir(parents=True, exist_ok=True)
-    with CATALOG.open("w", encoding="utf-8") as fh:
+    with gzip.open(CATALOG, "wt", encoding="utf-8") as fh:
         for r in rows:
             fh.write(json.dumps(r, ensure_ascii=False) + "\n")
     write_summary(rows, skipped)
@@ -263,7 +264,8 @@ def split_articles(text: str) -> list[str]:
 
 
 def pull(limit: int | None, delay: float, states: set[str] | None) -> int:
-    recs = [json.loads(line) for line in CATALOG.open(encoding="utf-8")]
+    with gzip.open(CATALOG, "rt", encoding="utf-8") as fh:
+        recs = [json.loads(line) for line in fh]
     if states:
         recs = [r for r in recs if state_code(r["state"]) in states]
     recs = [r for r in recs if r["ocr_url"]]
