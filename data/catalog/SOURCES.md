@@ -10,12 +10,15 @@ manifests in `data/manifests/`.
 | `institutional_books_summary.md` | same | counts and tokens by year |
 | `tcp.jsonl` | `python -m ingest.eebo_tcp catalog` | Text Creation Partnership index: 61,315 texts (EEBO 1473-1700, Evans American imprints to 1800, ECCO 18th century) with id, date, author, title, pages, raw-file URL (fetched 2026-10-15). |
 | `tcp_summary.md` | same | counts by collection, status, decade |
+| `chronicling_america.jsonl` | `python -m ingest.chronicling_america catalog` | Chronicling America newspaper pages dated 1800-1830 from the loc.gov JSON API (no key; fetched 2026-10-15). One row per page: page url, lccn, title, date, state, city, edition, sequence, OCR text-service url. Built from the issue list (`fa=type:issue`); pages are derived from each issue's page count and first scan number. |
+| `chronicling_america_summary.md` | same | counts by state and decade, top titles, priority-state (NY, PA, OH) counts |
 
 ## Pulling the text (data machine)
 
 ```
 python -m ingest.institutional_books pull      # ~44 GB; needs a Hugging Face token whose account accepted the dataset terms
 python -m ingest.eebo_tcp pull                  # ~25 GB of TEI XML plus extracted text; no account needed
+python -m ingest.chronicling_america pull        # OCR text of ~158,000 newspaper pages; no account; ~120 requests/minute
 ```
 
 ## Terms

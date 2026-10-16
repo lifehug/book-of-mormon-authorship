@@ -116,7 +116,7 @@ the sealed key.
 
 ## 10. Corpus pulls queued for this machine
 
-Run each under tmux. Both are resumable; rerun the same command after any interruption.
+Run each under tmux. All are resumable; rerun the same command after any interruption.
 
 ```sh
 # Harvard Institutional Books, 1780-1830 English slice (BOM-07): ~44 GB on disk per OCR version (raw and cleaned, both kept), ~700 GB of transfer, 31,958 volumes.
@@ -128,6 +128,12 @@ uv run python -m metadata.manifest build data/corpus/institutional_books/text -o
 # Text Creation Partnership: EEBO, Evans, ECCO (BOM-11): ~25 GB, 61,315 texts, no account.
 uv run python -m ingest.eebo_tcp pull 2>&1 | tee logs/tcp_pull.log
 uv run python -m metadata.manifest build data/corpus/tcp/text -o data/manifests/tcp.jsonl
+
+# Chronicling America newspapers 1800-1830 (BOM-10): 159,146 pages of OCR text (est. 2-5 GB), no account; ~1-2 days at the rate limit.
+# Text service limit is 150 requests/minute; the default delay keeps under it. Failures go to
+# data/corpus/chronicling_america/failed.txt. Add --states NY,PA,OH to do the priority states first.
+uv run python -m ingest.chronicling_america pull 2>&1 | tee logs/ca_pull.log
+uv run python -m metadata.manifest build data/corpus/chronicling_america/text -o data/manifests/chronicling_america.jsonl
 ```
 
-Then commit the two manifests and close BOM-07 and BOM-11 with the counts.
+Then commit the three manifests and close BOM-07, BOM-10 and BOM-11 with the counts.
