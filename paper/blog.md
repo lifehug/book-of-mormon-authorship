@@ -523,15 +523,83 @@ The nice surprise was the T7. Hashing 37 GiB to build a checksum manifest took 7
 about 470 MB/s, and I had budgeted ten to twenty minutes. That matters more than it sounds:
 Phase 2 reads this corpus repeatedly, and the drive is not going to be what slows it down.
 
+## Eleven days for a quarter of a million books
+
+Next on the list was the Internet Archive: 251,204 English books printed between 1780 and 1830
+that Harvard doesn't have. Mostly American pamphlets and small imprints, which is exactly the
+material the Harvard collection is thin on and exactly where a book printed in Palmyra in 1830
+would live.
+
+I started it expecting about three days. The Archive asks you to keep to roughly one request a
+second, and a quarter of a million seconds is seventy hours. Then I measured what it was
+actually doing: ten and a half books a minute. That's sixteen days. I let it settle and
+measured again an hour later: 16.2 a minute, so about eleven days. Some of the early slowness
+was the Archive throwing 500 errors and the fetcher politely backing off for five, then ten,
+then fifteen seconds.
+
+Eleven days instead of eleven hours, for a sixth as many books. The difference is the shape of
+the thing. Harvard handed over its entire collection in 9,831 big bundles, and I could pull
+several at once. The Archive has no bundle. It's one book, one request, 251,204 times, with a
+deliberate pause between each so I'm not hammering a nonprofit's servers.
+
+The question I actually cared about was whether eleven days was costing me anything. It isn't.
+It's a Python script making HTTP requests and writing text files. There's no AI involved in any
+of those 251,204 downloads. It could run for a month and the bill would be electricity. Worth
+writing down because "the computer is working on it for eleven days" sounds expensive and isn't.
+
+The other question was whether I'd get the same thing if I ran it again. Mostly. The list of
+books comes from a catalog file that's committed to the repo, so the *selection* is fixed —
+re-running next month picks the same 251,204. The fetching is best-effort: the script skips
+anything already on disk, logs every failure to `failed.txt` with its HTTP code, and remembers
+404s as permanent so it doesn't spend the next run retrying books that will never exist. So I
+won't end up with exactly 251,204 files. I'll end up with that minus the failures, and a list
+of which ones and why. That's the right trade. It fails where I can see it.
+
+I decided to wait out the eleven days rather than narrow the list. I could cut it to the
+`americana` collection, 86,600 items, and be done in a third of the time — but then the paper
+has to explain why I excluded 165,000 books, and "it was taking a while" is not a reason I want
+to defend. A complete corpus needs no excuse.
+
+## Three servers at once
+
+Then I caught myself being stupid about it.
+
+I'd been treating the remaining downloads as a queue: Internet Archive, then the newspapers,
+then the Text Creation Partnership, one after another. Eleven days, then two, then however long
+TCP takes. But they're four different organizations on four different servers. The politeness
+limits are per-host. The only thing they share is my mini, and all three jobs are sitting
+around waiting for the network rather than doing any real work.
+
+So they're all running now. The Archive pull, the rest of the Chronicling America newspapers
+(159,146 pages), and the TCP texts (61,315 of them — early modern English, Evans' American
+imprints, and the eighteenth-century ECCO set). Three downloads, three servers, no contention.
+TCP had 438 files down in the first four minutes, which tells you how much of the eleven days
+is the Archive specifically rather than anything about my setup.
+
+Which leaves HathiTrust. I've signed their researcher agreement for the non-Google-digitized
+volumes and I'm waiting on a decision — ticket GS-17502. They hold 107,178 period volumes
+Harvard doesn't, which is four times the Harvard slice, but 75,984 of those are Google scans
+that need a separate agreement Google may not give an independent researcher. The useful part:
+24,261 of them were digitized by the Internet Archive, and the pull that's running right now is
+already fetching them. So the waiting costs nothing either.
+
 ## What's next
 
-BOM-09 through BOM-11: the Internet Archive, the rest of the Chronicling America newspapers,
-and the TCP texts. HathiTrust (BOM-08) is probably skipped if it adds little over Harvard.
+Let the four downloads finish. Then Phase 2: deduplicate, fix the OCR, normalize the spelling,
+mask the King James quotations, and cut the text into segments. HathiTrust (BOM-08) resolves
+whenever it resolves.
 
 ---
 
 ## Log
 
+- **2026-10-16, later.** BOM-09, BOM-10 and BOM-11 pulls all started and running together on
+  the mini: Internet Archive (251,204 items, measured 16.2/min, about 11 days), Chronicling
+  America (159,146 pages), TCP (61,315 texts). Separate hosts, separate rate limits, no reason
+  to queue them. Decided against narrowing the Archive list to `americana` to save a week: a
+  complete corpus needs no excuse in the paper. BOM-08's researcher agreement signed and
+  awaiting a decision (ticket GS-17502); its Archive-digitized volumes are covered by BOM-09
+  meanwhile.
 - **2026-10-16.** BOM-07 done: 31,958 Harvard volumes, 9,831 shards, 73 GiB, 11h38m, no
   failures, two manifests committed. Storage estimate was half the truth because the dataset
   ships two OCR versions and the pull keeps both; budget corrected. Found a 57 GiB Spotlight
