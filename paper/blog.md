@@ -500,16 +500,43 @@ was real and the conclusion I drew from it was not.
 The pull is running now, against the internal disk, and I'll move `data/corpus/` to the SSD
 when it shows up.
 
+## Thirty-two thousand books
+
+The Harvard pull finished at 5:38 in the morning. Eleven hours and thirty-eight minutes, all
+9,831 shards, 31,958 books, nothing failed. About 700 GB came down the wire to keep 73 GiB.
+
+Two things I had wrong. The first: I'd budgeted 44 GB and it came in at 73 GiB, because the
+dataset ships two versions of every book — Harvard's raw OCR and their cleaned OCR — and the
+pull keeps both. I'm glad it does. BOM-14 is supposed to clean up OCR, and now I can measure
+whether my cleaning actually beats Harvard's instead of assuming it does. But it means every
+storage number in the budget needs checking for how many versions a source ships, not how many
+books. TCP ships XML *and* extracted text. That one will double too.
+
+The second thing is stranger. The drive said 130 GiB used when the books only account for 73.
+I went looking for the missing 57 and found it in `.Spotlight-V100`. macOS had been quietly
+indexing the full text of thirty-two thousand 19th-century books so I could search them from
+the menu bar, and built an index over half the size of the corpus to do it. It was also
+competing for the disk the whole time the pull was running. Turning it off for that volume is
+one command, and it's now in the setup doc.
+
+The nice surprise was the T7. Hashing 37 GiB to build a checksum manifest took 79 seconds,
+about 470 MB/s, and I had budgeted ten to twenty minutes. That matters more than it sounds:
+Phase 2 reads this corpus repeatedly, and the drive is not going to be what slows it down.
+
 ## What's next
 
-Finish the BOM-07 pull, then BOM-09 through BOM-11: the Internet Archive, the Chronicling
-America newspapers, and the TCP texts. HathiTrust (BOM-08) is probably skipped if it adds
-little over Harvard.
+BOM-09 through BOM-11: the Internet Archive, the rest of the Chronicling America newspapers,
+and the TCP texts. HathiTrust (BOM-08) is probably skipped if it adds little over Harvard.
 
 ---
 
 ## Log
 
+- **2026-10-16.** BOM-07 done: 31,958 Harvard volumes, 9,831 shards, 73 GiB, 11h38m, no
+  failures, two manifests committed. Storage estimate was half the truth because the dataset
+  ships two OCR versions and the pull keeps both; budget corrected. Found a 57 GiB Spotlight
+  index on the corpus drive and documented turning indexing off. T7 reads at about 470 MB/s.
+  BOM-40 filed and its Phase 2 config slice built ahead of it (#50).
 - **2026-10-15, later still.** Hardware decision revised (BOM-04): no $3,199 Mac: use the M4
   mini already on hand (10-core, 16 GB, 256 GB), buy a 2 TB external SSD, rent an H100 for the
   base model and for anything that won't fit in 16 GB. Budget drops from about $3,700-4,300 to

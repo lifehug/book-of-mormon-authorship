@@ -22,7 +22,7 @@ manifests in `data/manifests/`.
 ## Pulling the text (data machine)
 
 ```
-python -m ingest.institutional_books pull      # ~44 GB; needs a Hugging Face token whose account accepted the dataset terms
+python -m ingest.institutional_books pull      # 73 GiB on disk (two OCR versions), ~700 GB of transfer; needs a Hugging Face token whose account accepted the dataset terms
 python -m ingest.eebo_tcp pull                  # ~25 GB of TEI XML plus extracted text; no account needed
 python -m ingest.internet_archive pull --skip-harvard-overlap   # IA OCR (_djvu.txt), roughly 80 GB; no account needed
 python -m ingest.chronicling_america pull        # OCR text of ~158,000 newspaper pages; no account; ~120 requests/minute
@@ -31,6 +31,18 @@ python -m ingest.chronicling_america pull        # OCR text of ~158,000 newspape
 The New York, Pennsylvania, and Ohio pages (`pull --states NY,PA,OH`, 3,472 pages, 7 titles)
 were pulled on 2026-10-15; their checksums are `data/manifests/chronicling_america_nypaoh.jsonl`.
 Re-running the same command on another machine reproduces them.
+
+The Institutional Books pull completed 2026-10-16 05:38 on the Mac mini: all 9,831 shards read,
+**31,958 volumes**, no failures. Two OCR versions are kept, one file per volume, 37 GiB each:
+
+| Directory | What | Manifest |
+| --- | --- | --- |
+| `data/corpus/institutional_books/text_src` | Harvard's raw OCR (`text_by_page_src`) | `data/manifests/institutional_books_src.jsonl` |
+| `data/corpus/institutional_books/text_gen` | Harvard's cleaned OCR (`text_by_page_gen`) | `data/manifests/institutional_books_gen.jsonl` |
+
+31,958 records in each manifest. The pull is resumable from
+`data/corpus/institutional_books/pull_progress.json`, which records completed shards by name;
+rerunning the same command after any interruption skips what is already on disk.
 
 ## Terms
 
