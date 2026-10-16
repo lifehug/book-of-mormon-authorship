@@ -16,6 +16,8 @@ manifests in `data/manifests/`.
 | `hathitrust_ia_map.jsonl`, `hathitrust_ia_ids.txt` | `python -m ingest.hathitrust map-ia` | the Archive-digitized HathiTrust volumes resolved to Internet Archive identifiers by ark id, and the id list for `ingest.internet_archive pull --ids` |
 | `internet_archive.jsonl.gz` | `python -m ingest.internet_archive catalog` | Internet Archive scrape API, `mediatype:texts`, English, dated 1780-1830: 307,567 items with identifier, title, creator, year, publisher, language, subject (first 8), collection, imagecount, downloads, plus `has_text_likely` and `harvard_overlap` flags (fetched 2026-10-15). Gzipped because the plain JSONL is over GitHub's file limit. |
 | `internet_archive_summary.md` | same | counts by year, top collections, Harvard overlap |
+| `chronicling_america.jsonl` | `python -m ingest.chronicling_america catalog` | Chronicling America newspaper pages dated 1800-1830 from the loc.gov JSON API (no key; fetched 2026-10-15). One row per page: page url, lccn, title, date, state, city, edition, sequence, OCR text-service url. Built from the issue list (`fa=type:issue`); pages are derived from each issue's page count and first scan number. |
+| `chronicling_america_summary.md` | same | counts by state and decade, top titles, priority-state (NY, PA, OH) counts |
 
 ## Pulling the text (data machine)
 
@@ -23,6 +25,7 @@ manifests in `data/manifests/`.
 python -m ingest.institutional_books pull      # ~44 GB; needs a Hugging Face token whose account accepted the dataset terms
 python -m ingest.eebo_tcp pull                  # ~25 GB of TEI XML plus extracted text; no account needed
 python -m ingest.internet_archive pull --skip-harvard-overlap   # IA OCR (_djvu.txt), roughly 80 GB; no account needed
+python -m ingest.chronicling_america pull        # OCR text of ~158,000 newspaper pages; no account; ~120 requests/minute
 ```
 
 ## Terms

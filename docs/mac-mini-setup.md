@@ -135,3 +135,11 @@ uv run python -m metadata.manifest build data/corpus/internet_archive/text -o da
 ```
 
 Then commit the two manifests and close BOM-07, BOM-09 and BOM-11 with the counts.
+# Chronicling America newspapers 1800-1830 (BOM-10): 159,146 pages of OCR text (est. 2-5 GB), no account; ~1-2 days at the rate limit.
+# Text service limit is 150 requests/minute; the default delay keeps under it. Failures go to
+# data/corpus/chronicling_america/failed.txt. Add --states NY,PA,OH to do the priority states first.
+uv run python -m ingest.chronicling_america pull 2>&1 | tee logs/ca_pull.log
+uv run python -m metadata.manifest build data/corpus/chronicling_america/text -o data/manifests/chronicling_america.jsonl
+```
+
+Then commit the three manifests and close BOM-07, BOM-10 and BOM-11 with the counts.
