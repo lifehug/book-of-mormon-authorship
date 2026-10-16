@@ -49,16 +49,49 @@ uv run ruff check . && uv run pytest -q
 
 ## 4. Storage
 
-Mount the external SSD and point `data/` at it, so the internal disk stays free:
+The external SSD is `/Volumes/bomdata`, 2 TB, **APFS case-sensitive and journaled**. Format it
+that way; exFAT as shipped is not journaled, which is a poor fit for multi-day ingests, and it
+is case-insensitive, so volume IDs across corpora can collide:
+
+```sh
+diskutil eraseDisk APFSX bomdata GPT /dev/diskN   # check diskN with: diskutil list external
+```
+
+**Split the tree by what git tracks, not by data versus code.** Everything git tracks stays on
+the internal disk; only large untracked artifacts go to the SSD, one symlink per directory:
 
 ```sh
 mkdir -p /Volumes/bomdata/data
-rm -rf data && ln -s /Volumes/bomdata/data data
-mkdir -p data/manifests
-git checkout -- data   # restores the committed files (manifests, SOURCES.md, 1830/)
+mv data/corpus /Volumes/bomdata/data/corpus
+ln -s /Volumes/bomdata/data/corpus data/corpus
 ```
 
-Check that `git status` is clean afterwards; the symlink itself must not be committed.
+| Stays internal | Goes to the SSD |
+| --- | --- |
+| `.git`, all code, `docs/`, `paper/` | `data/corpus/` — raw corpora, about 88 GB for Institutional Books alone |
+| `data/bom/`, `data/kjv/`, `data/catalog/`, `data/manifests/`, `data/candidates/` | Phase 2 cleaned, normalized and masked copies, 300-500 GB |
+| `data/private/` — its own git clone, 253 MB | Phase 4-5 embeddings and FAISS index, 50-100 GB |
+| | Models and checkpoints, 50 GB |
+
+The whole repo without `data/corpus` is about 745 MB, so there is nothing to gain by moving it,
+and two things to lose. First, 49 tracked files live under `data/`; if they sit on a removable
+drive then every time it is unplugged git reports 49 deletions, and one `git commit -a` or
+`git add -A` in that state commits the catalogs out of the repo. Second, with the SSD detached
+you can still read manifests, inspect catalogs, run the tests and write code — only the bulk
+text goes dark.
+
+Repeat the `mv` plus `ln -s` for each new large output directory as later phases create them.
+Check `git status` is clean afterwards; `.gitignore` already covers `data/*`, so the symlinks
+are not committed.
+
+Moving a directory back from the SSD to the internal disk can fail on a name collision that was
+legal on a case-sensitive volume. That is the only direction the case-sensitivity difference
+bites.
+
+Backups: the SSD is a single point of failure. Raw corpora are re-fetchable, slowly; the Phase 2
+derived copies are not, being days to weeks of CPU. Point the off-site copy budgeted in
+`docs/budget.md` section 1 at the derived data first. The manifests stay in git on the internal
+disk, so any copy anywhere can be verified.
 
 ## 5. Credentials
 
@@ -132,7 +165,10 @@ Status, 2026-10-15: the BOM-07 pull is running on the mini under `nohup`, loggin
 # First accept the dataset terms on huggingface.co with the account whose token is in
 # ~/.config/huggingface/token (institutional/institutional-books-hl).
 uv run python -m ingest.institutional_books pull 2>&1 | tee logs/ib_pull.log
-uv run python -m metadata.manifest build data/corpus/institutional_books/text -o data/manifests/institutional_books.jsonl
+# Two OCR versions are kept, one file per volume: text_src (Harvard's raw OCR) and
+# text_gen (their cleaned OCR). There is no combined text/ directory; manifest each.
+uv run python -m metadata.manifest build data/corpus/institutional_books/text_src -o data/manifests/institutional_books_src.jsonl
+uv run python -m metadata.manifest build data/corpus/institutional_books/text_gen -o data/manifests/institutional_books_gen.jsonl
 
 # Text Creation Partnership: EEBO, Evans, ECCO (BOM-11): ~25 GB, 61,315 texts, no account.
 uv run python -m ingest.eebo_tcp pull 2>&1 | tee logs/tcp_pull.log
