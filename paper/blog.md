@@ -393,6 +393,37 @@ exactly, three times what a normal year gets. That's a placeholder date, not a p
 boom. So the Archive gets pulled, but the catalog-cleaning step is going to earn its keep
 on this one, and the counts above will shrink.
 
+### BOM-10, first half: the newspapers, and a hole where Palmyra should be
+
+The Library of Congress's Chronicling America holds digitized American newspapers with OCR,
+and the plan wanted the papers circulating near Palmyra, New York, especially the *Wayne
+Sentinel*, which printed the Book of Mormon's first advertisements. I cataloged every page
+from 1800 to 1830: 159,146 pages, 39,538 issues, 138 titles. Then I looked at where they're
+from.
+
+| State | Pages, 1800-1830 |
+| --- | --- |
+| Virginia | 66,039 |
+| District of Columbia | 27,955 |
+| Rhode Island | 19,079 |
+| New Hampshire | 12,176 |
+| Ohio | 2,517 |
+| Pennsylvania | 908 |
+| New York | 47 |
+
+Forty-seven pages from New York. For three decades. The *Wayne Sentinel* isn't there at all
+for this period; New York's early papers were digitized by state projects that never fed into
+the national collection. So the newspaper corpus will be heavy on Washington and Richmond
+politics, which is fine as period prose, and the Palmyra-area papers have to come from
+elsewhere, probably the New York State Historic Newspapers project, which is a separate job.
+I'd rather know that now than find out when the borrowing search comes up empty for the
+one town that matters.
+
+The fetcher respects the Library's limits, which are strict: 20 catalog requests a minute,
+150 text requests a minute, and an hour-long block if you exceed them. The three priority
+states are 3,472 pages, about an hour, and that's running on my laptop as I write this. The
+rest of the 159,000, roughly two days at the limit, waits for the mini.
+
 ## What's next
 
 Set up the Mac mini, run the two corpus pulls there, then BOM-08 through BOM-10: HathiTrust
@@ -403,7 +434,7 @@ America newspapers.
 
 ## Log
 
-- **2026-10-15, later.** BOM-09 catalog built (307,567 Internet Archive items). BOM-13 sources inventoried (38; four candidates have no pre-1830 text). BOM-20 library built ahead of the corpus (37 tests). BOM-08 measured: HathiTrust holds 107,178 period volumes Harvard lacks. BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
+- **2026-10-15, later.** BOM-10 catalog built (159,146 newspaper pages; New York has 47). BOM-09 catalog built (307,567 Internet Archive items). BOM-13 sources inventoried (38; four candidates have no pre-1830 text). BOM-20 library built ahead of the corpus (37 tests). BOM-08 measured: HathiTrust holds 107,178 period volumes Harvard lacks. BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
 - **2026-10-15.** BOM-01 to BOM-06 closed. Repo reset, plan registered on OSF (amendment 1
   the same day: one person plus AI, every human-review step replaced with a labeled
   simulation), budget set (Mac mini plus a rented H100), three Book of Mormon witnesses
