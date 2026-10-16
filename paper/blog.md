@@ -424,6 +424,45 @@ The fetcher respects the Library's limits, which are strict: 20 catalog requests
 states are 3,472 pages, about an hour, and that's running on my laptop as I write this. The
 rest of the 159,000, roughly two days at the limit, waits for the mini.
 
+### BOM-10, second half: what the three priority states actually gave me
+
+The New York, Pennsylvania, and Ohio pull finished on the laptop: 3,466 of 3,472 pages, about
+14 million words, 84 MB of plain text. The other six return a server error from the Library's
+text service on every try, so those scans are broken on their end and are logged as missing. Here is what the "priority
+states" turn out to mean in practice:
+
+| Paper | Where | Pages |
+| --- | --- | --- |
+| *The National Republican and Ohio Political Register* | Cincinnati | 1,828 |
+| *Gazette of the United States, & Daily Advertiser* | Philadelphia | 532 |
+| *Philanthropist* | Mount Pleasant, Ohio | 410 |
+| *Gazette of the United States, & Philadelphia Daily Advertiser* | Philadelphia | 376 |
+| *Freeman's Chronicle* | Columbus | 273 |
+| *The Rights of All* | New York City | 40 |
+| *Ulster County Gazette* | Kingston, NY | 7 |
+
+Seven titles. The two New York papers are a 40-page run of *The Rights of All*, an
+abolitionist paper from 1829, and a single 1800 issue of the *Ulster County Gazette*. Nothing
+west of the Hudson. So "New York" in this corpus means New York City, not the Finger Lakes,
+and the point from the first half stands: the Palmyra-area papers are a separate job.
+
+The OCR quality varies a lot by date, which matters for anything that counts words. Here is
+the top of the 1800 *Ulster County Gazette*, where the printer still used the long s:
+
+```
+E"'H K hoar Raving arrived w hxch,fi'i'b
+"4 Piefident appointed, Mr SpEaxsr
+atte Ided by the members present, proceeded
+2¢ the President's house to present him their
+addréss in'answer to his slvc'g'*ch;at the ape
+```
+
+"Piefident" is "President" with a long s; "seflion" two lines later is "session". The 1829
+*Rights of All*, set in modern type, is nearly clean: "The history of this individual will
+furnish a theme for the admiration and gratitude of posterity." Anything built on this corpus
+needs a cleaning pass that knows about the long s, and the early pages should carry a
+quality flag. I'll handle that in the normalization step (BOM-15) rather than here.
+
 ## The mini turned out to be the mini I already own
 
 The budget said buy a Mac mini M5 Pro, 64 GB, 1 TB, about $3,199. I never bought it. When I
@@ -476,6 +515,7 @@ little over Harvard.
   base model and for anything that won't fit in 16 GB. Budget drops from about $3,700-4,300 to
   about $650-1,300. 59 GB reclaimed on the mini (an orphaned Colima datadisk `colima delete`
   left behind, plus ollama). BOM-07 pull started against the internal disk.
+- **2026-10-15, night.** BOM-10 three-state newspaper pull done on the laptop: 3,466 of 3,472 pages (6 broken at the source), 7 titles, about 14 million words; manifest `data/manifests/chronicling_america_nypaoh.jsonl`. New York contributes two city papers and nothing from the Palmyra area.
 - **2026-10-15, later.** BOM-10 catalog built (159,146 newspaper pages; New York has 47). BOM-09 catalog built (307,567 Internet Archive items). BOM-13 sources inventoried (38; four candidates have no pre-1830 text). BOM-20 library built ahead of the corpus (37 tests). BOM-08 measured: HathiTrust holds 107,178 period volumes Harvard lacks. BOM-07 and BOM-11 catalogs built (31,958 Harvard volumes, 61,315 TCP texts) and the pull scripts written; the downloads themselves wait for the Mac mini.
 - **2026-10-15.** BOM-01 to BOM-06 closed. Repo reset, plan registered on OSF (amendment 1
   the same day: one person plus AI, every human-review step replaced with a labeled
