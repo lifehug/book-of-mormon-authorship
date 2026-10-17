@@ -10,7 +10,7 @@
 # Sections for the classical methods, language models, dating, embeddings and the
 # decision rules arrive with BOM-40 proper, once BOM-20 closes.
 
-version: 0.1
+version: 0.2
 preregistration: https://osf.io/6ugxc/
 covers: [BOM-12, BOM-14, BOM-15, BOM-16, BOM-17]
 
@@ -32,6 +32,20 @@ corpus:
     shingle: 5
     threshold: 0.8
     keep: earliest
+  # Amendment 2 (2026-10-17)
+  language_filter:
+    source_metadata: eng
+    verify: langid
+    sample_chars: 2000
+    min_probability: 0.90
+  genre_tagging:
+    labels: [sermon_devotional, pseudo_biblical, history_chronicle, fiction_narrative,
+             newspaper_periodical, legal_political, scientific_medical, other]
+    method: llm_with_logged_reasoning
+    validation_sample: 300
+  spelling_normalization:
+    pre_1700: morphadorner_emod_lexicon
+    post_1780: artifacts_only   # long-s, ligatures, OCR; no lexical modernisation
 
 sealing:
   # 4.2: drop any training volume containing a Book of Mormon string of >= 12 tokens.
@@ -39,6 +53,8 @@ sealing:
 
 kjv_mask:
   # 4.4: alignment to the KJV with passim; spans are verbatim, close paraphrase, or original.
+  # Amendment 2 (2026-10-17)
+  edition: kjv_1769_oxford_blayney
   verbatim:
     min_identity: 0.90
     min_tokens: 8
@@ -52,34 +68,21 @@ segmentation:
   ways: [narrator, dictation_order, scribe]
   chunk_words: [2000, 5000]
   split:
-    # 4.5: 5,000-word chunks are assigned to a discovery or confirmation half by a
-    # seeded random draw stratified by narrator. The procedure is registered; the seed is not.
+    # 4.5 registers the procedure; Amendment 2 (2026-10-17) registers the seed.
     applies_to_chunk_words: 5000
     stratify_by: narrator
-    # seed: see pending_amendment
+    seed: 20261017
+
+# Amendment 2 (2026-10-17). Root seed; every component seed derives from this.
+seed: 20261017
 
 # Choices these Phase 2 stages need that the pre-registration does not yet fix. Each must be
 # pinned by dated amendment before BOM-21 calibration starts (BOM-40). Absent from the config
 # above on purpose: an unregistered value written here would read as a registered one.
 pending_amendment:
-  - key: corpus.spelling_normalization
-    issue: BOM-15
-    note: method and variant map; the backlog says VARD-style
-  - key: corpus.genre_tagging
-    issue: BOM-18
-    note: how a volume gets labeled sermon, pseudo-biblical, and so on
-  - key: corpus.language_filter
-    issue: BOM-12
-    note: English only; detection method unstated
-  - key: kjv_mask.edition
-    issue: BOM-06
-    note: which KJV edition is the baseline; the text is pulled, the choice is not registered
   - key: kjv_mask.passim
     issue: BOM-16
     note: alignment parameters, n-gram size and gap settings
   - key: segmentation.boundaries_file
     issue: BOM-17
     note: the actual narrator, dictation-order and scribe boundary file; commit it and cite its hash
-  - key: segmentation.split.seed
-    issue: BOM-17
-    note: the procedure is pinned at 4.5, the seed value is not; reproducibility is undefined until it is

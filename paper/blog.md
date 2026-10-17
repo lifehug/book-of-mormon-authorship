@@ -691,6 +691,14 @@ HathiTrust (BOM-08) resolves whenever it resolves.
 
 ## Log
 
+- **2026-10-17, later.** Amendment 2 registered on OSF (revision 6ad3f82fc8f5176e336b2561,
+  approved same day): about 28 operational analytic values pinned, three of them as selection
+  procedures rather than numbers. The one that mattered was ENSC shrinkage, defaulting to 0.0 in
+  our code, which means nearest *shrunken* centroids had been running as plain nearest centroids
+  while BOM-22 replicates a study defined by that shrinkage. Filed through the OSF API; the write
+  path is undocumented, so the payload shape came from reading OSF's own source. Base model fixed
+  at 300M with the 125M pilot now a registered decision point, so the size is reported as a
+  measurement rather than a preference.
 - **2026-10-17.** BOM-11 done: 61,310 of 61,315 TCP texts, 22 GiB (EEBO 53,830, Evans 5,012,
   ECCO 2,473), two versions kept again. BOM-10 done: 158,960 of 159,146 newspaper pages
   (99.88%), 4.4 GiB; the 258 failures are absent from the batch archives and from the live

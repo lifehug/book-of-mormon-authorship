@@ -33,8 +33,9 @@ import yaml
 
 DEFAULT_CONFIG = Path(__file__).resolve().parent.parent / "config" / "preregistered.yaml"
 
-# Values fixed in paper/preregistration.md, by section. A config that disagrees with any of
-# these is rejected: changing a registered choice takes a dated OSF amendment, not an edit.
+# Values fixed in paper/preregistration.md, by section, and by its dated amendments. A config
+# that disagrees with any of these is rejected: changing a registered choice takes a dated OSF
+# amendment, not an edit.
 PINNED: dict[tuple[str, ...], Any] = {
     ("corpus", "date_range"): [1780, 1830],
     ("corpus", "ocr_max_cer"): 0.10,  # 4.3
@@ -49,6 +50,13 @@ PINNED: dict[tuple[str, ...], Any] = {
     ("kjv_mask", "paraphrase", "min_tokens"): 8,  # 4.4
     ("segmentation", "chunk_words"): [2000, 5000],  # 4.5
     ("segmentation", "split", "stratify_by"): "narrator",  # 4.5
+    # Registered by Amendment 2, 2026-10-17 (OSF revision 6ad3f82fc8f5176e336b2561).
+    ("corpus", "language_filter", "min_probability"): 0.90,
+    ("corpus", "spelling_normalization", "pre_1700"): "morphadorner_emod_lexicon",
+    ("corpus", "spelling_normalization", "post_1780"): "artifacts_only",
+    ("kjv_mask", "edition"): "kjv_1769_oxford_blayney",
+    ("segmentation", "split", "seed"): 20261017,
+    ("seed",): 20261017,
 }
 
 

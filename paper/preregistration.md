@@ -235,6 +235,8 @@ weight at or above 80%, half weight from 60% to 80%, dropped below 60%.
 
 Every change is listed here with its date and reason, and the original stays on OSF unchanged.
 
+**Amendment 2, 2026-10-17, before any calibration or analysis.** Operational analytic values left unspecified by the original registration are pinned, and several that existed only as code defaults are registered. No hypothesis, decision rule or threshold is changed. Three values are registered as selection procedures rather than numbers, because they depend on data not yet observed: the ENSC shrinkage parameter, the passim alignment parameters, and the grammatical feature list; each runs on benchmark or control data only and publishes its chosen value before the Book of Mormon is scored. The base model is fixed at 300M within the already registered 100-300M range, and the 125M pilot becomes a registered decision point reporting benchmark accuracy at both sizes. OSF revision 6ad3f82fc8f5176e336b2561, approved 2026-10-17; reasoning for each choice in `paper/amendment-002-draft.md`, registration text in `paper/amendment-002-osf-text.md`.
+
 **Amendment 1, 2026-10-15, before any data work.** The project is conducted by one person
 with AI assistance, so every step that assumed another person is replaced by a scripted or
 AI-simulated equivalent, labeled as such:
