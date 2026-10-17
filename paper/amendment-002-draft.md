@@ -1,9 +1,13 @@
 # Amendment 2 (DRAFT): pinning the remaining analytic choices
 
-**Status: draft, not filed.** Nothing here is registered until Dave submits it to
-https://osf.io/6ugxc/ with a date, and section 11 of `paper/preregistration.md` records it.
-Until then `config/preregistered.yaml` carries only the values already pinned, and these sit in
-its `pending_amendment` list.
+**Status: approved by the owner 2026-10-17, awaiting OSF filing.** Every value below is agreed.
+Nothing here is *registered* until Dave submits it to https://osf.io/6ugxc/ with a date and
+section 11 of `paper/preregistration.md` records it. Until then `config/preregistered.yaml`
+carries only the previously pinned values and these stay in its `pending_amendment` list — an
+agreed value is not a registered one, and the distinction is the whole point of the exercise.
+
+Paste-ready submission text: `paper/amendment-002-osf-text.md`. On filing, see
+"After filing" at the end of this document.
 
 **Why this exists.** The pre-registration fixed the questions, the methods and the decision
 thresholds, but left about 28 operational choices open — some unstated, some sitting as code
@@ -121,9 +125,27 @@ reproducible without scattering magic numbers.
 
 ## G. Time-locked and authorial language models
 
-**Base model — 300M parameters, preceded by the 125M pilot already in the plan.** The
-pre-registration fixes the range at 100–300M; the top of it is the strongest test the budget
-allows, and the pilot exists to find problems cheaply first.
+**Base model — 300M parameters, preceded by the 125M pilot, and the pilot is a registered
+decision point: the Phase 3 benchmark is run at both sizes and both accuracies are published.**
+
+300M is well supported rather than merely affordable. The method's own precedent — Huang,
+Murakami and Grieve's authorial language models — used GPT-2, whose base size is 124M, so this
+is about 2.4 times the published size. Against a corpus of roughly 15B tokens after dedup it
+trains at about 50 tokens per parameter, well past Chinchilla's compute-optimal 20 and in line
+with current practice, which routinely trains small models far longer than compute-optimal.
+
+Bigger is not obviously better here, which is why the range is not being raised. The signal is
+the *difference* in perplexity between fine-tuned candidate models, and a stronger base model
+assigns more uniform probability to fluent text in general, which can compress the very
+differences the method measures. Nobody has established the direction of that effect for this
+task.
+
+So the size is justified by measurement instead of assertion. Reporting benchmark accuracy at
+125M and at 300M shows whether accuracy was still climbing with scale. If it has flattened,
+300M was enough and the published numbers say so. If it is still rising steeply, that is
+evidence for a further dated amendment to train larger — argued from a result rather than from
+a preference. The pilot was already in the budget, so this costs nothing beyond publishing a
+number we will have anyway.
 
 **Tokenizer — byte-level BPE, vocabulary 32,000, trained on the 1780–1830 corpus only.**
 A modern off-the-shelf tokenizer is itself trained on modern text, including the Book of Mormon.
@@ -189,3 +211,21 @@ published before the Book of Mormon is touched.
 
 If any of these rules turns out to be unworkable, that is a further dated amendment, not a quiet
 edit.
+
+---
+
+## After filing
+
+In order, once the amendment is public on OSF:
+
+1. Add the dated entry to section 11 of `paper/preregistration.md`, with the OSF revision link.
+2. Move each value from `pending_amendment` into the body of `config/preregistered.yaml`, each
+   citing this amendment rather than a pre-registration section.
+3. Extend `metadata/config.py`'s `PINNED` map with the newly registered values, so editing one
+   fails loudly the same way the originals do.
+4. Tick the amendment box on BOM-40 and note the OSF link in the issue.
+5. Record the date in `paper/blog.md`.
+
+Steps 1–5 are Claude's to do; only the filing itself is not. The three values registered as
+rules rather than numbers stay in `pending_amendment` until their selection procedure runs on
+benchmark data, at which point the chosen value is published and moved across.
