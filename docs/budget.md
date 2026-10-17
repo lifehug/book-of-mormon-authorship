@@ -209,10 +209,24 @@ Calendar time at three paces:
 | Half time | 2.5 | 12-20 months |
 | Full time | 5 | 7-10 months |
 
-Compute never sets the pace on this plan; the owner's working days do. The items that can
-only be done by a person, and that Claude Code does not shorten, are sourcing candidate
-texts (BOM-13), hand-reviewing parallels (BOM-26), the archival access and manuscript work
-(BOM-33, BOM-34), and writing the paper (BOM-36).
+Compute never sets the pace on this plan; the owner's working days do.
+
+**Revised 2026-10-16: digitized sources only.** The project uses material that can be
+downloaded; there are no visits to physical archives. That changes which items genuinely need
+a person, because the original list assumed archive work that is not in scope:
+
+| Item | Needs a person? | Why |
+| --- | --- | --- |
+| BOM-26, reviewing parallels | **Yes** | The deliverable is an LLM-human agreement statistic. A model triaging and a model adjudicating measures a model agreeing with itself. This is the only place in the project where a human checks the machine's judgment on the evidence itself — every other review step is a labeled simulation — so it should stay even though it is the largest remaining human cost |
+| BOM-36, writing the paper | **Yes, as the author** | Claude can draft it. The owner's name is on it and every claim has to be one he can defend. Ownership, not capability |
+| BOM-33, access evidence | No | Holdings lists, catalogues and bookseller ads in period newspapers are all downloadable. Material that exists only on paper is out of scope and the gap is reported |
+| BOM-34, manuscript evidence | No | The Joseph Smith Papers transcriptions were pulled in BOM-05 and are on disk. Dictation errors, scribe changes and the production timeline are analysis of data already held |
+| BOM-13, candidate texts | Mostly no | Sourcing is searching digitized collections. The owner decides what counts as a verified holograph |
+
+So the irreducible human floor is BOM-26's review plus the owner's time reading, deciding, and
+standing behind the drafted paper, not the 40-60 days the original list implied. The phase
+estimates above are unrevised and should be treated as an upper bound until a phase actually
+completes and its actual lands in section 6.
 
 ## 5. Accounts and access
 
