@@ -646,6 +646,39 @@ extra blank line that isn't in the original file. Compare the two ignoring blank
 So the bulk text is the same text. Worth the half hour to prove rather than assume, because
 "I switched to a faster source" is exactly the kind of decision that quietly changes a corpus.
 
+## The three bugs were all mine
+
+The Internet Archive pull died overnight. My code stopped it, and the message it printed was
+"the Archive answered 429 or 503, re-run later with fewer workers". So I nearly halved the
+workers. Then Dave asked a good question: it ran seven hours at four, why change it?
+
+He was right. I looked properly. Every one of those 503s was the *same file* — `b21442502`,
+retrying five times — and there were no 429s at all in seven hours. The Archive never asked us
+to slow down. One broken item had tripped a global stop.
+
+Fixing that uncovered two more, and the clue was a contrast: the pull was managing one item a
+minute, while twelve randomly chosen pending items fetched instantly when I tested them by hand.
+If the Archive were down, the random twelve would fail too. So the problem had to be *where the
+work list was*, not the service.
+
+It was. The catalog is grouped by collection, so working through it in order meant hitting a
+long run of 1782-83 British Library items that all returned 500 — and with four workers all in
+the same bad neighbourhood, everything stalled together. Worse, each of those cost 75 seconds:
+six retries with escalating sleeps to learn what the first attempt already knew. I checked one
+of them, `threetreatisesfi1783harr2`: its metadata lists the text file, so it exists, the
+Archive just can't serve it.
+
+Three fixes. A 429 still stops everything immediately, because that one is unambiguous; a 503
+only counts once three *different* items have thrown one. Server errors give up after two tries
+and get recorded for a later pass, since the job is resumable and a second run costs only what's
+missing. And the work list is shuffled with a fixed seed, so a bad collection spreads out
+instead of blocking every worker at once.
+
+One a minute became forty-six a minute. Two hundred and thirty-four days became three and a half.
+
+The thing worth writing down: for about twenty minutes I believed the Internet Archive was
+rate-limiting us, and the evidence for that was a message my own code had written.
+
 ## What's next
 
 The extraction is running: each tarball is checked against the SHA-256 the Library publishes,
@@ -658,6 +691,12 @@ HathiTrust (BOM-08) resolves whenever it resolves.
 
 ## Log
 
+- **2026-10-17.** BOM-11 done: 61,310 of 61,315 TCP texts, 22 GiB (EEBO 53,830, Evans 5,012,
+  ECCO 2,473), two versions kept again. BOM-10 done: 158,960 of 159,146 newspaper pages
+  (99.88%), 4.4 GiB; the 258 failures are absent from the batch archives and from the live
+  service. BOM-09 recovered from 1 item/min to 46 after fixing three faults in our own
+  fetcher — a single broken file tripping a global stop, 75s wasted per unservable item, and a
+  work list ordered so one bad collection stalled every worker.
 - **2026-10-16, later still.** BOM-10 switched from the per-page API to the Library of
   Congress's bulk batch archives: all 159,146 pages live in 76 batches, 68.8 GB, downloaded by
   hand in about an hour because Cloudflare blocks scripted access. 219 days of fetching avoided.
