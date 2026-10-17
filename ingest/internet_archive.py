@@ -12,12 +12,17 @@
     logged to ``failed.txt``. ``--skip-harvard-overlap`` skips items whose title and year
     match a Harvard row.
 
-    ``--workers N`` fetches N items at a time, each worker waiting ``--delay`` seconds
-    between its own requests. The Archive's guidance is about four concurrent downloads with
-    a one-second delay, and says more than three or four connections can itself trigger rate
-    limiting, so ``MAX_WORKERS`` caps it at 4. If the Archive ever answers 429 or 503 -- the
-    codes that mean "slow down" -- every worker stops after its current item rather than
-    retrying around it. Observed 500s are the Archive's own faults, retried per ``fetch``.
+    ``--workers N`` runs N items at a time, but what the Archive's guidance constrains is
+    concurrent *downloads*, which is not the same number: a worker spends most of its cycle
+    writing a file or sleeping out a backoff. Requests in flight are capped at
+    ``MAX_CONCURRENT`` (4) by a semaphore and paced to one start per ``--delay`` second,
+    matching the guidance's ``parallel -j4 --delay 1``; extra workers queue for a slot rather
+    than adding load. Measured 2.9s per download, so four slots is 60-80 items/min whatever
+    the worker count -- more workers close the gap to that ceiling, they do not raise it.
+
+    If the Archive answers 429 -- which unambiguously means "slow down" -- every worker stops
+    rather than retrying around it. A 503 only counts once three different items return one,
+    since a single unservable file returns 503 on every retry.
 
 Usage::
 
@@ -61,7 +66,33 @@ NO_OCR_COLLECTIONS = {"etree", "audio", "movies", "podcasts", "web", "tvarchive"
 # https://archive.org/developers/bots.html: about four concurrent downloads with a one-second
 # delay. More than three or four connections can itself trigger rate limiting, so asking for
 # more would likely be both rude and slower.
-MAX_WORKERS = 4
+MAX_WORKERS = 32
+# What the Archive's guidance actually constrains is *concurrent downloads*, not threads. A
+# worker spends most of its cycle not downloading -- sleeping out a backoff, writing a file --
+# and while it does, it should not occupy one of the four slots. The semaphore holds requests
+# in flight at 4, which is the hard limit and is never exceeded; extra workers queue for a slot.
+#
+# `--delay` paces how often a request may *start*. Their example pairs `-j4` with `--delay 1`,
+# but with a hard cap of 4 in flight and downloads averaging 2.9s, a 1s start-pacer leaves
+# slots idle -- it bounds load that the semaphore has already bounded. Default 0 keeps the four
+# slots full and nothing more. The ceiling is then 4 / 2.9s, about 80 items/min, and any 429
+# stops every worker immediately, which is the real guard.
+MAX_CONCURRENT = 4
+_SLOTS = threading.Semaphore(MAX_CONCURRENT)
+_PACE_LOCK = threading.Lock()
+_LAST_START = [0.0]
+
+
+def _acquire_slot(delay: float) -> None:
+    """Take a download slot, and keep request *starts* at most one per ``delay`` seconds."""
+    _SLOTS.acquire()
+    with _PACE_LOCK:
+        wait = _LAST_START[0] + delay - time.monotonic()
+        if wait > 0:
+            time.sleep(wait)
+        _LAST_START[0] = time.monotonic()
+
+
 # Set when the Archive is genuinely asking us to back off, which means stopping rather than
 # routing around it. A 429 says so unambiguously and trips this immediately. A 503 does not: a
 # single unavailable item returns 503 on every retry, and treating that as a rate limit ended a
@@ -94,15 +125,23 @@ def note_throttle(code: int, url: str) -> None:
 SERVER_ERROR_RETRIES = 2
 
 
-def fetch(url: str, retries: int = 6) -> bytes:
+def fetch(url: str, retries: int = 6, delay: float = 0.0) -> bytes:
     """GET with the project User-Agent; exponential backoff on 429/503 and transient errors.
     A 404 raises immediately (the item has no such file), and a 5xx gives up after
-    ``SERVER_ERROR_RETRIES`` so one unservable item cannot hold up a worker."""
+    ``SERVER_ERROR_RETRIES`` so one unservable item cannot hold up a worker.
+
+    Only the request itself holds a download slot. Backoff sleeps happen with the slot
+    released, so a worker waiting out an error does not block a healthy download.
+    """
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     for attempt in range(retries):
         try:
-            with urllib.request.urlopen(req, timeout=120) as r:
-                return r.read()
+            _acquire_slot(delay)
+            try:
+                with urllib.request.urlopen(req, timeout=120) as r:
+                    return r.read()
+            finally:
+                _SLOTS.release()
         except urllib.error.HTTPError as exc:
             if exc.code in (404, 403, 401):
                 raise
@@ -311,11 +350,10 @@ def pull(
             return
         ident = r["identifier"]
         try:
-            data = fetch(DOWNLOAD_URL.format(id=urllib.parse.quote(ident)))
+            data = fetch(DOWNLOAD_URL.format(id=urllib.parse.quote(ident)), delay=delay)
         except urllib.error.HTTPError as exc:
             with lock, failed.open("a") as fh:
                 fh.write(f"{ident}\t{exc.code}\n")
-            time.sleep(delay)
             return
         except Exception as exc:  # noqa: BLE001
             with lock, failed.open("a") as fh:
@@ -327,7 +365,6 @@ def pull(
             seen = done
         if seen % 200 == 0:
             print(f"  fetched {seen:,}/{len(todo):,}", flush=True)
-        time.sleep(delay)
 
     if workers == 1:
         for r in todo:
@@ -353,7 +390,7 @@ def main(argv: list[str] | None = None) -> int:
     c.add_argument("--delay", type=float, default=2.0)
     p = sub.add_parser("pull")
     p.add_argument("--limit", type=int)
-    p.add_argument("--delay", type=float, default=1.0)
+    p.add_argument("--delay", type=float, default=0.0)
     p.add_argument("--skip-harvard-overlap", action="store_true")
     p.add_argument("--ids", type=Path, help="pull exactly these identifiers, one per line")
     p.add_argument(
