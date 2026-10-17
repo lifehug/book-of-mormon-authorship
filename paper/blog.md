@@ -583,16 +583,89 @@ that need a separate agreement Google may not give an independent researcher. Th
 24,261 of them were digitized by the Internet Archive, and the pull that's running right now is
 already fetching them. So the waiting costs nothing either.
 
+## Two hundred and nineteen days
+
+The newspapers went wrong. The fetcher asks the Library of Congress's text service for one page
+at a time, and that service started returning HTTP 500 errors — not "slow down", just "broken".
+My code did the polite thing and backed off: five seconds, then ten, twenty, forty, eighty. Most
+pages did eventually arrive, 96% of them, but each one cost about a minute of sleeping. The rate
+fell to half a page a minute. All 159,146 pages would have taken **219 days**.
+
+The Internet Archive was failing the same way, though not as badly. Same 500s, same backoff, 25
+days to finish. Two different organizations having a bad day at the same time, which I'd have
+guessed was my network if a third download hadn't been running at full speed the whole time.
+
+The Archive was the easy fix. Their own developer guidance says about four concurrent downloads
+with a one second delay, and warns that more than three or four connections can itself trip rate
+limiting. I'd been running one. Four workers means the ones that aren't asleep in a backoff keep
+fetching. It went from 7 items a minute to 53, so 25 days became about four. If they ever answer
+429 or 503 — the codes that actually mean slow down — every worker stops. That's the line: 500s
+are their fault and worth retrying around, 429s are them asking, and you don't argue.
+
+The newspapers needed a different idea, so I went and read. It turns out the Library of Congress
+publishes all of this in bulk, as batch archives, specifically for text and data mining. I
+checked our catalog against the batch list: every one of our 159,146 pages sits in just **76
+batches**, about 69 GB. Hours, not months.
+
+Then I did something stupid. To find out how big those 76 files were I sent 76 requests, eight
+at a time. The Library of Congress rate-limited me, which is exactly what should happen, and I
+deserved it. One request would have told me the average and I could have multiplied by 76. I
+backed off, waited twenty-five minutes, tried once more, still blocked, and stopped.
+
+But the block turned out not to be about the rate at all. The download URL answers scripted
+requests with a Cloudflare "Just a moment..." challenge — a 5.6 KB HTML page where the 3 MB file
+should be. A real browser passes that check. A human can download these; a script can't.
+
+So I made a list — all 76, sorted by how many of our pages each one holds, with a running total
+so you can stop early — and clicked through them myself over about an hour. The first batch
+alone, 0.74 GB, holds 10,096 of our pages: four times what the per-page fetcher had managed all
+day. Twenty-five batches got us past three quarters. All 76 came in at 68.8 GB, and every one
+matched the byte-exact size the Library publishes.
+
+That hour of clicking replaced 219 days.
+
+Two small things I had to fix along the way, both the same bug in different clothes. Chrome
+writes an in-progress download as `Unconfirmed 286909.crdownload`, hiding the real filename
+until it finishes, so my "what's still missing" script couldn't see what was in flight and kept
+handing back files that were already downloading. That cost about 5 GB of duplicate downloads
+before I noticed. It now counts the hidden ones and skips that many places down the list, which
+costs nothing and can't collide.
+
+## Checking the shortcut was really the same thing
+
+A faster route to the same data is only useful if it *is* the same data. We had 4,286 pages
+fetched both ways — slowly through the API, and now out of the tarballs — so I compared them.
+
+1,319 identical, 1,066 different. That's a bad feeling for a second.
+
+The differences were one to three bytes each, and all of them were blank lines. The API returns
+a page as JSON segments and my code joins them with a newline, so an empty segment leaves an
+extra blank line that isn't in the original file. Compare the two ignoring blank lines and all
+2,490 overlapping pages match, word for word, with zero exceptions.
+
+So the bulk text is the same text. Worth the half hour to prove rather than assume, because
+"I switched to a faster source" is exactly the kind of decision that quietly changes a corpus.
+
 ## What's next
 
-Let the four downloads finish. Then Phase 2: deduplicate, fix the OCR, normalize the spelling,
-mask the King James quotations, and cut the text into segments. HathiTrust (BOM-08) resolves
-whenever it resolves.
+The extraction is running: each tarball is checked against the SHA-256 the Library publishes,
+only the 1800-1830 pages get pulled out, and the archive is deleted afterwards so 69 GB of
+tarballs doesn't have to live on the disk forever. Then Phase 2: deduplicate, fix the OCR,
+normalize the spelling, mask the King James quotations, and cut the text into segments.
+HathiTrust (BOM-08) resolves whenever it resolves.
 
 ---
 
 ## Log
 
+- **2026-10-16, later still.** BOM-10 switched from the per-page API to the Library of
+  Congress's bulk batch archives: all 159,146 pages live in 76 batches, 68.8 GB, downloaded by
+  hand in about an hour because Cloudflare blocks scripted access. 219 days of fetching avoided.
+  Validated before trusting it: of 2,490 pages held both ways, every one matches word for word,
+  the only difference being blank lines the API route introduces when joining JSON segments.
+  BOM-09 parallelised to 4 workers per the Archive's published guidance (7/min to 53/min, 25
+  days to ~4), stopping hard on 429/503. Got myself rate-limited by the Library of Congress
+  first, by sizing 76 files eight at a time; recorded so it is not repeated.
 - **2026-10-16, later.** BOM-09, BOM-10 and BOM-11 pulls all started and running together on
   the mini: Internet Archive (251,204 items, measured 16.2/min, about 11 days), Chronicling
   America (159,146 pages), TCP (61,315 texts). Separate hosts, separate rate limits, no reason
