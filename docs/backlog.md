@@ -478,9 +478,16 @@ Phase 6 stress-tests the methods, runs the sealed analysis blind, and combines t
 **Goal:** establish which candidate sources Joseph Smith could plausibly have read before 1829.
 
 Digitized sources only (decision 2026-10-16): holdings lists, catalogues and newspapers that can
-be downloaded. No visits to physical archives. Anything that exists only on paper is out of
-scope and the gap is reported rather than filled. This is a real limit on the access evidence
-and the paper states it.
+be downloaded. No visits to physical archives.
+
+For this period and this material that is close to no restriction at all. Pre-1830 American
+imprints are covered by HathiTrust, Google Books and the Internet Archive; the newspapers are in
+Chronicling America; the Joseph Smith Papers is complete online. What limits the access evidence
+is not digitization but the historical record itself: nobody wrote down what Joseph Smith
+borrowed, and lending registers for a village rental library are unlikely to survive anywhere, in
+any format. The ceiling is "this book was demonstrably available in the area", never "he read
+it", and that ceiling is the same whether the work is done on a screen or in a reading room. The
+paper states the limit in those terms rather than blaming the medium.
 
 - [ ] Compile the Manchester rental library holdings list
 - [ ] List local newspapers and what they printed or advertised (including bookseller ads)

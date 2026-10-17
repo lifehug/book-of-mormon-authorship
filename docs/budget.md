@@ -219,7 +219,7 @@ a person, because the original list assumed archive work that is not in scope:
 | --- | --- | --- |
 | BOM-26, reviewing parallels | **Yes** | The deliverable is an LLM-human agreement statistic. A model triaging and a model adjudicating measures a model agreeing with itself. This is the only place in the project where a human checks the machine's judgment on the evidence itself — every other review step is a labeled simulation — so it should stay even though it is the largest remaining human cost |
 | BOM-36, writing the paper | **Yes, as the author** | Claude can draft it. The owner's name is on it and every claim has to be one he can defend. Ownership, not capability |
-| BOM-33, access evidence | No | Holdings lists, catalogues and bookseller ads in period newspapers are all downloadable. Material that exists only on paper is out of scope and the gap is reported |
+| BOM-33, access evidence | No | Holdings lists, catalogues and bookseller ads in period newspapers are all downloadable, and for pre-1830 American imprints digitization is close to complete. What limits this evidence is the historical record, not the medium: no one recorded what Joseph Smith borrowed, so the ceiling is "demonstrably available in the area", reachable from a screen as well as a reading room |
 | BOM-34, manuscript evidence | No | The Joseph Smith Papers transcriptions were pulled in BOM-05 and are on disk. Dictation errors, scribe changes and the production timeline are analysis of data already held |
 | BOM-13, candidate texts | Mostly no | Sourcing is searching digitized collections. The owner decides what counts as a verified holograph |
 
