@@ -477,6 +477,11 @@ Phase 6 stress-tests the methods, runs the sealed analysis blind, and combines t
 
 **Goal:** establish which candidate sources Joseph Smith could plausibly have read before 1829.
 
+Digitized sources only (decision 2026-10-16): holdings lists, catalogues and newspapers that can
+be downloaded. No visits to physical archives. Anything that exists only on paper is out of
+scope and the gap is reported rather than filled. This is a real limit on the access evidence
+and the paper states it.
+
 - [ ] Compile the Manchester rental library holdings list
 - [ ] List local newspapers and what they printed or advertised (including bookseller ads)
 - [ ] Score each candidate source from #26 for documented availability
@@ -487,6 +492,10 @@ Phase 6 stress-tests the methods, runs the sealed analysis blind, and combines t
 ### #34 Gather manuscript and dictation evidence
 
 **Goal:** bring the physical evidence of how the text was produced into the analysis.
+
+"Physical" means the evidence the manuscripts carry, not handling them. The Joseph Smith Papers
+transcriptions pulled in BOM-05 are the source, and they are already on disk, so this is
+analysis rather than archival work.
 
 - [ ] Catalog dictation-type errors in the original manuscript (misheard words, spelling corrections)
 - [ ] Map scribe changes and check whether style shifts track scribes or narrators
