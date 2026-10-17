@@ -31,6 +31,7 @@ from __future__ import annotations
 import argparse
 import gzip
 import json
+import random
 import re
 import sys
 import threading
@@ -61,14 +62,42 @@ NO_OCR_COLLECTIONS = {"etree", "audio", "movies", "podcasts", "web", "tvarchive"
 # delay. More than three or four connections can itself trigger rate limiting, so asking for
 # more would likely be both rude and slower.
 MAX_WORKERS = 4
-# Set when the Archive answers 429 or 503. Those are the codes that mean "slow down", and the
-# answer is to stop, not to route around them.
+# Set when the Archive is genuinely asking us to back off, which means stopping rather than
+# routing around it. A 429 says so unambiguously and trips this immediately. A 503 does not: a
+# single unavailable item returns 503 on every retry, and treating that as a rate limit ended a
+# healthy 7-hour run over one broken file (b21442502, 2026-10-17) having seen no 429 at all. So
+# 503 only counts once it has come from several *different* items.
 THROTTLED = threading.Event()
+_SICK_503: set[str] = set()
+_SICK_LOCK = threading.Lock()
+SICK_503_LIMIT = 3
+
+
+def note_throttle(code: int, url: str) -> None:
+    """Record a 429/503 and trip ``THROTTLED`` when it really is a rate limit."""
+    if code == 429:
+        THROTTLED.set()
+        return
+    item = url.rsplit("/download/", 1)[-1].split("/", 1)[0]
+    with _SICK_LOCK:
+        _SICK_503.add(item)
+        if len(_SICK_503) >= SICK_503_LIMIT:
+            THROTTLED.set()
+
+
+# A 500 here does not mean "try harder". The file usually exists -- item metadata lists the
+# _djvu.txt -- and the Archive simply cannot serve it at the moment. Six attempts with
+# escalating sleeps costs about 75 seconds to learn that, and when the work list hits a run of
+# such items every worker stalls at once: measured at 1 item/min on 2026-10-17 while 12 of 12
+# randomly chosen pending items fetched instantly. Give up quickly, record it, and let a later
+# pass retry; `pull` is resumable, so a second run costs only the items still missing.
+SERVER_ERROR_RETRIES = 2
 
 
 def fetch(url: str, retries: int = 6) -> bytes:
     """GET with the project User-Agent; exponential backoff on 429/503 and transient errors.
-    A 404 raises immediately (the item has no such file)."""
+    A 404 raises immediately (the item has no such file), and a 5xx gives up after
+    ``SERVER_ERROR_RETRIES`` so one unservable item cannot hold up a worker."""
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     for attempt in range(retries):
         try:
@@ -78,7 +107,9 @@ def fetch(url: str, retries: int = 6) -> bytes:
             if exc.code in (404, 403, 401):
                 raise
             if exc.code in (429, 503):
-                THROTTLED.set()
+                note_throttle(exc.code, url)
+            elif exc.code >= 500 and attempt >= SERVER_ERROR_RETRIES - 1:
+                raise
             wait = 15 * 2**attempt if exc.code in (429, 503) else 5 * (attempt + 1)
             ra = exc.headers.get("Retry-After") if exc.headers else None
             if ra and ra.isdigit():
@@ -263,6 +294,10 @@ def pull(
         r for r in recs if not (txt_dir / f"{r['identifier']}.txt").exists()
         and r["identifier"] not in skip
     ]  # fmt: skip
+    # Shuffle, deterministically. The catalog is grouped by collection, so in list order a run
+    # of unservable items from one collection stalls every worker at the same time. Spreading
+    # them out keeps the healthy majority flowing. Seeded so a resumed run is reproducible.
+    random.Random(0).shuffle(todo)
     if limit:
         todo = todo[:limit]
     workers = max(1, min(workers, MAX_WORKERS))
