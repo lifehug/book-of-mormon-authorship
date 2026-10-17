@@ -256,6 +256,10 @@ Local credential files (never in the repo): `~/.config/osf/token`, `~/.config/hu
 | Institutional Books pull, wall time | not estimated | 11h38m on the Mac mini (18:00 to 05:38, including a 2-minute stop to move `data/corpus` to the external SSD), about 12 shards/min, no failed shards | BOM-07 | 2026-10-16 |
 | External SSD | 2 TB, $150-200 | Samsung T7 2 TB, APFS case-sensitive and journaled, mounted `/Volumes/bomdata`; 130 GiB of its 1.8 TiB used, of which 73 GiB is corpus and about 57 GiB is a Spotlight index that should be disabled | BOM-04 | 2026-10-16 |
 | T7 read throughput | not estimated | about 470 MB/s: each 37 GiB manifest build hashed in 79s | BOM-07 | 2026-10-16 |
+| TCP texts | about 25 GB XML | **22 GiB**: 13 GiB TEI XML plus 8.5 GiB extracted text, both kept, 61,310 of 61,315 texts (EEBO 53,830, Evans 5,012, ECCO 2,473). Two versions again, as with Institutional Books | BOM-11 | 2026-10-17 |
+| Chronicling America | under 5 GB | **4.4 GiB**, 158,960 of 159,146 pages (99.88%). Estimate was right; the route was not — see below | BOM-10 | 2026-10-17 |
+| Chronicling America route | per-page API, "1-2 days at the rate limit" | The API was not rate-limited but broken: `tile.loc.gov` returned HTTP 500 often enough that pages cost about a minute each in backoff, measured at 0.5-3 pages/min, i.e. **219 days**. Switched to the bulk batch archives: 76 tarballs, 68.8 GB, downloaded by hand because Cloudflare blocks scripted access, extracted in under 3 hours | BOM-10 | 2026-10-17 |
+| Internet Archive | 10-20 GB | in progress; 27,700 of 251,204 items so far. Rate recovered from 1/min to 46/min after fixing three faults in our own fetcher, not the Archive's | BOM-09 | 2026-10-17 |
 
 ## Sources
 

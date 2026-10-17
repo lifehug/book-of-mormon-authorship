@@ -32,6 +32,20 @@ The New York, Pennsylvania, and Ohio pages (`pull --states NY,PA,OH`, 3,472 page
 were pulled on 2026-10-15; their checksums are `data/manifests/chronicling_america_nypaoh.jsonl`.
 Re-running the same command on another machine reproduces them.
 
+**TCP (BOM-11) completed 2026-10-17.** 61,310 of 61,315 texts, 22 GiB: 8.5 GiB of extracted
+text in `data/corpus/tcp/text` and 13 GiB of TEI XML in `data/corpus/tcp/xml`, one file each per
+text. By collection: EEBO 53,830, Evans 5,012, ECCO 2,473. Manifest:
+`data/manifests/tcp.jsonl` (122,621 records, both versions). The 5 missing are 404s listed in
+`data/corpus/tcp/failed.txt`; those identifiers are in the index but have no file at the TCP
+GitHub repositories. Note this source ships two versions per text, like Institutional Books.
+
+**Chronicling America (BOM-10) completed 2026-10-17.** 158,960 of 159,146 pages, 4.4 GiB,
+extracted from the bulk batch archives rather than the per-page API (see
+`docs/chronam-bulk-download.md`). Manifest: `data/manifests/chronicling_america.jsonl`.
+The 258 failures in `data/corpus/chronicling_america/failed.txt` are 257 HTTP 500s and one 520
+from `tile.loc.gov`; those pages are absent from the batch archives and could not be recovered
+from the live service either. 99.88% of the catalogued pages are on disk.
+
 The Institutional Books pull completed 2026-10-16 05:38 on the Mac mini: all 9,831 shards read,
 **31,958 volumes**, no failures. Two OCR versions are kept, one file per volume, 37 GiB each:
 
