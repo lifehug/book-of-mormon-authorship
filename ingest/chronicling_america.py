@@ -26,19 +26,39 @@ calls and 0.5 s between text calls, with exponential backoff on HTTP 429.
     ``data/corpus/chronicling_america/text/<lccn>/<date>-ed<e>-seq<s>.txt``. Resumable;
     failures are listed in ``data/corpus/chronicling_america/failed.txt``.
 
+    Slow, and not because of a rate limit: ``tile.loc.gov`` returns HTTP 500 often enough that
+    most of each page's time is spent in backoff. Measured at 0.5-3 pages/min, which is about
+    219 days for all 159,146. Prefer ``bulk``.
+
+``bulk``
+    Extracts the same pages from the batch tarballs the Library of Congress publishes for text
+    and data mining, which is hours rather than months. The tarballs cannot be fetched by
+    script -- Cloudflare answers with a challenge page -- so a person downloads them in a
+    browser first; ``docs/chronam-bulk-download.md`` is the walkthrough and
+    ``scripts/chronam_status.py`` tracks which are still missing.
+
+    Each archive is verified against the ``sha256`` in
+    ``data/catalog/chronicling_america_batches.json`` before anything is read out of it. Only
+    pages named in the catalog are extracted; a batch also holds pages outside 1780-1830 and
+    those are skipped. Finished batches are recorded in ``batches_done.txt`` and their tarballs
+    deleted, so the 69 GB of archives does not have to be kept.
+
 Usage::
 
     python -m ingest.chronicling_america catalog
     python -m ingest.chronicling_america pull [--limit N] [--states NY,PA,OH]
+    python -m ingest.chronicling_america bulk [--incoming DIR] [--limit N] [--keep]
 """
 
 from __future__ import annotations
 
 import argparse
 import gzip
+import hashlib
 import json
 import re
 import sys
+import tarfile
 import time
 import urllib.error
 import urllib.request
@@ -55,7 +75,11 @@ TEXT_URL = (
 )
 CATALOG = Path("data/catalog/chronicling_america.jsonl.gz")  # 159k rows; gzipped for GitHub
 SUMMARY = Path("data/catalog/chronicling_america_summary.md")
+# The 76 batches holding our pages, with the size and sha256 the Library of Congress publishes.
+BATCHES = Path("data/catalog/chronicling_america_batches.json")
 CORPUS = Path("data/corpus/chronicling_america")
+# Where the hand-downloaded tarballs land (docs/chronam-bulk-download.md).
+INCOMING = Path("/Volumes/bomdata/incoming/chronam")
 USER_AGENT = "bom-authorship-research/0.1 (+https://github.com/lifehug/book-of-mormon-authorship)"
 PRIORITY = {"New York": "NY", "Pennsylvania": "PA", "Ohio": "OH"}
 STATE_CODES = {
@@ -233,6 +257,99 @@ def page_path(row: dict) -> Path:
     return CORPUS / "text" / row["lccn"] / name
 
 
+# A batch member looks like ``sn84024011/1800/12/08/ed-1/seq-1/ocr.txt``; the same page is
+# ``text/sn84024011/1800-12-08-ed1-seq1.txt`` on disk, so both routes agree.
+MEMBER = re.compile(
+    r"(?:^|/)(?P<lccn>[a-z]{2}\d+)/(?P<y>\d{4})/(?P<m>\d{2})/(?P<d>\d{2})/"
+    r"ed-(?P<ed>\d+)/seq-(?P<seq>\d+)/ocr\.txt$"
+)
+
+
+def member_key(name: str) -> tuple[str, str, str, str] | None:
+    """``(lccn, date, edition, sequence)`` for an OCR member, or None if it is not one."""
+    m = MEMBER.search(name)
+    if not m:
+        return None
+    return (
+        m["lccn"],
+        f"{m['y']}-{m['m']}-{m['d']}",
+        str(int(m["ed"])),
+        str(int(m["seq"])),
+    )
+
+
+def sha256_of(path: Path, chunk: int = 1 << 22) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as fh:
+        for block in iter(lambda: fh.read(chunk), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def bulk(incoming: Path, limit: int | None, keep: bool) -> int:
+    """Extract catalogued pages from downloaded batch tarballs."""
+    if not BATCHES.exists():
+        print(f"no batch manifest at {BATCHES}", file=sys.stderr)
+        return 1
+    expect = {b["batch"]: b for b in json.loads(BATCHES.read_text())}
+
+    with gzip.open(CATALOG, "rt", encoding="utf-8") as fh:
+        rows = [json.loads(line) for line in fh]
+    # Key every catalogued page so a tar member can be matched in one lookup.
+    want = {
+        (r["lccn"], r["date"], str(r["edition"]), str(r["sequence"])): r
+        for r in rows
+        if r.get("ocr_url")
+    }
+
+    done_file = CORPUS / "batches_done.txt"
+    done = set(done_file.read_text().split()) if done_file.exists() else set()
+    tarballs = sorted(p for p in incoming.glob("*.tar.bz2") if p.stem[:-4] not in done)
+    if limit:
+        tarballs = tarballs[:limit]
+    print(f"{len(tarballs)} batch(es) to extract; {len(done)} already done")
+
+    CORPUS.mkdir(parents=True, exist_ok=True)
+    total_new = total_skip = 0
+    for path in tarballs:
+        batch = path.name[: -len(".tar.bz2")]
+        rec = expect.get(batch)
+        if rec and rec.get("sha256"):
+            if sha256_of(path) != rec["sha256"]:
+                print(f"  {batch}: SHA256 MISMATCH, leaving in place", file=sys.stderr)
+                continue
+        new = skip = 0
+        # Streamed ("r|bz2"): the archives are up to 3.4 GB and only read once.
+        with tarfile.open(path, "r|bz2") as tar:
+            for member in tar:
+                if not member.isfile():
+                    continue
+                key = member_key(member.name)
+                if key is None or key not in want:
+                    skip += 1
+                    continue
+                out = page_path(want[key])
+                if out.exists():
+                    skip += 1
+                    continue
+                handle = tar.extractfile(member)
+                if handle is None:
+                    continue
+                out.parent.mkdir(parents=True, exist_ok=True)
+                out.write_bytes(handle.read())
+                new += 1
+        total_new += new
+        total_skip += skip
+        done.add(batch)
+        done_file.write_text("\n".join(sorted(done)) + "\n")
+        if not keep:
+            path.unlink()
+        print(f"  {batch}: +{new:,} pages (skipped {skip:,}){'' if keep else ', tarball deleted'}")
+    have = sum(1 for r in rows if r.get("ocr_url") and page_path(r).exists())
+    print(f"extracted {total_new:,} new pages; {have:,}/{len(want):,} of the catalog on disk")
+    return 0
+
+
 def parse_text(payload: bytes) -> str:
     """Page text from the text-service JSON ({segment: {"full_text": ...}})."""
     data = json.loads(payload)
@@ -307,9 +424,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--limit", type=int)
     p.add_argument("--delay", type=float, default=0.5)
     p.add_argument("--states", help="comma-separated codes, e.g. NY,PA,OH")
+    b = sub.add_parser("bulk")
+    b.add_argument("--incoming", type=Path, default=INCOMING)
+    b.add_argument("--limit", type=int, help="only this many batches")
+    b.add_argument("--keep", action="store_true", help="do not delete the tarball afterwards")
     a = ap.parse_args(argv)
     if a.cmd == "catalog":
         return catalog(a.delay)
+    if a.cmd == "bulk":
+        return bulk(a.incoming, a.limit, a.keep)
     states = {s.strip().upper() for s in a.states.split(",")} if a.states else None
     return pull(a.limit, a.delay, states)
 
