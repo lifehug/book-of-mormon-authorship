@@ -259,8 +259,10 @@ def page_path(row: dict) -> Path:
 
 # A batch member looks like ``sn84024011/1800/12/08/ed-1/seq-1/ocr.txt``; the same page is
 # ``text/sn84024011/1800-12-08-ed1-seq1.txt`` on disk, so both routes agree.
+# The LCCN segment is not always ``sn`` plus digits: a few catalog rows carry a bare numeric
+# LCCN such as ``2018270507``, so match any non-slash run rather than a prefix shape.
 MEMBER = re.compile(
-    r"(?:^|/)(?P<lccn>[a-z]{2}\d+)/(?P<y>\d{4})/(?P<m>\d{2})/(?P<d>\d{2})/"
+    r"(?:^|/)(?P<lccn>[^/]+)/(?P<y>\d{4})/(?P<m>\d{2})/(?P<d>\d{2})/"
     r"ed-(?P<ed>\d+)/seq-(?P<seq>\d+)/ocr\.txt$"
 )
 
