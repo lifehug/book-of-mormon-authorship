@@ -214,6 +214,31 @@ edit.
 
 ---
 
+## Before filing: the OSF token
+
+**Owner action, one-time, on the Mac mini.** Claude can file the amendment through the OSF API
+but has no credential: `~/.config/osf/token` does not exist. `CLAUDE.md` bars public or
+irreversible acts *without asking*, which is a condition rather than a prohibition — the owner
+has asked, so the only thing missing is the token.
+
+1. https://osf.io/settings/tokens → Create token
+2. Scope **`osf.full_write`** (read-only will not do), name it `bom-authorship-amendments`
+3. Save it, mode 600:
+
+   ```sh
+   mkdir -p ~/.config/osf && chmod 700 ~/.config/osf
+   printf '%s' 'PASTE_TOKEN_HERE' > ~/.config/osf/token && chmod 600 ~/.config/osf/token
+   ```
+
+   Or copy it to the clipboard and tell Claude, which writes it to the file without the token
+   passing through the conversation.
+
+Then say "file the amendment". Claude verifies the schema-response endpoints against
+developer.osf.io, reads the registration's schema blocks, builds the revision payload, and
+**shows the exact payload and endpoint before submitting**. Filing only happens on an explicit
+go-ahead: this is public, permanent, attached to the owner's name, and a malformed amendment on
+a scientific registration stays visible to anyone who later reads the paper.
+
 ## After filing
 
 In order, once the amendment is public on OSF:

@@ -99,7 +99,7 @@ Credentials live outside the repo, one file each, mode 600. Create them on the m
 way they exist on the desktop (copy with `scp`, never commit, never paste into a chat):
 
 ```
-~/.config/osf/token            OSF personal access token (only needed for amendments)
+~/.config/osf/token            OSF personal access token -- NEEDED NOW, see below
 ~/.config/huggingface/token    Hugging Face write token (account: etherfuse)
 ~/.config/runpod/token         RunPod restricted API key (base-model run only)
 ```
@@ -109,6 +109,18 @@ mkdir -p ~/.config/osf ~/.config/huggingface ~/.config/runpod
 chmod 700 ~/.config/osf ~/.config/huggingface ~/.config/runpod
 # then scp each token file from the desktop and chmod 600 it
 ```
+
+**Outstanding as of 2026-10-17: the OSF token does not exist on this machine**, and Amendment 2
+is approved and waiting to be filed (`paper/amendment-002-osf-text.md`). Create one at
+https://osf.io/settings/tokens with scope `osf.full_write`, then:
+
+```sh
+printf '%s' 'PASTE_TOKEN_HERE' > ~/.config/osf/token && chmod 600 ~/.config/osf/token
+```
+
+Claude can file the amendment through the OSF API once the token exists, and will show the
+payload and endpoint before anything is submitted. See "Before filing" in
+`paper/amendment-002-draft.md`.
 
 ## 6. Get the data
 
