@@ -94,24 +94,35 @@ def _acquire_slot(delay: float) -> None:
 
 
 # Set when the Archive is genuinely asking us to back off, which means stopping rather than
-# routing around it. A 429 says so unambiguously and trips this immediately. A 503 does not: a
-# single unavailable item returns 503 on every retry, and treating that as a rate limit ended a
-# healthy 7-hour run over one broken file (b21442502, 2026-10-17) having seen no 429 at all. So
-# 503 only counts once it has come from several *different* items.
+# routing around it. A 429 says so unambiguously and trips this immediately.
+#
+# A 503 does not, and getting this right took two tries. First version tripped on any 503, and
+# one unservable file (b21442502) ended a healthy 7-hour run. Second version required three
+# *different* items, but counted them cumulatively over the whole run, so a 16-hour run tripped
+# at 00:04 on the third flaky item it had met all night -- which says nothing about load. Both
+# runs saw zero 429s.
+#
+# What distinguishes a rate limit from bad luck is *density*: several different items failing
+# close together. So 503s are counted in a sliding window and only a burst trips the stop.
 THROTTLED = threading.Event()
-_SICK_503: set[str] = set()
+_SICK_503: dict[str, float] = {}
 _SICK_LOCK = threading.Lock()
 SICK_503_LIMIT = 3
+SICK_503_WINDOW = 120.0  # seconds
 
 
 def note_throttle(code: int, url: str) -> None:
-    """Record a 429/503 and trip ``THROTTLED`` when it really is a rate limit."""
+    """Record a 429/503 and trip ``THROTTLED`` only when it really is a rate limit."""
     if code == 429:
         THROTTLED.set()
         return
     item = url.rsplit("/download/", 1)[-1].split("/", 1)[0]
+    now = time.monotonic()
     with _SICK_LOCK:
-        _SICK_503.add(item)
+        _SICK_503[item] = now
+        for k, t in list(_SICK_503.items()):
+            if now - t > SICK_503_WINDOW:
+                del _SICK_503[k]
         if len(_SICK_503) >= SICK_503_LIMIT:
             THROTTLED.set()
 
