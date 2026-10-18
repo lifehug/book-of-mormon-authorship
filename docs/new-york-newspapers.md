@@ -62,6 +62,28 @@ Before any of that, two things need checking in a browser, and neither takes lon
 The Wayne Sentinel needs no such check — it is confirmed, and its 1823-1830 issues can be
 pulled whenever the route is built.
 
+## Links to check
+
+Browser only — both sites answer scripted requests with a Cloudflare challenge.
+
+**Ontario Phoenix** (`sn84031006`), the one that matters most:
+- https://nyshistoricnewspapers.org/lccn/sn84031006/
+- https://nyshistoricnewspapers.org/newspapers/ (title search, if the LCCN 404s)
+- https://chroniclingamerica.loc.gov/lccn/sn84031006/ (LoC record, confirms Phelps as publisher)
+
+Looking for: issues listed for 1828, 1829, 1830.
+
+**Lake Light** (`sn84031024`):
+- https://www.loc.gov/item/sn84031024/
+- https://nyshistoricnewspapers.org/lccn/sn84031024/
+- https://communityhistoryarchives.com/places/ulysses-philomathic-library-2/
+
+Looking for: coverage of 1827-1828, and whether text is downloadable or image-only.
+
+**Wayne Sentinel** (`sn84024337`), confirmed, no check needed:
+- https://nyshistoricnewspapers.org/lccn/sn84024337/
+- https://nyshistoricnewspapers.org/lccn/sn84024337/1829-06-26/ed-1/seq-1/ — the issue carrying the Book of Mormon title page
+
 ## What it does not fix
 
 Even complete, this is availability evidence, not readership evidence. That a paper printed
