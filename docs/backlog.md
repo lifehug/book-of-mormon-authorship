@@ -276,6 +276,23 @@ Phase 3 proves the toolkit works on known answers and reproduces earlier studies
 **Done when:** all methods pass tests and run on the frozen corpus.
 **Depends on:** #19.
 
+### #41 Ingest the New York newspapers Chronicling America lacks
+
+**Goal:** the Palmyra paper and the two papers a candidate edited, neither of which is in the national collection.
+
+Chronicling America holds 47 New York pages for all of 1800-1830. Missing from it: the *Wayne Sentinel* (Palmyra, LCCN `sn84024337`), which printed the Book of Mormon title page on 26 June 1829 and the sale advertisement on 26 March 1830; and the *Ontario Phoenix* (Canandaigua, `sn84031006`, 1828-1832) and *Lake Light* (Trumansburg, `sn84031024`, 1827-1829), both published by W. W. Phelps — a named candidate with no pre-1830 writing sample at all. Full analysis in `docs/new-york-newspapers.md`.
+
+- [ ] **Owner action, blocks the rest:** check in a browser whether NYS Historic Newspapers holds the *Ontario Phoenix* for 1828-1830, and whether the Ulysses Philomathic Library archive holds the *Lake Light* for 1827-1828. Both sites block scripted access
+- [ ] Pull the *Wayne Sentinel* 1823-1830 (confirmed digitized, about 1,400 issues across its full run)
+- [ ] Pull the Phelps papers if the check above finds them
+- [ ] Write the manifest and `SOURCES.md`; record which titles were found and which were not
+- [ ] Add the Phelps text to the candidate corpus (#13) with an attribution rule: two named publishers and heavy reprinting mean unsigned editorial matter is not automatically his
+- [ ] Feed the *Wayne Sentinel* into the access evidence (#33)
+
+**Done when:** the available titles are stored with manifests, and any title that could not be obtained is recorded with the reason.
+**Depends on:** #10.
+**Feeds:** #13 (Phelps's pre-1830 sample), #33 (what was printed and advertised near Palmyra).
+
 ### #40 Central configuration file and multiverse runner
 
 **Goal:** every analytic choice lives in one versioned config file, the whole pipeline reads only from it, and anyone can rerun everything with different choices and compare outcomes.

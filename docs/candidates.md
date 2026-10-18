@@ -172,11 +172,29 @@ How to fetch: `--id <id>`. Many later pamphlets (1840-1856) are also on IA under
 ## W. W. Phelps
 
 Phelps edited anti-Masonic newspapers before 1830, the *Lake Light* (Trumansburg, 1827-1828)
-and the *Ontario Phoenix* (Canandaigua, 1828-1831). No digitized copy of either paper was found
-(searched Library of Congress / Chronicling America and New York State Library listings), so
-there is no pre-1830 sample yet. Finding microfilm of the *Ontario Phoenix* is the biggest open
-gap in this inventory, because it would be pre-1830 prose from a candidate who lived eleven
-miles from the Smiths.
+and the *Ontario Phoenix* (Canandaigua, 1828-1832). This is the biggest open gap in the
+inventory: pre-1830 prose from a candidate who lived eleven miles from the Smiths, written
+while the Book of Mormon was being dictated.
+
+**Updated 2026-10-17 (BOM-41).** Both papers are catalogued and both have an LCCN, which the
+earlier search missed:
+
+- *Ontario Phoenix*, LCCN `sn84031006`, Canandaigua 1828-1832. The Library of Congress
+  publisher line reads **W. W. Phelps & R. M. Bloomer (1828-1829), W. W. Phelps (1829-1830)**,
+  so authorship of the paper in those years is documented rather than inferred. Chronicling
+  America holds the catalogue record but no pages. Whether NYS Historic Newspapers holds the
+  scans is **unverified** — that site blocks scripted access and needs a browser check.
+- *Lake Light*, LCCN `sn84031024`, Trumansburg 1827-1829, publishers Phelps & Bloomer
+  1827-1828. Listed in the Ulysses Philomathic Library's Community History Archives; coverage
+  and downloadability **unverified**.
+
+A weekly paper edited for roughly two years is on the order of tens of thousands of words, so
+if either is digitized Phelps moves from having the weakest pre-1830 sample to one of the
+better-evidenced candidates. One caution: with two named publishers, unsigned editorial matter
+is not automatically Phelps's own writing, and much of any weekly is reprinted from elsewhere.
+Attribution within the paper will need its own rule before the text is used.
+
+See `docs/new-york-newspapers.md`.
 
 | id | Text | Format / URL | Written; published | Provenance | Pre-1830 | Licence | Words (est.) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
