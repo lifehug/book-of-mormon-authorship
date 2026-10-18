@@ -53,9 +53,10 @@ Before any of that, two things need checking in a browser, and neither takes lon
 
 1. Does NYSHN actually hold the **Ontario Phoenix** for 1828-1830? The title is catalogued by
    the Library of Congress but has no pages in Chronicling America, and no search result
-   confirmed NYSHN coverage either. If it is not there, the next stop is the New York State
-   Library's microfilm holdings, which are listed but not digitized, and that collides with the
-   digitized-sources-only decision in `docs/budget.md`.
+   confirmed NYSHN coverage either. **If it is not digitized, it is out of scope**: the project
+   uses material that can be downloaded, microfilm is not an option, and the gap is reported in
+   the paper rather than chased. Phelps keeps the "unreliable sample" flag and the analysis
+   proceeds without him having a pre-1830 sample.
 2. Does the Ulysses Philomathic Library's archive hold the **Lake Light** for 1827-1828, and is
    its text downloadable?
 
@@ -71,7 +72,8 @@ Browser only — both sites answer scripted requests with a Cloudflare challenge
 - https://nyshistoricnewspapers.org/newspapers/ (title search, if the LCCN 404s)
 - https://chroniclingamerica.loc.gov/lccn/sn84031006/ (LoC record, confirms Phelps as publisher)
 
-Looking for: issues listed for 1828, 1829, 1830.
+Looking for: issues listed for 1828, 1829, 1830. If not digitized, the answer is no and the
+title is recorded as unavailable — there is no microfilm fallback.
 
 **Lake Light** (`sn84031024`):
 - https://www.loc.gov/item/sn84031024/
