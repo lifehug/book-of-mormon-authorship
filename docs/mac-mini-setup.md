@@ -195,7 +195,11 @@ uv run python -m ingest.eebo_tcp pull 2>&1 | tee logs/tcp_pull.log
 uv run python -m metadata.manifest build data/corpus/tcp/text -o data/manifests/tcp.jsonl
 
 # Internet Archive OCR, 1780-1830 English, skipping titles already in Harvard (BOM-09): roughly 250,000 items, ~80 GB, no account. Polite: 1 request/second.
-uv run python -m ingest.internet_archive pull --skip-harvard-overlap 2>&1 | tee logs/ia_pull.log
+# Run it under the supervisor, not directly: the pull stops itself when it believes the
+# Archive is rate-limiting, and that judgement has been wrong twice. The supervisor restarts
+# after any exit while the work list is still shrinking, and gives up only when a restart
+# makes no progress at all -- which is what a real rate limit looks like.
+nohup sh scripts/ia_supervise.sh > logs/ia_supervise.log 2>&1 &
 uv run python -m metadata.manifest build data/corpus/internet_archive/text -o data/manifests/internet_archive.jsonl
 ```
 
