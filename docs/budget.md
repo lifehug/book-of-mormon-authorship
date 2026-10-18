@@ -186,6 +186,12 @@ table rather than trusting it.
 
 ### Effort and timeline
 
+**Superseded 2026-10-17 — see "Revised estimates" below.** The table that follows is the
+original forecast, kept for comparison. Its error was not arithmetic: "working days of focused
+time for one person using Claude Code" counts the owner's days for work the owner does not
+actually do. Most issues are built by Claude while the owner decides and reviews, so one number
+was being asked to cover three different things.
+
 Effort is working days of focused time for one person using Claude Code, covering data
 wrangling, review, writing, and runs. Wall-clock compute runs unattended on the Mac and
 overlaps with the next issue's work. Phase 0 is done except for opening accounts.
@@ -201,13 +207,52 @@ overlaps with the next issue's work. Phase 0 is done except for opening accounts
 | 7 Publish | BOM-36 to BOM-38 | 16-26 | hours of AI review runs | no journal wait; peer review is simulated |
 | **Total** | **35 issues remaining** | **143-231 working days** | **about 6-8 weeks, mostly overlapped** | |
 
+### Revised estimates (2026-10-17)
+
+One number could not carry this, so it is split into three. **Elapsed** is calendar days of
+active work on the phase. **Owner** is days the owner must personally spend — deciding,
+reviewing, and anything a person has to do. **Compute** runs unattended and overlaps with the
+next phase, costing no days at all.
+
+| Phase | Elapsed days | Owner days | Unattended compute | What drives it |
+| --- | --- | --- | --- | --- |
+| 1 Corpus | 3-5 (2 spent) | 1 | ~3 days of downloads still running | nearly done; BOM-12 and BOM-13 remain |
+| 2 Preparation | 5-10 | 1-2 | ~1 week, passim against the KJV | code is quick, passim is not |
+| 3 Classical and validation | 8-15 | 2-3 | hours | BOM-22 reimplements five published studies; BOM-40 is a real build |
+| 4 Borrowing | 6-12 | **3-8** | 2 weeks, passim over the corpus and passage embeddings | BOM-26's hand review is the floor and does not compress |
+| 5 AI-era methods | 6-12 | 1-2 | 1 week local pilot, 1 day rented H100, days of fine-tunes | training is wall-clock, not effort |
+| 6 Verification | 5-10 | 2-4 | days | the blind run is scripted; access and manuscript evidence are now digitised-only |
+| 7 Publish | 4-8 | **5-10** | hours | Claude drafts it; the owner has to read, revise and stand behind every claim |
+| **Total** | **37-72 elapsed days** | **15-30 owner days** | **about 6-8 weeks, overlapped** | |
+
+Against the original 143-231 working days. The reduction is almost entirely in work that is
+built rather than decided: Phase 1 was forecast at 25-40 owner-days and has so far taken about
+one, because the rest was Claude writing fetchers while downloads ran.
+
+**Where the reduction does not apply.** Two phases barely move, and they are the ones gated on
+a person. BOM-26 is reviewing on the order of ten thousand candidate parallels, and its
+deliverable is an LLM-human agreement statistic, so a model adjudicating its own triage would
+measure nothing. BOM-36 is the paper: Claude can draft all of it, but the owner's name is on it
+and every claim has to be one he can defend. Those two are now the largest single items in the
+plan, which is the right shape for a study whose independence rests on them.
+
+**How much to trust this.** It extrapolates from one phase, and Phase 1 is the *most*
+automatable phase in the project — fetching, cataloguing, manifests. Phase 2 is the first
+honest test, because it is processing rather than downloading. Treat these as a hypothesis the
+first measurement should kill, per section 5a, and revise the row when a phase closes rather
+than revising the table when a day goes well.
+
 Calendar time at three paces:
 
-| Pace | Working days per week | Calendar to the end (BOM-38) |
-| --- | --- | --- |
-| Side project | 1 | 2.5-4 years |
-| Half time | 2.5 | 12-20 months |
-| Full time | 5 | 7-10 months |
+| Pace | Owner days per week | Calendar to the end (BOM-38), revised | Original |
+| --- | --- | --- | --- |
+| Side project | 1 | 4-8 months | 2.5-4 years |
+| Half time | 2.5 | 3-5 months | 12-20 months |
+| Full time | 5 | 2-4 months | 7-10 months |
+
+The revised column is bounded by elapsed days and compute as well as owner days, which is why
+full time does not halve half time: at some point the Archive downloads, the passim runs and the
+H100 hours set the pace, and no amount of the owner's attention moves them.
 
 Compute never sets the pace on this plan; the owner's working days do.
 
