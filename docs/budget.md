@@ -242,6 +242,34 @@ completes and its actual lands in section 6.
 
 Local credential files (never in the repo): `~/.config/osf/token`, `~/.config/huggingface/token`, `~/.config/runpod/token`, each mode 600.
 
+## 5a. How good the estimates have been (2026-10-17)
+
+Badly calibrated so far, in both directions, and worth recording rather than quietly correcting.
+
+| Item | Estimate | Actual | Ratio |
+| --- | --- | --- | --- |
+| Institutional Books on disk | 44 GB | 73 GiB | 1.8x over |
+| Chronicling America via the page API | 1-2 days | 219 days projected | 100x+ under |
+| Chronicling America via bulk batches | not considered | about 3 hours | — |
+| Internet Archive, first projection | about 3 days | 2.4 days (after three fetcher fixes) | roughly right by luck |
+| Hashing a 37 GiB manifest | 10-20 min | 79 s | 10x over |
+| Phase 1 effort | 25-40 working days | 5 of 9 issues in 2 days | 10x+ over |
+
+The pattern in the misses is the same each time: a number extrapolated from documentation or a
+small sample, stated with more confidence than the evidence carried. The Chronicling America
+figure was the worst, and the error was not arithmetic — "1-2 days at the rate limit" assumed
+the bottleneck was politeness when it was actually a broken service, and no amount of care with
+the arithmetic would have caught that. One measurement did.
+
+Two rules for the remaining phases. State whether a number is **measured or extrapolated**, and
+treat an extrapolation as a hypothesis to be killed by the first real measurement rather than a
+plan. And when an estimate is out by more than about 3x, ask what the estimate assumed rather
+than adjusting the number — the 219-day figure was a wrong *route*, not a wrong *rate*.
+
+The phase estimates in section 4b stand unrevised. They are one person's forecast of their own
+working days, and two days of unusually smooth work is not grounds for rewriting them; the
+actuals table is the place where they get corrected, one phase at a time, by evidence.
+
 ## 6. Actuals
 
 | Item | Planned | Actual | Issue | Date |
@@ -255,7 +283,9 @@ Local credential files (never in the repo): `~/.config/osf/token`, `~/.config/hu
 | Institutional Books on disk | about 44 GB | **73 GiB**: 37 GiB raw OCR + 37 GiB cleaned OCR, both kept, 31,958 volumes each. The estimate counted one version | BOM-07 | 2026-10-16 |
 | Institutional Books pull, wall time | not estimated | 11h38m on the Mac mini (18:00 to 05:38, including a 2-minute stop to move `data/corpus` to the external SSD), about 12 shards/min, no failed shards | BOM-07 | 2026-10-16 |
 | External SSD | 2 TB, $150-200 | Samsung T7 2 TB, APFS case-sensitive and journaled, mounted `/Volumes/bomdata`; 130 GiB of its 1.8 TiB used, of which 73 GiB is corpus and about 57 GiB is a Spotlight index that should be disabled | BOM-04 | 2026-10-16 |
-| T7 read throughput | not estimated | about 470 MB/s: each 37 GiB manifest build hashed in 79s | BOM-07 | 2026-10-16 |
+| T7 read throughput | 10-20 min to hash 37 GiB | **79 seconds**, about 470 MB/s | BOM-07 | 2026-10-16 |
+| Phase 1 effort | 25-40 working days | 5 of 9 issues closed in **2 days** (BOM-05, 06, 07, 10, 11). BOM-09 is unattended download; BOM-08 waits on HathiTrust; BOM-12 and BOM-13 not started | Phase 1 | 2026-10-17 |
+| Amendment 2 | not scheduled; due before BOM-21 | drafted, agreed and registered on OSF in one sitting, weeks before BOM-21 needs it | BOM-40 | 2026-10-17 |
 | TCP texts | about 25 GB XML | **22 GiB**: 13 GiB TEI XML plus 8.5 GiB extracted text, both kept, 61,310 of 61,315 texts (EEBO 53,830, Evans 5,012, ECCO 2,473). Two versions again, as with Institutional Books | BOM-11 | 2026-10-17 |
 | Chronicling America | under 5 GB | **4.4 GiB**, 158,960 of 159,146 pages (99.88%). Estimate was right; the route was not — see below | BOM-10 | 2026-10-17 |
 | Chronicling America route | per-page API, "1-2 days at the rate limit" | The API was not rate-limited but broken: `tile.loc.gov` returned HTTP 500 often enough that pages cost about a minute each in backoff, measured at 0.5-3 pages/min, i.e. **219 days**. Switched to the bulk batch archives: 76 tarballs, 68.8 GB, downloaded by hand because Cloudflare blocks scripted access, extracted in under 3 hours | BOM-10 | 2026-10-17 |
