@@ -49,6 +49,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 SCRAPE_URL = "https://archive.org/services/search/v1/scrape"
+METADATA_URL = "https://archive.org/metadata/{id}"
 DOWNLOAD_URL = "https://archive.org/download/{id}/{id}_djvu.txt"
 QUERY = "mediatype:texts AND date:[1780-01-01 TO 1830-12-31] AND language:(eng OR English)"
 FIELDS = (
@@ -174,6 +175,24 @@ def fetch(url: str, retries: int = 6, delay: float = 0.0) -> bytes:
             print(f"retry {attempt + 1} for {url}: {exc}", file=sys.stderr)
             time.sleep(5 * (attempt + 1))
     raise RuntimeError("unreachable")
+
+
+def ocr_filename(ident: str) -> str | None:
+    """The item's OCR file name, which is often *not* ``<identifier>_djvu.txt``.
+
+    The fast path guesses that name and is right for most items. It is wrong often enough to
+    matter: of 30 sampled 404s, 28 had an OCR file under another name -- an internal barcode
+    (``39999063871220_djvu.txt``), a stripped prefix (``jstor-30074678`` -> ``30074678_djvu.txt``),
+    or something unrelated. That is roughly 8,500 volumes, 3.4% of the corpus, lost to a naming
+    assumption rather than to missing text. Costs one metadata request, so it is used only to
+    recover an item that already 404ed.
+    """
+    try:
+        data = json.loads(fetch(METADATA_URL.format(id=urllib.parse.quote(ident)), retries=2))
+    except Exception:  # noqa: BLE001
+        return None
+    names = [f["name"] for f in data.get("files", []) if f.get("name", "").endswith("_djvu.txt")]
+    return names[0] if names else None
 
 
 def norm_title(title: str | None) -> str:
@@ -363,6 +382,21 @@ def pull(
         try:
             data = fetch(DOWNLOAD_URL.format(id=urllib.parse.quote(ident)), delay=delay)
         except urllib.error.HTTPError as exc:
+            # A 404 means that *name* is absent, not that the item lacks OCR. Ask the item
+            # what its OCR file is actually called and try once more.
+            if exc.code == 404:
+                alt = ocr_filename(ident)
+                if alt and alt != f"{ident}_djvu.txt":
+                    try:
+                        url = f"https://archive.org/download/{urllib.parse.quote(ident)}/{urllib.parse.quote(alt)}"
+                        data = fetch(url, delay=delay)
+                    except Exception:  # noqa: BLE001
+                        data = None
+                    if data:
+                        (txt_dir / f"{ident}.txt").write_bytes(data)
+                        with lock:
+                            done += 1
+                        return
             with lock, failed.open("a") as fh:
                 fh.write(f"{ident}\t{exc.code}\n")
             return
