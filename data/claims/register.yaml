@@ -1,0 +1,249 @@
+# Claims register (BOM-42)
+#
+# Public claims about Book of Mormon authorship, from every side, written down BEFORE this
+# study has any results. After the blind run (BOM-32) and the synthesis (BOM-35), each claim
+# gets a verdict from our evidence.
+#
+# WHY IT IS FROZEN FIRST. Once results exist, the temptation is to address the claims we happen
+# to have something interesting to say about. Committing the list and the decision rule in
+# advance means answering every claim we said we would, including the many where the honest
+# answer is "our methods do not bear on this".
+#
+# `supported_if` and `contradicted_if` are written before any result is known. They are the
+# same discipline as the pre-registration's thresholds, applied one level up. A claim with no
+# testable form gets `testable: none` and a reason, and is reported as untestable rather than
+# quietly dropped.
+#
+# This register takes no side. It includes critical, apologetic and academic claims, and the
+# same rules apply to all of them. Being unable to test a claim is not evidence against it.
+#
+# verdict: left null until BOM-35. Allowed values once set:
+#   supported | contradicted | mixed | not_addressed
+
+version: 0.1
+frozen: false          # set true, with the SHA-256 recorded, before BOM-32 unblinding
+sources:
+  ces_letter:
+    title: Letter to a CES Director
+    author: Jeremy Runnells
+    year: 2013
+    stance: critical
+    note: the most widely read critical compilation; most of its content is historical and
+      doctrinal and outside this study's scope
+  gospel_topics:
+    title: Gospel Topics Essays (Book of Mormon Translation; Book of Mormon and DNA Studies)
+    author: The Church of Jesus Christ of Latter-day Saints
+    year: 2013-2015
+    stance: apologetic
+  skousen_carmack:
+    title: Critical Text Project, volume 3; A Plain Exposition of Book of Mormon English
+    author: Royal Skousen and Stanford Carmack
+    year: 2018-2025
+    stance: apologetic
+  johnson_2013:
+    title: rare four-word phrase search over ~110,000 pre-1830 books
+    author: Chris and Duane Johnson
+    year: 2013
+    stance: critical
+  jockers_2008:
+    title: Reassessing authorship of the Book of Mormon using delta and nearest shrunken centroid
+    author: Jockers, Witten and Criddle
+    year: 2008
+    stance: critical
+  larsen_1980:
+    title: wordprint studies
+    author: Larsen, Rencher and Layton
+    year: 1980
+    stance: apologetic
+  fields_2011:
+    title: Extended nearest shrunken centroid classification
+    author: Fields, Schaalje and Roper
+    year: 2011
+    stance: apologetic
+  shalev:
+    title: American pseudo-biblical writing
+    author: Eran Shalev
+    year: 2013
+    stance: academic
+
+claims:
+  - id: c01-late-war-phrases
+    source: ces_letter
+    also: [johnson_2013]
+    claim: >
+      The Late War (1816) shares an unusual number of rare phrases with the Book of Mormon,
+      beyond what coincidence would produce.
+    testable: full
+    tested_by: [BOM-24]
+    supported_if: >
+      The Late War's rare-n-gram score beats the 99th percentile of the genre-matched null
+      distribution built from 500+ random period volumes.
+    contradicted_if: >
+      Its score falls inside the null distribution, or control texts of the same genre and
+      period (including Luke) score as high or higher.
+    note: >
+      This is the claim the pre-registration was in part designed around. The 2013 rebuttal was
+      that the same method scores the Gospel of Luke higher, which is a null-distribution
+      problem rather than a result. Luke, The Late War, View of the Hebrews and Manuscript
+      Story are always reported together (pre-registration 6.5).
+    verdict: null
+
+  - id: c02-view-hebrews-themes
+    source: ces_letter
+    claim: >
+      View of the Hebrews (1823, 1825) shares themes with the Book of Mormon -- Hebrew origin
+      of Native Americans, buried records, scattering and gathering of Israel -- closely enough
+      to suggest dependence.
+    testable: partial
+    tested_by: [BOM-25, BOM-26]
+    supported_if: >
+      Semantic-parallel search places View of the Hebrews above the null threshold and human
+      review classifies a material share of the hits as specific rather than generic.
+    contradicted_if: >
+      Its semantic score is inside the null, or the hits are classed generic or biblical at the
+      same rate as genre-matched controls.
+    note: >
+      Thematic similarity is weaker evidence than shared wording. Ideas about Hebrew origins
+      were widespread in 1820s New England, which our genre-matched controls are meant to
+      capture. A high score here is consistent with common sources as well as dependence, and
+      the report must say so.
+    verdict: null
+
+  - id: c03-oliver-cowdery-link
+    source: ces_letter
+    claim: >
+      Oliver Cowdery's connection to Ethan Smith's congregation makes transmission of View of
+      the Hebrews plausible.
+    testable: none
+    reason: >
+      A biographical and access question, not a stylometric one. BOM-33 may record documented
+      availability, but availability is not transmission and this study cannot establish that
+      anyone read anything.
+    verdict: null
+
+  - id: c04-emode-vocabulary
+    source: skousen_carmack
+    claim: >
+      The text contains roughly 80 word uses, phrases and expressions that had fallen out of
+      English between one and three centuries before 1830.
+    testable: full
+    tested_by: [BOM-29]
+    supported_if: >
+      Those forms are attested in the EEBO-TCP 1473-1700 material and absent or vanishingly
+      rare in the 1780-1830 corpus, including pseudo-biblical controls.
+    contradicted_if: >
+      They are attested in the 1780-1830 corpus at comparable rates, or in the KJV, or in
+      pseudo-biblical imitations of the period.
+    verdict: null
+
+  - id: c05-emode-syntax-not-imitable
+    source: skousen_carmack
+    claim: >
+      The text's syntax exists in neither the King James Bible, nor Joseph Smith's own
+      writings, nor the pseudo-biblical writing of his era, but was prevalent in the later
+      1500s -- so it cannot be explained as King James imitation.
+    testable: full
+    tested_by: [BOM-29, BOM-31]
+    supported_if: >
+      The dating classifier places the masked text in the early modern window, AND the
+      imitation test (BOM-31) shows that deliberate King James pastiche does not shift the
+      classifier's estimate into that window.
+    contradicted_if: >
+      Pseudo-biblical controls written 1780-1830 receive early-modern date estimates at a
+      similar rate, or the imitation test shows the estimate is movable by imitation alone.
+    note: >
+      The sharpest claim in the register and the best matched to this corpus: it names three
+      comparison sets we hold (KJV, candidate writings, pseudo-biblical controls) and one
+      period we hold (EEBO-TCP). BOM-31 was designed independently of this claim and happens to
+      be its decisive test.
+    verdict: null
+
+  - id: c06-tight-control
+    source: skousen_carmack
+    also: [gospel_topics]
+    claim: >
+      The dictation was under "tight control": Joseph Smith was not free to choose the words he
+      dictated.
+    testable: none
+    reason: >
+      A claim about the mechanism of production, not about the text's statistical properties.
+      No stylometric result can distinguish tight control from any other account of how words
+      reached the page. The study's dictation caveat stands either way.
+    verdict: null
+
+  - id: c07-rigdon-spalding
+    source: jockers_2008
+    claim: >
+      Nearest shrunken centroid classification points to Sidney Rigdon and Solomon Spalding as
+      contributors.
+    testable: full
+    tested_by: [BOM-22, BOM-32]
+    supported_if: >
+      Rigdon or Spalding is supported under the pre-registered rule, at least two independent
+      method families returning match on both halves.
+    contradicted_if: >
+      Neither is supported, or the open-set replication (BOM-22) shows the 2008 result depended
+      on a closed candidate list that excluded Joseph Smith.
+    verdict: null
+
+  - id: c08-wordprint-distinct-narrators
+    source: larsen_1980
+    claim: >
+      The book's internal narrators are stylistically distinct from each other and from
+      19th-century candidates.
+    testable: full
+    tested_by: [BOM-17, BOM-32]
+    supported_if: >
+      Narrator separability (pre-registration 6.3) holds at or above benchmark accuracy for
+      distinct known authors at the same sample size, after KJV masking.
+    contradicted_if: >
+      Narrators are not separable after masking, or dictation-order or scribe segmentation
+      explains the same variance better.
+    note: >
+      The 1980 critique was that the features measured biblical register rather than
+      authorship. KJV masking and the frozen function-word list exist to answer exactly that.
+    verdict: null
+
+  - id: c09-open-set-none-of-the-above
+    source: fields_2011
+    claim: >
+      Allowing "none of the above" changes the answer: no 19th-century candidate is the author.
+    testable: full
+    tested_by: [BOM-22, BOM-32]
+    supported_if: H1b holds -- no candidate supported under the pre-registered rule.
+    contradicted_if: Any candidate is supported.
+    verdict: null
+
+  - id: c10-pseudo-biblical-genre
+    source: shalev
+    claim: >
+      The text belongs to an American pseudo-biblical genre whose conventions explain much of
+      its style.
+    testable: full
+    tested_by: [BOM-18, BOM-31]
+    supported_if: >
+      Genre-matched pseudo-biblical controls are not separable from the text on the register
+      features, and the imitation test shows those features are reproducible by imitation.
+    contradicted_if: >
+      The text separates from pseudo-biblical controls on features that survive KJV masking.
+    verdict: null
+
+  - id: c11-dna-studies
+    source: gospel_topics
+    claim: >
+      Genetic evidence cannot settle questions about Book of Mormon populations.
+    testable: none
+    reason: Genetics. Entirely outside this study.
+    verdict: null
+
+  - id: c12-translation-method
+    source: gospel_topics
+    claim: >
+      The text was dictated by Joseph Smith to scribes, largely without notes or manuscripts
+      in view.
+    testable: none
+    reason: >
+      A production-process claim. This study takes it as a stated limit rather than testing it:
+      dictation and scribes sit between any author and the page (pre-registration section 3).
+      Cited as the source for that caveat.
+    verdict: null

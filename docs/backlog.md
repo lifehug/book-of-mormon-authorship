@@ -276,6 +276,24 @@ Phase 3 proves the toolkit works on known answers and reproduces earlier studies
 **Done when:** all methods pass tests and run on the frozen corpus.
 **Depends on:** #19.
 
+### #42 Apply the results to the public claims
+
+**Goal:** take every public claim about Book of Mormon authorship, fix the list and the decision rules before any result exists, and afterwards say which our evidence supports, contradicts, or does not address.
+
+The claims come from all sides: the CES Letter and the Johnson rare-phrase search on one, Skousen and Carmack's early modern English work and the Gospel Topics essays on the other, plus the academic studies in `docs/background.md`. The register is `data/claims/register.yaml`.
+
+Two halves, deliberately separated in time. The inventory is built **now**, before results exist; the verdicts are filled in **after** BOM-35. Once results are known, the temptation is to answer the claims one happens to have something interesting to say about, so the list and the rules are frozen first.
+
+- [ ] Extend `data/claims/register.yaml` to full coverage, with `supported_if` and `contradicted_if` written for every testable claim before any result is known
+- [ ] Mark untestable claims `testable: none` with a reason; report them as untestable rather than dropping them
+- [ ] Freeze the register before the blind run: set `frozen: true`, commit its SHA-256 alongside the analysis thresholds
+- [ ] After BOM-35, fill in each verdict from the pre-registered rule and publish the table
+- [ ] Report the untestable claims as a group, so the document is not read as a scorecard
+- [ ] State in the output that the register took no side and that inability to test a claim is not evidence against it
+
+**Done when:** the frozen register is committed with its hash before #32, and the completed verdict table is published alongside the paper.
+**Depends on:** #35 for the verdicts; the inventory itself depends on nothing and is built first.
+
 ### #41 Ingest the New York newspapers Chronicling America lacks
 
 **Goal:** the Palmyra paper and the two papers a candidate edited, neither of which is in the national collection.

@@ -32,6 +32,9 @@ data/bom/*
 !data/catalog/**
 !data/candidates/
 !data/candidates/**
+# BOM-42: the claims register is a small tracked index, like the catalogs.
+!data/claims/
+!data/claims/**
 
 # Large corpora: local disk only, never a git repo; tracked by manifests
 data/corpus/
