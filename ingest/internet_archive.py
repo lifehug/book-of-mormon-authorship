@@ -12,6 +12,13 @@
     logged to ``failed.txt``. ``--skip-harvard-overlap`` skips items whose title and year
     match a Harvard row.
 
+    A 404 on the guessed filename is not taken as "no OCR". The download URL assumes
+    ``<identifier>_djvu.txt``, which is right for most items and wrong for a large minority
+    whose OCR file is named for an internal barcode or a stripped prefix. On a 404 the item is
+    asked what its OCR file is actually called and the right one is fetched. Outcomes are
+    recorded distinctly in ``failed.txt``: ``no_ocr`` means the item genuinely has none and is
+    never retried, while ``unresolved`` means we could not tell and a later pass tries again.
+
     ``--workers N`` runs N items at a time, but what the Archive's guidance constrains is
     concurrent *downloads*, which is not the same number: a worker spends most of its cycle
     writing a file or sleeping out a backoff. Requests in flight are capped at
@@ -195,6 +202,34 @@ def ocr_filename(ident: str) -> str | None:
     return names[0] if names else None
 
 
+def recover_404(ident: str, txt_dir: Path, delay: float) -> str:
+    """Try the item's real OCR filename after the guessed one 404ed.
+
+    Returns ``recovered`` (written to disk), ``no_ocr`` (the item has no OCR file at all, so
+    never ask again), or ``unresolved`` (could not tell; retry on a later pass). The three are
+    kept distinct because only ``no_ocr`` justifies retiring an item permanently.
+    """
+    try:
+        raw = fetch(METADATA_URL.format(id=urllib.parse.quote(ident)), retries=2, delay=delay)
+        files = json.loads(raw).get("files", [])
+    except Exception:  # noqa: BLE001
+        return "unresolved"
+    names = [f["name"] for f in files if f.get("name", "").endswith("_djvu.txt")]
+    if not names:
+        return "no_ocr"
+    if names[0] == f"{ident}_djvu.txt":
+        return "unresolved"  # the name we already tried; the 404 was transient
+    try:
+        url = (
+            f"https://archive.org/download/{urllib.parse.quote(ident)}"
+            f"/{urllib.parse.quote(names[0])}"
+        )
+        (txt_dir / f"{ident}.txt").write_bytes(fetch(url, delay=delay))
+    except Exception:  # noqa: BLE001
+        return "unresolved"
+    return "recovered"
+
+
 def norm_title(title: str | None) -> str:
     """Lowercase, punctuation stripped, whitespace collapsed, first 60 characters."""
     t = re.sub(r"[^\w\s]|_", " ", (title or "").lower())
@@ -358,7 +393,14 @@ def pull(
     failed = CORPUS / "failed.txt"
     skip = set()
     if failed.exists():
-        skip = {ln.split("\t")[0] for ln in failed.read_text().splitlines() if "\t404" in ln}
+        # Only skip what has been *confirmed* to have no OCR. A bare 404 means the guessed
+        # filename was absent, which is not the same thing and is usually recoverable; an
+        # unresolved recovery is a transient failure and must be retried, not retired.
+        skip = {
+            ln.split("\t")[0]
+            for ln in failed.read_text().splitlines()
+            if "\tno_ocr" in ln or "\t401" in ln or "\t403" in ln
+        }
     todo = [
         r for r in recs if not (txt_dir / f"{r['identifier']}.txt").exists()
         and r["identifier"] not in skip
@@ -385,18 +427,16 @@ def pull(
             # A 404 means that *name* is absent, not that the item lacks OCR. Ask the item
             # what its OCR file is actually called and try once more.
             if exc.code == 404:
-                alt = ocr_filename(ident)
-                if alt and alt != f"{ident}_djvu.txt":
-                    try:
-                        url = f"https://archive.org/download/{urllib.parse.quote(ident)}/{urllib.parse.quote(alt)}"
-                        data = fetch(url, delay=delay)
-                    except Exception:  # noqa: BLE001
-                        data = None
-                    if data:
-                        (txt_dir / f"{ident}.txt").write_bytes(data)
-                        with lock:
-                            done += 1
-                        return
+                outcome = recover_404(ident, txt_dir, delay)
+                if outcome == "recovered":
+                    with lock:
+                        done += 1
+                    return
+                with lock, failed.open("a") as fh:
+                    # no_ocr: asked the item, it genuinely has no OCR file -- never retry.
+                    # unresolved: could not ask, or the alternate name failed -- retry later.
+                    fh.write(f"{ident}\t{outcome}\n")
+                return
             with lock, failed.open("a") as fh:
                 fh.write(f"{ident}\t{exc.code}\n")
             return
