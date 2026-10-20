@@ -756,6 +756,55 @@ The 87% is agreement with *me*, which is not the same as being right. I am one p
 titles. The number that gets published comes from Dave working through a sample and saying
 agree or disagree, and that is the one the paper will have to defend.
 
+## What 300 records taught me about my own benchmark
+
+The 60-record test said Sonnet 87%, Llama 83%, so I nearly wrote down "use Sonnet". Then I
+did the arithmetic I should have done first. Fifty-two out of sixty against fifty out of
+sixty is a two-record difference. At that sample size the error bars are about nine points
+wide. The two models were indistinguishable and I had been about to choose between them on
+noise.
+
+So I ran three hundred instead, and built it differently. Sixty of those records came from the
+half the rules already decide — a Chronicling America page *is* a newspaper page, we know that
+from which archive it arrived in — so for those sixty there is something close to a right
+answer to measure against.
+
+Against that: **Sonnet 98%, Llama 97%.** Still indistinguishable, but now both demonstrably
+good rather than merely similar.
+
+The interesting number was the other one. On the 239 records that genuinely need judgement, the
+two models agreed only **72%** of the time. Two models that are each ~97% accurate on easy
+records disagree on more than a quarter of hard ones.
+
+I went and read the disagreements expecting to find one model losing. That is not what is
+there:
+
+> *Philosophical Transactions of the Royal Society* — Sonnet says newspaper_periodical, Llama
+> says scientific_medical
+>
+> *Encyclopaedia Britannica* — Sonnet says other, Llama says history_chronicle
+>
+> *Curtis's Botanical Magazine* — Sonnet says newspaper_periodical, Llama says scientific_medical
+
+Nobody is wrong. The *Philosophical Transactions* is a scientific journal: it is a periodical
+and it is scientific, and my label set makes you choose. Those are not model errors, they are
+holes in a taxonomy I wrote in an afternoon. A third of what looked like model disagreement is
+really me not having said what happens when two categories both apply.
+
+That is worth more than knowing which model to buy. A label scheme that forces arbitrary
+choices produces arbitrary control sets, and the control sets are the whole defence against
+mistaking biblical *style* for a biblical *author*.
+
+So two changes. The label definitions get a precedence rule — if a work was issued in numbered
+parts it is a periodical first, whatever its subject — and that rule goes in the registered
+method, not in my head. And the validation sample has to over-sample the ambiguous categories,
+because a random three hundred mostly tests the easy cases.
+
+On the original question: Llama runs free and unmetered on the mini for three and a half days;
+Sonnet runs in one and a bit but spends subscription. They are the same accuracy. So the cheap
+model does the corpus, and the expensive one is kept for the records where a second opinion
+actually buys something.
+
 ## The corpus, as it now stands
 
 | Source | On disk | Files |
@@ -782,6 +831,14 @@ HathiTrust (BOM-08) resolves whenever it resolves.
 
 ## Log
 
+- **2026-10-20, later.** Genre labeller benchmarked properly: 300 records instead of 60, with
+  the rule-decided half used as ground truth. Sonnet 98%, Llama 3.1 8B 97% -- indistinguishable,
+  and the earlier 87/83 split on 60 records was inside the noise. Inter-model agreement on hard
+  records only 72%, and reading those disagreements showed a third are taxonomy holes rather
+  than model errors (Philosophical Transactions is both a periodical and scientific; the label
+  set forces a choice it never defined). Adding a precedence rule to the registered method and
+  over-sampling ambiguous categories in validation. Llama runs the corpus free; Sonnet is kept
+  for second opinions.
 - **2026-10-20.** BOM-09 done: 249,906 of 251,204 Internet Archive items (99.48%), 99 GB, four
   days, 26 supervisor cycles, zero 429s. Three fetcher bugs fixed along the way, the largest
   being a filename assumption that was discarding ~8,500 books whose OCR was filed under an
