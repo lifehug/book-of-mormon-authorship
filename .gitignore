@@ -50,3 +50,9 @@ models/
 
 # Job logs
 logs/
+
+# Credentials. Never commit these. .git/info/exclude protected only this clone;
+# this travels with the repo so a fresh clone on another machine is covered too.
+.env
+.env.*
+!.env.example
