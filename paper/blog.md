@@ -716,6 +716,46 @@ may clear in a week and the pull is resumable, so the tail is a command, not a p
 Across four days and roughly a quarter of a million requests, the Archive never once returned
 429. Every stop was our own code being wrong about what its errors meant.
 
+## Which model should do the boring work
+
+The corpus needs a genre on every one of 560,000 records, because genre-matched controls are
+what stop biblical *style* being mistaken for a biblical *author*. That is the fix for the flaw
+that sank the 1980 study, so it has to be right, and it is far too much to do by hand.
+
+First thing I checked was how much needs a model at all. Not much, as it turns out. Every
+Chronicling America page is a newspaper page — we know that from which archive it came out of.
+A title reading "The Hive 1804-07-25: Vol 2 Iss 6" is a periodical issue and says so in its own
+name. Rules like that settle **49.5%** of the corpus without asking anything. The other half
+needs judgement.
+
+Then the question was which model. Haiku is the cheap one, so I tried it first and measured
+rather than guessed: 60 records, stratified across all four sources, against labels I had made
+by hand.
+
+Haiku got **65%**. Worse, look at *how* it failed. Asked to pick from a closed list of eight, it
+answered "poems" — a label that does not exist. For a volume of medical transactions it replied
+"Wait, the label must be exact: scientific_medical", correct answer wrapped in its own
+deliberation. And it reached for "other" six times where an obvious category fitted, which is
+the quiet kind of wrong: "other" does not look like an error downstream, it just silently
+shrinks the control sets.
+
+Some of that was my fault, not the model's. I had given it eight bare label names and no
+definitions. Writing one line per category, forbidding explanation, and matching the reply
+against the list instead of trusting it took Haiku to **72%** with zero invented labels and the
+"other" problem gone.
+
+But the remaining errors were not mechanical. Haiku filed a book titled simply *Poems* under
+sermons, and the *Daily National Intelligencer* — a newspaper — under medicine. No prompt fixes
+that. Sonnet on the same prompt and the same 60 records: **87%**, at 0.36 seconds each with
+eight running at once. About a day and a bit for all 282,566.
+
+So: rules for half, Sonnet for the rest, and Codex as an adversary on the validation sample,
+because it is a different model family and its mistakes will not be correlated with Sonnet's.
+
+The 87% is agreement with *me*, which is not the same as being right. I am one person reading
+titles. The number that gets published comes from Dave working through a sample and saying
+agree or disagree, and that is the one the paper will have to defend.
+
 ## The corpus, as it now stands
 
 | Source | On disk | Files |
