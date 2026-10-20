@@ -316,6 +316,28 @@ exist on the Archive under their own names; I matched them up by their ark ident
 25,689 were already sitting in the Archive catalog I'd built an hour earlier. So the
 "reachable" number is real, and most of it was reachable all along.
 
+**The paperwork, so far.** HathiTrust answered the next day. The email became a support
+ticket (GS-17502) and came back with a two-page form to sign, the "Researcher Agreement for
+HathiTrust Dataset", non-Google version. I'm putting the whole thing in the repo as
+`docs/hathitrust-researcher-agreement.md`, because if you ever want to repeat this study, this
+is the gate you walk through, and nobody tells you what's on the form until you ask.
+
+Here is what it says, stripped of the legal cadence. The text is a loan, not a gift: it's for
+this one project, and when the project ends I delete it. I can't pass the files to anyone;
+if you want them, you ask HathiTrust and they'll rsync you the same set. If a volume later
+turns out to be in copyright, they email me, I delete it and email back to say so. If I move,
+change affiliation, or change what the study is about, I have to tell them. And the data sits
+only on machines I control. All of that is fine. It's roughly how I already treat the Harvard
+books.
+
+The one line that gave me pause is the signature block. Researcher 1 is defined as "the
+responsible permanent full-time faculty or staff member." I'm not one. I wrote "Independent"
+under institution, left the title blank, signed it on the 16th and sent it back. The form
+was clearly designed for a university, and whether HathiTrust accepts a person with no
+university behind him is exactly the question I said I'd report on. The signed copy stays off
+GitHub (it has my phone number on it); the wording is public. Next, if they say yes: give them
+a fixed IP address for the Mac mini, then rsync about 31,000 volumes by their pairtree paths.
+
 ### BOM-20, built early: the classic toolkit
 
 The classical stylometry methods don't need the corpus to be written, only to be run, so I
@@ -878,6 +900,7 @@ HathiTrust (BOM-08) resolves whenever it resolves.
   ships two OCR versions and the pull keeps both; budget corrected. Found a 57 GiB Spotlight
   index on the corpus drive and documented turning indexing off. T7 reads at about 470 MB/s.
   BOM-40 filed and its Phase 2 config slice built ahead of it (#50).
+- **2026-10-16.** BOM-08 paperwork: HathiTrust opened ticket GS-17502 and sent the non-Google researcher agreement; signed as an independent researcher and returned. Form transcribed and glossed in `docs/hathitrust-researcher-agreement.md`. Approval, static IP, and rsync pending.
 - **2026-10-15, later still.** Hardware decision revised (BOM-04): no $3,199 Mac: use the M4
   mini already on hand (10-core, 16 GB, 256 GB), buy a 2 TB external SSD, rent an H100 for the
   base model and for anything that won't fit in 16 GB. Budget drops from about $3,700-4,300 to
