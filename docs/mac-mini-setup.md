@@ -99,28 +99,33 @@ Credentials live outside the repo, one file each, mode 600. Create them on the m
 way they exist on the desktop (copy with `scp`, never commit, never paste into a chat):
 
 ```
-~/.config/osf/token            OSF personal access token -- NEEDED NOW, see below
+~/.config/osf/token            OSF personal access token (amendments)
 ~/.config/huggingface/token    Hugging Face write token (account: etherfuse)
-~/.config/runpod/token         RunPod restricted API key (base-model run only)
+~/.config/runpod/token         RunPod API key (GPU rentals)
+~/.codex/auth.json             Codex CLI, ChatGPT OAuth -- written by `codex login`, not by hand
 ```
 
 ```sh
 mkdir -p ~/.config/osf ~/.config/huggingface ~/.config/runpod
 chmod 700 ~/.config/osf ~/.config/huggingface ~/.config/runpod
-# then scp each token file from the desktop and chmod 600 it
+printf '%s' 'PASTE_TOKEN_HERE' > ~/.config/<service>/token && chmod 600 ~/.config/<service>/token
 ```
 
-**Outstanding as of 2026-10-17: the OSF token does not exist on this machine**, and Amendment 2
-is approved and waiting to be filed (`paper/amendment-002-osf-text.md`). Create one at
-https://osf.io/settings/tokens with scope `osf.full_write`, then:
+**One standard, no exceptions.** Every credential is a single file at
+`~/.config/<service>/token`, mode 600, outside the repo. Not a `.env`, not an environment
+variable, not a line in a config file that might get committed. A repo `.env` was used briefly
+on 2026-10-20 and its contents moved here; `.gitignore` now covers `.env` and `.env.*` so a
+fresh clone on another machine is protected too, but the convention is the file, not the
+ignore rule.
 
-```sh
-printf '%s' 'PASTE_TOKEN_HERE' > ~/.config/osf/token && chmod 600 ~/.config/osf/token
-```
+Status, verified 2026-10-20: OSF authenticates as David Taylor, Hugging Face as `etherfuse`,
+RunPod as `user_3KkRO15NW` with a $0.00 balance -- **credit is needed before BOM-27**. Codex
+authenticates through a ChatGPT subscription rather than an API key, so it has no token file;
+`codex exec` works and is used as the adversarial labeller in BOM-12.
 
-Claude can file the amendment through the OSF API once the token exists, and will show the
-payload and endpoint before anything is submitted. See "Before filing" in
-`paper/amendment-002-draft.md`.
+There is no general-purpose LLM API key on this machine. Labelling the whole 560k-row catalog
+needs one (budget section 3 allows $100-200); Codex via the subscription is fine for validation
+samples of a few hundred but would take ~45 days for the full corpus and is not the tool for it.
 
 ## 6. Get the data
 
