@@ -30,6 +30,10 @@ data/bom/*
 !data/kjv/**
 !data/catalog/
 !data/catalog/**
+# Derived, rebuilt in seconds by metadata.catalog / metadata.genre. Keep
+# data/catalog/ for the source indexes the ingests wrote.
+data/catalog/catalog.parquet
+data/catalog/genre.parquet
 !data/candidates/
 !data/candidates/**
 # BOM-42: the claims register is a small tracked index, like the catalogs.
