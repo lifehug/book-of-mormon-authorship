@@ -50,3 +50,15 @@ def test_tcp_is_exempt_from_the_period_window():
     """
     assert "tcp" in catalog.DATE_EXEMPT
     assert "institutional_books" not in catalog.DATE_EXEMPT
+
+
+def test_merge_flags_the_period_rather_than_filtering():
+    """Rows outside 1780-1830 are flagged, never dropped.
+
+    BOM-40's multiverse varies corpus-level choices, which is impossible if an earlier stage
+    has already discarded rows. Stages wanting the comparison set filter on `in_period`.
+    """
+    names = [f.name for f in catalog.SCHEMA]
+    assert "in_period" in names
+    src = (catalog.Path("metadata/catalog.py")).read_text()
+    assert "Flag, never drop" in src

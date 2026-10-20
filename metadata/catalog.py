@@ -68,6 +68,7 @@ SCHEMA = pa.schema(
         ("genre_src", pa.string()),  # the source's own genre words, if any; BOM-18 assigns ours
         ("text_path", pa.string()),  # relative to the repo root; None when not on disk
         ("has_text", pa.bool_()),
+        ("in_period", pa.bool_()),  # year inside the pre-registered 1780-1830 window
     ]
 )
 
@@ -195,6 +196,7 @@ def map_row(source: str, row: dict, text_dir: Path) -> dict | None:
         "genre_src": None if genre is None else str(genre)[:120],
         "text_path": str(rel) if exists else None,
         "has_text": exists,
+        "in_period": True,  # set by merge(), which knows the configured window
     }  # fmt: skip
 
 
@@ -207,26 +209,39 @@ def merge(limit: int | None = None) -> int:
         if not cat.exists():
             print(f"  {source}: no catalog at {cat}, skipped", file=sys.stderr)
             continue
-        seen = kept = with_text = 0
+        seen = kept = with_text = in_window = 0
         for raw in read_rows(cat):
             seen += 1
             row = map_row(source, raw, text_dir)
             if row is None:
                 continue
-            # The 1780-1830 window is the *comparison* corpus (pre-registration 4.1). TCP is
-            # deliberately outside it: EEBO/Evans/ECCO span 1473-1700 and are the early modern
-            # reference for the dating question (5.3). Filtering them to 1780-1830 would throw
-            # away 95% of that set and quietly remove the ability to answer Q3 at all.
-            if source not in DATE_EXEMPT and row["year"] is not None:
-                if not (lo <= row["year"] <= hi):
-                    continue
+            # Flag, never drop. The 1780-1830 window is the *comparison* corpus
+            # (pre-registration 4.1), but a row outside it is still a fact about the record,
+            # and BOM-40's multiverse varies corpus-level choices -- which is impossible if
+            # earlier stages have already thrown rows away. Stages that want the comparison
+            # set filter on `in_period` themselves. TCP is exempt from the flag's meaning
+            # entirely: EEBO/Evans/ECCO span 1473-1700 on purpose and are the early modern
+            # reference for dating (5.3).
+            row["in_period"] = (
+                True
+                if source in DATE_EXEMPT
+                else (row["year"] is not None and lo <= row["year"] <= hi)
+            )
             kept += 1
             with_text += bool(row["has_text"])
+            in_window += bool(row["in_period"])
             rows.append(row)
             if limit and kept >= limit:
                 break
-        per_source[source] = {"seen": seen, "kept": kept, "with_text": with_text}
-        print(f"  {source:<22} seen {seen:>7,}  kept {kept:>7,}  with text {with_text:>7,}")
+        per_source[source] = {
+            "seen": seen,
+            "kept": kept,
+            "with_text": with_text,
+            "in_period": in_window,
+        }
+        print(
+            f"  {source:<22} rows {kept:>7,}  with text {with_text:>7,}  in period {in_window:>7,}"
+        )
 
     table = pa.Table.from_pylist(rows, schema=SCHEMA)
     OUT.parent.mkdir(parents=True, exist_ok=True)
