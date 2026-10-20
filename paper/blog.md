@@ -778,6 +778,43 @@ The 87% is agreement with *me*, which is not the same as being right. I am one p
 titles. The number that gets published comes from Dave working through a sample and saying
 agree or disagree, and that is the one the paper will have to defend.
 
+## Five days of paperwork, twenty-four minutes of data
+
+HathiTrust came through. I asked on the 15th, signed their researcher agreement on the 16th,
+and on the 20th Janet at HathiTrust wrote back: "You're all set up now." They did something
+generous I had not expected — rather than making me produce a static IP, they allow-listed my
+ordinary dynamic home address. It expires on the 30th of November.
+
+Then the actual download took **twenty-four minutes**. 31,194 volumes, nineteen gigabytes, over
+rsync.
+
+Set that against the Internet Archive: four days, a supervisor restarting it twenty-six times,
+three bugs in my own fetcher. Same job, different plumbing. The Archive is a public website and
+I was asking it for a quarter of a million files one at a time; HathiTrust hands researchers a
+dataset built to be copied in bulk. The bottleneck here was paperwork, and the paperwork was
+five days.
+
+Of the 107,178 volumes I asked for, 75,984 did not come. Those are the Google-digitized ones,
+which are not in this dataset and need a separate agreement with Google. I have emailed them,
+and I am not waiting: the corpus is finished without those volumes and if an agreement ever
+arrives they are a later addition.
+
+Then the number that made me stop. Of the 31,194 that did arrive, **21,810 I already had** —
+pulled from the Internet Archive last week, because the Archive digitized them on HathiTrust's
+behalf. So a dataset I spent five days of correspondence on contributed **9,384 volumes** I did
+not have. Under two percent of the corpus.
+
+Worth it? I nearly wrote that it was marginal. But I had the wrong frame. Those 21,810
+duplicates are not waste — they are the same book scanned once and OCR'd twice, by two different
+organisations with different software. BOM-14 has to clean up OCR and then prove the cleaning
+helped, and proving that normally means hand-correcting pages to have something to measure
+against. Instead I now have twenty-one thousand pairs for free.
+
+A caution on that number, because I got it wrong first. My initial check said the overlap was
+zero. Zero is a suspicious answer when you expect twenty thousand, so I looked: the mapping file
+calls the field `ia_identifier` and my code asked for `ia_id`, so every lookup quietly missed and
+returned nothing. If the bug had produced "18,000" instead of "0" I might have believed it.
+
 ## Writing down everyone else's claims before I have any answers
 
 A thought I had this week: when this finishes, people will want to know what it says about the
@@ -902,6 +939,12 @@ HathiTrust (BOM-08) resolves whenever it resolves.
 
 ## Log
 
+- **2026-10-20, evening.** BOM-08 done: HathiTrust approved (GS-17502, dynamic IP
+  allow-listed, access to 2026-11-30) and 31,194 volumes pulled in 24 minutes, 19 GiB. 21,810
+  duplicate the Internet Archive pull and 9,384 are new, but the duplicates give 21,810
+  two-OCR pairs of the same book, which is a free test set for BOM-14. Emailed Google's library
+  partner team about the 75,984 Google-digitized volumes; not waiting on a reply. Phase 1
+  corpus now 242 GiB across six sources.
 - **2026-10-20, later still.** BOM-42 filed: a register of twelve public claims from every
   side, each with its decision rule written before any result exists, frozen with a hash before
   the blind run. BOM-08 approved (ticket GS-17502, dynamic IP allow-listed, access to
