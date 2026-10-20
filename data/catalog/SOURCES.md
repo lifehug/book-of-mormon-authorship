@@ -32,6 +32,26 @@ The New York, Pennsylvania, and Ohio pages (`pull --states NY,PA,OH`, 3,472 page
 were pulled on 2026-10-15; their checksums are `data/manifests/chronicling_america_nypaoh.jsonl`.
 Re-running the same command on another machine reproduces them.
 
+**Internet Archive (BOM-09) completed 2026-10-20.** 249,906 of 251,204 items (99.48%), 99 GiB,
+one `.txt` per item in `data/corpus/internet_archive/text/<identifier>.txt`. Manifest:
+`data/manifests/internet_archive.jsonl`.
+
+4,822 distinct items were not obtained, recorded in `data/corpus/internet_archive/failed.txt`:
+4,703 HTTP 500 (the Archive could not serve them), 1,550 bare 404 (left over from a run that
+predated the filename recovery below, and not retired), 1,188 `no_ocr` (the item was asked and
+genuinely has no OCR file: maps, manuscripts, image-only scans), 221 HTTP 401 and 30 HTTP 403
+(restricted), the rest transient. The 500s are server-side and may clear; the pull is resumable,
+so a later pass costs one command.
+
+**Two things worth knowing about this source.** First, the download URL assumes
+`<identifier>_djvu.txt`, which is wrong for a large minority of items whose OCR file is named
+for an internal barcode (`39999063871220_djvu.txt`) or a stripped prefix (`jstor-30074678` ->
+`30074678_djvu.txt`). Of 30 sampled 404s, 28 had an OCR file under another name. `ocr_filename()`
+asks the item and recovers them; 404s fell from 9,127 to 1,550 once it was running. Second, the
+Archive returns HTTP 500 on individual items frequently and unpredictably, and those are its own
+faults rather than rate limiting -- across 250,000 requests over four days it never once returned
+429.
+
 **TCP (BOM-11) completed 2026-10-17.** 61,310 of 61,315 texts, 22 GiB: 8.5 GiB of extracted
 text in `data/corpus/tcp/text` and 13 GiB of TEI XML in `data/corpus/tcp/xml`, one file each per
 text. By collection: EEBO 53,830, Evans 5,012, ECCO 2,473. Manifest:

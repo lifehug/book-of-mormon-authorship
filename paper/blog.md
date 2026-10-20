@@ -679,6 +679,57 @@ One a minute became forty-six a minute. Two hundred and thirty-four days became 
 The thing worth writing down: for about twenty minutes I believed the Internet Archive was
 rate-limiting us, and the evidence for that was a message my own code had written.
 
+## A quarter of a million books
+
+The Internet Archive pull finished at 99.48% — 249,906 items of 251,204, 99 GB. It took four
+days and the supervisor restarted it twenty-six times, which tells you most of the story.
+
+The fetcher had three bugs and I found all of them by asking why a number looked wrong rather
+than by reading the code. The pull was managing one item a minute while twelve items I picked
+at random downloaded instantly by hand; that contradiction was the whole clue. One broken file
+was tripping a global stop. Unservable items were costing seventy-five seconds each in retries
+to learn what the first attempt already knew. And the work list was ordered by collection, so
+four workers would hit the same bad neighbourhood together and stall as one. One a minute
+became seventy-six.
+
+The best fix was not a fix at all. I had the stop-on-throttle logic wrong twice, and the second
+time I stopped tuning it and wrote a supervisor instead: restart after any exit while the work
+list is still shrinking, give up only when a restart gains nothing. The heuristic is still
+imperfect — it tripped twice more overnight — but a false alarm now costs five minutes instead
+of a night. It also stopped the job cleanly this morning when the remaining items genuinely
+would not come, which is exactly what it was for.
+
+Then Dave asked whether the items with no OCR were scans we could OCR ourselves. They weren't
+scans. Of thirty I sampled, twenty-eight had OCR sitting right there under a different
+filename — named for an internal barcode, or a stripped prefix, `jstor-30074678` filed as
+`30074678_djvu.txt`. Our URL assumed every item's text file was named after the item. That
+assumption had been quietly discarding about eight thousand five hundred books, 3.4% of the
+corpus. The 404 count fell from 9,127 to 1,550 once the fetcher learned to ask.
+
+Worth noticing what that was: a question about the wrong thing that found the right thing.
+
+What's left out is honest and written down. 4,822 items did not come: 4,703 the Archive
+answered with a server error, 1,188 that genuinely have no OCR at all — maps, deeds,
+manuscripts — and 251 restricted. Every one is in `failed.txt` with its code. The server errors
+may clear in a week and the pull is resumable, so the tail is a command, not a project.
+
+Across four days and roughly a quarter of a million requests, the Archive never once returned
+429. Every stop was our own code being wrong about what its errors meant.
+
+## The corpus, as it now stands
+
+| Source | On disk | Files |
+| --- | --- | --- |
+| Internet Archive | 99 GB | 249,906 |
+| Harvard Institutional Books | 73 GB | 31,958 volumes, two OCR versions each |
+| HathiTrust Extracted Features | 23 GB | 105,888 |
+| Text Creation Partnership | 22 GB | 61,310 texts, XML and extracted text |
+| Chronicling America | 4.4 GB | 158,960 pages |
+| **Total** | **221 GB** | |
+
+That is most of what was printed in English between 1780 and 1830 that has been digitised,
+which is the thing none of the earlier studies had.
+
 ## What's next
 
 The extraction is running: each tarball is checked against the SHA-256 the Library publishes,
@@ -691,6 +742,11 @@ HathiTrust (BOM-08) resolves whenever it resolves.
 
 ## Log
 
+- **2026-10-20.** BOM-09 done: 249,906 of 251,204 Internet Archive items (99.48%), 99 GB, four
+  days, 26 supervisor cycles, zero 429s. Three fetcher bugs fixed along the way, the largest
+  being a filename assumption that was discarding ~8,500 books whose OCR was filed under an
+  internal barcode rather than the item id. 4,822 misses documented by code in failed.txt.
+  Phase 1 corpus now 221 GB across five sources.
 - **2026-10-17, later.** Amendment 2 registered on OSF (revision 6ad3f82fc8f5176e336b2561,
   approved same day): about 28 operational analytic values pinned, three of them as selection
   procedures rather than numbers. The one that mattered was ENSC shrinkage, defaulting to 0.0 in
