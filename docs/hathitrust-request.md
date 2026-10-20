@@ -53,3 +53,21 @@ https://osf.io/6ugxc/; code public. Outputs: manifests, catalog metadata, statis
 results, alignment tables citing HathiTrust volume IDs, models that cannot reproduce text,
 preprint, web explorer by citation. No re-hosting or redistribution. Permission to share the
 proposal: yes. Will sign the non-Google researcher agreement and supply a static IP.
+
+## Reply (2026-10-20)
+
+Approved. Janet Swatscheno, Digital Scholarship Librarian, handled ticket **GS-17502**. Rather
+than requiring a static IP, HathiTrust allow-listed the machine's **dynamic** address
+(<the requester's IP, withheld>): "You're all set up now to access the ht_text_pd_open_access dataset."
+
+**Access ends 2026-11-30**, which is when the allow-list entry is removed. That is a limit on
+rsync access, not a deletion deadline for data already received.
+
+Pulled 2026-10-20 in 24 minutes: **31,194 volumes** of the 107,178 requested, 19 GiB.
+The 75,984 missing are Google-digitized and not in this dataset.
+
+**Google-digitized volumes.** Obtaining those needs a separate Distribution Agreement with
+Google (library-partner-team@google.com, by DocuSign). Dave emailed them 2026-10-20. The
+project is **not waiting on a reply**: those 75,984 are out of scope unless and until an
+agreement arrives, and the corpus is complete without them. If one does arrive it is a later
+addition, handled the same way HathiTrust was.

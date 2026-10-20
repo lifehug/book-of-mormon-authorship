@@ -71,3 +71,18 @@ Slots for Researchers 2-4 are optional.
 - Models trained on the corpus must not reproduce text (already a condition of the
   preregistration and of the Harvard Institutional Books terms).
 - The dataset is deleted at the end of the study (the OSF registration gives the window).
+
+## Timeline
+
+| Date | Event |
+| --- | --- |
+| 2026-10-15 | Dataset request emailed to support@hathitrust.org; ticket GS-17502 opened |
+| 2026-10-16 | Non-Google researcher agreement received and signed as an independent researcher |
+| 2026-10-20 | Approved. Dynamic IP <the requester's IP, withheld> allow-listed instead of a static one |
+| 2026-10-20 | Pulled 31,194 volumes, 19 GiB, in 24 minutes |
+| 2026-11-30 | rsync access removed |
+
+Obligations that outlive the access window: the text stays on this machine and is never
+redistributed, deletion notices are honoured and logged in `data/catalog/SOURCES.md`, models
+trained on it must not reproduce it, and a change of scope, address or affiliation is reported
+to HathiTrust.
