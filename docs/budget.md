@@ -363,6 +363,8 @@ actuals table is the place where they get corrected, one phase at a time, by evi
 | Chronicling America route | per-page API, "1-2 days at the rate limit" | The API was not rate-limited but broken: `tile.loc.gov` returned HTTP 500 often enough that pages cost about a minute each in backoff, measured at 0.5-3 pages/min, i.e. **219 days**. Switched to the bulk batch archives: 76 tarballs, 68.8 GB, downloaded by hand because Cloudflare blocks scripted access, extracted in under 3 hours | BOM-10 | 2026-10-17 |
 | Internet Archive | 10-20 GB | **99 GiB**, 249,906 of 251,204 items (99.48%). Five times the estimate: the row assumed OCR text only and did not account for how many items the 1780-1830 English slice actually holds | BOM-09 | 2026-10-20 |
 | Internet Archive, wall time | not estimated | about 4 days unattended, 26 supervisor cycles. Rate went 1/min to 46 to 63 to 76 as three faults in our own fetcher were fixed; never rate-limited, zero 429s across ~250,000 requests | BOM-09 | 2026-10-20 |
+| HathiTrust | about 150 GB if full text is obtained | **19 GiB**, 31,194 volumes of 107,178 requested. The estimate assumed all 107,178; 75,984 are Google-digitized and excluded from the dataset. Of what arrived, 21,810 duplicate the Internet Archive pull and 9,384 are new | BOM-08 | 2026-10-20 |
+| HathiTrust, wall time | not estimated | 24 minutes by rsync. The approval took 5 days, the transfer took 24 minutes -- the bottleneck was paperwork, not bandwidth | BOM-08 | 2026-10-20 |
 | Corpus total on disk | 130-200 GB raw | **221 GiB** across five sources: Institutional Books 73, Internet Archive 99, TCP 22, HathiTrust EF 23, Chronicling America 4.4 | Phase 1 | 2026-10-20 |
 
 ## Sources

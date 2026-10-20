@@ -32,6 +32,27 @@ The New York, Pennsylvania, and Ohio pages (`pull --states NY,PA,OH`, 3,472 page
 were pulled on 2026-10-15; their checksums are `data/manifests/chronicling_america_nypaoh.jsonl`.
 Re-running the same command on another machine reproduces them.
 
+**HathiTrust (BOM-08) completed 2026-10-20.** 31,194 volumes of 107,178 requested, 19 GiB on
+disk (10.1 GiB of zipped page text plus METS). Pulled by rsync from
+`datasets.hathitrust.org::ht_text_pd_open_access` under ticket GS-17502, approved 2026-10-20
+with a dynamic IP allow-listed; **rsync access is removed 2026-11-30**. Manifest:
+`data/manifests/hathitrust.jsonl` (62,394 records: one `.zip` and one `.mets.xml` per volume).
+Each volume is `<pairtree>/<encoded id>.zip` holding one OCR text file per page. Rebuild:
+`python3 ht_pull.py` from the handoff folder; resumable, exit 23 expected.
+
+The 75,984 missing ids are Google-digitized and not in this dataset. Obtaining them needs a
+separate Distribution Agreement with Google, which has not been pursued.
+
+**What it actually added** (`data/catalog/hathitrust_overlap.json`): of the 31,194 received,
+**21,810 were already held** from the Internet Archive pull, leaving **9,384 genuinely new**
+volumes — under 2% of the corpus. The overlap is not waste: those 21,810 give two independent
+OCR passes of the same book, HathiTrust's and the Archive's, which is a ready-made test set for
+BOM-14's OCR scoring that would otherwise need hand-corrected pages.
+
+Terms, from the signed researcher agreement: the text stays on this machine, is never committed
+or redistributed, and only manifests are public. Deletion notices from HathiTrust must be
+honoured and logged here. Models trained on it must not reproduce it.
+
 **Internet Archive (BOM-09) completed 2026-10-20.** 249,906 of 251,204 items (99.48%), 99 GiB,
 one `.txt` per item in `data/corpus/internet_archive/text/<identifier>.txt`. Manifest:
 `data/manifests/internet_archive.jsonl`.
