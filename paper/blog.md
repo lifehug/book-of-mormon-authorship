@@ -778,6 +778,55 @@ The 87% is agreement with *me*, which is not the same as being right. I am one p
 titles. The number that gets published comes from Dave working through a sample and saying
 agree or disagree, and that is the one the paper will have to defend.
 
+## Writing down everyone else's claims before I have any answers
+
+A thought I had this week: when this finishes, people will want to know what it says about the
+specific arguments already out there. The CES Letter says the Book of Mormon leans on *The Late
+War* and *View of the Hebrews*. Skousen and Carmack say its grammar is early modern English that
+nobody in 1829 could have faked. Those are testable, and I will be able to speak to them.
+
+The trap is obvious once you see it. If I wait until I have results and *then* decide which
+claims to address, I will pick the ones I have something interesting to say about. Not
+dishonestly — it just happens. You answer the questions your data answered.
+
+So the list is written now, before any result exists, and frozen with a hash the same way the
+analysis thresholds are. Twelve claims so far across eight sources, and each one carries, in
+advance, what would count as supporting it and what would count as contradicting it. Four
+critical, seven apologetic, one academic — the apologetic side outnumbers the critical side
+because Skousen and Carmack make more specifically falsifiable claims than the CES Letter does.
+
+Writing it turned up something I did not expect. Carmack's central argument is that the text's
+syntax appears in neither the King James Bible, nor Joseph Smith's own writing, nor the
+pseudo-biblical books of his era, but was ordinary in the late 1500s. That names three
+comparison sets I already hold and one period I already hold. And the imitation test — which I
+designed months before reading him, to check whether a deliberate forger could fool each method
+— turns out to be its decisive test. If King James pastiche *can* shift the dating classifier,
+his claim fails. If it cannot, his claim is supported by a method built without reference to it.
+
+Four of the twelve are marked untestable and will stay that way. Most of both documents is
+historical or doctrinal and no amount of word-counting touches it. Those get reported as
+untestable with the reason, not quietly dropped, and the write-up has to say plainly that being
+untestable is not the same as being disproved. A document that answered only one side would read
+as advocacy for the other, which is the one thing this project cannot afford to be.
+
+## Two kinds of "add more workers"
+
+A small technical thing worth writing down because it cost me a wrong assumption twice.
+
+When I parallelised the Internet Archive fetcher, going from one worker to sixteen was nearly
+linear, because every worker spent its time waiting on the network while the Mac sat idle. The
+limit there was a policy — the Archive asks for about four concurrent downloads — not the
+hardware.
+
+When I benchmarked the local models, I assumed the same shape and it is the opposite. Four
+workers and eight workers finished within three seconds of each other, because every request
+runs on the same GPU. They are not waiting, they are queueing. More threads just add memory
+pressure for the key-value cache, and on sixteen gigabytes that is the thing that bites.
+
+So: remote work is limited by what the other end will tolerate, local work by what the silicon
+can do, and the answer to "can we add more threads" is a different answer each time. Measure it;
+the intuition transfers badly.
+
 ## What 300 records taught me about my own benchmark
 
 The 60-record test said Sonnet 87%, Llama 83%, so I nearly wrote down "use Sonnet". Then I
@@ -853,6 +902,13 @@ HathiTrust (BOM-08) resolves whenever it resolves.
 
 ## Log
 
+- **2026-10-20, later still.** BOM-42 filed: a register of twelve public claims from every
+  side, each with its decision rule written before any result exists, frozen with a hash before
+  the blind run. BOM-08 approved (ticket GS-17502, dynamic IP allow-listed, access to
+  2026-11-30) and the rsync pull started. Credentials consolidated to one standard,
+  ~/.config/<service>/token, after a repo .env held one; Codex authenticates by ChatGPT OAuth
+  and is the adversarial labeller. Recorded that local and remote concurrency are different
+  problems: 1 to 16 workers is near-linear against an API and flat against a local GPU.
 - **2026-10-20, later.** Genre labeller benchmarked properly: 300 records instead of 60, with
   the rule-decided half used as ground truth. Sonnet 98%, Llama 3.1 8B 97% -- indistinguishable,
   and the earlier 87/83 split on 60 records was inside the noise. Inter-model agreement on hard
