@@ -78,6 +78,10 @@ conversational, short sentences, concrete, no jargon.
 - Issue references are `BOM-NN`, never `#N` (GitHub #1-#10 are the old 2016 items).
 - Fetchers identify themselves, rate-limit, and resume from what is on disk.
 - Commit messages end with the Claude co-author line the harness supplies.
+- **Local compute and disk are cheap; rented GPU is not.** Up to about a week of wall time for
+  a job on the mini is acceptable, and the SSD has 1.6 TB free. Prefer the accurate approach
+  over the fast one, keep originals and intermediate artifacts, and flag rather than delete.
+  Trade rented GPU hours into local hours wherever the job allows. See `docs/budget.md` 4b-i.
 - **Never hard-code an analytic value.** Thresholds, cutoffs, chunk sizes, seeds and model
   choices come from `config/preregistered.yaml` via `metadata.config.load()`, and every output
   is stamped with `metadata.config.sha256_of_config()`. The file holds only choices already

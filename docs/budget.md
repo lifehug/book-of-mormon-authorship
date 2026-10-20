@@ -158,6 +158,33 @@ drive per `docs/mac-mini-setup.md` section 4.
 Against the superseded plan's $3,700-4,300, this saves roughly $2,400-3,600 up front and
 moves part of it into rented compute, paid only as each job needs it.
 
+## 4b-i. What is actually scarce (2026-10-20)
+
+Recorded because it decides design, not just scheduling.
+
+**Local compute on the Mac mini is cheap.** Up to about a week of wall time for a single job
+is acceptable. It costs electricity, it runs unattended, and it overlaps with the next issue.
+No local job should be made less accurate to make it faster.
+
+**Local disk is cheap.** The 2 TB SSD holds 223 GiB with 1.6 TiB free. Keep originals,
+derived copies, intermediate artifacts and computed signatures. Never delete to save space, and
+never discard a row when a flag would do, because BOM-40's multiverse has to be able to
+reconsider corpus-level choices later.
+
+**Rented GPU is the scarce thing.** The H100 line is budgeted once, for the BOM-27 base model
+plus a reserve. Anything that would add a rental needs justifying; anything that can be traded
+from rented GPU into local wall time should be.
+
+So the ordering when a design choice comes up: prefer accuracy over speed, prefer keeping data
+over discarding it, prefer local hours over rented hours, and spend the owner's attention last
+of all.
+
+**This revises one row of section 4c.** BOM-23 (passim) was marked "rent, or chunk heavily"
+because the job wants more memory than this machine has. But chunking trades memory for time,
+and time is now explicitly cheap, so chunking is simply the answer and the $100-300 cloud line
+for it is probably avoidable. The RAM ceiling is real; the conclusion drawn from it was not.
+Revisit when BOM-23 starts and record the actual.
+
 ## 4c. What 16 GB costs us
 
 Section 4a's table assumed 64 GB and a 20-core GPU. On 16 GB and a 10-core M4, the verdicts
