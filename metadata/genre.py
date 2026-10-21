@@ -30,10 +30,12 @@ Usage::
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import subprocess
 import sys
 import time
+import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -130,6 +132,46 @@ def prompt_for(row: dict, excerpt: str) -> str:
     )
 
 
+def ask_ollama(prompt: str, model: str, retries: int = 2) -> str:
+    """Same contract as ask_model, against a local ollama server.
+
+    Used when the subscription models are unavailable. llama3.1:8b measured 97% on the
+    ground-truth rows against Sonnet's 98%, at 1.08s/item versus 0.33s -- free and unmetered,
+    which is the trade when subscription usage is the binding constraint.
+    """
+    body = json.dumps(
+        {
+            "model": model,
+            "prompt": prompt,
+            "stream": False,
+            "options": {"temperature": 0, "num_predict": 24},
+        }
+    ).encode()
+    for _ in range(retries):
+        try:
+            req = urllib.request.Request(
+                "http://127.0.0.1:11434/api/generate",
+                data=body,
+                headers={"Content-Type": "application/json"},
+            )
+            with urllib.request.urlopen(req, timeout=240) as resp:
+                text = json.loads(resp.read()).get("response", "").lower()
+        except Exception:  # noqa: BLE001
+            continue
+        text = re.sub(r"<think>.*?</think>", " ", text, flags=re.S)
+        if re.search(r"\buncertain\b", text) and not any(
+            re.search(rf"\b{label}\b", text) for label in LABELS
+        ):
+            return "uncertain"
+        found: list[str] = []
+        for match in re.finditer(r"\b(" + "|".join(LABELS) + r")\b", text):
+            if match.group(1) not in found:
+                found.append(match.group(1))
+        if found:
+            return ",".join(found[:2])
+    return "PARSE_FAIL"
+
+
 def ask_model(prompt: str, model: str = MODEL, retries: int = 2) -> str:
     """One label from the model, or ``PARSE_FAIL``.
 
@@ -219,7 +261,9 @@ def run_label(limit: int | None, model: str, workers: int) -> int:
     def one(row: dict) -> dict:
         return {
             "work_id": row["work_id"],
-            "genre": ask_model(prompt_for(row, excerpt_for(row)), model),
+            "genre": (ask_ollama if ":" in model else ask_model)(
+                prompt_for(row, excerpt_for(row)), model
+            ),
             "decided_by": model,
             "model": model,
         }
