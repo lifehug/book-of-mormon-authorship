@@ -57,6 +57,19 @@ PINNED: dict[tuple[str, ...], Any] = {
     ("kjv_mask", "edition"): "kjv_1769_oxford_blayney",
     ("segmentation", "split", "seed"): 20261017,
     ("seed",): 20261017,
+    # Registered by Amendment 3, 2026-10-20 (OSF revision 6ad802954d710c8c6b00b651).
+    ("corpus", "genre_tagging", "max_labels"): 2,
+    ("corpus", "genre_tagging", "allow_uncertain"): True,
+    ("corpus", "genre_tagging", "passes"): 2,
+    ("corpus", "genre_tagging", "validation_sample"): 300,
+    ("corpus", "genre_tagging", "validation_sampling"): "stratified",
+    # Registered by Amendment 4, 2026-10-20 (OSF revision 6ad844dc2aba3079ce0da955).
+    ("corpus", "genre_tagging", "reliability_sample"): 5000,
+    ("corpus", "genre_tagging", "reliability_strata"): ["category", "source", "decade"],
+    ("corpus", "genre_tagging", "pass2_model_family"): "distinct_from_pass1",
+    ("corpus", "genre_tagging", "perturbation_runs"): 100,
+    ("corpus", "genre_tagging", "perturbation_rate"): "from_validation",
+    ("corpus", "genre_tagging", "perturbation_confusion"): "observed",
 }
 
 

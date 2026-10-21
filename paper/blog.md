@@ -983,6 +983,29 @@ a script that drives one.
 
 ## Log
 
+- **2026-10-20, night.** Amendment 4 filed and approved (OSF revision
+  `6ad844dc2aba3079ce0da955`). Dave asked a question I should have asked myself: is the second
+  labelling pass actually buying a better result, now that works can carry two labels? It
+  isn't. Amendment 3 made two changes at once, and the first undercut the second — allowing two
+  labels removed most of the disagreement that double-labelling was there to find. Worse, I had
+  registered a *census*: every one of 282,462 records labelled twice. Nobody reports annotator
+  agreement on a census; you report it on a sample, because that's all the statistics needs. At
+  5,000 records the confidence interval is under a point, and the saving is 29 hours of Sonnet
+  down to half an hour. Checking what genre is actually *for* settled it: all three uses
+  (imposter pools, rare-phrase normalization, the stratified null) are pool-level. Not one
+  decision rule reads an individual record's label. So the apparatus was measuring a quantity no
+  conclusion depends on. The amendment spends the saving on a test that was missing: corrupt the
+  labels at the error rate validation measures, drawn from the confusion the model actually
+  makes rather than uniformly, and re-run the genre-dependent analyses a hundred times. If the
+  99th percentile of the null doesn't move, the labelling is good enough and we can prove it.
+  One more thing had to be nailed down first: pass 2 can't be the same model. At temperature 0
+  Llama reproduced 19 of its own 20 labels, so self-agreement would have measured floating-point
+  arithmetic. And Dave's "am I correct?" was worth taking seriously rather than agreeing with —
+  a census does catch one thing a sample can miss, a failure confined to a single source or
+  decade, which isn't category-shaped. The fix was one clause: stratify by source and decade too,
+  and publish the per-stratum table. Filed tonight rather than Saturday, deliberately, because
+  nothing from pass 1 has been looked at yet and an amendment written after seeing the output
+  would be worth much less.
 - **2026-10-20, night.** Started the genre labeller on the local Llama and immediately found I
   was running it eight times slower than I thought. Ollama ships with `OLLAMA_NUM_PARALLEL=1`,
   so my eight worker threads were queuing for a single slot -- the log only ever said

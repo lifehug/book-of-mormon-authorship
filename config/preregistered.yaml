@@ -46,8 +46,22 @@ corpus:
     allow_uncertain: true      # better than a forced guess
     method: llm_few_shot_two_pass
     passes: 2                  # inter-pass agreement is the confidence signal
+    # Amendment 4: pass 2 covers a stratified sample, not the corpus. A census measured
+    # per-record consistency, which no decision rule reads -- every use of genre (5.1, 5.5,
+    # 6.5) is pool-level. Pass 2 must be a different model family: at temperature 0 the same
+    # model reproduced 19 of 20 of its own labels, so self-agreement measures the hardware.
+    reliability_sample: 5000
+    reliability_strata: [category, source, decade]   # a failure confined to one source or
+                                                     # period is not category-shaped
+    pass2_model_family: distinct_from_pass1
     validation_sample: 300
     validation_sampling: stratified   # over-samples ambiguous categories and disagreements
+    # Amendment 4: the test that matters, because the labels are only ever used pool-wise.
+    # Corrupt labels at the rate validation measures, drawn from the observed confusion
+    # between categories, and recompute the genre-dependent analyses. A BOM-40 axis.
+    perturbation_runs: 100
+    perturbation_rate: from_validation   # not a free parameter; set by the measured error rate
+    perturbation_confusion: observed     # not uniform
   spelling_normalization:
     pre_1700: morphadorner_emod_lexicon
     post_1780: artifacts_only   # long-s, ligatures, OCR; no lexical modernisation
