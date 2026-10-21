@@ -276,6 +276,73 @@ Phase 3 proves the toolkit works on known answers and reproduces earlier studies
 **Done when:** all methods pass tests and run on the frozen corpus.
 **Depends on:** #19.
 
+### #43 Power analysis: which candidates can actually be tested
+
+**Goal:** know before the analytical build-out which candidates have enough text for each method to say anything, and say so in advance rather than discovering it at #21.
+
+Section 10 already concedes Joseph Smith will likely fall under the sample floor. Measuring the accuracy-vs-sample-size curve uses known authors only and breaks no seal.
+
+- [ ] Sample-size curve per method on the Federalist papers and held-out pseudo-biblical texts, at 1k/2k/5k/10k/20k masked words
+- [ ] Publish candidate x method x testable / unreliable / untestable, using #13's word counts
+- [ ] Put the minimum detectable sample per method in the config, so #21 confirms rather than discovers it
+- [ ] Record any all-method-untestable candidate as a pre-registered expectation now
+
+**Done when:** the table is published and the expectation is on the record before #21.
+**Depends on:** #13. **Gates:** #21.
+
+### #44 Publish derived artifacts so the pipeline replicates without the licensed corpus
+
+**Goal:** an outsider can re-run most of the analysis without holding the corpus.
+
+Harvard, HathiTrust and the Joseph Smith Papers all forbid redistribution, so nobody can rebuild this corpus from this repository. Derived artifacts are not reconstructable back to source text, which is what the licences restrict.
+
+- [ ] Check each source's terms individually and record what derived form may be redistributed — the gating step, not yet examined
+- [ ] Publish 4-gram document-frequency tables, feature matrices, the genre catalog, OCR scores, the dedup graph
+- [ ] Verify and document non-reconstructability
+- [ ] Amend the pre-registration's known limits to state what a replicator can and cannot reproduce
+
+**Done when:** a replicator without a HathiTrust or Harvard agreement reproduces the 5.5/6.5 results and the classical features.
+**Depends on:** #19.
+
+### #45 Size the borrowing null properly
+
+**Goal:** a 99th-percentile threshold that is not dominated by its own sampling noise.
+
+6.5 says "at least 500" volumes; a 99th percentile from 500 draws rests on about five tail observations. The floor permits more, so this is a config decision, not an amendment.
+
+- [ ] Estimate the sampling variance of the 99th percentile against n, on real scores
+- [ ] Choose n from that curve (expected range 5,000-10,000) and add `borrowing.null_sample` to `pending_amendment`
+- [ ] Publish the threshold's confidence interval beside it
+
+**Done when:** the null is built at the chosen n and the choice is recorded.
+**Depends on:** #12, #18. **Part of:** #24.
+
+### #46 Imitation weights: check the dual-register author sample
+
+**Goal:** method weights that are not set by four measurements.
+
+Section 9 weights each method by its accuracy on imitation-biblical samples, in bands at 80% and 60%. If Leacock, Snowden, Linning and Hunt are the whole dual-register population, the bands cannot be told from noise — and these weights feed 6.7.
+
+- [ ] Count dual-register authors actually available after #18's search
+- [ ] Report section 9 accuracies with confidence intervals if the count is small
+- [ ] Register an equal-weight sensitivity run of 6.7 alongside the section 9 weights
+
+**Done when:** the count is published and either the bands are justified at that n or the sensitivity is registered.
+**Depends on:** #18. **Feeds:** #31, #35.
+
+### #47 State the sweep's expected false-lead count before running it
+
+**Goal:** nobody mistakes a pile of leads for a finding, including us.
+
+6.6 gates leads at the 95th percentile under both signals. Partly independent signals imply on the order of 0.25% of swept authors — hundreds of leads. That is what a sweep is for; the flaw is not writing the number down first.
+
+- [ ] Measure the correlation between the embedding and classical signals on #39's 200 calibration books; do not assume independence
+- [ ] Publish the expected false-lead count before the sweep runs, and what count would be surprising
+- [ ] Report observed leads against that expectation, and how many survived the section 3 gate versus how many were expected to by chance
+
+**Done when:** the expectation is committed before the sweep runs and results are reported against it.
+**Depends on:** #30, #39. **Gates:** the sweep run in #39.
+
 ### #42 Apply the results to the public claims
 
 **Goal:** take every public claim about Book of Mormon authorship, fix the list and the decision rules before any result exists, and afterwards say which our evidence supports, contradicts, or does not address.

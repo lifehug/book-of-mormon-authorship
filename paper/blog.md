@@ -983,6 +983,27 @@ a script that drives one.
 
 ## Log
 
+- **2026-10-20, night.** Stopped and audited the whole plan against its own goal, now that
+  Phase 1 is nearly done and nothing analytical is built yet (`docs/audit.md`). Five gaps, five
+  new issues. The one that could change what this paper is about: there's no power analysis.
+  Section 10 of the pre-registration already admits Joseph Smith's undisputed pre-1830 writing
+  is under 10,000 words and he'll "likely fall under the sample floor for most methods" — which
+  means the question everyone actually wants answered may not be answerable, and under the plan
+  as written I'd find that out at BOM-21, after building the corpus, the models and the
+  benchmark. It can be known in a fortnight instead, using Federalist papers and known
+  pseudo-biblical authors, with no Book of Mormon text involved and no seal broken. If Smith
+  can't be tested, that gets said up front and the paper is about the open-set result, the
+  dating, and the candidates who can be — which is still worth doing, and reads very differently
+  announced in advance than discovered late. Second gap: I've been calling this replicable and
+  it isn't, quite. Harvard, HathiTrust and the Joseph Smith Papers all forbid redistribution, so
+  nobody can rebuild the corpus from the repo. The fix is better than a disclaimer — publish the
+  derived tables the analyses actually read (4-gram document frequencies, feature matrices, the
+  genre catalog), which aren't reconstructable back into readable text and so aren't what the
+  licences restrict. Also: the borrowing null is built from "at least 500" volumes, which puts
+  about five observations in the tail of a 99th percentile, and I have 560,000 volumes sitting
+  on a disk doing nothing. And I named what gets cut first if this stalls — the from-scratch
+  300M model and its per-candidate fine-tunes, the only rented GPU in the budget — while that's
+  still a judgment call rather than a retreat.
 - **2026-10-20, night.** Amendment 4 filed and approved (OSF revision
   `6ad844dc2aba3079ce0da955`). Dave asked a question I should have asked myself: is the second
   labelling pass actually buying a better result, now that works can carry two labels? It
