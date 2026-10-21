@@ -626,7 +626,7 @@ it", and that ceiling is the same whether the work is done on a screen or in a r
 paper states the limit in those terms rather than blaming the medium.
 
 - [ ] Compile the Manchester rental library holdings list
-- [ ] List local newspapers and what they printed or advertised (including bookseller ads)
+- [x] List local newspapers and what they printed or advertised (including bookseller ads) — *Wayne Sentinel* 1823-1830 indexed 2026-10-21 (`docs/access-evidence.md`, `data/access/`). Six genuine Book of Mormon items on four dates in 1830; bookselling language on 826 of 1,429 pages. The 26 Jun 1829 title page is **unconfirmed from OCR** (columns interleaved) and needs the page image
 - [ ] Score each candidate source from #26 for documented availability
 
 **Done when:** an access table with sources is published.
