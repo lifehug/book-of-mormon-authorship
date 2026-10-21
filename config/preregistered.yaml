@@ -105,3 +105,13 @@ pending_amendment:
   - key: segmentation.boundaries_file
     issue: BOM-17
     note: the actual narrator, dictation-order and scribe boundary file; commit it and cite its hash
+  - key: borrowing.null_sample
+    issue: BOM-45
+    note: >
+      6.5 fixes a floor of 500 volumes, not a number. A 99th percentile from 500 draws rests on
+      about five tail observations; the chosen n follows from the variance curve in BOM-45.
+  - key: genre_tagging.pass2_model
+    issue: BOM-12
+    note: >
+      Amendment 4 requires a family distinct from pass 1 but names no model; the choice is
+      measured on the ground-truth rows and published with both versions.

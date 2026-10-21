@@ -6,9 +6,11 @@ Read this first in every session. It is the handoff between machines and session
 
 An open, pre-registered computational study of the authorship, borrowing, and dating of the
 earliest Book of Mormon text. One person (Dave Taylor, GitHub `lifehug`) plus AI. The plan is
-39 GitHub issues, `BOM-01` to `BOM-39`, worked strictly one at a time. `README.md` explains
+49 GitHub issues, `BOM-01` to `BOM-49`, worked strictly one at a time. `README.md` explains
 the project; `docs/backlog.md` is the plan; `paper/preregistration.md` is frozen on OSF at
 https://osf.io/6ugxc/ and changes only by dated amendment in its section 11.
+`docs/audit.md` is the 2026-10-20 design review of the whole plan and the source of
+`BOM-43` to `BOM-49`; read it before changing method or scope.
 
 ## Framing (do not drift)
 

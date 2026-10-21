@@ -70,9 +70,11 @@ Three things are possible today that were not in 2013.
 
 ## How we intend to do it
 
-The work is 39 issues in eight phases. Each issue has one deliverable and closes only when
+The work is 49 issues in eight phases. Each issue has one deliverable and closes only when
 that deliverable is published. The full backlog is in `docs/backlog.md` and mirrored as
-GitHub issues `BOM-01` to `BOM-39`.
+GitHub issues `BOM-01` to `BOM-49`. `docs/audit.md` is a design review of the whole plan,
+written at the end of Phase 1 before any analytical code existed; `BOM-43` to `BOM-49` come
+from it.
 
 **Phase 0, Foundations.** Before touching any data, we write down the questions, the
 methods, and the thresholds that will count as a match, a non-match, or inconclusive, and
@@ -142,9 +144,19 @@ peer review by an AI model that sees only the released materials, and answer it 
 - Dictation and multiple scribes sit between any author and the page.
 - Any method that fails the validation benchmark or the imitation test is down-weighted or
   dropped, whatever answer it would have given.
+- **You cannot rebuild our corpus from this repository.** Harvard Institutional Books and
+  HathiTrust forbid redistribution, and the Joseph Smith Papers transcriptions are
+  copyrighted. The code, the catalogs, the checksum manifests and the results are public, and
+  a replicator with their own access to those sources can reproduce the corpus from them — but
+  the texts themselves will never be published here. `BOM-44` exists to narrow this: the
+  derived tables the analyses actually read (n-gram document frequencies, feature matrices,
+  genre and OCR scores) are not reconstructable back into readable text, so most of the
+  pipeline can be made checkable without the corpus. Until that ships, treat "reproducible"
+  as applying to the code and the method, not to the data.
 
 The design commits us to reporting nulls, conflicts, and "inconclusive" as readily as any
-positive result. The analysis plan itself is `paper/preregistration.md`.
+positive result. The analysis plan itself is `paper/preregistration.md`, and the known gaps in
+it are `docs/audit.md`.
 
 ## Rules we have bound ourselves to
 
