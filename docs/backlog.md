@@ -286,6 +286,9 @@ Section 10 already concedes Joseph Smith will likely fall under the sample floor
 - [ ] Publish candidate x method x testable / unreliable / untestable, using #13's word counts
 - [ ] Put the minimum detectable sample per method in the config, so #21 confirms rather than discovers it
 - [ ] Record any all-method-untestable candidate as a pre-registered expectation now
+- [ ] Report a floor per method, not one number: 6.2 needs two agreeing families, so a candidate must clear two floors to be concludable
+- [ ] Apply the curve to the Book of Mormon side too: if 2,000 words is below a method's floor, #17's 2,000-word runs are exploratory for that method
+- [ ] Measure floors on masked word counts, not raw — 4.4 strips KJV spans, and the early revelations are heavily KJV-inflected
 
 **Done when:** the table is published and the expectation is on the record before #21.
 **Depends on:** #13. **Gates:** #21.

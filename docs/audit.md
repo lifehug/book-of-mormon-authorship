@@ -60,6 +60,21 @@ result is about the open-set outcome, the dating question, and the candidates wh
 tested. That is still a contribution. It is a much weaker one if it is discovered late and
 reads as a retreat.
 
+Three details make the exercise more than a single go/no-go number.
+
+The floor is **per method**, and 6.2 needs two. A candidate is *supported* only when two
+independent method families agree, so clearing one floor is not enough to be concludable — and a
+method below its floor still returns a confident-looking score, which is the quiet failure here.
+
+The same curve sizes the **Book of Mormon side**. 4.5 cuts the text into 2,000- and 5,000-word
+chunks, and a chunk is a sample with its own requirement. If 2,000 words falls below a method's
+floor, those runs are exploratory for that method. Nothing in the plan currently anticipates
+this.
+
+The count that matters is **masked** words, not raw. 4.4 strips KJV verbatim and close-paraphrase
+spans before attribution runs, and the early revelations are heavily KJV-inflected, so Smith's
+effective sample may be far smaller than his raw word count suggests.
+
 ### 2. "Replicable" is overstated (BOM-44)
 
 Harvard Institutional Books forbids redistribution. HathiTrust forbids it, and this project's
