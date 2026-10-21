@@ -144,15 +144,16 @@ peer review by an AI model that sees only the released materials, and answer it 
 - Dictation and multiple scribes sit between any author and the page.
 - Any method that fails the validation benchmark or the imitation test is down-weighted or
   dropped, whatever answer it would have given.
-- **You cannot rebuild our corpus from this repository.** Harvard Institutional Books and
-  HathiTrust forbid redistribution, and the Joseph Smith Papers transcriptions are
-  copyrighted. The code, the catalogs, the checksum manifests and the results are public, and
-  a replicator with their own access to those sources can reproduce the corpus from them — but
-  the texts themselves will never be published here. `BOM-44` exists to narrow this: the
-  derived tables the analyses actually read (n-gram document frequencies, feature matrices,
-  genre and OCR scores) are not reconstructable back into readable text, so most of the
-  pipeline can be made checkable without the corpus. Until that ships, treat "reproducible"
-  as applying to the code and the method, not to the data.
+- **The corpus is obtainable by anyone, but not redistributed from here.** Harvard
+  Institutional Books and HathiTrust forbid redistribution and the Joseph Smith Papers
+  transcriptions are copyrighted, so this repository ships the catalogs, the checksum
+  manifests and the fetchers instead of the texts. Five of the eight sources need no
+  permission at all; one needs a free account; only HathiTrust requires an application, and
+  `docs/replication.md` records exactly what to send and to whom. The manifests let a
+  replicator prove they obtained the same bytes. `BOM-44` adds a lower bar still — the derived
+  tables the analyses actually read, which are not reconstructable back into readable text and
+  so can be published outright, letting anyone re-run the statistics with no application at
+  all.
 
 The design commits us to reporting nulls, conflicts, and "inconclusive" as readily as any
 positive result. The analysis plan itself is `paper/preregistration.md`, and the known gaps in

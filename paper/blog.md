@@ -997,6 +997,25 @@ gets it with a pull.
 
 ## Log
 
+- **2026-10-20, night.** I told Dave the project wasn't replicable because the corpus can't be
+  redistributed, and he told me I was wrong. He was right. The bar I was using — can anyone
+  download the bytes — isn't the bar anyone else uses. Clinical trials, census microdata, UK
+  Biobank, dbGaP: none of them ship their data, all of them count as replicable, because what
+  gets published is the protocol, the code and the *access procedure*. Five of our eight sources
+  need no permission at all. One needs a free Hugging Face account. Only HathiTrust takes an
+  application, and `docs/hathitrust-request.md` already had the whole thing written down. So the
+  README now says the corpus is obtainable rather than unavailable, `docs/replication.md`
+  collects every access path in one place, and the audit finding is corrected in place rather
+  than deleted, since the correction is the more useful record. Then Dave asked whether the
+  download scripts were actually committed, and that turned up something worse: `ht_pull.py`,
+  the script that fetched 31,194 HathiTrust volumes, was sitting in a handoff folder on this
+  machine and nowhere else, while `SOURCES.md` cheerfully told a replicator to "run
+  `ht_pull.py` from the handoff folder." A folder only I have. It's in the repo now, along with
+  the rsync instructions and the actual email thread, because the shape of a successful
+  application is the hardest part for someone to guess. And checking those files for anything
+  that shouldn't be public turned up my own residential IP address and personal email, already
+  pushed, in two documents, since 2026-10-20 — the allow-listed IP from the HathiTrust approval.
+  Scrubbed from the working tree. Still in the git history, which is a separate problem.
 - **2026-10-20, night.** Dave asked the obvious follow-up to the power problem: Joseph Smith
   wrote a great deal *after* 1830, so why not use it? Because he spent fourteen years preaching
   and quoting the book. If his later writing resembles it, that's equally consistent with his

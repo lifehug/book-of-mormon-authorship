@@ -13,7 +13,7 @@ Companion file: `docs/hathitrust-request.md` (the request process and the propos
 
 | Date | Step |
 | --- | --- |
-| 2026-10-15 | Proposal emailed to support@hathitrust.org from <requester address, withheld> |
+| 2026-10-15 | Proposal emailed to support@hathitrust.org |
 | 2026-10-15/16 | HathiTrust opened ticket GS-17502 and sent the non-Google-digitized researcher agreement |
 | 2026-10-16 | Agreement signed (David James Taylor, independent, United States) and returned |
 | pending | Approval, static IP registration, rsync of the volume list |
@@ -78,7 +78,7 @@ Slots for Researchers 2-4 are optional.
 | --- | --- |
 | 2026-10-15 | Dataset request emailed to support@hathitrust.org; ticket GS-17502 opened |
 | 2026-10-16 | Non-Google researcher agreement received and signed as an independent researcher |
-| 2026-10-20 | Approved. Dynamic IP <the requester's IP, withheld> allow-listed instead of a static one |
+| 2026-10-20 | Approved. Dynamic IP allow-listed instead of a static one |
 | 2026-10-20 | Pulled 31,194 volumes, 19 GiB, in 24 minutes |
 | 2026-11-30 | rsync access removed |
 

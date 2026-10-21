@@ -38,7 +38,7 @@ disk (10.1 GiB of zipped page text plus METS). Pulled by rsync from
 with a dynamic IP allow-listed; **rsync access is removed 2026-11-30**. Manifest:
 `data/manifests/hathitrust.jsonl` (62,394 records: one `.zip` and one `.mets.xml` per volume).
 Each volume is `<pairtree>/<encoded id>.zip` holding one OCR text file per page. Rebuild:
-`python3 ht_pull.py` from the handoff folder; resumable, exit 23 expected.
+`python3 ingest/hathitrust_rsync/ht_pull.py`; resumable, exit 23 expected (about 76,000 of the ids are Google-digitized and absent from this dataset). Access procedure: `docs/hathitrust-request.md`; rsync details: `docs/hathitrust-rsync-instructions.md`.
 
 The 75,984 missing ids are Google-digitized and not in this dataset. Obtaining them needs a
 separate Distribution Agreement with Google, which has not been pursued.

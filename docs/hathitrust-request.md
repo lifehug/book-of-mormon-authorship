@@ -27,7 +27,7 @@ available to an independent researcher), Internet Archive 24,261 (fetch from the
 directly, BOM-09), other 6,933 (in `ht_text_pd_open_access`, and downloadable in full from
 babel.hathitrust.org by anyone).
 
-Request sent: 2026-10-15 from <requester address, withheld>. Reply: HathiTrust opened ticket
+Request sent: 2026-10-15 from the requester's address. Reply: HathiTrust opened ticket
 GS-17502 and sent the non-Google-digitized researcher agreement; signed and returned
 2026-10-16. Its wording and a plain-English gloss are in `docs/hathitrust-researcher-agreement.md`.
 Approval, static IP, and rsync are pending.
@@ -43,7 +43,7 @@ Accessed DATE.
 
 Subject: Research dataset request: public domain English text, 1780-1830 (ht_text_pd_open_access)
 
-From: <requester address, withheld>. Researchers: David Taylor, independent researcher, United States; sole user of the data.
+From: the requester's address. Researchers: David Taylor, independent researcher, United States; sole user of the data.
 Dataset: ht_text_pd_open_access; subset of English volumes with rights dates 1780-1830
 (135,035 in the 2026-10-01 hathifile; about 31,000 after excluding Google-digitized and
 Harvard-available volumes); ID list linked above. Research: pre-registered computational

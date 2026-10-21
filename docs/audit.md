@@ -82,8 +82,18 @@ rsync access ends 2026-11-30. Joseph Smith Papers transcriptions are copyrighted
 consequence is plain: **nobody can rebuild this corpus from this repository**, and section 10's
 known limits do not say so.
 
-A disclaimer is the weaker half of the fix. The stronger half is to publish the derived
-artifacts the analyses actually consume — 4-gram document-frequency tables, feature matrices,
+**Corrected 2026-10-20, after the owner pushed back on this framing.** The finding above set
+the bar at "downloadable by anyone", which is not the bar. Research on restricted data —
+clinical trials, census microdata, UK Biobank, dbGaP — is considered replicable when the
+protocol, the code and the *access procedure* are published and open to any qualified
+researcher. That standard this project already meets: `docs/hathitrust-request.md` records the
+whole application, five of the eight sources need no permission at all, and the manifests let a
+replicator prove byte-level agreement. `docs/replication.md` now consolidates the paths. The
+study is replicable; what BOM-44 adds is a *lower bar* — letting someone check the statistics
+with no application at all — not the basis of the claim. The original framing is left above
+rather than deleted, because the correction is the more useful record.
+
+The derived artifacts are still worth publishing — 4-gram document-frequency tables, feature matrices,
 the genre catalog, OCR quality scores, the dedup graph. These are not reconstructable back to
 source text, which is what the licences restrict, and they are what sections 5.1, 5.5 and 6.5
 read. Publishing them lets an outsider re-run most of the pipeline without the corpus, which
