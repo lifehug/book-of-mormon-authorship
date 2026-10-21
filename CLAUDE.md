@@ -31,38 +31,48 @@ Work the lowest-numbered open `BOM-NN` issue whose "Depends on" issues are all c
 the issue body (it holds the goal, checklist, and done-when). If an issue is half done, its
 comments say what remains. "Continue" or "move forward" means: pick that issue and do it.
 
-## Scope discipline (read this before starting anything)
+## Say what you are doing and why (read this before starting anything)
 
-**A task is its stated scope and nothing else.** The project has 49 issues and more work than
-time. Interesting is not the same as useful, and a detour that produces something genuinely good
-still costs the thing that was asked for.
+**The test is not "is this in scope". It is: can I state in one line what I am doing and how it
+serves the task?** If that line cannot be written, stop. If it can, write it down for the owner
+before doing the work, not in the summary afterwards.
 
-When something turns up mid-task, it is one of three things. Say which, out loud, before acting:
+A better method is welcome and should be raised. If a cheaper or stronger route to the *same
+answer* appears, say what it is, why it is better, and what it costs — then take it. That is not a
+detour. What is not welcome is changing route without saying so.
 
-1. **It blocks the task.** Fix it and carry on. No permission needed. (The access index could not
-   match fragmented OCR; making it match was the task.)
-2. **It is a rule broken or data at risk.** Stop and report it. Do not quietly fix it and keep
-   going — the owner decides what happens next. (The extractor deleting source archives.)
-3. **It is merely interesting.** Name it, say plainly *"this does not serve the task"*, write it
-   down as an issue or a note, and **ask before doing any of it.**
+When something turns up mid-task, say which of these it is, out loud, before acting:
 
-For anything in category 3, explicit permission is required — not inferred from a related earlier
-"yes", and not from the work being cheap. State either that it does not serve the task, or
-exactly how it does, and let the owner choose.
+1. **A better route to the same answer.** Name it and proceed. (Reading OCR confidence out of the
+   ALTO instead of reading page images: a legitimate attempt to answer the same question without
+   the expensive step.)
+2. **It blocks the task.** Fix it and carry on.
+3. **A different problem.** Stop. Say that the task is now paused and why, and let the owner
+   choose. Data at risk or a rule broken belongs here: report it, do not quietly fix it and
+   continue. (The extractor deleting source archives was a real and serious find — and it was a
+   different problem from the question being asked.)
+4. **Merely interesting.** Say plainly *"this does not serve the task"*, write it down as an
+   issue, and ask before doing any of it. Explicit permission, never inferred from an earlier
+   related yes or from the work being cheap.
 
-**Answer the question that was asked, first.** If the task is a question, produce the answer
-before anything else. A question that is already answered is finished: stop, even if a better
-method just occurred to you.
+**Announce every change of route.** The failure to avoid is not deviation, it is a silent switch:
+the owner watching the work cannot tell whether they are seeing a better method or a wandering
+one, and that is the thing that wastes their attention.
 
-**Two failures from 2026-10-21, as the pattern to recognise.** Asked "is the Chronicling America
-OCR good enough", the route was: images blocked, so ALTO instead, which revealed the extractor had
-deleted it, which became a code fix, a guard test, a memory, a new issue, docs and a blog entry —
-all before the question had an answer. The answer needed one page image and twenty minutes. Then,
-with the question answered, a Tesseract re-OCR benchmark got started that nobody had asked for.
-Both produced real work. Neither was the task.
+**Answer the asked question first**, and prefer the route that answers it soonest. A method that
+promises more but has not yet produced the answer is not yet better.
 
-**One issue per concern.** BOM-50 ended up covering ALTO recovery, OCR verification and a
-re-OCR decision. Split them instead.
+**What this looked like when it went wrong, 2026-10-21.** Asked whether the Chronicling America
+OCR was good enough, the route went: page images blocked, so ALTO instead (category 1, and
+reasonable, but never said aloud), ALTO found deleted (category 3, and a genuine problem, but
+treated as a continuation rather than a stop), then a code fix, a guard test, a memory, a new
+issue, docs and a blog entry — all before the question had any answer. The answer in the end took
+one page image and twenty minutes, and it also showed ALTO had been the wrong instrument. Then,
+with the question answered, a Tesseract benchmark got started that nobody had asked for
+(category 4, no permission). Real work throughout; almost none of it narrated.
+
+**One issue per concern.** BOM-50 ended up carrying ALTO recovery, OCR verification and a re-OCR
+decision. Split them.
 
 ## How to finish a task
 
