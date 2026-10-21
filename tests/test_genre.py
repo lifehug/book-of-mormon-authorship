@@ -67,8 +67,28 @@ def test_model_reply_is_matched_against_the_closed_set():
         assert (found[-1] if found else None) == expect
 
 
-def test_prompt_names_every_label_and_forbids_explanation():
+def test_prompt_carries_the_amendment_3_contract():
+    """Amendment 3: every label defined, worked examples, two labels allowed, uncertainty offered.
+
+    The previous version asserted the Amendment 2 wording ("ONLY the label") and broke when the
+    prompt became multi-label -- which is the test doing its job, but it should assert the
+    contract rather than the phrasing.
+    """
     p = genre.prompt_for({"title": "t", "author": "a", "year": 1800}, "x")
     for label in genre.LABELS:
         assert label in p
-    assert "ONLY the label" in p
+    assert "Examples:" in p, "few-shot examples must be present"
+    assert "two separated by a comma" in p, "the two-label case must be stated"
+    assert "uncertain" in p, "an uncertainty option must be offered"
+    assert "no explanation" in p
+
+
+def test_label_run_checkpoints_rather_than_writing_once():
+    """A 13-hour job must survive interruption.
+
+    The first version collected every result in memory and wrote at the end. It ran four hours,
+    was stopped, and lost all of it. Every other long job here resumes from disk.
+    """
+    src = (genre.Path("metadata/genre.py")).read_text()
+    assert "checkpoint_every" in src
+    assert "tmp.replace(OUT)" in src, "checkpoint write must be atomic"

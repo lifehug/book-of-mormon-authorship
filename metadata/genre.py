@@ -47,7 +47,7 @@ CATALOG = Path("data/catalog/catalog.parquet")
 OUT = Path("data/catalog/genre.parquet")
 
 # The eight labels are registered by Amendment 2; the one-line glosses are what the model sees.
-DEFINITIONS = """sermon_devotional - sermons, discourses, theology, scripture, hymns, religious controversy
+DEFINITIONS = """sermon_devotional - sermons, discourses, theology, scripture, hymns, religion
 pseudo_biblical - modern events written in deliberate King James style ("and it came to pass")
 history_chronicle - history, biography, memoirs, travel, topography, antiquarian description
 fiction_narrative - novels, tales, poetry, drama, songs, belles-lettres
@@ -224,16 +224,39 @@ def run_label(limit: int | None, model: str, workers: int) -> int:
             "model": model,
         }
 
+    # Checkpoint as we go. An earlier version collected everything in memory and wrote once
+    # at the end; it ran for four hours, was interrupted, and lost all of it. Every other long
+    # job in this project resumes from disk and this one must too.
     start = time.time()
+    done_rows: list[dict] = []
+    checkpoint_every = 2000
+
+    def flush() -> None:
+        table = pa.Table.from_pylist(existing + done_rows, schema=SCHEMA)
+        tmp = OUT.with_suffix(".parquet.tmp")
+        pq.write_table(table.replace_schema_metadata({"config_sha256": sha256_of_config()}), tmp)
+        tmp.replace(OUT)  # atomic: a crash mid-write leaves the previous file intact
+
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        labelled = list(pool.map(one, todo))
+        for row in pool.map(one, todo):
+            done_rows.append(row)
+            if len(done_rows) % checkpoint_every == 0:
+                flush()
+                rate = (time.time() - start) / len(done_rows)
+                left = (len(todo) - len(done_rows)) * rate / 3600
+                print(
+                    f"  {len(done_rows):,}/{len(todo):,}  {rate:.2f}s/item  ~{left:.1f}h left",
+                    flush=True,
+                )
+    flush()
     elapsed = time.time() - start
-    table = pa.Table.from_pylist(existing + labelled, schema=SCHEMA)
-    pq.write_table(table.replace_schema_metadata({"config_sha256": sha256_of_config()}), OUT)
-    fails = sum(1 for r in labelled if r["genre"] == "PARSE_FAIL")
-    rate = elapsed / len(todo) if todo else 0
+    fails = sum(1 for r in done_rows if r["genre"] == "PARSE_FAIL")
+    multi = sum(1 for r in done_rows if "," in (r["genre"] or ""))
+    unc = sum(1 for r in done_rows if r["genre"] == "uncertain")
+    rate = elapsed / len(done_rows) if done_rows else 0
     print(
-        f"labelled {len(labelled):,} in {elapsed:.0f}s ({rate:.2f}s/item), {fails} parse failures"
+        f"labelled {len(done_rows):,} in {elapsed:.0f}s ({rate:.2f}s/item); "
+        f"{multi:,} two-label, {unc:,} uncertain, {fails:,} parse failures"
     )
     return 0
 
