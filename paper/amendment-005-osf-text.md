@@ -1,10 +1,10 @@
 # Amendment 5: expanded candidate corpora as a registered secondary analysis
 
-*Paste-ready text for https://osf.io/6ugxc/. Reasoning in `docs/audit.md` and BOM-48, BOM-49.*
+*Filed and approved 2026-10-21, OSF revision `6ad8cc455301b781d55b34dc`. Reasoning in `docs/audit.md` and BOM-48, BOM-49.*
 
 ---
 
-**Amendment 5, [DATE], before any calibration or Book of Mormon scoring.** The Book of Mormon
+**Amendment 5, 2026-10-21, before any calibration or Book of Mormon scoring.** The Book of Mormon
 text remains sealed under 4.2 until BOM-32, no method has been calibrated, and no candidate has
 been scored.
 

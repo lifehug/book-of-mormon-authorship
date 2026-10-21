@@ -70,6 +70,18 @@ PINNED: dict[tuple[str, ...], Any] = {
     ("corpus", "genre_tagging", "perturbation_runs"): 100,
     ("corpus", "genre_tagging", "perturbation_rate"): "from_validation",
     ("corpus", "genre_tagging", "perturbation_confusion"): "observed",
+    # Registered by Amendment 5, 2026-10-21 (OSF revision 6ad8cc455301b781d55b34dc).
+    ("candidates", "expanded_corpora", "role"): "secondary",
+    ("candidates", "expanded_corpora", "exposed_rule"): (
+        "non_match_is_evidence_match_is_uninformative"
+    ),
+    ("candidates", "expanded_corpora", "provenance_admitted"): [
+        "holograph",
+        "dictated_to_scribe",
+    ],
+    ("candidates", "expanded_corpora", "gate"): "time_split_validation_at_section_7_floor",
+    ("candidates", "expanded_corpora", "sweep_lead_expansions_max"): 10,
+    ("candidates", "expanded_corpora", "publish_test_counts"): True,
 }
 
 

@@ -92,6 +92,27 @@ segmentation:
     stratify_by: narrator
     seed: 20261017
 
+# Amendment 5 (2026-10-21), OSF revision 6ad8cc455301b781d55b34dc.
+# Expanded candidate corpora as a SECONDARY analysis. Section 3's corpora and section 6's
+# decision rules are unchanged and remain confirmatory; H1a and H1b are decided on them alone.
+# Nothing here may be substituted for the primary result, including when it is inconclusive.
+candidates:
+  expanded_corpora:
+    role: secondary
+    # Fixed from the historical record before any scoring.
+    exposure_tiers:
+      none: [spalding]                                    # died 1816; no expansion possible
+      exposed: [joseph_smith, cowdery, rigdon, pratt, phelps]
+      unexposed: [ethan_smith, hunt, corpus_authors]
+    # Exposure biases an expanded corpus toward resemblance, so the test is one-directional.
+    exposed_rule: non_match_is_evidence_match_is_uninformative
+    provenance_admitted: [holograph, dictated_to_scribe]
+    provenance_excluded: [reported_speech, composed_or_edited_by_others]
+    # No expansion for a candidate whose signal is not stable across the gap (BOM-48).
+    gate: time_split_validation_at_section_7_floor
+    sweep_lead_expansions_max: 10
+    publish_test_counts: true
+
 # Amendment 2 (2026-10-17). Root seed; every component seed derives from this.
 seed: 20261017
 
