@@ -36,46 +36,75 @@ The title-page advertisement with its `BY JOSEPH SMITH, JUNIOR` byline recurs on
 names 26 June 1829 and 26 March 1830. The notice of 19 March 1830 — the book "will be ready for
 sale" — is a week before the earliest 1830 date on record here and was not previously noted.
 
-### The 26 June 1829 title page could not be confirmed from this OCR
+### The 26 June 1829 title page: CONFIRMED from the page scan
 
-This is the single most-cited page in the whole corpus, and it is the one page the index cannot
-verify. All four pages of that issue were checked directly. Page 3 contains the only candidates,
-and both are false:
+**Resolved 2026-10-21.** The owner obtained the page image from NYS Historic Newspapers and it
+settles the question: the *Wayne Sentinel* of Friday 26 June 1829, **page 3, column 2**, carries
+an editorial notice followed by the Book of Mormon title page in full, set in clear type and
+entirely legible. The scan is at `data/corpus/nyshn/wayne_sentinel/wayne_sentinel_18290626_p3.pdf`
+(outside git; checksum in `data/manifests/wayne_sentinel_pdf.jsonl`).
 
-- `mormon` occurs inside a garbled apothecary advertisement
-  (`...4cld stinctures and essences ihelnmlyrmormonupnnplutoslukeii...`), a coincidental
-  substring, not a reference.
-- `titlepage` occurs in `...anditnntmshavebeenannndedforthetitlepageoftheworkwegive...`, which
-  reads as genuine title-page language — but the OCR has **interleaved two columns**, splicing it
-  with a cloves-and-pepper advertisement, so no phrase can be read with confidence.
+Transcribed from the scan. Square brackets mark readings the film leaves uncertain:
 
-The content is very likely present and the microfilm OCR has destroyed it. Confirming it needs
-the page image or an independent transcription, neither of which this index can supply. It is
-recorded here as *unconfirmed from OCR*, not as absent, and it must not be counted either way
-until a human reads the scan.
+> Just about in this particular region, for some time past, much speculation has existed,
+> concerning a pretended discovery, through superhuman means, of an ancient record, of a
+> religious and divine nature and origin, written in characters, impossible to be interpreted by
+> any to whom the special gift has not been imparted by inspiration. It is generally known and
+> spoken of as the **"Golden Bible."** M[ost who] entertain an idea that the whole matter is the
+> result of a gross imposition, and a grosser superstition. It is pretended that it will be
+> published as soon as the translation is completed.
+>
+> Meanwhile we have been furnished with the following, which is represented to us as **intended
+> for the title page of the work** — we give it as a curiosity: —
+>
+> "**The Book of Mormon**, an account written by the hand of Mormon upon plates, taken from the
+> plates of Nephi —
+>
+> "Wherefore it is an abridgment of the record of the people of Nephi, and also of the
+> Lamanites, written to the Lamanites, which are a remnant of the house of Israel; and also to
+> Jew and Gentile — written by way of commandment, and also by the spirit of prophecy and of
+> revelation. Written and sealed and hid up unto the Lord, that they might not be destroyed — to
+> come forth by the gift and power of God unto the interpretation thereof — sealed up by the hand
+> of Moroni, and hid up unto the Lord, to come forth in due time by the way of Gentile — the
+> interpretation thereof by the gift of God — an abridgment taken from the book of Ether.
+>
+> "Also, which is a record of the people of Jared, which were scattered at the time the Lord
+> confounded the language of the people, when they were building a tower to get to Heaven; which
+> is to shew unto the remnant of the house of Israel how great things the Lord hath done for
+> their fathers; and that they may know the covenants of the Lord, that they are not cast off
+> forever — and also to the convincing of the Jew and Gentile that Jesus is the Christ, the
+> Eternal God, manifesting himself unto all nations. And now, if there be fault, it be the
+> mistake of men; wherefore condemn not the things of God, that ye may be found spotless at the
+> judgment seat of Christ. — by **JOSEPH SMITH, Junior, Author and Proprietor**."
 
-### Printed matter advertised
+The item sits in the news column; the apothecary and dry-goods advertisements that the OCR
+spliced it with are in columns 4 to 7, physically distant. The interleaving was never on the
+page — it was introduced by the text extraction.
 
-| Group | Hits | Pages |
-| --- | --- | --- |
-| bookselling (`bookstore`, `books for sale`, `just received`, `new books`, `bookbindery`) | 2,869 | 826 |
-| Grandin imprint | 1,932 | 544 |
-| sermons and tracts (`sermon delivered`, `discourse delivered`, `religious tract`) | 6 | 6 |
+### What this does to every negative finding on this source
 
-Bookselling language appears on 826 of 1,429 pages — 58% — which establishes that printed matter
-was continuously advertised for sale in Palmyra across the whole run. It does not yet establish
-*which* books; extracting titles from advertisement columns is defeated by the same column
-interleaving shown above, and is left to BOM-33's later work against the page images.
+This is the more important result, and it is a correction to the section that follows.
 
-The Grandin count is dominated by the masthead and imprint line and should be read as
-"Grandin printed this paper", not as 1,932 distinct mentions.
+The page above contains, in clear print: *Golden Bible*, *Book of Mormon*, *hand of Mormon*,
+*plates of Nephi*, *Lamanites*, *Moroni*, *abridgment*, *Joseph Smith*, *Author and Proprietor*.
+Searching the OCR of that same page for all ten returns **zero**. Not one. The phrase "spoken of
+as the 'Golden Bible'" survives extraction as:
 
-### Hits that look relevant and are not
+    ...llisgenorallyunowntlnirhiils11mmdspulciitdfsijoiegattlmbiblemistcxniiild...
 
-`josephsmith` fires on 3 Nov 1824, 21 Jul 1826, 11 Aug 1826 and 18 Aug 1826, in subscription
-and jury lists. Joseph Smith was a common name; these are other men. They are kept in the index
-with their snippets precisely so the 1830 byline hits can be distinguished from them by reading
-rather than by counting.
+`Golden Bible` has become `gattlmbible`.
+
+So the index's recall on this source is far worse than its six confirmed hits suggest, and
+**no negative statement about the Wayne Sentinel may be made from the OCR at all.** The six
+items found are a floor, not a census: they are the occasions when the film happened to be
+legible, not the occasions when the paper mentioned the book. Earlier wording here called the
+Golden Bible zero "a real negative" and offered an explanation for it — that the coverage
+belonged to the Palmyra *Freeman* and the Rochester papers. That explanation was wrong and is
+withdrawn. The *Sentinel* printed the phrase; the OCR lost it.
+
+Practically: BOM-14 cleaning is now a hard prerequisite for this source rather than an
+improvement, and any claim about what the *Sentinel* did **not** carry has to be made against
+page images, not against this text layer.
 
 ### Terms deliberately not used
 
@@ -84,11 +113,9 @@ punctuation out of every page so that fragmented OCR (`t h e b o o k`) still mat
 squeezing makes `ne Philadelphia` into `nephiladelphia` — five of eight `nephi` hits were that
 word. Only distinctive multi-word forms are searched: `bookofmormon`, `ofnephi`, `handofmoroni`.
 
-`goldenbible`, `goldbible`, `goldenplates` and `goldplates` returned **zero hits** across the
-whole run. This is a real negative and worth stating: the "Golden Bible" press coverage of 1829
-that is usually cited belongs to the Palmyra *Freeman* and the Rochester papers, not to the
-*Sentinel*. Given the OCR quality demonstrated above, a zero here is weak evidence of absence,
-and should be treated as "not found", not "not printed".
+`goldenbible`, `goldbible`, `goldenplates` and `goldplates` returned zero hits across the whole
+run. **That zero means nothing**, for the reason given above: the one page we have independently
+verified to carry the phrase also returns zero.
 
 ## Lake Light, Trumansburg, 1827-1828
 

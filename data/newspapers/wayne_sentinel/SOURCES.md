@@ -5,6 +5,15 @@ the printer of the Book of Mormon). LCCN `sn84024337`. BOM-41; feeds BOM-33 (wha
 and advertised near Palmyra: the "Golden Bible" items, the Book of Mormon title page on
 26 June 1829, the sale notice on 26 March 1830) and BOM-10's New York coverage.
 
+**The 26 June 1829 title page is confirmed** by eye on the page scan (2026-10-21), page 3
+column 2: an editorial notice naming the "Golden Bible", then the title page in full over
+`BY JOSEPH SMITH, Junior, Author and Proprietor`. Scan in
+`data/corpus/nyshn/wayne_sentinel/`, checksum in `data/manifests/wayne_sentinel_pdf.jsonl`,
+transcription in `docs/access-evidence.md`. **The OCR text layer of that page finds none of
+it** -- all ten diagnostic terms return zero -- so no negative claim about this title may be
+made from the text layer. A forthcoming-sale notice on 19 March 1830 was also found, a week
+earlier than anything previously recorded here.
+
 | File | Built by | Contents |
 | --- | --- | --- |
 | `pages.jsonl` | `scripts/nyshn_browser_pull.py pull --title "Wayne Sentinel" --start 1823-10-01 --end 1830-12-31` (2026-10-20) | one row per page: name, date, edition, page number, the site's page id (`oid`), word count of the OCR text. 1,429 pages, 376 issues, 1823-10-01 to 1830-12-31 |
