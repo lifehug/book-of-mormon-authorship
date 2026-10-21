@@ -937,8 +937,53 @@ HathiTrust (BOM-08) resolves whenever it resolves.
 
 ---
 
+## The Phoenix that isn't there, and the paper that is
+
+BOM-41 started as a hunt for two newspapers W. W. Phelps edited before 1830, because Phelps is
+a named candidate with zero pre-1830 words in my inventory. The *Ontario Phoenix*, his
+Canandaigua paper, eleven miles from the Smiths, was the prize. The *Lake Light*, his first
+paper in Trumansburg, was the consolation.
+
+It came out the other way round. The Phoenix is not digitized anywhere: not in Chronicling
+America (the catalogue record is there, zero pages), not in NYS Historic Newspapers (I had Dave
+read the title index in a browser, since the site blocks scripts), not in HathiTrust or the
+Internet Archive. Then the New York State Library's union list told me why it would not have
+mattered much. The only continuous run anyone holds, on microfilm at the Ontario County
+Historical Society, starts 7 July 1830, after the Book of Mormon was on sale and after Phelps
+had bought his copy. Before 1830 there are about twenty scattered paper issues in four
+libraries: Rochester Public Library has fifteen or so from July 1828 to January 1829, and the
+whole of 1829 is three single issues. The "two years of a weekly, tens of thousands of words"
+I wrote into the issue never existed. Twenty four-page issues, of which only the editorial
+matter is his, and he shared the masthead with Bloomer until 1829. That is the correction, and
+it goes in the paper as a gap with a cause.
+
+The Lake Light is the opposite story. The Ulysses Philomathic Library in Trumansburg put its
+newspapers online through a small commercial archive host, and that host does not sit behind
+Cloudflare. Every page is a PDF behind a predictable name,
+`lake_light_usa_new_york_trumansburg_18271126_english_3`, so the fetcher just asks the viewer
+for every date and page number in the range and takes what answers. 168 pages, 42 issues, 10
+October 1827 to 19 November 1828, the same run the State Library has on film. The site says
+336 pages. That number is the same 168 pages digitized twice: an old ABBYY scan from the first
+round and a 400 dpi Tesseract scan from a second one. The old scan also files the 3 December
+issue as pages 5 to 8 of 26 November, which is how I noticed. I keep the new scan and ignore the
+old one.
+
+The text layer is what you would expect from microfilm. The masthead page of the first issue
+yields six words. A good page gives 3,400, most of them wrong in small ways: "secret influence
+of masonry exerts) river to Easton." That is fine. The 400 dpi images are the input the OCR
+correction stage was built for, and the measurement never runs on raw text.
+
+Reading the NYSHN title index also corrected something older. BOM-10 found 47 New York pages in
+Chronicling America for 1800-1830 and called New York a hole. It is a hole in Chronicling
+America. The state's own program has the Palmyra Register (1817-1821), the Palmyra Herald
+(1822-1823), the Canandaigua Ontario Repository (1824-1829), the Rochester Antimasonic Inquirer
+(1828-1830) and a few dozen more period titles. Whether to pull them is a scope decision I have
+put on the issue. The pull itself needs a browser that has passed Cloudflare once; there is now
+a script that drives one.
+
 ## Log
 
+- **2026-10-20, evening.** BOM-41: *Ontario Phoenix* not digitized anywhere and, per the NYSL union list, surviving pre-1830 only as about twenty paper issues; recorded as unavailable. *Lake Light* digitized at the Ulysses Philomathic Library's archive and pulled: 168 pages, 42 issues, 1827-10-10 to 1828-11-19, 565,630 words of microfilm OCR (`ingest.advantage_archive`, `data/newspapers/lake_light/`). NYSHN title index read: Wayne Sentinel yes, Phoenix no, Lake Light no, plus dozens of 1800-1830 New York titles BOM-10 had counted as missing; that finding corrected in `docs/new-york-newspapers.md`. `scripts/nyshn_browser_pull.py` written for the browser-driven NYSHN pull.
 - **2026-10-20, evening.** BOM-08 done: HathiTrust approved (GS-17502, dynamic IP
   allow-listed, access to 2026-11-30) and 31,194 volumes pulled in 24 minutes, 19 GiB. 21,810
   duplicate the Internet Archive pull and 9,384 are new, but the duplicates give 21,810

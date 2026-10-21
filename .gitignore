@@ -39,6 +39,10 @@ data/catalog/genre.parquet
 # BOM-42: the claims register is a small tracked index, like the catalogs.
 !data/claims/
 !data/claims/**
+# BOM-41: small newspaper text sets pulled from library archives (text layer + page index);
+# the page PDFs stay under data/corpus/.
+!data/newspapers/
+!data/newspapers/**
 
 # Large corpora: local disk only, never a git repo; tracked by manifests
 data/corpus/
@@ -60,3 +64,6 @@ logs/
 .env
 .env.*
 !.env.example
+
+# resume state of the Advantage probe, rebuilt by the pull
+data/newspapers/*/probed_misses.txt

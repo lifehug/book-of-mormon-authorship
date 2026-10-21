@@ -298,12 +298,13 @@ Two halves, deliberately separated in time. The inventory is built **now**, befo
 
 **Goal:** the Palmyra paper and the two papers a candidate edited, neither of which is in the national collection.
 
-Chronicling America holds 47 New York pages for all of 1800-1830. Missing from it: the *Wayne Sentinel* (Palmyra, LCCN `sn84024337`), which printed the Book of Mormon title page on 26 June 1829 and the sale advertisement on 26 March 1830; and the *Ontario Phoenix* (Canandaigua, `sn84031006`, 1828-1832) and *Lake Light* (Trumansburg, `sn84031024`, 1827-1829), both published by W. W. Phelps — a named candidate with no pre-1830 writing sample at all. Full analysis in `docs/new-york-newspapers.md`.
+Chronicling America holds 47 New York pages for all of 1800-1830, but that is a gap in Chronicling America, not in digitization (BOM-10's reading, corrected 2026-10-20): NYS Historic Newspapers holds the *Wayne Sentinel* (Palmyra, LCCN `sn84024337`, which printed the Book of Mormon title page on 26 June 1829 and the sale advertisement on 26 March 1830) and dozens of other 1800-1830 New York titles, including the Palmyra papers of 1817-1823 and the Canandaigua *Ontario Repository* 1824-1829. Of W. W. Phelps's two papers, the *Lake Light* (Trumansburg, `sn84031024`, 1827-1828) is digitized by the Ulysses Philomathic Library and pulled; the *Ontario Phoenix* (Canandaigua, `sn84031006`, 1828-1832) is not digitized anywhere and its surviving pre-1830 run is about twenty paper issues, so it is recorded as unavailable. Full analysis in `docs/new-york-newspapers.md`.
 
-- [ ] **Owner action, blocks the rest:** check in a browser whether NYS Historic Newspapers holds the *Ontario Phoenix* for 1828-1830, and whether the Ulysses Philomathic Library archive holds the *Lake Light* for 1827-1828. Both sites block scripted access
-- [ ] Pull the *Wayne Sentinel* 1823-1830 (confirmed digitized, about 1,400 issues across its full run)
-- [ ] Pull the Phelps papers if the check above finds them
-- [ ] Write the manifest and `SOURCES.md`; record which titles were found and which were not
+- [x] **Owner action:** browser check done 2026-10-20. NYSHN title index: *Wayne Sentinel* yes, *Ontario Phoenix* no, *Lake Light* no. The *Lake Light* is at `trumansburg.advantage-preservation.com` (168 pages, 42 issues, 1827-10-10 to 1828-11-19); the *Ontario Phoenix* is not digitized anywhere
+- [x] Pull the *Lake Light* (`ingest.advantage_archive`; text layer and page index in `data/newspapers/lake_light/`, PDFs in `data/corpus/advantage/`)
+- [ ] Pull the *Wayne Sentinel* 1823-1830 with `scripts/nyshn_browser_pull.py` (browser-driven; NYSHN blocks scripts). First `probe` a title page and fix the two Veridian link regexes if needed
+- [ ] **Owner decision:** whether to add the other NYSHN period titles (Palmyra Register 1817-1821, Palmyra Herald 1822-1823, Ontario Repository 1824-1829, Rochester Antimasonic Inquirer 1828-1830, and the rest listed in `docs/new-york-newspapers.md`) to this pull
+- [x] Record which titles were found and which were not (`docs/new-york-newspapers.md`, `docs/candidates.md`)
 - [ ] Add the Phelps text to the candidate corpus (#13) with an attribution rule: two named publishers and heavy reprinting mean unsigned editorial matter is not automatically his
 - [ ] Feed the *Wayne Sentinel* into the access evidence (#33)
 

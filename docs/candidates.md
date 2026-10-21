@@ -176,23 +176,27 @@ and the *Ontario Phoenix* (Canandaigua, 1828-1832). This is the biggest open gap
 inventory: pre-1830 prose from a candidate who lived eleven miles from the Smiths, written
 while the Book of Mormon was being dictated.
 
-**Updated 2026-10-17 (BOM-41).** Both papers are catalogued and both have an LCCN, which the
-earlier search missed:
+**Updated 2026-10-20 (BOM-41).** Both papers were checked everywhere a script or a browser
+could reach:
 
-- *Ontario Phoenix*, LCCN `sn84031006`, Canandaigua 1828-1832. The Library of Congress
-  publisher line reads **W. W. Phelps & R. M. Bloomer (1828-1829), W. W. Phelps (1829-1830)**,
-  so authorship of the paper in those years is documented rather than inferred. Chronicling
-  America holds the catalogue record but no pages. Whether NYS Historic Newspapers holds the
-  scans is **unverified** — that site blocks scripted access and needs a browser check.
 - *Lake Light*, LCCN `sn84031024`, Trumansburg 1827-1829, publishers Phelps & Bloomer
-  1827-1828. Listed in the Ulysses Philomathic Library's Community History Archives; coverage
-  and downloadability **unverified**.
+  1827-1828. **Digitized and pulled**: the Ulysses Philomathic Library's Advantage Archives
+  site holds the New York State Library microfilm run, 168 pages in 42 issues, 10 Oct 1827 to 19 Nov 1828 (about 16 issues are missing from the film)
+  (`data/newspapers/lake_light/`, fetched by `ingest.advantage_archive`). This is the first
+  digitized pre-1830 text from a candidate's own paper.
+- *Ontario Phoenix*, LCCN `sn84031006`, Canandaigua 1828-1832, publisher line **W. W. Phelps
+  & R. M. Bloomer (1828-1829), W. W. Phelps (1829-1830)**. **Not digitized**: absent from
+  NYS Historic Newspapers' title index, from Chronicling America (0 pages), from HathiTrust
+  and the Internet Archive. The union list shows the only microfilm run starting 7 July
+  1830, after Phelps had read the Book of Mormon, and about twenty scattered pre-1830 paper
+  issues in four libraries. Out of scope under the digitized-only rule; the gap is reported.
 
-A weekly paper edited for roughly two years is on the order of tens of thousands of words, so
-if either is digitized Phelps moves from having the weakest pre-1830 sample to one of the
-better-evidenced candidates. One caution: with two named publishers, unsigned editorial matter
-is not automatically Phelps's own writing, and much of any weekly is reprinted from elsewhere.
-Attribution within the paper will need its own rule before the text is used.
+So the "tens of thousands of words" hoped for from the Phoenix do not exist in any form.
+What Phelps gets instead is the Lake Light: 42 four-page issues, of which only the
+editorial matter is attributable, and the masthead names two publishers. Unsigned matter is
+not automatically Phelps's, much of any weekly is reprinted from elsewhere, and the microfilm
+OCR is poor. Attribution within the paper needs its own rule, and the text needs BOM-14's OCR
+correction, before it enters his sample.
 
 See `docs/new-york-newspapers.md`.
 
@@ -308,7 +312,7 @@ from the 1816 scan.
 
 - **Pre-1830 samples are missing** for Rigdon, Pratt and Phelps, and nearly missing for
   Cowdery (about 2,500 words, much of it quotation) and for Joseph Smith in his own hand.
-- **Phelps's *Ontario Phoenix*** (1828-1831): no digitized copy found.
+- **Phelps's *Ontario Phoenix*** (1828-1832): not digitized anywhere (checked 2026-10-20); the *Lake Light* (1827-1828) is digitized and pulled, see above.
 - **Rigdon in Campbell's *Christian Baptist*** (1823-1830): not yet searched issue by issue.
 - **HathiTrust**: no full-view record was confirmed for any candidate text; Internet Archive
   copies cover every printed item listed here.
