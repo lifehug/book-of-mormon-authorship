@@ -14,7 +14,7 @@ checks of every other route.
 
 | Title | LCCN | Place, years | Why it matters | Digitized? |
 | --- | --- | --- | --- | --- |
-| **Wayne Sentinel** | `sn84024337` | Palmyra, 1823-1859 | The Smiths' local paper. Reported the "Golden Bible" rumour and printed the Book of Mormon title page on 26 June 1829, nine months before publication; carried the 26 March 1830 sale advertisement | **Yes**, NYSHN (title index confirmed; about 1,400 issues) |
+| **Wayne Sentinel** | `sn84024337` | Palmyra, 1823-1859 | The Smiths' local paper. Reported the "Golden Bible" rumour and printed the Book of Mormon title page on 26 June 1829, nine months before publication; carried the 26 March 1830 sale advertisement | **Yes**, NYSHN, 1823-1859. **Pulled** 1823-10-01 to 1830-12-31 by `scripts/nyshn_browser_pull.py` (`data/newspapers/wayne_sentinel/`): 376 issues, 1,429 pages, a near-complete weekly run with four single-week gaps |
 | **Lake Light** | `sn84031024` | Trumansburg, 1827-1829 | Phelps's first paper, publishers Phelps & Bloomer 1827-1828 | **Yes**: Ulysses Philomathic Library, `trumansburg.advantage-preservation.com`: 168 pages, 42 issues, 10 Oct 1827 to 19 Nov 1828, the New York State Library microfilm run (the site's "336 pages" counts the same pages twice, see below). **Pulled** by `ingest.advantage_archive` (`data/newspapers/lake_light/`) |
 | **Ontario Phoenix** | `sn84031006` | Canandaigua, 1828-1832 | Anti-Masonic weekly. Publisher line: **W. W. Phelps & R. M. Bloomer (1828-1829), W. W. Phelps (1829-1830)** | **No.** Not on NYSHN (title index, O section), not on Chronicling America (0 pages), not on HathiTrust or the Internet Archive. Recorded as not digitized; out of scope |
 
@@ -78,9 +78,16 @@ text layer (565,630 words, 14 MB) and page index are in `data/newspapers/lake_li
 **NYSHN** blocks scripts (Cloudflare 403 on HTML, JSON and text endpoints alike) but not a
 browser. `scripts/nyshn_browser_pull.py` drives a browser the owner has already unlocked, over
 the DevTools protocol: start Brave with `--remote-debugging-port=9222`, pass the challenge by
-hand, then `probe` a title page to confirm the Veridian URL shapes and `pull` the title. The
-Veridian layout in that script was written from other Veridian sites, not a live NYSHN
-session; its two link regexes may need one adjustment after the first probe.
+hand, then `pull --title "<name as the site's title list spells it>"`. The script walks the
+site's Veridian layout (title list, one page per month, one per issue, one per page) and saves
+each page's OCR text view; the URL shapes are in its docstring, confirmed live on 2026-10-20.
+Page PDFs sit behind a per-page Cloudflare Turnstile that solves itself only sometimes, so
+`--pdf` is best-effort and the Sentinel pull took text only. **Wayne Sentinel** 1823-1830 is
+done: 376 issues, 1,429 pages, 11.3 million words of noisy OCR, in
+`data/newspapers/wayne_sentinel/` (44 MB, in git) with the manifest
+`data/manifests/wayne_sentinel_text.jsonl`; coverage and the nine un-OCR'd pages are in its
+`SOURCES.md`. Any other title in the table above pulls the same way, about two hours per
+1,500 pages.
 
 ## What it does not fix
 

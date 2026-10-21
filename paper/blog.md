@@ -981,6 +981,20 @@ America. The state's own program has the Palmyra Register (1817-1821), the Palmy
 put on the issue. The pull itself needs a browser that has passed Cloudflare once; there is now
 a script that drives one.
 
+Later the same night the script ran for real, on the paper that matters most: the *Wayne
+Sentinel*, Palmyra's weekly, printed by the man who would print the Book of Mormon. Dave
+started Brave with a debugging port, passed the Cloudflare check by hand, and the script drove
+that window through the site's browse pages: one page per month, one per issue, one per
+newspaper page, and for each of those the site's own OCR text view. The first pass came back
+with a quarter of the issues, every one from October, November or December, which is the kind
+of pattern that means a bug and not a gap: the site zero-pads its month numbers and I did
+not. Fixed, the run found 376 issues from 1 October 1823 to the end of 1830, which is a weekly
+missing four weeks in seven years. 1,429 pages, eleven million "words", a good share of them
+OCR confetti. Nine pages have no text on the site at all. The page PDFs stayed behind: each
+one sits behind its own Cloudflare Turnstile, which solves itself in a real browser about one
+time in three, so I left them and took the text. It is 44 MB and goes in git, so the mini
+gets it with a pull.
+
 ## Log
 
 - **2026-10-20, night.** Dave asked the obvious follow-up to the power problem: Joseph Smith
@@ -1065,6 +1079,7 @@ a script that drives one.
   literature*, and "newspaper_periodical, history_chronicle" is just what that is. `--limit`
   takes the first N rows in catalog order, so a small sample lands inside one serial. Noted in
   the module so I don't scare myself with it twice.
+- **2026-10-20, night.** BOM-41: *Wayne Sentinel* pulled from NYS Historic Newspapers through a hand-unlocked Brave window (`scripts/nyshn_browser_pull.py`): 376 issues, 1,429 pages, 1823-10-01 to 1830-12-31, a weekly run with four single-week gaps, 11.3 million words of microfilm OCR, nine pages without text on the site. Text and page index in `data/newspapers/wayne_sentinel/` (in git), manifest `data/manifests/wayne_sentinel_text.jsonl`; no PDFs (per-page Turnstile). First pass had only Oct-Dec of each year: the site zero-pads months, the script did not.
 - **2026-10-20, evening.** BOM-41: *Ontario Phoenix* not digitized anywhere and, per the NYSL union list, surviving pre-1830 only as about twenty paper issues; recorded as unavailable. *Lake Light* digitized at the Ulysses Philomathic Library's archive and pulled: 168 pages, 42 issues, 1827-10-10 to 1828-11-19, 565,630 words of microfilm OCR (`ingest.advantage_archive`, `data/newspapers/lake_light/`). NYSHN title index read: Wayne Sentinel yes, Phoenix no, Lake Light no, plus dozens of 1800-1830 New York titles BOM-10 had counted as missing; that finding corrected in `docs/new-york-newspapers.md`. `scripts/nyshn_browser_pull.py` written for the browser-driven NYSHN pull.
 - **2026-10-20, evening.** BOM-08 done: HathiTrust approved (GS-17502, dynamic IP
   allow-listed, access to 2026-11-30) and 31,194 volumes pulled in 24 minutes, 19 GiB. 21,810

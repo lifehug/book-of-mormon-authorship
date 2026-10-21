@@ -402,7 +402,7 @@ Chronicling America holds 47 New York pages for all of 1800-1830, but that is a 
 
 - [x] **Owner action:** browser check done 2026-10-20. NYSHN title index: *Wayne Sentinel* yes, *Ontario Phoenix* no, *Lake Light* no. The *Lake Light* is at `trumansburg.advantage-preservation.com` (168 pages, 42 issues, 1827-10-10 to 1828-11-19); the *Ontario Phoenix* is not digitized anywhere
 - [x] Pull the *Lake Light* (`ingest.advantage_archive`; text layer and page index in `data/newspapers/lake_light/`, PDFs in `data/corpus/advantage/`)
-- [ ] Pull the *Wayne Sentinel* 1823-1830 with `scripts/nyshn_browser_pull.py` (browser-driven; NYSHN blocks scripts). First `probe` a title page and fix the two Veridian link regexes if needed
+- [x] Pull the *Wayne Sentinel* 1823-1830 with `scripts/nyshn_browser_pull.py` (browser-driven; NYSHN blocks scripts): done 2026-10-20, 376 issues, 1,429 pages, text and page index in `data/newspapers/wayne_sentinel/`, manifest `data/manifests/wayne_sentinel_text.jsonl`; no PDFs (per-page Turnstile)
 - [ ] **Owner decision:** whether to add the other NYSHN period titles (Palmyra Register 1817-1821, Palmyra Herald 1822-1823, Ontario Repository 1824-1829, Rochester Antimasonic Inquirer 1828-1830, and the rest listed in `docs/new-york-newspapers.md`) to this pull
 - [x] Record which titles were found and which were not (`docs/new-york-newspapers.md`, `docs/candidates.md`)
 - [ ] Add the Phelps text to the candidate corpus (#13) with an attribution rule: two named publishers and heavy reprinting mean unsigned editorial matter is not automatically his
