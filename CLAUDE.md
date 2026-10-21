@@ -84,6 +84,14 @@ conversational, short sentences, concrete, no jargon.
   a job on the mini is acceptable, and the SSD has 1.6 TB free. Prefer the accurate approach
   over the fast one, keep originals and intermediate artifacts, and flag rather than delete.
   Trade rented GPU hours into local hours wherever the job allows. See `docs/budget.md` 4b-i.
+- **Never delete a source, and never extract only part of one.** No ingest deletes the archive,
+  dump or download it read; deletion is opt-in and never the default. When an archive holds more
+  than you need, take all of it — the Chronicling America extractor matched only `ocr.txt`,
+  skipped every `ocr.xml`, and deleted the tarball, discarding the ALTO (per-word confidence and
+  word coordinates) for 158,960 pages with no backup and 1.6 TB free. Re-obtaining it is 76
+  manual downloads through Cloudflare. `tests/test_no_source_deletion.py` fails the build if a
+  destructive call appears in the pipeline outside its allowlist; extend the allowlist with a
+  reason rather than working around the test.
 - **Never hard-code an analytic value.** Thresholds, cutoffs, chunk sizes, seeds and model
   choices come from `config/preregistered.yaml` via `metadata.config.load()`, and every output
   is stamped with `metadata.config.sha256_of_config()`. The file holds only choices already

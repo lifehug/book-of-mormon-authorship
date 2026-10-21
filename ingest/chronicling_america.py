@@ -47,7 +47,7 @@ Usage::
 
     python -m ingest.chronicling_america catalog
     python -m ingest.chronicling_america pull [--limit N] [--states NY,PA,OH]
-    python -m ingest.chronicling_america bulk [--incoming DIR] [--limit N] [--keep]
+    python -m ingest.chronicling_america bulk [--incoming DIR] [--limit N] [--discard-tarball]
 """
 
 from __future__ import annotations
@@ -252,19 +252,32 @@ def write_summary(rows: list[dict], skipped: list[str]) -> None:
     SUMMARY.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def page_path(row: dict) -> Path:
-    name = f"{row['date']}-ed{row['edition']}-seq{row['sequence']}.txt"
-    return CORPUS / "text" / row["lccn"] / name
+def page_path(row: dict, ext: str = "txt") -> Path:
+    name = f"{row['date']}-ed{row['edition']}-seq{row['sequence']}.{ext}"
+    sub = "text" if ext == "txt" else "alto"
+    return CORPUS / sub / row["lccn"] / name
 
 
 # A batch member looks like ``sn84024011/1800/12/08/ed-1/seq-1/ocr.txt``; the same page is
 # ``text/sn84024011/1800-12-08-ed1-seq1.txt`` on disk, so both routes agree.
 # The LCCN segment is not always ``sn`` plus digits: a few catalog rows carry a bare numeric
 # LCCN such as ``2018270507``, so match any non-slash run rather than a prefix shape.
+# Both members are kept. An earlier version matched only ocr.txt and counted every ocr.xml as
+# "skipped", discarding the ALTO for all 158,960 pages -- which is where the per-word confidence
+# (WC), per-character confidence (CC) and word coordinates live. That is a direct OCR-quality
+# measurement for the whole corpus and the only thing that gives column-aware reading order, and
+# it was thrown away to save space on a disk with 1.6 TB free. See CLAUDE.md: keep originals and
+# intermediate artifacts, flag rather than delete.
 MEMBER = re.compile(
     r"(?:^|/)(?P<lccn>[^/]+)/(?P<y>\d{4})/(?P<m>\d{2})/(?P<d>\d{2})/"
-    r"ed-(?P<ed>\d+)/seq-(?P<seq>\d+)/ocr\.txt$"
+    r"ed-(?P<ed>\d+)/seq-(?P<seq>\d+)/ocr\.(?P<ext>txt|xml)$"
 )
+
+
+def member_ext(name: str) -> str | None:
+    """``txt`` or ``xml`` for an OCR member, else None."""
+    m = MEMBER.search(name)
+    return m.group("ext") if m else None
 
 
 def member_key(name: str) -> tuple[str, str, str, str] | None:
@@ -288,7 +301,7 @@ def sha256_of(path: Path, chunk: int = 1 << 22) -> str:
     return digest.hexdigest()
 
 
-def bulk(incoming: Path, limit: int | None, keep: bool) -> int:
+def bulk(incoming: Path, limit: int | None, discard: bool = False) -> int:
     """Extract catalogued pages from downloaded batch tarballs."""
     if not BATCHES.exists():
         print(f"no batch manifest at {BATCHES}", file=sys.stderr)
@@ -327,10 +340,11 @@ def bulk(incoming: Path, limit: int | None, keep: bool) -> int:
                 if not member.isfile():
                     continue
                 key = member_key(member.name)
-                if key is None or key not in want:
+                ext = member_ext(member.name)
+                if key is None or ext is None or key not in want:
                     skip += 1
                     continue
-                out = page_path(want[key])
+                out = page_path(want[key], ext)
                 if out.exists():
                     skip += 1
                     continue
@@ -344,9 +358,12 @@ def bulk(incoming: Path, limit: int | None, keep: bool) -> int:
         total_skip += skip
         done.add(batch)
         done_file.write_text("\n".join(sorted(done)) + "\n")
-        if not keep:
+        # Deleting the source archive is opt-in. It used to be the default, which cost the
+        # project the ALTO for every page it had already extracted.
+        if discard:
             path.unlink()
-        print(f"  {batch}: +{new:,} pages (skipped {skip:,}){'' if keep else ', tarball deleted'}")
+        tail = ", tarball deleted" if discard else ""
+        print(f"  {batch}: +{new:,} files (skipped {skip:,}){tail}")
     have = sum(1 for r in rows if r.get("ocr_url") and page_path(r).exists())
     print(f"extracted {total_new:,} new pages; {have:,}/{len(want):,} of the catalog on disk")
     return 0
@@ -429,12 +446,16 @@ def main(argv: list[str] | None = None) -> int:
     b = sub.add_parser("bulk")
     b.add_argument("--incoming", type=Path, default=INCOMING)
     b.add_argument("--limit", type=int, help="only this many batches")
-    b.add_argument("--keep", action="store_true", help="do not delete the tarball afterwards")
+    b.add_argument(
+        "--discard-tarball",
+        action="store_true",
+        help="delete each tarball after extracting it (off by default; it is the original)",
+    )
     a = ap.parse_args(argv)
     if a.cmd == "catalog":
         return catalog(a.delay)
     if a.cmd == "bulk":
-        return bulk(a.incoming, a.limit, a.keep)
+        return bulk(a.incoming, a.limit, a.discard_tarball)
     states = {s.strip().upper() for s in a.states.split(",")} if a.states else None
     return pull(a.limit, a.delay, states)
 

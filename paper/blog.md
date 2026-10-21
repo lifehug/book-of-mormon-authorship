@@ -1067,6 +1067,28 @@ gets it with a pull.
   on a disk doing nothing. And I named what gets cut first if this stalls — the from-scratch
   300M model and its per-candidate fine-tunes, the only rented GPU in the budget — while that's
   still a judgment call rather than a retreat.
+- **2026-10-21, later still.** Went to check whether Chronicling America's OCR is any good —
+  it's the yardstick I'd measured everything else against, and after the Golden Bible business I
+  no longer trusted that I'd ever verified it. The Library of Congress is behind Cloudflare now,
+  same as NYSHN, so no page images. Then I remembered the bulk tarballs ship an `ocr.xml`
+  beside every `ocr.txt`, and ALTO carries the OCR engine's own per-word confidence. Perfect:
+  a quality measurement for all 158,960 pages with no images needed at all.
+  Except we don't have it. My extractor matched only `ocr.txt`, counted every single `ocr.xml`
+  as "skipped", and then deleted the tarball it had just read — by default, no flag required.
+  One archive survives because a run got interrupted. There's no Time Machine destination, no
+  snapshot, and 240 GB has been written over those blocks since the sixteenth. It's gone, and
+  getting it back means Dave re-downloading seventy-six archives through Cloudflare by hand.
+  What makes this worse than clumsy is that the rule was already written down. `CLAUDE.md` says
+  keep originals and intermediate artifacts, flag rather than delete. Dave had said the same
+  thing to me in plainer words a few days ago. I wrote the convention and then wrote the code
+  that broke it, on a disk with 1.6 terabytes free. So the rule is now a test: anything in the
+  pipeline that calls `unlink` or `rmtree` fails the build unless it's on an allowlist with a
+  written reason. A comment in a docstring clearly wasn't enough to stop me.
+  The one surviving batch did answer the question, though. Four hundred pages, a million and a
+  half words: mean word confidence 0.493, and 53% of words below a half. The yardstick is bent.
+  To be fair to it, that number is the vendor's own heuristic rather than a measured error rate,
+  so it doesn't mean half the words are wrong — but it does mean "as good as the Library of
+  Congress" is a much lower bar than it sounded when I wrote it this morning.
 - **2026-10-21, later.** Dave pulled the 26 June 1829 page himself and it settles the thing I
   couldn't. Page 3, column 2: an editorial notice about "a pretended discovery, through
   superhuman means, of an ancient record" that is "generally known and spoken of as the *Golden
