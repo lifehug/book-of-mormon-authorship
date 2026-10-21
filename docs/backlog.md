@@ -376,6 +376,25 @@ Section 3's corpora and section 6's rules are unchanged and stay confirmatory. N
 **Done when:** Amendment 5 is filed and the secondary analysis is reported in its own section beside the unchanged primary.
 **Depends on:** #43, #48. **Related:** #39, #47.
 
+### #51 Know what is novel: a prior-art baseline and a standing novelty register
+
+**Goal:** for every claim the project makes, know whether it is established, contested, or new — and say which, in the paper and to the owner the moment it is found.
+
+Two risks. Claiming novelty we do not have: on 2026-10-21 a *Wayne Sentinel* notice was reported as "earlier than anything on record" with no literature check, when the accurate claim was far narrower. And missing a real finding: nothing currently flags a genuinely new result, and the owner has asked to be told.
+
+`docs/background.md` reviews the stylometry literature well and #22 replicates five prior studies before anything new is added. It does not cover documentary history, which #33 now produces, and the project's own methodological novelty claims are hedged with "as far as we found" rather than verified.
+
+- [ ] Add a documentary-history section to `docs/background.md`: Joseph Smith Papers, Skousen's critical text, *BYU Studies*, *Dialogue*, *Interpreter*, Scripture Central, FAIR, the standard printing histories
+- [ ] Create `data/claims/novelty.yaml`: one entry per claim with status `established` / `contested` / `new` / `unchecked`, the citation, and for `new` the search that supports it
+- [ ] Default `unchecked`; nothing may be called new in published output while `unchecked`
+- [ ] Report anything that looks `new` to the owner when found, not at paper time
+- [ ] Verify the project's own novelty claims and replace "as far as we found" with a dated search
+- [ ] First case: is the 19 March 1830 notice already documented?
+- [ ] #36 reports novelty status beside each headline claim
+
+**Done when:** `novelty.yaml` covers every claim the paper makes with no `unchecked` entries, published alongside it.
+**Depends on:** nothing to begin. **Related:** #22, #33, #42.
+
 ### #42 Apply the results to the public claims
 
 **Goal:** take every public claim about Book of Mormon authorship, fix the list and the decision rules before any result exists, and afterwards say which our evidence supports, contradicts, or does not address.
