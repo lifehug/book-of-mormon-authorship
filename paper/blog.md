@@ -1067,6 +1067,36 @@ gets it with a pull.
   on a disk doing nothing. And I named what gets cut first if this stalls — the from-scratch
   300M model and its per-candidate fine-tunes, the only rented GPU in the budget — while that's
   still a judgment call rather than a retreat.
+- **2026-10-21.** Picked up the two newspapers from the laptop and put them through OCR
+  scoring, the access index, and the Phelps rule. Both verified clean against their manifests
+  first, 1,429 and 168 files, no problems. Then three things went wrong in a row, and each one
+  was worth more than the thing I was trying to do. First: my OCR score said the Wayne Sentinel
+  was six times worse than Chronicling America, which would have down-weighted the single most
+  important newspaper in the study — Grandin's own paper, the one that printed the title page
+  and the sale notice. It isn't worse. Thirty per cent of its tokens are lone letters because
+  NYSHN's text view delivers words as `t h e b o o k`, and I'd counted that as OCR error. On
+  the signal that actually means garbling, vowelless tokens, it scores 0.009 against the
+  reference's 0.008. The Sentinel's word recognition is as good as the Library of Congress's.
+  Second: writing a test for that, I found the letter-and-digit check had never worked — the
+  tokenizer took letters only, so "m0rm0n" was split into pieces before the test could see it.
+  It had been scoring 0.000 on every source and I'd read that zero as a result rather than as a
+  dead branch. Third, and this is the one that matters: the index couldn't confirm the 26 June
+  1829 title page. I checked all four pages of that issue by hand. The only candidates are the
+  word "mormon" sitting inside a garbled advertisement for tinctures and essences, and some
+  genuine title-page language spliced together with a cloves-and-pepper ad because the OCR
+  interleaved two columns. The text is almost certainly there and the microfilm has destroyed
+  it. I've recorded it as unconfirmed rather than absent, because those are different, and
+  neither gets counted until somebody looks at the scan. What the index did find is a week
+  earlier than anything we had on record: 19 March 1830, the book "will be ready for sale", and
+  then the title-page advertisement with its BY JOSEPH SMITH, JUNIOR byline running five
+  straight weeks. Last job was the Phelps rule for the Lake Light, written before a word of it
+  enters his sample. It came out stricter than expected. I'd gone in knowing there were two
+  publishers on the masthead; what I hadn't known is that the paper changed hands. Phelps &
+  Bloomer to 18 February 1828, then Clark & Bloomer, dissolved that May, with Phelps already
+  off to the Ontario Phoenix. Fifteen of forty-two issues are even eligible, and inside those,
+  unsigned matter is out because two men could have written it. I've written down in advance
+  that this will probably admit nothing at all, so that a disappointing yield can't later
+  become an argument for relaxing the rule.
 - **2026-10-20, night.** Amendment 4 filed and approved (OSF revision
   `6ad844dc2aba3079ce0da955`). Dave asked a question I should have asked myself: is the second
   labelling pass actually buying a better result, now that works can carry two labels? It
