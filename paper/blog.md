@@ -983,6 +983,20 @@ a script that drives one.
 
 ## Log
 
+- **2026-10-20, night.** Started the genre labeller on the local Llama and immediately found I
+  was running it eight times slower than I thought. Ollama ships with `OLLAMA_NUM_PARALLEL=1`,
+  so my eight worker threads were queuing for a single slot -- the log only ever said
+  `launch_slot_: id 0`. Eight slots took it from 1.47 to 1.16 seconds a record, 4.8 days to 3.6.
+  Less than I hoped, and the per-request timings say why: a request is about 520 tokens of
+  prompt against 7 tokens of answer, and three quarters of the second is spent reading the
+  prompt back. There's a real fix in there somewhere (the first 353 tokens are the same every
+  time and do get cached) but not one worth another evening. A week of this machine's time is
+  free; my time isn't. Also a scare on the way: a 64-record check came back 91% two-label and I
+  thought the model had started treating the comma as the default. All 64 were consecutive
+  volumes of *The New annual register, or, General repository of history, politics, and
+  literature*, and "newspaper_periodical, history_chronicle" is just what that is. `--limit`
+  takes the first N rows in catalog order, so a small sample lands inside one serial. Noted in
+  the module so I don't scare myself with it twice.
 - **2026-10-20, evening.** BOM-41: *Ontario Phoenix* not digitized anywhere and, per the NYSL union list, surviving pre-1830 only as about twenty paper issues; recorded as unavailable. *Lake Light* digitized at the Ulysses Philomathic Library's archive and pulled: 168 pages, 42 issues, 1827-10-10 to 1828-11-19, 565,630 words of microfilm OCR (`ingest.advantage_archive`, `data/newspapers/lake_light/`). NYSHN title index read: Wayne Sentinel yes, Phoenix no, Lake Light no, plus dozens of 1800-1830 New York titles BOM-10 had counted as missing; that finding corrected in `docs/new-york-newspapers.md`. `scripts/nyshn_browser_pull.py` written for the browser-driven NYSHN pull.
 - **2026-10-20, evening.** BOM-08 done: HathiTrust approved (GS-17502, dynamic IP
   allow-listed, access to 2026-11-30) and 31,194 volumes pulled in 24 minutes, 19 GiB. 21,810

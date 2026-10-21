@@ -21,10 +21,31 @@ Haiku's remaining errors were substantive rather than mechanical ("Poems" -> ser
 "Daily national intelligencer" -> scientific_medical), so the speed was not worth it. Sonnet
 labels the 282,566 model-path rows in about 1.2 days.
 
+Running it locally: start the server yourself, not through ``brew services``. Ollama defaults to
+``OLLAMA_NUM_PARALLEL=1``, which silently serialises every worker into one slot -- ``--workers 8``
+against a default server is eight threads taking turns. Measured on the mini, llama3.1:8b:
+
+    1 slot    1.47s/item     4.8 days
+    4 slots   1.28s/item     4.2 days
+    8 slots   1.16s/item     3.6 days
+
+The gain is smaller than it looks because prefill dominates: a request is ~520 prompt tokens
+against ~7 generated, and 0.73s of a 1.03s request is reading the prompt. Flash attention and a
+q8_0 KV cache keep eight slots inside 16 GB. So::
+
+    tmux new -d -s ollama "OLLAMA_NUM_PARALLEL=8 OLLAMA_KEEP_ALIVE=24h \\
+        OLLAMA_FLASH_ATTENTION=true OLLAMA_KV_CACHE_TYPE=q8_0 ollama serve"
+
 Usage::
 
     python -m metadata.genre rules                 # fast pass, writes genre.parquet
     python -m metadata.genre label --limit 500     # model pass over what rules left
+
+``--limit`` takes the first N of the work list, which is catalog order, so a small limit lands
+inside one source and often inside one serial. A 64-row check came back 91% two-label and looked
+like the model over-applying the comma option; all 64 were consecutive volumes of *The New annual
+register*, for which "newspaper_periodical, history_chronicle" is simply correct. Sample across
+sources before reading anything into a distribution.
 """
 
 from __future__ import annotations
