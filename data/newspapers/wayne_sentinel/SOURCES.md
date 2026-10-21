@@ -11,8 +11,10 @@ column 2: an editorial notice naming the "Golden Bible", then the title page in 
 `data/corpus/nyshn/wayne_sentinel/`, checksum in `data/manifests/wayne_sentinel_pdf.jsonl`,
 transcription in `docs/access-evidence.md`. **The OCR text layer of that page finds none of
 it** -- all ten diagnostic terms return zero -- so no negative claim about this title may be
-made from the text layer. A forthcoming-sale notice on 19 March 1830 was also found, a week
-earlier than anything previously recorded here.
+made from the text layer. A forthcoming-sale notice on 19 March 1830 was also
+found, a week earlier than the **sale notice** recorded above -- not earlier than the 26 June
+1829 title page, which this file already named. Whether it is new to the published scholarship
+on the book's printing has not been checked and is not claimed.
 
 | File | Built by | Contents |
 | --- | --- | --- |

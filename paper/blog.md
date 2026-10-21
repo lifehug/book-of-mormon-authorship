@@ -1155,7 +1155,9 @@ gets it with a pull.
   interleaved two columns. The text is almost certainly there and the microfilm has destroyed
   it. I've recorded it as unconfirmed rather than absent, because those are different, and
   neither gets counted until somebody looks at the scan. What the index did find is a week
-  earlier than anything we had on record: 19 March 1830, the book "will be ready for sale", and
+  a week earlier than the sale notice we had on record — not earlier than the June 1829 title
+  page, which we always knew about, and I've no idea whether it's new to the historians, who have
+  gone over this printing in detail. It's 19 March 1830, the book "will be ready for sale", and
   then the title-page advertisement with its BY JOSEPH SMITH, JUNIOR byline running five
   straight weeks. Last job was the Phelps rule for the Lake Light, written before a word of it
   enters his sample. It came out stricter than expected. I'd gone in knowing there were two

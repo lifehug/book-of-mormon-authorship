@@ -35,6 +35,9 @@ The title-page advertisement with its `BY JOSEPH SMITH, JUNIOR` byline recurs on
 **One item is earlier than the project had recorded.** `data/newspapers/wayne_sentinel/SOURCES.md`
 names 26 June 1829 and 26 March 1830. The notice of 19 March 1830 — the book "will be ready for
 sale" — is a week before the earliest 1830 date on record here and was not previously noted.
+It is **not** earlier than the 26 June 1829 title page, which was already on record. Whether it
+is new to the published scholarship on the printing has not been checked and is not claimed: this
+is a statement about this project's records, nothing more.
 
 ### The 26 June 1829 title page: CONFIRMED from the page scan
 
