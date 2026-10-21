@@ -33,9 +33,27 @@ comments say what remains. "Continue" or "move forward" means: pick that issue a
 
 ## Say what you are doing and why (read this before starting anything)
 
-**The test is not "is this in scope". It is: can I state in one line what I am doing and how it
-serves the task?** If that line cannot be written, stop. If it can, write it down for the owner
-before doing the work, not in the summary afterwards.
+**Show the reasoning, not a label.** Any of these is fine with the owner — a better method, an
+assumption on the way to one, or a turn down a different path — provided the logic can be
+followed *while it happens*. Explaining it afterwards is worth little: by then the time has
+already been spent.
+
+So at every change of direction, say these four things in a breath, in plain language:
+
+1. what I was doing,
+2. what I hit,
+3. what I am doing instead,
+4. why that still answers the same question — or that it does not.
+
+Worked example, which is how 2026-10-21 should have read: *"Page images are blocked by
+Cloudflare. The bulk archives carry ALTO XML, which has the OCR engine's own per-word confidence.
+That would give a quality figure for all 158,960 pages without reading any images, so it answers
+the same question more cheaply. Trying that."* Two sentences, and the owner can agree or redirect
+before any time is spent. None of it was said.
+
+**The test is therefore: can I state in one line what I am doing and how it serves the task?** If
+that line cannot be written, stop. If it can, write it down before doing the work, not in the
+summary afterwards.
 
 A better method is welcome and should be raised. If a cheaper or stronger route to the *same
 answer* appears, say what it is, why it is better, and what it costs — then take it. That is not a
