@@ -390,6 +390,7 @@ Two risks. Claiming novelty we do not have: on 2026-10-21 a *Wayne Sentinel* not
 - [ ] Report anything that looks `new` to the owner when found, not at paper time
 - [ ] Verify the project's own novelty claims and replace "as far as we found" with a dated search
 - [ ] First case: is the 19 March 1830 notice already documented?
+- [ ] Near-miss review: the register only sees stated claims, and 6.5/6.6 decide what becomes one. A genuinely new source below threshold never enters it — which is where greater corpus reach would show up first. Fix N=20 per ranked list before the runs, give those a literature check and a register entry, surface anything `new` to the owner, and report them in #36 labelled as below the pre-registered threshold. Interest may never promote a near miss to significant; this is reporting, not a change to any decision rule
 - [ ] #36 reports novelty status beside each headline claim
 
 **Done when:** `novelty.yaml` covers every claim the paper makes with no `unchecked` entries, published alongside it.
