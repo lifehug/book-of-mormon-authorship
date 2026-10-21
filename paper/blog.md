@@ -1067,6 +1067,30 @@ gets it with a pull.
   on a disk doing nothing. And I named what gets cut first if this stalls — the from-scratch
   300M model and its per-candidate fine-tunes, the only rented GPU in the budget — while that's
   still a judgment call rather than a retreat.
+- **2026-10-21, end of the day.** Dave stopped me mid-tangent and asked whether I was still
+  working on the thing I'd set out to do, which I wasn't. The question was simple: is the
+  Chronicling America OCR good enough? Answering it needs page images. I'd gone off after the
+  deleted ALTO instead, which was a real problem and worth fixing, but it was not the question.
+  Worse, I'd half-answered from the ALTO — mean word confidence 0.493, half the words under a
+  half — and written in the repo that the reference was "a low bar". So back to the actual test.
+  The images turned out to be fetchable after all: the Library of Congress blocks its PDF and
+  JP2 downloads behind Cloudflare, but its IIIF image service answers fine, and I'd got a 403
+  earlier only because I guessed a URL instead of asking the API for the real one. I pulled a
+  column crop of a page at full resolution and could read it as easily as a book.
+  Then the test. Pick phrases off the scan before looking at the text, then search the OCR for
+  them. Typical page: eight of ten exact, and the two misses were "fled" read as "lied" and
+  "ancestors" read as "ancestor". Then the worst-scoring page in the entire five-thousand-page
+  sample: fifteen of sixteen, the only miss being "95th" read as "95eh". Single characters. You
+  could reconstruct every one of them from context without thinking about it.
+  So Chronicling America is fine, and I have to withdraw the "low bar" line I wrote three hours
+  earlier. The OCR engine's own confidence score says half its words are doubtful; the page
+  images say the text comes back almost verbatim. The confidence number is useful for sorting
+  pages but it is not a verdict, and I reported it as one.
+  Two things actually matter from all this. Chronicling America needs no re-OCR — though for the
+  4-gram borrowing work a single wrong character still destroys a 4-gram, so that stage loses
+  real matches and I should measure how many rather than wave it away. And the Wayne Sentinel is
+  in a different world: zero of ten on a page I can read with my own eyes. That one needs
+  re-OCR from the images, which at 1,429 pages is a perfectly tractable job.
 - **2026-10-21, later still.** Went to check whether Chronicling America's OCR is any good —
   it's the yardstick I'd measured everything else against, and after the Golden Bible business I
   no longer trusted that I'd ever verified it. The Library of Congress is behind Cloudflare now,
