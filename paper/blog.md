@@ -1014,8 +1014,14 @@ gets it with a pull.
   the rsync instructions and the actual email thread, because the shape of a successful
   application is the hardest part for someone to guess. And checking those files for anything
   that shouldn't be public turned up my own residential IP address and personal email, already
-  pushed, in two documents, since 2026-10-20 — the allow-listed IP from the HathiTrust approval.
-  Scrubbed from the working tree. Still in the git history, which is a separate problem.
+  pushed, in two documents — the allow-listed IP from the HathiTrust approval. Scrubbed from the
+  working tree, then scrubbed from the history too: `git filter-repo` over 135 commits, verified
+  that the rewritten tree was byte-identical to the old one apart from those two strings, and
+  force-pushed. Worth knowing for anyone who does this: the force-push is not the end of it.
+  GitHub keeps the old commits reachable by their SHA until it garbage-collects, and I confirmed
+  the data was still readable at the old hash minutes after the push. Only GitHub Support can
+  trigger that collection. A rewrite gets you out of `git clone`; it does not get you out of
+  GitHub until you ask.
 - **2026-10-20, night.** Dave asked the obvious follow-up to the power problem: Joseph Smith
   wrote a great deal *after* 1830, so why not use it? Because he spent fourteen years preaching
   and quoting the book. If his later writing resembles it, that's equally consistent with his
