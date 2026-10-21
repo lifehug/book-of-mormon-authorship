@@ -193,10 +193,10 @@ Phase 2 turns raw OCR into analysis-ready text and ends with a frozen, citable c
 
 **Goal:** readable text with a measured error rate per volume.
 
-- [ ] Read `corpus.ocr_max_cer` (0.10) from `config/preregistered.yaml` via `metadata.config.load()`; stamp outputs with `sha256_of_config()`. Do not hard-code the cutoff (BOM-40)
+- [x] Read `corpus.ocr_max_cer` (0.10) from `config/preregistered.yaml` via `metadata.config.load()`; stamp outputs with `sha256_of_config()`. Do not hard-code the cutoff (BOM-40) — `ocr_fix/score.py` stamps every parquet; the cutoff is deliberately *not* applied, since these are proxies and CER needs the hand-corrected sample below
 - [ ] Fix the long 'ſ' misread as 'f', rejoin end-of-line hyphens, strip running headers and page numbers
 - [ ] Use an LLM to correct OCR on a sample, and measure its error rate against hand-corrected pages
-- [ ] Score each volume and set a minimum quality cutoff in the pre-registration
+- [ ] Score each volume and set a minimum quality cutoff in the pre-registration — newspapers scored 2026-10-21 (`data/ocr_quality/`, Chronicling America as the same-era reference); books still to do, and the proxy-to-CER mapping waits on the hand-corrected sample
 
 **Done when:** cleaned text plus a quality score per volume, with the measured correction accuracy published.
 **Depends on:** #12.
@@ -406,7 +406,7 @@ Chronicling America holds 47 New York pages for all of 1800-1830, but that is a 
 - [x] **Owner decision (2026-10-21): no.** The other NYSHN period titles (Palmyra Register 1817-1821, Palmyra Herald 1822-1823, Ontario Repository 1824-1829, Rochester Antimasonic Inquirer 1828-1830, and the rest listed in `docs/new-york-newspapers.md`) are not pulled; this issue covered the Sentinel and Phelps's two papers only. If a later issue needs them, the script and the title list are in place
 - [x] Record which titles were found and which were not (`docs/new-york-newspapers.md`, `docs/candidates.md`)
 - [ ] Add the Phelps text to the candidate corpus (#13) with an attribution rule: two named publishers and heavy reprinting mean unsigned editorial matter is not automatically his
-- [ ] Feed the *Wayne Sentinel* into the access evidence (#33)
+- [x] Feed the *Wayne Sentinel* into the access evidence (#33) — index built 2026-10-21, `data/access/wayne_sentinel_access.jsonl`
 
 **Done when:** the available titles are stored with manifests, and any title that could not be obtained is recorded with the reason.
 **Depends on:** #10.
