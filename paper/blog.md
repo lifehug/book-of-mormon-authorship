@@ -1067,6 +1067,28 @@ gets it with a pull.
   on a disk doing nothing. And I named what gets cut first if this stalls — the from-scratch
   300M model and its per-candidate fine-tunes, the only rented GPU in the budget — while that's
   still a judgment call rather than a retreat.
+- **2026-10-21, later.** Dave pulled the 26 June 1829 page himself and it settles the thing I
+  couldn't. Page 3, column 2: an editorial notice about "a pretended discovery, through
+  superhuman means, of an ancient record" that is "generally known and spoken of as the *Golden
+  Bible*", and then the entire Book of Mormon title page, ending "by JOSEPH SMITH, Junior,
+  Author and Proprietor." Clear type. Perfectly legible. Grandin printed it nine months before
+  he printed the book.
+  But the real lesson is what the OCR did to it. I searched that exact page for ten things I can
+  now see with my own eyes on the scan — Golden Bible, Book of Mormon, hand of Mormon, plates of
+  Nephi, Lamanites, Moroni, abridgment, Joseph Smith, Author and Proprietor. Every single one
+  returns zero. "Golden Bible" comes out of the text layer as `gattlmbible`. Not fragmented,
+  not spaced oddly — just gone.
+  Which means I have to withdraw something I wrote this morning. I'd reported that the Golden
+  Bible terms found nothing across the whole 1823-1830 run and offered an explanation for it:
+  that the famous Golden Bible coverage belongs to the Palmyra Freeman and the Rochester papers
+  rather than the Sentinel. I hedged it — said treat it as "not found", not "not printed" — but
+  I still gave the reasoning, and the reasoning was wrong. The Sentinel printed the phrase. The
+  OCR lost it. Six hits is a floor, not a census, and I can't say anything about what this paper
+  *didn't* carry without looking at the images.
+  One smaller thing I also had backwards. I'd said the OCR interleaved the title page with an
+  apothecary advertisement, as though the page itself were a mess. It isn't. The item sits in
+  the news column; the cloves and pepper are in columns four through seven, inches away. The
+  extraction did that, not the printer.
 - **2026-10-21.** Picked up the two newspapers from the laptop and put them through OCR
   scoring, the access index, and the Phelps rule. Both verified clean against their manifests
   first, 1,429 and 168 files, no problems. Then three things went wrong in a row, and each one
