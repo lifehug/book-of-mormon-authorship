@@ -346,6 +346,36 @@ Section 9 weights each method by its accuracy on imitation-biblical samples, in 
 **Done when:** the expectation is committed before the sweep runs and results are reported against it.
 **Depends on:** #30, #39. **Gates:** the sweep run in #39.
 
+### #48 Time-split validation: is authorial signal stable across the 1830 gap
+
+**Goal:** measure per candidate whether a profile built from later writing attributes earlier writing — the assumption any expanded corpus rests on.
+
+Known authors only; no Book of Mormon text, no seal broken. Produces a per-candidate reliability number the plan does not currently have, useful whether or not #49 happens.
+
+- [ ] Profile from post-1830, attribute pre-1830, for every candidate with text on both sides
+- [ ] Run the reverse direction too and report both; they are not the same test
+- [ ] Baseline the normal amount of temporal drift on corpus authors spanning a comparable gap
+- [ ] Publish accuracy per candidate per method against the section 7 floor, whether or not it supports using later text
+
+**Done when:** the table is published with the drift baseline beside it.
+**Depends on:** #13, #20. **Gates:** #49.
+
+### #49 Expanded candidate corpora as a registered secondary analysis
+
+**Goal:** use each candidate's larger later corpus where it carries information, in addition to the pre-registered primary and never in place of it.
+
+Section 3's corpora and section 6's rules are unchanged and stay confirmatory. Needs Amendment 5 (`paper/amendment-005-osf-text.md`), filed before any calibration. **Owner action: not yet filed.**
+
+- [ ] Publish exposure tiers from the historical record: no later writing (Spalding), exposed (Joseph Smith, Cowdery, Rigdon, Pratt, Phelps), unexposed (Ethan Smith, Hunt, corpus authors)
+- [ ] Exposed candidates get the one-directional rule: non-match is evidence, match is uninformative
+- [ ] Tier every later sample by provenance; admit only holograph and dictated into attribution, catalogue and exclude reported speech and material composed by others
+- [ ] Gate on #48: no expansion for a candidate whose signal is not stable across the gap, and publish the refusals
+- [ ] Cap sweep-lead expansions at ten, in rank order among leads passing section 3's plausibility rule; the confirmation-half rule still applies
+- [ ] Publish the total count of candidate x method combinations, primary and secondary separately
+
+**Done when:** Amendment 5 is filed and the secondary analysis is reported in its own section beside the unchanged primary.
+**Depends on:** #43, #48. **Related:** #39, #47.
+
 ### #42 Apply the results to the public claims
 
 **Goal:** take every public claim about Book of Mormon authorship, fix the list and the decision rules before any result exists, and afterwards say which our evidence supports, contradicts, or does not address.

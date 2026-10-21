@@ -983,6 +983,30 @@ a script that drives one.
 
 ## Log
 
+- **2026-10-20, night.** Dave asked the obvious follow-up to the power problem: Joseph Smith
+  wrote a great deal *after* 1830, so why not use it? Because he spent fourteen years preaching
+  and quoting the book. If his later writing resembles it, that's equally consistent with his
+  having written it and with his having absorbed it — the causal arrow points both ways and the
+  resemblance can't tell them apart. But the contamination only runs one direction, toward
+  resemblance, and that's exploitable: if the most contaminated version of his corpus *still*
+  doesn't match, that's stronger evidence than a clean small sample could give, while a match
+  proves almost nothing. So it goes in the registration as a one-directional test — non-match
+  counts, match doesn't — fixed in advance so I can't pick the direction after seeing which way
+  it fell. Two other things fell out of working it through. Most of "all of Joseph Smith's
+  text" isn't his language at all: the History of the Church was largely written by Willard
+  Richards and W. W. Phelps, and the King Follett discourse survives as a composite of four
+  listeners' notes. So everything gets tiered by provenance and only holograph and dictated
+  material is scored. And the whole idea rests on an assumption I can actually test without
+  touching the Book of Mormon — build a profile from Rigdon's or Pratt's later writing and see
+  whether it identifies their earlier writing. If authorial signal survives that gap, using
+  later text is defensible and I have the number. If it doesn't, I have a quantified reason not
+  to. Dave was clear this is *in addition to* the registered analysis, never instead of it,
+  which is the only version that's filable: Amendment 5 adds analyses and adds constraints on
+  them, and changes no decision rule. Recorded honestly in the draft: this helps least where
+  it's needed most. Smith is both the shortest of text and the most exposed, so his is the one
+  expansion confined to the one-directional rule, while the cleanest expansions belong to
+  published authors who probably already have enough words. It is not going to rescue the
+  Joseph Smith question, and saying so now means nobody can later pretend it did.
 - **2026-10-20, night.** Stopped and audited the whole plan against its own goal, now that
   Phase 1 is nearly done and nothing analytical is built yet (`docs/audit.md`). Five gaps, five
   new issues. The one that could change what this paper is about: there's no power analysis.
