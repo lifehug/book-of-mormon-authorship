@@ -31,6 +31,39 @@ Work the lowest-numbered open `BOM-NN` issue whose "Depends on" issues are all c
 the issue body (it holds the goal, checklist, and done-when). If an issue is half done, its
 comments say what remains. "Continue" or "move forward" means: pick that issue and do it.
 
+## Scope discipline (read this before starting anything)
+
+**A task is its stated scope and nothing else.** The project has 49 issues and more work than
+time. Interesting is not the same as useful, and a detour that produces something genuinely good
+still costs the thing that was asked for.
+
+When something turns up mid-task, it is one of three things. Say which, out loud, before acting:
+
+1. **It blocks the task.** Fix it and carry on. No permission needed. (The access index could not
+   match fragmented OCR; making it match was the task.)
+2. **It is a rule broken or data at risk.** Stop and report it. Do not quietly fix it and keep
+   going — the owner decides what happens next. (The extractor deleting source archives.)
+3. **It is merely interesting.** Name it, say plainly *"this does not serve the task"*, write it
+   down as an issue or a note, and **ask before doing any of it.**
+
+For anything in category 3, explicit permission is required — not inferred from a related earlier
+"yes", and not from the work being cheap. State either that it does not serve the task, or
+exactly how it does, and let the owner choose.
+
+**Answer the question that was asked, first.** If the task is a question, produce the answer
+before anything else. A question that is already answered is finished: stop, even if a better
+method just occurred to you.
+
+**Two failures from 2026-10-21, as the pattern to recognise.** Asked "is the Chronicling America
+OCR good enough", the route was: images blocked, so ALTO instead, which revealed the extractor had
+deleted it, which became a code fix, a guard test, a memory, a new issue, docs and a blog entry —
+all before the question had an answer. The answer needed one page image and twenty minutes. Then,
+with the question answered, a Tesseract re-OCR benchmark got started that nobody had asked for.
+Both produced real work. Neither was the task.
+
+**One issue per concern.** BOM-50 ended up covering ALTO recovery, OCR verification and a
+re-OCR decision. Split them instead.
+
 ## How to finish a task
 
 1. Code goes in the pipeline package that owns the stage (`ingest/`, `metadata/`, ...). Each
