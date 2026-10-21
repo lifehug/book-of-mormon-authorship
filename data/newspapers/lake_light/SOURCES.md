@@ -1,7 +1,12 @@
 # Lake Light (Trumansburg, N.Y.), 1827-1828
 
-W. W. Phelps's first newspaper, publishers Phelps & Bloomer. LCCN `sn84031024`. BOM-41;
-feeds BOM-13 (Phelps's pre-1830 sample, with an attribution rule still to write) and BOM-33.
+W. W. Phelps's first newspaper. LCCN `sn84031024`. BOM-41; feeds BOM-13 and BOM-33.
+
+**The imprint changes mid-run** (measured 2026-10-21, not assumed): `PHELPS & BLOOMER`
+through 18 Feb 1828, then `CLARK & BLOOMER` from 19 Mar 1828, with the partnership
+dissolved that May. Phelps had gone to the *Ontario Phoenix*; the issue of 3 Sep 1828
+refers to it as another paper. Only 15 of the 42 issues are from his tenure. The
+attribution rule in `docs/candidates.md` is written and governs what may be scored.
 
 | File | Built by | Contents |
 | --- | --- | --- |

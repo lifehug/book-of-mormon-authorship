@@ -179,11 +179,65 @@ while the Book of Mormon was being dictated.
 **Updated 2026-10-20 (BOM-41).** Both papers were checked everywhere a script or a browser
 could reach:
 
-- *Lake Light*, LCCN `sn84031024`, Trumansburg 1827-1829, publishers Phelps & Bloomer
-  1827-1828. **Digitized and pulled**: the Ulysses Philomathic Library's Advantage Archives
+- *Lake Light*, LCCN `sn84031024`, Trumansburg 1827-1829, publishers Phelps & Bloomer to
+  18 Feb 1828, then Clark & Bloomer (see the attribution rule above). **Digitized and pulled**: the Ulysses Philomathic Library's Advantage Archives
   site holds the New York State Library microfilm run, 168 pages in 42 issues, 10 Oct 1827 to 19 Nov 1828 (about 16 issues are missing from the film)
   (`data/newspapers/lake_light/`, fetched by `ingest.advantage_archive`). This is the first
   digitized pre-1830 text from a candidate's own paper.
+### Attribution rule for the *Lake Light* (BOM-13, written 2026-10-21)
+
+Fixed **before any of this text enters Phelps's candidate sample**, because the sample is small
+enough that a permissive rule would decide the result. Nothing from the *Lake Light* is scored
+until a passage clears every test below.
+
+**1. The paper changed hands, and the date ceiling is the first filter.** Read off the imprint
+lines the OCR recovers:
+
+| Issues | Imprint found | Status |
+| --- | --- | --- |
+| 1827-12-10 to 1828-02-18 | `PHELPS & BLOOMER` | Phelps era |
+| 1828-03-19 onward | `CLARK & BLOOMER` | **not Phelps** |
+| 1828-05-21, 1828-06-04 | `CLARK & BLOOMER ... is this day dissolved` | partnership wound up |
+
+Phelps had left for the *Ontario Phoenix* by then; the issue of 3 Sep 1828 refers to the
+"Ontario Phoenix, by W. W. Phelps" as another paper. **Only issues up to and including
+18 February 1828 are eligible** — 15 of 42 issues, 196,448 OCR words of the 565,630. The gap
+between 18 Feb and 19 Mar 1828 is indeterminate and is excluded, not split.
+
+`W. W. PHELPS, & Co.` also appears on inside pages of several April 1828 issues, after the
+masthead had changed. Those are standing advertisements or unreset job-printing notices, not
+evidence of editorial control, and they do not extend the window.
+
+**2. Two named publishers, so unsigned matter is not his.** The eligible run is *Phelps &
+Bloomer*, not Phelps alone. Unsigned editorial matter could be either man's, and nothing in the
+page tells them apart. Unsigned editorial matter is therefore **excluded**, which is the point
+BOM-41 flagged.
+
+**3. A country weekly is mostly reprint.** Credit-line language appears on 150 of 168 pages.
+Reprinted items, congressional and official proceedings, legal notices, advertisements, market
+tables and literary extracts are **excluded** regardless of date.
+
+**4. What is admissible.** Only matter signed by Phelps or carried over his initials, inside the
+date window, and not reprinted. Also admissible: a prospectus, salutatory or valedictory
+signed by him alone.
+
+**5. The expected result, recorded in advance.** Explicit `W. W. Phelps` signatures appear on
+11 of 168 pages, and most are the masthead rather than a signature over an article. So this rule
+will likely admit **little or nothing**, and the *Lake Light* may contribute nothing to Phelps's
+sample. That is the honest outcome of a two-publisher, mostly-reprinted paper, and it is written
+here before the extraction runs so that a disappointing yield cannot become a reason to loosen
+the rule. If the yield is zero, Phelps keeps the "unreliable sample" flag of preregistration
+section 3 and that is reported.
+
+**6. The OCR is not yet good enough to apply this mechanically.** Identifying signatures and
+credit lines requires segmenting the page into items, which this text layer does not support.
+Extraction waits on BOM-14's cleaning; until then the window and the exclusions above stand as
+the specification, not as a completed selection.
+
+**Correction to this file's own record:** the entry below said "publishers Phelps & Bloomer
+1827-1828". The imprint evidence above shows Phelps's involvement ends in early 1828, not at
+year end.
+
 - *Ontario Phoenix*, LCCN `sn84031006`, Canandaigua 1828-1832, publisher line **W. W. Phelps
   & R. M. Bloomer (1828-1829), W. W. Phelps (1829-1830)**. **Not digitized**: absent from
   NYS Historic Newspapers' title index, from Chronicling America (0 pages), from HathiTrust
