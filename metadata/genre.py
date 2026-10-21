@@ -57,6 +57,23 @@ scientific_medical - medicine, natural history, technical and practical manuals
 other - only if genuinely none of the above fit (catalogues, reference, directories)"""
 
 LABELS = tuple(line.split(" - ")[0] for line in DEFINITIONS.splitlines())
+
+# Amendment 3 (2026-10-20): three worked examples, one deliberately ambiguous. Fixed, published
+# with the code, drawn from the comparison corpus only -- never the Book of Mormon or a
+# candidate author's writing, which would leak the questioned text into the labeller.
+EXAMPLES = """Examples:
+
+TITLE: A discourse delivered before the Society for the Commemoration of the Landing
+YEAR: 1825
+ANSWER: sermon_devotional
+
+TITLE: Philosophical Transactions of the Royal Society of London
+YEAR: 1810
+ANSWER: newspaper_periodical, scientific_medical
+
+TITLE: Travels in Africa performed during the years 1785, 1786, and 1787
+YEAR: 1802
+ANSWER: history_chronicle"""
 MODEL = "sonnet"
 WORKERS = 8
 
@@ -90,13 +107,24 @@ def rule_label(row: dict) -> str | None:
 
 
 def prompt_for(row: dict, excerpt: str) -> str:
+    """The classification prompt. Multi-label, few-shot, with an uncertainty escape.
+
+    Amendment 3 replaced Amendment 2's single-label scheme after measuring that two model
+    families agreed only 72% on hard records, about a third of the disagreements being works
+    that genuinely belong to two categories at once. A precedence rule was considered and
+    rejected: it resolves ambiguity by discarding half the information, which would empty the
+    scientific control pool of every scientific periodical.
+    """
     return (
-        f"You are classifying a printed work for a corpus study. Choose exactly one genre.\n\n"
+        f"You are classifying a printed work for a corpus study.\n\n"
         f"{DEFINITIONS}\n\n"
-        f"Rules: output ONLY the label, lowercase, exactly as written above. No explanation, "
-        f"no punctuation. Use 'other' only as a last resort - prefer a specific category "
-        f"whenever one plausibly fits. A work of practical instruction is scientific_medical. "
-        f"Travel and topography are history_chronicle. Verse and drama are fiction_narrative.\n\n"
+        f"{EXAMPLES}\n\n"
+        f"Rules: answer with one label, or two separated by a comma when the work genuinely "
+        f"belongs to both (most scientific journals are both newspaper_periodical and "
+        f"scientific_medical). Put the primary category first. Use lowercase exactly as "
+        f"written above, no explanation and no punctuation beyond the comma. Prefer a specific "
+        f"category over 'other'. If the evidence genuinely does not support any category, "
+        f"answer 'uncertain' rather than guessing.\n\n"
         f"TITLE: {row.get('title')}\nAUTHOR: {row.get('author')}\nYEAR: {row.get('year')}\n"
         f"EXCERPT: {excerpt[:500]}"
     )
@@ -121,9 +149,17 @@ def ask_model(prompt: str, model: str = MODEL, retries: int = 2) -> str:
         except Exception:  # noqa: BLE001
             continue
         text = done.stdout.strip().lower()
-        found = [label for label in LABELS if re.search(rf"\b{label}\b", text)]
+        if re.search(r"\buncertain\b", text) and not any(
+            re.search(rf"\b{label}\b", text) for label in LABELS
+        ):
+            return "uncertain"
+        # Keep reading order: the model is told to put the primary category first.
+        found: list[str] = []
+        for match in re.finditer(r"\b(" + "|".join(LABELS) + r")\b", text):
+            if match.group(1) not in found:
+                found.append(match.group(1))
         if found:
-            return found[-1]
+            return ",".join(found[:2])
     return "PARSE_FAIL"
 
 
@@ -142,7 +178,8 @@ def excerpt_for(row: dict, chars: int = 500) -> str:
 SCHEMA = pa.schema(
     [
         ("work_id", pa.string()),
-        ("genre", pa.string()),
+        ("genre", pa.string()),  # primary, or "primary,secondary" (Amendment 3)
+        ("genre_pass2", pa.string()),  # second pass; agreement is the confidence signal
         ("decided_by", pa.string()),  # "rule" or the model name; both go to validation
         ("model", pa.string()),
     ]

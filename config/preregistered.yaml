@@ -10,7 +10,7 @@
 # Sections for the classical methods, language models, dating, embeddings and the
 # decision rules arrive with BOM-40 proper, once BOM-20 closes.
 
-version: 0.2
+version: 0.3
 preregistration: https://osf.io/6ugxc/
 covers: [BOM-12, BOM-14, BOM-15, BOM-16, BOM-17]
 
@@ -38,11 +38,16 @@ corpus:
     verify: langid
     sample_chars: 2000
     min_probability: 0.90
+  # Amendment 3 (2026-10-20): multi-label, few-shot, uncertainty option, two passes.
   genre_tagging:
     labels: [sermon_devotional, pseudo_biblical, history_chronicle, fiction_narrative,
              newspaper_periodical, legal_political, scientific_medical, other]
-    method: llm_with_logged_reasoning
+    max_labels: 2              # primary first; a work may genuinely belong to two
+    allow_uncertain: true      # better than a forced guess
+    method: llm_few_shot_two_pass
+    passes: 2                  # inter-pass agreement is the confidence signal
     validation_sample: 300
+    validation_sampling: stratified   # over-samples ambiguous categories and disagreements
   spelling_normalization:
     pre_1700: morphadorner_emod_lexicon
     post_1780: artifacts_only   # long-s, ligatures, OCR; no lexical modernisation
@@ -80,24 +85,6 @@ seed: 20261017
 # pinned by dated amendment before BOM-21 calibration starts (BOM-40). Absent from the config
 # above on purpose: an unregistered value written here would read as a registered one.
 pending_amendment:
-  - key: corpus.genre_tagging.precedence
-    issue: BOM-12
-    note: >
-      Amendment 2 registered eight genre labels but no rule for when two apply. Measured
-      2026-10-20: on 239 hard records two models agreed only 72%, and about a third of the
-      disagreements were definitional rather than errors -- Philosophical Transactions is a
-      periodical AND scientific, Curtis's Botanical Magazine likewise, Encyclopaedia Britannica
-      sits between other and history_chronicle. Proposed rule: a work issued in numbered parts
-      is newspaper_periodical first, whatever its subject. Needs a dated amendment before the
-      corpus is labelled, because arbitrary labels produce arbitrary control sets and the
-      control sets are the defence against mistaking biblical style for a biblical author.
-  - key: corpus.genre_tagging.validation_sampling
-    issue: BOM-12
-    note: >
-      Amendment 2 says validate against 300 hand-labelled volumes but not how they are drawn.
-      A uniform random sample mostly tests easy records; the ambiguous categories need
-      over-sampling or the published agreement rate overstates accuracy on the cases that
-      actually matter.
   - key: kjv_mask.passim
     issue: BOM-16
     note: alignment parameters, n-gram size and gap settings
