@@ -33,6 +33,53 @@ public website whose text is copyrighted, so we publish the fetcher rather than 
 HathiTrust requires an application, and `docs/hathitrust-request.md` records exactly what to
 send, to whom, and what obligations come back with it.
 
+## The only three things you must obtain yourself
+
+Everything else in this project is published. These three are not, and for each one the steps
+below are the whole procedure. None of them is discretionary on our side: we hold these back
+because of a signed agreement, accepted terms, or copyright — not by preference.
+
+### 1. HathiTrust public-domain volumes
+
+A signed researcher agreement. Days, not minutes, and the only item here with a wait.
+
+1. Email `support@hathitrust.org` with a short proposal: researchers (name, affiliation,
+   country), which dataset you want, the research you intend, what outputs you will produce,
+   how those outputs will be used, and permission to share the proposal.
+   Ours is committed verbatim at `docs/hathitrust-email-thread-GS-17502.md`, so you can copy
+   the shape of one that worked.
+2. Sign and return the researcher agreement they send. We wanted the **non-Google** dataset,
+   `ht_text_pd_open_access`; obligations summarised in
+   `docs/hathitrust-researcher-agreement.md`.
+3. On approval, give them a static IP. A dynamic one can be allow-listed instead if you ask.
+4. Pull with `python3 ingest/hathitrust_rsync/ht_pull.py`. Transfer details in
+   `docs/hathitrust-rsync-instructions.md`. Exit code 23 is expected: roughly 76,000 of the ids
+   are Google-digitized and absent from this dataset.
+
+Note the obligation that comes with it: deletion notices must be honoured, and the text may not
+be redistributed. Ours expires 2026-11-30; yours will have its own window.
+
+### 2. Harvard Institutional Books 1.0
+
+A free account and a click. Minutes.
+
+1. Create a Hugging Face account.
+2. Open https://huggingface.co/datasets/institutional/institutional-books-hl and accept the
+   dataset terms — noncommercial use, no redistribution, attribution required.
+3. Put the token in `~/.config/huggingface/token`.
+4. `python -m ingest.institutional_books pull`. About 73 GiB on disk and ~700 GB of transfer,
+   because each shard is one row group so there is no row-level pushdown.
+
+### 3. Joseph Smith Papers transcripts
+
+No permission needed, no account, no wait. The site is open; the transcripts are simply
+copyrighted by Intellectual Reserve, so we publish the fetcher rather than the text.
+
+1. `python -m ingest.jsp printers` and `python -m ingest.jsp original`.
+2. They land in `data/private/bom/`, and `data/bom/SOURCES.md` documents what each file holds.
+3. Verify against `data/manifests/bom-private.jsonl`, which is public, so you can confirm you
+   obtained the same bytes we did without access to anything of ours.
+
 ## The scripts and the paperwork are both committed
 
 A fetcher is committed for every source, so nothing has to be reconstructed from a description:

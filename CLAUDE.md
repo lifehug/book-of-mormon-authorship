@@ -124,7 +124,9 @@ three things: the HathiTrust researcher agreement, Harvard's accepted dataset te
 Joseph Smith Papers transcripts, which are copyrighted by Intellectual Reserve. Those live in
 the private repo, committed and pushed there rather than left on local disk. Everything else is
 public, including page scans of public-domain material: a digitiser who asked for nothing has
-not restricted anything. Only the bulk corpora under `data/corpus/` stay out of both, because they
+not restricted anything. **Anything held back ships with the steps to obtain it** — numbered,
+followable, naming who to write to and what to say. `docs/replication.md` carries those steps
+for all three; a new restriction is not recorded until its procedure is written there too. Only the bulk corpora under `data/corpus/` stay out of both, because they
 are hundreds of gigabytes and licensed; those are covered by checksum manifests, which are
 public. `.gitignore` blanket-ignores `data/*` and re-includes per directory, so **a new data
 directory is invisible to git until it is added to that list** — and `git status` will look
