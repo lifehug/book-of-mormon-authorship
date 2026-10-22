@@ -33,7 +33,10 @@ data/bom/*
 # Derived, rebuilt in seconds by metadata.catalog / metadata.genre. Keep
 # data/catalog/ for the source indexes the ingests wrote.
 data/catalog/catalog.parquet
-data/catalog/genre.parquet
+# data/catalog/genre.parquet is NOT ignored: it is ~40 hours of local model time, it lives on
+# a disk with no Time Machine destination, and at a few MB it costs git almost nothing. The
+# large catalog.parquet stays out because it rebuilds from the committed source catalogs in
+# about 26 seconds.
 !data/candidates/
 !data/candidates/**
 # BOM-42: the claims register is a small tracked index, like the catalogs.
@@ -43,6 +46,14 @@ data/catalog/genre.parquet
 # the page PDFs stay under data/corpus/.
 !data/newspapers/
 !data/newspapers/**
+# BOM-14 OCR quality scores and BOM-33 access evidence. Small, derived, and referenced by
+# committed docs -- a fresh clone needs them or docs/access-evidence.md points at nothing.
+!data/ocr_quality/
+!data/ocr_quality/**
+!data/access/
+!data/access/**
+!data/lexicon/
+!data/lexicon/**
 
 # Large corpora: local disk only, never a git repo; tracked by manifests
 data/corpus/
