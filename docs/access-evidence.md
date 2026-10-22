@@ -44,8 +44,8 @@ is a statement about this project's records, nothing more.
 **Resolved 2026-10-21.** The owner obtained the page image from NYS Historic Newspapers and it
 settles the question: the *Wayne Sentinel* of Friday 26 June 1829, **page 3, column 2**, carries
 an editorial notice followed by the Book of Mormon title page in full, set in clear type and
-entirely legible. The scan is at `data/corpus/nyshn/wayne_sentinel/wayne_sentinel_18290626_p3.pdf`
-(outside git; checksum in `data/manifests/wayne_sentinel_pdf.jsonl`).
+entirely legible. The scan is at `data/newspapers/wayne_sentinel/scans/wayne_sentinel_18290626_p3.pdf`
+(committed; checksum in `data/manifests/wayne_sentinel_scans.jsonl`).
 
 Transcribed from the scan. Square brackets mark readings the film leaves uncertain:
 

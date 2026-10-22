@@ -8,7 +8,7 @@ and advertised near Palmyra: the "Golden Bible" items, the Book of Mormon title 
 **The 26 June 1829 title page is confirmed** by eye on the page scan (2026-10-21), page 3
 column 2: an editorial notice naming the "Golden Bible", then the title page in full over
 `BY JOSEPH SMITH, Junior, Author and Proprietor`. Scan in
-`data/corpus/nyshn/wayne_sentinel/`, checksum in `data/manifests/wayne_sentinel_pdf.jsonl`,
+`data/newspapers/wayne_sentinel/scans/` (committed), checksum in `data/manifests/wayne_sentinel_scans.jsonl`,
 transcription in `docs/access-evidence.md`. **The OCR text layer of that page finds none of
 it** -- all ten diagnostic terms return zero -- so no negative claim about this title may be
 made from the text layer. A forthcoming-sale notice on 19 March 1830 was also

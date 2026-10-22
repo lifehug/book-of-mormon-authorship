@@ -117,9 +117,14 @@ decision. Split them.
 | `data/private/` | licensed texts that cannot be redistributed | separate private repo `lifehug/bom-authorship-data`, cloned by `scripts/data_clone.sh`; never add to this repo |
 | `data/corpus/` | large corpora (Harvard Institutional Books, TCP) | no git at all; local disk, tracked by manifests |
 
-**Everything is tracked somewhere; nothing lives in one place.** Public repo by default. What
-cannot be published publicly goes to the private repo and is committed and pushed there — not
-left on local disk. Only the bulk corpora under `data/corpus/` stay out of both, because they
+**Everything is tracked somewhere; nothing lives in one place. Public by default.** Assume a
+file may be published unless something says otherwise, and "otherwise" means a signed agreement
+or an explicit request — not a guess about what a provider might prefer. Today that is exactly
+three things: the HathiTrust researcher agreement, Harvard's accepted dataset terms, and the
+Joseph Smith Papers transcripts, which are copyrighted by Intellectual Reserve. Those live in
+the private repo, committed and pushed there rather than left on local disk. Everything else is
+public, including page scans of public-domain material: a digitiser who asked for nothing has
+not restricted anything. Only the bulk corpora under `data/corpus/` stay out of both, because they
 are hundreds of gigabytes and licensed; those are covered by checksum manifests, which are
 public. `.gitignore` blanket-ignores `data/*` and re-includes per directory, so **a new data
 directory is invisible to git until it is added to that list** — and `git status` will look
