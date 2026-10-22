@@ -117,6 +117,21 @@ decision. Split them.
 | `data/private/` | licensed texts that cannot be redistributed | separate private repo `lifehug/bom-authorship-data`, cloned by `scripts/data_clone.sh`; never add to this repo |
 | `data/corpus/` | large corpora (Harvard Institutional Books, TCP) | no git at all; local disk, tracked by manifests |
 
+**Everything is tracked somewhere; nothing lives in one place.** Public repo by default. What
+cannot be published publicly goes to the private repo and is committed and pushed there — not
+left on local disk. Only the bulk corpora under `data/corpus/` stay out of both, because they
+are hundreds of gigabytes and licensed; those are covered by checksum manifests, which are
+public. `.gitignore` blanket-ignores `data/*` and re-includes per directory, so **a new data
+directory is invisible to git until it is added to that list** — and `git status` will look
+clean while it is missing, because ignored files do not appear there. Check `git ls-files` on a
+new directory before believing it is committed.
+
+Derived tables are kept, not regenerated on demand. The test is cost to reproduce, not whether a
+file is derived: `genre.parquet` is tracked because it is about 40 hours of local model time, and
+`catalog.parquet` is tracked because it is the join key every other published table needs. A
+replicator who obtains the sources under their own agreements must be able to apply our labels
+without re-running the pipeline (BOM-44).
+
 Harvard's Institutional Books text may never be published (terms: noncommercial, no
 redistribution, attribution required). Joseph Smith Papers transcripts are copyrighted.
 
