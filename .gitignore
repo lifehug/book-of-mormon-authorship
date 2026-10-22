@@ -32,7 +32,10 @@ data/bom/*
 !data/catalog/**
 # Derived, rebuilt in seconds by metadata.catalog / metadata.genre. Keep
 # data/catalog/ for the source indexes the ingests wrote.
-data/catalog/catalog.parquet
+# catalog.parquet IS tracked (70 MB). It is the join key for every derived table we publish:
+# genre.parquet maps work_id -> genre, and without the catalog those ids mean nothing. A
+# replicator who obtains the sources themselves can then apply our labels without re-running
+# anything, which is the point of BOM-44.
 # data/catalog/genre.parquet is NOT ignored: it is ~40 hours of local model time, it lives on
 # a disk with no Time Machine destination, and at a few MB it costs git almost nothing. The
 # large catalog.parquet stays out because it rebuilds from the committed source catalogs in
