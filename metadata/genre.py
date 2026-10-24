@@ -326,10 +326,48 @@ def run_label(limit: int | None, model: str, workers: int) -> int:
     return 0
 
 
+def resolve_no_text() -> int:
+    """Relabel PARSE_FAIL rows that have no text as ``uncertain`` (owner decision 2026-10-24).
+
+    This implements Amendment 3's existing option rather than adding one. The amendment says a
+    record may be answered ``uncertain`` when "the evidence genuinely does not support any
+    category". A row with no text on disk has no evidence at all: the prompt carries an empty
+    excerpt, and the model's reply is not a wrong label but a request for the missing text --
+    *"To classify the work, I need to see the excerpt."* That is the ``uncertain`` condition
+    holding while the model fails to say the word, so no amendment is needed.
+
+    Rows that **do** have text keep ``PARSE_FAIL``. There the evidence may well support a
+    category and the model simply failed to emit one; calling those uncertain would overclaim.
+    267 rows are in that state, 0.053% of the corpus that has text, and they are reported rather
+    than resolved -- genre is only ever used pool-wise, so at that scale resolving them buys
+    nothing (see docs/audit.md finding 1 and BOM-51's perturbation test).
+    """
+    cat = {r["work_id"]: r for r in pq.read_table(CATALOG).to_pylist()}
+    rows = pq.read_table(OUT).to_pylist()
+    changed = kept = 0
+    for r in rows:
+        if r["genre"] != "PARSE_FAIL":
+            continue
+        if cat.get(r["work_id"], {}).get("has_text"):
+            kept += 1
+        else:
+            r["genre"] = "uncertain"
+            r["decided_by"] = "rule:no_text"
+            changed += 1
+    table = pa.Table.from_pylist(rows, schema=SCHEMA)
+    tmp = OUT.with_suffix(".parquet.tmp")
+    pq.write_table(table.replace_schema_metadata({"config_sha256": sha256_of_config()}), tmp)
+    tmp.replace(OUT)
+    print(f"relabelled {changed:,} no-text PARSE_FAIL rows to uncertain")
+    print(f"kept {kept:,} PARSE_FAIL rows that have text, for reporting")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("rules")
+    sub.add_parser("resolve-no-text")
     lab = sub.add_parser("label")
     lab.add_argument("--limit", type=int)
     lab.add_argument("--model", default=MODEL)
@@ -337,6 +375,8 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
     if args.cmd == "rules":
         return run_rules()
+    if args.cmd == "resolve-no-text":
+        return resolve_no_text()
     if args.cmd == "label":
         return run_label(args.limit, args.model, args.workers)
     return 1

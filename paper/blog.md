@@ -1063,7 +1063,7 @@ gets it with a pull.
   derived tables the analyses actually read (4-gram document frequencies, feature matrices, the
   genre catalog), which aren't reconstructable back into readable text and so aren't what the
   licences restrict. Also: the borrowing null is built from "at least 500" volumes, which puts
-  about five observations in the tail of a 99th percentile, and I have 560,000 volumes sitting
+  about five observations in the tail of a 99th percentile, and I have half a million volumes sitting
   on a disk doing nothing. And I named what gets cut first if this stalls — the from-scratch
   300M model and its per-candidate fine-tunes, the only rented GPU in the budget — while that's
   still a judgment call rather than a retreat.

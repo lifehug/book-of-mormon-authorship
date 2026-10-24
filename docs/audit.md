@@ -109,7 +109,7 @@ volumes". A 99th percentile estimated from 500 draws rests on about five observa
 tail, and the resulting threshold carries more sampling noise than the comparisons made against
 it.
 
-The corpus holds roughly 560,000 volumes and local compute is free (`CLAUDE.md`). Scoring
+The corpus holds 502,134 volumes with text on disk (of 559,986 catalogued) and local compute is free (`CLAUDE.md`). Scoring
 5,000-10,000 costs hours. "At least 500" is a floor, so using more needs a recorded decision and
 a config value, not an amendment.
 
