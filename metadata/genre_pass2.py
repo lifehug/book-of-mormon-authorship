@@ -37,6 +37,7 @@ import argparse
 import collections
 import math
 import random
+import subprocess
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -149,11 +150,43 @@ def build_sample(cfg: dict) -> list[dict]:
     return out
 
 
+def _needs_work(value: str | None) -> bool:
+    """True when a row still needs asking. RETRY is a transient outage, not an answer."""
+    return not value or value == "RETRY"
+
+
+_LAST_COMMIT = [0.0]
+
+
+def _git_checkpoint(every_seconds: float = 900) -> None:
+    """Commit the output periodically so a disk failure cannot cost the whole run.
+
+    Time-based rather than per-checkpoint: pass 1 wrote 141 checkpoints and committing each
+    would have buried the history. Failures here are ignored -- a labelling run must not die
+    because git is busy.
+    """
+    now = time.time()
+    if now - _LAST_COMMIT[0] < every_seconds:
+        return
+    _LAST_COMMIT[0] = now
+    try:
+        subprocess.run(["git", "add", str(OUT)], check=False, capture_output=True, timeout=60)
+        subprocess.run(
+            ["git", "commit", "-q", "-m", f"BOM-12: pass 2 checkpoint ({OUT.name})"],
+            check=False,
+            capture_output=True,
+            timeout=60,
+        )
+    except Exception:  # noqa: BLE001
+        pass
+
+
 def _write(rows: list[dict]) -> None:
     table = pa.Table.from_pylist(rows, schema=SCHEMA)
     tmp = OUT.with_suffix(".parquet.tmp")
     pq.write_table(table.replace_schema_metadata({"config_sha256": sha256_of_config()}), tmp)
     tmp.replace(OUT)
+    _git_checkpoint()
 
 
 def _label(
@@ -171,7 +204,7 @@ def _label(
     subset -- a 4-row smoke test silently destroyed 4,996 rows of the drawn sample.
     """
     cat = {r["work_id"]: r for r in pq.read_table(CATALOG).to_pylist()}
-    todo = todo if todo is not None else [r for r in rows if not r[field]]
+    todo = todo if todo is not None else [r for r in rows if _needs_work(r[field])]
     if not todo:
         print("nothing to do")
         return 0
@@ -204,7 +237,8 @@ def run(model: str, workers: int, limit: int | None, retry_failed: bool = False)
     cfg = load_config()
     if OUT.exists():
         rows = pq.read_table(OUT).to_pylist()
-        print(f"resuming: {sum(1 for r in rows if r['pass2']):,} of {len(rows):,} done")
+        done = sum(1 for r in rows if r["pass2"] and not _needs_work(r["pass2"]))
+        print(f"resuming: {done:,} of {len(rows):,} done")
     else:
         rows = build_sample(cfg)
         n_over = sum(r["oversampled"] for r in rows)
@@ -216,7 +250,7 @@ def run(model: str, workers: int, limit: int | None, retry_failed: bool = False)
             if r["pass2"] == "PARSE_FAIL":
                 r["pass2"] = None
         print(f"retrying {n:,} PARSE_FAIL rows")
-    todo = [r for r in rows if not r["pass2"]]
+    todo = [r for r in rows if _needs_work(r["pass2"])]
     return _label(rows, "pass2", "model", model, workers, todo[:limit] if limit else todo)
 
 

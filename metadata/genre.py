@@ -196,6 +196,13 @@ def ask_ollama(prompt: str, model: str, retries: int = 2) -> str:
 
 PARSE_LOG = Path("logs/parse_failures.jsonl")
 
+# Replies that mean "ask again later", not "this work has no genre".
+_TRANSIENT = re.compile(
+    r"usage limit|rate limit|too many requests|overloaded|try again|quota|"
+    r"credit balance|service unavailable|timed out|connection error",
+    re.I,
+)
+
 
 def _log_parse_failure(model: str, raw: str) -> None:
     """Record what an unparseable reply actually said.
@@ -232,6 +239,12 @@ def ask_model(prompt: str, model: str = MODEL, retries: int = 2) -> str:
             _log_parse_failure(model, f"<{type(exc).__name__}: {exc}>")
             continue
         text = done.stdout.strip().lower()
+        # A transient outage must not be recorded as an answer. Pass 2 lost 3,027 records to a
+        # usage limit and wrote PARSE_FAIL for each, which a resume then treated as finished
+        # work. RETRY is a distinct state so any later run picks those rows up unprompted.
+        if not text or _TRANSIENT.search(text) or done.returncode != 0:
+            _log_parse_failure(model, text or f"<rc={done.returncode}>")
+            return "RETRY"
         if re.search(r"\buncertain\b", text) and not any(
             re.search(rf"\b{label}\b", text) for label in LABELS
         ):

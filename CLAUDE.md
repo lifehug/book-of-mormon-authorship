@@ -162,6 +162,16 @@ conversational, short sentences, concrete, no jargon.
 
 - Issue references are `BOM-NN`, never `#N` (GitHub #1-#10 are the old 2016 items).
 - Fetchers identify themselves, rate-limit, and resume from what is on disk.
+- **A transient failure is never recorded as an answer, and every long job resumes itself.**
+  Checkpointing to disk is not enough on its own: pass 2 checkpointed every 250 rows and did
+  resume, but it wrote `PARSE_FAIL` for 3,027 records lost to a usage limit, and a resume then
+  treated those as finished work. Keep the states distinct — not attempted, answered,
+  genuinely unanswerable, and *failed transiently* — so a rerun picks the last one up with no
+  flag and no human noticing. `metadata.genre._TRANSIENT` is the pattern for recognising an
+  outage reply. Log the raw text of anything unparseable (`logs/parse_failures.jsonl`); a
+  failure with no evidence cannot be diagnosed, and that run left none.
+- **Long jobs commit their output as they go**, on a timer rather than per checkpoint, so a
+  disk failure cannot cost days of model time and the history stays readable.
 - Commit messages end with the Claude co-author line the harness supplies.
 - **Local compute and disk are cheap; rented GPU is not.** Up to about a week of wall time for
   a job on the mini is acceptable, and the SSD has 1.6 TB free. Prefer the accurate approach
