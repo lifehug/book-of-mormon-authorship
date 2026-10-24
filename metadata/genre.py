@@ -190,7 +190,26 @@ def ask_ollama(prompt: str, model: str, retries: int = 2) -> str:
                 found.append(match.group(1))
         if found:
             return ",".join(found[:2])
+        _log_parse_failure(model, text)
     return "PARSE_FAIL"
+
+
+PARSE_LOG = Path("logs/parse_failures.jsonl")
+
+
+def _log_parse_failure(model: str, raw: str) -> None:
+    """Record what an unparseable reply actually said.
+
+    Without this a PARSE_FAIL is undebuggable. Pass 2 returned 3,027 of them over 5,000 records
+    and left no evidence of why; re-running the same rows afterwards succeeded, so the cause was
+    transient and the run had thrown away the only thing that would have identified it.
+    """
+    try:
+        PARSE_LOG.parent.mkdir(parents=True, exist_ok=True)
+        with PARSE_LOG.open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps({"model": model, "raw": raw[:400]}, ensure_ascii=False) + "\n")
+    except Exception:  # noqa: BLE001
+        pass
 
 
 def ask_model(prompt: str, model: str = MODEL, retries: int = 2) -> str:
@@ -209,7 +228,8 @@ def ask_model(prompt: str, model: str = MODEL, retries: int = 2) -> str:
                 timeout=120,
                 stdin=subprocess.DEVNULL,
             )
-        except Exception:  # noqa: BLE001
+        except Exception as exc:  # noqa: BLE001
+            _log_parse_failure(model, f"<{type(exc).__name__}: {exc}>")
             continue
         text = done.stdout.strip().lower()
         if re.search(r"\buncertain\b", text) and not any(
@@ -223,6 +243,7 @@ def ask_model(prompt: str, model: str = MODEL, retries: int = 2) -> str:
                 found.append(match.group(1))
         if found:
             return ",".join(found[:2])
+        _log_parse_failure(model, text)
     return "PARSE_FAIL"
 
 
