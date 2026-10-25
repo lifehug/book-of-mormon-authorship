@@ -172,6 +172,12 @@ conversational, short sentences, concrete, no jargon.
   failure with no evidence cannot be diagnosed, and that run left none.
 - **Long jobs commit their output as they go**, on a timer rather than per checkpoint, so a
   disk failure cannot cost days of model time and the history stays readable.
+- **A finding that exists only in a chat window does not exist.** Before any pause — a restart, a
+  context limit, the end of a sitting — the state goes into the repo and onto the issue: what is
+  done, what remains, and anything measured along the way that would otherwise be lost. The issue
+  comment is what a later session reads when told to keep going, so it carries the next action
+  explicitly, not a summary of the past. `data/catalog/DEDUP.md` is the pattern: the dedup numbers
+  are the lesser half, the limitation they revealed is the result.
 - Commit messages end with the Claude co-author line the harness supplies.
 - **Local compute and disk are cheap; rented GPU is not.** Up to about a week of wall time for
   a job on the mini is acceptable, and the SSD has 1.6 TB free. Prefer the accurate approach
