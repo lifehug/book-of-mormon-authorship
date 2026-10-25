@@ -108,6 +108,68 @@ def extract(props: dict, page: int) -> dict:
     return rec
 
 
+def sections(records: list[dict], toc: list[dict]) -> list[dict]:
+    """Cut a document into its table-of-contents entries at their anchors (BOM-13).
+
+    Each TOC entry's ``linkID`` appears as ``<a name="...">`` in the page markup where the
+    entry begins; a section runs from its anchor to the next one, across page breaks. Text
+    before the first anchor is returned with ``link_id`` None. An entry whose anchor is not
+    found is returned with ``anchor_found`` False and no text, never dropped. The TOC ``date`` is
+    only the
+    start of the entry's period ("circa Early 1830" is ``1830-01-01``), so it is passed through
+    and never used to decide anything here.
+    """
+    pages = sorted(records, key=lambda r: r["page"])
+    starts = []  # (page index, offset, toc entry)
+    missing = []
+    for t in toc:
+        tag = f'<a name="{t["linkID"]}"'
+        for i, r in enumerate(pages):
+            off = r["clear_html"].find(tag)
+            if off >= 0:
+                starts.append((i, off, t))
+                break
+        else:
+            missing.append(t)
+    starts.sort(key=lambda s: (s[0], s[1]))
+    bounds = [(0, 0, None)] + starts + [(len(pages), 0, None)]
+    out = []
+    for (i0, o0, t), (i1, o1, _) in zip(bounds, bounds[1:], strict=False):
+        parts = []
+        for i in range(i0, min(i1, len(pages) - 1) + 1):
+            h = pages[i]["clear_html"]
+            lo = o0 if i == i0 else 0
+            hi = o1 if i == i1 else len(h)
+            parts.append(h[lo:hi])
+        text = clean_text("\n".join(p for p in parts if p))
+        if t is None and not text:
+            continue
+        out.append(
+            {
+                "link_id": t["linkID"] if t else None,
+                "title": html.unescape(t["pageTitle"]) if t else None,
+                "toc_date": t.get("date") if t else None,
+                "first_page": pages[i0]["page"] if i0 < len(pages) else None,
+                "anchor_found": True,
+                "text": text,
+                "words": len(text.split()),
+            }
+        )
+    for t in missing:
+        out.append(
+            {
+                "link_id": t["linkID"],
+                "title": html.unescape(t["pageTitle"]),
+                "toc_date": t.get("date"),
+                "first_page": None,
+                "anchor_found": False,
+                "text": None,
+                "words": None,
+            }
+        )
+    return out
+
+
 def run(doc: str, out_dir: Path, delay: float, limit: int | None) -> Path:
     slug = DOCS[doc]
     raw_dir = out_dir / "raw" / "jsp" / doc
