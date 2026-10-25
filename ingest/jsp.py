@@ -36,14 +36,16 @@ DOCS = {
 USER_AGENT = "bom-authorship-research/0.1 (+https://github.com/lifehug/book-of-mormon-authorship)"
 # Since October 2026 josephsmithpapers.org answers 404 to a self-identified research agent and
 # 200 to a browser, and its footer links the Church terms of use, which bar automated access.
-# On 2026-10-25 the owner chose to fetch with a browser User-Agent, requests a random 0.5 to
-# 1.5 s apart (BOM-13); the decision and the terms are recorded in docs/candidates.md. Other
-# hosts keep USER_AGENT.
+# On 2026-10-25 the owner chose to fetch with a browser User-Agent, requests a random 2.5 to
+# 7.5 s apart (BOM-13); the decision and the terms are recorded in docs/candidates.md. Other
+# hosts keep USER_AGENT. At a 1 s average the site began refusing pages with a 404 that cleared
+# minutes later, so JSP retries back off by minutes, not seconds.
 JSP_USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/129.0 Safari/537.36"
 )
-JSP_DELAY = 1.0
+JSP_DELAY = 5.0
+JSP_BACKOFF = 60.0
 NEXT_DATA_RE = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
 TAG_RE = re.compile(r"<[^>]+>")
 POPUP_RE = re.compile(r"<aside[^>]*>.*?</aside>", re.S)
@@ -54,7 +56,7 @@ KEEP = [
 ]  # fmt: skip
 
 
-def fetch(url: str, retries: int = 4, user_agent: str = USER_AGENT) -> str:
+def fetch(url: str, retries: int = 4, user_agent: str = USER_AGENT, backoff: float = 5.0) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": user_agent})
     for attempt in range(retries):
         try:
@@ -63,7 +65,7 @@ def fetch(url: str, retries: int = 4, user_agent: str = USER_AGENT) -> str:
         except Exception as exc:  # noqa: BLE001
             if attempt == retries - 1:
                 raise
-            time.sleep(5 * (attempt + 1))
+            time.sleep(backoff * (attempt + 1))
             print(f"retry {attempt + 1} for {url}: {exc}", file=sys.stderr)
     raise RuntimeError("unreachable")
 
@@ -114,7 +116,7 @@ def run(doc: str, out_dir: Path, delay: float, limit: int | None) -> Path:
     if first.exists():
         props = json.load(open(first, encoding="utf-8"))
     else:
-        props = page_props(fetch(f"{BASE}{slug}/1", user_agent=JSP_USER_AGENT))
+        props = page_props(fetch(f"{BASE}{slug}/1", user_agent=JSP_USER_AGENT, backoff=JSP_BACKOFF))
         json.dump(props, open(first, "w", encoding="utf-8"))
         pause(delay)
     total = int(props["summary"]["numberOfPages"])
@@ -128,7 +130,9 @@ def run(doc: str, out_dir: Path, delay: float, limit: int | None) -> Path:
         path = raw_dir / f"{page:04d}.json"
         if path.exists():
             continue
-        props = page_props(fetch(f"{BASE}{slug}/{page}", user_agent=JSP_USER_AGENT))
+        props = page_props(
+            fetch(f"{BASE}{slug}/{page}", user_agent=JSP_USER_AGENT, backoff=JSP_BACKOFF)
+        )
         json.dump(props, open(path, "w", encoding="utf-8"))
         if page % 25 == 0:
             print(f"  {doc} page {page}/{total}", flush=True)

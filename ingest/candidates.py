@@ -167,7 +167,11 @@ def fetch_jsp(entry: dict, out: Path, delay: float, max_pages: int | None, root:
         path = rdir / f"{n:04d}.json"
         if path.exists():
             return json.loads(path.read_text(encoding="utf-8"))
-        props = jsp.page_props(jsp.fetch(f"{jsp.BASE}{slug}/{n}", user_agent=jsp.JSP_USER_AGENT))
+        props = jsp.page_props(
+            jsp.fetch(
+                f"{jsp.BASE}{slug}/{n}", user_agent=jsp.JSP_USER_AGENT, backoff=jsp.JSP_BACKOFF
+            )
+        )
         path.write_text(json.dumps(props), encoding="utf-8")
         jsp.pause(delay)
         return props

@@ -81,8 +81,10 @@ link is the Church's general terms
 (<https://www.churchofjesuschrist.org/legal/terms-of-use>, updated 2021-04-13), which say not to
 "use any robot, spider, or other automatic device, process, or means to access this site for any
 purpose" and permit downloading "for your own personal, noncommercial use". Having read those
-terms, the owner chose to fetch with a browser User-Agent at requests a random 0.5 to 1.5 seconds
-apart, one a second on average (first set at 20 seconds, lowered by the owner the same day). The transcripts stay in the private repository and are never redistributed. The
+terms, the owner chose to fetch with a browser User-Agent at requests a random 2.5 to 7.5 seconds
+apart, five seconds on average. The delay was first 20 seconds, then lowered to an average of
+one second; at that pace the site began refusing pages (a 404 that cleared minutes later, twice
+in about 66 requests), so it was raised to five, with retries backing off by minutes. The transcripts stay in the private repository and are never redistributed. The
 BOM-05 manuscript transcripts were fetched by script from the same site, under the same terms,
 before the filter appeared. A written request for research permission to the Church History
 Department would put both on a firmer footing; that is the owner's to send.
