@@ -35,14 +35,14 @@ DOCS = {
 USER_AGENT = "bom-authorship-research/0.1 (+https://github.com/lifehug/book-of-mormon-authorship)"
 # Since October 2026 josephsmithpapers.org answers 404 to a self-identified research agent and
 # 200 to a browser, and its footer links the Church terms of use, which bar automated access.
-# On 2026-10-25 the owner chose to fetch with a browser User-Agent at 20 s between requests
+# On 2026-10-25 the owner chose to fetch with a browser User-Agent at 1 s between requests
 # (BOM-13); the decision and the terms are recorded in docs/candidates.md. Other hosts keep
 # USER_AGENT.
 JSP_USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/129.0 Safari/537.36"
 )
-JSP_DELAY = 20.0
+JSP_DELAY = 1.0
 NEXT_DATA_RE = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
 TAG_RE = re.compile(r"<[^>]+>")
 POPUP_RE = re.compile(r"<aside[^>]*>.*?</aside>", re.S)

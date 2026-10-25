@@ -81,8 +81,8 @@ link is the Church's general terms
 (<https://www.churchofjesuschrist.org/legal/terms-of-use>, updated 2021-04-13), which say not to
 "use any robot, spider, or other automatic device, process, or means to access this site for any
 purpose" and permit downloading "for your own personal, noncommercial use". Having read those
-terms, the owner chose to fetch with a browser User-Agent at one request every 20
-seconds. The transcripts stay in the private repository and are never redistributed. The
+terms, the owner chose to fetch with a browser User-Agent at one request a second (first set at
+20 seconds, lowered by the owner the same day). The transcripts stay in the private repository and are never redistributed. The
 BOM-05 manuscript transcripts were fetched by script from the same site, under the same terms,
 before the filter appeared. A written request for research permission to the Church History
 Department would put both on a firmer footing; that is the owner's to send.
