@@ -997,6 +997,55 @@ gets it with a pull.
 
 ## Log
 
+- **2026-10-24, night.** Dedup running, and three days of labelling behind me. Writing it down
+  while the machine chews through 185 GB.
+  Pass 1 finished: 282,462 records in 82 hours on the local Llama, 100% of the catalogue
+  covered. 7,040 came back as parse failures, which sounded alarming until I looked. 96% of them
+  are records with no text on disk — the prompt hands the model an empty excerpt and it replies,
+  reasonably, by asking for the missing text: *"To classify the work, I need to see the excerpt."*
+  Only 267 failures are records that actually have text, which is 0.05% of the corpus that can be
+  analysed at all. The no-text ones became `uncertain`, which is what Amendment 3 already says to
+  do when the evidence doesn't support any category — a record with no text has no evidence. That
+  needed no amendment, just reading the one we have.
+  Then pass 2, and a bad afternoon. I ran 5,000 records through Sonnet at eight workers, and 3,027
+  came back unparseable. I'd run out of subscription usage mid-run and every failed call got
+  written down as `PARSE_FAIL`, as though the model had considered the question and had no answer.
+  Re-running those same records the next day worked fine. So the data was durable and the
+  *failure* wasn't: a resume looked at 3,027 outage casualties and saw finished work. There's now
+  a separate `RETRY` state, and anything unparseable gets its raw text logged, because that run
+  left me nothing at all to diagnose — I found the cause by re-running rows by hand and watching
+  them succeed.
+  The first agreement figure came out at 7.4% and I nearly reported it. Two models that both score
+  97% against ground truth cannot disagree 93% of the time. Half of it was the outage. The other
+  half was me measuring the wrong thing.
+  Here's the part worth keeping. Sonnet kept giving one label where Llama gave two —
+  `newspaper_periodical,legal_political` against just `legal_political`. I was scoring that as
+  disagreement, which is daft: one model being more willing to add a second category isn't the
+  other being wrong. And Amendment 3 had already settled how to score it, back in October:
+  *"Analyses needing a single value use the primary; genre-matched control sets match on either."*
+  Two registered ways the label gets used, so two agreements that matter. I didn't invent a
+  kinder metric — I went back and read what we'd committed to.
+  Real numbers, then: **75.0%** agreement on the primary label, **84.8%** where the label sets
+  overlap at all, and **15.2%** outright contradiction where the two share no label and one of
+  them is simply wrong. Chronicling America is 98.4% and 1.1%, which is the sanity check passing —
+  both models know a newspaper when they see one. The damage concentrates: sermons 2.5%
+  contradiction, scientific works 2.6%, but `other` at 37.4%. That category is behaving as a
+  dustbin despite the prompt explicitly telling the model to prefer a specific label, and early
+  modern English from the 1640s runs 22-25% against the 1820s' 7%. Worth knowing before anything
+  gets built on these labels.
+  Two mistakes today, both mine, both caught by Dave. I estimated the dedup run at 25-35 minutes
+  and it's 2.6 hours — I'd benchmarked on ten documents picked at random, averaging 390 KB, when
+  an Institutional Books volume is 1.4 MB and a newspaper page is 26 KB. Documents vary forty-fold
+  in size; counting them tells you nothing. Measure the bytes.
+  And the one I'm least pleased about. I declined to put the validation excerpts on a hosted page
+  because thirty of the three hundred records are Harvard's, whose licence says no
+  redistribution. Then I committed the same 131,000 characters to the public repo about two
+  minutes later. Dave asked whether it was in git. It was. What's committed now is an index —
+  which records, which categories, what each model said — and I checked that the excerpts
+  regenerate byte-identically from the record ids alone, fifty out of fifty. So it's still fully
+  replicable by anyone with their own copy of the texts, which is the only way they could
+  lawfully have them anyway.
+
 - **2026-10-20, night.** I told Dave the project wasn't replicable because the corpus can't be
   redistributed, and he told me I was wrong. He was right. The bar I was using — can anyone
   download the bytes — isn't the bar anyone else uses. Clinical trials, census microdata, UK
