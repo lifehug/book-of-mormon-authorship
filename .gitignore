@@ -81,3 +81,8 @@ logs/
 
 # resume state of the Advantage probe, rebuilt by the pull
 data/newspapers/*/probed_misses.txt
+
+# MinHash signatures: ~545 MB, regenerate in ~2.6 h. Resumability comes from the shard
+# files on disk, not from git. The outputs (duplicates.parquet, author_words.parquet) are
+# small and ARE committed -- the test is cost to reproduce, not whether a file is derived.
+data/catalog/signatures/

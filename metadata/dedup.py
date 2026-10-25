@@ -1,0 +1,357 @@
+"""Near-duplicate detection and per-author word counts (BOM-12).
+
+Pre-registration 4.3: *"Reprints and later editions are collapsed to the earliest edition by
+MinHash similarity above 0.8 on 5-gram shingles."* Every parameter comes from
+``corpus.dedup`` in the config; none is hard-coded here.
+
+**Nothing is deleted.** Duplicates are labelled, with each group's earliest member marked as the
+keeper, because `CLAUDE.md` says flag rather than delete and because BOM-40's multiverse varies
+corpus-level choices, which is impossible if an earlier stage has already thrown rows away.
+Stages that want one row per work filter on ``is_keeper`` themselves.
+
+**No model is involved.** MinHash is a deterministic estimator: same input and seed, same output,
+always. Nothing is trained, so 4.2's sealing of the Book of Mormon does not arise. Deterministic
+is not the same as exact -- signature agreement estimates Jaccard with error around 1/sqrt(perms)
+-- but it errs identically on every run, which is what reproducibility needs.
+
+**One pass, not two.** Word counts and signatures are computed together while a document is in
+memory. Both stages would otherwise read the same ~150-200 GB, and the word count is nearly free
+because it is I/O-bound while hashing is CPU-bound.
+
+Shingles are hashed in a stream with a running minimum per permutation, rather than materialised
+as a set. A large Internet Archive item can carry 500,000 shingles, and eight workers each
+holding one would not fit in 16 GB.
+
+Measured on the mini (10 cores): read and count at 113 MB/s, signatures at about 0.02s a
+document, so roughly 25-35 minutes for the corpus across 8 workers.
+
+Usage::
+
+    python -m metadata.dedup signatures          # the parallel pass, resumable by shard
+    python -m metadata.dedup pairs               # LSH over the signatures, writes duplicates
+    python -m metadata.dedup authors             # word counts per normalised author
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import sys
+import time
+from collections import defaultdict
+from concurrent.futures import ProcessPoolExecutor
+from pathlib import Path
+
+import numpy as np
+import pyarrow as pa
+import pyarrow.parquet as pq
+
+from metadata.config import load as load_config
+from metadata.config import sha256_of_config
+
+CATALOG = Path("data/catalog/catalog.parquet")
+SIG_DIR = Path("data/catalog/signatures")
+DUPES = Path("data/catalog/duplicates.parquet")
+AUTHORS = Path("data/catalog/author_words.parquet")
+
+PERMS = 128
+SHARD = 5000
+_MERSENNE = (1 << 61) - 1
+
+SIG_SCHEMA = pa.schema(
+    [
+        ("work_id", pa.string()),
+        ("words", pa.int64()),
+        ("chars", pa.int64()),
+        ("shingles", pa.int64()),
+        ("signature", pa.list_(pa.int64(), PERMS)),
+    ]
+)
+
+DUPE_SCHEMA = pa.schema(
+    [
+        ("work_id", pa.string()),
+        ("group_id", pa.int64()),
+        ("group_size", pa.int64()),
+        ("is_keeper", pa.bool_()),
+        ("best_similarity", pa.float64()),
+    ]
+)
+
+
+def _permutations() -> tuple[np.ndarray, np.ndarray]:
+    """Fixed hash permutations. Seeded from the config so a rerun reproduces them exactly."""
+    rs = np.random.RandomState(load_config()["seed"] % (2**32))
+    a = rs.randint(1, _MERSENNE, PERMS, dtype=np.int64)
+    b = rs.randint(0, _MERSENNE, PERMS, dtype=np.int64)
+    return a, b
+
+
+def signature_of(text: str, k: int, a: np.ndarray, b: np.ndarray) -> tuple[np.ndarray, int, int]:
+    """MinHash signature, word count and shingle count, in one streaming pass."""
+    words = text.split()
+    n = len(words)
+    if n < k:
+        return np.full(PERMS, _MERSENNE, dtype=np.int64), n, 0
+    best = np.full(PERMS, _MERSENNE, dtype=np.int64)
+    batch: list[int] = []
+    shingles = n - k + 1
+    for i in range(shingles):
+        s = " ".join(words[i : i + k]).encode("utf-8", "replace")
+        batch.append(int.from_bytes(hashlib.blake2b(s, digest_size=8).digest(), "big") & 0x7FFFFFFF)
+        if len(batch) >= 4096:
+            h = np.array(batch, dtype=np.int64)
+            np.minimum(
+                best, ((a[:, None] * h[None, :] + b[:, None]) % _MERSENNE).min(axis=1), out=best
+            )
+            batch.clear()
+    if batch:
+        h = np.array(batch, dtype=np.int64)
+        np.minimum(best, ((a[:, None] * h[None, :] + b[:, None]) % _MERSENNE).min(axis=1), out=best)
+    return best, n, shingles
+
+
+def _do_shard(job: tuple[int, list[tuple[str, str]], int]) -> tuple[int, int]:
+    """Worker: one shard of (work_id, path) to one parquet file. Idempotent."""
+    idx, items, k = job
+    out = SIG_DIR / f"{idx:05d}.parquet"
+    if out.exists():
+        return idx, 0
+    a, b = _permutations()
+    rows = []
+    for work_id, path in items:
+        try:
+            text = Path(path).read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        sig, words, shingles = signature_of(text, k, a, b)
+        rows.append(
+            {
+                "work_id": work_id,
+                "words": words,
+                "chars": len(text),
+                "shingles": shingles,
+                "signature": sig.tolist(),
+            }
+        )
+    tmp = out.with_suffix(".parquet.tmp")
+    pq.write_table(
+        pa.Table.from_pylist(rows, schema=SIG_SCHEMA).replace_schema_metadata(
+            {"config_sha256": sha256_of_config()}
+        ),
+        tmp,
+    )
+    tmp.replace(out)
+    return idx, len(rows)
+
+
+def signatures(workers: int, limit: int | None) -> int:
+    cfg = load_config()
+    k = cfg["corpus"]["dedup"]["shingle"]
+    rows = [r for r in pq.read_table(CATALOG).to_pylist() if r["has_text"]]
+    if limit:
+        rows = rows[:limit]
+    SIG_DIR.mkdir(parents=True, exist_ok=True)
+    jobs = []
+    for i in range(0, len(rows), SHARD):
+        chunk = [(r["work_id"], r["text_path"]) for r in rows[i : i + SHARD]]
+        jobs.append((i // SHARD, chunk, k))
+    todo = [j for j in jobs if not (SIG_DIR / f"{j[0]:05d}.parquet").exists()]
+    print(f"{len(rows):,} docs, {len(jobs):,} shards, {len(todo):,} to do, {workers} workers")
+    if not todo:
+        return 0
+    start = time.time()
+    done = 0
+    with ProcessPoolExecutor(max_workers=workers) as pool:
+        for _idx, _n in pool.map(_do_shard, todo):
+            done += 1
+            if done % 5 == 0 or done == len(todo):
+                el = time.time() - start
+                left = (len(todo) - done) * el / done / 60
+                print(
+                    f"  {done}/{len(todo)} shards  {el / 60:.1f}m elapsed  ~{left:.0f}m left",
+                    flush=True,
+                )
+    print(f"signatures written to {SIG_DIR}")
+    return 0
+
+
+def _load_signatures() -> tuple[list[str], np.ndarray]:
+    files = sorted(SIG_DIR.glob("*.parquet"))
+    if not files:
+        raise SystemExit(f"no signatures under {SIG_DIR}; run `signatures` first")
+    ids: list[str] = []
+    sigs: list[np.ndarray] = []
+    for f in files:
+        t = pq.read_table(f)
+        ids.extend(t.column("work_id").to_pylist())
+        sigs.append(np.array(t.column("signature").to_pylist(), dtype=np.int64))
+    return ids, np.vstack(sigs)
+
+
+def pairs(bucket_cap: int) -> int:
+    """LSH over the signatures, then an exact signature check at the registered threshold.
+
+    LSH is tuned for recall rather than precision -- 16 bands of 8 rows catches pairs from about
+    0.71 similarity upward -- and every candidate is then verified against the real threshold.
+    Buckets larger than ``bucket_cap`` are reported and skipped rather than silently dropped;
+    newspaper pages share enough boilerplate to produce very large buckets.
+    """
+    cfg = load_config()
+    thresh = cfg["corpus"]["dedup"]["threshold"]
+    ids, sigs = _load_signatures()
+    print(f"{len(ids):,} signatures loaded, threshold {thresh}")
+
+    bands, rows_per = 16, PERMS // 16
+    candidates: set[tuple[int, int]] = set()
+    skipped = 0
+    for band in range(bands):
+        block = sigs[:, band * rows_per : (band + 1) * rows_per]
+        buckets: dict[bytes, list[int]] = defaultdict(list)
+        for i, row in enumerate(block):
+            buckets[row.tobytes()].append(i)
+        for members in buckets.values():
+            if len(members) < 2:
+                continue
+            if len(members) > bucket_cap:
+                skipped += 1
+                continue
+            for x in range(len(members)):
+                for y in range(x + 1, len(members)):
+                    candidates.add((members[x], members[y]))
+    print(f"{len(candidates):,} candidate pairs; {skipped:,} buckets over cap {bucket_cap:,}")
+
+    # Union-find over verified pairs.
+    parent = list(range(len(ids)))
+
+    def find(x: int) -> int:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    verified = 0
+    best: dict[int, float] = defaultdict(float)
+    for i, j in candidates:
+        sim = float((sigs[i] == sigs[j]).mean())
+        if sim >= thresh:
+            verified += 1
+            best[i] = max(best[i], sim)
+            best[j] = max(best[j], sim)
+            ri, rj = find(i), find(j)
+            if ri != rj:
+                parent[ri] = rj
+    print(f"{verified:,} pairs at or above {thresh}")
+
+    groups: dict[int, list[int]] = defaultdict(list)
+    for i in range(len(ids)):
+        r = find(i)
+        if best[i]:
+            groups[r].append(i)
+
+    cat = {r["work_id"]: r for r in pq.read_table(CATALOG).to_pylist()}
+    out = []
+    for gid, (_, members) in enumerate(sorted(groups.items())):
+        if len(members) < 2:
+            continue
+        keeper = min(members, key=lambda i: (cat[ids[i]]["year"] or 9999, ids[i]))
+        for i in members:
+            out.append(
+                {
+                    "work_id": ids[i],
+                    "group_id": gid,
+                    "group_size": len(members),
+                    "is_keeper": i == keeper,
+                    "best_similarity": best[i],
+                }
+            )
+    pq.write_table(
+        pa.Table.from_pylist(out, schema=DUPE_SCHEMA).replace_schema_metadata(
+            {"config_sha256": sha256_of_config()}
+        ),
+        DUPES,
+    )
+    ngroups = len({r["group_id"] for r in out})
+    print(f"{ngroups:,} duplicate groups covering {len(out):,} works -> {DUPES}")
+    print(f"nothing deleted; {len(out) - ngroups:,} rows are non-keepers and are flagged only")
+    return 0
+
+
+def authors() -> int:
+    """Word counts per normalised author, so BOM-39 has units with known sample sizes."""
+    ids, _ = _load_signatures()
+    words: dict[str, int] = {}
+    for f in sorted(SIG_DIR.glob("*.parquet")):
+        t = pq.read_table(f, columns=["work_id", "words"])
+        ws = t.column("work_id").to_pylist()
+        ns = t.column("words").to_pylist()
+        for wid, n in zip(ws, ns, strict=True):
+            words[wid] = n
+    cat = [r for r in pq.read_table(CATALOG).to_pylist() if r["has_text"]]
+    keep = set()
+    if DUPES.exists():
+        d = pq.read_table(DUPES).to_pylist()
+        drop = {r["work_id"] for r in d if not r["is_keeper"]}
+        keep = {r["work_id"] for r in cat} - drop
+        print(f"excluding {len(drop):,} flagged non-keepers from author totals")
+    else:
+        keep = {r["work_id"] for r in cat}
+        print("no duplicates file yet; author totals include every work", file=sys.stderr)
+
+    agg: dict[str, dict] = {}
+    for r in cat:
+        if r["work_id"] not in keep or not r["author_norm"]:
+            continue
+        a = agg.setdefault(r["author_norm"], {"works": 0, "words": 0, "earliest": None})
+        a["works"] += 1
+        a["words"] += words.get(r["work_id"], 0)
+        y = r["year"]
+        if y and (a["earliest"] is None or y < a["earliest"]):
+            a["earliest"] = y
+    out = [
+        {"author_norm": k, "works": v["works"], "words": v["words"], "earliest_year": v["earliest"]}
+        for k, v in sorted(agg.items(), key=lambda kv: -kv[1]["words"])
+    ]
+    schema = pa.schema(
+        [
+            ("author_norm", pa.string()),
+            ("works", pa.int64()),
+            ("words", pa.int64()),
+            ("earliest_year", pa.int32()),
+        ]
+    )
+    pq.write_table(
+        pa.Table.from_pylist(out, schema=schema).replace_schema_metadata(
+            {"config_sha256": sha256_of_config()}
+        ),
+        AUTHORS,
+    )
+    big = sum(1 for r in out if r["words"] >= 10000)
+    print(f"{len(out):,} normalised authors -> {AUTHORS}")
+    print(f"{big:,} have 10,000+ words (section 3's reliable-sample floor)")
+    for r in out[:8]:
+        print(f"  {r['words']:>12,}  {r['works']:>5} works  {r['author_norm'][:50]}")
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    s = sub.add_parser("signatures")
+    s.add_argument("--workers", type=int, default=8)
+    s.add_argument("--limit", type=int)
+    p = sub.add_parser("pairs")
+    p.add_argument("--bucket-cap", type=int, default=2000)
+    sub.add_parser("authors")
+    a = ap.parse_args(argv)
+    if a.cmd == "signatures":
+        return signatures(a.workers, a.limit)
+    if a.cmd == "pairs":
+        return pairs(a.bucket_cap)
+    if a.cmd == "authors":
+        return authors()
+    return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
