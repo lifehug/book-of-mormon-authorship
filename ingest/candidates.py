@@ -169,7 +169,7 @@ def fetch_jsp(entry: dict, out: Path, delay: float, max_pages: int | None, root:
             return json.loads(path.read_text(encoding="utf-8"))
         props = jsp.page_props(jsp.fetch(f"{jsp.BASE}{slug}/{n}", user_agent=jsp.JSP_USER_AGENT))
         path.write_text(json.dumps(props), encoding="utf-8")
-        time.sleep(delay)
+        jsp.pause(delay)
         return props
 
     total = int(page(1)["summary"]["numberOfPages"])
