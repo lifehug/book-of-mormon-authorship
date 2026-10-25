@@ -92,3 +92,15 @@ def test_label_run_checkpoints_rather_than_writing_once():
     src = (genre.Path("metadata/genre.py")).read_text()
     assert "checkpoint_every" in src
     assert "tmp.replace(OUT)" in src, "checkpoint write must be atomic"
+
+
+def test_session_limit_reply_is_transient_not_an_answer():
+    # Pass 2 recorded 1,080 of these as PARSE_FAIL on 2026-10-24 because the pattern only
+    # knew "usage limit".
+    for reply in [
+        "you've hit your session limit · resets 9:30pm (america/los_angeles)",
+        "You've hit your usage limit",
+        "Claude AI usage limit reached",
+    ]:
+        assert genre._TRANSIENT.search(reply), reply
+    assert not genre._TRANSIENT.search("sermon_religious, history_chronicle")
