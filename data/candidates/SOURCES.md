@@ -61,6 +61,6 @@ averaging `ingest.jsp.JSP_DELAY` and retries that back off by minutes; why, and 
 involved, are in `docs/candidates.md` (Joseph Smith, "How these were obtained"). Measured on
 2026-10-25: at a 1 s average the site refused pages after about 26 and 66 requests; at 5 s it
 blocked the address after about 165 requests (roughly 14 minutes), longer than six minutes of
-retries; how long the block lasts is not yet known. Expect to
-resume a full rebuild across several sittings. The fetcher skips any output already on disk.
+retries. The block began about 11:20 PDT and hourly probes still got 404 at 12:35, 13:35,
+14:35 and 15:35, so it lasts more than four hours. Expect to resume a full rebuild across several sittings. The fetcher skips any output already on disk.
 `--id` picks single sources; `--max-pages N` caps Joseph Smith Papers documents while testing.
