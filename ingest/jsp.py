@@ -33,6 +33,16 @@ DOCS = {
     "original": "original-manuscript-of-the-book-of-mormon-circa-12-april-1828-circa-1-july-1829",
 }
 USER_AGENT = "bom-authorship-research/0.1 (+https://github.com/lifehug/book-of-mormon-authorship)"
+# Since October 2026 josephsmithpapers.org answers 404 to a self-identified research agent and
+# 200 to a browser, and its footer links the Church terms of use, which bar automated access.
+# On 2026-10-25 the owner chose to fetch with a browser User-Agent at 20 s between requests
+# (BOM-13); the decision and the terms are recorded in docs/candidates.md. Other hosts keep
+# USER_AGENT.
+JSP_USER_AGENT = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/129.0 Safari/537.36"
+)
+JSP_DELAY = 20.0
 NEXT_DATA_RE = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
 TAG_RE = re.compile(r"<[^>]+>")
 POPUP_RE = re.compile(r"<aside[^>]*>.*?</aside>", re.S)
@@ -43,8 +53,8 @@ KEEP = [
 ]  # fmt: skip
 
 
-def fetch(url: str, retries: int = 4) -> str:
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+def fetch(url: str, retries: int = 4, user_agent: str = USER_AGENT) -> str:
+    req = urllib.request.Request(url, headers={"User-Agent": user_agent})
     for attempt in range(retries):
         try:
             with urllib.request.urlopen(req, timeout=60) as r:
@@ -98,7 +108,7 @@ def run(doc: str, out_dir: Path, delay: float, limit: int | None) -> Path:
     if first.exists():
         props = json.load(open(first, encoding="utf-8"))
     else:
-        props = page_props(fetch(f"{BASE}{slug}/1"))
+        props = page_props(fetch(f"{BASE}{slug}/1", user_agent=JSP_USER_AGENT))
         json.dump(props, open(first, "w", encoding="utf-8"))
         time.sleep(delay)
     total = int(props["summary"]["numberOfPages"])
@@ -112,7 +122,7 @@ def run(doc: str, out_dir: Path, delay: float, limit: int | None) -> Path:
         path = raw_dir / f"{page:04d}.json"
         if path.exists():
             continue
-        props = page_props(fetch(f"{BASE}{slug}/{page}"))
+        props = page_props(fetch(f"{BASE}{slug}/{page}", user_agent=JSP_USER_AGENT))
         json.dump(props, open(path, "w", encoding="utf-8"))
         if page % 25 == 0:
             print(f"  {doc} page {page}/{total}", flush=True)
@@ -130,7 +140,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("doc", choices=sorted(DOCS))
     ap.add_argument("--out", type=Path, default=Path("data/private/bom"))
-    ap.add_argument("--delay", type=float, default=1.5, help="seconds between requests")
+    ap.add_argument("--delay", type=float, default=JSP_DELAY, help="seconds between requests")
     ap.add_argument("--limit", type=int, help="fetch only the first N pages (testing)")
     a = ap.parse_args(argv)
     run(a.doc, a.out, a.delay, a.limit)

@@ -49,8 +49,16 @@ PASS2 = Path("data/catalog/genre_pass2.parquet")
 INDEX = Path("data/catalog/validation_index.json")
 SAMPLE = Path("data/catalog/validation_sample.json")
 PAGE = Path("data/catalog/validation.html")
-PUBLIC_FIELDS = ("work_id", "stratum", "population", "source", "year", "pass1", "pass2",
-                 "decided_by")
+PUBLIC_FIELDS = (
+    "work_id",
+    "stratum",
+    "population",
+    "source",
+    "year",
+    "pass1",
+    "pass2",
+    "decided_by",
+)
 
 # Stratum -> share of the 300. Fixed here before the sample is drawn.
 PLAN = {

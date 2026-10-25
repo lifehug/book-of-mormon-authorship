@@ -167,7 +167,7 @@ def fetch_jsp(entry: dict, out: Path, delay: float, max_pages: int | None, root:
         path = rdir / f"{n:04d}.json"
         if path.exists():
             return json.loads(path.read_text(encoding="utf-8"))
-        props = jsp.page_props(jsp.fetch(f"{jsp.BASE}{slug}/{n}"))
+        props = jsp.page_props(jsp.fetch(f"{jsp.BASE}{slug}/{n}", user_agent=jsp.JSP_USER_AGENT))
         path.write_text(json.dumps(props), encoding="utf-8")
         time.sleep(delay)
         return props
@@ -200,7 +200,7 @@ def select(
 def run(
     entries: list[dict],
     root: Path = Path("."),
-    delay: float = 2.0,
+    delay: float = jsp.JSP_DELAY,
     limit: int | None = None,
     max_pages: int | None = None,
 ) -> list[Path]:
@@ -232,7 +232,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--public-only", action="store_true", help="skip private sources")
     ap.add_argument("--limit", type=int, help="fetch at most N new sources")
     ap.add_argument("--max-pages", type=int, help="JSP: fetch only the first N pages (testing)")
-    ap.add_argument("--delay", type=float, default=2.0, help="seconds between requests")
+    ap.add_argument("--delay", type=float, default=jsp.JSP_DELAY, help="seconds between requests")
     ap.add_argument("--check", action="store_true", help="validate the manifest and exit")
     a = ap.parse_args(argv)
     entries = load_manifest(a.manifest)

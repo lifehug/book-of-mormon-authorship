@@ -74,6 +74,19 @@ handwritten sample is small: everything in his own hand that survives from 1831-
 How to fetch: `uv run python -m ingest.candidates --id <id>` (writes
 `data/private/candidates/<id>.jsonl`; needs `data/private/`).
 
+**How these were obtained (recorded 2026-10-25).** By October 2026 josephsmithpapers.org
+answered 404 to the project's self-identifying User-Agent and served pages normally to a
+browser. The site publishes no rate-limit policy and no robots.txt; its footer's Terms of Use
+link is the Church's general terms
+(<https://www.churchofjesuschrist.org/legal/terms-of-use>, updated 2021-04-13), which say not to
+"use any robot, spider, or other automatic device, process, or means to access this site for any
+purpose" and permit downloading "for your own personal, noncommercial use". Having read those
+terms, the owner chose to fetch with a browser User-Agent at one request every 20
+seconds. The transcripts stay in the private repository and are never redistributed. The
+BOM-05 manuscript transcripts were fetched by script from the same site, under the same terms,
+before the filter appeared. A written request for research permission to the Church History
+Department would put both on a firmer footing; that is the owner's to send.
+
 **Do not use:**
 
 - *Preface to the Book of Mormon* (1829, JSP `preface-to-book-of-mormon-circa-august-1829`) and
