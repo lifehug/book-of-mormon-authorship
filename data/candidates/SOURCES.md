@@ -31,13 +31,18 @@ Internet Archive item's OCR file is not named `<identifier>_djvu.txt`).
   rights field on these Church History Library scans says "Copyright by Intellectual Reserve".
   They are kept private to be safe; this can be revisited.
 
-## What is on disk now
+## What is on disk now (2026-10-25)
 
-Only a fetch test (`--limit 2`, public items) has been run:
-
-- `text/sr-1838-oration.txt`: IA `orationdelivered01rigd`, 37,034 bytes, 5,621 OCR tokens.
-- `text/ss-manuscript-story-1885.txt`: IA `themanuscriptsto00spauuoft`, 294,440 bytes,
-  44,279 OCR tokens (includes the 1885 publisher's correspondence, to be stripped).
+- **Internet Archive, all 19** (17 public in `text/`, 2 private): fetched 2026-10-15 (two) and
+  2026-10-25 (the rest), 0 retries. 1,669,363 raw OCR tokens in all; per-file counts are in
+  `docs/candidates.md` once the candidate table is built. The two periodical runs
+  (`oc-messenger-advocate`, `wwp-evening-morning-star`) are whole runs; only signed items will
+  enter a sample.
+- **Joseph Smith Papers, 10 of 16 complete** (private repo): Revelation Book 1 (201 pages), the
+  1832 history and all eight letters. Journal 1832-1834 has 16 of 106 pages; Letterbook 1 and
+  the three Cowdery 1829 documents are not yet fetched; `oc-1834-history-jsp` (witness copy)
+  is deferred. The fetch stopped when the site blocked this machine (see below) and resumes
+  from the raw pages on disk.
 
 Raw OCR is kept as delivered; cleaning, quotation stripping and KJV masking are later steps
 (BOM-14 to BOM-16).
@@ -50,6 +55,12 @@ uv run python -m ingest.candidates                        # also private (needs 
 uv run python -m metadata.manifest build data/candidates -o data/manifests/candidates.jsonl
 ```
 
-The fetcher sends a `bom-authorship-research` user agent, waits 2 seconds between requests
-(`--delay`), and skips any output file already on disk. `--id` picks single sources;
-`--max-pages N` caps Joseph Smith Papers documents while testing.
+Internet Archive requests send a `bom-authorship-research` user agent with a fixed delay
+(`--delay`). Joseph Smith Papers requests send a browser user agent with a random delay
+averaging `ingest.jsp.JSP_DELAY` and retries that back off by minutes; why, and the site terms
+involved, are in `docs/candidates.md` (Joseph Smith, "How these were obtained"). Measured on
+2026-10-25: at a 1 s average the site refused pages after about 26 and 66 requests; at 5 s it
+blocked the address after about 165 requests (roughly 14 minutes), longer than six minutes of
+retries; how long the block lasts is not yet known. Expect to
+resume a full rebuild across several sittings. The fetcher skips any output already on disk.
+`--id` picks single sources; `--max-pages N` caps Joseph Smith Papers documents while testing.
