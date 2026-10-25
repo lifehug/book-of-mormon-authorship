@@ -86,3 +86,10 @@ data/newspapers/*/probed_misses.txt
 # files on disk, not from git. The outputs (duplicates.parquet, author_words.parquet) are
 # small and ARE committed -- the test is cost to reproduce, not whether a file is derived.
 data/catalog/signatures/
+
+# The validation page and sample carry 700-char excerpts, 30 of them Harvard Institutional
+# Books (noncommercial, no redistribution) and many Internet Archive items whose rights vary.
+# validation_index.json is committed instead: ids, strata and labels, enough to redraw the
+# identical sample from a corpus copy. Regenerate the page with `metadata.validation build`.
+data/catalog/validation.html
+data/catalog/validation_sample.json

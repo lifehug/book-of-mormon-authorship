@@ -41,8 +41,16 @@ from metadata.genre_pass2 import compare
 CATALOG = Path("data/catalog/catalog.parquet")
 GENRE = Path("data/catalog/genre.parquet")
 PASS2 = Path("data/catalog/genre_pass2.parquet")
+# The sample INDEX is public: work ids, strata, and both model labels, which is everything a
+# replicator needs to redraw the identical sample. The excerpts are NOT. Thirty of the 300
+# records are Harvard Institutional Books, whose terms are noncommercial and no redistribution,
+# and Internet Archive item rights vary and are not re-checked here. The page that carries the
+# text is built locally and gitignored; `build` regenerates it from a corpus copy in seconds.
+INDEX = Path("data/catalog/validation_index.json")
 SAMPLE = Path("data/catalog/validation_sample.json")
 PAGE = Path("data/catalog/validation.html")
+PUBLIC_FIELDS = ("work_id", "stratum", "population", "source", "year", "pass1", "pass2",
+                 "decided_by")
 
 # Stratum -> share of the 300. Fixed here before the sample is drawn.
 PLAN = {
@@ -101,12 +109,17 @@ def build() -> int:
             )
     rng.shuffle(picked)  # so a sitting is not all one stratum
     SAMPLE.write_text(json.dumps(picked, ensure_ascii=False, indent=1), encoding="utf-8")
+    INDEX.write_text(
+        json.dumps([{k: r[k] for k in PUBLIC_FIELDS} for r in picked], indent=1),
+        encoding="utf-8",
+    )
     PAGE.write_text(render(picked), encoding="utf-8")
     print(f"{len(picked)} records -> {SAMPLE}")
     for k in PLAN:
         n = sum(1 for r in picked if r["stratum"] == k)
         print(f"  {k:<18}{n:>4}  of {pools[k] and len(pools[k]) or 0:>8,} in the corpus")
-    print(f"page -> {PAGE}")
+    print(f"page -> {PAGE}  (local only)")
+    print(f"index -> {INDEX}  (committed; no text)")
     return 0
 
 
