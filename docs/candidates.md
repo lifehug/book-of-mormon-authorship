@@ -74,6 +74,34 @@ handwritten sample is small: everything in his own hand that survives from 1831-
 How to fetch: `uv run python -m ingest.candidates --id <id>` (writes
 `data/private/candidates/<id>.jsonl`; needs `data/private/`).
 
+### Inclusion rule for Revelation Book 1 (BOM-13, written 2026-10-25)
+
+Written before any per-revelation word count was taken. Preregistration section 3 says only
+"early revelations", and the sample is small enough that these choices decide it.
+
+**What was known when this was written:** the pre-1830 revelations sit on site pages 3-13, which
+together hold 4,373 words of transcript. Whole leaves are lost: the editorial page numbers jump
+2, 11, 23, 27. Nothing narrower than whole pages had been counted.
+
+1. **Unit.** A text is one table-of-contents entry, cut at its anchor in the page markup (the
+   TOC `linkID` appears as `<a name="...">` where the entry begins). Cuts fall inside pages,
+   never only at page breaks.
+2. **Date.** Pre-1830 means the TOC date falls before 26 March 1830, when the Book of Mormon
+   went on sale. An entry whose date cannot be placed wholly before that day is not pre-1830;
+   *Revelation, circa Early 1830* is therefore post-1830.
+3. **Author.** *Articles of the Church of Christ, June 1829* is Oliver Cowdery's composition, in
+   his hand. It is not Joseph Smith's text and enters Cowdery's sample (source
+   `oc-1829-06-articles`), never Joseph Smith's.
+4. **Content claims do not decide inclusion.** *Account of John, April 1829-C* [D&C 7] presents
+   itself as a translation of a parchment. Every revelation here claims a source outside the
+   speaker; dropping one for what it says it is would be a judgment about content, which this
+   project does not make. It is included like the others.
+5. **Provenance.** All of these are dictated texts in later copies (John Whitmer and others, 1831-1835), so they
+   are the *dictated* sample, never the handwritten one. Copying error and Whitmer's spelling
+   are inherited; spelling normalisation (BOM-15) and KJV masking (BOM-16) still apply.
+6. **Material within an entry is not trimmed here.** Quoted scripture is removed by KJV masking,
+   not by hand.
+
 **How these were obtained (recorded 2026-10-25).** By October 2026 josephsmithpapers.org
 answered 404 to the project's self-identifying User-Agent and served pages normally to a
 browser. The site publishes no rate-limit policy and no robots.txt; its footer's Terms of Use
