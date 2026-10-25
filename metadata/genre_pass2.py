@@ -79,9 +79,38 @@ def ambiguous(label: str | None) -> bool:
     return label == "uncertain" or "," in (label or "")
 
 
+def _labels(v: str | None) -> list[str]:
+    return [x.strip() for x in (v or "").split(",") if x.strip()]
+
+
 def agree(a: str | None, b: str | None) -> bool:
-    """Labels agree when their label *sets* match; order carries primacy, not identity."""
-    return {x.strip() for x in (a or "").split(",")} == {x.strip() for x in (b or "").split(",")}
+    """Exact set match. Reported, but it is not the headline -- see ``compare``."""
+    return set(_labels(a)) == set(_labels(b))
+
+
+def compare(a: str | None, b: str | None) -> str:
+    """One of ``exact``, ``primary``, ``overlap``, ``contradict``.
+
+    The measures are not chosen to flatter the result; they fall out of Amendment 3 Change 1,
+    written weeks before any of these numbers existed: *"Analyses needing a single value use the
+    primary; genre-matched control sets (BOM-18) match on either."* So there are two registered
+    ways a label is consumed, and therefore two agreements that matter.
+
+    ``exact``       the label sets are identical
+    ``primary``     the primary labels match but the sets differ -- one model added a second
+                    category the other did not. Agrees for every single-value analysis, and
+                    agrees for control matching too, since those match on either
+    ``overlap``     the sets intersect but the primaries differ. Disagrees for single-value
+                    work, agrees for control-set membership
+    ``contradict``  no shared label at all. One of the two is wrong, and this is the only
+                    measure that is an error rate rather than a difference in specificity
+    """
+    sa, sb = _labels(a), _labels(b)
+    if set(sa) == set(sb):
+        return "exact"
+    if not (set(sa) & set(sb)):
+        return "contradict"
+    return "primary" if sa and sb and sa[0] == sb[0] else "overlap"
 
 
 def build_sample(cfg: dict) -> list[dict]:
@@ -272,39 +301,43 @@ def _ci(k: int, n: int) -> str:
 
 
 def report() -> int:
-    rows = [r for r in pq.read_table(OUT).to_pylist() if r["pass2"]]
+    """Agreement per registered use, per stratum. Local computation; no model calls."""
+    rows = [r for r in pq.read_table(OUT).to_pylist() if r["pass2"] and r["pass2"] != "PARSE_FAIL"]
     if not rows:
         print("nothing labelled yet", file=sys.stderr)
         return 1
-    ok = sum(agree(r["pass1"], r["pass2"]) for r in rows)
-    print(f"\noverall agreement   {ok:,}/{len(rows):,}   {_ci(ok, len(rows))}")
 
+    def summarise(b: list[dict]) -> str:
+        if not b:
+            return "-"
+        k = collections.Counter(compare(r["pass1"], r["pass2"]) for r in b)
+        n = len(b)
+        single = (k["exact"] + k["primary"]) / n  # single-value analyses: primary governs
+        either = (k["exact"] + k["primary"] + k["overlap"]) / n  # control sets: either governs
+        return f"{single:6.1%} {either:6.1%} {k['exact'] / n:6.1%} {k['contradict'] / n:6.1%}"
+
+    hdr = f"{'':<44}{'n':>6}  {'single':>6} {'either':>6} {'exact':>6} {'CONTRA':>6}"
+    print(f"\n{len(rows):,} records compared (PARSE_FAIL excluded)\n")
+    print(hdr)
+    print(f"{'ALL':<44}{len(rows):>6,}  {summarise(rows)}")
     for dim in ("stratum_source", "stratum_decade", "stratum_category"):
         print(f"\nby {dim.replace('stratum_', '')}:")
         buckets: dict[str, list] = collections.defaultdict(list)
         for r in rows:
             buckets[r[dim]].append(r)
-        for key in sorted(buckets, key=lambda k: -len(buckets[k]))[:12]:
+        for key in sorted(buckets, key=lambda k: -len(buckets[k]))[:10]:
             b = buckets[key]
-            k = sum(agree(r["pass1"], r["pass2"]) for r in b)
-            print(f"  {str(key)[:42]:<44}{len(b):>6,}  {_ci(k, len(b))}")
-
+            print(f"  {str(key)[:40]:<42}{len(b):>6,}  {summarise(b)}")
     print("\nby sampling:")
     for name, b in (
         ("oversampled (ambiguous/uncertain)", [r for r in rows if r["oversampled"]]),
         ("ordinary", [r for r in rows if not r["oversampled"]]),
     ):
-        k = sum(agree(r["pass1"], r["pass2"]) for r in b)
-        print(f"  {name:<44}{len(b):>6,}  {_ci(k, len(b))}")
-
-    adj = [r for r in rows if r["adjudicated"]]
-    if adj:
-        p1 = sum(agree(r["pass1"], r["adjudicated"]) for r in adj)
-        p2 = sum(agree(r["pass2"], r["adjudicated"]) for r in adj)
-        print(f"\nadjudication of {len(adj):,} disagreements (reported separately):")
-        print(f"  adjudicator sides with pass 1 (llama)    {p1:>6,}  {_ci(p1, len(adj))}")
-        print(f"  adjudicator sides with pass 2            {p2:>6,}  {_ci(p2, len(adj))}")
-        print(f"  agrees with neither                      {len(adj) - p1 - p2:>6,}")
+        print(f"  {name:<42}{len(b):>6,}  {summarise(b)}")
+    contra = [r for r in rows if compare(r["pass1"], r["pass2"]) == "contradict"]
+    print(f"\ncontradictions: {len(contra):,} -- the only set worth adjudicating")
+    for r in contra[:6]:
+        print(f"    {r['pass1'][:38]:<40} vs  {r['pass2'][:38]}")
     return 0
 
 
