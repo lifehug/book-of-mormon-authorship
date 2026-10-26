@@ -85,6 +85,8 @@ def validate_entry(e: dict) -> list[str]:
         errs.append(f"{eid}: private must be true or false")
     if e["kind"] == "ia_djvu" and not IA_RE.match(e["url"]):
         errs.append(f"{eid}: ia_djvu url must be https://archive.org/details/<identifier>")
+    if "edition_of" in e and e["edition_of"] == e["id"]:
+        errs.append(f"{eid}: edition_of must name a different source")
     if e["kind"] == "jsp_page":
         if not JSP_RE.match(e["url"]):
             errs.append(f"{eid}: jsp_page url must be .../paper-summary/<slug> with no page")

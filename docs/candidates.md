@@ -32,7 +32,50 @@ Papers pages through `ingest.jsp.page_props`, Internet Archive items through the
   walks every page of `https://www.josephsmithpapers.org/paper-summary/<slug>/<n>`; for IA it
   downloads `https://archive.org/download/<identifier>/<identifier>_djvu.txt`.
 
-## Summary
+## Measured word counts (2026-10-26)
+
+Counted by `uv run python -m ingest.candidate_words` under the counting rule below (rules 1-10).
+Per-unit decisions are in `data/candidates/units.csv`, totals in
+`data/candidates/word_counts.json` (stamped with the config hash). All counts are before KJV
+masking (BOM-16), so the section 3 floor of 10,000 masked words can be failed here but not yet
+passed: a total under it is flagged now, a total over it is provisional.
+
+| Candidate | Sample | Pre-1830 | Post-1830 | Sources counted |
+| --- | --- | ---: | ---: | --- |
+| Joseph Smith | handwritten | **0** | 6,158 | Hyrum 1831 (629), Emma 1832 ×2 (1,536), 1832 History (981), Phelps Nov 1832 (632), Journal (1,661), Letterbook letters to Carter and John Smith (716), a signature (3) |
+| Joseph Smith | dictated | 2,844 | 5,402 | pre-1830: Revelation Book 1, seven entries; post: Phelps Jul 1832 (2,808), Saxton (1,809), Phelps Jan 1833 (785) |
+| Joseph Smith | scribal copy | 356 | 17,641 | pre-1830: letter to Cowdery, Oct 1829; post: Letterbook letters (16,125), Williams's parts of the 1832 History (1,049) and Phelps Nov 1832 (467) |
+| Oliver Cowdery | handwritten | 1,443 | 0 | Articles of the Church of Christ, June 1829 |
+| Oliver Cowdery | scribal copy | 1,464 | 1,361 | letters of 14 Jun, 6 Nov and 28 Dec 1829; 8 Apr and 7 May 1831 (Letterbook copies) |
+| Oliver Cowdery | printed | 0 | 24,040 | 1834-35 letters to Phelps (raw OCR) |
+| Sidney Rigdon | printed | 0 | 5,613 | 1838 oration (raw OCR) |
+| Parley P. Pratt | printed | 0 | 100,688 | three books, 1837-1840 (raw OCR) |
+| W. W. Phelps | - | 0 | 0 | none counted yet: the *Evening and Morning Star* run awaits selection of signed items |
+| Solomon Spalding | posthumous transcription | 44,279 | - | *Manuscript Story*, 1885 transcription (raw OCR) |
+| Ethan Smith | printed | 299,398 | - | six works, 1809-1824 (raw OCR; the 1825 edition not counted) |
+| Gilbert J. Hunt | printed | 59,611 | - | *The Late War*, 1816 (raw OCR) |
+
+**Under the floor (flagged "unreliable sample")**: every Joseph Smith sample except the
+post-1830 scribal copies; every Cowdery sample except the printed letters; Rigdon. No candidate
+except the three non-Mormon authors has any pre-1830 sample over the floor, and Joseph Smith's
+largest pre-1830 sample, the dictated revelations, is 2,844 words.
+
+**What the counts showed that the estimates did not.**
+
+- Joseph Smith's own hand totals 6,158 words, nearly all from 1831-1833 and none before 1830.
+  Of the 17 Letterbook 1 letters counted for him (four more are counted from their own source
+  ids), only two, to John S. Carter and John Smith, are in his hand; the rest are clerks' copies.
+- Several "Letter to …" entries in Letterbook 1 (to Partridge and others, the Jackson County
+  leaders, the Twelve) were signed jointly by the church presidency. JSP attributes them to
+  Joseph Smith, and rule 3 follows JSP, so the post-1830 scribal-copy sample includes text that
+  Rigdon and Williams may have shaped. That sample should be read as "Joseph Smith's office",
+  not his pen.
+- The pre-1830 dictated sample (2,844) is a quarter of the 2026-10-15 estimate (11,500), which
+  had counted whole pages; the rule cuts at entry anchors and drops editorial text.
+- The transcript reader used before 2026-10-26 counted editors' words as the writer's and dropped
+  glossed words (BOM-13 commit; the same reader built the BOM-05 manuscript text, BOM-52).
+
+## Summary of the 2026-10-15 estimates
 
 | Candidate | Sources | Pre-1830 words (est.) | All words (est.) | Under 10,000 pre-1830? |
 | --- | --- | --- | --- | --- |
@@ -132,6 +175,54 @@ Department would put both on a firmer footing; that is the owner's to send.
   co-written by editors such as John Taylor and W. W. Phelps.
 - Lucy Mack Smith's history (1845, printed 1853): her text, with Joseph quoted from memory.
 - Dean Jessee, *Personal Writings of Joseph Smith*: a modern copyrighted edition; use JSP.
+
+### Counting rule for the JSP sources (BOM-13, written 2026-10-26)
+
+Written before any per-hand or per-entry word count was taken. What was known: whole-file
+counts of the transcripts (Letterbook 1 about 33,000 words, Journal about 9,800), the TOC titles
+of both books, and what the other-hand passages in the short letters are (postmarks and
+addresses). Nothing narrower had been counted.
+
+1. **Word.** A whitespace token of the transcript as `ingest.jsp.clean_text` gives it, after
+   removing every square-bracketed span. Brackets are JSP's editorial insertions (`[p. 4]`,
+   supplied letters, `[date stamp]`). Cancelled words are already absent from JSP's clear text;
+   insertions are kept.
+2. **Hand.** Text inside JSP's `<span class="josephswriting">` is in Joseph Smith's hand;
+   everything else is in another hand. This is JSP's own word-level markup. Its "new scribe"
+   notes are not used to split, because they also flag signatures and postal markings.
+3. **Hand is not authorship.** Who composed a text is decided by JSP's attribution in the title:
+   "Letter to X" is Joseph Smith's; "Letter, A to B" is A's. Joseph Smith copying Cowdery's
+   letter into the Letterbook puts Cowdery's words in Joseph Smith's hand; they are Cowdery's
+   text and never enter Joseph Smith's sample.
+4. **Joseph Smith's samples.** Text he composed counts as *handwritten* where it is in his hand.
+   Where it is in another hand, it takes the provenance recorded for that source in
+   `sources.json` (*dictated* or *scribal copy*). Where that provenance is *mixed* (the 1832
+   History, the letter of 27 Nov 1832) or the text is a Letterbook entry, it is *scribal copy*:
+   whether Williams wrote from dictation or copied cannot be told from the page. In a source whose provenance
+   is *handwritten*, text in other hands (postmarks, addresses, dockets) is excluded.
+5. **Unit inside the two books.** A TOC entry, cut at its anchor (as for Revelation Book 1). In
+   Letterbook 1: an entry that has its own source id (the 1832 History, the letters of 22 Oct
+   1829, 27 Nov 1832, 4 Jan 1833 and 11 Jan 1833, Cowdery's of 6 Nov and 28 Dec 1829) is counted
+   from that id only, never twice. Entries by Oliver Cowdery go to Cowdery's sample as *scribal
+   copy*. Entries by people who are not candidates are excluded. The index, the plat of the
+   City of Zion and the plan of the House of the Lord are excluded: they are measurements and
+   lists, not the letters, history and revelations that section 3 names.
+6. **The Journal.** Only text in Joseph Smith's hand counts, as *handwritten*. Entries in a
+   scribe's hand are often in the third person and in the scribe's words, so they are counted
+   for no one.
+7. **Pre-1830** follows the Revelation Book 1 rule: the TOC or document date falls wholly before
+   26 March 1830.
+8. **Flag.** Section 3's floor is 10,000 *masked* words (`candidates.min_masked_words`), and
+   masking is BOM-16. These counts are before masking, so a sample below the floor here is
+   flagged now (masking only removes words), and a sample above it is provisional until BOM-16.
+9. **Revelation Book 1 after March 1830** is not used: section 3 names *early* revelations, and
+   the selection under the rule above is the pre-1830 entries.
+10. **Printed sources (Internet Archive OCR).** Whitespace tokens of the OCR file as fetched,
+    front matter and OCR noise included; cleaning is BOM-15, so these overstate. Another
+    edition or transcription of the same work counts once, at its earliest (section 4.3):
+    `ss-manuscript-story-1885`, `es-1823-view-of-the-hebrews`, `gh-1816-late-war`. Whole
+    periodical runs (provenance *edited*) are listed but not counted toward a candidate until
+    their signed items are selected.
 
 ## Oliver Cowdery
 

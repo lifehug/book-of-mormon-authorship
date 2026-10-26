@@ -35,7 +35,7 @@ def test_date_is_passed_through_not_interpreted():
     assert out[0]["toc_date"] == "1830-01-01"
 
 
-def test_clean_text_keeps_glossed_word_drops_note():
+def test_transcript_keeps_glossed_word_drops_note():
     # From History, circa Summer 1832: "Kees" is transcript, the gloss is editorial.
     frag = (
         '<span class="josephswriting">the </span><aside class="popup-wrapper" id="1">'
@@ -44,5 +44,29 @@ def test_clean_text_keeps_glossed_word_drops_note():
         '<div class="note-data" isnote="Y"><p>Authority or knowledge of God.</p></div></div>'
         "</aside> of the kingdom"
     )
-    text = jsp.clean_text(frag)
+    text = jsp.transcript_text(frag)
     assert text.split() == ["the", "Kees", "of", "the", "kingdom"]
+
+
+def test_transcript_drops_footnote_number_anchor():
+    frag = (
+        'marvilous experience<aside class="popup-wrapper" id="2">'
+        '<a href="#2" class="editorial-note-static staticPopup" title="Note" name="trans1">'
+        '<span id="documenttrans1">1</span></a><div class="popup-content">'
+        '<div class="note-data editorial-footnote" isnote="Y"><p>OED.</p></div></div></aside> and'
+    )
+    assert jsp.transcript_text(frag).split() == ["marvilous", "experience", "and"]
+
+
+def test_transcript_words_hand_split_and_brackets():
+    frag = (
+        '<p><span class="josephswriting">to instruct</span><span class="josephswriting">ing'
+        '</span> me [p. 2] in <span class="hide-this">Hatter. Born 1793.</span>religion</p>'
+    )
+    assert jsp.transcript_words(frag) == [
+        ("to", True),
+        ("instructing", True),
+        ("me", False),
+        ("in", False),
+        ("religion", False),
+    ]

@@ -995,7 +995,54 @@ one sits behind its own Cloudflare Turnstile, which solves itself in a real brow
 time in three, so I left them and took the text. It is 44 MB and goes in git, so the mini
 gets it with a pull.
 
+## Counting Joseph Smith's own words
+
+With the Joseph Smith Papers pages finally down, BOM-13 came to the part I had been putting off:
+how many words does each candidate actually have? The inventory had estimates. Estimates from
+page counts turned out to be generous.
+
+The Papers make one thing easy that I expected to be hard. Every stretch of text in Joseph
+Smith's own hand is wrapped in a tag, `<span class="josephswriting">`, word by word. So the 1832
+History, which he and Frederick G. Williams wrote in turns, splits cleanly: 981 words in his
+hand, 1,049 in Williams's. The Journal has 9,000 words and 1,661 of them are his; the rest are
+clerks, often writing about him in the third person, and those count for nobody. Letterbook 1
+holds 17 letters the Papers attribute to him. Two are in his hand.
+
+Hand is not authorship, though. Joseph copied Oliver Cowdery's 1829 letters into the
+Letterbook himself, so those pages are full of "josephswriting" tags around Cowdery's words.
+The rule I wrote before counting says the title decides who composed a text and the tag only
+decides whose pen it was. Those letters go to Cowdery.
+
+The wrong turn this time was in my own reader. Checking the hand split against the plain text,
+the numbers did not agree, and pulling on that found three things the old text extractor did:
+it dropped every word the Papers had linked to a glossary popup ("Kees", for keys), it counted
+footnote numbers as words, and it counted hidden biographical notes ("27 Aug. 1793–27 May 1840.
+Hatter.") as if Joseph had written them. Small per page; up to a tenth of a short letter. The same
+extractor built the Book of Mormon manuscript text back in BOM-05, where it also split words
+that the site breaks across two tags: 2,188 of them in the original manuscript. That one is now
+its own issue, BOM-52.
+
+The result, before any masking of Bible quotations:
+
+| | before 1830 | after |
+| --- | ---: | ---: |
+| Joseph Smith, own hand | 0 | 6,158 |
+| Joseph Smith, dictated | 2,844 | 5,402 |
+| Oliver Cowdery, own hand | 1,443 | 0 |
+| Solomon Spalding | 44,279 | - |
+| Ethan Smith | 299,398 | - |
+
+The preregistration's floor is 10,000 words. Every one of Joseph Smith's samples is under it, and
+the pre-1830 dictated revelations, the only pre-1830 text he has, are a quarter of what I had
+estimated. That is not a surprise in kind, the plan said "likely under 10,000", but it is a
+surprise in size, and it is exactly the sort of thing the "unreliable sample" flag exists for.
+
 ## Log
+
+- **2026-10-26.** BOM-13 word counts. Rules written first (docs/candidates.md, rules 1-10), then
+  counted by JSP's own hand markup: Joseph Smith 0 words in his hand before 1830, 6,158 after;
+  2,844 dictated before 1830. Fixed the JSP text reader (glossed words dropped, editorial notes
+  counted); the same bug in the BOM-05 manuscript text is BOM-52.
 
 - **2026-10-24, night.** Dedup running, and three days of labelling behind me. Writing it down
   while the machine chews through 185 GB.

@@ -8,7 +8,8 @@ BOM-13. The full inventory, with provenance and the texts deliberately left out,
 `sources.json` lists 38 sources for the eight candidates of preregistration section 3. Each
 entry has `id`, `candidate`, `title`, `url`, `kind`, `provenance`, `license`, `private`, plus
 `date_written`, `date_published`, `pre1830`, `est_words` and `notes` (and `file` when an
-Internet Archive item's OCR file is not named `<identifier>_djvu.txt`).
+Internet Archive item's OCR file is not named `<identifier>_djvu.txt`, and `edition_of` when the
+entry is a later edition or transcription of another entry's work, counted once at the earliest).
 `uv run python -m ingest.candidates --check` validates it.
 
 | Kind | Count | Fetched by `ingest.candidates` | Written to |
@@ -31,18 +32,24 @@ Internet Archive item's OCR file is not named `<identifier>_djvu.txt`).
   rights field on these Church History Library scans says "Copyright by Intellectual Reserve".
   They are kept private to be safe; this can be revisited.
 
-## What is on disk now (2026-10-25)
+## What is on disk now (2026-10-26)
 
 - **Internet Archive, all 19** (17 public in `text/`, 2 private): fetched 2026-10-15 (two) and
   2026-10-25 (the rest), 0 retries. 1,669,363 raw OCR tokens in all; per-file counts are in
   `docs/candidates.md` once the candidate table is built. The two periodical runs
   (`oc-messenger-advocate`, `wwp-evening-morning-star`) are whole runs; only signed items will
   enter a sample.
-- **Joseph Smith Papers, 10 of 16 complete** (private repo): Revelation Book 1 (201 pages), the
-  1832 history and all eight letters. Journal 1832-1834 has 16 of 106 pages; Letterbook 1 and
-  the three Cowdery 1829 documents are not yet fetched; `oc-1834-history-jsp` (witness copy)
-  is deferred. The fetch stopped when the site blocked this machine (see below) and resumes
-  from the raw pages on disk.
+- **Joseph Smith Papers, 15 of 16 complete** (private repo), finished 2026-10-25 22:23 PDT at a
+  30 s average: Revelation Book 1, the 1832 history, all eight letters, Journal 1832-1834 (106
+  pages), Letterbook 1 (108) and the three Cowdery 1829 documents. `oc-1834-history-jsp`
+  (witness copy) is deferred.
+- **Derived (2026-10-26):** `units.csv` (one row per counted unit: source, TOC entry, author,
+  sample, period, words, the rule that decided it) and `word_counts.json` (totals per candidate,
+  sample and period, with the section 3 floor flag and the config hash), both public: titles and
+  counts only. The assembled sample texts are private, in
+  `data/private/candidates/samples/<candidate>__<sample>__<period>.txt`. The JSP `<id>.jsonl`
+  files were rebuilt offline on 2026-10-26 with `--rebuild` after the transcript reader was
+  fixed (it had counted editorial notes as text and dropped glossed words).
 
 Raw OCR is kept as delivered; cleaning, quotation stripping and KJV masking are later steps
 (BOM-14 to BOM-16).
@@ -52,7 +59,10 @@ Raw OCR is kept as delivered; cleaning, quotation stripping and KJV masking are 
 ```
 uv run python -m ingest.candidates --public-only          # all public texts
 uv run python -m ingest.candidates                        # also private (needs data/private)
+uv run python -m ingest.candidates --rebuild --id <jsp id>  # re-extract JSP text from raw pages, offline
+uv run python -m ingest.candidate_words                   # units.csv, word_counts.json, private samples
 uv run python -m metadata.manifest build data/candidates -o data/manifests/candidates.jsonl
+uv run python -m metadata.manifest build data/private/candidates -o data/manifests/candidates-private.jsonl
 ```
 
 Internet Archive requests send a `bom-authorship-research` user agent with a fixed delay

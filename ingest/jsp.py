@@ -26,6 +26,7 @@ import re
 import sys
 import time
 import urllib.request
+from html.parser import HTMLParser
 from pathlib import Path
 
 BASE = "https://www.josephsmithpapers.org/paper-summary/"
@@ -48,7 +49,6 @@ JSP_DELAY = 5.0
 JSP_BACKOFF = 60.0
 NEXT_DATA_RE = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
 TAG_RE = re.compile(r"<[^>]+>")
-POPUP_RE = re.compile(r"<aside[^>]*>(.*?)</aside>", re.S)
 KEEP = [
     "uri", "editorialPageNumber", "requestedPageNumber", "numberOfPages", "editorialTitle",
     "date", "handwriting", "scribes", "footnotes", "classification", "accessionNumber",
@@ -92,17 +92,108 @@ def page_props(page_html: str) -> dict:
     return props
 
 
-def _popup_anchor(m: re.Match) -> str:
-    # A popup is <aside><a>WORD</a><div class="popup-content">NOTE</div></aside>; WORD is
-    # transcript (a glossed term, a scribe-change icon), NOTE is editorial. Dropping the whole
-    # aside lost 2-15% of candidate words (BOM-13).
-    return " " + m.group(1).split('<div class="popup-content">', 1)[0] + " "
+# Elements whose text is the editors', not the writer's: popup notes, hidden glosses
+# ("hide-this", biographies), editorial comments ("date stamp"), note letters ("toe-note"),
+# and popup anchors that hold a footnote number or a scribe-change icon. A "reference" popup
+# anchor is transcript (a glossed word, e.g. "Kees") and is kept (BOM-13).
+EDITORIAL_CLASSES = {"popup-content", "hide-this", "note-data", "editorial-comment", "toe-note"}
+EDITORIAL_ANCHORS = {"editorial-note-static", "new-scribe-note"}
+BLOCK_TAGS = {"p", "div", "br", "li", "h1", "h2", "h3", "h4", "h5", "h6"}
+VOID_TAGS = {"br", "img", "hr", "input", "meta", "link", "wbr"}
+
+
+class _TranscriptParser(HTMLParser):
+    """Characters of a JSP transcript fragment, each tagged True when in Joseph Smith's hand
+    (JSP's ``<span class="josephswriting">``), with editorial elements skipped."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.stack: list[tuple[str, bool, bool]] = []  # (tag, in JS's hand, editorial)
+        self.chars: list[tuple[str, bool]] = []
+
+    def _state(self) -> tuple[bool, bool]:
+        return (self.stack[-1][1], self.stack[-1][2]) if self.stack else (False, False)
+
+    def handle_starttag(self, tag, attrs):
+        js, skip = self._state()
+        if tag in VOID_TAGS:
+            if tag == "br" and not skip:
+                self.chars.append(("\n", js))
+            return
+        classes = set((dict(attrs).get("class") or "").split())
+        skip = skip or bool(classes & EDITORIAL_CLASSES)
+        skip = skip or (tag == "a" and bool(classes & EDITORIAL_ANCHORS))
+        js = js or (tag == "span" and "josephswriting" in classes)
+        self.stack.append((tag, js, skip))
+
+    def handle_endtag(self, tag):
+        if tag in VOID_TAGS:
+            return
+        for i in range(len(self.stack) - 1, -1, -1):
+            if self.stack[i][0] == tag:
+                del self.stack[i:]
+                break
+        js, skip = self._state()
+        if tag in BLOCK_TAGS and not skip:
+            self.chars.append(("\n", js))
+
+    def handle_data(self, data):
+        js, skip = self._state()
+        if not skip:
+            self.chars.extend((c, js) for c in data)
+
+
+def transcript_chars(fragment: str) -> list[tuple[str, bool]]:
+    p = _TranscriptParser()
+    p.feed(fragment)
+    p.close()
+    return p.chars
+
+
+def transcript_text(fragment: str) -> str:
+    """The writer's text of a JSP transcript fragment, as JSP presents it (its square-bracketed
+    insertions kept). Inline tags never split a word: JSP opens a new span mid-word
+    ("instruct</span><span>ing")."""
+    body = "".join(c for c, _ in transcript_chars(fragment))
+    body = re.sub(r"[ \t]+", " ", body)
+    return re.sub(r"\s*\n\s*", "\n", body).strip()
+
+
+def _drop_brackets(chars: list[tuple[str, bool]]) -> list[tuple[str, bool]]:
+    """Remove square-bracketed spans; an unmatched bracket is kept as text."""
+    keep = [True] * len(chars)
+    opens: list[int] = []
+    for i, (c, _) in enumerate(chars):
+        if c == "[":
+            opens.append(i)
+        elif c == "]" and opens:
+            start = opens.pop()
+            if not opens:
+                keep[start : i + 1] = [False] * (i + 1 - start)
+    return [ch for ch, k in zip(chars, keep, strict=True) if k]
+
+
+def transcript_words(fragment: str, drop_brackets: bool = True) -> list[tuple[str, bool]]:
+    """Words of a fragment, each with True if in JS's hand. Square-bracketed spans are JSP's
+    editorial insertions (``[p. 4]``, supplied letters) and are dropped unless told otherwise.
+    A word that straddles a change of hand takes the hand of most of its characters."""
+    chars = transcript_chars(fragment)
+    if drop_brackets:
+        chars = _drop_brackets(chars)
+    out: list[tuple[str, bool]] = []
+    word: list[tuple[str, bool]] = []
+    for c, js in [*chars, (" ", False)]:
+        if not c.isspace():
+            word.append((c, js))
+        elif word:
+            out.append(("".join(ch for ch, _ in word), sum(j for _, j in word) * 2 > len(word)))
+            word = []
+    return out
 
 
 def clean_text(fragment: str) -> str:
-    """Transcript text with editorial popups removed and tags stripped."""
-    body = POPUP_RE.sub(_popup_anchor, fragment)
-    body = re.sub(r"</(p|div|br|li|h\d)>", "\n", body)
+    """Text of an editorial note (tags stripped). Transcripts use ``transcript_text``."""
+    body = re.sub(r"</(p|div|br|li|h\d)>", "\n", fragment)
     body = TAG_RE.sub(" ", body)
     body = html.unescape(body)
     body = re.sub(r"[ \t]+", " ", body)
@@ -117,7 +208,7 @@ def extract(props: dict, page: int) -> dict:
             rec[k] = sm[k]
     rec["clear_html"] = sm.get("clearText", "")
     rec["expanded_html"] = sm.get("expandedText", "")
-    rec["text"] = clean_text(sm.get("clearText", ""))
+    rec["text"] = transcript_text(sm.get("clearText", ""))
     asides = re.findall(r"<aside[^>]*>(.*?)</aside>", sm.get("expandedText", ""), re.S)
     rec["editorial_notes"] = [clean_text(a) for a in asides]
     toc = [t for t in props.get("tableOfContents", []) if str(t.get("pageNumber")) == str(page)]
@@ -130,11 +221,11 @@ def sections(records: list[dict], toc: list[dict]) -> list[dict]:
 
     Each TOC entry's ``linkID`` appears as ``<a name="...">`` in the page markup where the
     entry begins; a section runs from its anchor to the next one, across page breaks. Text
-    before the first anchor is returned with ``link_id`` None. An entry whose anchor is not
-    found is returned with ``anchor_found`` False and no text, never dropped. The TOC ``date`` is
-    only the
-    start of the entry's period ("circa Early 1830" is ``1830-01-01``), so it is passed through
-    and never used to decide anything here.
+    before the first anchor is returned with ``link_id`` None. ``html`` is the cut markup, for
+    callers that need more than the text (the hand split in ``ingest.candidate_words``). An
+    entry whose anchor is not found is returned with ``anchor_found`` False and no text, never
+    dropped. The TOC ``date`` is only the start of the entry's period ("circa Early 1830" is
+    ``1830-01-01``), so it is passed through and never used to decide anything here.
     """
     pages = sorted(records, key=lambda r: r["page"])
     starts = []  # (page index, offset, toc entry)
@@ -158,7 +249,8 @@ def sections(records: list[dict], toc: list[dict]) -> list[dict]:
             lo = o0 if i == i0 else 0
             hi = o1 if i == i1 else len(h)
             parts.append(h[lo:hi])
-        text = clean_text("\n".join(p for p in parts if p))
+        fragment = "\n".join(p for p in parts if p)
+        text = transcript_text(fragment)
         if t is None and not text:
             continue
         out.append(
@@ -168,6 +260,7 @@ def sections(records: list[dict], toc: list[dict]) -> list[dict]:
                 "toc_date": t.get("date") if t else None,
                 "first_page": pages[i0]["page"] if i0 < len(pages) else None,
                 "anchor_found": True,
+                "html": fragment,
                 "text": text,
                 "words": len(text.split()),
             }
@@ -180,6 +273,7 @@ def sections(records: list[dict], toc: list[dict]) -> list[dict]:
                 "toc_date": t.get("date"),
                 "first_page": None,
                 "anchor_found": False,
+                "html": None,
                 "text": None,
                 "words": None,
             }

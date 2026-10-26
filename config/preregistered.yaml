@@ -12,7 +12,7 @@
 
 version: 0.3
 preregistration: https://osf.io/6ugxc/
-covers: [BOM-12, BOM-14, BOM-15, BOM-16, BOM-17]
+covers: [BOM-12, BOM-13, BOM-14, BOM-15, BOM-16, BOM-17]
 
 corpus:
   # 4.1, 4.3
@@ -97,6 +97,9 @@ segmentation:
 # decision rules are unchanged and remain confirmatory; H1a and H1b are decided on them alone.
 # Nothing here may be substituted for the primary result, including when it is inconclusive.
 candidates:
+  # 3: a candidate with fewer masked words is scored, but every result carries the
+  # "unreliable sample" flag and is excluded from the Bayesian synthesis.
+  min_masked_words: 10000
   expanded_corpora:
     role: secondary
     # Fixed from the historical record before any scoring.
