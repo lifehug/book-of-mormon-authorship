@@ -48,7 +48,7 @@ JSP_DELAY = 5.0
 JSP_BACKOFF = 60.0
 NEXT_DATA_RE = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
 TAG_RE = re.compile(r"<[^>]+>")
-POPUP_RE = re.compile(r"<aside[^>]*>.*?</aside>", re.S)
+POPUP_RE = re.compile(r"<aside[^>]*>(.*?)</aside>", re.S)
 KEEP = [
     "uri", "editorialPageNumber", "requestedPageNumber", "numberOfPages", "editorialTitle",
     "date", "handwriting", "scribes", "footnotes", "classification", "accessionNumber",
@@ -92,9 +92,16 @@ def page_props(page_html: str) -> dict:
     return props
 
 
+def _popup_anchor(m: re.Match) -> str:
+    # A popup is <aside><a>WORD</a><div class="popup-content">NOTE</div></aside>; WORD is
+    # transcript (a glossed term, a scribe-change icon), NOTE is editorial. Dropping the whole
+    # aside lost 2-15% of candidate words (BOM-13).
+    return " " + m.group(1).split('<div class="popup-content">', 1)[0] + " "
+
+
 def clean_text(fragment: str) -> str:
     """Transcript text with editorial popups removed and tags stripped."""
-    body = POPUP_RE.sub(" ", fragment)
+    body = POPUP_RE.sub(_popup_anchor, fragment)
     body = re.sub(r"</(p|div|br|li|h\d)>", "\n", body)
     body = TAG_RE.sub(" ", body)
     body = html.unescape(body)

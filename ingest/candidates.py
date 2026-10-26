@@ -158,7 +158,9 @@ def fetch_ia(entry: dict, out: Path) -> None:
     tmp.replace(out)
 
 
-def fetch_jsp(entry: dict, out: Path, delay: float, max_pages: int | None, root: Path) -> None:
+def fetch_jsp(
+    entry: dict, out: Path, delay: float, max_pages: int | None, root: Path, offline: bool = False
+) -> None:
     slug = jsp_slug(entry["url"])
     rdir = raw_dir(entry, root)
     rdir.mkdir(parents=True, exist_ok=True)
@@ -167,6 +169,8 @@ def fetch_jsp(entry: dict, out: Path, delay: float, max_pages: int | None, root:
         path = rdir / f"{n:04d}.json"
         if path.exists():
             return json.loads(path.read_text(encoding="utf-8"))
+        if offline:
+            raise FileNotFoundError(f"{path}: not on disk and --rebuild never fetches")
         props = jsp.page_props(
             jsp.fetch(
                 f"{jsp.BASE}{slug}/{n}", user_agent=jsp.JSP_USER_AGENT, backoff=jsp.JSP_BACKOFF
@@ -207,14 +211,26 @@ def run(
     delay: float = jsp.JSP_DELAY,
     limit: int | None = None,
     max_pages: int | None = None,
+    rebuild: bool = False,
 ) -> list[Path]:
-    """Fetch up to ``limit`` sources not already on disk; return the files written."""
+    """Fetch up to ``limit`` sources not already on disk; return the files written.
+
+    With ``rebuild``, rewrite each JSP output from its raw pages on disk instead (after a change
+    to ``jsp.extract``); nothing is fetched and IA files are left alone.
+    """
     written: list[Path] = []
     for e in entries:
         if limit is not None and len(written) >= limit:
             break
         out = output_path(e, root)
         if out is None:
+            continue
+        if rebuild:
+            if e["kind"] == "ia_djvu":
+                continue
+            print(f"rebuild {e['id']} from {raw_dir(e, root)}", flush=True)
+            fetch_jsp(e, out, delay, max_pages, root, offline=True)
+            written.append(out)
             continue
         if out.exists():
             print(f"skip {e['id']}: {out} exists", flush=True)
@@ -238,6 +254,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--max-pages", type=int, help="JSP: fetch only the first N pages (testing)")
     ap.add_argument("--delay", type=float, default=jsp.JSP_DELAY, help="seconds between requests")
     ap.add_argument("--check", action="store_true", help="validate the manifest and exit")
+    ap.add_argument(
+        "--rebuild", action="store_true", help="JSP: rewrite outputs from raw pages, no fetching"
+    )
     a = ap.parse_args(argv)
     entries = load_manifest(a.manifest)
     if a.check:
@@ -245,7 +264,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"{len(entries)} sources ok ({n_priv} private, {len(entries) - n_priv} public)")
         return 0
     todo = select(entries, a.ids, a.public_only)
-    written = run(todo, delay=a.delay, limit=a.limit, max_pages=a.max_pages)
+    written = run(todo, delay=a.delay, limit=a.limit, max_pages=a.max_pages, rebuild=a.rebuild)
     print(f"wrote {len(written)} file(s)")
     return 0
 

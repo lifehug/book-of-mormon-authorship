@@ -33,3 +33,16 @@ def test_missing_anchor_is_reported_not_dropped():
 def test_date_is_passed_through_not_interpreted():
     out = jsp.sections([page(1, '<a name="A"></a>x')], [toc("A", "circa Early 1830", "1830-01-01")])
     assert out[0]["toc_date"] == "1830-01-01"
+
+
+def test_clean_text_keeps_glossed_word_drops_note():
+    # From History, circa Summer 1832: "Kees" is transcript, the gloss is editorial.
+    frag = (
+        '<span class="josephswriting">the </span><aside class="popup-wrapper" id="1">'
+        '<a href="#1" class="reference staticPopup" title="Keys">'
+        '<span class="josephswriting">Kees</span></a><div class="popup-content">'
+        '<div class="note-data" isnote="Y"><p>Authority or knowledge of God.</p></div></div>'
+        "</aside> of the kingdom"
+    )
+    text = jsp.clean_text(frag)
+    assert text.split() == ["the", "Kees", "of", "the", "kingdom"]
