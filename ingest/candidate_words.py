@@ -36,6 +36,7 @@ from ingest.candidates import MANIFEST, PRIVATE_DIR, PUBLIC_DIR, load_manifest
 from metadata import config
 
 SELECTIONS = Path("data/candidates/selections.json")
+SIGNED = Path("data/candidates/signed_items.json")  # rules 11-16, from ingest.signed_items
 UNITS_OUT = Path("data/candidates/units.csv")
 COUNTS_OUT = Path("data/candidates/word_counts.json")
 SAMPLES_DIR = PRIVATE_DIR / "samples"
@@ -179,9 +180,17 @@ def ia_unit(entry: dict) -> dict | None:
     words = len(path.read_text(encoding="utf-8", errors="replace").split())
     period = "pre1830" if entry.get("pre1830") else "post1830"
     if entry.get("edition_of"):
-        author, sample, decision = None, "excluded", f"rule 10: edition of {entry['edition_of']}"
+        author, sample, decision = (
+            None,
+            "excluded",
+            f"rules 10, 14: edition of {entry['edition_of']}",
+        )
     elif entry["provenance"] == "edited":
-        author, sample, decision = None, "excluded", "rule 10: whole run, signed items not selected"
+        author, sample, decision = (
+            None,
+            "excluded",
+            "rule 10: whole run; signed items counted apart",
+        )
     else:
         author, sample, decision = entry["candidate"], entry["provenance"], "rule 10: raw OCR"
     return {
@@ -197,6 +206,32 @@ def ia_unit(entry: dict) -> dict | None:
     }
 
 
+def signed_units(entry: dict, items: list[dict]) -> list[dict]:
+    """Checked, admitted signed items of a periodical run (rules 11-16), as raw OCR tokens."""
+    mine = [i for i in items if i["source"] == entry["id"] and i.get("checked") and i["admit"]]
+    if not mine:
+        return []
+    lines = (PUBLIC_DIR / f"{entry['id']}.txt").read_text(encoding="utf-8", errors="replace")
+    lines = lines.splitlines()
+    out = []
+    for i in mine:
+        text = "\n".join(lines[i["start"] - 1 : i["end"]])
+        out.append(
+            {
+                "source": entry["id"],
+                "link_id": f"lines {i['start']}-{i['end']}",
+                "title": i.get("note") or i.get("opening") or "",
+                "author": i["signer"],
+                "sample": "printed_by_author",
+                "period": "pre1830" if entry.get("pre1830") else "post1830",
+                "words": len(text.split()),
+                "decision": "rule 11: signed item",
+                "tokens": None,
+            }
+        )
+    return out
+
+
 def build(root: Path = Path(".")) -> tuple[list[dict], dict]:
     entries = load_manifest(root / MANIFEST)
     selections = json.loads((root / SELECTIONS).read_text(encoding="utf-8"))
@@ -208,6 +243,8 @@ def build(root: Path = Path(".")) -> tuple[list[dict], dict]:
             u = ia_unit(e)
             if u:
                 units.append(u)
+            if e["provenance"] == "edited" and (root / SIGNED).exists():
+                units.extend(signed_units(e, json.loads((root / SIGNED).read_text("utf-8"))))
     cfg = config.load()
     floor = cfg["candidates"]["min_masked_words"]
     totals: dict[tuple, int] = defaultdict(int)

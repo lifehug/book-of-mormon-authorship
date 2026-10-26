@@ -46,7 +46,9 @@ entry is a later edition or transcription of another entry's work, counted once 
 - **Derived (2026-10-26):** `units.csv` (one row per counted unit: source, TOC entry, author,
   sample, period, words, the rule that decided it) and `word_counts.json` (totals per candidate,
   sample and period, with the section 3 floor flag and the config hash), both public: titles and
-  counts only. The assembled sample texts are private, in
+  counts only. `signed_items.json` lists every signature line found in the two periodical runs
+  with its decision under rules 11-17 and, for admitted items, the line span in the OCR file
+  (proposed by `ingest.signed_items`, checked by hand). The assembled sample texts are private, in
   `data/private/candidates/samples/<candidate>__<sample>__<period>.txt`. The JSP `<id>.jsonl`
   files were rebuilt offline on 2026-10-26 with `--rebuild` after the transcript reader was
   fixed (it had counted editorial notes as text and dropped glossed words).
@@ -60,6 +62,7 @@ Raw OCR is kept as delivered; cleaning, quotation stripping and KJV masking are 
 uv run python -m ingest.candidates --public-only          # all public texts
 uv run python -m ingest.candidates                        # also private (needs data/private)
 uv run python -m ingest.candidates --rebuild --id <jsp id>  # re-extract JSP text from raw pages, offline
+uv run python -m ingest.signed_items                      # propose signed periodical items (keeps checked ones)
 uv run python -m ingest.candidate_words                   # units.csv, word_counts.json, private samples
 uv run python -m metadata.manifest build data/candidates -o data/manifests/candidates.jsonl
 uv run python -m metadata.manifest build data/private/candidates -o data/manifests/candidates-private.jsonl

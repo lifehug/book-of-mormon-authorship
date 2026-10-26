@@ -1043,15 +1043,50 @@ the pre-1830 dictated revelations, the only pre-1830 text he has, are a quarter 
 estimated. That is not a surprise in kind, the plan said "likely under 10,000", but it is a
 surprise in size, and it is exactly the sort of thing the "unreliable sample" flag exists for.
 
+## Signed is a stricter word than it sounds
+
+Phelps had zero words at the end of the morning. His candidate texts were whole newspaper runs,
+and a newspaper is mostly other people. The rule I wrote first: count only a letter, essay or
+address that ends in one candidate's name. No committee addresses, no minutes he signed as
+chairman, no unsigned editorials, because the *Star*'s publisher line says "W. W. Phelps & Co."
+and the *Messenger*'s editor changed three times.
+
+A script found 67 lines that look like a signature, and most of its guesses about where each
+item starts were wrong: it kept latching onto the running head, which the OCR spells
+"MESJSKNGKR AND ADVOCATE". So every span got read and fixed by hand (by an agent, with me
+checking its line numbers against the file and reading the longest ones myself). Phelps's own
+name was the next problem. It comes out as "W. W. F helps:" in one letter and "As ever, W. W.
+PIIELP8." in another, on the same line as his last sentence, where no pattern looking for a
+name on its own line will see it.
+
+Then four of Cowdery's eight famous letters to Phelps turned out to have no signature at all.
+Letter V just stops: "Accept assurance of my esteem as ever." The strict rule would have thrown
+out half of a series whose author nobody doubts. I had named the series in the rules before
+extracting, so I wrote down a clarification saying the series counts whole, and said in the
+same place that it was written after seeing the data. The check that it worked: the eight
+letters come to 23,499 words, against 24,040 in the later book reprint, which has a title page
+and preface the newspaper does not.
+
+One more thing the reading turned up. Letter I opens with an editor's note that "our brother
+J. Smith jr. has offered to assist us" with the history the letters tell. Signed by Cowdery,
+helped by Smith. That goes in the record next to the count.
+
+Phelps ends at 31,538 words, Rigdon at 23,478, Cowdery's printed sample at 48,002. All after
+1830, all before masking. Nobody but the three outside authors has 10,000 words written before
+the Book of Mormon.
+
 ## Log
 
+- **2026-10-26, evening.** BOM-13 signed periodical items: rules 11-17 written (17 dated as a
+  clarification after extraction began), 77 signature lines, 43 items admitted. Phelps 0 →
+  31,538, Rigdon 5,613 → 23,478, Cowdery printed 24,040 → 48,002 (post-1830, raw OCR).
+- **2026-10-26, later.** BOM-52 closed: BOM-05 manuscript text rebuilt offline with the fixed
+  reader. Effect is tiny (original 8 tokens, printer's 63, one paragraph mapping); my earlier
+  "2,188 split words" was a whitespace count, mostly punctuation. Gap markers all kept (51).
 - **2026-10-26.** BOM-13 word counts. Rules written first (docs/candidates.md, rules 1-10), then
   counted by JSP's own hand markup: Joseph Smith 0 words in his hand before 1830, 6,158 after;
   2,844 dictated before 1830. Fixed the JSP text reader (glossed words dropped, editorial notes
   counted); the same bug in the BOM-05 manuscript text is BOM-52.
-- **2026-10-26, later.** BOM-52 closed: BOM-05 manuscript text rebuilt offline with the fixed
-  reader. Effect is tiny (original 8 tokens, printer's 63, one paragraph mapping); my earlier
-  "2,188 split words" was a whitespace count, mostly punctuation. Gap markers all kept (51).
 
 - **2026-10-24, night.** Dedup running, and three days of labelling behind me. Writing it down
   while the machine chews through 185 GB.

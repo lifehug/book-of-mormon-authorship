@@ -47,18 +47,31 @@ passed: a total under it is flagged now, a total over it is provisional.
 | Joseph Smith | scribal copy | 356 | 17,641 | pre-1830: letter to Cowdery, Oct 1829; post: Letterbook letters (16,125), Williams's parts of the 1832 History (1,049) and Phelps Nov 1832 (467) |
 | Oliver Cowdery | handwritten | 1,443 | 0 | Articles of the Church of Christ, June 1829 |
 | Oliver Cowdery | scribal copy | 1,464 | 1,361 | letters of 14 Jun, 6 Nov and 28 Dec 1829; 8 Apr and 7 May 1831 (Letterbook copies) |
-| Oliver Cowdery | printed | 0 | 24,040 | 1834-35 letters to Phelps (raw OCR) |
-| Sidney Rigdon | printed | 0 | 5,613 | 1838 oration (raw OCR) |
-| Parley P. Pratt | printed | 0 | 100,688 | three books, 1837-1840 (raw OCR) |
-| W. W. Phelps | - | 0 | 0 | none counted yet: the *Evening and Morning Star* run awaits selection of signed items |
+| Oliver Cowdery | printed | 0 | 48,002 | 17 signed items in the *Messenger and Advocate* (15, including Letters I-VIII to Phelps, 23,499) and the *Star* (2) (raw OCR) |
+| Sidney Rigdon | printed | 0 | 23,478 | 1838 oration (5,613) and 7 signed items, 1834-1837 (17,865) (raw OCR) |
+| Parley P. Pratt | printed | 0 | 101,748 | three books, 1837-1840, and one signed letter (1,060) (raw OCR) |
+| W. W. Phelps | printed | 0 | 31,538 | 18 signed items: his letters to Cowdery Nos. 1-12 and 2d series 1, and others (raw OCR) |
 | Solomon Spalding | posthumous transcription | 44,279 | - | *Manuscript Story*, 1885 transcription (raw OCR) |
 | Ethan Smith | printed | 299,398 | - | six works, 1809-1824 (raw OCR; the 1825 edition not counted) |
 | Gilbert J. Hunt | printed | 59,611 | - | *The Late War*, 1816 (raw OCR) |
 
 **Under the floor (flagged "unreliable sample")**: every Joseph Smith sample except the
-post-1830 scribal copies; every Cowdery sample except the printed letters; Rigdon. No candidate
-except the three non-Mormon authors has any pre-1830 sample over the floor, and Joseph Smith's
-largest pre-1830 sample, the dictated revelations, is 2,844 words.
+post-1830 scribal copies, and every Cowdery sample except the printed items. No candidate except
+the three non-Mormon authors has any pre-1830 sample over the floor, and Joseph Smith's largest
+pre-1830 sample, the dictated revelations, is 2,844 words.
+
+**Signed periodical items** (rules 11-17, `data/candidates/signed_items.json`): 77 signature
+lines in the two runs; 43 items admitted, 34 rejected (10 Joseph Smith, rule 13; the rest
+co-signed, officers of meetings, name lists, a masthead, an advertisement, the Three Witnesses'
+testimony). Spans were proposed by `ingest.signed_items`, checked line by line, and their first and
+last lines verified against the OCR; the eight Cowdery letters total 23,499 words against 24,040
+in the later reprint (which carries front matter). Two things to carry with the counts:
+
+- Cowdery's Letter I opens with the editor's note that "our brother J. Smith jr. has offered to
+  assist us" with the history the letters tell. The letters are signed by Cowdery alone and are
+  admitted under rule 11, but they are declared to have had Joseph Smith's help.
+- Phelps's opening address in the *Star* (June 1832) is excluded for now: the OCR interleaves it
+  line by line with unsigned columns. It can enter after OCR cleaning (BOM-14) separates them.
 
 **What the counts showed that the estimates did not.**
 
@@ -223,6 +236,48 @@ addresses). Nothing narrower had been counted.
     `ss-manuscript-story-1885`, `es-1823-view-of-the-hebrews`, `gh-1816-late-war`. Whole
     periodical runs (provenance *edited*) are listed but not counted toward a candidate until
     their signed items are selected.
+
+### Selection rule for signed periodical items (BOM-13, written 2026-10-26)
+
+Written before any item was extracted or counted, for the two church periodicals on file:
+`oc-messenger-advocate` (*Messenger and Advocate*, Kirtland, 1834-1837) and
+`wwp-evening-morning-star` (*The Evening and the Morning Star*, 1832-1834). What was known: the
+OCR is one column and readable, items end in a signature line, and an OCR-tolerant search finds
+about 60 lines that look like a candidate's signature. Nothing had been extracted or counted.
+
+11. **Admissible item.** A letter, essay or address that ends with one candidate's name or
+    initials as its signature. Its text runs from its heading or salutation to the signature,
+    and a postscript before the next item belongs to it.
+12. **Not admissible.** Items signed by several people (committee addresses, petitions,
+    resolutions); items signed as chairman, clerk or secretary of a meeting (minutes are a
+    report, not composition); revelations; letters *to* a candidate; and all unsigned matter,
+    including editorials. The *Star*'s publisher line is "W. W. Phelps & Co." (the church's
+    printing firm) and the *Messenger*'s editor changed three times, so unsigned editorial
+    matter cannot be assigned to one person. This follows the *Lake Light* rule 2.
+13. **Joseph Smith's signed items are not taken.** Section 3 names his pre-1830 letters, the 1832
+    History and the early revelations; signed newspaper pieces of 1834-1837 are outside that
+    list, and the *Do not use* list already sets aside editor-shaped periodical text under his
+    name.
+14. **One printing per text.** An item reprinted later is counted from its first printing here,
+    and the later copy is marked `edition_of` (section 4.3). Cowdery's Letters I-VIII
+    (`oc-1834-letters-to-phelps`, a later reprint) and the Wikisource transcriptions of Rigdon's
+    essays and Phelps's letters are therefore counted from the *Messenger*, and serve as checks
+    that the extraction found them.
+15. **Recorded, not inferred.** Each admitted item is listed in
+    `data/candidates/signed_items.json` with its line span in the OCR file, signer, opening
+    words and signature line, and each rejected signature line with its reason. A script proposes
+    the spans; every one is checked by eye before counting.
+16. **Expected result, recorded in advance.** Phelps's signed items in the *Star* are few (about
+    three signature lines), so nearly all his post-1830 sample will come from his *Messenger*
+    letters. If his total stays under the floor, he keeps the "unreliable sample" flag.
+17. **Clarification, written 2026-10-26 after extraction began.** Several letters in the series
+    rule 14 names end in a closing formula with no name under it, in print or in the OCR
+    (Cowdery's Letters V and VI: "Accept, as ever, assurances of the fellowship and esteem of
+    your unworthy brother"). Rules 11 and 14 then disagree. Rule 14 named these series before any
+    item was extracted, so it governs: every numbered letter of Cowdery's Letters I-VIII to
+    Phelps, and of Phelps's letters to Cowdery (Nos. 1-12 and the second series), counts for the
+    series' author, signed at its foot or not. Nothing else unsigned is admitted by this. Written
+    down here, rather than applied quietly, because it was settled after seeing the data.
 
 ## Oliver Cowdery
 
