@@ -61,6 +61,10 @@ averaging `ingest.jsp.JSP_DELAY` and retries that back off by minutes; why, and 
 involved, are in `docs/candidates.md` (Joseph Smith, "How these were obtained"). Measured on
 2026-10-25: at a 1 s average the site refused pages after about 26 and 66 requests; at 5 s it
 blocked the address after about 165 requests (roughly 14 minutes), longer than six minutes of
-retries. The block began about 11:20 PDT and hourly probes still got 404 at 12:35, 13:35,
-14:35 and 15:35, so it lasts more than four hours. Expect to resume a full rebuild across several sittings. The fetcher skips any output already on disk.
+retries. Hourly probes still got 404 at 12:35, 13:35, 14:35 and 15:35 PDT, but at about
+15:50 a second network got the same 404, and the page's own data showed why: the shell and
+table of contents load, while the transcript service answers `{"status": 500, "error": true}`.
+So from some point the 404 was a server-side fault, not a block on this address; when that
+point was is not known, and the earlier short refusals may still have been throttling. A
+future fetcher should read `summary.status` before treating a 404 as a block. Expect to resume a full rebuild across several sittings. The fetcher skips any output already on disk.
 `--id` picks single sources; `--max-pages N` caps Joseph Smith Papers documents while testing.
