@@ -56,6 +56,10 @@ KEEP = [
 ]  # fmt: skip
 
 
+class TransientError(RuntimeError):
+    """The site answered, but without the transcript; retry later, never save."""
+
+
 def fetch(url: str, retries: int = 4, user_agent: str = USER_AGENT, backoff: float = 5.0) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": user_agent})
     for attempt in range(retries):
@@ -79,7 +83,13 @@ def page_props(page_html: str) -> dict:
     m = NEXT_DATA_RE.search(page_html)
     if not m:
         raise ValueError("no __NEXT_DATA__ in page")
-    return json.loads(m.group(1))["props"]["pageProps"]
+    props = json.loads(m.group(1))["props"]["pageProps"]
+    # On 2026-10-25 the site served its page shell with summary {"status": 500, "error": true}
+    # and no transcript; saving that would record an outage as the page (BOM-13).
+    sm = props.get("summary") or {}
+    if sm.get("error") or "clearText" not in sm:
+        raise TransientError(f"transcript unavailable: summary {str(sm)[:80]}")
+    return props
 
 
 def clean_text(fragment: str) -> str:
