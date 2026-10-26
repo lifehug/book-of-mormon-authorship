@@ -1,7 +1,7 @@
 # Difference report: printers manuscript vs 1830
 
 - Covered paragraphs: 1178 of 1182; words compared: 268,426
-- Words in a changed region: 9,283 (3.46%)
+- Words in a changed region: 9,270 (3.45%)
 - Mean paragraph similarity (difflib ratio): 0.9700
 
 | Book | Paragraphs | Words | Changed | % |
@@ -13,8 +13,8 @@
 | Jarom | 6 | 735 | 41 | 5.58 |
 | Omni | 15 | 1,401 | 62 | 4.43 |
 | Words of Mormon | 6 | 859 | 30 | 3.49 |
-| Mosiah | 135 | 31,255 | 1,104 | 3.53 |
-| Alma | 368 | 85,687 | 3,132 | 3.66 |
+| Mosiah | 135 | 31,255 | 1,102 | 3.53 |
+| Alma | 368 | 85,687 | 3,121 | 3.64 |
 | Helaman | 71 | 20,606 | 714 | 3.47 |
 | 3 Nephi | 103 | 28,785 | 986 | 3.43 |
 | 4 Nephi | 12 | 1,961 | 73 | 3.72 |
@@ -34,10 +34,10 @@
 | 1007 | Alma | 23 | 97 | 0.878 |
 | 249 | 1 Nephi | 3 | 41 | 0.881 |
 | 328 | 1 Nephi | 5 | 55 | 0.883 |
-| 770 | Alma | 3 | 79 | 0.889 |
 | 367 | 1 Nephi | 7 | 102 | 0.894 |
+| 770 | Alma | 3 | 79 | 0.894 |
 | 877 | Alma | 14 | 190 | 0.899 |
-| 737 | Mosiah | 13 | 706 | 0.900 |
+| 737 | Mosiah | 13 | 706 | 0.901 |
 | 514 | Jacob | 1 | 123 | 0.902 |
 | 1286 | 3 Nephi | 14 | 130 | 0.902 |
 | 1097 | Alma | 29 | 103 | 0.904 |

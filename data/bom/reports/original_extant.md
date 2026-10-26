@@ -1,6 +1,6 @@
 # Original manuscript: surviving portions
 
-231 transcribed pages, 76,168 words. Pages are the Joseph Smith Papers' sequence; modern references are the Papers' own page titles. Gap markers are the transcript's editorial notes about pages that do not survive.
+231 transcribed pages, 76,164 words. Pages are the Joseph Smith Papers' sequence; modern references are the Papers' own page titles. Gap markers are the transcript's editorial notes about pages that do not survive.
 
 | Page | Ed. page | Modern ref | Words | Scribes | 1830 book/ch (first) | Gap notes |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -10,12 +10,12 @@
 | 4 | 6 |  | 609 | John  Whitmer, Oliver Cowdery | 1 Nephi 1 |  |
 | 5 | 7 |  | 543 | Scribe 3 | 1 Nephi 1 |  |
 | 6 | 8 |  | 571 | Scribe 3 | 1 Nephi 1 |  |
-| 7 | 9 | 1 Nephi 6–9 | 553 | Scribe 3 | 1 Nephi 1 |  |
+| 7 | 9 | 1 Nephi 6–9 | 552 | Scribe 3 | 1 Nephi 1 |  |
 | 8 | 10 |  | 580 | Scribe 3 | 1 Nephi 2 |  |
 | 9 | 11 |  | 606 | Scribe 3 | 1 Nephi 2 |  |
 | 10 | 12 |  | 573 | Scribe 3 | 1 Nephi 2 |  |
 | 11 | 13 |  | 527 | Scribe 3 | 1 Nephi 2 |  |
-| 12 | 14 | 1 Nephi 10–13:35 | 547 | Scribe 3 | 1 Nephi 2 |  |
+| 12 | 14 | 1 Nephi 10–13:35 | 546 | Scribe 3 | 1 Nephi 2 |  |
 | 13 | 15 |  | 560 | Scribe 3 | 1 Nephi 3 |  |
 | 14 | 16 |  | 527 | Scribe 3 | 1 Nephi 3 |  |
 | 15 | 17 |  | 545 | Scribe 3 | 1 Nephi 3 |  |
@@ -29,7 +29,7 @@
 | 23 | 27 | 1 Nephi 15:5–36 | 406 | John  Whitmer | 1 Nephi 4 |  |
 | 24 | 28 |  | 427 | John  Whitmer | 1 Nephi 4 |  |
 | 25 | 29 |  | 450 | John  Whitmer | 1 Nephi 4 |  |
-| 26 | 30 | 1 Nephi 16–19:21 | 547 | John  Whitmer, Oliver Cowdery | 1 Nephi 4 |  |
+| 26 | 30 | 1 Nephi 16–19:21 | 546 | John  Whitmer, Oliver Cowdery | 1 Nephi 4 |  |
 | 27 | 31 |  | 686 | Oliver Cowdery | 1 Nephi 5 |  |
 | 28 | 32 |  | 677 | Oliver Cowdery | 1 Nephi 5 |  |
 | 29 | 33 |  | 607 | Oliver Cowdery | 1 Nephi 5 |  |
@@ -148,7 +148,7 @@
 | 142 | 312 |  | 469 | Oliver Cowdery | Alma 20 |  |
 | 143 | 313 | Alma 45–49 | 456 | Oliver Cowdery | Alma 20 |  |
 | 144 | 314 |  | 452 | Oliver Cowdery | Alma 21 |  |
-| 145 | 315 |  | 443 | Oliver Cowdery, Joseph Smith Jr. | Alma 21 |  |
+| 145 | 315 |  | 442 | Oliver Cowdery, Joseph Smith Jr. | Alma 21 |  |
 | 146 | 316 |  | 469 | Oliver Cowdery | Alma 21 |  |
 | 147 | 317 |  | 373 | Oliver Cowdery | Alma 21 |  |
 | 148 | 318 |  | 376 | Oliver Cowdery | Alma 21 |  |

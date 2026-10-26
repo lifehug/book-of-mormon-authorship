@@ -1,10 +1,10 @@
 # Alignment report: original manuscript
 
-- Manuscript tokens: 76,168; 1830 tokens: 268,953
-- Unique shared 5-gram anchors: 33,730; monotone chain: 33,601
+- Manuscript tokens: 76,164; 1830 tokens: 268,953
+- Unique shared 5-gram anchors: 33,733; monotone chain: 33,604
 - Pages aligned: 207 of 231
-- 1830 words reached by an anchor: 54,664 of 268,953 (20.3%)
-- 1830 paragraphs covered: 326 of 1182 (27.6%)
+- 1830 words reached by an anchor: 54,667 of 268,953 (20.3%)
+- 1830 paragraphs covered: 327 of 1182 (27.7%)
 
 | Book | Paragraphs | Covered |
 | --- | --- | --- |
@@ -16,7 +16,7 @@
 | Omni | 15 | 0 |
 | Words of Mormon | 6 | 0 |
 | Mosiah | 136 | 0 |
-| Alma | 368 | 152 |
+| Alma | 368 | 153 |
 | Helaman | 71 | 5 |
 | 3 Nephi | 103 | 0 |
 | 4 Nephi | 12 | 0 |
@@ -63,7 +63,6 @@
 - seq 936-936: Alma ch 17 to Alma ch 17 (1 paragraphs)
 - seq 938-938: Alma ch 18 to Alma ch 18 (1 paragraphs)
 - seq 961-961: Alma ch 20 to Alma ch 20 (1 paragraphs)
-- seq 967-967: Alma ch 21 to Alma ch 21 (1 paragraphs)
 - seq 973-975: Alma ch 21 to Alma ch 21 (3 paragraphs)
 - seq 978-980: Alma ch 21 to Alma ch 21 (3 paragraphs)
 - seq 983-984: Alma ch 21 to Alma ch 21 (2 paragraphs)

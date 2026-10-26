@@ -93,10 +93,13 @@ def page_props(page_html: str) -> dict:
 
 
 # Elements whose text is the editors', not the writer's: popup notes, hidden glosses
-# ("hide-this", biographies), editorial comments ("date stamp"), note letters ("toe-note"),
+# ("hide-this", biographies), "Editorial Note" essays ("note-data"), note letters ("toe-note"),
 # and popup anchors that hold a footnote number or a scribe-change icon. A "reference" popup
-# anchor is transcript (a glossed word, e.g. "Kees") and is kept (BOM-13).
-EDITORIAL_CLASSES = {"popup-content", "hide-this", "note-data", "editorial-comment", "toe-note"}
+# anchor is transcript (a glossed word, e.g. "Kees") and is kept (BOM-13). An inline
+# "editorial-comment" ("[2 pages not extant]") is kept: JSP prints it inside square brackets,
+# ingest.extant reads the gaps from it, and transcript_words drops bracketed text.
+EDITORIAL_CLASSES = {"popup-content", "hide-this", "note-data", "toe-note"}
+KEPT_CLASSES = {"editorial-comment"}
 EDITORIAL_ANCHORS = {"editorial-note-static", "new-scribe-note"}
 BLOCK_TAGS = {"p", "div", "br", "li", "h1", "h2", "h3", "h4", "h5", "h6"}
 VOID_TAGS = {"br", "img", "hr", "input", "meta", "link", "wbr"}
@@ -121,7 +124,7 @@ class _TranscriptParser(HTMLParser):
                 self.chars.append(("\n", js))
             return
         classes = set((dict(attrs).get("class") or "").split())
-        skip = skip or bool(classes & EDITORIAL_CLASSES)
+        skip = skip or bool(classes & EDITORIAL_CLASSES and not classes & KEPT_CLASSES)
         skip = skip or (tag == "a" and bool(classes & EDITORIAL_ANCHORS))
         js = js or (tag == "span" and "josephswriting" in classes)
         self.stack.append((tag, js, skip))

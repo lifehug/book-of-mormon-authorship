@@ -1019,8 +1019,14 @@ it dropped every word the Papers had linked to a glossary popup ("Kees", for key
 footnote numbers as words, and it counted hidden biographical notes ("27 Aug. 1793–27 May 1840.
 Hatter.") as if Joseph had written them. Small per page; up to a tenth of a short letter. The same
 extractor built the Book of Mormon manuscript text back in BOM-05, where it also split words
-that the site breaks across two tags: 2,188 of them in the original manuscript. That one is now
-its own issue, BOM-52.
+that the site breaks across two tags. I first put that at 2,188 words in the original
+manuscript, which sounded alarming. It was wrong: that was a count of whitespace pieces, and
+most of them were punctuation cut loose from a word. Rebuilt and run through the alignment's own
+tokenizer (BOM-52), the original manuscript changed by eight words ("ap point" became
+"appoint"), the printer's manuscript by 63 (39 glossed place names restored, 24 split words
+joined), one paragraph's page mapping moved, and twelve paragraphs got very slightly more
+similar to the 1830 text. Worth fixing, nothing like what I first said. The lesson is the usual
+one: measure with the instrument the analysis uses, not a rough proxy.
 
 The result, before any masking of Bible quotations:
 
@@ -1043,6 +1049,9 @@ surprise in size, and it is exactly the sort of thing the "unreliable sample" fl
   counted by JSP's own hand markup: Joseph Smith 0 words in his hand before 1830, 6,158 after;
   2,844 dictated before 1830. Fixed the JSP text reader (glossed words dropped, editorial notes
   counted); the same bug in the BOM-05 manuscript text is BOM-52.
+- **2026-10-26, later.** BOM-52 closed: BOM-05 manuscript text rebuilt offline with the fixed
+  reader. Effect is tiny (original 8 tokens, printer's 63, one paragraph mapping); my earlier
+  "2,188 split words" was a whitespace count, mostly punctuation. Gap markers all kept (51).
 
 - **2026-10-24, night.** Dedup running, and three days of labelling behind me. Writing it down
   while the machine chews through 185 GB.

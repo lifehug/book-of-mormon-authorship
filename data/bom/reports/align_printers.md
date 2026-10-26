@@ -1,9 +1,9 @@
 # Alignment report: printers manuscript
 
-- Manuscript tokens: 270,671; 1830 tokens: 268,953
-- Unique shared 5-gram anchors: 186,331; monotone chain: 186,265
+- Manuscript tokens: 270,698; 1830 tokens: 268,953
+- Unique shared 5-gram anchors: 186,336; monotone chain: 186,270
 - Pages aligned: 463 of 468
-- 1830 words reached by an anchor: 242,354 of 268,953 (90.1%)
+- 1830 words reached by an anchor: 242,355 of 268,953 (90.1%)
 - 1830 paragraphs covered: 1178 of 1182 (99.7%)
 
 | Book | Paragraphs | Covered |

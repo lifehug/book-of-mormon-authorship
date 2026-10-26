@@ -72,6 +72,15 @@ Fetched 2026-10-15.
 
 Rebuild all of them with `scripts/build_bom.sh`.
 
+**2026-10-26 rebuild (BOM-52).** `jsp_printers.jsonl` and `jsp_original.jsonl` were re-extracted
+offline from the raw pages with `jsp.transcript_text`, which replaced `clean_text`: glossed words
+are kept, footnote numbers, hidden glosses and "Editorial Note" blocks are dropped, words that
+JSP splits across tags are joined, and bracketed editorial comments (the gap markers) stay. With
+the old text, `build_bom.sh` reproduced every output byte for byte; with the new text, alignment
+tokens changed by 63 in the printer's manuscript (39 glossed words restored, 24 joins) and 8 in
+the original (joins), one paragraph's page mapping changed, 12 paragraphs' similarity rose (max
+0.014), and all 51 gap markers survived.
+
 ## 6. Manifests
 
 After a rebuild, verify against the committed manifests:

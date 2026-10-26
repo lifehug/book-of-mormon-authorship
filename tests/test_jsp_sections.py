@@ -70,3 +70,15 @@ def test_transcript_words_hand_split_and_brackets():
         ("in", False),
         ("religion", False),
     ]
+
+
+def test_gap_marker_kept_in_text_but_not_counted():
+    # ingest.extant reads lost leaves from these; they must survive transcript_text.
+    frag = (
+        'and <span class="italic note-data editorial-comment" isnote="Y">2 pages not extant</span>]'
+        ' then <span class="note-data" isnote="Y"><div>Editorial Note</div></span>more'
+    )
+    frag = frag.replace("and <span", "and [<span")
+    assert "[2 pages not extant]" in jsp.transcript_text(frag)
+    assert "Editorial" not in jsp.transcript_text(frag)
+    assert [w for w, _ in jsp.transcript_words(frag)] == ["and", "then", "more"]

@@ -1,15 +1,15 @@
 # Difference report: original manuscript vs 1830
 
-- Covered paragraphs: 326 of 1182; words compared: 65,298
-- Words in a changed region: 12,116 (18.55%)
-- Mean paragraph similarity (difflib ratio): 0.8801
+- Covered paragraphs: 327 of 1182; words compared: 65,433
+- Words in a changed region: 12,150 (18.57%)
+- Mean paragraph similarity (difflib ratio): 0.8799
 
 | Book | Paragraphs | Words | Changed | % |
 | --- | --- | --- | --- | --- |
-| 1 Nephi | 161 | 21,614 | 1,722 | 7.97 |
+| 1 Nephi | 161 | 21,614 | 1,719 | 7.95 |
 | 2 Nephi | 7 | 2,200 | 519 | 23.59 |
 | Jacob | 1 | 111 | 52 | 46.85 |
-| Alma | 152 | 40,290 | 9,522 | 23.63 |
+| Alma | 153 | 40,425 | 9,559 | 23.65 |
 | Helaman | 5 | 1,083 | 301 | 27.79 |
 
 ## Least similar paragraphs
