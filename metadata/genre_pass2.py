@@ -28,7 +28,7 @@ Usage::
 
     python -m metadata.genre_pass2 run --model sonnet
     python -m metadata.genre_pass2 agreement
-    python -m metadata.genre_pass2 adjudicate --model opus
+    python -m metadata.genre_pass2 adjudicate --model opus   # contradictions only
 """
 
 from __future__ import annotations
@@ -318,12 +318,16 @@ def redraw() -> int:
 
 
 def adjudicate(model: str, workers: int, limit: int | None) -> int:
-    """Opus on the disagreements only. Reported apart from the reliability figure."""
+    """Opus on the contradictions only. Reported apart from the reliability figure.
+
+    A contradiction is a pair with no label in common (``compare``); a pair sharing one label is
+    an overlap, not a conflict, and there is nothing for a third model to settle.
+    """
     rows = pq.read_table(OUT).to_pylist()
-    disputed = [r for r in rows if r["pass2"] and not agree(r["pass1"], r["pass2"])]
+    disputed = [r for r in rows if r["pass2"] and compare(r["pass1"], r["pass2"]) == "contradict"]
     print(f"{sum(1 for r in disputed if not _needs_work(r['adjudicated'])):,} already adjudicated")
     disputed = [r for r in disputed if _needs_work(r["adjudicated"])]
-    print(f"{len(disputed):,} disagreements of {sum(1 for r in rows if r['pass2']):,} labelled")
+    print(f"{len(disputed):,} contradictions of {sum(1 for r in rows if r['pass2']):,} labelled")
     return _label(
         rows, "adjudicated", "adjudicator", model, workers, disputed[:limit] if limit else disputed
     )
