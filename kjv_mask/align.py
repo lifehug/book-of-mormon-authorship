@@ -11,9 +11,17 @@ span: inside each candidate the tokens are re-aligned (``difflib``, lowercased w
 4.4 classes are assigned to maximal token windows by their identity. Identity is the share of
 the text's tokens in the window that align to an equal KJV token.
 
-passim's own settings (seed n-gram order, minimum matches, minimum alignment, gap) are not
-registered; they are ``kjv_mask.passim`` in ``pending_amendment`` and are chosen by
-``kjv_mask.evaluate`` on planted quotations, never on the Book of Mormon (4.2).
+Amendment 2 registers passim's settings: word 5-grams, minimum alignment 8 tokens, maximum gap
+100 characters, relative overlap 0.5, validated on a hand-checked sample of 200 alignments and
+frozen before any Book of Mormon text is masked (``kjv_mask.passim`` in the config). It leaves
+passim's minimum number of shared n-grams open, and that one cannot stay at passim's default of
+5: an 8-token quotation holds only four 5-grams. It is chosen under Amendment 2's selection-rule
+provision by ``kjv_mask.evaluate`` on planted quotations, never on the Book of Mormon (4.2).
+The 8-token minimum is enforced on tokens here; passim's own ``--min-align`` counts characters
+and is set low enough not to pre-empt it.
+
+Tokens follow Amendment 2's registered tokenisation: Unicode NFKC, lowercased, long s folded,
+split on non-alphanumerics except apostrophes and hyphens inside a word.
 
 Usage::
 
@@ -31,6 +39,7 @@ import os
 import re
 import subprocess
 import sys
+import unicodedata
 from dataclasses import dataclass
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -39,7 +48,7 @@ from metadata.config import load as load_config
 
 KJV = Path("data/kjv/kjv.jsonl")
 JAVA_HOME = "/opt/homebrew/opt/openjdk@17"
-_WORD = re.compile(r"[A-Za-z]+(?:'[A-Za-z]+)?")
+_WORD = re.compile(r"[^\W_]+(?:['’-][^\W_]+)*")
 
 
 @dataclass
@@ -81,6 +90,7 @@ def run_passim(docs: list[dict], work: Path, params: dict) -> list[dict]:
         "passim", "--fields", "series", "--filterpairs", "series <> series2", "--pairwise",
         "-n", str(params["n"]), "-m", str(params["min_match"]), "-a", str(params["min_align"]),
         "-g", str(params["gap"]), "--maxDF", str(params["max_df"]), "--log-level", "ERROR",
+        "--src-overlap", str(params["overlap"]), "--dst-overlap", str(params["overlap"]),
         str(inp), str(work / "out"),
     ]  # fmt: skip
     env = {**os.environ, "JAVA_HOME": JAVA_HOME}
@@ -102,9 +112,13 @@ def _read_alignments(work: Path) -> list[dict]:
     return out
 
 
+def norm_token(tok: str) -> str:
+    return unicodedata.normalize("NFKC", tok).lower().replace("ſ", "s")
+
+
 def _tokens(text: str, offset: int) -> list[tuple[str, int, int]]:
     return [
-        (m.group(0).lower(), offset + m.start(), offset + m.end()) for m in _WORD.finditer(text)
+        (norm_token(m.group(0)), offset + m.start(), offset + m.end()) for m in _WORD.finditer(text)
     ]
 
 
@@ -184,6 +198,19 @@ def _longest_run(flags: list[int]) -> int:
         run = run + 1 if f else 0
         best = max(best, run)
     return best
+
+
+def registered_params(min_match: int | None = None) -> dict:
+    """passim settings from the config (Amendment 2), with the selected ``min_match``."""
+    p = load_config()["kjv_mask"]["passim"]
+    return {
+        "n": p["ngram"],
+        "gap": p["max_gap_chars"],
+        "overlap": p["relative_overlap"],
+        "min_align": p["passim_min_align_chars"],
+        "max_df": p["max_df"],
+        "min_match": p.get("min_match") if min_match is None else min_match,
+    }
 
 
 def mask(docs: list[dict], work: Path, params: dict) -> dict[str, list[Span]]:

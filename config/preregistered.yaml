@@ -81,6 +81,17 @@ kjv_mask:
     min_identity: 0.60
     max_identity: 0.90
     min_tokens: 8
+  # Amendment 2: passim with word 5-grams, minimum alignment 8 tokens (the min_tokens above),
+  # maximum gap 100 characters, relative overlap 0.5; validated on a hand-checked sample of 200
+  # alignments and frozen before any Book of Mormon text is masked. min_match is a value
+  # Amendment 2 registers as a selection rule (benchmark/control data only, published before the
+  # Book of Mormon is scored); it is added here once kjv_mask.evaluate has chosen it.
+  passim:
+    ngram: 5
+    max_gap_chars: 100
+    relative_overlap: 0.5
+    passim_min_align_chars: 20   # pending_amendment: kjv_mask.passim_implementation
+    max_df: 100                  # pending_amendment: kjv_mask.passim_implementation
 
 segmentation:
   # 4.5: three segmentations (narrator, dictation order, scribe), each cut into fixed chunks.
@@ -123,12 +134,15 @@ seed: 20261017
 # pinned by dated amendment before BOM-21 calibration starts (BOM-40). Absent from the config
 # above on purpose: an unregistered value written here would read as a registered one.
 pending_amendment:
-  - key: kjv_mask.passim
+  - key: kjv_mask.passim_implementation
     issue: BOM-16
-    note: alignment parameters, n-gram size and gap settings
-  - key: segmentation.boundaries_file
-    issue: BOM-17
-    note: the actual narrator, dictation-order and scribe boundary file; commit it and cite its hash
+    note: >
+      Amendment 2 registers passim's n-gram order, minimum alignment, gap and overlap (now in
+      kjv_mask.passim; an earlier entry here for the whole parameter set was stale). Left to
+      implementation: passim counts its own --min-align in characters, set to 20 so that the
+      registered 8-token minimum, enforced on tokens, decides; --maxDF stays at passim's 100;
+      "relative overlap 0.5" is applied to both --src-overlap and --dst-overlap; and a span
+      must contain an unbroken run of matching tokens at least as long as the n-gram order.
   - key: borrowing.null_sample
     issue: BOM-45
     note: >

@@ -55,6 +55,9 @@ PINNED: dict[tuple[str, ...], Any] = {
     ("corpus", "spelling_normalization", "pre_1700"): "morphadorner_emod_lexicon",
     ("corpus", "spelling_normalization", "post_1780"): "artifacts_only",
     ("kjv_mask", "edition"): "kjv_1769_oxford_blayney",
+    ("kjv_mask", "passim", "ngram"): 5,  # Amendment 2
+    ("kjv_mask", "passim", "max_gap_chars"): 100,  # Amendment 2
+    ("kjv_mask", "passim", "relative_overlap"): 0.5,  # Amendment 2
     ("segmentation", "split", "seed"): 20261017,
     ("seed",): 20261017,
     # Registered by Amendment 3, 2026-10-20 (OSF revision 6ad802954d710c8c6b00b651).

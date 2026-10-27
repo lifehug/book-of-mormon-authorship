@@ -17,15 +17,16 @@ background both counting as ``original``. Background passages are screened first
 verbatim hit of its own at a sensitive setting is real scripture and is dropped, so a true
 detection is never scored as a false positive.
 
-**Selection rule, fixed before the grid was run:** the setting with the highest *masking* F1
-wins -- a token is masked if it is labelled verbatim or paraphrase, and both are what
-attribution removes. Per-class figures are reported but not optimised: a planted 0.75
-paraphrase that keeps ten words intact legitimately contains a verbatim span under 4.4, so
-scoring the planted class exactly would penalise the registered rule. Ties go to the larger
-``n``, then the larger ``min_align`` (fewer chance seeds). (A first draft optimised the mean of
-the two class F1s; it was replaced before any grid result existed, for the reason above.) The
-winner goes into the amendment that registers ``kjv_mask.passim``; the full grid is published
-beside it.
+**Selection rule, fixed before any result on these axes was seen.** Amendment 2 registers
+passim's n-gram order (5), gap (100) and overlap (0.5); only ``min_match`` is chosen here, over
+1-4 (an 8-token quotation holds four 5-grams, so more could never match one). The value with
+the highest *masking* F1 wins -- a token is masked if it is labelled verbatim or paraphrase,
+both of which attribution removes. Per-class figures are reported, not optimised: a planted 0.75
+paraphrase that keeps ten words intact legitimately contains a verbatim span under 4.4. Ties go
+to the larger ``min_match`` (fewer chance alignments).
+
+A first grid also varied the n-gram order and gap, before Amendment 2's registered values for
+them were noticed; it was stopped after one setting and its output is not used.
 
 Usage::
 
@@ -36,7 +37,6 @@ Usage::
 from __future__ import annotations
 
 import argparse
-import itertools
 import json
 import random
 import re
@@ -45,7 +45,7 @@ from pathlib import Path
 
 import pyarrow.parquet as pq
 
-from kjv_mask.align import mask
+from kjv_mask.align import mask, registered_params
 from metadata.config import load as load_config
 from metadata.config import sha256_of_config
 
@@ -62,13 +62,7 @@ MIN_VERSE_TOKENS = 12
 # a deliberately sensitive setting for screening background passages for real scripture
 SCREEN = {"n": 3, "min_match": 1, "min_align": 20, "gap": 100, "max_df": 100}
 
-GRID_AXES = {
-    "n": [3, 4, 5],
-    "min_match": [1, 2, 3],
-    "min_align": [20, 40],
-    "gap": [100, 600],
-    "max_df": [100],
-}
+MIN_MATCH = [1, 2, 3, 4]
 
 _WORD = re.compile(r"[A-Za-z]+(?:'[A-Za-z]+)?")
 
@@ -213,8 +207,7 @@ def grid() -> int:
         for ln in GRID.read_text().splitlines():
             r = json.loads(ln)
             done[json.dumps(r["params"], sort_keys=True)] = r
-    keys = list(GRID_AXES)
-    combos = [dict(zip(keys, vals, strict=True)) for vals in itertools.product(*GRID_AXES.values())]
+    combos = [registered_params(m) for m in MIN_MATCH]
     stamp = sha256_of_config()
     for params in combos:
         k = json.dumps(params, sort_keys=True)
@@ -233,7 +226,7 @@ def grid() -> int:
         )
     best = max(
         done.values(),
-        key=lambda r: (r["objective"], r["params"]["n"], r["params"]["min_align"]),
+        key=lambda r: (r["objective"], r["params"]["min_match"]),
     )
     print(f"selected: {best['params']}  objective {best['objective']:.3f}")
     return 0
