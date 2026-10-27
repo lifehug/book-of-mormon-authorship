@@ -80,8 +80,7 @@ def _docs(group: str) -> list[dict]:
             ]
         return docs
     if group == "controls":
-        from ocr_fix.clean import out_path
-        from ocr_fix.normalize import OUT_DIR as NORM_DIR
+        from ocr_fix.normalize import norm_path
 
         ids = set()
         for f in sorted(CONTROLS.glob("*.txt")):
@@ -92,8 +91,8 @@ def _docs(group: str) -> list[dict]:
         docs = []
         for r in cat:
             if r["work_id"] in ids:
-                p = NORM_DIR / out_path(r).relative_to(Path("data/corpus/cleaned"))
-                docs.append({"id": r["work_id"], "text": p.read_text(encoding="utf-8")})
+                text = norm_path(r).read_text(encoding="utf-8")
+                docs.append({"id": r["work_id"], "text": text})
         return docs
     raise SystemExit(f"unknown group {group}")
 

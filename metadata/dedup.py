@@ -30,6 +30,12 @@ Usage::
     python -m metadata.dedup signatures          # the parallel pass, resumable by shard
     python -m metadata.dedup pairs               # LSH over the signatures, writes duplicates
     python -m metadata.dedup authors             # word counts per normalised author
+
+Each command takes ``--text raw`` (the default, the catalog's text as fetched: BOM-12's run) or
+``--text normalized`` (BOM-14's cleaning plus BOM-15's spelling normalisation, the order 4.3
+lists). The two write to separate files, so both results stay published side by side: raw OCR
+of the same book from two sources rarely reaches 0.8 similarity (``DEDUP.md``), and the second
+run measures how much cleaning and normalising recover.
 """
 
 from __future__ import annotations
@@ -53,6 +59,16 @@ CATALOG = Path("data/catalog/catalog.parquet")
 SIG_DIR = Path("data/catalog/signatures")
 DUPES = Path("data/catalog/duplicates.parquet")
 AUTHORS = Path("data/catalog/author_words.parquet")
+
+# per text variant: signatures dir, duplicates table, author totals
+OUTPUTS = {
+    "raw": (SIG_DIR, DUPES, AUTHORS),
+    "normalized": (
+        Path("data/catalog/signatures_normalized"),
+        Path("data/catalog/duplicates_normalized.parquet"),
+        Path("data/catalog/author_words_normalized.parquet"),
+    ),
+}
 
 PERMS = 128
 SHARD = 5000
@@ -111,10 +127,18 @@ def signature_of(text: str, k: int, a: np.ndarray, b: np.ndarray) -> tuple[np.nd
     return best, n, shingles
 
 
-def _do_shard(job: tuple[int, list[tuple[str, str]], int]) -> tuple[int, int]:
+def _text_path(row: dict, text: str) -> str:
+    if text == "raw":
+        return row["text_path"]
+    from ocr_fix.normalize import norm_path
+
+    return str(norm_path(row))
+
+
+def _do_shard(job: tuple[int, list[tuple[str, str]], int, Path]) -> tuple[int, int]:
     """Worker: one shard of (work_id, path) to one parquet file. Idempotent."""
-    idx, items, k = job
-    out = SIG_DIR / f"{idx:05d}.parquet"
+    idx, items, k, sig_dir = job
+    out = sig_dir / f"{idx:05d}.parquet"
     if out.exists():
         return idx, 0
     a, b = _permutations()
@@ -145,18 +169,19 @@ def _do_shard(job: tuple[int, list[tuple[str, str]], int]) -> tuple[int, int]:
     return idx, len(rows)
 
 
-def signatures(workers: int, limit: int | None) -> int:
+def signatures(workers: int, limit: int | None, text: str = "raw") -> int:
+    sig_dir = OUTPUTS[text][0]
     cfg = load_config()
     k = cfg["corpus"]["dedup"]["shingle"]
     rows = [r for r in pq.read_table(CATALOG).to_pylist() if r["has_text"]]
     if limit:
         rows = rows[:limit]
-    SIG_DIR.mkdir(parents=True, exist_ok=True)
+    sig_dir.mkdir(parents=True, exist_ok=True)
     jobs = []
     for i in range(0, len(rows), SHARD):
-        chunk = [(r["work_id"], r["text_path"]) for r in rows[i : i + SHARD]]
-        jobs.append((i // SHARD, chunk, k))
-    todo = [j for j in jobs if not (SIG_DIR / f"{j[0]:05d}.parquet").exists()]
+        chunk = [(r["work_id"], _text_path(r, text)) for r in rows[i : i + SHARD]]
+        jobs.append((i // SHARD, chunk, k, sig_dir))
+    todo = [j for j in jobs if not (sig_dir / f"{j[0]:05d}.parquet").exists()]
     print(f"{len(rows):,} docs, {len(jobs):,} shards, {len(todo):,} to do, {workers} workers")
     if not todo:
         return 0
@@ -172,14 +197,14 @@ def signatures(workers: int, limit: int | None) -> int:
                     f"  {done}/{len(todo)} shards  {el / 60:.1f}m elapsed  ~{left:.0f}m left",
                     flush=True,
                 )
-    print(f"signatures written to {SIG_DIR}")
+    print(f"signatures written to {sig_dir}")
     return 0
 
 
-def _load_signatures() -> tuple[list[str], np.ndarray]:
-    files = sorted(SIG_DIR.glob("*.parquet"))
+def _load_signatures(sig_dir: Path = SIG_DIR) -> tuple[list[str], np.ndarray]:
+    files = sorted(sig_dir.glob("*.parquet"))
     if not files:
-        raise SystemExit(f"no signatures under {SIG_DIR}; run `signatures` first")
+        raise SystemExit(f"no signatures under {sig_dir}; run `signatures` first")
     ids: list[str] = []
     sigs: list[np.ndarray] = []
     for f in files:
@@ -189,7 +214,7 @@ def _load_signatures() -> tuple[list[str], np.ndarray]:
     return ids, np.vstack(sigs)
 
 
-def pairs(bucket_cap: int) -> int:
+def pairs(bucket_cap: int, text: str = "raw") -> int:
     """LSH over the signatures, then an exact signature check at the registered threshold.
 
     LSH is tuned for recall rather than precision -- 16 bands of 8 rows catches pairs from about
@@ -199,7 +224,8 @@ def pairs(bucket_cap: int) -> int:
     """
     cfg = load_config()
     thresh = cfg["corpus"]["dedup"]["threshold"]
-    ids, sigs = _load_signatures()
+    sig_dir, dupes, _ = OUTPUTS[text]
+    ids, sigs = _load_signatures(sig_dir)
     print(f"{len(ids):,} signatures loaded, threshold {thresh}")
 
     bands, rows_per = 16, PERMS // 16
@@ -269,19 +295,19 @@ def pairs(bucket_cap: int) -> int:
         pa.Table.from_pylist(out, schema=DUPE_SCHEMA).replace_schema_metadata(
             {"config_sha256": sha256_of_config()}
         ),
-        DUPES,
+        dupes,
     )
     ngroups = len({r["group_id"] for r in out})
-    print(f"{ngroups:,} duplicate groups covering {len(out):,} works -> {DUPES}")
+    print(f"{ngroups:,} duplicate groups covering {len(out):,} works -> {dupes}")
     print(f"nothing deleted; {len(out) - ngroups:,} rows are non-keepers and are flagged only")
     return 0
 
 
-def authors() -> int:
+def authors(text: str = "raw") -> int:
     """Word counts per normalised author, so BOM-39 has units with known sample sizes."""
-    ids, _ = _load_signatures()
+    sig_dir, dupes, out_path = OUTPUTS[text]
     words: dict[str, int] = {}
-    for f in sorted(SIG_DIR.glob("*.parquet")):
+    for f in sorted(sig_dir.glob("*.parquet")):
         t = pq.read_table(f, columns=["work_id", "words"])
         ws = t.column("work_id").to_pylist()
         ns = t.column("words").to_pylist()
@@ -289,8 +315,8 @@ def authors() -> int:
             words[wid] = n
     cat = [r for r in pq.read_table(CATALOG).to_pylist() if r["has_text"]]
     keep = set()
-    if DUPES.exists():
-        d = pq.read_table(DUPES).to_pylist()
+    if dupes.exists():
+        d = pq.read_table(dupes).to_pylist()
         drop = {r["work_id"] for r in d if not r["is_keeper"]}
         keep = {r["work_id"] for r in cat} - drop
         print(f"excluding {len(drop):,} flagged non-keepers from author totals")
@@ -324,10 +350,10 @@ def authors() -> int:
         pa.Table.from_pylist(out, schema=schema).replace_schema_metadata(
             {"config_sha256": sha256_of_config()}
         ),
-        AUTHORS,
+        out_path,
     )
     big = sum(1 for r in out if r["words"] >= 10000)
-    print(f"{len(out):,} normalised authors -> {AUTHORS}")
+    print(f"{len(out):,} normalised authors -> {out_path}")
     print(f"{big:,} have 10,000+ words (section 3's reliable-sample floor)")
     for r in out[:8]:
         print(f"  {r['words']:>12,}  {r['works']:>5} works  {r['author_norm'][:50]}")
@@ -342,14 +368,16 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("--limit", type=int)
     p = sub.add_parser("pairs")
     p.add_argument("--bucket-cap", type=int, default=2000)
-    sub.add_parser("authors")
+    au = sub.add_parser("authors")
+    for x in (s, p, au):
+        x.add_argument("--text", choices=sorted(OUTPUTS), default="raw")
     a = ap.parse_args(argv)
     if a.cmd == "signatures":
-        return signatures(a.workers, a.limit)
+        return signatures(a.workers, a.limit, a.text)
     if a.cmd == "pairs":
-        return pairs(a.bucket_cap)
+        return pairs(a.bucket_cap, a.text)
     if a.cmd == "authors":
-        return authors()
+        return authors(a.text)
     return 1
 
 

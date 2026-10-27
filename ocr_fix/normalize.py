@@ -143,10 +143,15 @@ def _input_path(row: dict) -> Path:
     return cleaner.out_path(row)
 
 
+def norm_path(row: dict) -> Path:
+    """Where a catalog row's normalised text lives (mirrors the cleaned tree)."""
+    return OUT_DIR / cleaner.out_path(row).relative_to(cleaner.OUT_DIR)
+
+
 def _one(job: tuple[dict, str]) -> dict:
     row, mode = job
     src = _input_path(row)
-    dst = OUT_DIR / cleaner.out_path(row).relative_to(cleaner.OUT_DIR)
+    dst = norm_path(row)
     text, stats = normalize(src.read_text(encoding="utf-8", errors="replace"), mode)
     dst.parent.mkdir(parents=True, exist_ok=True)
     tmp = dst.with_name(dst.name + ".tmp")
