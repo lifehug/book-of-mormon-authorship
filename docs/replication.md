@@ -10,7 +10,7 @@ procedure* are published, and a qualified researcher applies for the data themse
 makes a study checkable is that the path exists and is open, not that the bytes are in the
 repository.
 
-What is committed here: every catalog (559,986 works catalogued, 502,134 with text on disk — the
+What is committed here: every catalog (695,021 works catalogued, 533,328 with text on disk — the
 second figure is the corpus any analysis sees; `data/catalog/`), a checksum manifest for
 every file ever pulled (`data/manifests/`), the public-domain base texts, all ingest code, the
 analytic config, and the pre-registration with its amendments. A replicator uses the manifests

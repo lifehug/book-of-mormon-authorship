@@ -121,13 +121,15 @@ parquet carries the config hash it was built under in its schema metadata (`conf
 
 | File | Built by | What it is |
 | --- | --- | --- |
-| `catalog.parquet` | `python -m metadata.catalog merge` | one row per work from every source: 559,986 rows, 502,134 with text; normalised author and year, and the path of the text file on disk |
-| `genre.parquet` | `python -m metadata.genre rules`, then `label` (llama3.1:8b, about 82 h), then `resolve-no-text` | genre pass 1 for all 559,986 rows: 277,420 decided by rule, 282,462 by the model; 267 `PARSE_FAIL` kept and reported |
-| `genre_pass2.parquet` | `python -m metadata.genre_pass2 run`, then `adjudicate`; figures from `agreement` | genre pass 2 on the Amendment 4 sample of 5,000 (Sonnet, a different model family), with Opus adjudication of disagreements reported separately |
+| `catalog.parquet` | `python -m metadata.catalog merge` | one row per work from every source: 695,021 rows, 533,328 with text (HathiTrust added 2026-10-26 as the last source; the 559,986 earlier rows are unchanged); normalised author and year, and the path of the text file on disk |
+| `genre.parquet` | `python -m metadata.genre rules`, then `label` (llama3.1:8b, about 82 h), then `resolve-no-text` | genre pass 1 for all 695,021 rows: 389,532 decided by rule (including 103,841 HathiTrust rows with no text, `rule:no_text`), 305,489 by the model; 290 `PARSE_FAIL` kept and reported. HathiTrust was added with `rules --append` and `label`, leaving earlier labels as they were |
+| `genre_pass2.parquet` | `python -m metadata.genre_pass2 redraw` (after HathiTrust), `run`, then `adjudicate`; figures from `agreement` | genre pass 2 on the Amendment 4 sample of 5,000 (Sonnet, a different model family), with Opus adjudication of disagreements reported separately |
+| `genre_pass2_pre_hathitrust.parquet` | copied by `redraw` before redrawing | the pass-2 sample as drawn before HathiTrust joined the catalog, kept for comparison |
 | `genre_benchmark_300.json` | interactive session of 2026-10-20 (commit a733bf6); no build script | the model-choice benchmark: 300 records with Sonnet and llama3.1:8b labels; the 60 rule-decided rows serve as ground truth |
 | `signatures/` | `python -m metadata.dedup signatures` (about 2.6 h; gitignored, 524 MB) | MinHash signatures, one shard per parquet; resumable from the shards on disk |
-| `duplicates.parquet` | `python -m metadata.dedup pairs` | 3,336 near-duplicate groups, 7,413 works, earliest marked `is_keeper`; nothing deleted. Read `DEDUP.md` |
-| `author_words.parquet` | `python -m metadata.dedup authors` (word counts computed in the signatures pass) | word counts per normalised author: 64,710 authors |
+| `duplicates.parquet` | `python -m metadata.dedup pairs` | on the text as fetched: 19,697 near-duplicate groups, 40,566 works, earliest marked `is_keeper`; nothing deleted. Read `DEDUP.md` |
+| `duplicates_normalized.parquet`, `author_words_normalized.parquet`, `signatures_normalized/` | the same commands with `--text normalized` (BOM-15) | the same, on BOM-14's cleaned and BOM-15's normalised text; the control sets (BOM-18) read these |
+| `author_words.parquet` | `python -m metadata.dedup authors` (word counts computed in the signatures pass) | word counts per normalised author: 65,432 authors |
 | `DEDUP.md` | written by hand from the dedup outputs | the dedup report, and the measured limitation that cross-source duplicates are not caught on raw OCR |
 | `validation_index.json` | `python -m metadata.validation build` (seeded; redraws byte-identical) | the 300-record genre validation sample: ids, strata, both pass labels; no text |
 | `validation.html`, `validation_sample.json` | same command (gitignored here) | the review page and the sample with 700-char excerpts; restricted (30 Harvard volumes), so committed only to the private repo, `data/private/validation/` |
