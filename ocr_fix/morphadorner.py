@@ -85,6 +85,30 @@ def _inside_word(text: str, at: int, token: str) -> bool:
     return before or after
 
 
+CONFIRM = 3  # word tokens that must follow a resynchronising match directly
+
+
+def _find(text: str, pos: int, token: str, skip: int, window: int, start: int = -1) -> int:
+    """First match of ``token`` after ``start`` that skips at most ``skip`` words of text."""
+    at = max(pos, start + 1)
+    while True:
+        at = text.find(token, at, pos + window + len(token))
+        if at < 0 or len(_WORDS.findall(text, pos, at)) > skip:
+            return -1
+        if not _inside_word(text, at, token):
+            return at
+        at += 1
+
+
+def _confirmed(text: str, pos: int, following: list[tuple[str, str]]) -> bool:
+    for token, _ in following:
+        at = _find(text, pos, token, 0, SEARCH)
+        if at < 0:
+            return False
+        pos = at + len(token)
+    return True
+
+
 def rebuild(text: str, words: list[tuple[str, str]]) -> tuple[str, Counter, int]:
     """Replace each token in ``text`` by its standard spelling, keeping everything between.
 
@@ -92,20 +116,23 @@ def rebuild(text: str, words: list[tuple[str, str]]) -> tuple[str, Counter, int]
     MorphAdorner joins some of them (``. .`` across a line break becomes ``..``), which once
     sent the search to a later ``..`` and from there drifted it to the end of the text. A token
     is accepted only if the text skipped to reach it holds no more words than the tokens missed
-    since the last match, so the search can resynchronise after a mismatch but never run
-    ahead. Returns the text, the replacements made as (lowercase token, lowercase standard)
-    counts, and the number of word tokens not found.
+    since the last match; after a miss, a match must also be followed directly by the next
+    ``CONFIRM`` tokens, or a common word further on (where a word broken by a TCP gap marker
+    had stalled it) would pull the search ahead. Returns the text, the replacements made as
+    (lowercase token, lowercase standard) counts, and the number of word tokens not found.
     """
     parts: list[str] = []
     applied: Counter = Counter()
     pos = missed = behind = 0
-    for token, standard in words:
-        if not _LETTER.search(token):
-            continue
-        at = text.find(token, pos, pos + SEARCH * (1 + behind) + len(token))
-        if at >= 0 and len(_WORDS.findall(text, pos, at)) > behind:
-            at = -1  # reaching it would skip words no missed token accounts for
-        if at < 0 or _inside_word(text, at, token):
+    words = [w for w in words if _LETTER.search(w[0])]
+    for i, (token, standard) in enumerate(words):
+        window = SEARCH * (1 + behind)
+        at = _find(text, pos, token, behind, window)
+        if behind:
+            following = words[i + 1 : i + 1 + CONFIRM]
+            while at >= 0 and not _confirmed(text, at + len(token), following):
+                at = _find(text, pos, token, behind, window, at)
+        if at < 0:
             missed += 1
             behind += 1
             continue

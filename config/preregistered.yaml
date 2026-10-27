@@ -200,7 +200,10 @@ pending_amendment:
       determiner into the most frequent conjunction in every pre-1700 text. Proposed: keep
       "an" as printed and leave every other MorphAdorner standard spelling as is. Until pinned,
       the registered method is applied unchanged and the merge is counted in
-      data/normalization/applied_map.tsv. Affects only the pre-1700 reference texts.
+      data/normalization/applied_map.tsv. Affects only the pre-1700 reference texts. Over all
+      53,486 such texts the map shows an -> and 3.28M tokens, and other MorphAdorner choices of
+      the same kind for the owner to weigh at the same time: whether -> whither 571k,
+      fall -> fallen 345k, yn -> than 321k.
   - key: ocr_fix.defragment
     issue: BOM-14
     note: >

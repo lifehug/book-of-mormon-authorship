@@ -42,10 +42,21 @@ about a million times and determiner `ye` became `you`. Those outputs are kept i
 `data/corpus/normalized_superseded_table/` with their rows in
 `normalization_table_superseded.parquet`.
 
+## Aligning MorphAdorner's output with the text
+
+MorphAdorner's tokens are put back into the original by `ocr_fix.morphadorner.rebuild`. The
+first version drifted (a joined `..` sent it ahead and common words kept it there: 12.6M tokens
+unaligned in 946 texts); it now aligns only word tokens, never skips more words than it has
+missed, and after a miss accepts a match only if the next three tokens follow it. Final run:
+472,107 of about 1.38 billion word tokens unaligned (0.03%), 47 texts over 100; an unaligned
+token keeps its printed spelling. Counts per text are the `unaligned` column.
+
 ## A quirk, not patched
 
-MorphAdorner's EME adorner maps the article `an` to `and` (486 of 497 uses in TCP A00005). It
-is applied unchanged, because the registered method is MorphAdorner's, and its count is in
+MorphAdorner's EME adorner maps the article `an` to `and` (486 of 497 uses in TCP A00005;
+3,284,957 tokens over all pre-1700 texts), and makes a few other choices of the same kind
+(`whether` -> `whither` 570,622, `fall` -> `fallen` 344,816, `yn` -> `than` 320,892). They are
+applied unchanged, because the registered method is MorphAdorner's, and its count is in
 `applied_map.tsv`. Keeping `an` as printed is proposed in `pending_amendment`
 (`spelling_normalization.morphadorner_an`). Only the pre-1700 reference texts are affected;
 the raw text is kept, so either reading can be rebuilt.
