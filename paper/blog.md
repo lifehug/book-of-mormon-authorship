@@ -1102,8 +1102,37 @@ almanacs, playbills, a cricket scorecard, an alchemical treatise, Johnson's coll
 The draft is committed and labeled as what it is, an AI drafting aid for a human to agree with
 or override, not a judgement.
 
+## Closing the catalog with one thing still undone on purpose
+
+BOM-12 is done, and it is done with a known hole in it. The catalog has 559,986 rows, 502,134
+of them with text. Every row has two genre labels or a rule, and 7,413 works sit in 3,336
+near-duplicate groups with the earliest copy marked to keep. Nothing was deleted.
+
+The hole is in the dedup. It only catches copies from the same source. Across sources, 300 pairs
+I checked by eye as the same book scored a median of 0.164 on a 0-to-1 similarity, against a bar
+of 0.8. Not one cleared it. That is not bad OCR so much as two different bad OCRs: a five-word
+run survives two independent passes about a third of the time. The fix is to run it again after
+the text is cleaned (BOM-14) and the spelling normalized (BOM-15), so that re-run is now a
+checkbox on BOM-15 instead of a reason to hold this issue open on work that can't happen yet.
+The other direction is wrong too: one "duplicate" group has 173 members, and they are different
+volumes of *The Public Statutes at Large*, collapsed together by shared boilerplate.
+
+One small thing turned up while I was building the review page. Three records showed no text at
+all. The excerpt code skipped any line under 40 characters, which is every line of a poem. The
+first was a 1522 romance:
+
+> O Myghty fader in heuen on hye / One god and perſones thre / That made bothe daye & nyght
+
+That was easy to fix on the page. The same 40-character rule also fed the genre model its
+prompt, so verse probably got labelled from the title alone. That is a question for later, not
+something to quietly patch now, because patching it would change what a rerun of the labels sees.
+
+Last, housekeeping I should have done earlier: the catalog folder had no checksum manifest and
+its SOURCES.md never mentioned any of the eleven files this issue made. Both are fixed.
+
 ## Log
 
+- **2026-10-27, later.** BOM-12 closed: catalog 559,986 rows (502,134 with text), genre pass 1 and pass 2, dedup (3,336 groups, same-source only; re-run moved to BOM-15), author word counts (64,710). Catalog manifest and SOURCES.md section added. Three empty validation excerpts (verse) fixed.
 - **2026-10-27.** Genre validation deferred (BOM-53). Page pulled from the private repo,
   300 AI-drafted labels committed with a rule sheet (151 side with Llama, 87 with Sonnet,
   62 with neither). Perturbation will run at a worst-case 28%/3% bound first; the hand

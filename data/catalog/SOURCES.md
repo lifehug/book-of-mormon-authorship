@@ -110,3 +110,25 @@ rerunning the same command after any interruption skips what is already on disk.
   re-checked here. The text stays on local disk; only the catalog and manifests are committed.
 - TCP: Phase I texts are CC0; later texts carry their terms in the TEI header. Evans and ECCO
   texts are public-domain source material.
+
+## The merged catalog and its labels (BOM-12)
+
+All built from the per-source catalogs above and the corpus text on the data machine. Every
+parquet carries the config hash it was built under in its schema metadata (`config_sha256`).
+
+| File | Built by | What it is |
+| --- | --- | --- |
+| `catalog.parquet` | `python -m metadata.catalog merge` | one row per work from every source: 559,986 rows, 502,134 with text; normalised author and year, and the path of the text file on disk |
+| `genre.parquet` | `python -m metadata.genre rules`, then `label` (llama3.1:8b, about 82 h), then `resolve-no-text` | genre pass 1 for all 559,986 rows: 277,420 decided by rule, 282,462 by the model; 267 `PARSE_FAIL` kept and reported |
+| `genre_pass2.parquet` | `python -m metadata.genre_pass2 run`, then `adjudicate`; figures from `agreement` | genre pass 2 on the Amendment 4 sample of 5,000 (Sonnet, a different model family), with Opus adjudication of disagreements reported separately |
+| `genre_benchmark_300.json` | interactive session of 2026-10-20 (commit a733bf6); no build script | the model-choice benchmark: 300 records with Sonnet and llama3.1:8b labels; the 60 rule-decided rows serve as ground truth |
+| `signatures/` | `python -m metadata.dedup signatures` (about 2.6 h; gitignored, 524 MB) | MinHash signatures, one shard per parquet; resumable from the shards on disk |
+| `duplicates.parquet` | `python -m metadata.dedup pairs` | 3,336 near-duplicate groups, 7,413 works, earliest marked `is_keeper`; nothing deleted. Read `DEDUP.md` |
+| `author_words.parquet` | `python -m metadata.dedup authors` (word counts computed in the signatures pass) | word counts per normalised author: 64,710 authors |
+| `DEDUP.md` | written by hand from the dedup outputs | the dedup report, and the measured limitation that cross-source duplicates are not caught on raw OCR |
+| `validation_index.json` | `python -m metadata.validation build` (seeded; redraws byte-identical) | the 300-record genre validation sample: ids, strata, both pass labels; no text |
+| `validation.html`, `validation_sample.json` | same command (gitignored here) | the review page and the sample with 700-char excerpts; restricted (30 Harvard volumes), so committed only to the private repo, `data/private/validation/` |
+| `validation_draft.json`, `validation_draft_rules.md` | interactive session of 2026-10-27 (commit 03fddeb) | an AI-drafted label and reason per sample record, under the rule sheet; a drafting aid for BOM-53, not a judgement |
+
+Checksums: `data/manifests/catalog.jsonl` (everything here except the two restricted files) and
+`data/manifests/validation-private.jsonl` (the private copies of those two).
