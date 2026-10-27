@@ -5,16 +5,25 @@ Built by `python -m metadata.dedup signatures && python -m metadata.dedup pairs`
 **Nothing is deleted.** `duplicates.parquet` flags members and marks the earliest as `is_keeper`;
 stages wanting one row per work filter on it themselves.
 
-| | |
-| --- | --- |
-| Duplicate groups | 3,336 |
-| Works in a group | 7,413 |
-| Non-keepers flagged | 4,077 |
-| Groups spanning more than one source | **6** |
+| | before HathiTrust (2026-10-25) | with HathiTrust (2026-10-27) |
+| --- | --- | --- |
+| Works with text | 502,134 | 533,328 |
+| Duplicate groups | 3,336 | 19,697 |
+| Works in a group | 7,413 | 40,566 |
+| Non-keepers flagged | 4,077 | 20,869 |
+| Groups spanning more than one source | **6** | 16,573 |
+
+**Read the second column carefully.** HathiTrust was left out of the first catalog merge by
+mistake and added on 2026-10-27. 16,555 of the 16,573 cross-source groups pair a HathiTrust
+volume with an Internet Archive item, and their best similarity has median **1.000** (p10 0.930;
+86% at 0.95 or above): for Archive-digitized volumes HathiTrust redistributes the Archive's own
+scan *and its OCR*. These are the same text twice, which is exactly what the method catches.
+They are not independent OCR passes, and they do not change the finding below, which is about
+genuinely different OCR of the same work. Excluding them, cross-source groups number 18.
 
 ## The limitation, measured 2026-10-25
 
-That last row is the finding. This pass catches **same-source near-identical copies** and
+The first column's last row is the finding. This pass catches **same-source near-identical copies** and
 essentially no cross-source duplicates — yet 28,303 Internet Archive items are flagged in the
 catalog as overlapping Harvard's collection.
 

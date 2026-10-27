@@ -45,9 +45,12 @@ separate Distribution Agreement with Google, which has not been pursued.
 
 **What it actually added** (`data/catalog/hathitrust_overlap.json`): of the 31,194 received,
 **21,810 were already held** from the Internet Archive pull, leaving **9,384 genuinely new**
-volumes — under 2% of the corpus. The overlap is not waste: those 21,810 give two independent
-OCR passes of the same book, HathiTrust's and the Archive's, which is a ready-made test set for
-BOM-14's OCR scoring that would otherwise need hand-corrected pages.
+volumes — under 2% of the corpus. **Corrected 2026-10-27:** this file said the 21,810 gave two
+independent OCR passes of each book. They do not: for Archive-digitized volumes HathiTrust
+redistributes the Archive's own OCR, and 16,555 of them match their Archive copy at a median
+MinHash similarity of 1.000 (`DEDUP.md`). BOM-14 measures OCR error against TCP's hand-keyed
+text instead (`data/ocr_quality/`). HathiTrust entered the merged catalog only on 2026-10-27;
+the first merge left it out by mistake.
 
 Terms, from the signed researcher agreement: the text stays on this machine, is never committed
 or redistributed, and only manifests are public. Deletion notices from HathiTrust must be
