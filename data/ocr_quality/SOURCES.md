@@ -57,3 +57,26 @@ an image is.
 
 Only one batch could be measured, because the extractor discarded the ALTO for the other 75 and
 deleted the tarballs. BOM-50 recovers it.
+
+## Measured CER, cleaning and calibration (BOM-14, 2026-10-27)
+
+| File | Built by | What it is |
+| --- | --- | --- |
+| `groundtruth_pairs.jsonl` | `python -m ocr_fix.groundtruth pairs` | 2,108 pairs of a hand-keyed TCP text (ECCO/Evans) and an OCR copy of the same work: same normalised title, author surname and year. 1,832 Internet Archive, 256 HathiTrust, 20 Harvard |
+| `groundtruth.parquet` | `python -m ocr_fix.groundtruth measure` | per pair: median CER over 20 keyed windows of 400 characters, located in the raw OCR and in the cleaned OCR (the same passages, so the comparison is paired), plain and letters-only; plus the proxy metrics of the raw text. 1,883 pairs aligned (5+ windows) |
+| `calibration.json` | `python -m ocr_fix.calibrate fit` | log-scale linear model of CER on the proxies, 5-fold cross-validated: MAE, Spearman, and the share of volumes put on the wrong side of `corpus.ocr_max_cer` |
+| `cleaning.parquet` | `python -m ocr_fix.clean run` | per document: what cleaning changed (header lines, rejoined hyphens, long-s repairs) and the raw text's proxy metrics. Cleaned text itself is local only, `data/corpus/cleaned/` |
+| `volumes.parquet` | `python -m ocr_fix.calibrate apply` | per volume: estimated CER (raw, cleaned, letters-only), measured CER where a keyed twin exists, Harvard's own score, `near_cutoff`, `extrapolated` (Chronicling America), and `ocr_excluded` -- a flag, nothing deleted |
+| `llm_correction.jsonl` | `python -m ocr_fix.llm_correct run` | 100 keyed windows: CER of the cleaned OCR before and after Sonnet was asked to correct it. Scores only; no text (some windows are Harvard's) |
+| `defragment_eval.json` | `python -m ocr_fix.defragment evaluate` | word recovery when keyed Evans text is broken at random the way the Wayne Sentinel is |
+| `*_cleaned.parquet` | `python -m ocr_fix.score run data/newspapers/<name>/cleaned --name <name>_cleaned` | page scores of the re-segmented newspapers |
+
+**What CER means here.** Plain CER counts every difference from the keying, including
+punctuation, capitals, `&` for `and`, and wording that differs between two printings of the
+same work, so it bounds OCR error from above. Letters-only CER (lowercase letters and spaces)
+is what word-level features read. Both are published; 4.3's cutoff is applied to plain CER of
+the cleaned text, the registered quantity, and the letters-only figure is kept for BOM-40.
+
+**Coverage.** The keyed twins are 1780-1800 books (TCP's Evans and ECCO). Estimates for
+1800-1830 print extrapolate in date, and for Chronicling America in genre as well; the second is
+flagged per row.
