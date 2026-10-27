@@ -147,6 +147,10 @@ pending_amendment:
       registered 8-token minimum, enforced on tokens, decides; --maxDF stays at passim's 100;
       "relative overlap 0.5" is applied to both --src-overlap and --dst-overlap; and a span
       must contain an unbroken run of matching tokens at least as long as the n-gram order.
+      Texts go through in batches of about 720,000 words, and a text over 150,000 words is
+      aligned as pieces of that length overlapping by 500 words, spans mapped back onto the
+      whole text (passim's memory grows with document length; control volumes reach 2.5
+      million words). No Book of Mormon or candidate text is long enough to be cut.
   - key: borrowing.null_sample
     issue: BOM-45
     note: >

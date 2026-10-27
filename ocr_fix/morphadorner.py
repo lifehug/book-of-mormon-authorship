@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -56,6 +57,10 @@ ARGS = [
     "-w", "data/spellingsbywordclass.txt",
 ]  # fmt: skip
 SEARCH = 200  # characters ahead in which an adorned token must be found in the original
+_LETTER = re.compile(r"[^\W\d_]")
+# a word of the original: a whitespace-delimited chunk holding a letter (combining marks, as in
+# the macron of "ſon̄es", would split a letters-only pattern)
+_WORDS = re.compile(r"\S*[^\W\d_]\S*")
 
 
 def adorned_path(row: dict) -> Path:
@@ -72,21 +77,39 @@ def read_adorned(path: Path) -> list[tuple[str, str]]:
     return out
 
 
+def _inside_word(text: str, at: int, token: str) -> bool:
+    """True if a match at ``at`` would cut a word: a letter edge of the token touches a letter."""
+    end = at + len(token)
+    before = token[0].isalpha() and at > 0 and text[at - 1].isalpha()
+    after = token[-1].isalpha() and end < len(text) and text[end].isalpha()
+    return before or after
+
+
 def rebuild(text: str, words: list[tuple[str, str]]) -> tuple[str, Counter, int]:
     """Replace each token in ``text`` by its standard spelling, keeping everything between.
 
-    Tokens are found in order; one not found within ``SEARCH`` characters (MorphAdorner inserts
-    a few markers of its own) is skipped without moving on. Returns the text, the replacements
-    made as (lowercase token, lowercase standard) counts, and the number of tokens not found.
+    Only tokens with a letter are aligned: punctuation and numbers are never respelled, and
+    MorphAdorner joins some of them (``. .`` across a line break becomes ``..``), which once
+    sent the search to a later ``..`` and from there drifted it to the end of the text. A token
+    is accepted only if the text skipped to reach it holds no more words than the tokens missed
+    since the last match, so the search can resynchronise after a mismatch but never run
+    ahead. Returns the text, the replacements made as (lowercase token, lowercase standard)
+    counts, and the number of word tokens not found.
     """
     parts: list[str] = []
     applied: Counter = Counter()
-    pos = missed = 0
+    pos = missed = behind = 0
     for token, standard in words:
-        at = text.find(token, pos, pos + SEARCH + len(token))
-        if at < 0:
-            missed += 1
+        if not _LETTER.search(token):
             continue
+        at = text.find(token, pos, pos + SEARCH * (1 + behind) + len(token))
+        if at >= 0 and len(_WORDS.findall(text, pos, at)) > behind:
+            at = -1  # reaching it would skip words no missed token accounts for
+        if at < 0 or _inside_word(text, at, token):
+            missed += 1
+            behind += 1
+            continue
+        behind = 0
         parts.append(text[pos:at])
         if standard and standard != token and standard.lower() != token.lower():
             parts.append(standard)

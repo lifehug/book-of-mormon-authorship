@@ -15,6 +15,17 @@ size changes which phrases can seed an alignment. Texts therefore go through in 
 ``BATCH_WORDS`` words -- the scale of the validation run -- and each batch is cached by its
 contents, so the job resumes batch by batch.
 
+**Long texts are cut into pieces.** passim's memory grows with document length: a 336,742-word
+Harvard volume exhausted a 6 GB heap, and control volumes run to 2.5 million words. A text over
+``PIECE_WORDS`` words is aligned as pieces of that length, each overlapping the next by
+``PIECE_OVERLAP`` words, and the spans are mapped back onto the whole text's offsets (duplicates
+in an overlap resolve as within a run, ``align.resolve``). Alignment is local -- matches join
+across at most 100 characters -- so cutting does not change what matches; a quotation shorter
+than the overlap that crosses a cut is found whole in one piece. What can shift is the
+document-frequency count, since pieces count as documents; listed in ``pending_amendment``
+(``kjv_mask.passim_implementation``). Texts are read when their batch is built, not all held in
+memory (the control sets are about 1.65 billion words).
+
 Outputs carry offsets, verse references, classes and identities, never text, so they are
 public even where the text is not (the Joseph Smith Papers samples):
 ``data/kjv_mask/<group>/spans.jsonl`` and ``report.json`` (share of words masked per text).
@@ -29,12 +40,15 @@ Usage::
 from __future__ import annotations
 
 import json
+import re
 import sys
+from collections.abc import Callable
+from dataclasses import replace
 from pathlib import Path
 
 import pyarrow.parquet as pq
 
-from kjv_mask.align import _WORD, mask, registered_params
+from kjv_mask.align import _WORD, Span, mask, registered_params, resolve
 from kjv_mask.validate import OUT as VALIDATION
 from kjv_mask.validate import PASS_PRECISION
 from metadata.config import sha256_of_config
@@ -43,9 +57,12 @@ from ocr_fix.normalize import artifacts
 OUT = Path("data/kjv_mask")
 WORK = Path("data/corpus/kjv_mask_runs")
 BATCH_WORDS = 720_000
+PIECE_WORDS = 150_000  # pending_amendment: kjv_mask.passim_implementation
+PIECE_OVERLAP = 500
 EDITION = Path("data/bom/1830/edition_1830.jsonl")
 SAMPLES = Path("data/private/candidates/samples")
 CONTROLS = Path("data/controls")
+_SPACE_WORD = re.compile(r"\S+")
 
 
 def validation_passed() -> bool:
@@ -59,10 +76,19 @@ def validation_passed() -> bool:
     return derived / len(ok) >= PASS_PRECISION
 
 
+def _in_memory(doc_id: str, text: str) -> dict:
+    return {"id": doc_id, "words": len(text.split()), "load": lambda: text}
+
+
+def _from_file(doc_id: str, path: Path, words: int) -> dict:
+    return {"id": doc_id, "words": words, "load": lambda: path.read_text(encoding="utf-8")}
+
+
 def _docs(group: str) -> list[dict]:
+    """(id, word count, loader) per text; the text itself is read only when needed."""
     if group == "bom":
         return [
-            {"id": f"bom:{r['seq']}", "text": artifacts(r["text"])[0]}
+            _in_memory(f"bom:{r['seq']}", artifacts(r["text"])[0])
             for r in (json.loads(ln) for ln in EDITION.read_text().splitlines())
             if r["book"]
         ]
@@ -70,77 +96,135 @@ def _docs(group: str) -> list[dict]:
         # assembled Joseph Smith Papers samples, plus BOM-13's printed units as cleaned and
         # normalised by ocr_fix.candidates (already artifact-normalised)
         docs = [
-            {"id": f"cand:{p.stem}", "text": artifacts(p.read_text(encoding="utf-8"))[0]}
+            _in_memory(f"cand:{p.stem}", artifacts(p.read_text(encoding="utf-8"))[0])
             for p in sorted(SAMPLES.glob("*.txt"))
         ]
         for d in (Path("data/candidates/clean"), Path("data/private/candidates/clean")):
             docs += [
-                {"id": f"cand:{p.stem}", "text": p.read_text(encoding="utf-8")}
+                _in_memory(f"cand:{p.stem}", p.read_text(encoding="utf-8"))
                 for p in sorted(d.glob("*.txt"))
             ]
         return docs
     if group == "controls":
         from ocr_fix.normalize import norm_path
 
-        ids = set()
-        for f in sorted(CONTROLS.glob("*.txt")):
-            ids |= set(f.read_text().split())
+        words = {}
+        for f in sorted(CONTROLS.glob("*.jsonl")):
+            for ln in f.read_text().splitlines():
+                m = json.loads(ln)
+                words[m["work_id"]] = m["words"] or 0
         cat = pq.read_table(
             "data/catalog/catalog.parquet", columns=["work_id", "source", "text_path"]
         ).to_pylist()
-        docs = []
-        for r in cat:
-            if r["work_id"] in ids:
-                text = norm_path(r).read_text(encoding="utf-8")
-                docs.append({"id": r["work_id"], "text": text})
-        return docs
+        return [
+            _from_file(r["work_id"], norm_path(r), words[r["work_id"]])
+            for r in cat
+            if r["work_id"] in words
+        ]
     raise SystemExit(f"unknown group {group}")
 
 
-def _batches(docs: list[dict]) -> list[list[dict]]:
-    out, cur, n = [], [], 0
+def piece_ranges(text: str) -> list[tuple[int, int]]:
+    """Character ranges of the pieces a text is aligned as: one range unless it is long."""
+    starts = [m.start() for m in _SPACE_WORD.finditer(text)]
+    if len(starts) <= PIECE_WORDS:
+        return [(0, len(text))]
+    out = []
+    for k in range(0, len(starts), PIECE_WORDS):
+        end_word = k + PIECE_WORDS + PIECE_OVERLAP
+        end = starts[end_word] if end_word < len(starts) else len(text)
+        out.append((starts[k], end))
+        if end == len(text):
+            break
+    return out
+
+
+def _n_pieces(words: int) -> int:
+    return 1 if words <= PIECE_WORDS else -(-words // PIECE_WORDS)
+
+
+def _units(docs: list[dict]) -> list[tuple[dict, int, int]]:
+    """(doc, piece index, approximate words) for every piece, in document order."""
+    out = []
     for d in docs:
-        w = len(d["text"].split())
-        if cur and n + w > BATCH_WORDS:
+        n = _n_pieces(d["words"])
+        for k in range(n):
+            w = d["words"] if n == 1 else min(PIECE_WORDS, d["words"] - k * PIECE_WORDS)
+            out.append((d, k, w + (PIECE_OVERLAP if k < n - 1 else 0)))
+    return out
+
+
+def _batches(units: list[tuple[dict, int, int]]) -> list[list[tuple[dict, int, int]]]:
+    out, cur, n = [], [], 0
+    for u in units:
+        if cur and n + u[2] > BATCH_WORDS:
             out.append(cur)
             cur, n = [], 0
-        cur.append(d)
-        n += w
+        cur.append(u)
+        n += u[2]
     if cur:
         out.append(cur)
     return out
 
 
-def run(group: str) -> int:
+def _materialise(batch: list[tuple[dict, int, int]]) -> tuple[list[dict], dict[str, tuple]]:
+    """passim documents for a batch, and piece id -> (doc id, offset into the whole text)."""
+    texts: dict[str, str] = {}
+    ranges: dict[str, list[tuple[int, int]]] = {}
+    docs, where = [], {}
+    for d, k, _ in batch:
+        if d["id"] not in texts:
+            texts[d["id"]] = d["load"]()
+            ranges[d["id"]] = piece_ranges(texts[d["id"]])
+        rs = ranges[d["id"]]
+        if k >= len(rs):  # the estimate from the word count ran one piece long
+            continue
+        a, b = rs[k]
+        pid = d["id"] if len(rs) == 1 else f"{d['id']}#p{k}"
+        docs.append({"id": pid, "text": texts[d["id"]][a:b]})
+        where[pid] = (d["id"], a)
+    return docs, where
+
+
+def _counts(text: str, spans: list[Span]) -> dict:
+    total = sum(1 for _ in _WORD.finditer(text))
+    masked = sum(1 for s in spans for _ in _WORD.finditer(text[s.start : s.end]))
+    return {
+        "words": total,
+        "masked_words": masked,
+        "verbatim_spans": sum(s.kind == "verbatim" for s in spans),
+        "paraphrase_spans": sum(s.kind == "paraphrase" for s in spans),
+    }
+
+
+def run(group: str, docs_of: Callable[[str], list[dict]] = _docs) -> int:
     if not validation_passed():
         raise SystemExit("kjv_mask.validate has not passed; settings are not frozen yet")
     params = registered_params()
-    docs = _docs(group)
+    docs = docs_of(group)
     out_dir = OUT / group
     out_dir.mkdir(parents=True, exist_ok=True)
     stamp = sha256_of_config()
+    batches = _batches(_units(docs))
+    found: dict[str, list[Span]] = {d["id"]: [] for d in docs}
+    for i, batch in enumerate(batches, 1):
+        pdocs, where = _materialise(batch)
+        for pid, spans in mask(pdocs, WORK / group, params).items():
+            doc_id, offset = where[pid]
+            found[doc_id] += [replace(s, start=s.start + offset, end=s.end + offset) for s in spans]
+        print(f"  batch {i}/{len(batches)}", flush=True)
     report = {}
-    batches = _batches(docs)
     with (out_dir / "spans.jsonl").open("w") as fh:
-        for i, batch in enumerate(batches, 1):
-            spans = mask(batch, WORK / group, params)
-            for d in batch:
-                ss = spans[d["id"]]
-                fh.write(json.dumps({"id": d["id"], "spans": [s.__dict__ for s in ss],
-                                     "config_sha256": stamp}) + "\n")  # fmt: skip
-                total = sum(1 for _ in _WORD.finditer(d["text"]))
-                masked = sum(1 for s in ss for _ in _WORD.finditer(d["text"][s.start : s.end]))
-                report[d["id"]] = {
-                    "words": total,
-                    "masked_words": masked,
-                    "verbatim_spans": sum(s.kind == "verbatim" for s in ss),
-                    "paraphrase_spans": sum(s.kind == "paraphrase" for s in ss),
-                }
-            print(f"  batch {i}/{len(batches)}", flush=True)
+        for d in docs:
+            ss = resolve(found[d["id"]])
+            fh.write(json.dumps({"id": d["id"], "spans": [s.__dict__ for s in ss],
+                                 "config_sha256": stamp}) + "\n")  # fmt: skip
+            report[d["id"]] = _counts(d["load"](), ss)
     words = sum(r["words"] for r in report.values())
     masked = sum(r["masked_words"] for r in report.values())
     summary = {"group": group, "texts": len(report), "words": words, "masked_words": masked,
                "share_masked": masked / words if words else None, "params": params,
+               "piece_words": PIECE_WORDS, "piece_overlap": PIECE_OVERLAP,
                "config_sha256": stamp, "per_text": report}  # fmt: skip
     (out_dir / "report.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(f"{group}: {masked:,} of {words:,} words masked ({summary['share_masked']:.2%})")

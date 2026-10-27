@@ -249,17 +249,20 @@ def mask(docs: list[dict], work: Path, params: dict) -> dict[str, list[Span]]:
                 params["n"],
             )  # fmt: skip
         )
-    for k, spans in out.items():  # overlapping candidates: keep the stronger class per region
-        spans.sort(key=lambda s: (s.start, s.kind != "verbatim", -s.identity))
-        kept: list[Span] = []
-        for s in spans:
-            if kept and s.start < kept[-1].end:
-                if s.kind == "verbatim" and kept[-1].kind == "paraphrase":
-                    kept[-1] = s
-                continue
-            kept.append(s)
-        out[k] = kept
-    return out
+    return {k: resolve(spans) for k, spans in out.items()}
+
+
+def resolve(spans: list[Span]) -> list[Span]:
+    """Overlapping candidates: keep the stronger class per region (verbatim over paraphrase)."""
+    spans = sorted(spans, key=lambda s: (s.start, s.kind != "verbatim", -s.identity))
+    kept: list[Span] = []
+    for s in spans:
+        if kept and s.start < kept[-1].end:
+            if s.kind == "verbatim" and kept[-1].kind == "paraphrase":
+                kept[-1] = s
+            continue
+        kept.append(s)
+    return kept
 
 
 def main(argv: list[str] | None = None) -> int:

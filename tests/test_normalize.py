@@ -23,7 +23,9 @@ def test_artifacts() -> None:
 
 
 def test_rebuild_keeps_layout_and_skips_inserted_tokens() -> None:
-    text, applied, missed = rebuild("Vnto them I loue,\nye part ſhew", [("¶", "¶"), *ADORNED])
+    text, applied, missed = rebuild(
+        "Vnto them I loue,\nye part ſhew", [("Signat", "Signat"), *ADORNED]
+    )
     assert text == "Unto them I love,\nthe part show"
     assert missed == 1
     assert applied[("loue", "love")] == 1 and ("part", "partly") not in applied
