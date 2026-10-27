@@ -252,7 +252,7 @@ def _label(
             by_id[wid][field] = label
             by_id[wid][who] = model
             n += 1
-            if n % 250 == 0:
+            if n % CHECKPOINT == 0:
                 _write(rows)
                 rate = (time.time() - start) / n
                 left = (len(todo) - n) * rate / 60
@@ -282,6 +282,8 @@ def run(model: str, workers: int, limit: int | None, retry_failed: bool = False)
     todo = [r for r in rows if _needs_work(r["pass2"])]
     return _label(rows, "pass2", "model", model, workers, todo[:limit] if limit else todo)
 
+
+CHECKPOINT = 25  # rows between writes; a slow model at one worker loses at most this many
 
 PRE_HATHITRUST = Path("data/catalog/genre_pass2_pre_hathitrust.parquet")
 
