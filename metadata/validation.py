@@ -87,7 +87,46 @@ def excerpt(row: dict, chars: int = 700) -> str:
     return " / ".join(ln.strip() for ln in raw.splitlines() if ln.strip())[:chars]
 
 
-def build() -> int:
+def from_index() -> list[dict]:
+    """The committed sample, rebuilt with titles and excerpts from the catalog and corpus.
+
+    The draw is frozen once ``validation_index.json`` is committed. Redrawing from a changed
+    catalog (HathiTrust was added on 2026-10-27, after the draw) would silently swap records
+    out from under BOM-53's draft labels, so ``build`` reads the index unless told to redraw.
+    """
+    cat_rows = pq.read_table(CATALOG).to_pylist()
+    cat = {r["work_id"]: r for r in cat_rows}
+    picked = []
+    for rec in json.loads(INDEX.read_text(encoding="utf-8")):
+        row = cat[rec["work_id"]]
+        picked.append(
+            {
+                **{k: rec[k] for k in PUBLIC_FIELDS[:4]},
+                "title": (row["title"] or "")[:300],
+                "author": (row["author"] or "")[:120],
+                **{k: rec[k] for k in PUBLIC_FIELDS[4:]},
+                "excerpt": excerpt(row, 700),
+            }
+        )
+    return picked
+
+
+def write_outputs(picked: list[dict]) -> None:
+    SAMPLE.write_text(json.dumps(picked, ensure_ascii=False, indent=1), encoding="utf-8")
+    INDEX.write_text(
+        json.dumps([{k: r[k] for k in PUBLIC_FIELDS} for r in picked], indent=1),
+        encoding="utf-8",
+    )
+    PAGE.write_text(render(picked), encoding="utf-8")
+
+
+def build(redraw: bool = False) -> int:
+    if INDEX.exists() and not redraw:
+        picked = from_index()
+        write_outputs(picked)
+        print(f"{len(picked)} records from the committed {INDEX} (frozen; --redraw to redraw)")
+        print(f"page -> {PAGE}  (local only)")
+        return 0
     cfg = load_config()
     rng = random.Random(cfg["seed"])
     cat = {r["work_id"]: r for r in pq.read_table(CATALOG).to_pylist()}
@@ -133,12 +172,7 @@ def build() -> int:
                 }
             )
     rng.shuffle(picked)  # so a sitting is not all one stratum
-    SAMPLE.write_text(json.dumps(picked, ensure_ascii=False, indent=1), encoding="utf-8")
-    INDEX.write_text(
-        json.dumps([{k: r[k] for k in PUBLIC_FIELDS} for r in picked], indent=1),
-        encoding="utf-8",
-    )
-    PAGE.write_text(render(picked), encoding="utf-8")
+    write_outputs(picked)
     print(f"{len(picked)} records -> {SAMPLE}")
     for k in PLAN:
         n = sum(1 for r in picked if r["stratum"] == k)
@@ -390,12 +424,13 @@ draw();
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("build")
+    b = sub.add_parser("build")
+    b.add_argument("--redraw", action="store_true", help="draw afresh instead of the index")
     s = sub.add_parser("score")
     s.add_argument("path", type=Path)
     a = ap.parse_args(argv)
     if a.cmd == "build":
-        return build()
+        return build(a.redraw)
     if a.cmd == "score":
         return score(a.path)
     return 1

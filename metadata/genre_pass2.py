@@ -283,10 +283,46 @@ def run(model: str, workers: int, limit: int | None, retry_failed: bool = False)
     return _label(rows, "pass2", "model", model, workers, todo[:limit] if limit else todo)
 
 
+PRE_HATHITRUST = Path("data/catalog/genre_pass2_pre_hathitrust.parquet")
+
+
+def redraw() -> int:
+    """Redraw the sample over the corpus as it now stands, reusing answers already paid for.
+
+    The first draw (2026-10-21) ran on a catalog that had left HathiTrust out by mistake, so
+    its source strata missed a registered source. Amendment 4 registers one 5,000-record
+    sample stratified by source over the corpus; a HathiTrust supplement bolted on would break
+    the registered size, so the whole draw is repeated with the same seed and procedure. The
+    old file is copied to ``PRE_HATHITRUST`` first (the 300-record validation sample was drawn
+    from it) and never overwritten. A record drawn again with the same pass-1 label keeps its
+    pass-2 and adjudication answers; the rest are asked by ``run`` and ``adjudicate``.
+    """
+    cfg = load_config()
+    if not PRE_HATHITRUST.exists():
+        PRE_HATHITRUST.write_bytes(OUT.read_bytes())
+    old = {r["work_id"]: r for r in pq.read_table(PRE_HATHITRUST).to_pylist()}
+    rows = build_sample(cfg)
+    reused = 0
+    for r in rows:
+        o = old.get(r["work_id"])
+        if o and o["pass1"] == r["pass1"] and not _needs_work(o["pass2"]):
+            for k in ("pass2", "model", "adjudicated", "adjudicator"):
+                r[k] = o[k]
+            reused += 1
+    _write(rows)
+    by_source: dict[str, int] = {}
+    for r in rows:
+        by_source[r["stratum_source"]] = by_source.get(r["stratum_source"], 0) + 1
+    print(f"sample of {len(rows):,}; {reused:,} answers reused; by source {by_source}")
+    return 0
+
+
 def adjudicate(model: str, workers: int, limit: int | None) -> int:
     """Opus on the disagreements only. Reported apart from the reliability figure."""
     rows = pq.read_table(OUT).to_pylist()
     disputed = [r for r in rows if r["pass2"] and not agree(r["pass1"], r["pass2"])]
+    print(f"{sum(1 for r in disputed if not _needs_work(r['adjudicated'])):,} already adjudicated")
+    disputed = [r for r in disputed if _needs_work(r["adjudicated"])]
     print(f"{len(disputed):,} disagreements of {sum(1 for r in rows if r['pass2']):,} labelled")
     return _label(
         rows, "adjudicated", "adjudicator", model, workers, disputed[:limit] if limit else disputed
@@ -354,6 +390,7 @@ def main(argv: list[str] | None = None) -> int:
     a.add_argument("--workers", type=int, default=4)
     a.add_argument("--limit", type=int)
     sub.add_parser("agreement")
+    sub.add_parser("redraw")
     args = ap.parse_args(argv)
     if args.cmd == "run":
         return run(args.model, args.workers, args.limit, args.retry_failed)
@@ -361,6 +398,8 @@ def main(argv: list[str] | None = None) -> int:
         return adjudicate(args.model, args.workers, args.limit)
     if args.cmd == "agreement":
         return report()
+    if args.cmd == "redraw":
+        return redraw()
     return 1
 
 
