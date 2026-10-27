@@ -25,7 +25,7 @@ Both versions are kept: input text is read, never written; normalised text goes 
 
 Usage::
 
-    python -m ocr_fix.normalize run [--workers N]      # resumable
+    python -m ocr_fix.normalize run [--workers N] [--source tcp]   # resumable
     python -m ocr_fix.normalize map                    # -> data/normalization/applied_map.tsv
 """
 
@@ -183,10 +183,14 @@ def _write(rows: list[dict]) -> None:
     tmp.replace(STATS)
 
 
-def run(workers: int, limit: int | None) -> int:
+def run(workers: int, limit: int | None, sources: list[str] | None = None) -> int:
     cfg = load_config()
     cols = ["work_id", "source", "text_path", "year"]
-    rows = [r for r in pq.read_table(CATALOG, columns=cols).to_pylist() if r["text_path"]]
+    rows = [
+        r
+        for r in pq.read_table(CATALOG, columns=cols).to_pylist()
+        if r["text_path"] and (not sources or r["source"] in sources)
+    ]
     done = pq.read_table(STATS).to_pylist() if STATS.exists() else []
     have = {r["work_id"] for r in done}
     todo = [(r, regime(r["year"], cfg)) for r in rows if r["work_id"] not in have]
@@ -241,9 +245,10 @@ def main(argv: list[str] | None = None) -> int:
     r = sub.add_parser("run")
     r.add_argument("--workers", type=int, default=6)
     r.add_argument("--limit", type=int)
+    r.add_argument("--source", action="append", help="only these sources (repeatable)")
     sub.add_parser("map")
     a = ap.parse_args(argv)
-    return run(a.workers, a.limit) if a.cmd == "run" else build_map()
+    return run(a.workers, a.limit, a.source) if a.cmd == "run" else build_map()
 
 
 if __name__ == "__main__":
