@@ -70,6 +70,23 @@ PLAN = {
 }
 
 
+def excerpt(row: dict, chars: int = 700) -> str:
+    """excerpt_for, falling back to short lines when a text has no line over 40 characters.
+
+    Verse and two-column indexes have none, so excerpt_for returns "" for them, and a reviewer
+    cannot judge a record with no text. excerpt_for itself is left alone because it also builds
+    the genre prompts, and changing it would change what a rerun of those passes sees.
+    """
+    text = excerpt_for(row, chars)
+    if text or not row.get("text_path"):
+        return text
+    try:
+        raw = Path(row["text_path"]).read_text(encoding="utf-8", errors="replace")[:4000]
+    except OSError:
+        return ""
+    return " / ".join(ln.strip() for ln in raw.splitlines() if ln.strip())[:chars]
+
+
 def build() -> int:
     cfg = load_config()
     rng = random.Random(cfg["seed"])
@@ -112,7 +129,7 @@ def build() -> int:
                     "pass1": g1[wid]["genre"],
                     "pass2": p2[wid]["pass2"] if wid in p2 else None,
                     "decided_by": g1[wid]["decided_by"],
-                    "excerpt": excerpt_for(row, 700),
+                    "excerpt": excerpt(row, 700),
                 }
             )
     rng.shuffle(picked)  # so a sitting is not all one stratum
