@@ -188,6 +188,15 @@ pending_amendment:
       The registration names pre_1700 (MorphAdorner EME lexicon) and post_1780 (artifacts
       only) and is silent on 1700-1779, which is TCP's ECCO and Evans material. Treated as
       artifacts_only, the reading that changes least (ocr_fix/normalize.py regime()).
+  - key: spelling_normalization.morphadorner_an
+    issue: BOM-15
+    note: >
+      MorphAdorner's EME adorner, applied as distributed (ocr_fix/morphadorner.py), maps the
+      article "an" to "and" (486 of 497 uses in one sample text, A00005), which merges a
+      determiner into the most frequent conjunction in every pre-1700 text. Proposed: keep
+      "an" as printed and leave every other MorphAdorner standard spelling as is. Until pinned,
+      the registered method is applied unchanged and the merge is counted in
+      data/normalization/applied_map.tsv. Affects only the pre-1700 reference texts.
   - key: ocr_fix.defragment
     issue: BOM-14
     note: >

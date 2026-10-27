@@ -1,0 +1,169 @@
+"""Run MorphAdorner's Early Modern English adorner on the pre-1700 texts (BOM-15).
+
+4.3 registers MorphAdorner EME for text printed before 1700. MorphAdorner does not apply its
+spelling table blind: it tags parts of speech first, and a word-class table settles the
+ambiguous forms (``part`` as a noun stays, as an adverb becomes ``partly``; ``ye`` is ``the``
+as a determiner and ``you`` as a pronoun). An earlier version of ``ocr_fix.normalize`` applied
+the merged pairs table token by token without tagging, which got exactly those words wrong
+(about a million nouns ``part`` became ``partly``). This runs the real thing, unchanged:
+MorphAdorner 2.0.1's ``adornplainemetext`` configuration from the distributed zip, under the
+local Java 17 that passim already uses.
+
+Its tabular output -- token, spelling, part of speech, standard spelling, lemma, end of
+sentence -- is kept whole in ``data/corpus/morphadorner_adorned/<id>.txt`` (the tags may serve
+later stages), and ``rebuild`` puts the standard spellings back into the original text so its
+lines and paragraphs survive. Faithful includes MorphAdorner's own quirks: it maps the article
+``an`` to ``and``. That is measured in ``data/normalization/applied_map.tsv`` and listed in
+``pending_amendment`` rather than patched here.
+
+Usage::
+
+    python -m ocr_fix.morphadorner adorn [--jobs 4] [--batch 100]   # resumable
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+import time
+from collections import Counter
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
+
+import pyarrow.parquet as pq
+
+from metadata.config import load as load_config
+
+APP = Path("data/corpus/morphadorner/app")
+OUT = Path("data/corpus/morphadorner_adorned")
+CATALOG = Path("data/catalog/catalog.parquet")
+JAVA = Path(os.environ.get("JAVA_HOME", "/opt/homebrew/opt/openjdk@17")) / "bin" / "java"
+HEAP = "2g"
+# the arguments of the distributed adornplainemetext script
+ARGS = [
+    "edu.northwestern.at.morphadorner.MorphAdorner",
+    "-p", "emeplaintext.properties",
+    "-l", "data/emelexicon.lex",
+    "-t", "data/emetransmat.mat",
+    "-u", "data/emesuffixlexicon.lex",
+    "-a", "data/ememergedspellingpairs.tab",
+    "-s", "data/standardspellings.txt",
+    "-w", "data/spellingsbywordclass.txt",
+]  # fmt: skip
+SEARCH = 200  # characters ahead in which an adorned token must be found in the original
+
+
+def adorned_path(row: dict) -> Path:
+    return OUT / Path(row["text_path"]).name
+
+
+def read_adorned(path: Path) -> list[tuple[str, str]]:
+    """(token, standard spelling) for every adorned word."""
+    out = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        cols = line.split("\t")
+        if len(cols) >= 4:
+            out.append((cols[0], cols[3]))
+    return out
+
+
+def rebuild(text: str, words: list[tuple[str, str]]) -> tuple[str, Counter, int]:
+    """Replace each token in ``text`` by its standard spelling, keeping everything between.
+
+    Tokens are found in order; one not found within ``SEARCH`` characters (MorphAdorner inserts
+    a few markers of its own) is skipped without moving on. Returns the text, the replacements
+    made as (lowercase token, lowercase standard) counts, and the number of tokens not found.
+    """
+    parts: list[str] = []
+    applied: Counter = Counter()
+    pos = missed = 0
+    for token, standard in words:
+        at = text.find(token, pos, pos + SEARCH + len(token))
+        if at < 0:
+            missed += 1
+            continue
+        parts.append(text[pos:at])
+        if standard and standard != token and standard.lower() != token.lower():
+            parts.append(standard)
+            applied[token.lower(), standard.lower()] += 1
+        else:
+            parts.append(token)
+        pos = at + len(token)
+    parts.append(text[pos:])
+    return "".join(parts), applied, missed
+
+
+def _rows() -> list[dict]:
+    from ocr_fix.normalize import regime
+
+    cfg = load_config()
+    pre = cfg["corpus"]["spelling_normalization"]["pre_1700"]
+    return [
+        r
+        for r in pq.read_table(
+            CATALOG, columns=["work_id", "source", "year", "text_path"]
+        ).to_pylist()
+        if r["text_path"] and r["source"] == "tcp" and regime(r["year"], cfg) == pre
+    ]
+
+
+def _adorn_batch(paths: list[str]) -> tuple[int, str]:
+    """One JVM over a batch; outputs land in a scratch dir and move into place per file."""
+    with tempfile.TemporaryDirectory(dir=OUT.parent) as tmp:
+        files = [str(Path(p).resolve()) for p in paths]
+        cmd = [str(JAVA), f"-Xmx{HEAP}", "-Xss1m", "-cp", ".:bin/:dist/*:lib/*", *ARGS,
+               "-o", str(Path(tmp).resolve()), *files]  # fmt: skip
+        r = subprocess.run(cmd, cwd=APP, capture_output=True, text=True)
+        done = 0
+        for p in paths:
+            got = Path(tmp) / Path(p).name
+            if got.exists() and got.stat().st_size:
+                shutil.move(got, OUT / Path(p).name)
+                done += 1
+        err = "" if r.returncode == 0 else r.stderr[-500:]
+        return done, err
+
+
+def adorn(jobs: int, batch: int) -> int:
+    OUT.mkdir(parents=True, exist_ok=True)
+    rows = _rows()
+    todo = [r["text_path"] for r in rows if not adorned_path(r).exists()]
+    # largest first, so the long tail is short files
+    todo.sort(key=lambda p: -Path(p).stat().st_size)
+    batches = [todo[i : i + batch] for i in range(0, len(todo), batch)]
+    print(f"{len(rows):,} pre-1700 texts, {len(todo):,} to adorn in {len(batches):,} batches")
+    start, done, failed = time.time(), 0, 0
+    with ThreadPoolExecutor(jobs) as pool:
+        futs = [pool.submit(_adorn_batch, b) for b in batches]
+        for i, f in enumerate(as_completed(futs), 1):
+            n, err = f.result()
+            done += n
+            if err:
+                failed += 1
+                print(f"  batch error (files not written are retried next run): {err}", flush=True)
+            if i % 10 == 0 or i == len(batches):
+                el = time.time() - start
+                print(f"  {i}/{len(batches)} batches, {done:,} texts, {el / 60:.0f}m", flush=True)
+    left = sum(1 for r in rows if not adorned_path(r).exists())
+    print(f"adorned {done:,}; {left:,} still missing; {failed} batches reported errors")
+    return 0 if not left else 1
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    a = sub.add_parser("adorn")
+    a.add_argument("--jobs", type=int, default=4)
+    a.add_argument("--batch", type=int, default=100)
+    args = ap.parse_args(argv)
+    if args.cmd == "adorn":
+        return adorn(args.jobs, args.batch)
+    return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

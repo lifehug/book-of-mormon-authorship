@@ -3,9 +3,11 @@
 ``corpus.spelling_normalization`` registers two regimes:
 
 ``pre_1700: morphadorner_emod_lexicon``
-    Early modern spelling mapped to standard forms with MorphAdorner's Early Modern English
-    spelling table (``ememergedspellingpairs.tab``, MorphAdorner 2.0.1, Northwestern
-    University, NCSA-style licence): ``vnto`` -> ``unto``, ``loue`` -> ``love``.
+    MorphAdorner 2.0.1's Early Modern English adorner (Northwestern University, NCSA-style
+    licence), run as distributed by ``ocr_fix.morphadorner``: parts of speech tagged first,
+    then each word's standard spelling (``vnto`` -> ``unto``, ``loue`` -> ``love``, and ``ye``
+    -> ``the`` or ``you`` by its part of speech). Its standard spellings are put back into the
+    original text token by token, so lines and paragraphs survive.
 ``post_1780: artifacts_only``
     Typographic artifacts only -- the long s and printers' ligatures -- with no lexical
     modernisation: ``publick`` and ``shew`` stay as printed.
@@ -14,11 +16,12 @@ The registration is silent on 1700-1779 (TCP's ECCO and Evans texts, the early m
 reference for dating). They get ``artifacts_only``, the reading that changes least, and the
 choice is listed in ``pending_amendment`` (``spelling_normalization.1700_1779``).
 
-The table is applied token by token, case-preserving: the exact token is looked up first, then
-its lowercase form, and the replacement takes the original's case pattern (``Loue`` ->
-``Love``). Entries that only change case are dropped (case is not spelling), and so are 8 lines
-of the distributed file where two pairs run together. Every replacement is counted, and the
-map of what was actually applied is published (``data/normalization/``).
+An earlier version applied MorphAdorner's merged spelling-pairs table token by token without
+tagging. That is not what MorphAdorner does, and it got the part-of-speech-dependent forms wrong
+(``part`` -> ``partly`` for about a million nouns); its outputs are kept under
+``data/corpus/normalized_superseded_table/`` and ``normalization_table_superseded.parquet``.
+Every replacement is counted, and the map of what was actually applied is published
+(``data/normalization/``).
 
 Both versions are kept: input text is read, never written; normalised text goes to
 ``data/corpus/normalized/<source>/``. OCR sources are read from their BOM-14 cleaned text.
@@ -46,9 +49,9 @@ import pyarrow.parquet as pq
 from metadata.config import load as load_config
 from metadata.config import sha256_of_config
 from ocr_fix import clean as cleaner
+from ocr_fix import morphadorner
 
 CATALOG = Path("data/catalog/catalog.parquet")
-EME_PAIRS = Path("data/corpus/morphadorner/data/ememergedspellingpairs.tab")
 OUT_DIR = Path("data/corpus/normalized")
 STATS = Path("data/normalization/normalization.parquet")
 COUNTS = Path("data/normalization/applied_counts.jsonl")
@@ -58,29 +61,6 @@ LIGATURES = {
     "ſ": "s", "ﬁ": "fi", "ﬂ": "fl", "ﬀ": "ff", "ﬃ": "ffi", "ﬄ": "ffl", "ﬅ": "st", "ﬆ": "st",
 }  # fmt: skip
 _LIG = re.compile("|".join(map(re.escape, LIGATURES)))
-_TOKEN = re.compile(r"[^\W\d_]+(?:['’][^\W\d_]+)*")
-
-_EME: dict[str, str] | None = None
-
-
-def load_eme(path: Path = EME_PAIRS) -> dict[str, str]:
-    """variant -> standard, from MorphAdorner's table, minus malformed and case-only lines."""
-    out = {}
-    for line in path.read_text(encoding="utf-8-sig", errors="replace").splitlines():
-        parts = line.split("\t")
-        if len(parts) != 2:
-            continue
-        a, b = parts[0].strip("﻿"), parts[1]
-        if a and b and a.lower() != b.lower():
-            out[a] = b
-    return out
-
-
-def _eme() -> dict[str, str]:
-    global _EME
-    if _EME is None:
-        _EME = load_eme()
-    return _EME
 
 
 def artifacts(text: str) -> tuple[str, int]:
@@ -94,31 +74,6 @@ def artifacts(text: str) -> tuple[str, int]:
     return _LIG.sub(sub, text), n
 
 
-def _case_like(src: str, word: str) -> str:
-    if src.isupper() and len(src) > 1:
-        return word.upper()
-    if src[:1].isupper():
-        return word[:1].upper() + word[1:]
-    return word
-
-
-def standardize(text: str, table: dict[str, str]) -> tuple[str, Counter]:
-    applied: Counter = Counter()
-
-    def sub(m: re.Match) -> str:
-        tok = m.group(0)
-        std = table.get(tok)
-        if std is None:
-            low = table.get(tok.lower())
-            std = None if low is None else _case_like(tok, low)
-        if std is None or std == tok:
-            return tok
-        applied[(tok.lower(), std.lower())] += 1
-        return std
-
-    return _TOKEN.sub(sub, text), applied
-
-
 def regime(year: int | None, cfg: dict) -> str:
     """Which registered regime applies to a text printed in ``year``."""
     sn = cfg["corpus"]["spelling_normalization"]
@@ -127,14 +82,21 @@ def regime(year: int | None, cfg: dict) -> str:
     return sn["post_1780"]  # 1700-1779 and undated: pending_amendment, artifacts only
 
 
-def normalize(text: str, mode: str, table: dict[str, str] | None = None) -> tuple[str, dict]:
-    text, n_art = artifacts(text)
+def normalize(
+    text: str, mode: str, adorned: list[tuple[str, str]] | None = None
+) -> tuple[str, dict]:
+    """``adorned`` is MorphAdorner's (token, standard) list, required for the pre-1700 regime."""
     applied: Counter = Counter()
+    unaligned = 0
     if mode == "morphadorner_emod_lexicon":
-        text, applied = standardize(text, _eme() if table is None else table)
+        if adorned is None:
+            raise ValueError("pre-1700 text needs MorphAdorner output (ocr_fix.morphadorner)")
+        text, applied, unaligned = morphadorner.rebuild(text, adorned)
     elif mode != "artifacts_only":
         raise ValueError(f"unregistered spelling regime: {mode}")
-    return text, {"artifacts": n_art, "standardized": sum(applied.values()), "applied": applied}
+    text, n_art = artifacts(text)
+    return text, {"artifacts": n_art, "standardized": sum(applied.values()),
+                  "unaligned": unaligned, "applied": applied}  # fmt: skip
 
 
 def _input_path(row: dict) -> Path:
@@ -152,7 +114,10 @@ def _one(job: tuple[dict, str]) -> dict:
     row, mode = job
     src = _input_path(row)
     dst = norm_path(row)
-    text, stats = normalize(src.read_text(encoding="utf-8", errors="replace"), mode)
+    adorned = None
+    if mode == "morphadorner_emod_lexicon":
+        adorned = morphadorner.read_adorned(morphadorner.adorned_path(row))
+    text, stats = normalize(src.read_text(encoding="utf-8", errors="replace"), mode, adorned)
     dst.parent.mkdir(parents=True, exist_ok=True)
     tmp = dst.with_name(dst.name + ".tmp")
     tmp.write_text(text, encoding="utf-8")
@@ -164,6 +129,7 @@ def _one(job: tuple[dict, str]) -> dict:
         "norm_path": str(dst),
         "artifacts": stats["artifacts"],
         "standardized": stats["standardized"],
+        "unaligned": stats["unaligned"],
         "applied": [[a, b, n] for (a, b), n in stats["applied"].items()],
     }
 
@@ -176,13 +142,16 @@ SCHEMA = pa.schema(
         ("norm_path", pa.string()),
         ("artifacts", pa.int64()),
         ("standardized", pa.int64()),
+        ("unaligned", pa.int64()),
     ]
 )
 
 
 def _write(rows: list[dict]) -> None:
     STATS.parent.mkdir(parents=True, exist_ok=True)
-    table = pa.Table.from_pylist([{k: r[k] for k in SCHEMA.names} for r in rows], schema=SCHEMA)
+    table = pa.Table.from_pylist(
+        [{k: r.get(k, 0) for k in SCHEMA.names} for r in rows], schema=SCHEMA
+    )
     tmp = STATS.with_suffix(".parquet.tmp")
     pq.write_table(table.replace_schema_metadata({"config_sha256": sha256_of_config()}), tmp)
     tmp.replace(STATS)
@@ -202,6 +171,11 @@ def run(workers: int, limit: int | None, sources: list[str] | None = None) -> in
     missing = [r for r, _ in todo if not _input_path(r).exists()]
     if missing:
         raise SystemExit(f"{len(missing):,} inputs not on disk (run ocr_fix.clean first)")
+    pre = cfg["corpus"]["spelling_normalization"]["pre_1700"]
+    unadorned = [r for r, m in todo if m == pre and not morphadorner.adorned_path(r).exists()]
+    if unadorned:
+        raise SystemExit(f"{len(unadorned):,} pre-1700 texts not adorned yet "
+                         "(run ocr_fix.morphadorner adorn first)")  # fmt: skip
     todo = todo[:limit] if limit else todo
     print(f"{len(todo):,} to normalise ({len(done):,} done)", flush=True)
     start, n = time.time(), 0

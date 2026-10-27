@@ -1,10 +1,13 @@
 """Spelling normalisation (BOM-15)."""
 
-from pathlib import Path
+import pytest
 
-from ocr_fix.normalize import artifacts, load_eme, normalize, regime, standardize
+from ocr_fix.morphadorner import rebuild
+from ocr_fix.normalize import artifacts, normalize, regime
 
-TABLE = {"vnto": "unto", "loue": "love", "haue": "have"}
+# MorphAdorner's (token, standard) output for "Vnto them I loue,\nye part ſhew"
+ADORNED = [("Vnto", "Unto"), ("them", "them"), ("I", "I"), ("loue", "love"), (",", ","),
+            ("ye", "the"), ("part", "part"), ("ſhew", "show")]  # fmt: skip
 CFG = {
     "corpus": {
         "spelling_normalization": {
@@ -19,21 +22,22 @@ def test_artifacts() -> None:
     assert artifacts("firſt ﬁne") == ("first fine", 2)
 
 
-def test_standardize_preserves_case() -> None:
-    text, applied = standardize("Vnto them I loue, LOUE and haue", TABLE)
-    assert text == "Unto them I love, LOVE and have"
-    assert sum(applied.values()) == 4
+def test_rebuild_keeps_layout_and_skips_inserted_tokens() -> None:
+    text, applied, missed = rebuild("Vnto them I loue,\nye part ſhew", [("¶", "¶"), *ADORNED])
+    assert text == "Unto them I love,\nthe part show"
+    assert missed == 1
+    assert applied[("loue", "love")] == 1 and ("part", "partly") not in applied
 
 
 def test_regimes() -> None:
     assert regime(1611, CFG) == "morphadorner_emod_lexicon"
     assert regime(1785, CFG) == "artifacts_only"
     assert regime(1750, CFG) == "artifacts_only"
-    assert normalize("loue ſhew", "artifacts_only", TABLE)[0] == "loue shew"
-    assert normalize("loue ſhew", "morphadorner_emod_lexicon", TABLE)[0] == "love shew"
-
-
-def test_table_skips_malformed_and_case_only(tmp_path: Path) -> None:
-    f = tmp_path / "pairs.tab"
-    f.write_text("﻿vnto\tunto\nABANTES\tAbantes\nchin\tchins\tchinned\n")
-    assert load_eme(f) == {"vnto": "unto"}
+    assert normalize("loue ſhew", "artifacts_only")[0] == "loue shew"
+    text = "Vnto them I loue,\nye part ſhew"
+    assert (
+        normalize(text, "morphadorner_emod_lexicon", ADORNED)[0]
+        == "Unto them I love,\nthe part show"
+    )
+    with pytest.raises(ValueError):
+        normalize(text, "morphadorner_emod_lexicon")
