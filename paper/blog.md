@@ -1233,8 +1233,48 @@ book in two sources, similarity rose from 0.12 to 0.18. The bar is 0.8, and not 
 it. Two different bad OCRs of the same page still share too few five-word runs. That's now
 written down as a known gap, with a possible fix that would need an official change to the plan.
 
+## Reopening the catalog for the books I forgot
+
+I closed the catalog a day early, and it was missing a whole source. HathiTrust's volumes, the
+ones I'd signed a researcher agreement for, had been downloaded and never merged in. I found it
+while checking something else, which is the uncomfortable way to find most things. So the
+catalog went from 559,986 rows to 695,021, with 31,194 more books that actually have text.
+
+Adding them meant labelling them. The local Llama model did 29,696 of them overnight, about one
+a second, and a rule handled the rest. Then the second-opinion sample had to be drawn again,
+because the plan says 5,000 records stratified by source, and a sample with no HathiTrust in it
+doesn't meet that. Same seed, same procedure; 2,349 old answers carried over because the same
+books came up with the same first label.
+
+The second pass is Sonnet, a different model family, labelling the same 5,000 records blind.
+The two agree on at least one label 84.9% of the time. HathiTrust comes in at 83.9%, right
+with the others, which is the main thing I wanted to know. In 15% of cases they share no label
+at all, and those are the only ones worth a third look. Opus took that look, on 757 records.
+That's a simulated tiebreak, another model, not a person. It sided with Sonnet 553 times and
+with Llama 62 times. Some of what it was looking at:
+
+> *The inaugural address, delivered in Brunswick, September 9th, 1802* -- Llama: history and
+> law. Sonnet: sermon. Opus: sermon.
+>
+> *The cottage fire-side* (1822) -- Llama: newspaper. Sonnet: sermon. Opus: fiction.
+>
+> *An essay on the best means of ascertaining the affinities of oriental languages* (1828) --
+> Llama: newspaper and science. Sonnet: history. Opus: history.
+
+So where they really disagree, the cheap model is usually the one that's wrong. That's about 12%
+of the sample, and the genre-dependent results will be stress-tested against a worse error rate
+than that before anyone leans on them.
+
+Two of my own mistakes along the way. The tiebreak was set to look at every record the two
+models didn't match exactly, 2,461 of them, when only the 757 with no label in common are real
+conflicts. I caught it in the first minute and cut it down, which saved two-thirds of the calls.
+And a wait loop I'd written to tell me when the overnight labelling finished never fired: tmux
+matched the name `genre_ht` to a different session called `genre_ht_commit`, so the loop
+thought the job was still running for three and a half hours after it was done.
+
 ## Log
 
+- **2026-10-27, later.** BOM-12 closed again, with HathiTrust: catalog 695,021 rows (533,328 with text), genre pass 1 for all, pass 2 redrawn (84.9% either-label agreement, HathiTrust 83.9%), 757 contradictions adjudicated by Opus (simulated; Sonnet 553, Llama 62). BOM-14 closed with it.
 - **2026-10-27, afternoon.** BOM-15 done pending its dependencies: OCR sources artifact-only, 53,486 pre-1700 texts through MorphAdorner's own adorner (the table-only first pass superseded; its part -> partly and ye -> you errors kept on record); an -> and and similar MorphAdorner choices listed for amendment. Dedup re-run on normalised text: 19,916 groups; cross-source pairs 0.117 -> 0.180 median, none at 0.8. BOM-17 chunks and split built (split sha256 9fdffa56...). Control lists built and committed; control masking running (long volumes now aligned in overlapping 150,000-word pieces after passim ran out of memory).
 - **2026-10-27, night.** BOM-14 closed: 472,018 volumes cleaned; error rate measured on 1,883 hand-keyed twins (median 0.099 raw, 0.083 cleaned); estimated for every volume and flagged, never deleted (Harvard 2.5%, HathiTrust 11.9%, Internet Archive 24.9%, Chronicling America 27.8% over 0.10). LLM correction tried and rejected (invents text). Wayne Sentinel re-segmented (62% -> 93% words recovered).
 - **2026-10-27, later.** BOM-13 closed with BOM-12 (its only open dependency); candidate table unchanged since 65d4a9c. Pre-1830, only Spalding, Ethan Smith and Hunt clear the 10,000-word floor.
