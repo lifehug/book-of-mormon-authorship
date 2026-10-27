@@ -118,3 +118,19 @@ the 1830 edition and `align_original_paragraphs.jsonl`; each boundary carries it
 scheme and its limits: the embedded-document layer is paragraph-granular, Words of Mormon's
 dictation position is uncertain, and 76% of the text has no surviving original-manuscript page,
 so its scribe is `not_extant`.
+
+## 6. Chunks and the discovery/confirmation split (BOM-17)
+
+Built by `uv run python -m segment.build --masks data/kjv_mask/bom/spans.jsonl` (seconds).
+
+- `segments/chunks.jsonl`: every segment of the three schemes (narrator, dictation order,
+  scribe) cut into 2,000- and 5,000-word chunks of original text, the 1830 edition with
+  BOM-16's KJV spans removed (250,486 of 268,811 words kept, 6.8% masked) and artifact-only
+  normalisation. A short final remainder is kept as a `partial` chunk and never drawn. 756
+  chunks, each with its text, first and last paragraph, and `half`.
+- `segments/split.json`: the 4.5 split of the 47 full 5,000-word narrator chunks, seeded
+  (`segmentation.split.seed`, 20261017) and stratified by narrator: Mormon 16 discovery / 17
+  confirmation, Nephi 4/4, Moroni 2/3, Jacob 0/1 (a narrator's only chunk goes to
+  confirmation). It records the SHA-256 of `boundaries.json` it was built from. Its own
+  SHA-256, published before any Book of Mormon scoring:
+  `9fdffa56a85628ce730aaebdaefa029b2927dbe0a4bbdd704ffaccd99b983d05`.
