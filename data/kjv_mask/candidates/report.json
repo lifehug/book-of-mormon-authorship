@@ -1,0 +1,396 @@
+{
+ "group": "candidates",
+ "texts": 63,
+ "words": 621005,
+ "masked_words": 23055,
+ "share_masked": 0.037125304949235514,
+ "params": {
+  "n": 5,
+  "gap": 100,
+  "overlap": 0.5,
+  "min_align": 20,
+  "max_df": 100,
+  "min_match": 4
+ },
+ "config_sha256": "a13b406d1695331c3c722d15a402ff36b4969ef02a9a145423433061158d460b",
+ "per_text": {
+  "cand:joseph-smith__dictated__post1830": {
+   "words": 5327,
+   "masked_words": 289,
+   "verbatim_spans": 13,
+   "paraphrase_spans": 3
+  },
+  "cand:joseph-smith__dictated__pre1830": {
+   "words": 2776,
+   "masked_words": 56,
+   "verbatim_spans": 2,
+   "paraphrase_spans": 3
+  },
+  "cand:joseph-smith__handwritten__post1830": {
+   "words": 6393,
+   "masked_words": 31,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 3
+  },
+  "cand:joseph-smith__scribal_copy__post1830": {
+   "words": 17696,
+   "masked_words": 162,
+   "verbatim_spans": 8,
+   "paraphrase_spans": 4
+  },
+  "cand:joseph-smith__scribal_copy__pre1830": {
+   "words": 362,
+   "masked_words": 0,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 0
+  },
+  "cand:oliver-cowdery__handwritten__pre1830": {
+   "words": 1365,
+   "masked_words": 55,
+   "verbatim_spans": 2,
+   "paraphrase_spans": 2
+  },
+  "cand:oliver-cowdery__scribal_copy__post1830": {
+   "words": 1354,
+   "masked_words": 9,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 1
+  },
+  "cand:oliver-cowdery__scribal_copy__pre1830": {
+   "words": 1488,
+   "masked_words": 107,
+   "verbatim_spans": 3,
+   "paraphrase_spans": 3
+  },
+  "cand:es-1809-sermon-newburyport": {
+   "words": 5448,
+   "masked_words": 731,
+   "verbatim_spans": 29,
+   "paraphrase_spans": 6
+  },
+  "cand:es-1811-dissertation": {
+   "words": 139782,
+   "masked_words": 3946,
+   "verbatim_spans": 112,
+   "paraphrase_spans": 6
+  },
+  "cand:es-1815-death-of-gods-chosen": {
+   "words": 6073,
+   "masked_words": 745,
+   "verbatim_spans": 31,
+   "paraphrase_spans": 2
+  },
+  "cand:es-1817-episcopacy": {
+   "words": 21277,
+   "masked_words": 716,
+   "verbatim_spans": 30,
+   "paraphrase_spans": 4
+  },
+  "cand:es-1823-view-of-the-hebrews": {
+   "words": 55151,
+   "masked_words": 2951,
+   "verbatim_spans": 95,
+   "paraphrase_spans": 7
+  },
+  "cand:es-1824-treatise": {
+   "words": 61276,
+   "masked_words": 2566,
+   "verbatim_spans": 94,
+   "paraphrase_spans": 10
+  },
+  "cand:gh-1816-late-war": {
+   "words": 57003,
+   "masked_words": 47,
+   "verbatim_spans": 3,
+   "paraphrase_spans": 1
+  },
+  "cand:oc-messenger-advocate__10945-11321": {
+   "words": 2086,
+   "masked_words": 127,
+   "verbatim_spans": 4,
+   "paraphrase_spans": 3
+  },
+  "cand:oc-messenger-advocate__11427-11748": {
+   "words": 2260,
+   "masked_words": 43,
+   "verbatim_spans": 1,
+   "paraphrase_spans": 2
+  },
+  "cand:oc-messenger-advocate__13486-13760": {
+   "words": 2138,
+   "masked_words": 188,
+   "verbatim_spans": 6,
+   "paraphrase_spans": 2
+  },
+  "cand:oc-messenger-advocate__13807-13943": {
+   "words": 1178,
+   "masked_words": 46,
+   "verbatim_spans": 2,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__15698-16246": {
+   "words": 3351,
+   "masked_words": 1054,
+   "verbatim_spans": 29,
+   "paraphrase_spans": 4
+  },
+  "cand:oc-messenger-advocate__16539-16764": {
+   "words": 1364,
+   "masked_words": 78,
+   "verbatim_spans": 1,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__17352-17582": {
+   "words": 1276,
+   "masked_words": 11,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 1
+  },
+  "cand:oc-messenger-advocate__1769-2053": {
+   "words": 1911,
+   "masked_words": 40,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 3
+  },
+  "cand:oc-messenger-advocate__18617-19000": {
+   "words": 2211,
+   "masked_words": 528,
+   "verbatim_spans": 8,
+   "paraphrase_spans": 2
+  },
+  "cand:oc-messenger-advocate__20815-21159": {
+   "words": 2100,
+   "masked_words": 231,
+   "verbatim_spans": 9,
+   "paraphrase_spans": 2
+  },
+  "cand:oc-messenger-advocate__22250-22855": {
+   "words": 3516,
+   "masked_words": 51,
+   "verbatim_spans": 1,
+   "paraphrase_spans": 3
+  },
+  "cand:oc-messenger-advocate__25394-25765": {
+   "words": 2328,
+   "masked_words": 261,
+   "verbatim_spans": 3,
+   "paraphrase_spans": 1
+  },
+  "cand:oc-messenger-advocate__28087-28487": {
+   "words": 2193,
+   "masked_words": 90,
+   "verbatim_spans": 3,
+   "paraphrase_spans": 2
+  },
+  "cand:oc-messenger-advocate__28490-29274": {
+   "words": 5182,
+   "masked_words": 48,
+   "verbatim_spans": 2,
+   "paraphrase_spans": 1
+  },
+  "cand:oc-messenger-advocate__298-790": {
+   "words": 3282,
+   "masked_words": 161,
+   "verbatim_spans": 4,
+   "paraphrase_spans": 1
+  },
+  "cand:oc-messenger-advocate__3019-3327": {
+   "words": 2096,
+   "masked_words": 49,
+   "verbatim_spans": 2,
+   "paraphrase_spans": 1
+  },
+  "cand:oc-messenger-advocate__31746-32139": {
+   "words": 2378,
+   "masked_words": 499,
+   "verbatim_spans": 6,
+   "paraphrase_spans": 6
+  },
+  "cand:oc-messenger-advocate__33048-33588": {
+   "words": 3165,
+   "masked_words": 184,
+   "verbatim_spans": 6,
+   "paraphrase_spans": 1
+  },
+  "cand:oc-messenger-advocate__33620-34086": {
+   "words": 2486,
+   "masked_words": 37,
+   "verbatim_spans": 1,
+   "paraphrase_spans": 1
+  },
+  "cand:oc-messenger-advocate__34667-35271": {
+   "words": 3675,
+   "masked_words": 41,
+   "verbatim_spans": 2,
+   "paraphrase_spans": 1
+  },
+  "cand:oc-messenger-advocate__3812-4364": {
+   "words": 3151,
+   "masked_words": 84,
+   "verbatim_spans": 5,
+   "paraphrase_spans": 2
+  },
+  "cand:oc-messenger-advocate__42671-42999": {
+   "words": 1934,
+   "masked_words": 91,
+   "verbatim_spans": 4,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__4403-4736": {
+   "words": 2030,
+   "masked_words": 0,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__45527-45712": {
+   "words": 1029,
+   "masked_words": 0,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__46700-47164": {
+   "words": 2772,
+   "masked_words": 84,
+   "verbatim_spans": 5,
+   "paraphrase_spans": 1
+  },
+  "cand:oc-messenger-advocate__47890-47972": {
+   "words": 468,
+   "masked_words": 0,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__48891-49037": {
+   "words": 823,
+   "masked_words": 8,
+   "verbatim_spans": 1,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__55195-55352": {
+   "words": 842,
+   "masked_words": 19,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 1
+  },
+  "cand:oc-messenger-advocate__55361-56470": {
+   "words": 6882,
+   "masked_words": 22,
+   "verbatim_spans": 1,
+   "paraphrase_spans": 1
+  },
+  "cand:oc-messenger-advocate__5777-6016": {
+   "words": 1296,
+   "masked_words": 0,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__59630-60509": {
+   "words": 5282,
+   "masked_words": 527,
+   "verbatim_spans": 13,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__62411-62880": {
+   "words": 2716,
+   "masked_words": 18,
+   "verbatim_spans": 2,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__6675-7007": {
+   "words": 1950,
+   "masked_words": 0,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__7-226": {
+   "words": 1173,
+   "masked_words": 46,
+   "verbatim_spans": 2,
+   "paraphrase_spans": 3
+  },
+  "cand:oc-messenger-advocate__75781-75857": {
+   "words": 426,
+   "masked_words": 0,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__78204-78359": {
+   "words": 873,
+   "masked_words": 0,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 0
+  },
+  "cand:oc-messenger-advocate__9080-9386": {
+   "words": 1911,
+   "masked_words": 34,
+   "verbatim_spans": 2,
+   "paraphrase_spans": 0
+  },
+  "cand:ppp-1837-voice-of-warning": {
+   "words": 51797,
+   "masked_words": 4868,
+   "verbatim_spans": 107,
+   "paraphrase_spans": 12
+  },
+  "cand:ppp-1838-mormonism-unveiled": {
+   "words": 16724,
+   "masked_words": 297,
+   "verbatim_spans": 12,
+   "paraphrase_spans": 5
+  },
+  "cand:sr-1838-oration": {
+   "words": 5542,
+   "masked_words": 631,
+   "verbatim_spans": 22,
+   "paraphrase_spans": 7
+  },
+  "cand:ss-manuscript-story-1885": {
+   "words": 41833,
+   "masked_words": 0,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 0
+  },
+  "cand:wwp-evening-morning-star__25834-25904": {
+   "words": 905,
+   "masked_words": 12,
+   "verbatim_spans": 1,
+   "paraphrase_spans": 0
+  },
+  "cand:wwp-evening-morning-star__27937-27973": {
+   "words": 513,
+   "masked_words": 0,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 0
+  },
+  "cand:wwp-evening-morning-star__29424-29458": {
+   "words": 297,
+   "masked_words": 0,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 0
+  },
+  "cand:wwp-evening-morning-star__34321-34533": {
+   "words": 2791,
+   "masked_words": 43,
+   "verbatim_spans": 1,
+   "paraphrase_spans": 3
+  },
+  "cand:wwp-evening-morning-star__35147-35424": {
+   "words": 4082,
+   "masked_words": 52,
+   "verbatim_spans": 1,
+   "paraphrase_spans": 2
+  },
+  "cand:wwp-evening-morning-star__35427-35564": {
+   "words": 924,
+   "masked_words": 0,
+   "verbatim_spans": 0,
+   "paraphrase_spans": 0
+  },
+  "cand:ppp-1840-late-persecution": {
+   "words": 27092,
+   "masked_words": 41,
+   "verbatim_spans": 4,
+   "paraphrase_spans": 0
+  }
+ }
+}

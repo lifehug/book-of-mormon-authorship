@@ -48,6 +48,7 @@ from metadata.config import load as load_config
 
 KJV = Path("data/kjv/kjv.jsonl")
 JAVA_HOME = "/opt/homebrew/opt/openjdk@17"
+SPARK_MEMORY = "6g"  # the default 1g runs out on whole books (exit 52)
 _WORD = re.compile(r"[^\W_]+(?:['’-][^\W_]+)*")
 
 
@@ -80,8 +81,15 @@ def run_passim(docs: list[dict], work: Path, params: dict) -> list[dict]:
     ).hexdigest()[:16]
     work = work / key
     work.mkdir(parents=True, exist_ok=True)
-    if (work / "out" / "align.json").exists():
-        return _read_alignments(work)
+    done = _finished(work)
+    if done is not None:
+        return _read_alignments(done)
+    # a failed attempt leaves a partial directory Spark will not overwrite; each attempt gets
+    # a fresh one rather than deleting the last
+    attempt = 0
+    while (work / f"out.{attempt}").exists() or (attempt == 0 and (work / "out").exists()):
+        attempt += 1
+    out_dir = work / ("out" if attempt == 0 else f"out.{attempt}")
     inp = work / "in.jsonl"
     with inp.open("w") as fh:
         for d in kjv_chapters() + [{**d, "series": "target"} for d in docs]:
@@ -91,16 +99,25 @@ def run_passim(docs: list[dict], work: Path, params: dict) -> list[dict]:
         "-n", str(params["n"]), "-m", str(params["min_match"]), "-a", str(params["min_align"]),
         "-g", str(params["gap"]), "--maxDF", str(params["max_df"]), "--log-level", "ERROR",
         "--src-overlap", str(params["overlap"]), "--dst-overlap", str(params["overlap"]),
-        str(inp), str(work / "out"),
+        str(inp), str(out_dir),
     ]  # fmt: skip
-    env = {**os.environ, "JAVA_HOME": JAVA_HOME}
+    env = {**os.environ, "JAVA_HOME": JAVA_HOME,
+           "SPARK_SUBMIT_ARGS": f"--driver-memory {SPARK_MEMORY}"}  # fmt: skip
     subprocess.run(cmd, check=True, env=env, capture_output=True)
-    return _read_alignments(work)
+    return _read_alignments(out_dir)
 
 
-def _read_alignments(work: Path) -> list[dict]:
+def _finished(work: Path) -> Path | None:
+    """The output directory of a completed passim run under ``work``, if there is one."""
+    for d in sorted(work.glob("out*")):
+        if (d / "align.json" / "_SUCCESS").exists():
+            return d
+    return None
+
+
+def _read_alignments(out_dir: Path) -> list[dict]:
     out = []
-    for f in sorted((work / "out" / "align.json").glob("*.json")):
+    for f in sorted((out_dir / "align.json").glob("*.json")):
         for line in f.read_text().splitlines():
             r = json.loads(line)
             if r["series"] == "kjv":  # passim orders the pair arbitrarily; normalise

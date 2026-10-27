@@ -67,10 +67,18 @@ def _docs(group: str) -> list[dict]:
             if r["book"]
         ]
     if group == "candidates":
-        return [
+        # assembled Joseph Smith Papers samples, plus BOM-13's printed units as cleaned and
+        # normalised by ocr_fix.candidates (already artifact-normalised)
+        docs = [
             {"id": f"cand:{p.stem}", "text": artifacts(p.read_text(encoding="utf-8"))[0]}
             for p in sorted(SAMPLES.glob("*.txt"))
         ]
+        for d in (Path("data/candidates/clean"), Path("data/private/candidates/clean")):
+            docs += [
+                {"id": f"cand:{p.stem}", "text": p.read_text(encoding="utf-8")}
+                for p in sorted(d.glob("*.txt"))
+            ]
+        return docs
     if group == "controls":
         from ocr_fix.clean import out_path
         from ocr_fix.normalize import OUT_DIR as NORM_DIR
