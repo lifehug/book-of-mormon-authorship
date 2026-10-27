@@ -194,15 +194,16 @@ def zip_path(htid: str, root: Path = RSYNC_DIR) -> Path:
 
 
 def text_of(zpath: Path) -> str:
-    """A volume's pages joined in page order (the page files are zero-padded sequence numbers)."""
+    """A volume's pages in page order (zero-padded sequence numbers), separated by form feeds
+    as Harvard's text is, so later stages can still find page tops and bottoms."""
     with zipfile.ZipFile(zpath) as zf:
         names = sorted(n for n in zf.namelist() if n.endswith(".txt"))
-        return "\n".join(zf.read(n).decode("utf-8", errors="replace") for n in names)
+        return "\n\f\n".join(zf.read(n).decode("utf-8", errors="replace") for n in names)
 
 
-def _extract_one(htid: str) -> str:
+def _extract_one(htid: str, rewrite: bool = False) -> str:
     out = TEXT_DIR / f"{clean_id(htid)}.txt"
-    if out.exists():
+    if out.exists() and not rewrite:
         return "skipped"
     zpath = zip_path(htid)
     if not zpath.exists():
@@ -213,12 +214,13 @@ def _extract_one(htid: str) -> str:
     return "written"
 
 
-def extract_text(workers: int) -> int:
+def extract_text(workers: int, rewrite: bool = False) -> int:
     ids = [ln.strip() for ln in (RSYNC_DIR / "present.txt").read_text().splitlines() if ln.strip()]
     TEXT_DIR.mkdir(parents=True, exist_ok=True)
     counts: Counter = Counter()
     with ProcessPoolExecutor(workers) as pool:
-        for i, result in enumerate(pool.map(_extract_one, ids, chunksize=64), 1):
+        jobs = pool.map(_extract_one, ids, [rewrite] * len(ids), chunksize=64)
+        for i, result in enumerate(jobs, 1):
             counts[result] += 1
             if i % 5000 == 0:
                 print(f"  {i:,}/{len(ids):,}  {dict(counts)}", flush=True)
@@ -327,13 +329,14 @@ def main(argv: list[str] | None = None) -> int:
     e.add_argument("--limit", type=int)
     t = sub.add_parser("text")
     t.add_argument("--workers", type=int, default=6)
+    t.add_argument("--rewrite", action="store_true", help="rebuild text files that exist")
     a = ap.parse_args(argv)
     if a.cmd == "catalog":
         return catalog(a.hathifile)
     if a.cmd == "map-ia":
         return map_ia()
     if a.cmd == "text":
-        return extract_text(a.workers)
+        return extract_text(a.workers, a.rewrite)
     return ef(a.ids, a.limit)
 
 

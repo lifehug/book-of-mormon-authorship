@@ -18,3 +18,12 @@ place names, and period spellings, so `lexicon_rate` understates quality in abso
 every source. That is tolerable because the metric is only ever read comparatively: the same
 lexicon scores the Chronicling America reference and the title being judged, so the bias
 cancels. Any absolute claim about OCR accuracy needs the hand-corrected sample BOM-14 still owes.
+
+## period_words.tsv (BOM-14)
+
+Built by `python -m ocr_fix.lexicon build` from the catalog and the TCP text on the data
+machine: every lowercase word in Webster (`english_words.txt`) plus every word occurring in at
+least 2 hand-keyed TCP ECCO or Evans texts dated 1700 or later (6,817 texts), each with the
+number of those texts it occurs in. 419,156 words. `ſ` is read as `s`. Used by OCR repair
+(`ocr_fix.clean`), which compares frequencies rather than trusting membership: keyed text has
+slips too (`firft` in 2 texts against 6,446 for `first`). Thresholds are in `pending_amendment`.

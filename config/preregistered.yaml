@@ -148,3 +148,19 @@ pending_amendment:
       genre_benchmark_300.json), with the confusion drawn from the observed pass-1/pass-2
       disagreements. The hand sample is drawn only if the genre-dependent conclusions move
       under that bound. Needs a dated OSF amendment naming the bound before BOM-40 runs it.
+  - key: ocr_fix.period_lexicon
+    issue: BOM-14
+    note: >
+      The word list OCR repair consults (ocr_fix/lexicon.py): Webster's Second plus every word
+      in at least 2 hand-keyed TCP ECCO/Evans texts dated 1700 or later, with each word's
+      document frequency. MIN_DOCS = 2.
+  - key: ocr_fix.cleaning
+    issue: BOM-14
+    note: >
+      Rule-based cleaning thresholds (ocr_fix/clean.py): long s read as f is repaired when the
+      s-form occurs in at least 100 times as many keyed texts as the form as read
+      (LONG_S_RATIO); running headers are lines in the top or bottom 2 lines of a page
+      (EDGE_LINES) whose letters, at least 6 of them (HEADER_MIN_LETTERS), recur there on at
+      least 3 pages and 5% of pages (HEADER_MIN_PAGES, HEADER_MIN_SHARE); in text without page
+      marks, lines of at most 60 characters (SHORT_LINE) against a page estimate of 2,000
+      characters (CHARS_PER_PAGE). Chronicling America single pages skip header removal.

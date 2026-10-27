@@ -24,7 +24,7 @@ def test_pages_join_in_page_order(tmp_path: Path) -> None:
         zf.writestr("v/00000002.txt", "second")
         zf.writestr("v/00000001.txt", "first")
         zf.writestr("v/notes.xml", "<x/>")
-    assert text_of(z) == "first\nsecond"
+    assert text_of(z) == "first\n\f\nsecond"
 
 
 def test_catalog_row_points_at_extracted_text(tmp_path: Path) -> None:
