@@ -92,6 +92,10 @@ kjv_mask:
     relative_overlap: 0.5
     passim_min_align_chars: 20   # pending_amendment: kjv_mask.passim_implementation
     max_df: 100                  # pending_amendment: kjv_mask.passim_implementation
+    # Selected 2026-10-27 under Amendment 2's selection-rule provision on planted quotations
+    # (kjv_mask.evaluate, data/kjv_mask/eval_grid.jsonl): masking F1 0.856 at every value 1-4,
+    # so the registered tie-break (larger) gives 4.
+    min_match: 4
 
 segmentation:
   # 4.5: three segmentations (narrator, dictation order, scribe), each cut into fixed chunks.
