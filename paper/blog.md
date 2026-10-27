@@ -1191,8 +1191,51 @@ letters, and I put the pieces back with a dictionary of period word frequencies:
 On keyed text broken up the same way on purpose, that gets 93% of words back, up from 62%.
 "Tfcout" (without) is still wrong. That's the OCR, not the breaking, and it stays.
 
+## Spelling, and the tool I used wrong
+
+Old books spell things their own way. A 1550 chronicle says "vnto" and "haue" and "hym". If I'm
+going to compare word habits across three hundred years, "vnto" and "unto" need to be the same
+word. The plan said to use MorphAdorner, a tool Northwestern built for exactly this, for anything
+printed before 1700. For 1780 to 1830, the books the study actually cares about, only the
+printing quirks get fixed: the long s that looks like an f, and joined letters like "ﬁ". Their
+spelling stays as printed, because "publick" versus "public" might be part of someone's habit.
+
+My first pass was wrong, and it looked fine until I read the list of what it had changed.
+MorphAdorner ships a big two-column table of old spelling to new, and I applied it word by word.
+Near the top of the list of changes:
+
+> `part` → `partly`, 1,009,519 times
+
+A million nouns became adverbs. The table isn't meant to be used alone. MorphAdorner first works
+out what part of speech each word is, and only then picks the spelling: "part" the noun stays,
+"part" the adverb becomes "partly"; "ye" is "you" when it's a pronoun and "the" when it's an old
+way of writing "the". So I ran the real tool instead, which took four hours on the mini. Now
+`part` → `partly` happens 352 times, and "ye" splits 882,357 to "you" and 105,434 to "the".
+
+The real tool has habits of its own, and I've left them alone on purpose. It turns the article
+"an" into "and" 3.3 million times, and "whether" into "whither" half a million times. That's
+the method the plan names, so it stays, and I've written down a proposed fix for the owner (me)
+to make officially. It only touches the pre-1700 reference books, and the original text is kept.
+
+Then I tripped twice putting MorphAdorner's output back into the books. It hands back a list of
+words, and I walk through the original text swapping each one in place, so the lines and
+paragraphs survive. Where the text has ". ." split across a line, MorphAdorner writes "..". My
+walker went looking for the next "..", found one a hundred characters on, and from then on it was
+always a little ahead, grabbing the next "the" or "of", until it ran off the end of a book with
+two million words still unplaced. The fix was a rule: you can't skip past words you haven't
+accounted for, and after a stumble the next three words have to line up too. Final count: 0.03%
+of 1.38 billion words couldn't be placed, and those keep their printed spelling.
+
+The last check was the one I'd been waiting for since the catalog. The duplicate finder only
+caught copies of a book from the same source, and I'd said that cleaning the OCR and fixing the
+spelling first would let it see across sources. It doesn't. On 300 pairs of what look like the same
+book in two sources, similarity rose from 0.12 to 0.18. The bar is 0.8, and not one pair clears
+it. Two different bad OCRs of the same page still share too few five-word runs. That's now
+written down as a known gap, with a possible fix that would need an official change to the plan.
+
 ## Log
 
+- **2026-10-27, afternoon.** BOM-15 done pending its dependencies: OCR sources artifact-only, 53,486 pre-1700 texts through MorphAdorner's own adorner (the table-only first pass superseded; its part -> partly and ye -> you errors kept on record); an -> and and similar MorphAdorner choices listed for amendment. Dedup re-run on normalised text: 19,916 groups; cross-source pairs 0.117 -> 0.180 median, none at 0.8. BOM-17 chunks and split built (split sha256 9fdffa56...). Control lists built and committed; control masking running (long volumes now aligned in overlapping 150,000-word pieces after passim ran out of memory).
 - **2026-10-27, night.** BOM-14 closed: 472,018 volumes cleaned; error rate measured on 1,883 hand-keyed twins (median 0.099 raw, 0.083 cleaned); estimated for every volume and flagged, never deleted (Harvard 2.5%, HathiTrust 11.9%, Internet Archive 24.9%, Chronicling America 27.8% over 0.10). LLM correction tried and rejected (invents text). Wayne Sentinel re-segmented (62% -> 93% words recovered).
 - **2026-10-27, later.** BOM-13 closed with BOM-12 (its only open dependency); candidate table unchanged since 65d4a9c. Pre-1830, only Spalding, Ethan Smith and Hunt clear the 10,000-word floor.
 - **2026-10-27, later.** BOM-12 closed: catalog 559,986 rows (502,134 with text), genre pass 1 and pass 2, dedup (3,336 groups, same-source only; re-run moved to BOM-15), author word counts (64,710). Catalog manifest and SOURCES.md section added. Three empty validation excerpts (verse) fixed.
