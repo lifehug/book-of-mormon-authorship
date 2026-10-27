@@ -40,6 +40,7 @@ from metadata.config import load as load_config
 
 APP = Path("data/corpus/morphadorner/app")
 OUT = Path("data/corpus/morphadorner_adorned")
+SCRATCH = Path("data/corpus/morphadorner_tmp")  # per-batch output; a killed run leaves it here
 CATALOG = Path("data/catalog/catalog.parquet")
 JAVA = Path(os.environ.get("JAVA_HOME", "/opt/homebrew/opt/openjdk@17")) / "bin" / "java"
 HEAP = "2g"
@@ -113,7 +114,7 @@ def _rows() -> list[dict]:
 
 def _adorn_batch(paths: list[str]) -> tuple[int, str]:
     """One JVM over a batch; outputs land in a scratch dir and move into place per file."""
-    with tempfile.TemporaryDirectory(dir=OUT.parent) as tmp:
+    with tempfile.TemporaryDirectory(dir=SCRATCH) as tmp:
         files = [str(Path(p).resolve()) for p in paths]
         cmd = [str(JAVA), f"-Xmx{HEAP}", "-Xss1m", "-cp", ".:bin/:dist/*:lib/*", *ARGS,
                "-o", str(Path(tmp).resolve()), *files]  # fmt: skip
@@ -130,6 +131,7 @@ def _adorn_batch(paths: list[str]) -> tuple[int, str]:
 
 def adorn(jobs: int, batch: int) -> int:
     OUT.mkdir(parents=True, exist_ok=True)
+    SCRATCH.mkdir(parents=True, exist_ok=True)
     rows = _rows()
     todo = [r["text_path"] for r in rows if not adorned_path(r).exists()]
     # largest first, so the long tail is short files
