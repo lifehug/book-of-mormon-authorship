@@ -1075,8 +1075,40 @@ Phelps ends at 31,538 words, Rigdon at 23,478, Cowdery's printed sample at 48,00
 1830, all before masking. Nobody but the three outside authors has 10,000 words written before
 the Book of Mormon.
 
+## Deciding not to click through 300 records, yet
+
+The validation page came up on the laptop with no text in it, because the excerpts only live on
+the mini. The mini committed the filled page to the private repo and I pulled it. First record:
+James Mill's *Analysis of the Phenomena of the Human Mind*, 1829. Llama says
+scientific_medical plus newspaper_periodical, Sonnet says sermon_devotional. Both wrong. It is
+a philosophy book, and the taxonomy has no slot for philosophy. That is going to come up a lot.
+
+Then I asked the question I should have asked first: how much does this matter? The genre
+labels never touch authorship. They build the genre-matched control pools, so a style match can
+be shown to be authorial and not "both are sermons." Amendment 4 already made the real test a
+perturbation: corrupt the labels at the measured error rate, rerun, see if anything moves. The
+300 hand-judged records exist only to supply that rate. And I already have a worst case for it:
+the two models disagree on 28% of the hard records and about 3% of the easy ones.
+
+So the plan is now: run the perturbation at the worst case first. If the conclusions hold, the
+labels don't matter and nobody judges 300 Tudor pamphlets. If they move, the real rate is
+needed and the hour of clicking is worth it. That is BOM-53, blocked on BOM-40, and the trigger
+is written into the issue so it comes back on its own.
+
+To make the hour short if it does come back, I had Claude draft a label and a one-line reason
+for every record under a written rule sheet. The draft sides with Llama on 151, Sonnet on 87,
+and neither on 62. The 62 are mostly taxonomy holes rather than model mistakes: philosophy,
+almanacs, playbills, a cricket scorecard, an alchemical treatise, Johnson's collected works.
+The draft is committed and labeled as what it is, an AI drafting aid for a human to agree with
+or override, not a judgement.
+
 ## Log
 
+- **2026-10-27.** Genre validation deferred (BOM-53). Page pulled from the private repo,
+  300 AI-drafted labels committed with a rule sheet (151 side with Llama, 87 with Sonnet,
+  62 with neither). Perturbation will run at a worst-case 28%/3% bound first; the hand
+  sample is drawn only if the genre-dependent conclusions move. Bound added to
+  `pending_amendment`.
 - **2026-10-26, evening.** BOM-13 signed periodical items: rules 11-17 written (17 dated as a
   clarification after extraction began), 77 signature lines, 43 items admitted. Phelps 0 →
   31,538, Rigdon 5,613 → 23,478, Cowdery printed 24,040 → 48,002 (post-1830, raw OCR).

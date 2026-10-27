@@ -139,3 +139,12 @@ pending_amendment:
     note: >
       Amendment 4 requires a family distinct from pass 1 but names no model; the choice is
       measured on the ground-truth rows and published with both versions.
+  - key: genre_tagging.perturbation_rate_bound
+    issue: BOM-53
+    note: >
+      Amendment 4 sets perturbation_rate from the hand-adjudicated validation sample. BOM-53
+      defers that sample: the perturbation is first run at a worst-case bound taken from the
+      measured inter-model disagreement (28% on model-decided records, 3% on rule-decided,
+      genre_benchmark_300.json), with the confusion drawn from the observed pass-1/pass-2
+      disagreements. The hand sample is drawn only if the genre-dependent conclusions move
+      under that bound. Needs a dated OSF amendment naming the bound before BOM-40 runs it.
