@@ -10,7 +10,8 @@ labels.
 Every set draws on the same eligible pool:
 
 * has text, published 1780-1830 (``corpus.date_range``; TCP's earlier texts are out),
-* a dedup keeper (``duplicates.parquet``; reprints count once),
+* a dedup keeper (``duplicates_normalized.parquet``, BOM-15's run on cleaned and normalised
+  text, the order 4.3 lists; reprints count once),
 * not flagged ``ocr_excluded`` by BOM-14 (``data/ocr_quality/volumes.parquet``),
 * not a candidate's work, so candidates and controls stay disjoint -- except where section 3
   names a candidate's work as a control (Hunt's *The Late War*), which stays and is flagged,
@@ -60,9 +61,9 @@ from metadata.config import sha256_of_config
 
 CATALOG = Path("data/catalog/catalog.parquet")
 GENRE = Path("data/catalog/genre.parquet")
-DUPES = Path("data/catalog/duplicates.parquet")
+DUPES = Path("data/catalog/duplicates_normalized.parquet")
 VOLUMES = Path("data/ocr_quality/volumes.parquet")
-SIGS = Path("data/catalog/signatures")
+SIGS = Path("data/catalog/signatures_normalized")  # word counts of the normalised text
 OUT = Path("data/controls")
 
 NAMED = {
