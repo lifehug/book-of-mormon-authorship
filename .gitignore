@@ -97,6 +97,9 @@ data/catalog/signatures_normalized/
 # identical sample from a corpus copy. Regenerate the page with `metadata.validation build`.
 data/catalog/validation.html
 data/catalog/validation_sample.json
+# BOM-18: control-set membership, work ids only (Amendment 2: published with SHA-256)
+!data/controls/
+!data/controls/**
 !data/kjv_mask/
 !data/kjv_mask/**
 !data/normalization/
