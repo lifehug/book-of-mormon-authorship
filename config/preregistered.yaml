@@ -197,3 +197,30 @@ pending_amendment:
       20 letters (MAX_WORD); a word outside the lexicon costs 12 per letter on top of the
       unknown-word cost (UNKNOWN_PER_LETTER). A split is kept only if it raises the share of
       letters in known words.
+  - key: controls.pseudo_biblical_list
+    issue: BOM-18
+    note: >
+      Amendment 3 has control sets match a work on either of its two genre labels. For the
+      pseudo-biblical set that admits about 5,300 volumes in 1780-1830, read by title mostly
+      ordinary religious prose (pass 1 used pseudo_biblical freely as a second label); 23 carry
+      it as primary. Both lists are built (pseudo_biblical, pseudo_biblical_primary, each with
+      the four works section 3 names). Which list the confirmatory pseudo-biblical test reads
+      is the owner's decision, and a departure from "either" needs a dated amendment.
+  - key: controls.pool_sample
+    issue: BOM-18
+    note: >
+      The history and general-prose pools (about 40,000 and 340,000 volumes) are drawn down to
+      3,000 and 5,000 by a seeded sample stratified by source and decade in proportion, so that
+      every member can be KJV-masked with passim at the validated batch size (the full pools are
+      about 20 billion words, a month of passim on the data machine). Amendment 2's draws of 100
+      imposters per trial are unaffected in kind.
+  - key: sealing.contamination_kjv
+    issue: BOM-18
+    note: >
+      4.2's check drops a volume holding a Book of Mormon string of 12+ tokens. Read literally
+      that includes the KJV chapters the Book of Mormon reproduces; run that way on the control
+      pools it flagged 4,267 volumes, mostly sermons quoting Isaiah and Matthew. Implemented as
+      12-token strings from the 1830 edition's original spans (outside BOM-16's KJV masks) that
+      do not occur in the KJV, and a volume is contaminated when it shares at least 20 distinct
+      such strings (metadata/sealed.py MIN_SHARED). Measured: no control-pool volume shares more
+      than 9 (liturgy, biblical phrasing); the six copies of the book share 109,011 to 174,655.

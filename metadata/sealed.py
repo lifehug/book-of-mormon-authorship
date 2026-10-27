@@ -15,8 +15,26 @@ Two layers:
 
 ``titles``   rows whose catalogue title names the book (``sealed.json``), a fast first line
 ``contaminated(text)``  the registered check itself, on a text: True if it shares any 12-token
-             string with the 1830 edition. Pools run it on every member, which also catches
-             extracts quoted inside other works.
+             string with the 1830 edition *that is not also in the KJV*. Pools run it on every
+             member, which also catches extracts quoted inside other works.
+
+Why the KJV strings are left out. Read literally, "a Book of Mormon string of 12 or more
+tokens" includes the Isaiah, Matthew and Malachi chapters the Book of Mormon reproduces, and the
+first run of the check on the control pools flagged 4,267 volumes -- period sermons and
+histories quoting the same chapters. That would strip religious prose from every pool and from
+the time-locked model's training data, which is not what the rule is for: it exists to keep the
+Book of Mormon's own text out. So a 12-token string counts only if the KJV does not contain it.
+A second pass showed that excluding exact KJV strings is not enough: 1,498 volumes still matched,
+on biblical phrases in period variants ("plough-shares", "the sins of the world") that the Book
+of Mormon also uses. So the strings come from the Book of Mormon's *original* spans only, its
+text outside BOM-16's KJV masks (``data/kjv_mask/bom/spans.jsonl``), and a string never bridges
+a removed span. This interpretation is listed in ``pending_amendment``
+(``sealing.contamination_kjv``).
+
+Even then, a single shared string is not evidence: on the control pools the most any
+volume shared was 9 (Books of Common Prayer, a Quaker journal), against 109,011 or more for every
+copy of the book. A volume is contaminated when it shares at least ``MIN_SHARED`` distinct
+strings.
 
 Tokens follow Amendment 2's registered tokenisation (``kjv_mask.align.norm_token``).
 
@@ -40,6 +58,13 @@ from metadata.config import sha256_of_config
 
 CATALOG = Path("data/catalog/catalog.parquet")
 EDITION = Path("data/bom/1830/edition_1830.jsonl")
+KJV = Path("data/kjv/kjv.jsonl")
+MASKS = Path("data/kjv_mask/bom/spans.jsonl")
+# pending_amendment: sealing.contamination_kjv. Measured 2026-10-27: no control-pool text shares
+# more than 9 distinct strings with the Book of Mormon's original text (liturgy and biblical
+# phrasing); the six copies of the book share 109,011 to 174,655. 20 is above the first and
+# low enough to catch a quoted extract of about 30 words.
+MIN_SHARED = 20
 OUT = Path("data/catalog/sealed.json")
 TITLE = re.compile(r"\bbook of mormon\b|\bgolden bible\b", re.IGNORECASE)
 
@@ -50,25 +75,52 @@ def _tokens(text: str) -> list[str]:
     return [norm_token(m.group(0)) for m in _WORD.finditer(text)]
 
 
+def _grams(toks: list[str], n: int) -> set[int]:
+    return {hash(tuple(toks[i : i + n])) for i in range(len(toks) - n + 1)}
+
+
 def _bom_grams(n: int) -> set[int]:
     global _GRAMS
     if _GRAMS is None:
-        toks = []
+        masks = {}
+        for line in MASKS.read_text().splitlines():
+            r = json.loads(line)
+            masks[r["id"]] = r["spans"]
+        grams: set[int] = set()
         for line in EDITION.read_text(encoding="utf-8").splitlines():
-            toks += _tokens(json.loads(line)["text"])
-        _GRAMS = {hash(tuple(toks[i : i + n])) for i in range(len(toks) - n + 1)}
+            r = json.loads(line)
+            if not r["book"]:
+                continue
+            text, pos, parts = r["text"], 0, []
+            for sp in sorted(masks.get(f"bom:{r['seq']}", []), key=lambda x: x["start"]):
+                parts.append(text[pos : sp["start"]])
+                pos = max(pos, sp["end"])
+            parts.append(text[pos:])
+            for part in parts:  # strings never bridge a removed KJV span
+                grams |= _grams(_tokens(part), n)
+        chapters: dict[tuple, list[str]] = {}  # verse order, so strings across verses count
+        for line in KJV.read_text(encoding="utf-8").splitlines():
+            r = json.loads(line)
+            chapters.setdefault((r["book"], r["chapter"]), []).extend(_tokens(r["text"]))
+        kjv_grams = set().union(*(_grams(t, n) for t in chapters.values()))
+        _GRAMS = grams - kjv_grams
     return _GRAMS
 
 
-def contaminated(text: str) -> bool:
-    """4.2's check: does ``text`` share a string of 12+ tokens with the 1830 edition?
-
-    Hashes stand in for the tuples to keep memory small; a collision can only make the check
-    stricter (a false exclusion), never let Book of Mormon text through."""
+def shared_strings(text: str) -> int:
+    """Distinct Book of Mormon original-text strings of 12 tokens that ``text`` contains."""
     n = load_config()["sealing"]["contamination_min_tokens"]
     grams = _bom_grams(n)
     toks = _tokens(text)
-    return any(hash(tuple(toks[i : i + n])) in grams for i in range(len(toks) - n + 1))
+    return len({hash(tuple(toks[i : i + n])) for i in range(len(toks) - n + 1)} & grams)
+
+
+def contaminated(text: str) -> bool:
+    """4.2's check, with the count threshold measured on the corpus (``MIN_SHARED``).
+
+    Hashes stand in for the tuples to keep memory small; a collision can only make the check
+    stricter (a false exclusion), never let Book of Mormon text through."""
+    return shared_strings(text) >= MIN_SHARED
 
 
 def titles() -> int:

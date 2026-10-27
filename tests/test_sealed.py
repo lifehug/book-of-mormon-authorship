@@ -8,11 +8,21 @@ from metadata.sealed import contaminated
 ROWS = [json.loads(ln) for ln in Path("data/bom/1830/edition_1830.jsonl").read_text().splitlines()]
 
 
-def test_a_12_token_extract_is_caught() -> None:
-    body = next(r["text"] for r in ROWS if r["kind"] == "body" and len(r["text"].split()) > 40)
-    extract = " ".join(body.split()[5:18])
+def test_a_quoted_extract_is_caught() -> None:
+    # Jacob 5's olive-tree allegory is the Book of Mormon's own (not KJV) and long
+    body = next(r["text"] for r in ROWS if r["kind"] == "body" and "olive" in r["text"]
+                and len(r["text"].split()) > 80)  # fmt: skip
+    extract = " ".join(body.split()[10:70])
     assert contaminated(f"An unrelated preface. {extract} And so the essay goes on.")
 
 
 def test_short_overlap_is_not() -> None:
     assert not contaminated("And it came to pass that the people did go forth into the field.")
+
+
+def test_shared_kjv_text_is_not_contamination() -> None:
+    isaiah = (
+        "Surely he hath borne our griefs, and carried our sorrows: yet we did esteem him "
+        "stricken, smitten of God, and afflicted. But he was wounded for our transgressions"
+    )
+    assert not contaminated(f"The preacher said: {isaiah}. Amen.")
