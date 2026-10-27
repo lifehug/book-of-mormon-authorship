@@ -1132,6 +1132,7 @@ its SOURCES.md never mentioned any of the eleven files this issue made. Both are
 
 ## Log
 
+- **2026-10-27, later.** BOM-13 closed with BOM-12 (its only open dependency); candidate table unchanged since 65d4a9c. Pre-1830, only Spalding, Ethan Smith and Hunt clear the 10,000-word floor.
 - **2026-10-27, later.** BOM-12 closed: catalog 559,986 rows (502,134 with text), genre pass 1 and pass 2, dedup (3,336 groups, same-source only; re-run moved to BOM-15), author word counts (64,710). Catalog manifest and SOURCES.md section added. Three empty validation excerpts (verse) fixed.
 - **2026-10-27.** Genre validation deferred (BOM-53). Page pulled from the private repo,
   300 AI-drafted labels committed with a rule sheet (151 side with Llama, 87 with Sonnet,
