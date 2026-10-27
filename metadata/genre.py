@@ -284,19 +284,48 @@ SCHEMA = pa.schema(
 )
 
 
-def run_rules() -> int:
+def run_rules(append: bool = False) -> int:
+    """Rule labels for the catalog. ``append`` keeps ``genre.parquet`` and only adds rows it
+    lacks: without it this rewrites the file from scratch, which after pass 1 would discard
+    every model label. Appended rows with no text on disk are written ``uncertain`` directly
+    (``rule:no_text``), the outcome ``resolve-no-text`` gives them after a wasted model call."""
     rows = pq.read_table(CATALOG).to_pylist()
+    existing: list[dict] = []
+    if append:
+        if not OUT.exists():
+            raise SystemExit(f"--append needs an existing {OUT}")
+        existing = pq.read_table(OUT).to_pylist()
+        have = {r["work_id"] for r in existing}
+        rows = [r for r in rows if r["work_id"] not in have]
     out = []
+    no_text = 0
     for row in rows:
+        if append and not row["has_text"]:
+            out.append(
+                {
+                    "work_id": row["work_id"],
+                    "genre": "uncertain",
+                    "decided_by": "rule:no_text",
+                    "model": None,
+                }
+            )
+            no_text += 1
+            continue
         label = rule_label(row)
         if label:
             out.append(
                 {"work_id": row["work_id"], "genre": label, "decided_by": "rule", "model": None}
             )
-    table = pa.Table.from_pylist(out, schema=SCHEMA)
+    table = pa.Table.from_pylist(existing + out, schema=SCHEMA)
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    pq.write_table(table.replace_schema_metadata({"config_sha256": sha256_of_config()}), OUT)
-    print(f"rules decided {len(out):,} of {len(rows):,} ({100 * len(out) / len(rows):.1f}%)")
+    tmp = OUT.with_suffix(".parquet.tmp")
+    pq.write_table(table.replace_schema_metadata({"config_sha256": sha256_of_config()}), tmp)
+    tmp.replace(OUT)
+    n = max(len(rows), 1)
+    ruled = len(out) - no_text
+    print(f"rules decided {ruled:,} of {len(rows):,} ({100 * ruled / n:.1f}%)")
+    if no_text:
+        print(f"{no_text:,} appended rows have no text: uncertain (rule:no_text)")
     print(f"{len(rows) - len(out):,} rows need the model")
     return 0
 
@@ -401,7 +430,8 @@ def resolve_no_text() -> int:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("rules")
+    ru = sub.add_parser("rules")
+    ru.add_argument("--append", action="store_true", help="add only rows genre.parquet lacks")
     sub.add_parser("resolve-no-text")
     lab = sub.add_parser("label")
     lab.add_argument("--limit", type=int)
@@ -409,7 +439,7 @@ def main(argv: list[str] | None = None) -> int:
     lab.add_argument("--workers", type=int, default=WORKERS)
     args = ap.parse_args(argv)
     if args.cmd == "rules":
-        return run_rules()
+        return run_rules(args.append)
     if args.cmd == "resolve-no-text":
         return resolve_no_text()
     if args.cmd == "label":
