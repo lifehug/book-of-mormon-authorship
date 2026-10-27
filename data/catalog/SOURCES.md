@@ -135,3 +135,13 @@ parquet carries the config hash it was built under in its schema metadata (`conf
 
 Checksums: `data/manifests/catalog.jsonl` (everything here except the two restricted files) and
 `data/manifests/validation-private.jsonl` (the private copies of those two).
+
+## MorphAdorner spelling data (BOM-15)
+
+`data/corpus/morphadorner/morphadorner-2.0.1.zip`, downloaded 2026-10-27 from
+https://morphadorner.northwestern.edu/morphadorner/download/morphadorner-2.0.1.zip
+(Northwestern University; NCSA-style licence, see the site's Licenses page), with its
+`data/eme*`, `standardspellings.txt` and `spellingsbywordclass.txt` extracted beside it.
+`ememergedspellingpairs.tab` is the Early Modern English spelling table registered as
+`corpus.spelling_normalization.pre_1700`. Local only (under `data/corpus/`); checksums in
+`data/manifests/morphadorner.jsonl`. Rebuild: download the same zip and `unzip 'data/eme*'`.

@@ -164,3 +164,9 @@ pending_amendment:
       least 3 pages and 5% of pages (HEADER_MIN_PAGES, HEADER_MIN_SHARE); in text without page
       marks, lines of at most 60 characters (SHORT_LINE) against a page estimate of 2,000
       characters (CHARS_PER_PAGE). Chronicling America single pages skip header removal.
+  - key: spelling_normalization.1700_1779
+    issue: BOM-15
+    note: >
+      The registration names pre_1700 (MorphAdorner EME lexicon) and post_1780 (artifacts
+      only) and is silent on 1700-1779, which is TCP's ECCO and Evans material. Treated as
+      artifacts_only, the reading that changes least (ocr_fix/normalize.py regime()).
