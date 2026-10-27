@@ -1,10 +1,17 @@
 """Estimated CER for every volume, and the 4.3 exclusion flag (BOM-14).
 
 ``ocr_fix.groundtruth`` measures CER directly for about two thousand volumes that have a keyed
-twin. Every other volume gets an *estimate*: a linear model of measured CER on the proxy
-metrics the cleaning run records for every document (``ocr_fix.clean.proxies``), fitted on
-the ground-truth pairs. Its accuracy is published with it, cross-validated by fold, including
-how often it puts a volume on the wrong side of ``corpus.ocr_max_cer``.
+twin. Every other volume gets an *estimate*: a linear model of log CER on the proxy metrics the
+cleaning run records for every document (``ocr_fix.clean.proxies``), fitted on the
+ground-truth pairs. Its accuracy is published with it, cross-validated by fold, including how
+often it puts a volume on the wrong side of ``corpus.ocr_max_cer``.
+
+Log, because errors are multiplicative: on the 1,885 aligned pairs a log-scale fit put 18.5% of
+volumes on the wrong side of the cutoff against 24.1% for a raw-scale one, at the same mean
+absolute error (squared terms added nothing). ``OFFSET`` keeps log defined at CER 0. The model
+ranks well (Spearman 0.78) but much of the corpus sits near the line -- the measured median is
+0.083 against a cutoff of 0.10 -- so ``near_cutoff`` marks volumes whose estimate is within one
+cross-validated residual of it, for BOM-40 to vary rather than trust.
 
 The flag is set, never acted on here: ``ocr_excluded`` marks a volume whose estimated CER of
 the *cleaned* text exceeds the cutoff. Nothing is deleted, and stages that want the comparison
@@ -45,11 +52,16 @@ OUT = Path("data/ocr_quality/volumes.parquet")
 FEATURES = [*PROXY, "period_lexicon_rate"]
 TARGETS = ["cer_clean", "cer_raw", "letter_cer_clean"]
 FOLDS = 5
+OFFSET = 0.01
 
 
 def _design(rows: list[dict]) -> np.ndarray:
     x = np.array([[r[f] for f in FEATURES] for r in rows], dtype=float)
     return np.hstack([np.ones((len(rows), 1)), x])
+
+
+def _ranks(v: np.ndarray) -> np.ndarray:
+    return np.argsort(np.argsort(v))
 
 
 def _fit(x: np.ndarray, y: np.ndarray) -> np.ndarray:
@@ -65,28 +77,32 @@ def fit() -> int:
     for target in TARGETS:
         ok = [r for r in rows if r[target] is not None]
         x, y = _design(ok), np.array([r[target] for r in ok])
+        ly = np.log(y + OFFSET)
         order = list(range(len(ok)))
         random.Random(cfg["seed"]).shuffle(order)
         pred = np.empty(len(ok))
         for k in range(FOLDS):
             test = order[k::FOLDS]
             train = sorted(set(order) - set(test))
-            pred[test] = _design([ok[i] for i in test]) @ _fit(x[train], y[train])
+            pred[test] = _design([ok[i] for i in test]) @ _fit(x[train], ly[train])
+        resid_sd = float(np.std(pred - ly))
+        pred = np.exp(pred) - OFFSET
         err = np.abs(pred - y)
         side = (pred > cut) != (y > cut)
-        ss = float(((y - y.mean()) ** 2).sum())
         out[target] = {
             "n": len(ok),
-            "coef": _fit(x, y).tolist(),
+            "coef": _fit(x, ly).tolist(),
+            "cv_log_resid_sd": resid_sd,
             "cv_mae": float(err.mean()),
-            "cv_r2": 1 - float(((pred - y) ** 2).sum()) / ss if ss else None,
+            "cv_spearman": float(np.corrcoef(_ranks(pred), _ranks(y))[0, 1]),
             "cv_wrong_side_of_cutoff": float(side.mean()),
             "measured_median": float(np.median(y)),
             "measured_share_over_cutoff": float((y > cut).mean()),
         }
         t = out[target]
         print(
-            f"{target:<17} n={t['n']:,}  CV MAE {t['cv_mae']:.3f}  R2 {t['cv_r2']:.2f}  "
+            f"{target:<17} n={t['n']:,}  CV MAE {t['cv_mae']:.3f}  "
+            f"Spearman {t['cv_spearman']:.2f}  "
             f"wrong side of {cut} {t['cv_wrong_side_of_cutoff']:.1%}  "
             f"measured median {t['measured_median']:.3f}, over cutoff "
             f"{t['measured_share_over_cutoff']:.1%}"
@@ -101,7 +117,10 @@ def apply() -> int:
     cut = load_config()["corpus"]["ocr_max_cer"]
     rows = pq.read_table(CLEANING).to_pylist()
     x = _design(rows)
-    est = {t: np.clip(x @ np.array(model[t]["coef"]), 0, 1) for t in TARGETS}
+    logs = {t: x @ np.array(model[t]["coef"]) for t in TARGETS}
+    est = {t: np.clip(np.exp(v) - OFFSET, 0, 1) for t, v in logs.items()}
+    band = model["cer_clean"]["cv_log_resid_sd"]
+    near = np.abs(logs["cer_clean"] - np.log(cut + OFFSET)) < band
     harvard = {
         f"institutional_books:{r.get('barcode_src')}": r.get("ocr_score_gen")
         for r in read_rows(HARVARD)
@@ -122,6 +141,7 @@ def apply() -> int:
                 "measured_cer_clean": cer,
                 "harvard_ocr_score": harvard.get(r["work_id"]),
                 "extrapolated": r["source"] == "chronicling_america",
+                "near_cutoff": bool(near[i]) and cer is None,
                 "ocr_excluded": (cer if cer is not None else est_clean) > cut,
             }
         )
@@ -135,6 +155,7 @@ def apply() -> int:
             ("measured_cer_clean", pa.float64()),
             ("harvard_ocr_score", pa.float64()),
             ("extrapolated", pa.bool_()),
+            ("near_cutoff", pa.bool_()),
             ("ocr_excluded", pa.bool_()),
         ]
     )
