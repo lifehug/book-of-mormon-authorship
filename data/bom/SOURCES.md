@@ -106,3 +106,15 @@ If you are reproducing this project without access to it:
 3. Verify with the `bom-private.jsonl` manifest above. Matching checksums mean your copy is
    byte-identical to the one used here.
 4. Keep it private; the sources' licenses do not allow redistribution.
+
+## 5. Segment boundaries (BOM-17)
+
+`segments/boundaries.json` is the narrator, dictation-order and scribe boundary file that
+Amendment 2 requires to be published with its SHA-256 before any segmented analysis;
+`segments/paragraph_labels.jsonl` gives every 1830 paragraph its narrator, embedded document,
+dictation position and phase, and scribe. Built by `uv run python -m segment.boundaries` from
+the 1830 edition and `align_original_paragraphs.jsonl`; each boundary carries its evidence (the
+1830 paragraph that marks it, or the manuscript pages). The module docstring explains each
+scheme and its limits: the embedded-document layer is paragraph-granular, Words of Mormon's
+dictation position is uncertain, and 76% of the text has no surviving original-manuscript page,
+so its scribe is `not_extant`.
