@@ -98,3 +98,7 @@ data/catalog/validation.html
 data/catalog/validation_sample.json
 !data/kjv_mask/
 !data/kjv_mask/**
+!data/normalization/
+!data/normalization/**
+# per-text replacement log, 0.7 GB; aggregated into applied_map.tsv, rebuilt by ocr_fix.normalize
+data/normalization/applied_counts.jsonl
