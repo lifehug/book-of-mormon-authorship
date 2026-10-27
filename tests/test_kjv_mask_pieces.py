@@ -40,3 +40,24 @@ def test_spans_map_back_onto_the_whole_text(monkeypatch, tmp_path):
 
     rec = json.loads((tmp_path / "t" / "spans.jsonl").read_text())
     assert [(s["start"], s["end"]) for s in rec["spans"]] == [(target, target + 3)]  # one, not two
+
+
+def test_failed_batch_is_split_and_mapped_back(monkeypatch):
+    monkeypatch.setattr(R, "PIECE_OVERLAP", 2)
+    text = " ".join(f"w{i}" for i in range(30))
+    target = text.index("w25")
+
+    def fake_mask(docs, work, params):
+        if any(len(d["text"].split()) > 12 for d in docs):
+            raise RuntimeError("passim failed at every heap size")
+        out = {}
+        for d in docs:
+            i = d["text"].find("w25")
+            out[d["id"]] = [Span(i, i + 3, "verbatim", 1.0, 1, "kjv:X.1")] if i >= 0 else []
+        return out
+
+    monkeypatch.setattr(R, "mask", fake_mask)
+    log: list = []
+    got = R.mask_resilient([{"id": "d", "text": text}], None, {}, log=log)
+    assert [(s.start, s.end) for s in got["d"]] == [(target, target + 3)]
+    assert log and log[0]["texts"] == ["d"]

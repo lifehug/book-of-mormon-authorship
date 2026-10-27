@@ -24,7 +24,9 @@ across at most 100 characters -- so cutting does not change what matches; a quot
 than the overlap that crosses a cut is found whole in one piece. What can shift is the
 document-frequency count, since pieces count as documents; listed in ``pending_amendment``
 (``kjv_mask.passim_implementation``). Texts are read when their batch is built, not all held in
-memory (the control sets are about 1.65 billion words).
+memory (the control sets are about 1.65 billion words). A batch passim cannot finish at any
+heap size is aligned again with each text cut into thirds (``mask_resilient``); those batches are
+listed in the report under ``split_further``.
 
 Outputs carry offsets, verse references, classes and identities, never text, so they are
 public even where the text is not (the Joseph Smith Papers samples):
@@ -59,6 +61,7 @@ WORK = Path("data/corpus/kjv_mask_runs")
 BATCH_WORDS = 720_000
 PIECE_WORDS = 150_000  # pending_amendment: kjv_mask.passim_implementation
 PIECE_OVERLAP = 500
+SPLIT_PARTS, SPLIT_DEPTH = 3, 2  # pending_amendment: kjv_mask.passim_implementation
 EDITION = Path("data/bom/1830/edition_1830.jsonl")
 SAMPLES = Path("data/private/candidates/samples")
 CONTROLS = Path("data/controls")
@@ -197,6 +200,45 @@ def _counts(text: str, spans: list[Span]) -> dict:
     }
 
 
+def _split(doc: dict, parts: int) -> list[tuple[dict, int]]:
+    """``doc`` cut into ``parts`` overlapping sub-pieces, each with its offset into ``doc``."""
+    text = doc["text"]
+    starts = [m.start() for m in _SPACE_WORD.finditer(text)]
+    size = -(-len(starts) // parts)
+    out = []
+    for k in range(0, len(starts), size):
+        end_word = k + size + PIECE_OVERLAP
+        end = starts[end_word] if end_word < len(starts) else len(text)
+        out.append(({"id": f"{doc['id']}/s{k // size}", "text": text[starts[k] : end]}, starts[k]))
+        if end == len(text):
+            break
+    return out
+
+
+def mask_resilient(
+    docs: list[dict], work: Path, params: dict, depth: int = 0, log: list | None = None
+) -> dict[str, list[Span]]:
+    """``mask``, or, if passim fails on the batch at every heap size, each text cut into thirds
+    and aligned on its own (twice at most). Verse-by-verse Bible commentaries (the 1826
+    *Recensio synoptica*) generate so many candidate alignments that passim's Python workers
+    die whatever the heap; alignment is local, so smaller pieces find the same quotations."""
+    try:
+        return mask(docs, work, params)
+    except RuntimeError:
+        if depth >= SPLIT_DEPTH:
+            raise
+    if log is not None:
+        log.append({"depth": depth + 1, "texts": [d["id"] for d in docs]})
+    out: dict[str, list[Span]] = {d["id"]: [] for d in docs}
+    for d in docs:
+        for sub, offset in _split(d, SPLIT_PARTS):
+            for spans in mask_resilient([sub], work, params, depth + 1, log).values():
+                out[d["id"]] += [
+                    replace(x, start=x.start + offset, end=x.end + offset) for x in spans
+                ]
+    return {k: resolve(v) for k, v in out.items()}
+
+
 def run(group: str, docs_of: Callable[[str], list[dict]] = _docs) -> int:
     if not validation_passed():
         raise SystemExit("kjv_mask.validate has not passed; settings are not frozen yet")
@@ -207,9 +249,10 @@ def run(group: str, docs_of: Callable[[str], list[dict]] = _docs) -> int:
     stamp = sha256_of_config()
     batches = _batches(_units(docs))
     found: dict[str, list[Span]] = {d["id"]: [] for d in docs}
+    split_log: list[dict] = []
     for i, batch in enumerate(batches, 1):
         pdocs, where = _materialise(batch)
-        for pid, spans in mask(pdocs, WORK / group, params).items():
+        for pid, spans in mask_resilient(pdocs, WORK / group, params, log=split_log).items():
             doc_id, offset = where[pid]
             found[doc_id] += [replace(s, start=s.start + offset, end=s.end + offset) for s in spans]
         print(f"  batch {i}/{len(batches)}", flush=True)
@@ -225,6 +268,7 @@ def run(group: str, docs_of: Callable[[str], list[dict]] = _docs) -> int:
     summary = {"group": group, "texts": len(report), "words": words, "masked_words": masked,
                "share_masked": masked / words if words else None, "params": params,
                "piece_words": PIECE_WORDS, "piece_overlap": PIECE_OVERLAP,
+               "split_further": split_log,
                "config_sha256": stamp, "per_text": report}  # fmt: skip
     (out_dir / "report.json").write_text(json.dumps(summary, indent=1) + "\n")
     print(f"{group}: {masked:,} of {words:,} words masked ({summary['share_masked']:.2%})")
