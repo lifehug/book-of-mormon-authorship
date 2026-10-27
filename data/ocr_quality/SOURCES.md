@@ -80,3 +80,20 @@ the cleaned text, the registered quantity, and the letters-only figure is kept f
 **Coverage.** The keyed twins are 1780-1800 books (TCP's Evans and ECCO). Estimates for
 1800-1830 print extrapolate in date, and for Chronicling America in genre as well; the second is
 flagged per row.
+
+### Result (2026-10-27)
+
+`calibrate apply` over all 472,018 OCR volumes (TCP is hand-keyed and skipped):
+
+| Source | Volumes | `ocr_excluded` (est. CER > 0.10) | `near_cutoff` |
+| --- | --- | --- | --- |
+| Harvard Institutional Books | 31,958 | 812 (2.5%) | 1,286 |
+| HathiTrust (non-Google) | 31,194 | 3,721 (11.9%) | 5,586 |
+| Internet Archive | 249,906 | 62,265 (24.9%) | 73,580 |
+| Chronicling America (extrapolated) | 158,960 | 44,233 (27.8%) | 44,850 |
+
+Cross-validated on the 1,883 aligned twins: MAE 0.041, Spearman 0.78, 18.5% put on the wrong
+side of the cutoff. An independent check the model never saw: across the 31,958 Harvard volumes,
+estimated CER against Harvard's own OCR score has Spearman -0.58 (lower score, higher error).
+Cleaning changed 100.6 million header lines, 252.9 million hyphen joins and 348.9 million long-s
+readings over the whole run (`cleaning.parquet` totals).

@@ -1130,8 +1130,70 @@ something to quietly patch now, because patching it would change what a rerun of
 Last, housekeeping I should have done earlier: the catalog folder had no checksum manifest and
 its SOURCES.md never mentioned any of the eleven files this issue made. Both are fixed.
 
+## Measuring how bad the OCR is, without reading any of it by hand
+
+The pre-registration says to drop any volume with more than 10% of its characters wrong. That
+sounds simple until you ask: wrong compared to what? You need a correct copy of the same page.
+I didn't have the hours to type up hundreds of pages, and it turned out I didn't need to.
+
+The Text Creation Partnership spent years having people hand-key early American and British
+books. Some of those same books are also in my OCR pile, scanned from a different copy. So I
+matched them up by title, author and year, got 2,108 pairs, and lined up 20 short passages in
+each. That's a real error rate, measured, on 1,883 books. The median book was 9.9% wrong
+before cleaning and 8.3% after. 38% of them are still over the 10% line after cleaning.
+
+Cleaning is mostly boring and mostly works: running heads like "THE HISTORY OF" at the top of
+every page come off, words split across lines get joined back, and the long s that OCR reads as
+an f ("confeffion") gets put back. Over the whole corpus that was 349 million long-s fixes.
+
+Then the trick: I can't measure every book that way, only the ones with a hand-keyed twin. So I
+fit a small model that guesses the error rate from things I *can* count in any text, like how
+many words are in a period dictionary, and checked it by holding books out. It's decent, not
+great. It ranks books well (Spearman 0.78), but it puts about one book in five on the wrong side
+of the 10% line. Those near the line get a `near_cutoff` flag so later analysis can test whether
+it matters.
+
+One check I liked because it's independent: Harvard scores its own OCR, and I never used those
+scores. Across 31,958 Harvard books, my estimate and theirs move together (Spearman -0.58).
+
+Here's what a book over the line looks like. This is an 1800 broadside, *The last dying speech
+and confession* of a man hanged for murdering his wife, estimated at 18% wrong:
+
+> Last D ing Speech and Confeſſion, ... the UNFOQORTUNATE. GEORGE DING L. ER. ... was able to
+> converſe, and walk acro:s
+
+It isn't thrown away. It's flagged `ocr_excluded`, and that's all. The split by source:
+
+| Source | Volumes | Over 10% |
+| --- | --- | --- |
+| Harvard | 31,958 | 2.5% |
+| HathiTrust | 31,194 | 11.9% |
+| Internet Archive | 249,906 | 24.9% |
+| Chronicling America | 158,960 | 27.8% |
+
+The newspaper number is a guess on top of a guess. The keyed twins are all books from 1780 to
+1800, so a newspaper from 1825 is outside what the model was trained on, and its rows say so.
+
+Two wrong turns. First I tried letting Sonnet fix the OCR. On 100 passages the median error
+dropped from 9.4% to 6.1%, which looks great, but four of its answers came back more than twice
+as long as the passage, padded with text it made up, and the average got *worse*. A fixer that
+sometimes invents text is no good for a study that is about who wrote which words, so it's not
+used. Second, my first error model worked on the raw number and was badly pulled around by a few
+hopeless books; working on a log scale fixed it.
+
+The Wayne Sentinel needed its own repair. Its website delivers text with words broken into
+letters, and I put the pieces back with a dictionary of period word frequencies:
+
+> before: `n that Jo h n R a n d o lp h has b een re -e le cted , Tfcout o p p o s i t i o n`
+>
+> after: `n that John Randolph has been reelected , T fc out opposition`
+
+On keyed text broken up the same way on purpose, that gets 93% of words back, up from 62%.
+"Tfcout" (without) is still wrong. That's the OCR, not the breaking, and it stays.
+
 ## Log
 
+- **2026-10-27, night.** BOM-14 closed: 472,018 volumes cleaned; error rate measured on 1,883 hand-keyed twins (median 0.099 raw, 0.083 cleaned); estimated for every volume and flagged, never deleted (Harvard 2.5%, HathiTrust 11.9%, Internet Archive 24.9%, Chronicling America 27.8% over 0.10). LLM correction tried and rejected (invents text). Wayne Sentinel re-segmented (62% -> 93% words recovered).
 - **2026-10-27, later.** BOM-13 closed with BOM-12 (its only open dependency); candidate table unchanged since 65d4a9c. Pre-1830, only Spalding, Ethan Smith and Hunt clear the 10,000-word floor.
 - **2026-10-27, later.** BOM-12 closed: catalog 559,986 rows (502,134 with text), genre pass 1 and pass 2, dedup (3,336 groups, same-source only; re-run moved to BOM-15), author word counts (64,710). Catalog manifest and SOURCES.md section added. Three empty validation excerpts (verse) fixed.
 - **2026-10-27.** Genre validation deferred (BOM-53). Page pulled from the private repo,
