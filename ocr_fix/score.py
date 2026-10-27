@@ -216,7 +216,8 @@ def summarize(name: str, rows: list[dict]) -> None:
 
 def report() -> int:
     """Every scored source side by side, so a new title is read against the reference."""
-    files = sorted(OUT_DIR.glob("*.parquet"))
+    # only page-score tables; the BOM-14 cleaning and ground-truth tables share the directory
+    files = [f for f in sorted(OUT_DIR.glob("*.parquet")) if "empty" in pq.read_schema(f).names]
     if not files:
         print(f"nothing scored yet under {OUT_DIR}", file=sys.stderr)
         return 1

@@ -28,3 +28,12 @@ advertises 336 pages because it also holds an older ABBYY scan of the same pages
 (`cid=2734`) that misdates four issues; it is not used.
 
 Rebuild: `uv run python -m ingest.advantage_archive pull` (resumable, about an hour).
+
+## cleaned/ (BOM-14)
+
+`cleaned/` holds one file per page of `text/`, built by
+`python -m ocr_fix.defragment run data/newspapers/lake_light/text -o data/newspapers/lake_light/cleaned`:
+lines with words broken apart (`h a s b een`) are re-segmented into words against the period
+lexicon, then hyphens and long s are repaired (`ocr_fix.clean`, no header pass). `text/` is
+untouched. Interleaved columns are not fixed here; that needs page layout (BOM-50).
+Checksums: `data/manifests/lake_light_cleaned.jsonl`.

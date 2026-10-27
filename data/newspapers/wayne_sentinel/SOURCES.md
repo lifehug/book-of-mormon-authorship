@@ -42,3 +42,12 @@ NYSHN holds the Sentinel to 1859; only 1823-1830 was pulled (the Book of Mormon 
 from March 1830). Rebuild or extend: start a browser with remote debugging, pass the
 Cloudflare check by hand, then run the command above (resumable, about 2 hours for this
 range; change `--end` to extend).
+
+## cleaned/ (BOM-14)
+
+`cleaned/` holds one file per page of `text/`, built by
+`python -m ocr_fix.defragment run data/newspapers/wayne_sentinel/text -o data/newspapers/wayne_sentinel/cleaned`:
+lines with words broken apart (`h a s b een`) are re-segmented into words against the period
+lexicon, then hyphens and long s are repaired (`ocr_fix.clean`, no header pass). `text/` is
+untouched. Interleaved columns are not fixed here; that needs page layout (BOM-50).
+Checksums: `data/manifests/wayne_sentinel_cleaned.jsonl`.

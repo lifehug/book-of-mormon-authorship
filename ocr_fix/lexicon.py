@@ -17,7 +17,11 @@ choices outside the pre-registration, listed in ``pending_amendment``
 
 Usage::
 
-    python -m ocr_fix.lexicon build      # -> data/lexicon/period_words.tsv (word, texts)
+    python -m ocr_fix.lexicon build      # -> data/lexicon/period_words.tsv (word, texts, tokens)
+
+The third column, total occurrences, is what word segmentation needs (``ocr_fix.defragment``):
+document frequency saturates at the number of texts, so it makes a keying slip in 3 texts look
+only 2,000 times rarer than ``the`` when in running text it is a million times rarer.
 """
 
 from __future__ import annotations
@@ -41,9 +45,9 @@ FROM_YEAR = 1700
 _WORD = re.compile(r"[a-z]+")
 
 
-def words_of(path: str) -> set[str]:
+def words_of(path: str) -> Counter:
     text = Path(path).read_text(encoding="utf-8", errors="replace").replace("ſ", "s").lower()
-    return set(_WORD.findall(text))
+    return Counter(_WORD.findall(text))
 
 
 def build(workers: int) -> int:
@@ -57,13 +61,15 @@ def build(workers: int) -> int:
         and (r["year"] or 0) >= FROM_YEAR
     ]
     df: Counter = Counter()
+    tf: Counter = Counter()
     with ProcessPoolExecutor(workers) as pool:
         for ws in pool.map(words_of, paths, chunksize=32):
-            df.update(ws)
+            df.update(ws.keys())
+            tf.update(ws)
     period = {w for w, n in df.items() if n >= MIN_DOCS}
     webster = set(WEBSTER.read_text().split())
     words = sorted(period | webster)
-    OUT.write_text("".join(f"{w}\t{df.get(w, 0)}\n" for w in words))
+    OUT.write_text("".join(f"{w}\t{df.get(w, 0)}\t{tf.get(w, 0)}\n" for w in words))
     print(
         f"{len(paths):,} keyed texts; {len(period):,} words in >= {MIN_DOCS} texts; "
         f"{len(period - webster):,} not in Webster; {len(words):,} written to {OUT}"
@@ -73,10 +79,19 @@ def build(workers: int) -> int:
 
 def load(path: Path = OUT) -> dict[str, int]:
     """word -> number of keyed texts it occurs in (0 for a Webster word TCP never uses)."""
+    return _column(path, 1)
+
+
+def load_tokens(path: Path = OUT) -> dict[str, int]:
+    """word -> total occurrences in those texts (0 for a Webster word TCP never uses)."""
+    return _column(path, 2)
+
+
+def _column(path: Path, i: int) -> dict[str, int]:
     out = {}
     for line in path.read_text().splitlines():
-        w, _, n = line.partition("\t")
-        out[w] = int(n)
+        parts = line.split("\t")
+        out[parts[0]] = int(parts[i])
     return out
 
 
