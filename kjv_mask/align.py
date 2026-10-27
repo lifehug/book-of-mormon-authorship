@@ -49,6 +49,10 @@ from metadata.config import load as load_config
 KJV = Path("data/kjv/kjv.jsonl")
 JAVA_HOME = "/opt/homebrew/opt/openjdk@17"
 SPARK_MEMORY = "6g"  # the default 1g runs out on whole books (exit 52)
+# heaps to try in turn; heap size changes memory, never what passim finds. A batch of long
+# pieces dense in biblical phrasing (two Harvard volumes, AH6E6X/Y) exhausted 6 GB.
+SPARK_MEMORY_RETRY = ("12g",)
+FAILURES = Path("logs/passim_failures.jsonl")
 _WORD = re.compile(r"[^\W_]+(?:['’-][^\W_]+)*")
 
 
@@ -84,26 +88,35 @@ def run_passim(docs: list[dict], work: Path, params: dict) -> list[dict]:
     done = _finished(work)
     if done is not None:
         return _read_alignments(done)
-    # a failed attempt leaves a partial directory Spark will not overwrite; each attempt gets
-    # a fresh one rather than deleting the last
-    attempt = 0
-    while (work / f"out.{attempt}").exists() or (attempt == 0 and (work / "out").exists()):
-        attempt += 1
-    out_dir = work / ("out" if attempt == 0 else f"out.{attempt}")
     inp = work / "in.jsonl"
     with inp.open("w") as fh:
         for d in kjv_chapters() + [{**d, "series": "target"} for d in docs]:
             fh.write(json.dumps({"id": d["id"], "series": d["series"], "text": d["text"]}) + "\n")
-    cmd = [
-        "passim", "--fields", "series", "--filterpairs", "series <> series2", "--pairwise",
-        "-n", str(params["n"]), "-m", str(params["min_match"]), "-a", str(params["min_align"]),
-        "-g", str(params["gap"]), "--maxDF", str(params["max_df"]), "--log-level", "ERROR",
-        "--src-overlap", str(params["overlap"]), "--dst-overlap", str(params["overlap"]),
-        str(inp), str(out_dir),
-    ]  # fmt: skip
-    env = {**os.environ, "JAVA_HOME": JAVA_HOME,
-           "SPARK_SUBMIT_ARGS": f"--driver-memory {SPARK_MEMORY}"}  # fmt: skip
-    subprocess.run(cmd, check=True, env=env, capture_output=True)
+    for memory in (SPARK_MEMORY, *SPARK_MEMORY_RETRY):
+        # a failed attempt leaves a partial directory Spark will not overwrite; each attempt
+        # gets a fresh one rather than deleting the last
+        attempt = 0
+        while (work / f"out.{attempt}").exists() or (attempt == 0 and (work / "out").exists()):
+            attempt += 1
+        out_dir = work / ("out" if attempt == 0 else f"out.{attempt}")
+        cmd = [
+            "passim", "--fields", "series", "--filterpairs", "series <> series2", "--pairwise",
+            "-n", str(params["n"]), "-m", str(params["min_match"]), "-a", str(params["min_align"]),
+            "-g", str(params["gap"]), "--maxDF", str(params["max_df"]), "--log-level", "ERROR",
+            "--src-overlap", str(params["overlap"]), "--dst-overlap", str(params["overlap"]),
+            str(inp), str(out_dir),
+        ]  # fmt: skip
+        env = {**os.environ, "JAVA_HOME": JAVA_HOME,
+               "SPARK_SUBMIT_ARGS": f"--driver-memory {memory}"}  # fmt: skip
+        r = subprocess.run(cmd, env=env, capture_output=True, text=True)
+        if r.returncode == 0:
+            break
+        FAILURES.parent.mkdir(parents=True, exist_ok=True)
+        with FAILURES.open("a") as fh:
+            fh.write(json.dumps({"work": str(work), "memory": memory, "exit": r.returncode,
+                                 "stderr_tail": r.stderr[-3000:]}) + "\n")  # fmt: skip
+    else:
+        raise RuntimeError(f"passim failed at every heap size on {work}; see {FAILURES}")
     return _read_alignments(out_dir)
 
 
