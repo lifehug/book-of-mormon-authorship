@@ -14,6 +14,11 @@ dependencies = [
     "scipy>=1.17.1",
 ]
 
+[project.optional-dependencies]
+align = [
+    "passim",
+]
+
 [dependency-groups]
 dev = [
     "pytest>=8.0",
@@ -51,3 +56,6 @@ select = ["E", "F", "I", "UP", "B"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.uv.sources]
+passim = { git = "https://github.com/dasmiq/passim", rev = "878ccb3c396e814cf5110d1575ab823c21fa74c9" }
