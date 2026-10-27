@@ -17,11 +17,11 @@ model and labelled as such (Amendment 1).
 | Part | What | Size | Where |
 | --- | --- | --- | --- |
 | Catalog | one row per work from five sources, normalised author and date | 695,021 rows, 533,328 with text | `data/catalog/catalog.parquet` |
-| Comparison corpus | English print 1780-1830: Harvard Institutional Books 1.0, HathiTrust (non-Google), Internet Archive, Chronicling America | **[pending]** volumes after OCR exclusion | text local; manifests public |
+| Comparison corpus | English print 1780-1830: Harvard Institutional Books 1.0, HathiTrust (non-Google), Internet Archive, Chronicling America | 472,018 OCR volumes; 341,743 after OCR exclusion (111,031 flagged) and dedup (Internet Archive 171,887, Chronicling America 114,633, Harvard 28,891, HathiTrust 26,332) | text local; manifests public |
 | Early modern reference | EEBO-TCP, Evans-TCP, ECCO-TCP, hand-keyed | 61,310 texts | text local (CC0, republishable) |
 | Book of Mormon | 1830 first edition (Jenson reproduction), with the surviving original manuscript and the printer's manuscript for alignment | 268,811 words | `data/bom/` (manuscript transcripts private) |
 | Candidates | eight authors of section 3, by provenance tier | 621,005 words across 63 units | `data/candidates/` (Joseph Smith Papers texts private) |
-| Controls | pseudo-biblical (two lists), 1820s sermons, history with a Native American origins subset, general prose | **[pending]** | `data/controls/` |
+| Controls | pseudo-biblical (two lists), 1820s sermons, history with a Native American origins subset, general prose | 3,727 / 29 (primary label), 6,322, 3,000 (47 origins), 4,999 volumes; 1.65 billion words | `data/controls/` |
 
 Labels and derived tables: genre (two passes plus a 5,000-record reliability sample),
 near-duplicate groups (nothing deleted), per-author word counts, per-volume OCR quality and
@@ -43,10 +43,14 @@ are absent.
    twins (cross-validated Spearman 0.78; 18.5% of volumes on the wrong side of the registered
    0.10 cutoff). Volumes over the cutoff are flagged `ocr_excluded`, never deleted; those within
    one cross-validated error of it are flagged `near_cutoff`.
-3. **Spelling** (`ocr_fix.normalize`): MorphAdorner's Early Modern English table before 1700;
-   long s and ligatures only from 1700 on, with no lexical modernisation.
-4. **Deduplication**: MinHash, 5-gram shingles, threshold 0.8, keep the earliest; re-run on
-   cleaned, normalised text **[pending]**.
+3. **Spelling** (`ocr_fix.normalize`): MorphAdorner's Early Modern English adorner before 1700
+   (run as distributed, parts of speech first; 0.03% of tokens could not be placed back and
+   keep their printed spelling); long s and ligatures only from 1700 on, with no lexical
+   modernisation. MorphAdorner's own `an` -> `and` and similar choices are applied and listed
+   for amendment.
+4. **Deduplication**: MinHash, 5-gram shingles, threshold 0.8, keep the earliest; run on raw
+   text (19,697 groups) and on cleaned, normalised text (19,916 groups, 21,215 non-keepers
+   flagged), both published.
 5. **KJV masking**: passim with Amendment 2's settings; 6.82% of the Book of Mormon's words
    masked; validated on 200 alignments by a simulated hand check (95.5% KJV-derived).
 
@@ -55,8 +59,9 @@ are absent.
 - **OCR quality is uneven and often poor.** 38% of the ground-truth volumes exceed 10% CER
   even after cleaning. The keyed twins are 1780-1800 books; estimates for 1800-1830 print
   extrapolate in date, and for newspapers in genre as well.
-- **Cross-source duplicates are under-detected on raw OCR** (`data/catalog/DEDUP.md`):
-  independent OCR of the same book rarely reaches 0.8 similarity.
+- **Cross-source duplicates are not detected** (`data/catalog/DEDUP.md`): independent OCR of
+  the same book rarely reaches 0.8 similarity, raw or normalised (median 0.117 and 0.180 on 300
+  title-and-author pairs; none at 0.8). A work held by two sources can count twice.
 - **Interleaved newspaper columns are not repaired** (Wayne Sentinel, Lake Light): reading
   order needs page layout (BOM-50).
 - **Genre labels are model-made.** Pass 1 used pseudo-biblical freely as a second label, so
