@@ -108,7 +108,7 @@ def build(masks: Path) -> int:
     words = {
         x["seq"]: original_words(text[x["seq"]], spans.get(f"bom:{x['seq']}", [])) for x in labels
     }
-    total = sum(len(text[x["seq"]].split()) for x in labels)
+    total = sum(len(original_words(text[x["seq"]], [])) for x in labels)  # same tokenisation
     kept = sum(len(w) for w in words.values())
 
     chunks: list[dict] = []
