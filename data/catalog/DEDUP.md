@@ -49,6 +49,38 @@ BOM-15 normalises orthography, and on raw text cross-source matching cannot work
 the pipeline, so dedup is re-run after BOM-14 and BOM-15 and both figures are published. This
 pass stands as the same-source result.
 
+## After cleaning and normalisation (BOM-15, 2026-10-27)
+
+The same method re-run on BOM-14's cleaned and BOM-15's normalised text
+(`python -m metadata.dedup signatures|pairs|authors --text normalized`; outputs
+`duplicates_normalized.parquet`, `author_words_normalized.parquet`). The control sets read these.
+
+| | raw text | cleaned and normalised |
+| --- | --- | --- |
+| Duplicate groups | 19,697 | 19,916 |
+| Works in a group | 40,566 | 41,131 |
+| Non-keepers flagged | 20,869 | 21,215 |
+| Authors with 10,000+ words | 46,649 | 46,441 |
+
+**The cross-source limitation is not fixed by it.** 300 pairs drawn with a seed
+(`20261017:dedup-cross`) from the 599 pairs sharing an identical normalised title and author
+across two sources (HathiTrust left out, as in the first measurement, because its Archive copies
+are the same OCR), each scored on both signature sets (`dedup_cross_source_check.json`):
+
+| | raw | cleaned and normalised |
+| --- | --- | --- |
+| Median similarity | 0.117 | 0.180 |
+| Reaching 0.5 | 7.3% | 12.0% |
+| Reaching the registered 0.8 | **0.0%** | **0.0%** |
+
+Cleaning raised the similarity of 196 of the 300 pairs, and no pair reaches the threshold. Unlike
+the first sample these pairs were not checked by eye, so some are different editions or volumes
+of one title and belong apart; that lowers both columns equally and does not explain a zero.
+What this means downstream: a work printed in two sources can be counted twice in a null or
+control sample. A second, metadata-based pass (same title, author and year across sources) would
+catch these, but it is a different method from 4.3's and so an owner decision, not a fix made
+here. Recorded for BOM-45, which builds the null.
+
 ## A second caveat, the other direction
 
 One group holds 173 members and appears to be volumes of *The Public Statutes at Large*. Distinct
