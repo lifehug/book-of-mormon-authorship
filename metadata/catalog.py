@@ -26,6 +26,7 @@ from pathlib import Path
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from ingest.hathitrust import clean_id
 from metadata.config import load as load_config
 from metadata.config import sha256_of_config
 
@@ -47,6 +48,13 @@ SOURCES = {
     "chronicling_america": (
         CATALOG_DIR / "chronicling_america.jsonl.gz",
         CORPUS / "chronicling_america/text",
+    ),
+    # Last on purpose: dedup shards follow catalog order, so appending a source leaves every
+    # earlier shard valid. Added 2026-10-27; the first merge left HathiTrust out by mistake.
+    # Text is extracted from the rsync zips by `python -m ingest.hathitrust text`.
+    "hathitrust": (
+        CATALOG_DIR / "hathitrust.jsonl.gz",
+        CORPUS / "hathitrust_text",
     ),
 }
 
@@ -164,6 +172,11 @@ def map_row(source: str, row: dict, text_dir: Path) -> dict | None:
         title, author = row.get("title"), None
         year = parse_year(date)
         lang, genre = "eng", "newspaper"
+    elif source == "hathitrust":
+        sid = str(row.get("htid") or "")
+        title, author = row.get("title"), row.get("author")
+        year = parse_year(row.get("year"), row.get("rights_date_used"))
+        lang, genre = row.get("lang"), row.get("bib_fmt")
     else:  # pragma: no cover
         raise ValueError(source)
 
@@ -175,6 +188,8 @@ def map_row(source: str, row: dict, text_dir: Path) -> dict | None:
             / f"{row.get('lccn')}"
             / f"{row.get('date')}-ed{row.get('edition')}-seq{row.get('sequence')}.txt"
         )
+    elif source == "hathitrust":
+        rel = text_dir / f"{clean_id(sid)}.txt"  # htids carry ':' and '/'
     else:
         rel = text_dir / f"{sid}.txt"
     exists = rel.exists()
@@ -191,7 +206,9 @@ def map_row(source: str, row: dict, text_dir: Path) -> dict | None:
         "author": None if author is None else str(author),
         "author_norm": norm_author(author),
         "year": year,
-        "date_raw": str(row.get("date") or row.get("date1_src") or ""),
+        "date_raw": str(
+            row.get("date") or row.get("date1_src") or row.get("rights_date_used") or ""
+        ),
         "language": None if lang is None else str(lang),
         "genre_src": None if genre is None else str(genre)[:120],
         "text_path": str(rel) if exists else None,

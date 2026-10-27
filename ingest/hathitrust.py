@@ -26,6 +26,15 @@ Usage::
     python -m ingest.hathitrust catalog --hathifile /path/to/hathi_full_YYYYMMDD.txt.gz
     python -m ingest.hathitrust map-ia
     python -m ingest.hathitrust ef [--ids FILE] [--limit N]
+    python -m ingest.hathitrust text [--workers N]
+
+``text``
+    The rsync dataset (ticket GS-17502) delivers one zip of per-page OCR files per volume
+    under ``data/corpus/hathitrust/<ns>/pairtree_root/...``. This joins each volume's pages,
+    in page order, into one file ``data/corpus/hathitrust_text/<ns>.<cleaned id>.txt`` so the
+    catalog can point at it like any other source. The zips are read, never moved or
+    deleted; the text is derived and rebuilds from them. Resumable: a volume whose text file
+    exists is skipped.
 """
 
 from __future__ import annotations
@@ -35,7 +44,9 @@ import gzip
 import json
 import re
 import sys
+import zipfile
 from collections import Counter
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 FIELDS = [
@@ -162,6 +173,59 @@ def stubbytree_path(htid: str) -> str:
     return f"{ns}/{clean[::3]}/{ns}.{clean}.json.bz2"
 
 
+RSYNC_DIR = Path("data/corpus/hathitrust")
+TEXT_DIR = Path("data/corpus/hathitrust_text")
+
+
+def clean_id(htid: str) -> str:
+    """``uc2.ark:/13960/t1zc7t220`` -> ``uc2.ark+=13960=t1zc7t220``: HathiTrust's pairtree
+    cleaning (``:`` to ``+``, ``/`` to ``=``, ``.`` to ``,``) applied after the namespace, which
+    makes the id a safe file name."""
+    ns, ident = htid.split(".", 1)
+    return f"{ns}." + ident.replace(":", "+").replace("/", "=").replace(".", ",")
+
+
+def zip_path(htid: str, root: Path = RSYNC_DIR) -> Path:
+    """Where the rsync dataset puts a volume's zip: the cleaned id cut into two-character
+    pairtree directories, then a directory and a zip named for the cleaned id."""
+    ns, clean = clean_id(htid).split(".", 1)
+    pairs = [clean[i : i + 2] for i in range(0, len(clean), 2)]
+    return root / ns / "pairtree_root" / Path(*pairs) / clean / f"{clean}.zip"
+
+
+def text_of(zpath: Path) -> str:
+    """A volume's pages joined in page order (the page files are zero-padded sequence numbers)."""
+    with zipfile.ZipFile(zpath) as zf:
+        names = sorted(n for n in zf.namelist() if n.endswith(".txt"))
+        return "\n".join(zf.read(n).decode("utf-8", errors="replace") for n in names)
+
+
+def _extract_one(htid: str) -> str:
+    out = TEXT_DIR / f"{clean_id(htid)}.txt"
+    if out.exists():
+        return "skipped"
+    zpath = zip_path(htid)
+    if not zpath.exists():
+        return "no_zip"
+    tmp = out.with_suffix(".txt.tmp")
+    tmp.write_text(text_of(zpath), encoding="utf-8")
+    tmp.rename(out)
+    return "written"
+
+
+def extract_text(workers: int) -> int:
+    ids = [ln.strip() for ln in (RSYNC_DIR / "present.txt").read_text().splitlines() if ln.strip()]
+    TEXT_DIR.mkdir(parents=True, exist_ok=True)
+    counts: Counter = Counter()
+    with ProcessPoolExecutor(workers) as pool:
+        for i, result in enumerate(pool.map(_extract_one, ids, chunksize=64), 1):
+            counts[result] += 1
+            if i % 5000 == 0:
+                print(f"  {i:,}/{len(ids):,}  {dict(counts)}", flush=True)
+    print(f"{len(ids):,} volumes: {dict(counts)} -> {TEXT_DIR}")
+    return 1 if counts["no_zip"] else 0
+
+
 def ef(ids_file: Path, limit: int | None) -> int:
     import subprocess
 
@@ -261,11 +325,15 @@ def main(argv: list[str] | None = None) -> int:
     e = sub.add_parser("ef")
     e.add_argument("--ids", type=Path, default=IDS_NOT_IN_HARVARD)
     e.add_argument("--limit", type=int)
+    t = sub.add_parser("text")
+    t.add_argument("--workers", type=int, default=6)
     a = ap.parse_args(argv)
     if a.cmd == "catalog":
         return catalog(a.hathifile)
     if a.cmd == "map-ia":
         return map_ia()
+    if a.cmd == "text":
+        return extract_text(a.workers)
     return ef(a.ids, a.limit)
 
 
