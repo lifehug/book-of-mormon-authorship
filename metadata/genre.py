@@ -199,7 +199,7 @@ PARSE_LOG = Path("logs/parse_failures.jsonl")
 # Replies that mean "ask again later", not "this work has no genre".
 _TRANSIENT = re.compile(
     r"usage limit|session limit|rate limit|hit your [\w ]*limit|limit \W* resets|"
-    r"too many requests|overloaded|try again|quota|"
+    r"too many requests|overloaded|try again|\bquota\b|"
     r"credit balance|service unavailable|timed out|connection error",
     re.I,
 )

@@ -29,3 +29,10 @@ def test_append_keeps_existing_labels(tmp_path: Path, monkeypatch) -> None:
     assert {k: got["a"][k] for k in model_row} == model_row
     assert got["b"]["genre"] == "newspaper_periodical"
     assert got["c"]["genre"] == "uncertain" and got["c"]["decided_by"] == "rule:no_text"
+
+
+def test_transient_pattern_ignores_quotation() -> None:
+    from metadata.genre import _TRANSIENT
+
+    assert not _TRANSIENT.search("the quotation continues through verse 4")
+    assert _TRANSIENT.search("you have exceeded your quota")
