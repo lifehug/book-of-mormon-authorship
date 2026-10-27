@@ -136,12 +136,8 @@ def letters(text: str) -> str:
     return _WS.sub(" ", re.sub(r"[^a-z\s]", "", text.lower())).strip()
 
 
-def window_cer(win: str, target: str, idx: dict[str, int]) -> tuple[float, float] | None:
-    """(CER, letters-only CER) of the stretch of ``target`` that best matches ``win``.
-
-    Plain CER counts every difference from the keying -- punctuation, capitals, ``&`` for
-    ``and``, wording that differs between printings -- so it bounds OCR error from above.
-    Letters-only CER drops case and punctuation, which is what word features see."""
+def locate(win: str, target: str, idx: dict[str, int]) -> str | None:
+    """The stretch of ``target`` that best matches the reference window ``win``, or None."""
     votes: Counter = Counter()
     for g, off in _grams(win):
         if g in idx:
@@ -157,13 +153,30 @@ def window_cer(win: str, target: str, idx: dict[str, int]) -> tuple[float, float
     if al is None:
         return None
     lo = start + al.dest_start
-    best, n_best = min(
+    _, n_best = min(
         (Levenshtein.distance(win, target[lo : lo + n_]), n_)
         for n_ in range(int(len(win) * 0.9), int(len(win) * 1.1) + 1, 4)
     )
-    lw = letters(win)
-    lt = letters(target[lo : lo + n_best])
-    return best / len(win), Levenshtein.distance(lw, lt) / max(1, len(lw))
+    return target[lo : lo + n_best]
+
+
+def cer(ref: str, hyp: str) -> tuple[float, float]:
+    """(CER, letters-only CER) of ``hyp`` against the reference ``ref``.
+
+    Plain CER counts every difference from the keying -- punctuation, capitals, ``&`` for
+    ``and``, wording that differs between printings -- so it bounds OCR error from above.
+    Letters-only CER drops case and punctuation, which is what word features see."""
+    lr = letters(ref)
+    return (
+        Levenshtein.distance(ref, hyp) / max(1, len(ref)),
+        Levenshtein.distance(lr, letters(hyp)) / max(1, len(lr)),
+    )
+
+
+def window_cer(win: str, target: str, idx: dict[str, int]) -> tuple[float, float] | None:
+    """(CER, letters-only CER) of the stretch of ``target`` that best matches ``win``."""
+    hyp = locate(win, target, idx)
+    return None if hyp is None else cer(win, hyp)
 
 
 def _windows(text: str, seed: str) -> list[str]:
