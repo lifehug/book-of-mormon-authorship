@@ -21,7 +21,10 @@ Three repairs, each conservative and each counted per document so its effect can
 
 TCP is skipped: it is keyed by hand, not OCR'd, and its ``ſ`` is a correct transcription that
 BOM-15 normalises. Nothing here edits a source file. Cleaned text goes to
-``data/corpus/cleaned/<source>/`` and per-document counts to ``data/ocr_quality/cleaning.parquet``.
+``data/corpus/cleaned/<source>/`` and per-document counts to ``data/ocr_quality/cleaning.parquet``,
+together with the OCR proxy metrics of the raw text (``ocr_fix.score``), computed here because
+this is the one pass that reads every document; ``ocr_fix.calibrate`` turns them into an
+estimated CER.
 
 Every threshold below is an analytic choice outside the pre-registration and is listed in
 ``pending_amendment`` (``ocr_fix.cleaning``) until a dated amendment pins it.
@@ -48,6 +51,7 @@ import pyarrow.parquet as pq
 
 from metadata.config import sha256_of_config
 from ocr_fix import lexicon
+from ocr_fix.score import load_lexicon, score_text
 
 CATALOG = Path("data/catalog/catalog.parquet")
 OUT_DIR = Path("data/corpus/cleaned")
@@ -72,6 +76,8 @@ _DIGITS = re.compile(r"^[\s\W]*\d{1,4}[\s\W]*$")
 _KEYCHARS = re.compile(r"[^a-z]")
 
 _LEX: dict[str, int] | None = None
+_WEBSTER: frozenset[str] | None = None
+PROXY = ["lexicon_rate", "garbage_rate", "single_letter_rate", "mean_token_len", "nonalpha_ratio"]
 
 
 def _lex() -> dict[str, int]:
@@ -79,6 +85,19 @@ def _lex() -> dict[str, int]:
     if _LEX is None:
         _LEX = lexicon.load()
     return _LEX
+
+
+def proxies(raw: str) -> dict[str, float]:
+    """``ocr_fix.score`` metrics plus the share of tokens in the period lexicon."""
+    global _WEBSTER
+    if _WEBSTER is None:
+        _WEBSTER = load_lexicon()
+    m = score_text(raw, _WEBSTER)
+    out = {k: float(m[k]) for k in PROXY}
+    toks = [t.lower() for t in _TOKEN.findall(raw)]
+    lex = _lex()
+    out["period_lexicon_rate"] = sum(t in lex for t in toks) / len(toks) if toks else 0.0
+    return out
 
 
 def _fix_word(word: str, lex: dict[str, int]) -> str:
@@ -197,6 +216,8 @@ SCHEMA = pa.schema(
         ("header_lines", pa.int64()),
         ("hyphens", pa.int64()),
         ("long_s", pa.int64()),
+        *[(k, pa.float64()) for k in PROXY],
+        ("period_lexicon_rate", pa.float64()),
     ]
 )
 
@@ -224,6 +245,7 @@ def _one(row: dict) -> dict:
         "chars_in": len(raw),
         "chars_out": len(text),
         **counts,
+        **proxies(raw),
     }
 
 

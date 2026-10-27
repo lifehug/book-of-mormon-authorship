@@ -47,8 +47,6 @@ from rapidfuzz.fuzz import partial_ratio_alignment
 from metadata.config import load as load_config
 from metadata.config import sha256_of_config
 from ocr_fix import clean as cleaner
-from ocr_fix import lexicon
-from ocr_fix.score import load_lexicon, score_text
 
 CATALOG = Path("data/catalog/catalog.parquet")
 OUT_DIR = Path("data/ocr_quality")
@@ -196,16 +194,12 @@ def _measure(pair: dict) -> dict:
         result[f"aligned_{label}"] = len(cers)
         result[f"cer_{label}"] = statistics.median(cers) if enough else None
         result[f"letter_cer_{label}"] = statistics.median(lcers) if enough else None
-    proxy = score_text(raw, load_lexicon())
-    result.update({k: proxy[k] for k in PROXY})
-    period = lexicon.load()
-    toks = [t.lower() for t in re.findall(r"[A-Za-z]+", raw)]
-    result["period_lexicon_rate"] = sum(t in period for t in toks) / len(toks) if toks else 0.0
+    result.update(cleaner.proxies(raw))  # the same function the cleaning run applies
     result.update({f"fix_{k}": v for k, v in counts.items()})
     return result
 
 
-PROXY = ["lexicon_rate", "garbage_rate", "single_letter_rate", "mean_token_len", "nonalpha_ratio"]
+PROXY = cleaner.PROXY
 SCHEMA = pa.schema(
     [
         ("ocr_id", pa.string()),
