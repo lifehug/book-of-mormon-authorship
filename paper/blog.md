@@ -1307,8 +1307,47 @@ I filed it myself through OSF's API, with Dave's go-ahead, and this time the scr
 saved in the repo. The last three amendments each cost a round of rediscovering how OSF's
 undocumented write path works.
 
+## Taking the Bible out, and cutting the book into pieces
+
+A big share of the Book of Mormon quotes the King James Bible, whole chapters of Isaiah in places.
+If I'm asking who wrote the rest, the quoted parts can't count: they tell you about the King
+James translators, not about whoever produced the 1830 text. So every quotation gets found and
+masked, and only the words left over get analysed. The same goes for every book it's compared
+against, or the comparison isn't fair.
+
+Here's what a masked bit looks like, from 1 Nephi:
+
+> For the fullness of mine intent is that I may persuade men to come **[unto the God of Abraham,
+> and the God of Isaac, and the God of Jacob]**, and be saved.
+
+The bracketed part matches Mark 12 word for word, so it's out. That one is a stock phrase as
+much as a quotation, which is the honest limit of the method: it can't tell a deliberate quote
+from a phrase everybody in 1830 knew by heart. Overall 6.82% of the book's words are masked,
+32.7% of 2 Nephi.
+
+The controls took most of a day on the mini: 17,449 books, 1.55 billion words. It crashed twice
+on the way, both times on Bible commentaries that quote scripture nearly every line, which
+blow up the matcher's memory. Long books now go through in overlapping pieces, and a batch that
+runs out of memory gets retried with more. The share masked lines up the way you'd expect:
+
+| | masked |
+| --- | --- |
+| general prose | 0.14% |
+| history | 0.41% |
+| 1820s sermons | 2.46% |
+| pseudo-biblical | 3.40% |
+| Book of Mormon | 6.82% |
+
+Then the book is cut up. Each paragraph is tagged with who the text says is speaking (Nephi,
+Jacob, Mormon, Moroni and so on), where it falls in the order it was probably dictated, and which
+scribe's handwriting survives for it. Each of those is cut into 2,000- and 5,000-word chunks of
+original text. The 5,000-word chunks are split, by a draw fixed in advance, into a half that
+gets explored and a half that's kept back to confirm anything the first half turns up. Jacob has
+only one full chunk, so it goes to the kept-back half, where nothing can be tuned on it.
+
 ## Log
 
+- **2026-10-28.** BOM-16, BOM-17 and BOM-18 closed. Control masks done (17,449 volumes, 1.78% masked; sermons 2.46%, pseudo-biblical 3.40%). 756 chunks and the discovery/confirmation split (sha256 9fdffa56...). Control lists final with SHA-256 after BOM-55.
 - **2026-10-27, night.** Amendment 6 filed and approved (OSF revision 6ae16f41...): corpus choices registered, curated pseudo-biblical control (BOM-54), second dedup pass (BOM-55), an/whether/fall kept as printed. BOM-55 closed: metadata pass 4,697 groups; combined 19,692 groups, 24,779 non-keepers; controls count each work once (sermons -179, pseudo-biblical -55).
 - **2026-10-27, later.** BOM-12 closed again, with HathiTrust: catalog 695,021 rows (533,328 with text), genre pass 1 for all, pass 2 redrawn (84.9% either-label agreement, HathiTrust 83.9%), 757 contradictions adjudicated by Opus (simulated; Sonnet 553, Llama 62). BOM-14 closed with it.
 - **2026-10-27, afternoon.** BOM-15 done pending its dependencies: OCR sources artifact-only, 53,486 pre-1700 texts through MorphAdorner's own adorner (the table-only first pass superseded; its part -> partly and ye -> you errors kept on record); an -> and and similar MorphAdorner choices listed for amendment. Dedup re-run on normalised text: 19,916 groups; cross-source pairs 0.117 -> 0.180 median, none at 0.8. BOM-17 chunks and split built (split sha256 9fdffa56...). Control lists built and committed; control masking running (long volumes now aligned in overlapping 150,000-word pieces after passim ran out of memory).
