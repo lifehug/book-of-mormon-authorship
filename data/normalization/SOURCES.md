@@ -51,12 +51,13 @@ missed, and after a miss accepts a match only if the next three tokens follow it
 472,107 of about 1.38 billion word tokens unaligned (0.03%), 47 texts over 100; an unaligned
 token keeps its printed spelling. Counts per text are the `unaligned` column.
 
-## A quirk, not patched
+## Three words kept as printed (Amendment 6)
 
-MorphAdorner's EME adorner maps the article `an` to `and` (486 of 497 uses in TCP A00005;
-3,284,957 tokens over all pre-1700 texts), and makes a few other choices of the same kind
-(`whether` -> `whither` 570,622, `fall` -> `fallen` 344,816, `yn` -> `than` 320,892). They are
-applied unchanged, because the registered method is MorphAdorner's, and its count is in
-`applied_map.tsv`. Keeping `an` as printed is proposed in `pending_amendment`
-(`spelling_normalization.morphadorner_an`). Only the pre-1700 reference texts are affected;
-the raw text is kept, so either reading can be rebuilt.
+MorphAdorner's EME adorner replaces three words with different words rather than spellings with
+spellings: the article `an` with `and` (486 of 497 uses in TCP A00005; 3,284,957 tokens over all
+pre-1700 texts), `whether` with `whither` (570,622) and `fall` with `fallen` (344,816). Amendment 6
+(OSF revision 6ae16f4142a77759f3e18539) keeps those three as printed
+(`spelling_normalization.morphadorner_keep_printed`); every other MorphAdorner standard spelling
+is applied as produced. MorphAdorner's own output is kept unaltered in
+`data/corpus/morphadorner_adorned/`, so its reading can be rebuilt. Only the pre-1700 reference
+texts are affected.
