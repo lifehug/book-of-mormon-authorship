@@ -105,6 +105,7 @@ data/catalog/validation_sample.json
 !data/kjv_mask/**
 # 107 MB, over GitHub's limit: committed as spans.jsonl.gz (gzip -n -9), byte-reproducible
 data/kjv_mask/controls/spans.jsonl
+data/kjv_mask/controls/spans.part-*.jsonl
 !data/normalization/
 !data/normalization/**
 # per-text replacement log, 0.7 GB; aggregated into applied_map.tsv, rebuilt by ocr_fix.normalize
