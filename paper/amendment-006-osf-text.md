@@ -72,8 +72,8 @@ Modern English adorner, run as distributed (part-of-speech tagging, then standar
 of its mappings replace a word with a different word rather than a spelling with a spelling: the
 article *an* to *and* (3.28 million tokens across 53,486 texts), *whether* to *whither* (571,000)
 and *fall* to *fallen* (345,000). These three keep their printed form; every other MorphAdorner
-standard spelling is applied as produced. *[Owner: confirm, or strike this change to keep
-MorphAdorner's output unaltered.]*
+standard spelling is applied as produced. MorphAdorner's unaltered output is kept and reported
+alongside.
 
 **Change 7: passim implementation details.** Under Amendment 2's registered settings: passim's own
 minimum alignment, counted in characters, is set to 20 so that the registered eight-token
@@ -90,6 +90,16 @@ family from pass 1's Llama 3.1 8B). The perturbation test is first run at a wors
 from measured inter-model disagreement (28% on model-decided records, 3% on rule-decided), with
 the confusion drawn from observed pass-1/pass-2 disagreements; the hand-adjudicated sample
 Amendment 4 names is drawn only if a genre-dependent conclusion moves under that bound.
+
+**Change 9: a second deduplication pass across sources.** 4.3's MinHash deduplication (5-gram
+shingles, threshold 0.8) catches copies within a source but not the same work digitised and read
+by OCR independently in two sources: on 300 pairs sharing a normalised title and author across
+sources, median similarity is 0.117 on raw text and 0.180 after cleaning and normalisation, and
+none reaches 0.8. The MinHash pass is kept unchanged, and a second pass is added: works in
+different sources with the same normalised title, normalised author and year of publication form
+a group, the earliest-catalogued member is kept, and nothing is deleted. A work counts once in
+every control set and null sample. Groups the two passes form are reported separately, and a
+sample of the metadata groups is checked against the text before use.
 
 **Still open.** The size of the borrowing null sample (6.5, a floor of 500) is fixed by a later
 amendment from the variance curve measured in BOM-45, before any borrowing score is computed.
