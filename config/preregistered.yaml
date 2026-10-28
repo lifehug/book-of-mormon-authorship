@@ -216,14 +216,15 @@ pending_amendment:
       unknown-word cost (UNKNOWN_PER_LETTER). A split is kept only if it raises the share of
       letters in known words.
   - key: controls.pseudo_biblical_list
-    issue: BOM-18
+    issue: BOM-54
     note: >
       Amendment 3 has control sets match a work on either of its two genre labels. For the
-      pseudo-biblical set that admits about 5,300 volumes in 1780-1830, read by title mostly
-      ordinary religious prose (pass 1 used pseudo_biblical freely as a second label); 23 carry
-      it as primary. Both lists are built (pseudo_biblical, pseudo_biblical_primary, each with
-      the four works section 3 names). Which list the confirmatory pseudo-biblical test reads
-      is the owner's decision, and a departure from "either" needs a dated amendment.
+      pseudo-biblical set that admits 3,727 volumes after BOM-18's filters, read by title mostly
+      religious prose about scripture (pass 1 used pseudo_biblical freely as a second label);
+      29 carry it as primary (about 20 distinct works). Owner decision 2026-10-27: replace the
+      rule for this set with a curated list chosen by a published rule (KJV-style markers plus
+      a simulated two-model check against known answers), both existing lists kept as
+      sensitivity analyses. Built in BOM-54; the amendment text is drafted there.
   - key: controls.pool_sample
     issue: BOM-18
     note: >
