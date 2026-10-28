@@ -1,7 +1,6 @@
 # Datasheet: Book of Mormon authorship corpus, v1.0 (BOM-19)
 
-*Draft, 2026-10-27. Figures marked **[pending]** are filled in when the jobs that produce them
-finish; everything else is measured and committed. Structure follows Gebru et al., "Datasheets
+*Corpus v1.0, frozen 2026-10-28 (`data/manifests/corpus_v1.0.json`, SHA-256 15858aff...). Structure follows Gebru et al., "Datasheets
 for Datasets".*
 
 ## Motivation
