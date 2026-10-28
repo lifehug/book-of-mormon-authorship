@@ -20,6 +20,12 @@ def test_shipped_config_loads_and_matches_the_preregistration() -> None:
         "shingle": 5,
         "threshold": 0.8,
         "keep": "earliest",
+        # Amendment 6
+        "metadata_pass": {
+            "keys": ["title_norm", "author_norm", "year"],
+            "across_sources": True,
+            "keep": "earliest",
+        },
     }
     assert cfg["kjv_mask"]["verbatim"] == {"min_identity": 0.90, "min_tokens": 8}
     assert cfg["segmentation"]["chunk_words"] == [2000, 5000]

@@ -27,7 +27,7 @@ this is the one pass that reads every document; ``ocr_fix.calibrate`` turns them
 estimated CER.
 
 Every threshold below is an analytic choice outside the pre-registration and is listed in
-``pending_amendment`` (``ocr_fix.cleaning``) until a dated amendment pins it.
+Amendment 6 (``corpus.ocr_cleaning``).
 
 Usage::
 
@@ -59,7 +59,7 @@ STATS = Path("data/ocr_quality/cleaning.parquet")
 SKIP_SOURCES = {"tcp"}
 SINGLE_PAGE = {"chronicling_america"}
 
-# pending_amendment: ocr_fix.cleaning
+# registered, Amendment 6
 LONG_S_RATIO = 100
 EDGE_LINES = 2
 HEADER_MIN_PAGES = 3

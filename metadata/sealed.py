@@ -28,8 +28,8 @@ A second pass showed that excluding exact KJV strings is not enough: 1,498 volum
 on biblical phrases in period variants ("plough-shares", "the sins of the world") that the Book
 of Mormon also uses. So the strings come from the Book of Mormon's *original* spans only, its
 text outside BOM-16's KJV masks (``data/kjv_mask/bom/spans.jsonl``), and a string never bridges
-a removed span. This interpretation is listed in ``pending_amendment``
-(``sealing.contamination_kjv``).
+a removed span. This interpretation is registered by Amendment 6
+(``sealing.contamination_excludes_kjv``, ``contamination_min_shared``).
 
 Even then, a single shared string is not evidence: on the control pools the most any
 volume shared was 9 (Books of Common Prayer, a Quaker journal), against 109,011 or more for every
@@ -60,7 +60,7 @@ CATALOG = Path("data/catalog/catalog.parquet")
 EDITION = Path("data/bom/1830/edition_1830.jsonl")
 KJV = Path("data/kjv/kjv.jsonl")
 MASKS = Path("data/kjv_mask/bom/spans.jsonl")
-# pending_amendment: sealing.contamination_kjv. Measured 2026-10-27: no control-pool text shares
+# registered, Amendment 6. Measured 2026-10-27: no control-pool text shares
 # more than 9 distinct strings with the Book of Mormon's original text (liturgy and biblical
 # phrasing); the six copies of the book share 109,011 to 174,655. 20 is above the first and
 # low enough to catch a quoted extract of about 30 words.

@@ -25,7 +25,7 @@ Native American origin texts are a named subset of the history set, picked by ti
 by title (``NAMED``) whatever their genre label says, and whatever their date: Leacock's
 *First Book of the American Chronicles* (1774) is named by section 3 though it predates 1780.
 
-Two departures from taking every match, both listed in ``pending_amendment``:
+Two departures from taking every match, both registered by Amendment 6:
 
 * ``pseudo_biblical_primary``: a second pseudo-biblical list holding only works whose *primary*
   label is pseudo-biblical, plus the named works. Amendment 3's "match on either" puts about
@@ -78,7 +78,7 @@ ORIGINS = re.compile(
     re.IGNORECASE,
 )
 SCAN_WORKERS = 6
-POOL_SAMPLE = {"history": 3000, "general_prose": 5000}  # pending_amendment: controls.pool_sample
+POOL_SAMPLE = {"history": 3000, "general_prose": 5000}  # registered, Amendment 6
 SETS = {
     "pseudo_biblical": {"pseudo_biblical"},
     "sermons_1820s": {"sermon_devotional"},

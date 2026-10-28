@@ -12,9 +12,11 @@ local Java 17 that passim already uses.
 Its tabular output -- token, spelling, part of speech, standard spelling, lemma, end of
 sentence -- is kept whole in ``data/corpus/morphadorner_adorned/<id>.txt`` (the tags may serve
 later stages), and ``rebuild`` puts the standard spellings back into the original text so its
-lines and paragraphs survive. Faithful includes MorphAdorner's own quirks: it maps the article
-``an`` to ``and``. That is measured in ``data/normalization/applied_map.tsv`` and listed in
-``pending_amendment`` rather than patched here.
+lines and paragraphs survive. MorphAdorner's standard spellings are applied as produced, with
+three exceptions Amendment 6 registers (``spelling_normalization.morphadorner_keep_printed``):
+it maps the article ``an`` to ``and``, ``whether`` to ``whither`` and ``fall`` to ``fallen``,
+replacing a word rather than a spelling, so those keep their printed form. The adorned output
+itself is kept unaltered.
 
 Usage::
 
@@ -109,7 +111,9 @@ def _confirmed(text: str, pos: int, following: list[tuple[str, str]]) -> bool:
     return True
 
 
-def rebuild(text: str, words: list[tuple[str, str]]) -> tuple[str, Counter, int]:
+def rebuild(
+    text: str, words: list[tuple[str, str]], keep: frozenset[str] = frozenset()
+) -> tuple[str, Counter, int]:
     """Replace each token in ``text`` by its standard spelling, keeping everything between.
 
     Only tokens with a letter are aligned: punctuation and numbers are never respelled, and
@@ -120,6 +124,7 @@ def rebuild(text: str, words: list[tuple[str, str]]) -> tuple[str, Counter, int]
     ``CONFIRM`` tokens, or a common word further on (where a word broken by a TCP gap marker
     had stalled it) would pull the search ahead. Returns the text, the replacements made as
     (lowercase token, lowercase standard) counts, and the number of word tokens not found.
+    Tokens whose lowercase form is in ``keep`` keep their printed form.
     """
     parts: list[str] = []
     applied: Counter = Counter()
@@ -138,7 +143,7 @@ def rebuild(text: str, words: list[tuple[str, str]]) -> tuple[str, Counter, int]
             continue
         behind = 0
         parts.append(text[pos:at])
-        if standard and standard != token and standard.lower() != token.lower():
+        if standard and standard.lower() != token.lower() and token.lower() not in keep:
             parts.append(standard)
             applied[token.lower(), standard.lower()] += 1
         else:

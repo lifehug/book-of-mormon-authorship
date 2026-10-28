@@ -12,8 +12,7 @@ Keyed text is not perfect: ``firft`` occurs in 2 of these texts, against 6,446 f
 compares frequencies rather than asking whether a form exists (``ocr_fix.clean``). A word
 outside Webster is kept when it occurs in at least ``MIN_DOCS`` texts; Webster words are kept
 whatever their frequency, with that frequency (possibly 0). Both thresholds are analytic
-choices outside the pre-registration, listed in ``pending_amendment``
-(``ocr_fix.period_lexicon``) for the amendment that pins them.
+choices registered by Amendment 6 (``corpus.ocr_cleaning.lexicon_min_docs``).
 
 Usage::
 
@@ -38,7 +37,7 @@ import pyarrow.parquet as pq
 CATALOG = Path("data/catalog/catalog.parquet")
 WEBSTER = Path("data/lexicon/english_words.txt")
 OUT = Path("data/lexicon/period_words.tsv")
-MIN_DOCS = 2  # pending_amendment: ocr_fix.period_lexicon
+MIN_DOCS = 2  # registered, Amendment 6
 COLLECTIONS = {"ecco", "evans"}
 FROM_YEAR = 1700
 

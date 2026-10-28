@@ -43,3 +43,10 @@ def test_regimes() -> None:
     )
     with pytest.raises(ValueError):
         normalize(text, "morphadorner_emod_lexicon")
+
+
+def test_registered_words_keep_their_printed_form() -> None:
+    adorned = [("an", "and"), ("hous", "house"), ("whether", "whither")]
+    text, applied, _ = rebuild("an hous whether", adorned, frozenset({"an", "whether"}))
+    assert text == "an house whether"
+    assert list(applied) == [("hous", "house")]

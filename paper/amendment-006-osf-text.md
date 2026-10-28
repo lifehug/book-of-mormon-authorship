@@ -1,7 +1,6 @@
 # Amendment 6: corpus preparation choices, and a curated pseudo-biblical control
 
-*DRAFT for the owner's approval, 2026-10-27. Not filed. Source: `pending_amendment` in
-`config/preregistered.yaml`; evidence in the SOURCES.md files named below.*
+*Filed and approved 2026-10-27, OSF revision `6ae16f4142a77759f3e18539`. Evidence in the SOURCES.md files of `data/catalog`, `data/ocr_quality`, `data/normalization`, `data/kjv_mask` and `data/controls`; owner decisions recorded in BOM-54.*
 
 ---
 

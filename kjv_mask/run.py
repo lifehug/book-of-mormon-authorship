@@ -22,7 +22,7 @@ Harvard volume exhausted a 6 GB heap, and control volumes run to 2.5 million wor
 in an overlap resolve as within a run, ``align.resolve``). Alignment is local -- matches join
 across at most 100 characters -- so cutting does not change what matches; a quotation shorter
 than the overlap that crosses a cut is found whole in one piece. What can shift is the
-document-frequency count, since pieces count as documents; listed in ``pending_amendment``
+document-frequency count, since pieces count as documents; registered by Amendment 6
 (``kjv_mask.passim_implementation``). Texts are read when their batch is built, not all held in
 memory (the control sets are about 1.65 billion words). A batch passim cannot finish at any
 heap size is aligned again with each text cut into thirds (``mask_resilient``); those batches are
@@ -59,9 +59,9 @@ from ocr_fix.normalize import artifacts
 OUT = Path("data/kjv_mask")
 WORK = Path("data/corpus/kjv_mask_runs")
 BATCH_WORDS = 720_000
-PIECE_WORDS = 150_000  # pending_amendment: kjv_mask.passim_implementation
+PIECE_WORDS = 150_000  # registered, Amendment 6
 PIECE_OVERLAP = 500
-SPLIT_PARTS, SPLIT_DEPTH = 3, 2  # pending_amendment: kjv_mask.passim_implementation
+SPLIT_PARTS, SPLIT_DEPTH = 3, 2  # registered, Amendment 6
 EDITION = Path("data/bom/1830/edition_1830.jsonl")
 SAMPLES = Path("data/private/candidates/samples")
 CONTROLS = Path("data/controls")

@@ -17,7 +17,7 @@ order needs the page layout -- word coordinates from ALTO or the page image -- w
 
 Measured, not assumed: ``evaluate`` breaks clean keyed text at random the way the Sentinel is
 broken and reports how many words come back exactly (``data/ocr_quality/defragment_eval.json``).
-Thresholds are listed in ``pending_amendment`` (``ocr_fix.defragment``).
+Thresholds are registered by Amendment 6 (``corpus.ocr_cleaning``).
 
 Usage::
 
@@ -47,7 +47,7 @@ from ocr_fix import lexicon
 
 EVAL = Path("data/ocr_quality/defragment_eval.json")
 
-# pending_amendment: ocr_fix.defragment
+# registered, Amendment 6
 FRAGMENT_LEN = 2
 FRAGMENT_SHARE = 0.3
 MAX_WORD = 20

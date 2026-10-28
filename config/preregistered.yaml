@@ -32,6 +32,28 @@ corpus:
     shingle: 5
     threshold: 0.8
     keep: earliest
+    # Amendment 6 (2026-10-27): a second pass across sources, since independent OCR of one
+    # work never reaches the MinHash threshold. Same normalised title, author and year in
+    # different sources form a group; earliest kept; nothing deleted (BOM-55).
+    metadata_pass:
+      keys: [title_norm, author_norm, year]
+      across_sources: true
+      keep: earliest
+  # Amendment 6 (2026-10-27): OCR cleaning (ocr_fix.clean, ocr_fix.lexicon, ocr_fix.defragment)
+  ocr_cleaning:
+    lexicon_min_docs: 2          # period lexicon: Webster plus words in >= 2 keyed TCP texts
+    long_s_ratio: 100
+    edge_lines: 2
+    header_min_letters: 6
+    header_min_pages: 3
+    header_min_share: 0.05
+    short_line: 60
+    chars_per_page: 2000
+    defragment_fragment_share: 0.3
+    defragment_fragment_len: 2
+    defragment_max_word: 20
+    defragment_unknown_per_letter: 12
+    llm_correction: false        # tested (BOM-14): improves the median, inserts text
   # Amendment 2 (2026-10-17)
   language_filter:
     source_metadata: eng
@@ -62,13 +84,24 @@ corpus:
     perturbation_runs: 100
     perturbation_rate: from_validation   # not a free parameter; set by the measured error rate
     perturbation_confusion: observed     # not uniform
+    # Amendment 6 (2026-10-27): as run.
+    pass2_model: claude_sonnet
+    perturbation_rate_bound: {model_decided: 0.28, rule_decided: 0.03}   # worst case first
   spelling_normalization:
     pre_1700: morphadorner_emod_lexicon
     post_1780: artifacts_only   # long-s, ligatures, OCR; no lexical modernisation
+    # Amendment 6 (2026-10-27)
+    range_1700_1779: artifacts_only
+    morphadorner: adorner_as_distributed      # POS tagging, then standard spelling
+    morphadorner_keep_printed: [an, whether, fall]   # word for word, not spelling for spelling
 
 sealing:
   # 4.2: drop any training volume containing a Book of Mormon string of >= 12 tokens.
   contamination_min_tokens: 12
+  # Amendment 6 (2026-10-27): strings from the 1830 edition's original spans, not in the KJV;
+  # contaminated at >= 20 distinct shared strings (metadata.sealed).
+  contamination_excludes_kjv: true
+  contamination_min_shared: 20
 
 kjv_mask:
   # 4.4: alignment to the KJV with passim; spans are verbatim, close paraphrase, or original.
@@ -90,8 +123,14 @@ kjv_mask:
     ngram: 5
     max_gap_chars: 100
     relative_overlap: 0.5
-    passim_min_align_chars: 20   # pending_amendment: kjv_mask.passim_implementation
-    max_df: 100                  # pending_amendment: kjv_mask.passim_implementation
+    # Amendment 6 (2026-10-27): implementation details (kjv_mask.align, kjv_mask.run)
+    passim_min_align_chars: 20
+    max_df: 100
+    batch_words: 720000
+    piece_words: 150000
+    piece_overlap: 500
+    split_parts: 3
+    split_depth: 2
     # Selected 2026-10-27 under Amendment 2's selection-rule provision on planted quotations
     # (kjv_mask.evaluate, data/kjv_mask/eval_grid.jsonl): masking F1 0.856 at every value 1-4,
     # so the registered tie-break (larger) gives 4.
@@ -131,6 +170,12 @@ candidates:
     sweep_lead_expansions_max: 10
     publish_test_counts: true
 
+# Amendment 6 (2026-10-27): control sets (metadata.controls; BOM-18, BOM-54)
+controls:
+  pool_sample: {history: 3000, general_prose: 5000}   # seeded, stratified by source x decade
+  pseudo_biblical: curated     # BOM-54 procedure; either-label and primary-label lists are
+                               # sensitivity analyses
+
 # Amendment 2 (2026-10-17). Root seed; every component seed derives from this.
 seed: 20261017
 
@@ -138,108 +183,8 @@ seed: 20261017
 # pinned by dated amendment before BOM-21 calibration starts (BOM-40). Absent from the config
 # above on purpose: an unregistered value written here would read as a registered one.
 pending_amendment:
-  - key: kjv_mask.passim_implementation
-    issue: BOM-16
-    note: >
-      Amendment 2 registers passim's n-gram order, minimum alignment, gap and overlap (now in
-      kjv_mask.passim; an earlier entry here for the whole parameter set was stale). Left to
-      implementation: passim counts its own --min-align in characters, set to 20 so that the
-      registered 8-token minimum, enforced on tokens, decides; --maxDF stays at passim's 100;
-      "relative overlap 0.5" is applied to both --src-overlap and --dst-overlap; and a span
-      must contain an unbroken run of matching tokens at least as long as the n-gram order.
-      Texts go through in batches of about 720,000 words, and a text over 150,000 words is
-      aligned as pieces of that length overlapping by 500 words, spans mapped back onto the
-      whole text (passim's memory grows with document length; control volumes reach 2.5
-      million words). No Book of Mormon or candidate text is long enough to be cut. A batch
-      passim cannot finish at any heap size (verse-by-verse Bible commentaries) is aligned
-      again with each text cut into thirds, at most twice; listed in report.json.
   - key: borrowing.null_sample
     issue: BOM-45
     note: >
       6.5 fixes a floor of 500 volumes, not a number. A 99th percentile from 500 draws rests on
       about five tail observations; the chosen n follows from the variance curve in BOM-45.
-  - key: genre_tagging.pass2_model
-    issue: BOM-12
-    note: >
-      Amendment 4 requires a family distinct from pass 1 but names no model; the choice is
-      measured on the ground-truth rows and published with both versions.
-  - key: genre_tagging.perturbation_rate_bound
-    issue: BOM-53
-    note: >
-      Amendment 4 sets perturbation_rate from the hand-adjudicated validation sample. BOM-53
-      defers that sample: the perturbation is first run at a worst-case bound taken from the
-      measured inter-model disagreement (28% on model-decided records, 3% on rule-decided,
-      genre_benchmark_300.json), with the confusion drawn from the observed pass-1/pass-2
-      disagreements. The hand sample is drawn only if the genre-dependent conclusions move
-      under that bound. Needs a dated OSF amendment naming the bound before BOM-40 runs it.
-  - key: ocr_fix.period_lexicon
-    issue: BOM-14
-    note: >
-      The word list OCR repair consults (ocr_fix/lexicon.py): Webster's Second plus every word
-      in at least 2 hand-keyed TCP ECCO/Evans texts dated 1700 or later, with each word's
-      document frequency. MIN_DOCS = 2.
-  - key: ocr_fix.cleaning
-    issue: BOM-14
-    note: >
-      Rule-based cleaning thresholds (ocr_fix/clean.py): long s read as f is repaired when the
-      s-form occurs in at least 100 times as many keyed texts as the form as read
-      (LONG_S_RATIO); running headers are lines in the top or bottom 2 lines of a page
-      (EDGE_LINES) whose letters, at least 6 of them (HEADER_MIN_LETTERS), recur there on at
-      least 3 pages and 5% of pages (HEADER_MIN_PAGES, HEADER_MIN_SHARE); in text without page
-      marks, lines of at most 60 characters (SHORT_LINE) against a page estimate of 2,000
-      characters (CHARS_PER_PAGE). Chronicling America single pages skip header removal.
-  - key: spelling_normalization.1700_1779
-    issue: BOM-15
-    note: >
-      The registration names pre_1700 (MorphAdorner EME lexicon) and post_1780 (artifacts
-      only) and is silent on 1700-1779, which is TCP's ECCO and Evans material. Treated as
-      artifacts_only, the reading that changes least (ocr_fix/normalize.py regime()).
-  - key: spelling_normalization.morphadorner_an
-    issue: BOM-15
-    note: >
-      MorphAdorner's EME adorner, applied as distributed (ocr_fix/morphadorner.py), maps the
-      article "an" to "and" (486 of 497 uses in one sample text, A00005), which merges a
-      determiner into the most frequent conjunction in every pre-1700 text. Proposed: keep
-      "an" as printed and leave every other MorphAdorner standard spelling as is. Until pinned,
-      the registered method is applied unchanged and the merge is counted in
-      data/normalization/applied_map.tsv. Affects only the pre-1700 reference texts. Over all
-      53,486 such texts the map shows an -> and 3.28M tokens, and other MorphAdorner choices of
-      the same kind for the owner to weigh at the same time: whether -> whither 571k,
-      fall -> fallen 345k, yn -> than 321k.
-  - key: ocr_fix.defragment
-    issue: BOM-14
-    note: >
-      Re-segmenting newspaper text delivered with words broken apart (ocr_fix/defragment.py): a
-      line is fragmented when at least 30% of its alphabetic tokens are fragments of 2 letters
-      or fewer that are not common short words (FRAGMENT_SHARE, FRAGMENT_LEN); words of up to
-      20 letters (MAX_WORD); a word outside the lexicon costs 12 per letter on top of the
-      unknown-word cost (UNKNOWN_PER_LETTER). A split is kept only if it raises the share of
-      letters in known words.
-  - key: controls.pseudo_biblical_list
-    issue: BOM-54
-    note: >
-      Amendment 3 has control sets match a work on either of its two genre labels. For the
-      pseudo-biblical set that admits 3,727 volumes after BOM-18's filters, read by title mostly
-      religious prose about scripture (pass 1 used pseudo_biblical freely as a second label);
-      29 carry it as primary (about 20 distinct works). Owner decision 2026-10-27: replace the
-      rule for this set with a curated list chosen by a published rule (KJV-style markers plus
-      a simulated two-model check against known answers), both existing lists kept as
-      sensitivity analyses. Built in BOM-54; the amendment text is drafted there.
-  - key: controls.pool_sample
-    issue: BOM-18
-    note: >
-      The history and general-prose pools (about 40,000 and 340,000 volumes) are drawn down to
-      3,000 and 5,000 by a seeded sample stratified by source and decade in proportion, so that
-      every member can be KJV-masked with passim at the validated batch size (the full pools are
-      about 20 billion words, a month of passim on the data machine). Amendment 2's draws of 100
-      imposters per trial are unaffected in kind.
-  - key: sealing.contamination_kjv
-    issue: BOM-18
-    note: >
-      4.2's check drops a volume holding a Book of Mormon string of 12+ tokens. Read literally
-      that includes the KJV chapters the Book of Mormon reproduces; run that way on the control
-      pools it flagged 4,267 volumes, mostly sermons quoting Isaiah and Matthew. Implemented as
-      12-token strings from the 1830 edition's original spans (outside BOM-16's KJV masks) that
-      do not occur in the KJV, and a volume is contaminated when it shares at least 20 distinct
-      such strings (metadata/sealed.py MIN_SHARED). Measured: no control-pool volume shares more
-      than 9 (liturgy, biblical phrasing); the six copies of the book share 109,011 to 174,655.

@@ -14,7 +14,7 @@
 
 The registration is silent on 1700-1779 (TCP's ECCO and Evans texts, the early modern
 reference for dating). They get ``artifacts_only``, the reading that changes least, and the
-choice is listed in ``pending_amendment`` (``spelling_normalization.1700_1779``).
+choice is registered by Amendment 6 (``spelling_normalization.range_1700_1779``).
 
 An earlier version applied MorphAdorner's merged spelling-pairs table token by token without
 tagging. That is not what MorphAdorner does, and it got the part-of-speech-dependent forms wrong
@@ -79,7 +79,7 @@ def regime(year: int | None, cfg: dict) -> str:
     sn = cfg["corpus"]["spelling_normalization"]
     if year is not None and year < 1700:
         return sn["pre_1700"]
-    return sn["post_1780"]  # 1700-1779 and undated: pending_amendment, artifacts only
+    return sn["post_1780"]  # 1700-1779 and undated: artifacts only (Amendment 6)
 
 
 def normalize(
@@ -91,7 +91,10 @@ def normalize(
     if mode == "morphadorner_emod_lexicon":
         if adorned is None:
             raise ValueError("pre-1700 text needs MorphAdorner output (ocr_fix.morphadorner)")
-        text, applied, unaligned = morphadorner.rebuild(text, adorned)
+        keep = frozenset(
+            load_config()["corpus"]["spelling_normalization"]["morphadorner_keep_printed"]
+        )
+        text, applied, unaligned = morphadorner.rebuild(text, adorned, keep)
     elif mode != "artifacts_only":
         raise ValueError(f"unregistered spelling regime: {mode}")
     text, n_art = artifacts(text)
