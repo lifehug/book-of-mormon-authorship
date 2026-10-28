@@ -84,7 +84,7 @@ Intended for the registered analyses. Not suitable as a general-purpose clean co
 
 Manifests, catalogs, labels, masks, segments and control lists are public in the repository and
 will be archived on Zenodo with a DOI; corpus text is not redistributed where terms forbid it
-(Harvard Institutional Books, HathiTrust, Joseph Smith Papers). **[pending: DOI]**
+(Harvard Institutional Books, HathiTrust, Joseph Smith Papers). Archived on Zenodo from the GitHub release `corpus-v1.0`: DOI [10.5281/zenodo.23740903](https://doi.org/10.5281/zenodo.23740903); concept DOI for all versions 10.5281/zenodo.23740902.
 
 ## Maintenance
 

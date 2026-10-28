@@ -8,6 +8,8 @@ any answer, including "we can't tell."
 The repository is the whole project: the plan, the code, the data manifests, the models, and
 eventually the paper. Everything is public as it is produced.
 
+**Corpus v1.0** (frozen 2026-10-28), the snapshot every analysis runs against: [doi:10.5281/zenodo.23740903](https://doi.org/10.5281/zenodo.23740903) (all versions: [10.5281/zenodo.23740902](https://doi.org/10.5281/zenodo.23740902)). Index `data/manifests/corpus_v1.0.json`; coverage and gaps in `docs/datasheet.md`.
+
 ## The three questions
 
 1. **Attribution.** Does the text resemble the writing of any named candidate? The

@@ -1345,8 +1345,25 @@ original text. The 5,000-word chunks are split, by a draw fixed in advance, into
 gets explored and a half that's kept back to confirm anything the first half turns up. Jacob has
 only one full chunk, so it goes to the kept-back half, where nothing can be tuned on it.
 
+## Corpus v1.0 is frozen, and it has a DOI
+
+Phase 2 is done. Everything the analysis will run against -- the catalog of 695,021 works, the
+genre labels, the duplicate flags, the OCR estimates, the spelling fixes, the Bible masks, the
+Book of Mormon cut into chunks, the control lists -- is pinned in one file that lists all 70
+pieces with their checksums. That file is `corpus_v1.0.json`, and the snapshot is archived on
+Zenodo as [doi:10.5281/zenodo.23740903](https://doi.org/10.5281/zenodo.23740903).
+
+What that buys is simple. From here on, every result says which corpus it was run on, and
+anyone can check they have the same bytes. If I find a mistake in the corpus later, and I will,
+the fix becomes version 1.1 with its own DOI, and v1.0 stays exactly as it was.
+
+The books themselves aren't in it where the licences say no: Harvard's and HathiTrust's text and
+the Joseph Smith Papers transcripts. The archive lists every file of those by checksum and says how
+to get them.
+
 ## Log
 
+- **2026-10-28.** BOM-19 closed: corpus v1.0 frozen (70 files, index sha256 15858aff...), released as `corpus-v1.0`, Zenodo DOI 10.5281/zenodo.23740903. Phase 2 complete.
 - **2026-10-28.** BOM-16, BOM-17 and BOM-18 closed. Control masks done (17,449 volumes, 1.78% masked; sermons 2.46%, pseudo-biblical 3.40%). 756 chunks and the discovery/confirmation split (sha256 9fdffa56...). Control lists final with SHA-256 after BOM-55.
 - **2026-10-27, night.** Amendment 6 filed and approved (OSF revision 6ae16f41...): corpus choices registered, curated pseudo-biblical control (BOM-54), second dedup pass (BOM-55), an/whether/fall kept as printed. BOM-55 closed: metadata pass 4,697 groups; combined 19,692 groups, 24,779 non-keepers; controls count each work once (sermons -179, pseudo-biblical -55).
 - **2026-10-27, later.** BOM-12 closed again, with HathiTrust: catalog 695,021 rows (533,328 with text), genre pass 1 for all, pass 2 redrawn (84.9% either-label agreement, HathiTrust 83.9%), 757 contradictions adjudicated by Opus (simulated; Sonnet 553, Llama 62). BOM-14 closed with it.
