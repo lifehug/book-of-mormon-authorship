@@ -1272,8 +1272,44 @@ And a wait loop I'd written to tell me when the overnight labelling finished nev
 matched the name `genre_ht` to a different session called `genre_ht_commit`, so the loop
 thought the job was still running for three and a half hours after it was done.
 
+## Amendment 6, and counting a book once
+
+Building the corpus meant making about a dozen small decisions the plan never covered. How many
+times does a word have to appear in hand-typed books before I trust it as a real word? What do I
+do with books printed between 1700 and 1780, when the plan only talks about before 1700 and after
+1780? Each one went on a list as I made it, and today I registered the whole list on OSF as
+Amendment 6, before anything has been measured on the Book of Mormon. That's the point of doing
+it now: nobody can say I picked the settings after seeing which way they pushed the answer.
+
+Two of the changes are real decisions, not housekeeping.
+
+The first is the pseudo-biblical control, the books written to sound like the King James Bible.
+The rule I'd registered matched any book where the genre model put "pseudo-biblical" as either of
+its two labels. That gave 3,727 books, and when I read the titles they were mostly *about* the
+Bible: commentaries on the Psalms, a synopsis of the four gospels, a defence of Calvinism. A test
+against those would let biblical style alone make the Book of Mormon look different, which is
+exactly what this control is supposed to rule out. So the control will be a curated list chosen by
+a rule written down in advance, with two different AI models checking each candidate and the
+four books the plan names (Leacock, Snowden, Linning, Hunt) as a test the method has to pass.
+
+The second is counting a book once. The duplicate finder compares five-word runs, and two
+different OCR readings of the same page share too few of them, so a book held by two libraries
+counted twice. Amendment 6 adds a second pass: same title, same author, same year, in different
+sources, counts as one. I checked a sample of 200 of those groups against the actual text, and
+almost all are the same text; the few that aren't are other volumes of the same work, like
+volume 1 and volume 2 of *Sketches of Persia*, which shouldn't count as two independent books in
+a control sample either. The sermons control lost 179 books this way.
+
+The amendment also fixed something I'd flagged earlier. The spelling tool for pre-1700 books turns
+the word "an" into "and", 3.3 million times. Now "an", "whether" and "fall" keep their printed form.
+
+I filed it myself through OSF's API, with Dave's go-ahead, and this time the script that does it is
+saved in the repo. The last three amendments each cost a round of rediscovering how OSF's
+undocumented write path works.
+
 ## Log
 
+- **2026-10-27, night.** Amendment 6 filed and approved (OSF revision 6ae16f41...): corpus choices registered, curated pseudo-biblical control (BOM-54), second dedup pass (BOM-55), an/whether/fall kept as printed. BOM-55 closed: metadata pass 4,697 groups; combined 19,692 groups, 24,779 non-keepers; controls count each work once (sermons -179, pseudo-biblical -55).
 - **2026-10-27, later.** BOM-12 closed again, with HathiTrust: catalog 695,021 rows (533,328 with text), genre pass 1 for all, pass 2 redrawn (84.9% either-label agreement, HathiTrust 83.9%), 757 contradictions adjudicated by Opus (simulated; Sonnet 553, Llama 62). BOM-14 closed with it.
 - **2026-10-27, afternoon.** BOM-15 done pending its dependencies: OCR sources artifact-only, 53,486 pre-1700 texts through MorphAdorner's own adorner (the table-only first pass superseded; its part -> partly and ye -> you errors kept on record); an -> and and similar MorphAdorner choices listed for amendment. Dedup re-run on normalised text: 19,916 groups; cross-source pairs 0.117 -> 0.180 median, none at 0.8. BOM-17 chunks and split built (split sha256 9fdffa56...). Control lists built and committed; control masking running (long volumes now aligned in overlapping 150,000-word pieces after passim ran out of memory).
 - **2026-10-27, night.** BOM-14 closed: 472,018 volumes cleaned; error rate measured on 1,883 hand-keyed twins (median 0.099 raw, 0.083 cleaned); estimated for every volume and flagged, never deleted (Harvard 2.5%, HathiTrust 11.9%, Internet Archive 24.9%, Chronicling America 27.8% over 0.10). LLM correction tried and rejected (invents text). Wayne Sentinel re-segmented (62% -> 93% words recovered).
