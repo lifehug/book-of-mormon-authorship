@@ -30,6 +30,8 @@ Usage::
     python -m metadata.dedup signatures          # the parallel pass, resumable by shard
     python -m metadata.dedup pairs               # LSH over the signatures, writes duplicates
     python -m metadata.dedup authors             # word counts per normalised author
+    python -m metadata.dedup metadata            # Amendment 6's pass by title, author, year
+    python -m metadata.dedup combine             # one keeper flag from both passes
 
 Each command takes ``--text raw`` (the default, the catalog's text as fetched: BOM-12's run) or
 ``--text normalized`` (BOM-14's cleaning plus BOM-15's spelling normalisation, the order 4.3
@@ -360,6 +362,139 @@ def authors(text: str = "raw") -> int:
     return 0
 
 
+METADATA_DUPES = Path("data/catalog/duplicates_metadata.parquet")
+COMBINED = Path("data/catalog/duplicates_combined.parquet")
+# newspaper pages are not works: every page of a title in a year shares title, author and year
+NOT_WORKS = {"chronicling_america"}
+
+
+def _keeper(members: list[int], rows: list[dict]) -> int:
+    """Earliest year, then earliest in the catalog (its row order)."""
+    return min(members, key=lambda i: (rows[i]["year"] or 9999, i))
+
+
+def _write_groups(groups: list[list[int]], rows: list[dict], best: dict, out: Path) -> int:
+    recs = []
+    for gid, members in enumerate(sorted(groups, key=min)):
+        keep = _keeper(members, rows)
+        for i in sorted(members):
+            recs.append({"work_id": rows[i]["work_id"], "group_id": gid,
+                         "group_size": len(members), "is_keeper": i == keep,
+                         "best_similarity": best.get(i, 0.0)})  # fmt: skip
+    pq.write_table(
+        pa.Table.from_pylist(recs, schema=DUPE_SCHEMA).replace_schema_metadata(
+            {"config_sha256": sha256_of_config()}
+        ),
+        out,
+    )
+    print(f"{len(groups):,} groups, {len(recs):,} works, "
+          f"{len(recs) - len(groups):,} non-keepers -> {out}")  # fmt: skip
+    return 0
+
+
+def metadata_groups(rows: list[dict], keys: list[str]) -> list[list[int]]:
+    """Amendment 6's second pass: rows sharing every key, in more than one source."""
+    by: dict[tuple, list[int]] = defaultdict(list)
+    for i, r in enumerate(rows):
+        if r["has_text"] and r["source"] not in NOT_WORKS and all(r[k] for k in keys):
+            by[tuple(r[k] for k in keys)].append(i)
+    return [m for m in by.values() if len({rows[i]["source"] for i in m}) > 1]
+
+
+def metadata_pass() -> int:
+    mp = load_config()["corpus"]["dedup"]["metadata_pass"]
+    rows = pq.read_table(CATALOG).to_pylist()
+    return _write_groups(metadata_groups(rows, mp["keys"]), rows, {}, METADATA_DUPES)
+
+
+def combine(minhash: Path = OUTPUTS["normalized"][1]) -> int:
+    """Union of the MinHash groups (on normalised text) and the metadata groups."""
+    rows = pq.read_table(CATALOG).to_pylist()
+    index = {r["work_id"]: i for i, r in enumerate(rows)}
+    parent = list(range(len(rows)))
+
+    def find(x: int) -> int:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    best: dict[int, float] = {}
+    for path in (minhash, METADATA_DUPES):
+        groups: dict[int, list[int]] = defaultdict(list)
+        for r in pq.read_table(path).to_pylist():
+            i = index[r["work_id"]]
+            groups[r["group_id"]].append(i)
+            best[i] = max(best.get(i, 0.0), r["best_similarity"])
+        for members in groups.values():
+            for i in members[1:]:
+                parent[find(i)] = find(members[0])
+    merged: dict[int, list[int]] = defaultdict(list)
+    for i in best:
+        merged[find(i)].append(i)
+    return _write_groups([m for m in merged.values() if len(m) > 1], rows, best, COMBINED)
+
+
+CHECK = Path("data/catalog/dedup_metadata_check.json")
+
+
+def _vocab(path: Path) -> set[str]:
+    """Words of four or more letters occurring at least twice: robust to most OCR noise."""
+    import re
+    from collections import Counter
+
+    c = Counter(re.findall(r"[a-z]{4,}", path.read_text(errors="replace").lower()))
+    return {w for w, n in c.items() if n >= 2}
+
+
+def check_metadata(n: int = 200) -> int:
+    """Amendment 6's check against the text, on a seeded sample of metadata groups.
+
+    For each group's keeper and every other member: the ratio of their word counts and the
+    overlap of their vocabularies. Same OCR reused scores about 1.0; the same work read by two
+    OCR engines 0.4-0.6; different volumes of one work about 0.45 with similar lengths. The
+    check reports what the pass merges; it cannot tell volumes from copies, and under the
+    amendment both count as one work.
+    """
+    import json
+    import random
+
+    from ocr_fix.normalize import norm_path
+
+    rows = {r["work_id"]: r for r in pq.read_table(CATALOG).to_pylist()}
+    words = {}
+    for f in OUTPUTS["normalized"][0].glob("*.parquet"):
+        for r in pq.read_table(f, columns=["work_id", "words"]).to_pylist():
+            words[r["work_id"]] = r["words"]
+    groups: dict[int, list[dict]] = defaultdict(list)
+    for r in pq.read_table(METADATA_DUPES).to_pylist():
+        groups[r["group_id"]].append(r)
+    rng = random.Random(f"{load_config()['seed']}:dedup-metadata-check")
+    pairs = []
+    for gid in rng.sample(sorted(groups), min(n, len(groups))):
+        keep = next(r["work_id"] for r in groups[gid] if r["is_keeper"])
+        vk = _vocab(norm_path(rows[keep]))
+        for r in groups[gid]:
+            if r["work_id"] == keep:
+                continue
+            vo = _vocab(norm_path(rows[r["work_id"]]))
+            wk, wo = words.get(keep) or 0, words.get(r["work_id"]) or 0
+            pairs.append({"group": gid, "keeper": keep, "member": r["work_id"],
+                          "sources": [rows[keep]["source"], rows[r["work_id"]]["source"]],
+                          "length_ratio": max(wk, wo) / max(1, min(wk, wo)),
+                          "vocab_overlap": len(vk & vo) / max(1, len(vk | vo))})  # fmt: skip
+    same_ocr = sum(p["vocab_overlap"] >= 0.9 for p in pairs)
+    near_len = sum(p["length_ratio"] <= 1.5 for p in pairs)
+    summary = {"groups": min(n, len(groups)), "pairs": len(pairs),
+               "same_ocr_reused": same_ocr, "length_within_1.5x": near_len,
+               "length_beyond_1.5x": len(pairs) - near_len,
+               "median_vocab_overlap": sorted(p["vocab_overlap"] for p in pairs)[len(pairs) // 2],
+               "pairs_detail": pairs}  # fmt: skip
+    CHECK.write_text(json.dumps(summary, indent=1) + "\n")
+    print(json.dumps({k: v for k, v in summary.items() if k != "pairs_detail"}, indent=1))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -369,6 +504,9 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("pairs")
     p.add_argument("--bucket-cap", type=int, default=2000)
     au = sub.add_parser("authors")
+    sub.add_parser("metadata")
+    sub.add_parser("combine")
+    sub.add_parser("check-metadata")
     for x in (s, p, au):
         x.add_argument("--text", choices=sorted(OUTPUTS), default="raw")
     a = ap.parse_args(argv)
@@ -378,6 +516,12 @@ def main(argv: list[str] | None = None) -> int:
         return pairs(a.bucket_cap, a.text)
     if a.cmd == "authors":
         return authors(a.text)
+    if a.cmd == "metadata":
+        return metadata_pass()
+    if a.cmd == "combine":
+        return combine()
+    if a.cmd == "check-metadata":
+        return check_metadata()
     return 1
 
 

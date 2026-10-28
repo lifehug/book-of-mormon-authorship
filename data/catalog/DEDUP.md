@@ -81,6 +81,35 @@ control sample. A second, metadata-based pass (same title, author and year acros
 catch these, but it is a different method from 4.3's and so an owner decision, not a fix made
 here. Recorded for BOM-45, which builds the null.
 
+## The second pass, by title, author and year (Amendment 6, BOM-55)
+
+Amendment 6 registers a second pass because MinHash cannot see the same work read by two OCR
+engines (above). `python -m metadata.dedup metadata` groups works in more than one source sharing
+the catalog's normalised title, normalised author and year; every member of such a group joins
+it, the earliest (year, then catalog order) is kept, and nothing is deleted. Newspaper pages
+(Chronicling America) are left out: every page of a title in a year shares those keys and they
+are not copies. `python -m metadata.dedup combine` unites these groups with the MinHash groups on
+normalised text into one keeper flag, `duplicates_combined.parquet`, which the control sets read.
+
+| | groups | works | non-keepers |
+| --- | --- | --- | --- |
+| MinHash, normalised text | 19,916 | 41,131 | 21,215 |
+| metadata pass | 4,697 | 12,966 | 8,269 |
+| combined | 19,688 | 44,464 | 24,776 |
+
+**Checked against the text** (`python -m metadata.dedup check-metadata`, seeded sample of
+200 groups, 352 keeper-member pairs, `dedup_metadata_check.json`): word counts within 1.5x
+in 341 pairs, beyond in 11; median vocabulary overlap 0.95. Most of what the pass
+merges is the same text. The pairs that differ in length are different volumes or extents of one
+work (two volumes of *Sketches of Persia* against a copy with both), which the amendment counts
+as one work: they are not independent draws for a control or null sample. Vocabulary overlap
+cannot tell two volumes of a work (about 0.45) from two OCR readings of one volume (0.44-0.61),
+so no text threshold was added.
+
+What the pass does not catch: copies within one source (three Archive scans of Hunt's 1816 *Late
+War*) and editions catalogued under different titles. The curated pseudo-biblical list (BOM-54)
+collapses those by hand.
+
 ## A second caveat, the other direction
 
 One group holds 173 members and appears to be volumes of *The Public Statutes at Large*. Distinct

@@ -63,6 +63,7 @@ CATALOG = Path("data/catalog/catalog.parquet")
 GENRE = Path("data/catalog/genre.parquet")
 DUPES = Path("data/catalog/duplicates_normalized.parquet")
 VOLUMES = Path("data/ocr_quality/volumes.parquet")
+COMBINED = Path("data/catalog/duplicates_combined.parquet")
 SIGS = Path("data/catalog/signatures_normalized")  # word counts of the normalised text
 OUT = Path("data/controls")
 
@@ -201,10 +202,30 @@ def build() -> int:
     for k in members:
         members[k] = [m for m in members[k] if m["work_id"] not in contaminated]
 
+    # Amendment 6's second dedup pass (BOM-55): a work held by two sources counts once. Applied
+    # to each set as drawn, so the pool samples (and their KJV masks) are unchanged: within a
+    # set, one member per combined duplicate group, the earliest (year, then catalog order).
+    group = {r["work_id"]: r["group_id"] for r in pq.read_table(COMBINED).to_pylist()}
+    order = {r["work_id"]: i for i, r in enumerate(cat)}
+    once_dropped = {}
+    for k, ms in members.items():
+        seen: set[int] = set()
+        kept = []
+        for m in sorted(ms, key=lambda m: (m["year"] or 9999, order[m["work_id"]])):
+            g = group.get(m["work_id"])
+            if g is not None and g in seen:
+                continue
+            if g is not None:
+                seen.add(g)
+            kept.append(m)
+        once_dropped[k] = len(ms) - len(kept)
+        members[k] = kept
+
     OUT.mkdir(parents=True, exist_ok=True)
     summary = {"config_sha256": sha256_of_config(), "dropped": dict(drops),
                "eligible_before_sampling": full_sizes,
-               "contaminated_12_token": sorted(contaminated), "sets": {}}  # fmt: skip
+               "contaminated_12_token": sorted(contaminated),
+               "dropped_as_cross_source_copies": once_dropped, "sets": {}}  # fmt: skip
     for k, ms in members.items():
         ms.sort(key=lambda m: m["work_id"])
         ids = "".join(m["work_id"] + "\n" for m in ms)

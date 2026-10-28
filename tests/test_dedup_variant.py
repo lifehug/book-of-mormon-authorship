@@ -50,3 +50,32 @@ def test_variant_writes_separate_outputs(monkeypatch, tmp_path):
     assert dedup.authors("normalized") == 0
     assert pq.read_table(norm_out[2]).to_pylist()[0]["works"] == 2  # doc1 is a non-keeper
     assert not Path(raw_out[0]).exists() and not raw_out[1].exists()
+
+
+def test_metadata_pass_groups_across_sources_only():
+    keys = ["title_norm", "author_norm", "year"]
+    base = {"title_norm": "the late war", "author_norm": "hunt, gilbert", "year": 1816,
+            "has_text": True}  # fmt: skip
+    rows = [
+        {**base, "work_id": "internet_archive:a", "source": "internet_archive"},
+        {**base, "work_id": "hathitrust:b", "source": "hathitrust"},
+        {**base, "work_id": "internet_archive:c", "source": "internet_archive"},  # joins too
+        {**base, "work_id": "chronicling_america:p1", "source": "chronicling_america"},
+        {
+            **base,
+            "title_norm": "other",
+            "work_id": "internet_archive:d",
+            "source": "internet_archive",
+        },  # fmt: skip
+        {
+            **base,
+            "title_norm": "other",
+            "work_id": "internet_archive:e",
+            "source": "internet_archive",
+        },  # one source only: left to MinHash  # fmt: skip
+    ]
+    groups = dedup.metadata_groups(rows, keys)
+    assert [sorted(rows[i]["work_id"] for i in g) for g in groups] == [
+        ["hathitrust:b", "internet_archive:a", "internet_archive:c"]
+    ]
+    assert dedup._keeper(groups[0], rows) == 0  # same year: first in the catalog

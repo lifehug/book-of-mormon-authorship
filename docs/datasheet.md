@@ -21,7 +21,7 @@ model and labelled as such (Amendment 1).
 | Early modern reference | EEBO-TCP, Evans-TCP, ECCO-TCP, hand-keyed | 61,310 texts | text local (CC0, republishable) |
 | Book of Mormon | 1830 first edition (Jenson reproduction), with the surviving original manuscript and the printer's manuscript for alignment | 268,811 words | `data/bom/` (manuscript transcripts private) |
 | Candidates | eight authors of section 3, by provenance tier | 621,005 words across 63 units | `data/candidates/` (Joseph Smith Papers texts private) |
-| Controls | pseudo-biblical (two lists), 1820s sermons, history with a Native American origins subset, general prose | 3,727 / 29 (primary label), 6,322, 3,000 (47 origins), 4,999 volumes; 1.65 billion words | `data/controls/` |
+| Controls | pseudo-biblical (two lists), 1820s sermons, history with a Native American origins subset, general prose | 3,672 / 29 (primary label), 6,143, 2,986 (47 origins), 4,998 volumes; 1.61 billion words; the pseudo-biblical set for the confirmatory test is curated (BOM-54) | `data/controls/` |
 
 Labels and derived tables: genre (two passes plus a 5,000-record reliability sample),
 near-duplicate groups (nothing deleted), per-author word counts, per-volume OCR quality and
@@ -50,7 +50,8 @@ are absent.
    for amendment.
 4. **Deduplication**: MinHash, 5-gram shingles, threshold 0.8, keep the earliest; run on raw
    text (19,697 groups) and on cleaned, normalised text (19,916 groups, 21,215 non-keepers
-   flagged), both published.
+   flagged), both published; and a second pass by title, author and year across sources
+   (Amendment 6): combined, 19,688 groups and 24,776 non-keepers flagged.
 5. **KJV masking**: passim with Amendment 2's settings; 6.82% of the Book of Mormon's words
    masked; validated on 200 alignments by a simulated hand check (95.5% KJV-derived).
 
@@ -61,7 +62,8 @@ are absent.
   extrapolate in date, and for newspapers in genre as well.
 - **Cross-source duplicates are not detected** (`data/catalog/DEDUP.md`): independent OCR of
   the same book rarely reaches 0.8 similarity, raw or normalised (median 0.117 and 0.180 on 300
-  title-and-author pairs; none at 0.8). A work held by two sources can count twice.
+  title-and-author pairs; none at 0.8). A second pass by title, author and year (Amendment 6) now catches these where the metadata agree;
+  copies within one source and editions under different titles still escape it.
 - **Interleaved newspaper columns are not repaired** (Wayne Sentinel, Lake Light): reading
   order needs page layout (BOM-50).
 - **Genre labels are model-made.** Pass 1 used pseudo-biblical freely as a second label, so
