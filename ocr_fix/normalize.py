@@ -185,9 +185,10 @@ def run(workers: int, limit: int | None, sources: list[str] | None = None) -> in
     COUNTS.parent.mkdir(parents=True, exist_ok=True)
     with COUNTS.open("a") as counts, ProcessPoolExecutor(workers) as pool:
         for rec in pool.map(_one, todo, chunksize=16):
-            if rec["applied"]:
-                counts.write(json.dumps({"work_id": rec["work_id"], "applied": rec["applied"]}))
-                counts.write("\n")
+            # always, even when empty: the map reads each text's last record, and a stale one
+            # from an earlier run would otherwise stand for a text that now changes nothing
+            counts.write(json.dumps({"work_id": rec["work_id"], "applied": rec["applied"]}))
+            counts.write("\n")
             done.append(rec)
             n += 1
             if n % 20000 == 0:
