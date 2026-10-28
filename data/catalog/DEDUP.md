@@ -57,9 +57,9 @@ The same method re-run on BOM-14's cleaned and BOM-15's normalised text
 
 | | raw text | cleaned and normalised |
 | --- | --- | --- |
-| Duplicate groups | 19,697 | 19,916 |
-| Works in a group | 40,566 | 41,131 |
-| Non-keepers flagged | 20,869 | 21,215 |
+| Duplicate groups | 19,697 | 19,920 |
+| Works in a group | 40,566 | 41,138 |
+| Non-keepers flagged | 20,869 | 21,218 |
 | Authors with 10,000+ words | 46,649 | 46,441 |
 
 **The cross-source limitation is not fixed by it.** 300 pairs drawn with a seed
@@ -93,9 +93,9 @@ normalised text into one keeper flag, `duplicates_combined.parquet`, which the c
 
 | | groups | works | non-keepers |
 | --- | --- | --- | --- |
-| MinHash, normalised text | 19,916 | 41,131 | 21,215 |
+| MinHash, normalised text | 19,920 | 41,138 | 21,218 |
 | metadata pass | 4,697 | 12,966 | 8,269 |
-| combined | 19,688 | 44,464 | 24,776 |
+| combined | 19,692 | 44,471 | 24,779 |
 
 **Checked against the text** (`python -m metadata.dedup check-metadata`, seeded sample of
 200 groups, 352 keeper-member pairs, `dedup_metadata_check.json`): word counts within 1.5x

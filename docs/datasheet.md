@@ -49,9 +49,9 @@ are absent.
    modernisation. MorphAdorner's own `an` -> `and` and similar choices are applied and listed
    for amendment.
 4. **Deduplication**: MinHash, 5-gram shingles, threshold 0.8, keep the earliest; run on raw
-   text (19,697 groups) and on cleaned, normalised text (19,916 groups, 21,215 non-keepers
+   text (19,697 groups) and on cleaned, normalised text (19,920 groups, 21,218 non-keepers
    flagged), both published; and a second pass by title, author and year across sources
-   (Amendment 6): combined, 19,688 groups and 24,776 non-keepers flagged.
+   (Amendment 6): combined, 19,692 groups and 24,779 non-keepers flagged.
 5. **KJV masking**: passim with Amendment 2's settings; 6.82% of the Book of Mormon's words
    masked; validated on 200 alignments by a simulated hand check (95.5% KJV-derived).
 
