@@ -222,6 +222,13 @@ power:
   # pending_amendment power.design
   reference_floor_words: {burrows_delta: 10000, cosine_delta: 10000, general_imposters: 10000, ensc: 10000}
 
+# Amendment 5 Change 4: time-split validation (BOM-48), the gate on expanded corpora (BOM-49)
+timesplit:
+  # pending_amendment: timesplit.design
+  authors: 30
+  min_words: 10000               # each side, BOM-43's reference floor
+  min_gap_years: 7
+
 # Amendment 6 (2026-10-27): control sets (metadata.controls; BOM-18, BOM-54)
 controls:
   pool_sample: {history: 3000, general_prose: 5000}   # seeded, stratified by source x decade
@@ -259,3 +266,11 @@ pending_amendment:
       fixed 5,000-word test for the reference curve, at least 5 reference blocks for the test
       curve, and a floor defined as the smallest size from which every larger size also reaches
       80%. To be registered before BOM-21 relies on the floors.
+  - key: timesplit.design
+    issue: BOM-48
+    note: >
+      Amendment 5 registers the gate (time-split accuracy at the section 7 floor) but not the
+      baseline's design. Used: 30 corpus authors drawn with the root seed from those with 10,000+
+      words both before and after a gap of at least 7 years; a 5,000-word passage from one side
+      attributed among every drawn author's profile from the other, both directions; candidates
+      with text on both sides of 1830 attributed among the candidates' profiles from the other side.

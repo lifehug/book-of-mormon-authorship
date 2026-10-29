@@ -6,6 +6,7 @@
 | `federalist/papers.jsonl` | `python -m eval.federalist` | the 70 papers with one undisputed author under the standard attribution (Mosteller and Wallace 1964): Hamilton 51, Madison 14, Jay 5; the 3 joint and 12 disputed papers left out. Headings, author lines and PUBLIUS removed, since the author's own name would give the answer away |
 | `pseudo_biblical_known.json` | by hand, 2026-10-28 | known-author pseudo-biblical works, one copy per text (Hunt, Snowden 2 volumes, Linning, Hughes), with why each was chosen and what was left out; text is the normalised, KJV-masked control text |
 | `power.json` | `python -m eval.power` (seconds) | BOM-43's sample-size curves per method, both corpora, and the floors |
+| `timesplit.json` | `python -m eval.timesplit` (a minute) | BOM-48's time-split accuracy: baseline over corpus authors and per candidate, both directions |
 | `power_candidates.csv` | the same | each candidate's masked word count per sample type and the pre-1830 total, against the reference floors: testable / unreliable / untestable |
 
 ## Power analysis (BOM-43)
@@ -37,3 +38,27 @@ reference is then nearly exhausted; that is a limit of the set, not of the chunk
 below the Federalist's); Rigdon, Pratt and Phelps have no pre-1830 text. Section 6.2 needs two
 method families to agree before a candidate is supported; only the classical family exists so
 far, and the curve is re-run as the language-model (BOM-28) and embedding (BOM-30) families land.
+
+## Time-split validation (BOM-48)
+
+Amendment 5 lets a candidate's later writing stand in for the pre-1830 sample only if a profile
+from one side of the gap recognises their writing on the other at the section 7 floor (80%).
+
+**Baseline.** 30 corpus authors (seeded) from 1,273 with 10,000+ words on both sides of a gap of
+at least 7 years (median gap 10 years). A 5,000-word passage from one side, attributed among all
+30 authors' profiles from the other side (chance 3%): late profile, early test: burrows delta 50%, cosine delta 53%, general imposters 37%, ensc 43%;
+early profile, late test: burrows delta 60%, cosine delta 53%, general imposters 50%, ensc 60%. For comparison, BOM-20's same-period test across
+different books gave 60-73%. A decade costs roughly 15-20 points, and no method comes near 80%.
+Part of the drop is genre, not time: an author's early and late works are often different kinds
+of book. Either way it is the drift a later-text profile has to overcome.
+
+**Candidates.** Only Joseph Smith and Oliver Cowdery have admitted text on both sides of 1830
+(Joseph Smith 2,741 masked words before, 11,597 after; Cowdery 1,313 and 44,543); Rigdon, Pratt
+and Phelps have none before 1830, so their time-split cannot be measured. Attributed among the
+five candidates' post-1830 profiles (chance 20%), Joseph Smith's pre-1830 text was named
+correctly by all four methods and Cowdery's by none. Each is one test, not an accuracy rate, and
+both pre-1830 samples are under BOM-43's 10,000-word floor.
+
+**Consequence for BOM-49.** No candidate has a measurable time-split accuracy at the 80% floor,
+and the general drift is far below it, so under Amendment 5 no expanded corpus is expected to earn
+its use. Recorded in advance in the Amendment 7 draft.

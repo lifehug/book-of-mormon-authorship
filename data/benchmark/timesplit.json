@@ -1,0 +1,534 @@
+{
+ "config_sha256": "f0bb58079083b86054a0f487f5fe98b47e8048b31fe737eff95de5ced32aa630",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "7de67f623830bc825e50f429c888a31f69402fe0",
+ "baseline": {
+  "authors": [
+   "allix, pierre",
+   "ariosto, lodovico",
+   "berthollet, claude louis",
+   "buchanan, robertson",
+   "burney, fanny",
+   "card, henry",
+   "cartwright, john",
+   "cook, james",
+   "cooke, george alexander",
+   "darwin, erasmus n 50037924",
+   "dick, thomas",
+   "franklin, benjamin n 79043402",
+   "graham, james",
+   "janeway, james",
+   "jerningham, edward",
+   "leadbeater, mary",
+   "mackenzie, anna maria",
+   "massinger, philip",
+   "miller, william",
+   "moore, henry",
+   "parker, daniel",
+   "parkinson, william",
+   "playfair, john",
+   "porter, anna maria",
+   "spallanzani, lazzaro",
+   "sulivan, richard joseph",
+   "taplin, william n 84068922",
+   "turner, sharon",
+   "walton, izaak",
+   "watson, thomas"
+  ],
+  "gaps": {
+   "allix, pierre": 12,
+   "ariosto, lodovico": 16,
+   "berthollet, claude louis": 12,
+   "buchanan, robertson": 7,
+   "burney, fanny": 10,
+   "card, henry": 7,
+   "cartwright, john": 8,
+   "cook, james": 9,
+   "cooke, george alexander": 10,
+   "darwin, erasmus n 50037924": 9,
+   "dick, thomas": 27,
+   "franklin, benjamin n 79043402": 18,
+   "graham, james": 33,
+   "janeway, james": 30,
+   "jerningham, edward": 10,
+   "leadbeater, mary": 9,
+   "mackenzie, anna maria": 8,
+   "massinger, philip": 9,
+   "miller, william": 10,
+   "moore, henry": 14,
+   "parker, daniel": 8,
+   "parkinson, william": 15,
+   "playfair, john": 12,
+   "porter, anna maria": 8,
+   "spallanzani, lazzaro": 14,
+   "sulivan, richard joseph": 10,
+   "taplin, william n 84068922": 7,
+   "turner, sharon": 7,
+   "walton, izaak": 7,
+   "watson, thomas": 20
+  },
+  "chance": 0.03333333333333333,
+  "late_profile_early_test": {
+   "accuracy": {
+    "burrows_delta": 0.5,
+    "cosine_delta": 0.5333333333333333,
+    "general_imposters": 0.36666666666666664,
+    "ensc": 0.43333333333333335
+   },
+   "per_author": {
+    "allix, pierre": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "ariosto, lodovico": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "berthollet, claude louis": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "buchanan, robertson": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "burney, fanny": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "card, henry": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "cartwright, john": {
+     "burrows_delta": true,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": true
+    },
+    "cook, james": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "cooke, george alexander": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "darwin, erasmus n 50037924": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "dick, thomas": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "franklin, benjamin n 79043402": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "graham, james": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "janeway, james": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": true,
+     "ensc": false
+    },
+    "jerningham, edward": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "leadbeater, mary": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "mackenzie, anna maria": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": false,
+     "ensc": true
+    },
+    "massinger, philip": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "miller, william": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "moore, henry": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "parker, daniel": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "parkinson, william": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "playfair, john": {
+     "burrows_delta": false,
+     "cosine_delta": true,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "porter, anna maria": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "spallanzani, lazzaro": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "sulivan, richard joseph": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "taplin, william n 84068922": {
+     "burrows_delta": false,
+     "cosine_delta": true,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "turner, sharon": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": false,
+     "ensc": true
+    },
+    "walton, izaak": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "watson, thomas": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    }
+   },
+   "n": 30
+  },
+  "early_profile_late_test": {
+   "accuracy": {
+    "burrows_delta": 0.6,
+    "cosine_delta": 0.5333333333333333,
+    "general_imposters": 0.5,
+    "ensc": 0.6
+   },
+   "per_author": {
+    "allix, pierre": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "ariosto, lodovico": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "berthollet, claude louis": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "buchanan, robertson": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "burney, fanny": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "card, henry": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "cartwright, john": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "cook, james": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "cooke, george alexander": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": false,
+     "ensc": true
+    },
+    "darwin, erasmus n 50037924": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "dick, thomas": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "franklin, benjamin n 79043402": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "graham, james": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "janeway, james": {
+     "burrows_delta": true,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": true
+    },
+    "jerningham, edward": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "leadbeater, mary": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "mackenzie, anna maria": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "massinger, philip": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "miller, william": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "moore, henry": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "parker, daniel": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "parkinson, william": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "playfair, john": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "porter, anna maria": {
+     "burrows_delta": true,
+     "cosine_delta": false,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "spallanzani, lazzaro": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "sulivan, richard joseph": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "taplin, william n 84068922": {
+     "burrows_delta": false,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "turner, sharon": {
+     "burrows_delta": true,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": true
+    },
+    "walton, izaak": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "watson, thomas": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    }
+   },
+   "n": 30
+  }
+ },
+ "candidates": {
+  "words": {
+   "Ethan Smith pre1830": 278575,
+   "Gilbert J. Hunt pre1830": 57321,
+   "Joseph Smith post1830": 11597,
+   "Joseph Smith pre1830": 2741,
+   "Oliver Cowdery post1830": 44543,
+   "Oliver Cowdery pre1830": 1313,
+   "Parley P. Pratt post1830": 91975,
+   "Sidney Rigdon post1830": 21609,
+   "Solomon Spalding pre1830": 41920,
+   "W. W. Phelps post1830": 28649
+  },
+  "both_sides": [
+   "Joseph Smith",
+   "Oliver Cowdery"
+  ],
+  "post1830_profiles": [
+   "Joseph Smith",
+   "Oliver Cowdery",
+   "Parley P. Pratt",
+   "Sidney Rigdon",
+   "W. W. Phelps"
+  ],
+  "pre1830_profiles": [
+   "Ethan Smith",
+   "Gilbert J. Hunt",
+   "Joseph Smith",
+   "Solomon Spalding"
+  ],
+  "reference_floor_words": 10000,
+  "late_profile_early_test": {
+   "accuracy": {
+    "burrows_delta": 0.5,
+    "cosine_delta": 0.5,
+    "general_imposters": 0.5,
+    "ensc": 0.5
+   },
+   "per_author": {
+    "Joseph Smith": {
+     "burrows_delta": true,
+     "cosine_delta": true,
+     "general_imposters": true,
+     "ensc": true
+    },
+    "Oliver Cowdery": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    }
+   },
+   "n": 2
+  },
+  "early_profile_late_test": {
+   "accuracy": {
+    "burrows_delta": 0.0,
+    "cosine_delta": 0.5,
+    "general_imposters": 0.0,
+    "ensc": 0.0
+   },
+   "per_author": {
+    "Joseph Smith": {
+     "burrows_delta": false,
+     "cosine_delta": true,
+     "general_imposters": false,
+     "ensc": false
+    },
+    "Oliver Cowdery": {
+     "burrows_delta": false,
+     "cosine_delta": false,
+     "general_imposters": false,
+     "ensc": false
+    }
+   },
+   "n": 2
+  },
+  "note": "pre-1830 samples are below the reference floor; the early-profile direction is reported but is below the floor"
+ }
+}

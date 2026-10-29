@@ -53,3 +53,12 @@ likelihood falls below alpha; the registration names ENSC but not alpha or its c
 p-value. It is calibrated on the Phase 3 benchmark like every threshold in 6.1: the smallest alpha
 giving at most a 5% false-"none" rate on in-set works, published before any Book of Mormon
 scoring. Class priors are proportional to training documents.
+
+**Change 5: what the time-split test is expected to allow.** Amendment 5 admits a candidate's
+later writing only if a profile from one side of 1830 recognises their writing on the other at the
+section 7 floor. Measured on 30 corpus authors with 10,000+ words on both sides of a gap of seven
+or more years, the classical methods recognise the author 37-60% of the time (chance 3%). Of the
+candidates, only Joseph Smith and Oliver Cowdery have text on both sides, one test each, both
+below the 10,000-word floor. **No candidate is therefore expected to qualify for an expanded corpus
+under the classical methods**, and Amendment 5's secondary analysis is expected to report that,
+rather than results, unless a later method family shows much smaller drift.
