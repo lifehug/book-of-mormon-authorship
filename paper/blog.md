@@ -1452,8 +1452,64 @@ This is a check on the official answer, not a second answer. The official result
 registered settings. Anyone who thinks a different setting is more sensible can add it and
 publish what they get.
 
+## How much writing do you need? Less than Joseph Smith left before 1830
+
+This is the most important result so far, and it isn't about the Book of Mormon at all. It's
+about whether some of the questions can be answered.
+
+Style-counting needs a sample. Hand a method one paragraph by someone and ask "who wrote this?"
+and it will guess. Give it a whole book and it usually gets it right. The plan says the floor is
+the smallest amount of text at which a method is right at least 80% of the time. I measured it
+on two sets of writers whose authorship isn't in doubt:
+
+- **The Federalist Papers.** Hamilton, Madison and Jay wrote them under one pen name, all on the
+  same subject, in the same months. That makes them a famously hard test: there's no topic to
+  give the author away, only habit. I used the 70 papers whose author isn't disputed, and took
+  out the author's name, which some printings put at the top of each paper.
+- **Four writers of imitation scripture:** Gilbert Hunt, Richard Snowden, Michael Linning and
+  Nimrod Hughes.
+
+There are two separate questions.
+
+**How long does the passage being tested need to be?** Not long. At 2,000 words the methods were
+right 85% to 100% of the time. That's good news, because the plan cuts the Book of Mormon into
+2,000- and 5,000-word pieces, and both sizes are big enough.
+
+**How much known writing does an author need?** This is the harder one. On the Federalist Papers,
+where topic gives nothing away, every method needed about 10,000 words of an author's writing
+before it reached 80%. The imitation-scripture writers looked much easier, 1,000 to 2,000 words,
+but I don't trust that number, because the test passage and the known writing came from the
+same book, and the subject gave it away. So I'm using the harder number, 10,000.
+
+Now put that next to what each candidate actually left before 1830, after the Bible quotations
+are taken out:
+
+| Candidate | Words before 1830 | Testable? |
+| --- | --- | --- |
+| Ethan Smith | 277,352 | yes |
+| Gilbert Hunt | 56,956 | yes |
+| Solomon Spalding | 41,833 | yes |
+| Joseph Smith | 3,082 | no, about a third of what's needed |
+| Oliver Cowdery | 2,691 | no |
+| Sidney Rigdon, Parley Pratt, W. W. Phelps | none | no |
+
+So with these methods, the question people most want answered, whether Joseph Smith's own writing
+matches the Book of Mormon, can't be answered from what he wrote before 1830. There just isn't
+enough of it. Any score these methods produce for him would be noise dressed up as a number.
+
+I'm writing that down now, before anything has been run on the Book of Mormon, in a draft
+amendment to the plan that I'll file. If I only said it after seeing results, it would look like
+an excuse, whichever way the results went. Said now, it's a limit of the evidence, known in
+advance.
+
+Two things could change the picture. The plan already allows a carefully limited use of the
+candidates' later writing (Joseph Smith has more after 1830), with strict rules because by then
+he'd spent years reading and preaching from the Book of Mormon. And the AI-based methods come
+later; they'll get the same test, and might need less text, or more.
+
 ## Log
 
+- **2026-10-28, night.** BOM-43 closed: power analysis on the Federalist Papers and known pseudo-biblical authors. Floor about 10,000 masked words of known writing per candidate; 2k/5k test chunks fine. Pre-1830: Ethan Smith, Hunt, Spalding testable; Joseph Smith (3,082) and Cowdery (2,691) below the floor; Amendment 7 drafted to record this in advance.
 - **2026-10-28, night.** BOM-40 closed: every analytic setting read from config/preregistered.yaml, no defaults left in classic/, `uv run bom run` and `bom multiverse` with a specification curve (54 configurations on the corpus demo: median agreement 100%, General Imposters least stable).
 - **2026-10-28, evening.** BOM-20 closed: classical methods run on corpus v1.0 (30 known authors, held-out books): Delta 60-73% vs 3% chance, Imposters 0.52 vs 0.04, ENSC 43% with its 'none' rule too eager. Lesson for BOM-21: hand-check test authors (translations, misdated records).
 - **2026-10-28.** BOM-19 closed: corpus v1.0 frozen (70 files, index sha256 15858aff...), released as `corpus-v1.0`, Zenodo DOI 10.5281/zenodo.23740903. Phase 2 complete.
