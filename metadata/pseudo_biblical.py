@@ -212,6 +212,7 @@ CANDIDATES = OUT / "candidates.jsonl"
 JUDGMENTS = OUT / "judgments.jsonl"
 LIST = Path("data/controls/pseudo_biblical_curated.txt")
 MARKER_KEYS = ("came_to_pass", "eth_est", "thou", "verse_marks")
+MIN_WORDS = 2000  # marker rates on shorter texts are noise (one "thou" in 300 words)
 KJV_CAP = 0.30  # mostly verbatim KJV: a Bible or a scripture paraphrase, not an imitation
 REJECTION_SERMONS = 20
 REJECTION_BIBLES = 5
@@ -241,16 +242,44 @@ def _named_key(title: str) -> str | None:
 
 
 def thresholds(marks: dict[str, dict], named: list[str]) -> dict[str, float]:
-    """Amendment 6's selection procedure on known answers only: for each marker, the lowest value
-    at which it picks out a named edition, counting a marker as picking one out where that
-    edition scores at least half its highest value among the named editions."""
-    out = {}
-    for k in MARKER_KEYS:
-        vals = [marks[w][k] for w in named if w in marks]
-        top = max(vals) if vals else 0.0
-        strong = [v for v in vals if top and v >= top / 2]
-        out[k] = min(strong) if strong else float("inf")
-    return out
+    """Amendment 6's selection procedure, on known answers only.
+
+    A marker *carries* a named edition where that edition scores at least half the highest value
+    any named edition has on it. Each threshold is the lowest value among the editions it
+    carries: ``verse_marks`` and ``diction`` (thee/thou plus -eth/-est, together) for editions
+    carried by verse form, ``thou`` and ``eth_est`` for editions carried by diction, and
+    ``came_to_pass``. The rules (``qualifies``) combine them, because any single marker admits
+    every hymnal or every sermon that says "thou".
+    """
+    vals = {w: marks[w] for w in named if w in marks}
+
+    def carried(k: str) -> list[dict]:
+        top = max((m[k] for m in vals.values()), default=0.0)
+        return [m for m in vals.values() if top and m[k] >= top / 2]
+
+    by_verse, by_thou, by_eth = carried("verse_marks"), carried("thou"), carried("eth_est")
+    by_diction = [m for m in by_thou if m in by_eth]
+    inf = float("inf")
+    return {
+        "verse_marks": min((m["verse_marks"] for m in by_verse), default=inf),
+        "diction": min((m["thou"] + m["eth_est"] for m in by_verse), default=inf),
+        "thou": min((m["thou"] for m in by_diction), default=inf),
+        "eth_est": min((m["eth_est"] for m in by_diction), default=inf),
+        "came_to_pass": min((m["came_to_pass"] for m in carried("came_to_pass")), default=inf),
+    }
+
+
+def qualifies(m: dict, th: dict) -> list[str]:
+    """Which rules a work meets: scriptural form with archaic diction, sustained archaic
+    diction, or the formula itself."""
+    hits = []
+    if m["verse_marks"] >= th["verse_marks"] and m["thou"] + m["eth_est"] >= th["diction"]:
+        hits.append("verse_form_with_diction")
+    if m["thou"] >= th["thou"] and m["eth_est"] >= th["eth_est"]:
+        hits.append("archaic_diction")
+    if m["came_to_pass"] >= th["came_to_pass"]:
+        hits.append("came_to_pass")
+    return hits
 
 
 def candidates() -> int:
@@ -270,13 +299,18 @@ def candidates() -> int:
         if w not in marks:
             marks[w] = {"work_id": w, **score(_middle(norm_path(allrows[w])), _kjv_grams())}
     th = thresholds(marks, named)
+    from metadata.sealed import sealed_ids
+
+    sealed = sealed_ids()  # copies of the Book of Mormon are never a control
     pool = {}
     for w, m in marks.items():
         if w not in rows:
             continue
-        hit = [k for k in MARKER_KEYS if m[k] >= th[k]]
+        if w in sealed:
+            continue
+        hit = qualifies(m, th)
         primary = (genre.get(w) or "").split(",")[0] == "pseudo_biblical"
-        if (hit and m["kjv_share"] < KJV_CAP) or primary:
+        if (hit and m["kjv_share"] < KJV_CAP and m["words"] >= MIN_WORDS) or primary:
             pool[w] = {"why": hit + (["primary_label"] if primary else [])}
     for w in named:
         pool[w] = {"why": ["named:" + _named_key(allrows[w]["title"])]}
@@ -321,6 +355,7 @@ def candidates() -> int:
             {
                 "thresholds": th,
                 "kjv_cap": KJV_CAP,
+                "min_words": MIN_WORDS,
                 "named_editions": sorted(named),
                 "rejection_set": sorted(reject),
                 "config_sha256": sha256_of_config(),
