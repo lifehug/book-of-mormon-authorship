@@ -1507,8 +1507,43 @@ candidates' later writing (Joseph Smith has more after 1830), with strict rules 
 he'd spent years reading and preaching from the Book of Mormon. And the AI-based methods come
 later; they'll get the same test, and might need less text, or more.
 
+## Can later writing stand in for earlier? Mostly not
+
+The last entry ended with a hope: Joseph Smith left too little writing before 1830, but he wrote
+much more afterward. Could the later writing fill the gap?
+
+There's an obvious catch, and the plan already guards against it: by the 1830s he'd spent years
+reading and preaching the Book of Mormon, so his later writing might resemble it for that reason
+alone. The plan only allows later writing under a strict test, decided in advance. A writer's
+style has to survive the years. If a profile built from someone's later writing can't even pick
+out their own earlier writing, it can't be trusted to say anything about a book written before.
+
+So I tested how much a writer's style normally drifts. I took 30 authors from the corpus with
+plenty of writing both before and after a gap of at least seven years, built a profile from one
+side, and asked the methods to pick each author's writing on the other side out of all 30.
+
+The answer: 37% to 60% right, depending on the method. That's far better than guessing (3%), so
+some signal survives the years. But the plan's bar is 80%, and nothing came close. When the
+books came from the same period (the test from a few entries back) the same methods got 60% to
+73%. So a decade costs roughly 15 to 20 points. One caveat: an author's early and late books are
+often different kinds of writing, poems early and history late, say. Some of that drop is a
+change of subject, not just of years. But that's also exactly what later writing would be up
+against.
+
+Then the candidates themselves. Only two have writing on both sides of 1830: Joseph Smith and
+Oliver Cowdery. Rigdon, Pratt and Phelps have nothing before 1830 at all. A profile from Joseph
+Smith's later writing did pick out his earlier writing, with all four methods, among the five
+candidates. Cowdery's didn't, with any method. But each of those is a single test on fewer than
+3,000 words. One hit isn't an accuracy rate, and both samples are below the floor from last time.
+
+Put together: under the rule the plan registered, no candidate is expected to qualify for using
+later writing. I've added that to the draft amendment too, so it's on the record before anything
+is run on the Book of Mormon. It's the same kind of honest negative as last time: the evidence
+needed to answer the Joseph Smith question isn't there in the form these methods need.
+
 ## Log
 
+- **2026-10-28, night.** BOM-48 closed: time-split baseline 37-60% (30 authors, 7+ year gap, chance 3%), far below the 80% gate; only Joseph Smith and Cowdery have text on both sides of 1830 (one test each, below the floor). No candidate expected to qualify for expanded corpora (Amendment 7 draft, Change 5).
 - **2026-10-28, night.** BOM-43 closed: power analysis on the Federalist Papers and known pseudo-biblical authors. Floor about 10,000 masked words of known writing per candidate; 2k/5k test chunks fine. Pre-1830: Ethan Smith, Hunt, Spalding testable; Joseph Smith (3,082) and Cowdery (2,691) below the floor; Amendment 7 drafted to record this in advance.
 - **2026-10-28, night.** BOM-40 closed: every analytic setting read from config/preregistered.yaml, no defaults left in classic/, `uv run bom run` and `bom multiverse` with a specification curve (54 configurations on the corpus demo: median agreement 100%, General Imposters least stable).
 - **2026-10-28, evening.** BOM-20 closed: classical methods run on corpus v1.0 (30 known authors, held-out books): Delta 60-73% vs 3% chance, Imposters 0.52 vs 0.04, ENSC 43% with its 'none' rule too eager. Lesson for BOM-21: hand-check test authors (translations, misdated records).
