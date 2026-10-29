@@ -1412,8 +1412,49 @@ One honest caveat: 30 test books is a small number, so each percentage could eas
 points higher or lower. This run was a check that everything works at full scale, not the
 measurement. The measurement is the exam.
 
+## One settings file, and asking "what if we'd chosen differently?"
+
+Every study like this makes dozens of small choices. How many common words do you count, 100 or
+300 or 1,000? How many decoy authors do you test against? Most papers make those choices once,
+quietly, and you have to trust that a different reasonable choice wouldn't have flipped the
+answer.
+
+This project puts every one of those choices in a single file, copied from the plan I
+registered in advance. The code reads its settings from that file and nowhere else, and it
+refuses to run if anyone has quietly edited a registered number. Every result gets stamped with a
+fingerprint of the settings file and the exact version of the code, so you can always tell what
+produced it.
+
+Getting there meant a cleanup. The stylometry code had its own built-in defaults, and some
+disagreed with the plan: one function quietly used the 100 most common words where the plan says
+300. Those defaults are gone. The code now has to be told every setting, and the settings file
+is the only thing that tells it.
+
+Then the more interesting part, which researchers call a "multiverse": rerun the whole
+analysis under every reasonable alternative and see which conclusions survive. If a finding only
+shows up under my exact settings, it's fragile. If it shows up under almost all of them, it's
+sturdy.
+
+I tried it on last time's test, the 30 authors with one hidden book each, under 54 different
+combinations of settings. For each hidden book and each method, I counted how many of the 54
+runs gave the same answer as the official settings:
+
+- The word-counting methods hardly moved. Their answers were the same in essentially every run.
+- The only wobble was with the longest word list, 1,000 words, where one book's answer held in
+  two runs out of three.
+- The decoy method, General Imposters, moved the most. On average its answers held in 94% of
+  runs, and for one book only half.
+
+That's a useful thing to know before the real test: for the decoy method, how it's tuned
+matters, so its result will be reported alongside how much it depends on the tuning.
+
+This is a check on the official answer, not a second answer. The official result is always the
+registered settings. Anyone who thinks a different setting is more sensible can add it and
+publish what they get.
+
 ## Log
 
+- **2026-10-28, night.** BOM-40 closed: every analytic setting read from config/preregistered.yaml, no defaults left in classic/, `uv run bom run` and `bom multiverse` with a specification curve (54 configurations on the corpus demo: median agreement 100%, General Imposters least stable).
 - **2026-10-28, evening.** BOM-20 closed: classical methods run on corpus v1.0 (30 known authors, held-out books): Delta 60-73% vs 3% chance, Imposters 0.52 vs 0.04, ENSC 43% with its 'none' rule too eager. Lesson for BOM-21: hand-check test authors (translations, misdated records).
 - **2026-10-28.** BOM-19 closed: corpus v1.0 frozen (70 files, index sha256 15858aff...), released as `corpus-v1.0`, Zenodo DOI 10.5281/zenodo.23740903. Phase 2 complete.
 - **2026-10-28.** BOM-16, BOM-17 and BOM-18 closed. Control masks done (17,449 volumes, 1.78% masked; sermons 2.46%, pseudo-biblical 3.40%). 756 chunks and the discovery/confirmation split (sha256 9fdffa56...). Control lists final with SHA-256 after BOM-55.
