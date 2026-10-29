@@ -75,6 +75,12 @@ are absent.
   contamination check.
 - **Scribe evidence covers 24% of the text**: the rest of the original manuscript is lost.
 
+- **Placeholder dates** (BOM-56): undated reprints were catalogued as 1800, so some post-1830
+  books sat in the window (Cooper's novels of the 1840s among them). Of 11,494 such volumes, the
+  title page confirms 1800 for 2,431, gives another 1780-1830 year for 1,281, shows a post-1830
+  year for 1,502 and gives no year for 6,280; the last two groups are out of every date-window
+  selection from v1.1. Corpus v1.0's control lists still contain 276 of them.
+
 ## Uses
 
 Intended for the registered analyses. Not suitable as a general-purpose clean corpus of

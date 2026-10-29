@@ -5,7 +5,7 @@ cleaned and normalised text (`duplicates_normalized.parquet`), Amendment 6's com
 (`duplicates_combined.parquet`: within each set one member per duplicate group, applied after
 sampling so the pool samples and their KJV masks are unchanged; pseudo_biblical 55, sermons_1820s 179, history 14, general_prose 1 removed), BOM-14's OCR flags
 (`data/ocr_quality/volumes.parquet`) and 4.2's sealing check. The module docstring holds the
-rules; config stamp `89a86f470bed232c…`.
+rules; config stamp `f0bb58079083b860…`.
 
 | File | What it is |
 | --- | --- |
@@ -15,10 +15,10 @@ rules; config stamp `89a86f470bed232c…`.
 
 | Set | Volumes | Words | Native American origins subset | SHA-256 of id list |
 | --- | --- | --- | --- | --- |
-| `pseudo_biblical` | 3,672 | 364,442,037 | - | `8f6ae2a0ad71a7fd…` |
-| `sermons_1820s` | 6,143 | 640,991,183 | - | `c7b7381f919864f2…` |
-| `history` | 2,986 | 376,264,091 | 47 | `94559f412673a88c…` |
-| `general_prose` | 4,998 | 231,227,527 | - | `2d75b03ce8beeed2…` |
+| `pseudo_biblical` | 3,522 | 348,172,265 | - | `a9c819fe7f36a3bb…` |
+| `sermons_1820s` | 6,151 | 641,925,943 | - | `77527d086a7b97ee…` |
+| `history` | 2,911 | 368,772,915 | 46 | `a327ea52b5054c5d…` |
+| `general_prose` | 4,947 | 227,329,739 | - | `6c6f65fe15f47208…` |
 | `pseudo_biblical_primary` | 29 | 1,858,828 | - | `c82a1a54efe12199…` |
 
 Dropped before membership: ocr_excluded 101,340, duplicate 17,926, candidate_work 67, no_text 41,469, sealed_title 5, out_of_window 41,764.
@@ -38,3 +38,10 @@ text with a 1780-1830 work, so redoing the pre-1700 spelling cannot change membe
 dedup; the count is re-checked once that redo lands.
 
 KJV masks of the members: `data/kjv_mask/controls/` (`python -m kjv_mask.run controls`).
+
+**Placeholder dates (BOM-56, 2026-10-28).** Undated reprints catalogued as 1800 include post-1830
+books. Each control member's year is now its title-page year where one was found
+(`metadata.dates`, `data/catalog/date_check.parquet`); members whose corrected year falls outside
+1780-1830, or that cannot be dated, are removed (276 in all). The pool samples are drawn
+exactly as before, from the catalog year, and then filtered, so no member changes and every KJV
+mask carries over; eight volumes corrected to the 1820s joined the 1820s sermons and were masked.

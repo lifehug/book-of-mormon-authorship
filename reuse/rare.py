@@ -129,8 +129,17 @@ def scores(recs: list[dict], max_df: int, per_words: int) -> dict[str, float]:
 def size() -> int:
     cfg = load_config()
     b = cfg["borrowing"]
+    from metadata.dates import effective_year
+
+    lo, hi = cfg["corpus"]["date_range"]
+    years = {r["work_id"]: r["year"] for r in pq.read_table(
+        "data/catalog/catalog.parquet", columns=["work_id", "year"]).to_pylist()}  # fmt: skip
+    # BOM-56: the scan predates the date check; volumes whose corrected year is out of the window
+    # still count towards document frequency (they are real books) but are not drawn for the null
     recs = pq.read_table(HITS).to_pylist()
     sc = scores(recs, b["max_df"], b["per_words"])
+    sc = {w: v for w, v in sc.items()
+          if (y := effective_year(w, years.get(w))) is not None and lo <= y <= hi}  # fmt: skip
     genre = {r["work_id"]: (r["genre"] or "uncertain").split(",")[0]
              for r in pq.read_table("data/catalog/genre.parquet").to_pylist()}  # fmt: skip
     strata: dict[str, list[float]] = defaultdict(list)

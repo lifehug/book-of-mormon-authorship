@@ -171,20 +171,20 @@ def _score_one(job: tuple[str, str]) -> dict:
 
 
 def eligible_rows(cfg: dict) -> list[dict]:
+    from metadata.dates import effective_year
+
     lo, hi = cfg["corpus"]["date_range"]
     excluded = {r["work_id"] for r in pq.read_table(VOLUMES).to_pylist() if r["ocr_excluded"]}
     nonkeeper = {r["work_id"] for r in pq.read_table(DUPES).to_pylist() if not r["is_keeper"]}
     cols = ["work_id", "source", "year", "has_text", "text_path", "title", "author_norm"]
-    return [
-        r
-        for r in pq.read_table(CATALOG, columns=cols).to_pylist()
-        if r["has_text"]
-        and r["year"]
-        and lo <= r["year"] <= hi
-        and r["source"] not in NOT_WORKS
-        and r["work_id"] not in excluded
-        and r["work_id"] not in nonkeeper
-    ]
+    out = []
+    for r in pq.read_table(CATALOG, columns=cols).to_pylist():
+        r["year"] = effective_year(r["work_id"], r["year"])  # BOM-56: placeholder dates
+        if (r["has_text"] and r["year"] and lo <= r["year"] <= hi
+                and r["source"] not in NOT_WORKS
+                and r["work_id"] not in excluded and r["work_id"] not in nonkeeper):  # fmt: skip
+            out.append(r)
+    return out
 
 
 def markers(workers: int) -> int:

@@ -1,16 +1,17 @@
 {
- "config_sha256": "89a86f470bed232c56ae47e34563f38e41223059f5d60f2f7ac0310f4fffa194",
+ "config_sha256": "f0bb58079083b86054a0f487f5fe98b47e8048b31fe737eff95de5ced32aa630",
  "dropped": {
   "ocr_excluded": 101340,
   "duplicate": 17926,
   "candidate_work": 67,
   "no_text": 41469,
   "sealed_title": 5,
-  "out_of_window": 41764
+  "out_of_window": 41764,
+  "placeholder_date": 276
  },
  "eligible_before_sampling": {
   "pseudo_biblical": 3727,
-  "sermons_1820s": 6322,
+  "sermons_1820s": 6330,
   "history": 39112,
   "general_prose": 268246,
   "pseudo_biblical_primary": 29
@@ -25,12 +26,12 @@
  },
  "sets": {
   "pseudo_biblical": {
-   "volumes": 3672,
-   "words": 364442037,
+   "volumes": 3522,
+   "words": 348172265,
    "by_source": {
-    "hathitrust": 876,
-    "institutional_books": 522,
-    "internet_archive": 2164,
+    "hathitrust": 860,
+    "institutional_books": 509,
+    "internet_archive": 2043,
     "tcp": 110
    },
    "named": {
@@ -40,49 +41,49 @@
     "leacock": 1
    },
    "origins_subset": 0,
-   "sha256_of_id_list": "8f6ae2a0ad71a7fd62fa3ef1695348405ab8c3bf608d9ab9c628a9fd73fc3da8"
+   "sha256_of_id_list": "a9c819fe7f36a3bb61c6ce073ec2f6769cacecafd7925e2795037059f2376d9f"
   },
   "sermons_1820s": {
-   "volumes": 6143,
-   "words": 640991183,
+   "volumes": 6151,
+   "words": 641925943,
    "by_source": {
     "hathitrust": 1506,
-    "institutional_books": 1610,
-    "internet_archive": 3027
+    "institutional_books": 1611,
+    "internet_archive": 3034
    },
    "named": {},
    "origins_subset": 0,
-   "sha256_of_id_list": "c7b7381f919864f23409d5013e9658c7d8b12913e6c1bda0886821e1ae67cf2e"
+   "sha256_of_id_list": "77527d086a7b97eee5fb2ccdfef14ea0bdea2bbb3f3a0108ecae14db72a98672"
   },
   "history": {
-   "volumes": 2986,
-   "words": 376264091,
+   "volumes": 2911,
+   "words": 368772915,
    "by_source": {
-    "hathitrust": 690,
-    "institutional_books": 512,
-    "internet_archive": 1744,
+    "hathitrust": 676,
+    "institutional_books": 506,
+    "internet_archive": 1689,
     "tcp": 40
    },
    "named": {
     "hunt": 2,
     "snowden": 1
    },
-   "origins_subset": 47,
-   "sha256_of_id_list": "94559f412673a88c26526475e7b3d26851f2991841fb7761bacad58bccaedb3f"
+   "origins_subset": 46,
+   "sha256_of_id_list": "a327ea52b5054c5dec169ab968122e26ae1495580bdbb7459b6120464e75c02c"
   },
   "general_prose": {
-   "volumes": 4998,
-   "words": 231227527,
+   "volumes": 4947,
+   "words": 227329739,
    "by_source": {
     "chronicling_america": 2136,
-    "hathitrust": 211,
-    "institutional_books": 313,
-    "internet_archive": 2314,
+    "hathitrust": 205,
+    "institutional_books": 307,
+    "internet_archive": 2275,
     "tcp": 24
    },
    "named": {},
    "origins_subset": 0,
-   "sha256_of_id_list": "2d75b03ce8beeed2df8b10d80f42f34b1aa4422a2a90e923e8051b3f9ba98389"
+   "sha256_of_id_list": "6c6f65fe15f47208cf4ff8f29dd9b380c3b20cfd3807f150feef8e80895e89a6"
   },
   "pseudo_biblical_primary": {
    "volumes": 29,

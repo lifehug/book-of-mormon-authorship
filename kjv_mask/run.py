@@ -37,6 +37,7 @@ Usage::
     python -m kjv_mask.run bom
     python -m kjv_mask.run candidates
     python -m kjv_mask.run controls
+    python -m kjv_mask.run controls --missing-only   # mask only texts that have no spans yet
 """
 
 from __future__ import annotations
@@ -239,12 +240,25 @@ def mask_resilient(
     return {k: resolve(v) for k, v in out.items()}
 
 
-def run(group: str, docs_of: Callable[[str], list[dict]] = _docs) -> int:
+def run(
+    group: str, docs_of: Callable[[str], list[dict]] = _docs, missing_only: bool = False
+) -> int:
+    """Mask a group. ``missing_only`` masks just the texts with no spans yet and merges them into
+    the existing outputs, so a list that gains a few members does not re-batch (and recompute)
+    the whole group."""
     if not validation_passed():
         raise SystemExit("kjv_mask.validate has not passed; settings are not frozen yet")
     params = registered_params()
     docs = docs_of(group)
     out_dir = OUT / group
+    kept_lines: list[str] = []
+    kept_report: dict = {}
+    if missing_only and (out_dir / "spans.jsonl").exists():
+        kept_lines = (out_dir / "spans.jsonl").read_text().splitlines()
+        have = {json.loads(ln)["id"] for ln in kept_lines}
+        kept_report = json.loads((out_dir / "report.json").read_text())["per_text"]
+        docs = [d for d in docs if d["id"] not in have]
+        print(f"{len(have):,} texts already masked; {len(docs):,} to mask", flush=True)
     out_dir.mkdir(parents=True, exist_ok=True)
     stamp = sha256_of_config()
     batches = _batches(_units(docs))
@@ -256,8 +270,9 @@ def run(group: str, docs_of: Callable[[str], list[dict]] = _docs) -> int:
             doc_id, offset = where[pid]
             found[doc_id] += [replace(s, start=s.start + offset, end=s.end + offset) for s in spans]
         print(f"  batch {i}/{len(batches)}", flush=True)
-    report = {}
+    report = dict(kept_report)
     with (out_dir / "spans.jsonl").open("w") as fh:
+        fh.writelines(ln + "\n" for ln in kept_lines)
         for d in docs:
             ss = resolve(found[d["id"]])
             fh.write(json.dumps({"id": d["id"], "spans": [s.__dict__ for s in ss],
@@ -277,10 +292,12 @@ def run(group: str, docs_of: Callable[[str], list[dict]] = _docs) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
+    missing_only = "--missing-only" in args
+    args = [a for a in args if a != "--missing-only"]
     if len(args) != 1:
         print(__doc__)
         return 1
-    return run(args[0])
+    return run(args[0], missing_only=missing_only)
 
 
 if __name__ == "__main__":

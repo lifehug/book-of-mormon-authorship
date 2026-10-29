@@ -53,6 +53,7 @@ from classic.ensc import NONE
 from classic.features import char_ngram_counts
 from metadata.config import classic_kwargs, stamp
 from metadata.config import load as load_config
+from metadata.dates import effective_year
 
 OUT = Path("data/classic/corpus_run.json")
 CATALOG = Path("data/catalog/catalog.parquet")
@@ -82,6 +83,7 @@ def eligible(cfg: dict) -> dict[str, list[dict]]:
     by: dict[str, dict[str, dict]] = defaultdict(dict)
     for r in pq.read_table(CATALOG, columns=cols).to_pylist():
         a = r["author_norm"] or ""
+        r["year"] = effective_year(r["work_id"], r["year"])  # BOM-56: placeholder dates
         if not (r["has_text"] and r["year"] and lo <= r["year"] <= hi):
             continue
         if r["source"] == "chronicling_america" or "," not in a or _INSTITUTION.search(a):

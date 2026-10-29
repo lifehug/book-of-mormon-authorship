@@ -58,6 +58,7 @@ import pyarrow.parquet as pq
 from metadata import sealed
 from metadata.config import load as load_config
 from metadata.config import sha256_of_config
+from metadata.dates import effective_year
 
 CATALOG = Path("data/catalog/catalog.parquet")
 GENRE = Path("data/catalog/genre.parquet")
@@ -112,7 +113,7 @@ def _stratified_sample(ms: list[dict], cap: int, seed: int) -> list[dict]:
         return ms
     strata: dict[tuple, list[dict]] = {}
     for m in sorted(ms, key=lambda m: m["work_id"]):
-        strata.setdefault((m["source"], m["year"] // 10 * 10), []).append(m)
+        strata.setdefault((m["source"], m["year_catalog"] // 10 * 10), []).append(m)
     rng = random.Random(f"{seed}:controls")
     out = []
     for key in sorted(strata):
@@ -147,6 +148,10 @@ def build() -> int:
     members: dict[str, list[dict]] = {k: [] for k in [*SETS, "pseudo_biblical_primary"]}
     for r in cat:
         wid = r["work_id"]
+        # BOM-56: placeholder dates. Membership and the pool samples use the catalog's year, so
+        # v1.0's draw (and its KJV masks) is reproduced; members whose corrected year falls
+        # outside the window are removed after sampling.
+        year_eff = effective_year(wid, r["year"])
         title = r["title"] or ""
         named = next((k for k, p in NAMED.items() if re.search(p, title, re.I)), None)
         labels = _labels(genre.get(wid))
@@ -175,13 +180,14 @@ def build() -> int:
             drops[reason] += 1
             continue
         for k in sets:
-            if k == "sermons_1820s" and not 1820 <= r["year"] <= 1829:
+            if k == "sermons_1820s" and not (year_eff and 1820 <= year_eff <= 1829):
                 continue
             members[k].append(
                 {
                     "work_id": wid,
                     "source": r["source"],
-                    "year": r["year"],
+                    "year": year_eff,
+                    "year_catalog": r["year"],
                     "words": words.get(wid),
                     "named": named,
                     "origins": k == "history" and bool(ORIGINS.search(title)),
@@ -192,6 +198,10 @@ def build() -> int:
     full_sizes = {k: len(v) for k, v in members.items()}
     for k, cap in POOL_SAMPLE.items():
         members[k] = _stratified_sample(members[k], cap, cfg["seed"])
+    for k, ms in members.items():
+        kept = [m for m in ms if m["named"] or (m["year"] and lo <= m["year"] <= hi)]
+        drops["placeholder_date"] += len(ms) - len(kept)
+        members[k] = kept
 
     # 4.2's registered check on every member's text, after the cheap filters and the sampling
     paths = {r["work_id"]: r["text_path"] for r in cat}
