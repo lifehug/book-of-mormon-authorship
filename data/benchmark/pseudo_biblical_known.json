@@ -1,0 +1,19 @@
+{
+ "purpose": "Known-author pseudo-biblical works for BOM-43's sample-size curves and BOM-21's benchmark. One copy per text: copies and editions that repeat a text (Hunt's three 1816 scans, his 1817 Historical Reader which contains The Late War, Snowden's 1823 revision of his 1793 volume) would put the test passage in the reference and make attribution trivial.",
+ "source": "data/controls/pseudo_biblical_primary.jsonl (BOM-18); text is BOM-15's normalised text with BOM-16's KJV spans removed",
+ "authors": {
+  "hunt": {"name": "Gilbert J. Hunt", "works": ["internet_archive:latewarbetween_00hunt"],
+           "note": "The Late War (1816). Also a registered candidate; here used only as a known author."},
+  "snowden": {"name": "Richard Snowden", "works": [
+              "internet_archive:bim_eighteenth-century_the-american-revolution_snowden-richard_1793_1",
+              "internet_archive:bim_eighteenth-century_the-american-revolution_snowden-richard_1794_2"],
+              "note": "The American Revolution, volumes 1 and 2 (1793, 1794): different text."},
+  "linning": {"name": "Michael Linning", "works": ["institutional_books:HH2NE7"],
+              "note": "The First Book of Napoleon (1809). The catalog's author field reads 'gruau de la barre', which is wrong; section 3 names Linning."},
+  "hughes": {"name": "Nimrod Hughes", "works": ["hathitrust:loc.ark:/13960/t40s0zj12"],
+             "note": "A Solemn Warning to All the Dwellers upon Earth (1812), a prophecy in scriptural style."}
+ },
+ "left_out": {
+  "leacock": "The First Book of the American Chronicles of the Times (tcp:N10323) has 2,802 words, too short for any curve point; the catalog misattributes it to 'adams, samuel'."
+ }
+}

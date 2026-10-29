@@ -1,0 +1,224 @@
+{
+ "config_sha256": "301af811aaad990098f0459069d50c20169855e5bfb13545f09f7c83b647faad",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "c0822056140d508dd5bcc6411a8df23b097f9fef",
+ "target_accuracy": 0.8,
+ "corpora": {
+  "federalist": {
+   "words": {
+    "hamilton": 113067,
+    "jay": 8384,
+    "madison": 38808
+   },
+   "chance": 0.3333333333333333,
+   "test_size": {
+    "authors": [
+     "hamilton",
+     "madison"
+    ],
+    "chance": 0.5,
+    "points": {
+     "1000": {
+      "burrows_delta": 0.975,
+      "cosine_delta": 0.925,
+      "general_imposters": 0.9,
+      "ensc": 0.875
+     },
+     "2000": {
+      "burrows_delta": 0.9,
+      "cosine_delta": 0.925,
+      "general_imposters": 0.95,
+      "ensc": 0.85
+     },
+     "5000": {
+      "burrows_delta": 1.0,
+      "cosine_delta": 0.925,
+      "general_imposters": 1.0,
+      "ensc": 1.0
+     },
+     "10000": {
+      "burrows_delta": 0.925,
+      "cosine_delta": 0.95,
+      "general_imposters": 0.925,
+      "ensc": 0.925
+     },
+     "20000": {
+      "burrows_delta": 0.6,
+      "cosine_delta": 1.0,
+      "general_imposters": 0.975,
+      "ensc": 0.5
+     }
+    }
+   },
+   "reference_size": {
+    "authors": [
+     "hamilton",
+     "madison"
+    ],
+    "chance": 0.5,
+    "points": {
+     "1000": {
+      "burrows_delta": 0.55,
+      "cosine_delta": 0.55,
+      "general_imposters": 0.65,
+      "ensc": null
+     },
+     "2000": {
+      "burrows_delta": 0.45,
+      "cosine_delta": 0.525,
+      "general_imposters": 0.625,
+      "ensc": 0.65
+     },
+     "5000": {
+      "burrows_delta": 0.675,
+      "cosine_delta": 0.625,
+      "general_imposters": 0.725,
+      "ensc": 0.725
+     },
+     "10000": {
+      "burrows_delta": 0.8,
+      "cosine_delta": 0.8,
+      "general_imposters": 0.85,
+      "ensc": 0.8
+     },
+     "20000": {
+      "burrows_delta": 0.9,
+      "cosine_delta": 0.9,
+      "general_imposters": 0.9,
+      "ensc": 0.9
+     }
+    }
+   },
+   "floors": {
+    "burrows_delta": {
+     "test": null,
+     "reference": 10000
+    },
+    "cosine_delta": {
+     "test": 1000,
+     "reference": 10000
+    },
+    "general_imposters": {
+     "test": 1000,
+     "reference": 10000
+    },
+    "ensc": {
+     "test": null,
+     "reference": 10000
+    }
+   }
+  },
+  "pseudo_biblical": {
+   "words": {
+    "hunt": 57321,
+    "snowden": 57509,
+    "linning": 21989,
+    "hughes": 15883
+   },
+   "chance": 0.25,
+   "test_size": {
+    "authors": [
+     "hunt",
+     "snowden"
+    ],
+    "chance": 0.5,
+    "points": {
+     "1000": {
+      "burrows_delta": 1.0,
+      "cosine_delta": 1.0,
+      "general_imposters": 0.975,
+      "ensc": 1.0
+     },
+     "2000": {
+      "burrows_delta": 1.0,
+      "cosine_delta": 1.0,
+      "general_imposters": 0.975,
+      "ensc": 1.0
+     },
+     "5000": {
+      "burrows_delta": 1.0,
+      "cosine_delta": 1.0,
+      "general_imposters": 1.0,
+      "ensc": 1.0
+     },
+     "10000": {
+      "burrows_delta": 1.0,
+      "cosine_delta": 1.0,
+      "general_imposters": 1.0,
+      "ensc": 1.0
+     },
+     "20000": {
+      "burrows_delta": 1.0,
+      "cosine_delta": 1.0,
+      "general_imposters": 1.0,
+      "ensc": 1.0
+     }
+    }
+   },
+   "reference_size": {
+    "authors": [
+     "hunt",
+     "snowden"
+    ],
+    "chance": 0.5,
+    "points": {
+     "1000": {
+      "burrows_delta": 0.85,
+      "cosine_delta": 0.75,
+      "general_imposters": 0.7,
+      "ensc": null
+     },
+     "2000": {
+      "burrows_delta": 0.925,
+      "cosine_delta": 0.9,
+      "general_imposters": 0.875,
+      "ensc": 0.9
+     },
+     "5000": {
+      "burrows_delta": 0.95,
+      "cosine_delta": 0.95,
+      "general_imposters": 0.925,
+      "ensc": 0.975
+     },
+     "10000": {
+      "burrows_delta": 0.95,
+      "cosine_delta": 0.925,
+      "general_imposters": 0.9,
+      "ensc": 0.975
+     },
+     "20000": {
+      "burrows_delta": 0.95,
+      "cosine_delta": 1.0,
+      "general_imposters": 1.0,
+      "ensc": 1.0
+     }
+    }
+   },
+   "floors": {
+    "burrows_delta": {
+     "test": 1000,
+     "reference": 1000
+    },
+    "cosine_delta": {
+     "test": 1000,
+     "reference": 2000
+    },
+    "general_imposters": {
+     "test": 1000,
+     "reference": 2000
+    },
+    "ensc": {
+     "test": 1000,
+     "reference": 2000
+    }
+   }
+  }
+ },
+ "candidate_floors": {
+  "burrows_delta": 10000,
+  "cosine_delta": 10000,
+  "general_imposters": 10000,
+  "ensc": 10000
+ }
+}

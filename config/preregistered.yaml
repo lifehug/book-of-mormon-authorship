@@ -197,6 +197,18 @@ classic:
     min_works: 4
     sample_words: 5000           # one registered-length chunk from the middle of each work
 
+# Section 7: minimum sample = smallest size at which closed-set accuracy stays >= 80% (BOM-43)
+power:
+  target_accuracy: 0.80
+  # pending_amendment: power.design -- the measurement design below
+  sizes: [1000, 2000, 5000, 10000, 20000]
+  fixed_test_words: 5000         # the registered chunk length (4.5)
+  trials: 20
+  min_reference_blocks: 5
+  # measured by eval.power (BOM-43), the stricter of the two known-author sets; part of
+  # pending_amendment power.design
+  reference_floor_words: {burrows_delta: 10000, cosine_delta: 10000, general_imposters: 10000, ensc: 10000}
+
 # Amendment 6 (2026-10-27): control sets (metadata.controls; BOM-18, BOM-54)
 controls:
   pool_sample: {history: 3000, general_prose: 5000}   # seeded, stratified by source x decade
@@ -224,3 +236,13 @@ pending_amendment:
       alpha cannot be read as a p-value. Proposed: calibrate it on the Phase 3 benchmark like
       every other threshold in 6.1 (the value giving a 5% false-"none" rate on in-set works),
       published before any Book of Mormon scoring; priors proportional to training documents.
+
+  - key: power.design
+    issue: BOM-43
+    note: >
+      Section 7 fixes the floor (smallest size with closed-set accuracy >= 80%) but not how it is
+      measured. Used: known-author sets (Federalist Papers; known-author pseudo-biblical works),
+      text in 1,000-word blocks, sizes 1k/2k/5k/10k/20k, 20 seeded trials per author per size, a
+      fixed 5,000-word test for the reference curve, at least 5 reference blocks for the test
+      curve, and a floor defined as the smallest size from which every larger size also reaches
+      80%. To be registered before BOM-21 relies on the floors.
