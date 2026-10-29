@@ -121,6 +121,17 @@ PINNED: dict[tuple[str, ...], Any] = {
     ("kjv_mask", "passim", "split_depth"): 2,
     ("controls", "pool_sample"): {"history": 3000, "general_prose": 5000},
     ("controls", "pseudo_biblical"): "curated",
+    # 5.1 and Amendment 2: classical stylometry
+    ("classic", "mfw"): [100, 300, 1000],
+    ("classic", "mfw_min_doc_fraction"): 0.20,
+    ("classic", "char_ngrams"): [3, 4],
+    ("classic", "pos_ngrams"): [2, 3],
+    ("classic", "imposters", "trials"): 100,
+    ("classic", "imposters", "feature_fraction"): 0.5,
+    ("classic", "imposters", "imposter_fraction"): 0.5,
+    ("classic", "imposters", "per_trial"): 100,
+    ("classic", "imposters", "distance"): "cosine_delta",
+    ("classic", "ensc", "shrinkage_grid"): [0, 0.5, 1, 2, 4, 8],
 }
 
 

@@ -105,3 +105,12 @@ def test_kjv_smoke() -> None:
     c4 = char_ngram_counts(tokenize(texts[0]), 4)
     assert c4["the "] > 1000
     assert content_word_counts(word_counts(tokenize(texts[0])).elements())["lord"] > 100
+
+
+def test_corpus_run_keeps_people_not_institutions():
+    from classic.corpus_run import _INSTITUTION
+
+    assert _INSTITUTION.search("states, united")
+    assert _INSTITUTION.search("missions, american board of commissioners for foreign")
+    assert not _INSTITUTION.search("scott, walter")
+    assert not _INSTITUTION.search("edgeworth, maria")

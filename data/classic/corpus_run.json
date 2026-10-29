@@ -1,0 +1,205 @@
+{
+ "config_sha256": "b75d3bfd29c602a9cc7660a25299f7614efac6c3d05e5b561c316b956e03cbbe",
+ "eligible_authors": 1890,
+ "authors": [
+  "backus, isaac",
+  "belsham, thomas",
+  "bigelow, jacob",
+  "braddon, m e mary elizabeth",
+  "brande, william thomas",
+  "buffon, georges louis leclerc",
+  "bunbury, selina",
+  "callcott, maria",
+  "charlton, mary",
+  "cleland, james",
+  "dease, william",
+  "dryden, john",
+  "eliot, john",
+  "felton, samuel",
+  "fenning, daniel",
+  "guthrie, william",
+  "hunter, henry from old catalog",
+  "irving, washington",
+  "james, john angell",
+  "johnstone, john",
+  "mackenzie, henry",
+  "mudford, william",
+  "nicol, walter",
+  "phillips, richard from old catalog",
+  "price, joseph",
+  "ryland, john",
+  "sheridan, charles francis",
+  "stevenson, john",
+  "taylor, joseph or 2",
+  "thomson, alexander"
+ ],
+ "held_out": {
+  "backus, isaac": "internet_archive:abridgmentofchur00back_0",
+  "belsham, thomas": "institutional_books:AH63CW",
+  "bigelow, jacob": "institutional_books:32044107262883",
+  "braddon, m e mary elizabeth": "internet_archive:sonsoffirenovel00brad",
+  "brande, william thomas": "institutional_books:HNJ6T7",
+  "buffon, georges louis leclerc": "internet_archive:ahistoryearthan01buffgoog",
+  "bunbury, selina": "internet_archive:storiesfromchur00bunbgoog",
+  "callcott, maria": "institutional_books:32044033645540",
+  "charlton, mary": "internet_archive:bim_eighteenth-century_phedora-or-the-forest-_charlton-mary_1798_1",
+  "cleland, james": "internet_archive:b21364412",
+  "dease, william": "internet_archive:bim_eighteenth-century_an-introduction-to-the-t_dease-william_1780",
+  "dryden, john": "institutional_books:HN6GLK",
+  "eliot, john": "internet_archive:b33287466_0001",
+  "felton, samuel": "internet_archive:onportraitsengl00feltgoog",
+  "fenning, daniel": "internet_archive:bim_eighteenth-century_a-new-and-easy-guide-to-_fenning-daniel_1785",
+  "guthrie, william": "internet_archive:collectionoflectu00guth",
+  "hunter, henry from old catalog": "internet_archive:sacredbiographyv02hunt",
+  "irving, washington": "institutional_books:HWKF9A",
+  "james, john angell": "institutional_books:AH4G27",
+  "johnstone, john": "internet_archive:poemsonvarioussu00johniala",
+  "mackenzie, henry": "internet_archive:bim_eighteenth-century_the-letters-of-brutus-t_mackenzie-henry_1791",
+  "mudford, william": "internet_archive:contemplatistser00mudfrich",
+  "nicol, walter": "institutional_books:HN3RIV",
+  "phillips, richard from old catalog": "internet_archive:generalviewofman00phil",
+  "price, joseph": "internet_archive:bim_eighteenth-century_a-third-letter-to-the-ri_price-joseph_1782",
+  "ryland, john": "internet_archive:dutyofministerst09ryla",
+  "sheridan, charles francis": "internet_archive:romancatholiccla00sheruoft",
+  "stevenson, john": "internet_archive:b22396299",
+  "taylor, joseph or 2": "internet_archive:annalsofhealthlo00tayl",
+  "thomson, alexander": "internet_archive:sonnetsodesande00thomgoog"
+ },
+ "train_samples": 192,
+ "chance": 0.03333333333333333,
+ "seconds": 4,
+ "results": {
+  "delta": {
+   "mfw100_burrows": {
+    "accuracy": 0.6,
+    "features": 100
+   },
+   "mfw100_cosine": {
+    "accuracy": 0.7333333333333333,
+    "features": 100
+   },
+   "mfw300_burrows": {
+    "accuracy": 0.6666666666666666,
+    "features": 300
+   },
+   "mfw300_cosine": {
+    "accuracy": 0.6333333333333333,
+    "features": 300
+   },
+   "mfw1000_burrows": {
+    "accuracy": 0.6666666666666666,
+    "features": 1000
+   },
+   "mfw1000_cosine": {
+    "accuracy": 0.7,
+    "features": 1000
+   }
+  },
+  "char_ngram_delta": {
+   "char3_top1000_cosine": {
+    "accuracy": 0.6666666666666666,
+    "features": 1000
+   },
+   "char4_top1000_cosine": {
+    "accuracy": 0.6333333333333333,
+    "features": 1000
+   }
+  },
+  "imposters": {
+   "features": "mfw300",
+   "mean_true": 0.5176666666666667,
+   "mean_wrong": 0.042666666666666665,
+   "auc": 0.9055555555555556,
+   "true_scores": [
+    0.94,
+    0.87,
+    0.33,
+    0.27,
+    0.93,
+    0.0,
+    0.01,
+    0.44,
+    0.52,
+    0.12,
+    0.64,
+    0.38,
+    0.0,
+    0.51,
+    0.48,
+    0.45,
+    0.88,
+    0.66,
+    0.98,
+    0.16,
+    0.01,
+    0.27,
+    1.0,
+    0.46,
+    0.85,
+    0.96,
+    0.69,
+    0.88,
+    0.14,
+    0.7
+   ],
+   "wrong_scores": [
+    0.02,
+    0.11,
+    0.0,
+    0.0,
+    0.0,
+    0.07,
+    0.0,
+    0.06,
+    0.18,
+    0.11,
+    0.01,
+    0.0,
+    0.0,
+    0.12,
+    0.48,
+    0.01,
+    0.0,
+    0.0,
+    0.0,
+    0.02,
+    0.0,
+    0.0,
+    0.01,
+    0.0,
+    0.01,
+    0.03,
+    0.0,
+    0.04,
+    0.0,
+    0.0
+   ]
+  },
+  "ensc": {
+   "0": {
+    "accuracy": 0.43333333333333335,
+    "said_none": 11
+   },
+   "0.5": {
+    "accuracy": 0.43333333333333335,
+    "said_none": 11
+   },
+   "1": {
+    "accuracy": 0.43333333333333335,
+    "said_none": 11
+   },
+   "2": {
+    "accuracy": 0.3333333333333333,
+    "said_none": 11
+   },
+   "4": {
+    "accuracy": 0.16666666666666666,
+    "said_none": 11
+   },
+   "8": {
+    "accuracy": 0.06666666666666667,
+    "said_none": 11
+   }
+  }
+ }
+}

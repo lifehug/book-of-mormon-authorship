@@ -101,6 +101,9 @@ data/catalog/validation_sample.json
 # BOM-18: control-set membership, work ids only (Amendment 2: published with SHA-256)
 !data/controls/
 !data/controls/**
+# Phase 3: classical stylometry outputs (scores and ids, no text)
+!data/classic/
+!data/classic/**
 !data/kjv_mask/
 !data/kjv_mask/**
 # 107 MB, over GitHub's limit: committed as spans.jsonl.gz (gzip -n -9), byte-reproducible

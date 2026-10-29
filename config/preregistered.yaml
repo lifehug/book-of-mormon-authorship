@@ -170,6 +170,29 @@ candidates:
     sweep_lead_expansions_max: 10
     publish_test_counts: true
 
+# 5.1 and Amendment 2 (2026-10-17): classical stylometry (classic/; BOM-20, BOM-21)
+classic:
+  mfw: [100, 300, 1000]          # most frequent words after masking
+  mfw_min_doc_fraction: 0.20     # cull words in fewer than 20% of documents
+  char_ngrams: [3, 4]
+  pos_ngrams: [2, 3]
+  content_words: true            # nouns, verbs, adjectives (Huang, Murakami & Grieve)
+  distances: [burrows_delta, cosine_delta]
+  imposters:                     # Amendment 2
+    trials: 100
+    feature_fraction: 0.5
+    imposter_fraction: 0.5
+    per_trial: 100               # resampled from the genre-matched control pool
+    distance: cosine_delta
+  ensc:                          # Amendment 2: selected by 10-fold CV on the Phase 3 benchmark
+    shrinkage_grid: [0, 0.5, 1, 2, 4, 8]
+    selection: cv10_open_set_accuracy
+  # BOM-20's demonstration on the frozen corpus: known authors only, feeds no decision.
+  corpus_run:
+    authors: 30
+    min_works: 4
+    sample_words: 5000           # one registered-length chunk from the middle of each work
+
 # Amendment 6 (2026-10-27): control sets (metadata.controls; BOM-18, BOM-54)
 controls:
   pool_sample: {history: 3000, general_prose: 5000}   # seeded, stratified by source x decade
