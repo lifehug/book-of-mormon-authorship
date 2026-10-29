@@ -134,6 +134,10 @@ PINNED: dict[tuple[str, ...], Any] = {
     ("controls", "pool_sample"): {"history": 3000, "general_prose": 5000},
     ("controls", "pseudo_biblical"): "curated",
     ("power", "target_accuracy"): 0.80,  # 7
+    ("borrowing", "ngram"): 4,  # 5.5
+    ("borrowing", "max_df"): 5,  # 5.5
+    ("borrowing", "null_percentile"): 99,  # 6.5
+    ("borrowing", "null_min_volumes"): 500,  # 6.5
     # 5.1 and Amendment 2: classical stylometry
     ("classic", "mfw"): [100, 300, 1000],
     ("classic", "mfw_min_doc_fraction"): 0.20,

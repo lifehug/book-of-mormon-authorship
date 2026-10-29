@@ -197,6 +197,19 @@ classic:
     min_works: 4
     sample_words: 5000           # one registered-length chunk from the middle of each work
 
+# 5.5 and 6.5: rare-phrase scoring and its null (BOM-24, BOM-45)
+borrowing:
+  ngram: 4
+  max_df: 5                      # a shared 4-gram counts when in at most 5 corpus documents
+  null_percentile: 99
+  null_min_volumes: 500          # 6.5's floor; the size actually used is pending
+  # pending_amendment: borrowing.null_sample -- how it is chosen; and the score's normalisation
+  per_words: 10000               # length normalisation: rare shared 4-grams per 10,000 words
+  null_sizing:
+    sizes: [500, 1000, 2000, 5000, 10000, 20000]
+    draws: 1000
+    tolerance: 0.10              # smallest n whose 95% interval is within +/-10% of the threshold
+
 # Section 7: minimum sample = smallest size at which closed-set accuracy stays >= 80% (BOM-43)
 power:
   target_accuracy: 0.80
