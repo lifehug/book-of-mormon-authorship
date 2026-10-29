@@ -14,6 +14,9 @@ dependencies = [
     "scipy>=1.17.1",
 ]
 
+[project.scripts]
+bom = "pipeline.cli:main"
+
 [project.optional-dependencies]
 align = [
     "passim",
@@ -37,6 +40,7 @@ packages = [
     "kjv_mask",
     "segment",
     "classic",
+    "pipeline",
     "reuse",
     "semantic",
     "timelocked_lm",

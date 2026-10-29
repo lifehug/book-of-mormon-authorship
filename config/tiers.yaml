@@ -1,0 +1,14 @@
+# What changing a config value costs to recompute (BOM-40). Keys are config paths; the
+# longest matching prefix decides. The multiverse runner sweeps the feature tier by default;
+# the corpus and model tiers are opt-in and their cost is stated here.
+tiers:
+  feature:
+    cost: CPU-minutes from cached features
+    keys: [classic, controls.pool_sample, candidates]
+  corpus:
+    cost: about a week of local compute per value (re-runs OCR repair, normalisation,
+      deduplication, KJV masking and segmentation)
+    keys: [corpus, sealing, kjv_mask, segmentation, controls]
+  model:
+    cost: 15-25 H100-hours per value (retrains the time-locked and authorial models)
+    keys: [lm]

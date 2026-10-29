@@ -113,3 +113,7 @@ data/kjv_mask/controls/spans.part-*.jsonl
 !data/normalization/**
 # per-text replacement log, 0.7 GB; aggregated into applied_map.tsv, rebuilt by ocr_fix.normalize
 data/normalization/applied_counts.jsonl
+
+# BOM-40: per-run outputs of `bom run` / `bom multiverse`; regenerate in minutes. Curves worth
+# keeping are copied into data/<stage>/.
+results/

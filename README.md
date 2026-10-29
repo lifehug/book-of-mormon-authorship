@@ -161,6 +161,19 @@ The design commits us to reporting nulls, conflicts, and "inconclusive" as readi
 positive result. The analysis plan itself is `paper/preregistration.md`, and the known gaps in
 it are `docs/audit.md`.
 
+## Every choice in one file, and the multiverse
+
+Every analytic choice the study makes lives in `config/preregistered.yaml`, copied from the
+pre-registration and its amendments, and the code refuses to run if a registered value has been
+edited. `uv run bom run` runs the analysis under that file and stamps every output with the
+file's hash and the git commit. **The official result is the registered config.**
+
+Rerunning our code reproduces our choices, including any bad ones, so `uv run bom multiverse`
+reruns the analysis under every reasonable alternative listed in `config/multiverse.yaml` and
+draws a specification curve: for each conclusion, the share of configurations that agree. That
+is a robustness check, not a second result. Anyone can add a config file by pull request and
+post what it gives. `config/tiers.yaml` says what each kind of change costs to recompute.
+
 ## Rules we have bound ourselves to
 
 - **Pre-register first.** The analysis plan is frozen on OSF before analysis begins.

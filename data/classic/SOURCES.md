@@ -20,3 +20,14 @@ ENSC accuracy and "none of the above" count at every shrinkage value in the regi
 Main finding: ENSC's open-set rule at its default alpha said "none of these" for 11 of 30 works
 whose author was in the set, so its alpha must be calibrated on the benchmark (BOM-21), as the
 library's own notes say. Shrinkage above 1 lowers accuracy here.
+
+## `multiverse_demo_curve.json`, `multiverse_demo_curve.svg` (BOM-40)
+
+Copied from `results/multiverse/` after `uv run bom multiverse`: the corpus run above repeated
+under 54 configurations (`config/multiverse.yaml`: culling fraction 0.1/0.2/0.3, imposter trials
+100/500, feature and imposter fractions 0.3/0.5/0.7). For each finding of the registered run
+(each held-out work, each method: right author or not), the share of configurations that agree.
+Median agreement 100%, lowest 50%. The Delta findings barely move; the 1,000-word lists move for
+one work (67%); General Imposters moves most (94% on average, 50% at worst), as its sampling
+settings change. A first demonstration of the runner; the curve is redrawn on the benchmark in
+BOM-21.

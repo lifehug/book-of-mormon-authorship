@@ -1,0 +1,18 @@
+# Plausible ranges for the multiverse (BOM-40; Steegen et al. 2016, Simonsohn, Simmons and
+# Nelson 2020). The registered config (preregistered.yaml) is the official result; these are a
+# robustness check. Each entry is a config path and the values it may take; the runner forms
+# every combination (or a seeded sample of `max_configs`) and reruns `stages` under each.
+#
+# Feature tier only by default (cheap). Corpus- and model-tier sweeps must be added under
+# `opt_in` with their cost (see tiers.yaml) and run with --opt-in.
+#
+# This file and its SHA-256 are committed before the blind run (BOM-32), like the thresholds,
+# so the ranges cannot be chosen after the results are seen.
+stages: [classic_corpus_run]
+max_configs: 64
+ranges:
+  classic.mfw_min_doc_fraction: [0.1, 0.2, 0.3]
+  classic.imposters.trials: [100, 500]
+  classic.imposters.feature_fraction: [0.3, 0.5, 0.7]
+  classic.imposters.imposter_fraction: [0.3, 0.5, 0.7]
+opt_in: {}
