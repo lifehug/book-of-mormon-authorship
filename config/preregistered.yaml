@@ -187,6 +187,10 @@ classic:
   ensc:                          # Amendment 2: selected by 10-fold CV on the Phase 3 benchmark
     shrinkage_grid: [0, 0.5, 1, 2, 4, 8]
     selection: cv10_open_set_accuracy
+    # pending_amendment: classic.ensc.alpha -- used until the amendment pins a rule, and only
+    # for runs that set no threshold (BOM-20's demonstration); BOM-21 calibrates alpha.
+    alpha_provisional: 0.05
+    priors_provisional: proportional
   # BOM-20's demonstration on the frozen corpus: known authors only, feeds no decision.
   corpus_run:
     authors: 30
@@ -211,3 +215,12 @@ pending_amendment:
     note: >
       6.5 fixes a floor of 500 volumes, not a number. A 99th percentile from 500 draws rests on
       about five tail observations; the chosen n follows from the variance curve in BOM-45.
+  - key: classic.ensc.alpha
+    issue: BOM-40
+    note: >
+      ENSC's open-set rule assigns "none of the above" when every author's likelihood is below
+      alpha. The registration names ENSC but not alpha (or the class priors). BOM-20's corpus run
+      showed the rule at 0.05 saying "none" for 11 of 30 works whose author was in the set, so
+      alpha cannot be read as a p-value. Proposed: calibrate it on the Phase 3 benchmark like
+      every other threshold in 6.1 (the value giving a 5% false-"none" rate on in-set works),
+      published before any Book of Mormon scoring; priors proportional to training documents.

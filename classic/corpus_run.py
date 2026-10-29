@@ -51,8 +51,8 @@ from classic import (
 )
 from classic.ensc import NONE
 from classic.features import char_ngram_counts
+from metadata.config import classic_kwargs, stamp
 from metadata.config import load as load_config
-from metadata.config import sha256_of_config
 
 OUT = Path("data/classic/corpus_run.json")
 CATALOG = Path("data/catalog/catalog.parquet")
@@ -120,6 +120,7 @@ def run() -> int:
     start = time.time()
     cfg = load_config()
     cc = cfg["classic"]
+    kw = classic_kwargs(cfg)
     cr = cc["corpus_run"]
     pool = eligible(cfg)
     rng = random.Random(f"{cfg['seed']}:classic-corpus-run")
@@ -173,14 +174,14 @@ def run() -> int:
                             "true_scores": true_s, "wrong_scores": false_s}  # fmt: skip
 
     for s in cc["ensc"]["shrinkage_grid"]:
-        model = ENSC(shrinkage=s).fit(Xtr, train_lab)
+        model = ENSC(shrinkage=s, **kw["ensc"]).fit(Xtr, train_lab)
         preds = [model.classify(x) for x in Xte]
         hits = sum(p.label == y for p, y in zip(preds, test_lab, strict=True))
         none = sum(p.label == NONE for p in preds)
         results["ensc"][str(s)] = {"accuracy": hits / len(test_lab), "said_none": none}
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    summary = {"config_sha256": sha256_of_config(), "eligible_authors": len(pool),
+    summary = {**stamp(), "eligible_authors": len(pool),
                "authors": authors, "held_out": held, "train_samples": len(train_tok),
                "chance": 1 / len(authors), "seconds": round(time.time() - start),
                "results": results}  # fmt: skip

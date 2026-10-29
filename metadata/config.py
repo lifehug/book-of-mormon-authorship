@@ -13,6 +13,16 @@ that produced it::
 ``load`` refuses a config whose registered values do not match the pre-registration, so a
 silent edit to a pinned number fails loudly instead of quietly changing the study.
 
+**Which config.** ``config/preregistered.yaml`` unless ``BOM_CONFIG`` names another file, so any
+stage can be rerun under an alternate config without code changes (``pipeline.run``). An
+alternate that departs from a registered value loads only with ``BOM_CONFIG_STRICT=0``, which
+the multiverse runner sets; ``stamp()`` then records ``registered: false`` on every output.
+
+**Seeds.** One root seed (``seed``, Amendment 2). Every component derives its own from it by
+name -- ``random.Random(f"{root}:{name}")``, or ``derive_seed(name)`` where an integer is needed
+-- so no component seed is chosen separately. ``segmentation.split.seed`` equals the root and is
+pinned on its own because 4.5 names it.
+
 Usage::
 
     python -m metadata.config show
@@ -25,6 +35,8 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any
@@ -159,25 +171,80 @@ def validate(cfg: dict) -> None:
             )
 
 
-def load(path: Path | None = None) -> dict:
-    """Load and validate the config. Defaults to ``config/preregistered.yaml``."""
-    path = path or DEFAULT_CONFIG
+def active_path() -> Path:
+    """The config in force: ``BOM_CONFIG`` if set, else the registered one."""
+    env = os.environ.get("BOM_CONFIG")
+    return Path(env) if env else DEFAULT_CONFIG
+
+
+def _strict() -> bool:
+    return os.environ.get("BOM_CONFIG_STRICT", "1") != "0"
+
+
+def load(path: Path | None = None, strict: bool | None = None) -> dict:
+    """Load the config and, unless ``strict`` is false, validate it against the registration."""
+    path = path or active_path()
     if not path.exists():
         raise ConfigError(f"no config at {path}")
     with path.open("r", encoding="utf-8") as fh:
         cfg = yaml.safe_load(fh)
     if not isinstance(cfg, dict):
         raise ConfigError(f"{path} does not contain a mapping")
-    validate(cfg)
+    if _strict() if strict is None else strict:
+        validate(cfg)
     return cfg
+
+
+def is_registered(cfg: dict) -> bool:
+    try:
+        validate(cfg)
+    except ConfigError:
+        return False
+    return True
 
 
 def sha256_of_config(path: Path | None = None) -> str:
     """The config's SHA-256, for stamping onto every output a stage writes."""
-    path = path or DEFAULT_CONFIG
+    path = path or active_path()
     if not path.exists():
         raise ConfigError(f"no config at {path}")
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def git_commit() -> str | None:
+    try:
+        return subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True,
+                              check=True).stdout.strip()  # fmt: skip
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+
+def stamp() -> dict:
+    """What every output records about how it was made."""
+    cfg = load(strict=False)
+    return {"config_sha256": sha256_of_config(), "config_path": str(active_path()),
+            "registered": is_registered(cfg), "git_commit": git_commit()}  # fmt: skip
+
+
+def derive_seed(name: str, cfg: dict | None = None) -> int:
+    """A component's integer seed, derived from the root seed by name."""
+    root = (cfg or load(strict=False))["seed"]
+    return int.from_bytes(hashlib.sha256(f"{root}:{name}".encode()).digest()[:4], "big")
+
+
+def classic_kwargs(cfg: dict | None = None) -> dict:
+    """The registered settings of the classical methods, ready to pass (5.1, Amendment 2)."""
+    c = (cfg or load(strict=False))["classic"]
+    gi, en = c["imposters"], c["ensc"]
+    distance = {"cosine_delta": "cosine", "burrows_delta": "delta"}[gi["distance"]]
+    return {
+        "imposters": {"trials": gi["trials"], "feature_fraction": gi["feature_fraction"],
+                      "distance": distance},
+        # pending_amendment classic.ensc.alpha: the registered value once pinned
+        "ensc": {"alpha": en.get("alpha", en["alpha_provisional"]),
+                 "priors": en.get("priors", en["priors_provisional"])},
+        "mfw_min_doc_fraction": c["mfw_min_doc_fraction"],
+    }  # fmt: skip
 
 
 def pending(cfg: dict | None = None) -> list[dict]:

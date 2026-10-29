@@ -24,14 +24,33 @@ def test_gi_true_author_high_non_author_low(distance: str) -> None:
 
 def test_gi_is_seeded_and_validates() -> None:
     test, cand, _, pool = _setup()
-    a = general_imposters(test, cand, pool, trials=50, seed=5, feature_fraction=0.1)
-    b = general_imposters(test, cand, pool, trials=50, seed=5, feature_fraction=0.1)
+    a = general_imposters(
+        test, cand, pool, trials=50, seed=5, feature_fraction=0.1, distance="cosine"
+    )
+    b = general_imposters(
+        test, cand, pool, trials=50, seed=5, feature_fraction=0.1, distance="cosine"
+    )
     assert a == b and 0.0 <= a <= 1.0
     with pytest.raises(ValueError):
-        general_imposters(test, cand, pool, feature_fraction=0.0)
+        general_imposters(
+            test, cand, pool, feature_fraction=0.0, trials=10, seed=0, distance="cosine"
+        )
     with pytest.raises(ValueError):
-        general_imposters(test, cand, pool, n_imposters=pool.shape[0] + 1)
+        general_imposters(
+            test,
+            cand,
+            pool,
+            n_imposters=pool.shape[0] + 1,
+            feature_fraction=0.5,
+            trials=10,
+            seed=0,
+            distance="cosine",
+        )
     with pytest.raises(ValueError):
-        general_imposters(test, cand, pool, distance="manhattan")
+        general_imposters(
+            test, cand, pool, distance="manhattan", feature_fraction=0.5, trials=10, seed=0
+        )
     with pytest.raises(ValueError):
-        general_imposters(test[:-1], cand, pool)
+        general_imposters(
+            test[:-1], cand, pool, feature_fraction=0.5, trials=10, seed=0, distance="cosine"
+        )

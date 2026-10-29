@@ -68,9 +68,9 @@ class ENSCResult:
 class ENSC:
     """Extended nearest shrunken centroids. ``fit(X, y)`` then ``predict(x)``."""
 
-    def __init__(
-        self, shrinkage: float = 0.0, alpha: float = 0.05, priors: str = "proportional"
-    ) -> None:
+    def __init__(self, *, shrinkage: float, alpha: float, priors: str) -> None:
+        """All three are required (BOM-40): shrinkage is selected on the benchmark (Amendment 2),
+        alpha and priors come from ``config.classic.ensc``."""
         if shrinkage < 0:
             raise ValueError("shrinkage must be >= 0")
         if not 0.0 <= alpha < 1.0:

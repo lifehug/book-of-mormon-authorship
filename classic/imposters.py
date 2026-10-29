@@ -38,16 +38,18 @@ def general_imposters(
     candidate: np.ndarray,
     imposters: np.ndarray,
     *,
-    feature_fraction: float = 0.5,
+    feature_fraction: float,
+    trials: int,
+    distance: str,
+    seed: int,
     n_imposters: int | None = None,
-    trials: int = 100,
-    distance: str = "cosine",
-    seed: int | None = 0,
 ) -> float:
     """Proportion of trials in which ``candidate`` beats every sampled imposter.
 
     ``test`` and ``candidate`` are 1-D feature vectors; ``imposters`` is an
-    (n_pool x features) matrix. ``n_imposters`` defaults to half the pool (at least 1).
+    (n_pool x features) matrix. ``n_imposters`` defaults to half the pool (at least 1), which
+    is Amendment 2's imposter fraction of 0.5. Every other setting is required: take them from
+    ``metadata.config.classic_kwargs`` (BOM-40), never from a default here.
     """
     test = np.asarray(test, dtype=float)
     candidate = np.asarray(candidate, dtype=float)

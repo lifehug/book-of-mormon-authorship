@@ -38,14 +38,14 @@ def test_build_vocabulary_ranks_and_culls() -> None:
         Counter({"the": 7, "of": 1}),
         Counter({"the": 5, "and": 1}),
     ]
-    vocab = build_vocabulary(docs, min_doc_fraction=0.0)
+    vocab = build_vocabulary(docs, top_n=None, min_doc_fraction=0.0)
     assert vocab[0] == "the" and vocab[1] == "and"
     # "rare" is in 1 of 5 docs (20%): kept at 0.2, culled at 0.3
-    assert "rare" in build_vocabulary(docs, min_doc_fraction=0.2)
-    assert "rare" not in build_vocabulary(docs, min_doc_fraction=0.3)
-    assert build_vocabulary(docs, top_n=2) == ["the", "and"]
+    assert "rare" in build_vocabulary(docs, top_n=None, min_doc_fraction=0.2)
+    assert "rare" not in build_vocabulary(docs, top_n=None, min_doc_fraction=0.3)
+    assert build_vocabulary(docs, top_n=2, min_doc_fraction=0.0) == ["the", "and"]
     with pytest.raises(ValueError):
-        build_vocabulary([])
+        build_vocabulary([], top_n=None, min_doc_fraction=0.0)
 
 
 def test_relative_frequencies_use_whole_document() -> None:

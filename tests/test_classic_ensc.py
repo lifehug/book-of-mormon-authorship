@@ -8,7 +8,7 @@ from tests.classic_toy import author_distributions, corpus, matrix, sample_text
 def _fit(shrinkage=0.5, alpha=1e-4):
     dists, texts, labels, rng = corpus(n_authors=4, docs_per_author=6, n_tokens=1500)
     X, vocab = matrix(texts)
-    model = ENSC(shrinkage=shrinkage, alpha=alpha).fit(X, labels)
+    model = ENSC(shrinkage=shrinkage, alpha=alpha, priors="proportional").fit(X, labels)
     return model, dists, vocab, rng
 
 
@@ -37,8 +37,8 @@ def test_ensc_returns_none_far_from_all_classes() -> None:
 def test_shrinkage_zeroes_features() -> None:
     dists, texts, labels, _ = corpus(n_authors=3, docs_per_author=4)
     X, _ = matrix(texts)
-    none = ENSC(shrinkage=0.0).fit(X, labels)
-    big = ENSC(shrinkage=1e6).fit(X, labels)
+    none = ENSC(shrinkage=0.0, alpha=0.05, priors="proportional").fit(X, labels)
+    big = ENSC(shrinkage=1e6, alpha=0.05, priors="proportional").fit(X, labels)
     assert len(none.active_features_) == X.shape[1]
     assert len(big.active_features_) == 0
     np.testing.assert_allclose(big.shrunken_centroids_, np.tile(X.mean(axis=0), (3, 1)))
@@ -47,12 +47,14 @@ def test_shrinkage_zeroes_features() -> None:
 def test_ensc_validation() -> None:
     X = np.eye(3)
     with pytest.raises(ValueError):
-        ENSC().fit(X, ["a", "a", "a"])
+        ENSC(shrinkage=0.0, alpha=0.05, priors="proportional").fit(X, ["a", "a", "a"])
     with pytest.raises(ValueError):
-        ENSC().fit(X[:2], ["a", "b"])
+        ENSC(shrinkage=0.0, alpha=0.05, priors="proportional").fit(X[:2], ["a", "b"])
     with pytest.raises(ValueError):
-        ENSC(shrinkage=-1)
+        ENSC(shrinkage=-1, alpha=0.05, priors="proportional")
     with pytest.raises(ValueError):
-        ENSC(priors="flat")
-    m = ENSC(priors="uniform").fit(np.array([[0.0], [0.1], [1.0], [1.1]]), list("aabb"))
+        ENSC(shrinkage=0.0, alpha=0.05, priors="flat")
+    m = ENSC(shrinkage=0.0, alpha=0.05, priors="uniform").fit(
+        np.array([[0.0], [0.1], [1.0], [1.1]]), list("aabb")
+    )
     np.testing.assert_allclose(m.prior_, [0.5, 0.5])

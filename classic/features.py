@@ -124,8 +124,9 @@ def pos_ngram_counts(
 
 def build_vocabulary(
     doc_counts: Sequence[Counter],
-    top_n: int | None = None,
-    min_doc_fraction: float = 0.0,
+    *,
+    top_n: int | None,
+    min_doc_fraction: float,
 ) -> list[Hashable]:
     """Most-frequent features across documents, with culling.
 
@@ -171,7 +172,7 @@ def frequency_matrix(doc_counts: Sequence[Counter], vocabulary: Sequence[Hashabl
 
 
 def mfw_matrix(
-    texts: Sequence[str], top_n: int = 100, min_doc_fraction: float = 0.2
+    texts: Sequence[str], *, top_n: int | None, min_doc_fraction: float
 ) -> tuple[np.ndarray, list[str]]:
     """Convenience: tokenize texts, pick the MFW vocabulary, return (matrix, vocabulary)."""
     counts = [word_counts(tokenize(t)) for t in texts]
