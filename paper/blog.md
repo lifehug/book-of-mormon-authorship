@@ -1361,8 +1361,60 @@ The books themselves aren't in it where the licences say no: Harvard's and Hathi
 the Joseph Smith Papers transcripts. The archive lists every file of those by checksum and says how
 to get them.
 
+## Phase 3 begins: do the classic tools work on real books?
+
+Phase 3 is the test drive. Before any method gets near the Book of Mormon, it has to show it can
+name the author of books where we already know the answer.
+
+The first test is the old, well-established methods. They don't read meaning at all. They count
+small habits: how often a writer uses "the", "upon", "which", "whereby", and so on, a few hundred
+words like that. Everyone uses those words, but each writer uses them at slightly different rates,
+and those rates turn out to be a surprisingly good fingerprint. The best known of these methods
+is called Burrows' Delta.
+
+I picked 30 authors at random from the corpus, each with at least four different books from
+1780 to 1830. From each book I took a 5,000-word passage from the middle. Then for each author I
+hid one book and asked the methods: who wrote this? With 30 authors, a blind guess is right 3% of
+the time.
+
+| Method | Got the author right |
+| --- | --- |
+| Word-habit counting (Delta), various settings | 60% to 73% |
+| Letter-pattern counting | 63% to 67% |
+| General Imposters (does the real author beat a crowd of decoys?) | scored 0.52 for the real author, 0.04 for a wrong one |
+| ENSC | 43% |
+
+So the tools work, from 5,000 words, on messy OCR, across 30 writers at once. Some cases were easy:
+John Angell James's *Christian Fellowship* (1829) was matched to him with a score of 0.98. A
+Scottish gardening book by Walter Nicol scored a perfect 1.00.
+
+The misses were more instructive than the hits, because most of them weren't the methods'
+fault:
+
+- **Buffon** scored zero. But Buffon wrote in French. What's in the corpus is English
+  translations, by different translators, so the "author" whose habits we'd be measuring is
+  really several translators.
+- **"M. E. Braddon"** appears with a novel dated 1800. She was born in 1835. That's a wrong date
+  in the library catalogue, and it put a Victorian novel among Georgian books.
+- Some author names carry catalogue junk, like "Taylor, Joseph or 2".
+
+That's a useful warning for the real exam next. The test authors have to be checked by hand: no
+translations, no misdated books, no muddled names. Otherwise we'd be grading the methods on the
+catalogue's mistakes.
+
+One method needs fixing before the exam. ENSC has a built-in "none of these authors" answer, which
+matters because the true author of the Book of Mormon might not be on anyone's list. Here it said
+"none of these" for 11 of the 30 books, even though every real author was in the list. Its trigger
+is set too sensitively. The plan already says that setting gets tuned on the exam's known
+answers, so this is the reason why.
+
+One honest caveat: 30 test books is a small number, so each percentage could easily be 15
+points higher or lower. This run was a check that everything works at full scale, not the
+measurement. The measurement is the exam.
+
 ## Log
 
+- **2026-10-28, evening.** BOM-20 closed: classical methods run on corpus v1.0 (30 known authors, held-out books): Delta 60-73% vs 3% chance, Imposters 0.52 vs 0.04, ENSC 43% with its 'none' rule too eager. Lesson for BOM-21: hand-check test authors (translations, misdated records).
 - **2026-10-28.** BOM-19 closed: corpus v1.0 frozen (70 files, index sha256 15858aff...), released as `corpus-v1.0`, Zenodo DOI 10.5281/zenodo.23740903. Phase 2 complete.
 - **2026-10-28.** BOM-16, BOM-17 and BOM-18 closed. Control masks done (17,449 volumes, 1.78% masked; sermons 2.46%, pseudo-biblical 3.40%). 756 chunks and the discovery/confirmation split (sha256 9fdffa56...). Control lists final with SHA-256 after BOM-55.
 - **2026-10-27, night.** Amendment 6 filed and approved (OSF revision 6ae16f41...): corpus choices registered, curated pseudo-biblical control (BOM-54), second dedup pass (BOM-55), an/whether/fall kept as printed. BOM-55 closed: metadata pass 4,697 groups; combined 19,692 groups, 24,779 non-keepers; controls count each work once (sermons -179, pseudo-biblical -55).
