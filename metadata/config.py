@@ -134,6 +134,9 @@ PINNED: dict[tuple[str, ...], Any] = {
     ("controls", "pool_sample"): {"history": 3000, "general_prose": 5000},
     ("controls", "pseudo_biblical"): "curated",
     ("power", "target_accuracy"): 0.80,  # 7
+    ("benchmark", "test_words"): 5000,  # 7
+    ("benchmark", "pass_closed_set"): 0.90,  # 7
+    ("benchmark", "max_open_set_fpr"): 0.05,  # 6.1, 7
     ("borrowing", "ngram"): 4,  # 5.5
     ("borrowing", "max_df"): 5,  # 5.5
     ("borrowing", "null_percentile"): 99,  # 6.5

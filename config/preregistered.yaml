@@ -222,6 +222,16 @@ power:
   # pending_amendment power.design
   reference_floor_words: {burrows_delta: 10000, cosine_delta: 10000, general_imposters: 10000, ensc: 10000}
 
+# Section 7 and 6.1: the validation benchmark (BOM-21)
+benchmark:
+  test_words: 5000               # 7: closed-set accuracy on 5,000-word samples
+  pass_closed_set: 0.90          # 7
+  max_open_set_fpr: 0.05         # 6.1 and 7
+  # pending_amendment: benchmark.design
+  trials: 20
+  min_reference_blocks: 5
+  ensc_alpha_grid: [0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.05, 0.1, 0.2, 0.3, 0.5]
+
 # Amendment 5 Change 4: time-split validation (BOM-48), the gate on expanded corpora (BOM-49)
 timesplit:
   # pending_amendment: timesplit.design
@@ -274,3 +284,14 @@ pending_amendment:
       words both before and after a gap of at least 7 years; a 5,000-word passage from one side
       attributed among every drawn author's profile from the other, both directions; candidates
       with text on both sides of 1830 attributed among the candidates' profiles from the other side.
+  - key: benchmark.design
+    issue: BOM-21
+    note: >
+      Section 7 names the benchmark's parts and pass criteria but not its construction. Used:
+      tasks in data/benchmark/tasks.json (Federalist; known-author pseudo-biblical works; Scott's
+      dictated novels of 1819 against his hand-written novels and ten contemporaries), 20
+      seeded 5,000-word tests per author from text held out of the reference, General Imposters
+      with imposters from the genre-matched control set (history; curated pseudo-biblical;
+      fiction in general prose), Delta judged closed-set only (6.1 defines no verification score
+      for it), the GI open-set false-positive rate measured on held-out trials (two folds), and
+      ENSC's alpha searched over 1e-6 to 0.5.

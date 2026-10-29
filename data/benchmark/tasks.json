@@ -1,0 +1,49 @@
+{
+ "purpose": "BOM-21's benchmark tasks (pre-registration 7). Hand-curated 2026-10-28: one volume per novel from a period edition (no modern reprints, which carry the original date: ids with isbn_, 0000 or bwb_ are excluded), dates checked against BOM-56's title-page verdicts.",
+ "federalist": {
+  "source": "data/benchmark/federalist/papers.jsonl (BOM-43)",
+  "imposter_pool": "history",
+  "note": "political essays; the history controls are the nearest registered genre"
+ },
+ "pseudo_biblical": {
+  "source": "data/benchmark/pseudo_biblical_known.json (BOM-43)",
+  "imposter_pool": "pseudo_biblical_curated",
+  "exclude_from_pool": [
+   "internet_archive:latewarbetween_00hunt", "internet_archive:latewarbetweenun00hunt",
+   "internet_archive:latewarbetweenun00hunt_0", "internet_archive:cihm_28205",
+   "internet_archive:cihm_48806", "hathitrust:aeu.ark:/13960/t15m7369r",
+   "internet_archive:bim_eighteenth-century_the-american-revolution_snowden-richard_1793_1",
+   "internet_archive:bim_eighteenth-century_the-american-revolution_snowden-richard_1794_2",
+   "institutional_books:HX4KRL", "internet_archive:cihm_40934",
+   "institutional_books:HH2NE7", "hathitrust:loc.ark:/13960/t40s0zj12"
+  ],
+  "note": "imposters must not be the task authors' own works or copies of them"
+ },
+ "dictated": {
+  "author": "scott",
+  "tests": ["internet_archive:10748999bsb", "internet_archive:10749000bsb", "internet_archive:10749002bsb"],
+  "tests_note": "Tales of My Landlord, Third Series (Edinburgh, 1821 printing of the 1819 text), volumes 1-2 (The Bride of Lammermoor) and 4 (A Legend of Montrose), which Scott dictated to William Laidlaw and John Ballantyne during his illness of 1819 (Lockhart, Memoirs of the Life of Sir Walter Scott, ch. 43). Volume 3 holds the end of one and the start of the other and is left out. Checked by character names: vol 1-2 Ravenswood 193/283, vol 4 Dalgetty 194.",
+  "imposter_pool": "general_prose",
+  "imposter_genre": "fiction_narrative",
+  "exclude_authors_from_pool": ["scott, walter", "austen", "galt", "hogg", "ferrier", "shelley, mary", "maturin", "brunton", "burney", "morgan, lady", "porter, jane"],
+  "reference": {
+   "scott": ["internet_archive:guymanneringoras01scot", "internet_archive:robroy01sco",
+             "internet_archive:10748945bsb", "internet_archive:10748954bsb",
+             "institutional_books:HWP6PI", "internet_archive:redgauntlettale01scot"],
+   "galt": ["internet_archive:provost00galtgoog", "internet_archive:sirandrewwylieof01galt",
+            "internet_archive:entailorlairdsg00galtgoog", "internet_archive:ringangilhaizeo00galtgoog"],
+   "hogg": ["internet_archive:browniebodsbeck01hogggoog", "internet_archive:threeperilswoma02hogggoog",
+            "internet_archive:privatememoirsco00hoggrich"],
+   "ferrier": ["internet_archive:04913059.4989.emory.edu", "institutional_books:32044020119673"],
+   "austen": ["internet_archive:sensesensibility01aust", "internet_archive:mansfieldparknov01aust",
+              "internet_archive:emmanovel01aust"],
+   "shelley": ["internet_archive:valpergaorlifead02shelrich", "internet_archive:lastman01shel"],
+   "maturin": ["institutional_books:HXG8PW", "internet_archive:womenorpouretco00matugoog"],
+   "brunton": ["institutional_books:HXKEL8", "internet_archive:disciplinenovel00brunrich"],
+   "burney": ["internet_archive:evelinaorhistory01burn", "internet_archive:wandererorfemal00burngoog"],
+   "morgan": ["internet_archive:noviceofsaintdom01morg", "internet_archive:odonnelanationa00unkngoog"],
+   "porter": ["institutional_books:HN21HK", "internet_archive:ofwarsawthaddeus02portrich"]
+  },
+  "reference_note": "Scott's references are novels he wrote by hand (Guy Mannering 1815, Rob Roy 1818, Kenilworth 1821, Peveril of the Peak 1823, Quentin Durward 1823, Redgauntlet 1824); Ivanhoe, partly dictated, is left out. The other novelists are his contemporaries, with the Scots (Galt, Hogg, Ferrier) as the hardest competition."
+ }
+}

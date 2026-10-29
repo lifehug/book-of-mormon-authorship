@@ -50,7 +50,7 @@ result.
 **Change 4: ENSC's open-set rule.** ENSC assigns "none of the above" when every author's
 likelihood falls below alpha; the registration names ENSC but not alpha or its class priors. At
 0.05 the rule said "none" for 11 of 30 works whose author was present (BOM-20), so alpha is not a
-p-value. It is calibrated on the Phase 3 benchmark like every threshold in 6.1: the smallest alpha
+p-value. It is calibrated on the Phase 3 benchmark like every threshold in 6.1: the largest alpha
 giving at most a 5% false-"none" rate on in-set works, published before any Book of Mormon
 scoring. Class priors are proportional to training documents.
 
