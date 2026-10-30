@@ -17,7 +17,8 @@ candidate set differently:
 Both use Funai's 108 words as relative frequencies, the published code's settings
 (``SHRINKAGE``, ``LAM``), and run beside our BOM-20 ENSC at its BOM-21 calibration for
 comparison, and study B is repeated at several candidate sample lengths (Funai does not give his),
-because the share sent to the latent author turns out to depend on them. Nothing here touches
+because the share sent to the latent author turns out to depend on them, with and without the
+2011 paper's text-size adjustment (eq. 12). Nothing here touches
 the Book of Mormon or changes a registered result.
 
 Usage::
@@ -136,14 +137,17 @@ def ensc() -> int:
     train_b = {k: _chunks(cand[v], SAMPLE_WORDS) for k, v in names.items()}
     b = _run(train_b, fed["hamilton"], LATENT)
     sweep = {}
+    tests, lengths = _rel(fed["hamilton"]), [len(t) for t in fed["hamilton"]]
     for size in SWEEP_WORDS:
         tr = {k: _chunks(cand[v], size) for k, v in names.items()}
         labels = [k for k in tr for _ in tr[k]]
-        model = ENSCPublished(shrinkage=SHRINKAGE, lam=LAM).fit(
-            _rel([t for k in tr for t in tr[k]]), labels
-        )
-        got = Counter(str(model.predict(x)) for x in _rel(fed["hamilton"]))
-        sweep[size] = {"texts": len(labels), "wrong": 1 - got[LATENT] / 51, "assigned": dict(got)}
+        X = _rel([t for k in tr for t in tr[k]])
+        row = {"texts": len(labels)}
+        for name, adj in (("pooled", False), ("size_adjusted", True)):
+            model = ENSCPublished(shrinkage=SHRINKAGE, lam=LAM, size_adjust=adj).fit(X, labels)
+            got = Counter(str(model.predict(x, w)) for x, w in zip(tests, lengths, strict=True))
+            row[name] = {"wrong": 1 - got[LATENT] / len(lengths), "assigned": dict(got)}
+        sweep[size] = row
     result = {
         **stamp(),
         "settings": {"shrinkage": SHRINKAGE, "lam": LAM, "words": len(WORDS), "splits": SPLITS},
@@ -167,7 +171,10 @@ def ensc() -> int:
         f"{b['ours_assigned']}; Funai {PUBLISHED['B']:.2%}"
     )
     for size, v in sweep.items():
-        print(f"  B with {size:>5}-word candidate samples: wrong {v['wrong']:.1%} {v['assigned']}")
+        print(
+            f"  B, {size:>5}-word samples: pooled sd wrong {v['pooled']['wrong']:.1%}, "
+            f"size-adjusted (2011 eq. 12) wrong {v['size_adjusted']['wrong']:.1%}"
+        )
     return 0
 
 

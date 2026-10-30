@@ -24,3 +24,14 @@ def test_posteriors_sum_to_one_with_latent() -> None:
     post = ENSCPublished(shrinkage=1.0, lam=2.0).fit(X, y).posteriors(np.ones(8))
     assert set(post) == {"a", "b", LATENT}
     assert abs(sum(post.values()) - 1.0) < 1e-9
+
+
+def test_size_adjust_needs_length() -> None:
+    import pytest
+
+    rng = np.random.default_rng(2)
+    X, y = _data(rng)
+    m = ENSCPublished(shrinkage=0.0, lam=3.0, size_adjust=True).fit(np.abs(X) / 100, y)
+    with pytest.raises(ValueError):
+        m.predict(np.full(8, 0.01))
+    assert m.predict(np.full(8, 0.01), 2000) in {"a", "b", LATENT}

@@ -22,6 +22,11 @@ in the posterior:
 - the text goes to the class with the highest posterior.
 
 Inputs are relative word frequencies, unstandardised, as in the R code.
+
+Text-size adjustment (Schaalje et al. 2011, eq. 12), optional: with ``size_adjust=True`` the
+sd of feature j for class i is not the pooled ``s_j`` but a model of the test text's length
+``w`` (words): ``s^2 = 0.259 c_ij^1.1147 / w^0.661``, their fit for non-contextual word
+frequencies, used in the candidate terms and the latent term alike. ``predict`` then needs ``w``.
 """
 
 from __future__ import annotations
@@ -31,16 +36,19 @@ from collections.abc import Hashable, Sequence
 import numpy as np
 
 LATENT = "latent"
+# Schaalje et al. (2011) eq. 12, variance model for non-contextual word frequencies
+SIZE_A, SIZE_POWER, SIZE_W = 0.259, 1.1147, 0.661
 
 
 class ENSCPublished:
     """``fit(X, y)`` then ``predict(x)``; ``shrinkage`` is the R code's ``thresh``."""
 
-    def __init__(self, *, shrinkage: float, lam: float) -> None:
+    def __init__(self, *, shrinkage: float, lam: float, size_adjust: bool = False) -> None:
         if shrinkage < 0 or lam <= 0:
             raise ValueError("shrinkage must be >= 0 and lam > 0")
         self.shrinkage = shrinkage
         self.lam = lam
+        self.size_adjust = size_adjust
 
     def fit(self, X: np.ndarray, y: Sequence[Hashable]) -> ENSCPublished:
         X = np.atleast_2d(np.asarray(X, dtype=float))
@@ -65,14 +73,22 @@ class ENSCPublished:
         self.s_ = np.where(s == 0, 1e-6, s)
         return self
 
-    def posteriors(self, x: np.ndarray) -> dict:
-        z = (np.asarray(x, dtype=float)[None, :] - self.centroids_) / self.s_
+    def _sd(self, words: int | None) -> np.ndarray:
+        if not self.size_adjust:
+            return self.s_[None, :]
+        if not words:
+            raise ValueError("size_adjust needs the test text's length in words")
+        c = np.maximum(self.centroids_, 1e-9)  # a shrunken mean of exactly 0 would give sd 0
+        return np.sqrt(SIZE_A * c**SIZE_POWER / words**SIZE_W)
+
+    def posteriors(self, x: np.ndarray, words: int | None = None) -> dict:
+        z = (np.asarray(x, dtype=float)[None, :] - self.centroids_) / self._sd(words)
         a = np.minimum(np.abs(z).max(axis=0), self.lam)
         log = -0.5 * np.concatenate([(z**2).sum(axis=1), [(a**2).sum()]])
         w = np.exp(log - log.max())  # equal priors cancel
         w /= w.sum()
         return dict(zip([*self.classes_, LATENT], w.tolist(), strict=True))
 
-    def predict(self, x: np.ndarray) -> Hashable:
-        post = self.posteriors(x)
+    def predict(self, x: np.ndarray, words: int | None = None) -> Hashable:
+        post = self.posteriors(x, words)
         return max(post, key=post.__getitem__)

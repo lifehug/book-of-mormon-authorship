@@ -1,8 +1,8 @@
 {
- "config_sha256": "25c004fa3161c768426eb87e308dba7165fdd7bff04a0b10b4f482b01b9edee1",
+ "config_sha256": "04a65b90de2625ffb93b796fa9515929de6b49c0eab675de206692589818bc3a",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "2be9c20acdc98ca16daae5815a5de653413b2a07",
+ "git_commit": "509975b866e57f1923e72f2d2f1f659847b3fb30",
  "settings": {
   "shrinkage": 1.0,
   "lam": 3.0,
@@ -48,49 +48,99 @@
  "study_b_by_sample_words": {
   "1000": {
    "texts": 221,
-   "wrong": 0.803921568627451,
-   "assigned": {
-    "cowdery": 29,
-    "spalding": 1,
-    "latent": 10,
-    "rigdon": 11
+   "pooled": {
+    "wrong": 0.803921568627451,
+    "assigned": {
+     "cowdery": 29,
+     "spalding": 1,
+     "latent": 10,
+     "rigdon": 11
+    }
+   },
+   "size_adjusted": {
+    "wrong": 0.4901960784313726,
+    "assigned": {
+     "cowdery": 16,
+     "latent": 26,
+     "rigdon": 9
+    }
    }
   },
   "2000": {
    "texts": 110,
-   "wrong": 0.607843137254902,
-   "assigned": {
-    "cowdery": 19,
-    "spalding": 2,
-    "latent": 20,
-    "rigdon": 10
+   "pooled": {
+    "wrong": 0.607843137254902,
+    "assigned": {
+     "cowdery": 19,
+     "spalding": 2,
+     "latent": 20,
+     "rigdon": 10
+    }
+   },
+   "size_adjusted": {
+    "wrong": 0.4901960784313726,
+    "assigned": {
+     "cowdery": 15,
+     "latent": 26,
+     "rigdon": 10
+    }
    }
   },
   "3000": {
    "texts": 74,
-   "wrong": 0.4509803921568627,
-   "assigned": {
-    "cowdery": 16,
-    "latent": 28,
-    "spalding": 1,
-    "rigdon": 6
+   "pooled": {
+    "wrong": 0.4509803921568627,
+    "assigned": {
+     "cowdery": 16,
+     "latent": 28,
+     "spalding": 1,
+     "rigdon": 6
+    }
+   },
+   "size_adjusted": {
+    "wrong": 0.4509803921568627,
+    "assigned": {
+     "cowdery": 13,
+     "latent": 28,
+     "rigdon": 10
+    }
    }
   },
   "5000": {
    "texts": 45,
-   "wrong": 0.23529411764705888,
-   "assigned": {
-    "latent": 39,
-    "spalding": 3,
-    "cowdery": 8,
-    "rigdon": 1
+   "pooled": {
+    "wrong": 0.23529411764705888,
+    "assigned": {
+     "latent": 39,
+     "spalding": 3,
+     "cowdery": 8,
+     "rigdon": 1
+    }
+   },
+   "size_adjusted": {
+    "wrong": 0.2941176470588235,
+    "assigned": {
+     "cowdery": 9,
+     "latent": 36,
+     "rigdon": 6
+    }
    }
   },
   "10000": {
    "texts": 21,
-   "wrong": 0.0,
-   "assigned": {
-    "latent": 51
+   "pooled": {
+    "wrong": 0.0,
+    "assigned": {
+     "latent": 51
+    }
+   },
+   "size_adjusted": {
+    "wrong": 0.23529411764705888,
+    "assigned": {
+     "cowdery": 6,
+     "latent": 39,
+     "rigdon": 6
+    }
    }
   }
  }
