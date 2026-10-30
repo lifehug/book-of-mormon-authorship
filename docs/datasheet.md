@@ -90,7 +90,7 @@ Intended for the registered analyses. Not suitable as a general-purpose clean co
 
 Manifests, catalogs, labels, masks, segments and control lists are public in the repository and
 will be archived on Zenodo with a DOI; corpus text is not redistributed where terms forbid it
-(Harvard Institutional Books, HathiTrust, Joseph Smith Papers). Archived on Zenodo from the GitHub release `corpus-v1.0`: DOI [10.5281/zenodo.23740903](https://doi.org/10.5281/zenodo.23740903); concept DOI for all versions 10.5281/zenodo.23740902.
+(Harvard Institutional Books, HathiTrust, Joseph Smith Papers). Archived on Zenodo from the GitHub release `corpus-v1.0`: DOI [10.5281/zenodo.23740903](https://doi.org/10.5281/zenodo.23740903); concept DOI for all versions 10.5281/zenodo.23740902. **v1.1** (2026-10-30, release `corpus-v1.1`, DOI [10.5281/zenodo.23819273](https://doi.org/10.5281/zenodo.23819273)) adds BOM-56's title-page date check (11,494 volumes dated 1800 read: 1,502 post-1830 and 6,280 undated are kept out of every date window; 276 control members removed), BOM-54's curated pseudo-biblical control (18 works) and BOM-55's metadata dedup tables; 83 files.
 
 ## Maintenance
 

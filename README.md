@@ -8,7 +8,7 @@ any answer, including "we can't tell."
 The repository is the whole project: the plan, the code, the data manifests, the models, and
 eventually the paper. Everything is public as it is produced.
 
-**Corpus v1.0** (frozen 2026-10-28), the snapshot every analysis runs against: [doi:10.5281/zenodo.23740903](https://doi.org/10.5281/zenodo.23740903) (all versions: [10.5281/zenodo.23740902](https://doi.org/10.5281/zenodo.23740902)). Index `data/manifests/corpus_v1.0.json`; coverage and gaps in `docs/datasheet.md`.
+**Corpus v1.1** (frozen 2026-10-30), the snapshot every analysis from BOM-21 on runs against: [doi:10.5281/zenodo.23819273](https://doi.org/10.5281/zenodo.23819273). It corrects placeholder dates (BOM-56) and adds the curated pseudo-biblical control (BOM-54); index `data/manifests/corpus_v1.1.json`. Corpus v1.0 (frozen 2026-10-28), still citable: [doi:10.5281/zenodo.23740903](https://doi.org/10.5281/zenodo.23740903) (all versions: [10.5281/zenodo.23740902](https://doi.org/10.5281/zenodo.23740902)). Index `data/manifests/corpus_v1.0.json`; coverage and gaps in `docs/datasheet.md`.
 
 ## The three questions
 

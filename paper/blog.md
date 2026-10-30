@@ -1640,8 +1640,53 @@ score with its uncertainty, not a bare percentage. And also run the final combin
 method weighted equally, and publish both side by side. If they disagree on anything that matters,
 the paper says so and doesn't pick. That goes into the Amendment 7 draft, which you file.
 
+## The benchmark: two methods fail, and the corpus gets a v1.1
+
+Before the Book of Mormon gets touched, every method has to prove itself on books where we
+already know who wrote what. The rule was set in advance. A method passes if it names the right
+author at least 90% of the time out of a list. It also has to say "none of these" when the real
+author isn't on the list, and be wrong about that no more than 5% of the time. Three tests:
+
+- the Federalist Papers (Hamilton, Madison, Jay);
+- four known authors of imitation scripture (Hunt, Snowden, Linning, Hughes);
+- Walter Scott's two novels he *dictated* in 1819, because he was ill, tested against his
+  written novels and ten other novelists.
+
+The first run was wrong, and not because of the methods. One method, General Imposters, works
+by asking "does this passage look more like author X than like a crowd of other writers?" The
+plan says the crowd is 100 writers per round, drawn from 200 of the same kind of book. But for the
+imitation-scripture test, the crowd came from my new 18-book list, and after taking out the four
+authors being tested it was 10 books. Worse, one of those 10 was Hunt's own *Late War*, a
+different scan from the one being tested. So Hunt was sometimes being compared against himself.
+Same bug as last time: I matched files when I should have matched books.
+
+Fixed: all the curated books, topped up to 200 from the older, wider scripture-style list, and
+every copy of a tested author's book left out. Then run 2:
+
+| Method | Names the right author | Says "none" when it should | Verdict |
+| --- | --- | --- | --- |
+| Burrows' Delta | 100% | can't (no "none" option) | half the test |
+| Cosine Delta | 97% | can't | half the test |
+| General Imposters | 83% | never says "match" at all | **fails** |
+| ENSC | 100% | wrong 66% of the time | **fails** |
+
+The interesting miss: General Imposters gave Hunt's passages to Snowden 13 times out of 20. Both
+wrote American war history in King James style, twenty years apart. Copying the same model makes
+two people look alike, and that is exactly the situation the Book of Mormon question lives in.
+
+The rule says a method that fails is reported and left out. So for now the classical methods can
+pick the closest of a list, but none of them can say "none of these" reliably. Whether the two
+Deltas count as passing, when the "none" half of the test can't apply to them, isn't mine to
+decide. I've written it up as a question for the owner. I'm also rerunning the whole benchmark
+under 64 alternative settings, to see whether these verdicts hold up or depend on one choice.
+
+Meanwhile the corpus got a new version. v1.1 has the corrected dates (1,502 "1800" books were
+really from after 1830) and the 18-book list, with its own DOI:
+[10.5281/zenodo.23819273](https://doi.org/10.5281/zenodo.23819273). v1.0 stays as it was.
+
 ## Log
 
+- **2026-10-30, evening.** BOM-56 closed: corpus v1.1 frozen (83 files) and released, DOI 10.5281/zenodo.23819273. BOM-21 run 2: Delta 100% / Cosine 97% closed-set (no open-set score), General Imposters 83% and saturated threshold (fails), ENSC 66% open-set false positives (fails). Run 1 had a 10-book imposter pool with a Hunt copy in it; kept as evidence. Multiverse redraw running.
 - **2026-10-30, later.** BOM-46 closed: 3 dual-register authors (Snowden clean; Dodsley mostly as editor; Kenrick's other work is a Shakespeare imitation). Too few for the 60/80% weight bands: intervals reported, equal-weight synthesis added as Amendment 7 draft Change 7.
 - **2026-10-30, later.** BOM-54 closed: curated pseudo-biblical control is 18 works (1,349 model-judged, gate 15/15 and 25/25, 49 yes; a misspelt Book of Mormon copy and an 1882 book dropped, 29 copies folded). Seal now catches "Morman".
 - **2026-10-30.** BOM-45 closed: the borrowing null's 99th percentile from 500 books is +/-119% (six-fold range), +/-16% even at 20,000; the null becomes the whole period corpus (~200,000 books, one 45-minute pass). Missed copies of the target collapse rarity, so they're excluded. Amendment 7 draft, Change 6. Pseudo-biblical judging resumed after the weekly usage reset.
