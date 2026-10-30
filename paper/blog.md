@@ -1842,8 +1842,29 @@ And a mistake of ours, caught along the way. Five of our Pratt samples, and one 
 quote the Book of Mormon. Both men did that a lot after 1830. Matching the Book of Mormon to text
 that quotes it is circular, so those samples are out now, everywhere.
 
+## The benchmark, rerun 54 ways
+
+A verdict is only worth something if it doesn't hinge on one arbitrary setting. So the whole
+benchmark was rerun under 54 combinations of the settings people reasonably choose: how many
+common words to use, how many rounds General Imposters plays, how much of the vocabulary it
+samples each round, how big a crowd of impostors it draws.
+
+The two Delta methods named the right author well enough in all 54. ENSC, the old version we'd
+built, failed in all 54. Those verdicts are solid.
+
+General Imposters was the interesting one: it failed under the registered settings but passed in 8
+of the 54. Every one of those 8 had one thing in common: it sampled 30% of the words each round
+instead of 50%. Fewer words per round makes the method less certain, which stops its score from
+pinning at the maximum.
+
+It would be easy to just switch to 30% and call it a pass. That would be cheating: picking the
+setting after seeing which one wins. So it goes on the list for the repair step, where the rule is
+to write the change down first, test it on fresh books with known authors, and register it before
+it's used. If it holds up there, it's a real fix. If not, the method stays failed.
+
 ## Log
 
+- **2026-10-30, night.** BOM-21 closed: benchmark report `data/benchmark/BENCHMARK.md`; across 54 settings the Deltas meet the closed-set bar every time, the old ENSC never passes, General Imposters passes 8 times, all at 30% feature sampling (a lead for BOM-58, not adopted).
 - **2026-10-30, night.** BOM-22 Jockers: their deposited data reproduces with our code (same 110 words, CV error 8.76% vs 8.8%, Rigdon 169 vs 197); swapping in our candidate texts moves the answer (Rigdon 169 to 92, Pratt 42 to 137). Our Pratt/Cowdery samples that quote the Book of Mormon are now excluded.
 - **2026-10-30, night.** BOM-57 closed: General Imposters faithful (11 of 12 PAN 2014 rows within 4 points of Kestemont et al., median gap 1.3), so its failure stands; our BOM-20 ENSC was not the published method, so ENSC is rerun on the benchmark (BOM-58). Report: data/benchmark/fidelity/REPORT.md.
 - **2026-10-30, night.** BOM-60 opened, the end of Phase 3: use what the replications found (ENSC's sample-length problem, rarity by work not copy, General Imposters' ceiling, closed-set traps, Delta's missing 'none') to test improvements to the prior methods on our corpus and benchmark, and publish them. BOM-57, 58 and 60 added to the backlog.
