@@ -108,6 +108,8 @@ data/catalog/validation_sample.json
 !data/reuse/**
 # 87 MB, rebuilt by `python -m reuse.rare scan` in about 45 minutes; covered by data/manifests/reuse.jsonl
 data/reuse/null_sizing/hits.parquet
+# 237 MB, rebuilt by `python -m reuse.rare scan --target bom` in about an hour; covered by data/manifests/reuse.jsonl
+data/reuse/bom/hits.parquet
 !data/benchmark/**
 !data/classic/**
 !data/kjv_mask/

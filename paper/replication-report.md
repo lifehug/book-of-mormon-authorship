@@ -17,7 +17,7 @@ published method is run on our texts, and where it does not, why.
 | Holmes 1992 | Joseph Smith's own writing and Isaiah separate; prophets do not cluster by prophet; revelations sit with the prophets | Joseph Smith 3 of 3 alone; prophets mixed; D&C 1835 3 of 3 with the prophets; Isaiah 2 of 3 apart | yes |
 | Jockers, Witten and Criddle 2008 | NSC: Rigdon first or second for 197 of 239 chapters, Spalding 110, Isaiah-Malachi 101 | NSC: Pratt 219, Isaiah-Malachi 117, Cowdery 73, Spalding 39, Rigdon 23 | **no**: the leading candidate changes with the candidate texts |
 | Schaalje, Fields, Roper and Snow 2011 (ENSC) | most chapters fit none of the candidates | 235 of 239 chapters "none", 4 Isaiah-Malachi | yes at the level of the published conclusion, with a validation caveat |
-| Johnson and Johnson 2013 | *The Late War* has the densest shared rare 4-grams after *The First Book of Napoleon* | pending: whole-corpus scan (`reuse.rare scan --target bom`) | pending |
+| Johnson and Johnson 2013 | *The Late War* has the densest shared rare 4-grams after *The First Book of Napoleon* | *The Late War* in the top 0.05% (174 shared, p = 0.0004), but 30 books of 10,000+ words are denser, mostly other imitation scripture | **partly**: the two books stand out; the claim that nothing else approaches them does not hold |
 
 ## 1. Larsen, Rencher and Layton (1980)
 
@@ -98,16 +98,41 @@ validation does not count as evidence in this study, and this result is a replic
 
 ## 5. Johnson and Johnson (2013)
 
-Pending the whole-corpus rare-4-gram scan with the Book of Mormon as target. Both rarity rules
-(theirs, under 1 book in 1,000; ours, document frequency at most 5) will be reported, with the
-whole-corpus null of BOM-45, so the published ranking can be checked against what chance gives.
+**Run.** The Book of Mormon with the KJV masked (250,486 words) against every eligible period
+volume (221,344, the 13 sealed copies of the target left out, BOM-45). Their rarity rule: a
+4-gram is rare if it occurs in fewer than one book per thousand (81,175 rare 4-grams shared with
+the Book of Mormon). Density = rare shared 4-grams per 10,000 words; empirical p-value against the
+whole corpus.
+
+**Result.** *The Late War* (best copy) ranks 97th of 221,344 with 174 rare shared 4-grams,
+p = 0.0004; *The First Book of Napoleon* ranks 44th (100 shared, p = 0.0002). The top of the raw
+ranking is one-page broadsides, where a single shared 4-gram gives a huge density. Among documents
+of at least 10,000 words (168,622; a descriptive cut, not a registered test), *The Late War* ranks
+31st and Napoleon 8th, behind *The Book of Nullification* (1830), two copies of *The Book of
+Jasher* (1829), *The Chronicle of the Kings of England*, *Prophetical Extracts* and similar works
+(at 2,000 words: 54th and 18th).
+
+**Comparison.** The core observation returns: both books share far more rare phrasing with the
+Book of Mormon than chance gives. The stronger claim, that "no other book, aside from The First
+Book of Napoleon, approaches the density", does not: in a corpus about twice the size of theirs,
+some thirty longer books are denser, and most of them are themselves written in imitation of
+scripture. The shared rare phrases track that register, which is the critique the study received,
+and a single-source ranking cannot separate borrowing from shared style. That separation is what
+BOM-24 and BOM-26 are for.
+
+**A limit of the registered rule, found here.** Under the pre-registered rarity rule (a 4-gram
+in at most 5 documents) *The Late War* shares just 1 rare 4-gram, because the corpus holds about
+eleven printings of it: anything it shares with the Book of Mormon is in at least eleven
+documents and so is never rare. Rarity counted by volume penalises reprinted sources. Recorded on
+BOM-24 to be resolved there; it does not change this replication, which uses Johnson's rule.
 
 ## What this says about the methods, not the book
 
 The two results that replicate cleanly (Larsen, Holmes) ask whether texts *differ*, not *who
 wrote* them. The one closed-set attribution
 (Jockers) does not replicate: its answer is a property of the candidate samples. The open-set
-method returns the published "none", but has not passed validation. These are the reasons the
+method returns the published "none", but has not passed validation. The rare-phrase result returns
+in part: the named sources are real outliers, but not unique ones. These are the reasons the
 pre-registered study requires an open-set method that passes section 7 before any attribution is
 reported.
 

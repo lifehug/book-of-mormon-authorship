@@ -1732,8 +1732,40 @@ every candidate scores below a cutoff. That's not a different setting, it's a di
 So ENSC's failure in our benchmark may say more about our rebuild than about ENSC. The thesis
 should have the actual formulas.
 
+## The Late War: real, but not alone
+
+In 2013 two brothers, Chris and Duane Johnson, compared the Book of Mormon against over 100,000
+old books, looking for rare four-word phrases the two share. They found *The Late War*, Gilbert
+Hunt's 1816 history of the War of 1812 told in Bible style, shared more than any other book except
+*The First Book of Napoleon*. It became a famous claim.
+
+I reran it on our collection, about 221,000 books, twice theirs. First, the Bible's own words were
+taken out of the Book of Mormon, so shared King James phrases don't count. Then: how dense are
+each book's shared rare phrases, compared with every other book?
+
+*The Late War* comes out in the top 0.05%: 174 shared rare phrases, and only about 1 book in 2,000
+does that well. So that part is real.
+
+But it isn't alone. Among proper books (10,000 words or more), *The Late War* is 31st. Ahead of it:
+*The Book of Nullification* (1830), *The Book of Jasher* (1829), *The Chronicle of the Kings of
+England*, Napoleon, and a run of others. Almost all of them are written in imitation scripture.
+That's the point critics made in 2013: books that copy the Bible's style share phrasing with each
+other without anyone borrowing from anyone. A ranking like this can't tell the two apart. Telling
+them apart is a later step of this project.
+
+One wrong turn to own up to. The very top of my first ranking was one-page handbills, like a 1780
+notice about disorderly persons. A single shared phrase in a 200-word page makes the density look
+enormous. Putting a minimum length on "book" fixed it, and it's labelled as a check I added, not
+part of the plan.
+
+And one thing found that matters later. The project's own rule calls a phrase rare if it's in at
+most 5 books. But our collection has about eleven printings of *The Late War*. So anything it
+shares with the Book of Mormon is in at least eleven books, and by that rule is never rare. The
+rule as written can't see a source that was reprinted a lot. That's noted for the step that uses it.
+
 ## Log
 
+- **2026-10-30, night.** BOM-22 Johnson replication: The Late War ranks 97th of 221,344 (174 rare shared 4-grams, p = 0.0004), but 31st among books of 10,000+ words, behind mostly other imitation-scripture works; Napoleon 8th. The registered df<=5 rule can't see a reprinted source (Late War: ~11 copies); noted for BOM-24. BOM-59 opened (owner buys Jockers 2008), blocks BOM-22.
 - **2026-10-30, night.** BOM-57: ENSC's authors describe its 'none' as an unknown-author class, not the cutoff our code uses; ENSC's benchmark failure may be our reconstruction's. Their Book of Mormon figures (73% / 93% 'someone else') recorded.
 - **2026-10-30, night.** BOM-57 and BOM-58 opened: check the two failed methods against published results before deciding to repair or retire them. GI: compare with Kestemont et al. 2016 Table 1 on PAN 2014. ENSC: Funai 2010 thesis (manual download), papers 10.1093/llc/fqq029 and 10.1080/03610926.2010.529529 if needed.
 - **2026-10-30, evening.** Amendment 7 filed and approved on OSF (revision 6ae500f8f0e01c4f4105c6bd): floors, ENSC alpha rule, time-split expectation, whole-corpus null, equal-weight synthesis, and (post hoc, labelled) the benchmark's construction and imposter pool. pending_amendment is empty.

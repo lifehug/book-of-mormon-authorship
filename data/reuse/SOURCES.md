@@ -28,3 +28,14 @@ frequency but are not in the null. 3.9% of null volumes score above zero.
 
 Whole population: 0.144. No sample size reaches the registered +/-10% tolerance, so the
 null is the whole eligible population (proposed in the Amendment 7 draft, Change 6).
+
+## `bom/` (BOM-22, 2026-10-30)
+
+`python -m reuse.rare scan --target bom --workers 4`: the Book of Mormon with the KJV masked
+(250,486 words) as target, every eligible period volume scanned (221,344; the 13 sealed copies of
+the target left out of every document frequency, BOM-45). `target_grams.txt` is the target's
+4-gram ids; `hits.parquet` (237 MB, not in git, rebuilt in about an hour, checksummed in
+`data/manifests/reuse.jsonl`) holds each volume's shared 4-grams. Read by
+`python -m eval.replicate johnson` (the Johnson and Johnson 2013 replication), which writes
+`data/benchmark/replication_johnson.json`. This is the published-method replication allowed by 4.2;
+nothing here feeds BOM-24's registered test.
