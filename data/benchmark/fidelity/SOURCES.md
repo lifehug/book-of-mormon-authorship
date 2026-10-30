@@ -19,6 +19,7 @@ public link is the reference.
 | Stamatatos et al. (2014), "Overview of the author identification task at PAN 2014" | the PAN 2014 corpora, the AUC x c@1 measure and competitors' results | https://ceur-ws.org/Vol-1180/CLEF2014wn-Pan-StamatosEt2014.pdf | downloaded 2026-10-30, `data/private/fidelity/stamatatos2014_pan.pdf` |
 | Holmes (1992), "A stylometric analysis of Mormon scripture and related texts", *JRSS A* 155(1): 91-120 | all nine tables (per-sample richness values; noun distributions and Sichel fits, Tables 3-4) and the fitting method (minimum chi-square on nouns, 10,000-word-equivalent alpha and theta) | https://doi.org/10.2307/2982671 (JSTOR) | supplied by the owner 2026-10-30 as a full-text conversion, `data/private/fidelity/holmes1992.md` |
 | Koppel and Winter, "Determining if two documents are by the same author", lecture slides (26) | the impostors method step by step; not the paper | https://cs.cornell.edu/courses/cs6740/2016sp/classes/Determining%20If%20Two%20Documents%20Are%20by%20the%20Same.pdf | downloaded 2026-10-30, `data/private/fidelity/koppel_winter_slides.pdf` |
+| Jockers, Witten and Criddle (2008), "Reassessing authorship of the Book of Mormon using delta and nearest shrunken centroid classification", *LLC* 23(4): 465-491 | Appendix A: exact candidate source texts (Bible passages removed from all); Appendix B: the exact 110 words (seven-author case) and 108 (five-author case) | https://doi.org/10.1093/llc/fqn040 | bought by the owner 2026-10-30 (BOM-59), `data/private/fidelity/jockers2008.pdf` |
 | PAN 2014 author verification corpora (training and test) | the data Kestemont et al. report on | to be recorded when downloaded | |
 
 ## What the sources say so far
@@ -58,10 +59,9 @@ hand. DOIs checked against Crossref on 2026-10-30.
 
 | # | Paper | Why | Link | Access |
 | --- | --- | --- | --- | --- |
-| 1 | Jockers, Witten and Criddle (2008), *LLC* 23(4) | Tables 1-2 and Appendix A list exactly which Rigdon, Pratt and Cowdery texts they used; our replication disagrees with theirs and the candidate samples are the likeliest reason | https://doi.org/10.1093/llc/fqn040 | paywalled |
 | 2 | Koppel and Winter (2014), "Determining if two documents are written by the same author", *JASIST* 65(1) | General Imposters' original definition and settings | https://doi.org/10.1002/asi.22954 | paywalled |
 | 3 | Kestemont et al. (2016), supplementary information | O2's exact iterations, feature share and imposter count | https://doi.org/10.1016/j.eswa.2016.06.029 | **likely unnecessary**: the authors' code is public, https://github.com/mikekestemont/ruzicka |
-| 4 | Schaalje, Fields, Roper and Snow (2011), *LLC* 26(1) | ENSC's per-chapter Book of Mormon results and its own validation, for an exact replication match | https://doi.org/10.1093/llc/fqq029 | paywalled |
+| 4 | Schaalje, Fields, Roper and Snow (2011), *LLC* 26(1) | **now needed (BOM-57):** the published ENSC's 'none' rate depends on candidate sample length (80% to 0% wrong from 1,000 to 10,000 words, `ensc.json`), and the paper's adjustment for 'texts of varying sizes' is not in the thesis code | https://doi.org/10.1093/llc/fqq029 | paywalled (BOM-59) |
 | 6 | Jockers (2012), "Testing authorship in the personal writings of Joseph Smith using NSC classification", *LLC* | the Jockers side's answer to the open-set critique | https://doi.org/10.1093/llc/fqs041 | paywalled |
 | 7 | Evert et al. (2017), "Understanding and explaining Delta measures for authorship attribution", *DSH* 32 | why and when Delta works; the best-practice variants (to improve the two Deltas) | https://doi.org/10.1093/llc/fqx023 | paywalled |
 | 8 | Tibshirani, Hastie, Narasimhan and Chu (2002), *PNAS* 99(10) | NSC's original definition | https://doi.org/10.1073/pnas.082099299 ; free copy https://pmc.ncbi.nlm.nih.gov/articles/PMC124443/ | browser only |

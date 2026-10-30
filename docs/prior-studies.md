@@ -79,6 +79,16 @@ solomonspalding.com (Tables 1-2 and Appendix A not reproduced there).
   *Hiawatha* (Gutenberg; post-1830, outside the corpus); our candidate texts.
 - **Critique to test.** Closed set: every chapter must go to one of the listed authors, so the
   result cannot say "none of these" (Schaalje et al. 2011); quotation left in.
+- **Recovered 2026-10-30 (the paper, Appendices A and B; https://doi.org/10.1093/llc/fqn040).**
+  Candidate sources, with Old and New Testament passages removed from every one: Rigdon, his
+  *Book of the Revelations of Jesus Christ to the Children of Zion* (written 1864; transcription
+  of the Stephen Post Collection, University of Utah), the revelations to Phebe Rigdon, and 14
+  *Millennium* articles (1833-35); Cowdery, *Messenger and Advocate* writings; Pratt, the
+  *Autobiography*, *Mormonism Unveiled* (1838), *Plain Facts* (1840) and *The Angel of the
+  Prairies* (1880); Spalding, the Oberlin manuscript with its appended letter. Book of Mormon:
+  1830 text with modern chapters, prefaces excluded. The 110 words are listed (Appendix B); ours
+  differ by five (we add s, thee, thou; they add hand, pass). Our first replication used the
+  candidates' text unmasked, which is not what they did.
 
 ## 4. Schaalje, Fields, Roper and Snow (2011), extended nearest shrunken centroids (ENSC)
 
