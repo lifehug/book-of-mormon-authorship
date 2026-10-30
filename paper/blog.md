@@ -1684,8 +1684,26 @@ Meanwhile the corpus got a new version. v1.1 has the corrected dates (1,502 "180
 really from after 1830) and the 18-book list, with its own DOI:
 [10.5281/zenodo.23819273](https://doi.org/10.5281/zenodo.23819273). v1.0 stays as it was.
 
+## Amendment 7 is filed
+
+Over the last two days a list of decisions piled up that the original plan didn't spell out: how
+much text a method needs, when ENSC should say "none", how big the chance baseline for borrowed
+phrases has to be, what to do with only three dual-register authors, and how the benchmark was
+put together. Each was written into the draft as it came up. Today it went on OSF as Amendment 7
+(revision 6ae500f8f0e01c4f4105c6bd), so nothing in the settings file is waiting on paper anymore.
+
+One part of it needed care. The last change, how the benchmark was built and the fix to its
+imposter pool, was written *after* I had seen the benchmark results. That's the kind of thing a
+reader should be suspicious of, so the amendment says so in plain words and labels that change
+"post hoc". The fix keeps the number the plan already set, 200 imposters, and doesn't touch the
+pass rule. And it doesn't rescue anything: the two methods that failed still fail.
+
+What it doesn't include is the Delta question, whether a method that can't say "none" passes on
+the half of the test it can take. That one is still open.
+
 ## Log
 
+- **2026-10-30, evening.** Amendment 7 filed and approved on OSF (revision 6ae500f8f0e01c4f4105c6bd): floors, ENSC alpha rule, time-split expectation, whole-corpus null, equal-weight synthesis, and (post hoc, labelled) the benchmark's construction and imposter pool. pending_amendment is empty.
 - **2026-10-30, evening.** BOM-56 closed: corpus v1.1 frozen (83 files) and released, DOI 10.5281/zenodo.23819273. BOM-21 run 2: Delta 100% / Cosine 97% closed-set (no open-set score), General Imposters 83% and saturated threshold (fails), ENSC 66% open-set false positives (fails). Run 1 had a 10-book imposter pool with a Hunt copy in it; kept as evidence. Multiverse redraw running.
 - **2026-10-30, later.** BOM-46 closed: 3 dual-register authors (Snowden clean; Dodsley mostly as editor; Kenrick's other work is a Shakespeare imitation). Too few for the 60/80% weight bands: intervals reported, equal-weight synthesis added as Amendment 7 draft Change 7.
 - **2026-10-30, later.** BOM-54 closed: curated pseudo-biblical control is 18 works (1,349 model-judged, gate 15/15 and 25/25, 49 yes; a misspelt Book of Mormon copy and an 1882 book dropped, 29 copies folded). Seal now catches "Morman".

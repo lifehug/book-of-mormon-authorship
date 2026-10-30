@@ -70,9 +70,8 @@ def test_hash_is_stable_and_changes_with_content(tmp_path: Path) -> None:
 
 
 def test_pending_amendment_entries_are_complete() -> None:
-    rows = config.pending()
-    assert rows, "the unregistered choices must stay listed until they are amended in"
-    for row in rows:
+    # empty once an amendment registers them all (Amendment 7 did, 2026-10-30)
+    for row in config.pending():
         assert set(row) == {"key", "issue", "note"}
         assert row["issue"].startswith("BOM-")
 

@@ -5,7 +5,8 @@
 # are present. Every value below was checked against paper/preregistration.md and cites
 # its section. Choices not yet registered are NOT here, even as placeholders, so that
 # nothing in this file can be mistaken for a registered decision; they are named in
-# `pending_amendment` at the end and must be pinned by dated OSF amendment before BOM-21.
+# `pending_amendment` at the end and must be pinned by dated OSF amendment (Amendment 7,
+# 2026-10-30, registered those of Phase 3).
 #
 # Sections for the classical methods, language models, dating, embeddings and the
 # decision rules arrive with BOM-40 proper, once BOM-20 closes.
@@ -187,10 +188,11 @@ classic:
   ensc:                          # Amendment 2: selected by 10-fold CV on the Phase 3 benchmark
     shrinkage_grid: [0, 0.5, 1, 2, 4, 8]
     selection: cv10_open_set_accuracy
-    # pending_amendment: classic.ensc.alpha -- used until the amendment pins a rule, and only
-    # for runs that set no threshold (BOM-20's demonstration); BOM-21 calibrates alpha.
-    alpha_provisional: 0.05
-    priors_provisional: proportional
+    # Amendment 7 Change 4: alpha is the largest giving at most a 5% false-"none" rate on the
+    # benchmark, calibrated by BOM-21 into data/benchmark/thresholds.json. alpha_demo is only for
+    # runs that set no threshold (BOM-20's demonstration).
+    alpha_demo: 0.05
+    priors: proportional
   # BOM-20's demonstration on the frozen corpus: known authors only, feeds no decision.
   corpus_run:
     authors: 30
@@ -202,8 +204,8 @@ borrowing:
   ngram: 4
   max_df: 5                      # a shared 4-gram counts when in at most 5 corpus documents
   null_percentile: 99
-  null_min_volumes: 500          # 6.5's floor; the size actually used is pending
-  # pending_amendment: borrowing.null_sample -- how it is chosen; and the score's normalisation
+  null_min_volumes: 500          # 6.5's floor; met by the whole corpus (Amendment 7 Change 6)
+  # registered: Amendment 7 Change 6 (the null is the whole eligible period corpus)
   per_words: 10000               # length normalisation: rare shared 4-grams per 10,000 words
   null_sizing:
     sizes: [500, 1000, 2000, 5000, 10000, 20000]
@@ -213,13 +215,13 @@ borrowing:
 # Section 7: minimum sample = smallest size at which closed-set accuracy stays >= 80% (BOM-43)
 power:
   target_accuracy: 0.80
-  # pending_amendment: power.design -- the measurement design below
+  # registered: Amendment 7 Changes 1-2 (the measurement design below)
   sizes: [1000, 2000, 5000, 10000, 20000]
   fixed_test_words: 5000         # the registered chunk length (4.5)
   trials: 20
   min_reference_blocks: 5
   # measured by eval.power (BOM-43), the stricter of the two known-author sets; part of
-  # pending_amendment power.design
+  # registered by Amendment 7 Change 2
   reference_floor_words: {burrows_delta: 10000, cosine_delta: 10000, general_imposters: 10000, ensc: 10000}
 
 # Section 7 and 6.1: the validation benchmark (BOM-21)
@@ -227,14 +229,14 @@ benchmark:
   test_words: 5000               # 7: closed-set accuracy on 5,000-word samples
   pass_closed_set: 0.90          # 7
   max_open_set_fpr: 0.05         # 6.1 and 7
-  # pending_amendment: benchmark.design
+  # registered: Amendment 7 Change 8
   trials: 20
   min_reference_blocks: 5
   ensc_alpha_grid: [0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.05, 0.1, 0.2, 0.3, 0.5]
 
 # Amendment 5 Change 4: time-split validation (BOM-48), the gate on expanded corpora (BOM-49)
 timesplit:
-  # pending_amendment: timesplit.design
+  # registered: Amendment 7 Change 5
   authors: 30
   min_words: 10000               # each side, BOM-43's reference floor
   min_gap_years: 7
@@ -251,67 +253,7 @@ seed: 20261017
 # Choices these Phase 2 stages need that the pre-registration does not yet fix. Each must be
 # pinned by dated amendment before BOM-21 calibration starts (BOM-40). Absent from the config
 # above on purpose: an unregistered value written here would read as a registered one.
-pending_amendment:
-  - key: borrowing.null_sample
-    issue: BOM-45
-    note: >
-      6.5 fixes a floor of 500 volumes, not a number. Measured (BOM-45, stand-in target The Late
-      War): the 99th percentile's 95% interval is +/-119% at n=500 and still +/-16% at 20,000.
-      Proposed: the null is the whole eligible period population (about 200,000 volumes), scored in
-      one corpus pass, so it carries no sampling noise; the target's own copies are left out of
-      every document frequency; significance is the empirical p-value (share of null volumes
-      scoring at least as high, ties counted against the source) at 0.01. Amendment 7 draft.
-  - key: classic.ensc.alpha
-    issue: BOM-40
-    note: >
-      ENSC's open-set rule assigns "none of the above" when every author's likelihood is below
-      alpha. The registration names ENSC but not alpha (or the class priors). BOM-20's corpus run
-      showed the rule at 0.05 saying "none" for 11 of 30 works whose author was in the set, so
-      alpha cannot be read as a p-value. Proposed: calibrate it on the Phase 3 benchmark like
-      every other threshold in 6.1 (the value giving a 5% false-"none" rate on in-set works),
-      published before any Book of Mormon scoring; priors proportional to training documents.
-
-  - key: power.design
-    issue: BOM-43
-    note: >
-      Section 7 fixes the floor (smallest size with closed-set accuracy >= 80%) but not how it is
-      measured. Used: known-author sets (Federalist Papers; known-author pseudo-biblical works),
-      text in 1,000-word blocks, sizes 1k/2k/5k/10k/20k, 20 seeded trials per author per size, a
-      fixed 5,000-word test for the reference curve, at least 5 reference blocks for the test
-      curve, and a floor defined as the smallest size from which every larger size also reaches
-      80%. To be registered before BOM-21 relies on the floors.
-  - key: timesplit.design
-    issue: BOM-48
-    note: >
-      Amendment 5 registers the gate (time-split accuracy at the section 7 floor) but not the
-      baseline's design. Used: 30 corpus authors drawn with the root seed from those with 10,000+
-      words both before and after a gap of at least 7 years; a 5,000-word passage from one side
-      attributed among every drawn author's profile from the other, both directions; candidates
-      with text on both sides of 1830 attributed among the candidates' profiles from the other side.
-  - key: benchmark.design
-    issue: BOM-21
-    note: >
-      Section 7 names the benchmark's parts and pass criteria but not its construction. Used:
-      tasks in data/benchmark/tasks.json (Federalist; known-author pseudo-biblical works; Scott's
-      dictated novels of 1819 against his hand-written novels and ten contemporaries), 20
-      seeded 5,000-word tests per author from text held out of the reference, General Imposters
-      with imposters from the genre-matched control set (history; curated pseudo-biblical;
-      fiction in general prose), Delta judged closed-set only (6.1 defines no verification score
-      for it), the GI open-set false-positive rate measured on held-out trials (two folds), and
-      ENSC's alpha searched over 1e-6 to 0.5.
-  - key: synthesis.imitation_weights
-    issue: BOM-46
-    note: >
-      Section 9's imitation-accuracy bands rest on 3 dual-register authors
-      (data/benchmark/dual_register.json). Used: each method's imitation accuracy reported with an
-      exact Clopper-Pearson 95% interval and its n, and 6.7 run at equal method weights beside the
-      section 9 weights (Amendment 7 draft, Change 7).
-  - key: benchmark.imposter_fill
-    issue: BOM-21
-    note: >
-      Amendment 2 draws GI's imposters from a pool of 200 genre-matched controls; Amendment 6's
-      curated pseudo-biblical list has 18 works, 10 of them usable once the task authors are out,
-      so run 1 (data/benchmark/run1/) ran with 10. Used: every eligible curated work, the rest
-      drawn seeded from Amendment 3's list (data/controls/pseudo_biblical.txt), one copy per work;
-      the task authors' works excluded by work, not only by id (run 1 let in another copy of The
-      Late War); sealed copies excluded.
+# Registered by Amendment 7 (OSF revision 6ae500f8f0e01c4f4105c6bd, 2026-10-30): power.design,
+# classic.ensc.alpha, timesplit.design, borrowing.null_sample, synthesis.imitation_weights,
+# benchmark.design, benchmark.imposter_fill.
+pending_amendment: []

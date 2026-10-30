@@ -1,14 +1,22 @@
-# Amendment 7: sample-size floors and what they mean for the candidates, ENSC's open-set rule, the borrowing null, and the imitation weights
+# Amendment 7: sample-size floors and what they mean for the candidates, ENSC's open-set rule, the borrowing null, the imitation weights, and the benchmark's construction
 
-*DRAFT for the owner, 2026-10-28. Not filed. Further Phase 3 items may be added before filing.
-Evidence: `data/benchmark/power.json`, `data/benchmark/power_candidates.csv`,
-`data/benchmark/SOURCES.md`, `data/classic/corpus_run.json`.*
+*Filed 2026-10-30. Evidence: `data/benchmark/power.json`, `data/benchmark/power_candidates.csv`,
+`data/benchmark/timesplit.json`, `data/benchmark/dual_register.json`,
+`data/benchmark/benchmark.json`, `data/benchmark/run1/`, `data/benchmark/SOURCES.md`,
+`data/classic/corpus_run.json`, `data/reuse/null_sizing/`.*
 
 ---
 
-**Amendment 7, 2026-10-28, before the validation benchmark (BOM-21) and before any Book of
-Mormon scoring.** No method has been calibrated and no candidate scored. No hypothesis, decision
-rule or threshold of section 6 changes.
+**Amendment 7, filed 2026-10-30, before any Book of Mormon scoring** other than the registered
+replications of published studies (BOM-22). No hypothesis, decision rule or threshold of section
+6 changes.
+
+**Timing, stated plainly.** Changes 1 to 6 were written on 2026-10-28 and 2026-10-30, before the
+validation benchmark ran. Change 7 was written after the dual-register count and before the
+benchmark. Change 8 records how the benchmark was built and one correction made to it; it is
+written after the benchmark's results were seen, and is labelled post hoc for that reason.
+Under section 7 two methods failed (General Imposters and ENSC; Change 8), and they are reported
+and excluded from the synthesis as registered.
 
 **What prompted this.** Section 7 defines a method's minimum sample as the smallest size at
 which closed-set accuracy stays at or above 80%, and section 10 expects Joseph Smith to fall
@@ -91,3 +99,22 @@ each method's imitation accuracy is reported with an exact (Clopper-Pearson) 95%
 n. **6.7 is also run with equal method weights, and both results are published side by side.** If
 the two disagree on any headline conclusion, the paper says so and does not choose between them.
 Evidence: `data/benchmark/dual_register.json`.
+
+**Change 8 (post hoc): how the benchmark is built, and the imposter pool.** Section 7 names the
+benchmark's parts and pass criteria but not its construction. As run: the tasks in
+`data/benchmark/tasks.json` (the Federalist Papers; four known authors of imitation scripture,
+Hunt, Snowden, Linning and Hughes, one copy per text; Walter Scott's two novels dictated in 1819
+tested against his hand-written novels and ten novelists of 1810-1830); 20 seeded 5,000-word
+tests per author from text held out of the reference; Burrows' and Cosine Delta judged closed-set
+only, since 6.1 gives them no verification score; General Imposters' open-set false-positive rate
+measured on held-out trials (two folds); ENSC's alpha searched over 1e-6 to 0.5 under Change 4.
+General Imposters draws its imposters from the genre-matched controls (5.1; Amendment 2: 100 per
+trial from a pool of 200). Amendment 6's curated pseudo-biblical list has 18 works, of which 10
+were usable once the task authors' works were removed, and the first run used that pool of 10;
+it also admitted another copy of one test author's book. The registered pool size is kept:
+**every eligible curated work is used and the rest is drawn, seeded, from Amendment 3's list, one
+copy per work; the task authors' works are excluded as works, not only by file; sealed copies
+are excluded.** The first run is published alongside (`data/benchmark/run1/`). Result of the
+corrected run: Burrows' Delta 100% and Cosine Delta 97% closed-set accuracy; General Imposters
+83% closed-set, with a match threshold at the maximum score, and ENSC 66% open-set false
+positives at alpha 0.5: both fail section 7.

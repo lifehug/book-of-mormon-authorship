@@ -14,7 +14,7 @@ is not touched until the null is fixed.
 document frequencies and every volume's score follow from that. ``size`` draws genre-stratified
 samples of n volumes from those scores, 1,000 times per n, and reports the spread of the 99th
 percentile. The chosen n is the smallest whose 95% interval lies within ``tolerance`` of the
-threshold (``pending_amendment: borrowing.null_sample``).
+threshold (Amendment 7 Change 6).
 
 Usage::
 

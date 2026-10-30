@@ -248,15 +248,14 @@ def classic_kwargs(cfg: dict | None = None) -> dict:
     return {
         "imposters": {"trials": gi["trials"], "feature_fraction": gi["feature_fraction"],
                       "distance": distance},
-        # pending_amendment classic.ensc.alpha: the registered value once pinned
-        "ensc": {"alpha": en.get("alpha", en["alpha_provisional"]),
-                 "priors": en.get("priors", en["priors_provisional"])},
+        # the demonstration alpha; a calibrated run passes thresholds.json's (Amendment 7 Change 4)
+        "ensc": {"alpha": en["alpha_demo"], "priors": en["priors"]},
         "mfw_min_doc_fraction": c["mfw_min_doc_fraction"],
     }  # fmt: skip
 
 
 def pending(cfg: dict | None = None) -> list[dict]:
-    """Choices this file does not fix yet; each needs a dated amendment before BOM-21."""
+    """Choices this file does not fix yet; each needs a dated amendment."""
     cfg = cfg if cfg is not None else load()
     return list(cfg.get("pending_amendment") or [])
 
