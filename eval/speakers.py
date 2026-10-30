@@ -3,9 +3,10 @@
 Larsen, Rencher and Layton assigned every quoted segment of the book to its originator by hand
 and published only the word count per speaker (their Appendix B). This rebuilds that labelling
 with a model (simulated, labelled as such): each chapter is cut into numbered units of
-``UNIT_WORDS`` words, and the model says from which unit each speaker begins. The rule is
-Larsen's: words belong to whoever originally speaks them, the innermost speaker of a quotation
-within a quotation ("the Lord" quoted by Isaiah is the category ``lord quoted by isaiah``).
+``UNIT_WORDS`` words, and the model labels every unit with its speaker (one label per unit, so
+the reply's length checks it). The rule is Larsen's: words belong to whoever originally speaks
+them, and a quotation within a quotation goes to the innermost speaker ("the Lord" quoted by
+Isaiah is the category ``lord quoted by isaiah``).
 
 The labelling is checked against Appendix B: each speaker's total word count should come out
 close to theirs (``LARSEN_COUNTS``). Only the Book of Mormon text is involved (the replication
@@ -65,10 +66,8 @@ Chapter: {book} {chapter}.
 
 {units}
 
-Reply with JSON only, no other text: one list of objects {{"from": <unit number>, "speaker": \
-<label>}} in order, the first starting at unit 1. A speaker continues until the next object. \
-Unit numbers must strictly increase: if the speaker changes inside a unit, give that unit to \
-whoever speaks most of it, and never use a unit number twice. Give the list once, with no \
+Reply with JSON only, no other text: one list of exactly {n_units} labels, one for each unit \
+in order (the label of whoever speaks most of that unit). Give the list once, with no \
 corrections or commentary."""
 
 
@@ -86,31 +85,23 @@ def _key(c: dict) -> str:
 
 
 def _parse(text: str, n_units: int) -> list[dict] | None:
-    """The last complete JSON list in the reply (a reply that corrects itself ends with its final
-    answer), checked: units in range, strictly increasing, starting at 1."""
-    segs = None
-    for m in re.finditer(r"\[\s*\{.*?\}\s*\]", text, re.S):
+    """The reply's list of one label per unit (the last such list, if the reply repeats itself),
+    turned into segments: where each speaker begins."""
+    labels = None
+    for m in re.finditer(r"\[[^\[\]]*\]", text, re.S):
         try:
-            segs = json.loads(m.group(0))
+            got = json.loads(m.group(0))
         except json.JSONDecodeError:
             continue
-    if segs is None:
+        if isinstance(got, list) and len(got) == n_units and all(isinstance(x, str) for x in got):
+            labels = [x.strip().lower() for x in got]
+    if labels is None:
         return None
-    out = []
-    for s in segs:
-        if not isinstance(s, dict) or "from" not in s or "speaker" not in s:
-            return None
-        f = int(s["from"])
-        if not 1 <= f <= n_units:
-            return None
-        out.append({"from": f, "speaker": str(s["speaker"]).strip().lower()})
-    if (
-        not out
-        or out[0]["from"] != 1
-        or any(b["from"] <= a["from"] for a, b in zip(out, out[1:], strict=False))
-    ):
-        return None
-    return out
+    segs = []
+    for i, lab in enumerate(labels, 1):
+        if not segs or segs[-1]["speaker"] != lab:
+            segs.append({"from": i, "speaker": lab})
+    return segs
 
 
 def _ask(prompt: str, model: str) -> tuple[str, str]:
@@ -157,7 +148,12 @@ def label(model: str) -> int:
         us = units(c["text"])
         body = "\n".join(f"[{k}] {' '.join(u)}" for k, u in enumerate(us, 1))
         prompt = PROMPT.format(
-            n=UNIT_WORDS, labels=labels, book=c["book"], chapter=c["chapter"], units=body
+            n=UNIT_WORDS,
+            labels=labels,
+            book=c["book"],
+            chapter=c["chapter"],
+            units=body,
+            n_units=len(us),
         )
         state, text = _ask(prompt, model)
         rec = {"chapter": _key(c), "model": model, "units": len(us), "state": state}
