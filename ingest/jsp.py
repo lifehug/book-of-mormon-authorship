@@ -14,6 +14,7 @@ Usage::
 
     python -m ingest.jsp printers   # 468 pages
     python -m ingest.jsp original   # 231 pages
+    python -m ingest.jsp dc1835 --out data/private/replication   # BOM-22
 """
 
 from __future__ import annotations
@@ -33,6 +34,8 @@ BASE = "https://www.josephsmithpapers.org/paper-summary/"
 DOCS = {
     "printers": "printers-manuscript-of-the-book-of-mormon-circa-august-1829-circa-january-1830",
     "original": "original-manuscript-of-the-book-of-mormon-circa-12-april-1828-circa-1-july-1829",
+    # BOM-22: the Lectures on Faith (Larsen et al. 1980) and revelations (Holmes 1992)
+    "dc1835": "doctrine-and-covenants-1835",
 }
 USER_AGENT = "bom-authorship-research/0.1 (+https://github.com/lifehug/book-of-mormon-authorship)"
 # Since October 2026 josephsmithpapers.org answers 404 to a self-identified research agent and
