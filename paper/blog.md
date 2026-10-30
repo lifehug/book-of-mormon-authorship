@@ -1862,8 +1862,32 @@ setting after seeing which one wins. So it goes on the list for the repair step,
 to write the change down first, test it on fresh books with known authors, and register it before
 it's used. If it holds up there, it's a real fix. If not, the method stays failed.
 
+## Who is speaking, all 239 chapters
+
+The 1980 BYU study split the Book of Mormon not by its narrators but by everyone who speaks in it:
+Mormon, Nephi, Alma, King Benjamin, Abinadi, Samuel the Lamanite, Jesus, and so on, 24 speakers
+with enough words to test. They did it by hand and published only how many words each one got.
+
+So a model read every chapter and marked who is speaking in each 15-word stretch. It took three
+tries at the format. Asking "where does the speaker change?" let it repeat itself and argue with
+itself mid-answer. Asking for one label per stretch, in a list, it miscounted long lists by a few.
+Numbering each label fixed it: every chapter came back usable.
+
+The check is the 1980 word counts. Mormon: theirs 97,777, ours 97,555. King Benjamin: 4,204 and
+4,244. Mosiah: 1,167 and 1,170. Sixteen of the 24 within 10%. One miss taught us their rule: the
+prophet Zenos tells a long parable about an olive tree, in which "the Lord of the vineyard"
+speaks, and our labels gave those words to the Lord. Theirs gave the whole parable to Zenos, the
+teller. With that rule, Zenos came out 4,282 against their 4,230.
+
+Then their test, by speaker: the speakers really do use common words differently (the odds of
+that by chance are vanishingly small), and only 4 of 215 thousand-word blocks look more like one
+of the nineteenth-century candidates than like another Book of Mormon speaker. Both of their
+findings hold. So does the old caveat: blocks from one book aren't independent, and a sermon reads
+differently from a war story whoever writes them.
+
 ## Log
 
+- **2026-10-30, night.** BOM-22 Larsen by speaker: 239 chapters model-labelled (simulated), 16 of 24 speaker word counts within 10% of Larsen's Appendix B; 17 speakers differ (p = 8e-38), 4 of 215 blocks look like a candidate. All five replications done.
 - **2026-10-30, night.** BOM-21 closed: benchmark report `data/benchmark/BENCHMARK.md`; across 54 settings the Deltas meet the closed-set bar every time, the old ENSC never passes, General Imposters passes 8 times, all at 30% feature sampling (a lead for BOM-58, not adopted).
 - **2026-10-30, night.** BOM-22 Jockers: their deposited data reproduces with our code (same 110 words, CV error 8.76% vs 8.8%, Rigdon 169 vs 197); swapping in our candidate texts moves the answer (Rigdon 169 to 92, Pratt 42 to 137). Our Pratt/Cowdery samples that quote the Book of Mormon are now excluded.
 - **2026-10-30, night.** BOM-57 closed: General Imposters faithful (11 of 12 PAN 2014 rows within 4 points of Kestemont et al., median gap 1.3), so its failure stands; our BOM-20 ENSC was not the published method, so ENSC is rerun on the benchmark (BOM-58). Report: data/benchmark/fidelity/REPORT.md.
