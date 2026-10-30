@@ -299,3 +299,10 @@ pending_amendment:
       fiction in general prose), Delta judged closed-set only (6.1 defines no verification score
       for it), the GI open-set false-positive rate measured on held-out trials (two folds), and
       ENSC's alpha searched over 1e-6 to 0.5.
+  - key: synthesis.imitation_weights
+    issue: BOM-46
+    note: >
+      Section 9's imitation-accuracy bands rest on 3 dual-register authors
+      (data/benchmark/dual_register.json). Used: each method's imitation accuracy reported with an
+      exact Clopper-Pearson 95% interval and its n, and 6.7 run at equal method weights beside the
+      section 9 weights (Amendment 7 draft, Change 7).

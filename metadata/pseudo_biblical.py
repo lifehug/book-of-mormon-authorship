@@ -503,7 +503,8 @@ def work_key(title: str | None) -> str:
     named = named or next((k for k, pat in _EDITIONS.items() if re.search(pat, t)), None)
     if named:
         return f"named:{named}"
-    words = re.sub(r"oe", "e", re.sub(r"[^a-z\s]", " ", t)).split()
+    t = t.replace("\u0153", "oe").replace("\u00e6", "ae")
+    words = re.sub(r"\boe", "e", re.sub(r"[^a-z\s]", " ", t)).split()
     if words[:1] in (["the"], ["a"], ["an"]):
         words = words[1:]
     return " ".join(words[:4])

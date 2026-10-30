@@ -62,3 +62,14 @@ both pre-1830 samples are under BOM-43's 10,000-word floor.
 **Consequence for BOM-49.** No candidate has a measurable time-split accuracy at the 80% floor,
 and the general drift is far below it, so under Amendment 5 no expanded corpus is expected to earn
 its use. Recorded in advance in the Amendment 7 draft.
+
+## `dual_register.json` (BOM-46, 2026-10-30)
+
+`python -m eval.dual_register`. Authors of the curated pseudo-biblical works
+(`data/controls/pseudo_biblical_curated.txt`) who also have at least 10,000 masked words of other
+1780-1830 writing in the eligible corpus. Copies and editions of a curated work are not counted as
+other writing (`metadata.pseudo_biblical.work_key`), and each other work counts once, at its
+longest copy. Result: 10 authors, 3 qualify (Snowden, Dodsley, Kenrick); `other_prose_works`
+lists what was counted. The author field is the catalog's: Dodsley is credited with anthologies he
+edited, and Leacock's *American Chronicles* is catalogued under Samuel Adams, so the count is an
+upper bound on clean cases.

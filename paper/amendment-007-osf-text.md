@@ -1,4 +1,4 @@
-# Amendment 7: sample-size floors, what they mean for the candidates, and ENSC's open-set rule
+# Amendment 7: sample-size floors and what they mean for the candidates, ENSC's open-set rule, the borrowing null, and the imitation weights
 
 *DRAFT for the owner, 2026-10-28. Not filed. Further Phase 3 items may be added before filing.
 Evidence: `data/benchmark/power.json`, `data/benchmark/power_candidates.csv`,
@@ -76,3 +76,18 @@ frequency, because seven missed copies of *The Late War* made its distinctive ph
 and collapsed the null to zero; and because most volumes score exactly zero, a source is a
 significant parallel when its empirical p-value (the share of null volumes scoring at least as
 high, ties counted against it) is at most 0.01.
+
+**Change 7: the imitation weights rest on very few authors, so an equal-weight run is added.**
+Section 9 weights each method in the synthesis (6.7) by its accuracy at identifying authors from
+their imitation-biblical writing, in bands at 80% and 60%. That accuracy can be measured only on
+authors who wrote both an imitation-biblical work and other prose of adequate length. Counted on
+the curated pseudo-biblical list of Amendment 6 (18 works by 10 catalogued authors), with 10,000
+masked words of other writing required (the Change 2 floor) and copies of the curated works not
+counted: **three authors qualify** (Snowden, Dodsley, Kenrick), and the true number may be lower,
+since the catalog credits Dodsley with anthologies he edited and Kenrick's other work is itself an
+imitation (of Shakespeare). At three authors a method that is right every time has a 95% interval
+of about 29-100%, so the 60% and 80% bands cannot be told apart. Section 9's weights are kept, and
+each method's imitation accuracy is reported with an exact (Clopper-Pearson) 95% interval and its
+n. **6.7 is also run with equal method weights, and both results are published side by side.** If
+the two disagree on any headline conclusion, the paper says so and does not choose between them.
+Evidence: `data/benchmark/dual_register.json`.

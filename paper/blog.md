@@ -1609,8 +1609,40 @@ That leaves 18 works, from *The First Book of the American Chronicles* (1774) to
 Jasher* (1829). It's small. That matters for the next step, which asks how many of these
 authors also left ordinary prose we could test them on.
 
+## How many people wrote both ways? Three, maybe
+
+The plan has a rule for weighing methods against each other at the end. A method counts for more
+if it's good at recognizing an author from their *imitation* scripture. That's the hard case: can
+you still see Gilbert Hunt when he's writing like the King James Bible? To measure that you need
+authors who wrote both ways, imitation scripture *and* ordinary writing, so you can learn them from
+one and test on the other.
+
+So I counted. The 18 works have 10 named authors. I asked which of them have at least 10,000
+words of other writing in the corpus (the floor from earlier).
+
+The first answer was five, and two of those were wrong. Hunt's "other writing" turned out to be
+nine more printings of *The Late War*. Another author's was a second copy of the same book. Copies
+had been folded together on the list but not here. After fixing that, and counting each other book
+once instead of once per printing:
+
+- **Richard Snowden**: 143,000 words, his *History of North and South America*. Clean.
+- **Robert Dodsley**: 730,000 words, but most of it is anthologies he *edited*, like *A Select
+  Collection of Old Plays*. The catalog doesn't tell an editor from an author.
+- **William Kenrick**: 24,000 words, *Falstaff's Wedding*, which is itself an imitation, of
+  Shakespeare.
+
+So three at best, and really one clean case. With three people you can't tell a method that's
+right 60% of the time from one that's right 80%. Even three out of three only tells you "somewhere
+between 29% and 100%". The weighting rule can't be measured at that size.
+
+The plan saw this coming and said what to do. Keep the registered weights. Show each method's
+score with its uncertainty, not a bare percentage. And also run the final combination with every
+method weighted equally, and publish both side by side. If they disagree on anything that matters,
+the paper says so and doesn't pick. That goes into the Amendment 7 draft, which you file.
+
 ## Log
 
+- **2026-10-30, later.** BOM-46 closed: 3 dual-register authors (Snowden clean; Dodsley mostly as editor; Kenrick's other work is a Shakespeare imitation). Too few for the 60/80% weight bands: intervals reported, equal-weight synthesis added as Amendment 7 draft Change 7.
 - **2026-10-30, later.** BOM-54 closed: curated pseudo-biblical control is 18 works (1,349 model-judged, gate 15/15 and 25/25, 49 yes; a misspelt Book of Mormon copy and an 1882 book dropped, 29 copies folded). Seal now catches "Morman".
 - **2026-10-30.** BOM-45 closed: the borrowing null's 99th percentile from 500 books is +/-119% (six-fold range), +/-16% even at 20,000; the null becomes the whole period corpus (~200,000 books, one 45-minute pass). Missed copies of the target collapse rarity, so they're excluded. Amendment 7 draft, Change 6. Pseudo-biblical judging resumed after the weekly usage reset.
 - **2026-10-28, night.** BOM-48 closed: time-split baseline 37-60% (30 authors, 7+ year gap, chance 3%), far below the 80% gate; only Joseph Smith and Cowdery have text on both sides of 1830 (one test each, below the floor). No candidate expected to qualify for expanded corpora (Amendment 7 draft, Change 5).
