@@ -60,7 +60,9 @@ Use exactly one of these labels, or "other: <name>" for anyone else:
 Notes: "alma" is Alma the younger (use "other: alma the elder" for his father); "captain moroni" \
 is the military leader in Alma, not the narrator Moroni; "nephi son of helaman" is the Nephi of \
 Helaman and 3 Nephi; "jesus" is the resurrected Christ speaking in 3 Nephi; "lord" is the Lord \
-speaking anywhere else; "father" is God the Father speaking; "angel" is an angel speaking.
+speaking anywhere else; "father" is God the Father speaking; "angel" is an angel speaking. \
+Characters inside a parable or allegory belong to its teller: the allegory of the olive tree \
+(Jacob 5), including the Lord of the vineyard and his servant, is "zenos" throughout.
 
 Chapter: {book} {chapter}.
 
@@ -149,6 +151,14 @@ def _done() -> dict[str, dict]:
         r = json.loads(ln)
         last[r["chapter"]] = r
     return last
+
+
+def relabel(chapter: str) -> None:
+    """Mark one chapter for relabelling (a ``RETRY`` record), after a prompt correction."""
+    with OUT.open("a") as fh:
+        fh.write(
+            json.dumps({"chapter": chapter, "state": "RETRY", "reason": "prompt corrected"}) + "\n"
+        )
 
 
 def label(model: str) -> int:

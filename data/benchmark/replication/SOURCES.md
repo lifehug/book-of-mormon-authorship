@@ -31,3 +31,14 @@ the corrected data. Read by `python -m eval.replicate jockers-data`.
 `python -m eval.replicate jockers-pamr` runs `eval/jockers_pamr.R` and needs R with the `pamr`
 package (CRAN; used here: R 4.6.2, pamr 1.57, installed with `brew install r` and
 `install.packages("pamr")` into `~/.R/library`).
+
+## `larsen_speakers.jsonl`, `larsen_speakers_check.txt` (BOM-22, 2026-10-30)
+
+Speaker labels for the 239 chapters of `chapters_1830.jsonl`, for the Larsen et al. (1980)
+replication: `python -m eval.speakers label --model sonnet` (Claude Sonnet via `claude -p`;
+**simulated labelling, not a human reading**). Append-only log: the last record per chapter
+counts; earlier records keep the replies that failed to parse and the one chapter (Jacob 5)
+relabelled after the parable rule was added. Three prompt formats were used in turn (change
+points; one label per unit; labels keyed by unit number); the final labels of 133 chapters came
+from the first two formats and passed their stricter checks. `larsen_speakers_check.txt` is
+`python -m eval.speakers check`: per-speaker word totals against Larsen et al.'s Appendix B.

@@ -13,7 +13,7 @@ published method is run on our texts, and where it does not, why.
 
 | Study | Published | Replication | Matches? |
 | --- | --- | --- | --- |
-| Larsen, Rencher and Layton 1980 | narrators differ (odds of one author < 1 in 100 billion); no BoM block resembles a candidate | 4 narrators differ, MANOVA p = 1e-14; 11 of 246 BoM blocks classified to a candidate | yes, both findings, with the same caveat on the p-value |
+| Larsen, Rencher and Layton 1980 | speakers differ (odds of one author < 1 in 100 billion); no BoM block resembles a candidate | by speaker (relabelled, 16 of 24 speaker counts within 10% of theirs): 17 speakers differ, p = 8e-38; 4 of 215 blocks classified to a candidate | yes, both findings, with the same caveat on the p-value |
 | Holmes 1992 | Joseph Smith's own writing and Isaiah separate; prophets do not cluster by prophet; revelations sit with the prophets | all five variables: Joseph Smith 3 of 3 alone; prophets mixed; D&C 1835 3 of 3 with the prophets; Isaiah 2 of 3 apart | yes (his 10,000-equivalent conversion does not reproduce from his formulas) |
 | Jockers, Witten and Criddle 2008 | NSC: Rigdon first or second for 197 of 239 chapters, Spalding 110, Isaiah-Malachi 101 | On their published data: same 110 words, cross-validated error 8.76% (8.8%), Rigdon 169. On our texts: Pratt 193, Rigdon 29 | **method yes, result no**: the leading candidate follows the texts chosen for each candidate |
 | Schaalje, Fields, Roper and Snow 2011 (ENSC) | 175 of 239 chapters to an unobserved author | published method, our texts: 225 of 239 to an unobserved author, 13 Isaiah | yes, at the level of the conclusion; the method's answer depends on candidate sample length and kind (BOM-57) |
@@ -21,21 +21,38 @@ published method is run on our texts, and where it does not, why.
 
 ## 1. Larsen, Rencher and Layton (1980)
 
-**Run.** The 10 most frequent of their 38 function words, arcsine-transformed relative frequency,
-1,000-word blocks. Book of Mormon blocks by narrator from BOM-17's segments: Nephi 43, Jacob 9,
-Mormon 169, Moroni 25. Candidate blocks: Joseph Smith 33, Cowdery 50, Ethan Smith 239, Hunt 57,
-Phelps 30, Rigdon 22, Pratt 69, Spalding 43, *Lectures on Faith* 24.
+**Run, by speaker as published.** Larsen et al. assigned every quoted segment of the book to its
+originator by hand and published only each speaker's word count (their Appendix B). We rebuilt
+that labelling with a model (`eval/speakers.py`, Sonnet, simulated; labels in
+`replication/larsen_speakers.jsonl`): each chapter in 15-word units, every unit given to whoever
+originally speaks it, a quotation within a quotation to the innermost speaker, and a parable's
+characters to its teller. **Checked against their published counts**
+(`replication/larsen_speakers_check.txt`): 16 of their 24 speakers within 10%, 20 within 20%
+(Mormon 97,555 against 97,777; Benjamin 4,244 against 4,204; Zenos 4,282 against 4,230). The
+four outside 20% are "the Lord quoted by Isaiah" (0.79), Nephi son of Helaman (1.23), the
+angel (1.74: they count one particular angel, our label every angel) and the Father (1.42). One
+convention was corrected after the first check: Jacob 5, Zenos's allegory, had gone to "the
+Lord" inside it; Larsen evidently gave the whole allegory to Zenos, its teller, and the chapter
+was relabelled with that rule.
 
-**Result.** MANOVA across the four narrators: Wilks' lambda 0.575, F(30, 685) = 4.74,
-p = 1.0e-14. Leave-one-out discriminant analysis put 11 of 246 Book of Mormon blocks with a
-nineteenth-century candidate (Joseph Smith 5, Phelps 2, Rigdon 2, *Lectures on Faith* 2); the rest went to a Book of Mormon narrator, though often the wrong one
-(Mormon's blocks: 95 to Mormon, 29 Moroni, 26 Nephi, 9 Jacob).
+Then their analysis: the 10 most frequent of their 38 function words, arcsine-transformed
+relative frequencies, 1,000-word blocks; Jesus, Isaiah and the Lord quoted by Isaiah left out as
+in their first analyses; speakers with at least two blocks (17; they had 21, four with about one
+block). Candidates: Joseph Smith, Cowdery, Ethan Smith, Hunt, Phelps, Rigdon, Pratt, Spalding and
+the *Lectures on Faith*, Book of Mormon-quoting samples left out (section 3).
 
-**Comparison.** Both headline findings return. The critique stands as well: blocks from one book
-are not independent, so the p-value overstates certainty by an unknown amount, and the
-narrator-to-narrator confusion above is large enough that "the narrators differ" is a statement
-about group means, not about blocks being recognisable. The replication has 4 narrators, not
-their 21 speakers (BOM-17 labels narrators, not quoted speakers), so it tests the weaker claim.
+**Result.** MANOVA across the 17 speakers, 215 blocks: Wilks' lambda 0.079, p = 8e-38. Leave-one-
+out discriminant analysis put 4 of 215 speaker blocks with a nineteenth-century candidate.
+
+**Also at narrator level** (Nephi 43, Jacob 9, Mormon 169, Moroni 25 blocks of the masked text):
+Wilks' lambda 0.575, p = 1e-14; 11 of 246 blocks classified to a candidate.
+
+**Comparison.** Both headline findings return, more strongly by speaker than by narrator: the
+speakers differ in function-word use ("less than 1 in 100 billion", p. 232), and almost no
+block resembles a nineteenth-century candidate (p. 234). The critique stands as well: blocks
+from one book are not independent random samples, so the p-value overstates certainty by an
+unknown amount, and differences between speakers may track genre (sermon, war narrative,
+prophecy) as much as authorship.
 
 ## 2. Holmes (1992)
 
@@ -208,11 +225,9 @@ BOM-24 to be resolved there; it does not change this replication, which uses Joh
   back from that data in that tool (section 3). The threshold they used is not reported.
 - **Schaalje et al.'s candidate texts.** We hold one Rigdon, not their early and late corpora, and
   different Joseph Smith holographs; their smoothing across chapters is not reproduced (section 4).
-- **Larsen et al.'s quoted speakers.** Their 21 speakers came from hand-assigning every quoted
-  segment; only the word count per speaker is published (their Appendix B), so the split would
-  have to be relabelled from the text. We test their weaker claim at the level of the four
-  narrators. Relabelling, checked against their published word counts, is possible and costs a
-  model-labelling pass (simulated); it is pending the owner's decision.
+- **Larsen et al.'s quoted speakers.** Rebuilt by model labelling (simulated) and checked
+  against their published word counts: 16 of 24 within 10%; the exact segment boundaries they
+  drew by hand cannot be recovered (section 1).
 
 ## Where the results match, where they differ, and why
 

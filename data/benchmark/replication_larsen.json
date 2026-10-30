@@ -1,8 +1,8 @@
 {
- "config_sha256": "3d8111336b8d1d3214a4524e4b8352547e6b55aeab942a7cada37b405fdfa1d4",
+ "config_sha256": "04a65b90de2625ffb93b796fa9515929de6b49c0eab675de206692589818bc3a",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "2289e3c6a4bb3281fd4e0e1c4e90601626e4bed9",
+ "git_commit": "27b094bf3e37092b7643f4630d04ca610745d6e8",
  "words": [
   "and",
   "the",
@@ -15,6 +15,274 @@
   "for",
   "be"
  ],
+ "speakers": {
+  "blocks_per_speaker": {
+   "abinadi": 2,
+   "alma": 20,
+   "ammon": 2,
+   "amulek": 3,
+   "angel": 3,
+   "benjamin": 4,
+   "captain moroni": 3,
+   "father": 1,
+   "helaman": 5,
+   "isaiah": 7,
+   "jacob": 8,
+   "jesus": 10,
+   "lehi": 4,
+   "lord": 11,
+   "lord quoted by isaiah": 3,
+   "mormon": 97,
+   "moroni": 16,
+   "mosiah": 1,
+   "nephi": 29,
+   "nephi son of helaman": 2,
+   "samuel the lamanite": 2,
+   "zeniff": 1,
+   "zenos": 4
+  },
+  "speakers_in_manova": [
+   "abinadi",
+   "alma",
+   "ammon",
+   "amulek",
+   "angel",
+   "benjamin",
+   "captain moroni",
+   "helaman",
+   "jacob",
+   "lehi",
+   "lord",
+   "mormon",
+   "moroni",
+   "nephi",
+   "nephi son of helaman",
+   "samuel the lamanite",
+   "zenos"
+  ],
+  "manova": {
+   "wilks_lambda": 0.07911889445193487,
+   "F": 3.5307645338479525,
+   "df1": 160,
+   "df2": 1633.169945734629,
+   "p_value": 7.954116241124294e-38,
+   "groups": 17,
+   "blocks": 215
+  },
+  "lda_leave_one_out": {
+   "BoM abinadi": {
+    "BoM nephi son of helaman": 1,
+    "BoM jacob": 1
+   },
+   "BoM alma": {
+    "BoM ammon": 4,
+    "BoM nephi son of helaman": 4,
+    "BoM abinadi": 1,
+    "BoM benjamin": 3,
+    "BoM jacob": 1,
+    "BoM lehi": 2,
+    "BoM alma": 1,
+    "BoM captain moroni": 3,
+    "BoM samuel the lamanite": 1
+   },
+   "BoM ammon": {
+    "BoM lord": 1,
+    "BoM alma": 1
+   },
+   "BoM amulek": {
+    "BoM nephi son of helaman": 1,
+    "BoM lord": 1,
+    "BoM alma": 1
+   },
+   "BoM angel": {
+    "Gilbert J. Hunt": 1,
+    "BoM angel": 1,
+    "BoM abinadi": 1
+   },
+   "BoM benjamin": {
+    "BoM benjamin": 4
+   },
+   "BoM captain moroni": {
+    "BoM nephi son of helaman": 1,
+    "BoM captain moroni": 1,
+    "BoM jacob": 1
+   },
+   "BoM helaman": {
+    "Lectures on Faith": 1,
+    "BoM helaman": 3,
+    "BoM mormon": 1
+   },
+   "BoM jacob": {
+    "BoM jacob": 1,
+    "BoM angel": 1,
+    "BoM amulek": 2,
+    "BoM nephi son of helaman": 2,
+    "BoM nephi": 2
+   },
+   "BoM lehi": {
+    "BoM moroni": 1,
+    "BoM lord": 2,
+    "BoM amulek": 1
+   },
+   "BoM lord": {
+    "BoM lord": 5,
+    "BoM amulek": 1,
+    "BoM lehi": 1,
+    "BoM jacob": 2,
+    "BoM ammon": 1,
+    "BoM angel": 1
+   },
+   "BoM mormon": {
+    "BoM helaman": 13,
+    "BoM mormon": 54,
+    "BoM moroni": 12,
+    "BoM nephi": 6,
+    "BoM zenos": 4,
+    "Lectures on Faith": 1,
+    "BoM lehi": 3,
+    "BoM abinadi": 1,
+    "BoM nephi son of helaman": 1,
+    "BoM amulek": 1,
+    "BoM captain moroni": 1
+   },
+   "BoM moroni": {
+    "BoM lehi": 3,
+    "BoM moroni": 4,
+    "BoM angel": 1,
+    "BoM mormon": 6,
+    "BoM lord": 1,
+    "BoM helaman": 1
+   },
+   "BoM nephi": {
+    "BoM moroni": 6,
+    "BoM nephi": 6,
+    "BoM lehi": 2,
+    "BoM mormon": 2,
+    "BoM nephi son of helaman": 1,
+    "BoM jacob": 2,
+    "BoM angel": 3,
+    "Lectures on Faith": 1,
+    "BoM amulek": 1,
+    "BoM abinadi": 1,
+    "BoM lord": 3,
+    "BoM ammon": 1
+   },
+   "BoM nephi son of helaman": {
+    "BoM alma": 1,
+    "BoM nephi": 1
+   },
+   "BoM samuel the lamanite": {
+    "BoM lord": 1,
+    "BoM abinadi": 1
+   },
+   "BoM zenos": {
+    "BoM moroni": 1,
+    "BoM zenos": 2,
+    "BoM abinadi": 1
+   },
+   "Ethan Smith": {
+    "Lectures on Faith": 10,
+    "Ethan Smith": 139,
+    "Sidney Rigdon": 15,
+    "Solomon Spalding": 19,
+    "Parley P. Pratt": 5,
+    "Oliver Cowdery": 13,
+    "Gilbert J. Hunt": 19,
+    "W. W. Phelps": 12,
+    "Joseph Smith": 7
+   },
+   "Gilbert J. Hunt": {
+    "Gilbert J. Hunt": 51,
+    "Solomon Spalding": 2,
+    "Ethan Smith": 4
+   },
+   "Joseph Smith": {
+    "Joseph Smith": 14,
+    "Parley P. Pratt": 4,
+    "W. W. Phelps": 1,
+    "BoM alma": 2,
+    "BoM mormon": 2,
+    "Solomon Spalding": 1,
+    "Oliver Cowdery": 4,
+    "Sidney Rigdon": 3,
+    "Lectures on Faith": 1,
+    "BoM ammon": 1
+   },
+   "Lectures on Faith": {
+    "Lectures on Faith": 11,
+    "Sidney Rigdon": 2,
+    "BoM moroni": 1,
+    "BoM jacob": 1,
+    "BoM nephi son of helaman": 1,
+    "Parley P. Pratt": 1,
+    "Solomon Spalding": 2,
+    "BoM benjamin": 1,
+    "BoM alma": 1,
+    "BoM ammon": 1,
+    "Joseph Smith": 1,
+    "BoM mormon": 1
+   },
+   "Oliver Cowdery": {
+    "BoM lehi": 1,
+    "Lectures on Faith": 2,
+    "Joseph Smith": 4,
+    "Sidney Rigdon": 8,
+    "Oliver Cowdery": 18,
+    "Ethan Smith": 4,
+    "Solomon Spalding": 7,
+    "W. W. Phelps": 4,
+    "BoM nephi son of helaman": 1,
+    "Parley P. Pratt": 1
+   },
+   "Parley P. Pratt": {
+    "Joseph Smith": 6,
+    "Ethan Smith": 7,
+    "Sidney Rigdon": 7,
+    "Lectures on Faith": 4,
+    "Parley P. Pratt": 10,
+    "W. W. Phelps": 9,
+    "Oliver Cowdery": 3,
+    "Solomon Spalding": 19,
+    "BoM angel": 1,
+    "Gilbert J. Hunt": 1,
+    "BoM lord": 1,
+    "BoM lehi": 1
+   },
+   "Sidney Rigdon": {
+    "W. W. Phelps": 2,
+    "Sidney Rigdon": 8,
+    "Oliver Cowdery": 3,
+    "Lectures on Faith": 1,
+    "Joseph Smith": 3,
+    "BoM captain moroni": 1,
+    "Ethan Smith": 3,
+    "Parley P. Pratt": 1
+   },
+   "Solomon Spalding": {
+    "W. W. Phelps": 2,
+    "Sidney Rigdon": 3,
+    "Oliver Cowdery": 7,
+    "Parley P. Pratt": 4,
+    "Solomon Spalding": 23,
+    "Ethan Smith": 3,
+    "Gilbert J. Hunt": 1
+   },
+   "W. W. Phelps": {
+    "Oliver Cowdery": 6,
+    "W. W. Phelps": 12,
+    "Lectures on Faith": 3,
+    "BoM lehi": 1,
+    "BoM moroni": 1,
+    "Parley P. Pratt": 2,
+    "Solomon Spalding": 3,
+    "Gilbert J. Hunt": 1,
+    "Ethan Smith": 1
+   }
+  },
+  "bom_blocks_classified_to_a_candidate": 4,
+  "bom_blocks": 215,
+  "labelling": "eval/speakers.py (model-assisted, simulated), checked against Larsen et al.'s Appendix B word counts"
+ },
  "blocks": {
   "Nephi": 43,
   "Jacob": 9,
