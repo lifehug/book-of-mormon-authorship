@@ -18,6 +18,7 @@ public link is the reference.
 | Larsen, Rencher and Layton (1980), "Who wrote the Book of Mormon? An analysis of wordprints", *BYU Studies* 20(3): 225-251 | the original design and word lists for the Larsen replication (BOM-22) | https://archive.bookofmormoncentral.org/sites/default/files/archive-files/pdf/larsen/2015-10-22/wayne_a._larsen_alvin_c._rencher_and_tim_layton_who_wrote_the_book_of_mormon_1980_0.pdf (also https://scholarsarchive.byu.edu/byusq/vol20/iss3/2) | downloaded 2026-10-30, `data/private/fidelity/larsen1980.pdf` |
 | Stamatatos et al. (2014), "Overview of the author identification task at PAN 2014" | the PAN 2014 corpora, the AUC x c@1 measure and competitors' results | https://ceur-ws.org/Vol-1180/CLEF2014wn-Pan-StamatosEt2014.pdf | downloaded 2026-10-30, `data/private/fidelity/stamatatos2014_pan.pdf` |
 | Holmes (1992), "A stylometric analysis of Mormon scripture and related texts", *JRSS A* 155(1): 91-120 | all nine tables (per-sample richness values; noun distributions and Sichel fits, Tables 3-4) and the fitting method (minimum chi-square on nouns, 10,000-word-equivalent alpha and theta) | https://doi.org/10.2307/2982671 (JSTOR) | supplied by the owner 2026-10-30 as a full-text conversion, `data/private/fidelity/holmes1992.md` |
+| Koppel and Winter, "Determining if two documents are by the same author", lecture slides (26) | the impostors method step by step; not the paper | https://cs.cornell.edu/courses/cs6740/2016sp/classes/Determining%20If%20Two%20Documents%20Are%20by%20the%20Same.pdf | downloaded 2026-10-30, `data/private/fidelity/koppel_winter_slides.pdf` |
 | PAN 2014 author verification corpora (training and test) | the data Kestemont et al. report on | to be recorded when downloaded | |
 
 ## What the sources say so far
@@ -50,7 +51,8 @@ Pratt 4%, Isaiah-Malachi 26%, Longfellow 1%.
 
 ## Still wanted
 
-Ranked by how much each could change a conclusion. "Paywalled" needs a library login or purchase;
+Ranked by how much each could change a conclusion. Numbers 1, 4, 6, 7 and 9 are all on Oxford
+Academic (*LLC*, now *DSH*); number 2 is on Wiley. "Paywalled" needs a library login or purchase;
 "browser only" is free but refuses scripted downloads (a JavaScript check), so it is fetched by
 hand. DOIs checked against Crossref on 2026-10-30.
 
