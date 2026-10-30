@@ -66,7 +66,9 @@ MASKS = Path("data/kjv_mask/bom/spans.jsonl")
 # low enough to catch a quoted extract of about 30 words.
 MIN_SHARED = 20
 OUT = Path("data/catalog/sealed.json")
-TITLE = re.compile(r"\bbook of mormon\b|\bgolden bible\b", re.IGNORECASE)
+TITLE = re.compile(
+    r"\bbook of morm[ao]n\b|\bgolden bible\b", re.IGNORECASE
+)  # "Morman": a misspelt catalog title
 
 _GRAMS: set[int] | None = None
 

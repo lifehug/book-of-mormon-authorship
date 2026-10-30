@@ -45,3 +45,20 @@ books. Each control member's year is now its title-page year where one was found
 1780-1830, or that cannot be dated, are removed (276 in all). The pool samples are drawn
 exactly as before, from the catalog year, and then filtered, so no member changes and every KJV
 mask carries over; eight volumes corrected to the 1820s joined the 1820s sermons and were masked.
+
+**The curated pseudo-biblical list (BOM-54, Amendment 6, 2026-10-30).**
+`pseudo_biblical_curated.txt` is the confirmatory pseudo-biblical control: 18 works, one id per
+work. Build: `python -m metadata.pseudo_biblical markers`, `candidates`, `judge`, `build`
+(files in `pseudo_biblical/`). 1,349 candidates passed the marker rule set from the named
+editions; each was judged by two models (Sonnet and Opus, with a third breaking ties: 97.7%
+agreement; simulated reading, not a human check) in `judgments.jsonl`. The known-answer gate
+passed (all 15 named editions admitted, all 25 rejection-set works refused). 49 judged yes; the
+build then drops what a judgment cannot see, and collapses copies, all recorded in `build.json`:
+
+- `internet_archive:book_of_morman`, a modern Book of Mormon catalogued as "Book of Morman"
+  (the sealing regex, `metadata.sealed.TITLE`, now accepts that spelling);
+- `institutional_books:HNQRCW` (*Oahspe*, 1882, catalogued 1800), by its BOM-56 title-page year;
+- 29 copies folded into their work (`copies_collapsed`): editions of Hunt's *Late War* and his
+  *Historical Reader*, Dodsley's *Oeconomy* / *Economy of Human Life*, Snowden's 1793 and 1802
+  *American Revolution*, *Jasher*. The earliest copy is kept. *The Acts*, Chap. I and Chap. II
+  (1790), are separate pamphlets of one series and both stay.

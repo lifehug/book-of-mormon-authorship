@@ -180,9 +180,14 @@ def eligible_rows(cfg: dict) -> list[dict]:
     out = []
     for r in pq.read_table(CATALOG, columns=cols).to_pylist():
         r["year"] = effective_year(r["work_id"], r["year"])  # BOM-56: placeholder dates
-        if (r["has_text"] and r["year"] and lo <= r["year"] <= hi
-                and r["source"] not in NOT_WORKS
-                and r["work_id"] not in excluded and r["work_id"] not in nonkeeper):  # fmt: skip
+        if (
+            r["has_text"]
+            and r["year"]
+            and lo <= r["year"] <= hi
+            and r["source"] not in NOT_WORKS
+            and r["work_id"] not in excluded
+            and r["work_id"] not in nonkeeper
+        ):
             out.append(r)
     return out
 
@@ -478,6 +483,32 @@ def judge(workers: int) -> int:
     return 0
 
 
+_EDITIONS = {
+    "snowden": r"american revolution.{0,40}(scriptur|ancient hist)",
+    "hunt": r"late war,? between the united states and great britain"
+    r"|historical reader.{0,40}late war",
+}
+
+
+def work_key(title: str | None) -> str:
+    """One key per work, so copies and editions count once: the named works by name (with
+    ``_EDITIONS`` for their other editions), else the title's first four words after
+    folding "oe" to "e" and dropping a leading article ("The oeconomy of human life" and "The
+    economy of human life" are one work)."""
+    t = (title or "").lower()
+    named = _named_key(t)
+    # editions whose titles the named patterns miss (they also pick the frozen controls, so they
+    # stay narrow): Snowden's 1802 "scriptural, or, ancient historical style", Hunt's 1819 title
+    # without "ancient historical style", and his Historical Reader, which reprints The Late War
+    named = named or next((k for k, pat in _EDITIONS.items() if re.search(pat, t)), None)
+    if named:
+        return f"named:{named}"
+    words = re.sub(r"oe", "e", re.sub(r"[^a-z\s]", " ", t)).split()
+    if words[:1] in (["the"], ["a"], ["an"]):
+        words = words[1:]
+    return " ".join(words[:4])
+
+
 def build() -> int:
     cands = {
         c["work_id"]: c for c in (json.loads(ln) for ln in CANDIDATES.read_text().splitlines())
@@ -503,14 +534,36 @@ def build() -> int:
         "passed": not missed and not wrongly,
     }
     yes = [cands[w] for w in cands if last[w]["final"] == "YES" and w not in th["rejection_set"]]
+    # what a judgment cannot catch: a copy of the Book of Mormon (4.2), and a date that BOM-56
+    # shows is a placeholder; named works keep their date exemption (BOM-18)
+    from metadata import sealed
+    from metadata.dates import effective_year
+
+    lo, hi = load_config()["corpus"]["date_range"]
+    paths = {
+        r["work_id"]: r["text_path"]
+        for r in pq.read_table(CATALOG, columns=["work_id", "text_path"]).to_pylist()
+    }
+    seal, dropped = sealed.sealed_ids(), {}
+    kept = []
+    for c in yes:
+        w = c["work_id"]
+        y = effective_year(w, c["year"])
+        if w in seal or sealed.contaminated(Path(paths[w]).read_text(errors="replace")):
+            dropped[w] = "sealed: a copy of the Book of Mormon"
+        elif not _named_key(c["title"]) and not (y and lo <= y <= hi):
+            dropped[w] = f"date outside {lo}-{hi} on its title page (BOM-56)"
+        else:
+            kept.append({**c, "year": y or c["year"]})
     order = {w: i for i, w in enumerate(sorted(cands))}
     works: dict[str, dict] = {}
-    for c in sorted(yes, key=lambda c: (c["year"] or 9999, order[c["work_id"]])):
-        key = (
-            _named_key(c["title"])
-            or f"{c['author'] or ''}|{' '.join((c['title'] or '').lower().split()[:5])}"
-        )
-        works.setdefault(key, c)
+    for c in sorted(kept, key=lambda c: (c["year"] or 9999, order[c["work_id"]])):
+        works.setdefault(work_key(c["title"]), c)
+    copies = {
+        c["work_id"]: works[work_key(c["title"])]["work_id"]
+        for c in kept
+        if works[work_key(c["title"])]["work_id"] != c["work_id"]
+    }
     ids = "".join(c["work_id"] + "\n" for c in sorted(works.values(), key=lambda c: c["work_id"]))
     LIST.write_text(ids)
     summary = {
@@ -518,6 +571,8 @@ def build() -> int:
         "judged": len(cands),
         "yes": len(yes),
         "works": len(works),
+        "dropped": dropped,
+        "copies_collapsed": copies,
         "sha256_of_id_list": hashlib.sha256(ids.encode()).hexdigest(),
         "agreement_sonnet_opus": sum(last[w]["sonnet"] == last[w]["opus"] for w in cands)
         / len(cands),
