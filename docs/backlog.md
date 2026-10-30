@@ -484,6 +484,42 @@ Note on ordering: this issue's number is higher than the issues it blocks, so th
 **Done when:** a replication report is published. This issue runs on the Book of Mormon only with the published methods, not the new ones.
 **Depends on:** #21.
 
+### #57 Check the failed methods against their published results
+
+**Goal:** tell "our implementation is wrong" apart from "the method does not work on this problem", for the methods that failed #21 (General Imposters, ENSC).
+
+- [ ] General Imposters against Kestemont et al. (2016) Table 1 on the PAN 2014 corpora
+- [ ] ENSC against the published code and Federalist results (Funai 2010; Schaalje et al. 2011)
+- [ ] Record every difference between our code and the published method, and which ones change the result
+
+**Done when:** each method is classed faithful or not, with evidence. Sources and links: `data/benchmark/fidelity/SOURCES.md`.
+**Depends on:** #21.
+
+### #58 Repair or retire the methods that failed the benchmark
+
+**Goal:** decide, by a rule set before new results are seen, whether a failed method is repaired or retired.
+
+- [ ] Read #57's fidelity result with #21's multiverse
+- [ ] Fix implementation errors; test any change of method on fresh known-author texts only
+- [ ] Register a fix by amendment before use; keep the original failure published
+
+**Done when:** each failed method is registered as repaired or recorded as retired.
+**Depends on:** #57, #21.
+
+### #60 Improve the prior methods with this corpus and benchmark
+
+**Goal:** turn what the replications and fidelity checks found into tested improvements to the prior methods, and publish them as a contribution to the field. The end of Phase 3, finished before Phases 4-6 use the tools.
+
+- [ ] ENSC text-size adjustment refit on many authors, tested on held-out authors
+- [ ] Rare-phrase rarity counted by work, not by volume (feeds #24)
+- [ ] General Imposters: score ceiling and same-register confusion
+- [ ] Closed-set attribution: show how the answer follows sample selection and unmasked Bible text
+- [ ] Delta: a calibrated verification score
+- [ ] A methods report, and the benchmark as a reusable resource within #44's licence limits
+
+**Done when:** each lead is tested on held-out data and reported, and the methods report is published. Never tuned on the Book of Mormon; any fix used later is registered first.
+**Depends on:** #21, #22, #57, #58. **Feeds:** #24, #31, #35, #44.
+
 ## Phase 4 — Borrowing and parallels
 
 Phase 4 maps which earlier texts share wording or ideas with the Book of Mormon, and measures whether each overlap beats chance.

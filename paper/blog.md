@@ -1799,6 +1799,7 @@ candidate's text; I hadn't. Both get fixed before that replication is rerun.
 
 ## Log
 
+- **2026-10-30, night.** BOM-60 opened, the end of Phase 3: use what the replications found (ENSC's sample-length problem, rarity by work not copy, General Imposters' ceiling, closed-set traps, Delta's missing 'none') to test improvements to the prior methods on our corpus and benchmark, and publish them. BOM-57, 58 and 60 added to the backlog.
 - **2026-10-30, night.** Owner decided the Delta question (BOM-21): the two Deltas stay in, limited to 'which candidate is closest', and the paper must say they did not pass our bar. Recorded in the new `paper/deviations.md` (D1) and queued for the next amendment.
 - **2026-10-30, night.** BOM-57: ENSC ported from the thesis code. Federalist check: our old ENSC isn't the published method; the published one reproduces (16% lies between 3k and 5k-word samples) but its 'none' rate swings from 80% to 0% wrong with sample length. Schaalje 2011 now needed (size adjustment). Jockers 2008 bought: their Rigdon is mostly 1864; they masked Bible passages; 110 words listed.
 - **2026-10-30, night.** BOM-22 Johnson replication: The Late War ranks 97th of 221,344 (174 rare shared 4-grams, p = 0.0004), but 31st among books of 10,000+ words, behind mostly other imitation-scripture works; Napoleon 8th. The registered df<=5 rule can't see a reprinted source (Late War: ~11 copies); noted for BOM-24. BOM-59 opened (owner buys Jockers 2008), blocks BOM-22.
