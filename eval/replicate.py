@@ -583,6 +583,13 @@ def larsen() -> int:
         k: [w[i : i + LARSEN_BLOCK] for i in range(0, len(w) - LARSEN_BLOCK + 1, LARSEN_BLOCK)]
         for k, w in cand.items()
     }
+    lectures = dc1835_parts().get("lectures", [])
+    if lectures:  # Larsen et al. compared the Lectures on Faith too
+        cand["Lectures on Faith"] = lectures
+        cands["Lectures on Faith"] = [
+            lectures[i : i + LARSEN_BLOCK]
+            for i in range(0, len(lectures) - LARSEN_BLOCK + 1, LARSEN_BLOCK)
+        ]
     cands = {k: v for k, v in cands.items() if len(v) >= 2}
     within = manova({a: _arcsine(b, LARSEN_10) for a, b in bom.items()})
     allg = {
@@ -653,13 +660,38 @@ def holmes_samples() -> dict[str, list[str]]:
     isa = [w for _, t in _kjv({"ISA"}) for w in t]
     for i in range(0, len(isa) - HOLMES_SAMPLE + 1, HOLMES_SAMPLE):
         samples[f"Isaiah {i // HOLMES_SAMPLE + 1}"] = isa[i : i + HOLMES_SAMPLE]
-    dc = Path("data/private/replication/jsp_dc1835.jsonl")
-    if dc.exists():
-        text = " ".join(json.loads(ln).get("text", "") for ln in dc.read_text().splitlines())
-        toks = tokenize(text)
-        for i in range(0, min(len(toks), 3 * HOLMES_SAMPLE) - HOLMES_SAMPLE + 1, HOLMES_SAMPLE):
-            samples[f"D&C 1835 {i // HOLMES_SAMPLE + 1}"] = toks[i : i + HOLMES_SAMPLE]
+    revelations = dc1835_parts().get("revelations", [])
+    for i in range(0, min(len(revelations), 3 * HOLMES_SAMPLE) - HOLMES_SAMPLE + 1, HOLMES_SAMPLE):
+        samples[f"D&C 1835 {i // HOLMES_SAMPLE + 1}"] = revelations[i : i + HOLMES_SAMPLE]
     return samples
+
+
+DC1835 = Path("data/private/replication/jsp_dc1835.jsonl")
+
+
+def dc1835_parts() -> dict[str, list[str]]:
+    """The 1835 Doctrine and Covenants split by its own table of contents: the Lectures on Faith
+    (Lectures 1-7) and the revelations (Sections 1-100; Sections 101-102 are a statement and a
+    declaration, not revelations, and are left out with the minutes and index)."""
+    if not DC1835.exists():
+        return {}
+    parts: dict[str, list[str]] = {"lectures": [], "revelations": []}
+    current = None
+    for ln in DC1835.read_text().splitlines():
+        r = json.loads(ln)
+        title = (r.get("toc") or {}).get("pageTitle")
+        if title:
+            m = re.match(r"Section (\d+)", title)
+            current = (
+                "lectures"
+                if title.startswith("Lecture")
+                else "revelations"
+                if m and int(m.group(1)) <= 100
+                else None
+            )
+        if current:
+            parts[current] += tokenize(r.get("text") or "")
+    return parts
 
 
 def holmes() -> int:
