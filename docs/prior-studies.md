@@ -53,7 +53,8 @@ Sources were read in full where available. Paper texts are not copied into the r
   indistinguishable from the prophets.
 - **Replication needs.** The same prophet samples from the 1830 text (BOM-17 narrators), Joseph
   Smith's holograph writing (BOM-13), D&C revelations (Joseph Smith Papers), KJV Isaiah (BOM-06).
-- **Critique to test.** Vocabulary richness is weak for attribution (Hoover 2003); the samples come
+- **Critique to test.** Vocabulary richness is weak for attribution (usually cited to Hoover 2003,
+  https://doi.org/10.1023/a:1022673822140; not yet read here); the samples come
   from an edited modern text.
 - **Recovered 2026-10-30.** The Sichel fit: minimum chi-square on each sample's *noun* frequency
   distribution, then 10,000-word-equivalent alpha and theta (section 2.4, Tables 3-4). Full text

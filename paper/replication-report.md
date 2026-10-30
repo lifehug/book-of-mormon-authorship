@@ -50,8 +50,10 @@ and all three revelation samples fall in one cluster (2).
 
 **Comparison.** Matches all three of Holmes's findings: Joseph Smith's personal writing stands
 apart, the prophets do not separate by prophet, and the revelations cannot be told from the
-prophets. The critique also stands: these are vocabulary-richness measures, weak for
-attribution (Hoover 2003). Our samples are cut from the 1830 text, where Holmes used a modern
+prophets. The critique also stands: these are vocabulary-richness measures, and Holmes's own
+result shows their limit, since samples by the same prophet do not group together. (Hoover 2003,
+https://doi.org/10.1023/a:1022673822140, is the usual citation for this critique; not yet read
+here.) Our samples are cut from the 1830 text, where Holmes used a modern
 edited text, and the finding survived the change.
 
 ## 3. Jockers, Witten and Criddle (2008)

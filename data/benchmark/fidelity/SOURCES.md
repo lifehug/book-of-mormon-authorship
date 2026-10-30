@@ -57,28 +57,12 @@ Pratt 4%, Isaiah-Malachi 26%, Longfellow 1%.
 
 ## Still wanted
 
-Ranked by how much each could change a conclusion. Numbers 1, 4, 6, 7 and 9 are all on Oxford
-Academic (*LLC*, now *DSH*); number 2 is on Wiley. "Paywalled" needs a library login or purchase;
-"browser only" is free but refuses scripted downloads (a JavaScript check), so it is fetched by
-hand. DOIs checked against Crossref on 2026-10-30.
+None of these blocks any result. Each is worth buying only if the condition in the last column
+comes true; the owner has asked to be told when one would strengthen the final product. DOIs
+checked against Crossref on 2026-10-30.
 
-| # | Paper | Why | Link | Access |
-| --- | --- | --- | --- | --- |
-| 2 | Koppel and Winter (2014), "Determining if two documents are written by the same author", *JASIST* 65(1) | General Imposters' original definition and settings | https://doi.org/10.1002/asi.22954 | paywalled |
-| 3 | Kestemont et al. (2016), supplementary information | O2's exact iterations, feature share and imposter count | https://doi.org/10.1016/j.eswa.2016.06.029 | **likely unnecessary**: the authors' code is public, https://github.com/mikekestemont/ruzicka |
-
-**ENSC as published in the 2011 paper (adds to Funai 2010).**
-
-- *Size adjustment (eq. 12):* each class-feature sd becomes a function of the shrunken centroid
-  value and the **test** text's length `w`, `s^2 = 0.259 * c^1.1147 / w^0.661` for word
-  frequencies, in both the candidate terms and the latent term. The constants were fitted on
-  Hamilton and late-Rigdon texts, so the Hamilton validation below is not fully independent of
-  them. Training texts should be at least 1,000 words, composited where shorter.
-- *Their candidate texts (Appendix B):* Joseph Smith 5 composites of 2,081-3,362 words (Jessee
-  1989 holographs); early Rigdon 25 of 2,214-8,747 (54 signed newspaper articles and an oration,
-  1831-46); late Rigdon 15 of 3,678-6,784 (the 1863-73 revelations); Spalding 7 of 4,030-6,767;
-  Pratt 3,443-5,994; Cowdery 8 of 3,342-6,167 (letters to W. W. Phelps, 1834-35); Isaiah 8 of
-  3,903-5,429; Hamilton papers uncomposited, 960-5,716.
-- *Published Hamilton results:* Hamilton not among the candidates, 49 of 51 to the latent author
-  and 2 to Rigdon (3.9% wrong; the thesis's 15.69% was a different run); Hamilton among them (first
-  25 papers training, 26 tested), all 26 correct, open- and closed-set.
+| Paper | Why it might matter | Link | Get it if |
+| --- | --- | --- | --- |
+| Koppel and Winter (2014), "Determining if two documents are written by the same author", *JASIST* 65(1) | General Imposters' original definition and settings | https://doi.org/10.1002/asi.22954 (Wiley) | the General Imposters fidelity check against Kestemont et al. is ambiguous, or the paper discusses GI's origin |
+| Hoover (2003), "Another perspective on vocabulary richness", *Computers and the Humanities* 37 | the usual citation for the critique of vocabulary richness (Holmes replication) | https://doi.org/10.1023/a:1022673822140 (Springer) | the final paper cites it; until read, it is cited only as "usually cited for", never as a source we checked |
+| Kestemont et al. (2016), supplementary information | O2's exact iterations, feature share and imposter count | https://doi.org/10.1016/j.eswa.2016.06.029 | their public code (https://github.com/mikekestemont/ruzicka) does not settle the settings |
