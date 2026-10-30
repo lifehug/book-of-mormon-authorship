@@ -77,32 +77,64 @@ def stand_in_text() -> str:
     return " ".join(original_words(text, spans))
 
 
-_TARGET: set[int] | None = None
+def bom_text() -> str:
+    """The 1830 text with BOM-16's KJV spans removed (the Johnsons removed biblical matches)."""
+    from segment.build import original_words
+
+    spans = {}
+    for ln in Path("data/kjv_mask/bom/spans.jsonl").read_text().splitlines():
+        r = json.loads(ln)
+        spans[r["id"]] = r["spans"]
+    words = []
+    for ln in Path("data/bom/1830/edition_1830.jsonl").read_text().splitlines():
+        r = json.loads(ln)
+        if r["book"]:
+            words += original_words(r["text"], spans.get(f"bom:{r['seq']}", []))
+    return " ".join(words)
 
 
-def _scan_one(job: tuple[str, str, int]) -> tuple[str, int, list[int]]:
-    global _TARGET
-    if _TARGET is None:
-        _TARGET = {int(x) for x in (OUT / "target_grams.txt").read_text().split()}
-    wid, path, n = job
+# target -> (output directory, its text, the ids of its own copies to leave out of the scan)
+TARGETS = {
+    "stand_in": (OUT, stand_in_text, lambda: {STAND_IN}),
+    "bom": (
+        Path("data/reuse/bom"),
+        bom_text,
+        lambda: __import__("metadata.sealed", fromlist=["sealed_ids"]).sealed_ids(),
+    ),
+}
+
+_TARGET: dict[str, set[int]] = {}
+
+
+def _scan_one(job: tuple[str, str, int, str]) -> tuple[str, int, list[int]]:
+    wid, path, n, grams = job
+    if grams not in _TARGET:
+        _TARGET[grams] = {int(x) for x in Path(grams).read_text().split()}
     try:
         toks = tokens(Path(path).read_text(encoding="utf-8", errors="replace"))
     except OSError:
         return wid, 0, []
-    return wid, len(toks), sorted(gram_ids(toks, n) & _TARGET)
+    return wid, len(toks), sorted(gram_ids(toks, n) & _TARGET[grams])
 
 
-def scan(workers: int) -> int:
+def scan(workers: int, target_name: str = "stand_in") -> int:
     from metadata.pseudo_biblical import eligible_rows
     from ocr_fix.normalize import norm_path
 
-    OUT.mkdir(parents=True, exist_ok=True)
+    out_dir, text_of, copies_of = TARGETS[target_name]
+    out_dir.mkdir(parents=True, exist_ok=True)
     n = load_config()["borrowing"]["ngram"]
-    target = gram_ids(tokens(stand_in_text()), n)
-    (OUT / "target_grams.txt").write_text("\n".join(map(str, sorted(target))))
-    rows = [r for r in eligible_rows(load_config()) if r["work_id"] != STAND_IN]
-    jobs = [(r["work_id"], str(norm_path(r)), n) for r in rows]
-    print(f"stand-in has {len(target):,} distinct 4-grams; {len(jobs):,} volumes", flush=True)
+    target = gram_ids(tokens(text_of()), n)
+    grams = out_dir / "target_grams.txt"
+    grams.write_text("\n".join(map(str, sorted(target))))
+    own = copies_of()
+    rows = [r for r in eligible_rows(load_config()) if r["work_id"] not in own]
+    jobs = [(r["work_id"], str(norm_path(r)), n, str(grams)) for r in rows]
+    print(
+        f"{target_name}: {len(target):,} distinct {n}-grams; {len(jobs):,} volumes "
+        f"({len(own)} own copies left out)",
+        flush=True,
+    )
     start, recs = time.time(), []
     with ProcessPoolExecutor(workers) as pool:
         for i, (wid, n, hit) in enumerate(pool.map(_scan_one, jobs, chunksize=32), 1):
@@ -116,9 +148,9 @@ def scan(workers: int) -> int:
         pa.Table.from_pylist(recs, schema=schema).replace_schema_metadata(
             {"config_sha256": stamp()["config_sha256"]}
         ),
-        HITS,
+        out_dir / "hits.parquet",
     )
-    print(f"scanned {len(recs):,} in {time.time() - start:.0f}s -> {HITS}")
+    print(f"scanned {len(recs):,} in {time.time() - start:.0f}s -> {out_dir / 'hits.parquet'}")
     return 0
 
 
@@ -248,10 +280,11 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("scan")
+    s.add_argument("--target", choices=sorted(TARGETS), default="stand_in")
     s.add_argument("--workers", type=int, default=8)
     sub.add_parser("size")
     a = ap.parse_args(argv)
-    return scan(a.workers) if a.cmd == "scan" else size()
+    return scan(a.workers, a.target) if a.cmd == "scan" else size()
 
 
 if __name__ == "__main__":

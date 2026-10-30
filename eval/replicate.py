@@ -16,6 +16,7 @@ Usage::
 
     python -m eval.replicate chapters     # -> data/benchmark/replication/chapters_1830.jsonl
     python -m eval.replicate jockers      # -> data/benchmark/replication_jockers.json
+    python -m eval.replicate johnson      # after `reuse.rare scan --target bom`
 """
 
 from __future__ import annotations
@@ -375,12 +376,116 @@ def jockers() -> int:
     return 0
 
 
+# ------------------------------------------------------------- Chris and Duane Johnson (2013)
+
+JOHNSON_OUT = DIR.parent / "replication_johnson.json"
+JOHNSON_RATE = 1000  # rare: in fewer than one book per thousand (their rule)
+NAMED_SOURCES = {
+    "the_late_war": r"late war.{0,80}(1812|britain)",
+    "first_book_of_napoleon": r"first book of napoleon",
+}
+
+
+def johnson() -> int:
+    """Rank every period book by its density of rare 4-grams shared with the Book of Mormon."""
+    from collections import Counter
+
+    import numpy as np
+    import pyarrow.parquet as pq
+
+    from metadata.config import load as load_config
+    from metadata.config import stamp
+    from metadata.dates import effective_year
+
+    cfg = load_config()
+    lo, hi = cfg["corpus"]["date_range"]
+    recs = [r for r in pq.read_table("data/reuse/bom/hits.parquet").to_pylist() if r["words"] > 0]
+    cat = {
+        r["work_id"]: r
+        for r in pq.read_table(
+            "data/catalog/catalog.parquet", columns=["work_id", "title", "author_norm", "year"]
+        ).to_pylist()
+    }
+    df: Counter = Counter()
+    for r in recs:
+        df.update(r["hits"])
+    n = len(recs)
+    rules = {
+        "johnson_lt_1_per_1000": n / JOHNSON_RATE,
+        "preregistered_df_le": cfg["borrowing"]["max_df"],
+    }
+    per = cfg["borrowing"]["per_words"]
+    out = {}
+    for name, cut in rules.items():
+        rare = {g for g, c in df.items() if (c < cut if name.startswith("johnson") else c <= cut)}
+        dens = {r["work_id"]: per * sum(g in rare for g in r["hits"]) / r["words"] for r in recs}
+        shared = {r["work_id"]: sum(g in rare for g in r["hits"]) for r in recs}
+        order = sorted(dens, key=lambda w: -dens[w])
+        rank = {w: i + 1 for i, w in enumerate(order)}
+        null = np.array(
+            [dens[w] for w in dens if (y := effective_year(w, cat[w]["year"])) and lo <= y <= hi]
+        )
+
+        def p_of(w, null=null, dens=dens):
+            return float(((null >= dens[w]).sum() + 1) / (len(null) + 1))
+
+        named = {}
+        for key, pat in NAMED_SOURCES.items():
+            hits = [w for w in dens if re.search(pat, cat[w]["title"] or "", re.I)]
+            best = min(hits, key=lambda w: rank[w]) if hits else None
+            named[key] = (
+                None
+                if best is None
+                else {
+                    "work_id": best,
+                    "rank": rank[best],
+                    "density": dens[best],
+                    "shared": shared[best],
+                    "p_value": p_of(best),
+                    "copies_found": len(hits),
+                }
+            )
+        out[name] = {
+            "rare_cut": cut,
+            "rare_grams": len(rare),
+            "named": named,
+            "top": [
+                {
+                    "rank": rank[w],
+                    "work_id": w,
+                    "title": (cat[w]["title"] or "")[:90],
+                    "author": cat[w]["author_norm"],
+                    "year": cat[w]["year"],
+                    "density": round(dens[w], 3),
+                    "shared": shared[w],
+                    "p_value": p_of(w),
+                }
+                for w in order[:25]
+            ],
+        }
+    JOHNSON_OUT.write_text(json.dumps({**stamp(), "volumes": n, **out}, indent=1) + "\n")
+    for name, v in out.items():
+        print(name, f"(rare grams {v['rare_grams']:,})")
+        for k, x in v["named"].items():
+            print(
+                f"  {k}: rank {x['rank']:,} of {n:,}, {x['shared']} shared, p = {x['p_value']:.2g}"
+                if x
+                else f"  {k}: not found"
+            )
+        for t in v["top"][:8]:
+            line = f"{t['rank']:>3} {t['density']:>7.2f} {t['shared']:>4} {t['year']}"
+            print(f"    {line} {t['title'][:60]}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
     if args[:1] == ["chapters"]:
         return chapters()
     if args[:1] == ["jockers"]:
         return jockers()
+    if args[:1] == ["johnson"]:
+        return johnson()
     print(__doc__)
     return 1
 
