@@ -1797,8 +1797,26 @@ biggest surprise is Rigdon. His samples are mostly a book of revelations he wrot
 more than thirty years after the Book of Mormon. Also, they took the Bible quotations out of every
 candidate's text; I hadn't. Both get fixed before that replication is rerun.
 
+## One tool was ours to fix, the other really fails
+
+Two of the old tools failed the benchmark, and the question was whose fault that was. So each
+version we built got run on data where the original authors had published their own scores.
+
+**General Imposters is a faithful copy.** The Julius Caesar study tested it on six public contest
+datasets (Dutch essays, Greek news articles, English novels and so on) and printed a table. Ours
+lands within a point or two on most rows: 87.4 against their 87.5 on Dutch essays, 29.2 against
+29.1 on English essays. One row came out higher than theirs. So when it failed our benchmark, that
+was the method, not a bug. It really does struggle when two authors imitate the same Bible style.
+
+**ENSC wasn't.** As I wrote earlier, our first version decided "none of these" a different way
+from the published one. Rebuilt from the authors' own code, it reproduces their numbers. So
+ENSC's failure was ours, and it gets a fair second run on the benchmark with the real method.
+
+That's the whole point of checking before blaming: one failure stands, one gets a retrial.
+
 ## Log
 
+- **2026-10-30, night.** BOM-57 closed: General Imposters faithful (11 of 12 PAN 2014 rows within 4 points of Kestemont et al., median gap 1.3), so its failure stands; our BOM-20 ENSC was not the published method, so ENSC is rerun on the benchmark (BOM-58). Report: data/benchmark/fidelity/REPORT.md.
 - **2026-10-30, night.** BOM-60 opened, the end of Phase 3: use what the replications found (ENSC's sample-length problem, rarity by work not copy, General Imposters' ceiling, closed-set traps, Delta's missing 'none') to test improvements to the prior methods on our corpus and benchmark, and publish them. BOM-57, 58 and 60 added to the backlog.
 - **2026-10-30, night.** Owner decided the Delta question (BOM-21): the two Deltas stay in, limited to 'which candidate is closest', and the paper must say they did not pass our bar. Recorded in the new `paper/deviations.md` (D1) and queued for the next amendment.
 - **2026-10-30, night.** BOM-57: ENSC ported from the thesis code. Federalist check: our old ENSC isn't the published method; the published one reproduces (16% lies between 3k and 5k-word samples) but its 'none' rate swings from 80% to 0% wrong with sample length. Schaalje 2011 now needed (size adjustment). Jockers 2008 bought: their Rigdon is mostly 1864; they masked Bible passages; 110 words listed.

@@ -20,7 +20,7 @@ code, on the six PAN 2014 verification corpora. Test AUC x c@1 (x 100), word uni
 | Greek articles | 45.67 | 48.63 | 49.40 | 50.20 |
 | Spanish articles | 65.54 | 69.52 | 72.78 | 63.41 |
 
-Eleven of twelve within 4 points (median absolute difference about 1.5); the exception scores
+Eleven of twelve within 4 points (median absolute difference 1.3, mean 2.2); the exception scores
 higher than published. Known differences: their rounds sample features with replacement, ours
 without; random draws differ. **The General Imposters that failed BOM-21 is the published
 method.** Its saturating score is the method's (they also use 100 rounds), and its confusion of
