@@ -1,0 +1,62 @@
+{
+ "configurations": 54,
+ "true_in": {
+  "burrows_delta:closed_set_pass": "54 of 54",
+  "cosine_delta:closed_set_pass": "54 of 54",
+  "general_imposters:closed_set_pass": "18 of 54",
+  "general_imposters:passes": "8 of 54",
+  "ensc:closed_set_pass": "54 of 54",
+  "ensc:passes": "0 of 54"
+ },
+ "general_imposters_passes_under": [
+  {
+   "classic.imposters.feature_fraction": 0.3,
+   "classic.imposters.imposter_fraction": 0.5,
+   "classic.imposters.trials": 100,
+   "classic.mfw_min_doc_fraction": 0.3
+  },
+  {
+   "classic.imposters.feature_fraction": 0.3,
+   "classic.imposters.imposter_fraction": 0.3,
+   "classic.imposters.trials": 500,
+   "classic.mfw_min_doc_fraction": 0.3
+  },
+  {
+   "classic.imposters.feature_fraction": 0.3,
+   "classic.imposters.imposter_fraction": 0.3,
+   "classic.imposters.trials": 100,
+   "classic.mfw_min_doc_fraction": 0.3
+  },
+  {
+   "classic.imposters.feature_fraction": 0.3,
+   "classic.imposters.imposter_fraction": 0.5,
+   "classic.imposters.trials": 100,
+   "classic.mfw_min_doc_fraction": 0.2
+  },
+  {
+   "classic.imposters.feature_fraction": 0.3,
+   "classic.imposters.imposter_fraction": 0.3,
+   "classic.imposters.trials": 100,
+   "classic.mfw_min_doc_fraction": 0.2
+  },
+  {
+   "classic.imposters.feature_fraction": 0.3,
+   "classic.imposters.imposter_fraction": 0.5,
+   "classic.imposters.trials": 100,
+   "classic.mfw_min_doc_fraction": 0.1
+  },
+  {
+   "classic.imposters.feature_fraction": 0.3,
+   "classic.imposters.imposter_fraction": 0.7,
+   "classic.imposters.trials": 100,
+   "classic.mfw_min_doc_fraction": 0.2
+  },
+  {
+   "classic.imposters.feature_fraction": 0.3,
+   "classic.imposters.imposter_fraction": 0.7,
+   "classic.imposters.trials": 100,
+   "classic.mfw_min_doc_fraction": 0.1
+  }
+ ],
+ "note": "run under the config before Amendment 7 (pending_amendment entries since registered) and with the BOM-20 ENSC; stages classic_corpus_run and benchmark"
+}

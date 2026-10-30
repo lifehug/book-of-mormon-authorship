@@ -31,3 +31,12 @@ Median agreement 100%, lowest 50%. The Delta findings barely move; the 1,000-wor
 one work (67%); General Imposters moves most (94% on average, 50% at worst), as its sampling
 settings change. A first demonstration of the runner; the curve is redrawn on the benchmark in
 BOM-21.
+
+## `multiverse_benchmark_curve.*`, `multiverse_benchmark_summary.json` (BOM-21, 2026-10-30)
+
+`uv run bom multiverse` with `config/multiverse.yaml` stages `[classic_corpus_run, benchmark]`:
+54 configurations (all combinations of the ranges there), each rerunning the corpus demo and the
+validation benchmark. Copied from `results/multiverse/` (not in git). The summary counts, for each
+method, in how many configurations it passes the closed-set bar and both halves of section 7.
+Run under the config as it stood before Amendment 7 registered its pending entries (no value the
+benchmark reads changed), and with the BOM-20 ENSC that BOM-57 later found not faithful.
