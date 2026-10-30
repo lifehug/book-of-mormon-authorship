@@ -66,8 +66,9 @@ def stand_in_text() -> str:
     from ocr_fix.normalize import norm_path
     from segment.build import original_words
 
-    cat = pq.read_table("data/catalog/catalog.parquet",
-                        columns=["work_id", "source", "text_path"]).to_pylist()  # fmt: skip
+    cat = pq.read_table(
+        "data/catalog/catalog.parquet", columns=["work_id", "source", "text_path"]
+    ).to_pylist()
     row = next(r for r in cat if r["work_id"] == STAND_IN)
     prefix = json.dumps({"id": STAND_IN})[:-1]
     spans_file = Path("data/kjv_mask/controls/spans.jsonl")
@@ -108,12 +109,39 @@ def scan(workers: int) -> int:
             recs.append({"work_id": wid, "words": n, "hits": hit})
             if i % 20000 == 0:
                 print(f"  {i:,}/{len(jobs):,}  {i / (time.time() - start):.0f}/s", flush=True)
-    schema = pa.schema([("work_id", pa.string()), ("words", pa.int64()),
-                        ("hits", pa.list_(pa.int64()))])  # fmt: skip
-    pq.write_table(pa.Table.from_pylist(recs, schema=schema).replace_schema_metadata(
-        {"config_sha256": stamp()["config_sha256"]}), HITS)  # fmt: skip
+    schema = pa.schema(
+        [("work_id", pa.string()), ("words", pa.int64()), ("hits", pa.list_(pa.int64()))]
+    )
+    pq.write_table(
+        pa.Table.from_pylist(recs, schema=schema).replace_schema_metadata(
+            {"config_sha256": stamp()["config_sha256"]}
+        ),
+        HITS,
+    )
     print(f"scanned {len(recs):,} in {time.time() - start:.0f}s -> {HITS}")
     return 0
+
+
+def target_copies(recs: list[dict]) -> set[str]:
+    """The stand-in's own copies and editions. They must not count towards a 4-gram's document
+    frequency: seven missed copies of The Late War made its distinctive phrases look common
+    (document frequency 6-9) and the null collapsed to zero. For the Book of Mormon the sealed
+    copies (4.2) play this part."""
+    import re
+
+    meta = {
+        r["work_id"]: r
+        for r in pq.read_table(
+            "data/catalog/catalog.parquet", columns=["work_id", "author_norm", "title"]
+        ).to_pylist()
+    }
+    late_war = re.compile(r"late war.{0,80}(1812|britain)", re.I)
+    return {
+        r["work_id"]
+        for r in recs
+        if (meta[r["work_id"]]["author_norm"] or "").startswith("hunt, gilbert")
+        or late_war.search(meta[r["work_id"]]["title"] or "")
+    }
 
 
 def scores(recs: list[dict], max_df: int, per_words: int) -> dict[str, float]:
@@ -122,8 +150,11 @@ def scores(recs: list[dict], max_df: int, per_words: int) -> dict[str, float]:
     for r in recs:
         df.update(r["hits"])
     rare = {g for g, n in df.items() if n <= max_df}
-    return {r["work_id"]: per_words * sum(g in rare for g in r["hits"]) / r["words"]
-            for r in recs if r["words"] > 0}  # fmt: skip
+    return {
+        r["work_id"]: per_words * sum(g in rare for g in r["hits"]) / r["words"]
+        for r in recs
+        if r["words"] > 0
+    }
 
 
 def size() -> int:
@@ -132,16 +163,27 @@ def size() -> int:
     from metadata.dates import effective_year
 
     lo, hi = cfg["corpus"]["date_range"]
-    years = {r["work_id"]: r["year"] for r in pq.read_table(
-        "data/catalog/catalog.parquet", columns=["work_id", "year"]).to_pylist()}  # fmt: skip
+    years = {
+        r["work_id"]: r["year"]
+        for r in pq.read_table(
+            "data/catalog/catalog.parquet", columns=["work_id", "year"]
+        ).to_pylist()
+    }
     # BOM-56: the scan predates the date check; volumes whose corrected year is out of the window
     # still count towards document frequency (they are real books) but are not drawn for the null
     recs = pq.read_table(HITS).to_pylist()
+    copies = target_copies(recs)
+    recs = [r for r in recs if r["work_id"] not in copies]
     sc = scores(recs, b["max_df"], b["per_words"])
-    sc = {w: v for w, v in sc.items()
-          if (y := effective_year(w, years.get(w))) is not None and lo <= y <= hi}  # fmt: skip
-    genre = {r["work_id"]: (r["genre"] or "uncertain").split(",")[0]
-             for r in pq.read_table("data/catalog/genre.parquet").to_pylist()}  # fmt: skip
+    sc = {
+        w: v
+        for w, v in sc.items()
+        if (y := effective_year(w, years.get(w))) is not None and lo <= y <= hi
+    }
+    genre = {
+        r["work_id"]: (r["genre"] or "uncertain").split(",")[0]
+        for r in pq.read_table("data/catalog/genre.parquet").to_pylist()
+    }
     strata: dict[str, list[float]] = defaultdict(list)
     for w, s in sc.items():
         strata[genre.get(w, "uncertain")].append(s)
@@ -153,25 +195,51 @@ def size() -> int:
     for n in b["null_sizing"]["sizes"]:
         q = []
         for _ in range(b["null_sizing"]["draws"]):
-            draw = np.concatenate([
-                rng.choice(a, size=max(1, round(n * len(a) / total)), replace=False)
-                for a in arrays.values() if len(a)
-            ])  # fmt: skip
+            draw = np.concatenate(
+                [
+                    rng.choice(a, size=max(1, round(n * len(a) / total)), replace=False)
+                    for a in arrays.values()
+                    if len(a)
+                ]
+            )
             q.append(np.percentile(draw, b["null_percentile"]))
         q = np.array(q)
         lo, hi = np.percentile(q, [2.5, 97.5])
-        curve[str(n)] = {"median": float(np.median(q)), "sd": float(q.std()),
-                         "ci95": [float(lo), float(hi)],
-                         "half_width_rel": float((hi - lo) / 2 / np.median(q))}  # fmt: skip
+        med = float(np.median(q))
+        curve[str(n)] = {
+            "median": med,
+            "sd": float(q.std()),
+            "ci95": [float(lo), float(hi)],
+            "half_width_rel": float((hi - lo) / 2 / med) if med > 0 else None,
+        }
     tol = b["null_sizing"]["tolerance"]
-    chosen = next((int(n) for n, c in curve.items() if c["half_width_rel"] <= tol), None)
-    result = {**stamp(), "stand_in": STAND_IN, "volumes": total, "population_threshold":
-              float(population), "per_stratum": {g: len(v) for g, v in strata.items()},
-              "curve": curve, "tolerance": tol, "chosen_n": chosen}  # fmt: skip
+    chosen = next(
+        (
+            int(n)
+            for n, c in curve.items()
+            if c["half_width_rel"] is not None and c["half_width_rel"] <= tol
+        ),
+        None,
+    )
+    result = {
+        **stamp(),
+        "stand_in": STAND_IN,
+        "volumes": total,
+        "population_threshold": float(population),
+        "per_stratum": {g: len(v) for g, v in strata.items()},
+        "curve": curve,
+        "tolerance": tol,
+        "chosen_n": chosen,
+        "target_copies_excluded": len(copies),
+        "share_nonzero": float(np.mean(np.concatenate(list(arrays.values())) > 0)),
+    }
     (OUT / "sizing.json").write_text(json.dumps(result, indent=1) + "\n")
     for n, c in curve.items():
-        print(f"  n={int(n):>6,}  99th pct {c['median']:.3f}  95% CI {c['ci95'][0]:.3f}-"
-              f"{c['ci95'][1]:.3f}  (+/-{c['half_width_rel']:.0%})")  # fmt: skip
+        hw = "n/a" if c["half_width_rel"] is None else f"+/-{c['half_width_rel']:.0%}"
+        print(
+            f"  n={int(n):>6,}  99th pct {c['median']:.3f}  95% CI {c['ci95'][0]:.3f}-"
+            f"{c['ci95'][1]:.3f}  ({hw})"
+        )
     print(f"population threshold {population:.3f}; chosen n = {chosen}")
     return 0
 

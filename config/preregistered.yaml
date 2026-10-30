@@ -255,8 +255,12 @@ pending_amendment:
   - key: borrowing.null_sample
     issue: BOM-45
     note: >
-      6.5 fixes a floor of 500 volumes, not a number. A 99th percentile from 500 draws rests on
-      about five tail observations; the chosen n follows from the variance curve in BOM-45.
+      6.5 fixes a floor of 500 volumes, not a number. Measured (BOM-45, stand-in target The Late
+      War): the 99th percentile's 95% interval is +/-119% at n=500 and still +/-16% at 20,000.
+      Proposed: the null is the whole eligible period population (about 200,000 volumes), scored in
+      one corpus pass, so it carries no sampling noise; the target's own copies are left out of
+      every document frequency; significance is the empirical p-value (share of null volumes
+      scoring at least as high, ties counted against the source) at 0.01. Amendment 7 draft.
   - key: classic.ensc.alpha
     issue: BOM-40
     note: >

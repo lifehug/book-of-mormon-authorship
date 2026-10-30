@@ -1,0 +1,81 @@
+{
+ "config_sha256": "781fc9b4e6bd4e79cd59fd9ef064828c8ee10d4d1b9771450c8e65594d245f86",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "3fc1252683b1d0665dc88a4a1791c9161f13837d",
+ "stand_in": "internet_archive:latewarbetween_00hunt",
+ "volumes": 221245,
+ "population_threshold": 0.14389044073341814,
+ "per_stratum": {
+  "history_chronicle": 33081,
+  "newspaper_periodical": 115077,
+  "legal_political": 23111,
+  "scientific_medical": 13003,
+  "fiction_narrative": 20063,
+  "sermon_devotional": 14834,
+  "other": 1981,
+  "PARSE_FAIL": 74,
+  "uncertain": 5,
+  "pseudo_biblical": 16
+ },
+ "curve": {
+  "500": {
+   "median": 0.13029572629592084,
+   "sd": 0.07962725198543529,
+   "ci95": [
+    0.05588936569788806,
+    0.36605736807408534
+   ],
+   "half_width_rel": 1.1902462620752423
+  },
+  "1000": {
+   "median": 0.1368026818235967,
+   "sd": 0.0543113219545846,
+   "ci95": [
+    0.07398124031091277,
+    0.28678750039108464
+   ],
+   "half_width_rel": 0.7777854105030619
+  },
+  "2000": {
+   "median": 0.14166184005575522,
+   "sd": 0.036919547327321556,
+   "ci95": [
+    0.09178002845261765,
+    0.24032379236890622
+   ],
+   "half_width_rel": 0.5242899706012034
+  },
+  "5000": {
+   "median": 0.1422306107600998,
+   "sd": 0.022955619945431514,
+   "ci95": [
+    0.10820048076595612,
+    0.1957859236123435
+   ],
+   "half_width_rel": 0.3078994120123609
+  },
+  "10000": {
+   "median": 0.14360594528613485,
+   "sd": 0.016715172865099732,
+   "ci95": [
+    0.11811892182675124,
+    0.18348697726147986
+   ],
+   "half_width_rel": 0.22759522700986637
+  },
+  "20000": {
+   "median": 0.14293286475353062,
+   "sd": 0.01195838595536611,
+   "ci95": [
+    0.12539719200199023,
+    0.1706262058532994
+   ],
+   "half_width_rel": 0.15821768467770098
+  }
+ },
+ "tolerance": 0.1,
+ "chosen_n": null,
+ "target_copies_excluded": 105,
+ "share_nonzero": 0.039237044904969605
+}

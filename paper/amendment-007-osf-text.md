@@ -62,3 +62,17 @@ candidates, only Joseph Smith and Oliver Cowdery have text on both sides, one te
 below the 10,000-word floor. **No candidate is therefore expected to qualify for an expanded corpus
 under the classical methods**, and Amendment 5's secondary analysis is expected to report that,
 rather than results, unless a later method family shows much smaller drift.
+
+**Change 6: the borrowing null is the whole period corpus.** 6.5 builds the null from "at least
+500 randomly chosen period volumes" and calls a source significant above its 99th percentile.
+Measured against a stand-in target (Gilbert Hunt's *The Late War*, so the Book of Mormon is not
+touched), the 99th percentile estimated from 500 volumes has a 95% interval of roughly six-fold
+width (0.056 to 0.366 rare shared 4-grams per 10,000 words, +/-119%), and even 20,000 volumes leave
++/-16%. Since one pass over the corpus scores every volume, the null is the entire eligible
+period population (about 200,000 volumes; "at least 500" is met and genre strata are complete), so
+the threshold has no sampling error. Two rules make the test well defined: the target's own
+copies (for the Book of Mormon, the sealed copies of 4.2) are excluded from every document
+frequency, because seven missed copies of *The Late War* made its distinctive phrases look common
+and collapsed the null to zero; and because most volumes score exactly zero, a source is a
+significant parallel when its empirical p-value (the share of null volumes scoring at least as
+high, ties counted against it) is at most 0.01.

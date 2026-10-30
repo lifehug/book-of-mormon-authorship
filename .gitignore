@@ -104,6 +104,10 @@ data/catalog/validation_sample.json
 # Phase 3: classical stylometry outputs (scores and ids, no text)
 !data/classic/
 !data/benchmark/
+!data/reuse/
+!data/reuse/**
+# 87 MB, rebuilt by `python -m reuse.rare scan` in about 45 minutes; covered by data/manifests/reuse.jsonl
+data/reuse/null_sizing/hits.parquet
 !data/benchmark/**
 !data/classic/**
 !data/kjv_mask/
