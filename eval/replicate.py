@@ -26,6 +26,7 @@ import re
 import sys
 from pathlib import Path
 
+import numpy as np
 from rapidfuzz import fuzz
 
 from classic import tokenize
@@ -478,6 +479,271 @@ def johnson() -> int:
     return 0
 
 
+# --------------------------------------------------------------- Larsen, Rencher and Layton
+
+LARSEN_OUT = DIR.parent / "replication_larsen.json"
+LARSEN_10 = ["and", "the", "of", "that", "to", "unto", "in", "it", "for", "be"]
+LARSEN_BLOCK = 1000
+
+
+def narrator_blocks(min_blocks: int = 2) -> dict[str, list[list[str]]]:
+    """1,000-word blocks of KJV-masked original text per narrator (BOM-17 labels)."""
+    from segment.build import original_words
+
+    spans = {}
+    for ln in Path("data/kjv_mask/bom/spans.jsonl").read_text().splitlines():
+        r = json.loads(ln)
+        spans[r["id"]] = r["spans"]
+    text = {
+        json.loads(ln)["seq"]: json.loads(ln)["text"] for ln in EDITION.read_text().splitlines()
+    }
+    by: dict[str, list[str]] = {}
+    for ln in Path("data/bom/segments/paragraph_labels.jsonl").read_text().splitlines():
+        r = json.loads(ln)
+        words = tokenize(" ".join(original_words(text[r["seq"]], spans.get(f"bom:{r['seq']}", []))))
+        by.setdefault(r["narrator"], []).extend(words)
+    out = {
+        a: [w[i : i + LARSEN_BLOCK] for i in range(0, len(w) - LARSEN_BLOCK + 1, LARSEN_BLOCK)]
+        for a, w in by.items()
+    }
+    return {a: b for a, b in out.items() if len(b) >= min_blocks}
+
+
+def _arcsine(blocks: list[list[str]], words: list[str]):
+    import numpy as np
+
+    from classic import frequency_matrix, word_counts
+
+    return np.arcsin(np.sqrt(frequency_matrix([word_counts(b) for b in blocks], words)))
+
+
+def manova(groups: dict[str, np.ndarray]) -> dict:
+    """One-way MANOVA: Wilks' lambda and Rao's F approximation."""
+    import numpy as np
+    from scipy import stats
+
+    X = np.vstack(list(groups.values()))
+    n, p = X.shape
+    g = len(groups)
+    grand = X.mean(axis=0)
+    W = sum(((v - v.mean(axis=0)).T @ (v - v.mean(axis=0))) for v in groups.values())
+    B = sum(
+        len(v) * np.outer(v.mean(axis=0) - grand, v.mean(axis=0) - grand) for v in groups.values()
+    )
+    lam = float(np.linalg.det(W) / np.linalg.det(W + B))
+    q = g - 1
+    t = np.sqrt((p * p * q * q - 4) / (p * p + q * q - 5)) if p * p + q * q > 5 else 1.0
+    w = n - 1 - (p + q + 1) / 2
+    df1 = p * q
+    df2 = w * t - (p * q - 2) / 2
+    f = (1 - lam ** (1 / t)) / (lam ** (1 / t)) * df2 / df1
+    return {
+        "wilks_lambda": lam,
+        "F": float(f),
+        "df1": df1,
+        "df2": float(df2),
+        "p_value": float(stats.f.sf(f, df1, df2)),
+        "groups": g,
+        "blocks": n,
+    }
+
+
+def lda_loo(groups: dict[str, np.ndarray]) -> dict[str, dict[str, int]]:
+    """Leave-one-out linear discriminant classification (pooled covariance, equal priors):
+    for each group, how its blocks are classified."""
+    import numpy as np
+
+    names = sorted(groups)
+    X = np.vstack([groups[a] for a in names])
+    y = [a for a in names for _ in range(len(groups[a]))]
+    out = {a: {} for a in names}
+    for i in range(len(X)):
+        keep = [j for j in range(len(X)) if j != i]
+        Xk = X[keep]
+        yk = [y[j] for j in keep]
+        means = {a: Xk[[j for j, b in enumerate(yk) if b == a]].mean(axis=0) for a in names}
+        S = sum(
+            np.cov(Xk[[j for j, b in enumerate(yk) if b == a]].T) * (sum(b == a for b in yk) - 1)
+            for a in names
+            if sum(b == a for b in yk) > 1
+        )
+        Si = np.linalg.pinv(S / (len(Xk) - len(names)))
+        d = {a: float((X[i] - means[a]) @ Si @ (X[i] - means[a])) for a in names}
+        pred = min(d, key=d.get)
+        out[y[i]][pred] = out[y[i]].get(pred, 0) + 1
+    return out
+
+
+def larsen() -> int:
+    from metadata.config import stamp
+
+    bom = narrator_blocks()
+    cand = _candidate_tokens()
+    cands = {
+        k: [w[i : i + LARSEN_BLOCK] for i in range(0, len(w) - LARSEN_BLOCK + 1, LARSEN_BLOCK)]
+        for k, w in cand.items()
+    }
+    cands = {k: v for k, v in cands.items() if len(v) >= 2}
+    within = manova({a: _arcsine(b, LARSEN_10) for a, b in bom.items()})
+    allg = {
+        **{f"BoM {a}": _arcsine(b, LARSEN_10) for a, b in bom.items()},
+        **{a: _arcsine(b, LARSEN_10) for a, b in cands.items()},
+    }
+    classified = lda_loo(allg)
+    bom_to_cand = sum(
+        n
+        for g, d in classified.items()
+        if g.startswith("BoM")
+        for pred, n in d.items()
+        if not pred.startswith("BoM")
+    )
+    bom_total = sum(sum(d.values()) for g, d in classified.items() if g.startswith("BoM"))
+    result = {
+        **stamp(),
+        "words": LARSEN_10,
+        "blocks": {a: len(b) for a, b in bom.items()},
+        "candidate_blocks": {a: len(b) for a, b in cands.items()},
+        "manova_book_of_mormon_narrators": within,
+        "lda_leave_one_out": classified,
+        "bom_blocks_classified_to_a_candidate": bom_to_cand,
+        "bom_blocks": bom_total,
+    }
+    LARSEN_OUT.write_text(json.dumps(result, indent=1) + "\n")
+    print(
+        f"MANOVA over {within['groups']} narrators, {within['blocks']} blocks: "
+        f"Wilks {within['wilks_lambda']:.3f}, p = {within['p_value']:.2g}"
+    )
+    print(f"BoM blocks classified to a 19th-century candidate: {bom_to_cand} of {bom_total}")
+    return 0
+
+
+# ----------------------------------------------------------------------------- Holmes (1992)
+
+HOLMES_OUT = DIR.parent / "replication_holmes.json"
+HOLMES_SAMPLE = 10000
+
+
+def richness(tokens: list[str]) -> dict[str, float]:
+    """Holmes's variables that can be computed exactly: Honore's R, V2/V and Yule's K. (The two
+    Sichel parameters need a model fit Holmes describes only by reference; they are left out.)"""
+    import math
+    from collections import Counter
+
+    n = len(tokens)
+    freq = Counter(tokens)
+    v = len(freq)
+    spectrum = Counter(freq.values())
+    v1, v2 = spectrum.get(1, 0), spectrum.get(2, 0)
+    r = 100 * math.log(n) / (1 - v1 / v) if v1 < v else float("inf")
+    k = 1e4 * (sum(i * i * vi for i, vi in spectrum.items()) - n) / (n * n)
+    return {"honore_r": r, "v2_over_v": v2 / v, "yule_k": k}
+
+
+def holmes_samples() -> dict[str, list[str]]:
+    """About 10,000-word samples: each narrator's masked text in order, plus controls."""
+    samples: dict[str, list[str]] = {}
+    for a, blocks in narrator_blocks(min_blocks=HOLMES_SAMPLE // LARSEN_BLOCK).items():
+        words = [w for b in blocks for w in b]
+        for i in range(0, len(words) - HOLMES_SAMPLE + 1, HOLMES_SAMPLE):
+            samples[f"BoM {a} {i // HOLMES_SAMPLE + 1}"] = words[i : i + HOLMES_SAMPLE]
+    cand = _candidate_tokens()
+    js = cand.get("Joseph Smith", [])
+    for i in range(0, len(js) - HOLMES_SAMPLE + 1, HOLMES_SAMPLE):
+        samples[f"Joseph Smith {i // HOLMES_SAMPLE + 1}"] = js[i : i + HOLMES_SAMPLE]
+    isa = [w for _, t in _kjv({"ISA"}) for w in t]
+    for i in range(0, len(isa) - HOLMES_SAMPLE + 1, HOLMES_SAMPLE):
+        samples[f"Isaiah {i // HOLMES_SAMPLE + 1}"] = isa[i : i + HOLMES_SAMPLE]
+    dc = Path("data/private/replication/jsp_dc1835.jsonl")
+    if dc.exists():
+        text = " ".join(json.loads(ln).get("text", "") for ln in dc.read_text().splitlines())
+        toks = tokenize(text)
+        for i in range(0, min(len(toks), 3 * HOLMES_SAMPLE) - HOLMES_SAMPLE + 1, HOLMES_SAMPLE):
+            samples[f"D&C 1835 {i // HOLMES_SAMPLE + 1}"] = toks[i : i + HOLMES_SAMPLE]
+    return samples
+
+
+def holmes() -> int:
+    from scipy.cluster.hierarchy import fcluster, linkage
+
+    from metadata.config import stamp
+
+    samples = holmes_samples()
+    names = sorted(samples)
+    vals = {nm: richness(samples[nm]) for nm in names}
+    keys = ["honore_r", "v2_over_v", "yule_k"]
+    X = np.array([[vals[nm][k] for k in keys] for nm in names])
+    Z = (X - X.mean(axis=0)) / X.std(axis=0)
+    link = linkage(Z, method="average", metric="euclidean")
+    groups = fcluster(link, t=3, criterion="maxclust")
+    u, sv, vt = np.linalg.svd(Z, full_matrices=False)
+    pcs = Z @ vt.T[:, :2]
+    result = {
+        **stamp(),
+        "variables": keys,
+        "omitted": "Sichel alpha and theta (fit not specified)",
+        "samples": {
+            nm: {**vals[nm], "cluster_of_3": int(g), "pc1": float(pc[0]), "pc2": float(pc[1])}
+            for nm, g, pc in zip(names, groups, pcs, strict=True)
+        },
+        "pc_variance": (sv**2 / (sv**2).sum()).tolist(),
+    }
+    HOLMES_OUT.write_text(json.dumps(result, indent=1) + "\n")
+    for nm, g in zip(names, groups, strict=True):
+        print(f"  cluster {g}  {nm:<22} " + "  ".join(f"{k} {vals[nm][k]:.3f}" for k in keys))
+    return 0
+
+
+# ----------------------------------------------------- Schaalje, Fields, Roper and Snow (2011)
+
+ENSC_OUT = DIR.parent / "replication_ensc.json"
+
+
+def ensc_open_set() -> int:
+    """Jockers' design with Joseph Smith added and ENSC's "none of the above" switched on at the
+    alpha BOM-21 calibrated (``data/benchmark/thresholds.json``)."""
+    from collections import Counter
+
+    from classic import ENSC, frequency_matrix, word_counts
+    from metadata.config import stamp
+
+    th = json.loads(Path("data/benchmark/thresholds.json").read_text())["ensc"]
+    if th.get("alpha") is None:
+        raise SystemExit("BOM-21 has not calibrated ENSC's alpha yet")
+    chapters = [json.loads(ln) for ln in CHAPTERS.read_text().splitlines()]
+    texts = [c["text"].split() for c in chapters]
+    known = jockers_known()
+    js = _candidate_tokens().get("Joseph Smith", [])
+    known["joseph_smith"] = [(f"js {i}", c) for i, c in enumerate(_chunks(js, SAMPLE_WORDS))]
+    features = jockers_features(known, texts)
+    authors = sorted(known)
+    docs = [t for a in authors for _, t in known[a]]
+    labels = [a for a in authors for _ in known[a]]
+    X = frequency_matrix([word_counts(t) for t in docs], features)
+    C = frequency_matrix([word_counts(t) for t in texts], features)
+    allm = np.vstack([X, C])
+    mu, sd = allm.mean(axis=0), allm.std(axis=0)
+    sd[sd == 0] = 1
+    model = ENSC(shrinkage=th["shrinkage"], alpha=th["alpha"], priors="proportional")
+    model.fit((X - mu) / sd, labels)
+    preds = [model.classify(z).label for z in (C - mu) / sd]
+    counts = Counter(preds)
+    result = {
+        **stamp(),
+        "alpha": th["alpha"],
+        "shrinkage": th["shrinkage"],
+        "features": features,
+        "samples": {a: len(v) for a, v in known.items()},
+        "assigned": dict(counts),
+        "chapters": [
+            {"book": c["book"], "chapter": c["chapter"], "assigned": pr}
+            for c, pr in zip(chapters, preds, strict=True)
+        ],
+    }
+    ENSC_OUT.write_text(json.dumps(result, indent=1) + "\n")
+    print("ENSC open set, chapters assigned:", dict(counts.most_common()))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
     if args[:1] == ["chapters"]:
@@ -486,6 +752,12 @@ def main(argv: list[str] | None = None) -> int:
         return jockers()
     if args[:1] == ["johnson"]:
         return johnson()
+    if args[:1] == ["larsen"]:
+        return larsen()
+    if args[:1] == ["holmes"]:
+        return holmes()
+    if args[:1] == ["ensc"]:
+        return ensc_open_set()
     print(__doc__)
     return 1
 

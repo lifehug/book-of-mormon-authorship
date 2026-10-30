@@ -28,3 +28,21 @@ def test_jockers_methods_rank_the_true_author_first():
     firsts = [r["nsc"][0] for r in out["chapters"]]
     assert firsts == ["x", "x", "x", "y", "y", "y"]
     assert [r["delta"][0] for r in out["chapters"]] == firsts
+
+
+def test_manova_separates_different_groups_not_identical_ones():
+    import numpy as np
+
+    rng = np.random.default_rng(0)
+    same = {g: rng.normal(0, 1, size=(30, 3)) for g in "abc"}
+    diff = {"a": rng.normal(0, 1, size=(30, 3)), "b": rng.normal(2, 1, size=(30, 3))}
+    assert R.manova(same)["p_value"] > 0.01
+    assert R.manova(diff)["p_value"] < 1e-6
+
+
+def test_richness_measures():
+    toks = "a a b c c c d".split()  # V=4, V1=2 (b, d), V2=1 (a)
+    r = R.richness(toks)
+    assert abs(r["v2_over_v"] - 0.25) < 1e-12
+    # Yule's K: 1e4 * (sum i^2 V_i - N) / N^2 = 1e4 * (1*2 + 4*1 + 9*1 - 7) / 49
+    assert abs(r["yule_k"] - 1e4 * 8 / 49) < 1e-9
