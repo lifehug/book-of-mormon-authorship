@@ -256,6 +256,13 @@ seed: 20261017
 # Registered by Amendment 7 (OSF revision 6ae500f8f0e01c4f4105c6bd, 2026-10-30): power.design,
 # classic.ensc.alpha, timesplit.design, borrowing.null_sample, synthesis.imitation_weights,
 # benchmark.design, benchmark.imposter_fill.
+# BOM-58, repair or retire (docs/repair-plan.md, written before the tests): provisional until
+# an amendment registers it; pending_amendment: repair.design
+repair:
+  fresh_authors_provisional: 30
+  gi_feature_fraction_provisional: 0.3
+  ensc_lambda_grid_provisional: [1.5, 2, 3, 4, 5, 6, 8]
+
 pending_amendment:
   - key: synthesis.delta_closed_set_only
     issue: BOM-21
@@ -265,3 +272,10 @@ pending_amendment:
       so the open-set half cannot be applied. They enter the synthesis as closed-set evidence only
       (which candidate is closest), never toward "none of these" or as evidence of authorship, and
       the paper states that they did not pass the registered bar.
+  - key: repair.design
+    issue: BOM-58
+    note: >
+      docs/repair-plan.md, committed before the tests ran: General Imposters with feature_fraction
+      0.3, and ENSC as published (latent author, 2011 size adjustment) with lambda chosen by the
+      Amendment 7 Change 4 rule, tested on 30 fresh corpus authors and on the BOM-21 tasks; a
+      method is repaired only if it meets both section 7 bars on both.
