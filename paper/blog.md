@@ -1814,8 +1814,37 @@ ENSC's failure was ours, and it gets a fair second run on the benchmark with the
 
 That's the whole point of checking before blaming: one failure stands, one gets a retrial.
 
+## Rigdon came back, and that's the problem
+
+The 2008 study said Sidney Rigdon most likely wrote large parts of the Book of Mormon. Our first
+rerun gave Parley Pratt instead, and Rigdon came last. Big difference. Which one was wrong?
+
+The authors had quietly deposited their actual data at Stanford: word counts for every sample
+they used. So I ran our code on their numbers. It picked exactly their 110 words. It got the same
+error rate in testing, 8.8%. And Rigdon came back near the top: first or second choice in 169
+chapters (they had 197). So our code does what theirs did.
+
+Then the real test: keep their data, but swap one candidate's writing for ours.
+
+| Swap in our writing for... | That candidate's count goes |
+| --- | --- |
+| Rigdon | 169 to 92 |
+| Pratt | 42 to 137 |
+| Cowdery | 36 to 81 |
+| Spalding (same manuscript in both) | 89 to 80 |
+
+Same method, same Book of Mormon, and the "author" changes depending on whose writing you pick to
+stand for each man. Their Rigdon, it turns out, is mostly a book of revelations he wrote in 1864,
+thirty-four years later. A method that has to name someone from a list will name whoever's samples
+happen to sit closest. That isn't evidence of authorship; it's a property of the samples.
+
+And a mistake of ours, caught along the way. Five of our Pratt samples, and one of Cowdery's,
+quote the Book of Mormon. Both men did that a lot after 1830. Matching the Book of Mormon to text
+that quotes it is circular, so those samples are out now, everywhere.
+
 ## Log
 
+- **2026-10-30, night.** BOM-22 Jockers: their deposited data reproduces with our code (same 110 words, CV error 8.76% vs 8.8%, Rigdon 169 vs 197); swapping in our candidate texts moves the answer (Rigdon 169 to 92, Pratt 42 to 137). Our Pratt/Cowdery samples that quote the Book of Mormon are now excluded.
 - **2026-10-30, night.** BOM-57 closed: General Imposters faithful (11 of 12 PAN 2014 rows within 4 points of Kestemont et al., median gap 1.3), so its failure stands; our BOM-20 ENSC was not the published method, so ENSC is rerun on the benchmark (BOM-58). Report: data/benchmark/fidelity/REPORT.md.
 - **2026-10-30, night.** BOM-60 opened, the end of Phase 3: use what the replications found (ENSC's sample-length problem, rarity by work not copy, General Imposters' ceiling, closed-set traps, Delta's missing 'none') to test improvements to the prior methods on our corpus and benchmark, and publish them. BOM-57, 58 and 60 added to the backlog.
 - **2026-10-30, night.** Owner decided the Delta question (BOM-21): the two Deltas stay in, limited to 'which candidate is closest', and the paper must say they did not pass our bar. Recorded in the new `paper/deviations.md` (D1) and queued for the next amendment.
