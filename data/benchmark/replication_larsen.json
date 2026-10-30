@@ -1,0 +1,167 @@
+{
+ "config_sha256": "3d8111336b8d1d3214a4524e4b8352547e6b55aeab942a7cada37b405fdfa1d4",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "2289e3c6a4bb3281fd4e0e1c4e90601626e4bed9",
+ "words": [
+  "and",
+  "the",
+  "of",
+  "that",
+  "to",
+  "unto",
+  "in",
+  "it",
+  "for",
+  "be"
+ ],
+ "blocks": {
+  "Nephi": 43,
+  "Jacob": 9,
+  "Mormon": 169,
+  "Moroni": 25
+ },
+ "candidate_blocks": {
+  "Joseph Smith": 33,
+  "Oliver Cowdery": 50,
+  "Ethan Smith": 239,
+  "Gilbert J. Hunt": 57,
+  "W. W. Phelps": 30,
+  "Sidney Rigdon": 22,
+  "Parley P. Pratt": 69,
+  "Solomon Spalding": 43,
+  "Lectures on Faith": 24
+ },
+ "manova_book_of_mormon_narrators": {
+  "wilks_lambda": 0.5747085127231967,
+  "F": 4.739259118603224,
+  "df1": 30,
+  "df2": 684.5770151914863,
+  "p_value": 1.0230306843561804e-14,
+  "groups": 4,
+  "blocks": 246
+ },
+ "lda_leave_one_out": {
+  "BoM Jacob": {
+   "BoM Mormon": 1,
+   "BoM Nephi": 4,
+   "BoM Moroni": 2,
+   "BoM Jacob": 2
+  },
+  "BoM Mormon": {
+   "BoM Mormon": 95,
+   "BoM Moroni": 29,
+   "BoM Nephi": 26,
+   "Joseph Smith": 5,
+   "W. W. Phelps": 2,
+   "BoM Jacob": 9,
+   "Sidney Rigdon": 2,
+   "Lectures on Faith": 1
+  },
+  "BoM Moroni": {
+   "BoM Nephi": 10,
+   "BoM Moroni": 6,
+   "BoM Jacob": 4,
+   "BoM Mormon": 5
+  },
+  "BoM Nephi": {
+   "BoM Moroni": 10,
+   "BoM Mormon": 7,
+   "BoM Jacob": 4,
+   "BoM Nephi": 21,
+   "Lectures on Faith": 1
+  },
+  "Ethan Smith": {
+   "Lectures on Faith": 10,
+   "Ethan Smith": 142,
+   "Sidney Rigdon": 15,
+   "Solomon Spalding": 16,
+   "Parley P. Pratt": 6,
+   "Oliver Cowdery": 14,
+   "Gilbert J. Hunt": 18,
+   "W. W. Phelps": 12,
+   "Joseph Smith": 6
+  },
+  "Gilbert J. Hunt": {
+   "Gilbert J. Hunt": 50,
+   "Solomon Spalding": 2,
+   "Ethan Smith": 5
+  },
+  "Joseph Smith": {
+   "Joseph Smith": 15,
+   "Parley P. Pratt": 3,
+   "W. W. Phelps": 1,
+   "BoM Mormon": 2,
+   "BoM Jacob": 1,
+   "Solomon Spalding": 2,
+   "Oliver Cowdery": 5,
+   "Sidney Rigdon": 1,
+   "Ethan Smith": 1,
+   "Lectures on Faith": 1,
+   "BoM Moroni": 1
+  },
+  "Lectures on Faith": {
+   "Lectures on Faith": 11,
+   "Sidney Rigdon": 3,
+   "BoM Mormon": 5,
+   "Solomon Spalding": 3,
+   "Joseph Smith": 2
+  },
+  "Oliver Cowdery": {
+   "BoM Moroni": 1,
+   "Lectures on Faith": 2,
+   "Joseph Smith": 5,
+   "Sidney Rigdon": 9,
+   "Oliver Cowdery": 17,
+   "Ethan Smith": 4,
+   "Solomon Spalding": 7,
+   "W. W. Phelps": 3,
+   "BoM Mormon": 1,
+   "Parley P. Pratt": 1
+  },
+  "Parley P. Pratt": {
+   "Joseph Smith": 6,
+   "Ethan Smith": 6,
+   "Sidney Rigdon": 7,
+   "Lectures on Faith": 4,
+   "Parley P. Pratt": 12,
+   "W. W. Phelps": 8,
+   "Oliver Cowdery": 3,
+   "Solomon Spalding": 19,
+   "BoM Nephi": 2,
+   "Gilbert J. Hunt": 1,
+   "BoM Moroni": 1
+  },
+  "Sidney Rigdon": {
+   "W. W. Phelps": 2,
+   "Sidney Rigdon": 8,
+   "Oliver Cowdery": 4,
+   "Lectures on Faith": 1,
+   "Joseph Smith": 3,
+   "Ethan Smith": 3,
+   "Parley P. Pratt": 1
+  },
+  "Solomon Spalding": {
+   "W. W. Phelps": 2,
+   "Sidney Rigdon": 3,
+   "Oliver Cowdery": 7,
+   "Parley P. Pratt": 5,
+   "Solomon Spalding": 22,
+   "Ethan Smith": 3,
+   "Gilbert J. Hunt": 1
+  },
+  "W. W. Phelps": {
+   "Oliver Cowdery": 7,
+   "W. W. Phelps": 11,
+   "Lectures on Faith": 3,
+   "BoM Jacob": 1,
+   "Parley P. Pratt": 2,
+   "Solomon Spalding": 3,
+   "Gilbert J. Hunt": 1,
+   "Ethan Smith": 1,
+   "Joseph Smith": 1
+  }
+ },
+ "bom_blocks_classified_to_a_candidate": 11,
+ "bom_blocks": 246
+}
