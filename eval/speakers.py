@@ -65,8 +65,11 @@ Chapter: {book} {chapter}.
 
 {units}
 
-Reply with JSON only, no other text: a list of objects {{"from": <unit number>, "speaker": \
-<label>}} in order, the first starting at unit 1. A speaker continues until the next object."""
+Reply with JSON only, no other text: one list of objects {{"from": <unit number>, "speaker": \
+<label>}} in order, the first starting at unit 1. A speaker continues until the next object. \
+Unit numbers must strictly increase: if the speaker changes inside a unit, give that unit to \
+whoever speaks most of it, and never use a unit number twice. Give the list once, with no \
+corrections or commentary."""
 
 
 def chapters() -> list[dict]:
@@ -83,12 +86,15 @@ def _key(c: dict) -> str:
 
 
 def _parse(text: str, n_units: int) -> list[dict] | None:
-    m = re.search(r"\[.*\]", text, re.S)
-    if not m:
-        return None
-    try:
-        segs = json.loads(m.group(0))
-    except json.JSONDecodeError:
+    """The last complete JSON list in the reply (a reply that corrects itself ends with its final
+    answer), checked: units in range, strictly increasing, starting at 1."""
+    segs = None
+    for m in re.finditer(r"\[\s*\{.*?\}\s*\]", text, re.S):
+        try:
+            segs = json.loads(m.group(0))
+        except json.JSONDecodeError:
+            continue
+    if segs is None:
         return None
     out = []
     for s in segs:

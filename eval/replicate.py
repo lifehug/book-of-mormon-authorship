@@ -831,9 +831,11 @@ def larsen() -> int:
         if not pred.startswith("BoM")
     )
     bom_total = sum(sum(d.values()) for g, d in classified.items() if g.startswith("BoM"))
+    speakers = larsen_speakers(cands)
     result = {
         **stamp(),
         "words": LARSEN_10,
+        "speakers": speakers,
         "blocks": {a: len(b) for a, b in bom.items()},
         "candidate_blocks": {a: len(b) for a, b in cands.items()},
         "manova_book_of_mormon_narrators": within,
@@ -847,7 +849,56 @@ def larsen() -> int:
         f"Wilks {within['wilks_lambda']:.3f}, p = {within['p_value']:.2g}"
     )
     print(f"BoM blocks classified to a 19th-century candidate: {bom_to_cand} of {bom_total}")
+    if speakers:
+        m = speakers["manova"]
+        print(
+            f"By speaker (Larsen's design): MANOVA over {m['groups']} speakers, {m['blocks']} "
+            f"blocks: Wilks {m['wilks_lambda']:.3f}, p = {m['p_value']:.2g}; blocks classified "
+            f"to a candidate {speakers['bom_blocks_classified_to_a_candidate']} of "
+            f"{speakers['bom_blocks']}"
+        )
     return 0
+
+
+# Larsen et al.'s first analyses left these out as too close to the Bible
+LARSEN_BIBLICAL = {"jesus", "isaiah", "lord quoted by isaiah"}
+
+
+def larsen_speakers(cands: dict[str, list[list[str]]]) -> dict | None:
+    """Larsen's own design, by quoted speaker (``eval.speakers``, model-assisted and simulated):
+    1,000-word blocks per speaker from the chapter text (Bible text left in, as theirs), the
+    biblical speakers left out of the MANOVA as in their first analyses, then leave-one-out
+    classification of every speaker block against the candidates."""
+    from eval.speakers import speaker_words
+
+    words = speaker_words()
+    if not words:
+        return None
+    blocks = {
+        k: [w[i : i + LARSEN_BLOCK] for i in range(0, len(w) - LARSEN_BLOCK + 1, LARSEN_BLOCK)]
+        for k, w in words.items()
+        if not k.startswith("other")
+    }
+    blocks = {k: v for k, v in blocks.items() if v}
+    tested = {k: v for k, v in blocks.items() if k not in LARSEN_BIBLICAL and len(v) >= 2}
+    within = manova({k: _arcsine(v, LARSEN_10) for k, v in tested.items()})
+    allg = {
+        **{f"BoM {k}": _arcsine(v, LARSEN_10) for k, v in tested.items()},
+        **{a: _arcsine(b, LARSEN_10) for a, b in cands.items()},
+    }
+    classified = lda_loo(allg)
+    to_cand = sum(n for g, d in classified.items() if g.startswith("BoM")
+                  for pred, n in d.items() if not pred.startswith("BoM"))  # fmt: skip
+    return {
+        "blocks_per_speaker": {k: len(v) for k, v in sorted(blocks.items())},
+        "speakers_in_manova": sorted(tested),
+        "manova": within,
+        "lda_leave_one_out": classified,
+        "bom_blocks_classified_to_a_candidate": to_cand,
+        "bom_blocks": sum(sum(d.values()) for g, d in classified.items() if g.startswith("BoM")),
+        "labelling": "eval/speakers.py (model-assisted, simulated), checked against Larsen et "
+        "al.'s Appendix B word counts",
+    }
 
 
 # ----------------------------------------------------------------------------- Holmes (1992)
@@ -857,8 +908,8 @@ HOLMES_SAMPLE = 10000
 
 
 def richness(tokens: list[str]) -> dict[str, float]:
-    """Holmes's variables that can be computed exactly: Honore's R, V2/V and Yule's K. (The two
-    Sichel parameters need a model fit Holmes describes only by reference; they are left out.)"""
+    """Holmes's word-based variables: Honore's R, V2/V and Yule's K. (The two Sichel parameters
+    are fitted to noun spectra separately, ``noun_spectra`` and ``classic.sichel``.)"""
     import math
     from collections import Counter
 
