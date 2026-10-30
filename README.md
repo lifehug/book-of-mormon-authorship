@@ -10,6 +10,26 @@ eventually the paper. Everything is public as it is produced.
 
 **Corpus v1.1** (frozen 2026-10-30), the snapshot every analysis from BOM-21 on runs against: [doi:10.5281/zenodo.23819273](https://doi.org/10.5281/zenodo.23819273). It corrects placeholder dates (BOM-56) and adds the curated pseudo-biblical control (BOM-54); index `data/manifests/corpus_v1.1.json`. Corpus v1.0 (frozen 2026-10-28), still citable: [doi:10.5281/zenodo.23740903](https://doi.org/10.5281/zenodo.23740903) (all versions: [10.5281/zenodo.23740902](https://doi.org/10.5281/zenodo.23740902)). Index `data/manifests/corpus_v1.0.json`; coverage and gaps in `docs/datasheet.md`.
 
+## Where we are
+
+The work runs in eight phases. This table is kept current as phases close; the plan behind
+each is in `docs/backlog.md`, and the story of how it went is in `paper/blog.md`.
+
+| Phase | In one line | Issues | Status (2026-10-30) |
+| --- | --- | --- | --- |
+| 0. **Set the rules** | Decide the questions and methods publicly, before touching data | BOM-01 to 04 | Done. Pre-registered on OSF; seven amendments since |
+| 1. **Gather** | Collect every English text from 1780-1830 we can get | BOM-05 to 13, 52 | Done |
+| 2. **Clean** | Fix OCR, spelling, duplicates and dates; freeze a citable corpus | BOM-14 to 19, 50, 53 to 56 | Done, except BOM-50 and BOM-53 (deferred). Corpus v1.1 released |
+| 3. **Test the old tools** | Check them on known authors, rerun the earlier studies, fix what broke | BOM-20 to 22, 40 to 49, 51, 57, 58, 60 | **Current.** Benchmark run; replications mostly done; tool checks and fixes under way |
+| 4. **Look for borrowing** | Find shared wording, and test whether it beats chance | BOM-23 to 26 | Not started |
+| 5. **Build new tools** | A language model that has only read pre-1830 text, and what it can tell us; the corpus-wide author sweep | BOM-27 to 30, 39 | Not started |
+| 6. **Put it all together** | The imitation test, the blind run on the Book of Mormon, combining the evidence | BOM-31 to 35 | Not started |
+| 7. **Write it up and open it to review** | Paper, full release, simulated peer review | BOM-36 to 38 | Not started |
+
+Publishing is not only at the end: the pre-registration and its amendments, the corpus releases,
+the replication report (`paper/replication-report.md`) and the blog are public as they are made.
+Decisions made after seeing a result are listed in `paper/deviations.md`.
+
 ## The three questions
 
 1. **Attribution.** Does the text resemble the writing of any named candidate? The
