@@ -3,10 +3,10 @@
 Larsen, Rencher and Layton assigned every quoted segment of the book to its originator by hand
 and published only the word count per speaker (their Appendix B). This rebuilds that labelling
 with a model (simulated, labelled as such): each chapter is cut into numbered units of
-``UNIT_WORDS`` words, and the model labels every unit with its speaker (one label per unit, so
-the reply's length checks it). The rule is Larsen's: words belong to whoever originally speaks
-them, and a quotation within a quotation goes to the innermost speaker ("the Lord" quoted by
-Isaiah is the category ``lord quoted by isaiah``).
+``UNIT_WORDS`` words, and the model labels every unit with its speaker, keyed by unit number
+so that a miscount cannot shift the labels. The rule is Larsen's: words belong to whoever
+originally speaks them, and a quotation within a quotation goes to the innermost speaker ("the
+Lord" quoted by Isaiah is the category ``lord quoted by isaiah``).
 
 The labelling is checked against Appendix B: each speaker's total word count should come out
 close to theirs (``LARSEN_COUNTS``). Only the Book of Mormon text is involved (the replication
@@ -66,9 +66,9 @@ Chapter: {book} {chapter}.
 
 {units}
 
-Reply with JSON only, no other text: one list of exactly {n_units} labels, one for each unit \
-in order (the label of whoever speaks most of that unit). Give the list once, with no \
-corrections or commentary."""
+Reply with JSON only, no other text: one object mapping every unit number, as a string from \
+"1" to "{n_units}", to the label of whoever speaks most of that unit, for example \
+{{"1": "nephi", "2": "nephi", "3": "lord"}}. Give it once, with no corrections or commentary."""
 
 
 def chapters() -> list[dict]:
@@ -84,17 +84,33 @@ def _key(c: dict) -> str:
     return f"{c['book']} {c['chapter']}"
 
 
+MAX_MISSING = 0.05  # share of units a reply may skip; each takes the label before it
+
+
 def _parse(text: str, n_units: int) -> list[dict] | None:
-    """The reply's list of one label per unit (the last such list, if the reply repeats itself),
-    turned into segments: where each speaker begins."""
+    """The reply's labels, one per unit, turned into segments (where each speaker begins).
+    Accepts an object of unit number to label (the last such object in the reply), with at
+    most ``MAX_MISSING`` of the units absent (filled from the unit before), or a list of exactly
+    ``n_units`` labels."""
     labels = None
-    for m in re.finditer(r"\[[^\[\]]*\]", text, re.S):
+    for m in re.finditer(r"\{[^{}]*\}|\[[^\[\]]*\]", text, re.S):
         try:
             got = json.loads(m.group(0))
         except json.JSONDecodeError:
             continue
         if isinstance(got, list) and len(got) == n_units and all(isinstance(x, str) for x in got):
             labels = [x.strip().lower() for x in got]
+        elif isinstance(got, dict) and got:
+            try:
+                byunit = {int(k): str(v).strip().lower() for k, v in got.items()}
+            except ValueError:
+                continue
+            missing = [u for u in range(1, n_units + 1) if u not in byunit]
+            if 1 in byunit and len(missing) <= MAX_MISSING * n_units:
+                out = []
+                for u in range(1, n_units + 1):
+                    out.append(byunit.get(u, out[-1] if out else byunit[1]))
+                labels = out
     if labels is None:
         return None
     segs = []
