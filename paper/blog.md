@@ -1701,8 +1701,33 @@ pass rule. And it doesn't rescue anything: the two methods that failed still fai
 What it doesn't include is the Delta question, whether a method that can't say "none" passes on
 the half of the test it can take. That one is still open.
 
+## Are the failed tools broken, or is it our copy of them?
+
+Two of the four classic tools failed the benchmark. Before calling that a fact about the tools, I
+need to rule out something duller: that our versions are wrong. We wrote both from the papers;
+neither came as code we could just run.
+
+The check is simple in principle. Run our code on data where the original authors published their
+own numbers, and see if we get the same numbers. If we do, our copy is faithful and the tool really
+does struggle with our hard case. If we don't, the bug is ours.
+
+For General Imposters that turned out to be easy to set up. Kestemont and colleagues, the Julius
+Caesar study our code follows, tested it on six public contest datasets (PAN 2014) and printed a
+table of results for each way of measuring distance. So we can run ours on the same six and
+compare, row by row.
+
+ENSC is harder. It was built at BYU for the Book of Mormon question, and the paper that defines it
+is behind a paywall. The free route is a 2010 BYU master's thesis by one of the authors' students
+that compares the variants. BYU's archive refuses downloads by script, so Dave is grabbing it by
+hand. If it doesn't spell out the "none of these" rule, we'll buy the paper.
+
+Whatever this finds, the benchmark verdict stands until a fix is written down in advance, tested
+on fresh books and registered. That's issue BOM-58. Every source, with the link it came from, is
+in `data/benchmark/fidelity/SOURCES.md`.
+
 ## Log
 
+- **2026-10-30, night.** BOM-57 and BOM-58 opened: check the two failed methods against published results before deciding to repair or retire them. GI: compare with Kestemont et al. 2016 Table 1 on PAN 2014. ENSC: Funai 2010 thesis (manual download), papers 10.1093/llc/fqq029 and 10.1080/03610926.2010.529529 if needed.
 - **2026-10-30, evening.** Amendment 7 filed and approved on OSF (revision 6ae500f8f0e01c4f4105c6bd): floors, ENSC alpha rule, time-split expectation, whole-corpus null, equal-weight synthesis, and (post hoc, labelled) the benchmark's construction and imposter pool. pending_amendment is empty.
 - **2026-10-30, evening.** BOM-56 closed: corpus v1.1 frozen (83 files) and released, DOI 10.5281/zenodo.23819273. BOM-21 run 2: Delta 100% / Cosine 97% closed-set (no open-set score), General Imposters 83% and saturated threshold (fails), ENSC 66% open-set false positives (fails). Run 1 had a 10-book imposter pool with a Hunt copy in it; kept as evidence. Multiverse redraw running.
 - **2026-10-30, later.** BOM-46 closed: 3 dual-register authors (Snowden clean; Dodsley mostly as editor; Kenrick's other work is a Shakespeare imitation). Too few for the 60/80% weight bands: intervals reported, equal-weight synthesis added as Amendment 7 draft Change 7.
