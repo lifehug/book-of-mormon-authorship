@@ -7,8 +7,7 @@ each (loaded non-strict, so their outputs say ``registered: false``), and draws 
 curve: for every conclusion, the share of configurations that agree with it.
 
 Stages are registered in ``STAGES`` with their recompute tier (``config/tiers.yaml``). Only
-feature-tier stages exist so far; the benchmark (BOM-21) joins them, and the curve is redrawn on
-it.
+feature-tier stages exist so far: the corpus demo (BOM-20) and the benchmark (BOM-21).
 
 Usage::
 
@@ -44,9 +43,17 @@ def _classic_corpus_run(out_dir: Path) -> Path:
     return out
 
 
+def _benchmark(out_dir: Path) -> Path:
+    from eval.benchmark import run
+
+    run(out_dir=out_dir)
+    return out_dir / "benchmark.json"
+
+
 # name -> (tier, function writing its output under the given directory, returning the path)
 STAGES: dict[str, tuple[str, Callable[[Path], Path]]] = {
     "classic_corpus_run": ("feature", _classic_corpus_run),
+    "benchmark": ("feature", _benchmark),
 }
 
 

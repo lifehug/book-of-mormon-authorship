@@ -8,7 +8,7 @@
 #
 # This file and its SHA-256 are committed before the blind run (BOM-32), like the thresholds,
 # so the ranges cannot be chosen after the results are seen.
-stages: [classic_corpus_run]
+stages: [classic_corpus_run, benchmark]
 max_configs: 64
 ranges:
   classic.mfw_min_doc_fraction: [0.1, 0.2, 0.3]

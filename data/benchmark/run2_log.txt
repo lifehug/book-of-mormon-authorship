@@ -1,0 +1,9 @@
+federalist: 3 authors, 40 tests, pool 195 from history
+pseudo_biblical: 4 authors, 80 tests, pool 200 from pseudo_biblical_curated
+dictated: 11 authors, 60 tests, pool 175 from general_prose
+  burrows_delta      closed 1.0  open FPR None  passes None
+  cosine_delta       closed 0.972  open FPR None  passes None
+  general_imposters  closed 0.833  open FPR 0.0  passes False
+  ensc               closed 1.0  open FPR 0.6611111111111111  passes False
+GI thresholds {'match': 1.0, 'non_match': 0.349}; ENSC shrinkage 0.5 alpha 0.5
+EXIT 0

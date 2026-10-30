@@ -35,6 +35,7 @@ Usage::
 
 from __future__ import annotations
 
+import gzip
 import json
 import random
 import sys
@@ -72,8 +73,11 @@ def _masked_tokens(work_ids: list[str]) -> dict[str, list[str]]:
     want = set(work_ids)
     spans = {}
     path = Path("data/kjv_mask/controls/spans.jsonl")
+    if not path.exists():  # a fresh clone has only the committed .gz
+        path = path.with_suffix(".jsonl.gz")
     if path.exists():
-        for ln in path.read_text().splitlines():
+        text = gzip.open(path, "rt").read() if path.suffix == ".gz" else path.read_text()
+        for ln in text.splitlines():
             r = json.loads(ln)
             if r["id"] in want:
                 spans[r["id"]] = r["spans"]
@@ -152,37 +156,76 @@ def imposter_pool(
     cfg: dict,
     genre: str | None = None,
     exclude_authors: tuple[str, ...] = (),
+    fill: str | None = None,
 ) -> list[list[str]]:
     """Genre-matched control samples for GI (5.1): ``per_trial / imposter_fraction`` of them,
-    never the task authors' own works."""
+    never the task authors' own works.
+
+    A work is left out when it is excluded by id *or* is another copy of an excluded work
+    (``metadata.pseudo_biblical.work_key``): the curated list's copy of *The Late War* is not the
+    one the task tests, and run 1 let it in. Sealed copies are always left out. When the set is
+    too small for the registered size (the curated pseudo-biblical list has 18 works), every
+    eligible work is used and the rest is drawn, seeded, from ``fill``, one copy per work
+    (pending ``benchmark.imposter_fill``).
+    """
+    from metadata.pseudo_biblical import work_key
+    from metadata.sealed import sealed_ids
+
     gi = cfg["classic"]["imposters"]
     size = round(gi["per_trial"] / gi["imposter_fraction"])
-    path = Path(f"data/controls/{set_name}.txt")
-    if not path.exists():
-        raise SystemExit(f"{path} does not exist yet (the curated list is BOM-54's output)")
-    ids = [w for w in path.read_text().split() if w not in exclude]
-    if genre or exclude_authors:
-        meta = {
-            r["work_id"]: r
-            for r in pq.read_table(
-                "data/catalog/catalog.parquet", columns=["work_id", "author_norm"]
-            ).to_pylist()
-        }
-        labels = {
+    n = cfg["benchmark"]["test_words"]
+    meta = {
+        r["work_id"]: r
+        for r in pq.read_table(
+            "data/catalog/catalog.parquet", columns=["work_id", "author_norm", "title"]
+        ).to_pylist()
+    }
+    labels = (
+        {
             r["work_id"]: (r["genre"] or "").split(",")[0]
             for r in pq.read_table("data/catalog/genre.parquet").to_pylist()
         }
-        ids = [
-            w
-            for w in ids
-            if (not genre or labels.get(w) == genre)
+        if genre
+        else {}
+    )
+    keys = {work_key(meta[w]["title"]) for w in exclude if w in meta}
+    seal = sealed_ids()
+
+    def listed(name: str) -> list[str]:
+        path = Path(f"data/controls/{name}.txt")
+        if not path.exists():
+            raise SystemExit(f"{path} does not exist yet (the curated list is BOM-54's output)")
+        return path.read_text().split()
+
+    def ok(w: str) -> bool:
+        return (
+            w not in exclude
+            and w not in seal
+            and work_key(meta[w]["title"]) not in keys
+            and (not genre or labels.get(w) == genre)
             and not (meta[w]["author_norm"] or "").startswith(exclude_authors)
-        ]
+        )
+
+    ids = [w for w in listed(set_name) if ok(w)]
     rng = random.Random(derive_seed(f"benchmark-pool:{set_name}", cfg))
     pick = sorted(rng.sample(ids, min(size, len(ids))))
     toks = _masked_tokens(pick)
-    n = cfg["benchmark"]["test_words"]
-    return [_middle(toks[w], n) for w in pick if len(toks[w]) >= n]
+    pool = [_middle(toks[w], n) for w in pick if len(toks[w]) >= n]
+    if fill and len(pool) < size:
+        seen = {work_key(meta[w]["title"]) for w in pick}
+        extra = [w for w in listed(fill) if ok(w) and w not in pick]
+        random.Random(derive_seed(f"benchmark-pool-fill:{fill}", cfg)).shuffle(extra)
+        queue = []
+        for w in extra:
+            k = work_key(meta[w]["title"])
+            if k not in seen:
+                seen.add(k)
+                queue.append(w)
+        while len(pool) < size and queue:
+            batch, queue = queue[: size - len(pool)], queue[size - len(pool) :]
+            toks = _masked_tokens(batch)
+            pool += [_middle(toks[w], n) for w in batch if len(toks[w]) >= n]
+    return pool
 
 
 def _vec(docs: list[list[str]], vocab: list[str]) -> np.ndarray:
@@ -285,7 +328,7 @@ def calibrate_gi(pos: list[float], neg: list[float], rate: float) -> dict:
     return {"match": float(np.quantile(neg, 1 - rate)), "non_match": float(np.quantile(pos, rate))}
 
 
-def run(only: list[str] | None = None) -> int:
+def run(only: list[str] | None = None, out_dir: Path | None = None) -> int:
     cfg = load_config()
     bm = cfg["benchmark"]
     rng = random.Random(derive_seed("benchmark", cfg))
@@ -297,7 +340,12 @@ def run(only: list[str] | None = None) -> int:
     for name, task in tasks.items():
         exclude = set(spec[name].get("exclude_from_pool", []))
         pool = imposter_pool(
-            task["pool_set"], exclude, cfg, task["pool_genre"], task["pool_exclude_authors"]
+            task["pool_set"],
+            exclude,
+            cfg,
+            task["pool_genre"],
+            task["pool_exclude_authors"],
+            spec[name].get("imposter_fill"),
         )
         print(
             f"{name}: {len(task['authors'])} authors, {len(task['tests'])} tests, "
@@ -375,19 +423,35 @@ def run(only: list[str] | None = None) -> int:
             ),
         },
     }
+    if th["match"] >= 1.0:
+        verdict["general_imposters"]["note"] = (
+            "match threshold is the maximum score: GI can never return 'match' at 5% FPR"
+        )
     for r in allrecs:
         r.pop("_ensc")
+    # yes/no findings for the specification curve (pipeline.cli.conclusions)
+    per_test = {
+        m: {
+            "closed_set_pass": v["closed_set"] is not None and v["closed_set"] >= pass_cs,
+            **({"passes": v["passes"]} if v["passes"] is not None else {}),
+        }
+        for m, v in verdict.items()
+    }
     result = {
         **stamp(),
         "closed_set_by_task": closed,
         "ensc_closed_set_by_task": ens_closed,
         "verdict": verdict,
+        "per_test": per_test,
         "gi_thresholds": th,
         "ensc": ens,
         "records": recs_by,
     }
-    OUT.write_text(json.dumps(result, indent=1) + "\n")
-    THRESHOLDS.write_text(
+    out, thresholds = (
+        (out_dir / OUT.name, out_dir / THRESHOLDS.name) if out_dir else (OUT, THRESHOLDS)
+    )
+    out.write_text(json.dumps(result, indent=1) + "\n")
+    thresholds.write_text(
         json.dumps(
             {
                 **stamp(),

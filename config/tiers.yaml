@@ -4,7 +4,7 @@
 tiers:
   feature:
     cost: CPU-minutes from cached features
-    keys: [classic, controls.pool_sample, candidates]
+    keys: [classic, benchmark, controls.pool_sample, candidates]
   corpus:
     cost: about a week of local compute per value (re-runs OCR repair, normalisation,
       deduplication, KJV masking and segmentation)

@@ -306,3 +306,12 @@ pending_amendment:
       (data/benchmark/dual_register.json). Used: each method's imitation accuracy reported with an
       exact Clopper-Pearson 95% interval and its n, and 6.7 run at equal method weights beside the
       section 9 weights (Amendment 7 draft, Change 7).
+  - key: benchmark.imposter_fill
+    issue: BOM-21
+    note: >
+      Amendment 2 draws GI's imposters from a pool of 200 genre-matched controls; Amendment 6's
+      curated pseudo-biblical list has 18 works, 10 of them usable once the task authors are out,
+      so run 1 (data/benchmark/run1/) ran with 10. Used: every eligible curated work, the rest
+      drawn seeded from Amendment 3's list (data/controls/pseudo_biblical.txt), one copy per work;
+      the task authors' works excluded by work, not only by id (run 1 let in another copy of The
+      Late War); sealed copies excluded.

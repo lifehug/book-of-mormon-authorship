@@ -1,0 +1,1570 @@
+{
+ "config_sha256": "5096f30afe6d660697db612bf4c635ad5dfc3a7c0d86df629225fb54e9f9d2b0",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "ebedd5c68c6df2b4c4a7f44655936635b0b55803",
+ "closed_set_by_task": {
+  "federalist": {
+   "burrows_delta": 1.0,
+   "cosine_delta": 0.9,
+   "general_imposters": 0.95
+  },
+  "pseudo_biblical": {
+   "burrows_delta": 1.0,
+   "cosine_delta": 0.9875,
+   "general_imposters": 0.95
+  },
+  "dictated": {
+   "burrows_delta": 1.0,
+   "cosine_delta": 1.0,
+   "general_imposters": 0.75
+  }
+ },
+ "ensc_closed_set_by_task": {
+  "federalist": 1.0,
+  "pseudo_biblical": 1.0,
+  "dictated": 1.0
+ },
+ "verdict": {
+  "burrows_delta": {
+   "closed_set": 1.0,
+   "open_set_fpr": null,
+   "passes": null,
+   "note": "no verification score in 6.1; closed set only"
+  },
+  "cosine_delta": {
+   "closed_set": 0.9722222222222222,
+   "open_set_fpr": null,
+   "passes": null,
+   "note": "no verification score in 6.1; closed set only"
+  },
+  "general_imposters": {
+   "closed_set": 0.8833333333333333,
+   "open_set_fpr": 0.08333333333333333,
+   "passes": false
+  },
+  "ensc": {
+   "closed_set": 1.0,
+   "open_set_fpr": 0.6611111111111111,
+   "passes": false
+  }
+ },
+ "gi_thresholds": {
+  "match": 1.0,
+  "non_match": 0.3795
+ },
+ "ensc": {
+  "cv_open_set_accuracy": {
+   "0|1e-06": 0.5611111111111111,
+   "0|1e-05": 0.5694444444444444,
+   "0|0.0001": 0.5833333333333334,
+   "0|0.001": 0.5861111111111111,
+   "0|0.01": 0.5861111111111111,
+   "0|0.05": 0.6166666666666667,
+   "0|0.1": 0.6166666666666667,
+   "0|0.2": 0.6277777777777778,
+   "0|0.3": 0.6361111111111111,
+   "0|0.5": 0.6638888888888889,
+   "0.5|1e-06": 0.5666666666666667,
+   "0.5|1e-05": 0.575,
+   "0.5|0.0001": 0.5888888888888889,
+   "0.5|0.001": 0.5916666666666667,
+   "0.5|0.01": 0.5916666666666667,
+   "0.5|0.05": 0.6222222222222222,
+   "0.5|0.1": 0.6222222222222222,
+   "0.5|0.2": 0.6333333333333333,
+   "0.5|0.3": 0.6416666666666667,
+   "0.5|0.5": 0.6694444444444444,
+   "1|1e-06": 0.5666666666666667,
+   "1|1e-05": 0.575,
+   "1|0.0001": 0.5888888888888889,
+   "1|0.001": 0.5916666666666667,
+   "1|0.01": 0.5916666666666667,
+   "1|0.05": 0.6222222222222222,
+   "1|0.1": 0.6222222222222222,
+   "1|0.2": 0.6333333333333333,
+   "1|0.3": 0.6416666666666667,
+   "1|0.5": 0.6694444444444444,
+   "2|1e-06": 0.5666666666666667,
+   "2|1e-05": 0.575,
+   "2|0.0001": 0.5888888888888889,
+   "2|0.001": 0.5916666666666667,
+   "2|0.01": 0.5916666666666667,
+   "2|0.05": 0.6222222222222222,
+   "2|0.1": 0.6222222222222222,
+   "2|0.2": 0.6333333333333333,
+   "2|0.3": 0.6416666666666667,
+   "2|0.5": 0.6694444444444444,
+   "4|1e-06": 0.5111111111111111,
+   "4|1e-05": 0.5194444444444445,
+   "4|0.0001": 0.5333333333333333,
+   "4|0.001": 0.5361111111111111,
+   "4|0.01": 0.5361111111111111,
+   "4|0.05": 0.5666666666666667,
+   "4|0.1": 0.5666666666666667,
+   "4|0.2": 0.5777777777777777,
+   "4|0.3": 0.5861111111111111,
+   "4|0.5": 0.6138888888888889,
+   "8|1e-06": 0.4527777777777778,
+   "8|1e-05": 0.46111111111111114,
+   "8|0.0001": 0.475,
+   "8|0.001": 0.4777777777777778,
+   "8|0.01": 0.4777777777777778,
+   "8|0.05": 0.5083333333333333,
+   "8|0.1": 0.5083333333333333,
+   "8|0.2": 0.5194444444444445,
+   "8|0.3": 0.5277777777777778,
+   "8|0.5": 0.5555555555555556
+  },
+  "shrinkage": 0.5,
+  "alpha": 0.5
+ },
+ "records": {
+  "federalist": [
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.86
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.74
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.78
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 0.81,
+    "gi_open_negative": 0.47
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.61
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.62
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.95
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.88
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.72
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.91
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.81
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.9
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "jay",
+    "general_imposters": "hamilton",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.67
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.78
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "jay",
+    "general_imposters": "hamilton",
+    "gi_positive": 0.88,
+    "gi_open_negative": 0.63
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.91
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "hamilton",
+    "gi_positive": 0.89,
+    "gi_open_negative": 0.98
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.67
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "jay",
+    "general_imposters": "madison",
+    "gi_positive": 0.84,
+    "gi_open_negative": 0.61
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.95
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.73
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.95
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.7
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.71
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "jay",
+    "general_imposters": "madison",
+    "gi_positive": 0.83,
+    "gi_open_negative": 0.68
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.63
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   }
+  ],
+  "pseudo_biblical": [
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.1
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.04
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.05
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.09
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.06
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.9,
+    "gi_open_negative": 0.01
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.03
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.08
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.09
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.03
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.92,
+    "gi_open_negative": 0.01
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.03
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.03
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.02
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.03
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.06
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.93,
+    "gi_open_negative": 0.11
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.05
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.0
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.09
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.97
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.75
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.93
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 0.68,
+    "gi_open_negative": 0.49
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.96
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.96
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.97
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 0.83,
+    "gi_open_negative": 0.66
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.96
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 0.82,
+    "gi_open_negative": 0.6
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "linning",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.51
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.17
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.1
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.27
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.39
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.16
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.34
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.11
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.22
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.03
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.37
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.18
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.25
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.15
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.27
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.28
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.17
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.2
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.27
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.28
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.03
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.8
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.91
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.94
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.94
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.92
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99
+   }
+  ],
+  "dictated": [
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "morgan",
+    "gi_positive": 0.23,
+    "gi_open_negative": 0.46
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.47,
+    "gi_open_negative": 0.89
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.92
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.91,
+    "gi_open_negative": 0.97
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.46,
+    "gi_open_negative": 0.25
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.6,
+    "gi_open_negative": 0.75
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.59
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.87,
+    "gi_open_negative": 0.2
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.88,
+    "gi_open_negative": 0.18
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.82,
+    "gi_open_negative": 0.25
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.85,
+    "gi_open_negative": 0.84
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.41,
+    "gi_open_negative": 0.45
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.98
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.61,
+    "gi_open_negative": 0.8
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.14,
+    "gi_open_negative": 0.2
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.9,
+    "gi_open_negative": 0.88
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.4,
+    "gi_open_negative": 0.15
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.32,
+    "gi_open_negative": 0.16
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.3
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.7,
+    "gi_open_negative": 0.47
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.5,
+    "gi_open_negative": 0.63
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "morgan",
+    "gi_positive": 0.72,
+    "gi_open_negative": 0.9
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.47,
+    "gi_open_negative": 0.15
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.46,
+    "gi_open_negative": 0.61
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.69
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.61,
+    "gi_open_negative": 0.91
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "morgan",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.99
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.38,
+    "gi_open_negative": 0.16
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.57,
+    "gi_open_negative": 0.68
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.66
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.62,
+    "gi_open_negative": 0.14
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.78
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.63
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "morgan",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.95
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.85
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.86,
+    "gi_open_negative": 0.75
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.82,
+    "gi_open_negative": 0.49
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.42,
+    "gi_open_negative": 0.16
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.89,
+    "gi_open_negative": 0.88
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.68
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.64,
+    "gi_open_negative": 0.27
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.33
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.35,
+    "gi_open_negative": 0.1
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.53,
+    "gi_open_negative": 0.13
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.24,
+    "gi_open_negative": 0.07
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.88,
+    "gi_open_negative": 0.2
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.13,
+    "gi_open_negative": 0.05
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.4,
+    "gi_open_negative": 0.1
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.77,
+    "gi_open_negative": 0.3
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.67,
+    "gi_open_negative": 0.12
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.93,
+    "gi_open_negative": 0.24
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.33,
+    "gi_open_negative": 0.29
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.27
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.72,
+    "gi_open_negative": 0.38
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.5,
+    "gi_open_negative": 0.12
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.37,
+    "gi_open_negative": 0.09
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.23
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.95,
+    "gi_open_negative": 0.28
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.61,
+    "gi_open_negative": 0.2
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.08,
+    "gi_open_negative": 0.05
+   }
+  ]
+ }
+}
