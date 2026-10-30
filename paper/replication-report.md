@@ -194,16 +194,48 @@ eleven printings of it: anything it shares with the Book of Mormon is in at leas
 documents and so is never rare. Rarity counted by volume penalises reprinted sources. Recorded on
 BOM-24 to be resolved there; it does not change this replication, which uses Johnson's rule.
 
-## What this says about the methods, not the book
+## Gaps that cannot be closed
 
-The two results that replicate cleanly (Larsen, Holmes) ask whether texts *differ*, not *who
-wrote* them. The one closed-set attribution
-(Jockers) reproduces as a method on its own data, but its answer is a property of the candidate
-samples. The open-set
-method, run as published, returns the published "none", but its answer depends on sample choices
-and it has not yet passed validation. The rare-phrase result returns
-in part: the named sources are real outliers, but not unique ones. These are the reasons the
-pre-registered study requires an open-set method that passes section 7 before any attribution is
-reported.
+- **Johnson and Johnson's own collection.** They compared against over 100,000 books they
+  assembled; that set is not published. We ran their rule on ours (221,344 period volumes), so
+  the method replicates exactly and the collection does not.
+- **Holmes's modern edited text.** He cut his samples from a later edited Book of Mormon; ours come
+  from the 1830 text. This is deliberate (the project studies the 1830 text) and his findings
+  survived it. His 10,000-equivalent Sichel values also do not reproduce from the formulas he
+  gives (section 2).
+- **Jockers et al.'s printed tables.** Their NSC reproduces as a method on their deposited data,
+  in their own tool, to the same cross-validated error; their printed chapter counts do not come
+  back from that data in that tool (section 3). The threshold they used is not reported.
+- **Schaalje et al.'s candidate texts.** We hold one Rigdon, not their early and late corpora, and
+  different Joseph Smith holographs; their smoothing across chapters is not reproduced (section 4).
+- **Larsen et al.'s quoted speakers.** Their 21 speakers came from hand-assigning every quoted
+  segment; only the word count per speaker is published (their Appendix B), so the split would
+  have to be relabelled from the text. We test their weaker claim at the level of the four
+  narrators. Relabelling, checked against their published word counts, is possible and costs a
+  model-labelling pass (simulated); it is pending the owner's decision.
+
+## Where the results match, where they differ, and why
+
+- **They match where the question is whether texts differ.** Larsen's narrators differ in their
+  function words, and Holmes's prophets do not separate from each other while Joseph Smith's own
+  writing does. Both return on the 1830 text, with the same caveats the critics raised: blocks of
+  one book are not independent samples, and vocabulary richness is a weak measure of authorship.
+- **They differ where the question is who wrote it, and the reason is the candidate texts.**
+  Jockers et al.'s method reproduces exactly on their own data, but the leading candidate moves
+  with the writings chosen to stand for each man: their Rigdon is mostly from 1864, and swapping
+  in other genuine Rigdon text halves his count. A method that must name someone from a list
+  names whoever's samples sit nearest.
+- **The open-set conclusion returns, but depends on choices.** ENSC as published sends most
+  chapters to an unobserved author (theirs 73%, ours 94%), but BOM-57 showed its "none" answer
+  moves with the length and kind of the candidate samples.
+- **The rare-phrase signal is real but not unique.** *The Late War* shares far more rare phrasing
+  than chance gives, and so do some thirty other books written in imitation of scripture.
+- **Two things we got wrong first, and fixed.** Our first ENSC was not the published method
+  (BOM-57), and some of our candidate samples quoted the Book of Mormon (section 3). Both are now
+  corrected, and the first results are kept beside the corrected ones.
+
+These are the reasons the pre-registered study requires an open-set method that passes the
+section 7 benchmark before any attribution is reported, screens candidate texts for quotation of
+the Book of Mormon, and reports how results move with the choice of candidate samples.
 
 Every review step in this project is simulated by an AI model and labelled as such.
