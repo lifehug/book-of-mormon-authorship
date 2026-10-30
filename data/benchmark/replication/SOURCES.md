@@ -39,6 +39,7 @@ replication: `python -m eval.speakers label --model sonnet` (Claude Sonnet via `
 **simulated labelling, not a human reading**). Append-only log: the last record per chapter
 counts; earlier records keep the replies that failed to parse and the one chapter (Jacob 5)
 relabelled after the parable rule was added. Three prompt formats were used in turn (change
-points; one label per unit; labels keyed by unit number); the final labels of 133 chapters came
-from the first two formats and passed their stricter checks. `larsen_speakers_check.txt` is
+points; one label per unit; labels keyed by unit number); chapters already labelled under an
+earlier format passed that format's stricter check and were kept. The log does not record which
+format produced each record. `larsen_speakers_check.txt` is
 `python -m eval.speakers check`: per-speaker word totals against Larsen et al.'s Appendix B.
