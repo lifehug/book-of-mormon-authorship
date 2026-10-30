@@ -17,6 +17,7 @@ Usage::
     python -m eval.replicate chapters     # -> data/benchmark/replication/chapters_1830.jsonl
     python -m eval.replicate jockers      # -> data/benchmark/replication_jockers.json
     python -m eval.replicate jockers-data # their published counts -> replication_jockers_data.json
+    python -m eval.replicate jockers-pamr # the same in R's pamr (needs R + pamr)
     python -m eval.replicate johnson      # after `reuse.rare scan --target bom`
 """
 
@@ -499,6 +500,59 @@ def jockers_data() -> int:
     print("NSC first-or-second, their data:", dict(base.most_common()))
     for a, c in swaps.items():
         print(f"  with our {a} texts:", dict(Counter(c).most_common()))
+    return 0
+
+
+def jockers_pamr() -> int:
+    """Their NSC with their own tool: R's pamr on their counts (``eval/jockers_pamr.R``), at the
+    cross-validated threshold and at Schaalje et al.'s 0.44. Needs R with pamr installed."""
+    import csv
+    import subprocess
+    import tempfile
+    from collections import Counter
+
+    from metadata.config import derive_seed, stamp
+    from metadata.config import load as load_config
+
+    words = json.loads(JOCKERS_DATA_OUT.read_text())["features"]
+    with tempfile.TemporaryDirectory() as tmp:
+        wf, out = Path(tmp) / "words.txt", Path(tmp) / "pamr.csv"
+        wf.write_text("\n".join(words))
+        seed = derive_seed("replicate-jockers-pamr", load_config()) % 2**31
+        log = subprocess.run(
+            ["Rscript", "eval/jockers_pamr.R", str(JOCKERS_DATA), str(wf), str(out), str(seed)],
+            capture_output=True,
+            text=True,
+            check=True,
+        ).stdout
+        rows = list(csv.DictReader(out.open()))
+    version = subprocess.run(
+        ["Rscript", "-e", '.libPaths(c(file.path(Sys.getenv("HOME"), ".R/library"), .libPaths()));'
+         'cat(R.version.string, "| pamr", as.character(packageVersion("pamr")))'],
+        capture_output=True, text=True, check=True,
+    ).stdout  # fmt: skip
+    by = {}
+    for th in sorted({r["threshold"] for r in rows}, key=float):
+        sel = [r for r in rows if r["threshold"] == th]
+        by[th] = {
+            "first": dict(Counter(r["first"] for r in sel)),
+            "second": dict(Counter(r["second"] for r in sel)),
+        }
+    result = {
+        **stamp(),
+        "tool": version,
+        "cv_line": [ln for ln in log.splitlines() if ln.startswith("cv threshold")],
+        "by_threshold": by,
+        "published": JOCKERS_TABLES["nsc"],
+    }
+    (DIR.parent / "replication_jockers_pamr.json").write_text(json.dumps(result, indent=1) + "\n")
+    print(version)
+    for th, v in by.items():
+        pub = JOCKERS_TABLES["nsc"]["first"]
+        print(
+            f"pamr threshold {th}: "
+            + "  ".join(f"{a} {v['first'].get(a, 0)}/{pub[a]}" for a in pub)
+        )
     return 0
 
 
@@ -1012,6 +1066,8 @@ def main(argv: list[str] | None = None) -> int:
         return jockers()
     if args[:1] == ["jockers-data"]:
         return jockers_data()
+    if args[:1] == ["jockers-pamr"]:
+        return jockers_pamr()
     if args[:1] == ["johnson"]:
         return johnson()
     if args[:1] == ["larsen"]:

@@ -73,9 +73,15 @@ reproduce in shape, not exactly:
 | NSC | 70 / 93 | 40 / 52 | 89 / 63 | 24 / 20 | 15 / 9 | 1 / 2 | 0 / 0 |
 | Delta (90 words, as published) | 53 / 63 | 61 / 47 | 80 / 112 | 12 / 5 | 13 / 7 | 6 / 5 | 14 / 0 |
 
-Rigdon is first or second for 169 chapters (published 197). The remaining gap is in how scores
-become probabilities (their NSC ran in R's `pamr`; their Delta "probability assignments" are not
-described), so Delta matches less well.
+Rigdon is first or second for 169 chapters (published 197). **The NSC gap is not our code:** run
+on their counts in their own tool, R's `pamr` (version 1.57, `python -m eval.replicate
+jockers-pamr`, `replication_jockers_pamr.json`), NSC at Schaalje et al.'s threshold of 0.44
+gives exactly our first-choice counts (Cowdery 23, Pratt 8, Rigdon 67, Spalding 68,
+Isaiah-Malachi 72, Barlow 0, Longfellow 1), and `pamr`'s cross-validated threshold, which moves
+with the random folds (0 to 0.52 here), gives Rigdon 65 to 81. The printed Table 1 (Rigdon 93)
+does not come back from the deposited data with the authors' tool; the deposit records a
+tokenising correction made after publication, and the exact threshold they used is not
+reported. Delta matches less well; its "probability assignments" are not described.
 
 **(b) Our texts.** Our candidate samples (BOM-13), Bible text left in as they did, samples that
 quote the Book of Mormon left out (see below): Cowdery 24, Pratt 30, Rigdon 11, Spalding 22.
@@ -129,7 +135,7 @@ for this either.
 
 | Chapters assigned | Unobserved author | Isaiah | Rigdon | Smith | Spalding | Cowdery | Pratt |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Published (2011, unsmoothed counts reported in the text) | 175 | 35 | 17 | 8 | 2 | 2 | 0 |
+| Published (2011, section 6) | 175 | 35 | 17 | 8 | 2 | 2 | 0 |
 | Published method, our texts | 225 | 13 | 0 | 0 | 1 | 0 | 0 |
 | Our BOM-20 reconstruction | 235 | 4 (Isaiah-Malachi) | 0 | 0 | 0 | 0 | 0 |
 

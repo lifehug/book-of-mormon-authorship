@@ -27,3 +27,7 @@ Jockers, Daniela M. Witten and Craig S. Criddle.
 Downloaded from `https://stacks.stanford.edu/file/druid:rs276tc2764/<file>`. The deposit notes a
 tokenising error corrected by the authors on 2009-01-09 (one chapter's ranking changed); this is
 the corrected data. Read by `python -m eval.replicate jockers-data`.
+
+`python -m eval.replicate jockers-pamr` runs `eval/jockers_pamr.R` and needs R with the `pamr`
+package (CRAN; used here: R 4.6.2, pamr 1.57, installed with `brew install r` and
+`install.packages("pamr")` into `~/.R/library`).
