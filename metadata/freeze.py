@@ -37,6 +37,9 @@ FROZEN = [
     "data/catalog/genre_pass2.parquet",
     "data/catalog/duplicates.parquet",
     "data/catalog/duplicates_normalized.parquet",
+    "data/catalog/duplicates_metadata.parquet",  # v1.1: BOM-55's metadata pass
+    "data/catalog/duplicates_combined.parquet",
+    "data/catalog/date_check.parquet",  # v1.1: BOM-56's title-page years
     "data/catalog/author_words.parquet",
     "data/catalog/author_words_normalized.parquet",
     "data/catalog/sealed.json",
@@ -60,6 +63,7 @@ FROZEN = [
     "data/controls/*.txt",
     "data/controls/*.jsonl",
     "data/controls/controls.json",
+    "data/controls/pseudo_biblical/*",  # v1.1: BOM-54's curated list and its evidence
     "config/preregistered.yaml",
 ]
 REQUIRED = ["data/kjv_mask/controls/report.json"]  # written only when a masking run completes
