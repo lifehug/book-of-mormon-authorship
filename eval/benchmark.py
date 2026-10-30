@@ -272,6 +272,7 @@ def run_task(task: dict, pool: list[list[str]], cfg: dict, rng: random.Random) -
                 "gi_positive": gi[a],
                 "gi_open_negative": max(gi[b] for b in others) if others else None,
                 "_ensc": (X, labels, x),
+                "_n": len(test),
             }
         )
     return recs
