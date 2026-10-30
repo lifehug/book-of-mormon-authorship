@@ -1763,8 +1763,43 @@ most 5 books. But our collection has about eleven printings of *The Late War*. S
 shares with the Book of Mormon is in at least eleven books, and by that rule is never rare. The
 rule as written can't see a source that was reprinted a lot. That's noted for the step that uses it.
 
+## ENSC: we had built the wrong machine, and the right one has a catch
+
+The BYU thesis came with the authors' own computer code. So I rebuilt ENSC exactly as they ran
+it, line by line, and gave it the same test the thesis reports: the Federalist Papers. Take the
+Book of Mormon candidates, hide Hamilton from the list, feed in Hamilton's 51 essays, and see how
+often it rightly says "none of these". The thesis got 8 wrong out of 51, about 16%.
+
+Two things came out.
+
+**Our old version wasn't ENSC.** On the same essays it either says "none" to everything, or,
+in the other test, gets 63% wrong where the real method gets 29%. So a good part of ENSC's failure
+in our benchmark was ours, not the method's. Worth knowing before calling a published tool broken.
+
+**The real version has a catch.** How often it says "none" depends on how long the writing
+samples for each candidate are:
+
+| Each candidate sample | Hamilton essays wrongly given to a candidate |
+| --- | --- |
+| 1,000 words | 80% |
+| 2,000 words | 61% |
+| 5,000 words | 24% |
+| 10,000 words | 0% |
+
+Longer samples make each candidate's style look tighter, so anything outside it falls to "someone
+else" more easily. The thesis's 16% sits between our 3,000- and 5,000-word rows, so the rebuild
+matches. But it means the answer "most chapters were written by someone else" partly depends on a
+choice the user makes. The 2011 paper's title promises a fix for "texts of varying sizes", and
+that fix isn't in the thesis code. So that paper went from nice-to-have to needed.
+
+Meanwhile the Jockers paper arrived. Its appendix finally says which texts they used, and the
+biggest surprise is Rigdon. His samples are mostly a book of revelations he wrote in **1864**,
+more than thirty years after the Book of Mormon. Also, they took the Bible quotations out of every
+candidate's text; I hadn't. Both get fixed before that replication is rerun.
+
 ## Log
 
+- **2026-10-30, night.** BOM-57: ENSC ported from the thesis code. Federalist check: our old ENSC isn't the published method; the published one reproduces (16% lies between 3k and 5k-word samples) but its 'none' rate swings from 80% to 0% wrong with sample length. Schaalje 2011 now needed (size adjustment). Jockers 2008 bought: their Rigdon is mostly 1864; they masked Bible passages; 110 words listed.
 - **2026-10-30, night.** BOM-22 Johnson replication: The Late War ranks 97th of 221,344 (174 rare shared 4-grams, p = 0.0004), but 31st among books of 10,000+ words, behind mostly other imitation-scripture works; Napoleon 8th. The registered df<=5 rule can't see a reprinted source (Late War: ~11 copies); noted for BOM-24. BOM-59 opened (owner buys Jockers 2008), blocks BOM-22.
 - **2026-10-30, night.** BOM-57: ENSC's authors describe its 'none' as an unknown-author class, not the cutoff our code uses; ENSC's benchmark failure may be our reconstruction's. Their Book of Mormon figures (73% / 93% 'someone else') recorded.
 - **2026-10-30, night.** BOM-57 and BOM-58 opened: check the two failed methods against published results before deciding to repair or retire them. GI: compare with Kestemont et al. 2016 Table 1 on PAN 2014. ENSC: Funai 2010 thesis (manual download), papers 10.1093/llc/fqq029 and 10.1080/03610926.2010.529529 if needed.
