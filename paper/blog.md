@@ -1541,8 +1541,41 @@ later writing. I've added that to the draft amendment too, so it's on the record
 is run on the Book of Mormon. It's the same kind of honest negative as last time: the evidence
 needed to answer the Joseph Smith question isn't there in the form these methods need.
 
+## How rare is "rare"? Use every book, not a sample
+
+Part of the plan looks for phrases the Book of Mormon shares with older books. Shared phrases
+on their own prove nothing, since everybody in 1830 wrote "and it came to pass that". So the
+plan only counts rare phrases: four words in a row that appear in five or fewer books in the
+whole collection. A source book gets a score for how many of those rare phrases it shares,
+and the question is whether that score is unusual.
+
+"Unusual" needs something to compare against. The plan said to score at least 500 random books
+from the period and call a source significant if it beats 99% of them. I tested that, without
+touching the Book of Mormon: I used Gilbert Hunt's *The Late War* as a stand-in and scored all
+227,000 period books against it.
+
+The first thing that happened was that the answer came out as zero. Almost no book shared a
+single rare phrase with *The Late War*. That turned out to be a trap worth knowing about: the
+collection holds seven or so other copies of *The Late War* that the duplicate finder missed.
+Every phrase distinctive to Hunt therefore appeared in six to nine books, so none of them
+counted as rare. Take the book's own copies out of the count and the picture is sensible: 4% of
+books share at least one rare phrase with it. For the Book of Mormon, its own copies are already
+locked away, but the rule now says so explicitly.
+
+Then the real question: is 500 books enough? It isn't. Drawing 500 books a thousand different
+ways, the 99% line landed anywhere from 0.06 to 0.37 rare phrases per 10,000 words. That's a
+six-fold range, for the line every borrowing claim would be judged against. Even 20,000 books
+left it wobbling by 16%.
+
+The fix turned out to be simpler than picking a bigger number. Scoring every book in the
+collection against a target takes about 45 minutes on the mini. So the comparison is just all
+of them, about 200,000 books, and there's no sampling wobble at all. And because most books
+score exactly zero, "beats 99% of books" becomes "fewer than 1% of books score at least as high",
+which handles the ties properly. That's in the draft amendment too.
+
 ## Log
 
+- **2026-10-30.** BOM-45 closed: the borrowing null's 99th percentile from 500 books is +/-119% (six-fold range), +/-16% even at 20,000; the null becomes the whole period corpus (~200,000 books, one 45-minute pass). Missed copies of the target collapse rarity, so they're excluded. Amendment 7 draft, Change 6. Pseudo-biblical judging resumed after the weekly usage reset.
 - **2026-10-28, night.** BOM-48 closed: time-split baseline 37-60% (30 authors, 7+ year gap, chance 3%), far below the 80% gate; only Joseph Smith and Cowdery have text on both sides of 1830 (one test each, below the floor). No candidate expected to qualify for expanded corpora (Amendment 7 draft, Change 5).
 - **2026-10-28, night.** BOM-43 closed: power analysis on the Federalist Papers and known pseudo-biblical authors. Floor about 10,000 masked words of known writing per candidate; 2k/5k test chunks fine. Pre-1830: Ethan Smith, Hunt, Spalding testable; Joseph Smith (3,082) and Cowdery (2,691) below the floor; Amendment 7 drafted to record this in advance.
 - **2026-10-28, night.** BOM-40 closed: every analytic setting read from config/preregistered.yaml, no defaults left in classic/, `uv run bom run` and `bom multiverse` with a specification curve (54 configurations on the corpus demo: median agreement 100%, General Imposters least stable).
