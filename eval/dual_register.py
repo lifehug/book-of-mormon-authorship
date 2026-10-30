@@ -66,10 +66,8 @@ def run() -> int:
         "other_prose_words": {a: prose[a] for a in sorted(pb_authors)},
     }
     OUT.write_text(json.dumps(result, indent=1) + "\n")
-    print(
-        f"{len(pb_authors)} authors have a curated pseudo-biblical work; {len(qualified)} also have "
-        f"{floor:,}+ words of other prose: {qualified}"
-    )
+    print(f"{len(pb_authors)} authors have a curated pseudo-biblical work;")
+    print(f"{len(qualified)} also have {floor:,}+ words of other prose: {qualified}")
     return 0
 
 
