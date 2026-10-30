@@ -402,7 +402,11 @@ def _ask(prompt: str, model: str) -> tuple[str, str]:
         _log_parse_failure(model, text or f"<rc={done.returncode}>")
         return "RETRY", ""
     first, _, rest = text.partition("\n")
-    verdict = re.sub(r"[^A-Z]", "", first.upper())
+    # the verdict is the first word; some replies put the reason on the same line ("NO. This is")
+    words = re.findall(r"[A-Za-z]+", first)
+    verdict = words[0].upper() if words else ""
+    if not rest.strip():
+        rest = first[first.upper().find(verdict) + len(verdict) :].lstrip(" .:-")
     if verdict not in ("YES", "NO"):
         _log_parse_failure(model, text)
         return "PARSE_FAIL", text[:300]

@@ -31,3 +31,15 @@ def test_passages_skip_front_matter_and_spread():
     text = "x" * 100 + "".join(f"{i:05d}" for i in range(4000))
     ps = pb.passages(text, n=3, chars=50)
     assert len(ps) == 3 and not ps[0].startswith("x" * 50)
+
+
+def test_ask_reads_a_verdict_with_the_reason_on_the_same_line(monkeypatch):
+    import subprocess
+
+    class Done:
+        returncode = 0
+        stdout = "NO. This is a conduct book in Proverbs-style prose."
+
+    monkeypatch.setattr(subprocess, "run", lambda *a, **k: Done())
+    verdict, reason = pb._ask("prompt", "sonnet")
+    assert verdict == "NO" and reason.startswith("This is a conduct book")
