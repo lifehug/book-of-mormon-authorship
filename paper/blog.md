@@ -1725,8 +1725,16 @@ Whatever this finds, the benchmark verdict stands until a fix is written down in
 on fresh books and registered. That's issue BOM-58. Every source, with the link it came from, is
 in `data/benchmark/fidelity/SOURCES.md`.
 
+The first real clue came from the BYU team's own 2011 review article. They describe ENSC's "none of
+these" as an extra, imaginary *unknown author* whose style is shaped like the text being tested,
+and every real candidate has to beat that stand-in. Ours does something cruder: it says "none" when
+every candidate scores below a cutoff. That's not a different setting, it's a different machine.
+So ENSC's failure in our benchmark may say more about our rebuild than about ENSC. The thesis
+should have the actual formulas.
+
 ## Log
 
+- **2026-10-30, night.** BOM-57: ENSC's authors describe its 'none' as an unknown-author class, not the cutoff our code uses; ENSC's benchmark failure may be our reconstruction's. Their Book of Mormon figures (73% / 93% 'someone else') recorded.
 - **2026-10-30, night.** BOM-57 and BOM-58 opened: check the two failed methods against published results before deciding to repair or retire them. GI: compare with Kestemont et al. 2016 Table 1 on PAN 2014. ENSC: Funai 2010 thesis (manual download), papers 10.1093/llc/fqq029 and 10.1080/03610926.2010.529529 if needed.
 - **2026-10-30, evening.** Amendment 7 filed and approved on OSF (revision 6ae500f8f0e01c4f4105c6bd): floors, ENSC alpha rule, time-split expectation, whole-corpus null, equal-weight synthesis, and (post hoc, labelled) the benchmark's construction and imposter pool. pending_amendment is empty.
 - **2026-10-30, evening.** BOM-56 closed: corpus v1.1 frozen (83 files) and released, DOI 10.5281/zenodo.23819273. BOM-21 run 2: Delta 100% / Cosine 97% closed-set (no open-set score), General Imposters 83% and saturated threshold (fails), ENSC 66% open-set false positives (fails). Run 1 had a 10-book imposter pool with a Hunt copy in it; kept as evidence. Multiverse redraw running.
