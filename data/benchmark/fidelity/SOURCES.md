@@ -24,6 +24,7 @@ public link is the reference.
 | Evert, Proisl, Jannidis, Reger, Pielström, Schöch and Vitt (2017), "Understanding and explaining Delta measures for authorship attribution", *DSH* 32(suppl. 2) | why and when the Delta measures work; the best-performing variants | https://doi.org/10.1093/llc/fqx023 | supplied by the owner 2026-10-30, `data/private/fidelity/evert2017.pdf` |
 | Burrows (2002), "'Delta': a measure of stylistic difference and a guide to likely authorship", *LLC* 17(3): 267-287 | Delta's original definition | https://doi.org/10.1093/llc/17.3.267 | supplied by the owner 2026-10-30, `data/private/fidelity/burrows2002.pdf` |
 | Tibshirani, Hastie, Narasimhan and Chu (2002), "Diagnosis of multiple cancer types by shrunken centroids of gene expression", *PNAS* 99(10): 6567-6572 | NSC's original definition | https://doi.org/10.1073/pnas.082099299 ; free at https://pmc.ncbi.nlm.nih.gov/articles/PMC124443/ | supplied by the owner 2026-10-30, `data/private/fidelity/tibshirani2002.pdf` |
+| Jockers (2012), "Testing authorship in the personal writings of Joseph Smith using NSC classification", *LLC* | the Jockers side's follow-up on Joseph Smith's own writing | https://doi.org/10.1093/llc/fqs041 | supplied by the owner 2026-10-30, `data/private/fidelity/jockers2012.pdf` |
 | PAN 2014 author verification corpora (training and test) | the data Kestemont et al. report on | to be recorded when downloaded | |
 
 ## What the sources say so far
@@ -65,7 +66,6 @@ hand. DOIs checked against Crossref on 2026-10-30.
 | --- | --- | --- | --- | --- |
 | 2 | Koppel and Winter (2014), "Determining if two documents are written by the same author", *JASIST* 65(1) | General Imposters' original definition and settings | https://doi.org/10.1002/asi.22954 | paywalled |
 | 3 | Kestemont et al. (2016), supplementary information | O2's exact iterations, feature share and imposter count | https://doi.org/10.1016/j.eswa.2016.06.029 | **likely unnecessary**: the authors' code is public, https://github.com/mikekestemont/ruzicka |
-| 6 | Jockers (2012), "Testing authorship in the personal writings of Joseph Smith using NSC classification", *LLC* | the Jockers side's answer to the open-set critique | https://doi.org/10.1093/llc/fqs041 | paywalled |
 
 **ENSC as published in the 2011 paper (adds to Funai 2010).**
 
