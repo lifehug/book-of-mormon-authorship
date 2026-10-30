@@ -1573,8 +1573,45 @@ of them, about 200,000 books, and there's no sampling wobble at all. And because
 score exactly zero, "beats 99% of books" becomes "fewer than 1% of books score at least as high",
 which handles the ties properly. That's in the draft amendment too.
 
+## Eighteen books that sound like scripture on purpose
+
+One of the comparison groups is books that *imitate* the Bible on purpose: a 1790s satire told
+in "chapter and verse", a war history written as if it were Chronicles. If the Book of Mormon
+only looks like those, that says something different from looking like one particular author.
+So the group has to be right.
+
+The first list, from the genre labels, had 3,522 books in it, and read by title most of them
+were ordinary sermons. So I made a rule I could check. First, measure what the four named
+imitations (Hunt's *Late War*, Snowden's *American Revolution*, Leacock's *American Chronicles*,
+Linning's *First Book of Napoleon*) have in common: verse numbers, "thou" and "-eth", "it came to
+pass". Set the bar at the weakest of those known books. That let 1,349 candidates through. Then
+two models read the opening of each one and said whether it was written in imitation of
+scripture. Sonnet and Opus agreed 97.7% of the time; a third broke ties. That reading is
+simulated, not a person. Before trusting it, I checked it on known answers: every one of the 15
+named editions got in, and all 25 books on a "should be refused" list (hymnals, sermons,
+Bibles) got refused.
+
+49 said yes. Then the list had three problems no model judgment could catch:
+
+- **A Book of Mormon was in it.** The Internet Archive catalogs one copy as *Book of Morman*,
+  spelled with an a. Our seal looked for "Mormon" and missed it. Of course a model says the
+  Book of Mormon imitates scripture. The seal now catches both spellings. This copy was never in
+  any control or mask we'd committed, so nothing earlier changes.
+- **A book from 1882.** *Oahspe* is catalogued as 1800, one of the placeholder dates I wrote
+  about earlier. Its title page says 1882. Out.
+- **Copies.** *The Late War* came in eleven times: different printings, plus Hunt's *Historical
+  Reader*, which reprints it. Dodsley's *Oeconomy of Human Life* came in eight times, half of
+  them spelled *Economy*. Counting those separately would make one author look like a crowd.
+  Now each work counts once and the earliest copy stands for it. 29 copies were folded in, and
+  every fold is listed in the build file.
+
+That leaves 18 works, from *The First Book of the American Chronicles* (1774) to *The Book of
+Jasher* (1829). It's small. That matters for the next step, which asks how many of these
+authors also left ordinary prose we could test them on.
+
 ## Log
 
+- **2026-10-30, later.** BOM-54 closed: curated pseudo-biblical control is 18 works (1,349 model-judged, gate 15/15 and 25/25, 49 yes; a misspelt Book of Mormon copy and an 1882 book dropped, 29 copies folded). Seal now catches "Morman".
 - **2026-10-30.** BOM-45 closed: the borrowing null's 99th percentile from 500 books is +/-119% (six-fold range), +/-16% even at 20,000; the null becomes the whole period corpus (~200,000 books, one 45-minute pass). Missed copies of the target collapse rarity, so they're excluded. Amendment 7 draft, Change 6. Pseudo-biblical judging resumed after the weekly usage reset.
 - **2026-10-28, night.** BOM-48 closed: time-split baseline 37-60% (30 authors, 7+ year gap, chance 3%), far below the 80% gate; only Joseph Smith and Cowdery have text on both sides of 1830 (one test each, below the floor). No candidate expected to qualify for expanded corpora (Amendment 7 draft, Change 5).
 - **2026-10-28, night.** BOM-43 closed: power analysis on the Federalist Papers and known pseudo-biblical authors. Floor about 10,000 masked words of known writing per candidate; 2k/5k test chunks fine. Pre-1830: Ethan Smith, Hunt, Spalding testable; Joseph Smith (3,082) and Cowdery (2,691) below the floor; Amendment 7 drafted to record this in advance.
