@@ -256,4 +256,12 @@ seed: 20261017
 # Registered by Amendment 7 (OSF revision 6ae500f8f0e01c4f4105c6bd, 2026-10-30): power.design,
 # classic.ensc.alpha, timesplit.design, borrowing.null_sample, synthesis.imitation_weights,
 # benchmark.design, benchmark.imposter_fill.
-pending_amendment: []
+pending_amendment:
+  - key: synthesis.delta_closed_set_only
+    issue: BOM-21
+    note: >
+      Post hoc, decided by the owner 2026-10-30 after BOM-21's results (paper/deviations.md, D1).
+      Burrows' and Cosine Delta meet section 7's closed-set bar but have no verification score,
+      so the open-set half cannot be applied. They enter the synthesis as closed-set evidence only
+      (which candidate is closest), never toward "none of these" or as evidence of authorship, and
+      the paper states that they did not pass the registered bar.
