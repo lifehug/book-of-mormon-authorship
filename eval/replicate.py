@@ -16,6 +16,7 @@ Usage::
 
     python -m eval.replicate chapters     # -> data/benchmark/replication/chapters_1830.jsonl
     python -m eval.replicate jockers      # -> data/benchmark/replication_jockers.json
+    python -m eval.replicate jockers-data # their published counts -> replication_jockers_data.json
     python -m eval.replicate johnson      # after `reuse.rare scan --target bom`
 """
 
@@ -214,13 +215,28 @@ def _candidate_tokens() -> dict[str, list[str]]:
     return out
 
 
+# samples left out because they quote the Book of Mormon (4.2's 12-token check), per author
+CONTAMINATED: dict[str, int] = {}
+
+
+def _clean(author: str, samples: list[tuple[str, list[str]]]) -> list[tuple[str, list[str]]]:
+    """Drop candidate samples that quote the Book of Mormon: matching it to them is circular
+    (4.2). Pratt and Cowdery quoted it after 1830; the count dropped goes in ``CONTAMINATED``."""
+    from metadata.sealed import contaminated
+
+    keep = [(n, t) for n, t in samples if not contaminated(" ".join(t))]
+    CONTAMINATED[author] = len(samples) - len(keep)
+    return keep
+
+
 def jockers_known() -> dict[str, list[tuple[str, list[str]]]]:
-    """The seven-author design: four candidates, Isaiah-Malachi, and the two controls."""
+    """The seven-author design: four candidates, Isaiah-Malachi, and the two controls. Candidate
+    samples that quote the Book of Mormon are left out (``_clean``)."""
     from eval.benchmark import _masked_tokens
 
     cand = _candidate_tokens()
     known = {
-        a: [(f"{a} {i}", c) for i, c in enumerate(_chunks(cand[name], SAMPLE_WORDS))]
+        a: _clean(a, [(f"{a} {i}", c) for i, c in enumerate(_chunks(cand[name], SAMPLE_WORDS))])
         for a, name in (
             ("cowdery", "Oliver Cowdery"),
             ("pratt", "Parley P. Pratt"),
@@ -269,30 +285,61 @@ def jockers_methods(
     cross-validated error on the known samples (Jockers et al. tuned pamr the same way) and
     ranks by posterior; its "none of the above" rule is switched off, as theirs had none.
     """
-    import random
 
-    import numpy as np
-
-    from classic import ENSC, frequency_matrix, word_counts
+    from classic import frequency_matrix, word_counts
 
     authors = sorted(known)
     docs = [t for a in authors for _, t in known[a]]
     labels = [a for a in authors for _ in known[a]]
     X = frequency_matrix([word_counts(t) for t in docs], features)
     C = frequency_matrix([word_counts(t) for t in chapters], features)
+    return jockers_rank(X, labels, C, shrinkage_grid, seed)
+
+
+def jockers_rank(
+    X: np.ndarray,
+    labels: list[str],
+    C: np.ndarray,
+    shrinkage_grid: list[float],
+    seed: int,
+    delta_words: int | None = None,
+    delta_scale_known: bool = False,
+) -> dict:
+    """The matrix core of ``jockers_methods``: relative frequencies of the selected words for the
+    known samples (``X``, author ``labels``) and the chapters (``C``).
+
+    Delta's options, both off by default (BOM-22's first run): ``delta_words`` keeps only that
+    many of the most frequent selected words (Jockers et al. report 90, chosen by
+    cross-validation); ``delta_scale_known`` takes each word's mean and sd from the known samples
+    only, as Burrows (2002) does, instead of from known samples and chapters together."""
+    import random
+
+    from classic import ENSC
+
+    authors = sorted(set(labels))
     allm = np.vstack([X, C])
     mu, sd = allm.mean(axis=0), allm.std(axis=0)
     sd[sd == 0] = 1
     Xz, Cz = (X - mu) / sd, (C - mu) / sd
-    prof = {a: Xz[[i for i, y in enumerate(labels) if y == a]].mean(axis=0) for a in authors}
+    dcols = np.arange(X.shape[1])
+    if delta_words:
+        dcols = np.argsort(-np.vstack([X, C]).mean(axis=0))[:delta_words]
+    dbase = X if delta_scale_known else allm
+    dmu, dsd = dbase[:, dcols].mean(axis=0), dbase[:, dcols].std(axis=0)
+    dsd[dsd == 0] = 1
+    dprof = {
+        a: ((X[[i for i, y in enumerate(labels) if y == a]][:, dcols] - dmu) / dsd).mean(axis=0)
+        for a in authors
+    }
 
-    def delta_rank(z):
-        d = {a: float(np.mean(np.abs(z - prof[a]))) for a in authors}
+    def delta_rank(row):
+        zz = (row[dcols] - dmu) / dsd
+        d = {a: float(np.mean(np.abs(zz - dprof[a]))) for a in authors}
         return sorted(authors, key=lambda a: d[a])
 
     # shrinkage by 5-fold cross-validation on the known samples
     rng = random.Random(seed)
-    idx = list(range(len(docs)))
+    idx = list(range(len(labels)))
     rng.shuffle(idx)
     cv = {}
     for s_ in shrinkage_grid:
@@ -306,7 +353,7 @@ def jockers_methods(
             err += sum(
                 max(m.posteriors(Xz[i]).items(), key=lambda kv: kv[1])[0] != labels[i] for i in test
             )
-        cv[s_] = err / len(docs)
+        cv[s_] = err / len(labels)
     best = min(shrinkage_grid, key=lambda s_: (cv[s_], s_))
     nsc = ENSC(shrinkage=best, alpha=0.0, priors="proportional").fit(Xz, labels)
 
@@ -315,8 +362,8 @@ def jockers_methods(
         return sorted(post, key=lambda a: -post[a])
 
     rows = []
-    for z in Cz:
-        d, n = delta_rank(z), nsc_rank(z)
+    for z, row in zip(Cz, C, strict=True):
+        d, n = delta_rank(row), nsc_rank(z)
         rows.append({"delta": d[:2], "nsc": n[:2]})
     return {"cv_error_by_shrinkage": cv, "shrinkage": best, "chapters": rows}
 
@@ -329,6 +376,130 @@ JOCKERS_PUBLISHED = {
     "cowdery": 37,
     "pratt": 24,
 }
+
+
+# Jockers et al. 2008, Tables 1 (NSC) and 2 (delta): chapters per author as 1st and 2nd choice
+JOCKERS_TABLES = {
+    "nsc": {
+        "first": {"cowdery": 20, "pratt": 9, "rigdon": 93, "spalding": 52, "isaiah_malachi": 63,
+                  "barlow": 0, "longfellow": 2},
+        "second": {"cowdery": 17, "pratt": 15, "rigdon": 104, "spalding": 58,
+                   "isaiah_malachi": 38, "barlow": 1, "longfellow": 6},
+    },
+    "delta": {
+        "first": {"cowdery": 5, "pratt": 7, "rigdon": 63, "spalding": 47, "isaiah_malachi": 112,
+                  "barlow": 0, "longfellow": 5},
+        "second": {"cowdery": 19, "pratt": 22, "rigdon": 92, "spalding": 23,
+                   "isaiah_malachi": 54, "barlow": 9, "longfellow": 20},
+    },
+}  # fmt: skip
+JOCKERS_DATA = DIR / "jockers2008" / "dataMatrix.txt.gz"
+JOCKERS_DELTA_WORDS = 90  # "the lowest delta error rate of 11.1% was obtained using ninety words"
+JOCKERS_DATA_OUT = DIR.parent / "replication_jockers_data.json"
+# their sample-name prefixes -> our author keys (Isaiah and Malachi are one author, as published)
+JOCKERS_PREFIX = {
+    "Barlow": "barlow", "Cowdrey": "cowdery", "Isaiah": "isaiah_malachi",
+    "Malachi": "isaiah_malachi", "Longfellow": "longfellow", "Pratt": "pratt",
+    "Rigdon": "rigdon", "Spaulding": "spalding", "Unknown": None,
+}  # fmt: skip
+
+
+def jockers_matrix() -> tuple[list[str], list[str], np.ndarray]:
+    """Their published counts (Stanford Digital Repository, druid rs276tc2764, CC BY 3.0):
+    sample names, the 19,992-word vocabulary, and a samples x words count matrix."""
+    import gzip
+
+    with gzip.open(JOCKERS_DATA, "rt", encoding="utf-8") as fh:
+        vocab = [w.strip('"') for w in fh.readline().rstrip("\n").split("\t")]
+        names, rows = [], []
+        for ln in fh:
+            parts = ln.rstrip("\n").split("\t")
+            names.append(parts[0].strip('"'))
+            rows.append(np.array(parts[1:], dtype=float))
+    return names, vocab, np.vstack(rows)
+
+
+def jockers_data() -> int:
+    """Our Delta and NSC on *their* data: does our implementation reproduce Tables 1 and 2?"""
+    from collections import Counter
+
+    from metadata.config import derive_seed, stamp
+    from metadata.config import load as load_config
+
+    cfg = load_config()
+    names, vocab, M = jockers_matrix()
+    rel = M / M.sum(axis=1, keepdims=True)  # share of each text's words
+    who = [JOCKERS_PREFIX[re.match(r"[A-Za-z]+", n).group(0)] for n in names]
+    known = [i for i, w in enumerate(who) if w]
+    chap = [i for i, w in enumerate(who) if w is None]
+    # the published selection rule, on their data: in every author's samples and the chapters,
+    # mean relative frequency at least 0.1%, minus god, ye, thy, behold
+    present = [
+        set(np.flatnonzero(M[[i for i in known if who[i] == a]].sum(axis=0)))
+        for a in sorted(set(who[i] for i in known))
+    ] + [set(np.flatnonzero(M[chap].sum(axis=0)))]
+    shared = set.intersection(*present)
+    feats = sorted(j for j in shared if rel[:, j].mean() >= MIN_MEAN_FREQ
+                   and vocab[j] not in DROPPED)  # fmt: skip
+    out = jockers_rank(
+        rel[known][:, feats],
+        [who[i] for i in known],
+        rel[chap][:, feats],
+        cfg["classic"]["ensc"]["shrinkage_grid"],
+        derive_seed("replicate-jockers-data", cfg),
+        delta_words=JOCKERS_DELTA_WORDS,
+        delta_scale_known=True,  # Burrows (2002): z-scores from the known texts
+    )
+    summary = {
+        m: {
+            "first": dict(Counter(r[m][0] for r in out["chapters"])),
+            "second": dict(Counter(r[m][1] for r in out["chapters"])),
+        }
+        for m in ("delta", "nsc")
+    }
+    # which candidate's texts move the answer: replace one author's samples with ours
+    ours = jockers_known()
+    swaps = {}
+    for a in ("rigdon", "pratt", "cowdery", "spalding"):
+        keep = [i for i in known if who[i] != a]
+        mine = np.vstack([
+            np.array([sum(1 for w in t if w == vocab[j]) for j in feats]) / len(t)
+            for _, t in ours[a]
+        ])  # fmt: skip
+        sw = jockers_rank(
+            np.vstack([rel[keep][:, feats], mine]),
+            [who[i] for i in keep] + [a] * len(mine),
+            rel[chap][:, feats],
+            cfg["classic"]["ensc"]["shrinkage_grid"],
+            derive_seed("replicate-jockers-data", cfg),
+            delta_words=JOCKERS_DELTA_WORDS,
+            delta_scale_known=True,
+        )
+        swaps[a] = dict(Counter(x for r in sw["chapters"] for x in r["nsc"]))
+    result = {
+        **stamp(),
+        "source": "Jockers, Witten and Criddle 2008 supplementary data, "
+        "https://purl.stanford.edu/rs276tc2764 (CC BY 3.0)",
+        "features": [vocab[j] for j in feats],
+        "samples": dict(Counter(who[i] for i in known)),
+        "published": JOCKERS_TABLES,
+        "ours": summary,
+        "cv_error_by_shrinkage": out["cv_error_by_shrinkage"],
+        "shrinkage": out["shrinkage"],
+        "nsc_first_or_second_with_our_texts_for": swaps,
+        "contaminated_samples_dropped": dict(CONTAMINATED),
+    }
+    JOCKERS_DATA_OUT.write_text(json.dumps(result, indent=1) + "\n")
+    print(f"{len(feats)} words; samples {result['samples']}")
+    for m in ("nsc", "delta"):
+        for rank in ("first", "second"):
+            pub, got = JOCKERS_TABLES[m][rank], summary[m][rank]
+            print(f"{m:5s} {rank:6s} " + "  ".join(f"{a} {got.get(a, 0)}/{pub[a]}" for a in pub))
+    base = Counter(x for r in out["chapters"] for x in r["nsc"])
+    print("NSC first-or-second, their data:", dict(base.most_common()))
+    for a, c in swaps.items():
+        print(f"  with our {a} texts:", dict(Counter(c).most_common()))
+    return 0
 
 
 def jockers() -> int:
@@ -358,6 +529,7 @@ def jockers() -> int:
         **stamp(),
         "features": features,
         "samples": {a: len(v) for a, v in known.items()},
+        "contaminated_samples_dropped": dict(CONTAMINATED),
         "published_first_or_second_nsc": JOCKERS_PUBLISHED,
         "summary": summary,
         "cv_error_by_shrinkage": out["cv_error_by_shrinkage"],
@@ -745,7 +917,9 @@ def ensc_open_set() -> int:
     texts = [c["text"].split() for c in chapters]
     known = jockers_known()
     js = _candidate_tokens().get("Joseph Smith", [])
-    known["joseph_smith"] = [(f"js {i}", c) for i, c in enumerate(_chunks(js, SAMPLE_WORDS))]
+    known["joseph_smith"] = _clean(
+        "joseph_smith", [(f"js {i}", c) for i, c in enumerate(_chunks(js, SAMPLE_WORDS))]
+    )
     features = jockers_features(known, texts)
     authors = sorted(known)
     docs = [t for a in authors for _, t in known[a]]
@@ -765,6 +939,7 @@ def ensc_open_set() -> int:
         "shrinkage": th["shrinkage"],
         "features": features,
         "samples": {a: len(v) for a, v in known.items()},
+        "contaminated_samples_dropped": dict(CONTAMINATED),
         "assigned": dict(counts),
         "chapters": [
             {"book": c["book"], "chapter": c["chapter"], "assigned": pr}
@@ -782,6 +957,8 @@ def main(argv: list[str] | None = None) -> int:
         return chapters()
     if args[:1] == ["jockers"]:
         return jockers()
+    if args[:1] == ["jockers-data"]:
+        return jockers_data()
     if args[:1] == ["johnson"]:
         return johnson()
     if args[:1] == ["larsen"]:

@@ -1,8 +1,8 @@
 {
- "config_sha256": "3d8111336b8d1d3214a4524e4b8352547e6b55aeab942a7cada37b405fdfa1d4",
+ "config_sha256": "04a65b90de2625ffb93b796fa9515929de6b49c0eab675de206692589818bc3a",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "2289e3c6a4bb3281fd4e0e1c4e90601626e4bed9",
+ "git_commit": "dc9d5f3dd26117f77fd5d99795e85b28ea0014fb",
  "features": [
   "a",
   "after",
@@ -117,13 +117,19 @@
   "your"
  ],
  "samples": {
-  "cowdery": 25,
-  "pratt": 35,
+  "cowdery": 24,
+  "pratt": 30,
   "rigdon": 11,
   "spalding": 22,
   "isaiah_malachi": 70,
   "barlow": 12,
   "longfellow": 23
+ },
+ "contaminated_samples_dropped": {
+  "cowdery": 1,
+  "pratt": 5,
+  "rigdon": 0,
+  "spalding": 0
  },
  "published_first_or_second_nsc": {
   "rigdon": 197,
@@ -135,51 +141,51 @@
  "summary": {
   "delta": {
    "first": {
-    "spalding": 51,
-    "isaiah_malachi": 72,
-    "pratt": 87,
-    "cowdery": 7,
+    "spalding": 55,
+    "isaiah_malachi": 79,
+    "pratt": 68,
+    "cowdery": 6,
     "longfellow": 4,
-    "rigdon": 13,
+    "rigdon": 22,
     "barlow": 5
    },
    "first_or_second": {
-    "spalding": 90,
-    "isaiah_malachi": 92,
-    "pratt": 176,
-    "cowdery": 41,
-    "longfellow": 19,
-    "rigdon": 39,
+    "spalding": 95,
+    "isaiah_malachi": 99,
+    "pratt": 147,
+    "cowdery": 39,
+    "rigdon": 52,
+    "longfellow": 25,
     "barlow": 21
    }
   },
   "nsc": {
    "first": {
-    "isaiah_malachi": 84,
-    "pratt": 131,
-    "cowdery": 12,
-    "rigdon": 9,
-    "spalding": 3
+    "isaiah_malachi": 99,
+    "pratt": 86,
+    "spalding": 21,
+    "rigdon": 10,
+    "cowdery": 23
    },
    "first_or_second": {
-    "isaiah_malachi": 117,
-    "pratt": 219,
-    "spalding": 39,
-    "cowdery": 73,
-    "longfellow": 7,
-    "rigdon": 23
+    "isaiah_malachi": 112,
+    "spalding": 64,
+    "pratt": 193,
+    "cowdery": 69,
+    "longfellow": 11,
+    "rigdon": 29
    }
   }
  },
  "cv_error_by_shrinkage": {
-  "0": 0.13636363636363635,
-  "0.5": 0.1414141414141414,
-  "1": 0.17676767676767677,
-  "2": 0.30303030303030304,
-  "4": 0.6464646464646465,
-  "8": 0.6464646464646465
+  "0": 0.13020833333333334,
+  "0.5": 0.125,
+  "1": 0.203125,
+  "2": 0.3333333333333333,
+  "4": 0.6354166666666666,
+  "8": 0.6354166666666666
  },
- "shrinkage": 0,
+ "shrinkage": 0.5,
  "chapters": [
   {
    "book": "1 Nephi",
@@ -190,7 +196,7 @@
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "spalding"
    ]
   },
   {
@@ -213,8 +219,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ]
   },
   {
@@ -222,7 +228,7 @@
    "chapter": 4,
    "delta": [
     "spalding",
-    "cowdery"
+    "pratt"
    ],
    "nsc": [
     "pratt",
@@ -237,8 +243,8 @@
     "spalding"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -246,11 +252,11 @@
    "chapter": 6,
    "delta": [
     "cowdery",
-    "pratt"
+    "rigdon"
    ],
    "nsc": [
-    "cowdery",
-    "pratt"
+    "isaiah_malachi",
+    "cowdery"
    ]
   },
   {
@@ -274,7 +280,7 @@
    ],
    "nsc": [
     "pratt",
-    "cowdery"
+    "spalding"
    ]
   },
   {
@@ -285,8 +291,8 @@
     "longfellow"
    ],
    "nsc": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ]
   },
   {
@@ -330,7 +336,7 @@
    "chapter": 13,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "longfellow"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -341,12 +347,12 @@
    "book": "1 Nephi",
    "chapter": 14,
    "delta": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ],
    "nsc": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ]
   },
   {
@@ -370,7 +376,7 @@
    ],
    "nsc": [
     "pratt",
-    "cowdery"
+    "spalding"
    ]
   },
   {
@@ -394,7 +400,7 @@
    ],
    "nsc": [
     "pratt",
-    "cowdery"
+    "spalding"
    ]
   },
   {
@@ -426,7 +432,7 @@
    "chapter": 21,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "barlow"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -438,7 +444,7 @@
    "chapter": 22,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "rigdon"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -478,7 +484,7 @@
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "spalding"
    ]
   },
   {
@@ -486,7 +492,7 @@
    "chapter": 4,
    "delta": [
     "isaiah_malachi",
-    "cowdery"
+    "longfellow"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -570,7 +576,7 @@
    "chapter": 11,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "longfellow"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -598,7 +604,7 @@
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "spalding"
    ]
   },
   {
@@ -666,7 +672,7 @@
    "chapter": 19,
    "delta": [
     "isaiah_malachi",
-    "cowdery"
+    "rigdon"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -682,7 +688,7 @@
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "rigdon"
    ]
   },
   {
@@ -730,7 +736,7 @@
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "longfellow"
    ]
   },
   {
@@ -762,7 +768,7 @@
    "chapter": 27,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "rigdon"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -774,7 +780,7 @@
    "chapter": 28,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "rigdon"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -786,7 +792,7 @@
    "chapter": 29,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "rigdon"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -834,7 +840,7 @@
    "chapter": 33,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "rigdon"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -857,12 +863,12 @@
    "book": "Jacob",
    "chapter": 2,
    "delta": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "cowdery"
    ]
   },
   {
@@ -870,7 +876,7 @@
    "chapter": 3,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "spalding"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -886,7 +892,7 @@
    ],
    "nsc": [
     "pratt",
-    "cowdery"
+    "rigdon"
    ]
   },
   {
@@ -894,7 +900,7 @@
    "chapter": 5,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "spalding"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -909,8 +915,8 @@
     "cowdery"
    ],
    "nsc": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ]
   },
   {
@@ -957,8 +963,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -978,7 +984,7 @@
    "chapter": 1,
    "delta": [
     "pratt",
-    "cowdery"
+    "spalding"
    ],
    "nsc": [
     "pratt",
@@ -989,8 +995,8 @@
    "book": "Mosiah",
    "chapter": 2,
    "delta": [
-    "pratt",
-    "rigdon"
+    "rigdon",
+    "pratt"
    ],
    "nsc": [
     "cowdery",
@@ -1001,8 +1007,8 @@
    "book": "Mosiah",
    "chapter": 3,
    "delta": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -1013,8 +1019,8 @@
    "book": "Mosiah",
    "chapter": 4,
    "delta": [
-    "pratt",
-    "rigdon"
+    "rigdon",
+    "pratt"
    ],
    "nsc": [
     "pratt",
@@ -1038,7 +1044,7 @@
    "chapter": 6,
    "delta": [
     "barlow",
-    "pratt"
+    "spalding"
    ],
    "nsc": [
     "pratt",
@@ -1102,7 +1108,7 @@
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "spalding"
    ]
   },
   {
@@ -1114,7 +1120,7 @@
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "rigdon"
    ]
   },
   {
@@ -1145,12 +1151,12 @@
    "book": "Mosiah",
    "chapter": 15,
    "delta": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ],
    "nsc": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ]
   },
   {
@@ -1158,11 +1164,11 @@
    "chapter": 16,
    "delta": [
     "spalding",
-    "pratt"
+    "cowdery"
    ],
    "nsc": [
-    "pratt",
-    "cowdery"
+    "cowdery",
+    "pratt"
    ]
   },
   {
@@ -1185,8 +1191,8 @@
     "cowdery"
    ],
    "nsc": [
-    "pratt",
-    "cowdery"
+    "cowdery",
+    "pratt"
    ]
   },
   {
@@ -1197,8 +1203,8 @@
     "longfellow"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -1221,8 +1227,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -1254,11 +1260,11 @@
    "chapter": 24,
    "delta": [
     "spalding",
-    "pratt"
+    "isaiah_malachi"
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "spalding"
    ]
   },
   {
@@ -1301,20 +1307,20 @@
    "book": "Mosiah",
    "chapter": 28,
    "delta": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ],
    "nsc": [
-    "pratt",
-    "cowdery"
+    "cowdery",
+    "pratt"
    ]
   },
   {
    "book": "Mosiah",
    "chapter": 29,
    "delta": [
-    "pratt",
-    "rigdon"
+    "rigdon",
+    "pratt"
    ],
    "nsc": [
     "pratt",
@@ -1329,8 +1335,8 @@
     "spalding"
    ],
    "nsc": [
-    "pratt",
-    "cowdery"
+    "cowdery",
+    "pratt"
    ]
   },
   {
@@ -1338,11 +1344,11 @@
    "chapter": 2,
    "delta": [
     "spalding",
-    "barlow"
+    "pratt"
    ],
    "nsc": [
     "spalding",
-    "pratt"
+    "cowdery"
    ]
   },
   {
@@ -1365,8 +1371,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "cowdery"
    ]
   },
   {
@@ -1374,7 +1380,7 @@
    "chapter": 5,
    "delta": [
     "pratt",
-    "cowdery"
+    "rigdon"
    ],
    "nsc": [
     "pratt",
@@ -1398,10 +1404,10 @@
    "chapter": 7,
    "delta": [
     "cowdery",
-    "pratt"
+    "isaiah_malachi"
    ],
    "nsc": [
-    "pratt",
+    "isaiah_malachi",
     "cowdery"
    ]
   },
@@ -1414,19 +1420,19 @@
    ],
    "nsc": [
     "pratt",
-    "cowdery"
+    "spalding"
    ]
   },
   {
    "book": "Alma",
    "chapter": 9,
    "delta": [
-    "pratt",
-    "rigdon"
+    "rigdon",
+    "cowdery"
    ],
    "nsc": [
-    "pratt",
-    "cowdery"
+    "cowdery",
+    "pratt"
    ]
   },
   {
@@ -1450,7 +1456,7 @@
    ],
    "nsc": [
     "pratt",
-    "cowdery"
+    "spalding"
    ]
   },
   {
@@ -1461,8 +1467,8 @@
     "cowdery"
    ],
    "nsc": [
-    "pratt",
-    "cowdery"
+    "cowdery",
+    "pratt"
    ]
   },
   {
@@ -1534,15 +1540,15 @@
    ],
    "nsc": [
     "pratt",
-    "cowdery"
+    "spalding"
    ]
   },
   {
    "book": "Alma",
    "chapter": 19,
    "delta": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ],
    "nsc": [
     "pratt",
@@ -1577,12 +1583,12 @@
    "book": "Alma",
    "chapter": 22,
    "delta": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "longfellow"
    ],
    "nsc": [
     "pratt",
-    "isaiah_malachi"
+    "longfellow"
    ]
   },
   {
@@ -1625,8 +1631,8 @@
    "book": "Alma",
    "chapter": 26,
    "delta": [
-    "pratt",
-    "rigdon"
+    "rigdon",
+    "pratt"
    ],
    "nsc": [
     "pratt",
@@ -1642,7 +1648,7 @@
    ],
    "nsc": [
     "pratt",
-    "isaiah_malachi"
+    "spalding"
    ]
   },
   {
@@ -1661,12 +1667,12 @@
    "book": "Alma",
    "chapter": 29,
    "delta": [
-    "pratt",
-    "rigdon"
+    "rigdon",
+    "pratt"
    ],
    "nsc": [
     "cowdery",
-    "pratt"
+    "rigdon"
    ]
   },
   {
@@ -1677,8 +1683,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ]
   },
   {
@@ -1686,7 +1692,7 @@
    "chapter": 31,
    "delta": [
     "spalding",
-    "pratt"
+    "isaiah_malachi"
    ],
    "nsc": [
     "pratt",
@@ -1698,7 +1704,7 @@
    "chapter": 32,
    "delta": [
     "rigdon",
-    "pratt"
+    "cowdery"
    ],
    "nsc": [
     "rigdon",
@@ -1722,11 +1728,11 @@
    "chapter": 34,
    "delta": [
     "isaiah_malachi",
-    "cowdery"
+    "rigdon"
    ],
    "nsc": [
     "rigdon",
-    "pratt"
+    "cowdery"
    ]
   },
   {
@@ -1738,7 +1744,7 @@
    ],
    "nsc": [
     "pratt",
-    "isaiah_malachi"
+    "spalding"
    ]
   },
   {
@@ -1758,7 +1764,7 @@
    "chapter": 37,
    "delta": [
     "rigdon",
-    "pratt"
+    "cowdery"
    ],
    "nsc": [
     "pratt",
@@ -1817,12 +1823,12 @@
    "book": "Alma",
    "chapter": 42,
    "delta": [
-    "cowdery",
-    "spalding"
+    "spalding",
+    "cowdery"
    ],
    "nsc": [
-    "pratt",
-    "cowdery"
+    "cowdery",
+    "pratt"
    ]
   },
   {
@@ -1881,7 +1887,7 @@
     "spalding"
    ],
    "nsc": [
-    "pratt",
+    "cowdery",
     "spalding"
    ]
   },
@@ -1893,8 +1899,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -1917,8 +1923,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -1929,8 +1935,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "cowdery"
+    "cowdery",
+    "pratt"
    ]
   },
   {
@@ -1938,11 +1944,11 @@
    "chapter": 52,
    "delta": [
     "spalding",
-    "pratt"
+    "cowdery"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "cowdery"
    ]
   },
   {
@@ -1965,8 +1971,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "rigdon"
+    "rigdon",
+    "pratt"
    ]
   },
   {
@@ -2002,7 +2008,7 @@
    ],
    "nsc": [
     "pratt",
-    "cowdery"
+    "spalding"
    ]
   },
   {
@@ -2021,8 +2027,8 @@
    "book": "Alma",
    "chapter": 59,
    "delta": [
-    "spalding",
-    "cowdery"
+    "cowdery",
+    "spalding"
    ],
    "nsc": [
     "cowdery",
@@ -2033,8 +2039,8 @@
    "book": "Alma",
    "chapter": 60,
    "delta": [
-    "pratt",
-    "rigdon"
+    "rigdon",
+    "pratt"
    ],
    "nsc": [
     "rigdon",
@@ -2049,8 +2055,8 @@
     "spalding"
    ],
    "nsc": [
-    "rigdon",
-    "pratt"
+    "cowdery",
+    "rigdon"
    ]
   },
   {
@@ -2085,8 +2091,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -2097,8 +2103,8 @@
     "spalding"
    ],
    "nsc": [
-    "pratt",
-    "cowdery"
+    "cowdery",
+    "pratt"
    ]
   },
   {
@@ -2109,8 +2115,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -2121,8 +2127,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -2145,8 +2151,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -2170,7 +2176,7 @@
    ],
    "nsc": [
     "pratt",
-    "cowdery"
+    "isaiah_malachi"
    ]
   },
   {
@@ -2190,7 +2196,7 @@
    "chapter": 10,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "spalding"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -2242,15 +2248,15 @@
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "cowdery"
    ]
   },
   {
    "book": "Helaman",
    "chapter": 15,
    "delta": [
-    "pratt",
-    "rigdon"
+    "rigdon",
+    "isaiah_malachi"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -2266,7 +2272,7 @@
    ],
    "nsc": [
     "pratt",
-    "isaiah_malachi"
+    "spalding"
    ]
   },
   {
@@ -2277,8 +2283,8 @@
     "spalding"
    ],
    "nsc": [
-    "pratt",
-    "cowdery"
+    "cowdery",
+    "pratt"
    ]
   },
   {
@@ -2290,7 +2296,7 @@
    ],
    "nsc": [
     "pratt",
-    "isaiah_malachi"
+    "spalding"
    ]
   },
   {
@@ -2302,7 +2308,7 @@
    ],
    "nsc": [
     "pratt",
-    "isaiah_malachi"
+    "spalding"
    ]
   },
   {
@@ -2313,8 +2319,8 @@
     "spalding"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -2333,8 +2339,8 @@
    "book": "3 Nephi",
    "chapter": 6,
    "delta": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ],
    "nsc": [
     "pratt",
@@ -2361,8 +2367,8 @@
     "spalding"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -2370,7 +2376,7 @@
    "chapter": 9,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "longfellow"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -2381,8 +2387,8 @@
    "book": "3 Nephi",
    "chapter": 10,
    "delta": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ],
    "nsc": [
     "pratt",
@@ -2393,8 +2399,8 @@
    "book": "3 Nephi",
    "chapter": 11,
    "delta": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -2406,7 +2412,7 @@
    "chapter": 12,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "rigdon"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -2418,7 +2424,7 @@
    "chapter": 13,
    "delta": [
     "rigdon",
-    "cowdery"
+    "isaiah_malachi"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -2430,7 +2436,7 @@
    "chapter": 14,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "rigdon"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -2441,8 +2447,8 @@
    "book": "3 Nephi",
    "chapter": 15,
    "delta": [
-    "pratt",
-    "rigdon"
+    "rigdon",
+    "isaiah_malachi"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -2482,7 +2488,7 @@
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "rigdon"
    ]
   },
   {
@@ -2530,7 +2536,7 @@
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "spalding"
    ]
   },
   {
@@ -2566,7 +2572,7 @@
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "longfellow"
    ]
   },
   {
@@ -2590,7 +2596,7 @@
    ],
    "nsc": [
     "isaiah_malachi",
-    "cowdery"
+    "rigdon"
    ]
   },
   {
@@ -2598,11 +2604,11 @@
    "chapter": 28,
    "delta": [
     "pratt",
-    "cowdery"
+    "isaiah_malachi"
    ],
    "nsc": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ]
   },
   {
@@ -2613,8 +2619,8 @@
     "barlow"
    ],
    "nsc": [
-    "pratt",
-    "cowdery"
+    "cowdery",
+    "pratt"
    ]
   },
   {
@@ -2638,7 +2644,7 @@
    ],
    "nsc": [
     "pratt",
-    "isaiah_malachi"
+    "spalding"
    ]
   },
   {
@@ -2649,8 +2655,8 @@
     "spalding"
    ],
    "nsc": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ]
   },
   {
@@ -2662,7 +2668,7 @@
    ],
    "nsc": [
     "pratt",
-    "isaiah_malachi"
+    "spalding"
    ]
   },
   {
@@ -2709,8 +2715,8 @@
     "spalding"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -2718,10 +2724,10 @@
    "chapter": 7,
    "delta": [
     "rigdon",
-    "pratt"
+    "cowdery"
    ],
    "nsc": [
-    "pratt",
+    "rigdon",
     "cowdery"
    ]
   },
@@ -2730,7 +2736,7 @@
    "chapter": 8,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "rigdon"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -2745,8 +2751,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "rigdon"
+    "isaiah_malachi",
+    "pratt"
    ]
   },
   {
@@ -2757,8 +2763,8 @@
     "pratt"
    ],
    "nsc": [
-    "pratt",
-    "isaiah_malachi"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -2778,7 +2784,7 @@
    "chapter": 3,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "cowdery"
    ],
    "nsc": [
     "isaiah_malachi",
@@ -2790,23 +2796,23 @@
    "chapter": 4,
    "delta": [
     "isaiah_malachi",
-    "pratt"
+    "longfellow"
    ],
    "nsc": [
     "isaiah_malachi",
-    "pratt"
+    "rigdon"
    ]
   },
   {
    "book": "Ether",
    "chapter": 5,
    "delta": [
-    "cowdery",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "rigdon"
    ],
    "nsc": [
-    "cowdery",
-    "rigdon"
+    "rigdon",
+    "cowdery"
    ]
   },
   {
@@ -2818,7 +2824,7 @@
    ],
    "nsc": [
     "pratt",
-    "isaiah_malachi"
+    "spalding"
    ]
   },
   {
@@ -2829,8 +2835,8 @@
     "longfellow"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "longfellow"
    ]
   },
   {
@@ -2841,8 +2847,8 @@
     "isaiah_malachi"
    ],
    "nsc": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ]
   },
   {
@@ -2854,7 +2860,7 @@
    ],
    "nsc": [
     "pratt",
-    "isaiah_malachi"
+    "spalding"
    ]
   },
   {
@@ -2865,8 +2871,8 @@
     "barlow"
    ],
    "nsc": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ]
   },
   {
@@ -2877,8 +2883,8 @@
     "barlow"
    ],
    "nsc": [
-    "pratt",
-    "spalding"
+    "spalding",
+    "pratt"
    ]
   },
   {
@@ -2890,7 +2896,7 @@
    ],
    "nsc": [
     "pratt",
-    "cowdery"
+    "isaiah_malachi"
    ]
   },
   {
@@ -2926,7 +2932,7 @@
    ],
    "nsc": [
     "pratt",
-    "cowdery"
+    "spalding"
    ]
   },
   {
@@ -2937,8 +2943,8 @@
     "barlow"
    ],
    "nsc": [
-    "rigdon",
-    "pratt"
+    "isaiah_malachi",
+    "spalding"
    ]
   },
   {
@@ -3021,8 +3027,8 @@
     "isaiah_malachi"
    ],
    "nsc": [
-    "pratt",
-    "isaiah_malachi"
+    "isaiah_malachi",
+    "pratt"
    ]
   },
   {

@@ -1,8 +1,8 @@
 {
- "config_sha256": "3d8111336b8d1d3214a4524e4b8352547e6b55aeab942a7cada37b405fdfa1d4",
+ "config_sha256": "04a65b90de2625ffb93b796fa9515929de6b49c0eab675de206692589818bc3a",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "2289e3c6a4bb3281fd4e0e1c4e90601626e4bed9",
+ "git_commit": "dc9d5f3dd26117f77fd5d99795e85b28ea0014fb",
  "alpha": 0.5,
  "shrinkage": 0.5,
  "features": [
@@ -119,14 +119,21 @@
   "your"
  ],
  "samples": {
-  "cowdery": 25,
-  "pratt": 35,
+  "cowdery": 24,
+  "pratt": 30,
   "rigdon": 11,
   "spalding": 22,
   "isaiah_malachi": 70,
   "barlow": 12,
   "longfellow": 23,
   "joseph_smith": 17
+ },
+ "contaminated_samples_dropped": {
+  "cowdery": 1,
+  "pratt": 5,
+  "rigdon": 0,
+  "spalding": 0,
+  "joseph_smith": 0
  },
  "assigned": {
   "none": 235,

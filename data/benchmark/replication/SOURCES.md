@@ -11,3 +11,19 @@ The designs being replicated are in `docs/prior-studies.md`.
 Other inputs: Barlow's *The Columbiad* (1825) is in the corpus (`institutional_books:HXTAZ5`);
 the 1835 *Doctrine and Covenants* (Lectures on Faith, revelations) is fetched from the Joseph
 Smith Papers to the private repo (`python -m ingest.jsp dc1835 --out data/private/replication`).
+
+## `jockers2008/` (BOM-22, 2026-10-30)
+
+Supplementary data for Jockers, Witten and Criddle (2008), deposited by the authors in the
+Stanford Digital Repository: https://purl.stanford.edu/rs276tc2764 (druid rs276tc2764), licence
+CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/legalcode). Attribution: Matthew L.
+Jockers, Daniela M. Witten and Craig S. Criddle.
+
+| File | What | md5 (as published) |
+| --- | --- | --- |
+| `dataMatrix.txt` (not in git, 18,460,457 bytes) / `dataMatrix.txt.gz` (gzip -9 of it) | word counts: 456 samples (239 Book of Mormon chapters as "Unknown"; Barlow 12, Cowdrey 19, Isaiah 66, Malachi 4, Longfellow 23, Pratt 53, Rigdon 23, Spaulding 17) x 19,992 words | d18facd07eb4b8e100571da6711df974 |
+| `bom.xml` | their 1830 Book of Mormon text with modern chapters | 9da7d28e630318f465a874deb20a97a3 |
+
+Downloaded from `https://stacks.stanford.edu/file/druid:rs276tc2764/<file>`. The deposit notes a
+tokenising error corrected by the authors on 2009-01-09 (one chapter's ranking changed); this is
+the corrected data. Read by `python -m eval.replicate jockers-data`.

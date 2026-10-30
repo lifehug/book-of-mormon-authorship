@@ -125,3 +125,6 @@ data/normalization/applied_counts.jsonl
 # BOM-40: per-run outputs of `bom run` / `bom multiverse`; regenerate in minutes. Curves worth
 # keeping are copied into data/<stage>/.
 results/
+
+# 18 MB; the gzipped copy beside it is committed (BOM-22)
+data/benchmark/replication/jockers2008/dataMatrix.txt
