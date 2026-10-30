@@ -1,0 +1,90 @@
+{
+ "config_sha256": "04a65b90de2625ffb93b796fa9515929de6b49c0eab675de206692589818bc3a",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "32f908ebf8c9de10c8e411caee6cb28f36800425",
+ "settings": {
+  "rounds": 100,
+  "feature_share": 0.5,
+  "imposters": 30
+ },
+ "source": "Kestemont et al. 2016 Table 1 (O2, word unigrams, test, AUC x c@1)",
+ "results": {
+  "cosine - tf": {
+   "Dutch essays": {
+    "ours": 77.92,
+    "published": 76.59,
+    "p1": 0.02,
+    "p2": 0.28
+   },
+   "Dutch reviews": {
+    "ours": 34.14,
+    "published": 36.58,
+    "p1": 0.04,
+    "p2": 0.23
+   },
+   "English essays": {
+    "ours": 24.02,
+    "published": 24.95,
+    "p1": 0.01,
+    "p2": 0.04
+   },
+   "English novels": {
+    "ours": 29.76,
+    "published": 30.55,
+    "p1": 0.01,
+    "p2": 0.17
+   },
+   "Greek articles": {
+    "ours": 45.67,
+    "published": 48.63,
+    "p1": 0.22,
+    "p2": 0.35
+   },
+   "Spanish articles": {
+    "ours": 65.54,
+    "published": 69.52,
+    "p1": 0.05,
+    "p2": 0.27
+   }
+  },
+  "cosine - tf-std": {
+   "Dutch essays": {
+    "ours": 87.44,
+    "published": 87.5,
+    "p1": 0.03,
+    "p2": 0.27
+   },
+   "Dutch reviews": {
+    "ours": 30.85,
+    "published": 33.58,
+    "p1": 0.0,
+    "p2": 0.02
+   },
+   "English essays": {
+    "ours": 29.21,
+    "published": 29.12,
+    "p1": 0.17,
+    "p2": 0.26
+   },
+   "English novels": {
+    "ours": 37.01,
+    "published": 37.35,
+    "p1": 0.0,
+    "p2": 0.09
+   },
+   "Greek articles": {
+    "ours": 49.4,
+    "published": 50.2,
+    "p1": 0.11,
+    "p2": 0.38
+   },
+   "Spanish articles": {
+    "ours": 72.78,
+    "published": 63.41,
+    "p1": 0.03,
+    "p2": 0.29
+   }
+  }
+ }
+}

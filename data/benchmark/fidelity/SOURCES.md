@@ -25,7 +25,8 @@ public link is the reference.
 | Burrows (2002), "'Delta': a measure of stylistic difference and a guide to likely authorship", *LLC* 17(3): 267-287 | Delta's original definition | https://doi.org/10.1093/llc/17.3.267 | supplied by the owner 2026-10-30, `data/private/fidelity/burrows2002.pdf` |
 | Tibshirani, Hastie, Narasimhan and Chu (2002), "Diagnosis of multiple cancer types by shrunken centroids of gene expression", *PNAS* 99(10): 6567-6572 | NSC's original definition | https://doi.org/10.1073/pnas.082099299 ; free at https://pmc.ncbi.nlm.nih.gov/articles/PMC124443/ | supplied by the owner 2026-10-30, `data/private/fidelity/tibshirani2002.pdf` |
 | Jockers (2012), "Testing authorship in the personal writings of Joseph Smith using NSC classification", *LLC* | the Jockers side's follow-up on Joseph Smith's own writing | https://doi.org/10.1093/llc/fqs041 | supplied by the owner 2026-10-30, `data/private/fidelity/jockers2012.pdf` |
-| PAN 2014 author verification corpora (training and test) | the data Kestemont et al. report on | to be recorded when downloaded | |
+| PAN 2014 author verification corpora (training, test 1, test 2; six corpora) | the data Kestemont et al. report on; open access, no licence stated, modern texts by living authors, so kept private | https://doi.org/10.5281/zenodo.3716033 (file `pan14-authorship-verification-test-and-training.zip`, 24,818,707 bytes, md5 f7c504fd27f3c6e1f92b526fd15bc942) | downloaded 2026-10-30, `data/private/pan14/`; extracted copy rebuilt by unzipping (not in git) |
+| Kestemont et al., `ruzicka` code (commit 69871e2fd098c64abf0be6eec2f17ebb8a6122a1, 2023-06-27) | O2's settings for the PAN runs (`code/01pan_experiments.py`: profiles, 100 rounds, half the features, 30 imposters, score shifter) | https://github.com/mikekestemont/ruzicka | read only, not run, not copied |
 
 ## What the sources say so far
 
