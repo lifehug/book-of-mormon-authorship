@@ -14,7 +14,7 @@ published method is run on our texts, and where it does not, why.
 | Study | Published | Replication | Matches? |
 | --- | --- | --- | --- |
 | Larsen, Rencher and Layton 1980 | narrators differ (odds of one author < 1 in 100 billion); no BoM block resembles a candidate | 4 narrators differ, MANOVA p = 1e-14; 11 of 246 BoM blocks classified to a candidate | yes, both findings, with the same caveat on the p-value |
-| Holmes 1992 | Joseph Smith's own writing and Isaiah separate; prophets do not cluster by prophet; revelations sit with the prophets | Joseph Smith 3 of 3 alone; prophets mixed; D&C 1835 3 of 3 with the prophets; Isaiah 2 of 3 apart | yes |
+| Holmes 1992 | Joseph Smith's own writing and Isaiah separate; prophets do not cluster by prophet; revelations sit with the prophets | all five variables: Joseph Smith 3 of 3 alone; prophets mixed; D&C 1835 3 of 3 with the prophets; Isaiah 2 of 3 apart | yes (his 10,000-equivalent conversion does not reproduce from his formulas) |
 | Jockers, Witten and Criddle 2008 | NSC: Rigdon first or second for 197 of 239 chapters, Spalding 110, Isaiah-Malachi 101 | On their published data: same 110 words, cross-validated error 8.76% (8.8%), Rigdon 169. On our texts: Pratt 193, Rigdon 29 | **method yes, result no**: the leading candidate follows the texts chosen for each candidate |
 | Schaalje, Fields, Roper and Snow 2011 (ENSC) | 175 of 239 chapters to an unobserved author | published method, our texts: 225 of 239 to an unobserved author, 13 Isaiah | yes, at the level of the conclusion; the method's answer depends on candidate sample length and kind (BOM-57) |
 | Johnson and Johnson 2013 | *The Late War* has the densest shared rare 4-grams after *The First Book of Napoleon* | *The Late War* in the top 0.05% (174 shared, p = 0.0004), but 30 books of 10,000+ words are denser, mostly other imitation scripture | **partly**: the two books stand out; the claim that nothing else approaches them does not hold |
@@ -39,22 +39,36 @@ their 21 speakers (BOM-17 labels narrators, not quoted speakers), so it tests th
 
 ## 2. Holmes (1992)
 
-**Run.** Honoré's R, V2/V and Yule's K on 10,000-word samples (Nephi 4, Mormon 16, Moroni 2), three
-1835 Doctrine and Covenants revelation samples (Joseph Smith Papers transcripts, private repo),
-KJV Isaiah 3, Joseph Smith's own writing 3; three-group hierarchical clustering and principal
-components. Sichel's alpha and theta are omitted because Holmes does not specify the fit.
+**Run.** All five of Holmes's variables on 10,000-word samples (Nephi 4, Mormon 16, Moroni 2),
+three 1835 Doctrine and Covenants revelation samples (Joseph Smith Papers transcripts, private
+repo), KJV Isaiah 3, Joseph Smith's own writing 3: Honoré's R, V2/V and Yule's K on all words,
+and Sichel's alpha and theta on the spectrum of nouns, as he did (nouns tagged and lemmatised by
+MorphAdorner's distributed nineteenth-century model; median 1,790 nouns and 381 noun types per
+sample, against his roughly 1,900 and 360). Average-linkage clustering into three groups and
+principal components, on the standardised variables.
 
-**Result.** Joseph Smith's three samples form their own cluster (1). Isaiah 1 and 2 cluster with
-Nephi 1 and 2 (cluster 3), Isaiah 3 with the rest. Every Mormon and Moroni sample, Nephi 3 and 4,
-and all three revelation samples fall in one cluster (2).
+**The Sichel fit, checked first on his own numbers.** `classic/sichel.py` fits alpha and theta by
+minimum chi-square, as Holmes describes. On his own published noun spectra (Table 3) it returns
+alpha 1.152 and theta 0.9613 for Moroni 1 (his 1.142 and 0.9618) and 1.015 and 0.9726 for Mormon
+5 (his 1.006 and 0.9731); the small gap follows from cell pooling, which he does not specify (he
+reports 10 degrees of freedom where ours has 13). His "10,000-equivalent" values do **not**
+reproduce from the invariants he gives (b = alpha sqrt(1 - theta), c = theta / ((1 - theta) N)):
+applied to his own alpha and theta they give 2.54 for Moroni 1, not his 2.97, and no single
+choice of N recovers his values across samples. Ours applies the invariants as described; the
+gap is stated, not fitted away.
+
+**Result.** With all five variables, Joseph Smith's three samples form one cluster, Isaiah 1
+and 2 a second, and every Book of Mormon narrator sample with all three revelation samples and
+Isaiah 3 the third. With the three non-Sichel variables only, the grouping is the same except
+that Nephi 1 and 2 join Isaiah 1 and 2.
 
 **Comparison.** Matches all three of Holmes's findings: Joseph Smith's personal writing stands
 apart, the prophets do not separate by prophet, and the revelations cannot be told from the
 prophets. The critique also stands: these are vocabulary-richness measures, and Holmes's own
 result shows their limit, since samples by the same prophet do not group together. (Hoover 2003,
 https://doi.org/10.1023/a:1022673822140, is the usual citation for this critique; not yet read
-here.) Our samples are cut from the 1830 text, where Holmes used a modern
-edited text, and the finding survived the change.
+here.) Our samples are cut from the 1830 text, where Holmes used a modern edited text, and the
+finding survived the change.
 
 ## 3. Jockers, Witten and Criddle (2008)
 

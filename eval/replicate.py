@@ -920,29 +920,106 @@ def dc1835_parts() -> dict[str, list[str]]:
     return parts
 
 
+# Holmes (1992) Table 3: noun spectra V_1..V_15 and V_>15
+HOLMES_TOP = 15
+
+
+def noun_spectra(samples: dict[str, list[str]]) -> dict[str, dict]:
+    """Each sample's noun spectrum, as Holmes counted it (all nouns, lemmatised): MorphAdorner's
+    distributed ``adornplaintext`` (nineteenth-century fiction lexicon), one JVM for all samples;
+    a noun is a word whose NUPOS tag starts with "n", counted by its lemma. Our samples are
+    lower-cased tokens, which costs the tagger some proper nouns."""
+    import subprocess
+    import tempfile
+    from collections import Counter
+
+    from ocr_fix.morphadorner import APP, JAVA
+
+    args = [
+        "edu.northwestern.at.morphadorner.MorphAdorner", "-p", "plaintext.properties",
+        "-l", "data/ncflexicon.lex", "-t", "data/ncftransmat.mat",
+        "-u", "data/ncfsuffixlexicon.lex", "-a", "data/ncfmergedspellingpairs.tab",
+        "-s", "data/standardspellings.txt", "-w", "data/spellingsbywordclass.txt",
+    ]  # fmt: skip
+    names = sorted(samples)
+    with tempfile.TemporaryDirectory() as tmp:
+        files = []
+        for i, nm in enumerate(names):
+            f = Path(tmp) / f"s{i:03d}.txt"
+            f.write_text(" ".join(samples[nm]), encoding="utf-8")
+            files.append(str(f.resolve()))
+        out = Path(tmp) / "out"
+        out.mkdir()
+        subprocess.run(
+            [str(JAVA), "-Xmx2g", "-Xss1m", "-cp", ".:bin/:dist/*:lib/*", *args,
+             "-o", str(out.resolve()), *files],
+            cwd=APP, capture_output=True, text=True, check=True,
+        )  # fmt: skip
+        spectra = {}
+        for i, nm in enumerate(names):
+            lemmas = Counter()
+            for ln in (out / f"s{i:03d}.txt").read_text(encoding="utf-8").splitlines():
+                cols = ln.split("\t")
+                if len(cols) >= 5 and cols[2].startswith("n"):
+                    lemmas[cols[4].lower()] += 1
+            freq = Counter(lemmas.values())
+            spectra[nm] = {
+                "spectrum": [freq.get(r, 0) for r in range(1, HOLMES_TOP + 1)],
+                "tail": sum(v for r, v in freq.items() if r > HOLMES_TOP),
+                "V": len(lemmas),
+                "N": sum(lemmas.values()),
+            }
+    return spectra
+
+
 def holmes() -> int:
     from scipy.cluster.hierarchy import fcluster, linkage
 
+    from classic.sichel import equivalent, fit
     from metadata.config import stamp
 
     samples = holmes_samples()
     names = sorted(samples)
     vals = {nm: richness(samples[nm]) for nm in names}
-    keys = ["honore_r", "v2_over_v", "yule_k"]
-    X = np.array([[vals[nm][k] for k in keys] for nm in names])
-    Z = (X - X.mean(axis=0)) / X.std(axis=0)
-    link = linkage(Z, method="average", metric="euclidean")
-    groups = fcluster(link, t=3, criterion="maxclust")
-    u, sv, vt = np.linalg.svd(Z, full_matrices=False)
-    pcs = Z @ vt.T[:, :2]
+    spectra = noun_spectra(samples)
+    for nm in names:
+        f = fit(spectra[nm]["spectrum"], spectra[nm]["tail"])
+        a10, t10 = equivalent(f["alpha"], f["theta"], spectra[nm]["N"])
+        vals[nm].update({"sichel_alpha": f["alpha"], "sichel_theta": f["theta"],
+                         "sichel_chi2": f["chi2"], "sichel_dof": f["dof"],
+                         "alpha_10000": a10, "theta_10000": t10,
+                         "nouns": spectra[nm]})  # fmt: skip
+
+    def clusters(keys: list[str]) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+        X = np.array([[vals[nm][k] for k in keys] for nm in names])
+        Z = (X - X.mean(axis=0)) / X.std(axis=0)
+        groups = fcluster(
+            linkage(Z, method="average", metric="euclidean"), t=3, criterion="maxclust"
+        )
+        u, sv, vt = np.linalg.svd(Z, full_matrices=False)
+        return groups, Z @ vt.T[:, :2], sv
+
+    keys3 = ["honore_r", "v2_over_v", "yule_k"]
+    keys = [*keys3, "alpha_10000", "theta_10000"]
+    groups, pcs, sv = clusters(keys)
+    groups3, _, _ = clusters(keys3)
     result = {
         **stamp(),
         "variables": keys,
-        "omitted": "Sichel alpha and theta (fit not specified)",
+        "sichel_note": "fitted by minimum chi-square to noun spectra (classic/sichel.py), which "
+        "reproduces Holmes's alpha and theta within about 1% on his own Table 3; his "
+        "10,000-equivalent conversion does not reproduce from the formulas he gives, so ours "
+        "applies Sichel's invariants as described",
         "samples": {
-            nm: {**vals[nm], "cluster_of_3": int(g), "pc1": float(pc[0]), "pc2": float(pc[1])}
-            for nm, g, pc in zip(names, groups, pcs, strict=True)
-        },
+            nm: {
+                **vals[nm],
+                "cluster_of_3": int(g),
+                "cluster_of_3_without_sichel": int(g3),
+                "pc1": float(pc[0]),
+                "pc2": float(pc[1]),
+            }
+            for nm, g, g3, pc in zip(names, groups, groups3, pcs, strict=True)
+        },  # fmt: skip
         "pc_variance": (sv**2 / (sv**2).sum()).tolist(),
     }
     HOLMES_OUT.write_text(json.dumps(result, indent=1) + "\n")
