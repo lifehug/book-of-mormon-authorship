@@ -16,7 +16,7 @@ published method is run on our texts, and where it does not, why.
 | Larsen, Rencher and Layton 1980 | narrators differ (odds of one author < 1 in 100 billion); no BoM block resembles a candidate | 4 narrators differ, MANOVA p = 1e-14; 11 of 246 BoM blocks classified to a candidate | yes, both findings, with the same caveat on the p-value |
 | Holmes 1992 | Joseph Smith's own writing and Isaiah separate; prophets do not cluster by prophet; revelations sit with the prophets | Joseph Smith 3 of 3 alone; prophets mixed; D&C 1835 3 of 3 with the prophets; Isaiah 2 of 3 apart | yes |
 | Jockers, Witten and Criddle 2008 | NSC: Rigdon first or second for 197 of 239 chapters, Spalding 110, Isaiah-Malachi 101 | On their published data: same 110 words, cross-validated error 8.76% (8.8%), Rigdon 169. On our texts: Pratt 193, Rigdon 29 | **method yes, result no**: the leading candidate follows the texts chosen for each candidate |
-| Schaalje, Fields, Roper and Snow 2011 (ENSC) | most chapters fit none of the candidates | 235 of 239 chapters "none", 4 Isaiah-Malachi | yes at the level of the published conclusion, with a validation caveat |
+| Schaalje, Fields, Roper and Snow 2011 (ENSC) | 175 of 239 chapters to an unobserved author | published method, our texts: 225 of 239 to an unobserved author, 13 Isaiah | yes, at the level of the conclusion; the method's answer depends on candidate sample length and kind (BOM-57) |
 | Johnson and Johnson 2013 | *The Late War* has the densest shared rare 4-grams after *The First Book of Napoleon* | *The Late War* in the top 0.05% (174 shared, p = 0.0004), but 30 books of 10,000+ words are denser, mostly other imitation scripture | **partly**: the two books stand out; the claim that nothing else approaches them does not hold |
 
 ## 1. Larsen, Rencher and Layton (1980)
@@ -115,18 +115,34 @@ for this either.
 
 ## 4. Schaalje, Fields, Roper and Snow (2011): ENSC
 
-**Run.** The project's ENSC (`classic/ensc.py`, after Fields et al.) with BOM-21's calibrated
-settings (shrinkage 0.5, alpha 0.5), Jockers' features and candidates plus Joseph Smith
-(17 samples; Book of Mormon-quoting candidate samples left out as in section 3). The exact published open-set rule and per-chapter results were not recovered
-(`docs/prior-studies.md`).
+**Run.** Two versions (`python -m eval.replicate ensc`; `replication_ensc.json`).
 
-**Result.** 235 of 239 chapters "none of the above"; 4 to Isaiah-Malachi.
+- *Published method* (`classic/ensc_published.py`, ported from the authors' code in Funai 2010
+  and checked in BOM-57), in their Book of Mormon design (2011, section 6): candidates Joseph
+  Smith, Rigdon, Spalding, Cowdery, Pratt and Isaiah, no Barlow or Longfellow; Jockers et al.'s
+  110 words; training texts composited to 4,000 words (theirs 2,000-6,000); shrinkage 2,
+  lambda 4, the text-size adjustment on. Our candidate texts, Book of Mormon-quoting samples
+  left out (section 3).
+- *Our BOM-20 reconstruction*, which BOM-57 found not faithful, kept for the record.
 
-**Comparison.** Matches the published conclusion that most chapters fit none of the candidates.
-**Caveat:** this ENSC failed BOM-21's benchmark (open-set false-positive rate 66% at this alpha).
-Its failure was naming an author when it should say "none", the opposite of what happens here,
-so the "none" answers are not the method being over-cautious; but a method that failed
-validation does not count as evidence in this study, and this result is a replication only.
+**Result.**
+
+| Chapters assigned | Unobserved author | Isaiah | Rigdon | Smith | Spalding | Cowdery | Pratt |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Published (2011, unsmoothed counts reported in the text) | 175 | 35 | 17 | 8 | 2 | 2 | 0 |
+| Published method, our texts | 225 | 13 | 0 | 0 | 1 | 0 | 0 |
+| Our BOM-20 reconstruction | 235 | 4 (Isaiah-Malachi) | 0 | 0 | 0 | 0 | 0 |
+
+**Comparison.** The published conclusion returns, more strongly: most chapters fit none of the
+candidates. Two differences: they split Rigdon into early and late texts (we hold one Rigdon),
+and their Joseph Smith texts were Jessee's holographs (ours are BOM-13's); together these likely
+account for the chapters they gave to Rigdon and Smith. Fewer chapters go to Isaiah here (13
+against 35).
+
+**Caveat.** BOM-57 showed that this method's "none" answer moves with the length and kind of the
+candidate texts, and the 2011 text-size adjustment narrows but does not remove that. So agreement
+with the published conclusion is a replication of it, not independent evidence for it. ENSC is
+not used as evidence in this study unless it passes the benchmark (BOM-58).
 
 ## 5. Johnson and Johnson (2013)
 
@@ -164,7 +180,8 @@ The two results that replicate cleanly (Larsen, Holmes) ask whether texts *diffe
 wrote* them. The one closed-set attribution
 (Jockers) reproduces as a method on its own data, but its answer is a property of the candidate
 samples. The open-set
-method returns the published "none", but has not passed validation. The rare-phrase result returns
+method, run as published, returns the published "none", but its answer depends on sample choices
+and it has not yet passed validation. The rare-phrase result returns
 in part: the named sources are real outliers, but not unique ones. These are the reasons the
 pre-registered study requires an open-set method that passes section 7 before any attribution is
 reported.

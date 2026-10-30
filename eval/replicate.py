@@ -902,6 +902,53 @@ def holmes() -> int:
 ENSC_OUT = DIR.parent / "replication_ensc.json"
 
 
+# Schaalje et al. (2011), the Book of Mormon analysis: Delta (eq. 4) 2, lambda (eq. 10) 4, the
+# text-size adjustment (eq. 12), training texts composited to 2,000-6,000 words (we take 4,000)
+SCHAALJE_SHRINKAGE, SCHAALJE_LAM, SCHAALJE_SAMPLE_WORDS = 2.0, 4.0, 4000
+SCHAALJE_PUBLISHED = {"latent": 175, "isaiah": 35, "rigdon": 17, "joseph_smith": 8,
+                      "spalding": 2, "cowdery": 2, "pratt": 0}  # fmt: skip
+
+
+def ensc_published_bom(chapters: list[list[str]]) -> dict:
+    """ENSC as published (``classic/ensc_published.py``) in Schaalje et al.'s Book of Mormon
+    design: Joseph Smith added, Barlow and Longfellow left out, Jockers' 110 words (Appendix B),
+    Isaiah alone as the biblical author. Known gaps: one Rigdon (they split early and late);
+    posteriors not smoothed across chapters (they smoothed for multiplicity)."""
+    from collections import Counter
+
+    from classic import frequency_matrix, word_counts
+    from classic.ensc_published import LATENT, ENSCPublished
+
+    words = json.loads(JOCKERS_DATA_OUT.read_text())["features"]  # = their Appendix B
+    cand = _candidate_tokens()
+    known = {
+        a: _clean(a, [(f"{a} {i}", c) for i, c in enumerate(
+            _chunks(cand[name], SCHAALJE_SAMPLE_WORDS))])
+        for a, name in (("joseph_smith", "Joseph Smith"), ("rigdon", "Sidney Rigdon"),
+                        ("spalding", "Solomon Spalding"), ("cowdery", "Oliver Cowdery"),
+                        ("pratt", "Parley P. Pratt"))
+    }  # fmt: skip
+    isaiah = [w for _, t in _kjv({"ISA"}) for w in t]
+    known["isaiah"] = [
+        (f"isaiah {i}", c) for i, c in enumerate(_chunks(isaiah, SCHAALJE_SAMPLE_WORDS))
+    ]
+    labels = [a for a in known for _ in known[a]]
+    X = frequency_matrix([word_counts(t) for a in known for _, t in known[a]], words)
+    C = frequency_matrix([word_counts(t) for t in chapters], words)
+    model = ENSCPublished(shrinkage=SCHAALJE_SHRINKAGE, lam=SCHAALJE_LAM, size_adjust=True)
+    model.fit(X, labels)
+    preds = [model.predict(c, len(t)) for c, t in zip(C, chapters, strict=True)]
+    return {
+        "settings": {"shrinkage": SCHAALJE_SHRINKAGE, "lam": SCHAALJE_LAM, "size_adjust": True,
+                     "sample_words": SCHAALJE_SAMPLE_WORDS},
+        "samples": {a: len(v) for a, v in known.items()},
+        "assigned": dict(Counter(str(p) for p in preds)),
+        "published": SCHAALJE_PUBLISHED,
+        "latent_label": LATENT,
+        "preds": [str(p) for p in preds],
+    }  # fmt: skip
+
+
 def ensc_open_set() -> int:
     """Jockers' design with Joseph Smith added and ENSC's "none of the above" switched on at the
     alpha BOM-21 calibrated (``data/benchmark/thresholds.json``)."""
@@ -946,8 +993,14 @@ def ensc_open_set() -> int:
             for c, pr in zip(chapters, preds, strict=True)
         ],
     }
+    pub = ensc_published_bom(texts)
+    result["published_method"] = {k: v for k, v in pub.items() if k != "preds"}
+    for row, pr in zip(result["chapters"], pub["preds"], strict=True):
+        row["published_method"] = pr
     ENSC_OUT.write_text(json.dumps(result, indent=1) + "\n")
-    print("ENSC open set, chapters assigned:", dict(counts.most_common()))
+    print("our BOM-20 ENSC, chapters assigned:", dict(counts.most_common()))
+    print("published ENSC (Schaalje design), assigned:", dict(Counter(pub["preds"]).most_common()))
+    print("Schaalje et al. 2011 published:", SCHAALJE_PUBLISHED)
     return 0
 
 
