@@ -1,0 +1,97 @@
+{
+ "config_sha256": "25c004fa3161c768426eb87e308dba7165fdd7bff04a0b10b4f482b01b9edee1",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "2be9c20acdc98ca16daae5815a5de653413b2a07",
+ "settings": {
+  "shrinkage": 1.0,
+  "lam": 3.0,
+  "words": 108,
+  "splits": 100
+ },
+ "published": {
+  "A": 0.16,
+  "B": 0.1569
+ },
+ "study_a_code": {
+  "published_wrong": {
+   "mean": 0.2924,
+   "min": 0.12,
+   "max": 0.48
+  },
+  "ours_wrong": {
+   "mean": 0.6327999999999999,
+   "min": 0.44,
+   "max": 0.88
+  }
+ },
+ "study_b_text": {
+  "published_wrong": 0.6078431372549019,
+  "ours_wrong": 0.0,
+  "published_assigned": {
+   "cowdery": 19,
+   "spalding": 2,
+   "latent": 20,
+   "rigdon": 10
+  },
+  "ours_assigned": {
+   "none": 51
+  }
+ },
+ "study_b_samples": {
+  "joseph_smith": 17,
+  "rigdon": 11,
+  "spalding": 22,
+  "cowdery": 25,
+  "pratt": 35
+ },
+ "study_b_by_sample_words": {
+  "1000": {
+   "texts": 221,
+   "wrong": 0.803921568627451,
+   "assigned": {
+    "cowdery": 29,
+    "spalding": 1,
+    "latent": 10,
+    "rigdon": 11
+   }
+  },
+  "2000": {
+   "texts": 110,
+   "wrong": 0.607843137254902,
+   "assigned": {
+    "cowdery": 19,
+    "spalding": 2,
+    "latent": 20,
+    "rigdon": 10
+   }
+  },
+  "3000": {
+   "texts": 74,
+   "wrong": 0.4509803921568627,
+   "assigned": {
+    "cowdery": 16,
+    "latent": 28,
+    "spalding": 1,
+    "rigdon": 6
+   }
+  },
+  "5000": {
+   "texts": 45,
+   "wrong": 0.23529411764705888,
+   "assigned": {
+    "latent": 39,
+    "spalding": 3,
+    "cowdery": 8,
+    "rigdon": 1
+   }
+  },
+  "10000": {
+   "texts": 21,
+   "wrong": 0.0,
+   "assigned": {
+    "latent": 51
+   }
+  }
+ }
+}
