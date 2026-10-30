@@ -2,12 +2,14 @@
 
 Is our code for the two methods that failed BOM-21 (General Imposters, `classic/imposters.py`;
 ENSC, `classic/ensc.py`) faithful to the published methods? Each source below is listed with the
-link it was obtained from. Paper texts are copyrighted and kept in the private data repo
-(`data/private/fidelity/`), not here; the links let anyone fetch their own copy.
+link it was obtained from. **Rule (owner, 2026-10-30):** paper files are kept in the private data
+repo (`data/private/fidelity/`) and never published here, since we may not have the right to;
+this file references each one by link instead, and where a paper is already freely available the
+public link is the reference.
 
 | Source | What it gives | Link | Obtained |
 | --- | --- | --- | --- |
-| Kestemont, Stover, Koppel, Karsdorp and Daelemans (2016), "Authenticating the writings of Julius Caesar", *Expert Systems with Applications* 63: 86-96. Authors' accepted manuscript. | General Imposters as our code implements it ("O2"); Table 1: test results on the six PAN 2014 verification corpora by distance and weighting | https://www.pure.ed.ac.uk/ws/files/38106536/Stover_et_al_2016_ESA_Authenticating_the_writings_of_Julius_Caesar_AM.pdf | downloaded 2026-10-30, `data/private/fidelity/kestemont2016_am.pdf` |
+| Kestemont, Stover, Koppel, Karsdorp and Daelemans (2016), "Authenticating the writings of Julius Caesar", *Expert Systems with Applications* 63: 86-96. Authors' accepted manuscript. | General Imposters as our code implements it ("O2"); Table 1: test results on the six PAN 2014 verification corpora by distance and weighting | https://www.pure.ed.ac.uk/ws/files/38106536/Stover_et_al_2016_ESA_Authenticating_the_writings_of_Julius_Caesar_AM.pdf ; peer-reviewed version also at https://pure.knaw.nl/portal/en/publications/authenticating-the-writings-of-julius-caesar/ | downloaded 2026-10-30, `data/private/fidelity/kestemont2016_am.pdf`; KNAW copy supplied by the owner, `kestemont2016_knaw.pdf` (neither includes the supplement) |
 | Seidman (2013), "Authorship Verification Using the Impostors Method", PAN at CLEF 2013 notebook | the PAN 2013 winning impostors variant (symmetric similarity, web impostors); accuracy by language | https://ceur-ws.org/Vol-1179/CLEF2013wn-PAN-Seidman2013.pdf | downloaded 2026-10-30, `data/private/fidelity/seidman2013.pdf` |
 | Funai (2010), *Extensions of Nearest Shrunken Centroid Method for Classification*, MS thesis, Brigham Young University (168 pp.) | ENSC's formulas (eqs. 2.14-2.16, after Schaalje et al.), **its R code** (Appendix C, p. 140 on), and a published open-set validation on the Federalist Papers (Table 3.1 and the second study) | record: https://scholarsarchive.byu.edu/etd/2402 ; PDF: https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=3401&context=etd | downloaded by the owner in a browser 2026-10-30, `data/private/fidelity/funai2010.pdf` |
 | Schaalje, Fields, Roper and Snow (2011), "Extended nearest shrunken centroid classification: a new method for open-set authorship attribution of texts of varying sizes", *Literary and Linguistic Computing* 26(1): 71-88 | ENSC's published definition and validation | DOI (paywalled, Oxford Academic): https://doi.org/10.1093/llc/fqq029 (found via Crossref, https://api.crossref.org) | not needed: Funai (2010) gives the formulas and code |
@@ -56,7 +58,7 @@ hand. DOIs checked against Crossref on 2026-10-30.
 | --- | --- | --- | --- | --- |
 | 1 | Jockers, Witten and Criddle (2008), *LLC* 23(4) | Tables 1-2 and Appendix A list exactly which Rigdon, Pratt and Cowdery texts they used; our replication disagrees with theirs and the candidate samples are the likeliest reason | https://doi.org/10.1093/llc/fqn040 | paywalled |
 | 2 | Koppel and Winter (2014), "Determining if two documents are written by the same author", *JASIST* 65(1) | General Imposters' original definition and settings | https://doi.org/10.1002/asi.22954 | paywalled |
-| 3 | Kestemont et al. (2016), supplementary information | O2's exact iterations, feature share and imposter count for the PAN check | https://doi.org/10.1016/j.eswa.2016.06.029 (SI linked from the article page) | browser only, possibly paywalled |
+| 3 | Kestemont et al. (2016), supplementary information | O2's exact iterations, feature share and imposter count | https://doi.org/10.1016/j.eswa.2016.06.029 | **likely unnecessary**: the authors' code is public, https://github.com/mikekestemont/ruzicka |
 | 4 | Schaalje, Fields, Roper and Snow (2011), *LLC* 26(1) | ENSC's per-chapter Book of Mormon results and its own validation, for an exact replication match | https://doi.org/10.1093/llc/fqq029 | paywalled |
 | 6 | Jockers (2012), "Testing authorship in the personal writings of Joseph Smith using NSC classification", *LLC* | the Jockers side's answer to the open-set critique | https://doi.org/10.1093/llc/fqs041 | paywalled |
 | 7 | Evert et al. (2017), "Understanding and explaining Delta measures for authorship attribution", *DSH* 32 | why and when Delta works; the best-practice variants (to improve the two Deltas) | https://doi.org/10.1093/llc/fqx023 | paywalled |
