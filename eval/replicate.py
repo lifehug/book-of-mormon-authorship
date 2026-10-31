@@ -19,6 +19,9 @@ Usage::
     python -m eval.replicate jockers-data # their published counts -> replication_jockers_data.json
     python -m eval.replicate jockers-pamr # the same in R's pamr (needs R + pamr)
     python -m eval.replicate johnson      # after `reuse.rare scan --target bom`
+    python -m eval.replicate larsen       # by narrator, and by speaker once eval.speakers ran
+    python -m eval.replicate holmes       # needs MorphAdorner (nouns for the Sichel fit)
+    python -m eval.replicate ensc         # published ENSC; needs data/benchmark/thresholds.json
 """
 
 from __future__ import annotations

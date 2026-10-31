@@ -30,6 +30,15 @@ Publishing is not only at the end: the pre-registration and its amendments, the 
 the replication report (`paper/replication-report.md`) and the blog are public as they are made.
 Decisions made after seeing a result are listed in `paper/deviations.md`.
 
+## Running the analyses
+
+Every evaluation command, in the order to run it, with what it needs, what it writes and how long
+it takes, is in **[`eval/README.md`](eval/README.md)**. It marks which code reproduces an
+earlier study's published method, which checks our code against published numbers, and which is
+this project's improvement; a test keeps it in step with the code. The reports the commands feed
+are `paper/replication-report.md`, `data/benchmark/BENCHMARK.md`,
+`data/benchmark/fidelity/REPORT.md` and `paper/methods-report.md`.
+
 ## The three questions
 
 1. **Attribution.** Does the text resemble the writing of any named candidate? The

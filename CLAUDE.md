@@ -98,6 +98,8 @@ decision. Split them.
    package README names its issues.
 2. `uv run ruff check . && uv run ruff format --check . && uv run pytest -q` must pass before
    any commit. Never commit with failing tests.
+   A new command goes into the run guide, `eval/README.md` (what it does, needs, writes, time);
+   `tests/test_run_guide.py` fails the build if a module's Usage lists a command the guide lacks.
 3. Every dataset gets a checksum manifest: `uv run python -m metadata.manifest build <dir> -o
    data/manifests/<name>.jsonl`. Every data directory gets a `SOURCES.md` saying where each
    file came from and how to rebuild it.
