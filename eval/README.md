@@ -4,7 +4,7 @@ Validation benchmark, replications of earlier studies, fidelity checks, repair, 
 improvements to the earlier methods; later, imitation robustness, the blind run, and the
 Bayesian synthesis.
 
-Issues: BOM-21, BOM-22, BOM-23, BOM-31, BOM-32, BOM-35, BOM-43, BOM-46, BOM-48, BOM-57, BOM-58, BOM-60, BOM-61.
+Issues: BOM-21, BOM-22, BOM-23, BOM-31, BOM-32, BOM-35, BOM-43, BOM-46, BOM-48, BOM-57, BOM-58, BOM-60, BOM-61, BOM-62.
 
 **Keep this file current.** Every command a module lists in its "Usage" block must appear below;
 `tests/test_run_guide.py` fails the build if one is missing. Add a row when you add a command.
@@ -108,6 +108,14 @@ Plan, registered before any run (Amendment 10): `docs/reuse-plan.md`.
 | --- | --- | --- | --- | --- |
 | `python -m reuse.exact scan` | registered | the lossless prefilter: which of each target's 5-grams every volume in any search contains | `data/reuse/exact/hits.parquet`, `searches.json` | ~80 min |
 | `python -m reuse.exact align <search>` | registered | passim on the candidates of one search: `bom:full`, `late_war:full`, `sermon:full`, or `<text>:draw<0-2>` for the known-answer score | `data/reuse/exact/alignments/<search>.json` | minutes to hours |
+
+## 8. The King James italics test (BOM-62)
+
+Plan, registered before any count (Amendment 11): `docs/italics-plan.md`.
+
+| Command | Kind | What it does | Writes | Time |
+| --- | --- | --- | --- | --- |
+| `python -m eval.italics ranges` | registered | the translation-only ranges of the independent translations, from their layout, before any count | `data/italics/translation_ranges.json` | seconds |
 
 ## Other
 

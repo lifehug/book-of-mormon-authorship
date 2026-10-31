@@ -95,3 +95,17 @@ reading cannot shape the rule).
 
 Registered as Amendment 11 (OSF revision 6ae62f2ca50d25933c296d01, 2026-10-31), before any
 italic word was counted.
+
+## Deviations before counting (2026-10-31, no italic word counted yet)
+
+- **Wakefield's *Matthew* (1782) is left out.** Its OCR interleaves translation, Greek notes and
+  scrambled columns line by line, so no recorded range holds translation alone. The independent
+  group is Lowth's *Isaiah*, the 1790 *Isaiah* and the 1807 *Psalms*; the Book of Mormon's
+  parallels are mostly Isaiah, which this group covers twice.
+- **Ranges** (`python -m eval.italics ranges`, `data/italics/translation_ranges.json`): Lowth
+  volume 1 from the heading before "The Vision of Isaiah" to its end (263,226 characters); Lowth
+  volume 2 is notes only and contributes nothing; the 1790 *Isaiah* from its first "SECTION I" to
+  "NOTES on ISAIAH" (237,401 characters, its short page footnotes included); the 1807 *Psalms* as
+  142 blocks from a "PSALM n." heading to the next "NOTES." (eight of 150 headings were lost to
+  OCR, and those psalms are left out).
+
