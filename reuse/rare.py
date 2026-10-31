@@ -289,3 +289,50 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+# BOM-60 (docs/improvement-plan.md): copies of one text, found by their shared phrases
+COPY_JACCARD = 0.8  # two volumes are copies if their shared-gram sets overlap this much
+COPY_MIN_HITS = 10  # volumes with fewer shared grams are never merged
+COPY_INDEX_DF = 20  # only grams in at most this many volumes nominate candidate pairs
+COPY_MIN_COMMON = 5  # a pair must share at least this many such grams to be compared
+
+
+def copy_clusters(recs: list[dict]) -> dict[str, str]:
+    """Each volume's copy group, by content: two volumes are copies of one text when the sets of
+    target grams they share overlap by ``COPY_JACCARD`` or more. Titles cannot decide this (a
+    multi-volume work's volumes share a title and differ in text; a periodical's issues too), and
+    the deduplication missed the nine printings of Hunt's *The Late War*. Candidate pairs come
+    from grams few volumes carry, so the comparison stays tractable. Returns volume -> group id
+    (the smallest member id)."""
+    from collections import Counter
+
+    hits = {r["work_id"]: set(r["hits"]) for r in recs if len(r["hits"]) >= COPY_MIN_HITS}
+    index: dict[int, list[str]] = {}
+    for w, h in hits.items():
+        for g in h:
+            index.setdefault(g, []).append(w)
+    pairs: Counter = Counter()
+    for vols in index.values():
+        if 1 < len(vols) <= COPY_INDEX_DF:
+            vols = sorted(vols)
+            for i, a in enumerate(vols):
+                for b in vols[i + 1 :]:
+                    pairs[(a, b)] += 1
+    parent = {w: w for w in (r["work_id"] for r in recs)}
+
+    def find(x: str) -> str:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    for (a, b), n in pairs.items():
+        if n < COPY_MIN_COMMON:
+            continue
+        ha, hb = hits[a], hits[b]
+        if len(ha & hb) / len(ha | hb) >= COPY_JACCARD:
+            ra, rb = find(a), find(b)
+            if ra != rb:
+                parent[max(ra, rb)] = min(ra, rb)
+    return {w: find(w) for w in parent}

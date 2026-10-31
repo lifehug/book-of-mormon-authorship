@@ -608,7 +608,9 @@ def jockers() -> int:
 JOHNSON_OUT = DIR.parent / "replication_johnson.json"
 JOHNSON_RATE = 1000  # rare: in fewer than one book per thousand (their rule)
 NAMED_SOURCES = {
-    "the_late_war": r"late war.{0,80}(1812|britain)",
+    # Hunt's book, or his Historical Reader, which reprints it; not other histories of the war
+    "the_late_war": r"^(the )?late war,? between the united states and great britain,? from june"
+    r"|historical reader.{0,40}late war",
     "first_book_of_napoleon": r"first book of napoleon",
 }
 
@@ -630,21 +632,41 @@ def johnson() -> int:
     cat = {
         r["work_id"]: r
         for r in pq.read_table(
-            "data/catalog/catalog.parquet", columns=["work_id", "title", "author_norm", "year"]
+            "data/catalog/catalog.parquet",
+            columns=["work_id", "title", "author_norm", "year", "title_norm"],
         ).to_pylist()
     }
+    from reuse.rare import copy_clusters
+
     df: Counter = Counter()
     for r in recs:
         df.update(r["hits"])
+    # BOM-60: document frequency counted by text, so the copies of a reprinted source count once
+    key = copy_clusters(recs)
+    by_work: dict[int, set] = {}
+    for r in recs:
+        for g in r["hits"]:
+            by_work.setdefault(g, set()).add(key[r["work_id"]])
+    df_work = Counter({g: len(v) for g, v in by_work.items()})
+    groups = Counter(key.values())
+    merged = {
+        "volumes": len(key),
+        "works": len(groups),
+        "largest_groups": [[(cat[k]["title"] or "")[:70], c] for k, c in groups.most_common(15)],
+    }
     n = len(recs)
     rules = {
         "johnson_lt_1_per_1000": n / JOHNSON_RATE,
         "preregistered_df_le": cfg["borrowing"]["max_df"],
+        "preregistered_df_le_by_work": cfg["borrowing"]["max_df"],
     }
     per = cfg["borrowing"]["per_words"]
     out = {}
     for name, cut in rules.items():
-        rare = {g for g, c in df.items() if (c < cut if name.startswith("johnson") else c <= cut)}
+        counts = df_work if name.endswith("by_work") else df
+        rare = {
+            g for g, c in counts.items() if (c < cut if name.startswith("johnson") else c <= cut)
+        }
         dens = {r["work_id"]: per * sum(g in rare for g in r["hits"]) / r["words"] for r in recs}
         shared = {r["work_id"]: sum(g in rare for g in r["hits"]) for r in recs}
         order = sorted(dens, key=lambda w: -dens[w])
@@ -675,6 +697,7 @@ def johnson() -> int:
         out[name] = {
             "rare_cut": cut,
             "rare_grams": len(rare),
+            "null_p99_density": float(np.percentile(null, 99)),
             "named": named,
             "top": [
                 {
@@ -690,9 +713,14 @@ def johnson() -> int:
                 for w in order[:25]
             ],
         }
-    JOHNSON_OUT.write_text(json.dumps({**stamp(), "volumes": n, **out}, indent=1) + "\n")
+    JOHNSON_OUT.write_text(
+        json.dumps({**stamp(), "volumes": n, "merged_by_title": merged, **out}, indent=1) + "\n"
+    )
+    print(f"by content: {merged['volumes']:,} volumes in {merged['works']:,} works; largest:",
+          merged["largest_groups"][:6])  # fmt: skip
     for name, v in out.items():
-        print(name, f"(rare grams {v['rare_grams']:,})")
+        print(name, f"(rare grams {v['rare_grams']:,}; null 99th percentile "
+              f"{v['null_p99_density']:.3f})")  # fmt: skip
         for k, x in v["named"].items():
             print(
                 f"  {k}: rank {x['rank']:,} of {n:,}, {x['shared']} shared, p = {x['p_value']:.2g}"

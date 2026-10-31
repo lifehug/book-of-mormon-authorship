@@ -205,11 +205,16 @@ scripture. The shared rare phrases track that register, which is the critique th
 and a single-source ranking cannot separate borrowing from shared style. That separation is what
 BOM-24 and BOM-26 are for.
 
-**A limit of the registered rule, found here.** Under the pre-registered rarity rule (a 4-gram
-in at most 5 documents) *The Late War* shares just 1 rare 4-gram, because the corpus holds about
-eleven printings of it: anything it shares with the Book of Mormon is in at least eleven
-documents and so is never rare. Rarity counted by volume penalises reprinted sources. Recorded on
-BOM-24 to be resolved there; it does not change this replication, which uses Johnson's rule.
+**A limit of the registered rule, found here (corrected 2026-10-30).** Under the pre-registered
+rarity rule (a 4-gram in at most 5 documents) Hunt's *The Late War* shares 1 rare 4-gram
+(p = 0.05), because the corpus holds nine printings of it: everything it shares with the Book of
+Mormon sits in at least eight documents. (A first version of this paragraph quoted "1 rare
+4-gram" from the wrong book: the name pattern matched any title about the late war, and under
+the registered rule the best-ranked match was Thomas Brockway's 1784 sermon *America Saved*. The
+pattern is now pinned to Hunt's title and his *Historical Reader*.) Counting document frequency
+by *text*, with copies found by their content (BOM-60, `reuse.rare.copy_clusters`), Hunt's nine
+printings fall into four groups and *The Late War* shares 15 rare 4-grams, rank 177 of 221,344,
+p = 0.0008. This does not change the replication, which uses Johnson's rule.
 
 ## Gaps that cannot be closed
 
