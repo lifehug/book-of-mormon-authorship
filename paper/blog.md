@@ -2127,6 +2127,7 @@ as saying nothing about the translation question, whatever it says about the Boo
 
 ## Log
 
+- **2026-10-31.** Amendment 9 filed on OSF (revision 6ae61ebeebfd59a7464e8fc4): the known-answer set and rule, registered before any test runs on them. From now on I file amendments myself as they come up (owner's call).
 - **2026-10-31.** BOM-61 set and plan: 9 genuine period translations of ancient texts vs 3 texts presented as ancient (Ossian, Rowley, Jasher), 2 secondary (Ireland's Shakespeare papers, Otranto); a test separates them at exact p <= 0.01 (at most one of 27 pairs wrong). Apocrypha dropped (the KJV mask covers it). Plan committed before any test runs on the set.
 - **2026-10-30, night.** BOM-60 closed: the one-time evaluation on 30 new authors. No improvement works and no method meets section 7 (closed set 54-60%; General Imposters never says "match"; Delta and ENSC false matches 73-99%). Phase 3 done. Config keys registered by Amendment 8 lose their provisional names.
 - **2026-10-30, night.** Amendment 8 filed on OSF (revision 6ae55e1b828dc3df8274a024): the Deltas count only as "which listed candidate is closest", and the paper says beside every Delta result that they didn't pass the bar; General Imposters and ENSC retired; rarity counted by text, not printed copy, with the old count shown beside it because I chose the change after seeing The Late War result; the improvement study is filed before its evaluation finishes, and none of it touches the Book of Mormon.

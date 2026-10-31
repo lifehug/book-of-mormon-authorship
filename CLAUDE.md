@@ -107,7 +107,11 @@ decision. Split them.
 5. Tick the issue's checkboxes, close it with a comment carrying the evidence (counts, paths,
    commit), and append to `paper/blog.md` (see below).
 6. Nothing public or irreversible beyond that without asking: no force-push, no publishing
-   data or models, no OSF amendments, no spending on GPUs.
+   data or models, no spending on GPUs. **OSF amendments are the exception: file them without
+   asking** (owner, 2026-10-31). Write the text to `paper/amendment-NNN-osf-text.md`, file it with
+   `scripts/osf_amend.py`, record the revision in section 11 of `paper/preregistration.md` and in
+   the config, and tell the owner afterwards. File before the results the amendment governs
+   exist, and label anything decided after seeing results as post hoc.
 
 ## Where data lives
 
@@ -197,6 +201,6 @@ conversational, short sentences, concrete, no jargon.
   choices come from `config/preregistered.yaml` via `metadata.config.load()`, and every output
   is stamped with `metadata.config.sha256_of_config()`. The file holds only choices already
   pinned in the pre-registration; its `pending_amendment` list names those still needing a
-  dated OSF amendment, which is the owner's to make. A value not in the config and not in that
+  dated OSF amendment, filed as in step 6 of "How to finish a task". A value not in the config and not in that
   list means you are about to invent one: add it to `pending_amendment` instead. BOM-40 extends
   the file to the remaining stages and adds the multiverse runner.

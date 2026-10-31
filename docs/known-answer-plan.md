@@ -73,7 +73,7 @@ own copies the same way.
 2. **Separation** is the one-sided Mann-Whitney statistic of the 3 presented-as-ancient texts
    against the 9 genuine ones in the declared direction, with its exact permutation p-value over
    all 220 ways of choosing 3 texts of 12. **A test separates the groups when p <= 0.01**
-   (`known_answer.separation_p_provisional`). With 3 against 9 that allows at most one of the 27
+   (`known_answer.separation_p`). With 3 against 9 that allows at most one of the 27
    genuine/presented pairs to fall the wrong way.
 3. **Rowley.** If the test separates only with Rowley in (fails with Rowley's score set to the
    genuine median), the result is reported as "separates, possibly on spelling alone", and the
@@ -104,6 +104,5 @@ it cannot drift.
 
 ## Registration
 
-The set and the rule above are not yet registered (`pending_amendment`: `known_answer.design`).
-They are fixed here before any test runs on the set, and an amendment registers them before any
-test's Book of Mormon result is interpreted.
+Registered as Amendment 9 (OSF revision 6ae61ebeebfd59a7464e8fc4, 2026-10-31), before any test
+ran on the set.
