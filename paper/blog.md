@@ -1965,7 +1965,7 @@ right answer is always "none", it was wrong 80% of the time with 1,000-word samp
 10,000-word samples.
 
 **Every classic tool gets much worse as the list of candidates grows.** Choosing among 3 to 11
-authors, the best of them was right nearly every time. Choosing among 30, about 62%. Still far
+authors, the best of them was right nearly every time. Choosing among 30, about 63%. Still far
 better than guessing (3%), but not good enough to bet on.
 
 **You have to screen the comparison texts.** Five of our Parley Pratt samples and one of Oliver
@@ -2008,8 +2008,8 @@ side, are weaker than they were presented:
 - **"It has many different authors."** The book's speakers really do use common words differently
   from each other, and none closely resembles the candidates tested. But a sermon reads differently
   from a war story whoever writes them, so this measures variety of style, not a head count.
-- **"It borrowed from *The Late War*."** It does share unusually many rare phrases with Hunt's book,
-  about 1 in 2,000 books do as well. But so do some thirty other books written in imitation of the
+- **"It borrowed from *The Late War*."** It does share unusually many rare phrases with Hunt's book:
+  only about 1 book in 2,000 does as well. But so do some thirty other books written in imitation of the
   Bible. That's a shared style; whether there's borrowing on top of it is what the next phase asks.
 
 The real work on the question itself is phases 4 to 6. Phase 3 decided which tools get to take part,

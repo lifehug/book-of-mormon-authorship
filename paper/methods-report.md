@@ -65,9 +65,16 @@ sample lengths halves (25.5 to 13.7 points), but it wrongly names a candidate fo
 59-73% of the time. The published model's success on Hamilton seems to rest partly on understating
 natural variation, which makes every candidate look far away and so favours "none of these".
 
-## 4. General Imposters: more rounds (development: running)
+## 4. General Imposters: more rounds (development: does not work)
 
-*Pending.*
+**Change.** 1,000 rounds instead of the registered 100, so that the score cannot pin at its
+maximum. (Imposters matched to the test's register are already the BOM-21 design: imitation
+scripture, history and fiction pools per task.)
+
+**Result.** On the BOM-21 tasks, closed-set accuracy rises from 83.9% to 88.3% and the held-out
+open-set false-positive rate is 4.4%, but the match threshold is still at the maximum score: some
+wrong authors win all 1,000 rounds, so more rounds cannot lift the ceiling, and the closed-set bar
+of 90% is still missed.
 
 ## 5. Closed-set traps, measured (from BOM-22)
 

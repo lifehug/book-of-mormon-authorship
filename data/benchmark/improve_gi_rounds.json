@@ -1,0 +1,28 @@
+{
+ "config_sha256": "72817286e715798453c65fb507f9bf4cfeaed9ca8493e3418981ed39dbc9fa66",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": {
+  "thresholds": {
+   "match": 1.0,
+   "non_match": 0.32850000000000007
+  },
+  "closed_set": 0.8388888888888889,
+  "open_set_fpr": 0.0,
+  "passes": false,
+  "match_at_maximum": true,
+  "trials": 100
+ },
+ "git_commit": "075b4eb053e6c0ae137ebf373db6e70d2bdc5221",
+ "plan": "docs/improvement-plan.md, improvement 4",
+ "more_rounds": {
+  "thresholds": {
+   "match": 1.0,
+   "non_match": 0.3451
+  },
+  "closed_set": 0.8833333333333333,
+  "open_set_fpr": 0.044444444444444446,
+  "passes": false,
+  "match_at_maximum": true,
+  "trials": 1000
+ }
+}
