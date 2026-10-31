@@ -1930,8 +1930,94 @@ Counted that way, Hunt's book shares 15 rare phrases, and it's a significant sou
 the project's own rule. This is a candidate fix; it gets registered before the borrowing step
 uses it.
 
+## Phase 3, all in one place: what we did, what we learned, what it says
+
+Phase 3 was about the tools, not the answer. Before our own methods ever touch the Book of
+Mormon, I wanted to know which of the old tools can be trusted, and whether the famous studies
+hold up when you rerun them carefully. Here's the whole of it in one place.
+
+### What we did
+
+1. **Tested the four classic tools on books where we already know the author.** The Federalist
+   Papers, four authors who wrote in imitation Bible style, and Walter Scott's two novels he
+   dictated while ill. Then reran that whole test under 54 different settings.
+2. **Reran the five best-known studies of the Book of Mormon**, using each study's own method and,
+   where the authors published it, their own data.
+3. **Checked our copies of the tools against the originals**, using the authors' own code and
+   their published numbers.
+4. **Tried to repair the tools that failed**, with the rules written down first and the test done
+   on 30 authors nobody had looked at yet.
+5. **Tested improvements**, again with the plan written first.
+
+### What we learned
+
+**A tool that has to pick a name from a list picks whoever's samples happen to sit closest.** The
+2008 study that pointed to Sidney Rigdon reproduces exactly on its authors' own data: same 110
+words, same 8.8% error rate, same result from their own software. But swap in a different set of
+genuine Rigdon writing and his count drops from 169 chapters to 92. Swap Parley Pratt's, and his
+goes from 42 to 137. The Book of Mormon didn't change; the samples did. Their Rigdon, it turned
+out, is mostly a book of revelations he wrote in 1864.
+
+**"None of these candidates" depends on settings too.** The method built to say "none of the above"
+reproduces its published conclusion: most chapters fit nobody on the list (theirs 73%, ours 94%).
+But how often it says "none" swings with how long the comparison samples are: on a test where the
+right answer is always "none", it was wrong 80% of the time with 1,000-word samples and 0% with
+10,000-word samples.
+
+**Every classic tool gets much worse as the list of candidates grows.** Choosing among 3 to 11
+authors, the best of them was right nearly every time. Choosing among 30, about 62%. Still far
+better than guessing (3%), but not good enough to bet on.
+
+**You have to screen the comparison texts.** Five of our Parley Pratt samples and one of Oliver
+Cowdery's quote the Book of Mormon. Of course the Book of Mormon resembles text that quotes it.
+Those are out now.
+
+**Published numbers don't always reproduce.** Even with the authors' own data in the authors' own
+software, the 2008 study's printed table didn't come back exactly. Holmes's 1992 conversion of one
+of his measures can't be rebuilt from the formulas he printed. Neither is fatal, but both are
+worth knowing before leaning on a number.
+
+**Two tools are out, two stay with limits.** General Imposters and ENSC failed the bar set in
+advance, even after a fair repair attempt, and are retired for this project. The two Delta methods
+stay, but only for "which of a short list is closest", never for "none of these".
+
+### What we improved
+
+**Rare phrases are now counted by book, not by printed copy.** The old rule called a phrase rare if
+it appeared in at most five documents. Hunt's *The Late War* survives in nine printings, so none of
+its phrases could ever count as rare. Counting each book once (copies found by matching their
+contents, after grouping by title failed twice), *The Late War* goes from 1 rare shared phrase to
+15. That fix goes into the borrowing step next.
+
+Two other fixes didn't work, and they're written up anyway: a "none of these" score for Delta (it
+claimed a match for absent authors 24-97% of the time), and refitting ENSC's text-length model on
+30 authors instead of 2. That second one did teach something: the published model assumes word
+use varies about four times less than real authors of the period show, which makes every
+candidate look far away and quietly tilts the answer toward "none".
+
+### So does any of it tell us who wrote the Book of Mormon?
+
+Not directly, and that's on purpose: our own methods don't score the Book of Mormon until the
+blind run at the end. What phase 3 does show is that the strong claims made before, on every
+side, are weaker than they were presented:
+
+- **"Sidney Rigdon or Solomon Spalding wrote it."** The method holds up; the result follows which
+  writing was chosen to stand for each man.
+- **"None of the suggested authors wrote it."** The conclusion reproduces, but the method behind it
+  moves with sample choices and failed our validation.
+- **"It has many different authors."** The book's speakers really do use common words differently
+  from each other, and none closely resembles the candidates tested. But a sermon reads differently
+  from a war story whoever writes them, so this measures variety of style, not a head count.
+- **"It borrowed from *The Late War*."** It does share unusually many rare phrases with Hunt's book,
+  about 1 in 2,000 books do as well. But so do some thirty other books written in imitation of the
+  Bible. That's a shared style; whether there's borrowing on top of it is what the next phase asks.
+
+The real work on the question itself is phases 4 to 6. Phase 3 decided which tools get to take part,
+and on what terms.
+
 ## Log
 
+- **2026-10-30, night.** Phase 3 summary post: what was done, what was learned, what was improved, and what it does and doesn't say about authorship.
 - **2026-10-30, night.** Correction: the Johnson write-up's 'Late War shares 1 rare phrase' came from the wrong book (Brockway's 1784 sermon); Hunt's own figure is also 1. BOM-60 (1): rarity counted by text (copies found by content): Hunt's Late War 15 rare shared, p = 0.0008.
 - **2026-10-30, night.** BOM-58 closed: General Imposters (30% repair: 94% on BOM-21, 51% on 30 fresh authors) and ENSC as published (44%/88% false matches) retired under the pre-written rule; Deltas 62-63% among 30 fresh authors (limitation added to D1). A results file briefly held corpus text; caught before push; guard test added.
 - **2026-10-30, night.** BOM-22 Larsen by speaker: 239 chapters model-labelled (simulated), 16 of 24 speaker word counts within 10% of Larsen's Appendix B; 17 speakers differ (p = 8e-38), 4 of 215 blocks look like a candidate. All five replications done.
