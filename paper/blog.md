@@ -2127,6 +2127,7 @@ as saying nothing about the translation question, whatever it says about the Boo
 
 ## Log
 
+- **2026-10-31.** Amendment 10 filed (revision 6ae620454ae19487e2bde267): how BOM-23 searches for exact reuse, and a fair known-answer score (every text against 2,000 books from the 70 years before it), with a check for the old-spelling problem. Known-answer texts KJV-masked (0.30%; Jasher 3.5%).
 - **2026-10-31.** Amendment 9 filed on OSF (revision 6ae61ebeebfd59a7464e8fc4): the known-answer set and rule, registered before any test runs on them. From now on I file amendments myself as they come up (owner's call).
 - **2026-10-31.** BOM-61 set and plan: 9 genuine period translations of ancient texts vs 3 texts presented as ancient (Ossian, Rowley, Jasher), 2 secondary (Ireland's Shakespeare papers, Otranto); a test separates them at exact p <= 0.01 (at most one of 27 pairs wrong). Apocrypha dropped (the KJV mask covers it). Plan committed before any test runs on the set.
 - **2026-10-30, night.** BOM-60 closed: the one-time evaluation on 30 new authors. No improvement works and no method meets section 7 (closed set 54-60%; General Imposters never says "match"; Delta and ENSC false matches 73-99%). Phase 3 done. Config keys registered by Amendment 8 lose their provisional names.

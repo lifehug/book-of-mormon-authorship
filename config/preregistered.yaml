@@ -278,4 +278,31 @@ repair:
 known_answer:
   separation_p: 0.01             # exact one-sided Mann-Whitney p, 3 presented-as-ancient vs 9 genuine
 
+# Registered by Amendment 10 (OSF revision 6ae620454ae19487e2bde267, 2026-10-31): exact reuse
+# (5.5, BOM-23; docs/reuse-plan.md). passim's alignment settings are kjv_mask.passim's (Amendment 2)
+reuse:
+  min_seeds: 4                   # shared 5-grams to seed an alignment (kjv_mask.passim.min_match)
+  seed_max_df: 100               # document frequency across the whole search (passim's default cap)
+  matched_volumes: 2000          # known-answer score: volumes per draw
+  window_years: 70               # ... printed in the 70 years before the text's English was written
+  matched_draws: 3
+  sermon_seed: bom23-sermon      # the 1820s sermon collection for the reference table
+  english_year:                  # the year each text's English was written
+    bom: 1829
+    twelve_patriarchs: 1581
+    enoch: 1821
+    apocryphal_nt: 1726
+    josephus: 1737
+    koran: 1734
+    herodotus: 1791
+    homer: 1715
+    hesiod: 1812
+    sacontala: 1789
+    ossian: 1760
+    rowley: 1768
+    jasher: 1751
+    ireland_papers: 1795
+    otranto: 1764
+  late_war_year: 1816
+
 pending_amendment: []
