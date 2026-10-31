@@ -2015,8 +2015,55 @@ side, are weaker than they were presented:
 The real work on the question itself is phases 4 to 6. Phase 3 decided which tools get to take part,
 and on what terms.
 
+## The actual phrases *The Late War* shares
+
+I wanted to see the phrases themselves, not just counts. Under the 2013 study's own rule, Gilbert
+Hunt's *The Late War* (1816) shares 183 rare four-word phrases with the Book of Mormon (Bible
+quotations already taken out). Here's where they go:
+
+| How many *other* books in the corpus use the phrase | Phrases |
+| --- | --- |
+| none: only these two books, out of 221,000 | 6 |
+| 1 to 4 | 17 |
+| 5 to 19 | 25 |
+| 20 or more | 135 |
+
+So three in four of them are common enough in period writing that they say little on their own.
+They're the stock language of anyone writing in King James style. "Weapons of war to defend"
+turns up in 162 other books; "had commanded his servants" in 114.
+
+The six found nowhere else are the interesting ones:
+
+- **"and the wilderness round about"**: Book of Mormon, *"in the land of Nephi and the wilderness
+  round about"*; Late War, *"dwelt in the back-woods and the wilderness round about the states of
+  Georgia"*.
+- **"nevertheless they knew not"**: Book of Mormon, *"nevertheless they knew not God"*; Late War,
+  *"nevertheless they knew not that they were to be entrapt"*.
+- **"so shall ye fall"**: Book of Mormon, *"so shall ye fall to earth except ye will deliver up
+  your weapons"*; Late War, *"so shall ye fall a prey to the folly thereof"*.
+- **"(it came to) pass that they gathered"**: *"they gathered themselves together"* in one,
+  *"they gathered together their army and their navy"* in the other.
+- **"(it came to) pass that the hearts"**: *"the hearts of the sons of Mosiah"* and *"the hearts of
+  the lords and the counsellors of Britain"*.
+
+Two things stand out. First, these are short, and each is a natural thing to write in that style;
+none is a borrowed sentence. Second, 36 of the 183 also show up in other books written in
+imitation of scripture: 18 in Richard Snowden's *American Revolution* (1793), 8 in *Antediluvian
+Antiquities* (1829), 4 in *The Book of Jasher*, 3 in *The First Book of Napoleon*. That's the shared
+style showing through.
+
+What this can't yet say is whether the overlap is more than that style predicts, and I think that's
+the right question. The next phase measures it properly: how much would any book written in
+imitation scripture share with the Book of Mormon, and does *The Late War* stand out from that
+group, not just from all books? We'll come back to this one.
+
+The full list, all 183 with their contexts and the other books that use each, is in
+`data/benchmark/replication/latewar_shared_phrases.json`, made by `python -m eval.replicate
+johnson-examples`.
+
 ## Log
 
+- **2026-10-30, night.** The Late War's 183 rare shared phrases, in context: 6 in no other book, 135 in 20+ other books, 36 also in other imitation-scripture works (Snowden 18). Flagged for a closer look against imitation scripture as a group (phase 4).
 - **2026-10-30, night.** Phase 3 summary post: what was done, what was learned, what was improved, and what it does and doesn't say about authorship.
 - **2026-10-30, night.** Correction: the Johnson write-up's 'Late War shares 1 rare phrase' came from the wrong book (Brockway's 1784 sermon); Hunt's own figure is also 1. BOM-60 (1): rarity counted by text (copies found by content): Hunt's Late War 15 rare shared, p = 0.0008.
 - **2026-10-30, night.** BOM-58 closed: General Imposters (30% repair: 94% on BOM-21, 51% on 30 fresh authors) and ENSC as published (44%/88% false matches) retired under the pre-written rule; Deltas 62-63% among 30 fresh authors (limitation added to D1). A results file briefly held corpus text; caught before push; guard test added.

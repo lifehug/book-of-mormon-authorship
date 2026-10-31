@@ -19,6 +19,7 @@ Usage::
     python -m eval.replicate jockers-data # their published counts -> replication_jockers_data.json
     python -m eval.replicate jockers-pamr # the same in R's pamr (needs R + pamr)
     python -m eval.replicate johnson      # after `reuse.rare scan --target bom`
+    python -m eval.replicate johnson-examples # the Late War's shared rare phrases, in context
     python -m eval.replicate larsen       # by narrator, and by speaker once eval.speakers ran
     python -m eval.replicate holmes       # needs MorphAdorner (nouns for the Sichel fit)
     python -m eval.replicate ensc         # published ENSC; needs data/benchmark/thresholds.json
@@ -736,6 +737,96 @@ def johnson() -> int:
     return 0
 
 
+JOHNSON_EXAMPLES = DIR / "latewar_shared_phrases.json"
+
+
+def johnson_examples() -> int:
+    """The rare 4-grams (Johnson's rule) Hunt's *The Late War* shares with the Book of Mormon,
+    turned back into words, each with its context in both books and the other corpus books that
+    use it. "Imitation scripture" means the curated list of BOM-54 only. Short contexts only: the
+    corpus books are cited by title, never quoted."""
+    import hashlib
+    from collections import Counter
+
+    import pyarrow.parquet as pq
+
+    from metadata.config import stamp
+    from ocr_fix.normalize import norm_path
+    from reuse.rare import bom_text, tokens
+
+    def gid(p: str) -> int:
+        return int.from_bytes(hashlib.blake2b(p.encode(), digest_size=8).digest(), "big") >> 1
+
+    bt = tokens(bom_text())
+    phrase: dict[int, tuple[str, int]] = {}
+    for i in range(len(bt) - 3):
+        p = " ".join(bt[i : i + 4])
+        phrase.setdefault(gid(p), (p, i))
+    recs = [r for r in pq.read_table("data/reuse/bom/hits.parquet").to_pylist() if r["words"] > 0]
+    cols = ["work_id", "title", "author_norm", "year", "source", "text_path"]
+    cat = {
+        r["work_id"]: r
+        for r in pq.read_table("data/catalog/catalog.parquet", columns=cols).to_pylist()
+    }
+    curated = set(Path("data/controls/pseudo_biblical_curated.txt").read_text().split())
+    df: Counter = Counter()
+    vols: dict[int, list[str]] = {}
+    for r in recs:
+        df.update(r["hits"])
+        for g in r["hits"]:
+            vols.setdefault(g, []).append(r["work_id"])
+    pat = re.compile(NAMED_SOURCES["the_late_war"], re.I)
+
+    def is_hunt(w: str) -> bool:
+        a = cat[w]["author_norm"] or ""
+        return a.startswith("hunt, gilbert") or bool(pat.search((cat[w]["title"] or "").strip()))
+
+    hunt = {r["work_id"] for r in recs if is_hunt(r["work_id"])}
+    best = max((r for r in recs if r["work_id"] in hunt
+                and "historical reader" not in (cat[r["work_id"]]["title"] or "").lower()),
+               key=lambda r: len(r["hits"]))  # fmt: skip
+    lw = tokens(norm_path(cat[best["work_id"]]).read_text(errors="replace"))
+    at: dict[str, int] = {}
+    for i in range(len(lw) - 3):
+        at.setdefault(" ".join(lw[i : i + 4]), i)
+
+    def ctx(t: list[str], i: int, w: int = 8) -> str:
+        return " ".join(t[max(0, i - w) : i + 4 + w])
+
+    out = []
+    for g in best["hits"]:
+        if df[g] >= len(recs) / JOHNSON_RATE or g not in phrase:
+            continue
+        p, bi = phrase[g]
+        others = sorted({w for w in vols[g] if w not in hunt}, key=lambda w: cat[w]["year"] or 0)
+        out.append({
+            "phrase": p,
+            "book_of_mormon": ctx(bt, bi),
+            "late_war": ctx(lw, at[p]) if p in at else None,
+            "other_books": len(others),
+            "other_imitation_scripture": [w for w in others if w in curated],
+            "other_examples": [f"{cat[w]['year']} {(cat[w]['title'] or '')[:70]}"
+                               for w in others[:3]],
+        })  # fmt: skip
+    out.sort(key=lambda e: (e["other_books"], e["phrase"]))
+    spread = Counter(min(e["other_books"], 20) for e in out)
+    result = {
+        **stamp(),
+        "late_war_copy": best["work_id"],
+        "hunt_volumes": len(hunt),
+        "phrases": len(out),
+        "other_books_per_phrase": {str(k): v for k, v in sorted(spread.items())},
+        "examples": out,
+    }
+    JOHNSON_EXAMPLES.write_text(json.dumps(result, indent=1) + "\n")
+    with_scripture = sum(bool(e["other_imitation_scripture"]) for e in out)
+    print(
+        f"{len(out)} rare shared phrases; in no other book: {spread.get(0, 0)}; "
+        f"with an imitation-scripture book: {with_scripture}"
+    )
+    return 0
+
+
 # --------------------------------------------------------------- Larsen, Rencher and Layton
 
 LARSEN_OUT = DIR.parent / "replication_larsen.json"
@@ -1229,6 +1320,8 @@ def main(argv: list[str] | None = None) -> int:
         return jockers_pamr()
     if args[:1] == ["johnson"]:
         return johnson()
+    if args[:1] == ["johnson-examples"]:
+        return johnson_examples()
     if args[:1] == ["larsen"]:
         return larsen()
     if args[:1] == ["holmes"]:
