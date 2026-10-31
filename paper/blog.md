@@ -1885,8 +1885,33 @@ of the nineteenth-century candidates than like another Book of Mormon speaker. B
 findings hold. So does the old caveat: blocks from one book aren't independent, and a sermon reads
 differently from a war story whoever writes them.
 
+## Two tools retired, and a near miss
+
+The repair step had one rule, written down before anything ran: a fix counts only if it works
+on the original benchmark *and* on thirty fresh authors nobody had looked at yet, people like
+Jeremiah Evarts, Elias Boudinot, James Mill and Anne Royall.
+
+General Imposters with the tweak (sampling 30% of words each round) did beautifully on the
+original benchmark: 94% right, 3% false matches. Both bars cleared. On the fresh authors it named
+the right one only half the time. So it doesn't generalise, and it's retired. That's exactly the
+trap the fresh test is there to catch: a setting that looks like a fix because we found it on the
+same data we judged it on.
+
+ENSC, even the faithful published version, kept naming someone when it should have said "none
+of these": 44% of the time on the benchmark, 88% on the fresh authors. Retired too.
+
+The fresh test also humbled the Deltas. Picking from 3 to 11 authors, they were right nearly every
+time. Picking from 30, about 62%. Still twenty times better than guessing, but nowhere near the
+bar. So the Deltas stay, as you decided, but only for short candidate lists, and the paper says so.
+
+And a mistake I want on the record. The results file I first wrote held the fresh authors' actual
+texts instead of just their names, 117 megabytes of it, some from a collection we're not allowed
+to publish. GitHub refused it for being too big, so it never left the machine. Fixed, and there's
+now a test that fails if a results file ever gets big enough to be hiding text.
+
 ## Log
 
+- **2026-10-30, night.** BOM-58 closed: General Imposters (30% repair: 94% on BOM-21, 51% on 30 fresh authors) and ENSC as published (44%/88% false matches) retired under the pre-written rule; Deltas 62-63% among 30 fresh authors (limitation added to D1). A results file briefly held corpus text; caught before push; guard test added.
 - **2026-10-30, night.** BOM-22 Larsen by speaker: 239 chapters model-labelled (simulated), 16 of 24 speaker word counts within 10% of Larsen's Appendix B; 17 speakers differ (p = 8e-38), 4 of 215 blocks look like a candidate. All five replications done.
 - **2026-10-30, night.** BOM-21 closed: benchmark report `data/benchmark/BENCHMARK.md`; across 54 settings the Deltas meet the closed-set bar every time, the old ENSC never passes, General Imposters passes 8 times, all at 30% feature sampling (a lead for BOM-58, not adopted).
 - **2026-10-30, night.** BOM-22 Jockers: their deposited data reproduces with our code (same 110 words, CV error 8.76% vs 8.8%, Rigdon 169 vs 197); swapping in our candidate texts moves the answer (Rigdon 169 to 92, Pratt 42 to 137). Our Pratt/Cowdery samples that quote the Book of Mormon are now excluded.
