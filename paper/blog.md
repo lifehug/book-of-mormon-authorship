@@ -2063,6 +2063,7 @@ johnson-examples`.
 
 ## Log
 
+- **2026-10-30, night.** Amendment 8 filed on OSF (revision 6ae55e1b828dc3df8274a024): the Deltas count only as "which listed candidate is closest", and the paper says beside every Delta result that they didn't pass the bar; General Imposters and ENSC retired; rarity counted by text, not printed copy, with the old count shown beside it because I chose the change after seeing The Late War result; the improvement study is filed before its evaluation finishes, and none of it touches the Book of Mormon.
 - **2026-10-30, night.** Three tests added at the owner's request, aimed at whether the book is what it says it is: BOM-61 known-answer controls (period translations of ancient texts vs modern texts presented as ancient, e.g. Ossian, the 1751 Jasher), BOM-62 the King James italics test, BOM-63 thematic dating. BOM-25 now tests named proposed sources (View of the Hebrews, The Late War, Spalding, Napoleon) at story level against fair controls.
 - **2026-10-30, night.** The Late War's 183 rare shared phrases, in context: 6 in no other book, 135 in 20+ other books, 36 also in other imitation-scripture works (Snowden 18). Flagged for a closer look against imitation scripture as a group (phase 4).
 - **2026-10-30, night.** Phase 3 summary post: what was done, what was learned, what was improved, and what it does and doesn't say about authorship.

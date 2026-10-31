@@ -29,8 +29,8 @@ closed-set accuracy is 63% (Burrows) and 62% (Cosine), against 100% and 97% on t
 of 3 to 11 authors: the closed-set bar is met at the scale of a short candidate list, not a
 corpus-wide one. The paper reports this beside every Delta result.
 
-**Status:** to be registered in the next OSF amendment (`pending_amendment`:
-`synthesis.delta_closed_set_only`). Evidence: `data/benchmark/benchmark.json` (verdict),
+**Status:** registered post hoc as Amendment 8, Change 1 (OSF revision
+6ae55e1b828dc3df8274a024, 2026-10-30). Evidence: `data/benchmark/benchmark.json` (verdict),
 BOM-21 issue.
 
 ## D2. General Imposters' pseudo-biblical imposter pool topped up to the registered 200 (2026-10-30)
