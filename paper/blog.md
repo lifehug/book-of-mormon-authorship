@@ -2125,8 +2125,41 @@ reports how it does without Rowley.
 The rule, written down before anything runs: a test that can't separate these groups gets reported
 as saying nothing about the translation question, whatever it says about the Book of Mormon.
 
+## Where phase 4 stands, in plain words
+
+**The big goal.** The Book of Mormon says it's a translation of an ancient record. We're testing
+whether its English shows signs of being written from books of its own time. I doubt we get a
+final verdict. What we will get is a set of fair tests, each with a clear result.
+
+**What we're doing now.**
+
+1. **A fairness check (done).** Before trusting any test, we try it on texts where we already know
+   the answer: 9 real translations of ancient texts (Enoch, Josephus, Homer and others) and 3
+   fakes that claimed to be ancient (*Ossian*, the Rowley poems, *Jasher*). A test that can't tell
+   those two groups apart gets no say on the Book of Mormon.
+2. **Searching for copied passages.** Every passage the Book of Mormon shares word for word with
+   books printed before it. A first pass over 247,506 books finds the ones that could possibly
+   match; then a detailed alignment runs on just those. For the fairness check, every text gets
+   searched against the same number of books (2,000) from the 70 years before it, because the
+   library holds far more books from the 1820s than from the 1750s, and more books to search
+   means more matches whatever a text is.
+3. **The King James italics test.** The 1611 translators printed in italics the words they added
+   that weren't in the Hebrew ("darkness *was* upon the face of the deep"). If the Book of
+   Mormon's Isaiah keeps those added English words more often than real independent
+   translations of Isaiah do (Lowth's, 1795; a layman's, 1790), it was built on the King James
+   English, not translated fresh.
+
+**What's approved, and how.** Every one of these is in the plan, and each one is registered on
+OSF before it runs, so nobody can say we moved the goalposts after seeing a result. Amendments 9
+(the fairness check) and 10 (the copied-passage search) are filed; the italics test is next.
+
+**How it adds up.** The passage search asks whether it borrowed wording from books of its day.
+The italics test asks whether it was working from the King James English. The fairness check
+tells us how much to trust each answer.
+
 ## Log
 
+- **2026-10-31.** Plain-words status of phase 4 added (owner asked for it in the blog). BOM-62 italics plan drafted; its own known-answer check uses independent period translations of Isaiah, Psalms and Matthew against King James quotations in 1820s sermons.
 - **2026-10-31.** Amendment 10 filed (revision 6ae620454ae19487e2bde267): how BOM-23 searches for exact reuse, and a fair known-answer score (every text against 2,000 books from the 70 years before it), with a check for the old-spelling problem. Known-answer texts KJV-masked (0.30%; Jasher 3.5%).
 - **2026-10-31.** Amendment 9 filed on OSF (revision 6ae61ebeebfd59a7464e8fc4): the known-answer set and rule, registered before any test runs on them. From now on I file amendments myself as they come up (owner's call).
 - **2026-10-31.** BOM-61 set and plan: 9 genuine period translations of ancient texts vs 3 texts presented as ancient (Ossian, Rowley, Jasher), 2 secondary (Ireland's Shakespeare papers, Otranto); a test separates them at exact p <= 0.01 (at most one of 27 pairs wrong). Apocrypha dropped (the KJV mask covers it). Plan committed before any test runs on the set.
