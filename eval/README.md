@@ -4,7 +4,7 @@ Validation benchmark, replications of earlier studies, fidelity checks, repair, 
 improvements to the earlier methods; later, imitation robustness, the blind run, and the
 Bayesian synthesis.
 
-Issues: BOM-21, BOM-22, BOM-31, BOM-32, BOM-35, BOM-43, BOM-46, BOM-48, BOM-57, BOM-58, BOM-60.
+Issues: BOM-21, BOM-22, BOM-31, BOM-32, BOM-35, BOM-43, BOM-46, BOM-48, BOM-57, BOM-58, BOM-60, BOM-61.
 
 **Keep this file current.** Every command a module lists in its "Usage" block must appear below;
 `tests/test_run_guide.py` fails the build if one is missing. Add a row when you add a command.
@@ -91,6 +91,14 @@ Plan, written before any test: `docs/improvement-plan.md`. Report: `paper/method
 | `python -m eval.improve ensc-size` | improvement | ENSC's text-size model refitted on many authors | `improve_ensc_size.json` | ~10 min |
 | `python -m eval.improve gi-rounds` | improvement | General Imposters with 1,000 rounds | `improve_gi_rounds.json` | ~2 h |
 | `python -m eval.improve evaluate` | check | the one-time evaluation of every change on a second fresh set of 30 authors, settings read from the development results | `improve_evaluation.json` | ~12 h |
+
+## 6. Known-answer controls (BOM-61)
+
+Plan, written before any test runs on the set: `docs/known-answer-plan.md`.
+
+| Command | Kind | What it does | Writes | Time |
+| --- | --- | --- | --- | --- |
+| `python -m eval.known_answer build` | data | the known-answer set: genuine translations of ancient texts and texts presented as ancient, with provenance | `data/known_answer/set.jsonl` | seconds |
 
 ## Other
 

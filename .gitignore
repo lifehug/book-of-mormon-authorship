@@ -112,6 +112,9 @@ data/reuse/null_sizing/hits.parquet
 data/reuse/bom/hits.parquet
 !data/benchmark/**
 !data/classic/**
+# BOM-61: known-answer controls, work ids and provenance only (no text)
+!data/known_answer/
+!data/known_answer/**
 !data/kjv_mask/
 !data/kjv_mask/**
 # 107 MB, over GitHub's limit: committed as spans.jsonl.gz (gzip -n -9), byte-reproducible

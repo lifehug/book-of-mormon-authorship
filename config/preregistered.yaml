@@ -273,4 +273,17 @@ repair:
   gi_trials: 1000                # BOM-60 improvement 4
   ensc_lambda_grid: [1.5, 2, 3, 4, 5, 6, 8]
 
-pending_amendment: []
+# BOM-61 known-answer controls (docs/known-answer-plan.md); pending_amendment: known_answer.design
+known_answer:
+  separation_p_provisional: 0.01   # exact permutation p, 3 presented-as-ancient vs 9 genuine
+
+pending_amendment:
+  - key: known_answer.design
+    issue: BOM-61
+    note: >
+      docs/known-answer-plan.md, written before any test runs on the set: 9 genuine period
+      translations of ancient texts against 3 texts presented as ancient (Ossian, Rowley, Jasher),
+      2 secondary; each test commits its per-text score and direction first; it separates the
+      groups when the one-sided exact Mann-Whitney p is at most 0.01, and is otherwise reported as
+      uninformative on the translation question. To be registered before any test's Book of
+      Mormon result is interpreted.

@@ -2096,8 +2096,38 @@ but only to say which listed candidate is closest, with a warning label. One fix
 phrases by book, not printed copy) carries forward into the borrowing search. All of it, failures
 included, is in the methods report, and anyone can rerun it with the commands in the run guide.
 
+## Phase 4 starts with a trick question
+
+Here's the problem with every test still to come. The Book of Mormon says it's a translation of an
+ancient record. Suppose a test finds its English looks like the 1820s. So what? A real translation
+made in the 1820s would also be written in 1820s English. Laurence's *Book of Enoch* came out in
+1821, and Enoch is genuinely ancient.
+
+So before any test gets near the Book of Mormon, it has to pass a known-answer check: can it tell
+real old texts, translated in the period, from new texts that pretended to be old?
+
+The real ones (9): the *Testaments of the Twelve Patriarchs*, Laurence's Enoch, the Apocryphal New
+Testament, Whiston's Josephus, Sale's Koran, Herodotus, Pope's Homer, Hesiod, and *Sacontala*.
+
+The pretenders (3): Macpherson's *Ossian*, sold as 3rd-century Gaelic epic ("it rolled in death on
+the spear of Trenmor"); Chatterton's "Rowley" poems, sold as 15th-century manuscripts ("thys lande
+ne quiet you wylle knowe"); and the *Book of Jasher*, forged in 1751 and reprinted in 1829, a year
+before the Book of Mormon ("there was peace throughout all the tribes of the children of Israel").
+
+I wanted the Apocrypha in the real group and couldn't have it. Our King James mask covers the
+Apocrypha, so the masking step would erase it.
+
+Three pretenders is not many. That's about all the period offers in English, and it means a test
+has to put all three on the "modern" side, with at most one slip, to count as working. Rowley has
+a catch: its fake old spelling might give it away to any word-counting test, so every test also
+reports how it does without Rowley.
+
+The rule, written down before anything runs: a test that can't separate these groups gets reported
+as saying nothing about the translation question, whatever it says about the Book of Mormon.
+
 ## Log
 
+- **2026-10-31.** BOM-61 set and plan: 9 genuine period translations of ancient texts vs 3 texts presented as ancient (Ossian, Rowley, Jasher), 2 secondary (Ireland's Shakespeare papers, Otranto); a test separates them at exact p <= 0.01 (at most one of 27 pairs wrong). Apocrypha dropped (the KJV mask covers it). Plan committed before any test runs on the set.
 - **2026-10-30, night.** BOM-60 closed: the one-time evaluation on 30 new authors. No improvement works and no method meets section 7 (closed set 54-60%; General Imposters never says "match"; Delta and ENSC false matches 73-99%). Phase 3 done. Config keys registered by Amendment 8 lose their provisional names.
 - **2026-10-30, night.** Amendment 8 filed on OSF (revision 6ae55e1b828dc3df8274a024): the Deltas count only as "which listed candidate is closest", and the paper says beside every Delta result that they didn't pass the bar; General Imposters and ENSC retired; rarity counted by text, not printed copy, with the old count shown beside it because I chose the change after seeing The Late War result; the improvement study is filed before its evaluation finishes, and none of it touches the Book of Mormon.
 - **2026-10-30, night.** Three tests added at the owner's request, aimed at whether the book is what it says it is: BOM-61 known-answer controls (period translations of ancient texts vs modern texts presented as ancient, e.g. Ossian, the 1751 Jasher), BOM-62 the King James italics test, BOM-63 thematic dating. BOM-25 now tests named proposed sources (View of the Hebrews, The Late War, Spalding, Napoleon) at story level against fair controls.
