@@ -449,11 +449,13 @@ def align(search: str, workers: int) -> int:
                 tw = [t[0] for t in ttoks[i:j]]
                 if len(tw) < min_tokens:
                     continue
-                k = sum(_hash(tw[x : x + n]) in seeds for x in range(len(tw) - n + 1))
-                if k < rc["min_seeds"]:
-                    continue
                 sb, se = src["begin"] + a["sb"], src["begin"] + a["se"]
                 sw = [t[0] for t in _toks(texts[src["work_id"]][sb:se])]
+                # seeds the two passages share, not merely seeds somewhere in the target's span
+                tg = {_hash(tw[x : x + n]) for x in range(len(tw) - n + 1)} & seeds
+                k = len(tg & {_hash(sw[x : x + n]) for x in range(len(sw) - n + 1)})
+                if k < rc["min_seeds"]:
+                    continue
                 sm = SequenceMatcher(a=tw, b=sw, autojunk=False)
                 same = sum(b.size for b in sm.get_matching_blocks())
                 at_edge = (src["edge_lo"] and a["sb"] < 200) or (
