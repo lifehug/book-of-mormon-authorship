@@ -251,13 +251,13 @@ def scan(workers: int) -> int:
 
 # Alignment ---------------------------------------------------------------------------------
 #
-# passim is handed, for each candidate volume, only the stretches around its seed 5-grams, with
-# MARGIN tokens either side. An alignment cannot jump more than ``max_gap_chars`` between
-# matching n-grams, so a margin this wide holds every alignment a seed can start; one that runs
-# into a stretch's edge (not the volume's) is flagged ``at_edge`` for inspection. The margin is
-# an implementation limit, not an analytic choice: it changes how much text passim reads, not
-# what it can find, except where flagged.
-MARGIN = 1000
+# passim is handed, for each candidate volume, only the stretches around its seed 5-grams, with a
+# margin of tokens either side. An alignment cannot jump more than ``max_gap_chars`` between
+# matching n-grams, so a margin of MARGINS[0] tokens (about ten times that gap) holds almost
+# every alignment a seed can start. A passage that runs into a stretch's edge (not the volume's)
+# is aligned again with the next, wider margin, and finally against the whole volume, so the
+# margin changes how much text passim reads, never what it can find.
+MARGINS = (250, 2000, None)  # None: the whole volume
 WORK = Path("data/corpus/reuse_runs")
 
 
@@ -279,16 +279,21 @@ def _seed_positions(toks: list[tuple[str, int, int]], n: int, seeds: set[int]) -
     return [i for i in range(len(words) - n + 1) if _hash(words[i : i + n]) in seeds]
 
 
-def _regions(wid: str, text: str, n: int, seeds: set[int]) -> list[dict]:
+def _regions(wid: str, text: str, n: int, seeds: set[int], margin: int | None) -> list[dict]:
     """The stretches of a volume around its seeds, merged where their margins meet."""
     toks = _toks(text)
+    if not toks:
+        return []
     spans: list[list[int]] = []
-    for i in _seed_positions(toks, n, seeds):
-        a, b = max(0, i - MARGIN), min(len(toks), i + n + MARGIN)
-        if spans and a <= spans[-1][1]:
-            spans[-1][1] = max(spans[-1][1], b)
-        else:
-            spans.append([a, b])
+    if margin is None:
+        spans = [[0, len(toks)]]
+    else:
+        for i in _seed_positions(toks, n, seeds):
+            a, b = max(0, i - margin), min(len(toks), i + n + margin)
+            if spans and a <= spans[-1][1]:
+                spans[-1][1] = max(spans[-1][1], b)
+            else:
+                spans.append([a, b])
     out = []
     for a, b in spans:
         cb, ce = toks[a][1], toks[b - 1][2]
@@ -296,6 +301,21 @@ def _regions(wid: str, text: str, n: int, seeds: set[int]) -> list[dict]:
                     "edge_lo": a > 0, "edge_hi": b < len(toks), "text": text[cb:ce],
                     "words": b - a})  # fmt: skip
     return out
+
+
+_SEEDS: set[int] = set()
+
+
+def _init_seeds(path: str) -> None:
+    _SEEDS.update(int(x) for x in Path(path).read_text().split())
+
+
+def _regions_job(job: tuple[str, str, int, int | None]) -> list[dict]:
+    import unicodedata
+
+    wid, path, n, margin = job
+    text = unicodedata.normalize("NFKC", Path(path).read_text(encoding="utf-8", errors="replace"))
+    return _regions(wid, text, n, _SEEDS, margin)
 
 
 def _passim(docs: list[dict], work: Path, cfg: dict) -> list[dict]:
@@ -384,8 +404,25 @@ def _search_hits(search: str, ids: list[str]) -> dict[str, list[int]]:
     return {r["work_id"]: r["hits"] for r in t if r["work_id"] in want}
 
 
+def _batches(stream, batch_words: int):
+    cur, size = [], 0
+    for regions in stream:
+        for r in regions:
+            if cur and size + r["words"] > batch_words:
+                yield cur
+                cur, size = [], 0
+            cur.append(r)
+            size += r["words"]
+    if cur:
+        yield cur
+
+
 def align(search: str, workers: int) -> int:
-    """Every reused passage for one search (``<key>:full`` or ``<key>:draw<i>``)."""
+    """Every reused passage for one search (``<key>:full`` or ``<key>:draw<i>``). Streams: each
+    batch of source stretches is built, aligned and written before the next, and passages are
+    appended to ``alignments/<search>.partial.jsonl`` as they are found."""
+    import bisect
+    import unicodedata
     from collections import Counter
     from difflib import SequenceMatcher
 
@@ -403,70 +440,76 @@ def align(search: str, workers: int) -> int:
         df.update(h)
     seeds = {g for g, c in df.items() if c <= rc["seed_max_df"]}
     cands = sorted(w for w, h in hits.items() if sum(g in seeds for g in h) >= rc["min_seeds"])
+    del hits
     print(f"{search}: {len(ids):,} volumes, {len(seeds):,} seed 5-grams, "
           f"{len(cands):,} candidates", flush=True)  # fmt: skip
-
-    import unicodedata
+    name = search.replace(":", "_")
+    (OUT / "alignments").mkdir(parents=True, exist_ok=True)
+    seeds_file = WORK / name / "seeds.txt"
+    seeds_file.parent.mkdir(parents=True, exist_ok=True)
+    seeds_file.write_text("\n".join(map(str, sorted(seeds))))
+    partial = OUT / "alignments" / f"{name}.partial.jsonl"
+    partial.write_text("")
 
     target = unicodedata.normalize("NFKC", targets_text(cfg, key))
     ttoks = _toks(target)
     starts = [t[1] for t in ttoks]
-    rows = {r["work_id"]: r for r in eligible_any_year(cfg) if r["work_id"] in set(cands)}
-    regions: list[dict] = []
-    texts: dict[str, str] = {}
-    for w in cands:
-        text = unicodedata.normalize(
-            "NFKC", norm_path(rows[w]).read_text(encoding="utf-8", errors="replace")
-        )
-        texts[w] = text
-        regions += _regions(w, text, n, seeds)
-    batch_words = p["batch_words"]
-    batches, cur, size = [], [], 0
-    for r in regions:
-        if cur and size + r["words"] > batch_words:
-            batches.append(cur)
-            cur, size = [], 0
-        cur.append(r)
-        size += r["words"]
-    if cur:
-        batches.append(cur)
-    by_id = {r["id"]: r for r in regions}
     pieces = _pieces(target)
-    print(f"  {len(regions):,} source stretches in {len(batches)} batches x {len(pieces)} "
-          f"target pieces", flush=True)  # fmt: skip
-    import bisect
+    paths = {r["work_id"]: str(norm_path(r)) for r in eligible_any_year(cfg)
+             if r["work_id"] in set(cands)}  # fmt: skip
 
-    found = []
-    start = time.time()
-    for bi, batch in enumerate(batches, 1):
-        for pb, pe in pieces:
-            docs = [{"id": f"t@{pb}", "series": "target", "text": target[pb:pe]}]
-            docs += [{"id": r["id"], "series": "source", "text": r["text"]} for r in batch]
-            for a in _passim(docs, WORK / search.replace(":", "_"), cfg):
-                src = by_id[a["s"]]
-                tb, te = pb + a["tb"], pb + a["te"]
-                i, j = bisect.bisect_left(starts, tb), bisect.bisect_left(starts, te)
-                tw = [t[0] for t in ttoks[i:j]]
-                if len(tw) < min_tokens:
-                    continue
-                sb, se = src["begin"] + a["sb"], src["begin"] + a["se"]
-                sw = [t[0] for t in _toks(texts[src["work_id"]][sb:se])]
-                # seeds the two passages share, not merely seeds somewhere in the target's span
-                tg = {_hash(tw[x : x + n]) for x in range(len(tw) - n + 1)} & seeds
-                k = len(tg & {_hash(sw[x : x + n]) for x in range(len(sw) - n + 1)})
-                if k < rc["min_seeds"]:
-                    continue
-                sm = SequenceMatcher(a=tw, b=sw, autojunk=False)
-                same = sum(b.size for b in sm.get_matching_blocks())
-                at_edge = (src["edge_lo"] and a["sb"] < 200) or (
-                    src["edge_hi"] and a["se"] > len(src["text"]) - 200
-                )
-                found.append({"work_id": src["work_id"], "t_begin": tb, "t_end": te,
-                              "t_tok_begin": i, "t_tok_end": j, "s_begin": sb, "s_end": se,
-                              "tokens": len(tw), "identity": round(same / len(tw), 4),
-                              "seeds": k, "at_edge": bool(at_edge)})  # fmt: skip
-        print(f"  batch {bi}/{len(batches)}, {len(found):,} passages, "
-              f"{time.time() - start:.0f}s", flush=True)  # fmt: skip
+    def run_pass(vols: list[str], margin: int | None, label: str) -> list[dict]:
+        found: list[dict] = []
+        jobs = [(w, paths[w], n, margin) for w in vols]
+        start = time.time()
+        with ProcessPoolExecutor(workers, initializer=_init_seeds,
+                                 initargs=(str(seeds_file),)) as pool:  # fmt: skip
+            stream = pool.map(_regions_job, jobs, chunksize=16)
+            for bi, batch in enumerate(_batches(stream, p["batch_words"]), 1):
+                by_id = {r["id"]: r for r in batch}
+                for pb, pe in pieces:
+                    docs = [{"id": f"t@{pb}", "series": "target", "text": target[pb:pe]}]
+                    docs += [{"id": r["id"], "series": "source", "text": r["text"]}
+                             for r in batch]  # fmt: skip
+                    for a in _passim(docs, WORK / name, cfg):
+                        src = by_id[a["s"]]
+                        tb, te = pb + a["tb"], pb + a["te"]
+                        i, j = bisect.bisect_left(starts, tb), bisect.bisect_left(starts, te)
+                        tw = [t[0] for t in ttoks[i:j]]
+                        if len(tw) < min_tokens:
+                            continue
+                        sw = [t[0] for t in _toks(src["text"][a["sb"] : a["se"]])]
+                        # seeds the two passages share, not seeds anywhere in the target's span
+                        tg = {_hash(tw[x : x + n]) for x in range(len(tw) - n + 1)} & seeds
+                        k = len(tg & {_hash(sw[x : x + n]) for x in range(len(sw) - n + 1)})
+                        if k < rc["min_seeds"]:
+                            continue
+                        sm = SequenceMatcher(a=tw, b=sw, autojunk=False)
+                        same = sum(b.size for b in sm.get_matching_blocks())
+                        at_edge = (src["edge_lo"] and a["sb"] < 200) or (
+                            src["edge_hi"] and a["se"] > len(src["text"]) - 200
+                        )
+                        row = {"work_id": src["work_id"], "t_begin": tb, "t_end": te,
+                               "t_tok_begin": i, "t_tok_end": j,
+                               "s_begin": src["begin"] + a["sb"], "s_end": src["begin"] + a["se"],
+                               "tokens": len(tw), "identity": round(same / len(tw), 4),
+                               "seeds": k, "at_edge": bool(at_edge), "margin": margin}  # fmt: skip
+                        found.append(row)
+                        with partial.open("a") as fh:
+                            fh.write(json.dumps(row) + "\n")
+                print(f"  {label} batch {bi}, {len(found):,} passages, "
+                      f"{time.time() - start:.0f}s", flush=True)  # fmt: skip
+        return found
+
+    found = run_pass(cands, MARGINS[0], f"margin {MARGINS[0]}")
+    for margin in MARGINS[1:]:
+        redo = sorted({r["work_id"] for r in found if r["at_edge"]})
+        if not redo:
+            break
+        print(f"  {len(redo):,} volumes with a passage at a stretch edge: margin "
+              f"{margin or 'whole volume'}", flush=True)  # fmt: skip
+        found = [r for r in found if r["work_id"] not in set(redo)]
+        found += run_pass(redo, margin, f"margin {margin or 'whole'}")
     # the target's pieces overlap, so a passage in an overlap is found twice: keep the longer
     found.sort(key=lambda r: (r["work_id"], r["t_begin"], -r["tokens"]))
     kept: list[dict] = []
@@ -482,8 +525,7 @@ def align(search: str, workers: int) -> int:
            "sources": len({r["work_id"] for r in kept}),
            "covered_share": len(covered) / len(ttoks), "at_edge": sum(r["at_edge"] for r in kept),
            "rows": kept}  # fmt: skip
-    (OUT / "alignments").mkdir(parents=True, exist_ok=True)
-    (OUT / "alignments" / f"{search.replace(':', '_')}.json").write_text(json.dumps(res) + "\n")
+    (OUT / "alignments" / f"{name}.json").write_text(json.dumps(res) + "\n")
     print(f"{search}: {len(kept):,} passages from {res['sources']:,} volumes, "
           f"{res['covered_share']:.2%} of the target covered", flush=True)  # fmt: skip
     return 0

@@ -117,3 +117,17 @@ applied; the table reports identity so a reader can set one.
 
 Registered as Amendment 10 (OSF revision 6ae620454ae19487e2bde267, 2026-10-31), before passim was
 run for reuse on any text.
+
+## Implementation notes (after registration, before any Book of Mormon result)
+
+**2026-10-31, the stretch margin is not neutral.** To keep passim's input small, each candidate
+volume is passed as the stretches around its seed 5-grams with a margin of tokens either side
+(250, widened to 2,000 and then the whole volume for any passage that reaches a stretch's edge).
+On the *Jasher* test draw, a 1,000-token margin found 5 passages and the 250-token margin 7; the
+two extra (a blessing on Ashur echoing Deuteronomy 33:24, and another copy of 1 Peter 1:4) are
+genuine. passim's candidate step depends on how text is packaged, as BOM-16 found for batches
+(Amendment 6), so the margin changes which passages are found, not only how much is read. The
+prefilter itself stays lossless (a volume it drops cannot be aligned). Every search, the Book of
+Mormon's included, runs with the same margins, so the comparison stays like for like; the margin
+is reported with every passage.
+
