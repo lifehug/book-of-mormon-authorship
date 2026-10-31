@@ -524,6 +524,29 @@ Note on ordering: this issue's number is higher than the issues it blocks, so th
 
 Phase 4 maps which earlier texts share wording or ideas with the Book of Mormon, and measures whether each overlap beats chance.
 
+### #61 Known-answer controls: genuine translations of ancient texts and modern texts presented as ancient
+
+**Goal:** show that each Phase 4-5 test can tell genuine period translations of ancient texts (e.g. Whiston's Josephus, the Apocrypha) from modern compositions presented as ancient (Macpherson's *Ossian*, Chatterton's "Rowley" poems, the 1751 forged *Book of Jasher*) before its Book of Mormon result is read as evidence on the translation question.
+
+- [ ] Assemble the known-answer set with provenance and the scholarly consensus for each
+- [ ] Write the plan before any result
+- [ ] Run every Phase 4-5 test on it against the same null as for the Book of Mormon
+- [ ] Report which tests separate the groups; a test that does not is uninformative on this question
+
+**Done when:** each test's ability to separate the groups is reported before its Book of Mormon result is interpreted.
+**Depends on:** #19. **Feeds:** #23 to #30, #35, #42.
+
+### #62 The King James italics test
+
+**Goal:** does the Book of Mormon reproduce the words the KJV translators added (printed in italics), which an independent translation from an ancient source would have no reason to share?
+
+- [ ] KJV edition with italics marked (1769 text), source and checksum recorded
+- [ ] Word-by-word agreement on italicised against non-italicised words in the Book of Mormon's biblical passages
+- [ ] Plan written first; result reported beside the critical and apologetic literature
+
+**Done when:** the agreement rates and their interpretation are published.
+**Depends on:** #16. **Feeds:** #35, #42.
+
 ### #23 Run exact text-reuse detection
 
 **Goal:** every verbatim or near-verbatim passage shared with the corpus.
@@ -572,6 +595,17 @@ Phase 4 maps which earlier texts share wording or ideas with the Book of Mormon,
 ## Phase 5 — AI-era methods
 
 Phase 5 builds the new tools: a language model that has never seen the Book of Mormon, per-author models on top of it, a dating classifier, and style embeddings. Every model is validated on the #21 benchmark before the Book of Mormon is scored.
+
+### #63 Thematic dating
+
+**Goal:** do the Book of Mormon's themes track the debates of the 1820s (Indian origins, anti-Masonry, Protestant disputes) more than other periods'?
+
+- [ ] Topic profiles by decade, method fixed before the Book of Mormon is scored
+- [ ] Match against a same-genre null; validated first on #61's known-answer set
+- [ ] Report the decades and topics that drive any match
+
+**Done when:** published beside the language dating (#29).
+**Depends on:** #19, #61. **Feeds:** #29, #35.
 
 ### #27 Train the time-locked language model
 

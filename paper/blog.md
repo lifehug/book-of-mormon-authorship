@@ -2063,6 +2063,7 @@ johnson-examples`.
 
 ## Log
 
+- **2026-10-30, night.** Three tests added at the owner's request, aimed at whether the book is what it says it is: BOM-61 known-answer controls (period translations of ancient texts vs modern texts presented as ancient, e.g. Ossian, the 1751 Jasher), BOM-62 the King James italics test, BOM-63 thematic dating. BOM-25 now tests named proposed sources (View of the Hebrews, The Late War, Spalding, Napoleon) at story level against fair controls.
 - **2026-10-30, night.** The Late War's 183 rare shared phrases, in context: 6 in no other book, 135 in 20+ other books, 36 also in other imitation-scripture works (Snowden 18). Flagged for a closer look against imitation scripture as a group (phase 4).
 - **2026-10-30, night.** Phase 3 summary post: what was done, what was learned, what was improved, and what it does and doesn't say about authorship.
 - **2026-10-30, night.** Correction: the Johnson write-up's 'Late War shares 1 rare phrase' came from the wrong book (Brockway's 1784 sermon); Hunt's own figure is also 1. BOM-60 (1): rarity counted by text (copies found by content): Hunt's Late War 15 rare shared, p = 0.0008.

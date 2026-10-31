@@ -21,8 +21,8 @@ each is in `docs/backlog.md`, and the story of how it went is in `paper/blog.md`
 | 1. **Gather** | Collect every English text from 1780-1830 we can get | BOM-05 to 13, 52 | Done |
 | 2. **Clean** | Fix OCR, spelling, duplicates and dates; freeze a citable corpus | BOM-14 to 19, 50, 53 to 56 | Done, except BOM-50 and BOM-53 (deferred). Corpus v1.1 released |
 | 3. **Test the old tools** | Check them on known authors, rerun the earlier studies, fix what broke | BOM-20 to 22, 40 to 49, 51, 57, 58, 60 | **Current.** Benchmark run; replications mostly done; tool checks and fixes under way |
-| 4. **Look for borrowing** | Find shared wording, and test whether it beats chance | BOM-23 to 26 | Not started |
-| 5. **Build new tools** | A language model that has only read pre-1830 text, and what it can tell us; the corpus-wide author sweep | BOM-27 to 30, 39 | Not started |
+| 4. **Look for borrowing** | Find shared wording and stories, test whether they beat chance; known-answer controls for texts claiming to be ancient; the King James italics test | BOM-23 to 26, 61, 62 | Not started |
+| 5. **Build new tools** | A language model that has only read pre-1830 text, and what it can tell us; the corpus-wide author sweep; thematic dating | BOM-27 to 30, 39, 63 | Not started |
 | 6. **Put it all together** | The imitation test, the blind run on the Book of Mormon, combining the evidence | BOM-31 to 35 | Not started |
 | 7. **Write it up and open it to review** | Paper, full release, simulated peer review | BOM-36 to 38 | Not started |
 
