@@ -1909,8 +1909,30 @@ texts instead of just their names, 117 megabytes of it, some from a collection w
 to publish. GitHub refused it for being too big, so it never left the machine. Fixed, and there's
 now a test that fails if a results file ever gets big enough to be hiding text.
 
+## A correction, and a fix that took three tries
+
+Earlier I wrote that under the project's own rule for "rare" phrases, *The Late War* shares just
+one with the Book of Mormon, because its many reprints make every phrase look common. The number
+was right; the book wasn't. My search for "The Late War" matched any title about the War of 1812,
+and under that rule it quietly picked a different book, a 1784 sermon called *America Saved*.
+Pinned to Hunt's actual title, his number is also one, for the reason I gave. But I want it on the
+record that I reported the wrong book's figure first.
+
+Fixing the rule itself took three tries. The idea is simple: count each *book* once, however many
+copies the library holds. Try one grouped copies by title. That merged all 4,813 volumes of the
+Congressional Serial Set into one "book", and all the volumes of Gibbon's *Decline and Fall*,
+which are different texts with the same title. Try two kept magazines apart, which made Hunt's
+book disappear again. Try three looks at the text itself: two volumes are copies if they share
+the same phrases with the Book of Mormon. That one groups real reprints (13 Bibles, 11 copies of
+Barclay's *Apology*) and leaves different books apart.
+
+Counted that way, Hunt's book shares 15 rare phrases, and it's a significant source again under
+the project's own rule. This is a candidate fix; it gets registered before the borrowing step
+uses it.
+
 ## Log
 
+- **2026-10-30, night.** Correction: the Johnson write-up's 'Late War shares 1 rare phrase' came from the wrong book (Brockway's 1784 sermon); Hunt's own figure is also 1. BOM-60 (1): rarity counted by text (copies found by content): Hunt's Late War 15 rare shared, p = 0.0008.
 - **2026-10-30, night.** BOM-58 closed: General Imposters (30% repair: 94% on BOM-21, 51% on 30 fresh authors) and ENSC as published (44%/88% false matches) retired under the pre-written rule; Deltas 62-63% among 30 fresh authors (limitation added to D1). A results file briefly held corpus text; caught before push; guard test added.
 - **2026-10-30, night.** BOM-22 Larsen by speaker: 239 chapters model-labelled (simulated), 16 of 24 speaker word counts within 10% of Larsen's Appendix B; 17 speakers differ (p = 8e-38), 4 of 215 blocks look like a candidate. All five replications done.
 - **2026-10-30, night.** BOM-21 closed: benchmark report `data/benchmark/BENCHMARK.md`; across 54 settings the Deltas meet the closed-set bar every time, the old ENSC never passes, General Imposters passes 8 times, all at 30% feature sampling (a lead for BOM-58, not adopted).
