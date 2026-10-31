@@ -39,6 +39,7 @@ Usage::
     python -m kjv_mask.run controls
     python -m kjv_mask.run controls --missing-only   # mask only texts that have no spans yet
     python -m kjv_mask.run known_answer              # BOM-61's known-answer texts
+    python -m kjv_mask.run italics                   # BOM-62's independent translations
 """
 
 from __future__ import annotations
@@ -147,6 +148,26 @@ def _docs(group: str) -> list[dict]:
         for w in want:
             path = norm_path(cat[w])
             docs.append(_from_file(w, path, len(path.read_text(encoding="utf-8").split())))
+        return docs
+    if group == "italics":
+        # BOM-62's independent translations: their translation text only, at the ranges recorded
+        # from layout before any count (data/italics/translation_ranges.json; Amendment 11)
+        from ocr_fix.normalize import norm_path
+
+        vols = json.loads(Path("data/italics/translation_ranges.json").read_text())["volumes"]
+        cat = {
+            r["work_id"]: r
+            for r in pq.read_table(
+                "data/catalog/catalog.parquet", columns=["work_id", "source", "text_path"]
+            ).to_pylist()
+            if r["work_id"] in vols
+        }
+        docs = []
+        for w, v in vols.items():
+            if not v["ranges"]:
+                continue
+            text = norm_path(cat[w]).read_text(encoding="utf-8", errors="replace")
+            docs += [_in_memory(f"{w}#{a}", text[a:b]) for a, b in v["ranges"]]
         return docs
     raise SystemExit(f"unknown group {group}")
 
