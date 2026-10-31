@@ -1,0 +1,52 @@
+{
+ "config_sha256": "f6b36284dc36db5860a461902c5212a6b32ce7db56ad0887735f37db07449d7f",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "5d929977de7851b1b14ba9225ca0ddb33b852c7c",
+ "plan": "docs/improvement-plan.md, improvement 3",
+ "fit": {
+  "a": 1.0895628457133735,
+  "p": 1.1641256454641549,
+  "q": 0.7467572288565194,
+  "points": 25824,
+  "r2": 0.9389939941624729
+ },
+ "models": {
+  "published": [
+   0.259,
+   1.1147,
+   0.661
+  ],
+  "refit": [
+   1.0895628457133735,
+   1.1641256454641549,
+   0.7467572288565194
+  ]
+ },
+ "study_b_wrong_by_sample_words": {
+  "1000": {
+   "published": 0.4901960784313726,
+   "refit": 0.7254901960784313
+  },
+  "2000": {
+   "published": 0.4901960784313726,
+   "refit": 0.7058823529411764
+  },
+  "3000": {
+   "published": 0.4509803921568627,
+   "refit": 0.6666666666666667
+  },
+  "5000": {
+   "published": 0.2941176470588235,
+   "refit": 0.6274509803921569
+  },
+  "10000": {
+   "published": 0.23529411764705888,
+   "refit": 0.5882352941176471
+  }
+ },
+ "swing_across_sample_lengths": {
+  "published": 0.2549019607843137,
+  "refit": 0.13725490196078427
+ }
+}

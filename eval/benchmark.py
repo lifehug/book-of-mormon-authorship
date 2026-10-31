@@ -232,9 +232,12 @@ def _vec(docs: list[list[str]], vocab: list[str]) -> np.ndarray:
     return frequency_matrix([word_counts(d) for d in docs], vocab)
 
 
-def run_task(task: dict, pool: list[list[str]], cfg: dict, rng: random.Random) -> list[dict]:
+def run_task(
+    task: dict, pool: list[list[str]], cfg: dict, rng: random.Random, gi: bool = True
+) -> list[dict]:
     """One record per test: closed-set predictions, GI positive and open-set negative scores,
-    and the ENSC fits needed for selection."""
+    the ENSC fits needed for selection, and both Deltas' distances to every author (BOM-60).
+    ``gi=False`` skips General Imposters, the slow part, when only the other methods are needed."""
     kw = classic_kwargs(cfg)
     top_n = sorted(cfg["classic"]["mfw"])[len(cfg["classic"]["mfw"]) // 2]
     names = sorted(task["authors"])
@@ -254,23 +257,30 @@ def run_task(task: dict, pool: list[list[str]], cfg: dict, rng: random.Random) -
         X = frequency_matrix(docs, vocab)
         x = _vec([test], vocab)[0]
         prof = {b: X[[i for i, y in enumerate(labels) if y == b]].mean(axis=0) for b in names}
-        P = _vec(pool, vocab)
-        gi_args = {
-            **kw["imposters"],
-            "n_imposters": min(len(P), cfg["classic"]["imposters"]["per_trial"]),
-        }
-        gi = {
-            b: general_imposters(x, prof[b], P, seed=rng.randrange(2**31), **gi_args) for b in names
-        }
         others = [b for b in names if b != a]
+        if gi:
+            P = _vec(pool, vocab)
+            gi_args = {
+                **kw["imposters"],
+                "n_imposters": min(len(P), cfg["classic"]["imposters"]["per_trial"]),
+            }
+            gs = {
+                b: general_imposters(x, prof[b], P, seed=rng.randrange(2**31), **gi_args)
+                for b in names
+            }
+        burrows = nearest_authors(x, prof, method="burrows", reference=X)
+        cosine = nearest_authors(x, prof, method="cosine", reference=X)
         recs.append(
             {
                 "author": a,
-                "burrows_delta": nearest_authors(x, prof, method="burrows", reference=X)[0][0],
-                "cosine_delta": nearest_authors(x, prof, method="cosine", reference=X)[0][0],
-                "general_imposters": max(names, key=lambda b: (gi[b], b)),
-                "gi_positive": gi[a],
-                "gi_open_negative": max(gi[b] for b in others) if others else None,
+                "burrows_delta": burrows[0][0],
+                "cosine_delta": cosine[0][0],
+                "_delta_dist": {"burrows": dict(burrows), "cosine": dict(cosine)},
+                "general_imposters": max(names, key=lambda b: (gs[b], b)) if gi else None,
+                "gi_positive": gs[a] if gi else None,
+                "gi_open_negative": (max(gs[b] for b in others) if others else None)
+                if gi
+                else None,
                 "_ensc": (X, labels, x),
                 "_n": len(test),
             }
@@ -430,6 +440,7 @@ def run(only: list[str] | None = None, out_dir: Path | None = None) -> int:
         )
     for r in allrecs:
         r.pop("_ensc")
+        r.pop("_delta_dist", None)
     # yes/no findings for the specification curve (pipeline.cli.conclusions)
     per_test = {
         m: {

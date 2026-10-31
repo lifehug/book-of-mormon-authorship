@@ -43,12 +43,22 @@ SIZE_A, SIZE_POWER, SIZE_W = 0.259, 1.1147, 0.661
 class ENSCPublished:
     """``fit(X, y)`` then ``predict(x)``; ``shrinkage`` is the R code's ``thresh``."""
 
-    def __init__(self, *, shrinkage: float, lam: float, size_adjust: bool = False) -> None:
+    def __init__(
+        self,
+        *,
+        shrinkage: float,
+        lam: float,
+        size_adjust: bool = False,
+        size_model: tuple[float, float, float] = (SIZE_A, SIZE_POWER, SIZE_W),
+    ) -> None:
+        """``size_model`` is (a, p, q) in ``s^2 = a c^p / w^q``; the default is Schaalje et al.'s
+        published fit, and BOM-60 tests a refit on many authors."""
         if shrinkage < 0 or lam <= 0:
             raise ValueError("shrinkage must be >= 0 and lam > 0")
         self.shrinkage = shrinkage
         self.lam = lam
         self.size_adjust = size_adjust
+        self.size_model = size_model
 
     def fit(self, X: np.ndarray, y: Sequence[Hashable]) -> ENSCPublished:
         X = np.atleast_2d(np.asarray(X, dtype=float))
@@ -79,7 +89,8 @@ class ENSCPublished:
         if not words:
             raise ValueError("size_adjust needs the test text's length in words")
         c = np.maximum(self.centroids_, 1e-9)  # a shrunken mean of exactly 0 would give sd 0
-        return np.sqrt(SIZE_A * c**SIZE_POWER / words**SIZE_W)
+        a, p, q = self.size_model
+        return np.sqrt(a * c**p / words**q)
 
     def posteriors(self, x: np.ndarray, words: int | None = None) -> dict:
         z = (np.asarray(x, dtype=float)[None, :] - self.centroids_) / self._sd(words)
