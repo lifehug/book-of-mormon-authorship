@@ -3,11 +3,11 @@
 Runs the plan in ``docs/repair-plan.md``, which was committed before this ran. Two candidate
 repairs:
 
-* **General Imposters** with ``repair.gi_feature_fraction_provisional`` of the features sampled
+* **General Imposters** with ``repair.gi_feature_fraction`` of the features sampled
   per round (registered: ``classic.imposters.feature_fraction``);
 * **ENSC as published** (``classic/ensc_published.py``: latent author, the 2011 text-size
   adjustment), shrinkage by cross-validation over the registered grid, lambda the smallest on
-  ``repair.ensc_lambda_grid_provisional`` with at most 5% false "none" on in-set tests.
+  ``repair.ensc_lambda_grid`` with at most 5% false "none" on in-set tests.
 
 Each is tested on the BOM-21 tasks and on a **fresh** set of corpus authors that no earlier step
 used. Every threshold and setting is calibrated on the BOM-21 tasks only and applied unchanged
@@ -55,7 +55,7 @@ def used_authors() -> set[str]:
 
 
 def fresh_task(cfg: dict, seed: str = "bom58-fresh", exclude: frozenset = frozenset()) -> dict:
-    """``repair.fresh_authors_provisional`` corpus authors not used before; each held-out work
+    """``repair.fresh_authors`` corpus authors not used before; each held-out work
     gives ``benchmark.trials`` tests, the author's other works the reference."""
     from classic.corpus_run import eligible
 
@@ -75,7 +75,7 @@ def fresh_task(cfg: dict, seed: str = "bom58-fresh", exclude: frozenset = frozen
         and not collective.search(a)
     }
     rng = random.Random(derive_seed(seed, cfg))
-    k = cfg["repair"]["fresh_authors_provisional"]
+    k = cfg["repair"]["fresh_authors"]
     authors = sorted(rng.sample(sorted(pool), min(k, len(pool))))
     refs, tests, held = {}, [], {}
     for a in authors:
@@ -106,7 +106,7 @@ def calibrate_ensc_published(recs: list[dict], cfg: dict) -> dict:
     """Shrinkage with the best open-set accuracy over the registered grid (Amendment 2); lambda
     the smallest (most willing to say "none") with at most 5% false "none" on in-set tests."""
     grid = cfg["classic"]["ensc"]["shrinkage_grid"]
-    lams = sorted(cfg["repair"]["ensc_lambda_grid_provisional"])
+    lams = sorted(cfg["repair"]["ensc_lambda_grid"])
     table = {}
     for s in grid:
         for lam in lams:
@@ -165,7 +165,7 @@ def run() -> int:
     cfg = load_config()
     spec = json.loads(TASKS.read_text())
     variants = {"registered": cfg, "repair": copy.deepcopy(cfg)}
-    ff = cfg["repair"]["gi_feature_fraction_provisional"]
+    ff = cfg["repair"]["gi_feature_fraction"]
     variants["repair"]["classic"]["imposters"]["feature_fraction"] = ff
 
     bench_tasks = load_tasks(cfg)

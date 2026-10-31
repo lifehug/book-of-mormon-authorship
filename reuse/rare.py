@@ -293,16 +293,16 @@ if __name__ == "__main__":
 
 def copy_clusters(recs: list[dict]) -> dict[str, str]:
     """Each volume's copy group, by content: two volumes are copies of one text when the sets of
-    target grams they share overlap by ``repair.copy_jaccard_provisional`` or more. Titles cannot
+    target grams they share overlap by ``borrowing.copy_jaccard`` or more. Titles cannot
     decide this (a multi-volume work's volumes share a title and differ in text; a periodical's
     issues too), and the deduplication missed the nine printings of Hunt's *The Late War*.
     Candidate pairs come from grams few volumes carry, so the comparison stays tractable.
     Returns volume -> group id (the smallest member id)."""
     from collections import Counter
 
-    rp = load_config()["repair"]  # provisional until registered (pending: borrowing.df_by_text)
-    jaccard, min_hits = rp["copy_jaccard_provisional"], rp["copy_min_hits_provisional"]
-    index_df, min_common = rp["copy_index_df_provisional"], rp["copy_min_common_provisional"]
+    rp = load_config()["borrowing"]  # Amendment 8 Change 3
+    jaccard, min_hits = rp["copy_jaccard"], rp["copy_min_hits"]
+    index_df, min_common = rp["copy_index_df"], rp["copy_min_common"]
     hits = {r["work_id"]: set(r["hits"]) for r in recs if len(r["hits"]) >= min_hits}
     index: dict[int, list[str]] = {}
     for w, h in hits.items():

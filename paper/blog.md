@@ -2061,8 +2061,44 @@ The full list, all 183 with their contexts and the other books that use each, is
 `data/benchmark/replication/latewar_shared_phrases.json`, made by `python -m eval.replicate
 johnson-examples`.
 
+## The last test of phase 3: thirty strangers
+
+Everything I tried to fix in the old tools, I tried on data I'd already looked at. That's how you
+fool yourself. So the plan said: once every fix is locked in, draw 30 more authors nobody has
+touched (Joel Barlow, Frances Brooke, Jonathan Edwards, James Madison, Tobias Smollett and 25
+others) and run everything on them exactly once. I filed the design on OSF while the run was
+still going, so I couldn't bend it to fit the answer.
+
+It took about two and a half hours on the Mac mini. The answer:
+
+| Tool | Names the right author out of 30 | Claims a match for someone who isn't on the list |
+| --- | --- | --- |
+| General Imposters, 100 rounds | 57% | never (it never claims a match at all) |
+| General Imposters, 1,000 rounds | 57% | never |
+| Burrows' Delta with a "none of these" cutoff | 57% | 73% |
+| ENSC as published | 54% | 90% |
+| ENSC with the refitted size model | 55% | 93% |
+
+The bar is 90% right and at most 5% false matches. Nothing comes close, and none of my fixes moved
+anything by more than a point. Ten times as many rounds for General Imposters: 56.5% to 56.7%.
+
+That zero for General Imposters looks good and isn't. Its match cutoff, set on the earlier tests,
+landed at the highest score possible. Nothing can beat it, so it never says "match" to anyone,
+right or wrong.
+
+The real lesson is the ceiling. Hand any of these classic tools 30 ordinary writers from 1780 to
+1830 and a 5,000-word passage, and it names the right one a bit over half the time. On the tidy
+benchmark tests, with three to eleven authors each, the same tools scored 97-100%. That's worth
+remembering every time someone shows you a stylometry result with a short candidate list.
+
+So phase 3 ends like this. Two tools (General Imposters and ENSC) are retired. The two Deltas stay,
+but only to say which listed candidate is closest, with a warning label. One fix (counting rare
+phrases by book, not printed copy) carries forward into the borrowing search. All of it, failures
+included, is in the methods report, and anyone can rerun it with the commands in the run guide.
+
 ## Log
 
+- **2026-10-30, night.** BOM-60 closed: the one-time evaluation on 30 new authors. No improvement works and no method meets section 7 (closed set 54-60%; General Imposters never says "match"; Delta and ENSC false matches 73-99%). Phase 3 done. Config keys registered by Amendment 8 lose their provisional names.
 - **2026-10-30, night.** Amendment 8 filed on OSF (revision 6ae55e1b828dc3df8274a024): the Deltas count only as "which listed candidate is closest", and the paper says beside every Delta result that they didn't pass the bar; General Imposters and ENSC retired; rarity counted by text, not printed copy, with the old count shown beside it because I chose the change after seeing The Late War result; the improvement study is filed before its evaluation finishes, and none of it touches the Book of Mormon.
 - **2026-10-30, night.** Three tests added at the owner's request, aimed at whether the book is what it says it is: BOM-61 known-answer controls (period translations of ancient texts vs modern texts presented as ancient, e.g. Ossian, the 1751 Jasher), BOM-62 the King James italics test, BOM-63 thematic dating. BOM-25 now tests named proposed sources (View of the Hebrews, The Late War, Spalding, Napoleon) at story level against fair controls.
 - **2026-10-30, night.** The Late War's 183 rare shared phrases, in context: 6 in no other book, 135 in 20+ other books, 36 also in other imitation-scripture works (Snowden 18). Flagged for a closer look against imitation scripture as a group (phase 4).

@@ -5,7 +5,7 @@
 # are present. Every value below was checked against paper/preregistration.md and cites
 # its section. Choices not yet registered are NOT here, even as placeholders, so that
 # nothing in this file can be mistaken for a registered decision; they are named in
-# `pending_amendment` at the end and must be pinned by dated OSF amendment (Amendment 7,
+# `pending_amendment` at the end and must be pinned by dated OSF amendment (Amendments 7 and 8,
 # 2026-10-30, registered those of Phase 3).
 #
 # Sections for the classical methods, language models, dating, embeddings and the
@@ -207,6 +207,13 @@ borrowing:
   null_min_volumes: 500          # 6.5's floor; met by the whole corpus (Amendment 7 Change 6)
   # registered: Amendment 7 Change 6 (the null is the whole eligible period corpus)
   per_words: 10000               # length normalisation: rare shared 4-grams per 10,000 words
+  # registered: Amendment 8 Change 3 (post hoc). Document frequency counts texts, copies found
+  # by content (reuse.rare.copy_clusters); the by-volume count is reported beside it.
+  df_by_text: true
+  copy_jaccard: 0.8              # shared-gram Jaccard at which two volumes are one text
+  copy_min_hits: 10              # volumes sharing fewer target grams are not compared
+  copy_index_df: 20              # candidate pairs from grams in at most this many volumes
+  copy_min_common: 5             # ... sharing at least this many of them
   null_sizing:
     sizes: [500, 1000, 2000, 5000, 10000, 20000]
     draws: 1000
@@ -256,48 +263,14 @@ seed: 20261017
 # Registered by Amendment 7 (OSF revision 6ae500f8f0e01c4f4105c6bd, 2026-10-30): power.design,
 # classic.ensc.alpha, timesplit.design, borrowing.null_sample, synthesis.imitation_weights,
 # benchmark.design, benchmark.imposter_fill.
-# BOM-58, repair or retire (docs/repair-plan.md, written before the tests): provisional until
-# an amendment registers it; pending_amendment: repair.design
+# Registered by Amendment 8 (OSF revision 6ae55e1b828dc3df8274a024, 2026-10-30):
+# synthesis.delta_closed_set_only, repair.design, borrowing.df_by_text, improvements.design.
+# BOM-58 repair or retire (Amendment 8 Change 2; docs/repair-plan.md) and the BOM-60 improvement
+# study (Change 4; docs/improvement-plan.md, not used on the Book of Mormon)
 repair:
-  fresh_authors_provisional: 30
-  # BOM-60 improvement 1, rarity by text (reuse.rare.copy_clusters); pending_amendment:
-  # borrowing.df_by_text
-  copy_jaccard_provisional: 0.8
-  copy_min_hits_provisional: 10
-  copy_index_df_provisional: 20
-  copy_min_common_provisional: 5
-  gi_feature_fraction_provisional: 0.3
-  gi_trials_provisional: 1000  # BOM-60 improvement 4 (docs/improvement-plan.md)
-  ensc_lambda_grid_provisional: [1.5, 2, 3, 4, 5, 6, 8]
+  fresh_authors: 30
+  gi_feature_fraction: 0.3
+  gi_trials: 1000                # BOM-60 improvement 4
+  ensc_lambda_grid: [1.5, 2, 3, 4, 5, 6, 8]
 
-pending_amendment:
-  - key: synthesis.delta_closed_set_only
-    issue: BOM-21
-    note: >
-      Post hoc, decided by the owner 2026-10-30 after BOM-21's results (paper/deviations.md, D1).
-      Burrows' and Cosine Delta meet section 7's closed-set bar but have no verification score,
-      so the open-set half cannot be applied. They enter the synthesis as closed-set evidence only
-      (which candidate is closest), never toward "none of these" or as evidence of authorship, and
-      the paper states that they did not pass the registered bar.
-  - key: repair.design
-    issue: BOM-58
-    note: >
-      docs/repair-plan.md, committed before the tests ran: General Imposters with feature_fraction
-      0.3, and ENSC as published (latent author, 2011 size adjustment) with lambda chosen by the
-      Amendment 7 Change 4 rule, tested on 30 fresh corpus authors and on the BOM-21 tasks; a
-      method is repaired only if it meets both section 7 bars on both.
-  - key: borrowing.df_by_text
-    issue: BOM-60
-    note: >
-      Count a 4-gram's document frequency by text rather than by volume, copies found by content
-      (shared-gram Jaccard >= 0.8 among volumes with 10+ shared grams; candidate pairs from grams
-      in at most 20 volumes sharing at least 5). Under the registered rule this makes Hunt's
-      reprinted The Late War visible (15 rare shared, p = 0.0008, against 1, p = 0.05). To be
-      registered before BOM-24 uses it.
-  - key: improvements.design
-    issue: BOM-60
-    note: >
-      docs/improvement-plan.md: developed on BOM-21 tasks and BOM-58's authors, evaluated once on a
-      second fresh set. General Imposters at repair.gi_trials_provisional rounds; Delta distance
-      threshold at 5% false-none; ENSC size model refit at Schaalje et al.'s block sizes. None is
-      used on the Book of Mormon unless an amendment registers it.
+pending_amendment: []

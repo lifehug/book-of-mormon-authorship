@@ -12,7 +12,7 @@ is among the profiles; open set: the true author removed, and the method should 
 fitted on two authors. Refit on BOM-58's 30 authors at Schaalje et al.'s block sizes and
 Funai's 108 words, then rerun BOM-57's sample-length test (study B) with both models.
 
-``gi-rounds``: General Imposters with ``repair.gi_trials_provisional`` rounds (registered 100),
+``gi-rounds``: General Imposters with ``repair.gi_trials`` rounds (registered 100),
 so the score cannot pin at its maximum, on the BOM-21 tasks (whose imposters are already
 genre-matched), against the registered settings; thresholds and the held-out false-positive rate
 as in BOM-21 (two folds).
@@ -197,7 +197,7 @@ def gi_rounds() -> int:
         for name, t in tasks.items()
     }  # fmt: skip
     more = copy.deepcopy(cfg)
-    more["classic"]["imposters"]["trials"] = cfg["repair"]["gi_trials_provisional"]
+    more["classic"]["imposters"]["trials"] = cfg["repair"]["gi_trials"]
     result: dict = {**stamp(), "plan": "docs/improvement-plan.md, improvement 4"}
     for vname, vcfg in (("registered", cfg), ("more_rounds", more)):
         rng = random.Random(derive_seed("improve-gi", cfg))
@@ -226,7 +226,7 @@ def evaluate() -> int:
     print(f"evaluation: {len(task['authors'])} authors, {len(task['tests'])} tests, "
           f"pool {len(pool)}", flush=True)  # fmt: skip
     more = copy.deepcopy(cfg)
-    more["classic"]["imposters"]["trials"] = cfg["repair"]["gi_trials_provisional"]
+    more["classic"]["imposters"]["trials"] = cfg["repair"]["gi_trials"]
     runs = {}
     for vname, vcfg in (("registered", cfg), ("more_rounds", more)):
         rng = random.Random(derive_seed(f"improve-eval:{vname}", cfg))

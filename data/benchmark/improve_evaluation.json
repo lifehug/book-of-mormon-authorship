@@ -1,0 +1,101 @@
+{
+ "config_sha256": "a565c70d8c698efa10633ab38417e5c5c4d8c8e5be105a0af7b41bd7c461c0a3",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "751d65d3ed17836a16d194f7c24de7f70bf67b3a",
+ "plan": "docs/improvement-plan.md, evaluation",
+ "authors": [
+  "barlow, joel",
+  "barton, william p c",
+  "brooke, frances",
+  "brydges, samuel egerton",
+  "buck, charles",
+  "burton, edward",
+  "carr, john",
+  "cowley, hannah",
+  "cromek, robert hartley",
+  "debrett, john",
+  "drake, daniel",
+  "edwards, jonathan",
+  "elton, charles abraham",
+  "gamble, john",
+  "gay, john",
+  "jersey, new",
+  "jesse, william",
+  "josephus, flavius",
+  "linne, carl von",
+  "madison, james",
+  "milner, john",
+  "potter, ray",
+  "roscoe, henry",
+  "seward, anna",
+  "smith, horace",
+  "smithers, henry",
+  "smollett, tobias george",
+  "steele, richard",
+  "stuart, james",
+  "symmons, charles"
+ ],
+ "held_out": {
+  "barlow, joel": "internet_archive:10278550bsb",
+  "barton, william p c": "institutional_books:32044106350804",
+  "brooke, frances": "internet_archive:bim_eighteenth-century_the-history-of-lady-juli_brooke-frances_1782_1",
+  "brydges, samuel egerton": "internet_archive:bim_eighteenth-century_topographical-miscellani_brydges-sir-samuel-eger_1792_1",
+  "buck, charles": "institutional_books:HWKIW2",
+  "burton, edward": "internet_archive:testimoniesofant00burt_1",
+  "carr, john": "institutional_books:HN61FZ",
+  "cowley, hannah": "internet_archive:bim_eighteenth-century_which-is-the-man-a-come_cowley-mrs-hannah_1783_0",
+  "cromek, robert hartley": "internet_archive:selectscottishs00cromgoog",
+  "debrett, john": "institutional_books:HXGT2G",
+  "drake, daniel": "internet_archive:naturalandstati00drakgoog",
+  "edwards, jonathan": "internet_archive:bim_eighteenth-century_a-dissertation-on-gods-_edwards-jonathan_1788",
+  "elton, charles abraham": "institutional_books:AH4K3M",
+  "gamble, john": "internet_archive:sketcheshistory00gambgoog",
+  "gay, john": "internet_archive:gaysfablesotherp00gayj",
+  "jersey, new": "internet_archive:actslegislature34jersgoog",
+  "jesse, william": "internet_archive:remonstranceaddr00jessuoft",
+  "josephus, flavius": "internet_archive:10236469bsb",
+  "linne, carl von": "internet_archive:selectdissertat00brangoog",
+  "madison, james": "internet_archive:cihm_49424",
+  "milner, john": "institutional_books:HXJ3J9",
+  "potter, ray": "institutional_books:32044018978585",
+  "roscoe, henry": "internet_archive:adigestlawrelat00roscgoog",
+  "seward, anna": "internet_archive:10404037bsb",
+  "smith, horace": "internet_archive:reubenapsleybya00smitgoog",
+  "smithers, henry": "institutional_books:32044019986769",
+  "smollett, tobias george": "internet_archive:miscellaneouswo05smol",
+  "steele, richard": "internet_archive:guardian00chalgoog",
+  "stuart, james": "internet_archive:b20443298",
+  "symmons, charles": "institutional_books:32044086919891"
+ },
+ "general_imposters_registered": {
+  "closed_set": 0.565,
+  "open_set_fpr": 0.0,
+  "passes": false
+ },
+ "general_imposters_more_rounds": {
+  "closed_set": 0.5666666666666667,
+  "open_set_fpr": 0.0,
+  "passes": false
+ },
+ "burrows_delta": {
+  "closed_set": 0.57,
+  "false_none": 0.14166666666666666,
+  "open_set_fpr": 0.7316666666666667
+ },
+ "cosine_delta": {
+  "closed_set": 0.6033333333333334,
+  "false_none": 0.0,
+  "open_set_fpr": 0.9883333333333333
+ },
+ "ensc_published_published_size_model": {
+  "closed_set": 0.5383333333333333,
+  "false_none": 0.025,
+  "open_set_fpr": 0.9016666666666666
+ },
+ "ensc_published_refit_size_model": {
+  "closed_set": 0.5483333333333333,
+  "false_none": 0.005,
+  "open_set_fpr": 0.925
+ }
+}

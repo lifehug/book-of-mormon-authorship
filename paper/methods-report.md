@@ -1,7 +1,8 @@
 # What the earlier methods get wrong, and what fixes them (BOM-60)
 
-*Draft, 2026-10-30. Evaluation on the second fresh author set is pending; numbers marked
-"development" were measured on data already seen (the BOM-21 tasks and BOM-58's 30 authors).*
+*2026-10-30. Numbers marked "development" were measured on data already seen (the BOM-21 tasks
+and BOM-58's 30 authors); the one-time evaluation on a second fresh set is the last section.
+Registered as a methods contribution, not used on the Book of Mormon: Amendment 8, Change 4.*
 
 This report collects what the benchmark (BOM-21), the replications (BOM-22), the fidelity checks
 (BOM-57) and the repair step (BOM-58) found about the classical methods used on the Book of Mormon
@@ -92,7 +93,47 @@ A method that must name someone from a list names whoever's samples sit nearest.
 texts screened for quotation of the target; results reported as they move with the choice of
 candidate samples.
 
-## Evaluation
+## Evaluation (once, on 30 authors no earlier step used)
 
-*Pending: once improvement 4 is fixed, a second fresh set of 30 authors (seed "bom60-eval") is
-drawn and every change is run on it once.*
+`python -m eval.improve evaluate`, `data/benchmark/improve_evaluation.json`. Thirty corpus authors
+drawn with seed "bom60-eval", excluding every author used before (Joel Barlow, Frances Brooke,
+Jonathan Edwards, James Madison, Tobias Smollett, Anna Seward and 24 others; chance on the closed
+set 3.3%), 20 tests of 5,000 words each from a held-out work. Every setting and threshold was
+fixed from the development data before the set was drawn, and the design was registered
+(Amendment 8, Change 4) while the run was still going, before its result was known.
+
+| Method | Closed set | Open-set false positives | False "none" | Section 7 |
+| --- | --- | --- | --- | --- |
+| General Imposters, 100 rounds (registered) | 56.5% | 0% | - | fails |
+| General Imposters, 1,000 rounds (improvement 4) | 56.7% | 0% | - | fails |
+| Burrows' Delta + distance threshold (improvement 2) | 57.0% | 73.2% | 14.2% | fails |
+| Cosine Delta + distance threshold (improvement 2) | 60.3% | 98.8% | 0% | fails |
+| ENSC as published, published size model | 53.8% | 90.2% | 2.5% | fails |
+| ENSC as published, refitted size model (improvement 3) | 54.8% | 92.5% | 0.5% | fails |
+
+Section 7's bars are at least 90% closed set and at most 5% open-set false positives.
+
+**What it shows.**
+
+- **No change works, and no method meets the bar.** Each improvement moves its method by about a
+  point, inside the noise of 600 tests. The development verdicts (2, 3 and 4 do not work) hold on
+  data none of them had seen.
+- **General Imposters' 0% false positives is not a success.** Its match threshold, set on the
+  BOM-21 tasks, is the maximum possible score (1.0 at both 100 and 1,000 rounds), so no score
+  can exceed it and it never says "match" at all. The open-set rate is zero by construction;
+  the method's only working answer is the closed-set one, right 57% of the time.
+- **Delta's threshold does not travel.** Set on BOM-21 at a 5% false-"none" rate, it gives 14%
+  (Burrows) and 0% (Cosine) on these authors, and the open set fails badly, as in development.
+- **The closed-set ceiling is about 55-60% among 30 period authors**, for every method, the same
+  as on BOM-58's authors (47-63%). With a long candidate list of ordinary period prose, the
+  classical methods name the right author a little over half the time.
+
+**Deviations, before any scoring.** "jersey, new" (the New Jersey legislature) passed the filter
+for collective attributions and is one of the 30; Josephus is read in translation, as three of
+BOM-58's authors were. The result's stamp names commit 751d65d, the commit current when the file
+was written; the code that ran is that of 3041f08, and no Python or config file differs between
+them.
+
+**Improvement 1 (rarity by text)** is not part of this evaluation: it is a borrowing rule, not an
+attribution method, and its test was the Johnson replication above. It is the one change this
+study uses (Amendment 8, Change 3), with the registered by-volume count reported beside it.
