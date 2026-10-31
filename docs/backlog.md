@@ -533,7 +533,7 @@ Phase 4 maps which earlier texts share wording or ideas with the Book of Mormon,
 - [ ] Run every Phase 4-5 test on it against the same null as for the Book of Mormon
 - [ ] Report which tests separate the groups; a test that does not is uninformative on this question
 
-**Done when:** each test's ability to separate the groups is reported before its Book of Mormon result is interpreted.
+**Done when:** each test's ability to separate the groups is reported before its Book of Mormon result is interpreted. Open by design until then; the set and plan (done 2026-10-31) are what #23 onward wait for.
 **Depends on:** #19. **Feeds:** #23 to #30, #35, #42.
 
 ### #62 The King James italics test
@@ -556,7 +556,7 @@ Phase 4 maps which earlier texts share wording or ideas with the Book of Mormon,
 - [ ] Run the same against 3-5 control books (for example Luke, *The Late War*, a sermon collection) to see typical overlap levels
 
 **Done when:** an alignment table for the Book of Mormon and controls is published.
-**Depends on:** #19, #40, #61 (known-answer controls first).
+**Depends on:** #19, #40, #61's set and plan (done; #61 stays open until every test has reported on the set).
 
 ### #24 Score rare phrases against a proper null model
 
