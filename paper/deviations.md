@@ -24,6 +24,11 @@ bar**, because its open-set half could not be shown; that they are kept only for
 answers; and that this was decided after the benchmark results were known. Every Delta result
 in the paper carries that limitation beside it, not only in a footnote.
 
+**Limitation found later (BOM-58, 2026-10-30).** On 30 fresh corpus authors the Deltas'
+closed-set accuracy is 63% (Burrows) and 62% (Cosine), against 100% and 97% on the BOM-21 tasks
+of 3 to 11 authors: the closed-set bar is met at the scale of a short candidate list, not a
+corpus-wide one. The paper reports this beside every Delta result.
+
 **Status:** to be registered in the next OSF amendment (`pending_amendment`:
 `synthesis.delta_closed_set_only`). Evidence: `data/benchmark/benchmark.json` (verdict),
 BOM-21 issue.

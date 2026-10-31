@@ -43,3 +43,34 @@ at least 90%; open-set false positives at most 5%) on the fresh test **and** on 
 Otherwise it is **retired** for this study. Each result is reported beside the registered
 settings' result on the same data. A repaired method is used on the Book of Mormon only after an
 OSF amendment registers the repair (the next amendment, Amendment 8).
+
+## Results (added after the run, 2026-10-30; the plan above is unchanged)
+
+`python -m eval.repair`, `data/benchmark/repair.json`. Settings and thresholds calibrated on the
+BOM-21 tasks, applied unchanged to the 30 fresh authors (Jeremiah Evarts, Elias Boudinot, James
+Mill, Anne Royall and 26 others; chance on the fresh closed set 3.3%).
+
+| Method | BOM-21 closed set | BOM-21 open-set FP | Fresh closed set | Fresh open-set FP | Repaired |
+| --- | --- | --- | --- | --- | --- |
+| General Imposters, registered (50%) | 83.3% | 0% | 47.0% | 0% | no |
+| General Imposters, repair (30%) | **93.9%** | **3.3%** | 51.3% | 0% | **no** |
+| ENSC as published (shrinkage 0.5, lambda 3) | 90.6% | 44.4% | 53.2% | 88.3% | no |
+| Burrows' Delta (closed set only) | 100% | - | 63.0% | - | - |
+| Cosine Delta (closed set only) | 97.2% | - | 61.8% | - | - |
+
+**Decision, by the rule above: General Imposters and ENSC are retired for this study.**
+General Imposters at 30% would pass on the BOM-21 tasks but does not generalise to fresh
+authors; ENSC as published says "none of these" too rarely on both sets.
+
+**What the fresh set shows about every method.** No classical method reaches the 90% closed-set
+bar among 30 period authors; the Deltas, which meet it on the BOM-21 tasks (3 to 11 authors),
+reach 62-63%. Closed-set accuracy falls as the candidate list grows, so decision D1 (the
+Deltas as closed-set evidence) carries that limitation: it holds at the scale of the BOM-21
+tasks, closer to the eight registered candidates than to a corpus-wide search.
+
+**Deviations from the plan, both before any scoring:** collective attributions such as
+"authors, various" were excluded from the fresh draw (the plan says personal authors; the
+eligibility filter let them through); the fresh imposter pool held 143 texts, not 200, because
+the BOM-21 procedure drops texts under 5,000 words after drawing 200 (BOM-21's own pools held 195
+and 175). Three fresh authors wrote in other languages and are read in translation (Fourcroy,
+Guyon, Schiller).

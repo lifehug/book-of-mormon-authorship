@@ -185,8 +185,13 @@ def run() -> int:
         recs[vname] = {"bom21": b, "fresh": f}
         print(f"{vname}: {len(b)} BOM-21 and {len(f)} fresh records", flush=True)
 
-    result: dict = {**stamp(), "plan": "docs/repair-plan.md", "fresh_authors": fresh["authors"],
-                    "fresh_held_out": fresh["held_out"]}  # fmt: skip
+    # names only: fresh["authors"] holds their reference texts, which may never be published
+    result: dict = {
+        **stamp(),
+        "plan": "docs/repair-plan.md",
+        "fresh_authors": sorted(fresh["authors"]),
+        "fresh_held_out": fresh["held_out"],
+    }
     rate = cfg["benchmark"]["max_open_set_fpr"]
     for vname, rs in recs.items():
         b, f = rs["bom21"], rs["fresh"]

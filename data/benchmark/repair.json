@@ -1,0 +1,182 @@
+{
+ "config_sha256": "1c8c92c1cd16fe162e48aa5b7269de1a4dc7cfc20fd54242fca4f19304553241",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "0d22be74dc65ab5a45866678845bf53076b12507",
+ "plan": "docs/repair-plan.md",
+ "fresh_authors": [
+  "aitken, john",
+  "allen, benjamin",
+  "ayre, joseph",
+  "berens, edward",
+  "bicheno, j james",
+  "blaquiere, edward",
+  "boudinot, elias",
+  "cobbett, william m p",
+  "coke, thomas",
+  "cotton, nathaniel",
+  "croker, john wilson",
+  "dallas, robert charles",
+  "evarts, jeremiah",
+  "ferguson, james n 85049037",
+  "fourcroy, antoine francois de comte",
+  "grimshaw, william from old catalog",
+  "guyon, jeanne marie bouvier de la motte",
+  "hughes, john",
+  "laurence, richard",
+  "mackenzie, william lyon",
+  "mill, james",
+  "norton, jacob",
+  "pegge, samuel",
+  "penn, john",
+  "powell, baden",
+  "robinson, william",
+  "royall, anne newport",
+  "schiller, friedrich",
+  "sharp, thomas",
+  "waldo, s putnam samuel putnam"
+ ],
+ "fresh_held_out": {
+  "aitken, john": "internet_archive:b33086175",
+  "allen, benjamin": "internet_archive:historyofchurcho01alle",
+  "ayre, joseph": "internet_archive:b22285258",
+  "berens, edward": "internet_archive:christmasstorie00beregoog",
+  "bicheno, j james": "internet_archive:bim_eighteenth-century_the-restoration-of-the-j_bicheno-j-james_1800",
+  "blaquiere, edward": "internet_archive:10446691bsb",
+  "boudinot, elias": "internet_archive:secondadventorc00boud",
+  "cobbett, william m p": "internet_archive:bim_eighteenth-century_democratic-judge-1788_cobbett-william-mp_1798",
+  "coke, thomas": "internet_archive:bim_eighteenth-century_the-character-and-death-_coke-thomas_1796",
+  "cotton, nathaniel": "internet_archive:bub_gb_X1US_0LUa3oC",
+  "croker, john wilson": "internet_archive:battleoftalavera00crokiala",
+  "dallas, robert charles": "internet_archive:a567224300dalluoft",
+  "evarts, jeremiah": "internet_archive:cihm_52376",
+  "ferguson, james n 85049037": "internet_archive:b29290144",
+  "fourcroy, antoine francois de comte": "internet_archive:b21441637_0001",
+  "grimshaw, william from old catalog": "internet_archive:etymologicaldict00grim",
+  "guyon, jeanne marie bouvier de la motte": "internet_archive:poem00guyo",
+  "hughes, john": "institutional_books:HXJ3JJ",
+  "laurence, richard": "internet_archive:doctrineofchurch00laur",
+  "mackenzie, william lyon": "hathitrust:aeu.ark:/13960/t8nc6jg4s",
+  "mill, james": "institutional_books:32044021208160",
+  "norton, jacob": "internet_archive:MN41699ucmf_15",
+  "pegge, samuel": "internet_archive:10604923bsb",
+  "penn, john": "institutional_books:HW2P19",
+  "powell, baden": "internet_archive:rationalreligio00powegoog",
+  "robinson, william": "internet_archive:magistratespock00robigoog",
+  "royall, anne newport": "internet_archive:mrsroyallspennsy00roya",
+  "schiller, friedrich": "internet_archive:bim_eighteenth-century_don-carlos-a-tragedy-t_schiller-friedrich_1798_0",
+  "sharp, thomas": "internet_archive:bim_eighteenth-century_the-rubric-in-the-book-o_sharp-thomas_1787",
+  "waldo, s putnam samuel putnam": "internet_archive:memoirsofandrewj00wald2"
+ },
+ "general_imposters_registered": {
+  "threshold_from_bom21": {
+   "match": 1.0,
+   "non_match": 0.29850000000000004
+  },
+  "bom21": {
+   "closed_set": 0.8333333333333334,
+   "open_set_fpr": 0.0
+  },
+  "fresh": {
+   "closed_set": 0.47,
+   "open_set_fpr": 0.0
+  },
+  "repaired": false
+ },
+ "deltas_closed_set_registered": {
+  "burrows_delta": {
+   "bom21": 1.0,
+   "fresh": 0.63
+  },
+  "cosine_delta": {
+   "bom21": 0.9722222222222222,
+   "fresh": 0.6183333333333333
+  }
+ },
+ "general_imposters_repair": {
+  "threshold_from_bom21": {
+   "match": 0.98,
+   "non_match": 0.34
+  },
+  "bom21": {
+   "closed_set": 0.9388888888888889,
+   "open_set_fpr": 0.03333333333333333
+  },
+  "fresh": {
+   "closed_set": 0.5133333333333333,
+   "open_set_fpr": 0.0
+  },
+  "repaired": false
+ },
+ "deltas_closed_set_repair": {
+  "burrows_delta": {
+   "bom21": 1.0,
+   "fresh": 0.63
+  },
+  "cosine_delta": {
+   "bom21": 0.9722222222222222,
+   "fresh": 0.6183333333333333
+  }
+ },
+ "ensc_published": {
+  "calibration_from_bom21": {
+   "shrinkage": 0.5,
+   "lambda": 3
+  },
+  "cv_open_set_accuracy": {
+   "0|1.5": 0.725,
+   "0|2": 0.65,
+   "0|3": 0.5388888888888889,
+   "0|4": 0.41944444444444445,
+   "0|5": 0.36666666666666664,
+   "0|6": 0.35,
+   "0|8": 0.3416666666666667,
+   "0.5|1.5": 0.8111111111111111,
+   "0.5|2": 0.7777777777777778,
+   "0.5|3": 0.7305555555555555,
+   "0.5|4": 0.675,
+   "0.5|5": 0.6305555555555555,
+   "0.5|6": 0.6055555555555555,
+   "0.5|8": 0.5888888888888889,
+   "1|1.5": 0.6638888888888889,
+   "1|2": 0.7583333333333333,
+   "1|3": 0.7666666666666667,
+   "1|4": 0.7055555555555556,
+   "1|5": 0.6694444444444444,
+   "1|6": 0.6444444444444445,
+   "1|8": 0.6166666666666667,
+   "2|1.5": 0.5277777777777778,
+   "2|2": 0.575,
+   "2|3": 0.7527777777777778,
+   "2|4": 0.7694444444444445,
+   "2|5": 0.7638888888888888,
+   "2|6": 0.7333333333333333,
+   "2|8": 0.6888888888888889,
+   "4|1.5": 0.5,
+   "4|2": 0.5111111111111111,
+   "4|3": 0.5277777777777778,
+   "4|4": 0.6305555555555555,
+   "4|5": 0.6972222222222222,
+   "4|6": 0.7361111111111112,
+   "4|8": 0.7333333333333333,
+   "8|1.5": 0.5,
+   "8|2": 0.5,
+   "8|3": 0.5083333333333333,
+   "8|4": 0.49166666666666664,
+   "8|5": 0.5333333333333333,
+   "8|6": 0.5444444444444444,
+   "8|8": 0.5861111111111111
+  },
+  "bom21": {
+   "closed_set": 0.9055555555555556,
+   "open_set_fpr": 0.4444444444444444,
+   "false_none": 0.05
+  },
+  "fresh": {
+   "closed_set": 0.5316666666666666,
+   "open_set_fpr": 0.8833333333333333,
+   "false_none": 0.06833333333333333
+  },
+  "repaired": false
+ }
+}
