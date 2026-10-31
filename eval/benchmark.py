@@ -39,6 +39,7 @@ import gzip
 import json
 import random
 import sys
+import time
 from pathlib import Path
 
 import numpy as np
@@ -233,7 +234,12 @@ def _vec(docs: list[list[str]], vocab: list[str]) -> np.ndarray:
 
 
 def run_task(
-    task: dict, pool: list[list[str]], cfg: dict, rng: random.Random, gi: bool = True
+    task: dict,
+    pool: list[list[str]],
+    cfg: dict,
+    rng: random.Random,
+    gi: bool = True,
+    progress: str | None = None,
 ) -> list[dict]:
     """One record per test: closed-set predictions, GI positive and open-set negative scores,
     the ENSC fits needed for selection, and both Deltas' distances to every author (BOM-60).
@@ -242,7 +248,11 @@ def run_task(
     top_n = sorted(cfg["classic"]["mfw"])[len(cfg["classic"]["mfw"]) // 2]
     names = sorted(task["authors"])
     recs = []
-    for a, test, span in task["tests"]:
+    start = time.time()
+    for k, (a, test, span) in enumerate(task["tests"], 1):
+        if progress and (k % 25 == 0 or k == len(task["tests"])):
+            done = (time.time() - start) / 60
+            print(f"  {progress}: {k}/{len(task['tests'])} tests, {done:.0f} min", flush=True)
         refs = {
             b: (
                 task["authors"][b]

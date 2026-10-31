@@ -230,7 +230,7 @@ def evaluate() -> int:
     runs = {}
     for vname, vcfg in (("registered", cfg), ("more_rounds", more)):
         rng = random.Random(derive_seed(f"improve-eval:{vname}", cfg))
-        runs[vname] = run_task(task, pool, vcfg, rng)
+        runs[vname] = run_task(task, pool, vcfg, rng, progress=vname)
         print(f"{vname}: {len(runs[vname])} records", flush=True)
     recs = runs["registered"]
     result: dict = {**stamp(), "plan": "docs/improvement-plan.md, evaluation",
