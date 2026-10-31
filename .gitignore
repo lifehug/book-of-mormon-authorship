@@ -110,6 +110,12 @@ data/catalog/validation_sample.json
 data/reuse/null_sizing/hits.parquet
 # 237 MB, rebuilt by `python -m reuse.rare scan --target bom` in about an hour; covered by data/manifests/reuse.jsonl
 data/reuse/bom/hits.parquet
+# BOM-23, rebuilt by `python -m reuse.exact scan` (~80 min); covered by data/manifests/reuse.jsonl.
+# searches.json holds every search's volume ids (tens of MB); the known-answer draws are
+# committed separately as draws.json
+data/reuse/exact/hits.parquet
+data/reuse/exact/target_grams/
+data/reuse/exact/searches.json
 !data/benchmark/**
 !data/classic/**
 # BOM-61: known-answer controls, work ids and provenance only (no text)
