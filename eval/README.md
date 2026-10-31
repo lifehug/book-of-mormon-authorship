@@ -89,6 +89,7 @@ Plan, written before any test: `docs/improvement-plan.md`. Report: `paper/method
 | `python -m eval.improve delta` | improvement | a "none of these" score for Delta | `improve_delta.json` | ~30 min |
 | `python -m eval.improve ensc-size` | improvement | ENSC's text-size model refitted on many authors | `improve_ensc_size.json` | ~10 min |
 | `python -m eval.improve gi-rounds` | improvement | General Imposters with 1,000 rounds | `improve_gi_rounds.json` | ~2 h |
+| `python -m eval.improve evaluate` | check | the one-time evaluation of every change on a second fresh set of 30 authors, settings read from the development results | `improve_evaluation.json` | ~12 h |
 
 ## Other
 
