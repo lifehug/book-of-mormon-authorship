@@ -2159,6 +2159,7 @@ tells us how much to trust each answer.
 
 ## Log
 
+- **2026-10-31.** Amendment 11 filed (revision 6ae62f2ca50d25933c296d01): the King James italics test, registered before any italic word is counted. BOM-23's matching tested: a bug let stock phrases through ("with propriety be said to have been"); fixed to count only rare phrases both passages share. Ossian: no shared passages with 2,000 earlier books; Jasher: 5, mostly a King James phrase the mask missed under OCR damage.
 - **2026-10-31.** Plain-words status of phase 4 added (owner asked for it in the blog). BOM-62 italics plan drafted; its own known-answer check uses independent period translations of Isaiah, Psalms and Matthew against King James quotations in 1820s sermons.
 - **2026-10-31.** Amendment 10 filed (revision 6ae620454ae19487e2bde267): how BOM-23 searches for exact reuse, and a fair known-answer score (every text against 2,000 books from the 70 years before it), with a check for the old-spelling problem. Known-answer texts KJV-masked (0.30%; Jasher 3.5%).
 - **2026-10-31.** Amendment 9 filed on OSF (revision 6ae61ebeebfd59a7464e8fc4): the known-answer set and rule, registered before any test runs on them. From now on I file amendments myself as they come up (owner's call).

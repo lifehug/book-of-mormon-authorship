@@ -17,7 +17,7 @@ each is in `docs/backlog.md`, and the story of how it went is in `paper/blog.md`
 
 | Phase | In one line | Issues | Status (2026-10-30) |
 | --- | --- | --- | --- |
-| 0. **Set the rules** | Decide the questions and methods publicly, before touching data | BOM-01 to 04 | Done. Pre-registered on OSF; ten amendments since |
+| 0. **Set the rules** | Decide the questions and methods publicly, before touching data | BOM-01 to 04 | Done. Pre-registered on OSF; eleven amendments since |
 | 1. **Gather** | Collect every English text from 1780-1830 we can get | BOM-05 to 13, 52 | Done |
 | 2. **Clean** | Fix OCR, spelling, duplicates and dates; freeze a citable corpus | BOM-14 to 19, 50, 53 to 56 | Done, except BOM-50 and BOM-53 (deferred). Corpus v1.1 released |
 | 3. **Test the old tools** | Check them on known authors, rerun the earlier studies, fix what broke | BOM-20 to 22, 40 to 49, 51, 57, 58, 60 | Done. Two tools retired, the Deltas kept for closed-set answers only, one fix (rarity by text) carried forward. BOM-42, 44, 47, 49 stay open by design; BOM-51 deferred |

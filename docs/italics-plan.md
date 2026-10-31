@@ -47,9 +47,15 @@ Homer and *Sacontala* have no masked spans at all), so it cannot carry this test
 is narrower and has its own known answer:
 
 - **(a) independent translations** of the same books from the Hebrew or Greek, made in the
-  period: Lowth's *Isaiah* (1795, two volumes), *A New Translation of Isaiah* "by a layman"
-  (1790), *A New Translation of the Book of Psalms* (1807) and Gilbert Wakefield's *Matthew*
-  (1782);
+  period: Lowth's *Isaiah* (1795; `internet_archive:isaiahnewtransla01lowt`, `...02lowt`),
+  *A New Translation of Isaiah* "by a layman" (1790;
+  `internet_archive:bim_eighteenth-century_a-new-translation-of-isa_1790`), *A New Translation
+  of the Book of Psalms* (1807; `institutional_books:AH5KIN`) and Gilbert Wakefield's *Matthew*
+  (1782; `internet_archive:bim_eighteenth-century_a-new-translation-of-the_1782`). **Only the
+  translation text is measured.** Their notes and dissertations quote the King James text to
+  compare with it, and would make an independent translation look dependent. The character
+  ranges of each volume's translation are recorded from its layout (chapter headings, the start
+  of the notes), committed before any italic word in it is counted, and published;
 - **(b) texts that quote the King James Bible**: the King James spans in the registered 1820s
   sermons control.
 
@@ -87,4 +93,5 @@ reading cannot shape the rule).
 
 ## Registration
 
-To be registered by amendment before any italic word is counted.
+Registered as Amendment 11 (OSF revision 6ae62f2ca50d25933c296d01, 2026-10-31), before any
+italic word was counted.

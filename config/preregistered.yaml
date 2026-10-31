@@ -305,4 +305,19 @@ reuse:
     otranto: 1764
   late_war_year: 1816
 
+# Registered by Amendment 11 (OSF revision 6ae62f2ca50d25933c296d01, 2026-10-31): the King James
+# italics test (BOM-62; docs/italics-plan.md)
+italics:
+  bootstrap: 10000               # resamples over spans
+  bootstrap_seed: bom62-boot
+  check_words: 100               # italic words checked against the 1828 Phinney page images
+  check_seed: bom62-italics
+  min_italic_words: 50           # for an Amendment 9 text to be scored
+  independent:                   # translation text only; ranges recorded before counting
+    - internet_archive:isaiahnewtransla01lowt
+    - internet_archive:isaiahnewtransla02lowt
+    - internet_archive:bim_eighteenth-century_a-new-translation-of-isa_1790
+    - institutional_books:AH5KIN
+    - internet_archive:bim_eighteenth-century_a-new-translation-of-the_1782
+
 pending_amendment: []
