@@ -38,6 +38,7 @@ Usage::
     python -m kjv_mask.run candidates
     python -m kjv_mask.run controls
     python -m kjv_mask.run controls --missing-only   # mask only texts that have no spans yet
+    python -m kjv_mask.run known_answer              # BOM-61's known-answer texts
 """
 
 from __future__ import annotations
@@ -66,6 +67,7 @@ SPLIT_PARTS, SPLIT_DEPTH = 3, 2  # registered, Amendment 6
 EDITION = Path("data/bom/1830/edition_1830.jsonl")
 SAMPLES = Path("data/private/candidates/samples")
 CONTROLS = Path("data/controls")
+KNOWN_ANSWER = Path("data/known_answer/set.jsonl")
 _SPACE_WORD = re.compile(r"\S+")
 
 
@@ -125,6 +127,27 @@ def _docs(group: str) -> list[dict]:
             for r in cat
             if r["work_id"] in words
         ]
+    if group == "known_answer":
+        # BOM-61's control texts, every volume, masked as the Book of Mormon is (Amendment 9)
+        from ocr_fix.normalize import norm_path
+
+        want = [
+            v["work_id"]
+            for ln in KNOWN_ANSWER.read_text().splitlines()
+            for v in json.loads(ln)["volumes"]
+        ]
+        cat = {
+            r["work_id"]: r
+            for r in pq.read_table(
+                "data/catalog/catalog.parquet", columns=["work_id", "source", "text_path"]
+            ).to_pylist()
+            if r["work_id"] in set(want)
+        }
+        docs = []
+        for w in want:
+            path = norm_path(cat[w])
+            docs.append(_from_file(w, path, len(path.read_text(encoding="utf-8").split())))
+        return docs
     raise SystemExit(f"unknown group {group}")
 
 

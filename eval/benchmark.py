@@ -67,21 +67,23 @@ CLOSED = ("burrows_delta", "cosine_delta", "general_imposters", "ensc")
 
 
 def _masked_tokens(work_ids: list[str]) -> dict[str, list[str]]:
-    """Normalised text with KJV spans removed where masks exist (controls), else as is."""
+    """Normalised text with KJV spans removed where masks exist (controls, known-answer texts),
+    else as is."""
     from ocr_fix.normalize import norm_path
     from segment.build import original_words
 
     want = set(work_ids)
     spans = {}
-    path = Path("data/kjv_mask/controls/spans.jsonl")
-    if not path.exists():  # a fresh clone has only the committed .gz
-        path = path.with_suffix(".jsonl.gz")
-    if path.exists():
-        text = gzip.open(path, "rt").read() if path.suffix == ".gz" else path.read_text()
-        for ln in text.splitlines():
-            r = json.loads(ln)
-            if r["id"] in want:
-                spans[r["id"]] = r["spans"]
+    for group in ("controls", "known_answer"):
+        path = Path(f"data/kjv_mask/{group}/spans.jsonl")
+        if not path.exists():  # a fresh clone has only the committed .gz
+            path = path.with_suffix(".jsonl.gz")
+        if path.exists():
+            text = gzip.open(path, "rt").read() if path.suffix == ".gz" else path.read_text()
+            for ln in text.splitlines():
+                r = json.loads(ln)
+                if r["id"] in want:
+                    spans[r["id"]] = r["spans"]
     cols = ["work_id", "source", "text_path"]
     rows = {
         r["work_id"]: r
