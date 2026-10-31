@@ -95,7 +95,8 @@ SET = [
             "internet_archive:bim_eighteenth-century_histories-english-the_herodotus_1791_2",
         ],
         "ancient history and ethnography of distant peoples",
-        "5th century BC Greek; Beloe's translation with notes. The corpus holds two of its volumes.",
+        "5th century BC Greek; Beloe's translation with notes. The corpus holds two of its "
+        "volumes.",
     ),
     (
         "homer",
