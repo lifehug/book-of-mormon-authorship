@@ -267,6 +267,7 @@ repair:
   copy_index_df_provisional: 20
   copy_min_common_provisional: 5
   gi_feature_fraction_provisional: 0.3
+  gi_trials_provisional: 1000  # BOM-60 improvement 4 (docs/improvement-plan.md)
   ensc_lambda_grid_provisional: [1.5, 2, 3, 4, 5, 6, 8]
 
 pending_amendment:
@@ -293,3 +294,10 @@ pending_amendment:
       in at most 20 volumes sharing at least 5). Under the registered rule this makes Hunt's
       reprinted The Late War visible (15 rare shared, p = 0.0008, against 1, p = 0.05). To be
       registered before BOM-24 uses it.
+  - key: improvements.design
+    issue: BOM-60
+    note: >
+      docs/improvement-plan.md: developed on BOM-21 tasks and BOM-58's authors, evaluated once on a
+      second fresh set. General Imposters at repair.gi_trials_provisional rounds; Delta distance
+      threshold at 5% false-none; ENSC size model refit at Schaalje et al.'s block sizes. None is
+      used on the Book of Mormon unless an amendment registers it.

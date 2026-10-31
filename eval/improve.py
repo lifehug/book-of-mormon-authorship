@@ -12,10 +12,16 @@ is among the profiles; open set: the true author removed, and the method should 
 fitted on two authors. Refit on BOM-58's 30 authors at Schaalje et al.'s block sizes and
 Funai's 108 words, then rerun BOM-57's sample-length test (study B) with both models.
 
+``gi-rounds``: General Imposters with ``repair.gi_trials_provisional`` rounds (registered 100),
+so the score cannot pin at its maximum, on the BOM-21 tasks (whose imposters are already
+genre-matched), against the registered settings; thresholds and the held-out false-positive rate
+as in BOM-21 (two folds).
+
 Usage::
 
     python -m eval.improve delta      # -> data/benchmark/improve_delta.json
     python -m eval.improve ensc-size  # -> data/benchmark/improve_ensc_size.json
+    python -m eval.improve gi-rounds  # -> data/benchmark/improve_gi_rounds.json
 """
 
 from __future__ import annotations
@@ -148,12 +154,64 @@ def ensc_size() -> int:
     return 0
 
 
+def _gi_bom21(recs: list[dict], cfg: dict) -> dict:
+    """BOM-21's General Imposters verdict: thresholds on all records, false positives on held-out
+    halves (two folds, seeded as in BOM-21)."""
+    from eval.benchmark import calibrate_gi
+
+    rate = cfg["benchmark"]["max_open_set_fpr"]
+    pos = [r["gi_positive"] for r in recs]
+    neg = [r["gi_open_negative"] for r in recs if r["gi_open_negative"] is not None]
+    th = calibrate_gi(pos, neg, rate)
+    idx = list(range(len(neg)))
+    random.Random(derive_seed("benchmark-gi-fold", cfg)).shuffle(idx)
+    half = len(idx) // 2
+    fprs = []
+    for cal, ev in ((idx[:half], idx[half:]), (idx[half:], idx[:half])):
+        t = np.quantile([neg[i] for i in cal], 1 - rate)
+        fprs.append(float(np.mean([neg[i] > t for i in ev])))
+    closed = sum(r["general_imposters"] == r["author"] for r in recs) / len(recs)
+    fpr = float(np.mean(fprs))
+    return {"thresholds": th, "closed_set": closed, "open_set_fpr": fpr,
+            "passes": closed >= cfg["benchmark"]["pass_closed_set"] and fpr <= rate,
+            "match_at_maximum": th["match"] >= 1.0}  # fmt: skip
+
+
+def gi_rounds() -> int:
+    import copy
+
+    from eval.benchmark import TASKS, imposter_pool
+
+    cfg = load_config()
+    spec = json.loads(TASKS.read_text())
+    tasks = load_tasks(cfg)
+    pools = {
+        name: imposter_pool(t["pool_set"], set(spec[name].get("exclude_from_pool", [])), cfg,
+                            t["pool_genre"], t["pool_exclude_authors"],
+                            spec[name].get("imposter_fill"))
+        for name, t in tasks.items()
+    }  # fmt: skip
+    more = copy.deepcopy(cfg)
+    more["classic"]["imposters"]["trials"] = cfg["repair"]["gi_trials_provisional"]
+    result: dict = {**stamp(), "plan": "docs/improvement-plan.md, improvement 4"}
+    for vname, vcfg in (("registered", cfg), ("more_rounds", more)):
+        rng = random.Random(derive_seed("improve-gi", cfg))
+        recs = [r for n, t in tasks.items() for r in run_task(t, pools[n], vcfg, rng)]
+        result[vname] = _gi_bom21(recs, cfg)
+        result[vname]["trials"] = vcfg["classic"]["imposters"]["trials"]
+        print(f"{vname}: {result[vname]}", flush=True)
+    (DIR / "improve_gi_rounds.json").write_text(json.dumps(result, indent=1) + "\n")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
     if args[:1] == ["delta"]:
         return delta()
     if args[:1] == ["ensc-size"]:
         return ensc_size()
+    if args[:1] == ["gi-rounds"]:
+        return gi_rounds()
     print(__doc__)
     return 1
 
