@@ -54,7 +54,7 @@ def used_authors() -> set[str]:
     return a
 
 
-def fresh_task(cfg: dict) -> dict:
+def fresh_task(cfg: dict, seed: str = "bom58-fresh", exclude: frozenset = frozenset()) -> dict:
     """``repair.fresh_authors_provisional`` corpus authors not used before; each held-out work
     gives ``benchmark.trials`` tests, the author's other works the reference."""
     from classic.corpus_run import eligible
@@ -69,9 +69,12 @@ def fresh_task(cfg: dict) -> dict:
     pool = {
         a: w
         for a, w in eligible(cfg).items()
-        if a not in used and not a.startswith(task_prefixes) and not collective.search(a)
+        if a not in used
+        and a not in exclude
+        and not a.startswith(task_prefixes)
+        and not collective.search(a)
     }
-    rng = random.Random(derive_seed("bom58-fresh", cfg))
+    rng = random.Random(derive_seed(seed, cfg))
     k = cfg["repair"]["fresh_authors_provisional"]
     authors = sorted(rng.sample(sorted(pool), min(k, len(pool))))
     refs, tests, held = {}, [], {}

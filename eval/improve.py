@@ -22,6 +22,11 @@ Usage::
     python -m eval.improve delta      # -> data/benchmark/improve_delta.json
     python -m eval.improve ensc-size  # -> data/benchmark/improve_ensc_size.json
     python -m eval.improve gi-rounds  # -> data/benchmark/improve_gi_rounds.json
+    python -m eval.improve evaluate   # once, on the second fresh set -> improve_evaluation.json
+
+``evaluate`` draws the evaluation set (seed "bom60-eval", excluding every author used before,
+BOM-58's included) and runs every method as registered and with each change, with every threshold
+and setting read from the committed development results, never recomputed here.
 """
 
 from __future__ import annotations
@@ -204,6 +209,78 @@ def gi_rounds() -> int:
     return 0
 
 
+def evaluate() -> int:
+    import copy
+
+    from classic.ensc_published import LATENT, ENSCPublished
+    from eval.benchmark import imposter_pool
+
+    cfg = load_config()
+    rate = cfg["benchmark"]["max_open_set_fpr"]
+    names = ("repair", "improve_delta", "improve_ensc_size", "improve_gi_rounds")
+    dev = {n: json.loads((DIR / f"{n}.json").read_text()) for n in names}
+    seen = frozenset(dev["repair"]["fresh_authors"])
+    task = fresh_task(cfg, seed="bom60-eval", exclude=seen)
+    assert not set(task["authors"]) & seen
+    pool = imposter_pool("general_prose", set(), cfg, None, tuple(task["authors"]))
+    print(f"evaluation: {len(task['authors'])} authors, {len(task['tests'])} tests, "
+          f"pool {len(pool)}", flush=True)  # fmt: skip
+    more = copy.deepcopy(cfg)
+    more["classic"]["imposters"]["trials"] = cfg["repair"]["gi_trials_provisional"]
+    runs = {}
+    for vname, vcfg in (("registered", cfg), ("more_rounds", more)):
+        rng = random.Random(derive_seed(f"improve-eval:{vname}", cfg))
+        runs[vname] = run_task(task, pool, vcfg, rng)
+        print(f"{vname}: {len(runs[vname])} records", flush=True)
+    recs = runs["registered"]
+    result: dict = {**stamp(), "plan": "docs/improvement-plan.md, evaluation",
+                    "authors": sorted(task["authors"]), "held_out": task["held_out"]}  # fmt: skip
+
+    # General Imposters: thresholds from BOM-21 (registered from BOM-58, 1,000 rounds from 4)
+    for vname, th in (
+        ("registered", dev["repair"]["general_imposters_registered"]["threshold_from_bom21"]),
+        ("more_rounds", dev["improve_gi_rounds"]["more_rounds"]["thresholds"]),
+    ):
+        rs = runs[vname]
+        neg = [r["gi_open_negative"] for r in rs if r["gi_open_negative"] is not None]
+        closed = sum(r["general_imposters"] == r["author"] for r in rs) / len(rs)
+        fpr = float(np.mean([v > th["match"] for v in neg]))
+        result[f"general_imposters_{vname}"] = {
+            "closed_set": closed, "open_set_fpr": fpr,
+            "passes": closed >= cfg["benchmark"]["pass_closed_set"] and fpr <= rate,
+        }  # fmt: skip
+
+    # Delta: closed set as registered; the verification score with the development threshold
+    for m in ("burrows", "cosine"):
+        result[f"{m}_delta"] = _verdict(recs, m, dev["improve_delta"][m]["threshold_from_bom21"])
+
+    # ENSC as published, with the published and the refitted size model; settings from BOM-58
+    cal = dev["repair"]["ensc_published"]["calibration_from_bom21"]
+    for mname, sm in dev["improve_ensc_size"]["models"].items():
+
+        def pred(r: dict, drop: str | None, sm: list = sm):
+            X, labels, x = r["_ensc"]
+            if drop is not None:
+                keep = [i for i, y in enumerate(labels) if y != drop]
+                X, labels = X[keep], [labels[i] for i in keep]
+            m = ENSCPublished(shrinkage=cal["shrinkage"], lam=cal["lambda"], size_adjust=True,
+                              size_model=tuple(sm)).fit(X, labels)  # fmt: skip
+            return m.predict(x, r["_n"])
+
+        ins = [(pred(r, None), r["author"]) for r in recs]
+        outs = [pred(r, r["author"]) for r in recs]
+        result[f"ensc_published_{mname}_size_model"] = {
+            "closed_set": sum(p == a for p, a in ins) / len(ins),
+            "false_none": sum(p == LATENT for p, _ in ins) / len(ins),
+            "open_set_fpr": sum(p != LATENT for p in outs) / len(outs),
+        }
+    (DIR / "improve_evaluation.json").write_text(json.dumps(result, indent=1) + "\n")
+    for k, v in result.items():
+        if isinstance(v, dict) and "closed_set" in v:
+            print(f"{k}: {v}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
     if args[:1] == ["delta"]:
@@ -212,6 +289,8 @@ def main(argv: list[str] | None = None) -> int:
         return ensc_size()
     if args[:1] == ["gi-rounds"]:
         return gi_rounds()
+    if args[:1] == ["evaluate"]:
+        return evaluate()
     print(__doc__)
     return 1
 
