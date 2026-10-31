@@ -260,6 +260,12 @@ seed: 20261017
 # an amendment registers it; pending_amendment: repair.design
 repair:
   fresh_authors_provisional: 30
+  # BOM-60 improvement 1, rarity by text (reuse.rare.copy_clusters); pending_amendment:
+  # borrowing.df_by_text
+  copy_jaccard_provisional: 0.8
+  copy_min_hits_provisional: 10
+  copy_index_df_provisional: 20
+  copy_min_common_provisional: 5
   gi_feature_fraction_provisional: 0.3
   ensc_lambda_grid_provisional: [1.5, 2, 3, 4, 5, 6, 8]
 
@@ -279,3 +285,11 @@ pending_amendment:
       0.3, and ENSC as published (latent author, 2011 size adjustment) with lambda chosen by the
       Amendment 7 Change 4 rule, tested on 30 fresh corpus authors and on the BOM-21 tasks; a
       method is repaired only if it meets both section 7 bars on both.
+  - key: borrowing.df_by_text
+    issue: BOM-60
+    note: >
+      Count a 4-gram's document frequency by text rather than by volume, copies found by content
+      (shared-gram Jaccard >= 0.8 among volumes with 10+ shared grams; candidate pairs from grams
+      in at most 20 volumes sharing at least 5). Under the registered rule this makes Hunt's
+      reprinted The Late War visible (15 rare shared, p = 0.0008, against 1, p = 0.05). To be
+      registered before BOM-24 uses it.

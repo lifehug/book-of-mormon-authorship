@@ -291,30 +291,26 @@ if __name__ == "__main__":
     sys.exit(main())
 
 
-# BOM-60 (docs/improvement-plan.md): copies of one text, found by their shared phrases
-COPY_JACCARD = 0.8  # two volumes are copies if their shared-gram sets overlap this much
-COPY_MIN_HITS = 10  # volumes with fewer shared grams are never merged
-COPY_INDEX_DF = 20  # only grams in at most this many volumes nominate candidate pairs
-COPY_MIN_COMMON = 5  # a pair must share at least this many such grams to be compared
-
-
 def copy_clusters(recs: list[dict]) -> dict[str, str]:
     """Each volume's copy group, by content: two volumes are copies of one text when the sets of
-    target grams they share overlap by ``COPY_JACCARD`` or more. Titles cannot decide this (a
-    multi-volume work's volumes share a title and differ in text; a periodical's issues too), and
-    the deduplication missed the nine printings of Hunt's *The Late War*. Candidate pairs come
-    from grams few volumes carry, so the comparison stays tractable. Returns volume -> group id
-    (the smallest member id)."""
+    target grams they share overlap by ``repair.copy_jaccard_provisional`` or more. Titles cannot
+    decide this (a multi-volume work's volumes share a title and differ in text; a periodical's
+    issues too), and the deduplication missed the nine printings of Hunt's *The Late War*.
+    Candidate pairs come from grams few volumes carry, so the comparison stays tractable.
+    Returns volume -> group id (the smallest member id)."""
     from collections import Counter
 
-    hits = {r["work_id"]: set(r["hits"]) for r in recs if len(r["hits"]) >= COPY_MIN_HITS}
+    rp = load_config()["repair"]  # provisional until registered (pending: borrowing.df_by_text)
+    jaccard, min_hits = rp["copy_jaccard_provisional"], rp["copy_min_hits_provisional"]
+    index_df, min_common = rp["copy_index_df_provisional"], rp["copy_min_common_provisional"]
+    hits = {r["work_id"]: set(r["hits"]) for r in recs if len(r["hits"]) >= min_hits}
     index: dict[int, list[str]] = {}
     for w, h in hits.items():
         for g in h:
             index.setdefault(g, []).append(w)
     pairs: Counter = Counter()
     for vols in index.values():
-        if 1 < len(vols) <= COPY_INDEX_DF:
+        if 1 < len(vols) <= index_df:
             vols = sorted(vols)
             for i, a in enumerate(vols):
                 for b in vols[i + 1 :]:
@@ -328,10 +324,10 @@ def copy_clusters(recs: list[dict]) -> dict[str, str]:
         return x
 
     for (a, b), n in pairs.items():
-        if n < COPY_MIN_COMMON:
+        if n < min_common:
             continue
         ha, hb = hits[a], hits[b]
-        if len(ha & hb) / len(ha | hb) >= COPY_JACCARD:
+        if len(ha & hb) / len(ha | hb) >= jaccard:
             ra, rb = find(a), find(b)
             if ra != rb:
                 parent[max(ra, rb)] = min(ra, rb)
