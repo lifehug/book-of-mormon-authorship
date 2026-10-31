@@ -556,7 +556,7 @@ Phase 4 maps which earlier texts share wording or ideas with the Book of Mormon,
 - [ ] Run the same against 3-5 control books (for example Luke, *The Late War*, a sermon collection) to see typical overlap levels
 
 **Done when:** an alignment table for the Book of Mormon and controls is published.
-**Depends on:** #19, #40.
+**Depends on:** #19, #40, #61 (known-answer controls first).
 
 ### #24 Score rare phrases against a proper null model
 
