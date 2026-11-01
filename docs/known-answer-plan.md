@@ -97,7 +97,7 @@ it cannot drift.
 | Exact text reuse | BOM-23 | share of the text aligned to period works other than its own copies and the King James Bible | higher | 2026-10-31, in `docs/reuse-plan.md` before any draw ran |
 | Rare phrases | BOM-24 | the strongest period source's rare shared 4-grams per 10,000 words, by text | higher | - |
 | Semantic and story parallels | BOM-25 | strongest period source's parallel score | higher | - |
-| King James italics | BOM-62 | share of the KJV's italic (added) words reproduced where the text runs parallel to the KJV | higher | - |
+| King James italics | BOM-62 | share of the KJV's italic (added) words reproduced where the text runs parallel to the KJV | higher | own known answer (Amendment 11); Amendment 9's separation not computable (no presented-as-ancient text has 50 italic words) |
 | Period-only language model | BOM-27, 28 | to be set at BOM-27 | to be set | - |
 | Linguistic dating | BOM-29 | predicted composition date | later | - |
 | Thematic dating | BOM-63 | to be set at BOM-63 | to be set | - |

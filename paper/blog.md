@@ -2244,8 +2244,48 @@ isn't word for word: rare phrases (BOM-24, after the date audit) and shared mean
 
 All three are written up in the plan.
 
+## The King James translators' little words
+
+When the King James translators had to add a word so the English made sense, they printed it in
+italics: "darkness *was* upon the face of the deep". There's no "was" in the Hebrew. So the
+question was: when the Book of Mormon quotes the Bible, what does it do with those added words?
+
+First, a check that the italics we're using are the ones Joseph Smith's family Bible actually
+printed. A model looked up 100 random italic words in page images of the 1828 Phinney edition. 88
+were italic there too. (My first try said 38 couldn't be found. That was my bug: the scan hides
+a few pages, so in the New Testament I was showing the model a page five pages away from the
+right one.)
+
+The result:
+
+| | Added words kept | Other words kept |
+| --- | --- | --- |
+| 1820s sermons quoting the Bible | 90% | 93% |
+| Independent translations (Lowth's *Isaiah*, two others) | 90% | 93% |
+| **Book of Mormon** | **64%** | **95%** |
+
+The test we registered didn't work, and that's the first thing to say. We expected translators
+working from the Hebrew to keep *fewer* of the King James added words than preachers quoting the
+Bible. They keep the same 90%. Where an independent translation runs close to the King James
+wording at all, it needs the same little English words ("is", "was"), so it supplies the same
+ones. The rule we wrote in advance says that when the reference groups don't separate, the Book
+of Mormon's numbers get reported without a verdict. So no verdict.
+
+The numbers are still striking. The Book of Mormon keeps 95% of the ordinary King James words in
+these passages and only 64% of the added ones. Both reference groups show a gap of 2-3 points;
+the Book of Mormon's is 30. In Isaiah, 37% of the added words are dropped or changed.
+
+This isn't news to people who study it, and that's the good part: our count matches theirs.
+Stan Spencer (apologetic, 2020) counts 37% across the Isaiah chapters; David Wright (critical,
+1998) about 40%. Critics read the pattern as someone revising the King James text at the
+italics. Spencer reads it as Joseph Smith restoring words a previous translator had left out.
+Our test can't choose between those. What it adds is the comparison nobody had made: real
+translators and real preachers don't do this. Whatever the explanation, it has to account for
+a text that treats the King James translators' own additions differently from everything else.
+
 ## Log
 
+- **2026-11-01.** BOM-62 closed. Italics check 88/100 in the 1828 Phinney Bible. The registered check fails (independent translations and sermons both keep 90% of KJV italic words), so no verdict; descriptively the Book of Mormon keeps 64% of italic words against 95% of the rest (D 0.30 vs 0.02-0.03), and its Isaiah figure (37% not kept) matches Spencer 2020 and Wright 1998.
 - **2026-11-01.** BOM-23 closed. Exact reuse, KJV masked: Book of Mormon 0.16% of its text shared with earlier books (0.52% before misdated later quotations are set aside), against 2.4% for an 1821 sermon collection and 8.9% for *The Late War*. Its pre-1830 matches are short stock phrases. Uninformative on the translation question under Amendment 9.
 - **2026-11-01.** BOM-64 filed: catalog dates are wrong for some serials (an "1817" Congressional serial set volume mentions 1865 594 times and quotes Jacob 2). The registered 12-word seal still keeps the Book of Mormon out of every pool; the date audit runs before BOM-24.
 - **2026-11-01.** BOM-23's known-answer check failed, as a known-answer check is allowed to. The three books presented as ancient (*Ossian*, Rowley, *Jasher*) share almost no wording with earlier books (0.00%, 0.00%, 0.28%), less than the genuine translations do (Hesiod 2.0%, Herodotus 0.9%). A forger writing in an invented ancient voice doesn't copy whole sentences; a real translator shares wording with earlier translations of the same book. So exact copying can't tell a translation from a period composition, and the reuse table will be reported as a list of sources, nothing more. Book of Mormon: 0.05%. Also: the 1828 Phinney Bible check came back at 88 of 100 italics matching.

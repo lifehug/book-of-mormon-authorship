@@ -116,3 +116,60 @@ italic word was counted.
   Old Testament, which the neighbouring-page retry absorbed, and five off in the New, which it
   could not. Pages are now mapped through the scan's `scandata.xml`; the 38 were asked again;
   the answers that named their verse stand.
+
+## Result (2026-11-01; `python -m eval.italics measure`, `data/italics/measure.json`)
+
+**The italics check (Amendment 11):** 88 of 100 seeded italic words are italic in the 1828
+Phinney Bible, 12 roman (model-assisted from page images, simulated).
+
+| Group | Spans | Italic words | R_i (95% CI) | R_r | D (95% CI) |
+| --- | --- | --- | --- | --- | --- |
+| (a) independent translations, pooled | 1,306 | 806 | 0.903 (0.861-0.937) | 0.929 | 0.026 (-0.001 to 0.056) |
+| (b) 1820s sermons | 498,225 | 480,072 | 0.904 (0.901-0.907) | 0.927 | 0.023 (0.021-0.026) |
+| Book of Mormon | 337 | 493 | 0.645 (0.576-0.716) | 0.946 | 0.301 (0.235-0.361) |
+
+Independent volumes: Lowth vol. 1, R_i 0.867 (128 italic words); the 1790 *Isaiah*, 0.912
+(148); the 1807 *Psalms*, 0.909 (530).
+
+**The test is not shown to work.** (a)'s R_i interval does not lie below (b)'s; the two groups
+keep the supplied words at the same rate. Inside the passages where an independent translation
+runs parallel to the King James text (the registered spans, identity at least 0.60), it supplies
+the same small English words ("is", "was", "that") the King James translators did, because
+English needs them. So under the rule fixed before counting, **the Book of Mormon's rates are
+reported without interpretation** and readings (1)-(3) above do not apply. Amendment 9's
+separation is not computable for this test: of its texts only the *Apocryphal New Testament*
+(genuine, 60 italic words) reaches 50 italic words, and no text presented as ancient does.
+
+**Descriptive, noticed after the result (post hoc):** the Book of Mormon keeps 95% of the King
+James roman words in its spans and 64% of the italic ones, a gap (D = 0.30) more than ten times
+that of either reference group, whose intervals it does not overlap. By book: Isaiah 394 italic
+words, 62.7% kept (69 changed, 78 dropped); Matthew 30, 56.7%; Malachi 27, 66.7%; Exodus 15,
+60.0%. This test cannot say what produces the gap.
+
+**Beside the published work.** The pattern is known, and our count matches it:
+
+- David P. Wright, "Joseph Smith's Interpretation of Isaiah in the Book of Mormon," *Dialogue*
+  31, no. 4 (1998), https://www.dialoguejournal.com/articles/joseph-smiths-interpretation-of-isaiah-in-the-book-of-mormon/
+  (critical): 3.6% of the words in the main Isaiah chapters are italic, and about 40% of them
+  are missing from the Book of Mormon; read as work done directly on the KJV. Wright's 2002
+  chapter in *American Apocrypha* and Stan Larson's work on the Sermon on the Mount (*Trinity
+  Journal* 7, 1986, 23-45; cited by Spencer as the "italics revision" hypothesis) make the same
+  argument (cited through Spencer and *Dialogue*, not yet read here).
+- John A. Tvedtnes, "Isaiah Variants in the Book of Mormon," in *Isaiah and the Prophets*
+  (1984), https://rsc.byu.edu/isaiah-prophets/isaiah-variants-book-mormon (apologetic): 59
+  omissions and 37 changes of italic words, 35 of the changes neutral in meaning.
+- Stan Spencer, "Missing Words: King James Bible Italics, the Translation of the Book of Mormon,
+  and Joseph Smith as an Unlearned Reader," *Interpreter* 38 (2020): 45-106,
+  https://interpreterfoundation.org/journal/missing-words-king-james-bible-italics-the-translation-of-the-book-of-mormon-and-joseph-smith-as-an-unlearned-reader
+  (apologetic): about 37% of italic words omitted across the Isaiah chapters, 41% against about
+  1% of other words in 2 Nephi 16-17; Royal Skousen attributes 29% of the Isaiah differences to
+  italic words; explained as a prior translator's omission of the italic words, restored by
+  Joseph Smith.
+
+Our Isaiah figure, 37.3% of italic words not kept, agrees with Spencer's 37% and Wright's
+about 40%. What this study adds is the comparison: independent translators and period
+preachers both keep about 90% of the supplied words where they follow the King James text,
+so the Book of Mormon's 64% sets it apart from both. That difference is consistent with
+deliberate revision at the italics (Larson, Wright) and with Spencer's missing-words account
+alike; this test does not separate those, and the project draws no conclusion about
+inspiration.
