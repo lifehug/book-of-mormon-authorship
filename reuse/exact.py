@@ -18,6 +18,7 @@ Usage::
 
     python -m reuse.exact scan [--workers 8]   # -> data/reuse/exact/hits.parquet
     python -m reuse.exact align <search>       # e.g. ossian:draw0, bom:full -> alignments/
+    python -m reuse.exact separation           # -> data/reuse/exact/known_answer.json
 """
 
 from __future__ import annotations
@@ -531,6 +532,82 @@ def align(search: str, workers: int) -> int:
     return 0
 
 
+# Own copies the author/title rule missed, found reading the draws' sources (not a threshold):
+# reported beside the score, which is shown with and without them.
+MISSED_OWN_COPIES = {
+    # the 1576 printing of the same English translation (Gilby), its title in old spelling
+    "twelve_patriarchs": ["tcp:A09151"],
+}
+
+
+def _score(path: Path, drop: set[str]) -> float:
+    r = json.loads(path.read_text())
+    cov: set[int] = set()
+    for row in r["rows"]:
+        if row["work_id"] not in drop:
+            cov.update(range(row["t_tok_begin"], row["t_tok_end"]))
+    return len(cov) / r["target_tokens"]
+
+
+def separation() -> int:
+    """Amendment 9's rule on the matched-window scores: one-sided exact Mann-Whitney of the
+    presented-as-ancient texts against the genuine ones ("higher" means its own time), the Rowley
+    check, and the spelling-era check of the plan."""
+    from itertools import combinations
+
+    from eval.known_answer import GENUINE, MODERN, SET
+
+    cfg = load_config()
+    texts = {}
+    for key, group, primary, *_ in SET + [("bom", "target", False)]:
+        draws = range(cfg["reuse"]["matched_draws"])
+        paths = [OUT / "alignments" / f"{key}_draw{i}.json" for i in draws]
+        if not all(x.exists() for x in paths):
+            raise SystemExit(f"{key}: draws not finished")
+        drop = set(MISSED_OWN_COPIES.get(key, []))
+        raw = [json.loads(x.read_text())["covered_share"] for x in paths]
+        fixed = [_score(x, drop) for x in paths]
+        texts[key] = {"group": group, "primary": primary, "draws": raw,
+                      "score": sum(raw) / len(raw), "draws_own_copies_out": fixed,
+                      "score_own_copies_out": sum(fixed) / len(fixed),
+                      "missed_own_copies": sorted(drop)}  # fmt: skip
+
+    def test(field: str, override: dict | None = None) -> dict:
+        sc = {k: v[field] for k, v in texts.items() if v["primary"]}
+        sc.update(override or {})
+        gen = [sc[k] for k, v in texts.items() if v["primary"] and v["group"] == GENUINE]
+        mod = [sc[k] for k, v in texts.items() if v["primary"] and v["group"] == MODERN]
+
+        def u(m: list[float], g: list[float]) -> float:
+            return sum((a > b) + 0.5 * (a == b) for a in m for b in g)
+
+        obs, pool = u(mod, gen), gen + mod
+        null = []
+        for pick in combinations(range(len(pool)), len(mod)):
+            null.append(u([pool[i] for i in pick],
+                          [pool[i] for i in range(len(pool)) if i not in pick]))  # fmt: skip
+        p = sum(x >= obs for x in null) / len(null)
+        return {"U": obs, "of": len(mod) * len(gen), "p": p,
+                "separates": p <= cfg["known_answer"]["separation_p"]}  # fmt: skip
+
+    out = {"score": "share of the masked text covered by passages aligned to the matched window's "
+           "volumes, mean over the draws; higher means its own time", "texts": texts}  # fmt: skip
+    for field in ("score", "score_own_copies_out"):
+        res = test(field)
+        gen = sorted(v[field] for v in texts.values() if v["primary"] and v["group"] == GENUINE)
+        res["rowley_at_genuine_median"] = test(field, {"rowley": gen[len(gen) // 2]})
+        ref = sorted(texts[k][field] for k in ("twelve_patriarchs", "apocryphal_nt", "josephus",
+                                               "koran", "homer"))  # fmt: skip
+        res["spelling_check"] = {k: texts[k][field] > ref[2] for k in ("ossian", "jasher")}
+        out[field] = res
+        print(f"{field}: U = {res['U']}/{res['of']}, p = {res['p']:.3f}, separates: "
+              f"{res['separates']}; spelling check {res['spelling_check']}")  # fmt: skip
+    path = OUT / "known_answer.json"
+    path.write_text(json.dumps({**stamp(), **out}, indent=1) + "\n")
+    print(f"-> {path}")
+    return 0
+
+
 def targets_text(cfg: dict, key: str) -> str:
     """One target's masked text (the same construction as ``targets``, built alone)."""
     from reuse.rare import bom_text, stand_in_text
@@ -556,7 +633,10 @@ def main(argv: list[str] | None = None) -> int:
     al = sub.add_parser("align")
     al.add_argument("search", help="e.g. ossian:draw0, bom:full")
     al.add_argument("--workers", type=int, default=8)
+    sub.add_parser("separation")
     a = ap.parse_args(argv)
+    if a.cmd == "separation":
+        return separation()
     if a.cmd == "scan":
         return scan(a.workers)
     if a.cmd == "align":

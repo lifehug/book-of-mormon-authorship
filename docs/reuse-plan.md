@@ -131,3 +131,31 @@ prefilter itself stays lossless (a volume it drops cannot be aligned). Every sea
 Mormon's included, runs with the same margins, so the comparison stays like for like; the margin
 is reported with every passage.
 
+
+## Known-answer result (2026-11-01; `python -m reuse.exact separation`)
+
+**The test does not separate the groups: uninformative on the translation question.** Mean share
+over three draws of 2,000 matched-window volumes; higher was declared to mean "its own time".
+
+| Group | Text | Score |
+| --- | --- | --- |
+| presented as ancient | *Ossian*, Rowley, *Jasher* | 0.0000, 0.0000, 0.0028 |
+| genuine | Hesiod, Herodotus, *Enoch*, *Apocryphal NT* | 0.0203, 0.0090, 0.0044, 0.0041 |
+| genuine | *Sacontala*, Koran, Homer, Josephus | 0.0006, 0.0004, 0.0003, 0.0002 |
+| genuine | *Twelve Patriarchs* | 0.2287 (0.0045 without a missed own copy) |
+| secondary | Ireland papers, *Otranto* | 0.0080, 0.0000 |
+| target | Book of Mormon | 0.0005 |
+
+U = 4 of 27, exact p = 0.964 (rule: p <= 0.01), the same with the missed copy left out. The
+spelling-era check passes for *Jasher* and fails for *Ossian*. The texts presented as ancient
+quote their own century's books *less* than genuine translations quote earlier English: a
+forger writing in an invented ancient voice avoids verbatim borrowing, while a genuine
+translation shares wording with earlier translations and commentaries on the same work. Exact
+reuse therefore stays in the study as a description of the Book of Mormon's sources (the reuse
+table), not as evidence on whether it is a translation.
+
+**A missed own copy.** One *Twelve Patriarchs* draw scored 0.677: almost all of it is
+`tcp:A09151`, the 1576 printing of the same English translation (Gilby), whose old-spelling
+title ("twelue patriarches") escaped the title rule. It is listed in `MISSED_OWN_COPIES` and
+the score is reported both ways; leaving it out can only lower a genuine score, so it cannot
+change a failed separation into a pass. The full tables are read for the same leak.

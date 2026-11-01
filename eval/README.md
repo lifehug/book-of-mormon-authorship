@@ -108,6 +108,7 @@ Plan, registered before any run (Amendment 10): `docs/reuse-plan.md`.
 | --- | --- | --- | --- | --- |
 | `python -m reuse.exact scan` | registered | the lossless prefilter: which of each target's 5-grams every volume in any search contains | `data/reuse/exact/hits.parquet`, `searches.json` | ~80 min |
 | `python -m reuse.exact align <search>` | registered | passim on the candidates of one search: `bom:full`, `late_war:full`, `sermon:full`, or `<text>:draw<0-2>` for the known-answer score | `data/reuse/exact/alignments/<search>.json` | minutes to hours |
+| `python -m reuse.exact separation` | registered | Amendment 9's rule on the 45 matched-window draws: exact Mann-Whitney, Rowley check, spelling-era check; scores with and without own copies the title rule missed | `data/reuse/exact/known_answer.json` | seconds |
 
 ## 8. The King James italics test (BOM-62)
 
