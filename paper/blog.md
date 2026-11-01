@@ -2157,8 +2157,58 @@ OSF before it runs, so nobody can say we moved the goalposts after seeing a resu
 The italics test asks whether it was working from the King James English. The fairness check
 tells us how much to trust each answer.
 
+## Books with the wrong birthday
+
+Overnight the computer finished comparing the Book of Mormon, word for word, against every book
+in our library that was printed before it: about 221,000 volumes. It found 58 shared passages in
+47 books. That's half a percent of the text, once the King James Bible is set aside.
+
+The longest matches looked alarming at first. A 97-word stretch of Jacob 2, the passage about
+having one wife ("for there shall not any man among you have save it be one wife"), matched a
+volume catalogued as the *United States Congressional Serial Set*, **1817**, at 97% identity. If
+that date were right, it would be a source printed 13 years before the Book of Mormon.
+
+It isn't right. I counted the years that volume mentions in its own text. "1865" appears 594
+times and "1864" 354 times. It's a government volume from the 1860s, when Congress was arguing
+about Utah and plural marriage, and it quotes the Book of Mormon. Another "1817" serial-set
+volume mentions 1868 more than any other year. A *Millennial Harbinger* catalogued as 1830 talks
+about 1831 most, which is when Alexander Campbell published his attack on the Book of Mormon in
+that magazine. A *Monthly Review* catalogued as 1826 talks about 1842 most.
+
+So the longest "sources" are really the book's later readers and critics, filed under the wrong
+year. Magazines and long government series seem to get stamped with the date their first volume
+came out, and every later volume inherits it.
+
+**Does this break anything?** Not the seal. We registered a rule in advance: any book that
+shares a 12-word original Book of Mormon string gets dropped from every training and comparison
+pool. That rule looks at what a book *says*, not at its date, so a misdated book that quotes the
+Book of Mormon gets caught either way. A date can be wrong; a quotation can't hide.
+
+Dates do matter elsewhere. Lots of our tests say "only books printed before X": which books
+could be sources, how rare a phrase is, what the dating models learn as "1820s English". A later
+book carrying an early date can pose as a source. And a misdated book that *doesn't* quote the
+Book of Mormon would sit quietly in the "before 1830" pile, and nothing would catch it.
+
+**What we're doing about it:** a new issue, BOM-64, comes before the rare-phrase test (BOM-24).
+We won't delete anything. We never delete sources, and deleting would hide the mistake instead
+of recording it. Here's the plan:
+
+- scan every volume for how often it mentions years later than its catalog date;
+- check a random sample by hand against title pages, to find out how good the scan is;
+- build a correction table listing each fixed date and its evidence;
+- make every date-sensitive test read that table.
+
+One small lesson came out of the first look. You can't just take the *latest* year a book
+mentions, because one of those serial-set volumes contains "1998", from a library stamp or a scanning
+error. You have to count how often later years show up.
+
+The rest of the 58 matches are more ordinary, and I'll write them up with BOM-23: short, loose
+matches on religious stock phrases of the day. Examples are "the Lord cannot look upon sin with
+the least degree of allowance" and "I fear not what man can do... perfect love casteth out all fear".
+
 ## Log
 
+- **2026-11-01.** BOM-64 filed: catalog dates are wrong for some serials (an "1817" Congressional serial set volume mentions 1865 594 times and quotes Jacob 2). The registered 12-word seal still keeps the Book of Mormon out of every pool; the date audit runs before BOM-24.
 - **2026-11-01.** BOM-23's known-answer check failed, as a known-answer check is allowed to. The three books presented as ancient (*Ossian*, Rowley, *Jasher*) share almost no wording with earlier books (0.00%, 0.00%, 0.28%), less than the genuine translations do (Hesiod 2.0%, Herodotus 0.9%). A forger writing in an invented ancient voice doesn't copy whole sentences; a real translator shares wording with earlier translations of the same book. So exact copying can't tell a translation from a period composition, and the reuse table will be reported as a list of sources, nothing more. Book of Mormon: 0.05%. Also: the 1828 Phinney Bible check came back at 88 of 100 italics matching.
 - **2026-10-31.** Amendment 11 filed (revision 6ae62f2ca50d25933c296d01): the King James italics test, registered before any italic word is counted. BOM-23's matching tested: a bug let stock phrases through ("with propriety be said to have been"); fixed to count only rare phrases both passages share. Ossian: no shared passages with 2,000 earlier books; Jasher: 5, mostly a King James phrase the mask missed under OCR damage.
 - **2026-10-31.** Plain-words status of phase 4 added (owner asked for it in the blog). BOM-62 italics plan drafted; its own known-answer check uses independent period translations of Isaiah, Psalms and Matthew against King James quotations in 1820s sermons.

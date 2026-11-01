@@ -558,6 +558,20 @@ Phase 4 maps which earlier texts share wording or ideas with the Book of Mormon,
 **Done when:** an alignment table for the Book of Mormon and controls is published.
 **Depends on:** #19, #40, #61's set and plan (done; #61 stays open until every test has reported on the set).
 
+### #64 Catalog date audit: find and correct misdated volumes
+
+**Goal:** find and correct volumes whose catalog date is earlier than their text, before any test that selects books by date.
+
+Found by #23 (2026-11-01): its longest Book of Mormon matches were later texts quoting it, catalogued decades early (Congressional serial set volumes dated 1817 whose text mentions 1865 and 1868 hundreds of times; a *Millennial Harbinger* dated 1830 that mentions 1831 most; a *Monthly Review* dated 1826 that mentions 1842 most). The registered seal catches any volume that quotes the Book of Mormon whatever its date; it does not catch a misdated book that does not.
+
+- [ ] Scan, no model: count each volume's mentions of years later than its catalog year, flag by a rule written first
+- [ ] Scale by source and kind; precision and miss rate from a seeded title-page sample
+- [ ] Correction table with evidence (never delete a source); uncertain volumes left out of date-sensitive tests
+- [ ] Every date-window reader uses the corrected date; confirm the 12-token seal catches #23's 47 volumes and runs on #27's training set
+
+**Done when:** the correction table is published with its precision estimate and every date-dependent stage reads it.
+**Depends on:** #12, #19. **Feeds:** #24, #25, #27, #29, #63.
+
 ### #24 Score rare phrases against a proper null model
 
 **Goal:** fix the main weakness of the 2013 rare 4-gram study.
@@ -568,7 +582,7 @@ Phase 4 maps which earlier texts share wording or ideas with the Book of Mormon,
 - [ ] Report each source's score as a percentile against that null, with confidence intervals
 
 **Done when:** a ranked source list with percentiles is published, including where Luke and *The Late War* fall.
-**Depends on:** #23.
+**Depends on:** #23, #64.
 
 ### #25 Search for semantic parallels
 
