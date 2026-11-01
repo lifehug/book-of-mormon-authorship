@@ -110,6 +110,7 @@ Plan, registered before any run (Amendment 10): `docs/reuse-plan.md`.
 | `python -m reuse.exact align <search>` | registered | passim on the candidates of one search: `bom:full`, `late_war:full`, `sermon:full`, or `<text>:draw<0-2>` for the known-answer score | `data/reuse/exact/alignments/<search>.json` | minutes to hours |
 | `python -m reuse.exact separation` | registered | Amendment 9's rule on the 45 matched-window draws: exact Mann-Whitney, Rowley check, spelling-era check; scores with and without own copies the title rule missed | `data/reuse/exact/known_answer.json` | seconds |
 | `python -m reuse.exact sources <search>` | descriptive (post hoc labels) | each source volume of a full table: the years its own text mentions against its catalog year, the seal check, King James share; sorts the Book of Mormon's sources into later quotation, missed Bible text, shared period phrase | `data/reuse/exact/sources/<search>.json` | seconds |
+| `python -m reuse.exact redate` | descriptive (BOM-64) | the full tables under the corrected dates: covered share without volumes now dated past each window, and those volumes listed (`separation` adds the known-answer score `score_redated`) | `data/reuse/exact/redated.json` | seconds |
 
 ## 8. The King James italics test (BOM-62)
 
@@ -120,6 +121,16 @@ Plan, registered before any count (Amendment 11): `docs/italics-plan.md`.
 | `python -m eval.italics ranges` | registered | the translation-only ranges of the independent translations, from their layout, before any count | `data/italics/translation_ranges.json` | seconds |
 | `python -m eval.italics check` | registered (simulated, model-assisted) | the 100 seeded italic words looked up in page images of the 1828 Phinney Bible; resumes, retries outages | `data/italics/phinney_check.jsonl`, page images in `data/italics/phinney/pages/` | about 1.5 hours |
 | `python -m eval.italics measure` | registered | kept / changed / dropped for italic and roman KJV words in every masked span; R_i, R_r, D with bootstrap intervals for the Book of Mormon, 1820s sermons, independent translations and Amendment 9's texts; Amendment 11's check | `data/italics/measure.json` | about 3 minutes |
+
+## 9. The catalog date audit (BOM-64)
+
+Plan, registered before the scan (Amendment 12): `docs/date-audit-plan.md`.
+
+| Command | Kind | What it does | Writes | Time |
+| --- | --- | --- | --- | --- |
+| `python -m metadata.dates check` | registered (BOM-56) | title-page check of every volume catalogued with the 1800 placeholder | `data/catalog/date_check.parquet` | seconds |
+| `python -m metadata.dates body` | registered | counts year mentions in the full text of every volume dated 1830 or earlier; flags and corrects volumes that name later years | `data/catalog/date_body.parquet` (counts only) | ~5 min, 8 workers |
+| `python -m metadata.dates sample` | registered (simulated, model-assisted) | the precision check: 100 flagged and 100 unflagged volumes, printing year read by a model from the opening and closing pages; resumes, retries outages | `data/catalog/date_sample.jsonl` | ~2 hours |
 
 ## Other
 

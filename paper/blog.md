@@ -2283,8 +2283,41 @@ Our test can't choose between those. What it adds is the comparison nobody had m
 translators and real preachers don't do this. Whatever the explanation, it has to account for
 a text that treats the King James translators' own additions differently from everything else.
 
+## Fixing the birthdays
+
+Last time I found books in our library with the wrong birthday: a government volume dated 1817
+that was really from the 1860s, quoting the Book of Mormon. So we checked every book dated 1830
+or earlier, all 366,580 of them, in about five minutes. The rule was written down and filed with
+the OSF before we ran it. For each book, count the four-digit years in its own text. If it keeps
+naming years well after its catalog date (at least ten times, and at least a fifth of all the
+years it names), it's flagged, and it moves to the latest year it names at least three times.
+
+It flagged 23,859 books, and 19,463 of them move past 1830. Most are magazines and long series.
+A *Boston Medical and Surgical Journal* dated 1828 names 1847 399 times. An "1801" *Official
+Register of the United States* names 1871 more than a thousand times. Harvard's catalog was the
+worst: nearly two in five of its "pre-1830" books get flagged.
+
+Then we checked the checker. A model (a simulated reader, not a person) read the first and last
+pages of 100 flagged books and 100 unflagged ones and said what year each was really printed.
+Flagged books: 81 of 100 really were printed later than the catalog says. Unflagged books: 5 of
+97. So the rule is right about four times in five, and it misses about one in twenty.
+
+The wrong ones taught me something. An *Edinburgh Magazine* from 1823 has "1923" stamped in it
+three times by a library, so the rule moved it a hundred years. About one moved book in five
+may really belong before 1830. That matters, because a real 1820s book moved out of the pile
+could be a real source we'd never see. So, decided now before those tests run: the rare-phrase
+and paraphrase searches will still show matches from moved books, in their own column, with both
+dates. Nothing gets hidden by the fix.
+
+Did it change last week's answer? No. With the corrected dates, the Book of Mormon's word-for-word
+overlap with earlier books drops from 0.52% to 0.26% (0.16% once the quotation seal is applied).
+16 of the 17 misdated quotations move past 1830 on their own, and the seal catches the last one.
+None of the 30 ordinary period phrases moved. The sermons go from 2.47% to 2.28%, *The Late War*
+from 8.92% to 8.74%, and the known-answer test comes out exactly the same.
+
 ## Log
 
+- **2026-11-01.** BOM-64 closed. 366,580 volumes dated 1830 or earlier scanned; 23,859 flagged, 19,463 moved past 1830 (Harvard 39% flagged). Model-read check (simulated): 81 of 100 flagged really later; 5 of 97 unflagged missed. About one moved volume in five may truly be pre-1830, so BOM-24 and BOM-25 will list matches from moved volumes separately. BOM-23 rechecked: Book of Mormon 0.26% on dates alone (0.16% with the seal), known-answer test unchanged.
 - **2026-11-01.** BOM-62 closed. Italics check 88/100 in the 1828 Phinney Bible. The registered check fails (independent translations and sermons both keep 90% of KJV italic words), so no verdict; descriptively the Book of Mormon keeps 64% of italic words against 95% of the rest (D 0.30 vs 0.02-0.03), and its Isaiah figure (37% not kept) matches Spencer 2020 and Wright 1998.
 - **2026-11-01.** BOM-23 closed. Exact reuse, KJV masked: Book of Mormon 0.16% of its text shared with earlier books (0.52% before misdated later quotations are set aside), against 2.4% for an 1821 sermon collection and 8.9% for *The Late War*. Its pre-1830 matches are short stock phrases. Uninformative on the translation question under Amendment 9.
 - **2026-11-01.** BOM-64 filed: catalog dates are wrong for some serials (an "1817" Congressional serial set volume mentions 1865 594 times and quotes Jacob 2). The registered 12-word seal still keeps the Book of Mormon out of every pool; the date audit runs before BOM-24.

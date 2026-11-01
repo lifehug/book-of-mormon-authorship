@@ -209,3 +209,9 @@ printed before it, against 2.4% for an 1821 sermon collection and 8.9% for *The 
 pre-1830 matches are short stock phrases. Under Amendment 9 this test does not separate
 translations from compositions presented as ancient, so the number describes the text and is not
 evidence on the translation question.
+
+**Rechecked under BOM-64's corrected dates** (`python -m reuse.exact redate`, `redated.json`;
+details in `docs/date-audit-plan.md`). The Book of Mormon's table drops to 0.26% on dates alone
+(16 of the 17 later quotations move past 1830; the seal takes the seventeenth, for 0.16%), the
+sermons' to 2.28% and *The Late War*'s to 8.74%. The known-answer test is unchanged (U = 4 of 27,
+p = 0.964). Nothing above changes.

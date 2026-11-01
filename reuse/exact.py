@@ -20,6 +20,7 @@ Usage::
     python -m reuse.exact align <search>       # e.g. ossian:draw0, bom:full -> alignments/
     python -m reuse.exact separation           # -> data/reuse/exact/known_answer.json
     python -m reuse.exact sources <search>     # e.g. bom:full -> data/reuse/exact/sources/
+    python -m reuse.exact redate               # -> data/reuse/exact/redated.json (BOM-64)
 """
 
 from __future__ import annotations
@@ -550,6 +551,21 @@ def _score(path: Path, drop: set[str]) -> float:
     return len(cov) / r["target_tokens"]
 
 
+def _late(path: Path, top: int) -> set[str]:
+    """Volumes of an alignment whose corrected date (BOM-64, ``effective_year``) is past ``top``:
+    the ones a search run today would no longer include."""
+    from metadata.dates import catalog_years, effective_year
+
+    years = catalog_years()
+    rows = json.loads(path.read_text())["rows"]
+    out = set()
+    for r in rows:
+        year = effective_year(r["work_id"], years.get(r["work_id"]))
+        if year is None or year > top:
+            out.add(r["work_id"])
+    return out
+
+
 def separation() -> int:
     """Amendment 9's rule on the matched-window scores: one-sided exact Mann-Whitney of the
     presented-as-ancient texts against the genuine ones ("higher" means its own time), the Rowley
@@ -559,6 +575,7 @@ def separation() -> int:
     from eval.known_answer import GENUINE, MODERN, SET
 
     cfg = load_config()
+    years = json.loads((OUT / "searches.json").read_text())["targets"]
     texts = {}
     for key, group, primary, *_ in SET + [("bom", "target", False)]:
         draws = range(cfg["reuse"]["matched_draws"])
@@ -568,10 +585,15 @@ def separation() -> int:
         drop = set(MISSED_OWN_COPIES.get(key, []))
         raw = [json.loads(x.read_text())["covered_share"] for x in paths]
         fixed = [_score(x, drop) for x in paths]
+        top = years[key]["year"] - 1
+        late = [_late(x, top) for x in paths]
+        redated = [_score(x, drop | lt) for x, lt in zip(paths, late, strict=True)]
         texts[key] = {"group": group, "primary": primary, "draws": raw,
                       "score": sum(raw) / len(raw), "draws_own_copies_out": fixed,
                       "score_own_copies_out": sum(fixed) / len(fixed),
-                      "missed_own_copies": sorted(drop)}  # fmt: skip
+                      "missed_own_copies": sorted(drop), "draws_redated": redated,
+                      "score_redated": sum(redated) / len(redated),
+                      "redated_out": [len(lt) for lt in late]}  # fmt: skip
 
     def test(field: str, override: dict | None = None) -> dict:
         sc = {k: v[field] for k, v in texts.items() if v["primary"]}
@@ -593,7 +615,7 @@ def separation() -> int:
 
     out = {"score": "share of the masked text covered by passages aligned to the matched window's "
            "volumes, mean over the draws; higher means its own time", "texts": texts}  # fmt: skip
-    for field in ("score", "score_own_copies_out"):
+    for field in ("score", "score_own_copies_out", "score_redated"):
         res = test(field)
         gen = sorted(v[field] for v in texts.values() if v["primary"] and v["group"] == GENUINE)
         res["rowley_at_genuine_median"] = test(field, {"rowley": gen[len(gen) // 2]})
@@ -604,6 +626,30 @@ def separation() -> int:
         print(f"{field}: U = {res['U']}/{res['of']}, p = {res['p']:.3f}, separates: "
               f"{res['separates']}; spelling check {res['spelling_check']}")  # fmt: skip
     path = OUT / "known_answer.json"
+    path.write_text(json.dumps({**stamp(), **out}, indent=1) + "\n")
+    print(f"-> {path}")
+    return 0
+
+
+def redate() -> int:
+    """The full reuse tables under the corrected dates of BOM-64: each table's covered share
+    without the volumes ``effective_year`` now places past its window, and those volumes listed.
+    The volumes are reported, not deleted; ``separation`` carries the known-answer side."""
+    cfg = load_config()
+    years = json.loads((OUT / "searches.json").read_text())["targets"]
+    out = {}
+    for key in FULL:
+        path = OUT / "alignments" / f"{key}_full.json"
+        top = cfg["corpus"]["date_range"][1] if key == "bom" else years[key]["year"] - 1
+        late = _late(path, top)
+        r = json.loads(path.read_text())
+        out[key] = {"window_top": top, "covered_share": r["covered_share"],
+                    "covered_share_redated": _score(path, late),
+                    "passages_out": sum(x["work_id"] in late for x in r["rows"]),
+                    "volumes_out": sorted(late)}  # fmt: skip
+        print(f"{key}: {r['covered_share']:.2%} -> {out[key]['covered_share_redated']:.2%}, "
+              f"{len(late)} volumes now dated past {top}")  # fmt: skip
+    path = OUT / "redated.json"
     path.write_text(json.dumps({**stamp(), **out}, indent=1) + "\n")
     print(f"-> {path}")
     return 0
@@ -710,11 +756,14 @@ def main(argv: list[str] | None = None) -> int:
     al.add_argument("search", help="e.g. ossian:draw0, bom:full")
     al.add_argument("--workers", type=int, default=8)
     sub.add_parser("separation")
+    sub.add_parser("redate")
     so = sub.add_parser("sources")
     so.add_argument("search", help="bom:full, late_war:full or sermon:full")
     a = ap.parse_args(argv)
     if a.cmd == "separation":
         return separation()
+    if a.cmd == "redate":
+        return redate()
     if a.cmd == "sources":
         return sources(a.search)
     if a.cmd == "scan":

@@ -320,4 +320,15 @@ italics:
     - institutional_books:AH5KIN
     - internet_archive:bim_eighteenth-century_a-new-translation-of-the_1782
 
+dates:
+  # Amendment 12 (BOM-64; OSF revision 6ae768b9883b4fc0e7bde25d): volumes whose own text names
+  # years later than their catalog year
+  latest_year: 1949             # later four-digit numbers are stamps, call numbers, OCR noise
+  slack_years: 2                # a mention is "later" past catalog year + this
+  min_later_mentions: 10
+  min_later_share: 0.20         # of all year mentions in the volume
+  min_year_mentions: 3          # corrected year: latest year mentioned at least this often
+  check_size: 100               # each of flagged and unflagged-with-a-later-mention
+  check_seed: bom64-dates
+
 pending_amendment: []

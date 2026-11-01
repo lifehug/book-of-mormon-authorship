@@ -49,8 +49,9 @@ and numbers only; no text.
 | --- | --- | --- |
 | `hits.parquet`, `target_grams/`, `searches.json` | the prefilter: which target 5-grams each volume holds, and each search's volumes (not in git; checksummed in `data/manifests/reuse.jsonl`) | `python -m reuse.exact scan --workers 6` (about 50 minutes) |
 | `alignments/<search>.json` | passim's passages: target and source offsets, tokens, identity, shared seeds, margin; `covered_share` | `python -m reuse.exact align <search>`, or `scripts/reuse_queue.sh` for all 48 (about 20 hours on the mini) |
-| `known_answer.json` | Amendment 9's separation on the 45 matched-window draws | `python -m reuse.exact separation` (seconds) |
+| `known_answer.json` | Amendment 9's separation on the 45 matched-window draws, also with own copies the title rule missed left out and under BOM-64's corrected dates | `python -m reuse.exact separation` (seconds) |
 | `sources/<search>.json` | each source volume of a full table: catalog year, the years its own text mentions, the seal check (Book of Mormon), King James share per passage, a post hoc kind | `python -m reuse.exact sources <search>` (seconds) |
+| `redated.json` | BOM-64: the three full tables without the volumes the corrected dates place past each window, and those volumes' ids (`known_answer.json` carries `score_redated`) | `python -m reuse.exact redate` (seconds) |
 
 Source texts: the catalog's volumes (`data/catalog/catalog.parquet`; the bulk corpora under
 `data/corpus/`, obtained as in `docs/replication.md`).
