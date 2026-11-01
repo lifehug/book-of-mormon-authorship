@@ -155,3 +155,34 @@ semantic table is reported as unable to find known paraphrase and is not interpr
 ## Registration
 
 Registered as Amendment 14 (OSF revision 6ae7bc3c227eb64c6abde258, 2026-11-01), before any search. The index build started under the same settings a few hours earlier; an index is not a result.
+
+## Named sources against their control groups (provisional, 2026-11-01; `python -m semantic.search named`, `data/semantic/named.json`)
+
+The Book of Mormon's 2,158 passages (2,022 with King James share at most 0.5, scored) against
+each named source and each member of its registered group, every passage pair compared; each
+query's bar is its best match among 10,000 random 1780-1830 passages. Hunt's own copy on the
+curated list is left out of his group (his cleaned 1816 text is scored instead), so each source is
+ranked among the other works.
+
+| Source | Group | Rank | Book of Mormon passages with a parallel | Score (95% interval) |
+| --- | --- | --- | --- | --- |
+| *View of the Hebrews* (1825) | origins of the American Indians (49) | **1** | 767 | 29.6 (28.0-31.3) |
+| *View of the Hebrews* (1823) | same | **2** | 763 | 29.5 (27.9-31.1) |
+| *The Life of David Brainerd* (next in that group) | same | 3 | 642 | 24.8 (23.2-26.4) |
+| Spalding, *Manuscript Story* | same | 12 | 143 | 5.5 |
+| *Antediluvian Antiquities* (first in its group) | curated pseudo-biblical (18) | 1 | 1,054 | 40.7 (39.1-42.4) |
+| *The Book of Jasher* (1829 printing) | same | 2 | 378 | 14.6 |
+| *The First Book of Napoleon* | same | 3 | 205 | 7.9 (6.9-9.0) |
+| *The Late War* (1816) | same | 6 | 49 | 1.9 |
+
+Checked before writing this down: *View of the Hebrews*' interval does not overlap Brainerd's;
+the 1823 edition is the shortest of the three (443 passages to Brainerd's 801), so length does
+not explain its place; and about 90% of its 50 strongest pairs come from Book of Mormon passages
+with no King James wording, so its Isaiah quotations do not either.
+
+**Not yet a verdict.** The registered rule says a named source stands out when it ranks first in
+its group **and** its interval lies above the 99th percentile of 500 same-genre, same-length
+volumes. That second check reads those volumes' vectors from the index and is run when the build
+finishes. A score here is not small by chance alone: a book of 800 passages beats a query's bar
+by luck for roughly 8% of queries, so scores of a few per 10,000 words are near chance and the null
+decides.

@@ -143,6 +143,7 @@ Plan, registered before any search (Amendment 13): `docs/semantic-plan.md`. Need
 | `python -m semantic.choose distractors <model>` | registered (model choice) | the Psalms test with a million corpus passages as distractors; `--rescore <model>` measures re-scoring the top k | `data/semantic/distractors_<model>.json` | ~1 h (MiniLM) to ~3 h (bge-small with re-scoring) |
 | `python -m semantic.index build` | registered | the passage index of the whole corpus (278,796 volumes, 128-word passages, bge-small); resumes at the first unfinished shard and adds only volumes not yet indexed | `data/corpus/semantic/index/` (vectors and ids, no text; not in git) | ~7 days on the M4 |
 | `python -m semantic.index status` | - | shards, volumes and passages indexed so far | - | seconds |
+| `python -m semantic.search named` | registered | the named proposed sources and their control groups against the Book of Mormon, every passage pair; ranks within group (the null check waits for the index) | `data/semantic/named.json` | ~10 min |
 
 ## Other
 
