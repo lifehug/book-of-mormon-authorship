@@ -26,3 +26,7 @@ They locate a verse's page; the page images themselves are fetched by `eval.ital
 without `leaves` were asked before the leaf mapping was fixed (2026-10-31): their ITALIC and
 ROMAN answers name the verse and stand, their NOT_FOUND rows were the wrong page and were asked
 again. Rebuild: `uv run python -m eval.italics check`.
+
+`measure.json`: counts and rates only (no text), from the KJV masks in `data/kjv_mask/` and
+`data/kjv/kjv.jsonl` (`text_marked`). Rebuild: `uv run python -m eval.italics measure` (about 3
+minutes).

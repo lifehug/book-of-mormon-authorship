@@ -119,6 +119,7 @@ Plan, registered before any count (Amendment 11): `docs/italics-plan.md`.
 | --- | --- | --- | --- | --- |
 | `python -m eval.italics ranges` | registered | the translation-only ranges of the independent translations, from their layout, before any count | `data/italics/translation_ranges.json` | seconds |
 | `python -m eval.italics check` | registered (simulated, model-assisted) | the 100 seeded italic words looked up in page images of the 1828 Phinney Bible; resumes, retries outages | `data/italics/phinney_check.jsonl`, page images in `data/italics/phinney/pages/` | about 1.5 hours |
+| `python -m eval.italics measure` | registered | kept / changed / dropped for italic and roman KJV words in every masked span; R_i, R_r, D with bootstrap intervals for the Book of Mormon, 1820s sermons, independent translations and Amendment 9's texts; Amendment 11's check | `data/italics/measure.json` | about 3 minutes |
 
 ## Other
 

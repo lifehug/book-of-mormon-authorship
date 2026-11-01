@@ -15,10 +15,17 @@ an AI model, a **simulated** check (Amendment 1). The answer per word is ITALIC,
 NOT_ON_PAGE; pages are tried best first by how many of the verse's words their OCR holds.
 Answers are written as they come and a rerun resumes; an outage reply is never an answer.
 
+``measure`` is the test: inside each span the text's words are re-aligned to the King James
+chapter with its italics (``difflib``, as in masking), over the chapter range between the first
+and last unbroken match of at least passim's n-gram order (the masking anchor, 4.4); each King
+James word there is kept, changed or dropped. R_i, R_r and D = R_r - R_i are pooled per group,
+with 95% intervals by bootstrap over spans.
+
 Usage::
 
     python -m eval.italics ranges   # -> data/italics/translation_ranges.json
     python -m eval.italics check    # -> data/italics/phinney_check.jsonl (model-assisted)
+    python -m eval.italics measure  # -> data/italics/measure.json
 """
 
 from __future__ import annotations
@@ -305,12 +312,165 @@ def check() -> int:
     return 0
 
 
+def _kjv_marked() -> dict[str, list[tuple[str, bool]]]:
+    """KJV chapter -> its words with an italic flag (translators' words are bracketed)."""
+    from kjv_mask.align import _WORD, norm_token
+
+    out: dict[str, list[tuple[str, bool]]] = {}
+    for ref, verses in _kjv().items():
+        words = []
+        for v in verses:
+            for k, part in enumerate(re.split(r"[\[\]]", v["text_marked"])):
+                words += [(norm_token(m.group(0)), k % 2 == 1) for m in _WORD.finditer(part)]
+        out[ref] = words
+    return out
+
+
+def span_counts(text: str, ref: str, chapters: dict, seed: int) -> dict[str, int] | None:
+    """Kept / changed / dropped counts for italic and roman King James words in one span."""
+    from difflib import SequenceMatcher
+
+    from kjv_mask.align import _WORD, norm_token
+
+    kw = chapters.get(ref)
+    if not kw:
+        return None
+    tw = [norm_token(m.group(0)) for m in _WORD.finditer(text)]
+    sm = SequenceMatcher(a=[w for w, _ in kw], b=tw, autojunk=False)
+    anchors = [b for b in sm.get_matching_blocks() if b.size >= seed]
+    if not anchors:
+        return None
+    a0, a1 = anchors[0].a, anchors[-1].a + anchors[-1].size
+    b0, b1 = anchors[0].b, anchors[-1].b + anchors[-1].size
+    c = {f"{f}_{x}": 0 for f in ("italic", "roman") for x in ("kept", "changed", "dropped")}
+    sub = SequenceMatcher(a=[w for w, _ in kw[a0:a1]], b=tw[b0:b1], autojunk=False)
+    for op, i0, i1, _, _ in sub.get_opcodes():
+        x = {"equal": "kept", "replace": "changed", "delete": "dropped"}.get(op)
+        if x:
+            for _, it in kw[a0 + i0 : a0 + i1]:
+                c[f"{'italic' if it else 'roman'}_{x}"] += 1
+    return c
+
+
+def _group_spans(group: str, ids: set[str] | None = None) -> list[tuple[str, str, str]]:
+    """(doc id, span text, KJV chapter) for every masked span of a group's documents."""
+    import gzip
+
+    from kjv_mask.run import _docs
+
+    path = Path(f"data/kjv_mask/{group}/spans.jsonl")
+    if group == "controls":
+        path = path.with_suffix(".jsonl.gz")
+    opener = gzip.open if path.suffix == ".gz" else open
+    spans = {}
+    with opener(path, "rt") as fh:
+        for ln in fh:
+            r = json.loads(ln)
+            if r["spans"] and (ids is None or r["id"] in ids):
+                spans[r["id"]] = r["spans"]
+    out = []
+    for d in _docs(group):
+        if d["id"] in spans:
+            text = d["load"]()
+            out += [(d["id"], text[s["start"] : s["end"]], s["ref"]) for s in spans[d["id"]]]
+    return out
+
+
+def _rates(rows: list[dict]) -> dict[str, float]:
+    tot = {k: sum(r[k] for r in rows) for k in rows[0]} if rows else {}
+    ni = sum(v for k, v in tot.items() if k.startswith("italic"))
+    nr = sum(v for k, v in tot.items() if k.startswith("roman"))
+    ri = tot.get("italic_kept", 0) / ni if ni else float("nan")
+    rr = tot.get("roman_kept", 0) / nr if nr else float("nan")
+    return {"R_i": ri, "R_r": rr, "D": rr - ri, "italic_words": ni, "roman_words": nr}
+
+
+def _bootstrap(rows: list[dict], n: int, seed: int) -> dict[str, list[float]]:
+    """Percentile 95% intervals, resampling spans with replacement ``n`` times."""
+    import numpy as np
+
+    keys = list(rows[0])
+    m = np.array([[r[k] for k in keys] for r in rows], dtype=float)
+    rng = np.random.default_rng(seed)
+    tot = np.stack([m[rng.integers(0, len(rows), len(rows))].sum(0) for _ in range(n)])
+    col = {k: tot[:, i] for i, k in enumerate(keys)}
+    ni = col["italic_kept"] + col["italic_changed"] + col["italic_dropped"]
+    nr = col["roman_kept"] + col["roman_changed"] + col["roman_dropped"]
+    with np.errstate(invalid="ignore", divide="ignore"):
+        ri, rr = col["italic_kept"] / ni, col["roman_kept"] / nr
+    out = {}
+    for k, v in (("R_i", ri), ("R_r", rr), ("D", rr - ri)):
+        v = v[~np.isnan(v)]
+        out[k] = [float(np.quantile(v, 0.025)), float(np.quantile(v, 0.975))] if len(v) else None
+    return out
+
+
+def measure() -> int:
+    """Amendment 11's test on the Book of Mormon, the sermons control, the independent
+    translations and Amendment 9's texts; counts and rates only, no text."""
+    from metadata.config import derive_seed
+
+    cfg = load_config()
+    ic, seed = cfg["italics"], cfg["kjv_mask"]["passim"]["ngram"]
+    chapters = _kjv_marked()
+    lines = Path("data/controls/sermons_1820s.jsonl").read_text().splitlines()
+    sermons = {json.loads(ln)["work_id"] for ln in lines}
+    ka = {v["work_id"]: json.loads(ln)["key"]
+          for ln in Path("data/known_answer/set.jsonl").read_text().splitlines()
+          for v in json.loads(ln)["volumes"]}  # fmt: skip
+    groups: dict[str, list[dict]] = {}
+    texts: dict[str, list[dict]] = {}
+    for group, ids, name in (("bom", None, lambda d: "bom"),
+                             ("controls", sermons, lambda d: "sermons"),
+                             ("italics", None, lambda d: "independent"),
+                             ("known_answer", None, lambda d: ka[d])):  # fmt: skip
+        for doc, text, ref in _group_spans(group, ids):
+            c = span_counts(text, ref, chapters, seed)
+            if c is None:
+                continue
+            g = name(doc)
+            groups.setdefault(g, []).append(c)
+            texts.setdefault(doc.split("#")[0], []).append(c)
+    boot_seed = derive_seed(ic["bootstrap_seed"], cfg)
+    out = {"groups": {}, "volumes": {}}
+    for g in ["bom", "sermons", "independent"] + sorted(set(ka.values())):
+        rows = groups.get(g, [])
+        res = {"spans": len(rows), **(_rates(rows) if rows else {})}
+        scored = (
+            g in ("bom", "sermons", "independent")
+            or res.get("italic_words", 0) >= ic["min_italic_words"]
+        )
+        if rows and scored:
+            res["ci95"] = _bootstrap(rows, ic["bootstrap"], boot_seed)
+        res["scored"] = bool(rows) and scored
+        out["groups"][g] = res
+        if rows:
+            ci = res.get("ci95") or {}
+            print(f"{g:18} spans {len(rows):5}  italic {res['italic_words']:6}  "
+                  f"R_i {res['R_i']:.3f} {ci.get('R_i')}  R_r {res['R_r']:.3f}  "
+                  f"D {res['D']:+.3f} {ci.get('D')}")  # fmt: skip
+    for v, rows in texts.items():
+        if v in set(ic["independent"]):
+            out["volumes"][v] = {"spans": len(rows), **_rates(rows)}
+    a, b = out["groups"]["independent"].get("ci95"), out["groups"]["sermons"].get("ci95")
+    if a and b:
+        out["shown_to_work"] = a["R_i"][1] < b["R_i"][0] and (
+            a["D"][1] < b["D"][0] or b["D"][1] < a["D"][0]
+        )
+        print(f"shown to work (Amendment 11): {out['shown_to_work']}")
+    (OUT / "measure.json").write_text(json.dumps({**stamp(), **out}, indent=1) + "\n")
+    print(f"-> {OUT / 'measure.json'}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
     if args[:1] == ["ranges"]:
         return ranges()
     if args[:1] == ["check"]:
         return check()
+    if args[:1] == ["measure"]:
+        return measure()
     print(__doc__)
     return 1
 
