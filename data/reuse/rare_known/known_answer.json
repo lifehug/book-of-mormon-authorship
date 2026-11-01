@@ -1,0 +1,696 @@
+{
+ "config_sha256": "4bea9625166b563609b8eb112d97c663e6fb24a91aeab589eab7396d15fc5a5a",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "a288d61fefc36ff01d658fe764de5c22b591e111",
+ "score": "strongest source's rare shared 4-grams per 10,000 words in each matched draw, document frequency within the draw by text; mean over draws",
+ "texts": {
+  "bom": {
+   "draws": [
+    {
+     "volumes": 1879,
+     "rare_grams": 31482,
+     "best": "internet_archive:bim_eighteenth-century_the-chronicle-of-the-kin_dodsley-robert_1799",
+     "best_words": 21047,
+     "score": 95.02541929966266,
+     "rare_grams_own_copies_out": 31482,
+     "best_own_copies_out": "internet_archive:bim_eighteenth-century_the-chronicle-of-the-kin_dodsley-robert_1799",
+     "best_words_own_copies_out": 21047,
+     "score_own_copies_out": 95.02541929966266
+    },
+    {
+     "volumes": 1833,
+     "rare_grams": 30589,
+     "best": "internet_archive:restorationofisr00croo",
+     "best_words": 154447,
+     "score": 55.16455483110711,
+     "rare_grams_own_copies_out": 30589,
+     "best_own_copies_out": "internet_archive:restorationofisr00croo",
+     "best_words_own_copies_out": 154447,
+     "score_own_copies_out": 55.16455483110711
+    },
+    {
+     "volumes": 1836,
+     "rare_grams": 31356,
+     "best": "internet_archive:bim_eighteenth-century_a-form-of-prayer-and-tha_church-of-england_1798_3",
+     "best_words": 2143,
+     "score": 102.6598226784881,
+     "rare_grams_own_copies_out": 31356,
+     "best_own_copies_out": "internet_archive:bim_eighteenth-century_a-form-of-prayer-and-tha_church-of-england_1798_3",
+     "best_words_own_copies_out": 2143,
+     "score_own_copies_out": 102.6598226784881
+    }
+   ],
+   "score": 84.28326560308595,
+   "score_own_copies_out": 84.28326560308595
+  },
+  "late_war": {
+   "draws": [
+    {
+     "volumes": 1910,
+     "rare_grams": 7016,
+     "best": "internet_archive:lawsofunitedstat02unit",
+     "best_words": 150960,
+     "score": 35.50609432962374,
+     "rare_grams_own_copies_out": 7016,
+     "best_own_copies_out": "internet_archive:lawsofunitedstat02unit",
+     "best_words_own_copies_out": 150960,
+     "score_own_copies_out": 35.50609432962374
+    },
+    {
+     "volumes": 1904,
+     "rare_grams": 6662,
+     "best": "internet_archive:op1243141-1001",
+     "best_words": 266,
+     "score": 37.59398496240601,
+     "rare_grams_own_copies_out": 6662,
+     "best_own_copies_out": "internet_archive:op1243141-1001",
+     "best_words_own_copies_out": 266,
+     "score_own_copies_out": 37.59398496240601
+    },
+    {
+     "volumes": 1908,
+     "rare_grams": 7376,
+     "best": "hathitrust:aeu.ark:/13960/t58d0cm69",
+     "best_words": 39973,
+     "score": 72.29880169114152,
+     "rare_grams_own_copies_out": 7376,
+     "best_own_copies_out": "hathitrust:aeu.ark:/13960/t58d0cm69",
+     "best_words_own_copies_out": 39973,
+     "score_own_copies_out": 72.29880169114152
+    }
+   ],
+   "score": 48.46629366105709,
+   "score_own_copies_out": 48.46629366105709
+  },
+  "sermon": {
+   "draws": [
+    {
+     "volumes": 1840,
+     "rare_grams": 31708,
+     "best": "hathitrust:mdp.39015096472207",
+     "best_words": 232,
+     "score": 86.20689655172414,
+     "rare_grams_own_copies_out": 31708,
+     "best_own_copies_out": "hathitrust:mdp.39015096472207",
+     "best_words_own_copies_out": 232,
+     "score_own_copies_out": 86.20689655172414
+    },
+    {
+     "volumes": 1827,
+     "rare_grams": 31437,
+     "best": "institutional_books:AH54IL",
+     "best_words": 120445,
+     "score": 67.91481589107062,
+     "rare_grams_own_copies_out": 31437,
+     "best_own_copies_out": "institutional_books:AH54IL",
+     "best_words_own_copies_out": 120445,
+     "score_own_copies_out": 67.91481589107062
+    },
+    {
+     "volumes": 1834,
+     "rare_grams": 32044,
+     "best": "internet_archive:abriefviewdoctr00goog",
+     "best_words": 34436,
+     "score": 102.2186084330352,
+     "rare_grams_own_copies_out": 32044,
+     "best_own_copies_out": "internet_archive:abriefviewdoctr00goog",
+     "best_words_own_copies_out": 34436,
+     "score_own_copies_out": 102.2186084330352
+    }
+   ],
+   "score": 85.44677362527665,
+   "score_own_copies_out": 85.44677362527665
+  },
+  "twelve_patriarchs": {
+   "draws": [
+    {
+     "volumes": 1997,
+     "rare_grams": 3553,
+     "best": "tcp:A09509",
+     "best_words": 733,
+     "score": 27.285129604365622,
+     "rare_grams_own_copies_out": 3553,
+     "best_own_copies_out": "tcp:A09509",
+     "best_words_own_copies_out": 733,
+     "score_own_copies_out": 27.285129604365622
+    },
+    {
+     "volumes": 1996,
+     "rare_grams": 3642,
+     "best": "tcp:A20360",
+     "best_words": 672,
+     "score": 29.761904761904763,
+     "rare_grams_own_copies_out": 3642,
+     "best_own_copies_out": "tcp:A20360",
+     "best_words_own_copies_out": 672,
+     "score_own_copies_out": 29.761904761904763
+    },
+    {
+     "volumes": 1996,
+     "rare_grams": 11468,
+     "best": "tcp:A09151",
+     "best_words": 32213,
+     "score": 3255.517958588148,
+     "rare_grams_own_copies_out": 3535,
+     "best_own_copies_out": "tcp:A06879",
+     "best_words_own_copies_out": 450,
+     "score_own_copies_out": 22.22222222222222
+    }
+   ],
+   "score": 1104.188330984806,
+   "score_own_copies_out": 26.423085529497538
+  },
+  "enoch": {
+   "draws": [
+    {
+     "volumes": 1837,
+     "rare_grams": 6978,
+     "best": "internet_archive:jstor-110187",
+     "best_words": 728,
+     "score": 27.47252747252747,
+     "rare_grams_own_copies_out": 6978,
+     "best_own_copies_out": "internet_archive:jstor-110187",
+     "best_words_own_copies_out": 728,
+     "score_own_copies_out": 27.47252747252747
+    },
+    {
+     "volumes": 1839,
+     "rare_grams": 6783,
+     "best": "internet_archive:bim_eighteenth-century_moses-griffith-painter-_griffith-moses_1784",
+     "best_words": 98,
+     "score": 102.04081632653062,
+     "rare_grams_own_copies_out": 6783,
+     "best_own_copies_out": "internet_archive:bim_eighteenth-century_moses-griffith-painter-_griffith-moses_1784",
+     "best_words_own_copies_out": 98,
+     "score_own_copies_out": 102.04081632653062
+    },
+    {
+     "volumes": 1848,
+     "rare_grams": 6833,
+     "best": "internet_archive:bim_eighteenth-century_a-form-of-prayer-and-tha_church-of-england_1795",
+     "best_words": 527,
+     "score": 18.975332068311197,
+     "rare_grams_own_copies_out": 6833,
+     "best_own_copies_out": "internet_archive:bim_eighteenth-century_a-form-of-prayer-and-tha_church-of-england_1795",
+     "best_words_own_copies_out": 527,
+     "score_own_copies_out": 18.975332068311197
+    }
+   ],
+   "score": 49.496225289123096,
+   "score_own_copies_out": 49.496225289123096
+  },
+  "apocryphal_nt": {
+   "draws": [
+    {
+     "volumes": 1995,
+     "rare_grams": 18121,
+     "best": "tcp:B02796",
+     "best_words": 492,
+     "score": 60.97560975609756,
+     "rare_grams_own_copies_out": 18121,
+     "best_own_copies_out": "tcp:B02796",
+     "best_words_own_copies_out": 492,
+     "score_own_copies_out": 60.97560975609756
+    },
+    {
+     "volumes": 1995,
+     "rare_grams": 18960,
+     "best": "tcp:A47751",
+     "best_words": 13864,
+     "score": 87.27639930755915,
+     "rare_grams_own_copies_out": 18960,
+     "best_own_copies_out": "tcp:A47751",
+     "best_words_own_copies_out": 13864,
+     "score_own_copies_out": 87.27639930755915
+    },
+    {
+     "volumes": 1995,
+     "rare_grams": 20224,
+     "best": "tcp:A38579",
+     "best_words": 28049,
+     "score": 672.0382188313309,
+     "rare_grams_own_copies_out": 20224,
+     "best_own_copies_out": "tcp:A38579",
+     "best_words_own_copies_out": 28049,
+     "score_own_copies_out": 672.0382188313309
+    }
+   ],
+   "score": 273.43007596499586,
+   "score_own_copies_out": 273.43007596499586
+  },
+  "josephus": {
+   "draws": [
+    {
+     "volumes": 1996,
+     "rare_grams": 93167,
+     "best": "tcp:A25026",
+     "best_words": 573,
+     "score": 209.4240837696335,
+     "rare_grams_own_copies_out": 93167,
+     "best_own_copies_out": "tcp:A25026",
+     "best_words_own_copies_out": 573,
+     "score_own_copies_out": 209.4240837696335
+    },
+    {
+     "volumes": 1998,
+     "rare_grams": 94981,
+     "best": "tcp:A40561",
+     "best_words": 674,
+     "score": 207.71513353115728,
+     "rare_grams_own_copies_out": 94981,
+     "best_own_copies_out": "tcp:A40561",
+     "best_words_own_copies_out": 674,
+     "score_own_copies_out": 207.71513353115728
+    },
+    {
+     "volumes": 1994,
+     "rare_grams": 94925,
+     "best": "tcp:A38339",
+     "best_words": 177,
+     "score": 225.98870056497177,
+     "rare_grams_own_copies_out": 94925,
+     "best_own_copies_out": "tcp:A38339",
+     "best_words_own_copies_out": 177,
+     "score_own_copies_out": 225.98870056497177
+    }
+   ],
+   "score": 214.37597262192085,
+   "score_own_copies_out": 214.37597262192085
+  },
+  "koran": {
+   "draws": [
+    {
+     "volumes": 1996,
+     "rare_grams": 17513,
+     "best": "tcp:N29457",
+     "best_words": 156,
+     "score": 128.2051282051282,
+     "rare_grams_own_copies_out": 17513,
+     "best_own_copies_out": "tcp:N29457",
+     "best_words_own_copies_out": 156,
+     "score_own_copies_out": 128.2051282051282
+    },
+    {
+     "volumes": 1996,
+     "rare_grams": 17692,
+     "best": "tcp:A66234",
+     "best_words": 183,
+     "score": 109.2896174863388,
+     "rare_grams_own_copies_out": 17692,
+     "best_own_copies_out": "tcp:A66234",
+     "best_words_own_copies_out": 183,
+     "score_own_copies_out": 109.2896174863388
+    },
+    {
+     "volumes": 1998,
+     "rare_grams": 19180,
+     "best": "tcp:A47589",
+     "best_words": 163673,
+     "score": 209.136509992485,
+     "rare_grams_own_copies_out": 19180,
+     "best_own_copies_out": "tcp:A47589",
+     "best_words_own_copies_out": 163673,
+     "score_own_copies_out": 209.136509992485
+    }
+   ],
+   "score": 148.877085227984,
+   "score_own_copies_out": 148.877085227984
+  },
+  "herodotus": {
+   "draws": [
+    {
+     "volumes": 1912,
+     "rare_grams": 25518,
+     "best": "internet_archive:bim_eighteenth-century_pillula-salutaris-or-t_devlin-michael_1790",
+     "best_words": 234,
+     "score": 42.73504273504273,
+     "rare_grams_own_copies_out": 25518,
+     "best_own_copies_out": "internet_archive:bim_eighteenth-century_pillula-salutaris-or-t_devlin-michael_1790",
+     "best_words_own_copies_out": 234,
+     "score_own_copies_out": 42.73504273504273
+    },
+    {
+     "volumes": 1931,
+     "rare_grams": 26223,
+     "best": "internet_archive:lettersonegyptc01etiegoog",
+     "best_words": 93062,
+     "score": 51.7934280372225,
+     "rare_grams_own_copies_out": 26223,
+     "best_own_copies_out": "internet_archive:lettersonegyptc01etiegoog",
+     "best_words_own_copies_out": 93062,
+     "score_own_copies_out": 51.7934280372225
+    },
+    {
+     "volumes": 1931,
+     "rare_grams": 25742,
+     "best": "internet_archive:bim_eighteenth-century_a-letter-to-the-right-re_jones-david_1790",
+     "best_words": 5982,
+     "score": 55.1654964894684,
+     "rare_grams_own_copies_out": 25742,
+     "best_own_copies_out": "internet_archive:bim_eighteenth-century_a-letter-to-the-right-re_jones-david_1790",
+     "best_words_own_copies_out": 5982,
+     "score_own_copies_out": 55.1654964894684
+    }
+   ],
+   "score": 49.89798908724455,
+   "score_own_copies_out": 49.89798908724455
+  },
+  "homer": {
+   "draws": [
+    {
+     "volumes": 1996,
+     "rare_grams": 8457,
+     "best": "tcp:B04308",
+     "best_words": 219,
+     "score": 182.64840182648402,
+     "rare_grams_own_copies_out": 8457,
+     "best_own_copies_out": "tcp:B04308",
+     "best_words_own_copies_out": 219,
+     "score_own_copies_out": 182.64840182648402
+    },
+    {
+     "volumes": 1990,
+     "rare_grams": 7657,
+     "best": "tcp:A63631",
+     "best_words": 224,
+     "score": 89.28571428571429,
+     "rare_grams_own_copies_out": 7657,
+     "best_own_copies_out": "tcp:A63631",
+     "best_words_own_copies_out": 224,
+     "score_own_copies_out": 89.28571428571429
+    },
+    {
+     "volumes": 1998,
+     "rare_grams": 7920,
+     "best": "tcp:K014868.000",
+     "best_words": 4166,
+     "score": 100.81613058089295,
+     "rare_grams_own_copies_out": 7920,
+     "best_own_copies_out": "tcp:K014868.000",
+     "best_words_own_copies_out": 4166,
+     "score_own_copies_out": 100.81613058089295
+    }
+   ],
+   "score": 124.25008223103042,
+   "score_own_copies_out": 124.25008223103042
+  },
+  "hesiod": {
+   "draws": [
+    {
+     "volumes": 1909,
+     "rare_grams": 7264,
+     "best": "internet_archive:bub_gb_QzoGAAAAQAAJ",
+     "best_words": 94901,
+     "score": 125.2884584988567,
+     "rare_grams_own_copies_out": 7264,
+     "best_own_copies_out": "internet_archive:bub_gb_QzoGAAAAQAAJ",
+     "best_words_own_copies_out": 94901,
+     "score_own_copies_out": 125.2884584988567
+    },
+    {
+     "volumes": 1902,
+     "rare_grams": 6078,
+     "best": "internet_archive:b21922706",
+     "best_words": 3281,
+     "score": 18.28710758914965,
+     "rare_grams_own_copies_out": 6078,
+     "best_own_copies_out": "internet_archive:b21922706",
+     "best_words_own_copies_out": 3281,
+     "score_own_copies_out": 18.28710758914965
+    },
+    {
+     "volumes": 1914,
+     "rare_grams": 6400,
+     "best": "internet_archive:bim_eighteenth-century_miltons-paradise-lost-i_milton-john_1793",
+     "best_words": 117350,
+     "score": 17.809970174691095,
+     "rare_grams_own_copies_out": 6400,
+     "best_own_copies_out": "internet_archive:bim_eighteenth-century_miltons-paradise-lost-i_milton-john_1793",
+     "best_words_own_copies_out": 117350,
+     "score_own_copies_out": 17.809970174691095
+    }
+   ],
+   "score": 53.795178754232474,
+   "score_own_copies_out": 53.795178754232474
+  },
+  "sacontala": {
+   "draws": [
+    {
+     "volumes": 1943,
+     "rare_grams": 2614,
+     "best": "tcp:K002508.000",
+     "best_words": 610,
+     "score": 16.39344262295082,
+     "rare_grams_own_copies_out": 2614,
+     "best_own_copies_out": "tcp:K002508.000",
+     "best_words_own_copies_out": 610,
+     "score_own_copies_out": 16.39344262295082
+    },
+    {
+     "volumes": 1951,
+     "rare_grams": 2613,
+     "best": "internet_archive:jstor-25053766",
+     "best_words": 770,
+     "score": 38.96103896103896,
+     "rare_grams_own_copies_out": 2613,
+     "best_own_copies_out": "internet_archive:jstor-25053766",
+     "best_words_own_copies_out": 770,
+     "score_own_copies_out": 38.96103896103896
+    },
+    {
+     "volumes": 1952,
+     "rare_grams": 2676,
+     "best": "internet_archive:sim_lounger_1785-06-18_20",
+     "best_words": 1695,
+     "score": 17.699115044247787,
+     "rare_grams_own_copies_out": 2676,
+     "best_own_copies_out": "internet_archive:sim_lounger_1785-06-18_20",
+     "best_words_own_copies_out": 1695,
+     "score_own_copies_out": 17.699115044247787
+    }
+   ],
+   "score": 24.351198876079184,
+   "score_own_copies_out": 24.351198876079184
+  },
+  "ossian": {
+   "draws": [
+    {
+     "volumes": 1998,
+     "rare_grams": 1667,
+     "best": "tcp:N00544",
+     "best_words": 328,
+     "score": 30.48780487804878,
+     "rare_grams_own_copies_out": 1667,
+     "best_own_copies_out": "tcp:N00544",
+     "best_words_own_copies_out": 328,
+     "score_own_copies_out": 30.48780487804878
+    },
+    {
+     "volumes": 1998,
+     "rare_grams": 1759,
+     "best": "tcp:B02647",
+     "best_words": 1023,
+     "score": 39.100684261974585,
+     "rare_grams_own_copies_out": 1759,
+     "best_own_copies_out": "tcp:B02647",
+     "best_words_own_copies_out": 1023,
+     "score_own_copies_out": 39.100684261974585
+    },
+    {
+     "volumes": 1997,
+     "rare_grams": 1765,
+     "best": "tcp:N00544",
+     "best_words": 328,
+     "score": 30.48780487804878,
+     "rare_grams_own_copies_out": 1765,
+     "best_own_copies_out": "tcp:N00544",
+     "best_words_own_copies_out": 328,
+     "score_own_copies_out": 30.48780487804878
+    }
+   ],
+   "score": 33.35876467269072,
+   "score_own_copies_out": 33.35876467269072
+  },
+  "rowley": {
+   "draws": [
+    {
+     "volumes": 1998,
+     "rare_grams": 569,
+     "best": "tcp:A75439",
+     "best_words": 655,
+     "score": 45.80152671755725,
+     "rare_grams_own_copies_out": 569,
+     "best_own_copies_out": "tcp:A75439",
+     "best_words_own_copies_out": 655,
+     "score_own_copies_out": 45.80152671755725
+    },
+    {
+     "volumes": 1998,
+     "rare_grams": 567,
+     "best": "tcp:A48687",
+     "best_words": 542,
+     "score": 36.90036900369004,
+     "rare_grams_own_copies_out": 567,
+     "best_own_copies_out": "tcp:A48687",
+     "best_words_own_copies_out": 542,
+     "score_own_copies_out": 36.90036900369004
+    },
+    {
+     "volumes": 1997,
+     "rare_grams": 557,
+     "best": "tcp:N00693",
+     "best_words": 379,
+     "score": 26.385224274406333,
+     "rare_grams_own_copies_out": 557,
+     "best_own_copies_out": "tcp:N00693",
+     "best_words_own_copies_out": 379,
+     "score_own_copies_out": 26.385224274406333
+    }
+   ],
+   "score": 36.36237333188454,
+   "score_own_copies_out": 36.36237333188454
+  },
+  "jasher": {
+   "draws": [
+    {
+     "volumes": 1998,
+     "rare_grams": 4858,
+     "best": "tcp:A58582",
+     "best_words": 192,
+     "score": 52.083333333333336,
+     "rare_grams_own_copies_out": 4858,
+     "best_own_copies_out": "tcp:A58582",
+     "best_words_own_copies_out": 192,
+     "score_own_copies_out": 52.083333333333336
+    },
+    {
+     "volumes": 1998,
+     "rare_grams": 4159,
+     "best": "tcp:B02150",
+     "best_words": 4952,
+     "score": 44.4264943457189,
+     "rare_grams_own_copies_out": 4159,
+     "best_own_copies_out": "tcp:B02150",
+     "best_words_own_copies_out": 4952,
+     "score_own_copies_out": 44.4264943457189
+    },
+    {
+     "volumes": 1998,
+     "rare_grams": 4170,
+     "best": "tcp:B01848",
+     "best_words": 777,
+     "score": 77.22007722007721,
+     "rare_grams_own_copies_out": 4170,
+     "best_own_copies_out": "tcp:B01848",
+     "best_words_own_copies_out": 777,
+     "score_own_copies_out": 77.22007722007721
+    }
+   ],
+   "score": 57.90996829970982,
+   "score_own_copies_out": 57.90996829970982
+  },
+  "ireland_papers": {
+   "draws": [
+    {
+     "volumes": 1920,
+     "rare_grams": 1126,
+     "best": "internet_archive:bim_eighteenth-century_a-sermon-preached-at-ca_smith-isaac-pastor-of-_1788",
+     "best_words": 3550,
+     "score": 5.633802816901408,
+     "rare_grams_own_copies_out": 1126,
+     "best_own_copies_out": "internet_archive:bim_eighteenth-century_a-sermon-preached-at-ca_smith-isaac-pastor-of-_1788",
+     "best_words_own_copies_out": 3550,
+     "score_own_copies_out": 5.633802816901408
+    },
+    {
+     "volumes": 1912,
+     "rare_grams": 1235,
+     "best": "tcp:K041203.000",
+     "best_words": 6193,
+     "score": 41.98288390117875,
+     "rare_grams_own_copies_out": 1235,
+     "best_own_copies_out": "tcp:K041203.000",
+     "best_words_own_copies_out": 6193,
+     "score_own_copies_out": 41.98288390117875
+    },
+    {
+     "volumes": 1925,
+     "rare_grams": 1458,
+     "best": "internet_archive:bim_eighteenth-century_the-history-debates-a_debrett-john_1791",
+     "best_words": 363,
+     "score": 27.548209366391184,
+     "rare_grams_own_copies_out": 1458,
+     "best_own_copies_out": "internet_archive:bim_eighteenth-century_the-history-debates-a_debrett-john_1791",
+     "best_words_own_copies_out": 363,
+     "score_own_copies_out": 27.548209366391184
+    }
+   ],
+   "score": 25.054965361490446,
+   "score_own_copies_out": 25.054965361490446
+  },
+  "otranto": {
+   "draws": [
+    {
+     "volumes": 1995,
+     "rare_grams": 3142,
+     "best": "tcp:A96930",
+     "best_words": 356,
+     "score": 28.089887640449437,
+     "rare_grams_own_copies_out": 3142,
+     "best_own_copies_out": "tcp:A96930",
+     "best_words_own_copies_out": 356,
+     "score_own_copies_out": 28.089887640449437
+    },
+    {
+     "volumes": 1997,
+     "rare_grams": 3271,
+     "best": "tcp:B28740",
+     "best_words": 286,
+     "score": 34.96503496503497,
+     "rare_grams_own_copies_out": 3271,
+     "best_own_copies_out": "tcp:B28740",
+     "best_words_own_copies_out": 286,
+     "score_own_copies_out": 34.96503496503497
+    },
+    {
+     "volumes": 1997,
+     "rare_grams": 3075,
+     "best": "tcp:A33024",
+     "best_words": 317,
+     "score": 31.545741324921135,
+     "rare_grams_own_copies_out": 3075,
+     "best_own_copies_out": "tcp:A33024",
+     "best_words_own_copies_out": 317,
+     "score_own_copies_out": 31.545741324921135
+    }
+   ],
+   "score": 31.533554643468516,
+   "score_own_copies_out": 31.533554643468516
+  }
+ },
+ "separation": {
+  "U": 6.0,
+  "of": 27,
+  "p": 0.9272727272727272,
+  "separates": false,
+  "rowley_at_genuine_median": {
+   "U": 9.5,
+   "of": 27,
+   "p": 0.7681818181818182,
+   "separates": false
+  }
+ },
+ "separation_own_copies_out": {
+  "U": 9.0,
+  "of": 27,
+  "p": 0.8136363636363636,
+  "separates": false,
+  "rowley_at_genuine_median": {
+   "U": 11.5,
+   "of": 27,
+   "p": 0.65,
+   "separates": false
+  }
+ }
+}

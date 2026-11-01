@@ -1,0 +1,69 @@
+{
+ "config_sha256": "4bea9625166b563609b8eb112d97c663e6fb24a91aeab589eab7396d15fc5a5a",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "a288d61fefc36ff01d658fe764de5c22b591e111",
+ "model": "BAAI/bge-small-en-v1.5",
+ "queries": 443,
+ "kjv_passages": 7970,
+ "distractors": 1000000,
+ "passages_per_second": 126.0,
+ "note": "run 2026-11-01 with the scratch predecessor of `semantic.choose distractors` (same seed, skip rule and recall definitions); speed measured while sharing the GPU",
+ "recall_at_1": 0.5936794582392777,
+ "recall_at_10": 0.7765237020316027,
+ "recall_at_100": 0.8532731376975169,
+ "recall_at_300": 0.8939051918735892,
+ "recall_at_1000": 0.9187358916478555,
+ "rescore_10": {
+  "model": "intfloat/e5-base-v2",
+  "recall_at_1": 0.6162528216704289,
+  "recall_at_10": 0.7765237020316027
+ },
+ "rescore_100": {
+  "model": "intfloat/e5-base-v2",
+  "recall_at_1": 0.5395033860045146,
+  "recall_at_10": 0.781038374717833
+ },
+ "rescore_300": {
+  "model": "intfloat/e5-base-v2",
+  "recall_at_1": 0.5169300225733634,
+  "recall_at_10": 0.744920993227991
+ },
+ "rescore_1000": {
+  "model": "intfloat/e5-base-v2",
+  "recall_at_1": 0.5079006772009029,
+  "recall_at_10": 0.7178329571106095
+ },
+ "distractors_above_true_match": {
+  "0": 277,
+  "1": 27,
+  "2": 11,
+  "3": 10,
+  "4": 10,
+  "5": 4,
+  "6": 2,
+  "7": 3,
+  "8": 4,
+  "9": 3,
+  "10": 2,
+  "11": 2,
+  "12": 1,
+  "13": 1,
+  "15": 1,
+  "21": 2,
+  "23": 1,
+  "24": 1,
+  "25": 1,
+  "27": 1,
+  "28": 1,
+  "37": 1,
+  "38": 1,
+  "42": 1,
+  "43": 1,
+  "45": 2,
+  "46": 1,
+  "47": 1,
+  "49": 1,
+  "50": 69
+ }
+}

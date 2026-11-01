@@ -21,6 +21,11 @@ bom = "pipeline.cli:main"
 align = [
     "passim",
 ]
+semantic = [
+    "torch",
+    "sentence-transformers",
+    "faiss-cpu",
+]
 
 [dependency-groups]
 dev = [

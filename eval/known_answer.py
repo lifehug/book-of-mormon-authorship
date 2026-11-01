@@ -184,6 +184,35 @@ SET = [
 ]
 
 
+def separation(scores: dict[str, float], cfg: dict) -> dict:
+    """Amendment 9's rule on one score per text (higher means its own time): exact one-sided
+    Mann-Whitney of the presented-as-ancient primary texts against the genuine ones over every
+    way of choosing them, and the same with Rowley set to the genuine median."""
+    from itertools import combinations
+
+    groups = {key: group for key, group, primary, *_ in SET if primary}
+
+    def test(sc: dict[str, float]) -> dict:
+        gen = [sc[k] for k, g in groups.items() if g == GENUINE and k in sc]
+        mod = [sc[k] for k, g in groups.items() if g == MODERN and k in sc]
+
+        def u(m: list[float], g: list[float]) -> float:
+            return sum((a > b) + 0.5 * (a == b) for a in m for b in g)
+
+        obs, pool = u(mod, gen), gen + mod
+        null = [u([pool[i] for i in pick], [pool[i] for i in range(len(pool)) if i not in pick])
+                for pick in combinations(range(len(pool)), len(mod))]  # fmt: skip
+        p = sum(x >= obs for x in null) / len(null)
+        return {"U": obs, "of": len(mod) * len(gen), "p": p,
+                "separates": p <= cfg["known_answer"]["separation_p"]}  # fmt: skip
+
+    res = test(scores)
+    gen = sorted(scores[k] for k, g in groups.items() if g == GENUINE and k in scores)
+    if gen and "rowley" in scores:
+        res["rowley_at_genuine_median"] = test({**scores, "rowley": gen[len(gen) // 2]})
+    return res
+
+
 def build() -> int:
     want = {w for row in SET for w in row[4]}
     cols = ["work_id", "source", "title", "author", "year", "has_text", "text_path"]

@@ -214,6 +214,10 @@ borrowing:
   copy_min_hits: 10              # volumes sharing fewer target grams are not compared
   copy_index_df: 20              # candidate pairs from grams in at most this many volumes
   copy_min_common: 5             # ... sharing at least this many of them
+  # Amendment 13 (BOM-24; OSF revision 6ae7978847ce2102d62394f9; docs/rare-plan.md; post hoc): intervals
+  block_words: 1000              # the masked target resampled in blocks of this many words
+  bootstrap: 1000
+  bootstrap_seed: bom24-boot
   null_sizing:
     sizes: [500, 1000, 2000, 5000, 10000, 20000]
     draws: 1000
@@ -330,5 +334,23 @@ dates:
   min_year_mentions: 3          # corrected year: latest year mentioned at least this often
   check_size: 100               # each of flagged and unflagged-with-a-later-mention
   check_seed: bom64-dates
+
+semantic:
+  # Amendment 14 (BOM-25; OSF revision 6ae7bc3c227eb64c6abde258; docs/semantic-plan.md): index and search
+  index_model: BAAI/bge-small-en-v1.5
+  half_precision: true
+  max_tokens: 512
+  passage_words: 128            # consecutive whitespace words of the normalised text, no overlap
+  min_passage_words: 32         # a shorter last passage is dropped
+  shard_volumes: 1000           # build checkpoint; does not change any vector
+  batch_size: 64                # embedding batch; measured fastest on the M4
+  keep: 100                     # nearest passages stored per query (exact search)
+  null_passages: 10000          # per target window; a parallel beats the query's best of these
+  max_query_kjv_share: 0.5      # query passages scored in s(T, v)
+  null_volumes: 500             # same window, genre and length within a factor of 2
+  null_length_factor: 2
+  bootstrap: 10000
+  bootstrap_seed: bom25-boot
+  null_seed: bom25-null
 
 pending_amendment: []

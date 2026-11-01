@@ -1,0 +1,48 @@
+{
+ "config_sha256": "f6829c1d6c03c27c115bf018f94d9cce570ca91ff6e456c6e1cc7a64b26b3ca8",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "e032d54d8da686cef3ac99a84b5614c67ca0604d",
+ "test": "The 1807 *New Translation of the Book of Psalms* (``institutional_books:AH5KIN``) renders each\npsalm afresh from the Hebrew, so its Psalm n says what the King James Psalm n says in different\nperiod English: paraphrase, which is what BOM-25 has to find. Each of its passages is a query;\nthe gallery is the whole King James Bible (Apocrypha included) cut into passages the same way. A\nquery is answered right when the King James Psalm with its number is among the top k. Reported\nper model: recall at 1 and 10, and passages embedded per second on this machine, which sets how\nlong the full index takes. Nothing here reads the Book of Mormon.",
+ "passage_words": 128,
+ "device": "mps",
+ "queries": 443,
+ "gallery": 7970,
+ "models": {
+  "sentence-transformers/all-MiniLM-L6-v2": {
+   "recall_at_1": 0.5869074492099323,
+   "recall_at_10": 0.8036117381489842,
+   "passages_per_second": 483.1722679267655,
+   "dim": 384,
+   "max_seq_length": 256
+  },
+  "BAAI/bge-small-en-v1.5": {
+   "recall_at_1": 0.6884875846501128,
+   "recall_at_10": 0.835214446952596,
+   "passages_per_second": 264.5953895520219,
+   "dim": 384,
+   "max_seq_length": 512
+  },
+  "sentence-transformers/all-mpnet-base-v2": {
+   "recall_at_1": 0.49209932279909707,
+   "recall_at_10": 0.7246049661399548,
+   "passages_per_second": 67.0158729428748,
+   "dim": 768,
+   "max_seq_length": 384
+  },
+  "BAAI/bge-base-en-v1.5": {
+   "recall_at_1": 0.6952595936794582,
+   "recall_at_10": 0.8126410835214447,
+   "passages_per_second": 79.0605877625816,
+   "dim": 768,
+   "max_seq_length": 512
+  },
+  "intfloat/e5-base-v2": {
+   "recall_at_1": 0.7313769751693002,
+   "recall_at_10": 0.8668171557562077,
+   "passages_per_second": 77.54268265183751,
+   "dim": 768,
+   "max_seq_length": 512
+  }
+ }
+}

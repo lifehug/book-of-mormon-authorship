@@ -55,3 +55,15 @@ and numbers only; no text.
 
 Source texts: the catalog's volumes (`data/catalog/catalog.parquet`; the bulk corpora under
 `data/corpus/`, obtained as in `docs/replication.md`).
+
+## `bom/rare.json`, `bom/sealed_check.json`, `rare_known/` (BOM-24, 2026-11-01)
+
+Rare-phrase scoring (plan and results: `docs/rare-plan.md`, Amendment 13). Ids, numbers, titles and
+the Book of Mormon's own shared 4-word phrases; no corpus text.
+
+| File | What | Rebuild |
+| --- | --- | --- |
+| `bom/rare.json` | the Book of Mormon's ranked source list from `bom/hits.parquet` (BOM-22's scan) under BOM-64's dates: top 100, named sources, imitation scripture as a group, moved volumes, sealed volumes; scores by text and by volume, p, genre p, bootstrap intervals | `python -m reuse.rare score` (minutes once the seal check is cached) |
+| `bom/sealed_check.json` | 4.2's contamination check on every scanned volume: distinct 12-word Book of Mormon original strings it holds | computed by `score` on first run (~35 minutes, 6 workers) |
+| `rare_known/known_answer.json` | Amendment 9's score: per text and draw, the strongest source and its density; the separation rule, with and without the missed own copy | `python -m reuse.rare known` |
+| `rare_known/hits.parquet`, `rare_known/target_grams/` | the known-answer scan (not in git; checksummed in `data/manifests/reuse.jsonl`) | `python -m reuse.rare known --workers 4` (about 15 minutes) |

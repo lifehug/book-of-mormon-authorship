@@ -2315,8 +2315,79 @@ overlap with earlier books drops from 0.52% to 0.26% (0.16% once the quotation s
 None of the 30 ordinary period phrases moved. The sermons go from 2.47% to 2.28%, *The Late War*
 from 8.92% to 8.74%, and the known-answer test comes out exactly the same.
 
+## Rare phrases: the 2013 test, given a fair fight
+
+In 2013 Chris and Duane Johnson ranked period books by how many *rare* four-word phrases they
+share with the Book of Mormon. A phrase counts as rare if almost no other book has it. Their
+headline was *The Late War*, an 1816 schoolbook history of the War of 1812 written in mock-Bible
+English. We already rebuilt their test last month. This time we asked the question our project
+asks of every test first: can it tell a real translation of an ancient text from a modern book
+pretending to be one?
+
+It can't. We ran the same score on nine real translations (Josephus, Homer, the Koran and others)
+and three famous fakes (*Ossian*, Chatterton's "Rowley" poems, the 1751 *Book of Jasher*). The
+fakes didn't score higher than the real ones; they came out in the middle and below (p = 0.93).
+So by the rule we filed in advance, this list says nothing about whether the Book of Mormon is
+ancient.
+
+Looking at why taught me something. The score is "rare phrases shared per 10,000 words of the
+*other* book." Divide by a tiny number and you get a huge score. The winning "source" for Josephus
+in one sample was a 177-word royal proclamation. For the Koran it was a 156-word advertisement. Of
+51 winners, 29 were under 1,000 words. One lucky phrase in a broadside beats two dozen in a real
+book.
+
+The Book of Mormon's own list shows the same thing: of its top 100 "sources", 53 share exactly one
+rare phrase. The new confidence intervals expose them: their p-values could be anything from 0
+to 1.
+
+Then there's *The Late War*. It shares 22 rare phrases with the Book of Mormon ("the thirty and
+sixth year", "took their weapons of war", "was their chief captain"), and that's significant
+against books in general (p = 0.0006). *The First Book of Napoleon* (1809) is too. But you asked
+the right question: compared to *what*? Against the other books written in the same fake-Bible
+style, *The Late War* ranks fifth. The 1829 reprint of the *Book of Jasher* shares more (31). The
+books that share the most with the Book of Mormon are all religious or biblical-sounding: a
+prophet's journal from 1829 ("baptize in my name", "gather my people together"), *Jasher*, *The
+Testament of the Twelve Patriarchs*. That's what you'd expect from any book written in King James
+English, ancient or not.
+
+One more catch along the way: my first run forgot to apply our own quotation filter. Eleven later
+magazines and government volumes quoting the Book of Mormon (a *Monthly Review* catalogued as
+1826 holds 337 of its sentences) were sitting in the list. The filter is applied now, and I caught
+it before writing anything up.
+
+## Picking a reader for 150 million passages
+
+The next test looks for the Book of Mormon saying the same thing as an earlier book in *different*
+words. For that a computer turns every passage into a list of numbers (an "embedding") so that
+passages with similar meaning land close together. We're doing it for the whole library at once:
+about 150 million 128-word passages from 278,796 volumes. On the Mac mini that's about a week.
+
+First we had to pick the model. We need a test with a known right answer, so we used an 1807 *New
+Translation of the Book of Psalms*, made fresh from the Hebrew. Its Psalm 23 says what the King
+James Psalm 23 says, in different words. Give the model each passage of the 1807 Psalms and see if
+it finds the matching King James psalm.
+
+On that small test, the bigger model (E5) won: right psalm first 73% of the time. It's also four
+times slower, three weeks for the library. The plan was a compromise: index everything with the
+fast model, then let E5 re-check each passage's top 1,000 matches.
+
+Then I ran the test the way the real search will look: the same Psalms, but with a million random
+passages from our library mixed in. That changed the answer. The fast model (BGE-small) found the
+right psalm first 59% of the time. Letting E5 re-check made it *worse*: 54% when re-checking the
+top 100, 51% at 1,000. The big model gets fooled by old, noisy, period text in a way the small
+one doesn't. So E5 is out, and the small model does the whole job alone. It's simpler, cheaper
+and more accurate. The other fast model (MiniLM) only got 45%.
+
+Two honest limits. A one-in-a-million haystack is still 150 times smaller than the real one, so
+loose paraphrase will often slip past. And we tried Apple's own MLX engine hoping for a speed-up:
+same answers, but slower on this machine.
+
+Everything is filed with the OSF before any search: Amendment 14. The index is building now.
+
 ## Log
 
+- **2026-11-01.** BOM-25 set up (Amendment 14). Full-corpus passage index with bge-small-en-v1.5 (Psalms known-answer test; with 1M corpus distractors bge-small R@1 0.59, re-scoring with e5-base made it worse, MiniLM 0.45). Exact search, no re-scoring. Build started: 549,657 passages per 1,000 volumes, about 150M passages.
+- **2026-11-01.** BOM-24 scored (Amendment 13, partly post hoc after the BOM-22 replication). Known-answer test fails (U 6/27, p 0.93): the rare-phrase list is uninformative on the translation question; the per-10,000-words score is dominated by short pieces (29 of 51 draw winners under 1,000 words). Book of Mormon list: The Late War p 0.0006 and Napoleon p 0.0003 against all books, but The Late War ranks 5th among imitation-scripture books (1829 Jasher first); View of the Hebrews and Spalding not significant. Seal applied after first run caught 11 later quoting volumes.
 - **2026-11-01.** BOM-64 closed. 366,580 volumes dated 1830 or earlier scanned; 23,859 flagged, 19,463 moved past 1830 (Harvard 39% flagged). Model-read check (simulated): 81 of 100 flagged really later; 5 of 97 unflagged missed. About one moved volume in five may truly be pre-1830, so BOM-24 and BOM-25 will list matches from moved volumes separately. BOM-23 rechecked: Book of Mormon 0.26% on dates alone (0.16% with the seal), known-answer test unchanged.
 - **2026-11-01.** BOM-62 closed. Italics check 88/100 in the 1828 Phinney Bible. The registered check fails (independent translations and sermons both keep 90% of KJV italic words), so no verdict; descriptively the Book of Mormon keeps 64% of italic words against 95% of the rest (D 0.30 vs 0.02-0.03), and its Isaiah figure (37% not kept) matches Spencer 2020 and Wright 1998.
 - **2026-11-01.** BOM-23 closed. Exact reuse, KJV masked: Book of Mormon 0.16% of its text shared with earlier books (0.52% before misdated later quotations are set aside), against 2.4% for an 1821 sermon collection and 8.9% for *The Late War*. Its pre-1830 matches are short stock phrases. Uninformative on the translation question under Amendment 9.

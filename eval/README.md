@@ -132,8 +132,22 @@ Plan, registered before the scan (Amendment 12): `docs/date-audit-plan.md`.
 | `python -m metadata.dates body` | registered | counts year mentions in the full text of every volume dated 1830 or earlier; flags and corrects volumes that name later years | `data/catalog/date_body.parquet` (counts only) | ~5 min, 8 workers |
 | `python -m metadata.dates sample` | registered (simulated, model-assisted) | the precision check: 100 flagged and 100 unflagged volumes, printing year read by a model from the opening and closing pages; resumes, retries outages | `data/catalog/date_sample.jsonl` | ~2 hours |
 
+## 10. Semantic parallels (BOM-25)
+
+Plan, registered before any search (Amendment 13): `docs/semantic-plan.md`. Needs the extra:
+`uv sync --extra semantic`.
+
+| Command | Kind | What it does | Writes | Time |
+| --- | --- | --- | --- | --- |
+| `python -m semantic.choose` | registered (model choice) | five embedding models on the 1807 Psalms against the King James Psalms: recall at 1 and 10, passages per second | `data/semantic/model_choice.json` | ~20 min |
+| `python -m semantic.choose distractors <model>` | registered (model choice) | the Psalms test with a million corpus passages as distractors; `--rescore <model>` measures re-scoring the top k | `data/semantic/distractors_<model>.json` | ~1 h (MiniLM) to ~3 h (bge-small with re-scoring) |
+| `python -m semantic.index build` | registered | the passage index of the whole corpus (278,796 volumes, 128-word passages, bge-small); resumes at the first unfinished shard and adds only volumes not yet indexed | `data/corpus/semantic/index/` (vectors and ids, no text; not in git) | ~7 days on the M4 |
+| `python -m semantic.index status` | - | shards, volumes and passages indexed so far | - | seconds |
+
 ## Other
 
 | Command | Kind | What it does | Writes | Time |
 | --- | --- | --- | --- | --- |
 | `python -m reuse.rare size` | registered | how large the borrowing null must be (BOM-45) | `data/reuse/null_sizing/sizing.json` | minutes |
+| `python -m reuse.rare score` | registered score; points 2-5 of the plan post hoc (BOM-24, `docs/rare-plan.md`) | the Book of Mormon's ranked source list from the BOM-22 scan under corrected dates: rare shared 4-grams per 10,000 words (df <= 5 by text, by volume beside it), p against the whole period population, genre percentile, block-bootstrap intervals, named sources, imitation scripture as a group, volumes BOM-64 moved | `data/reuse/bom/rare.json` | minutes |
+| `python -m reuse.rare known` | registered (Amendment 9 score) | scans the known-answer texts' 4-grams in BOM-23's matched draws, scores the strongest source per draw, applies the separation rule | `data/reuse/rare_known/hits.parquet`, `known_answer.json` | ~40 min |

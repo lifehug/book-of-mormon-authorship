@@ -115,6 +115,8 @@ data/reuse/bom/hits.parquet
 # committed separately as draws.json
 data/reuse/exact/hits.parquet
 data/reuse/exact/target_grams/
+data/reuse/rare_known/hits.parquet
+data/reuse/rare_known/target_grams/
 data/reuse/exact/searches.json
 !data/benchmark/**
 !data/classic/**
@@ -125,6 +127,8 @@ data/reuse/exact/searches.json
 !data/italics/
 !data/italics/**
 data/italics/phinney/pages/
+!data/semantic/
+!data/semantic/**
 !data/kjv_mask/
 !data/kjv_mask/**
 # 107 MB, over GitHub's limit: committed as spans.jsonl.gz (gzip -n -9), byte-reproducible
