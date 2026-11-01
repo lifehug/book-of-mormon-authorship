@@ -159,3 +159,53 @@ table), not as evidence on whether it is a translation.
 title ("twelue patriarches") escaped the title rule. It is listed in `MISSED_OWN_COPIES` and
 the score is reported both ways; leaving it out can only lower a genuine score, so it cannot
 change a failed separation into a pass. The full tables are read for the same leak.
+
+## The reuse table (2026-11-01; `python -m reuse.exact sources <search>`)
+
+Each text against every eligible volume printed before its year, its own copies left out.
+"Later" means the volume's own text names a year after the target's more than any other (and at
+least 10 such mentions), against a catalog date before it; that rule and the kinds below were
+written after seeing the table and are **post hoc**.
+
+| Target | Passages | Volumes | Share covered | Volumes printed later by their own text | Share without them |
+| --- | --- | --- | --- | --- | --- |
+| *The Late War* (1816) | 1,680 | 401 | 8.92% | 73 | 8.87% |
+| Newton's *Works* vol. 4 (1821, the sermons control) | 746 | 626 | 2.47% | 46 | 2.39% |
+| Book of Mormon (1829) | 58 | 47 | 0.52% | 17 | 0.16% |
+
+**The Book of Mormon's 47 volumes, by kind (post hoc):**
+
+- **Later quotation, 17 volumes.** These are texts quoting the Book of Mormon whose catalog
+  date is decades too early: Congressional serial set volumes catalogued 1817 whose text names
+  1865-1905 most (Jacob 2 on one wife, Ether 12, the sacrament prayers); *The Millennial
+  Harbinger* catalogued 1830 (1831, Campbell's review); *The Monthly Review* catalogued 1826
+  (1842); *Herald of Gospel Liberty* catalogued 1808 (1909-1918); *The Bible Christian* and
+  *Evangelical Magazine* catalogued 1830 (1840-1843). They hold all of the long, high-identity
+  passages. The registered seal (4.2: at least 20 distinct original 12-token strings) catches 9
+  of them; the other 8 quote too briefly to reach it. BOM-64 corrects their dates.
+- **Missed Bible text, 0.** No passage is mostly King James wording (largest share 0.37).
+- **Shared period phrase, 30 volumes, all printed before 1830 by their own text.** These are
+  short (9-46 tokens) and loose (identity 0.27-0.67, one at 0.89 over 9 tokens) matches on
+  religious stock phrases: "the Lord cannot look upon sin with the least degree of allowance"
+  (Ravenscroft's *Works*); "I fear not what man can do ... perfect love casteth out all fear"
+  (Job Scott's *Journal* in five printings, *Piety Promoted*); "healing the sick, raising the
+  dead, causing the lame to walk" (Archibald M'Lean, *The Reformer*, Samuel Stanhope Smith's
+  *Sermons*); "the distance of a day and a half's journey" (four magazines); "turn ye, turn
+  ye, why will ye die" (Thomas Taylor); "if it so be that there is a devil and a hell"
+  (*Christian Intelligencer*). Several sit at the edge of a King James chapter the Book of
+  Mormon reproduces, where its own added words meet the biblical text (Isaiah 48 and 50 in
+  commentaries and *The Jew*), so their King James share is low but their content is biblical. Volumes
+  dated 1830 by their own text (Ravenscroft's *Works*) are flagged; they may postdate the
+  Book of Mormon by months.
+
+**The reference texts.** *The Late War*'s 8.9% is mostly the War of 1812's own documents, which
+it retells: *British and Foreign State Papers*, *Niles' Weekly Register*, Congress's debates and
+the treaties in the *Statutes at Large* (identity 0.88-0.93 over thousands of tokens). Newton's
+sermons share 2.4% with the evangelical magazines and tracts of his circle; 128 of their 746
+passages are mostly King James wording the mask missed.
+
+**Reading.** On exact reuse the Book of Mormon, KJV masked, shares 0.16% of its text with books
+printed before it, against 2.4% for an 1821 sermon collection and 8.9% for *The Late War*; its
+pre-1830 matches are short stock phrases. Under Amendment 9 this test does not separate
+translations from compositions presented as ancient, so the number describes the text and is not
+evidence on the translation question.

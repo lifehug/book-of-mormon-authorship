@@ -19,6 +19,7 @@ Usage::
     python -m reuse.exact scan [--workers 8]   # -> data/reuse/exact/hits.parquet
     python -m reuse.exact align <search>       # e.g. ossian:draw0, bom:full -> alignments/
     python -m reuse.exact separation           # -> data/reuse/exact/known_answer.json
+    python -m reuse.exact sources <search>     # e.g. bom:full -> data/reuse/exact/sources/
 """
 
 from __future__ import annotations
@@ -608,6 +609,81 @@ def separation() -> int:
     return 0
 
 
+YEAR = re.compile(r"\b(1[5-9]\d\d)\b")
+LATEST_YEAR = 1950  # later four-digit numbers are not read as years (library stamps, OCR)
+
+
+def _years(text: str) -> dict[int, int]:
+    out: dict[int, int] = {}
+    for m in YEAR.finditer(text):
+        y = int(m.group(1))
+        if y <= LATEST_YEAR:
+            out[y] = out.get(y, 0) + 1
+    return out
+
+
+def sources(search: str) -> int:
+    """Describe each source volume of a full table, for the write-up (labels decided after
+    seeing the table, so post hoc): the years its own text mentions, against its catalog year and
+    the target's; for the Book of Mormon the registered seal check (4.2); and per passage the
+    share of the target side's 5-grams that are King James wording the mask missed."""
+    from ocr_fix.normalize import norm_path
+
+    cfg = load_config()
+    key = search.split(":")[0]
+    r = json.loads((OUT / "alignments" / f"{search.replace(':', '_')}.json").read_text())
+    year = targets(cfg)[key]["year"] if key != "bom" else cfg["reuse"]["english_year"]["bom"]
+    text = targets_text(cfg, key)
+    kjv = set()
+    for ln in Path("data/kjv/kjv.jsonl").read_text().splitlines():
+        kjv |= gram_ids(tokens(json.loads(ln)["text"]), 5)
+    cols = ["work_id", "source", "title", "year", "text_path"]
+    want = {x["work_id"] for x in r["rows"]}
+    cat = {c["work_id"]: c for c in pq.read_table("data/catalog/catalog.parquet", columns=cols)
+           .to_pylist() if c["work_id"] in want}  # fmt: skip
+    if key == "bom":
+        from metadata.sealed import MIN_SHARED, shared_strings
+    vols = []
+    for wid in sorted(want):
+        c = cat[wid]
+        body = norm_path(c).read_text(encoding="utf-8", errors="replace")
+        ys = _years(body)
+        later = sum(n for y, n in ys.items() if y > year)
+        modal = max(ys, key=ys.get) if ys else None
+        rows = [x for x in r["rows"] if x["work_id"] == wid]
+        kshare = []
+        for x in rows:
+            g = gram_ids(tokens(text[x["t_begin"] : x["t_end"]]), 5)
+            kshare.append(len(g & kjv) / len(g) if g else 0.0)
+        v = {"work_id": wid, "title": (c["title"] or "")[:120], "catalog_year": c["year"],
+             "passages": len(rows), "tokens": sum(x["tokens"] for x in rows),
+             "mean_identity": sum(x["identity"] for x in rows) / len(rows),
+             "modal_year": modal, "year_mentions": sum(ys.values()),
+             "later_than_target_mentions": later, "kjv_share": kshare}  # fmt: skip
+        # post hoc: printed after the target if the year its text names most is later
+        v["after_target"] = bool(modal and modal > year and later >= 10)
+        if key == "bom":
+            v["seal_strings"] = shared_strings(body)
+            v["sealed_out"] = v["seal_strings"] >= MIN_SHARED
+            v["kind"] = ("later quotation" if v["after_target"] or v["sealed_out"]
+                         else "missed Bible text" if min(kshare) >= 0.5
+                         else "shared period phrase")  # fmt: skip
+        vols.append(v)
+    out = {"search": search, "target_year": year, "labels": "post hoc", "volumes": vols}
+    dest = OUT / "sources" / f"{search.replace(':', '_')}.json"
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(json.dumps({**stamp(), **out}, indent=1) + "\n")
+    after = sum(v["after_target"] for v in vols)
+    print(f"{search}: {len(vols)} volumes, {after} printed after {year} by their own text")
+    if key == "bom":
+        kinds: dict[str, int] = {}
+        for v in vols:
+            kinds[v["kind"]] = kinds.get(v["kind"], 0) + 1
+        print(f"  kinds {kinds}; sealed out {sum(v['sealed_out'] for v in vols)}")
+    print(f"-> {dest}")
+    return 0
+
+
 def targets_text(cfg: dict, key: str) -> str:
     """One target's masked text (the same construction as ``targets``, built alone)."""
     from reuse.rare import bom_text, stand_in_text
@@ -634,9 +710,13 @@ def main(argv: list[str] | None = None) -> int:
     al.add_argument("search", help="e.g. ossian:draw0, bom:full")
     al.add_argument("--workers", type=int, default=8)
     sub.add_parser("separation")
+    so = sub.add_parser("sources")
+    so.add_argument("search", help="bom:full, late_war:full or sermon:full")
     a = ap.parse_args(argv)
     if a.cmd == "separation":
         return separation()
+    if a.cmd == "sources":
+        return sources(a.search)
     if a.cmd == "scan":
         return scan(a.workers)
     if a.cmd == "align":

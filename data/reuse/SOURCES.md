@@ -39,3 +39,18 @@ the target left out of every document frequency, BOM-45). `target_grams.txt` is 
 `python -m eval.replicate johnson` (the Johnson and Johnson 2013 replication), which writes
 `data/benchmark/replication_johnson.json`. This is the published-method replication allowed by 4.2;
 nothing here feeds BOM-24's registered test.
+
+## `exact/` (BOM-23, 2026-10-31 to 2026-11-01)
+
+Exact and near-exact reuse by passim (plan: `docs/reuse-plan.md`, Amendment 10). Offsets, ids
+and numbers only; no text.
+
+| File | What | Rebuild |
+| --- | --- | --- |
+| `hits.parquet`, `target_grams/`, `searches.json` | the prefilter: which target 5-grams each volume holds, and each search's volumes (not in git; checksummed in `data/manifests/reuse.jsonl`) | `python -m reuse.exact scan --workers 6` (about 50 minutes) |
+| `alignments/<search>.json` | passim's passages: target and source offsets, tokens, identity, shared seeds, margin; `covered_share` | `python -m reuse.exact align <search>`, or `scripts/reuse_queue.sh` for all 48 (about 20 hours on the mini) |
+| `known_answer.json` | Amendment 9's separation on the 45 matched-window draws | `python -m reuse.exact separation` (seconds) |
+| `sources/<search>.json` | each source volume of a full table: catalog year, the years its own text mentions, the seal check (Book of Mormon), King James share per passage, a post hoc kind | `python -m reuse.exact sources <search>` (seconds) |
+
+Source texts: the catalog's volumes (`data/catalog/catalog.parquet`; the bulk corpora under
+`data/corpus/`, obtained as in `docs/replication.md`).

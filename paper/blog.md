@@ -2206,8 +2206,47 @@ The rest of the 58 matches are more ordinary, and I'll write them up with BOM-23
 matches on religious stock phrases of the day. Examples are "the Lord cannot look upon sin with
 the least degree of allowance" and "I fear not what man can do... perfect love casteth out all fear".
 
+## What the Book of Mormon copies word for word: almost nothing
+
+That's the BOM-23 result. We set the King James Bible aside, then looked for passages the Book of
+Mormon shares, word for word or nearly, with any of 221,000 books printed before it. We ran the
+same search for two other books so the number means something:
+
+| Book | Share of its text found in earlier books |
+| --- | --- |
+| *The Late War* (1816) | 8.9% |
+| John Newton's sermons, volume 4 (1821) | 2.4% |
+| **Book of Mormon** | **0.16%** |
+
+(That's 0.16% after setting aside the misdated books from the last post. With them it's 0.52%.)
+
+*The Late War* tells the story of the War of 1812 in Bible language, and its 8.9% is mostly the
+war's own paperwork: treaties, government state papers and *Niles' Weekly Register*, copied at
+about 90% identity across thousands of words. That's what real borrowing looks like to this test.
+
+The Book of Mormon's pre-1830 matches are 30 books sharing short, loose phrases, 9 to 46 words
+at 27-67% identity. They're the religious talk of the day: "the Lord cannot look upon sin with
+the least degree of allowance" (Bishop Ravenscroft), "I fear not what man can do... perfect love
+casteth out all fear" (the Quaker Job Scott's journal, printed five times in the 1790s), "healing
+the sick, raising the dead, causing the lame to walk". Nothing in it is a lifted page.
+
+**What this doesn't tell us.** Last week's known-answer check showed that this test can't tell a
+real translation from a book written in its own day and presented as ancient. Macpherson's
+*Ossian* copies nothing either (0.00%). So "copies almost nothing" is a description of the Book
+of Mormon, not evidence either way on where it came from. The next tests look for borrowing that
+isn't word for word: rare phrases (BOM-24, after the date audit) and shared meaning (BOM-25).
+
+**Wrong turns along the way:**
+- The first version counted stock phrases ("with propriety be said to have been") as matches.
+- I claimed a search setting was harmless; it wasn't, and it changed what got found.
+- A 1576 printing of one control book slipped past the own-copies filter because of its old
+  spelling ("twelue patriarches").
+
+All three are written up in the plan.
+
 ## Log
 
+- **2026-11-01.** BOM-23 closed. Exact reuse, KJV masked: Book of Mormon 0.16% of its text shared with earlier books (0.52% before misdated later quotations are set aside), against 2.4% for an 1821 sermon collection and 8.9% for *The Late War*. Its pre-1830 matches are short stock phrases. Uninformative on the translation question under Amendment 9.
 - **2026-11-01.** BOM-64 filed: catalog dates are wrong for some serials (an "1817" Congressional serial set volume mentions 1865 594 times and quotes Jacob 2). The registered 12-word seal still keeps the Book of Mormon out of every pool; the date audit runs before BOM-24.
 - **2026-11-01.** BOM-23's known-answer check failed, as a known-answer check is allowed to. The three books presented as ancient (*Ossian*, Rowley, *Jasher*) share almost no wording with earlier books (0.00%, 0.00%, 0.28%), less than the genuine translations do (Hesiod 2.0%, Herodotus 0.9%). A forger writing in an invented ancient voice doesn't copy whole sentences; a real translator shares wording with earlier translations of the same book. So exact copying can't tell a translation from a period composition, and the reuse table will be reported as a list of sources, nothing more. Book of Mormon: 0.05%. Also: the 1828 Phinney Bible check came back at 88 of 100 italics matching.
 - **2026-10-31.** Amendment 11 filed (revision 6ae62f2ca50d25933c296d01): the King James italics test, registered before any italic word is counted. BOM-23's matching tested: a bug let stock phrases through ("with propriety be said to have been"); fixed to count only rare phrases both passages share. Ossian: no shared passages with 2,000 earlier books; Jasher: 5, mostly a King James phrase the mask missed under OCR damage.
