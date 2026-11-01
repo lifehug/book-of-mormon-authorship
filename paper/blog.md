@@ -2384,8 +2384,38 @@ same answers, but slower on this machine.
 
 Everything is filed with the OSF before any search: Amendment 14. The index is building now.
 
+## Same ideas, different words: a first look at *View of the Hebrews*
+
+While the big index builds, we can already test the four books people most often name as
+sources, because each is small enough to compare passage by passage with the whole Book of
+Mormon. The fair question isn't "does it look like the Book of Mormon?" but "does it look like the
+Book of Mormon *more than books of its own kind do*?" So each one is ranked inside its own group.
+
+For each 128-word passage of the Book of Mormon, the computer first measures how close it gets to
+10,000 random passages from 1780-1830 books. That's its own bar: a generic passage ("and it came to
+pass that the people were gathered") is close to everything, so it needs a closer match to count.
+A "parallel" is a passage in another book that beats the bar.
+
+Ethan Smith's *View of the Hebrews* (1823), the book that argued American Indians descend from the
+lost tribes of Israel, came out **first of 49** books on the origins of the American Indians. Its
+1825 edition was first, the 1823 edition second, with about 765 Book of Mormon passages each
+having a parallel in it. Third was *The Life of David Brainerd*, a missionary to the Indians, at
+about 640. The gap holds when the numbers are bootstrapped, it isn't because *View of the Hebrews*
+is long (the 1823 edition is the shortest of the three), and it isn't its Isaiah quotations: nine in
+ten of its strongest matches are to Book of Mormon passages with no Bible wording in them.
+
+The others: Spalding's *Manuscript Story* ranks 12th of 49. Among imitation-scripture books, *The
+First Book of Napoleon* is 3rd of 18 and *The Late War* 6th. The top of that group is a book I'd
+never heard of, *Antediluvian Antiquities*.
+
+This isn't a verdict yet. Our filed rule also requires the book to beat 500 random books of the same
+type and length, and that check needs the finished index. A shared subject (Israelites in ancient
+America) would produce exactly this kind of closeness without any copying, so even a pass
+would mean "closest in what it talks about", not "borrowed from".
+
 ## Log
 
+- **2026-11-01.** BOM-25 named sources (provisional): View of the Hebrews ranks 1st and 2nd (1825, 1823) of 49 origins-of-the-Indians books by passage parallels (29.6 vs Brainerd 24.8); Napoleon 3rd and The Late War 6th of 18 imitation-scripture works; Spalding 12th of 49. The registered null check waits for the index.
 - **2026-11-01.** BOM-25 set up (Amendment 14). Full-corpus passage index with bge-small-en-v1.5 (Psalms known-answer test; with 1M corpus distractors bge-small R@1 0.59, re-scoring with e5-base made it worse, MiniLM 0.45). Exact search, no re-scoring. Build started: 549,657 passages per 1,000 volumes, about 150M passages.
 - **2026-11-01.** BOM-24 scored (Amendment 13, partly post hoc after the BOM-22 replication). Known-answer test fails (U 6/27, p 0.93): the rare-phrase list is uninformative on the translation question; the per-10,000-words score is dominated by short pieces (29 of 51 draw winners under 1,000 words). Book of Mormon list: The Late War p 0.0006 and Napoleon p 0.0003 against all books, but The Late War ranks 5th among imitation-scripture books (1829 Jasher first); View of the Hebrews and Spalding not significant. Seal applied after first run caught 11 later quoting volumes.
 - **2026-11-01.** BOM-64 closed. 366,580 volumes dated 1830 or earlier scanned; 23,859 flagged, 19,463 moved past 1830 (Harvard 39% flagged). Model-read check (simulated): 81 of 100 flagged really later; 5 of 97 unflagged missed. About one moved volume in five may truly be pre-1830, so BOM-24 and BOM-25 will list matches from moved volumes separately. BOM-23 rechecked: Book of Mormon 0.26% on dates alone (0.16% with the seal), known-answer test unchanged.
