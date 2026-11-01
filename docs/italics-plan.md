@@ -109,3 +109,10 @@ italic word was counted.
   142 blocks from a "PSALM n." heading to the next "NOTES." (eight of 150 headings were lost to
   OCR, and those psalms are left out).
 
+- **The check's page lookup (2026-10-31, before any measurement).** The first pass found 56 of
+  62 located words italic but could not locate 38, 37 of them in the New Testament. The OCR page
+  index counts all 892 scanned leaves; the image URL counts only the 884 shown to readers (leaf 0
+  and the four leaves before the New Testament are hidden), so images were one leaf off in the
+  Old Testament, which the neighbouring-page retry absorbed, and five off in the New, which it
+  could not. Pages are now mapped through the scan's `scandata.xml`; the 38 were asked again;
+  the answers that named their verse stand.

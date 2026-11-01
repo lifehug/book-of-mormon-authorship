@@ -116,6 +116,7 @@ Plan, registered before any count (Amendment 11): `docs/italics-plan.md`.
 | Command | Kind | What it does | Writes | Time |
 | --- | --- | --- | --- | --- |
 | `python -m eval.italics ranges` | registered | the translation-only ranges of the independent translations, from their layout, before any count | `data/italics/translation_ranges.json` | seconds |
+| `python -m eval.italics check` | registered (simulated, model-assisted) | the 100 seeded italic words looked up in page images of the 1828 Phinney Bible; resumes, retries outages | `data/italics/phinney_check.jsonl`, page images in `data/italics/phinney/pages/` | about 1.5 hours |
 
 ## Other
 

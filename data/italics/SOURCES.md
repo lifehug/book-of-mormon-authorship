@@ -18,6 +18,11 @@ Internet Archive item `holybiblecontain00cann` (H. & E. Phinney stereotype editi
 1828; Brigham Young University copy), https://archive.org/details/holybiblecontain00cann. In
 `phinney/`, downloaded 2026-10-31: `holybiblecontain00cann_hocr_searchtext.txt.gz` (the scan's
 searchable text), `..._hocr_pageindex.json.gz` (which characters of it are on which page) and
-`..._page_numbers.json`, each from `https://archive.org/download/holybiblecontain00cann/<file>`.
+`..._page_numbers.json` and `..._scandata.xml` (which leaves are shown to readers; it maps an OCR page to its image number), each from `https://archive.org/download/holybiblecontain00cann/<file>`.
 They locate a verse's page; the page images themselves are fetched by `eval.italics check` into
 `phinney/pages/` (not committed; public domain, refetched by the same command).
+
+`phinney_check.jsonl`: one line per answer, appended; the last line for a word wins. Rows
+without `leaves` were asked before the leaf mapping was fixed (2026-10-31): their ITALIC and
+ROMAN answers name the verse and stand, their NOT_FOUND rows were the wrong page and were asked
+again. Rebuild: `uv run python -m eval.italics check`.

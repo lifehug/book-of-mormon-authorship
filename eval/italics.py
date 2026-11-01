@@ -8,9 +8,17 @@ shares of italic (translator-supplied) and roman words kept are compared.
 its translation text, before any italic word in it is counted: notes and dissertations quote the
 King James text and would make an independent translation look dependent (Amendment 11).
 
+``check`` is Amendment 11's check of the italics themselves: ``italics.check_words`` italic
+words, drawn with ``italics.check_seed`` from the King James chapters the Book of Mormon
+parallels, are looked up in page images of the 1828 Phinney Bible (the Smith family's edition) by
+an AI model, a **simulated** check (Amendment 1). The answer per word is ITALIC, ROMAN or
+NOT_ON_PAGE; pages are tried best first by how many of the verse's words their OCR holds.
+Answers are written as they come and a rerun resumes; an outage reply is never an answer.
+
 Usage::
 
     python -m eval.italics ranges   # -> data/italics/translation_ranges.json
+    python -m eval.italics check    # -> data/italics/phinney_check.jsonl (model-assisted)
 """
 
 from __future__ import annotations
@@ -108,10 +116,201 @@ def ranges() -> int:
     return 0
 
 
+PHINNEY = OUT / "phinney"
+ITEM = "holybiblecontain00cann"
+CHECK = OUT / "phinney_check.jsonl"
+UA = "bom-authorship-study/1.0 (https://github.com/lifehug/book-of-mormon-authorship)"
+CHECK_MODEL = "sonnet"
+PAGES_TRIED = 4  # pages shown in turn until the verse is found
+
+
+def _kjv() -> dict[str, list[dict]]:
+    out: dict[str, list[dict]] = {}
+    for ln in Path("data/kjv/kjv.jsonl").read_text(encoding="utf-8").splitlines():
+        r = json.loads(ln)
+        out.setdefault(f"kjv:{r['book']}.{r['chapter']}", []).append(r)
+    return out
+
+
+def sample_italics(cfg: dict) -> list[dict]:
+    """The italic words to check: every italic word in the chapters the Book of Mormon parallels
+    (BOM-16's spans name the chapters, nothing else is read), sampled with the registered seed."""
+    import random
+
+    from metadata.config import derive_seed
+
+    refs = set()
+    for ln in Path("data/kjv_mask/bom/spans.jsonl").read_text().splitlines():
+        refs.update(s["ref"] for s in json.loads(ln)["spans"])
+    kjv = _kjv()
+    pool = []
+    for ref in sorted(refs):
+        for v in kjv.get(ref, []):
+            for k, m in enumerate(re.finditer(r"\[([^\]]+)\]", v["text_marked"])):
+                pool.append({"ref": v["ref"], "chapter": ref, "verse": v["verse"],
+                             "phrase": m.group(1), "nth": k, "text_marked": v["text_marked"],
+                             "text": v["text"]})  # fmt: skip
+    rng = random.Random(derive_seed(cfg["italics"]["check_seed"], cfg))
+    return rng.sample(pool, cfg["italics"]["check_words"])
+
+
+def _pages() -> list[str]:
+    import gzip
+
+    st = gzip.open(PHINNEY / f"{ITEM}_hocr_searchtext.txt.gz", "rt").read()
+    pi = json.load(gzip.open(PHINNEY / f"{ITEM}_hocr_pageindex.json.gz", "rt"))
+    return [st[a:b].lower() for a, b, _, _ in pi]
+
+
+def _best_pages(item: dict, kjv: dict, pages: list[str]) -> list[int]:
+    """Pages ranked by how many distinct words of 4+ letters from the verse and its neighbours
+    their OCR holds (the scan is two-column, so the OCR interleaves columns)."""
+    vs = kjv[item["chapter"]]
+    i = next(k for k, v in enumerate(vs) if v["verse"] == item["verse"])
+    words = set()
+    for v in vs[max(0, i - 1) : i + 2]:
+        words |= {w for w in re.findall(r"[a-z]+", v["text"].lower()) if len(w) >= 4}
+    sets = [set(re.findall(r"[a-z]+", p)) for p in pages]
+    scored = sorted(((len(words & s), k) for k, s in enumerate(sets)), reverse=True)
+    best = scored[0][1]
+    # a verse's neighbours often spill onto the facing page, so the best page's neighbours come
+    # next, then the runner-up
+    order = [best, best - 1, best + 1] + [k for _, k in scored[1:3]]
+    out = []
+    for k in order:
+        if 0 <= k < len(pages) and k not in out:
+            out.append(k)
+    return out[:PAGES_TRIED]
+
+
+def _leaf_images() -> dict[int, int]:
+    """Scan leaf -> the n of its page image. The OCR page index counts every leaf; the image URL
+    counts only leaves shown to readers (scandata ``addToAccessFormats``), so the two drift apart
+    after each hidden leaf: by one from the cover, by five after the leaves before the New
+    Testament."""
+    import xml.etree.ElementTree as ET
+
+    root = ET.parse(PHINNEY / f"{ITEM}_scandata.xml").getroot()
+    shown = [int(pg.get("leafNum")) for pg in root.iter("page")
+             if (pg.findtext("addToAccessFormats") or "true") == "true"]  # fmt: skip
+    return {leaf: n for n, leaf in enumerate(shown)}
+
+
+def _page_image(n: int) -> Path:
+    """The page image (kept as downloaded) and a copy resized to 2,000 pixels for the model;
+    ``n`` is the image number, not the leaf."""
+    import subprocess
+
+    full = PHINNEY / "pages" / f"n{n}.full.jpg"
+    out = PHINNEY / "pages" / f"n{n}.jpg"
+    if not full.exists():
+        full.parent.mkdir(parents=True, exist_ok=True)
+        url = f"https://archive.org/download/{ITEM}/page/n{n}.jpg"
+        # a dropped download is transient: retried, never recorded as an answer
+        cmd = ["curl", "-sfL", "--retry", "5", "--retry-all-errors", "--retry-delay", "10",
+               "-A", UA, "--max-time", "300", "-o", str(full), url]  # fmt: skip
+        subprocess.run(cmd, check=True)
+    if not out.exists():
+        subprocess.run(["sips", "-Z", "2000", str(full), "--out", str(out)],
+                       check=True, capture_output=True)  # fmt: skip
+    return out
+
+
+def _ask_image(prompt: str, image: Path) -> tuple[str, str]:
+    import subprocess
+
+    from metadata.genre import _TRANSIENT, _log_parse_failure
+
+    # the prompt goes first: --allowedTools takes a list and would swallow it
+    try:
+        done = subprocess.run(
+            ["claude", "-p", f"Read the image file {image.resolve()} and answer.\n\n{prompt}",
+             "--model", CHECK_MODEL, "--allowedTools", "Read"],
+            capture_output=True, text=True, timeout=600, stdin=subprocess.DEVNULL,
+        )  # fmt: skip
+    except Exception as exc:  # noqa: BLE001
+        _log_parse_failure(CHECK_MODEL, f"<{type(exc).__name__}: {exc}>")
+        return "RETRY", ""
+    text = done.stdout.strip()
+    if not text or _TRANSIENT.search(text) or done.returncode != 0:
+        _log_parse_failure(CHECK_MODEL, text or f"<rc={done.returncode}>")
+        return "RETRY", text
+    return "OK", text
+
+
+def check() -> int:
+    import time
+
+    cfg = load_config()
+    items = sample_italics(cfg)
+    kjv, pages, images = _kjv(), _pages(), _leaf_images()
+    done = {}
+    if CHECK.exists():
+        for ln in CHECK.read_text().splitlines():
+            r = json.loads(ln)
+            done[(r["ref"], r["nth"])] = r
+    for k, it in enumerate(items, 1):
+        key = (it["ref"], it["nth"])
+        # NOT_FOUND from before the leaf mapping was fixed was the wrong page, not an answer
+        final = ("ITALIC", "ROMAN") + (("NOT_FOUND",) if done.get(key, {}).get("leaves") else ())
+        if key in done and done[key]["answer"] in final:
+            continue
+        context = re.sub(r"\[([^\]]+)\]", r"\1", it["text_marked"])
+        answer, tried, raw = "NOT_FOUND", [], ""
+        for leaf in _best_pages(it, kjv, pages):
+            if leaf not in images:
+                continue
+            tried.append(leaf)
+            prompt = (
+                "This is a page from an 1828 printing of the King James Bible, set in two "
+                f'columns. Find {it["ref"]}, which reads: "{context}"\n'
+                f'In that verse, look at the words "{it["phrase"]}" (occurrence '
+                f"{it['nth'] + 1} of the supplied words in the verse). Are they printed in "
+                "italic type or in ordinary roman type?\n"
+                "Reply with exactly one word: ITALIC, ROMAN, or NOT_ON_PAGE (if the verse is "
+                "not on this page)."
+            )
+            state, raw = "RETRY", ""
+            for wait in (0, 60, 300, 900):
+                time.sleep(wait)
+                state, raw = _ask_image(prompt, _page_image(images[leaf]))
+                if state == "OK":
+                    break
+            if state != "OK":
+                answer = "RETRY"  # failed transiently: picked up by the next run
+                break
+            m = re.findall(r"\b(ITALIC|ROMAN|NOT_ON_PAGE)\b", raw.upper())
+            if not m:
+                answer = "UNPARSED"
+                break
+            if m[-1] != "NOT_ON_PAGE":
+                answer = m[-1]
+                break
+        rec = {**{x: it[x] for x in ("ref", "verse", "phrase", "nth")}, "answer": answer,
+               "leaves": tried, "raw": raw[-300:], "model": CHECK_MODEL}  # fmt: skip
+        with CHECK.open("a") as fh:
+            fh.write(json.dumps(rec) + "\n")
+        print(f"{k}/{len(items)} {it['ref']} [{it['phrase']}]: {answer} (leaves {tried})",
+              flush=True)  # fmt: skip
+    last = {}
+    for ln in CHECK.read_text().splitlines():
+        r = json.loads(ln)
+        last[(r["ref"], r["nth"])] = r
+    counts: dict[str, int] = {}
+    for r in last.values():
+        counts[r["answer"]] = counts.get(r["answer"], 0) + 1
+    judged = counts.get("ITALIC", 0) + counts.get("ROMAN", 0)
+    print(f"answers: {counts}; italic in the 1828 printing: "
+          f"{counts.get('ITALIC', 0)}/{judged}")  # fmt: skip
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     args = sys.argv[1:] if argv is None else argv
     if args[:1] == ["ranges"]:
         return ranges()
+    if args[:1] == ["check"]:
+        return check()
     print(__doc__)
     return 1
 
