@@ -14,3 +14,14 @@ vectors and passage ids per shard, `settings.json` with the model and settings, 
 `data/manifests/semantic_index.jsonl`. Rebuild with `python -m semantic.index build` (about a week
 on an M4); the models are downloaded from Hugging Face by name
 (https://huggingface.co/BAAI/bge-small-en-v1.5, https://huggingface.co/intfloat/e5-base-v2).
+
+## skeleton/ (BOM-25 story skeletons, Amendment 15; `docs/skeleton-plan.md`)
+
+- `skeleton/check.json`: the extractor check. `python -m semantic.skeleton check`: 20 King James
+  chapters (seed `bom25-skeleton-check`) from `data/kjv/kjv.jsonl`, events extracted twice by
+  claude-sonnet-5-5 and judged against the chapter (model-assisted, simulated); holds the King
+  James event lists (public domain), agreement, support and the event-match threshold.
+- `skeleton/controls.json`, `skeleton/bom.json`: alignment scores, spans (block numbers), order
+  p-values and ranks; no text. Rebuild with `python -m semantic.skeleton controls|bom`. The event
+  lists they are computed from paraphrase licensed volumes and stay in
+  `data/corpus/semantic/skeleton/events/` (not in git, manifest when complete).

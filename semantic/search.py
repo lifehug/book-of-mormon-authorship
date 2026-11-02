@@ -105,12 +105,32 @@ def _embed(model, texts: list[str], cfg: dict) -> np.ndarray:
     return v.astype(np.float32)
 
 
-def named() -> int:
+def control_groups() -> dict[str, dict[str, tuple[str, str]]]:
+    """The registered control groups with the named sources in them: group -> id -> (title,
+    text path)."""
     import pyarrow.parquet as pq
 
     from metadata.pseudo_biblical import CATALOG
-    from metadata.sealed import sealed_ids
     from ocr_fix.normalize import norm_path
+
+    cat = {r["work_id"]: r for r in pq.read_table(CATALOG).to_pylist()}
+    groups: dict[str, dict[str, tuple[str, str]]] = {"pseudo_biblical": {}, "origins": {}}
+    for w in CURATED.read_text().split():
+        if (cat[w]["author_norm"] or "").startswith("hunt, gilbert"):
+            continue  # The Late War itself: scored once, from its cleaned text (NAMED)
+        groups["pseudo_biblical"][w] = (cat[w]["title"] or "", str(norm_path(cat[w])))
+    for ln in HISTORY.read_text().splitlines():
+        r = json.loads(ln)
+        if r["origins"]:
+            w = r["work_id"]
+            groups["origins"][w] = (cat[w]["title"] or "", str(norm_path(cat[w])))
+    for key, (group, fname) in NAMED.items():
+        groups[group][key] = (key, str(CANDIDATES / fname))
+    return groups
+
+
+def named() -> int:
+    from metadata.sealed import sealed_ids
     from semantic.index import _model
 
     cfg = load_config()
@@ -126,20 +146,7 @@ def named() -> int:
     print(f"{len(queries)} query passages ({int(scored.sum())} scored); null of {len(nv)}",
           flush=True)  # fmt: skip
 
-    cat = {r["work_id"]: r for r in pq.read_table(CATALOG).to_pylist()}
-    groups: dict[str, dict[str, tuple[str, str]]] = {"pseudo_biblical": {}, "origins": {}}
-    for w in CURATED.read_text().split():
-        if (cat[w]["author_norm"] or "").startswith("hunt, gilbert"):
-            continue  # The Late War itself: scored once, from its cleaned text (NAMED)
-        groups["pseudo_biblical"][w] = (cat[w]["title"] or "", str(norm_path(cat[w])))
-    for ln in HISTORY.read_text().splitlines():
-        r = json.loads(ln)
-        if r["origins"]:
-            w = r["work_id"]
-            groups["origins"][w] = (cat[w]["title"] or "", str(norm_path(cat[w])))
-    for key, (group, fname) in NAMED.items():
-        groups[group][key] = (key, str(CANDIDATES / fname))
-
+    groups = control_groups()
     rng = np.random.default_rng(derive_seed(s["bootstrap_seed"], cfg))
     boots = rng.integers(0, int(scored.sum()), (s["bootstrap"], int(scored.sum())))
     widx = np.flatnonzero(scored)

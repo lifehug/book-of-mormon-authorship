@@ -134,16 +134,20 @@ Plan, registered before the scan (Amendment 12): `docs/date-audit-plan.md`.
 
 ## 10. Semantic parallels (BOM-25)
 
-Plan, registered before any search (Amendment 13): `docs/semantic-plan.md`. Needs the extra:
+Plan, registered before any search (Amendment 14): `docs/semantic-plan.md`; story skeletons, Amendment 15: `docs/skeleton-plan.md`. Needs the extra:
 `uv sync --extra semantic`.
 
 | Command | Kind | What it does | Writes | Time |
 | --- | --- | --- | --- | --- |
 | `python -m semantic.choose` | registered (model choice) | five embedding models on the 1807 Psalms against the King James Psalms: recall at 1 and 10, passages per second | `data/semantic/model_choice.json` | ~20 min |
 | `python -m semantic.choose distractors <model>` | registered (model choice) | the Psalms test with a million corpus passages as distractors; `--rescore <model>` measures re-scoring the top k | `data/semantic/distractors_<model>.json` | ~1 h (MiniLM) to ~3 h (bge-small with re-scoring) |
-| `python -m semantic.index build` | registered | the passage index of the whole corpus (278,796 volumes, 128-word passages, bge-small); resumes at the first unfinished shard and adds only volumes not yet indexed | `data/corpus/semantic/index/` (vectors and ids, no text; not in git) | ~7 days on the M4 |
+| `python -m semantic.index build` | registered | the passage index of the whole corpus (278,796 volumes, 128-word passages, bge-small); resumes at the first unfinished shard and adds only volumes not yet indexed | `data/corpus/semantic/index/` (vectors and ids, no text; not in git) | ~12 days on the M4 (measured 183 passages/s alone) |
 | `python -m semantic.index status` | - | shards, volumes and passages indexed so far | - | seconds |
 | `python -m semantic.search named` | registered | the named proposed sources and their control groups against the Book of Mormon, every passage pair; ranks within group (the null check waits for the index) | `data/semantic/named.json` | ~10 min |
+| `python -m semantic.skeleton check` | registered (extractor check) | 20 King James chapters, events extracted twice by the hosted model and judged against the chapter; sets the event-match threshold | `data/semantic/skeleton/check.json` | ~2 min, 60 model calls |
+| `python -m semantic.skeleton controls` | registered | the retelling positive controls (Josephus, Twelve Patriarchs, Jasher against their King James ranges and 20 unrelated books each); stops on a usage limit and resumes | `data/semantic/skeleton/controls.json`; events in `data/corpus/semantic/skeleton/events/` | hours, ~3,500 model calls |
+| `python -m semantic.skeleton bom` | registered | the Book of Mormon's event sequence against the named sources and their control groups, aligned with an order test | `data/semantic/skeleton/bom.json` | hours, ~3,500 model calls |
+| `scripts/skeleton_loop.sh controls\|bom` | - | reruns a skeleton step every 15 minutes until it finishes (run under tmux) | as above | until done |
 
 ## Other
 

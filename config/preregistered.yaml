@@ -353,4 +353,23 @@ semantic:
   bootstrap_seed: bom25-boot
   null_seed: bom25-null
 
+skeleton:
+  # Amendment 15 (BOM-25; OSF revision 6ae7dbb60fa5f3ec4abde26d; docs/skeleton-plan.md)
+  extract_model: claude-sonnet-5-5   # hosted (owner, 2026-11-01); model-assisted, simulated
+  block_words: 2000             # every text cut into consecutive blocks of at most this
+  max_events: 12                # per block, names replaced by roles
+  check_chapters: 20            # King James narrative chapters, extracted twice
+  check_seed: bom25-skeleton-check
+  check_min_agreement: 0.6      # median share of events the two runs align
+  check_min_supported: 0.9      # share of events a reader call finds in the chapter
+  event_match_quantile: 0.99    # of cosines between events of unrelated check chapters
+  match_score: 1.0              # Smith-Waterman
+  mismatch_score: -0.5
+  gap_score: -0.5
+  shuffles: 1000
+  shuffle_seed: bom25-skeleton
+  max_order_p: 0.01
+  control_unrelated: 20         # same-length unrelated books per retelling control
+  top_search_sources: 20
+
 pending_amendment: []
