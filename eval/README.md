@@ -147,7 +147,8 @@ Plan, registered before any search (Amendment 14): `docs/semantic-plan.md`; stor
 | `python -m semantic.skeleton check` | registered (extractor check) | 20 King James chapters, events extracted twice by the hosted model and judged against the chapter; sets the event-match threshold | `data/semantic/skeleton/check.json` | ~2 min, 60 model calls |
 | `python -m semantic.skeleton controls` | registered | the retelling positive controls (Josephus, Twelve Patriarchs, Jasher against their King James ranges and 20 unrelated books each); stops on a usage limit and resumes | `data/semantic/skeleton/controls.json`; events in `data/corpus/semantic/skeleton/events/` | hours, ~3,500 model calls |
 | `python -m semantic.skeleton bom` | registered | the Book of Mormon's event sequence against the named sources and their control groups, aligned with an order test | `data/semantic/skeleton/bom.json` | hours, ~3,500 model calls |
-| `scripts/skeleton_loop.sh controls\|bom` | - | reruns a skeleton step every 15 minutes until it finishes (run under tmux) | as above | until done |
+| `scripts/skeleton_loop.sh controls\|bom [args]` | - | reruns a skeleton step every 15 minutes until it finishes (run under tmux) | as above | until done |
+| `scripts/skeleton_overnight.sh` | registered | paced run: the extractor check repeated with the lean call (`check --out check_lean.json`), then controls, then bom, at most `PER_HOUR` (500) model calls an hour; every step accepts `--per-hour` | as above, plus `data/semantic/skeleton/check_lean.json` | ~13 h at 500/h |
 
 ## Other
 

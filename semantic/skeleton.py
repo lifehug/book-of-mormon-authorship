@@ -31,6 +31,8 @@ import random
 import re
 import subprocess
 import sys
+import threading
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -68,11 +70,34 @@ Events:
 {events}"""
 
 
+# The call carries only the prompt: no Claude Code system prompt, tools, MCP servers, settings or
+# commands. Same model and prompt; a default call read ~27,000 tokens, this one ~2,500 (measured
+# 2026-11-01). Blocks read before the change (the first 620 control blocks, the 2026-11-01
+# check) carry no "invocation" field; later ones carry "lean".
+INVOCATION = "lean"
+LEAN = ["--system-prompt", "You follow instructions exactly.", "--tools", "", "--strict-mcp-config",
+        "--disable-slash-commands", "--setting-sources", ""]  # fmt: skip
+_PACE = {"per_hour": 0.0, "next": 0.0}
+_PACE_LOCK = threading.Lock()
+
+
+def _wait_turn() -> None:
+    """At most ``_PACE["per_hour"]`` call starts an hour, evenly spaced (0: no limit)."""
+    if not _PACE["per_hour"]:
+        return
+    with _PACE_LOCK:
+        now = time.monotonic()
+        start = max(now, _PACE["next"])
+        _PACE["next"] = start + 3600 / _PACE["per_hour"]
+    time.sleep(start - now)
+
+
 def _claude(prompt: str, model: str, retries: int = 3) -> str | None:
     """The model's reply, or None after transient failures (never recorded as an answer)."""
     for _ in range(retries):
+        _wait_turn()
         try:
-            done = subprocess.run(["claude", "-p", "--model", model, prompt],
+            done = subprocess.run(["claude", "-p", "--model", model, *LEAN, prompt],
                                   capture_output=True, text=True, timeout=300,
                                   stdin=subprocess.DEVNULL)  # fmt: skip
         except Exception as exc:  # noqa: BLE001
@@ -213,8 +238,10 @@ def sw_align(match: np.ndarray, cfg: dict) -> dict:
             "b_span": [int(j), end[1]]}  # fmt: skip
 
 
-def check(workers: int = 4) -> int:
-    """The extractor check: 20 seeded narrative chapters, extracted twice, events judged."""
+def check(workers: int = 4, out_name: str = "check.json") -> int:
+    """The extractor check: 20 seeded narrative chapters, extracted twice, events judged.
+    ``check_lean.json`` repeats it with the lean call; the registered threshold stays the one in
+    ``check.json``."""
     cfg = load_config()
     s = cfg["skeleton"]
     chapters = kjv_chapters()
@@ -265,7 +292,8 @@ def check(workers: int = 4) -> int:
         "rows": rows,
     }  # fmt: skip
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "check.json").write_text(json.dumps({**stamp(), **out}, indent=1) + "\n")
+    out["invocation"] = INVOCATION
+    (OUT / out_name).write_text(json.dumps({**stamp(), **out}, indent=1) + "\n")
     print(f"threshold {thr:.3f}; median agreement {out['median_agreement']:.2f}; "
           f"supported {n_sup}/{n_ev}; passes {out['passes']}")  # fmt: skip
     return 0
@@ -319,6 +347,7 @@ def extract_all(texts: dict[str, str], cfg: dict, workers: int) -> dict[str, lis
                     g.cancel()
                 break
             r = {"block": i, "blocks": len(blocks[n]), "words": len(blocks[n][i].split()),
+                 "invocation": INVOCATION,
                  **f.result()}  # fmt: skip
             with (EVENTS / f"{_safe(n)}.jsonl").open("a") as fh:
                 fh.write(json.dumps(r, ensure_ascii=False) + "\n")
@@ -539,9 +568,12 @@ def main(argv: list[str] | None = None) -> int:
         c = sub.add_parser(name)
         c.add_argument("--workers", type=int, default=6, help="concurrent model calls")
         c.add_argument("--procs", type=int, default=6, help="alignment processes")
+        c.add_argument("--per-hour", type=float, default=0, help="most model calls an hour")
+        c.add_argument("--out", default="check.json", help="check: output file name")
     a = ap.parse_args(argv)
+    _PACE["per_hour"] = a.per_hour
     if a.cmd == "check":
-        return check(a.workers)
+        return check(a.workers, a.out)
     return {"controls": controls, "bom": bom}[a.cmd](a.workers, a.procs)
 
 

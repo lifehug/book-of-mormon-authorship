@@ -56,6 +56,16 @@ cosines between events of chapters from different books, 23,809 pairs) is **0.70
   p-value is (shuffles scoring at least as high + 1) / 1,001. Shared events in a different order
   are not a skeleton.
 
+## How the model is called (operational note, 2026-11-01, after 620 control blocks)
+
+The first 620 control blocks and the check were read with the default `claude -p` call, which
+also sends Claude Code's own system prompt and tool list (~27,000 tokens a call). From then on
+the call carries only the prompt (`semantic/skeleton.py`, `LEAN`: ~2,500 tokens), with the same
+model and the same prompt, to stretch the owner's usage about fourfold. The check is repeated
+with the lean call (`check_lean.json`) before any further block is read and must pass the same
+marks; the registered threshold (0.700, `check.json`) is kept. Each event row records its
+invocation, so the two kinds can be compared. Calls are paced (`--per-hour`).
+
 ## Comparisons
 
 - **The Book of Mormon (1830 text) against:** the named proposed sources (*View of the Hebrews*
