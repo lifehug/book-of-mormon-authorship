@@ -23,4 +23,4 @@ Harvard Law School Library Innovation Lab / Institutional Data Initiative", used
 HathiTrust volumes: HathiTrust Digital Library, public-domain open-access set. Nothing derived from
 the Joseph Smith Papers transcripts is here.
 
-Checksums: `data/manifests/derived.jsonl` (both the files here and the release assets).
+Checksums: `data/manifests/derived.jsonl` (both the files here and the release assets). Archived on Zenodo with the repository at the release tag: DOI [10.5281/zenodo.23875959](https://doi.org/10.5281/zenodo.23875959).
