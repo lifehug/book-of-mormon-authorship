@@ -157,3 +157,15 @@ Plan, registered before any search (Amendment 14): `docs/semantic-plan.md`; stor
 | `python -m reuse.rare size` | registered | how large the borrowing null must be (BOM-45) | `data/reuse/null_sizing/sizing.json` | minutes |
 | `python -m reuse.rare score` | registered score; points 2-5 of the plan post hoc (BOM-24, `docs/rare-plan.md`) | the Book of Mormon's ranked source list from the BOM-22 scan under corrected dates: rare shared 4-grams per 10,000 words (df <= 5 by text, by volume beside it), p against the whole period population, genre percentile, block-bootstrap intervals, named sources, imitation scripture as a group, volumes BOM-64 moved | `data/reuse/bom/rare.json` | minutes |
 | `python -m reuse.rare known` | registered (Amendment 9 score) | scans the known-answer texts' 4-grams in BOM-23's matched draws, scores the strongest source per draw, applies the separation rule | `data/reuse/rare_known/hits.parquet`, `known_answer.json` | ~40 min |
+
+## 11. The time-locked base model (BOM-27)
+
+Plan, registered before any training (Amendment 16): `docs/timelocked-plan.md`.
+
+| Command | Registered? | What it does | Writes | Time |
+| --- | --- | --- | --- | --- |
+| `python -m timelocked_lm.data select` | registered | the training set: 1780-1830 volumes by corrected year, Book of Mormon copies and contamination hits out, benchmark, candidate and known-answer texts out, 0.5% held out | `data/timelocked_lm/training_set.parquet`, `selection.json` | ~1 min (seal check cached) |
+| `python -m timelocked_lm.tokenize train` | registered | byte-level BPE, 32,000 entries, on a seeded 1 GB sample | `data/timelocked_lm/tokenizer.json`, `tokenizer_sample.json` | ~1 min |
+| `python -m timelocked_lm.tokenize encode` | registered | every training volume encoded, resumable per file | `data/corpus/timelocked_lm/tokens/` (~50 GB, not in git) | ~2 h on the M4 |
+| `python -m timelocked_lm.tokenize status` | - | token files and counts so far | - | seconds |
+| `python -m timelocked_lm.train pilot\|base --out <dir>` | registered | trains the model on a GPU; checkpoints every 20 min and resumes; `tiny --max-steps 20` is a local smoke test | `<dir>/checkpoint.pt`, `model.pt`, `log.jsonl`, `run.json` | pilot ~10-13 H100-h, base ~25-30 |

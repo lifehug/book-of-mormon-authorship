@@ -372,4 +372,36 @@ skeleton:
   control_unrelated: 20         # same-length unrelated books per retelling control
   top_search_sources: 20
 
+
+timelocked_lm:
+  # Amendment 2 (OSF revision 6ad3f82fc8f5176e336b2561): sizes, tokenizer, training
+  pilot_params: 125000000
+  base_params: 300000000
+  tokenizer: byte_level_bpe
+  vocab_size: 32000
+  context_length: 1024
+  epochs: 1                     # one pass over the deduplicated training set
+  optimizer: adamw
+  schedule: cosine
+  peak_lr: 3.0e-4
+  warmup_share: 0.02
+  finetune_epochs: 3
+  finetune_lr: 1.0e-5
+  # Amendment 16 (BOM-27; OSF revision 6ae7e7682a1c00cdd1bde281; docs/timelocked-plan.md)
+  validation_share: 0.005       # of training-set volumes, held out for validation loss
+  validation_seed: bom27-validation
+  tokenizer_sample_bytes: 1000000000   # seeded sample of training volumes the BPE is fit on
+  tokenizer_seed: bom27-tokenizer
+  pilot_shape: {layers: 14, width: 768, heads: 12}     # 124.5M parameters with the 32k vocabulary
+  base_shape: {layers: 24, width: 960, heads: 15}      # 297M parameters (registered: 300M, within 100-300M)
+  batch_tokens: 524288          # 512 sequences of 1,024 tokens per optimizer step
+  adam_betas: [0.9, 0.95]
+  weight_decay: 0.1
+  grad_clip: 1.0
+  min_lr_share: 0.1             # cosine floor, share of peak
+  precision: bf16
+  eval_every_steps: 1000
+  eval_tokens: 20000000
+  train_seed: bom27-train
+
 pending_amendment: []

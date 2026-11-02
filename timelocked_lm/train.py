@@ -1,0 +1,240 @@
+"""Train the time-locked base model (BOM-27; pre-registration 5.2, Amendment 2).
+
+A GPT-style decoder (pre-norm blocks, learned positions, tied embeddings, no biases) of the
+registered shape (``timelocked_lm.pilot_shape`` / ``base_shape``), trained for one pass over the
+encoded training split: the split is cut into ``context_length + 1``-token windows taken in a
+seeded random order, every window once. AdamW, cosine schedule to ``min_lr_share`` of the peak,
+``warmup_share`` linear warmup, ``batch_tokens`` per step, bf16 on CUDA.
+
+Recoverable: a checkpoint (model, optimizer, step) is written every ``--checkpoint-minutes`` and
+at the end, atomically; a rerun with the same arguments resumes from it, and the window order is
+a pure function of the seed, so a resumed run sees exactly the windows an uninterrupted one would.
+Validation loss on the held-out volumes every ``eval_every_steps`` goes to ``log.jsonl``.
+
+Usage::
+
+    python -m timelocked_lm.train pilot --out runs/pilot [--micro-batch 32]
+    python -m timelocked_lm.train base --out runs/base
+    python -m timelocked_lm.train tiny --out runs/tiny --max-steps 20   # a local smoke test
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import math
+import os
+import sys
+import time
+from pathlib import Path
+
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+from metadata.config import derive_seed, stamp
+from metadata.config import load as load_config
+
+TOKENS = Path("data/corpus/timelocked_lm/tokens")
+TINY = {"layers": 2, "width": 128, "heads": 4}
+
+
+class Block(nn.Module):
+    def __init__(self, width: int, heads: int):
+        super().__init__()
+        self.heads = heads
+        self.ln1 = nn.LayerNorm(width, bias=False)
+        self.qkv = nn.Linear(width, 3 * width, bias=False)
+        self.proj = nn.Linear(width, width, bias=False)
+        self.ln2 = nn.LayerNorm(width, bias=False)
+        self.fc = nn.Linear(width, 4 * width, bias=False)
+        self.out = nn.Linear(4 * width, width, bias=False)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        b, t, c = x.shape
+        q, k, v = self.qkv(self.ln1(x)).split(c, dim=2)
+        q, k, v = (z.view(b, t, self.heads, c // self.heads).transpose(1, 2) for z in (q, k, v))
+        y = F.scaled_dot_product_attention(q, k, v, is_causal=True)
+        x = x + self.proj(y.transpose(1, 2).reshape(b, t, c))
+        return x + self.out(F.gelu(self.fc(self.ln2(x))))
+
+
+class GPT(nn.Module):
+    def __init__(self, vocab: int, context: int, layers: int, width: int, heads: int):
+        super().__init__()
+        self.tok = nn.Embedding(vocab, width)
+        self.pos = nn.Embedding(context, width)
+        self.blocks = nn.ModuleList(Block(width, heads) for _ in range(layers))
+        self.ln = nn.LayerNorm(width, bias=False)
+        self.head = nn.Linear(width, vocab, bias=False)
+        self.head.weight = self.tok.weight  # tied
+        self.apply(self._init)
+        for n, p in self.named_parameters():  # GPT-2's scaled init of residual projections
+            if n.endswith(("proj.weight", "out.weight")):
+                nn.init.normal_(p, 0.0, 0.02 / math.sqrt(2 * layers))
+
+    @staticmethod
+    def _init(m: nn.Module) -> None:
+        if isinstance(m, (nn.Linear, nn.Embedding)):
+            nn.init.normal_(m.weight, 0.0, 0.02)
+
+    def forward(self, idx: torch.Tensor, targets: torch.Tensor | None = None):
+        x = self.tok(idx) + self.pos(torch.arange(idx.shape[1], device=idx.device))
+        for blk in self.blocks:
+            x = blk(x)
+        logits = self.head(self.ln(x))
+        if targets is None:
+            return logits
+        return F.cross_entropy(logits.flatten(0, 1).float(), targets.flatten())
+
+
+def params(model: nn.Module) -> int:
+    return sum(p.numel() for p in model.parameters())
+
+
+class Windows:
+    """Every ``context + 1``-token window of a split, in a seeded order; window i of the order
+    is fixed by the seed alone."""
+
+    def __init__(self, split: str, context: int, seed: int):
+        files = sorted(TOKENS.glob(f"{split}_*.bin"))
+        if not files:
+            raise SystemExit(f"no {split} tokens under {TOKENS}; run timelocked_lm.tokenize")
+        self.maps = [np.memmap(f, dtype=np.uint16, mode="r") for f in files]
+        self.n = context + 1
+        counts = [len(m) // self.n for m in self.maps]
+        self.starts = np.cumsum([0, *counts])
+        self.order = np.random.default_rng(seed).permutation(int(self.starts[-1]))
+
+    def __len__(self) -> int:
+        return len(self.order)
+
+    def batch(self, first: int, size: int) -> torch.Tensor:
+        rows = []
+        for w in self.order[first : first + size]:
+            f = int(np.searchsorted(self.starts, w, side="right")) - 1
+            j = (int(w) - int(self.starts[f])) * self.n
+            rows.append(np.asarray(self.maps[f][j : j + self.n], dtype=np.int64))
+        return torch.from_numpy(np.stack(rows))
+
+
+def lr_at(step: int, steps: int, t: dict) -> float:
+    warm = max(1, int(steps * t["warmup_share"]))
+    if step < warm:
+        return t["peak_lr"] * (step + 1) / warm
+    p = (step - warm) / max(1, steps - warm)
+    floor = t["peak_lr"] * t["min_lr_share"]
+    return floor + 0.5 * (t["peak_lr"] - floor) * (1 + math.cos(math.pi * min(1.0, p)))
+
+
+@torch.no_grad()
+def evaluate(model, val: Windows, tokens: int, micro: int, device: str, ctx) -> float:
+    model.eval()
+    n = min(len(val), max(1, tokens // (val.n - 1)))
+    losses = []
+    for i in range(0, n, micro):
+        xy = val.batch(i, min(micro, n - i)).to(device)
+        with ctx:
+            losses.append(model(xy[:, :-1], xy[:, 1:]).item())
+    model.train()
+    return float(np.mean(losses))
+
+
+def _save(path: Path, state: dict) -> None:
+    tmp = path.with_suffix(".tmp")
+    torch.save(state, tmp)
+    os.replace(tmp, path)
+
+
+def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes: float) -> int:
+    cfg = load_config()
+    t = cfg["timelocked_lm"]
+    from tokenizers import Tokenizer
+
+    vocab = Tokenizer.from_file("data/timelocked_lm/tokenizer.json").get_vocab_size()
+    shape = {"pilot": t["pilot_shape"], "base": t["base_shape"], "tiny": TINY}[size]
+    device = "cuda" if torch.cuda.is_available() else "mps" if torch.mps.is_available() else "cpu"
+    torch.manual_seed(derive_seed(f"{t['train_seed']}:{size}", cfg) % 2**31)
+    model = GPT(vocab, t["context_length"], **shape).to(device)
+    ctx = (torch.autocast("cuda", dtype=torch.bfloat16) if device == "cuda"
+           else torch.autocast("cpu", enabled=False))  # fmt: skip
+    seq = t["context_length"]
+    per_step = t["batch_tokens"] // seq if size != "tiny" else 8
+    accum = max(1, per_step // micro)
+    # the smoke test trains on the validation split, so it can run before the full encode
+    train_w = Windows(
+        "validation" if size == "tiny" else "train",
+        seq,
+        derive_seed(f"{t['train_seed']}:order", cfg),
+    )
+    val = Windows("validation", seq, derive_seed(f"{t['train_seed']}:validation", cfg))
+    steps = len(train_w) // (accum * micro) * t["epochs"]
+    if max_steps:
+        steps = min(steps, max_steps)
+    decay = [p for p in model.parameters() if p.dim() >= 2]
+    other = [p for p in model.parameters() if p.dim() < 2]
+    opt = torch.optim.AdamW([{"params": decay, "weight_decay": t["weight_decay"]},
+                             {"params": other, "weight_decay": 0.0}],
+                            lr=t["peak_lr"], betas=tuple(t["adam_betas"]),
+                            fused=device == "cuda")  # fmt: skip
+    out.mkdir(parents=True, exist_ok=True)
+    ck = out / "checkpoint.pt"
+    step = 0
+    if ck.exists():
+        state = torch.load(ck, map_location=device)
+        model.load_state_dict(state["model"])
+        opt.load_state_dict(state["optimizer"])
+        step = state["step"]
+        print(f"resumed at step {step:,}", flush=True)
+    meta = {**stamp(), "size": size, "shape": shape, "params": params(model), "vocab": vocab,
+            "steps": steps, "micro_batch": micro, "accum": accum, "seq": seq,
+            "train_windows": len(train_w), "device": device}  # fmt: skip
+    (out / "run.json").write_text(json.dumps(meta, indent=1) + "\n")
+    print(json.dumps({k: v for k, v in meta.items() if "sha" not in k}), flush=True)
+    fwd = torch.compile(model) if device == "cuda" else model
+    log = (out / "log.jsonl").open("a")
+    last_ck, t0 = time.time(), time.time()
+    while step < steps:
+        for g in opt.param_groups:
+            g["lr"] = lr_at(step, steps, t)
+        loss_sum = 0.0
+        for a in range(accum):
+            xy = train_w.batch((step * accum + a) * micro, micro).to(device, non_blocking=True)
+            with ctx:
+                loss = fwd(xy[:, :-1], xy[:, 1:]) / accum
+            loss.backward()
+            loss_sum += loss.item()
+        norm = torch.nn.utils.clip_grad_norm_(model.parameters(), t["grad_clip"])
+        opt.step()
+        opt.zero_grad(set_to_none=True)
+        step += 1
+        rec = {"step": step, "loss": loss_sum, "lr": opt.param_groups[0]["lr"],
+               "grad_norm": float(norm), "sec": round(time.time() - t0, 1)}  # fmt: skip
+        if step % t["eval_every_steps"] == 0 or step == steps or (size == "tiny" and step % 5 == 0):
+            rec["val_loss"] = evaluate(model, val, t["eval_tokens"] if size != "tiny" else 20000,
+                                       micro, device, ctx)  # fmt: skip
+            print(json.dumps(rec), flush=True)
+        log.write(json.dumps(rec) + "\n")
+        log.flush()
+        if time.time() - last_ck > ckpt_minutes * 60 or step == steps:
+            _save(ck, {"model": model.state_dict(), "optimizer": opt.state_dict(), "step": step})
+            last_ck = time.time()
+    torch.save(model.state_dict(), out / "model.pt")
+    print(f"done: {steps:,} steps -> {out / 'model.pt'}", flush=True)
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
+    ap.add_argument("size", choices=("pilot", "base", "tiny"))
+    ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--micro-batch", type=int, default=32, help="sequences per forward pass")
+    ap.add_argument("--max-steps", type=int, default=None, help="smoke tests only")
+    ap.add_argument("--checkpoint-minutes", type=float, default=20)
+    a = ap.parse_args(argv)
+    return train(a.size, a.out, a.micro_batch, a.max_steps, a.checkpoint_minutes)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
