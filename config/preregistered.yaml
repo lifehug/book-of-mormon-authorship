@@ -404,4 +404,35 @@ timelocked_lm:
   eval_tokens: 20000000
   train_seed: bom27-train
 
+dating:
+  # 5.3, 6.4; Amendment 2 (multinomial logistic regression over a literature-drawn grammatical
+  # feature list, 10,000 permutations); Amendment 17 (BOM-29; OSF revision
+  # 6ae8126f2d971de294296cfe; docs/dating-plan.md)
+  model: multinomial_logistic_l2
+  first_year: 1473
+  last_year: 1830
+  merged_until: 1530            # 1473-1529 is one bin (383 volumes); then decades
+  bin_years: 10                 # the last bin is 1820-1830
+  segment_words: 2000           # as the Book of Mormon's fixed chunks (4.5)
+  segments_per_volume: 2
+  min_function_share: 0.2       # a segment is prose if 20% of its tokens are function words
+  train_volumes_per_bin: 1500
+  validation_volumes_per_bin: 375
+  validation_share: 0.2         # of authors (volumes without one), by seeded hash
+  validation_seed: bom29-validation
+  sample_seed: bom29-sample
+  fit_seed: bom29-fit
+  penalty_grid: [0.01, 0.1, 1.0, 10.0]   # inverse L2 strength, chosen by grouped CV log loss
+  cv_folds: 5
+  max_iter: 2000
+  lexical_vocabulary: 5000      # most document-frequent words of the training segments
+  interval: 0.90                # 6.4
+  window: [1780, 1830]          # 6.4, H3a
+  window_share: 0.8             # 6.4: dated to a window if 80% of segments' intervals fall in it
+  h3c_min_p: 0.05               # 6.4: H3c accepted if the permutation p is above this
+  permutations: 10000           # Amendment 2
+  permutation_seed: bom29-permutation
+  keyed_check_years: [1780, 1809]   # keyed (TCP) and OCR volumes of the same decades
+
+
 pending_amendment: []

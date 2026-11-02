@@ -169,3 +169,13 @@ Plan, registered before any training (Amendment 16): `docs/timelocked-plan.md`.
 | `python -m timelocked_lm.tokenize encode` | registered | every training volume encoded, resumable per file | `data/corpus/timelocked_lm/tokens/` (~50 GB, not in git) | ~2 h on the M4 |
 | `python -m timelocked_lm.tokenize status` | - | token files and counts so far | - | seconds |
 | `python -m timelocked_lm.train pilot\|base --out <dir>` | registered | trains the model on a GPU; checkpoints every 20 min and resumes; `tiny --max-steps 20` is a local smoke test | `<dir>/checkpoint.pt`, `model.pt`, `log.jsonl`, `run.json` | pilot ~10-13 H100-h, base ~25-30 |
+
+## 12. Linguistic dating (BOM-29)
+
+Plan, registered before any fit (Amendment 17): `docs/dating-plan.md`; feature list `dating/features.py`.
+
+| Command | Registered? | What it does | Writes | Time |
+| --- | --- | --- | --- | --- |
+| `python -m dating.classifier sample` | registered | seeded, author-split sample of 1473-1830 volumes in 31 bins; two 2,000-token prose segments each; the 61 grammar rates from the printed text | `data/dating/segments.parquet`, `sample.json` | ~1-2 h on the M4 |
+| `python -m dating.classifier fit` | registered | lexical vocabulary from the training segments, then the grammar and lexical models with the penalty by author-grouped CV | `data/dating/models.json`, `grammar_coefficients.json`; `data/corpus/dating/` (models, lexical counts) | ~1 h |
+| `python -m dating.classifier validate` | registered | held-out authors, keyed against OCR, King James imitation, Amendment 9's separation; no Book of Mormon text | `data/dating/validation.json` | ~15 min |
