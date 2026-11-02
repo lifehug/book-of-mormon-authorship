@@ -24,7 +24,18 @@ documents, not within one. `eval/derived.py` checks each table before export: no
 position or an ordering, the vocabulary is capped at the registered maximum (1,000 words;
 character n-grams likewise), and per-document vectors are counts only.
 
-## Open question for the owner
+**Hashes are not automatically safe.** A complete set of one text's 4-gram hashes can be unrolled
+back into the text: guess an opening phrase, then try every word in a dictionary as the next one
+and keep the one whose hash is in the set. So per-volume hit lists are published only for targets
+whose own text is open (the Book of Mormon, the Internet Archive known-answer texts); Enoch
+(HathiTrust copy) and Josephus (Harvard copy) are withheld. The scanned volumes' side is safe:
+a volume's hits are only phrases it shares with the public target.
+
+## Owner decision (2026-11-01)
+
+Yes to publishing the Harvard- and HathiTrust-derived counts, once the check passes.
+
+## Open question for the owner (answered above)
 
 Publishing tables derived from Harvard and HathiTrust volumes is publishing data, which waits for
 the owner. The reading above says both are allowed; until agreed, those rows are written to the

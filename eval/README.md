@@ -179,3 +179,12 @@ Plan, registered before any fit (Amendment 17): `docs/dating-plan.md`; feature l
 | `python -m dating.classifier sample` | registered | seeded, author-split sample of 1473-1830 volumes in 31 bins; two 2,000-token prose segments each; the 61 grammar rates from the printed text | `data/dating/segments.parquet`, `sample.json` | ~1-2 h on the M4 |
 | `python -m dating.classifier fit` | registered | lexical vocabulary from the training segments, then the grammar and lexical models with the penalty by author-grouped CV | `data/dating/models.json`, `grammar_coefficients.json`; `data/corpus/dating/` (models, lexical counts) | ~1 h |
 | `python -m dating.classifier validate` | registered | held-out authors, keyed against OCR, King James imitation, Amendment 9's separation; no Book of Mormon text | `data/dating/validation.json` | ~15 min |
+
+## 13. Derived tables for replication (BOM-44)
+
+Amendment 18; terms per source `docs/derived-data-terms.md`.
+
+| Command | Registered? | What it does | Writes | Time |
+| --- | --- | --- | --- | --- |
+| `python -m eval.derived export` | - | the benchmark as 1,000-token blocks of counts over each task's 1,000 most frequent words; the rare-phrase hit tables (open-source targets only) and target hash lists; runs the check | `data/corpus/derived/` (release staging), `data/derived/export.json` | ~5 min |
+| `python -m eval.derived check` | - | the non-reconstructability check on every staged table: ids and labels only as strings, no positions, integer counts, vocabularies at most 1,000 | - | seconds |

@@ -1,0 +1,128 @@
+{
+ "config_sha256": "762889289360f0cbf9d58f0e69dd151a3c15e007add0e237e2a74b306ca0a54d",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "cf2659232a6e8e814e545679a5413f3fd12a4ee5",
+ "benchmark": {
+  "documents": 2952,
+  "coverage": {
+   "federalist": {
+    "tests": 40,
+    "vocabulary_inside": 40
+   },
+   "pseudo_biblical": {
+    "tests": 80,
+    "vocabulary_inside": 80
+   },
+   "dictated": {
+    "tests": 60,
+    "vocabulary_inside": 60
+   }
+  },
+  "vocabulary": {
+   "federalist": 1000,
+   "pseudo_biblical": 1000,
+   "dictated": 1000
+  }
+ },
+ "copied": {
+  "rare_hits_bom.parquet": {
+   "from": "data/reuse/bom/hits.parquet",
+   "rows": 221344
+  },
+  "rare_hits_known.parquet": {
+   "from": "data/reuse/rare_known/hits.parquet",
+   "rows": 78455
+  }
+ },
+ "withheld_targets": [
+  "enoch",
+  "josephus"
+ ],
+ "check": {
+  "benchmark_blocks.parquet": {
+   "rows": 2952,
+   "columns": [
+    "task",
+    "kind",
+    "author",
+    "doc",
+    "span_start",
+    "span_end",
+    "tokens",
+    "counts"
+   ],
+   "ok": true,
+   "problems": []
+  },
+  "rare_hits_bom.parquet": {
+   "rows": 221344,
+   "columns": [
+    "work_id",
+    "words",
+    "hits"
+   ],
+   "ok": true,
+   "problems": []
+  },
+  "rare_hits_known.parquet": {
+   "rows": 78455,
+   "columns": [
+    "work_id",
+    "target",
+    "words",
+    "hits"
+   ],
+   "ok": true,
+   "problems": []
+  },
+  "target_grams_known_sacontala.txt": {
+   "ok": true
+  },
+  "target_grams_known_otranto.txt": {
+   "ok": true
+  },
+  "target_grams_bom.txt": {
+   "ok": true
+  },
+  "target_grams_known_apocryphal_nt.txt": {
+   "ok": true
+  },
+  "target_grams_known_twelve_patriarchs.txt": {
+   "ok": true
+  },
+  "target_grams_known_bom.txt": {
+   "ok": true
+  },
+  "target_grams_known_sermon.txt": {
+   "ok": true
+  },
+  "target_grams_known_late_war.txt": {
+   "ok": true
+  },
+  "target_grams_known_ireland_papers.txt": {
+   "ok": true
+  },
+  "target_grams_known_jasher.txt": {
+   "ok": true
+  },
+  "target_grams_known_herodotus.txt": {
+   "ok": true
+  },
+  "target_grams_known_ossian.txt": {
+   "ok": true
+  },
+  "target_grams_known_rowley.txt": {
+   "ok": true
+  },
+  "target_grams_known_koran.txt": {
+   "ok": true
+  },
+  "target_grams_known_hesiod.txt": {
+   "ok": true
+  },
+  "target_grams_known_homer.txt": {
+   "ok": true
+  }
+ }
+}

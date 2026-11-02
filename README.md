@@ -183,8 +183,12 @@ peer review by an AI model that sees only the released materials, and answer it 
   `docs/replication.md` records exactly what to send and to whom. The manifests let a
   replicator prove they obtained the same bytes. `BOM-44` adds a lower bar still — the derived
   tables the analyses actually read, which are not reconstructable back into readable text and
-  so can be published outright, letting anyone re-run the statistics with no application at
-  all.
+  so are published outright (`data/derived/`, the large ones on the GitHub release
+  `derived-v1.0`). With them alone, and no application, anyone can rerun the classical
+  benchmark, the rare-phrase source list and its null, and the grammar dating model.
+  Everything that reads running text (alignment, semantic search, the language models, style
+  embeddings, the author sweep) still needs your own copy of the sources; Amendment 18 lists
+  exactly which results fall on each side.
 
 The design commits us to reporting nulls, conflicts, and "inconclusive" as readily as any
 positive result. The analysis plan itself is `paper/preregistration.md`, and the known gaps in
