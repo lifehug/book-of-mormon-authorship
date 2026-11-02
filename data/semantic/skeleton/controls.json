@@ -1,0 +1,1572 @@
+{
+ "config_sha256": "762889289360f0cbf9d58f0e69dd151a3c15e007add0e237e2a74b306ca0a54d",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "b382cc6699d0789332c89adff779e37178784080",
+ "event_match": 0.6998229622840881,
+ "controls": {
+  "josephus": {
+   "biblical": "kjv:GEN-JDG",
+   "score": 25.5,
+   "matched": 108,
+   "a_span": [
+    110,
+    337
+   ],
+   "b_span": [
+    0,
+    211
+   ],
+   "order_p": 0.000999000999000999,
+   "events_a": 816,
+   "events_b": 949,
+   "a_blocks": [
+    15,
+    33
+   ],
+   "b_blocks": [
+    0,
+    17
+   ],
+   "share": 0.1323529411764706,
+   "unrelated": [
+    {
+     "id": "tcp:A26767",
+     "title": "Elenchus motuum nuperorum in Anglia, or, A short historical account of the rise and progress of the ",
+     "score": 4.5,
+     "matched": 5,
+     "a_span": [
+      58,
+      64
+     ],
+     "b_span": [
+      757,
+      763
+     ],
+     "order_p": 0.03696303696303696,
+     "events_a": 816,
+     "events_b": 964,
+     "a_blocks": [
+      10,
+      10
+     ],
+     "b_blocks": [
+      70,
+      71
+     ],
+     "share": 0.006127450980392157
+    },
+    {
+     "id": "tcp:A49450",
+     "title": "A new history of Ethiopia being a full and accurate description of the kingdom of Abessinia, vulgarl",
+     "score": 4.0,
+     "matched": 5,
+     "a_span": [
+      58,
+      64
+     ],
+     "b_span": [
+      222,
+      229
+     ],
+     "order_p": 0.04695304695304695,
+     "events_a": 816,
+     "events_b": 496,
+     "a_blocks": [
+      10,
+      10
+     ],
+     "b_blocks": [
+      30,
+      30
+     ],
+     "share": 0.010080645161290322
+    },
+    {
+     "id": "tcp:A44646",
+     "title": "Five new plays ... as they were acted by His Majesty's servants at the Theatre-Royal / written by th",
+     "score": 3.0,
+     "matched": 4,
+     "a_span": [
+      58,
+      64
+     ],
+     "b_span": [
+      312,
+      317
+     ],
+     "order_p": 0.1918081918081918,
+     "events_a": 816,
+     "events_b": 616,
+     "a_blocks": [
+      10,
+      10
+     ],
+     "b_blocks": [
+      27,
+      27
+     ],
+     "share": 0.006493506493506494
+    },
+    {
+     "id": "tcp:A25458",
+     "title": "The Annals of love containing select histories of the amours of divers princes courts, pleasantly re",
+     "score": 3.0,
+     "matched": 3,
+     "a_span": [
+      173,
+      176
+     ],
+     "b_span": [
+      188,
+      191
+     ],
+     "order_p": 0.4955044955044955,
+     "events_a": 816,
+     "events_b": 710,
+     "a_blocks": [
+      20,
+      20
+     ],
+     "b_blocks": [
+      16,
+      16
+     ],
+     "share": 0.004225352112676056
+    },
+    {
+     "id": "tcp:K090734.000",
+     "title": "Discourses concerning government: by Algernon Sidney, ... Publish'd from an original manuscript. The",
+     "score": 3.0,
+     "matched": 4,
+     "a_span": [
+      58,
+      64
+     ],
+     "b_span": [
+      257,
+      262
+     ],
+     "order_p": 0.34765234765234765,
+     "events_a": 816,
+     "events_b": 393,
+     "a_blocks": [
+      10,
+      10
+     ],
+     "b_blocks": [
+      85,
+      85
+     ],
+     "share": 0.010178117048346057
+    },
+    {
+     "id": "tcp:A28873",
+     "title": "The life of St. Francis Xavier, of the Society of Jesus, apostle of the Indies, and of Japan written",
+     "score": 2.5,
+     "matched": 3,
+     "a_span": [
+      6,
+      10
+     ],
+     "b_span": [
+      492,
+      495
+     ],
+     "order_p": 1.0,
+     "events_a": 816,
+     "events_b": 954,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      45,
+      45
+     ],
+     "share": 0.003676470588235294
+    },
+    {
+     "id": "tcp:A57997",
+     "title": "The history of the Turkish Empire, from the year 1623, to the year 1677 Containing the reigns of the",
+     "score": 2.5,
+     "matched": 4,
+     "a_span": [
+      58,
+      64
+     ],
+     "b_span": [
+      677,
+      682
+     ],
+     "order_p": 1.0,
+     "events_a": 816,
+     "events_b": 2130,
+     "a_blocks": [
+      10,
+      10
+     ],
+     "b_blocks": [
+      56,
+      56
+     ],
+     "share": 0.004901960784313725
+    },
+    {
+     "id": "tcp:A61047",
+     "title": "An epitome of Mr. John Speed's theatre of the empire of Great Britain And of his prospect of the mos",
+     "score": 2.5,
+     "matched": 3,
+     "a_span": [
+      70,
+      73
+     ],
+     "b_span": [
+      664,
+      668
+     ],
+     "order_p": 0.16783216783216784,
+     "events_a": 816,
+     "events_b": 953,
+     "a_blocks": [
+      11,
+      11
+     ],
+     "b_blocks": [
+      63,
+      63
+     ],
+     "share": 0.003676470588235294
+    },
+    {
+     "id": "tcp:A45496",
+     "title": "Archaioskopia, or, A view of antiquity presented in a short but sufficient account of some of the fa",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      469,
+      471
+     ],
+     "b_span": [
+      57,
+      59
+     ],
+     "order_p": 1.0,
+     "events_a": 816,
+     "events_b": 274,
+     "a_blocks": [
+      45,
+      45
+     ],
+     "b_blocks": [
+      15,
+      15
+     ],
+     "share": 0.0072992700729927005
+    },
+    {
+     "id": "tcp:A65181",
+     "title": "A voyage round the world, or, A pocket-library divided into several volumes ... : the whole work int",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      245,
+      247
+     ],
+     "b_span": [
+      114,
+      116
+     ],
+     "order_p": 0.48951048951048953,
+     "events_a": 816,
+     "events_b": 526,
+     "a_blocks": [
+      26,
+      26
+     ],
+     "b_blocks": [
+      13,
+      13
+     ],
+     "share": 0.0038022813688212928
+    },
+    {
+     "id": "tcp:A28557",
+     "title": "A continuation of the history of the Reformation to the end of the Council of Trent in the year 1563",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      71,
+      73
+     ],
+     "b_span": [
+      4,
+      6
+     ],
+     "order_p": 1.0,
+     "events_a": 816,
+     "events_b": 512,
+     "a_blocks": [
+      11,
+      11
+     ],
+     "b_blocks": [
+      0,
+      0
+     ],
+     "share": 0.00390625
+    },
+    {
+     "id": "tcp:A60186",
+     "title": "Scotland illustrated, or, An essay of natural history in which are exquisitely displayed the nature ",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      117,
+      119
+     ],
+     "b_span": [
+      22,
+      24
+     ],
+     "order_p": 1.0,
+     "events_a": 816,
+     "events_b": 166,
+     "a_blocks": [
+      15,
+      15
+     ],
+     "b_blocks": [
+      20,
+      20
+     ],
+     "share": 0.012048192771084338
+    },
+    {
+     "id": "tcp:A53224",
+     "title": "Britannia, volume the first, or, An illustration of the Kingdom of England and dominion of Wales by ",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      58,
+      60
+     ],
+     "b_span": [
+      15,
+      17
+     ],
+     "order_p": 1.0,
+     "events_a": 816,
+     "events_b": 43,
+     "a_blocks": [
+      10,
+      10
+     ],
+     "b_blocks": [
+      15,
+      17
+     ],
+     "share": 0.046511627906976744
+    },
+    {
+     "id": "tcp:A33822",
+     "title": "A Collection of novels viz, the secret history of the Earle of Essex and Queen Elizabeth, The happy ",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      237,
+      239
+     ],
+     "b_span": [
+      5,
+      7
+     ],
+     "order_p": 0.5134865134865135,
+     "events_a": 816,
+     "events_b": 878,
+     "a_blocks": [
+      25,
+      25
+     ],
+     "b_blocks": [
+      0,
+      1
+     ],
+     "share": 0.0024509803921568627
+    },
+    {
+     "id": "tcp:A67169",
+     "title": "The glory of God's revenge against the bloody and detestable sins of murther and adultery express'd ",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      289,
+      291
+     ],
+     "b_span": [
+      66,
+      68
+     ],
+     "order_p": 1.0,
+     "events_a": 816,
+     "events_b": 657,
+     "a_blocks": [
+      29,
+      30
+     ],
+     "b_blocks": [
+      5,
+      5
+     ],
+     "share": 0.0030441400304414
+    },
+    {
+     "id": "tcp:A26505",
+     "title": "Fables of \u00c6sop and other eminent mythologists with morals and reflexions / by Sir Roger L'Estrange, ",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      62,
+      64
+     ],
+     "b_span": [
+      1,
+      3
+     ],
+     "order_p": 1.0,
+     "events_a": 816,
+     "events_b": 1230,
+     "a_blocks": [
+      10,
+      10
+     ],
+     "b_blocks": [
+      0,
+      0
+     ],
+     "share": 0.0024509803921568627
+    },
+    {
+     "id": "tcp:A56398",
+     "title": "A reproof to the Rehearsal transprosed, in a discourse to its authour by the authour of the Ecclesia",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      5,
+      7
+     ],
+     "b_span": [
+      45,
+      47
+     ],
+     "order_p": 1.0,
+     "events_a": 816,
+     "events_b": 162,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      38,
+      39
+     ],
+     "share": 0.012345679012345678
+    },
+    {
+     "id": "tcp:A47807",
+     "title": "A brief history of the times, &c. ...",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      6,
+      8
+     ],
+     "b_span": [
+      3,
+      5
+     ],
+     "order_p": 1.0,
+     "events_a": 816,
+     "events_b": 973,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      2,
+      2
+     ],
+     "share": 0.0024509803921568627
+    },
+    {
+     "id": "tcp:A61627",
+     "title": "Several conferences between a Romish priest, a fanatick chaplain, and a divine of the Church of Engl",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      8,
+      9
+     ],
+     "b_span": [
+      26,
+      27
+     ],
+     "order_p": 1.0,
+     "events_a": 816,
+     "events_b": 34,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      13,
+      13
+     ],
+     "share": 0.029411764705882353
+    },
+    {
+     "id": "tcp:A26924",
+     "title": "The English nonconformity as under King Charles II and King James II truly stated and argued by Rich",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      12,
+      13
+     ],
+     "b_span": [
+      1,
+      2
+     ],
+     "order_p": 1.0,
+     "events_a": 816,
+     "events_b": 58,
+     "a_blocks": [
+      1,
+      1
+     ],
+     "b_blocks": [
+      1,
+      1
+     ],
+     "share": 0.017241379310344827
+    }
+   ],
+   "rank": 1,
+   "passes": true
+  },
+  "twelve_patriarchs": {
+   "biblical": "kjv:GEN-GEN:37-50",
+   "score": 5.5,
+   "matched": 8,
+   "a_span": [
+    16,
+    26
+   ],
+   "b_span": [
+    58,
+    69
+   ],
+   "order_p": 0.002997002997002997,
+   "events_a": 199,
+   "events_b": 72,
+   "a_blocks": [
+    1,
+    2
+   ],
+   "b_blocks": [
+    4,
+    5
+   ],
+   "share": 0.1111111111111111,
+   "unrelated": [
+    {
+     "id": "tcp:A04206",
+     "title": "A nevve mery and vvittie comedie or enterlude, newely imprinted, treating vpon the historie of Iacob",
+     "score": 2.5,
+     "matched": 3,
+     "a_span": [
+      143,
+      146
+     ],
+     "b_span": [
+      34,
+      38
+     ],
+     "order_p": 0.7542457542457542,
+     "events_a": 199,
+     "events_b": 115,
+     "a_blocks": [
+      12,
+      12
+     ],
+     "b_blocks": [
+      3,
+      3
+     ],
+     "share": 0.02608695652173913
+    },
+    {
+     "id": "tcp:A19517",
+     "title": "The art or crafte of rhetoryke",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      75,
+      77
+     ],
+     "b_span": [
+      7,
+      9
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 63,
+     "a_blocks": [
+      6,
+      6
+     ],
+     "b_blocks": [
+      3,
+      3
+     ],
+     "share": 0.031746031746031744
+    },
+    {
+     "id": "tcp:A13297",
+     "title": "A paradoxe, prouing by reason and example, that baldnesse is much better than bushie haire, &c. Writ",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      88,
+      90
+     ],
+     "b_span": [
+      32,
+      34
+     ],
+     "order_p": 0.4755244755244755,
+     "events_a": 199,
+     "events_b": 59,
+     "a_blocks": [
+      7,
+      7
+     ],
+     "b_blocks": [
+      5,
+      5
+     ],
+     "share": 0.03389830508474576
+    },
+    {
+     "id": "tcp:A09634",
+     "title": "A treatise vvriten by Iohan Valerian a greatte clerke of Italie, which is intitled in latin Pro sace",
+     "score": 1.5,
+     "matched": 2,
+     "a_span": [
+      75,
+      77
+     ],
+     "b_span": [
+      14,
+      17
+     ],
+     "order_p": 0.5014985014985015,
+     "events_a": 199,
+     "events_b": 25,
+     "a_blocks": [
+      6,
+      6
+     ],
+     "b_blocks": [
+      4,
+      4
+     ],
+     "share": 0.08
+    },
+    {
+     "id": "tcp:A04052",
+     "title": "An enterlude of welth, and health ... newly ... imprinted. The names of the players. Welth. Helth, L",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      3,
+      4
+     ],
+     "b_span": [
+      24,
+      25
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 60,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      2,
+      2
+     ],
+     "share": 0.016666666666666666
+    },
+    {
+     "id": "tcp:A18566",
+     "title": "[The Ploughman's tale]",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      196,
+      197
+     ],
+     "b_span": [
+      4,
+      5
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 23,
+     "a_blocks": [
+      16,
+      16
+     ],
+     "b_blocks": [
+      0,
+      0
+     ],
+     "share": 0.043478260869565216
+    },
+    {
+     "id": "tcp:A06698",
+     "title": "A Christmas bankette garnyshed with many pleasaunt and deynty disshes, newely prepared by Theodore B",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      3,
+      4
+     ],
+     "b_span": [
+      32,
+      33
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 48,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      6,
+      6
+     ],
+     "share": 0.020833333333333332
+    },
+    {
+     "id": "tcp:A14625",
+     "title": "A new enterlude, neuer before this tyme imprinted, entreating of the life and repentaunce of Marie M",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      12,
+      13
+     ],
+     "b_span": [
+      85,
+      86
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 116,
+     "a_blocks": [
+      1,
+      1
+     ],
+     "b_blocks": [
+      7,
+      7
+     ],
+     "share": 0.008620689655172414
+    },
+    {
+     "id": "tcp:A21159",
+     "title": "The excellent comedie of two the moste faithfullest freendes, Damon and Pithias Newly imprinted, as ",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      2,
+      3
+     ],
+     "b_span": [
+      110,
+      111
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 113,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      9,
+      9
+     ],
+     "share": 0.008849557522123894
+    },
+    {
+     "id": "tcp:A21243",
+     "title": "A speciall grace, appointed to haue been said after a banket at Yorke, vpo[n] the good nues and Proc",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      6,
+      7
+     ],
+     "b_span": [
+      4,
+      5
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 36,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      0,
+      0
+     ],
+     "share": 0.027777777777777776
+    },
+    {
+     "id": "tcp:A07611",
+     "title": "Tres excellente, & nouelle description contre la peste & vn remede tres singulier, auec souueraine p",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      12,
+      13
+     ],
+     "b_span": [
+      5,
+      6
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 22,
+     "a_blocks": [
+      1,
+      1
+     ],
+     "b_blocks": [
+      1,
+      1
+     ],
+     "share": 0.045454545454545456
+    },
+    {
+     "id": "tcp:A19052",
+     "title": "A brief and most pleasau[n]t epitomye of the whole art of phisiognomie, gathered out of Aristotle, R",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      1,
+      2
+     ],
+     "b_span": [
+      5,
+      6
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 8,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      0,
+      0
+     ],
+     "share": 0.125
+    },
+    {
+     "id": "tcp:A21232",
+     "title": "The passage of our most drad Soueraigne Lady Quene Elyzabeth through the citie of London to westmins",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      18,
+      19
+     ],
+     "b_span": [
+      25,
+      26
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 60,
+     "a_blocks": [
+      1,
+      1
+     ],
+     "b_blocks": [
+      2,
+      2
+     ],
+     "share": 0.016666666666666666
+    },
+    {
+     "id": "tcp:A14193",
+     "title": "What creature is in health, eyther yong or olde; Ralph Roister Doister",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      4,
+      5
+     ],
+     "b_span": [
+      25,
+      26
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 142,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      2,
+      2
+     ],
+     "share": 0.007042253521126761
+    },
+    {
+     "id": "tcp:A18571",
+     "title": "The plouumans tale compylled by syr Geffrey Chaucher knyght",
+     "score": 0.0,
+     "matched": 0,
+     "a_span": [
+      0,
+      0
+     ],
+     "b_span": [
+      0,
+      0
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 29,
+     "a_blocks": [
+      0,
+      16
+     ],
+     "b_blocks": [
+      0,
+      4
+     ],
+     "share": 0.0
+    },
+    {
+     "id": "tcp:B10298",
+     "title": "Dosparth byrr ar y rhann gyntaf i ramadeg cymraeg \u1e37e cair \u1e37a\u1ee5er o bynciau anhepcor i vn a ch\u1ee5ennycha",
+     "score": 0.0,
+     "matched": 0,
+     "order_p": null,
+     "events_a": 199,
+     "events_b": 0
+    },
+    {
+     "id": "tcp:A14706",
+     "title": "The spectacle of louers here after foloweth a lytell contrauers dyalogue bytwene loue and councell, ",
+     "score": 0.0,
+     "matched": 0,
+     "a_span": [
+      0,
+      0
+     ],
+     "b_span": [
+      0,
+      0
+     ],
+     "order_p": 1.0,
+     "events_a": 199,
+     "events_b": 10,
+     "a_blocks": [
+      0,
+      16
+     ],
+     "b_blocks": [
+      0,
+      0
+     ],
+     "share": 0.0
+    },
+    {
+     "id": "tcp:A05218",
+     "title": "A playne treatise to learne in a short space the Frenche tongue deuided in twoo bookes.",
+     "score": 0.0,
+     "matched": 0,
+     "order_p": null,
+     "events_a": 199,
+     "events_b": 0
+    },
+    {
+     "id": "tcp:A00341",
+     "title": "The comparation of a vyrgin and a martyr; Virginis et martyris comparatio. English",
+     "score": 0.0,
+     "matched": 0,
+     "order_p": null,
+     "events_a": 199,
+     "events_b": 0
+    },
+    {
+     "id": "tcp:A18219",
+     "title": "Catonis disticha moralia ex castigatione D. Erasmi Roterodami vna cum annotationibus et scholijs Rec",
+     "score": 0.0,
+     "matched": 0,
+     "order_p": null,
+     "events_a": 199,
+     "events_b": 0
+    }
+   ],
+   "rank": 1,
+   "passes": true
+  },
+  "jasher": {
+   "biblical": "kjv:GEN-JOS",
+   "score": 4.0,
+   "matched": 4,
+   "a_span": [
+    141,
+    145
+   ],
+   "b_span": [
+    611,
+    615
+   ],
+   "order_p": 0.7532467532467533,
+   "events_a": 238,
+   "events_b": 811,
+   "a_blocks": [
+    11,
+    12
+   ],
+   "b_blocks": [
+    63,
+    64
+   ],
+   "share": 0.01680672268907563,
+   "unrelated": [
+    {
+     "id": "tcp:A65459",
+     "title": "The life of our blessed Lord & Saviour, Jesus Christ an heroic poem, dedicated to Her Most Sacred Ma",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      64,
+      66
+     ],
+     "b_span": [
+      242,
+      244
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 626,
+     "a_blocks": [
+      5,
+      5
+     ],
+     "b_blocks": [
+      32,
+      32
+     ],
+     "share": 0.008403361344537815
+    },
+    {
+     "id": "tcp:A65576",
+     "title": "The works of that late most excellent philosopher and astronomer, Sir George Wharton, bar. collected",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      56,
+      58
+     ],
+     "b_span": [
+      248,
+      250
+     ],
+     "order_p": 0.4985014985014985,
+     "events_a": 238,
+     "events_b": 344,
+     "a_blocks": [
+      4,
+      4
+     ],
+     "b_blocks": [
+      61,
+      61
+     ],
+     "share": 0.008403361344537815
+    },
+    {
+     "id": "tcp:A64873",
+     "title": "The history of the revolutions in Sweden occasioned by the change of religion and alteration of the ",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      64,
+      66
+     ],
+     "b_span": [
+      406,
+      408
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 612,
+     "a_blocks": [
+      5,
+      5
+     ],
+     "b_blocks": [
+      37,
+      37
+     ],
+     "share": 0.008403361344537815
+    },
+    {
+     "id": "tcp:A27492",
+     "title": "The lives of the Roman emperors from Domitian, where Suetonius ends, to Constantine the Great contai",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      2,
+      4
+     ],
+     "b_span": [
+      1098,
+      1100
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 1199,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      93,
+      93
+     ],
+     "share": 0.008403361344537815
+    },
+    {
+     "id": "tcp:A26221",
+     "title": "Memoirs of the court of Spain in two parts / written by an ingenious French lady ; done into English",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      216,
+      218
+     ],
+     "b_span": [
+      103,
+      105
+     ],
+     "order_p": 0.5044955044955045,
+     "events_a": 238,
+     "events_b": 681,
+     "a_blocks": [
+      18,
+      18
+     ],
+     "b_blocks": [
+      8,
+      8
+     ],
+     "share": 0.008403361344537815
+    },
+    {
+     "id": "tcp:A55206",
+     "title": "The fifth and last volume of Plutarchs Lives Translated from the Greek by several hands.; Lives. Eng",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      64,
+      66
+     ],
+     "b_span": [
+      47,
+      49
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 1005,
+     "a_blocks": [
+      5,
+      5
+     ],
+     "b_blocks": [
+      4,
+      4
+     ],
+     "share": 0.008403361344537815
+    },
+    {
+     "id": "tcp:A60005",
+     "title": "Ecclesiastical history epitomized containing a faithful account of ye birth life & doctrine, crucifi",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      45,
+      47
+     ],
+     "b_span": [
+      474,
+      476
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 610,
+     "a_blocks": [
+      3,
+      4
+     ],
+     "b_blocks": [
+      39,
+      39
+     ],
+     "share": 0.008403361344537815
+    },
+    {
+     "id": "tcp:A63890",
+     "title": "Pallas armata, Military essayes of the ancient Grecian, Roman, and modern art of war vvritten in the",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      161,
+      163
+     ],
+     "b_span": [
+      99,
+      101
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 763,
+     "a_blocks": [
+      13,
+      13
+     ],
+     "b_blocks": [
+      19,
+      19
+     ],
+     "share": 0.008403361344537815
+    },
+    {
+     "id": "tcp:A52417",
+     "title": "A collection of miscellanies consisting of poems, essays, discourses, and letters occasionally writt",
+     "score": 2.0,
+     "matched": 2,
+     "a_span": [
+      22,
+      24
+     ],
+     "b_span": [
+      43,
+      45
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 92,
+     "a_blocks": [
+      2,
+      2
+     ],
+     "b_blocks": [
+      9,
+      9
+     ],
+     "share": 0.021739130434782608
+    },
+    {
+     "id": "tcp:A38803",
+     "title": "Numismata, a discourse of medals, ancient and modern together with some account of heads and effigie",
+     "score": 1.5,
+     "matched": 2,
+     "a_span": [
+      54,
+      56
+     ],
+     "b_span": [
+      142,
+      145
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 154,
+     "a_blocks": [
+      4,
+      4
+     ],
+     "b_blocks": [
+      50,
+      50
+     ],
+     "share": 0.012987012987012988
+    },
+    {
+     "id": "tcp:A48578",
+     "title": "The city and republick of Venice in three parts / originally written in French by Monsieur de S. Des",
+     "score": 1.5,
+     "matched": 2,
+     "a_span": [
+      184,
+      187
+     ],
+     "b_span": [
+      114,
+      116
+     ],
+     "order_p": 0.4995004995004995,
+     "events_a": 238,
+     "events_b": 292,
+     "a_blocks": [
+      15,
+      15
+     ],
+     "b_blocks": [
+      16,
+      16
+     ],
+     "share": 0.008403361344537815
+    },
+    {
+     "id": "tcp:A34085",
+     "title": "A scholastical history of the primitive and general use of liturgies in the Christian church togethe",
+     "score": 1.5,
+     "matched": 2,
+     "a_span": [
+      178,
+      180
+     ],
+     "b_span": [
+      119,
+      122
+     ],
+     "order_p": 0.4785214785214785,
+     "events_a": 238,
+     "events_b": 128,
+     "a_blocks": [
+      15,
+      15
+     ],
+     "b_blocks": [
+      53,
+      53
+     ],
+     "share": 0.015625
+    },
+    {
+     "id": "tcp:A53913",
+     "title": "The compleat midwife's practice enlarged in the most weighty and high concernments of the birth of m",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      231,
+      232
+     ],
+     "b_span": [
+      57,
+      58
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 108,
+     "a_blocks": [
+      19,
+      19
+     ],
+     "b_blocks": [
+      51,
+      51
+     ],
+     "share": 0.009259259259259259
+    },
+    {
+     "id": "tcp:K089369.003",
+     "title": "Pamela: or, virtue rewarded. In a series of familiar letters from a beautiful young damsel to her pa",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      2,
+      3
+     ],
+     "b_span": [
+      90,
+      91
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 724,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      9,
+      9
+     ],
+     "share": 0.004201680672268907
+    },
+    {
+     "id": "tcp:K104887.000",
+     "title": "Voyages and descriptions: vol.II. In three parts, viz. I. A supplement of the voyage round the world",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      2,
+      3
+     ],
+     "b_span": [
+      85,
+      86
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 569,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      16,
+      16
+     ],
+     "share": 0.004201680672268907
+    },
+    {
+     "id": "tcp:A36182",
+     "title": "Canidia, or, The witches a rhapsody, in five parts / by R.D.",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      2,
+      3
+     ],
+     "b_span": [
+      2,
+      3
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 100,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      2,
+      2
+     ],
+     "share": 0.01
+    },
+    {
+     "id": "tcp:K112507.000",
+     "title": "The voyages and adventures of Captain Robert Boyle: in several parts of the world. Intermix'd with t",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      10,
+      11
+     ],
+     "b_span": [
+      201,
+      202
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 706,
+     "a_blocks": [
+      1,
+      1
+     ],
+     "b_blocks": [
+      16,
+      16
+     ],
+     "share": 0.004201680672268907
+    },
+    {
+     "id": "tcp:K061280.000",
+     "title": "The life and strange surprizing adventures of Robinson Crusoe: of York, mariner: who lived eight and",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      2,
+      3
+     ],
+     "b_span": [
+      228,
+      229
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 741,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      19,
+      19
+     ],
+     "share": 0.004201680672268907
+    },
+    {
+     "id": "tcp:A26187",
+     "title": "The whole art of the stage containing not only the rules of the drammatick art, but many curious obs",
+     "score": 1.0,
+     "matched": 1,
+     "a_span": [
+      0,
+      1
+     ],
+     "b_span": [
+      3,
+      4
+     ],
+     "order_p": 1.0,
+     "events_a": 238,
+     "events_b": 63,
+     "a_blocks": [
+      0,
+      0
+     ],
+     "b_blocks": [
+      0,
+      0
+     ],
+     "share": 0.015873015873015872
+    },
+    {
+     "id": "tcp:A29761",
+     "title": "The description and use of the trianguler quadrant being a particular and general instrument, useful",
+     "score": 0.0,
+     "matched": 0,
+     "order_p": null,
+     "events_a": 238,
+     "events_b": 0
+    }
+   ],
+   "rank": 1,
+   "passes": null
+  }
+ },
+ "shown_to_work": true
+}
