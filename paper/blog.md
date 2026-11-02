@@ -2413,8 +2413,46 @@ type and length, and that check needs the finished index. A shared subject (Isra
 America) would produce exactly this kind of closeness without any copying, so even a pass
 would mean "closest in what it talks about", not "borrowed from".
 
+## Same story, new words: teaching a model to list what happens
+
+The passage test finds two paragraphs that say the same thing. But a borrowed story doesn't have
+to share a single sentence. You can tell the Exodus with new names, new wording, new speeches,
+and it's still the Exodus: people leave, cross water, wander, get a law, fight their way in. So
+the next test compares *plots*.
+
+It works like this. Every book gets cut into 2,000-word blocks. A model reads each block and
+writes down at most twelve things that happen, in order, with every name swapped for a role. Then
+two books' event lists get lined up, the way biologists line up two DNA sequences, looking for a
+long stretch of the same events in the same order. Then I shuffle the order a thousand times to
+see whether the order mattered, or whether the two books just share common events like "a battle
+is fought".
+
+Before trusting a model to do the reading, I tested it on twenty Bible chapters, each read twice.
+Here's Genesis 45, the second time through:
+
+> A ruler cries out for everyone else to leave the room. The ruler reveals himself to his brothers
+> and weeps so loudly that the household hears. ... The father faints, not believing them, until
+> he sees the wagons.
+
+No Joseph, no Pharaoh, no Jacob, and you still know exactly which story it is. The two readings
+agreed on 92% of events at the median (I'd set the bar at 60% beforehand), and a second reading
+found 233 of the 238 events actually in the chapter (bar: 90%). That's also where the rule for
+when two events count as "the same" came from: two events from unrelated chapters almost never
+score above 0.70 on the similarity scale, so 0.70 is the line.
+
+Two decisions along the way. The big index for the passage search is slower than I estimated:
+running alone it does 183 passages a second, so it needs about twelve days, not seven or eight. I
+let it run. And so it doesn't fight the index for the Mac's graphics chip, the event reading is
+done by a hosted Claude model instead of a local one. That costs usage, about 7,000 calls, so the
+job is built to stop when usage runs out and pick up where it left off.
+
+The first thing it runs is the test of the test: Josephus retold Genesis through Judges in his own
+words, so his events should line up with the Bible's better than with twenty unrelated books of
+the same size. If they don't, the Book of Mormon results get reported with no interpretation.
+
 ## Log
 
+- **2026-11-01.** BOM-25 story skeletons registered (Amendment 15). Extractor check on 20 King James chapters read twice: median agreement 0.92, 233/238 events supported, match threshold 0.700. Index measured at 183 passages/s alone, about 12 days; owner chose to let it run and to use a hosted model for event reading.
 - **2026-11-01.** BOM-25 named sources (provisional): View of the Hebrews ranks 1st and 2nd (1825, 1823) of 49 origins-of-the-Indians books by passage parallels (29.6 vs Brainerd 24.8); Napoleon 3rd and The Late War 6th of 18 imitation-scripture works; Spalding 12th of 49. The registered null check waits for the index.
 - **2026-11-01.** BOM-25 set up (Amendment 14). Full-corpus passage index with bge-small-en-v1.5 (Psalms known-answer test; with 1M corpus distractors bge-small R@1 0.59, re-scoring with e5-base made it worse, MiniLM 0.45). Exact search, no re-scoring. Build started: 549,657 passages per 1,000 volumes, about 150M passages.
 - **2026-11-01.** BOM-24 scored (Amendment 13, partly post hoc after the BOM-22 replication). Known-answer test fails (U 6/27, p 0.93): the rare-phrase list is uninformative on the translation question; the per-10,000-words score is dominated by short pieces (29 of 51 draw winners under 1,000 words). Book of Mormon list: The Late War p 0.0006 and Napoleon p 0.0003 against all books, but The Late War ranks 5th among imitation-scripture books (1829 Jasher first); View of the Hebrews and Spalding not significant. Seal applied after first run caught 11 later quoting volumes.
