@@ -12,3 +12,7 @@ only governs what gets reported afterwards.
 
 Rebuild: hand-maintained. Adding a claim after freezing is allowed and must be recorded as a
 dated addition with its own decision rule, written before the verdict is filled in.
+
+`novelty.yaml` — whether each claim this project makes is established, contested or new, with
+the citation or the search behind the verdict, and the near-miss rule (N = 20 below threshold per
+6.5/6.6 ranked list). Issue: BOM-51. Hand-maintained.

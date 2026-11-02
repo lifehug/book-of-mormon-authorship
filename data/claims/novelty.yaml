@@ -1,0 +1,67 @@
+# Novelty register (BOM-51)
+#
+# One entry per claim this project makes: is it already established, contested, or new? A claim
+# may not be described as new in any published output while its status is `unchecked`. A `new`
+# verdict carries the search that supports it (sources consulted, terms, date); an `established`
+# one carries its citation and is kept, not dropped.
+#
+# status: unchecked | established | contested | new
+#
+# NEAR MISSES. The decision rules decide what becomes a claim, so a genuinely new source that
+# lands just below a threshold would never reach this register. For each ranked list of 6.5
+# (significant parallel: above the null's 99th percentile) and 6.6 (sweep lead), the top
+# `near_miss_n` entries below the threshold each get a literature check and an entry here, as a
+# claim would. They are reported in BOM-36 labelled "below the pre-registered threshold"; interest
+# never promotes one to significant, and no decision rule changes. N was fixed at 20 in the BOM-51
+# issue text on 2026-10-26, before any 6.5 or 6.6 ranking existed; it is written here on
+# 2026-11-02, after the BOM-24 rare-phrase ranking had been seen, and is unchanged from that text.
+
+version: 0.1
+near_miss_n: 20
+near_miss_fixed: 2026-10-26   # BOM-51 issue body
+lists:
+  - 6.5 rare phrases (BOM-24, data/reuse/bom)
+  - 6.5 semantic parallels and story skeletons (BOM-25, data/semantic)
+  - 6.6 author sweep (BOM-31)
+
+claims:
+  - id: per_author_lm_bom
+    claim: >-
+      Per-candidate authorial language models trained from scratch (as Stropkay et al. 2025
+      did for the Oz books) have not previously been applied to the Book of Mormon.
+    where: docs/background.md ("As far as we found"); README.md
+    status: unchecked
+    search: null
+
+  - id: time_locked_lm_1780_1830
+    claim: >-
+      No published Book of Mormon study scores the text against a language model trained
+      only on English printed 1780-1830.
+    where: README.md; BOM-27
+    status: unchecked
+    search: null
+
+  - id: wayne_sentinel_1830_03_19
+    claim: >-
+      The Wayne Sentinel of 19 March 1830 printed a notice about the Book of Mormon. The
+      accurate claim is narrower than first stated on 2026-10-21 ("earlier than anything on
+      record"): earlier than this project's recorded sale notice.
+    where: BOM-33
+    status: unchecked
+    search: null
+
+  - id: kjv_imitation_dates_early
+    claim: >-
+      King James imitation moves a 1780-1830 text's grammatical date about 53 years earlier
+      (25 pseudo-biblical books, p 0.0001), while its vocabulary date barely moves.
+    where: data/dating/validation.json (BOM-29)
+    status: unchecked
+    search: null
+
+  - id: skeleton_philips_war
+    claim: >-
+      Church's History of Philip's War is first of 49 origins-of-the-Indians books in
+      story-sequence alignment with the Book of Mormon (order p 0.008; six events, Alma 60-61).
+    where: data/semantic/skeleton/bom.json (BOM-25)
+    status: unchecked
+    search: null
