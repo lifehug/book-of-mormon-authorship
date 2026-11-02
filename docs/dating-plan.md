@@ -102,3 +102,24 @@ follows on the GPU rented for BOM-27/BOM-30 and is reported beside both.
   print; the 1780-1830 corpus is broader.
 - Dating grammar is not dating authorship: a writer imitating older English is placed earlier,
   which is exactly what H3c and check 3 are there to measure.
+
+## After validation: 6.4's decision rule (Amendment 19, post hoc)
+
+Validation showed the registered interval rule cannot work with this model. The grammar model's
+90% intervals are honest (coverage 0.91) but about 85 years wide for 1780-1830 text, wider than
+the 51-year window, so only 14% of genuine 1780-1830 segments meet it. The owner chose
+(2026-11-02) to amend before any Book of Mormon scoring: H3a and H3b are decided on segment
+median years, as section 2 words them (more than half in 1780-1830: H3a; more than half in
+1473-1700: H3b; else neither), with the interval rule reported beside it. `dating.classifier.h3_call`
+is the rule; `validate` now reports it per segment and per held-out volume.
+
+| Held-out volumes (grammar) | H3a | H3b | neither |
+| --- | ---: | ---: | ---: |
+| 1780-1830 | 1,464 | 80 | 331 |
+| 1700-1779 | 217 | 212 | 568 |
+| 1473-1699 | 48 | 3,729 | 367 |
+| pseudo-biblical controls, 1780-1830 | 10 | 7 | 8 |
+
+The King James text is called H3b. Keyed 1780-1809 segments reach the window less often than OCR
+ones of the same years (55% against 83%, 71 keyed segments): a limitation for a keyed text such
+as the Book of Mormon's, reported beside the result.

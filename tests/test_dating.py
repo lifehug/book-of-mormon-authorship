@@ -65,3 +65,11 @@ def test_lexical_model_cannot_read_grammar():
     ex = C.lexical_excluded()
     assert {"doth", "does", "unto", "which"} <= ex
     assert "makes" in ex  # MorphAdorner's spelling for "maketh"
+
+
+def test_h3_call_on_segment_medians():
+    d = load()["dating"]
+    assert C.h3_call(np.array([1790.0, 1810.0, 1650.0]), d) == "H3a"
+    assert C.h3_call(np.array([1600.0, 1700.5, 1820.0]), d) == "H3b"  # 1700 is in the early window
+    assert C.h3_call(np.array([1790.0, 1650.0, 1750.0, 1745.0]), d) == "neither"
+    assert C.h3_call(np.array([1790.0, 1650.0]), d) == "neither"  # half is not a majority

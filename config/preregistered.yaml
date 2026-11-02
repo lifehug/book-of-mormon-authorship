@@ -407,7 +407,8 @@ timelocked_lm:
 dating:
   # 5.3, 6.4; Amendment 2 (multinomial logistic regression over a literature-drawn grammatical
   # feature list, 10,000 permutations); Amendment 17 (BOM-29; OSF revision
-  # 6ae8126f2d971de294296cfe; docs/dating-plan.md)
+  # 6ae8126f2d971de294296cfe; docs/dating-plan.md); Amendment 19 (6.4 decision
+  # rule; OSF revision 6ae89915263740bb19d84cc0)
   model: multinomial_logistic_l2
   first_year: 1473
   last_year: 1830
@@ -429,6 +430,11 @@ dating:
   interval: 0.90                # 6.4
   window: [1780, 1830]          # 6.4, H3a
   window_share: 0.8             # 6.4: dated to a window if 80% of segments' intervals fall in it
+  # Amendment 19 (post hoc, after validation, before any Book of Mormon scoring): H3a/H3b are
+  # decided on segment median years, as H3a is worded; the interval rule above is reported beside
+  decision: segment_median
+  majority_share: 0.5           # H3a/H3b: more than half of segments' median years in the window
+  early_window: [1473, 1700]    # H3b
   h3c_min_p: 0.05               # 6.4: H3c accepted if the permutation p is above this
   permutations: 10000           # Amendment 2
   permutation_seed: bom29-permutation

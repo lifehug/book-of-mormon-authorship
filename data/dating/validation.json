@@ -1,8 +1,8 @@
 {
- "config_sha256": "762889289360f0cbf9d58f0e69dd151a3c15e007add0e237e2a74b306ca0a54d",
+ "config_sha256": "5182c5ac1f36280716bbbeb1c0b4dbc7710b778f99f9720334604fcf941f3130",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "cf2659232a6e8e814e545679a5413f3fd12a4ee5",
+ "git_commit": "b382cc6699d0789332c89adff779e37178784080",
  "bins": [
   1473,
   1530,
@@ -47,6 +47,9 @@
      1789.5913326255989
     ],
     "share_interval_in_window": 0.04054977598906523,
+    "share_median_window": 0.29091047156200167,
+    "share_median_early_window": 0.6017920874781685,
+    "call": "H3b",
     "mae_years": 23.429819896833436,
     "bias_years": 0.08626764633997687,
     "interval_coverage": 0.9137368061356216,
@@ -60,10 +63,18 @@
      1674.5973603383782
     ],
     "share_interval_in_window": 0.0,
+    "share_median_window": 0.025456919060052218,
+    "share_median_early_window": 0.9268929503916449,
+    "call": "H3b",
     "mae_years": 19.96495323376884,
     "bias_years": 8.100561211842225,
     "interval_coverage": 0.9148825065274151,
-    "bin_accuracy": 0.27271540469973893
+    "bin_accuracy": 0.27271540469973893,
+    "volume_calls": {
+     "H3b": 3729,
+     "neither": 367,
+     "H3a": 48
+    }
    },
    "1700-1779": {
     "segments": 1872,
@@ -73,10 +84,18 @@
      1785.829651056885
     ],
     "share_interval_in_window": 0.005341880341880342,
+    "share_median_window": 0.2986111111111111,
+    "share_median_early_window": 0.296474358974359,
+    "call": "neither",
     "mae_years": 35.78905808004256,
     "bias_years": 1.4594535918238336,
     "interval_coverage": 0.9193376068376068,
-    "bin_accuracy": 0.041666666666666664
+    "bin_accuracy": 0.041666666666666664,
+    "volume_calls": {
+     "H3b": 212,
+     "neither": 568,
+     "H3a": 217
+    }
    },
    "1780-1830": {
     "segments": 3637,
@@ -86,10 +105,18 @@
      1805.3750497314156
     ],
     "share_interval_in_window": 0.14407478691229034,
+    "share_median_window": 0.8460269452845752,
+    "share_median_early_window": 0.07423700852350838,
+    "call": "H3a",
     "mae_years": 24.365861898512655,
     "bias_years": -17.499680333229172,
     "interval_coverage": 0.9084410228210064,
-    "bin_accuracy": 0.26147924113280174
+    "bin_accuracy": 0.26147924113280174,
+    "volume_calls": {
+     "H3a": 1464,
+     "neither": 331,
+     "H3b": 80
+    }
    },
    "by_bin": {
     "1473-1529": {
@@ -100,6 +127,9 @@
       1534.590215499511
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 24.944273961355112,
      "bias_years": 23.623835927934717,
      "interval_coverage": 0.9122807017543859,
@@ -113,6 +143,9 @@
       1542.779983710931
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 7.383471009546326,
      "bias_years": 3.495319225020649,
      "interval_coverage": 1.0,
@@ -126,6 +159,9 @@
       1555.8938644187704
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 9.994674038900053,
      "bias_years": 2.6574491977038592,
      "interval_coverage": 0.9402985074626866,
@@ -139,6 +175,9 @@
       1571.067633622172
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 0.9936305732484076,
+     "call": "H3b",
      "mae_years": 16.807655269332685,
      "bias_years": 10.83644630628712,
      "interval_coverage": 0.8089171974522293,
@@ -152,6 +191,9 @@
       1590.0496261470528
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 0.9904761904761905,
+     "call": "H3b",
      "mae_years": 23.887218642339732,
      "bias_years": 19.413102825690245,
      "interval_coverage": 0.780952380952381,
@@ -165,6 +207,9 @@
       1599.2671840558114
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.005681818181818182,
+     "share_median_early_window": 0.9943181818181818,
+     "call": "H3b",
      "mae_years": 20.027493932495382,
      "bias_years": 13.869088117917649,
      "interval_coverage": 0.8352272727272727,
@@ -178,6 +223,9 @@
       1607.4799010723286
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 18.55787678127631,
      "bias_years": 14.621912109829536,
      "interval_coverage": 0.8333333333333334,
@@ -191,6 +239,9 @@
       1619.0586812656
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0025380710659898475,
+     "share_median_early_window": 0.9974619289340102,
+     "call": "H3b",
      "mae_years": 19.801006580620083,
      "bias_years": 16.6596602622658,
      "interval_coverage": 0.8756345177664975,
@@ -204,6 +255,9 @@
       1627.183309428778
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.003913894324853229,
+     "share_median_early_window": 0.9941291585127201,
+     "call": "H3b",
      "mae_years": 18.494004238201157,
      "bias_years": 14.556833914974552,
      "interval_coverage": 0.9197651663405088,
@@ -217,6 +271,9 @@
       1630.8219397265298
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0017331022530329288,
+     "share_median_early_window": 0.9965337954939342,
+     "call": "H3b",
      "mae_years": 14.633116695842423,
      "bias_years": 8.45469121693156,
      "interval_coverage": 0.9480069324090121,
@@ -230,6 +287,9 @@
       1634.1428820857045
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 12.31694289151792,
      "bias_years": 2.3599378473848414,
      "interval_coverage": 0.9761029411764706,
@@ -243,6 +303,9 @@
       1641.5865626886955
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0055147058823529415,
+     "share_median_early_window": 0.9926470588235294,
+     "call": "H3b",
      "mae_years": 15.63828522733247,
      "bias_years": -1.5956448818076923,
      "interval_coverage": 0.9577205882352942,
@@ -256,6 +319,9 @@
       1665.9116807158523
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.013114754098360656,
+     "share_median_early_window": 0.9622950819672131,
+     "call": "H3b",
      "mae_years": 19.70649998721752,
      "bias_years": 8.997575260963297,
      "interval_coverage": 0.8721311475409836,
@@ -269,6 +335,9 @@
       1672.1410500899292
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.014684287812041116,
+     "share_median_early_window": 0.9632892804698973,
+     "call": "H3b",
      "mae_years": 20.234787628092295,
      "bias_years": 4.921779082529454,
      "interval_coverage": 0.9104258443465492,
@@ -282,6 +351,9 @@
       1680.6100048600663
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.01649175412293853,
+     "share_median_early_window": 0.9385307346326837,
+     "call": "H3b",
      "mae_years": 19.75859655703144,
      "bias_years": 6.235626932622016,
      "interval_coverage": 0.9220389805097451,
@@ -295,6 +367,9 @@
       1689.1000818338605
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.03840682788051209,
+     "share_median_early_window": 0.8705547652916074,
+     "call": "H3b",
      "mae_years": 21.276999148341496,
      "bias_years": 6.453136305533873,
      "interval_coverage": 0.918918918918919,
@@ -308,6 +383,9 @@
       1698.2263410290143
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.09077598828696926,
+     "share_median_early_window": 0.7759882869692533,
+     "call": "H3b",
      "mae_years": 27.33766854372553,
      "bias_years": 8.687768403798602,
      "interval_coverage": 0.9106881405563689,
@@ -321,6 +399,9 @@
       1713.2647275242134
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.09928057553956834,
+     "share_median_early_window": 0.6920863309352518,
+     "call": "H3b",
      "mae_years": 29.61781979838302,
      "bias_years": 7.923912868011705,
      "interval_coverage": 0.9453237410071943,
@@ -334,6 +415,9 @@
       1728.700393399527
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.09399477806788512,
+     "share_median_early_window": 0.6057441253263708,
+     "call": "H3b",
      "mae_years": 30.26587219941269,
      "bias_years": 6.312251678581286,
      "interval_coverage": 0.9268929503916449,
@@ -347,6 +431,9 @@
       1780.9062466741252
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.2617801047120419,
+     "share_median_early_window": 0.2931937172774869,
+     "call": "neither",
      "mae_years": 42.686437232958646,
      "bias_years": 25.29413030960531,
      "interval_coverage": 0.900523560209424,
@@ -360,6 +447,9 @@
       1776.6170409999604
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.21348314606741572,
+     "share_median_early_window": 0.28651685393258425,
+     "call": "neither",
      "mae_years": 39.40377487335308,
      "bias_years": 8.637519045913793,
      "interval_coverage": 0.9101123595505618,
@@ -373,6 +463,9 @@
       1769.254032636607
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.19083969465648856,
+     "share_median_early_window": 0.25190839694656486,
+     "call": "neither",
      "mae_years": 36.03177598559904,
      "bias_years": 0.662979372195869,
      "interval_coverage": 0.916030534351145,
@@ -386,6 +479,9 @@
       1782.8306046502178
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.26141078838174275,
+     "share_median_early_window": 0.27385892116182575,
+     "call": "neither",
      "mae_years": 39.28544920467696,
      "bias_years": -3.3868908011009964,
      "interval_coverage": 0.91701244813278,
@@ -399,6 +495,9 @@
       1790.5990428115838
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.3652694610778443,
+     "share_median_early_window": 0.17365269461077845,
+     "call": "neither",
      "mae_years": 36.157188557006236,
      "bias_years": -0.34497385415474385,
      "interval_coverage": 0.9520958083832335,
@@ -412,6 +511,9 @@
       1793.4567478336708
      ],
      "share_interval_in_window": 0.03225806451612903,
+     "share_median_window": 0.4423963133640553,
+     "share_median_early_window": 0.15668202764976957,
+     "call": "neither",
      "mae_years": 35.01033420671322,
      "bias_years": -5.510256731459134,
      "interval_coverage": 0.9078341013824884,
@@ -425,6 +527,9 @@
       1796.8781438220922
      ],
      "share_interval_in_window": 0.008241758241758242,
+     "share_median_window": 0.521978021978022,
+     "share_median_early_window": 0.14835164835164835,
+     "call": "H3a",
      "mae_years": 34.1067508521847,
      "bias_years": -11.185235765471239,
      "interval_coverage": 0.9203296703296703,
@@ -438,6 +543,9 @@
       1801.7031126933034
      ],
      "share_interval_in_window": 0.10013908205841446,
+     "share_median_window": 0.8372739916550765,
+     "share_median_early_window": 0.06675938803894298,
+     "call": "H3a",
      "mae_years": 21.80596801346561,
      "bias_years": -0.24480816699237873,
      "interval_coverage": 0.9582753824756607,
@@ -451,6 +559,9 @@
       1803.5662720696166
      ],
      "share_interval_in_window": 0.11004126547455295,
+     "share_median_window": 0.8321870701513068,
+     "share_median_early_window": 0.0687757909215956,
+     "call": "H3a",
      "mae_years": 19.216783839150995,
      "bias_years": -9.02751877572166,
      "interval_coverage": 0.9642365887207703,
@@ -464,6 +575,9 @@
       1804.871362536393
      ],
      "share_interval_in_window": 0.16256830601092895,
+     "share_median_window": 0.8005464480874317,
+     "share_median_early_window": 0.11475409836065574,
+     "call": "H3a",
      "mae_years": 24.883081707921807,
      "bias_years": -22.250438069664185,
      "interval_coverage": 0.9234972677595629,
@@ -477,6 +591,9 @@
       1806.7511859823055
      ],
      "share_interval_in_window": 0.1643646408839779,
+     "share_median_window": 0.8784530386740331,
+     "share_median_early_window": 0.06767955801104972,
+     "call": "H3a",
      "mae_years": 24.72953461758447,
      "bias_years": -24.543356238427066,
      "interval_coverage": 0.9281767955801105,
@@ -490,6 +607,9 @@
       1808.9314700187583
      ],
      "share_interval_in_window": 0.18231292517006803,
+     "share_median_window": 0.8816326530612245,
+     "share_median_early_window": 0.053061224489795916,
+     "call": "H3a",
      "mae_years": 31.089725168457203,
      "bias_years": -31.08925655281898,
      "interval_coverage": 0.7700680272108843,
@@ -505,6 +625,9 @@
       1801.483550953537
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.5492957746478874,
+     "share_median_early_window": 0.09859154929577464,
+     "call": "H3a",
      "mae_years": 27.200197412938863,
      "bias_years": -13.898265014656948,
      "interval_coverage": 0.9436619718309859,
@@ -518,6 +641,9 @@
       1803.5453780447874
      ],
      "share_interval_in_window": 0.12861888941623162,
+     "share_median_window": 0.8324632178452777,
+     "share_median_early_window": 0.08305647840531562,
+     "call": "H3a",
      "mae_years": 21.799855076708425,
      "bias_years": -10.460164723763977,
      "interval_coverage": 0.9487422876127195,
@@ -534,6 +660,9 @@
      1785.3837873617097
     ],
     "share_interval_in_window": 0.23122484622978207,
+    "share_median_window": 0.27815323866656544,
+    "share_median_early_window": 0.594957855569899,
+    "call": "H3b",
     "mae_years": 13.180791979982653,
     "bias_years": 0.4209954471602145,
     "interval_coverage": 0.7572328954362518,
@@ -547,10 +676,18 @@
      1673.8752926364632
     ],
     "share_interval_in_window": 0.00013054830287206266,
+    "share_median_window": 0.0032637075718015664,
+    "share_median_early_window": 0.9951697127937337,
+    "call": "H3b",
     "mae_years": 11.973484846377609,
     "bias_years": 2.3654392720150317,
     "interval_coverage": 0.7770234986945169,
-    "bin_accuracy": 0.3533942558746736
+    "bin_accuracy": 0.3533942558746736,
+    "volume_calls": {
+     "H3b": 4110,
+     "neither": 29,
+     "H3a": 5
+    }
    },
    "1700-1779": {
     "segments": 1872,
@@ -560,10 +697,18 @@
      1771.38173314132
     ],
     "share_interval_in_window": 0.0219017094017094,
+    "share_median_window": 0.12286324786324786,
+    "share_median_early_window": 0.07104700854700854,
+    "call": "neither",
     "mae_years": 18.433386798016475,
     "bias_years": 3.498443430868225,
     "interval_coverage": 0.7654914529914529,
-    "bin_accuracy": 0.33760683760683763
+    "bin_accuracy": 0.33760683760683763,
+    "volume_calls": {
+     "H3b": 23,
+     "neither": 913,
+     "H3a": 61
+    }
    },
    "1780-1830": {
     "segments": 3637,
@@ -573,10 +718,18 @@
      1815.0041935833053
     ],
     "share_interval_in_window": 0.8256805059114655,
+    "share_median_window": 0.937036018696728,
+    "share_median_early_window": 0.021721198790211713,
+    "call": "H3a",
     "mae_years": 13.019976787256583,
     "bias_years": -5.258251823636953,
     "interval_coverage": 0.7113005224085786,
-    "bin_accuracy": 0.39455595270827604
+    "bin_accuracy": 0.39455595270827604,
+    "volume_calls": {
+     "H3a": 1697,
+     "neither": 158,
+     "H3b": 20
+    }
    },
    "by_bin": {
     "1473-1529": {
@@ -587,6 +740,9 @@
       1528.9785952411207
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 19.1473280328714,
      "bias_years": 16.701850202374047,
      "interval_coverage": 0.9473684210526315,
@@ -600,6 +756,9 @@
       1553.5133483544364
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 13.307944201135713,
      "bias_years": 12.334682893862592,
      "interval_coverage": 0.8450704225352113,
@@ -613,6 +772,9 @@
       1563.0608085708923
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 12.326367348184874,
      "bias_years": 9.649141747615728,
      "interval_coverage": 0.9029850746268657,
@@ -626,6 +788,9 @@
       1575.289548552639
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 17.364969286681532,
      "bias_years": 13.770799652864882,
      "interval_coverage": 0.7770700636942676,
@@ -639,6 +804,9 @@
       1585.002535699885
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 17.663724955940076,
      "bias_years": 13.628540478015784,
      "interval_coverage": 0.7523809523809524,
@@ -652,6 +820,9 @@
       1590.5863945691349
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 0.9943181818181818,
+     "call": "H3b",
      "mae_years": 11.131528141582898,
      "bias_years": 7.511579665910517,
      "interval_coverage": 0.8068181818181818,
@@ -665,6 +836,9 @@
       1597.8325734336531
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 11.935217153777913,
      "bias_years": 7.879994651696479,
      "interval_coverage": 0.7346938775510204,
@@ -678,6 +852,9 @@
       1613.387105789367
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0025380710659898475,
+     "share_median_early_window": 0.9974619289340102,
+     "call": "H3b",
      "mae_years": 12.926771577481793,
      "bias_years": 9.683803839598466,
      "interval_coverage": 0.733502538071066,
@@ -691,6 +868,9 @@
       1621.147020156455
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.003913894324853229,
+     "share_median_early_window": 0.9960861056751468,
+     "call": "H3b",
      "mae_years": 12.737751373879721,
      "bias_years": 8.00349714046616,
      "interval_coverage": 0.7671232876712328,
@@ -704,6 +884,9 @@
       1626.1147363380205
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 12.249204057376925,
      "bias_years": 4.2466807602370755,
      "interval_coverage": 0.7781629116117851,
@@ -717,6 +900,9 @@
       1630.9312848586683
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 1.0,
+     "call": "H3b",
      "mae_years": 10.457993958427037,
      "bias_years": -0.5694599685131675,
      "interval_coverage": 0.8106617647058824,
@@ -730,6 +916,9 @@
       1642.704392378479
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.001838235294117647,
+     "share_median_early_window": 0.9963235294117647,
+     "call": "H3b",
      "mae_years": 13.724297596999511,
      "bias_years": -0.6569439466956469,
      "interval_coverage": 0.7886029411764706,
@@ -743,6 +932,9 @@
       1654.906650277977
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0,
+     "share_median_early_window": 0.9967213114754099,
+     "call": "H3b",
      "mae_years": 8.932399264684832,
      "bias_years": 3.4857375121292535,
      "interval_coverage": 0.8131147540983606,
@@ -756,6 +948,9 @@
       1665.536902494521
      ],
      "share_interval_in_window": 0.0014684287812041115,
+     "share_median_window": 0.007342143906020558,
+     "share_median_early_window": 0.9926578560939795,
+     "call": "H3b",
      "mae_years": 12.341808780186042,
      "bias_years": 3.6407322319140505,
      "interval_coverage": 0.7988252569750367,
@@ -769,6 +964,9 @@
       1674.558744267731
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.0029985007496251873,
+     "share_median_early_window": 0.9970014992503748,
+     "call": "H3b",
      "mae_years": 11.906183445327784,
      "bias_years": 1.8000737911191507,
      "interval_coverage": 0.7511244377811095,
@@ -782,6 +980,9 @@
       1684.6658596629668
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.001422475106685633,
+     "share_median_early_window": 0.9985775248933144,
+     "call": "H3b",
      "mae_years": 10.597270526148057,
      "bias_years": -0.2981464208253254,
      "interval_coverage": 0.7524893314366998,
@@ -795,6 +996,9 @@
       1686.9400006319372
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.01171303074670571,
+     "share_median_early_window": 0.986822840409956,
+     "call": "H3b",
      "mae_years": 11.334776376660148,
      "bias_years": -3.9224843423375324,
      "interval_coverage": 0.780380673499268,
@@ -808,6 +1012,9 @@
       1694.6359045106901
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.007194244604316547,
+     "share_median_early_window": 0.9827338129496402,
+     "call": "H3b",
      "mae_years": 11.62132048241411,
      "bias_years": -8.332767129907857,
      "interval_coverage": 0.720863309352518,
@@ -821,6 +1028,9 @@
       1711.7152262636157
      ],
      "share_interval_in_window": 0.0026109660574412533,
+     "share_median_window": 0.020887728459530026,
+     "share_median_early_window": 0.09399477806788512,
+     "call": "neither",
      "mae_years": 14.351217419478516,
      "bias_years": 9.693355290016937,
      "interval_coverage": 0.587467362924282,
@@ -834,6 +1044,9 @@
       1739.780605202822
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.05235602094240838,
+     "share_median_early_window": 0.07853403141361257,
+     "call": "neither",
      "mae_years": 20.042407722451475,
      "bias_years": 11.163227441389335,
      "interval_coverage": 0.8115183246073299,
@@ -847,6 +1060,9 @@
       1743.3400714255163
      ],
      "share_interval_in_window": 0.0056179775280898875,
+     "share_median_window": 0.028089887640449437,
+     "share_median_early_window": 0.07865168539325842,
+     "call": "neither",
      "mae_years": 20.89770878924087,
      "bias_years": 0.5053474262926092,
      "interval_coverage": 0.8258426966292135,
@@ -860,6 +1076,9 @@
       1755.0486032412837
      ],
      "share_interval_in_window": 0.0,
+     "share_median_window": 0.05343511450381679,
+     "share_median_early_window": 0.06870229007633588,
+     "call": "neither",
      "mae_years": 20.77539084556675,
      "bias_years": 3.824736042104285,
      "interval_coverage": 0.8320610687022901,
@@ -873,6 +1092,9 @@
       1763.9117292975288
      ],
      "share_interval_in_window": 0.004149377593360996,
+     "share_median_window": 0.08713692946058091,
+     "share_median_early_window": 0.06639004149377593,
+     "call": "neither",
      "mae_years": 20.80920084730499,
      "bias_years": 1.7371955977438334,
      "interval_coverage": 0.8132780082987552,
@@ -886,6 +1108,9 @@
       1774.3787740030175
      ],
      "share_interval_in_window": 0.017964071856287425,
+     "share_median_window": 0.17964071856287425,
+     "share_median_early_window": 0.04790419161676647,
+     "call": "neither",
      "mae_years": 20.373334909306042,
      "bias_years": 5.376588781182837,
      "interval_coverage": 0.8023952095808383,
@@ -899,6 +1124,9 @@
       1776.1362666379823
      ],
      "share_interval_in_window": 0.04608294930875576,
+     "share_median_window": 0.22119815668202766,
+     "share_median_early_window": 0.055299539170506916,
+     "call": "neither",
      "mae_years": 19.759861486075582,
      "bias_years": 0.09831225082269697,
      "interval_coverage": 0.7557603686635944,
@@ -912,6 +1140,9 @@
       1782.9301169409346
      ],
      "share_interval_in_window": 0.06868131868131869,
+     "share_median_window": 0.2774725274725275,
+     "share_median_early_window": 0.06318681318681318,
+     "call": "neither",
      "mae_years": 16.582585982008794,
      "bias_years": -3.3640821487214314,
      "interval_coverage": 0.8324175824175825,
@@ -925,6 +1156,9 @@
       1795.0970182900546
      ],
      "share_interval_in_window": 0.8219749652294854,
+     "share_median_window": 0.9346314325452016,
+     "share_median_early_window": 0.016689847009735744,
+     "call": "H3a",
      "mae_years": 11.185984359850206,
      "bias_years": 4.131241156561381,
      "interval_coverage": 0.6842837273991655,
@@ -938,6 +1172,9 @@
       1803.1824982962853
      ],
      "share_interval_in_window": 0.8376891334250344,
+     "share_median_window": 0.9504814305364512,
+     "share_median_early_window": 0.0068775790921595595,
+     "call": "H3a",
      "mae_years": 9.766063432957361,
      "bias_years": -0.31870002876994263,
      "interval_coverage": 0.7524071526822559,
@@ -951,6 +1188,9 @@
       1813.7574288207084
      ],
      "share_interval_in_window": 0.7650273224043715,
+     "share_median_window": 0.9057377049180327,
+     "share_median_early_window": 0.036885245901639344,
+     "call": "H3a",
      "mae_years": 16.698267797433214,
      "bias_years": -8.288099790811952,
      "interval_coverage": 0.7049180327868853,
@@ -964,6 +1204,9 @@
       1818.73103134328
      ],
      "share_interval_in_window": 0.835635359116022,
+     "share_median_window": 0.9461325966850829,
+     "share_median_early_window": 0.024861878453038673,
+     "call": "H3a",
      "mae_years": 13.315732610071384,
      "bias_years": -8.374901686165993,
      "interval_coverage": 0.7279005524861878,
@@ -977,6 +1220,9 @@
       1825.1332452501042
      ],
      "share_interval_in_window": 0.8680272108843538,
+     "share_median_window": 0.9482993197278912,
+     "share_median_early_window": 0.02312925170068027,
+     "call": "H3a",
      "mae_years": 14.077935057615104,
      "bias_years": -13.241648279674765,
      "interval_coverage": 0.6870748299319728,
@@ -992,6 +1238,9 @@
       1798.3404694018088
      ],
      "share_interval_in_window": 0.23943661971830985,
+     "share_median_window": 0.5352112676056338,
+     "share_median_early_window": 0.028169014084507043,
+     "call": "H3a",
      "mae_years": 18.04292249010736,
      "bias_years": -7.582930724551796,
      "interval_coverage": 0.7887323943661971,
@@ -1005,6 +1254,9 @@
       1804.9228438584903
      ],
      "share_interval_in_window": 0.8272425249169435,
+     "share_median_window": 0.9435215946843853,
+     "share_median_early_window": 0.019933554817275746,
+     "call": "H3a",
      "mae_years": 12.380035786148927,
      "bias_years": -1.324078545220354,
      "interval_coverage": 0.711438063597532,
@@ -1023,7 +1275,15 @@
      1791.967511760408
     ],
     "share_interval_in_window": 0.03260869565217391,
-    "volumes": 25
+    "share_median_window": 0.3220108695652174,
+    "share_median_early_window": 0.5760869565217391,
+    "call": "H3b",
+    "volumes": 25,
+    "volume_calls": {
+     "H3b": 7,
+     "neither": 8,
+     "H3a": 10
+    }
    },
    "ordinary_1780_1830": {
     "volumes": 1875,
@@ -1038,7 +1298,10 @@
      1595.7134009297754,
      1661.8709456677416
     ],
-    "share_interval_in_window": 0.0
+    "share_interval_in_window": 0.0,
+    "share_median_window": 0.0021413276231263384,
+    "share_median_early_window": 0.961456102783726,
+    "call": "H3b"
    }
   },
   "lexical": {
@@ -1050,7 +1313,14 @@
      1814.8480906052318
     ],
     "share_interval_in_window": 0.46059782608695654,
-    "volumes": 25
+    "share_median_window": 0.7703804347826086,
+    "share_median_early_window": 0.10733695652173914,
+    "call": "H3a",
+    "volumes": 25,
+    "volume_calls": {
+     "H3a": 23,
+     "neither": 2
+    }
    },
    "ordinary_1780_1830": {
     "volumes": 1875,
@@ -1065,7 +1335,10 @@
      1676.573997115385,
      1768.427811051829
     ],
-    "share_interval_in_window": 0.010706638115631691
+    "share_interval_in_window": 0.010706638115631691,
+    "share_median_window": 0.18843683083511778,
+    "share_median_early_window": 0.2955032119914347,
+    "call": "neither"
    }
   }
  },
@@ -1075,72 +1348,86 @@
     "twelve_patriarchs": {
      "year": 1791,
      "median_predicted": 1589.2525077195453,
-     "segments": 16
+     "segments": 16,
+     "call": "H3b"
     },
     "enoch": {
      "year": 1821,
      "median_predicted": 1804.9878383361859,
-     "segments": 31
+     "segments": 31,
+     "call": "H3a"
     },
     "apocryphal_nt": {
      "year": 1820,
      "median_predicted": 1754.118829030967,
-     "segments": 72
+     "segments": 72,
+     "call": "neither"
     },
     "josephus": {
      "year": 1794,
      "median_predicted": 1748.8104157059206,
-     "segments": 388
+     "segments": 388,
+     "call": "neither"
     },
     "koran": {
      "year": 1800,
      "median_predicted": 1667.5276069480253,
-     "segments": 88
+     "segments": 88,
+     "call": "H3b"
     },
     "herodotus": {
      "year": 1791,
      "median_predicted": 1804.1790675863845,
-     "segments": 136
+     "segments": 136,
+     "call": "H3a"
     },
     "homer": {
      "year": 1783,
      "median_predicted": 1797.0164330080743,
-     "segments": 158
+     "segments": 158,
+     "call": "H3a"
     },
     "hesiod": {
      "year": 1815,
      "median_predicted": 1802.3265135468664,
-     "segments": 36
+     "segments": 36,
+     "call": "H3a"
     },
     "sacontala": {
      "year": 1792,
      "median_predicted": 1807.0170447863507,
-     "segments": 16
+     "segments": 16,
+     "call": "H3a"
     },
     "ossian": {
      "year": 1800,
      "median_predicted": 1808.574449580746,
-     "segments": 17
+     "segments": 17,
+     "call": "H3a"
     },
     "rowley": {
      "year": 1794,
      "median_predicted": 1791.1146442683512,
-     "segments": 28
+     "segments": 28,
+     "call": "H3a"
     },
     "jasher": {
      "year": 1829,
      "median_predicted": 1691.4688515374423,
-     "segments": 18
+     "segments": 18,
+     "call": "neither"
     },
     "ireland_papers": {
      "year": 1796,
      "median_predicted": 1797.2769452820585,
-     "segments": 20
+     "segments": 20,
+     "call": "H3a"
     },
     "otranto": {
      "year": 1782,
      "median_predicted": 1799.2674236928801,
-     "segments": 20
+     "segments": 20,
+     "call": "H3a"
     }
    },
    "separation": {
@@ -1161,72 +1448,86 @@
     "twelve_patriarchs": {
      "year": 1791,
      "median_predicted": 1794.4192848091254,
-     "segments": 16
+     "segments": 16,
+     "call": "H3a"
     },
     "enoch": {
      "year": 1821,
      "median_predicted": 1813.7350885155295,
-     "segments": 31
+     "segments": 31,
+     "call": "H3a"
     },
     "apocryphal_nt": {
      "year": 1820,
      "median_predicted": 1793.4216778775947,
-     "segments": 72
+     "segments": 72,
+     "call": "H3a"
     },
     "josephus": {
      "year": 1794,
      "median_predicted": 1793.7246397001295,
-     "segments": 388
+     "segments": 388,
+     "call": "H3a"
     },
     "koran": {
      "year": 1800,
      "median_predicted": 1765.19490146858,
-     "segments": 88
+     "segments": 88,
+     "call": "neither"
     },
     "herodotus": {
      "year": 1791,
      "median_predicted": 1794.9300406662055,
-     "segments": 136
+     "segments": 136,
+     "call": "H3a"
     },
     "homer": {
      "year": 1783,
      "median_predicted": 1794.5190045578622,
-     "segments": 158
+     "segments": 158,
+     "call": "H3a"
     },
     "hesiod": {
      "year": 1815,
      "median_predicted": 1815.108153493344,
-     "segments": 36
+     "segments": 36,
+     "call": "H3a"
     },
     "sacontala": {
      "year": 1792,
      "median_predicted": 1801.3410071200587,
-     "segments": 16
+     "segments": 16,
+     "call": "H3a"
     },
     "ossian": {
      "year": 1800,
      "median_predicted": 1803.1588405006871,
-     "segments": 17
+     "segments": 17,
+     "call": "H3a"
     },
     "rowley": {
      "year": 1794,
      "median_predicted": 1793.8409272467359,
-     "segments": 28
+     "segments": 28,
+     "call": "H3a"
     },
     "jasher": {
      "year": 1829,
      "median_predicted": 1774.7334265363227,
-     "segments": 18
+     "segments": 18,
+     "call": "neither"
     },
     "ireland_papers": {
      "year": 1796,
      "median_predicted": 1744.3404270615106,
-     "segments": 20
+     "segments": 20,
+     "call": "neither"
     },
     "otranto": {
      "year": 1782,
      "median_predicted": 1794.9489167377042,
-     "segments": 20
+     "segments": 20,
+     "call": "H3a"
     }
    },
    "separation": {

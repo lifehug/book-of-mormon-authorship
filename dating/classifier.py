@@ -18,9 +18,10 @@ first and last segment where it has four or more. Writes ids, positions and feat
 ``fit``: the lexical vocabulary (training segments only), then each model with its penalty chosen
 by author-grouped cross-validation on the training segments.
 
-``validate``: held-out segments (accuracy, interval coverage, 6.4's window rule), keyed against OCR
-text of the same decades, King James imitation (the pseudo-biblical controls and the King James
-text itself), and Amendment 9's known-answer separation. No Book of Mormon text is read here.
+``validate``: held-out segments (accuracy, interval coverage, 6.4's interval rule and Amendment
+19's median rule, per segment and per volume), keyed against OCR text of the same decades, King
+James imitation (the pseudo-biblical controls and the King James text itself), and Amendment 9's
+known-answer separation. No Book of Mormon text is read here.
 
 Usage::
 
@@ -435,6 +436,26 @@ def _proba(m, x: np.ndarray, d: dict) -> np.ndarray:
 # ---- validation ---------------------------------------------------------------------------------
 
 
+def median_shares(medians: np.ndarray, d: dict) -> dict[str, float]:
+    """Shares of segments whose median year falls in the window and in the early window."""
+    out = {}
+    for k in ("window", "early_window"):
+        lo, hi = d[k]
+        out[k] = float(np.mean((medians >= lo) & (medians < hi + 1))) if len(medians) else 0.0
+    return out
+
+
+def h3_call(medians: np.ndarray, d: dict) -> str:
+    """6.4 as amended (Amendment 19): H3a if more than ``majority_share`` of segments' median
+    years fall in the window, H3b if they fall in the early window, otherwise neither."""
+    sh = median_shares(medians, d)
+    if sh["window"] > d["majority_share"]:
+        return "H3a"
+    if sh["early_window"] > d["majority_share"]:
+        return "H3b"
+    return "neither"
+
+
 def _describe(prob: np.ndarray, years: np.ndarray | None, d: dict) -> dict:
     edges = bin_edges(d)
     s = np.array([summary(p, edges, d["interval"]) for p in prob])
@@ -443,13 +464,23 @@ def _describe(prob: np.ndarray, years: np.ndarray | None, d: dict) -> dict:
     out = {"segments": len(prob), "median_year": float(np.median(s[:, 0])),
            "median_year_iqr": [float(np.percentile(s[:, 0], 25)),
                                float(np.percentile(s[:, 0], 75))],
-           "share_interval_in_window": float(inside.mean())}  # fmt: skip
+           "share_interval_in_window": float(inside.mean()),
+           **{f"share_median_{k}": v for k, v in median_shares(s[:, 0], d).items()},
+           "call": h3_call(s[:, 0], d)}  # fmt: skip
     if years is not None:
         err = s[:, 0] - years
         out |= {"mae_years": float(np.mean(np.abs(err))), "bias_years": float(np.mean(err)),
                 "interval_coverage": float(np.mean((s[:, 1] <= years) & (years <= s[:, 2] + 1))),
                 "bin_accuracy": float(np.mean(prob.argmax(1) == [bin_of(y, edges)
                                                                  for y in years]))}  # fmt: skip
+    return out
+
+
+def _calls(by_volume: dict[str, list[float]], d: dict) -> dict[str, int]:
+    out: dict[str, int] = {}
+    for v in by_volume.values():
+        c = h3_call(np.array(v), d)
+        out[c] = out.get(c, 0) + 1
     return out
 
 
@@ -493,6 +524,15 @@ def validate(workers: int) -> int:
         for era, (a, b) in eras.items():
             k = (years >= a) & (years <= b)
             r[era] = _describe(p[k], years[k], d)
+        # 6.4 as amended applied to each held-out volume (its segments, usually two)
+        wid = np.array([s["work_id"] for s in vs])
+        meds = np.array([summary(q, edges, d["interval"])[0] for q in p])
+        for era, (a, b) in eras.items():
+            calls: dict[str, int] = {}
+            for w in np.unique(wid[(years >= a) & (years <= b)]):
+                c = h3_call(meds[wid == w], d)
+                calls[c] = calls.get(c, 0) + 1
+            r[era]["volume_calls"] = calls
         ybin = np.array([bin_of(y, edges) for y in years])
         r["by_bin"] = {f"{edges[b]}-{edges[b + 1] - 1}":
                        _describe(p[ybin == b], years[ybin == b], d)
@@ -538,7 +578,11 @@ def validate(workers: int) -> int:
             ov.setdefault(s["work_id"], []).append(summary(p, edges, d["interval"])[0])
         b = np.array([np.mean(v) for v in ov.values()])
         res["kjv_imitation"][name] = {
-            "pseudo_biblical": {**_describe(pbp[name], None, d), "volumes": len(a)},
+            "pseudo_biblical": {
+                **_describe(pbp[name], None, d),
+                "volumes": len(a),
+                "volume_calls": _calls(vol_pb, d),
+            },
             "ordinary_1780_1830": {"volumes": len(b), "mean_median_year": float(b.mean())},
             "shift_years": float(a.mean() - b.mean()),
             "permutation_p": _perm(a, b, perms, derive_seed(d["permutation_seed"], cfg)),
@@ -560,7 +604,9 @@ def validate(workers: int) -> int:
             p = predict_texts(segs, models, vocab, d)[name]
             med = float(np.median([summary(q, edges, d["interval"])[0] for q in p]))
             scores[key] = med - year
-            per[key] = {"year": year, "median_predicted": med, "segments": len(segs)}
+            per[key] = {"year": year, "median_predicted": med, "segments": len(segs),
+                        "call": h3_call(np.array([summary(q, edges, d["interval"])[0]
+                                                  for q in p]), d)}  # fmt: skip
         res["known_answer"][name] = {"texts": per, "separation": separation(scores, cfg)}
     (OUT / "validation.json").write_text(json.dumps(res, indent=1) + "\n")
     for name in probs:
