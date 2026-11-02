@@ -2450,8 +2450,37 @@ The first thing it runs is the test of the test: Josephus retold Genesis through
 words, so his events should line up with the Bible's better than with twenty unrelated books of
 the same size. If they don't, the Book of Mormon results get reported with no interpretation.
 
+## Dating the grammar, and a ruler too coarse for the job
+
+The third question in this study is the simplest to say: when does the Book of Mormon's English come from? The tool is a dating classifier. You show it a passage of 2,000 words and it tells you which decade the grammar sounds like, from 1473 to 1830.
+
+I built it today (BOM-29) and tested it on books it had never seen. The Book of Mormon is still sealed, so nothing here touches it.
+
+**The fix before the build.** The pre-1700 books in our corpus were spelling-normalized years ago, so that "vnto" reads "unto" and "loue" reads "love". When I checked, the normalizer had also changed grammar. It turned "doth" into "does" 1,270,334 times, "ye" into "you" 882,357 times, and "saith" into "says" 592,880 times. The books after 1780 kept their "doth" as printed. Trained on that text, the classifier would have learned that Tudor writers said "does" and only 1820s writers said "doth", which is backwards. That matters most for a book that says "doth" a lot. So the grammar model reads the text as printed, with one letter clean-up applied to every century (long s to s, u/v and i/j merged), and nothing else.
+
+**What it reads.** 61 grammar features, each taken from the history-of-English literature before anything was fitted. Some examples: "hath" against "has", "thou" and "ye" against "you", "I know not" against "I do not know", "is come" against "has come", "the which", "an hundred". A second model reads vocabulary instead, with every grammar word removed so the two don't overlap. Both were registered (Amendment 17) before the first fit.
+
+**How it did,** on 13,169 passages by authors it had never met:
+
+- The grammar model is off by 23 years on average, and its 90% ranges contain the true year 91% of the time. So it is honest, but its ranges are wide: about 85 years for a book printed in 1800.
+- The vocabulary model is off by 13 years, but its 90% ranges are right only 76% of the time, which means they're too narrow.
+- It doesn't mistake OCR noise for a date. Hand-typed books and machine-read books from the same decades come out about the same.
+
+**The big one: King James imitation.** I took 25 books written between 1780 and 1830 in imitation-scripture style (*The Late War* and its cousins) and dated their grammar. The model put them 53 years earlier than ordinary books of the same years: around 1678 instead of 1787 (p = 0.0001). It dates the King James Bible itself to 1631. The vocabulary model barely moves (5 years, not significant). Imitating the King James Bible makes a book's grammar look 17th-century, while its vocabulary stays in its own time. So if the Book of Mormon's grammar comes out early, that alone says nothing; the registered H3c test compares it with exactly these imitation books.
+
+**The known-answer test failed again.** Genuine translations of ancient texts and fakes presented as ancient (Ossian, Rowley, Jasher, Ireland's Shakespeare papers) are not told apart by either model (p = 0.57 and 0.81). One example: the 1829 *Book of Jasher* dates to 1691 by grammar, and so does a genuine translation like the 1791 *Testaments of the Twelve Patriarchs* (1589). This test is uninformative on whether a book is a translation, same as the rare-phrase test.
+
+**And a problem with our own rule.** The registered rule says a text is dated to 1780–1830 if 80% of its passages have their whole 90% range inside those 51 years. The grammar model's ranges are 85 years wide, so they almost never fit. Real books from 1780 to 1830 pass only 14% of the time. If we kept the rule as written, the Book of Mormon couldn't pass it either, whatever its true date. Going by each passage's single best guess (which is how the hypothesis itself is worded: "the majority of segments"), real 1780–1830 books pass 85% of the time. Changing a decision rule is my call to make, not the model's, so it's waiting on me. Either way it gets decided before the Book of Mormon is scored.
+
+## Publishing what we can't publish
+
+Most of our corpus can't be handed out. Harvard and HathiTrust forbid redistributing the text. So today I published the next best thing (BOM-44): the counts the analyses actually read, which can't be turned back into a book. The validation benchmark is now 2,952 bags of word counts, enough to rerun every attribution test exactly. The rare-phrase test is now a list, for 221,344 books, of which Book of Mormon phrases each one contains. It's on GitHub as the release `derived-v1.0`.
+
+One catch I found on the way. A full list of one book's four-word-phrase fingerprints can be unrolled back into the book: guess the first phrase, then try every word in the dictionary as the next one. So the fingerprints for two known-answer texts that came from Harvard and HathiTrust copies (Enoch and Josephus) are left out. Amendment 18 records what an outsider can rerun with no permission at all, and what still needs their own copy of the sources.
+
 ## Log
 
+- **2026-11-01.** BOM-29 fitted and validated (Amendment 17): pre-1700 normalization had rewritten grammar (doth to does 1.27M), so the grammar model reads printed text. Grammar model 23 years mean error, 91% coverage, but 85-year intervals: 6.4's rule passes only 14% of real 1780-1830 text (point estimates 85%); owner decision pending. King James imitation shifts grammar dates 53 years earlier (p 0.0001), vocabulary 5.5 (n.s.). Known-answer: no separation. BOM-44 closed: derived tables published (release derived-v1.0, Amendment 18); Enoch and Josephus hashes withheld.
 - **2026-11-01.** BOM-25 story skeletons registered (Amendment 15). Extractor check on 20 King James chapters read twice: median agreement 0.92, 233/238 events supported, match threshold 0.700. Index measured at 183 passages/s alone, about 12 days; owner chose to let it run and to use a hosted model for event reading.
 - **2026-11-01.** BOM-25 named sources (provisional): View of the Hebrews ranks 1st and 2nd (1825, 1823) of 49 origins-of-the-Indians books by passage parallels (29.6 vs Brainerd 24.8); Napoleon 3rd and The Late War 6th of 18 imitation-scripture works; Spalding 12th of 49. The registered null check waits for the index.
 - **2026-11-01.** BOM-25 set up (Amendment 14). Full-corpus passage index with bge-small-en-v1.5 (Psalms known-answer test; with 1M corpus distractors bge-small R@1 0.59, re-scoring with e5-base made it worse, MiniLM 0.45). Exact search, no re-scoring. Build started: 549,657 passages per 1,000 volumes, about 150M passages.
