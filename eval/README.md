@@ -169,6 +169,8 @@ Plan, registered before any training (Amendment 16): `docs/timelocked-plan.md`.
 | `python -m timelocked_lm.tokenize encode` | registered | every training volume encoded, resumable per file | `data/corpus/timelocked_lm/tokens/` (~50 GB, not in git) | ~2 h on the M4 |
 | `python -m timelocked_lm.tokenize status` | - | token files and counts so far | - | seconds |
 | `python -m timelocked_lm.train pilot\|base --out <dir>` | registered | trains the model on a GPU; checkpoints every 20 min and resumes; `tiny --max-steps 20` is a local smoke test | `<dir>/checkpoint.pt`, `model.pt`, `log.jsonl`, `run.json` | pilot ~10-13 H100-h, base ~25-30 |
+| `scripts/pod_upload.sh` | - | copies the token files to the rented pod in 8 parallel rsync streams (no ownership: the pod's network disk refuses chown); rerunnable | the pod's `/workspace/corpus/timelocked_lm/tokens/` | ~1-1.5 h at 124 Mbps up |
+| `python scripts/pod_watch.py --pod <id> --issue <n>` | - | the run's watcher, under tmux on the Mac: verifies the upload by SHA-256 against `data/manifests/timelocked_lm_tokens.jsonl`, starts the pilot then the base, restarts a dead or stalled run, backs up the checkpoint every 4 h, copies each model home checksum-verified, deletes the token files from the pod and terminates it; stops the pod past a spend cap; keeps the GitHub status issue's body current and comments on events | `logs/pod_watch/`; `data/corpus/timelocked_lm/runs/<size>/` | the length of the run |
 
 ## 12. Linguistic dating (BOM-29)
 
