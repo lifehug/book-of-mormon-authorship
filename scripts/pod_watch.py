@@ -217,12 +217,19 @@ def fetch(size: str, names: list[str]) -> tuple[bool, str]:
     """Copy run files home and check each file's SHA-256 against the pod's."""
     dest = HOME_RUNS / size
     dest.mkdir(parents=True, exist_ok=True)
-    src = " ".join(f"{REMOTE_RUNS}/{size}/{n}" for n in names)
     rc, out = sh(["rsync", "-rt", "--partial", *[f"{SSH}:{REMOTE_RUNS}/{size}/{n}" for n in names],
                   str(dest) + "/"], timeout=7200)  # fmt: skip
     if rc != 0:
         return False, f"rsync {rc}: {out[-300:]}"
-    rc, out = remote(f"sha256sum {src}")
+    # log.jsonl is still being appended to, so compare only the bytes that were copied
+    n = (dest / "log.jsonl").stat().st_size if "log.jsonl" in names else 0
+    cmd = " ; ".join(
+        f"head -c {n} {REMOTE_RUNS}/{size}/{x} | sha256sum | sed 's|-$|{x}|'"
+        if x == "log.jsonl"
+        else f"sha256sum {REMOTE_RUNS}/{size}/{x}"
+        for x in names
+    )
+    rc, out = remote(cmd)
     if rc != 0:
         return False, f"remote sha256sum {rc}: {out[-300:]}"
     for ln in out.splitlines():
