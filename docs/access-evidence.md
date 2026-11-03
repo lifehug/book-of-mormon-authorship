@@ -39,6 +39,12 @@ It is **not** earlier than the 26 June 1829 title page, which was already on rec
 is new to the published scholarship on the printing has not been checked and is not claimed: this
 is a statement about this project's records, nothing more.
 
+**Checked 2026-11-02 (BOM-51): already documented.** BYU Library's *19th-Century Publications
+about the Book of Mormon* master list carries it as "[We are requested to announce.] The Wayne
+Sentinel (19 March 1830)"
+(https://lib.byu.edu/collections/19th-century-publications-about-the-book-of-mormon/about/master-list-of-documents/).
+Status `established` in `data/claims/novelty.yaml`.
+
 ### The 26 June 1829 title page: CONFIRMED from the page scan
 
 **Resolved 2026-10-21.** The owner obtained the page image from NYS Historic Newspapers and it
