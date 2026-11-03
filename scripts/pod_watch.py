@@ -50,6 +50,10 @@ SSH = "bompod"
 REMOTE_TOKENS = "/workspace/corpus/timelocked_lm/tokens"
 REMOTE_REPO = "/workspace/repo"
 REMOTE_RUNS = "/workspace/runs"
+REMOTE_SEM = "/workspace/semantic"
+HOME_INDEX = ROOT / "data/corpus/semantic/index"
+STAGING = ROOT / "data/corpus/semantic/index_gpu_staging"
+INDEX_SHARDS = 241  # pack files (BOM-25 GPU share)
 UPLOAD_SESSION = "podupload"
 UPLOAD_SCRIPT = ROOT / "scripts/pod_upload.sh"
 BATCH_TOKENS = 524_288
@@ -233,6 +237,65 @@ def fetch(size: str, names: list[str]) -> tuple[bool, str]:
     return True, f"{len(names)} files home in {dest.relative_to(ROOT)}"
 
 
+def index_sync(s: dict, issue: int | None) -> str:
+    """Bring finished GPU index shards home (BOM-25): vectors and ids, checksum-verified, the
+    ``.done`` marker moved in last; once all are home, delete the passage text from the pod."""
+    if s.get("index_home_complete"):
+        return f"all {INDEX_SHARDS} GPU shards home; passage text deleted from the pod"
+    gpu = f"{REMOTE_SEM}/index_gpu"
+    rc, out = remote(f"ls {gpu}/ 2>/dev/null | grep -c 'shard_p.*done'; "
+                     f"grep -c INDEX_GPU_COMPLETE {gpu}.log 2>/dev/null")  # fmt: skip
+    if rc not in (0, 1):
+        return "pod not reachable"
+    nums = out.split()
+    pod_done = int(nums[0]) if nums and nums[0].isdigit() else 0
+    complete = len(nums) > 1 and nums[1].isdigit() and int(nums[1]) > 0
+    home = {d.stem for d in HOME_INDEX.glob("shard_p*.done")}
+    rc, listing = remote(f"cd {REMOTE_SEM}/index_gpu && ls shard_p*.done 2>/dev/null")
+    todo = [x[:-5] for x in listing.split() if x.endswith(".done") and x[:-5] not in home]
+    brought = 0
+    t0 = time.time()
+    for stem in todo:
+        if time.time() - t0 > 1200:  # leave room for the rest of the tick
+            break
+        STAGING.mkdir(parents=True, exist_ok=True)
+        files = [f"{stem}.npy", f"{stem}.parquet", f"{stem}.done"]
+        rc, msg = sh(["rsync", "-rt", "--partial",
+                      *[f"{SSH}:{REMOTE_SEM}/index_gpu/{f}" for f in files], str(STAGING) + "/"],
+                     timeout=3600)  # fmt: skip
+        if rc != 0:
+            log(f"index shard {stem}: rsync {rc}")
+            break
+        rc, sums = remote(f"cd {REMOTE_SEM}/index_gpu && sha256sum {stem}.npy {stem}.parquet")
+        ok = rc == 0
+        for ln in sums.splitlines() if ok else []:
+            digest, name = ln.split(None, 1)
+            h = hashlib.sha256()
+            with (STAGING / name.strip()).open("rb") as f:
+                for chunk in iter(lambda f=f: f.read(1 << 22), b""):
+                    h.update(chunk)
+            ok = ok and h.hexdigest() == digest
+        if not ok:
+            log(f"index shard {stem}: checksum mismatch; will retry")
+            break
+        for ext in (".npy", ".parquet", ".done"):  # the marker last, as the Mac's build does
+            (STAGING / f"{stem}{ext}").replace(HOME_INDEX / f"{stem}{ext}")
+        brought += 1
+    home_n = len(list(HOME_INDEX.glob("shard_p*.done")))
+    if brought:
+        log(f"index: {brought} GPU shards home ({home_n}/{INDEX_SHARDS})")
+    if complete and home_n >= INDEX_SHARDS:
+        rc, out = remote(f"tmux kill-session -t =index 2>/dev/null; "
+                         f"rm -rf {REMOTE_SEM}/pack {REMOTE_SEM}/checkonly && "
+                         f"test ! -e {REMOTE_SEM}/pack && echo GONE")  # fmt: skip
+        if "GONE" in out:
+            s["index_home_complete"] = True
+            event(s, f"**GPU index share finished**: all {INDEX_SHARDS} shards home and verified "
+                     "in `data/corpus/semantic/index/`; passage text deleted from the pod "
+                     "(verified).", issue)  # fmt: skip
+    return f"pod {pod_done}/{INDEX_SHARDS} shards embedded, {home_n} home"
+
+
 def mac_index() -> str:
     lg = ROOT / "logs/semantic_index.log"
     shards = len(list((ROOT / "data/corpus/semantic/index").glob("shard_*.done")))
@@ -323,6 +386,7 @@ def tick(s: dict, a: argparse.Namespace) -> dict:
                         event(s, f"Pod start request failed: {e}", a.issue)
             return info
         s["unreachable"] = 0
+        info["gpu_index"] = index_sync(s, a.issue)
         if p["done"]:
             names = ["model.pt", "log.jsonl", "run.json", "train.out"]
             ok, msg = fetch(phase, names)
@@ -361,8 +425,13 @@ def tick(s: dict, a: argparse.Namespace) -> dict:
             log(f"checkpoint backup: {msg}" if ok else f"checkpoint backup failed: {msg}")
 
     elif phase == "cleanup":
-        rc, out = remote(f"rm -rf {REMOTE_TOKENS} /workspace/corpus && "
-                         f"test ! -e {REMOTE_TOKENS} && echo GONE")  # fmt: skip
+        info["gpu_index"] = index_sync(s, a.issue)
+        if not s.get("index_home_complete"):
+            log("cleanup waits for the GPU index shards to come home")
+            return info
+        rc, out = remote(f"rm -rf {REMOTE_TOKENS} /workspace/corpus {REMOTE_SEM} && "
+                         f"test ! -e {REMOTE_TOKENS} && test ! -e {REMOTE_SEM} && "
+                         f"echo GONE")  # fmt: skip
         if "GONE" not in out:
             event(s, f"Cleanup: could not verify the token files were deleted ({out[-200:]}); "
                      "pod left running for a look.", a.issue)  # fmt: skip
@@ -370,7 +439,8 @@ def tick(s: dict, a: argparse.Namespace) -> dict:
             return info
         try:
             rest("DELETE", f"/pods/{s['pod']}")
-            event(s, "Token files deleted from the pod (verified) and the pod **terminated**. "
+            event(s, "Token files and passage text deleted from the pod (verified) and the "
+                     "pod **terminated**. "
                      f"Models are in `{HOME_RUNS.relative_to(ROOT)}/`.", a.issue)  # fmt: skip
             s["phase"] = "finished"
         except Exception as e:  # noqa: BLE001
@@ -407,7 +477,9 @@ def report(s: dict, info: dict, a: argparse.Namespace) -> str:
                      f"balance ${info['balance']:.2f} |")  # fmt: skip
     if s.get("capped") or s.get("halted"):
         lines.append("| Automation | **paused, needs the owner** |")
-    lines += ["", "## Mac mini", "", f"- Passage index (BOM-25): {mac_index()}", "",
+    lines += ["", "## Passage index (BOM-25)", "",
+              f"- GPU share (Internet Archive, TCP; 108M passages): {info.get('gpu_index', '-')}",
+              f"- Mac share (Harvard): {mac_index()}", "",
               "## Recent events", ""]  # fmt: skip
     lines += [f"- {w}: {m}" for w, m in reversed(s["events"][-12:])] or ["- none yet"]
     return "\n".join(lines) + "\n"
