@@ -337,6 +337,8 @@ dates:
 
 semantic:
   # Amendment 14 (BOM-25; OSF revision 6ae7bc3c227eb64c6abde258; docs/semantic-plan.md): index and search
+  # Amendment 20 (OSF revision 6aeb6364388d19d44e80bc2f, post hoc): the retelling controls leave out
+  # reuse.exact.MISSED_OWN_COPIES; both computations reported
   index_model: BAAI/bge-small-en-v1.5
   half_precision: true
   max_tokens: 512

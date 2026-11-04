@@ -201,7 +201,7 @@ Patriarchs*: strongest in draws 0 and 1 (53.8 against 47.2); in draw 2 the stron
 rule misses and which BOM-23 already listed in `MISSED_OWN_COPIES` (2026-10-31). As registered
 the control **fails**; with that known own copy left out, as the plan's own-copies rule intends,
 it passes. *Jasher* (no pass mark): the King James Bible strongest in all three draws. Owner
-decision pending on which verdict governs (post hoc either way).
+owner chose the own-copy-out verdict: **Amendment 20** (post hoc, OSF revision 6aeb6364388d19d44e80bc2f). The test is taken as shown to find paraphrase; both computations stay reported.
 
 **Known-answer score (Amendment 9).** Strongest period source per draw, mean over draws: genuine
 translations 36.7-59.5, texts presented as ancient 31.1-58.6, the Book of Mormon 44.3.
@@ -222,4 +222,4 @@ of the Hebrews* is 700th (1.28), Napoleon 4,706th. None ranked first in its cont
 direct test (`named.json`), which the rule for a named source also requires.
 
 **Next:** the top 20 go through the story-skeleton test (`skeleton.top_search_sources`), which
-calls the hosted model on about 4,200 blocks; waiting on the owner.
+calls the hosted model on 4,234 blocks; started 2026-11-04, paced at 500 calls an hour with 2 workers (`logs/skeleton_top.log`).
