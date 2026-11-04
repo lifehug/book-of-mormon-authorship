@@ -47,3 +47,15 @@ from the Mac mini over SSH.
 
 Only the models, their logs and run records come home (`data/corpus/timelocked_lm/runs/`). The
 token files are deleted from the pod and the deletion verified before it is terminated.
+
+## Second index batch (2026-11-03)
+
+The Mac's Harvard share ran at 3.5-4 h per 1,000 volumes, about 2.5 days for what was left; the
+H100 does the same in minutes. The Mac finishes the shard it was on (up to
+`institutional_books:HJ1H5F`) and stops (`scripts/index_stop_after_shard.sh`); the remaining
+13,388 volumes (17.4M passages) were packed with
+`pack --from institutional_books:HJ1H5G --before internet_archive: --first 241` into
+`pack_00241`-`pack_00254` and embedded on the pod, so the pod and watcher target is 255 shards.
+Lesson: the first split's restart script counted every `.done`, including GPU shards arriving
+home, so it restarted the Mac mid-shard and redid about 3 hours of work; the stop script counts
+only `shard_0*`.

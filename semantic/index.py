@@ -24,7 +24,7 @@ before any GPU shard is used.
 Usage::
 
     python -m semantic.index build [--workers 6] [--before WORK_ID]   # resumable; ~7 days on the M4
-    python -m semantic.index pack --from WORK_ID [--workers 4]       # -> data/corpus/semantic/pack/
+    python -m semantic.index pack --from WORK_ID [--before WORK_ID] [--first N] [--workers 4]
     python -m semantic.index embed-pack --pack DIR --out DIR [--batch-size 512]   # on the GPU
     python -m semantic.index compare --check DIR                    # GPU against Mac vectors
     python -m semantic.index status
@@ -169,14 +169,15 @@ def _meta_and_texts(pool, rows: list[dict], s: dict) -> tuple[list[dict], list[s
     return meta, texts
 
 
-def pack(start: str, workers: int, check: bool) -> int:
-    """The passages (with text) of every remaining volume from ``start`` on, for a rented GPU."""
+def pack(start: str, workers: int, check: bool, before: str | None = None, first: int = 0) -> int:
+    """The passages (with text) of every remaining volume in ``[start, before)``, for a rented GPU.
+    Files are numbered from ``first`` so a second batch never collides with one already sent."""
     from reuse.exact import eligible_any_year
 
     cfg = load_config()
     s = cfg["semantic"]
     PACK.mkdir(parents=True, exist_ok=True)
-    rows = remaining(cfg, start=start)
+    rows = remaining(cfg, start=start, before=before)
     shards = [rows[i : i + s["shard_volumes"]] for i in range(0, len(rows), s["shard_volumes"])]
     schema = META.append(pa.field("text", pa.string()))
     total = 0
@@ -196,7 +197,7 @@ def pack(start: str, workers: int, check: bool) -> int:
                            compression="zstd")  # fmt: skip
             print(f"check: {len(meta):,} passages of shard_00000", flush=True)
         for k, shard in enumerate(shards):
-            name = PACK / f"pack_{k:05d}.parquet"
+            name = PACK / f"pack_{first + k:05d}.parquet"
             if name.exists():
                 total += pq.read_metadata(name).num_rows
                 continue
@@ -206,10 +207,19 @@ def pack(start: str, workers: int, check: bool) -> int:
             pq.write_table(pa.Table.from_pylist(rows_t, schema=schema), tmp, compression="zstd")
             tmp.rename(name)
             total += len(meta)
-            print(f"pack {k}: {len(shard)} volumes, {len(meta):,} passages", flush=True)
-    (PACK / "pack.json").write_text(json.dumps({**stamp(), "from": start, "volumes": len(rows),
-                                                "packs": len(shards), "passages": total},
-                                               indent=1) + "\n")  # fmt: skip
+            print(f"pack {first + k}: {len(shard)} volumes, {len(meta):,} passages", flush=True)
+    info = {
+        **stamp(),
+        "from": start,
+        "before": before,
+        "first": first,
+        "volumes": len(rows),
+        "packs": len(shards),
+        "passages": total,
+    }
+    (PACK / ("pack.json" if first == 0 else f"pack_from_{first:05d}.json")).write_text(
+        json.dumps(info, indent=1) + "\n"
+    )
     print(f"packed {len(rows):,} volumes, {total:,} passages in {len(shards)} files")
     return 0
 
@@ -285,6 +295,8 @@ def main(argv: list[str] | None = None) -> int:
     pk.add_argument("--from", dest="start", required=True)
     pk.add_argument("--workers", type=int, default=4)
     pk.add_argument("--no-check", dest="check", action="store_false")
+    pk.add_argument("--before", default=None)
+    pk.add_argument("--first", type=int, default=0)
     e = sub.add_parser("embed-pack")
     e.add_argument("--pack", type=Path, required=True)
     e.add_argument("--out", type=Path, required=True)
@@ -296,7 +308,7 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "build":
         return build(a.workers, a.before)
     if a.cmd == "pack":
-        return pack(a.start, a.workers, a.check)
+        return pack(a.start, a.workers, a.check, a.before, a.first)
     if a.cmd == "embed-pack":
         return embed_pack(a.pack, a.out, a.batch_size)
     if a.cmd == "compare":
