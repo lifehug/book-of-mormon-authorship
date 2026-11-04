@@ -1,0 +1,581 @@
+{
+ "config_sha256": "532ee1d9d74f6c75d8ad4668deb901e4a4d5b7f18b8abbbb453605c55f437a38",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "e6e0df792d2df05c923bb85e4e73d3b300532c7a",
+ "score": "strongest period source's semantic score s(T, v) in each matched draw (BOM-23's samples, corrected dates); mean over draws",
+ "texts": {
+  "bom": {
+   "draws": [
+    {
+     "volumes": 221373,
+     "best": "institutional_books:HN33GK",
+     "score": 19.05424469051346,
+     "best_own_copies_out": "institutional_books:HN33GK",
+     "score_own_copies_out": 19.05424469051346
+    },
+    {
+     "volumes": 1879,
+     "best": "internet_archive:lifeandworksaco01soutgoog",
+     "score": 45.49055983921773,
+     "best_own_copies_out": "internet_archive:lifeandworksaco01soutgoog",
+     "score_own_copies_out": 45.49055983921773
+    },
+    {
+     "volumes": 1833,
+     "best": "internet_archive:selectworkstrby00luthgoog",
+     "score": 51.597194040234214,
+     "best_own_copies_out": "internet_archive:selectworkstrby00luthgoog",
+     "score_own_copies_out": 51.597194040234214
+    },
+    {
+     "volumes": 1836,
+     "best": "internet_archive:10063261bsb",
+     "score": 60.87309409241115,
+     "best_own_copies_out": "internet_archive:10063261bsb",
+     "score_own_copies_out": 60.87309409241115
+    }
+   ],
+   "score": 44.25377316559414,
+   "score_own_copies_out": 44.25377316559414,
+   "scored_words": 258735
+  },
+  "twelve_patriarchs": {
+   "draws": [
+    {
+     "volumes": 1997,
+     "best": "tcp:A10405",
+     "score": 52.45843336000711,
+     "best_own_copies_out": "tcp:A10405",
+     "score_own_copies_out": 52.45843336000711
+    },
+    {
+     "volumes": 1996,
+     "best": "tcp:A16036",
+     "score": 53.940310008594885,
+     "best_own_copies_out": "tcp:A16036",
+     "score_own_copies_out": 53.940310008594885
+    },
+    {
+     "volumes": 1996,
+     "best": "tcp:A09151",
+     "score": 72.0192051213657,
+     "best_own_copies_out": "tcp:A10405",
+     "score_own_copies_out": 52.45843336000711
+    }
+   ],
+   "score": 59.4726494966559,
+   "score_own_copies_out": 52.952392242869706,
+   "scored_words": 33741
+  },
+  "enoch": {
+   "draws": [
+    {
+     "volumes": 1837,
+     "best": "institutional_books:AH6968",
+     "score": 36.426527082663725,
+     "best_own_copies_out": "institutional_books:AH6968",
+     "score_own_copies_out": 36.426527082663725
+    },
+    {
+     "volumes": 1839,
+     "best": "internet_archive:worksofpdoddrid08ortogoog",
+     "score": 45.91579044033243,
+     "best_own_copies_out": "internet_archive:worksofpdoddrid08ortogoog",
+     "score_own_copies_out": 45.91579044033243
+    },
+    {
+     "volumes": 1848,
+     "best": "institutional_books:AH45QY",
+     "score": 38.41621133507813,
+     "best_own_copies_out": "institutional_books:AH45QY",
+     "score_own_copies_out": 38.41621133507813
+    }
+   ],
+   "score": 40.25284295269143,
+   "score_own_copies_out": 40.25284295269143,
+   "scored_words": 65337
+  },
+  "apocryphal_nt": {
+   "draws": [
+    {
+     "volumes": 1995,
+     "best": "tcp:A53696",
+     "score": 35.74302575107296,
+     "best_own_copies_out": "tcp:A53696",
+     "score_own_copies_out": 35.74302575107296
+    },
+    {
+     "volumes": 1995,
+     "best": "tcp:A54583",
+     "score": 42.04667381974249,
+     "best_own_copies_out": "tcp:A54583",
+     "score_own_copies_out": 42.04667381974249
+    },
+    {
+     "volumes": 1995,
+     "best": "tcp:A30303",
+     "score": 42.04667381974249,
+     "best_own_copies_out": "tcp:A30303",
+     "score_own_copies_out": 42.04667381974249
+    }
+   ],
+   "score": 39.94545779685265,
+   "score_own_copies_out": 39.94545779685265,
+   "scored_words": 149120
+  },
+  "josephus": {
+   "draws": [
+    {
+     "volumes": 1996,
+     "best": "tcp:A46295",
+     "score": 49.1945151384998,
+     "best_own_copies_out": "tcp:A46295",
+     "score_own_copies_out": 49.1945151384998
+    },
+    {
+     "volumes": 1998,
+     "best": "tcp:A48774",
+     "score": 44.001974447571364,
+     "best_own_copies_out": "tcp:A48774",
+     "score_own_copies_out": 44.001974447571364
+    },
+    {
+     "volumes": 1994,
+     "best": "tcp:A35513",
+     "score": 38.70686505163693,
+     "best_own_copies_out": "tcp:A35513",
+     "score_own_copies_out": 38.70686505163693
+    }
+   ],
+   "score": 43.967784879236035,
+   "score_own_copies_out": 43.967784879236035,
+   "scored_words": 779965
+  },
+  "koran": {
+   "draws": [
+    {
+     "volumes": 1996,
+     "best": "tcp:A53696",
+     "score": 43.44906803691229,
+     "best_own_copies_out": "tcp:A53696",
+     "score_own_copies_out": 43.44906803691229
+    },
+    {
+     "volumes": 1996,
+     "best": "tcp:A70318",
+     "score": 38.01099821875468,
+     "best_own_copies_out": "tcp:A70318",
+     "score_own_copies_out": 38.01099821875468
+    },
+    {
+     "volumes": 1998,
+     "best": "tcp:A47589",
+     "score": 74.35728118705295,
+     "best_own_copies_out": "tcp:A47589",
+     "score_own_copies_out": 74.35728118705295
+    }
+   ],
+   "score": 51.93911581423996,
+   "score_own_copies_out": 51.93911581423996,
+   "scored_words": 180211
+  },
+  "herodotus": {
+   "draws": [
+    {
+     "volumes": 1912,
+     "best": "internet_archive:bim_eighteenth-century_by-the-kings-royal-lice_1790",
+     "score": 41.13933469362109,
+     "best_own_copies_out": "internet_archive:bim_eighteenth-century_by-the-kings-royal-lice_1790",
+     "score_own_copies_out": 41.13933469362109
+    },
+    {
+     "volumes": 1931,
+     "best": "internet_archive:bim_eighteenth-century_the-ancient-history-of-t_rollin-charles_1780_2",
+     "score": 39.25433302357575,
+     "best_own_copies_out": "internet_archive:bim_eighteenth-century_the-ancient-history-of-t_rollin-charles_1780_2",
+     "score_own_copies_out": 39.25433302357575
+    },
+    {
+     "volumes": 1931,
+     "best": "internet_archive:anuniversalhist06histgoog",
+     "score": 35.583540297697986,
+     "best_own_copies_out": "internet_archive:anuniversalhist06histgoog",
+     "score_own_copies_out": 35.583540297697986
+    }
+   ],
+   "score": 38.65906933829827,
+   "score_own_copies_out": 38.65906933829827,
+   "scored_words": 302387
+  },
+  "homer": {
+   "draws": [
+    {
+     "volumes": 1996,
+     "best": "tcp:A27177",
+     "score": 55.55258958707787,
+     "best_own_copies_out": "tcp:A27177",
+     "score_own_copies_out": 55.55258958707787
+    },
+    {
+     "volumes": 1990,
+     "best": "tcp:A47372",
+     "score": 48.13766839286032,
+     "best_own_copies_out": "tcp:A47372",
+     "score_own_copies_out": 48.13766839286032
+    },
+    {
+     "volumes": 1998,
+     "best": "tcp:A85334",
+     "score": 42.44300891570124,
+     "best_own_copies_out": "tcp:A85334",
+     "score_own_copies_out": 42.44300891570124
+    }
+   ],
+   "score": 48.71108896521315,
+   "score_own_copies_out": 48.71108896521315,
+   "scored_words": 337158
+  },
+  "hesiod": {
+   "draws": [
+    {
+     "volumes": 1909,
+     "best": "internet_archive:englishtranslati01chal",
+     "score": 54.81160135600265,
+     "best_own_copies_out": "internet_archive:englishtranslati01chal",
+     "score_own_copies_out": 54.81160135600265
+    },
+    {
+     "volumes": 1902,
+     "best": "institutional_books:HH2FLU",
+     "score": 40.13456118247587,
+     "best_own_copies_out": "institutional_books:HH2FLU",
+     "score_own_copies_out": 40.13456118247587
+    },
+    {
+     "volumes": 1914,
+     "best": "institutional_books:HXIH8F",
+     "score": 33.250639685158006,
+     "best_own_copies_out": "institutional_books:HXIH8F",
+     "score_own_copies_out": 33.250639685158006
+    }
+   ],
+   "score": 42.732267407878844,
+   "score_own_copies_out": 42.732267407878844,
+   "scored_words": 76991
+  },
+  "sacontala": {
+   "draws": [
+    {
+     "volumes": 1943,
+     "best": "institutional_books:HXQATH",
+     "score": 36.57728752052072,
+     "best_own_copies_out": "institutional_books:HXQATH",
+     "score_own_copies_out": 36.57728752052072
+    },
+    {
+     "volumes": 1951,
+     "best": "internet_archive:harrisonsbritish04harruoft",
+     "score": 33.12116586503845,
+     "best_own_copies_out": "internet_archive:harrisonsbritish04harruoft",
+     "score_own_copies_out": 33.12116586503845
+    },
+    {
+     "volumes": 1952,
+     "best": "internet_archive:bellsbritishthe32bellgoog",
+     "score": 40.32141931395985,
+     "best_own_copies_out": "internet_archive:bellsbritishthe32bellgoog",
+     "score_own_copies_out": 40.32141931395985
+    }
+   ],
+   "score": 36.67329089983967,
+   "score_own_copies_out": 36.67329089983967,
+   "scored_words": 34721
+  },
+  "ossian": {
+   "draws": [
+    {
+     "volumes": 1998,
+     "best": "tcp:A41096",
+     "score": 38.87191035333226,
+     "best_own_copies_out": "tcp:A41096",
+     "score_own_copies_out": 38.87191035333226
+    },
+    {
+     "volumes": 1998,
+     "best": "tcp:A28298",
+     "score": 52.007935231354885,
+     "best_own_copies_out": "tcp:A28298",
+     "score_own_copies_out": 52.007935231354885
+    },
+    {
+     "volumes": 1997,
+     "best": "tcp:A46926",
+     "score": 43.69738887995282,
+     "best_own_copies_out": "tcp:A46926",
+     "score_own_copies_out": 43.69738887995282
+    }
+   ],
+   "score": 44.85907815487999,
+   "score_own_copies_out": 44.85907815487999,
+   "scored_words": 37302
+  },
+  "rowley": {
+   "draws": [
+    {
+     "volumes": 1998,
+     "best": "tcp:K113132.000",
+     "score": 31.72888678863161,
+     "best_own_copies_out": "tcp:K113132.000",
+     "score_own_copies_out": 31.72888678863161
+    },
+    {
+     "volumes": 1998,
+     "best": "tcp:K020308.000",
+     "score": 29.02855599810977,
+     "best_own_copies_out": "tcp:K020308.000",
+     "score_own_copies_out": 29.02855599810977
+    },
+    {
+     "volumes": 1997,
+     "best": "tcp:A36625",
+     "score": 32.57274016066968,
+     "best_own_copies_out": "tcp:A36625",
+     "score_own_copies_out": 32.57274016066968
+    }
+   ],
+   "score": 31.110060982470355,
+   "score_own_copies_out": 31.110060982470355,
+   "scored_words": 59252
+  },
+  "jasher": {
+   "draws": [
+    {
+     "volumes": 1998,
+     "best": "tcp:A47325",
+     "score": 68.3729810619743,
+     "best_own_copies_out": "tcp:A47325",
+     "score_own_copies_out": 68.3729810619743
+    },
+    {
+     "volumes": 1998,
+     "best": "tcp:A23831",
+     "score": 54.69838484957944,
+     "best_own_copies_out": "tcp:A23831",
+     "score_own_copies_out": 54.69838484957944
+    },
+    {
+     "volumes": 1998,
+     "best": "tcp:A46761",
+     "score": 52.63429485525569,
+     "best_own_copies_out": "tcp:A46761",
+     "score_own_copies_out": 52.63429485525569
+    }
+   ],
+   "score": 58.56855358893648,
+   "score_own_copies_out": 58.56855358893648,
+   "scored_words": 38758
+  },
+  "ireland_papers": {
+   "draws": [
+    {
+     "volumes": 1920,
+     "best": "internet_archive:bub_gb_3rcRAAAAYAAJ",
+     "score": 33.4989545628274,
+     "best_own_copies_out": "internet_archive:bub_gb_3rcRAAAAYAAJ",
+     "score_own_copies_out": 33.4989545628274
+    },
+    {
+     "volumes": 1912,
+     "best": "internet_archive:acompleteeditio09unkngoog",
+     "score": 39.34440972144158,
+     "best_own_copies_out": "internet_archive:acompleteeditio09unkngoog",
+     "score_own_copies_out": 39.34440972144158
+    },
+    {
+     "volumes": 1925,
+     "best": "internet_archive:bim_eighteenth-century_the-dramatic-writings-of_shakespeare-william_1788_17",
+     "score": 39.56923491984982,
+     "best_own_copies_out": "internet_archive:bim_eighteenth-century_the-dramatic-writings-of_shakespeare-william_1788_17",
+     "score_own_copies_out": 39.56923491984982
+    }
+   ],
+   "score": 37.47086640137293,
+   "score_own_copies_out": 37.47086640137293,
+   "scored_words": 44479
+  },
+  "otranto": {
+   "draws": [
+    {
+     "volumes": 1995,
+     "best": "tcp:K016468.000",
+     "score": 42.22023358803148,
+     "best_own_copies_out": "tcp:K016468.000",
+     "score_own_copies_out": 42.22023358803148
+    },
+    {
+     "volumes": 1997,
+     "best": "tcp:K016468.000",
+     "score": 42.44969137927078,
+     "best_own_copies_out": "tcp:K016468.000",
+     "score_own_copies_out": 42.44969137927078
+    },
+    {
+     "volumes": 1997,
+     "best": "tcp:A31541",
+     "score": 35.107042059613136,
+     "best_own_copies_out": "tcp:A31541",
+     "score_own_copies_out": 35.107042059613136
+    }
+   ],
+   "score": 39.92565567563847,
+   "score_own_copies_out": 39.92565567563847,
+   "scored_words": 43581
+  }
+ },
+ "separation": {
+  "U": 14.0,
+  "of": 27,
+  "p": 0.5,
+  "separates": false,
+  "rowley_at_genuine_median": {
+   "U": 18.5,
+   "of": 27,
+   "p": 0.2,
+   "separates": false
+  }
+ },
+ "separation_own_copies_out": {
+  "U": 15.0,
+  "of": 27,
+  "p": 0.4318181818181818,
+  "separates": false,
+  "rowley_at_genuine_median": {
+   "U": 19.5,
+   "of": 27,
+   "p": 0.15,
+   "separates": false
+  }
+ },
+ "retelling_controls": {
+  "josephus": {
+   "draws": [
+    {
+     "best": "kjv",
+     "kjv_strongest": true,
+     "best_own_copies_out": "kjv",
+     "kjv_strongest_own_copies_out": true,
+     "kjv_score": 51.85877723004332,
+     "best_other": 43.7972936079904,
+     "queries_with_parallel": 5994,
+     "best_parallel_in_kjv": 1269,
+     "best_parallel_right_book": 320
+    },
+    {
+     "best": "kjv",
+     "kjv_strongest": true,
+     "best_own_copies_out": "kjv",
+     "kjv_strongest_own_copies_out": true,
+     "kjv_score": 50.9959666826351,
+     "best_other": 44.17074891955515,
+     "queries_with_parallel": 5993,
+     "best_parallel_in_kjv": 1257,
+     "best_parallel_right_book": 287
+    },
+    {
+     "best": "kjv",
+     "kjv_strongest": true,
+     "best_own_copies_out": "kjv",
+     "kjv_strongest_own_copies_out": true,
+     "kjv_score": 51.82014392195042,
+     "best_other": 35.83883214085189,
+     "queries_with_parallel": 5977,
+     "best_parallel_in_kjv": 1282,
+     "best_parallel_right_book": 300
+    }
+   ],
+   "passes": true,
+   "passes_own_copies_out": true
+  },
+  "twelve_patriarchs": {
+   "draws": [
+    {
+     "best": "kjv",
+     "kjv_strongest": true,
+     "best_own_copies_out": "kjv",
+     "kjv_strongest_own_copies_out": true,
+     "kjv_score": 53.76678269517653,
+     "best_other": 47.240179015415215,
+     "queries_with_parallel": 248,
+     "best_parallel_in_kjv": 56,
+     "best_parallel_right_book": 23
+    },
+    {
+     "best": "kjv",
+     "kjv_strongest": true,
+     "best_own_copies_out": "kjv",
+     "kjv_strongest_own_copies_out": true,
+     "kjv_score": 53.76678269517653,
+     "best_other": 47.240179015415215,
+     "queries_with_parallel": 249,
+     "best_parallel_in_kjv": 49,
+     "best_parallel_right_book": 24
+    },
+    {
+     "best": "tcp:A09151",
+     "kjv_strongest": false,
+     "best_own_copies_out": "kjv",
+     "kjv_strongest_own_copies_out": true,
+     "kjv_score": 53.76678269517653,
+     "best_other": 69.9278965688712,
+     "queries_with_parallel": 251,
+     "best_parallel_in_kjv": 21,
+     "best_parallel_right_book": 13
+    }
+   ],
+   "passes": false,
+   "passes_own_copies_out": true
+  },
+  "jasher": {
+   "draws": [
+    {
+     "best": "kjv",
+     "kjv_strongest": true,
+     "best_own_copies_out": "kjv",
+     "kjv_strongest_own_copies_out": true,
+     "kjv_score": 71.60664085291465,
+     "best_other": 67.0980745769904,
+     "queries_with_parallel": 294,
+     "best_parallel_in_kjv": 175,
+     "best_parallel_right_book": 151
+    },
+    {
+     "best": "kjv",
+     "kjv_strongest": true,
+     "best_own_copies_out": "kjv",
+     "kjv_strongest_own_copies_out": true,
+     "kjv_score": 71.60664085291465,
+     "best_other": 45.35087254017928,
+     "queries_with_parallel": 295,
+     "best_parallel_in_kjv": 218,
+     "best_parallel_right_book": 188
+    },
+    {
+     "best": "kjv",
+     "kjv_strongest": true,
+     "best_own_copies_out": "kjv",
+     "kjv_strongest_own_copies_out": true,
+     "kjv_score": 71.34143107197794,
+     "best_other": 45.08566275924256,
+     "queries_with_parallel": 294,
+     "best_parallel_in_kjv": 216,
+     "best_parallel_right_book": 187
+    }
+   ],
+   "passes": null,
+   "passes_own_copies_out": null
+  }
+ },
+ "shown_to_find_paraphrase": false,
+ "shown_to_find_paraphrase_own_copies_out": true
+}

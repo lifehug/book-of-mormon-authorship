@@ -186,3 +186,40 @@ volumes. That second check reads those volumes' vectors from the index and is ru
 finishes. A score here is not small by chance alone: a book of 800 passages beats a query's bar
 by luck for roughly 8% of queries, so scores of a few per 10,000 words are near chance and the null
 decides.
+
+## Whole-corpus results (2026-11-04; `python -m semantic.corpus`, `data/semantic/corpus_*.json`)
+
+Searched once over the finished index (280 shards, 163,121,310 passages): 55 searches (the Book
+of Mormon's window and three matched draws for each of 15 texts), 100 nearest passages per query,
+rescored in full precision. The Book of Mormon's window holds 221,373 volumes, 16,823 of them
+moved past 1830 by BOM-64 and kept with a flag.
+
+**Positive controls (the gate).** Josephus: the King James Bible is the strongest source in all
+three draws (51.9, 51.0, 51.8 against the best other 43.8, 44.2, 35.8): passes. *Twelve
+Patriarchs*: strongest in draws 0 and 1 (53.8 against 47.2); in draw 2 the strongest is
+`tcp:A09151`, the 1576 printing of the same English translation (69.9), which the author/title
+rule misses and which BOM-23 already listed in `MISSED_OWN_COPIES` (2026-10-31). As registered
+the control **fails**; with that known own copy left out, as the plan's own-copies rule intends,
+it passes. *Jasher* (no pass mark): the King James Bible strongest in all three draws. Owner
+decision pending on which verdict governs (post hoc either way).
+
+**Known-answer score (Amendment 9).** Strongest period source per draw, mean over draws: genuine
+translations 36.7-59.5, texts presented as ancient 31.1-58.6, the Book of Mormon 44.3.
+U = 14/27, p = 0.50 (own copies out: 15/27, p = 0.43): **no separation**, so the semantic table
+is uninformative on the translation question, as exact reuse (BOM-23) and rare phrases (BOM-24)
+were.
+
+**The Book of Mormon's table.** Every query passage has at least one parallel (214,549 in all,
+30,994 source volumes). The leaders are biblical retellings and commentary: editions of Whiston's
+Josephus take 11 of the top 20 places (first: `institutional_books:HN33GK`, 19.05 per 10,000
+words, 95% interval 17.6-20.6), with Blake's *Biblical Reader*, Simpson's *Sacred Literature*,
+George Fox's *Journal* and James Nayler's collected writings among the rest. **622 sources stand
+out by the registered rule**, which is too many to read as findings: a short volume whose
+genre-and-length null is all zeros stands out with a single parallel (*The First Book of
+Napoleon*, rank 4,706, score 0.31). The null does not control for biblical register, so
+standing out here mostly means sounding biblical. The named sources do not lead: the 1823 *View
+of the Hebrews* is 700th (1.28), Napoleon 4,706th. None ranked first in its control group in the
+direct test (`named.json`), which the rule for a named source also requires.
+
+**Next:** the top 20 go through the story-skeleton test (`skeleton.top_search_sources`), which
+calls the hosted model on about 4,200 blocks; waiting on the owner.
