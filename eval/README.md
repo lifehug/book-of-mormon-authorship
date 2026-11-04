@@ -155,6 +155,7 @@ Plan, registered before any search (Amendment 14): `docs/semantic-plan.md`; stor
 | `python -m semantic.skeleton bom` | registered | the Book of Mormon's event sequence against the named sources and their control groups, aligned with an order test | `data/semantic/skeleton/bom.json` | hours, ~3,500 model calls |
 | `scripts/skeleton_loop.sh controls\|bom [args]` | - | reruns a skeleton step every 15 minutes until it finishes (run under tmux) | as above | until done |
 | `scripts/skeleton_overnight.sh` | registered | paced run: the extractor check repeated with the lean call (`check --out check_lean.json`), then controls, then bom, at most `PER_HOUR` (500) model calls an hour; every step accepts `--per-hour` | as above, plus `data/semantic/skeleton/check_lean.json` | ~13 h at 500/h |
+| `python -m semantic.skeleton top [--workers 2 --per-hour 500]` | registered (Amendment 15) | the Book of Mormon against the top 20 sources of the whole-corpus passage search (`corpus_bom.json`): events of every block (hosted model, paced), alignment score and order p-value per source, no group rank | `data/semantic/skeleton/top.json`; events in `data/corpus/semantic/skeleton/events/` | ~4,200 calls, ~8.5 h at 500/h |
 
 ## Other
 

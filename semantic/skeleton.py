@@ -15,6 +15,7 @@ Usage::
     python -m semantic.skeleton check      # extractor check -> data/semantic/skeleton/check.json
     python -m semantic.skeleton controls   # retellings -> data/semantic/skeleton/controls.json
     python -m semantic.skeleton bom        # named sources and groups -> .../skeleton/bom.json
+    python -m semantic.skeleton top        # top 20 search sources -> .../skeleton/top.json
 
 Recoverable when usage runs out: every answered block is appended to its text's event file at
 once; a transient failure is never recorded as an answer; after ``STOP_AFTER`` failed calls in a
@@ -561,10 +562,44 @@ def bom(workers: int, procs: int) -> int:
     return 0
 
 
+def top(workers: int, procs: int) -> int:
+    """The Book of Mormon against the top ``skeleton.top_search_sources`` sources of the
+    whole-corpus passage search (``data/semantic/corpus_bom.json``), reported with scores and
+    order p-values, no group rank -> data/semantic/skeleton/top.json."""
+    import pyarrow.parquet as pq
+
+    from metadata.pseudo_biblical import CATALOG
+    from ocr_fix.normalize import norm_path
+
+    cfg = load_config()
+    thr = json.loads((OUT / "check.json").read_text())["event_match"]
+    corpus = json.loads(Path("data/semantic/corpus_bom.json").read_text())
+    ids = corpus["top_search_sources"][: cfg["skeleton"]["top_search_sources"]]
+    cat = {r["work_id"]: r for r in pq.read_table(CATALOG).to_pylist() if r["work_id"] in ids}
+    texts = {"bom": bom_text(), **{w: _read(str(norm_path(cat[w]))) for w in ids}}
+    events = extract_all(texts, cfg, workers)
+    if set(events) != set(texts):
+        return 1
+    vec, blk = _vectors(events, cfg)
+    res = _compare_many([("bom", w) for w in ids], vec, blk, thr, cfg, procs)
+    s = cfg["skeleton"]
+    rows = []
+    for rank, w in enumerate(ids, 1):
+        r = res[("bom", w)]
+        rows.append({"search_rank": rank, "id": w, "title": (cat[w]["title"] or "")[:100], **r,
+                     "order_significant": (r["order_p"] or 1) <= s["max_order_p"]})  # fmt: skip
+        print(f"{rank:>2} {w}: score {r['score']:.1f}, matched {r['matched']}, order p "
+              f"{r['order_p']}")  # fmt: skip
+    out = {"event_match": thr, "bom_events": len(vec["bom"]), "sources": rows}
+    (OUT / "top.json").write_text(json.dumps({**stamp(), **out}, indent=1) + "\n")
+    print(f"-> {OUT / 'top.json'}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("check", "controls", "bom"):
+    for name in ("check", "controls", "bom", "top"):
         c = sub.add_parser(name)
         c.add_argument("--workers", type=int, default=6, help="concurrent model calls")
         c.add_argument("--procs", type=int, default=6, help="alignment processes")
@@ -574,7 +609,7 @@ def main(argv: list[str] | None = None) -> int:
     _PACE["per_hour"] = a.per_hour
     if a.cmd == "check":
         return check(a.workers, a.out)
-    return {"controls": controls, "bom": bom}[a.cmd](a.workers, a.procs)
+    return {"controls": controls, "bom": bom, "top": top}[a.cmd](a.workers, a.procs)
 
 
 if __name__ == "__main__":
