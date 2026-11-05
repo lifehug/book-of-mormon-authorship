@@ -162,6 +162,16 @@ Keep a `logs/` directory (gitignored) for job output.
 Off-site copy of `data/` per `docs/budget.md`: a Hugging Face dataset repo for derived data
 that is public, or object storage for the rest. Manifests make any copy verifiable.
 
+`data/corpus/` (the external drive) is backed up to a private Backblaze B2 bucket, weekly by
+launchd; see `docs/backup.md` (BOM-65).
+
+**Internal disk.** The mini's internal disk is 228 GB, so large things live on the external
+drive `/Volumes/bomdata` behind symlinks (2026-11-05, after a low-space warning):
+`~/.ollama/models` -> `/Volumes/bomdata/ollama/models` (18 GB of local models: gemma3,
+llama3.1, qwen2.5vl, qwen3) and `logs/ollama.log` -> `data/corpus/logs_archive/ollama.log`
+(3.9 GB, the genre-labelling run). Both were copied and checksum-verified before the internal
+copies were removed. Ollama therefore needs the drive mounted.
+
 ## 9. Claude Code on the mini
 
 Either drive the mini over SSH from a Claude Code session on the desktop, or install Claude
