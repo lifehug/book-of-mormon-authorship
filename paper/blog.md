@@ -2508,8 +2508,30 @@ On the *Twelve Patriarchs*, I took the version with the known 1576 copy left out
 
 So that's the borrowing search done for this kind of evidence. Close wording points at Bible retellings. Close story order points nowhere in particular.
 
+## Where the borrowing question stands, all four tests side by side
+
+I asked myself a simple question this morning: after all this, did anything actually turn up? Not quite "nothing", and not "*View of the Hebrews*, nothing else" either. There are four tests, and they measure different things.
+
+| Test | What it looks for | What stood out |
+| --- | --- | --- |
+| Exact reuse | long stretches copied word for word | Nothing. With the King James Bible masked out, 0.16% of the Book of Mormon matches anything printed before it, and it's all short religious stock phrases ("turn ye, turn ye, why will ye die"). *The Late War* shares 8.9% with earlier books; an 1821 sermon collection, 2.4%. |
+| Rare phrases | unusual four-word phrases two books share | *The Late War* (p = 0.0006) and *The First Book of Napoleon* (p = 0.0003) pass the rule we registered. *View of the Hebrews* doesn't: two shared rare phrases, p = 0.05. |
+| Paraphrase | passages saying similar things in different words | *View of the Hebrews* comes first of 49 books on where Native Americans came from. Whether that counts is still being checked (see below). |
+| Story order | the same events in the same order | Nothing. No book shares the plot: not the usual suspects, not the 20 closest books by wording. |
+
+Two things change how to read that table.
+
+First, *The Late War* and *Napoleon* are ordinary for their kind. Put them among the 18 books written in imitation-Bible style and a reprint of *The Book of Jasher* shares more rare phrases with the Book of Mormon than either of them. What they share are battle and chronicle formulas. So it's the overlap you'd expect from anything written to sound like the Bible, whoever wrote it.
+
+Second, none of these tests can tell a real ancient translation from a modern book written to sound ancient. We checked every one of them on cases where we know the answer first, and each one failed that check. So a match, or the lack of one, tells you about the Book of Mormon's language and what it resembles. It isn't evidence either way on how it came to be.
+
+So, plainly: some specific wording overlap with *The Late War* and *Napoleon*, of the kind the whole imitation-scripture genre shares. A possible overlap in ideas with *View of the Hebrews*, being checked. No copied passages, and no borrowed plot, from any book we have.
+
+About that *View of the Hebrews* check. I got this wrong in the first write-up. I said it came 700th and none of the proposed sources stood out. The 700th is from the whole-library search, where a book only gets counted when its passage lands among the 100 closest out of 221,000 books, and Bible-heavy books like Josephus take nearly all of those places. Head to head against books like it, *View of the Hebrews* comes first: about 765 Book of Mormon passages have a close match in it, against about 640 for the runner-up. The rule we registered asks one more thing: does it also beat 99% of 500 random books of the same kind and length, scored the same head-to-head way? I'd never run that part. I wrote the exact recipe down and filed it on OSF first (Amendment 21), then started it. Before scoring the 500, it re-scored *View of the Hebrews* to make sure nothing had drifted, and got the same 29.644 to the third decimal. The answer is about an hour out, and I'll come back to it here either way.
+
 ## Log
 
+- **2026-11-05.** BOM-25 reopened: the write-up wrongly said no named source ranked first in its group; the 1825 *View of the Hebrews* ranks 1st of 49 in the direct test, and its registered null was never run. Amendment 21 (OSF 6aec8dd3dd216354e1f383cc) pins that null; running. Blog: the four borrowing tests side by side.
 - **2026-11-04.** BOM-65: Backblaze B2 set up through the API (private encrypted bucket, bucket-only key); owner widened it from the index to all of `data/corpus/` (914 GB, ~$6-7/month); upload running (~20 h).
 - **2026-11-04.** BOM-25 closed. Story skeleton of the top 20 search sources: none shares event order at the registered p <= 0.01; longest run 9 of 1,421 events (Josephus `HN33GK`, p 0.24), against 108 for the Josephus-Genesis control. Amendment 20 (post hoc): *Twelve Patriarchs* control decided with its known 1576 own copy left out; passes.
 - **2026-11-04.** BOM-25 whole-corpus search: 55 searches over 163,121,310 passages, ~20 min on the M4. Josephus control passes; *Twelve Patriarchs* fails in one draw only because of a known missed own copy (1576 printing), passes without it: owner to decide. Known-answer separation fails (U 14/27, p 0.50). Book of Mormon leaders are Josephus editions (14 of top 20, first miscounted as 11); *View of the Hebrews* 700th; 622 sources "stand out" by a rule that does not control for biblical register.
