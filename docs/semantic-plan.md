@@ -211,7 +211,7 @@ were.
 
 **The Book of Mormon's table.** Every query passage has at least one parallel (214,549 in all,
 30,994 source volumes). The leaders are biblical retellings and commentary: editions of Whiston's
-Josephus take 11 of the top 20 places (first: `institutional_books:HN33GK`, 19.05 per 10,000
+Josephus take 14 of the top 20 places (first counted as 11; three editions catalogued as "Works ..." were missed, corrected 2026-11-04) (first: `institutional_books:HN33GK`, 19.05 per 10,000
 words, 95% interval 17.6-20.6), with Blake's *Biblical Reader*, Simpson's *Sacred Literature*,
 George Fox's *Journal* and James Nayler's collected writings among the rest. **622 sources stand
 out by the registered rule**, which is too many to read as findings: a short volume whose
