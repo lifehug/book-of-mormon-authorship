@@ -22,7 +22,7 @@ log=logs/b2_backup.log
 case "${1:-}" in
   upload)
     echo "$(date -u +%FT%TZ) upload $rel start" >>"$log"
-    rclone copy "$src" "$dst" --checksum --transfers 8 --b2-chunk-size 96M \
+    rclone copy "$src" "$dst" --checksum --transfers 32 --checkers 16 --fast-list --b2-chunk-size 48M --b2-upload-concurrency 1 \
       --stats 10m --stats-one-line --log-file "$log" --log-level INFO
     echo "$(date -u +%FT%TZ) upload $rel done" >>"$log" ;;
   check)

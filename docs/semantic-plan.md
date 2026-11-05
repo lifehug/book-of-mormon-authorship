@@ -217,9 +217,13 @@ George Fox's *Journal* and James Nayler's collected writings among the rest. **6
 out by the registered rule**, which is too many to read as findings: a short volume whose
 genre-and-length null is all zeros stands out with a single parallel (*The First Book of
 Napoleon*, rank 4,706, score 0.31). The null does not control for biblical register, so
-standing out here mostly means sounding biblical. The named sources do not lead: the 1823 *View
-of the Hebrews* is 700th (1.28), Napoleon 4,706th. None ranked first in its control group in the
-direct test (`named.json`), which the rule for a named source also requires.
+standing out here mostly means sounding biblical. In this table the named sources do not lead: the 1825 *View
+of the Hebrews* is 700th (1.28), Napoleon 4,706th. That is a retrieval rank (a passage counts only
+if it is among a query's 100 nearest in 221,373 volumes, where biblical books crowd the top), not
+the registered test for a named source, which scores it directly against its group. In that direct
+test the 1825 *View of the Hebrews* **does** rank first of 49 (`named.json`). *Corrected
+2026-11-05: this paragraph first said no named source ranked first in its group, which was wrong.*
+Its verdict waits on the direct null (Amendment 21, `python -m semantic.search null`).
 
 **Story skeleton of the top 20 (`python -m semantic.skeleton top`, `data/semantic/skeleton/top.json`).**
 The 20 leading sources were put through the story-skeleton test (4,234 blocks read by the hosted
