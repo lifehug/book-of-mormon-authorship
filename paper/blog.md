@@ -2571,6 +2571,7 @@ So the paraphrase test's answer for the named sources is: none of them stands ou
 
 ## Log
 
+- **2026-11-05.** BOM-65 closed: all of `data/corpus/` (914 GB, ~2.36 million files) backed up to a private, encrypted Backblaze B2 bucket. Full check: every unchanged file matches; the 6 that differed had been written after the upload passed them, and match after a re-upload. A restored index shard matches its manifest checksum. Weekly launchd job, Sundays 03:00.
 - **2026-11-05.** BOM-25 closed again: Amendment 21 nulls complete; no named source stands out (*View of the Hebrews* 1825 84.6th percentile, 1823 94.0th, *Napoleon* 98.4th but 3rd of 18 in its group, *The Late War* 79.8th). `data/semantic/named_null.json`.
 - **2026-11-05.** BOM-25 Amendment 21 null, *View of the Hebrews* 1825: score 29.6 (28.0-31.3) against a null of 500 sermon/devotional volumes of its length, median 14.6, 99th percentile 45.0; 77 of 500 score higher (~85th percentile). Ranks 1st of 49 in its group but does not stand out. Rescore check 29.644 = 29.644. Fixed: percentile read from `borrowing.null_percentile` (was missing in the new code, hard-coded 99 in `semantic.corpus`; same value).
 - **2026-11-05.** BOM-25 reopened: the write-up wrongly said no named source ranked first in its group; the 1825 *View of the Hebrews* ranks 1st of 49 in the direct test, and its registered null was never run. Amendment 21 (OSF 6aec8dd3dd216354e1f383cc) pins that null; running. Blog: the four borrowing tests side by side.

@@ -73,3 +73,8 @@ so an edit can make it execute stray lines. Stop the run, edit, restart (or run 
   One transient DNS failure on the first run, re-sent by the next.
 - Restore test: `semantic/index/shard_p00137.npy` (70.6 MB) downloaded from the bucket; SHA-256
   `dd575da7...c268609` matches `data/manifests/semantic_index.jsonl`.
+- Full check (`check .`, 1 h 15 min): 2,358,446 files match; 6 differences, all files written
+  after the upload passed their folder (the live base run's `log.jsonl` and `checkpoint.pt`; the
+  four Amendment 21 partials in `semantic/search/`). Those two folders re-uploaded and re-checked:
+  0 differences. Files still being written (a training run) are only as fresh as the last pass;
+  the weekly job catches up.
