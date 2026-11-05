@@ -2565,10 +2565,13 @@ I hadn't run that part. Worse, I'd written up the results as if the question wer
 
 **The way of thinking, in four lines.** A match only means something against the right comparison. When something wins, ask what else it has more of, and then compare it against books that have just as much of that. Write the rule down before you look. And check the ruler before you measure with it.
 
-The 1823 edition, *The Late War* and *Napoleon* are going through the same second test now; I'll add them here.
+**The others, same test.** The 1823 edition of *View of the Hebrews* does a little better against its own comparison books (94th percentile) but still falls short of the bar (29.5 against 38.4). *The Late War* sits at the 80th percentile, and only 6th of 18 among imitation-scripture books anyway. *The First Book of Napoleon* comes closest of all: 98.4th percentile, its range just touching the bar. But look at what it's compared with. Its catalog copies are labelled newspapers and periodicals, so its 500 comparison books are mostly secular, and the typical one scores almost zero. Anything written in Bible style beats that. And among actual imitation-scripture books it's only 3rd of 18. Same lesson as *View of the Hebrews*: it looks special against the wrong crowd.
+
+So the paraphrase test's answer for the named sources is: none of them stands out. Every re-score matched its earlier number exactly, so the comparison was fair.
 
 ## Log
 
+- **2026-11-05.** BOM-25 closed again: Amendment 21 nulls complete; no named source stands out (*View of the Hebrews* 1825 84.6th percentile, 1823 94.0th, *Napoleon* 98.4th but 3rd of 18 in its group, *The Late War* 79.8th). `data/semantic/named_null.json`.
 - **2026-11-05.** BOM-25 Amendment 21 null, *View of the Hebrews* 1825: score 29.6 (28.0-31.3) against a null of 500 sermon/devotional volumes of its length, median 14.6, 99th percentile 45.0; 77 of 500 score higher (~85th percentile). Ranks 1st of 49 in its group but does not stand out. Rescore check 29.644 = 29.644. Fixed: percentile read from `borrowing.null_percentile` (was missing in the new code, hard-coded 99 in `semantic.corpus`; same value).
 - **2026-11-05.** BOM-25 reopened: the write-up wrongly said no named source ranked first in its group; the 1825 *View of the Hebrews* ranks 1st of 49 in the direct test, and its registered null was never run. Amendment 21 (OSF 6aec8dd3dd216354e1f383cc) pins that null; running. Blog: the four borrowing tests side by side.
 - **2026-11-04.** BOM-65: Backblaze B2 set up through the API (private encrypted bucket, bucket-only key); owner widened it from the index to all of `data/corpus/` (914 GB, ~$6-7/month); upload running (~20 h).

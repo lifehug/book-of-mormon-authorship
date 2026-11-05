@@ -180,12 +180,27 @@ the 1823 edition is the shortest of the three (443 passages to Brainerd's 801), 
 not explain its place; and about 90% of its 50 strongest pairs come from Book of Mormon passages
 with no King James wording, so its Isaiah quotations do not either.
 
-**Not yet a verdict.** The registered rule says a named source stands out when it ranks first in
-its group **and** its interval lies above the 99th percentile of 500 same-genre, same-length
-volumes. That second check reads those volumes' vectors from the index and is run when the build
-finishes. A score here is not small by chance alone: a book of 800 passages beats a query's bar
-by luck for roughly 8% of queries, so scores of a few per 10,000 words are near chance and the null
-decides.
+**Verdict (Amendment 21, `python -m semantic.search null`, `data/semantic/named_null.json`,
+2026-11-05): no named source stands out.** Each source's null is 500 volumes from the Book of
+Mormon's window with the genre label of its catalog copies and its length within a factor of 2,
+embedded fresh and scored directly like the source; each source was first re-scored and matched
+its `named.json` score exactly.
+
+| Source | Rank in group | Score (95% interval) | Null median | Null 99th percentile | Percentile | Stands out |
+| --- | --- | --- | --- | --- | --- | --- |
+| *View of the Hebrews* (1825) | **1** of 49 | 29.6 (28.0-31.3) | 14.6 | 45.0 | 84.6 | no |
+| *View of the Hebrews* (1823) | 2 of 49 | 29.5 (27.9-31.1) | 9.2 | 38.4 | 94.0 | no |
+| *The First Book of Napoleon* | 3 of 18 | 7.9 (6.9-9.0) | 0.1 | 8.8 | 98.4 | no |
+| *The Late War* (1816) | 6 of 18 | 1.9 (1.4-2.4) | 0.4 | 14.6 | 79.8 | no |
+| Spalding, *Manuscript Story* | 12 of 49 | 5.5 | - | - | - | no (rank; no catalog copy) |
+
+The 1825 *View of the Hebrews* wins its group but 77 of its 500 null volumes score higher; they
+are ordinary religious books (a King's Chapel liturgy, Beveridge's *Works*, Reeve's *Spiritual
+Epistles*, Darby's *Synopsis of the Books of the Bible*). It leads the origins group by being its
+most biblical member, not by an overlap religious books of its size lack. *Napoleon* comes
+nearest to the bar (98.4th percentile; its interval straddles 8.8) against a null labelled
+newspaper/periodical, mostly secular volumes whose median is near zero; it also ranks only 3rd of
+18 among imitation-scripture books, so it fails on both counts.
 
 ## Whole-corpus results (2026-11-04; `python -m semantic.corpus`, `data/semantic/corpus_*.json`)
 
@@ -223,7 +238,7 @@ if it is among a query's 100 nearest in 221,373 volumes, where biblical books cr
 the registered test for a named source, which scores it directly against its group. In that direct
 test the 1825 *View of the Hebrews* **does** rank first of 49 (`named.json`). *Corrected
 2026-11-05: this paragraph first said no named source ranked first in its group, which was wrong.*
-Its verdict waits on the direct null (Amendment 21, `python -m semantic.search null`).
+Under that direct null it does not stand out (below).
 
 **Story skeleton of the top 20 (`python -m semantic.skeleton top`, `data/semantic/skeleton/top.json`).**
 The 20 leading sources were put through the story-skeleton test (4,234 blocks read by the hosted

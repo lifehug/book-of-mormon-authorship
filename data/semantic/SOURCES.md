@@ -18,6 +18,8 @@ vectors and passage ids per shard, `settings.json` with the model and settings, 
 on an M4); the models are downloaded from Hugging Face by name
 (https://huggingface.co/BAAI/bge-small-en-v1.5, https://huggingface.co/intfloat/e5-base-v2).
 
+- `named_null.json`: Amendment 21's null for each named source (500 volumes each, scored directly), with per-volume scores by id, the source's re-score, 99th percentile, percentile and verdict; no text. Rebuild with `python -m semantic.search null` (~1 h per source on the M4; resumes from `data/corpus/semantic/search/named_null_*.json`).
+
 ## skeleton/ (BOM-25 story skeletons, Amendment 15; `docs/skeleton-plan.md`)
 
 - `skeleton/check.json`: the extractor check. `python -m semantic.skeleton check`: 20 King James
