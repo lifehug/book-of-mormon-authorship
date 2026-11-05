@@ -27,4 +27,8 @@ on an M4); the models are downloaded from Hugging Face by name
 - `skeleton/controls.json`, `skeleton/bom.json`: alignment scores, spans (block numbers), order
   p-values and ranks; no text. Rebuild with `python -m semantic.skeleton controls|bom`. The event
   lists they are computed from paraphrase licensed volumes and stay in
-  `data/corpus/semantic/skeleton/events/` (not in git, manifest when complete).
+  `data/corpus/semantic/skeleton/events/` (not in git; checksums in
+  `data/manifests/semantic_skeleton_events.jsonl`).
+- `skeleton/top.json`: the Book of Mormon against the 20 leading whole-corpus search sources
+  (`skeleton.top_search_sources`, from `corpus_bom.json`): search rank, id, title, score, events
+  matched, spans, order p; no text. Rebuild with `python -m semantic.skeleton top`.

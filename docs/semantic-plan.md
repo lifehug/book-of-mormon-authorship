@@ -221,5 +221,36 @@ standing out here mostly means sounding biblical. The named sources do not lead:
 of the Hebrews* is 700th (1.28), Napoleon 4,706th. None ranked first in its control group in the
 direct test (`named.json`), which the rule for a named source also requires.
 
-**Next:** the top 20 go through the story-skeleton test (`skeleton.top_search_sources`), which
-calls the hosted model on 4,234 blocks; started 2026-11-04, paced at 500 calls an hour with 2 workers (`logs/skeleton_top.log`).
+**Story skeleton of the top 20 (`python -m semantic.skeleton top`, `data/semantic/skeleton/top.json`).**
+The 20 leading sources were put through the story-skeleton test (4,234 blocks read by the hosted
+model, 2026-11-04, paced at 500 calls an hour). **None shares the Book of Mormon's order of events
+at the registered level** (`max_order_p` 0.01). The longest shared run is 9 of the Book of
+Mormon's 1,421 events (the Harvard Josephus `HN33GK`, score 5.5, order p 0.24); no source shares more than 3% of the shorter text's events. Three runs have order p under 0.05 (Josephus `worksofflaviusjo01jose`
+0.019, `collectionofsund00innayl` 0.026, `HW2J64` 0.028), none under 0.01. For scale, the positive
+control, Josephus against Genesis-Judges, shares 108 events in order (score 25.5, p 0.001). The
+Josephus editions' runs fall mostly on the same two short stretches of the Book of Mormon (blocks
+41-44 and 131-133; two editions at blocks 20-29), so they are largely one small overlap seen in
+edition after edition, not separate findings.
+
+| Search rank | Source | Score | Events in order | Order p |
+| --- | --- | --- | --- | --- |
+| 1 | The genuine works of Flavius Josephus (`institutional_books:HN33GK`) | 5.5 | 9 | 0.242 |
+| 2 | The works of Flavius Josephus (`institutional_books:HXQ2K3`) | 5 | 6 | 0.080 |
+| 3 | The works of Flavius Josephus (`institutional_books:HW2J64`) | 5 | 7 | 0.028 |
+| 4 | The works of Flavius Josephus (`internet_archive:worksofflaviusjo00jose`) | 5 | 7 | 0.091 |
+| 5 | The genuine works of Flavius Josephus, the Jewish historian (`internet_archive:genuineworksoffl18251jose`) | 5 | 8 | 0.133 |
+| 6 | The works of Flavius Josephus (`internet_archive:worksofflaviusjo01jose`) | 5 | 6 | 0.019 |
+| 7 | The works of Flavius Josephus (`internet_archive:worksofflaviusjo00injose`) | 4.5 | 6 | 1.000 |
+| 8 | The Biblical reader; or, Interesting extracts from the Sacred Scriptures; with practical observation (`internet_archive:biblicalreaderor00blak`) | 4.5 | 5 | 0.430 |
+| 9 | The genuine works of Flavius Josephus, the Jewish historian (`institutional_books:HW3CRW`) | 4.5 | 6 | 0.366 |
+| 10 | Sacred literature (`internet_archive:bim_eighteenth-century_sacred-literature-shewi_simpson-david_1788_4`) | 5 | 8 | 0.840 |
+| 11 | The works of Flavius Josephus (`institutional_books:HW2JS4`) | 4.5 | 5 | 0.286 |
+| 12 | A journal or historical account of the life, travels, sufferings, Christian experiences, and labour (`tcp:N28090`) | 3 | 3 | 0.172 |
+| 13 | The Works of Flavius Josephus, the Learned and Authentic Jewish Historian and celebrated Warrior. To (`institutional_books:HXJ9AU`) | 4.5 | 5 | 0.341 |
+| 14 | A collection of the several writings of that true prophet faithful servant of God, and sufferer for (`institutional_books:HWJN6I`) | 2.5 | 3 | 1.000 |
+| 15 | The genuine works of Flavius Josephus (`institutional_books:HN26TR`) | 5 | 7 | 0.120 |
+| 16 | A collection of sundry books, epistles and papers (`internet_archive:collectionofsund00innayl`) | 4 | 5 | 0.026 |
+| 17 | Whole genuine works (`internet_archive:wholegenuinework01joseuoft`) | 4 | 4 | 1.000 |
+| 18 | Works (`institutional_books:HXIH8Y`) | 4 | 5 | 1.000 |
+| 19 | Works (`institutional_books:HXIH8X`) | 4.5 | 7 | 0.146 |
+| 20 | A collection of sundry books, epistles and papers (`internet_archive:collectionofsund00nayl_0`) | 2.5 | 3 | 1.000 |
