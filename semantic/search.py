@@ -275,7 +275,7 @@ def null() -> int:
                 print(f"  {key}: {i + 1}/{len(draw)}", flush=True)
         part.write_text(json.dumps(got))
         vals = np.array([got[w] for w in draw if got[w] is not None])
-        p99 = float(np.percentile(vals, s["null_percentile"]))
+        p99 = float(np.percentile(vals, cfg["borrowing"]["null_percentile"]))
         r = res[key]
         out[key] = {"genre": label, "words": n, "pool": len(cands), "null_volumes": len(vals),
                     "null_p99": p99, "null_median": float(np.median(vals)),

@@ -424,7 +424,7 @@ def score() -> int:
         rng = random.Random(derive_seed(f"{s['null_seed']}:bom:{w}", cfg))
         null = np.array([src.get(x, 0.0) for x in
                          rng.sample(cands, min(s["null_volumes"], len(cands)))])  # fmt: skip
-        p99 = float(np.percentile(null, 99)) if len(null) else None
+        p99 = float(np.percentile(null, cfg["borrowing"]["null_percentile"])) if len(null) else None
         rows.append({"rank": rank, "work_id": w, "title": title.get(w, "")[:100],
                      "year": (cat.get(w) or {}).get("year"), "moved_past_1830": w in moved,
                      "genre": g, "words": n, "score": src[w], "score_ci95": ci[w],

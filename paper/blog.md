@@ -2529,8 +2529,47 @@ So, plainly: some specific wording overlap with *The Late War* and *Napoleon*, o
 
 About that *View of the Hebrews* check. I got this wrong in the first write-up. I said it came 700th and none of the proposed sources stood out. The 700th is from the whole-library search, where a book only gets counted when its passage lands among the 100 closest out of 221,000 books, and Bible-heavy books like Josephus take nearly all of those places. Head to head against books like it, *View of the Hebrews* comes first: about 765 Book of Mormon passages have a close match in it, against about 640 for the runner-up. The rule we registered asks one more thing: does it also beat 99% of 500 random books of the same kind and length, scored the same head-to-head way? I'd never run that part. I wrote the exact recipe down and filed it on OSF first (Amendment 21), then started it. Before scoring the 500, it re-scored *View of the Hebrews* to make sure nothing had drifted, and got the same 29.644 to the third decimal. The answer is about an hour out, and I'll come back to it here either way.
 
+## *View of the Hebrews*, first of 49 and 78th of 501: how to tell whether a match means anything
+
+This one is worth walking through slowly, because the way we got to the answer matters more than the answer.
+
+**The question.** *View of the Hebrews* (Ethan Smith, 1823, second edition 1825) argues that Native Americans descend from the lost tribes of Israel. It's the book most often named as a source for the Book of Mormon. So: does the Book of Mormon say the same things *View of the Hebrews* says, more than you'd expect by chance?
+
+**Step one: compare it with books like it.** Comparing a book with everything ever printed tells you little, because the Book of Mormon will "match" anything religious. So the plan, written down in advance, compares *View of the Hebrews* with 48 other books on the same subject: histories of the Indians, travel accounts, theories of where they came from. Head to head, every Book of Mormon passage against every passage of each book, *View of the Hebrews* wins. About 765 Book of Mormon passages have a close match in it; the runner-up, *The Life of David Brainerd*, has about 640. That's first of 49, and not a narrow first.
+
+**Step two: the trap.** First of 49 sounds like a finding. But ask why it won. Of all 49 books on Native American origins, *View of the Hebrews* is the one most full of the Bible. It's an argument from scripture, quoting Isaiah, about Israel. The Book of Mormon is soaked in the same language. So maybe it won its group just by being the most biblical book in a group of travel journals. A first place can come from what you're looking for, or from something else the winner happens to have more of.
+
+**Step three: the second test, the one I hadn't run.** The plan saw this coming. A named source only counts if it wins its group *and* beats 99% of 500 random books of the same kind and the same length, scored exactly the same way. "Same kind" here means the genre label our catalog gives *View of the Hebrews*' own copies: sermons and devotional writing. So the question becomes: is *View of the Hebrews* closer to the Book of Mormon than other religious books its size are?
+
+I hadn't run that part. Worse, I'd written up the results as if the question were settled, leaning on a different number: in the whole-library search *View of the Hebrews* came 700th. That number is real, but it answers a different question. In that search a book only gets counted when one of its passages lands among the 100 closest out of 221,000 books, and Josephus and Bible commentaries take nearly every one of those places. "700th" mostly says Josephus is very biblical. It doesn't say *View of the Hebrews* is unremarkable. I'd let a convenient number stand in for the one the rule asks for. When you asked me to list the books and their ranks, the mismatch showed up, and I reopened the issue.
+
+**Step four: write the recipe down before cooking.** Two details of that second test weren't pinned in the plan: which genre label to use for a book that isn't a catalog volume, and which copies count as "its own". Choosing them after seeing the answer would be choosing the answer. So I wrote them down and filed them publicly on OSF as Amendment 21 *before* computing anything. It says plainly that it was filed after the first-place ranking was known.
+
+**Step five: make sure the ruler hasn't moved.** The 500 comparison books get scored with fresh embeddings, exactly as the 49 group books were three days ago. Before scoring them, the program re-scored *View of the Hebrews* itself and compared with the stored number. If anything had drifted (the model, the query passages, the bar each passage has to clear), the comparison wouldn't be fair. It came back 29.644, same as before, to the third decimal.
+
+(It then crashed on the very last line, looking for the 99% setting in the wrong part of the config. All 500 scores were already saved, so nothing was lost. The fix also turned up the same 99 typed straight into the whole-library scorer instead of read from the config. Same value, no change in results, but it's the kind of thing that bites later, so it's fixed too.)
+
+**The answer.**
+
+| | Score (Book of Mormon passages with a match, per 10,000 words) |
+| --- | --- |
+| *View of the Hebrews* (1825) | **29.6** (28.0-31.3) |
+| Typical religious book of its size (median of 500) | 14.6 |
+| Top 10% of them | 33.4 and up |
+| The registered bar, top 1% | **45.0** |
+| The highest of the 500 | 51.3 |
+
+77 of the 500 books match the Book of Mormon more closely than *View of the Hebrews* does. That's above average, about the 85th percentile, and nowhere near the top 1%. The books that beat it are a liturgy from King's Chapel in Boston (1828), Bishop Beveridge's *Works*, John Reeve's *Spiritual Epistles*, *The Genuine Epistles of the Apostolic Fathers*, Darby's *Synopsis of the Books of the Bible*, Samuel Hopkins's *System of Doctrines*. Ordinary, Bible-soaked religious books. Nobody proposes any of them as a source.
+
+**What it means.** *View of the Hebrews* won its group because it's the most religious book in it. Put it among books that are just as religious and it's one of the crowd. Its overlap with the Book of Mormon is the overlap of shared biblical subject and language, the same overlap dozens of sermon collections have. It doesn't stand out on wording, it didn't on rare phrases, and it doesn't share the order of events. That's all three tests.
+
+**The way of thinking, in four lines.** A match only means something against the right comparison. When something wins, ask what else it has more of, and then compare it against books that have just as much of that. Write the rule down before you look. And check the ruler before you measure with it.
+
+The 1823 edition, *The Late War* and *Napoleon* are going through the same second test now; I'll add them here.
+
 ## Log
 
+- **2026-11-05.** BOM-25 Amendment 21 null, *View of the Hebrews* 1825: score 29.6 (28.0-31.3) against a null of 500 sermon/devotional volumes of its length, median 14.6, 99th percentile 45.0; 77 of 500 score higher (~85th percentile). Ranks 1st of 49 in its group but does not stand out. Rescore check 29.644 = 29.644. Fixed: percentile read from `borrowing.null_percentile` (was missing in the new code, hard-coded 99 in `semantic.corpus`; same value).
 - **2026-11-05.** BOM-25 reopened: the write-up wrongly said no named source ranked first in its group; the 1825 *View of the Hebrews* ranks 1st of 49 in the direct test, and its registered null was never run. Amendment 21 (OSF 6aec8dd3dd216354e1f383cc) pins that null; running. Blog: the four borrowing tests side by side.
 - **2026-11-04.** BOM-65: Backblaze B2 set up through the API (private encrypted bucket, bucket-only key); owner widened it from the index to all of `data/corpus/` (914 GB, ~$6-7/month); upload running (~20 h).
 - **2026-11-04.** BOM-25 closed. Story skeleton of the top 20 search sources: none shares event order at the registered p <= 0.01; longest run 9 of 1,421 events (Josephus `HN33GK`, p 0.24), against 108 for the Josephus-Genesis control. Amendment 20 (post hoc): *Twelve Patriarchs* control decided with its known 1576 own copy left out; passes.
