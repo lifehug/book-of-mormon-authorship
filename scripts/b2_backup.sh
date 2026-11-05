@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # BOM-65: off-site private backup of data/corpus/ (passage index first) to Backblaze B2.
-# Usage: scripts/b2_backup.sh upload|check [path] | restore <file> <dir>
+# Usage: scripts/b2_backup.sh upload|check [path] | restore <file> <dir> | weekly
 #   upload   copy new or changed files under data/corpus/[path] to the bucket (never deletes remote files)
 #   check    compare local and bucket by size and SHA-1; nonzero exit on any difference
 #   restore  download one file (path under data/corpus/) from the bucket into <dir>
+#   weekly   upload . then check . (launchd, docs/backup.md); skips if the corpus drive is absent
 # [path] defaults to semantic/index; "." is the whole corpus. Bucket paths mirror data/corpus/.
 # Key: ~/.config/backblaze/credentials (B2_KEY_ID, B2_APP_KEY, B2_BUCKET), mode 600, never in git.
 set -euo pipefail
@@ -31,5 +32,10 @@ case "${1:-}" in
   restore)
     [ $# -eq 3 ] || { echo "usage: $0 restore <file> <dir>" >&2; exit 2; }
     rclone copy "$root/$2" "$3" --log-level NOTICE ;;
-  *) sed -n '3,7p' "$0"; exit 2 ;;
+  weekly)
+    if [ ! -d data/corpus/semantic ]; then
+      echo "$(date -u +%FT%TZ) weekly: corpus drive not mounted, skipped" >>"$log"; exit 0
+    fi
+    "$0" upload . && "$0" check . ;;
+  *) sed -n '3,8p' "$0"; exit 2 ;;
 esac
