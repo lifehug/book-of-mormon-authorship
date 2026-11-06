@@ -1,0 +1,189 @@
+{
+ "config_sha256": "def23cdbee0bb1306e49c3cd870d7a9588507833097801fb50cf64e63963b811",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "c492ee5b1e49c7d78fb5da1356547abc8041e128",
+ "rule": "section 9: forward accuracy; full weight >= 0.8, half >= 0.6, else dropped (Amendment 7: exact 95% interval and n reported; equal-weight run beside)",
+ "methods": {
+  "burrows_delta": {
+   "forward": {
+    "tests": 18,
+    "correct": 13,
+    "accuracy": 0.7222222222222222,
+    "ci95": [
+     0.46519803441694385,
+     0.9030507874744406
+    ],
+    "by_author": {
+     "dodsley, robert": 0.4,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 1.0
+    },
+    "authors": 3,
+    "authors_majority_right": 1,
+    "authors_ci95": [
+     0.008403758659612643,
+     0.9057006759497539
+    ],
+    "weight": 0.5
+   },
+   "reverse": {
+    "tests": 24,
+    "correct": 9,
+    "accuracy": 0.375,
+    "ci95": [
+     0.1879929281960023,
+     0.594063615992056
+    ],
+    "by_author": {
+     "dodsley, robert": 0.6,
+     "kenrick, w william": 0.75,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 2,
+    "authors_ci95": [
+     0.09429932405024613,
+     0.9915962413403874
+    ],
+    "weight": 0.0
+   },
+   "weight": 0.5
+  },
+  "cosine_delta": {
+   "forward": {
+    "tests": 18,
+    "correct": 13,
+    "accuracy": 0.7222222222222222,
+    "ci95": [
+     0.46519803441694385,
+     0.9030507874744406
+    ],
+    "by_author": {
+     "dodsley, robert": 0.4,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 1.0
+    },
+    "authors": 3,
+    "authors_majority_right": 1,
+    "authors_ci95": [
+     0.008403758659612643,
+     0.9057006759497539
+    ],
+    "weight": 0.5
+   },
+   "reverse": {
+    "tests": 24,
+    "correct": 7,
+    "accuracy": 0.2916666666666667,
+    "ci95": [
+     0.12615208852369136,
+     0.5109478138578332
+    ],
+    "by_author": {
+     "dodsley, robert": 0.4,
+     "kenrick, w william": 0.75,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 1,
+    "authors_ci95": [
+     0.008403758659612643,
+     0.9057006759497539
+    ],
+    "weight": 0.0
+   },
+   "weight": 0.5
+  },
+  "ensc": {
+   "forward": {
+    "tests": 18,
+    "correct": 7,
+    "accuracy": 0.3888888888888889,
+    "ci95": [
+     0.17298585478975184,
+     0.6425487941069373
+    ],
+    "by_author": {
+     "dodsley, robert": 0.4,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.45454545454545453
+    },
+    "authors": 3,
+    "authors_majority_right": 0,
+    "authors_ci95": [
+     0.0,
+     0.7075982261787134
+    ],
+    "weight": 0.0
+   },
+   "reverse": {
+    "tests": 24,
+    "correct": 6,
+    "accuracy": 0.25,
+    "ci95": [
+     0.09773040947453301,
+     0.46711280242266934
+    ],
+    "by_author": {
+     "dodsley, robert": 0.6,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 1,
+    "authors_ci95": [
+     0.008403758659612643,
+     0.9057006759497539
+    ],
+    "weight": 0.0
+   },
+   "weight": 0.0
+  },
+  "general_imposters": {
+   "forward": {
+    "tests": 18,
+    "correct": 11,
+    "accuracy": 0.6111111111111112,
+    "ci95": [
+     0.3574512058930627,
+     0.8270141452102482
+    ],
+    "by_author": {
+     "dodsley, robert": 0.0,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 1.0
+    },
+    "authors": 3,
+    "authors_majority_right": 1,
+    "authors_ci95": [
+     0.008403758659612643,
+     0.9057006759497539
+    ],
+    "weight": 0.5
+   },
+   "reverse": {
+    "tests": 24,
+    "correct": 3,
+    "accuracy": 0.125,
+    "ci95": [
+     0.026559314986248948,
+     0.3236113581888329
+    ],
+    "by_author": {
+     "dodsley, robert": 0.3,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 0,
+    "authors_ci95": [
+     0.0,
+     0.7075982261787134
+    ],
+    "weight": 0.0
+   },
+   "weight": 0.5
+  }
+ }
+}
