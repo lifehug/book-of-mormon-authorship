@@ -418,6 +418,10 @@ alm:
   batch: 8
   score_window: 512             # 5.2: fixed 512-token windows, averaged
   precision: fp32
+  # Amendment 23 (OSF revision 6aed57846119836b77b6964f): secondary variants, both sizes
+  v1_finetune_lr: 1.0e-4        # V1: Amendment 22 with ten times the learning rate
+  v2_head_window: 512           # V2: classifier head on mean final hidden state per window
+  v3_block_words: 1000          # V3: base-model hidden states per block, benchmark trials as BOM-21
 
 dating:
   # 5.3, 6.4; Amendment 2 (multinomial logistic regression over a literature-drawn grammatical
