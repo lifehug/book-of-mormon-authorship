@@ -9,7 +9,7 @@ amendment first; the issue comment carries the next action.
 
 | Job | Where | Started | Done (est.) | When it ends, start |
 | --- | --- | --- | --- | --- |
-| BOM-27 1B training (`scripts/large_pod.py`, tmux `largepod`) | 4 x H100 pod `89wpgyfino58g1` | 2026-11-06 09:51 (relaunch; first launch failed, see BOM-27) | 2026-11-07 ~17:00 | 1B benchmark (primary, V1-V3) on an H100 via `alm_pod.py` with `large`; publish (BOM-66); pick the working model by the benchmark |
+| BOM-27 1B training (`scripts/large_pod.py`, tmux `largepod`) | 4 x H100 pod `89wpgyfino58g1` | 2026-11-06 09:51 (relaunch; first launch failed, see BOM-27) | 2026-11-07 ~15:30 (2.16 s a step) | 1B benchmark (primary, V1-V3) on an H100 via `alm_pod.py` with `large`; publish (BOM-66); pick the working model by the benchmark |
 | BOM-39 KJV masking of sweep blocks (`kjv_mask.run sweep`, tmux `sweepmask`) | Mac CPU (passim) | 2026-11-06 09:56 | 2026-11-07 ~06:00 (659 batches, ~1.8 min each) | chained (`scripts/sweep_chain.sh`, tmux `sweepchain`): `sweep.index` tokens, mfw, embed, then `sweep.calibrate`; then write up BOM-39/47 against the 70% rule |
 
 ## Next, in order (start the first whose inputs exist; several may run at once if they use different machines)
