@@ -17,9 +17,9 @@ amendment first; the issue comment carries the next action.
 | BOM-28 candidate models at 297M (`candidates_pod.py --size base`, tmux `candpod`) | 1 H100, cap $25 | 2026-11-06 10:58 | ~12:30 | `alm.candidates validate base`; retrain at 1B if the 1B wins its benchmark |
 | Job monitor (`scripts/jobwatch.py` under a Monitor) and hourly check-in | this session | 2026-11-06 | - | reports any crash, stall or finish at once; hourly: start whatever is ready |
 
-## Waiting on the owner
+## Decided, to apply after the 1B benchmark
 
-- **6.2 can never support a candidate** (GI and style thresholds are 1.0): owner chose to wait for the 1B benchmark (Sat evening), then decide. Blocks sealing (BOM-32), not prep.
+- **6.2 can never support a candidate** (GI and style thresholds are 1.0). Owner, 2026-11-06: if the 1B reaches 6.1's 5% rate, keep the rule; otherwise file a post hoc amendment before any Book of Mormon scoring saying the registered rule is not achievable with these methods, and let each method return *match* at its best achievable threshold (a score at the threshold counts), its actual false-match rate reported beside every call; 6.2's two families unchanged. Apply right after the 1B benchmark, then file Amendment 33 and seal.
 
 ## Next, in order (start the first whose inputs exist; several may run at once if they use different machines)
 

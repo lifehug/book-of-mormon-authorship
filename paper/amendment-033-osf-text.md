@@ -46,3 +46,14 @@ Imposters from the committed BOM-21 thresholds; style embeddings from the BOM-30
 positives and negatives; authorial models from the candidates' held-out windows (positives: the true
 candidate's margin on its own windows; negatives: each window's largest margin of any other
 candidate). Written to `data/blind/thresholds.json` and committed before the blind run.
+
+
+**[Choose one at filing, after the 1B benchmark; owner's decision of 2026-11-06.]**
+(a) If every method family that the working model affects reaches 6.1's 5% rate on the benchmark,
+6.1 and 6.2 stand as registered.
+(b) Otherwise, **post hoc** (decided after the benchmark results, before any Book of Mormon text is
+scored): the registered 6.1 thresholds are not achievable for General Imposters and the style
+embeddings (their match thresholds are 1.0, the largest possible score). Each method returns
+*match* when its score reaches its calibrated threshold (at or above, not strictly above), and the
+false-match rate it actually achieves on the benchmark is reported beside every call. 6.2's
+two-family rule is unchanged. The registered reading is reported beside it.
