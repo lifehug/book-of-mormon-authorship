@@ -63,6 +63,26 @@ TITLES = {
         "end": "1828-12-31",
         "max_pages": 8,
     },
+    "Palmyra Register": {  # BOM-33, 2026-11-06
+        "site": "pioneerlibrarysystem",
+        "slug": "palmyra_register",
+        "prefix": "palmyra_register_usa_new_york_palmyra",
+        "title_ids": "33163",
+        "cid": "",
+        "start": "1817-11-01",
+        "end": "1821-03-31",
+        "max_pages": 6,
+    },
+    "Palmyra Herald": {  # BOM-33, 2026-11-06
+        "site": "pioneerlibrarysystem",
+        "slug": "palmyra_herald",
+        "prefix": "palmyra_herald_and_canal_advertiser_usa_new_york_palmyra",
+        "title_ids": "33159",
+        "cid": "",
+        "start": "1822-06-01",
+        "end": "1823-03-31",
+        "max_pages": 6,
+    },
 }
 CORPUS = Path("data/corpus/advantage")
 OUT = Path("data/newspapers")

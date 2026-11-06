@@ -10,8 +10,10 @@ sources, and the paper states it in those terms.
 Status (2026-11-06): all three parts drafted. The *Wayne Sentinel* index is done (below); the
 Manchester library holdings, the Palmyra bookseller findings and the per-source availability
 table follow the Lake Light section. The table is `data/access/access_table.csv` (33 rows); its
-sources are in `data/access/SOURCES.md`. Two OCR-derived findings still need checking by eye on
-page images before they are quoted (see "Gaps").
+sources are in `data/access/SOURCES.md`. Follow-up the same day: the Josephus and "Historical
+Reader" ads were checked on the page images, and the *Palmyra Register* (1817-1821) and
+*Palmyra Herald* (1822-1823) were pulled and searched (see "Follow-up"). The *Ontario
+Repository* is still unsearched (NYSHN only).
 
 ## Wayne Sentinel, Palmyra, 1823-1830
 
@@ -247,11 +249,20 @@ layers agree) for every candidate title gives:
 | Hebrews / lost tribes | 6 pages | Mordecai Noah's "Ararat" proclamation (27 Sep 1825 p2) calls the Indians descendants of the lost tribes. Lowth's *Poetry of the Hebrews* is in a Tucker & Gilbert list (20 Apr 1825). Neither is *View of the Hebrews* |
 | View of the Hebrews, Ethan Smith, Late War (as a title), Gilbert Hunt, First Book of Napoleon, Spalding (as author), Fox's Journal, Nayler, Bayly, Biblical Reader, Sacred Literature | 0 | No hit. Not a negative. "Spalding" returns 27 pages, all the Palmyra merchants Marshall & Spalding |
 
-**The Josephus advertisements have been read only in OCR.** The column interleaving that
-garbled the 26 June 1829 page could in principle splice a title from one advertisement into
-another. The lists repeat identically week after week with the same neighbours, which makes
-that unlikely, but it must be confirmed. **Read `wayne_sentinel_18290320_p4` and
-`wayne_sentinel_18240818_p3` on the page scans before quoting them.**
+**Checked on the page images, 2026-11-06.** The column interleaving that garbled the 26 June
+1829 page could in principle have spliced a title from one advertisement into another. So the
+three key items were read by eye on the Pioneer Library System scans (see "Follow-up" below):
+
+| Date, page | What the image shows |
+| --- | --- |
+| 18 Aug 1824, p3 | A notice headed "Works of Flavius Josephus.": "A FEW Numbers for sale at the Wayne County Book-store." "Numbers" means a part-issue sold in instalments |
+| 8 Dec 1826, p3 | "NEW BOOKS, AT THE Palmyra Book Store", with an alphabetical catalogue: "... Junius' letters / Josephus' works / Jemima Wilkinson ...". The "Woodstock" the OCR placed beside it is Scott's novel, further down the same list; the OCR's other "Woodstock" is a kind of glove in the dry-goods column |
+| 20 Mar 1829, p4 | "NEW BOOKS. The subscriber has just received from New York, at his Bookstore, Printing-Office, and Bindery, (west end of Thayer & Grandin's Row,) an entire New Stock of Books & Stationary": "... Heeren's Ancient History / Josephus' Works / Junius ...", signed **"E. B. GRANDIN. Palmyra, Nov. 27, 1828."** |
+
+All three are confirmed. The 1829 one is Grandin's own stock list: it was first set on 27
+November 1828 and was still running on 20 March 1829, while the dictation was under way in
+Harmony. The other dates in the table above (July 1824, December 1829-June 1830) are the same
+standing lists, found in OCR and not each re-read.
 
 ### The access table
 
@@ -282,8 +293,11 @@ Fox (1), Simpson (0), Bayly (0), Nayler (0).
 
 **Main finding, stated with its limit.** The top-ranked source of the whole-corpus search,
 Whiston's Josephus, is also the one candidate with the strongest documented local
-availability. It was advertised for sale in Palmyra in 1824, 1826 and **January-May 1829**, and
-held by the Manchester library by about 1830. No proposed source in the named literature reaches
+availability. It was advertised in Palmyra's paper by a Rochester bookseller in 1822 (the
+earliest offer found), for sale in Palmyra's own bookstores in 1824 and 1826, and was in **E. B.
+Grandin's own advertised stock from 27 November 1828 through at least spring 1829** (all three
+confirmed on the page images). It was held by the Manchester library by about 1830. It was not
+in T. C. Strong's Palmyra lists of 1818 and 1819. No proposed source in the named literature reaches
 3. *View of the Hebrews* reaches 2, and only for the 1825 edition, on a Utica bookseller's list.
 This settles nothing about borrowing. Josephus was one of the most widely owned books in
 America, so local availability is what one would expect of it on general grounds. The score
@@ -294,17 +308,18 @@ that it was used.
 
 - **Date of the Manchester Josephus accession** relative to mid-1829. Needs the OCHS withdrawal
   book, 1826-1837.
-- **The Josephus and bookseller items have been read only in OCR.** Confirm on page scans:
-  `wayne_sentinel_18240818_p3`, `_18261208_p3`, `_18290320_p4`; also Paul's cited
-  subscription pages, 11 Oct 1825 and 6 Oct 1826.
-- **Which "Historical Reader"** Palmyra sold, 1827-1830: Hunt's or Blake's. Settles whether
-  *The Late War* is a 1 or a 3. The page scans may show a fuller entry or a price; Blake's was
-  the more widely adopted school book, but that does not settle a single ad.
-- **The *Palmyra Register* (1817-1821) and *Palmyra Herald* (1822-1823)** were not searched. They
-  are on NYSHN and pull with `scripts/nyshn_browser_pull.py` (needs the owner's unlocked
-  browser). The *Register* of 15 September 1818 lists about 250 titles by name (Paul note 21) and
-  is the single most useful unread page. The *Ontario Repository* (Canandaigua, 1809-1829) and
-  the Bemis and Tyler bookstore ads in it were not searched either.
+- ~~The Josephus items read only in OCR~~: **done**, confirmed on the images (above). Still
+  unread on the image: Paul's subscription pages, 11 Oct 1825 and 6 Oct 1826.
+- **Which "Historical Reader"** Palmyra sold, 1827-1830: Hunt's or Blake's. **The page images
+  do not settle it.** Every entry checked (26 Oct 1827 p4, Palmyra Bookstore; 20 Mar 1829 p4
+  and 11 Dec 1829 p3, Grandin) is a bare "Historical Reader" among school books, with no
+  author, price or subtitle. It would need a Grandin or Tucker invoice, a school list naming
+  the book, or a surviving Palmyra copy.
+- ~~*Palmyra Register* and *Palmyra Herald* not searched~~: **done**, see "Follow-up" below.
+- **The *Ontario Repository* (Canandaigua, 1809-1829)**, with the Bemis and Tyler bookstore
+  ads, is still not searched. It is digitized only on NYSHN, which needs the owner's unlocked
+  browser (`scripts/nyshn_browser_pull.py`). It is not on Chronicling America (no digitized
+  pages under any Canandaigua LCCN) and was not found on an Advantage archive.
 - **Grandin's 1828 circulating library**: no catalogue of it has been found.
 - **Harmony, Pennsylvania, and Fayette, New York**, where the dictation took place, were not
   examined. Book of Mormon Central has a short note on whether Harmony had a library
@@ -331,8 +346,8 @@ that it was used.
   https://interpreterfoundation.org/journal/finding-parallels-some-cautions-and-criticisms-part-one.
   **Recommended.**
 - **Milton V. Backman Jr., *Joseph Smith's First Vision*, 2nd ed. (Bookcraft, 1980)**, pp. 48-49
-  describes Strong's September 1818 stock. Inexpensive second-hand. Optional if the *Register*
-  page itself is pulled from NYSHN, which is free and better.
+  describes Strong's September 1818 stock. **No longer needed**: the 1818 page itself has been
+  read on the scan (see "Follow-up").
 - **Ontario County Historical Society, Manchester Library Collection File**: "Numbers of the
   Volumes in the Manchester Library", "Books from the old Manchester Library" and the
   "Manchester Rental Library Withdrawal Record Book, 1826-1837". This is not a purchase but a
@@ -341,3 +356,77 @@ that it was used.
   one document that would date the Josephus holding.** BYU L. Tom Perry Special Collections holds
   photocopies of the other two lists (Manchester Library Collection; M. Wilford Poulson
   Collection), but not the 1826-1837 book.
+
+### Follow-up (2026-11-06): page images and the Palmyra papers
+
+**Route.** The plan was to read the scans on NYS Historic Newspapers through
+`scripts/nyshn_browser_pull.py`. That needs the owner's browser unlocked past Cloudflare, and none
+was running. The same papers are public on the **Pioneer Library System's Advantage archive**
+(https://pioneerlibrarysystem.advantage-preservation.com/), which has no Cloudflare: the *Wayne
+Sentinel* 1823-1859, the *Palmyra Register* 1817-1821 (648 pages) and the *Palmyra Herald*
+1822-1823 (157 pages). These are the same microfilm page images, so this answers the same
+question without the browser step. Pages were fetched with the helpers in
+`ingest/advantage_archive.py`. Each target was located with the PDF's own text layer and then
+**read by eye on the rendered image**.
+
+**1. Josephus in the *Wayne Sentinel*: confirmed.** See the table under "Palmyra booksellers"
+above (18 Aug 1824, 8 Dec 1826, and Grandin's list of 27 Nov 1828, read on 20 Mar 1829).
+
+**2. "Historical Reader": not settled by the images.** Read on 26 Oct 1827 p4 ("NEW BOOKS, JUST
+RECEIVED AND FOR SALE AT THE PALMYRA BOOKSTORE": "Ryan's Algebra and Key; Historical Reader;
+Large Methodist Hymns"), 20 Mar 1829 p4 (Grandin, "School and Classical Books") and 11 Dec 1829
+p3 (Grandin: "Historical Reader, Tytler's History"). None gives an author, price or subtitle.
+*The Late War* stays at 1.
+
+**3. *Palmyra Register*, 1817-1821: pulled in full (648 pages, 162 issues) and searched.**
+- **T. C. Strong's list, 15 Sep 1818 p3** ("T. C. STRONG, Book-Seller & Printer, Has for sale
+  a general assortment of Books, among which are the following Standard and Miscellaneous
+  Works", dated "Palmyra, Sept. 16, 1818"). Read by eye in full, A to Y, plus the closing
+  school-book note. **None of the 33 candidate texts is in it**: no Josephus, no Hunt (whose
+  *Historical Reader* had been in print since 1817), no Fox *Journal*, no Simpson. (*View of
+  the Hebrews* did not yet exist.) The "Fox's history of James the II." in the list is Charles
+  James Fox, and "Cobbet's letters on the late war" is Cobbett, not Hunt.
+- **Strong & Bradish, dated 13 Oct 1819 (27 Oct 1819 p4)**: the same list reset, also read in
+  full. Same result; its school books (English Readers, Murray, Daboll, American Readers,
+  Preceptors and Speakers, Willett's geography) include no *Historical Reader*.
+- **Leonard Wescott's "New-Store", 27 Dec 1820 p4**: merchandise, hardware, drugs and glass. No
+  book titles on this notice.
+- OCR search of all 648 pages for every candidate title and author: **no genuine hit**. Each
+  apparent hit was read on the image and is something else. "Josephus" on 5, 12 and 19 July 1820
+  is "Josephus Warren", a name in the post-office list of uncollected letters. "Eliakim"
+  (3 Jan 1821) is "Eliakim Thatcher" in a letter list. "History of the late war" (9 Aug 1820
+  p3) is a satirical piece, "Connecticut Authors", about a history "published at Hartford in
+  1815" and sold by pedlars; Hunt's is New York 1816, so this is a different book.
+
+**4. *Palmyra Herald*, 1822-1823: pulled in full (157 pages, 39 issues) and searched.**
+- **New: "Josephus' Work, 6 vols. D3."** (three dollars), confirmed on the image of 7 Aug 1822
+  p4. It is in a book list signed **"E. Peck & Co. ... Rochester, July 25, 1822"** and runs in
+  the OCR from 31 Jul to 11 Sep 1822 (six issues). Its neighbours include Enfield's *Natural
+  Theology*, Bellamy's *History of all Religions*, Weems's *Washington* and "The whole of the
+  Waverly Novels". A Rochester bookseller was advertising Josephus to Palmyra readers in
+  Palmyra's own paper two years before the earliest *Sentinel* offer. **This is the earliest
+  Josephus availability found.**
+- No other candidate title or author appears. The one "Spalding" (12 Mar 1823) reads in the OCR
+  as a personal name, "Frederick Spalding", in a news column; it was not checked on the image.
+
+**Scores.** No score changes. The Josephus rows (3) now cite images rather than OCR, and their
+earliest date moves back to July 1822. *The Late War* stays at 1: the Palmyra papers of
+1817-1823 add nothing for it, and the 1827-1830 "Historical Reader" remains unassigned.
+Everything else is unchanged, and the absences from the Register and Herald OCR are, as
+always, not negatives. The two book lists read in full by eye (1818, 1819) are the exception:
+for those two lists the absence is a real result.
+
+**Data written.**
+- `data/newspapers/palmyra_register/` and `data/newspapers/palmyra_herald/`: text layers,
+  `pages.jsonl`, `SOURCES.md`.
+- Page PDFs (257 MB, including the six *Sentinel* verification pages) in
+  `data/corpus/advantage/pioneerlibrarysystem/`, outside git.
+- Manifests: `data/manifests/palmyra_register_text.jsonl`,
+  `data/manifests/palmyra_herald_text.jsonl`, `data/manifests/pioneerlibrarysystem_pdf.jsonl`.
+
+**Still open.**
+- The *Ontario Repository* (NYSHN only; needs the owner's unlocked browser).
+- The *Western Farmer* (Palmyra, 1821-1822), which is listed for Fulton History, not on this
+  archive.
+- The *Palmyra Reflector* (1829-1830).
+- The date of the Manchester Josephus accession (OCHS withdrawal book).

@@ -49,3 +49,23 @@ lower-case each page, strip everything but a-z, and search for `josephus`, `hist
 | *Lake Light* (Ulysses Philomathic Library) | https://trumansburg.advantage-preservation.com/ |
 | Ontario County Historical Society (holds the Manchester library volumes and record books) | https://ochs.org/ |
 | Grunder, *Mormon Parallels*: review giving format and price (not used as evidence) | https://interpreterfoundation.org/journal/finding-parallels-some-cautions-and-criticisms-part-one |
+
+## Page-image checks and Palmyra pulls (2026-11-06, BOM-33 follow-up)
+
+NYS Historic Newspapers needs the owner's unlocked browser (`scripts/nyshn_browser_pull.py`), and
+none was running. The same papers turned out to be public, without Cloudflare, on the Pioneer
+Library System's Advantage archive, so the scans were taken from there with the helpers in
+`ingest/advantage_archive.py` (viewer probe, `GetPdfFile`, one request a second or slower).
+
+| What | Where |
+| --- | --- |
+| Pioneer Library System digital archive (Wayne Sentinel title id 33165, 1823-1859; Palmyra Register 33163, 1817-1821, 648 pages; Palmyra Herald and Canal Advertiser 33159, 1822-1823, 157 pages) | https://pioneerlibrarysystem.advantage-preservation.com/ |
+| A page's viewer (resolves the page name to its PDF) | `https://pioneerlibrarysystem.advantage-preservation.com/viewer/?t=<title id>&i=t&fn=<name>&df=1&dt=10&cid=` |
+| Page names | `wayne_sentinel_usa_new_york_palmyra_<YYYYMMDD>_english_<n>`; `palmyra_register_usa_new_york_palmyra_<YYYYMMDD>_english_<n>`; `palmyra_herald_and_canal_advertiser_usa_new_york_palmyra_<YYYYMMDD>_english_<n>` |
+| Wayne Sentinel scans read by eye | 18240818 p3, 18261208 p3, 18271026 p4, 18290313 p4, 18290320 p4, 18291211 p3; PDFs in `data/corpus/advantage/pioneerlibrarysystem/` (not in git; checksums below) |
+| Palmyra Register pages read by eye | 15 Sep 1818 p3 (T. C. Strong's list), 27 Oct 1819 p4 (Strong & Bradish list), 27 Dec 1820 p4 (Wescott), 5 Jul 1820 p3, 9 Aug 1820 p3, 3 Jan 1821 p3 (false OCR leads) |
+| Palmyra Herald page read by eye | 7 Aug 1822 p4 (E. Peck & Co., Rochester: "Josephus' Work, 6 vols. D3."); viewer `https://pioneerlibrarysystem.advantage-preservation.com/viewer/?t=33159&i=t&fn=palmyra_herald_and_canal_advertiser_usa_new_york_palmyra_18220807_english_4&df=1&dt=10&cid=` |
+| Checksums | `data/manifests/palmyra_register_text.jsonl` (648), `data/manifests/palmyra_herald_text.jsonl` (157), `data/manifests/pioneerlibrarysystem_pdf.jsonl` (811 PDFs = 648 + 157 + 6 Sentinel pages) |
+| Palmyra Register, 15 Sep 1818, pp. 1-4 (T. C. Strong's book list, p. 3) | same folder; viewer `...viewer/?t=33163&i=t&fn=palmyra_register_usa_new_york_palmyra_18180915_english_3&df=1&dt=10&cid=` |
+| Palmyra Register 1817-1821 and Palmyra Herald 1822-1823, full runs | pulled by `ingest.advantage_archive.pull` with the two titles added at runtime (slugs `palmyra_register`, `palmyra_herald`): PDFs in `data/corpus/advantage/pioneerlibrarysystem/`, text layers and `pages.jsonl` in `data/newspapers/palmyra_register/` and `data/newspapers/palmyra_herald/` |
+| Ontario Repository (Canandaigua), 1809-1829 | NYSHN only (title index in `docs/new-york-newspapers.md`); not on Chronicling America (LoC records sn85026151, sn85042109, sn83031526 show no digitized pages) and not found on an Advantage site. Not searched |
