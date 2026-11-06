@@ -551,4 +551,8 @@ prior_work:
   gpt2_models: [gpt2, gpt2-medium]
   gpt2_revision: main   # pin to the resolved commit at first download
 
+review:
+  # BOM-38 (docs/simulated-review-plan.md): simulated peer review, labelled SIMULATED
+  model: claude-opus-5-5
+
 pending_amendment: []

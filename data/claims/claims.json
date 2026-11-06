@@ -1,0 +1,788 @@
+{
+ "config_sha256": "8397b899a1f4f917c4a5e286e3f1bc63a33100433c67ca0b4e1162e50444cbef",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "38ea70fcfc41c232646684726a11317eeef66db9",
+ "register_version": 0.1,
+ "frozen": false,
+ "claims": 17,
+ "by_status": {
+  "pending": 13,
+  "untestable": 4
+ },
+ "rows": [
+  {
+   "id": "c01-late-war-phrases",
+   "source": "ces_letter",
+   "stance": "critical",
+   "testable": "full",
+   "tested_by": [
+    "BOM-24"
+   ],
+   "evidence": [
+    {
+     "name": "rare:the_late_war",
+     "file": "data/reuse/bom/rare.json",
+     "status": "present",
+     "values": {
+      "rank": 131,
+      "shared": 22,
+      "density": 3.8594459940704877,
+      "p": 0.0006454104957437133,
+      "genre_p": 0.0003983087198970525,
+      "null_p99_density": 1.0894643005706126
+     }
+    },
+    {
+     "name": "rare:luke_kjv",
+     "file": "data/reuse/bom/rare.json",
+     "status": "present",
+     "values": {
+      "shared": 0,
+      "density": 0.0,
+      "p": 1.0,
+      "null_p99_density": 1.0894643005706126
+     }
+    },
+    {
+     "name": "semantic:the_late_war_1816",
+     "file": "data/semantic/named.json",
+     "status": "present",
+     "values": {
+      "group": "pseudo_biblical",
+      "rank": 6,
+      "of": 18,
+      "score": 1.8938295939861247,
+      "parallels": 49
+     }
+    },
+    {
+     "name": "semantic_null:the_late_war_1816",
+     "file": "data/semantic/named_null.json",
+     "status": "present",
+     "values": {
+      "percentile": 79.80000000000001,
+      "rank": 6,
+      "of": 18,
+      "score": 1.8938295939861247,
+      "null_p99": 14.574371461147503
+     }
+    },
+    {
+     "name": "triage",
+     "file": "data/semantic/triage.json",
+     "status": "present",
+     "values": {
+      "items": 1069,
+      "agreement": 0.7403846153846154,
+      "kappa": 0.5049365303244007,
+      "specific_both": 0
+     }
+    }
+   ],
+   "status": "pending"
+  },
+  {
+   "id": "c02-view-hebrews-themes",
+   "source": "ces_letter",
+   "stance": "critical",
+   "testable": "partial",
+   "tested_by": [
+    "BOM-25",
+    "BOM-26"
+   ],
+   "evidence": [
+    {
+     "name": "semantic:view_of_the_hebrews_1825",
+     "file": "data/semantic/named.json",
+     "status": "present",
+     "values": {
+      "group": "origins",
+      "rank": 1,
+      "of": 49,
+      "score": 29.644230583415464,
+      "parallels": 767
+     }
+    },
+    {
+     "name": "semantic_null:view_of_the_hebrews_1825",
+     "file": "data/semantic/named_null.json",
+     "status": "present",
+     "values": {
+      "percentile": 84.6,
+      "rank": 1,
+      "of": 49,
+      "score": 29.644230583415464,
+      "null_p99": 44.95758208205306
+     }
+    },
+    {
+     "name": "semantic_null:view_of_the_hebrews_1823",
+     "file": "data/semantic/named_null.json",
+     "status": "present",
+     "values": {
+      "percentile": 94.0,
+      "rank": 2,
+      "of": 49,
+      "score": 29.489632249212516,
+      "null_p99": 38.396428778479894
+     }
+    },
+    {
+     "name": "rare:view_of_the_hebrews",
+     "file": "data/reuse/bom/rare.json",
+     "status": "present",
+     "values": {
+      "rank": 9496,
+      "shared": 2,
+      "density": 0.366905155017428,
+      "p": 0.04643532937937914,
+      "genre_p": 0.17860573624262385,
+      "null_p99_density": 1.0894643005706126
+     }
+    },
+    {
+     "name": "triage",
+     "file": "data/semantic/triage.json",
+     "status": "present",
+     "values": {
+      "items": 1069,
+      "agreement": 0.7403846153846154,
+      "kappa": 0.5049365303244007,
+      "specific_both": 0
+     }
+    }
+   ],
+   "status": "pending"
+  },
+  {
+   "id": "c03-oliver-cowdery-link",
+   "source": "ces_letter",
+   "stance": "critical",
+   "testable": "none",
+   "tested_by": [],
+   "status": "untestable",
+   "reason": "A biographical and access question, not a stylometric one. BOM-33 may record documented availability, but availability is not transmission and this study cannot establish that anyone read anything."
+  },
+  {
+   "id": "c04-emode-vocabulary",
+   "source": "skousen_carmack",
+   "stance": "apologetic",
+   "testable": "full",
+   "tested_by": [
+    "BOM-29"
+   ],
+   "evidence": [
+    {
+     "name": "dating:grammar",
+     "file": "data/dating/validation.json",
+     "status": "present",
+     "values": {
+      "kjv_imitation_shift_years": -53.35110978326361,
+      "kjv_imitation_p": 9.999000099990002e-05,
+      "held_out_mae": 23.429819896833436
+     }
+    },
+    {
+     "name": "dating:lexical",
+     "file": "data/dating/validation.json",
+     "status": "present",
+     "values": {
+      "kjv_imitation_shift_years": -5.520347924682483,
+      "kjv_imitation_p": 0.2616738326167383,
+      "held_out_mae": 13.180791979982653
+     }
+    },
+    {
+     "name": "blind:dating",
+     "file": "data/blind/unblinded.json",
+     "status": "pending"
+    }
+   ],
+   "status": "pending"
+  },
+  {
+   "id": "c05-emode-syntax-not-imitable",
+   "source": "skousen_carmack",
+   "stance": "apologetic",
+   "testable": "full",
+   "tested_by": [
+    "BOM-29",
+    "BOM-31"
+   ],
+   "evidence": [
+    {
+     "name": "dating:grammar",
+     "file": "data/dating/validation.json",
+     "status": "present",
+     "values": {
+      "kjv_imitation_shift_years": -53.35110978326361,
+      "kjv_imitation_p": 9.999000099990002e-05,
+      "held_out_mae": 23.429819896833436
+     }
+    },
+    {
+     "name": "dating:transformer",
+     "file": "data/dating/transformer_validation.json",
+     "status": "pending"
+    },
+    {
+     "name": "imitation",
+     "file": "data/benchmark/imitation.json",
+     "status": "present",
+     "values": {
+      "alm_base": {
+       "forward": 0.4117647058823529,
+       "weight": 0.0
+      },
+      "alm_base_v1": {
+       "forward": 0.11764705882352941,
+       "weight": 0.0
+      },
+      "alm_base_v3": {
+       "forward": 0.23529411764705882,
+       "weight": 0.0
+      },
+      "burrows_delta": {
+       "forward": 0.7222222222222222,
+       "weight": 0.5
+      },
+      "cosine_delta": {
+       "forward": 0.7222222222222222,
+       "weight": 0.5
+      },
+      "ensc": {
+       "forward": 0.3888888888888889,
+       "weight": 0.0
+      },
+      "general_imposters": {
+       "forward": 0.6111111111111112,
+       "weight": 0.5
+      }
+     }
+    },
+    {
+     "name": "blind:dating",
+     "file": "data/blind/unblinded.json",
+     "status": "pending"
+    }
+   ],
+   "status": "pending"
+  },
+  {
+   "id": "c06-tight-control",
+   "source": "skousen_carmack",
+   "stance": "apologetic",
+   "testable": "none",
+   "tested_by": [],
+   "status": "untestable",
+   "reason": "A claim about the mechanism of production, not about the text's statistical properties. No stylometric result can distinguish tight control from any other account of how words reached the page. The study's dictation caveat stands either way."
+  },
+  {
+   "id": "c07-rigdon-spalding",
+   "source": "jockers_2008",
+   "stance": "critical",
+   "testable": "full",
+   "tested_by": [
+    "BOM-22",
+    "BOM-32"
+   ],
+   "evidence": [
+    {
+     "name": "file:data/benchmark/replication_jockers_pamr.json",
+     "file": "data/benchmark/replication_jockers_pamr.json",
+     "status": "present"
+    },
+    {
+     "name": "file:data/benchmark/replication_ensc.json",
+     "file": "data/benchmark/replication_ensc.json",
+     "status": "present"
+    },
+    {
+     "name": "synthesis",
+     "file": "data/synthesis/posterior_sizes.json",
+     "status": "pending"
+    },
+    {
+     "name": "blind:unblinded",
+     "file": "data/blind/unblinded.json",
+     "status": "pending"
+    }
+   ],
+   "status": "pending"
+  },
+  {
+   "id": "c08-wordprint-distinct-narrators",
+   "source": "larsen_1980",
+   "stance": "apologetic",
+   "testable": "full",
+   "tested_by": [
+    "BOM-17",
+    "BOM-32"
+   ],
+   "evidence": [
+    {
+     "name": "file:data/benchmark/replication_holmes.json",
+     "file": "data/benchmark/replication_holmes.json",
+     "status": "present"
+    },
+    {
+     "name": "manuscript",
+     "file": "data/manuscript/summary.json",
+     "status": "present",
+     "values": {
+      "same_scribe_cowdery": {
+       "original": {
+        "events": 1347,
+        "by_event": {
+         "false_start": 72,
+         "insertion": 291,
+         "deletion": 394,
+         "substitution": 590
+        },
+        "substitution_types": {
+         "sound_alike": 86,
+         "other": 408,
+         "homophone": 36,
+         "spelling": 60
+        },
+        "substitutions": 590,
+        "sound_based": 122,
+        "sound_share": 0.20677966101694914,
+        "names": 62
+       },
+       "printers": {
+        "events": 1814,
+        "by_event": {
+         "substitution": 837,
+         "insertion": 577,
+         "false_start": 26,
+         "deletion": 374
+        },
+        "substitution_types": {
+         "sound_alike": 117,
+         "other": 651,
+         "spelling": 63,
+         "homophone": 6
+        },
+        "substitutions": 837,
+        "sound_based": 123,
+        "sound_share": 0.14695340501792115,
+        "names": 69
+       },
+       "homophones": {
+        "original": 36,
+        "printers": 6,
+        "odds_ratio": 9.0,
+        "fisher_p": 2.374118884962111e-09
+       },
+       "sound_based_odds_ratio": 1.5132374400667084,
+       "sound_based_fisher_p": 0.0034676576361003172
+      }
+     }
+    },
+    {
+     "name": "blind:scribes",
+     "file": "data/benchmark/scribes.json",
+     "status": "pending"
+    }
+   ],
+   "status": "pending"
+  },
+  {
+   "id": "c09-open-set-none-of-the-above",
+   "source": "fields_2011",
+   "stance": "apologetic",
+   "testable": "full",
+   "tested_by": [
+    "BOM-22",
+    "BOM-32"
+   ],
+   "evidence": [
+    {
+     "name": "open_set",
+     "file": "data/benchmark/open_set.json",
+     "status": "present",
+     "values": {
+      "general_imposters": {
+       "closed_set": 0.8333333333333334,
+       "open_set_fpr": 0.6166666666666667,
+       "passes": false
+      },
+      "burrows_delta": {
+       "closed_set": 1.0,
+       "open_set_fpr": null,
+       "passes": null
+      },
+      "cosine_delta": {
+       "closed_set": 0.9722222222222222,
+       "open_set_fpr": null,
+       "passes": null
+      },
+      "ensc": {
+       "closed_set": 1.0,
+       "open_set_fpr": 0.6611111111111111,
+       "passes": false
+      },
+      "alm_base": {
+       "closed_set": 0.990909090909091,
+       "open_set_fpr": 0.38181818181818183,
+       "passes": false
+      },
+      "alm_base_v1": {
+       "closed_set": 0.9363636363636364,
+       "open_set_fpr": 0.4727272727272727,
+       "passes": false
+      },
+      "alm_base_v2": {
+       "closed_set": 0.9090909090909091,
+       "open_set_fpr": 0.13636363636363635,
+       "passes": false
+      },
+      "alm_base_v3": {
+       "closed_set": 0.8444444444444444,
+       "open_set_fpr": 0.7166666666666667,
+       "passes": false
+      },
+      "alm_gpt2": {
+       "closed_set": 0.9,
+       "open_set_fpr": 0.9181818181818182,
+       "passes": false
+      },
+      "alm_gpt2_medium": {
+       "closed_set": 0.9454545454545454,
+       "open_set_fpr": 0.8545454545454545,
+       "passes": false
+      },
+      "alm_pilot": {
+       "closed_set": 0.9363636363636364,
+       "open_set_fpr": 0.4727272727272728,
+       "passes": false
+      },
+      "alm_pilot_v1": {
+       "closed_set": 0.9363636363636364,
+       "open_set_fpr": 0.45454545454545453,
+       "passes": false
+      },
+      "alm_pilot_v2": {
+       "closed_set": 0.9,
+       "open_set_fpr": 0.2818181818181818,
+       "passes": false
+      },
+      "alm_pilot_v3": {
+       "closed_set": 0.8388888888888889,
+       "open_set_fpr": 0.6888888888888889,
+       "passes": false
+      },
+      "style_embed": {
+       "closed_set": 0.8388888888888889,
+       "open_set_fpr": 0.5,
+       "passes": false
+      }
+     }
+    },
+    {
+     "name": "synthesis",
+     "file": "data/synthesis/posterior_sizes.json",
+     "status": "pending"
+    },
+    {
+     "name": "blind:unblinded",
+     "file": "data/blind/unblinded.json",
+     "status": "pending"
+    }
+   ],
+   "status": "pending"
+  },
+  {
+   "id": "c10-pseudo-biblical-genre",
+   "source": "shalev",
+   "stance": "academic",
+   "testable": "full",
+   "tested_by": [
+    "BOM-18",
+    "BOM-31"
+   ],
+   "evidence": [
+    {
+     "name": "imitation",
+     "file": "data/benchmark/imitation.json",
+     "status": "present",
+     "values": {
+      "alm_base": {
+       "forward": 0.4117647058823529,
+       "weight": 0.0
+      },
+      "alm_base_v1": {
+       "forward": 0.11764705882352941,
+       "weight": 0.0
+      },
+      "alm_base_v3": {
+       "forward": 0.23529411764705882,
+       "weight": 0.0
+      },
+      "burrows_delta": {
+       "forward": 0.7222222222222222,
+       "weight": 0.5
+      },
+      "cosine_delta": {
+       "forward": 0.7222222222222222,
+       "weight": 0.5
+      },
+      "ensc": {
+       "forward": 0.3888888888888889,
+       "weight": 0.0
+      },
+      "general_imposters": {
+       "forward": 0.6111111111111112,
+       "weight": 0.5
+      }
+     }
+    },
+    {
+     "name": "dating:grammar",
+     "file": "data/dating/validation.json",
+     "status": "present",
+     "values": {
+      "kjv_imitation_shift_years": -53.35110978326361,
+      "kjv_imitation_p": 9.999000099990002e-05,
+      "held_out_mae": 23.429819896833436
+     }
+    },
+    {
+     "name": "blind:unblinded",
+     "file": "data/blind/unblinded.json",
+     "status": "pending"
+    }
+   ],
+   "status": "pending"
+  },
+  {
+   "id": "c11-dna-studies",
+   "source": "gospel_topics",
+   "stance": "apologetic",
+   "testable": "none",
+   "tested_by": [],
+   "status": "untestable",
+   "reason": "Genetics. Entirely outside this study."
+  },
+  {
+   "id": "c12-translation-method",
+   "source": "gospel_topics",
+   "stance": "apologetic",
+   "testable": "none",
+   "tested_by": [],
+   "status": "untestable",
+   "reason": "A production-process claim. This study takes it as a stated limit rather than testing it: dictation and scribes sit between any author and the page (pre-registration section 3). Cited as the source for that caveat."
+  },
+  {
+   "id": "c13-spalding-manuscript",
+   "source": "howe_1834",
+   "stance": "critical",
+   "testable": "full",
+   "tested_by": [
+    "BOM-24",
+    "BOM-25",
+    "BOM-26",
+    "BOM-28",
+    "BOM-32"
+   ],
+   "evidence": [
+    {
+     "name": "rare:spalding_manuscript_story",
+     "file": "data/reuse/bom/rare.json",
+     "status": "present",
+     "values": {
+      "shared": 1,
+      "density": 0.23904572944804342,
+      "p": 0.06816903887620342,
+      "null_p99_density": 1.0894643005706126
+     }
+    },
+    {
+     "name": "semantic:spalding_manuscript_story",
+     "file": "data/semantic/named.json",
+     "status": "present",
+     "values": {
+      "group": "origins",
+      "rank": 12,
+      "of": 49,
+      "score": 5.5268904477554255,
+      "parallels": 143
+     }
+    },
+    {
+     "name": "triage",
+     "file": "data/semantic/triage.json",
+     "status": "present",
+     "values": {
+      "items": 1069,
+      "agreement": 0.7403846153846154,
+      "kappa": 0.5049365303244007,
+      "specific_both": 0
+     }
+    },
+    {
+     "name": "synthesis",
+     "file": "data/synthesis/posterior_sizes.json",
+     "status": "pending"
+    },
+    {
+     "name": "blind:unblinded",
+     "file": "data/blind/unblinded.json",
+     "status": "pending"
+    }
+   ],
+   "status": "pending"
+  },
+  {
+   "id": "c14-first-book-of-napoleon",
+   "source": "named_sources",
+   "stance": "critical",
+   "testable": "full",
+   "tested_by": [
+    "BOM-24",
+    "BOM-25",
+    "BOM-26"
+   ],
+   "evidence": [
+    {
+     "name": "rare:first_book_of_napoleon",
+     "file": "data/reuse/bom/rare.json",
+     "status": "present",
+     "values": {
+      "rank": 63,
+      "shared": 12,
+      "density": 5.45404963185165,
+      "p": 0.0003129263009666489,
+      "genre_p": 0.0002763352232121588,
+      "null_p99_density": 1.0894643005706126
+     }
+    },
+    {
+     "name": "semantic:institutional_books:HH2NE7",
+     "file": "data/semantic/named.json",
+     "status": "present",
+     "values": {
+      "group": "pseudo_biblical",
+      "rank": 3,
+      "of": 18,
+      "score": 7.9231646279011345,
+      "parallels": 205
+     }
+    },
+    {
+     "name": "semantic_null:institutional_books:HH2NE7",
+     "file": "data/semantic/named_null.json",
+     "status": "present",
+     "values": {
+      "percentile": 98.4,
+      "rank": 3,
+      "of": 18,
+      "score": 7.9231646279011345,
+      "null_p99": 8.754903665912982
+     }
+    },
+    {
+     "name": "triage",
+     "file": "data/semantic/triage.json",
+     "status": "present",
+     "values": {
+      "items": 1069,
+      "agreement": 0.7403846153846154,
+      "kappa": 0.5049365303244007,
+      "specific_both": 0
+     }
+    }
+   ],
+   "status": "pending"
+  },
+  {
+   "id": "c15-cowdery-or-rigdon-author",
+   "source": "named_sources",
+   "stance": "critical",
+   "testable": "partial",
+   "tested_by": [
+    "BOM-28",
+    "BOM-32",
+    "BOM-35"
+   ],
+   "evidence": [
+    {
+     "name": "synthesis",
+     "file": "data/synthesis/posterior_sizes.json",
+     "status": "pending"
+    },
+    {
+     "name": "blind:unblinded",
+     "file": "data/blind/unblinded.json",
+     "status": "pending"
+    }
+   ],
+   "status": "pending"
+  },
+  {
+   "id": "c16-1820s-environment",
+   "source": "brodie_1945",
+   "stance": "critical",
+   "testable": "partial",
+   "tested_by": [
+    "BOM-29",
+    "BOM-63"
+   ],
+   "evidence": [
+    {
+     "name": "dating:grammar",
+     "file": "data/dating/validation.json",
+     "status": "present",
+     "values": {
+      "kjv_imitation_shift_years": -53.35110978326361,
+      "kjv_imitation_p": 9.999000099990002e-05,
+      "held_out_mae": 23.429819896833436
+     }
+    },
+    {
+     "name": "dating:transformer",
+     "file": "data/dating/transformer_validation.json",
+     "status": "pending"
+    },
+    {
+     "name": "blind:dating",
+     "file": "data/blind/unblinded.json",
+     "status": "pending"
+    }
+   ],
+   "status": "pending"
+  },
+  {
+   "id": "c17-holmes-narrators-cluster",
+   "source": "holmes_1992",
+   "stance": "academic",
+   "testable": "full",
+   "tested_by": [
+    "BOM-22",
+    "BOM-32",
+    "BOM-34"
+   ],
+   "evidence": [
+    {
+     "name": "file:data/benchmark/replication_holmes.json",
+     "file": "data/benchmark/replication_holmes.json",
+     "status": "present"
+    },
+    {
+     "name": "blind:scribes",
+     "file": "data/benchmark/scribes.json",
+     "status": "pending"
+    },
+    {
+     "name": "blind:unblinded",
+     "file": "data/blind/unblinded.json",
+     "status": "pending"
+    }
+   ],
+   "status": "pending"
+  }
+ ],
+ "note": "The register takes no side; untestable is not disproved."
+}

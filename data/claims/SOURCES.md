@@ -16,3 +16,5 @@ dated addition with its own decision rule, written before the verdict is filled 
 `novelty.yaml` — whether each claim this project makes is established, contested or new, with
 the citation or the search behind the verdict, and the near-miss rule (N = 20 below threshold per
 6.5/6.6 ranked list). Issue: BOM-51. Hand-maintained.
+
+`claims.json` — the register filled from the results that exist: per claim, each evidence file, present or pending, with its key numbers; verdicts only from the register. Rebuild: `python -m eval.claims table` (seconds). Issue: BOM-42.
