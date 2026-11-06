@@ -38,6 +38,7 @@ Usage::
     python -m kjv_mask.run candidates
     python -m kjv_mask.run controls
     python -m kjv_mask.run controls --missing-only   # mask only texts that have no spans yet
+    python -m kjv_mask.run sweep      # BOM-39's author blocks (sweep.units first)
     python -m kjv_mask.run known_answer              # BOM-61's known-answer texts
     python -m kjv_mask.run italics                   # BOM-62's independent translations
 """
@@ -169,6 +170,25 @@ def _docs(group: str) -> list[dict]:
             text = norm_path(cat[w]).read_text(encoding="utf-8", errors="replace")
             docs += [_in_memory(f"{w}#{a}", text[a:b]) for a, b in v["ranges"]]
         return docs
+    if group == "sweep":
+        # BOM-39's profile blocks and calibration chunks, each its own text (Amendment 28)
+        from sweep.units import OUT as SWEEP
+        from sweep.units import block_text
+
+        blocks = pq.read_table(SWEEP / "blocks.parquet").to_pylist()
+        need = {b["work_id"] for b in blocks}
+        cat = {
+            r["work_id"]: r
+            for r in pq.read_table(
+                "data/catalog/catalog.parquet", columns=["work_id", "source", "text_path"]
+            ).to_pylist()
+            if r["work_id"] in need
+        }
+        return [
+            {"id": b["block_id"], "words": b["words"],
+             "load": lambda r=cat[b["work_id"]], b=b: block_text(r, b["start"], b["words"])}
+            for b in blocks
+        ]  # fmt: skip
     raise SystemExit(f"unknown group {group}")
 
 
