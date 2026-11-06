@@ -41,8 +41,12 @@ MANIFEST = ROOT / "data/manifests/timelocked_lm_tokens.jsonl"
 
 
 def train_cmd() -> str:
-    return (f"cd {R} && tmux new-session -d -s train 'torchrun --nproc_per_node={GPUS} -m "
-            f"timelocked_lm.train large --out {R}/{OUT} --micro-batch 16 2>&1 | tee -a "
+    # micro-batch 8: the first launch (16) ran out of memory on step 2 once the optimizer state
+    # existed (67.9 of 80 GB at step 1, logs/large_pod/diag_micro16.out; that run was also in
+    # fp32 by a bug since fixed). At 8 in bf16 the peak is 33.8 GB. Same 512-sequence step.
+    return (f"cd {R} && tmux new-session -d -s train 'PYTORCH_CUDA_ALLOC_CONF=expandable_segments:"
+            f"True torchrun --nproc_per_node={GPUS} -m "
+            f"timelocked_lm.train large --out {R}/{OUT} --micro-batch 8 2>&1 | tee -a "
             "/workspace/train.out'")  # fmt: skip
 
 
@@ -180,6 +184,10 @@ def step(s: dict, issue: int, a) -> bool:
         if "model.pt" in out:
             s["phase"] = "fetch"
         elif "ALIVE" not in out:
+            err = sp.remote("tail -n 40 /workspace/train.out")[1]  # the error, kept on the Mac
+            (ROOT / "logs/large_pod").mkdir(parents=True, exist_ok=True)
+            with (ROOT / "logs/large_pod/train_tail.log").open("a") as f:
+                f.write(f"--- {sp.pw.now()}\n{err}\n")
             if s["restarts"] >= 3:
                 sp.pw.rest("POST", f"/pods/{s['pod']}/stop")
                 sp.event(s, f"training died 3 times; pod stopped for the owner. {out[-300:]}",
@@ -188,7 +196,8 @@ def step(s: dict, issue: int, a) -> bool:
             s["restarts"] += 1
             sp.remote(train_cmd())
             sp.event(s, f"training process gone; restarted from checkpoint "
-                        f"({s['restarts']}/3).", issue)  # fmt: skip
+                        f"({s['restarts']}/3). Last output: `{err.strip()[-200:]}`",
+                     issue)  # fmt: skip
         else:
             try:
                 last = json.loads(out.splitlines()[0])

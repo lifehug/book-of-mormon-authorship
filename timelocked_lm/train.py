@@ -21,7 +21,6 @@ Usage::
 from __future__ import annotations
 
 import argparse
-import contextlib
 import json
 import math
 import os
@@ -174,7 +173,8 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
     lead = rank == 0
     torch.manual_seed(derive_seed(f"{t['train_seed']}:{size}", cfg) % 2**31)
     model = GPT(vocab, t["context_length"], **shape).to(device)
-    ctx = (torch.autocast("cuda", dtype=torch.bfloat16) if device == "cuda"
+    # "cuda:N" under torchrun: a test of == "cuda" left the 1B's first run in fp32, 10x slower
+    ctx = (torch.autocast("cuda", dtype=torch.bfloat16) if device.startswith("cuda")
            else torch.autocast("cpu", enabled=False))  # fmt: skip
     seq = t["context_length"]
     per_step = t["batch_tokens"] // seq if size != "tiny" else 8
@@ -211,12 +211,10 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
     if lead:
         (out / "run.json").write_text(json.dumps(meta, indent=1) + "\n")
         print(json.dumps({k: v for k, v in meta.items() if "sha" not in k}), flush=True)
+    # several GPUs: no DistributedDataParallel. Each rank runs the compiled model as one GPU does
+    # and the gradients are averaged once per step. DDP gives the same average, but with
+    # torch.compile it ran 40 s a step on 2 H100s against 8.4 s on one (logs/large_pod/).
     fwd = torch.compile(model) if device.startswith("cuda") else model
-    if world > 1:
-        from torch.nn.parallel import DistributedDataParallel
-
-        ids = [device] if device.startswith("cuda") else None
-        fwd = DistributedDataParallel(fwd, device_ids=ids)
     log = (out / "log.jsonl").open("a") if lead else None
     last_ck, t0 = time.time(), time.time()
     while step < steps:
@@ -226,12 +224,15 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
         for a in range(accum):
             first = step * per_step + rank * per_rank + a * micro
             xy = train_w.batch(first, micro).to(device, non_blocking=True)
-            sync = world == 1 or a == accum - 1
-            with ctx, contextlib.nullcontext() if sync else fwd.no_sync():
+            with ctx:
                 loss = fwd(xy[:, :-1], xy[:, 1:]) / accum
                 loss.backward()
             loss_sum += loss.item()
         if world > 1:
+            for p in model.parameters():
+                if p.grad is not None:
+                    torch.distributed.all_reduce(p.grad)
+                    p.grad.div_(world)
             ls = torch.tensor(loss_sum, device=device)
             torch.distributed.all_reduce(ls)
             loss_sum = float(ls) / world
@@ -241,6 +242,8 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
         step += 1
         rec = {"step": step, "loss": loss_sum, "lr": opt.param_groups[0]["lr"],
                "grad_norm": float(norm), "sec": round(time.time() - t0, 1)}  # fmt: skip
+        if device.startswith("cuda"):
+            rec["mem_gb"] = round(torch.cuda.max_memory_allocated() / 2**30, 1)
         if step % t["eval_every_steps"] == 0 or step == steps or (size == "tiny" and step % 5 == 0):
             rec["val_loss"] = evaluate(model, val, t["eval_tokens"] if size != "tiny" else 20000,
                                        micro, device, ctx, rank, world)  # fmt: skip
