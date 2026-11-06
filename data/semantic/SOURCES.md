@@ -34,3 +34,5 @@ on an M4); the models are downloaded from Hugging Face by name
 - `skeleton/top.json`: the Book of Mormon against the 20 leading whole-corpus search sources
   (`skeleton.top_search_sources`, from `corpus_bom.json`): search rank, id, title, score, events
   matched, spans, order p; no text. Rebuild with `python -m semantic.skeleton top`.
+
+`triage.json`: BOM-26 (Amendment 27): biblical / common / specific counts per search, the confusion table and kappa between the two passes, and the pairs specific under both (ids only). Rebuild with `python -m semantic.triage first`, `second`, `report`; the replies, which hold corpus text, stay in `data/corpus/semantic/triage/`.

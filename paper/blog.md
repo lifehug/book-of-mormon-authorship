@@ -2687,8 +2687,30 @@ The trap with a search that big is that someone will always come out on top. Wit
 
 That last step is the one that keeps us honest: it turns "we found 12 leads!" into "we expected about 10 by chance, and got 12."
 
+## Sorting a thousand look-alike passages: biblical, common, or specific?
+
+The four borrowing searches each hand back passages that look like the Book of Mormon. A look-alike isn't a borrowing, though. Most of them share the Bible, or just the way everybody wrote sermons and histories in 1820. So BOM-26 sorted them. A model read 1,069 pairs (the strongest hits for the named sources, the 25 best for each of the 20 leading books, 250 at random, and the rare shared phrases) and put each one in a bin:
+
+| Bin | What it means | Pairs |
+| --- | --- | ---: |
+| Biblical | both lean on King James wording or a Bible story | 382 |
+| Common | stock phrasing or ideas of the period | 685 |
+| Specific | a shared detail neither the Bible nor stock phrasing explains | 2 |
+
+Then a second model, which couldn't see the first answers, re-checked every "specific" and 1 in 10 of the rest. (That's our stand-in for a human reviewer, and it's labelled simulated.)
+
+The two "specific" pairs are worth a look, because they're exactly the kind of thing people point to:
+
+- **Spalding's *Manuscript Story***: tamed, elephant-like beasts in ancient America. The Book of Mormon has elephants, cureloms and cumoms; Spalding has "Mammoons," bigger than elephants. The second reviewer: common. No shared wording past "elephant," and in 1800-1830 everyone was talking about mammoth and mastodon bones.
+- **A collected *Works* from 1820**: soldiers surviving a battle as proof that God backed a just war. The second reviewer: common. That's a stock theme of religious history writing.
+
+So: zero pairs specific under both reviewers. The two reviewers agreed on 74% of the pairs they both saw (kappa 0.50, moderate), and nearly all the disagreements were "biblical or common?" — never "is this a real link?"
+
+Plainly: everything the searches surfaced is explained by the Bible or by how people wrote then. Caveat: this is model judgement, not a human expert's.
+
 ## Log
 
+- **2026-11-06.** BOM-26 closed: 1,069 hit pairs triaged (Amendment 27): 382 biblical, 685 common, 2 specific on the first pass; the blind simulated second review called both common, so 0 specific under both. Agreement 0.740, kappa 0.505.
 - **2026-11-06.** BOM-27: the 1B's first launch died on step 2 (out of memory) and the error was stuck on an unreachable pod. Reproduced on a 2-GPU test pod (~$9): bf16 was off under torchrun (`"cuda:0"` failed an `== "cuda"` test), so fp32, 10x slow and out of memory. Fixed (4.3 s a step on 2 GPUs), relaunched 09:51, ~30 h. First attempt cost ~$33. BOM-39/47: Amendment 28 (OSF 6aee07a58d69291fd76cc3f8) fixes the author sweep's units, signals, calibration and the expected false-lead count before any author is indexed.
 - **2026-11-06.** BOM-27: Amendment 26 filed; 1B model (32 layers, width 1,600, 1.036B parameters) launched on 8 H100s, everything else as the 297M; ~17 h, ~$560-610. Blog: every sizing decision and its reason.
 - **2026-11-06.** BOM-28: all eight model-based benchmark runs in. 297M primary 99.1% right author, 38% false matches; V2 classifier head at 297M 14% false matches, the best; none passes. Amendment 25 (post hoc) corrected the false-match check; General Imposters 0% -> 62% under it. 297M published (huggingface.co/etherfuse/timelocked-1830-300m). Owner chose a 1B model on 8 H100s (BOM-70: funding). BOM-30 style model trained ($18), held-out top-1 0.42.

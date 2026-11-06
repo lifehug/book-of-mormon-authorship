@@ -25,3 +25,37 @@ Claude subscription.
 simulated). The random sample is 250 of about 214,500 non-Bible parallels, enough to say whether
 specific hits are common, not to find every one. Pairs and replies stay private (corpus text); the
 report holds ids, labels and counts.
+
+## Result (2026-11-06)
+
+All 1,069 pairs labelled by the first pass; the simulated second review (a different model, blind
+to the first label) re-labelled 104: both first-pass SPECIFIC pairs and a seeded 10% of the rest.
+Report: `data/semantic/triage.json`; replies and reasons (corpus text) stay in
+`data/corpus/semantic/triage/`.
+
+| Search | Biblical | Common | Specific (first pass) |
+| --- | ---: | ---: | ---: |
+| Paraphrase, named sources | 104 | 144 | 1 |
+| Paraphrase, 20 leading sources | 149 | 350 | 1 |
+| Paraphrase, random sample | 104 | 146 | 0 |
+| Rare phrases, named sources | 10 | 23 | 0 |
+| Rare phrases, 20 densest volumes | 15 | 22 | 0 |
+| **All** | **382** | **685** | **2** |
+
+**Pairs specific under both passes: 0.** The two first-pass SPECIFIC pairs:
+
+- Spalding's *Manuscript Story*: tamed elephant-like beasts in ancient America (the Book of
+  Mormon's elephants, cureloms and cumoms; Spalding's "Mammoons"). Second review: COMMON, no
+  shared wording beyond "elephant"; the period's interest in mammoth and mastodon remains.
+- A collected *Works* (Harvard `HXIH8X`, 1820): soldiers' survival as proof of a just war under
+  God's protection. Second review: COMMON, a stock providential theme with no shared wording.
+
+Agreement on the 104 doubly labelled pairs 0.740, Cohen's kappa 0.505 (moderate). Every
+disagreement but those two is COMMON against BIBLICAL (25 pairs); the passes never disagree about
+a pair being specific except the two above. Because the second pass sees every first-pass
+SPECIFIC, a missed specific pair would need the first pass to have called it biblical or common.
+
+**Reading.** Across the four borrowing tests' strongest and random hits, the similarities are
+explained by shared King James wording (36%) or by period stock phrasing and ideas (64%). Nothing
+the model triage could find needs a specific connection to any one text, the named sources
+included. Limit: model-assisted labels, with the human reviews of section 9 simulated.

@@ -10,7 +10,7 @@ amendment first; the issue comment carries the next action.
 | Job | Where | Started | Done (est.) | When it ends, start |
 | --- | --- | --- | --- | --- |
 | BOM-27 1B training (`scripts/large_pod.py`, tmux `largepod`) | 4 x H100 pod `89wpgyfino58g1` | 2026-11-06 09:51 (relaunch; first launch failed, see BOM-27) | 2026-11-07 ~17:00 | 1B benchmark (primary, V1-V3) on an H100 via `alm_pod.py` with `large`; publish (BOM-66); pick the working model by the benchmark |
-| BOM-26 triage (`semantic.triage` first -> second -> report, tmux `triage`) | hosted model, 500 calls/h | 2026-11-06 07:35 | 2026-11-06 evening | write up counts, kappa and SPECIFIC pairs; close BOM-26 |
+| BOM-39 KJV masking of sweep blocks (`kjv_mask.run sweep`, tmux `sweepmask`) | Mac CPU (passim) | 2026-11-06 09:56 | 2026-11-06 late | `sweep.index`: MFW counts and style vectors (Mac GPU), then `sweep.calibrate` |
 
 ## Next, in order (start the first whose inputs exist; several may run at once if they use different machines)
 
