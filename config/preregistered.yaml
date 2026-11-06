@@ -398,6 +398,7 @@ timelocked_lm:
   tokenizer_seed: bom27-tokenizer
   pilot_shape: {layers: 14, width: 768, heads: 12}     # 124.5M parameters with the 32k vocabulary
   base_shape: {layers: 24, width: 960, heads: 15}      # 297M parameters (registered: 300M, within 100-300M)
+  large_shape: {layers: 32, width: 1600, heads: 25}    # Amendment 26: 1,035,878,400 parameters, 8 H100s
   batch_tokens: 524288          # 512 sequences of 1,024 tokens per optimizer step
   adam_betas: [0.9, 0.95]
   weight_decay: 0.1

@@ -21,6 +21,7 @@ Usage::
 from __future__ import annotations
 
 import argparse
+import contextlib
 import json
 import math
 import os
@@ -129,16 +130,22 @@ def lr_at(step: int, steps: int, t: dict) -> float:
 
 
 @torch.no_grad()
-def evaluate(model, val: Windows, tokens: int, micro: int, device: str, ctx) -> float:
+def evaluate(model, val: Windows, tokens: int, micro: int, device: str, ctx, rank: int = 0,
+             world: int = 1) -> float:  # fmt: skip
+    """Mean loss over the first ``tokens`` validation tokens; with several GPUs each takes every
+    ``world``-th batch and the sums are combined."""
     model.eval()
     n = min(len(val), max(1, tokens // (val.n - 1)))
-    losses = []
-    for i in range(0, n, micro):
+    total = torch.zeros(2, device=device)
+    for i in range(rank * micro, n, world * micro):
         xy = val.batch(i, min(micro, n - i)).to(device)
         with ctx:
-            losses.append(model(xy[:, :-1], xy[:, 1:]).item())
+            loss = model(xy[:, :-1], xy[:, 1:]).float()
+        total += torch.stack([loss, torch.ones((), device=device)])
+    if world > 1:
+        torch.distributed.all_reduce(total)
     model.train()
-    return float(np.mean(losses))
+    return float(total[0] / total[1])
 
 
 def _save(path: Path, state: dict) -> None:
@@ -153,15 +160,26 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
     from tokenizers import Tokenizer
 
     vocab = Tokenizer.from_file("data/timelocked_lm/tokenizer.json").get_vocab_size()
-    shape = {"pilot": t["pilot_shape"], "base": t["base_shape"], "tiny": TINY}[size]
+    shape = {"pilot": t["pilot_shape"], "base": t["base_shape"], "tiny": TINY,
+             "large": t.get("large_shape")}[size]  # fmt: skip
     device = "cuda" if torch.cuda.is_available() else "mps" if torch.mps.is_available() else "cpu"
+    device = os.environ.get("TRAIN_DEVICE", device)  # smoke tests: force "cpu"
+    # several GPUs under torchrun (Amendment 26): the same global batch and window order, split
+    world, rank = int(os.environ.get("WORLD_SIZE", 1)), int(os.environ.get("RANK", 0))
+    if world > 1:
+        torch.distributed.init_process_group("nccl" if device == "cuda" else "gloo")
+        if device == "cuda":
+            device = f"cuda:{int(os.environ['LOCAL_RANK'])}"
+            torch.cuda.set_device(device)
+    lead = rank == 0
     torch.manual_seed(derive_seed(f"{t['train_seed']}:{size}", cfg) % 2**31)
     model = GPT(vocab, t["context_length"], **shape).to(device)
     ctx = (torch.autocast("cuda", dtype=torch.bfloat16) if device == "cuda"
            else torch.autocast("cpu", enabled=False))  # fmt: skip
     seq = t["context_length"]
     per_step = t["batch_tokens"] // seq if size != "tiny" else 8
-    accum = max(1, per_step // micro)
+    per_rank = per_step // world
+    accum = max(1, per_rank // micro)
     # the smoke test trains on the validation split, so it can run before the full encode
     train_w = Windows(
         "validation" if size == "tiny" else "train",
@@ -169,7 +187,7 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
         derive_seed(f"{t['train_seed']}:order", cfg),
     )
     val = Windows("validation", seq, derive_seed(f"{t['train_seed']}:validation", cfg))
-    steps = len(train_w) // (accum * micro) * t["epochs"]
+    steps = len(train_w) // per_step * t["epochs"]
     if max_steps:
         steps = min(steps, max_steps)
     decay = [p for p in model.parameters() if p.dim() >= 2]
@@ -177,7 +195,7 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
     opt = torch.optim.AdamW([{"params": decay, "weight_decay": t["weight_decay"]},
                              {"params": other, "weight_decay": 0.0}],
                             lr=t["peak_lr"], betas=tuple(t["adam_betas"]),
-                            fused=device == "cuda")  # fmt: skip
+                            fused=device.startswith("cuda"))  # fmt: skip
     out.mkdir(parents=True, exist_ok=True)
     ck = out / "checkpoint.pt"
     step = 0
@@ -189,22 +207,34 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
         print(f"resumed at step {step:,}", flush=True)
     meta = {**stamp(), "size": size, "shape": shape, "params": params(model), "vocab": vocab,
             "steps": steps, "micro_batch": micro, "accum": accum, "seq": seq,
-            "train_windows": len(train_w), "device": device}  # fmt: skip
-    (out / "run.json").write_text(json.dumps(meta, indent=1) + "\n")
-    print(json.dumps({k: v for k, v in meta.items() if "sha" not in k}), flush=True)
-    fwd = torch.compile(model) if device == "cuda" else model
-    log = (out / "log.jsonl").open("a")
+            "train_windows": len(train_w), "device": device, "gpus": world}  # fmt: skip
+    if lead:
+        (out / "run.json").write_text(json.dumps(meta, indent=1) + "\n")
+        print(json.dumps({k: v for k, v in meta.items() if "sha" not in k}), flush=True)
+    fwd = torch.compile(model) if device.startswith("cuda") else model
+    if world > 1:
+        from torch.nn.parallel import DistributedDataParallel
+
+        ids = [device] if device.startswith("cuda") else None
+        fwd = DistributedDataParallel(fwd, device_ids=ids)
+    log = (out / "log.jsonl").open("a") if lead else None
     last_ck, t0 = time.time(), time.time()
     while step < steps:
         for g in opt.param_groups:
             g["lr"] = lr_at(step, steps, t)
         loss_sum = 0.0
         for a in range(accum):
-            xy = train_w.batch((step * accum + a) * micro, micro).to(device, non_blocking=True)
-            with ctx:
+            first = step * per_step + rank * per_rank + a * micro
+            xy = train_w.batch(first, micro).to(device, non_blocking=True)
+            sync = world == 1 or a == accum - 1
+            with ctx, contextlib.nullcontext() if sync else fwd.no_sync():
                 loss = fwd(xy[:, :-1], xy[:, 1:]) / accum
-            loss.backward()
+                loss.backward()
             loss_sum += loss.item()
+        if world > 1:
+            ls = torch.tensor(loss_sum, device=device)
+            torch.distributed.all_reduce(ls)
+            loss_sum = float(ls) / world
         norm = torch.nn.utils.clip_grad_norm_(model.parameters(), t["grad_clip"])
         opt.step()
         opt.zero_grad(set_to_none=True)
@@ -213,21 +243,34 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
                "grad_norm": float(norm), "sec": round(time.time() - t0, 1)}  # fmt: skip
         if step % t["eval_every_steps"] == 0 or step == steps or (size == "tiny" and step % 5 == 0):
             rec["val_loss"] = evaluate(model, val, t["eval_tokens"] if size != "tiny" else 20000,
-                                       micro, device, ctx)  # fmt: skip
-            print(json.dumps(rec), flush=True)
-        log.write(json.dumps(rec) + "\n")
-        log.flush()
-        if time.time() - last_ck > ckpt_minutes * 60 or step == steps:
-            _save(ck, {"model": model.state_dict(), "optimizer": opt.state_dict(), "step": step})
+                                       micro, device, ctx, rank, world)  # fmt: skip
+            if lead:
+                print(json.dumps(rec), flush=True)
+        if lead:
+            log.write(json.dumps(rec) + "\n")
+            log.flush()
+        due = time.time() - last_ck > ckpt_minutes * 60 or step == steps
+        if world > 1:  # every rank decides alike (rank 0's clock)
+            flag = torch.tensor(int(due), device=device)
+            torch.distributed.broadcast(flag, 0)
+            due = bool(flag)
+        if due:
+            if lead:
+                _save(ck, {"model": model.state_dict(), "optimizer": opt.state_dict(),
+                           "step": step})  # fmt: skip
             last_ck = time.time()
-    torch.save(model.state_dict(), out / "model.pt")
-    print(f"done: {steps:,} steps -> {out / 'model.pt'}", flush=True)
+    if lead:
+        torch.save(model.state_dict(), out / "model.pt")
+        print(f"done: {steps:,} steps -> {out / 'model.pt'}", flush=True)
+    if world > 1:
+        torch.distributed.barrier()
+        torch.distributed.destroy_process_group()
     return 0
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("size", choices=("pilot", "base", "tiny"))
+    ap.add_argument("size", choices=("pilot", "base", "large", "tiny"))
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--micro-batch", type=int, default=32, help="sequences per forward pass")
     ap.add_argument("--max-steps", type=int, default=None, help="smoke tests only")

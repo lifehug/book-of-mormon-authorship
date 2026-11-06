@@ -45,10 +45,13 @@ def embedder(model: Path, cfg: dict):
 
     @torch.no_grad()
     def embed(words: list[str]) -> np.ndarray:
+        """One episode of all the text's passages; passages run 64 at a time (the same mean)."""
         ids = tok.encode(" ".join(words)).ids
         k = max(1, len(ids) // n)
-        x = torch.tensor((ids + [0] * n)[: k * n], dtype=torch.long, device=dev).view(1, k, n)
-        return enc(x)[0].float().cpu().numpy().astype(np.float64)
+        x = torch.tensor((ids + [0] * n)[: k * n], dtype=torch.long, device=dev).view(k, n)
+        v = torch.cat([enc.passages(x[i : i + 64]) for i in range(0, k, 64)]).mean(dim=0)
+        z = torch.nn.functional.normalize(enc.head(v).float(), dim=-1)
+        return z.cpu().numpy().astype(np.float64)
 
     return embed
 
@@ -73,15 +76,18 @@ def run(model: Path) -> int:
         names = sorted(task["authors"])
         per_trial = cfg["classic"]["imposters"]["per_trial"]
         gi_args = {**kw["imposters"], "n_imposters": min(len(P), per_trial)}
-        recs = []
+        recs, cache = [], {}
         for a, test, span in task["tests"]:
             x = embed(test)
             prof = {}
             for b in names:
-                bl = task["authors"][b]
-                if b == a and span:
-                    bl = bl[: span[0]] + bl[span[1] :]
-                prof[b] = embed([w for blk in bl for w in blk])
+                key = (b, tuple(span) if (b == a and span) else None)
+                if key not in cache:
+                    bl = task["authors"][b]
+                    if key[1]:
+                        bl = bl[: span[0]] + bl[span[1] :]
+                    cache[key] = embed([w for blk in bl for w in blk])
+                prof[b] = cache[key]
             dist = {b: cosine_delta(x, prof[b]) for b in names}
             gs = {b: general_imposters(x, prof[b], P, seed=rng.randrange(2**31), **gi_args)
                   for b in names}  # fmt: skip
