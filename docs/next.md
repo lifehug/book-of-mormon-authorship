@@ -9,7 +9,7 @@ amendment first; the issue comment carries the next action.
 
 | Job | Where | Started | Done (est.) | When it ends, start |
 | --- | --- | --- | --- | --- |
-| BOM-27 1B training (`scripts/large_pod.py`, tmux `largepod`) | 4 x H100 pod `89wpgyfino58g1` | 2026-11-06 09:51 (relaunch; first launch failed, see BOM-27) | 2026-11-07 ~15:30 (2.16 s a step) | 1B benchmark (primary, V1-V3) on an H100 via `alm_pod.py` with `large`; publish (BOM-66); pick the working model by the benchmark |
+| BOM-27 1B training (`scripts/large_pod.py`, tmux `largepod`) | 4 x H100 pod `qmon0qov69hb7r` | 2026-11-06 13:25 (third start: an SSH outage was read as crashes and the pod stopped at 12:08) | 2026-11-07 ~19:30 (2.2 s a step) | 1B benchmark (primary, V1-V3) on an H100 via `alm_pod.py` with `large`; publish (BOM-66); pick the working model by the benchmark |
 | BOM-39 KJV masking of sweep blocks (`kjv_mask.run sweep`, tmux `sweepmask`) | Mac CPU (passim) | 2026-11-06 09:56 | 2026-11-07 ~06:00 (659 batches, ~1.8 min each) | chained (`scripts/sweep_chain.sh`, tmux `sweepchain`): `sweep.index` tokens, mfw, embed, then `sweep.calibrate`; then write up BOM-39/47 against the 70% rule |
 | After the 1B (`scripts/after_1b.sh`, tmux `after1b`) | waits on the 1B; then 1 H100 | 2026-11-06 10:44 | 1B benchmark ~Sat 19:00, then published | pick the working model by the benchmark; BOM-28 candidate models |
 | BOM-29 transformer cross-check (`dating.transformer` embed -> fit -> validate, tmux `bom29`) | Mac GPU | 2026-11-06 11:20 | 2026-11-06 ~21:30 | write up beside the grammar model; close BOM-29 |
