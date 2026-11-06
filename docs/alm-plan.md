@@ -97,3 +97,64 @@ multiplicity question arises. What the runs show:
 **Size decision (Amendment 2's decision point), owner 2026-11-06:** accuracy on the hard half is
 still rising steeply with size, so the owner chose a 1B model on 8 H100s (BOM-70 for funding;
 Amendment 26 to pin it). The 1B is benchmarked the same way when it exists.
+
+## Candidate models (BOM-28, Amendment 30)
+
+Written 2026-11-06, before any candidate or control model is fine-tuned. Code: `alm/candidates.py`
+(`plan`, `train`, `validate`) and `scripts/candidates_pod.py` (the rented H100). The Book of
+Mormon is not read: these models score the sealed text only in BOM-32.
+
+**Which models.** 5.2 asks for one fine-tuned copy per candidate and per control group. A unit is a
+candidate's sample type in one period, in Amendment 5's admitted provenance tiers (handwritten,
+dictated, printed by the author, posthumous; scribal copies stay catalogued and out), King James
+spans masked as the Book of Mormon's are (4.4), so Joseph Smith's dictated and handwritten samples
+are separate units as section 3 requires. Pre-1830 units are the confirmatory ones; post-1830 units
+are Amendment 5's secondary analysis, used only where BOM-48's time-split gate allows and read
+one-way for the exposed candidates.
+
+| Unit | Masked words | Held out (blocks) | Trains on | Flag |
+| --- | ---: | ---: | ---: | --- |
+| Ethan Smith, printed, pre-1830 | 277,391 | 70 | 207,000 | |
+| Gilbert J. Hunt, printed, pre-1830 | 56,956 | 14 | 42,000 | |
+| Solomon Spalding, posthumous, pre-1830 | 41,833 | 11 | 30,000 | |
+| Joseph Smith, dictated, pre-1830 | 2,720 | untested | 2,720 | unreliable sample |
+| Oliver Cowdery, handwritten, pre-1830 | 1,310 | untested | 1,310 | unreliable sample |
+| Joseph Smith, dictated, post-1830 | 5,039 | untested | 5,039 | unreliable sample |
+| Joseph Smith, handwritten, post-1830 | 6,363 | untested | 6,363 | unreliable sample |
+| Oliver Cowdery, printed, post-1830 | 44,338 | 11 | 33,000 | |
+| Parley P. Pratt, printed, post-1830 | 91,478 | 23 | 68,000 | |
+| Sidney Rigdon, printed, post-1830 | 21,516 | 6 | 15,000 | |
+| W. W. Phelps, printed, post-1830 | 28,479 | 7 | 21,000 | |
+
+Rigdon, Pratt and Phelps have no pre-1830 text, so no confirmatory model (as BOM-43's table).
+
+**Control groups.** One model each for the four registered groups (BOM-18): pseudo-biblical (the
+curated list, `controls.pseudo_biblical`), 1820s sermons and tracts, histories with Native American
+origin texts, and general prose. The groups run to hundreds of millions of words, so each model
+trains on a seeded sample of about `alm.control_words` (300,000, the order of the largest candidate)
+masked words: volumes in a seeded order, the middle `max(alm.control_passage_words,
+ceil(300,000 / volumes))` words of each, so the 17 curated pseudo-biblical volumes each give about
+17,600 words and the large groups 5,000 from each of 60 volumes.
+
+**Held-out text, and decoys.** Amendment 22's rule unchanged: a unit with at least 10 blocks of
+1,000 words holds out its last max(5, ceil(n/4)) blocks, and its tests are the distinct 5,000-word
+windows in that tail (up to 20). Shorter units train on all their text and are not tested; they
+already carry the unreliable flag. The tails are never trained on, so they are where BOM-32 draws
+its decoy segments for candidates and controls (8: decoys from known candidates and controls);
+`data/benchmark/alm_candidates_plan.json` records each tail's position.
+
+**Training and weights.** Amendment 22's fine-tuning (3 epochs, 1e-5, AdamW, 1,024-token
+sequences, batch 8, float32) from the working model the 1B benchmark picks (`base` or `large`).
+Unlike the benchmark, the weights are kept (`data/corpus/alm/candidates/<size>/`, SHA-256 in the
+result), because BOM-32 scores the sealed text with them.
+
+**Validation.** Every model scores every unit's held-out windows. Reported per unit: closed-set
+accuracy among all units and among the candidates, and 6.1's authorial-model score, the margin
+between a candidate's model and the best control model (best control score minus the candidate's;
+above zero, the candidate fits better than every control). On a control's held-out text the best
+candidate's margin is reported too: how far a wrong candidate gets past the controls. The 6.1
+thresholds for this margin are calibrated with the other methods' before the blind run (BOM-32);
+nothing here sets them.
+
+**Cost.** About 15 fine-tunes of 2,700 to 400,000 tokens. At 297M on one H100 in float32, well
+under an hour in all; at 1B, about 2 to 3 hours plus saving and fetching about 60 GB of weights.
