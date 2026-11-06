@@ -488,4 +488,22 @@ dating:
   keyed_check_years: [1780, 1809]   # keyed (TCP) and OCR volumes of the same decades
 
 
+sweep:
+  # Amendment 28 (OSF revision 6aee07a58d69291fd76cc3f8; docs/sweep-plan.md): BOM-39 and BOM-47
+  min_words: 10000              # section 7 floor, non-duplicate volumes
+  block_words: 1000
+  max_blocks: 20                # profile sample cap: 20,000 words, round-robin over works
+  block_seed: bom39-blocks
+  mfw: 300                      # the registered middle MFW value
+  query_chunk_words: 5000       # BOM-17's discovery chunks
+  max_query_chunks: 22          # the discovery half's 5,000-word chunk count
+  calibration_books: 200
+  calibration_seed: bom39-calibration
+  min_book_words: 5000
+  usable_top1: 0.70             # each signal separately (6.6, strict reading)
+  lead_percentile: 5            # of best-false-match distance, per signal
+  unremarkable_percentile: 95   # of leave-one-out false-lead counts
+  gate_sample: 100
+  gate_seed: bom47-gate
+
 pending_amendment: []

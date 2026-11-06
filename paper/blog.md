@@ -2658,8 +2658,38 @@ The number that decided it is the last one. The hardest part of this whole proje
 
 **What I'm watching on the bill.** Money got added in two steps, so the run starts on what was there and pauses itself if the balance gets low, saving its place and picking up again when topped up. Total GPU spend so far, models plus the passage index plus last night's tests: about $260.
 
+## The 1B's false start, and a one-word bug
+
+The big model (1 billion parameters) launched on four rented H100s at 7:17 in the morning and was dead by 7:38. It crashed on its second step, the watchdog restarted it three times, then stopped the machine, as it was built to. The bad part: the error message was on that machine, and when I tried to start it again to read it, RunPod said its GPUs had gone to someone else. So the log was out of reach.
+
+Rather than guess and pay for another hour of copying 50 GB of training data just to crash again, I rented two GPUs for an hour (about $9) and ran three steps of the real thing.
+
+- First answer: out of memory. Step 1 used 67.9 of the card's 80 GB; step 2 adds the optimizer's own bookkeeping (about 8 GB more) and tips over. Easy fix: feed 8 sequences at a time instead of 16. The model still learns from the same 512 sequences per update, it just adds them up in smaller pieces.
+- Second problem, worse: even when it fit, it ran at 40 seconds a step on two GPUs. One GPU alone did a step in 8.4 seconds. Two should take about 4. At 40, the run would have taken weeks and thousands of dollars.
+
+I chased the wrong suspect first. I assumed the code that splits work across GPUs was the problem, rewrote that part, and got... 39 seconds. Then I tested CPU threads: 39 seconds. The real cause was one comparison. The code switches on the GPU's fast half-precision math only when the device is called exactly `"cuda"`. With several GPUs, each one is called `"cuda:0"`, `"cuda:1"` and so on. So the multi-GPU run quietly did everything in full precision, about ten times slower, and twice as hungry for memory. The earlier models each ran on one GPU called `"cuda"`, so they were never affected.
+
+Fixed, it ran at 4.3 seconds a step on two GPUs. The lesson I'm keeping: when a crash happens on a rented machine, save the error to my own disk before anything else. The watchdog does that now.
+
+Cost of the false start: about $33. The 1B is running again; about 30 hours to go.
+
+## The author sweep: before looking, write down how many false leads to expect
+
+The next big piece is the sweep: compare the Book of Mormon with every author in the 1780-1830 library who has at least 10,000 words, about 46,000 people, to see if anyone nobody has proposed is close.
+
+The trap with a search that big is that someone will always come out on top. With 46,000 authors, a few will look close by pure chance, and a list of "leads" reads like a finding even when it's noise. So the plan (Amendment 28, filed before anything is measured) does this in order:
+
+1. Build each author's profile from a fair sample: up to 20,000 words, spread across their different books, with Bible quotations masked out just like the Book of Mormon's.
+2. Two independent measuring sticks: common-word habits (the classic method) and the style fingerprints from BOM-30. A lead has to show up under both.
+3. Test it on 200 books whose authors we know, by authors the style model never trained on. Does the true author come out first? The rule we registered says it has to in at least 70% of cases, or the sweep isn't usable.
+4. Then hide each true author and see how close the best wrong author gets. That sets the bar a lead has to beat.
+5. Count how many wrong authors clear the bar per book on average. That's the expected number of false leads, and it gets written down *before* we run the Book of Mormon. If the Book of Mormon gets about that many leads, that's unremarkable. Only a lot more than that would be surprising.
+
+That last step is the one that keeps us honest: it turns "we found 12 leads!" into "we expected about 10 by chance, and got 12."
+
 ## Log
 
+- **2026-11-06.** BOM-27: the 1B's first launch died on step 2 (out of memory) and the error was stuck on an unreachable pod. Reproduced on a 2-GPU test pod (~$9): bf16 was off under torchrun (`"cuda:0"` failed an `== "cuda"` test), so fp32, 10x slow and out of memory. Fixed (4.3 s a step on 2 GPUs), relaunched 09:51, ~30 h. First attempt cost ~$33. BOM-39/47: Amendment 28 (OSF 6aee07a58d69291fd76cc3f8) fixes the author sweep's units, signals, calibration and the expected false-lead count before any author is indexed.
 - **2026-11-06.** BOM-27: Amendment 26 filed; 1B model (32 layers, width 1,600, 1.036B parameters) launched on 8 H100s, everything else as the 297M; ~17 h, ~$560-610. Blog: every sizing decision and its reason.
 - **2026-11-06.** BOM-28: all eight model-based benchmark runs in. 297M primary 99.1% right author, 38% false matches; V2 classifier head at 297M 14% false matches, the best; none passes. Amendment 25 (post hoc) corrected the false-match check; General Imposters 0% -> 62% under it. 297M published (huggingface.co/etherfuse/timelocked-1830-300m). Owner chose a 1B model on 8 H100s (BOM-70: funding). BOM-30 style model trained ($18), held-out top-1 0.42.
 - **2026-11-05.** BOM-66: the 125M model is public at huggingface.co/etherfuse/timelocked-1830-125m (CC BY-NC 4.0; owner's decision, no memorization check). BOM-28: Amendment 22 (OSF 6aed5219b9cd9627025f6179) filed before any author model was trained; the benchmark run at 125M started (18 author copies, 110 held-out samples); the 300M run and the 300M release follow automatically when the base model is home.
