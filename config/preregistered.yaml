@@ -407,6 +407,18 @@ timelocked_lm:
   eval_tokens: 20000000
   train_seed: bom27-train
 
+alm:
+  # Amendment 22 (OSF revision 6aed5219b9cd9627025f6179; docs/alm-plan.md): ALMs on the benchmark
+  holdout_share: 0.25           # of a testable author's 1,000-word blocks, the tail, at least 5
+  max_tests: 20                 # distinct held-out windows per author (benchmark.trials)
+  test_seed: bom28-alm-tests
+  train_seed: bom28-alm-train
+  fold_seed: benchmark-alm-fold
+  seq: 1024                     # fine-tuning sequence length (non-overlapping)
+  batch: 8
+  score_window: 512             # 5.2: fixed 512-token windows, averaged
+  precision: fp32
+
 dating:
   # 5.3, 6.4; Amendment 2 (multinomial logistic regression over a literature-drawn grammatical
   # feature list, 10,000 permutations); Amendment 17 (BOM-29; OSF revision
