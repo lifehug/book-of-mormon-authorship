@@ -14,6 +14,7 @@ amendment first; the issue comment carries the next action.
 | After the 1B (`scripts/after_1b.sh`, tmux `after1b`) | waits on the 1B; then 1 H100 | 2026-11-06 10:44 | 1B benchmark ~Sat 19:00, then published | pick the working model by the benchmark; BOM-28 candidate models |
 | BOM-29 transformer cross-check (`dating.transformer` embed -> fit -> validate, tmux `bom29`) | Mac GPU | 2026-11-06 11:20 | 2026-11-06 ~21:30 | write up beside the grammar model; close BOM-29 |
 | BOM-28 `alm.candidates plan`, then BOM-31 `eval.imitation build` + `classic` (tmux `prep`) | Mac CPU | 2026-11-06 ~12:00 | ~12:40 | candidates: train on an H100 at the picked size (`candidates_pod.py`); imitation: `style` when the GPU frees, `alm` at the picked size, `report` |
+| BOM-28 candidate models at 297M (`candidates_pod.py --size base`, tmux `candpod`) | 1 H100, cap $25 | 2026-11-06 10:58 | ~12:30 | `alm.candidates validate base`; retrain at 1B if the 1B wins its benchmark |
 | Job monitor (`scripts/jobwatch.py` under a Monitor) and hourly check-in | this session | 2026-11-06 | - | reports any crash, stall or finish at once; hourly: start whatever is ready |
 
 ## Next, in order (start the first whose inputs exist; several may run at once if they use different machines)
