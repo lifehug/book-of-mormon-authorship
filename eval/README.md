@@ -207,6 +207,8 @@ Plan, registered before any training (Amendment 16): `docs/timelocked-plan.md`.
 | `python -m blind.thresholds base\|large` | `alm.candidates validate` at that size; the committed benchmark files | 6.1's match / non-match thresholds per method from benchmark data only: GI (`thresholds.json`), style (`style_embed.json`), ALM margins (`alm_candidates_<size>.json`); commit before the blind run | `data/blind/thresholds.json` | seconds |
 | `python -m blind.run --size base\|large [--only ...] [--sealed <path>]` | every scorer built; a fresh session | scores every sealed id with every method, hashes outputs | `data/blind/outputs/`, `outputs.json` | ~3-4 h |
 | `python -m blind.unblind [--key ...]` | outputs committed | checks hashes, applies the key, decoy accuracy, sweep leads, leave-one-candidate-out | `data/blind/unblinded.json` | minutes |
+| `python -m synth.model rates base\|large` | `data/blind/thresholds.json`; benchmark results (and `alm_candidates_<size>.json` for the authorial family) | BOM-35: each method family's closed-set accuracy and the shares of benchmark positives and negatives in each 6.1 band, from benchmark data only | `data/synthesis/rates.json` | seconds |
+| `python -m synth.model run [--unblinded data/blind/unblinded.json]` | `rates`; the unblinded run; `data/benchmark/imitation.json` | 6.7's posterior over the reliable candidates and "not in set" per half and both, with the prior grid, drop-one, equal weights, independent chunks and the secondary candidates; dating, sweep and access beside | `data/synthesis/posterior.json` | seconds |
 | `scripts/after_1b.sh` | the 1B driver; `~/.config/runpod/token`, `~/.config/huggingface/token` | waits for the 1B to be home (driver state done, `model.pt` on the Mac), runs `alm_pod.py --size large` (primary, V1-V3 on a rented H100, cap $40), then converts, cards and uploads the 1B to `etherfuse/timelocked-1830-1b` (owner-approved); run a frozen copy under tmux | `data/benchmark/alm_large*.json`; the Hugging Face repo | ~3-4 h after the 1B |
 | `python scripts/jobwatch.py [--interval 60 --stall 20]` | - | prints a line whenever a tmux job starts or ends, the 1B driver logs an event, or a Mac job log shows an error, an EXIT line or goes silent; run under a monitor so a crash is seen at once | stdout | runs until stopped |
 | `scripts/pod_upload.sh` | - | copies the token files to the rented pod in 8 parallel rsync streams (no ownership: the pod's network disk refuses chown); rerunnable | the pod's `/workspace/corpus/timelocked_lm/tokens/` | ~1-1.5 h at 124 Mbps up |
@@ -225,6 +227,15 @@ Plan: `docs/imitation-plan.md` (to be registered as Amendment 31).
 | `python -m eval.imitation style` | `build`; the BOM-30 encoder | the style embeddings on both directions | `data/benchmark/imitation/style_embed.json` | ~10 min (GPU) |
 | `python -m eval.imitation alm <size> [--variant v1\|v3] [--micro-batch 8]` | `build`; the working model size | the authorial language models (one fine-tune per candidate per direction) or V3's hidden states | `data/benchmark/imitation/alm_<size>[_v].json` | 3-5 h on an H100 at 1B |
 | `python -m eval.imitation report` | the method parts | per method: forward accuracy with exact 95% interval and n, per author, section 9's weight; reverse accuracy | `data/benchmark/imitation.json` | seconds |
+
+## 11c. The gain over prior work (BOM-68)
+
+Plan: `docs/prior-work-plan.md`; Amendment 36 (draft) pins the GPT-2 ablation and the config.
+
+| Command | Status | What it does | Writes | Time |
+| --- | --- | --- | --- | --- |
+| `python -m eval.prior_work table` | reporting of registered runs (needs the `prior_work:` config) | every method, prior and ours, in one table on the benchmark's tests: closed set with a bootstrap interval, Amendment 25's false-match rate, pass; McNemar's exact test for every pair measured on the same tests; published Book of Mormon attributions beside our replications | `data/benchmark/prior_work.json` | seconds |
+| `python -m eval.prior_work ablation gpt2\|gpt2-medium [--micro-batch 8]` | Amendment 36 (draft) | Amendment 22's ALM pipeline with an off-the-shelf GPT-2 as the base, benchmark only (GPT-2 may have read the Book of Mormon, so it is never applied to it); then `eval.open_set rescore` and `table` | `data/benchmark/alm_gpt2*.json` | 124M: hours on the Mac; 355M: ~1 h on an H100 |
 
 ## 12. Linguistic dating (BOM-29)
 
@@ -247,3 +258,12 @@ Amendment 18; terms per source `docs/derived-data-terms.md`.
 | --- | --- | --- | --- | --- |
 | `python -m eval.derived export` | - | the benchmark as 1,000-token blocks of counts over each task's 1,000 most frequent words; the rare-phrase hit tables (open-source targets only) and target hash lists; runs the check | `data/corpus/derived/` (release staging), `data/derived/export.json` | ~5 min |
 | `python -m eval.derived check` | - | the non-reconstructability check on every staged table: ids and labels only as strings, no positions, integer counts, vocabularies at most 1,000 | - | seconds |
+
+## BOM-34. Manuscript and dictation evidence
+
+Plan and results: `docs/manuscript-evidence.md`.
+
+| Command | Needs | What it does | Writes | Time |
+| --- | --- | --- | --- | --- |
+| `python -m manuscript.corrections build` | the private JSP transcripts (`data/private/bom/`) | every correction marked in the original and printer's manuscripts, typed and credited to its scribe; dictated against copied (homophone share, Fisher), all pages, same passages, same scribe | `data/manuscript/corrections.csv`, `summary.json`; word pairs privately in `data/private/manuscript/` | seconds |
+| `python -m eval.scribes run [--size 2000 --permutations 1000 --min-chunks 3]` | BOM-32 unblinded (`data/blind/unblinded.json`) | 6.3: leave-one-out Cosine Delta accuracy sorting chunks by narrator, scribe and dictation order, permutation nulls, the separability verdict | `data/benchmark/scribes.json` | ~1 h at 1,000 permutations |

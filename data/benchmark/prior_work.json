@@ -1,0 +1,566 @@
+{
+ "config_sha256": "8397b899a1f4f917c4a5e286e3f1bc63a33100433c67ca0b4e1162e50444cbef",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "c95ba801a166aa2e16eecfc0ad89cb6df4c1f59c",
+ "methods": {
+  "burrows_delta": {
+   "test_set": "trials",
+   "tests": 180,
+   "closed_set": 1.0,
+   "closed_set_95": [
+    1.0,
+    1.0
+   ],
+   "by_task": {
+    "federalist": 1.0,
+    "pseudo_biblical": 1.0,
+    "dictated": 1.0
+   },
+   "open_set_fpr": null,
+   "passes": null
+  },
+  "cosine_delta": {
+   "test_set": "trials",
+   "tests": 180,
+   "closed_set": 0.9722222222222222,
+   "closed_set_95": [
+    0.9444444444444444,
+    0.9944444444444445
+   ],
+   "by_task": {
+    "federalist": 0.9,
+    "pseudo_biblical": 0.9875,
+    "dictated": 1.0
+   },
+   "open_set_fpr": null,
+   "passes": null
+  },
+  "general_imposters": {
+   "test_set": "trials",
+   "tests": 180,
+   "closed_set": 0.8333333333333334,
+   "closed_set_95": [
+    0.7777777777777778,
+    0.8888888888888888
+   ],
+   "by_task": {
+    "federalist": 0.95,
+    "pseudo_biblical": 0.8375,
+    "dictated": 0.75
+   },
+   "open_set_fpr": 0.6166666666666667,
+   "passes": false
+  },
+  "alm_base": {
+   "test_set": "tails",
+   "tests": 110,
+   "closed_set": 0.990909090909091,
+   "closed_set_95": [
+    0.9727272727272728,
+    1.0
+   ],
+   "by_task": {
+    "federalist": 1.0,
+    "pseudo_biblical": 0.9583333333333334,
+    "dictated": 1.0
+   },
+   "open_set_fpr": 0.38181818181818183,
+   "passes": false
+  },
+  "alm_base_v1": {
+   "test_set": "tails",
+   "tests": 110,
+   "closed_set": 0.9363636363636364,
+   "closed_set_95": [
+    0.8909090909090909,
+    0.9818181818181818
+   ],
+   "by_task": {
+    "federalist": 0.7692307692307693,
+    "pseudo_biblical": 0.9583333333333334,
+    "dictated": 1.0
+   },
+   "open_set_fpr": 0.4727272727272727,
+   "passes": false
+  },
+  "alm_base_v2": {
+   "test_set": "tails",
+   "tests": 110,
+   "closed_set": 0.9090909090909091,
+   "closed_set_95": [
+    0.8545454545454545,
+    0.9545454545454546
+   ],
+   "by_task": {
+    "federalist": 0.7692307692307693,
+    "pseudo_biblical": 1.0,
+    "dictated": 0.9333333333333333
+   },
+   "open_set_fpr": 0.13636363636363635,
+   "passes": false
+  },
+  "alm_base_v3": {
+   "test_set": "trials",
+   "tests": 180,
+   "closed_set": 0.8444444444444444,
+   "closed_set_95": [
+    0.7888888888888889,
+    0.8944444444444445
+   ],
+   "by_task": {
+    "federalist": 0.65,
+    "pseudo_biblical": 1.0,
+    "dictated": 0.7666666666666667
+   },
+   "open_set_fpr": 0.7166666666666667,
+   "passes": false
+  },
+  "alm_pilot": {
+   "test_set": "tails",
+   "tests": 110,
+   "closed_set": 0.9363636363636364,
+   "closed_set_95": [
+    0.8909090909090909,
+    0.9818181818181818
+   ],
+   "by_task": {
+    "federalist": 0.7692307692307693,
+    "pseudo_biblical": 0.9583333333333334,
+    "dictated": 1.0
+   },
+   "open_set_fpr": 0.4727272727272728,
+   "passes": false
+  },
+  "alm_pilot_v1": {
+   "test_set": "tails",
+   "tests": 110,
+   "closed_set": 0.9363636363636364,
+   "closed_set_95": [
+    0.8909090909090909,
+    0.9818181818181818
+   ],
+   "by_task": {
+    "federalist": 0.8076923076923077,
+    "pseudo_biblical": 0.9166666666666666,
+    "dictated": 1.0
+   },
+   "open_set_fpr": 0.45454545454545453,
+   "passes": false
+  },
+  "alm_pilot_v2": {
+   "test_set": "tails",
+   "tests": 110,
+   "closed_set": 0.9,
+   "closed_set_95": [
+    0.8454545454545455,
+    0.9545454545454546
+   ],
+   "by_task": {
+    "federalist": 0.7692307692307693,
+    "pseudo_biblical": 1.0,
+    "dictated": 0.9166666666666666
+   },
+   "open_set_fpr": 0.2818181818181818,
+   "passes": false
+  },
+  "alm_pilot_v3": {
+   "test_set": "trials",
+   "tests": 180,
+   "closed_set": 0.8388888888888889,
+   "closed_set_95": [
+    0.7833333333333333,
+    0.8888888888888888
+   ],
+   "by_task": {
+    "federalist": 0.6,
+    "pseudo_biblical": 1.0,
+    "dictated": 0.7833333333333333
+   },
+   "open_set_fpr": 0.6888888888888889,
+   "passes": false
+  },
+  "style_embed": {
+   "test_set": "trials",
+   "tests": 180,
+   "closed_set": 0.8388888888888889,
+   "closed_set_95": [
+    0.7833333333333333,
+    0.8888888888888888
+   ],
+   "by_task": {
+    "federalist": 0.825,
+    "pseudo_biblical": 1.0,
+    "dictated": 0.6333333333333333
+   },
+   "open_set_fpr": 0.5,
+   "passes": false
+  },
+  "ensc": {
+   "test_set": "trials",
+   "tests": null,
+   "closed_set": 1.0,
+   "closed_set_95": null,
+   "by_task": {
+    "federalist": 1.0,
+    "pseudo_biblical": 1.0,
+    "dictated": 1.0
+   },
+   "open_set_fpr": 0.6611111111111111,
+   "passes": false
+  }
+ },
+ "paired": {
+  "alm_base vs alm_base_v1": {
+   "only_first": 7,
+   "only_second": 1,
+   "p": 0.0703125
+  },
+  "alm_base vs alm_base_v2": {
+   "only_first": 10,
+   "only_second": 1,
+   "p": 0.01171875
+  },
+  "alm_base vs alm_pilot": {
+   "only_first": 6,
+   "only_second": 0,
+   "p": 0.03125
+  },
+  "alm_base vs alm_pilot_v1": {
+   "only_first": 6,
+   "only_second": 0,
+   "p": 0.03125
+  },
+  "alm_base vs alm_pilot_v2": {
+   "only_first": 11,
+   "only_second": 1,
+   "p": 0.00634765625
+  },
+  "alm_base_v1 vs alm_base_v2": {
+   "only_first": 4,
+   "only_second": 1,
+   "p": 0.375
+  },
+  "alm_base_v1 vs alm_pilot": {
+   "only_first": 1,
+   "only_second": 1,
+   "p": 1.0
+  },
+  "alm_base_v1 vs alm_pilot_v1": {
+   "only_first": 7,
+   "only_second": 7,
+   "p": 1.0
+  },
+  "alm_base_v1 vs alm_pilot_v2": {
+   "only_first": 5,
+   "only_second": 1,
+   "p": 0.21875
+  },
+  "alm_base_v2 vs alm_pilot": {
+   "only_first": 1,
+   "only_second": 4,
+   "p": 0.375
+  },
+  "alm_base_v2 vs alm_pilot_v1": {
+   "only_first": 7,
+   "only_second": 10,
+   "p": 0.629058837890625
+  },
+  "alm_base_v2 vs alm_pilot_v2": {
+   "only_first": 1,
+   "only_second": 0,
+   "p": 1.0
+  },
+  "alm_base_v3 vs alm_pilot_v3": {
+   "only_first": 2,
+   "only_second": 1,
+   "p": 1.0
+  },
+  "alm_base_v3 vs burrows_delta": {
+   "only_first": 0,
+   "only_second": 28,
+   "p": 7.450580596923828e-09
+  },
+  "alm_base_v3 vs cosine_delta": {
+   "only_first": 1,
+   "only_second": 24,
+   "p": 1.5497207641601562e-06
+  },
+  "alm_base_v3 vs general_imposters": {
+   "only_first": 20,
+   "only_second": 18,
+   "p": 0.8714146793645341
+  },
+  "alm_base_v3 vs style_embed": {
+   "only_first": 20,
+   "only_second": 19,
+   "p": 1.0
+  },
+  "alm_pilot vs alm_pilot_v1": {
+   "only_first": 6,
+   "only_second": 6,
+   "p": 1.0
+  },
+  "alm_pilot vs alm_pilot_v2": {
+   "only_first": 5,
+   "only_second": 1,
+   "p": 0.21875
+  },
+  "alm_pilot_v1 vs alm_pilot_v2": {
+   "only_first": 11,
+   "only_second": 7,
+   "p": 0.480682373046875
+  },
+  "alm_pilot_v3 vs burrows_delta": {
+   "only_first": 0,
+   "only_second": 29,
+   "p": 3.725290298461914e-09
+  },
+  "alm_pilot_v3 vs cosine_delta": {
+   "only_first": 1,
+   "only_second": 25,
+   "p": 8.046627044677734e-07
+  },
+  "alm_pilot_v3 vs general_imposters": {
+   "only_first": 20,
+   "only_second": 19,
+   "p": 1.0
+  },
+  "alm_pilot_v3 vs style_embed": {
+   "only_first": 20,
+   "only_second": 20,
+   "p": 1.0
+  },
+  "burrows_delta vs cosine_delta": {
+   "only_first": 5,
+   "only_second": 0,
+   "p": 0.0625
+  },
+  "burrows_delta vs general_imposters": {
+   "only_first": 30,
+   "only_second": 0,
+   "p": 1.862645149230957e-09
+  },
+  "burrows_delta vs style_embed": {
+   "only_first": 29,
+   "only_second": 0,
+   "p": 3.725290298461914e-09
+  },
+  "cosine_delta vs general_imposters": {
+   "only_first": 30,
+   "only_second": 5,
+   "p": 2.2361520677804947e-05
+  },
+  "cosine_delta vs style_embed": {
+   "only_first": 27,
+   "only_second": 3,
+   "p": 8.430331945419312e-06
+  },
+  "general_imposters vs style_embed": {
+   "only_first": 24,
+   "only_second": 25,
+   "p": 1.0
+  }
+ },
+ "published_vs_ours": {
+  "replication_jockers_data": {
+   "published": {
+    "nsc": {
+     "first": {
+      "cowdery": 20,
+      "pratt": 9,
+      "rigdon": 93,
+      "spalding": 52,
+      "isaiah_malachi": 63,
+      "barlow": 0,
+      "longfellow": 2
+     },
+     "second": {
+      "cowdery": 17,
+      "pratt": 15,
+      "rigdon": 104,
+      "spalding": 58,
+      "isaiah_malachi": 38,
+      "barlow": 1,
+      "longfellow": 6
+     }
+    },
+    "delta": {
+     "first": {
+      "cowdery": 5,
+      "pratt": 7,
+      "rigdon": 63,
+      "spalding": 47,
+      "isaiah_malachi": 112,
+      "barlow": 0,
+      "longfellow": 5
+     },
+     "second": {
+      "cowdery": 19,
+      "pratt": 22,
+      "rigdon": 92,
+      "spalding": 23,
+      "isaiah_malachi": 54,
+      "barlow": 9,
+      "longfellow": 20
+     }
+    }
+   },
+   "ours": {
+    "delta": {
+     "first": {
+      "isaiah_malachi": 80,
+      "rigdon": 53,
+      "barlow": 14,
+      "cowdery": 12,
+      "pratt": 13,
+      "spalding": 61,
+      "longfellow": 6
+     },
+     "second": {
+      "spalding": 43,
+      "pratt": 32,
+      "isaiah_malachi": 41,
+      "cowdery": 11,
+      "rigdon": 82,
+      "barlow": 20,
+      "longfellow": 10
+     }
+    },
+    "nsc": {
+     "first": {
+      "isaiah_malachi": 89,
+      "rigdon": 70,
+      "cowdery": 24,
+      "pratt": 15,
+      "spalding": 40,
+      "longfellow": 1
+     },
+     "second": {
+      "rigdon": 99,
+      "pratt": 27,
+      "spalding": 49,
+      "isaiah_malachi": 44,
+      "cowdery": 12,
+      "barlow": 1,
+      "longfellow": 7
+     }
+    }
+   }
+  },
+  "replication_jockers_pamr": {
+   "published": {
+    "first": {
+     "cowdery": 20,
+     "pratt": 9,
+     "rigdon": 93,
+     "spalding": 52,
+     "isaiah_malachi": 63,
+     "barlow": 0,
+     "longfellow": 2
+    },
+    "second": {
+     "cowdery": 17,
+     "pratt": 15,
+     "rigdon": 104,
+     "spalding": 58,
+     "isaiah_malachi": 38,
+     "barlow": 1,
+     "longfellow": 6
+    }
+   },
+   "ours": [
+    "cv threshold 0.5163903 error 0.1013825 "
+   ]
+  },
+  "replication_jockers": {
+   "published": {
+    "rigdon": 197,
+    "spalding": 110,
+    "isaiah_malachi": 101,
+    "cowdery": 37,
+    "pratt": 24
+   },
+   "ours": {
+    "delta": {
+     "first": {
+      "spalding": 55,
+      "isaiah_malachi": 79,
+      "pratt": 68,
+      "cowdery": 6,
+      "longfellow": 4,
+      "rigdon": 22,
+      "barlow": 5
+     },
+     "first_or_second": {
+      "spalding": 95,
+      "isaiah_malachi": 99,
+      "pratt": 147,
+      "cowdery": 39,
+      "rigdon": 52,
+      "longfellow": 25,
+      "barlow": 21
+     }
+    },
+    "nsc": {
+     "first": {
+      "isaiah_malachi": 99,
+      "pratt": 86,
+      "spalding": 21,
+      "rigdon": 10,
+      "cowdery": 23
+     },
+     "first_or_second": {
+      "isaiah_malachi": 112,
+      "spalding": 64,
+      "pratt": 193,
+      "cowdery": 69,
+      "longfellow": 11,
+      "rigdon": 29
+     }
+    }
+   }
+  },
+  "replication_ensc": {
+   "published": {
+    "settings": {
+     "shrinkage": 2.0,
+     "lam": 4.0,
+     "size_adjust": true,
+     "sample_words": 4000
+    },
+    "samples": {
+     "joseph_smith": 8,
+     "rigdon": 6,
+     "spalding": 11,
+     "cowdery": 12,
+     "pratt": 13,
+     "isaiah": 9
+    },
+    "assigned": {
+     "latent": 225,
+     "isaiah": 13,
+     "spalding": 1
+    },
+    "published": {
+     "latent": 175,
+     "isaiah": 35,
+     "rigdon": 17,
+     "joseph_smith": 8,
+     "spalding": 2,
+     "cowdery": 2,
+     "pratt": 0
+    },
+    "latent_label": "latent"
+   },
+   "ours": {
+    "none": 235,
+    "isaiah_malachi": 4
+   }
+  }
+ },
+ "sets": {
+  "trials": "BOM-21's trials (classical, style embeddings, V3)",
+  "tails": "Amendment 22's held-out tails (fine-tuned models)"
+ }
+}

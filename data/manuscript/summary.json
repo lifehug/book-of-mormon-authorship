@@ -1,0 +1,294 @@
+{
+ "config_sha256": "8397b899a1f4f917c4a5e286e3f1bc63a33100433c67ca0b4e1162e50444cbef",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "c95ba801a166aa2e16eecfc0ad89cb6df4c1f59c",
+ "pages": {
+  "original": 231,
+  "printers": 468
+ },
+ "words": {
+  "original": 96346,
+  "printers": 255848
+ },
+ "all_pages": {
+  "original": {
+   "events": 1597,
+   "by_event": {
+    "false_start": 80,
+    "insertion": 377,
+    "deletion": 447,
+    "substitution": 693
+   },
+   "substitution_types": {
+    "sound_alike": 105,
+    "other": 476,
+    "homophone": 36,
+    "spelling": 76
+   },
+   "substitutions": 693,
+   "sound_based": 141,
+   "sound_share": 0.20346320346320346,
+   "names": 68
+  },
+  "printers": {
+   "events": 2136,
+   "by_event": {
+    "substitution": 927,
+    "insertion": 648,
+    "false_start": 33,
+    "deletion": 528
+   },
+   "substitution_types": {
+    "sound_alike": 138,
+    "other": 701,
+    "spelling": 80,
+    "homophone": 8
+   },
+   "substitutions": 927,
+   "sound_based": 146,
+   "sound_share": 0.1574973031283711,
+   "names": 89
+  },
+  "homophones": {
+   "original": 36,
+   "printers": 8,
+   "odds_ratio": 6.294520547945205,
+   "fisher_p": 9.651822126031747e-08
+  },
+  "sound_based_odds_ratio": 1.3664011316259679,
+  "sound_based_fisher_p": 0.01789768063190604
+ },
+ "matched_pages": {
+  "original": {
+   "events": 1597,
+   "by_event": {
+    "false_start": 80,
+    "insertion": 377,
+    "deletion": 447,
+    "substitution": 693
+   },
+   "substitution_types": {
+    "sound_alike": 105,
+    "other": 476,
+    "homophone": 36,
+    "spelling": 76
+   },
+   "substitutions": 693,
+   "sound_based": 141,
+   "sound_share": 0.20346320346320346,
+   "names": 68
+  },
+  "printers": {
+   "events": 990,
+   "by_event": {
+    "deletion": 207,
+    "insertion": 308,
+    "substitution": 457,
+    "false_start": 18
+   },
+   "substitution_types": {
+    "sound_alike": 68,
+    "other": 352,
+    "spelling": 35,
+    "homophone": 2
+   },
+   "substitutions": 457,
+   "sound_based": 70,
+   "sound_share": 0.15317286652078774,
+   "names": 38
+  },
+  "homophones": {
+   "original": 36,
+   "printers": 2,
+   "odds_ratio": 12.465753424657533,
+   "fisher_p": 1.704999970075964e-06
+  },
+  "sound_based_odds_ratio": 1.4121894409937887,
+  "sound_based_fisher_p": 0.03541980405597489
+ },
+ "same_scribe_cowdery": {
+  "original": {
+   "events": 1347,
+   "by_event": {
+    "false_start": 72,
+    "insertion": 291,
+    "deletion": 394,
+    "substitution": 590
+   },
+   "substitution_types": {
+    "sound_alike": 86,
+    "other": 408,
+    "homophone": 36,
+    "spelling": 60
+   },
+   "substitutions": 590,
+   "sound_based": 122,
+   "sound_share": 0.20677966101694914,
+   "names": 62
+  },
+  "printers": {
+   "events": 1814,
+   "by_event": {
+    "substitution": 837,
+    "insertion": 577,
+    "false_start": 26,
+    "deletion": 374
+   },
+   "substitution_types": {
+    "sound_alike": 117,
+    "other": 651,
+    "spelling": 63,
+    "homophone": 6
+   },
+   "substitutions": 837,
+   "sound_based": 123,
+   "sound_share": 0.14695340501792115,
+   "names": 69
+  },
+  "homophones": {
+   "original": 36,
+   "printers": 6,
+   "odds_ratio": 9.0,
+   "fisher_p": 2.374118884962111e-09
+  },
+  "sound_based_odds_ratio": 1.5132374400667084,
+  "sound_based_fisher_p": 0.0034676576361003172
+ },
+ "by_scribe": {
+  "original|John Whitmer": {
+   "events": 81,
+   "by_event": {
+    "substitution": 43,
+    "insertion": 23,
+    "false_start": 3,
+    "deletion": 12
+   },
+   "substitution_types": {
+    "other": 35,
+    "spelling": 4,
+    "sound_alike": 4
+   },
+   "substitutions": 43,
+   "sound_based": 4,
+   "sound_share": 0.09302325581395349,
+   "names": 3,
+   "page_words": 5030
+  },
+  "original|Joseph Smith Jr.": {
+   "events": 12,
+   "by_event": {
+    "deletion": 5,
+    "insertion": 4,
+    "substitution": 2,
+    "false_start": 1
+   },
+   "substitution_types": {
+    "other": 2
+   },
+   "substitutions": 2,
+   "sound_based": 0,
+   "sound_share": 0.0,
+   "names": 1,
+   "page_words": 0
+  },
+  "original|Oliver Cowdery": {
+   "events": 1347,
+   "by_event": {
+    "false_start": 72,
+    "insertion": 291,
+    "deletion": 394,
+    "substitution": 590
+   },
+   "substitution_types": {
+    "sound_alike": 86,
+    "other": 408,
+    "homophone": 36,
+    "spelling": 60
+   },
+   "substitutions": 590,
+   "sound_based": 122,
+   "sound_share": 0.20677966101694914,
+   "names": 62,
+   "page_words": 84220
+  },
+  "original|Scribe 3": {
+   "events": 157,
+   "by_event": {
+    "deletion": 36,
+    "substitution": 58,
+    "insertion": 59,
+    "false_start": 4
+   },
+   "substitution_types": {
+    "other": 31,
+    "sound_alike": 15,
+    "spelling": 12
+   },
+   "substitutions": 58,
+   "sound_based": 15,
+   "sound_share": 0.25862068965517243,
+   "names": 2,
+   "page_words": 7096
+  },
+  "printers|Hyrum Smith": {
+   "events": 32,
+   "by_event": {
+    "substitution": 7,
+    "deletion": 16,
+    "insertion": 7,
+    "false_start": 2
+   },
+   "substitution_types": {
+    "other": 3,
+    "sound_alike": 4
+   },
+   "substitutions": 7,
+   "sound_based": 4,
+   "sound_share": 0.5714285714285714,
+   "names": 2,
+   "page_words": 1407
+  },
+  "printers|Oliver Cowdery": {
+   "events": 1814,
+   "by_event": {
+    "substitution": 837,
+    "insertion": 577,
+    "false_start": 26,
+    "deletion": 374
+   },
+   "substitution_types": {
+    "sound_alike": 117,
+    "other": 651,
+    "spelling": 63,
+    "homophone": 6
+   },
+   "substitutions": 837,
+   "sound_based": 123,
+   "sound_share": 0.14695340501792115,
+   "names": 69,
+   "page_words": 212962
+  },
+  "printers|Scribe 2": {
+   "events": 290,
+   "by_event": {
+    "deletion": 138,
+    "insertion": 64,
+    "substitution": 83,
+    "false_start": 5
+   },
+   "substitution_types": {
+    "spelling": 17,
+    "other": 47,
+    "sound_alike": 17,
+    "homophone": 2
+   },
+   "substitutions": 83,
+   "sound_based": 19,
+   "sound_share": 0.2289156626506024,
+   "names": 18,
+   "page_words": 41479
+  }
+ },
+ "note": "page words are credited to the hand that opens each page (approximate); the printer's manuscript also carries later editing (printer's marks, 1837 revisions) that the transcript does not separate"
+}
