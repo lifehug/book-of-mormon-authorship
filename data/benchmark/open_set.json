@@ -1,8 +1,8 @@
 {
- "config_sha256": "a5dc48d5222f0b9a20db7fb8c3bb2257b51c59722ee57e8ff176daed34574e0b",
+ "config_sha256": "81ec2be1f38232016639703797bc78f8a2e527366aab1d92db62158396c2d618",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "af80075ae9cb7deb62e0b131ed214aebba30de3f",
+ "git_commit": "ee3524ccfff04b4d4d9ce85b28bf365f2bec3a6c",
  "methods": {
   "general_imposters": {
    "closed_set": 0.8333333333333334,
@@ -90,6 +90,14 @@
    "closed_set": 0.8388888888888889,
    "threshold": 0.9195000000000001,
    "open_set_fpr": 0.6888888888888889,
+   "tests": 180,
+   "open_set_fpr_original": 0.0,
+   "passes": false
+  },
+  "style_embed": {
+   "closed_set": 0.8388888888888889,
+   "threshold": 1.0,
+   "open_set_fpr": 0.5,
    "tests": 180,
    "open_set_fpr_original": 0.0,
    "passes": false

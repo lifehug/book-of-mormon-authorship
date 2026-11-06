@@ -1,0 +1,4032 @@
+{
+ "config_sha256": "81ec2be1f38232016639703797bc78f8a2e527366aab1d92db62158396c2d618",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "ee3524ccfff04b4d4d9ce85b28bf365f2bec3a6c",
+ "model": "data/corpus/style_embed/runs/style/style.pt",
+ "closed_set_by_task": {
+  "federalist": 0.825,
+  "pseudo_biblical": 1.0,
+  "dictated": 0.6333333333333333
+ },
+ "verdict": {
+  "closed_set": 0.8388888888888889,
+  "threshold": 1.0,
+  "open_set_fpr": 0.5,
+  "tests": 180,
+  "open_set_fpr_original": 0.0,
+  "passes": false
+ },
+ "thresholds": {
+  "match": 1.0,
+  "non_match": 1.0
+ },
+ "records": {
+  "federalist": [
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.044098656787632584,
+     "jay": 0.29465352382079546,
+     "madison": 0.06438710353404387
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.04839078166821442,
+     "jay": 0.3606653654166211,
+     "madison": 0.07708487463575953
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.09771577000289988,
+     "jay": 0.2620869250472705,
+     "madison": 0.1244395615541859
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.11428330729693725,
+     "jay": 0.3910947488760579,
+     "madison": 0.1580502646203883
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.11329179027801439,
+     "jay": 0.43853856737417807,
+     "madison": 0.17467543294940535
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 0.77,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.09677098838958753,
+     "jay": 0.34176037925384584,
+     "madison": 0.08407311252777105
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.07650148883776853,
+     "jay": 0.3957350434425979,
+     "madison": 0.09326434143238804
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 0.97,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.07650148883776853,
+     "jay": 0.3957350434425979,
+     "madison": 0.09326434143238804
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 0.99,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.04310056685726538,
+     "jay": 0.3357935774453543,
+     "madison": 0.08259023221995332
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.044098656787632584,
+     "jay": 0.29465352382079546,
+     "madison": 0.06438710353404387
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.06520430786756459,
+     "jay": 0.24732522769756304,
+     "madison": 0.07573371352790581
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.0828111753515316,
+     "jay": 0.5001591325974697,
+     "madison": 0.14577566582440593
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 0.59,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.11823763632152329,
+     "jay": 0.47792765442245266,
+     "madison": 0.11926457932508672
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 0.84,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.04455445937733715,
+     "jay": 0.27493051260426604,
+     "madison": 0.06204269682111174
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.051352755758462876,
+     "jay": 0.31688704446344507,
+     "madison": 0.08115229441492877
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.1448890460429465,
+     "jay": 0.34146880659123424,
+     "madison": 0.19442233292745748
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.08838695192954793,
+     "jay": 0.4232421981495249,
+     "madison": 0.09335901389094503
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 0.91,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.12463480125380988,
+     "jay": 0.31595054376124154,
+     "madison": 0.14521626657487507
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.07843814409563321,
+     "jay": 0.39320936621425107,
+     "madison": 0.08610101488174504
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 0.99,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hamilton",
+    "scores": {
+     "hamilton": 0.07084722305718927,
+     "jay": 0.2849732786851258,
+     "madison": 0.0955786876156357
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.10510246032984638,
+     "jay": 0.2937540494958045,
+     "madison": 0.09407890212548042
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.08256320656096272,
+     "jay": 0.2580782807067362,
+     "madison": 0.05188769610327382
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.1290325559280182,
+     "jay": 0.2996369981040772,
+     "madison": 0.08202755115168459
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.1092535759973644,
+     "jay": 0.35245955461223866,
+     "madison": 0.1296061651095659
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.07776489076522208,
+     "jay": 0.1880092270290591,
+     "madison": 0.04157026973699218
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.09100407209810413,
+     "jay": 0.416786050659968,
+     "madison": 0.1083998914909522
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 0.76,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.13850488763443392,
+     "jay": 0.3068044447107112,
+     "madison": 0.08440432032948186
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.09562843689425948,
+     "jay": 0.2510672452552043,
+     "madison": 0.06646788249470836
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.09734665501015771,
+     "jay": 0.20343909868253574,
+     "madison": 0.1183206997814491
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.13931816605815117,
+     "jay": 0.3349217927116672,
+     "madison": 0.1099835365553018
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.06889640239744343,
+     "jay": 0.23738293973776692,
+     "madison": 0.06967788362404104
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.07776489076522208,
+     "jay": 0.1880092270290591,
+     "madison": 0.04157026973699218
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.09160510894972418,
+     "jay": 0.2671161693700522,
+     "madison": 0.06956256977934838
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.09100407209810413,
+     "jay": 0.416786050659968,
+     "madison": 0.1083998914909522
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 0.86,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.11791759978181948,
+     "jay": 0.2660596147062051,
+     "madison": 0.07196744786666054
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.08301247559618197,
+     "jay": 0.2609114132952418,
+     "madison": 0.04172678771350535
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.08256320656096272,
+     "jay": 0.2580782807067362,
+     "madison": 0.05188769610327382
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.06889640239744343,
+     "jay": 0.23738293973776692,
+     "madison": 0.06967788362404104
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "hamilton",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.09160510894972418,
+     "jay": 0.2671161693700522,
+     "madison": 0.06956256977934838
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 1.0,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "madison",
+    "scores": {
+     "hamilton": 0.103159915969812,
+     "jay": 0.32024455917037054,
+     "madison": 0.05901045361333179
+    },
+    "gi": {
+     "hamilton": 1.0,
+     "jay": 0.99,
+     "madison": 1.0
+    },
+    "predicted": "madison",
+    "positive": 1.0,
+    "open_negative": 1.0
+   }
+  ],
+  "pseudo_biblical": [
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.15521070023883576,
+     "hunt": 0.7460813674529481,
+     "linning": 0.5768065471624235,
+     "snowden": 0.7163787276906577
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.0,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.0
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.26072246615016537,
+     "hunt": 0.5765364459402413,
+     "linning": 0.4246786888974078,
+     "snowden": 0.7151140768517452
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.44,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.44
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.16181396042531637,
+     "hunt": 0.7163146946585814,
+     "linning": 0.5531822317674198,
+     "snowden": 0.6709494806600855
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.0,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.0
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.25781855720420854,
+     "hunt": 0.6616352301874894,
+     "linning": 0.3625297777418326,
+     "snowden": 0.698292202212913
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.46,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.46
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.26072246615016537,
+     "hunt": 0.5765364459402413,
+     "linning": 0.4246786888974078,
+     "snowden": 0.7151140768517452
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.43,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.43
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.32979572624232556,
+     "hunt": 0.6434854927778965,
+     "linning": 0.49409162159853015,
+     "snowden": 0.7656069365394169
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.1,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.1
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.15521070023883576,
+     "hunt": 0.7460813674529481,
+     "linning": 0.5768065471624235,
+     "snowden": 0.7163787276906577
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.0,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.0
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.15521070023883576,
+     "hunt": 0.7460813674529481,
+     "linning": 0.5768065471624235,
+     "snowden": 0.7163787276906577
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.0,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.0
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.20044629047080087,
+     "hunt": 0.7339401193098811,
+     "linning": 0.5143674690367238,
+     "snowden": 0.6922760175078476
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.0,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.0
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.33875114798978134,
+     "hunt": 0.652776195691971,
+     "linning": 0.5112916041848782,
+     "snowden": 0.7342287340509673
+    },
+    "gi": {
+     "hughes": 0.82,
+     "hunt": 0.0,
+     "linning": 0.02,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 0.82,
+    "open_negative": 0.02
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.32979572624232556,
+     "hunt": 0.6434854927778965,
+     "linning": 0.49409162159853015,
+     "snowden": 0.7656069365394169
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.05,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.05
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.33875114798978134,
+     "hunt": 0.652776195691971,
+     "linning": 0.5112916041848782,
+     "snowden": 0.7342287340509673
+    },
+    "gi": {
+     "hughes": 0.84,
+     "hunt": 0.0,
+     "linning": 0.01,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 0.84,
+    "open_negative": 0.01
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.16181396042531637,
+     "hunt": 0.7163146946585814,
+     "linning": 0.5531822317674198,
+     "snowden": 0.6709494806600855
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.0,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.0
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.16181396042531637,
+     "hunt": 0.7163146946585814,
+     "linning": 0.5531822317674198,
+     "snowden": 0.6709494806600855
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.01,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.01
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.16181396042531637,
+     "hunt": 0.7163146946585814,
+     "linning": 0.5531822317674198,
+     "snowden": 0.6709494806600855
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.0,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.0
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.25781855720420854,
+     "hunt": 0.6616352301874894,
+     "linning": 0.3625297777418326,
+     "snowden": 0.698292202212913
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.56,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.56
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.15521070023883576,
+     "hunt": 0.7460813674529481,
+     "linning": 0.5768065471624235,
+     "snowden": 0.7163787276906577
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.0,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.0
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.15521070023883576,
+     "hunt": 0.7460813674529481,
+     "linning": 0.5768065471624235,
+     "snowden": 0.7163787276906577
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.0,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.0
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.13685610165654305,
+     "hunt": 0.7082999915030559,
+     "linning": 0.5157175225178171,
+     "snowden": 0.6699924408505986
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.04,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.04
+   },
+   {
+    "author": "hughes",
+    "scores": {
+     "hughes": 0.20044629047080087,
+     "hunt": 0.7339401193098811,
+     "linning": 0.5143674690367238,
+     "snowden": 0.6922760175078476
+    },
+    "gi": {
+     "hughes": 1.0,
+     "hunt": 0.0,
+     "linning": 0.01,
+     "snowden": 0.0
+    },
+    "predicted": "hughes",
+    "positive": 1.0,
+    "open_negative": 0.01
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.830610560694462,
+     "hunt": 0.10027973722812344,
+     "linning": 0.5223475235061963,
+     "snowden": 0.5314042020890404
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.79,
+     "snowden": 0.79
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 0.79
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.8227291352130155,
+     "hunt": 0.13767177577392908,
+     "linning": 0.5826704056147214,
+     "snowden": 0.5572923575250106
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.17,
+     "snowden": 0.35
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 0.35
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.595769579681631,
+     "hunt": 0.0898230966708099,
+     "linning": 0.39967167902796796,
+     "snowden": 0.3401552255672454
+    },
+    "gi": {
+     "hughes": 0.01,
+     "hunt": 1.0,
+     "linning": 0.73,
+     "snowden": 0.99
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 0.99
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.6951940255924268,
+     "hunt": 0.11055100379700167,
+     "linning": 0.4485063123422607,
+     "snowden": 0.4177631490767396
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.56,
+     "snowden": 0.82
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 0.82
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.6384003539758636,
+     "hunt": 0.07644927471630059,
+     "linning": 0.4062913995881945,
+     "snowden": 0.3599136124827804
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.85,
+     "snowden": 0.99
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 0.99
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.7448083463420565,
+     "hunt": 0.1266867604614056,
+     "linning": 0.4515758421317413,
+     "snowden": 0.48052488245082337
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.96,
+     "snowden": 0.84
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 0.96
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.6922124808571757,
+     "hunt": 0.07191715863872028,
+     "linning": 0.44677457845048363,
+     "snowden": 0.34652213553468647
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.8,
+     "snowden": 1.0
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.7011640635463277,
+     "hunt": 0.08864997640999905,
+     "linning": 0.44339066074609657,
+     "snowden": 0.42158944799590004
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.98,
+     "snowden": 0.99
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 0.99
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.581849624960803,
+     "hunt": 0.09902054967968577,
+     "linning": 0.32533878866696875,
+     "snowden": 0.29144218336252103
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 1.0,
+     "snowden": 1.0
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.5437525558291183,
+     "hunt": 0.12283468442851453,
+     "linning": 0.3246613115666048,
+     "snowden": 0.25064873350297334
+    },
+    "gi": {
+     "hughes": 0.03,
+     "hunt": 1.0,
+     "linning": 1.0,
+     "snowden": 1.0
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.6326884135547521,
+     "hunt": 0.09850947445519298,
+     "linning": 0.4080249050428846,
+     "snowden": 0.4268880914786356
+    },
+    "gi": {
+     "hughes": 0.03,
+     "hunt": 1.0,
+     "linning": 1.0,
+     "snowden": 1.0
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.6896359650535084,
+     "hunt": 0.04718756518725764,
+     "linning": 0.3604080943033906,
+     "snowden": 0.3509307162212243
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.99,
+     "snowden": 1.0
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.7143881535156134,
+     "hunt": 0.05086689588858506,
+     "linning": 0.39966690262312177,
+     "snowden": 0.31357636502336006
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.99,
+     "snowden": 1.0
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.5134751429090787,
+     "hunt": 0.1297104800832497,
+     "linning": 0.27995143072731654,
+     "snowden": 0.24811795380427437
+    },
+    "gi": {
+     "hughes": 0.13,
+     "hunt": 1.0,
+     "linning": 1.0,
+     "snowden": 1.0
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.6975060494489363,
+     "hunt": 0.03592982938450151,
+     "linning": 0.4570259795310271,
+     "snowden": 0.36835389132476815
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.73,
+     "snowden": 1.0
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.7422019701487397,
+     "hunt": 0.10194554930739486,
+     "linning": 0.44493153405606645,
+     "snowden": 0.4543543606240771
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.94,
+     "snowden": 0.95
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 0.95
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.830610560694462,
+     "hunt": 0.10027973722812344,
+     "linning": 0.5223475235061963,
+     "snowden": 0.5314042020890404
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.75,
+     "snowden": 0.63
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 0.75
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.7422019701487397,
+     "hunt": 0.10194554930739486,
+     "linning": 0.44493153405606645,
+     "snowden": 0.4543543606240771
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.97,
+     "snowden": 0.89
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 0.97
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.6384003539758636,
+     "hunt": 0.07644927471630059,
+     "linning": 0.4062913995881945,
+     "snowden": 0.3599136124827804
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.84,
+     "snowden": 0.98
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 0.98
+   },
+   {
+    "author": "hunt",
+    "scores": {
+     "hughes": 0.6959976819438101,
+     "hunt": 0.13072718445820075,
+     "linning": 0.4494024064736749,
+     "snowden": 0.5300196080217823
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.91,
+     "snowden": 0.43
+    },
+    "predicted": "hunt",
+    "positive": 1.0,
+    "open_negative": 0.91
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.41570472470126707,
+     "hunt": 0.4526177146865309,
+     "linning": 0.06715875409817418,
+     "snowden": 0.4397603527438525
+    },
+    "gi": {
+     "hughes": 0.44,
+     "hunt": 0.11,
+     "linning": 1.0,
+     "snowden": 0.14
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.44
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.49308116602761387,
+     "hunt": 0.4784805254039731,
+     "linning": 0.08685844785716057,
+     "snowden": 0.628301451416284
+    },
+    "gi": {
+     "hughes": 0.47,
+     "hunt": 0.66,
+     "linning": 1.0,
+     "snowden": 0.0
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.66
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.4359422548724041,
+     "hunt": 0.46553910344130367,
+     "linning": 0.06972764826814593,
+     "snowden": 0.48698795990768273
+    },
+    "gi": {
+     "hughes": 0.54,
+     "hunt": 0.28,
+     "linning": 1.0,
+     "snowden": 0.08
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.54
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.5763209229100335,
+     "hunt": 0.36419000304775195,
+     "linning": 0.179631203913432,
+     "snowden": 0.45796733863618044
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 1.0,
+     "snowden": 0.46
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.4198128483290501,
+     "hunt": 0.5272251734160057,
+     "linning": 0.10130688702856849,
+     "snowden": 0.5099761758743016
+    },
+    "gi": {
+     "hughes": 0.54,
+     "hunt": 0.01,
+     "linning": 1.0,
+     "snowden": 0.02
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.54
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.4359422548724041,
+     "hunt": 0.46553910344130367,
+     "linning": 0.06972764826814593,
+     "snowden": 0.48698795990768273
+    },
+    "gi": {
+     "hughes": 0.65,
+     "hunt": 0.26,
+     "linning": 1.0,
+     "snowden": 0.1
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.65
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.49308116602761387,
+     "hunt": 0.4784805254039731,
+     "linning": 0.08685844785716057,
+     "snowden": 0.628301451416284
+    },
+    "gi": {
+     "hughes": 0.5,
+     "hunt": 0.66,
+     "linning": 1.0,
+     "snowden": 0.0
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.66
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.42548287693502695,
+     "hunt": 0.4580287990598486,
+     "linning": 0.09338310591861965,
+     "snowden": 0.45000971812196155
+    },
+    "gi": {
+     "hughes": 0.54,
+     "hunt": 0.22,
+     "linning": 1.0,
+     "snowden": 0.27
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.54
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.49308116602761387,
+     "hunt": 0.4784805254039731,
+     "linning": 0.08685844785716057,
+     "snowden": 0.628301451416284
+    },
+    "gi": {
+     "hughes": 0.44,
+     "hunt": 0.59,
+     "linning": 1.0,
+     "snowden": 0.0
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.59
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.5763209229100335,
+     "hunt": 0.36419000304775195,
+     "linning": 0.179631203913432,
+     "snowden": 0.45796733863618044
+    },
+    "gi": {
+     "hughes": 0.01,
+     "hunt": 0.98,
+     "linning": 1.0,
+     "snowden": 0.4
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.98
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.42548287693502695,
+     "hunt": 0.4580287990598486,
+     "linning": 0.09338310591861965,
+     "snowden": 0.45000971812196155
+    },
+    "gi": {
+     "hughes": 0.57,
+     "hunt": 0.24,
+     "linning": 1.0,
+     "snowden": 0.26
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.57
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.5628174357064455,
+     "hunt": 0.36514024342642015,
+     "linning": 0.09750964577309162,
+     "snowden": 0.4652595901885691
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.96,
+     "linning": 1.0,
+     "snowden": 0.43
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.96
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.42548287693502695,
+     "hunt": 0.4580287990598486,
+     "linning": 0.09338310591861965,
+     "snowden": 0.45000971812196155
+    },
+    "gi": {
+     "hughes": 0.49,
+     "hunt": 0.28,
+     "linning": 1.0,
+     "snowden": 0.22
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.49
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.4878959268251647,
+     "hunt": 0.42602430996040497,
+     "linning": 0.044353831385152365,
+     "snowden": 0.4262306334615975
+    },
+    "gi": {
+     "hughes": 0.07,
+     "hunt": 0.68,
+     "linning": 1.0,
+     "snowden": 0.69
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.69
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.41570472470126707,
+     "hunt": 0.4526177146865309,
+     "linning": 0.06715875409817418,
+     "snowden": 0.4397603527438525
+    },
+    "gi": {
+     "hughes": 0.41,
+     "hunt": 0.08,
+     "linning": 1.0,
+     "snowden": 0.14
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.41
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.41570472470126707,
+     "hunt": 0.4526177146865309,
+     "linning": 0.06715875409817418,
+     "snowden": 0.4397603527438525
+    },
+    "gi": {
+     "hughes": 0.31,
+     "hunt": 0.08,
+     "linning": 1.0,
+     "snowden": 0.14
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.31
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.6170350155023874,
+     "hunt": 0.4213160884577388,
+     "linning": 0.10924847541462068,
+     "snowden": 0.5344840543589819
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.8,
+     "linning": 1.0,
+     "snowden": 0.08
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.8
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.4359422548724041,
+     "hunt": 0.46553910344130367,
+     "linning": 0.06972764826814593,
+     "snowden": 0.48698795990768273
+    },
+    "gi": {
+     "hughes": 0.54,
+     "hunt": 0.39,
+     "linning": 1.0,
+     "snowden": 0.17
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.54
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.41570472470126707,
+     "hunt": 0.4526177146865309,
+     "linning": 0.06715875409817418,
+     "snowden": 0.4397603527438525
+    },
+    "gi": {
+     "hughes": 0.29,
+     "hunt": 0.09,
+     "linning": 1.0,
+     "snowden": 0.1
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.29
+   },
+   {
+    "author": "linning",
+    "scores": {
+     "hughes": 0.49308116602761387,
+     "hunt": 0.4784805254039731,
+     "linning": 0.08685844785716057,
+     "snowden": 0.628301451416284
+    },
+    "gi": {
+     "hughes": 0.43,
+     "hunt": 0.68,
+     "linning": 1.0,
+     "snowden": 0.0
+    },
+    "predicted": "linning",
+    "positive": 1.0,
+    "open_negative": 0.68
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.714366230893368,
+     "hunt": 0.3325227500992982,
+     "linning": 0.519265122945769,
+     "snowden": 0.10266385603248851
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.67,
+     "linning": 0.02,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.67
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.7066497487875119,
+     "hunt": 0.2952979185262008,
+     "linning": 0.4174643553519929,
+     "snowden": 0.18428099725762104
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.77,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.5863264122601635,
+     "hunt": 0.2958394386385703,
+     "linning": 0.37361425231892076,
+     "snowden": 0.0559097096556026
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.95,
+     "linning": 0.49,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.95
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.6972976614594669,
+     "hunt": 0.48313627130992565,
+     "linning": 0.499219051327093,
+     "snowden": 0.05432822670743853
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.06,
+     "linning": 0.03,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.06
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.5646264980456072,
+     "hunt": 0.40103128192260873,
+     "linning": 0.4898825147790766,
+     "snowden": 0.05061986910631633
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.6,
+     "linning": 0.02,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.6
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.6868114559735367,
+     "hunt": 0.3221622995537139,
+     "linning": 0.47010986381880515,
+     "snowden": 0.12238869447082701
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.08,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.545001659162464,
+     "hunt": 0.3522578020045575,
+     "linning": 0.3937170935427774,
+     "snowden": 0.1318082583242034
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.75,
+     "linning": 0.47,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.75
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.5646264980456072,
+     "hunt": 0.40103128192260873,
+     "linning": 0.4898825147790766,
+     "snowden": 0.05061986910631633
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.44,
+     "linning": 0.03,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.44
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.6456376766048095,
+     "hunt": 0.5295161424544975,
+     "linning": 0.538175682046683,
+     "snowden": 0.06799874316812748
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.0,
+     "linning": 0.0,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.0
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.6363271757231576,
+     "hunt": 0.5059223379932827,
+     "linning": 0.529353016670554,
+     "snowden": 0.07461288319968773
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.02,
+     "linning": 0.0,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.02
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.712754325278504,
+     "hunt": 0.3964103594387759,
+     "linning": 0.5392261364961983,
+     "snowden": 0.1048281198627663
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.27,
+     "linning": 0.03,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.27
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.6842500539329616,
+     "hunt": 0.4331797121319352,
+     "linning": 0.4953722894211101,
+     "snowden": 0.07386025355966086
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.24,
+     "linning": 0.02,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.24
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.7276872658627719,
+     "hunt": 0.3383559604305362,
+     "linning": 0.45594288291668295,
+     "snowden": 0.12506261138407582
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.95,
+     "linning": 0.15,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.95
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.7525154772014494,
+     "hunt": 0.2693696287320727,
+     "linning": 0.42338025290869885,
+     "snowden": 0.20341591923867974
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.82,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.5963691947220532,
+     "hunt": 0.31825046873583906,
+     "linning": 0.3716078013792459,
+     "snowden": 0.05674689458534343
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.57,
+     "linning": 0.17,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.57
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.6972976614594669,
+     "hunt": 0.48313627130992565,
+     "linning": 0.499219051327093,
+     "snowden": 0.05432822670743853
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.08,
+     "linning": 0.04,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.08
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.5750463055167847,
+     "hunt": 0.3228487112791363,
+     "linning": 0.3528231734693147,
+     "snowden": 0.09580586689374515
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.63,
+     "linning": 0.43,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.63
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.5863264122601635,
+     "hunt": 0.2958394386385703,
+     "linning": 0.37361425231892076,
+     "snowden": 0.0559097096556026
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.99,
+     "linning": 0.37,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.99
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.7276872658627719,
+     "hunt": 0.3383559604305362,
+     "linning": 0.45594288291668295,
+     "snowden": 0.12506261138407582
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 0.85,
+     "linning": 0.16,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 0.85
+   },
+   {
+    "author": "snowden",
+    "scores": {
+     "hughes": 0.7525154772014494,
+     "hunt": 0.2693696287320727,
+     "linning": 0.42338025290869885,
+     "snowden": 0.20341591923867974
+    },
+    "gi": {
+     "hughes": 0.0,
+     "hunt": 1.0,
+     "linning": 0.88,
+     "snowden": 1.0
+    },
+    "predicted": "snowden",
+    "positive": 1.0,
+    "open_negative": 1.0
+   }
+  ],
+  "dictated": [
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.4108117435881512,
+     "brunton": 0.4378947544312499,
+     "burney": 0.7095641911775696,
+     "ferrier": 0.4167703360984918,
+     "galt": 0.38331164634605885,
+     "hogg": 0.4752996096857349,
+     "maturin": 0.3957558701708668,
+     "morgan": 0.6677224018971877,
+     "porter": 0.5164716329004663,
+     "scott": 0.18690565797347192,
+     "shelley": 0.4847581906145195
+    },
+    "gi": {
+     "austen": 0.06,
+     "brunton": 0.04,
+     "burney": 0.0,
+     "ferrier": 0.05,
+     "galt": 0.25,
+     "hogg": 0.0,
+     "maturin": 0.09,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.25
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7092506835533158,
+     "brunton": 0.6440721584943969,
+     "burney": 0.7802442659065768,
+     "ferrier": 0.473375888710703,
+     "galt": 0.1521508897284224,
+     "hogg": 0.24819918716861844,
+     "maturin": 0.5646302940206586,
+     "morgan": 0.7012542314800307,
+     "porter": 0.6568968936945955,
+     "scott": 0.14430594504236394,
+     "shelley": 0.6973901269622338
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.07,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.6776144594326106,
+     "brunton": 0.6537121962004018,
+     "burney": 0.7594817236894693,
+     "ferrier": 0.4234529793255045,
+     "galt": 0.1969870097396994,
+     "hogg": 0.28448813471588763,
+     "maturin": 0.5807701284362584,
+     "morgan": 0.7803907289967271,
+     "porter": 0.6098742809430405,
+     "scott": 0.10701770936261368,
+     "shelley": 0.6720915058204906
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.29,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.8035979783439416,
+     "brunton": 0.8763455937053667,
+     "burney": 0.8763446353462598,
+     "ferrier": 0.48887471257196335,
+     "galt": 0.11454582917298728,
+     "hogg": 0.21889677061819302,
+     "maturin": 0.8051601022919478,
+     "morgan": 0.8412033205478412,
+     "porter": 0.8605162590302156,
+     "scott": 0.19653390332674592,
+     "shelley": 0.8914538904957524
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.08,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7538784942077147,
+     "brunton": 0.6828327800016111,
+     "burney": 0.8105740398772434,
+     "ferrier": 0.5031361302981262,
+     "galt": 0.3284888383968886,
+     "hogg": 0.3866593128232624,
+     "maturin": 0.5361170643922848,
+     "morgan": 0.7531785482410965,
+     "porter": 0.6487660904041641,
+     "scott": 0.1045229755611411,
+     "shelley": 0.5553878945579604
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.01,
+     "galt": 0.93,
+     "hogg": 0.42,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.93
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.5891837005755947,
+     "brunton": 0.4908229682940576,
+     "burney": 0.6770339527964094,
+     "ferrier": 0.4768928162779039,
+     "galt": 0.2966675575757324,
+     "hogg": 0.3795429817631196,
+     "maturin": 0.4047929668886967,
+     "morgan": 0.6913197839138532,
+     "porter": 0.5066381303813121,
+     "scott": 0.1053938325817827,
+     "shelley": 0.5335661217556382
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.05,
+     "burney": 0.0,
+     "ferrier": 0.05,
+     "galt": 1.0,
+     "hogg": 0.85,
+     "maturin": 0.62,
+     "morgan": 0.0,
+     "porter": 0.01,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.5455893862971893,
+     "brunton": 0.5022435838346531,
+     "burney": 0.6704975988114859,
+     "ferrier": 0.44913464503206124,
+     "galt": 0.3157502138157431,
+     "hogg": 0.3807591488593335,
+     "maturin": 0.4013749112457987,
+     "morgan": 0.6457201248073343,
+     "porter": 0.5382678928876738,
+     "scott": 0.0934726075436233,
+     "shelley": 0.4950161958997099
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.01,
+     "burney": 0.0,
+     "ferrier": 0.02,
+     "galt": 0.95,
+     "hogg": 0.35,
+     "maturin": 0.12,
+     "morgan": 0.0,
+     "porter": 0.01,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.95
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7226570236287235,
+     "brunton": 0.6682898546038798,
+     "burney": 0.7973408208293796,
+     "ferrier": 0.4852994880695328,
+     "galt": 0.3371635069044061,
+     "hogg": 0.41709756989341884,
+     "maturin": 0.5565424340364438,
+     "morgan": 0.7990727566283442,
+     "porter": 0.6045597975975042,
+     "scott": 0.11271319834818527,
+     "shelley": 0.5754740069548563
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.04,
+     "galt": 0.95,
+     "hogg": 0.24,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.95
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7226570236287235,
+     "brunton": 0.6682898546038798,
+     "burney": 0.7973408208293796,
+     "ferrier": 0.4852994880695328,
+     "galt": 0.3371635069044061,
+     "hogg": 0.41709756989341884,
+     "maturin": 0.5565424340364438,
+     "morgan": 0.7990727566283442,
+     "porter": 0.6045597975975042,
+     "scott": 0.11271319834818527,
+     "shelley": 0.5754740069548563
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.02,
+     "galt": 0.94,
+     "hogg": 0.2,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.94
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7963971139864361,
+     "brunton": 0.659298328985469,
+     "burney": 0.7281300363280845,
+     "ferrier": 0.6757875243762677,
+     "galt": 0.3522373802853723,
+     "hogg": 0.44806596424111145,
+     "maturin": 0.5228234069833578,
+     "morgan": 0.5691506871165204,
+     "porter": 0.6142936315788586,
+     "scott": 0.2684629893122944,
+     "shelley": 0.6550427324162394
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.0,
+     "galt": 0.86,
+     "hogg": 0.34,
+     "maturin": 0.02,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.86
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7300083093283449,
+     "brunton": 0.6806788117598833,
+     "burney": 0.807357083341588,
+     "ferrier": 0.4813494256473153,
+     "galt": 0.2595201263579977,
+     "hogg": 0.36514847149980056,
+     "maturin": 0.6268945333078433,
+     "morgan": 0.8100524149925045,
+     "porter": 0.6425288408809062,
+     "scott": 0.12422762143947264,
+     "shelley": 0.720192041486102
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.13,
+     "galt": 1.0,
+     "hogg": 0.67,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.6430797487595863,
+     "brunton": 0.5824806162260665,
+     "burney": 0.7338523242130865,
+     "ferrier": 0.4121109251399857,
+     "galt": 0.26283185873358017,
+     "hogg": 0.36856297444223973,
+     "maturin": 0.47231203076847883,
+     "morgan": 0.6836487004310852,
+     "porter": 0.558170942472212,
+     "scott": 0.06853395202688228,
+     "shelley": 0.5589151312174484
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.07,
+     "galt": 0.99,
+     "hogg": 0.39,
+     "maturin": 0.02,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.99
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7639681723243645,
+     "brunton": 0.8285808511253174,
+     "burney": 0.8687871772603193,
+     "ferrier": 0.4753967802099762,
+     "galt": 0.12548607990928173,
+     "hogg": 0.2636651418935162,
+     "maturin": 0.8199761546918775,
+     "morgan": 0.8287220781465486,
+     "porter": 0.818894812505477,
+     "scott": 0.19776984723067892,
+     "shelley": 0.9101640555083871
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.14,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7092506835533158,
+     "brunton": 0.6440721584943969,
+     "burney": 0.7802442659065768,
+     "ferrier": 0.473375888710703,
+     "galt": 0.1521508897284224,
+     "hogg": 0.24819918716861844,
+     "maturin": 0.5646302940206586,
+     "morgan": 0.7012542314800307,
+     "porter": 0.6568968936945955,
+     "scott": 0.14430594504236394,
+     "shelley": 0.6973901269622338
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.14,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.5652438511572699,
+     "brunton": 0.5155286679585185,
+     "burney": 0.7226887389766441,
+     "ferrier": 0.4889364778536358,
+     "galt": 0.37551895943035696,
+     "hogg": 0.46644052554513904,
+     "maturin": 0.3687435499061579,
+     "morgan": 0.6497408786714813,
+     "porter": 0.49387366730132987,
+     "scott": 0.12787932991617923,
+     "shelley": 0.4487594603201416
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.0,
+     "galt": 0.25,
+     "hogg": 0.03,
+     "maturin": 0.35,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.04
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.35
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.497517981119006,
+     "brunton": 0.43733473380569565,
+     "burney": 0.614731509399788,
+     "ferrier": 0.3228389185805536,
+     "galt": 0.28512581475686116,
+     "hogg": 0.34825617171444767,
+     "maturin": 0.34600310171077564,
+     "morgan": 0.556257245118065,
+     "porter": 0.46130230178119014,
+     "scott": 0.09983586565326641,
+     "shelley": 0.4662516275785734
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.06,
+     "burney": 0.0,
+     "ferrier": 0.51,
+     "galt": 0.76,
+     "hogg": 0.41,
+     "maturin": 0.23,
+     "morgan": 0.0,
+     "porter": 0.01,
+     "scott": 1.0,
+     "shelley": 0.02
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.76
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7066941185599005,
+     "brunton": 0.6113431869925057,
+     "burney": 0.7124990289833878,
+     "ferrier": 0.4398304628909736,
+     "galt": 0.3213118022976533,
+     "hogg": 0.4132307119308538,
+     "maturin": 0.4575556183354057,
+     "morgan": 0.6746417124372945,
+     "porter": 0.5460059825822048,
+     "scott": 0.09854468123037496,
+     "shelley": 0.5286514337347122
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.02,
+     "galt": 0.98,
+     "hogg": 0.07,
+     "maturin": 0.02,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.98
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7066941185599005,
+     "brunton": 0.6113431869925057,
+     "burney": 0.7124990289833878,
+     "ferrier": 0.4398304628909736,
+     "galt": 0.3213118022976533,
+     "hogg": 0.4132307119308538,
+     "maturin": 0.4575556183354057,
+     "morgan": 0.6746417124372945,
+     "porter": 0.5460059825822048,
+     "scott": 0.09854468123037496,
+     "shelley": 0.5286514337347122
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.06,
+     "galt": 0.97,
+     "hogg": 0.11,
+     "maturin": 0.01,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.97
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.6966721697096154,
+     "brunton": 0.6215519650629889,
+     "burney": 0.7500318926640209,
+     "ferrier": 0.4741469879374667,
+     "galt": 0.25185670563319495,
+     "hogg": 0.3516519429709428,
+     "maturin": 0.5481074131394805,
+     "morgan": 0.7658839846619053,
+     "porter": 0.593330888311712,
+     "scott": 0.09741693951290764,
+     "shelley": 0.6032691164045925
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.04,
+     "galt": 1.0,
+     "hogg": 0.97,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7394310950469958,
+     "brunton": 0.6366321847573087,
+     "burney": 0.7462014933315115,
+     "ferrier": 0.5013192541877389,
+     "galt": 0.35660100420460605,
+     "hogg": 0.45475211770786517,
+     "maturin": 0.5083077501382269,
+     "morgan": 0.6868169177819059,
+     "porter": 0.5617417041699648,
+     "scott": 0.11076282477724742,
+     "shelley": 0.575182849723799
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.01,
+     "galt": 0.58,
+     "hogg": 0.09,
+     "maturin": 0.02,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.58
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7243586148589904,
+     "brunton": 0.7288103016555443,
+     "burney": 0.7383210322762424,
+     "ferrier": 0.5181792521160844,
+     "galt": 0.25740510863479626,
+     "hogg": 0.33993470113724655,
+     "maturin": 0.6535602058132173,
+     "morgan": 0.800256143844442,
+     "porter": 0.6238710574320766,
+     "scott": 0.17763574513220115,
+     "shelley": 0.7483092016512203
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.1,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.509936817775059,
+     "brunton": 0.5086319981097396,
+     "burney": 0.7215330056644935,
+     "ferrier": 0.4713107917842395,
+     "galt": 0.34230006214254716,
+     "hogg": 0.43978433102375203,
+     "maturin": 0.46827954537080896,
+     "morgan": 0.6092019358286593,
+     "porter": 0.5777724800015482,
+     "scott": 0.185058153121345,
+     "shelley": 0.5624994797435093
+    },
+    "gi": {
+     "austen": 0.02,
+     "brunton": 0.02,
+     "burney": 0.0,
+     "ferrier": 0.03,
+     "galt": 1.0,
+     "hogg": 0.26,
+     "maturin": 0.03,
+     "morgan": 0.01,
+     "porter": 0.01,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.4745955897472337,
+     "brunton": 0.4195301949386291,
+     "burney": 0.6334311146549405,
+     "ferrier": 0.45422834357565944,
+     "galt": 0.38799759949594625,
+     "hogg": 0.4678433516387297,
+     "maturin": 0.43415372294188614,
+     "morgan": 0.7016517074556893,
+     "porter": 0.4502410868003024,
+     "scott": 0.13855191216058893,
+     "shelley": 0.502168452975175
+    },
+    "gi": {
+     "austen": 0.02,
+     "brunton": 0.2,
+     "burney": 0.0,
+     "ferrier": 0.09,
+     "galt": 0.41,
+     "hogg": 0.07,
+     "maturin": 0.16,
+     "morgan": 0.0,
+     "porter": 0.15,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.41
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7243586148589904,
+     "brunton": 0.7288103016555443,
+     "burney": 0.7383210322762424,
+     "ferrier": 0.5181792521160844,
+     "galt": 0.25740510863479626,
+     "hogg": 0.33993470113724655,
+     "maturin": 0.6535602058132173,
+     "morgan": 0.800256143844442,
+     "porter": 0.6238710574320766,
+     "scott": 0.17763574513220115,
+     "shelley": 0.7483092016512203
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.06,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.51102595763893,
+     "brunton": 0.5102803540160494,
+     "burney": 0.7264991386694006,
+     "ferrier": 0.3502767323523239,
+     "galt": 0.2616972298329886,
+     "hogg": 0.3516476175761427,
+     "maturin": 0.5083823697230293,
+     "morgan": 0.7219278921679059,
+     "porter": 0.5523181042869714,
+     "scott": 0.10141169395383254,
+     "shelley": 0.5951268374834874
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.02,
+     "burney": 0.0,
+     "ferrier": 0.91,
+     "galt": 1.0,
+     "hogg": 0.8,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7232169753581521,
+     "brunton": 0.7616992341047921,
+     "burney": 0.8436974019845089,
+     "ferrier": 0.5344956863913151,
+     "galt": 0.1599311477767823,
+     "hogg": 0.25101842233422356,
+     "maturin": 0.6732380915863294,
+     "morgan": 0.8337207918008953,
+     "porter": 0.7275148793592534,
+     "scott": 0.18148980027717865,
+     "shelley": 0.81199127944576
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.08,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.5549148224632225,
+     "brunton": 0.5493591289029203,
+     "burney": 0.730620525134126,
+     "ferrier": 0.49609328799109953,
+     "galt": 0.29479132191489066,
+     "hogg": 0.39060587772908784,
+     "maturin": 0.4798768461532197,
+     "morgan": 0.6278608927720775,
+     "porter": 0.5717015020964848,
+     "scott": 0.14450037073959932,
+     "shelley": 0.5823614207406909
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.03,
+     "galt": 1.0,
+     "hogg": 0.81,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.5153680002953209,
+     "brunton": 0.46178288328203565,
+     "burney": 0.6856679216744999,
+     "ferrier": 0.47291683148025243,
+     "galt": 0.36997124913301516,
+     "hogg": 0.4383100614881448,
+     "maturin": 0.4335968395900598,
+     "morgan": 0.7255014345016961,
+     "porter": 0.484315369599855,
+     "scott": 0.14477254418200114,
+     "shelley": 0.5019976452162845
+    },
+    "gi": {
+     "austen": 0.01,
+     "brunton": 0.11,
+     "burney": 0.0,
+     "ferrier": 0.13,
+     "galt": 0.73,
+     "hogg": 0.27,
+     "maturin": 0.27,
+     "morgan": 0.0,
+     "porter": 0.09,
+     "scott": 1.0,
+     "shelley": 0.02
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.73
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7243586148589904,
+     "brunton": 0.7288103016555443,
+     "burney": 0.7383210322762424,
+     "ferrier": 0.5181792521160844,
+     "galt": 0.25740510863479626,
+     "hogg": 0.33993470113724655,
+     "maturin": 0.6535602058132173,
+     "morgan": 0.800256143844442,
+     "porter": 0.6238710574320766,
+     "scott": 0.17763574513220115,
+     "shelley": 0.7483092016512203
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.07,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.45867338177727945,
+     "brunton": 0.4840254714623575,
+     "burney": 0.6587315653926125,
+     "ferrier": 0.3934610670127876,
+     "galt": 0.37272079165910554,
+     "hogg": 0.46740418455104127,
+     "maturin": 0.4180242682058315,
+     "morgan": 0.6433354184195497,
+     "porter": 0.48922369681671585,
+     "scott": 0.11153581686806247,
+     "shelley": 0.5074059497585499
+    },
+    "gi": {
+     "austen": 0.02,
+     "brunton": 0.01,
+     "burney": 0.0,
+     "ferrier": 0.08,
+     "galt": 0.19,
+     "hogg": 0.04,
+     "maturin": 0.05,
+     "morgan": 0.0,
+     "porter": 0.01,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.19
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.5804200036376184,
+     "brunton": 0.5034431077523935,
+     "burney": 0.6686923666779524,
+     "ferrier": 0.45343466645099206,
+     "galt": 0.34320937969928234,
+     "hogg": 0.40549992914249,
+     "maturin": 0.3928775979822531,
+     "morgan": 0.6790892637280594,
+     "porter": 0.5137278361281534,
+     "scott": 0.09722383617557662,
+     "shelley": 0.4647633152443007
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.01,
+     "burney": 0.0,
+     "ferrier": 0.04,
+     "galt": 0.78,
+     "hogg": 0.17,
+     "maturin": 0.26,
+     "morgan": 0.0,
+     "porter": 0.02,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.78
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.43230771318334493,
+     "brunton": 0.38615816068218667,
+     "burney": 0.5658785388044985,
+     "ferrier": 0.48458375315410473,
+     "galt": 0.5070119289415144,
+     "hogg": 0.5601537775682064,
+     "maturin": 0.310349045606238,
+     "morgan": 0.6683354670132993,
+     "porter": 0.3730035733077437,
+     "scott": 0.21495209957448635,
+     "shelley": 0.3980759398814736
+    },
+    "gi": {
+     "austen": 0.08,
+     "brunton": 0.2,
+     "burney": 0.0,
+     "ferrier": 0.01,
+     "galt": 0.02,
+     "hogg": 0.0,
+     "maturin": 0.95,
+     "morgan": 0.0,
+     "porter": 0.35,
+     "scott": 1.0,
+     "shelley": 0.22
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.95
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.51102595763893,
+     "brunton": 0.5102803540160494,
+     "burney": 0.7264991386694006,
+     "ferrier": 0.3502767323523239,
+     "galt": 0.2616972298329886,
+     "hogg": 0.3516476175761427,
+     "maturin": 0.5083823697230293,
+     "morgan": 0.7219278921679059,
+     "porter": 0.5523181042869714,
+     "scott": 0.10141169395383254,
+     "shelley": 0.5951268374834874
+    },
+    "gi": {
+     "austen": 0.01,
+     "brunton": 0.01,
+     "burney": 0.0,
+     "ferrier": 0.92,
+     "galt": 1.0,
+     "hogg": 0.9,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.4951572932239898,
+     "brunton": 0.4637449593667513,
+     "burney": 0.7025408111706297,
+     "ferrier": 0.496530314374351,
+     "galt": 0.40638439770435564,
+     "hogg": 0.5006669120155921,
+     "maturin": 0.4855189784128544,
+     "morgan": 0.6376444683579707,
+     "porter": 0.5541202257105342,
+     "scott": 0.23564263415743325,
+     "shelley": 0.6142599165373425
+    },
+    "gi": {
+     "austen": 0.08,
+     "brunton": 0.15,
+     "burney": 0.0,
+     "ferrier": 0.05,
+     "galt": 0.62,
+     "hogg": 0.09,
+     "maturin": 0.11,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.62
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.46042675231890384,
+     "brunton": 0.4303478411716477,
+     "burney": 0.6053415151899335,
+     "ferrier": 0.4422320829697919,
+     "galt": 0.4502855547979304,
+     "hogg": 0.507942338083174,
+     "maturin": 0.44956191806543,
+     "morgan": 0.5843524470342167,
+     "porter": 0.46946465933495707,
+     "scott": 0.24407860942853565,
+     "shelley": 0.5596520517962138
+    },
+    "gi": {
+     "austen": 0.12,
+     "brunton": 0.26,
+     "burney": 0.0,
+     "ferrier": 0.27,
+     "galt": 0.23,
+     "hogg": 0.09,
+     "maturin": 0.18,
+     "morgan": 0.0,
+     "porter": 0.1,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.27
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.740598436717595,
+     "brunton": 0.6692041236732551,
+     "burney": 0.7686883730531912,
+     "ferrier": 0.548257950209496,
+     "galt": 0.2683341803110102,
+     "hogg": 0.32492930882705584,
+     "maturin": 0.5408908379111822,
+     "morgan": 0.6973789297036794,
+     "porter": 0.6541530181055932,
+     "scott": 0.1338676694570211,
+     "shelley": 0.591934621236552
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.01,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.03,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.4074613450073242,
+     "brunton": 0.38381760613674765,
+     "burney": 0.6823970621513202,
+     "ferrier": 0.4263168294794538,
+     "galt": 0.4574966150197487,
+     "hogg": 0.4839193518750895,
+     "maturin": 0.3710195895846977,
+     "morgan": 0.7601850069665441,
+     "porter": 0.4244827110528949,
+     "scott": 0.1925034992169452,
+     "shelley": 0.4807934415026942
+    },
+    "gi": {
+     "austen": 0.23,
+     "brunton": 0.31,
+     "burney": 0.0,
+     "ferrier": 0.09,
+     "galt": 0.09,
+     "hogg": 0.02,
+     "maturin": 0.38,
+     "morgan": 0.0,
+     "porter": 0.15,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.38
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.4745955897472337,
+     "brunton": 0.4195301949386291,
+     "burney": 0.6334311146549405,
+     "ferrier": 0.45422834357565944,
+     "galt": 0.38799759949594625,
+     "hogg": 0.4678433516387297,
+     "maturin": 0.43415372294188614,
+     "morgan": 0.7016517074556893,
+     "porter": 0.4502410868003024,
+     "scott": 0.13855191216058893,
+     "shelley": 0.502168452975175
+    },
+    "gi": {
+     "austen": 0.07,
+     "brunton": 0.21,
+     "burney": 0.0,
+     "ferrier": 0.09,
+     "galt": 0.36,
+     "hogg": 0.07,
+     "maturin": 0.12,
+     "morgan": 0.0,
+     "porter": 0.11,
+     "scott": 1.0,
+     "shelley": 0.02
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.36
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7908700991336847,
+     "brunton": 0.8143590518360238,
+     "burney": 0.8825827066416708,
+     "ferrier": 0.5567596248212143,
+     "galt": 0.18600679561318867,
+     "hogg": 0.28300473169417806,
+     "maturin": 0.7071569152558839,
+     "morgan": 0.842768081617105,
+     "porter": 0.7208929871204569,
+     "scott": 0.1993387829628085,
+     "shelley": 0.8253626841246993
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.04,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.0,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.6117332126121013,
+     "brunton": 0.5981352138693817,
+     "burney": 0.6848860299098947,
+     "ferrier": 0.46234732869018313,
+     "galt": 0.31453972045350187,
+     "hogg": 0.396220863051723,
+     "maturin": 0.5305609651457517,
+     "morgan": 0.7214184654643097,
+     "porter": 0.5140119011445923,
+     "scott": 0.14309555060564638,
+     "shelley": 0.6036313419500681
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.13,
+     "galt": 1.0,
+     "hogg": 0.84,
+     "maturin": 0.01,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.8359401101935108,
+     "brunton": 0.7379718345639187,
+     "burney": 0.7634782757759202,
+     "ferrier": 0.45727455514466064,
+     "galt": 0.26983309195168403,
+     "hogg": 0.31248754029781634,
+     "maturin": 0.503283329160535,
+     "morgan": 0.6089534758018245,
+     "porter": 0.5882810715557101,
+     "scott": 0.3002865068893351,
+     "shelley": 0.5515018771799791
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.18,
+     "galt": 1.0,
+     "hogg": 0.88,
+     "maturin": 0.05,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 0.99,
+     "shelley": 0.02
+    },
+    "predicted": "galt",
+    "positive": 0.99,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.9252941803276327,
+     "brunton": 0.8517132545765497,
+     "burney": 0.8759623745616635,
+     "ferrier": 0.5752484551652616,
+     "galt": 0.21326409242735922,
+     "hogg": 0.24564334549843247,
+     "maturin": 0.5014326975651522,
+     "morgan": 0.6202657230271975,
+     "porter": 0.7162241786418431,
+     "scott": 0.23876316278879006,
+     "shelley": 0.5466932165552454
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.0,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.06,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.02
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.8417438156688812,
+     "brunton": 0.7908128029041783,
+     "burney": 0.7237349366703223,
+     "ferrier": 0.4595180444024286,
+     "galt": 0.20670180096925006,
+     "hogg": 0.274390571985619,
+     "maturin": 0.540899077738257,
+     "morgan": 0.5215069688472647,
+     "porter": 0.6863020737707923,
+     "scott": 0.27136685484659107,
+     "shelley": 0.6347455699982087
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.16,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.04,
+     "morgan": 0.06,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7659608929158721,
+     "brunton": 0.7063220565383284,
+     "burney": 0.7643874008018251,
+     "ferrier": 0.40550453034573586,
+     "galt": 0.27347557847018156,
+     "hogg": 0.3510745494783586,
+     "maturin": 0.5439761188424679,
+     "morgan": 0.6580149615048497,
+     "porter": 0.5643292470370592,
+     "scott": 0.30578835707299423,
+     "shelley": 0.5819057088242303
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.42,
+     "galt": 1.0,
+     "hogg": 0.75,
+     "maturin": 0.01,
+     "morgan": 0.0,
+     "porter": 0.01,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7857567850955575,
+     "brunton": 0.7033989295507017,
+     "burney": 0.8007051574990872,
+     "ferrier": 0.4460403544294079,
+     "galt": 0.3178037520829883,
+     "hogg": 0.3423661118020581,
+     "maturin": 0.4750931687591431,
+     "morgan": 0.6410574564855369,
+     "porter": 0.5608094941449904,
+     "scott": 0.31316100600342567,
+     "shelley": 0.5203051578804189
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.15,
+     "galt": 0.99,
+     "hogg": 0.86,
+     "maturin": 0.15,
+     "morgan": 0.0,
+     "porter": 0.02,
+     "scott": 1.0,
+     "shelley": 0.05
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 0.99
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.907669201344823,
+     "brunton": 0.8438913099230597,
+     "burney": 0.8446454490222377,
+     "ferrier": 0.5378845521231512,
+     "galt": 0.16791239694171778,
+     "hogg": 0.20933429781551127,
+     "maturin": 0.5300542676324651,
+     "morgan": 0.5817269328222793,
+     "porter": 0.7514912404511708,
+     "scott": 0.24397911419948992,
+     "shelley": 0.6179211458339765
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.08,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.07,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7992839793620395,
+     "brunton": 0.7314039001084207,
+     "burney": 0.8147979038985731,
+     "ferrier": 0.42104083330132114,
+     "galt": 0.2645394779700938,
+     "hogg": 0.2974109901377515,
+     "maturin": 0.5246194236550967,
+     "morgan": 0.6862406868112938,
+     "porter": 0.5989187032925996,
+     "scott": 0.3022659152642214,
+     "shelley": 0.5884815656933441
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.15,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.06,
+     "morgan": 0.0,
+     "porter": 0.01,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.8280710058325268,
+     "brunton": 0.7755241770333055,
+     "burney": 0.7440839561477586,
+     "ferrier": 0.4467776946621078,
+     "galt": 0.19350238036808398,
+     "hogg": 0.26151180105235716,
+     "maturin": 0.5788017840443176,
+     "morgan": 0.5397151467322633,
+     "porter": 0.7163284869249822,
+     "scott": 0.28221612367702464,
+     "shelley": 0.6777570250910324
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.26,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.01,
+     "morgan": 0.03,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.0
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7931962659427783,
+     "brunton": 0.7143327596203983,
+     "burney": 0.7381191935133444,
+     "ferrier": 0.4251809839993159,
+     "galt": 0.2599732940637043,
+     "hogg": 0.25303415109674876,
+     "maturin": 0.4261805164727892,
+     "morgan": 0.535072609174903,
+     "porter": 0.5517607579410408,
+     "scott": 0.24440761925267318,
+     "shelley": 0.5110874266588696
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.18,
+     "galt": 0.99,
+     "hogg": 1.0,
+     "maturin": 0.15,
+     "morgan": 0.02,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.07
+    },
+    "predicted": "scott",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.8052076006549423,
+     "brunton": 0.7341978019565925,
+     "burney": 0.7692141195917688,
+     "ferrier": 0.4412798717894073,
+     "galt": 0.24512577578409012,
+     "hogg": 0.24490287185525084,
+     "maturin": 0.4326909911740192,
+     "morgan": 0.5686789462638926,
+     "porter": 0.5845508481990345,
+     "scott": 0.25613020027999944,
+     "shelley": 0.5265958923986711
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.2,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.11,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.03
+    },
+    "predicted": "hogg",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7716845298856627,
+     "brunton": 0.7153872025902815,
+     "burney": 0.7491676935683983,
+     "ferrier": 0.3765695606488728,
+     "galt": 0.2596879654964258,
+     "hogg": 0.3236024627301012,
+     "maturin": 0.5234432438351004,
+     "morgan": 0.6189132260420622,
+     "porter": 0.5860847839992129,
+     "scott": 0.3196516288323279,
+     "shelley": 0.5739531761397522
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.79,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.06,
+     "morgan": 0.0,
+     "porter": 0.01,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.8245608071241086,
+     "brunton": 0.7793514090528942,
+     "burney": 0.7732084170268188,
+     "ferrier": 0.39091864018936706,
+     "galt": 0.20902269162798848,
+     "hogg": 0.26010828367898076,
+     "maturin": 0.5339389110269366,
+     "morgan": 0.5696337502530014,
+     "porter": 0.6501665011054532,
+     "scott": 0.27339401453940304,
+     "shelley": 0.5848226188817243
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.46,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.06,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.03
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.9252941803276327,
+     "brunton": 0.8517132545765497,
+     "burney": 0.8759623745616635,
+     "ferrier": 0.5752484551652616,
+     "galt": 0.21326409242735922,
+     "hogg": 0.24564334549843247,
+     "maturin": 0.5014326975651522,
+     "morgan": 0.6202657230271975,
+     "porter": 0.7162241786418431,
+     "scott": 0.23876316278879006,
+     "shelley": 0.5466932165552454
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.01,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.07,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.03
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.8359401101935108,
+     "brunton": 0.7379718345639187,
+     "burney": 0.7634782757759202,
+     "ferrier": 0.45727455514466064,
+     "galt": 0.26983309195168403,
+     "hogg": 0.31248754029781634,
+     "maturin": 0.503283329160535,
+     "morgan": 0.6089534758018245,
+     "porter": 0.5882810715557101,
+     "scott": 0.3002865068893351,
+     "shelley": 0.5515018771799791
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.12,
+     "galt": 0.99,
+     "hogg": 0.85,
+     "maturin": 0.07,
+     "morgan": 0.0,
+     "porter": 0.01,
+     "scott": 0.93,
+     "shelley": 0.05
+    },
+    "predicted": "galt",
+    "positive": 0.93,
+    "open_negative": 0.99
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.8329160121901863,
+     "brunton": 0.7871747542946722,
+     "burney": 0.8223139089791829,
+     "ferrier": 0.4078786639288322,
+     "galt": 0.17291102957525373,
+     "hogg": 0.19281014692924725,
+     "maturin": 0.543609571641328,
+     "morgan": 0.6022127116640321,
+     "porter": 0.657583466585357,
+     "scott": 0.18768578165615601,
+     "shelley": 0.5806160304845334
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.2,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.04,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.01
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.7866940469986522,
+     "brunton": 0.704890563422077,
+     "burney": 0.7715533052577569,
+     "ferrier": 0.39239403584045884,
+     "galt": 0.27776399081623016,
+     "hogg": 0.32995170343499647,
+     "maturin": 0.504047257438232,
+     "morgan": 0.6408891811557043,
+     "porter": 0.5623579707407651,
+     "scott": 0.3133471098191797,
+     "shelley": 0.5734243511404343
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.36,
+     "galt": 1.0,
+     "hogg": 0.88,
+     "maturin": 0.11,
+     "morgan": 0.0,
+     "porter": 0.01,
+     "scott": 0.98,
+     "shelley": 0.01
+    },
+    "predicted": "galt",
+    "positive": 0.98,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.9252941803276327,
+     "brunton": 0.8517132545765497,
+     "burney": 0.8759623745616635,
+     "ferrier": 0.5752484551652616,
+     "galt": 0.21326409242735922,
+     "hogg": 0.24564334549843247,
+     "maturin": 0.5014326975651522,
+     "morgan": 0.6202657230271975,
+     "porter": 0.7162241786418431,
+     "scott": 0.23876316278879006,
+     "shelley": 0.5466932165552454
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.01,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.08,
+     "morgan": 0.0,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.06
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.6882319492746525,
+     "brunton": 0.6525475089603948,
+     "burney": 0.7224219994446156,
+     "ferrier": 0.3740649485220382,
+     "galt": 0.28547983378784214,
+     "hogg": 0.3047201369622725,
+     "maturin": 0.4442915242746305,
+     "morgan": 0.58730273538284,
+     "porter": 0.5043085036797093,
+     "scott": 0.2865203937017049,
+     "shelley": 0.5189255348746047
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.68,
+     "galt": 1.0,
+     "hogg": 0.99,
+     "maturin": 0.19,
+     "morgan": 0.01,
+     "porter": 0.03,
+     "scott": 1.0,
+     "shelley": 0.06
+    },
+    "predicted": "galt",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.8052076006549423,
+     "brunton": 0.7341978019565925,
+     "burney": 0.7692141195917688,
+     "ferrier": 0.4412798717894073,
+     "galt": 0.24512577578409012,
+     "hogg": 0.24490287185525084,
+     "maturin": 0.4326909911740192,
+     "morgan": 0.5686789462638926,
+     "porter": 0.5845508481990345,
+     "scott": 0.25613020027999944,
+     "shelley": 0.5265958923986711
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.13,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.14,
+     "morgan": 0.02,
+     "porter": 0.0,
+     "scott": 1.0,
+     "shelley": 0.07
+    },
+    "predicted": "hogg",
+    "positive": 1.0,
+    "open_negative": 1.0
+   },
+   {
+    "author": "scott",
+    "scores": {
+     "austen": 0.8003540456693412,
+     "brunton": 0.7103112272945381,
+     "burney": 0.7816044913676082,
+     "ferrier": 0.4406912074210476,
+     "galt": 0.2800796890179903,
+     "hogg": 0.3077648597093793,
+     "maturin": 0.5046835867984198,
+     "morgan": 0.6707860471677647,
+     "porter": 0.5779444582995715,
+     "scott": 0.31755274795597255,
+     "shelley": 0.5831844083667
+    },
+    "gi": {
+     "austen": 0.0,
+     "brunton": 0.0,
+     "burney": 0.0,
+     "ferrier": 0.13,
+     "galt": 1.0,
+     "hogg": 1.0,
+     "maturin": 0.08,
+     "morgan": 0.0,
+     "porter": 0.01,
+     "scott": 0.99,
+     "shelley": 0.02
+    },
+    "predicted": "galt",
+    "positive": 0.99,
+    "open_negative": 1.0
+   }
+  ]
+ }
+}
