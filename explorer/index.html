@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOM Results Explorer</title>
+<style>
+:root { --bg: #fbfaf7; --fg: #1d1c1a; --muted: #6b6760; --line: #e3dfd6; --accent: #7a4b1e; --row: #f3f0e9; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #171614; --fg: #ece8e1; --muted: #a29d94; --line: #34312c; --accent: #d9a46b; --row: #201e1b; }
+}
+:root[data-theme="dark"] { --bg: #171614; --fg: #ece8e1; --muted: #a29d94; --line: #34312c; --accent: #d9a46b; --row: #201e1b; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 system-ui, sans-serif; }
+main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 1.5rem; margin: 0 0 4px; }
+h2 { font-size: 1.1rem; margin: 36px 0 4px; color: var(--accent); }
+p.lead, p.explain { color: var(--muted); margin: 4px 0 10px; max-width: 75ch; }
+nav { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 14px 0; font-size: .9rem; }
+nav a { color: var(--accent); }
+.wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; font-size: .88rem; }
+th, td { padding: 6px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+th { cursor: pointer; user-select: none; white-space: nowrap; position: sticky; top: 0; background: var(--bg); }
+th:hover { color: var(--accent); }
+tbody tr:nth-child(even) { background: var(--row); }
+td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.long { min-width: 28ch; max-width: 60ch; font-size: .82rem; color: var(--muted); }
+.pending { padding: 14px; border: 1px dashed var(--line); border-radius: 6px; color: var(--muted); }
+.src { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Book of Mormon authorship study: results</h1>
+<p class="lead">Every table below is read live from a result file in the study's public repository. The files hold
+names and numbers only: no text from the Book of Mormon or the comparison library appears here. Click a column
+heading to sort. The study identifies close candidates or their absence; it makes no claim about inspiration.</p>
+<nav id="nav"></nav>
+<div id="panels"></div>
+</main>
+<script>
+"use strict";
+const ROOT = "../";  // the repository root, when this folder is served from it
+
+function get(obj, path) {
+  if (!path) return obj;
+  return path.split(".").reduce((o, k) => (o == null ? undefined : o[k]), obj);
+}
+
+function parseCSV(text) {
+  const rows = []; let row = [], cell = "", q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) {
+      if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+      else if (c === '"') q = false;
+      else cell += c;
+    } else if (c === '"') q = true;
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; }
+    else if (c !== "\r") cell += c;
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  const head = rows.shift();
+  return rows.filter(r => r.length === head.length).map(r => Object.fromEntries(head.map((h, i) => [h, r[i]])));
+}
+
+function fmt(v) {
+  if (v === null || v === undefined) return "–";
+  if (typeof v === "number") return Number.isInteger(v) ? String(v) : (Math.abs(v) < 0.001 && v !== 0 ? v.toExponential(1) : v.toFixed(3));
+  if (typeof v === "boolean") return v ? "yes" : "no";
+  if (Array.isArray(v)) return v.map(fmt).join(" – ");
+  if (typeof v === "object") return Object.entries(v).map(([k, x]) => `${k}: ${fmt(x)}`).join("; ");
+  return String(v);
+}
+
+function rowsOf(panel, data) {
+  if (panel.mode === "csv") return parseCSV(data);
+  const node = get(data, panel.path);
+  if (panel.mode === "counts") return Object.entries(node).map(([k, n]) => ({ name: k, count: n }));
+  if (panel.mode === "groups") {
+    return Object.entries(node).flatMap(([g, v]) => (v[panel.sub] || []).map(r => ({ group: g, ...r })));
+  }
+  if (panel.mode === "summary") return [Object.fromEntries((panel.columns || []).map(c => [c, get(node, c)]))];
+  if (Array.isArray(node)) return node;
+  const keys = panel.rows || Object.keys(node);
+  return keys.filter(k => node[k] !== undefined).map(k => ({ name: k, ...node[k] }));
+}
+
+function columnsOf(panel, rows) {
+  if (panel.mode === "counts") return ["name", "count"];
+  const cols = panel.columns && panel.columns.length ? panel.columns : Object.keys(rows[0] || {});
+  const lead = (panel.mode === "rows") ? ["name"] : [];
+  return [...lead, ...cols.filter(c => !lead.includes(c))];
+}
+
+function table(panel, rows) {
+  const cols = columnsOf(panel, rows);
+  const wrap = document.createElement("div"); wrap.className = "wrap";
+  const t = document.createElement("table");
+  const thead = t.createTHead().insertRow();
+  const body = t.createTBody();
+  let sortCol = null, asc = true;
+  const draw = () => {
+    body.innerHTML = "";
+    const sorted = [...rows];
+    if (sortCol) sorted.sort((a, b) => {
+      const x = get(a, sortCol), y = get(b, sortCol);
+      const nx = Number(x), ny = Number(y);
+      const r = (!isNaN(nx) && !isNaN(ny) && x !== "" && y !== "") ? nx - ny : String(x ?? "").localeCompare(String(y ?? ""));
+      return asc ? r : -r;
+    });
+    for (const r of sorted) {
+      const tr = body.insertRow();
+      for (const c of cols) {
+        const td = tr.insertCell(); const v = get(r, c);
+        td.textContent = fmt(v);
+        if (typeof v === "number" || (v !== "" && !isNaN(Number(v)) && typeof v === "string" && v.length < 12)) td.className = "num";
+        else if (typeof v === "string" && v.length > 80) td.className = "long";
+      }
+    }
+  };
+  for (const c of cols) {
+    const th = document.createElement("th"); th.textContent = c.replace(/_/g, " ");
+    th.onclick = () => { asc = sortCol === c ? !asc : true; sortCol = c; draw(); };
+    thead.appendChild(th);
+  }
+  draw(); wrap.appendChild(t); return wrap;
+}
+
+async function main() {
+  const spec = await (await fetch("panels.json")).json();
+  const nav = document.getElementById("nav"), host = document.getElementById("panels");
+  for (const p of spec.panels) {
+    const a = document.createElement("a"); a.href = `#${p.id}`; a.textContent = p.title.split(" (")[0]; nav.appendChild(a);
+    const sec = document.createElement("section"); sec.id = p.id;
+    sec.innerHTML = `<h2></h2><p class="explain"></p>`;
+    sec.querySelector("h2").textContent = p.title;
+    sec.querySelector(".explain").textContent = p.explain;
+    host.appendChild(sec);
+    try {
+      const res = await fetch(ROOT + p.file);
+      if (!res.ok) throw new Error(String(res.status));
+      const data = p.mode === "csv" ? await res.text() : await res.json();
+      sec.appendChild(table(p, rowsOf(p, data)));
+    } catch (e) {
+      const d = document.createElement("div"); d.className = "pending";
+      d.textContent = p.pending ? "Pending: this result has not been produced yet." : `Could not load ${p.file} (${e.message}).`;
+      sec.appendChild(d);
+    }
+    const s = document.createElement("div"); s.className = "src"; s.textContent = `Source: ${p.file}`; sec.appendChild(s);
+  }
+}
+main();
+</script>
+</body>
+</html>
