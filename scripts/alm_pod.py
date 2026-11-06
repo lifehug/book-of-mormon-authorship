@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Run the 297M benchmark jobs (BOM-28: Amendment 22's primary run and Amendment 23's V1-V3) on a
-rented H100: the Mac mini's 16 GB swaps on a 297M fine-tune (owner approved, about $5-10).
+"""Run a model size's benchmark jobs (BOM-28: Amendment 22's primary run and Amendment 23's V1-V3)
+on a rented H100: the Mac mini's 16 GB swaps on a 297M fine-tune (owner approved, about $5-10);
+``--size large`` runs the 1B's (BOM-27) the same way.
 
 Resumable state machine under tmux on the Mac: create a Secure Cloud pod -> set it up -> upload the
 files the jobs read (the benchmark works and imposter-pool texts, listed by a dry run), the base
@@ -11,7 +12,7 @@ check -> terminate. Stops the pod at the cap. Events go to the BOM-28 issue.
 
 Usage::
 
-    python scripts/alm_pod.py --issue 38 --files <list of repo-relative paths> [--cap 15]
+    python scripts/alm_pod.py --issue 38 --files <list> [--size base|large --cap 15]
 """
 
 from __future__ import annotations
@@ -26,18 +27,30 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import style_pod as sp  # noqa: E402
 
-sp.STATE = ROOT / "logs/alm_pod/state.json"
-sp.SSH = "almpod"
-sp.POD_NAME = "bom28-alm-300m"
+SIZE = "base"
 R = sp.R
-JOBS = [
-    "python -m alm.benchmark base --micro-batch 8",
-    "python -m alm.benchmark base --variant v1 --micro-batch 8",
-    "python -m alm.variants v2 base --micro-batch 8",
-    "python -m alm.variants v3 base",
-]
-RESULTS = ["alm_base.json", "alm_base_v1.json", "alm_base_v2.json", "alm_base_v3.json"]
-EXTRA = ["data/corpus/timelocked_lm/runs/base/model.pt", "data/corpus/alm/benchmark/base"]
+
+
+def configure(size: str) -> None:
+    """Names, jobs and files for one model size (state and pod kept apart per size)."""
+    global SIZE, JOBS, RESULTS, EXTRA
+    SIZE = size
+    tag = "" if size == "base" else f"_{size}"
+    sp.STATE = ROOT / f"logs/alm_pod{tag}/state.json"
+    sp.SSH = "almpod" if size == "base" else f"almpod{size}"
+    sp.POD_NAME = "bom28-alm-300m" if size == "base" else f"bom28-alm-{size}"
+    JOBS = [
+        f"python -m alm.benchmark {size} --micro-batch 8",
+        f"python -m alm.benchmark {size} --variant v1 --micro-batch 8",
+        f"python -m alm.variants v2 {size} --micro-batch 8",
+        f"python -m alm.variants v3 {size}",
+    ]
+    RESULTS = [f"alm_{size}.json", f"alm_{size}_v1.json", f"alm_{size}_v2.json",
+               f"alm_{size}_v3.json"]  # fmt: skip
+    EXTRA = [f"data/corpus/timelocked_lm/runs/{size}/model.pt", f"data/corpus/alm/benchmark/{size}"]
+
+
+configure("base")
 
 
 def step(s: dict, issue: int, cap: float, files: Path) -> bool:
@@ -50,7 +63,7 @@ def step(s: dict, issue: int, cap: float, files: Path) -> bool:
         return False
     if ph == "create":
         sp.create(s)
-        sp.event(s, f"297M benchmark pod `{s['pod']}` created (Secure H100).", issue)
+        sp.event(s, f"{SIZE} benchmark pod `{s['pod']}` created (Secure H100).", issue)
         s["phase"] = "setup"
     elif ph == "setup":
         if not sp.wait_ssh(s):
@@ -66,7 +79,8 @@ def step(s: dict, issue: int, cap: float, files: Path) -> bool:
                 return False
         s["phase"] = "upload"
     elif ph == "upload":
-        lst = ROOT / "logs/alm_pod/files.txt"
+        (ROOT / EXTRA[1]).mkdir(parents=True, exist_ok=True)  # a size's first run has no scores
+        lst = sp.STATE.parent / "files.txt"
         names = [ln for ln in files.read_text().splitlines() if ln]
         lst.write_text("\n".join(names + EXTRA) + "\n")
         rc, out = sp.pw.sh(["rsync", "-rtLR", "--no-o", "--no-g", f"--files-from={lst}", ".",
@@ -74,9 +88,9 @@ def step(s: dict, issue: int, cap: float, files: Path) -> bool:
         if rc != 0:
             sp.log(f"upload failed ({out[-200:]}); retrying")
             return True
-        sums = ROOT / "logs/alm_pod/sha256.txt"
+        sums = sp.STATE.parent / "sha256.txt"
         rc, out = sp.pw.sh(["bash", "-c", f"cd {ROOT} && sha256sum $(cat {lst} | grep -v "
-                            f"'alm/benchmark/base$') > {sums}"], 3600)  # fmt: skip
+                            f"'alm/benchmark/{SIZE}$') > {sums}"], 3600)  # fmt: skip
         sp.pw.sh(["rsync", str(sums), f"{sp.SSH}:{R}/sha256.txt"])
         rc, out = sp.remote(f"cd {R} && sha256sum -c --quiet sha256.txt && echo ALLOK", 3600)
         if "ALLOK" not in out:
@@ -88,7 +102,7 @@ def step(s: dict, issue: int, cap: float, files: Path) -> bool:
         script = " && ".join(JOBS) + " && touch /workspace/ALL_DONE"
         rc, out = sp.remote(f"cd {R} && tmux new-session -d -s alm '{script} 2>&1 | tee -a "
                             "/workspace/alm.out'")  # fmt: skip
-        sp.event(s, "**297M benchmark jobs started** (primary, V1, V2, V3).", issue)
+        sp.event(s, f"**{SIZE} benchmark jobs started** (primary, V1, V2, V3).", issue)
         s["phase"], s["restarts"] = "watch", 0
     elif ph == "watch":
         rc, out = sp.remote("ls /workspace/ALL_DONE 2>/dev/null; tmux has-session -t alm "
@@ -140,7 +154,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--issue", type=int, required=True)
     ap.add_argument("--files", type=Path, required=True)
     ap.add_argument("--cap", type=float, default=15.0)
+    ap.add_argument("--size", choices=["base", "large"], default="base")
     a = ap.parse_args(argv)
+    configure(a.size)
     sp.STATE.parent.mkdir(parents=True, exist_ok=True)
     s = json.loads(sp.STATE.read_text()) if sp.STATE.exists() else {"phase": "create"}
     while s["phase"] not in ("done", "failed", "capped"):

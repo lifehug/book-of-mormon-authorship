@@ -9,9 +9,9 @@ a Hugging Face model repo. Nothing in a release folder is training text.
 
 Usage::
 
-    python -m timelocked_lm.release convert pilot|base
-    python -m timelocked_lm.release card pilot|base --repo <owner/name>
-    python -m timelocked_lm.release upload pilot|base --repo <owner/name>
+    python -m timelocked_lm.release convert pilot|base|large
+    python -m timelocked_lm.release card pilot|base|large --repo <owner/name>
+    python -m timelocked_lm.release upload pilot|base|large --repo <owner/name>
 """
 
 from __future__ import annotations
@@ -126,7 +126,7 @@ def card(size: str, repo: str) -> int:
     by = sel["by_source"]
     kept = sum(by.values())
     sh = run["shape"]
-    name = {"pilot": "125M pilot", "base": "300M base"}[size]
+    name = {"pilot": "125M pilot", "base": "300M base", "large": "1B large"}[size]
     text = CARD.read_text().format(
         repo=repo,
         size=size,
@@ -163,7 +163,7 @@ def upload(size: str, repo: str) -> int:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("cmd", choices=["convert", "card", "upload"])
-    ap.add_argument("size", choices=["pilot", "base"])
+    ap.add_argument("size", choices=["pilot", "base", "large"])
     ap.add_argument("--repo")
     a = ap.parse_args(argv)
     if a.cmd == "convert":
