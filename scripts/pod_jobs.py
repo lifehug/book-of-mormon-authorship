@@ -186,9 +186,13 @@ def step(s: dict, a: argparse.Namespace) -> bool:
             with (sp.STATE.parent / "tail.log").open("a") as f:
                 f.write(f"--- {time.ctime()}\n{out}\n")
             if s["restarts"] >= 3:
-                event(s, f"jobs died 3 times; stopping the pod. `{out.strip()[-300:]}`", issue)
-                sp.pw.rest("POST", f"/pods/{s['pod']}/stop")
-                return False
+                # nothing worth keeping on the pod: delete the text and terminate, never leave
+                # licensed text on a stopped pod's disk (2026-11-06)
+                event(s, f"jobs died 3 times; cleaning up and terminating. "
+                         f"`{out.strip()[-300:]}`", issue)  # fmt: skip
+                s["failed"], s["phase"] = True, "cleanup"
+                sp.save(s)
+                return True
             s["restarts"] += 1
             s["phase"] = "run"
             sp.log(f"jobs gone; restarting ({s['restarts']}/3). Last: {out.strip()[-200:]}")
@@ -233,7 +237,7 @@ def step(s: dict, a: argparse.Namespace) -> bool:
         sp.pw.rest("DELETE", f"/pods/{s['pod']}")
         event(s, f"text and models deleted from the pod (checked); pod **terminated**. "
                  f"Est. spend ${sp.spend(s):.2f}.", issue)  # fmt: skip
-        s["phase"] = "done"
+        s["phase"] = "failed" if s.get("failed") else "done"
         sp.save(s)
         return False
     sp.save(s)
