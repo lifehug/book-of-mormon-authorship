@@ -2710,6 +2710,7 @@ Plainly: everything the searches surfaced is explained by the Bible or by how pe
 
 ## Log
 
+- **2026-11-06.** Timeline: measuring instruments done by Sunday Nov 8; blind run Tue Nov 10; evidence and synthesis by Nov 12-13; the paper (BOM-36) can start Nov 13-15 with slack for breakage.
 - **2026-11-06.** BOM-26 closed: 1,069 hit pairs triaged (Amendment 27): 382 biblical, 685 common, 2 specific on the first pass; the blind simulated second review called both common, so 0 specific under both. Agreement 0.740, kappa 0.505.
 - **2026-11-06.** BOM-27: the 1B's first launch died on step 2 (out of memory) and the error was stuck on an unreachable pod. Reproduced on a 2-GPU test pod (~$9): bf16 was off under torchrun (`"cuda:0"` failed an `== "cuda"` test), so fp32, 10x slow and out of memory. Fixed (4.3 s a step on 2 GPUs), relaunched 09:51, ~30 h. First attempt cost ~$33. BOM-39/47: Amendment 28 (OSF 6aee07a58d69291fd76cc3f8) fixes the author sweep's units, signals, calibration and the expected false-lead count before any author is indexed.
 - **2026-11-06.** BOM-27: Amendment 26 filed; 1B model (32 layers, width 1,600, 1.036B parameters) launched on 8 H100s, everything else as the 297M; ~17 h, ~$560-610. Blog: every sizing decision and its reason.

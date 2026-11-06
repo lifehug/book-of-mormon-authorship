@@ -23,4 +23,17 @@ amendment first; the issue comment carries the next action.
 7. **BOM-32** the blind run, when 26-31 and 39 are done.
 8. Then 35, 42, 36, 38, 37.
 
+## Timeline to the paper (estimate, 2026-11-06)
+
+| Day | Finishes |
+| --- | --- |
+| Sat Nov 7 | 1B trained (~15:30); sweep calibration; BOM-29 dating cross-check |
+| Sun Nov 8 | 1B benchmark, working model picked and published; BOM-33 research under way |
+| Mon Nov 9 | BOM-28 candidate models; BOM-31 imitation; BOM-68 |
+| Tue Nov 10 | BOM-32 blind run; BOM-33 access table |
+| Wed Nov 11 | BOM-34 manuscript and dictation evidence |
+| Thu-Fri Nov 12-13 | BOM-35 synthesis; BOM-36 paper can start (allow slack: Nov 13-15) |
+
+Side issues (49, 61, 63) only where they do not delay the paper.
+
 Side issues as capacity allows: BOM-49, 51, 61, 63; BOM-50 and 53 deferred.
