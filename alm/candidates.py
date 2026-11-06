@@ -28,8 +28,8 @@ authorial-model score, the margin between a candidate's model and the best contr
 Usage::
 
     python -m alm.candidates plan                                 # -> alm_candidates_plan.json
-    python -m alm.candidates train base|large [--micro-batch 8]   # weights, per-unit scores
-    python -m alm.candidates validate base|large                  # -> alm_candidates_<size>.json
+    python -m alm.candidates train pilot|base|large [--micro-batch 8]   # weights, scores
+    python -m alm.candidates validate pilot|base|large    # -> alm_candidates_<size>.json
 """
 
 from __future__ import annotations
@@ -340,7 +340,7 @@ def validate(size: str) -> int:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("cmd", choices=["plan", "train", "validate"])
-    ap.add_argument("size", nargs="?", choices=["base", "large"])
+    ap.add_argument("size", nargs="?", choices=["pilot", "base", "large"])
     ap.add_argument("--micro-batch", type=int, default=8, help="memory only; same update")
     a = ap.parse_args(argv)
     if a.cmd == "plan":

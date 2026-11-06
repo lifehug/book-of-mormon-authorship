@@ -15,7 +15,12 @@ amendment first; the issue comment carries the next action.
 | BOM-29 transformer cross-check (`dating.transformer` embed -> fit -> validate, tmux `bom29`) | Mac GPU | 2026-11-06 11:20 | 2026-11-06 ~21:30 | write up beside the grammar model; close BOM-29 |
 | BOM-28 `alm.candidates plan`, then BOM-31 `eval.imitation build` + `classic` (tmux `prep`) | Mac CPU | 2026-11-06 ~12:00 | ~12:40 | candidates: train on an H100 at the picked size (`candidates_pod.py`); imitation: `style` when the GPU frees, `alm` at the picked size, `report` |
 | BOM-28 candidate models at 297M (`candidates_pod.py --size base`, tmux `candpod`) | 1 H100, cap $25 | 2026-11-06 10:58 | ~12:30 | `alm.candidates validate base`; retrain at 1B if the 1B wins its benchmark |
+| 125M: BOM-28 candidates, BOM-31 style + model parts (`scripts/mac_gpu_chain.sh`, tmux `macgpu`) | Mac GPU, after BOM-29 | 2026-11-06 ~21:30 | Sat morning | side-by-side tables with 297M and 1B |
 | Job monitor (`scripts/jobwatch.py` under a Monitor) and hourly check-in | this session | 2026-11-06 | - | reports any crash, stall or finish at once; hourly: start whatever is ready |
+
+## Decided
+
+- **Every model size runs every model-based test** (owner, 2026-11-06): 125M, 297M and 1B side by side, none the headline. 125M on the Mac GPU (`scripts/mac_gpu_chain.sh`, tmux `macgpu`, after BOM-29); 297M and 1B on H100s.
 
 ## Decided, to apply after the 1B benchmark
 
