@@ -49,6 +49,7 @@ def main(argv: list[str] | None = None) -> int:
             for f in LOGS}  # fmt: skip
     seen = {f: time.time() for f in LOGS}
     stalled: set[str] = set()
+    last_driver = ""
     while True:
         cur = sessions()
         for s in sorted(prev - cur):
@@ -59,7 +60,10 @@ def main(argv: list[str] | None = None) -> int:
         if DRIVER.exists():
             lines = DRIVER.read_text().splitlines()
             for ln in lines[events:]:
-                print(f"1B: {ln[:300]}", flush=True)
+                body = ln[20:]  # without the timestamp: a retry loop repeats one line
+                if body != last_driver:
+                    print(f"1B: {ln[:300]}", flush=True)
+                last_driver = body
             events = len(lines)
         for f in LOGS:
             p = ROOT / "logs" / f
