@@ -2710,6 +2710,7 @@ Plainly: everything the searches surfaced is explained by the Bible or by how pe
 
 ## Log
 
+- **2026-11-06.** BOM-33: bought Rick Grunder's *Mormon Parallels* (2014 PDF, 2,307 pages), the book the access review recommended. It is copyrighted, so it lives in the private data repo (Git LFS: 245 MB is over GitHub's 100 MB limit), with a public checksum and the steps to buy it in `docs/replication.md`.
 - **2026-11-06.** Timeline, revised after the owner asked which waits are real: only the 1B (Sat afternoon) and the sweep masking are physical waits; the rest is hours. Blind run Sunday; paper (BOM-36) can start ~Tue Nov 10. The first estimate padded each step to a day.
 - **2026-11-06.** BOM-26 closed: 1,069 hit pairs triaged (Amendment 27): 382 biblical, 685 common, 2 specific on the first pass; the blind simulated second review called both common, so 0 specific under both. Agreement 0.740, kappa 0.505.
 - **2026-11-06.** BOM-27: the 1B's first launch died on step 2 (out of memory) and the error was stuck on an unreachable pod. Reproduced on a 2-GPU test pod (~$9): bf16 was off under torchrun (`"cuda:0"` failed an `== "cuda"` test), so fp32, 10x slow and out of memory. Fixed (4.3 s a step on 2 GPUs), relaunched 09:51, ~30 h. First attempt cost ~$33. BOM-39/47: Amendment 28 (OSF 6aee07a58d69291fd76cc3f8) fixes the author sweep's units, signals, calibration and the expected false-lead count before any author is indexed.

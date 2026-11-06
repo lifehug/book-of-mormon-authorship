@@ -126,8 +126,9 @@ decision. Split them.
 **Everything is tracked somewhere; nothing lives in one place. Public by default.** Assume a
 file may be published unless something says otherwise, and "otherwise" means a signed agreement
 or an explicit request — not a guess about what a provider might prefer. Today that is exactly
-three things: the HathiTrust researcher agreement, Harvard's accepted dataset terms, and the
-Joseph Smith Papers transcripts, which are copyrighted by Intellectual Reserve. Those live in
+four things: the HathiTrust researcher agreement, Harvard's accepted dataset terms, the
+Joseph Smith Papers transcripts, which are copyrighted by Intellectual Reserve, and Rick
+Grunder's *Mormon Parallels* (a purchased copyrighted book, BOM-33). Those live in
 the private repo, committed and pushed there rather than left on local disk. Everything else is
 public, including page scans of public-domain material: a digitiser who asked for nothing has
 not restricted anything. **Anything held back ships with the steps to obtain it** — numbered,

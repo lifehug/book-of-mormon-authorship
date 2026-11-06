@@ -34,7 +34,7 @@ public website whose text is copyrighted, so we publish the fetcher rather than 
 HathiTrust requires an application, and `docs/hathitrust-request.md` records exactly what to
 send, to whom, and what obligations come back with it.
 
-## The only three things you must obtain yourself
+## The only four things you must obtain yourself
 
 Everything else in this project is published. These three are not, and for each one the steps
 below are the whole procedure. None of them is discretionary on our side: we hold these back
@@ -80,6 +80,18 @@ copyrighted by Intellectual Reserve, so we publish the fetcher rather than the t
 2. They land in `data/private/bom/`, and `data/bom/SOURCES.md` documents what each file holds.
 3. Verify against `data/manifests/bom-private.jsonl`, which is public, so you can confirm you
    obtained the same bytes we did without access to anything of ours.
+
+### 4. Rick Grunder, *Mormon Parallels* (2014 PDF)
+
+A purchase. Used only for BOM-33, the access evidence (when and where proposed sources were
+available near Palmyra). Nothing else in the pipeline reads it.
+
+1. Buy the 2014 PDF edition of Rick Grunder, *Mormon Parallels: A Bibliographic Source*,
+   from the author (rickgrunder.com). Ours was bought 2026-11-06.
+2. Save it as `data/private/access/grunder-mormon-parallels-2014.pdf`.
+3. Verify against `data/manifests/access-private.jsonl` (SHA-256 `3cd1f35d...8b15`,
+   245,556,375 bytes). A different printing or the 2008 CD-ROM will not match; the page
+   numbers we cite are to the 2014 PDF.
 
 ## The scripts and the paperwork are both committed
 

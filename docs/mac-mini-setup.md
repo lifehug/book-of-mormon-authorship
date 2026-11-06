@@ -135,7 +135,12 @@ Public data comes with the clone. Licensed data comes from the private data repo
 scripts/data_clone.sh          # clones lifehug/bom-authorship-data into data/private/
 uv run python -m metadata.manifest verify data/bom data/manifests/bom.jsonl
 uv run python -m metadata.manifest verify data/private/bom data/manifests/bom-private.jsonl
+uv run python -m metadata.manifest verify data/private/access data/manifests/access-private.jsonl
 ```
+
+The private repo stores files over 100 MB (Grunder's *Mormon Parallels*, 245 MB) with Git LFS,
+so install it first: `brew install git-lfs && git lfs install`. Without it, `access/*.pdf`
+arrives as a small pointer file and the verify step above fails.
 
 From then on, `git -C data/private pull` and `git -C data/private push` keep the two machines
 in step; the public repo never sees that directory. Re-fetching from the sources is always
