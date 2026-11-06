@@ -193,7 +193,7 @@ def train(out: Path, tiny: bool, max_steps: int | None, ckpt_minutes: float) -> 
         opt.step()
         opt.zero_grad(set_to_none=True)
         step += 1
-        rec = {"step": step, "loss": float(loss), "sec": round(time.time() - t0, 1)}
+        rec = {"step": step, "loss": float(loss.detach()), "sec": round(time.time() - t0, 1)}
         if step % s["validate_every"] == 0 or step == steps:
             rec["heldout_top1"] = retrieval(enc, eps, 256 if not tiny else 4, step, dev, ctx)
             print(json.dumps(rec), flush=True)
