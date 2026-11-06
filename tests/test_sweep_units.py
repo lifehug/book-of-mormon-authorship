@@ -26,3 +26,23 @@ def test_chunks_capped_and_seeded() -> None:
     ]  # fmt: skip
     few = chunks(vols, 5000, 3, random.Random(0))
     assert len(few) == 3 and few == sorted(few) == chunks(vols, 5000, 3, random.Random(0))
+
+
+def test_distances_and_leave_one_out() -> None:
+    import numpy as np
+
+    from sweep.calibrate import distances, loo_counts
+
+    g = np.array([[1.0, 0.0], [0.0, 1.0], [1.0, 1.0]])
+    d = distances(g, np.array([[2.0, 0.0], [1.0, 0.1]]), "style")
+    assert d.argmin() == 0 and np.isclose(d[1], 1.0, atol=0.06)
+    z = distances(g, g[:1], "mfw", g.mean(axis=0), g.std(axis=0, ddof=1))
+    assert z.argmin() == 0 and np.isclose(z[0], 0.0)
+    # two books over three authors; book 0's author is 0, book 1's is 2
+    dd = {"mfw": [np.array([0.1, 0.2, 0.9]), np.array([0.5, 0.6, 0.1])],
+          "style": [np.array([0.1, 0.3, 0.9]), np.array([0.5, 0.2, 0.1])]}  # fmt: skip
+    best = {"mfw": np.array([0.2, 0.5]), "style": np.array([0.3, 0.2])}
+    # book 0 judged by book 1's thresholds (0.5, 0.2): author 1 has 0.2 < 0.5 but 0.3 !< 0.2
+    assert loo_counts(dd, [0, 2], best, 5) == [0, 0]
+    best = {"mfw": np.array([0.2, 0.7]), "style": np.array([0.3, 0.4])}
+    assert loo_counts(dd, [0, 2], best, 5) == [1, 0]
