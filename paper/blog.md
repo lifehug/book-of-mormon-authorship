@@ -2599,8 +2599,34 @@ That last one is the hard case. In 1819 Scott was ill and spoke two novels aloud
 
 The 125M version runs tonight; the 300M version starts when its training finishes, and I'll put both results here, next to the older methods.
 
+## The model's first exam, and a yardstick that was lying to us
+
+Overnight the 1830 models sat the same exam every older method sat: name the author of passages where we already know the answer, and, just as important, say "none of these" when the true author has been taken off the list.
+
+| Method | Size | Names the right author | False matches | Passes |
+| --- | --- | --- | --- | --- |
+| Author copies (the planned method) | 125M | 94% | 47% | no |
+| Author copies | 300M | **99%** | 38% | no |
+| Classifier head (V2) | 125M | 90% | 28% | no |
+| Classifier head (V2) | 300M | 91% | **14%** | no |
+| Stronger fine-tuning (V1) | either | 94% | 46-47% | no |
+| Model features in the old methods (V3) | either | 84% | 69-72% | no |
+| General Imposters (older) | - | 83% | 62% | no |
+| ENSC (older) | - | 100% | 66% | no |
+
+Two things to read out of that.
+
+**Bigger was better, on both halves.** At 125M, every one of Madison's Federalist samples went to Hamilton. Madison's copy had read a third as much text and just lost to the bigger reader. At 300M, all six went to Madison. Scott's dictated novels, the hard case, were 60 out of 60 at both sizes. False matches fell too, and for the classifier head they halved. That's the decision point we'd written down in advance: if accuracy is still climbing steeply with size, consider a bigger model. It is, so we're training a 1-billion-parameter one.
+
+**Nobody passes, and that's the honest finding.** Every method can pick the right author from a list. None can yet reliably say "none of these". The best one still lets the nearest wrong author look like the real one 14% of the time. That matters more for the Book of Mormon than any other number here, because the true author may not be on anyone's list.
+
+**The yardstick was lying.** Under the check as first built, General Imposters scored a perfect 0% false matches and our 125M model failed by a whisker at 5.5%. Both numbers were artifacts. The check set its bar from the wrong-author scores themselves, so any method with smooth scores lands near 5% by construction, and General Imposters only hit zero because its scores pile up in ties. The fixed version asks the real question: set the bar where 95% of true authors clear it, then count how often the best wrong author clears it too. I wrote that fix down and filed it publicly, marked as decided after seeing a result, and applied it to every method, old and new, with the old number kept beside it. Under it, General Imposters goes from "perfect" to 62%. I'd much rather know that now.
+
+One practical wrong turn: the 300M models wouldn't train on the Mac. Sixteen gigabytes isn't enough, and it slowed to a crawl swapping to disk: two hours for one author instead of two minutes. So the 300M runs went to a rented GPU for about an hour and $2. The style-fingerprint model trained overnight on another for $18.
+
 ## Log
 
+- **2026-11-06.** BOM-28: all eight model-based benchmark runs in. 297M primary 99.1% right author, 38% false matches; V2 classifier head at 297M 14% false matches, the best; none passes. Amendment 25 (post hoc) corrected the false-match check; General Imposters 0% -> 62% under it. 297M published (huggingface.co/etherfuse/timelocked-1830-300m). Owner chose a 1B model on 8 H100s (BOM-70: funding). BOM-30 style model trained ($18), held-out top-1 0.42.
 - **2026-11-05.** BOM-66: the 125M model is public at huggingface.co/etherfuse/timelocked-1830-125m (CC BY-NC 4.0; owner's decision, no memorization check). BOM-28: Amendment 22 (OSF 6aed5219b9cd9627025f6179) filed before any author model was trained; the benchmark run at 125M started (18 author copies, 110 held-out samples); the 300M run and the 300M release follow automatically when the base model is home.
 - **2026-11-05.** BOM-65 closed: all of `data/corpus/` (914 GB, ~2.36 million files) backed up to a private, encrypted Backblaze B2 bucket. Full check: every unchanged file matches; the 6 that differed had been written after the upload passed them, and match after a re-upload. A restored index shard matches its manifest checksum. Weekly launchd job, Sundays 03:00.
 - **2026-11-05.** BOM-25 closed again: Amendment 21 nulls complete; no named source stands out (*View of the Hebrews* 1825 84.6th percentile, 1823 94.0th, *Napoleon* 98.4th but 3rd of 18 in its group, *The Late War* 79.8th). `data/semantic/named_null.json`.

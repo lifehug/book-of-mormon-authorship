@@ -61,3 +61,39 @@ run every reasonable use of the model. Secondary; reported with the number tried
 
 V3 reads the benchmark's word lists (lowercased, no punctuation) joined by spaces, since it reuses
 BOM-21's trials as they are; the base model was trained on cased, punctuated text.
+
+## Results (2026-11-06)
+
+All eight runs, judged by the corrected open-set check (Amendment 25; `data/benchmark/open_set.json`,
+original number beside it). Right author: closed-set accuracy (bar 0.90); false matches: the share
+of tests whose best wrong author still reaches the score 95% of true authors reach (bar 0.05).
+
+| Method | Size | Federalist | Imitation scripture | Dictated (Scott) | Overall | False matches | Passes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Primary (Amendment 22) | 125M | 0.769 | 0.958 | 1.000 | 0.936 | 0.473 | no |
+| Primary | 297M | **1.000** | 0.958 | 1.000 | **0.991** | 0.382 | no |
+| V1 learning rate 1e-4 | 125M | 0.808 | 0.917 | 1.000 | 0.936 | 0.455 | no |
+| V1 | 297M | 0.769 | 0.958 | 1.000 | 0.936 | 0.473 | no |
+| V2 classifier head | 125M | 0.769 | 1.000 | 0.917 | 0.900 | 0.282 | no |
+| V2 | 297M | 0.769 | 1.000 | 0.933 | 0.909 | **0.136** | no |
+| V3 hidden-state features | 125M | 0.600 | 1.000 | 0.783 | 0.839 | 0.689 | no |
+| V3 | 297M | 0.650 | 1.000 | 0.767 | 0.844 | 0.717 | no |
+| *General Imposters (BOM-21)* | - | | | | 0.833 | 0.617 | no |
+| *ENSC (BOM-21, its own "none")* | - | | | | 1.000 | 0.661 | no |
+
+Eight variants of the model-based method were tried (counting both sizes); none passes, so no
+multiplicity question arises. What the runs show:
+
+- **Size helps on both halves.** At 297M the primary method attributes every Federalist sample
+  correctly (Madison 6 of 6, against 0 of 6 at 125M) and keeps Scott's dictated novels at 60 of 60;
+  false matches fall from 0.473 to 0.382, and V2's from 0.282 to 0.136.
+- **Every method can rank the candidates; none can yet say "none of these" reliably.** The best,
+  V2 at 297M, still lets the best wrong author reach a true author's score 14% of the time.
+- **Stronger fine-tuning (V1) does not help; the model's features in the old methods (V3) do worse
+  than the language-model methods.**
+- The 297M runs ran on a rented H100 (the Mac mini's 16 GB swaps on a 297M fine-tune); same code
+  and settings, float32.
+
+**Size decision (Amendment 2's decision point), owner 2026-11-06:** accuracy on the hard half is
+still rising steeply with size, so the owner chose a 1B model on 8 H100s (BOM-70 for funding;
+Amendment 26 to pin it). The 1B is benchmarked the same way when it exists.
