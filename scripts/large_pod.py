@@ -181,6 +181,18 @@ def step(s: dict, issue: int, a) -> bool:
         rc, out = sp.remote(f"tail -n 1 {R}/{OUT}/log.jsonl; grep val_loss {R}/{OUT}/log.jsonl | "
                             f"tail -n 1; ls {R}/{OUT}/model.pt 2>/dev/null; tmux has-session -t "
                             "train 2>/dev/null && echo ALIVE")  # fmt: skip
+        if rc == 255 or "Connection" in out and "timed out" in out or "refused" in out:
+            # the Mac cannot reach the pod: that says nothing about training, which runs on the
+            # pod in tmux. Never restart or stop for this (2026-11-06: an SSH outage was read as
+            # three crashes and the pod was stopped mid-run). Report once an hour.
+            s["unreachable"] = s.get("unreachable", 0) + 1
+            if s["unreachable"] % 12 == 1:
+                sp.event(s, f"pod unreachable over SSH ({s['unreachable']} checks); training "
+                            "left alone, retrying.", issue)  # fmt: skip
+            sp.save(s)
+            time.sleep(300)
+            return True
+        s["unreachable"] = 0
         if "model.pt" in out:
             s["phase"] = "fetch"
         elif "ALIVE" not in out:
