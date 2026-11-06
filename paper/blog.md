@@ -2624,8 +2624,43 @@ Two things to read out of that.
 
 One practical wrong turn: the 300M models wouldn't train on the Mac. Sixteen gigabytes isn't enough, and it slowed to a crawl swapping to disk: two hours for one author instead of two minutes. So the 300M runs went to a rented GPU for about an hour and $2. The style-fingerprint model trained overnight on another for $18.
 
+## How big a model, and why: every sizing decision so far
+
+People ask why we didn't just train the biggest model we could. Here's each decision, what drove it, and what it cost.
+
+| When | Decision | Why | Cost |
+| --- | --- | --- | --- |
+| Plan (Oct) | A model of 100-300 million parameters | The published method we follow (authorial language models) uses models this size, and it's what one rented GPU can train on our text in a couple of days | - |
+| Plan | Train two sizes: a 125M "pilot" first, then 300M | So we can see whether size matters *before* spending more. That comparison was written into the plan as a decision point | - |
+| Plan | Train from scratch on 1780-1830 text only | An off-the-shelf model has read the Book of Mormon and two centuries of later English; ours has read neither, so "ordinary for 1830" means what it says | - |
+| Nov 3-4 | 125M pilot on one rented H100 | Cheap check that the whole pipeline works | ~$68 |
+| Nov 4-5 | 297M base on the same machine | The registered main model | ~$160 |
+| Nov 5 | Publish both, free to use but not commercially | You asked for them public; part of the training text is Harvard's, which allows non-commercial use with attribution | - |
+| Nov 6 | **Go to 1 billion** on 8 GPUs | The decision point: see below | ~$560-610 |
+
+**What the decision point showed.** The bigger model was better on every measure we care about, and not by a little.
+
+| | 125M | 297M |
+| --- | --- | --- |
+| How well it predicts unseen 1830 text (lower is better) | 2.515 | 2.325 |
+| Names the right author | 94% | 99% |
+| Madison's Federalist samples | 0 of 6 | 6 of 6 |
+| False matches, the planned method | 47% | 38% |
+| False matches, the classifier head | 28% | **14%** |
+
+The number that decided it is the last one. The hardest part of this whole project is a method that can say "none of these" when the real author isn't on the list, and that number halved when the model got 2.4 times bigger. If the trend holds, a 1B model might get it close to the 5% bar we set. It might not; two points make a thin trend. But it's the one lever we have that is just money and time, not more cleverness, and $600 against what it might settle seemed worth it.
+
+**Why 1B and not bigger.** We have 25.7 billion words' worth of training text (tokens). The usual rule of thumb is about 20 tokens per parameter, so our text supports roughly a billion parameters before a bigger model starts going hungry. Bigger would cost more and teach it less per dollar.
+
+**Why 8 GPUs.** The same run on one GPU would take five days. On eight it takes about 17 hours for nearly the same money (you pay per GPU-hour either way). The training code had to learn to split each batch across eight cards. I checked that two processes produce the same training, to seven digits, as one.
+
+**What stays fixed, so the comparison is fair.** The same training text, the same order, the same settings. The three models differ only in size. The 125M and 300M results stand whatever the 1B shows, and the 1B only replaces them if it does better on the same exam.
+
+**What I'm watching on the bill.** Money got added in two steps, so the run starts on what was there and pauses itself if the balance gets low, saving its place and picking up again when topped up. Total GPU spend so far, models plus the passage index plus last night's tests: about $260.
+
 ## Log
 
+- **2026-11-06.** BOM-27: Amendment 26 filed; 1B model (32 layers, width 1,600, 1.036B parameters) launched on 8 H100s, everything else as the 297M; ~17 h, ~$560-610. Blog: every sizing decision and its reason.
 - **2026-11-06.** BOM-28: all eight model-based benchmark runs in. 297M primary 99.1% right author, 38% false matches; V2 classifier head at 297M 14% false matches, the best; none passes. Amendment 25 (post hoc) corrected the false-match check; General Imposters 0% -> 62% under it. 297M published (huggingface.co/etherfuse/timelocked-1830-300m). Owner chose a 1B model on 8 H100s (BOM-70: funding). BOM-30 style model trained ($18), held-out top-1 0.42.
 - **2026-11-05.** BOM-66: the 125M model is public at huggingface.co/etherfuse/timelocked-1830-125m (CC BY-NC 4.0; owner's decision, no memorization check). BOM-28: Amendment 22 (OSF 6aed5219b9cd9627025f6179) filed before any author model was trained; the benchmark run at 125M started (18 author copies, 110 held-out samples); the 300M run and the 300M release follow automatically when the base model is home.
 - **2026-11-05.** BOM-65 closed: all of `data/corpus/` (914 GB, ~2.36 million files) backed up to a private, encrypted Backblaze B2 bucket. Full check: every unchanged file matches; the 6 that differed had been written after the upload passed them, and match after a re-upload. A restored index shard matches its manifest checksum. Weekly launchd job, Sundays 03:00.
