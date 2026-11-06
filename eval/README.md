@@ -199,12 +199,31 @@ Plan, registered before any training (Amendment 16): `docs/timelocked-plan.md`.
 | `python -m sweep.index embed` | `sweep.index tokens`; the BOM-30 encoder | every unit's style vector (Mac GPU; resumes) | `data/corpus/sweep/style.npz` | several hours |
 | `python -m sweep.calibrate` | `sweep.index mfw` and `embed` | BOM-39/47: the 200 calibration books against every swept author under both signals; top-1 rates and the usable verdict, lead thresholds, expected false leads (leave-one-out), signal correlations, the 100 authors for the blind gate | `data/sweep/calibration.json` | minutes |
 | `scripts/sweep_chain.sh` | - | waits for `kjv_mask.run sweep` to exit cleanly (its `EXIT` line in `logs/sweep_mask.log`), then runs `sweep.index tokens`, `mfw`, `embed` and `sweep.calibrate`; run a frozen copy under tmux | as those | about a day |
+| `python -m alm.candidates plan` | registered (Amendment 30) | candidate units (admitted tiers, masked) and four control samples; held-out tails (BOM-32's decoy source); encoded inputs | `data/benchmark/alm_candidates_plan.json`, `data/corpus/alm/candidates/inputs/` | ~10 min |
+| `python -m alm.candidates train base\|large [--micro-batch 8]` | `plan`; the working model | fine-tunes and keeps one model per unit; every model scores every held-out window; resumes | `data/corpus/alm/candidates/<size>/` | <1 h (297M), ~2-3 h (1B) on an H100 |
+| `python -m alm.candidates validate base\|large` | `train` | closed set among all units and among candidates; 6.1's margin, best control minus candidate | `data/benchmark/alm_candidates_<size>.json` | minutes |
+| `python scripts/candidates_pod.py --issue 38 --size base\|large [--cap 25]` | RunPod token; spend approval | the above on a Secure H100, SHA-256 checked both ways, private text deleted and checked | as above | ~1 h (297M), ~3-4 h (1B) |
+| `python -m blind.seal [--key ~/.bom-blind/key.json]` | Amendment 32 | seals the narrator chunks with decoys; key outside the repo | `data/blind/seal.json`, `withheld.json`; `data/corpus/blind/sealed.jsonl` | minutes |
+| `python -m blind.run --size base\|large [--only ...] [--sealed <path>]` | every scorer built; a fresh session | scores every sealed id with every method, hashes outputs | `data/blind/outputs/`, `outputs.json` | ~3-4 h |
+| `python -m blind.unblind [--key ...]` | outputs committed | checks hashes, applies the key, decoy accuracy, sweep leads, leave-one-candidate-out | `data/blind/unblinded.json` | minutes |
 | `scripts/after_1b.sh` | the 1B driver; `~/.config/runpod/token`, `~/.config/huggingface/token` | waits for the 1B to be home (driver state done, `model.pt` on the Mac), runs `alm_pod.py --size large` (primary, V1-V3 on a rented H100, cap $40), then converts, cards and uploads the 1B to `etherfuse/timelocked-1830-1b` (owner-approved); run a frozen copy under tmux | `data/benchmark/alm_large*.json`; the Hugging Face repo | ~3-4 h after the 1B |
 | `python scripts/jobwatch.py [--interval 60 --stall 20]` | - | prints a line whenever a tmux job starts or ends, the 1B driver logs an event, or a Mac job log shows an error, an EXIT line or goes silent; run under a monitor so a crash is seen at once | stdout | runs until stopped |
 | `scripts/pod_upload.sh` | - | copies the token files to the rented pod in 8 parallel rsync streams (no ownership: the pod's network disk refuses chown); rerunnable | the pod's `/workspace/corpus/timelocked_lm/tokens/` | ~1-1.5 h at 124 Mbps up |
 | `scripts/pod_upload_pack.sh` | - | copies the index pack (BOM-25) to the pod the same way | the pod's `/workspace/semantic/pack/` | ~1 h for 32 GB |
 | `scripts/b2_backup.sh upload\|check [path]`, `restore <file> <dir>`, `weekly` | key in `~/.config/backblaze/credentials`, `rclone` | BOM-65: copies `data/corpus/[path]` (default the passage index, `.` for all) to the private B2 bucket (never deletes there), checks it by size and SHA-1, or restores one file; `weekly` (launchd, Sundays 03:00) uploads then checks; see `docs/backup.md` | the bucket `bom-authorship-index`, paths mirroring `data/corpus/`; `logs/b2_backup.log` | ~20 h for the first 914 GB at ~13 MiB/s; minutes afterwards |
 | `python scripts/pod_watch.py --pod <id> --issue <n>` | - | the run's watcher, under tmux on the Mac: verifies the upload by SHA-256 against `data/manifests/timelocked_lm_tokens.jsonl`, starts the pilot then the base, restarts a dead or stalled run, backs up the checkpoint every 4 h, copies each model home checksum-verified, deletes the token files from the pod and terminates it; stops the pod past a spend cap; keeps the GitHub status issue's body current and comments on events | `logs/pod_watch/`; `data/corpus/timelocked_lm/runs/<size>/` | the length of the run |
+
+## 11b. Robustness to deliberate imitation (BOM-31)
+
+Plan: `docs/imitation-plan.md` (to be registered as Amendment 31).
+
+| Command | Status | What it does | Writes | Time |
+| --- | --- | --- | --- | --- |
+| `python -m eval.imitation build` | Amendment 31 | the forward and reverse tasks: dual-register authors' ordinary and imitation works, 10 seeded distractors; ids and word counts only | `data/benchmark/imitation_tasks.json` | ~1 min |
+| `python -m eval.imitation classic` | `build` | Burrows' and Cosine Delta, General Imposters and ENSC (benchmark calibration) on both directions | `data/benchmark/imitation/{burrows_delta,cosine_delta,general_imposters,ensc}.json` | ~10-20 min (CPU) |
+| `python -m eval.imitation style` | `build`; the BOM-30 encoder | the style embeddings on both directions | `data/benchmark/imitation/style_embed.json` | ~10 min (GPU) |
+| `python -m eval.imitation alm <size> [--variant v1\|v3] [--micro-batch 8]` | `build`; the working model size | the authorial language models (one fine-tune per candidate per direction) or V3's hidden states | `data/benchmark/imitation/alm_<size>[_v].json` | 3-5 h on an H100 at 1B |
+| `python -m eval.imitation report` | the method parts | per method: forward accuracy with exact 95% interval and n, per author, section 9's weight; reverse accuracy | `data/benchmark/imitation.json` | seconds |
 
 ## 12. Linguistic dating (BOM-29)
 

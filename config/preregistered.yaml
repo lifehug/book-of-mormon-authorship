@@ -424,6 +424,10 @@ alm:
   v1_finetune_lr: 1.0e-4        # V1: Amendment 22 with ten times the learning rate
   v2_head_window: 512           # V2: classifier head on mean final hidden state per window
   v3_block_words: 1000          # V3: base-model hidden states per block, benchmark trials as BOM-21
+  # Amendment 30 (OSF revision 6aee229330296560945f60f4): candidate and control models, BOM-28
+  control_words: 300000         # seeded sample per control group, the order of the largest candidate
+  control_passage_words: 5000   # at least this many middle words from every volume used
+  control_seed: bom28-alm-controls
 
 style_embed:
   # Amendment 24 (OSF revision 6aed5e35c13cfd892df383af; docs/style-embed-plan.md): BOM-30
@@ -507,5 +511,31 @@ sweep:
   unremarkable_percentile: 95   # of leave-one-out false-lead counts
   gate_sample: 100
   gate_seed: bom47-gate
+
+imitation:
+  # Amendment 31 (OSF revision 6aee2298fab087018e80bc54; docs/imitation-plan.md): BOM-31
+  min_words: 10000
+  distractors_per_list: 5          # from history and general_prose
+  distractor_seed: bom31-distractors
+  reverse_max_tests: 10
+  reverse_seed: bom31-reverse
+  imposter_pool: general_prose
+  weight_bands: [[0.8, 1.0], [0.6, 0.5]]   # section 9: full >= 80%, half >= 60%, else 0
+  extra_imitation_works:
+    "snowden, richard": ["internet_archive:bim_eighteenth-century_the-american-revolution_snowden-richard_1794_2"]
+  exclude_reference_titles: ["conomy of human life", "collection of poems", "collection of poems in",
+    "collection of poems mostly", "select collection of old", "preceptor containing a general",
+    "cleone a tragedy", "select fables of aesop"]
+
+blind:
+  # Amendment 32 (OSF revision 6aee229eacd1b4f44fb69658; docs/blind-run-plan.md): BOM-32
+  decoy_ratio: 0.25
+  candidate_share: 0.5
+  sealed_schemes: [narrator]
+  sealed_sizes: [2000, 5000]
+  seal_seed: bom32-seal
+  decoy_pool:
+    candidates: [Ethan Smith, Gilbert J. Hunt, Oliver Cowdery, Sidney Rigdon, Parley P. Pratt, W. W. Phelps, Solomon Spalding]
+    controls: [data/controls/pseudo_biblical_primary.jsonl, data/controls/history.jsonl, data/controls/general_prose.jsonl]
 
 pending_amendment: []
