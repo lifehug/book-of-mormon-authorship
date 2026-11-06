@@ -1,0 +1,112 @@
+"""The style embeddings on the validation benchmark (BOM-30; Amendment 24).
+
+BOM-21's own trials (tasks, tests, references with each test's span left out, imposter pools), with
+the trained encoder's vectors in place of word frequencies: a text (a 1,000-word block, a sample,
+an author's references) is cut into ``style_embed.passage_tokens``-token passages and embedded as
+one episode. Closed set by cosine distance to each author's profile; verification by General
+Imposters on the vectors with the registered settings; judged by Amendment 22's rule
+(``alm.benchmark.decide``).
+
+Usage::
+
+    python -m style_embed.benchmark [--model data/corpus/style_embed/runs/style/style.pt]
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import random
+import sys
+from pathlib import Path
+
+import numpy as np
+import torch
+
+from alm.benchmark import OUT, decide
+from metadata.config import derive_seed, stamp
+from metadata.config import load as load_config
+from style_embed.train import load_encoder
+
+MODEL = Path("data/corpus/style_embed/runs/style/style.pt")
+
+
+def embedder(model: Path, cfg: dict):
+    """words -> unit vector (numpy), for texts in the benchmark's word form."""
+    from tokenizers import Tokenizer
+
+    from timelocked_lm.release import TOKENIZER
+
+    s = cfg["style_embed"]
+    dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    enc = load_encoder(model, cfg).to(dev)
+    tok = Tokenizer.from_file(str(TOKENIZER))
+    n = s["passage_tokens"]
+
+    @torch.no_grad()
+    def embed(words: list[str]) -> np.ndarray:
+        ids = tok.encode(" ".join(words)).ids
+        k = max(1, len(ids) // n)
+        x = torch.tensor((ids + [0] * n)[: k * n], dtype=torch.long, device=dev).view(1, k, n)
+        return enc(x)[0].double().cpu().numpy()
+
+    return embed
+
+
+def run(model: Path) -> int:
+    from classic import general_imposters
+    from classic.delta import cosine_delta
+    from eval.benchmark import TASKS, imposter_pool, load_tasks
+    from metadata.config import classic_kwargs
+
+    cfg = load_config()
+    embed = embedder(model, cfg)
+    kw = classic_kwargs(cfg)
+    rng = random.Random(derive_seed("benchmark", cfg))
+    spec = json.loads(TASKS.read_text())
+    recs_by = {}
+    for name, task in load_tasks(cfg).items():
+        pool = imposter_pool(task["pool_set"], set(spec[name].get("exclude_from_pool", [])), cfg,
+                             task["pool_genre"], task["pool_exclude_authors"],
+                             spec[name].get("imposter_fill"))  # fmt: skip
+        P = np.stack([embed(x) for x in pool])
+        names = sorted(task["authors"])
+        per_trial = cfg["classic"]["imposters"]["per_trial"]
+        gi_args = {**kw["imposters"], "n_imposters": min(len(P), per_trial)}
+        recs = []
+        for a, test, span in task["tests"]:
+            x = embed(test)
+            prof = {}
+            for b in names:
+                bl = task["authors"][b]
+                if b == a and span:
+                    bl = bl[: span[0]] + bl[span[1] :]
+                prof[b] = embed([w for blk in bl for w in blk])
+            dist = {b: cosine_delta(x, prof[b]) for b in names}
+            gs = {b: general_imposters(x, prof[b], P, seed=rng.randrange(2**31), **gi_args)
+                  for b in names}  # fmt: skip
+            others = [b for b in names if b != a]
+            recs.append({"author": a, "scores": dist, "gi": gs,
+                         "predicted": min(dist, key=lambda b: (dist[b], b)), "positive": gs[a],
+                         "open_negative": max(gs[b] for b in others)})  # fmt: skip
+        recs_by[name] = recs
+        print(f"  style {name}: {len(recs)} tests, pool {len(P)}", flush=True)
+    d = decide(recs_by, cfg)
+    out = OUT / "style_embed.json"
+    out.write_text(json.dumps({**stamp(), "model": str(model), **d, "records": recs_by},
+                              indent=1) + "\n")  # fmt: skip
+    v = d["verdict"]
+    print(f"style: closed set {v['closed_set']:.3f} {d['closed_set_by_task']}; open-set FPR "
+          f"{v['open_set_fpr']:.3f}; passes {v['passes']} -> {out}", flush=True)  # fmt: skip
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
+    ap.add_argument("--model", type=Path, default=MODEL)
+    a = ap.parse_args(argv)
+    return run(a.model)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

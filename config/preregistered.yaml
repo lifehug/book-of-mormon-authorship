@@ -423,6 +423,32 @@ alm:
   v2_head_window: 512           # V2: classifier head on mean final hidden state per window
   v3_block_words: 1000          # V3: base-model hidden states per block, benchmark trials as BOM-21
 
+style_embed:
+  # Amendment 24 (OSF revision 6aed5e35c13cfd892df383af; docs/style-embed-plan.md): BOM-30
+  corporate: [anonymous, anon, unknown, united states, great britain, congress, parliament, society,
+              church, committee, convention, assembly, association, company, college, university,
+              board of, council, legislature, court]
+  work_title_words: 6
+  min_works: 2
+  max_works: 16
+  passages_per_work: 32
+  passage_tokens: 128
+  episode_passages: 8
+  heldout_share: 0.10
+  heldout_seed: bom30-heldout
+  passage_seed: bom30-passages
+  dim: 512
+  authors_per_step: 64
+  temperature: 0.05
+  lr_encoder: 2.0e-5
+  lr_head: 1.0e-3
+  weight_decay: 0.01
+  warmup_steps: 500
+  steps: 20000
+  min_lr_share: 0.1
+  train_seed: bom30-train
+  validate_every: 1000
+
 dating:
   # 5.3, 6.4; Amendment 2 (multinomial logistic regression over a literature-drawn grammatical
   # feature list, 10,000 permutations); Amendment 17 (BOM-29; OSF revision
