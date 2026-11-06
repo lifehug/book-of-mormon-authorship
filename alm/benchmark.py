@@ -257,20 +257,13 @@ def decide(recs_by: dict[str, list[dict]], cfg: dict) -> dict:
     closed = {t: sum(r["predicted"] == r["author"] for r in rs) / len(rs)
               for t, rs in recs_by.items()}  # fmt: skip
     overall = sum(r["predicted"] == r["author"] for r in allrecs) / len(allrecs)
-    rate = bm["max_open_set_fpr"]
+    from eval.open_set import verdict as open_set_verdict
+
     pos = [r["positive"] for r in allrecs]
     neg = [r["open_negative"] for r in allrecs]
-    th = calibrate_gi(pos, neg, rate)
-    idx = list(range(len(neg)))
-    random.Random(derive_seed(a["fold_seed"], cfg)).shuffle(idx)
-    half = len(idx) // 2
-    fprs = []
-    for cal, ev in ((idx[:half], idx[half:]), (idx[half:], idx[:half])):
-        t = np.quantile([neg[i] for i in cal], 1 - rate)
-        fprs.append(float(np.mean([neg[i] > t for i in ev])))
-    fpr = float(np.mean(fprs))
-    verdict = {"closed_set": overall, "open_set_fpr": fpr,
-               "passes": overall >= bm["pass_closed_set"] and fpr <= rate}  # fmt: skip
+    th = calibrate_gi(pos, neg, bm["max_open_set_fpr"])
+    # Amendment 25 (post hoc): threshold from the positives; the original rate reported beside
+    verdict = open_set_verdict(overall, pos, neg, cfg, derive_seed(a["fold_seed"], cfg))
     return {"closed_set_by_task": closed, "verdict": verdict, "thresholds": th}
 
 

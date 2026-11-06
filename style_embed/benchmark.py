@@ -48,7 +48,7 @@ def embedder(model: Path, cfg: dict):
         ids = tok.encode(" ".join(words)).ids
         k = max(1, len(ids) // n)
         x = torch.tensor((ids + [0] * n)[: k * n], dtype=torch.long, device=dev).view(1, k, n)
-        return enc(x)[0].double().cpu().numpy()
+        return enc(x)[0].float().cpu().numpy().astype(np.float64)
 
     return embed
 

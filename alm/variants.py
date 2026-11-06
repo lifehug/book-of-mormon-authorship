@@ -136,7 +136,7 @@ def v3(size: str) -> int:
     @torch.no_grad()
     def vec(words: list[str]) -> np.ndarray:
         win = _windows(_encode(tok, words), w).to(dev)
-        return hidden(model, win).mean(dim=1).mean(dim=0).double().cpu().numpy()
+        return hidden(model, win).mean(dim=1).mean(dim=0).float().cpu().numpy().astype(np.float64)
 
     def sample(words: list[str]) -> np.ndarray:
         return np.mean([vec(b) for b in blocks(words)], axis=0)

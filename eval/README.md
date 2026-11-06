@@ -42,6 +42,7 @@ samples. Each command writes a stamped JSON (config hash, git commit) beside the
 | `python -m eval.timesplit` | registered | can later writing stand in for earlier? | `timesplit.json` | ~30 min |
 | `python -m eval.dual_register` | registered | authors with both imitation scripture and other prose | `dual_register.json` | minutes |
 | `python -m eval.benchmark` | registered | the validation benchmark: pass or fail per method | `benchmark.json`, `thresholds.json` | ~10 min |
+| `python -m eval.open_set rescore` | registered (Amendment 25, post hoc) | the corrected open-set check (threshold from the positives: the score 95% of true authors reach) for every method with a verification score, the original beside it | `data/benchmark/open_set.json` | seconds |
 | `uv run bom multiverse` | registered | the benchmark and corpus demo under 54 alternative settings | `results/multiverse/`, copied to `data/classic/` | ~8 h |
 | `python -m classic.corpus_run` | registered | the classical methods on 30 corpus authors (BOM-20 demo) | `data/classic/corpus_run.json` | ~10 min |
 

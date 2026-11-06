@@ -240,6 +240,7 @@ benchmark:
   test_words: 5000               # 7: closed-set accuracy on 5,000-word samples
   pass_closed_set: 0.90          # 7
   max_open_set_fpr: 0.05         # 6.1 and 7
+  open_set_accept: 0.95          # Amendment 25 (post hoc): match threshold = score 95% of true authors reach
   # registered: Amendment 7 Change 8
   trials: 20
   min_reference_blocks: 5
