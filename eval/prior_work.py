@@ -10,6 +10,12 @@ Amendment 22's held-out tails); within a set every pair of methods gets McNemar'
 tests one gets right and the other wrong. The published Book of Mormon attributions (BOM-22's
 replications) are listed beside our replications of them, as counts. Names and numbers only.
 
+``classic-tails`` runs the classical methods (Burrows and Cosine Delta, General Imposters, ENSC at
+the benchmark's calibrated shrinkage and alpha; registered settings, as ``eval.benchmark.run_task``)
+on Amendment 22's held-out tails, the very tests the fine-tuned language models are scored on:
+references are each author's training words, the tests its held-out windows in the same order, so
+``table`` pairs them with the language models test by test.
+
 ``ablation`` (designed; run on a GPU) repeats Amendment 22's ALM pipeline with an off-the-shelf
 GPT-2 in place of the time-locked base, on the benchmark only: GPT-2 read modern web text, which
 may include the Book of Mormon, so it is never applied to it. It writes ``alm_gpt2*.json`` in the
@@ -18,7 +24,9 @@ ALM format, so ``eval.open_set rescore`` and ``table`` pick it up.
 Usage::
 
     python -m eval.prior_work table                   # -> data/benchmark/prior_work.json
+    python -m eval.prior_work classic-tails           # -> prior_work_classic_tails.json
     python -m eval.prior_work ablation gpt2|gpt2-medium [--micro-batch 8]
+    python -m eval.prior_work files                   # the ablation's input files, for a pod
 """
 
 from __future__ import annotations
@@ -51,6 +59,12 @@ def records() -> dict[str, tuple[str, dict[str, list[tuple[str, bool]]]]]:
     for m in CLASSIC:
         out[m] = ("trials", {t: [(r["author"], r[m] == r["author"]) for r in rs]
                              for t, rs in b["records"].items()})  # fmt: skip
+    ct = DIR / "prior_work_classic_tails.json"
+    if ct.exists():  # the classical methods on the language models' own tests
+        d = json.loads(ct.read_text())
+        for m in (*CLASSIC, "ensc"):
+            out[f"tails_{m}"] = ("tails", {t: [(r["author"], r[m] == r["author"]) for r in rs]
+                                           for t, rs in d["records"].items()})  # fmt: skip
     for f in sorted(DIR.glob("alm_*.json")) + [DIR / "style_embed.json"]:
         if not f.exists() or "candidates" in f.stem:
             continue
@@ -117,9 +131,15 @@ def table() -> int:
     open_set = json.loads((DIR / "open_set.json").read_text())["methods"]
     b = json.loads((DIR / "benchmark.json").read_text())
     rows = {}
+    ct = DIR / "prior_work_classic_tails.json"
+    tails = json.loads(ct.read_text())["summary"] if ct.exists() else {}
     for m, (tset, by_task) in recs.items():
         keys, c = _flat(by_task)
-        v = open_set.get(m, {})
+        v = (
+            tails.get(m.removeprefix("tails_"), {})
+            if m.startswith("tails_")
+            else open_set.get(m, {})
+        )
         rows[m] = {"test_set": tset, "tests": len(c), "closed_set": float(c.mean()),
                    "closed_set_95": bootstrap(c, pw["bootstrap"],
                                               derive_seed(f"{pw['bootstrap_seed']}:{m}", cfg)),
@@ -165,6 +185,103 @@ def table() -> int:
         print(f"  {v:<8} " + "  ".join(cells))
     sig = {k: v for k, v in paired.items() if v["p"] < 0.05}
     print(f"{len(paired)} paired comparisons, {len(sig)} at p < 0.05 -> {out}")
+    return 0
+
+
+def classic_tails() -> int:
+    """The classical methods on Amendment 22's held-out tails (see the module docstring)."""
+    import random
+
+    from alm.benchmark import plan
+    from classic.ensc import NONE
+    from classic.features import tokenize
+    from eval.benchmark import TASKS, _ensc_predict, imposter_pool, run_task
+    from eval.open_set import verdict
+    from eval.power import blocks
+    from metadata.config import classic_kwargs
+
+    cfg = load_config()
+    spec = json.loads(TASKS.read_text())
+    ens = json.loads((DIR / "benchmark.json").read_text())["ensc"]  # its calibrated settings
+    priors = classic_kwargs(cfg)["ensc"]["priors"]
+    rng = random.Random(derive_seed("bom68-classic-tails", cfg))
+    recs_by: dict[str, list[dict]] = {}
+    for name, tp in plan(cfg).items():
+        sp = spec[name]
+        task = {"authors": {a: blocks(tokenize(" ".join(w for ws in works for w in ws)))
+                            for a, works in tp["train"].items()},
+                "tests": [(x["author"], tokenize(" ".join(x["words"])), None)
+                          for x in tp["tests"]]}  # fmt: skip
+        pool = imposter_pool(sp["imposter_pool"], set(sp.get("exclude_from_pool", [])), cfg,
+                             sp.get("imposter_genre"), tuple(sp.get("exclude_authors_from_pool",
+                                                                    [])),
+                             sp.get("imposter_fill"))  # fmt: skip
+        out = []
+        for x, r in zip(tp["tests"], run_task(task, pool, cfg, rng, progress=name), strict=True):
+            closed = _ensc_predict(r, ens["shrinkage"], ens["alpha"], priors, None)
+            opened = _ensc_predict(r, ens["shrinkage"], ens["alpha"], priors, r["author"])
+            out.append({"author": r["author"], "where": x["where"],
+                        **{m: r[m] for m in CLASSIC}, "ensc": closed,
+                        "ensc_open_false_match": opened not in (None, NONE),
+                        "gi_positive": r["gi_positive"],
+                        "gi_open_negative": r["gi_open_negative"]})  # fmt: skip
+        recs_by[name] = out
+        print(f"  {name}: {len(out)} tests", flush=True)
+    recs = [r for rs in recs_by.values() for r in rs]
+    n = len(recs)
+    summary = {m: {"closed_set": sum(r[m] == r["author"] for r in recs) / n} for m in CLASSIC}
+    fold = derive_seed("bom68-classic-tails-gi-fold", cfg)
+    summary["general_imposters"] = verdict(summary["general_imposters"]["closed_set"],
+                                           [r["gi_positive"] for r in recs],
+                                           [r["gi_open_negative"] for r in recs], cfg,
+                                           fold)  # fmt: skip
+    fm = sum(r["ensc_open_false_match"] for r in recs) / n
+    summary["ensc"] = {"closed_set": sum(r["ensc"] == r["author"] for r in recs) / n,
+                       "open_set_fpr": fm,
+                       "passes": (sum(r["ensc"] == r["author"] for r in recs) / n
+                                  >= cfg["benchmark"]["pass_closed_set"]
+                                  and fm <= cfg["benchmark"]["max_open_set_fpr"])}  # fmt: skip
+    path = DIR / "prior_work_classic_tails.json"
+    path.write_text(json.dumps({**stamp(), "tests": n, "ensc_settings": {
+        "shrinkage": ens["shrinkage"], "alpha": ens["alpha"]}, "summary": summary,
+        "records": recs_by}, indent=1) + "\n")  # fmt: skip
+    for m, v in summary.items():
+        fpr = v.get("open_set_fpr")
+        print(f"  tails {m:<18} closed {v['closed_set']:.3f}"
+              + ("" if fpr is None else f"  FPR {fpr:.3f}"))  # fmt: skip
+    print(f"{n} held-out tests -> {path}")
+    return 0
+
+
+def ablation_files() -> int:
+    """Every repository file ``ablation`` reads (the benchmark texts and masks), one per line, for
+    a pod upload (``scripts/pod_jobs.py --files``)."""
+    import pyarrow.parquet as pq
+
+    from alm.benchmark import FEDERALIST, PSEUDO, SPANS, TASKS
+    from ocr_fix.normalize import norm_path
+
+    spec = json.loads(PSEUDO.read_text())["authors"]
+    d = json.loads(TASKS.read_text())["dictated"]
+    ids = {w for a in spec.values() for w in a["works"]}
+    ids |= {w for ws in d["reference"].values() for w in ws} | set(d["tests"])
+    cols = ["work_id", "source", "text_path"]
+    rows = [r for r in pq.read_table("data/catalog/catalog.parquet", columns=cols).to_pylist()
+            if r["work_id"] in ids]  # fmt: skip
+    files = {
+        str(FEDERALIST),
+        str(PSEUDO),
+        str(TASKS),
+        str(SPANS),
+        "data/kjv_mask/controls/spans.jsonl",
+        "data/kjv_mask/known_answer/spans.jsonl",
+    }
+    files |= {str(norm_path(r)) for r in rows}
+    for f in sorted(files):
+        p = Path(f)
+        if not p.exists() and p.with_suffix(".jsonl.gz").exists():
+            f = str(p.with_suffix(".jsonl.gz"))
+        print(f)
     return 0
 
 
@@ -240,11 +357,12 @@ def ablation(name: str, micro: int) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["table", "ablation"])
+    ap.add_argument("cmd", choices=["table", "classic-tails", "ablation", "files"])
     ap.add_argument("model", nargs="?", default="gpt2")
     ap.add_argument("--micro-batch", type=int, default=8, help="memory only; same update")
     a = ap.parse_args(argv)
-    return table() if a.cmd == "table" else ablation(a.model, a.micro_batch)
+    return {"table": table, "classic-tails": classic_tails, "files": ablation_files,
+            "ablation": lambda: ablation(a.model, a.micro_batch)}[a.cmd]()  # fmt: skip
 
 
 if __name__ == "__main__":

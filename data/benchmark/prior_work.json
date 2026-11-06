@@ -2,7 +2,7 @@
  "config_sha256": "8397b899a1f4f917c4a5e286e3f1bc63a33100433c67ca0b4e1162e50444cbef",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "9ae9478927f8558ce0a09d778ce40376ded28157",
+ "git_commit": "070a43324975e41d196346ef7bf1e4dbab0426ef",
  "methods": {
   "burrows_delta": {
    "test_set": "trials",
@@ -50,6 +50,70 @@
     "dictated": 0.75
    },
    "open_set_fpr": 0.6166666666666667,
+   "passes": false
+  },
+  "tails_burrows_delta": {
+   "test_set": "tails",
+   "tests": 110,
+   "closed_set": 0.9545454545454546,
+   "closed_set_95": [
+    0.9090909090909091,
+    0.990909090909091
+   ],
+   "by_task": {
+    "federalist": 0.9230769230769231,
+    "pseudo_biblical": 0.875,
+    "dictated": 1.0
+   },
+   "open_set_fpr": null,
+   "passes": null
+  },
+  "tails_cosine_delta": {
+   "test_set": "tails",
+   "tests": 110,
+   "closed_set": 0.8181818181818182,
+   "closed_set_95": [
+    0.7454545454545455,
+    0.8909090909090909
+   ],
+   "by_task": {
+    "federalist": 0.4230769230769231,
+    "pseudo_biblical": 0.7916666666666666,
+    "dictated": 1.0
+   },
+   "open_set_fpr": null,
+   "passes": null
+  },
+  "tails_general_imposters": {
+   "test_set": "tails",
+   "tests": 110,
+   "closed_set": 0.7454545454545455,
+   "closed_set_95": [
+    0.6636363636363637,
+    0.8272727272727273
+   ],
+   "by_task": {
+    "federalist": 0.8076923076923077,
+    "pseudo_biblical": 0.75,
+    "dictated": 0.7166666666666667
+   },
+   "open_set_fpr": 0.8272727272727273,
+   "passes": false
+  },
+  "tails_ensc": {
+   "test_set": "tails",
+   "tests": 110,
+   "closed_set": 0.9636363636363636,
+   "closed_set_95": [
+    0.9272727272727272,
+    0.990909090909091
+   ],
+   "by_task": {
+    "federalist": 1.0,
+    "pseudo_biblical": 0.8333333333333334,
+    "dictated": 1.0
+   },
+   "open_set_fpr": 0.7818181818181819,
    "passes": false
   },
   "alm_base": {
@@ -326,6 +390,26 @@
    "only_second": 1,
    "p": 0.00634765625
   },
+  "alm_base vs tails_burrows_delta": {
+   "only_first": 4,
+   "only_second": 0,
+   "p": 0.125
+  },
+  "alm_base vs tails_cosine_delta": {
+   "only_first": 19,
+   "only_second": 0,
+   "p": 3.814697265625e-06
+  },
+  "alm_base vs tails_ensc": {
+   "only_first": 3,
+   "only_second": 0,
+   "p": 0.25
+  },
+  "alm_base vs tails_general_imposters": {
+   "only_first": 27,
+   "only_second": 0,
+   "p": 1.4901161193847656e-08
+  },
   "alm_base_v1 vs alm_base_v2": {
    "only_first": 4,
    "only_second": 1,
@@ -346,6 +430,26 @@
    "only_second": 1,
    "p": 0.21875
   },
+  "alm_base_v1 vs tails_burrows_delta": {
+   "only_first": 5,
+   "only_second": 7,
+   "p": 0.7744140625
+  },
+  "alm_base_v1 vs tails_cosine_delta": {
+   "only_first": 20,
+   "only_second": 7,
+   "p": 0.0191572904586792
+  },
+  "alm_base_v1 vs tails_ensc": {
+   "only_first": 4,
+   "only_second": 7,
+   "p": 0.548828125
+  },
+  "alm_base_v1 vs tails_general_imposters": {
+   "only_first": 28,
+   "only_second": 7,
+   "p": 0.0005082604475319386
+  },
   "alm_base_v2 vs alm_pilot": {
    "only_first": 1,
    "only_second": 4,
@@ -360,6 +464,26 @@
    "only_first": 1,
    "only_second": 0,
    "p": 1.0
+  },
+  "alm_base_v2 vs tails_burrows_delta": {
+   "only_first": 5,
+   "only_second": 10,
+   "p": 0.30175781249999994
+  },
+  "alm_base_v2 vs tails_cosine_delta": {
+   "only_first": 20,
+   "only_second": 10,
+   "p": 0.09873714670538905
+  },
+  "alm_base_v2 vs tails_ensc": {
+   "only_first": 4,
+   "only_second": 10,
+   "p": 0.1795654296875
+  },
+  "alm_base_v2 vs tails_general_imposters": {
+   "only_first": 28,
+   "only_second": 10,
+   "p": 0.0050976432976312935
   },
   "alm_base_v3 vs alm_pilot_v3": {
    "only_first": 2,
@@ -396,10 +520,70 @@
    "only_second": 1,
    "p": 0.21875
   },
+  "alm_pilot vs tails_burrows_delta": {
+   "only_first": 4,
+   "only_second": 6,
+   "p": 0.75390625
+  },
+  "alm_pilot vs tails_cosine_delta": {
+   "only_first": 19,
+   "only_second": 6,
+   "p": 0.01463329792022705
+  },
+  "alm_pilot vs tails_ensc": {
+   "only_first": 3,
+   "only_second": 6,
+   "p": 0.5078125
+  },
+  "alm_pilot vs tails_general_imposters": {
+   "only_first": 27,
+   "only_second": 6,
+   "p": 0.0003240634687244892
+  },
   "alm_pilot_v1 vs alm_pilot_v2": {
    "only_first": 11,
    "only_second": 7,
    "p": 0.480682373046875
+  },
+  "alm_pilot_v1 vs tails_burrows_delta": {
+   "only_first": 2,
+   "only_second": 4,
+   "p": 0.6875
+  },
+  "alm_pilot_v1 vs tails_cosine_delta": {
+   "only_first": 13,
+   "only_second": 0,
+   "p": 0.000244140625
+  },
+  "alm_pilot_v1 vs tails_ensc": {
+   "only_first": 2,
+   "only_second": 5,
+   "p": 0.453125
+  },
+  "alm_pilot_v1 vs tails_general_imposters": {
+   "only_first": 26,
+   "only_second": 5,
+   "p": 0.00019219517707824707
+  },
+  "alm_pilot_v2 vs tails_burrows_delta": {
+   "only_first": 5,
+   "only_second": 11,
+   "p": 0.210113525390625
+  },
+  "alm_pilot_v2 vs tails_cosine_delta": {
+   "only_first": 20,
+   "only_second": 11,
+   "p": 0.14961278438568115
+  },
+  "alm_pilot_v2 vs tails_ensc": {
+   "only_first": 4,
+   "only_second": 11,
+   "p": 0.11846923828124999
+  },
+  "alm_pilot_v2 vs tails_general_imposters": {
+   "only_first": 28,
+   "only_second": 11,
+   "p": 0.009475304279476404
   },
   "alm_pilot_v3 vs burrows_delta": {
    "only_first": 0,
@@ -450,6 +634,36 @@
    "only_first": 24,
    "only_second": 25,
    "p": 1.0
+  },
+  "tails_burrows_delta vs tails_cosine_delta": {
+   "only_first": 15,
+   "only_second": 0,
+   "p": 6.103515625e-05
+  },
+  "tails_burrows_delta vs tails_ensc": {
+   "only_first": 1,
+   "only_second": 2,
+   "p": 1.0
+  },
+  "tails_burrows_delta vs tails_general_imposters": {
+   "only_first": 24,
+   "only_second": 1,
+   "p": 1.5497207641601562e-06
+  },
+  "tails_cosine_delta vs tails_ensc": {
+   "only_first": 0,
+   "only_second": 16,
+   "p": 3.0517578125e-05
+  },
+  "tails_cosine_delta vs tails_general_imposters": {
+   "only_first": 20,
+   "only_second": 12,
+   "p": 0.21532714972272515
+  },
+  "tails_ensc vs tails_general_imposters": {
+   "only_first": 25,
+   "only_second": 1,
+   "p": 8.046627044677734e-07
   }
  },
  "published_vs_ours": {

@@ -51,6 +51,7 @@ semantic = [
     { name = "faiss-cpu" },
     { name = "sentence-transformers" },
     { name = "torch" },
+    { name = "transformers" },
 ]
 
 [package.dev-dependencies]
@@ -70,6 +71,7 @@ requires-dist = [
     { name = "scipy", specifier = ">=1.17.1" },
     { name = "sentence-transformers", marker = "extra == 'semantic'" },
     { name = "torch", marker = "extra == 'semantic'" },
+    { name = "transformers", marker = "extra == 'semantic'" },
 ]
 provides-extras = ["align", "semantic"]
 

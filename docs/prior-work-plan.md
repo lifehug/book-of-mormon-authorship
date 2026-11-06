@@ -72,3 +72,27 @@ scoring and verdict; only the base model and its tokenizer differ.
 - GPT-2's sizes (124M, 355M) are close to, not equal to, the time-locked pilot (124M) and base
   (297M); its tokenizer differs.
 - ENSC's benchmark records keep no per-test prediction, so it has no interval and no paired test.
+
+## Classical methods on the language models' own tests (run 2026-11-06)
+
+`python -m eval.prior_work classic-tails` (about 3 minutes on the Mac CPU) scores Burrows and
+Cosine Delta, General Imposters and ENSC (the benchmark's calibrated shrinkage 0.5, alpha 0.5) on
+Amendment 22's 110 held-out tests, in the same order, so `table` pairs them with the fine-tuned
+models test by test (`data/benchmark/prior_work_classic_tails.json`).
+
+| Method (held-out tails, n=110) | Closed set | False matches |
+| --- | --- | --- |
+| Burrows Delta | 0.955 | - |
+| Cosine Delta | 0.818 | - |
+| General Imposters | 0.745 | 0.827 |
+| ENSC | 0.964 | 0.782 |
+| ALM 297M primary | 0.991 | 0.382 |
+| ALM 297M V2 | 0.909 | 0.136 |
+
+Paired (exact McNemar): the 297M primary beats General Imposters 27 to 0 (p 1.5e-8) and Cosine
+Delta 19 to 0 (p 4e-6); against Burrows Delta (4 to 0, p 0.13) and ENSC (3 to 0, p 0.25) the
+difference is not significant. On false matches every fine-tuned model is far below General
+Imposters and ENSC on these tests.
+
+GPT-2 ablation on a rented H100: `python -m eval.prior_work files` lists its 43 input files; the
+job pins `transformers==5.22.1` (declared in the `semantic` extra) on the pod.

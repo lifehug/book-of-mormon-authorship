@@ -39,3 +39,22 @@ def test_by_size_side_by_side() -> None:
          "test_set": "tails"}  # fmt: skip
     t = by_size({"alm_large": r, "alm_pilot": r, "alm_base_v2": r, "general_imposters": r})
     assert list(t) == ["primary", "v2"] and list(t["primary"]) == ["pilot", "large"]
+
+
+def test_records_reads_classic_tails(tmp_path, monkeypatch) -> None:
+    import json
+
+    import eval.prior_work as pw
+
+    trial = {"author": "A", "burrows_delta": "A", "cosine_delta": "B", "general_imposters": "A"}
+    (tmp_path / "benchmark.json").write_text(json.dumps({"records": {"t": [trial]}}))
+    tail = {**trial, "where": "blocks 1-5 of 9", "ensc": "A"}
+    (tmp_path / "prior_work_classic_tails.json").write_text(json.dumps({"records": {"t": [tail]}}))
+    (tmp_path / "alm_base.json").write_text(json.dumps({"records": {"t": [
+        {"author": "A", "predicted": "B", "where": "blocks 1-5 of 9"}]}}))  # fmt: skip
+    monkeypatch.setattr(pw, "DIR", tmp_path)
+    recs = pw.records()
+    assert recs["tails_ensc"] == ("tails", {"t": [("A", True)]})
+    assert recs["tails_cosine_delta"][1]["t"] == [("A", False)]
+    assert recs["alm_base"][0] == "tails"
+    assert pw._flat(recs["tails_burrows_delta"][1])[0] == pw._flat(recs["alm_base"][1])[0]

@@ -24,6 +24,7 @@ align = [
 semantic = [
     "torch",
     "sentence-transformers",
+    "transformers",  # BOM-68: the GPT-2 ablation (eval.prior_work ablation)
     "faiss-cpu",
 ]
 
