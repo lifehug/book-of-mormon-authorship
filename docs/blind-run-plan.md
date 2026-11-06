@@ -48,6 +48,18 @@ anything is sealed or scored.
    leave-one-candidate-out for every method that scores candidates. Writes
    `data/blind/unblinded.json`.
 
+   Each scorer's records are keyed by candidate unit; unblinding reads them through one *view* per
+   statistic (`blind.unblind.VIEWS`): Burrows and Cosine Delta, General Imposters (with 6.1's
+   call) and ENSC from the classical output; cosine distance with the call from the style
+   embeddings; the margin over the best control model with the call from each size's authorial
+   models. A candidate's score is its best unit's (BOM-28's plan maps units to candidates; control
+   models never stand for a candidate), its call that unit's call, as the synthesis reads them.
+   Decoy accuracy is reported two ways: **closed set** (candidate decoys, first pick correct) and,
+   for methods with 6.1's call, **verification** (a candidate decoy needs *match* for its candidate
+   and no other; a control decoy needs no *match* at all: Amendment 32's "no candidate"). The raw
+   Book of Mormon records stay by chunk for `synth.model`. `tests/test_blind_e2e.py` runs seal,
+   scorer-format outputs, unblinding and the synthesis end to end on synthetic data.
+
 ## The fresh session (honest label)
 
 The project is one person and AI, so "an analyst without the key" is simulated: the run step is

@@ -23,10 +23,6 @@ amendment first; the issue comment carries the next action.
 
 - **Every model size runs every model-based test** (owner, 2026-11-06): 125M, 297M and 1B side by side, none the headline. 125M on the Mac GPU (`scripts/mac_gpu_chain.sh`, tmux `macgpu`, after BOM-29); 297M and 1B on H100s.
 
-## Known gap
-
-- `blind.unblind`'s decoy accuracy and leave-one-out expect `predicted`/`scores` by author; the new scorers return `first`, `cosine`, `margins`, `general_imposters` by unit. Reconcile before unblinding.
-
 ## Decided, to apply after the 1B benchmark
 
 - **6.2 can never support a candidate** (GI and style thresholds are 1.0). Owner, 2026-11-06: if the 1B reaches 6.1's 5% rate, keep the rule; otherwise file a post hoc amendment before any Book of Mormon scoring saying the registered rule is not achievable with these methods, and let each method return *match* at its best achievable threshold (a score at the threshold counts), its actual false-match rate reported beside every call; 6.2's two families unchanged. Apply right after the 1B benchmark, then file Amendment 33 and seal.

@@ -73,13 +73,24 @@ def test_run_never_reads_the_key() -> None:
 def test_decoy_accuracy_and_leave_one_out() -> None:
     key = {"a": {"kind": "decoy", "author": "x"}, "b": {"kind": "decoy", "author": "y"},
            "c": {"kind": "bom", "chunk_id": "n:1"}}  # fmt: skip
-    per = {"a": {"predicted": "x", "scores": {"x": 0.1, "y": 0.5}},
-           "b": {"predicted": "x", "scores": {"x": 0.2, "y": 0.3}},
-           "c": {"predicted": "x", "scores": {"x": 0.1, "y": 0.2, "z": 0.3}}}  # fmt: skip
-    assert U.decoy_accuracy(per, key) == {"decoys": 2, "correct": 1, "accuracy": 0.5}
-    loo = U.leave_one_out(per, key)
+    units = {"ux": "x", "uy": "y", "uz": "z"}
+    per = {"a": {"ux": 0.1, "uy": 0.5}, "b": {"ux": 0.2, "uy": 0.3},
+           "c": {"ux": 0.1, "uy": 0.2, "uz": 0.3}}  # fmt: skip
+    norm = {i: U.by_candidate(s, True, None, units) for i, s in per.items()}
+    d = U.decoy_accuracy(norm, key)
+    assert d["closed_set"] == {"decoys": 2, "correct": 1, "accuracy": 0.5}
+    assert d["verification"] is None
+    loo = U.leave_one_out(norm, key)
     assert loo["x"] == {"y": 1} and loo["y"] == {"x": 1}
     json.dumps(loo)
+
+
+def test_best_unit_speaks_for_its_candidate() -> None:
+    units = {"x1": "x", "x2": "x", "y1": "y"}  # control units have no candidate
+    r = U.by_candidate({"x1": 0.9, "x2": 0.3, "y1": 0.5, "ctrl": 0.0}, True,
+                       {"x1": "non_match", "x2": "match", "y1": "inconclusive"}, units)  # fmt: skip
+    assert r["first"] == "x" and r["scores"] == {"x": 0.3, "y": 0.5}
+    assert r["calls"] == {"x": "match", "y": "inconclusive"}  # controls never become candidates
 
 
 def test_candidates_keep_their_reference() -> None:
