@@ -34,8 +34,10 @@ anything is sealed or scored.
    no mapping) and `data/blind/withheld.json` (the decoys' source spans, which every method must
    leave out of its references, so a decoy is never scored against its own words; it names spans,
    not ids). Commit and push before anything else.
-3. **Run** (`python -m blind.run --size <working model>`) in a fresh session. Every method scores
-   every sealed id; outputs (numbers only) go to `data/blind/outputs/`, large arrays to
+3. **Run** (`python -m blind.run`, all three model sizes by default) in a fresh session. Every
+   method scores every sealed id; the authorial models once per size (pilot 125M, base 297M,
+   large 1B: every size runs every test, owner 2026-11-06, Amendment 37), as `alm_<size>.json`,
+   side by side; outputs (numbers only) go to `data/blind/outputs/`, large arrays to
    `data/corpus/blind/`; every file's SHA-256 to `data/blind/outputs.json`. Then the multiverse
    (`python -m eval.multiverse`, inside the same session). Commit and push the outputs and hashes.
    `run.py` never opens the key (a test checks its source).
@@ -102,9 +104,18 @@ frozen code. This needs the owner's agreement before it is filed.
 | Author sweep (BOM-39) | per id: distance to every swept author, both signals; discovery mean after unblinding | written (`blind.run.sweep`), needs BOM-39's index |
 | Multiverse (BOM-40) | the registered ranges re-run inside the session | `config/multiverse.yaml` committed (BOM-40 closed); its stages are benchmark-only today |
 
-6.1's thresholds come from `python -m blind.thresholds <size>` (benchmark data only:
+6.1's thresholds come from `python -m blind.thresholds` (benchmark data only:
 GI from `thresholds.json`, style from `style_embed.json`, ALM margins from the candidates' held-out
-windows), committed before the run. Draft Amendment 33 records the scorers' unregistered choices.
+windows at each size, `alm_candidates_<size>.json`), committed before the run. Draft Amendment 33 records the scorers' unregistered choices.
+
+## Every size, side by side (owner, 2026-11-06; Amendment 37)
+
+Every model size runs every model-based test and the sizes are reported side by side; none is
+the "working" or headline size. In the blind run that means the candidate and control models of
+all three sizes (`alm.candidates train pilot|base|large`: the 125M on the Mac GPU, the 297M and 1B
+on rented H100s) each score the sealed set, each with its own 6.1 thresholds, and the unblinded
+results carry `alm_pilot`, `alm_base` and `alm_large`. The style embeddings, dating's transformer
+cross-check and the sweep use the single model each was registered with, so they run once.
 
 ## Cost
 

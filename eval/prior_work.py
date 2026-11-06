@@ -1,10 +1,11 @@
 """The gain over prior work, on equal terms (BOM-68; Amendment 36, ``docs/prior-work-plan.md``).
 
-``table`` puts every method, prior and ours, on the benchmark's own tests in one table: closed-set
-accuracy overall and by task with a bootstrap interval over tests, Amendment 25's open-set
-false-match rate and the pass verdict (from ``data/benchmark/open_set.json``), and which test set it
-was measured on. Methods share a test set when their records line up test by test (the classical
-methods, the style embeddings and V3 on BOM-21's trials; the fine-tuned language models on
+``table`` puts every method, prior and ours, on the benchmark's own tests in one table, with every
+time-locked model size beside the others (``by_size``; none singled out, owner 2026-11-06):
+closed-set accuracy overall and by task with a bootstrap interval over tests, Amendment 25's
+open-set false-match rate and the pass verdict (from ``data/benchmark/open_set.json``), and which
+test set it was measured on. Methods share a test set when their records line up test by test (the
+classical methods, the style embeddings and V3 on BOM-21's trials; the fine-tuned language models on
 Amendment 22's held-out tails); within a set every pair of methods gets McNemar's exact test on the
 tests one gets right and the other wrong. The published Book of Mormon attributions (BOM-22's
 replications) are listed beside our replications of them, as counts. Names and numbers only.
@@ -84,6 +85,31 @@ def _flat(by_task: dict[str, list[tuple[str, bool]]]) -> tuple[list[str], np.nda
     return keys, np.array([c for t in sorted(by_task) for _, c in by_task[t]], dtype=bool)
 
 
+SIZES = ("pilot", "base", "large")
+
+
+def size_of(method: str) -> tuple[str, str] | None:
+    """(size, variant) of a time-locked model's result (``alm_<size>[_<variant>]``), else None."""
+    parts = method.split("_")
+    if len(parts) < 2 or parts[0] != "alm" or parts[1] not in SIZES:
+        return None
+    return parts[1], "_".join(parts[2:]) or "primary"
+
+
+def by_size(rows: dict[str, dict]) -> dict[str, dict[str, dict]]:
+    """Every size side by side (owner, 2026-11-06: no headline size): variant -> size ->
+    closed-set accuracy, its interval and the false-match rate."""
+    out: dict[str, dict[str, dict]] = {}
+    for m, r in rows.items():
+        sv = size_of(m)
+        if sv:
+            out.setdefault(sv[1], {})[sv[0]] = {
+                "closed_set": r["closed_set"], "closed_set_95": r["closed_set_95"],
+                "open_set_fpr": r["open_set_fpr"], "passes": r["passes"],
+                "test_set": r["test_set"]}  # fmt: skip
+    return {v: {z: out[v][z] for z in SIZES if z in out[v]} for v in sorted(out)}
+
+
 def table() -> int:
     cfg = load_config()
     pw = cfg["prior_work"]
@@ -120,7 +146,8 @@ def table() -> int:
         if p.exists():
             d = json.loads(p.read_text())
             published[f] = {"published": d.get(pk), "ours": d.get(ok)}
-    doc = {**stamp(), "methods": rows, "paired": paired, "published_vs_ours": published,
+    doc = {**stamp(), "methods": rows, "by_size": by_size(rows), "paired": paired,
+           "published_vs_ours": published,
            "sets": {"trials": "BOM-21's trials (classical, style embeddings, V3)",
                     "tails": "Amendment 22's held-out tails (fine-tuned models)"}}  # fmt: skip
     out = DIR / "prior_work.json"
@@ -131,6 +158,11 @@ def table() -> int:
         fpr = "-" if r["open_set_fpr"] is None else f"{r['open_set_fpr']:.3f}"
         print(f"  {r['test_set']:<6} {m:<18} n={r['tests'] or '-':<4} closed {r['closed_set']:.3f} "
               f"{ci_s:<17} FPR {fpr:<6} passes {r['passes']}")  # fmt: skip
+    for v, sz in doc["by_size"].items():
+        cells = [
+            f"{z} {r['closed_set']:.3f}/FPR {r['open_set_fpr'] or 0:.3f}" for z, r in sz.items()
+        ]
+        print(f"  {v:<8} " + "  ".join(cells))
     sig = {k: v for k, v in paired.items() if v["p"] < 0.05}
     print(f"{len(paired)} paired comparisons, {len(sig)} at p < 0.05 -> {out}")
     return 0

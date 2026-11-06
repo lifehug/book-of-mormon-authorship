@@ -74,3 +74,20 @@ def test_synthesise_drop_one_and_halves() -> None:
     # dropping the classical family leaves only the embedding, which points to B
     assert no_cls["discovery"]["posterior"]["B"] > no_cls["discovery"]["posterior"]["A"]
     assert full["discovery"]["by_family"]["embedding"]["B"] > 0.5
+
+
+def test_side_by_side_reports_every_size_and_agreement() -> None:
+    from synth.model import side_by_side
+
+    def res(p: dict) -> dict:
+        main = {h: {"posterior": p} for h in ("discovery", "confirmation", "both")}
+        return {"hypotheses": {"primary": {"main": main}, "secondary": {"main": main}}}
+
+    t = side_by_side({"pilot": res({"a": 0.6, "not in set": 0.4}),
+                      "base": res({"a": 0.3, "not in set": 0.7})})  # fmt: skip
+    row = t["primary:both"]
+    assert set(row["posterior"]) == {"pilot", "base"}
+    assert row["most_probable"] == {"pilot": "a", "base": "not in set"}
+    assert row["sizes_agree"] is False
+    same = side_by_side({"pilot": res({"a": 0.6, "b": 0.4}), "large": res({"a": 0.9, "b": 0.1})})
+    assert same["secondary:discovery"]["sizes_agree"] is True

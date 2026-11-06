@@ -8,16 +8,17 @@ rate ``benchmark.max_open_set_fpr``). The thresholds come from:
 - **General Imposters:** ``data/benchmark/thresholds.json`` (BOM-21, already committed);
 - **style embeddings:** the GI-on-vectors positives and open-set negatives of
   ``data/benchmark/style_embed.json`` (BOM-30's benchmark run);
-- **authorial models:** the margins (best control model minus candidate model) on the candidates'
+- **authorial models,** one set per model size (pilot, base, large: every size runs every test,
+  owner 2026-11-06): the margins (best control model minus candidate model) on the candidates'
   held-out windows in ``data/benchmark/alm_candidates_<size>.json`` (Amendment 30): positives the
   true candidate's margin on its own windows, negatives each window's largest margin of any other
-  candidate (on control windows, of any candidate).
+  candidate (on control windows, of any candidate). A size not yet validated gets ``null``.
 
 No Book of Mormon text is read. The file is committed before the blind run (6.1).
 
 Usage::
 
-    python -m blind.thresholds base|large   # -> data/blind/thresholds.json
+    python -m blind.thresholds [pilot base large]   # -> data/blind/thresholds.json
 """
 
 from __future__ import annotations
@@ -63,7 +64,21 @@ def alm_scores(recs: list[dict], kinds: dict[str, str]) -> tuple[list[float], li
     return pos, neg
 
 
-def run(size: str) -> int:
+SIZES = ("pilot", "base", "large")
+
+
+def alm_threshold(size: str, rate: float) -> dict | None:
+    cand = BENCH / f"alm_candidates_{size}.json"
+    if not cand.exists():
+        return None  # BOM-28's candidate models not validated at this size yet
+    d = json.loads(cand.read_text())
+    plan = json.loads((BENCH / "alm_candidates_plan.json").read_text())
+    kinds = {u["key"]: u["kind"] for u in plan["units"]}
+    pos, neg = alm_scores(d["records"], kinds)
+    return {**calibrate(pos, neg, rate), "source": cand.name}
+
+
+def run(sizes: list[str]) -> int:
     from metadata.config import load as load_config
 
     cfg = load_config()
@@ -77,34 +92,38 @@ def run(size: str) -> int:
                                 [r["open_negative"] for r in srecs
                                  if r["open_negative"] is not None], rate),
                     "source": "style_embed.json"}}  # fmt: skip
-    cand = BENCH / f"alm_candidates_{size}.json"
-    if cand.exists():
-        d = json.loads(cand.read_text())
-        plan = json.loads((BENCH / "alm_candidates_plan.json").read_text())
-        kinds = {u["key"]: u["kind"] for u in plan["units"]}
-        pos, neg = alm_scores(d["records"], kinds)
-        th["alm"] = {**calibrate(pos, neg, rate), "source": cand.name}
-    else:
-        th["alm"] = None  # BOM-28's candidate models not validated yet
+    th["alm"] = {z: alm_threshold(z, rate) for z in sizes}
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({**stamp(), "size": size, "rate": rate, "thresholds": th},
+    OUT.write_text(json.dumps({**stamp(), "sizes": sizes, "rate": rate, "thresholds": th},
                               indent=1) + "\n")  # fmt: skip
+    shown = {k: v for k, v in th.items() if k != "alm"} | {
+        f"alm_{z}": v for z, v in th["alm"].items()}  # fmt: skip
     print(f"thresholds -> {OUT}: " + ", ".join(
-        f"{k} {v.get('match')}/{v.get('non_match')}" for k, v in th.items()
-        if isinstance(v, dict) and "match" in v))  # fmt: skip
+        f"{k} {v.get('match')}/{v.get('non_match')}" if isinstance(v, dict) and "match" in v
+        else f"{k} not yet" for k, v in shown.items() if k != "ensc"))  # fmt: skip
     return 0
 
 
-def load() -> dict:
+def load(size: str | None = None) -> dict:
+    """The thresholds; with ``size``, ``alm`` is that size's (``None`` if not validated)."""
     if not OUT.exists():
-        raise SystemExit(f"{OUT} missing: run python -m blind.thresholds <size> and commit it")
-    return json.loads(OUT.read_text())["thresholds"]
+        raise SystemExit(f"{OUT} missing: run python -m blind.thresholds and commit it")
+    th = json.loads(OUT.read_text())["thresholds"]
+    if size is not None:
+        alm = th.get("alm")
+        th = {**th, "alm": alm.get(size) if isinstance(alm, dict) and "match" not in alm
+              else alm}  # fmt: skip
+    return th
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("size", choices=["pilot", "base", "large"])
-    return run(ap.parse_args(argv).size)
+    ap.add_argument("sizes", nargs="*", help="pilot, base, large (default: all three)")
+    sizes = ap.parse_args(argv).sizes or list(SIZES)
+    bad = [z for z in sizes if z not in SIZES]
+    if bad:
+        ap.error(f"unknown size(s) {bad}; choose from {SIZES}")
+    return run(sizes)
 
 
 if __name__ == "__main__":

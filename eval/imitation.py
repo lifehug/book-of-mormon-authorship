@@ -21,6 +21,7 @@ Usage::
     python -m eval.imitation style            # style embeddings (Mac GPU)
     python -m eval.imitation alm <size> [--variant v1|v3] [--micro-batch 8]   # GPU
     python -m eval.imitation report           # -> data/benchmark/imitation.json
+    python -m eval.imitation files <size>     # paths the model part reads (a pod's uploads)
 """
 
 from __future__ import annotations
@@ -329,6 +330,25 @@ def alm(size: str, variant: str, micro: int) -> int:
     return 0
 
 
+def files(size: str) -> list[str]:
+    """Every local file the model part reads beyond the repository: the normalised texts of the
+    tasks' works and the size's base model (for ``scripts/pod_jobs.py --files``)."""
+    from ocr_fix.normalize import norm_path
+
+    spec = json.loads(TASKS.read_text())
+    ids = {w for d in ("forward", "reverse") for part in ("candidates", "tests")
+           for ws in spec[d][part].values() for w in ws}  # fmt: skip
+    cols = ["work_id", "source", "text_path"]
+    rows = [r for r in pq.read_table("data/catalog/catalog.parquet", columns=cols).to_pylist()
+            if r["work_id"] in ids]  # fmt: skip
+    missing = ids - {r["work_id"] for r in rows}
+    if missing:
+        raise SystemExit(f"{len(missing)} task works not in the catalog, e.g. {sorted(missing)[0]}")
+    return sorted({str(norm_path(r)) for r in rows}) + [
+        f"data/corpus/timelocked_lm/runs/{size}/model.pt"
+    ]
+
+
 def summarise(recs: list[dict], bands: list[list[float]]) -> dict:
     k, n = sum(r["predicted"] == r["author"] for r in recs), len(recs)
     acc = k / n if n else 0.0
@@ -367,7 +387,7 @@ def report() -> int:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["build", "classic", "style", "alm", "report"])
+    ap.add_argument("cmd", choices=["build", "classic", "style", "alm", "report", "files"])
     ap.add_argument("size", nargs="?", choices=["pilot", "base", "large"])
     ap.add_argument("--variant", choices=["v1", "v3"], default="")
     ap.add_argument("--micro-batch", type=int, default=8)
@@ -376,6 +396,11 @@ def main(argv: list[str] | None = None) -> int:
         if not a.size:
             ap.error("alm needs a size")
         return alm(a.size, a.variant, a.micro_batch)
+    if a.cmd == "files":
+        if not a.size:
+            ap.error("files needs a size")
+        print("\n".join(files(a.size)))
+        return 0
     return {"build": build, "classic": classic, "style": style, "report": report}[a.cmd]()
 
 

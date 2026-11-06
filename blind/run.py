@@ -2,10 +2,14 @@
 
 Each method's scorer takes the sealed rows (id, words, text) and returns, per id, numbers only:
 per-candidate scores and the method's call where it attributes, the date distribution's summary
-where it dates, distances to every swept author for the sweep. Model-based scorers take the
-model size picked by the benchmark (``--size``). Each method's output goes to
-``data/blind/outputs/<method>.json`` (or ``data/corpus/blind/`` where large) and every file's
-SHA-256 to ``data/blind/outputs.json``, to be committed before ``blind.unblind`` is run.
+where it dates, distances to every swept author for the sweep. Every model size runs every
+model-based test (owner, 2026-11-06; Amendment 37): the authorial models are scored once per size
+in ``--sizes`` (pilot 125M, base 297M, large 1B; all three by default), side by side, none
+singled out. Each method's output goes to ``data/blind/outputs/<method>.json``, a per-size method's
+to ``<method>_<size>.json`` (or ``data/corpus/blind/`` where large), and every file's SHA-256 to
+``data/blind/outputs.json``, to be committed before ``blind.unblind`` is run. The style
+embeddings, dating's transformer cross-check and the sweep use the one model each was registered
+with (the BOM-30 encoder; the 297M base, Amendment 29), so they run once.
 
 Every method has a scorer (``classic.blind_score``, ``style_embed.blind_score``,
 ``alm.blind_score``, and dating and the sweep here); 6.1's calls use ``data/blind/thresholds.json``
@@ -14,7 +18,7 @@ subset (for a dry run on a test set, not for the real run).
 
 Usage::
 
-    python -m blind.run --size base|large [--only dating,sweep] [--sealed <path>]
+    python -m blind.run [--sizes pilot,base,large] [--only dating,sweep] [--sealed <path>]
 """
 
 from __future__ import annotations
@@ -33,7 +37,7 @@ OUTPUTS = Path("data/blind/outputs")
 BIG = Path("data/corpus/blind")
 
 
-def dating(rows: list[dict], cfg: dict, size: str) -> dict:
+def dating(rows: list[dict], cfg: dict, size: str | None) -> dict:
     """Grammar (decides H3) and lexical models, plus the transformer cross-check if fitted:
     each id's median year and 90% interval (6.4, Amendments 17, 19, 29). Ids of other lengths
     than ``dating.segment_words`` are cut into its segments and summarised by their medians."""
@@ -61,7 +65,7 @@ def dating(rows: list[dict], cfg: dict, size: str) -> dict:
     return out
 
 
-def sweep(rows: list[dict], cfg: dict, size: str) -> dict:
+def sweep(rows: list[dict], cfg: dict, size: str | None) -> dict:
     """Each id's distance to every swept author under both signals (Amendment 28). The
     discovery half's mean and the leads are formed only after unblinding, from these."""
     from classic.features import relative_frequencies, tokenize
@@ -104,7 +108,7 @@ def _refs_pool(cfg: dict) -> tuple[dict, list]:
     return _shared["refs"], _shared["pool"]
 
 
-def classic(rows: list[dict], cfg: dict, size: str) -> dict:
+def classic(rows: list[dict], cfg: dict, size: str | None) -> dict:
     """Burrows and Cosine Delta, General Imposters (6.1 call) and ENSC per id (BOM-20/21)."""
     from blind.thresholds import load
     from classic.blind_score import score, units_table
@@ -113,7 +117,7 @@ def classic(rows: list[dict], cfg: dict, size: str) -> dict:
     return {"units": units_table(refs), "ids": score(rows, cfg, refs, imp, load())}
 
 
-def style(rows: list[dict], cfg: dict, size: str) -> dict:
+def style(rows: list[dict], cfg: dict, size: str | None) -> dict:
     """Cosine distance to each unit's profile and GI on the vectors (6.1 call) per id (BOM-30)."""
     from blind.thresholds import load
     from classic.blind_score import units_table
@@ -123,17 +127,20 @@ def style(rows: list[dict], cfg: dict, size: str) -> dict:
     return {"units": units_table(refs), "ids": score(rows, cfg, refs, imp, load())}
 
 
-def alm(rows: list[dict], cfg: dict, size: str) -> dict:
+def alm(rows: list[dict], cfg: dict, size: str | None) -> dict:
     """Each candidate and control model's score, the closed set and 6.1's margin call (BOM-28)."""
     from alm.blind_score import score
     from blind.thresholds import load
 
-    th = load()
+    th = load(size)
     if not th.get("alm"):
-        raise SystemExit("no ALM thresholds: run alm.candidates validate, then blind.thresholds")
+        raise SystemExit(f"no {size} ALM thresholds: run alm.candidates validate {size}, then "
+                         "blind.thresholds")  # fmt: skip
     return {"ids": score(rows, cfg, size, th)}
 
 
+SIZES = ("pilot", "base", "large")
+PER_SIZE = {"alm"}  # methods with one fine-tuned model set per size
 METHODS: dict[str, Callable] = {
     "classic": classic,
     "alm": alm,
@@ -143,22 +150,23 @@ METHODS: dict[str, Callable] = {
 }
 
 
-def run(rows: list[dict], cfg: dict, size: str, only: list[str] | None,
+def run(rows: list[dict], cfg: dict, sizes: list[str], only: list[str] | None,
         out: Path = OUTPUTS) -> dict:  # fmt: skip
     from metadata.config import stamp
 
     out.mkdir(parents=True, exist_ok=True)
     files = {}
     for name in only or list(METHODS):
-        res = METHODS[name](rows, cfg, size)
-        p = out / f"{name}.json"
-        p.write_text(json.dumps({**stamp(), "method": name, "size": size, "scores": res},
-                                indent=1) + "\n")  # fmt: skip
-        files[str(p)] = sha256(p)
-        if isinstance(res, dict) and "file" in res:
-            files[res["file"]] = sha256(Path(res["file"]))
-        print(f"  {name}: {len(res)} entries", flush=True)
-    manifest = {"size": size, "methods": only or list(METHODS), "sha256": files}
+        for size in sizes if name in PER_SIZE else [None]:
+            res = METHODS[name](rows, cfg, size)
+            p = out / (f"{name}_{size}.json" if size else f"{name}.json")
+            p.write_text(json.dumps({**stamp(), "method": name, "size": size, "scores": res},
+                                    indent=1) + "\n")  # fmt: skip
+            files[str(p)] = sha256(p)
+            if isinstance(res, dict) and "file" in res:
+                files[res["file"]] = sha256(Path(res["file"]))
+            print(f"  {p.stem}: {len(res)} entries", flush=True)
+    manifest = {"sizes": sizes, "methods": only or list(METHODS), "sha256": files}
     (out.parent / "outputs.json").write_text(json.dumps(manifest, indent=1) + "\n")
     return manifest
 
@@ -167,13 +175,16 @@ def main(argv: list[str] | None = None) -> int:
     from metadata.config import load as load_config
 
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("--size", required=True, choices=["pilot", "base", "large"])
+    ap.add_argument("--sizes", default=",".join(SIZES), help="model sizes, comma-separated")
     ap.add_argument("--only", default="")
     ap.add_argument("--sealed", type=Path, default=SEALED)
     a = ap.parse_args(argv)
     rows = [json.loads(ln) for ln in a.sealed.read_text().splitlines()]
     only = [m for m in a.only.split(",") if m] or None
-    m = run(rows, load_config(), a.size, only)
+    sizes = [z for z in a.sizes.split(",") if z]
+    if bad := [z for z in sizes if z not in SIZES]:
+        ap.error(f"unknown size(s) {bad}; choose from {SIZES}")
+    m = run(rows, load_config(), sizes, only)
     print(f"{len(m['sha256'])} outputs hashed -> data/blind/outputs.json; commit before unblinding")
     return 0
 

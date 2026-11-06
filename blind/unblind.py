@@ -116,7 +116,10 @@ def main(argv: list[str] | None = None) -> int:
         if not f.endswith(".json"):
             continue
         doc = json.loads(Path(f).read_text())
+        name = f"{doc['method']}_{doc['size']}" if doc.get("size") else doc["method"]
         per = doc["scores"]
+        if isinstance(per, dict) and "ids" in per:  # scorers that also return their units table
+            per = per["ids"]
         if doc["method"] == "sweep":
             split = json.loads(Path("data/bom/segments/split.json").read_text())["assignment"]
             cal = json.loads(Path("data/sweep/calibration.json").read_text())
@@ -126,7 +129,7 @@ def main(argv: list[str] | None = None) -> int:
         if any("scores" in v for v in per.values()):
             r["leave_one_candidate_out"] = leave_one_out(per, key)
         r["bom"] = {key[i]["chunk_id"]: v for i, v in per.items() if key[i]["kind"] == "bom"}
-        res["methods"][doc["method"]] = r
+        res["methods"][name] = r  # model-based methods once per size: alm_pilot, alm_base, ...
     (OUT / "unblinded.json").write_text(json.dumps(res, indent=1) + "\n")
     print(f"unblinded {len(res['methods'])} methods -> {OUT / 'unblinded.json'}")
     return 0

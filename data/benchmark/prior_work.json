@@ -2,7 +2,7 @@
  "config_sha256": "8397b899a1f4f917c4a5e286e3f1bc63a33100433c67ca0b4e1162e50444cbef",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "c95ba801a166aa2e16eecfc0ad89cb6df4c1f59c",
+ "git_commit": "9ae9478927f8558ce0a09d778ce40376ded28157",
  "methods": {
   "burrows_delta": {
    "test_set": "trials",
@@ -208,6 +208,96 @@
    },
    "open_set_fpr": 0.6611111111111111,
    "passes": false
+  }
+ },
+ "by_size": {
+  "primary": {
+   "pilot": {
+    "closed_set": 0.9363636363636364,
+    "closed_set_95": [
+     0.8909090909090909,
+     0.9818181818181818
+    ],
+    "open_set_fpr": 0.4727272727272728,
+    "passes": false,
+    "test_set": "tails"
+   },
+   "base": {
+    "closed_set": 0.990909090909091,
+    "closed_set_95": [
+     0.9727272727272728,
+     1.0
+    ],
+    "open_set_fpr": 0.38181818181818183,
+    "passes": false,
+    "test_set": "tails"
+   }
+  },
+  "v1": {
+   "pilot": {
+    "closed_set": 0.9363636363636364,
+    "closed_set_95": [
+     0.8909090909090909,
+     0.9818181818181818
+    ],
+    "open_set_fpr": 0.45454545454545453,
+    "passes": false,
+    "test_set": "tails"
+   },
+   "base": {
+    "closed_set": 0.9363636363636364,
+    "closed_set_95": [
+     0.8909090909090909,
+     0.9818181818181818
+    ],
+    "open_set_fpr": 0.4727272727272727,
+    "passes": false,
+    "test_set": "tails"
+   }
+  },
+  "v2": {
+   "pilot": {
+    "closed_set": 0.9,
+    "closed_set_95": [
+     0.8454545454545455,
+     0.9545454545454546
+    ],
+    "open_set_fpr": 0.2818181818181818,
+    "passes": false,
+    "test_set": "tails"
+   },
+   "base": {
+    "closed_set": 0.9090909090909091,
+    "closed_set_95": [
+     0.8545454545454545,
+     0.9545454545454546
+    ],
+    "open_set_fpr": 0.13636363636363635,
+    "passes": false,
+    "test_set": "tails"
+   }
+  },
+  "v3": {
+   "pilot": {
+    "closed_set": 0.8388888888888889,
+    "closed_set_95": [
+     0.7833333333333333,
+     0.8888888888888888
+    ],
+    "open_set_fpr": 0.6888888888888889,
+    "passes": false,
+    "test_set": "trials"
+   },
+   "base": {
+    "closed_set": 0.8444444444444444,
+    "closed_set_95": [
+     0.7888888888888889,
+     0.8944444444444445
+    ],
+    "open_set_fpr": 0.7166666666666667,
+    "passes": false,
+    "test_set": "trials"
+   }
   }
  },
  "paired": {

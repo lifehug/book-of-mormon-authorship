@@ -25,13 +25,18 @@ treated as independent (an upper bound on confidence), and the secondary candida
 samples, Amendment 5). Dating, the sweep, access (BOM-33) and manuscript evidence (BOM-34) are
 reported beside the posterior, not multiplied into it.
 
-``rates`` writes each family's accuracy and call rates from benchmark data only; ``run`` reads
-``data/blind/unblinded.json``. Names and numbers only, to ``data/synthesis/``.
+Every model size runs every model-based test (owner, 2026-11-06; Amendment 37), so the authorial
+family is computed once per size (pilot 125M, base 297M, large 1B) and the synthesis is run once
+per size, side by side; no size is singled out. The classical and embedding families are the same
+in each. ``rates`` writes each family's accuracy and call rates from benchmark data only, one file
+per size; ``run`` reads ``data/blind/unblinded.json`` (whose authorial records are ``alm_<size>``)
+and writes ``posterior_<size>.json`` for each size plus ``posterior_sizes.json``, the sizes'
+posteriors in one table. Names and numbers only, to ``data/synthesis/``.
 
 Usage::
 
-    python -m synth.model rates base|large   # -> data/synthesis/rates.json
-    python -m synth.model run [--unblinded data/blind/unblinded.json]   # -> posterior.json
+    python -m synth.model rates [pilot base large]   # -> data/synthesis/rates_<size>.json
+    python -m synth.model run [--unblinded data/blind/unblinded.json] [--sizes pilot,base,large]
 """
 
 from __future__ import annotations
@@ -72,14 +77,24 @@ def band_rates(pos: list[float], neg: list[float], th: dict, smooth: float) -> d
     return out
 
 
-def rates(size: str) -> int:
-    """Each family's closed-set accuracy and call rates, from benchmark data only."""
+SIZES = ("pilot", "base", "large")
+
+
+def rates(sizes: list[str]) -> int:
+    for size in sizes:
+        rates_one(size)
+    return 0
+
+
+def rates_one(size: str) -> dict:
+    """Each family's closed-set accuracy and call rates at one model size, from benchmark data
+    only; the authorial family only where that size's candidate models are validated."""
     from blind.thresholds import alm_scores
     from blind.thresholds import load as thresholds
 
     cfg = load_config()
     sm = cfg["synthesis"]["smoothing"]
-    th = thresholds()
+    th = thresholds(size)
     bench = json.loads((BENCH / "benchmark.json").read_text())
     recs = [r for rs in bench["records"].values() for r in rs]
     style = json.loads((BENCH / "style_embed.json").read_text())
@@ -107,11 +122,11 @@ def rates(size: str) -> int:
         fam["authorial"] = {"accuracy": acc,
                             **band_rates(pos, neg, th["alm"], sm)}  # fmt: skip
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "rates.json").write_text(json.dumps({**stamp(), "size": size, "families": fam},
-                                               indent=1) + "\n")  # fmt: skip
-    print(f"rates -> {OUT / 'rates.json'}: " + ", ".join(
+    out = OUT / f"rates_{size}.json"
+    out.write_text(json.dumps({**stamp(), "size": size, "families": fam}, indent=1) + "\n")
+    print(f"rates -> {out}: " + ", ".join(
         f"{k} a={v['accuracy']:.3f}" for k, v in fam.items()))  # fmt: skip
-    return 0
+    return fam
 
 
 # ---- the model -----------------------------------------------------------------------------------
@@ -217,17 +232,26 @@ def synthesise(obs: dict, fams: dict, w: dict[str, float], cands: list[str], cfg
             for half, e in ev.items()}  # fmt: skip
 
 
-def run(unblinded: Path) -> int:
-    cfg = load_config()
-    fams = json.loads((OUT / "rates.json").read_text())["families"]
+def run_size(size: str, methods: dict, cfg: dict) -> dict | None:
+    """One size's synthesis: its authorial records (``alm_<size>``) beside the shared families."""
+    path = OUT / f"rates_{size}.json"
+    if not path.exists():
+        print(f"  {size}: no rates (python -m synth.model rates {size}); skipped", flush=True)
+        return None
+    fams = json.loads(path.read_text())["families"]
     imitation = json.loads((BENCH / "imitation.json").read_text())
-    methods = json.loads(unblinded.read_text())["methods"]
     split = json.loads(Path("data/bom/segments/split.json").read_text())["assignment"]
     plan = json.loads(PLAN.read_text())
-    res: dict = {**stamp(), "hypotheses": {}, "beside": {}}
+    mine = {k: v for k, v in methods.items() if not k.startswith("alm")}
+    if f"alm_{size}" in methods:
+        mine["alm"] = methods[f"alm_{size}"]
+    else:
+        fams = {f: r for f, r in fams.items() if f != "authorial"}
+    res: dict = {**stamp(), "size": size, "families": sorted(fams), "hypotheses": {},
+                 "beside": {}}  # fmt: skip
     for label, secondary in (("primary", False), ("secondary", True)):
         cands, units = hypotheses(plan, secondary)
-        obs = observations(methods, units, split)
+        obs = observations(mine, units, split)
         w = weights(fams, imitation)
         r = {"candidates": cands, "weights": w, "main": synthesise(obs, fams, w, cands, cfg),
              "equal_weights": synthesise(obs, fams, weights(fams, imitation, True), cands, cfg),
@@ -241,10 +265,35 @@ def run(unblinded: Path) -> int:
     acc = Path("data/access/access_table.csv")
     res["beside"]["access"] = str(acc) if acc.exists() else None
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "posterior.json").write_text(json.dumps(res, indent=1) + "\n")
-    p = res["hypotheses"]["primary"]["main"]["both"]["posterior"]
-    print("posterior (primary, both halves): " + ", ".join(
-        f"{h} {v:.3f}" for h, v in sorted(p.items(), key=lambda kv: -kv[1])))  # fmt: skip
+    (OUT / f"posterior_{size}.json").write_text(json.dumps(res, indent=1) + "\n")
+    return res
+
+
+def side_by_side(results: dict[str, dict]) -> dict:
+    """The sizes' posteriors in one table: per hypothesis set and half, each size's posterior at
+    the registered prior, and whether the sizes agree on the most probable hypothesis."""
+    table: dict = {}
+    for label in ("primary", "secondary"):
+        for half in ("discovery", "confirmation", "both"):
+            row = {z: r["hypotheses"][label]["main"][half]["posterior"]
+                   for z, r in results.items()}  # fmt: skip
+            top = {z: max(p, key=lambda h: (p[h], h)) for z, p in row.items()}
+            table[f"{label}:{half}"] = {"posterior": row, "most_probable": top,
+                                        "sizes_agree": len(set(top.values())) <= 1}  # fmt: skip
+    return table
+
+
+def run(unblinded: Path, sizes: list[str]) -> int:
+    cfg = load_config()
+    methods = json.loads(unblinded.read_text())["methods"]
+    results = {z: r for z in sizes if (r := run_size(z, methods, cfg))}
+    doc = {**stamp(), "sizes": list(results), "table": side_by_side(results)}
+    (OUT / "posterior_sizes.json").write_text(json.dumps(doc, indent=1) + "\n")
+    for z, r in results.items():
+        p = r["hypotheses"]["primary"]["main"]["both"]["posterior"]
+        print(f"{z} (primary, both halves): " + ", ".join(
+            f"{h} {v:.3f}" for h, v in sorted(p.items(), key=lambda kv: -kv[1])))  # fmt: skip
+    print(f"-> {OUT / 'posterior_sizes.json'}")
     return 0
 
 
@@ -252,11 +301,15 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
     r = sub.add_parser("rates")
-    r.add_argument("size", choices=["pilot", "base", "large"])
+    r.add_argument("sizes", nargs="*", help="pilot, base, large (default: all three)")
     u = sub.add_parser("run")
     u.add_argument("--unblinded", type=Path, default=Path("data/blind/unblinded.json"))
+    u.add_argument("--sizes", default=",".join(SIZES))
     a = ap.parse_args(argv)
-    return rates(a.size) if a.cmd == "rates" else run(a.unblinded)
+    sizes = (a.sizes or list(SIZES)) if a.cmd == "rates" else [z for z in a.sizes.split(",") if z]
+    if bad := [z for z in sizes if z not in SIZES]:
+        ap.error(f"unknown size(s) {bad}; choose from {SIZES}")
+    return rates(sizes) if a.cmd == "rates" else run(a.unblinded, sizes)
 
 
 if __name__ == "__main__":

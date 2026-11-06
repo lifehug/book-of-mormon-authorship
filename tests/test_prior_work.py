@@ -27,3 +27,15 @@ def test_flat_keys_pair_tests_in_order() -> None:
     k2, _ = _flat({"a": [("y", True), ("z", True)], "b": [("x", False)]})
     assert k1 == k2 == ["a:0:y", "a:1:z", "b:0:x"]
     assert c1.tolist() == [False, True, True]
+
+
+def test_by_size_side_by_side() -> None:
+    from eval.prior_work import by_size, size_of
+
+    assert size_of("alm_large_v1") == ("large", "v1")
+    assert size_of("alm_base") == ("base", "primary")
+    assert size_of("alm_candidates_base") is None and size_of("style_embed") is None
+    r = {"closed_set": 0.9, "closed_set_95": None, "open_set_fpr": 0.2, "passes": False,
+         "test_set": "tails"}  # fmt: skip
+    t = by_size({"alm_large": r, "alm_pilot": r, "alm_base_v2": r, "general_imposters": r})
+    assert list(t) == ["primary", "v2"] and list(t["primary"]) == ["pilot", "large"]

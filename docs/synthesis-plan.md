@@ -41,8 +41,8 @@ L(none) = (1 / K)        * P(band | not the author)
   benchmark; authorial: the candidates' held-out windows, Amendment 30).
 - `P(band | ...)`: the shares of the benchmark's positives and open-set negatives in each band at
   the committed 6.1 thresholds (`data/blind/thresholds.json`), add-0.5 smoothed so no band has
-  probability zero. Computed by `python -m synth.model rates <size>` into
-  `data/synthesis/rates.json`, from benchmark data only.
+  probability zero. Computed by `python -m synth.model rates` into
+  `data/synthesis/rates_<size>.json` (one per model size), from benchmark data only.
 - Under "not in set" the pick is taken as uniform over the K candidates (the benchmark never tests a
   closed-set pick with the author absent; this is an assumption, stated).
 
@@ -82,10 +82,20 @@ confirmation halves' evidence.
 - **6.1/6.2's calls** as registered (and, if the owner's 2026-11-06 decision applies after the 1B
   benchmark, at the best achievable thresholds with the real false-match rates).
 
+## Every size, side by side (owner, 2026-11-06; Amendment 37)
+
+The authorial family exists once per model size (125M, 297M, 1B), so the whole synthesis runs once
+per size, with that size's authorial evidence beside the shared classical and embedding families:
+`data/synthesis/posterior_<size>.json`. `posterior_sizes.json` puts the sizes' posteriors in one
+table for each hypothesis set and half, with each size's most probable hypothesis and whether the
+sizes agree. No size is the headline: agreement across sizes is itself evidence, and
+disagreement is a finding to report. A size whose candidate models are not yet validated runs
+without the authorial family and says so.
+
 ## Output
 
-`data/synthesis/posterior.json` (names and numbers only): for primary and secondary hypotheses, the
-weights, posteriors per half and both, the prior grid, each family's own posterior, drop-one, equal
+`data/synthesis/posterior_<size>.json` for each size, and `posterior_sizes.json` (names and numbers
+only): for primary and secondary hypotheses, the weights, posteriors per half and both, the prior grid, each family's own posterior, drop-one, equal
 weights, independent chunks, and the chunk counts per family. Runs in seconds.
 
 ## Open (draft Amendment 34)
