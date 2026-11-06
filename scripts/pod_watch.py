@@ -121,6 +121,11 @@ def balance() -> float | None:
 
 
 def sh(cmd: list[str], timeout: int = 600) -> tuple[int, str]:
+    if cmd and cmd[0] == "rsync" and not any(c.startswith("--timeout") for c in cmd):
+        # a dropped connection otherwise hangs rsync until the outer timeout (2026-11-06: an hour)
+        cmd = [cmd[0], "--timeout=120", *cmd[1:]]
+    if cmd and cmd[0] == "ssh" and "ServerAliveInterval" not in " ".join(cmd):
+        cmd = [cmd[0], "-o", "ServerAliveInterval=30", "-o", "ServerAliveCountMax=4", *cmd[1:]]
     try:
         p = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
         return p.returncode, (p.stdout + p.stderr).strip()
