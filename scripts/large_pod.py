@@ -175,6 +175,11 @@ def step(s: dict, issue: int, a) -> bool:
         s["phase"], s["restarts"] = "launch", 0
     elif ph == "launch":
         sp.remote(train_cmd())
+        sp.pw.sh(["rsync", str(ROOT / "scripts/pod_selfstop.sh"), f"{sp.SSH}:/workspace/"])
+        sp.remote(
+            "tmux new-session -d -s selfstop 'bash /workspace/pod_selfstop.sh >> "
+            "/workspace/selfstop.log 2>&1'"
+        )  # stops the pod if the model sits uncollected
         sp.event(s, "**1B training started** (48,931 steps).", issue)
         s["phase"] = "watch"
     elif ph == "watch":
@@ -186,6 +191,15 @@ def step(s: dict, issue: int, a) -> bool:
             # pod in tmux. Never restart or stop for this (2026-11-06: an SSH outage was read as
             # three crashes and the pod was stopped mid-run). Report once an hour.
             s["unreachable"] = s.get("unreachable", 0) + 1
+            if sp.pw.rest("GET", f"/pods/{s['pod']}").get("desiredStatus") == "EXITED":
+                # stopped by its own watchdog (model uncollected while the Mac was away): start
+                # it again to fetch; this fails while its machine's GPUs are taken, so retry
+                try:
+                    sp.pw.rest("POST", f"/pods/{s['pod']}/start")
+                    sp.event(s, "pod had stopped itself with the model uncollected; restarted "
+                                "to fetch it.", issue)  # fmt: skip
+                except Exception as e:  # noqa: BLE001 -- no free GPUs yet; next check retries
+                    sp.log(f"pod stopped; start failed ({e}); retrying")
             if s["unreachable"] % 12 == 1:
                 sp.event(s, f"pod unreachable over SSH ({s['unreachable']} checks); training "
                             "left alone, retrying.", issue)  # fmt: skip
