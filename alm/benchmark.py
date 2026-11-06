@@ -15,7 +15,7 @@ per author, so a rerun resumes at the next author.
 
 Usage::
 
-    python -m alm.benchmark pilot|base   # -> data/benchmark/alm_<size>.json
+    python -m alm.benchmark pilot|base [--variant v1]   # -> data/benchmark/alm_<size>[_v1].json
 """
 
 from __future__ import annotations
@@ -150,12 +150,13 @@ def _base(size: str, cfg: dict) -> GPT:
     return m
 
 
-def finetune(model: GPT, ids: np.ndarray, cfg: dict, seed: int, micro: int, dev: str) -> dict:
+def finetune(model: GPT, ids: np.ndarray, cfg: dict, seed: int, micro: int, dev: str,
+             lr: float) -> dict:  # fmt: skip
     """3 epochs over non-overlapping ``alm.seq``-token sequences, batches of ``alm.batch``
     (accumulated from micro-batches of ``micro``; the same update)."""
     a, t = cfg["alm"], cfg["timelocked_lm"]
     seqs = torch.from_numpy(ids[: len(ids) // a["seq"] * a["seq"]].reshape(-1, a["seq"]))
-    opt = torch.optim.AdamW(model.parameters(), lr=t["finetune_lr"], betas=tuple(t["adam_betas"]),
+    opt = torch.optim.AdamW(model.parameters(), lr=lr, betas=tuple(t["adam_betas"]),
                             weight_decay=t["weight_decay"])  # fmt: skip
     rng = np.random.default_rng(seed)
     model.train()
@@ -187,7 +188,9 @@ def window_loss(model: GPT, ids: list[int], window: int, dev: str) -> list[float
     return nll.view(n, window - 1).mean(dim=1).tolist()
 
 
-def run(size: str, micro: int) -> int:
+def run(size: str, micro: int, variant: str = "") -> int:
+    """Amendment 22's ALMs; ``variant`` "v1" is Amendment 23's V1 (learning rate
+    ``alm.v1_finetune_lr``)."""
     from tokenizers import Tokenizer
 
     cfg = load_config()
@@ -195,7 +198,9 @@ def run(size: str, micro: int) -> int:
     dev = _device()
     tok = Tokenizer.from_file(str(TOKENIZER))
     eot = tok.token_to_id(EOT)
-    work = WORK / size
+    lr = a["v1_finetune_lr"] if variant == "v1" else cfg["timelocked_lm"]["finetune_lr"]
+    tag = f"{size}_{variant}" if variant else size
+    work = WORK / tag
     work.mkdir(parents=True, exist_ok=True)
     p = plan(cfg)
     base = _base(size, cfg).to(dev).eval()
@@ -217,17 +222,16 @@ def run(size: str, micro: int) -> int:
             base.load_state_dict(state)
             seed = derive_seed(f"{a['train_seed']}:{task}:{author}", cfg)
             torch.manual_seed(seed)
-            info = finetune(base, ids, cfg, seed, micro, dev)
+            info = finetune(base, ids, cfg, seed, micro, dev, lr)
             losses = [window_loss(base, x["ids"], a["score_window"], dev) for x in tp["tests"]]
             path.write_text(json.dumps({"train_tokens": len(ids), **info, "losses": losses}))
-            print(f"  {size} {task} {author}: {len(ids):,} tokens, {info['steps']} steps, "
+            print(f"  {tag} {task} {author}: {len(ids):,} tokens, {info['steps']} steps, "
                   f"{info['sec'] / 60:.1f} min", flush=True)  # fmt: skip
-    return score(size, p, cfg)
+    return score(tag, p, cfg)
 
 
-def score(size: str, p: dict, cfg: dict) -> int:
-    a, bm = cfg["alm"], cfg["benchmark"]
-    work = WORK / size
+def score(tag: str, p: dict, cfg: dict) -> int:
+    work = WORK / tag
     recs_by, training = {}, {}
     for task, tp in p.items():
         base = json.loads((work / f"{task}__base.json").read_text())
@@ -243,6 +247,12 @@ def score(size: str, p: dict, cfg: dict) -> int:
                          "positive": -r[x["author"]],
                          "open_negative": max(-r[b] for b in others)})  # fmt: skip
         recs_by[task] = recs
+    return write(tag, recs_by, cfg, {"training": training})
+
+
+def decide(recs_by: dict[str, list[dict]], cfg: dict) -> dict:
+    """Closed-set accuracy, General Imposters' threshold and held-out open-set FPR, verdict."""
+    a, bm = cfg["alm"], cfg["benchmark"]
     allrecs = [r for rs in recs_by.values() for r in rs]
     closed = {t: sum(r["predicted"] == r["author"] for r in rs) / len(rs)
               for t, rs in recs_by.items()}  # fmt: skip
@@ -261,21 +271,27 @@ def score(size: str, p: dict, cfg: dict) -> int:
     fpr = float(np.mean(fprs))
     verdict = {"closed_set": overall, "open_set_fpr": fpr,
                "passes": overall >= bm["pass_closed_set"] and fpr <= rate}  # fmt: skip
-    out = OUT / f"alm_{size}.json"
-    out.write_text(json.dumps({**stamp(), "size": size, "closed_set_by_task": closed,
-                               "verdict": verdict, "thresholds": th, "training": training,
-                               "records": recs_by}, indent=1) + "\n")  # fmt: skip
-    print(f"{size}: closed set {overall:.3f} {closed}; open-set FPR {fpr:.3f}; "
-          f"passes {verdict['passes']} -> {out}", flush=True)  # fmt: skip
+    return {"closed_set_by_task": closed, "verdict": verdict, "thresholds": th}
+
+
+def write(tag: str, recs_by: dict[str, list[dict]], cfg: dict, extra: dict) -> int:
+    d = decide(recs_by, cfg)
+    out = OUT / f"alm_{tag}.json"
+    out.write_text(json.dumps({**stamp(), "run": tag, **d, **extra, "records": recs_by},
+                              indent=1) + "\n")  # fmt: skip
+    v = d["verdict"]
+    print(f"{tag}: closed set {v['closed_set']:.3f} {d['closed_set_by_task']}; open-set FPR "
+          f"{v['open_set_fpr']:.3f}; passes {v['passes']} -> {out}", flush=True)  # fmt: skip
     return 0
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("size", choices=["pilot", "base"])
+    ap.add_argument("--variant", choices=["v1"], default="", help="Amendment 23's V1")
     ap.add_argument("--micro-batch", type=int, default=2, help="memory only; same update")
     a = ap.parse_args(argv)
-    return run(a.size, a.micro_batch)
+    return run(a.size, a.micro_batch, a.variant)
 
 
 if __name__ == "__main__":

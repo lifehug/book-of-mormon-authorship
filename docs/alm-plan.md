@@ -47,3 +47,17 @@ model never read; the counts are reported with the result.
 - Short authors (Hughes 10,000 training words, Jay 8,377) give weak models; a short author's
   model may lose to a long one's on length alone.
 - One fine-tune per author, one seed.
+
+## Variants (Amendment 23, OSF revision 6aed57846119836b77b6964f)
+
+Filed during the 125M primary run, before any of its scores were read, at the owner's request to
+run every reasonable use of the model. Secondary; reported with the number tried.
+
+| Variant | What changes | Code |
+| --- | --- | --- |
+| V1 stronger fine-tuning | Amendment 22 at learning rate 1e-4 | `alm.benchmark --variant v1` |
+| V2 classifier head | one copy per task trained to name the author of a 512-token window | `alm.variants v2` |
+| V3 hidden-state features | the unchanged base model's hidden states replace word counts in BOM-21's own trials (cosine nearest centroid; General Imposters) | `alm.variants v3` |
+
+V3 reads the benchmark's word lists (lowercased, no punctuation) joined by spaces, since it reuses
+BOM-21's trials as they are; the base model was trained on cased, punctuated text.
