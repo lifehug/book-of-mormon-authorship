@@ -23,16 +23,19 @@ amendment first; the issue comment carries the next action.
 7. **BOM-32** the blind run, when 26-31 and 39 are done.
 8. Then 35, 42, 36, 38, 37.
 
-## Timeline to the paper (estimate, 2026-11-06)
+## Timeline to the paper (revised 2026-11-06; only two waits are physical)
 
-| Day | Finishes |
+Physical waits: the 1B (done Sat ~15:30) and the sweep's masking + vectors (Sat afternoon).
+Everything else is hours of machine time or my own working time, so it runs as soon as inputs exist.
+
+| When | Finishes |
 | --- | --- |
-| Sat Nov 7 | 1B trained (~15:30); sweep calibration; BOM-29 dating cross-check |
-| Sun Nov 8 | 1B benchmark, working model picked and published; BOM-33 research under way |
-| Mon Nov 9 | BOM-28 candidate models; BOM-31 imitation; BOM-68 |
-| Tue Nov 10 | BOM-32 blind run; BOM-33 access table |
-| Wed Nov 11 | BOM-34 manuscript and dictation evidence |
-| Thu-Fri Nov 12-13 | BOM-35 synthesis; BOM-36 paper can start (allow slack: Nov 13-15) |
+| Now - Sat | BOM-33 access research (no compute); BOM-29 on the Mac GPU; BOM-31, BOM-68 plans |
+| Sat afternoon | 1B trained; sweep calibration |
+| Sat evening | 1B benchmark (~2 h on an H100), pick and publish the working model |
+| Sat night | BOM-28 candidate models (a few GPU hours) |
+| Sun | BOM-32 blind run |
+| Mon-Tue | BOM-34 manuscript evidence, BOM-35 synthesis; BOM-36 paper can start ~Tue Nov 10 |
 
 Side issues (49, 61, 63) only where they do not delay the paper.
 
