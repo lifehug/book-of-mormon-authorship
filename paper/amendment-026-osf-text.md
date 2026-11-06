@@ -1,6 +1,6 @@
 # Amendment 26: a 1B time-locked model (Amendment 2's size decision)
 
-*Filed 2026-11-06. Evidence: `docs/alm-plan.md` (Results), `docs/timelocked-plan.md`, BOM-27.*
+*Filed 2026-11-06. Note after filing: no 8-GPU machine was free, so the run uses 4 H100s; each step's 512 sequences are split four ways instead of eight, which changes nothing else. Evidence: `docs/alm-plan.md` (Results), `docs/timelocked-plan.md`, BOM-27.*
 
 ---
 

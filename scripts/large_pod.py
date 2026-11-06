@@ -14,7 +14,7 @@ Events go to the Run status issue.
 
 Usage::
 
-    python scripts/large_pod.py --issue 75 [--cap 650 --floor 25 --resume-at 100]
+    python scripts/large_pod.py --issue 75 [--gpus 8 --cap 650 --floor 25 --resume-at 100]
 """
 
 from __future__ import annotations
@@ -38,9 +38,12 @@ R = sp.R
 TOK = "data/corpus/timelocked_lm/tokens"
 OUT = "data/corpus/timelocked_lm/runs/large"
 MANIFEST = ROOT / "data/manifests/timelocked_lm_tokens.jsonl"
-TRAIN = (f"cd {R} && tmux new-session -d -s train 'torchrun --nproc_per_node={GPUS} -m "
-         f"timelocked_lm.train large --out {R}/{OUT} --micro-batch 16 2>&1 | tee -a "
-         "/workspace/train.out'")  # fmt: skip
+
+
+def train_cmd() -> str:
+    return (f"cd {R} && tmux new-session -d -s train 'torchrun --nproc_per_node={GPUS} -m "
+            f"timelocked_lm.train large --out {R}/{OUT} --micro-batch 16 2>&1 | tee -a "
+            "/workspace/train.out'")  # fmt: skip
 
 
 def create(s: dict) -> None:
@@ -167,7 +170,7 @@ def step(s: dict, issue: int, a) -> bool:
             return False
         s["phase"], s["restarts"] = "launch", 0
     elif ph == "launch":
-        sp.remote(TRAIN)
+        sp.remote(train_cmd())
         sp.event(s, "**1B training started** (48,931 steps).", issue)
         s["phase"] = "watch"
     elif ph == "watch":
@@ -183,7 +186,7 @@ def step(s: dict, issue: int, a) -> bool:
                          issue)  # fmt: skip
                 return False
             s["restarts"] += 1
-            sp.remote(TRAIN)
+            sp.remote(train_cmd())
             sp.event(s, f"training process gone; restarted from checkpoint "
                         f"({s['restarts']}/3).", issue)  # fmt: skip
         else:
@@ -233,7 +236,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--cap", type=float, default=650.0)
     ap.add_argument("--floor", type=float, default=25.0)
     ap.add_argument("--resume-at", type=float, default=100.0)
+    ap.add_argument("--gpus", type=int, default=8, help="8 preferred; 4 when no 8-GPU pod is free")
     a = ap.parse_args(argv)
+    global GPUS
+    GPUS = a.gpus
+    sp.PRICE = 3.99 * GPUS
     sp.STATE.parent.mkdir(parents=True, exist_ok=True)
     s = json.loads(sp.STATE.read_text()) if sp.STATE.exists() else {"phase": "create"}
     while s["phase"] not in ("done", "failed", "capped"):
