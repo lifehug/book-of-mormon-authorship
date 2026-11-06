@@ -7,8 +7,10 @@ model size picked by the benchmark (``--size``). Each method's output goes to
 ``data/blind/outputs/<method>.json`` (or ``data/corpus/blind/`` where large) and every file's
 SHA-256 to ``data/blind/outputs.json``, to be committed before ``blind.unblind`` is run.
 
-A method whose Book of Mormon scorer is not built yet raises and stops the run, naming what is
-missing; ``--only`` runs a subset (for a dry run on a test set, not for the real run).
+Every method has a scorer (``classic.blind_score``, ``style_embed.blind_score``,
+``alm.blind_score``, and dating and the sweep here); 6.1's calls use ``data/blind/thresholds.json``
+(``blind.thresholds``, from benchmark data only), which must be committed first. ``--only`` runs a
+subset (for a dry run on a test set, not for the real run).
 
 Usage::
 
@@ -29,13 +31,6 @@ from blind.seal import SEALED, sha256
 
 OUTPUTS = Path("data/blind/outputs")
 BIG = Path("data/corpus/blind")
-
-
-def _missing(what: str) -> Callable:
-    def scorer(rows: list[dict], cfg: dict, size: str) -> dict:
-        raise NotImplementedError(f"no Book of Mormon scorer yet: {what}")
-
-    return scorer
 
 
 def dating(rows: list[dict], cfg: dict, size: str) -> dict:
@@ -97,23 +92,52 @@ def sweep(rows: list[dict], cfg: dict, size: str) -> dict:
     return {"file": str(BIG / "sweep_distances.npz"), "ids": len(ids), "authors": len(authors)}
 
 
+_shared: dict = {}
+
+
+def _refs_pool(cfg: dict) -> tuple[dict, list]:
+    """Candidate references (withheld spans removed) and the imposter pool, built once."""
+    if not _shared:
+        from classic.blind_score import pool, references
+
+        _shared["refs"], _shared["pool"] = references(), pool(cfg)
+    return _shared["refs"], _shared["pool"]
+
+
+def classic(rows: list[dict], cfg: dict, size: str) -> dict:
+    """Burrows and Cosine Delta, General Imposters (6.1 call) and ENSC per id (BOM-20/21)."""
+    from blind.thresholds import load
+    from classic.blind_score import score, units_table
+
+    refs, imp = _refs_pool(cfg)
+    return {"units": units_table(refs), "ids": score(rows, cfg, refs, imp, load())}
+
+
+def style(rows: list[dict], cfg: dict, size: str) -> dict:
+    """Cosine distance to each unit's profile and GI on the vectors (6.1 call) per id (BOM-30)."""
+    from blind.thresholds import load
+    from classic.blind_score import units_table
+    from style_embed.blind_score import score
+
+    refs, imp = _refs_pool(cfg)
+    return {"units": units_table(refs), "ids": score(rows, cfg, refs, imp, load())}
+
+
+def alm(rows: list[dict], cfg: dict, size: str) -> dict:
+    """Each candidate and control model's score, the closed set and 6.1's margin call (BOM-28)."""
+    from alm.blind_score import score
+    from blind.thresholds import load
+
+    th = load()
+    if not th.get("alm"):
+        raise SystemExit("no ALM thresholds: run alm.candidates validate, then blind.thresholds")
+    return {"ids": score(rows, cfg, size, th)}
+
+
 METHODS: dict[str, Callable] = {
-    # classical: candidate references (BOM-13, masked) with the withheld decoy spans removed,
-    # Burrows/Cosine Delta closed set and GI against the imposter pool at the 6.1 thresholds
-    "classic": _missing(
-        "classic: per-id Delta/GI/ENSC against the candidates' masked "
-        "references with data/blind/withheld.json removed (BOM-20/21 code is "
-        "benchmark-task based)"
-    ),  # fmt: skip
-    # authorial models: one fine-tuned copy per candidate and control group (BOM-28)
-    "alm": _missing(
-        "alm: BOM-28's candidate and control-group models (not trained yet) and a "
-        "per-id margin over the best control model (6.1)"
-    ),  # fmt: skip
-    "style": _missing(
-        "style: per-id cosine to candidate profiles relative to the imposter "
-        "distribution (6.1) with the style encoder; only benchmark tasks exist"
-    ),
+    "classic": classic,
+    "alm": alm,
+    "style": style,
     "dating": dating,
     "sweep": sweep,
 }

@@ -8,6 +8,10 @@ text by a known author, ``blind.candidate_share`` of them from candidates (each 
 authors (``blind.decoy_pool``); author drawn uniformly among those who can give one, position
 seeded (``blind.seal_seed``), never overlapping another decoy. The sealed set is shuffled.
 
+Decoys come only from text no authorial model trained on (Amendment 33): a candidate's decoys from
+its unit's held-out tail in BOM-28's plan (``data/benchmark/alm_candidates_plan.json``), a
+control decoy only from a volume no control model sampled.
+
 Written:
 
 - the key (id -> chunk id, or decoy author, source and word span) to ``--key`` (default
@@ -41,6 +45,7 @@ CHUNKS = Path("data/bom/segments/chunks.jsonl")
 SEALED = Path("data/corpus/blind/sealed.jsonl")
 OUT = Path("data/blind")
 KEY = Path.home() / ".bom-blind" / "key.json"
+PLAN = Path("data/benchmark/alm_candidates_plan.json")  # BOM-28's units and held-out tails
 
 
 def sha256(path: Path) -> str:
@@ -60,12 +65,26 @@ def outside_repo(path: Path) -> Path:
 
 
 def pick_decoys(pool: dict[str, list[tuple[str, list[str]]]], need: dict[int, int],
-                rng: random.Random, keep: int = 0) -> list[dict]:  # fmt: skip
+                rng: random.Random, keep: int = 0,
+                allowed: dict[str, tuple[int, int]] | None = None) -> list[dict]:  # fmt: skip
     """``need[size]`` decoys of ``size`` words: author uniform over those who can still give
     one, then a text of theirs long enough, then a seeded start; spans never overlap within a
-    text, and each author keeps at least ``keep`` words out of the decoys (their reference)."""
+    text, and each author keeps at least ``keep`` words out of the decoys (their reference).
+    ``allowed`` limits a text's decoys to its word range ``[lo, hi)``: the part no model trained
+    on (a text missing from it, when given, gives none)."""
     taken: dict[str, list[tuple[int, int]]] = {}
     left = {a: sum(len(w) for _, w in texts) - keep for a, texts in pool.items()}
+
+    def window(src: str, words: list[str]) -> tuple[int, int]:
+        if allowed is None:
+            return 0, len(words)
+        lo, hi = allowed.get(src, (0, 0))
+        return max(0, lo), min(len(words), hi)
+
+    def fits(src: str, words: list[str], size: int) -> bool:
+        lo, hi = window(src, words)
+        return hi - lo >= size
+
     out = []
     for size in sorted(need, reverse=True):
         tries = 0
@@ -73,14 +92,15 @@ def pick_decoys(pool: dict[str, list[tuple[str, list[str]]]], need: dict[int, in
             authors = sorted(
                 a
                 for a, ts in pool.items()
-                if left[a] >= size and any(len(w) >= size for _, w in ts)
+                if left[a] >= size and any(fits(s, w, size) for s, w in ts)
             )
             tries += 1
             if not authors or tries > 100 * need[size] + 1000:
                 raise SystemExit(f"cannot place {need[size]} non-overlapping {size}-word decoys")
             a = rng.choice(authors)
-            src, words = rng.choice(sorted((s, w) for s, w in pool[a] if len(w) >= size))
-            start = rng.randrange(0, len(words) - size + 1)
+            src, words = rng.choice(sorted((s, w) for s, w in pool[a] if fits(s, w, size)))
+            lo, hi = window(src, words)
+            start = rng.randrange(lo, hi - size + 1)
             if any(start < e and s < start + size for s, e in taken.get(src, [])):
                 continue
             taken.setdefault(src, []).append((start, start + size))
@@ -145,6 +165,42 @@ def write(rows: list[dict], key: dict, decoys: list[dict], key_path: Path, seale
     return doc
 
 
+def untrained(units: list[dict], doc_words: dict[str, int]) -> dict[str, tuple[int, int]]:
+    """Candidate document -> the word range ``[lo, hi)`` its model never trained on: the unit's
+    held-out tail (Amendment 30), the unit's documents taken in the plan's order. A unit without
+    a held-out tail trained on everything and gives no range."""
+    out: dict[str, tuple[int, int]] = {}
+    for u in units:
+        if u["kind"] != "candidate" or not u.get("holdout"):
+            continue
+        first, pos = u["holdout"]["first_word"], 0
+        for d in u["docs"]:
+            n = doc_words[d]
+            if pos + n > first:
+                out[d] = (max(0, first - pos), n)
+            pos += n
+    return out
+
+
+def by_unit(pool: dict[str, list[tuple[str, list[str]]]],
+            units: list[dict]) -> dict[str, list[tuple[str, list[str]]]]:  # fmt: skip
+    """Candidate texts regrouped under the candidate whose BOM-28 unit holds them (a periodical's
+    articles are filed by issue, not by writer); texts in no unit are dropped."""
+    owner = {d: u["candidate"] for u in units if u["kind"] == "candidate" for d in u["docs"]}
+    out: dict[str, list[tuple[str, list[str]]]] = {}
+    for texts in pool.values():
+        for src, words in texts:
+            a = owner.get(f"cand:{Path(src).stem}")
+            if a is not None:
+                out.setdefault(a, []).append((src, words))
+    return out
+
+
+def trained_volumes(units: list[dict]) -> set[str]:
+    """Every volume a control model sampled (its training passages and its held-out tail)."""
+    return {d for u in units if u["kind"] == "control" for d in u["docs"]}
+
+
 def decoy_pool(cfg: dict) -> dict[str, list[tuple[str, list[str]]]]:
     """Author -> [(source, masked words)] for the registered pool: public candidate texts of
     candidates with reliable samples, and the control texts named by ``blind.decoy_pool``."""
@@ -200,11 +256,23 @@ def main(argv: list[str] | None = None) -> int:
     bom = [c for c in bom if c["scheme"] in b["sealed_schemes"] and c["chunk_words"]
            in b["sealed_sizes"] and not c["partial"]]  # fmt: skip
     pool = decoy_pool(cfg)
+    # decoys come only from text no authorial model trained on (Amendment 33): a candidate's
+    # held-out tail in BOM-28's plan, and control volumes no control model sampled
+    units = json.loads(PLAN.read_text())["units"]
+    cand_pool = by_unit({a: t for a, t in pool.items() if not a.startswith("control:")}, units)
+    from alm.candidates import candidate_words
+
+    words = {d: len(ws) for docs in candidate_words().values() for d, ws in docs}
+    tails = untrained(units, words)
+    allowed = {s: tails[f"cand:{Path(s).stem}"] for t in cand_pool.values() for s, _ in t
+               if f"cand:{Path(s).stem}" in tails}  # fmt: skip
+    trained = trained_volumes(units)
+    ctrl_pool = {a: kept for a, t in pool.items() if a.startswith("control:")
+                 if (kept := [(s, w) for s, w in t if s not in trained])}  # fmt: skip
     cand_need, ctrl_need = split_need(need_for(bom, b["decoy_ratio"]), b["candidate_share"])
-    decoys = pick_decoys({a: t for a, t in pool.items() if not a.startswith("control:")},
-                         cand_need, rng, keep=cfg["candidates"]["min_masked_words"])  # fmt: skip
-    decoys += pick_decoys({a: t for a, t in pool.items() if a.startswith("control:")},
-                          ctrl_need, rng)  # fmt: skip
+    decoys = pick_decoys(cand_pool, cand_need, rng, keep=cfg["candidates"]["min_masked_words"],
+                         allowed=allowed)  # fmt: skip
+    decoys += pick_decoys(ctrl_pool, ctrl_need, rng)
     rows, key = seal(bom, decoys, rng)
     doc = write(rows, key, decoys, a.key, SEALED, OUT, stamp())
     print(f"sealed {doc['sealed_ids']} ids ({doc['bom_chunks']} chunks, {doc['decoys']} decoys); "

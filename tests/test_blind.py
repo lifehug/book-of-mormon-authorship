@@ -88,3 +88,47 @@ def test_candidates_keep_their_reference() -> None:
     d = S.pick_decoys(pool, {2000: 12}, random.Random(5), keep=10_000)
     assert sum(x["words"] for x in d if x["author"] == "small") <= 4_000
     assert S.split_need({2000: 7, 5000: 2}, 0.5) == ({2000: 4, 5000: 1}, {2000: 3, 5000: 1})
+
+
+def test_untrained_ranges_follow_the_held_out_tail() -> None:
+    units = [
+        {"kind": "candidate", "docs": ["cand:a", "cand:b", "cand:c"],
+         "holdout": {"first_word": 15_000}},
+        {"kind": "candidate", "docs": ["cand:short"], "holdout": None},
+        {"kind": "control", "docs": ["vol1", "vol2"], "holdout": {"first_word": 10}},
+    ]  # fmt: skip
+    words = {"cand:a": 10_000, "cand:b": 8_000, "cand:c": 6_000, "cand:short": 4_000}
+    assert S.untrained(units, words) == {"cand:b": (5_000, 8_000), "cand:c": (0, 6_000)}
+    assert S.trained_volumes(units) == {"vol1", "vol2"}
+
+
+def test_no_decoy_overlaps_any_training_span() -> None:
+    # two candidates whose models trained on the first 20,000 words of each text
+    pool = {a: [(f"{a}-src{k}", [f"{a}{k}x{j}" for j in range(30_000)]) for k in range(2)]
+            for a in ("alpha", "beta")}  # fmt: skip
+    allowed = {s: (20_000, 30_000) for t in pool.values() for s, _ in t}
+    allowed.pop("beta-src1")  # a text with no held-out tail gives no decoys
+    d = S.pick_decoys(pool, {5000: 3, 2000: 4}, random.Random(9), keep=10_000, allowed=allowed)
+    assert len(d) == 7
+    for x in d:
+        lo, hi = allowed[x["source"]]
+        assert lo <= x["start"] and x["start"] + x["words"] <= hi
+    spans = sorted((x["source"], x["start"], x["start"] + x["words"]) for x in d)
+    for (s1, _, e1), (s2, b2, _) in zip(spans, spans[1:], strict=False):
+        assert s1 != s2 or e1 <= b2  # never overlapping each other either
+    with pytest.raises(SystemExit):  # 10,000 untrained words per text cannot hold three 5,000s
+        S.pick_decoys({"alpha": pool["alpha"][:1]}, {5000: 3}, random.Random(0),
+                      allowed={"alpha-src0": (20_000, 30_000)})  # fmt: skip
+
+
+def test_candidate_texts_follow_their_unit() -> None:
+    units = [
+        {"kind": "candidate", "candidate": "Parley P. Pratt", "docs": ["cand:oc-ma__1-2"]},
+        {"kind": "candidate", "candidate": "Oliver Cowdery", "docs": ["cand:oc-ma__3-4"]},
+    ]
+    pool = {"Oliver Cowdery": [("candidates/clean/oc-ma__1-2.txt", ["a"]),
+                               ("candidates/clean/oc-ma__3-4.txt", ["b"]),
+                               ("candidates/clean/oc-ma__9-9.txt", ["c"])]}  # fmt: skip
+    got = S.by_unit(pool, units)
+    assert got == {"Parley P. Pratt": [("candidates/clean/oc-ma__1-2.txt", ["a"])],
+                   "Oliver Cowdery": [("candidates/clean/oc-ma__3-4.txt", ["b"])]}  # fmt: skip

@@ -65,6 +65,16 @@ the session could not have read the file; that limit is stated in section 10 wit
   samples are too small to spare (all under or near 10,000 words) and give no decoys.
 - **From controls** (the rest): authors of the pseudo-biblical, history and general-prose control
   sets, KJV-masked.
+- **Only from text no authorial model trained on** (Amendment 33, draft). A candidate decoy is
+  drawn only from its unit's held-out tail in BOM-28's plan (`data/benchmark/alm_candidates_plan.json`,
+  the words from `holdout.first_word` on, mapped onto the unit's documents in the plan's order:
+  `blind.seal.untrained`); a unit with no held-out tail gives none. A control decoy is drawn only
+  from a volume no control model sampled (`blind.seal.trained_volumes`). Candidate texts are
+  grouped by the plan's units, not by file name (`blind.seal.by_unit`): a *Messenger and Advocate*
+  article is filed by issue, and the writer is whoever the unit says. Checked on the real plan,
+  without Book of Mormon text: untrained candidate words are Ethan Smith 70,391, Hunt 14,956,
+  Spalding 11,833, Cowdery 11,338, Phelps 7,479, Rigdon 6,516, Pratt 0 (his tail lies outside
+  the public texts); the 22 candidate decoys (16 of 2,000 words, 6 of 5,000) all place.
 - **"Identified"** means: a candidate decoy attributed to its candidate (closed set) and matched at
   6.1's threshold; a control decoy given "no candidate" (open set), and for the sweep its author
   ranked first where swept. Accuracy is compared with each method's benchmark accuracy.
@@ -85,12 +95,16 @@ frozen code. This needs the owner's agreement before it is filed.
 
 | Method | Scorer for sealed ids | State |
 | --- | --- | --- |
-| Classical (BOM-20/21) | per id: Delta closed set, GI and ENSC against the candidates' masked references with withheld spans removed, 6.1 thresholds | **missing**; only benchmark-task code exists |
-| Authorial models (BOM-28) | per id: margin of each candidate model over the best control-group model (6.1) | **missing**; candidate models not trained |
-| Style embeddings (BOM-30) | per id: cosine to candidate profiles relative to the imposter distribution (6.1) | **missing**; only benchmark-task code exists |
+| Classical (BOM-20/21) | per id: Burrows and Cosine Delta distances and ranking, GI per unit with 6.1's call, ENSC label and posteriors; references Amendment 30's units with withheld spans cut, pool the pseudo-biblical task's less candidates' works and withheld volumes | written (`classic.blind_score`) |
+| Authorial models (BOM-28) | per id: every unit model's score, closed set, each candidate's margin over the best control model with 6.1's call | written (`alm.blind_score`); needs the trained weights and `blind.thresholds` |
+| Style embeddings (BOM-30) | per id: cosine to each unit's profile, GI on the vectors with 6.1's call | written (`style_embed.blind_score`) |
 | Dating (BOM-29) | per id: median and 90% interval per segment, grammar (decides H3), lexical, transformer | written (`blind.run.dating`) |
 | Author sweep (BOM-39) | per id: distance to every swept author, both signals; discovery mean after unblinding | written (`blind.run.sweep`), needs BOM-39's index |
 | Multiverse (BOM-40) | the registered ranges re-run inside the session | `config/multiverse.yaml` committed (BOM-40 closed); its stages are benchmark-only today |
+
+6.1's thresholds come from `python -m blind.thresholds <size>` (benchmark data only:
+GI from `thresholds.json`, style from `style_embed.json`, ALM margins from the candidates' held-out
+windows), committed before the run. Draft Amendment 33 records the scorers' unregistered choices.
 
 ## Cost
 
