@@ -31,6 +31,7 @@ spec.loader.exec_module(pw)
 
 STATE = ROOT / "logs/style_pod/state.json"
 SSH = "stylepod"
+POD_NAME = "bom30-style"
 PRICE = 3.99  # Secure H100 SXM, $/h (docs/runpod-setup.md)
 IMAGE = "runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04"
 REPO = "https://github.com/lifehug/book-of-mormon-authorship.git"
@@ -92,7 +93,7 @@ def ssh_config(ip: str, port: int) -> None:
 
 
 def create(s: dict) -> None:
-    body = {"name": "bom30-style", "imageName": IMAGE, "cloudType": "SECURE", "gpuCount": 1,
+    body = {"name": POD_NAME, "imageName": IMAGE, "cloudType": "SECURE", "gpuCount": 1,
             "gpuTypeIds": ["NVIDIA H100 80GB HBM3"], "containerDiskInGb": 60,
             "volumeInGb": 100, "volumeMountPath": "/workspace", "ports": ["22/tcp"]}  # fmt: skip
     import urllib.request

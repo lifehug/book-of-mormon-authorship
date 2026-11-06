@@ -46,6 +46,8 @@ WORK = Path("data/corpus/alm/benchmark")
 
 
 def _device() -> str:
+    if torch.cuda.is_available():
+        return "cuda"
     return "mps" if torch.backends.mps.is_available() else "cpu"
 
 
