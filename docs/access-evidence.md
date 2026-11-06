@@ -7,8 +7,11 @@ it. Nobody wrote down what he borrowed, and no lending register for a village re
 likely to survive. That limit is historical, not a consequence of working from digitized
 sources, and the paper states it in those terms.
 
-Status: the *Wayne Sentinel* index below is done. The Manchester rental library holdings and the
-per-source availability scoring (which depend on BOM-26) are not started.
+Status (2026-11-06): all three parts drafted. The *Wayne Sentinel* index is done (below); the
+Manchester library holdings, the Palmyra bookseller findings and the per-source availability
+table follow the Lake Light section. The table is `data/access/access_table.csv` (33 rows); its
+sources are in `data/access/SOURCES.md`. Two OCR-derived findings still need checking by eye on
+page images before they are quoted (see "Gaps").
 
 ## Wayne Sentinel, Palmyra, 1823-1830
 
@@ -130,3 +133,211 @@ verified to carry the phrase also returns zero.
 
 Not indexed for access evidence. It is 50 miles from Palmyra and enters the project as W. W.
 Phelps's writing sample (BOM-13), not as evidence of what was available near the Smiths.
+
+## Availability scoring (BOM-33, 2026-11-06)
+
+### Method
+
+The question is narrow: **was a given text documented as available where Joseph Smith lived,
+before the Book of Mormon was dictated?** The dictation ran roughly April to June 1829 (Harmony,
+Pennsylvania, then Fayette, New York). The Smith family lived in Palmyra from early 1817 and
+then on the farm on the Palmyra-Farmington (later Manchester) town line, Ontario County.
+
+Evidence was taken only from public sources, in this order:
+
+1. The Manchester (Farmington) library holdings as published by Robert Paul (1982), read in full
+   from the free PDF.
+2. The project's own *Wayne Sentinel* OCR (1,429 pages, 1823-1830), searched for every candidate
+   title and author with the same squeeze-whitespace matching as the access index. **Positive hits
+   only count. A miss is not evidence of absence** (see the 26 June 1829 correction above).
+3. Imprints (place and publisher) of every candidate edition, from the title page of the local
+   text (Harvard Institutional Books), the Internet Archive metadata API, or the TCP header.
+4. Sourced secondary compilations, used only where they cite a dated primary document that could
+   be opened (for *View of the Hebrews*, the B. H. Roberts Foundation timeline, formerly
+   mormonr.org; the cited *Western Recorder* page was then read on the Internet Archive scan).
+
+**Scores attach to the text, not the physical copy.** Fourteen of the twenty top search sources
+are editions of Whiston's translation of Josephus. They are one text, and an advertisement for
+"Josephus' Works" in Palmyra is evidence for all of them, though the edition advertised is not
+named. An edition printed in 1829 or 1830 could not itself have been read before the dictation,
+but the text could; each row gives its edition's imprint so the reader can see this.
+
+### The scale
+
+| Score | Meaning |
+| --- | --- |
+| **3** | Documented within Smith's reach before mid-1829: held by the Manchester library, sold or advertised in Palmyra or Canandaigua, published there, or documented as owned or read by him |
+| **2** | Documented in the region before mid-1829: sold, advertised, reviewed or published in western or central New York (about 150 miles of Palmyra), but not in Palmyra, Manchester or Canandaigua |
+| **1** | In print in the United States before 1829, with no regional evidence found |
+| **0** | No evidence found that it circulated in the United States before mid-1829 (unpublished, foreign imprint only, or US printing not shown to predate the dictation) |
+
+The ceiling stated at the top of this file applies to every score. A 3 says a book was on a
+shelf or in an advertisement near the Smith farm. It does not say anyone in the household
+read it, and **Paul's own reading of the library's records is that no one connected with the
+later church was a member** (below).
+
+### The Manchester (Farmington) library
+
+Source: Robert Paul, "Joseph Smith and the Manchester (New York) Library," *BYU Studies* 22,
+no. 3 (1982), beginning p. 333. Free:
+https://scholarsarchive.byu.edu/byusq/vol22/iss3/6 (the PDF link there sits behind a browser
+check); the same PDF at Book of Mormon Central,
+https://archive.bookofmormoncentral.org/sites/default/files/Robert%20Paul%2C%20Joseph%20Smith%20and%20the%20Manchester%20%28New%20York%29%20Library%2C%201982_0.pdf.
+
+What Paul establishes (paraphrased; page numbers are the article's):
+
+- Organised loosely about 1815-1816, formally January 1817, as the "Farmington Library"; kept in
+  librarian John Pratt's Manchester house; about five miles from the Smith farm. Shares were two
+  dollars, dues twenty-five cents a year.
+- **275 books had been accessioned by 1830, about 421 by 1845.** The appendix lists all 421 by
+  accession number. 222 original volumes went to the **Ontario County Historical Society
+  (OCHS)**, Canandaigua, in 1943-44.
+- Paul dates the list only by assuming that accession numbers were assigned in order. No. 276 is
+  the first book published after 1830 (his note 7). He gives three circulation anchors:
+  Humboldt (no. 119) circulating from January 1827; Thomas Dick (nos. 244-245) from early 1830;
+  Josiah Priest's *Wonders of Nature and Providence* (no. 208) "by late 1836".
+- Three record books survive at OCHS: the "Secretary's Record Book, 1817-1854" and two
+  "Withdrawal Record Book[s]", 1826-1837 and 1838-1857. Paul reports that **none lists any patron
+  who joined the new church.** BYU's photocopies of the OCHS material lack the 1826-1837
+  withdrawal book (his note 17).
+- Palmyra had bookstores from December 1817, and Grandin opened a circulating library there in
+  1828. Paul argues that this made the Manchester library the less likely route.
+
+**Candidate holdings found in the appendix:**
+
+| Accession | Entry (Paul) | Relevance |
+| --- | --- | --- |
+| **181-186** | *The works of Flavius Josephus.* Translated by Wm. Whiston. London, 1806 | **Fourteen of the top twenty search sources are this text.** Harvard item `HXJ9AU` is a London 1806 Whiston edition. Not among the volumes surviving at OCHS (no asterisk) |
+| 208 | Priest, *The wonders of nature and Providence, displayed*. Albany: J. Priest, 1825 | Reprints the argument of *View of the Hebrews* (1823) ch. 3 (Paul note 9). Circulation documented only by late 1836 |
+| 142 | Tuke, *Memoirs of the life of George Fox*. Philadelphia | Not the Fox *Journal* (top-20 rank 12) |
+| 98-100 | Clarkson, *Portraiture of Quakerism*, 3 vols. | Quaker background; not a candidate |
+| 321 | Priest, *American Antiquities*, 3rd ed. (1833) | Postdates 1830 |
+
+No entry for *View of the Hebrews*, *The Late War*/*Historical Reader*, *The First Book of
+Napoleon*, Spalding, Blake, Simpson, Bayly or Nayler. Paul notes that nearly half the entries are
+one-word identifications ("Capt. Lyon's Journey", "Durand's Journal"), so absence from the list is
+weaker evidence than presence.
+
+**Dating the Josephus accession.** Numbers 181-186 sit between 119 (circulating January 1827) and
+244 (early 1830). On Paul's sequence assumption, the set was added about 1827-1830. Whether that
+was before or after mid-1829 is **not established**. The 1826-1837 withdrawal book at OCHS
+would settle it (see "Worth buying or requesting").
+
+### Palmyra booksellers and the *Wayne Sentinel*
+
+Paul's notes 21-27 give the dated advertisements for each Palmyra bookstore. Timothy C. Strong's
+bookstore advertised about 250 titles in the *Palmyra Register* of 15 September 1818. Wescott's
+store opened in December 1820 and E. F. Marshall's in October 1822. Tucker and Grandin ran the
+Wayne County Bookstore from 1824, renamed the Palmyra Bookstore in 1826. In Canandaigua,
+J. D. Bemis ran the Canandaigua Bookstore and H. Tyler the Ontario Bookstore. Book auctions were
+held from 1819. A Palmyra library was formed in the winter of 1822-23, and Grandin opened a
+circulating library in 1828 (*Wayne Sentinel* 27 June 1828, 23 January 1829, 10 September 1829).
+The Smiths took the *Palmyra Register* and then the *Sentinel* (Paul note 28, citing the
+*Sentinel* of 11 October 1825 and 6 October 1826; the OCR of those pages does not show the name,
+which by the rule above means nothing).
+
+Searching the project's *Sentinel* OCR (`data/newspapers/wayne_sentinel/text/`, raw and cleaned
+layers agree) for every candidate title gives:
+
+| Term | Pages | What it is |
+| --- | --- | --- |
+| **Josephus** | **38** | Bookstore title lists. "Works of Flavius Josephus" 7 Jul-18 Aug 1824 (Wayne County Bookstore). "Josephus' works" 8-29 Dec 1826, beside *Young's Night Thoughts* and *Jemima Wilkinson*. **"Josephus' Works" in the Palmyra Bookstore list 23 Jan-1 May 1829**, beside Heeren's *Ancient History*, Willard's *Republic of America*, *Junius*. The 20 Mar 1829 p4 copy ends "For sale at the Palm[y]ra Book[store]". Again 11 Dec 1829-4 Jun 1830 beside Rollin's *Ancient History*. One more mention, "subscription paper, for the works of Josephus" (27 Dec 1825 p1), has unclear context |
+| Historical Reader | 22 | School-book lists 27 Jul 1827-28 May 1830, never with an author. **Two different books carried this title**: Hunt's reissue of *The Late War* (New York 1817, 1819) and J. L. Blake's *Historical Reader* (Concord, N.H., 1824-1825 onward). Not assignable |
+| Blake's | 21 | "Blake's Nat. Philosophy" in the 1829 Palmyra Bookstore list: J. L. Blake's science text, not his *Biblical Reader* |
+| Hebrews / lost tribes | 6 pages | Mordecai Noah's "Ararat" proclamation (27 Sep 1825 p2) calls the Indians descendants of the lost tribes. Lowth's *Poetry of the Hebrews* is in a Tucker & Gilbert list (20 Apr 1825). Neither is *View of the Hebrews* |
+| View of the Hebrews, Ethan Smith, Late War (as a title), Gilbert Hunt, First Book of Napoleon, Spalding (as author), Fox's Journal, Nayler, Bayly, Biblical Reader, Sacred Literature | 0 | No hit. Not a negative. "Spalding" returns 27 pages, all the Palmyra merchants Marshall & Spalding |
+
+**The Josephus advertisements have been read only in OCR.** The column interleaving that
+garbled the 26 June 1829 page could in principle splice a title from one advertisement into
+another. The lists repeat identically week after week with the same neighbours, which makes
+that unlikely, but it must be confirmed. **Read `wayne_sentinel_18290320_p4` and
+`wayne_sentinel_18240818_p3` on the page scans before quoting them.**
+
+### The access table
+
+`data/access/access_table.csv`: 33 rows, one per text, with columns
+`source_id, title, author, year, kind, score, evidence, citation_url`.
+
+- `named`: the five proposed sources (*View of the Hebrews* 1823 and 1825, *The Late War*,
+  *The First Book of Napoleon*, Spalding's manuscript).
+- `search_top`: the 20 entries of `top_search_sources` in `data/semantic/corpus_bom.json`, in
+  rank order, by `work_id`.
+- `candidate_author`: the other pre-1830 printed works of the candidate authors in
+  `docs/candidates.md` (five more Ethan Smith works, the 1819 *Late War*, and Phelps's two
+  papers). Excluded, with reasons: everything first written or printed after 1830, which cannot
+  bear on access before the dictation. Also excluded are the manuscripts of Joseph Smith and
+  Oliver Cowdery, who were present at the dictation, so the access question does not apply to
+  them in this form. Rigdon's pieces in Campbell's *Christian Baptist* (1823-1830) have not
+  been identified item by item and are listed under gaps.
+
+| Score | Rows | Which |
+| --- | --- | --- |
+| 3 | 15 | All 14 Josephus editions (one text) and the *Ontario Phoenix* (Phelps's paper, printed at Canandaigua from 1828; not digitized) |
+| 2 | 2 | *View of the Hebrews* 2nd ed. (1825), sold at Utica Feb 1826; the *Lake Light* (Trumansburg, 1827-28) |
+| 1 | 10 | *View of the Hebrews* 1st ed. (1823), *The Late War* (1816, 1819), Blake's *Biblical Reader*, Fox's *Journal*, five other Ethan Smith works |
+| 0 | 6 | *First Book of Napoleon* (London 1809 only), Spalding's manuscript (unpublished), Simpson's *Sacred Literature* (Birmingham 1788 only), Bayly (US reprint 1830), Nayler (Cincinnati 1829, month unknown; two copies) |
+
+Collapsed to distinct texts, the twenty search sources are six texts: Josephus (3), Blake (1),
+Fox (1), Simpson (0), Bayly (0), Nayler (0).
+
+**Main finding, stated with its limit.** The top-ranked source of the whole-corpus search,
+Whiston's Josephus, is also the one candidate with the strongest documented local
+availability. It was advertised for sale in Palmyra in 1824, 1826 and **January-May 1829**, and
+held by the Manchester library by about 1830. No proposed source in the named literature reaches
+3. *View of the Hebrews* reaches 2, and only for the 1825 edition, on a Utica bookseller's list.
+This settles nothing about borrowing. Josephus was one of the most widely owned books in
+America, so local availability is what one would expect of it on general grounds. The score
+removes an objection (that the text could not have been to hand). It does not add evidence
+that it was used.
+
+### Gaps: what could not be established
+
+- **Date of the Manchester Josephus accession** relative to mid-1829. Needs the OCHS withdrawal
+  book, 1826-1837.
+- **The Josephus and bookseller items have been read only in OCR.** Confirm on page scans:
+  `wayne_sentinel_18240818_p3`, `_18261208_p3`, `_18290320_p4`; also Paul's cited
+  subscription pages, 11 Oct 1825 and 6 Oct 1826.
+- **Which "Historical Reader"** Palmyra sold, 1827-1830: Hunt's or Blake's. Settles whether
+  *The Late War* is a 1 or a 3. The page scans may show a fuller entry or a price; Blake's was
+  the more widely adopted school book, but that does not settle a single ad.
+- **The *Palmyra Register* (1817-1821) and *Palmyra Herald* (1822-1823)** were not searched. They
+  are on NYSHN and pull with `scripts/nyshn_browser_pull.py` (needs the owner's unlocked
+  browser). The *Register* of 15 September 1818 lists about 250 titles by name (Paul note 21) and
+  is the single most useful unread page. The *Ontario Repository* (Canandaigua, 1809-1829) and
+  the Bemis and Tyler bookstore ads in it were not searched either.
+- **Grandin's 1828 circulating library**: no catalogue of it has been found.
+- **Harmony, Pennsylvania, and Fayette, New York**, where the dictation took place, were not
+  examined. Book of Mormon Central has a short note on whether Harmony had a library
+  (https://archive.dev-bookofmormoncentral.org/sites/default/files/pressing_forward_65_-_was_there_a_library_in_harmony_pennsylvania.pdf),
+  not read for this pass.
+- ***The First Book of Napoleon***: no US printing was found in the Internet Archive or the web
+  sources searched. A union-catalog check (WorldCat, *American Imprints* 1801-1819) was not
+  possible without an account, so "no US edition" is unconfirmed.
+- **Simpson's *Sacred Literature***: same limit. Only the Birmingham 1788 edition was found.
+- **Nayler 1829 (Cincinnati)**: the month of printing was not found. If it was before April 1829
+  the score would be 1.
+- **Rigdon in the *Christian Baptist***: not identified item by item.
+- **Quaker Farmington.** The Smith farm lay in Farmington township until 1821 (Paul, first page).
+  Whether a Friends' meeting library there held Fox's *Journal* was not investigated. It is a
+  lead, not a finding.
+
+### Worth buying or requesting
+
+- **Rick Grunder, *Mormon Parallels: A Bibliographic Source*** (2008,
+  CD-ROM, about 2,088 pp.; four-volume print 2018; reviewed at about $200). This is the
+  standard compilation of when and where proposed sources were available in the region, item
+  by item, with ad citations. It would directly test and probably extend every score above. It
+  is not free, so it was not used. Review:
+  https://interpreterfoundation.org/journal/finding-parallels-some-cautions-and-criticisms-part-one.
+  **Recommended.**
+- **Milton V. Backman Jr., *Joseph Smith's First Vision*, 2nd ed. (Bookcraft, 1980)**, pp. 48-49
+  describes Strong's September 1818 stock. Inexpensive second-hand. Optional if the *Register*
+  page itself is pulled from NYSHN, which is free and better.
+- **Ontario County Historical Society, Manchester Library Collection File**: "Numbers of the
+  Volumes in the Manchester Library", "Books from the old Manchester Library" and the
+  "Manchester Rental Library Withdrawal Record Book, 1826-1837". This is not a purchase but a
+  copy request to OCHS, 55 N. Main St., Canandaigua, NY (https://ochs.org/). Ask for scans of
+  the withdrawal-book pages recording accessions 181-186 and their first loans. **This is the
+  one document that would date the Josephus holding.** BYU L. Tom Perry Special Collections holds
+  photocopies of the other two lists (Manchester Library Collection; M. Wilford Poulson
+  Collection), but not the 1826-1837 book.
