@@ -1,0 +1,219 @@
+"""The gain over prior work, on equal terms (BOM-68; Amendment 36, ``docs/prior-work-plan.md``).
+
+``table`` puts every method, prior and ours, on the benchmark's own tests in one table: closed-set
+accuracy overall and by task with a bootstrap interval over tests, Amendment 25's open-set
+false-match rate and the pass verdict (from ``data/benchmark/open_set.json``), and which test set it
+was measured on. Methods share a test set when their records line up test by test (the classical
+methods, the style embeddings and V3 on BOM-21's trials; the fine-tuned language models on
+Amendment 22's held-out tails); within a set every pair of methods gets McNemar's exact test on the
+tests one gets right and the other wrong. The published Book of Mormon attributions (BOM-22's
+replications) are listed beside our replications of them, as counts. Names and numbers only.
+
+``ablation`` (designed; run on a GPU) repeats Amendment 22's ALM pipeline with an off-the-shelf
+GPT-2 in place of the time-locked base, on the benchmark only: GPT-2 read modern web text, which
+may include the Book of Mormon, so it is never applied to it. It writes ``alm_gpt2*.json`` in the
+ALM format, so ``eval.open_set rescore`` and ``table`` pick it up.
+
+Usage::
+
+    python -m eval.prior_work table                   # -> data/benchmark/prior_work.json
+    python -m eval.prior_work ablation gpt2|gpt2-medium [--micro-batch 8]
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from itertools import combinations
+from pathlib import Path
+
+import numpy as np
+
+from metadata.config import derive_seed, stamp
+from metadata.config import load as load_config
+
+DIR = Path("data/benchmark")
+CLASSIC = ("burrows_delta", "cosine_delta", "general_imposters")
+REPLICATIONS = {  # file -> keys holding the published counts and ours
+    "replication_jockers_data": ("published", "ours"),
+    "replication_jockers_pamr": ("published", "cv_line"),
+    "replication_jockers": ("published_first_or_second_nsc", "summary"),
+    "replication_ensc": ("published_method", "assigned"),
+}
+
+
+def records() -> dict[str, tuple[str, dict[str, list[tuple[str, bool]]]]]:
+    """method -> (test set, {task: [(true author, correct)]})."""
+    out: dict[str, tuple[str, dict]] = {}
+    b = json.loads((DIR / "benchmark.json").read_text())
+    for m in CLASSIC:
+        out[m] = ("trials", {t: [(r["author"], r[m] == r["author"]) for r in rs]
+                             for t, rs in b["records"].items()})  # fmt: skip
+    for f in sorted(DIR.glob("alm_*.json")) + [DIR / "style_embed.json"]:
+        if not f.exists() or "candidates" in f.stem:
+            continue
+        d = json.loads(f.read_text())
+        if "records" not in d:
+            continue
+        tails = any("where" in r for rs in d["records"].values() for r in rs)
+        out[f.stem] = ("tails" if tails else "trials",
+                       {t: [(r["author"], r["predicted"] == r["author"]) for r in rs]
+                        for t, rs in d["records"].items()})  # fmt: skip
+    return out
+
+
+def bootstrap(correct: np.ndarray, n: int, seed: int) -> list[float]:
+    """95% percentile interval of accuracy, resampling tests."""
+    rng = np.random.default_rng(seed)
+    acc = correct[rng.integers(0, len(correct), size=(n, len(correct)))].mean(axis=1)
+    return [float(np.percentile(acc, 2.5)), float(np.percentile(acc, 97.5))]
+
+
+def mcnemar(a: np.ndarray, b: np.ndarray) -> dict:
+    """Exact McNemar test on paired correctness: tests only a got right, only b got right, p."""
+    from scipy.stats import binomtest
+
+    only_a, only_b = int((a & ~b).sum()), int((~a & b).sum())
+    p = binomtest(only_a, only_a + only_b, 0.5).pvalue if only_a + only_b else 1.0
+    return {"only_first": only_a, "only_second": only_b, "p": float(p)}
+
+
+def _flat(by_task: dict[str, list[tuple[str, bool]]]) -> tuple[list[str], np.ndarray]:
+    keys = [f"{t}:{i}:{a}" for t in sorted(by_task) for i, (a, _) in enumerate(by_task[t])]
+    return keys, np.array([c for t in sorted(by_task) for _, c in by_task[t]], dtype=bool)
+
+
+def table() -> int:
+    cfg = load_config()
+    pw = cfg["prior_work"]
+    recs = records()
+    open_set = json.loads((DIR / "open_set.json").read_text())["methods"]
+    b = json.loads((DIR / "benchmark.json").read_text())
+    rows = {}
+    for m, (tset, by_task) in recs.items():
+        keys, c = _flat(by_task)
+        v = open_set.get(m, {})
+        rows[m] = {"test_set": tset, "tests": len(c), "closed_set": float(c.mean()),
+                   "closed_set_95": bootstrap(c, pw["bootstrap"],
+                                              derive_seed(f"{pw['bootstrap_seed']}:{m}", cfg)),
+                   "by_task": {t: float(np.mean([x for _, x in rs])) for t, rs in by_task.items()},
+                   "open_set_fpr": v.get("open_set_fpr"), "passes": v.get("passes")}  # fmt: skip
+    # ENSC has no per-test record in benchmark.json: aggregate numbers only
+    rows["ensc"] = {"test_set": "trials", "tests": open_set["ensc"].get("tests"),
+                    "closed_set": open_set["ensc"]["closed_set"], "closed_set_95": None,
+                    "by_task": b.get("ensc_closed_set_by_task"),
+                    "open_set_fpr": open_set["ensc"].get("open_set_fpr"),
+                    "passes": open_set["ensc"].get("passes")}  # fmt: skip
+    paired = {}
+    for m1, m2 in combinations(sorted(recs), 2):
+        if recs[m1][0] != recs[m2][0]:
+            continue
+        k1, c1 = _flat(recs[m1][1])
+        k2, c2 = _flat(recs[m2][1])
+        if k1 != k2:  # not the same tests in the same order: not paired
+            continue
+        paired[f"{m1} vs {m2}"] = mcnemar(c1, c2)
+    published = {}
+    for f, (pk, ok) in REPLICATIONS.items():
+        p = DIR / f"{f}.json"
+        if p.exists():
+            d = json.loads(p.read_text())
+            published[f] = {"published": d.get(pk), "ours": d.get(ok)}
+    doc = {**stamp(), "methods": rows, "paired": paired, "published_vs_ours": published,
+           "sets": {"trials": "BOM-21's trials (classical, style embeddings, V3)",
+                    "tails": "Amendment 22's held-out tails (fine-tuned models)"}}  # fmt: skip
+    out = DIR / "prior_work.json"
+    out.write_text(json.dumps(doc, indent=1) + "\n")
+    for m, r in sorted(rows.items(), key=lambda kv: (kv[1]["test_set"], kv[0])):
+        ci = r["closed_set_95"]
+        ci_s = f"[{ci[0]:.3f}, {ci[1]:.3f}]" if ci else "-"
+        fpr = "-" if r["open_set_fpr"] is None else f"{r['open_set_fpr']:.3f}"
+        print(f"  {r['test_set']:<6} {m:<18} n={r['tests'] or '-':<4} closed {r['closed_set']:.3f} "
+              f"{ci_s:<17} FPR {fpr:<6} passes {r['passes']}")  # fmt: skip
+    sig = {k: v for k, v in paired.items() if v["p"] < 0.05}
+    print(f"{len(paired)} paired comparisons, {len(sig)} at p < 0.05 -> {out}")
+    return 0
+
+
+def hf_causal_lm(name: str, revision: str):
+    """A Hugging Face GPT-2 behind the time-locked GPT's interface: ``model(idx)`` gives logits,
+    ``model(idx, targets)`` the mean token cross-entropy, as ``alm.benchmark`` expects."""
+    import torch
+    import torch.nn.functional as F
+    from transformers import GPT2LMHeadModel
+
+    class Wrapped(torch.nn.Module):
+        def __init__(self) -> None:
+            super().__init__()
+            self.m = GPT2LMHeadModel.from_pretrained(name, revision=revision)
+            self.commit = getattr(self.m.config, "_commit_hash", None)
+
+        def forward(self, idx, targets=None):
+            logits = self.m(idx).logits
+            if targets is None:
+                return logits
+            return F.cross_entropy(logits.flatten(0, 1).float(), targets.flatten())
+
+    return Wrapped()
+
+
+def ablation(name: str, micro: int) -> int:
+    """Amendment 22's ALMs with GPT-2 as the base (Amendment 36); benchmark only."""
+    import torch
+    from transformers import GPT2TokenizerFast
+
+    from alm.benchmark import WORK, _device, finetune, plan, score, window_loss
+
+    cfg = load_config()
+    a, pw = cfg["alm"], cfg["prior_work"]
+    if name not in pw["gpt2_models"]:
+        raise SystemExit(f"{name} is not one of prior_work.gpt2_models {pw['gpt2_models']}")
+    dev = _device()
+    tok = GPT2TokenizerFast.from_pretrained(name, revision=pw["gpt2_revision"])
+    tag = name.replace("-", "_")
+    work = WORK / tag
+    work.mkdir(parents=True, exist_ok=True)
+    p = plan(cfg)
+    base = hf_causal_lm(name, pw["gpt2_revision"]).to(dev).eval()
+    state = {k: v.clone() for k, v in base.state_dict().items()}
+
+    def enc(words: list[str]) -> list[int]:
+        return tok(" ".join(words))["input_ids"]
+
+    for task, tp in p.items():
+        for x in tp["tests"]:
+            x["ids"] = enc(x["words"])
+        path = work / f"{task}__base.json"
+        if not path.exists():
+            path.write_text(json.dumps([window_loss(base, x["ids"], a["score_window"], dev)
+                                        for x in tp["tests"]]))  # fmt: skip
+    for task, tp in p.items():
+        for author, works in tp["train"].items():
+            path = work / f"{task}__{author}.json"
+            if path.exists():
+                continue
+            ids = np.array([i for ws in works for i in [*enc(ws), tok.eos_token_id]],
+                           dtype=np.int32)  # fmt: skip
+            base.load_state_dict(state)
+            seed = derive_seed(f"{a['train_seed']}:{task}:{author}", cfg)
+            torch.manual_seed(seed)
+            info = finetune(base, ids, cfg, seed, micro, dev, cfg["timelocked_lm"]["finetune_lr"])
+            losses = [window_loss(base, x["ids"], a["score_window"], dev) for x in tp["tests"]]
+            path.write_text(json.dumps({"train_tokens": len(ids), **info, "losses": losses,
+                                        "hf_commit": base.commit}))  # fmt: skip
+            print(f"  {tag} {task} {author}: {len(ids):,} tokens", flush=True)
+    return score(tag, p, cfg)
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
+    ap.add_argument("cmd", choices=["table", "ablation"])
+    ap.add_argument("model", nargs="?", default="gpt2")
+    ap.add_argument("--micro-batch", type=int, default=8, help="memory only; same update")
+    a = ap.parse_args(argv)
+    return table() if a.cmd == "table" else ablation(a.model, a.micro_batch)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

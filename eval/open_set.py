@@ -91,6 +91,8 @@ def rescore() -> int:
     files = sorted(DIR.glob("alm_*.json")) + sorted(DIR.glob("style_embed.json"))
     for f in files:
         d = json.loads(f.read_text())
+        if "records" not in d:  # alm_candidates_*: the candidate models, not benchmark trials
+            continue
         recs = [r for rs in d["records"].values() for r in rs]
         closed = sum(r["predicted"] == r["author"] for r in recs) / len(recs)
         rows[f.stem] = verdict(closed, [r["positive"] for r in recs],

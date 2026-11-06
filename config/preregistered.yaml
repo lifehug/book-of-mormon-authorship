@@ -538,4 +538,17 @@ blind:
     candidates: [Ethan Smith, Gilbert J. Hunt, Oliver Cowdery, Sidney Rigdon, Parley P. Pratt, W. W. Phelps, Solomon Spalding]
     controls: [data/controls/pseudo_biblical_primary.jsonl, data/controls/history.jsonl, data/controls/general_prose.jsonl]
 
+synthesis:
+  # Amendment 34 (docs/synthesis-plan.md): BOM-35
+  prior_none: 0.5               # 6.7
+  prior_grid: [0.2, 0.35, 0.5, 0.65, 0.8]   # 6.7's 0.2-0.8
+  smoothing: 0.5                # add-0.5 on benchmark band counts
+
+prior_work:
+  # Amendment 36 (docs/prior-work-plan.md): BOM-68
+  bootstrap: 10000
+  bootstrap_seed: bom68-boot
+  gpt2_models: [gpt2, gpt2-medium]
+  gpt2_revision: main   # pin to the resolved commit at first download
+
 pending_amendment: []
