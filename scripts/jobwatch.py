@@ -22,7 +22,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DRIVER = ROOT / "logs/large_pod/watch.log"
-LOGS = ["sweep_mask.log", "sweep_chain.log", "bom29.log", "alm_large.log", "candidates.log"]
+LOGS = [
+    "sweep_mask.log",
+    "sweep_chain.log",
+    "bom29.log",
+    "alm_large.log",
+    "candidates.log",
+    "imitation.log",
+]
 BAD = re.compile(r"^EXIT|Traceback|Error|error:|FAILED|Killed")
 
 
