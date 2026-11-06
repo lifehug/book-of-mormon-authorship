@@ -16,6 +16,7 @@ amendment first; the issue comment carries the next action.
 | BOM-28 `alm.candidates plan`, then BOM-31 `eval.imitation build` + `classic` (tmux `prep`) | Mac CPU | 2026-11-06 ~12:00 | ~12:40 | candidates: train on an H100 at the picked size (`candidates_pod.py`); imitation: `style` when the GPU frees, `alm` at the picked size, `report` |
 | BOM-28 candidate models at 297M (`candidates_pod.py --size base`, tmux `candpod`) | 1 H100, cap $25 | 2026-11-06 10:58 | ~12:30 | `alm.candidates validate base`; retrain at 1B if the 1B wins its benchmark |
 | 125M: BOM-28 candidates, BOM-31 style + model parts (`scripts/mac_gpu_chain.sh`, tmux `macgpu`) | Mac GPU, after BOM-29 | 2026-11-06 ~21:30 | Sat morning | side-by-side tables with 297M and 1B |
+| BOM-31 imitation at 297M (`pod_jobs.py --name imitation_base`, tmux `imitbase`) | 1 H100, cap $25 | 2026-11-06 13:29 | ~14:45 | `eval.imitation report` once the 125M and 1B parts are in |
 | Job monitor (`scripts/jobwatch.py` under a Monitor) and hourly check-in | this session | 2026-11-06 | - | reports any crash, stall or finish at once; hourly: start whatever is ready |
 
 ## Decided
