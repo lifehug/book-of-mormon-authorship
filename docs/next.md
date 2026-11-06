@@ -17,6 +17,10 @@ amendment first; the issue comment carries the next action.
 | BOM-28 candidate models at 297M (`candidates_pod.py --size base`, tmux `candpod`) | 1 H100, cap $25 | 2026-11-06 10:58 | ~12:30 | `alm.candidates validate base`; retrain at 1B if the 1B wins its benchmark |
 | Job monitor (`scripts/jobwatch.py` under a Monitor) and hourly check-in | this session | 2026-11-06 | - | reports any crash, stall or finish at once; hourly: start whatever is ready |
 
+## Waiting on the owner
+
+- **6.2 can never support a candidate** (GI and style thresholds are 1.0): owner chose to wait for the 1B benchmark (Sat evening), then decide. Blocks sealing (BOM-32), not prep.
+
 ## Next, in order (start the first whose inputs exist; several may run at once if they use different machines)
 
 1. **BOM-39 + BOM-47 sweep** - plan and Amendment 28 filed (`docs/sweep-plan.md`). Build: units and block sample -> KJV masking of the blocks (passim, about a day) -> MFW counts and style vectors (Mac GPU, about half a day) -> calibration and the expected false-lead count. Mac.
