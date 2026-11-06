@@ -2569,8 +2569,39 @@ I hadn't run that part. Worse, I'd written up the results as if the question wer
 
 So the paraphrase test's answer for the named sources is: none of them stands out. Every re-score matched its earlier number exactly, so the comparison was fair.
 
+## Teaching a model one author's voice, and testing whether it can tell authors apart
+
+The 1830 language model is finished, and the first thing it does isn't the Book of Mormon. It's a test with known answers. Here's what the method is and how the test works.
+
+**1. The base model.** It has read about 25 billion words of English printed between 1780 and 1830, so it knows what writing of that period usually looks like. Give it the start of a sentence and it predicts the next word. More usefully, it can tell you how *surprised* it is by the word that actually comes next.
+
+**2. An "author copy".** For each author we copy the base model and let it keep reading, but only that one author. Hamilton's copy reads Hamilton's Federalist papers three more times. It keeps everything it knew about period English, but its expectations shift a little toward Hamilton: his favourite words, his phrasing, the rhythm of his sentences. We do that for 18 authors: Hamilton, Madison and Jay; four writers of imitation scripture; and eleven novelists, Walter Scott and Jane Austen among them. That makes 18 copies, each nudged toward one writer.
+
+**3. Scoring a passage.** Take a 5,000-word passage. Every author copy reads it, and we compare each one's surprise with the base model's surprise on the same passage. If Hamilton wrote it, Hamilton's copy should be noticeably less surprised than the base, because it has learned his habits. Madison's copy shouldn't gain much. Whichever copy's surprise drops the most is the guess. Comparing against the base matters, because some passages are easy or hard for every model, and the base cancels that out.
+
+**4. The test.** Before this goes anywhere near the Book of Mormon, it has to prove itself on passages where we already know who wrote them.
+
+| Task | The question | Samples |
+| --- | --- | --- |
+| Federalist papers | Hamilton, Madison or Jay? | 26 |
+| Imitation scripture | which of four known authors? | 24 |
+| Scott's dictated novels | Scott, or one of ten other novelists? | 60 |
+
+That last one is the hard case. In 1819 Scott was ill and spoke two novels aloud to a scribe, and dictation is how the Book of Mormon was produced too.
+
+**The no-peeking rule.** A model can't be tested on text it trained on, or it would just recognise it. So Hamilton's copy trains on roughly the first three-quarters of his papers, and his test passages come only from the last quarter, which it has never seen. Each of those passages goes to all three Federalist copies, and the method gets it right if Hamilton's copy wins.
+
+**Two scores, the same bar every other method had to clear.** It has to name the right author at least 90% of the time. And at most 5% false matches: when we take the true author off the list, it should mostly say "none of these" rather than confidently name someone else. That second one matters most for the Book of Mormon, where the true author might not be on anyone's list. So far, of the older methods, only the simple word-count ones get the authors right; none has passed the false-match half of the test.
+
+**One thing I'm watching.** Hamilton's copy finished in two minutes. His 88,000 tokens, read three times in batches, came to only 33 small adjustments, at a learning rate we fixed in advance. That's a gentle nudge. If it's too gentle, the author copies will barely differ from the base and the method won't tell authors apart. If that happens, it's a real result about the settings we registered, and I'll report it that way. I won't quietly turn the dial up after seeing the answer. A stronger setting could only come in as a new, openly labelled amendment, which is the same rule as everything else here: write it down before you look.
+
+**Where this leads.** If the method passes, the same recipe runs on the real question: a copy for each candidate author named in the plan, and each one reads the Book of Mormon. If it fails, it gets reported like the other methods that failed, and it isn't used.
+
+The 125M version runs tonight; the 300M version starts when its training finishes, and I'll put both results here, next to the older methods.
+
 ## Log
 
+- **2026-11-05.** BOM-66: the 125M model is public at huggingface.co/etherfuse/timelocked-1830-125m (CC BY-NC 4.0; owner's decision, no memorization check). BOM-28: Amendment 22 (OSF 6aed5219b9cd9627025f6179) filed before any author model was trained; the benchmark run at 125M started (18 author copies, 110 held-out samples); the 300M run and the 300M release follow automatically when the base model is home.
 - **2026-11-05.** BOM-65 closed: all of `data/corpus/` (914 GB, ~2.36 million files) backed up to a private, encrypted Backblaze B2 bucket. Full check: every unchanged file matches; the 6 that differed had been written after the upload passed them, and match after a re-upload. A restored index shard matches its manifest checksum. Weekly launchd job, Sundays 03:00.
 - **2026-11-05.** BOM-25 closed again: Amendment 21 nulls complete; no named source stands out (*View of the Hebrews* 1825 84.6th percentile, 1823 94.0th, *Napoleon* 98.4th but 3rd of 18 in its group, *The Late War* 79.8th). `data/semantic/named_null.json`.
 - **2026-11-05.** BOM-25 Amendment 21 null, *View of the Hebrews* 1825: score 29.6 (28.0-31.3) against a null of 500 sermon/devotional volumes of its length, median 14.6, 99th percentile 45.0; 77 of 500 score higher (~85th percentile). Ranks 1st of 49 in its group but does not stand out. Rescore check 29.644 = 29.644. Fixed: percentile read from `borrowing.null_percentile` (was missing in the new code, hard-coded 99 in `semantic.corpus`; same value).
