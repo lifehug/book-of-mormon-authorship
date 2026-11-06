@@ -486,6 +486,8 @@ dating:
   permutations: 10000           # Amendment 2
   permutation_seed: bom29-permutation
   keyed_check_years: [1780, 1809]   # keyed (TCP) and OCR volumes of the same decades
+  transformer_size: base         # Amendment 29 (OSF 6aee207dbe8fc50aaf6a0f54): the cross-check
+  transformer_window: 512
 
 
 sweep:

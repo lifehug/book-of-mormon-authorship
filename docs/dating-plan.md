@@ -76,7 +76,8 @@ with the highest document frequency in the training segments, after the exclusio
 A segment's output is its probability over the 31 bins; its median year and 90% interval read off
 that distribution, uniform within each bin. **The grammar model decides 6.4 and H3**, as Amendment 2
 registers; the lexical model is reported beside it. The transformer cross-check (Amendment 2)
-follows on the GPU rented for BOM-27/BOM-30 and is reported beside both.
+is fixed by Amendment 29 (`dating/transformer.py`): the time-locked 297M base model's mean final
+hidden states as features for the same classifier, run on the Mac, reported beside both.
 
 ## Validation (no Book of Mormon text)
 
