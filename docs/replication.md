@@ -92,6 +92,10 @@ available near Palmyra). Nothing else in the pipeline reads it.
 3. Verify against `data/manifests/access-private.jsonl` (SHA-256 `3cd1f35d...8b15`,
    245,556,375 bytes). A different printing or the 2008 CD-ROM will not match; the page
    numbers we cite are to the 2014 PDF.
+4. To check `data/access/grunder_sources.csv` and the Grunder notes in the access table, extract
+   the text locally (`pdftotext -layout <pdf> data/corpus/grunder/grunder-2014.txt`; outside
+   git, never redistributed). The entry list is his Bibliographic Table of Contents, pp.
+   2091-2148. The parse and match rules are in `data/access/SOURCES.md`.
 
 ## The scripts and the paperwork are both committed
 

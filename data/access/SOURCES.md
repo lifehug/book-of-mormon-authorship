@@ -69,3 +69,45 @@ Library System's Advantage archive, so the scans were taken from there with the 
 | Palmyra Register, 15 Sep 1818, pp. 1-4 (T. C. Strong's book list, p. 3) | same folder; viewer `...viewer/?t=33163&i=t&fn=palmyra_register_usa_new_york_palmyra_18180915_english_3&df=1&dt=10&cid=` |
 | Palmyra Register 1817-1821 and Palmyra Herald 1822-1823, full runs | pulled by `ingest.advantage_archive.pull` with the two titles added at runtime (slugs `palmyra_register`, `palmyra_herald`): PDFs in `data/corpus/advantage/pioneerlibrarysystem/`, text layers and `pages.jsonl` in `data/newspapers/palmyra_register/` and `data/newspapers/palmyra_herald/` |
 | Ontario Repository (Canandaigua), 1809-1829 | NYSHN only (title index in `docs/new-york-newspapers.md`); not on Chronicling America (LoC records sn85026151, sn85042109, sn83031526 show no digitized pages) and not found on an Advantage site. Not searched |
+
+## Grunder, *Mormon Parallels* (2014 PDF), and `grunder_sources.csv` (2026-11-06)
+
+| What | Where |
+| --- | --- |
+| The book (private, purchased) | `data/private/access/grunder-mormon-parallels-2014.pdf`; checksum in `data/manifests/access-private.jsonl`; how to obtain it in `docs/replication.md`, item 4 |
+| Its text, for local searching only | `data/corpus/grunder/grunder-2014.txt` from `pdftotext -layout` (one form feed per page; 2,308 page breaks, 992,889 words). Outside git; never committed or published |
+| `access_table.csv` notes citing Grunder | cited as *MP n* (entry) or *MP p. n* (page); book pages equal PDF pages in the 2014 edition |
+| *Utica Christian Repository* 4:5 (May 1825), review of *View of the Hebrews* (found through Grunder MP 398, checked on the scan) | https://archive.org/details/sim_utica-christian-repository_1825-05_4_5 |
+| *Palmyra Herald*, 30 Oct 1822 p2 (Grunder MP 300; Bemis bookstore ad, checked on our image) | `...viewer/?t=33159&i=t&fn=palmyra_herald_and_canal_advertiser_usa_new_york_palmyra_18221030_english_2&df=1&dt=10&cid=` |
+| `grunder_sources.csv` | built from Grunder's "Bibliographic Table of Contents", MP pp. 2091-2148 (500 entries) |
+
+**How `grunder_sources.csv` was built.**
+1. **Entries.** An entry starts at a line beginning with its number (1-500, in sequence). Its
+   heading runs to the first "p. N", which gives `page`.
+2. **Fields.**
+   - `author` is a leading "Surname, Given." where present.
+   - `title` is the leading run of capitalised title words, at most about 15.
+   - `edition_year` is the last year in the imprint before "p. N". This is the edition Grunder
+     describes, which can be later than the first edition.
+3. **Catalog match** against `data/catalog/catalog.parquet` (catalog years 1473-1830):
+   - With an author: the catalog surname is the same, the first initial of the given name does
+     not conflict, and at least three of the title's first six key words (four or more letters,
+     stop-words dropped) appear in the catalog title. Result `in_catalog = yes`.
+   - Without an author: the title's first four words appear as a phrase, all its first five
+     key words appear, and the catalog year is within two years. Result `in_catalog =
+     possible`.
+   - `catalog_match` records whether a matching row has the same year (`same_year`) or not
+     (`other_year`). `catalog_work_ids` lists up to three matching rows.
+   - Spot checks found and removed surname-only and generic-title false matches. The rest
+     were not each checked.
+4. **`imprint_region`**: Palmyra, Canandaigua, Manchester, Geneva, Lyons or Rochester found in
+   the imprint segment. Approximate.
+5. **`in_access_table`**: set by hand for the 8 entries matching rows of the access table.
+
+The code that did this is kept locally beside the text, in `data/corpus/grunder/code/`
+(`grunder_toc.py`, `grunder_fields.py`, `grunder_csv.py`; also `gr_ctx.py` for passage
+searches and `build_access_table.py`, which writes `access_table.csv`). It is not yet in a
+pipeline package.
+
+**Licence.** Titles, authors, years and page numbers are bibliographic facts. The CSV holds no
+commentary or quotation from Grunder.

@@ -284,11 +284,11 @@ standing lists, found in OCR and not each re-read.
 | Score | Rows | Which |
 | --- | --- | --- |
 | 3 | 15 | All 14 Josephus editions (one text) and the *Ontario Phoenix* (Phelps's paper, printed at Canandaigua from 1828; not digitized) |
-| 2 | 2 | *View of the Hebrews* 2nd ed. (1825), sold at Utica Feb 1826; the *Lake Light* (Trumansburg, 1827-28) |
-| 1 | 10 | *View of the Hebrews* 1st ed. (1823), *The Late War* (1816, 1819), Blake's *Biblical Reader*, Fox's *Journal*, five other Ethan Smith works |
+| 2 | 3 | *View of the Hebrews* 1st ed. (1823), reviewed in the *Utica Christian Repository*, May 1825 (from Grunder, checked on the scan); 2nd ed. (1825), sold at Utica Feb 1826; the *Lake Light* (Trumansburg, 1827-28) |
+| 1 | 9 | *The Late War* (1816, 1819), Blake's *Biblical Reader*, Fox's *Journal*, five other Ethan Smith works |
 | 0 | 6 | *First Book of Napoleon* (London 1809 only), Spalding's manuscript (unpublished), Simpson's *Sacred Literature* (Birmingham 1788 only), Bayly (US reprint 1830), Nayler (Cincinnati 1829, month unknown; two copies) |
 
-Collapsed to distinct texts, the twenty search sources are six texts: Josephus (3), Blake (1),
+Collapsed to distinct texts, the twenty search sources are six texts (unchanged by Grunder): Josephus (3), Blake (1),
 Fox (1), Simpson (0), Bayly (0), Nayler (0).
 
 **Main finding, stated with its limit.** The top-ranked source of the whole-corpus search,
@@ -298,7 +298,8 @@ earliest offer found), for sale in Palmyra's own bookstores in 1824 and 1826, an
 Grandin's own advertised stock from 27 November 1828 through at least spring 1829** (all three
 confirmed on the page images). It was held by the Manchester library by about 1830. It was not
 in T. C. Strong's Palmyra lists of 1818 and 1819. No proposed source in the named literature reaches
-3. *View of the Hebrews* reaches 2, and only for the 1825 edition, on a Utica bookseller's list.
+3. *View of the Hebrews* reaches 2 for both editions, on central New York evidence: a Utica review of
+the 1823 edition (May 1825) and a Utica bookseller's list for the 1825 edition (February 1826).
 This settles nothing about borrowing. Josephus was one of the most widely owned books in
 America, so local availability is what one would expect of it on general grounds. The score
 removes an objection (that the text could not have been to hand). It does not add evidence
@@ -338,13 +339,10 @@ that it was used.
 
 ### Worth buying or requesting
 
-- **Rick Grunder, *Mormon Parallels: A Bibliographic Source*** (2008,
-  CD-ROM, about 2,088 pp.; four-volume print 2018; reviewed at about $200). This is the
-  standard compilation of when and where proposed sources were available in the region, item
-  by item, with ad citations. It would directly test and probably extend every score above. It
-  is not free, so it was not used. Review:
-  https://interpreterfoundation.org/journal/finding-parallels-some-cautions-and-criticisms-part-one.
-  **Recommended.**
+- ~~Rick Grunder, *Mormon Parallels*~~: **bought by the owner 2026-11-06 (2014 PDF) and used**;
+  see "Grunder" below. The description first given here overstated it. It is a bibliography of
+  500 proposed parallels with occasional notes on local availability, not an item-by-item
+  availability register. For the 33 texts in the table it added one regional fact.
 - **Milton V. Backman Jr., *Joseph Smith's First Vision*, 2nd ed. (Bookcraft, 1980)**, pp. 48-49
   describes Strong's September 1818 stock. **No longer needed**: the 1818 page itself has been
   read on the scan (see "Follow-up").
@@ -430,3 +428,75 @@ for those two lists the absence is a real result.
   archive.
 - The *Palmyra Reflector* (1829-1830).
 - The date of the Manchester Josephus accession (OCHS withdrawal book).
+
+### Grunder, *Mormon Parallels* (2014 PDF), checked against the table (2026-11-06)
+
+**Source and handling.** The owner bought Rick Grunder, *Mormon Parallels: A Bibliographic
+Source* (2014 PDF, 2,307 pp.). It is held privately: `data/private/access/`, checksum in
+`data/manifests/access-private.jsonl`. Its text was extracted to `data/corpus/grunder/` for
+local searching only; that folder is outside git and is never published. Citations here use
+Grunder's own form, *MP n* for entry n and *MP p. n* for a page; book pages equal PDF pages in
+this edition. Nothing is quoted beyond a short phrase.
+
+**Method.** The table's 33 texts and the five named sources were each looked up in his
+"Bibliographic Table of Contents" (MP pp. 2091-2148, 500 entries). Each matching entry was then
+searched for Palmyra, Manchester, Canandaigua, Harmony, Fayette, Grandin, the local papers,
+bookstores, libraries and advertising. The whole book was also searched for every candidate
+title within about 400 characters of a local place name. Where his primary citation is a paper
+we hold, it was checked on our page image. Otherwise it was checked on a public scan where one
+exists.
+
+**What he covers, and what he adds.**
+
+| Our text | Grunder | What he documents about local availability | Checked |
+| --- | --- | --- | --- |
+| *View of the Hebrews*, 1823 | MP 398 (pp. 1619-20) | **A long, favourable review in *The Utica Christian Repository* 4:5 (May 1825), pp. 143-49**, from William Williams's Utica press. He notes Utica was a canal trip from Palmyra | **Yes**, on the Internet Archive scan (https://archive.org/details/sim_utica-christian-repository_1825-05_4_5): the heading gives "12mo. pp. 183", i.e. the 1823 edition. **Rescored 1 to 2** |
+| *View of the Hebrews*, 1825 | MP 399 (pp. 1621-29) | Edition history only; no New York sale. Our Utica notice of Feb 1826 is not in Grunder | n/a |
+| Josephus (14 rows) | MP 203 (pp. 796-97), the Borradaile New York 1823-24 edition, which is our `institutional_books:HW3CRW` | The Manchester library set (from Paul, accessions 181-86). He judges it unlikely the Smiths used that set. Nothing on Palmyra sale | Same as ours. Our 1822-1829 newspaper offers go beyond him |
+| *The Late War* (1816, 1819) | MP 193 (pp. 724-71) | Publishing history: 1816; 1817 as *The Historical Reader*; fourteen 1819 issues, eight of them titled *The Historical Reader*; none after 1819. Treated as a **stylistic** parallel. No copy, sale or ad near Palmyra | **Does not settle Hunt vs Blake.** "Historical Reader" occurs twice in the whole book, both on p. 724, and never with Palmyra |
+| Spalding manuscript | MP 410 (pp. 1694-95) | Unpublished until 1885; the theory first printed by Hurlbut and Howe, 1834 | Agrees with our 0 |
+| Ethan Smith, *Dissertation* (1811) | MP 395 (p. 1610) | Widely used; advertised by booksellers as "Smith on the Prophecies". No New York venue named | That short title returns no hit in our four local papers' OCR (not a negative) |
+| Ethan Smith, *Treatise* | MP 397 (p. 1613) | Second edition advertised on the back board of *View of the Hebrews* (1823). No New York venue | n/a |
+| Ethan Smith, *Death of God's Chosen* | MP 394 | None | n/a |
+| Ethan Smith, *Episcopacy Examined*; Newburyport sermon | His short-list of Smith's works, MP pp. 1627-28, marked not analysed | None | n/a |
+| Priest, *Wonders of Nature and Providence* (reprints *View of the Hebrews* ch. 3) | MP 341 (p. 1323) | The Manchester holding (Paul no. 208); he warns against reading it as evidence of use | Same as ours |
+| *Ontario Phoenix*, *Lake Light* | MP p. 688 (in another entry) | Phelps & Bloomer's *Phoenix* at Canandaigua from 30 Apr 1828; Bloomer out 16 Dec 1829 | Consistent with our 3 and 2 |
+| *First Book of Napoleon*, Fox *Journal*, Blake *Biblical Reader*, Simpson *Sacred Literature*, Nayler, Bayly | Not among his 500 entries (his only Simpson, MP 386, is another work) | n/a | n/a |
+
+**His primary citations to papers we hold.** For our 33 texts, none of his citations is to the
+*Wayne Sentinel*, *Palmyra Register*, *Palmyra Herald*, *Lake Light* or *Ontario Phoenix*. His
+two *Herald* entries (MP 300, 30 Oct 1822; MP 301, 24 Sep 1823) describe local bookstore ads
+that name no candidate text. MP 300 was checked on our image: the Canandaigua Book-Store of
+J. D. Bemis & Co., 30 Oct 1822 p2, lists classes of books only. MP 301 falls after the end of
+our *Herald* run (12 Mar 1823).
+
+**Where we differ.**
+- **Josephus.** Grunder treats Josephus mainly as a source of themes and notes the Manchester
+  set. Our newspaper evidence shows Josephus *offered for sale to Palmyra readers* in 1822,
+  1824, 1826 and 1828-29, including in Grandin's own stock. His remark that the Smiths
+  probably did not see the library set is a judgement about use. The table makes no such
+  judgement either way.
+- **The Late War.** Grunder's treatment rests on style, not access. For access, we have only
+  the unassigned Palmyra "Historical Reader" ads, so the score stays 1.
+
+**Net change to the table:** one rescore, *View of the Hebrews* 1823 from 1 to 2. Counts are now
+3: 15, 2: 3, 1: 9, 0: 6. Every row's `evidence` now says what Grunder adds, or that he does not
+treat the text.
+
+**The facts-only list of his sources: `data/access/grunder_sources.csv`.** One row per entry (500).
+- Columns: entry number and citation, start page, author, a short title (at most about 15
+  words), the year of the edition he describes, `imprint_region`, and the catalog match fields.
+- `imprint_region` is a place among Palmyra, Canandaigua, Manchester, Geneva, Lyons and
+  Rochester found in the imprint. It is approximate (39 entries).
+- Catalog matching:
+  - `in_catalog = yes` means an author surname plus title-word match in
+    `data/catalog/catalog.parquet` (139 entries: 105 at the same year, 34 at another).
+  - `possible` means a title-only phrase match, mostly periodicals and almanacs (32).
+  - `no` means not found (329).
+  - The catalog stops at 1830, and 170 entries are dated after 1830 or carry no year (330 are
+    1830 or earlier, 124 of them firm catalog matches), so `no` often reflects that cutoff, or
+    an item that was never a book, such as a manuscript letter.
+- `in_access_table` links the 8 entries that correspond to rows of the access table.
+- Titles and years are bibliographic facts. No commentary or quotation from Grunder is in the
+  file. The parse and match code was run from a scratch script and is described in
+  `data/access/SOURCES.md`; it is not yet in a pipeline package.
