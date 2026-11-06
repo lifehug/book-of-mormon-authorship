@@ -2,7 +2,7 @@
  "config_sha256": "a5dc48d5222f0b9a20db7fb8c3bb2257b51c59722ee57e8ff176daed34574e0b",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "71bf101bf64802daec68de7a182cb16eea82c49e",
+ "git_commit": "af80075ae9cb7deb62e0b131ed214aebba30de3f",
  "methods": {
   "general_imposters": {
    "closed_set": 0.8333333333333334,
@@ -30,12 +30,68 @@
    "passes": false,
    "note": "its own 'none' answer; unchanged"
   },
+  "alm_base": {
+   "closed_set": 0.990909090909091,
+   "threshold": 0.13871330618858344,
+   "open_set_fpr": 0.38181818181818183,
+   "tests": 110,
+   "open_set_fpr_original": 0.045454545454545456,
+   "passes": false
+  },
+  "alm_base_v1": {
+   "closed_set": 0.9363636363636364,
+   "threshold": -0.4226242412220348,
+   "open_set_fpr": 0.4727272727272727,
+   "tests": 110,
+   "open_set_fpr_original": 0.06363636363636363,
+   "passes": false
+  },
+  "alm_base_v2": {
+   "closed_set": 0.9090909090909091,
+   "threshold": -4.113979327678677,
+   "open_set_fpr": 0.13636363636363635,
+   "tests": 110,
+   "open_set_fpr_original": 0.05454545454545455,
+   "passes": false
+  },
+  "alm_base_v3": {
+   "closed_set": 0.8444444444444444,
+   "threshold": 0.7285000000000003,
+   "open_set_fpr": 0.7166666666666667,
+   "tests": 180,
+   "open_set_fpr_original": 0.0,
+   "passes": false
+  },
   "alm_pilot": {
    "closed_set": 0.9363636363636364,
    "threshold": 0.16823240041732795,
    "open_set_fpr": 0.4727272727272728,
    "tests": 110,
    "open_set_fpr_original": 0.05454545454545454,
+   "passes": false
+  },
+  "alm_pilot_v1": {
+   "closed_set": 0.9363636363636364,
+   "threshold": -0.2650033560666171,
+   "open_set_fpr": 0.45454545454545453,
+   "tests": 110,
+   "open_set_fpr_original": 0.06363636363636363,
+   "passes": false
+  },
+  "alm_pilot_v2": {
+   "closed_set": 0.9,
+   "threshold": -4.031901609897613,
+   "open_set_fpr": 0.2818181818181818,
+   "tests": 110,
+   "open_set_fpr_original": 0.06363636363636363,
+   "passes": false
+  },
+  "alm_pilot_v3": {
+   "closed_set": 0.8388888888888889,
+   "threshold": 0.9195000000000001,
+   "open_set_fpr": 0.6888888888888889,
+   "tests": 180,
+   "open_set_fpr_original": 0.0,
    "passes": false
   }
  }
