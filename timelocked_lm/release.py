@@ -33,6 +33,7 @@ OUT = Path("data/corpus/timelocked_lm/release")
 TOKENIZER = Path("data/timelocked_lm/tokenizer.json")
 EOT = "<|endoftext|>"
 CARD = Path(__file__).with_name("model_card.md")
+TOKEN = Path.home() / ".config/huggingface/token-personal"
 
 
 def _native(size: str) -> tuple[GPT, dict]:
@@ -150,7 +151,7 @@ def upload(size: str, repo: str) -> int:
     for need in ("README.md", "model.safetensors", "tokenizer.json", "loss_curves.csv"):
         if not (dest / need).exists():
             raise SystemExit(f"{dest / need} missing; run convert and card first")
-    token = (Path.home() / ".config/huggingface/token").read_text().strip()
+    token = TOKEN.read_text().strip()  # the owner's personal account (BOM-67), not etherfuse
     api = HfApi(token=token)
     api.create_repo(repo, repo_type="model", private=False, exist_ok=True)
     api.upload_folder(folder_path=str(dest), repo_id=repo, repo_type="model",
