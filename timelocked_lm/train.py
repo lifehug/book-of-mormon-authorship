@@ -166,7 +166,8 @@ def _save(path: Path, state: dict) -> None:
 
 
 def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes: float,
-          lr_scale: float = 1.0, reset_optimizer: bool = False) -> int:  # fmt: skip
+          lr_scale: float = 1.0, reset_optimizer: bool = False,
+          qk_norm: bool | None = None) -> int:  # fmt: skip
     cfg = load_config()
     t = cfg["timelocked_lm"]
     from tokenizers import Tokenizer
@@ -185,6 +186,8 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
             torch.cuda.set_device(device)
     lead = rank == 0
     torch.manual_seed(derive_seed(f"{t['train_seed']}:{size}", cfg) % 2**31)
+    if qk_norm is not None:  # stability tests: force QK-norm on or off for any size
+        shape = {**shape, "qk_norm": qk_norm}
     model = GPT(vocab, t["context_length"], **shape).to(device)
     # "cuda:N" under torchrun: a test of == "cuda" left the 1B's first run in fp32, 10x slower
     ctx = (torch.autocast("cuda", dtype=torch.bfloat16) if device.startswith("cuda")
@@ -296,6 +299,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--checkpoint-minutes", type=float, default=20)
     ap.add_argument("--lr-scale", type=float, default=1.0, help="recovery only; documented if used")
     ap.add_argument("--reset-optimizer", action="store_true", help="recovery: fresh Adam state")
+    ap.add_argument("--qk-norm", dest="qk_norm", action="store_const", const=True, default=None,
+                    help="stability tests: QK-norm on for any size")  # fmt: skip
     a = ap.parse_args(argv)
     return train(
         a.size,
@@ -305,6 +310,7 @@ def main(argv: list[str] | None = None) -> int:
         a.checkpoint_minutes,
         a.lr_scale,
         a.reset_optimizer,
+        a.qk_norm,
     )
 
 
