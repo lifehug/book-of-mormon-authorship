@@ -147,7 +147,8 @@ def _encode(tok, words: list[str]) -> list[int]:
 def _base(size: str, cfg: dict) -> GPT:
     t = cfg["timelocked_lm"]
     sh = t[f"{size}_shape"]
-    m = GPT(t["vocab_size"], t["context_length"], sh["layers"], sh["width"], sh["heads"])
+    m = GPT(t["vocab_size"], t["context_length"], sh["layers"], sh["width"], sh["heads"],
+            sh.get("qk_norm", False))  # fmt: skip
     m.load_state_dict(torch.load(RUNS / size / "model.pt", map_location="cpu"))
     return m
 

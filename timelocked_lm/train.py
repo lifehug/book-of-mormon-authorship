@@ -41,10 +41,15 @@ TINY = {"layers": 2, "width": 128, "heads": 4}
 
 
 class Block(nn.Module):
-    def __init__(self, width: int, heads: int):
+    def __init__(self, width: int, heads: int, qk_norm: bool = False):
         super().__init__()
         self.heads = heads
         self.ln1 = nn.LayerNorm(width, bias=False)
+        # QK-norm (optional; off for the 125M and 297M): layer-normalise each head's queries and
+        # keys so attention logits cannot grow without bound, the usual cause of late loss spikes
+        # at ~1B parameters (the 1B's run, 2026-11-06/07)
+        self.qn = nn.LayerNorm(width // heads, bias=False) if qk_norm else None
+        self.kn = nn.LayerNorm(width // heads, bias=False) if qk_norm else None
         self.qkv = nn.Linear(width, 3 * width, bias=False)
         self.proj = nn.Linear(width, width, bias=False)
         self.ln2 = nn.LayerNorm(width, bias=False)
@@ -55,17 +60,20 @@ class Block(nn.Module):
         b, t, c = x.shape
         q, k, v = self.qkv(self.ln1(x)).split(c, dim=2)
         q, k, v = (z.view(b, t, self.heads, c // self.heads).transpose(1, 2) for z in (q, k, v))
+        if self.qn is not None:
+            q, k = self.qn(q), self.kn(k)
         y = F.scaled_dot_product_attention(q, k, v, is_causal=True)
         x = x + self.proj(y.transpose(1, 2).reshape(b, t, c))
         return x + self.out(F.gelu(self.fc(self.ln2(x))))
 
 
 class GPT(nn.Module):
-    def __init__(self, vocab: int, context: int, layers: int, width: int, heads: int):
+    def __init__(self, vocab: int, context: int, layers: int, width: int, heads: int,
+                 qk_norm: bool = False):  # fmt: skip
         super().__init__()
         self.tok = nn.Embedding(vocab, width)
         self.pos = nn.Embedding(context, width)
-        self.blocks = nn.ModuleList(Block(width, heads) for _ in range(layers))
+        self.blocks = nn.ModuleList(Block(width, heads, qk_norm) for _ in range(layers))
         self.ln = nn.LayerNorm(width, bias=False)
         self.head = nn.Linear(width, vocab, bias=False)
         self.head.weight = self.tok.weight  # tied

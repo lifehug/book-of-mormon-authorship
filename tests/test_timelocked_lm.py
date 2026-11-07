@@ -37,3 +37,14 @@ def test_helpers():
     assert _held_out("x:1", 7, 0.5) == _held_out("x:1", 7, 0.5)
     share = sum(_held_out(f"x:{i}", 7, 0.005) for i in range(100000)) / 100000
     assert 0.004 < share < 0.006
+
+
+def test_qk_norm_is_optional_and_trains():
+    """QK-norm (for a restarted 1B or a mid size) adds per-head norms; off by default."""
+    plain = GPT(100, 32, 2, 64, 4)
+    qk = GPT(100, 32, 2, 64, 4, qk_norm=True)
+    assert len(qk.state_dict()) == len(plain.state_dict()) + 4  # q and k norm per block
+    x = torch.randint(0, 100, (2, 16))
+    loss = qk(x[:, :-1], x[:, 1:])
+    loss.backward()
+    assert torch.isfinite(loss) and all(p.grad is not None for p in qk.parameters())
