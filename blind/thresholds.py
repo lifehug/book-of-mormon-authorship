@@ -14,6 +14,11 @@ rate ``benchmark.max_open_set_fpr``). The thresholds come from:
   true candidate's margin on its own windows, negatives each window's largest margin of any other
   candidate (on control windows, of any candidate). A size not yet validated gets ``null``.
 
+Beside each 5% threshold, a **ladder** (owner, 2026-11-07: objective data, not one rule): for each
+false-match rate in ``blind.fpr_ladder`` the match threshold on the same negatives, with the
+false-match and true-match rates it actually has on the benchmark (ties make them differ from the
+nominal rate). ``rung`` gives the lowest rate at which a score counts as a match.
+
 No Book of Mormon text is read. The file is committed before the blind run (6.1).
 
 Usage::
@@ -38,6 +43,31 @@ def calibrate(pos: list[float], neg: list[float], rate: float) -> dict:
     from eval.benchmark import calibrate_gi
 
     return {**calibrate_gi(pos, neg, rate), "positives": len(pos), "negatives": len(neg)}
+
+
+def ladder(pos: list[float], neg: list[float], rates: list[float]) -> list[dict]:
+    """For each nominal false-match rate: the threshold (the 1 - rate quantile of the negatives)
+    and the rates a score at or above it actually has on the benchmark."""
+    import numpy as np
+
+    p, n = np.asarray(pos, dtype=float), np.asarray(neg, dtype=float)
+    out = []
+    for r in sorted(rates):
+        t = float(np.quantile(n, 1 - r))
+        out.append({"rate": r, "threshold": t, "false_match": float(np.mean(n >= t)),
+                    "true_match": float(np.mean(p >= t)) if len(p) else None})  # fmt: skip
+    return out
+
+
+def rung(score: float, steps: list[dict]) -> dict | None:
+    """The lowest rung at which ``score`` counts as a match (at or above its threshold): nominal
+    rate, threshold, and the false- and true-match rates it really has on the benchmark (ties can
+    make the real false-match rate higher than the nominal: General Imposters' 1%, 5% and 10% rungs
+    share the threshold 1.0). None if it matches at no rung."""
+    for st in sorted(steps, key=lambda st: st["rate"]):
+        if score >= st["threshold"]:
+            return st
+    return None
 
 
 def call(score: float, th: dict, rule: str = "registered") -> str:
@@ -69,7 +99,7 @@ def alm_scores(recs: list[dict], kinds: dict[str, str]) -> tuple[list[float], li
 SIZES = ("pilot", "base", "mid")  # the 1B was dropped for a 590M (Amendment 39)
 
 
-def alm_threshold(size: str, rate: float) -> dict | None:
+def alm_threshold(size: str, rate: float, rates: list[float]) -> dict | None:
     cand = BENCH / f"alm_candidates_{size}.json"
     if not cand.exists():
         return None  # BOM-28's candidate models not validated at this size yet
@@ -77,7 +107,7 @@ def alm_threshold(size: str, rate: float) -> dict | None:
     plan = json.loads((BENCH / "alm_candidates_plan.json").read_text())
     kinds = {u["key"]: u["kind"] for u in plan["units"]}
     pos, neg = alm_scores(d["records"], kinds)
-    return {**calibrate(pos, neg, rate), "source": cand.name}
+    return {**calibrate(pos, neg, rate), "ladder": ladder(pos, neg, rates), "source": cand.name}
 
 
 def run(sizes: list[str]) -> int:
@@ -85,18 +115,27 @@ def run(sizes: list[str]) -> int:
 
     cfg = load_config()
     rate = cfg["benchmark"]["max_open_set_fpr"]
+    rates = cfg["blind"]["fpr_ladder"]
     gi = json.loads((BENCH / "thresholds.json").read_text())
+    bench = json.loads((BENCH / "benchmark.json").read_text())
+    grecs = [r for rs in bench["records"].values() for r in rs]
     style = json.loads((BENCH / "style_embed.json").read_text())
     srecs = [r for rs in style["records"].values() for r in rs]
-    th = {"general_imposters": {**gi["general_imposters"], "source": "thresholds.json"},
+    spos = [r["positive"] for r in srecs]
+    sneg = [r["open_negative"] for r in srecs if r["open_negative"] is not None]
+    th = {"general_imposters": {**gi["general_imposters"], "source": "thresholds.json",
+                                "ladder": ladder([r["gi_positive"] for r in grecs
+                                                  if r.get("gi_positive") is not None],
+                                                 [r["gi_open_negative"] for r in grecs
+                                                  if r.get("gi_open_negative") is not None],
+                                                 rates)},
           "ensc": gi["ensc"],
-          "style": {**calibrate([r["positive"] for r in srecs],
-                                [r["open_negative"] for r in srecs
-                                 if r["open_negative"] is not None], rate),
+          "style": {**calibrate(spos, sneg, rate), "ladder": ladder(spos, sneg, rates),
                     "source": "style_embed.json"}}  # fmt: skip
-    th["alm"] = {z: alm_threshold(z, rate) for z in sizes}
+    th["alm"] = {z: alm_threshold(z, rate, rates) for z in sizes}
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({**stamp(), "sizes": sizes, "rate": rate, "thresholds": th},
+    OUT.write_text(json.dumps({**stamp(), "sizes": sizes, "rate": rate, "fpr_ladder": rates,
+                               "thresholds": th},
                               indent=1) + "\n")  # fmt: skip
     shown = {k: v for k, v in th.items() if k != "alm"} | {
         f"alm_{z}": v for z, v in th["alm"].items()}  # fmt: skip

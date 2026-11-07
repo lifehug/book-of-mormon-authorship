@@ -539,6 +539,9 @@ blind:
   decoy_pool:
     candidates: [Ethan Smith, Gilbert J. Hunt, Oliver Cowdery, Sidney Rigdon, Parley P. Pratt, W. W. Phelps, Solomon Spalding]
     controls: [data/controls/pseudo_biblical_primary.jsonl, data/controls/history.jsonl, data/controls/general_prose.jsonl]
+  # owner, 2026-11-07: report the blind run as objective data, the false-match level at which each
+  # chunk would match each candidate, not one rule's call (Amendment 33, ladder paragraph)
+  fpr_ladder: [0.01, 0.05, 0.10, 0.20, 0.30, 0.50]
 
 synthesis:
   # Amendment 34 (docs/synthesis-plan.md): BOM-35

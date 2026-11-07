@@ -120,6 +120,23 @@ frozen code. This needs the owner's agreement before it is filed.
 GI from `thresholds.json`, style from `style_embed.json`, ALM margins from the candidates' held-out
 windows at each size, `alm_candidates_<size>.json`), committed before the run. Draft Amendment 33 records the scorers' unregistered choices.
 
+## The false-match ladder: objective data beside the rule (owner, 2026-11-07)
+
+Every output carries both 6.1 calls (the registered one, a match only above the 5% threshold, and
+the achievable one, at or above it). Beside them, unblinding reports a ladder, so no single rule
+decides what is shown: for General Imposters, the style embeddings and each size's authorial
+models, the benchmark negatives give a match threshold at each false-match rate in
+`blind.fpr_ladder` (1%, 5%, 10%, 20%, 30%, 50%), stored in `data/blind/thresholds.json` with the
+false- and true-match rates each threshold really has on the benchmark (ties make them differ from
+the nominal rate: General Imposters' 1%, 5% and 10% rungs share the threshold 1.0, which really
+lets 16.7% of negatives through). For every Book of Mormon chunk and candidate (its best unit),
+`blind.unblind` gives the lowest rung at which it counts as a match, e.g. "matches Ethan Smith at
+the 20% rung (21% real false matches), not at 10%"; per half and candidate, how many chunks match
+at or below each rung; and, beside them, the decoys read the same way: candidate decoys, the rung
+at which their own candidate matches and whether another candidate matches as low; control decoys,
+the lowest rung at which any candidate matches. Scores are not recomputed; the ladder only reads
+them. The synthesis (`synth.model`) is unchanged and uses the registered calls.
+
 ## Every size, side by side (owner, 2026-11-06; Amendment 37)
 
 Every model size runs every model-based test and the sizes are reported side by side; none is

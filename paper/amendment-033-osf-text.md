@@ -1,12 +1,10 @@
-# Amendment 33 (DRAFT, not filed): the blind run's per-chunk scorers and 6.1 thresholds (BOM-32)
+# Amendment 33: the blind run's per-chunk scorers, 6.1 thresholds, both rules and the ladder (BOM-32)
 
-*Draft 2026-11-06. Evidence: `docs/blind-run-plan.md`, `classic/blind_score.py`,
-`style_embed/blind_score.py`, `alm/blind_score.py`, `blind/thresholds.py`. File before anything is
-sealed or scored.*
+*Filed 2026-11-07. Evidence: `docs/blind-run-plan.md`, `blind/`, the method scorers.*
 
 ---
 
-**Amendment 33, filed [date], before anything is sealed or any Book of Mormon text is scored.**
+**Amendment 33, filed 2026-11-07 (after sealing, before any sealed text is scored), before anything is sealed or any Book of Mormon text is scored.**
 It fixes how each validated attribution method scores a sealed chunk, which section 8 and 6.1 leave
 open. Decision rules are unchanged.
 
@@ -48,7 +46,7 @@ candidate's margin on its own windows; negatives: each window's largest margin o
 candidate). Written to `data/blind/thresholds.json` and committed before the blind run.
 
 
-**[Choose one at filing, after the 1B benchmark; owner's decision of 2026-11-06.]**
+**Both readings are recorded (owner's decision of 2026-11-07), post hoc as to (b): (a) and (b) below are computed for every chunk and reported side by side; neither replaces the other.**
 (a) If every method family that the working model affects reaches 6.1's 5% rate on the benchmark,
 6.1 and 6.2 stand as registered.
 (b) Otherwise, **post hoc** (decided after the benchmark results, before any Book of Mormon text is
@@ -57,3 +55,11 @@ embeddings (their match thresholds are 1.0, the largest possible score). Each me
 *match* when its score reaches its calibrated threshold (at or above, not strictly above), and the
 false-match rate it actually achieves on the benchmark is reported beside every call. 6.2's
 two-family rule is unchanged. The registered reading is reported beside it.
+
+**The false-match ladder (owner's decision, 2026-11-07).** Beside 6.1's calls, every verification
+method is also reported on a ladder of false-match rates (1%, 5%, 10%, 20%, 30%, 50%; config
+`blind.fpr_ladder`). Each rung's threshold is the matching quantile of the method's benchmark
+negatives, reported with the false- and true-match rates it actually has on the benchmark. For
+each Book of Mormon chunk and candidate the lowest rung at which it counts as a match is given,
+with counts per half, and the decoys are read on the same ladder. This adds reported detail only;
+no decision rule changes, and no score is recomputed.

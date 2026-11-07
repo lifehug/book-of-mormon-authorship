@@ -84,6 +84,80 @@ VIEWS = {
 }
 
 
+# method -> record -> verification scores by unit (higher counts toward a match), for the ladder
+LADDER = {
+    "classic": lambda r: r["general_imposters"],
+    "style": lambda r: r["general_imposters"],  # GI on the style vectors
+    "alm": lambda r: r["margins"],  # best control model minus candidate model
+}
+
+
+def ladder_steps(method: str, size: str | None, thresholds: dict) -> list[dict] | None:
+    th = {"classic": thresholds.get("general_imposters"), "style": thresholds.get("style"),
+          "alm": (thresholds.get("alm") or {}).get(size) if size else None}.get(method)  # fmt: skip
+    return th.get("ladder") if th else None
+
+
+def ladder_report(per: dict[str, dict], score_of, steps: list[dict], key: dict[str, dict],
+                  units: dict[str, str], split: dict[str, str]) -> dict:  # fmt: skip
+    """Owner, 2026-11-07: objective data. For every id and candidate (its best unit), the lowest
+    rung at which it counts as a match. Book of Mormon chunks: per chunk, and per half and
+    candidate the number of chunks matching at or below each rung. Decoys, beside them: candidate
+    decoys, the rung at which their true candidate matches and whether another candidate matches
+    at the same rung or lower; control decoys, the lowest rung at which any candidate matches
+    (a false match). Rungs carry their real benchmark false- and true-match rates."""
+    from blind.thresholds import rung
+
+    rates = [st["rate"] for st in sorted(steps, key=lambda st: st["rate"])]
+    table = [{k: st[k] for k in ("rate", "threshold", "false_match", "true_match")}
+             for st in sorted(steps, key=lambda st: st["rate"])]  # fmt: skip
+
+    def best(scores: dict[str, float]) -> dict[str, float]:
+        out: dict[str, float] = {}
+        for u, v in scores.items():
+            c = units.get(u)
+            if c is not None and (c not in out or v > out[c]):
+                out[c] = float(v)
+        return out
+
+    def counts(rs: list[float | None]) -> dict[str, int]:
+        return {**{str(r): sum(1 for x in rs if x is not None and x <= r) for r in rates},
+                "none": sum(1 for x in rs if x is None)}  # fmt: skip
+
+    chunks: dict[str, dict] = {}
+    by_half: dict[str, dict[str, list]] = {}
+    cand_decoys, control_decoys = [], []
+    for i, rec in per.items():
+        k = key.get(i)
+        if k is None:
+            continue
+        sc = best(score_of(rec))
+        rg = {c: rung(v, steps) for c, v in sc.items()}
+        lowest = {c: (st["rate"] if st else None) for c, st in rg.items()}
+        if k["kind"] == "bom":
+            chunks[k["chunk_id"]] = {c: ({"rate": st["rate"], "false_match": st["false_match"]}
+                                         if st else None) for c, st in rg.items()}  # fmt: skip
+            half = split.get(k["chunk_id"], "unsplit")
+            for c, r in lowest.items():
+                by_half.setdefault(half, {}).setdefault(c, []).append(r)
+        elif k["author"].startswith("control:"):
+            hits = [r for r in lowest.values() if r is not None]
+            control_decoys.append(min(hits) if hits else None)
+        elif k["author"] in lowest:
+            own = lowest[k["author"]]
+            rival = [r for c, r in lowest.items() if c != k["author"] and r is not None]
+            cand_decoys.append({"own": own, "rival_at_or_below": own is not None and any(
+                r <= own for r in rival)})  # fmt: skip
+    return {"ladder": table, "chunks": chunks,
+            "by_half": {h: {c: counts(rs) for c, rs in cs.items()} for h, cs in by_half.items()},
+            "decoys": {"candidate": {"decoys": len(cand_decoys),
+                                     "own_match": counts([d["own"] for d in cand_decoys]),
+                                     "rival_at_or_below": sum(d["rival_at_or_below"]
+                                                              for d in cand_decoys)},
+                       "control": {"decoys": len(control_decoys),
+                                   "false_match": counts(control_decoys)}}}  # fmt: skip
+
+
 def unit_candidates(plan: dict) -> dict[str, str]:
     """Candidate unit key -> candidate name (BOM-28's plan; controls have no candidate)."""
     return {u["key"]: u["candidate"] for u in plan["units"] if u["kind"] == "candidate"}
@@ -172,7 +246,7 @@ def sweep_result(dist: Path, key: dict[str, dict], split: dict[str, str],
 
 
 def unblind(files: list[str], key: dict[str, dict], plan: dict, split: dict[str, str],
-            calibration: dict | None) -> dict:  # fmt: skip
+            calibration: dict | None, thresholds: dict | None = None) -> dict:  # fmt: skip
     """Every output file read against the key: per method (model-based ones per size,
     ``alm_<size>``) the raw Book of Mormon records by chunk (what ``synth.model`` reads) and, for
     each view, decoy accuracy and leave-one-candidate-out; the sweep's discovery-half result."""
@@ -199,6 +273,9 @@ def unblind(files: list[str], key: dict[str, dict], plan: dict, split: dict[str,
                         "leave_one_candidate_out": leave_one_out(norm, key)}  # fmt: skip
         if views:
             r["views"] = views
+        steps = ladder_steps(doc["method"], doc.get("size"), thresholds or {})
+        if steps and doc["method"] in LADDER:
+            r["ladder"] = ladder_report(per, LADDER[doc["method"]], steps, key, units, split)
         methods[name] = r
     return methods
 
@@ -219,7 +296,9 @@ def main(argv: list[str] | None = None) -> int:
     plan = json.loads(PLAN.read_text())
     cal_path = Path("data/sweep/calibration.json")
     cal = json.loads(cal_path.read_text()) if cal_path.exists() else None
-    res = {"seal": seal_doc, "methods": unblind(list(manifest["sha256"]), key, plan, split, cal)}
+    th = json.loads(Path("data/blind/thresholds.json").read_text())["thresholds"]
+    res = {"seal": seal_doc,
+           "methods": unblind(list(manifest["sha256"]), key, plan, split, cal, th)}  # fmt: skip
     (OUT / "unblinded.json").write_text(json.dumps(res, indent=1) + "\n")
     print(f"unblinded {len(res['methods'])} methods -> {OUT / 'unblinded.json'}")
     return 0
