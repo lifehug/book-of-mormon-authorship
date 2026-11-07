@@ -14,3 +14,8 @@ other setting is unchanged. Within ~230 steps the loss returned to its pre-spike
 gradient norm 0.3. The registered peak learning rate (Amendment 2) is therefore halved from step
 15,908 for the 1B only; the 125M and 297M models are unaffected. From now on the previous checkpoint
 is kept beside the latest. The 1B is reported with this history.
+
+**Addendum, 2026-11-07 00:35.** At half the rate the gradient norm rose again from step ~16,250
+(median ~800 by step 17,350) while the loss crept up (median 2.35 to 2.44). Training was resumed a
+second time from the step-15,909 checkpoint, again with fresh optimizer state, now with the
+schedule multiplied by 0.25. The degraded checkpoints (steps 16,403 and 16,942) are kept.

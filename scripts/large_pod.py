@@ -43,7 +43,7 @@ MANIFEST = ROOT / "data/manifests/timelocked_lm_tokens.jsonl"
 # 2026-11-07: a loss spike at step ~15,800 did not recover; training resumed from step 15,908 with
 # fresh optimizer state and half the learning rate (Amendment 38, post hoc). A later restart keeps
 # the half rate; it must not reset the optimizer again.
-LR_ARGS = "--lr-scale 0.5"
+LR_ARGS = "--lr-scale 0.25"
 
 
 def train_cmd() -> str:
