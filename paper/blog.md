@@ -2744,6 +2744,7 @@ Caveats: the photo check is an AI reading the images, not a human expert; the im
 
 ## Log
 
+- **2026-11-06.** BOM-29 closed: the transformer cross-check dates held-out text to 10 years on average (grammar model 23, word model 13) and, unlike the grammar model, is not fooled by Bible imitation (+1 year vs -53). The grammar model still decides H3; the Book of Mormon is dated in the blind run.
 - **2026-11-06.** Imitation test (classical half-weight, language models fooled); GPT-2 comparison (our period models: 0.9% wrong vs 5.5%, false matches 38% vs 86%); dictation evidence confirmed on the page photos (~9x misheard-word fixes, same scribe); access table final after the Palmyra and Canandaigua papers and Grunder (no named source advertised locally; Josephus sold from 1822); GitHub CI fixed (had failed on every push).
 - **2026-11-06.** BOM-33: bought Rick Grunder's *Mormon Parallels* (2014 PDF, 2,307 pages), the book the access review recommended. It is copyrighted, so it lives in the private data repo (Git LFS: 245 MB is over GitHub's 100 MB limit), with a public checksum and the steps to buy it in `docs/replication.md`.
 - **2026-11-06.** Timeline, revised after the owner asked which waits are real: only the 1B (Sat afternoon) and the sweep masking are physical waits; the rest is hours. Blind run Sunday; paper (BOM-36) can start ~Tue Nov 10. The first estimate padded each step to a day.
