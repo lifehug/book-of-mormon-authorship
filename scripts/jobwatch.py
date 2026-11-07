@@ -36,6 +36,7 @@ LOGS = [
     "jsp_images.log",
     "ontario.log",
     "qktest.log",
+    "mid_pod.out",
 ]
 BAD = re.compile(r"^EXIT|Traceback|Error|error:|FAILED|Killed")
 
@@ -78,7 +79,10 @@ def main(argv: list[str] | None = None) -> int:
     events = len(DRIVER.read_text().splitlines()) if DRIVER.exists() else 0
     size = {f: (ROOT / "logs" / f).stat().st_size if (ROOT / "logs" / f).exists() else 0
             for f in LOGS}  # fmt: skip
-    seen = {f: time.time() for f in LOGS}
+    # a stall counts from the log's own last change, not from this watcher's start: the monitor
+    # is re-armed every 30 min, which reset the clock and hid an hour-long hang (2026-11-07)
+    seen = {f: (ROOT / "logs" / f).stat().st_mtime if (ROOT / "logs" / f).exists() else time.time()
+            for f in LOGS}  # fmt: skip
     stalled: set[str] = set()
     last_driver = ""
     last_spike, spiking = 0.0, False
