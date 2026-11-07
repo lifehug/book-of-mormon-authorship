@@ -31,6 +31,7 @@ LOGS = [
     "candidates.log",
     "imitation.log",
     "mac_gpu.log",
+    "alm_mid.log",
 ]
 BAD = re.compile(r"^EXIT|Traceback|Error|error:|FAILED|Killed")
 
