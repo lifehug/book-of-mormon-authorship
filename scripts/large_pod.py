@@ -38,6 +38,7 @@ R = sp.R
 TOK = "data/corpus/timelocked_lm/tokens"
 OUT = "data/corpus/timelocked_lm/runs/large"
 SIZE = "large"
+MILESTONES = 0  # --milestone-steps for the training run (mid: 5,000)
 MANIFEST = ROOT / "data/manifests/timelocked_lm_tokens.jsonl"
 
 
@@ -53,7 +54,8 @@ def train_cmd() -> str:
     # fp32 by a bug since fixed). At 8 in bf16 the peak is 33.8 GB. Same 512-sequence step.
     return (f"cd {R} && tmux new-session -d -s train 'PYTORCH_CUDA_ALLOC_CONF=expandable_segments:"
             f"True torchrun --nproc_per_node={GPUS} -m "
-            f"timelocked_lm.train {SIZE} --out {R}/{OUT} --micro-batch 8 {LR_ARGS} 2>&1 | tee -a "
+            f"timelocked_lm.train {SIZE} --out {R}/{OUT} --micro-batch 8 {LR_ARGS} "
+            f"--milestone-steps {MILESTONES} 2>&1 | tee -a "
             "/workspace/train.out'")  # fmt: skip
 
 
@@ -255,16 +257,40 @@ def step(s: dict, issue: int, a) -> bool:
             if rc or rc2 or out2.split()[0] != sp.sha(home / f):
                 sp.log(f"fetch of {f} not verified; retrying")
                 return True
-        sp.event(s, f"**{SIZE} finished**; model home and verified in `{OUT}`.", issue)
+        if MILESTONES:  # the weights at every milestone, small enough to keep at home
+            (home / "milestones").mkdir(exist_ok=True)
+            rc, _ = sp.pw.sh(["rsync", "-rt", "--partial", "--include=*_model.pt", "--exclude=*",
+                              f"{sp.SSH}:{R}/{OUT}/milestones/", str(home / "milestones")],
+                             14400)  # fmt: skip
+            rc2, out2 = sp.remote(f"cd {R}/{OUT}/milestones && sha256sum *_model.pt")
+            for ln in out2.splitlines() if rc2 == 0 else []:
+                h, name = ln.split()
+                if not (home / "milestones" / name).exists() or sp.sha(home / "milestones" /
+                                                                       name) != h:  # fmt: skip
+                    rc = 1
+            if rc or rc2:
+                sp.log("milestone weights not verified; retrying")
+                return True
+        sp.event(s, f"**{SIZE} finished**; model home and verified in `{OUT}`"
+                    f"{' (with milestone weights)' if MILESTONES else ''}.", issue)  # fmt: skip
         s["phase"] = "cleanup"
     elif ph == "cleanup":
+        keep = f"{R}/{OUT}" if MILESTONES else ""  # the run stays (snapshots); the tokens go
+        if keep:
+            sp.remote(f"mv {keep} /workspace/run_{SIZE}")
         sp.remote(f"rm -rf {R}/data/corpus /workspace/runs /workspace/train.out /workspace/tok.sha")
         rc, out = sp.remote(f"ls {R}/data/corpus 2>/dev/null | wc -l")
         if rc != 0 or out.strip() != "0":
             return True
-        sp.pw.rest("DELETE", f"/pods/{s['pod']}")
-        sp.event(s, f"tokens deleted from the pod (checked); pod **terminated**. Est. spend "
-                    f"${sp.spend(s):.0f}.", issue)  # fmt: skip
+        if MILESTONES:  # full snapshots stay on the stopped pod until the owner decides
+            sp.pw.rest("POST", f"/pods/{s['pod']}/stop")
+            sp.event(s, f"tokens deleted from the pod (checked); pod **stopped**, not deleted: "
+                        f"its full milestone snapshots wait for the owner (keep, copy home, "
+                        f"or delete). Est. spend ${sp.spend(s):.0f}.", issue)  # fmt: skip
+        else:
+            sp.pw.rest("DELETE", f"/pods/{s['pod']}")
+            sp.event(s, f"tokens deleted from the pod (checked); pod **terminated**. Est. spend "
+                        f"${sp.spend(s):.0f}.", issue)  # fmt: skip
         s["phase"] = "done"
         sp.save(s)
         return False
@@ -282,7 +308,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--size", choices=["large", "mid"], default="large",
                     help="mid: the 590M that replaced the 1B (Amendment 39)")  # fmt: skip
     a = ap.parse_args(argv)
-    global GPUS, OUT, SIZE, LR_ARGS
+    global GPUS, OUT, SIZE, LR_ARGS, MILESTONES
     GPUS = a.gpus
     sp.PRICE = 3.99 * GPUS
     SIZE = a.size
@@ -290,6 +316,7 @@ def main(argv: list[str] | None = None) -> int:
     if SIZE != "large":  # its own state, pod name and ssh alias; its rate is in the config
         sp.STATE = ROOT / f"logs/{SIZE}_pod/state.json"
         sp.POD_NAME, sp.SSH, LR_ARGS = f"bom27-{SIZE}", f"{SIZE}pod", ""
+        MILESTONES = 5000
     sp.STATE.parent.mkdir(parents=True, exist_ok=True)
     s = json.loads(sp.STATE.read_text()) if sp.STATE.exists() else {"phase": "create"}
     while s["phase"] not in ("done", "failed", "capped"):

@@ -167,7 +167,7 @@ def _save(path: Path, state: dict) -> None:
 
 def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes: float,
           lr_scale: float = 1.0, reset_optimizer: bool = False,
-          qk_norm: bool | None = None) -> int:  # fmt: skip
+          qk_norm: bool | None = None, milestone: int = 0) -> int:  # fmt: skip
     cfg = load_config()
     t = cfg["timelocked_lm"]
     from tokenizers import Tokenizer
@@ -281,6 +281,16 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
                 _save(ck, {"model": model.state_dict(), "optimizer": opt.state_dict(),
                            "step": step})  # fmt: skip
             last_ck = time.time()
+        if lead and milestone and step % milestone == 0 and step < steps:
+            # milestones (owner, 2026-11-07): full state to roll back to or resume from, and the
+            # weights alone, small enough to keep at home, for diagnosis and training-path studies
+            ms = out / "milestones"
+            ms.mkdir(exist_ok=True)
+            _save(
+                ms / f"step{step:06d}.pt",
+                {"model": model.state_dict(), "optimizer": opt.state_dict(), "step": step},
+            )
+            torch.save(model.state_dict(), ms / f"step{step:06d}_model.pt")
     if lead:
         torch.save(model.state_dict(), out / "model.pt")
         print(f"done: {steps:,} steps -> {out / 'model.pt'}", flush=True)
@@ -299,6 +309,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--checkpoint-minutes", type=float, default=20)
     ap.add_argument("--lr-scale", type=float, default=1.0, help="recovery only; documented if used")
     ap.add_argument("--reset-optimizer", action="store_true", help="recovery: fresh Adam state")
+    ap.add_argument("--milestone-steps", type=int, default=0,
+                    help="also keep a full snapshot and the weights every N steps")  # fmt: skip
     ap.add_argument("--qk-norm", dest="qk_norm", action="store_const", const=True, default=None,
                     help="stability tests: QK-norm on for any size")  # fmt: skip
     a = ap.parse_args(argv)
@@ -311,6 +323,7 @@ def main(argv: list[str] | None = None) -> int:
         a.lr_scale,
         a.reset_optimizer,
         a.qk_norm,
+        a.milestone_steps,
     )
 
 
