@@ -12,6 +12,6 @@ Source: NYS Historic Newspapers, https://nyshistoricnewspapers.org/, title codes
 read through an ordinary Chrome session on the Mac mini (the site is Cloudflare-fronted; the
 browser passed its check by itself; nothing was bypassed), at the script's default pace.
 
-Coverage: the site holds only part of the run: 124 issues in 1824-1829 (a full weekly run would
-be about 300). The 1809-1823 years are not on the site, though secondary listings say so.
+Coverage: the site holds only part of the run: pages by year 1824 210, 1825 213, 1826 52, 1829 8
+(two issues); nothing for 1827-1828, so the run stops short of the dictation years. The 1809-1823 years are not on the site, though secondary listings say so.
 Checksums: `data/manifests/ontario_repository_text.jsonl`.
