@@ -12,7 +12,7 @@ check -> terminate. Stops the pod at the cap. Events go to the BOM-28 issue.
 
 Usage::
 
-    python scripts/alm_pod.py --issue 38 --files <list> [--size base|large --cap 15]
+    python scripts/alm_pod.py --issue 38 --files <list> [--size base|mid|large --cap 15]
 """
 
 from __future__ import annotations
@@ -154,7 +154,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--issue", type=int, required=True)
     ap.add_argument("--files", type=Path, required=True)
     ap.add_argument("--cap", type=float, default=15.0)
-    ap.add_argument("--size", choices=["base", "large"], default="base")
+    ap.add_argument("--size", choices=["base", "mid", "large"], default="base")
     a = ap.parse_args(argv)
     configure(a.size)
     sp.STATE.parent.mkdir(parents=True, exist_ok=True)

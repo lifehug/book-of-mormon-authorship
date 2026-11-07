@@ -139,7 +139,7 @@ def alm(rows: list[dict], cfg: dict, size: str | None) -> dict:
     return {"ids": score(rows, cfg, size, th)}
 
 
-SIZES = ("pilot", "base", "large")
+SIZES = ("pilot", "base", "mid")  # the 1B was dropped for a 590M (Amendment 39)
 PER_SIZE = {"alm"}  # methods with one fine-tuned model set per size
 METHODS: dict[str, Callable] = {
     "classic": classic,

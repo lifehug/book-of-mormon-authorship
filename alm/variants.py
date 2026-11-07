@@ -14,7 +14,7 @@ V1 (stronger fine-tuning) is ``alm.benchmark --variant v1``. Here:
 
 Both are judged by ``alm.benchmark.decide`` (Amendment 22's rule). Usage::
 
-    python -m alm.variants v2|v3 pilot|base|large   # -> data/benchmark/alm_<size>_<variant>.json
+    python -m alm.variants v2|v3 <size>   # pilot|base|mid|large -> alm_<size>_<variant>.json
 """
 
 from __future__ import annotations
@@ -176,7 +176,7 @@ def v3(size: str) -> int:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("variant", choices=["v2", "v3"])
-    ap.add_argument("size", choices=["pilot", "base", "large"])
+    ap.add_argument("size", choices=["pilot", "base", "mid", "large"])
     ap.add_argument("--micro-batch", type=int, default=2, help="memory only; same update")
     a = ap.parse_args(argv)
     return v2(a.size, a.micro_batch) if a.variant == "v2" else v3(a.size)

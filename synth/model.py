@@ -77,7 +77,7 @@ def band_rates(pos: list[float], neg: list[float], th: dict, smooth: float) -> d
     return out
 
 
-SIZES = ("pilot", "base", "large")
+SIZES = ("pilot", "base", "mid")  # the 1B was dropped for a 590M (Amendment 39)
 
 
 def rates(sizes: list[str]) -> int:

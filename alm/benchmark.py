@@ -15,7 +15,7 @@ per author, so a rerun resumes at the next author.
 
 Usage::
 
-    python -m alm.benchmark pilot|base|large [--variant v1]   # -> data/benchmark/alm_<size>[_v1]
+    python -m alm.benchmark <size> [--variant v1]   # size pilot|base|mid|large -> alm_<size>[_v1]
 """
 
 from __future__ import annotations
@@ -283,7 +283,7 @@ def write(tag: str, recs_by: dict[str, list[dict]], cfg: dict, extra: dict) -> i
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("size", choices=["pilot", "base", "large"])
+    ap.add_argument("size", choices=["pilot", "base", "mid", "large"])
     ap.add_argument("--variant", choices=["v1"], default="", help="Amendment 23's V1")
     ap.add_argument("--micro-batch", type=int, default=2, help="memory only; same update")
     a = ap.parse_args(argv)

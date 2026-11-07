@@ -388,7 +388,7 @@ def report() -> int:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("cmd", choices=["build", "classic", "style", "alm", "report", "files"])
-    ap.add_argument("size", nargs="?", choices=["pilot", "base", "large"])
+    ap.add_argument("size", nargs="?", choices=["pilot", "base", "mid", "large"])
     ap.add_argument("--variant", choices=["v1", "v3"], default="")
     ap.add_argument("--micro-batch", type=int, default=8)
     a = ap.parse_args(argv)

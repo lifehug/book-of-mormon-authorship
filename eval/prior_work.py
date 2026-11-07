@@ -99,7 +99,7 @@ def _flat(by_task: dict[str, list[tuple[str, bool]]]) -> tuple[list[str], np.nda
     return keys, np.array([c for t in sorted(by_task) for _, c in by_task[t]], dtype=bool)
 
 
-SIZES = ("pilot", "base", "large")
+SIZES = ("pilot", "base", "mid")  # the 1B was dropped for a 590M (Amendment 39)
 
 
 def size_of(method: str) -> tuple[str, str] | None:

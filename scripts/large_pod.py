@@ -14,7 +14,7 @@ Events go to the Run status issue.
 
 Usage::
 
-    python scripts/large_pod.py --issue 75 [--gpus 8 --cap 650 --floor 25 --resume-at 100]
+    python scripts/large_pod.py --issue 75 [--size large|mid --gpus 8 --cap 650 --floor 25]
 """
 
 from __future__ import annotations
@@ -37,6 +37,7 @@ sp.PRICE = 3.99 * GPUS
 R = sp.R
 TOK = "data/corpus/timelocked_lm/tokens"
 OUT = "data/corpus/timelocked_lm/runs/large"
+SIZE = "large"
 MANIFEST = ROOT / "data/manifests/timelocked_lm_tokens.jsonl"
 
 
@@ -52,7 +53,7 @@ def train_cmd() -> str:
     # fp32 by a bug since fixed). At 8 in bf16 the peak is 33.8 GB. Same 512-sequence step.
     return (f"cd {R} && tmux new-session -d -s train 'PYTORCH_CUDA_ALLOC_CONF=expandable_segments:"
             f"True torchrun --nproc_per_node={GPUS} -m "
-            f"timelocked_lm.train large --out {R}/{OUT} --micro-batch 8 {LR_ARGS} 2>&1 | tee -a "
+            f"timelocked_lm.train {SIZE} --out {R}/{OUT} --micro-batch 8 {LR_ARGS} 2>&1 | tee -a "
             "/workspace/train.out'")  # fmt: skip
 
 
@@ -147,7 +148,7 @@ def step(s: dict, issue: int, a) -> bool:
         return True
     if ph == "create":
         create(s)
-        sp.event(s, f"1B pod `{s['pod']}` created (Secure, {GPUS} x H100, ${sp.PRICE:.2f}/h).",
+        sp.event(s, f"{SIZE} pod `{s['pod']}` created (Secure, {GPUS} x H100, ${sp.PRICE:.2f}/h).",
                  issue)  # fmt: skip
         s["phase"] = "setup"
     elif ph == "setup":
@@ -183,10 +184,10 @@ def step(s: dict, issue: int, a) -> bool:
         sp.remote(train_cmd())
         sp.pw.sh(["rsync", str(ROOT / "scripts/pod_selfstop.sh"), f"{sp.SSH}:/workspace/"])
         sp.remote(
-            "tmux new-session -d -s selfstop 'bash /workspace/pod_selfstop.sh >> "
+            f"tmux new-session -d -s selfstop 'SIZE={SIZE} bash /workspace/pod_selfstop.sh >> "
             "/workspace/selfstop.log 2>&1'"
         )  # stops the pod if the model sits uncollected
-        sp.event(s, "**1B training started** (48,931 steps).", issue)
+        sp.event(s, f"**{SIZE} training started** (48,931 steps).", issue)
         s["phase"] = "watch"
     elif ph == "watch":
         rc, out = sp.remote(f"tail -n 1 {R}/{OUT}/log.jsonl; grep val_loss {R}/{OUT}/log.jsonl | "
@@ -254,7 +255,7 @@ def step(s: dict, issue: int, a) -> bool:
             if rc or rc2 or out2.split()[0] != sp.sha(home / f):
                 sp.log(f"fetch of {f} not verified; retrying")
                 return True
-        sp.event(s, f"**1B finished**; model home and verified in `{OUT}`.", issue)
+        sp.event(s, f"**{SIZE} finished**; model home and verified in `{OUT}`.", issue)
         s["phase"] = "cleanup"
     elif ph == "cleanup":
         sp.remote(f"rm -rf {R}/data/corpus /workspace/runs /workspace/train.out /workspace/tok.sha")
@@ -278,10 +279,17 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--floor", type=float, default=25.0)
     ap.add_argument("--resume-at", type=float, default=100.0)
     ap.add_argument("--gpus", type=int, default=8, help="8 preferred; 4 when no 8-GPU pod is free")
+    ap.add_argument("--size", choices=["large", "mid"], default="large",
+                    help="mid: the 590M that replaced the 1B (Amendment 39)")  # fmt: skip
     a = ap.parse_args(argv)
-    global GPUS
+    global GPUS, OUT, SIZE, LR_ARGS
     GPUS = a.gpus
     sp.PRICE = 3.99 * GPUS
+    SIZE = a.size
+    OUT = f"data/corpus/timelocked_lm/runs/{SIZE}"
+    if SIZE != "large":  # its own state, pod name and ssh alias; its rate is in the config
+        sp.STATE = ROOT / f"logs/{SIZE}_pod/state.json"
+        sp.POD_NAME, sp.SSH, LR_ARGS = f"bom27-{SIZE}", f"{SIZE}pod", ""
     sp.STATE.parent.mkdir(parents=True, exist_ok=True)
     s = json.loads(sp.STATE.read_text()) if sp.STATE.exists() else {"phase": "create"}
     while s["phase"] not in ("done", "failed", "capped"):

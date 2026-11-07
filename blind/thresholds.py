@@ -64,7 +64,7 @@ def alm_scores(recs: list[dict], kinds: dict[str, str]) -> tuple[list[float], li
     return pos, neg
 
 
-SIZES = ("pilot", "base", "large")
+SIZES = ("pilot", "base", "mid")  # the 1B was dropped for a 590M (Amendment 39)
 
 
 def alm_threshold(size: str, rate: float) -> dict | None:

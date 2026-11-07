@@ -173,7 +173,7 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
 
     vocab = Tokenizer.from_file("data/timelocked_lm/tokenizer.json").get_vocab_size()
     shape = {"pilot": t["pilot_shape"], "base": t["base_shape"], "tiny": TINY,
-             "large": t.get("large_shape")}[size]  # fmt: skip
+             "mid": t.get("mid_shape"), "large": t.get("large_shape")}[size]  # fmt: skip
     device = "cuda" if torch.cuda.is_available() else "mps" if torch.mps.is_available() else "cpu"
     device = os.environ.get("TRAIN_DEVICE", device)  # smoke tests: force "cpu"
     # several GPUs under torchrun (Amendment 26): the same global batch and window order, split
@@ -235,7 +235,7 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
     last_ck, t0 = time.time(), time.time()
     while step < steps:
         for g in opt.param_groups:
-            g["lr"] = lr_at(step, steps, t) * lr_scale
+            g["lr"] = lr_at(step, steps, t) * lr_scale * t.get(f"{size}_lr_scale", 1.0)
         loss_sum = 0.0
         for a in range(accum):
             first = step * per_step + rank * per_rank + a * micro
@@ -289,7 +289,7 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("size", choices=("pilot", "base", "large", "tiny"))
+    ap.add_argument("size", choices=("pilot", "base", "mid", "large", "tiny"))
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--micro-batch", type=int, default=32, help="sequences per forward pass")
     ap.add_argument("--max-steps", type=int, default=None, help="smoke tests only")

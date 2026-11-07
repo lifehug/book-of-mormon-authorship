@@ -22,7 +22,7 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DRIVER = ROOT / "logs/large_pod/watch.log"
+DRIVER = ROOT / "logs/mid_pod/watch.log"  # the ~590M that replaced the 1B (Amendment 39)
 LOGS = [
     "sweep_mask.log",
     "sweep_chain.log",
@@ -42,8 +42,8 @@ BAD = re.compile(r"^EXIT|Traceback|Error|error:|FAILED|Killed")
 def spike() -> str | None:
     """The 1B's last 50 steps: a loss spike shows as a median gradient norm far above the ~0.5 of
     healthy training (2026-11-06: one ran ~450 steps before anyone saw it)."""
-    r = subprocess.run(["ssh", "-o", "ConnectTimeout=10", "largepod", "tail -n 50 /workspace/repo/"
-                        "data/corpus/timelocked_lm/runs/large/log.jsonl"],
+    r = subprocess.run(["ssh", "-o", "ConnectTimeout=10", "midpod", "tail -n 50 /workspace/repo/"
+                        "data/corpus/timelocked_lm/runs/mid/log.jsonl"],
                        capture_output=True, text=True, timeout=60)  # fmt: skip
     rows = []
     for ln in r.stdout.splitlines():
@@ -57,7 +57,7 @@ def spike() -> str | None:
     if gn > 10:
         last = rows[-1]
         return (
-            f"1B SPIKE: median grad norm {gn:.1f} over the last {len(rows)} steps "
+            f"mid SPIKE: median grad norm {gn:.1f} over the last {len(rows)} steps "
             f"(step {last['step']}, loss {last['loss']:.2f})"
         )
     return None
@@ -93,7 +93,7 @@ def main(argv: list[str] | None = None) -> int:
             for ln in lines[events:]:
                 body = ln[20:]  # without the timestamp: a retry loop repeats one line
                 if body != last_driver:
-                    print(f"1B: {ln[:300]}", flush=True)
+                    print(f"mid: {ln[:300]}", flush=True)
                 last_driver = body
             events = len(lines)
         for f in LOGS:
