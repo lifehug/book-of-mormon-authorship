@@ -9,11 +9,15 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 | Job | Where | Done (est.) | When it ends |
 | --- | --- | --- | --- |
-| BOM-27 1B training (`scripts/large_pod.py`, tmux `largepod`) | 4 x H100 pod `qmon0qov69hb7r` (started 2026-11-06 13:25; the pod stops itself if the finished model sits uncollected 3 h) | 2026-11-07 ~20:30 (loss spike at ~15,800 recovered with half the learning rate, Amendment 38) | `after_1b.sh` takes over |
+| **BOM-27 1B: PAUSED for the owner** (2026-11-07 01:00) | pod `qmon0qov69hb7r` stopped (disk kept); driver stopped | owner's choice: restart with stability fixes (~$500, over cap), drop it, or ~600M | see BOM-27 comment |
 | After the 1B (`scripts/after_1b.sh`, tmux `after1b`) | waits; then H100s | Sat night | 1B benchmark (primary, V1-V3) -> publish to `etherfuse/timelocked-1830-1b` -> 1B candidate models and 1B imitation in parallel -> `eval.imitation report` |
 | BOM-39 KJV masking of sweep blocks (tmux `sweepmask`) | Mac CPU | 2026-11-07 ~13:30 (2.5 min a batch) | `scripts/sweep_chain.sh` (tmux `sweepchain`): `sweep.index` tokens, mfw, embed, then `sweep.calibrate` -> write up BOM-39/47 |
 | BOM-29 transformer cross-check (tmux `bom29`) | Mac GPU | 2026-11-06 ~22:00 | write up beside the grammar model; close BOM-29; `mac_gpu_chain.sh` starts |
 | 125M tests | style imitation and V3 on the Mac (`macgpu`, done/ending); candidate models (tmux `candpodpilot`) and imitation primary + V1 (tmux `imitpilot`) moved to H100s after the Mac ran short of memory (owner, ~$5) | ~22:30 | `eval.imitation report`; 125M candidate validation |
+
+## Waiting on the owner
+
+- **The 1B** (BOM-27 comment): unstable after its loss spike even at a quarter rate. Everything else continues at 125M and 297M meanwhile; `after_1b.sh` still waits for a 1B model.
 
 ## Decided
 
