@@ -273,3 +273,30 @@ edition after edition, not separate findings.
 | 18 | Works (`institutional_books:HXIH8Y`) | 4 | 5 | 1.000 |
 | 19 | Works (`institutional_books:HXIH8X`) | 4.5 | 7 | 0.146 |
 | 20 | A collection of sundry books, epistles and papers (`internet_archive:collectionofsund00nayl_0`) | 2.5 | 3 | 1.000 |
+
+## Exploratory: where critics' proposed sources rank (2026-11-06, not pre-registered)
+
+`python -m eval.grunder_ranks` -> `data/semantic/grunder_ranks.json`. Rick Grunder's *Mormon
+Parallels* (2014) lists 500 texts proposed as parallels; 139 match our catalog by author and title
+(`data/access/grunder_sources.csv`, BOM-33). This reads the searches already run; nothing new is
+searched. The paraphrase search's percentile is already against genre- and length-matched null
+volumes, so it compares like with like.
+
+- **Paraphrase search, all genres:** 65 of the 139 have a ranked volume (99 volumes). Their median
+  percentile is 91.0 against 87.4 for the 30,876 unproposed ranked volumes; rank-sum one-sided p
+  0.087 (AUC 0.54). 4 of 99 stand out against 618 of 30,878 (odds ratio 2.1, p 0.14).
+- **Within genre** the proposed volumes sit higher: histories 92.9 vs 82.6 (30 volumes, AUC 0.70,
+  p 7e-5), periodicals 97.0 vs 91.8 (8, p 0.002), fiction 97.3 vs 90.2 (6, p 0.03); sermons 70.5
+  vs 67.2 (46, p 0.16).
+- **Top of the list:** Josephus (rank 9, stands out), Elias Smith's *Sermons* (264), Brainerd's
+  *Memoirs* (416), Potter's *Millennium* (572), Ballou (640), Austin (669), *View of the Hebrews*
+  1825 (700) and 1823 (1,774); *The Late War* ranks 24,849 (91.8th percentile).
+- **Other searches:** among the stored rare-phrase top 100 and named sources only *View of the
+  Hebrews* 1823 appears (rank 9,496); none is in the exact-reuse list; only Josephus is in the
+  story-skeleton set (order p 0.37).
+
+**Reading.** Texts critics proposed resemble the Book of Mormon somewhat more than unproposed
+texts of the same kind, mainly among histories. That is expected even without borrowing: they
+were proposed *because* someone noticed a resemblance (Indian origins, millennium, scripture
+style). It does not test borrowing, and none of them except Josephus stands out against its own
+null, as the registered tests already found (BOM-25, triage BOM-26).
