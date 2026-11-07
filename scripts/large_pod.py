@@ -39,6 +39,7 @@ TOK = "data/corpus/timelocked_lm/tokens"
 OUT = "data/corpus/timelocked_lm/runs/large"
 SIZE = "large"
 MILESTONES = 0  # --milestone-steps for the training run (mid: 5,000)
+MICRO = 8  # mid: 16 (24 of 80 GB at 8; same 512-sequence step)
 MANIFEST = ROOT / "data/manifests/timelocked_lm_tokens.jsonl"
 
 
@@ -54,7 +55,7 @@ def train_cmd() -> str:
     # fp32 by a bug since fixed). At 8 in bf16 the peak is 33.8 GB. Same 512-sequence step.
     return (f"cd {R} && tmux new-session -d -s train 'PYTORCH_CUDA_ALLOC_CONF=expandable_segments:"
             f"True torchrun --nproc_per_node={GPUS} -m "
-            f"timelocked_lm.train {SIZE} --out {R}/{OUT} --micro-batch 8 {LR_ARGS} "
+            f"timelocked_lm.train {SIZE} --out {R}/{OUT} --micro-batch {MICRO} {LR_ARGS} "
             f"--milestone-steps {MILESTONES} 2>&1 | tee -a "
             "/workspace/train.out'")  # fmt: skip
 
@@ -308,7 +309,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--size", choices=["large", "mid"], default="large",
                     help="mid: the 590M that replaced the 1B (Amendment 39)")  # fmt: skip
     a = ap.parse_args(argv)
-    global GPUS, OUT, SIZE, LR_ARGS, MILESTONES
+    global GPUS, OUT, SIZE, LR_ARGS, MILESTONES, MICRO
     GPUS = a.gpus
     sp.PRICE = 3.99 * GPUS
     SIZE = a.size
@@ -317,6 +318,7 @@ def main(argv: list[str] | None = None) -> int:
         sp.STATE = ROOT / f"logs/{SIZE}_pod/state.json"
         sp.POD_NAME, sp.SSH, LR_ARGS = f"bom27-{SIZE}", f"{SIZE}pod", ""
         MILESTONES = 5000
+        MICRO = 16
     sp.STATE.parent.mkdir(parents=True, exist_ok=True)
     s = json.loads(sp.STATE.read_text()) if sp.STATE.exists() else {"phase": "create"}
     while s["phase"] not in ("done", "failed", "capped"):
