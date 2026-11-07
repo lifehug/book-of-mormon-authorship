@@ -40,13 +40,19 @@ OUT = "data/corpus/timelocked_lm/runs/large"
 MANIFEST = ROOT / "data/manifests/timelocked_lm_tokens.jsonl"
 
 
+# 2026-11-07: a loss spike at step ~15,800 did not recover; training resumed from step 15,908 with
+# fresh optimizer state and half the learning rate (Amendment 38, post hoc). A later restart keeps
+# the half rate; it must not reset the optimizer again.
+LR_ARGS = "--lr-scale 0.5"
+
+
 def train_cmd() -> str:
     # micro-batch 8: the first launch (16) ran out of memory on step 2 once the optimizer state
     # existed (67.9 of 80 GB at step 1, logs/large_pod/diag_micro16.out; that run was also in
     # fp32 by a bug since fixed). At 8 in bf16 the peak is 33.8 GB. Same 512-sequence step.
     return (f"cd {R} && tmux new-session -d -s train 'PYTORCH_CUDA_ALLOC_CONF=expandable_segments:"
             f"True torchrun --nproc_per_node={GPUS} -m "
-            f"timelocked_lm.train large --out {R}/{OUT} --micro-batch 8 2>&1 | tee -a "
+            f"timelocked_lm.train large --out {R}/{OUT} --micro-batch 8 {LR_ARGS} 2>&1 | tee -a "
             "/workspace/train.out'")  # fmt: skip
 
 
