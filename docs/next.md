@@ -1,56 +1,37 @@
 # What runs now and what starts next
 
-The standing queue (owner, 2026-11-06: "when things finish, start something else"). Checked every
-hour by a scheduled check-in, and whenever a job reports. Rules: never two GPU jobs on the Mac at
-once; rented GPUs only within approvals already given; every new analysis gets its plan and
-amendment first; the issue comment carries the next action.
+The standing queue (owner, 2026-11-06: "when things finish, start something else"; prepare
+everything ahead, never sit waiting). A job monitor (`scripts/jobwatch.py`) reports any crash,
+stall or finish at once; an hourly check-in walks this file. Rules: never two heavy GPU jobs on the
+Mac at once; rented GPUs within approvals given; the issue comment carries the next action.
 
 ## Running
 
-| Job | Where | Started | Done (est.) | When it ends, start |
-| --- | --- | --- | --- | --- |
-| BOM-27 1B training (`scripts/large_pod.py`, tmux `largepod`) | 4 x H100 pod `qmon0qov69hb7r` | 2026-11-06 13:25 (third start: an SSH outage was read as crashes and the pod stopped at 12:08) | 2026-11-07 ~19:30 (2.2 s a step) | 1B benchmark (primary, V1-V3) on an H100 via `alm_pod.py` with `large`; publish (BOM-66); pick the working model by the benchmark |
-| BOM-39 KJV masking of sweep blocks (`kjv_mask.run sweep`, tmux `sweepmask`) | Mac CPU (passim) | 2026-11-06 09:56 | 2026-11-07 ~06:00 (659 batches, ~1.8 min each) | chained (`scripts/sweep_chain.sh`, tmux `sweepchain`): `sweep.index` tokens, mfw, embed, then `sweep.calibrate`; then write up BOM-39/47 against the 70% rule |
-| After the 1B (`scripts/after_1b.sh`, tmux `after1b`) | waits on the 1B; then 1 H100 | 2026-11-06 10:44 | 1B benchmark ~Sat 19:00, then published | pick the working model by the benchmark; BOM-28 candidate models |
-| BOM-29 transformer cross-check (`dating.transformer` embed -> fit -> validate, tmux `bom29`) | Mac GPU | 2026-11-06 11:20 | 2026-11-06 ~21:30 | write up beside the grammar model; close BOM-29 |
-| BOM-28 `alm.candidates plan`, then BOM-31 `eval.imitation build` + `classic` (tmux `prep`) | Mac CPU | 2026-11-06 ~12:00 | ~12:40 | candidates: train on an H100 at the picked size (`candidates_pod.py`); imitation: `style` when the GPU frees, `alm` at the picked size, `report` |
-| BOM-28 candidate models at 297M (`candidates_pod.py --size base`, tmux `candpod`) | 1 H100, cap $25 | 2026-11-06 10:58 | ~12:30 | `alm.candidates validate base`; retrain at 1B if the 1B wins its benchmark |
-| 125M: BOM-28 candidates, BOM-31 style + model parts (`scripts/mac_gpu_chain.sh`, tmux `macgpu`) | Mac GPU, after BOM-29 | 2026-11-06 ~21:30 | Sat morning | side-by-side tables with 297M and 1B |
-| BOM-31 imitation at 297M (`pod_jobs.py --name imitation_base`, tmux `imitbase`) | 1 H100, cap $25 | 2026-11-06 13:29 | ~14:45 | `eval.imitation report` once the 125M and 1B parts are in |
-| Job monitor (`scripts/jobwatch.py` under a Monitor) and hourly check-in | this session | 2026-11-06 | - | reports any crash, stall or finish at once; hourly: start whatever is ready |
+| Job | Where | Done (est.) | When it ends |
+| --- | --- | --- | --- |
+| BOM-27 1B training (`scripts/large_pod.py`, tmux `largepod`) | 4 x H100 pod `qmon0qov69hb7r` (started 2026-11-06 13:25; the pod stops itself if the finished model sits uncollected 3 h) | 2026-11-07 ~20:00 | `after_1b.sh` takes over |
+| After the 1B (`scripts/after_1b.sh`, tmux `after1b`) | waits; then H100s | Sat night | 1B benchmark (primary, V1-V3) -> publish to `etherfuse/timelocked-1830-1b` -> 1B candidate models and 1B imitation in parallel -> `eval.imitation report` |
+| BOM-39 KJV masking of sweep blocks (tmux `sweepmask`) | Mac CPU | 2026-11-07 ~11:00 | `scripts/sweep_chain.sh` (tmux `sweepchain`): `sweep.index` tokens, mfw, embed, then `sweep.calibrate` -> write up BOM-39/47 |
+| BOM-29 transformer cross-check (tmux `bom29`) | Mac GPU | 2026-11-06 ~22:00 | write up beside the grammar model; close BOM-29; `mac_gpu_chain.sh` starts |
+| 125M tests (`scripts/mac_gpu_chain.sh`, tmux `macgpu`) | Mac GPU, after BOM-29 | Sat morning | BOM-28 candidates 125M, BOM-31 style + 125M model parts |
 
 ## Decided
 
-- **Every model size runs every model-based test** (owner, 2026-11-06): 125M, 297M and 1B side by side, none the headline. 125M on the Mac GPU (`scripts/mac_gpu_chain.sh`, tmux `macgpu`, after BOM-29); 297M and 1B on H100s.
+- **Every model size runs every model-based test** (owner; Amendment 37): 125M, 297M, 1B side by side, none the headline.
+- **6.1/6.2 after the 1B benchmark** (owner): if the 1B reaches 6.1's 5% rate, keep the rule; otherwise Amendment 33 option (b), post hoc: each method returns *match* at its best achievable threshold, its real false-match rate beside every call; 6.2's two families unchanged. Then file Amendment 33 and seal.
 
-## Decided, to apply after the 1B benchmark
+## Next, in order (start the first whose inputs exist)
 
-- **6.2 can never support a candidate** (GI and style thresholds are 1.0). Owner, 2026-11-06: if the 1B reaches 6.1's 5% rate, keep the rule; otherwise file a post hoc amendment before any Book of Mormon scoring saying the registered rule is not achievable with these methods, and let each method return *match* at its best achievable threshold (a score at the threshold counts), its actual false-match rate reported beside every call; 6.2's two families unchanged. Apply right after the 1B benchmark, then file Amendment 33 and seal.
+1. **After the 1B benchmark:** apply the 6.1/6.2 decision, file Amendment 33, `blind.thresholds`, `blind.seal`.
+2. **BOM-32 blind run** (a fresh AI session without the key; simulated blinding) once the sweep index and all sizes' candidate models exist; then `blind.unblind`.
+3. **BOM-35 synthesis** (`synth.model`, per size), **BOM-34 6.3 comparison** (`eval.scribes`), **BOM-42 claims table** (`eval.claims`), **BOM-68** table with the 1B rows.
+4. **BOM-36 paper:** fill the 14 result slots in `paper/draft/`; then **BOM-38** simulated review (`review.simulate`); then **BOM-37** release (`scripts/release_check.py`; publishing is the owner's call).
 
-## Next, in order (start the first whose inputs exist; several may run at once if they use different machines)
+Done today: BOM-26 closed; prep and first results for 28 (297M), 29, 31 (classical, 297M), 32, 33
+(access table final), 34 (dictation evidence, photo hand-check), 35, 37, 38, 42, 68 (GPT-2 ablation).
+Waiting on the owner only: BOM-71 (Google-digitized volumes, if provided).
 
-1. **BOM-39 + BOM-47 sweep** - plan and Amendment 28 filed (`docs/sweep-plan.md`). Build: units and block sample -> KJV masking of the blocks (passim, about a day) -> MFW counts and style vectors (Mac GPU, about half a day) -> calibration and the expected false-lead count. Mac.
-3. **BOM-68** - one table of all methods on equal terms; GPT-2 ablation amendment and runs (125M on the Mac, 355M on a short GPU run).
-4. **BOM-33 / BOM-34 evidence** - access and dictation evidence tables; research, no compute.
-5. **BOM-28 candidate models** - after the 1B benchmark picks the working model: one fine-tuned copy per candidate author (GPU, a few hours).
-6. **BOM-31** robustness to deliberate imitation.
-7. **BOM-32** the blind run, when 26-31 and 39 are done.
-8. Then 35, 42, 36, 38, 37.
+## Timeline to the paper
 
-## Timeline to the paper (revised 2026-11-06; only two waits are physical)
-
-Physical waits: the 1B (done Sat ~15:30) and the sweep's masking + vectors (Sat afternoon).
-Everything else is hours of machine time or my own working time, so it runs as soon as inputs exist.
-
-| When | Finishes |
-| --- | --- |
-| Now - Sat | BOM-33 access research (no compute); BOM-29 on the Mac GPU; BOM-31, BOM-68 plans |
-| Sat afternoon | 1B trained; sweep calibration |
-| Sat evening | 1B benchmark (~2 h on an H100), pick and publish the working model |
-| Sat night | BOM-28 candidate models (a few GPU hours) |
-| Sun | BOM-32 blind run |
-| Mon-Tue | BOM-34 manuscript evidence, BOM-35 synthesis; BOM-36 paper can start ~Tue Nov 10 |
-
-Side issues (49, 61, 63) only where they do not delay the paper.
-
-Side issues as capacity allows: BOM-49, 51, 61, 63; BOM-50 and 53 deferred.
+Only the 1B (Sat ~20:00) and the sweep (Sat afternoon) are physical waits. Blind run Sunday;
+synthesis and claims Monday; paper slots filled and the first full draft ~Tuesday Nov 10.
