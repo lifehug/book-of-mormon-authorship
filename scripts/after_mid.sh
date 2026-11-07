@@ -35,21 +35,10 @@ wait "$imit" || status=1
 grep -q '"phase": "done"' logs/candidates_pod_mid/state.json || { echo "candidate pod did not finish"; status=1; }
 grep -q '"phase": "done"' logs/pod_jobs_imitation_mid/state.json || { echo "imitation pod did not finish"; status=1; }
 uv run python -m eval.imitation report || status=1
-# Owner, 2026-11-07: keep the full milestone snapshots only until the model is trained and tested,
-# then delete them (the milestone weights stay home). Only when every test above succeeded.
+# Owner, 2026-11-07: the full milestone snapshots go once the model is trained and tested, but
+# only after the owner says yes at that moment. The pod stays stopped (storage only) until then.
 if [ "$status" = 0 ]; then
-  uv run python - <<'PY'
-import json, sys
-sys.path.insert(0, "scripts")
-import pod_watch as pw
-s = json.load(open("logs/mid_pod/state.json"))
-pw.rest("DELETE", f"/pods/{s['pod']}")
-try:
-    pw.rest("GET", f"/pods/{s['pod']}")
-    print("mid pod still present")
-except Exception:
-    print("mid pod and its full snapshots deleted (tests passed; owner's rule)")
-PY
+  echo "tests passed: ASK THE OWNER before deleting the mid pod and its full snapshots"
 else
   echo "a test failed: the mid pod and its full snapshots are kept for the owner"
 fi
