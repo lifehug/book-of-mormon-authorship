@@ -1,10 +1,12 @@
 """Time-locked model (BOM-27): registered sizes, schedule, selection helpers."""
 
-import torch
+import pytest
 
-from metadata.config import load
-from timelocked_lm.data import _author_key, _held_out
-from timelocked_lm.train import GPT, TINY, lr_at, params
+torch = pytest.importorskip("torch")  # the model extra; CI installs only the base packages
+
+from metadata.config import load  # noqa: E402
+from timelocked_lm.data import _author_key, _held_out  # noqa: E402
+from timelocked_lm.train import GPT, TINY, lr_at, params  # noqa: E402
 
 
 def test_registered_sizes():
