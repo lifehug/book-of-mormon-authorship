@@ -34,7 +34,9 @@ def decide(s: dict[str, float], kinds: dict[str, str], th: dict | None) -> dict:
     m = margins(s, kinds)
     return {"scores": s, "first": min(s, key=lambda u: (s[u], u)),
             "first_candidate": min(cands, key=lambda u: (cands[u], u)), "margins": m,
-            "call": {u: call(v, th) for u, v in m.items()} if th else None}  # fmt: skip
+            "call": {u: call(v, th) for u, v in m.items()} if th else None,
+            "call_achievable": {u: call(v, th, "achievable") for u, v in m.items()}
+            if th else None}  # fmt: skip
 
 
 def score(rows: list[dict], cfg: dict, size: str, th: dict) -> dict:

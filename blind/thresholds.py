@@ -40,9 +40,11 @@ def calibrate(pos: list[float], neg: list[float], rate: float) -> dict:
     return {**calibrate_gi(pos, neg, rate), "positives": len(pos), "negatives": len(neg)}
 
 
-def call(score: float, th: dict) -> str:
-    """6.1's three-way call for one candidate."""
-    if score > th["match"]:
+def call(score: float, th: dict, rule: str = "registered") -> str:
+    """6.1's three-way call for one candidate. ``registered``: match only above the 5% threshold;
+    ``achievable`` (owner, 2026-11-07; Amendment 33 (b)): match at or above it, for methods whose
+    threshold is the highest score possible. Every output carries both, read side by side."""
+    if score > th["match"] or (rule == "achievable" and score >= th["match"]):
         return "match"
     if score < th["non_match"]:
         return "non_match"

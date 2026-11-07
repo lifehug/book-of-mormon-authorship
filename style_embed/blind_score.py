@@ -45,5 +45,7 @@ def score(rows: list[dict], cfg: dict, refs: dict[str, dict], imposters: list[li
               for u in units}  # fmt: skip
         out[r["id"]] = {"cosine": dist, "first": min(units, key=lambda u: (dist[u], u)),
                         "general_imposters": gs,
-                        "call": {u: call(v, th["style"]) for u, v in gs.items()}}  # fmt: skip
+                        "call": {u: call(v, th["style"]) for u, v in gs.items()},
+                        "call_achievable": {u: call(v, th["style"], "achievable")
+                                            for u, v in gs.items()}}  # fmt: skip
     return out

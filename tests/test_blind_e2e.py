@@ -89,7 +89,7 @@ def test_seal_score_unblind_synthesise(tmp_path: Path, monkeypatch) -> None:
     assert set(methods["classic"]["bom"]) == set(CHUNKS)
     for m, views in (("classic", ["burrows_delta", "cosine_delta", "general_imposters", "ensc"]),
                      ("style", ["style"]), ("alm_base", ["alm"])):  # fmt: skip
-        assert sorted(methods[m]["views"]) == sorted(views)
+        assert set(views) <= set(methods[m]["views"])  # plus each "_achievable" twin
         for v in views:
             d = methods[m]["views"][v]["decoys"]
             assert d["closed_set"] == {"decoys": 3, "correct": 3, "accuracy": 1.0}

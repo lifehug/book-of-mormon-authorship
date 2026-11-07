@@ -66,10 +66,21 @@ VIEWS = {
         "burrows_delta": lambda r: (r["burrows_delta"], True, None),
         "cosine_delta": lambda r: (r["cosine_delta"], True, None),
         "general_imposters": lambda r: (r["general_imposters"], False, r["gi_call"]),
+        "general_imposters_achievable": lambda r: (
+            r["general_imposters"],
+            False,
+            r.get("gi_call_achievable"),
+        ),
         "ensc": lambda r: (r["ensc_posteriors"], False, None),
     },
-    "style": {"style": lambda r: (r["cosine"], True, r["call"])},
-    "alm": {"alm": lambda r: (r["margins"], False, r.get("call"))},  # larger margin is closer
+    "style": {
+        "style": lambda r: (r["cosine"], True, r["call"]),
+        "style_achievable": lambda r: (r["cosine"], True, r.get("call_achievable")),
+    },
+    "alm": {
+        "alm": lambda r: (r["margins"], False, r.get("call")),  # larger margin is closer
+        "alm_achievable": lambda r: (r["margins"], False, r.get("call_achievable")),
+    },
 }
 
 

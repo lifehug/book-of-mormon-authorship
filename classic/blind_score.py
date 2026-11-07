@@ -124,6 +124,7 @@ def score(rows: list[dict], cfg: dict, refs: dict[str, dict], imposters: list[li
             "burrows_first": burrows[0][0], "cosine_first": cosine[0][0],
             "general_imposters": gs, "gi_first": max(units, key=lambda u: (gs[u], u)),
             "gi_call": {u: call(v, gi_th) for u, v in gs.items()},
+            "gi_call_achievable": {u: call(v, gi_th, "achievable") for u, v in gs.items()},
             "ensc": str(e.label),
             "ensc_posteriors": {str(k): float(v) for k, v in e.posteriors.items()},
         }  # fmt: skip
