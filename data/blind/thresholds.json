@@ -1,0 +1,205 @@
+{
+ "config_sha256": "ff2f67ab53d7163d9060d04f177eeb235d60855f64025dc6528b67658c1922b4",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "2125d50d9c7b1aba862ba42b17d0b32490edf8b9",
+ "sizes": [
+  "pilot",
+  "base"
+ ],
+ "rate": 0.05,
+ "fpr_ladder": [
+  0.01,
+  0.05,
+  0.1,
+  0.2,
+  0.3,
+  0.5
+ ],
+ "thresholds": {
+  "general_imposters": {
+   "match": 1.0,
+   "non_match": 0.349,
+   "source": "thresholds.json",
+   "ladder": [
+    {
+     "rate": 0.01,
+     "threshold": 1.0,
+     "false_match": 0.16666666666666666,
+     "true_match": 0.5166666666666667
+    },
+    {
+     "rate": 0.05,
+     "threshold": 1.0,
+     "false_match": 0.16666666666666666,
+     "true_match": 0.5166666666666667
+    },
+    {
+     "rate": 0.1,
+     "threshold": 1.0,
+     "false_match": 0.16666666666666666,
+     "true_match": 0.5166666666666667
+    },
+    {
+     "rate": 0.2,
+     "threshold": 0.99,
+     "false_match": 0.2111111111111111,
+     "true_match": 0.55
+    },
+    {
+     "rate": 0.3,
+     "threshold": 0.95,
+     "false_match": 0.31666666666666665,
+     "true_match": 0.5944444444444444
+    },
+    {
+     "rate": 0.5,
+     "threshold": 0.67,
+     "false_match": 0.5055555555555555,
+     "true_match": 0.7888888888888889
+    }
+   ]
+  },
+  "ensc": {
+   "shrinkage": 0.5,
+   "alpha": 0.5
+  },
+  "style": {
+   "match": 1.0,
+   "non_match": 1.0,
+   "positives": 180,
+   "negatives": 180,
+   "ladder": [
+    {
+     "rate": 0.01,
+     "threshold": 1.0,
+     "false_match": 0.5,
+     "true_match": 0.9666666666666667
+    },
+    {
+     "rate": 0.05,
+     "threshold": 1.0,
+     "false_match": 0.5,
+     "true_match": 0.9666666666666667
+    },
+    {
+     "rate": 0.1,
+     "threshold": 1.0,
+     "false_match": 0.5,
+     "true_match": 0.9666666666666667
+    },
+    {
+     "rate": 0.2,
+     "threshold": 1.0,
+     "false_match": 0.5,
+     "true_match": 0.9666666666666667
+    },
+    {
+     "rate": 0.3,
+     "threshold": 1.0,
+     "false_match": 0.5,
+     "true_match": 0.9666666666666667
+    },
+    {
+     "rate": 0.5,
+     "threshold": 0.995,
+     "false_match": 0.5,
+     "true_match": 0.9666666666666667
+    }
+   ],
+   "source": "style_embed.json"
+  },
+  "alm": {
+   "pilot": {
+    "match": 0.030418411384929338,
+    "non_match": -0.017478111548857252,
+    "positives": 68,
+    "negatives": 148,
+    "ladder": [
+     {
+      "rate": 0.01,
+      "threshold": 0.2528775793855841,
+      "false_match": 0.013513513513513514,
+      "true_match": 0.0
+     },
+     {
+      "rate": 0.05,
+      "threshold": 0.030418411384929338,
+      "false_match": 0.05405405405405406,
+      "true_match": 0.6470588235294118
+     },
+     {
+      "rate": 0.1,
+      "threshold": 0.0024763560295105354,
+      "false_match": 0.10135135135135136,
+      "true_match": 0.7647058823529411
+     },
+     {
+      "rate": 0.2,
+      "threshold": -0.02278450012207031,
+      "false_match": 0.20270270270270271,
+      "true_match": 0.9705882352941176
+     },
+     {
+      "rate": 0.3,
+      "threshold": -0.03163066203777608,
+      "false_match": 0.30405405405405406,
+      "true_match": 0.9705882352941176
+     },
+     {
+      "rate": 0.5,
+      "threshold": -0.053951060771942144,
+      "false_match": 0.5,
+      "true_match": 0.9852941176470589
+     }
+    ],
+    "source": "alm_candidates_pilot.json"
+   },
+   "base": {
+    "match": 0.06332873106002815,
+    "non_match": 0.001250985102220006,
+    "positives": 68,
+    "negatives": 148,
+    "ladder": [
+     {
+      "rate": 0.01,
+      "threshold": 0.3199307996576482,
+      "false_match": 0.013513513513513514,
+      "true_match": 0.0
+     },
+     {
+      "rate": 0.05,
+      "threshold": 0.06332873106002815,
+      "false_match": 0.05405405405405406,
+      "true_match": 0.47058823529411764
+     },
+     {
+      "rate": 0.1,
+      "threshold": 0.03352538585662842,
+      "false_match": 0.10135135135135136,
+      "true_match": 0.6470588235294118
+     },
+     {
+      "rate": 0.2,
+      "threshold": -0.008120260238647457,
+      "false_match": 0.20270270270270271,
+      "true_match": 0.9705882352941176
+     },
+     {
+      "rate": 0.3,
+      "threshold": -0.019107415676116953,
+      "false_match": 0.30405405405405406,
+      "true_match": 0.9705882352941176
+     },
+     {
+      "rate": 0.5,
+      "threshold": -0.043155097961425776,
+      "false_match": 0.5,
+      "true_match": 0.9852941176470589
+     }
+    ],
+    "source": "alm_candidates_base.json"
+   }
+  }
+ }
+}
