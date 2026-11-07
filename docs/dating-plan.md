@@ -124,3 +124,24 @@ is the rule; `validate` now reports it per segment and per held-out volume.
 The King James text is called H3b. Keyed 1780-1809 segments reach the window less often than OCR
 ones of the same years (55% against 83%, 71 keyed segments): a limitation for a keyed text such
 as the Book of Mormon's, reported beside the result.
+
+
+## Transformer cross-check result (Amendment 29; 2026-11-06)
+
+`data/dating/transformer_validation.json`. Held-out authors, beside the registered models:
+
+| Model | Mean error | 90% interval coverage | Genuine 1780-1830: median in window | Pre-1700 volumes called H3b | King James imitation shift |
+| --- | --- | --- | --- | --- | --- |
+| Grammar (decides H3) | 23.4 y | 0.91 | 0.85 | 3,729 of 4,144 | -53.4 y (p 0.0001) |
+| Lexical | 13.2 y | 0.76 | 0.94 | 4,110 | -5.5 y |
+| Transformer (297M features) | 10.1 y | 0.94 | 0.94 | 4,028 | +0.8 y (p 0.88) |
+
+Leakage check: held-out 1780-1830 volumes the language model trained on, mean error 11.1 y
+(3,611 segments); those it did not, 8.4 y (26 segments): no sign that having read a volume helps.
+The King James text itself: 1752 by the transformer (the grammar model says 1631). Amendment 9's
+known-answer separation: p 0.95, does not separate (as for both registered models).
+
+Reading: the transformer dates ordinary text most accurately and, unlike the grammar model, is
+not pulled earlier by biblical imitation, so it measures something different: the vocabulary and
+phrasing of the writer's own time rather than the archaic forms an imitator borrows. Only the
+grammar model decides H3; this is reported beside it.

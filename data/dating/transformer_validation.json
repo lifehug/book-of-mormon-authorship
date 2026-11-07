@@ -1,0 +1,294 @@
+{
+ "config_sha256": "26db5f161194524eff8b582d24f985adf2cf474509be45c1ca9e693b94ecce5b",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "701142aed5767c3dd3a314eb2760574267d84928",
+ "size": "base",
+ "bins": [
+  1473,
+  1530,
+  1540,
+  1550,
+  1560,
+  1570,
+  1580,
+  1590,
+  1600,
+  1610,
+  1620,
+  1630,
+  1640,
+  1650,
+  1660,
+  1670,
+  1680,
+  1690,
+  1700,
+  1710,
+  1720,
+  1730,
+  1740,
+  1750,
+  1760,
+  1770,
+  1780,
+  1790,
+  1800,
+  1810,
+  1820,
+  1831
+ ],
+ "held_out": {
+  "transformer": {
+   "all": {
+    "segments": 13169,
+    "median_year": 1683.7749494252737,
+    "median_year_iqr": [
+     1630.6439441654197,
+     1786.963385137854
+    ],
+    "share_interval_in_window": 0.2289467689270256,
+    "share_median_window": 0.2664591085124155,
+    "share_median_early_window": 0.6147011921937885,
+    "call": "H3b",
+    "mae_years": 10.12992189483648,
+    "bias_years": -0.5867242151565965,
+    "interval_coverage": 0.9428961956109044,
+    "bin_accuracy": 0.42941757156959526
+   },
+   "1473-1699": {
+    "segments": 7660,
+    "median_year": 1644.0654434458093,
+    "median_year_iqr": [
+     1611.7120064471956,
+     1674.7801025053004
+    ],
+    "share_interval_in_window": 0.0,
+    "share_median_window": 0.0013054830287206266,
+    "share_median_early_window": 0.9817232375979112,
+    "call": "H3b",
+    "mae_years": 8.564536941129772,
+    "bias_years": 2.2745172481676814,
+    "interval_coverage": 0.9587467362924282,
+    "bin_accuracy": 0.44634464751958225,
+    "volume_calls": {
+     "H3b": 4028,
+     "neither": 116
+    }
+   },
+   "1700-1779": {
+    "segments": 1872,
+    "median_year": 1741.8626240655076,
+    "median_year_iqr": [
+     1700.5170573486714,
+     1767.3284872995732
+    ],
+    "share_interval_in_window": 0.004807692307692308,
+    "share_median_window": 0.049679487179487176,
+    "share_median_early_window": 0.25587606837606836,
+    "call": "neither",
+    "mae_years": 14.75901169651685,
+    "bias_years": -3.322565135875795,
+    "interval_coverage": 0.9284188034188035,
+    "bin_accuracy": 0.265491452991453,
+    "volume_calls": {
+     "H3b": 203,
+     "neither": 763,
+     "H3a": 31
+    }
+   },
+   "1780-1830": {
+    "segments": 3637,
+    "median_year": 1802.8592891929454,
+    "median_year_iqr": [
+     1791.5086297058897,
+     1815.5089147613232
+    ],
+    "share_interval_in_window": 0.8265053615617267,
+    "share_median_window": 0.9364861149298873,
+    "share_median_early_window": 0.026395380808358536,
+    "call": "H3a",
+    "mae_years": 11.044189873018425,
+    "bias_years": -5.204710304097379,
+    "interval_coverage": 0.9169645312070388,
+    "bin_accuracy": 0.47814132526807807,
+    "volume_calls": {
+     "H3a": 1721,
+     "neither": 117,
+     "H3b": 37
+    }
+   },
+   "leakage_1780_1830": {
+    "in_lm_training": {
+     "segments": 3611,
+     "median_year": 1802.7910002124916,
+     "median_year_iqr": [
+      1791.4895155359864,
+      1815.4335308104296
+     ],
+     "share_interval_in_window": 0.8271946829133204,
+     "share_median_window": 0.9363057324840764,
+     "share_median_early_window": 0.026585433397950706,
+     "call": "H3a",
+     "mae_years": 11.062978856112283,
+     "bias_years": -5.252916371096115,
+     "interval_coverage": 0.9169205206314041,
+     "bin_accuracy": 0.4782608695652174
+    },
+    "not_in_lm_training": {
+     "segments": 26,
+     "median_year": 1813.5408419192931,
+     "median_year_iqr": [
+      1795.1364276902464,
+      1820.0253115907792
+     ],
+     "share_interval_in_window": 0.7307692307692307,
+     "share_median_window": 0.9615384615384616,
+     "share_median_early_window": 0.0,
+     "call": "H3a",
+     "mae_years": 8.434689182560138,
+     "bias_years": 1.4903707702271645,
+     "interval_coverage": 0.9230769230769231,
+     "bin_accuracy": 0.46153846153846156
+    }
+   }
+  }
+ },
+ "kjv_imitation": {
+  "pseudo_biblical": {
+   "segments": 736,
+   "median_year": 1804.7626716702484,
+   "median_year_iqr": [
+    1791.6075343552518,
+    1814.7506008690343
+   ],
+   "share_interval_in_window": 0.5353260869565217,
+   "share_median_window": 0.8369565217391305,
+   "share_median_early_window": 0.010869565217391304,
+   "call": "H3a",
+   "volumes": 25,
+   "volume_calls": {
+    "H3a": 24,
+    "neither": 1
+   }
+  },
+  "ordinary_1780_1830": {
+   "volumes": 1875,
+   "mean_median_year": 1799.689813439491
+  },
+  "shift_years": 0.7598000689574747,
+  "permutation_p": 0.8824117588241176,
+  "king_james_text": {
+   "segments": 467,
+   "median_year": 1751.8696841712817,
+   "median_year_iqr": [
+    1722.8144678221602,
+    1762.3260034159662
+   ],
+   "share_interval_in_window": 0.0,
+   "share_median_window": 0.07708779443254818,
+   "share_median_early_window": 0.22055674518201285,
+   "call": "neither"
+  }
+ },
+ "known_answer": {
+  "texts": {
+   "twelve_patriarchs": {
+    "year": 1791,
+    "median_predicted": 1788.5330145615717,
+    "segments": 16,
+    "call": "H3a"
+   },
+   "enoch": {
+    "year": 1821,
+    "median_predicted": 1811.2872411839987,
+    "segments": 31,
+    "call": "H3a"
+   },
+   "apocryphal_nt": {
+    "year": 1820,
+    "median_predicted": 1697.3772739882056,
+    "segments": 72,
+    "call": "H3b"
+   },
+   "josephus": {
+    "year": 1794,
+    "median_predicted": 1788.9070098532497,
+    "segments": 388,
+    "call": "H3a"
+   },
+   "koran": {
+    "year": 1800,
+    "median_predicted": 1707.5857487950311,
+    "segments": 88,
+    "call": "neither"
+   },
+   "herodotus": {
+    "year": 1791,
+    "median_predicted": 1792.9613821523162,
+    "segments": 136,
+    "call": "H3a"
+   },
+   "homer": {
+    "year": 1783,
+    "median_predicted": 1795.7621351389105,
+    "segments": 158,
+    "call": "H3a"
+   },
+   "hesiod": {
+    "year": 1815,
+    "median_predicted": 1815.1271101796933,
+    "segments": 36,
+    "call": "H3a"
+   },
+   "sacontala": {
+    "year": 1792,
+    "median_predicted": 1798.2142853632067,
+    "segments": 16,
+    "call": "H3a"
+   },
+   "ossian": {
+    "year": 1800,
+    "median_predicted": 1792.5327371128208,
+    "segments": 17,
+    "call": "H3a"
+   },
+   "rowley": {
+    "year": 1794,
+    "median_predicted": 1564.4807527578596,
+    "segments": 28,
+    "call": "H3b"
+   },
+   "jasher": {
+    "year": 1829,
+    "median_predicted": 1792.288115059392,
+    "segments": 18,
+    "call": "H3a"
+   },
+   "ireland_papers": {
+    "year": 1796,
+    "median_predicted": 1565.071665343785,
+    "segments": 20,
+    "call": "H3b"
+   },
+   "otranto": {
+    "year": 1782,
+    "median_predicted": 1794.195431343444,
+    "segments": 20,
+    "call": "H3a"
+   }
+  },
+  "separation": {
+   "U": 5.0,
+   "of": 27,
+   "p": 0.95,
+   "separates": false,
+   "rowley_at_genuine_median": {
+    "U": 9.5,
+    "of": 27,
+    "p": 0.7681818181818182,
+    "separates": false
+   }
+  }
+ }
+}
