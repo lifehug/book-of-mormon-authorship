@@ -143,3 +143,29 @@ def test_candidate_texts_follow_their_unit() -> None:
     got = S.by_unit(pool, units)
     assert got == {"Parley P. Pratt": [("candidates/clean/oc-ma__1-2.txt", ["a"])],
                    "Oliver Cowdery": [("candidates/clean/oc-ma__3-4.txt", ["b"])]}  # fmt: skip
+
+
+def test_staged_runs_merge_their_hashes(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """``--only`` stages add to outputs.json; a rerun replaces only its own method's entries."""
+    from blind import run as R
+
+    calls = {"n": 0}
+
+    def fake(rows: list[dict], cfg: dict, size: str | None) -> dict:
+        calls["n"] += 1
+        return {r["id"]: calls["n"] for r in rows}
+
+    monkeypatch.setattr(R, "METHODS", {"a": fake, "b": fake, "c": fake})
+    monkeypatch.setattr(R, "PER_SIZE", {"c"})
+    rows, out = [{"id": "x", "words": 1, "text": "t"}], tmp_path / "outputs"
+    R.run(rows, {}, ["pilot"], ["a"], out)
+    first = json.loads((tmp_path / "outputs.json").read_text())["sha256"]
+    R.run(rows, {}, ["base"], ["b", "c"], out)
+    m = json.loads((tmp_path / "outputs.json").read_text())
+    assert set(m["sha256"]) == {str(out / f) for f in ("a.json", "b.json", "c_base.json")}
+    assert m["methods"] == ["a", "b", "c"] and m["sizes"] == ["base", "pilot"]
+    R.run(rows, {}, ["base"], ["b"], out)  # rerun of b: a's hash untouched, b's replaced
+    m2 = json.loads((tmp_path / "outputs.json").read_text())["sha256"]
+    assert m2[str(out / "a.json")] == first[str(out / "a.json")]
+    assert m2[str(out / "b.json")] != m["sha256"][str(out / "b.json")]
+    assert all(R.sha256(Path(f)) == h for f, h in m2.items())

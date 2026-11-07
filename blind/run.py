@@ -14,7 +14,10 @@ with (the BOM-30 encoder; the 297M base, Amendment 29), so they run once.
 Every method has a scorer (``classic.blind_score``, ``style_embed.blind_score``,
 ``alm.blind_score``, and dating and the sweep here); 6.1's calls use ``data/blind/thresholds.json``
 (``blind.thresholds``, from benchmark data only), which must be committed first. ``--only`` runs a
-subset (for a dry run on a test set, not for the real run).
+subset: the real run may go in stages (the CPU methods first, the GPU ones and each model size as
+they become available), and each stage merges its files' hashes into ``outputs.json`` rather than
+replacing it, a rerun of a method replacing only that method's entries. Every method's outputs
+are hashed and committed before ``blind.unblind`` is run.
 
 Usage::
 
@@ -166,8 +169,17 @@ def run(rows: list[dict], cfg: dict, sizes: list[str], only: list[str] | None,
             if isinstance(res, dict) and "file" in res:
                 files[res["file"]] = sha256(Path(res["file"]))
             print(f"  {p.stem}: {len(res)} entries", flush=True)
-    manifest = {"sizes": sizes, "methods": only or list(METHODS), "sha256": files}
-    (out.parent / "outputs.json").write_text(json.dumps(manifest, indent=1) + "\n")
+    return merge(out.parent / "outputs.json", files, only or list(METHODS), sizes)
+
+
+def merge(path: Path, files: dict, methods: list[str], sizes: list[str]) -> dict:
+    """Add this stage's hashes to the manifest at ``path`` (staged runs; see the module
+    docstring). Entries of other files are kept; a rerun's files replace their own entries."""
+    old = json.loads(path.read_text()) if path.exists() else {}
+    manifest = {"sizes": sorted(set(old.get("sizes", [])) | set(sizes)),
+                "methods": sorted(set(old.get("methods", [])) | set(methods)),
+                "sha256": {**old.get("sha256", {}), **files}}  # fmt: skip
+    path.write_text(json.dumps(manifest, indent=1) + "\n")
     return manifest
 
 
