@@ -12,7 +12,7 @@ issue.
 
 Usage::
 
-    python scripts/candidates_pod.py --issue 38 --size base|large [--cap 25]
+    python scripts/candidates_pod.py --issue 38 --size pilot|base|large [--cap 25]
 """
 
 from __future__ import annotations
@@ -175,7 +175,7 @@ def step(s: dict, issue: int, cap: float, size: str) -> bool:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("--issue", type=int, required=True)
-    ap.add_argument("--size", choices=["base", "large"], required=True)
+    ap.add_argument("--size", choices=["pilot", "base", "large"], required=True)
     ap.add_argument("--cap", type=float, default=25.0)
     a = ap.parse_args(argv)
     configure(a.size)
