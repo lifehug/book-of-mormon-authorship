@@ -2708,8 +2708,43 @@ So: zero pairs specific under both reviewers. The two reviewers agreed on 74% of
 
 Plainly: everything the searches surfaced is explained by the Bible or by how people wrote then. Caveat: this is model judgement, not a human expert's.
 
+## A Friday of answers: imitation, GPT-2, the manuscripts, and who could have read what
+
+While the big model trained, a lot of smaller questions got answered. Here they are side by side.
+
+**1. Can a writer imitating the Bible fool the methods?** We took three 18th-century writers who wrote both ordinary prose and fake scripture, trained each method on their ordinary prose, and asked it to name the author of their fake scripture.
+
+| Method | Right author | Weight it keeps |
+| --- | --- | --- |
+| Burrows / Cosine Delta (common words) | 13 of 18 | half |
+| General Imposters | 11 of 18 | half |
+| ENSC | 7 of 18 | none |
+| Our 297M language model | 7 of 17 | none |
+
+The plain common-word counts held up best. The language models, which are so good on ordinary text, got fooled by the biblical costume. That matters, because the Book of Mormon wears that costume.
+
+**2. Is training only on 1780-1830 books worth it?** Same test, same tuning, only the base model swapped:
+
+| Base model | Wrong author, out of 110 | False matches |
+| --- | --- | --- |
+| GPT-2 124M (modern internet) | 11 | 92% |
+| Ours 125M | 7 | 47% |
+| GPT-2 355M | 6 | 86% |
+| Ours 297M | 1 | 38% |
+
+The period-only models make far fewer mistakes, and are about twice as good at saying "not this author". That's the thing every method is worst at, so it's the number that counts.
+
+**3. Was the book dictated?** The surviving original manuscript was written as Joseph Smith spoke; the printer's manuscript is Oliver Cowdery copying it out. If the original was taken down by ear, it should be full of misheard words (*there* for *their*, *where* for *were*) that the copy doesn't have. With the same scribe on both, those fixes are about nine times as common in the original (30 of 590 against 5 of 837). We checked 60 of them against photos of the actual pages: none contradicted the transcription, and the "misheard word" label was right 30 times in 36. That fits Royal Skousen's reading. It shows the words came in by ear. It can't say where the speaker got them.
+
+**4. Could he have read the proposed sources?** We read the Palmyra and Canandaigua papers from 1817 to 1830, page by page where it mattered, plus Rick Grunder's 2,300-page catalogue of proposed parallels. Josephus was on sale in Palmyra from 1822 and in Grandin's own stock in the spring of 1829 (Grandin later printed the Book of Mormon). None of the famous candidates (*View of the Hebrews*, *The Late War*, Spalding) shows up in a local ad. The closest is a 1825 review of *View of the Hebrews* in a Utica paper, two counties away.
+
+**5. Do the books critics proposed rank high in our searches?** Of Grunder's 500 proposed sources, 139 are in our library. As a group they look a bit more like the Book of Mormon than other books of the same kind, mostly among histories. But they were proposed *because* someone noticed a resemblance, so that's expected. Only Josephus stands out against its own comparison books.
+
+Caveats: the photo check is an AI reading the images, not a human expert; the imitation test has only three writers; and Canandaigua's papers for 1827-28 aren't online.
+
 ## Log
 
+- **2026-11-06.** Imitation test (classical half-weight, language models fooled); GPT-2 comparison (our period models: 0.9% wrong vs 5.5%, false matches 38% vs 86%); dictation evidence confirmed on the page photos (~9x misheard-word fixes, same scribe); access table final after the Palmyra and Canandaigua papers and Grunder (no named source advertised locally; Josephus sold from 1822); GitHub CI fixed (had failed on every push).
 - **2026-11-06.** BOM-33: bought Rick Grunder's *Mormon Parallels* (2014 PDF, 2,307 pages), the book the access review recommended. It is copyrighted, so it lives in the private data repo (Git LFS: 245 MB is over GitHub's 100 MB limit), with a public checksum and the steps to buy it in `docs/replication.md`.
 - **2026-11-06.** Timeline, revised after the owner asked which waits are real: only the 1B (Sat afternoon) and the sweep masking are physical waits; the rest is hours. Blind run Sunday; paper (BOM-36) can start ~Tue Nov 10. The first estimate padded each step to a day.
 - **2026-11-06.** BOM-26 closed: 1,069 hit pairs triaged (Amendment 27): 382 biblical, 685 common, 2 specific on the first pass; the blind simulated second review called both common, so 0 specific under both. Agreement 0.740, kappa 0.505.
