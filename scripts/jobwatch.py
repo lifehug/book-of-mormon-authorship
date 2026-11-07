@@ -35,6 +35,7 @@ LOGS = [
     "gpt2.log",
     "jsp_images.log",
     "ontario.log",
+    "qktest.log",
 ]
 BAD = re.compile(r"^EXIT|Traceback|Error|error:|FAILED|Killed")
 
