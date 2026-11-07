@@ -1,8 +1,8 @@
 {
- "config_sha256": "8397b899a1f4f917c4a5e286e3f1bc63a33100433c67ca0b4e1162e50444cbef",
+ "config_sha256": "26db5f161194524eff8b582d24f985adf2cf474509be45c1ca9e693b94ecce5b",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "4807f4a264e31678c232129bc23816710dfe76ad",
+ "git_commit": "e1c4b1f944a922cca721808fd2479b761528ae43",
  "rule": "section 9: forward accuracy; full weight >= 0.8, half >= 0.6, else dropped (Amendment 7: exact 95% interval and n reported; equal-weight run beside)",
  "methods": {
   "alm_base": {
@@ -135,6 +135,141 @@
     "authors_ci95": [
      0.008403758659612643,
      0.9057006759497539
+    ],
+    "weight": 0.0
+   },
+   "weight": 0.0
+  },
+  "alm_pilot": {
+   "forward": {
+    "tests": 17,
+    "correct": 5,
+    "accuracy": 0.29411764705882354,
+    "ci95": [
+     0.10313551437032002,
+     0.5595827187543372
+    ],
+    "by_author": {
+     "dodsley, robert": 1.0,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 1,
+    "authors_ci95": [
+     0.008403758659612643,
+     0.9057006759497539
+    ],
+    "weight": 0.0
+   },
+   "reverse": {
+    "tests": 24,
+    "correct": 6,
+    "accuracy": 0.25,
+    "ci95": [
+     0.09773040947453301,
+     0.46711280242266934
+    ],
+    "by_author": {
+     "dodsley, robert": 0.6,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 1,
+    "authors_ci95": [
+     0.008403758659612643,
+     0.9057006759497539
+    ],
+    "weight": 0.0
+   },
+   "weight": 0.0
+  },
+  "alm_pilot_v1": {
+   "forward": {
+    "tests": 17,
+    "correct": 0,
+    "accuracy": 0.0,
+    "ci95": [
+     0.0,
+     0.19506432296909318
+    ],
+    "by_author": {
+     "dodsley, robert": 0.0,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 0,
+    "authors_ci95": [
+     0.0,
+     0.7075982261787134
+    ],
+    "weight": 0.0
+   },
+   "reverse": {
+    "tests": 24,
+    "correct": 3,
+    "accuracy": 0.125,
+    "ci95": [
+     0.026559314986248948,
+     0.3236113581888329
+    ],
+    "by_author": {
+     "dodsley, robert": 0.2,
+     "kenrick, w william": 0.25,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 0,
+    "authors_ci95": [
+     0.0,
+     0.7075982261787134
+    ],
+    "weight": 0.0
+   },
+   "weight": 0.0
+  },
+  "alm_pilot_v3": {
+   "forward": {
+    "tests": 17,
+    "correct": 4,
+    "accuracy": 0.23529411764705882,
+    "ci95": [
+     0.06810774043735668,
+     0.4989932732045801
+    ],
+    "by_author": {
+     "dodsley, robert": 0.8,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 1,
+    "authors_ci95": [
+     0.008403758659612643,
+     0.9057006759497539
+    ],
+    "weight": 0.0
+   },
+   "reverse": {
+    "tests": 24,
+    "correct": 0,
+    "accuracy": 0.0,
+    "ci95": [
+     0.0,
+     0.14247359772252563
+    ],
+    "by_author": {
+     "dodsley, robert": 0.0,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 0,
+    "authors_ci95": [
+     0.0,
+     0.7075982261787134
     ],
     "weight": 0.0
    },
@@ -319,6 +454,51 @@
     "weight": 0.0
    },
    "weight": 0.5
+  },
+  "style_embed": {
+   "forward": {
+    "tests": 18,
+    "correct": 7,
+    "accuracy": 0.3888888888888889,
+    "ci95": [
+     0.17298585478975184,
+     0.6425487941069373
+    ],
+    "by_author": {
+     "dodsley, robert": 1.0,
+     "kenrick, w william": 0.5,
+     "snowden, richard": 0.09090909090909091
+    },
+    "authors": 3,
+    "authors_majority_right": 1,
+    "authors_ci95": [
+     0.008403758659612643,
+     0.9057006759497539
+    ],
+    "weight": 0.0
+   },
+   "reverse": {
+    "tests": 24,
+    "correct": 13,
+    "accuracy": 0.5416666666666666,
+    "ci95": [
+     0.328208075695178,
+     0.7444697980052537
+    ],
+    "by_author": {
+     "dodsley, robert": 0.9,
+     "kenrick, w william": 1.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 2,
+    "authors_ci95": [
+     0.09429932405024613,
+     0.9915962413403874
+    ],
+    "weight": 0.0
+   },
+   "weight": 0.0
   }
  }
 }
