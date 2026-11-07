@@ -1,0 +1,85 @@
+{
+ "config_sha256": "2f5363d160ba9c1f69033d8140cdfc8402e43604636cea6c8c39c913e93910c7",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "bac2d3c671e929e4e41f1355d3e8a97be5f5d21f",
+ "what": "BOM-27: does QK-norm stop high-learning-rate instability? 125M shape, 1,500 steps on 3 training files, 2 x H100 (2026-11-07)",
+ "runs": {
+  "10x plain": {
+   "steps": 1500,
+   "val_loss": 3.6713168621063232,
+   "200-500": {
+    "median_loss": 5.074,
+    "median_grad_norm": 0.266,
+    "max_grad_norm": 0.47
+   },
+   "500-1000": {
+    "median_loss": 4.075,
+    "median_grad_norm": 0.225,
+    "max_grad_norm": 0.54
+   },
+   "1000-1500": {
+    "median_loss": 3.635,
+    "median_grad_norm": 0.236,
+    "max_grad_norm": 0.65
+   }
+  },
+  "10x qk_norm": {
+   "steps": 1500,
+   "val_loss": 3.7393715381622314,
+   "200-500": {
+    "median_loss": 5.201,
+    "median_grad_norm": 0.248,
+    "max_grad_norm": 0.66
+   },
+   "500-1000": {
+    "median_loss": 4.206,
+    "median_grad_norm": 0.182,
+    "max_grad_norm": 0.4
+   },
+   "1000-1500": {
+    "median_loss": 3.744,
+    "median_grad_norm": 0.148,
+    "max_grad_norm": 0.4
+   }
+  },
+  "30x plain": {
+   "steps": 1500,
+   "val_loss": 5.833301544189453,
+   "200-500": {
+    "median_loss": 6.295,
+    "median_grad_norm": 2.789,
+    "max_grad_norm": 213.74
+   },
+   "500-1000": {
+    "median_loss": 6.498,
+    "median_grad_norm": 12.554,
+    "max_grad_norm": 3051.34
+   },
+   "1000-1500": {
+    "median_loss": 6.367,
+    "median_grad_norm": 20.358,
+    "max_grad_norm": 837.5
+   }
+  },
+  "30x qk_norm": {
+   "steps": 1500,
+   "val_loss": 3.6151392459869385,
+   "200-500": {
+    "median_loss": 5.197,
+    "median_grad_norm": 0.126,
+    "max_grad_norm": 0.24
+   },
+   "500-1000": {
+    "median_loss": 4.098,
+    "median_grad_norm": 0.093,
+    "max_grad_norm": 0.22
+   },
+   "1000-1500": {
+    "median_loss": 3.633,
+    "median_grad_norm": 0.075,
+    "max_grad_norm": 0.16
+   }
+  }
+ }
+}
