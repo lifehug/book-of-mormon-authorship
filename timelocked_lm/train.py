@@ -148,12 +148,17 @@ def evaluate(model, val: Windows, tokens: int, micro: int, device: str, ctx, ran
 
 
 def _save(path: Path, state: dict) -> None:
+    """Write atomically, keeping the previous checkpoint beside it: a loss spike can corrupt the
+    run between two saves, and the 1B's only clean checkpoint was overwritten (2026-11-06)."""
     tmp = path.with_suffix(".tmp")
     torch.save(state, tmp)
+    if path.exists():
+        os.replace(path, path.with_name(path.stem + "_prev" + path.suffix))
     os.replace(tmp, path)
 
 
-def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes: float) -> int:
+def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes: float,
+          lr_scale: float = 1.0, reset_optimizer: bool = False) -> int:  # fmt: skip
     cfg = load_config()
     t = cfg["timelocked_lm"]
     from tokenizers import Tokenizer
@@ -202,7 +207,10 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
     if ck.exists():
         state = torch.load(ck, map_location=device)
         model.load_state_dict(state["model"])
-        opt.load_state_dict(state["optimizer"])
+        if reset_optimizer:  # recovery from a loss spike: fresh Adam moments
+            print("optimizer state reset on resume", flush=True)
+        else:
+            opt.load_state_dict(state["optimizer"])
         step = state["step"]
         print(f"resumed at step {step:,}", flush=True)
     meta = {**stamp(), "size": size, "shape": shape, "params": params(model), "vocab": vocab,
@@ -219,7 +227,7 @@ def train(size: str, out: Path, micro: int, max_steps: int | None, ckpt_minutes:
     last_ck, t0 = time.time(), time.time()
     while step < steps:
         for g in opt.param_groups:
-            g["lr"] = lr_at(step, steps, t)
+            g["lr"] = lr_at(step, steps, t) * lr_scale
         loss_sum = 0.0
         for a in range(accum):
             first = step * per_step + rank * per_rank + a * micro
@@ -278,8 +286,18 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--micro-batch", type=int, default=32, help="sequences per forward pass")
     ap.add_argument("--max-steps", type=int, default=None, help="smoke tests only")
     ap.add_argument("--checkpoint-minutes", type=float, default=20)
+    ap.add_argument("--lr-scale", type=float, default=1.0, help="recovery only; documented if used")
+    ap.add_argument("--reset-optimizer", action="store_true", help="recovery: fresh Adam state")
     a = ap.parse_args(argv)
-    return train(a.size, a.out, a.micro_batch, a.max_steps, a.checkpoint_minutes)
+    return train(
+        a.size,
+        a.out,
+        a.micro_batch,
+        a.max_steps,
+        a.checkpoint_minutes,
+        a.lr_scale,
+        a.reset_optimizer,
+    )
 
 
 if __name__ == "__main__":
