@@ -1,0 +1,110 @@
+{
+ "config_sha256": "26db5f161194524eff8b582d24f985adf2cf474509be45c1ca9e693b94ecce5b",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "7af89acb272c93b45f6ecb687ff75b34c72298ee",
+ "reader": "AI model (claude-opus-5-5) reading the page photographs; not a human expert",
+ "sample": {
+  "seed": "bom34-handcheck",
+  "events": 60,
+  "manuscript": "original",
+  "rule": "all 36 homophone events; seeded draws of the other types"
+ },
+ "visible": {
+  "yes": 21,
+  "unclear": 27,
+  "partial": 12
+ },
+ "visible_share_yes_or_partial": 0.55,
+ "type_agreement_all": 0.733,
+ "by_type": {
+  "deletion": {
+   "sampled": 4,
+   "of": 447,
+   "visible": {
+    "unclear": 3,
+    "yes": 1
+   },
+   "type_ok": 4
+  },
+  "false_start": {
+   "sampled": 3,
+   "of": 80,
+   "visible": {
+    "yes": 3
+   },
+   "type_ok": 3
+  },
+  "homophone": {
+   "sampled": 36,
+   "of": 36,
+   "visible": {
+    "yes": 7,
+    "partial": 11,
+    "unclear": 18
+   },
+   "type_ok": 30
+  },
+  "insertion": {
+   "sampled": 3,
+   "of": 377,
+   "visible": {
+    "yes": 3
+   },
+   "type_ok": 3
+  },
+  "other": {
+   "sampled": 4,
+   "of": 476,
+   "visible": {
+    "yes": 3,
+    "unclear": 1
+   },
+   "type_ok": 4
+  },
+  "sound_alike": {
+   "sampled": 6,
+   "of": 105,
+   "visible": {
+    "partial": 1,
+    "unclear": 3,
+    "yes": 2
+   },
+   "type_ok": 0
+  },
+  "spelling": {
+   "sampled": 4,
+   "of": 76,
+   "visible": {
+    "unclear": 2,
+    "yes": 2
+   },
+   "type_ok": 0
+  }
+ },
+ "homophone": {
+  "events": 36,
+  "true_same_sound_pairs": 30,
+  "not_same_sound": 6,
+  "corrected_in_line_per_catalog": 4,
+  "corrected_by_insertion_per_catalog": 32,
+  "timing_on_the_photographs": {
+   "visible_or_partial": 18,
+   "corrected_in_the_flow": 6,
+   "replacement_above_the_line": 2,
+   "undetermined": 10,
+   "note": "in the flow = struck and rewritten straight after on the line, or written over; the transcript marks some overwrites as insertions, so the catalog's 'immediate' flag undercounts corrections made while writing"
+  }
+ },
+ "ratio_sensitivity": {
+  "rule": "drop the pairs the hand check found are not same-sound (these/this, off/of, that/than)",
+  "cowdery_original": "30 of 590 substitutions",
+  "cowdery_printers": "5 of 837 substitutions",
+  "odds_ratio": 8.9,
+  "fisher_p": 6.1e-08,
+  "as_built": {
+   "odds_ratio": 9.0,
+   "fisher_p": 2.4e-09
+  }
+ }
+}

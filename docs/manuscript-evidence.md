@@ -116,6 +116,51 @@ narrator accuracy reaches the benchmark's Cosine Delta accuracy at 2,000 words (
 `data/benchmark/power.json`) and neither other segmentation is more accurate. It refuses to run
 until BOM-32 has unblinded, because the chunks are the sealed text. Tested on synthetic text only.
 
+## Hand check against the page photographs
+
+The original manuscript's 231 page photographs (Joseph Smith Papers; `ingest.jsp_images`, kept
+outside git) were compared with a seeded sample of 60 catalogued events (seed `bom34-handcheck`):
+all 36 homophone events and seeded draws of the other types (6 sound-alike, 4 spelling, 4 other,
+3 false starts, 4 deletions, 3 insertions). **The reader was an AI model (Claude) looking at crops
+of the photographs, not a human expert**; its readings with the words are private
+(`data/private/manuscript/handcheck.jsonl`), the counts public (`data/manuscript/handcheck.json`).
+
+- **Visible as transcribed:** 21 clearly, 12 partly, 27 unclear. The surviving leaves are
+  fragmentary, faded or holed; "unclear" means the photograph could not confirm or refute the
+  transcript, not that the transcript is wrong. No event was seen to contradict the transcript.
+- **Type right:** 44 of 60 (73%). By type:
+
+| Type | Sampled | Type right | What the wrong ones were |
+| --- | ---: | ---: | --- |
+| Homophone | 36 (all) | 30 | *these/this* (grammar), *off/of* x2 (spelling slips), *that/than* x3 (near-misses, not same sound) |
+| Sound-alike (Soundex) | 6 | 0 | spelling slips, a word-form change (-eth to -ed), line-break restarts |
+| Spelling | 4 | 0 | word slips and word-form changes, a line-end restart |
+| Other, false start, deletion, insertion | 14 | 14 | |
+
+- **What it means for the dictation ratio.** Dropping the three pair types that are not same-sound
+  (*these/this*, *off/of*, *that/than*) from both manuscripts, Cowdery's homophone corrections are
+  30 of 590 substitutions in the original against 5 of 837 in the printer's: odds ratio 8.9,
+  Fisher p = 6e-8, against 9.0 (p = 2e-9) as built. The result does not depend on the mislabelled
+  pairs. *There/their* alone is 23 of the 30.
+- **The broader measures are not ear-error measures.** None of the six sampled sound-alike events
+  and none of the four spelling events was a mishearing; they are mostly slips of the pen and
+  word-form changes. The doc already reported Soundex beside the primary measure rather than as
+  evidence; the hand check confirms it should stay that way.
+- **When corrections were made.** Of the 18 homophone events visible on the photographs, 6 were
+  corrected in the flow of writing (struck and rewritten straight after, or written over), 2 had
+  the replacement written above the line, and 10 could not be told. The transcript marks some
+  overwrites as insertions, so the catalog's `immediate` flag (4 of 36) undercounts corrections
+  made while writing.
+
+**Against Skousen's categories.** Skousen's reading, as summarised in Peterson's response in
+*Uncovering the Original Text* (FARMS 2002, "A Response", first page), is that the original
+manuscript's errors are those of a scribe mishearing and the printer's those of a copyist, with
+dictation in spans of about twenty to thirty words, names spelled out, and read-back corrections.
+Our homophone measure corresponds to his mishearing errors and agrees with his contrast between
+the manuscripts; our sound-alike and spelling types are mostly not ear errors and should not be
+read as his category. The span length, spelled-out names and read-back corrections are not
+reproduced here.
+
 ## Not established
 
 - Most of the original manuscript is lost (72%); the catalog covers what survives, mostly Alma
@@ -125,9 +170,8 @@ until BOM-32 has unblinded, because the chunks are the sealed text. Tested on sy
   counts of insertions and deletions but should not create homophone fixes.
 - Page words are credited to the hand that opens each page, so per-scribe rates are approximate
   where a page changes hands.
-- The event typing is automatic. A human check of a sample of events (not yet done) would give
-  its error rate; the homophone list is narrow by design, so it undercounts mishearings rather
-  than inventing them.
+- The event typing is automatic; the hand check below gives its error rate on a sample. It was
+  read by an AI model from the page photographs, not by a human expert.
 - Skousen's catalogue of evidence (spelled-out names, the "twenty words at a time" span, read-back
   corrections) is not reproduced here beyond the counts above.
 

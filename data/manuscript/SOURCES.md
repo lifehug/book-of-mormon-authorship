@@ -6,6 +6,7 @@ Ids, pages, hands, categories and counts only; no manuscript words.
 | File | What | Rebuild |
 | --- | --- | --- |
 | `corrections.csv` | one row per correction: manuscript, page, editorial page, scribe, event (substitution, false start, deletion, insertion), type (homophone, sound-alike, spelling, other), immediate, name flag, words struck and added, paragraph range | `python -m manuscript.corrections build` |
+| `handcheck.json` | the hand check of 60 sampled original-manuscript events against the page photographs: visibility, type agreement by type, the ratio with mislabelled pairs dropped, correction timing; counts only. Read by an AI model, not a human expert | a model's reading of `data/corpus/jsp_images/original/` (`python -m ingest.jsp_images original`); readings with words in `data/private/manuscript/handcheck.jsonl` |
 | `summary.json` | counts by manuscript and scribe; dictated against copied, on all pages, on the same passages, and with the scribe held fixed (Fisher tests) | the same |
 
 The word pairs themselves are the Joseph Smith Papers' transcription (copyright Intellectual
@@ -15,6 +16,9 @@ Inputs: `data/private/bom/jsp_original.jsonl`, `jsp_printers.jsonl` (see `data/b
 `data/bom/align_original.jsonl`, `align_printers.jsonl`.
 
 ## Sources cited in docs/manuscript-evidence.md
+
+- Joseph Smith Papers, page photographs of the original manuscript (same document page, image links in each page's gallery, `https://www.josephsmithpapers.org/bc-jsp/content/jsp/images/9152/...`); copyright Intellectual Reserve, kept outside git, checksums in `data/manifests/jsp_images.jsonl`
+- Daniel C. Peterson, "A Response: What the Manuscripts and the Eyewitnesses Tell Us about the Translation of the Book of Mormon", in M. Gerald Bradford and Alison V. P. Coutts, eds., *Uncovering the Original Text of the Book of Mormon* (FARMS, 2002): https://scholarsarchive.byu.edu/mi/96/ (private copy in the data repository, `skousen/`)
 
 - Joseph Smith Papers, Original Manuscript of the Book of Mormon, circa 12 April 1828-circa 1 July 1829, source note and historical introduction: https://www.josephsmithpapers.org/paper-summary/original-manuscript-of-the-book-of-mormon-circa-12-april-1828-circa-1-july-1829/1
 - Joseph Smith Papers, Printer's Manuscript of the Book of Mormon, circa August 1829-circa January 1830, source note: https://www.josephsmithpapers.org/paper-summary/printers-manuscript-of-the-book-of-mormon-circa-august-1829-circa-january-1830/1
