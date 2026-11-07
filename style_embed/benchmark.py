@@ -38,7 +38,8 @@ def embedder(model: Path, cfg: dict):
     from timelocked_lm.release import TOKENIZER
 
     s = cfg["style_embed"]
-    dev = "mps" if torch.backends.mps.is_available() else "cpu"
+    dev = ("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available()
+           else "cpu")  # fmt: skip
     enc = load_encoder(model, cfg).to(dev)
     tok = Tokenizer.from_file(str(TOKENIZER))
     n = s["passage_tokens"]
