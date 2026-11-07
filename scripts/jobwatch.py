@@ -14,6 +14,7 @@ Usage::
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import subprocess
 import sys
@@ -38,6 +39,30 @@ LOGS = [
 BAD = re.compile(r"^EXIT|Traceback|Error|error:|FAILED|Killed")
 
 
+def spike() -> str | None:
+    """The 1B's last 50 steps: a loss spike shows as a median gradient norm far above the ~0.5 of
+    healthy training (2026-11-06: one ran ~450 steps before anyone saw it)."""
+    r = subprocess.run(["ssh", "-o", "ConnectTimeout=10", "largepod", "tail -n 50 /workspace/repo/"
+                        "data/corpus/timelocked_lm/runs/large/log.jsonl"],
+                       capture_output=True, text=True, timeout=60)  # fmt: skip
+    rows = []
+    for ln in r.stdout.splitlines():
+        try:
+            rows.append(json.loads(ln))
+        except json.JSONDecodeError:
+            continue
+    if len(rows) < 20:
+        return None
+    gn = sorted(x["grad_norm"] for x in rows)[len(rows) // 2]
+    if gn > 10:
+        last = rows[-1]
+        return (
+            f"1B SPIKE: median grad norm {gn:.1f} over the last {len(rows)} steps "
+            f"(step {last['step']}, loss {last['loss']:.2f})"
+        )
+    return None
+
+
 def sessions() -> set[str]:
     r = subprocess.run(["tmux", "ls", "-F", "#S"], capture_output=True, text=True)
     return set(r.stdout.split())
@@ -55,6 +80,7 @@ def main(argv: list[str] | None = None) -> int:
     seen = {f: time.time() for f in LOGS}
     stalled: set[str] = set()
     last_driver = ""
+    last_spike, spiking = 0.0, False
     while True:
         cur = sessions()
         for s in sorted(prev - cur):
@@ -92,6 +118,15 @@ def main(argv: list[str] | None = None) -> int:
                     print(f"STALL {f}: no output for {a.stall:.0f} min (last: {last[:120]})",
                           flush=True)  # fmt: skip
                 stalled.add(f)
+        if time.time() - last_spike > 600:  # every 10 minutes
+            last_spike = time.time()
+            try:
+                msg = spike()
+            except (subprocess.TimeoutExpired, OSError):
+                msg = None
+            if msg and not spiking:
+                print(msg, flush=True)
+            spiking = bool(msg)
         time.sleep(a.interval)
 
 
