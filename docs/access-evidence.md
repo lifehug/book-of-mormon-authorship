@@ -317,8 +317,10 @@ that it was used.
   author, price or subtitle. It would need a Grandin or Tucker invoice, a school list naming
   the book, or a surviving Palmyra copy.
 - ~~*Palmyra Register* and *Palmyra Herald* not searched~~: **done**, see "Follow-up" below.
-- **The *Ontario Repository* (Canandaigua, 1809-1829)**, with the Bemis and Tyler bookstore
-  ads, is still not searched. It is digitized only on NYSHN, which needs the owner's unlocked
+- **The *Ontario Repository* (Canandaigua)**: searched for 1824-1826 (see below). 1827-1828,
+  the years closest to the dictation, are not on NYSHN, and 1809-1823 is not online either.
+  H. Tyler's Ontario Bookstore does not appear in the 1824-1826 OCR. Earlier text of this item:
+  it was not searched. It is digitized only on NYSHN, which needs the owner's unlocked
   browser (`scripts/nyshn_browser_pull.py`). It is not on Chronicling America (no digitized
   pages under any Canandaigua LCCN) and was not found on an Advantage archive.
 - **Grandin's 1828 circulating library**: no catalogue of it has been found.
@@ -423,7 +425,7 @@ for those two lists the absence is a real result.
   `data/manifests/palmyra_herald_text.jsonl`, `data/manifests/pioneerlibrarysystem_pdf.jsonl`.
 
 **Still open.**
-- The *Ontario Repository* (NYSHN only; needs the owner's unlocked browser).
+- ~~The *Ontario Repository*~~: done, see "Ontario Repository" below.
 - The *Western Farmer* (Palmyra, 1821-1822), which is listed for Fulton History, not on this
   archive.
 - The *Palmyra Reflector* (1829-1830).
@@ -500,3 +502,42 @@ treat the text.
 - Titles and years are bibliographic facts. No commentary or quotation from Grunder is in the
   file. The parse and match code was run from a scratch script and is described in
   `data/access/SOURCES.md`; it is not yet in a pipeline package.
+
+### Ontario Repository, Canandaigua (2026-11-06)
+
+**Source.** `data/newspapers/ontario_repository/`: 483 pages of NYSHN OCR. 1824 (210 pages), 1825
+(213), 1826 (52) and two issues of 1829. NYSHN has nothing for 1827-1828. Hits were read by eye
+on the NYSHN page view, through the owner's already-unlocked Chrome on 127.0.0.1:9222, using
+`scripts/nyshn_browser_pull.py`'s connection. One page at a time, with pauses, at a large
+viewport so the viewer rendered the page at reading size. No challenge appeared on any page;
+the procedure was to stop if one did. No page images were saved to the repo; the screenshots
+used for reading stayed in a local scratch folder.
+
+**Search.** Every one of the 33 texts and the named sources (titles, authors, short titles), plus
+the Canandaigua Bookstore (Bemis; Bemis, Morse & Ward) and Ontario Bookstore (Tyler) lists.
+
+**What the page images show.**
+
+| Page | What it is | Bears on |
+| --- | --- | --- |
+| 7 Jul 1824 p3 | J. D. Bemis & Co., Canandaigua, dated 30 Jun 1824: "a new supply of" books, "... Duncan's Cicero—**Josephus**—Starkie's Reports ..." (same list in OCR 30 Jun-4 Aug 1824) | Josephus: sold at the county seat |
+| 9 Mar 1825 p4 | "NEW BOOKS. Just received at the Canandaigua Bookstore", and "Also, on hand ... Scott's Works ...—**Josephus**—Rollin—Franklin's Works ..." | Josephus |
+| 22 Sep 1824 p3 | Canandaigua Bookstore: "a new supply of ... Woodbridge's Geography and Atlas—Greek Testaments—**History of the late War**—Day's Algebra ..." | *The Late War*? **Unassignable.** Hunt advertised his book as "History of the Late War" (Grunder MP p. 726), but H. M. Brackenridge's and J. C. Gilleland's *History of the Late War between the United States and Great Britain* (both from 1817, both in our catalog) carry that exact title |
+| 28 Dec 1825 p1 | Bemis, Morse & Ward, "New School Books": "**Historical Reader**, for the use of [schools a]nd families, on a new plan. By [J. L.] Blake, A. M." | The "Historical Reader" question: in the one ad in these papers that names an author, it is **Blake's**, not Hunt's |
+| 28 Dec 1825 p1 (and OCR, 12 issues to 29 Mar 1826) | Walker's *Critical Pronouncing Dictionary*, "Second Canandaigua stereotype edition, to which is added a Chronological Table, stating the principal events of the late war between the United States and Great Britain" | Explains every recurring "late war between the United States and Great Britain" hit. **Not Hunt** |
+
+OCR also shows "Works of Flavius Josephus ... London edition" on 9 Dec 1829 p1, after the
+dictation; it was not re-read. No hit for *View of the Hebrews*, Ethan Smith, Hunt by name,
+*The First Book of Napoleon*, Spalding (only personal names), Fox's *Journal*, Nayler,
+Simpson's *Sacred Literature* or Blake's *Biblical Reader*. "Bayly" is an R. M. Bayly of
+Geneva, and "Blake's" is Blake's *Chancery*, a law book. As always, a miss is not a negative.
+
+**Scores.** No change.
+- Josephus stays 3. The Canandaigua sales of 1824-1825 add to the Palmyra evidence.
+- *The Late War* stays 1. The Canandaigua "History of the late War" (1824) could be Hunt's
+  but could equally be Brackenridge's or Gilleland's. The one "Historical Reader" with a named
+  author in these papers is Blake's.
+- This does not prove the Palmyra "Historical Reader" ads of 1827-1830 were Blake's. It does
+  remove the only route by which they might have counted for Hunt without further evidence.
+- Blake's *Biblical Reader* stays 1: his *Historical Reader*, a different book, was sold at
+  Canandaigua, which is author-level presence only.

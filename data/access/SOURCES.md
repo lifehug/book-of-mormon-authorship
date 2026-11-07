@@ -111,3 +111,17 @@ pipeline package.
 
 **Licence.** Titles, authors, years and page numbers are bibliographic facts. The CSV holds no
 commentary or quotation from Grunder.
+
+## Ontario Repository page views (2026-11-06)
+
+OCR text: `data/newspapers/ontario_repository/` (its own `SOURCES.md`). Hits read by eye on the
+NYSHN page view, `https://nyshistoricnewspapers.org/?a=d&d=<oid>`, where `oid` comes from that
+folder's `pages.jsonl`. They were read through the owner's unlocked Chrome, with no challenge
+met. Screenshots were kept locally only.
+
+| Page | oid | Item |
+| --- | --- | --- |
+| 7 Jul 1824 p3 | `onrb18240707-01.1.3` | J. D. Bemis & Co., 30 Jun 1824, new supply of books incl. Josephus |
+| 22 Sep 1824 p3 | `onrb18240922-01.1.3` | Canandaigua Bookstore, new supply incl. "History of the late War" |
+| 9 Mar 1825 p4 | `onrb18250309-01.1.4` | Canandaigua Bookstore, "on hand ... Josephus" |
+| 28 Dec 1825 p1 | `onrb18251228-01.1.1` | Bemis, Morse & Ward "New School Books": Blake's Historical Reader; Walker's dictionary with its chronological table of the late war |
