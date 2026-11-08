@@ -82,6 +82,10 @@ def main(argv: list[str] | None = None) -> int:
     last_driver = ""
     last_spike, spiking = 0.0, False
     while True:
+        if not (ROOT / "data/corpus").is_symlink() and "corpus_link" not in stalled:
+            print("DATA/CORPUS IS NOT A LINK to the external drive: jobs will read an empty "
+                  "folder; restore it (docs/mac-mini-setup.md)", flush=True)  # fmt: skip
+            stalled.add("corpus_link")
         cur = sessions()
         for s in sorted(prev - cur):
             print(f"ENDED tmux '{s}'", flush=True)
