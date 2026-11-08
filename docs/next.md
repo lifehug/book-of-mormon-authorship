@@ -9,11 +9,15 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 | Job | Where | Done (est.) | When it ends |
 | --- | --- | --- | --- |
-| BOM-27 **590M mid model** (`large_pod.py --size mid`, tmux `midpod`; Amendment 39) | 2 x H100 pod `j4rz95isd68egw` (no 4 x H100 free), cap $320 | ~36 h, ~Sun 23:00 | `after_mid.sh` (tmux `aftermid`): benchmark, candidates, imitation; then ask the owner before deleting the pod's full snapshots |
-| After the 1B (`scripts/after_1b.sh`, tmux `after1b`) | waits; then H100s | Sat night | 1B benchmark (primary, V1-V3) -> publish to `etherfuse/timelocked-1830-1b` -> 1B candidate models and 1B imitation in parallel -> `eval.imitation report` |
-| BOM-39 KJV masking of sweep blocks (tmux `sweepmask`) | Mac CPU | 2026-11-07 ~13:30 (2.5 min a batch) | `scripts/sweep_chain.sh` (tmux `sweepchain`): `sweep.index` tokens, mfw, embed, then `sweep.calibrate` -> write up BOM-39/47 |
-| BOM-29 transformer cross-check (tmux `bom29`) | Mac GPU | 2026-11-06 ~22:00 | write up beside the grammar model; close BOM-29; `mac_gpu_chain.sh` starts |
-| 125M tests | style imitation and V3 on the Mac (`macgpu`, done/ending); candidate models (tmux `candpodpilot`) and imitation primary + V1 (tmux `imitpilot`) moved to H100s after the Mac ran short of memory (owner, ~$5) | ~22:30 | `eval.imitation report`; 125M candidate validation |
+| BOM-27 **590M mid model** (`large_pod.py --size mid`, tmux `midpod`; Amendment 39) | 2 x H100 pod `j4rz95isd68egw`, cap $345 | ~Mon 01:00 | `after_mid.sh` (tmux `aftermid`): benchmark, candidates, imitation; then blind ALM scoring at mid; then **ask the owner** before deleting the pod's full snapshots |
+| BOM-47 plausibility gate on the 100 gate-sample authors (research agent, blind to scores) | agent | tonight | chance survival rate beside the expected false-lead count |
+
+## Done today (2026-11-07)
+
+- QK-norm stability test passed (`data/stability/`); 590M launched.
+- Sweep: masking (0.93% of 464M words), index (style step on an H100 after two Mac GPU hangs), calibration: true author first 27-35%, **not usable** by 6.6; expected false leads 0.035 per query, so any lead is surprising (BOM-47).
+- Blind run: sealed (211 ids: 168 chunks, 43 decoys); Amendment 33 filed (both 6.1 readings + false-match ladder); scored blind in a fresh session: classic, dating, style, ALM 125M and 297M, sweep. Only the 590M's ALM remains before unblinding.
+- Fixed: the data/corpus link (an rsync fetch had replaced it; nothing lost), pod cleanup, stall detection.
 
 ## Waiting on the owner
 
