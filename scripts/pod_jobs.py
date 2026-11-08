@@ -228,7 +228,10 @@ def step(s: dict, a: argparse.Namespace) -> bool:
                  + ", ".join(f"`{p}`" for p in a.fetch), issue)  # fmt: skip
         s["phase"] = "cleanup"
     elif ph == "cleanup":
-        listed = " ".join(shlex.quote(n) for n in s["uploads"])
+        # uploads under data/corpus or data/private go with those folders; list only the rest
+        # (26,508 token files once made the command too long for ssh, 2026-11-07)
+        rest = [n for n in s["uploads"] if not n.startswith(("data/corpus/", "data/private/"))]
+        listed = " ".join(shlex.quote(n) for n in rest)
         sp.remote(f"cd {R} && rm -rf data/corpus data/private {listed} sha256.txt {OUTFILE}")
         rc, out = sp.remote(f"cd {R} && ls -d data/corpus data/private {listed} 2>/dev/null "
                             "| wc -l")  # fmt: skip
