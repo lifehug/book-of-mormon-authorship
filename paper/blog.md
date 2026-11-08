@@ -2742,8 +2742,35 @@ The period-only models make far fewer mistakes, and are about twice as good at s
 
 Caveats: the photo check is an AI reading the images, not a human expert; the imitation test has only three writers; and Canandaigua's papers for 1827-28 aren't online.
 
+## Saturday: a model that broke, a smaller one that won't, and the seal goes on
+
+**The 1B broke.** About a third of the way through training, the big model's error jumped and never came back. I tried twice to rescue it from a saved point, at half and then a quarter of the learning speed; both times it stayed unstable. Models around a billion parameters are known for this: the "attention" scores inside them can grow without limit until training falls apart. I stopped it to stop paying for it (about $230 in all), and, my mistake, deleted its saved checkpoints before asking. That cost us the chance to prove what went wrong.
+
+**The fix, tested before spending.** There's a standard remedy (QK-norm: it keeps those attention scores on a leash). Rather than trust it, we tested it on our own small model at a learning speed 30 times too high:
+
+| | Without the fix | With the fix |
+| --- | --- | --- |
+| Error at the end (lower is better) | 5.83, broken | 3.62, the best of the four runs |
+| Biggest jolt during training | 3,051 | 0.2 |
+
+So now a ~590M model with the fix is training: halfway between the 297M and the 1B, about $290, done around midnight Sunday. It now keeps a snapshot every 5,000 steps, so if anything goes wrong there's always a clean point to go back to.
+
+**The author sweep: honest, and humbling.** We compared the Book of Mormon's style setup against all 23,872 authors in the library with 10,000+ words, then tested the method on 200 books whose authors we know:
+
+| | Common words | Style fingerprints |
+| --- | --- | --- |
+| Right author ranked first out of 23,872 | 27% | 30% |
+| Right author in the top 5 | 46% | 52% |
+
+We'd set the bar at 70% before starting, so by our own rule the sweep isn't good enough to name an author. It can still point at a short list. And because a "lead" has to pass both measures, false leads are rare: about 1 in 30 books. So if the Book of Mormon gets even one lead, that would be worth a hard look. We wrote that down before looking.
+
+**The seal.** We mixed the Book of Mormon's 168 chunks with 43 decoy chunks from known authors, gave them all random labels, and locked the answer key outside the project. Then a separate AI session, which never saw the key, scored every chunk with every method. All those results are saved and fingerprinted. Only when the ~590M has scored them too do we open the key and see whether the methods found the decoys' real authors, and what they say about the rest.
+
+**Things that went wrong today, kept for the record:** the Mac's graphics chip froze twice on one job (moved it to a rented GPU, $12); a file transfer quietly replaced the link to our big external drive with an empty folder, so jobs were reading nothing (nothing was lost; it's now guarded against); and my first two attempts at the stability test were set up wrong ($4 and an hour wasted).
+
 ## Log
 
+- **2026-11-07.** 1B abandoned after an unrecoverable loss spike (Amendments 38-39); QK-norm tested (30x LR: plain breaks, QK-norm trains) and a 590M with it launched. Sweep calibrated: true author first 27-35%, not usable by our 70% rule; expected false leads 0.035 per book; plausibility gate passes 10% of random authors (Amendment 40). Book of Mormon sealed with 43 decoys and scored blind by every method except the 590M (Amendment 33: both match rules and a false-match ladder).
 - **2026-11-06.** BOM-29 closed: the transformer cross-check dates held-out text to 10 years on average (grammar model 23, word model 13) and, unlike the grammar model, is not fooled by Bible imitation (+1 year vs -53). The grammar model still decides H3; the Book of Mormon is dated in the blind run.
 - **2026-11-06.** Imitation test (classical half-weight, language models fooled); GPT-2 comparison (our period models: 0.9% wrong vs 5.5%, false matches 38% vs 86%); dictation evidence confirmed on the page photos (~9x misheard-word fixes, same scribe); access table final after the Palmyra and Canandaigua papers and Grunder (no named source advertised locally; Josephus sold from 1822); GitHub CI fixed (had failed on every push).
 - **2026-11-06.** BOM-33: bought Rick Grunder's *Mormon Parallels* (2014 PDF, 2,307 pages), the book the access review recommended. It is copyrighted, so it lives in the private data repo (Git LFS: 245 MB is over GitHub's 100 MB limit), with a public checksum and the steps to buy it in `docs/replication.md`.
