@@ -17,7 +17,8 @@ done
 # model needs its own export before release (BOM-66), and publishing is the owner's call.
 echo "$(date '+%F %T') mid benchmark home"
 echo "$(date '+%F %T') starting the mid candidate models and imitation runs"
-uv run python scripts/candidates_pod.py --issue 38 --size mid --cap 40 &
+# --blind (BOM-32): the same pod scores the sealed set before the 36 GB of weights come home
+uv run python scripts/candidates_pod.py --issue 38 --size mid --cap 40 --blind &
 cand=$!
 sleep 300  # both drivers rewrite ~/.ssh/config when their pod comes up; keep them apart
 uv run python -m eval.imitation files mid > logs/imitation_mid_files.txt
@@ -41,6 +42,11 @@ if [ "$status" = 0 ]; then
   echo "tests passed: ASK THE OWNER before deleting the mid pod and its full snapshots"
 else
   echo "a test failed: the mid pod and its full snapshots are kept for the owner"
+fi
+if grep -q '"blind_home": true' logs/candidates_pod_mid/state.json; then
+  echo "BLIND RUN COMPLETE (pilot, base and mid scored and hashed): commit data/blind/, then unblind (manual)"
+else
+  echo "mid blind scores NOT home: see logs/candidates_pod_mid/ before unblinding"; status=1
 fi
 echo "$(date '+%F %T') done (status $status)"
 exit $status

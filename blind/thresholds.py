@@ -23,7 +23,7 @@ No Book of Mormon text is read. The file is committed before the blind run (6.1)
 
 Usage::
 
-    python -m blind.thresholds [pilot base large]   # -> data/blind/thresholds.json
+    python -m blind.thresholds [pilot base mid]   # -> data/blind/thresholds.json (merged by size)
 """
 
 from __future__ import annotations
@@ -110,6 +110,38 @@ def alm_threshold(size: str, rate: float, rates: list[float]) -> dict | None:
     return {**calibrate(pos, neg, rate), "ladder": ladder(pos, neg, rates), "source": cand.name}
 
 
+def _size_order(z: str) -> tuple[int, str]:
+    return (SIZES.index(z) if z in SIZES else len(SIZES), z)
+
+
+def merge_doc(old: dict | None, new: dict) -> dict:
+    """``new`` (a run over some sizes) laid over ``old``: every authorial-model size ``old`` has
+    and ``new`` did not compute is kept, so the sizes can be added one at a time (the 590M's comes
+    from its own pod, 2026-11-08). A size ``new`` left ``null`` (not validated) does not erase a
+    value ``old`` has. General Imposters, style and ENSC come from ``new`` (the same benchmark
+    files give the same numbers)."""
+    if not old:
+        return new
+    o_alm = (old.get("thresholds") or {}).get("alm") or {}
+    n_alm = new["thresholds"].get("alm") or {}
+    alm = {**o_alm, **{z: v for z, v in n_alm.items() if v is not None or z not in o_alm}}
+    alm = dict(sorted(alm.items(), key=lambda kv: _size_order(kv[0])))
+    sizes = sorted(set(old.get("sizes", [])) | set(new.get("sizes", [])), key=_size_order)
+    return {**new, "sizes": sizes, "thresholds": {**new["thresholds"], "alm": alm}}
+
+
+def add_size(local: dict, pod: dict, size: str) -> dict:
+    """The Mac's thresholds with one size's authorial-model entry taken from a pod's file; every
+    other entry (GI, style, ENSC, the other sizes, the stamp) stays the Mac's own."""
+    entry = ((pod.get("thresholds") or {}).get("alm") or {}).get(size)
+    if entry is None:
+        raise ValueError(f"the pod's thresholds have no {size} entry")
+    made = {k: pod.get(k) for k in ("git_commit", "config_sha256")}
+    alm = {size: {**entry, "computed": made}}
+    new = {**local, "sizes": [size], "thresholds": {**local["thresholds"], "alm": alm}}
+    return merge_doc(local, new)
+
+
 def run(sizes: list[str]) -> int:
     from metadata.config import load as load_config
 
@@ -134,9 +166,11 @@ def run(sizes: list[str]) -> int:
                     "source": "style_embed.json"}}  # fmt: skip
     th["alm"] = {z: alm_threshold(z, rate, rates) for z in sizes}
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({**stamp(), "sizes": sizes, "rate": rate, "fpr_ladder": rates,
-                               "thresholds": th},
-                              indent=1) + "\n")  # fmt: skip
+    doc = {**stamp(), "sizes": sizes, "rate": rate, "fpr_ladder": rates, "thresholds": th}
+    old = json.loads(OUT.read_text()) if OUT.exists() else None
+    doc = merge_doc(old, doc)  # one size at a time never drops the others
+    th = doc["thresholds"]
+    OUT.write_text(json.dumps(doc, indent=1) + "\n")
     shown = {k: v for k, v in th.items() if k != "alm"} | {
         f"alm_{z}": v for z, v in th["alm"].items()}  # fmt: skip
     print(f"thresholds -> {OUT}: " + ", ".join(

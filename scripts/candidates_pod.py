@@ -10,9 +10,17 @@ the result, every unit's weights and scores home, each SHA-256 checked -> delete
 weights and model from the pod, check -> terminate. Stops the pod at the cap. Events go to the
 issue.
 
+``--blind`` (BOM-32, 2026-11-08): after training and validating, and before the weights come home
+(about 36 GB for the 590M), the same pod also scores the sealed set: it uploads
+``data/corpus/blind/sealed.jsonl`` and ``data/blind/withheld.json`` (SHA-256 checked), adds this
+size's thresholds (``blind.thresholds <size>``, merged by size), runs ``blind.run --only alm
+--sizes <size>``, and the thresholds entry, the output file and its manifest entry come home and
+are merged into the Mac's files (other sizes and methods untouched), every hash checked. The pod
+never has the key. The weights follow afterwards and are kept.
+
 Usage::
 
-    python scripts/candidates_pod.py --issue 38 --size pilot|base|mid|large [--cap 25]
+    python scripts/candidates_pod.py --issue 38 --size pilot|base|mid|large [--cap 25 --blind]
 """
 
 from __future__ import annotations
@@ -26,11 +34,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
+sys.path.insert(0, str(ROOT))
 import style_pod as sp  # noqa: E402
 
 R = sp.R
 INPUTS = "data/corpus/alm/candidates/inputs"
 PLAN = "data/benchmark/alm_candidates_plan.json"
+SEALED = "data/corpus/blind/sealed.jsonl"
+WITHHELD = "data/blind/withheld.json"
+BLIND_TH = "data/blind/thresholds.json"
+BLIND_MANIFEST = "data/blind/outputs.json"
 
 
 def configure(size: str) -> None:
@@ -67,7 +80,19 @@ def uploads(size: str) -> list[str]:
     return [*files, PLAN, f"data/corpus/timelocked_lm/runs/{size}/model.pt"]
 
 
-def step(s: dict, issue: int, cap: float, size: str) -> bool:
+def blind_merge(size: str, pod_th: dict, pod_manifest: dict, out_rel: str,
+                root: Path = ROOT) -> None:  # fmt: skip
+    """Merge the pod's results into the Mac's thresholds and output manifest, by size and file:
+    nothing else in either file changes."""
+    from blind.run import merge
+    from blind.thresholds import add_size
+
+    local = json.loads((root / BLIND_TH).read_text())
+    (root / BLIND_TH).write_text(json.dumps(add_size(local, pod_th, size), indent=1) + "\n")
+    merge(root / BLIND_MANIFEST, {out_rel: pod_manifest["sha256"][out_rel]}, ["alm"], [size])
+
+
+def step(s: dict, issue: int, cap: float, size: str, blind: bool = False) -> bool:
     ph = s["phase"]
     work = f"data/corpus/alm/candidates/{size}"
     result = f"data/benchmark/alm_candidates_{size}.json"
@@ -126,7 +151,7 @@ def step(s: dict, issue: int, cap: float, size: str) -> bool:
         )
         rc, out = sp.remote(probe)
         if "CAND_DONE" in out:
-            s["phase"] = "fetch"
+            s["phase"] = "blind_upload" if blind and not s.get("blind_home") else "fetch"
         elif rc == 0 and "ALIVE" not in out:
             (sp.STATE.parent / "cand_tail.log").open("a").write(f"--- {time.ctime()}\n{out}\n")
             if s["restarts"] >= 3:
@@ -140,6 +165,76 @@ def step(s: dict, issue: int, cap: float, size: str) -> bool:
             sp.save(s)
             time.sleep(120)
             return True
+    elif ph == "blind_upload":
+        if not (ROOT / SEALED).exists():
+            event(s, f"`{SEALED}` missing on the Mac; blind stage skipped.", issue)
+            s["phase"] = "fetch"
+            return True
+        rc, out = sp.pw.sh(["rsync", "-rtR", "--no-o", "--no-g", SEALED, WITHHELD,
+                            f"{sp.SSH}:{R}/"], 3600)  # fmt: skip
+        sums = sp.STATE.parent / "blind_sha256.txt"
+        sums.write_text("".join(f"{sp.sha(ROOT / n)}  {n}\n" for n in (SEALED, WITHHELD)))
+        sp.pw.sh(["rsync", str(sums), f"{sp.SSH}:{R}/blind_sha256.txt"])
+        rc2, out2 = sp.remote(f"cd {R} && sha256sum -c --quiet blind_sha256.txt && echo BLINDOK")
+        if rc or "BLINDOK" not in out2:
+            sp.log(f"blind upload not verified ({(out + out2)[-200:]}); retrying")
+            return True
+        event(s, "sealed set and withheld spans on the pod (SHA-256 checked; no key).", issue)
+        s["phase"], s["blind_restarts"] = "blind_run", s.get("blind_restarts", 0)
+    elif ph == "blind_run":
+        script = (f"python -m blind.thresholds {size} && python -m blind.run --only alm "
+                  f"--sizes {size} && touch /workspace/BLIND_DONE")  # fmt: skip
+        sp.remote(f"cd {R} && tmux new-session -d -s blind '({script}) 2>&1 | tee -a "
+                  "/workspace/blind.out'")  # fmt: skip
+        event(s, f"**{size} blind ALM scoring started** on the pod.", issue)
+        s["phase"] = "blind_watch"
+    elif ph == "blind_watch":
+        probe = ("ls /workspace/BLIND_DONE 2>/dev/null; tmux has-session -t blind 2>/dev/null "
+                 "&& echo ALIVE; tail -n 40 /workspace/blind.out")  # fmt: skip
+        rc, out = sp.remote(probe)
+        if "BLIND_DONE" in out:
+            s["phase"] = "blind_fetch"
+        elif rc == 0 and "ALIVE" not in out:
+            (sp.STATE.parent / "blind_tail.log").open("a").write(f"--- {time.ctime()}\n{out}\n")
+            if s["blind_restarts"] >= 3:
+                event(s, f"blind scoring died 3 times; fetching the weights anyway. "
+                         f"`{out.strip()[-300:]}`", issue)  # fmt: skip
+                s["phase"] = "fetch"
+                return True
+            s["blind_restarts"] += 1
+            s["phase"] = "blind_run"
+        else:
+            sp.save(s)
+            time.sleep(60)
+            return True
+    elif ph == "blind_fetch":
+        here = sp.STATE.parent
+        out_rel = f"data/blind/outputs/alm_{size}.json"
+        (ROOT / "data/blind/outputs").mkdir(parents=True, exist_ok=True)
+        pairs = [(BLIND_TH, here / "thresholds.pod.json"),
+                 (BLIND_MANIFEST, here / "outputs.pod.json"),
+                 (out_rel, ROOT / out_rel), (result, ROOT / result)]  # fmt: skip
+        got = [sp.pw.sh(["rsync", "-t", f"{sp.SSH}:{R}/{a}", str(b)])[0] for a, b in pairs]
+        rc, sums = sp.remote(f"cd {R} && sha256sum {out_rel} {result}")
+        if any(got) or rc:
+            sp.log("blind fetch failed; retrying")
+            return True
+        for ln in sums.splitlines():
+            digest, name = ln.split(maxsplit=1)
+            if sp.sha(ROOT / name) != digest:
+                sp.log(f"blind fetch of {name} not verified; retrying")
+                return True
+        pod_manifest = json.loads((here / "outputs.pod.json").read_text())
+        if pod_manifest["sha256"].get(out_rel) != sp.sha(ROOT / out_rel):
+            sp.log("the pod's manifest does not match the fetched output; retrying")
+            return True
+        pod_th = json.loads((here / "thresholds.pod.json").read_text())
+        blind_merge(size, pod_th, pod_manifest, out_rel)
+        s["blind_home"] = True
+        event(s, f"**{size} blind ALM scores home**, SHA-256 verified, merged into `{BLIND_TH}` "
+                 f"and `{BLIND_MANIFEST}`: commit them, then unblind. Weights follow.",
+              issue)  # fmt: skip
+        s["phase"] = "fetch"
     elif ph == "fetch":
         (ROOT / work).mkdir(parents=True, exist_ok=True)
         rc, _ = sp.pw.sh(["rsync", "-rt", "--partial", f"{sp.SSH}:{R}/{work}/", str(ROOT / work)],
@@ -158,7 +253,8 @@ def step(s: dict, issue: int, cap: float, size: str) -> bool:
                  f"(`{result}`, `{work}/`).", issue)  # fmt: skip
         s["phase"] = "cleanup"
     elif ph == "cleanup":
-        sp.remote(f"rm -rf {R}/data/corpus {R}/{PLAN} {R}/sha256.txt /workspace/cand.out")
+        sp.remote(f"rm -rf {R}/data/corpus {R}/{PLAN} {R}/sha256.txt /workspace/cand.out "
+                  "/workspace/blind.out")  # fmt: skip
         rc, out = sp.remote(f"ls {R}/data/corpus 2>/dev/null | wc -l")
         if rc != 0 or out.strip() != "0":
             return True
@@ -177,6 +273,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--issue", type=int, required=True)
     ap.add_argument("--size", choices=["pilot", "base", "mid", "large"], required=True)
     ap.add_argument("--cap", type=float, default=25.0)
+    ap.add_argument("--blind", action="store_true", help="also score the sealed set (BOM-32)")
     a = ap.parse_args(argv)
     configure(a.size)
     if not (ROOT / PLAN).exists():
@@ -185,7 +282,7 @@ def main(argv: list[str] | None = None) -> int:
     s = json.loads(sp.STATE.read_text()) if sp.STATE.exists() else {"phase": "create"}
     while s["phase"] not in ("done", "failed", "capped"):
         try:
-            if not step(s, a.issue, a.cap, a.size):
+            if not step(s, a.issue, a.cap, a.size, a.blind):
                 break
         except Exception as e:  # noqa: BLE001 -- transient API or network failure; retry
             sp.log(f"error in {s['phase']}: {e}; retrying in 60 s")

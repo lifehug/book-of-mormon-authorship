@@ -69,6 +69,16 @@ read. The key lives outside the repository (mode 600), `run.py` never references
 is committed before the run, so any later change to it shows. What this cannot guarantee is that
 the session could not have read the file; that limit is stated in section 10 with Amendment 1's.
 
+**The mid size (2026-11-08).** The 590M's blind ALM scoring runs on the rented pod that trained
+it (`scripts/candidates_pod.py --size mid --blind`, launched by `scripts/after_mid.sh`), so its
+~36 GB of weights need not come home first. For this stage the pod job is the "fresh session":
+it gets the code, the sealed set and the withheld spans (SHA-256 checked), never the key, which
+stays at `~/.bom-blind/` on the Mac. It runs `blind.thresholds mid` (merged by size, so the
+pilot, base, GI and style thresholds stand) and `blind.run --only alm --sizes mid`; the mid
+thresholds entry, `outputs/alm_mid.json` and its manifest hash come home, are verified, and are
+merged into the Mac's files with nothing else changed. The blinding is simulated, as above.
+Unblinding stays manual, after `data/blind/` is committed.
+
 ## Decoys
 
 - **Ratio:** at least 1 per 4 Book of Mormon chunks, per chunk size, rounded up.
