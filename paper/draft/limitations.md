@@ -1,12 +1,19 @@
 # Limitations (draft, BOM-36)
 
 **No method passes the benchmark.** Every attribution method ranks candidates well (closed-set
-accuracy up to 0.991 at 297M) but none keeps false matches at or below the registered 5%
-(best: 0.136, V2 at 297M; `data/benchmark/open_set.json`). Under the registered thresholds General
+accuracy up to 0.991 at 297M) but none keeps false matches at or below the registered 5% (best
+stable result: 0.218, the primary method at 590M; `data/benchmark/open_set.json`). V2's 0.136 at
+297M was one lucky seed: five further seeds gave 0.53-0.98 (Amendment 42). Under the registered thresholds General
 Imposters and the style embeddings cannot return *match* at all (their calibrated match threshold
 is 1.0, the largest possible score), so section 6.2's two-family rule cannot support any candidate
 unless a larger model changes this; the owner's decision on how to report that is recorded with
 Amendment 33. Results are therefore graded evidence, not attributions.
+
+**Methods differ in stability** (`docs/method-reliability.md`, written before unblinding). The
+primary language-model method reproduces exactly across machines and improves with model size;
+V1's registered learning rate broke at 590M (Amendment 41); V2 swings from 9% to 98% false matches
+across seeds and carries no weight; the model-based methods are weaker than the classical ones on
+imitation (BOM-31). The blind results are read in that order of trust.
 
 **The borrowing and dating tests cannot speak to translation.** None separates genuine
 translations of ancient texts from compositions presented as ancient (Amendment 9; section 1.5 of
