@@ -9,8 +9,7 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 | Job | Where | Done (est.) | When it ends |
 | --- | --- | --- | --- |
-| BOM-27 **590M mid model** (`large_pod.py --size mid`, tmux `midpod`; Amendment 39) | 2 x H100 pod `j4rz95isd68egw`, cap $345 | ~Mon 01:00 | `after_mid.sh` (tmux `aftermid`): benchmark, candidates, imitation; then blind ALM scoring at mid; then **ask the owner** before deleting the pod's full snapshots |
-| BOM-47 plausibility gate on the 100 gate-sample authors (research agent, blind to scores) | agent | tonight | chance survival rate beside the expected false-lead count |
+| BOM-27 **590M mid model** (`large_pod.py --size mid`, tmux `midpod`; Amendment 39) | 2 x H100 pod `j4rz95isd68egw`, cap $345 | ~Mon 00:30 (step 38,368 of 48,931 at 16:15 Sun; val loss 2.232 at 37k) | `after_mid.sh` (tmux `aftermid`): benchmark, candidates, imitation; then blind ALM scoring at mid; then **ask the owner** before deleting the pod's full snapshots |
 
 ## Done today (2026-11-07)
 
@@ -26,14 +25,15 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 ## Decided
 
 - **Every model size runs every model-based test** (owner; Amendment 37): 125M, 297M, 1B side by side, none the headline.
-- **6.1/6.2 after the 1B benchmark** (owner): if the 1B reaches 6.1's 5% rate, keep the rule; otherwise Amendment 33 option (b), post hoc: each method returns *match* at its best achievable threshold, its real false-match rate beside every call; 6.2's two families unchanged. Then file Amendment 33 and seal.
+- **6.1 both ways** (owner, Amendment 33): registered and achievable rules plus the false-match ladder, all reported.
+- **1B replaced by the 590M mid with QK-norm** (owner, Amendment 39); a 1B restart stays possible later.
+- **No pre-declared "best" model** (owner, 2026-11-08): run everything, report everything side by side; plans unchanged.
 
 ## Next, in order (start the first whose inputs exist)
 
-1. **After the 1B benchmark:** apply the 6.1/6.2 decision, file Amendment 33, `blind.thresholds`, `blind.seal`.
-2. **BOM-32 blind run** (a fresh AI session without the key; simulated blinding) once the sweep index and all sizes' candidate models exist; then `blind.unblind`.
-3. **BOM-35 synthesis** (`synth.model`, per size), **BOM-34 6.3 comparison** (`eval.scribes`), **BOM-42 claims table** (`eval.claims`), **BOM-68** table with the 1B rows.
-4. **BOM-36 paper:** fill the 14 result slots in `paper/draft/`; then **BOM-38** simulated review (`review.simulate`); then **BOM-37** release (`scripts/release_check.py`; publishing is the owner's call).
+1. **After `aftermid` prints BLIND RUN COMPLETE:** commit `data/blind/`, then `blind.unblind` (simulated blinding).
+2. **BOM-35 synthesis** (`synth.model`, per size), **BOM-34 6.3 comparison** (`eval.scribes`), **BOM-42 claims table** (`eval.claims`), **BOM-68** table with the mid rows.
+3. **BOM-36 paper:** fill the 14 result slots in `paper/draft/`; then **BOM-38** simulated review (`review.simulate`); then **BOM-37** release (`scripts/release_check.py`; publishing is the owner's call).
 
 Done today: BOM-26 closed; prep and first results for 28 (297M), 29, 31 (classical, 297M), 32, 33
 (access table final), 34 (dictation evidence, photo hand-check), 35, 37, 38, 42, 68 (GPT-2 ablation).
@@ -41,5 +41,5 @@ Waiting on the owner only: BOM-71 (Google-digitized volumes, if provided).
 
 ## Timeline to the paper
 
-Only the 1B (Sat ~20:00) and the sweep (Sat afternoon) are physical waits. Blind run Sunday;
-synthesis and claims Monday; paper slots filled and the first full draft ~Tuesday Nov 10.
+The only physical wait is the 590M (~00:30 Mon) and its pod tests (Mon morning). Unblinding,
+synthesis and claims Monday; first full draft ~Tuesday Nov 10.
