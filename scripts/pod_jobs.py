@@ -17,7 +17,12 @@ is stopped, not terminated, and the owner is asked. State: ``logs/pod_jobs_<name
 Usage::
 
     python scripts/pod_jobs.py --name <name> --issue <n> --files <list> [--extra <path> ...] \\
-        --jobs "<cmd>" ["<cmd>" ...] --fetch <path> [<path> ...] [--cap 25 --disk 100]
+        --jobs "<cmd>" ["<cmd>" ...] --fetch <path> [<path> ...] [--cap 25 --disk 100] \
+        [--b2-push <dir under data/corpus> ...]
+
+``--b2-push``: after the results are home, those folders (fine-tuned weights) go from the pod
+straight to the private B2 backup, checked there, before the pod is cleaned (owner, 2026-11-09:
+every trained model is kept).
 """
 
 from __future__ import annotations
@@ -227,6 +232,18 @@ def step(s: dict, a: argparse.Namespace) -> bool:
             return True
         event(s, f"{len(got)} result file(s) home, SHA-256 verified: "
                  + ", ".join(f"`{p}`" for p in a.fetch), issue)  # fmt: skip
+        s["phase"] = "b2push" if a.b2_push else "cleanup"
+    elif ph == "b2push":
+        if not sp.b2_push(a.b2_push):
+            s["push_tries"] = s.get("push_tries", 0) + 1
+            if s["push_tries"] >= 3:
+                event(s, "B2 push failed 3 times; stopping the pod (weights kept on it) for the "
+                         "owner.", issue)  # fmt: skip
+                sp.pw.rest("POST", f"/pods/{s['pod']}/stop")
+                return False
+            return True
+        event(s, "weights copied to B2 and checked: " + ", ".join(f"`{r}`" for r in a.b2_push),
+              issue)  # fmt: skip
         s["phase"] = "cleanup"
     elif ph == "cleanup":
         # uploads under data/corpus or data/private go with those folders; list only the rest
@@ -256,6 +273,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--extra", nargs="*", default=[], help="more repo-relative paths")
     ap.add_argument("--jobs", nargs="+", required=True)
     ap.add_argument("--fetch", nargs="+", required=True)
+    ap.add_argument("--b2-push", nargs="*", default=[], help="pod folders to copy to B2")
     ap.add_argument("--cap", type=float, default=25.0)
     ap.add_argument("--disk", type=int, default=100, help="pod volume, GB")
     a = ap.parse_args(argv)

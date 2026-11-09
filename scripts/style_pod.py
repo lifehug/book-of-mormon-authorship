@@ -156,6 +156,38 @@ def b2_prefetch(names: list[str]) -> None:
     raise RuntimeError("B2 key could not be confirmed removed from the pod")
 
 
+def b2_push(rels: list[str]) -> bool:
+    """Copy folders under ``data/corpus/`` from the pod straight to the private B2 backup (fine-
+    tuned weights, owner 2026-11-09: kept and published, and the pod's link is fast where the
+    Mac's is slow). The key is on the pod for the copy only, removed and checked; each folder is
+    then checked against the bucket by size and hash (``rclone check``). True when all match."""
+    import subprocess
+
+    rels = [r for r in rels if r.startswith(B2_PREFIX)]
+    creds = (Path.home() / ".config/backblaze/credentials").read_text()
+    p = subprocess.run(["ssh", "-o", "BatchMode=yes", SSH, "umask 077 && cat > /root/.b2"],
+                       input=creds, text=True, capture_output=True, timeout=60)  # fmt: skip
+    ok = False
+    if p.returncode == 0:
+        cmds = " && ".join(
+            f"rclone copy {R}/{r} :b2:$B2_BUCKET/{r[len(B2_PREFIX) :]} --transfers 8 && "
+            f"rclone check {R}/{r} :b2:$B2_BUCKET/{r[len(B2_PREFIX) :]} --one-way"
+            for r in rels
+        )
+        rc, out = remote(
+            "(command -v rclone > /dev/null || (apt-get install -y -qq unzip > /dev/null && "
+            "curl -s https://rclone.org/install.sh | bash > /dev/null)); set -a; . /root/.b2; "
+            "set +a; export RCLONE_B2_ACCOUNT=$B2_KEY_ID RCLONE_B2_KEY=$B2_APP_KEY; "
+            f"({cmds}) && echo PUSHOK; rm -f /root/.b2", 7200)  # fmt: skip
+        ok = "PUSHOK" in out
+        log(f"B2 push of {', '.join(rels)}: {'verified' if ok else 'FAILED ' + out[-300:]}")
+    for _ in range(3):
+        remote("rm -f /root/.b2")
+        if "GONE" in remote("test -e /root/.b2 && echo PRESENT || echo GONE")[1]:
+            return ok
+    raise RuntimeError("B2 key could not be confirmed removed from the pod")
+
+
 def sha(path: Path) -> str:
     h = hashlib.sha256()
     with path.open("rb") as f:

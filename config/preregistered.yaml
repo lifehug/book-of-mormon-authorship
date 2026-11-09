@@ -426,6 +426,10 @@ alm:
   v1_finetune_lr: 1.0e-4        # V1: Amendment 22 with ten times the learning rate
   v2_head_window: 512           # V2: classifier head on mean final hidden state per window
   v3_block_words: 1000          # V3: base-model hidden states per block, benchmark trials as BOM-21
+  # Amendment 41 (OSF revision 6af21b8307a440edd15fb142; post hoc, after the 590M V1/V2): each size's
+  # V1 and V2 learning rate chosen on held-out training text, never the benchmark tests
+  lr_select_grid: [1.0e-6, 3.0e-6, 1.0e-5, 3.0e-5, 1.0e-4]
+  lr_select_val_share: 0.1      # the tail of each author's training tokens (V1) or windows (V2)
   # Amendment 30 (OSF revision 6aee229330296560945f60f4): candidate and control models, BOM-28
   control_words: 300000         # seeded sample per control group, the order of the largest candidate
   control_passage_words: 5000   # at least this many middle words from every volume used

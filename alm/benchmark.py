@@ -16,6 +16,10 @@ per author, so a rerun resumes at the next author.
 Usage::
 
     python -m alm.benchmark <size> [--variant v1]   # size pilot|base|mid|large -> alm_<size>[_v1]
+    python -m alm.benchmark <size> --variant v1 --lr 3e-5 --tag <size>_v1_lrsel --save-weights
+
+``--save-weights`` keeps every fine-tuned copy (``<work>/weights/<task>__<author>.pt``) for
+publication (owner, 2026-11-09: no trained model is discarded).
 """
 
 from __future__ import annotations
@@ -191,9 +195,10 @@ def window_loss(model: GPT, ids: list[int], window: int, dev: str) -> list[float
     return nll.view(n, window - 1).mean(dim=1).tolist()
 
 
-def run(size: str, micro: int, variant: str = "") -> int:
+def run(size: str, micro: int, variant: str = "", lr: float | None = None,
+        tag: str | None = None, save: bool = False) -> int:  # fmt: skip
     """Amendment 22's ALMs; ``variant`` "v1" is Amendment 23's V1 (learning rate
-    ``alm.v1_finetune_lr``)."""
+    ``alm.v1_finetune_lr``), or ``lr`` where given (Amendment 41's selected rate)."""
     from tokenizers import Tokenizer
 
     cfg = load_config()
@@ -201,8 +206,9 @@ def run(size: str, micro: int, variant: str = "") -> int:
     dev = _device()
     tok = Tokenizer.from_file(str(TOKENIZER))
     eot = tok.token_to_id(EOT)
-    lr = a["v1_finetune_lr"] if variant == "v1" else cfg["timelocked_lm"]["finetune_lr"]
-    tag = f"{size}_{variant}" if variant else size
+    if lr is None:
+        lr = a["v1_finetune_lr"] if variant == "v1" else cfg["timelocked_lm"]["finetune_lr"]
+    tag = tag or (f"{size}_{variant}" if variant else size)
     work = WORK / tag
     work.mkdir(parents=True, exist_ok=True)
     p = plan(cfg)
@@ -227,7 +233,11 @@ def run(size: str, micro: int, variant: str = "") -> int:
             torch.manual_seed(seed)
             info = finetune(base, ids, cfg, seed, micro, dev, lr)
             losses = [window_loss(base, x["ids"], a["score_window"], dev) for x in tp["tests"]]
-            path.write_text(json.dumps({"train_tokens": len(ids), **info, "losses": losses}))
+            if save:
+                (work / "weights").mkdir(exist_ok=True)
+                torch.save(base.state_dict(), work / "weights" / f"{task}__{author}.pt")
+            path.write_text(json.dumps({"train_tokens": len(ids), **info, "lr": lr,
+                                        "seed": seed, "losses": losses}))  # fmt: skip
             print(f"  {tag} {task} {author}: {len(ids):,} tokens, {info['steps']} steps, "
                   f"{info['sec'] / 60:.1f} min", flush=True)  # fmt: skip
     return score(tag, p, cfg)
@@ -286,8 +296,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("size", choices=["pilot", "base", "mid", "large"])
     ap.add_argument("--variant", choices=["v1"], default="", help="Amendment 23's V1")
     ap.add_argument("--micro-batch", type=int, default=2, help="memory only; same update")
+    ap.add_argument("--lr", type=float, help="Amendment 41: a selected learning rate")
+    ap.add_argument("--tag", help="result name (alm_<tag>.json); default <size>[_<variant>]")
+    ap.add_argument("--save-weights", action="store_true", help="keep every fine-tuned copy")
     a = ap.parse_args(argv)
-    return run(a.size, a.micro_batch, a.variant)
+    return run(a.size, a.micro_batch, a.variant, a.lr, a.tag, a.save_weights)
 
 
 if __name__ == "__main__":

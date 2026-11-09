@@ -15,6 +15,7 @@ V1 (stronger fine-tuning) is ``alm.benchmark --variant v1``. Here:
 Both are judged by ``alm.benchmark.decide`` (Amendment 22's rule). Usage::
 
     python -m alm.variants v2|v3 <size>   # pilot|base|mid|large -> alm_<size>_<variant>.json
+    python -m alm.variants v2 <size> --lr 3e-6 --tag <size>_v2_lrsel --save-weights
 """
 
 from __future__ import annotations
@@ -50,7 +51,8 @@ def _windows(ids: list[int], w: int) -> torch.Tensor:
     return torch.tensor(ids, dtype=torch.long).view(n, -1)
 
 
-def v2(size: str, micro: int) -> int:
+def v2(size: str, micro: int, lr: float | None = None, tag: str | None = None,
+       save: bool = False) -> int:  # fmt: skip
     from tokenizers import Tokenizer
 
     cfg = load_config()
@@ -59,7 +61,9 @@ def v2(size: str, micro: int) -> int:
     dev = _device()
     tok = Tokenizer.from_file(str(TOKENIZER))
     eot = tok.token_to_id(EOT)
-    work = WORK / f"{size}_v2"
+    lr = lr if lr is not None else t["finetune_lr"]
+    tag = tag or f"{size}_v2"
+    work = WORK / tag
     work.mkdir(parents=True, exist_ok=True)
     recs_by = {}
     for task, tp in plan(cfg).items():
@@ -82,7 +86,7 @@ def v2(size: str, micro: int) -> int:
         model = _base(size, cfg).to(dev)
         head = nn.Linear(model.ln.weight.shape[0], len(authors)).to(dev)
         params = [*model.parameters(), *head.parameters()]
-        opt = torch.optim.AdamW(params, lr=t["finetune_lr"], betas=tuple(t["adam_betas"]),
+        opt = torch.optim.AdamW(params, lr=lr, betas=tuple(t["adam_betas"]),
                                 weight_decay=t["weight_decay"])  # fmt: skip
         rng = np.random.default_rng(seed)
         model.train()
@@ -101,6 +105,10 @@ def v2(size: str, micro: int) -> int:
                 opt.zero_grad(set_to_none=True)
                 steps += 1
         model.eval()
+        if save:
+            (work / "weights").mkdir(exist_ok=True)
+            torch.save({"model": model.state_dict(), "head": head.state_dict(), "authors": authors,
+                        "lr": lr, "seed": seed}, work / "weights" / f"{task}.pt")  # fmt: skip
         recs = []
         with torch.no_grad():
             for x in tp["tests"]:
@@ -115,7 +123,7 @@ def v2(size: str, micro: int) -> int:
         path.write_text(json.dumps(recs))
         recs_by[task] = recs
         print(f"  {size}_v2 {task}: {len(X):,} windows, {steps} steps", flush=True)
-    return write(f"{size}_v2", recs_by, cfg, {"variant": "v2"})
+    return write(tag, recs_by, cfg, {"variant": "v2", "lr": lr})
 
 
 def v3(size: str) -> int:
@@ -178,8 +186,13 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("variant", choices=["v2", "v3"])
     ap.add_argument("size", choices=["pilot", "base", "mid", "large"])
     ap.add_argument("--micro-batch", type=int, default=2, help="memory only; same update")
+    ap.add_argument("--lr", type=float, help="v2: Amendment 41's selected learning rate")
+    ap.add_argument("--tag", help="v2: result name; default <size>_v2")
+    ap.add_argument("--save-weights", action="store_true", help="v2: keep each task's model")
     a = ap.parse_args(argv)
-    return v2(a.size, a.micro_batch) if a.variant == "v2" else v3(a.size)
+    if a.variant == "v2":
+        return v2(a.size, a.micro_batch, a.lr, a.tag, a.save_weights)
+    return v3(a.size)
 
 
 if __name__ == "__main__":
