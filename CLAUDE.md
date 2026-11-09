@@ -12,6 +12,17 @@ https://osf.io/6ugxc/ and changes only by dated amendment in its section 11.
 `docs/audit.md` is the 2026-10-20 design review of the whole plan and the source of
 `BOM-43` to `BOM-49`; read it before changing method or scope.
 
+## Ethos (owner, 2026-11-09)
+
+Transparent about everything. Mistakes are possible; what makes up for them is that everything
+can be checked and redone. The owner is not a scientist, so replicability is the guarantee:
+every result, script, table and model is public and rerunnable, a public good given away as
+fully as possible. Nothing is hidden. Models and every trained or fine-tuned weight are kept
+and published, never discarded to save disk or time. The only things held back are the corpus
+texts we committed to keep private (see "Where data lives"), and for each of those we publish
+the exact steps to get the same access we had. When a choice trades openness for convenience,
+choose openness, or ask.
+
 ## Framing (do not drift)
 
 - The project does not argue for or against divine inspiration. It identifies close
