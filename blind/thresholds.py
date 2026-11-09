@@ -24,6 +24,7 @@ No Book of Mormon text is read. The file is committed before the blind run (6.1)
 Usage::
 
     python -m blind.thresholds [pilot base mid]   # -> data/blind/thresholds.json (merged by size)
+    python -m blind.thresholds --style mid        # only that encoder's entry (``style_mid``)
 """
 
 from __future__ import annotations
@@ -142,6 +143,34 @@ def add_size(local: dict, pod: dict, size: str) -> dict:
     return merge_doc(local, new)
 
 
+def style_entry(path: Path, rate: float, rates: list[float]) -> dict:
+    """An encoder's 6.1 threshold and ladder from its benchmark file's positives and negatives."""
+    d = json.loads(path.read_text())
+    rs = [r for rs in d["records"].values() for r in rs]
+    p, n = [r["positive"] for r in rs], [r["open_negative"] for r in rs
+                                         if r["open_negative"] is not None]  # fmt: skip
+    return {**calibrate(p, n, rate), "ladder": ladder(p, n, rates), "source": path.name}
+
+
+def add_style(size: str) -> int:
+    """Add (or replace) one encoder's entry in the thresholds file, leaving every other entry as
+    it is: the 590M encoder's is computed on its pod, after its benchmark (2026-11-09)."""
+    from metadata.config import load as load_config
+    from style_embed.names import bench_name, tag
+
+    cfg = load_config()
+    doc = json.loads(OUT.read_text())
+    e = style_entry(BENCH / f"{bench_name(size)}.json", cfg["benchmark"]["max_open_set_fpr"],
+                    cfg["blind"]["fpr_ladder"])  # fmt: skip
+    doc["thresholds"][tag(size)] = {
+        **e,
+        "computed": {k: stamp()[k] for k in ("git_commit", "config_sha256")},
+    }
+    OUT.write_text(json.dumps(doc, indent=1) + "\n")
+    print(f"{tag(size)}: {e['match']} (match), {e.get('non_match')} (non-match) -> {OUT}")
+    return 0
+
+
 def run(sizes: list[str]) -> int:
     from metadata.config import load as load_config
 
@@ -165,12 +194,7 @@ def run(sizes: list[str]) -> int:
           "style": {**calibrate(spos, sneg, rate), "ladder": ladder(spos, sneg, rates),
                     "source": "style_embed.json"}}  # fmt: skip
     for f in sorted(BENCH.glob("style_embed_*.json")):  # another backbone's encoder, if run
-        d = json.loads(f.read_text())
-        rs = [r for rs in d["records"].values() for r in rs]
-        p, n = [r["positive"] for r in rs], [r["open_negative"] for r in rs
-                                             if r["open_negative"] is not None]  # fmt: skip
-        th[f"style_{d['size']}"] = {**calibrate(p, n, rate), "ladder": ladder(p, n, rates),
-                                    "source": f.name}  # fmt: skip
+        th[f"style_{json.loads(f.read_text())['size']}"] = style_entry(f, rate, rates)
     th["alm"] = {z: alm_threshold(z, rate, rates) for z in sizes}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     doc = {**stamp(), "sizes": sizes, "rate": rate, "fpr_ladder": rates, "thresholds": th}
@@ -201,7 +225,11 @@ def load(size: str | None = None) -> dict:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("sizes", nargs="*", help="pilot, base, large (default: all three)")
-    sizes = ap.parse_args(argv).sizes or list(SIZES)
+    ap.add_argument("--style", choices=["mid"], help="only that encoder's entry")
+    a = ap.parse_args(argv)
+    if a.style:
+        return add_style(a.style)
+    sizes = a.sizes or list(SIZES)
     bad = [z for z in sizes if z not in SIZES]
     if bad:
         ap.error(f"unknown size(s) {bad}; choose from {SIZES}")

@@ -15,7 +15,12 @@ Usage::
 
 ``--size mid`` trains the same encoder on the 590M backbone (owner, 2026-11-09; Amendment 37):
 its own state (``logs/style_pod_mid/``), pod and output folder (``runs/style_mid``), so the
-registered 297M encoder's files are never touched.
+registered 297M encoder's files are never touched. After training it also runs that encoder's
+tests on the pod before anything comes home (owner, 2026-11-09: ~4 h sooner than on the Mac):
+its benchmark, its 6.1 threshold (``blind.thresholds --style``), the blind scoring of the sealed
+set (``blind.run --only style_mid``; the pod never has the key) and its imitation part. The
+inputs are ``logs/style_<size>_eval_files.txt`` (SHA-256 checked); the results come home checked
+and the threshold and output hash are merged into the Mac's files, nothing else in them changing.
 """
 
 from __future__ import annotations
@@ -50,11 +55,12 @@ OUT = "data/corpus/style_embed/runs/style"
 HOME = ROOT / OUT
 FETCH = ["style.pt", "log.jsonl", "run.json"]
 TRAIN_ARGS = ""
+EVAL = ""  # the size whose encoder is tested on the pod after training ("" for none)
 
 
 def configure(size: str) -> None:
     """Point the driver at another backbone's encoder (see the module docstring)."""
-    global STATE, SSH, POD_NAME, UPLOADS, OUT, HOME, TRAIN_ARGS
+    global STATE, SSH, POD_NAME, UPLOADS, OUT, HOME, TRAIN_ARGS, EVAL
     if size == "base":
         return
     STATE = ROOT / f"logs/style_pod_{size}/state.json"
@@ -64,6 +70,29 @@ def configure(size: str) -> None:
     OUT = f"data/corpus/style_embed/runs/style_{size}"
     HOME = ROOT / OUT
     TRAIN_ARGS = f" --size {size}"
+    EVAL = size
+
+
+def eval_results(size: str) -> list[str]:
+    """What the pod's tests write, as paths under the repo."""
+    from style_embed.names import bench_name, tag
+
+    return [f"data/benchmark/{bench_name(size)}.json", f"data/blind/outputs/{tag(size)}.json",
+            f"data/benchmark/imitation/{bench_name(size)}.json"]  # fmt: skip
+
+
+def eval_merge(size: str, pod_th: dict, pod_manifest: dict, root: Path = ROOT) -> None:
+    """The pod's threshold entry and output hash into the Mac's files; nothing else changes."""
+    sys.path.insert(0, str(root))
+    from blind.run import merge
+    from style_embed.names import tag
+
+    key, th_path = tag(size), root / "data/blind/thresholds.json"
+    local = json.loads(th_path.read_text())
+    local["thresholds"][key] = pod_th["thresholds"][key]
+    th_path.write_text(json.dumps(local, indent=1) + "\n")
+    rel = f"data/blind/outputs/{key}.json"
+    merge(root / "data/blind/outputs.json", {rel: pod_manifest["sha256"][rel]}, [key], [])
 
 
 def log(msg: str) -> None:
@@ -246,7 +275,7 @@ def step(s: dict, issue: int, cap: float) -> bool:
             log(f"poll failed: {out[-200:]}")
             return True
         if "style.pt" in out:
-            s["phase"] = "fetch"
+            s["phase"] = "eval_upload" if EVAL and not s.get("eval_home") else "fetch"
         elif "ALIVE" not in out:
             if s["restarts"] >= 3:
                 event(s, "training died 3 times; stopping the pod for the owner.", issue)
@@ -272,6 +301,76 @@ def step(s: dict, issue: int, cap: float) -> bool:
             save(s)
             time.sleep(300)
             return True
+    elif ph == "eval_upload":
+        lst = ROOT / f"logs/style_{EVAL}_eval_files.txt"
+        names = [ln for ln in lst.read_text().splitlines() if ln]
+        rc, out = pw.sh(["rsync", "--keep-dirlinks", "-rtLR", "--no-o", "--no-g",
+                         f"--files-from={lst}", ".", f"{SSH}:{R}/"], 7200)  # fmt: skip
+        if rc != 0:
+            log(f"eval upload failed ({out[-200:]}); retrying")
+            return True
+        sums = STATE.parent / "eval_sha256.txt"
+        sums.write_text("".join(f"{sha(ROOT / n)}  {n}\n" for n in names))
+        pw.sh(["rsync", str(sums), f"{SSH}:{R}/eval_sha256.txt"])
+        rc, out = remote(f"cd {R} && git pull -q; sha256sum -c --quiet eval_sha256.txt && "
+                         "echo EVALOK", 3600)  # fmt: skip
+        if "EVALOK" not in out:
+            log(f"eval upload not verified ({out[-200:]}); retrying")
+            return True
+        script = (
+            f"python -m style_embed.benchmark --size {EVAL} --model {R}/{OUT}/style.pt && "
+            f"python -m blind.thresholds --style {EVAL} && "
+            f"python -m blind.run --only style_{EVAL} && "
+            f"python -m eval.imitation style {EVAL} && touch /workspace/EVAL_DONE"
+        )
+        remote(
+            f"cd {R} && pip install -q scipy scikit-learn joblib rapidfuzz > /dev/null 2>&1; "
+            f"tmux new-session -d -s evaluate '({script}) 2>&1 | tee -a /workspace/eval.out'"
+        )
+        event(s, f"inputs verified ({len(names)} files); **{EVAL} encoder tests started** on the "
+                 "pod (benchmark, threshold, blind scoring, imitation).", issue)  # fmt: skip
+        s["phase"] = "eval_watch"
+    elif ph == "eval_watch":
+        rc, out = remote("ls /workspace/EVAL_DONE 2>/dev/null; tmux has-session -t evaluate "
+                         "2>/dev/null && echo ALIVE; tail -n 30 /workspace/eval.out")  # fmt: skip
+        if rc not in (0, 1, 2):
+            log(f"poll failed: {out[-200:]}")
+            return True
+        if "/workspace/EVAL_DONE" in out:
+            s["phase"] = "eval_fetch"
+        elif "ALIVE" not in out:
+            event(s, f"encoder tests failed on the pod; the encoder still comes home, tests "
+                     f"to rerun. Last output: {out[-600:]}", issue)  # fmt: skip
+            s["eval_home"], s["eval_failed"] = True, True
+            s["phase"] = "fetch"
+        else:
+            save(s)
+            time.sleep(300)
+            return True
+    elif ph == "eval_fetch":
+        stage = STATE.parent / "eval_home"
+        stage.mkdir(parents=True, exist_ok=True)
+        for rel in [*eval_results(EVAL), "data/blind/thresholds.json", "data/blind/outputs.json"]:
+            dst = stage / rel
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            rc, _ = pw.sh(["rsync", "-rt", f"{SSH}:{R}/{rel}", str(dst)], 600)
+            rc2, out2 = remote(f"sha256sum {R}/{rel}")
+            if rc or rc2 or out2.split()[0] != sha(dst):
+                log(f"fetch of {rel} not verified; retrying")
+                return True
+        for rel in eval_results(EVAL):
+            (ROOT / rel).parent.mkdir(parents=True, exist_ok=True)
+            (ROOT / rel).write_bytes((stage / rel).read_bytes())
+        eval_merge(EVAL, json.loads((stage / "data/blind/thresholds.json").read_text()),
+                   json.loads((stage / "data/blind/outputs.json").read_text()))  # fmt: skip
+        event(
+            s,
+            f"{EVAL} encoder test results home and verified: "
+            f"{', '.join(eval_results(EVAL))}; threshold and output hash merged.",
+            issue,
+        )
+        s["eval_home"] = True
+        s["phase"] = "fetch"
     elif ph == "fetch":
         HOME.mkdir(parents=True, exist_ok=True)
         for f in FETCH:
@@ -283,8 +382,9 @@ def step(s: dict, issue: int, cap: float) -> bool:
         event(s, f"model home and verified in `{OUT}` ({', '.join(FETCH)}).", issue)
         s["phase"] = "cleanup"
     elif ph == "cleanup":
-        remote(f"rm -rf {R}/data/corpus /workspace/runs /workspace/train.out {R}/{OUT}")
-        rc, out = remote(f"ls {R}/data/corpus 2>/dev/null | wc -l; "
+        remote(f"rm -rf {R}/data/corpus {R}/data/private {R}/data/kjv_mask /workspace/runs "
+               f"/workspace/train.out /workspace/eval.out {R}/{OUT}")  # fmt: skip
+        rc, out = remote(f"ls {R}/data/corpus {R}/data/private 2>/dev/null | wc -l; "
                          f"find /workspace -name 'passages.*' | wc -l")  # fmt: skip
         if rc != 0 or out.split() != ["0", "0"]:
             log(f"deletion not confirmed ({out}); retrying")
