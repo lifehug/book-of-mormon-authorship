@@ -5,19 +5,21 @@ everything ahead, never sit waiting). A job monitor (`scripts/jobwatch.py`) repo
 stall or finish at once; an hourly check-in walks this file. Rules: never two heavy GPU jobs on the
 Mac at once; rented GPUs within approvals given; the issue comment carries the next action.
 
-## Running (2026-11-09 10:15)
+## Running (2026-11-09 12:15)
 
 | Job | Where | Done (est.) | Then |
 | --- | --- | --- | --- |
-| 590M benchmark: main 98.2% / 21.8% false matches; V1 62.7% / 81.8% and V2 76.4% / 39.1% (worse than 297M, cause unknown, evidence in `logs/alm_pod_mid/pod_evidence/`); V3 running | H100 pod (tmux `aftermid`) | ~10:45 | candidates + blind scoring and imitation pods start on their own (models pulled from B2) |
-| 590M style encoder (`style_pod.py --size mid`; trains, then benchmark, threshold, blind scoring, imitation on the pod) | tmux `encmid`, waits for RunPod balance >= $90 | ~11 h after start | merge results; unblind |
-| Training pod cleanup (tokens off the stopped pod) | tmux `midclean`, retries start every 5 min (RunPod HTTP 500) | when the host frees | pod stopped, snapshots kept for the owner |
-| Weekly corpus B2 backup | paused (`kill -STOP 60610`) to free upload bandwidth | | **resume with `kill -CONT 60610`** after the pod uploads |
+| 590M style encoder: training since 11:28, then its benchmark, threshold, blind scoring and imitation on the pod | tmux `encmid`, pod `99lkvv5js434ws` | ~21:00 | commit `data/blind/`, then **unblind** |
+| Amendment 41: V1/V2 learning rates chosen on held-out training text, reruns (125M done: V2 at its own registered rate gave 0.764 on the H100 vs 0.900 on the Mac, so V2 is high-variance) | tmux `lrsel_base`, `lrsel_mid` | ~13:30 | propose a seed-spread run for V2 |
+| 590M candidate weights to B2 (36 GB) | background | ~afternoon | |
+| Training pod cleanup | tmux `midclean` (RunPod HTTP 500) | | owner may delete the pod instead |
+
+Done today: 590M benchmark, imitation, candidate models and blind ALM scoring (all committed);
+the 590M model and milestones in B2; weekly corpus backup resumed.
 
 ## Waiting on the owner
 
-- **RunPod top-up** (owner added it 2026-11-09 ~09:00; API still shows ~$53).
-- **590M V1/V2**: investigate now or after the analysis.
+- **Delete the stopped 590M training pod and its full snapshots** (every 590M test passed; weights on the Mac and B2).
 
 - **Delete the mid pod's full snapshots** once its tests pass: ask the owner at that moment.
 
