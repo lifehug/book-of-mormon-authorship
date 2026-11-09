@@ -95,10 +95,10 @@ similarity is explained, on triage, by King James wording (36%) or period stock 
 | ALM primary | 297M | 1.000 | 0.958 | 1.000 | 0.991 | 0.382 | no |
 | ALM primary | 590M | 1.000 | 0.917 | 1.000 | 0.982 | 0.218 | no |
 | V1 (lr 1e-4, registered) | 125M / 297M / 590M | | | | 0.936 / 0.936 / 0.627 | 0.455 / 0.473 / 0.818 | no |
-| V1 at the rate chosen on held-out training text (Amendment 41, post hoc) | 125M / 297M / 590M | | | | 0.936 / 0.991 / [RESULT] | 0.473 / 0.382 / [RESULT] | no |
+| V1 at the rate chosen on held-out training text (Amendment 41, post hoc) | 125M / 297M / 590M | | | | 0.936 / 0.991 / 0.982 | 0.473 / 0.382 / 0.218 | no |
 | V2 (classifier head, registered) | 125M / 297M / 590M | | | | 0.900 / 0.909 / 0.764 | 0.282 / 0.136 / 0.391 | no |
-| V2 at the chosen rate (Amendment 41, post hoc) | 125M / 297M / 590M | | | | 0.764 / 0.773 / [RESULT] | 0.591 / 0.400 / [RESULT] | no |
-| V2, five further seeds (Amendment 42, post hoc): range | 125M / 297M / 590M | | | | [RESULT] | [RESULT] | |
+| V2 at the chosen rate (Amendment 41, post hoc) | 125M / 297M / 590M | | | | 0.764 / 0.773 / 0.564 | 0.591 / 0.400 / 0.755 | no |
+| V2, five further seeds (Amendment 42, post hoc): range | 125M / 297M / 590M | | | | 0.66-0.93 / 0.51-0.76 / 0.40-0.78 | 0.09-0.93 / 0.53-0.98 / 0.32-0.93 | no |
 | V3 (hidden states) | 125M / 297M / 590M | | | | 0.839 / 0.844 / 0.844 | 0.689 / 0.717 / 0.706 | no |
 | GPT-2, primary method (BOM-68 ablation) | 124M / 355M | | | | 0.900 / 0.945 | 0.918 / 0.855 | no |
 
@@ -106,7 +106,7 @@ The 1B was abandoned after a loss spike and replaced by the 590M with QK-norm (A
 39). False matches for the primary method fall with size: 0.473, 0.382, 0.218. V1's registered
 rate (ten times Amendment 22's) damaged the 590M: its fine-tuned models raised the loss on new
 text by 0.81 nats (0.56 at 297M), and at the rate chosen on held-out training text V1 is the
-primary method (1e-5 at every size so far). V2 is unstable: at 125M its rerun at the registered
+primary method (1e-5 at every size). V2 is unstable: at 125M its rerun at the registered
 rate and seed on an H100 gave 0.764 / 0.591 against the Mac run's 0.900 / 0.282, so its single
 registered numbers are reported beside the spread of five further seeds (Amendment 42).
 

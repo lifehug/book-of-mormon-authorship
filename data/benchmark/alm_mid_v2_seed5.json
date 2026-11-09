@@ -1,0 +1,1969 @@
+{
+ "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e",
+ "config_path": "/workspace/repo/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "ffa7c2fc1fa2462e4896fb101985c76a8f254b31",
+ "run": "mid_v2_seed5",
+ "closed_set_by_task": {
+  "federalist": 0.7692307692307693,
+  "pseudo_biblical": 1.0,
+  "dictated": 0.0
+ },
+ "verdict": {
+  "closed_set": 0.4,
+  "threshold": -13.175452041625975,
+  "open_set_fpr": 0.9090909090909091,
+  "tests": 110,
+  "open_set_fpr_original": 0.06363636363636363,
+  "passes": false
+ },
+ "thresholds": {
+  "match": -0.02245237939059737,
+  "non_match": -13.175452041625977
+ },
+ "variant": "v2",
+ "lr": 1e-05,
+ "seed_index": 5,
+ "records": {
+  "federalist": [
+   {
+    "author": "hamilton",
+    "where": "blocks 84-88 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.000825041439384222,
+     "jay": -12.669890403747559,
+     "madison": -12.474286079406738
+    },
+    "predicted": "hamilton",
+    "positive": -0.000825041439384222,
+    "open_negative": -12.474286079406738
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 85-89 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.11538247019052505,
+     "jay": -12.859219551086426,
+     "madison": -10.855298042297363
+    },
+    "predicted": "hamilton",
+    "positive": -0.11538247019052505,
+    "open_negative": -10.855298042297363
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 86-90 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.1239512488245964,
+     "jay": -11.911066055297852,
+     "madison": -9.706787109375
+    },
+    "predicted": "hamilton",
+    "positive": -0.1239512488245964,
+    "open_negative": -9.706787109375
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 87-91 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.12153681367635727,
+     "jay": -10.382121086120605,
+     "madison": -7.556544780731201
+    },
+    "predicted": "hamilton",
+    "positive": -0.12153681367635727,
+    "open_negative": -7.556544780731201
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 88-92 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.09376873821020126,
+     "jay": -10.017996788024902,
+     "madison": -6.067165374755859
+    },
+    "predicted": "hamilton",
+    "positive": -0.09376873821020126,
+    "open_negative": -6.067165374755859
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 89-93 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.20608864724636078,
+     "jay": -9.447942733764648,
+     "madison": -5.042943000793457
+    },
+    "predicted": "hamilton",
+    "positive": -0.20608864724636078,
+    "open_negative": -5.042943000793457
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 90-94 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.05885264277458191,
+     "jay": -9.726073265075684,
+     "madison": -5.179965496063232
+    },
+    "predicted": "hamilton",
+    "positive": -0.05885264277458191,
+    "open_negative": -5.179965496063232
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 91-95 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.06631242483854294,
+     "jay": -10.327292442321777,
+     "madison": -4.7205634117126465
+    },
+    "predicted": "hamilton",
+    "positive": -0.06631242483854294,
+    "open_negative": -4.7205634117126465
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 92-96 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.08439816534519196,
+     "jay": -11.496624946594238,
+     "madison": -6.560102939605713
+    },
+    "predicted": "hamilton",
+    "positive": -0.08439816534519196,
+    "open_negative": -6.560102939605713
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 93-97 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.36138617992401123,
+     "jay": -11.297311782836914,
+     "madison": -6.056986331939697
+    },
+    "predicted": "hamilton",
+    "positive": -0.36138617992401123,
+    "open_negative": -6.056986331939697
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 95-99 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.225044846534729,
+     "jay": -12.087176322937012,
+     "madison": -6.852268218994141
+    },
+    "predicted": "hamilton",
+    "positive": -0.225044846534729,
+    "open_negative": -6.852268218994141
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 96-100 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.29806676506996155,
+     "jay": -11.4309720993042,
+     "madison": -5.802070617675781
+    },
+    "predicted": "hamilton",
+    "positive": -0.29806676506996155,
+    "open_negative": -5.802070617675781
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 97-101 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.348450243473053,
+     "jay": -10.457709312438965,
+     "madison": -3.9472224712371826
+    },
+    "predicted": "hamilton",
+    "positive": -0.348450243473053,
+    "open_negative": -3.9472224712371826
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 98-102 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.056139834225177765,
+     "jay": -10.746914863586426,
+     "madison": -4.536174297332764
+    },
+    "predicted": "hamilton",
+    "positive": -0.056139834225177765,
+    "open_negative": -4.536174297332764
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 99-103 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.08076237887144089,
+     "jay": -10.282868385314941,
+     "madison": -4.64634895324707
+    },
+    "predicted": "hamilton",
+    "positive": -0.08076237887144089,
+    "open_negative": -4.64634895324707
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 100-104 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.14831872284412384,
+     "jay": -10.020169258117676,
+     "madison": -4.870764255523682
+    },
+    "predicted": "hamilton",
+    "positive": -0.14831872284412384,
+    "open_negative": -4.870764255523682
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 101-105 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.17110677063465118,
+     "jay": -9.651498794555664,
+     "madison": -4.272243022918701
+    },
+    "predicted": "hamilton",
+    "positive": -0.17110677063465118,
+    "open_negative": -4.272243022918701
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 102-106 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.7592000365257263,
+     "jay": -9.378074645996094,
+     "madison": -3.5789756774902344
+    },
+    "predicted": "hamilton",
+    "positive": -0.7592000365257263,
+    "open_negative": -3.5789756774902344
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 103-107 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -1.2889885902404785,
+     "jay": -9.00178050994873,
+     "madison": -2.3532702922821045
+    },
+    "predicted": "hamilton",
+    "positive": -1.2889885902404785,
+    "open_negative": -2.3532702922821045
+   },
+   {
+    "author": "hamilton",
+    "where": "blocks 105-109 of 112",
+    "windows": 10,
+    "scores": {
+     "hamilton": -1.1976631879806519,
+     "jay": -9.185763359069824,
+     "madison": -3.9755470752716064
+    },
+    "predicted": "hamilton",
+    "positive": -1.1976631879806519,
+    "open_negative": -3.9755470752716064
+   },
+   {
+    "author": "madison",
+    "where": "blocks 28-32 of 38",
+    "windows": 10,
+    "scores": {
+     "hamilton": -1.8018907308578491,
+     "jay": -8.555998802185059,
+     "madison": -3.0340981483459473
+    },
+    "predicted": "hamilton",
+    "positive": -3.0340981483459473,
+    "open_negative": -1.8018907308578491
+   },
+   {
+    "author": "madison",
+    "where": "blocks 29-33 of 38",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.43363356590270996,
+     "jay": -9.497756004333496,
+     "madison": -6.711337566375732
+    },
+    "predicted": "hamilton",
+    "positive": -6.711337566375732,
+    "open_negative": -0.43363356590270996
+   },
+   {
+    "author": "madison",
+    "where": "blocks 30-34 of 38",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.36859557032585144,
+     "jay": -9.501496315002441,
+     "madison": -7.092511177062988
+    },
+    "predicted": "hamilton",
+    "positive": -7.092511177062988,
+    "open_negative": -0.36859557032585144
+   },
+   {
+    "author": "madison",
+    "where": "blocks 31-35 of 38",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.361791729927063,
+     "jay": -9.48377799987793,
+     "madison": -6.089962482452393
+    },
+    "predicted": "hamilton",
+    "positive": -6.089962482452393,
+    "open_negative": -0.361791729927063
+   },
+   {
+    "author": "madison",
+    "where": "blocks 32-36 of 38",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.38473019003868103,
+     "jay": -9.166682243347168,
+     "madison": -5.3003458976745605
+    },
+    "predicted": "hamilton",
+    "positive": -5.3003458976745605,
+    "open_negative": -0.38473019003868103
+   },
+   {
+    "author": "madison",
+    "where": "blocks 33-37 of 38",
+    "windows": 10,
+    "scores": {
+     "hamilton": -0.438655287027359,
+     "jay": -10.008459091186523,
+     "madison": -4.561385154724121
+    },
+    "predicted": "hamilton",
+    "positive": -4.561385154724121,
+    "open_negative": -0.438655287027359
+   }
+  ],
+  "pseudo_biblical": [
+   {
+    "author": "hughes",
+    "where": "blocks 10-14 of 15",
+    "windows": 10,
+    "scores": {
+     "hughes": -0.0016247167950496078,
+     "hunt": -8.074663162231445,
+     "linning": -8.871600151062012,
+     "snowden": -7.813762664794922
+    },
+    "predicted": "hughes",
+    "positive": -0.0016247167950496078,
+    "open_negative": -7.813762664794922
+   },
+   {
+    "author": "hunt",
+    "where": "blocks 42-46 of 56",
+    "windows": 10,
+    "scores": {
+     "hughes": -17.27346420288086,
+     "hunt": -0.00024662623764015734,
+     "linning": -15.857439994812012,
+     "snowden": -14.888389587402344
+    },
+    "predicted": "hunt",
+    "positive": -0.00024662623764015734,
+    "open_negative": -14.888389587402344
+   },
+   {
+    "author": "hunt",
+    "where": "blocks 43-47 of 56",
+    "windows": 10,
+    "scores": {
+     "hughes": -18.269418716430664,
+     "hunt": -2.098072172884713e-06,
+     "linning": -16.673070907592773,
+     "snowden": -16.00385093688965
+    },
+    "predicted": "hunt",
+    "positive": -2.098072172884713e-06,
+    "open_negative": -16.00385093688965
+   },
+   {
+    "author": "hunt",
+    "where": "blocks 44-48 of 56",
+    "windows": 10,
+    "scores": {
+     "hughes": -18.013019561767578,
+     "hunt": -9.560370926919859e-06,
+     "linning": -15.704164505004883,
+     "snowden": -15.60289478302002
+    },
+    "predicted": "hunt",
+    "positive": -9.560370926919859e-06,
+    "open_negative": -15.60289478302002
+   },
+   {
+    "author": "hunt",
+    "where": "blocks 45-49 of 56",
+    "windows": 10,
+    "scores": {
+     "hughes": -19.535856246948242,
+     "hunt": -1.0728835064810482e-07,
+     "linning": -17.146940231323242,
+     "snowden": -17.142383575439453
+    },
+    "predicted": "hunt",
+    "positive": -1.0728835064810482e-07,
+    "open_negative": -17.142383575439453
+   },
+   {
+    "author": "hunt",
+    "where": "blocks 46-50 of 56",
+    "windows": 10,
+    "scores": {
+     "hughes": -18.578969955444336,
+     "hunt": -7.3430323936918285e-06,
+     "linning": -16.169675827026367,
+     "snowden": -16.251859664916992
+    },
+    "predicted": "hunt",
+    "positive": -7.3430323936918285e-06,
+    "open_negative": -16.169675827026367
+   },
+   {
+    "author": "hunt",
+    "where": "blocks 47-51 of 56",
+    "windows": 10,
+    "scores": {
+     "hughes": -15.726882934570312,
+     "hunt": -0.0013760672882199287,
+     "linning": -13.869709968566895,
+     "snowden": -14.332918167114258
+    },
+    "predicted": "hunt",
+    "positive": -0.0013760672882199287,
+    "open_negative": -13.869709968566895
+   },
+   {
+    "author": "hunt",
+    "where": "blocks 48-52 of 56",
+    "windows": 10,
+    "scores": {
+     "hughes": -12.962915420532227,
+     "hunt": -0.0025125951506197453,
+     "linning": -11.54868221282959,
+     "snowden": -12.062376022338867
+    },
+    "predicted": "hunt",
+    "positive": -0.0025125951506197453,
+    "open_negative": -11.54868221282959
+   },
+   {
+    "author": "hunt",
+    "where": "blocks 49-53 of 56",
+    "windows": 10,
+    "scores": {
+     "hughes": -10.713438987731934,
+     "hunt": -0.001958143664523959,
+     "linning": -9.819315910339355,
+     "snowden": -10.71789836883545
+    },
+    "predicted": "hunt",
+    "positive": -0.001958143664523959,
+    "open_negative": -9.819315910339355
+   },
+   {
+    "author": "hunt",
+    "where": "blocks 50-54 of 56",
+    "windows": 10,
+    "scores": {
+     "hughes": -8.120223045349121,
+     "hunt": -0.003652069717645645,
+     "linning": -7.841945171356201,
+     "snowden": -8.511136054992676
+    },
+    "predicted": "hunt",
+    "positive": -0.003652069717645645,
+    "open_negative": -7.841945171356201
+   },
+   {
+    "author": "hunt",
+    "where": "blocks 51-55 of 56",
+    "windows": 10,
+    "scores": {
+     "hughes": -7.817007541656494,
+     "hunt": -0.004259153269231319,
+     "linning": -7.6756768226623535,
+     "snowden": -8.340353012084961
+    },
+    "predicted": "hunt",
+    "positive": -0.004259153269231319,
+    "open_negative": -7.6756768226623535
+   },
+   {
+    "author": "linning",
+    "where": "blocks 15-19 of 21",
+    "windows": 10,
+    "scores": {
+     "hughes": -15.026148796081543,
+     "hunt": -14.698488235473633,
+     "linning": -3.0517421691911295e-06,
+     "snowden": -16.268301010131836
+    },
+    "predicted": "linning",
+    "positive": -3.0517421691911295e-06,
+    "open_negative": -14.698488235473633
+   },
+   {
+    "author": "linning",
+    "where": "blocks 16-20 of 21",
+    "windows": 10,
+    "scores": {
+     "hughes": -13.614870071411133,
+     "hunt": -13.879666328430176,
+     "linning": -1.9120361685054377e-05,
+     "snowden": -15.738412857055664
+    },
+    "predicted": "linning",
+    "positive": -1.9120361685054377e-05,
+    "open_negative": -13.614870071411133
+   },
+   {
+    "author": "snowden",
+    "where": "blocks 42-46 of 57",
+    "windows": 10,
+    "scores": {
+     "hughes": -14.738692283630371,
+     "hunt": -10.135963439941406,
+     "linning": -13.355621337890625,
+     "snowden": -0.013106100261211395
+    },
+    "predicted": "snowden",
+    "positive": -0.013106100261211395,
+    "open_negative": -10.135963439941406
+   },
+   {
+    "author": "snowden",
+    "where": "blocks 43-47 of 57",
+    "windows": 10,
+    "scores": {
+     "hughes": -14.750561714172363,
+     "hunt": -12.097125053405762,
+     "linning": -13.268515586853027,
+     "snowden": -0.021342407912015915
+    },
+    "predicted": "snowden",
+    "positive": -0.021342407912015915,
+    "open_negative": -12.097125053405762
+   },
+   {
+    "author": "snowden",
+    "where": "blocks 44-48 of 57",
+    "windows": 10,
+    "scores": {
+     "hughes": -15.746806144714355,
+     "hunt": -14.342477798461914,
+     "linning": -14.296124458312988,
+     "snowden": -6.026502887834795e-05
+    },
+    "predicted": "snowden",
+    "positive": -6.026502887834795e-05,
+    "open_negative": -14.296124458312988
+   },
+   {
+    "author": "snowden",
+    "where": "blocks 45-49 of 57",
+    "windows": 10,
+    "scores": {
+     "hughes": -15.09453010559082,
+     "hunt": -12.19770336151123,
+     "linning": -14.136346817016602,
+     "snowden": -0.013106072321534157
+    },
+    "predicted": "snowden",
+    "positive": -0.013106072321534157,
+    "open_negative": -12.19770336151123
+   },
+   {
+    "author": "snowden",
+    "where": "blocks 46-50 of 57",
+    "windows": 10,
+    "scores": {
+     "hughes": -15.233424186706543,
+     "hunt": -13.211496353149414,
+     "linning": -14.598978042602539,
+     "snowden": -0.0012980137253180146
+    },
+    "predicted": "snowden",
+    "positive": -0.0012980137253180146,
+    "open_negative": -13.211496353149414
+   },
+   {
+    "author": "snowden",
+    "where": "blocks 47-51 of 57",
+    "windows": 10,
+    "scores": {
+     "hughes": -14.99683666229248,
+     "hunt": -13.076460838317871,
+     "linning": -14.46581745147705,
+     "snowden": -0.00026180827990174294
+    },
+    "predicted": "snowden",
+    "positive": -0.00026180827990174294,
+    "open_negative": -13.076460838317871
+   },
+   {
+    "author": "snowden",
+    "where": "blocks 48-52 of 57",
+    "windows": 10,
+    "scores": {
+     "hughes": -14.82373332977295,
+     "hunt": -13.290387153625488,
+     "linning": -13.973361015319824,
+     "snowden": -6.455720722442493e-05
+    },
+    "predicted": "snowden",
+    "positive": -6.455720722442493e-05,
+    "open_negative": -13.290387153625488
+   },
+   {
+    "author": "snowden",
+    "where": "blocks 49-53 of 57",
+    "windows": 10,
+    "scores": {
+     "hughes": -14.103228569030762,
+     "hunt": -10.242142677307129,
+     "linning": -13.818203926086426,
+     "snowden": -0.0005861465469934046
+    },
+    "predicted": "snowden",
+    "positive": -0.0005861465469934046,
+    "open_negative": -10.242142677307129
+   },
+   {
+    "author": "snowden",
+    "where": "blocks 50-54 of 57",
+    "windows": 10,
+    "scores": {
+     "hughes": -15.080202102661133,
+     "hunt": -11.087464332580566,
+     "linning": -14.183761596679688,
+     "snowden": -0.0003518112062010914
+    },
+    "predicted": "snowden",
+    "positive": -0.0003518112062010914,
+    "open_negative": -11.087464332580566
+   },
+   {
+    "author": "snowden",
+    "where": "blocks 51-55 of 57",
+    "windows": 10,
+    "scores": {
+     "hughes": -15.615686416625977,
+     "hunt": -10.393694877624512,
+     "linning": -14.34013557434082,
+     "snowden": -0.004727160558104515
+    },
+    "predicted": "snowden",
+    "positive": -0.004727160558104515,
+    "open_negative": -10.393694877624512
+   },
+   {
+    "author": "snowden",
+    "where": "blocks 52-56 of 57",
+    "windows": 10,
+    "scores": {
+     "hughes": -15.349807739257812,
+     "hunt": -9.814043998718262,
+     "linning": -13.351115226745605,
+     "snowden": -0.001869967207312584
+    },
+    "predicted": "snowden",
+    "positive": -0.001869967207312584,
+    "open_negative": -9.814043998718262
+   }
+  ],
+  "dictated": [
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 46-50",
+    "windows": 12,
+    "scores": {
+     "austen": -12.79278564453125,
+     "brunton": -14.064390182495117,
+     "burney": -15.962347984313965,
+     "ferrier": -3.834627866744995,
+     "galt": -3.467740535736084,
+     "hogg": -1.7306550741195679,
+     "maturin": -14.874305725097656,
+     "morgan": -16.282642364501953,
+     "porter": -14.000387191772461,
+     "scott": -10.383356094360352,
+     "shelley": -14.2547607421875
+    },
+    "predicted": "hogg",
+    "positive": -10.383356094360352,
+    "open_negative": -1.7306550741195679
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 45-49",
+    "windows": 11,
+    "scores": {
+     "austen": -13.300615310668945,
+     "brunton": -14.018874168395996,
+     "burney": -16.835346221923828,
+     "ferrier": -3.946747303009033,
+     "galt": -6.148819923400879,
+     "hogg": -0.8869954943656921,
+     "maturin": -15.250130653381348,
+     "morgan": -17.468460083007812,
+     "porter": -14.10042953491211,
+     "scott": -9.995099067687988,
+     "shelley": -14.160454750061035
+    },
+    "predicted": "hogg",
+    "positive": -9.995099067687988,
+    "open_negative": -0.8869954943656921
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 36-40",
+    "windows": 11,
+    "scores": {
+     "austen": -14.725990295410156,
+     "brunton": -15.983935356140137,
+     "burney": -19.3934383392334,
+     "ferrier": -7.2200164794921875,
+     "galt": -13.744094848632812,
+     "hogg": -0.07978549599647522,
+     "maturin": -17.695316314697266,
+     "morgan": -20.596298217773438,
+     "porter": -15.397512435913086,
+     "scott": -9.544669151306152,
+     "shelley": -14.824862480163574
+    },
+    "predicted": "hogg",
+    "positive": -9.544669151306152,
+    "open_negative": -0.07978549599647522
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 3-7",
+    "windows": 10,
+    "scores": {
+     "austen": -11.872703552246094,
+     "brunton": -11.271197319030762,
+     "burney": -14.158526420593262,
+     "ferrier": -2.7864530086517334,
+     "galt": -8.437810897827148,
+     "hogg": -2.041163682937622,
+     "maturin": -12.388633728027344,
+     "morgan": -14.526161193847656,
+     "porter": -12.073468208312988,
+     "scott": -6.407390117645264,
+     "shelley": -11.535179138183594
+    },
+    "predicted": "hogg",
+    "positive": -6.407390117645264,
+    "open_negative": -2.041163682937622
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 20-24",
+    "windows": 11,
+    "scores": {
+     "austen": -14.431025505065918,
+     "brunton": -15.41082763671875,
+     "burney": -19.200056076049805,
+     "ferrier": -5.1765642166137695,
+     "galt": -13.024023056030273,
+     "hogg": -0.9839202761650085,
+     "maturin": -17.65085792541504,
+     "morgan": -19.149028778076172,
+     "porter": -15.687004089355469,
+     "scott": -10.041313171386719,
+     "shelley": -15.337810516357422
+    },
+    "predicted": "hogg",
+    "positive": -10.041313171386719,
+    "open_negative": -0.9839202761650085
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 32-36",
+    "windows": 11,
+    "scores": {
+     "austen": -14.297585487365723,
+     "brunton": -15.32282829284668,
+     "burney": -18.865909576416016,
+     "ferrier": -7.134883880615234,
+     "galt": -12.555363655090332,
+     "hogg": -0.027638550847768784,
+     "maturin": -16.98343849182129,
+     "morgan": -19.629892349243164,
+     "porter": -15.057662010192871,
+     "scott": -9.848851203918457,
+     "shelley": -14.263949394226074
+    },
+    "predicted": "hogg",
+    "positive": -9.848851203918457,
+    "open_negative": -0.027638550847768784
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 2-6",
+    "windows": 10,
+    "scores": {
+     "austen": -12.11011791229248,
+     "brunton": -10.51511287689209,
+     "burney": -13.563389778137207,
+     "ferrier": -2.196361780166626,
+     "galt": -7.674018383026123,
+     "hogg": -1.3741995096206665,
+     "maturin": -13.34594440460205,
+     "morgan": -14.681609153747559,
+     "porter": -11.817670822143555,
+     "scott": -5.380796909332275,
+     "shelley": -12.11616039276123
+    },
+    "predicted": "hogg",
+    "positive": -5.380796909332275,
+    "open_negative": -1.3741995096206665
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 22-26",
+    "windows": 11,
+    "scores": {
+     "austen": -16.85416030883789,
+     "brunton": -17.748411178588867,
+     "burney": -21.0791072845459,
+     "ferrier": -9.285727500915527,
+     "galt": -15.070589065551758,
+     "hogg": -0.018209148198366165,
+     "maturin": -19.96441650390625,
+     "morgan": -21.78367042541504,
+     "porter": -17.270553588867188,
+     "scott": -11.668129920959473,
+     "shelley": -17.542078018188477
+    },
+    "predicted": "hogg",
+    "positive": -11.668129920959473,
+    "open_negative": -0.018209148198366165
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 7-11",
+    "windows": 10,
+    "scores": {
+     "austen": -8.3743896484375,
+     "brunton": -10.00806999206543,
+     "burney": -13.408682823181152,
+     "ferrier": -2.0816781520843506,
+     "galt": -5.196537017822266,
+     "hogg": -2.185208320617676,
+     "maturin": -10.757125854492188,
+     "morgan": -14.155298233032227,
+     "porter": -11.39967155456543,
+     "scott": -7.203487396240234,
+     "shelley": -8.926884651184082
+    },
+    "predicted": "ferrier",
+    "positive": -7.203487396240234,
+    "open_negative": -2.0816781520843506
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 45-49",
+    "windows": 11,
+    "scores": {
+     "austen": -13.300615310668945,
+     "brunton": -14.018874168395996,
+     "burney": -16.835346221923828,
+     "ferrier": -3.946747303009033,
+     "galt": -6.148819923400879,
+     "hogg": -0.8869954943656921,
+     "maturin": -15.250130653381348,
+     "morgan": -17.468460083007812,
+     "porter": -14.10042953491211,
+     "scott": -9.995099067687988,
+     "shelley": -14.160454750061035
+    },
+    "predicted": "hogg",
+    "positive": -9.995099067687988,
+    "open_negative": -0.8869954943656921
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 40-44",
+    "windows": 11,
+    "scores": {
+     "austen": -12.767492294311523,
+     "brunton": -14.912233352661133,
+     "burney": -17.87505531311035,
+     "ferrier": -5.510747909545898,
+     "galt": -11.307662963867188,
+     "hogg": -0.704845130443573,
+     "maturin": -15.80926513671875,
+     "morgan": -19.56698989868164,
+     "porter": -14.82378101348877,
+     "scott": -11.397258758544922,
+     "shelley": -14.799813270568848
+    },
+    "predicted": "hogg",
+    "positive": -11.397258758544922,
+    "open_negative": -0.704845130443573
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 18-22",
+    "windows": 10,
+    "scores": {
+     "austen": -10.806891441345215,
+     "brunton": -12.700488090515137,
+     "burney": -16.39824867248535,
+     "ferrier": -2.8436031341552734,
+     "galt": -11.289514541625977,
+     "hogg": -1.8702977895736694,
+     "maturin": -15.163487434387207,
+     "morgan": -16.28419303894043,
+     "porter": -13.107365608215332,
+     "scott": -8.8984375,
+     "shelley": -11.70335865020752
+    },
+    "predicted": "hogg",
+    "positive": -8.8984375,
+    "open_negative": -1.8702977895736694
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 7-11",
+    "windows": 10,
+    "scores": {
+     "austen": -8.3743896484375,
+     "brunton": -10.00806999206543,
+     "burney": -13.408682823181152,
+     "ferrier": -2.0816781520843506,
+     "galt": -5.196537017822266,
+     "hogg": -2.185208320617676,
+     "maturin": -10.757125854492188,
+     "morgan": -14.155298233032227,
+     "porter": -11.39967155456543,
+     "scott": -7.203487396240234,
+     "shelley": -8.926884651184082
+    },
+    "predicted": "ferrier",
+    "positive": -7.203487396240234,
+    "open_negative": -2.0816781520843506
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 8-12",
+    "windows": 10,
+    "scores": {
+     "austen": -8.714972496032715,
+     "brunton": -10.671648979187012,
+     "burney": -15.008206367492676,
+     "ferrier": -1.8802849054336548,
+     "galt": -7.670263767242432,
+     "hogg": -2.69492244720459,
+     "maturin": -11.714808464050293,
+     "morgan": -14.944157600402832,
+     "porter": -11.938835144042969,
+     "scott": -8.129265785217285,
+     "shelley": -9.55483341217041
+    },
+    "predicted": "ferrier",
+    "positive": -8.129265785217285,
+    "open_negative": -1.8802849054336548
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 12-16",
+    "windows": 10,
+    "scores": {
+     "austen": -9.818255424499512,
+     "brunton": -11.739378929138184,
+     "burney": -16.325204849243164,
+     "ferrier": -3.026366949081421,
+     "galt": -10.393777847290039,
+     "hogg": -2.99892258644104,
+     "maturin": -14.55704402923584,
+     "morgan": -15.715372085571289,
+     "porter": -12.4595365524292,
+     "scott": -6.637066841125488,
+     "shelley": -12.336508750915527
+    },
+    "predicted": "hogg",
+    "positive": -6.637066841125488,
+    "open_negative": -2.99892258644104
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 29-33",
+    "windows": 11,
+    "scores": {
+     "austen": -13.362034797668457,
+     "brunton": -14.262617111206055,
+     "burney": -17.43260383605957,
+     "ferrier": -4.675266265869141,
+     "galt": -9.788389205932617,
+     "hogg": -0.613273561000824,
+     "maturin": -15.452861785888672,
+     "morgan": -17.89130973815918,
+     "porter": -14.050496101379395,
+     "scott": -9.714973449707031,
+     "shelley": -13.461746215820312
+    },
+    "predicted": "hogg",
+    "positive": -9.714973449707031,
+    "open_negative": -0.613273561000824
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 17-21",
+    "windows": 10,
+    "scores": {
+     "austen": -9.004683494567871,
+     "brunton": -12.469438552856445,
+     "burney": -14.371737480163574,
+     "ferrier": -3.25895619392395,
+     "galt": -10.06456470489502,
+     "hogg": -1.9018467664718628,
+     "maturin": -13.493865013122559,
+     "morgan": -15.54936408996582,
+     "porter": -12.273207664489746,
+     "scott": -9.395529747009277,
+     "shelley": -10.313447952270508
+    },
+    "predicted": "hogg",
+    "positive": -9.395529747009277,
+    "open_negative": -1.9018467664718628
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 28-32",
+    "windows": 11,
+    "scores": {
+     "austen": -13.298842430114746,
+     "brunton": -14.389498710632324,
+     "burney": -18.02835464477539,
+     "ferrier": -4.112388610839844,
+     "galt": -10.267107963562012,
+     "hogg": -0.591671884059906,
+     "maturin": -15.978303909301758,
+     "morgan": -18.64229393005371,
+     "porter": -14.164793014526367,
+     "scott": -8.961297035217285,
+     "shelley": -13.515958786010742
+    },
+    "predicted": "hogg",
+    "positive": -8.961297035217285,
+    "open_negative": -0.591671884059906
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 34-38",
+    "windows": 11,
+    "scores": {
+     "austen": -14.15031909942627,
+     "brunton": -15.315019607543945,
+     "burney": -19.36525535583496,
+     "ferrier": -6.650035858154297,
+     "galt": -13.480775833129883,
+     "hogg": -0.29714369773864746,
+     "maturin": -17.556344985961914,
+     "morgan": -20.003536224365234,
+     "porter": -14.966876029968262,
+     "scott": -8.631195068359375,
+     "shelley": -13.863276481628418
+    },
+    "predicted": "hogg",
+    "positive": -8.631195068359375,
+    "open_negative": -0.29714369773864746
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10748999bsb blocks 28-32",
+    "windows": 11,
+    "scores": {
+     "austen": -13.298842430114746,
+     "brunton": -14.389498710632324,
+     "burney": -18.02835464477539,
+     "ferrier": -4.112388610839844,
+     "galt": -10.267107963562012,
+     "hogg": -0.591671884059906,
+     "maturin": -15.978303909301758,
+     "morgan": -18.64229393005371,
+     "porter": -14.164793014526367,
+     "scott": -8.961297035217285,
+     "shelley": -13.515958786010742
+    },
+    "predicted": "hogg",
+    "positive": -8.961297035217285,
+    "open_negative": -0.591671884059906
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 12-16",
+    "windows": 11,
+    "scores": {
+     "austen": -11.093767166137695,
+     "brunton": -13.454893112182617,
+     "burney": -16.899290084838867,
+     "ferrier": -3.576889753341675,
+     "galt": -11.65727710723877,
+     "hogg": -1.1018366813659668,
+     "maturin": -15.000487327575684,
+     "morgan": -17.033723831176758,
+     "porter": -13.965660095214844,
+     "scott": -9.007850646972656,
+     "shelley": -12.823372840881348
+    },
+    "predicted": "hogg",
+    "positive": -9.007850646972656,
+    "open_negative": -1.1018366813659668
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 12-16",
+    "windows": 11,
+    "scores": {
+     "austen": -11.093767166137695,
+     "brunton": -13.454893112182617,
+     "burney": -16.899290084838867,
+     "ferrier": -3.576889753341675,
+     "galt": -11.65727710723877,
+     "hogg": -1.1018366813659668,
+     "maturin": -15.000487327575684,
+     "morgan": -17.033723831176758,
+     "porter": -13.965660095214844,
+     "scott": -9.007850646972656,
+     "shelley": -12.823372840881348
+    },
+    "predicted": "hogg",
+    "positive": -9.007850646972656,
+    "open_negative": -1.1018366813659668
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 44-48",
+    "windows": 11,
+    "scores": {
+     "austen": -13.612724304199219,
+     "brunton": -15.140704154968262,
+     "burney": -17.202239990234375,
+     "ferrier": -5.154246807098389,
+     "galt": -6.514890193939209,
+     "hogg": -1.2210062742233276,
+     "maturin": -15.34520149230957,
+     "morgan": -17.018592834472656,
+     "porter": -14.7736234664917,
+     "scott": -9.401158332824707,
+     "shelley": -14.446688652038574
+    },
+    "predicted": "hogg",
+    "positive": -9.401158332824707,
+    "open_negative": -1.2210062742233276
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 30-34",
+    "windows": 10,
+    "scores": {
+     "austen": -12.312844276428223,
+     "brunton": -15.58929443359375,
+     "burney": -16.138917922973633,
+     "ferrier": -5.617444038391113,
+     "galt": -7.797946929931641,
+     "hogg": -2.7459468841552734,
+     "maturin": -15.392196655273438,
+     "morgan": -17.046709060668945,
+     "porter": -14.301795959472656,
+     "scott": -12.225823402404785,
+     "shelley": -14.607962608337402
+    },
+    "predicted": "hogg",
+    "positive": -12.225823402404785,
+    "open_negative": -2.7459468841552734
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 4-8",
+    "windows": 10,
+    "scores": {
+     "austen": -11.803122520446777,
+     "brunton": -14.385418891906738,
+     "burney": -16.918785095214844,
+     "ferrier": -5.421408653259277,
+     "galt": -9.586323738098145,
+     "hogg": -0.603361964225769,
+     "maturin": -14.937590599060059,
+     "morgan": -18.48404312133789,
+     "porter": -14.296771049499512,
+     "scott": -9.912665367126465,
+     "shelley": -13.772956848144531
+    },
+    "predicted": "hogg",
+    "positive": -9.912665367126465,
+    "open_negative": -0.603361964225769
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 5-9",
+    "windows": 10,
+    "scores": {
+     "austen": -12.579745292663574,
+     "brunton": -14.944358825683594,
+     "burney": -17.896787643432617,
+     "ferrier": -5.251365661621094,
+     "galt": -11.57032299041748,
+     "hogg": -0.6635398864746094,
+     "maturin": -16.00044059753418,
+     "morgan": -19.475109100341797,
+     "porter": -15.2464017868042,
+     "scott": -10.640761375427246,
+     "shelley": -14.386102676391602
+    },
+    "predicted": "hogg",
+    "positive": -10.640761375427246,
+    "open_negative": -0.6635398864746094
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 30-34",
+    "windows": 10,
+    "scores": {
+     "austen": -12.312844276428223,
+     "brunton": -15.58929443359375,
+     "burney": -16.138917922973633,
+     "ferrier": -5.617444038391113,
+     "galt": -7.797946929931641,
+     "hogg": -2.7459468841552734,
+     "maturin": -15.392196655273438,
+     "morgan": -17.046709060668945,
+     "porter": -14.301795959472656,
+     "scott": -12.225823402404785,
+     "shelley": -14.607962608337402
+    },
+    "predicted": "hogg",
+    "positive": -12.225823402404785,
+    "open_negative": -2.7459468841552734
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 34-38",
+    "windows": 11,
+    "scores": {
+     "austen": -15.451017379760742,
+     "brunton": -16.349876403808594,
+     "burney": -19.27071189880371,
+     "ferrier": -6.595142364501953,
+     "galt": -10.659213066101074,
+     "hogg": -1.1088409423828125,
+     "maturin": -16.322065353393555,
+     "morgan": -18.672622680664062,
+     "porter": -16.6336612701416,
+     "scott": -11.609764099121094,
+     "shelley": -15.625658988952637
+    },
+    "predicted": "hogg",
+    "positive": -11.609764099121094,
+    "open_negative": -1.1088409423828125
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 42-46",
+    "windows": 11,
+    "scores": {
+     "austen": -15.949214935302734,
+     "brunton": -17.2753849029541,
+     "burney": -19.911779403686523,
+     "ferrier": -7.342923641204834,
+     "galt": -11.278973579406738,
+     "hogg": -0.43207186460494995,
+     "maturin": -17.902267456054688,
+     "morgan": -20.016952514648438,
+     "porter": -16.598068237304688,
+     "scott": -11.897505760192871,
+     "shelley": -15.809420585632324
+    },
+    "predicted": "hogg",
+    "positive": -11.897505760192871,
+    "open_negative": -0.43207186460494995
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 34-38",
+    "windows": 11,
+    "scores": {
+     "austen": -15.451017379760742,
+     "brunton": -16.349876403808594,
+     "burney": -19.27071189880371,
+     "ferrier": -6.595142364501953,
+     "galt": -10.659213066101074,
+     "hogg": -1.1088409423828125,
+     "maturin": -16.322065353393555,
+     "morgan": -18.672622680664062,
+     "porter": -16.6336612701416,
+     "scott": -11.609764099121094,
+     "shelley": -15.625658988952637
+    },
+    "predicted": "hogg",
+    "positive": -11.609764099121094,
+    "open_negative": -1.1088409423828125
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 33-37",
+    "windows": 11,
+    "scores": {
+     "austen": -15.490072250366211,
+     "brunton": -15.752266883850098,
+     "burney": -19.509668350219727,
+     "ferrier": -5.288175582885742,
+     "galt": -10.86540699005127,
+     "hogg": -0.6062967777252197,
+     "maturin": -16.09954833984375,
+     "morgan": -18.767139434814453,
+     "porter": -16.2431583404541,
+     "scott": -11.055908203125,
+     "shelley": -15.678915023803711
+    },
+    "predicted": "hogg",
+    "positive": -11.055908203125,
+    "open_negative": -0.6062967777252197
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 35-39",
+    "windows": 11,
+    "scores": {
+     "austen": -15.107389450073242,
+     "brunton": -16.25921058654785,
+     "burney": -18.99021339416504,
+     "ferrier": -6.187312126159668,
+     "galt": -9.54608154296875,
+     "hogg": -0.5809110403060913,
+     "maturin": -16.312252044677734,
+     "morgan": -18.429338455200195,
+     "porter": -16.46256446838379,
+     "scott": -10.731048583984375,
+     "shelley": -15.663722038269043
+    },
+    "predicted": "hogg",
+    "positive": -10.731048583984375,
+    "open_negative": -0.5809110403060913
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 46-50",
+    "windows": 11,
+    "scores": {
+     "austen": -13.410384178161621,
+     "brunton": -14.442574501037598,
+     "burney": -16.786775588989258,
+     "ferrier": -4.882650852203369,
+     "galt": -6.602786064147949,
+     "hogg": -1.5169562101364136,
+     "maturin": -15.4971342086792,
+     "morgan": -16.746185302734375,
+     "porter": -14.578908920288086,
+     "scott": -9.530702590942383,
+     "shelley": -14.143308639526367
+    },
+    "predicted": "hogg",
+    "positive": -9.530702590942383,
+    "open_negative": -1.5169562101364136
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 11-15",
+    "windows": 11,
+    "scores": {
+     "austen": -11.327278137207031,
+     "brunton": -13.895907402038574,
+     "burney": -16.997604370117188,
+     "ferrier": -3.9466357231140137,
+     "galt": -10.16290283203125,
+     "hogg": -0.3571822941303253,
+     "maturin": -15.12945556640625,
+     "morgan": -17.344926834106445,
+     "porter": -13.907218933105469,
+     "scott": -8.85708236694336,
+     "shelley": -13.06470012664795
+    },
+    "predicted": "hogg",
+    "positive": -8.85708236694336,
+    "open_negative": -0.3571822941303253
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 16-20",
+    "windows": 10,
+    "scores": {
+     "austen": -11.150015830993652,
+     "brunton": -15.022737503051758,
+     "burney": -19.5792236328125,
+     "ferrier": -5.106471538543701,
+     "galt": -15.801068305969238,
+     "hogg": -0.4293069541454315,
+     "maturin": -17.152263641357422,
+     "morgan": -20.27785301208496,
+     "porter": -15.4542875289917,
+     "scott": -11.721195220947266,
+     "shelley": -14.422503471374512
+    },
+    "predicted": "hogg",
+    "positive": -11.721195220947266,
+    "open_negative": -0.4293069541454315
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 7-11",
+    "windows": 11,
+    "scores": {
+     "austen": -13.1309232711792,
+     "brunton": -14.514785766601562,
+     "burney": -17.48120880126953,
+     "ferrier": -5.401194095611572,
+     "galt": -10.777901649475098,
+     "hogg": -0.2815934121608734,
+     "maturin": -16.169815063476562,
+     "morgan": -18.902618408203125,
+     "porter": -15.038289070129395,
+     "scott": -9.756556510925293,
+     "shelley": -14.126498222351074
+    },
+    "predicted": "hogg",
+    "positive": -9.756556510925293,
+    "open_negative": -0.2815934121608734
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 19-23",
+    "windows": 10,
+    "scores": {
+     "austen": -6.200328826904297,
+     "brunton": -12.000958442687988,
+     "burney": -16.49973487854004,
+     "ferrier": -2.0388801097869873,
+     "galt": -10.296290397644043,
+     "hogg": -1.0548375844955444,
+     "maturin": -13.970590591430664,
+     "morgan": -17.186670303344727,
+     "porter": -13.219552993774414,
+     "scott": -10.1461763381958,
+     "shelley": -11.826214790344238
+    },
+    "predicted": "hogg",
+    "positive": -10.1461763381958,
+    "open_negative": -1.0548375844955444
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 3-7",
+    "windows": 10,
+    "scores": {
+     "austen": -9.932876586914062,
+     "brunton": -12.722710609436035,
+     "burney": -15.28736400604248,
+     "ferrier": -4.233958721160889,
+     "galt": -7.8904571533203125,
+     "hogg": -0.5392722487449646,
+     "maturin": -12.841552734375,
+     "morgan": -16.20509910583496,
+     "porter": -12.684060096740723,
+     "scott": -8.626638412475586,
+     "shelley": -11.935906410217285
+    },
+    "predicted": "hogg",
+    "positive": -8.626638412475586,
+    "open_negative": -0.5392722487449646
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 15-19",
+    "windows": 10,
+    "scores": {
+     "austen": -12.045429229736328,
+     "brunton": -15.215374946594238,
+     "burney": -19.511381149291992,
+     "ferrier": -4.805490970611572,
+     "galt": -14.07153034210205,
+     "hogg": -0.8072312474250793,
+     "maturin": -17.196687698364258,
+     "morgan": -19.622417449951172,
+     "porter": -15.804656028747559,
+     "scott": -10.635517120361328,
+     "shelley": -14.331277847290039
+    },
+    "predicted": "hogg",
+    "positive": -10.635517120361328,
+    "open_negative": -0.8072312474250793
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749000bsb blocks 22-26",
+    "windows": 11,
+    "scores": {
+     "austen": -13.106426239013672,
+     "brunton": -14.6953763961792,
+     "burney": -18.499502182006836,
+     "ferrier": -4.5604047775268555,
+     "galt": -10.887383460998535,
+     "hogg": -0.5359023213386536,
+     "maturin": -17.215463638305664,
+     "morgan": -18.80295181274414,
+     "porter": -15.664558410644531,
+     "scott": -10.919004440307617,
+     "shelley": -15.516539573669434
+    },
+    "predicted": "hogg",
+    "positive": -10.919004440307617,
+    "open_negative": -0.5359023213386536
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 43-47",
+    "windows": 11,
+    "scores": {
+     "austen": -17.85894203186035,
+     "brunton": -16.868534088134766,
+     "burney": -20.178573608398438,
+     "ferrier": -8.922103881835938,
+     "galt": -11.322418212890625,
+     "hogg": -0.03324329853057861,
+     "maturin": -17.795635223388672,
+     "morgan": -18.044010162353516,
+     "porter": -17.4449462890625,
+     "scott": -12.210787773132324,
+     "shelley": -17.231937408447266
+    },
+    "predicted": "hogg",
+    "positive": -12.210787773132324,
+    "open_negative": -0.03324329853057861
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 13-17",
+    "windows": 11,
+    "scores": {
+     "austen": -21.204336166381836,
+     "brunton": -19.70138168334961,
+     "burney": -23.980388641357422,
+     "ferrier": -13.019314765930176,
+     "galt": -17.62615394592285,
+     "hogg": -0.002070309594273567,
+     "maturin": -21.535091400146484,
+     "morgan": -22.377580642700195,
+     "porter": -20.013879776000977,
+     "scott": -15.261272430419922,
+     "shelley": -20.09581184387207
+    },
+    "predicted": "hogg",
+    "positive": -15.261272430419922,
+    "open_negative": -0.002070309594273567
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 9-13",
+    "windows": 11,
+    "scores": {
+     "austen": -17.69696617126465,
+     "brunton": -17.877323150634766,
+     "burney": -20.246845245361328,
+     "ferrier": -11.361266136169434,
+     "galt": -12.7047700881958,
+     "hogg": -1.5547510385513306,
+     "maturin": -19.18033790588379,
+     "morgan": -18.758018493652344,
+     "porter": -16.864225387573242,
+     "scott": -12.7816162109375,
+     "shelley": -17.667749404907227
+    },
+    "predicted": "hogg",
+    "positive": -12.7816162109375,
+    "open_negative": -1.5547510385513306
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 46-50",
+    "windows": 11,
+    "scores": {
+     "austen": -17.249753952026367,
+     "brunton": -16.806657791137695,
+     "burney": -20.614927291870117,
+     "ferrier": -9.022465705871582,
+     "galt": -9.925954818725586,
+     "hogg": -0.9060277938842773,
+     "maturin": -17.52346420288086,
+     "morgan": -18.436304092407227,
+     "porter": -17.800384521484375,
+     "scott": -13.034987449645996,
+     "shelley": -17.76209831237793
+    },
+    "predicted": "hogg",
+    "positive": -13.034987449645996,
+    "open_negative": -0.9060277938842773
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 32-36",
+    "windows": 11,
+    "scores": {
+     "austen": -14.191543579101562,
+     "brunton": -14.516148567199707,
+     "burney": -18.57389259338379,
+     "ferrier": -7.533369064331055,
+     "galt": -7.9761505126953125,
+     "hogg": -0.7065783739089966,
+     "maturin": -14.483766555786133,
+     "morgan": -16.835397720336914,
+     "porter": -14.760051727294922,
+     "scott": -11.124102592468262,
+     "shelley": -16.192317962646484
+    },
+    "predicted": "hogg",
+    "positive": -11.124102592468262,
+    "open_negative": -0.7065783739089966
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 45-49",
+    "windows": 11,
+    "scores": {
+     "austen": -17.00429916381836,
+     "brunton": -16.85611915588379,
+     "burney": -20.31842041015625,
+     "ferrier": -8.58132266998291,
+     "galt": -9.939676284790039,
+     "hogg": -0.43323978781700134,
+     "maturin": -17.566774368286133,
+     "morgan": -18.090734481811523,
+     "porter": -17.676786422729492,
+     "scott": -12.157301902770996,
+     "shelley": -17.416948318481445
+    },
+    "predicted": "hogg",
+    "positive": -12.157301902770996,
+    "open_negative": -0.43323978781700134
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 34-38",
+    "windows": 11,
+    "scores": {
+     "austen": -17.147817611694336,
+     "brunton": -17.007776260375977,
+     "burney": -20.832447052001953,
+     "ferrier": -10.209234237670898,
+     "galt": -13.12203311920166,
+     "hogg": -0.3643164336681366,
+     "maturin": -17.92194175720215,
+     "morgan": -19.799100875854492,
+     "porter": -16.97577667236328,
+     "scott": -13.46242904663086,
+     "shelley": -17.89106559753418
+    },
+    "predicted": "hogg",
+    "positive": -13.46242904663086,
+    "open_negative": -0.3643164336681366
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 46-50",
+    "windows": 11,
+    "scores": {
+     "austen": -17.249753952026367,
+     "brunton": -16.806657791137695,
+     "burney": -20.614927291870117,
+     "ferrier": -9.022465705871582,
+     "galt": -9.925954818725586,
+     "hogg": -0.9060277938842773,
+     "maturin": -17.52346420288086,
+     "morgan": -18.436304092407227,
+     "porter": -17.800384521484375,
+     "scott": -13.034987449645996,
+     "shelley": -17.76209831237793
+    },
+    "predicted": "hogg",
+    "positive": -13.034987449645996,
+    "open_negative": -0.9060277938842773
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 15-19",
+    "windows": 11,
+    "scores": {
+     "austen": -18.548145294189453,
+     "brunton": -18.81200408935547,
+     "burney": -21.474075317382812,
+     "ferrier": -12.137161254882812,
+     "galt": -13.94698715209961,
+     "hogg": -0.000993603840470314,
+     "maturin": -19.52476692199707,
+     "morgan": -19.740022659301758,
+     "porter": -17.81848907470703,
+     "scott": -15.063549041748047,
+     "shelley": -18.456022262573242
+    },
+    "predicted": "hogg",
+    "positive": -15.063549041748047,
+    "open_negative": -0.000993603840470314
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 32-36",
+    "windows": 11,
+    "scores": {
+     "austen": -14.191543579101562,
+     "brunton": -14.516148567199707,
+     "burney": -18.57389259338379,
+     "ferrier": -7.533369064331055,
+     "galt": -7.9761505126953125,
+     "hogg": -0.7065783739089966,
+     "maturin": -14.483766555786133,
+     "morgan": -16.835397720336914,
+     "porter": -14.760051727294922,
+     "scott": -11.124102592468262,
+     "shelley": -16.192317962646484
+    },
+    "predicted": "hogg",
+    "positive": -11.124102592468262,
+    "open_negative": -0.7065783739089966
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 4-8",
+    "windows": 11,
+    "scores": {
+     "austen": -14.421055793762207,
+     "brunton": -13.863822937011719,
+     "burney": -16.803007125854492,
+     "ferrier": -5.349203109741211,
+     "galt": -8.202975273132324,
+     "hogg": -0.6760265827178955,
+     "maturin": -15.74858283996582,
+     "morgan": -15.452415466308594,
+     "porter": -13.010540008544922,
+     "scott": -7.6200690269470215,
+     "shelley": -13.944429397583008
+    },
+    "predicted": "hogg",
+    "positive": -7.6200690269470215,
+    "open_negative": -0.6760265827178955
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 26-30",
+    "windows": 10,
+    "scores": {
+     "austen": -13.386013984680176,
+     "brunton": -14.015121459960938,
+     "burney": -18.483301162719727,
+     "ferrier": -7.053685665130615,
+     "galt": -7.300793647766113,
+     "hogg": -1.0750130414962769,
+     "maturin": -14.693730354309082,
+     "morgan": -15.982937812805176,
+     "porter": -13.276402473449707,
+     "scott": -9.325373649597168,
+     "shelley": -15.80798053741455
+    },
+    "predicted": "hogg",
+    "positive": -9.325373649597168,
+    "open_negative": -1.0750130414962769
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 29-33",
+    "windows": 10,
+    "scores": {
+     "austen": -15.024568557739258,
+     "brunton": -16.075210571289062,
+     "burney": -19.667194366455078,
+     "ferrier": -8.967931747436523,
+     "galt": -9.624104499816895,
+     "hogg": -0.007551891263574362,
+     "maturin": -16.33112907409668,
+     "morgan": -17.98123550415039,
+     "porter": -15.57047176361084,
+     "scott": -12.605527877807617,
+     "shelley": -17.008533477783203
+    },
+    "predicted": "hogg",
+    "positive": -12.605527877807617,
+    "open_negative": -0.007551891263574362
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 12-16",
+    "windows": 11,
+    "scores": {
+     "austen": -20.38195037841797,
+     "brunton": -19.030948638916016,
+     "burney": -22.98809814453125,
+     "ferrier": -12.195902824401855,
+     "galt": -16.775772094726562,
+     "hogg": -0.0003215224714949727,
+     "maturin": -20.609302520751953,
+     "morgan": -21.3649959564209,
+     "porter": -19.134496688842773,
+     "scott": -14.32585334777832,
+     "shelley": -19.455408096313477
+    },
+    "predicted": "hogg",
+    "positive": -14.32585334777832,
+    "open_negative": -0.0003215224714949727
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 5-9",
+    "windows": 11,
+    "scores": {
+     "austen": -14.254636764526367,
+     "brunton": -14.175652503967285,
+     "burney": -16.600770950317383,
+     "ferrier": -5.9148430824279785,
+     "galt": -7.16248083114624,
+     "hogg": -0.33054685592651367,
+     "maturin": -15.42275619506836,
+     "morgan": -15.239288330078125,
+     "porter": -12.944619178771973,
+     "scott": -9.56914234161377,
+     "shelley": -14.130844116210938
+    },
+    "predicted": "hogg",
+    "positive": -9.56914234161377,
+    "open_negative": -0.33054685592651367
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 2-6",
+    "windows": 11,
+    "scores": {
+     "austen": -13.82265567779541,
+     "brunton": -12.941051483154297,
+     "burney": -15.874102592468262,
+     "ferrier": -4.669590473175049,
+     "galt": -7.196744918823242,
+     "hogg": -0.9871301054954529,
+     "maturin": -14.888594627380371,
+     "morgan": -14.868986129760742,
+     "porter": -13.178890228271484,
+     "scott": -7.900888919830322,
+     "shelley": -13.648467063903809
+    },
+    "predicted": "hogg",
+    "positive": -7.900888919830322,
+    "open_negative": -0.9871301054954529
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 3-7",
+    "windows": 11,
+    "scores": {
+     "austen": -14.445368766784668,
+     "brunton": -13.857455253601074,
+     "burney": -17.12183380126953,
+     "ferrier": -5.598132133483887,
+     "galt": -8.477334976196289,
+     "hogg": -1.1492217779159546,
+     "maturin": -16.010456085205078,
+     "morgan": -15.817757606506348,
+     "porter": -14.108766555786133,
+     "scott": -8.020414352416992,
+     "shelley": -14.521587371826172
+    },
+    "predicted": "hogg",
+    "positive": -8.020414352416992,
+    "open_negative": -1.1492217779159546
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 28-32",
+    "windows": 10,
+    "scores": {
+     "austen": -15.487622261047363,
+     "brunton": -16.351993560791016,
+     "burney": -20.044408798217773,
+     "ferrier": -8.8054838180542,
+     "galt": -10.723811149597168,
+     "hogg": -0.04456857219338417,
+     "maturin": -16.908559799194336,
+     "morgan": -17.964523315429688,
+     "porter": -15.671612739562988,
+     "scott": -12.014758110046387,
+     "shelley": -17.632692337036133
+    },
+    "predicted": "hogg",
+    "positive": -12.014758110046387,
+    "open_negative": -0.04456857219338417
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 12-16",
+    "windows": 11,
+    "scores": {
+     "austen": -20.38195037841797,
+     "brunton": -19.030948638916016,
+     "burney": -22.98809814453125,
+     "ferrier": -12.195902824401855,
+     "galt": -16.775772094726562,
+     "hogg": -0.0003215224714949727,
+     "maturin": -20.609302520751953,
+     "morgan": -21.3649959564209,
+     "porter": -19.134496688842773,
+     "scott": -14.32585334777832,
+     "shelley": -19.455408096313477
+    },
+    "predicted": "hogg",
+    "positive": -14.32585334777832,
+    "open_negative": -0.0003215224714949727
+   },
+   {
+    "author": "scott",
+    "where": "internet_archive:10749002bsb blocks 10-14",
+    "windows": 11,
+    "scores": {
+     "austen": -18.092979431152344,
+     "brunton": -18.0777530670166,
+     "burney": -20.108259201049805,
+     "ferrier": -11.661660194396973,
+     "galt": -13.514452934265137,
+     "hogg": -1.1194883584976196,
+     "maturin": -19.45291519165039,
+     "morgan": -18.91824722290039,
+     "porter": -17.47989845275879,
+     "scott": -13.290377616882324,
+     "shelley": -17.969158172607422
+    },
+    "predicted": "hogg",
+    "positive": -13.290377616882324,
+    "open_negative": -1.1194883584976196
+   }
+  ]
+ }
+}
