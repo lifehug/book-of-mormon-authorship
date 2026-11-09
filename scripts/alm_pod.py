@@ -83,6 +83,7 @@ def step(s: dict, issue: int, cap: float, files: Path) -> bool:
         lst = sp.STATE.parent / "files.txt"
         names = [ln for ln in files.read_text().splitlines() if ln]
         lst.write_text("\n".join(names + EXTRA) + "\n")
+        sp.b2_prefetch(names + EXTRA)  # models from B2 first; rsync then skips or fixes them
         rc, out = sp.pw.sh(["rsync", "-rtLR", "--no-o", "--no-g", f"--files-from={lst}", ".",
                             f"{sp.SSH}:{R}/"], 7200)  # fmt: skip
         if rc != 0:

@@ -88,6 +88,45 @@ def remote(cmd: str, timeout: int = 900) -> tuple[int, str]:
     return pw.sh(["ssh", "-o", "ConnectTimeout=30", "-o", "BatchMode=yes", SSH, cmd], timeout)
 
 
+B2_PREFIX = "data/corpus/"  # the bucket mirrors data/corpus/ (scripts/b2_backup.sh)
+
+
+def b2_prefetch(names: list[str]) -> None:
+    """Pull the large model files among ``names`` onto the pod from the private B2 backup, so the
+    Mac's slow upload carries each model once (owner, 2026-11-09). The key goes on the pod for the
+    download only and is removed and checked, as for the training tokens. Best effort: a file not
+    yet in the bucket, or any failure, is left to the rsync that follows, and every file's SHA-256
+    is checked after it either way."""
+    import subprocess
+
+    big = [n for n in names if n.startswith(B2_PREFIX + "timelocked_lm/runs/") and
+           n.endswith(".pt") and (ROOT / n).exists()]  # fmt: skip
+    if not big:
+        return
+    have = remote(" ; ".join(f"stat -c %s {R}/{n} 2>/dev/null || echo 0" for n in big))[1].split()
+    want = [n for n, h in zip(big, have, strict=False) if h != str((ROOT / n).stat().st_size)]
+    if not want:
+        return
+    creds = (Path.home() / ".config/backblaze/credentials").read_text()
+    p = subprocess.run(["ssh", "-o", "BatchMode=yes", SSH, "umask 077 && cat > /root/.b2"],
+                       input=creds, text=True, capture_output=True, timeout=60)  # fmt: skip
+    if p.returncode == 0:
+        pulls = " ; ".join(
+            f"mkdir -p $(dirname {R}/{n}) && rclone copyto :b2:$B2_BUCKET/{n[len(B2_PREFIX):]} "
+            f"{R}/{n}" for n in want)  # fmt: skip
+        rc, out = remote(
+            "(command -v rclone > /dev/null || (apt-get install -y -qq unzip > /dev/null && "
+            "curl -s https://rclone.org/install.sh | bash > /dev/null)); set -a; . /root/.b2; "
+            "set +a; export RCLONE_B2_ACCOUNT=$B2_KEY_ID RCLONE_B2_KEY=$B2_APP_KEY; "
+            f"{pulls}; rm -f /root/.b2", 3600)  # fmt: skip
+        log(f"B2 prefetch of {len(want)} model file(s): rc {rc} {out[-200:]}")
+    for _ in range(3):
+        remote("rm -f /root/.b2")
+        if "GONE" in remote("test -e /root/.b2 && echo PRESENT || echo GONE")[1]:
+            return
+    raise RuntimeError("B2 key could not be confirmed removed from the pod")
+
+
 def sha(path: Path) -> str:
     h = hashlib.sha256()
     with path.open("rb") as f:
@@ -175,6 +214,7 @@ def step(s: dict, issue: int, cap: float) -> bool:
                 return False
         s["phase"] = "upload"
     elif ph == "upload":
+        b2_prefetch(list(UPLOADS.values()))
         for local, rel in UPLOADS.items():
             rc, out = pw.sh(["rsync", "-rt", "--no-o", "--no-g", "--partial", str(ROOT / local),
                              f"{SSH}:{R}/{rel}"], 7200)  # fmt: skip
