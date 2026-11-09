@@ -1,8 +1,8 @@
 {
- "config_sha256": "8397b899a1f4f917c4a5e286e3f1bc63a33100433c67ca0b4e1162e50444cbef",
+ "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "8ce65c4cd432acace4920f4759a8263bcdf26343",
+ "git_commit": "51141d167fad29bc0dea97db733a108b96158c65",
  "methods": {
   "general_imposters": {
    "closed_set": 0.8333333333333334,
@@ -46,12 +46,28 @@
    "open_set_fpr_original": 0.06363636363636363,
    "passes": false
   },
+  "alm_base_v1_lrsel": {
+   "closed_set": 0.990909090909091,
+   "threshold": 0.1386597049236298,
+   "open_set_fpr": 0.38181818181818183,
+   "tests": 110,
+   "open_set_fpr_original": 0.045454545454545456,
+   "passes": false
+  },
   "alm_base_v2": {
    "closed_set": 0.9090909090909091,
    "threshold": -4.113979327678677,
    "open_set_fpr": 0.13636363636363635,
    "tests": 110,
    "open_set_fpr_original": 0.05454545454545455,
+   "passes": false
+  },
+  "alm_base_v2_lrsel": {
+   "closed_set": 0.7727272727272727,
+   "threshold": -2.147356981039045,
+   "open_set_fpr": 0.4,
+   "tests": 110,
+   "open_set_fpr_original": 0.07272727272727272,
    "passes": false
   },
   "alm_base_v3": {
@@ -78,6 +94,38 @@
    "open_set_fpr_original": 0.06363636363636363,
    "passes": false
   },
+  "alm_mid": {
+   "closed_set": 0.9818181818181818,
+   "threshold": 0.09455165266990662,
+   "open_set_fpr": 0.21818181818181817,
+   "tests": 110,
+   "open_set_fpr_original": 0.06363636363636363,
+   "passes": false
+  },
+  "alm_mid_v1": {
+   "closed_set": 0.6272727272727273,
+   "threshold": -0.820233107805252,
+   "open_set_fpr": 0.8181818181818181,
+   "tests": 110,
+   "open_set_fpr_original": 0.06363636363636363,
+   "passes": false
+  },
+  "alm_mid_v2": {
+   "closed_set": 0.7636363636363637,
+   "threshold": -6.552182388305663,
+   "open_set_fpr": 0.3909090909090909,
+   "tests": 110,
+   "open_set_fpr_original": 0.05454545454545454,
+   "passes": false
+  },
+  "alm_mid_v3": {
+   "closed_set": 0.8444444444444444,
+   "threshold": 0.7185000000000002,
+   "open_set_fpr": 0.7055555555555555,
+   "tests": 180,
+   "open_set_fpr_original": 0.0,
+   "passes": false
+  },
   "alm_pilot": {
    "closed_set": 0.9363636363636364,
    "threshold": 0.16823240041732795,
@@ -94,12 +142,28 @@
    "open_set_fpr_original": 0.06363636363636363,
    "passes": false
   },
+  "alm_pilot_v1_lrsel": {
+   "closed_set": 0.9363636363636364,
+   "threshold": 0.16822771847248083,
+   "open_set_fpr": 0.4727272727272728,
+   "tests": 110,
+   "open_set_fpr_original": 0.05454545454545454,
+   "passes": false
+  },
   "alm_pilot_v2": {
    "closed_set": 0.9,
    "threshold": -4.031901609897613,
    "open_set_fpr": 0.2818181818181818,
    "tests": 110,
    "open_set_fpr_original": 0.06363636363636363,
+   "passes": false
+  },
+  "alm_pilot_v2_lrsel": {
+   "closed_set": 0.7636363636363637,
+   "threshold": -4.902736592292785,
+   "open_set_fpr": 0.5909090909090908,
+   "tests": 110,
+   "open_set_fpr_original": 0.05454545454545454,
    "passes": false
   },
   "alm_pilot_v3": {
