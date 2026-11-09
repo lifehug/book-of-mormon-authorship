@@ -2768,8 +2768,50 @@ We'd set the bar at 70% before starting, so by our own rule the sweep isn't good
 
 **Things that went wrong today, kept for the record:** the Mac's graphics chip froze twice on one job (moved it to a rented GPU, $12); a file transfer quietly replaced the link to our big external drive with an empty folder, so jobs were reading nothing (nothing was lost; it's now guarded against); and my first two attempts at the stability test were set up wrong ($4 and an hour wasted).
 
+## Monday: the 590M's results, and which methods we can actually trust
+
+The 590-million-parameter model finished training at half past midnight. Its validation loss
+ended at 2.19, against 2.33 for the 297M. Then the tests.
+
+The main method got a lot better. It picks the right author 98% of the time, about the same as
+before. But it says "match" for the wrong author far less often: 22% of the time, down from 38%
+at 297M and 47% at 125M. I'd guessed about 32% from the loss curve. It beat my guess.
+
+Two of the other variants got worse, which made no sense. A bigger model should not get worse at
+the same job. So we dug in, and that turned into the most useful thing we learned all day.
+
+**V1 was a bad setting, not a bad idea.** V1 is the main method with the learning rate turned up
+ten times. On the 590M that rate wrecked the model: after fine-tuning it was worse at reading new
+English than before (its loss went up 0.81, where fine-tuning normally pushes it down). We picked
+the rate again, this time by testing each option on held-out pieces of the training text and never
+the 110 tests. It picked the gentle rate, the same one the main method uses. At that rate V1
+*is* the main method, and it matched the main method's score to the decimal. That's a good
+sign in itself: the same procedure on a different machine gave the identical answer.
+
+**V2 turned out to be luck.** V2 had looked like our star at 297M: 13.6% false matches, the best
+of anything. So we reran it five more times with different random seeds and nothing else changed.
+At 125M the false-match rate came out 9%, 93%, 79%, 33% and 36%. At 297M, 53% to 98%. Same method,
+same data, same settings. The 13.6% was one lucky roll. V2 now gets reported as a range, and no
+conclusion leans on it.
+
+I'm glad we checked this before looking at the Book of Mormon answer. If we'd looked first and
+V2 had said something striking, it would have been very tempting to believe it.
+
+All of it is written up in `docs/method-reliability.md`: which methods are stable, which aren't,
+and how much weight each one's answer can carry. The short version: lead with the main method and
+the classical methods, treat any "match" as a lead rather than a verdict, and trust agreement
+between independent methods more than any one method.
+
+Two other things from today. First, a mistake of mine: the models fine-tuned for each benchmark
+test were scored and then thrown away to save disk. Dave pointed out that we'd said we would
+publish everything, so throwing away trained models was wrong. Every fine-tuned model is now kept,
+pushed straight from the GPU machine to our backup, and the ones already discarded will be
+rebuilt and published (BOM-72). Second, the 590M version of the style encoder is training. It's
+slower than expected, so we unblind on Tuesday morning instead of Monday night.
+
 ## Log
 
+- **2026-11-09.** 590M trained (val loss 2.19); primary method 0.982 right author, 0.218 false matches (0.382 at 297M). V1 broken by its 10x learning rate (Amendment 41: rate chosen on held-out training text gives the primary method exactly); V2 unstable across seeds (Amendment 42: 9-93% false matches at 125M, 53-98% at 297M). `docs/method-reliability.md` written. Every fine-tuned model now kept and published (BOM-72). Unblinding moved to Tuesday morning for the 590M style encoder.
 - **2026-11-07.** 1B abandoned after an unrecoverable loss spike (Amendments 38-39); QK-norm tested (30x LR: plain breaks, QK-norm trains) and a 590M with it launched. Sweep calibrated: true author first 27-35%, not usable by our 70% rule; expected false leads 0.035 per book; plausibility gate passes 10% of random authors (Amendment 40). Book of Mormon sealed with 43 decoys and scored blind by every method except the 590M (Amendment 33: both match rules and a false-match ladder).
 - **2026-11-06.** BOM-29 closed: the transformer cross-check dates held-out text to 10 years on average (grammar model 23, word model 13) and, unlike the grammar model, is not fooled by Bible imitation (+1 year vs -53). The grammar model still decides H3; the Book of Mormon is dated in the blind run.
 - **2026-11-06.** Imitation test (classical half-weight, language models fooled); GPT-2 comparison (our period models: 0.9% wrong vs 5.5%, false matches 38% vs 86%); dictation evidence confirmed on the page photos (~9x misheard-word fixes, same scribe); access table final after the Palmyra and Canandaigua papers and Grunder (no named source advertised locally; Josephus sold from 1822); GitHub CI fixed (had failed on every push).
