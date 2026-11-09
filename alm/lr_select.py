@@ -20,7 +20,8 @@ Writes ``data/benchmark/lr_select_<size>.json`` (every rate's score and the chos
 
 Usage::
 
-    python -m alm.lr_select <size> [--micro-batch 8]   # then the reruns at the chosen rates
+    python -m alm.lr_select <size> [--micro-batch 8]           # choose the rates
+    python -m alm.lr_select <size> --rerun [--micro-batch 8]   # V1 and V2 at them, weights kept
 """
 
 from __future__ import annotations
@@ -155,10 +156,18 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("size", choices=["pilot", "base", "mid", "large"])
     ap.add_argument("--micro-batch", type=int, default=2, help="memory only; same update")
     ap.add_argument("--print", action="store_true", help="print the chosen rates: v1 v2")
+    ap.add_argument("--rerun", action="store_true", help="V1 and V2 at the chosen rates")
     a = ap.parse_args(argv)
     if a.print:
         print(*chosen(a.size))
         return 0
+    if a.rerun:
+        from alm.benchmark import run as v1
+        from alm.variants import v2
+
+        r1, r2 = chosen(a.size)
+        v1(a.size, a.micro_batch, "v1", r1, f"{a.size}_v1_lrsel", True)
+        return v2(a.size, a.micro_batch, r2, f"{a.size}_v2_lrsel", True)
     return run(a.size, a.micro_batch)
 
 
