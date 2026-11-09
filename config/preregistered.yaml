@@ -430,6 +430,8 @@ alm:
   # V1 and V2 learning rate chosen on held-out training text, never the benchmark tests
   lr_select_grid: [1.0e-6, 3.0e-6, 1.0e-5, 3.0e-5, 1.0e-4]
   lr_select_val_share: 0.1      # the tail of each author's training tokens (V1) or windows (V2)
+  # Amendment 42 (OSF revision 6af2372b1b761e5f3180bc26; post hoc: V2 rerun 0.900 -> 0.764 at 125M)
+  v2_seed_runs: 5               # V2 rerun with seeds 1..5 per size; its spread reported
   # Amendment 30 (OSF revision 6aee229330296560945f60f4): candidate and control models, BOM-28
   control_words: 300000         # seeded sample per control group, the order of the largest candidate
   control_passage_words: 5000   # at least this many middle words from every volume used

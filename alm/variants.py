@@ -16,6 +16,10 @@ Both are judged by ``alm.benchmark.decide`` (Amendment 22's rule). Usage::
 
     python -m alm.variants v2|v3 <size>   # pilot|base|mid|large -> alm_<size>_<variant>.json
     python -m alm.variants v2 <size> --lr 3e-6 --tag <size>_v2_lrsel --save-weights
+    python -m alm.variants v2 <size> --seed-index 1 --tag <size>_v2_seed1 --save-weights
+
+``--seed-index k`` (Amendment 42) reruns V2 with a different seed for every task, to measure how
+much its result moves between runs; 0 is the registered seed.
 """
 
 from __future__ import annotations
@@ -52,7 +56,7 @@ def _windows(ids: list[int], w: int) -> torch.Tensor:
 
 
 def v2(size: str, micro: int, lr: float | None = None, tag: str | None = None,
-       save: bool = False) -> int:  # fmt: skip
+       save: bool = False, seed_index: int = 0) -> int:  # fmt: skip
     from tokenizers import Tokenizer
 
     cfg = load_config()
@@ -81,7 +85,8 @@ def v2(size: str, micro: int, lr: float | None = None, tag: str | None = None,
         X, y = torch.tensor(xs), torch.tensor(ys)
         counts = torch.bincount(y, minlength=len(authors)).float()
         weight = (counts.sum() / (len(authors) * counts)).to(dev)
-        seed = derive_seed(f"{a['train_seed']}:v2:{task}", cfg)
+        seed = derive_seed(f"{a['train_seed']}:v2:{task}" + (f":s{seed_index}" if seed_index
+                                                              else ""), cfg)  # fmt: skip
         torch.manual_seed(seed)
         model = _base(size, cfg).to(dev)
         head = nn.Linear(model.ln.weight.shape[0], len(authors)).to(dev)
@@ -123,7 +128,7 @@ def v2(size: str, micro: int, lr: float | None = None, tag: str | None = None,
         path.write_text(json.dumps(recs))
         recs_by[task] = recs
         print(f"  {size}_v2 {task}: {len(X):,} windows, {steps} steps", flush=True)
-    return write(tag, recs_by, cfg, {"variant": "v2", "lr": lr})
+    return write(tag, recs_by, cfg, {"variant": "v2", "lr": lr, "seed_index": seed_index})
 
 
 def v3(size: str) -> int:
@@ -189,9 +194,16 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--lr", type=float, help="v2: Amendment 41's selected learning rate")
     ap.add_argument("--tag", help="v2: result name; default <size>_v2")
     ap.add_argument("--save-weights", action="store_true", help="v2: keep each task's model")
+    ap.add_argument("--seed-index", type=int, default=0, help="v2: Amendment 42's reruns")
+    ap.add_argument("--seed-runs", action="store_true",
+                    help="v2: seeds 1..alm.v2_seed_runs in turn, as <size>_v2_seed<k>")  # fmt: skip
     a = ap.parse_args(argv)
+    if a.variant == "v2" and a.seed_runs:
+        for k in range(1, load_config()["alm"]["v2_seed_runs"] + 1):
+            v2(a.size, a.micro_batch, None, f"{a.size}_v2_seed{k}", a.save_weights, k)
+        return 0
     if a.variant == "v2":
-        return v2(a.size, a.micro_batch, a.lr, a.tag, a.save_weights)
+        return v2(a.size, a.micro_batch, a.lr, a.tag, a.save_weights, a.seed_index)
     return v3(a.size)
 
 
