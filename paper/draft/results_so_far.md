@@ -93,10 +93,22 @@ similarity is explained, on triage, by King James wording (36%) or period stock 
 | Style embeddings | - | | | | 0.839 | 0.500 | no |
 | ALM primary | 125M | 0.769 | 0.958 | 1.000 | 0.936 | 0.473 | no |
 | ALM primary | 297M | 1.000 | 0.958 | 1.000 | 0.991 | 0.382 | no |
-| V1 (lr 1e-4) | 125M / 297M | | | | 0.936 / 0.936 | 0.455 / 0.473 | no |
-| V2 (classifier head) | 125M / 297M | | | | 0.900 / 0.909 | 0.282 / 0.136 | no |
-| V3 (hidden states) | 125M / 297M | | | | 0.839 / 0.844 | 0.689 / 0.717 | no |
-| All of the above | 1B | [RESULT] | | | [RESULT] | [RESULT] | [RESULT] |
+| ALM primary | 590M | 1.000 | 0.917 | 1.000 | 0.982 | 0.218 | no |
+| V1 (lr 1e-4, registered) | 125M / 297M / 590M | | | | 0.936 / 0.936 / 0.627 | 0.455 / 0.473 / 0.818 | no |
+| V1 at the rate chosen on held-out training text (Amendment 41, post hoc) | 125M / 297M / 590M | | | | 0.936 / 0.991 / [RESULT] | 0.473 / 0.382 / [RESULT] | no |
+| V2 (classifier head, registered) | 125M / 297M / 590M | | | | 0.900 / 0.909 / 0.764 | 0.282 / 0.136 / 0.391 | no |
+| V2 at the chosen rate (Amendment 41, post hoc) | 125M / 297M / 590M | | | | 0.764 / 0.773 / [RESULT] | 0.591 / 0.400 / [RESULT] | no |
+| V2, five further seeds (Amendment 42, post hoc): range | 125M / 297M / 590M | | | | [RESULT] | [RESULT] | |
+| V3 (hidden states) | 125M / 297M / 590M | | | | 0.839 / 0.844 / 0.844 | 0.689 / 0.717 / 0.706 | no |
+| GPT-2, primary method (BOM-68 ablation) | 124M / 355M | | | | 0.900 / 0.945 | 0.918 / 0.855 | no |
+
+The 1B was abandoned after a loss spike and replaced by the 590M with QK-norm (Amendments 38,
+39). False matches for the primary method fall with size: 0.473, 0.382, 0.218. V1's registered
+rate (ten times Amendment 22's) damaged the 590M: its fine-tuned models raised the loss on new
+text by 0.81 nats (0.56 at 297M), and at the rate chosen on held-out training text V1 is the
+primary method (1e-5 at every size so far). V2 is unstable: at 125M its rerun at the registered
+rate and seed on an H100 gave 0.764 / 0.591 against the Mac run's 0.900 / 0.282, so its single
+registered numbers are reported beside the spread of five further seeds (Amendment 42).
 
 **No method passes** the registered bar (closed set at least 0.90 and false matches at most
 0.05). Every method can rank candidates; none can yet say "none of these" reliably. Classical
@@ -104,10 +116,10 @@ methods, style embeddings and V3 are scored on BOM-21's 180 trials; the fine-tun
 held-out tests, so the two groups are compared within, not across (BOM-68; paired exact McNemar
 tests in `data/benchmark/prior_work.json`).
 
-**Candidate models at 297M** (`data/benchmark/alm_candidates_base.json`): held-out closed-set
-accuracy among all units 1.0 for Ethan Smith (20 tests), Spalding (7), Cowdery printed (7) and
-Phelps (3); Hunt 0.8 (10); Pratt 0.95 (19); Rigdon 0.5 (2). Samples under 10,000 words are
-untested.
+**Candidate models** (`data/benchmark/alm_candidates_<size>.json`): held-out closed-set accuracy
+among candidates, 297M / 590M: Ethan Smith 1.0 / 1.0 (20 tests), Spalding 1.0 / 1.0 (7), Cowdery
+printed 1.0 / 1.0 (7), Phelps 1.0 / 1.0 (3), Hunt 0.8 / 0.8 (10), Pratt 1.0 / 0.95 (19), Rigdon
+0.5 / 1.0 (2); 0.956 of 68 windows at both sizes. Samples under 10,000 words are untested.
 
 ## 3. Dating validation (Q3; `data/dating/validation.json`)
 
@@ -123,7 +135,9 @@ untested.
 | Known-answer separation (Amendment 9) | p 0.57, none | p 0.81, none |
 
 King James imitation alone moves the grammar model's date back by about half a century; this is
-the comparison H3c registers. The transformer cross-check: [RESULT: `data/dating/transformer_validation.json`].
+the comparison H3c registers. The transformer cross-check (Amendment 29,
+`data/dating/transformer_validation.json`): held-out mean error 10.1 years, 90% interval coverage
+0.94, and King James imitation moves it by +0.8 years where the grammar model moves -53.
 
 ## 4. Imitation robustness, classical methods (BOM-31; `data/benchmark/imitation.json`)
 
@@ -134,7 +148,14 @@ the comparison H3c registers. The transformer cross-check: [RESULT: `data/dating
 | General Imposters | 11/18 = 0.61 (0.36-0.83) | 0.5 | 0.12 |
 | ENSC | 7/18 = 0.39 (0.17-0.64) | 0 | 0.25 |
 
-[RESULT: style embeddings and model-based methods at 125M, 297M and 1B.]
+| Style embeddings (297M encoder) | 7/18 = 0.39 (0.17-0.64) | 0 | 0.54 |
+| ALM primary 125M / 297M / 590M | 5 / 7 / 6 of 17 (0.29 / 0.41 / 0.35) | 0 | 0.25 / 0.17 / 0.04 |
+| V1 125M / 297M / 590M | 0 / 2 / 0 of 17 | 0 | 0.12 / 0.42 / 0.00 |
+| V3 125M / 297M / 590M | 4 / 4 / 5 of 17 | 0 | 0.00 / 0.25 / 0.21 |
+| Style embeddings (590M encoder) | [RESULT] | | |
+
+The model-based methods are no better than the classical ones at seeing through imitation, and
+size does not help: the 590M's primary method names the real author in 6 of 17 imitation texts.
 
 ## 5. Production evidence (BOM-34; `data/manuscript/summary.json`, `docs/manuscript-evidence.md`)
 
