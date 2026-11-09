@@ -56,8 +56,23 @@ PLAN = BENCH / "alm_candidates_plan.json"
 NONE = "not in set"
 BANDS = ("match", "inconclusive", "non_match")
 FAMILIES = ("classical", "embedding", "authorial")
-# the method whose imitation weight (BOM-31) applies to each family
-IMITATION_METHOD = {"classical": "general_imposters", "embedding": "style", "authorial": "alm"}
+
+
+def imitation_method(size: str, encoder: str) -> dict[str, str]:
+    """The BOM-31 part (``data/benchmark/imitation/<name>.json``) whose weight applies to each
+    family: the size's own authorial models and the embedding family's encoder."""
+    from style_embed.train import bench_name
+
+    return {"classical": "general_imposters", "embedding": bench_name(encoder),
+            "authorial": f"alm_{size}"}  # fmt: skip
+
+
+def encoder_for(size: str) -> str:
+    """The style encoder the embedding family uses at ``size``: that size's own where one was
+    trained and benchmarked (the 590M, owner 2026-11-09), otherwise the registered 297M one."""
+    from style_embed.train import SIZES, bench_name
+
+    return size if size in SIZES and (BENCH / f"{bench_name(size)}.json").exists() else "base"
 
 
 # ---- benchmark rates -----------------------------------------------------------------------------
@@ -94,10 +109,13 @@ def rates_one(size: str) -> dict:
 
     cfg = load_config()
     sm = cfg["synthesis"]["smoothing"]
+    from style_embed.train import bench_name, tag
+
     th = thresholds(size)
+    enc = encoder_for(size)
     bench = json.loads((BENCH / "benchmark.json").read_text())
     recs = [r for rs in bench["records"].values() for r in rs]
-    style = json.loads((BENCH / "style_embed.json").read_text())
+    style = json.loads((BENCH / f"{bench_name(enc)}.json").read_text())
     srecs = [r for rs in style["records"].values() for r in rs]
     fam = {
         "classical": {"accuracy": bench["verdict"]["general_imposters"]["closed_set"],
@@ -108,7 +126,7 @@ def rates_one(size: str) -> dict:
         "embedding": {"accuracy": style["verdict"]["closed_set"],
                       **band_rates([r["positive"] for r in srecs],
                                    [r["open_negative"] for r in srecs
-                                    if r["open_negative"] is not None], th["style"], sm)},
+                                    if r["open_negative"] is not None], th[tag(enc)], sm)},
     }  # fmt: skip
     cand = BENCH / f"alm_candidates_{size}.json"
     if cand.exists() and th.get("alm"):
@@ -123,7 +141,8 @@ def rates_one(size: str) -> dict:
                             **band_rates(pos, neg, th["alm"], sm)}  # fmt: skip
     OUT.mkdir(parents=True, exist_ok=True)
     out = OUT / f"rates_{size}.json"
-    out.write_text(json.dumps({**stamp(), "size": size, "families": fam}, indent=1) + "\n")
+    out.write_text(json.dumps({**stamp(), "size": size, "encoder": enc, "families": fam},
+                              indent=1) + "\n")  # fmt: skip
     print(f"rates -> {out}: " + ", ".join(
         f"{k} a={v['accuracy']:.3f}" for k, v in fam.items()))  # fmt: skip
     return fam
@@ -205,13 +224,15 @@ def observations(methods: dict, units: dict[str, str], split: dict[str, str]
     return out
 
 
-def weights(fams: dict, imitation: dict, equal: bool = False) -> dict[str, float]:
-    """w_f = closed-set accuracy x section 9 weight; equal weights (Amendment 7) are 1 each."""
+def weights(fams: dict, imitation: dict, method: dict[str, str],
+            equal: bool = False) -> dict[str, float]:  # fmt: skip
+    """w_f = closed-set accuracy x section 9 weight; equal weights (Amendment 7) are 1 each.
+    ``method``: the imitation part for each family (``imitation_method``)."""
     out = {}
     for f, r in fams.items():
-        m = imitation.get("methods", {}).get(IMITATION_METHOD[f])
+        m = imitation.get("methods", {}).get(method[f])
         if m is None:
-            raise SystemExit(f"no BOM-31 imitation weight for {f} ({IMITATION_METHOD[f]})")
+            raise SystemExit(f"no BOM-31 imitation weight for {f} ({method[f]})")
         out[f] = 1.0 if equal else r["accuracy"] * m["weight"]
     return out
 
@@ -238,23 +259,30 @@ def run_size(size: str, methods: dict, cfg: dict) -> dict | None:
     if not path.exists():
         print(f"  {size}: no rates (python -m synth.model rates {size}); skipped", flush=True)
         return None
-    fams = json.loads(path.read_text())["families"]
+    from style_embed.train import tag
+
+    rates_doc = json.loads(path.read_text())
+    fams, enc = rates_doc["families"], rates_doc.get("encoder", "base")
+    method = imitation_method(size, enc)
     imitation = json.loads((BENCH / "imitation.json").read_text())
     split = json.loads(Path("data/bom/segments/split.json").read_text())["assignment"]
     plan = json.loads(PLAN.read_text())
-    mine = {k: v for k, v in methods.items() if not k.startswith("alm")}
+    mine = {k: v for k, v in methods.items() if not k.startswith(("alm", "style"))}
+    if tag(enc) in methods:  # the embedding family's records from the encoder its rates use
+        mine["style"] = methods[tag(enc)]
     if f"alm_{size}" in methods:
         mine["alm"] = methods[f"alm_{size}"]
     else:
         fams = {f: r for f, r in fams.items() if f != "authorial"}
-    res: dict = {**stamp(), "size": size, "families": sorted(fams), "hypotheses": {},
-                 "beside": {}}  # fmt: skip
+    res: dict = {**stamp(), "size": size, "encoder": enc, "families": sorted(fams),
+                 "hypotheses": {}, "beside": {}}  # fmt: skip
     for label, secondary in (("primary", False), ("secondary", True)):
         cands, units = hypotheses(plan, secondary)
         obs = observations(mine, units, split)
-        w = weights(fams, imitation)
+        w = weights(fams, imitation, method)
         r = {"candidates": cands, "weights": w, "main": synthesise(obs, fams, w, cands, cfg),
-             "equal_weights": synthesise(obs, fams, weights(fams, imitation, True), cands, cfg),
+             "equal_weights": synthesise(obs, fams, weights(fams, imitation, method, True),
+                                         cands, cfg),
              "independent_chunks": synthesise(obs, fams, w, cands, cfg, independent=True),
              "drop_one": {f: synthesise(obs, fams, {**w, f: 0.0}, cands, cfg) for f in fams},
              "chunks": {h: {f: len(o) for f, o in b.items()} for h, b in obs.items()}}  # fmt: skip

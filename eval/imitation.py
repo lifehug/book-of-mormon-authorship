@@ -237,12 +237,14 @@ def _vector_method(name: str, embed, cfg: dict, tokens) -> int:
     return 0
 
 
-def style() -> int:
+def style(size: str = "base") -> int:
     from eval.benchmark import _masked_tokens
-    from style_embed.benchmark import MODEL, embedder
+    from style_embed.benchmark import embedder
+    from style_embed.train import bench_name, run_dir
 
     cfg = load_config()
-    return _vector_method("style_embed", embedder(MODEL, cfg), cfg, _masked_tokens)
+    return _vector_method(bench_name(size), embedder(run_dir(size) / "style.pt", cfg, size), cfg,
+                          _masked_tokens)  # fmt: skip
 
 
 def _original(ids: list[str]) -> dict[str, list[str]]:
@@ -401,7 +403,9 @@ def main(argv: list[str] | None = None) -> int:
             ap.error("files needs a size")
         print("\n".join(files(a.size)))
         return 0
-    return {"build": build, "classic": classic, "style": style, "report": report}[a.cmd]()
+    if a.cmd == "style":
+        return style(a.size or "base")
+    return {"build": build, "classic": classic, "report": report}[a.cmd]()
 
 
 if __name__ == "__main__":

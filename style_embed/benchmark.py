@@ -9,7 +9,7 @@ Imposters on the vectors with the registered settings; judged by Amendment 22's 
 
 Usage::
 
-    python -m style_embed.benchmark [--model data/corpus/style_embed/runs/style/style.pt]
+    python -m style_embed.benchmark [--size base|mid] [--model <style.pt>]
 """
 
 from __future__ import annotations
@@ -26,12 +26,12 @@ import torch
 from alm.benchmark import OUT, decide
 from metadata.config import derive_seed, stamp
 from metadata.config import load as load_config
-from style_embed.train import load_encoder
+from style_embed.train import bench_name, load_encoder, run_dir
 
-MODEL = Path("data/corpus/style_embed/runs/style/style.pt")
+MODEL = run_dir("base") / "style.pt"
 
 
-def embedder(model: Path, cfg: dict):
+def embedder(model: Path, cfg: dict, size: str = "base"):
     """words -> unit vector (numpy), for texts in the benchmark's word form."""
     from tokenizers import Tokenizer
 
@@ -40,7 +40,7 @@ def embedder(model: Path, cfg: dict):
     s = cfg["style_embed"]
     dev = ("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available()
            else "cpu")  # fmt: skip
-    enc = load_encoder(model, cfg).to(dev)
+    enc = load_encoder(model, cfg, size).to(dev)
     tok = Tokenizer.from_file(str(TOKENIZER))
     n = s["passage_tokens"]
 
@@ -57,14 +57,14 @@ def embedder(model: Path, cfg: dict):
     return embed
 
 
-def run(model: Path) -> int:
+def run(model: Path, size: str = "base") -> int:
     from classic import general_imposters
     from classic.delta import cosine_delta
     from eval.benchmark import TASKS, imposter_pool, load_tasks
     from metadata.config import classic_kwargs
 
     cfg = load_config()
-    embed = embedder(model, cfg)
+    embed = embedder(model, cfg, size)
     kw = classic_kwargs(cfg)
     rng = random.Random(derive_seed("benchmark", cfg))
     spec = json.loads(TASKS.read_text())
@@ -99,20 +99,24 @@ def run(model: Path) -> int:
         recs_by[name] = recs
         print(f"  style {name}: {len(recs)} tests, pool {len(P)}", flush=True)
     d = decide(recs_by, cfg)
-    out = OUT / "style_embed.json"
-    out.write_text(json.dumps({**stamp(), "model": str(model), **d, "records": recs_by},
-                              indent=1) + "\n")  # fmt: skip
+    out = OUT / f"{bench_name(size)}.json"
+    out.write_text(json.dumps({**stamp(), "model": str(model), "size": size, **d,
+                               "records": recs_by}, indent=1) + "\n")  # fmt: skip
     v = d["verdict"]
-    print(f"style: closed set {v['closed_set']:.3f} {d['closed_set_by_task']}; open-set FPR "
-          f"{v['open_set_fpr']:.3f}; passes {v['passes']} -> {out}", flush=True)  # fmt: skip
+    print(f"{bench_name(size)}: closed set {v['closed_set']:.3f} {d['closed_set_by_task']}; "
+          f"open-set FPR {v['open_set_fpr']:.3f}; passes {v['passes']} -> {out}",
+          flush=True)  # fmt: skip
     return 0
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("--model", type=Path, default=MODEL)
+    ap.add_argument(
+        "--size", choices=("base", "mid"), default="base", help="the encoder's backbone"
+    )
+    ap.add_argument("--model", type=Path, help="default: that size's run_dir/style.pt")
     a = ap.parse_args(argv)
-    return run(a.model)
+    return run(a.model or run_dir(a.size) / "style.pt", a.size)
 
 
 if __name__ == "__main__":

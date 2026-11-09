@@ -65,7 +65,7 @@ def records() -> dict[str, tuple[str, dict[str, list[tuple[str, bool]]]]]:
         for m in (*CLASSIC, "ensc"):
             out[f"tails_{m}"] = ("tails", {t: [(r["author"], r[m] == r["author"]) for r in rs]
                                            for t, rs in d["records"].items()})  # fmt: skip
-    for f in sorted(DIR.glob("alm_*.json")) + [DIR / "style_embed.json"]:
+    for f in sorted(DIR.glob("alm_*.json")) + sorted(DIR.glob("style_embed*.json")):
         if not f.exists() or "candidates" in f.stem:
             continue
         d = json.loads(f.read_text())

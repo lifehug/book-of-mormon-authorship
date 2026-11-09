@@ -11,7 +11,11 @@ BOM-30 issue. State: ``logs/style_pod/state.json``.
 
 Usage::
 
-    python scripts/style_pod.py --issue 40 [--cap 50]
+    python scripts/style_pod.py --issue 40 [--cap 50] [--size mid]
+
+``--size mid`` trains the same encoder on the 590M backbone (owner, 2026-11-09; Amendment 37):
+its own state (``logs/style_pod_mid/``), pod and output folder (``runs/style_mid``), so the
+registered 297M encoder's files are never touched.
 """
 
 from __future__ import annotations
@@ -45,6 +49,21 @@ UPLOADS = {  # local -> path under the repo on the pod
 OUT = "data/corpus/style_embed/runs/style"
 HOME = ROOT / OUT
 FETCH = ["style.pt", "log.jsonl", "run.json"]
+TRAIN_ARGS = ""
+
+
+def configure(size: str) -> None:
+    """Point the driver at another backbone's encoder (see the module docstring)."""
+    global STATE, SSH, POD_NAME, UPLOADS, OUT, HOME, TRAIN_ARGS
+    if size == "base":
+        return
+    STATE = ROOT / f"logs/style_pod_{size}/state.json"
+    SSH, POD_NAME = f"stylepod{size}", f"bom30-style-{size}"
+    model = f"data/corpus/timelocked_lm/runs/{size}/model.pt"
+    UPLOADS = {k: v for k, v in UPLOADS.items() if "timelocked_lm" not in k} | {model: model}
+    OUT = f"data/corpus/style_embed/runs/style_{size}"
+    HOME = ROOT / OUT
+    TRAIN_ARGS = f" --size {size}"
 
 
 def log(msg: str) -> None:
@@ -146,7 +165,8 @@ def step(s: dict, issue: int, cap: float) -> bool:
             "apt-get update -qq && apt-get install -y -qq rsync tmux > /dev/null",
             f"git clone -q {REPO} {R} || (cd {R} && git pull -q)",
             "pip install -q 'pyarrow<18' tokenizers pyyaml",
-            f"mkdir -p {R}/data/corpus/style_embed {R}/data/corpus/timelocked_lm/runs/base",
+            f"mkdir -p {R}/data/corpus/style_embed {R}/data/corpus/timelocked_lm/runs/base "
+            f"{R}/data/corpus/timelocked_lm/runs/mid",
         ]
         for c in cmds:
             rc, out = remote(c, 1800)
@@ -174,7 +194,8 @@ def step(s: dict, issue: int, cap: float) -> bool:
             event(s, f"smoke test failed: {out[-400:]}", issue)
             return False
         rc, out = remote(f"cd {R} && tmux new-session -d -s train 'python -m style_embed.train "
-                         f"--out {R}/{OUT} 2>&1 | tee -a /workspace/train.out'")  # fmt: skip
+                         f"--out {R}/{OUT}{TRAIN_ARGS} 2>&1 | tee -a /workspace/train.out'",
+                         )  # fmt: skip
         event(s, "smoke test passed; **training started** (20,000 steps).", issue)
         s["phase"], s["restarts"], s["train_started"] = "train", 0, time.time()
     elif ph == "train":
@@ -193,7 +214,7 @@ def step(s: dict, issue: int, cap: float) -> bool:
                 return False
             s["restarts"] += 1
             remote(f"cd {R} && tmux new-session -d -s train 'python -m style_embed.train "
-                   f"--out {R}/{OUT} 2>&1 | tee -a /workspace/train.out'")  # fmt: skip
+                   f"--out {R}/{OUT}{TRAIN_ARGS} 2>&1 | tee -a /workspace/train.out'")  # fmt: skip
             event(s, f"training process gone; restarted from checkpoint ({s['restarts']}/3). "
                      f"Last: {out[:200]}", issue)  # fmt: skip
         else:
@@ -242,7 +263,9 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("--issue", type=int, required=True)
     ap.add_argument("--cap", type=float, default=50.0)
+    ap.add_argument("--size", choices=["base", "mid"], default="base", help="the backbone")
     a = ap.parse_args(argv)
+    configure(a.size)
     STATE.parent.mkdir(parents=True, exist_ok=True)
     s = json.loads(STATE.read_text()) if STATE.exists() else {"phase": "create"}
     while s["phase"] not in ("done", "failed", "capped"):

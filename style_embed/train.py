@@ -13,6 +13,7 @@ atomically; a rerun resumes, and the step's draw is a pure function of the seed 
 Usage::
 
     python -m style_embed.train --out runs/style                  # on the rented H100
+    python -m style_embed.train --out runs/style_mid --size mid   # the 590M backbone (Amendment 37)
     python -m style_embed.train --out runs/style_tiny --tiny --max-steps 3   # CPU smoke test
 """
 
@@ -40,7 +41,31 @@ from timelocked_lm.train import GPT, TINY
 
 DATA = Path("data/corpus/style_embed")
 AUTHORS = Path("data/style_embed/authors.parquet")
-BASE = Path("data/corpus/timelocked_lm/runs/base/model.pt")
+RUNS = Path("data/corpus/timelocked_lm/runs")
+SIZES = ("base", "mid")  # every size runs every model-based test (Amendment 37); 125M not used
+
+
+def tag(size: str) -> str:
+    """The name an encoder's results go under: ``style`` for the registered 297M encoder (BOM-30),
+    ``style_<size>`` for another backbone, so the registered encoder's files never change."""
+    return "style" if size == "base" else f"style_{size}"
+
+
+def run_dir(size: str) -> Path:
+    return DATA / "runs" / tag(size)
+
+
+def bench_name(size: str) -> str:
+    """Its benchmark and imitation result file stem."""
+    return "style_embed" if size == "base" else f"style_embed_{size}"
+
+
+def backbone_for(cfg: dict, size: str) -> GPT:
+    """An untrained backbone of the time-locked model's shape at ``size``."""
+    t = cfg["timelocked_lm"]
+    sh = t[f"{size}_shape"]
+    return GPT(t["vocab_size"], t["context_length"], sh["layers"], sh["width"], sh["heads"],
+               sh.get("qk_norm", False))  # fmt: skip
 
 
 class StyleEncoder(nn.Module):
@@ -66,10 +91,7 @@ class StyleEncoder(nn.Module):
 
 def load_encoder(path: Path, cfg: dict, size: str = "base") -> StyleEncoder:
     """A trained encoder (``style.pt``) for scoring."""
-    t, s = cfg["timelocked_lm"], cfg["style_embed"]
-    sh = t[f"{size}_shape"]
-    enc = StyleEncoder(GPT(t["vocab_size"], t["context_length"], sh["layers"], sh["width"],
-                           sh["heads"]), s["dim"], ckpt=False)  # fmt: skip
+    enc = StyleEncoder(backbone_for(cfg, size), cfg["style_embed"]["dim"], ckpt=False)
     enc.load_state_dict(torch.load(path, map_location="cpu"))
     return enc.eval()
 
@@ -142,7 +164,9 @@ def _save(path: Path, state: dict) -> None:
     os.replace(tmp, path)
 
 
-def train(out: Path, tiny: bool, max_steps: int | None, ckpt_minutes: float) -> int:
+def train(
+    out: Path, tiny: bool, max_steps: int | None, ckpt_minutes: float, size: str = "base"
+) -> int:
     cfg = load_config()
     s, t = cfg["style_embed"], cfg["timelocked_lm"]
     dev = "cuda" if torch.cuda.is_available() else "cpu"
@@ -151,9 +175,8 @@ def train(out: Path, tiny: bool, max_steps: int | None, ckpt_minutes: float) -> 
         backbone = GPT(t["vocab_size"], t["context_length"], **TINY)
         n_auth = 4
     else:
-        sh = t["base_shape"]
-        backbone = GPT(t["vocab_size"], t["context_length"], sh["layers"], sh["width"], sh["heads"])
-        backbone.load_state_dict(torch.load(BASE, map_location="cpu"))
+        backbone = backbone_for(cfg, size)
+        backbone.load_state_dict(torch.load(RUNS / size / "model.pt", map_location="cpu"))
         n_auth = s["authors_per_step"]
     enc = StyleEncoder(backbone, s["dim"], ckpt=dev == "cuda").to(dev)
     opt = torch.optim.AdamW([
@@ -172,7 +195,7 @@ def train(out: Path, tiny: bool, max_steps: int | None, ckpt_minutes: float) -> 
         opt.load_state_dict(st["optimizer"])
         step = st["step"]
         print(f"resumed at step {step}", flush=True)
-    (out / "run.json").write_text(json.dumps({**stamp(), "tiny": tiny, "device": dev,
+    (out / "run.json").write_text(json.dumps({**stamp(), "tiny": tiny, "device": dev, "size": size,
                                               "train_authors": len(eps.works["train"]),
                                               "heldout_authors": len(eps.works["heldout"])},
                                              indent=1) + "\n")  # fmt: skip
@@ -213,8 +236,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--tiny", action="store_true", help="random tiny backbone; smoke test")
     ap.add_argument("--max-steps", type=int)
     ap.add_argument("--checkpoint-minutes", type=float, default=20)
+    ap.add_argument("--size", choices=SIZES, default="base", help="the time-locked backbone")
     a = ap.parse_args(argv)
-    return train(a.out, a.tiny, a.max_steps, a.checkpoint_minutes)
+    return train(a.out, a.tiny, a.max_steps, a.checkpoint_minutes, a.size)
 
 
 if __name__ == "__main__":

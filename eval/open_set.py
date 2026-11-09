@@ -88,7 +88,7 @@ def rescore() -> int:
         rows[name] = {"closed_set": b["verdict"][name]["closed_set"], "open_set_fpr": None,
                       "passes": None, "note": "no verification score (6.1)"}  # fmt: skip
     rows["ensc"] = {**b["verdict"]["ensc"], "note": "its own 'none' answer; unchanged"}
-    files = sorted(DIR.glob("alm_*.json")) + sorted(DIR.glob("style_embed.json"))
+    files = sorted(DIR.glob("alm_*.json")) + sorted(DIR.glob("style_embed*.json"))
     for f in files:
         d = json.loads(f.read_text())
         if not isinstance(d.get("records"), dict):  # alm_candidates_*: not benchmark trials

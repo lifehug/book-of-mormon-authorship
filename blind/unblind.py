@@ -77,6 +77,10 @@ VIEWS = {
         "style": lambda r: (r["cosine"], True, r["call"]),
         "style_achievable": lambda r: (r["cosine"], True, r.get("call_achievable")),
     },
+    "style_mid": {
+        "style_mid": lambda r: (r["cosine"], True, r["call"]),
+        "style_mid_achievable": lambda r: (r["cosine"], True, r.get("call_achievable")),
+    },
     "alm": {
         "alm": lambda r: (r["margins"], False, r.get("call")),  # larger margin is closer
         "alm_achievable": lambda r: (r["margins"], False, r.get("call_achievable")),
@@ -88,12 +92,14 @@ VIEWS = {
 LADDER = {
     "classic": lambda r: r["general_imposters"],
     "style": lambda r: r["general_imposters"],  # GI on the style vectors
+    "style_mid": lambda r: r["general_imposters"],
     "alm": lambda r: r["margins"],  # best control model minus candidate model
 }
 
 
 def ladder_steps(method: str, size: str | None, thresholds: dict) -> list[dict] | None:
     th = {"classic": thresholds.get("general_imposters"), "style": thresholds.get("style"),
+          "style_mid": thresholds.get("style_mid"),
           "alm": (thresholds.get("alm") or {}).get(size) if size else None}.get(method)  # fmt: skip
     return th.get("ladder") if th else None
 

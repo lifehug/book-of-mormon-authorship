@@ -164,6 +164,13 @@ def run(sizes: list[str]) -> int:
           "ensc": gi["ensc"],
           "style": {**calibrate(spos, sneg, rate), "ladder": ladder(spos, sneg, rates),
                     "source": "style_embed.json"}}  # fmt: skip
+    for f in sorted(BENCH.glob("style_embed_*.json")):  # another backbone's encoder, if run
+        d = json.loads(f.read_text())
+        rs = [r for rs in d["records"].values() for r in rs]
+        p, n = [r["positive"] for r in rs], [r["open_negative"] for r in rs
+                                             if r["open_negative"] is not None]  # fmt: skip
+        th[f"style_{d['size']}"] = {**calibrate(p, n, rate), "ladder": ladder(p, n, rates),
+                                    "source": f.name}  # fmt: skip
     th["alm"] = {z: alm_threshold(z, rate, rates) for z in sizes}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     doc = {**stamp(), "sizes": sizes, "rate": rate, "fpr_ladder": rates, "thresholds": th}

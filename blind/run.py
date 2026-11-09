@@ -127,7 +127,13 @@ def style(rows: list[dict], cfg: dict, size: str | None) -> dict:
     from style_embed.blind_score import score
 
     refs, imp = _refs_pool(cfg)
-    return {"units": units_table(refs), "ids": score(rows, cfg, refs, imp, load())}
+    return {"units": units_table(refs),
+            "ids": score(rows, cfg, refs, imp, load(), size=size or "base")}  # fmt: skip
+
+
+def style_mid(rows: list[dict], cfg: dict, size: str | None) -> dict:
+    """The same on the 590M backbone's encoder (owner, 2026-11-09; Amendment 37's every size)."""
+    return style(rows, cfg, "mid")
 
 
 def alm(rows: list[dict], cfg: dict, size: str | None) -> dict:
@@ -148,6 +154,7 @@ METHODS: dict[str, Callable] = {
     "classic": classic,
     "alm": alm,
     "style": style,
+    "style_mid": style_mid,
     "dating": dating,
     "sweep": sweep,
 }

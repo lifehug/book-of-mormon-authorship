@@ -19,17 +19,19 @@ import numpy as np
 
 
 def score(rows: list[dict], cfg: dict, refs: dict[str, dict], imposters: list[list[str]],
-          th: dict, embed=None) -> dict:  # fmt: skip
+          th: dict, embed=None, size: str = "base") -> dict:  # fmt: skip
     """Per sealed id: cosine distance to every unit, GI on the vectors with 6.1's call."""
     from blind.thresholds import call
     from classic import general_imposters, tokenize
     from classic.delta import cosine_delta
     from metadata.config import classic_kwargs, derive_seed
+    from style_embed.train import run_dir, tag
 
+    key = tag(size)  # thresholds from that encoder's own benchmark
     if embed is None:
-        from style_embed.benchmark import MODEL, embedder
+        from style_embed.benchmark import embedder
 
-        embed = embedder(MODEL, cfg)
+        embed = embedder(run_dir(size) / "style.pt", cfg, size)
     kw = classic_kwargs(cfg)
     units = sorted(u for u, r in refs.items() if r["tokens"])
     prof = {u: embed(refs[u]["tokens"]) for u in units}
@@ -45,7 +47,7 @@ def score(rows: list[dict], cfg: dict, refs: dict[str, dict], imposters: list[li
               for u in units}  # fmt: skip
         out[r["id"]] = {"cosine": dist, "first": min(units, key=lambda u: (dist[u], u)),
                         "general_imposters": gs,
-                        "call": {u: call(v, th["style"]) for u, v in gs.items()},
-                        "call_achievable": {u: call(v, th["style"], "achievable")
+                        "call": {u: call(v, th[key]) for u, v in gs.items()},
+                        "call_achievable": {u: call(v, th[key], "achievable")
                                             for u, v in gs.items()}}  # fmt: skip
     return out

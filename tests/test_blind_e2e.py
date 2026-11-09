@@ -112,8 +112,8 @@ def test_seal_score_unblind_synthesise(tmp_path: Path, monkeypatch) -> None:
             {
                 "methods": {
                     "general_imposters": {"weight": 0.5},
-                    "style": {"weight": 1.0},
-                    "alm": {"weight": 1.0},
+                    "style_embed": {"weight": 1.0},  # the real part names (BOM-31)
+                    "alm_base": {"weight": 1.0},
                 }
             }
         )
