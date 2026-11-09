@@ -5,7 +5,8 @@
  "git_commit": "2125d50d9c7b1aba862ba42b17d0b32490edf8b9",
  "sizes": [
   "pilot",
-  "base"
+  "base",
+  "mid"
  ],
  "rate": 0.05,
  "fpr_ladder": [
@@ -199,6 +200,55 @@
      }
     ],
     "source": "alm_candidates_base.json"
+   },
+   "mid": {
+    "match": 0.09022677898406983,
+    "non_match": 0.01755019382996992,
+    "positives": 68,
+    "negatives": 148,
+    "ladder": [
+     {
+      "rate": 0.01,
+      "threshold": 0.4150538416342302,
+      "false_match": 0.013513513513513514,
+      "true_match": 0.0
+     },
+     {
+      "rate": 0.05,
+      "threshold": 0.09022677898406983,
+      "false_match": 0.05405405405405406,
+      "true_match": 0.4411764705882353
+     },
+     {
+      "rate": 0.1,
+      "threshold": 0.07697528123855592,
+      "false_match": 0.10135135135135136,
+      "true_match": 0.5147058823529411
+     },
+     {
+      "rate": 0.2,
+      "threshold": 0.041559505462646515,
+      "false_match": 0.20270270270270271,
+      "true_match": 0.7352941176470589
+     },
+     {
+      "rate": 0.3,
+      "threshold": 0.013660577674964793,
+      "false_match": 0.30405405405405406,
+      "true_match": 0.9558823529411765
+     },
+     {
+      "rate": 0.5,
+      "threshold": -0.011666918884624131,
+      "false_match": 0.5,
+      "true_match": 0.9705882352941176
+     }
+    ],
+    "source": "alm_candidates_mid.json",
+    "computed": {
+     "git_commit": "6a4f53351cd63c4fc20b85ea236db751b697f8ed",
+     "config_sha256": "ff2f67ab53d7163d9060d04f177eeb235d60855f64025dc6528b67658c1922b4"
+    }
    }
   }
  }
