@@ -12,10 +12,14 @@ Publishing is the owner's call at each step below; nothing here has been publish
 | Archived snapshot of the tagged release (code + `data/` as tracked) | Zenodo, via its GitHub integration, one DOI per release | as above | to do: enable the integration, cut the tag |
 | Time-locked models 125M, 297M, 590M mid (BOM-27; the 1B was abandoned, Amendment 39) | Hugging Face `etherfuse/timelocked-1830-{125m,297m,mid}` with cards (sources and terms, Book of Mormon exclusion, training config, loss curves, limits) | CC BY-NC 4.0 (owner, BOM-66) | 125M public; 297M approved; 590M approved public (owner, 2026-11-09), upload by `timelocked_lm.release` after its benchmark so the card carries its numbers |
 | Style encoders (BOM-30: 297M and 590M backbones), dating models (BOM-29), candidate and control models (BOM-28, every size) | Hugging Face, same account | CC BY-NC 4.0 | **approved, all public** (owner, 2026-11-09: "publish everything"; the candidate models fine-tuned on Joseph Smith Papers text included, the owner judging them heavily modified and not reverse-engineerable). Each card names its training sources and terms |
-| Benchmark fine-tunes (main method, V1, V2 copies per benchmark task) | not kept | | deleted on their pods after scoring; recreated exactly from the published base models, code and `config/preregistered.yaml` (seeds and settings) |
+| Benchmark and imitation fine-tunes (main method, V1, V2: one copy per benchmark author or task, every size) | Hugging Face, same account | CC BY-NC 4.0 | **to rebuild and publish** (owner, 2026-11-09; BOM-72): the first runs scored and discarded them, the wrong default; rebuilt after the analysis, their scores checked against the saved ones |
 | Results explorer | GitHub Pages from `explorer/` (the repo root served, so the page reads the result files directly) | as the data | to do: enable Pages |
 
 ## What stays private, and how to obtain it
+
+Models are published; corpus text that anyone asked us to keep private never is (owner,
+2026-11-09). The models are weights, not text, and the owner has judged them publishable.
+
 
 Exactly the three restricted sources of `docs/replication.md` (Harvard Institutional Books text,
 HathiTrust text, Joseph Smith Papers transcripts and page images), the bulk corpora under
