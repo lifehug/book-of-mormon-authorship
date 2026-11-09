@@ -1,8 +1,8 @@
 {
- "config_sha256": "26db5f161194524eff8b582d24f985adf2cf474509be45c1ca9e693b94ecce5b",
+ "config_sha256": "aab87cb23b023d90d25013718f15d4d181abf715c8b788de3b9b26a3a7045ba9",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "e1c4b1f944a922cca721808fd2479b761528ae43",
+ "git_commit": "0544b5cc459396e0c809452f188ae3f7524cf4ca",
  "rule": "section 9: forward accuracy; full weight >= 0.8, half >= 0.6, else dropped (Amendment 7: exact 95% interval and n reported; equal-weight run beside)",
  "methods": {
   "alm_base": {
@@ -135,6 +135,141 @@
     "authors_ci95": [
      0.008403758659612643,
      0.9057006759497539
+    ],
+    "weight": 0.0
+   },
+   "weight": 0.0
+  },
+  "alm_mid": {
+   "forward": {
+    "tests": 17,
+    "correct": 6,
+    "accuracy": 0.35294117647058826,
+    "ci95": [
+     0.14209748311022097,
+     0.6167163365565971
+    ],
+    "by_author": {
+     "dodsley, robert": 0.8,
+     "kenrick, w william": 1.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 2,
+    "authors_ci95": [
+     0.09429932405024613,
+     0.9915962413403874
+    ],
+    "weight": 0.0
+   },
+   "reverse": {
+    "tests": 24,
+    "correct": 1,
+    "accuracy": 0.041666666666666664,
+    "ci95": [
+     0.001054352445469748,
+     0.2112016834569731
+    ],
+    "by_author": {
+     "dodsley, robert": 0.1,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 0,
+    "authors_ci95": [
+     0.0,
+     0.7075982261787134
+    ],
+    "weight": 0.0
+   },
+   "weight": 0.0
+  },
+  "alm_mid_v1": {
+   "forward": {
+    "tests": 17,
+    "correct": 0,
+    "accuracy": 0.0,
+    "ci95": [
+     0.0,
+     0.19506432296909318
+    ],
+    "by_author": {
+     "dodsley, robert": 0.0,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 0,
+    "authors_ci95": [
+     0.0,
+     0.7075982261787134
+    ],
+    "weight": 0.0
+   },
+   "reverse": {
+    "tests": 24,
+    "correct": 0,
+    "accuracy": 0.0,
+    "ci95": [
+     0.0,
+     0.14247359772252563
+    ],
+    "by_author": {
+     "dodsley, robert": 0.0,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 0,
+    "authors_ci95": [
+     0.0,
+     0.7075982261787134
+    ],
+    "weight": 0.0
+   },
+   "weight": 0.0
+  },
+  "alm_mid_v3": {
+   "forward": {
+    "tests": 17,
+    "correct": 5,
+    "accuracy": 0.29411764705882354,
+    "ci95": [
+     0.10313551437032002,
+     0.5595827187543372
+    ],
+    "by_author": {
+     "dodsley, robert": 1.0,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 1,
+    "authors_ci95": [
+     0.008403758659612643,
+     0.9057006759497539
+    ],
+    "weight": 0.0
+   },
+   "reverse": {
+    "tests": 24,
+    "correct": 5,
+    "accuracy": 0.20833333333333334,
+    "ci95": [
+     0.071318617198055,
+     0.42151284363725267
+    ],
+    "by_author": {
+     "dodsley, robert": 0.5,
+     "kenrick, w william": 0.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 0,
+    "authors_ci95": [
+     0.0,
+     0.7075982261787134
     ],
     "weight": 0.0
    },
