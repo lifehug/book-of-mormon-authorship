@@ -26,7 +26,8 @@ import torch
 from alm.benchmark import OUT, decide
 from metadata.config import derive_seed, stamp
 from metadata.config import load as load_config
-from style_embed.train import bench_name, load_encoder, run_dir
+from style_embed.names import bench_name, run_dir
+from style_embed.train import load_encoder
 
 MODEL = run_dir("base") / "style.pt"
 

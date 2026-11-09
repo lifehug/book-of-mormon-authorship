@@ -61,7 +61,7 @@ FAMILIES = ("classical", "embedding", "authorial")
 def imitation_method(size: str, encoder: str) -> dict[str, str]:
     """The BOM-31 part (``data/benchmark/imitation/<name>.json``) whose weight applies to each
     family: the size's own authorial models and the embedding family's encoder."""
-    from style_embed.train import bench_name
+    from style_embed.names import bench_name
 
     return {"classical": "general_imposters", "embedding": bench_name(encoder),
             "authorial": f"alm_{size}"}  # fmt: skip
@@ -70,7 +70,7 @@ def imitation_method(size: str, encoder: str) -> dict[str, str]:
 def encoder_for(size: str) -> str:
     """The style encoder the embedding family uses at ``size``: that size's own where one was
     trained and benchmarked (the 590M, owner 2026-11-09), otherwise the registered 297M one."""
-    from style_embed.train import SIZES, bench_name
+    from style_embed.names import SIZES, bench_name
 
     return size if size in SIZES and (BENCH / f"{bench_name(size)}.json").exists() else "base"
 
@@ -109,7 +109,7 @@ def rates_one(size: str) -> dict:
 
     cfg = load_config()
     sm = cfg["synthesis"]["smoothing"]
-    from style_embed.train import bench_name, tag
+    from style_embed.names import bench_name, tag
 
     th = thresholds(size)
     enc = encoder_for(size)
@@ -259,7 +259,7 @@ def run_size(size: str, methods: dict, cfg: dict) -> dict | None:
     if not path.exists():
         print(f"  {size}: no rates (python -m synth.model rates {size}); skipped", flush=True)
         return None
-    from style_embed.train import tag
+    from style_embed.names import tag
 
     rates_doc = json.loads(path.read_text())
     fams, enc = rates_doc["families"], rates_doc.get("encoder", "base")

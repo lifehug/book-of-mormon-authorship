@@ -25,7 +25,7 @@ def score(rows: list[dict], cfg: dict, refs: dict[str, dict], imposters: list[li
     from classic import general_imposters, tokenize
     from classic.delta import cosine_delta
     from metadata.config import classic_kwargs, derive_seed
-    from style_embed.train import run_dir, tag
+    from style_embed.names import run_dir, tag
 
     key = tag(size)  # thresholds from that encoder's own benchmark
     if embed is None:

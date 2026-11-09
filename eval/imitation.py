@@ -240,7 +240,7 @@ def _vector_method(name: str, embed, cfg: dict, tokens) -> int:
 def style(size: str = "base") -> int:
     from eval.benchmark import _masked_tokens
     from style_embed.benchmark import embedder
-    from style_embed.train import bench_name, run_dir
+    from style_embed.names import bench_name, run_dir
 
     cfg = load_config()
     return _vector_method(bench_name(size), embedder(run_dir(size) / "style.pt", cfg, size), cfg,

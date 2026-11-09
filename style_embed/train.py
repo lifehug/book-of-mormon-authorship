@@ -37,27 +37,12 @@ from torch.utils.checkpoint import checkpoint
 
 from metadata.config import derive_seed, stamp
 from metadata.config import load as load_config
+from style_embed.names import SIZES, bench_name, run_dir, tag  # noqa: F401 -- re-exported
 from timelocked_lm.train import GPT, TINY
 
 DATA = Path("data/corpus/style_embed")
 AUTHORS = Path("data/style_embed/authors.parquet")
 RUNS = Path("data/corpus/timelocked_lm/runs")
-SIZES = ("base", "mid")  # every size runs every model-based test (Amendment 37); 125M not used
-
-
-def tag(size: str) -> str:
-    """The name an encoder's results go under: ``style`` for the registered 297M encoder (BOM-30),
-    ``style_<size>`` for another backbone, so the registered encoder's files never change."""
-    return "style" if size == "base" else f"style_{size}"
-
-
-def run_dir(size: str) -> Path:
-    return DATA / "runs" / tag(size)
-
-
-def bench_name(size: str) -> str:
-    """Its benchmark and imitation result file stem."""
-    return "style_embed" if size == "base" else f"style_embed_{size}"
 
 
 def backbone_for(cfg: dict, size: str) -> GPT:
