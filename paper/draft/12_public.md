@@ -3,7 +3,7 @@
 The study is meant to be checked and redone. Mistakes are possible; what makes up for them is that
 every step can be found and rerun.
 
-- **Pre-registration and amendments:** https://osf.io/6ugxc/ (frozen 2026-10-15; 45 dated
+- **Pre-registration and amendments:** https://osf.io/6ugxc/ (frozen 2026-10-15; 46 dated
   amendments, each post hoc one labelled), mirrored in `paper/preregistration.md`.
 - **Code and configuration:** https://github.com/lifehug/book-of-mormon-authorship. Every analytic
   value comes from `config/preregistered.yaml`, and every output records that file's SHA-256 and

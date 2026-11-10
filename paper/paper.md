@@ -3,7 +3,7 @@
 *Draft, 2026-11-10. Dave Taylor, with analysis by an AI model (Claude). Every review step is
 simulated by an AI model and labelled so; the blinding was simulated (the scoring ran without the
 key; the analyst is an AI model). Repository: https://github.com/lifehug/book-of-mormon-authorship;
-pre-registration: https://osf.io/6ugxc/ (frozen 2026-10-15; 45 dated amendments, the post hoc ones
+pre-registration: https://osf.io/6ugxc/ (frozen 2026-10-15; 46 dated amendments, the post hoc ones
 labelled).*
 
 ## Abstract
@@ -1069,7 +1069,7 @@ exactly) and worst on early modern text.
 The study is meant to be checked and redone. Mistakes are possible; what makes up for them is that
 every step can be found and rerun.
 
-- **Pre-registration and amendments:** https://osf.io/6ugxc/ (frozen 2026-10-15; 45 dated
+- **Pre-registration and amendments:** https://osf.io/6ugxc/ (frozen 2026-10-15; 46 dated
   amendments, each post hoc one labelled), mirrored in `paper/preregistration.md`.
 - **Code and configuration:** https://github.com/lifehug/book-of-mormon-authorship. Every analytic
   value comes from `config/preregistered.yaml`, and every output records that file's SHA-256 and
