@@ -742,6 +742,7 @@ Joseph Smith is in neither set: every one of his samples, before and after 1830,
 | 20-21 | the semantic positive control | an own-copy exclusion; named sources tested against matched nulls | one control passes |
 | 40 | the sweep's plausibility gate passed 94% of authors (before any lead was seen) | conjunctive reading of the gate | none (no lead) |
 | 31 | a smoke test | one Cosine Delta imitation figure was seen before the imitation rule was registered (disclosed) | none |
+| (none; D3) | the simulated reviews | **deviation found:** the registered character n-gram, POS n-gram and content-word features were never run in the benchmark or the blind run, only most-frequent words | not yet known; whether to run them post hoc is open |
 | (none) | unblinding | synthesis placebo | the synthesis read as uninformative |
 
 Every amendment, with its reason and date, is in section 11 of the pre-registration and on OSF.
@@ -1046,6 +1047,10 @@ not covered. The sweep failed its own usability test and is descriptive only.
 authors' volumes used later for calibration (language modelling, not authorship supervision). The
 fine-tuning settings were fixed for all sizes in advance and may not suit the largest. GPT-2 is
 used on the benchmark only, since it read modern text possibly including the Book of Mormon.
+
+**Registered features not run.** The classical methods used only most-frequent-word features;
+the registered character n-grams, POS n-grams and content-word set were not run on the benchmark
+or the Book of Mormon (`paper/deviations.md` D3).
 
 **Post hoc decisions.** Every decision made after results existed is listed with its effect in
 section 7.4 and labelled in the pre-registration.

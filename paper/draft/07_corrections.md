@@ -94,6 +94,7 @@ Joseph Smith is in neither set: every one of his samples, before and after 1830,
 | 20-21 | the semantic positive control | an own-copy exclusion; named sources tested against matched nulls | one control passes |
 | 40 | the sweep's plausibility gate passed 94% of authors (before any lead was seen) | conjunctive reading of the gate | none (no lead) |
 | 31 | a smoke test | one Cosine Delta imitation figure was seen before the imitation rule was registered (disclosed) | none |
+| (none; D3) | the simulated reviews | **deviation found:** the registered character n-gram, POS n-gram and content-word features were never run in the benchmark or the blind run, only most-frequent words | not yet known; whether to run them post hoc is open |
 | (none) | unblinding | synthesis placebo | the synthesis read as uninformative |
 
 Every amendment, with its reason and date, is in section 11 of the pre-registration and on OSF.

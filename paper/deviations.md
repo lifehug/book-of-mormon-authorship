@@ -39,3 +39,19 @@ BOM-21 issue.
 6ae500f8f0e01c4f4105c6bd). Run 1 used 10 imposters and let in a copy of a test author's book; run
 2 used all curated works plus a seeded fill from Amendment 3's list. Run 1 is published beside
 run 2 (`data/benchmark/run1/`). General Imposters failed section 7 in both runs.
+
+## D3. Registered classical feature sets not run on the Book of Mormon (found 2026-11-10)
+
+**Found by:** the simulated stylometrist review (BOM-38), checked against the code the same day.
+
+**The deviation.** Section 5.1 registers four feature sets for the classical methods: the 100,
+300 and 1,000 most frequent words; character 3- and 4-grams; POS 2- and 3-grams; and a
+content-word set. The functions for all four exist (`classic/features.py`) and character n-grams
+were run on the 30 corpus authors (BOM-20), but the section 7 benchmark and the blind run
+(BOM-32) used most-frequent words only. No amendment records the omission, and section 12
+promises that every deviation is reported.
+
+**Status.** Disclosed in the paper (sections 7.4 and 11). Whether to run the three missing sets on
+the benchmark and the sealed set now, after unblinding, as a labelled post hoc sensitivity
+analysis, or to record the omission by amendment only, is the owner's decision; nothing has been
+run.

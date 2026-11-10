@@ -60,6 +60,10 @@ authors' volumes used later for calibration (language modelling, not authorship 
 fine-tuning settings were fixed for all sizes in advance and may not suit the largest. GPT-2 is
 used on the benchmark only, since it read modern text possibly including the Book of Mormon.
 
+**Registered features not run.** The classical methods used only most-frequent-word features;
+the registered character n-grams, POS n-grams and content-word set were not run on the benchmark
+or the Book of Mormon (`paper/deviations.md` D3).
+
 **Post hoc decisions.** Every decision made after results existed is listed with its effect in
 section 7.4 and labelled in the pre-registration.
 
