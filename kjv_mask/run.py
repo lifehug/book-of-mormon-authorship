@@ -41,7 +41,7 @@ Usage::
     python -m kjv_mask.run sweep      # BOM-39's author blocks (sweep.units first)
     python -m kjv_mask.run known_answer              # BOM-61's known-answer texts
     python -m kjv_mask.run italics                   # BOM-62's independent translations
-    python -m kjv_mask.run js_time_controls          # BOM-73's comparison writers (ingest.js_time)
+    python -m kjv_mask.run js_time                   # BOM-73 (Joseph Smith 1833-44, comparisons)
 """
 
 from __future__ import annotations
@@ -190,14 +190,20 @@ def _docs(group: str) -> list[dict]:
              "load": lambda r=cat[b["work_id"]], b=b: block_text(r, b["start"], b["words"])}
             for b in blocks
         ]  # fmt: skip
-    if group == "js_time_controls":
-        # BOM-73's comparison writers (Internet Archive OCR, ingest.js_time), masked as the Book
-        # of Mormon is, so a Bible quotation is not read as style (docs/js-over-time-plan.md)
-        from ingest.js_time import OUT_DIR as JS_TIME
+    if group == "js_time":
+        # BOM-73 (Amendment 46): Joseph Smith's 1833-44 documents as eval.js_time assembles them
+        # (private) and the comparison writers (ingest.js_time), masked as the Book of Mormon is,
+        # so a Bible quotation is not read as style; ids as eval.js_time reads them
+        from eval.js_time import CTRL_DIR, JS_DIR
 
         return [
-            _in_memory(p.stem, artifacts(p.read_text(encoding="utf-8", errors="replace"))[0])
-            for p in sorted(JS_TIME.glob("*.txt"))
+            _in_memory(f"js:{p.stem}", p.read_text(encoding="utf-8"))
+            for p in sorted(JS_DIR.glob("*.txt"))
+        ] + [
+            _in_memory(
+                f"ctl:{p.stem}", artifacts(p.read_text(encoding="utf-8", errors="replace"))[0]
+            )
+            for p in sorted(CTRL_DIR.glob("*.txt"))
         ]
     raise SystemExit(f"unknown group {group}")
 
