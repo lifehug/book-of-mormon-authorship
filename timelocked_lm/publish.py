@@ -284,7 +284,14 @@ def push(token_file: Path) -> int:
                                     "sha256": _sha(p)}) + "\n")  # fmt: skip
         repo = f"{OWNER}/{name}"
         api.create_repo(repo, repo_type="model", private=False, exist_ok=True)
-        api.upload_large_folder(repo_id=repo, folder_path=str(repo_dir), repo_type="model")
+        # one commit per top-level folder, then the files at the root; a rerun re-sends only what
+        # the Hub does not already hold (content-addressed), so an interrupted push resumes
+        for sub in sorted(p for p in repo_dir.iterdir() if p.is_dir() and p.name != ".cache"):
+            api.upload_folder(repo_id=repo, folder_path=str(sub), path_in_repo=sub.name,
+                              repo_type="model", commit_message=f"{sub.name}/")  # fmt: skip
+        api.upload_folder(repo_id=repo, folder_path=str(repo_dir), repo_type="model",
+                          allow_patterns=["*.*"], ignore_patterns=["*/*"],
+                          commit_message="cards, loader and results")  # fmt: skip
         print(f"{repo}: {len(files)} files, {sum(p.stat().st_size for p in files) / 1e9:.1f} GB "
               f"-> https://huggingface.co/{repo}", flush=True)  # fmt: skip
     return 0
