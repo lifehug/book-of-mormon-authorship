@@ -107,3 +107,9 @@ For each candidate: samples; rankings; "match" calls (pre- and post-1830, every 
 ## 12. Everything is public
 Data tables, every model (Hugging Face), code, the pre-registration and every amendment, the
 simulated reviews and responses; how to obtain the licensed sources.
+
+## 13. What comes next (Part 2)
+Why more is worth doing: false matches fell 47% -> 38% -> 22% from 125M to 590M and the best-fit
+size for the data is about 1.3B; a source older than 1780 could have been used; and only a method
+under 5% false matches lets "no match" mean "not this person". The staged plan, its gates, and
+what each outcome would change (`docs/part2-plan.md`; BOM-74 to BOM-86).
