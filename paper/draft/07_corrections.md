@@ -61,6 +61,23 @@ little information. It is also driven by modelling choices: across priors of 0.2
 0.42-0.92; with equal family weights it is about 0.99, treating chunks as independent about
 0.99999, and dropping General Imposters returns the prior.
 
+The registered posteriors in full (both halves; identical at every model size, since only General
+Imposters enters):
+
+| Candidate (sample, masked words) | Primary set (pre-1830 samples) | Secondary set (adds post-1830 samples) |
+| --- | --- | --- |
+| Ethan Smith (277,391) | 0.082 | 0.026 |
+| Gilbert J. Hunt (56,956) | 0.089 | 0.032 |
+| Solomon Spalding (41,833) | 0.085 | 0.026 |
+| Oliver Cowdery, printed after 1830 (44,338) | - | 0.026 |
+| Parley P. Pratt, after 1830 (91,478) | - | 0.122 |
+| Sidney Rigdon, after 1830 (21,516) | - | 0.026 |
+| W. W. Phelps, after 1830 (28,479) | - | 0.026 |
+| Not in set | 0.744 | 0.715 |
+
+Joseph Smith is in neither set: his samples are under the 10,000-word floor (before 1830) or
+post-1830 samples under it as well.
+
 ### 7.4 Every decision made after results existed
 
 | Amendment | Decided after | What it changed | Effect on the results |
