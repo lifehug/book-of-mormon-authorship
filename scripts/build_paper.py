@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Assemble the paper (BOM-36) into one file: front matter, methods, validation and borrowing
 results, blind results, limitations, discussion. The simulated review (BOM-38) reads exactly this
-file. Usage: ``python scripts/build_paper.py`` -> ``paper/build/paper.md``."""
+file. Usage: ``python scripts/build_paper.py`` -> ``paper/paper.md``."""
 
 from pathlib import Path
 
@@ -26,7 +26,7 @@ def main() -> int:
                 lines = lines[1:]
             text = head + "\n" + "\n".join(lines)
         out.append(text.strip() + "\n")
-    dest = Path("paper/build/paper.md")
+    dest = Path("paper/paper.md")
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text("\n\n".join(out))
     print(f"-> {dest}: {len(dest.read_text().split()):,} words")
