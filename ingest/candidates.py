@@ -242,7 +242,7 @@ def run(
             fetch_ia(e, out)
             time.sleep(delay)
         else:
-            fetch_jsp(e, out, delay, max_pages, root)
+            fetch_jsp(e, out, delay, e.get("max_pages", max_pages), root)
         written.append(out)
     return written
 
