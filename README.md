@@ -39,6 +39,20 @@ this project's improvement; a test keeps it in step with the code. The reports t
 are `paper/replication-report.md`, `data/benchmark/BENCHMARK.md`,
 `data/benchmark/fidelity/REPORT.md` and `paper/methods-report.md`.
 
+## The models
+
+Every model the study trained is public on Hugging Face (CC BY-NC 4.0), weights and the numbers
+they produced, never corpus text. Each file's SHA-256 is in `data/manifests/hf_<repo>.jsonl`.
+
+| Repository | What it holds | Reproduces |
+| --- | --- | --- |
+| [`etherfuse/timelocked-1830-125m`](https://huggingface.co/etherfuse/timelocked-1830-125m), [`-300m`](https://huggingface.co/etherfuse/timelocked-1830-300m) | the 125M and 297M time-locked base models (GPT-2 format) | BOM-27; every model-based test |
+| [`etherfuse/timelocked-1830-590m`](https://huggingface.co/etherfuse/timelocked-1830-590m) | the 590M (QK-norm, own loader), nine milestones, loss curves | BOM-27 (Amendment 39) |
+| [`etherfuse/bom-authorship-candidate-models`](https://huggingface.co/etherfuse/bom-authorship-candidate-models) | candidate and control models at 125M, 297M, 590M | the blind authorial scores (BOM-28, BOM-32) |
+| [`etherfuse/bom-authorship-benchmark-finetunes`](https://huggingface.co/etherfuse/bom-authorship-benchmark-finetunes) | the benchmark's fine-tuned models and result files | the benchmark tables (Amendments 41-42; BOM-72 adds the rest) |
+| [`etherfuse/bom-authorship-style-encoder`](https://huggingface.co/etherfuse/bom-authorship-style-encoder) | the style encoder | BOM-30 and the style blind scores |
+| [`etherfuse/bom-authorship-dating-models`](https://huggingface.co/etherfuse/bom-authorship-dating-models) | the dating classifiers | BOM-29 and the blind dating |
+
 ## The three questions
 
 1. **Attribution.** Does the text resemble the writing of any named candidate? The
