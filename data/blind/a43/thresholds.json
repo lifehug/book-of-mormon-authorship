@@ -1,0 +1,312 @@
+{
+ "config_sha256": "ff2f67ab53d7163d9060d04f177eeb235d60855f64025dc6528b67658c1922b4",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "2125d50d9c7b1aba862ba42b17d0b32490edf8b9",
+ "sizes": [
+  "pilot",
+  "base",
+  "mid"
+ ],
+ "rate": 0.05,
+ "fpr_ladder": [
+  0.01,
+  0.05,
+  0.1,
+  0.2,
+  0.3,
+  0.5
+ ],
+ "thresholds": {
+  "general_imposters": {
+   "match": 1.0,
+   "non_match": 0.349,
+   "source": "thresholds.json",
+   "ladder": [
+    {
+     "rate": 0.01,
+     "threshold": 1.0,
+     "false_match": 0.16666666666666666,
+     "true_match": 0.5166666666666667
+    },
+    {
+     "rate": 0.05,
+     "threshold": 1.0,
+     "false_match": 0.16666666666666666,
+     "true_match": 0.5166666666666667
+    },
+    {
+     "rate": 0.1,
+     "threshold": 1.0,
+     "false_match": 0.16666666666666666,
+     "true_match": 0.5166666666666667
+    },
+    {
+     "rate": 0.2,
+     "threshold": 0.99,
+     "false_match": 0.2111111111111111,
+     "true_match": 0.55
+    },
+    {
+     "rate": 0.3,
+     "threshold": 0.95,
+     "false_match": 0.31666666666666665,
+     "true_match": 0.5944444444444444
+    },
+    {
+     "rate": 0.5,
+     "threshold": 0.67,
+     "false_match": 0.5055555555555555,
+     "true_match": 0.7888888888888889
+    }
+   ]
+  },
+  "ensc": {
+   "shrinkage": 0.5,
+   "alpha": 0.5
+  },
+  "style": {
+   "match": 1.0,
+   "non_match": 1.0,
+   "positives": 180,
+   "negatives": 180,
+   "ladder": [
+    {
+     "rate": 0.01,
+     "threshold": 1.0,
+     "false_match": 0.5,
+     "true_match": 0.9666666666666667
+    },
+    {
+     "rate": 0.05,
+     "threshold": 1.0,
+     "false_match": 0.5,
+     "true_match": 0.9666666666666667
+    },
+    {
+     "rate": 0.1,
+     "threshold": 1.0,
+     "false_match": 0.5,
+     "true_match": 0.9666666666666667
+    },
+    {
+     "rate": 0.2,
+     "threshold": 1.0,
+     "false_match": 0.5,
+     "true_match": 0.9666666666666667
+    },
+    {
+     "rate": 0.3,
+     "threshold": 1.0,
+     "false_match": 0.5,
+     "true_match": 0.9666666666666667
+    },
+    {
+     "rate": 0.5,
+     "threshold": 0.995,
+     "false_match": 0.5,
+     "true_match": 0.9666666666666667
+    }
+   ],
+   "source": "style_embed.json"
+  },
+  "alm": {
+   "pilot": {
+    "match": 0.029710733890533487,
+    "non_match": -0.015497263995083894,
+    "positives": 68,
+    "negatives": 148,
+    "ladder": [
+     {
+      "rate": 0.01,
+      "threshold": 0.2528776073455811,
+      "false_match": 0.013513513513513514,
+      "true_match": 0.0
+     },
+     {
+      "rate": 0.05,
+      "threshold": 0.029710733890533487,
+      "false_match": 0.05405405405405406,
+      "true_match": 0.6470588235294118
+     },
+     {
+      "rate": 0.1,
+      "threshold": 0.004325213432312023,
+      "false_match": 0.10135135135135136,
+      "true_match": 0.7647058823529411
+     },
+     {
+      "rate": 0.2,
+      "threshold": -0.02182047150351784,
+      "false_match": 0.20270270270270271,
+      "true_match": 0.9705882352941176
+     },
+     {
+      "rate": 0.3,
+      "threshold": -0.031951635434077336,
+      "false_match": 0.30405405405405406,
+      "true_match": 0.9705882352941176
+     },
+     {
+      "rate": 0.5,
+      "threshold": -0.05173317790031432,
+      "false_match": 0.5,
+      "true_match": 0.9852941176470589
+     }
+    ],
+    "source": "alm_candidates_pilot.json",
+    "computed": {
+     "git_commit": "4ad9c8e2d8c8d5567d537d97c3fcb2ed6e742683",
+     "config_sha256": "ccb2cea6ae6618434ef7efc46a025d9542203fe936272c6c28e4c85975a980f1"
+    }
+   },
+   "base": {
+    "match": 0.06267017960548411,
+    "non_match": -0.007646496512673124,
+    "positives": 68,
+    "negatives": 148,
+    "ladder": [
+     {
+      "rate": 0.01,
+      "threshold": 0.32050932190634984,
+      "false_match": 0.013513513513513514,
+      "true_match": 0.0
+     },
+     {
+      "rate": 0.05,
+      "threshold": 0.06267017960548411,
+      "false_match": 0.05405405405405406,
+      "true_match": 0.4852941176470588
+     },
+     {
+      "rate": 0.1,
+      "threshold": 0.03185825347900402,
+      "false_match": 0.10135135135135136,
+      "true_match": 0.6470588235294118
+     },
+     {
+      "rate": 0.2,
+      "threshold": -0.005458329807628275,
+      "false_match": 0.20270270270270271,
+      "true_match": 0.9411764705882353
+     },
+     {
+      "rate": 0.3,
+      "threshold": -0.016766705513000506,
+      "false_match": 0.30405405405405406,
+      "true_match": 0.9705882352941176
+     },
+     {
+      "rate": 0.5,
+      "threshold": -0.04376884698867797,
+      "false_match": 0.5,
+      "true_match": 0.9705882352941176
+     }
+    ],
+    "source": "alm_candidates_base.json",
+    "computed": {
+     "git_commit": "08b1427e4d8f7502841af1b5948f85dd589ee7c4",
+     "config_sha256": "ccb2cea6ae6618434ef7efc46a025d9542203fe936272c6c28e4c85975a980f1"
+    }
+   },
+   "mid": {
+    "match": 0.09445504426956178,
+    "non_match": 0.014038523327220569,
+    "positives": 68,
+    "negatives": 148,
+    "ladder": [
+     {
+      "rate": 0.01,
+      "threshold": 0.4150539411198009,
+      "false_match": 0.013513513513513514,
+      "true_match": 0.0
+     },
+     {
+      "rate": 0.05,
+      "threshold": 0.09445504426956178,
+      "false_match": 0.05405405405405406,
+      "true_match": 0.4264705882352941
+     },
+     {
+      "rate": 0.1,
+      "threshold": 0.07889128078113904,
+      "false_match": 0.10135135135135136,
+      "true_match": 0.5
+     },
+     {
+      "rate": 0.2,
+      "threshold": 0.044095396995544454,
+      "false_match": 0.20270270270270271,
+      "true_match": 0.75
+     },
+     {
+      "rate": 0.3,
+      "threshold": 0.014857170024475464,
+      "false_match": 0.30405405405405406,
+      "true_match": 0.9264705882352942
+     },
+     {
+      "rate": 0.5,
+      "threshold": -0.012425172328948972,
+      "false_match": 0.5,
+      "true_match": 0.9705882352941176
+     }
+    ],
+    "source": "alm_candidates_mid.json",
+    "computed": {
+     "git_commit": "08b1427e4d8f7502841af1b5948f85dd589ee7c4",
+     "config_sha256": "ccb2cea6ae6618434ef7efc46a025d9542203fe936272c6c28e4c85975a980f1"
+    }
+   }
+  },
+  "style_mid": {
+   "match": 1.0,
+   "non_match": 1.0,
+   "positives": 180,
+   "negatives": 180,
+   "ladder": [
+    {
+     "rate": 0.01,
+     "threshold": 1.0,
+     "false_match": 0.6277777777777778,
+     "true_match": 0.9722222222222222
+    },
+    {
+     "rate": 0.05,
+     "threshold": 1.0,
+     "false_match": 0.6277777777777778,
+     "true_match": 0.9722222222222222
+    },
+    {
+     "rate": 0.1,
+     "threshold": 1.0,
+     "false_match": 0.6277777777777778,
+     "true_match": 0.9722222222222222
+    },
+    {
+     "rate": 0.2,
+     "threshold": 1.0,
+     "false_match": 0.6277777777777778,
+     "true_match": 0.9722222222222222
+    },
+    {
+     "rate": 0.3,
+     "threshold": 1.0,
+     "false_match": 0.6277777777777778,
+     "true_match": 0.9722222222222222
+    },
+    {
+     "rate": 0.5,
+     "threshold": 1.0,
+     "false_match": 0.6277777777777778,
+     "true_match": 0.9722222222222222
+    }
+   ],
+   "source": "style_embed_mid.json",
+   "computed": {
+    "git_commit": "05fa6afa470ff4f6a814c327bbf3355ee41db29c",
+    "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e"
+   }
+  }
+ }
+}

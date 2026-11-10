@@ -1,0 +1,49 @@
+{
+ "config_sha256": "ccb2cea6ae6618434ef7efc46a025d9542203fe936272c6c28e4c85975a980f1",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "44cb8f6d44b15f5bf0d6478eb4777bd35f3df99e",
+ "size": "mid",
+ "encoder": "mid",
+ "families": {
+  "classical": {
+   "accuracy": 0.8333333333333334,
+   "pos": {
+    "match": 0.0027548209366391185,
+    "inconclusive": 0.9449035812672176,
+    "non_match": 0.05234159779614325
+   },
+   "neg": {
+    "match": 0.0027548209366391185,
+    "inconclusive": 0.6143250688705234,
+    "non_match": 0.38292011019283745
+   }
+  },
+  "embedding": {
+   "accuracy": 0.8388888888888889,
+   "pos": {
+    "match": 0.0027548209366391185,
+    "inconclusive": 0.9669421487603306,
+    "non_match": 0.030303030303030304
+   },
+   "neg": {
+    "match": 0.0027548209366391185,
+    "inconclusive": 0.6253443526170799,
+    "non_match": 0.371900826446281
+   }
+  },
+  "authorial": {
+   "accuracy": 0.9411764705882353,
+   "pos": {
+    "match": 0.4244604316546763,
+    "inconclusive": 0.5107913669064749,
+    "non_match": 0.06474820143884892
+   },
+   "neg": {
+    "match": 0.056856187290969896,
+    "inconclusive": 0.2508361204013378,
+    "non_match": 0.6923076923076923
+   }
+  }
+ }
+}
