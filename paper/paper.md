@@ -188,7 +188,12 @@ manuscripts (copyrighted transcripts, held privately; steps to obtain them are p
 
 Four control groups stand for writers who are not candidates: pseudo-biblical texts (a published
 curation, 1774-1827), 1820s sermons and tracts, histories including Native American origin texts,
-and general prose. Each method is first measured on known-author tasks (the Federalist papers,
+and general prose. Candidates' own works are kept out of the controls: the candidate models'
+pseudo-biblical control uses the curated list of 18 works, which leaves out *The Late War*, and the
+blind run's General Imposters pool removes every candidate's works (the first benchmark run's pool
+wrongly held a copy of *The Late War* among Hunt's imposters, a defect kept on record, BOM-21). The
+25-volume pseudo-biblical group used to date the genre (section 5.5) does include *The Late War*.
+Each method is first measured on known-author tasks (the Federalist papers,
 imitation scripture with known authors, dictated text) with the true author present and removed
 (section 4).
 
@@ -268,8 +273,9 @@ Federalist papers, imitation scripture with known authors, and dictated text.
 | V3 (hidden states into classical trials) | 125M / 297M / 590M | 0.839 / 0.844 / 0.844 | 0.689 / 0.717 / 0.706 | no |
 
 Intervals are exact 95% binomial intervals over the 110 tests (52, 42 and 24 false matches); the
-benchmark has three tasks (Federalist papers, imitation scripture, dictated text), so these rates
-are measured on a narrow range of genres. The classical methods and style encoders were also scored on the 180 classical trials (General
+benchmark has three tasks, so these rates are measured on a narrow range of genres: 26 Federalist
+tests (ranking 0.769 / 1.000 / 1.000 at 125M / 297M / 590M), 24 imitation scripture (0.958 / 0.958
+/ 0.917) and 60 dictated text by Walter Scott (1.000 at every size). Most of the 110 are one task. The classical methods and style encoders were also scored on the 180 classical trials (General
 Imposters 0.833 / 0.617; ENSC 1.000 / 0.661; style encoder 0.839 / 0.500), compared within that
 set, not across.
 
