@@ -25,7 +25,8 @@ computer studies disagree, and what is different here.
   manuscripts, sample sizes and their limits.
 - **2.7 Controls and the benchmark:** four control groups; known-author tasks.
 - **2.8 The time-locked language models:** 202,816 volumes, 25.7 billion tokens, three sizes, the
-  1B failure and the 590M with QK-norm; all published.
+  1B failure and the 590M with QK-norm; all published; why each size was chosen (125M pilot, 297M
+  registered, 1B attempted, 590M with the stability fix).
 
 ## 3. Prior work, replicated
 Five published studies rerun with their own methods: what reproduces, and their limits (forced
@@ -37,6 +38,21 @@ Two questions, reported per method and model: **ranking** ("who is closest?") an
 models (false matches 86-92% to 22%); imitation robustness; unstable variants (V1, V2). "Best at":
 ranking, the 297M (99%); matching with fewest false matches, the 590M (22%); confirming true
 authors, the 125M (91%, at 47% false matches).
+
+### 4.x How big should the model be?
+- **Why size matters:** false matches fell 47% (125M) -> 38% (297M) -> 22% (590M); ranking was
+  already at its ceiling (98-99%).
+- **What limits size is the data:** 25.7 billion tokens of 1780-1830 English, close to all that
+  survives digitally. Rule of thumb (about 20 training tokens per parameter, from modern
+  large-model research; a guideline, not a law): best fit about 1.3B; 590M has 43 tokens per
+  parameter, a 1B 26; beyond about 1.3B the text must be repeated (up to about 4 passes still
+  helps a little), so 2-4B is the practical outer limit, with sharply diminishing returns.
+- **Ways to more data, and their costs:** the period's newspapers (not used for training so far);
+  Google-digitized volumes (BOM-71); a wider window (e.g. 1700-1830), which weakens the time lock.
+- **When to stop (the rule):** grow only while the last step cut false matches meaningfully and
+  the data supports the next size (about 20+ tokens per parameter); stop when gains flatten or
+  the data would have to repeat. By that rule a 1B (or about 1.3B) with QK-norm is justified and
+  is the logical last step (about $500); beyond about 2B is not.
 
 ## 5. The tests on the Book of Mormon (each with its preparation first)
 - 5.1 The blind procedure and its decoys.
