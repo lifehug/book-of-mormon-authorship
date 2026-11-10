@@ -483,8 +483,10 @@ chunks under the registered thresholds. The candidate models return 10, 5 and 3 
 no candidate. **H1a (a candidate matched by two independent families on both halves) is not
 supported for any candidate.**
 
-**The author sweep.** No author of the 23,872 swept passes both lead thresholds on the discovery
-half (expected by chance 0.035 per query; `data/sweep/calibration.json`). The nearest by both
+**The author sweep (descriptive only).** The sweep failed its registered usability test (true
+author first for 27-35% of 200 held-out books against the required 70%), so its result is
+descriptive, not evidence. No author of the 23,872 swept passes both lead thresholds on the
+discovery half (expected by chance 0.035 per query; `data/sweep/calibration.json`). The nearest by both
 signals are writers in the scriptural and prophetic register (John Wroe, George Fox, William
 Sewel), none near a threshold.
 
@@ -502,7 +504,10 @@ Joseph Smith (2,702 pre-1830 words) and Cowdery (1,309). They are untested by it
 
 **Narrators, scribes and dictation order (6.3, H1c).** The four principal narrators separate at
 0.744 (chance 0.277, p 0.001) and the first and last parts of the dictation at 0.758 (chance
-0.502, p 0.001); every scribed chunk is Oliver Cowdery's, so scribes cannot be compared. Both are
+0.502, p 0.001); the surviving original manuscript holds three hands in the scored text (Oliver Cowdery, John
+Whitmer and the unidentified Scribe 3, the last two only in 1 Nephi), but only Cowdery's fills at
+least three continuous 2,000-word chunks, and most of the manuscript does not survive, so scribes
+cannot be compared. Both are
 below the 0.96 the same method reaches on distinct authors: narrators are **not separable as
 different authors**, and dictation order explains the differences about as well.
 
@@ -558,6 +563,19 @@ is all post-1830: its closeness would be uninformative (he had read the book) an
 the informative direction. No ordinary prose of his survives from before 1830, so his style before
 the book cannot be tested.
 
+## Prior studies replicated (BOM-22)
+
+Each earlier study's published method was run on our texts before any of our own methods touched
+the Book of Mormon (`paper/replication-report.md`): Larsen, Rencher and Layton (1980), speakers
+differ and almost no block resembles a candidate, **replicated**; Holmes (1992), Joseph Smith's own
+writing separates while the revelations sit with the book's prophets, **replicated**; Jockers,
+Witten and Criddle (2008), the method reproduces on their data but the leading candidate follows
+the texts chosen for each candidate (Pratt on ours, Rigdon on theirs): **method yes, result no**;
+Schaalje, Fields, Roper and Snow (2011), most chapters to an unobserved author, **replicated**, with
+the answer depending on candidate sample length; Johnson and Johnson (2013), *The Late War* in the
+top 0.05% for shared rare phrases, but 30 books are denser, mostly other imitation scripture:
+**partly**.
+
 ## Dating the text (Q3)
 
 Of the 215 segments of the 168 chunks, the grammar model (which decides H3) places 78% of segment
@@ -568,7 +586,15 @@ lexical 1738 vs 1794; permutation p 0.0001; `data/dating/h3c.json`). The grammar
 James imitation about 53 years early in validation, so part of the early date is the biblical
 register; the text is nevertheless more archaic by these measures than the period's other biblical
 imitations, and the transformer, which imitation did not move in validation, still dates it before
-them (1755 vs 1805).
+them (1755 vs 1805). Treating each book of the text, rather than each chunk, as one unit (chunks of
+one book are not independent) leaves the result unchanged: 12 books, grammar mean 1664, p 0.0025;
+lexical 1724, p 0.0001.
+
+Two cautions. H3b is not diagnostic between accounts of the text's origin: an early-modern
+placement is predicted by an early-modern source, by imitation of one, and by the King James
+register. And the dating models learned 1780-1830 English from printed, edited books; nonstandard
+upstate New York and New England vernacular, which the 1830 text contains and which edited print
+removed, may read as archaic to them. No unedited-vernacular control was available.
 
 ## Public claims (BOM-42)
 
@@ -671,6 +697,19 @@ shares a copied passage or a plot sequence, and no surfaced pair of passages was
 (each is explained by King James wording or period stock phrasing).
 The text's grammar dates earlier than its period and earlier than the period's other imitations of
 biblical style.
+
+**Decisions made after results existed.** The registered analysis stands as the main record; each
+of the following was added later, is labelled post hoc, and is reported beside it:
+
+| Amendment | Decided after | What it changed | Effect on the headline |
+| --- | --- | --- | --- |
+| 19 | dating validation | H3a/H3b decided on segment medians | none on Book of Mormon results (before scoring) |
+| 33 | benchmark | both 6.1 readings and a false-match ladder reported | none (both shown) |
+| 38-39 | the 1B's loss spike | 590M replaces 1B | one model size |
+| 41-42 | the 590M benchmark | V1/V2 learning rate, V2 seeds | V2 given no weight |
+| 43 | unblinding | Book of Mormon quotations dropped from candidate samples | Cowdery ranking removed; synthesis unchanged |
+| 44 | unblinding | Joseph Smith's ordinary prose scored | register confound stated |
+| 45 | the simulated reviews | ranking rechecked at equal training dose | see section on dose |
 
 **What it does not support.** No method passes the registered open-set bar, so "none of these" is
 graded evidence, not a verdict; the synthesis rests on the classical family alone, because the

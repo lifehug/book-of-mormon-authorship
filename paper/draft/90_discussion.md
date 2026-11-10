@@ -12,6 +12,19 @@ shares a copied passage or a plot sequence, and no surfaced pair of passages was
 The text's grammar dates earlier than its period and earlier than the period's other imitations of
 biblical style.
 
+**Decisions made after results existed.** The registered analysis stands as the main record; each
+of the following was added later, is labelled post hoc, and is reported beside it:
+
+| Amendment | Decided after | What it changed | Effect on the headline |
+| --- | --- | --- | --- |
+| 19 | dating validation | H3a/H3b decided on segment medians | none on Book of Mormon results (before scoring) |
+| 33 | benchmark | both 6.1 readings and a false-match ladder reported | none (both shown) |
+| 38-39 | the 1B's loss spike | 590M replaces 1B | one model size |
+| 41-42 | the 590M benchmark | V1/V2 learning rate, V2 seeds | V2 given no weight |
+| 43 | unblinding | Book of Mormon quotations dropped from candidate samples | Cowdery ranking removed; synthesis unchanged |
+| 44 | unblinding | Joseph Smith's ordinary prose scored | register confound stated |
+| 45 | the simulated reviews | ranking rechecked at equal training dose | see section on dose |
+
 **What it does not support.** No method passes the registered open-set bar, so "none of these" is
 graded evidence, not a verdict; the synthesis rests on the classical family alone, because the
 model-based methods were misled by deliberate imitation; and the candidate samples are uneven and,

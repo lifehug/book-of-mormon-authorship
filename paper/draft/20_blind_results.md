@@ -25,8 +25,10 @@ chunks under the registered thresholds. The candidate models return 10, 5 and 3 
 no candidate. **H1a (a candidate matched by two independent families on both halves) is not
 supported for any candidate.**
 
-**The author sweep.** No author of the 23,872 swept passes both lead thresholds on the discovery
-half (expected by chance 0.035 per query; `data/sweep/calibration.json`). The nearest by both
+**The author sweep (descriptive only).** The sweep failed its registered usability test (true
+author first for 27-35% of 200 held-out books against the required 70%), so its result is
+descriptive, not evidence. No author of the 23,872 swept passes both lead thresholds on the
+discovery half (expected by chance 0.035 per query; `data/sweep/calibration.json`). The nearest by both
 signals are writers in the scriptural and prophetic register (John Wroe, George Fox, William
 Sewel), none near a threshold.
 
@@ -103,6 +105,19 @@ is all post-1830: its closeness would be uninformative (he had read the book) an
 the informative direction. No ordinary prose of his survives from before 1830, so his style before
 the book cannot be tested.
 
+## Prior studies replicated (BOM-22)
+
+Each earlier study's published method was run on our texts before any of our own methods touched
+the Book of Mormon (`paper/replication-report.md`): Larsen, Rencher and Layton (1980), speakers
+differ and almost no block resembles a candidate, **replicated**; Holmes (1992), Joseph Smith's own
+writing separates while the revelations sit with the book's prophets, **replicated**; Jockers,
+Witten and Criddle (2008), the method reproduces on their data but the leading candidate follows
+the texts chosen for each candidate (Pratt on ours, Rigdon on theirs): **method yes, result no**;
+Schaalje, Fields, Roper and Snow (2011), most chapters to an unobserved author, **replicated**, with
+the answer depending on candidate sample length; Johnson and Johnson (2013), *The Late War* in the
+top 0.05% for shared rare phrases, but 30 books are denser, mostly other imitation scripture:
+**partly**.
+
 ## Dating the text (Q3)
 
 Of the 215 segments of the 168 chunks, the grammar model (which decides H3) places 78% of segment
@@ -113,7 +128,15 @@ lexical 1738 vs 1794; permutation p 0.0001; `data/dating/h3c.json`). The grammar
 James imitation about 53 years early in validation, so part of the early date is the biblical
 register; the text is nevertheless more archaic by these measures than the period's other biblical
 imitations, and the transformer, which imitation did not move in validation, still dates it before
-them (1755 vs 1805).
+them (1755 vs 1805). Treating each book of the text, rather than each chunk, as one unit (chunks of
+one book are not independent) leaves the result unchanged: 12 books, grammar mean 1664, p 0.0025;
+lexical 1724, p 0.0001.
+
+Two cautions. H3b is not diagnostic between accounts of the text's origin: an early-modern
+placement is predicted by an early-modern source, by imitation of one, and by the King James
+register. And the dating models learned 1780-1830 English from printed, edited books; nonstandard
+upstate New York and New England vernacular, which the 1830 text contains and which edited print
+removed, may read as archaic to them. No unedited-vernacular control was available.
 
 ## Public claims (BOM-42)
 

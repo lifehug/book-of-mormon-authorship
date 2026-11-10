@@ -653,6 +653,14 @@ def h3c(workers: int = 0) -> int:
                 texts.append(seg), vol.append(r["work_id"])
     pbp = predict_texts(texts, models, vocab, d)
     bom = json.loads(Path("data/blind/unblinded.json").read_text())["methods"]["dating"]["bom"]
+    book_of = {
+        json.loads(ln)["seq"]: json.loads(ln).get("book")
+        for ln in Path("data/bom/1830/edition_1830.jsonl").read_text().splitlines()
+    }
+    chunk_seq = {
+        json.loads(ln)["chunk_id"]: json.loads(ln)["seq_first"]
+        for ln in Path("data/bom/segments/chunks.jsonl").read_text().splitlines()
+    }
     out: dict = {**stamp(), "rule": f"accepted if p > {d['h3c_min_p']}", "models": {}}
     for name in ("grammar", "lexical"):
         meds = [summary(p, edges, d["interval"])[0] for p in pbp[name]]
@@ -662,15 +670,24 @@ def h3c(workers: int = 0) -> int:
         b = np.array([np.mean(v) for v in by.values()])
         a = np.array([np.mean([seg[0] for seg in r[name]]) for r in bom.values()])
         p = _perm(a, b, d["permutations"], derive_seed(d["permutation_seed"], cfg))
+        # robustness (BOM-38: chunks of one book are not independent): one value per book
+        books: dict[str, list[float]] = {}
+        for cid, v in zip(bom, a, strict=True):
+            books.setdefault(book_of[chunk_seq[cid]], []).append(float(v))
+        ab = np.array([np.mean(v) for v in books.values()])
+        pb = _perm(ab, b, d["permutations"], derive_seed(d["permutation_seed"], cfg))
         out["models"][name] = {"book_of_mormon": {"chunks": len(a), "mean": float(a.mean()),
                                                   "median": float(np.median(a))},
                                "pseudo_biblical": {"volumes": len(b), "mean": float(b.mean()),
                                                    "median": float(np.median(b))},
                                "difference_years": float(a.mean() - b.mean()),
-                               "permutation_p": p, "h3c": bool(p > d["h3c_min_p"])}  # fmt: skip
+                               "permutation_p": p, "h3c": bool(p > d["h3c_min_p"]),
+                               "by_book": {"books": len(ab), "mean": float(ab.mean()),
+                                           "permutation_p": pb}}  # fmt: skip
         print(f"{name}: Book of Mormon {a.mean():.0f} ({len(a)} chunks) vs pseudo-biblical "
               f"{b.mean():.0f} ({len(b)} volumes); p {p:.4f}; H3c "
-              f"{'accepted' if p > d['h3c_min_p'] else 'rejected'}", flush=True)  # fmt: skip
+              f"{'accepted' if p > d['h3c_min_p'] else 'rejected'}; by book ({len(ab)}): "
+              f"{ab.mean():.0f}, p {pb:.4f}", flush=True)  # fmt: skip
     out["h3c"] = out["models"]["grammar"]["h3c"]
     (OUT / "h3c.json").write_text(json.dumps(out, indent=1) + "\n")
     print(f"-> {OUT / 'h3c.json'}")
