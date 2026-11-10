@@ -40,12 +40,15 @@ authors, the 125M (91%, at 47% false matches).
 
 ## 5. The tests on the Book of Mormon (each with its preparation first)
 - 5.1 The blind procedure and its decoys.
-- 5.2 Borrowing: exact reuse; rare phrases against 204,520 volumes; paraphrase across 163 million
-  passages; story order; triage of every surfaced pair.
-- 5.3 Authorship: ranking and matching by our models, style encoders, classical baselines; the
+- 5.2 **Wording:** exact reuse; rare phrases against 204,520 volumes; paraphrase across 163
+  million passages; triage of every surfaced pair (biblical, common, specific).
+- 5.3 **Story structure:** the text's 1,421 events in order against every named source and the 20
+  leading sources; the positive control (Josephus retelling Genesis-Judges: 108 events in order,
+  p 0.001); no source shares the text's order at the registered level.
+- 5.4 **Authorship:** ranking and matching by our models, style encoders, classical baselines; the
   23,872-author sweep (descriptive).
-- 5.4 Dating: three models; H3b; H3c by chunk and by book.
-- 5.5 Internal voices: narrators, dictation order, scribe.
+- 5.5 **Dating:** three models; H3b; H3c by chunk and by book.
+- 5.6 **Internal voices:** narrators, dictation order, scribe.
 
 ## 6. Corrections and robustness
 The quotation leak found and fixed (Amendment 43); equal training dose (Amendment 45); the
@@ -55,7 +58,7 @@ post hoc decision in one table.
 ## 7. The books in the CES Letter, one by one
 For each book the CES Letter names (to be confirmed from the Letter: *View of the Hebrews*, *The
 Late War*, *The First Book of Napoleon*, Spalding's *Manuscript Story*, and any others it cites):
-what the claim is; every borrowing test with each shared phrase listed and triaged; story order;
+what the claim is; every wording test with each shared phrase listed and triaged; story structure;
 the book's own dating; access evidence (who could have had it, where, when); the verdict under the
 claim's pre-written rule.
 
