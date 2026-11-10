@@ -31,7 +31,6 @@ import argparse
 import hashlib
 import inspect
 import json
-import os
 import shutil
 import sys
 from pathlib import Path
@@ -252,48 +251,55 @@ def _sha(p: Path) -> str:
 
 
 def push(token_file: Path) -> int:
+    """Upload each repo straight from where its files are (2026-11-09: hard links into the staging
+    folder counted against the pod volume's quota as full copies)."""
     from huggingface_hub import HfApi
 
     api = HfApi(token=token_file.read_text().strip())
     for repo_dir in sorted(ROOT.iterdir()):
         name = repo_dir.name
-        for src, dst in WEIGHTS.get(name, []):
-            for f in Path(src).rglob("*"):
-                if f.is_file() and "inputs" not in f.parts:
-                    out = repo_dir / dst / f.relative_to(src)
-                    out.parent.mkdir(parents=True, exist_ok=True)
-                    if not out.exists():
-                        os.link(f, out)
-        for src, dst in SINGLE.get(name, []):
-            out = repo_dir / dst
-            if not out.exists():
-                os.link(src, out)
-            if name == "timelocked-1830-590m" and not (repo_dir / "model.safetensors").exists():
-                import torch
-                from safetensors.torch import save_file
+        if name == "timelocked-1830-590m" and not (repo_dir / "model.safetensors").exists():
+            import torch
+            from safetensors.torch import save_file
 
-                sd = torch.load(out, map_location="cpu", weights_only=True)
-                sd = {k: v.contiguous() for k, v in sd.items() if k != "head.weight"}
-                save_file(sd, repo_dir / "model.safetensors")
-        files = sorted(p for p in repo_dir.rglob("*") if p.is_file() and ".cache" not in p.parts)
+            sd = torch.load(SINGLE[name][0][0], map_location="cpu", weights_only=True)
+            sd = {k: v.contiguous() for k, v in sd.items() if k != "head.weight"}
+            save_file(sd, repo_dir / "model.safetensors")
+        # (folder, path in the repo, its own files only): weight folders a sub-folder at a time
+        parts: list[tuple[Path, str, bool]] = []
+        for src, dst in WEIGHTS.get(name, []):
+            sp = Path(src)
+            parts += [(p, f"{dst}/{p.name}", False) for p in sorted(sp.iterdir())
+                      if p.is_dir() and p.name != "inputs"]  # fmt: skip
+            if any(p.is_file() for p in sp.iterdir()):
+                parts.append((sp, dst, True))
+        files = [(p, str(p.relative_to(repo_dir))) for p in sorted(repo_dir.rglob("*"))
+                 if p.is_file() and ".cache" not in p.parts]  # fmt: skip
+        for folder, dst, own in parts:
+            found = folder.glob("*") if own else folder.rglob("*")
+            files += [(p, f"{dst}/{p.relative_to(folder)}") for p in sorted(found) if p.is_file()]
+        files += [(Path(src), dst) for src, dst in SINGLE.get(name, [])]
         man = Path("data/manifests") / f"hf_{name}.jsonl"
         man.parent.mkdir(parents=True, exist_ok=True)
         with man.open("w") as f:
-            for p in files:
-                f.write(json.dumps({"path": str(p.relative_to(repo_dir)), "bytes": p.stat().st_size,
-                                    "sha256": _sha(p)}) + "\n")  # fmt: skip
+            for p, dst in files:
+                f.write(json.dumps({"path": dst, "bytes": p.stat().st_size, "sha256": _sha(p)})
+                        + "\n")  # fmt: skip
         repo = f"{OWNER}/{name}"
         api.create_repo(repo, repo_type="model", private=False, exist_ok=True)
-        # one commit per top-level folder, then the files at the root; a rerun re-sends only what
-        # the Hub does not already hold (content-addressed), so an interrupted push resumes
-        for sub in sorted(p for p in repo_dir.iterdir() if p.is_dir() and p.name != ".cache"):
-            api.upload_folder(repo_id=repo, folder_path=str(sub), path_in_repo=sub.name,
-                              repo_type="model", commit_message=f"{sub.name}/")  # fmt: skip
+        # one commit per folder; a rerun re-sends only what the Hub does not already hold
+        # (content-addressed), so an interrupted push resumes
+        for folder, dst, own in parts:
+            api.upload_folder(repo_id=repo, folder_path=str(folder), path_in_repo=dst,
+                              repo_type="model", commit_message=f"{dst}/",
+                              ignore_patterns=["*/*"] if own else None)  # fmt: skip
+        for src, dst in SINGLE.get(name, []):
+            api.upload_file(path_or_fileobj=src, path_in_repo=dst, repo_id=repo,
+                            repo_type="model", commit_message=dst)  # fmt: skip
         api.upload_folder(repo_id=repo, folder_path=str(repo_dir), repo_type="model",
-                          allow_patterns=["*.*"], ignore_patterns=["*/*"],
                           commit_message="cards, loader and results")  # fmt: skip
-        print(f"{repo}: {len(files)} files, {sum(p.stat().st_size for p in files) / 1e9:.1f} GB "
-              f"-> https://huggingface.co/{repo}", flush=True)  # fmt: skip
+        print(f"{repo}: {len(files)} files, {sum(p.stat().st_size for p, _ in files) / 1e9:.1f} "
+              f"GB -> https://huggingface.co/{repo}", flush=True)  # fmt: skip
     return 0
 
 
