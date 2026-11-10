@@ -22,7 +22,7 @@ folders (``alm/candidates/inputs``: tokenised licensed text) are never staged.
 Usage::
 
     python -m timelocked_lm.publish stage
-    python -m timelocked_lm.publish push [--token-file /root/.hf_token]   # on the pod
+    python -m timelocked_lm.publish push [--token-file /root/.hf_token] [--repo NAME]
 """
 
 from __future__ import annotations
@@ -44,7 +44,13 @@ SIZES = {"pilot": "125M", "base": "297M", "mid": "590M"}
 # repo -> (B2/corpus folder, path in the repo) pairs pulled on the pod; never alm/candidates/inputs
 WEIGHTS = {
     "timelocked-1830-590m": [("data/corpus/timelocked_lm/runs/mid/milestones", "milestones")],
-    "bom-authorship-candidate-models": [(f"data/corpus/alm/candidates/{z}", z) for z in SIZES],
+    # registered models (moved to candidates_registered after Amendment 43) under <size>/; the
+    # Amendment 43 retrains under a43/<size>/; Amendments 44 and 45 under a44/ and a45/
+    "bom-authorship-candidate-models": [
+        *[(f"data/corpus/alm/candidates_registered/{z}", z) for z in SIZES],
+        *[(f"data/corpus/alm/candidates/{z}", f"a43/{z}") for z in SIZES],
+        ("data/corpus/alm/a44", "a44"),
+    ],
     "bom-authorship-benchmark-finetunes": [("data/corpus/alm/benchmark", "runs")],
     "bom-authorship-style-encoder": [
         ("data/corpus/style_embed/runs/style", "297m"),
@@ -171,6 +177,12 @@ time-locked model); the `.json` beside it is its training record and held-out sc
 only). `alm_candidates_<size>.json` is each size's validation, `alm_candidates_plan.json` the
 units. Some candidate samples come from Joseph Smith Papers transcripts, which are not published;
 the models are (owner's decision, 2026-11-09).
+
+Folders: `pilot/`, `base/`, `mid/` are the registered run's models. `a43/<size>/` are the models
+retrained after Book of Mormon quotations were removed from the candidate samples (Amendment 43,
+post hoc; the paper's corrected rankings). `a44/` holds the models of Joseph Smith's pooled
+non-revelatory writing (Amendment 44) and `a44/a45/` the equal-dose slice models (Amendment 45),
+each named `<unit>[_slice<k>]_<size>.pt`.
 """,
             "authorship, fine-tuned",
         )
@@ -254,7 +266,7 @@ def _sha(p: Path) -> str:
     return h.hexdigest()
 
 
-def push(token_file: Path) -> int:
+def push(token_file: Path, only: list[str] | None = None) -> int:
     """Upload each repo straight from where its files are (2026-11-09: hard links into the staging
     folder counted against the pod volume's quota as full copies)."""
     from huggingface_hub import HfApi
@@ -262,6 +274,8 @@ def push(token_file: Path) -> int:
     api = HfApi(token=token_file.read_text().strip())
     for repo_dir in sorted(ROOT.iterdir()):
         name = repo_dir.name
+        if only and name not in only:
+            continue
         if name == "timelocked-1830-590m" and not (repo_dir / "model.safetensors").exists():
             import torch
             from safetensors.torch import save_file
@@ -313,8 +327,9 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("stage")
     p = sub.add_parser("push")
     p.add_argument("--token-file", type=Path, default=Path("/root/.hf_token"))
+    p.add_argument("--repo", action="append", help="push only this repo (repeatable)")
     a = ap.parse_args(argv)
-    return stage() if a.cmd == "stage" else push(a.token_file)
+    return stage() if a.cmd == "stage" else push(a.token_file, a.repo)
 
 
 if __name__ == "__main__":
