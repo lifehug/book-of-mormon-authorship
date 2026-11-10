@@ -15,6 +15,16 @@ V1's registered learning rate broke at 590M (Amendment 41); V2 swings from 9% to
 across seeds and carries no weight; the model-based methods are weaker than the classical ones on
 imitation (BOM-31). The blind results are read in that order of trust.
 
+**"Closest" to Joseph Smith is confounded with register.** No candidate is matched, and Joseph
+Smith's sample ranks closest (after Book of Mormon quotations are removed from the samples,
+Amendment 43). That sample is the only one in the text's own register: revelations dictated in a
+scriptural voice in 1828-29, the only writing of his that survives from before the book. His
+ordinary prose of 1831-33, scored the same way, sits mid-pack for seven of eight methods (Burrows'
+Delta reverses; Amendment 44, `data/blind/a44/`). The methods cannot separate shared register from
+shared authorship, nor the person who dictated a text from the person who composed it, and no
+pre-1830 ordinary prose exists to test his style before the book. Whether his later prose drifted
+toward the book's style is a separate question, tabled with its sources (BOM-73).
+
 **The borrowing and dating tests cannot speak to translation.** None separates genuine
 translations of ancient texts from compositions presented as ancient (Amendment 9; section 1.5 of
 `results_so_far.md`). They describe resemblance and period, not process.

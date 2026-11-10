@@ -178,6 +178,30 @@ So the rerun removes an artifact (Cowdery) and leaves a pattern that every accou
 origin would predict to some degree: the text resembles, more than anyone else's sample, the
 dictated revelations of the man who dictated it, in the same register and months.
 
+## 9. Joseph Smith's revelatory and non-revelatory writing (Amendment 44, post hoc)
+
+His only pre-1830 sample is revelation (1828-29), in a scriptural voice like the text's. His
+non-revelatory writing of 1831-33 (letters and the 1832 history, about 11,600 tokens) was pooled
+into one unit and scored beside it, in the Amendment 43 setting (`data/blind/a44/report.json`).
+Mean rank among 12 candidate samples on the 168 chunks (1 = closest):
+
+| Method | Revelations, 1828-29 | Non-revelatory prose, 1831-33 |
+| --- | --- | --- |
+| Candidate models 125M / 297M / 590M | 1.1 / 1.0 / 1.3 | 6.1 / 6.3 / 5.4 |
+| Style encoders 297M / 590M | 1.1 / 1.5 | 4.7 / 5.7 |
+| Cosine Delta | 1.2 | 3.3 |
+| General Imposters | 3.6 | 6.1 |
+| Burrows' Delta | 7.7 | 2.7 |
+
+Seven of eight methods place the revelations closest and his ordinary prose in the middle of the
+candidates; Burrows' Delta, which rests most on function words, reverses them. The closeness to
+Joseph Smith therefore runs mainly through the revelatory register, which is the register of the
+text itself. His ordinary prose is all post-1830, so its closeness would be uninformative (he had
+read the book), and its distance is the informative direction. No ordinary prose of his survives
+from before 1830, so whether his own style was close to the text before it existed cannot be
+tested; whether it drifted toward the text afterwards is tabled as BOM-73
+(`docs/js-over-time-research.md`).
+
 ## Plain summary
 
 The checks on known text all passed: every method found real authors among the decoys and none
