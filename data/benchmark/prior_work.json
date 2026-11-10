@@ -2,7 +2,7 @@
  "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "9b1463d7ce06d445bad49a71f41e02f72bc2e3e0",
+ "git_commit": "90f760da6513ae132723d748d77a7c74d0a60afe",
  "methods": {
   "burrows_delta": {
    "test_set": "trials",
@@ -690,6 +690,22 @@
     "dictated": 0.6333333333333333
    },
    "open_set_fpr": 0.5,
+   "passes": false
+  },
+  "style_embed_mid": {
+   "test_set": "trials",
+   "tests": 180,
+   "closed_set": 0.8388888888888889,
+   "closed_set_95": [
+    0.7833333333333333,
+    0.8888888888888888
+   ],
+   "by_task": {
+    "federalist": 0.9,
+    "pseudo_biblical": 1.0,
+    "dictated": 0.5833333333333334
+   },
+   "open_set_fpr": 0.6277777777777778,
    "passes": false
   },
   "ensc": {
@@ -2616,6 +2632,11 @@
    "only_second": 19,
    "p": 1.0
   },
+  "alm_base_v3 vs style_embed_mid": {
+   "only_first": 19,
+   "only_second": 18,
+   "p": 1.0
+  },
   "alm_gpt2 vs alm_gpt2_medium": {
    "only_first": 0,
    "only_second": 5,
@@ -3811,6 +3832,11 @@
    "only_second": 19,
    "p": 1.0
   },
+  "alm_mid_v3 vs style_embed_mid": {
+   "only_first": 19,
+   "only_second": 18,
+   "p": 1.0
+  },
   "alm_pilot vs alm_pilot_v1": {
    "only_first": 6,
    "only_second": 6,
@@ -4256,6 +4282,11 @@
    "only_second": 20,
    "p": 1.0
   },
+  "alm_pilot_v3 vs style_embed_mid": {
+   "only_first": 19,
+   "only_second": 19,
+   "p": 1.0
+  },
   "burrows_delta vs cosine_delta": {
    "only_first": 5,
    "only_second": 0,
@@ -4271,6 +4302,11 @@
    "only_second": 0,
    "p": 3.725290298461914e-09
   },
+  "burrows_delta vs style_embed_mid": {
+   "only_first": 29,
+   "only_second": 0,
+   "p": 3.725290298461914e-09
+  },
   "cosine_delta vs general_imposters": {
    "only_first": 30,
    "only_second": 5,
@@ -4281,9 +4317,24 @@
    "only_second": 3,
    "p": 8.430331945419312e-06
   },
+  "cosine_delta vs style_embed_mid": {
+   "only_first": 29,
+   "only_second": 5,
+   "p": 3.8558151572942734e-05
+  },
   "general_imposters vs style_embed": {
    "only_first": 24,
    "only_second": 25,
+   "p": 1.0
+  },
+  "general_imposters vs style_embed_mid": {
+   "only_first": 21,
+   "only_second": 22,
+   "p": 1.0
+  },
+  "style_embed vs style_embed_mid": {
+   "only_first": 7,
+   "only_second": 7,
    "p": 1.0
   },
   "tails_burrows_delta vs tails_cosine_delta": {
