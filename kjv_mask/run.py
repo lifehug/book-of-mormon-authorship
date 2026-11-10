@@ -41,6 +41,7 @@ Usage::
     python -m kjv_mask.run sweep      # BOM-39's author blocks (sweep.units first)
     python -m kjv_mask.run known_answer              # BOM-61's known-answer texts
     python -m kjv_mask.run italics                   # BOM-62's independent translations
+    python -m kjv_mask.run js_time_controls          # BOM-73's comparison writers (ingest.js_time)
 """
 
 from __future__ import annotations
@@ -189,6 +190,15 @@ def _docs(group: str) -> list[dict]:
              "load": lambda r=cat[b["work_id"]], b=b: block_text(r, b["start"], b["words"])}
             for b in blocks
         ]  # fmt: skip
+    if group == "js_time_controls":
+        # BOM-73's comparison writers (Internet Archive OCR, ingest.js_time), masked as the Book
+        # of Mormon is, so a Bible quotation is not read as style (docs/js-over-time-plan.md)
+        from ingest.js_time import OUT_DIR as JS_TIME
+
+        return [
+            _in_memory(p.stem, artifacts(p.read_text(encoding="utf-8", errors="replace"))[0])
+            for p in sorted(JS_TIME.glob("*.txt"))
+        ]
     raise SystemExit(f"unknown group {group}")
 
 
