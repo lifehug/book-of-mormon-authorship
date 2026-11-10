@@ -77,10 +77,18 @@ book sounds like English from before 1700, and older than other people who imita
 the early 1800s.
 
 **6. When forced to pick, the computers leaned toward Joseph Smith,** the man who spoke the book
-aloud. But we only had a very short sample of his early writing, too short to trust, so this
-doesn't count as a match. (They also leaned toward Oliver Cowdery, who wrote most of it down, but
-we caught a mistake there: his early sample turned out to be almost half copied from the Book of
-Mormon itself, so of course it looked similar. We're fixing that and will say what changes.)
+aloud. That's not a match, for three reasons. His early writing sample is very short, too short to
+trust. It's the only sample written in the same style as the book (he dictated revelations written
+like scripture, in the same months), while the other writers' samples are sermons, histories and
+stories. And since he's the one who spoke the book aloud, its words passed through him whichever
+way it was made, which a computer can't untangle.
+
+**7. We caught a mistake and fixed it.** At first the computers also pointed at Oliver Cowdery, who
+wrote most of the book down. Then we noticed his early writing sample was almost half copied word
+for word from the Book of Mormon itself, so of course it looked similar. We took out every copied
+passage from every writer's sample (only copies made after the Book of Mormon passage existed;
+nothing of Joseph Smith's early revelations needed removing) and ran everything again. Cowdery's
+match disappeared; the overall answer ("probably none of these people") didn't change.
 
 ## What this doesn't tell you
 

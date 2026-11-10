@@ -10,14 +10,14 @@ The project does not argue for or against divine inspiration. It asks which know
 the text resembles closely, by methods whose error rates are measured, and reports the answer with
 its uncertainty.
 
-**Correction, 2026-11-10 (after this was first written).** Oliver Cowdery's pre-1830 sample is
-mostly his "Articles of the Church of Christ" (June 1829), and 41.9% of it, as the models saw it,
-is word-for-word Book of Mormon text (the sacrament prayers and baptism instructions from Moroni and
-3 Nephi); every other candidate sample shares 0-3%. Any ranking or match to that sample is
-therefore void: the methods recognised the Book of Mormon inside it. This breaks the sealing rule
-for one candidate sample; it is being corrected (the overlapping spans masked, as King James
-spans are, and that sample's models retrained), and the rerun will be labelled post hoc. Not
-affected: the synthesis (that sample is not in the primary set), the sweep, borrowing and dating.
+**Correction and rerun, 2026-11-10 (Amendment 43, post hoc).** Oliver Cowdery's pre-1830 sample
+("Articles of the Church of Christ", 1829) turned out to be 40% word-for-word Book of Mormon text,
+and Parley P. Pratt's books quote it too, so the methods were partly recognising the book inside
+those samples. Book of Mormon *quotations* (passages of 20+ words copied after the matching
+passage existed) were dropped from every candidate sample, nothing else; Joseph Smith's 1828-29
+revelations contain none and are unchanged (`docs/bom-overlap-analysis.md`, with the decision
+record). The candidate models were retrained and the sealed set rescored. The tables below are
+the **registered run**; section 8 sets the rerun beside it.
 
 ## 1. The sanity check passed: the decoys
 
@@ -52,8 +52,7 @@ samples):
 | Candidate models 590M | Cowdery 109, Joseph Smith 45, pseudo-biblical controls 11 |
 
 The candidates ranked closest are, across methods, **Joseph Smith and Oliver Cowdery**, the
-documented dictator and principal scribe of the text (every Cowdery pre-1830 ranking is void: see
-the correction above), and, for some methods, Pratt and Hunt.
+documented dictator and principal scribe of the text (the Cowdery rankings came from Book of Mormon quotations in his sample; see section 8), and, for some methods, Pratt and Hunt.
 
 **Caveats that bear directly on this:**
 
@@ -144,6 +143,41 @@ real authors in the benchmark, so the registered verdict is **not separable as d
 authors**; and the order of dictation separates the chunks about as well, so the differences may
 follow when a passage was dictated as much as who narrates it.
 
+## 8. The rerun without quotations, beside the registered run (Amendment 43)
+
+| Method | Registered: ranked closest (of 168) | **Quotations dropped** | Matches (registered -> rerun) |
+| --- | --- | --- | --- |
+| Cosine Delta | Joseph Smith 131, Hunt 31 | **Joseph Smith 148**, Hunt 20 | 0 -> 0 |
+| Burrows' Delta | Joseph Smith 77, Hunt 47, Pratt 37 | **Joseph Smith 91**, Hunt 49, Pratt 25 | 0 -> 0 |
+| General Imposters | Pratt 74, Joseph Smith 48 | **Joseph Smith 66**, Pratt 66 | 0 -> 0 |
+| Style encoder 297M | Joseph Smith 150, Cowdery 14 | Joseph Smith 151, Cowdery 12 | 0 -> 0 (registered rule) |
+| Style encoder 590M | Cowdery 102, Joseph Smith 58 | **Joseph Smith 99**, Cowdery 58 | 0 -> 0 (registered rule) |
+| Candidate models 125M | Joseph Smith 82, Pratt 57, Cowdery 29 | **Joseph Smith 159** | 10 -> 2 |
+| Candidate models 297M | Joseph Smith 133, Cowdery 34 | **Joseph Smith 168** | 5 -> 2 |
+| Candidate models 590M | Cowdery 119, Joseph Smith 46 | **Joseph Smith 131**, Phelps 26 | 3 -> 0 |
+| Synthesis, "not in set" | 0.744 | 0.744 | |
+| Control decoys called a match | 0 of 21 | 0 of 21 | |
+
+With the quotations gone, Cowdery's prominence disappears and the methods rank Joseph Smith's
+pre-1830 sample closest far more consistently. **How to read that, and how not to:**
+
+- **Closest is not a match.** Match calls fell to 0-2 of 168 chunks, and the registered synthesis
+  is unchanged ("not one of these candidates", 0.744, from the classical family only).
+- **Register and genre.** Joseph Smith's sample is the only one written in the same voice as the
+  book: revelations, in scriptural form, dictated in the same months. The other samples are
+  sermons, treatises, histories and a romance. These methods cannot fully separate shared register
+  from shared authorship, which is also why the pseudo-biblical control texts rank high.
+- **Dictation.** The Book of Mormon was dictated by Joseph Smith. On every account of its origin
+  the text passed through his voice, and no stylometric method separates the person who composed
+  a text from the person who dictated it.
+- **Sample size.** His pre-1830 sample is 2,702 words, flagged too small to trust before any
+  scoring.
+- **Post hoc.** The rerun was decided after unblinding; the registered run stays the main record.
+
+So the rerun removes an artifact (Cowdery) and leaves a pattern that every account of the book's
+origin would predict to some degree: the text resembles, more than anyone else's sample, the
+dictated revelations of the man who dictated it, in the same register and months.
+
 ## Plain summary
 
 The checks on known text all passed: every method found real authors among the decoys and none
@@ -151,7 +185,7 @@ called a stranger's text a match. On the Book of Mormon, no method makes a confi
 candidate, the whole-library sweep finds no lead, and the registered synthesis leans to "none of
 these candidates" (0.74), on classical evidence only, because the model-based methods were
 disqualified by their weakness on imitation. Where methods rank someone closest, it is mostly Joseph
-Smith (Cowdery's rankings are void, his sample being 42% Book of Mormon text), through a sample too small to trust and written in the same circle and
+Smith (Cowdery's high rankings came from Book of Mormon quotations in his sample and disappear without them; section 8), through a sample too small to trust and written in the same circle and
 register as the text itself. The language-based dating places the text's language well before
 1780-1830, by every model, including the one that imitation did not fool in validation.
 
