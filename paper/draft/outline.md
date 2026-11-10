@@ -108,9 +108,9 @@ stands out under the registered nulls; 0 of 1,069 triaged pairs specific under b
 ## 10. Applying the results to public claims (BOM-42)
 
 `data/claims/claims.json` holds the evidence for each of the 17 claims (4 untestable); each
-claim's reading is written in BOM-42 against these results: draft verdicts in
-`docs/claims-verdicts-draft.md` (supported 2, contradicted 6, mixed 4, not addressed 1,
-untestable 4), awaiting the owner's review.
+claim's verdict is set from its pre-written rule in `data/claims/register.yaml`, with the
+reasoning in `docs/claims-verdicts.md`: supported 2, contradicted 6, mixed 4, not addressed 1,
+untestable 4.
 
 ## 11. Limitations
 

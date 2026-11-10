@@ -1,15 +1,15 @@
-# Claims register: draft verdicts (BOM-42) — for the owner's review
+# Claims register: verdicts (BOM-42)
 
 Drafted 2026-11-10, after unblinding, by applying each claim's `supported_if` / `contradicted_if`
-rule in `data/claims/register.yaml` (written before any result) to the results. **Draft:** the
-verdicts go into the register only after the owner has read them. Allowed verdicts: supported,
+rule in `data/claims/register.yaml` (written before any result) to the results; reviewed and
+approved by the owner the same day and written into the register. Allowed verdicts: supported,
 contradicted, mixed, not_addressed; four claims are untestable by design. The register takes no
 side, and being unable to test a claim is not evidence against it.
 
 Sources for the evidence: `paper/draft/results_so_far.md` 1 (borrowing), `docs/results-first-read.md`
 (blind results), `data/dating/h3c.json`, `data/benchmark/scribes.json`.
 
-| Claim | Source | Draft verdict | Why, by the claim's own rule |
+| Claim | Source | Verdict | Why, by the claim's own rule |
 | --- | --- | --- | --- |
 | c01 *The Late War* shares unusual rare phrases | CES Letter, Johnson 2013 | **mixed** | It beats the 99th percentile of its null on rare phrases (22 phrases, p 0.0006, rank 131 of 204,520), which meets `supported_if`; but a control of the same genre and period scores higher (Ilive's *Book of Jasher*, 1829 reprint: 7.99 vs 3.86 per 10,000 words), which meets `contradicted_if`. Paraphrase is inside its null (80th percentile); no triaged pair is specific. |
 | c02 *View of the Hebrews* shares themes closely enough to suggest dependence | CES Letter | **contradicted** | Its paraphrase score is inside the null (84.6th percentile; 77 of 500 matched religious volumes score higher), story order shares 2-3 events (p 0.97-1.0), and triage finds no specific pair. |
@@ -29,7 +29,7 @@ Sources for the evidence: `paper/draft/results_so_far.md` 1 (borrowing), `docs/r
 | c16 The text reflects its 1820s environment in its language | Brodie 1945 | **contradicted** (language only) | The majority of segments fall in 1473-1700 (H3b), and period imitation does not produce that placement (H3c rejected). Thematic dating (BOM-63) is separate. Neither reading says how the text was produced. |
 | c17 Narrators not distinct, and close to Joseph Smith's revelation texts (Holmes 1992) | Holmes 1992 | **supported** | Narrators are not separable under 6.3; Joseph Smith's dictated sample is the closest candidate by Cosine Delta (131 of 168 chunks) and Burrows' Delta (77), though General Imposters ranks Pratt first more often (74 vs 48). |
 
-**Totals (draft):** supported 2, contradicted 6, mixed 4, not addressed 1, untestable 4.
+**Totals:** supported 2, contradicted 6, mixed 4, not addressed 1, untestable 4.
 
-Once the owner agrees, the verdicts go into `data/claims/register.yaml`, `python -m eval.claims
-table` is rerun, and the table goes into the paper's section 10.
+The verdicts are in `data/claims/register.yaml`; `python -m eval.claims table` writes the claims
+table (`data/claims/claims.json`) for the paper's section 10.

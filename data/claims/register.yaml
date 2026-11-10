@@ -17,7 +17,8 @@
 # This register takes no side. It includes critical, apologetic and academic claims, and the
 # same rules apply to all of them. Being unable to test a claim is not evidence against it.
 #
-# verdict: left null until BOM-35. Allowed values once set:
+# verdict: left null until BOM-35 (set 2026-11-10 after unblinding, from each rule; reasoning in
+# docs/claims-verdicts.md; untestable claims stay null). Allowed values once set:
 #   supported | contradicted | mixed | not_addressed
 
 version: 0.1
@@ -116,7 +117,7 @@ claims:
       problem rather than a result. Luke, The Late War, View of the Hebrews and Manuscript
       Story are always reported together (pre-registration 6.5).
     evidence: [rare:the_late_war, rare:luke_kjv, semantic:the_late_war_1816, semantic_null:the_late_war_1816, triage]
-    verdict: null
+    verdict: mixed             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 
   - id: c02-view-hebrews-themes
     source: ces_letter
@@ -138,7 +139,7 @@ claims:
       capture. A high score here is consistent with common sources as well as dependence, and
       the report must say so.
     evidence: [semantic:view_of_the_hebrews_1825, semantic_null:view_of_the_hebrews_1825, semantic_null:view_of_the_hebrews_1823, rare:view_of_the_hebrews, triage]
-    verdict: null
+    verdict: contradicted             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 
   - id: c03-oliver-cowdery-link
     source: ces_letter
@@ -166,7 +167,7 @@ claims:
       They are attested in the 1780-1830 corpus at comparable rates, or in the KJV, or in
       pseudo-biblical imitations of the period.
     evidence: [dating:grammar, dating:lexical, blind:dating]
-    verdict: null
+    verdict: not_addressed             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 
   - id: c05-emode-syntax-not-imitable
     source: skousen_carmack
@@ -189,7 +190,7 @@ claims:
       period we hold (EEBO-TCP). BOM-31 was designed independently of this claim and happens to
       be its decisive test.
     evidence: [dating:grammar, dating:transformer, imitation, blind:dating]
-    verdict: null
+    verdict: mixed             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 
   - id: c06-tight-control
     source: skousen_carmack
@@ -218,7 +219,7 @@ claims:
       Neither is supported, or the open-set replication (BOM-22) shows the 2008 result depended
       on a closed candidate list that excluded Joseph Smith.
     evidence: [file:data/benchmark/replication_jockers_pamr.json, file:data/benchmark/replication_ensc.json, synthesis, blind:unblinded]
-    verdict: null
+    verdict: contradicted             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 
   - id: c08-wordprint-distinct-narrators
     source: larsen_1980
@@ -237,7 +238,7 @@ claims:
       The 1980 critique was that the features measured biblical register rather than
       authorship. KJV masking and the frozen function-word list exist to answer exactly that.
     evidence: [file:data/benchmark/replication_holmes.json, manuscript, blind:scribes]
-    verdict: null
+    verdict: contradicted             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 
   - id: c09-open-set-none-of-the-above
     source: fields_2011
@@ -248,7 +249,7 @@ claims:
     supported_if: H1b holds -- no candidate supported under the pre-registered rule.
     contradicted_if: Any candidate is supported.
     evidence: [open_set, synthesis, blind:unblinded]
-    verdict: null
+    verdict: supported             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 
   - id: c10-pseudo-biblical-genre
     source: shalev
@@ -263,7 +264,7 @@ claims:
     contradicted_if: >
       The text separates from pseudo-biblical controls on features that survive KJV masking.
     evidence: [imitation, dating:grammar, blind:unblinded]
-    verdict: null
+    verdict: mixed             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 
   - id: c11-dna-studies
     source: gospel_topics
@@ -303,7 +304,7 @@ claims:
       The surviving Manuscript Story (found 1884) is the only Spalding text tested; theories
       about a lost second manuscript are untestable here.
     evidence: [rare:spalding_manuscript_story, semantic:spalding_manuscript_story, triage, synthesis, blind:unblinded]
-    verdict: null
+    verdict: contradicted             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 
   - id: c14-first-book-of-napoleon
     source: named_sources
@@ -319,7 +320,7 @@ claims:
       Its scores sit inside the null or below controls of its group, and no pair is specific
       under both passes.
     evidence: [rare:first_book_of_napoleon, semantic:institutional_books:HH2NE7, semantic_null:institutional_books:HH2NE7, triage]
-    verdict: null
+    verdict: mixed             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 
   - id: c15-cowdery-or-rigdon-author
     source: named_sources
@@ -333,7 +334,7 @@ claims:
       under the 10,000-word floor, so his confirmatory test rests on post-1830 printed text and
       Amendment 5's one-way reading).
     evidence: [synthesis, blind:unblinded]
-    verdict: null
+    verdict: contradicted             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 
   - id: c16-1820s-environment
     source: brodie_1945
@@ -351,7 +352,7 @@ claims:
       Language dating only; the thematic side (BOM-63) is reported beside it. Neither reading
       says how the text was produced.
     evidence: [dating:grammar, dating:transformer, blind:dating]
-    verdict: null
+    verdict: contradicted             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 
   - id: c17-holmes-narrators-cluster
     source: holmes_1992
@@ -367,5 +368,5 @@ claims:
       Narrators are separable under 6.3, or Joseph Smith's sample is not closer than other
       candidates.
     evidence: [file:data/benchmark/replication_holmes.json, blind:scribes, blind:unblinded]
-    verdict: null
+    verdict: supported             # 2026-11-10, owner-approved; reasoning in docs/claims-verdicts.md
 

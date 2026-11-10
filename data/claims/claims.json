@@ -2,13 +2,16 @@
  "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "65ddb601ffec8cd473c88dcf9947d4326d445198",
+ "git_commit": "4ecf4d741c3a8593d1caadfabcb5a81154357348",
  "register_version": 0.1,
  "frozen": false,
  "claims": 17,
  "by_status": {
-  "pending": 13,
-  "untestable": 4
+  "mixed": 4,
+  "contradicted": 6,
+  "untestable": 4,
+  "not_addressed": 1,
+  "supported": 2
  },
  "rows": [
   {
@@ -80,7 +83,7 @@
      }
     }
    ],
-   "status": "pending"
+   "status": "mixed"
   },
   {
    "id": "c02-view-hebrews-themes",
@@ -153,7 +156,7 @@
      }
     }
    ],
-   "status": "pending"
+   "status": "contradicted"
   },
   {
    "id": "c03-oliver-cowdery-link",
@@ -199,7 +202,7 @@
      "status": "present"
     }
    ],
-   "status": "pending"
+   "status": "not_addressed"
   },
   {
    "id": "c05-emode-syntax-not-imitable",
@@ -303,7 +306,7 @@
      "status": "present"
     }
    ],
-   "status": "pending"
+   "status": "mixed"
   },
   {
    "id": "c06-tight-control",
@@ -345,7 +348,7 @@
      "status": "present"
     }
    ],
-   "status": "pending"
+   "status": "contradicted"
   },
   {
    "id": "c08-wordprint-distinct-narrators",
@@ -423,7 +426,7 @@
      "status": "present"
     }
    ],
-   "status": "pending"
+   "status": "contradicted"
   },
   {
    "id": "c09-open-set-none-of-the-above",
@@ -658,7 +661,7 @@
      "status": "present"
     }
    ],
-   "status": "pending"
+   "status": "supported"
   },
   {
    "id": "c10-pseudo-biblical-genre",
@@ -753,7 +756,7 @@
      "status": "present"
     }
    ],
-   "status": "pending"
+   "status": "mixed"
   },
   {
    "id": "c11-dna-studies",
@@ -831,7 +834,7 @@
      "status": "present"
     }
    ],
-   "status": "pending"
+   "status": "contradicted"
   },
   {
    "id": "c14-first-book-of-napoleon",
@@ -893,7 +896,7 @@
      }
     }
    ],
-   "status": "pending"
+   "status": "mixed"
   },
   {
    "id": "c15-cowdery-or-rigdon-author",
@@ -917,7 +920,7 @@
      "status": "present"
     }
    ],
-   "status": "pending"
+   "status": "contradicted"
   },
   {
    "id": "c16-1820s-environment",
@@ -954,7 +957,7 @@
      "status": "present"
     }
    ],
-   "status": "pending"
+   "status": "contradicted"
   },
   {
    "id": "c17-holmes-narrators-cluster",
@@ -983,7 +986,7 @@
      "status": "present"
     }
    ],
-   "status": "pending"
+   "status": "supported"
   }
  ],
  "note": "The register takes no side; untestable is not disproved."
