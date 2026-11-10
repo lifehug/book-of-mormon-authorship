@@ -18,7 +18,7 @@ Usage::
 
     python scripts/pod_jobs.py --name <name> --issue <n> --files <list> [--extra <path> ...] \\
         --jobs "<cmd>" ["<cmd>" ...] --fetch <path> [<path> ...] [--cap 25 --disk 100] \
-        [--b2-push <dir under data/corpus> ...]
+        [--b2-push <dir under data/corpus> ...] [--b2-pull <dir> ...] [--hf-token]
 
 ``--b2-push``: after the results are home, those folders (fine-tuned weights) go from the pod
 straight to the private B2 backup, checked there, before the pod is cleaned (owner, 2026-11-09:
@@ -167,6 +167,21 @@ def step(s: dict, a: argparse.Namespace) -> bool:
             sp.log(f"checksums failed: {out[-300:]}; re-uploading")
             return True
         event(s, f"upload verified ({len(names)} files, SHA-256).", issue)
+        if a.b2_pull and not s.get("pulled"):
+            if not sp.b2_pull(a.b2_pull):
+                return True
+            s["pulled"] = True
+            event(s, "pulled from B2 and checked: " + ", ".join(f"`{r}`" for r in a.b2_pull),
+                  issue)  # fmt: skip
+        if a.hf_token:  # for the jobs only; removed and checked once they finish
+            import subprocess
+
+            tok = (Path.home() / ".config/huggingface/token").read_text()
+            p = subprocess.run(["ssh", "-o", "BatchMode=yes", sp.SSH,
+                                "umask 077 && cat > /root/.hf_token"],
+                               input=tok, text=True, capture_output=True, timeout=60)  # fmt: skip
+            if p.returncode != 0:
+                return True
         s["phase"], s["restarts"] = "run", s.get("restarts", 0)
     elif ph == "run":
         script = job_script(a.jobs)
@@ -209,6 +224,10 @@ def step(s: dict, a: argparse.Namespace) -> bool:
         sp.save(s)
         time.sleep(120)
     elif ph == "fetch":
+        if a.hf_token:
+            sp.remote("rm -f /root/.hf_token")
+            if "GONE" not in sp.remote("test -e /root/.hf_token && echo PRESENT || echo GONE")[1]:
+                return True
         s["fetch_tries"] = s.get("fetch_tries", 0) + 1
         if s["fetch_tries"] > 20:  # a path that never appears must not keep the pod billing
             event(s, "fetch failed 20 times; stopping the pod for the owner.", issue)
@@ -274,6 +293,12 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--jobs", nargs="+", required=True)
     ap.add_argument("--fetch", nargs="+", required=True)
     ap.add_argument("--b2-push", nargs="*", default=[], help="pod folders to copy to B2")
+    ap.add_argument("--b2-pull", nargs="*", default=[], help="B2 folders to copy onto the pod")
+    ap.add_argument(
+        "--hf-token",
+        action="store_true",
+        help="the Hugging Face token on the pod while the jobs run (/root/.hf_token)",
+    )
     ap.add_argument("--cap", type=float, default=25.0)
     ap.add_argument("--disk", type=int, default=100, help="pod volume, GB")
     a = ap.parse_args(argv)

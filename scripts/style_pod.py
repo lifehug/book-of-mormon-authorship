@@ -156,6 +156,37 @@ def b2_prefetch(names: list[str]) -> None:
     raise RuntimeError("B2 key could not be confirmed removed from the pod")
 
 
+def b2_pull(rels: list[str]) -> bool:
+    """Copy folders under ``data/corpus/`` from the private B2 backup onto the pod (the models to
+    publish, 2026-11-09). The key is on the pod for the download only, removed and checked; each
+    folder is checked against the bucket (``rclone check``). True when all match."""
+    import subprocess
+
+    rels = [r for r in rels if r.startswith(B2_PREFIX)]
+    creds = (Path.home() / ".config/backblaze/credentials").read_text()
+    p = subprocess.run(["ssh", "-o", "BatchMode=yes", SSH, "umask 077 && cat > /root/.b2"],
+                       input=creds, text=True, capture_output=True, timeout=60)  # fmt: skip
+    ok = False
+    if p.returncode == 0:
+        cmds = " && ".join(
+            f"rclone copy :b2:$B2_BUCKET/{r[len(B2_PREFIX) :]} {R}/{r} --transfers 16 && "
+            f"rclone check :b2:$B2_BUCKET/{r[len(B2_PREFIX) :]} {R}/{r} --one-way"
+            for r in rels
+        )
+        rc, out = remote(
+            "(command -v rclone > /dev/null || (apt-get install -y -qq unzip > /dev/null && "
+            "curl -s https://rclone.org/install.sh | bash > /dev/null)); set -a; . /root/.b2; "
+            "set +a; export RCLONE_B2_ACCOUNT=$B2_KEY_ID RCLONE_B2_KEY=$B2_APP_KEY; "
+            f"({cmds}) && echo PULLOK; rm -f /root/.b2", 14400)  # fmt: skip
+        ok = "PULLOK" in out
+        log(f"B2 pull of {', '.join(rels)}: {'verified' if ok else 'FAILED ' + out[-300:]}")
+    for _ in range(3):
+        remote("rm -f /root/.b2")
+        if "GONE" in remote("test -e /root/.b2 && echo PRESENT || echo GONE")[1]:
+            return ok
+    raise RuntimeError("B2 key could not be confirmed removed from the pod")
+
+
 def b2_push(rels: list[str]) -> bool:
     """Copy folders under ``data/corpus/`` from the pod straight to the private B2 backup (fine-
     tuned weights, owner 2026-11-09: kept and published, and the pod's link is fast where the
