@@ -1,8 +1,8 @@
 {
- "config_sha256": "8397b899a1f4f917c4a5e286e3f1bc63a33100433c67ca0b4e1162e50444cbef",
+ "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "38ea70fcfc41c232646684726a11317eeef66db9",
+ "git_commit": "971a84c1e8327d5f0eaf11124aa5aecb623d7090",
  "register_version": 0.1,
  "frozen": false,
  "claims": 17,
@@ -224,7 +224,11 @@
     {
      "name": "dating:transformer",
      "file": "data/dating/transformer_validation.json",
-     "status": "pending"
+     "status": "present",
+     "values": {
+      "held_out_mae": 10.12992189483648,
+      "kjv_imitation_shift_years": 0.7598000689574747
+     }
     },
     {
      "name": "imitation",
@@ -243,6 +247,30 @@
        "forward": 0.23529411764705882,
        "weight": 0.0
       },
+      "alm_mid": {
+       "forward": 0.35294117647058826,
+       "weight": 0.0
+      },
+      "alm_mid_v1": {
+       "forward": 0.0,
+       "weight": 0.0
+      },
+      "alm_mid_v3": {
+       "forward": 0.29411764705882354,
+       "weight": 0.0
+      },
+      "alm_pilot": {
+       "forward": 0.29411764705882354,
+       "weight": 0.0
+      },
+      "alm_pilot_v1": {
+       "forward": 0.0,
+       "weight": 0.0
+      },
+      "alm_pilot_v3": {
+       "forward": 0.23529411764705882,
+       "weight": 0.0
+      },
       "burrows_delta": {
        "forward": 0.7222222222222222,
        "weight": 0.5
@@ -258,6 +286,10 @@
       "general_imposters": {
        "forward": 0.6111111111111112,
        "weight": 0.5
+      },
+      "style_embed": {
+       "forward": 0.3888888888888889,
+       "weight": 0.0
       }
      }
     },
@@ -434,9 +466,44 @@
        "open_set_fpr": 0.4727272727272727,
        "passes": false
       },
+      "alm_base_v1_lrsel": {
+       "closed_set": 0.990909090909091,
+       "open_set_fpr": 0.38181818181818183,
+       "passes": false
+      },
       "alm_base_v2": {
        "closed_set": 0.9090909090909091,
        "open_set_fpr": 0.13636363636363635,
+       "passes": false
+      },
+      "alm_base_v2_lrsel": {
+       "closed_set": 0.7727272727272727,
+       "open_set_fpr": 0.4,
+       "passes": false
+      },
+      "alm_base_v2_seed1": {
+       "closed_set": 0.5818181818181818,
+       "open_set_fpr": 0.5272727272727272,
+       "passes": false
+      },
+      "alm_base_v2_seed2": {
+       "closed_set": 0.6272727272727273,
+       "open_set_fpr": 0.7272727272727273,
+       "passes": false
+      },
+      "alm_base_v2_seed3": {
+       "closed_set": 0.509090909090909,
+       "open_set_fpr": 0.8181818181818181,
+       "passes": false
+      },
+      "alm_base_v2_seed4": {
+       "closed_set": 0.6727272727272727,
+       "open_set_fpr": 0.9818181818181818,
+       "passes": false
+      },
+      "alm_base_v2_seed5": {
+       "closed_set": 0.7545454545454545,
+       "open_set_fpr": 0.6818181818181819,
        "passes": false
       },
       "alm_base_v3": {
@@ -454,6 +521,61 @@
        "open_set_fpr": 0.8545454545454545,
        "passes": false
       },
+      "alm_mid": {
+       "closed_set": 0.9818181818181818,
+       "open_set_fpr": 0.21818181818181817,
+       "passes": false
+      },
+      "alm_mid_v1": {
+       "closed_set": 0.6272727272727273,
+       "open_set_fpr": 0.8181818181818181,
+       "passes": false
+      },
+      "alm_mid_v1_lrsel": {
+       "closed_set": 0.9818181818181818,
+       "open_set_fpr": 0.21818181818181817,
+       "passes": false
+      },
+      "alm_mid_v2": {
+       "closed_set": 0.7636363636363637,
+       "open_set_fpr": 0.3909090909090909,
+       "passes": false
+      },
+      "alm_mid_v2_lrsel": {
+       "closed_set": 0.5636363636363636,
+       "open_set_fpr": 0.7545454545454546,
+       "passes": false
+      },
+      "alm_mid_v2_seed1": {
+       "closed_set": 0.6454545454545455,
+       "open_set_fpr": 0.9272727272727272,
+       "passes": false
+      },
+      "alm_mid_v2_seed2": {
+       "closed_set": 0.42727272727272725,
+       "open_set_fpr": 0.9272727272727272,
+       "passes": false
+      },
+      "alm_mid_v2_seed3": {
+       "closed_set": 0.7818181818181819,
+       "open_set_fpr": 0.3181818181818182,
+       "passes": false
+      },
+      "alm_mid_v2_seed4": {
+       "closed_set": 0.5636363636363636,
+       "open_set_fpr": 0.7818181818181819,
+       "passes": false
+      },
+      "alm_mid_v2_seed5": {
+       "closed_set": 0.4,
+       "open_set_fpr": 0.9090909090909091,
+       "passes": false
+      },
+      "alm_mid_v3": {
+       "closed_set": 0.8444444444444444,
+       "open_set_fpr": 0.7055555555555555,
+       "passes": false
+      },
       "alm_pilot": {
        "closed_set": 0.9363636363636364,
        "open_set_fpr": 0.4727272727272728,
@@ -464,9 +586,44 @@
        "open_set_fpr": 0.45454545454545453,
        "passes": false
       },
+      "alm_pilot_v1_lrsel": {
+       "closed_set": 0.9363636363636364,
+       "open_set_fpr": 0.4727272727272728,
+       "passes": false
+      },
       "alm_pilot_v2": {
        "closed_set": 0.9,
        "open_set_fpr": 0.2818181818181818,
+       "passes": false
+      },
+      "alm_pilot_v2_lrsel": {
+       "closed_set": 0.7636363636363637,
+       "open_set_fpr": 0.5909090909090908,
+       "passes": false
+      },
+      "alm_pilot_v2_seed1": {
+       "closed_set": 0.9272727272727272,
+       "open_set_fpr": 0.09090909090909091,
+       "passes": false
+      },
+      "alm_pilot_v2_seed2": {
+       "closed_set": 0.6636363636363637,
+       "open_set_fpr": 0.9272727272727272,
+       "passes": false
+      },
+      "alm_pilot_v2_seed3": {
+       "closed_set": 0.7363636363636363,
+       "open_set_fpr": 0.7909090909090909,
+       "passes": false
+      },
+      "alm_pilot_v2_seed4": {
+       "closed_set": 0.8454545454545455,
+       "open_set_fpr": 0.32727272727272727,
+       "passes": false
+      },
+      "alm_pilot_v2_seed5": {
+       "closed_set": 0.8090909090909091,
+       "open_set_fpr": 0.35454545454545455,
        "passes": false
       },
       "alm_pilot_v3": {
@@ -521,6 +678,30 @@
        "forward": 0.23529411764705882,
        "weight": 0.0
       },
+      "alm_mid": {
+       "forward": 0.35294117647058826,
+       "weight": 0.0
+      },
+      "alm_mid_v1": {
+       "forward": 0.0,
+       "weight": 0.0
+      },
+      "alm_mid_v3": {
+       "forward": 0.29411764705882354,
+       "weight": 0.0
+      },
+      "alm_pilot": {
+       "forward": 0.29411764705882354,
+       "weight": 0.0
+      },
+      "alm_pilot_v1": {
+       "forward": 0.0,
+       "weight": 0.0
+      },
+      "alm_pilot_v3": {
+       "forward": 0.23529411764705882,
+       "weight": 0.0
+      },
       "burrows_delta": {
        "forward": 0.7222222222222222,
        "weight": 0.5
@@ -536,6 +717,10 @@
       "general_imposters": {
        "forward": 0.6111111111111112,
        "weight": 0.5
+      },
+      "style_embed": {
+       "forward": 0.3888888888888889,
+       "weight": 0.0
       }
      }
     },
@@ -744,7 +929,11 @@
     {
      "name": "dating:transformer",
      "file": "data/dating/transformer_validation.json",
-     "status": "pending"
+     "status": "present",
+     "values": {
+      "held_out_mae": 10.12992189483648,
+      "kjv_imitation_shift_years": 0.7598000689574747
+     }
     },
     {
      "name": "blind:dating",
