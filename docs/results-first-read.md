@@ -118,6 +118,19 @@ not moved by imitation in validation (+0.8 years), and it still dates the text e
 1780-1830 pseudo-biblical controls (1805). The registered H3 decision is the grammar model's and is
 computed in BOM-29's report; this table is the first read only.
 
+## 7. Narrators, scribe and dictation order (6.3; `data/benchmark/scribes.json`)
+
+| Grouping of the chunks | Accuracy telling the groups apart | By chance | p |
+| --- | --- | --- | --- |
+| Narrator (Nephi, Jacob, Mormon, Moroni; 121 chunks) | 0.744 | 0.277 | 0.001 |
+| Dictation order (first or last dictated; 124 chunks) | 0.758 | 0.502 | 0.001 |
+| Scribe | not testable: every scribed chunk is Cowdery's (11) | | |
+
+The narrators differ in style well above chance, but below the 0.96 the same method reaches on
+real authors in the benchmark, so the registered verdict is **not separable as different
+authors**; and the order of dictation separates the chunks about as well, so the differences may
+follow when a passage was dictated as much as who narrates it.
+
 ## Plain summary
 
 The checks on known text all passed: every method found real authors among the decoys and none
@@ -129,5 +142,8 @@ Smith or Oliver Cowdery, through samples too small to trust and written in the s
 register as the text itself. The language-based dating places the text's language well before
 1780-1830, by every model, including the one that imitation did not fool in validation.
 
-Still to come: the scribe comparison (6.3) and the claims table (running), BOM-29's formal H3
-report, and the paper's discussion, which must weigh each of these caveats.
+The narrator voices differ above chance but not as much as different real authors do, and the
+order of dictation explains the differences about as well as the narrator.
+
+Still to come: BOM-29's formal H3 report, the claims table's reading (`data/claims/claims.json`),
+and the paper's discussion, which must weigh each of these caveats.
