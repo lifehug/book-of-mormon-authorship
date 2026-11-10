@@ -104,7 +104,7 @@ Judged on known answers only, never on the Book of Mormon:
 | Ranking the true author first | candidate models, 297M | 99.1% | 590M 98.2% |
 | Fewest false matches | candidate models, 590M | 21.8% | 297M 38.2% |
 | Recognising candidates' own held-out text in the blind run (decoys called "match") | candidate models, 125M | 20 of 22 (91%), at 47% false matches | 297M 15 of 22, 590M 11 of 22 |
-| Seeing through deliberate imitation | Burrows' and Cosine Delta | 72% | General Imposters 61% |
+| Seeing through deliberate imitation | no clear winner: the Deltas 72% pooled, but on one author (Snowden); the candidate models on the other two | | three authors only (4.2) |
 | Reproducible across machines and seeds | candidate models (primary), classical methods | identical reruns | V2 unstable |
 
 No method passes the registered bar, so every attribution in this paper is graded evidence: a
