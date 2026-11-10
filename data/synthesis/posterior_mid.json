@@ -1,0 +1,3222 @@
+{
+ "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "1710a20158878a96ecfe88a9328b69f1e6f8e38c",
+ "size": "mid",
+ "encoder": "mid",
+ "families": [
+  "authorial",
+  "classical",
+  "embedding"
+ ],
+ "hypotheses": {
+  "primary": {
+   "candidates": [
+    "Ethan Smith",
+    "Gilbert J. Hunt",
+    "Solomon Spalding"
+   ],
+   "weights": {
+    "classical": 0.4166666666666667,
+    "embedding": 0.0,
+    "authorial": 0.0
+   },
+   "main": {
+    "discovery": {
+     "posterior": {
+      "Ethan Smith": 0.11933874075062668,
+      "Gilbert J. Hunt": 0.12586898975071162,
+      "Solomon Spalding": 0.12438761055313448,
+      "not in set": 0.6304046589455272
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 0.22636481736844036,
+       "Gilbert J. Hunt": 0.23875156297156006,
+       "Solomon Spalding": 0.2359416445041473,
+       "not in set": 0.2989419751558523
+      },
+      "0.35": {
+       "Ethan Smith": 0.16830935760099375,
+       "Gilbert J. Hunt": 0.1775192923402545,
+       "Solomon Spalding": 0.17543002962858656,
+       "not in set": 0.47874132043016526
+      },
+      "0.5": {
+       "Ethan Smith": 0.11933874075062668,
+       "Gilbert J. Hunt": 0.12586898975071162,
+       "Solomon Spalding": 0.12438761055313448,
+       "not in set": 0.6304046589455272
+      },
+      "0.65": {
+       "Ethan Smith": 0.07747523923587242,
+       "Gilbert J. Hunt": 0.08171470581955799,
+       "Solomon Spalding": 0.08075298788111283,
+       "not in set": 0.7600570670634568
+      },
+      "0.8": {
+       "Ethan Smith": 0.041276343330769634,
+       "Gilbert J. Hunt": 0.04353499628845563,
+       "Solomon Spalding": 0.04302262355871458,
+       "not in set": 0.8721660368220602
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 0.06709252096572918,
+       "Gilbert J. Hunt": 0.07624363962545104,
+       "Solomon Spalding": 0.07410776726935381,
+       "not in set": 0.7825560721394659
+      },
+      "embedding": {
+       "Ethan Smith": 0.06442204923760399,
+       "Gilbert J. Hunt": 0.07143391098901858,
+       "Solomon Spalding": 0.06442204923760399,
+       "not in set": 0.7997219905357735
+      },
+      "authorial": {
+       "Ethan Smith": 0.019671785507991733,
+       "Gilbert J. Hunt": 0.06479488167960384,
+       "Solomon Spalding": 0.023745723116777865,
+       "not in set": 0.8917876096956264
+      }
+     }
+    },
+    "confirmation": {
+     "posterior": {
+      "Ethan Smith": 0.12231859022946398,
+      "Gilbert J. Hunt": 0.1262020318469908,
+      "Solomon Spalding": 0.12105084916106254,
+      "not in set": 0.6304285287624827
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 0.23202495213965513,
+       "Gilbert J. Hunt": 0.2393914150277041,
+       "Solomon Spalding": 0.22962018635409873,
+       "not in set": 0.29896344647854206
+      },
+      "0.35": {
+       "Ethan Smith": 0.1725146678921782,
+       "Gilbert J. Hunt": 0.17799176372584924,
+       "Solomon Spalding": 0.17072668187158835,
+       "not in set": 0.4787668865103842
+      },
+      "0.5": {
+       "Ethan Smith": 0.12231859022946398,
+       "Gilbert J. Hunt": 0.1262020318469908,
+       "Solomon Spalding": 0.12105084916106254,
+       "not in set": 0.6304285287624827
+      },
+      "0.65": {
+       "Ethan Smith": 0.07940871596415147,
+       "Gilbert J. Hunt": 0.08192982998117086,
+       "Solomon Spalding": 0.07858570377746808,
+       "not in set": 0.7600757502772095
+      },
+      "0.8": {
+       "Ethan Smith": 0.04230595234506977,
+       "Gilbert J. Hunt": 0.04364910628183235,
+       "Solomon Spalding": 0.04186748266417283,
+       "not in set": 0.8721774587089249
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 0.0711861559763505,
+       "Gilbert J. Hunt": 0.0767313526202921,
+       "Solomon Spalding": 0.06942828503702286,
+       "not in set": 0.7826542063663344
+      },
+      "embedding": {
+       "Ethan Smith": 0.06509583726333303,
+       "Gilbert J. Hunt": 0.05596643581782383,
+       "Solomon Spalding": 0.06552492051580071,
+       "not in set": 0.8134128064030425
+      },
+      "authorial": {
+       "Ethan Smith": 0.0196972405285597,
+       "Gilbert J. Hunt": 0.06279625750334386,
+       "Solomon Spalding": 0.024564931340055624,
+       "not in set": 0.8929415706280409
+      }
+     }
+    },
+    "both": {
+     "posterior": {
+      "Ethan Smith": 0.08200087483748303,
+      "Gilbert J. Hunt": 0.08923385623166889,
+      "Solomon Spalding": 0.0845842559533927,
+      "not in set": 0.7441810129774554
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 0.18557934171805882,
+       "Gilbert J. Hunt": 0.201948580807913,
+       "Solomon Spalding": 0.19142589113411726,
+       "not in set": 0.42104618633991087
+      },
+      "0.35": {
+       "Ethan Smith": 0.12490007311293241,
+       "Gilbert J. Hunt": 0.13591702758748805,
+       "Solomon Spalding": 0.1288349639405628,
+       "not in set": 0.6103479353590168
+      },
+      "0.5": {
+       "Ethan Smith": 0.08200087483748303,
+       "Gilbert J. Hunt": 0.08923385623166889,
+       "Solomon Spalding": 0.0845842559533927,
+       "not in set": 0.7441810129774554
+      },
+      "0.65": {
+       "Ethan Smith": 0.050065574733939064,
+       "Gilbert J. Hunt": 0.05448166628488275,
+       "Solomon Spalding": 0.051642856202961857,
+       "not in set": 0.8438099027782163
+      },
+      "0.8": {
+       "Ethan Smith": 0.025367295609021782,
+       "Gilbert J. Hunt": 0.027604847068375207,
+       "Solomon Spalding": 0.02616647479543809,
+       "not in set": 0.920861382527165
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 0.021716420791421647,
+       "Gilbert J. Hunt": 0.02660082277651877,
+       "Solomon Spalding": 0.023394769067853358,
+       "not in set": 0.9282879873642063
+      },
+      "embedding": {
+       "Ethan Smith": 0.01829292770313962,
+       "Gilbert J. Hunt": 0.017439239563004034,
+       "Solomon Spalding": 0.01841350667171893,
+       "not in set": 0.9458543260621374
+      },
+      "authorial": {
+       "Ethan Smith": 0.001432575873335873,
+       "Gilbert J. Hunt": 0.015043293433200822,
+       "Solomon Spalding": 0.0021565990927096424,
+       "not in set": 0.9813675316007536
+      }
+     }
+    }
+   },
+   "equal_weights": {
+    "discovery": {
+     "posterior": {
+      "Ethan Smith": 0.0013590490682446525,
+      "Gilbert J. Hunt": 0.0056406799682301115,
+      "Solomon Spalding": 0.0018120341349207286,
+      "not in set": 0.9911882368286045
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 0.005296189958113743,
+       "Gilbert J. Hunt": 0.02198162914254381,
+       "Solomon Spalding": 0.007061464676563745,
+       "not in set": 0.9656607162227786
+      },
+      "0.35": {
+       "Ethan Smith": 0.0025050279441841744,
+       "Gilbert J. Hunt": 0.010397020442291103,
+       "Solomon Spalding": 0.0033399795856192635,
+       "not in set": 0.9837579720279055
+      },
+      "0.5": {
+       "Ethan Smith": 0.0013590490682446525,
+       "Gilbert J. Hunt": 0.0056406799682301115,
+       "Solomon Spalding": 0.0018120341349207286,
+       "not in set": 0.9911882368286045
+      },
+      "0.65": {
+       "Ethan Smith": 0.0007347839948446751,
+       "Gilbert J. Hunt": 0.0030496922131367384,
+       "Solomon Spalding": 0.0009796950761841684,
+       "not in set": 0.9952358287158345
+      },
+      "0.8": {
+       "Ethan Smith": 0.0003420226338980376,
+       "Gilbert J. Hunt": 0.0014195515561493065,
+       "Solomon Spalding": 0.00045602230413889115,
+       "not in set": 0.9977824035058137
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 0.06709252096572918,
+       "Gilbert J. Hunt": 0.07624363962545104,
+       "Solomon Spalding": 0.07410776726935381,
+       "not in set": 0.7825560721394659
+      },
+      "embedding": {
+       "Ethan Smith": 0.06442204923760399,
+       "Gilbert J. Hunt": 0.07143391098901858,
+       "Solomon Spalding": 0.06442204923760399,
+       "not in set": 0.7997219905357735
+      },
+      "authorial": {
+       "Ethan Smith": 0.019671785507991733,
+       "Gilbert J. Hunt": 0.06479488167960384,
+       "Solomon Spalding": 0.023745723116777865,
+       "not in set": 0.8917876096956264
+      }
+     }
+    },
+    "confirmation": {
+     "posterior": {
+      "Ethan Smith": 0.001434348237226618,
+      "Gilbert J. Hunt": 0.004237744046268885,
+      "Solomon Spalding": 0.0017561392592893525,
+      "not in set": 0.9925717684572152
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 0.005612324021922545,
+       "Gilbert J. Hunt": 0.016581463338094828,
+       "Solomon Spalding": 0.006871429332815297,
+       "not in set": 0.9709347833071673
+      },
+      "0.35": {
+       "Ethan Smith": 0.0026469363922204873,
+       "Gilbert J. Hunt": 0.007820303776908113,
+       "Solomon Spalding": 0.0032407673356980612,
+       "not in set": 0.9862919924951732
+      },
+      "0.5": {
+       "Ethan Smith": 0.001434348237226618,
+       "Gilbert J. Hunt": 0.004237744046268885,
+       "Solomon Spalding": 0.0017561392592893525,
+       "not in set": 0.9925717684572152
+      },
+      "0.65": {
+       "Ethan Smith": 0.0007749983742153875,
+       "Gilbert J. Hunt": 0.0022897122616119853,
+       "Solomon Spalding": 0.0009488665552213683,
+       "not in set": 0.9959864228089513
+      },
+      "0.8": {
+       "Ethan Smith": 0.00036059600225527016,
+       "Gilbert J. Hunt": 0.0010653713805374866,
+       "Solomon Spalding": 0.0004414944571115481,
+       "not in set": 0.9981325381600957
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 0.0711861559763505,
+       "Gilbert J. Hunt": 0.0767313526202921,
+       "Solomon Spalding": 0.06942828503702286,
+       "not in set": 0.7826542063663344
+      },
+      "embedding": {
+       "Ethan Smith": 0.06509583726333303,
+       "Gilbert J. Hunt": 0.05596643581782383,
+       "Solomon Spalding": 0.06552492051580071,
+       "not in set": 0.8134128064030425
+      },
+      "authorial": {
+       "Ethan Smith": 0.0196972405285597,
+       "Gilbert J. Hunt": 0.06279625750334386,
+       "Solomon Spalding": 0.024564931340055624,
+       "not in set": 0.8929415706280409
+      }
+     }
+    },
+    "both": {
+     "posterior": {
+      "Ethan Smith": 5.943667254888256e-06,
+      "Gilbert J. Hunt": 7.288378689687779e-05,
+      "Solomon Spalding": 9.702643477596785e-06,
+      "not in set": 0.9999114699023707
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 2.376835637482193e-05,
+       "Gilbert J. Hunt": 0.00029145773924118114,
+       "Solomon Spalding": 3.880026893559634e-05,
+       "not in set": 0.9996459736354484
+      },
+      "0.35": {
+       "Ethan Smith": 1.1037401637154317e-05,
+       "Gilbert J. Hunt": 0.0001353453338351003,
+       "Solomon Spalding": 1.8017827784063057e-05,
+       "not in set": 0.9998355994367438
+      },
+      "0.5": {
+       "Ethan Smith": 5.943667254888256e-06,
+       "Gilbert J. Hunt": 7.288378689687779e-05,
+       "Solomon Spalding": 9.702643477596785e-06,
+       "not in set": 0.9999114699023707
+      },
+      "0.65": {
+       "Ethan Smith": 3.2005669894820082e-06,
+       "Gilbert J. Hunt": 3.9246719644128865e-05,
+       "Solomon Spalding": 5.224713816132531e-06,
+       "not in set": 0.9999523279995504
+      },
+      "0.8": {
+       "Ethan Smith": 1.486015481543806e-06,
+       "Gilbert J. Hunt": 1.8222156631198594e-05,
+       "Solomon Spalding": 2.425821938088949e-06,
+       "not in set": 0.9999778660059491
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 0.021716420791421647,
+       "Gilbert J. Hunt": 0.02660082277651877,
+       "Solomon Spalding": 0.023394769067853358,
+       "not in set": 0.9282879873642063
+      },
+      "embedding": {
+       "Ethan Smith": 0.01829292770313962,
+       "Gilbert J. Hunt": 0.017439239563004034,
+       "Solomon Spalding": 0.01841350667171893,
+       "not in set": 0.9458543260621374
+      },
+      "authorial": {
+       "Ethan Smith": 0.001432575873335873,
+       "Gilbert J. Hunt": 0.015043293433200822,
+       "Solomon Spalding": 0.0021565990927096424,
+       "not in set": 0.9813675316007536
+      }
+     }
+    }
+   },
+   "independent_chunks": {
+    "discovery": {
+     "posterior": {
+      "Ethan Smith": 1.3095055356915344e-06,
+      "Gilbert J. Hunt": 4.22793051610809e-06,
+      "Solomon Spalding": 3.2584583490401267e-06,
+      "not in set": 0.9999912041055993
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 5.237883927144435e-06,
+       "Gilbert J. Hunt": 1.6911275815043603e-05,
+       "Solomon Spalding": 1.3033489472569329e-05,
+       "not in set": 0.9999648173507852
+      },
+      "0.35": {
+       "Ethan Smith": 2.431920516927668e-06,
+       "Gilbert J. Hunt": 7.851811761023228e-06,
+       "Solomon Spalding": 6.051377024840301e-06,
+       "not in set": 0.9999836648906972
+      },
+      "0.5": {
+       "Ethan Smith": 1.3095055356915344e-06,
+       "Gilbert J. Hunt": 4.22793051610809e-06,
+       "Solomon Spalding": 3.2584583490401267e-06,
+       "not in set": 0.9999912041055993
+      },
+      "0.65": {
+       "Ethan Smith": 7.051212279132225e-07,
+       "Gilbert J. Hunt": 2.276587212344691e-06,
+       "Solomon Spalding": 1.7545616185317938e-06,
+       "not in set": 0.9999952637299413
+      },
+      "0.8": {
+       "Ethan Smith": 3.273785436132075e-07,
+       "Gilbert J. Hunt": 1.0569896019037167e-06,
+       "Solomon Spalding": 8.146199612433984e-07,
+       "not in set": 0.9999978010118932
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 3.5402712435057544e-14,
+       "Gilbert J. Hunt": 5.897741641118332e-13,
+       "Solomon Spalding": 3.1565170705830197e-13,
+       "not in set": 0.9999999999990592
+      },
+      "embedding": {
+       "Ethan Smith": 8.987673475637543e-15,
+       "Gilbert J. Hunt": 8.725391633640888e-14,
+       "Solomon Spalding": 8.987673475637543e-15,
+       "not in set": 0.9999999999998948
+      },
+      "authorial": {
+       "Ethan Smith": 3.787546459802533e-27,
+       "Gilbert J. Hunt": 9.283040067995674e-16,
+       "Solomon Spalding": 2.3805296123118545e-25,
+       "not in set": 0.9999999999999991
+      }
+     }
+    },
+    "confirmation": {
+     "posterior": {
+      "Ethan Smith": 4.439403039903895e-07,
+      "Gilbert J. Hunt": 9.697763234212267e-07,
+      "Solomon Spalding": 3.421439838004942e-07,
+      "not in set": 0.9999982441393889
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 1.7757518620433148e-06,
+       "Gilbert J. Hunt": 3.87908486028798e-06,
+       "Solomon Spalding": 1.3685687261542222e-06,
+       "not in set": 0.9999929765945514
+      },
+      "0.35": {
+       "Ethan Smith": 8.244593237230253e-07,
+       "Gilbert J. Hunt": 1.8010104615051467e-06,
+       "Solomon Spalding": 6.354092993236402e-07,
+       "not in set": 0.9999967391209154
+      },
+      "0.5": {
+       "Ethan Smith": 4.439403039903895e-07,
+       "Gilbert J. Hunt": 9.697763234212267e-07,
+       "Solomon Spalding": 3.421439838004942e-07,
+       "not in set": 0.9999982441393889
+      },
+      "0.65": {
+       "Ethan Smith": 2.390449727931257e-07,
+       "Gilbert J. Hunt": 5.221876742523994e-07,
+       "Solomon Spalding": 1.842315251932867e-07,
+       "not in set": 0.9999990545358277
+      },
+      "0.8": {
+       "Ethan Smith": 1.1098522215353234e-07,
+       "Gilbert J. Hunt": 2.4244440012923607e-07,
+       "Solomon Spalding": 8.553610859223648e-08,
+       "not in set": 0.9999995610342691
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 2.639675654466354e-15,
+       "Gilbert J. Hunt": 1.7218026470919653e-14,
+       "Solomon Spalding": 1.4127748842089835e-15,
+       "not in set": 0.9999999999999787
+      },
+      "embedding": {
+       "Ethan Smith": 1.0763794638025549e-16,
+       "Gilbert J. Hunt": 2.4622164181622095e-18,
+       "Solomon Spalding": 1.2685206504476258e-16,
+       "not in set": 0.9999999999999998
+      },
+      "authorial": {
+       "Ethan Smith": 1.0976623599045574e-30,
+       "Gilbert J. Hunt": 4.252830831857668e-18,
+       "Solomon Spalding": 2.7429818327442033e-28,
+       "not in set": 1.0
+      }
+     }
+    },
+    "both": {
+     "posterior": {
+      "Ethan Smith": 1.7440452594570456e-12,
+      "Gilbert J. Hunt": 1.2300570526978166e-11,
+      "Solomon Spalding": 3.34462105327785e-12,
+      "not in set": 0.9999999999826108
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 6.976181037464276e-12,
+       "Gilbert J. Hunt": 4.920228210534607e-11,
+       "Solomon Spalding": 1.3378484212413524e-11,
+       "not in set": 0.999999999930443
+      },
+      "0.35": {
+       "Ethan Smith": 3.2389411960862287e-12,
+       "Gilbert J. Hunt": 2.2843916692618907e-11,
+       "Solomon Spalding": 6.2114390988519815e-12,
+       "not in set": 0.9999999999677056
+      },
+      "0.5": {
+       "Ethan Smith": 1.7440452594570456e-12,
+       "Gilbert J. Hunt": 1.2300570526978166e-11,
+       "Solomon Spalding": 3.34462105327785e-12,
+       "not in set": 0.9999999999826108
+      },
+      "0.65": {
+       "Ethan Smith": 9.39101293561333e-13,
+       "Gilbert J. Hunt": 6.623384129964494e-12,
+       "Solomon Spalding": 1.8009497979333005e-12,
+       "not in set": 0.9999999999906366
+      },
+      "0.8": {
+       "Ethan Smith": 4.360113148699461e-13,
+       "Gilbert J. Hunt": 3.0751426317846356e-12,
+       "Solomon Spalding": 8.361552633303644e-13,
+       "not in set": 0.9999999999956526
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 2.8035503435095304e-28,
+       "Gilbert J. Hunt": 3.046424150865583e-26,
+       "Solomon Spalding": 1.3378344116702467e-27,
+       "not in set": 1.0
+      },
+      "embedding": {
+       "Ethan Smith": 2.9022441469620135e-30,
+       "Gilbert J. Hunt": 6.445140760574398e-31,
+       "Solomon Spalding": 3.420314820998336e-30,
+       "not in set": 1.0
+      },
+      "authorial": {
+       "Ethan Smith": 1.2472341555944892e-56,
+       "Gilbert J. Hunt": 1.1843759704362783e-32,
+       "Solomon Spalding": 1.958924843664275e-52,
+       "not in set": 1.0
+      }
+     }
+    }
+   },
+   "drop_one": {
+    "classical": {
+     "discovery": {
+      "posterior": {
+       "Ethan Smith": 0.16666666666666669,
+       "Gilbert J. Hunt": 0.16666666666666669,
+       "Solomon Spalding": 0.16666666666666669,
+       "not in set": 0.5
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.26666666666666666,
+        "Gilbert J. Hunt": 0.26666666666666666,
+        "Solomon Spalding": 0.26666666666666666,
+        "not in set": 0.20000000000000004
+       },
+       "0.35": {
+        "Ethan Smith": 0.21666666666666667,
+        "Gilbert J. Hunt": 0.21666666666666667,
+        "Solomon Spalding": 0.21666666666666667,
+        "not in set": 0.3499999999999999
+       },
+       "0.5": {
+        "Ethan Smith": 0.16666666666666669,
+        "Gilbert J. Hunt": 0.16666666666666669,
+        "Solomon Spalding": 0.16666666666666669,
+        "not in set": 0.5
+       },
+       "0.65": {
+        "Ethan Smith": 0.11666666666666665,
+        "Gilbert J. Hunt": 0.11666666666666665,
+        "Solomon Spalding": 0.11666666666666665,
+        "not in set": 0.65
+       },
+       "0.8": {
+        "Ethan Smith": 0.06666666666666664,
+        "Gilbert J. Hunt": 0.06666666666666664,
+        "Solomon Spalding": 0.06666666666666664,
+        "not in set": 0.8000000000000002
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.06709252096572918,
+        "Gilbert J. Hunt": 0.07624363962545104,
+        "Solomon Spalding": 0.07410776726935381,
+        "not in set": 0.7825560721394659
+       },
+       "embedding": {
+        "Ethan Smith": 0.06442204923760399,
+        "Gilbert J. Hunt": 0.07143391098901858,
+        "Solomon Spalding": 0.06442204923760399,
+        "not in set": 0.7997219905357735
+       },
+       "authorial": {
+        "Ethan Smith": 0.019671785507991733,
+        "Gilbert J. Hunt": 0.06479488167960384,
+        "Solomon Spalding": 0.023745723116777865,
+        "not in set": 0.8917876096956264
+       }
+      }
+     },
+     "confirmation": {
+      "posterior": {
+       "Ethan Smith": 0.16666666666666669,
+       "Gilbert J. Hunt": 0.16666666666666669,
+       "Solomon Spalding": 0.16666666666666669,
+       "not in set": 0.5
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.26666666666666666,
+        "Gilbert J. Hunt": 0.26666666666666666,
+        "Solomon Spalding": 0.26666666666666666,
+        "not in set": 0.20000000000000004
+       },
+       "0.35": {
+        "Ethan Smith": 0.21666666666666667,
+        "Gilbert J. Hunt": 0.21666666666666667,
+        "Solomon Spalding": 0.21666666666666667,
+        "not in set": 0.3499999999999999
+       },
+       "0.5": {
+        "Ethan Smith": 0.16666666666666669,
+        "Gilbert J. Hunt": 0.16666666666666669,
+        "Solomon Spalding": 0.16666666666666669,
+        "not in set": 0.5
+       },
+       "0.65": {
+        "Ethan Smith": 0.11666666666666665,
+        "Gilbert J. Hunt": 0.11666666666666665,
+        "Solomon Spalding": 0.11666666666666665,
+        "not in set": 0.65
+       },
+       "0.8": {
+        "Ethan Smith": 0.06666666666666664,
+        "Gilbert J. Hunt": 0.06666666666666664,
+        "Solomon Spalding": 0.06666666666666664,
+        "not in set": 0.8000000000000002
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.0711861559763505,
+        "Gilbert J. Hunt": 0.0767313526202921,
+        "Solomon Spalding": 0.06942828503702286,
+        "not in set": 0.7826542063663344
+       },
+       "embedding": {
+        "Ethan Smith": 0.06509583726333303,
+        "Gilbert J. Hunt": 0.05596643581782383,
+        "Solomon Spalding": 0.06552492051580071,
+        "not in set": 0.8134128064030425
+       },
+       "authorial": {
+        "Ethan Smith": 0.0196972405285597,
+        "Gilbert J. Hunt": 0.06279625750334386,
+        "Solomon Spalding": 0.024564931340055624,
+        "not in set": 0.8929415706280409
+       }
+      }
+     },
+     "both": {
+      "posterior": {
+       "Ethan Smith": 0.16666666666666669,
+       "Gilbert J. Hunt": 0.16666666666666669,
+       "Solomon Spalding": 0.16666666666666669,
+       "not in set": 0.5
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.26666666666666666,
+        "Gilbert J. Hunt": 0.26666666666666666,
+        "Solomon Spalding": 0.26666666666666666,
+        "not in set": 0.20000000000000004
+       },
+       "0.35": {
+        "Ethan Smith": 0.21666666666666667,
+        "Gilbert J. Hunt": 0.21666666666666667,
+        "Solomon Spalding": 0.21666666666666667,
+        "not in set": 0.3499999999999999
+       },
+       "0.5": {
+        "Ethan Smith": 0.16666666666666669,
+        "Gilbert J. Hunt": 0.16666666666666669,
+        "Solomon Spalding": 0.16666666666666669,
+        "not in set": 0.5
+       },
+       "0.65": {
+        "Ethan Smith": 0.11666666666666665,
+        "Gilbert J. Hunt": 0.11666666666666665,
+        "Solomon Spalding": 0.11666666666666665,
+        "not in set": 0.65
+       },
+       "0.8": {
+        "Ethan Smith": 0.06666666666666664,
+        "Gilbert J. Hunt": 0.06666666666666664,
+        "Solomon Spalding": 0.06666666666666664,
+        "not in set": 0.8000000000000002
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.021716420791421647,
+        "Gilbert J. Hunt": 0.02660082277651877,
+        "Solomon Spalding": 0.023394769067853358,
+        "not in set": 0.9282879873642063
+       },
+       "embedding": {
+        "Ethan Smith": 0.01829292770313962,
+        "Gilbert J. Hunt": 0.017439239563004034,
+        "Solomon Spalding": 0.01841350667171893,
+        "not in set": 0.9458543260621374
+       },
+       "authorial": {
+        "Ethan Smith": 0.001432575873335873,
+        "Gilbert J. Hunt": 0.015043293433200822,
+        "Solomon Spalding": 0.0021565990927096424,
+        "not in set": 0.9813675316007536
+       }
+      }
+     }
+    },
+    "embedding": {
+     "discovery": {
+      "posterior": {
+       "Ethan Smith": 0.11933874075062668,
+       "Gilbert J. Hunt": 0.12586898975071162,
+       "Solomon Spalding": 0.12438761055313448,
+       "not in set": 0.6304046589455272
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.22636481736844036,
+        "Gilbert J. Hunt": 0.23875156297156006,
+        "Solomon Spalding": 0.2359416445041473,
+        "not in set": 0.2989419751558523
+       },
+       "0.35": {
+        "Ethan Smith": 0.16830935760099375,
+        "Gilbert J. Hunt": 0.1775192923402545,
+        "Solomon Spalding": 0.17543002962858656,
+        "not in set": 0.47874132043016526
+       },
+       "0.5": {
+        "Ethan Smith": 0.11933874075062668,
+        "Gilbert J. Hunt": 0.12586898975071162,
+        "Solomon Spalding": 0.12438761055313448,
+        "not in set": 0.6304046589455272
+       },
+       "0.65": {
+        "Ethan Smith": 0.07747523923587242,
+        "Gilbert J. Hunt": 0.08171470581955799,
+        "Solomon Spalding": 0.08075298788111283,
+        "not in set": 0.7600570670634568
+       },
+       "0.8": {
+        "Ethan Smith": 0.041276343330769634,
+        "Gilbert J. Hunt": 0.04353499628845563,
+        "Solomon Spalding": 0.04302262355871458,
+        "not in set": 0.8721660368220602
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.06709252096572918,
+        "Gilbert J. Hunt": 0.07624363962545104,
+        "Solomon Spalding": 0.07410776726935381,
+        "not in set": 0.7825560721394659
+       },
+       "embedding": {
+        "Ethan Smith": 0.06442204923760399,
+        "Gilbert J. Hunt": 0.07143391098901858,
+        "Solomon Spalding": 0.06442204923760399,
+        "not in set": 0.7997219905357735
+       },
+       "authorial": {
+        "Ethan Smith": 0.019671785507991733,
+        "Gilbert J. Hunt": 0.06479488167960384,
+        "Solomon Spalding": 0.023745723116777865,
+        "not in set": 0.8917876096956264
+       }
+      }
+     },
+     "confirmation": {
+      "posterior": {
+       "Ethan Smith": 0.12231859022946398,
+       "Gilbert J. Hunt": 0.1262020318469908,
+       "Solomon Spalding": 0.12105084916106254,
+       "not in set": 0.6304285287624827
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.23202495213965513,
+        "Gilbert J. Hunt": 0.2393914150277041,
+        "Solomon Spalding": 0.22962018635409873,
+        "not in set": 0.29896344647854206
+       },
+       "0.35": {
+        "Ethan Smith": 0.1725146678921782,
+        "Gilbert J. Hunt": 0.17799176372584924,
+        "Solomon Spalding": 0.17072668187158835,
+        "not in set": 0.4787668865103842
+       },
+       "0.5": {
+        "Ethan Smith": 0.12231859022946398,
+        "Gilbert J. Hunt": 0.1262020318469908,
+        "Solomon Spalding": 0.12105084916106254,
+        "not in set": 0.6304285287624827
+       },
+       "0.65": {
+        "Ethan Smith": 0.07940871596415147,
+        "Gilbert J. Hunt": 0.08192982998117086,
+        "Solomon Spalding": 0.07858570377746808,
+        "not in set": 0.7600757502772095
+       },
+       "0.8": {
+        "Ethan Smith": 0.04230595234506977,
+        "Gilbert J. Hunt": 0.04364910628183235,
+        "Solomon Spalding": 0.04186748266417283,
+        "not in set": 0.8721774587089249
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.0711861559763505,
+        "Gilbert J. Hunt": 0.0767313526202921,
+        "Solomon Spalding": 0.06942828503702286,
+        "not in set": 0.7826542063663344
+       },
+       "embedding": {
+        "Ethan Smith": 0.06509583726333303,
+        "Gilbert J. Hunt": 0.05596643581782383,
+        "Solomon Spalding": 0.06552492051580071,
+        "not in set": 0.8134128064030425
+       },
+       "authorial": {
+        "Ethan Smith": 0.0196972405285597,
+        "Gilbert J. Hunt": 0.06279625750334386,
+        "Solomon Spalding": 0.024564931340055624,
+        "not in set": 0.8929415706280409
+       }
+      }
+     },
+     "both": {
+      "posterior": {
+       "Ethan Smith": 0.08200087483748303,
+       "Gilbert J. Hunt": 0.08923385623166889,
+       "Solomon Spalding": 0.0845842559533927,
+       "not in set": 0.7441810129774554
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.18557934171805882,
+        "Gilbert J. Hunt": 0.201948580807913,
+        "Solomon Spalding": 0.19142589113411726,
+        "not in set": 0.42104618633991087
+       },
+       "0.35": {
+        "Ethan Smith": 0.12490007311293241,
+        "Gilbert J. Hunt": 0.13591702758748805,
+        "Solomon Spalding": 0.1288349639405628,
+        "not in set": 0.6103479353590168
+       },
+       "0.5": {
+        "Ethan Smith": 0.08200087483748303,
+        "Gilbert J. Hunt": 0.08923385623166889,
+        "Solomon Spalding": 0.0845842559533927,
+        "not in set": 0.7441810129774554
+       },
+       "0.65": {
+        "Ethan Smith": 0.050065574733939064,
+        "Gilbert J. Hunt": 0.05448166628488275,
+        "Solomon Spalding": 0.051642856202961857,
+        "not in set": 0.8438099027782163
+       },
+       "0.8": {
+        "Ethan Smith": 0.025367295609021782,
+        "Gilbert J. Hunt": 0.027604847068375207,
+        "Solomon Spalding": 0.02616647479543809,
+        "not in set": 0.920861382527165
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.021716420791421647,
+        "Gilbert J. Hunt": 0.02660082277651877,
+        "Solomon Spalding": 0.023394769067853358,
+        "not in set": 0.9282879873642063
+       },
+       "embedding": {
+        "Ethan Smith": 0.01829292770313962,
+        "Gilbert J. Hunt": 0.017439239563004034,
+        "Solomon Spalding": 0.01841350667171893,
+        "not in set": 0.9458543260621374
+       },
+       "authorial": {
+        "Ethan Smith": 0.001432575873335873,
+        "Gilbert J. Hunt": 0.015043293433200822,
+        "Solomon Spalding": 0.0021565990927096424,
+        "not in set": 0.9813675316007536
+       }
+      }
+     }
+    },
+    "authorial": {
+     "discovery": {
+      "posterior": {
+       "Ethan Smith": 0.11933874075062668,
+       "Gilbert J. Hunt": 0.12586898975071162,
+       "Solomon Spalding": 0.12438761055313448,
+       "not in set": 0.6304046589455272
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.22636481736844036,
+        "Gilbert J. Hunt": 0.23875156297156006,
+        "Solomon Spalding": 0.2359416445041473,
+        "not in set": 0.2989419751558523
+       },
+       "0.35": {
+        "Ethan Smith": 0.16830935760099375,
+        "Gilbert J. Hunt": 0.1775192923402545,
+        "Solomon Spalding": 0.17543002962858656,
+        "not in set": 0.47874132043016526
+       },
+       "0.5": {
+        "Ethan Smith": 0.11933874075062668,
+        "Gilbert J. Hunt": 0.12586898975071162,
+        "Solomon Spalding": 0.12438761055313448,
+        "not in set": 0.6304046589455272
+       },
+       "0.65": {
+        "Ethan Smith": 0.07747523923587242,
+        "Gilbert J. Hunt": 0.08171470581955799,
+        "Solomon Spalding": 0.08075298788111283,
+        "not in set": 0.7600570670634568
+       },
+       "0.8": {
+        "Ethan Smith": 0.041276343330769634,
+        "Gilbert J. Hunt": 0.04353499628845563,
+        "Solomon Spalding": 0.04302262355871458,
+        "not in set": 0.8721660368220602
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.06709252096572918,
+        "Gilbert J. Hunt": 0.07624363962545104,
+        "Solomon Spalding": 0.07410776726935381,
+        "not in set": 0.7825560721394659
+       },
+       "embedding": {
+        "Ethan Smith": 0.06442204923760399,
+        "Gilbert J. Hunt": 0.07143391098901858,
+        "Solomon Spalding": 0.06442204923760399,
+        "not in set": 0.7997219905357735
+       },
+       "authorial": {
+        "Ethan Smith": 0.019671785507991733,
+        "Gilbert J. Hunt": 0.06479488167960384,
+        "Solomon Spalding": 0.023745723116777865,
+        "not in set": 0.8917876096956264
+       }
+      }
+     },
+     "confirmation": {
+      "posterior": {
+       "Ethan Smith": 0.12231859022946398,
+       "Gilbert J. Hunt": 0.1262020318469908,
+       "Solomon Spalding": 0.12105084916106254,
+       "not in set": 0.6304285287624827
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.23202495213965513,
+        "Gilbert J. Hunt": 0.2393914150277041,
+        "Solomon Spalding": 0.22962018635409873,
+        "not in set": 0.29896344647854206
+       },
+       "0.35": {
+        "Ethan Smith": 0.1725146678921782,
+        "Gilbert J. Hunt": 0.17799176372584924,
+        "Solomon Spalding": 0.17072668187158835,
+        "not in set": 0.4787668865103842
+       },
+       "0.5": {
+        "Ethan Smith": 0.12231859022946398,
+        "Gilbert J. Hunt": 0.1262020318469908,
+        "Solomon Spalding": 0.12105084916106254,
+        "not in set": 0.6304285287624827
+       },
+       "0.65": {
+        "Ethan Smith": 0.07940871596415147,
+        "Gilbert J. Hunt": 0.08192982998117086,
+        "Solomon Spalding": 0.07858570377746808,
+        "not in set": 0.7600757502772095
+       },
+       "0.8": {
+        "Ethan Smith": 0.04230595234506977,
+        "Gilbert J. Hunt": 0.04364910628183235,
+        "Solomon Spalding": 0.04186748266417283,
+        "not in set": 0.8721774587089249
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.0711861559763505,
+        "Gilbert J. Hunt": 0.0767313526202921,
+        "Solomon Spalding": 0.06942828503702286,
+        "not in set": 0.7826542063663344
+       },
+       "embedding": {
+        "Ethan Smith": 0.06509583726333303,
+        "Gilbert J. Hunt": 0.05596643581782383,
+        "Solomon Spalding": 0.06552492051580071,
+        "not in set": 0.8134128064030425
+       },
+       "authorial": {
+        "Ethan Smith": 0.0196972405285597,
+        "Gilbert J. Hunt": 0.06279625750334386,
+        "Solomon Spalding": 0.024564931340055624,
+        "not in set": 0.8929415706280409
+       }
+      }
+     },
+     "both": {
+      "posterior": {
+       "Ethan Smith": 0.08200087483748303,
+       "Gilbert J. Hunt": 0.08923385623166889,
+       "Solomon Spalding": 0.0845842559533927,
+       "not in set": 0.7441810129774554
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.18557934171805882,
+        "Gilbert J. Hunt": 0.201948580807913,
+        "Solomon Spalding": 0.19142589113411726,
+        "not in set": 0.42104618633991087
+       },
+       "0.35": {
+        "Ethan Smith": 0.12490007311293241,
+        "Gilbert J. Hunt": 0.13591702758748805,
+        "Solomon Spalding": 0.1288349639405628,
+        "not in set": 0.6103479353590168
+       },
+       "0.5": {
+        "Ethan Smith": 0.08200087483748303,
+        "Gilbert J. Hunt": 0.08923385623166889,
+        "Solomon Spalding": 0.0845842559533927,
+        "not in set": 0.7441810129774554
+       },
+       "0.65": {
+        "Ethan Smith": 0.050065574733939064,
+        "Gilbert J. Hunt": 0.05448166628488275,
+        "Solomon Spalding": 0.051642856202961857,
+        "not in set": 0.8438099027782163
+       },
+       "0.8": {
+        "Ethan Smith": 0.025367295609021782,
+        "Gilbert J. Hunt": 0.027604847068375207,
+        "Solomon Spalding": 0.02616647479543809,
+        "not in set": 0.920861382527165
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.021716420791421647,
+        "Gilbert J. Hunt": 0.02660082277651877,
+        "Solomon Spalding": 0.023394769067853358,
+        "not in set": 0.9282879873642063
+       },
+       "embedding": {
+        "Ethan Smith": 0.01829292770313962,
+        "Gilbert J. Hunt": 0.017439239563004034,
+        "Solomon Spalding": 0.01841350667171893,
+        "not in set": 0.9458543260621374
+       },
+       "authorial": {
+        "Ethan Smith": 0.001432575873335873,
+        "Gilbert J. Hunt": 0.015043293433200822,
+        "Solomon Spalding": 0.0021565990927096424,
+        "not in set": 0.9813675316007536
+       }
+      }
+     }
+    }
+   },
+   "chunks": {
+    "discovery": {
+     "classical": 22,
+     "embedding": 22,
+     "authorial": 22
+    },
+    "confirmation": {
+     "classical": 25,
+     "embedding": 25,
+     "authorial": 25
+    }
+   }
+  },
+  "secondary": {
+   "candidates": [
+    "Ethan Smith",
+    "Gilbert J. Hunt",
+    "Oliver Cowdery",
+    "Parley P. Pratt",
+    "Sidney Rigdon",
+    "Solomon Spalding",
+    "W. W. Phelps"
+   ],
+   "weights": {
+    "classical": 0.4166666666666667,
+    "embedding": 0.0,
+    "authorial": 0.0
+   },
+   "main": {
+    "discovery": {
+     "posterior": {
+      "Ethan Smith": 0.04484930665462553,
+      "Gilbert J. Hunt": 0.04990965014314073,
+      "Oliver Cowdery": 0.04484930665462553,
+      "Parley P. Pratt": 0.10470457781554361,
+      "Sidney Rigdon": 0.04484930665462553,
+      "Solomon Spalding": 0.04484930665462553,
+      "W. W. Phelps": 0.04484930665462553,
+      "not in set": 0.621139238768188
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 0.0839645765049668,
+       "Gilbert J. Hunt": 0.09343829259281682,
+       "Oliver Cowdery": 0.0839645765049668,
+       "Parley P. Pratt": 0.1960225517445486,
+       "Sidney Rigdon": 0.0839645765049668,
+       "Solomon Spalding": 0.0839645765049668,
+       "W. W. Phelps": 0.0839645765049668,
+       "not in set": 0.29071627313780046
+      },
+      "0.35": {
+       "Ethan Smith": 0.06287400404392678,
+       "Gilbert J. Hunt": 0.06996807261918196,
+       "Oliver Cowdery": 0.06287400404392678,
+       "Parley P. Pratt": 0.14678478977808623,
+       "Sidney Rigdon": 0.06287400404392678,
+       "Solomon Spalding": 0.06287400404392678,
+       "W. W. Phelps": 0.06287400404392678,
+       "not in set": 0.46887711738309795
+      },
+      "0.5": {
+       "Ethan Smith": 0.04484930665462553,
+       "Gilbert J. Hunt": 0.04990965014314073,
+       "Oliver Cowdery": 0.04484930665462553,
+       "Parley P. Pratt": 0.10470457781554361,
+       "Sidney Rigdon": 0.04484930665462553,
+       "Solomon Spalding": 0.04484930665462553,
+       "W. W. Phelps": 0.04484930665462553,
+       "not in set": 0.621139238768188
+      },
+      "0.65": {
+       "Ethan Smith": 0.029267266059475352,
+       "Gilbert J. Hunt": 0.03256948922138979,
+       "Oliver Cowdery": 0.029267266059475352,
+       "Parley P. Pratt": 0.06832695899115993,
+       "Sidney Rigdon": 0.029267266059475352,
+       "Solomon Spalding": 0.029267266059475352,
+       "W. W. Phelps": 0.029267266059475352,
+       "not in set": 0.7527672214900735
+      },
+      "0.8": {
+       "Ethan Smith": 0.015662858548108248,
+       "Gilbert J. Hunt": 0.017430097557527353,
+       "Oliver Cowdery": 0.015662858548108248,
+       "Parley P. Pratt": 0.036566295311838755,
+       "Sidney Rigdon": 0.015662858548108248,
+       "Solomon Spalding": 0.015662858548108248,
+       "W. W. Phelps": 0.015662858548108248,
+       "not in set": 0.8676893143900926
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 0.02002272867826765,
+       "Gilbert J. Hunt": 0.025879290365549305,
+       "Oliver Cowdery": 0.02002272867826765,
+       "Parley P. Pratt": 0.1531888338254764,
+       "Sidney Rigdon": 0.02002272867826765,
+       "Solomon Spalding": 0.02002272867826765,
+       "W. W. Phelps": 0.02002272867826765,
+       "not in set": 0.720818232417636
+      },
+      "embedding": {
+       "Ethan Smith": 0.021659999018633663,
+       "Gilbert J. Hunt": 0.058267284820978066,
+       "Oliver Cowdery": 0.021659999018633663,
+       "Parley P. Pratt": 0.02678448077122041,
+       "Sidney Rigdon": 0.021659999018633663,
+       "Solomon Spalding": 0.021659999018633663,
+       "W. W. Phelps": 0.021659999018633663,
+       "not in set": 0.8066482393146333
+      },
+      "authorial": {
+       "Ethan Smith": 0.006620344944367238,
+       "Gilbert J. Hunt": 0.008293726136199723,
+       "Oliver Cowdery": 0.006620344944367238,
+       "Parley P. Pratt": 0.008541332730791941,
+       "Sidney Rigdon": 0.006620344944367238,
+       "Solomon Spalding": 0.006620344944367238,
+       "W. W. Phelps": 0.05631664892159389,
+       "not in set": 0.9003669124339455
+      }
+     }
+    },
+    "confirmation": {
+     "posterior": {
+      "Ethan Smith": 0.04555170492593089,
+      "Gilbert J. Hunt": 0.05004514749696191,
+      "Oliver Cowdery": 0.04555170492593089,
+      "Parley P. Pratt": 0.09132924356879855,
+      "Sidney Rigdon": 0.04555170492593089,
+      "Solomon Spalding": 0.04555170492593089,
+      "W. W. Phelps": 0.04555170492593089,
+      "not in set": 0.630867084304585
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 0.08646053337350057,
+       "Gilbert J. Hunt": 0.09498942251181632,
+       "Oliver Cowdery": 0.08646053337350057,
+       "Parley P. Pratt": 0.17334971598530785,
+       "Sidney Rigdon": 0.08646053337350057,
+       "Solomon Spalding": 0.08646053337350057,
+       "W. W. Phelps": 0.08646053337350057,
+       "not in set": 0.299358194635373
+      },
+      "0.35": {
+       "Ethan Smith": 0.06426317717905315,
+       "Gilbert J. Hunt": 0.07060241072817294,
+       "Oliver Cowdery": 0.06426317717905315,
+       "Parley P. Pratt": 0.12884495477466829,
+       "Sidney Rigdon": 0.06426317717905315,
+       "Solomon Spalding": 0.06426317717905315,
+       "W. W. Phelps": 0.06426317717905315,
+       "not in set": 0.47923674860189297
+      },
+      "0.5": {
+       "Ethan Smith": 0.04555170492593089,
+       "Gilbert J. Hunt": 0.05004514749696191,
+       "Oliver Cowdery": 0.04555170492593089,
+       "Parley P. Pratt": 0.09132924356879855,
+       "Sidney Rigdon": 0.04555170492593089,
+       "Solomon Spalding": 0.04555170492593089,
+       "W. W. Phelps": 0.04555170492593089,
+       "not in set": 0.630867084304585
+      },
+      "0.65": {
+       "Ethan Smith": 0.02956476100557474,
+       "Gilbert J. Hunt": 0.0324811733752286,
+       "Oliver Cowdery": 0.02956476100557474,
+       "Parley P. Pratt": 0.05927609654395989,
+       "Sidney Rigdon": 0.02956476100557474,
+       "Solomon Spalding": 0.02956476100557474,
+       "W. W. Phelps": 0.02956476100557474,
+       "not in set": 0.7604189250529378
+      },
+      "0.8": {
+       "Ethan Smith": 0.015747661341170352,
+       "Gilbert J. Hunt": 0.017301087540687043,
+       "Oliver Cowdery": 0.015747661341170352,
+       "Parley P. Pratt": 0.03157339556456369,
+       "Sidney Rigdon": 0.015747661341170352,
+       "Solomon Spalding": 0.015747661341170352,
+       "W. W. Phelps": 0.015747661341170352,
+       "not in set": 0.8723872101888975
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 0.021024837133276252,
+       "Gilbert J. Hunt": 0.026350584263363615,
+       "Oliver Cowdery": 0.021024837133276252,
+       "Parley P. Pratt": 0.11163109327230904,
+       "Sidney Rigdon": 0.021024837133276252,
+       "Solomon Spalding": 0.021024837133276252,
+       "W. W. Phelps": 0.021024837133276252,
+       "not in set": 0.7568941367979461
+      },
+      "embedding": {
+       "Ethan Smith": 0.022003990492440645,
+       "Gilbert J. Hunt": 0.0385456096043461,
+       "Oliver Cowdery": 0.022003990492440645,
+       "Parley P. Pratt": 0.03197548166324698,
+       "Sidney Rigdon": 0.022003990492440645,
+       "Solomon Spalding": 0.022003990492440645,
+       "W. W. Phelps": 0.022003990492440645,
+       "not in set": 0.8194589562702036
+      },
+      "authorial": {
+       "Ethan Smith": 0.006478998790751821,
+       "Gilbert J. Hunt": 0.00715435178064992,
+       "Oliver Cowdery": 0.006478998790751821,
+       "Parley P. Pratt": 0.006478998790751821,
+       "Sidney Rigdon": 0.006478998790751821,
+       "Solomon Spalding": 0.006478998790751821,
+       "W. W. Phelps": 0.07930681872334222,
+       "not in set": 0.8811438355422487
+      }
+     }
+    },
+    "both": {
+     "posterior": {
+      "Ethan Smith": 0.02610660772746033,
+      "Gilbert J. Hunt": 0.031918066314391584,
+      "Oliver Cowdery": 0.02610660772746033,
+      "Parley P. Pratt": 0.12219842382462942,
+      "Sidney Rigdon": 0.02610660772746033,
+      "Solomon Spalding": 0.02610660772746033,
+      "W. W. Phelps": 0.02610660772746033,
+      "not in set": 0.7153504712236773
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 0.05632649776799785,
+       "Gilbert J. Hunt": 0.06886505170586855,
+       "Oliver Cowdery": 0.05632649776799785,
+       "Parley P. Pratt": 0.2636500811850373,
+       "Sidney Rigdon": 0.05632649776799785,
+       "Solomon Spalding": 0.05632649776799785,
+       "W. W. Phelps": 0.05632649776799785,
+       "not in set": 0.3858523782691049
+      },
+      "0.35": {
+       "Ethan Smith": 0.03897449564776988,
+       "Gilbert J. Hunt": 0.04765040903215431,
+       "Oliver Cowdery": 0.03897449564776988,
+       "Parley P. Pratt": 0.18242975063005898,
+       "Sidney Rigdon": 0.03897449564776988,
+       "Solomon Spalding": 0.03897449564776988,
+       "W. W. Phelps": 0.03897449564776988,
+       "not in set": 0.5750473620989374
+      },
+      "0.5": {
+       "Ethan Smith": 0.02610660772746033,
+       "Gilbert J. Hunt": 0.031918066314391584,
+       "Oliver Cowdery": 0.02610660772746033,
+       "Parley P. Pratt": 0.12219842382462942,
+       "Sidney Rigdon": 0.02610660772746033,
+       "Solomon Spalding": 0.02610660772746033,
+       "W. W. Phelps": 0.02610660772746033,
+       "not in set": 0.7153504712236773
+      },
+      "0.65": {
+       "Ethan Smith": 0.016183544985946364,
+       "Gilbert J. Hunt": 0.019786081265550357,
+       "Oliver Cowdery": 0.016183544985946364,
+       "Parley P. Pratt": 0.075751078417495,
+       "Sidney Rigdon": 0.016183544985946364,
+       "Solomon Spalding": 0.016183544985946364,
+       "W. W. Phelps": 0.016183544985946364,
+       "not in set": 0.8235451153872227
+      },
+      "0.8": {
+       "Ethan Smith": 0.0082982139497197,
+       "Gilbert J. Hunt": 0.010145436967651886,
+       "Oliver Cowdery": 0.0082982139497197,
+       "Parley P. Pratt": 0.03884183942246505,
+       "Sidney Rigdon": 0.0082982139497197,
+       "Solomon Spalding": 0.0082982139497197,
+       "W. W. Phelps": 0.0082982139497197,
+       "not in set": 0.9095216538612846
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 0.004303216851021821,
+       "Gilbert J. Hunt": 0.006970756972025024,
+       "Oliver Cowdery": 0.004303216851021821,
+       "Parley P. Pratt": 0.17480329606939604,
+       "Sidney Rigdon": 0.004303216851021821,
+       "Solomon Spalding": 0.004303216851021821,
+       "W. W. Phelps": 0.004303216851021821,
+       "not in set": 0.7967098627034698
+      },
+      "embedding": {
+       "Ethan Smith": 0.004770063403716104,
+       "Gilbert J. Hunt": 0.022478326235405098,
+       "Oliver Cowdery": 0.004770063403716104,
+       "Parley P. Pratt": 0.00857165331566598,
+       "Sidney Rigdon": 0.004770063403716104,
+       "Solomon Spalding": 0.004770063403716104,
+       "W. W. Phelps": 0.004770063403716104,
+       "not in set": 0.9450997034303484
+      },
+      "authorial": {
+       "Ethan Smith": 0.00036322886863241036,
+       "Gilbert J. Hunt": 0.0005024719491817205,
+       "Oliver Cowdery": 0.00036322886863241036,
+       "Parley P. Pratt": 0.0004686249206785192,
+       "Sidney Rigdon": 0.00036322886863241036,
+       "Solomon Spalding": 0.00036322886863241036,
+       "W. W. Phelps": 0.037821537052027634,
+       "not in set": 0.9597544506035824
+      }
+     }
+    }
+   },
+   "equal_weights": {
+    "discovery": {
+     "posterior": {
+      "Ethan Smith": 0.0002666548487951616,
+      "Gilbert J. Hunt": 0.0011614860733623802,
+      "Oliver Cowdery": 0.0002666548487951616,
+      "Parley P. Pratt": 0.003254791356176057,
+      "Sidney Rigdon": 0.0002666548487951616,
+      "Solomon Spalding": 0.0002666548487951616,
+      "W. W. Phelps": 0.002268327047764293,
+      "not in set": 0.9922487761275167
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 0.001042380227665977,
+       "Gilbert J. Hunt": 0.004540364156334478,
+       "Oliver Cowdery": 0.001042380227665977,
+       "Parley P. Pratt": 0.012723301939513102,
+       "Sidney Rigdon": 0.001042380227665977,
+       "Solomon Spalding": 0.001042380227665977,
+       "W. W. Phelps": 0.008867115205865856,
+       "not in set": 0.9696996977876225
+      },
+      "0.35": {
+       "Ethan Smith": 0.0004919476934434997,
+       "Gilbert J. Hunt": 0.0021428089432429594,
+       "Oliver Cowdery": 0.0004919476934434997,
+       "Parley P. Pratt": 0.006004717737349871,
+       "Sidney Rigdon": 0.0004919476934434997,
+       "Solomon Spalding": 0.0004919476934434997,
+       "W. W. Phelps": 0.004184803929743493,
+       "not in set": 0.9856998786158897
+      },
+      "0.5": {
+       "Ethan Smith": 0.0002666548487951616,
+       "Gilbert J. Hunt": 0.0011614860733623802,
+       "Oliver Cowdery": 0.0002666548487951616,
+       "Parley P. Pratt": 0.003254791356176057,
+       "Sidney Rigdon": 0.0002666548487951616,
+       "Solomon Spalding": 0.0002666548487951616,
+       "W. W. Phelps": 0.002268327047764293,
+       "not in set": 0.9922487761275167
+      },
+      "0.65": {
+       "Ethan Smith": 0.00014409889216954077,
+       "Gilbert J. Hunt": 0.0006276610277221612,
+       "Oliver Cowdery": 0.00014409889216954077,
+       "Parley P. Pratt": 0.0017588723054807512,
+       "Sidney Rigdon": 0.00014409889216954077,
+       "Solomon Spalding": 0.00014409889216954077,
+       "W. W. Phelps": 0.0012257921284308951,
+       "not in set": 0.995811278969688
+      },
+      "0.8": {
+       "Ethan Smith": 6.705352234614806e-05,
+       "Gilbert J. Hunt": 0.0002920694400527151,
+       "Oliver Cowdery": 6.705352234614806e-05,
+       "Parley P. Pratt": 0.0008184558650236733,
+       "Sidney Rigdon": 6.705352234614806e-05,
+       "Solomon Spalding": 6.705352234614806e-05,
+       "W. W. Phelps": 0.0005703977222723389,
+       "not in set": 0.9980508628832667
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 0.02002272867826765,
+       "Gilbert J. Hunt": 0.025879290365549305,
+       "Oliver Cowdery": 0.02002272867826765,
+       "Parley P. Pratt": 0.1531888338254764,
+       "Sidney Rigdon": 0.02002272867826765,
+       "Solomon Spalding": 0.02002272867826765,
+       "W. W. Phelps": 0.02002272867826765,
+       "not in set": 0.720818232417636
+      },
+      "embedding": {
+       "Ethan Smith": 0.021659999018633663,
+       "Gilbert J. Hunt": 0.058267284820978066,
+       "Oliver Cowdery": 0.021659999018633663,
+       "Parley P. Pratt": 0.02678448077122041,
+       "Sidney Rigdon": 0.021659999018633663,
+       "Solomon Spalding": 0.021659999018633663,
+       "W. W. Phelps": 0.021659999018633663,
+       "not in set": 0.8066482393146333
+      },
+      "authorial": {
+       "Ethan Smith": 0.006620344944367238,
+       "Gilbert J. Hunt": 0.008293726136199723,
+       "Oliver Cowdery": 0.006620344944367238,
+       "Parley P. Pratt": 0.008541332730791941,
+       "Sidney Rigdon": 0.006620344944367238,
+       "Solomon Spalding": 0.006620344944367238,
+       "W. W. Phelps": 0.05631664892159389,
+       "not in set": 0.9003669124339455
+      }
+     }
+    },
+    "confirmation": {
+     "posterior": {
+      "Ethan Smith": 0.0002668461061583589,
+      "Gilbert J. Hunt": 0.0006469256046883058,
+      "Oliver Cowdery": 0.0002668461061583589,
+      "Parley P. Pratt": 0.0020588706106133945,
+      "Sidney Rigdon": 0.0002668461061583589,
+      "Solomon Spalding": 0.0002668461061583589,
+      "W. W. Phelps": 0.00326635587559278,
+      "not in set": 0.9929604634844722
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 0.0010453089529994894,
+       "Gilbert J. Hunt": 0.0025341839768273926,
+       "Oliver Cowdery": 0.0010453089529994894,
+       "Parley P. Pratt": 0.008065157529653129,
+       "Sidney Rigdon": 0.0010453089529994894,
+       "Solomon Spalding": 0.0010453089529994894,
+       "W. W. Phelps": 0.012795206531563142,
+       "not in set": 0.9724242161499584
+      },
+      "0.35": {
+       "Ethan Smith": 0.0004925990522803446,
+       "Gilbert J. Hunt": 0.0011942274307582823,
+       "Oliver Cowdery": 0.0004925990522803446,
+       "Parley P. Pratt": 0.0038006839453529136,
+       "Sidney Rigdon": 0.0004925990522803446,
+       "Solomon Spalding": 0.0004925990522803446,
+       "W. W. Phelps": 0.006029706904445079,
+       "not in set": 0.9870049855103222
+      },
+      "0.5": {
+       "Ethan Smith": 0.0002668461061583589,
+       "Gilbert J. Hunt": 0.0006469256046883058,
+       "Oliver Cowdery": 0.0002668461061583589,
+       "Parley P. Pratt": 0.0020588706106133945,
+       "Sidney Rigdon": 0.0002668461061583589,
+       "Solomon Spalding": 0.0002668461061583589,
+       "W. W. Phelps": 0.00326635587559278,
+       "not in set": 0.9929604634844722
+      },
+      "0.65": {
+       "Ethan Smith": 0.00014415472598872423,
+       "Gilbert J. Hunt": 0.00034948002285478045,
+       "Oliver Cowdery": 0.00014415472598872423,
+       "Parley P. Pratt": 0.0011122363110034612,
+       "Sidney Rigdon": 0.00014415472598872423,
+       "Solomon Spalding": 0.00014415472598872423,
+       "W. W. Phelps": 0.0017645400302311516,
+       "not in set": 0.9961971247319558
+      },
+      "0.8": {
+       "Ethan Smith": 6.706560964561694e-05,
+       "Gilbert J. Hunt": 0.00016258981889746244,
+       "Oliver Cowdery": 6.706560964561694e-05,
+       "Parley P. Pratt": 0.0005174496067043531,
+       "Sidney Rigdon": 6.706560964561694e-05,
+       "Solomon Spalding": 6.706560964561694e-05,
+       "W. W. Phelps": 0.0008209231578075664,
+       "not in set": 0.9982307749780082
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 0.021024837133276252,
+       "Gilbert J. Hunt": 0.026350584263363615,
+       "Oliver Cowdery": 0.021024837133276252,
+       "Parley P. Pratt": 0.11163109327230904,
+       "Sidney Rigdon": 0.021024837133276252,
+       "Solomon Spalding": 0.021024837133276252,
+       "W. W. Phelps": 0.021024837133276252,
+       "not in set": 0.7568941367979461
+      },
+      "embedding": {
+       "Ethan Smith": 0.022003990492440645,
+       "Gilbert J. Hunt": 0.0385456096043461,
+       "Oliver Cowdery": 0.022003990492440645,
+       "Parley P. Pratt": 0.03197548166324698,
+       "Sidney Rigdon": 0.022003990492440645,
+       "Solomon Spalding": 0.022003990492440645,
+       "W. W. Phelps": 0.022003990492440645,
+       "not in set": 0.8194589562702036
+      },
+      "authorial": {
+       "Ethan Smith": 0.006478998790751821,
+       "Gilbert J. Hunt": 0.00715435178064992,
+       "Oliver Cowdery": 0.006478998790751821,
+       "Parley P. Pratt": 0.006478998790751821,
+       "Sidney Rigdon": 0.006478998790751821,
+       "Solomon Spalding": 0.006478998790751821,
+       "W. W. Phelps": 0.07930681872334222,
+       "not in set": 0.8811438355422487
+      }
+     }
+    },
+    "both": {
+     "posterior": {
+      "Ethan Smith": 5.054860031538243e-07,
+      "Gilbert J. Hunt": 5.337859356157264e-06,
+      "Oliver Cowdery": 5.054860031538243e-07,
+      "Parley P. Pratt": 4.76048266093659e-05,
+      "Sidney Rigdon": 5.054860031538243e-07,
+      "Solomon Spalding": 5.054860031538243e-07,
+      "W. W. Phelps": 5.2634190860285236e-05,
+      "not in set": 0.9998924011791616
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 2.021291546854261e-06,
+       "Gilbert J. Hunt": 2.134454748020846e-05,
+       "Oliver Cowdery": 2.021291546854261e-06,
+       "Parley P. Pratt": 0.0001903578595937748,
+       "Sidney Rigdon": 2.021291546854261e-06,
+       "Solomon Spalding": 2.021291546854261e-06,
+       "W. W. Phelps": 0.00021046882484900998,
+       "not in set": 0.9995697436018897
+      },
+      "0.35": {
+       "Ethan Smith": 9.386731486080095e-07,
+       "Gilbert J. Hunt": 9.912253192787446e-06,
+       "Oliver Cowdery": 9.386731486080095e-07,
+       "Parley P. Pratt": 8.840081071197068e-05,
+       "Sidney Rigdon": 9.386731486080095e-07,
+       "Solomon Spalding": 9.386731486080095e-07,
+       "W. W. Phelps": 9.774019725769546e-05,
+       "not in set": 0.999800192046243
+      },
+      "0.5": {
+       "Ethan Smith": 5.054860031538243e-07,
+       "Gilbert J. Hunt": 5.337859356157264e-06,
+       "Oliver Cowdery": 5.054860031538243e-07,
+       "Parley P. Pratt": 4.76048266093659e-05,
+       "Sidney Rigdon": 5.054860031538243e-07,
+       "Solomon Spalding": 5.054860031538243e-07,
+       "W. W. Phelps": 5.2634190860285236e-05,
+       "not in set": 0.9998924011791616
+      },
+      "0.65": {
+       "Ethan Smith": 2.7219828856662174e-07,
+       "Gilbert J. Hunt": 2.8743747053134284e-06,
+       "Oliver Cowdery": 2.7219828856662174e-07,
+       "Parley P. Pratt": 2.5634641216043606e-05,
+       "Sidney Rigdon": 2.7219828856662174e-07,
+       "Solomon Spalding": 2.7219828856662174e-07,
+       "W. W. Phelps": 2.8342894922648805e-05,
+       "not in set": 0.9999420592960018
+      },
+      "0.8": {
+       "Ethan Smith": 1.2638169967985233e-07,
+       "Gilbert J. Hunt": 1.3345725378628637e-06,
+       "Oliver Cowdery": 1.2638169967985233e-07,
+       "Parley P. Pratt": 1.1902167146704278e-05,
+       "Sidney Rigdon": 1.2638169967985233e-07,
+       "Solomon Spalding": 1.2638169967985233e-07,
+       "W. W. Phelps": 1.315960968393482e-05,
+       "not in set": 0.9999730981238328
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 0.004303216851021821,
+       "Gilbert J. Hunt": 0.006970756972025024,
+       "Oliver Cowdery": 0.004303216851021821,
+       "Parley P. Pratt": 0.17480329606939604,
+       "Sidney Rigdon": 0.004303216851021821,
+       "Solomon Spalding": 0.004303216851021821,
+       "W. W. Phelps": 0.004303216851021821,
+       "not in set": 0.7967098627034698
+      },
+      "embedding": {
+       "Ethan Smith": 0.004770063403716104,
+       "Gilbert J. Hunt": 0.022478326235405098,
+       "Oliver Cowdery": 0.004770063403716104,
+       "Parley P. Pratt": 0.00857165331566598,
+       "Sidney Rigdon": 0.004770063403716104,
+       "Solomon Spalding": 0.004770063403716104,
+       "W. W. Phelps": 0.004770063403716104,
+       "not in set": 0.9450997034303484
+      },
+      "authorial": {
+       "Ethan Smith": 0.00036322886863241036,
+       "Gilbert J. Hunt": 0.0005024719491817205,
+       "Oliver Cowdery": 0.00036322886863241036,
+       "Parley P. Pratt": 0.0004686249206785192,
+       "Sidney Rigdon": 0.00036322886863241036,
+       "Solomon Spalding": 0.00036322886863241036,
+       "W. W. Phelps": 0.037821537052027634,
+       "not in set": 0.9597544506035824
+      }
+     }
+    }
+   },
+   "independent_chunks": {
+    "discovery": {
+     "posterior": {
+      "Ethan Smith": 6.701612999897274e-09,
+      "Gilbert J. Hunt": 7.04065024448432e-08,
+      "Oliver Cowdery": 6.701612999897274e-09,
+      "Parley P. Pratt": 0.8448856778161947,
+      "Sidney Rigdon": 6.701612999897274e-09,
+      "Solomon Spalding": 6.701612999897274e-09,
+      "W. W. Phelps": 6.701612999897274e-09,
+      "not in set": 0.15511421826923777
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 7.583889860229411e-09,
+       "Gilbert J. Hunt": 7.967561839125122e-08,
+       "Oliver Cowdery": 7.583889860229411e-09,
+       "Parley P. Pratt": 0.9561160761060788,
+       "Sidney Rigdon": 7.583889860229411e-09,
+       "Solomon Spalding": 7.583889860229411e-09,
+       "W. W. Phelps": 7.583889860229411e-09,
+       "not in set": 0.04388380629885341
+      },
+      "0.35": {
+       "Ethan Smith": 7.2183857355275084e-09,
+       "Gilbert J. Hunt": 7.583566716610302e-08,
+       "Oliver Cowdery": 7.2183857355275084e-09,
+       "Parley P. Pratt": 0.9100362442584188,
+       "Sidney Rigdon": 7.2183857355275084e-09,
+       "Solomon Spalding": 7.2183857355275084e-09,
+       "W. W. Phelps": 7.2183857355275084e-09,
+       "not in set": 0.08996364381398546
+      },
+      "0.5": {
+       "Ethan Smith": 6.701612999897274e-09,
+       "Gilbert J. Hunt": 7.04065024448432e-08,
+       "Oliver Cowdery": 6.701612999897274e-09,
+       "Parley P. Pratt": 0.8448856778161947,
+       "Sidney Rigdon": 6.701612999897274e-09,
+       "Solomon Spalding": 6.701612999897274e-09,
+       "W. W. Phelps": 6.701612999897274e-09,
+       "not in set": 0.15511421826923777
+      },
+      "0.65": {
+       "Ethan Smith": 5.915162330600145e-09,
+       "Gilbert J. Hunt": 6.214412725674062e-08,
+       "Oliver Cowdery": 5.915162330600145e-09,
+       "Parley P. Pratt": 0.7457362779913603,
+       "Sidney Rigdon": 5.915162330600145e-09,
+       "Solomon Spalding": 5.915162330600145e-09,
+       "W. W. Phelps": 5.915162330600145e-09,
+       "not in set": 0.25426363028870086
+      },
+      "0.8": {
+       "Ethan Smith": 4.573410169907821e-09,
+       "Gilbert J. Hunt": 4.8047807940240885e-08,
+       "Oliver Cowdery": 4.573410169907821e-09,
+       "Parley P. Pratt": 0.5765789148662046,
+       "Sidney Rigdon": 4.573410169907821e-09,
+       "Solomon Spalding": 4.573410169907821e-09,
+       "W. W. Phelps": 4.573410169907821e-09,
+       "not in set": 0.4234210142189367
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 3.614333423044496e-20,
+       "Gilbert J. Hunt": 1.0220412760110931e-17,
+       "Oliver Cowdery": 3.614333423044496e-20,
+       "Parley P. Pratt": 0.9988789515296844,
+       "Sidney Rigdon": 3.614333423044496e-20,
+       "Solomon Spalding": 3.614333423044496e-20,
+       "W. W. Phelps": 3.614333423044496e-20,
+       "not in set": 0.0011210484703155397
+      },
+      "embedding": {
+       "Ethan Smith": 1.5292981192718533e-17,
+       "Gilbert J. Hunt": 4.358648219794616e-08,
+       "Oliver Cowdery": 1.5292981192718533e-17,
+       "Parley P. Pratt": 1.6346987729841288e-15,
+       "Sidney Rigdon": 1.5292981192718533e-17,
+       "Solomon Spalding": 1.5292981192718533e-17,
+       "W. W. Phelps": 1.5292981192718533e-17,
+       "not in set": 0.9999999564135161
+      },
+      "authorial": {
+       "Ethan Smith": 6.444702219281534e-30,
+       "Gilbert J. Hunt": 9.169009957993555e-28,
+       "Oliver Cowdery": 6.444702219281534e-30,
+       "Parley P. Pratt": 1.7514322315512948e-27,
+       "Sidney Rigdon": 6.444702219281534e-30,
+       "Solomon Spalding": 6.444702219281534e-30,
+       "W. W. Phelps": 1.8358574287885709e-09,
+       "not in set": 0.9999999981641425
+      }
+     }
+    },
+    "confirmation": {
+     "posterior": {
+      "Ethan Smith": 4.652144461965365e-09,
+      "Gilbert J. Hunt": 4.887498284967419e-08,
+      "Oliver Cowdery": 4.652144461965365e-09,
+      "Parley P. Pratt": 0.16606717371639565,
+      "Sidney Rigdon": 4.652144461965365e-09,
+      "Solomon Spalding": 4.652144461965365e-09,
+      "W. W. Phelps": 4.652144461965365e-09,
+      "not in set": 0.8339327541478991
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 1.2420608908259405e-08,
+       "Gilbert J. Hunt": 1.304897241125708e-07,
+       "Oliver Cowdery": 1.2420608908259405e-08,
+       "Parley P. Pratt": 0.44337733578460725,
+       "Sidney Rigdon": 1.2420608908259405e-08,
+       "Solomon Spalding": 1.2420608908259405e-08,
+       "W. W. Phelps": 1.2420608908259405e-08,
+       "not in set": 0.5566224716226241
+      },
+      "0.35": {
+       "Ethan Smith": 7.563134876044798e-09,
+       "Gilbert J. Hunt": 7.945756852105502e-08,
+       "Oliver Cowdery": 7.563134876044798e-09,
+       "Parley P. Pratt": 0.26998053125161375,
+       "Sidney Rigdon": 7.563134876044798e-09,
+       "Solomon Spalding": 7.563134876044798e-09,
+       "W. W. Phelps": 7.563134876044798e-09,
+       "not in set": 0.7300193514751434
+      },
+      "0.5": {
+       "Ethan Smith": 4.652144461965365e-09,
+       "Gilbert J. Hunt": 4.887498284967419e-08,
+       "Oliver Cowdery": 4.652144461965365e-09,
+       "Parley P. Pratt": 0.16606717371639565,
+       "Sidney Rigdon": 4.652144461965365e-09,
+       "Solomon Spalding": 4.652144461965365e-09,
+       "W. W. Phelps": 4.652144461965365e-09,
+       "not in set": 0.8339327541478991
+      },
+      "0.65": {
+       "Ethan Smith": 2.7129378404413867e-09,
+       "Gilbert J. Hunt": 2.8501864356935167e-08,
+       "Oliver Cowdery": 2.7129378404413867e-09,
+       "Parley P. Pratt": 0.09684349299850173,
+       "Sidney Rigdon": 2.7129378404413867e-09,
+       "Solomon Spalding": 2.7129378404413867e-09,
+       "W. W. Phelps": 2.7129378404413867e-09,
+       "not in set": 0.9031564649349447
+      },
+      "0.8": {
+       "Ethan Smith": 1.328501562142801e-09,
+       "Gilbert J. Hunt": 1.3957109800941883e-08,
+       "Oliver Cowdery": 1.328501562142801e-09,
+       "Parley P. Pratt": 0.04742339828580165,
+       "Sidney Rigdon": 1.328501562142801e-09,
+       "Solomon Spalding": 1.328501562142801e-09,
+       "W. W. Phelps": 1.328501562142801e-09,
+       "not in set": 0.9525765811145808
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 1.7996743413462545e-19,
+       "Gilbert J. Hunt": 5.0890198687995577e-17,
+       "Oliver Cowdery": 1.7996743413462545e-19,
+       "Parley P. Pratt": 0.2407173368907129,
+       "Sidney Rigdon": 1.7996743413462545e-19,
+       "Solomon Spalding": 1.7996743413462545e-19,
+       "W. W. Phelps": 1.7996743413462545e-19,
+       "not in set": 0.759282663109287
+      },
+      "embedding": {
+       "Ethan Smith": 1.0155680294874169e-19,
+       "Gilbert J. Hunt": 1.2403543305007427e-13,
+       "Oliver Cowdery": 1.0155680294874169e-19,
+       "Parley P. Pratt": 1.160379867052057e-15,
+       "Sidney Rigdon": 1.0155680294874169e-19,
+       "Solomon Spalding": 1.0155680294874169e-19,
+       "W. W. Phelps": 1.0155680294874169e-19,
+       "not in set": 0.9999999999998748
+      },
+      "authorial": {
+       "Ethan Smith": 8.787789654391176e-34,
+       "Gilbert J. Hunt": 1.0481886374563171e-32,
+       "Oliver Cowdery": 8.787789654391176e-34,
+       "Parley P. Pratt": 8.787789654391176e-34,
+       "Sidney Rigdon": 8.787789654391176e-34,
+       "Solomon Spalding": 8.787789654391176e-34,
+       "W. W. Phelps": 1.377036365149901e-06,
+       "not in set": 0.9999986229636348
+      }
+     }
+    },
+    "both": {
+     "posterior": {
+      "Ethan Smith": 1.9634393501118887e-16,
+      "Gilbert J. Hunt": 2.1671268953200848e-14,
+      "Oliver Cowdery": 1.9634393501118887e-16,
+      "Parley P. Pratt": 0.8836223579241316,
+      "Sidney Rigdon": 1.9634393501118887e-16,
+      "Solomon Spalding": 1.9634393501118887e-16,
+      "W. W. Phelps": 1.9634393501118887e-16,
+      "not in set": 0.11637764207584567
+     },
+     "prior_grid": {
+      "0.2": {
+       "Ethan Smith": 2.1512033283458542e-16,
+       "Gilbert J. Hunt": 2.374369541842338e-14,
+       "Oliver Cowdery": 2.1512033283458542e-16,
+       "Parley P. Pratt": 0.9681232869550404,
+       "Sidney Rigdon": 2.1512033283458542e-16,
+       "Solomon Spalding": 2.1512033283458542e-16,
+       "W. W. Phelps": 2.1512033283458542e-16,
+       "not in set": 0.031876713044934925
+      },
+      "0.35": {
+       "Ethan Smith": 2.0748872675442042e-16,
+       "Gilbert J. Hunt": 2.2901364394046624e-14,
+       "Oliver Cowdery": 2.0748872675442042e-16,
+       "Parley P. Pratt": 0.9337781580417424,
+       "Sidney Rigdon": 2.0748872675442042e-16,
+       "Solomon Spalding": 2.0748872675442042e-16,
+       "W. W. Phelps": 2.0748872675442042e-16,
+       "not in set": 0.06622184195823372
+      },
+      "0.5": {
+       "Ethan Smith": 1.9634393501118887e-16,
+       "Gilbert J. Hunt": 2.1671268953200848e-14,
+       "Oliver Cowdery": 1.9634393501118887e-16,
+       "Parley P. Pratt": 0.8836223579241316,
+       "Sidney Rigdon": 1.9634393501118887e-16,
+       "Solomon Spalding": 1.9634393501118887e-16,
+       "W. W. Phelps": 1.9634393501118887e-16,
+       "not in set": 0.11637764207584567
+      },
+      "0.65": {
+       "Ethan Smith": 1.785346948806653e-16,
+       "Gilbert J. Hunt": 1.9705591568265477e-14,
+       "Oliver Cowdery": 1.785346948806653e-16,
+       "Parley P. Pratt": 0.8034740062265229,
+       "Sidney Rigdon": 1.785346948806653e-16,
+       "Solomon Spalding": 1.785346948806653e-16,
+       "W. W. Phelps": 1.785346948806653e-16,
+       "not in set": 0.19652599377345661
+      },
+      "0.8": {
+       "Ethan Smith": 1.4553342461236055e-16,
+       "Gilbert J. Hunt": 1.6063108780391495e-14,
+       "Oliver Cowdery": 1.4553342461236055e-16,
+       "Parley P. Pratt": 0.6549557428673295,
+       "Sidney Rigdon": 1.4553342461236055e-16,
+       "Solomon Spalding": 1.4553342461236055e-16,
+       "W. W. Phelps": 1.4553342461236055e-16,
+       "not in set": 0.34504425713265374
+      }
+     },
+     "by_family": {
+      "classical": {
+       "Ethan Smith": 2.703848358822811e-38,
+       "Gilbert J. Hunt": 2.1620352704792668e-33,
+       "Oliver Cowdery": 2.703848358822811e-38,
+       "Parley P. Pratt": 0.9994945362365231,
+       "Sidney Rigdon": 2.703848358822811e-38,
+       "Solomon Spalding": 2.703848358822811e-38,
+       "W. W. Phelps": 2.703848358822811e-38,
+       "not in set": 0.0005054637634768587
+      },
+      "embedding": {
+       "Ethan Smith": 1.0871744416276518e-35,
+       "Gilbert J. Hunt": 3.7843879011346314e-20,
+       "Oliver Cowdery": 1.0871744416276518e-35,
+       "Parley P. Pratt": 1.3278101392805737e-29,
+       "Sidney Rigdon": 1.0871744416276518e-35,
+       "Solomon Spalding": 1.0871744416276518e-35,
+       "W. W. Phelps": 1.0871744416276518e-35,
+       "not in set": 1.0
+      },
+      "authorial": {
+       "Ethan Smith": 3.964433590623644e-62,
+       "Gilbert J. Hunt": 6.72760571479339e-59,
+       "Oliver Cowdery": 3.964433590623644e-62,
+       "Parley P. Pratt": 1.0773867487141708e-59,
+       "Sidney Rigdon": 3.964433590623644e-62,
+       "Solomon Spalding": 3.964433590623644e-62,
+       "W. W. Phelps": 1.7696321485672253e-14,
+       "not in set": 0.9999999999999822
+      }
+     }
+    }
+   },
+   "drop_one": {
+    "classical": {
+     "discovery": {
+      "posterior": {
+       "Ethan Smith": 0.07142857142857142,
+       "Gilbert J. Hunt": 0.07142857142857142,
+       "Oliver Cowdery": 0.07142857142857142,
+       "Parley P. Pratt": 0.07142857142857142,
+       "Sidney Rigdon": 0.07142857142857142,
+       "Solomon Spalding": 0.07142857142857142,
+       "W. W. Phelps": 0.07142857142857142,
+       "not in set": 0.5
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.11428571428571428,
+        "Gilbert J. Hunt": 0.11428571428571428,
+        "Oliver Cowdery": 0.11428571428571428,
+        "Parley P. Pratt": 0.11428571428571428,
+        "Sidney Rigdon": 0.11428571428571428,
+        "Solomon Spalding": 0.11428571428571428,
+        "W. W. Phelps": 0.11428571428571428,
+        "not in set": 0.20000000000000004
+       },
+       "0.35": {
+        "Ethan Smith": 0.09285714285714286,
+        "Gilbert J. Hunt": 0.09285714285714286,
+        "Oliver Cowdery": 0.09285714285714286,
+        "Parley P. Pratt": 0.09285714285714286,
+        "Sidney Rigdon": 0.09285714285714286,
+        "Solomon Spalding": 0.09285714285714286,
+        "W. W. Phelps": 0.09285714285714286,
+        "not in set": 0.35
+       },
+       "0.5": {
+        "Ethan Smith": 0.07142857142857142,
+        "Gilbert J. Hunt": 0.07142857142857142,
+        "Oliver Cowdery": 0.07142857142857142,
+        "Parley P. Pratt": 0.07142857142857142,
+        "Sidney Rigdon": 0.07142857142857142,
+        "Solomon Spalding": 0.07142857142857142,
+        "W. W. Phelps": 0.07142857142857142,
+        "not in set": 0.5
+       },
+       "0.65": {
+        "Ethan Smith": 0.04999999999999999,
+        "Gilbert J. Hunt": 0.04999999999999999,
+        "Oliver Cowdery": 0.04999999999999999,
+        "Parley P. Pratt": 0.04999999999999999,
+        "Sidney Rigdon": 0.04999999999999999,
+        "Solomon Spalding": 0.04999999999999999,
+        "W. W. Phelps": 0.04999999999999999,
+        "not in set": 0.6500000000000001
+       },
+       "0.8": {
+        "Ethan Smith": 0.028571428571428564,
+        "Gilbert J. Hunt": 0.028571428571428564,
+        "Oliver Cowdery": 0.028571428571428564,
+        "Parley P. Pratt": 0.028571428571428564,
+        "Sidney Rigdon": 0.028571428571428564,
+        "Solomon Spalding": 0.028571428571428564,
+        "W. W. Phelps": 0.028571428571428564,
+        "not in set": 0.8
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.02002272867826765,
+        "Gilbert J. Hunt": 0.025879290365549305,
+        "Oliver Cowdery": 0.02002272867826765,
+        "Parley P. Pratt": 0.1531888338254764,
+        "Sidney Rigdon": 0.02002272867826765,
+        "Solomon Spalding": 0.02002272867826765,
+        "W. W. Phelps": 0.02002272867826765,
+        "not in set": 0.720818232417636
+       },
+       "embedding": {
+        "Ethan Smith": 0.021659999018633663,
+        "Gilbert J. Hunt": 0.058267284820978066,
+        "Oliver Cowdery": 0.021659999018633663,
+        "Parley P. Pratt": 0.02678448077122041,
+        "Sidney Rigdon": 0.021659999018633663,
+        "Solomon Spalding": 0.021659999018633663,
+        "W. W. Phelps": 0.021659999018633663,
+        "not in set": 0.8066482393146333
+       },
+       "authorial": {
+        "Ethan Smith": 0.006620344944367238,
+        "Gilbert J. Hunt": 0.008293726136199723,
+        "Oliver Cowdery": 0.006620344944367238,
+        "Parley P. Pratt": 0.008541332730791941,
+        "Sidney Rigdon": 0.006620344944367238,
+        "Solomon Spalding": 0.006620344944367238,
+        "W. W. Phelps": 0.05631664892159389,
+        "not in set": 0.9003669124339455
+       }
+      }
+     },
+     "confirmation": {
+      "posterior": {
+       "Ethan Smith": 0.07142857142857142,
+       "Gilbert J. Hunt": 0.07142857142857142,
+       "Oliver Cowdery": 0.07142857142857142,
+       "Parley P. Pratt": 0.07142857142857142,
+       "Sidney Rigdon": 0.07142857142857142,
+       "Solomon Spalding": 0.07142857142857142,
+       "W. W. Phelps": 0.07142857142857142,
+       "not in set": 0.5
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.11428571428571428,
+        "Gilbert J. Hunt": 0.11428571428571428,
+        "Oliver Cowdery": 0.11428571428571428,
+        "Parley P. Pratt": 0.11428571428571428,
+        "Sidney Rigdon": 0.11428571428571428,
+        "Solomon Spalding": 0.11428571428571428,
+        "W. W. Phelps": 0.11428571428571428,
+        "not in set": 0.20000000000000004
+       },
+       "0.35": {
+        "Ethan Smith": 0.09285714285714286,
+        "Gilbert J. Hunt": 0.09285714285714286,
+        "Oliver Cowdery": 0.09285714285714286,
+        "Parley P. Pratt": 0.09285714285714286,
+        "Sidney Rigdon": 0.09285714285714286,
+        "Solomon Spalding": 0.09285714285714286,
+        "W. W. Phelps": 0.09285714285714286,
+        "not in set": 0.35
+       },
+       "0.5": {
+        "Ethan Smith": 0.07142857142857142,
+        "Gilbert J. Hunt": 0.07142857142857142,
+        "Oliver Cowdery": 0.07142857142857142,
+        "Parley P. Pratt": 0.07142857142857142,
+        "Sidney Rigdon": 0.07142857142857142,
+        "Solomon Spalding": 0.07142857142857142,
+        "W. W. Phelps": 0.07142857142857142,
+        "not in set": 0.5
+       },
+       "0.65": {
+        "Ethan Smith": 0.04999999999999999,
+        "Gilbert J. Hunt": 0.04999999999999999,
+        "Oliver Cowdery": 0.04999999999999999,
+        "Parley P. Pratt": 0.04999999999999999,
+        "Sidney Rigdon": 0.04999999999999999,
+        "Solomon Spalding": 0.04999999999999999,
+        "W. W. Phelps": 0.04999999999999999,
+        "not in set": 0.6500000000000001
+       },
+       "0.8": {
+        "Ethan Smith": 0.028571428571428564,
+        "Gilbert J. Hunt": 0.028571428571428564,
+        "Oliver Cowdery": 0.028571428571428564,
+        "Parley P. Pratt": 0.028571428571428564,
+        "Sidney Rigdon": 0.028571428571428564,
+        "Solomon Spalding": 0.028571428571428564,
+        "W. W. Phelps": 0.028571428571428564,
+        "not in set": 0.8
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.021024837133276252,
+        "Gilbert J. Hunt": 0.026350584263363615,
+        "Oliver Cowdery": 0.021024837133276252,
+        "Parley P. Pratt": 0.11163109327230904,
+        "Sidney Rigdon": 0.021024837133276252,
+        "Solomon Spalding": 0.021024837133276252,
+        "W. W. Phelps": 0.021024837133276252,
+        "not in set": 0.7568941367979461
+       },
+       "embedding": {
+        "Ethan Smith": 0.022003990492440645,
+        "Gilbert J. Hunt": 0.0385456096043461,
+        "Oliver Cowdery": 0.022003990492440645,
+        "Parley P. Pratt": 0.03197548166324698,
+        "Sidney Rigdon": 0.022003990492440645,
+        "Solomon Spalding": 0.022003990492440645,
+        "W. W. Phelps": 0.022003990492440645,
+        "not in set": 0.8194589562702036
+       },
+       "authorial": {
+        "Ethan Smith": 0.006478998790751821,
+        "Gilbert J. Hunt": 0.00715435178064992,
+        "Oliver Cowdery": 0.006478998790751821,
+        "Parley P. Pratt": 0.006478998790751821,
+        "Sidney Rigdon": 0.006478998790751821,
+        "Solomon Spalding": 0.006478998790751821,
+        "W. W. Phelps": 0.07930681872334222,
+        "not in set": 0.8811438355422487
+       }
+      }
+     },
+     "both": {
+      "posterior": {
+       "Ethan Smith": 0.07142857142857142,
+       "Gilbert J. Hunt": 0.07142857142857142,
+       "Oliver Cowdery": 0.07142857142857142,
+       "Parley P. Pratt": 0.07142857142857142,
+       "Sidney Rigdon": 0.07142857142857142,
+       "Solomon Spalding": 0.07142857142857142,
+       "W. W. Phelps": 0.07142857142857142,
+       "not in set": 0.5
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.11428571428571428,
+        "Gilbert J. Hunt": 0.11428571428571428,
+        "Oliver Cowdery": 0.11428571428571428,
+        "Parley P. Pratt": 0.11428571428571428,
+        "Sidney Rigdon": 0.11428571428571428,
+        "Solomon Spalding": 0.11428571428571428,
+        "W. W. Phelps": 0.11428571428571428,
+        "not in set": 0.20000000000000004
+       },
+       "0.35": {
+        "Ethan Smith": 0.09285714285714286,
+        "Gilbert J. Hunt": 0.09285714285714286,
+        "Oliver Cowdery": 0.09285714285714286,
+        "Parley P. Pratt": 0.09285714285714286,
+        "Sidney Rigdon": 0.09285714285714286,
+        "Solomon Spalding": 0.09285714285714286,
+        "W. W. Phelps": 0.09285714285714286,
+        "not in set": 0.35
+       },
+       "0.5": {
+        "Ethan Smith": 0.07142857142857142,
+        "Gilbert J. Hunt": 0.07142857142857142,
+        "Oliver Cowdery": 0.07142857142857142,
+        "Parley P. Pratt": 0.07142857142857142,
+        "Sidney Rigdon": 0.07142857142857142,
+        "Solomon Spalding": 0.07142857142857142,
+        "W. W. Phelps": 0.07142857142857142,
+        "not in set": 0.5
+       },
+       "0.65": {
+        "Ethan Smith": 0.04999999999999999,
+        "Gilbert J. Hunt": 0.04999999999999999,
+        "Oliver Cowdery": 0.04999999999999999,
+        "Parley P. Pratt": 0.04999999999999999,
+        "Sidney Rigdon": 0.04999999999999999,
+        "Solomon Spalding": 0.04999999999999999,
+        "W. W. Phelps": 0.04999999999999999,
+        "not in set": 0.6500000000000001
+       },
+       "0.8": {
+        "Ethan Smith": 0.028571428571428564,
+        "Gilbert J. Hunt": 0.028571428571428564,
+        "Oliver Cowdery": 0.028571428571428564,
+        "Parley P. Pratt": 0.028571428571428564,
+        "Sidney Rigdon": 0.028571428571428564,
+        "Solomon Spalding": 0.028571428571428564,
+        "W. W. Phelps": 0.028571428571428564,
+        "not in set": 0.8
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.004303216851021821,
+        "Gilbert J. Hunt": 0.006970756972025024,
+        "Oliver Cowdery": 0.004303216851021821,
+        "Parley P. Pratt": 0.17480329606939604,
+        "Sidney Rigdon": 0.004303216851021821,
+        "Solomon Spalding": 0.004303216851021821,
+        "W. W. Phelps": 0.004303216851021821,
+        "not in set": 0.7967098627034698
+       },
+       "embedding": {
+        "Ethan Smith": 0.004770063403716104,
+        "Gilbert J. Hunt": 0.022478326235405098,
+        "Oliver Cowdery": 0.004770063403716104,
+        "Parley P. Pratt": 0.00857165331566598,
+        "Sidney Rigdon": 0.004770063403716104,
+        "Solomon Spalding": 0.004770063403716104,
+        "W. W. Phelps": 0.004770063403716104,
+        "not in set": 0.9450997034303484
+       },
+       "authorial": {
+        "Ethan Smith": 0.00036322886863241036,
+        "Gilbert J. Hunt": 0.0005024719491817205,
+        "Oliver Cowdery": 0.00036322886863241036,
+        "Parley P. Pratt": 0.0004686249206785192,
+        "Sidney Rigdon": 0.00036322886863241036,
+        "Solomon Spalding": 0.00036322886863241036,
+        "W. W. Phelps": 0.037821537052027634,
+        "not in set": 0.9597544506035824
+       }
+      }
+     }
+    },
+    "embedding": {
+     "discovery": {
+      "posterior": {
+       "Ethan Smith": 0.04484930665462553,
+       "Gilbert J. Hunt": 0.04990965014314073,
+       "Oliver Cowdery": 0.04484930665462553,
+       "Parley P. Pratt": 0.10470457781554361,
+       "Sidney Rigdon": 0.04484930665462553,
+       "Solomon Spalding": 0.04484930665462553,
+       "W. W. Phelps": 0.04484930665462553,
+       "not in set": 0.621139238768188
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.0839645765049668,
+        "Gilbert J. Hunt": 0.09343829259281682,
+        "Oliver Cowdery": 0.0839645765049668,
+        "Parley P. Pratt": 0.1960225517445486,
+        "Sidney Rigdon": 0.0839645765049668,
+        "Solomon Spalding": 0.0839645765049668,
+        "W. W. Phelps": 0.0839645765049668,
+        "not in set": 0.29071627313780046
+       },
+       "0.35": {
+        "Ethan Smith": 0.06287400404392678,
+        "Gilbert J. Hunt": 0.06996807261918196,
+        "Oliver Cowdery": 0.06287400404392678,
+        "Parley P. Pratt": 0.14678478977808623,
+        "Sidney Rigdon": 0.06287400404392678,
+        "Solomon Spalding": 0.06287400404392678,
+        "W. W. Phelps": 0.06287400404392678,
+        "not in set": 0.46887711738309795
+       },
+       "0.5": {
+        "Ethan Smith": 0.04484930665462553,
+        "Gilbert J. Hunt": 0.04990965014314073,
+        "Oliver Cowdery": 0.04484930665462553,
+        "Parley P. Pratt": 0.10470457781554361,
+        "Sidney Rigdon": 0.04484930665462553,
+        "Solomon Spalding": 0.04484930665462553,
+        "W. W. Phelps": 0.04484930665462553,
+        "not in set": 0.621139238768188
+       },
+       "0.65": {
+        "Ethan Smith": 0.029267266059475352,
+        "Gilbert J. Hunt": 0.03256948922138979,
+        "Oliver Cowdery": 0.029267266059475352,
+        "Parley P. Pratt": 0.06832695899115993,
+        "Sidney Rigdon": 0.029267266059475352,
+        "Solomon Spalding": 0.029267266059475352,
+        "W. W. Phelps": 0.029267266059475352,
+        "not in set": 0.7527672214900735
+       },
+       "0.8": {
+        "Ethan Smith": 0.015662858548108248,
+        "Gilbert J. Hunt": 0.017430097557527353,
+        "Oliver Cowdery": 0.015662858548108248,
+        "Parley P. Pratt": 0.036566295311838755,
+        "Sidney Rigdon": 0.015662858548108248,
+        "Solomon Spalding": 0.015662858548108248,
+        "W. W. Phelps": 0.015662858548108248,
+        "not in set": 0.8676893143900926
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.02002272867826765,
+        "Gilbert J. Hunt": 0.025879290365549305,
+        "Oliver Cowdery": 0.02002272867826765,
+        "Parley P. Pratt": 0.1531888338254764,
+        "Sidney Rigdon": 0.02002272867826765,
+        "Solomon Spalding": 0.02002272867826765,
+        "W. W. Phelps": 0.02002272867826765,
+        "not in set": 0.720818232417636
+       },
+       "embedding": {
+        "Ethan Smith": 0.021659999018633663,
+        "Gilbert J. Hunt": 0.058267284820978066,
+        "Oliver Cowdery": 0.021659999018633663,
+        "Parley P. Pratt": 0.02678448077122041,
+        "Sidney Rigdon": 0.021659999018633663,
+        "Solomon Spalding": 0.021659999018633663,
+        "W. W. Phelps": 0.021659999018633663,
+        "not in set": 0.8066482393146333
+       },
+       "authorial": {
+        "Ethan Smith": 0.006620344944367238,
+        "Gilbert J. Hunt": 0.008293726136199723,
+        "Oliver Cowdery": 0.006620344944367238,
+        "Parley P. Pratt": 0.008541332730791941,
+        "Sidney Rigdon": 0.006620344944367238,
+        "Solomon Spalding": 0.006620344944367238,
+        "W. W. Phelps": 0.05631664892159389,
+        "not in set": 0.9003669124339455
+       }
+      }
+     },
+     "confirmation": {
+      "posterior": {
+       "Ethan Smith": 0.04555170492593089,
+       "Gilbert J. Hunt": 0.05004514749696191,
+       "Oliver Cowdery": 0.04555170492593089,
+       "Parley P. Pratt": 0.09132924356879855,
+       "Sidney Rigdon": 0.04555170492593089,
+       "Solomon Spalding": 0.04555170492593089,
+       "W. W. Phelps": 0.04555170492593089,
+       "not in set": 0.630867084304585
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.08646053337350057,
+        "Gilbert J. Hunt": 0.09498942251181632,
+        "Oliver Cowdery": 0.08646053337350057,
+        "Parley P. Pratt": 0.17334971598530785,
+        "Sidney Rigdon": 0.08646053337350057,
+        "Solomon Spalding": 0.08646053337350057,
+        "W. W. Phelps": 0.08646053337350057,
+        "not in set": 0.299358194635373
+       },
+       "0.35": {
+        "Ethan Smith": 0.06426317717905315,
+        "Gilbert J. Hunt": 0.07060241072817294,
+        "Oliver Cowdery": 0.06426317717905315,
+        "Parley P. Pratt": 0.12884495477466829,
+        "Sidney Rigdon": 0.06426317717905315,
+        "Solomon Spalding": 0.06426317717905315,
+        "W. W. Phelps": 0.06426317717905315,
+        "not in set": 0.47923674860189297
+       },
+       "0.5": {
+        "Ethan Smith": 0.04555170492593089,
+        "Gilbert J. Hunt": 0.05004514749696191,
+        "Oliver Cowdery": 0.04555170492593089,
+        "Parley P. Pratt": 0.09132924356879855,
+        "Sidney Rigdon": 0.04555170492593089,
+        "Solomon Spalding": 0.04555170492593089,
+        "W. W. Phelps": 0.04555170492593089,
+        "not in set": 0.630867084304585
+       },
+       "0.65": {
+        "Ethan Smith": 0.02956476100557474,
+        "Gilbert J. Hunt": 0.0324811733752286,
+        "Oliver Cowdery": 0.02956476100557474,
+        "Parley P. Pratt": 0.05927609654395989,
+        "Sidney Rigdon": 0.02956476100557474,
+        "Solomon Spalding": 0.02956476100557474,
+        "W. W. Phelps": 0.02956476100557474,
+        "not in set": 0.7604189250529378
+       },
+       "0.8": {
+        "Ethan Smith": 0.015747661341170352,
+        "Gilbert J. Hunt": 0.017301087540687043,
+        "Oliver Cowdery": 0.015747661341170352,
+        "Parley P. Pratt": 0.03157339556456369,
+        "Sidney Rigdon": 0.015747661341170352,
+        "Solomon Spalding": 0.015747661341170352,
+        "W. W. Phelps": 0.015747661341170352,
+        "not in set": 0.8723872101888975
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.021024837133276252,
+        "Gilbert J. Hunt": 0.026350584263363615,
+        "Oliver Cowdery": 0.021024837133276252,
+        "Parley P. Pratt": 0.11163109327230904,
+        "Sidney Rigdon": 0.021024837133276252,
+        "Solomon Spalding": 0.021024837133276252,
+        "W. W. Phelps": 0.021024837133276252,
+        "not in set": 0.7568941367979461
+       },
+       "embedding": {
+        "Ethan Smith": 0.022003990492440645,
+        "Gilbert J. Hunt": 0.0385456096043461,
+        "Oliver Cowdery": 0.022003990492440645,
+        "Parley P. Pratt": 0.03197548166324698,
+        "Sidney Rigdon": 0.022003990492440645,
+        "Solomon Spalding": 0.022003990492440645,
+        "W. W. Phelps": 0.022003990492440645,
+        "not in set": 0.8194589562702036
+       },
+       "authorial": {
+        "Ethan Smith": 0.006478998790751821,
+        "Gilbert J. Hunt": 0.00715435178064992,
+        "Oliver Cowdery": 0.006478998790751821,
+        "Parley P. Pratt": 0.006478998790751821,
+        "Sidney Rigdon": 0.006478998790751821,
+        "Solomon Spalding": 0.006478998790751821,
+        "W. W. Phelps": 0.07930681872334222,
+        "not in set": 0.8811438355422487
+       }
+      }
+     },
+     "both": {
+      "posterior": {
+       "Ethan Smith": 0.02610660772746033,
+       "Gilbert J. Hunt": 0.031918066314391584,
+       "Oliver Cowdery": 0.02610660772746033,
+       "Parley P. Pratt": 0.12219842382462942,
+       "Sidney Rigdon": 0.02610660772746033,
+       "Solomon Spalding": 0.02610660772746033,
+       "W. W. Phelps": 0.02610660772746033,
+       "not in set": 0.7153504712236773
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.05632649776799785,
+        "Gilbert J. Hunt": 0.06886505170586855,
+        "Oliver Cowdery": 0.05632649776799785,
+        "Parley P. Pratt": 0.2636500811850373,
+        "Sidney Rigdon": 0.05632649776799785,
+        "Solomon Spalding": 0.05632649776799785,
+        "W. W. Phelps": 0.05632649776799785,
+        "not in set": 0.3858523782691049
+       },
+       "0.35": {
+        "Ethan Smith": 0.03897449564776988,
+        "Gilbert J. Hunt": 0.04765040903215431,
+        "Oliver Cowdery": 0.03897449564776988,
+        "Parley P. Pratt": 0.18242975063005898,
+        "Sidney Rigdon": 0.03897449564776988,
+        "Solomon Spalding": 0.03897449564776988,
+        "W. W. Phelps": 0.03897449564776988,
+        "not in set": 0.5750473620989374
+       },
+       "0.5": {
+        "Ethan Smith": 0.02610660772746033,
+        "Gilbert J. Hunt": 0.031918066314391584,
+        "Oliver Cowdery": 0.02610660772746033,
+        "Parley P. Pratt": 0.12219842382462942,
+        "Sidney Rigdon": 0.02610660772746033,
+        "Solomon Spalding": 0.02610660772746033,
+        "W. W. Phelps": 0.02610660772746033,
+        "not in set": 0.7153504712236773
+       },
+       "0.65": {
+        "Ethan Smith": 0.016183544985946364,
+        "Gilbert J. Hunt": 0.019786081265550357,
+        "Oliver Cowdery": 0.016183544985946364,
+        "Parley P. Pratt": 0.075751078417495,
+        "Sidney Rigdon": 0.016183544985946364,
+        "Solomon Spalding": 0.016183544985946364,
+        "W. W. Phelps": 0.016183544985946364,
+        "not in set": 0.8235451153872227
+       },
+       "0.8": {
+        "Ethan Smith": 0.0082982139497197,
+        "Gilbert J. Hunt": 0.010145436967651886,
+        "Oliver Cowdery": 0.0082982139497197,
+        "Parley P. Pratt": 0.03884183942246505,
+        "Sidney Rigdon": 0.0082982139497197,
+        "Solomon Spalding": 0.0082982139497197,
+        "W. W. Phelps": 0.0082982139497197,
+        "not in set": 0.9095216538612846
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.004303216851021821,
+        "Gilbert J. Hunt": 0.006970756972025024,
+        "Oliver Cowdery": 0.004303216851021821,
+        "Parley P. Pratt": 0.17480329606939604,
+        "Sidney Rigdon": 0.004303216851021821,
+        "Solomon Spalding": 0.004303216851021821,
+        "W. W. Phelps": 0.004303216851021821,
+        "not in set": 0.7967098627034698
+       },
+       "embedding": {
+        "Ethan Smith": 0.004770063403716104,
+        "Gilbert J. Hunt": 0.022478326235405098,
+        "Oliver Cowdery": 0.004770063403716104,
+        "Parley P. Pratt": 0.00857165331566598,
+        "Sidney Rigdon": 0.004770063403716104,
+        "Solomon Spalding": 0.004770063403716104,
+        "W. W. Phelps": 0.004770063403716104,
+        "not in set": 0.9450997034303484
+       },
+       "authorial": {
+        "Ethan Smith": 0.00036322886863241036,
+        "Gilbert J. Hunt": 0.0005024719491817205,
+        "Oliver Cowdery": 0.00036322886863241036,
+        "Parley P. Pratt": 0.0004686249206785192,
+        "Sidney Rigdon": 0.00036322886863241036,
+        "Solomon Spalding": 0.00036322886863241036,
+        "W. W. Phelps": 0.037821537052027634,
+        "not in set": 0.9597544506035824
+       }
+      }
+     }
+    },
+    "authorial": {
+     "discovery": {
+      "posterior": {
+       "Ethan Smith": 0.04484930665462553,
+       "Gilbert J. Hunt": 0.04990965014314073,
+       "Oliver Cowdery": 0.04484930665462553,
+       "Parley P. Pratt": 0.10470457781554361,
+       "Sidney Rigdon": 0.04484930665462553,
+       "Solomon Spalding": 0.04484930665462553,
+       "W. W. Phelps": 0.04484930665462553,
+       "not in set": 0.621139238768188
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.0839645765049668,
+        "Gilbert J. Hunt": 0.09343829259281682,
+        "Oliver Cowdery": 0.0839645765049668,
+        "Parley P. Pratt": 0.1960225517445486,
+        "Sidney Rigdon": 0.0839645765049668,
+        "Solomon Spalding": 0.0839645765049668,
+        "W. W. Phelps": 0.0839645765049668,
+        "not in set": 0.29071627313780046
+       },
+       "0.35": {
+        "Ethan Smith": 0.06287400404392678,
+        "Gilbert J. Hunt": 0.06996807261918196,
+        "Oliver Cowdery": 0.06287400404392678,
+        "Parley P. Pratt": 0.14678478977808623,
+        "Sidney Rigdon": 0.06287400404392678,
+        "Solomon Spalding": 0.06287400404392678,
+        "W. W. Phelps": 0.06287400404392678,
+        "not in set": 0.46887711738309795
+       },
+       "0.5": {
+        "Ethan Smith": 0.04484930665462553,
+        "Gilbert J. Hunt": 0.04990965014314073,
+        "Oliver Cowdery": 0.04484930665462553,
+        "Parley P. Pratt": 0.10470457781554361,
+        "Sidney Rigdon": 0.04484930665462553,
+        "Solomon Spalding": 0.04484930665462553,
+        "W. W. Phelps": 0.04484930665462553,
+        "not in set": 0.621139238768188
+       },
+       "0.65": {
+        "Ethan Smith": 0.029267266059475352,
+        "Gilbert J. Hunt": 0.03256948922138979,
+        "Oliver Cowdery": 0.029267266059475352,
+        "Parley P. Pratt": 0.06832695899115993,
+        "Sidney Rigdon": 0.029267266059475352,
+        "Solomon Spalding": 0.029267266059475352,
+        "W. W. Phelps": 0.029267266059475352,
+        "not in set": 0.7527672214900735
+       },
+       "0.8": {
+        "Ethan Smith": 0.015662858548108248,
+        "Gilbert J. Hunt": 0.017430097557527353,
+        "Oliver Cowdery": 0.015662858548108248,
+        "Parley P. Pratt": 0.036566295311838755,
+        "Sidney Rigdon": 0.015662858548108248,
+        "Solomon Spalding": 0.015662858548108248,
+        "W. W. Phelps": 0.015662858548108248,
+        "not in set": 0.8676893143900926
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.02002272867826765,
+        "Gilbert J. Hunt": 0.025879290365549305,
+        "Oliver Cowdery": 0.02002272867826765,
+        "Parley P. Pratt": 0.1531888338254764,
+        "Sidney Rigdon": 0.02002272867826765,
+        "Solomon Spalding": 0.02002272867826765,
+        "W. W. Phelps": 0.02002272867826765,
+        "not in set": 0.720818232417636
+       },
+       "embedding": {
+        "Ethan Smith": 0.021659999018633663,
+        "Gilbert J. Hunt": 0.058267284820978066,
+        "Oliver Cowdery": 0.021659999018633663,
+        "Parley P. Pratt": 0.02678448077122041,
+        "Sidney Rigdon": 0.021659999018633663,
+        "Solomon Spalding": 0.021659999018633663,
+        "W. W. Phelps": 0.021659999018633663,
+        "not in set": 0.8066482393146333
+       },
+       "authorial": {
+        "Ethan Smith": 0.006620344944367238,
+        "Gilbert J. Hunt": 0.008293726136199723,
+        "Oliver Cowdery": 0.006620344944367238,
+        "Parley P. Pratt": 0.008541332730791941,
+        "Sidney Rigdon": 0.006620344944367238,
+        "Solomon Spalding": 0.006620344944367238,
+        "W. W. Phelps": 0.05631664892159389,
+        "not in set": 0.9003669124339455
+       }
+      }
+     },
+     "confirmation": {
+      "posterior": {
+       "Ethan Smith": 0.04555170492593089,
+       "Gilbert J. Hunt": 0.05004514749696191,
+       "Oliver Cowdery": 0.04555170492593089,
+       "Parley P. Pratt": 0.09132924356879855,
+       "Sidney Rigdon": 0.04555170492593089,
+       "Solomon Spalding": 0.04555170492593089,
+       "W. W. Phelps": 0.04555170492593089,
+       "not in set": 0.630867084304585
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.08646053337350057,
+        "Gilbert J. Hunt": 0.09498942251181632,
+        "Oliver Cowdery": 0.08646053337350057,
+        "Parley P. Pratt": 0.17334971598530785,
+        "Sidney Rigdon": 0.08646053337350057,
+        "Solomon Spalding": 0.08646053337350057,
+        "W. W. Phelps": 0.08646053337350057,
+        "not in set": 0.299358194635373
+       },
+       "0.35": {
+        "Ethan Smith": 0.06426317717905315,
+        "Gilbert J. Hunt": 0.07060241072817294,
+        "Oliver Cowdery": 0.06426317717905315,
+        "Parley P. Pratt": 0.12884495477466829,
+        "Sidney Rigdon": 0.06426317717905315,
+        "Solomon Spalding": 0.06426317717905315,
+        "W. W. Phelps": 0.06426317717905315,
+        "not in set": 0.47923674860189297
+       },
+       "0.5": {
+        "Ethan Smith": 0.04555170492593089,
+        "Gilbert J. Hunt": 0.05004514749696191,
+        "Oliver Cowdery": 0.04555170492593089,
+        "Parley P. Pratt": 0.09132924356879855,
+        "Sidney Rigdon": 0.04555170492593089,
+        "Solomon Spalding": 0.04555170492593089,
+        "W. W. Phelps": 0.04555170492593089,
+        "not in set": 0.630867084304585
+       },
+       "0.65": {
+        "Ethan Smith": 0.02956476100557474,
+        "Gilbert J. Hunt": 0.0324811733752286,
+        "Oliver Cowdery": 0.02956476100557474,
+        "Parley P. Pratt": 0.05927609654395989,
+        "Sidney Rigdon": 0.02956476100557474,
+        "Solomon Spalding": 0.02956476100557474,
+        "W. W. Phelps": 0.02956476100557474,
+        "not in set": 0.7604189250529378
+       },
+       "0.8": {
+        "Ethan Smith": 0.015747661341170352,
+        "Gilbert J. Hunt": 0.017301087540687043,
+        "Oliver Cowdery": 0.015747661341170352,
+        "Parley P. Pratt": 0.03157339556456369,
+        "Sidney Rigdon": 0.015747661341170352,
+        "Solomon Spalding": 0.015747661341170352,
+        "W. W. Phelps": 0.015747661341170352,
+        "not in set": 0.8723872101888975
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.021024837133276252,
+        "Gilbert J. Hunt": 0.026350584263363615,
+        "Oliver Cowdery": 0.021024837133276252,
+        "Parley P. Pratt": 0.11163109327230904,
+        "Sidney Rigdon": 0.021024837133276252,
+        "Solomon Spalding": 0.021024837133276252,
+        "W. W. Phelps": 0.021024837133276252,
+        "not in set": 0.7568941367979461
+       },
+       "embedding": {
+        "Ethan Smith": 0.022003990492440645,
+        "Gilbert J. Hunt": 0.0385456096043461,
+        "Oliver Cowdery": 0.022003990492440645,
+        "Parley P. Pratt": 0.03197548166324698,
+        "Sidney Rigdon": 0.022003990492440645,
+        "Solomon Spalding": 0.022003990492440645,
+        "W. W. Phelps": 0.022003990492440645,
+        "not in set": 0.8194589562702036
+       },
+       "authorial": {
+        "Ethan Smith": 0.006478998790751821,
+        "Gilbert J. Hunt": 0.00715435178064992,
+        "Oliver Cowdery": 0.006478998790751821,
+        "Parley P. Pratt": 0.006478998790751821,
+        "Sidney Rigdon": 0.006478998790751821,
+        "Solomon Spalding": 0.006478998790751821,
+        "W. W. Phelps": 0.07930681872334222,
+        "not in set": 0.8811438355422487
+       }
+      }
+     },
+     "both": {
+      "posterior": {
+       "Ethan Smith": 0.02610660772746033,
+       "Gilbert J. Hunt": 0.031918066314391584,
+       "Oliver Cowdery": 0.02610660772746033,
+       "Parley P. Pratt": 0.12219842382462942,
+       "Sidney Rigdon": 0.02610660772746033,
+       "Solomon Spalding": 0.02610660772746033,
+       "W. W. Phelps": 0.02610660772746033,
+       "not in set": 0.7153504712236773
+      },
+      "prior_grid": {
+       "0.2": {
+        "Ethan Smith": 0.05632649776799785,
+        "Gilbert J. Hunt": 0.06886505170586855,
+        "Oliver Cowdery": 0.05632649776799785,
+        "Parley P. Pratt": 0.2636500811850373,
+        "Sidney Rigdon": 0.05632649776799785,
+        "Solomon Spalding": 0.05632649776799785,
+        "W. W. Phelps": 0.05632649776799785,
+        "not in set": 0.3858523782691049
+       },
+       "0.35": {
+        "Ethan Smith": 0.03897449564776988,
+        "Gilbert J. Hunt": 0.04765040903215431,
+        "Oliver Cowdery": 0.03897449564776988,
+        "Parley P. Pratt": 0.18242975063005898,
+        "Sidney Rigdon": 0.03897449564776988,
+        "Solomon Spalding": 0.03897449564776988,
+        "W. W. Phelps": 0.03897449564776988,
+        "not in set": 0.5750473620989374
+       },
+       "0.5": {
+        "Ethan Smith": 0.02610660772746033,
+        "Gilbert J. Hunt": 0.031918066314391584,
+        "Oliver Cowdery": 0.02610660772746033,
+        "Parley P. Pratt": 0.12219842382462942,
+        "Sidney Rigdon": 0.02610660772746033,
+        "Solomon Spalding": 0.02610660772746033,
+        "W. W. Phelps": 0.02610660772746033,
+        "not in set": 0.7153504712236773
+       },
+       "0.65": {
+        "Ethan Smith": 0.016183544985946364,
+        "Gilbert J. Hunt": 0.019786081265550357,
+        "Oliver Cowdery": 0.016183544985946364,
+        "Parley P. Pratt": 0.075751078417495,
+        "Sidney Rigdon": 0.016183544985946364,
+        "Solomon Spalding": 0.016183544985946364,
+        "W. W. Phelps": 0.016183544985946364,
+        "not in set": 0.8235451153872227
+       },
+       "0.8": {
+        "Ethan Smith": 0.0082982139497197,
+        "Gilbert J. Hunt": 0.010145436967651886,
+        "Oliver Cowdery": 0.0082982139497197,
+        "Parley P. Pratt": 0.03884183942246505,
+        "Sidney Rigdon": 0.0082982139497197,
+        "Solomon Spalding": 0.0082982139497197,
+        "W. W. Phelps": 0.0082982139497197,
+        "not in set": 0.9095216538612846
+       }
+      },
+      "by_family": {
+       "classical": {
+        "Ethan Smith": 0.004303216851021821,
+        "Gilbert J. Hunt": 0.006970756972025024,
+        "Oliver Cowdery": 0.004303216851021821,
+        "Parley P. Pratt": 0.17480329606939604,
+        "Sidney Rigdon": 0.004303216851021821,
+        "Solomon Spalding": 0.004303216851021821,
+        "W. W. Phelps": 0.004303216851021821,
+        "not in set": 0.7967098627034698
+       },
+       "embedding": {
+        "Ethan Smith": 0.004770063403716104,
+        "Gilbert J. Hunt": 0.022478326235405098,
+        "Oliver Cowdery": 0.004770063403716104,
+        "Parley P. Pratt": 0.00857165331566598,
+        "Sidney Rigdon": 0.004770063403716104,
+        "Solomon Spalding": 0.004770063403716104,
+        "W. W. Phelps": 0.004770063403716104,
+        "not in set": 0.9450997034303484
+       },
+       "authorial": {
+        "Ethan Smith": 0.00036322886863241036,
+        "Gilbert J. Hunt": 0.0005024719491817205,
+        "Oliver Cowdery": 0.00036322886863241036,
+        "Parley P. Pratt": 0.0004686249206785192,
+        "Sidney Rigdon": 0.00036322886863241036,
+        "Solomon Spalding": 0.00036322886863241036,
+        "W. W. Phelps": 0.037821537052027634,
+        "not in set": 0.9597544506035824
+       }
+      }
+     }
+    }
+   },
+   "chunks": {
+    "discovery": {
+     "classical": 22,
+     "embedding": 22,
+     "authorial": 22
+    },
+    "confirmation": {
+     "classical": 25,
+     "embedding": 25,
+     "authorial": 25
+    }
+   }
+  }
+ },
+ "beside": {
+  "dating": "see data/blind/unblinded.json",
+  "sweep": {
+   "discovery_chunks": 22,
+   "leads": [],
+   "lead_count": 0,
+   "expected_false_leads": {
+    "mean": 0.035,
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 1,
+    "per_book": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   "nearest_20": [
+    {
+     "author": "wroe, john",
+     "mfw": 0.624904453754425,
+     "style": 0.3525521457195282
+    },
+    {
+     "author": "huntington",
+     "mfw": 0.580800473690033,
+     "style": 0.4082007110118866
+    },
+    {
+     "author": "fox, george",
+     "mfw": 0.6204356551170349,
+     "style": 0.4130503833293915
+    },
+    {
+     "author": "field, john",
+     "mfw": 0.5996926426887512,
+     "style": 0.4576859474182129
+    },
+    {
+     "author": "komensky, jan amos",
+     "mfw": 0.6571744084358215,
+     "style": 0.40464213490486145
+    },
+    {
+     "author": "herr, franz",
+     "mfw": 0.7567993402481079,
+     "style": 0.31373101472854614
+    },
+    {
+     "author": "sewel, william",
+     "mfw": 0.6068028807640076,
+     "style": 0.46739673614501953
+    },
+    {
+     "author": "daut, johann maximilian",
+     "mfw": 0.6511555314064026,
+     "style": 0.4314846694469452
+    },
+    {
+     "author": "fox, george crawford charles b",
+     "mfw": 0.5833746194839478,
+     "style": 0.4999692142009735
+    },
+    {
+     "author": "gratton, john",
+     "mfw": 0.5867428183555603,
+     "style": 0.5020257234573364
+    },
+    {
+     "author": "goouch, thomas d from old catalog",
+     "mfw": 0.6499033570289612,
+     "style": 0.4431678056716919
+    },
+    {
+     "author": "pugh, ellis",
+     "mfw": 0.6106897592544556,
+     "style": 0.4839250445365906
+    },
+    {
+     "author": "giles, j a",
+     "mfw": 0.6330763101577759,
+     "style": 0.46274518966674805
+    },
+    {
+     "author": "bennett, thomas seaman",
+     "mfw": 0.5821197032928467,
+     "style": 0.5158383846282959
+    },
+    {
+     "author": "sharpless, joseph",
+     "mfw": 0.6100833415985107,
+     "style": 0.49067914485931396
+    },
+    {
+     "author": "george fox, wilson armistead",
+     "mfw": 0.6209779381752014,
+     "style": 0.48110637068748474
+    },
+    {
+     "author": "savery, william n 85352418",
+     "mfw": 0.6924304366111755,
+     "style": 0.41029250621795654
+    },
+    {
+     "author": "neale, hannah",
+     "mfw": 0.5606297850608826,
+     "style": 0.5423579812049866
+    },
+    {
+     "author": "tuke, samuel from old catalog",
+     "mfw": 0.6163477301597595,
+     "style": 0.5001153349876404
+    },
+    {
+     "author": "jocelin",
+     "mfw": 0.6464951634407043,
+     "style": 0.4707096219062805
+    }
+   ]
+  },
+  "access": "data/access/access_table.csv"
+ }
+}
