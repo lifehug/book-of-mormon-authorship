@@ -24,9 +24,12 @@ Read in the order of trust fixed before unblinding (`docs/method-reliability.md`
 5. **The language is earlier than its period and than period imitations.** The grammar dates
    mostly before 1700 (median 1661); the text is more archaic than the 1780-1830 pseudo-biblical
    books (p 0.0001), also counting each book of it as one unit.
-6. **The narrators are not separable as different authors**, and dictation order explains their
+6. **No sign that the book changed how Joseph Smith wrote.** His ordinary prose of 1833-44 moves
+   away from the book's style over time, not toward it, by every measure, though on little text
+   (section 10.1).
+7. **The narrators are not separable as different authors**, and dictation order explains their
    differences about as well.
-7. **Period training matters.** The same method on a modern model makes false matches 86-92% of
+8. **Period training matters.** The same method on a modern model makes false matches 86-92% of
    the time; on the period models 22-47%, falling with size.
 
 None of this bears on how the text was produced, whether it is a translation, or whether it is

@@ -73,3 +73,21 @@ bootstrap interval over blocks.
 3. Exposed and unexposed texts from the Internet Archive (public).
 4. Clean, mask, bin; report the words per writer-bin before measuring.
 5. Measure and plot; file the result beside the paper.
+
+## 7. Result (2026-11-10)
+
+`python -m eval.js_time measure` (`data/js_time/results.json`; paper section 10.1). 5,302 blocks in
+30 writer-periods. Every Joseph Smith line (own hand, dictated, pooled) moves away from the book's
+style over time by all four measures; Rigdon, the only reader with two periods, moves in different
+directions by different measures; the unexposed writers are nearly flat. **Influence is not
+supported** by the rule of section 5. The data are thin: his own hand is two blocks (1831-33,
+1837-39), his dictated line one history (17 blocks) and one block.
+
+**The registered permutation test is not readable here** (found after the run, recorded rather than
+changed): with one block per period a line's within-writer shuffle can only swap its two values,
+while the shuffle erases the unexposed group's real trend, so the observed difference looks extreme
+against a flattened comparison (own hand, 590M encoder: p 0.0001; Cosine Delta: p 1.0). The
+p-values in `results.json` (`p_two_sided`) are therefore not used; the reading rests on direction,
+which is what the rule of section 5 states. A test with power would need more of his own-hand prose
+per period than survives.
+

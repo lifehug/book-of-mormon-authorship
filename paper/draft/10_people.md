@@ -78,20 +78,49 @@ revelations.
 manuscript evidence shows it was taken down by ear (section 5.6). No stylometric method separates
 the person who dictated a text from the person who composed it.
 
-**His prose over time (BOM-73, in progress).** Did his ordinary writing, and that of others who
-read the book, move toward its style after 1830? The attribution rule and the measures are fixed
-in advance (`docs/js-over-time-plan.md`): 21 Joseph Smith Papers documents of 1833-1844 in his
-hand or recorded as dictated, revelations excluded; three groups measured alike by period (1831-33,
-1834-36, 1837-39, 1840-44): Joseph Smith; others who read the book (Cowdery, Pratt, Phelps,
-Rigdon); and religious writers of the same years with no documented reading of the book (Barton
-Stone's *Christian Messenger*, Methodist and Universalist periodicals, the *Religious
-Intelligencer*, Finney, Beecher). Alexander Campbell, who read the book and reviewed it in 1831,
-is reported as a line of his own. Influence is supported only if his line and the readers' move
-toward the book while the unexposed writers' does not. No ordinary
-prose of his survives from before 1830, so his style before the book cannot be tested. The result
-will be added here when measured.
+**His prose over time (BOM-73, Amendment 46, post hoc).** Did his ordinary writing, and that of
+others who read the book, move toward its style after 1830? Fixed before any scoring
+(`docs/js-over-time-plan.md`; OSF revision 6af385f93ea373a2d2826e1a): 21 Joseph Smith Papers
+documents of 1833-1844, his own hand (the passages the edition marks in his hand) and dictated
+documents as separate lines, revelations excluded; readers who followed the book (Cowdery, Pratt,
+Phelps, Rigdon, signed items dated by issue); religious writers of the same years with no
+documented reading of it (the *Methodist Magazine and Quarterly Review*, the *Evangelical Magazine
+and Gospel Advocate*, the *Religious Intelligencer*, Finney, Beecher; 158 Internet Archive items);
+and Alexander Campbell, who read and reviewed the book in 1831, as a line of his own. All texts King
+James masked, Book of Mormon quotations removed, comparison blocks on Mormonism dropped; distance
+of each 2,000-word block to the masked Book of Mormon, by four measures (`data/js_time/results.json`).
 
-### 10.2 Oliver Cowdery
+Mean distance by period (590M style encoder; lower is closer; the other three measures agree in
+direction for Joseph Smith):
+
+| Line | 1831-33 | 1834-36 | 1837-39 | 1840-44 | Blocks |
+| --- | --- | --- | --- | --- | --- |
+| Joseph Smith, own hand | 0.43 | (under the floor) | 0.65 | (under the floor) | 2 |
+| Joseph Smith, dictated | | | 0.31 | 0.42 | 18 |
+| Cowdery / Phelps / Rigdon / Pratt | | 0.66 / 0.67 / 0.61 / - | - / - / 0.58 / 0.55 | | 88 |
+| Unexposed (Methodist magazine) | 0.85 | 0.83 | 0.81 | 0.80 | 1,963 |
+| Campbell | 0.77 | 0.76 | 0.80 | 0.81 | 2,226 |
+
+**Reading, by the rule fixed in advance:** influence would be supported only if Joseph Smith's line
+and the readers' moved toward the book while the unexposed writers' did not. **It is not
+supported.** Every Joseph Smith line moves *away* from the book's style over time, by all four
+measures; the only reader with two periods (Rigdon) moves in different directions by different
+measures; the unexposed writers are nearly flat. Three limits govern this: the data are thin (his
+own hand is two blocks, one in 1831-33 and one in 1837-39; his dictated line is one long history and
+one block); topic and genre change with the documents (letters, a journal, a history); and no
+ordinary prose of his survives from before 1830. At every period his prose sits closer to the book
+than any other writer's, which matches his ordinary prose being mid-pack among the candidates but
+nearer than unrelated religious writing; closeness of level, unlike direction, can come from shared
+subject (the church and its history).
+
+The registered permutation test cannot be read for these lines and is not used: with one block per
+period, shuffling period labels within a writer can only swap the line's two values, while it
+erases the unexposed group's own trend, so the test compares a fixed value with a flattened
+comparison (one result, p 0.0001 for the own-hand line by the 590M encoder against 1.0 by Cosine
+Delta, shows this). The p-values are in the results file, flagged; the reading above rests on
+direction, as the rule states it.
+
+## 10.2 Oliver Cowdery
 
 **Samples.** His 1829 "Articles of the Church of Christ" (1,310 words, 40% Book of Mormon quotation;
 844 tokens after Amendment 43) and his printed writing after 1830 (44,338 words, mostly the

@@ -71,6 +71,5 @@ section 7.4 and labelled in the pre-registration.
 
 **Planned and not run.** The hand validation of the genre labels and the 100-run perturbation that
 would show whether label errors matter (BOM-53); thematic dating, whether the text's themes track
-the 1820s (BOM-63); the register placebo (BOM-76); and Joseph Smith's prose over time (BOM-73,
-in progress). Genre labels agree moderately between two model passes (84.9% on either label, 50.8%
-exactly) and worst on early modern text.
+the 1820s (BOM-63); and the register placebo (BOM-76). Genre labels agree moderately between two
+model passes (84.9% on either label, 50.8% exactly) and worst on early modern text.
