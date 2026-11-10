@@ -155,6 +155,11 @@ candidates:
   # 3: a candidate with fewer masked words is scored, but every result carries the
   # "unreliable sample" flag and is excluded from the Bayesian synthesis.
   min_masked_words: 10000
+  # Amendment 43 (OSF revision 6af34a69306be72514826e10; post hoc; owner's decision): Book of Mormon
+  # quotations are dropped from candidate samples, nothing else. A quotation is a passage of
+  # shared runs (each at least ngram words, gaps of at most max_gap words merged) at least
+  # min_words long, written after the matching passage was dictated (eval.bom_overlap).
+  bom_quotation: {ngram: 8, min_words: 20, max_gap: 5}
   expanded_corpora:
     role: secondary
     # Fixed from the historical record before any scoring.

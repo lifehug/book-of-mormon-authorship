@@ -84,3 +84,46 @@ narrower rule, to be decided by the owner:
 Short ambiguous phrases (under 20 words, after the passage) are the open question: masking them
 is safe against leakage but removes some genuine shared idiom. Their volume is small except in
 Cowdery's Articles and Pratt.
+
+## The decision (owner, 2026-11-10) — Amendment 43
+
+**The problem.** The registered sealing rule kept the Book of Mormon out of every model's
+training and calibration, but it was enforced on the training corpus, not on the candidate
+samples. Two candidates' samples quote the book: Oliver Cowdery's "Articles of the Church of
+Christ" (June 1829, 40% shared) and Parley P. Pratt's books (1837-38). A model fine-tuned on a
+sample that quotes the text will recognise the text, which is leakage, not resemblance; that is
+why Cowdery's pre-1830 sample ranked first after unblinding.
+
+**The options considered.**
+
+| Option | What it removes | Problem |
+| --- | --- | --- |
+| Leave the samples as they are | nothing | The leakage stays; Cowdery's ranking is void |
+| Mask every shared run, from everyone (first proposal) | quotations and shared idiom alike | Removes genuine style evidence, above all Joseph Smith's: he dictated both texts, and his revelations of 1828-29 share phrasing with passages dictated in the same weeks or later |
+| Drop the affected samples entirely | Cowdery's and Pratt's samples | Throws away their own writing along with the quotations |
+| **Mask quotations only (chosen)** | passages of 20+ words written after the matching Book of Mormon passage existed | Short later phrases stay (Cowdery's sample still shares 7.8%, mostly short phrases and text from the same weeks) |
+
+**The rule chosen.** A quotation is a passage of runs shared with the Book of Mormon's narrative
+(each run at least 8 words; runs no more than 5 words apart merged, so a copy with small edits
+counts as one passage), at least 20 words long, in a text written after the matching Book of
+Mormon passage was dictated. Quotations are dropped from the sample, as King James spans are;
+nothing else is. Settings: `candidates.bom_quotation` in `config/preregistered.yaml`.
+
+**Why.** It removes exactly what causes leakage (copied passages) and keeps what an authorship
+test should see (each writer's own phrasing). It treats every candidate by one rule, decided
+before the masked results exist. And it protects the evidence from the person at the centre of
+the question: Joseph Smith's pre-1830 revelations contain no quotation by this rule (one phrase
+predates the passage it matches, the rest were dictated in the same weeks), so none of his text
+is removed. The owner's reasoning: "Joseph Smith revelations should only be excluded if they
+were written after the Book of Mormon."
+
+**What it changes.** Masked as quotation: Cowdery's Articles 494 words (36.5%), Pratt's *Voice of
+Warning* 1,321 (2.5%) and *Mormonism Unveiled* 375 (2.3%), Cowdery's *Messenger and Advocate* 151
+(0.2%), one passage in a Joseph Smith letter of 1833, 24 words (0.5%); Joseph Smith's pre-1830
+revelations, 0. After masking, Cowdery's pre-1830 sample is 798 words and shares 7.8%; Pratt's
+shares 1.0%; every other sample 0-0.5% (Joseph Smith's revelations 2.2%, unchanged by decision).
+
+**How it is reported.** Post hoc: found after unblinding and decided after seeing which samples
+were affected. The candidate models are retrained on the masked samples and the sealed set is
+rescored by every method that reads candidate samples; the results are reported beside the
+registered run (tag `blind-registered-2026-11-10`), never in place of it.

@@ -109,8 +109,28 @@ def margins(scores: dict[str, float], kinds: dict[str, str]) -> dict[str, float]
 # ---- texts -------------------------------------------------------------------------------------
 
 
+QUOTES = Path("data/corpus/candidates/bom_quotations.json")  # eval.bom_overlap; local only
+
+
+def _norm(w: str) -> str:
+    return "".join(c for c in w.lower() if c.isalpha())
+
+
+def drop_quotations(words: list[str], passages: list[list[str]], n: int) -> list[str]:
+    """``words`` less every word inside a Book of Mormon quotation (Amendment 43): a passage's
+    words are matched by their ``n``-word windows, normalised as ``eval.bom_overlap`` reads them."""
+    grams = {tuple(p[i : i + n]) for p in passages for i in range(len(p) - n + 1)}
+    idx = [(i, x) for i, x in enumerate(_norm(w) for w in words) if x]
+    covered: set[int] = set()
+    for j in range(len(idx) - n + 1):
+        if tuple(x for _, x in idx[j : j + n]) in grams:
+            covered.update(i for i, _ in idx[j : j + n])
+    return [w for i, w in enumerate(words) if i not in covered]
+
+
 def candidate_words() -> dict[tuple[str, str, str], list[tuple[str, list[str]]]]:
-    """(candidate, sample, period) -> [(doc id, masked original words)], admitted tiers only."""
+    """(candidate, sample, period) -> [(doc id, masked original words)], admitted tiers only;
+    King James spans masked (4.4) and Book of Mormon quotations dropped (Amendment 43)."""
     from kjv_mask.run import _docs
     from ocr_fix.candidates import units
     from segment.build import original_words
@@ -121,6 +141,10 @@ def candidate_words() -> dict[tuple[str, str, str], list[tuple[str, list[str]]]]
     for ln in Path("data/kjv_mask/candidates/spans.jsonl").read_text().splitlines():
         r = json.loads(ln)
         spans[r["id"]] = r["spans"]
+    q = load_config()["candidates"].get("bom_quotation")
+    quotes = json.loads(QUOTES.read_text()) if q else {}
+    if q and not QUOTES.exists():
+        raise SystemExit(f"{QUOTES} missing: run python -m eval.bom_overlap (Amendment 43)")
     out: dict[tuple[str, str, str], list] = defaultdict(list)
     for d in sorted(_docs("candidates"), key=lambda d: d["id"]):
         if d["id"] in meta:
@@ -129,7 +153,10 @@ def candidate_words() -> dict[tuple[str, str, str], list[tuple[str, list[str]]]]
             person, sample, period = d["id"].removeprefix("cand:").split("__")
             key = (person.replace("-", " ").title(), sample, period)
         if key[1] in ADMITTED:
-            out[key].append((d["id"], original_words(d["load"](), spans.get(d["id"], []))))
+            ws = original_words(d["load"](), spans.get(d["id"], []))
+            if quotes.get(d["id"]):
+                ws = drop_quotations(ws, quotes[d["id"]], q["ngram"])
+            out[key].append((d["id"], ws))
     return dict(out)
 
 

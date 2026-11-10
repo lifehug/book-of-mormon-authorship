@@ -28,7 +28,11 @@ from pathlib import Path
 import numpy as np
 from tokenizers import Tokenizer
 
-N = 8
+from metadata.config import load as load_config
+
+Q = load_config()["candidates"]["bom_quotation"]  # Amendment 43
+N, MIN_WORDS, MAX_GAP = Q["ngram"], Q["min_words"], Q["max_gap"]
+QUOTES = Path("data/corpus/candidates/bom_quotations.json")  # sample text: local only, never in git
 
 
 def norm(t):
@@ -136,6 +140,8 @@ def items():
 
 rows = []
 per_unit = defaultdict(Counter)
+quotes: dict[str, list[list[str]]] = defaultdict(list)
+masked = Counter()
 for unit, title, text in items():
     w = norm(text)
     if not w:
@@ -143,6 +149,7 @@ for unit, title, text in items():
     (y, mo), _ = item_date(title, title)
     hit = [i for i in range(len(w) - N + 1) if tuple(w[i : i + N]) in bidx]
     per_unit[unit]["words"] += len(w)
+    runs = []  # (start, end exclusive, class)
     # maximal runs
     i = 0
     hs = set(hit)
@@ -185,12 +192,34 @@ for unit, title, text in items():
                 }
             )
             per_unit[unit][cls] += L
+            runs.append((i, j + N, cls))
             i = j + N
         else:
             i += 1
+    # Amendment 43: runs within MAX_GAP words of each other form one passage; a passage at least
+    # MIN_WORDS long holding a run written after its Book of Mormon passage is a quotation
+    passages: list[list] = []
+    for a, b, cls in runs:
+        if cls == "biblical":
+            continue
+        if passages and a - passages[-1][1] <= MAX_GAP:
+            passages[-1][1] = max(passages[-1][1], b)
+            passages[-1][2].append(cls)
+        else:
+            passages.append([a, b, [cls]])
+    after = {"quotation", "short phrase, ambiguous"}
+    doc = "cand:" + (title if unit.startswith("printed:") else unit)
+    for a, b, classes in passages:
+        if b - a >= MIN_WORDS and after & set(classes):
+            quotes[doc].append(w[a:b])
+            masked[unit] += b - a
+QUOTES.parent.mkdir(parents=True, exist_ok=True)
+QUOTES.write_text(json.dumps(quotes))
 json.dump(
     {
         "n": N,
+        "quotation_rule": Q,
+        "masked_words": dict(masked),
         "rows": [{k: v for k, v in r.items() if k != "bom_text"} for r in rows],
         "per_unit": {u: dict(c) for u, c in per_unit.items()},
     },
@@ -201,6 +230,7 @@ for u, c in sorted(per_unit.items()):
     tot = c["words"]
     sh = sum(v for k, v in c.items() if k != "words")
     if sh:
+        print(f"  masked as quotation: {masked[u]} ({masked[u] / tot:.1%})")
         print(
             f"{u:45s} {tot:7d} words, shared {sh / tot:5.1%}:",
             {k: v for k, v in c.items() if k != "words"},
