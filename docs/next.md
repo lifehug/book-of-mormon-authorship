@@ -5,17 +5,17 @@ everything ahead, never sit waiting). A job monitor (`scripts/jobwatch.py`) repo
 stall or finish at once; an hourly check-in walks this file. Rules: never two heavy GPU jobs on the
 Mac at once; rented GPUs within approvals given; the issue comment carries the next action.
 
-## Running (2026-11-09 12:15)
+## Done overnight (2026-11-10)
 
-| Job | Where | Done (est.) | Then |
-| --- | --- | --- | --- |
-| 590M style encoder: training since 11:28, then its benchmark, threshold, blind scoring and imitation on the pod | tmux `encmid`, pod `99lkvv5js434ws` | ~21:00 | commit `data/blind/`, then **unblind** |
-| Amendment 41: V1/V2 learning rates chosen on held-out training text, reruns (125M done: V2 at its own registered rate gave 0.764 on the H100 vs 0.900 on the Mac, so V2 is high-variance) | tmux `lrsel_base`, `lrsel_mid` | ~13:30 | propose a seed-spread run for V2 |
-| 590M candidate weights to B2 (36 GB) | background | ~afternoon | |
-| Training pod cleanup | tmux `midclean` (RunPod HTTP 500) | | owner may delete the pod instead |
+- 590M style encoder trained, tested and scored blind on its pod; **unblinded 04:15** (after a
+  fix to how the sweep's output is read); synthesis per size, scribe comparison (6.3), claims,
+  open-set and prior-work tables committed. First read: `docs/results-first-read.md`.
 
-Done today: 590M benchmark, imitation, candidate models and blind ALM scoring (all committed);
-the 590M model and milestones in B2; weekly corpus backup resumed.
+## Next
+
+1. **BOM-36:** fill the paper's result slots from `docs/results-first-read.md`; BOM-29's formal H3 report.
+2. **Publish the models** (below).
+3. **BOM-38** simulated review, **BOM-37** release.
 
 ## Tomorrow (2026-11-10)
 
