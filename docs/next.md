@@ -7,8 +7,6 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 ## Running
 
-- tmux `b2a43`: B2 backup of the Amendment 43 candidate weights (mid), the registered originals
-  and the Amendment 44 weights. Writes `logs/b2_a43.done`.
 - tmux `jsmask`: King James masking of the BOM-73 texts (`logs/js_time_mask.log`); then
   `python -m eval.js_time measure`.
 
@@ -23,7 +21,10 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
    feature sets post hoc?), claim c09's re-grade, `docs/index.md` (asked).
 3. **BOM-37** release prep: **owner's go-ahead to publish**; Zenodo needs the owner's login.
 4. Blog post with the results (after the owner reads the paper).
-5. **Part 2 Stage 0** (BOM-74 to BOM-77; milestone "Part 2 · Stage 0"): after the paper is written.
+5. **Amendment 44/45 weights** (B2 `alm/a44`, 86.9 GiB, pushed from the pod, not on the Mac): check
+   whether they are on Hugging Face; if not, stage and publish them like the others (keep and
+   publish every weight).
+6. **Part 2 Stage 0** (BOM-74 to BOM-77; milestone "Part 2 · Stage 0"): after the paper is written.
    **Stage 1 needs the owner's go** after reviewing Stage 0's results. Later: BOM-72.
 
 ## Decided
