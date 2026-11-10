@@ -5,50 +5,30 @@ everything ahead, never sit waiting). A job monitor (`scripts/jobwatch.py`) repo
 stall or finish at once; an hourly check-in walks this file. Rules: never two heavy GPU jobs on the
 Mac at once; rented GPUs within approvals given; the issue comment carries the next action.
 
-## Done 2026-11-10
+## Running
 
-- Unblinded 04:15; synthesis, scribes, claims (verdicts owner-approved), H3c (rejected).
-- Every model published on Hugging Face (README "The models"; checksums in `data/manifests/hf_*`).
-- Book of Mormon quotations found in candidate samples (Cowdery's 1829 Articles, Pratt): Amendment
-  43 (quotations only), rerun filed beside the registered run (`data/*/a43/`).
-- Joseph Smith revelatory vs non-revelatory (Amendment 44): closeness runs through the revelatory
-  register. BOM-73 (his prose over time) researched and tabled.
-- Explainers drafted (`paper/explainers/`).
+- tmux `b2a43`: B2 backup of the Amendment 43 candidate weights (mid), the registered originals
+  and the Amendment 44 weights (pilot and base already uploaded). Writes `logs/b2_a43.done`.
 
-## Next
+## Next, in order (owner, 2026-11-10: the paper first, written in full, before any Part 2 stage)
 
-1. **BOM-36:** assemble the full paper (`paper/paper.md`) from the drafts and results.
-2. **BOM-38:** simulated review (`python -m review.simulate run --draft paper/draft`), responses.
-3. **BOM-37:** release prep; **owner's go-ahead to publish**, Zenodo connection (owner's login).
-4. Blog post with the results (after the owner reads the explainers).
-5. Back up the Amendment 43 candidate weights to B2 when the 590M fetch finishes.
-6. Later: BOM-72 (rebuild discarded benchmark copies), BOM-73 (tabled).
-
-## Waiting on the owner
-
-
-- **Delete the mid pod's full snapshots** once its tests pass: ask the owner at that moment.
+1. **BOM-36: rewrite the paper on outline version 2** (`paper/outline.md`, sections 1-13): per-model
+   "best at" tables; ranking vs matching; post-1830 samples; the Joseph Smith deep dive; the CES
+   Letter books one by one (confirm the Letter's book list first); model size (4.x); Part 2 (13).
+   Then the explainers and results docs to match, and the 46 pending review-response rows.
+2. **BOM-73** (in parallel, Mac CPU): the 21 JSP documents are fetched (private repo ab937c5);
+   fetch the exposed and unexposed writers, clean, mask, bin, file the amendment, then measure.
+3. **BOM-37** release prep: **owner's go-ahead to publish**; Zenodo needs the owner's login.
+4. Blog post with the results (after the owner reads the paper).
+5. **Part 2 Stage 0** (BOM-74 to BOM-77; milestone "Part 2 · Stage 0"): after the paper is written.
+   **Stage 1 needs the owner's go** after reviewing Stage 0's results. Later: BOM-72.
 
 ## Decided
 
-- **Every model size runs every model-based test** (owner; Amendment 37): 125M, 297M, 1B side by side, none the headline.
-- **6.1 both ways** (owner, Amendment 33): registered and achievable rules plus the false-match ladder, all reported.
-- **1B replaced by the 590M mid with QK-norm** (owner, Amendment 39); a 1B restart stays possible later.
-- **No 1B before unblinding** (owner, 2026-11-09): unblind as soon as the 590M encoder is scored; a 1B, if ever run, is reported as scored after unblinding.
-- **Publish every model** (owner, 2026-11-09), fine-tunes included (BOM-72 rebuilds the discarded ones after the analysis); private corpus text never.
-- **No pre-declared "best" model** (owner, 2026-11-08): run everything, report everything side by side; plans unchanged.
-
-## Next, in order (start the first whose inputs exist)
-
-1. **After `aftermid` prints BLIND RUN COMPLETE:** commit `data/blind/`, then `blind.unblind` (simulated blinding).
-2. **BOM-35 synthesis** (`synth.model`, per size), **BOM-34 6.3 comparison** (`eval.scribes`), **BOM-42 claims table** (`eval.claims`), **BOM-68** table with the mid rows.
-3. **BOM-36 paper:** fill the 14 result slots in `paper/draft/`; then **BOM-38** simulated review (`review.simulate`); then **BOM-37** release (`scripts/release_check.py`; publishing is the owner's call).
-
-Done today: BOM-26 closed; prep and first results for 28 (297M), 29, 31 (classical, 297M), 32, 33
-(access table final), 34 (dictation evidence, photo hand-check), 35, 37, 38, 42, 68 (GPT-2 ablation).
-Waiting on the owner only: BOM-71 (Google-digitized volumes, if provided).
-
-## Timeline to the paper
-
-The only physical wait is the 590M (~00:30 Mon) and its pod tests (Mon morning). Unblinding,
-synthesis and claims Monday; first full draft ~Tuesday Nov 10.
+- **Every model size runs every model-based test**, reported side by side; no averaging across
+  methods and no headline model; "best at X" judged on known answers only (owner, 2026-11-08/10).
+- **Mask only Book of Mormon quotations** in candidate samples (Amendment 43).
+- **Publish every model**, fine-tunes included; private corpus text never (owner, 2026-11-09).
+- **Register placebo** (BOM-76): primary group died before September 1827; secondary group born
+  after 1830 with no exposure, reported separately (owner, 2026-11-10).
+- **Part 2 order**: paper first; Stage 0 committed; Stage 1 only on the owner's go (2026-11-10).
