@@ -2,7 +2,7 @@
  "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "971a84c1e8327d5f0eaf11124aa5aecb623d7090",
+ "git_commit": "65ddb601ffec8cd473c88dcf9947d4326d445198",
  "register_version": 0.1,
  "frozen": false,
  "claims": 17,
@@ -196,7 +196,7 @@
     {
      "name": "blind:dating",
      "file": "data/blind/unblinded.json",
-     "status": "pending"
+     "status": "present"
     }
    ],
    "status": "pending"
@@ -290,13 +290,17 @@
       "style_embed": {
        "forward": 0.3888888888888889,
        "weight": 0.0
+      },
+      "style_embed_mid": {
+       "forward": 0.5555555555555556,
+       "weight": 0.0
       }
      }
     },
     {
      "name": "blind:dating",
      "file": "data/blind/unblinded.json",
-     "status": "pending"
+     "status": "present"
     }
    ],
    "status": "pending"
@@ -333,12 +337,12 @@
     {
      "name": "synthesis",
      "file": "data/synthesis/posterior_sizes.json",
-     "status": "pending"
+     "status": "present"
     },
     {
      "name": "blind:unblinded",
      "file": "data/blind/unblinded.json",
-     "status": "pending"
+     "status": "present"
     }
    ],
    "status": "pending"
@@ -416,7 +420,7 @@
     {
      "name": "blind:scribes",
      "file": "data/benchmark/scribes.json",
-     "status": "pending"
+     "status": "present"
     }
    ],
    "status": "pending"
@@ -635,18 +639,23 @@
        "closed_set": 0.8388888888888889,
        "open_set_fpr": 0.5,
        "passes": false
+      },
+      "style_embed_mid": {
+       "closed_set": 0.8388888888888889,
+       "open_set_fpr": 0.6277777777777778,
+       "passes": false
       }
      }
     },
     {
      "name": "synthesis",
      "file": "data/synthesis/posterior_sizes.json",
-     "status": "pending"
+     "status": "present"
     },
     {
      "name": "blind:unblinded",
      "file": "data/blind/unblinded.json",
-     "status": "pending"
+     "status": "present"
     }
    ],
    "status": "pending"
@@ -721,6 +730,10 @@
       "style_embed": {
        "forward": 0.3888888888888889,
        "weight": 0.0
+      },
+      "style_embed_mid": {
+       "forward": 0.5555555555555556,
+       "weight": 0.0
       }
      }
     },
@@ -737,7 +750,7 @@
     {
      "name": "blind:unblinded",
      "file": "data/blind/unblinded.json",
-     "status": "pending"
+     "status": "present"
     }
    ],
    "status": "pending"
@@ -810,12 +823,12 @@
     {
      "name": "synthesis",
      "file": "data/synthesis/posterior_sizes.json",
-     "status": "pending"
+     "status": "present"
     },
     {
      "name": "blind:unblinded",
      "file": "data/blind/unblinded.json",
-     "status": "pending"
+     "status": "present"
     }
    ],
    "status": "pending"
@@ -896,12 +909,12 @@
     {
      "name": "synthesis",
      "file": "data/synthesis/posterior_sizes.json",
-     "status": "pending"
+     "status": "present"
     },
     {
      "name": "blind:unblinded",
      "file": "data/blind/unblinded.json",
-     "status": "pending"
+     "status": "present"
     }
    ],
    "status": "pending"
@@ -938,7 +951,7 @@
     {
      "name": "blind:dating",
      "file": "data/blind/unblinded.json",
-     "status": "pending"
+     "status": "present"
     }
    ],
    "status": "pending"
@@ -962,12 +975,12 @@
     {
      "name": "blind:scribes",
      "file": "data/benchmark/scribes.json",
-     "status": "pending"
+     "status": "present"
     },
     {
      "name": "blind:unblinded",
      "file": "data/blind/unblinded.json",
-     "status": "pending"
+     "status": "present"
     }
    ],
    "status": "pending"

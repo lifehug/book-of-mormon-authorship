@@ -1,0 +1,56 @@
+{
+ "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "65ddb601ffec8cd473c88dcf9947d4326d445198",
+ "size": 2000,
+ "mfw": 300,
+ "permutations": 1000,
+ "results": {
+  "narrator": {
+   "chunks": 121,
+   "labels": {
+    "Nephi": 21,
+    "Jacob": 4,
+    "Mormon": 84,
+    "Moroni": 12
+   },
+   "accuracy": 0.743801652892562,
+   "null_mean": 0.277396694214876,
+   "p": 0.000999000999000999,
+   "chance_corrected": 0.6454509063876022
+  },
+  "scribe": {
+   "chunks": 11,
+   "labels": {
+    "Oliver Cowdery": 11
+   },
+   "accuracy": 1.0,
+   "null_mean": 1.0,
+   "p": 1.0,
+   "chance_corrected": null
+  },
+  "dictation_order": {
+   "chunks": 124,
+   "labels": {
+    "first": 96,
+    "last": 28
+   },
+   "accuracy": 0.7580645161290323,
+   "null_mean": 0.5024032258064516,
+   "p": 0.000999000999000999,
+   "chance_corrected": 0.5137920975008914
+  }
+ },
+ "verdict": {
+  "benchmark_accuracy": 0.9625,
+  "narrator_reaches_benchmark": false,
+  "no_other_explains_better": false,
+  "separable": false,
+  "chance_corrected_ranking": [
+   "narrator",
+   "dictation_order",
+   "scribe"
+  ]
+ }
+}
