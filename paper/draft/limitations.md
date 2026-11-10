@@ -5,9 +5,9 @@ accuracy up to 0.991 at 297M) but none keeps false matches at or below the regis
 stable result: 0.218, the primary method at 590M; `data/benchmark/open_set.json`). V2's 0.136 at
 297M was one lucky seed: five further seeds gave 0.53-0.98 (Amendment 42). Under the registered thresholds General
 Imposters and the style embeddings cannot return *match* at all (their calibrated match threshold
-is 1.0, the largest possible score), so section 6.2's two-family rule cannot support any candidate
-unless a larger model changes this; the owner's decision on how to report that is recorded with
-Amendment 33. Results are therefore graded evidence, not attributions.
+is 1.0, the largest possible score), so section 6.2's two-family rule could not have supported any
+candidate; both readings of 6.1 and the false-match ladder are reported (Amendment 33). Results are
+therefore graded evidence, not attributions.
 
 **Methods differ in stability** (`docs/method-reliability.md`, written before unblinding). The
 primary language-model method reproduces exactly across machines and improves with model size;

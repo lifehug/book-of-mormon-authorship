@@ -1,0 +1,40 @@
+# Discussion
+
+**What the evidence supports.** Every check on known text passed: the methods rank real authors
+correctly most of the time and none called a stranger's text a match. On the Book of Mormon, no
+method makes a confident match to any proposed author, the whole-library sweep finds no lead, and
+the registered synthesis leans to "none of these candidates" (0.744 from a prior of 0.5). No
+proposed source shares copied passages, a plot sequence or specific wording beyond what its genre
+shares; every surfaced similarity is explained by King James wording or period stock phrasing.
+The text's grammar dates earlier than its period and earlier than the period's other imitations of
+biblical style.
+
+**What it does not support.** No method passes the registered open-set bar, so "none of these" is
+graded evidence, not a verdict; the synthesis rests on the classical family alone, because the
+model-based methods were misled by deliberate imitation; and the candidate samples are uneven and,
+for the writers closest to the text, small. Where methods must rank someone first they rank Joseph
+Smith's 1828-29 revelations, which share the text's register and were dictated by the same person
+in the same months; his ordinary prose does not stand out. These methods cannot separate register
+from authorship, nor the person who dictated a text from the person who composed it, and none of
+the borrowing or dating tests separates a genuine translation from a text presented as ancient
+(Amendment 9). The study therefore says nothing about how the text was produced, whether it is a
+translation, or whether it is inspired.
+
+**What changed along the way.** Three decisions were made after results existed and are labelled
+so: the learning rate of two benchmark variants, which the larger model exposed (Amendments 41-42);
+the removal of Book of Mormon quotations from candidate samples, after unblinding revealed that one
+candidate's sample was 40% quotation (Amendment 43); and the comparison of Joseph Smith's
+revelatory and ordinary prose (Amendment 44). Each is reported beside the registered result, not
+in place of it.
+
+**What would sharpen it.** Larger models (the false-match rate fell from 47% to 22% between 125M
+and 590M parameters); more and larger candidate samples, especially pre-1830 writing outside the
+scriptural register, which does not survive for Joseph Smith; more benchmark tasks, to narrow the
+error rates; and the time series of Joseph Smith's and his contemporaries' prose after 1830 (BOM-73,
+`docs/js-over-time-research.md`).
+
+**Reproducing it.** The pre-registration and its amendments, the code, the configuration file
+every number is stamped with, every result file and every trained model are public
+(`etherfuse/timelocked-1830-*` and `etherfuse/bom-authorship-*` on Hugging Face, with SHA-256
+lists in `data/manifests/`). Three sources are licensed and cannot be redistributed; the steps to
+obtain them are in `docs/replication.md`. Mistakes are possible; every one can be found and redone.
