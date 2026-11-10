@@ -264,12 +264,12 @@ def unblind(files: list[str], key: dict[str, dict], plan: dict, split: dict[str,
         doc = json.loads(Path(f).read_text())
         name = f"{doc['method']}_{doc['size']}" if doc.get("size") else doc["method"]
         per = doc["scores"]
-        if isinstance(per, dict) and "ids" in per:  # scorers that also return their units table
-            per = per["ids"]
-        if doc["method"] == "sweep":
+        if doc["method"] == "sweep":  # before the unwrap below: its "ids" is a count
             if calibration is not None:
                 methods["sweep"] = sweep_result(Path(per["file"]), key, split, calibration)
             continue
+        if isinstance(per, dict) and "ids" in per:  # scorers that also return their units table
+            per = per["ids"]
         r: dict = {"bom": {key[i]["chunk_id"]: v for i, v in per.items()
                            if key[i]["kind"] == "bom"}}  # fmt: skip
         views = {}
