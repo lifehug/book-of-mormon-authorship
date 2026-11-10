@@ -17,6 +17,15 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 Done today: 590M benchmark, imitation, candidate models and blind ALM scoring (all committed);
 the 590M model and milestones in B2; weekly corpus backup resumed.
 
+## Tomorrow (2026-11-10)
+
+- **Publish every model to Hugging Face** (owner, 2026-11-09; deferred a day for B2's daily
+  download cap; blocks nothing). Dating models are live. Rerun: `python -m timelocked_lm.publish
+  stage`, then the `pod_jobs.py --name publish ... --b2-pull ... --hf-token` command in
+  `logs/publish.log`'s last launch (~222 GB from B2; check the owner's B2 cap first). Then commit
+  the README "The models" table and `docs/replication.md`'s download section (both written, not
+  yet committed) with the `data/manifests/hf_*.jsonl` lists. Add the 590M style encoder.
+
 ## Waiting on the owner
 
 
