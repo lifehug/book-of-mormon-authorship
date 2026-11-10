@@ -19,6 +19,7 @@ other unit, in the Amendment 43 setting (Book of Mormon quotations dropped):
 Numbers only: ``data/blind/a44/``. Usage::
 
     python -m eval.js_register classic
+    python -m eval.js_register style base|mid
     python -m eval.js_register alm pilot|base|mid
     python -m eval.js_register report
 """
@@ -60,6 +61,25 @@ def classic() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "classic.json").write_text(json.dumps({"pool": POOL, "words": len(toks), "ids": res}))
     print(f"classic: {len(res)} ids, pooled unit {len(toks):,} tokens -> {OUT / 'classic.json'}")
+    return 0
+
+
+def style(size: str) -> int:
+    """The style encoder (297M or 590M backbone) with the pooled unit among the references."""
+    from classic.blind_score import pool, references
+    from metadata.config import load as load_config
+    from style_embed.blind_score import score
+
+    cfg = load_config()
+    refs = references()
+    toks = [t for u in POOL_FROM for t in refs[u]["tokens"]]
+    refs[POOL] = {**refs[POOL_FROM[0]], "sample": "nonrevelatory", "words": len(toks),
+                  "flag": "", "tokens": toks}  # fmt: skip
+    th = json.loads((A43 / "thresholds.json").read_text())["thresholds"]
+    res = score(_rows(), cfg, refs, pool(cfg), th, size=size)
+    OUT.mkdir(parents=True, exist_ok=True)
+    (OUT / f"style_{size}.json").write_text(json.dumps({"pool": POOL, "ids": res}))
+    print(f"style {size}: {len(res)} ids -> {OUT / f'style_{size}.json'}")
     return 0
 
 
@@ -124,6 +144,11 @@ def report() -> int:
     c = json.loads((OUT / "classic.json").read_text())["ids"]
     for m, lower in (("cosine_delta", True), ("burrows_delta", True), ("general_imposters", False)):
         res["methods"][m] = _ranks({i: c[i][m] for i in bom}, lower)
+    for size in ("base", "mid"):
+        p = OUT / f"style_{size}.json"
+        if p.exists():
+            st = json.loads(p.read_text())["ids"]
+            res["methods"][f"style_{size}"] = _ranks({i: st[i]["cosine"] for i in bom}, True)
     for size in ("pilot", "base", "mid"):
         p = OUT / f"alm_{size}.json"
         if not p.exists():
@@ -141,12 +166,14 @@ def report() -> int:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["classic", "alm", "report"])
+    ap.add_argument("cmd", choices=["classic", "style", "alm", "report"])
     ap.add_argument("size", nargs="?", choices=["pilot", "base", "mid"])
     ap.add_argument("--micro-batch", type=int, default=8)
     a = ap.parse_args(argv)
     if a.cmd == "alm":
         return alm(a.size, a.micro_batch)
+    if a.cmd == "style":
+        return style(a.size)
     return classic() if a.cmd == "classic" else report()
 
 
