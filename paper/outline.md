@@ -96,8 +96,9 @@ For each candidate: samples; rankings; "match" calls (pre- and post-1830, every 
   *The Late War* competes (register); his ordinary prose mid-pack, never matched; dictation; and
   **his prose over time** (BOM-73), by period (1831-33, 1834-36, 1837-39, 1840-44), three groups
   measured alike: Joseph Smith (his hand and dictated, separately and pooled); others who read the
-  book (Cowdery, Pratt, Phelps, Rigdon); unexposed religious writers of the same years (Campbell,
-  Stone, Methodist and Baptist periodicals, Finney, Beecher). Influence is supported only if his
+  book (Cowdery, Pratt, Phelps, Rigdon); unexposed religious writers of the same years (Stone,
+  Methodist and Universalist periodicals, Finney, Beecher); Campbell, who read and reviewed the
+  book, as a separate line. Influence is supported only if his
   line, and the readers', move toward the book while the unexposed writers' does not; no pre-1830
   baseline of his ordinary prose exists.
 - 10.2 Oliver Cowdery (the quotation leak; post-1830 sample, never matched), 10.3 Sidney Rigdon,

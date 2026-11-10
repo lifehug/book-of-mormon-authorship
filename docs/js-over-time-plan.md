@@ -32,10 +32,15 @@ also pooled.
 - **Exposed:** Oliver Cowdery, Parley P. Pratt, W. W. Phelps, Sidney Rigdon: signed items only
   (rules 11-17 of `docs/candidates.md`), from the Internet Archive and JSP; pieces ghost-written for
   Joseph Smith go to their author.
-- **Unexposed:** American religious prose by writers with no tie to the movement, 1829-44: the
-  *Millennial Harbinger* (Alexander Campbell), Barton Stone's *Christian Messenger*, the *Methodist
-  Magazine and Quarterly Review*, the *Religious Intelligencer*, the *Evangelical Magazine and
-  Gospel Advocate*, Finney, Beecher, Campbell's books; any piece about Mormonism excluded.
+- **Unexposed:** American religious prose by writers with no documented reading of the book,
+  1829-44: Barton Stone's *Christian Messenger*, the *Methodist Magazine and Quarterly Review*, the
+  *Religious Intelligencer*, the *Evangelical Magazine and Gospel Advocate*, Charles Finney, Lyman
+  Beecher; any piece about Mormonism excluded.
+- **Read it, not a follower (reported separately; changed 2026-11-10, before any fetch or
+  measurement):** the *Millennial Harbinger* (Alexander Campbell). Campbell read the book and
+  reviewed it in print ("Delusions", February 1831), and Rigdon had been his associate, so he cannot
+  stand for the unexposed. His line shows what reading the book without adopting it does; it is
+  never pooled with either other group.
 
 ## 3. Time bins and floor
 
@@ -53,7 +58,8 @@ bootstrap interval over blocks.
 ## 5. Reading (fixed now)
 
 - **Influence** is supported only if Joseph Smith's line, and the exposed group's, move toward
-  the book over the bins while the unexposed group's does not (slope compared by permutation of
+  the book over the bins while the unexposed group's does not (Campbell's line is reported beside
+  them and does not enter the rule) (slope compared by permutation of
   bin labels within writer, 10,000 permutations).
 - **No pre-1830 baseline** of his ordinary prose exists (1829-30 holds under 1,500 words), so a
   drift cannot show that his style was not already close to the book's before 1830.

@@ -76,9 +76,11 @@ read the book, move toward its style after 1830? The attribution rule and the me
 in advance (`docs/js-over-time-plan.md`): 21 Joseph Smith Papers documents of 1833-1844 in his
 hand or recorded as dictated, revelations excluded; three groups measured alike by period (1831-33,
 1834-36, 1837-39, 1840-44): Joseph Smith; others who read the book (Cowdery, Pratt, Phelps,
-Rigdon); and religious writers of the same years with no tie to the movement (Alexander Campbell,
-Barton Stone, Methodist and Baptist periodicals, Finney, Beecher). Influence is supported only if
-his line and the readers' move toward the book while the unexposed writers' does not. No ordinary
+Rigdon); and religious writers of the same years with no documented reading of the book (Barton
+Stone's *Christian Messenger*, Methodist and Universalist periodicals, the *Religious
+Intelligencer*, Finney, Beecher). Alexander Campbell, who read the book and reviewed it in 1831,
+is reported as a line of his own. Influence is supported only if his line and the readers' move
+toward the book while the unexposed writers' does not. No ordinary
 prose of his survives from before 1830, so his style before the book cannot be tested. The result
 will be added here when measured.
 
