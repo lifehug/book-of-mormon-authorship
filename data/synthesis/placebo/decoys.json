@@ -1,0 +1,69 @@
+{
+ "config_sha256": "262c5d90db35cd18d6c614569ec17c0568bbe7612c98a989c6dc96cc6cb27d94",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "ab181e8ef3e170bee06994c96dc78c8de124e686",
+ "note": "BOM-38 placebo (statistician major 1): the registered synthesis (classical family only, prior 0.5) applied to the sealed decoys grouped by true author",
+ "results": {
+  "Ethan Smith": {
+   "passages": 14,
+   "in_hypothesis_set": true,
+   "posterior": {
+    "Ethan Smith": 0.19120973696563942,
+    "Gilbert J. Hunt": 0.10996860602742109,
+    "Solomon Spalding": 0.11099631613388296,
+    "not in set": 0.5878253408730565
+   }
+  },
+  "Gilbert J. Hunt": {
+   "passages": 3,
+   "in_hypothesis_set": true,
+   "posterior": {
+    "Ethan Smith": 0.10962929097047498,
+    "Gilbert J. Hunt": 0.22428138646233237,
+    "Solomon Spalding": 0.10497212625278118,
+    "not in set": 0.5611171963144114
+   }
+  },
+  "Oliver Cowdery": {
+   "passages": 2,
+   "in_hypothesis_set": false,
+   "posterior": {
+    "Ethan Smith": 0.19250942978502714,
+    "Gilbert J. Hunt": 0.10893378130015881,
+    "Solomon Spalding": 0.11626299217986498,
+    "not in set": 0.582293796734949
+   }
+  },
+  "Sidney Rigdon": {
+   "passages": 1,
+   "in_hypothesis_set": false,
+   "posterior": {
+    "Ethan Smith": 0.13425563182988487,
+    "Gilbert J. Hunt": 0.11786223686486742,
+    "Solomon Spalding": 0.11786223686486742,
+    "not in set": 0.6300198944403803
+   }
+  },
+  "Solomon Spalding": {
+   "passages": 2,
+   "in_hypothesis_set": true,
+   "posterior": {
+    "Ethan Smith": 0.09552520094465866,
+    "Gilbert J. Hunt": 0.09552520094465866,
+    "Solomon Spalding": 0.29832992368051425,
+    "not in set": 0.5106196744301684
+   }
+  },
+  "controls (pooled)": {
+   "passages": 21,
+   "in_hypothesis_set": false,
+   "posterior": {
+    "Ethan Smith": 0.12316368989176657,
+    "Gilbert J. Hunt": 0.11940335800021427,
+    "Solomon Spalding": 0.12704244471690665,
+    "not in set": 0.6303905073911126
+   }
+  }
+ }
+}
