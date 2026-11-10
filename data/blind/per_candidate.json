@@ -1,0 +1,543 @@
+{
+ "stamp": {
+  "config_sha256": "262c5d90db35cd18d6c614569ec17c0568bbe7612c98a989c6dc96cc6cb27d94",
+  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+  "registered": true,
+  "git_commit": "e7fcb30a2922bbc452926b54ea60ce0c5afd5630"
+ },
+ "run": "registered",
+ "methods": {
+  "burrows_delta": {
+   "chunks": 168,
+   "not_scorable": [],
+   "units": {
+    "cand__ethan-smith__printed_by_author__pre1830": {
+     "mean_rank": 6.48,
+     "first": 0
+    },
+    "cand__gilbert-j-hunt__printed_by_author__pre1830": {
+     "mean_rank": 5.55,
+     "first": 47
+    },
+    "cand__joseph-smith__dictated__post1830": {
+     "mean_rank": 3.63,
+     "first": 39
+    },
+    "cand__joseph-smith__dictated__pre1830": {
+     "mean_rank": 7.06,
+     "first": 22
+    },
+    "cand__joseph-smith__handwritten__post1830": {
+     "mean_rank": 4.62,
+     "first": 16
+    },
+    "cand__oliver-cowdery__handwritten__pre1830": {
+     "mean_rank": 9.89,
+     "first": 6
+    },
+    "cand__oliver-cowdery__printed_by_author__post1830": {
+     "mean_rank": 5.74,
+     "first": 0
+    },
+    "cand__parley-p-pratt__printed_by_author__post1830": {
+     "mean_rank": 2.67,
+     "first": 37
+    },
+    "cand__sidney-rigdon__printed_by_author__post1830": {
+     "mean_rank": 8.54,
+     "first": 0
+    },
+    "cand__solomon-spalding__posthumous__pre1830": {
+     "mean_rank": 5.74,
+     "first": 0
+    },
+    "cand__w-w-phelps__printed_by_author__post1830": {
+     "mean_rank": 6.08,
+     "first": 1
+    }
+   }
+  },
+  "cosine_delta": {
+   "chunks": 168,
+   "not_scorable": [],
+   "units": {
+    "cand__ethan-smith__printed_by_author__pre1830": {
+     "mean_rank": 10.95,
+     "first": 0
+    },
+    "cand__gilbert-j-hunt__printed_by_author__pre1830": {
+     "mean_rank": 4.65,
+     "first": 31
+    },
+    "cand__joseph-smith__dictated__post1830": {
+     "mean_rank": 4.17,
+     "first": 0
+    },
+    "cand__joseph-smith__dictated__pre1830": {
+     "mean_rank": 1.24,
+     "first": 131
+    },
+    "cand__joseph-smith__handwritten__post1830": {
+     "mean_rank": 4.97,
+     "first": 0
+    },
+    "cand__oliver-cowdery__handwritten__pre1830": {
+     "mean_rank": 2.55,
+     "first": 6
+    },
+    "cand__oliver-cowdery__printed_by_author__post1830": {
+     "mean_rank": 8.41,
+     "first": 0
+    },
+    "cand__parley-p-pratt__printed_by_author__post1830": {
+     "mean_rank": 4.32,
+     "first": 0
+    },
+    "cand__sidney-rigdon__printed_by_author__post1830": {
+     "mean_rank": 7.26,
+     "first": 0
+    },
+    "cand__solomon-spalding__posthumous__pre1830": {
+     "mean_rank": 9.61,
+     "first": 0
+    },
+    "cand__w-w-phelps__printed_by_author__post1830": {
+     "mean_rank": 7.86,
+     "first": 0
+    }
+   }
+  },
+  "general_imposters": {
+   "chunks": 168,
+   "not_scorable": [],
+   "units": {
+    "cand__ethan-smith__printed_by_author__pre1830": {
+     "mean_rank": 7.74,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__gilbert-j-hunt__printed_by_author__pre1830": {
+     "mean_rank": 5.65,
+     "first": 39,
+     "match": 0,
+     "inconclusive": 4
+    },
+    "cand__joseph-smith__dictated__post1830": {
+     "mean_rank": 6.53,
+     "first": 4,
+     "match": 0,
+     "inconclusive": 5
+    },
+    "cand__joseph-smith__dictated__pre1830": {
+     "mean_rank": 4.11,
+     "first": 40,
+     "match": 0,
+     "inconclusive": 29
+    },
+    "cand__joseph-smith__handwritten__post1830": {
+     "mean_rank": 6.39,
+     "first": 4,
+     "match": 0,
+     "inconclusive": 1
+    },
+    "cand__oliver-cowdery__handwritten__pre1830": {
+     "mean_rank": 6.84,
+     "first": 6,
+     "match": 0,
+     "inconclusive": 8
+    },
+    "cand__oliver-cowdery__printed_by_author__post1830": {
+     "mean_rank": 6.96,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__parley-p-pratt__printed_by_author__post1830": {
+     "mean_rank": 2.04,
+     "first": 74,
+     "match": 0,
+     "inconclusive": 31
+    },
+    "cand__sidney-rigdon__printed_by_author__post1830": {
+     "mean_rank": 6.06,
+     "first": 1,
+     "match": 0,
+     "inconclusive": 3
+    },
+    "cand__solomon-spalding__posthumous__pre1830": {
+     "mean_rank": 7.17,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__w-w-phelps__printed_by_author__post1830": {
+     "mean_rank": 6.51,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 1
+    }
+   }
+  },
+  "style_297m": {
+   "chunks": 168,
+   "not_scorable": [],
+   "units": {
+    "cand__ethan-smith__printed_by_author__pre1830": {
+     "mean_rank": 9.38,
+     "first": 2,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__gilbert-j-hunt__printed_by_author__pre1830": {
+     "mean_rank": 5.46,
+     "first": 1,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__joseph-smith__dictated__post1830": {
+     "mean_rank": 3.82,
+     "first": 2,
+     "match": 0,
+     "inconclusive": 1
+    },
+    "cand__joseph-smith__dictated__pre1830": {
+     "mean_rank": 1.15,
+     "first": 148,
+     "match": 0,
+     "inconclusive": 75
+    },
+    "cand__joseph-smith__handwritten__post1830": {
+     "mean_rank": 5.51,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__oliver-cowdery__handwritten__pre1830": {
+     "mean_rank": 2.43,
+     "first": 14,
+     "match": 0,
+     "inconclusive": 12
+    },
+    "cand__oliver-cowdery__printed_by_author__post1830": {
+     "mean_rank": 7.38,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__parley-p-pratt__printed_by_author__post1830": {
+     "mean_rank": 4.85,
+     "first": 1,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__sidney-rigdon__printed_by_author__post1830": {
+     "mean_rank": 6.4,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__solomon-spalding__posthumous__pre1830": {
+     "mean_rank": 10.05,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__w-w-phelps__printed_by_author__post1830": {
+     "mean_rank": 9.56,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    }
+   }
+  },
+  "style_590m": {
+   "chunks": 168,
+   "not_scorable": [],
+   "units": {
+    "cand__ethan-smith__printed_by_author__pre1830": {
+     "mean_rank": 9.04,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__gilbert-j-hunt__printed_by_author__pre1830": {
+     "mean_rank": 3.95,
+     "first": 8,
+     "match": 0,
+     "inconclusive": 9
+    },
+    "cand__joseph-smith__dictated__post1830": {
+     "mean_rank": 4.1,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 3
+    },
+    "cand__joseph-smith__dictated__pre1830": {
+     "mean_rank": 1.73,
+     "first": 58,
+     "match": 0,
+     "inconclusive": 84
+    },
+    "cand__joseph-smith__handwritten__post1830": {
+     "mean_rank": 7.4,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__oliver-cowdery__handwritten__pre1830": {
+     "mean_rank": 1.51,
+     "first": 102,
+     "match": 0,
+     "inconclusive": 103
+    },
+    "cand__oliver-cowdery__printed_by_author__post1830": {
+     "mean_rank": 6.62,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__parley-p-pratt__printed_by_author__post1830": {
+     "mean_rank": 4.27,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 1
+    },
+    "cand__sidney-rigdon__printed_by_author__post1830": {
+     "mean_rank": 7.35,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__solomon-spalding__posthumous__pre1830": {
+     "mean_rank": 10.57,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__w-w-phelps__printed_by_author__post1830": {
+     "mean_rank": 9.48,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    }
+   }
+  },
+  "alm_125m": {
+   "chunks": 168,
+   "not_scorable": [],
+   "units": {
+    "cand__ethan-smith__printed_by_author__pre1830": {
+     "mean_rank": 11.0,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__gilbert-j-hunt__printed_by_author__pre1830": {
+     "mean_rank": 5.85,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__joseph-smith__dictated__post1830": {
+     "mean_rank": 9.58,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__joseph-smith__dictated__pre1830": {
+     "mean_rank": 1.61,
+     "first": 82,
+     "match": 2,
+     "inconclusive": 68
+    },
+    "cand__joseph-smith__handwritten__post1830": {
+     "mean_rank": 7.98,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__oliver-cowdery__handwritten__pre1830": {
+     "mean_rank": 2.8,
+     "first": 29,
+     "match": 4,
+     "inconclusive": 37
+    },
+    "cand__oliver-cowdery__printed_by_author__post1830": {
+     "mean_rank": 5.14,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 4
+    },
+    "cand__parley-p-pratt__printed_by_author__post1830": {
+     "mean_rank": 2.18,
+     "first": 57,
+     "match": 4,
+     "inconclusive": 50
+    },
+    "cand__sidney-rigdon__printed_by_author__post1830": {
+     "mean_rank": 9.17,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__solomon-spalding__posthumous__pre1830": {
+     "mean_rank": 5.14,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 1
+    },
+    "cand__w-w-phelps__printed_by_author__post1830": {
+     "mean_rank": 5.55,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 2
+    }
+   }
+  },
+  "alm_297m": {
+   "chunks": 168,
+   "not_scorable": [],
+   "units": {
+    "cand__ethan-smith__printed_by_author__pre1830": {
+     "mean_rank": 11.0,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__gilbert-j-hunt__printed_by_author__pre1830": {
+     "mean_rank": 5.85,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__joseph-smith__dictated__post1830": {
+     "mean_rank": 8.73,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__joseph-smith__dictated__pre1830": {
+     "mean_rank": 1.21,
+     "first": 133,
+     "match": 2,
+     "inconclusive": 122
+    },
+    "cand__joseph-smith__handwritten__post1830": {
+     "mean_rank": 4.14,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 2
+    },
+    "cand__oliver-cowdery__handwritten__pre1830": {
+     "mean_rank": 1.95,
+     "first": 34,
+     "match": 3,
+     "inconclusive": 60
+    },
+    "cand__oliver-cowdery__printed_by_author__post1830": {
+     "mean_rank": 6.55,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 1
+    },
+    "cand__parley-p-pratt__printed_by_author__post1830": {
+     "mean_rank": 7.32,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__sidney-rigdon__printed_by_author__post1830": {
+     "mean_rank": 9.98,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__solomon-spalding__posthumous__pre1830": {
+     "mean_rank": 5.48,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 1
+    },
+    "cand__w-w-phelps__printed_by_author__post1830": {
+     "mean_rank": 3.8,
+     "first": 1,
+     "match": 0,
+     "inconclusive": 5
+    }
+   }
+  },
+  "alm_590m": {
+   "chunks": 168,
+   "not_scorable": [],
+   "units": {
+    "cand__ethan-smith__printed_by_author__pre1830": {
+     "mean_rank": 11.0,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__gilbert-j-hunt__printed_by_author__pre1830": {
+     "mean_rank": 6.37,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__joseph-smith__dictated__post1830": {
+     "mean_rank": 8.04,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 1
+    },
+    "cand__joseph-smith__dictated__pre1830": {
+     "mean_rank": 2.02,
+     "first": 46,
+     "match": 0,
+     "inconclusive": 71
+    },
+    "cand__joseph-smith__handwritten__post1830": {
+     "mean_rank": 5.02,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 7
+    },
+    "cand__oliver-cowdery__handwritten__pre1830": {
+     "mean_rank": 1.38,
+     "first": 119,
+     "match": 3,
+     "inconclusive": 117
+    },
+    "cand__oliver-cowdery__printed_by_author__post1830": {
+     "mean_rank": 5.71,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 1
+    },
+    "cand__parley-p-pratt__printed_by_author__post1830": {
+     "mean_rank": 6.02,
+     "first": 2,
+     "match": 0,
+     "inconclusive": 8
+    },
+    "cand__sidney-rigdon__printed_by_author__post1830": {
+     "mean_rank": 9.25,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__solomon-spalding__posthumous__pre1830": {
+     "mean_rank": 8.11,
+     "first": 0,
+     "match": 0,
+     "inconclusive": 0
+    },
+    "cand__w-w-phelps__printed_by_author__post1830": {
+     "mean_rank": 3.09,
+     "first": 1,
+     "match": 0,
+     "inconclusive": 15
+    }
+   }
+  }
+ }
+}
