@@ -46,9 +46,10 @@ model with a blind second pass by another (simulated review).
   books.
 - **Rare phrases.** *The First Book of Napoleon* (rank 63 of 204,520, p 0.0003) and *The Late War*
   (rank 131, p 0.0006) pass the registered rule; *View of the Hebrews* (rank 9,496) and Spalding do
-  not. The 1829 reprint of Ilive's *Book of Jasher*, another imitation scripture, shares more than
-  either; the shared phrases are battle and chronicle formulas, and 2,044 volumes pass the rule.
-- **Paraphrase.** No named source stands out from its genre: *View of the Hebrews* leads the
+  not. The 1829 reprint of Ilive's *Book of Jasher* (printed in Bristol; its American
+  circulation is not established), another imitation scripture, shares more than either; the shared phrases are battle and chronicle formulas, and 2,044 volumes pass the rule.
+- **Paraphrase.** No named source stands out from its genre (the genre label of each named source's
+  null was chosen after the sources' ranks were seen; Amendment 21, post hoc): *View of the Hebrews* leads the
   Indian-origins group but 77 of 500 matched religious volumes score higher. In the whole-library
   search editions of Josephus take 14 of the top 20 places, and the registered rule flags 622
   sources, which mostly measures biblical register.
@@ -70,7 +71,8 @@ translation question.
 
 **Preparation.** Each 2,000-word block of the text, and of each source, was reduced by a hosted
 model to at most 12 role-named events (checked on 20 King James chapters read twice: median
-agreement 0.92), giving 1,421 events for the Book of Mormon. Sequences were aligned
+agreement 0.92; no chance-corrected agreement was computed, and the check covers biblical narrative,
+not period prose), giving 1,421 events for the Book of Mormon. Sequences were aligned
 (Smith-Waterman) and each alignment tested against 1,000 shuffles of the source's order.
 
 **Positive control.** Josephus retelling Genesis-Judges shares 108 events in order with the Bible

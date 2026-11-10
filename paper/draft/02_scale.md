@@ -93,7 +93,9 @@ reference sample at about 10,000 masked words (BOM-43). A registered check of wh
 can stand in for earlier (30 period authors with a gap of seven or more years) passed for no method
 (37-60% against an 80% gate; BOM-48), so no candidate's post-1830 writing may stand in for his
 pre-1830 style. Samples written after 1830 come from people who had
-read the book and form a secondary set. Joseph Smith's documents come from the Joseph Smith Papers
+read the book and form a secondary set; Pratt and Phelps had no documented contact with Joseph Smith
+before the text was finished (Pratt from September 1830), and Hunt, Ethan Smith and Spalding enter
+as authors of proposed sources as much as proposed authors. Joseph Smith's documents come from the Joseph Smith Papers
 manuscripts (copyrighted transcripts, held privately; steps to obtain them are published).
 
 ### 2.7 Controls and the benchmark

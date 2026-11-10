@@ -46,7 +46,10 @@ classical method falls to about 55-60% (Burrows' Delta 57.0%, Cosine 60.3%, Gene
 56.5%, ENSC 54-55%), and none of three attempted repairs helped (BOM-58, BOM-60). Our General
 Imposters reproduces the published method's results on its own benchmark (11 of 12 rows within 4
 points), so its failure is the method's, not an implementation slip; our first ENSC was not the
-published method and was replaced. The classical verdicts are stable across 54 alternative
+published method and was replaced. ENSC ranks perfectly on the classical trials (1.000) but says
+"match" to a wrong author 66% of the time, and its "none of these" answer moves with candidate
+sample length (from 80% wrong to 0% between 1,000- and 10,000-word samples), so it was retired as an
+attribution method and kept as a replication (section 3). The classical verdicts are stable across 54 alternative
 settings, except General Imposters' (BOM-40).
 
 **Three findings.**

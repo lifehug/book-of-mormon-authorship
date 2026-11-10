@@ -75,6 +75,7 @@ little information. It is also driven by modelling choices: across priors of 0.2
 | 45 | the simulated reviews | ranking rechecked at equal training dose | ranking holds at 125M/297M; register at 590M |
 | 8 | the benchmark | rarity counted by text, not volume; Delta as closed-set evidence only | *The Late War* visible to the rare-phrase rule |
 | 20-21 | the semantic positive control | an own-copy exclusion; named sources tested against matched nulls | one control passes |
+| 40 | the sweep's plausibility gate passed 94% of authors (before any lead was seen) | conjunctive reading of the gate | none (no lead) |
 | 31 | a smoke test | one Cosine Delta imitation figure was seen before the imitation rule was registered (disclosed) | none |
 | (none) | unblinding | synthesis placebo | the synthesis read as uninformative |
 

@@ -27,6 +27,10 @@ remain in the "original" text, and how much the features rest on them has not be
 1830 survives in the corpus is not measured: the national newspaper set holds almost nothing from
 the region, and the access scores centre on Joseph Smith's documented reach.
 
+**Single authors only.** Every test asks whether one known writer's style fits; composite or
+collaborative authorship (Joseph Smith with Cowdery, or Spalding's text through Rigdon) is a common
+historical hypothesis that this design cannot test.
+
 **Small and uneven samples.** Joseph Smith's pre-1830 writing is 2,720 words and Cowdery's 1,310
 (844 tokens without quotations); both are under the 10,000-word floor. Rigdon, Pratt and Phelps are
 represented only by writing after 1830, by which time they had read the book. Samples mix

@@ -179,7 +179,9 @@ reference sample at about 10,000 masked words (BOM-43). A registered check of wh
 can stand in for earlier (30 period authors with a gap of seven or more years) passed for no method
 (37-60% against an 80% gate; BOM-48), so no candidate's post-1830 writing may stand in for his
 pre-1830 style. Samples written after 1830 come from people who had
-read the book and form a secondary set. Joseph Smith's documents come from the Joseph Smith Papers
+read the book and form a secondary set; Pratt and Phelps had no documented contact with Joseph Smith
+before the text was finished (Pratt from September 1830), and Hunt, Ethan Smith and Spalding enter
+as authors of proposed sources as much as proposed authors. Joseph Smith's documents come from the Joseph Smith Papers
 manuscripts (copyrighted transcripts, held privately; steps to obtain them are published).
 
 ### 2.7 Controls and the benchmark
@@ -280,7 +282,10 @@ classical method falls to about 55-60% (Burrows' Delta 57.0%, Cosine 60.3%, Gene
 56.5%, ENSC 54-55%), and none of three attempted repairs helped (BOM-58, BOM-60). Our General
 Imposters reproduces the published method's results on its own benchmark (11 of 12 rows within 4
 points), so its failure is the method's, not an implementation slip; our first ENSC was not the
-published method and was replaced. The classical verdicts are stable across 54 alternative
+published method and was replaced. ENSC ranks perfectly on the classical trials (1.000) but says
+"match" to a wrong author 66% of the time, and its "none of these" answer moves with candidate
+sample length (from 80% wrong to 0% between 1,000- and 10,000-word samples), so it was retired as an
+attribution method and kept as a replication (section 3). The classical verdicts are stable across 54 alternative
 settings, except General Imposters' (BOM-40).
 
 **Three findings.**
@@ -403,9 +408,10 @@ model with a blind second pass by another (simulated review).
   books.
 - **Rare phrases.** *The First Book of Napoleon* (rank 63 of 204,520, p 0.0003) and *The Late War*
   (rank 131, p 0.0006) pass the registered rule; *View of the Hebrews* (rank 9,496) and Spalding do
-  not. The 1829 reprint of Ilive's *Book of Jasher*, another imitation scripture, shares more than
-  either; the shared phrases are battle and chronicle formulas, and 2,044 volumes pass the rule.
-- **Paraphrase.** No named source stands out from its genre: *View of the Hebrews* leads the
+  not. The 1829 reprint of Ilive's *Book of Jasher* (printed in Bristol; its American
+  circulation is not established), another imitation scripture, shares more than either; the shared phrases are battle and chronicle formulas, and 2,044 volumes pass the rule.
+- **Paraphrase.** No named source stands out from its genre (the genre label of each named source's
+  null was chosen after the sources' ranks were seen; Amendment 21, post hoc): *View of the Hebrews* leads the
   Indian-origins group but 77 of 500 matched religious volumes score higher. In the whole-library
   search editions of Josephus take 14 of the top 20 places, and the registered rule flags 622
   sources, which mostly measures biblical register.
@@ -427,7 +433,8 @@ translation question.
 
 **Preparation.** Each 2,000-word block of the text, and of each source, was reduced by a hosted
 model to at most 12 role-named events (checked on 20 King James chapters read twice: median
-agreement 0.92), giving 1,421 events for the Book of Mormon. Sequences were aligned
+agreement 0.92; no chance-corrected agreement was computed, and the check covers biblical narrative,
+not period prose), giving 1,421 events for the Book of Mormon. Sequences were aligned
 (Smith-Waterman) and each alignment tested against 1,000 shuffles of the source's order.
 
 **Positive control.** Josephus retelling Genesis-Judges shares 108 events in order with the Bible
@@ -697,6 +704,7 @@ little information. It is also driven by modelling choices: across priors of 0.2
 | 45 | the simulated reviews | ranking rechecked at equal training dose | ranking holds at 125M/297M; register at 590M |
 | 8 | the benchmark | rarity counted by text, not volume; Delta as closed-set evidence only | *The Late War* visible to the rare-phrase rule |
 | 20-21 | the semantic positive control | an own-copy exclusion; named sources tested against matched nulls | one control passes |
+| 40 | the sweep's plausibility gate passed 94% of authors (before any lead was seen) | conjunctive reading of the gate | none (no lead) |
 | 31 | a smoke test | one Cosine Delta imitation figure was seen before the imitation rule was registered (disclosed) | none |
 | (none) | unblinding | synthesis placebo | the synthesis read as uninformative |
 
@@ -969,6 +977,10 @@ remain in the "original" text, and how much the features rest on them has not be
 **The local print environment.** How much of what was printed and sold in western New York before
 1830 survives in the corpus is not measured: the national newspaper set holds almost nothing from
 the region, and the access scores centre on Joseph Smith's documented reach.
+
+**Single authors only.** Every test asks whether one known writer's style fits; composite or
+collaborative authorship (Joseph Smith with Cowdery, or Spalding's text through Rigdon) is a common
+historical hypothesis that this design cannot test.
 
 **Small and uneven samples.** Joseph Smith's pre-1830 writing is 2,720 words and Cowdery's 1,310
 (844 tokens without quotations); both are under the 10,000-word floor. Rigdon, Pratt and Phelps are
