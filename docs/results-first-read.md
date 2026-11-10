@@ -10,6 +10,15 @@ The project does not argue for or against divine inspiration. It asks which know
 the text resembles closely, by methods whose error rates are measured, and reports the answer with
 its uncertainty.
 
+**Correction, 2026-11-10 (after this was first written).** Oliver Cowdery's pre-1830 sample is
+mostly his "Articles of the Church of Christ" (June 1829), and 41.9% of it, as the models saw it,
+is word-for-word Book of Mormon text (the sacrament prayers and baptism instructions from Moroni and
+3 Nephi); every other candidate sample shares 0-3%. Any ranking or match to that sample is
+therefore void: the methods recognised the Book of Mormon inside it. This breaks the sealing rule
+for one candidate sample; it is being corrected (the overlapping spans masked, as King James
+spans are, and that sample's models retrained), and the rerun will be labelled post hoc. Not
+affected: the synthesis (that sample is not in the primary set), the sweep, borrowing and dating.
+
 ## 1. The sanity check passed: the decoys
 
 The sealed set held 43 decoys beside the 168 Book of Mormon chunks: 22 held-out passages by the
@@ -43,7 +52,8 @@ samples):
 | Candidate models 590M | Cowdery 109, Joseph Smith 45, pseudo-biblical controls 11 |
 
 The candidates ranked closest are, across methods, **Joseph Smith and Oliver Cowdery**, the
-documented dictator and principal scribe of the text, and, for some methods, Pratt and Hunt.
+documented dictator and principal scribe of the text (every Cowdery pre-1830 ranking is void: see
+the correction above), and, for some methods, Pratt and Hunt.
 
 **Caveats that bear directly on this:**
 
@@ -141,7 +151,7 @@ called a stranger's text a match. On the Book of Mormon, no method makes a confi
 candidate, the whole-library sweep finds no lead, and the registered synthesis leans to "none of
 these candidates" (0.74), on classical evidence only, because the model-based methods were
 disqualified by their weakness on imitation. Where methods rank someone closest, it is mostly Joseph
-Smith or Oliver Cowdery, through samples too small to trust and written in the same circle and
+Smith (Cowdery's rankings are void, his sample being 42% Book of Mormon text), through a sample too small to trust and written in the same circle and
 register as the text itself. The language-based dating places the text's language well before
 1780-1830, by every model, including the one that imitation did not fool in validation.
 

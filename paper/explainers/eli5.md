@@ -76,9 +76,11 @@ We found no copied passage.
 book sounds like English from before 1700, and older than other people who imitated the Bible in
 the early 1800s.
 
-**6. When forced to pick, the computers leaned toward Joseph Smith or Oliver Cowdery,** the man
-who spoke the book aloud and the man who wrote most of it down. But we only had very short samples
-of their early writing, too short to trust, so this doesn't count as a match.
+**6. When forced to pick, the computers leaned toward Joseph Smith,** the man who spoke the book
+aloud. But we only had a very short sample of his early writing, too short to trust, so this
+doesn't count as a match. (They also leaned toward Oliver Cowdery, who wrote most of it down, but
+we caught a mistake there: his early sample turned out to be almost half copied from the Book of
+Mormon itself, so of course it looked similar. We're fixing that and will say what changes.)
 
 ## What this doesn't tell you
 

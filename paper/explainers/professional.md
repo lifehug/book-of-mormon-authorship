@@ -120,7 +120,7 @@ lead. H1a (two families agree on a candidate) is not supported. The registered s
 only General Imposters carries weight, gives "not in set" 0.744 on both halves (Hunt 0.089,
 Spalding 0.085, Ethan Smith 0.082; prior 0.5), 0.42-0.92 across the prior grid, 1.00 under equal
 weights. Where methods rank someone first, it is mostly Joseph Smith (Cosine Delta 131 of 168) or
-Cowdery (590M ALM 109), through pre-1830 samples of 2,720 and 1,310 words flagged unreliable
+Cowdery (590M ALM 109; void, see below), through pre-1830 samples of 2,720 and 1,310 words flagged unreliable
 before scoring; the top-ranked unit changes with model size, and leave-one-out shows the two
 samples absorbing each other's chunks.
 
@@ -143,6 +143,11 @@ decision rules written before any result: 2 supported, 6 contradicted, 4 mixed, 
 4 untestable (`docs/claims-verdicts.md`).
 
 ## Threats to validity
+
+- **A sealing failure, found after unblinding:** Cowdery's pre-1830 sample ("Articles of the
+  Church of Christ", 1829) is 41.9% word-for-word Book of Mormon text; every ranking to it is void.
+  The sealing check ran on the training corpus, not on candidate samples. Overlapping spans are now
+  masked as King James spans are, and that sample's models are retrained (post hoc).
 
 - **No method meets the 5% bar**, so every attribution result is graded evidence.
 - **Candidate samples are small and uneven**; the two that rank closest are the smallest and come

@@ -152,6 +152,23 @@ items are withdrawn, bulk endpoints move, and our own HathiTrust rsync access en
 volume has gone, so a replication can report what it could not obtain instead of quietly
 analysing a different corpus.
 
+## Downloading the models instead of training them
+
+Training the models is the costly part (the 590M took 38 hours on two H100s). Every one is on
+Hugging Face (README, "The models"), so a replicator can skip training and still re-run every
+model-based test, given the texts each test reads:
+
+```
+pip install huggingface_hub
+huggingface-cli download etherfuse/timelocked-1830-590m --local-dir data/corpus/timelocked_lm/hf/590m
+huggingface-cli download etherfuse/bom-authorship-candidate-models --local-dir data/corpus/alm/hf_candidates
+```
+
+Then check every file against the committed list, e.g.
+`shasum -a 256` each file and compare with
+`data/manifests/hf_<repo>.jsonl`. A mismatch means a different file, not a different result.
+Training them yourself instead is the stronger check; the config, seeds and commands are all here.
+
 ## Checking results without obtaining anything
 
 A second, lower bar: `BOM-44` publishes the derived tables the analyses actually consume —

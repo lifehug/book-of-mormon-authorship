@@ -108,9 +108,12 @@ an AI model.)
 - **The combined (Bayesian) verdict leans "none of these candidates": 74%**, starting from 50/50.
   Only the classical methods count in it, because the model-based ones were fooled by imitation in
   testing and get zero weight.
-- **Closest-ranked names**, where a method has to rank someone: mostly Joseph Smith or Oliver
-  Cowdery, but through writing samples too small to trust (1,300 and 2,700 words) and written in
-  the same circle and style as the book.
+- **Closest-ranked names**, where a method has to rank someone: mostly Joseph Smith, through a
+  sample too small to trust (2,700 words) and written in the same circle and style as the book.
+  Oliver Cowdery also ranked high, but that turned out to be a bug in our data: his early sample
+  is 42% word-for-word Book of Mormon text (he copied passages into a church document), so the
+  models were recognising the book itself. Those rankings are void; we're masking the copied text
+  and rerunning.
 - **No borrowed passages.** Proposed sources such as *View of the Hebrews* and the Spalding
   manuscript score like ordinary books. *The Late War* and *The First Book of Napoleon* share rare
   phrases, but so does the whole genre of 1800s Bible imitations; none of the 1,069 flagged

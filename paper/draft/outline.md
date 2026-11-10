@@ -76,7 +76,8 @@ stands out under the registered nulls; 0 of 1,069 triaged pairs specific under b
   models matched their own held-out text on 20 / 14 / 11 of 22 by size.
 - Match calls on the 168 chunks: General Imposters 0 (both rules), style encoders 0 (registered;
   the achievable rule, at 50% benchmark false matches, matches often), candidate models 10 / 5 / 3
-  by size, all to the small pre-1830 Joseph Smith and Cowdery samples or post-1830 samples
+  by size, all to the small pre-1830 Joseph Smith and Cowdery samples or post-1830 samples (the
+  Cowdery pre-1830 sample is 42% Book of Mormon text, so its rankings and matches are void)
   (`docs/results-first-read.md` 2-3; per chunk and half in `data/blind/unblinded.json`).
 - H1a (a candidate matched by two independent families): **not supported**; under the registered
   thresholds General Imposters and the style encoders cannot return *match*. H1b ("none of these"):
