@@ -56,4 +56,7 @@ those sources.
 **Access is not use.** The access table records documented availability; it does not show that
 anyone read a given book.
 
-**A sweep with no leads says nothing beyond the corpus.** [RESULT: sweep usability and leads.]
+**A sweep with no leads says nothing beyond the corpus.** The sweep's top-1 rate on 200 held-out
+books is 27-35%, below the registered 70% (not usable as an attribution tool), and it found no
+lead (0, against 0.035 expected by chance; `docs/results-first-read.md` 5). Writers outside the
+23,872 swept authors, or whose work did not survive in print, are not covered.

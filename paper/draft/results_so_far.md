@@ -152,7 +152,7 @@ the comparison H3c registers. The transformer cross-check (Amendment 29,
 | ALM primary 125M / 297M / 590M | 5 / 7 / 6 of 17 (0.29 / 0.41 / 0.35) | 0 | 0.25 / 0.17 / 0.04 |
 | V1 125M / 297M / 590M | 0 / 2 / 0 of 17 | 0 | 0.12 / 0.42 / 0.00 |
 | V3 125M / 297M / 590M | 4 / 4 / 5 of 17 | 0 | 0.00 / 0.25 / 0.21 |
-| Style embeddings (590M encoder) | [RESULT] | | |
+| Style embeddings (590M encoder) | 10/18 = 0.56 (0.31-0.78) | 0 | 0.42 |
 
 The model-based methods are no better than the classical ones at seeing through imitation, and
 size does not help: the 590M's primary method names the real author in 6 of 17 imitation texts.

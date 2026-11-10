@@ -72,7 +72,8 @@ runs at all three, reported side by side with none treated as the headline (Amen
 | --- | --- | --- | --- | --- |
 | 125M (pilot) | 14 x 768 x 12 | 124,475,136 | 2.5148 | 1 H100 |
 | 297M (base) | 24 x 960 x 15 | 297,170,880 | 2.3248 | 1 H100 |
-| 1B (large, Amendment 26) | 32 x 1,600 x 25 | 1,035,878,400 | [RESULT: `data/corpus/timelocked_lm/runs/large/log.jsonl`] | 4 H100 |
+| 1B (large, Amendment 26) | 32 x 1,600 x 25 | 1,035,878,400 | abandoned after a loss spike at step ~15,800 (Amendment 38) | 4 H100 |
+| 590M (mid, QK-norm, Amendment 39) | 28 x 1,280 x 20 | 592,849,664 | 2.1917 | 2 H100 |
 
 The models are public under CC BY-NC 4.0 (BOM-66; `huggingface.co/etherfuse/timelocked-1830-125m`
 and siblings).
