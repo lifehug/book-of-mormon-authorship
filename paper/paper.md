@@ -104,19 +104,36 @@ limitations, what is public, and what comes next. The detailed methods are in Ap
 The catalog holds 695,021 items from five sources: for the period, the Internet Archive
 (307,567), HathiTrust (135,035), Harvard Institutional Books 1.0 (31,958 volumes; released 2025 and
 used here for the first time on this question) and Chronicling America (159,146 newspaper pages);
-and, for dating, 61,315 early modern English texts (1473-1700, EEBO-TCP). About 1.1 TB on
+and, for dating, 61,315 early modern English texts (1473-1700, EEBO-TCP). The national newspaper
+set holds almost nothing from western New York (47 New York pages); the *Wayne Sentinel* (Palmyra,
+1,429 pages 1823-30) and *Lake Light* were added from the New York State Historic Newspapers, and
+the *Ontario Phoenix*, which W. W. Phelps edited before 1830, is not digitized anywhere. About 1.1 TB on
 disk. Harvard's and HathiTrust's texts and the Joseph Smith Papers transcripts are licensed and
 are not redistributed; derived tables, checksums and the steps to obtain each are
 (`docs/replication.md`).
 
 ### 2.2 Cleaning
 
-Catalog dates were audited against the text itself; volumes whose pages name later years were
-re-dated (BOM-64, Amendment 12), which mattered: some "1817" Congressional volumes and an "1830"
-*Millennial Harbinger* quote the Book of Mormon. Reprints and later editions were grouped by
-MinHash similarity (5-gram shingles, threshold 0.8) and a second pass by title, author and year;
-nothing is deleted, duplicates are flagged (`data/catalog/DEDUP.md`). OCR quality was measured
-and is uneven (BOM-14, BOM-50).
+**Dates.** Catalog dates were audited against each volume's own text: of 366,580 volumes scanned,
+23,859 name a later year and 19,463 were moved past 1830 (BOM-64, Amendment 12); a model-read check
+of 100 flagged volumes found 81 truly later, so the correction errs toward exclusion, and moved
+volumes are kept in a separate column. Another 11,494 volumes carried a placeholder date of 1800;
+1,502 of them were printed after 1830. This mattered directly: 17 "pre-1830" volumes, among them
+Congressional serial-set volumes catalogued 1817 and an "1830" *Millennial Harbinger*, quote the
+Book of Mormon, and without the audit they would have looked like sources.
+
+**Duplicates.** Reprints and copies were grouped by MinHash similarity (5-gram shingles, threshold
+0.8; 19,920 groups) and by title, author and year across sources (4,697 groups; Amendment 6).
+Nothing is deleted; duplicates are flagged (`data/catalog/DEDUP.md`). The text method cannot see the
+same book OCR'd twice by different sources (median similarity 0.12-0.18 on 300 such pairs), which
+is why the metadata pass exists; copies within one source with different metadata can still escape.
+
+**OCR.** Measured against 1,883 hand-keyed twins, the median character error rate is 0.083 after
+cleaning, and 38% of volumes remain above 0.10; above that cut are 2.5% of Harvard's volumes,
+11.9% of HathiTrust's, 24.9% of the Internet Archive's and 27.8% of the newspaper pages (BOM-14).
+At about 80% word accuracy a 4-gram survives OCR about 41% of the time, so the wording searches
+miss more than half of any real shared phrasing in poor scans (an unmeasured share of false
+negatives). Language-model OCR correction was tried and rejected because it invented text.
 
 ### 2.3 Labelling
 
@@ -133,8 +150,12 @@ selection until the blind run, except the replications of section 3. Catalogued 
 by title, and any volume holding 20 or more of the text's original 12-token strings was removed
 from training (in practice later texts quoting it under early catalog dates).
 
-Every span of the text aligned to the King James Bible was masked (18,336 of 268,811 words, 6.8%);
+Every span of the text aligned to the King James Bible was masked (18,336 of 268,811 words, 6.8%;
+2 Nephi 32.7%, 3 Nephi 15.0%). On planted quotations the mask finds 78% of King James words with
+95% precision, so some King James wording remains in the "original" text;
 the same masking was applied to candidates (3.7%) and to 1.55 billion words of controls (1.8%).
+The mask uses the 1769 King James text; the Smith family's 1828 Phinney Bible is consistent with
+it (66.9% of verses found word for word even in its noisy OCR).
 Attribution and dating read only the remaining text. Candidate samples were later found to contain
 Book of Mormon quotations; Amendment 43 removed passages of 20 or more words copied after the
 matching passage existed (section 7).
@@ -151,10 +172,14 @@ blind run scored the narrator scheme's 168 whole chunks.
 Eight candidates, each sample tagged by provenance tier (handwritten, dictated, printed by the
 author, posthumous; Amendment 5) and by date. Masked word counts: Ethan Smith 277,391; Gilbert J.
 Hunt 56,956; Solomon Spalding 41,833; Joseph Smith dictated before 1830 2,720 (his 1828-29
-revelations), dictated after 1830 5,039, handwritten after 1830 6,363; Oliver Cowdery handwritten
+revelations; 2,844 words before King James masking, 3,039 model tokens), dictated after 1830 5,039, handwritten after 1830 6,363; Oliver Cowdery handwritten
 before 1830 1,310 (after Amendment 43, 844 tokens), printed after 1830 44,338; Parley P. Pratt
 91,478; Sidney Rigdon 21,516; W. W. Phelps 28,479. Samples under 10,000 words carry an
-"unreliable sample" flag fixed before scoring. Samples written after 1830 come from people who had
+"unreliable sample" flag fixed before scoring: a power analysis on known authors put the minimum
+reference sample at about 10,000 masked words (BOM-43). A registered check of whether later writing
+can stand in for earlier (30 period authors with a gap of seven or more years) passed for no method
+(37-60% against an 80% gate; BOM-48), so no candidate's post-1830 writing may stand in for his
+pre-1830 style. Samples written after 1830 come from people who had
 read the book and form a secondary set. Joseph Smith's documents come from the Joseph Smith Papers
 manuscripts (copyrighted transcripts, held privately; steps to obtain them are published).
 
@@ -231,8 +256,10 @@ Federalist papers, imitation scripture with known authors, and dictated text.
 | Candidate models (primary) | 125M | 0.936 | 0.473 | no |
 | Candidate models (primary) | 297M | **0.991** | 0.382 | no |
 | Candidate models (primary) | 590M | 0.982 | **0.218** | no |
-| General Imposters, same held-out tests | - | | 0.827 | no |
-| ENSC (Schaalje et al.), same tests | - | | 0.782 | no |
+| Burrows' Delta, same held-out tests | - | 0.955 | (no match score) | no |
+| Cosine Delta, same tests | - | 0.818 | (no match score) | no |
+| General Imposters, same tests | - | 0.745 | 0.827 | no |
+| ENSC (Schaalje et al.), same tests | - | 0.964 | 0.782 | no |
 | GPT-2 (modern training), primary method | 124M / 355M | 0.900 / 0.945 | 0.918 / 0.855 | no |
 | V1 (learning rate 1e-4, registered) | 125M / 297M / 590M | 0.936 / 0.936 / 0.627 | 0.455 / 0.473 / 0.818 | no |
 | V2 (classifier head, registered seed) | 125M / 297M / 590M | 0.900 / 0.909 / 0.764 | 0.282 / 0.136 / 0.391 | no |
@@ -242,6 +269,18 @@ Federalist papers, imitation scripture with known authors, and dictated text.
 The classical methods and style encoders were also scored on the 180 classical trials (General
 Imposters 0.833 / 0.617; ENSC 1.000 / 0.661; style encoder 0.839 / 0.500), compared within that
 set, not across.
+
+On the same 110 tests the 297M model ranks better than General Imposters (27 tests to 0) and
+Cosine Delta (19 to 0), but not significantly better than Burrows' Delta (4 to 0, p 0.13) or ENSC
+(paired exact McNemar tests): the language models' gain is mainly in matching, not in ranking.
+
+**Benchmark accuracy overstates accuracy on a wider field.** On 30 fresh period authors, every
+classical method falls to about 55-60% (Burrows' Delta 57.0%, Cosine 60.3%, General Imposters
+56.5%, ENSC 54-55%), and none of three attempted repairs helped (BOM-58, BOM-60). Our General
+Imposters reproduces the published method's results on its own benchmark (11 of 12 rows within 4
+points), so its failure is the method's, not an implementation slip; our first ENSC was not the
+published method and was replaced. The classical verdicts are stable across 54 alternative
+settings, except General Imposters' (BOM-40).
 
 **Three findings.**
 
@@ -341,7 +380,9 @@ on 2026-11-10.
 | Candidate models 125M / 297M / 590M | 20 / 21 / 19 | **0 at every size** | 20 / 14 / 11 |
 
 Every method found real candidate text most of the time, and no method called a stranger's text
-a match. The run is valid by section 8's rule.
+a match. The run is valid by section 8's rule. Two methods did worse on the decoys than on the
+benchmark (Cosine Delta 15 of 22, the 297M style encoder 16 of 22): accuracy measured on the
+benchmark does not fully carry over to new text.
 
 ### 5.2 Wording
 
@@ -366,6 +407,11 @@ model with a blind second pass by another (simulated review).
   Indian-origins group but 77 of 500 matched religious volumes score higher. In the whole-library
   search editions of Josephus take 14 of the top 20 places, and the registered rule flags 622
   sources, which mostly measures biblical register.
+- **Proposed parallels (exploratory).** Of the 500 parallels proposed in Rick Grunder's *Mormon
+  Parallels*, 139 are in the catalog; their sources score slightly closer than matched volumes
+  (median percentile 91.0 against 87.4, p 0.087), as expected from how they were chosen, and only
+  Josephus stands out. Josephus, the leading paraphrase source, was on sale in Palmyra and nearby
+  from 1822 and in E. B. Grandin's own stock from late 1828 into spring 1829 (Appendix B).
 - **Triage.** Of 1,069 surfaced pairs, 382 are King James wording, 685 period stock phrasing, and 2
   were called specific on the first pass; the second pass called both common. **No pair is
   specific under both passes** (agreement 0.74, kappa 0.51).
@@ -385,9 +431,14 @@ agreement 0.92), giving 1,421 events for the Book of Mormon. Sequences were alig
 **Positive control.** Josephus retelling Genesis-Judges shares 108 events in order with the Bible
 (p 0.001): the test finds a retold story when there is one.
 
-**Results.** No source shares the text's order of events at the registered level (order p at most
-0.01). Among the 20 leading sources of the paraphrase search the longest shared run is 9 events
-(Josephus, p 0.24). Named sources: *View of the Hebrews* 1823, 3 events (p 0.97) and 1825, 2 (p
+**Results.** One book meets the registered level (order p at most 0.01): Benjamin Church's *History
+of Philip's War*, first of 49 in its group, p 0.008. The shared run is six events from one stretch of
+each book (Alma 60-61: a commander writes angrily to the governor, the governor replies that rebels
+have driven him out, the commander marches to help; in Church, a governor sends a captain with a
+letter to raise troops): the common shape of military correspondence, not a shared episode. With 49
+books tested, one such p-value arises by chance about 4 times in 10, so it is reported as it came
+out and read as chance. Among the 20 leading sources of the paraphrase search the longest shared run
+is 9 events (Josephus, p 0.24). Named sources: *View of the Hebrews* 1823, 3 events (p 0.97) and 1825, 2 (p
 1.0); Spalding, 4 (p 0.67); *The Late War*, 2 (p 1.0); *Napoleon*, 3 (p 1.0).
 
 ### 5.4 Authorship
@@ -442,9 +493,13 @@ control volumes of 1780-1830 (grammar 1661 vs 1734; lexical 1738 vs 1794; p 0.00
 book of the text as one unit (12 books) the result stands (p 0.0025 and 0.0001). Part of the early
 date is the biblical register, but the text is more archaic than the period's other biblical
 imitations, and the transformer, which imitation did not move, still dates it before them (1755
-vs 1805). Two cautions: an early-modern placement is predicted by an early-modern source, by
-imitation of one, and by the King James register alike; and the models learned 1780-1830 English
-from edited print, so unedited New York and New England vernacular may read to them as archaic.
+vs 1805). Seven of the 25 period imitations are themselves placed in the
+early modern window by the grammar model, so the genre can reach it. Three cautions: an
+early-modern placement is predicted by an early-modern source, by imitation of one, and by the King
+James register alike; the models learned 1780-1830 English from edited print, so unedited New York
+and New England vernacular may read to them as archaic; and hand-keyed text reaches the period
+window less often than OCR text of the same years (55% against 83% of 1780-1809 segments), and the
+Book of Mormon text is keyed, which alone could pull its dates earlier.
 
 ### 5.6 Internal voices
 
@@ -458,10 +513,12 @@ was asked to separate the chunks by narrator, by dictation order, and by scribe.
 | Scribe | not testable: only Oliver Cowdery's hand fills three or more continuous chunks | | |
 
 The narrators differ above chance but well below the level that separates different real
-authors, and dictation order separates the chunks about as well: **not separable as different
-authors**. The manuscript evidence (Appendix B) shows the original was taken down by ear:
+authors: **not separable as different authors**. Raw accuracy is about the same for dictation
+order; corrected for chance, narrator separates somewhat better (0.645 against 0.514), so the
+differences follow both who narrates and when a passage was dictated. The manuscript evidence (Appendix B) shows the original was taken down by ear:
 sound-alike corrections are 6 to 12 times more common in the dictated original than in the copied
-printer's manuscript, with the same scribe in both (Fisher p 2e-9). That bears on how the words
+printer's manuscript, with the same scribe in both (Fisher p 2e-9; a simulated check of the page photographs confirms the ratio, and the tests
+treat corrections on one page as independent, which overstates certainty). That bears on how the words
 reached the page, not on whether they were composed, recited or read aloud.
 
 
@@ -471,9 +528,9 @@ The *Letter to a CES Director* (Jeremy Runnells, 2013; https://read.cesletter.or
 most widely read critical compilation. Its Book of Mormon section names three books as sources or
 parallels: *View of the Hebrews*, *The Late War* and *The First Book of Napoleon*
 (`docs/ces-letter-books.md`). Spalding's *Manuscript Story*, named by other critics but not by the
-Letter, gets the same treatment beside them. The Letter's King James arguments (1769-edition errors,
-the translators' italics) and its place-name table are not tested here: the study masks King James
-text rather than asking which edition it follows, and place names are outside its methods.
+Letter, gets the same treatment beside them. Of the Letter's King James arguments, the italics are tested
+(section 6.5); which edition's errors the text follows is not (the study masks King James text
+rather than asking which printing it follows), and place names are outside its methods.
 
 Every claim was registered with its decision rule before any result (`data/claims/register.yaml`).
 Access scores run from 3 (documented within Joseph Smith's reach before mid-1829) to 0 (no
@@ -502,7 +559,7 @@ school text).
 
 | Test | Result |
 | --- | --- |
-| Rare phrases | 22 shared (3.86 per 10,000 words), rank 131 of 204,520, p 0.0006: **passes**; but the 1829 *Book of Jasher* shares more, the phrases are battle and chronicle formulas, and 2,044 volumes pass |
+| Rare phrases | 22 shared (3.86 per 10,000 words), rank 131 of 204,520, p 0.0006: **passes**; but the 1829 *Book of Jasher* shares more, the phrases are battle and chronicle formulas, and 2,044 volumes pass. Under Johnson and Johnson's own looser rule it shares 183 phrases: 6 occur in no other book, 17 in one to four, 135 in twenty or more. Rarity had to be counted by text, not by volume: nine printings of *The Late War* in the library had made its own phrases look common (counted by volume it shares none; by text, 22; Amendment 8) |
 | Paraphrase | rank 6 of 18 in its group, percentile 79.8: does not stand out |
 | Shared passages after triage | none specific |
 | Story structure | 2 events in order, p 1.0 |
@@ -532,6 +589,22 @@ school text).
 | Spalding as author | never matched; mean rank 3.7-10.6 among 10-11 candidate samples |
 | Access | 0 |
 | Verdict | **contradicted** as a source |
+
+## 6.5 The King James italics
+
+**The claim.** The text reproduces King James passages including the words the 1611 translators
+printed in italics (supplied words with no Hebrew or Greek behind them), which a translation from
+an ancient record would not be expected to carry.
+
+**The test (BOM-62).** In every passage that parallels the King James text, the share of italic
+words kept against the share of ordinary words kept. The Smith family's 1828 Bible printed the
+italics (88 of 100 checked words). Genuine translations and period sermons that quote the King
+James Bible keep italic words almost as often as other words (0.903 and 0.904). The Book of Mormon
+keeps 0.645 of italic words (interval 0.576-0.716) against 0.946 of other words: it drops italic
+words far more often than other users of the King James text. In Isaiah it drops 37.3%, matching
+earlier counts (Spencer 2020, 37%; Wright 1998, about 40%). The registered test's own validation
+check failed, so by its rule the result is reported without an interpretation: the measurement
+reproduces, but the test cannot say why the italic words differ.
 
 **Reading.** Of the three books the Letter names, two share an unusual density of rare phrases with
 the text, and so does much of the imitation-scripture genre they belong to. None shares a copied
@@ -597,7 +670,9 @@ Run on the candidates' own held-out decoys, the registered synthesis still leans
 Ethan Smith 0.59, Hunt 0.56, Spalding 0.51, controls 0.63. The method cannot recognise an author's
 own text as that author's, because its one contributing family (General Imposters) cannot reach
 "match" at its registered threshold. The Book of Mormon's 0.744 is therefore reported, but carries
-little information.
+little information. It is also driven by modelling choices: across priors of 0.2-0.8 it runs
+0.42-0.92; with equal family weights it is about 0.99, treating chunks as independent about
+0.99999, and dropping General Imposters returns the prior.
 
 ### 7.4 Every decision made after results existed
 
@@ -611,9 +686,31 @@ little information.
 | 43 | unblinding | Book of Mormon quotations dropped from candidate samples | Cowdery ranking removed; synthesis unchanged |
 | 44 | unblinding | Joseph Smith's ordinary prose scored | register stated (section 10.1) |
 | 45 | the simulated reviews | ranking rechecked at equal training dose | ranking holds at 125M/297M; register at 590M |
+| 8 | the benchmark | rarity counted by text, not volume; Delta as closed-set evidence only | *The Late War* visible to the rare-phrase rule |
+| 20-21 | the semantic positive control | an own-copy exclusion; named sources tested against matched nulls | one control passes |
+| 31 | a smoke test | one Cosine Delta imitation figure was seen before the imitation rule was registered (disclosed) | none |
 | (none) | unblinding | synthesis placebo | the synthesis read as uninformative |
 
 Every amendment, with its reason and date, is in section 11 of the pre-registration and on OSF.
+
+### 7.5 Process failures
+
+Reported because the study's guarantee is that everything can be checked:
+
+- **Source data deleted.** The newspaper extractor deleted the archives it read, losing the per-word
+  OCR confidence and word positions for all 158,960 pages; a build test now fails on any
+  destructive call in the pipeline (BOM-50; recovery is open).
+- **Licensed text nearly published.** A 117 MB results file holding fresh-author text was caught
+  by the repository's size limit before it was pushed; results files now hold names and numbers
+  only. Earlier, validation excerpts from Harvard's texts and a personal email and IP address were
+  committed and removed by rewriting history.
+- **Models discarded.** The benchmark's fine-tuned models were scored and then deleted to save
+  disk, and the abandoned 1B's checkpoints were deleted without asking; every fine-tune is now kept
+  and published, and the discarded ones are being rebuilt (BOM-72).
+- **Wrong results caught later.** A first genre-agreement figure (7.4%) counted 3,027 outage
+  failures as answers; a paraphrase write-up said no named source ranked first when one did; a
+  rare-phrase count came from the wrong book; a closed catalog issue had left out HathiTrust. Each
+  was corrected in the open, with the issue reopened.
 
 
 ## 8. Public claims
@@ -665,7 +762,8 @@ Read in the order of trust fixed before unblinding (`docs/method-reliability.md`
    the registered synthesis cannot tell an author's own text from a stranger's.
 4. **Nothing copied, no plot shared.** No proposed source shares a copied passage, a sequence of
    events or a passage judged specific by two reviews; the story-structure test finds Josephus
-   retelling Genesis when the story is there. Rare-phrase overlap with *The Late War* and *The First
+   retelling Genesis when the story is there. Its one registered hit (Church's *Philip's War*, six
+   generic military-letter events) is what chance gives among 49 books. Rare-phrase overlap with *The Late War* and *The First
    Book of Napoleon* is real and genre-wide.
 5. **The language is earlier than its period and than period imitations.** The grammar dates
    mostly before 1700 (median 1661); the text is more archaic than the 1780-1830 pseudo-biblical
@@ -717,7 +815,9 @@ called a match by any method at any size.**
 words), dictated in a scriptural voice in the same months as the text. After 1830: dictated letters
 and documents (5,039 words) and his own handwriting (6,363), from the Joseph Smith Papers
 manuscripts; pooled non-revelatory prose of 1831-33 (letters and the 1832 history, about 11,600
-tokens, Amendment 44). All are under or near the 10,000-word floor.
+tokens, Amendment 44). All are under or near the 10,000-word floor, and the registered check of whether later writing
+can stand in for earlier failed for every method (section 2.6), so none of the post-1830 samples
+can stand in for his pre-1830 style.
 
 **Revelations: closest, everywhere but Burrows' Delta.** Seven of eight methods rank the revelations
 closest, at every model size, and the candidate models call 2, 2 and 0 chunks a match (125M, 297M,
@@ -811,7 +911,9 @@ matched. He wrote after reading the book.
 
 ### 10.8 W. W. Phelps
 
-**Sample.** Printed writing after 1830 (28,479 words). **Results.** The 590M candidate models rank
+**Sample.** Printed writing after 1830 (28,479 words). His pre-1830 newspaper, the *Ontario
+Phoenix*, is not digitized anywhere, and his signed items in the *Lake Light* (1827-28) were too few
+to extract. **Results.** The 590M candidate models rank
 him second (mean rank 2.1, first in 26 chunks, 22 inconclusive, no match); other methods rank him
 low (6.1-9.8). Never matched. He wrote after reading the book.
 
@@ -849,7 +951,12 @@ with AI assistance. Every review step (adversarial, draft, peer) and the second 
 simulated by AI models; the blind run's "fresh session" is a new AI session without the key, not
 an independent analyst. None of this is independent scrutiny.
 
-**The corpus.** OCR quality is uneven; some catalog dates are wrong (corrected where the text names
+**The corpus.** OCR quality is uneven, and the wording searches miss an unmeasured but probably
+large share of real shared phrasing in poor scans (a 4-gram survives about 41% of the time at 80%
+word accuracy); a negative from poor OCR is not evidence of absence, as the 26 June 1829 *Wayne
+Sentinel* title-page notice shows (present on the page image, 0 of 10 search terms found in its
+OCR). Training volumes holding 1 to 19 of the text's 12-token strings (below the removal threshold
+of 20) were kept and not reported; some catalog dates are wrong (corrected where the text names
 later years); author names conflate namesakes and split variants; 72% of the original manuscript
 is lost. Writers whose work did not survive in print, or is outside the 23,872 swept authors, are
 not covered. The sweep failed its own usability test and is descriptive only.
@@ -863,6 +970,12 @@ used on the benchmark only, since it read modern text possibly including the Boo
 section 7.4 and labelled in the pre-registration.
 
 **Access is not use.** The access table records documented availability, not reading.
+
+**Planned and not run.** The hand validation of the genre labels and the 100-run perturbation that
+would show whether label errors matter (BOM-53); thematic dating, whether the text's themes track
+the 1820s (BOM-63); the register placebo (BOM-76); and Joseph Smith's prose over time (BOM-73,
+in progress). Genre labels agree moderately between two model passes (84.9% on either label, 50.8%
+exactly) and worst on early modern text.
 
 
 ## 12. Everything is public

@@ -31,7 +31,12 @@ with AI assistance. Every review step (adversarial, draft, peer) and the second 
 simulated by AI models; the blind run's "fresh session" is a new AI session without the key, not
 an independent analyst. None of this is independent scrutiny.
 
-**The corpus.** OCR quality is uneven; some catalog dates are wrong (corrected where the text names
+**The corpus.** OCR quality is uneven, and the wording searches miss an unmeasured but probably
+large share of real shared phrasing in poor scans (a 4-gram survives about 41% of the time at 80%
+word accuracy); a negative from poor OCR is not evidence of absence, as the 26 June 1829 *Wayne
+Sentinel* title-page notice shows (present on the page image, 0 of 10 search terms found in its
+OCR). Training volumes holding 1 to 19 of the text's 12-token strings (below the removal threshold
+of 20) were kept and not reported; some catalog dates are wrong (corrected where the text names
 later years); author names conflate namesakes and split variants; 72% of the original manuscript
 is lost. Writers whose work did not survive in print, or is outside the 23,872 swept authors, are
 not covered. The sweep failed its own usability test and is descriptive only.
@@ -45,3 +50,9 @@ used on the benchmark only, since it read modern text possibly including the Boo
 section 7.4 and labelled in the pre-registration.
 
 **Access is not use.** The access table records documented availability, not reading.
+
+**Planned and not run.** The hand validation of the genre labels and the 100-run perturbation that
+would show whether label errors matter (BOM-53); thematic dating, whether the text's themes track
+the 1820s (BOM-63); the register placebo (BOM-76); and Joseph Smith's prose over time (BOM-73,
+in progress). Genre labels agree moderately between two model passes (84.9% on either label, 50.8%
+exactly) and worst on early modern text.

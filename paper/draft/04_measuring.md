@@ -21,8 +21,10 @@ Federalist papers, imitation scripture with known authors, and dictated text.
 | Candidate models (primary) | 125M | 0.936 | 0.473 | no |
 | Candidate models (primary) | 297M | **0.991** | 0.382 | no |
 | Candidate models (primary) | 590M | 0.982 | **0.218** | no |
-| General Imposters, same held-out tests | - | | 0.827 | no |
-| ENSC (Schaalje et al.), same tests | - | | 0.782 | no |
+| Burrows' Delta, same held-out tests | - | 0.955 | (no match score) | no |
+| Cosine Delta, same tests | - | 0.818 | (no match score) | no |
+| General Imposters, same tests | - | 0.745 | 0.827 | no |
+| ENSC (Schaalje et al.), same tests | - | 0.964 | 0.782 | no |
 | GPT-2 (modern training), primary method | 124M / 355M | 0.900 / 0.945 | 0.918 / 0.855 | no |
 | V1 (learning rate 1e-4, registered) | 125M / 297M / 590M | 0.936 / 0.936 / 0.627 | 0.455 / 0.473 / 0.818 | no |
 | V2 (classifier head, registered seed) | 125M / 297M / 590M | 0.900 / 0.909 / 0.764 | 0.282 / 0.136 / 0.391 | no |
@@ -32,6 +34,18 @@ Federalist papers, imitation scripture with known authors, and dictated text.
 The classical methods and style encoders were also scored on the 180 classical trials (General
 Imposters 0.833 / 0.617; ENSC 1.000 / 0.661; style encoder 0.839 / 0.500), compared within that
 set, not across.
+
+On the same 110 tests the 297M model ranks better than General Imposters (27 tests to 0) and
+Cosine Delta (19 to 0), but not significantly better than Burrows' Delta (4 to 0, p 0.13) or ENSC
+(paired exact McNemar tests): the language models' gain is mainly in matching, not in ranking.
+
+**Benchmark accuracy overstates accuracy on a wider field.** On 30 fresh period authors, every
+classical method falls to about 55-60% (Burrows' Delta 57.0%, Cosine 60.3%, General Imposters
+56.5%, ENSC 54-55%), and none of three attempted repairs helped (BOM-58, BOM-60). Our General
+Imposters reproduces the published method's results on its own benchmark (11 of 12 rows within 4
+points), so its failure is the method's, not an implementation slip; our first ENSC was not the
+published method and was replaced. The classical verdicts are stable across 54 alternative
+settings, except General Imposters' (BOM-40).
 
 **Three findings.**
 

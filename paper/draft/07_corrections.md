@@ -57,7 +57,9 @@ Run on the candidates' own held-out decoys, the registered synthesis still leans
 Ethan Smith 0.59, Hunt 0.56, Spalding 0.51, controls 0.63. The method cannot recognise an author's
 own text as that author's, because its one contributing family (General Imposters) cannot reach
 "match" at its registered threshold. The Book of Mormon's 0.744 is therefore reported, but carries
-little information.
+little information. It is also driven by modelling choices: across priors of 0.2-0.8 it runs
+0.42-0.92; with equal family weights it is about 0.99, treating chunks as independent about
+0.99999, and dropping General Imposters returns the prior.
 
 ### 7.4 Every decision made after results existed
 
@@ -71,6 +73,28 @@ little information.
 | 43 | unblinding | Book of Mormon quotations dropped from candidate samples | Cowdery ranking removed; synthesis unchanged |
 | 44 | unblinding | Joseph Smith's ordinary prose scored | register stated (section 10.1) |
 | 45 | the simulated reviews | ranking rechecked at equal training dose | ranking holds at 125M/297M; register at 590M |
+| 8 | the benchmark | rarity counted by text, not volume; Delta as closed-set evidence only | *The Late War* visible to the rare-phrase rule |
+| 20-21 | the semantic positive control | an own-copy exclusion; named sources tested against matched nulls | one control passes |
+| 31 | a smoke test | one Cosine Delta imitation figure was seen before the imitation rule was registered (disclosed) | none |
 | (none) | unblinding | synthesis placebo | the synthesis read as uninformative |
 
 Every amendment, with its reason and date, is in section 11 of the pre-registration and on OSF.
+
+### 7.5 Process failures
+
+Reported because the study's guarantee is that everything can be checked:
+
+- **Source data deleted.** The newspaper extractor deleted the archives it read, losing the per-word
+  OCR confidence and word positions for all 158,960 pages; a build test now fails on any
+  destructive call in the pipeline (BOM-50; recovery is open).
+- **Licensed text nearly published.** A 117 MB results file holding fresh-author text was caught
+  by the repository's size limit before it was pushed; results files now hold names and numbers
+  only. Earlier, validation excerpts from Harvard's texts and a personal email and IP address were
+  committed and removed by rewriting history.
+- **Models discarded.** The benchmark's fine-tuned models were scored and then deleted to save
+  disk, and the abandoned 1B's checkpoints were deleted without asking; every fine-tune is now kept
+  and published, and the discarded ones are being rebuilt (BOM-72).
+- **Wrong results caught later.** A first genre-agreement figure (7.4%) counted 3,027 outage
+  failures as answers; a paraphrase write-up said no named source ranked first when one did; a
+  rare-phrase count came from the wrong book; a closed catalog issue had left out HathiTrust. Each
+  was corrected in the open, with the issue reopened.

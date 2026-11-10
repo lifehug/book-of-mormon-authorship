@@ -24,7 +24,9 @@ on 2026-11-10.
 | Candidate models 125M / 297M / 590M | 20 / 21 / 19 | **0 at every size** | 20 / 14 / 11 |
 
 Every method found real candidate text most of the time, and no method called a stranger's text
-a match. The run is valid by section 8's rule.
+a match. The run is valid by section 8's rule. Two methods did worse on the decoys than on the
+benchmark (Cosine Delta 15 of 22, the 297M style encoder 16 of 22): accuracy measured on the
+benchmark does not fully carry over to new text.
 
 ### 5.2 Wording
 
@@ -49,6 +51,11 @@ model with a blind second pass by another (simulated review).
   Indian-origins group but 77 of 500 matched religious volumes score higher. In the whole-library
   search editions of Josephus take 14 of the top 20 places, and the registered rule flags 622
   sources, which mostly measures biblical register.
+- **Proposed parallels (exploratory).** Of the 500 parallels proposed in Rick Grunder's *Mormon
+  Parallels*, 139 are in the catalog; their sources score slightly closer than matched volumes
+  (median percentile 91.0 against 87.4, p 0.087), as expected from how they were chosen, and only
+  Josephus stands out. Josephus, the leading paraphrase source, was on sale in Palmyra and nearby
+  from 1822 and in E. B. Grandin's own stock from late 1828 into spring 1829 (Appendix B).
 - **Triage.** Of 1,069 surfaced pairs, 382 are King James wording, 685 period stock phrasing, and 2
   were called specific on the first pass; the second pass called both common. **No pair is
   specific under both passes** (agreement 0.74, kappa 0.51).
@@ -68,9 +75,14 @@ agreement 0.92), giving 1,421 events for the Book of Mormon. Sequences were alig
 **Positive control.** Josephus retelling Genesis-Judges shares 108 events in order with the Bible
 (p 0.001): the test finds a retold story when there is one.
 
-**Results.** No source shares the text's order of events at the registered level (order p at most
-0.01). Among the 20 leading sources of the paraphrase search the longest shared run is 9 events
-(Josephus, p 0.24). Named sources: *View of the Hebrews* 1823, 3 events (p 0.97) and 1825, 2 (p
+**Results.** One book meets the registered level (order p at most 0.01): Benjamin Church's *History
+of Philip's War*, first of 49 in its group, p 0.008. The shared run is six events from one stretch of
+each book (Alma 60-61: a commander writes angrily to the governor, the governor replies that rebels
+have driven him out, the commander marches to help; in Church, a governor sends a captain with a
+letter to raise troops): the common shape of military correspondence, not a shared episode. With 49
+books tested, one such p-value arises by chance about 4 times in 10, so it is reported as it came
+out and read as chance. Among the 20 leading sources of the paraphrase search the longest shared run
+is 9 events (Josephus, p 0.24). Named sources: *View of the Hebrews* 1823, 3 events (p 0.97) and 1825, 2 (p
 1.0); Spalding, 4 (p 0.67); *The Late War*, 2 (p 1.0); *Napoleon*, 3 (p 1.0).
 
 ### 5.4 Authorship
@@ -125,9 +137,13 @@ control volumes of 1780-1830 (grammar 1661 vs 1734; lexical 1738 vs 1794; p 0.00
 book of the text as one unit (12 books) the result stands (p 0.0025 and 0.0001). Part of the early
 date is the biblical register, but the text is more archaic than the period's other biblical
 imitations, and the transformer, which imitation did not move, still dates it before them (1755
-vs 1805). Two cautions: an early-modern placement is predicted by an early-modern source, by
-imitation of one, and by the King James register alike; and the models learned 1780-1830 English
-from edited print, so unedited New York and New England vernacular may read to them as archaic.
+vs 1805). Seven of the 25 period imitations are themselves placed in the
+early modern window by the grammar model, so the genre can reach it. Three cautions: an
+early-modern placement is predicted by an early-modern source, by imitation of one, and by the King
+James register alike; the models learned 1780-1830 English from edited print, so unedited New York
+and New England vernacular may read to them as archaic; and hand-keyed text reaches the period
+window less often than OCR text of the same years (55% against 83% of 1780-1809 segments), and the
+Book of Mormon text is keyed, which alone could pull its dates earlier.
 
 ### 5.6 Internal voices
 
@@ -141,8 +157,10 @@ was asked to separate the chunks by narrator, by dictation order, and by scribe.
 | Scribe | not testable: only Oliver Cowdery's hand fills three or more continuous chunks | | |
 
 The narrators differ above chance but well below the level that separates different real
-authors, and dictation order separates the chunks about as well: **not separable as different
-authors**. The manuscript evidence (Appendix B) shows the original was taken down by ear:
+authors: **not separable as different authors**. Raw accuracy is about the same for dictation
+order; corrected for chance, narrator separates somewhat better (0.645 against 0.514), so the
+differences follow both who narrates and when a passage was dictated. The manuscript evidence (Appendix B) shows the original was taken down by ear:
 sound-alike corrections are 6 to 12 times more common in the dictated original than in the copied
-printer's manuscript, with the same scribe in both (Fisher p 2e-9). That bears on how the words
+printer's manuscript, with the same scribe in both (Fisher p 2e-9; a simulated check of the page photographs confirms the ratio, and the tests
+treat corrections on one page as independent, which overstates certainty). That bears on how the words
 reached the page, not on whether they were composed, recited or read aloud.

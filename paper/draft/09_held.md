@@ -18,7 +18,8 @@ Read in the order of trust fixed before unblinding (`docs/method-reliability.md`
    the registered synthesis cannot tell an author's own text from a stranger's.
 4. **Nothing copied, no plot shared.** No proposed source shares a copied passage, a sequence of
    events or a passage judged specific by two reviews; the story-structure test finds Josephus
-   retelling Genesis when the story is there. Rare-phrase overlap with *The Late War* and *The First
+   retelling Genesis when the story is there. Its one registered hit (Church's *Philip's War*, six
+   generic military-letter events) is what chance gives among 49 books. Rare-phrase overlap with *The Late War* and *The First
    Book of Napoleon* is real and genre-wide.
 5. **The language is earlier than its period and than period imitations.** The grammar dates
    mostly before 1700 (median 1661); the text is more archaic than the 1780-1830 pseudo-biblical

@@ -34,7 +34,9 @@ called a match by any method at any size.**
 words), dictated in a scriptural voice in the same months as the text. After 1830: dictated letters
 and documents (5,039 words) and his own handwriting (6,363), from the Joseph Smith Papers
 manuscripts; pooled non-revelatory prose of 1831-33 (letters and the 1832 history, about 11,600
-tokens, Amendment 44). All are under or near the 10,000-word floor.
+tokens, Amendment 44). All are under or near the 10,000-word floor, and the registered check of whether later writing
+can stand in for earlier failed for every method (section 2.6), so none of the post-1830 samples
+can stand in for his pre-1830 style.
 
 **Revelations: closest, everywhere but Burrows' Delta.** Seven of eight methods rank the revelations
 closest, at every model size, and the candidate models call 2, 2 and 0 chunks a match (125M, 297M,
@@ -128,6 +130,8 @@ matched. He wrote after reading the book.
 
 ### 10.8 W. W. Phelps
 
-**Sample.** Printed writing after 1830 (28,479 words). **Results.** The 590M candidate models rank
+**Sample.** Printed writing after 1830 (28,479 words). His pre-1830 newspaper, the *Ontario
+Phoenix*, is not digitized anywhere, and his signed items in the *Lake Light* (1827-28) were too few
+to extract. **Results.** The 590M candidate models rank
 him second (mean rank 2.1, first in 26 chunks, 22 inconclusive, no match); other methods rank him
 low (6.1-9.8). Never matched. He wrote after reading the book.
