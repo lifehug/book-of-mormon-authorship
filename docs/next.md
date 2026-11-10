@@ -5,26 +5,24 @@ everything ahead, never sit waiting). A job monitor (`scripts/jobwatch.py`) repo
 stall or finish at once; an hourly check-in walks this file. Rules: never two heavy GPU jobs on the
 Mac at once; rented GPUs within approvals given; the issue comment carries the next action.
 
-## Done overnight (2026-11-10)
+## Done 2026-11-10
 
-- 590M style encoder trained, tested and scored blind on its pod; **unblinded 04:15** (after a
-  fix to how the sweep's output is read); synthesis per size, scribe comparison (6.3), claims,
-  open-set and prior-work tables committed. First read: `docs/results-first-read.md`.
+- Unblinded 04:15; synthesis, scribes, claims (verdicts owner-approved), H3c (rejected).
+- Every model published on Hugging Face (README "The models"; checksums in `data/manifests/hf_*`).
+- Book of Mormon quotations found in candidate samples (Cowdery's 1829 Articles, Pratt): Amendment
+  43 (quotations only), rerun filed beside the registered run (`data/*/a43/`).
+- Joseph Smith revelatory vs non-revelatory (Amendment 44): closeness runs through the revelatory
+  register. BOM-73 (his prose over time) researched and tabled.
+- Explainers drafted (`paper/explainers/`).
 
 ## Next
 
-1. **BOM-36:** fill the paper's result slots from `docs/results-first-read.md`; BOM-29's formal H3 report.
-2. **Publish the models** (below).
-3. **BOM-38** simulated review, **BOM-37** release.
-
-## Tomorrow (2026-11-10)
-
-- **Publish every model to Hugging Face** (owner, 2026-11-09; deferred a day for B2's daily
-  download cap; blocks nothing). Dating models are live. Rerun: `python -m timelocked_lm.publish
-  stage`, then the `pod_jobs.py --name publish ... --b2-pull ... --hf-token` command in
-  `logs/publish.log`'s last launch (~222 GB from B2; check the owner's B2 cap first). Then commit
-  the README "The models" table and `docs/replication.md`'s download section (both written, not
-  yet committed) with the `data/manifests/hf_*.jsonl` lists. Add the 590M style encoder.
+1. **BOM-36:** assemble the full paper (`paper/paper.md`) from the drafts and results.
+2. **BOM-38:** simulated review (`python -m review.simulate run --draft paper/draft`), responses.
+3. **BOM-37:** release prep; **owner's go-ahead to publish**, Zenodo connection (owner's login).
+4. Blog post with the results (after the owner reads the explainers).
+5. Back up the Amendment 43 candidate weights to B2 when the 590M fetch finishes.
+6. Later: BOM-72 (rebuild discarded benchmark copies), BOM-73 (tabled).
 
 ## Waiting on the owner
 
