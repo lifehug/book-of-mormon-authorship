@@ -23,6 +23,7 @@ PARTS = [
     ("", "13_next.md"),
     ("## Appendix A. Methods in detail", "methods.md"),
     ("## Appendix B. Detailed tables", "results_so_far.md"),
+    ("## Appendix C. References", "references.md"),
 ]
 
 

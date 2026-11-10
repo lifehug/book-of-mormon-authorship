@@ -18,9 +18,9 @@ Federalist papers, imitation scripture with known authors, and dictated text.
 
 | Method | Size | Ranking (true author first) | False matches | Passes (>= 0.90 and <= 0.05) |
 | --- | --- | --- | --- | --- |
-| Candidate models (primary) | 125M | 0.936 | 0.473 | no |
-| Candidate models (primary) | 297M | **0.991** | 0.382 | no |
-| Candidate models (primary) | 590M | 0.982 | **0.218** | no |
+| Candidate models (primary) | 125M | 0.936 (0.873-0.974) | 0.473 (0.377-0.570) | no |
+| Candidate models (primary) | 297M | **0.991** (0.950-1.000) | 0.382 (0.291-0.479) | no |
+| Candidate models (primary) | 590M | 0.982 (0.936-0.998) | **0.218** (0.145-0.307) | no |
 | Burrows' Delta, same held-out tests | - | 0.955 | (no match score) | no |
 | Cosine Delta, same tests | - | 0.818 | (no match score) | no |
 | General Imposters, same tests | - | 0.745 | 0.827 | no |
@@ -31,7 +31,9 @@ Federalist papers, imitation scripture with known authors, and dictated text.
 | V2, five further seeds (range) | 125M / 297M / 590M | 0.66-0.93 / 0.51-0.76 / 0.40-0.78 | 0.09-0.93 / 0.53-0.98 / 0.32-0.93 | no |
 | V3 (hidden states into classical trials) | 125M / 297M / 590M | 0.839 / 0.844 / 0.844 | 0.689 / 0.717 / 0.706 | no |
 
-The classical methods and style encoders were also scored on the 180 classical trials (General
+Intervals are exact 95% binomial intervals over the 110 tests (52, 42 and 24 false matches); the
+benchmark has three tasks (Federalist papers, imitation scripture, dictated text), so these rates
+are measured on a narrow range of genres. The classical methods and style encoders were also scored on the 180 classical trials (General
 Imposters 0.833 / 0.617; ENSC 1.000 / 0.661; style encoder 0.839 / 0.500), compared within that
 set, not across.
 

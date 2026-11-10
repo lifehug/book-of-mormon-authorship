@@ -29,8 +29,7 @@ registered bar of 5%. Prior methods rerun on the same tests do worse (78-92%).
 Results. No candidate (Joseph Smith, Oliver Cowdery, Sidney Rigdon, Solomon Spalding, Ethan Smith,
 Gilbert J. Hunt, Parley P. Pratt, W. W. Phelps) is matched under the
 registered rule: 3-10 of 168 chunks reach "match" in the registered run and 0-2 once Book of Mormon
-quotations are removed from the candidate samples, fewer than the false-match rates predict for
-text by no candidate. Where the methods must rank, they rank Joseph Smith's 1828-29
+quotations are removed from the candidate samples. Where the methods must rank, they rank Joseph Smith's 1828-29
 revelations closest, also when every candidate model is trained on the same amount of text (at
 125M and 297M; at 590M a slice of *The Late War* competes); that
 sample is the only one in the text's own scriptural register, and his ordinary prose of 1831-33
@@ -253,9 +252,9 @@ Federalist papers, imitation scripture with known authors, and dictated text.
 
 | Method | Size | Ranking (true author first) | False matches | Passes (>= 0.90 and <= 0.05) |
 | --- | --- | --- | --- | --- |
-| Candidate models (primary) | 125M | 0.936 | 0.473 | no |
-| Candidate models (primary) | 297M | **0.991** | 0.382 | no |
-| Candidate models (primary) | 590M | 0.982 | **0.218** | no |
+| Candidate models (primary) | 125M | 0.936 (0.873-0.974) | 0.473 (0.377-0.570) | no |
+| Candidate models (primary) | 297M | **0.991** (0.950-1.000) | 0.382 (0.291-0.479) | no |
+| Candidate models (primary) | 590M | 0.982 (0.936-0.998) | **0.218** (0.145-0.307) | no |
 | Burrows' Delta, same held-out tests | - | 0.955 | (no match score) | no |
 | Cosine Delta, same tests | - | 0.818 | (no match score) | no |
 | General Imposters, same tests | - | 0.745 | 0.827 | no |
@@ -266,7 +265,9 @@ Federalist papers, imitation scripture with known authors, and dictated text.
 | V2, five further seeds (range) | 125M / 297M / 590M | 0.66-0.93 / 0.51-0.76 / 0.40-0.78 | 0.09-0.93 / 0.53-0.98 / 0.32-0.93 | no |
 | V3 (hidden states into classical trials) | 125M / 297M / 590M | 0.839 / 0.844 / 0.844 | 0.689 / 0.717 / 0.706 | no |
 
-The classical methods and style encoders were also scored on the 180 classical trials (General
+Intervals are exact 95% binomial intervals over the 110 tests (52, 42 and 24 false matches); the
+benchmark has three tasks (Federalist papers, imitation scripture, dictated text), so these rates
+are measured on a narrow range of genres. The classical methods and style encoders were also scored on the 180 classical trials (General
 Imposters 0.833 / 0.617; ENSC 1.000 / 0.661; style encoder 0.839 / 0.500), compared within that
 set, not across.
 
@@ -380,9 +381,10 @@ on 2026-11-10.
 | Candidate models 125M / 297M / 590M | 20 / 21 / 19 | **0 at every size** | 20 / 14 / 11 |
 
 Every method found real candidate text most of the time, and no method called a stranger's text
-a match. The run is valid by section 8's rule. Two methods did worse on the decoys than on the
-benchmark (Cosine Delta 15 of 22, the 297M style encoder 16 of 22): accuracy measured on the
-benchmark does not fully carry over to new text.
+a match. But section 8's validity criterion, that decoys be identified at benchmark accuracy, was
+not met by every method: Cosine Delta (15 of 22) and the 297M style encoder (16 of 22) fell below
+their benchmark accuracy. The run was not stopped; the shortfall is reported here as a fault of
+the run, and it means accuracy measured on the benchmark does not fully carry over to new text.
 
 ### 5.2 Wording
 
@@ -450,15 +452,18 @@ the benchmark before the run.
 
 **Matches.** Under the registered rule, General Imposters and the style encoders call no chunk a
 match; the candidate models call 10, 5 and 3 of 168 (125M, 297M, 590M), and 2, 2 and 0 after Book of
-Mormon quotations were removed from the candidate samples (Amendment 43). These counts are below
-what the models' false-match rates would give for text by no candidate. **No candidate is matched
+Mormon quotations were removed from the candidate samples (Amendment 43). These counts are not
+compared with the benchmark's false-match rates: the decoys show that benchmark rates do not carry
+over exactly to new text (section 5.1). **No candidate is matched
 by two independent families on both halves (H1a not supported).**
 
 **Ranking.** After Amendment 43, every method ranks a Joseph Smith sample first at least as often
 as any other candidate: Cosine Delta 148 of 168 chunks, Burrows' Delta 91, General Imposters 66 (tied
 with Pratt), style encoders 151 and 99, candidate models 159, 168 and 131. In seven of eight
 methods it is his 1828-29 revelations; Burrows' Delta prefers his later ordinary prose (section
-10.1). The full table per candidate, method and size is in section 10 and
+10.1). Burrows' and Cosine Delta failed the section 7 bar (no verification score, and about 57-63%
+accuracy among 30 fresh authors), so their rankings are closed-set description only (Amendment 8).
+The full table per candidate, method and size is in section 10 and
 `data/blind/a43/per_candidate.json`.
 
 **The synthesis (6.7).** The registered Bayesian synthesis weights each family by its benchmark
@@ -469,7 +474,9 @@ covers only the three candidates with pre-1830 samples of at least 10,000 words:
 A placebo run after unblinding showed the synthesis leans to "not in set" even on these
 candidates' own held-out passages (Ethan Smith 0.59, Hunt 0.56, Spalding 0.51; controls 0.63), so
 **0.744 carries little information**: General Imposters cannot say "match" at its registered
-threshold, and the synthesis inherits that (section 7). Joseph Smith and Cowdery are outside it,
+threshold, and the synthesis inherits that (section 7). Read strictly, the registered rule admits no
+family at all (every one failed section 7), so H1b ("none of these") cannot be supported by it; the
+synthesis is reported as registered, not used as evidence. Joseph Smith and Cowdery are outside it,
 untested by it rather than ruled out.
 
 **The whole-library sweep (descriptive).** 23,872 period authors were compared with the text. The
@@ -513,13 +520,15 @@ was asked to separate the chunks by narrator, by dictation order, and by scribe.
 | Scribe | not testable: only Oliver Cowdery's hand fills three or more continuous chunks | | |
 
 The narrators differ above chance but well below the level that separates different real
-authors: **not separable as different authors**. Raw accuracy is about the same for dictation
+authors: **not separable as different authors** (H1c). Narrator and dictation order are
+confounded in the text, and this test cannot tell them apart. Raw accuracy is about the same for dictation
 order; corrected for chance, narrator separates somewhat better (0.645 against 0.514), so the
 differences follow both who narrates and when a passage was dictated. The manuscript evidence (Appendix B) shows the original was taken down by ear:
 sound-alike corrections are 6 to 12 times more common in the dictated original than in the copied
 printer's manuscript, with the same scribe in both (Fisher p 2e-9; a simulated check of the page photographs confirms the ratio, and the tests
-treat corrections on one page as independent, which overstates certainty). That bears on how the words
-reached the page, not on whether they were composed, recited or read aloud.
+treat corrections on one page as independent, which overstates certainty). This is what every account of the
+text's production already holds (it was dictated): the test does not discriminate between
+accounts, and does not say whether the words were composed, recited or read aloud.
 
 
 ## 6. The books in the CES Letter, one by one
@@ -741,6 +750,11 @@ decision rules before any result (`data/claims/register.yaml`); the verdicts app
 
 **Totals:** supported 2, contradicted 6, mixed 4, not addressed 1, untestable 4.
 
+The verdicts were set by the owner from the pre-written rules on 2026-11-10, before the synthesis
+placebo (section 7.3) was run. Claim c09's support rests partly on the synthesis, which the placebo
+shows cannot recognise an author's own text; whether c09 should be re-graded is open and will be
+decided by the owner before release.
+
 
 ## 9. What held
 
@@ -750,7 +764,7 @@ Read in the order of trust fixed before unblinding (`docs/method-reliability.md`
    models rank the true author first 94-99% of the time, and wrongly say "match" 22-47% of the
    time. Every attribution here is graded evidence.
 2. **No candidate is matched.** Of 168 chunks, 3-10 reach "match" in the registered run and 0-2 without
-   Book of Mormon quotations in the samples, fewer than chance alone would give; no candidate is
+   Book of Mormon quotations in the samples; no candidate is
    matched by two independent families; no control passage was ever called a match.
 3. **If the author is one of the candidates, the strongest ranking points to Joseph Smith.** Every
    method ranks a Joseph Smith sample closest at least as often as any other (General Imposters
@@ -805,8 +819,9 @@ matches; "-" = not scored):
 | Parley P. Pratt, after 1830 (91,478) | 3.0 / 25 | 3.9 / 0 | **2.2 / 66 / 0** | 4.9 / 1 / 0 | 4.5 / 0 / 0 | 4.4 / 2 / 0 | 7.0 / 0 / 0 | 8.8 / 0 / 0 |
 | W. W. Phelps, after 1830 (28,479) | 6.1 / 1 | 6.7 / 0 | 6.1 / 0 / 0 | 9.8 / 0 / 0 | 9.4 / 0 / 0 | 4.6 / 0 / 0 | 3.3 / 0 / 0 | 2.1 / 26 / 0 |
 
-Every sample written after 1830 is by someone who had read the book; its closeness is
-uninformative and its distance is the informative direction. **No sample written after 1830 is
+Every sample written after 1830 is by someone who had read the book, so its closeness may come
+from reading it. Its distance is not clean evidence either: letters, sermons and histories differ
+from a scriptural narrative in genre, whoever wrote them. **No sample written after 1830 is
 called a match by any method at any size.**
 
 ### 10.1 Joseph Smith
@@ -841,6 +856,12 @@ Seven of eight methods place the revelations closest and his ordinary prose in t
 Delta reverses them. The closeness runs mainly through the revelatory register, which is the
 register of the text.
 
+**Production channel and provenance.** The revelations and the text share more than register: both
+were dictated by Joseph Smith in 1828-29 and written down by the same circle of scribes, while the
+other candidates' samples are printed books and edited periodicals. Closeness can therefore come
+from the channel (dictation, scribes, unedited spelling) as well as from register or person, and
+the Joseph Smith samples themselves mix provenance (dictated, in his hand, edited).
+
 **Revelation as a register of its own.** One might argue that revelation, on any account of it,
 would share the voice of scripture, so that a revelation and a book presented as scripture would
 resemble each other whoever wrote them. The data cannot separate that reading from shared
@@ -857,9 +878,11 @@ read the book, move toward its style after 1830? The attribution rule and the me
 in advance (`docs/js-over-time-plan.md`): 21 Joseph Smith Papers documents of 1833-1844 in his
 hand or recorded as dictated, revelations excluded; three groups measured alike by period (1831-33,
 1834-36, 1837-39, 1840-44): Joseph Smith; others who read the book (Cowdery, Pratt, Phelps,
-Rigdon); and religious writers of the same years with no tie to the movement (Alexander Campbell,
-Barton Stone, Methodist and Baptist periodicals, Finney, Beecher). Influence is supported only if
-his line and the readers' move toward the book while the unexposed writers' does not. No ordinary
+Rigdon); and religious writers of the same years with no documented reading of the book (Barton
+Stone's *Christian Messenger*, Methodist and Universalist periodicals, the *Religious
+Intelligencer*, Finney, Beecher). Alexander Campbell, who read the book and reviewed it in 1831,
+is reported as a line of his own. Influence is supported only if his line and the readers' move
+toward the book while the unexposed writers' does not. No ordinary
 prose of his survives from before 1830, so his style before the book cannot be tested. The result
 will be added here when measured.
 
@@ -936,6 +959,16 @@ classical ones on deliberate imitation.
 in the text's own scriptural register; his ordinary prose is not close, and at 590M another
 writer's chronicle scripture competes. The methods cannot separate shared register from shared
 authorship, nor the person who dictated a text from the person who composed it.
+
+**Medium and channel.** The Book of Mormon is a dictated text taken down by scribes and set in
+type from a manuscript; nearly every comparison text is edited print. Differences of medium
+(dictation, scribal spelling, the absence of an editor) can move both attribution and dating.
+King James masking removes aligned spans only; formulae such as "it came to pass" and "behold"
+remain in the "original" text, and how much the features rest on them has not been measured.
+
+**The local print environment.** How much of what was printed and sold in western New York before
+1830 survives in the corpus is not measured: the national newspaper set holds almost nothing from
+the region, and the access scores centre on Joseph Smith's documented reach.
 
 **Small and uneven samples.** Joseph Smith's pre-1830 writing is 2,720 words and Cowdery's 1,310
 (844 tokens without quotations); both are under the 10,000-word floor. Rigdon, Pratt and Phelps are
@@ -1416,3 +1449,41 @@ January-May 1829), 2 at 2, 10 at 1, 6 at 0. Named sources: *View of the Hebrews*
 (advertised in Utica, 1826), 1823 edition 1; *The Late War* 1 (Palmyra "Historical Reader"
 advertisements of 1827-1830 do not name the author); *The First Book of Napoleon* 0; Spalding's
 manuscript 0. Availability is not use.
+
+
+## Appendix C. References
+
+- Brodie, Fawn M. *No Man Knows My History*. 1945.
+- Holmes, David I. "A Stylometric Analysis of Mormon Scripture and Related Texts." *Journal of the
+  Royal Statistical Society A* 155(1) (1992): 91-120. https://doi.org/10.2307/2982671
+- Howe, Eber D. *Mormonism Unvailed*. 1834.
+- Jockers, Matthew L., Daniela M. Witten and Craig S. Criddle. "Reassessing Authorship of the Book
+  of Mormon Using Delta and Nearest Shrunken Centroid Classification." *Literary and Linguistic
+  Computing* 23(4) (2008): 465-491. https://doi.org/10.1093/llc/fqn040
+- Johnson, Chris, and Duane Johnson. Rare four-word phrase search over about 110,000 pre-1830
+  books. 2013.
+- Larsen, Wayne A., Alvin C. Rencher and Tim Layton. "Who Wrote the Book of Mormon? An Analysis of
+  Wordprints." *BYU Studies* 20(3) (1980): 225-251.
+- Runnells, Jeremy. *Letter to a CES Director*. 2013. https://read.cesletter.org/bom/
+- Schaalje, G. Bruce, Paul J. Fields, Matthew Roper and Gregory L. Snow. "Extended Nearest Shrunken
+  Centroid Classification: A New Method for Open-Set Authorship Attribution of Texts of Varying
+  Sizes." *Literary and Linguistic Computing* 26(1) (2011): 71-88.
+  https://doi.org/10.1093/llc/fqq029
+- Shalev, Eran. *American Zion: The Old Testament as a Political Text from the Revolution to the
+  Civil War*. Yale University Press, 2013.
+- Skousen, Royal, and Stanford Carmack. *The Book of Mormon Critical Text Project*, volume 3; *A
+  Plain Exposition of Book of Mormon English*. 2018-2025.
+- Spencer, Stan. "Missing Words: King James Bible Italics, the Translation of the Book of Mormon,
+  and Joseph Smith as an Unlearned Reader." *Interpreter* 38 (2020): 45-106.
+- The Church of Jesus Christ of Latter-day Saints. Gospel Topics Essays ("Book of Mormon
+  Translation"; "Book of Mormon and DNA Studies"). 2013-2015.
+- Wright, David P. "Joseph Smith's Interpretation of Isaiah in the Book of Mormon." *Dialogue*
+  31(4) (1998).
+- Grunder, Rick. *Mormon Parallels*. 2014 (PDF edition; purchased, not
+  redistributed).
+- The Joseph Smith Papers (https://www.josephsmithpapers.org/): the original and printer's
+  manuscripts, Revelation Book 1 and the documents listed in `data/candidates/sources.json` and
+  `data/js_time/sources.json`.
+
+Sources for the period corpus (Harvard Institutional Books 1.0, HathiTrust, the Internet Archive,
+Chronicling America, EEBO-TCP) are listed with their terms in `docs/replication.md`.

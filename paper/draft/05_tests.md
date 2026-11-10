@@ -24,9 +24,10 @@ on 2026-11-10.
 | Candidate models 125M / 297M / 590M | 20 / 21 / 19 | **0 at every size** | 20 / 14 / 11 |
 
 Every method found real candidate text most of the time, and no method called a stranger's text
-a match. The run is valid by section 8's rule. Two methods did worse on the decoys than on the
-benchmark (Cosine Delta 15 of 22, the 297M style encoder 16 of 22): accuracy measured on the
-benchmark does not fully carry over to new text.
+a match. But section 8's validity criterion, that decoys be identified at benchmark accuracy, was
+not met by every method: Cosine Delta (15 of 22) and the 297M style encoder (16 of 22) fell below
+their benchmark accuracy. The run was not stopped; the shortfall is reported here as a fault of
+the run, and it means accuracy measured on the benchmark does not fully carry over to new text.
 
 ### 5.2 Wording
 
@@ -94,15 +95,18 @@ the benchmark before the run.
 
 **Matches.** Under the registered rule, General Imposters and the style encoders call no chunk a
 match; the candidate models call 10, 5 and 3 of 168 (125M, 297M, 590M), and 2, 2 and 0 after Book of
-Mormon quotations were removed from the candidate samples (Amendment 43). These counts are below
-what the models' false-match rates would give for text by no candidate. **No candidate is matched
+Mormon quotations were removed from the candidate samples (Amendment 43). These counts are not
+compared with the benchmark's false-match rates: the decoys show that benchmark rates do not carry
+over exactly to new text (section 5.1). **No candidate is matched
 by two independent families on both halves (H1a not supported).**
 
 **Ranking.** After Amendment 43, every method ranks a Joseph Smith sample first at least as often
 as any other candidate: Cosine Delta 148 of 168 chunks, Burrows' Delta 91, General Imposters 66 (tied
 with Pratt), style encoders 151 and 99, candidate models 159, 168 and 131. In seven of eight
 methods it is his 1828-29 revelations; Burrows' Delta prefers his later ordinary prose (section
-10.1). The full table per candidate, method and size is in section 10 and
+10.1). Burrows' and Cosine Delta failed the section 7 bar (no verification score, and about 57-63%
+accuracy among 30 fresh authors), so their rankings are closed-set description only (Amendment 8).
+The full table per candidate, method and size is in section 10 and
 `data/blind/a43/per_candidate.json`.
 
 **The synthesis (6.7).** The registered Bayesian synthesis weights each family by its benchmark
@@ -113,7 +117,9 @@ covers only the three candidates with pre-1830 samples of at least 10,000 words:
 A placebo run after unblinding showed the synthesis leans to "not in set" even on these
 candidates' own held-out passages (Ethan Smith 0.59, Hunt 0.56, Spalding 0.51; controls 0.63), so
 **0.744 carries little information**: General Imposters cannot say "match" at its registered
-threshold, and the synthesis inherits that (section 7). Joseph Smith and Cowdery are outside it,
+threshold, and the synthesis inherits that (section 7). Read strictly, the registered rule admits no
+family at all (every one failed section 7), so H1b ("none of these") cannot be supported by it; the
+synthesis is reported as registered, not used as evidence. Joseph Smith and Cowdery are outside it,
 untested by it rather than ruled out.
 
 **The whole-library sweep (descriptive).** 23,872 period authors were compared with the text. The
@@ -157,10 +163,12 @@ was asked to separate the chunks by narrator, by dictation order, and by scribe.
 | Scribe | not testable: only Oliver Cowdery's hand fills three or more continuous chunks | | |
 
 The narrators differ above chance but well below the level that separates different real
-authors: **not separable as different authors**. Raw accuracy is about the same for dictation
+authors: **not separable as different authors** (H1c). Narrator and dictation order are
+confounded in the text, and this test cannot tell them apart. Raw accuracy is about the same for dictation
 order; corrected for chance, narrator separates somewhat better (0.645 against 0.514), so the
 differences follow both who narrates and when a passage was dictated. The manuscript evidence (Appendix B) shows the original was taken down by ear:
 sound-alike corrections are 6 to 12 times more common in the dictated original than in the copied
 printer's manuscript, with the same scribe in both (Fisher p 2e-9; a simulated check of the page photographs confirms the ratio, and the tests
-treat corrections on one page as independent, which overstates certainty). That bears on how the words
-reached the page, not on whether they were composed, recited or read aloud.
+treat corrections on one page as independent, which overstates certainty). This is what every account of the
+text's production already holds (it was dictated): the test does not discriminate between
+accounts, and does not say whether the words were composed, recited or read aloud.

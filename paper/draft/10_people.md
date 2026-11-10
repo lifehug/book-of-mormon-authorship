@@ -24,8 +24,9 @@ matches; "-" = not scored):
 | Parley P. Pratt, after 1830 (91,478) | 3.0 / 25 | 3.9 / 0 | **2.2 / 66 / 0** | 4.9 / 1 / 0 | 4.5 / 0 / 0 | 4.4 / 2 / 0 | 7.0 / 0 / 0 | 8.8 / 0 / 0 |
 | W. W. Phelps, after 1830 (28,479) | 6.1 / 1 | 6.7 / 0 | 6.1 / 0 / 0 | 9.8 / 0 / 0 | 9.4 / 0 / 0 | 4.6 / 0 / 0 | 3.3 / 0 / 0 | 2.1 / 26 / 0 |
 
-Every sample written after 1830 is by someone who had read the book; its closeness is
-uninformative and its distance is the informative direction. **No sample written after 1830 is
+Every sample written after 1830 is by someone who had read the book, so its closeness may come
+from reading it. Its distance is not clean evidence either: letters, sermons and histories differ
+from a scriptural narrative in genre, whoever wrote them. **No sample written after 1830 is
 called a match by any method at any size.**
 
 ### 10.1 Joseph Smith
@@ -59,6 +60,12 @@ with one slice of *The Late War* ahead in 63% of chunks (section 7.2).
 Seven of eight methods place the revelations closest and his ordinary prose in the middle; Burrows'
 Delta reverses them. The closeness runs mainly through the revelatory register, which is the
 register of the text.
+
+**Production channel and provenance.** The revelations and the text share more than register: both
+were dictated by Joseph Smith in 1828-29 and written down by the same circle of scribes, while the
+other candidates' samples are printed books and edited periodicals. Closeness can therefore come
+from the channel (dictation, scribes, unedited spelling) as well as from register or person, and
+the Joseph Smith samples themselves mix provenance (dictated, in his hand, edited).
 
 **Revelation as a register of its own.** One might argue that revelation, on any account of it,
 would share the voice of scripture, so that a revelation and a book presented as scripture would

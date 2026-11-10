@@ -25,3 +25,8 @@ decision rules before any result (`data/claims/register.yaml`); the verdicts app
 | c17 Narrators not distinct, and close to Joseph Smith's revelations | Holmes 1992 | supported |
 
 **Totals:** supported 2, contradicted 6, mixed 4, not addressed 1, untestable 4.
+
+The verdicts were set by the owner from the pre-written rules on 2026-11-10, before the synthesis
+placebo (section 7.3) was run. Claim c09's support rests partly on the synthesis, which the placebo
+shows cannot recognise an author's own text; whether c09 should be re-graded is open and will be
+decided by the owner before release.

@@ -29,8 +29,7 @@ registered bar of 5%. Prior methods rerun on the same tests do worse (78-92%).
 Results. No candidate (Joseph Smith, Oliver Cowdery, Sidney Rigdon, Solomon Spalding, Ethan Smith,
 Gilbert J. Hunt, Parley P. Pratt, W. W. Phelps) is matched under the
 registered rule: 3-10 of 168 chunks reach "match" in the registered run and 0-2 once Book of Mormon
-quotations are removed from the candidate samples, fewer than the false-match rates predict for
-text by no candidate. Where the methods must rank, they rank Joseph Smith's 1828-29
+quotations are removed from the candidate samples. Where the methods must rank, they rank Joseph Smith's 1828-29
 revelations closest, also when every candidate model is trained on the same amount of text (at
 125M and 297M; at 590M a slice of *The Late War* competes); that
 sample is the only one in the text's own scriptural register, and his ordinary prose of 1831-33

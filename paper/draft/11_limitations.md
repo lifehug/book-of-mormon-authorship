@@ -17,6 +17,16 @@ in the text's own scriptural register; his ordinary prose is not close, and at 5
 writer's chronicle scripture competes. The methods cannot separate shared register from shared
 authorship, nor the person who dictated a text from the person who composed it.
 
+**Medium and channel.** The Book of Mormon is a dictated text taken down by scribes and set in
+type from a manuscript; nearly every comparison text is edited print. Differences of medium
+(dictation, scribal spelling, the absence of an editor) can move both attribution and dating.
+King James masking removes aligned spans only; formulae such as "it came to pass" and "behold"
+remain in the "original" text, and how much the features rest on them has not been measured.
+
+**The local print environment.** How much of what was printed and sold in western New York before
+1830 survives in the corpus is not measured: the national newspaper set holds almost nothing from
+the region, and the access scores centre on Joseph Smith's documented reach.
+
 **Small and uneven samples.** Joseph Smith's pre-1830 writing is 2,720 words and Cowdery's 1,310
 (844 tokens without quotations); both are under the 10,000-word floor. Rigdon, Pratt and Phelps are
 represented only by writing after 1830, by which time they had read the book. Samples mix

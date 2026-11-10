@@ -6,7 +6,7 @@ Read in the order of trust fixed before unblinding (`docs/method-reliability.md`
    models rank the true author first 94-99% of the time, and wrongly say "match" 22-47% of the
    time. Every attribution here is graded evidence.
 2. **No candidate is matched.** Of 168 chunks, 3-10 reach "match" in the registered run and 0-2 without
-   Book of Mormon quotations in the samples, fewer than chance alone would give; no candidate is
+   Book of Mormon quotations in the samples; no candidate is
    matched by two independent families; no control passage was ever called a match.
 3. **If the author is one of the candidates, the strongest ranking points to Joseph Smith.** Every
    method ranks a Joseph Smith sample closest at least as often as any other (General Imposters
