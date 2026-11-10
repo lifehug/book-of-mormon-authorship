@@ -109,8 +109,34 @@ def margins(scores: dict[str, float], kinds: dict[str, str]) -> dict[str, float]
 # ---- texts -------------------------------------------------------------------------------------
 
 
+BOM_TEXT = Path("data/bom/1830/edition_1830.jsonl")
+
+
+def _norm(w: str) -> str:
+    return "".join(c for c in w.lower() if c.isalpha())
+
+
+def bom_ngrams(n: int) -> set[tuple[str, ...]]:
+    """Every run of ``n`` normalised words in the 1830 Book of Mormon."""
+    words = [x for ln in BOM_TEXT.read_text().splitlines()
+             for x in (_norm(w) for w in json.loads(ln).get("text", "").split()) if x]  # fmt: skip
+    return {tuple(words[i : i + n]) for i in range(len(words) - n + 1)}
+
+
+def drop_bom_overlap(words: list[str], grams: set[tuple[str, ...]], n: int) -> list[str]:
+    """``words`` less every word inside a run of ``n`` words shared with the Book of Mormon
+    (Amendment 43: a candidate sample that quotes the text would otherwise be matched to it)."""
+    idx = [(i, x) for i, x in enumerate(_norm(w) for w in words) if x]
+    covered: set[int] = set()
+    for j in range(len(idx) - n + 1):
+        if tuple(x for _, x in idx[j : j + n]) in grams:
+            covered.update(i for i, _ in idx[j : j + n])
+    return [w for i, w in enumerate(words) if i not in covered]
+
+
 def candidate_words() -> dict[tuple[str, str, str], list[tuple[str, list[str]]]]:
-    """(candidate, sample, period) -> [(doc id, masked original words)], admitted tiers only."""
+    """(candidate, sample, period) -> [(doc id, masked original words)], admitted tiers only;
+    King James spans masked (4.4) and Book of Mormon overlap dropped (Amendment 43)."""
     from kjv_mask.run import _docs
     from ocr_fix.candidates import units
     from segment.build import original_words
@@ -121,6 +147,8 @@ def candidate_words() -> dict[tuple[str, str, str], list[tuple[str, list[str]]]]
     for ln in Path("data/kjv_mask/candidates/spans.jsonl").read_text().splitlines():
         r = json.loads(ln)
         spans[r["id"]] = r["spans"]
+    n = load_config()["candidates"].get("bom_overlap_ngram")
+    grams = bom_ngrams(n) if n else set()
     out: dict[tuple[str, str, str], list] = defaultdict(list)
     for d in sorted(_docs("candidates"), key=lambda d: d["id"]):
         if d["id"] in meta:
@@ -129,7 +157,8 @@ def candidate_words() -> dict[tuple[str, str, str], list[tuple[str, list[str]]]]
             person, sample, period = d["id"].removeprefix("cand:").split("__")
             key = (person.replace("-", " ").title(), sample, period)
         if key[1] in ADMITTED:
-            out[key].append((d["id"], original_words(d["load"](), spans.get(d["id"], []))))
+            ws = original_words(d["load"](), spans.get(d["id"], []))
+            out[key].append((d["id"], drop_bom_overlap(ws, grams, n) if n else ws))
     return dict(out)
 
 

@@ -155,6 +155,10 @@ candidates:
   # 3: a candidate with fewer masked words is scored, but every result carries the
   # "unreliable sample" flag and is excluded from the Bayesian synthesis.
   min_masked_words: 10000
+  # Amendment 43 (2026-11-10, post hoc: found after unblinding): every word inside a run of this
+  # many words shared with the 1830 Book of Mormon is dropped from candidate samples, as King
+  # James spans are (Cowdery's pre-1830 sample was 41.9% Book of Mormon text, Pratt's 3.6%)
+  bom_overlap_ngram: 8
   expanded_corpora:
     role: secondary
     # Fixed from the historical record before any scoring.
