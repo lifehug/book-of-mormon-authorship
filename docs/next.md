@@ -7,8 +7,8 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 ## Running
 
-- tmux `jsmask`: King James masking of the BOM-73 texts (`logs/js_time_mask.log`); then
-  `python -m eval.js_time measure`.
+- tmux `a44pull`: Amendment 44/45 weights from B2 to `data/corpus/alm/a44` (`logs/a44_pull.log`); then
+  stage and publish them to Hugging Face.
 
 ## Next, in order (owner, 2026-11-10: the paper first, written in full, before any Part 2 stage)
 
@@ -16,9 +16,8 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
    "best at" tables; ranking vs matching; post-1830 samples; the Joseph Smith deep dive; the CES
    Letter books one by one (confirm the Letter's book list first); model size (4.x); Part 2 (13).
    Then the explainers and results docs to match, and the 46 pending review-response rows.
-2. **BOM-73** (Amendment 46 filed): everything fetched and assembled; masking running; then
-   measure and write the result into paper 10.1. Owner decisions pending: D3 (run the registered
-   feature sets post hoc?), claim c09's re-grade, `docs/index.md` (asked).
+2. **BOM-73 done** (closed): influence not supported; result in paper 10.1. Owner decisions pending:
+   D3 (run the registered feature sets post hoc?), claim c09's re-grade, `docs/index.md` (asked).
 3. **BOM-37** release prep: **owner's go-ahead to publish**; Zenodo needs the owner's login.
 4. Blog post with the results (after the owner reads the paper).
 5. **Amendment 44/45 weights** (B2 `alm/a44`, 86.9 GiB, pushed from the pod, not on the Mac): check
