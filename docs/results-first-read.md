@@ -113,10 +113,13 @@ lead thresholds.
 | Lexical | 1736 | 1705-1775 |
 | Transformer cross-check (not moved by King James imitation in validation) | 1755 | 1699-1765 |
 
-The grammar model is known to date King James imitation about 53 years early; the transformer was
-not moved by imitation in validation (+0.8 years), and it still dates the text earlier than the
-1780-1830 pseudo-biblical controls (1805). The registered H3 decision is the grammar model's and is
-computed in BOM-29's report; this table is the first read only.
+Registered calls (6.4): **H3b** by the grammar model (78% of the 215 segments' median years before
+1700, 7% in 1780-1830); the lexical and transformer cross-checks say neither. **H3c is rejected**
+(`data/dating/h3c.json`): the chunks date earlier than the 1780-1830 pseudo-biblical control
+volumes (grammar 1661 vs 1734, lexical 1738 vs 1794; permutation p 0.0001). The grammar model
+dates King James imitation about 53 years early in validation, so part of the early date is the
+biblical register; but the text is more archaic by these measures than the period's other
+biblical imitations.
 
 ## 7. Narrators, scribe and dictation order (6.3; `data/benchmark/scribes.json`)
 

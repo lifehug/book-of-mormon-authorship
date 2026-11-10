@@ -28,6 +28,7 @@ Usage::
     python -m dating.classifier sample [--workers 6]   # -> data/dating/segments.parquet
     python -m dating.classifier fit                     # -> data/dating/models.json
     python -m dating.classifier validate                # -> data/dating/validation.json
+    python -m dating.classifier h3c                     # -> data/dating/h3c.json (after unblinding)
 """
 
 from __future__ import annotations
@@ -620,12 +621,68 @@ def validate(workers: int) -> int:
     return 0
 
 
+def h3c(workers: int = 0) -> int:
+    """6.4's H3c, after unblinding: a permutation test (``dating.permutations``, seed
+    ``dating.permutation_seed``) on the predicted years of the Book of Mormon and of the
+    pseudo-biblical control set, accepted if p exceeds ``dating.h3c_min_p``. One value per unit:
+    each Book of Mormon chunk's mean segment median (``data/blind/unblinded.json``), each control
+    volume's mean segment median (scored exactly as in ``validate``). Grammar decides; lexical
+    beside. Writes ``data/dating/h3c.json``."""
+    import joblib
+
+    from reuse.exact import masked_text
+
+    cfg = load_config()
+    d = cfg["dating"]
+    edges = bin_edges(d)
+    size = d["segment_words"]
+    models = joblib.load(LEX / "models.joblib")
+    vocab = json.loads((OUT / "models.json").read_text())["lexical"]["vocabulary"]
+    pb = [json.loads(ln) for ln in Path("data/controls/pseudo_biblical_primary.jsonl")
+          .read_text().splitlines()]  # fmt: skip
+    texts, vol = [], []
+    for r in pb:
+        if (r["words"] or 0) < size:
+            continue
+        try:
+            t = masked_text([r["work_id"]])
+        except SystemExit:
+            continue
+        for seg in text_segments(t, size):
+            if len(seg.split()) >= size:
+                texts.append(seg), vol.append(r["work_id"])
+    pbp = predict_texts(texts, models, vocab, d)
+    bom = json.loads(Path("data/blind/unblinded.json").read_text())["methods"]["dating"]["bom"]
+    out: dict = {**stamp(), "rule": f"accepted if p > {d['h3c_min_p']}", "models": {}}
+    for name in ("grammar", "lexical"):
+        meds = [summary(p, edges, d["interval"])[0] for p in pbp[name]]
+        by: dict[str, list[float]] = {}
+        for w, m in zip(vol, meds, strict=True):
+            by.setdefault(w, []).append(m)
+        b = np.array([np.mean(v) for v in by.values()])
+        a = np.array([np.mean([seg[0] for seg in r[name]]) for r in bom.values()])
+        p = _perm(a, b, d["permutations"], derive_seed(d["permutation_seed"], cfg))
+        out["models"][name] = {"book_of_mormon": {"chunks": len(a), "mean": float(a.mean()),
+                                                  "median": float(np.median(a))},
+                               "pseudo_biblical": {"volumes": len(b), "mean": float(b.mean()),
+                                                   "median": float(np.median(b))},
+                               "difference_years": float(a.mean() - b.mean()),
+                               "permutation_p": p, "h3c": bool(p > d["h3c_min_p"])}  # fmt: skip
+        print(f"{name}: Book of Mormon {a.mean():.0f} ({len(a)} chunks) vs pseudo-biblical "
+              f"{b.mean():.0f} ({len(b)} volumes); p {p:.4f}; H3c "
+              f"{'accepted' if p > d['h3c_min_p'] else 'rejected'}", flush=True)  # fmt: skip
+    out["h3c"] = out["models"]["grammar"]["h3c"]
+    (OUT / "h3c.json").write_text(json.dumps(out, indent=1) + "\n")
+    print(f"-> {OUT / 'h3c.json'}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=("sample", "fit", "validate"))
+    ap.add_argument("cmd", choices=("sample", "fit", "validate", "h3c"))
     ap.add_argument("--workers", type=int, default=6)
     a = ap.parse_args(argv)
-    return {"sample": sample, "fit": fit, "validate": validate}[a.cmd](a.workers)
+    return {"sample": sample, "fit": fit, "validate": validate, "h3c": h3c}[a.cmd](a.workers)
 
 
 if __name__ == "__main__":

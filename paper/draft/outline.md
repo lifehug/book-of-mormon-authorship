@@ -64,8 +64,10 @@ stands out under the registered nulls; 0 of 1,069 triaged pairs specific under b
 - 215 segments of the 168 chunks: grammar model (decides) median of medians 1661, 78% before
   1700 and 7% in 1780-1830: **H3b**; lexical 1736 and transformer 1755 (both "neither"). The
   transformer, not moved by King James imitation in validation, still dates the text before the
-  1780-1830 pseudo-biblical controls (1805). **[H3c permutation p against the pseudo-biblical
-  controls: to compute, BOM-29's report.]**
+  1780-1830 pseudo-biblical controls (1805). **H3c rejected** (`data/dating/h3c.json`): the
+  chunks date earlier than the pseudo-biblical control volumes (grammar 1661 vs 1734, lexical 1738
+  vs 1794; permutation p 0.0001 for both), so the early dating is not what period imitators of
+  King James style produce.
 
 ## 7. Results: attribution (Q1)
 

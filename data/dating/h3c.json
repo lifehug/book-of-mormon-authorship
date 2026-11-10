@@ -1,0 +1,40 @@
+{
+ "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "230b30f5f39c10369b0fa8c81fcd67b8c576933a",
+ "rule": "accepted if p > 0.05",
+ "models": {
+  "grammar": {
+   "book_of_mormon": {
+    "chunks": 168,
+    "mean": 1660.9979288352195,
+    "median": 1660.6047569484213
+   },
+   "pseudo_biblical": {
+    "volumes": 25,
+    "mean": 1734.0544616878549,
+    "median": 1732.9030164365493
+   },
+   "difference_years": -73.05653285263543,
+   "permutation_p": 9.999000099990002e-05,
+   "h3c": false
+  },
+  "lexical": {
+   "book_of_mormon": {
+    "chunks": 168,
+    "mean": 1738.137285324422,
+    "median": 1733.309564035393
+   },
+   "pseudo_biblical": {
+    "volumes": 25,
+    "mean": 1794.1491087104714,
+    "median": 1794.7444330679334
+   },
+   "difference_years": -56.0118233860494,
+   "permutation_p": 9.999000099990002e-05,
+   "h3c": false
+  }
+ },
+ "h3c": false
+}
