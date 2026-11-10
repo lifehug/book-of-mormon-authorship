@@ -100,14 +100,18 @@ an AI model.)
 
 ## What came out
 
-- **The decoy check passed.** Methods found the real author in most candidate decoys, and **not one
-  method called a control decoy a match.** The machinery works on known text.
+- **The decoy check mostly passed.** Methods found the real author in most candidate decoys, and
+  the candidate models (the only methods able to call a match at their registered threshold) called
+  none of the control decoys a match. For the stricter methods, which can't call a match at all,
+  that half of the check says little.
 - **No confident match to any candidate.** Classical methods made zero match calls; the model-based
   ones made 3 to 10 out of 168 chunks, fewer than their false-match rates would produce by chance.
 - **The 23,872-author sweep found no lead.**
-- **The combined (Bayesian) verdict leans "none of these candidates": 74%**, starting from 50/50.
-  Only the classical methods count in it, because the model-based ones were fooled by imitation in
-  testing and get zero weight.
+- **The combined (Bayesian) verdict leans "none of these" for the three candidates it can test
+  (Spalding, Ethan Smith, Hunt): 74%**, starting from 50/50. It can't test Joseph Smith or Oliver
+  Cowdery: too little of their pre-1830 writing survives (under 3,000 words each), so they're
+  untested by it, not ruled out. Only the classical methods count in it, because the model-based
+  ones were fooled by imitation in testing and get zero weight.
 - **Closest-ranked names**, where a method has to rank someone: Joseph Smith, through a sample
   too small to trust (2,700 words). It's also the only sample in the book's own register
   (revelations dictated in scriptural voice, in the same months), and he dictated the book, so
@@ -117,7 +121,7 @@ an AI model.)
   document), so the models were recognising the book itself. We wrote a rule (drop passages of 20+
   words copied after the matching Book of Mormon passage existed; keep everything else), applied it
   to every author, retrained and reran. Cowdery's ranking vanished, match calls fell to 0-2 of
-  168, and the combined verdict stayed at 74% "none of these". Both runs are published side by
+  168, and the combined verdict for the three testable candidates stayed at 74%. Both runs are published side by
   side.
 - **No borrowed passages.** Proposed sources such as *View of the Hebrews* and the Spalding
   manuscript score like ordinary books. *The Late War* and *The First Book of Napoleon* share rare

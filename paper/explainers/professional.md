@@ -117,7 +117,9 @@ method; no method returns *match* on any of the 21 control decoys.
 under the registered thresholds; the candidate models return 10, 5 and 3 matches of 168 by size,
 below what their false-match rates would produce for text by no candidate. The sweep produces no
 lead. H1a (two families agree on a candidate) is not supported. The registered synthesis, in which
-only General Imposters carries weight, gives "not in set" 0.744 on both halves (Hunt 0.089,
+only General Imposters carries weight and only the three candidates with pre-1830 samples over the
+registered 10,000-word floor enter (Joseph Smith and Cowdery are excluded, untested rather than
+ruled out), gives "not in set" 0.744 on both halves (Hunt 0.089,
 Spalding 0.085, Ethan Smith 0.082; prior 0.5), 0.42-0.92 across the prior grid, 1.00 under equal
 weights. Where methods rank someone first, it is mostly Joseph Smith (Cosine Delta 131 of 168) or
 Cowdery (590M ALM 109), through pre-1830 samples of 2,720 and 1,310 words flagged unreliable before

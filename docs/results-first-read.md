@@ -106,6 +106,9 @@ at every size.
 
 With the prior on "not in set" anywhere from 0.2 to 0.8, "not in set" goes to 0.42-0.92. The
 evidence moves toward "none of these" from any prior, but by a modest amount, and from one family.
+**It covers only Ethan Smith, Hunt and Spalding**, the candidates with pre-1830 samples over the
+registered 10,000-word floor; Joseph Smith and Cowdery are excluded by that rule and are untested by
+the synthesis, not ruled out (raised by the simulated reviews, BOM-38).
 
 ## 5. The whole-library sweep: no lead
 

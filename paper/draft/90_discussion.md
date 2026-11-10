@@ -1,11 +1,14 @@
 # Discussion
 
-**What the evidence supports.** Every check on known text passed: the methods rank real authors
-correctly most of the time and none called a stranger's text a match. On the Book of Mormon, no
-method makes a confident match to any proposed author, the whole-library sweep finds no lead, and
-the registered synthesis leans to "none of these candidates" (0.744 from a prior of 0.5). No
-proposed source shares copied passages, a plot sequence or specific wording beyond what its genre
-shares; every surfaced similarity is explained by King James wording or period stock phrasing.
+**What the evidence supports.** The methods rank real authors correctly on most decoys, and the
+candidate models, which can call a match, called none of the control passages one. On the Book of
+Mormon, no method makes a confident match to any proposed author. The registered synthesis leans
+against the three candidates it can test (Ethan Smith, Hunt, Spalding; "none of these three"
+0.744 from a prior of 0.5); it cannot test Joseph Smith or Cowdery, whose pre-1830 samples are too
+small, and says nothing for or against them. *The Late War* and *The First Book of Napoleon* pass
+the registered rare-phrase rule, as the pseudo-biblical genre does generally; no proposed source
+shares a copied passage or a plot sequence, and no surfaced pair of passages was judged specific
+(each is explained by King James wording or period stock phrasing).
 The text's grammar dates earlier than its period and earlier than the period's other imitations of
 biblical style.
 

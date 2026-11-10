@@ -37,8 +37,10 @@ pre-registration; they were misled by deliberate imitation, BOM-31), so only Gen
 enters and the posterior is identical at every model size. Across the prior grid (0.2-0.8) "not in
 set" runs 0.42-0.92; under equal family weights or treating chunks as independent, 1.00; dropping
 General Imposters returns the prior. Secondary set (post-1830 samples, Amendment 5): not in set
-0.715, Pratt 0.122. **H1b ("none of these") is favoured but not established**, since no method
-passes the open-set bar.
+0.715, Pratt 0.122. **H1b ("none of these") is favoured for the three candidates the synthesis can
+test, but not established**, since no method passes the open-set bar. The synthesis excludes, by
+the registered rule (3: samples under 10,000 words), the two candidates the methods rank closest:
+Joseph Smith (2,702 pre-1830 words) and Cowdery (1,309). They are untested by it, not ruled out.
 
 **Narrators, scribes and dictation order (6.3, H1c).** The four principal narrators separate at
 0.744 (chance 0.277, p 0.001) and the first and last parts of the dictation at 0.758 (chance

@@ -57,12 +57,17 @@ pieces without knowing which was which. Only afterwards did we open the answer k
 
 ## What we found
 
-**1. The tools work.** On the decoys, the computers usually found the real writer, and they never
-once wrongly blamed a non-suspect.
+**1. The tools mostly work on known text.** On the decoys, the computers usually found the real
+writer. The one kind of tool that can actually say "this is the writer" never wrongly named a
+non-suspect. (The other tools are set so strictly they can't say "this is the writer" at all, so
+for them that check means little.)
 
 **2. No suspect matched.** We tested the people others have suggested: Solomon Spalding, Sidney
 Rigdon, Oliver Cowdery, Ethan Smith, Parley Pratt, Joseph Smith and others. None of them was a
-confident match. Our combined score said "probably none of these people" about 74 out of 100.
+confident match. For the three suggested writers we had plenty of writing from (Spalding, Ethan
+Smith and Gilbert Hunt), our combined score said "probably none of these" about 74 out of 100. For
+Joseph Smith and Oliver Cowdery, too little of their writing from before 1830 survives for that
+combined score to say anything either way.
 
 **3. We searched the whole library too.** We compared the book against almost 24,000 writers from
 that time. No one came close enough to count.
@@ -88,7 +93,7 @@ wrote most of the book down. Then we noticed his early writing sample was almost
 for word from the Book of Mormon itself, so of course it looked similar. We took out every copied
 passage from every writer's sample (only copies made after the Book of Mormon passage existed;
 nothing of Joseph Smith's early revelations needed removing) and ran everything again. Cowdery's
-match disappeared; the overall answer ("probably none of these people") didn't change.
+match disappeared; the combined score for Spalding, Ethan Smith and Hunt didn't change.
 
 ## What this doesn't tell you
 

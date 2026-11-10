@@ -16,12 +16,17 @@ pre-registration before the text was scored. We built a corpus of about 200,000 
 printed 1780-1830, trained GPT-style language models on that period only (125M, 297M and 590M
 parameters), masked every King James Bible span, and validated every method on known-answer tasks
 before a single blind run in which 168 Book of Mormon chunks were mixed with 43 decoys. The
-right candidate was ranked first for most candidate decoys (15-21 of 22 by method) and no method called any of the 21 control passages a match. No candidate
-author (Joseph Smith, Oliver Cowdery, Sidney Rigdon, Solomon Spalding, Ethan Smith, Gilbert J.
-Hunt, Parley P. Pratt, W. W. Phelps) is matched under the registered rule; a sweep of 23,872 period
-authors finds no lead; and the registered Bayesian synthesis gives "none of these candidates"
-0.744 (prior 0.5). No proposed source shares copied passages, plot order or specific wording with
-the text beyond what its genre shares. The grammar of the text dates mostly before 1700 (median
+right candidate was ranked first for most candidate decoys (15-21 of 22 by method); the candidate
+models, the only family able to call a match at its registered threshold, matched none of the 21
+control passages. No candidate author (Joseph Smith, Oliver Cowdery, Sidney Rigdon, Solomon
+Spalding, Ethan Smith, Gilbert J. Hunt, Parley P. Pratt, W. W. Phelps) is matched under the
+registered rule. The registered Bayesian synthesis, which covers only the three candidates with
+adequate pre-1830 samples (Ethan Smith, Hunt, Spalding), gives "none of these three" 0.744 (prior
+0.5); Joseph Smith's and Cowdery's pre-1830 samples are too small for it (2,702 and 1,309 words)
+and are untested by it, not ruled out. A sweep of 23,872 period authors, which failed its own
+usability test, finds no lead. *The Late War* (1816) and *The First Book of Napoleon* (1809) pass
+the registered rare-phrase rule, as does the American pseudo-biblical genre generally; no proposed
+source shares a copied passage, a plot sequence or a pair of passages judged specific. The grammar of the text dates mostly before 1700 (median
 1661) and is more archaic than period imitations of biblical style (p 0.0001). No method passes
 the registered open-set bar (5% false matches; the best stable rate is 22%), so all attribution
 results are graded evidence. Where methods must rank someone first, they rank Joseph Smith's

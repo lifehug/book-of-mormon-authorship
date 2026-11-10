@@ -16,12 +16,17 @@ pre-registration before the text was scored. We built a corpus of about 200,000 
 printed 1780-1830, trained GPT-style language models on that period only (125M, 297M and 590M
 parameters), masked every King James Bible span, and validated every method on known-answer tasks
 before a single blind run in which 168 Book of Mormon chunks were mixed with 43 decoys. The
-right candidate was ranked first for most candidate decoys (15-21 of 22 by method) and no method called any of the 21 control passages a match. No candidate
-author (Joseph Smith, Oliver Cowdery, Sidney Rigdon, Solomon Spalding, Ethan Smith, Gilbert J.
-Hunt, Parley P. Pratt, W. W. Phelps) is matched under the registered rule; a sweep of 23,872 period
-authors finds no lead; and the registered Bayesian synthesis gives "none of these candidates"
-0.744 (prior 0.5). No proposed source shares copied passages, plot order or specific wording with
-the text beyond what its genre shares. The grammar of the text dates mostly before 1700 (median
+right candidate was ranked first for most candidate decoys (15-21 of 22 by method); the candidate
+models, the only family able to call a match at its registered threshold, matched none of the 21
+control passages. No candidate author (Joseph Smith, Oliver Cowdery, Sidney Rigdon, Solomon
+Spalding, Ethan Smith, Gilbert J. Hunt, Parley P. Pratt, W. W. Phelps) is matched under the
+registered rule. The registered Bayesian synthesis, which covers only the three candidates with
+adequate pre-1830 samples (Ethan Smith, Hunt, Spalding), gives "none of these three" 0.744 (prior
+0.5); Joseph Smith's and Cowdery's pre-1830 samples are too small for it (2,702 and 1,309 words)
+and are untested by it, not ruled out. A sweep of 23,872 period authors, which failed its own
+usability test, finds no lead. *The Late War* (1816) and *The First Book of Napoleon* (1809) pass
+the registered rare-phrase rule, as does the American pseudo-biblical genre generally; no proposed
+source shares a copied passage, a plot sequence or a pair of passages judged specific. The grammar of the text dates mostly before 1700 (median
 1661) and is more archaic than period imitations of biblical style (p 0.0001). No method passes
 the registered open-set bar (5% false matches; the best stable rate is 22%), so all attribution
 results are graded evidence. Where methods must rank someone first, they rank Joseph Smith's
@@ -490,8 +495,10 @@ pre-registration; they were misled by deliberate imitation, BOM-31), so only Gen
 enters and the posterior is identical at every model size. Across the prior grid (0.2-0.8) "not in
 set" runs 0.42-0.92; under equal family weights or treating chunks as independent, 1.00; dropping
 General Imposters returns the prior. Secondary set (post-1830 samples, Amendment 5): not in set
-0.715, Pratt 0.122. **H1b ("none of these") is favoured but not established**, since no method
-passes the open-set bar.
+0.715, Pratt 0.122. **H1b ("none of these") is favoured for the three candidates the synthesis can
+test, but not established**, since no method passes the open-set bar. The synthesis excludes, by
+the registered rule (3: samples under 10,000 words), the two candidates the methods rank closest:
+Joseph Smith (2,702 pre-1830 words) and Cowdery (1,309). They are untested by it, not ruled out.
 
 **Narrators, scribes and dictation order (6.3, H1c).** The four principal narrators separate at
 0.744 (chance 0.277, p 0.001) and the first and last parts of the dictation at 0.758 (chance
@@ -653,12 +660,15 @@ lead (0, against 0.035 expected by chance; `docs/results-first-read.md` 5). Writ
 
 # Discussion
 
-**What the evidence supports.** Every check on known text passed: the methods rank real authors
-correctly most of the time and none called a stranger's text a match. On the Book of Mormon, no
-method makes a confident match to any proposed author, the whole-library sweep finds no lead, and
-the registered synthesis leans to "none of these candidates" (0.744 from a prior of 0.5). No
-proposed source shares copied passages, a plot sequence or specific wording beyond what its genre
-shares; every surfaced similarity is explained by King James wording or period stock phrasing.
+**What the evidence supports.** The methods rank real authors correctly on most decoys, and the
+candidate models, which can call a match, called none of the control passages one. On the Book of
+Mormon, no method makes a confident match to any proposed author. The registered synthesis leans
+against the three candidates it can test (Ethan Smith, Hunt, Spalding; "none of these three"
+0.744 from a prior of 0.5); it cannot test Joseph Smith or Cowdery, whose pre-1830 samples are too
+small, and says nothing for or against them. *The Late War* and *The First Book of Napoleon* pass
+the registered rare-phrase rule, as the pseudo-biblical genre does generally; no proposed source
+shares a copied passage or a plot sequence, and no surfaced pair of passages was judged specific
+(each is explained by King James wording or period stock phrasing).
 The text's grammar dates earlier than its period and earlier than the period's other imitations of
 biblical style.
 
