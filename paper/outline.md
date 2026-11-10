@@ -67,11 +67,13 @@ authors, the 125M (91%, at 47% false matches).
 - 5.6 **Internal voices:** narrators, dictation order, scribe.
 
 ## 6. The books in the CES Letter, one by one
-For each book the CES Letter names (to be confirmed from the Letter: *View of the Hebrews*, *The
-Late War*, *The First Book of Napoleon*, Spalding's *Manuscript Story*, and any others it cites):
-what the claim is; every wording test with each shared phrase listed and triaged; story structure;
-the book's own dating; access evidence (who could have had it, where, when); the verdict under the
-claim's pre-written rule.
+The Letter's Book of Mormon section names three books (`docs/ces-letter-books.md`): *View of the
+Hebrews* (1823/1825), *The Late War* (1816; the Letter says 1819) and *The First Book of Napoleon*
+(1809). Spalding's *Manuscript Story*, named by other critics, gets the same treatment beside them,
+labelled as not from the Letter. For each book: what the claim is; every wording test with each
+shared phrase listed and triaged; story structure; the book's own dating; access evidence (who
+could have had it, where, when); the verdict under the claim's pre-written rule. The Letter's
+King James arguments (1769-edition errors, italics) and place names are listed as not tested.
 
 ## 7. Corrections and robustness
 The quotation leak found and fixed (Amendment 43); equal training dose (Amendment 45); the
