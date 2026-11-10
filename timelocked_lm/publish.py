@@ -46,7 +46,10 @@ WEIGHTS = {
     "timelocked-1830-590m": [("data/corpus/timelocked_lm/runs/mid/milestones", "milestones")],
     "bom-authorship-candidate-models": [(f"data/corpus/alm/candidates/{z}", z) for z in SIZES],
     "bom-authorship-benchmark-finetunes": [("data/corpus/alm/benchmark", "runs")],
-    "bom-authorship-style-encoder": [("data/corpus/style_embed/runs/style", "297m")],
+    "bom-authorship-style-encoder": [
+        ("data/corpus/style_embed/runs/style", "297m"),
+        ("data/corpus/style_embed/runs/style_mid", "590m"),
+    ],
 }
 SINGLE = {  # single weight files: corpus path -> path in the repo
     "timelocked-1830-590m": [("data/corpus/timelocked_lm/runs/mid/model.pt", "model.pt")],
@@ -201,16 +204,17 @@ rebuilt (BOM-72) and will be added here; their scores are in `runs/` and `result
     d = ROOT / "bom-authorship-style-encoder"
     d.mkdir(parents=True)
     shutil.copy(bench / "style_embed.json", d / "benchmark_297m.json")
+    shutil.copy(bench / "style_embed_mid.json", d / "benchmark_590m.json")
     (d / "README.md").write_text(
         _card(
             "Style encoder (BOM-30)",
             """
 Authorship style embeddings (Amendment 24): the time-locked model fine-tuned with a contrastive
-objective so that passages by the same author land close together. `297m/style.pt` is the
-encoder on the 297M backbone (`style_embed.train.StyleEncoder` in the GitHub repository;
-`load_encoder(path, cfg, "base")`), `297m/log.jsonl` its training log. Benchmark
-(`benchmark_297m.json`): 0.839 right author, 0.500 false matches. The 590M backbone's encoder
-will be added when trained.
+objective so that passages by the same author land close together. `297m/style.pt` and
+`590m/style.pt` are the encoders on the 297M and 590M backbones (`style_embed.train.StyleEncoder`
+in the GitHub repository; `load_encoder(path, cfg, "base")` or `"mid"`), with their training
+logs. Benchmark: 297M 0.839 right author, 0.500 false matches (`benchmark_297m.json`); 590M 0.839,
+0.628 (`benchmark_590m.json`).
 """,
             "authorship, embeddings",
         )
