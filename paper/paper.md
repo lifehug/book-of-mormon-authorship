@@ -495,7 +495,7 @@ untested by it rather than ruled out.
 **The whole-library sweep (descriptive).** 23,872 period authors were compared with the text. The
 sweep failed its own usability test (true author first for 27-35% of 200 held-out books against a
 required 70%), so its result is descriptive. No author passed both lead thresholds (0.035
-expected by chance); the nearest are writers in the scriptural and prophetic register (John Wroe,
+expected by chance per query, 0.0035 after the plausibility gate of Amendment 40); the nearest are writers in the scriptural and prophetic register (John Wroe,
 George Fox, William Sewel), none near a threshold.
 
 ### 5.5 Dating
@@ -530,7 +530,7 @@ was asked to separate the chunks by narrator, by dictation order, and by scribe.
 | --- | --- | --- | --- |
 | Narrator (Nephi, Jacob, Mormon, Moroni; 121 chunks) | 0.744 | 0.277 | 0.001 |
 | Dictation order (first or last dictated; 124 chunks) | 0.758 | 0.502 | 0.001 |
-| Scribe | not testable: only Oliver Cowdery's hand fills three or more continuous chunks | | |
+| Scribe | not testable: the surviving original manuscript holds three hands in the scored text (Oliver Cowdery, John Whitmer, the unidentified Scribe 3, the last two only in 1 Nephi); only Cowdery's fills three or more continuous 2,000-word chunks (11), and most of the original is lost | | |
 
 The narrators differ above chance but well below the level that separates different real
 authors: **not separable as different authors** (H1c). Narrator and dictation order are
@@ -843,8 +843,8 @@ called a match by any method at any size.**
 **Samples.** His only surviving writing from before 1830 is the revelations of 1828-29 (2,720
 words), dictated in a scriptural voice in the same months as the text. After 1830: dictated letters
 and documents (5,039 words) and his own handwriting (6,363), from the Joseph Smith Papers
-manuscripts; pooled non-revelatory prose of 1831-33 (letters and the 1832 history, about 11,600
-tokens, Amendment 44). All are under or near the 10,000-word floor, and the registered check of whether later writing
+manuscripts; pooled non-revelatory prose of 1831-33 (letters and the 1832 history, about 11,300
+words or 11,600 model tokens, Amendment 44). All are under or near the 10,000-word floor, and the registered check of whether later writing
 can stand in for earlier failed for every method (section 2.6), so none of the post-1830 samples
 can stand in for his pre-1830 style.
 
@@ -1231,7 +1231,7 @@ hidden states to the same classifier.
 
 ### 9. Author sweep (5.6, 6.6; BOM-39, BOM-47)
 
-Units: 23,875 named, non-corporate authors in the training set's volumes with at least 10,000
+Units: 23,875 named, non-corporate authors (23,872 swept: three had no word-frequency profile) in the training set's volumes with at least 10,000
 words (`data/sweep/authors.parquet`); each profile is up to 20 seeded 1,000-word blocks
 round-robin over the author's works, normalised and KJV-masked. Two signals, each separate: Cosine
 Delta on the 300 most frequent words and the style embedding's cosine distance. The query is the
@@ -1306,7 +1306,7 @@ shares 8.92% with earlier books and an 1821 sermon collection 2.47%.
 | Source | Rare shared 4-grams | Per 10,000 words | Rank of 204,520 | p (95% interval) |
 | --- | --- | --- | --- | --- |
 | *The First Book of Napoleon* (1809) | 12 | 5.45 | 63 | 0.0003 (0.0002-0.0031) |
-| *The Late War* (1816, 9 printings) | 22 | 3.86 | 131 | 0.0006 (0.0004-0.0017) |
+| *The Late War* (1816; 9 printings in the library, 4 distinct texts) | 22 | 3.86 | 131 | 0.0006 (0.0004-0.0017) |
 | *View of the Hebrews* (1825) | 2 | 0.37 | 9,496 | 0.046 (0.017-1.0) |
 | Spalding, *Manuscript Story* | 1 | 0.24 | - | 0.068 |
 | Luke (KJV), against the masked text | 0 | 0 | - | 1.0 |

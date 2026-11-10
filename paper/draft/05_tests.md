@@ -127,7 +127,7 @@ untested by it rather than ruled out.
 **The whole-library sweep (descriptive).** 23,872 period authors were compared with the text. The
 sweep failed its own usability test (true author first for 27-35% of 200 held-out books against a
 required 70%), so its result is descriptive. No author passed both lead thresholds (0.035
-expected by chance); the nearest are writers in the scriptural and prophetic register (John Wroe,
+expected by chance per query, 0.0035 after the plausibility gate of Amendment 40); the nearest are writers in the scriptural and prophetic register (John Wroe,
 George Fox, William Sewel), none near a threshold.
 
 ### 5.5 Dating
@@ -162,7 +162,7 @@ was asked to separate the chunks by narrator, by dictation order, and by scribe.
 | --- | --- | --- | --- |
 | Narrator (Nephi, Jacob, Mormon, Moroni; 121 chunks) | 0.744 | 0.277 | 0.001 |
 | Dictation order (first or last dictated; 124 chunks) | 0.758 | 0.502 | 0.001 |
-| Scribe | not testable: only Oliver Cowdery's hand fills three or more continuous chunks | | |
+| Scribe | not testable: the surviving original manuscript holds three hands in the scored text (Oliver Cowdery, John Whitmer, the unidentified Scribe 3, the last two only in 1 Nephi); only Cowdery's fills three or more continuous 2,000-word chunks (11), and most of the original is lost | | |
 
 The narrators differ above chance but well below the level that separates different real
 authors: **not separable as different authors** (H1c). Narrator and dictation order are

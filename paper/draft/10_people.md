@@ -34,8 +34,8 @@ called a match by any method at any size.**
 **Samples.** His only surviving writing from before 1830 is the revelations of 1828-29 (2,720
 words), dictated in a scriptural voice in the same months as the text. After 1830: dictated letters
 and documents (5,039 words) and his own handwriting (6,363), from the Joseph Smith Papers
-manuscripts; pooled non-revelatory prose of 1831-33 (letters and the 1832 history, about 11,600
-tokens, Amendment 44). All are under or near the 10,000-word floor, and the registered check of whether later writing
+manuscripts; pooled non-revelatory prose of 1831-33 (letters and the 1832 history, about 11,300
+words or 11,600 model tokens, Amendment 44). All are under or near the 10,000-word floor, and the registered check of whether later writing
 can stand in for earlier failed for every method (section 2.6), so none of the post-1830 samples
 can stand in for his pre-1830 style.
 

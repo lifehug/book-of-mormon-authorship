@@ -149,7 +149,7 @@ hidden states to the same classifier.
 
 ## 9. Author sweep (5.6, 6.6; BOM-39, BOM-47)
 
-Units: 23,875 named, non-corporate authors in the training set's volumes with at least 10,000
+Units: 23,875 named, non-corporate authors (23,872 swept: three had no word-frequency profile) in the training set's volumes with at least 10,000
 words (`data/sweep/authors.parquet`); each profile is up to 20 seeded 1,000-word blocks
 round-robin over the author's works, normalised and KJV-masked. Two signals, each separate: Cosine
 Delta on the 300 most frequent words and the style embedding's cosine distance. The query is the

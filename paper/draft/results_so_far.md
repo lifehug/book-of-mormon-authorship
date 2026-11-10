@@ -20,7 +20,7 @@ shares 8.92% with earlier books and an 1821 sermon collection 2.47%.
 | Source | Rare shared 4-grams | Per 10,000 words | Rank of 204,520 | p (95% interval) |
 | --- | --- | --- | --- | --- |
 | *The First Book of Napoleon* (1809) | 12 | 5.45 | 63 | 0.0003 (0.0002-0.0031) |
-| *The Late War* (1816, 9 printings) | 22 | 3.86 | 131 | 0.0006 (0.0004-0.0017) |
+| *The Late War* (1816; 9 printings in the library, 4 distinct texts) | 22 | 3.86 | 131 | 0.0006 (0.0004-0.0017) |
 | *View of the Hebrews* (1825) | 2 | 0.37 | 9,496 | 0.046 (0.017-1.0) |
 | Spalding, *Manuscript Story* | 1 | 0.24 | - | 0.068 |
 | Luke (KJV), against the masked text | 0 | 0 | - | 1.0 |
