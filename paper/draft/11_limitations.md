@@ -1,0 +1,47 @@
+## 11. Limitations
+
+**No method passes the benchmark.** Every method ranks well (up to 0.991) but none keeps false
+matches at or below the registered 5% (best stable result 0.218, the candidate models at 590M).
+Under the registered thresholds General Imposters and the style encoders cannot return "match" at
+all, so section 6.2's two-family rule could not have supported any candidate, and the registered
+synthesis cannot recognise an author's own text (section 7.3). "No match" therefore cannot be read
+as "not this person".
+
+**Methods differ in stability.** The primary language-model method reproduces exactly across
+machines and improves with size; V1's registered learning rate broke at 590M; V2 swings from 9% to
+98% false matches across seeds and carries no weight; the model-based methods are weaker than the
+classical ones on deliberate imitation.
+
+**Closest is confounded with register.** Joseph Smith's revelations are the only candidate sample
+in the text's own scriptural register; his ordinary prose is not close, and at 590M another
+writer's chronicle scripture competes. The methods cannot separate shared register from shared
+authorship, nor the person who dictated a text from the person who composed it.
+
+**Small and uneven samples.** Joseph Smith's pre-1830 writing is 2,720 words and Cowdery's 1,310
+(844 tokens without quotations); both are under the 10,000-word floor. Rigdon, Pratt and Phelps are
+represented only by writing after 1830, by which time they had read the book. Samples mix
+provenance (dictated, edited, posthumous); each tier is recorded.
+
+**The borrowing and dating tests cannot speak to translation.** None separates genuine translations
+of ancient texts from compositions presented as ancient (Amendment 9). The dating models learned
+1780-1830 English from edited print; unedited vernacular may read to them as archaic.
+
+**One person, simulated review and simulated blinding.** The study is designed and run by one person
+with AI assistance. Every review step (adversarial, draft, peer) and the second triage pass are
+simulated by AI models; the blind run's "fresh session" is a new AI session without the key, not
+an independent analyst. None of this is independent scrutiny.
+
+**The corpus.** OCR quality is uneven; some catalog dates are wrong (corrected where the text names
+later years); author names conflate namesakes and split variants; 72% of the original manuscript
+is lost. Writers whose work did not survive in print, or is outside the 23,872 swept authors, are
+not covered. The sweep failed its own usability test and is descriptive only.
+
+**The models.** The time-locked models were trained on the period corpus, which includes held-out
+authors' volumes used later for calibration (language modelling, not authorship supervision). The
+fine-tuning settings were fixed for all sizes in advance and may not suit the largest. GPT-2 is
+used on the benchmark only, since it read modern text possibly including the Book of Mormon.
+
+**Post hoc decisions.** Every decision made after results existed is listed with its effect in
+section 7.4 and labelled in the pre-registration.
+
+**Access is not use.** The access table records documented availability, not reading.
