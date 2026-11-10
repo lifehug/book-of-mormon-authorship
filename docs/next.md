@@ -19,7 +19,6 @@ the 590M model and milestones in B2; weekly corpus backup resumed.
 
 ## Waiting on the owner
 
-- **Delete the stopped 590M training pod and its full snapshots** (every 590M test passed; weights on the Mac and B2).
 
 - **Delete the mid pod's full snapshots** once its tests pass: ask the owner at that moment.
 
@@ -28,6 +27,7 @@ the 590M model and milestones in B2; weekly corpus backup resumed.
 - **Every model size runs every model-based test** (owner; Amendment 37): 125M, 297M, 1B side by side, none the headline.
 - **6.1 both ways** (owner, Amendment 33): registered and achievable rules plus the false-match ladder, all reported.
 - **1B replaced by the 590M mid with QK-norm** (owner, Amendment 39); a 1B restart stays possible later.
+- **No 1B before unblinding** (owner, 2026-11-09): unblind as soon as the 590M encoder is scored; a 1B, if ever run, is reported as scored after unblinding.
 - **Publish every model** (owner, 2026-11-09), fine-tunes included (BOM-72 rebuilds the discarded ones after the analysis); private corpus text never.
 - **No pre-declared "best" model** (owner, 2026-11-08): run everything, report everything side by side; plans unchanged.
 
