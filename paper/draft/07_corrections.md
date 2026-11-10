@@ -75,8 +75,8 @@ Imposters enters):
 | W. W. Phelps, after 1830 (28,479) | - | 0.026 |
 | Not in set | 0.744 | 0.715 |
 
-Joseph Smith is in neither set: his samples are under the 10,000-word floor (before 1830) or
-post-1830 samples under it as well.
+Joseph Smith is in neither set: every one of his samples, before and after 1830, is under the
+10,000-word floor.
 
 ### 7.4 Every decision made after results existed
 

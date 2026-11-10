@@ -78,9 +78,22 @@ candidates?
 | Style encoders 297M / 590M | 7 / 10 of 18 | none |
 | Candidate models 125M / 297M / 590M | 5 / 7 / 6 of 17 | none |
 
-Writing in a biblical register hides the author from the model-based methods more than from the
-classical ones, and size does not help. This is why the registered synthesis rests on the
-classical family alone (section 5.4).
+By author the picture reverses. Snowden supplies 11 of the 18 windows (10 of 17 for the language
+models, whose text preparation yields one window fewer of his text):
+
+| Method | Dodsley (5 windows) | Kenrick (2) | Snowden (11; 10 for the models) |
+| --- | --- | --- | --- |
+| Burrows' / Cosine Delta | 2 of 5 | 0 of 2 | 11 of 11 |
+| General Imposters | 0 | 0 | 11 of 11 |
+| Style encoders 297M / 590M | 5 / 4 of 5 | 1 / 2 of 2 | 1 / 4 of 11 |
+| Candidate models 125M / 297M / 590M | 5 / 5 / 4 of 5 | 0 / 2 / 2 of 2 | 0 of 10 at every size |
+
+The classical methods' advantage comes from one author with many windows; on the other two the
+model-based methods do better. Each family is fooled by a different writer's imitation, and the
+test rests on three authors. The registered rule nevertheless applies the pooled figures, which is
+why the registered synthesis rests on the classical family alone (section 5.4); with this split
+those weights are fragile, which is one more reason the synthesis is not used as evidence
+(section 7.3).
 
 ### 4.3 Which method is best at what
 
