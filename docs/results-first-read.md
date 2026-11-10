@@ -139,7 +139,7 @@ biblical imitations.
 | --- | --- | --- | --- |
 | Narrator (Nephi, Jacob, Mormon, Moroni; 121 chunks) | 0.744 | 0.277 | 0.001 |
 | Dictation order (first or last dictated; 124 chunks) | 0.758 | 0.502 | 0.001 |
-| Scribe | not testable: every scribed chunk is Cowdery's (11) | | |
+| Scribe | not testable: of the three hands in the surviving original manuscript (Cowdery, John Whitmer, Scribe 3), only Cowdery's fills at least three continuous 2,000-word chunks (11) | | |
 
 The narrators differ in style well above chance, but below the 0.96 the same method reaches on
 real authors in the benchmark, so the registered verdict is **not separable as different

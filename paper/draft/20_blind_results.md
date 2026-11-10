@@ -44,7 +44,10 @@ Joseph Smith (2,702 pre-1830 words) and Cowdery (1,309). They are untested by it
 
 **Narrators, scribes and dictation order (6.3, H1c).** The four principal narrators separate at
 0.744 (chance 0.277, p 0.001) and the first and last parts of the dictation at 0.758 (chance
-0.502, p 0.001); every scribed chunk is Oliver Cowdery's, so scribes cannot be compared. Both are
+0.502, p 0.001); the surviving original manuscript holds three hands in the scored text (Oliver Cowdery, John
+Whitmer and the unidentified Scribe 3, the last two only in 1 Nephi), but only Cowdery's fills at
+least three continuous 2,000-word chunks, and most of the manuscript does not survive, so scribes
+cannot be compared. Both are
 below the 0.96 the same method reaches on distinct authors: narrators are **not separable as
 different authors**, and dictation order explains the differences about as well.
 

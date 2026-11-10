@@ -160,6 +160,10 @@ candidates:
   # shared runs (each at least ngram words, gaps of at most max_gap words merged) at least
   # min_words long, written after the matching passage was dictated (eval.bom_overlap).
   bom_quotation: {ngram: 8, min_words: 20, max_gap: 5}
+  # Amendment 45 (OSF revision 6af3671e7cdd292b665e9bc8; post hoc, after the simulated reviews): ranking
+  # rechecked with every model given the same amount of text (the revelation sample's training
+  # tokens), slices seeded per unit
+  dose_check: {slices: 2, seed: a45-dose}
   expanded_corpora:
     role: secondary
     # Fixed from the historical record before any scoring.

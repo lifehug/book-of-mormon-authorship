@@ -22,6 +22,13 @@ Numbers only: ``data/blind/a44/``. Usage::
     python -m eval.js_register style base|mid
     python -m eval.js_register alm pilot|base|mid
     python -m eval.js_register report
+    python -m eval.js_register dose pilot|base|mid   # Amendment 45, on a GPU
+    python -m eval.js_register dose-report
+
+``dose`` (Amendment 45): every candidate unit with more training text than the revelation sample,
+and the pooled non-revelatory unit, fine-tuned again on ``candidates.dose_check.slices`` seeded
+contiguous slices of exactly the revelation sample's training tokens; ``dose-report`` ranks the
+revelation model among these equal-dose models on the Book of Mormon chunks.
 """
 
 from __future__ import annotations
@@ -120,6 +127,99 @@ def alm(size: str, micro: int) -> int:
     return 0
 
 
+def _dose_units() -> dict[str, np.ndarray]:
+    from alm.candidates import INPUTS, PLAN
+
+    plan = json.loads(PLAN.read_text())["units"]
+    rev = next(u for u in plan if u["key"] == REVELATION)["train_tokens"]
+    units = {u["key"]: np.load(INPUTS / f"{u['key']}.npz")["train"] for u in plan
+             if u["kind"] == "candidate" and u["train_tokens"] > rev}  # fmt: skip
+    units[POOL] = np.concatenate([np.load(INPUTS / f"{u}.npz")["train"] for u in POOL_FROM])
+    return units
+
+
+def dose(size: str, micro: int) -> int:
+    import random
+
+    import torch
+    from tokenizers import Tokenizer
+
+    from alm.benchmark import _base, _device, finetune, window_loss
+    from alm.candidates import PLAN
+    from metadata.config import derive_seed
+    from metadata.config import load as load_config
+    from timelocked_lm.release import TOKENIZER
+
+    cfg = load_config()
+    a, dc = cfg["alm"], cfg["candidates"]["dose_check"]
+    n = next(u for u in json.loads(PLAN.read_text())["units"]
+             if u["key"] == REVELATION)["train_tokens"]  # fmt: skip
+    dev = _device()
+    model = _base(size, cfg).to(dev).eval()
+    state = {k: v.clone() for k, v in model.state_dict().items()}
+    tok = Tokenizer.from_file(str(TOKENIZER))
+    rows = sorted(_rows(), key=lambda r: r["id"])
+    texts = [tok.encode(r["text"]).ids for r in rows]
+    with torch.no_grad():
+        base = [window_loss(model, x, a["score_window"], dev) for x in texts]
+    out = OUT.parent / "a45" / f"dose_{size}.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    res = json.loads(out.read_text()) if out.exists() else {"tokens": n, "models": {}}
+    for unit, ids in sorted(_dose_units().items()):
+        for k in range(dc["slices"]):
+            name = f"{unit}#slice{k}"
+            if name in res["models"]:
+                continue
+            rng = random.Random(derive_seed(f"{dc['seed']}:{unit}:{k}", cfg))
+            start = rng.randrange(0, len(ids) - n + 1)
+            model.load_state_dict(state)
+            seed = derive_seed(f"{a['train_seed']}:a45:{name}", cfg)
+            torch.manual_seed(seed)
+            finetune(model, ids[start : start + n], cfg, seed, micro, dev,
+                     cfg["timelocked_lm"]["finetune_lr"])  # fmt: skip
+            (WEIGHTS / "a45").mkdir(parents=True, exist_ok=True)
+            torch.save({kk: v.cpu() for kk, v in model.state_dict().items()},
+                       WEIGHTS / "a45" / f"{name.replace('#', '_')}_{size}.pt")  # fmt: skip
+            with torch.no_grad():
+                loss = [window_loss(model, x, a["score_window"], dev) for x in texts]
+            res["models"][name] = {"start": start, "scores": {
+                r["id"]: float(np.mean(np.array(loss[i]) - np.array(base[i])))
+                for i, r in enumerate(rows)}}  # fmt: skip
+            out.write_text(json.dumps(res))
+            print(f"  dose {size} {name}: start {start}", flush=True)
+    return 0
+
+
+def dose_report() -> int:
+    key = json.loads(KEY.read_text())
+    bom = [i for i, k in key.items() if k["kind"] == "bom"]
+    res = {}
+    for size in ("pilot", "base", "mid"):
+        p = OUT.parent / "a45" / f"dose_{size}.json"
+        if not p.exists():
+            continue
+        d = json.loads(p.read_text())["models"]
+        prior = json.loads((A43 / "outputs" / f"alm_{size}.json").read_text())["scores"]["ids"]
+        ranks, firsts = [], 0
+        beats = {m: 0 for m in d}
+        for i in bom:
+            s = {m: d[m]["scores"][i] for m in d}
+            r = prior[i]["scores"][REVELATION]
+            rank = 1 + sum(v < r for v in s.values())
+            ranks.append(rank)
+            firsts += rank == 1
+            for m, v in s.items():
+                beats[m] += r < v
+        share = {m: b / len(bom) for m, b in beats.items()}
+        res[size] = {"equal_dose_models": len(d), "revelation_mean_rank": float(np.mean(ranks)),
+                     "revelation_first": firsts, "chunks": len(bom),
+                     "revelation_beats_share": share}  # fmt: skip
+        print(f"{size}: revelation model mean rank {np.mean(ranks):.1f} of {len(d) + 1} "
+              f"equal-dose models, first in {firsts}/{len(bom)} chunks", flush=True)  # fmt: skip
+    (OUT.parent / "a45" / "report.json").write_text(json.dumps(res, indent=1) + "\n")
+    return 0
+
+
 def _ranks(per_id: dict[str, dict[str, float]], lower_is_closer: bool) -> dict[str, dict]:
     """Each Joseph Smith unit's mean rank among candidate units, and times ranked first."""
     out: dict[str, dict] = {}
@@ -166,7 +266,7 @@ def report() -> int:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["classic", "style", "alm", "report"])
+    ap.add_argument("cmd", choices=["classic", "style", "alm", "report", "dose", "dose-report"])
     ap.add_argument("size", nargs="?", choices=["pilot", "base", "mid"])
     ap.add_argument("--micro-batch", type=int, default=8)
     a = ap.parse_args(argv)
@@ -174,6 +274,10 @@ def main(argv: list[str] | None = None) -> int:
         return alm(a.size, a.micro_batch)
     if a.cmd == "style":
         return style(a.size)
+    if a.cmd == "dose":
+        return dose(a.size, a.micro_batch)
+    if a.cmd == "dose-report":
+        return dose_report()
     return classic() if a.cmd == "classic" else report()
 
 

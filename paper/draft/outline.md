@@ -83,7 +83,7 @@ stands out under the registered nulls; 0 of 1,069 triaged pairs specific under b
   thresholds General Imposters and the style encoders cannot return *match*. H1b ("none of these"):
   favoured by the synthesis (8) but not established, since no method passes the open-set bar.
 - H1c (`data/benchmark/scribes.json`): narrators 0.744 (chance 0.277, p 0.001), dictation order
-  0.758 (chance 0.502, p 0.001), scribe untestable (all Cowdery); below the 0.96 benchmark
+  0.758 (chance 0.502, p 0.001), scribe untestable (only Cowdery's hand fills enough continuous text; Whitmer and Scribe 3 too short); below the 0.96 benchmark
   accuracy, so not separable as distinct authors.
 - Leave-one-candidate-out (590M): with Cowdery left out the chunks go to Joseph Smith (127 of
   168); with Joseph Smith left out, to Cowdery (158): the two small production-circle samples
