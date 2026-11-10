@@ -1,8 +1,8 @@
 {
- "config_sha256": "aab87cb23b023d90d25013718f15d4d181abf715c8b788de3b9b26a3a7045ba9",
+ "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "0544b5cc459396e0c809452f188ae3f7524cf4ca",
+ "git_commit": "05fa6afa470ff4f6a814c327bbf3355ee41db29c",
  "rule": "section 9: forward accuracy; full weight >= 0.8, half >= 0.6, else dropped (Amendment 7: exact 95% interval and n reported; equal-weight run beside)",
  "methods": {
   "alm_base": {
@@ -622,6 +622,51 @@
     ],
     "by_author": {
      "dodsley, robert": 0.9,
+     "kenrick, w william": 1.0,
+     "snowden, richard": 0.0
+    },
+    "authors": 3,
+    "authors_majority_right": 2,
+    "authors_ci95": [
+     0.09429932405024613,
+     0.9915962413403874
+    ],
+    "weight": 0.0
+   },
+   "weight": 0.0
+  },
+  "style_embed_mid": {
+   "forward": {
+    "tests": 18,
+    "correct": 10,
+    "accuracy": 0.5555555555555556,
+    "ci95": [
+     0.3075716589987562,
+     0.7846984926127001
+    ],
+    "by_author": {
+     "dodsley, robert": 0.8,
+     "kenrick, w william": 1.0,
+     "snowden, richard": 0.36363636363636365
+    },
+    "authors": 3,
+    "authors_majority_right": 2,
+    "authors_ci95": [
+     0.09429932405024613,
+     0.9915962413403874
+    ],
+    "weight": 0.0
+   },
+   "reverse": {
+    "tests": 24,
+    "correct": 10,
+    "accuracy": 0.4166666666666667,
+    "ci95": [
+     0.22109690534667853,
+     0.6335693543436376
+    ],
+    "by_author": {
+     "dodsley, robert": 0.6,
      "kenrick, w william": 1.0,
      "snowden, richard": 0.0
     },

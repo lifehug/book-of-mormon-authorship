@@ -250,6 +250,55 @@
      "config_sha256": "ff2f67ab53d7163d9060d04f177eeb235d60855f64025dc6528b67658c1922b4"
     }
    }
+  },
+  "style_mid": {
+   "match": 1.0,
+   "non_match": 1.0,
+   "positives": 180,
+   "negatives": 180,
+   "ladder": [
+    {
+     "rate": 0.01,
+     "threshold": 1.0,
+     "false_match": 0.6277777777777778,
+     "true_match": 0.9722222222222222
+    },
+    {
+     "rate": 0.05,
+     "threshold": 1.0,
+     "false_match": 0.6277777777777778,
+     "true_match": 0.9722222222222222
+    },
+    {
+     "rate": 0.1,
+     "threshold": 1.0,
+     "false_match": 0.6277777777777778,
+     "true_match": 0.9722222222222222
+    },
+    {
+     "rate": 0.2,
+     "threshold": 1.0,
+     "false_match": 0.6277777777777778,
+     "true_match": 0.9722222222222222
+    },
+    {
+     "rate": 0.3,
+     "threshold": 1.0,
+     "false_match": 0.6277777777777778,
+     "true_match": 0.9722222222222222
+    },
+    {
+     "rate": 0.5,
+     "threshold": 1.0,
+     "false_match": 0.6277777777777778,
+     "true_match": 0.9722222222222222
+    }
+   ],
+   "source": "style_embed_mid.json",
+   "computed": {
+    "git_commit": "05fa6afa470ff4f6a814c327bbf3355ee41db29c",
+    "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e"
+   }
   }
  }
 }
