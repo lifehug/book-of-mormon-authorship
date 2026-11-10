@@ -50,17 +50,17 @@ authors, the 125M (91%, at 47% false matches).
 - 5.5 **Dating:** three models; H3b; H3c by chunk and by book.
 - 5.6 **Internal voices:** narrators, dictation order, scribe.
 
-## 6. Corrections and robustness
-The quotation leak found and fixed (Amendment 43); equal training dose (Amendment 45); the
-registered combined score and the placebo showing it cannot distinguish an author's own text; every
-post hoc decision in one table.
-
-## 7. The books in the CES Letter, one by one
+## 6. The books in the CES Letter, one by one
 For each book the CES Letter names (to be confirmed from the Letter: *View of the Hebrews*, *The
 Late War*, *The First Book of Napoleon*, Spalding's *Manuscript Story*, and any others it cites):
 what the claim is; every wording test with each shared phrase listed and triaged; story structure;
 the book's own dating; access evidence (who could have had it, where, when); the verdict under the
 claim's pre-written rule.
+
+## 7. Corrections and robustness
+The quotation leak found and fixed (Amendment 43); equal training dose (Amendment 45); the
+registered combined score and the placebo showing it cannot distinguish an author's own text; every
+post hoc decision in one table.
 
 ## 8. Public claims
 Seventeen claims, from every side, judged by rules written before any result.
@@ -76,8 +76,12 @@ For each candidate: samples; rankings; "match" calls (pre- and post-1830, every 
 (borrowing links, access, public claims); caveats.
 - **10.1 Joseph Smith:** revelations rank first, also at equal training dose; a same-sized slice of
   *The Late War* competes (register); his ordinary prose mid-pack, never matched; dictation; and
-  **his prose over time** (BOM-73): his line 1831-44 against the exposed writers' and the
-  unexposed controls', with what it can and cannot show (no pre-1830 baseline).
+  **his prose over time** (BOM-73), by period (1831-33, 1834-36, 1837-39, 1840-44), three groups
+  measured alike: Joseph Smith (his hand and dictated, separately and pooled); others who read the
+  book (Cowdery, Pratt, Phelps, Rigdon); unexposed religious writers of the same years (Campbell,
+  Stone, Methodist and Baptist periodicals, Finney, Beecher). Influence is supported only if his
+  line, and the readers', move toward the book while the unexposed writers' does not; no pre-1830
+  baseline of his ordinary prose exists.
 - 10.2 Oliver Cowdery (the quotation leak; post-1830 sample, never matched), 10.3 Sidney Rigdon,
   10.4 Solomon Spalding, 10.5 Ethan Smith, 10.6 Gilbert J. Hunt, 10.7 Parley P. Pratt, 10.8 W. W.
   Phelps.
