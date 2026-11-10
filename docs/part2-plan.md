@@ -9,6 +9,12 @@ asks two questions, in stages, each with a gate fixed in advance:
 2. **Can we say confidently "not a match"** for a candidate (false matches at or below 5% on a
    larger benchmark, with enough sensitivity that a "no" means something)?
 
+**Commitment and order (owner, 2026-11-10).** Only Stage 0 is committed. The Part 1 paper is
+written in full first, so the owner can see end to end what each later stage would change. Stage 1
+starts only when the paper is fully written and the owner has reviewed Stage 0's results and said
+go; every later stage likewise needs the owner's go after its gate. Each stage is a GitHub
+milestone ("Part 2 · Stage 0" to "Stage 3") holding its issues.
+
 The study still takes no position on the book's origin: it asks which known texts, of any period
 before 1830, the text resembles.
 
