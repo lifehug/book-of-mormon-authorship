@@ -41,6 +41,8 @@ samples. Each command writes a stamped JSON (config hash, git commit) beside the
 | `python -m eval.power` | registered | minimum sample sizes (section 7) | `power.json`, `power_candidates.csv` | ~1 h |
 | `python -m eval.timesplit` | registered | can later writing stand in for earlier? | `timesplit.json` | ~30 min |
 | `python -m eval.part2_benchmark [--queue N]` | Amendment 48 | BOM-75: draws the enlarged benchmark's 16 corpus authors (4 genres) by seed, applies the translation and repeated-text rules and the recorded screen (`data/benchmark/part2/screen.json`); `--queue N` lists the first N per genre for screening | `part2/authors.json` | seconds; `--queue` a few minutes |
+| `python -m eval.benchmark --part2` | Amendment 48 | BOM-75: the classical methods on all seven tasks (the original three plus four corpus-author tasks) | `part2/benchmark.json`, `part2/thresholds.json` | ~1-2 h on the Mac |
+| `python -m alm.benchmark <size> --part2` | Amendment 48 | BOM-75: the language-model method on all seven tasks (one fine-tune per author; run on a rented GPU) | `alm_<size>_p2.json` | ~0.5-2 h per size on one H100 |
 | `python -m eval.dual_register` | registered | authors with both imitation scripture and other prose | `dual_register.json` | minutes |
 | `python -m eval.benchmark` | registered | the validation benchmark: pass or fail per method | `benchmark.json`, `thresholds.json` | ~10 min |
 | `python -m eval.open_set rescore` | registered (Amendment 25, post hoc) | the corrected open-set check (threshold from the positives: the score 95% of true authors reach) for every method with a verification score, the original beside it | `data/benchmark/open_set.json` | seconds |

@@ -13,6 +13,7 @@ check -> terminate. Stops the pod at the cap. Events go to the BOM-28 issue.
 Usage::
 
     python scripts/alm_pod.py --issue 38 --files <list> [--size base|mid|large --cap 15]
+    python scripts/alm_pod.py --issue 86 --files <list> --size pilot|base|mid --part2 --cap 20
 """
 
 from __future__ import annotations
@@ -29,16 +30,25 @@ import style_pod as sp  # noqa: E402
 
 SIZE = "base"
 R = sp.R
+BWLIMIT = 2000  # KB/s for uploads from the Mac: a third of its measured ~6 MB/s uplink
 
 
-def configure(size: str) -> None:
-    """Names, jobs and files for one model size (state and pod kept apart per size)."""
-    global SIZE, JOBS, RESULTS, EXTRA
-    SIZE = size
-    tag = "" if size == "base" else f"_{size}"
+def configure(size: str, part2: bool = False) -> None:
+    """Names, jobs and files for one model size (state and pod kept apart per size); ``part2``
+    runs only the primary method on Amendment 48's seven tasks (BOM-75)."""
+    global SIZE, JOBS, RESULTS, EXTRA, PART2
+    SIZE, PART2 = size, part2
+    tag = ("" if size == "base" else f"_{size}") if not part2 else f"_p2_{size}"
     sp.STATE = ROOT / f"logs/alm_pod{tag}/state.json"
-    sp.SSH = "almpod" if size == "base" else f"almpod{size}"
-    sp.POD_NAME = "bom28-alm-300m" if size == "base" else f"bom28-alm-{size}"
+    sp.SSH = ("almpod" if size == "base" else f"almpod{size}") if not part2 else f"almp2{size}"
+    sp.POD_NAME = (("bom28-alm-300m" if size == "base" else f"bom28-alm-{size}") if not part2
+                   else f"bom75-alm-{size}")  # fmt: skip
+    if part2:
+        JOBS = [f"python -m alm.benchmark {size} --part2 --micro-batch 8"]
+        RESULTS = [f"alm_{size}_p2.json"]
+        EXTRA = [f"data/corpus/timelocked_lm/runs/{size}/model.pt",
+                 f"data/corpus/alm/benchmark/{size}_p2"]  # fmt: skip
+        return
     JOBS = [
         f"python -m alm.benchmark {size} --micro-batch 8",
         f"python -m alm.benchmark {size} --variant v1 --micro-batch 8",
@@ -84,14 +94,14 @@ def step(s: dict, issue: int, cap: float, files: Path) -> bool:
         names = [ln for ln in files.read_text().splitlines() if ln]
         lst.write_text("\n".join(names + EXTRA) + "\n")
         sp.b2_prefetch(names + EXTRA)  # models from B2 first; rsync then skips or fixes them
-        rc, out = sp.pw.sh(["rsync", "-rtLR", "--no-o", "--no-g", f"--files-from={lst}", ".",
-                            f"{sp.SSH}:{R}/"], 7200)  # fmt: skip
+        rc, out = sp.pw.sh(["rsync", "-rtLR", "--no-o", "--no-g", f"--bwlimit={BWLIMIT}",
+                            f"--files-from={lst}", ".", f"{sp.SSH}:{R}/"], 14400)  # fmt: skip
         if rc != 0:
             sp.log(f"upload failed ({out[-200:]}); retrying")
             return True
         sums = sp.STATE.parent / "sha256.txt"
         rc, out = sp.pw.sh(["bash", "-c", f"cd {ROOT} && sha256sum $(cat {lst} | grep -v "
-                            f"'alm/benchmark/{SIZE}$') > {sums}"], 3600)  # fmt: skip
+                            f"'{EXTRA[1]}$') > {sums}"], 3600)  # fmt: skip
         sp.pw.sh(["rsync", str(sums), f"{sp.SSH}:{R}/sha256.txt"])
         rc, out = sp.remote(f"cd {R} && sha256sum -c --quiet sha256.txt && echo ALLOK", 3600)
         if "ALLOK" not in out:
@@ -103,7 +113,8 @@ def step(s: dict, issue: int, cap: float, files: Path) -> bool:
         script = " && ".join(JOBS) + " && touch /workspace/ALL_DONE"
         rc, out = sp.remote(f"cd {R} && tmux new-session -d -s alm '{script} 2>&1 | tee -a "
                             "/workspace/alm.out'")  # fmt: skip
-        sp.event(s, f"**{SIZE} benchmark jobs started** (primary, V1, V2, V3).", issue)
+        what = "primary, seven tasks (Amendment 48)" if PART2 else "primary, V1, V2, V3"
+        sp.event(s, f"**{SIZE} benchmark jobs started** ({what}).", issue)
         s["phase"], s["restarts"] = "watch", 0
     elif ph == "watch":
         rc, out = sp.remote("ls /workspace/ALL_DONE 2>/dev/null; tmux has-session -t alm "
@@ -155,9 +166,10 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--issue", type=int, required=True)
     ap.add_argument("--files", type=Path, required=True)
     ap.add_argument("--cap", type=float, default=15.0)
-    ap.add_argument("--size", choices=["base", "mid", "large"], default="base")
+    ap.add_argument("--size", choices=["pilot", "base", "mid", "large"], default="base")
+    ap.add_argument("--part2", action="store_true", help="BOM-75: primary method, seven tasks")
     a = ap.parse_args(argv)
-    configure(a.size)
+    configure(a.size, a.part2)
     sp.STATE.parent.mkdir(parents=True, exist_ok=True)
     s = json.loads(sp.STATE.read_text()) if sp.STATE.exists() else {"phase": "create"}
     while s["phase"] not in ("done", "failed", "capped"):

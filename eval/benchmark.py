@@ -31,6 +31,7 @@ on the trials that set the threshold.
 Usage::
 
     python -m eval.benchmark      # -> data/benchmark/benchmark.json, thresholds.json
+    python -m eval.benchmark --part2   # BOM-75: seven tasks -> data/benchmark/part2/benchmark.json
 """
 
 from __future__ import annotations
@@ -102,7 +103,7 @@ def _middle(toks: list[str], n: int) -> list[str]:
     return toks[s : s + n]
 
 
-def load_tasks(cfg: dict) -> dict[str, dict]:
+def load_tasks(cfg: dict, part2: bool = False) -> dict[str, dict]:
     """{task: {"authors": {author: [blocks]}, "tests": [(author, tokens)], "pool": [tokens]}}."""
     bm = cfg["benchmark"]
     n = bm["test_words"]
@@ -150,6 +151,17 @@ def load_tasks(cfg: dict) -> dict[str, dict]:
         "pool_genre": d.get("imposter_genre"),
         "pool_exclude_authors": tuple(d.get("exclude_authors_from_pool", [])),
     }
+    if part2:  # Amendment 48: four corpus-author tasks, registered imposter pairings
+        from eval.part2_benchmark import corpus_works
+
+        pools = cfg["part2_benchmark"]["pools"]
+        for name, by in corpus_works(cfg).items():
+            refs, tests = held_out({a: tokenize(" ".join(w for ws in works for w in ws))
+                                    for a, works in by.items()})  # fmt: skip
+            pool_set, pool_genre = pools[name.removeprefix("p2_")]
+            tasks[name] = {"authors": refs, "tests": tests, "pool_set": pool_set,
+                           "pool_genre": pool_genre,
+                           "pool_exclude_authors": tuple(sorted(by))}  # fmt: skip
     return tasks
 
 
@@ -351,24 +363,26 @@ def calibrate_gi(pos: list[float], neg: list[float], rate: float) -> dict:
     return {"match": float(np.quantile(neg, 1 - rate)), "non_match": float(np.quantile(pos, rate))}
 
 
-def run(only: list[str] | None = None, out_dir: Path | None = None) -> int:
+def run(only: list[str] | None = None, out_dir: Path | None = None, part2: bool = False) -> int:
     cfg = load_config()
     bm = cfg["benchmark"]
     rng = random.Random(derive_seed("benchmark", cfg))
-    tasks = load_tasks(cfg)
+    tasks = load_tasks(cfg, part2)
+    if part2 and out_dir is None:
+        out_dir = DIR / "part2"
     if only:
         tasks = {k: v for k, v in tasks.items() if k in only}
     spec = json.loads(TASKS.read_text())
     recs_by: dict[str, list[dict]] = {}
     for name, task in tasks.items():
-        exclude = set(spec[name].get("exclude_from_pool", []))
+        exclude = set(spec.get(name, {}).get("exclude_from_pool", []))
         pool = imposter_pool(
             task["pool_set"],
             exclude,
             cfg,
             task["pool_genre"],
             task["pool_exclude_authors"],
-            spec[name].get("imposter_fill"),
+            spec.get(name, {}).get("imposter_fill"),
         )
         print(
             f"{name}: {len(task['authors'])} authors, {len(task['tests'])} tests, "
@@ -498,8 +512,9 @@ def main(argv: list[str] | None = None) -> int:
 
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("--tasks", nargs="*", help="run only these tasks (a dry run; not a result)")
+    ap.add_argument("--part2", action="store_true", help="Amendment 48: add the four corpus tasks")
     a = ap.parse_args(argv)
-    return run(a.tasks)
+    return run(a.tasks, part2=a.part2)
 
 
 if __name__ == "__main__":

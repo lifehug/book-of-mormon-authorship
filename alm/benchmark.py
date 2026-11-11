@@ -17,6 +17,7 @@ Usage::
 
     python -m alm.benchmark <size> [--variant v1]   # size pilot|base|mid|large -> alm_<size>[_v1]
     python -m alm.benchmark <size> --variant v1 --lr 3e-5 --tag <size>_v1_lrsel --save-weights
+    python -m alm.benchmark <size> --part2          # BOM-75: all seven tasks -> alm_<size>_p2
 
 ``--save-weights`` keeps every fine-tuned copy (``<work>/weights/<task>__<author>.pt``) for
 publication (owner, 2026-11-09: no trained model is discarded).
@@ -77,8 +78,9 @@ def _words(work_ids: list[str], spans_files: list[Path]) -> dict[str, list[str]]
                               spans.get(w, [])) for w in work_ids}  # fmt: skip
 
 
-def texts() -> dict[str, dict]:
-    """{task: {"works": {author: [word lists]}, "tests": {work_id: words} (dictated only)}}."""
+def texts(part2: bool = False) -> dict[str, dict]:
+    """{task: {"works": {author: [word lists]}, "tests": {work_id: words} (dictated only)}};
+    ``part2`` adds Amendment 48's four corpus-author tasks (``eval.part2_benchmark``)."""
     from segment.build import original_words
 
     fed: dict[str, list[list[str]]] = {}
@@ -95,17 +97,22 @@ def texts() -> dict[str, dict]:
              Path("data/kjv_mask/known_answer/spans.jsonl")]  # fmt: skip
     got = _words(ref_ids + d["tests"], masks)
     dic = {a: [got[w] for w in ws] for a, ws in d["reference"].items()}
-    return {"federalist": {"works": fed}, "pseudo_biblical": {"works": pb},
-            "dictated": {"works": dic, "tests": {w: got[w] for w in d["tests"]},
-                         "author": d["author"]}}  # fmt: skip
+    out = {"federalist": {"works": fed}, "pseudo_biblical": {"works": pb},
+           "dictated": {"works": dic, "tests": {w: got[w] for w in d["tests"]},
+                        "author": d["author"]}}  # fmt: skip
+    if part2:
+        from eval.part2_benchmark import corpus_works
+
+        out.update({t: {"works": by} for t, by in corpus_works(load_config()).items()})
+    return out
 
 
-def plan(cfg: dict) -> dict[str, dict]:
+def plan(cfg: dict, part2: bool = False) -> dict[str, dict]:
     """Per task: each author's training words (works kept apart) and the test samples."""
     bm, a = cfg["benchmark"], cfg["alm"]
     k = bm["test_words"] // BLOCK
     out: dict[str, dict] = {}
-    for task, t in texts().items():
+    for task, t in texts(part2).items():
         train, tests = {}, []
         for author, works in sorted(t["works"].items()):
             if task == "dictated":
@@ -196,7 +203,7 @@ def window_loss(model: GPT, ids: list[int], window: int, dev: str) -> list[float
 
 
 def run(size: str, micro: int, variant: str = "", lr: float | None = None,
-        tag: str | None = None, save: bool = False) -> int:  # fmt: skip
+        tag: str | None = None, save: bool = False, part2: bool = False) -> int:  # fmt: skip
     """Amendment 22's ALMs; ``variant`` "v1" is Amendment 23's V1 (learning rate
     ``alm.v1_finetune_lr``), or ``lr`` where given (Amendment 41's selected rate)."""
     from tokenizers import Tokenizer
@@ -208,10 +215,10 @@ def run(size: str, micro: int, variant: str = "", lr: float | None = None,
     eot = tok.token_to_id(EOT)
     if lr is None:
         lr = a["v1_finetune_lr"] if variant == "v1" else cfg["timelocked_lm"]["finetune_lr"]
-    tag = tag or (f"{size}_{variant}" if variant else size)
+    tag = tag or (f"{size}_{variant}" if variant else size) + ("_p2" if part2 else "")
     work = WORK / tag
     work.mkdir(parents=True, exist_ok=True)
-    p = plan(cfg)
+    p = plan(cfg, part2)
     base = _base(size, cfg).to(dev).eval()
     state = {k: v.clone() for k, v in base.state_dict().items()}
     for task, tp in p.items():
@@ -299,8 +306,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--lr", type=float, help="Amendment 41: a selected learning rate")
     ap.add_argument("--tag", help="result name (alm_<tag>.json); default <size>[_<variant>]")
     ap.add_argument("--save-weights", action="store_true", help="keep every fine-tuned copy")
+    ap.add_argument("--part2", action="store_true", help="Amendment 48: add the four corpus tasks")
     a = ap.parse_args(argv)
-    return run(a.size, a.micro_batch, a.variant, a.lr, a.tag, a.save_weights)
+    return run(a.size, a.micro_batch, a.variant, a.lr, a.tag, a.save_weights, a.part2)
 
 
 if __name__ == "__main__":
