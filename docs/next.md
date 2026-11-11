@@ -7,8 +7,10 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 ## Running
 
-- tmux `a44pull`: Amendment 44/45 weights from B2 to `data/corpus/alm/a44` (`logs/a44_pull.log`); then
-  stage and publish them to Hugging Face.
+Nothing. The Hugging Face upload of the Amendment 43/44/45 candidate weights (`python -m
+timelocked_lm.publish push --repo bom-authorship-candidate-models`; weights on the Mac and B2) was
+stopped on 2026-11-10 because the Mac's network loses 20-70% of packets even when idle; resume it
+once the connection is fixed, with uploads rate-limited.
 
 ## Next, in order (owner, 2026-11-10: the paper first, written in full, before any Part 2 stage)
 
