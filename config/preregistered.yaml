@@ -575,6 +575,19 @@ review:
   # BOM-38 (docs/simulated-review-plan.md): simulated peer review, labelled SIMULATED
   model: claude-opus-5-5
 
+# BOM-74, Amendment 47 (2026-11-11, recorded in the repo, before any Part 2 run): Part 2 criteria
+part2:
+  benchmark_tests_target: 400     # BOM-75: enlarged held-out benchmark (from 110)
+  pass_closed_set: 0.90           # unchanged registered bar (6.1/7)
+  max_open_set_fpr: 0.05          # unchanged registered bar (6.1/7)
+  min_true_author_match: 0.90     # sensitivity at the Amendment 25 threshold, so "no" means something
+  interval: wilson95              # every rate reported with its 95% Wilson interval
+  gate_min_fpr_drop: 0.05         # next stage only if best false-match rate falls by this much ...
+  gate_intervals_disjoint: true   # ... and the 95% intervals do not overlap
+  seeds_per_candidate: 5          # BOM-77, every size (as Amendment 42's V2 reruns)
+  exclusion_min_decoy_recognition: 0.90   # BOM-76 cross-work rate needed before "not a match"
+  placebo_primary_died_before: 1827-09-01 # BOM-76 primary group; secondary: born after 1830
+
 pending_amendment: []
 
 # BOM-73, Amendment 46 (OSF revision 6af385f93ea373a2d2826e1a; post hoc: after unblinding; filed
