@@ -1,0 +1,4679 @@
+{
+ "config_sha256": "98b7d4581ab16df9d01a05f6a65f5f6901e4658a8f6453c992c6aefc019188b9",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "398e5a39478f617cd2fd64a2862bdb0b9615261e",
+ "closed_set_by_task": {
+  "federalist": {
+   "burrows_delta": 1.0,
+   "cosine_delta": 0.9,
+   "general_imposters": 0.95
+  },
+  "pseudo_biblical": {
+   "burrows_delta": 1.0,
+   "cosine_delta": 0.9875,
+   "general_imposters": 0.8375
+  },
+  "dictated": {
+   "burrows_delta": 1.0,
+   "cosine_delta": 1.0,
+   "general_imposters": 0.75
+  },
+  "p2_fiction_narrative": {
+   "burrows_delta": 0.7875,
+   "cosine_delta": 0.825,
+   "general_imposters": 0.7375
+  },
+  "p2_legal_political": {
+   "burrows_delta": 0.925,
+   "cosine_delta": 0.9375,
+   "general_imposters": 0.775
+  },
+  "p2_sermon_devotional": {
+   "burrows_delta": 0.9,
+   "cosine_delta": 0.925,
+   "general_imposters": 0.825
+  },
+  "p2_history_chronicle": {
+   "burrows_delta": 0.95,
+   "cosine_delta": 0.975,
+   "general_imposters": 0.775
+  }
+ },
+ "ensc_closed_set_by_task": {
+  "federalist": 1.0,
+  "pseudo_biblical": 1.0,
+  "dictated": 1.0,
+  "p2_fiction_narrative": 0.775,
+  "p2_legal_political": 0.925,
+  "p2_sermon_devotional": 0.9125,
+  "p2_history_chronicle": 0.9375
+ },
+ "verdict": {
+  "burrows_delta": {
+   "closed_set": 0.93,
+   "open_set_fpr": null,
+   "passes": null,
+   "note": "no verification score in 6.1; closed set only"
+  },
+  "cosine_delta": {
+   "closed_set": 0.936,
+   "open_set_fpr": null,
+   "passes": null,
+   "note": "no verification score in 6.1; closed set only"
+  },
+  "general_imposters": {
+   "closed_set": 0.798,
+   "open_set_fpr": 0.0,
+   "passes": false,
+   "note": "match threshold is the maximum score: GI can never return 'match' at 5% FPR"
+  },
+  "ensc": {
+   "closed_set": 0.928,
+   "open_set_fpr": 0.76,
+   "passes": false
+  }
+ },
+ "per_test": {
+  "burrows_delta": {
+   "closed_set_pass": true
+  },
+  "cosine_delta": {
+   "closed_set_pass": true
+  },
+  "general_imposters": {
+   "closed_set_pass": false,
+   "passes": false
+  },
+  "ensc": {
+   "closed_set_pass": true,
+   "passes": false
+  }
+ },
+ "gi_thresholds": {
+  "match": 1.0,
+  "non_match": 0.029500000000000026
+ },
+ "ensc": {
+  "cv_open_set_accuracy": {
+   "0|1e-06": 0.512,
+   "0|1e-05": 0.517,
+   "0|0.0001": 0.529,
+   "0|0.001": 0.533,
+   "0|0.01": 0.54,
+   "0|0.05": 0.553,
+   "0|0.1": 0.558,
+   "0|0.2": 0.563,
+   "0|0.3": 0.566,
+   "0|0.5": 0.581,
+   "0.5|1e-06": 0.515,
+   "0.5|1e-05": 0.52,
+   "0.5|0.0001": 0.532,
+   "0.5|0.001": 0.536,
+   "0.5|0.01": 0.543,
+   "0.5|0.05": 0.556,
+   "0.5|0.1": 0.561,
+   "0.5|0.2": 0.566,
+   "0.5|0.3": 0.569,
+   "0.5|0.5": 0.584,
+   "1|1e-06": 0.512,
+   "1|1e-05": 0.517,
+   "1|0.0001": 0.529,
+   "1|0.001": 0.533,
+   "1|0.01": 0.54,
+   "1|0.05": 0.553,
+   "1|0.1": 0.558,
+   "1|0.2": 0.563,
+   "1|0.3": 0.566,
+   "1|0.5": 0.581,
+   "2|1e-06": 0.507,
+   "2|1e-05": 0.512,
+   "2|0.0001": 0.524,
+   "2|0.001": 0.528,
+   "2|0.01": 0.535,
+   "2|0.05": 0.548,
+   "2|0.1": 0.553,
+   "2|0.2": 0.558,
+   "2|0.3": 0.561,
+   "2|0.5": 0.576,
+   "4|1e-06": 0.473,
+   "4|1e-05": 0.478,
+   "4|0.0001": 0.49,
+   "4|0.001": 0.494,
+   "4|0.01": 0.501,
+   "4|0.05": 0.514,
+   "4|0.1": 0.519,
+   "4|0.2": 0.524,
+   "4|0.3": 0.527,
+   "4|0.5": 0.542,
+   "8|1e-06": 0.392,
+   "8|1e-05": 0.397,
+   "8|0.0001": 0.409,
+   "8|0.001": 0.413,
+   "8|0.01": 0.42,
+   "8|0.05": 0.433,
+   "8|0.1": 0.438,
+   "8|0.2": 0.443,
+   "8|0.3": 0.446,
+   "8|0.5": 0.461
+  },
+  "shrinkage": 0.5,
+  "alpha": 0.5
+ },
+ "records": {
+  "federalist": [
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.86,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.74,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.78,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 0.81,
+    "gi_open_negative": 0.47,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.61,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.62,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.95,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.88,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.72,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.91,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.81,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.9,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "jay",
+    "general_imposters": "hamilton",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.67,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.78,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "jay",
+    "general_imposters": "hamilton",
+    "gi_positive": 0.88,
+    "gi_open_negative": 0.63,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.91,
+    "_n": 5000
+   },
+   {
+    "author": "hamilton",
+    "burrows_delta": "hamilton",
+    "cosine_delta": "hamilton",
+    "general_imposters": "hamilton",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "hamilton",
+    "gi_positive": 0.89,
+    "gi_open_negative": 0.98,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.67,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "jay",
+    "general_imposters": "madison",
+    "gi_positive": 0.84,
+    "gi_open_negative": 0.61,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.95,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.73,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.95,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.7,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.71,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "jay",
+    "general_imposters": "madison",
+    "gi_positive": 0.83,
+    "gi_open_negative": 0.68,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.63,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99,
+    "_n": 5000
+   },
+   {
+    "author": "madison",
+    "burrows_delta": "madison",
+    "cosine_delta": "madison",
+    "general_imposters": "madison",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   }
+  ],
+  "pseudo_biblical": [
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.69,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.71,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.88,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.47,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.58,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.19,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.69,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.52,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.7,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.64,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.14,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.6,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.88,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.91,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.85,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.44,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.64,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.53,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughes",
+    "burrows_delta": "hughes",
+    "cosine_delta": "hughes",
+    "general_imposters": "hughes",
+    "gi_positive": 0.67,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.61,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.97,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.97,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "hunt",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "hunt",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "hunt",
+    "burrows_delta": "hunt",
+    "cosine_delta": "linning",
+    "general_imposters": "hunt",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.42,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.19,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.21,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.43,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.08,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.33,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.17,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.31,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.1,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.24,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.14,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.43,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.17,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.26,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.15,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.25,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.17,
+    "_n": 5000
+   },
+   {
+    "author": "linning",
+    "burrows_delta": "linning",
+    "cosine_delta": "linning",
+    "general_imposters": "linning",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.9,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.97,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.91,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.91,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.97,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "snowden",
+    "burrows_delta": "snowden",
+    "cosine_delta": "snowden",
+    "general_imposters": "snowden",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   }
+  ],
+  "dictated": [
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "morgan",
+    "gi_positive": 0.23,
+    "gi_open_negative": 0.46,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.47,
+    "gi_open_negative": 0.89,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.92,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.91,
+    "gi_open_negative": 0.97,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.46,
+    "gi_open_negative": 0.25,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.6,
+    "gi_open_negative": 0.75,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.59,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.87,
+    "gi_open_negative": 0.2,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.88,
+    "gi_open_negative": 0.18,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.82,
+    "gi_open_negative": 0.25,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.85,
+    "gi_open_negative": 0.84,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.41,
+    "gi_open_negative": 0.45,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.98,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.61,
+    "gi_open_negative": 0.8,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.14,
+    "gi_open_negative": 0.2,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.9,
+    "gi_open_negative": 0.88,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.4,
+    "gi_open_negative": 0.15,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.32,
+    "gi_open_negative": 0.16,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.3,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.7,
+    "gi_open_negative": 0.47,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.5,
+    "gi_open_negative": 0.63,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "morgan",
+    "gi_positive": 0.72,
+    "gi_open_negative": 0.9,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.47,
+    "gi_open_negative": 0.15,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.46,
+    "gi_open_negative": 0.61,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.69,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.61,
+    "gi_open_negative": 0.91,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "morgan",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.99,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.38,
+    "gi_open_negative": 0.16,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "galt",
+    "gi_positive": 0.57,
+    "gi_open_negative": 0.68,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.66,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.62,
+    "gi_open_negative": 0.14,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.78,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.63,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "morgan",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.95,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.85,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.86,
+    "gi_open_negative": 0.75,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.82,
+    "gi_open_negative": 0.49,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.42,
+    "gi_open_negative": 0.16,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.89,
+    "gi_open_negative": 0.88,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.68,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.64,
+    "gi_open_negative": 0.27,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.33,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.35,
+    "gi_open_negative": 0.1,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.53,
+    "gi_open_negative": 0.13,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.24,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.88,
+    "gi_open_negative": 0.2,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.13,
+    "gi_open_negative": 0.05,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.4,
+    "gi_open_negative": 0.1,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.77,
+    "gi_open_negative": 0.3,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.67,
+    "gi_open_negative": 0.12,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.93,
+    "gi_open_negative": 0.24,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.33,
+    "gi_open_negative": 0.29,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.27,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.72,
+    "gi_open_negative": 0.38,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.5,
+    "gi_open_negative": 0.12,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.37,
+    "gi_open_negative": 0.09,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.23,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.95,
+    "gi_open_negative": 0.28,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.61,
+    "gi_open_negative": 0.2,
+    "_n": 5000
+   },
+   {
+    "author": "scott",
+    "burrows_delta": "scott",
+    "cosine_delta": "scott",
+    "general_imposters": "scott",
+    "gi_positive": 0.08,
+    "gi_open_negative": 0.05,
+    "_n": 5000
+   }
+  ],
+  "p2_fiction_narrative": [
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.68,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.39,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "strickland, agnes",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.07,
+    "gi_open_negative": 0.09,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.86,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.4,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.67,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.72,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "strickland, agnes",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.14,
+    "gi_open_negative": 0.1,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.74,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.85,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.25,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.17,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "hughs, mary",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.89,
+    "gi_open_negative": 0.04,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.14,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.07,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.3,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.1,
+    "gi_open_negative": 0.73,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.56,
+    "gi_open_negative": 0.35,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.92,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.03,
+    "gi_open_negative": 0.13,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.91,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "strickland, agnes",
+    "gi_positive": 0.23,
+    "gi_open_negative": 0.23,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.16,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.64,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.57,
+    "gi_open_negative": 0.11,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.27,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.34,
+    "gi_open_negative": 0.12,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.95,
+    "gi_open_negative": 0.05,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "marsden, joshua",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.07,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.6,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.31,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.84,
+    "gi_open_negative": 0.05,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.77,
+    "gi_open_negative": 0.19,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.25,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.46,
+    "gi_open_negative": 0.59,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.89,
+    "gi_open_negative": 0.38,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.08,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.37,
+    "gi_open_negative": 0.82,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.18,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.37,
+    "gi_open_negative": 0.47,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.04,
+    "gi_open_negative": 0.22,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.53,
+    "gi_open_negative": 0.43,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.64,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.22,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.01,
+    "gi_open_negative": 0.14,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.81,
+    "gi_open_negative": 0.12,
+    "_n": 5000
+   },
+   {
+    "author": "montgomery, robert",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.82,
+    "gi_open_negative": 0.17,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.02,
+    "gi_open_negative": 0.34,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.88,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.15,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.09,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "strickland, agnes",
+    "cosine_delta": "strickland, agnes",
+    "general_imposters": "strickland, agnes",
+    "gi_positive": 0.54,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "strickland, agnes",
+    "cosine_delta": "strickland, agnes",
+    "general_imposters": "strickland, agnes",
+    "gi_positive": 0.2,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.06,
+    "gi_open_negative": 0.25,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "strickland, agnes",
+    "cosine_delta": "strickland, agnes",
+    "general_imposters": "strickland, agnes",
+    "gi_positive": 0.48,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "marsden, joshua",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.05,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "strickland, agnes",
+    "cosine_delta": "strickland, agnes",
+    "general_imposters": "strickland, agnes",
+    "gi_positive": 0.03,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "strickland, agnes",
+    "cosine_delta": "strickland, agnes",
+    "general_imposters": "strickland, agnes",
+    "gi_positive": 0.49,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "hughs, mary",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.96,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "strickland, agnes",
+    "cosine_delta": "strickland, agnes",
+    "general_imposters": "strickland, agnes",
+    "gi_positive": 0.74,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "marsden, joshua",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "marsden, joshua",
+    "gi_positive": 0.07,
+    "gi_open_negative": 0.21,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "strickland, agnes",
+    "cosine_delta": "strickland, agnes",
+    "general_imposters": "strickland, agnes",
+    "gi_positive": 0.38,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "strickland, agnes",
+    "cosine_delta": "strickland, agnes",
+    "general_imposters": "strickland, agnes",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.14,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "montgomery, robert",
+    "cosine_delta": "montgomery, robert",
+    "general_imposters": "montgomery, robert",
+    "gi_positive": 0.01,
+    "gi_open_negative": 0.24,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "strickland, agnes",
+    "cosine_delta": "hughs, mary",
+    "general_imposters": "hughs, mary",
+    "gi_positive": 0.01,
+    "gi_open_negative": 0.44,
+    "_n": 5000
+   },
+   {
+    "author": "strickland, agnes",
+    "burrows_delta": "strickland, agnes",
+    "cosine_delta": "strickland, agnes",
+    "general_imposters": "strickland, agnes",
+    "gi_positive": 0.32,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   }
+  ],
+  "p2_legal_political": [
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.7,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.45,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.04,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.63,
+    "gi_open_negative": 0.09,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.06,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.06,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.09,
+    "_n": 5000
+   },
+   {
+    "author": "alley, jerom",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.04,
+    "gi_open_negative": 0.14,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 0.84,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.01,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.24,
+    "gi_open_negative": 0.77,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.11,
+    "gi_open_negative": 0.55,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.14,
+    "gi_open_negative": 0.4,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 0.71,
+    "gi_open_negative": 0.37,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 0.47,
+    "gi_open_negative": 0.23,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 0.59,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 0.59,
+    "gi_open_negative": 0.29,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 0.67,
+    "gi_open_negative": 0.15,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 0.43,
+    "gi_open_negative": 0.25,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 0.38,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "alley, jerom",
+    "cosine_delta": "alley, jerom",
+    "general_imposters": "alley, jerom",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.06,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 0.95,
+    "gi_open_negative": 0.11,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 0.42,
+    "gi_open_negative": 0.13,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.06,
+    "gi_open_negative": 0.16,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.19,
+    "_n": 5000
+   },
+   {
+    "author": "everett, edward",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "malthus, t r thomas robert",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.97,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.91,
+    "gi_open_negative": 0.91,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "malthus, t r thomas robert",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.98,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "malthus, t r thomas robert",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.94,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "malthus, t r thomas robert",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.82,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "malthus, t r thomas robert",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.96,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "malthus, t r thomas robert",
+    "gi_positive": 0.89,
+    "gi_open_negative": 0.77,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "malthus, t r thomas robert",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.94,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "malthus, t r thomas robert",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.94,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "malthus, t r thomas robert",
+    "gi_positive": 0.87,
+    "gi_open_negative": 0.48,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "malthus, t r thomas robert",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.94,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "malthus, t r thomas robert",
+    "gi_positive": 0.73,
+    "gi_open_negative": 0.7,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "malthus, t r thomas robert",
+    "cosine_delta": "malthus, t r thomas robert",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "malthus, t r thomas robert",
+    "burrows_delta": "everett, edward",
+    "cosine_delta": "everett, edward",
+    "general_imposters": "everett, edward",
+    "gi_positive": 0.62,
+    "gi_open_negative": 0.78,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.6,
+    "gi_open_negative": 0.2,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.68,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.9,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.79,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.22,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.95,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.53,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.95,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.83,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.91,
+    "gi_open_negative": 0.64,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.84,
+    "gi_open_negative": 0.34,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.86,
+    "gi_open_negative": 0.49,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.78,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.49,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.79,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.78,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.97,
+    "_n": 5000
+   },
+   {
+    "author": "mcculloch, j r john ramsay",
+    "burrows_delta": "mcculloch, j r john ramsay",
+    "cosine_delta": "mcculloch, j r john ramsay",
+    "general_imposters": "mcculloch, j r john ramsay",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.99,
+    "_n": 5000
+   }
+  ],
+  "p2_sermon_devotional": [
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.49,
+    "gi_open_negative": 0.25,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.6,
+    "gi_open_negative": 0.14,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.7,
+    "gi_open_negative": 0.21,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.38,
+    "gi_open_negative": 0.2,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.02,
+    "gi_open_negative": 0.15,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.7,
+    "gi_open_negative": 0.13,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.29,
+    "gi_open_negative": 0.08,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.46,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.28,
+    "gi_open_negative": 0.2,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.12,
+    "gi_open_negative": 0.4,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.29,
+    "gi_open_negative": 0.04,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.92,
+    "gi_open_negative": 0.35,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.12,
+    "gi_open_negative": 0.05,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.88,
+    "gi_open_negative": 0.27,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.15,
+    "gi_open_negative": 0.12,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.61,
+    "gi_open_negative": 0.06,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.86,
+    "gi_open_negative": 0.31,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.46,
+    "gi_open_negative": 0.04,
+    "_n": 5000
+   },
+   {
+    "author": "hobart, john henry",
+    "burrows_delta": "hobart, john henry",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.95,
+    "gi_open_negative": 0.27,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.61,
+    "gi_open_negative": 0.17,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.53,
+    "gi_open_negative": 0.92,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.34,
+    "gi_open_negative": 0.14,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.43,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.38,
+    "gi_open_negative": 0.51,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.53,
+    "gi_open_negative": 0.93,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.66,
+    "gi_open_negative": 0.33,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.78,
+    "gi_open_negative": 0.32,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.95,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.67,
+    "gi_open_negative": 0.36,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.83,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.88,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.25,
+    "gi_open_negative": 0.12,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.26,
+    "gi_open_negative": 0.04,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.57,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.28,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.41,
+    "gi_open_negative": 0.23,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.34,
+    "gi_open_negative": 0.43,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.85,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "mant, richard",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.97,
+    "gi_open_negative": 1.0,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.06,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.02,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.87,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.01,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.58,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.95,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.09,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.05,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.6,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.52,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.77,
+    "gi_open_negative": 0.06,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "hobart, john henry",
+    "general_imposters": "hobart, john henry",
+    "gi_positive": 0.03,
+    "gi_open_negative": 0.36,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.88,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.06,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "mant, richard",
+    "cosine_delta": "mant, richard",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.01,
+    "gi_open_negative": 0.08,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.45,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "spring, samuel",
+    "burrows_delta": "spring, samuel",
+    "cosine_delta": "spring, samuel",
+    "general_imposters": "spring, samuel",
+    "gi_positive": 0.82,
+    "gi_open_negative": 0.1,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.16,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.77,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.84,
+    "gi_open_negative": 0.06,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.48,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "mant, richard",
+    "gi_positive": 0.18,
+    "gi_open_negative": 0.91,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.8,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.3,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.57,
+    "gi_open_negative": 0.07,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.69,
+    "gi_open_negative": 0.46,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.65,
+    "gi_open_negative": 0.15,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.8,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.27,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.13,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.65,
+    "gi_open_negative": 0.57,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.33,
+    "gi_open_negative": 0.08,
+    "_n": 5000
+   },
+   {
+    "author": "thomson, andrew",
+    "burrows_delta": "thomson, andrew",
+    "cosine_delta": "thomson, andrew",
+    "general_imposters": "thomson, andrew",
+    "gi_positive": 0.47,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   }
+  ],
+  "p2_history_chronicle": [
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.21,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.29,
+    "gi_open_negative": 0.4,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.79,
+    "gi_open_negative": 0.06,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.62,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.03,
+    "gi_open_negative": 0.14,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.83,
+    "gi_open_negative": 0.29,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.41,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.91,
+    "gi_open_negative": 0.05,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.29,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.25,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.28,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.06,
+    "gi_open_negative": 0.1,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.4,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.82,
+    "gi_open_negative": 0.25,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.41,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.15,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.38,
+    "_n": 5000
+   },
+   {
+    "author": "chambers, john",
+    "burrows_delta": "chambers, john",
+    "cosine_delta": "chambers, john",
+    "general_imposters": "chambers, john",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.19,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.51,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.95,
+    "gi_open_negative": 0.95,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.79,
+    "gi_open_negative": 0.2,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.39,
+    "gi_open_negative": 0.11,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.15,
+    "gi_open_negative": 0.56,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.1,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.9,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.84,
+    "gi_open_negative": 0.19,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.94,
+    "gi_open_negative": 0.9,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.2,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.48,
+    "gi_open_negative": 0.06,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.34,
+    "gi_open_negative": 0.83,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.71,
+    "gi_open_negative": 0.35,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.61,
+    "gi_open_negative": 0.24,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.47,
+    "gi_open_negative": 0.24,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.18,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.11,
+    "gi_open_negative": 0.65,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.54,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "corry, john b ca",
+    "cosine_delta": "corry, john b ca",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.01,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "corry, john b ca",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.21,
+    "gi_open_negative": 0.39,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.02,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.83,
+    "gi_open_negative": 0.32,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.21,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.57,
+    "gi_open_negative": 0.35,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.59,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.41,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.54,
+    "gi_open_negative": 0.38,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.57,
+    "gi_open_negative": 0.05,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.08,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.93,
+    "gi_open_negative": 0.03,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.77,
+    "gi_open_negative": 0.05,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.91,
+    "gi_open_negative": 0.05,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.92,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.6,
+    "gi_open_negative": 0.31,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.39,
+    "gi_open_negative": 0.05,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.0,
+    "gi_open_negative": 0.0,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.67,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.25,
+    "_n": 5000
+   },
+   {
+    "author": "trueba y cosio, joaquin telesforo de",
+    "burrows_delta": "trueba y cosio, joaquin telesforo de",
+    "cosine_delta": "trueba y cosio, joaquin telesforo de",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.33,
+    "gi_open_negative": 0.01,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.48,
+    "gi_open_negative": 0.75,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.98,
+    "gi_open_negative": 0.51,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.57,
+    "gi_open_negative": 0.86,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.78,
+    "gi_open_negative": 0.62,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.61,
+    "gi_open_negative": 0.44,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "corry, john b ca",
+    "gi_positive": 0.86,
+    "gi_open_negative": 0.88,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.78,
+    "gi_open_negative": 0.47,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.73,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 1.0,
+    "gi_open_negative": 0.44,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "trueba y cosio, joaquin telesforo de",
+    "gi_positive": 0.56,
+    "gi_open_negative": 0.89,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.97,
+    "gi_open_negative": 0.51,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.93,
+    "gi_open_negative": 0.53,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.88,
+    "gi_open_negative": 0.67,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.87,
+    "gi_open_negative": 0.28,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.79,
+    "gi_open_negative": 0.21,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.32,
+    "gi_open_negative": 0.54,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.06,
+    "gi_open_negative": 0.27,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.99,
+    "gi_open_negative": 0.69,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "chambers, john",
+    "gi_positive": 0.47,
+    "gi_open_negative": 0.56,
+    "_n": 5000
+   },
+   {
+    "author": "tytler, patrick fraser",
+    "burrows_delta": "tytler, patrick fraser",
+    "cosine_delta": "tytler, patrick fraser",
+    "general_imposters": "tytler, patrick fraser",
+    "gi_positive": 0.96,
+    "gi_open_negative": 0.44,
+    "_n": 5000
+   }
+  ]
+ }
+}

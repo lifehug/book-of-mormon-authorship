@@ -1,0 +1,58 @@
+{
+ "config_sha256": "98b7d4581ab16df9d01a05f6a65f5f6901e4658a8f6453c992c6aefc019188b9",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "8987ee149149a401dcd478cdba93fe06ffe021dd",
+ "methods": {
+  "general_imposters": {
+   "closed_set": 0.798,
+   "threshold": 0.029500000000000207,
+   "open_set_fpr": 0.794,
+   "tests": 500,
+   "open_set_fpr_original": 0.0,
+   "passes": false,
+   "closed_set_ci95": [
+    0.7605971134487787,
+    0.8308587795649963
+   ],
+   "open_set_fpr_ci95": [
+    0.7563735287687868,
+    0.8271433589696354
+   ],
+   "n_closed": 500
+  },
+  "burrows_delta": {
+   "closed_set": 0.93,
+   "open_set_fpr": null,
+   "passes": null,
+   "note": "no verification score (6.1)",
+   "closed_set_ci95": [
+    0.9042028099167505,
+    0.9492402571836629
+   ],
+   "n_closed": 500
+  },
+  "cosine_delta": {
+   "closed_set": 0.936,
+   "open_set_fpr": null,
+   "passes": null,
+   "note": "no verification score (6.1)",
+   "closed_set_ci95": [
+    0.9110475909369747,
+    0.9543039840764677
+   ],
+   "n_closed": 500
+  },
+  "ensc": {
+   "closed_set": 0.928,
+   "open_set_fpr": 0.76,
+   "passes": false,
+   "note": "its own 'none' answer; unchanged",
+   "closed_set_ci95": [
+    0.9019315957497824,
+    0.9475419687129547
+   ],
+   "n_closed": 500
+  }
+ }
+}

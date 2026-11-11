@@ -19,6 +19,7 @@ verification score.
 Usage::
 
     python -m eval.open_set rescore   # -> data/benchmark/open_set.json
+    python -m eval.open_set rescore --part2   # BOM-75 -> data/benchmark/part2/open_set.json
 """
 
 from __future__ import annotations
@@ -65,6 +66,27 @@ def corrected(pos: list[float], neg: list[float | None], cfg: dict) -> dict:
             "open_set_fpr": float(np.mean(rates)), "tests": len(pairs)}  # fmt: skip
 
 
+def wilson(k: float, n: int, z: float = 1.959964) -> list[float] | None:
+    """95% Wilson score interval for k successes in n trials (Amendment 47)."""
+    if not n:
+        return None
+    p = k / n
+    d = 1 + z * z / n
+    c = (p + z * z / (2 * n)) / d
+    h = z * ((p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5) / d
+    return [max(0.0, c - h), min(1.0, c + h)]
+
+
+def with_intervals(row: dict, n_closed: int) -> dict:
+    """Amendment 47: every rate with its 95% Wilson interval (FPR over the paired tests)."""
+    out = dict(row)
+    out["closed_set_ci95"] = wilson(row["closed_set"] * n_closed, n_closed)
+    if row.get("open_set_fpr") is not None and row.get("tests"):
+        out["open_set_fpr_ci95"] = wilson(row["open_set_fpr"] * row["tests"], row["tests"])
+    out["n_closed"] = n_closed
+    return out
+
+
 def verdict(closed: float, pos: list, neg: list, cfg: dict, orig_seed: int) -> dict:
     bm = cfg["benchmark"]
     c = corrected(pos, neg, cfg)
@@ -75,10 +97,13 @@ def verdict(closed: float, pos: list, neg: list, cfg: dict, orig_seed: int) -> d
             and c["open_set_fpr"] <= bm["max_open_set_fpr"]}  # fmt: skip
 
 
-def rescore() -> int:
+def rescore(part2: bool = False) -> int:
+    """Part 1's files, or with ``part2`` BOM-75's seven-task results (``part2/benchmark.json``,
+    ``alm_*_p2.json``) with 95% Wilson intervals on every rate."""
     cfg = load_config()
     rows: dict[str, dict] = {}
-    b = json.loads((DIR / "benchmark.json").read_text())
+    src = DIR / "part2" if part2 else DIR
+    b = json.loads((src / "benchmark.json").read_text())
     recs = [r for rs in b["records"].values() for r in rs]
     closed = sum(r["general_imposters"] == r["author"] for r in recs) / len(recs)
     rows["general_imposters"] = verdict(closed, [r["gi_positive"] for r in recs],
@@ -88,7 +113,10 @@ def rescore() -> int:
         rows[name] = {"closed_set": b["verdict"][name]["closed_set"], "open_set_fpr": None,
                       "passes": None, "note": "no verification score (6.1)"}  # fmt: skip
     rows["ensc"] = {**b["verdict"]["ensc"], "note": "its own 'none' answer; unchanged"}
-    files = sorted(DIR.glob("alm_*.json")) + sorted(DIR.glob("style_embed*.json"))
+    n_gi = len(recs)
+    part1 = sorted(DIR.glob("alm_*.json")) + sorted(DIR.glob("style_embed*.json"))
+    files = sorted(DIR.glob("alm_*_p2.json")) if part2 else part1
+    sizes = {"general_imposters": n_gi}
     for f in files:
         d = json.loads(f.read_text())
         if not isinstance(d.get("records"), dict):  # alm_candidates_*: not benchmark trials
@@ -98,7 +126,10 @@ def rescore() -> int:
         rows[f.stem] = verdict(closed, [r["positive"] for r in recs],
                                [r["open_negative"] for r in recs], cfg,
                                derive_seed(cfg["alm"]["fold_seed"], cfg))  # fmt: skip
-    out = DIR / "open_set.json"
+        sizes[f.stem] = len(recs)
+    if part2:
+        rows = {k: with_intervals(v, sizes.get(k, n_gi)) for k, v in rows.items()}
+    out = src / "open_set.json"
     out.write_text(json.dumps({**stamp(), "methods": rows}, indent=1) + "\n")
     for k, v in rows.items():
         fpr, orig = v.get("open_set_fpr"), v.get("open_set_fpr_original")
@@ -112,8 +143,9 @@ def rescore() -> int:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("cmd", choices=["rescore"])
-    ap.parse_args(argv)
-    return rescore()
+    ap.add_argument("--part2", action="store_true", help="BOM-75: seven-task results, intervals")
+    a = ap.parse_args(argv)
+    return rescore(a.part2)
 
 
 if __name__ == "__main__":
