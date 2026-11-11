@@ -7,10 +7,17 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 ## Running
 
-Nothing. The Hugging Face upload of the Amendment 43/44/45 candidate weights (`python -m
-timelocked_lm.publish push --repo bom-authorship-candidate-models`; weights on the Mac and B2) was
-stopped on 2026-11-10 because the Mac's network loses 20-70% of packets even when idle; resume it
-once the connection is fixed, with uploads rate-limited.
+- **Hugging Face upload** of the candidate weights (tmux `hfpush`, log `logs/hf_candidates_push.log`):
+  resumed 2026-11-11 15:38 UTC after the network was fixed. 156 files / 149 GiB left (a43 pilot,
+  base, mid; a44; a45). Throttled to one upload stream (`HF_XET_FIXED_UPLOAD_CONCURRENCY=1`,
+  adaptive off) because full-speed uploads dropped remote control twice; measured 5.1 MB/s with 0%
+  loss, so about 9 hours. If it dies, rerun the same tmux command; the Hub skips what it holds.
+- **Network watchdog** (tmux `netguard`, `scripts/net_guard.sh`, log `logs/net_guard.log`): pauses
+  the upload while packet loss is over 10%, resumes when clean. Exits when the upload ends.
+- **Then:** `uv run python scripts/b2_prune_published.py` (dry run, check the count), then with
+  `--delete` (owner 2026-11-11: weights on Hugging Face are not needed in B2). Commit
+  `data/manifests/b2_published_on_hf.txt`, the HF manifest and `data/kjv_mask/js_time/`; update
+  `docs/backup.md`.
 
 ## Next, in order (owner, 2026-11-10: the paper first, written in full, before any Part 2 stage)
 
