@@ -27,7 +27,7 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
    Then the explainers and results docs to match, and the 46 pending review-response rows.
 2. **BOM-73 done** (closed): influence not supported; result in paper 10.1. Owner decisions pending:
    D3 (run the registered feature sets post hoc?), claim c09's re-grade, `docs/index.md` (asked).
-3. **BOM-37** release prep: **owner's go-ahead to publish**; Zenodo needs the owner's login.
+3. **BOM-37** release prep: **owner's go-ahead to publish**. No Zenodo deposit (owner, 2026-11-11).
 4. Blog post with the results (after the owner reads the paper).
 5. **Amendment 44/45 weights** (B2 `alm/a44`, 86.9 GiB, pushed from the pod, not on the Mac): check
    whether they are on Hugging Face; if not, stage and publish them like the others (keep and
@@ -36,6 +36,9 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
    **Stage 1 needs the owner's go** after reviewing Stage 0's results.
 
 ## Decided
+
+- **Main outputs are the paper and the blog** (owner, 2026-11-11); no Zenodo deposit. Everything
+  else stays public for replication; a tagged GitHub release still gets a DOI automatically.
 
 - **BOM-72 dropped** (owner, 2026-11-11): the discarded benchmark fine-tunes (main, V1, V2,
   imitation) are not rebuilt; no result depends on them and the transfers drop the owner's remote
