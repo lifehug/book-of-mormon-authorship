@@ -35,6 +35,9 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 6. **Part 2 Stage 0** (BOM-74 to BOM-77; milestone "Part 2 · Stage 0"): after the paper is written.
    **Stage 1 needs the owner's go** after reviewing Stage 0's results.
 
+Last, once the owner says the project is done: **BOM-87** (#98), clean up published Hugging Face
+repos to the base-and-candidate guideline (benchmark-finetunes weights, 146 GB; owner confirms first).
+
 ## Decided
 
 - **Hugging Face: base and candidate models only** (owner, 2026-11-11). Enough to replicate;
