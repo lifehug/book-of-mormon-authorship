@@ -597,6 +597,12 @@ part2_benchmark:
   genre_majority: 0.5             # strictly more than half of an author's eligible works
   exclude_genres: [newspaper_periodical, uncertain, other]
   seed: part2-benchmark
+  # correction 2026-11-11, after the first draw, before any scoring (Amendment 48, correction):
+  translation_title: translated from   # an author with such a title wrote in another language
+  dup_ngram: 5                    # a work repeating another by the same author (largest kept first) ...
+  dup_sample_mod: 8               # ... judged on a fixed 1-in-8 sample (CRC-32) of its 5-word sequences ...
+  dup_share: 0.15                 # ... is dropped when over 15% were seen (OCR noise: copies share 12-56%)
+  screen: data/benchmark/part2/screen.json   # AI screening of each drawn author, reasons recorded
   pools:                          # [imposter list, genre filter or null]; registered pairings
     fiction_narrative: [general_prose, fiction_narrative]
     legal_political: [history, null]
