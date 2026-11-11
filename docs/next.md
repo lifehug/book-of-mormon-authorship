@@ -33,9 +33,13 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
    whether they are on Hugging Face; if not, stage and publish them like the others (keep and
    publish every weight).
 6. **Part 2 Stage 0** (BOM-74 to BOM-77; milestone "Part 2 · Stage 0"): after the paper is written.
-   **Stage 1 needs the owner's go** after reviewing Stage 0's results. Later: BOM-72.
+   **Stage 1 needs the owner's go** after reviewing Stage 0's results.
 
 ## Decided
+
+- **BOM-72 dropped** (owner, 2026-11-11): the discarded benchmark fine-tunes (main, V1, V2,
+  imitation) are not rebuilt; no result depends on them and the transfers drop the owner's remote
+  connection. Rebuildable from the published base models, code and config.
 
 - **Every model size runs every model-based test**, reported side by side; no averaging across
   methods and no headline model; "best at X" judged on known answers only (owner, 2026-11-08/10).
