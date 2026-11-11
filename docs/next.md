@@ -14,10 +14,9 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
   loss, so about 9 hours. If it dies, rerun the same tmux command; the Hub skips what it holds.
 - **Network watchdog** (tmux `netguard`, `scripts/net_guard.sh`, log `logs/net_guard.log`): pauses
   the upload while packet loss is over 10%, resumes when clean. Exits when the upload ends.
-- **Then:** `uv run python scripts/b2_prune_published.py` (dry run, check the count), then with
-  `--delete` (owner 2026-11-11: weights on Hugging Face are not needed in B2). Commit
-  `data/manifests/b2_published_on_hf.txt`, the HF manifest and `data/kjv_mask/js_time/`; update
-  `docs/backup.md`.
+- **Then:** commit the HF manifest and `data/kjv_mask/js_time/`. **No B2 prune** (owner, 2026-11-11):
+  models stay in B2 and on the external drive until BOM-88 (#99) settles the final storage pattern
+  and the Hugging Face PRO question.
 
 ## Next, in order (owner, 2026-11-10: the paper first, written in full, before any Part 2 stage)
 
@@ -35,7 +34,8 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 6. **Part 2 Stage 0** (BOM-74 to BOM-77; milestone "Part 2 · Stage 0"): after the paper is written.
    **Stage 1 needs the owner's go** after reviewing Stage 0's results.
 
-Last, once the owner says the project is done: **BOM-87** (#98), clean up published Hugging Face
+Before done: **BOM-88** (#99), final storage pattern (corpus + index in B2; models on Hugging Face
+only; PRO decision). Then, last: **BOM-87** (#98), clean up published Hugging Face
 repos to the base-and-candidate guideline (benchmark-finetunes weights, 146 GB; owner confirms first).
 
 ## Decided
