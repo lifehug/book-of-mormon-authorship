@@ -588,6 +588,21 @@ part2:
   exclusion_min_decoy_recognition: 0.90   # BOM-76 cross-work rate needed before "not a match"
   placebo_primary_died_before: 1827-09-01 # BOM-76 primary group; secondary: born after 1830
 
+# BOM-75, Amendment 48 (2026-11-11, repo-recorded, before any draw or scoring): enlarged benchmark
+part2_benchmark:
+  genres: [fiction_narrative, legal_political, sermon_devotional, history_chronicle]
+  authors_per_genre: 4
+  min_author_words: 60000
+  max_author_words: 300000        # = alm.control_words
+  genre_majority: 0.5             # strictly more than half of an author's eligible works
+  exclude_genres: [newspaper_periodical, uncertain, other]
+  seed: part2-benchmark
+  pools:                          # [imposter list, genre filter or null]; registered pairings
+    fiction_narrative: [general_prose, fiction_narrative]
+    legal_political: [history, null]
+    sermon_devotional: [sermons_1820s, null]
+    history_chronicle: [history, null]
+
 pending_amendment: []
 
 # BOM-73, Amendment 46 (OSF revision 6af385f93ea373a2d2826e1a; post hoc: after unblinding; filed
