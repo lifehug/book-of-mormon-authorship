@@ -340,6 +340,10 @@ AI-simulated equivalent, labeled as such:
 No hypothesis, method, threshold, candidate, or data rule changes. The limit on review
 independence is stated in section 10.
 
+**Note, 2026-11-11 (owner):** amendments after 46 are no longer filed on OSF. They are recorded
+here and in `config/preregistered.yaml`, committed and pushed to GitHub before the results they
+govern exist; the commit timestamp is the record. Amendments 1-46 remain on OSF as filed.
+
 ## 12. Reporting commitments
 
 The paper reports every pre-registered hypothesis, every method's pass or fail, every

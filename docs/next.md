@@ -37,6 +37,9 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 ## Decided
 
+- **No more OSF filing** (owner, 2026-11-11). Amendments are recorded in the repo only
+  (preregistration.md section 11 + config, committed before the results they govern).
+
 - **Main outputs are the paper and the blog** (owner, 2026-11-11); no Zenodo deposit. Everything
   else stays public for replication; a tagged GitHub release still gets a DOI automatically.
 
