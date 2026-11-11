@@ -2809,8 +2809,67 @@ pushed straight from the GPU machine to our backup, and the ones already discard
 rebuilt and published (BOM-72). Second, the 590M version of the style encoder is training. It's
 slower than expected, so we unblind on Tuesday morning instead of Monday night.
 
+## Part 2, Stage 0: sharpen the ruler before buying a bigger model
+
+Part 1 ended with a clear limit. Our models are good at *ranking*: given a passage, they put the
+right author first 94-99% of the time. They're bad at saying *"none of these"*: at the biggest
+size, 22% of the time they still call a match for someone who didn't write the text. The
+registered bar was 5%. Nothing passed it. So "no match" can't yet be read as "not this person".
+
+The obvious next move is a bigger model. Stage 0 is everything I want done before paying for one
+(about $700 for Stage 1). The reason is simple: if the ruler is too coarse, a bigger model could
+improve and we'd never see it, or look better by luck and we'd believe it. Stage 0 fixes the
+ruler. It's about a week and roughly $65-100 of rented GPU. I moved it ahead of the paper rewrite
+on 2026-11-11, so the paper can report it.
+
+**BOM-74: write the pass mark before the exam.** Before anything runs, I write down what counts as
+success and what each result would mean. Success: false matches at or below 5% on the bigger
+benchmark, *and* the method still finds the real author often enough that a "no" means something.
+A method that never says "match" has 0% false matches and is useless. Each later stage gets a gate:
+go on only if false matches drop by a margin set now, with error bars that don't overlap. If a gate
+fails, we stop training bigger models and put the effort into data and methods instead. The point
+is that I can't move the goalposts after seeing results. That used to mean filing on OSF; since
+today it means a dated entry in the repo, committed before the run.
+
+**BOM-75: more test questions.** Part 1's benchmark had 110 held-out tests. That's too few to
+measure a small rate. A 22% false-match rate on 110 tests could really be anywhere from about 15%
+to 30%, and at that width you can't tell 9% from 5%, which is exactly the difference we care
+about. So: grow it to about 400 tests, picking the extra authors and tasks by a rule written first,
+with no Book of Mormon text anywhere in it. Then rescore every model size and the classical methods
+on it, and report every rate with its interval.
+
+**BOM-76: decoys and a placebo.** Two checks a (simulated) statistician raised. First, *cross-work
+decoys*: test each candidate's model on a *different* book by the same person than the one it
+learned from. That gives each candidate an honest recognition rate. A model that only recognizes
+the exact book it read isn't recognizing the person. Second, a *register placebo*: writers in a
+biblical or prophetic style who *could not* have written the Book of Mormon, scored exactly like
+the real candidates. The main group died before September 1827, before the plates were said to be
+obtained: people like Joanna Southcott (d. 1814), Richard Brothers (d. 1824) and William Blake
+(d. August 1827). A second group was born after 1830 and never saw the book (*Oahspe*, 1882; *The
+Aquarian Gospel*, 1908). It's reported separately, because later English differs. Each gets the same
+amount of text as Joseph Smith's revelations (3,039 tokens). Here's why that matters: if a man who
+died in 1824 ranks as close to the Book of Mormon as Joseph Smith's revelations do, then "ranked
+first" is measuring the *King James style*, not the *person*. That would change how the Part 1
+result reads, and I'd rather find out than assume.
+
+**BOM-77: more than one roll of the dice.** In Part 1, each candidate model was trained once. We
+learned the hard way that one run can mislead: the V2 method looked like our star at 13.6% false
+matches, and rerunning the same settings with other random seeds gave anywhere from 9% to 98%. So
+every candidate model gets several seeds at every size, and we report the spread, not one number.
+Where history gives us more of a candidate's writing, the samples get bigger too (more of Joseph
+Smith's own documents from BOM-73, Parley Pratt's *Millennial Star*, Sidney Rigdon's 1840
+*Appeal*). Small samples were a real problem in Part 1. Oliver Cowdery's 1829 sample shrank to 844
+tokens once its Book of Mormon quotations came out, too little for even one training step. And the
+two samples the models ranked first were the two smallest, which we had to check (Amendment 45).
+
+Practical notes. These new weights go from the rented machine straight to Hugging Face, not
+through the Mac, because big transfers knock out my remote connection. That makes Hugging Face the
+only copy, which is fine with me. After Stage 0 I look at the results and decide whether Stage 1,
+the bigger model, is worth it.
+
 ## Log
 
+- **2026-11-11 (later).** Started Part 2, Stage 0 (BOM-74 to BOM-77) ahead of the paper rewrite, so the paper can report it; topping up RunPod (balance $61.23, estimate ~$65, aiming for $75-100 of room). Why each piece exists is in "Part 2, Stage 0: sharpen the ruler before buying a bigger model" above: a pass mark written first, ~400 tests instead of 110 so a 5% rate can be measured, decoys and a placebo of writers who couldn't have written it, and several seeds per model.
 - **2026-11-11.** The network on the Mac came back, so the last 149 GB of candidate models went up to Hugging Face, one stream at a time this time: at full speed the uploads had been knocking out my remote connection. About 6 MB/s, no dropped packets. Once they're up, the same files come off the paid B2 backup, but only where Hugging Face's checksum matches ours byte for byte. I also dropped a plan to rebuild the benchmark models we threw away (BOM-72). Nothing in the paper depends on them: they were the test runs that measured how accurate the method is, and those numbers are already saved (98% right author, 22% false matches at the biggest size). Of the variants, V1 was just the main method with a bad setting, V2 swung from 9% to 98% false matches depending on the random seed, and V3 never trained anything. Anyone who wants the models can rebuild them from what's public. I also stopped two side jobs: filing every change of plan on OSF, and depositing a copy of the results on Zenodo. What I care about is the paper and this blog. Everything else is public on GitHub and Hugging Face, and every change of plan is still written down, dated, in the repo before the results it affects.
 - **2026-11-10 (later).** Did Joseph Smith's own writing drift toward the Book of Mormon's style after 1830? I filed the method first (Amendment 46), then measured 21 of his documents from 1833-44 against readers who followed him and against Methodist, Universalist and other religious papers of the same years (5,302 blocks of 2,000 words). His lines move *away* from the book's style, not toward it, on every measure. But his own handwriting survives in tiny amounts: two blocks. One wrong turn worth admitting: the significance test I'd written down can't work with one block per period, and it spat out a p of 0.0001 that means nothing. It's in the record, flagged, and I'm reading direction only. I also moved Alexander Campbell out of the 'never read it' group before measuring, because he reviewed the book in 1831.
 - **2026-11-10.** Unblinded. Paper rewritten on the new outline: scale first, ranking (which the models do well, 94-99%) kept apart from matching (which they don't yet, 22-47% false matches), the CES Letter's three books one by one (checked against the Letter itself: it names *View of the Hebrews*, *The Late War* and *The First Book of Napoleon*, not Spalding), then the candidates one by one. Found while building the per-person table: once its Book of Mormon quotations came out, Cowdery's 1829 sample is 844 tokens, too short for even one training step, so the candidate models can't score it; the paper says so. Part 2 split into staged milestones; only Stage 0 is committed, after the paper. The full results post waits until I've read the paper.

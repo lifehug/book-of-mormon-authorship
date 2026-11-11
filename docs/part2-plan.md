@@ -9,8 +9,10 @@ asks two questions, in stages, each with a gate fixed in advance:
 2. **Can we say confidently "not a match"** for a candidate (false matches at or below 5% on a
    larger benchmark, with enough sensitivity that a "no" means something)?
 
-**Commitment and order (owner, 2026-11-10).** Only Stage 0 is committed. The Part 1 paper is
-written in full first, so the owner can see end to end what each later stage would change. Stage 1
+**Commitment and order (owner, 2026-11-10; changed 2026-11-11).** Only Stage 0 is committed. On
+2026-11-11 the owner moved Stage 0 ahead of the paper rewrite (BOM-36), so the paper can report it;
+the reasoning for each Stage 0 item is in `paper/blog.md`, "Part 2, Stage 0". Weights from pods
+go straight to Hugging Face. Amendments are recorded in the repo, not on OSF. Stage 1
 starts only when the paper is fully written and the owner has reviewed Stage 0's results and said
 go; every later stage likewise needs the owner's go after its gate. Each stage is a GitHub
 milestone ("Part 2 · Stage 0" to "Stage 3") holding its issues.
