@@ -17,8 +17,11 @@ https://osf.io/6ugxc/ and changes only by dated amendment in its section 11.
 Transparent about everything. Mistakes are possible; what makes up for them is that everything
 can be checked and redone. The owner is not a scientist, so replicability is the guarantee:
 every result, script, table and model is public and rerunnable, a public good given away as
-fully as possible. Nothing is hidden. Models and every trained or fine-tuned weight are kept
-and published, never discarded to save disk or time. The only things held back are the corpus
+fully as possible. Nothing is hidden. **Published on Hugging Face: the base models and the
+candidate models** (owner, 2026-11-11). Those two are enough to replicate: the base models rebuild
+every other fine-tune for about $50-100 of GPU, and the candidate models let anyone check the
+Book of Mormon result with no restricted text and no training. Other fine-tunes (benchmark,
+seeds, variants) publish their scores, not their weights, unless the owner asks. The only things held back are the corpus
 texts we committed to keep private (see "Where data lives"), and for each of those we publish
 the exact steps to get the same access we had. When a choice trades openness for convenience,
 choose openness, or ask.

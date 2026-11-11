@@ -37,6 +37,9 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 ## Decided
 
+- **Hugging Face: base and candidate models only** (owner, 2026-11-11). Enough to replicate;
+  other fine-tunes (Stage 0 included) publish scores, not weights.
+
 - **No more OSF filing** (owner, 2026-11-11). Amendments are recorded in the repo only
   (preregistration.md section 11 + config, committed before the results they govern).
 
@@ -50,7 +53,7 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 - **Every model size runs every model-based test**, reported side by side; no averaging across
   methods and no headline model; "best at X" judged on known answers only (owner, 2026-11-08/10).
 - **Mask only Book of Mormon quotations** in candidate samples (Amendment 43).
-- **Publish every model**, fine-tunes included; private corpus text never (owner, 2026-11-09).
+- ~~Publish every model~~ superseded 2026-11-11: base and candidate models only; private corpus text never.
 - **Register placebo** (BOM-76): primary group died before September 1827; secondary group born
   after 1830 with no exposure, reported separately (owner, 2026-11-10).
 - **Part 2 order**: paper first; Stage 0 committed; Stage 1 only on the owner's go (2026-11-10).
