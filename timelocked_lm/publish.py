@@ -266,6 +266,30 @@ def _sha(p: Path) -> str:
     return h.hexdigest()
 
 
+def weight_parts(name: str) -> list[tuple[Path, str, bool]]:
+    """(folder, path in the repo, its own files only) for one repo: weight folders a sub-folder at
+    a time, never an ``inputs`` folder (corpus text)."""
+    parts: list[tuple[Path, str, bool]] = []
+    for src, dst in WEIGHTS.get(name, []):
+        sp = Path(src)
+        parts += [(p, f"{dst}/{p.name}", False) for p in sorted(sp.iterdir())
+                  if p.is_dir() and p.name != "inputs"]  # fmt: skip
+        if any(p.is_file() for p in sp.iterdir()):
+            parts.append((sp, dst, True))
+    return parts
+
+
+def weight_files(name: str) -> list[tuple[Path, str]]:
+    """(corpus file, path in the repo) for every weight file ``push`` uploads for one repo; also
+    the list ``scripts/b2_prune_published.py`` checks against the Hub."""
+    files: list[tuple[Path, str]] = []
+    for folder, dst, own in weight_parts(name):
+        found = folder.glob("*") if own else folder.rglob("*")
+        files += [(p, f"{dst}/{p.relative_to(folder)}") for p in sorted(found) if p.is_file()]
+    files += [(Path(src), dst) for src, dst in SINGLE.get(name, [])]
+    return files
+
+
 def push(token_file: Path, only: list[str] | None = None) -> int:
     """Upload each repo straight from where its files are (2026-11-09: hard links into the staging
     folder counted against the pod volume's quota as full copies)."""
@@ -283,20 +307,10 @@ def push(token_file: Path, only: list[str] | None = None) -> int:
             sd = torch.load(SINGLE[name][0][0], map_location="cpu", weights_only=True)
             sd = {k: v.contiguous() for k, v in sd.items() if k != "head.weight"}
             save_file(sd, repo_dir / "model.safetensors")
-        # (folder, path in the repo, its own files only): weight folders a sub-folder at a time
-        parts: list[tuple[Path, str, bool]] = []
-        for src, dst in WEIGHTS.get(name, []):
-            sp = Path(src)
-            parts += [(p, f"{dst}/{p.name}", False) for p in sorted(sp.iterdir())
-                      if p.is_dir() and p.name != "inputs"]  # fmt: skip
-            if any(p.is_file() for p in sp.iterdir()):
-                parts.append((sp, dst, True))
+        parts = weight_parts(name)
         files = [(p, str(p.relative_to(repo_dir))) for p in sorted(repo_dir.rglob("*"))
                  if p.is_file() and ".cache" not in p.parts]  # fmt: skip
-        for folder, dst, own in parts:
-            found = folder.glob("*") if own else folder.rglob("*")
-            files += [(p, f"{dst}/{p.relative_to(folder)}") for p in sorted(found) if p.is_file()]
-        files += [(Path(src), dst) for src, dst in SINGLE.get(name, [])]
+        files += weight_files(name)
         man = Path("data/manifests") / f"hf_{name}.jsonl"
         man.parent.mkdir(parents=True, exist_ok=True)
         with man.open("w") as f:
