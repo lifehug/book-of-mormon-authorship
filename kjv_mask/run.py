@@ -205,6 +205,28 @@ def _docs(group: str) -> list[dict]:
             )
             for p in sorted(CTRL_DIR.glob("*.txt"))
         ]
+    if group == "placebo":
+        # BOM-76 (Amendment 49): the register-placebo writers' texts, masked together as the
+        # candidates are, so a King James phrase is not read as a writer's own style
+        from ocr_fix.normalize import norm_path
+
+        pl = json.loads(Path("data/benchmark/part2/placebo.json").read_text())
+        want = sorted({w for v in pl["primary"].values() for w in v["works"]})
+        cat = {
+            r["work_id"]: r
+            for r in pq.read_table(
+                "data/catalog/catalog.parquet", columns=["work_id", "source", "text_path"]
+            ).to_pylist()
+            if r["work_id"] in set(want)
+        }
+        docs = []
+        for w in want:
+            path = norm_path(cat[w])
+            docs.append(_from_file(w, path, len(path.read_text(encoding="utf-8").split())))
+        for f in sorted(Path("data/benchmark/part2/texts").glob("*.txt")):
+            text = artifacts(f.read_text(encoding="utf-8", errors="replace"))[0]
+            docs.append(_in_memory(f"placebo:{f.stem}", text))
+        return docs
     raise SystemExit(f"unknown group {group}")
 
 

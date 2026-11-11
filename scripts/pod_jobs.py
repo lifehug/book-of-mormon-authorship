@@ -43,6 +43,9 @@ import style_pod as sp  # noqa: E402
 R = sp.R
 DONE = "/workspace/JOBS_DONE"
 OUTFILE = "/workspace/jobs.out"
+# KB/s for uploads from the Mac (owner, 2026-11-11: full-speed transfers dropped remote control
+# twice); about a third of the measured ~6 MB/s uplink
+BWLIMIT = 2000
 
 
 def configure(name: str) -> None:
@@ -154,8 +157,8 @@ def step(s: dict, a: argparse.Namespace) -> bool:
         lst = sp.STATE.parent / "files.txt"
         lst.write_text("\n".join(names) + "\n")
         sp.b2_prefetch(names)  # models from B2 first; rsync then skips or fixes them
-        rc, out = sp.pw.sh(["rsync", "-rtLR", "--no-o", "--no-g", f"--files-from={lst}", ".",
-                            f"{sp.SSH}:{R}/"], 7200)  # fmt: skip
+        rc, out = sp.pw.sh(["rsync", "-rtLR", "--no-o", "--no-g", f"--bwlimit={BWLIMIT}",
+                            f"--files-from={lst}", ".", f"{sp.SSH}:{R}/"], 14400)  # fmt: skip
         if rc != 0:
             sp.log(f"upload failed ({out[-200:]}); retrying")
             return True
