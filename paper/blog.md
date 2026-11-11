@@ -2862,13 +2862,52 @@ Smith's own documents from BOM-73, Parley Pratt's *Millennial Star*, Sidney Rigd
 tokens once its Book of Mormon quotations came out, too little for even one training step. And the
 two samples the models ranked first were the two smallest, which we had to check (Amendment 45).
 
-Practical notes. These new weights go from the rented machine straight to Hugging Face, not
-through the Mac, because big transfers knock out my remote connection. That makes Hugging Face the
-only copy, which is fine with me. After Stage 0 I look at the results and decide whether Stage 1,
-the bigger model, is worth it.
+Practical notes. The new seed and decoy models aren't kept at all: only their scores come home.
+Anyone can rebuild them from the published base models. After Stage 0 I look at the results and
+decide whether Stage 1, the bigger model, is worth it.
+
+## BOM-75's answer: on a test four times bigger, the false matches are worse, not better
+
+The bigger benchmark ran on all three model sizes. Each run was one rented GPU for 20 to 50
+minutes, about $7 in all. It has 430 tests: Part 1's three tasks (110 tests) plus four new ones
+(fiction, law and politics, sermons, history), each with four authors drawn by the rule written
+down beforehand. Here is every method, each with its 95% range:
+
+| Method | Right author | False matches |
+| --- | --- | --- |
+| Burrows' Delta | 0.930 (0.904-0.949) | can't say "none of these" |
+| Cosine Delta | 0.936 (0.911-0.954) | can't say "none of these" |
+| General Imposters | 0.798 (0.761-0.831) | 0.794 (0.756-0.827) |
+| ENSC | 0.928 (0.902-0.948) | 0.760 |
+| Model, 125M | 0.916 (0.886-0.939) | 0.751 (0.708-0.790) |
+| Model, 297M | 0.933 (0.905-0.953) | 0.674 (0.629-0.717) |
+| Model, 590M | 0.933 (0.905-0.953) | 0.635 (0.588-0.679) |
+
+The pass mark is at least 0.90 right and at most 0.05 false matches. Nothing comes close on the
+second number. Picking the right author from a list is the easy part, and every method does it
+about nine times in ten. Saying "none of these" when the real author isn't on the list is the hard
+part, and here the best method still matches a stranger nearly two times in three.
+
+That's a lot worse than Part 1 looked: the 590M had 22% false matches on its 110 tests. Two reasons,
+and I can't fully pull them apart. First, the new authors are harder. Four sermon writers of the
+same decade sound alike, and so do four historians. Second, the match threshold is set once across
+all seven tasks, so that 95% of true authors clear it (Amendment 25). Harder authors pull it down,
+which lets more strangers through on *every* task, including the old ones. The registered rule
+stays as written. The paper will show each task separately, so readers can see which is which.
+Sermons at 590M, for example, are at 39% false matches, and history at 71%.
+
+Bigger models do help. From 125M to 590M the false-match rate fell 0.12, and the two ranges don't
+overlap. But almost all of that came from the first step: 297M to 590M gained only 0.04, inside the
+noise. That number sets the bar for Stage 1. A bigger model has to get below about 0.59, with its
+range clear of 0.588 (Amendment 47's gate). Otherwise scaling stops and the effort goes into data
+and methods.
 
 ## Log
 
+- **2026-11-11 (evening).** BOM-75 done at every size, about $7 of GPU: on 430 tests the best model
+  (590M) matches strangers 63.5% of the time (58.8-67.9%), against 22% on Part 1's 110 tests. No
+  method passes, and 0.59 is now the bar a Stage 1 model must clear. BOM-76 and the seed runs
+  started straight after.
 - **2026-11-11 (later).** Started Part 2, Stage 0 (BOM-74 to BOM-77) ahead of the paper rewrite, so the paper can report it; topping up RunPod (balance $61.23, estimate ~$65, aiming for $75-100 of room). Why each piece exists is in "Part 2, Stage 0: sharpen the ruler before buying a bigger model" above: a pass mark written first, ~400 tests instead of 110 so a 5% rate can be measured, decoys and a placebo of writers who couldn't have written it, and several seeds per model.
 - **2026-11-11.** The network on the Mac came back, so the last 149 GB of candidate models went up to Hugging Face, one stream at a time this time: at full speed the uploads had been knocking out my remote connection. About 6 MB/s, no dropped packets. Once they're up, the same files come off the paid B2 backup, but only where Hugging Face's checksum matches ours byte for byte. I also dropped a plan to rebuild the benchmark models we threw away (BOM-72). Nothing in the paper depends on them: they were the test runs that measured how accurate the method is, and those numbers are already saved (98% right author, 22% false matches at the biggest size). Of the variants, V1 was just the main method with a bad setting, V2 swung from 9% to 98% false matches depending on the random seed, and V3 never trained anything. Anyone who wants the models can rebuild them from what's public. I also stopped two side jobs: filing every change of plan on OSF, and depositing a copy of the results on Zenodo. What I care about is the paper and this blog. Everything else is public on GitHub and Hugging Face, and every change of plan is still written down, dated, in the repo before the results it affects. And a simplification on models: Hugging Face keeps the three base models and the candidate models, nothing else new. With the base models, anyone can rebuild every other model we trained for about $50 of rented GPU (I checked the pod bills: the biggest benchmark run was $7.39). The candidate models are the exception worth keeping, because rebuilding them needs Joseph Smith Papers text that's copyrighted. With ours, anyone can check the main result using only the Book of Mormon itself.
 - **2026-11-10 (later).** Did Joseph Smith's own writing drift toward the Book of Mormon's style after 1830? I filed the method first (Amendment 46), then measured 21 of his documents from 1833-44 against readers who followed him and against Methodist, Universalist and other religious papers of the same years (5,302 blocks of 2,000 words). His lines move *away* from the book's style, not toward it, on every measure. But his own handwriting survives in tiny amounts: two blocks. One wrong turn worth admitting: the significance test I'd written down can't work with one block per period, and it spat out a p of 0.0001 that means nothing. It's in the record, flagged, and I'm reading direction only. I also moved Alexander Campbell out of the 'never read it' group before measuring, because he reviewed the book in 1831.
