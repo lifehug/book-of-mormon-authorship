@@ -2940,11 +2940,20 @@ revelations', "ranked first" is measuring register, not person.
 
 Jacob Ilive died in 1763. His *Book of Jasher* (1751) is a forgery that claims to be a lost book the
 Bible mentions, written in imitation King James English. At the two smaller sizes Joseph Smith's
-revelations still rank first, though Ilive closes in at 297M. At 590M, the size that sees style
-best, a man dead 64 years before the plates out-ranks them. So, by the rule we set ourselves,
-Part 1's ranking result gets a qualification at 590M: there, "closest to the Book of Mormon" is at
-least partly "most like a fake scripture in King James English". I'd much rather know this now
-than have a reviewer find it. The other five primary writers rank far lower (Southcott 13,
+revelations still rank first, though Ilive closes in at 297M. At 590M a man dead 64 years before
+the plates out-ranks them. So the rule we set ourselves is triggered at one size of three.
+
+I first wrote that 590M is "the size that sees style best". That's wrong, and it matters. On the
+known-answer test, 297M and 590M pick the right author equally often (93.3% each), and 125M is
+within the margin. The 590M is only better at saying "none of these", and even there it's clearly
+better than the 125M, not the 297M. So no size has earned more trust on the ranking question, and
+the sizes don't agree with each other on the Book of Mormon either. Joseph Smith's dictated sample
+ranks first on 12%, 75% and 52% of passages at the three sizes. And each placebo model was trained
+once, while the seed check below shows one training run can move these rankings a lot. The honest
+reading so far: at one size, in one run, a writer who couldn't be the author out-ranks Joseph
+Smith's revelations. That doesn't prove "ranked first" is just King James style. It does show the
+ranking is fragile. To find out whether it's more than one run's luck, the placebo is being rerun
+with five more seeds at every size (Amendment 51). The other five primary writers rank far lower (Southcott 13,
 Brothers 27). Two smaller notes. The text we used is an 1829 printing of Ilive's book. And the plan
 says a placebo writer who ranks high also gets the borrowing tests run on their book. Those had
 already been run, since the book was in every Part 1 search (see the log).
@@ -2968,6 +2977,15 @@ The two misses point in opposite directions. Joseph Smith at 590M was 88 of 168 
 original run, and the new seeds give 89 to 100. By the letter of the rule he isn't "seed-stable",
 but the original run slightly *under*-stated him. Phelps's 6% at 590M was a lucky seed: the new
 runs give him 0-2%.
+
+A catch I found the same evening, before spending money on the wrong fix. The seed only changes
+the *order* the training text is fed in. Joseph Smith's three samples are so small (about 3,000
+tokens) that each fits in one batch, so there is only one possible order. All five "new seeds" of
+his models came out identical to the original, to every decimal. So the seed ranges above for
+Joseph Smith say nothing about his own models. They only show the *other* models moving around
+him. The same goes for the placebo writers, who were given the same 3,000 tokens: rerunning them
+with new seeds would cost money and return the same numbers. For tiny samples, the real source of
+chance is *which* 3,000 tokens get picked, not the seed. That's the check worth running on Ilive.
 
 ## Log
 
