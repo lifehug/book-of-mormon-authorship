@@ -10,11 +10,15 @@ Amendment 22's held-out tails); within a set every pair of methods gets McNemar'
 tests one gets right and the other wrong. The published Book of Mormon attributions (BOM-22's
 replications) are listed beside our replications of them, as counts. Names and numbers only.
 
-``classic-tails`` runs the classical methods (Burrows and Cosine Delta, General Imposters, ENSC at
-the benchmark's calibrated shrinkage and alpha; registered settings, as ``eval.benchmark.run_task``)
-on Amendment 22's held-out tails, the very tests the fine-tuned language models are scored on:
-references are each author's training words, the tests its held-out windows in the same order, so
-``table`` pairs them with the language models test by test.
+``classic-tails [--part2]`` runs the classical methods (Burrows and Cosine Delta, General Imposters,
+ENSC at the benchmark's calibrated shrinkage and alpha; registered settings, as
+``eval.benchmark.run_task``) on Amendment 22's held-out tails, the very tests the fine-tuned
+language models are scored on: references are each author's training words, the tests its held-out
+windows in the same order, so ``table`` pairs them with the language models test by test. With
+``--part2`` (Amendment 52) the same is done on the enlarged benchmark's 430 held-out tails (BOM-75),
+the tests the ``alm_*_p2`` models took, and ``table`` adds the registered head-to-head: every size
+against every classical method, exact McNemar, Holm-corrected over those comparisons
+(``prior_work.head_to_head``).
 
 ``ablation`` (designed; run on a GPU) repeats Amendment 22's ALM pipeline with an off-the-shelf
 GPT-2 in place of the time-locked base, on the benchmark only: GPT-2 read modern web text, which
@@ -25,6 +29,7 @@ Usage::
 
     python -m eval.prior_work table                   # -> data/benchmark/prior_work.json
     python -m eval.prior_work classic-tails           # -> prior_work_classic_tails.json
+    python -m eval.prior_work classic-tails --part2   # -> prior_work_classic_tails_p2.json
     python -m eval.prior_work ablation gpt2|gpt2-medium [--micro-batch 8]
     python -m eval.prior_work files                   # the ablation's input files, for a pod
 """
@@ -43,6 +48,7 @@ from metadata.config import derive_seed, stamp
 from metadata.config import load as load_config
 
 DIR = Path("data/benchmark")
+P2_TAILS = "prior_work_classic_tails_p2.json"
 CLASSIC = ("burrows_delta", "cosine_delta", "general_imposters")
 REPLICATIONS = {  # file -> keys holding the published counts and ours
     "replication_jockers_data": ("published", "ours"),
@@ -59,11 +65,14 @@ def records() -> dict[str, tuple[str, dict[str, list[tuple[str, bool]]]]]:
     for m in CLASSIC:
         out[m] = ("trials", {t: [(r["author"], r[m] == r["author"]) for r in rs]
                              for t, rs in b["records"].items()})  # fmt: skip
-    ct = DIR / "prior_work_classic_tails.json"
-    if ct.exists():  # the classical methods on the language models' own tests
-        d = json.loads(ct.read_text())
-        for m in (*CLASSIC, "ensc"):
-            out[f"tails_{m}"] = ("tails", {t: [(r["author"], r[m] == r["author"]) for r in rs]
+    for ct, pre, tset in (
+        (DIR / "prior_work_classic_tails.json", "tails_", "tails"),
+        (DIR / P2_TAILS, "tails_p2_", "tails_p2"),
+    ):
+        if ct.exists():  # the classical methods on the language models' own tests
+            d = json.loads(ct.read_text())
+            for m in (*CLASSIC, "ensc"):
+                out[f"{pre}{m}"] = (tset, {t: [(r["author"], r[m] == r["author"]) for r in rs]
                                            for t, rs in d["records"].items()})  # fmt: skip
     for f in sorted(DIR.glob("alm_*.json")) + sorted(DIR.glob("style_embed*.json")):
         if not f.exists() or "candidates" in f.stem:
@@ -72,7 +81,8 @@ def records() -> dict[str, tuple[str, dict[str, list[tuple[str, bool]]]]]:
         if "records" not in d:
             continue
         tails = any("where" in r for rs in d["records"].values() for r in rs)
-        out[f.stem] = ("tails" if tails else "trials",
+        tset = ("tails_p2" if f.stem.endswith("_p2") else "tails") if tails else "trials"
+        out[f.stem] = (tset,
                        {t: [(r["author"], r["predicted"] == r["author"]) for r in rs]
                         for t, rs in d["records"].items()})  # fmt: skip
     return out
@@ -124,6 +134,44 @@ def by_size(rows: dict[str, dict]) -> dict[str, dict[str, dict]]:
     return {v: {z: out[v][z] for z in SIZES if z in out[v]} for v in sorted(out)}
 
 
+def head_to_head(recs: dict, cfg: dict) -> dict:
+    """Amendment 52: every time-locked size against every classical method on BOM-75's 430
+    held-out tails, exact McNemar (two-sided) on the tests only one got right, Holm-corrected over
+    all these comparisons. "better" / "worse" needs the Holm p under ``alpha`` and more wins on
+    that side; otherwise "no difference shown". Per task, the same counts, descriptive only."""
+    hh = cfg["prior_work"]["head_to_head"]
+    pairs = [(f"alm_{z}_p2", f"tails_p2_{m}") for z in SIZES for m in hh["methods"]]
+    pairs = [(a, b) for a, b in pairs if a in recs and b in recs]
+    if not pairs:
+        return {}
+    rows = []
+    for a, b in pairs:
+        ka, ca = _flat(recs[a][1])
+        kb, cb = _flat(recs[b][1])
+        if ka != kb:
+            raise SystemExit(f"{a} and {b} are not the same tests in the same order")
+        r = mcnemar(ca, cb)
+        tasks = {t: mcnemar(np.array([c for _, c in recs[a][1][t]], dtype=bool),
+                            np.array([c for _, c in recs[b][1][t]], dtype=bool))
+                 for t in sorted(recs[a][1])}  # fmt: skip
+        rows.append({"ours": a, "theirs": b.removeprefix("tails_p2_"), "tests": len(ca),
+                     "ours_right": int(ca.sum()), "theirs_right": int(cb.sum()),
+                     "ours_only": r["only_first"], "theirs_only": r["only_second"], "p": r["p"],
+                     "by_task": {t: {"ours_only": v["only_first"], "theirs_only": v["only_second"]}
+                                 for t, v in tasks.items()}})  # fmt: skip
+    order = sorted(range(len(rows)), key=lambda i: rows[i]["p"])  # Holm step-down
+    running = 0.0
+    for k, i in enumerate(order):
+        running = max(running, min(1.0, (len(rows) - k) * rows[i]["p"]))
+        rows[i]["p_holm"] = running
+    for r in rows:
+        sig = r["p_holm"] < hh["alpha"]
+        r["reading"] = ("no difference shown" if not sig or r["ours_only"] == r["theirs_only"]
+                        else "ours better" if r["ours_only"] > r["theirs_only"]
+                        else "theirs better")  # fmt: skip
+    return {"rule": "Amendment 52", "alpha": hh["alpha"], "correction": "holm", "comparisons": rows}
+
+
 def table() -> int:
     cfg = load_config()
     pw = cfg["prior_work"]
@@ -131,15 +179,17 @@ def table() -> int:
     open_set = json.loads((DIR / "open_set.json").read_text())["methods"]
     b = json.loads((DIR / "benchmark.json").read_text())
     rows = {}
-    ct = DIR / "prior_work_classic_tails.json"
+    ct, ct2 = DIR / "prior_work_classic_tails.json", DIR / P2_TAILS
     tails = json.loads(ct.read_text())["summary"] if ct.exists() else {}
+    tails_p2 = json.loads(ct2.read_text())["summary"] if ct2.exists() else {}
     for m, (tset, by_task) in recs.items():
         keys, c = _flat(by_task)
-        v = (
-            tails.get(m.removeprefix("tails_"), {})
-            if m.startswith("tails_")
-            else open_set.get(m, {})
-        )
+        if m.startswith("tails_p2_"):
+            v = tails_p2.get(m.removeprefix("tails_p2_"), {})
+        elif m.startswith("tails_"):
+            v = tails.get(m.removeprefix("tails_"), {})
+        else:
+            v = open_set.get(m, {})
         rows[m] = {"test_set": tset, "tests": len(c), "closed_set": float(c.mean()),
                    "closed_set_95": bootstrap(c, pw["bootstrap"],
                                               derive_seed(f"{pw['bootstrap_seed']}:{m}", cfg)),
@@ -167,9 +217,11 @@ def table() -> int:
             d = json.loads(p.read_text())
             published[f] = {"published": d.get(pk), "ours": d.get(ok)}
     doc = {**stamp(), "methods": rows, "by_size": by_size(rows), "paired": paired,
+           "head_to_head_p2": head_to_head(recs, cfg),
            "published_vs_ours": published,
            "sets": {"trials": "BOM-21's trials (classical, style embeddings, V3)",
-                    "tails": "Amendment 22's held-out tails (fine-tuned models)"}}  # fmt: skip
+                    "tails": "Amendment 22's held-out tails (fine-tuned models)",
+                    "tails_p2": "BOM-75's 430 held-out tails (Amendment 52)"}}  # fmt: skip
     out = DIR / "prior_work.json"
     out.write_text(json.dumps(doc, indent=1) + "\n")
     for m, r in sorted(rows.items(), key=lambda kv: (kv[1]["test_set"], kv[0])):
@@ -183,13 +235,17 @@ def table() -> int:
             f"{z} {r['closed_set']:.3f}/FPR {r['open_set_fpr'] or 0:.3f}" for z, r in sz.items()
         ]
         print(f"  {v:<8} " + "  ".join(cells))
+    for c in doc["head_to_head_p2"].get("comparisons", []):
+        print(f"  A52 {c['ours']} vs {c['theirs']}: {c['ours_only']}-{c['theirs_only']} "
+              f"p {c['p']:.4f} Holm {c['p_holm']:.4f} -> {c['reading']}")  # fmt: skip
     sig = {k: v for k, v in paired.items() if v["p"] < 0.05}
     print(f"{len(paired)} paired comparisons, {len(sig)} at p < 0.05 -> {out}")
     return 0
 
 
-def classic_tails() -> int:
-    """The classical methods on Amendment 22's held-out tails (see the module docstring)."""
+def classic_tails(part2: bool = False) -> int:
+    """The classical methods on Amendment 22's held-out tails, or with ``part2`` on BOM-75's
+    (Amendment 52; see the module docstring)."""
     import random
 
     from alm.benchmark import plan
@@ -202,20 +258,26 @@ def classic_tails() -> int:
 
     cfg = load_config()
     spec = json.loads(TASKS.read_text())
-    ens = json.loads((DIR / "benchmark.json").read_text())["ensc"]  # its calibrated settings
+    bench = DIR / "part2" / "benchmark.json" if part2 else DIR / "benchmark.json"
+    ens = json.loads(bench.read_text())["ensc"]  # its calibrated settings
     priors = classic_kwargs(cfg)["ensc"]["priors"]
-    rng = random.Random(derive_seed("bom68-classic-tails", cfg))
+    tag = "bom68-classic-tails" + ("-p2" if part2 else "")
+    rng = random.Random(derive_seed(tag, cfg))
     recs_by: dict[str, list[dict]] = {}
-    for name, tp in plan(cfg).items():
-        sp = spec[name]
+    for name, tp in plan(cfg, part2).items():
         task = {"authors": {a: blocks(tokenize(" ".join(w for ws in works for w in ws)))
                             for a, works in tp["train"].items()},
                 "tests": [(x["author"], tokenize(" ".join(x["words"])), None)
                           for x in tp["tests"]]}  # fmt: skip
-        pool = imposter_pool(sp["imposter_pool"], set(sp.get("exclude_from_pool", [])), cfg,
-                             sp.get("imposter_genre"), tuple(sp.get("exclude_authors_from_pool",
-                                                                    [])),
-                             sp.get("imposter_fill"))  # fmt: skip
+        if name.startswith("p2_"):  # Amendment 48's registered pairings, as eval.benchmark
+            pool_set, pool_genre = cfg["part2_benchmark"]["pools"][name.removeprefix("p2_")]
+            pool = imposter_pool(pool_set, set(), cfg, pool_genre, tuple(sorted(tp["train"])))
+        else:
+            sp = spec[name]
+            pool = imposter_pool(sp["imposter_pool"], set(sp.get("exclude_from_pool", [])), cfg,
+                                 sp.get("imposter_genre"),
+                                 tuple(sp.get("exclude_authors_from_pool", [])),
+                                 sp.get("imposter_fill"))  # fmt: skip
         out = []
         for x, r in zip(tp["tests"], run_task(task, pool, cfg, rng, progress=name), strict=True):
             closed = _ensc_predict(r, ens["shrinkage"], ens["alpha"], priors, None)
@@ -230,7 +292,7 @@ def classic_tails() -> int:
     recs = [r for rs in recs_by.values() for r in rs]
     n = len(recs)
     summary = {m: {"closed_set": sum(r[m] == r["author"] for r in recs) / n} for m in CLASSIC}
-    fold = derive_seed("bom68-classic-tails-gi-fold", cfg)
+    fold = derive_seed(f"{tag}-gi-fold", cfg)
     summary["general_imposters"] = verdict(summary["general_imposters"]["closed_set"],
                                            [r["gi_positive"] for r in recs],
                                            [r["gi_open_negative"] for r in recs], cfg,
@@ -241,7 +303,7 @@ def classic_tails() -> int:
                        "passes": (sum(r["ensc"] == r["author"] for r in recs) / n
                                   >= cfg["benchmark"]["pass_closed_set"]
                                   and fm <= cfg["benchmark"]["max_open_set_fpr"])}  # fmt: skip
-    path = DIR / "prior_work_classic_tails.json"
+    path = DIR / (P2_TAILS if part2 else "prior_work_classic_tails.json")
     path.write_text(json.dumps({**stamp(), "tests": n, "ensc_settings": {
         "shrinkage": ens["shrinkage"], "alpha": ens["alpha"]}, "summary": summary,
         "records": recs_by}, indent=1) + "\n")  # fmt: skip
@@ -360,8 +422,10 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("cmd", choices=["table", "classic-tails", "ablation", "files"])
     ap.add_argument("model", nargs="?", default="gpt2")
     ap.add_argument("--micro-batch", type=int, default=8, help="memory only; same update")
+    ap.add_argument("--part2", action="store_true", help="classic-tails on BOM-75's tests")
     a = ap.parse_args(argv)
-    return {"table": table, "classic-tails": classic_tails, "files": ablation_files,
+    return {"table": table, "classic-tails": lambda: classic_tails(a.part2),
+            "files": ablation_files,
             "ablation": lambda: ablation(a.model, a.micro_batch)}[a.cmd]()  # fmt: skip
 
 

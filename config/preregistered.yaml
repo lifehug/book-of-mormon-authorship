@@ -570,6 +570,9 @@ prior_work:
   bootstrap_seed: bom68-boot
   gpt2_models: [gpt2, gpt2-medium]
   gpt2_revision: main   # pin to the resolved commit at first download
+  head_to_head:         # Amendment 52 (post hoc, before the run): BOM-75's 430 tests, paired
+    methods: [burrows_delta, cosine_delta, general_imposters, ensc]
+    alpha: 0.05         # Holm-corrected over every size x method comparison, two-sided McNemar
 
 review:
   # BOM-38 (docs/simulated-review-plan.md): simulated peer review, labelled SIMULATED
