@@ -25,6 +25,7 @@ Usage::
     python -m eval.part2_decoys plan                     # Mac: folds, placebo slices, inputs
     python -m eval.part2_decoys lowo pilot|base|mid      # GPU: fold models; every rival scores
     python -m eval.part2_decoys placebo pilot|base|mid   # GPU: placebo slices on the sealed set
+    python -m eval.part2_decoys placebo-slices pilot|base|mid  # GPU: Amendment 51's slice grid
     python -m eval.part2_decoys report                   # Mac, after both: data/benchmark/part2/
 """
 
@@ -260,15 +261,66 @@ def placebo(size: str, micro: int) -> int:
     return 0
 
 
+def placebo_slices(size: str, micro: int) -> int:
+    """Amendment 51: each placebo writer fine-tuned on up to ``part2.placebo_slices_max``
+    non-overlapping slices of the revelation sample's length, evenly spread through the writer's
+    text, scored on the sealed set (one model per slice)."""
+    import torch
+
+    from alm.benchmark import finetune, window_loss
+    from alm.candidates import PLAN as A43_PLAN
+    from eval.js_register import REVELATION, _rows
+
+    cfg, dev, model, state, tok = _setup(size)
+    a = cfg["alm"]
+    n = next(u for u in json.loads(A43_PLAN.read_text())["units"]
+             if u["key"] == REVELATION)["train_tokens"]  # fmt: skip
+    rows = sorted(_rows(), key=lambda r: r["id"])
+    texts = [tok.encode(r["text"]).ids for r in rows]
+    with torch.no_grad():
+        base = [window_loss(model, x, a["score_window"], dev) for x in texts]
+    out = BLIND / f"placebo_slices_{size}.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    res = json.loads(out.read_text()) if out.exists() else {"tokens": n, "models": {}}
+    for key in sorted(json.loads(PLAN.read_text())["placebo"]):
+        ids = np.load(INPUTS / f"{key}.npz")["train"]
+        for j, start in enumerate(slice_starts(len(ids), n, cfg["part2"]["placebo_slices_max"])):
+            name = f"{key}#grid{j}"
+            if name in res["models"]:
+                continue
+            model.load_state_dict(state)
+            seed = derive_seed(f"{a['train_seed']}:part2-placebo-slices:{name}", cfg)
+            torch.manual_seed(seed)
+            finetune(model, ids[start : start + n], cfg, seed, micro, dev,
+                     cfg["timelocked_lm"]["finetune_lr"])  # fmt: skip
+            with torch.no_grad():
+                loss = [window_loss(model, x, a["score_window"], dev) for x in texts]
+            res["models"][name] = {"start": start, "scores": {
+                r["id"]: float(np.mean(np.array(loss[i]) - np.array(base[i])))
+                for i, r in enumerate(rows)}}  # fmt: skip
+            out.write_text(json.dumps(res))
+            print(f"  placebo slices {size} {name}: start {start}", flush=True)
+    return 0
+
+
+def slice_starts(total: int, n: int, cap: int) -> list[int]:
+    """Up to ``cap`` non-overlapping ``n``-token slices evenly spread over ``total`` tokens."""
+    k = min(cap, total // n)
+    if k <= 1:
+        return [0] if k == 1 else []
+    return [round(i * (total - n) / (k - 1)) for i in range(k)]
+
+
 def report() -> int:
     """Cross-work recognition per candidate; placebo writers' ranks against the revelation
     model on the Book of Mormon chunks."""
-    from eval.js_register import A43, KEY, REVELATION
-    from eval.js_register import OUT as A44
+    from eval.js_register import KEY
     from eval.open_set import wilson
 
     p = json.loads(PLAN.read_text())
-    res: dict = {"cross_work": {}, "placebo": {}, "untestable": p["untestable"]}
+    cfg = load_config()
+    res: dict = {"cross_work": {}, "placebo": {}, "placebo_slices": {},
+                 "untestable": p["untestable"]}  # fmt: skip
     for size in ("pilot", "base", "mid"):
         f = BLIND / f"lowo_{size}.json"
         if not f.exists():
@@ -289,33 +341,15 @@ def report() -> int:
     key = json.loads(KEY.read_text())
     bom = [i for i, k in key.items() if k["kind"] == "bom"]
     for size in ("pilot", "base", "mid"):
-        fp, fd = BLIND / f"placebo_{size}.json", A44.parent / "a45" / f"dose_{size}.json"
+        fp, fd = BLIND / f"placebo_{size}.json", A45 / f"dose_{size}.json"
         if not (fp.exists() and fd.exists()):
             continue
-        pm = json.loads(fp.read_text())["models"]
-        dm = json.loads(fd.read_text())["models"]
-        rev = json.loads((A43 / "outputs" / f"alm_{size}.json").read_text())["scores"]["ids"]
-        models = {**{m: v["scores"] for m, v in dm.items()},
-                  **{m: v["scores"] for m, v in pm.items()}}  # fmt: skip
-        ranks: dict[str, list[float]] = defaultdict(list)
-        for i in bom:
-            s = {m: v[i] for m, v in models.items()}
-            s["revelation"] = rev[i]["scores"][REVELATION]
-            order = sorted(s, key=s.get)
-            pos = {m: order.index(m) + 1 for m in order}
-            by: dict[str, list[int]] = defaultdict(list)
-            for m, r in pos.items():
-                by[m.split("#")[0]].append(r)
-            for who, rs in by.items():
-                ranks[who].append(float(np.mean(rs)))
-        med = {who: float(np.median(v)) for who, v in ranks.items()}
-        rv = med["revelation"]
-        prim = {w: m for w, m in med.items() if w.startswith("placebo__primary")}
-        res["placebo"][size] = {
-            "models_ranked": len(models) + 1, "chunks": len(bom), "median_rank": med,
-            "revelation_median_rank": rv,
-            "primary_at_or_better_than_revelation": sorted(w for w, m in prim.items() if m <= rv),
-            "register_reading_triggered": any(m <= rv for m in prim.values())}  # fmt: skip
+        pm = {m: v["scores"] for m, v in json.loads(fp.read_text())["models"].items()}
+        res["placebo"][size] = _placebo_ranks({**_dose(size), **pm}, _revelation(size, bom), bom)
+    for size in ("pilot", "base", "mid"):
+        fsl = BLIND / f"placebo_slices_{size}.json"
+        if fsl.exists() and size in res["placebo"]:
+            res["placebo_slices"][size] = _slices(size, fsl, bom, cfg)
     (OUT / "decoys_report.json").write_text(json.dumps({**stamp(), **res}, indent=1) + "\n")
     for size, v in res["cross_work"].items():
         print(f"{size} cross-work: " + "; ".join(f"{w} {x['recognised']}/{x['windows']}"
@@ -324,12 +358,82 @@ def report() -> int:
         print(f"{size} placebo: revelation median rank {v['revelation_median_rank']:.1f} of "
               f"{v['models_ranked']}; primary at or above it: "
               f"{v['primary_at_or_better_than_revelation']}")  # fmt: skip
+    for size, v in res["placebo_slices"].items():
+        print(f"{size} placebo slices: " + "; ".join(
+            f"{w.split('__')[-1]} {x['at_or_better']}/{x['slices']}"
+            for w, x in v["writers"].items()) + f"; register reading slice-stable "
+            f"{v['register_reading_slice_stable']}")  # fmt: skip
     return 0
+
+
+A45 = Path("data/blind/a45")
+
+
+def _dose(size: str) -> dict:
+    return {m: v["scores"] for m, v in
+            json.loads((A45 / f"dose_{size}.json").read_text())["models"].items()}  # fmt: skip
+
+
+def _revelation(size: str, bom: list[str]) -> dict:
+    from eval.js_register import A43, REVELATION
+
+    rev = json.loads((A43 / "outputs" / f"alm_{size}.json").read_text())["scores"]["ids"]
+    return {i: rev[i]["scores"][REVELATION] for i in bom}
+
+
+def _placebo_ranks(models: dict, rev: dict, bom: list[str]) -> dict:
+    """Median rank over Book of Mormon chunks of each writer among ``models`` and the revelation
+    model (a writer's several models averaged per chunk); Amendment 47's placebo rule."""
+    ranks: dict[str, list[float]] = defaultdict(list)
+    for i in bom:
+        s = {m: v[i] for m, v in models.items()}
+        s["revelation"] = rev[i]
+        order = sorted(s, key=s.get)
+        by: dict[str, list[int]] = defaultdict(list)
+        for r, m in enumerate(order, 1):
+            by[m.split("#")[0]].append(r)
+        for who, rs in by.items():
+            ranks[who].append(float(np.mean(rs)))
+    med = {who: float(np.median(v)) for who, v in ranks.items()}
+    rv = med["revelation"]
+    prim = {w: m for w, m in med.items() if w.startswith("placebo__primary")}
+    return {"models_ranked": len(models) + 1, "chunks": len(bom), "median_rank": med,
+            "revelation_median_rank": rv,
+            "primary_at_or_better_than_revelation": sorted(w for w, m in prim.items() if m <= rv),
+            "register_reading_triggered": any(m <= rv for m in prim.values())}  # fmt: skip
+
+
+def _slices(size: str, f: Path, bom: list[str], cfg: dict) -> dict:
+    """Amendment 51: for each placebo writer and each of its grid slices, the writer's original
+    models are replaced by that one slice model (the rest of the BOM-76 pool unchanged) and the
+    writer's median rank is compared with the revelation model's."""
+    pm = {m: v["scores"] for m, v in
+          json.loads((BLIND / f"placebo_{size}.json").read_text())["models"].items()}  # fmt: skip
+    sm = json.loads(f.read_text())["models"]
+    dose, rev = _dose(size), _revelation(size, bom)
+    writers: dict[str, dict] = {}
+    for w in sorted({m.split("#")[0] for m in sm}):
+        rest = {m: v for m, v in pm.items() if m.split("#")[0] != w}
+        per = []
+        for m in sorted((m for m in sm if m.split("#")[0] == w), key=lambda x: sm[x]["start"]):
+            r = _placebo_ranks({**dose, **rest, m: sm[m]["scores"]}, rev, bom)
+            per.append({"start": sm[m]["start"], "median_rank": r["median_rank"][w],
+                        "revelation_median_rank": r["revelation_median_rank"]})  # fmt: skip
+        k = sum(x["median_rank"] <= x["revelation_median_rank"] for x in per)
+        writers[w] = {"slices": len(per), "at_or_better": k, "share": k / len(per) if per else None,
+                      "median_rank_range": [min(x["median_rank"] for x in per),
+                                            max(x["median_rank"] for x in per)],
+                      "per_slice": per}  # fmt: skip
+    maj = cfg["part2"]["placebo_slice_majority"]
+    prim = {w: x for w, x in writers.items() if w.startswith("placebo__primary")}
+    stable = sorted(w for w, x in prim.items() if x["share"] is not None and x["share"] > maj)
+    return {"writers": writers, "primary_slice_stable": stable,
+            "register_reading_slice_stable": bool(stable)}  # fmt: skip
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["plan", "lowo", "placebo", "report"])
+    ap.add_argument("cmd", choices=["plan", "lowo", "placebo", "placebo-slices", "report"])
     ap.add_argument("size", nargs="?", choices=["pilot", "base", "mid"])
     ap.add_argument("--micro-batch", type=int, default=8)
     a = ap.parse_args(argv)
@@ -338,8 +442,9 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "report":
         return report()
     if not a.size:
-        ap.error("lowo and placebo need a size")
-    return (lowo if a.cmd == "lowo" else placebo)(a.size, a.micro_batch)
+        ap.error(f"{a.cmd} needs a size")
+    run = {"lowo": lowo, "placebo": placebo, "placebo-slices": placebo_slices}[a.cmd]
+    return run(a.size, a.micro_batch)
 
 
 if __name__ == "__main__":

@@ -587,6 +587,9 @@ part2:
   seeds_per_candidate: 5          # BOM-77, every size (as Amendment 42's V2 reruns)
   exclusion_min_decoy_recognition: 0.90   # BOM-76 cross-work rate needed before "not a match"
   placebo_primary_died_before: 1827-09-01 # BOM-76 primary group; secondary: born after 1830
+  placebo_slices_max: 12          # Amendment 51 (post hoc): slices per placebo writer, evenly spread
+  placebo_slice_majority: 0.5     # ... register reading slice-stable at a size if a primary writer
+                                  # is at or above the revelation model on more than half its slices
 
 # BOM-75, Amendment 48 (2026-11-11, repo-recorded, before any draw or scoring): enlarged benchmark
 part2_benchmark:
