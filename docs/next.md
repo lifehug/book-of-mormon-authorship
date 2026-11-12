@@ -11,8 +11,9 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
   (590M false matches 0.635 [0.588, 0.679]; no method passes), BOM-76 closed (only Ethan Smith
   recognized across works; register rule triggered at 590M by Jacob Ilive), BOM-77 seeds done.
   The Hugging Face upload finished (BOM-72/73, 8e64552).
-- **Owner decisions:** BOM-77's larger samples (build or skip); borrowing tests on Ilive's *Book of
-  Jasher* (the plan's trigger for a high-ranking placebo writer); Stage 1 go/no-go (bar: 0.585).
+- **Skipped (owner, 2026-11-11: "skip if not needed"):** BOM-77's larger samples (BOM-77 closed),
+  borrowing tests on Ilive's *Book of Jasher*, and Stage 1 (BOM-78 on, unless the owner reopens it).
+  Next: BOM-36, the paper.
 - **Then:** commit the HF manifest and `data/kjv_mask/js_time/`.
 
 ## Next, in order (owner, 2026-11-10: the paper first, written in full, before any Part 2 stage)

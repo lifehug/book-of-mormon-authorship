@@ -2971,6 +2971,10 @@ runs give him 0-2%.
 
 ## Log
 
+- **2026-11-11 (late).** Stopping Part 2 here. No larger samples, since the seeds already show the
+  ranking is stable. No borrowing tests on Ilive's *Jasher*, since they wouldn't change how the
+  590M result reads. And no 1.3B model: going from 297M to 590M only gained 0.04, and a bigger
+  model would need to get below 0.585. Next is the paper.
 - **2026-11-11 (night).** BOM-76 and the BOM-77 seeds done at all three sizes, about $10.50.
   Only Ethan Smith is recognized in a different book (96-100%); Cowdery, Rigdon and Phelps almost
   never. At 590M Jacob Ilive's 1751 *Book of Jasher* out-ranks Joseph Smith's revelations (median
