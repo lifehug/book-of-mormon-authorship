@@ -3145,15 +3145,18 @@ held apart from everything the method learns from. That's the harder exam, and i
 sides took here. On the three tasks the two exams share, the older methods gave exactly the answers
 they gave on the 110 tests, so the code didn't change underneath them.
 
-Two things this doesn't change. The separate imitation test, where authors who wrote both plain
-prose and fake scripture are tested across the two, still goes the other way (word counting 13 of
-18, our 297M 7 of 17). And no method, ours included, can yet say "none of these" reliably. So the
-claim is exactly this: at picking the right author from a list, on 430 tests that no method had
+Two things this doesn't settle. The separate imitation test, where authors who wrote both plain
+prose and fake scripture are tested across the two, is too small to say anything. I first wrote
+that it goes the other way (word counting 13 of 18 passages, our 297M 7 of 17). But those passages
+come from just three authors, and Burrows' lead is almost all one of them, Richard Snowden. Counted
+by author, Burrows gets 1 of 3 right and our 297M 2 of 3. Three authors can't decide anything, so
+we're looking for more writers who wrote both kinds. And no method, ours included, can yet say
+"none of these" reliably. So the claim is exactly this: at picking the right author from a list, on 430 tests that no method had
 seen, our period-trained models are better than every older method we tested, at every size.
 
 ## Log
 
-- **2026-11-12.** Amendment 52: the four older methods run on the same 430 tests our models took. Every one of the twelve head-to-heads goes our way (297M against Burrows 59-9, against ENSC 77-3; corrected p < 0.0001), so "ties with the best older methods" becomes "better than every older method we tested at picking the author from a list". The imitation test still goes the other way. Details in "Settling the 4-0".
+- **2026-11-12.** Amendment 52: the four older methods run on the same 430 tests our models took. Every one of the twelve head-to-heads goes our way (297M against Burrows 59-9, against ENSC 77-3; corrected p < 0.0001), so "ties with the best older methods" becomes "better than every older method we tested at picking the author from a list". The imitation test is too small to say anything (three authors; by author, Burrows 1 of 3, our 297M 2 of 3), so I'm looking for more authors who wrote both plain prose and fake scripture. Details in "Settling the 4-0".
 - **2026-11-11 (late, 3).** Amendment 51's slices done at all three sizes, about $4. At 125M and 297M no placebo slice reaches Joseph Smith's revelations (0 of 67 primary slices at each size). At 590M Jacob Ilive beats or ties them on 8 of 12 slices, and Levi Dowling, born 1844, on 9 of 12, so the "it's the King James style" reading is solid at 590M only. The revelation side is one fixed model and can't be resampled. Details in "Twelve slices of Ilive".
 - **2026-11-11 (late, 2).** BOM-68: our models against every earlier method, head to head on the same
   tests. On Part 1's 110 tests, ranking ties the best old tool (297M 99.1% vs Burrows 95.5%, p =
