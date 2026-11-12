@@ -42,6 +42,7 @@ Usage::
     python -m kjv_mask.run known_answer              # BOM-61's known-answer texts
     python -m kjv_mask.run italics                   # BOM-62's independent translations
     python -m kjv_mask.run js_time                   # BOM-73 (Joseph Smith 1833-44, comparisons)
+    python -m kjv_mask.run js_later                  # Amendment 54 (his 1830-34 revelations)
 """
 
 from __future__ import annotations
@@ -227,6 +228,12 @@ def _docs(group: str) -> list[dict]:
             text = artifacts(f.read_text(encoding="utf-8", errors="replace"))[0]
             docs.append(_in_memory(f"placebo:{f.stem}", text))
         return docs
+    if group == "js_later":
+        # Amendment 54: Joseph Smith's 1830-34 revelations (eval.js_later sections), masked as the
+        # candidates are
+        from eval.js_later import docs
+
+        return docs()
     raise SystemExit(f"unknown group {group}")
 
 
