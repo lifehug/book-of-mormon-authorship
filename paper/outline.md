@@ -62,9 +62,13 @@ the candidates" study's error swings 80% to 0% with sample length).
 - **5.2 Period training matters:** GPT-2 86-92% false matches against ours 22-47%.
 - **5.3 Writing in biblical style:** the imitation test is three authors (by author Burrows 1 of 3,
   297M 2 of 3; by passage 13/18 vs 7/17), too small either way; the 430 exam's pseudo-biblical
-  task 2-0 on 24 tests. **\*TBD: a bigger imitation test**: search every 1700-1830 author who
-  wrote both imitation scripture and ordinary prose; if enough, a head-to-head scored by author
-  (amendment first), older methods on the Mac, our sizes on a GPU.
+  task 2-0 on 24 tests. The ceiling is real: the corpus-wide curation (1,349 works judged, BOM-54)
+  finds 18 imitation-scripture works by about 10 authors, of whom only 3 left enough other prose;
+  outside 1780-1830 most imitation scripture is anonymous satire. **\*TBD (proposed, owner to
+  decide): a register-shift test**: train on an author's ordinary prose, identify their sermons;
+  553 authors have 5+ works of each (1,051 with 3+); scored by author, head to head as Amendment
+  52; amendment first; older methods on the Mac, our sizes on a GPU (about $10-20, confirmed
+  first). The 3-author true-imitation test stays as an exploratory pointer.
 - **5.4 "None of these":** no method passes; 63-75% false matches on 430 tests. Why the opening
   statement is limited; said here once.
 - **5.5 Model size:** sizes tie on picking the author; bigger is better only at "none of these",
