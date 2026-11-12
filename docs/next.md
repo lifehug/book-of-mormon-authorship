@@ -7,19 +7,12 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 ## Running
 
-- **Hugging Face upload** of the candidate weights (tmux `hfpush`, log `logs/hf_candidates_push.log`),
-  one stream (~6 MB/s), with `scripts/net_guard.sh` (tmux `netguard`) pausing it on packet loss.
-  If it dies, rerun the same tmux command; the Hub skips what it holds. No B2 prune (BOM-88).
-- **Stage 0 chain 1** (tmux `stage0`, `scripts/stage0_chain.sh`, log `logs/stage0_chain.log`):
-  waits for the upload to end and a clean network, then BOM-75's language-model runs, pilot, base,
-  mid (`alm_pod.py --part2`, caps $10/$15/$30). Then `python -m eval.open_set rescore --part2`.
-- **Stage 0 chain 2** (tmux `stage0b`, `scripts/stage0_chain2.sh`): after chain 1, one pod per size
-  for BOM-76 (`eval.part2_decoys lowo`, `placebo`) and BOM-77's seeds (`eval.part2_seeds run`), caps
-  $15/$25/$45. Then `python -m eval.part2_decoys report` and `python -m eval.part2_seeds report`.
-  Each pod waits for the RunPod balance to cover its cap + $5 (owner is topping up).
-- **Done without GPU:** BOM-74 (Amendment 47); BOM-75's draw (Amendment 48, 16 authors, 430 tests)
-  and classical scores (General Imposters false matches 0.794 [0.756, 0.827]).
-- **Not started:** BOM-77's larger samples (needs source text and attribution decisions; ask).
+- **Nothing on GPU.** Stage 0's GPU work is done (2026-11-11, about $17.50 in all): BOM-75 closed
+  (590M false matches 0.635 [0.588, 0.679]; no method passes), BOM-76 closed (only Ethan Smith
+  recognized across works; register rule triggered at 590M by Jacob Ilive), BOM-77 seeds done.
+  The Hugging Face upload finished (BOM-72/73, 8e64552).
+- **Owner decisions:** BOM-77's larger samples (build or skip); borrowing tests on Ilive's *Book of
+  Jasher* (the plan's trigger for a high-ranking placebo writer); Stage 1 go/no-go (bar: 0.585).
 - **Then:** commit the HF manifest and `data/kjv_mask/js_time/`.
 
 ## Next, in order (owner, 2026-11-10: the paper first, written in full, before any Part 2 stage)
