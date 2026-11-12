@@ -2902,8 +2902,81 @@ noise. That number sets the bar for Stage 1. A bigger model has to get below abo
 range clear of 0.588 (Amendment 47's gate). Otherwise scaling stops and the effort goes into data
 and methods.
 
+
+## BOM-76 and BOM-77's answers: the models can't vouch for most candidates, and at the biggest size a 1751 forgery out-ranks Joseph Smith
+
+Three more pods, one per size, about $10.50 in all ($1.30, $3.34, $5.79). Each did three jobs: the
+cross-work decoys, the register placebo, and five fresh seeds of every Part 1 candidate model.
+
+**Can a model recognize the same person in a different book?** Each candidate's model trained on
+one of their works and was tested on passages from another. A rate under 90% means "no match"
+can't rule that person out.
+
+| Candidate | 125M | 297M | 590M |
+| --- | --- | --- | --- |
+| Ethan Smith | 77/77 | 77/77 | 74/77 |
+| Parley Pratt | 45/52 | 36/52 | 27/52 |
+| Oliver Cowdery | 2/22 | 5/22 | 2/22 |
+| Sidney Rigdon | 0/12 | 0/12 | 0/12 |
+| W. W. Phelps | 0/20 | 0/20 | 0/20 |
+
+Only Ethan Smith clears 90%, at every size. For the others the models learned a book, not a
+person. So in the paper, Part 1's "no match" for Cowdery, Rigdon, Phelps and Pratt reads "not
+excluded". It can't read "not him". (Under Amendment 47 nobody can be called "not a match" yet
+anyway, because no method passed BOM-75. This says that even a method that did pass wouldn't be
+enough for four of the five.)
+
+**Is "ranked first" just the King James style?** Six writers who died before September 1827, and
+so couldn't have written the Book of Mormon, were trained with exactly as much text as Joseph
+Smith's revelations (3,039 tokens) and ranked on the 168 sealed chunks against 35 models. The
+rule, written down before any scoring: if any of them has a median rank at or better than the
+revelations', "ranked first" is measuring register, not person.
+
+| Size | Revelations' median rank | Best placebo writer | Rule triggered? |
+| --- | --- | --- | --- |
+| 125M | 1 | Jacob Ilive, 5 | no |
+| 297M | 1 | Jacob Ilive, 2.5 | no |
+| 590M | 4 | Jacob Ilive, 1.5 | **yes** |
+
+Jacob Ilive died in 1763. His *Book of Jasher* (1751) is a forgery that claims to be a lost book the
+Bible mentions, written in imitation King James English. At the two smaller sizes Joseph Smith's
+revelations still rank first, though Ilive closes in at 297M. At 590M, the size that sees style
+best, a man dead 64 years before the plates out-ranks them. So, by the rule we set ourselves,
+Part 1's ranking result gets a qualification at 590M: there, "closest to the Book of Mormon" is at
+least partly "most like a fake scripture in King James English". I'd much rather know this now
+than have a reviewer find it. The other five primary writers rank far lower (Southcott 13,
+Brothers 27). Two smaller notes. The text we used is an 1829 printing of Ilive's book. And the plan
+says a placebo writer who ranks high also gets the borrowing tests run on their book. That's queued
+as its own question, not done here.
+
+**Was one roll of the dice misleading?** Each Part 1 candidate model was retrained with five new
+seeds. For each one we compare the share of chunks it ranks first in the original run with the
+range over the new seeds.
+
+| Size | Model | Original | Five new seeds | Inside the range? |
+| --- | --- | --- | --- | --- |
+| 125M | pseudo-biblical control | 0.88 | 0.58-0.95 | yes |
+| 125M | Joseph Smith, dictated before 1830 | 0.12 | 0.05-0.39 | yes |
+| 297M | Joseph Smith, dictated before 1830 | 0.75 | 0.63-0.80 | yes |
+| 297M | pseudo-biblical control | 0.25 | 0.20-0.37 | yes |
+| 590M | Joseph Smith, dictated before 1830 | 0.52 | 0.53-0.60 | no, by one chunk |
+| 590M | pseudo-biblical control | 0.42 | 0.38-0.47 | yes |
+| 590M | W. W. Phelps | 0.06 | 0.00-0.02 | no |
+
+So unlike V2, which swung from 9% to 98% false matches, the main ranking holds steady across seeds.
+The two misses point in opposite directions. Joseph Smith at 590M was 88 of 168 chunks in the
+original run, and the new seeds give 89 to 100. By the letter of the rule he isn't "seed-stable",
+but the original run slightly *under*-stated him. Phelps's 6% at 590M was a lucky seed: the new
+runs give him 0-2%.
+
 ## Log
 
+- **2026-11-11 (night).** BOM-76 and the BOM-77 seeds done at all three sizes, about $10.50.
+  Only Ethan Smith is recognized in a different book (96-100%); Cowdery, Rigdon and Phelps almost
+  never. At 590M Jacob Ilive's 1751 *Book of Jasher* out-ranks Joseph Smith's revelations (median
+  1.5 against 4), which triggers the register rule. Seeds: the main ranking holds. Started the
+  590M pod by hand with a $30 cap rather than wait for a top-up, since the chain's $45 cap was far
+  above the ~$6 the job cost.
 - **2026-11-11 (evening).** BOM-75 done at every size, about $7 of GPU: on 430 tests the best model
   (590M) matches strangers 63.5% of the time (58.8-67.9%), against 22% on Part 1's 110 tests. No
   method passes, and 0.59 is now the bar a Stage 1 model must clear. BOM-76 and the seed runs

@@ -2,7 +2,7 @@
  "config_sha256": "98b7d4581ab16df9d01a05f6a65f5f6901e4658a8f6453c992c6aefc019188b9",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "8e569433e2212beb5cee0e88f3aa4964ff6732ce",
+ "git_commit": "057ae7eeb49437a44439b031459ebc062d51ed0a",
  "cross_work": {
   "pilot": {
    "ethan-smith": {
@@ -97,6 +97,53 @@
      0.16112516018512965
     ]
    }
+  },
+  "mid": {
+   "ethan-smith": {
+    "windows": 77,
+    "recognised": 74,
+    "rate": 0.961038961038961,
+    "ci95": [
+     0.8916001805115145,
+     0.9866620500631865
+    ]
+   },
+   "oliver-cowdery": {
+    "windows": 22,
+    "recognised": 2,
+    "rate": 0.09090909090909091,
+    "ci95": [
+     0.025295428762322658,
+     0.278149470278251
+    ]
+   },
+   "parley-p-pratt": {
+    "windows": 52,
+    "recognised": 27,
+    "rate": 0.5192307692307693,
+    "ci95": [
+     0.3868568266984257,
+     0.6489588564887107
+    ]
+   },
+   "sidney-rigdon": {
+    "windows": 12,
+    "recognised": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.2424940095530979
+    ]
+   },
+   "w-w-phelps": {
+    "windows": 20,
+    "recognised": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.16112516018512965
+    ]
+   }
   }
  },
  "placebo": {
@@ -153,6 +200,35 @@
    "revelation_median_rank": 1.0,
    "primary_at_or_better_than_revelation": [],
    "register_reading_triggered": false
+  },
+  "mid": {
+   "models_ranked": 35,
+   "chunks": 168,
+   "median_rank": {
+    "placebo__primary__jacob-ilive": 1.5,
+    "revelation": 4.0,
+    "cand__gilbert-j-hunt__printed_by_author__pre1830": 15.0,
+    "placebo__secondary__levi-h-dowling": 5.5,
+    "cand__oliver-cowdery__printed_by_author__post1830": 14.0,
+    "placebo__primary__joanna-southcott": 13.0,
+    "cand__solomon-spalding__posthumous__pre1830": 10.5,
+    "cand__joseph-smith__handwritten__post1830": 13.75,
+    "placebo__primary__thomas-reader": 19.0,
+    "cand__ethan-smith__printed_by_author__pre1830": 20.0,
+    "cand__joseph-smith__nonrevelatory__post1830": 14.5,
+    "cand__w-w-phelps__printed_by_author__post1830": 23.5,
+    "cand__sidney-rigdon__printed_by_author__post1830": 23.0,
+    "placebo__primary__ezra-stiles": 22.5,
+    "placebo__primary__richard-brothers": 27.0,
+    "placebo__primary__richard-snowden": 27.25,
+    "cand__joseph-smith__dictated__post1830": 32.5,
+    "cand__parley-p-pratt__printed_by_author__post1830": 30.5
+   },
+   "revelation_median_rank": 4.0,
+   "primary_at_or_better_than_revelation": [
+    "placebo__primary__jacob-ilive"
+   ],
+   "register_reading_triggered": true
   }
  },
  "untestable": {
