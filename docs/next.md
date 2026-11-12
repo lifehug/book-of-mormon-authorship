@@ -12,7 +12,8 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
   recognized across works; register rule triggered at 590M by Jacob Ilive), BOM-77 seeds done.
   The Hugging Face upload finished (BOM-72/73, 8e64552).
 - **Skipped (owner, 2026-11-11: "skip if not needed"):** BOM-77's larger samples (BOM-77 closed),
-  borrowing tests on Ilive's *Book of Jasher*, and Stage 1 (BOM-78 on, unless the owner reopens it).
+  and Stage 1 (BOM-78 on; owner: "let's wait on stage one"). Ilive's *Jasher* borrowing results already
+  existed (in every Part 1 search; summary on BOM-76).
   Next: BOM-36, the paper.
 - **Then:** commit the HF manifest and `data/kjv_mask/js_time/`.
 

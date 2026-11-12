@@ -2946,8 +2946,8 @@ Part 1's ranking result gets a qualification at 590M: there, "closest to the Boo
 least partly "most like a fake scripture in King James English". I'd much rather know this now
 than have a reviewer find it. The other five primary writers rank far lower (Southcott 13,
 Brothers 27). Two smaller notes. The text we used is an 1829 printing of Ilive's book. And the plan
-says a placebo writer who ranks high also gets the borrowing tests run on their book. That's queued
-as its own question, not done here.
+says a placebo writer who ranks high also gets the borrowing tests run on their book. Those had
+already been run, since the book was in every Part 1 search (see the log).
 
 **Was one roll of the dice misleading?** Each Part 1 candidate model was retrained with five new
 seeds. For each one we compare the share of chunks it ranks first in the original run with the
@@ -2971,10 +2971,16 @@ runs give him 0-2%.
 
 ## Log
 
-- **2026-11-11 (late).** Stopping Part 2 here. No larger samples, since the seeds already show the
-  ranking is stable. No borrowing tests on Ilive's *Jasher*, since they wouldn't change how the
-  590M result reads. And no 1.3B model: going from 297M to 590M only gained 0.04, and a bigger
-  model would need to get below 0.585. Next is the paper.
+- **2026-11-11 (late).** Stopping Part 2 here for now. No larger samples, since the seeds already
+  show the ranking is stable. Stage 1, the bigger model, is on hold: going from 297M to 590M only
+  gained 0.04, and a bigger model would need to get below 0.585. I wanted the borrowing tests run on
+  Ilive's *Book of Jasher*, and it turns out they already had been. Both copies of its 1829
+  printing were in every Part 1 search. No copied passages. 30 rare phrases shared, which passes
+  our rule and puts it first among the imitation-scripture books, but they're stock formulas like
+  "the lord commanded me saying" and "herds into the wilderness". Its ideas don't stand out against
+  similar books, and nothing matches in story order. So it's the same thing *The Late War* shows:
+  writing in fake King James English makes you resemble the Book of Mormon. That fits the 590M
+  result. Next is the paper.
 - **2026-11-11 (night).** BOM-76 and the BOM-77 seeds done at all three sizes, about $10.50.
   Only Ethan Smith is recognized in a different book (96-100%); Cowdery, Rigdon and Phelps almost
   never. At 590M Jacob Ilive's 1751 *Book of Jasher* out-ranks Joseph Smith's revelations (median
