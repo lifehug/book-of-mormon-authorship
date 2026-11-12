@@ -3109,8 +3109,51 @@ person", and the gain comes from the period training. They are no better than a 
 method at picking a name from a list. And on the larger exam they're still nowhere near good
 enough to rule a candidate out.
 
+## Settling the 4-0: on 430 tests, our models beat every older method
+
+The 4-0 in the last section meant this: on the 110 known-answer tests, our 297M and Burrows' word
+counting disagreed only four times, and ours was right all four. Four is too few to tell from luck
+(one in eight). Dave's point was that a lean like that should be tested, not filed as a tie. He's
+right, and I should have raised it.
+
+We already had a bigger exam, BOM-75's 430 tests. The older methods had taken a version of it, but
+not the same individual tests as our models, so the two couldn't be paired. So we ran Burrows,
+Cosine, General Imposters and ENSC on exactly the 430 tests our models took, in the same order.
+The rule went in first (Amendment 52): twelve head-to-heads (three sizes, four methods), counting
+only the tests where one is right and the other wrong, with a correction for making twelve
+comparisons. No GPU; about an hour on the Mac.
+
+| | Right, of 430 | vs Burrows | vs Cosine | vs General Imposters | vs ENSC |
+| --- | --- | --- | --- | --- | --- |
+| Ours, 125M | 394 (91.6%) | 58-15 | 66-16 | 130-7 | 76-9 |
+| Ours, 297M | 401 (93.3%) | 59-9 | 67-10 | 131-1 | 77-3 |
+| Ours, 590M | 401 (93.3%) | 59-9 | 67-10 | 132-2 | 77-3 |
+| Burrows | 351 (81.6%) | | | | |
+| Cosine | 344 (80.0%) | | | | |
+| General Imposters | 271 (63.0%) | | | | |
+| ENSC | 327 (76.0%) | | | | |
+
+All twelve come out "ours better", every one far past the bar (corrected p under 0.0001). Most of
+the gap comes from the new authors. On 1820s sermons the 297M beats Burrows 28-0, on fiction 8-0;
+on the Federalist and the dictated task the two barely disagree. On the pseudo-biblical task it's
+2-0, but that's only 24 tests.
+
+Why the older methods score lower here than in BOM-75's own run (Burrows 81.6% here, 93.0% there):
+that run drew its test passages from anywhere in an author's text, so the rest of the same book
+was usually there to compare against. Our models' tests come from the end of each author's text,
+held apart from everything the method learns from. That's the harder exam, and it's the one both
+sides took here. On the three tasks the two exams share, the older methods gave exactly the answers
+they gave on the 110 tests, so the code didn't change underneath them.
+
+Two things this doesn't change. The separate imitation test, where authors who wrote both plain
+prose and fake scripture are tested across the two, still goes the other way (word counting 13 of
+18, our 297M 7 of 17). And no method, ours included, can yet say "none of these" reliably. So the
+claim is exactly this: at picking the right author from a list, on 430 tests that no method had
+seen, our period-trained models are better than every older method we tested, at every size.
+
 ## Log
 
+- **2026-11-12.** Amendment 52: the four older methods run on the same 430 tests our models took. Every one of the twelve head-to-heads goes our way (297M against Burrows 59-9, against ENSC 77-3; corrected p < 0.0001), so "ties with the best older methods" becomes "better than every older method we tested at picking the author from a list". The imitation test still goes the other way. Details in "Settling the 4-0".
 - **2026-11-11 (late, 3).** Amendment 51's slices done at all three sizes, about $4. At 125M and 297M no placebo slice reaches Joseph Smith's revelations (0 of 67 primary slices at each size). At 590M Jacob Ilive beats or ties them on 8 of 12 slices, and Levi Dowling, born 1844, on 9 of 12, so the "it's the King James style" reading is solid at 590M only. The revelation side is one fixed model and can't be resampled. Details in "Twelve slices of Ilive".
 - **2026-11-11 (late, 2).** BOM-68: our models against every earlier method, head to head on the same
   tests. On Part 1's 110 tests, ranking ties the best old tool (297M 99.1% vs Burrows 95.5%, p =

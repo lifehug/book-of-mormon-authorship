@@ -1,8 +1,8 @@
 {
- "config_sha256": "7d61ef29762d65b8da5179199b54c9f937738aa390f9cb4abb3c6f415ca8d66e",
+ "config_sha256": "fe4638c4b6e0b1dfc9bbfb23617d796c23e542b834649f8956c3b058f1535117",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "4ddd2d67ffc5c763c9b322e96311b998a6bde288",
+ "git_commit": "57ee66f9ae1e9cf1e46e38fd3b895a33c0c9ecec",
  "methods": {
   "burrows_delta": {
    "test_set": "trials",
@@ -116,6 +116,86 @@
    "open_set_fpr": 0.7818181818181819,
    "passes": false
   },
+  "tails_p2_burrows_delta": {
+   "test_set": "tails_p2",
+   "tests": 430,
+   "closed_set": 0.8162790697674419,
+   "closed_set_95": [
+    0.7790697674418605,
+    0.8511627906976744
+   ],
+   "by_task": {
+    "federalist": 0.9230769230769231,
+    "pseudo_biblical": 0.875,
+    "dictated": 1.0,
+    "p2_fiction_narrative": 0.7125,
+    "p2_legal_political": 0.8125,
+    "p2_sermon_devotional": 0.625,
+    "p2_history_chronicle": 0.925
+   },
+   "open_set_fpr": null,
+   "passes": null
+  },
+  "tails_p2_cosine_delta": {
+   "test_set": "tails_p2",
+   "tests": 430,
+   "closed_set": 0.8,
+   "closed_set_95": [
+    0.7604651162790698,
+    0.8372093023255814
+   ],
+   "by_task": {
+    "federalist": 0.4230769230769231,
+    "pseudo_biblical": 0.7916666666666666,
+    "dictated": 1.0,
+    "p2_fiction_narrative": 0.7125,
+    "p2_legal_political": 0.9375,
+    "p2_sermon_devotional": 0.65,
+    "p2_history_chronicle": 0.875
+   },
+   "open_set_fpr": null,
+   "passes": null
+  },
+  "tails_p2_general_imposters": {
+   "test_set": "tails_p2",
+   "tests": 430,
+   "closed_set": 0.6302325581395349,
+   "closed_set_95": [
+    0.5837209302325581,
+    0.6744186046511628
+   ],
+   "by_task": {
+    "federalist": 0.7692307692307693,
+    "pseudo_biblical": 0.7916666666666666,
+    "dictated": 0.7,
+    "p2_fiction_narrative": 0.675,
+    "p2_legal_political": 0.525,
+    "p2_sermon_devotional": 0.5,
+    "p2_history_chronicle": 0.675
+   },
+   "open_set_fpr": 1.0,
+   "passes": false
+  },
+  "tails_p2_ensc": {
+   "test_set": "tails_p2",
+   "tests": 430,
+   "closed_set": 0.7604651162790698,
+   "closed_set_95": [
+    0.7209302325581395,
+    0.8
+   ],
+   "by_task": {
+    "federalist": 1.0,
+    "pseudo_biblical": 0.8333333333333334,
+    "dictated": 1.0,
+    "p2_fiction_narrative": 0.6875,
+    "p2_legal_political": 0.6625,
+    "p2_sermon_devotional": 0.6,
+    "p2_history_chronicle": 0.8125
+   },
+   "open_set_fpr": 0.8325581395348837,
+   "passes": false
+  },
   "alm_base": {
    "test_set": "tails",
    "tests": 110,
@@ -131,6 +211,26 @@
    },
    "open_set_fpr": 0.38181818181818183,
    "passes": false
+  },
+  "alm_base_p2": {
+   "test_set": "tails_p2",
+   "tests": 430,
+   "closed_set": 0.9325581395348838,
+   "closed_set_95": [
+    0.9069767441860465,
+    0.9558139534883721
+   ],
+   "by_task": {
+    "federalist": 1.0,
+    "pseudo_biblical": 0.9583333333333334,
+    "dictated": 1.0,
+    "p2_fiction_narrative": 0.8125,
+    "p2_legal_political": 0.9,
+    "p2_sermon_devotional": 0.975,
+    "p2_history_chronicle": 0.9625
+   },
+   "open_set_fpr": null,
+   "passes": null
   },
   "alm_base_v1": {
    "test_set": "tails",
@@ -340,6 +440,26 @@
    "open_set_fpr": 0.21818181818181817,
    "passes": false
   },
+  "alm_mid_p2": {
+   "test_set": "tails_p2",
+   "tests": 430,
+   "closed_set": 0.9325581395348838,
+   "closed_set_95": [
+    0.9093023255813953,
+    0.9558139534883721
+   ],
+   "by_task": {
+    "federalist": 1.0,
+    "pseudo_biblical": 0.9166666666666666,
+    "dictated": 1.0,
+    "p2_fiction_narrative": 0.8375,
+    "p2_legal_political": 0.9,
+    "p2_sermon_devotional": 0.9625,
+    "p2_history_chronicle": 0.9625
+   },
+   "open_set_fpr": null,
+   "passes": null
+  },
   "alm_mid_v1": {
    "test_set": "tails",
    "tests": 110,
@@ -515,6 +635,26 @@
    },
    "open_set_fpr": 0.4727272727272728,
    "passes": false
+  },
+  "alm_pilot_p2": {
+   "test_set": "tails_p2",
+   "tests": 430,
+   "closed_set": 0.9162790697674419,
+   "closed_set_95": [
+    0.8883720930232558,
+    0.9418604651162791
+   ],
+   "by_task": {
+    "federalist": 0.7692307692307693,
+    "pseudo_biblical": 0.9583333333333334,
+    "dictated": 1.0,
+    "p2_fiction_narrative": 0.7875,
+    "p2_legal_political": 0.8875,
+    "p2_sermon_devotional": 1.0,
+    "p2_history_chronicle": 0.9625
+   },
+   "open_set_fpr": null,
+   "passes": null
   },
   "alm_pilot_v1": {
    "test_set": "tails",
@@ -723,6 +863,38 @@
   }
  },
  "by_size": {
+  "p2": {
+   "pilot": {
+    "closed_set": 0.9162790697674419,
+    "closed_set_95": [
+     0.8883720930232558,
+     0.9418604651162791
+    ],
+    "open_set_fpr": null,
+    "passes": null,
+    "test_set": "tails_p2"
+   },
+   "base": {
+    "closed_set": 0.9325581395348838,
+    "closed_set_95": [
+     0.9069767441860465,
+     0.9558139534883721
+    ],
+    "open_set_fpr": null,
+    "passes": null,
+    "test_set": "tails_p2"
+   },
+   "mid": {
+    "closed_set": 0.9325581395348838,
+    "closed_set_95": [
+     0.9093023255813953,
+     0.9558139534883721
+    ],
+    "open_set_fpr": null,
+    "passes": null,
+    "test_set": "tails_p2"
+   }
+  },
   "primary": {
    "pilot": {
     "closed_set": 0.9363636363636364,
@@ -1251,6 +1423,36 @@
    "only_first": 27,
    "only_second": 0,
    "p": 1.4901161193847656e-08
+  },
+  "alm_base_p2 vs alm_mid_p2": {
+   "only_first": 2,
+   "only_second": 2,
+   "p": 1.0
+  },
+  "alm_base_p2 vs alm_pilot_p2": {
+   "only_first": 9,
+   "only_second": 2,
+   "p": 0.0654296875
+  },
+  "alm_base_p2 vs tails_p2_burrows_delta": {
+   "only_first": 59,
+   "only_second": 9,
+   "p": 3.914123197106857e-10
+  },
+  "alm_base_p2 vs tails_p2_cosine_delta": {
+   "only_first": 67,
+   "only_second": 10,
+   "p": 1.696740832819895e-11
+  },
+  "alm_base_p2 vs tails_p2_ensc": {
+   "only_first": 77,
+   "only_second": 3,
+   "p": 1.4128410298528223e-19
+  },
+  "alm_base_p2 vs tails_p2_general_imposters": {
+   "only_first": 131,
+   "only_second": 1,
+   "p": 4.885648395605132e-38
   },
   "alm_base_v1 vs alm_base_v1_lrsel": {
    "only_first": 1,
@@ -2997,6 +3199,31 @@
    "only_second": 0,
    "p": 2.9802322387695312e-08
   },
+  "alm_mid_p2 vs alm_pilot_p2": {
+   "only_first": 11,
+   "only_second": 4,
+   "p": 0.11846923828124999
+  },
+  "alm_mid_p2 vs tails_p2_burrows_delta": {
+   "only_first": 59,
+   "only_second": 9,
+   "p": 3.914123197106857e-10
+  },
+  "alm_mid_p2 vs tails_p2_cosine_delta": {
+   "only_first": 67,
+   "only_second": 10,
+   "p": 1.696740832819895e-11
+  },
+  "alm_mid_p2 vs tails_p2_ensc": {
+   "only_first": 77,
+   "only_second": 3,
+   "p": 1.4128410298528223e-19
+  },
+  "alm_mid_p2 vs tails_p2_general_imposters": {
+   "only_first": 132,
+   "only_second": 2,
+   "p": 8.307438982451885e-37
+  },
   "alm_mid_v1 vs alm_mid_v1_lrsel": {
    "only_first": 0,
    "only_second": 39,
@@ -3902,6 +4129,26 @@
    "only_second": 6,
    "p": 0.0003240634687244892
   },
+  "alm_pilot_p2 vs tails_p2_burrows_delta": {
+   "only_first": 58,
+   "only_second": 15,
+   "p": 4.0931991166650604e-07
+  },
+  "alm_pilot_p2 vs tails_p2_cosine_delta": {
+   "only_first": 66,
+   "only_second": 16,
+   "p": 2.251979591393417e-08
+  },
+  "alm_pilot_p2 vs tails_p2_ensc": {
+   "only_first": 76,
+   "only_second": 9,
+   "p": 2.405361458283649e-14
+  },
+  "alm_pilot_p2 vs tails_p2_general_imposters": {
+   "only_first": 130,
+   "only_second": 7,
+   "p": 1.8643680069333046e-30
+  },
   "alm_pilot_v1 vs alm_pilot_v1_lrsel": {
    "only_first": 6,
    "only_second": 6,
@@ -4366,7 +4613,548 @@
    "only_first": 25,
    "only_second": 1,
    "p": 8.046627044677734e-07
+  },
+  "tails_p2_burrows_delta vs tails_p2_cosine_delta": {
+   "only_first": 22,
+   "only_second": 15,
+   "p": 0.3240086000878364
+  },
+  "tails_p2_burrows_delta vs tails_p2_ensc": {
+   "only_first": 31,
+   "only_second": 7,
+   "p": 0.00011616700794547796
+  },
+  "tails_p2_burrows_delta vs tails_p2_general_imposters": {
+   "only_first": 89,
+   "only_second": 9,
+   "p": 1.10187438523874e-17
+  },
+  "tails_p2_cosine_delta vs tails_p2_ensc": {
+   "only_first": 37,
+   "only_second": 20,
+   "p": 0.03314396778750544
+  },
+  "tails_p2_cosine_delta vs tails_p2_general_imposters": {
+   "only_first": 90,
+   "only_second": 17,
+   "p": 3.5057799981190235e-13
+  },
+  "tails_p2_ensc vs tails_p2_general_imposters": {
+   "only_first": 67,
+   "only_second": 11,
+   "p": 6.11831045524052e-11
   }
+ },
+ "head_to_head_p2": {
+  "rule": "Amendment 52",
+  "alpha": 0.05,
+  "correction": "holm",
+  "comparisons": [
+   {
+    "ours": "alm_pilot_p2",
+    "theirs": "burrows_delta",
+    "tests": 430,
+    "ours_right": 394,
+    "theirs_right": 351,
+    "ours_only": 58,
+    "theirs_only": 15,
+    "p": 4.0931991166650604e-07,
+    "by_task": {
+     "dictated": {
+      "ours_only": 0,
+      "theirs_only": 0
+     },
+     "federalist": {
+      "ours_only": 2,
+      "theirs_only": 6
+     },
+     "p2_fiction_narrative": {
+      "ours_only": 6,
+      "theirs_only": 0
+     },
+     "p2_history_chronicle": {
+      "ours_only": 4,
+      "theirs_only": 1
+     },
+     "p2_legal_political": {
+      "ours_only": 14,
+      "theirs_only": 8
+     },
+     "p2_sermon_devotional": {
+      "ours_only": 30,
+      "theirs_only": 0
+     },
+     "pseudo_biblical": {
+      "ours_only": 2,
+      "theirs_only": 0
+     }
+    },
+    "p_holm": 4.0931991166650604e-07,
+    "reading": "ours better"
+   },
+   {
+    "ours": "alm_pilot_p2",
+    "theirs": "cosine_delta",
+    "tests": 430,
+    "ours_right": 394,
+    "theirs_right": 344,
+    "ours_only": 66,
+    "theirs_only": 16,
+    "p": 2.251979591393417e-08,
+    "by_task": {
+     "dictated": {
+      "ours_only": 0,
+      "theirs_only": 0
+     },
+     "federalist": {
+      "ours_only": 15,
+      "theirs_only": 6
+     },
+     "p2_fiction_narrative": {
+      "ours_only": 6,
+      "theirs_only": 0
+     },
+     "p2_history_chronicle": {
+      "ours_only": 9,
+      "theirs_only": 2
+     },
+     "p2_legal_political": {
+      "ours_only": 4,
+      "theirs_only": 8
+     },
+     "p2_sermon_devotional": {
+      "ours_only": 28,
+      "theirs_only": 0
+     },
+     "pseudo_biblical": {
+      "ours_only": 4,
+      "theirs_only": 0
+     }
+    },
+    "p_holm": 4.503959182786834e-08,
+    "reading": "ours better"
+   },
+   {
+    "ours": "alm_pilot_p2",
+    "theirs": "general_imposters",
+    "tests": 430,
+    "ours_right": 394,
+    "theirs_right": 271,
+    "ours_only": 130,
+    "theirs_only": 7,
+    "p": 1.8643680069333046e-30,
+    "by_task": {
+     "dictated": {
+      "ours_only": 18,
+      "theirs_only": 0
+     },
+     "federalist": {
+      "ours_only": 6,
+      "theirs_only": 6
+     },
+     "p2_fiction_narrative": {
+      "ours_only": 9,
+      "theirs_only": 0
+     },
+     "p2_history_chronicle": {
+      "ours_only": 23,
+      "theirs_only": 0
+     },
+     "p2_legal_political": {
+      "ours_only": 30,
+      "theirs_only": 1
+     },
+     "p2_sermon_devotional": {
+      "ours_only": 40,
+      "theirs_only": 0
+     },
+     "pseudo_biblical": {
+      "ours_only": 4,
+      "theirs_only": 0
+     }
+    },
+    "p_holm": 1.8643680069333046e-29,
+    "reading": "ours better"
+   },
+   {
+    "ours": "alm_pilot_p2",
+    "theirs": "ensc",
+    "tests": 430,
+    "ours_right": 394,
+    "theirs_right": 327,
+    "ours_only": 76,
+    "theirs_only": 9,
+    "p": 2.405361458283649e-14,
+    "by_task": {
+     "dictated": {
+      "ours_only": 0,
+      "theirs_only": 0
+     },
+     "federalist": {
+      "ours_only": 0,
+      "theirs_only": 6
+     },
+     "p2_fiction_narrative": {
+      "ours_only": 8,
+      "theirs_only": 0
+     },
+     "p2_history_chronicle": {
+      "ours_only": 13,
+      "theirs_only": 1
+     },
+     "p2_legal_political": {
+      "ours_only": 20,
+      "theirs_only": 2
+     },
+     "p2_sermon_devotional": {
+      "ours_only": 32,
+      "theirs_only": 0
+     },
+     "pseudo_biblical": {
+      "ours_only": 3,
+      "theirs_only": 0
+     }
+    },
+    "p_holm": 1.6837530207985543e-13,
+    "reading": "ours better"
+   },
+   {
+    "ours": "alm_base_p2",
+    "theirs": "burrows_delta",
+    "tests": 430,
+    "ours_right": 401,
+    "theirs_right": 351,
+    "ours_only": 59,
+    "theirs_only": 9,
+    "p": 3.914123197106857e-10,
+    "by_task": {
+     "dictated": {
+      "ours_only": 0,
+      "theirs_only": 0
+     },
+     "federalist": {
+      "ours_only": 2,
+      "theirs_only": 0
+     },
+     "p2_fiction_narrative": {
+      "ours_only": 8,
+      "theirs_only": 0
+     },
+     "p2_history_chronicle": {
+      "ours_only": 4,
+      "theirs_only": 1
+     },
+     "p2_legal_political": {
+      "ours_only": 15,
+      "theirs_only": 8
+     },
+     "p2_sermon_devotional": {
+      "ours_only": 28,
+      "theirs_only": 0
+     },
+     "pseudo_biblical": {
+      "ours_only": 2,
+      "theirs_only": 0
+     }
+    },
+    "p_holm": 1.5656492788427429e-09,
+    "reading": "ours better"
+   },
+   {
+    "ours": "alm_base_p2",
+    "theirs": "cosine_delta",
+    "tests": 430,
+    "ours_right": 401,
+    "theirs_right": 344,
+    "ours_only": 67,
+    "theirs_only": 10,
+    "p": 1.696740832819895e-11,
+    "by_task": {
+     "dictated": {
+      "ours_only": 0,
+      "theirs_only": 0
+     },
+     "federalist": {
+      "ours_only": 15,
+      "theirs_only": 0
+     },
+     "p2_fiction_narrative": {
+      "ours_only": 8,
+      "theirs_only": 0
+     },
+     "p2_history_chronicle": {
+      "ours_only": 9,
+      "theirs_only": 2
+     },
+     "p2_legal_political": {
+      "ours_only": 5,
+      "theirs_only": 8
+     },
+     "p2_sermon_devotional": {
+      "ours_only": 26,
+      "theirs_only": 0
+     },
+     "pseudo_biblical": {
+      "ours_only": 4,
+      "theirs_only": 0
+     }
+    },
+    "p_holm": 1.018044499691937e-10,
+    "reading": "ours better"
+   },
+   {
+    "ours": "alm_base_p2",
+    "theirs": "general_imposters",
+    "tests": 430,
+    "ours_right": 401,
+    "theirs_right": 271,
+    "ours_only": 131,
+    "theirs_only": 1,
+    "p": 4.885648395605132e-38,
+    "by_task": {
+     "dictated": {
+      "ours_only": 18,
+      "theirs_only": 0
+     },
+     "federalist": {
+      "ours_only": 6,
+      "theirs_only": 0
+     },
+     "p2_fiction_narrative": {
+      "ours_only": 11,
+      "theirs_only": 0
+     },
+     "p2_history_chronicle": {
+      "ours_only": 23,
+      "theirs_only": 0
+     },
+     "p2_legal_political": {
+      "ours_only": 31,
+      "theirs_only": 1
+     },
+     "p2_sermon_devotional": {
+      "ours_only": 38,
+      "theirs_only": 0
+     },
+     "pseudo_biblical": {
+      "ours_only": 4,
+      "theirs_only": 0
+     }
+    },
+    "p_holm": 5.862778074726159e-37,
+    "reading": "ours better"
+   },
+   {
+    "ours": "alm_base_p2",
+    "theirs": "ensc",
+    "tests": 430,
+    "ours_right": 401,
+    "theirs_right": 327,
+    "ours_only": 77,
+    "theirs_only": 3,
+    "p": 1.4128410298528223e-19,
+    "by_task": {
+     "dictated": {
+      "ours_only": 0,
+      "theirs_only": 0
+     },
+     "federalist": {
+      "ours_only": 0,
+      "theirs_only": 0
+     },
+     "p2_fiction_narrative": {
+      "ours_only": 10,
+      "theirs_only": 0
+     },
+     "p2_history_chronicle": {
+      "ours_only": 13,
+      "theirs_only": 1
+     },
+     "p2_legal_political": {
+      "ours_only": 21,
+      "theirs_only": 2
+     },
+     "p2_sermon_devotional": {
+      "ours_only": 30,
+      "theirs_only": 0
+     },
+     "pseudo_biblical": {
+      "ours_only": 3,
+      "theirs_only": 0
+     }
+    },
+    "p_holm": 1.2715569268675401e-18,
+    "reading": "ours better"
+   },
+   {
+    "ours": "alm_mid_p2",
+    "theirs": "burrows_delta",
+    "tests": 430,
+    "ours_right": 401,
+    "theirs_right": 351,
+    "ours_only": 59,
+    "theirs_only": 9,
+    "p": 3.914123197106857e-10,
+    "by_task": {
+     "dictated": {
+      "ours_only": 0,
+      "theirs_only": 0
+     },
+     "federalist": {
+      "ours_only": 2,
+      "theirs_only": 0
+     },
+     "p2_fiction_narrative": {
+      "ours_only": 10,
+      "theirs_only": 0
+     },
+     "p2_history_chronicle": {
+      "ours_only": 4,
+      "theirs_only": 1
+     },
+     "p2_legal_political": {
+      "ours_only": 15,
+      "theirs_only": 8
+     },
+     "p2_sermon_devotional": {
+      "ours_only": 27,
+      "theirs_only": 0
+     },
+     "pseudo_biblical": {
+      "ours_only": 1,
+      "theirs_only": 0
+     }
+    },
+    "p_holm": 1.5656492788427429e-09,
+    "reading": "ours better"
+   },
+   {
+    "ours": "alm_mid_p2",
+    "theirs": "cosine_delta",
+    "tests": 430,
+    "ours_right": 401,
+    "theirs_right": 344,
+    "ours_only": 67,
+    "theirs_only": 10,
+    "p": 1.696740832819895e-11,
+    "by_task": {
+     "dictated": {
+      "ours_only": 0,
+      "theirs_only": 0
+     },
+     "federalist": {
+      "ours_only": 15,
+      "theirs_only": 0
+     },
+     "p2_fiction_narrative": {
+      "ours_only": 10,
+      "theirs_only": 0
+     },
+     "p2_history_chronicle": {
+      "ours_only": 9,
+      "theirs_only": 2
+     },
+     "p2_legal_political": {
+      "ours_only": 5,
+      "theirs_only": 8
+     },
+     "p2_sermon_devotional": {
+      "ours_only": 25,
+      "theirs_only": 0
+     },
+     "pseudo_biblical": {
+      "ours_only": 3,
+      "theirs_only": 0
+     }
+    },
+    "p_holm": 1.018044499691937e-10,
+    "reading": "ours better"
+   },
+   {
+    "ours": "alm_mid_p2",
+    "theirs": "general_imposters",
+    "tests": 430,
+    "ours_right": 401,
+    "theirs_right": 271,
+    "ours_only": 132,
+    "theirs_only": 2,
+    "p": 8.307438982451885e-37,
+    "by_task": {
+     "dictated": {
+      "ours_only": 18,
+      "theirs_only": 0
+     },
+     "federalist": {
+      "ours_only": 6,
+      "theirs_only": 0
+     },
+     "p2_fiction_narrative": {
+      "ours_only": 13,
+      "theirs_only": 0
+     },
+     "p2_history_chronicle": {
+      "ours_only": 23,
+      "theirs_only": 0
+     },
+     "p2_legal_political": {
+      "ours_only": 31,
+      "theirs_only": 1
+     },
+     "p2_sermon_devotional": {
+      "ours_only": 38,
+      "theirs_only": 1
+     },
+     "pseudo_biblical": {
+      "ours_only": 3,
+      "theirs_only": 0
+     }
+    },
+    "p_holm": 9.138182880697073e-36,
+    "reading": "ours better"
+   },
+   {
+    "ours": "alm_mid_p2",
+    "theirs": "ensc",
+    "tests": 430,
+    "ours_right": 401,
+    "theirs_right": 327,
+    "ours_only": 77,
+    "theirs_only": 3,
+    "p": 1.4128410298528223e-19,
+    "by_task": {
+     "dictated": {
+      "ours_only": 0,
+      "theirs_only": 0
+     },
+     "federalist": {
+      "ours_only": 0,
+      "theirs_only": 0
+     },
+     "p2_fiction_narrative": {
+      "ours_only": 12,
+      "theirs_only": 0
+     },
+     "p2_history_chronicle": {
+      "ours_only": 13,
+      "theirs_only": 1
+     },
+     "p2_legal_political": {
+      "ours_only": 21,
+      "theirs_only": 2
+     },
+     "p2_sermon_devotional": {
+      "ours_only": 29,
+      "theirs_only": 0
+     },
+     "pseudo_biblical": {
+      "ours_only": 2,
+      "theirs_only": 0
+     }
+    },
+    "p_holm": 1.2715569268675401e-18,
+    "reading": "ours better"
+   }
+  ]
  },
  "published_vs_ours": {
   "replication_jockers_data": {
@@ -4567,6 +5355,7 @@
  },
  "sets": {
   "trials": "BOM-21's trials (classical, style embeddings, V3)",
-  "tails": "Amendment 22's held-out tails (fine-tuned models)"
+  "tails": "Amendment 22's held-out tails (fine-tuned models)",
+  "tails_p2": "BOM-75's 430 held-out tails (Amendment 52)"
  }
 }
