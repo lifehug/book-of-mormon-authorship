@@ -64,11 +64,10 @@ the candidates" study's error swings 80% to 0% with sample length).
   297M 2 of 3; by passage 13/18 vs 7/17), too small either way; the 430 exam's pseudo-biblical
   task 2-0 on 24 tests. The ceiling is real: the corpus-wide curation (1,349 works judged, BOM-54)
   finds 18 imitation-scripture works by about 10 authors, of whom only 3 left enough other prose;
-  outside 1780-1830 most imitation scripture is anonymous satire. **\*TBD (proposed, owner to
-  decide): a register-shift test**: train on an author's ordinary prose, identify their sermons;
-  553 authors have 5+ works of each (1,051 with 3+); scored by author, head to head as Amendment
-  52; amendment first; older methods on the Mac, our sizes on a GPU (about $10-20, confirmed
-  first). The 3-author true-imitation test stays as an exploratory pointer.
+  outside 1780-1830 most imitation scripture is anonymous satire. Reported as too small to judge
+  either way. A larger register-shift test (553 authors' sermons vs their other prose) was
+  considered and not run (owner, 2026-11-12): the worry it addresses, that models follow biblical
+  style rather than the person, is tested directly on the Book of Mormon in 6.2 and 6.3.
 - **5.4 "None of these":** no method passes; 63-75% false matches on 430 tests. Why the opening
   statement is limited; said here once.
 - **5.5 Model size:** sizes tie on picking the author; bigger is better only at "none of these",
