@@ -2987,8 +2987,87 @@ him. The same goes for the placebo writers, who were given the same 3,000 tokens
 with new seeds would cost money and return the same numbers. For tiny samples, the real source of
 chance is *which* 3,000 tokens get picked, not the seed. That's the check worth running on Ilive.
 
+
+## Are our models better than the old methods? Yes at one job, no at the other
+
+The study's claim is that language models trained only on 1780-1830 English do better than the
+methods earlier Book of Mormon studies used. I've reported pieces of this along the way: the five
+old studies rerun in phase 3, the GPT-2 swap on a Friday. But I never put it in one place,
+head to head on the same tests. Here it is (BOM-68).
+
+The same 110 held-out tests from Part 1, every method:
+
+| Method | Where it comes from | Right author | False matches |
+| --- | --- | --- | --- |
+| Burrows' Delta | Burrows 2002; Jockers et al. 2008 | 95.5% | can't say "none of these" |
+| Cosine Delta | Smith and Aldridge 2011 | 81.8% | can't say "none of these" |
+| General Imposters | Koppel and Winter 2014 | 74.5% | 83% |
+| ENSC | Schaalje, Fields et al. 2011 | 96.4% | 78% |
+| GPT-2 124M, tuned the same way | modern internet text | 90.0% | 92% |
+| GPT-2 355M, tuned the same way | modern internet text | 94.5% | 86% |
+| Ours, 125M | 1780-1830 only | 93.6% | 47% |
+| Ours, 297M | 1780-1830 only | 99.1% | 38% |
+| Ours, 590M | 1780-1830 only | 98.2% | 22% |
+
+There are two jobs here, and the answer differs for each.
+
+**Picking the right author from a list: about a tie with the best old method.** The 297M got 4 tests
+right that Burrows' Delta missed, and Delta got none that the 297M missed. Against ENSC it was 3 to
+0. Those are too few to be sure (p = 0.13 and 0.25). Against the weaker old tools, Cosine Delta and
+General Imposters, our models win clearly (19 to 0, 27 to 0). So the honest line is: as good as the
+best of the old tools at ranking, better than the rest.
+
+**Saying "none of these" when the author isn't on the list: clearly better.** The old tools that
+can say "none" at all get it wrong about four times in five. Ours get it wrong between one time in
+five and one in two, depending on size. That's the job every earlier study was weakest at, so it's
+the one that matters most.
+
+**Is it the period training, or just a language model?** Swap our base model for GPT-2, trained on
+modern internet text, and tune it exactly the same way. GPT-2 makes more mistakes picking the
+author and gets "none" wrong 86-92% of the time, no better than the old tools. So the gain comes
+from training on the period's own English. A language model by itself doesn't do it.
+
+**Then the bigger exam (BOM-75, 430 tests) cut the lead down:**
+
+| Method | Right author | False matches |
+| --- | --- | --- |
+| Burrows' Delta | 93.0% | can't say |
+| Cosine Delta | 93.6% | can't say |
+| General Imposters | 79.8% | 79% |
+| ENSC | 92.8% | 76% |
+| Ours, 125M | 91.6% | 75% |
+| Ours, 297M | 93.3% | 67% |
+| Ours, 590M | 93.3% | 63% |
+
+On ranking everyone ties at about 93%. On "none of these" the 590M is still better than the old
+tools (its 95% range, 59-68%, sits clear of General Imposters' 76-83%), and the 125M is no better
+than ENSC. But nobody comes near the 5% bar.
+
+**One place the old tools win.** When a writer puts on a biblical costume (three 18th-century
+writers who wrote both plain prose and fake scripture), plain common-word counting still named the
+right author 13 times in 18, and our 297M only 7 in 17. The Book of Mormon wears that costume. This
+fits what the placebo found at 590M.
+
+**What the replications themselves showed** (phase 3, above). Every famous study reproduces with its
+own method and data. But each answer follows the choices behind it. The 2008 study's Rigdon is
+mostly an 1864 book of his revelations: swap in other genuine Rigdon and his share drops from 169
+chapters to 92. The "none of the candidates" study's "none" swings from 80% wrong to 0% with sample
+length. Our models were built to avoid exactly those traps: samples screened for Book of Mormon
+quotations, a "none" answer whose error rate is measured, and everything tested on known answers
+first.
+
+So, plainly: our models are better than prior work at the job that matters most, saying "not this
+person", and the gain comes from the period training. They are no better than a 2002 word-count
+method at picking a name from a list. And on the larger exam they're still nowhere near good
+enough to rule a candidate out.
+
 ## Log
 
+- **2026-11-11 (late, 2).** BOM-68: our models against every earlier method, head to head on the same
+  tests. On Part 1's 110 tests, ranking ties the best old tool (297M 99.1% vs Burrows 95.5%, p =
+  0.13) and "none of these" is far better (22-47% false matches vs 78-83%). GPT-2 tuned the same
+  way gets 86-92%, so the gain is the period training. On BOM-75's 430 tests ranking ties at ~93%,
+  and the 590M's edge on "none" shrinks to 63% vs 76-79%.
 - **2026-11-11 (late).** Stopping Part 2 here for now. No larger samples, since the seeds already
   show the ranking is stable. Stage 1, the bigger model, is on hold: going from 297M to 590M only
   gained 0.04, and a bigger model would need to get below 0.585. I wanted the borrowing tests run on
