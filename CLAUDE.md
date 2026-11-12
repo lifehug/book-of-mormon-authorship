@@ -162,6 +162,12 @@ file is derived: `genre.parquet` is tracked because it is about 40 hours of loca
 replicator who obtains the sources under their own agreements must be able to apply our labels
 without re-running the pipeline (BOM-44).
 
+**Before fetching or saying we lack something, read `docs/holdings.md`** (regenerate with
+`python -m metadata.holdings`): every data folder, and every candidate source with how much is
+held, used and set aside. Folder names can name only the part first used
+(`js-1828-1829-revelations` holds all of Revelation Book 1). A new data folder needs a line in
+`metadata.holdings.DESCRIPTIONS`; `tests/test_holdings.py` fails the build otherwise.
+
 Harvard's Institutional Books text may never be published (terms: noncommercial, no
 redistribution, attribution required). Joseph Smith Papers transcripts are copyrighted.
 
