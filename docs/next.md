@@ -11,6 +11,9 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
   (590M false matches 0.635 [0.588, 0.679]; no method passes), BOM-76 closed (only Ethan Smith
   recognized across works; register rule triggered at 590M by Jacob Ilive), BOM-77 seeds done.
   The Hugging Face upload finished (BOM-72/73, 8e64552).
+- **Amendment 51 slices done** (2026-11-11, about $4): register placebo on 12 slices per writer.
+  125M/297M: no primary slice reaches the revelations (0/67). 590M: Ilive 8/12, Dowling (secondary)
+  9/12; register reading slice-stable at 590M only. Revelation side is one fixed model.
 - **Skipped (owner, 2026-11-11: "skip if not needed"):** BOM-77's larger samples (BOM-77 closed),
   and Stage 1 (BOM-78 on; owner: "let's wait on stage one"). Ilive's *Jasher* borrowing results already
   existed (in every Part 1 search; summary on BOM-76).

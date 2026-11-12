@@ -2952,8 +2952,8 @@ ranks first on 12%, 75% and 52% of passages at the three sizes. And each placebo
 once, while the seed check below shows one training run can move these rankings a lot. The honest
 reading so far: at one size, in one run, a writer who couldn't be the author out-ranks Joseph
 Smith's revelations. That doesn't prove "ranked first" is just King James style. It does show the
-ranking is fragile. To find out whether it's more than one run's luck, the placebo is being rerun
-with five more seeds at every size (Amendment 51). The other five primary writers rank far lower (Southcott 13,
+ranking is fragile. To find out whether it's more than one run's luck, the placebo was rerun on
+twelve different slices of each writer's text at every size (Amendment 51; the answer is in the next section). The other five primary writers rank far lower (Southcott 13,
 Brothers 27). Two smaller notes. The text we used is an 1829 printing of Ilive's book. And the plan
 says a placebo writer who ranks high also gets the borrowing tests run on their book. Those had
 already been run, since the book was in every Part 1 search (see the log).
@@ -2986,6 +2986,54 @@ Joseph Smith say nothing about his own models. They only show the *other* models
 him. The same goes for the placebo writers, who were given the same 3,000 tokens: rerunning them
 with new seeds would cost money and return the same numbers. For tiny samples, the real source of
 chance is *which* 3,000 tokens get picked, not the seed. That's the check worth running on Ilive.
+
+## Twelve slices of Ilive: the forgery result holds at 590M, and never happens at the smaller sizes
+
+The check from the end of the last section: instead of one 3,039-token sample per placebo writer,
+take up to twelve non-overlapping ones, spread evenly through their text, train a model on each,
+and rank each one against Joseph Smith's revelations on the 168 sealed passages. The rule was
+written down and committed before any of it ran (Amendment 51): at a given size, the "it's just
+King James style" reading counts as solid only if a pre-1827 writer ranks at or above the
+revelations on more than half of their slices. Three pods, about $4 in all ($0.66, $1.23, $2.10),
+under an hour of GPU.
+
+How many slices rank at or above Joseph Smith's revelations:
+
+| Writer (died) | 125M | 297M | 590M |
+| --- | --- | --- | --- |
+| Jacob Ilive (1763) | 0/12 | 0/12 | **8/12** |
+| Joanna Southcott (1814) | 0/12 | 0/12 | 0/12 |
+| Richard Brothers (1824) | 0/8 | 0/8 | 0/8 |
+| Richard Snowden (1825) | 0/12 | 0/12 | 0/12 |
+| Ezra Stiles (1795) | 0/12 | 0/12 | 0/12 |
+| Thomas Reader (1794) | 0/11 | 0/11 | 0/11 |
+| *Levi Dowling (born 1844, reported separately)* | 0/12 | 0/12 | 9/12 |
+| Revelations' median rank | 1 | 1 | 4 |
+| Rule met? | no | no | **yes** |
+
+(Brothers and Reader have less text, so fewer slices fit.)
+
+So the answer splits by size, and both halves are clear. At 125M and 297M, Joseph Smith's
+revelations rank first, and none of the 67 primary slice models ever reaches them. Ilive's best
+slice gets to second, at both sizes, but no further. At 590M it's the other way round. Eight of
+Ilive's twelve slices rank at or above the revelations (his slices range from 1st to 12th), so
+the original 590M result wasn't the luck of which 3,039 tokens got picked. And Dowling, whose 1908
+*Aquarian Gospel* imitates the same King James style, beats them on nine of twelve.
+
+Dowling is the telling part. He was born fourteen years after the Book of Mormon was printed. If
+he out-ranks Joseph Smith's revelations, then at 590M "ranks first" isn't picking out a person.
+It's picking out the style. What changes at 590M isn't that Ilive gets stronger. It's that the
+revelation model drops from first to a median of fourth.
+
+One limit I can't get round. Joseph Smith's dictated revelations before 1830 come to only 3,039
+tokens, so his side can't be sliced. It's one fixed model. It might just be an unlucky sample at
+590M, and with no more of his pre-1830 dictation there's nothing to rerun it on.
+
+What goes into the paper: the Part 1 ranking ("Joseph Smith's revelations rank first") holds up
+against every register placebo at 125M and 297M, and fails at 590M, where King James imitators,
+dead or not yet born, do as well. As Amendment 47 requires, Part 1's ranking result is reported
+with that qualification. No size counts for more than another, so it's reported as a split, not
+a verdict.
 
 
 ## Are our models better than the old methods? Yes at one job, no at the other
@@ -3063,6 +3111,7 @@ enough to rule a candidate out.
 
 ## Log
 
+- **2026-11-11 (late, 3).** Amendment 51's slices done at all three sizes, about $4. At 125M and 297M no placebo slice reaches Joseph Smith's revelations (0 of 67 primary slices at each size). At 590M Jacob Ilive beats or ties them on 8 of 12 slices, and Levi Dowling, born 1844, on 9 of 12, so the "it's the King James style" reading is solid at 590M only. The revelation side is one fixed model and can't be resampled. Details in "Twelve slices of Ilive".
 - **2026-11-11 (late, 2).** BOM-68: our models against every earlier method, head to head on the same
   tests. On Part 1's 110 tests, ranking ties the best old tool (297M 99.1% vs Burrows 95.5%, p =
   0.13) and "none of these" is far better (22-47% false matches vs 78-83%). GPT-2 tuned the same
