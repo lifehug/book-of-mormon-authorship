@@ -615,6 +615,15 @@ part2_benchmark:
     sermon_devotional: [sermons_1820s, null]
     history_chronicle: [history, null]
 
+# Amendment 54 (post hoc, before any run): Joseph Smith's later revelations, a deep dive beside
+# the registered pre-1830 test (which is unchanged).
+js_later:
+  source: js-1828-1829-revelations   # Revelation Book 1, whole; sections set aside by rule 9
+  title_prefix: Revelation           # revelations only (not the Vision, Articles, minutes, index)
+  slices_max: 12                     # equal-dose slices, as part2.placebo_slices_max
+  slice_majority: 0.5                # "slice-stable" if more than half the slices are at or above
+                                     # the 1828-29 revelation model, as part2.placebo_slice_majority
+
 pending_amendment: []
 
 # BOM-73, Amendment 46 (OSF revision 6af385f93ea373a2d2826e1a; post hoc: after unblinding; filed
