@@ -22,6 +22,7 @@ Numbers only: ``data/blind/a44/``. Usage::
     python -m eval.js_register style base|mid
     python -m eval.js_register alm pilot|base|mid
     python -m eval.js_register report
+    python -m eval.js_register people               # Amendment 53: whole ranking, +/- revelations
     python -m eval.js_register dose pilot|base|mid   # Amendment 45, on a GPU
     python -m eval.js_register dose-report
 
@@ -39,6 +40,8 @@ import sys
 from pathlib import Path
 
 import numpy as np
+
+from metadata.config import stamp
 
 POOL = "cand__joseph-smith__nonrevelatory__post1830"
 POOL_FROM = ["cand__joseph-smith__dictated__post1830", "cand__joseph-smith__handwritten__post1830"]
@@ -237,6 +240,53 @@ def _ranks(per_id: dict[str, dict[str, float]], lower_is_closer: bool) -> dict[s
     return out
 
 
+def _scores(bom: set[str]) -> dict[str, tuple[dict[str, dict[str, float]], bool]]:
+    """method -> ({chunk: {unit: score}}, lower is closer), every method Amendment 44 scored."""
+    out: dict[str, tuple[dict, bool]] = {}
+    c = json.loads((OUT / "classic.json").read_text())["ids"]
+    for m, lower in (("cosine_delta", True), ("burrows_delta", True), ("general_imposters", False)):
+        out[m] = ({i: c[i][m] for i in bom}, lower)
+    for size in ("base", "mid"):
+        p = OUT / f"style_{size}.json"
+        if p.exists():
+            st = json.loads(p.read_text())["ids"]
+            out[f"style_{size}"] = ({i: st[i]["cosine"] for i in bom}, True)
+    for size in ("pilot", "base", "mid"):
+        p = OUT / f"alm_{size}.json"
+        if p.exists():
+            pooled = json.loads(p.read_text())["scores"]
+            prior = json.loads((A43 / "outputs" / f"alm_{size}.json").read_text())["scores"]["ids"]
+            out[f"alm_{size}"] = ({i: {**prior[i]["scores"], POOL: pooled[i]} for i in bom}, True)
+    return out
+
+
+def people() -> int:
+    """Amendment 53 (post hoc): the whole people-only ranking (candidate units, no controls) on the
+    Book of Mormon chunks for every method Amendment 44 scored, with Joseph Smith's revelation
+    sample in the list and with it taken out: every unit's mean rank and times ranked first."""
+    key = json.loads(KEY.read_text())
+    bom = {i for i, k in key.items() if k["kind"] == "bom"}
+    res: dict = {"revelation": REVELATION, "pool": POOL, "chunks": len(bom), "methods": {}}
+    for m, (per, lower) in _scores(bom).items():
+        res["methods"][m] = {}
+        for label, drop in (("with_revelations", ()), ("without_revelations", (REVELATION,))):
+            ranks: dict[str, list[int]] = {}
+            for sc in per.values():
+                c = {u: v for u, v in sc.items() if u.startswith("cand__") and u not in drop}
+                order = sorted(c, key=lambda u: c[u] if lower else -c[u])
+                for r, u in enumerate(order, 1):
+                    ranks.setdefault(u, []).append(r)
+            res["methods"][m][label] = {
+                u: {"mean_rank": float(np.mean(v)), "first": sum(r == 1 for r in v)}
+                for u, v in sorted(ranks.items(), key=lambda kv: np.mean(kv[1]))}  # fmt: skip
+        top = {k: next(iter(v.items())) for k, v in res["methods"][m].items()}
+        print(m, " | ".join(f"{k}: {u.removeprefix('cand__')[:30]} {x['mean_rank']:.1f} "
+                            f"({x['first']})" for k, (u, x) in top.items()))  # fmt: skip
+    (OUT / "people.json").write_text(json.dumps({**stamp(), **res}, indent=1) + "\n")
+    print(f"-> {OUT / 'people.json'}")
+    return 0
+
+
 def report() -> int:
     key = json.loads(KEY.read_text())
     bom = {i for i, k in key.items() if k["kind"] == "bom"}
@@ -266,7 +316,8 @@ def report() -> int:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["classic", "style", "alm", "report", "dose", "dose-report"])
+    ap.add_argument("cmd", choices=["classic", "style", "alm", "report", "dose", "dose-report",
+                                    "people"])  # fmt: skip
     ap.add_argument("size", nargs="?", choices=["pilot", "base", "mid"])
     ap.add_argument("--micro-batch", type=int, default=8)
     a = ap.parse_args(argv)
@@ -278,6 +329,8 @@ def main(argv: list[str] | None = None) -> int:
         return dose(a.size, a.micro_batch)
     if a.cmd == "dose-report":
         return dose_report()
+    if a.cmd == "people":
+        return people()
     return classic() if a.cmd == "classic" else report()
 
 
