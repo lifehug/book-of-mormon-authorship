@@ -56,15 +56,16 @@ Five studies reproduced with their own methods and data; their answers follow un
 the candidates" study's error swings 80% to 0% with sample length).
 
 ## 5. How good is each method? A scorecard on known answers
-- **5.1 Picking the right author from a list:** on BOM-75's 430 tests every size is ahead of
-  every older method, but the tests are 23 authors, so the author is the unit (Amendment 55,
-  correcting Amendment 52's window count). *Better than General Imposters* (15-16 authors to 0-1,
-  Holm p 0.0004-0.003) *and ENSC* (14 to 1-2, Holm p 0.009-0.03) at every size. *Against
-  Burrows' and Cosine Delta:* ahead on 10-11 authors, behind on 2-3, the rest tied; accuracy gap
-  +10 to +13 points with an author-resampled 95% range above zero, but the sign test does not
-  survive Holm (p 0.13-0.15): "ahead, not shown significantly". One author (Spring) gives 19 of
-  297M's 59 window wins over Burrows. **\*TBD (proposed, owner to decide):** more benchmark
-  authors would settle the Delta comparison. Part 1's 110 tests: too few disagreements (4-0).
+- **5.1 Picking the right author from a list:** our models beat every older method, at every
+  size, counted by author (the honest unit). BOM-75's 23 authors were not enough to show it
+  against Burrows' and Cosine Delta (ahead 10-11 to 2-3, Holm p 0.13-0.15; Amendment 55), so 32
+  more were drawn by the same rules (Amendment 56, decided first, with a stopping rule). On all
+  55 authors, all 12 comparisons are "ours better" (Holm p 0.00001-0.0014): against Burrows
+  24-25 authors to 3-4, Cosine 24-26 to 4-6, General Imposters 30-33 to 2-4, ENSC 29-30 to 3-4;
+  the rest tied; accuracy gap +13 to +21 points, author-resampled 95% ranges all above zero.
+  The 32 new authors alone repeat it independently (all 12 significant; accuracy on their 640
+  tests 91-94% for ours, 76-78% for the older methods). Amendment 52's window counts reported
+  beside. Part 1's 110 tests: too few disagreements (4-0).
 - **5.2 Period training matters:** GPT-2 86-92% false matches against ours 22-47%.
 - **5.3 Writing in biblical style:** the imitation test is three authors (by author Burrows 1 of 3,
   297M 2 of 3; by passage 13/18 vs 7/17), too small either way; the 430 exam's pseudo-biblical
@@ -127,7 +128,8 @@ Language earlier than its period and than period imitations; narrators, dictatio
 ## 9. Corrections and robustness
 Every post hoc step in one table: the quotation leak (A43), equal dose (A45), seeds (A50), slices
 (A51), the 430-test head-to-head (A52), the whole ranking with and without revelations (A53), the
-later revelations (A54), counting by author and the normalised curve (A55), the V2 seed fluke, the imitation-test correction (2026-11-12).
+later revelations (A54), counting by author and the normalised curve (A55), 32 more
+benchmark authors (A56), the V2 seed fluke, the imitation-test correction (2026-11-12).
 
 ## 10. Public claims
 Seventeen claims, from every side, judged by rules written before any result.

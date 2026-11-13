@@ -3233,7 +3233,38 @@ One more cleanup: the 168 Book of Mormon chunks are the book cut twice, 121 piec
 and 47 of 5,000. Every count is now also given per length. They agree (the 297M puts the 1828-29
 revelations first on all 121 and all 47).
 
+## 32 more authors: settled
+
+The recount by author left one question open: were we really better than Burrows' and Cosine
+Delta, or just ahead by luck on 23 authors? Ahead on 11, behind on 2, the rest tied. The fix was
+more authors, so we drew 32 more, by exactly the same rules as before, continuing down the same
+shuffled list in each genre. The rule went in first (Amendment 56), including a stopping rule:
+no more authors after this, whatever happened, so we couldn't keep drawing until it came out one
+way. Along the way the screen turned down 17 for being translations (Virgil, Tacitus, Calvin),
+two people under one name (two Samuel Butlers, three John Brands), other people's words
+(anthologies, trial records), or not a person at all (the state of New Hampshire).
+
+All 55 authors together, counted by author:
+
+| Our models against | Authors ours wins / theirs wins / tied | Corrected p |
+| --- | --- | --- |
+| Burrows' Delta | 24-25 / 3-4 / 26-27 | under 0.001 |
+| Cosine Delta | 24-26 / 4-6 / 24-25 | 0.0003-0.0014 |
+| General Imposters | 30-33 / 2-4 / 19-21 | under 0.0001 |
+| ENSC | 29-30 / 3-4 / 21-22 | under 0.0001 |
+
+Every size, every method: ours better. And the 32 new authors on their own say the same thing
+(all twelve significant), which is the part I like best, because nobody had looked at them
+before the rule was written. On their 640 tests our models get 91-94% right; the older methods
+76-78%.
+
+So the sentence the paper can now defend is the plain one: at picking the right author from a
+list, period-trained language models beat every older method we tested, at every size. About $7 of
+GPU. What it still doesn't do is say "none of these".
+
 ## Log
+
+- **2026-11-12 (late night).** Amendment 56: 32 more benchmark authors by the same rules. On all 55 authors our models beat Burrows, Cosine, General Imposters and ENSC at every size (all 12 Holm p < 0.002); the 32 new authors alone repeat it. About $6.83. Details in "32 more authors: settled".
 
 - **2026-11-12 (night).** Amendment 55: counted by author, our models are clearly better than General Imposters and ENSC, ahead of Burrows and Cosine Delta but not significantly. The standard score-normalisation fix for "none of these" does not hold up when each author is held out (17-26% false matches against a 5% target). Chunk counts now given per length. Details in "Is there a better 'none of these'?".
 

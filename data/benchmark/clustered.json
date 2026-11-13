@@ -1,8 +1,8 @@
 {
- "config_sha256": "5f6efe7396e480f943b181dda00c93820437fa365101f0b0959a44181a8e7f8e",
+ "config_sha256": "4f646fd0c681d4c5862a24d6f3f43ba68aca2a3eb07e5bdfbf0f59e347798c21",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "36a3ee11e0b721e85c23ff42264d3e793ac9aa75",
+ "git_commit": "cc5e8950b5bea8f9ca6ff174fec1f530d11cd2f9",
  "head_to_head_by_author": [
   {
    "size": "pilot",
@@ -1812,5 +1812,1345 @@
     }
    }
   }
+ },
+ "head_to_head_by_author_a56": {
+  "all_55": [
+   {
+    "size": "pilot",
+    "method": "burrows_delta",
+    "authors": 55,
+    "ours_ahead": 25,
+    "theirs_ahead": 4,
+    "tied": 26,
+    "sign_p": 0.00010371580719947815,
+    "windows": [
+     172,
+     18
+    ],
+    "accuracy_gap": 0.14392523364485982,
+    "gap_95": [
+     0.07735420240137221,
+     0.2164802845461257
+    ],
+    "largest": [
+     [
+      "spring, samuel",
+      19,
+      0
+     ],
+     [
+      "gilpin, william",
+      19,
+      0
+     ],
+     [
+      "brewster, john",
+      15,
+      0
+     ]
+    ],
+    "holm_p": 0.0004148632287979126,
+    "reading": "ours better"
+   },
+   {
+    "size": "pilot",
+    "method": "cosine_delta",
+    "authors": 55,
+    "ours_ahead": 26,
+    "theirs_ahead": 5,
+    "tied": 24,
+    "sign_p": 0.00019219517707824707,
+    "windows": [
+     173,
+     26
+    ],
+    "accuracy_gap": 0.13738317757009347,
+    "gap_95": [
+     0.06809687858857918,
+     0.21760466862699057
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      19,
+      0
+     ],
+     [
+      "brewster, john",
+      17,
+      0
+     ],
+     [
+      "hamilton",
+      15,
+      0
+     ]
+    ],
+    "holm_p": 0.0005399733781814575,
+    "reading": "ours better"
+   },
+   {
+    "size": "pilot",
+    "method": "general_imposters",
+    "authors": 55,
+    "ours_ahead": 33,
+    "theirs_ahead": 3,
+    "tied": 19,
+    "sign_p": 2.2721360437572002e-07,
+    "windows": [
+     256,
+     28
+    ],
+    "accuracy_gap": 0.2130841121495327,
+    "gap_95": [
+     0.14070957858132918,
+     0.28679719772245166
+    ],
+    "largest": [
+     [
+      "scott",
+      18,
+      0
+     ],
+     [
+      "gilpin, william",
+      18,
+      0
+     ],
+     [
+      "spring, samuel",
+      17,
+      0
+     ]
+    ],
+    "holm_p": 2.4993496481329203e-06,
+    "reading": "ours better"
+   },
+   {
+    "size": "pilot",
+    "method": "ensc",
+    "authors": 55,
+    "ours_ahead": 30,
+    "theirs_ahead": 4,
+    "tied": 21,
+    "sign_p": 6.16488978266716e-06,
+    "windows": [
+     200,
+     26
+    ],
+    "accuracy_gap": 0.16261682242990655,
+    "gap_95": [
+     0.08715803686018304,
+     0.241876522529252
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      19,
+      0
+     ],
+     [
+      "spring, samuel",
+      17,
+      0
+     ],
+     [
+      "brewster, john",
+      17,
+      0
+     ]
+    ],
+    "holm_p": 5.548400804400444e-05,
+    "reading": "ours better"
+   },
+   {
+    "size": "base",
+    "method": "burrows_delta",
+    "authors": 55,
+    "ours_ahead": 25,
+    "theirs_ahead": 3,
+    "tied": 27,
+    "sign_p": 2.744048833847046e-05,
+    "windows": [
+     166,
+     12
+    ],
+    "accuracy_gap": 0.14392523364485982,
+    "gap_95": [
+     0.08093324596828114,
+     0.21442297082429634
+    ],
+    "largest": [
+     [
+      "spring, samuel",
+      19,
+      0
+     ],
+     [
+      "gilpin, william",
+      19,
+      0
+     ],
+     [
+      "brewster, john",
+      15,
+      0
+     ]
+    ],
+    "holm_p": 0.00016464293003082275,
+    "reading": "ours better"
+   },
+   {
+    "size": "base",
+    "method": "cosine_delta",
+    "authors": 55,
+    "ours_ahead": 26,
+    "theirs_ahead": 4,
+    "tied": 25,
+    "sign_p": 5.947612226009369e-05,
+    "windows": [
+     166,
+     19
+    ],
+    "accuracy_gap": 0.13738317757009347,
+    "gap_95": [
+     0.07129432363600745,
+     0.21435746507268252
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      19,
+      0
+     ],
+     [
+      "brewster, john",
+      17,
+      0
+     ],
+     [
+      "hamilton",
+      15,
+      0
+     ]
+    ],
+    "holm_p": 0.00029738061130046844,
+    "reading": "ours better"
+   },
+   {
+    "size": "base",
+    "method": "general_imposters",
+    "authors": 55,
+    "ours_ahead": 32,
+    "theirs_ahead": 2,
+    "tied": 21,
+    "sign_p": 6.938353180885315e-08,
+    "windows": [
+     249,
+     21
+    ],
+    "accuracy_gap": 0.2130841121495327,
+    "gap_95": [
+     0.14285016741071427,
+     0.2858278289352379
+    ],
+    "largest": [
+     [
+      "scott",
+      18,
+      0
+     ],
+     [
+      "gilpin, william",
+      18,
+      0
+     ],
+     [
+      "spring, samuel",
+      17,
+      0
+     ]
+    ],
+    "holm_p": 8.326023817062378e-07,
+    "reading": "ours better"
+   },
+   {
+    "size": "base",
+    "method": "ensc",
+    "authors": 55,
+    "ours_ahead": 30,
+    "theirs_ahead": 3,
+    "tied": 22,
+    "sign_p": 1.4011748135089874e-06,
+    "windows": [
+     193,
+     19
+    ],
+    "accuracy_gap": 0.16261682242990655,
+    "gap_95": [
+     0.08836936346762747,
+     0.2398900880729289
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      19,
+      0
+     ],
+     [
+      "spring, samuel",
+      17,
+      0
+     ],
+     [
+      "brewster, john",
+      17,
+      0
+     ]
+    ],
+    "holm_p": 1.4011748135089874e-05,
+    "reading": "ours better"
+   },
+   {
+    "size": "mid",
+    "method": "burrows_delta",
+    "authors": 55,
+    "ours_ahead": 24,
+    "theirs_ahead": 4,
+    "tied": 27,
+    "sign_p": 0.00017999112606048584,
+    "windows": [
+     161,
+     19
+    ],
+    "accuracy_gap": 0.13271028037383178,
+    "gap_95": [
+     0.06938998750627394,
+     0.20214937137124317
+    ],
+    "largest": [
+     [
+      "spring, samuel",
+      19,
+      0
+     ],
+     [
+      "gilpin, william",
+      18,
+      0
+     ],
+     [
+      "brewster, john",
+      15,
+      0
+     ]
+    ],
+    "holm_p": 0.0005399733781814575,
+    "reading": "ours better"
+   },
+   {
+    "size": "mid",
+    "method": "cosine_delta",
+    "authors": 55,
+    "ours_ahead": 24,
+    "theirs_ahead": 6,
+    "tied": 25,
+    "sign_p": 0.001430906355381012,
+    "windows": [
+     160,
+     25
+    ],
+    "accuracy_gap": 0.1261682242990654,
+    "gap_95": [
+     0.05944296251293394,
+     0.2039872400573132
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      18,
+      0
+     ],
+     [
+      "brewster, john",
+      17,
+      0
+     ],
+     [
+      "hamilton",
+      15,
+      0
+     ]
+    ],
+    "holm_p": 0.001430906355381012,
+    "reading": "ours better"
+   },
+   {
+    "size": "mid",
+    "method": "general_imposters",
+    "authors": 55,
+    "ours_ahead": 30,
+    "theirs_ahead": 4,
+    "tied": 21,
+    "sign_p": 6.16488978266716e-06,
+    "windows": [
+     244,
+     28
+    ],
+    "accuracy_gap": 0.20186915887850468,
+    "gap_95": [
+     0.13068963146314633,
+     0.2747196519018421
+    ],
+    "largest": [
+     [
+      "scott",
+      18,
+      0
+     ],
+     [
+      "spring, samuel",
+      17,
+      0
+     ],
+     [
+      "gilpin, william",
+      17,
+      0
+     ]
+    ],
+    "holm_p": 5.548400804400444e-05,
+    "reading": "ours better"
+   },
+   {
+    "size": "mid",
+    "method": "ensc",
+    "authors": 55,
+    "ours_ahead": 29,
+    "theirs_ahead": 4,
+    "tied": 22,
+    "sign_p": 1.0928604751825333e-05,
+    "windows": [
+     188,
+     26
+    ],
+    "accuracy_gap": 0.15140186915887852,
+    "gap_95": [
+     0.07648155438083455,
+     0.22770423603772288
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      18,
+      0
+     ],
+     [
+      "spring, samuel",
+      17,
+      0
+     ],
+     [
+      "brewster, john",
+      17,
+      0
+     ]
+    ],
+    "holm_p": 7.650023326277733e-05,
+    "reading": "ours better"
+   }
+  ],
+  "new_32": [
+   {
+    "size": "pilot",
+    "method": "burrows_delta",
+    "authors": 32,
+    "ours_ahead": 14,
+    "theirs_ahead": 1,
+    "tied": 17,
+    "sign_p": 0.0009765625,
+    "windows": [
+     114,
+     3
+    ],
+    "accuracy_gap": 0.1734375,
+    "gap_95": [
+     0.090625,
+     0.2703125
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      19,
+      0
+     ],
+     [
+      "brewster, john",
+      15,
+      0
+     ],
+     [
+      "feltham, john",
+      13,
+      0
+     ]
+    ],
+    "holm_p": 0.0107421875,
+    "reading": "ours better"
+   },
+   {
+    "size": "pilot",
+    "method": "cosine_delta",
+    "authors": 32,
+    "ours_ahead": 15,
+    "theirs_ahead": 2,
+    "tied": 15,
+    "sign_p": 0.002349853515625,
+    "windows": [
+     107,
+     10
+    ],
+    "accuracy_gap": 0.1515625,
+    "gap_95": [
+     0.0640625,
+     0.2546875
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      19,
+      0
+     ],
+     [
+      "brewster, john",
+      17,
+      0
+     ],
+     [
+      "feltham, john",
+      15,
+      0
+     ]
+    ],
+    "holm_p": 0.01409912109375,
+    "reading": "ours better"
+   },
+   {
+    "size": "pilot",
+    "method": "general_imposters",
+    "authors": 32,
+    "ours_ahead": 17,
+    "theirs_ahead": 2,
+    "tied": 13,
+    "sign_p": 0.000728607177734375,
+    "windows": [
+     126,
+     21
+    ],
+    "accuracy_gap": 0.1640625,
+    "gap_95": [
+     0.0749609375,
+     0.2625
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      18,
+      0
+     ],
+     [
+      "edgeworth, maria",
+      15,
+      0
+     ],
+     [
+      "brewster, john",
+      12,
+      0
+     ]
+    ],
+    "holm_p": 0.0087432861328125,
+    "reading": "ours better"
+   },
+   {
+    "size": "pilot",
+    "method": "ensc",
+    "authors": 32,
+    "ours_ahead": 16,
+    "theirs_ahead": 2,
+    "tied": 14,
+    "sign_p": 0.001312255859375,
+    "windows": [
+     124,
+     17
+    ],
+    "accuracy_gap": 0.1671875,
+    "gap_95": [
+     0.065625,
+     0.2797265624999994
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      19,
+      0
+     ],
+     [
+      "brewster, john",
+      17,
+      0
+     ],
+     [
+      "ricardo, david",
+      13,
+      0
+     ]
+    ],
+    "holm_p": 0.011810302734375,
+    "reading": "ours better"
+   },
+   {
+    "size": "base",
+    "method": "burrows_delta",
+    "authors": 32,
+    "ours_ahead": 14,
+    "theirs_ahead": 1,
+    "tied": 17,
+    "sign_p": 0.0009765625,
+    "windows": [
+     107,
+     3
+    ],
+    "accuracy_gap": 0.1625,
+    "gap_95": [
+     0.0828125,
+     0.2578515624999994
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      19,
+      0
+     ],
+     [
+      "brewster, john",
+      15,
+      0
+     ],
+     [
+      "feltham, john",
+      13,
+      0
+     ]
+    ],
+    "holm_p": 0.0107421875,
+    "reading": "ours better"
+   },
+   {
+    "size": "base",
+    "method": "cosine_delta",
+    "authors": 32,
+    "ours_ahead": 15,
+    "theirs_ahead": 2,
+    "tied": 15,
+    "sign_p": 0.002349853515625,
+    "windows": [
+     99,
+     9
+    ],
+    "accuracy_gap": 0.140625,
+    "gap_95": [
+     0.0546875,
+     0.2421875
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      19,
+      0
+     ],
+     [
+      "brewster, john",
+      17,
+      0
+     ],
+     [
+      "feltham, john",
+      15,
+      0
+     ]
+    ],
+    "holm_p": 0.01409912109375,
+    "reading": "ours better"
+   },
+   {
+    "size": "base",
+    "method": "general_imposters",
+    "authors": 32,
+    "ours_ahead": 16,
+    "theirs_ahead": 2,
+    "tied": 14,
+    "sign_p": 0.001312255859375,
+    "windows": [
+     118,
+     20
+    ],
+    "accuracy_gap": 0.153125,
+    "gap_95": [
+     0.0640625,
+     0.2546875
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      18,
+      0
+     ],
+     [
+      "edgeworth, maria",
+      15,
+      0
+     ],
+     [
+      "brewster, john",
+      12,
+      0
+     ]
+    ],
+    "holm_p": 0.011810302734375,
+    "reading": "ours better"
+   },
+   {
+    "size": "base",
+    "method": "ensc",
+    "authors": 32,
+    "ours_ahead": 16,
+    "theirs_ahead": 2,
+    "tied": 14,
+    "sign_p": 0.001312255859375,
+    "windows": [
+     116,
+     16
+    ],
+    "accuracy_gap": 0.15625,
+    "gap_95": [
+     0.05625,
+     0.2703125
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      19,
+      0
+     ],
+     [
+      "brewster, john",
+      17,
+      0
+     ],
+     [
+      "ricardo, david",
+      13,
+      0
+     ]
+    ],
+    "holm_p": 0.011810302734375,
+    "reading": "ours better"
+   },
+   {
+    "size": "mid",
+    "method": "burrows_delta",
+    "authors": 32,
+    "ours_ahead": 14,
+    "theirs_ahead": 2,
+    "tied": 16,
+    "sign_p": 0.004180908203125,
+    "windows": [
+     102,
+     10
+    ],
+    "accuracy_gap": 0.14375,
+    "gap_95": [
+     0.0609375,
+     0.2390625
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      18,
+      0
+     ],
+     [
+      "brewster, john",
+      15,
+      0
+     ],
+     [
+      "feltham, john",
+      13,
+      0
+     ]
+    ],
+    "holm_p": 0.0167236328125,
+    "reading": "ours better"
+   },
+   {
+    "size": "mid",
+    "method": "cosine_delta",
+    "authors": 32,
+    "ours_ahead": 14,
+    "theirs_ahead": 4,
+    "tied": 14,
+    "sign_p": 0.0308837890625,
+    "windows": [
+     93,
+     15
+    ],
+    "accuracy_gap": 0.121875,
+    "gap_95": [
+     0.0375,
+     0.2234375
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      18,
+      0
+     ],
+     [
+      "brewster, john",
+      17,
+      0
+     ],
+     [
+      "feltham, john",
+      15,
+      0
+     ]
+    ],
+    "holm_p": 0.038421630859375,
+    "reading": "ours better"
+   },
+   {
+    "size": "mid",
+    "method": "general_imposters",
+    "authors": 32,
+    "ours_ahead": 15,
+    "theirs_ahead": 4,
+    "tied": 13,
+    "sign_p": 0.0192108154296875,
+    "windows": [
+     112,
+     26
+    ],
+    "accuracy_gap": 0.134375,
+    "gap_95": [
+     0.046875,
+     0.234375
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      17,
+      0
+     ],
+     [
+      "edgeworth, maria",
+      15,
+      0
+     ],
+     [
+      "brewster, john",
+      12,
+      0
+     ]
+    ],
+    "holm_p": 0.038421630859375,
+    "reading": "ours better"
+   },
+   {
+    "size": "mid",
+    "method": "ensc",
+    "authors": 32,
+    "ours_ahead": 15,
+    "theirs_ahead": 3,
+    "tied": 14,
+    "sign_p": 0.007537841796875,
+    "windows": [
+     111,
+     23
+    ],
+    "accuracy_gap": 0.1375,
+    "gap_95": [
+     0.0390625,
+     0.2484375
+    ],
+    "largest": [
+     [
+      "gilpin, william",
+      18,
+      0
+     ],
+     [
+      "brewster, john",
+      17,
+      0
+     ],
+     [
+      "ricardo, david",
+      13,
+      0
+     ]
+    ],
+    "holm_p": 0.022613525390625,
+    "reading": "ours better"
+   }
+  ],
+  "bom75_23": [
+   {
+    "size": "pilot",
+    "method": "burrows_delta",
+    "authors": 23,
+    "ours_ahead": 11,
+    "theirs_ahead": 3,
+    "tied": 9,
+    "sign_p": 0.057373046875,
+    "windows": [
+     58,
+     15
+    ],
+    "accuracy_gap": 0.1,
+    "gap_95": [
+     0.009635120052657186,
+     0.21859689070351754
+    ],
+    "largest": [
+     [
+      "spring, samuel",
+      19,
+      0
+     ],
+     [
+      "malthus, t r thomas robert",
+      9,
+      0
+     ],
+     [
+      "mant, richard",
+      8,
+      0
+     ]
+    ],
+    "holm_p": 0.154296875,
+    "reading": "no difference shown"
+   },
+   {
+    "size": "pilot",
+    "method": "cosine_delta",
+    "authors": 23,
+    "ours_ahead": 11,
+    "theirs_ahead": 3,
+    "tied": 9,
+    "sign_p": 0.057373046875,
+    "windows": [
+     66,
+     16
+    ],
+    "accuracy_gap": 0.11627906976744186,
+    "gap_95": [
+     0.006917183345886605,
+     0.2437336827935052
+    ],
+    "largest": [
+     [
+      "hamilton",
+      15,
+      0
+     ],
+     [
+      "spring, samuel",
+      15,
+      0
+     ],
+     [
+      "mant, richard",
+      10,
+      0
+     ]
+    ],
+    "holm_p": 0.154296875,
+    "reading": "no difference shown"
+   },
+   {
+    "size": "pilot",
+    "method": "general_imposters",
+    "authors": 23,
+    "ours_ahead": 16,
+    "theirs_ahead": 1,
+    "tied": 6,
+    "sign_p": 0.000274658203125,
+    "windows": [
+     130,
+     7
+    ],
+    "accuracy_gap": 0.28604651162790695,
+    "gap_95": [
+     0.18336522213906817,
+     0.39364943344856945
+    ],
+    "largest": [
+     [
+      "scott",
+      18,
+      0
+     ],
+     [
+      "spring, samuel",
+      17,
+      0
+     ],
+     [
+      "mant, richard",
+      15,
+      0
+     ]
+    ],
+    "holm_p": 0.00274658203125,
+    "reading": "ours better"
+   },
+   {
+    "size": "pilot",
+    "method": "ensc",
+    "authors": 23,
+    "ours_ahead": 14,
+    "theirs_ahead": 2,
+    "tied": 7,
+    "sign_p": 0.004180908203125,
+    "windows": [
+     76,
+     9
+    ],
+    "accuracy_gap": 0.1558139534883721,
+    "gap_95": [
+     0.060395349690101595,
+     0.2765983267919851
+    ],
+    "largest": [
+     [
+      "spring, samuel",
+      17,
+      0
+     ],
+     [
+      "mant, richard",
+      11,
+      0
+     ],
+     [
+      "alley, jerom",
+      10,
+      2
+     ]
+    ],
+    "holm_p": 0.029266357421875,
+    "reading": "ours better"
+   },
+   {
+    "size": "base",
+    "method": "burrows_delta",
+    "authors": 23,
+    "ours_ahead": 11,
+    "theirs_ahead": 2,
+    "tied": 10,
+    "sign_p": 0.0224609375,
+    "windows": [
+     59,
+     9
+    ],
+    "accuracy_gap": 0.11627906976744186,
+    "gap_95": [
+     0.03326485925620749,
+     0.23228540698728714
+    ],
+    "largest": [
+     [
+      "spring, samuel",
+      19,
+      0
+     ],
+     [
+      "malthus, t r thomas robert",
+      9,
+      0
+     ],
+     [
+      "mant, richard",
+      8,
+      0
+     ]
+    ],
+    "holm_p": 0.134765625,
+    "reading": "no difference shown"
+   },
+   {
+    "size": "base",
+    "method": "cosine_delta",
+    "authors": 23,
+    "ours_ahead": 11,
+    "theirs_ahead": 2,
+    "tied": 10,
+    "sign_p": 0.0224609375,
+    "windows": [
+     67,
+     10
+    ],
+    "accuracy_gap": 0.1325581395348837,
+    "gap_95": [
+     0.03240553630998204,
+     0.2545873064605456
+    ],
+    "largest": [
+     [
+      "hamilton",
+      15,
+      0
+     ],
+     [
+      "spring, samuel",
+      15,
+      0
+     ],
+     [
+      "mant, richard",
+      10,
+      0
+     ]
+    ],
+    "holm_p": 0.134765625,
+    "reading": "no difference shown"
+   },
+   {
+    "size": "base",
+    "method": "general_imposters",
+    "authors": 23,
+    "ours_ahead": 16,
+    "theirs_ahead": 0,
+    "tied": 7,
+    "sign_p": 3.0517578125e-05,
+    "windows": [
+     131,
+     1
+    ],
+    "accuracy_gap": 0.3023255813953488,
+    "gap_95": [
+     0.2052937680421124,
+     0.4061983919498839
+    ],
+    "largest": [
+     [
+      "scott",
+      18,
+      0
+     ],
+     [
+      "spring, samuel",
+      17,
+      0
+     ],
+     [
+      "mant, richard",
+      15,
+      0
+     ]
+    ],
+    "holm_p": 0.0003662109375,
+    "reading": "ours better"
+   },
+   {
+    "size": "base",
+    "method": "ensc",
+    "authors": 23,
+    "ours_ahead": 14,
+    "theirs_ahead": 1,
+    "tied": 8,
+    "sign_p": 0.0009765625,
+    "windows": [
+     77,
+     3
+    ],
+    "accuracy_gap": 0.17209302325581396,
+    "gap_95": [
+     0.0808643830128205,
+     0.2896042985446085
+    ],
+    "largest": [
+     [
+      "spring, samuel",
+      17,
+      0
+     ],
+     [
+      "mant, richard",
+      11,
+      0
+     ],
+     [
+      "alley, jerom",
+      11,
+      2
+     ]
+    ],
+    "holm_p": 0.0087890625,
+    "reading": "ours better"
+   },
+   {
+    "size": "mid",
+    "method": "burrows_delta",
+    "authors": 23,
+    "ours_ahead": 10,
+    "theirs_ahead": 2,
+    "tied": 11,
+    "sign_p": 0.03857421875,
+    "windows": [
+     59,
+     9
+    ],
+    "accuracy_gap": 0.11627906976744186,
+    "gap_95": [
+     0.03225621060437523,
+     0.2352972938635497
+    ],
+    "largest": [
+     [
+      "spring, samuel",
+      19,
+      0
+     ],
+     [
+      "malthus, t r thomas robert",
+      9,
+      0
+     ],
+     [
+      "mant, richard",
+      8,
+      0
+     ]
+    ],
+    "holm_p": 0.154296875,
+    "reading": "no difference shown"
+   },
+   {
+    "size": "mid",
+    "method": "cosine_delta",
+    "authors": 23,
+    "ours_ahead": 10,
+    "theirs_ahead": 2,
+    "tied": 11,
+    "sign_p": 0.03857421875,
+    "windows": [
+     67,
+     10
+    ],
+    "accuracy_gap": 0.1325581395348837,
+    "gap_95": [
+     0.032169761361003545,
+     0.25528041768158755
+    ],
+    "largest": [
+     [
+      "hamilton",
+      15,
+      0
+     ],
+     [
+      "spring, samuel",
+      15,
+      0
+     ],
+     [
+      "mant, richard",
+      10,
+      0
+     ]
+    ],
+    "holm_p": 0.154296875,
+    "reading": "no difference shown"
+   },
+   {
+    "size": "mid",
+    "method": "general_imposters",
+    "authors": 23,
+    "ours_ahead": 15,
+    "theirs_ahead": 0,
+    "tied": 8,
+    "sign_p": 6.103515625e-05,
+    "windows": [
+     132,
+     2
+    ],
+    "accuracy_gap": 0.3023255813953488,
+    "gap_95": [
+     0.20523008569344353,
+     0.40648449060308917
+    ],
+    "largest": [
+     [
+      "scott",
+      18,
+      0
+     ],
+     [
+      "spring, samuel",
+      17,
+      0
+     ],
+     [
+      "mant, richard",
+      15,
+      0
+     ]
+    ],
+    "holm_p": 0.00067138671875,
+    "reading": "ours better"
+   },
+   {
+    "size": "mid",
+    "method": "ensc",
+    "authors": 23,
+    "ours_ahead": 14,
+    "theirs_ahead": 1,
+    "tied": 8,
+    "sign_p": 0.0009765625,
+    "windows": [
+     77,
+     3
+    ],
+    "accuracy_gap": 0.17209302325581396,
+    "gap_95": [
+     0.0811500636762417,
+     0.2871830985915492
+    ],
+    "largest": [
+     [
+      "spring, samuel",
+      17,
+      0
+     ],
+     [
+      "mant, richard",
+      11,
+      0
+     ],
+     [
+      "alley, jerom",
+      11,
+      2
+     ]
+    ],
+    "holm_p": 0.0087890625,
+    "reading": "ours better"
+   }
+  ]
  }
 }
