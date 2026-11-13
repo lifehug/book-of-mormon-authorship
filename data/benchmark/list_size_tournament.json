@@ -2,7 +2,7 @@
  "config_sha256": "092199b6d34a7b87759f8b2bac7a483e1cfbe0ceb21a0a3671e2489c9bf93f3a",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "4f706a04e343bc70d626b214c88ebe7cbf8e6801",
+ "git_commit": "bcdf3cb87febbe75fc3e0b8a65250fa938826785",
  "list": 55,
  "exploratory": true,
  "results": {
@@ -171,6 +171,90 @@
     "fresh": {
      "authors": 53,
      "mean_by_author": 0.8462264150943396
+    }
+   }
+  },
+  "alm_mid": {
+   "straight_one_passage": {
+    "authors": 55,
+    "mean_by_author": 0.8227272727272726
+   },
+   "pooled_passages": {
+    "1": {
+     "authors": 55,
+     "mean_by_author": 0.8281818181818181
+    },
+    "2": {
+     "authors": 53,
+     "mean_by_author": 0.8566037735849058
+    },
+    "3": {
+     "authors": 51,
+     "mean_by_author": 0.8509803921568626
+    },
+    "5": {
+     "authors": 50,
+     "mean_by_author": 0.85
+    },
+    "8": {
+     "authors": 40,
+     "mean_by_author": 0.8387499999999999
+    }
+   },
+   "heats_5x11_keep4": {
+    "in_final": {
+     "authors": 53,
+     "mean_by_author": 0.9575471698113207
+    },
+    "same": {
+     "authors": 53,
+     "mean_by_author": 0.8169811320754717
+    },
+    "fresh": {
+     "authors": 53,
+     "mean_by_author": 0.800943396226415
+    }
+   },
+   "heats_5x11_keep2": {
+    "in_final": {
+     "authors": 53,
+     "mean_by_author": 0.9235849056603773
+    },
+    "same": {
+     "authors": 53,
+     "mean_by_author": 0.8301886792452832
+    },
+    "fresh": {
+     "authors": 53,
+     "mean_by_author": 0.8066037735849056
+    }
+   },
+   "heats_11x5_keep2": {
+    "in_final": {
+     "authors": 53,
+     "mean_by_author": 0.9594339622641511
+    },
+    "same": {
+     "authors": 53,
+     "mean_by_author": 0.8235849056603773
+    },
+    "fresh": {
+     "authors": 53,
+     "mean_by_author": 0.8037735849056603
+    }
+   },
+   "heats_11x5_keep1": {
+    "in_final": {
+     "authors": 53,
+     "mean_by_author": 0.911320754716981
+    },
+    "same": {
+     "authors": 53,
+     "mean_by_author": 0.8198113207547171
+    },
+    "fresh": {
+     "authors": 53,
+     "mean_by_author": 0.7952830188679245
     }
    }
   }
