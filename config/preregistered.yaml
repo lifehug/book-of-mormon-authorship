@@ -529,6 +529,23 @@ sweep:
   gate_sample: 100
   gate_seed: bom47-gate
 
+# Amendment 57 (Part 2): a library-wide author search (docs/part2-library-search-plan.md)
+sweep_search:
+  gi_shortlist: 100               # step 0: General Imposters on each book's 100 closest (Cosine Delta)
+  gi_pool: 500                    # seeded random profiles, the candidate excluded
+  gi_pool_seed: a57-gi-pool
+  unknown_share: 0.10             # blocks trained under the "unknown author" label
+  unknown_seed: a57-unknown
+  leak_share: 0.15                # drop a training block sharing > 15% of a query chunk's 5-grams
+  size: base
+  epochs: 2
+  peak_lr: 1.0e-4
+  warmup_share: 0.02
+  final_lr_share: 0.10
+  batch_tokens: 524288
+  shortlist_each: 500             # union of the 500 closest by Cosine Delta and by the style encoder
+  seed: a57-train
+
 imitation:
   # Amendment 31 (OSF revision 6aee2298fab087018e80bc54; docs/imitation-plan.md): BOM-31
   min_words: 10000
