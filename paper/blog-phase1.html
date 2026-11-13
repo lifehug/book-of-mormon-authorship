@@ -9,7 +9,7 @@
   color-scheme: light;
   --bg:#fbfaf7; --surface:#ffffff; --surface-2:#f3f1ec; --line:#e2dfd7;
   --text:#16150f; --text-2:#52514e; --text-3:#7b7972;
-  --s1:#2a78d6; --s2:#eb6834; --neutral:#b9b6ac; --accent-bg:#e9f1fc;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --neutral:#b9b6ac; --accent-bg:#e9f1fc;
   --seq-lo:#cde2fb; --seq-hi:#256abf;
   --serif: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
   --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
@@ -19,7 +19,7 @@
     color-scheme: dark;
     --bg:#131312; --surface:#1a1a19; --surface-2:#242422; --line:#33322f;
     --text:#f0efec; --text-2:#c3c2b7; --text-3:#8f8d84;
-    --s1:#3987e5; --s2:#d95926; --neutral:#5d5b55; --accent-bg:#162a44;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --neutral:#5d5b55; --accent-bg:#162a44;
     --seq-lo:#184f95; --seq-hi:#6da7ec;
   }
 }
@@ -98,6 +98,7 @@ svg text{font-family:var(--sans);fill:var(--text-2);font-size:12px}
 .rk .bar{top:3px;height:14px;transition:width .25s}
 .rk .val{position:absolute;top:1px;padding-left:6px;font-variant-numeric:tabular-nums;color:var(--text-2);white-space:nowrap}
 .rk .mr{text-align:right;font-variant-numeric:tabular-nums;color:var(--text-2)}
+.tlwrap{overflow-x:auto}.tlwrap>div{min-width:600px}
 .rkhead{color:var(--text-3);font-size:.72rem;border-top:0}
 @media (max-width:560px){.rk{grid-template-columns:18px minmax(0,46%) 1fr 40px;gap:6px;font-size:.78rem}}
 hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
@@ -153,6 +154,34 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <div class="tile"><b>8</b><span>candidates with writing samples</span></div>
 <div class="tile"><b>168</b><span>passages of the Book of Mormon, sealed from every model until the final run</span></div>
 <div class="tile"><b>58</b><span>dated changes to the plan, each written down before its result</span></div>
+</div>
+
+<h3>How that compares with what's been tried before</h3>
+<p>Computer studies of this question go back to 1980. Four of them compared the Book of Mormon with a few dozen to a couple of hundred writing samples from a handful of people. One, in 2013, searched about 100,000 old books for shared phrases. As far as I can find, nothing on this question has come close to this size. Switch between the two measures.</p>
+
+<figure>
+<h4>This study against every earlier computer study</h4>
+<div class="seg" id="sc-seg" role="group" aria-label="Measure">
+<button data-k="texts" aria-pressed="true">Texts compared against</button><button data-k="people" aria-pressed="false">People checked as possible authors</button>
+</div>
+<p class="sub" id="sc-sub"></p>
+<div id="ch-scale"></div>
+<figcaption id="sc-cap"></figcaption>
+</figure>
+
+<p>Size isn't the only difference, and it may not be the main one.</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th></th><th>1980</th><th>1992</th><th>2008</th><th>2011</th><th>2013</th><th>This study</th></tr></thead>
+<tbody>
+<tr><td>Can answer "none of these"</td><td>no</td><td>n/a</td><td>no</td><td>yes</td><td>n/a</td><td><b>yes, every method</b></td></tr>
+<tr><td>Error rate measured on known authors</td><td>no</td><td>no</td><td>among its own candidates</td><td>partly</td><td>no</td><td><b>yes, every method</b></td></tr>
+<tr><td>King James wording taken out</td><td>no</td><td>no</td><td>no</td><td>no</td><td>no</td><td><b>yes</b></td></tr>
+<tr><td>Rules written before results</td><td>no</td><td>no</td><td>no</td><td>no</td><td>no</td><td><b>yes</b></td></tr>
+<tr><td>Models and data public</td><td>no</td><td>no</td><td>data</td><td>no</td><td>no</td><td><b>yes</b></td></tr>
+</tbody>
+</table>
 </div>
 
 <p>The eight candidates are the ones people have argued about for two centuries: Joseph Smith, Oliver Cowdery, Sidney Rigdon, Parley Pratt, W. W. Phelps, Solomon Spalding, Ethan Smith and Gilbert Hunt.</p>
@@ -263,6 +292,31 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <h2 id="joseph">5. Joseph Smith, up close</h2>
 
+<h3>First, what the revelations are</h3>
+<p>Joseph Smith left two very different kinds of writing. One is ordinary: letters, a journal, a short history of his life. The other is what he called revelations. These are short texts, dictated aloud to a scribe, in which the speaker is God. They were later gathered into the Doctrine and Covenants, which Latter-day Saints hold as scripture alongside the Bible and the Book of Mormon.</p>
+
+<p>Seven of them survive from before the Book of Mormon was printed, 2,844 words in all. They were dictated in the same months as the book, to some of the same scribes. Another 95 followed between 1830 and 1834.</p>
+
+<figure>
+<h4>The same months: the revelations and the Book of Mormon, 1828 to 1830</h4>
+<p class="sub">Each dot is one revelation in my sample. Hover or tap for which one.</p>
+<div class="tlwrap"><div id="tl-zoom"></div></div>
+<figcaption>The first 116 pages of the dictation, from spring 1828, were lost and never replaced. The book as printed was dictated mostly between April and June 1829.</figcaption>
+</figure>
+
+<p>Here's why I keep the two kinds apart. Latter-day Saints believe the revelations came from God, and that the Book of Mormon was translated by that same gift and power. In that way of thinking, neither one is Joseph Smith's own composition, and the interesting comparison isn't the book against his letters. It's the book against the other texts said to come the same way. Someone who thinks he wrote both would want the same comparison, for a different reason: it's the nearest thing to his voice when he's writing scripture.</p>
+
+<p>So every test below treats his revelations and his ordinary writing as separate samples, and I show the ranking both with the revelations and without them. I'm not saying which way of thinking is right. I'm making sure the test can speak to both.</p>
+
+<figure>
+<h4>When each candidate's writing comes from</h4>
+<p class="sub">The vertical line is March 1830, when the Book of Mormon was printed.</p>
+<div class="legend"><span><i style="background:var(--s2)"></i>Book of Mormon</span><span><i style="background:var(--s1)"></i>Joseph Smith's revelations</span><span><i style="background:var(--s3)"></i>His ordinary writing</span><span><i style="background:var(--neutral)"></i>Other candidates</span></div>
+<div class="tlwrap"><div id="tl-all"></div></div>
+<figcaption>For most candidates the only writing that survives is from after the book was printed. Anything in those later samples that quotes the book at length was removed.</figcaption>
+</figure>
+
+<h3>The ranking</h3>
 <p>Here's the ranking itself. Each of the 168 sealed passages was scored against every candidate sample, by eight methods: my three models, two style encoders, and three older word-count methods. Some candidates have more than one sample, because a man's letters and his dictated revelations aren't the same kind of writing. Joseph Smith has four. Pick a method and see the list.</p>
 
 <figure>
@@ -380,8 +434,8 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
       var lab=document.createElement('div');lab.className='lab';lab.innerHTML=r.label;
       var tr=document.createElement('div');tr.className='track';
       var b=document.createElement('div');b.className='bar '+(r.cls||'');
-      var w=Math.max(.4,r.v/max*82);b.style.width=w+'%';
-      var v=document.createElement('div');v.className='val';v.style.left=w+'%';v.textContent=r.v+unit;
+      var w=Math.max(.4,r.v/max*(r.disp?70:82));b.style.width=w+'%';
+      var v=document.createElement('div');v.className='val';v.style.left=w+'%';v.textContent=r.disp||(r.v+unit);
       tr.appendChild(b);tr.appendChild(v);row.appendChild(lab);row.appendChild(tr);root.appendChild(row);
       hover(tr,r.tip);
     });
@@ -406,6 +460,39 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
     {label:'GPT-2, 355M',v:86,cls:'s2',tip:'GPT-2 355M: 86% false matches; wrong author on 6 of 110.'},
     {label:'Mine, 297M',v:38,cls:'s1',tip:'Period model 297M: 38% false matches; wrong author on 1 of 110.'}
   ],100,'%');
+
+
+  /* scale against earlier studies */
+  var SC={
+   texts:{sub:'Linear scale. The four earliest bars are there; they are too small to see.',
+    cap:'Of the 695,021 items catalogued, 202,816 volumes passed the date and duplicate checks and trained the models. The 2013 library was never published.',
+    max:695021,rows:[
+     ['Larsen 1980',90,'90','90 blocks of about 1,000 to 2,000 words from six candidates and two other texts.'],
+     ['Holmes 1992',6,'a handful','A handful of comparison samples: Joseph Smith\'s personal writings, three sets of revelations, Isaiah, the Book of Abraham.'],
+     ['Jockers 2008',217,'217','217 samples from four candidates, two poets as controls, and the King James prophets.'],
+     ['Schaalje 2011',218,'about 220','The 2008 samples, plus Joseph Smith.'],
+     ['Johnson 2013',100000,'about 100,000','About 100,000 books before 1830, searched for rare four-word phrases.'],
+     ['<b>This study</b>, trained on',202816,'202,816','202,816 volumes from 1780 to 1830: 25.7 billion tokens, the text my models learned from.','s1'],
+     ['<b>This study</b>, catalogued',695021,'695,021','695,021 items: books from three libraries, 159,146 newspaper pages, and 61,315 older texts for dating.','s1']]},
+   people:{sub:'Linear scale. Seven or fewer for every earlier study.',
+    cap:'Eight named candidates got the full treatment, one model each. The other 23,872 are every author in the library with at least 10,000 words, checked with two cheaper methods (section 7).',
+    max:23880,rows:[
+     ['Larsen 1980',6,'6','Joseph Smith, Phelps, Cowdery, Pratt, Rigdon, Spalding.'],
+     ['Holmes 1992',1,'1','Joseph Smith only.'],
+     ['Jockers 2008',4,'4','Cowdery, Pratt, Rigdon, Spalding. Joseph Smith was left out for want of reliable text.'],
+     ['Schaalje 2011',5,'5','The 2008 four, plus Joseph Smith.'],
+     ['Johnson 2013',0,'books, not people','This study ranked books, not people.'],
+     ['<b>This study</b>, named candidates',8,'8','Eight named candidates, each with a model of their own.','s1'],
+     ['<b>This study</b>, whole library',23880,'23,880','The eight, plus 23,872 library authors with at least 10,000 words.','s1']]}
+  };
+  function scDraw(k){
+    var d=SC[k];document.getElementById('ch-scale').innerHTML='';
+    Array.prototype.forEach.call(document.querySelectorAll('#sc-seg button'),function(b){b.setAttribute('aria-pressed',b.dataset.k===k)});
+    document.getElementById('sc-sub').textContent=d.sub;document.getElementById('sc-cap').textContent=d.cap;
+    bars('ch-scale',d.rows.map(function(r){return {label:r[0],v:r[1],disp:r[2],tip:r[0].replace(/<[^>]+>/g,'')+': '+r[3],cls:r[4]||''}}),d.max,'');
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('#sc-seg button'),function(b){b.onclick=function(){scDraw(b.dataset.k)}});
+  scDraw('texts');
 
   /* phrase explorer */
   var PH=[
@@ -461,6 +548,59 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
   MT.forEach(function(m){var b=document.createElement('button');b.className='btn';b.dataset.m=m[0];b.textContent=m[1];b.onclick=function(){rkM=m[0];rkDraw()};mb.appendChild(b)});
   Array.prototype.forEach.call(document.querySelectorAll('#rk-c button'),function(b){b.onclick=function(){rkC=b.dataset.c;rkDraw()}});
   rkDraw();
+
+
+  /* timelines */
+  (function(){
+    var ns='http://www.w3.org/2000/svg';
+    function el(n,a,txt){var e=document.createElementNS(ns,n);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e}
+    /* zoom: months since Jan 1828 */
+    var W=700,L=150,R=20,H=150,m0=0,m1=28;
+    function x(m){return L+(m-m0)/(m1-m0)*(W-L-R)}
+    var s=el('svg',{viewBox:'0 0 '+W+' '+H,width:'100%',role:'img','aria-label':'Timeline 1828 to 1830: Book of Mormon dictation and seven revelations'});
+    [[0,'Jan 1828'],[6,'Jul 1828'],[12,'Jan 1829'],[18,'Jul 1829'],[24,'Jan 1830']].forEach(function(t){
+      s.appendChild(el('line',{x1:x(t[0]),x2:x(t[0]),y1:14,y2:H-30,stroke:'var(--line)'}));
+      s.appendChild(el('text',{x:x(t[0]),y:H-12,'text-anchor':'middle'},t[1]));});
+    s.appendChild(el('text',{x:L-12,y:50,'text-anchor':'end',style:'fill:var(--text)'},'Book of Mormon'));
+    s.appendChild(el('text',{x:L-12,y:100,'text-anchor':'end',style:'fill:var(--text)'},'Revelations'));
+    function span(a,b,y,col,op,tip,h){var r=el('rect',{x:x(a),y:y,width:x(b)-x(a),height:h||14,rx:4,fill:col,opacity:op});s.appendChild(r);hover(r,tip)}
+    span(3.4,5.5,39,'var(--s2)',.4,'April to June 1828: the first 116 pages dictated, then lost. They are not in the printed book.');
+    span(15.2,18,39,'var(--s2)',1,'April to June 1829: most of the Book of Mormon dictated, Oliver Cowdery as main scribe.');
+    span(19.5,26.8,44,'var(--s2)',.55,'August 1829 to March 1830: typesetting and printing in Palmyra.',4);
+    var pr=el('circle',{cx:x(26.8),cy:46,r:6,fill:'var(--s2)',stroke:'var(--surface)','stroke-width':2});s.appendChild(pr);hover(pr,'26 March 1830: the Book of Mormon goes on sale.');
+    s.appendChild(el('text',{x:x(15.2),y:30,style:'fill:var(--text-2)'},'dictated'));
+    s.appendChild(el('text',{x:x(26.8),y:30,'text-anchor':'middle',style:'fill:var(--text-2)'},'printed'));
+    s.appendChild(el('text',{x:x(3.4),y:30,style:'fill:var(--text-2)'},'lost pages'));
+    [[6.5,'July 1828 (D&C 3), 611 words. Dictated after the 116 pages were lost.'],[13.4,'February 1829 (D&C 4), 97 words.'],[15.1,'Spring 1829 (D&C 10), 778 words.'],[15.6,'April 1829 (D&C 8), 369 words.'],[16.1,'April 1829, Account of John (D&C 7), 171 words.'],[16.6,'April 1829 (D&C 9), 310 words.'],[19.3,'About summer 1829 (D&C 19), 508 words.']].forEach(function(d){
+      var c=el('circle',{cx:x(d[0]),cy:96,r:6,fill:'var(--s1)',stroke:'var(--surface)','stroke-width':2});s.appendChild(c);hover(c,d[1])});
+    document.getElementById('tl-zoom').appendChild(s);
+
+    /* all candidates, years */
+    var Y0=1808,Y1=1842,rows=[
+      ['Book of Mormon','s2',[[1829.25,1830.23,'Dictated 1829, printed March 1830.']],[]],
+      ['J. Smith: revelations','s1',[[1828.5,1829.6,'Seven revelations, July 1828 to summer 1829: 2,844 words. The sample every test uses.'],[1830.3,1834.9,'95 later revelations, 1830 to 1834: 65,222 words. Tested separately as a deep dive.',.5]],[]],
+      ['J. Smith: ordinary writing','s3',[[1831.2,1834.9,'Letters, a journal (1832 to 1834) and a short history (1832), in his own hand or dictated.']],[]],
+      ['Oliver Cowdery','n',[[1834.8,1837.7,'Signed newspaper pieces, mostly the Messenger and Advocate, 1834 to 1837.']],[[1829.45,'June 1829: his "Articles of the Church", the sample that turned out to be 40% Book of Mormon.']]],
+      ['W. W. Phelps','n',[[1832.4,1837.5,'Signed newspaper pieces, 1832 to 1837.']],[]],
+      ['Sidney Rigdon','n',[[1834.8,1838.6,'Signed newspaper pieces and an 1838 oration.']],[]],
+      ['Parley Pratt','n',[[1835.5,1840.5,'A Voice of Warning (1837) and other books and articles to 1840.']],[]],
+      ['Ethan Smith','n',[],[[1811,'A Dissertation on the Prophecies, 1811.'],[1817,'A book on church government, 1817.'],[1823,'View of the Hebrews, 1823.'],[1824,'A treatise, 1824.']]],
+      ['Gilbert Hunt','n',[],[[1816,'The Late War, 1816.']]],
+      ['Solomon Spalding','n',[],[[1812,'Manuscript Story, written about 1812. He died in 1816; it was printed in 1885.']]]
+    ];
+    var rh=24,T=10,HH=T+rows.length*rh+30,LL=178;
+    function xx(y){return LL+(y-Y0)/(Y1-Y0)*(W-LL-R)}
+    var v=el('svg',{viewBox:'0 0 '+W+' '+HH,width:'100%',role:'img','aria-label':'Timeline of every candidate sample, 1810 to 1840'});
+    [1810,1820,1830,1840].forEach(function(y){v.appendChild(el('line',{x1:xx(y),x2:xx(y),y1:T,y2:HH-28,stroke:'var(--line)'}));v.appendChild(el('text',{x:xx(y),y:HH-10,'text-anchor':'middle'},y))});
+    rows.forEach(function(r,i){
+      var cy=T+i*rh+rh/2,col=r[1]==='n'?'var(--neutral)':'var(--'+r[1]+')';
+      v.appendChild(el('text',{x:LL-12,y:cy+4,'text-anchor':'end',style:'fill:var(--text)'},r[0]));
+      r[2].forEach(function(b){var e=el('rect',{x:xx(b[0]),y:cy-6,width:Math.max(4,xx(b[1])-xx(b[0])),height:12,rx:4,fill:col,opacity:b[3]||1});v.appendChild(e);hover(e,b[2])});
+      r[3].forEach(function(p){var e=el('circle',{cx:xx(p[0]),cy:cy,r:5.5,fill:col,stroke:'var(--surface)','stroke-width':2});v.appendChild(e);hover(e,p[1])});
+    });
+    v.appendChild(el('line',{x1:xx(1830.23),x2:xx(1830.23),y1:T-4,y2:HH-28,stroke:'var(--text-2)','stroke-width':1.5,'stroke-dasharray':'4 3'}));
+    document.getElementById('tl-all').appendChild(v);
+  })();
 
   /* Joseph Smith size toggle */
   var JS=[
