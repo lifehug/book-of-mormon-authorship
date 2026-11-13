@@ -157,6 +157,10 @@ Data tables, base and candidate models (Hugging Face), code, the pre-registratio
 amendment, the simulated reviews; how to obtain the licensed sources.
 
 ## 14. What comes next (Part 2)
+Framing (owner, 2026-11-12): Part 1 ends with "the closest writing is Joseph Smith's revelations;
+his ordinary prose does not stand out; much of the closeness is shared King James register; and
+our period-trained models are the best tools for the job". Part 2 asks the next question: with the
+best tools, can we find anyone, or better candidates, in the whole library? (Amendment 57.)
 Stage 0's result (still no method under 5% false matches on 430 tests); Stage 1 on hold.
 **\*TBD (scoped, owner to decide): a library-wide search with our own models**
 (`docs/part2-library-search-plan.md`): one period model trained on all 23,875 authors' profiles
