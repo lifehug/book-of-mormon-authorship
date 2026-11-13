@@ -7,7 +7,7 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 ## Running
 
-- **BOM-90 older methods (Mac, tmux `a58classic`, log `logs/a58_classic.log`, ~2.5 h from 2026-11-13):** `python -m eval.list_size classic` (resumes per author). Then `python -m eval.list_size report`. GPU half (`scripts/a58_pool.sh`, ~$25-30) waits on the owner's approval.
+- **BOM-90 older methods (Mac, tmux `a58classic`, log `logs/a58_classic.log`, ~2.5 h from 2026-11-13):** `python -m eval.list_size classic` (resumes per author). Then `python -m eval.list_size report`. GPU half approved 2026-11-13 (owner tops up for the 590M): tmux `a58pool`, `scripts/a58_pool.sh`, log `logs/a58_chain.log`, one pod per size, 125M first; rerun the script to resume (each size's driver keeps state in `logs/pod_jobs_a58_<size>/`).
 - **Nothing on GPU.** Done 2026-11-12: Amendment 54 (later revelations, $1.57), Amendment 56 (32
   more benchmark authors, $6.83). Balance about $31; the owner will top up if BOM-89 needs it.
 
