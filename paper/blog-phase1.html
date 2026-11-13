@@ -90,6 +90,16 @@ mark{background:var(--accent-bg);color:inherit;padding:1px 3px;border-radius:3px
 .note{font-size:.86rem;color:var(--text-2);background:var(--surface-2);border-radius:8px;padding:12px 14px;margin:22px 0;line-height:1.5}
 svg text{font-family:var(--sans);fill:var(--text-2);font-size:12px}
 .wrong li{margin-bottom:12px}
+.rk{display:grid;grid-template-columns:22px minmax(0,42%) 1fr 54px;gap:10px;align-items:center;font-family:var(--sans);font-size:.84rem;padding:6px 0;border-top:1px solid var(--line)}
+.rk:first-child{border-top:0}
+.rk .n{color:var(--text-3);font-variant-numeric:tabular-nums;text-align:right}
+.rk .nm{line-height:1.25}.rk .nm small{display:block;color:var(--text-3);font-size:.76rem}
+.rk .track{position:relative;height:20px}
+.rk .bar{top:3px;height:14px;transition:width .25s}
+.rk .val{position:absolute;top:1px;padding-left:6px;font-variant-numeric:tabular-nums;color:var(--text-2);white-space:nowrap}
+.rk .mr{text-align:right;font-variant-numeric:tabular-nums;color:var(--text-2)}
+.rkhead{color:var(--text-3);font-size:.72rem;border-top:0}
+@media (max-width:560px){.rk{grid-template-columns:18px minmax(0,46%) 1fr 40px;gap:6px;font-size:.78rem}}
 hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 @media (max-width:560px){
   body{font-size:17.5px} h1{font-size:1.75rem} .toc{columns:1} .pair{grid-template-columns:1fr}
@@ -114,7 +124,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <div class="answer">
 <ol>
 <li><b>The book copies almost nothing.</b> Set the King James Bible aside and 0.16% of it matches earlier books. The books people name as sources don't stand out from other books of their kind.</li>
-<li><b>Of the eight people usually proposed, the closest writing is Joseph Smith's revelations.</b> His letters and journals aren't close. His revelations are.</li>
+<li><b>Of the eight people usually proposed, the closest writing is Joseph Smith's revelations.</b> Six of eight methods rank them first, including all three of my models. His letters and journals don't stand out the same way.</li>
 <li><b>I can't tell you the author is one of those eight.</b> None of the methods, mine included, can reliably say "it's nobody on this list". That's what Phase 2 is for.</li>
 </ol>
 </div>
@@ -253,7 +263,24 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <h2 id="joseph">5. Joseph Smith, up close</h2>
 
-<p>When the seal came off, one sample stood out: the revelations Joseph Smith dictated in 1828 and 1829, before the book was printed. It's small, 3,039 tokens, a couple of pages. So I spent most of the remaining time trying to knock it down. Pick a model size and see how each attempt went.</p>
+<p>Here's the ranking itself. Each of the 168 sealed passages was scored against every candidate sample, by eight methods: my three models, two style encoders, and three older word-count methods. Some candidates have more than one sample, because a man's letters and his dictated revelations aren't the same kind of writing. Joseph Smith has four. Pick a method and see the list.</p>
+
+<figure>
+<h4>Who ranks closest to the Book of Mormon</h4>
+<p class="sub">Candidate samples, ordered by average rank over the 168 passages. The bar is how many passages put that sample first.</p>
+<div class="btns" id="rk-m"></div>
+<div class="seg" id="rk-c" role="group" aria-label="Revelations in or out">
+<button data-c="with_revelations" aria-pressed="true">With his 1828&ndash;29 revelations</button><button data-c="without_revelations" aria-pressed="false">Without them</button>
+</div>
+<div class="legend"><span><i style="background:var(--s1)"></i>Joseph Smith's samples</span><span><i style="background:var(--neutral)"></i>Other candidates</span></div>
+<div id="rk-list"></div>
+<div class="reading" id="rk-read" style="font-family:var(--sans);font-size:.88rem"></div>
+<figcaption>Samples too short for a method to use are left off its list. "Pooled" is all of Joseph Smith's ordinary writing after 1830 taken together.</figcaption>
+</figure>
+
+<p>Six of the eight methods put the 1828&ndash;29 revelations first. Burrows' Delta puts his ordinary prose first and the revelations near the bottom. General Imposters puts Parley Pratt first and the revelations second. All three of my models, the ones that did best on the exam in section 4, are among the six.</p>
+
+<p>The revelation sample is small: 3,039 tokens, a couple of pages. So I spent most of the remaining time trying to knock the result down. Pick a model size and see how each attempt went.</p>
 
 <figure>
 <h4>Four attempts to knock down "the revelations are closest"</h4>
@@ -396,6 +423,44 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
   }
   PH.forEach(function(p,i){var b=document.createElement('button');b.className='btn';b.textContent=p[0];b.onclick=function(){pick(i)};pb.appendChild(b)});
   pick(0);
+
+
+  /* candidate ranking */
+  var RK={"cosine_delta":{"with_revelations":[["joseph-smith__dictated__pre1830",1.2,135],["joseph-smith__nonrevelatory__post1830",3.32,0],["joseph-smith__dictated__post1830",3.43,0],["gilbert-j-hunt__printed_by_author__pre1830",4.07,33],["joseph-smith__handwritten__post1830",4.86,0],["parley-p-pratt__printed_by_author__post1830",5.05,0],["sidney-rigdon__printed_by_author__post1830",7.16,0],["w-w-phelps__printed_by_author__post1830",7.91,0],["oliver-cowdery__printed_by_author__post1830",8.43,0],["solomon-spalding__posthumous__pre1830",9.7,0],["ethan-smith__printed_by_author__pre1830",10.88,0]],"without_revelations":[["joseph-smith__nonrevelatory__post1830",2.32,47],["joseph-smith__dictated__post1830",2.43,39],["gilbert-j-hunt__printed_by_author__pre1830",3.26,77],["joseph-smith__handwritten__post1830",3.86,3],["parley-p-pratt__printed_by_author__post1830",4.05,1],["sidney-rigdon__printed_by_author__post1830",6.16,1],["w-w-phelps__printed_by_author__post1830",6.91,0],["oliver-cowdery__printed_by_author__post1830",7.43,0],["solomon-spalding__posthumous__pre1830",8.7,0],["ethan-smith__printed_by_author__pre1830",9.88,0]]},"burrows_delta":{"with_revelations":[["joseph-smith__nonrevelatory__post1830",2.71,59],["parley-p-pratt__printed_by_author__post1830",3.57,16],["joseph-smith__dictated__post1830",4.53,8],["joseph-smith__handwritten__post1830",5.49,2],["gilbert-j-hunt__printed_by_author__pre1830",5.61,56],["solomon-spalding__posthumous__pre1830",6.63,0],["ethan-smith__printed_by_author__pre1830",6.66,2],["oliver-cowdery__printed_by_author__post1830",6.7,0],["w-w-phelps__printed_by_author__post1830",7.1,0],["joseph-smith__dictated__pre1830",7.68,25],["sidney-rigdon__printed_by_author__post1830",9.32,0]],"without_revelations":[["joseph-smith__nonrevelatory__post1830",2.55,82],["parley-p-pratt__printed_by_author__post1830",3.3,16],["joseph-smith__dictated__post1830",4.34,10],["gilbert-j-hunt__printed_by_author__pre1830",5.2,56],["joseph-smith__handwritten__post1830",5.26,2],["solomon-spalding__posthumous__pre1830",6.23,0],["ethan-smith__printed_by_author__pre1830",6.26,2],["oliver-cowdery__printed_by_author__post1830",6.32,0],["w-w-phelps__printed_by_author__post1830",6.73,0],["sidney-rigdon__printed_by_author__post1830",8.82,0]]},"general_imposters":{"with_revelations":[["parley-p-pratt__printed_by_author__post1830",2.46,60],["joseph-smith__dictated__pre1830",3.6,57],["gilbert-j-hunt__printed_by_author__pre1830",5.29,37],["joseph-smith__dictated__post1830",5.53,4],["joseph-smith__nonrevelatory__post1830",6.1,3],["ethan-smith__printed_by_author__pre1830",6.26,1],["joseph-smith__handwritten__post1830",6.45,3],["sidney-rigdon__printed_by_author__post1830",6.59,3],["oliver-cowdery__printed_by_author__post1830",7.48,0],["w-w-phelps__printed_by_author__post1830",7.83,0],["solomon-spalding__posthumous__pre1830",8.42,0]],"without_revelations":[["parley-p-pratt__printed_by_author__post1830",2.04,81],["gilbert-j-hunt__printed_by_author__pre1830",4.71,40],["joseph-smith__dictated__post1830",4.91,6],["joseph-smith__nonrevelatory__post1830",5.2,23],["joseph-smith__handwritten__post1830",5.52,12],["ethan-smith__printed_by_author__pre1830",5.6,1],["sidney-rigdon__printed_by_author__post1830",5.79,4],["oliver-cowdery__printed_by_author__post1830",6.62,0],["w-w-phelps__printed_by_author__post1830",6.98,1],["solomon-spalding__posthumous__pre1830",7.64,0]]},"style_base":{"with_revelations":[["joseph-smith__dictated__pre1830",1.14,149],["oliver-cowdery__handwritten__pre1830",2.35,12],["joseph-smith__dictated__post1830",4.12,2],["joseph-smith__nonrevelatory__post1830",4.73,0],["parley-p-pratt__printed_by_author__post1830",5.6,1],["gilbert-j-hunt__printed_by_author__pre1830",6.02,2],["joseph-smith__handwritten__post1830",6.35,0],["sidney-rigdon__printed_by_author__post1830",7.13,0],["oliver-cowdery__printed_by_author__post1830",8.61,0],["ethan-smith__printed_by_author__pre1830",10.23,2],["w-w-phelps__printed_by_author__post1830",10.76,0],["solomon-spalding__posthumous__pre1830",10.96,0]],"without_revelations":[["oliver-cowdery__handwritten__pre1830",1.43,132],["joseph-smith__dictated__post1830",3.14,20],["joseph-smith__nonrevelatory__post1830",3.73,1],["parley-p-pratt__printed_by_author__post1830",4.6,4],["gilbert-j-hunt__printed_by_author__pre1830",5.05,9],["joseph-smith__handwritten__post1830",5.35,0],["sidney-rigdon__printed_by_author__post1830",6.13,0],["oliver-cowdery__printed_by_author__post1830",7.61,0],["ethan-smith__printed_by_author__pre1830",9.24,2],["w-w-phelps__printed_by_author__post1830",9.76,0],["solomon-spalding__posthumous__pre1830",9.97,0]]},"style_mid":{"with_revelations":[["joseph-smith__dictated__pre1830",1.46,99],["oliver-cowdery__handwritten__pre1830",1.82,58],["joseph-smith__dictated__post1830",4.01,0],["gilbert-j-hunt__printed_by_author__pre1830",4.11,11],["parley-p-pratt__printed_by_author__post1830",4.86,0],["joseph-smith__nonrevelatory__post1830",5.7,0],["oliver-cowdery__printed_by_author__post1830",7.46,0],["sidney-rigdon__printed_by_author__post1830",8.26,0],["joseph-smith__handwritten__post1830",8.36,0],["ethan-smith__printed_by_author__pre1830",9.99,0],["w-w-phelps__printed_by_author__post1830",10.38,0],["solomon-spalding__posthumous__pre1830",11.57,0]],"without_revelations":[["oliver-cowdery__handwritten__pre1830",1.18,145],["joseph-smith__dictated__post1830",3.01,3],["gilbert-j-hunt__printed_by_author__pre1830",3.21,19],["parley-p-pratt__printed_by_author__post1830",3.86,1],["joseph-smith__nonrevelatory__post1830",4.7,0],["oliver-cowdery__printed_by_author__post1830",6.46,0],["sidney-rigdon__printed_by_author__post1830",7.26,0],["joseph-smith__handwritten__post1830",7.36,0],["ethan-smith__printed_by_author__pre1830",8.99,0],["w-w-phelps__printed_by_author__post1830",9.38,0],["solomon-spalding__posthumous__pre1830",10.57,0]]},"alm_pilot":{"with_revelations":[["joseph-smith__dictated__pre1830",1.08,159],["oliver-cowdery__printed_by_author__post1830",3.04,7],["solomon-spalding__posthumous__pre1830",3.85,0],["parley-p-pratt__printed_by_author__post1830",4.64,2],["w-w-phelps__printed_by_author__post1830",4.8,0],["gilbert-j-hunt__printed_by_author__pre1830",4.82,0],["joseph-smith__nonrevelatory__post1830",6.07,0],["joseph-smith__handwritten__post1830",7.98,0],["sidney-rigdon__printed_by_author__post1830",9.51,0],["joseph-smith__dictated__post1830",9.83,0],["oliver-cowdery__handwritten__pre1830",10.42,0],["ethan-smith__printed_by_author__pre1830",11.97,0]],"without_revelations":[["oliver-cowdery__printed_by_author__post1830",2.08,63],["solomon-spalding__posthumous__pre1830",2.85,33],["parley-p-pratt__printed_by_author__post1830",3.67,19],["w-w-phelps__printed_by_author__post1830",3.81,4],["gilbert-j-hunt__printed_by_author__pre1830",3.82,46],["joseph-smith__nonrevelatory__post1830",5.07,3],["joseph-smith__handwritten__post1830",6.98,0],["sidney-rigdon__printed_by_author__post1830",8.51,0],["joseph-smith__dictated__post1830",8.83,0],["oliver-cowdery__handwritten__pre1830",9.42,0],["ethan-smith__printed_by_author__pre1830",10.97,0]]},"alm_base":{"with_revelations":[["joseph-smith__dictated__pre1830",1.0,168],["joseph-smith__handwritten__post1830",3.02,0],["w-w-phelps__printed_by_author__post1830",3.34,0],["solomon-spalding__posthumous__pre1830",4.55,0],["gilbert-j-hunt__printed_by_author__pre1830",5.05,0],["oliver-cowdery__printed_by_author__post1830",5.26,0],["joseph-smith__nonrevelatory__post1830",6.32,0],["parley-p-pratt__printed_by_author__post1830",8.05,0],["joseph-smith__dictated__post1830",8.68,0],["oliver-cowdery__handwritten__pre1830",9.86,0],["sidney-rigdon__printed_by_author__post1830",10.86,0],["ethan-smith__printed_by_author__pre1830",12.0,0]],"without_revelations":[["joseph-smith__handwritten__post1830",2.02,70],["w-w-phelps__printed_by_author__post1830",2.34,46],["solomon-spalding__posthumous__pre1830",3.55,15],["gilbert-j-hunt__printed_by_author__pre1830",4.05,27],["oliver-cowdery__printed_by_author__post1830",4.26,8],["joseph-smith__nonrevelatory__post1830",5.32,0],["parley-p-pratt__printed_by_author__post1830",7.05,2],["joseph-smith__dictated__post1830",7.68,0],["oliver-cowdery__handwritten__pre1830",8.86,0],["sidney-rigdon__printed_by_author__post1830",9.86,0],["ethan-smith__printed_by_author__pre1830",11.0,0]]},"alm_mid":{"with_revelations":[["joseph-smith__dictated__pre1830",1.26,131],["w-w-phelps__printed_by_author__post1830",2.11,26],["joseph-smith__handwritten__post1830",3.95,0],["oliver-cowdery__printed_by_author__post1830",4.26,0],["joseph-smith__nonrevelatory__post1830",5.42,0],["gilbert-j-hunt__printed_by_author__pre1830",5.82,11],["oliver-cowdery__handwritten__pre1830",7.52,0],["solomon-spalding__posthumous__pre1830",7.82,0],["joseph-smith__dictated__post1830",7.85,0],["sidney-rigdon__printed_by_author__post1830",9.21,0],["parley-p-pratt__printed_by_author__post1830",10.77,0],["ethan-smith__printed_by_author__pre1830",12.0,0]],"without_revelations":[["w-w-phelps__printed_by_author__post1830",1.3,133],["joseph-smith__handwritten__post1830",2.95,11],["oliver-cowdery__printed_by_author__post1830",3.26,3],["joseph-smith__nonrevelatory__post1830",4.42,2],["gilbert-j-hunt__printed_by_author__pre1830",4.89,19],["oliver-cowdery__handwritten__pre1830",6.52,0],["solomon-spalding__posthumous__pre1830",6.82,0],["joseph-smith__dictated__post1830",6.85,0],["sidney-rigdon__printed_by_author__post1830",8.21,0],["parley-p-pratt__printed_by_author__post1830",9.77,0],["ethan-smith__printed_by_author__pre1830",11.0,0]]}};
+  var NM={
+   'joseph-smith__dictated__pre1830':['Joseph Smith','revelations, 1828\u201329'],
+   'joseph-smith__dictated__post1830':['Joseph Smith','dictated letters, 1832\u201333'],
+   'joseph-smith__handwritten__post1830':['Joseph Smith','journal and letters in his own hand'],
+   'joseph-smith__nonrevelatory__post1830':['Joseph Smith','ordinary prose, pooled'],
+   'oliver-cowdery__handwritten__pre1830':['Oliver Cowdery','1829 Articles, in his hand'],
+   'oliver-cowdery__printed_by_author__post1830':['Oliver Cowdery','newspaper writing, after 1830'],
+   'parley-p-pratt__printed_by_author__post1830':['Parley Pratt','books and articles, 1830s'],
+   'sidney-rigdon__printed_by_author__post1830':['Sidney Rigdon','newspaper pieces and an oration'],
+   'w-w-phelps__printed_by_author__post1830':['W. W. Phelps','newspaper writing, after 1830'],
+   'solomon-spalding__posthumous__pre1830':['Solomon Spalding','Manuscript Story'],
+   'ethan-smith__printed_by_author__pre1830':['Ethan Smith','View of the Hebrews and three other books'],
+   'gilbert-j-hunt__printed_by_author__pre1830':['Gilbert Hunt','The Late War']
+  };
+  var MT=[['alm_pilot','My model, 125M'],['alm_base','My model, 297M'],['alm_mid','My model, 590M'],['style_base','Style encoder, 297M'],['style_mid','Style encoder, 590M'],['cosine_delta','Cosine Delta'],['burrows_delta','Burrows\u2019 Delta'],['general_imposters','General Imposters']];
+  var rkM='alm_pilot',rkC='with_revelations',mb=document.getElementById('rk-m'),rl=document.getElementById('rk-list');
+  function rkDraw(){
+    Array.prototype.forEach.call(mb.children,function(b){b.setAttribute('aria-pressed',b.dataset.m===rkM)});
+    Array.prototype.forEach.call(document.querySelectorAll('#rk-c button'),function(b){b.setAttribute('aria-pressed',b.dataset.c===rkC)});
+    var rows=RK[rkM][rkC];rl.innerHTML='<div class="rk rkhead"><div></div><div>Sample</div><div>Passages ranking it first, of 168</div><div class="mr">Avg rank</div></div>';
+    rows.forEach(function(r,i){
+      var nm=NM[r[0]]||[r[0],''],js=r[0].indexOf('joseph-smith')===0,w=Math.max(.5,r[2]/168*80);
+      var d=document.createElement('div');d.className='rk';
+      d.innerHTML='<div class="n">'+(i+1)+'</div><div class="nm">'+(js?'<b>'+nm[0]+'</b>':nm[0])+'<small>'+nm[1]+'</small></div>'+
+        '<div class="track"><div class="bar '+(js?'s1':'')+'" style="width:'+w+'%"></div><div class="val" style="left:'+w+'%">'+r[2]+'</div></div><div class="mr">'+r[1].toFixed(2)+'</div>';
+      hover(d,nm[0]+' ('+nm[1]+'): first on '+r[2]+' of 168 passages, average rank '+r[1].toFixed(2)+' of '+rows.length+'.');
+      rl.appendChild(d);
+    });
+    var t=rows[0],n=NM[t[0]],mn=MT.filter(function(m){return m[0]===rkM})[0][1];
+    document.getElementById('rk-read').textContent=mn+', '+(rkC==='with_revelations'?'revelations included':'revelations left out')+': '+n[0]+' ('+n[1]+') has the best average rank, '+t[1].toFixed(2)+', and is first on '+t[2]+' of 168 passages.';
+  }
+  MT.forEach(function(m){var b=document.createElement('button');b.className='btn';b.dataset.m=m[0];b.textContent=m[1];b.onclick=function(){rkM=m[0];rkDraw()};mb.appendChild(b)});
+  Array.prototype.forEach.call(document.querySelectorAll('#rk-c button'),function(b){b.onclick=function(){rkC=b.dataset.c;rkDraw()}});
+  rkDraw();
 
   /* Joseph Smith size toggle */
   var JS=[
