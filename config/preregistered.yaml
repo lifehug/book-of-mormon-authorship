@@ -530,6 +530,19 @@ sweep:
   gate_seed: bom47-gate
 
 # Amendment 57 (Part 2): a library-wide author search (docs/part2-library-search-plan.md)
+list_size:                        # Amendment 58 (BOM-90): accuracy against candidate-list length
+  sizes: [2, 4, 8, 12, 20, 30, 55]
+  draws_per_author: 30            # random lists per author and size
+  draw_seed: a58-lists
+  similar_mfw: 300                # similar lists: nearest by Cosine Delta on training profiles
+  gi_seed: a58-gi
+  bars: [0.90, 0.70]
+  decision_size: 12               # the Book of Mormon's list; sign test by author, Holm over 12
+  resamples: 5000
+  resample_seed: a58-authors
+  alpha: 0.05
+  out: data/benchmark/list_size.json
+
 sweep_search:
   gi_shortlist: 100               # step 0: General Imposters on each book's 100 closest (Cosine Delta)
   gi_pool: 500                    # seeded random profiles, the candidate excluded
