@@ -7,7 +7,7 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 ## Running
 
-- **Nothing running.** BOM-89 step 0 done 2026-11-13 (`data/sweep/older_methods.json`): older methods as library sweeps, true author first 20.5-27%, none near 70%. Next: owner approves the Phase 2 stages (`docs/research/2026-11-12-phase2-plan.md`); then stage 0 (label cleanup, the 24 shared misses, alive-in-1828 tag) on the Mac, and an amendment revising A57 before step 1.
+- **BOM-90 older methods (Mac, tmux `a58classic`, log `logs/a58_classic.log`, ~2.5 h from 2026-11-13):** `python -m eval.list_size classic` (resumes per author). Then `python -m eval.list_size report`. GPU half (`scripts/a58_pool.sh`, ~$25-30) waits on the owner's approval.
 - **Nothing on GPU.** Done 2026-11-12: Amendment 54 (later revelations, $1.57), Amendment 56 (32
   more benchmark authors, $6.83). Balance about $31; the owner will top up if BOM-89 needs it.
 
