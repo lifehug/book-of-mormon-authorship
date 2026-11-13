@@ -90,6 +90,9 @@ mark{background:var(--accent-bg);color:inherit;padding:1px 3px;border-radius:3px
 .note{font-size:.86rem;color:var(--text-2);background:var(--surface-2);border-radius:8px;padding:12px 14px;margin:22px 0;line-height:1.5}
 svg text{font-family:var(--sans);fill:var(--text-2);font-size:12px}
 .wrong li{margin-bottom:12px}
+.src{font-family:var(--sans);font-size:.76rem;color:var(--text-3);margin:10px 0 0;line-height:1.5;overflow-wrap:anywhere}
+.src a{color:var(--text-2)}
+main>.src{margin:-8px 0 22px}
 .rk{display:grid;grid-template-columns:22px minmax(0,42%) 1fr 54px;gap:10px;align-items:center;font-family:var(--sans);font-size:.84rem;padding:6px 0;border-top:1px solid var(--line)}
 .rk:first-child{border-top:0}
 .rk .n{color:var(--text-3);font-variant-numeric:tabular-nums;text-align:right}
@@ -167,6 +170,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p class="sub" id="sc-sub"></p>
 <div id="ch-scale"></div>
 <figcaption id="sc-cap"></figcaption>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/replicate.py">eval/replicate.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/docs/prior-studies.md">docs/prior-studies.md</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/tree/master/data/catalog">data/catalog</a></p>
 </figure>
 
 <p>Size isn't the only difference, and it may not be the main one.</p>
@@ -201,6 +205,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p class="sub">King James Bible set aside</p>
 <div id="ch-copy"></div>
 <figcaption><i>The Late War</i> copies the War of 1812's own paperwork, treaties and state papers, at about 90% identity. That's what real borrowing looks like to this test.</figcaption>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/reuse/exact.py">reuse/exact.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/tree/master/data/reuse/exact/sources">data/reuse/exact/sources</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/tree/master/data/reuse/exact/alignments">data/reuse/exact/alignments</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/reuse/exact/known_answer.json">data/reuse/exact/known_answer.json</a></p>
 </figure>
 
 <p>The Book of Mormon's 0.16% is 30 books sharing short, loose phrases, the religious talk of the day. "The Lord cannot look upon sin with the least degree of allowance" turns up in Bishop Ravenscroft. Nothing is a lifted page.</p>
@@ -213,6 +218,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p class="sub">Out of 221,000 books</p>
 <div id="ch-rare"></div>
 <figcaption>Three in four are stock King James style. "Weapons of war to defend" is in 162 other books.</figcaption>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/replicate.py">eval/replicate.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/reuse/rare.py">reuse/rare.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/replication/latewar_shared_phrases.json">data/benchmark/replication/latewar_shared_phrases.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/reuse/bom/rare.json">data/reuse/bom/rare.json</a></p>
 </figure>
 
 <p>Six are found nowhere else. Here are five of them, in both books. Click through.</p>
@@ -231,6 +237,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <h3>Same ideas, different words: <i>View of the Hebrews</i></h3>
 <p>Ethan Smith's 1823 book argued that American Indians descend from the lost tribes of Israel. Compared passage by passage, it came out first of 49 books on that subject. That sounds like a hit. But against 500 equally religious books it lands at the 85th percentile, and my bar was the top 1%. Close in what it talks about, and well short of the bar.</p>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/semantic/search.py">semantic/search.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/semantic/named.json">data/semantic/named.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/semantic/named_null.json">data/semantic/named_null.json</a></p>
 
 <h3>Same story, new names</h3>
 <p>You can borrow a plot without sharing a sentence. So a model read every book in blocks and listed what happens, with the names swapped for roles. Here it is reading Genesis 45:</p>
@@ -238,6 +245,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <blockquote>A ruler cries out for everyone else to leave the room. The ruler reveals himself to his brothers and weeps so loudly that the household hears. ... The father faints, not believing them, until he sees the wagons.</blockquote>
 
 <p>No Joseph, no Pharaoh, and you still know the story. I checked the test first on Josephus, who retold Genesis through Judges in his own words: it found 108 events in the same order. Then I ran it on the Book of Mormon. No book shares its plot.</p>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/semantic/skeleton.py">semantic/skeleton.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/tree/master/data/semantic/skeleton">data/semantic/skeleton</a></p>
 
 <div class="note"><b>What this section can't say.</b> I ran the same tests on Macpherson's <i>Ossian</i>, a 1760s book written in its own day and presented as ancient. It copies nothing either (0.00%). So these tests can't tell a real translation from a period book written to sound old. "No borrowing found" describes the text. It says nothing about where it came from.</div>
 
@@ -248,6 +256,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p>The 2008 Stanford study gave 169 chapters to Sidney Rigdon. Swap in other genuine Rigdon writing and it's 92. The 2011 study that allowed "none of the candidates" has an error rate that swings from 80% to 0% depending on how long the samples are. Same method, same people, different answer.</p>
 
 <p>That's why the next section exists.</p>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/replicate.py">eval/replicate.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/tree/master/data/benchmark/replication">data/benchmark/replication</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/docs/prior-studies.md">docs/prior-studies.md</a></p>
 
 <h2 id="tools">4. Are my tools any good?</h2>
 
@@ -264,6 +273,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <div class="legend"><span><i style="background:var(--s2)"></i>GPT-2 (modern internet text)</span><span><i style="background:var(--s1)"></i>Mine (1780&ndash;1830 text only)</span></div>
 <div id="ch-gpt"></div>
 <figcaption>Period training roughly halves the false matches. Still not good enough, as you'll see below.</figcaption>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/alm/benchmark.py">alm/benchmark.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/alm_gpt2.json">data/benchmark/alm_gpt2.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/alm_gpt2_medium.json">data/benchmark/alm_gpt2_medium.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/alm_pilot.json">data/benchmark/alm_pilot.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/alm_base.json">data/benchmark/alm_base.json</a></p>
 </figure>
 
 <h3>Picking the right author from a list</h3>
@@ -282,14 +292,17 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 </div>
 
 <p>Ranges are across the three model sizes. The part I like best: 32 of those authors were added after the rule was written, and nobody had looked at them. On their 640 passages my models get 91&ndash;94% right. The older methods get 76&ndash;78%.</p>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/clustered.py">eval/clustered.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/clustered.json">data/benchmark/clustered.json</a></p>
 
 <h3>Saying "none of these"</h3>
 <p>This is where every method fails, mine too. My bar was 5% false matches while still confirming 95% of true authors. Held to that, my models give 51&ndash;57% false matches. Turn it round and aim for 5% false matches, and they confirm only 38&ndash;61% of true authors. I tried the standard fix from voice-ID research. Tested properly, on authors it had never seen, it didn't work.</p>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/clustered.py">eval/clustered.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/open_set.py">eval/open_set.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/clustered.json">data/benchmark/clustered.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/open_set.json">data/benchmark/open_set.json</a></p>
 
 <p>So these tools are good at "which of these people" and bad at "is it any of these people". Everything below is the first kind of answer.</p>
 
 <h3>The biblical costume</h3>
 <p>One more weakness. I found three 18th-century writers who wrote both ordinary prose and imitation scripture. Trained on their ordinary prose, plain word counts named the right author on 13 of 18 scripture passages. My 297M model got 7 of 17. Three writers is too few to judge either way, and I looked hard for more: across the whole library only about ten people wrote imitation scripture, and three left enough other prose. But it's a warning, because the Book of Mormon wears that costume.</p>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/imitation.py">eval/imitation.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/imitation.json">data/benchmark/imitation.json</a></p>
 
 <h2 id="joseph">5. Joseph Smith, up close</h2>
 
@@ -315,6 +328,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <div class="legend"><span><i style="background:var(--s2)"></i>Book of Mormon</span><span><i style="background:var(--s1)"></i>Joseph Smith's revelations</span><span><i style="background:var(--s3)"></i>His ordinary writing</span><span><i style="background:var(--neutral)"></i>Other candidates</span></div>
 <div class="tlwrap"><div id="tl-all"></div></div>
 <figcaption>For most candidates the only writing that survives is from after the book was printed. Anything in those later samples that quotes the book at length was removed.</figcaption>
+<p class="src">Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/candidates/units.csv">data/candidates/units.csv</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/docs/candidates.md">docs/candidates.md</a></p>
 </figure>
 
 <h3>The ranking</h3>
@@ -331,6 +345,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <div id="rk-list"></div>
 <div class="reading" id="rk-read" style="font-family:var(--sans);font-size:.88rem"></div>
 <figcaption>Samples too short for a method to use are left off its list. "Pooled" is all of Joseph Smith's ordinary writing after 1830 taken together.</figcaption>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/js_register.py">eval/js_register.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/alm/blind_score.py">alm/blind_score.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/blind/a44/people.json">data/blind/a44/people.json</a></p>
 </figure>
 
 <p>Six of the eight methods put the 1828&ndash;29 revelations first. Burrows' Delta puts his ordinary prose first and the revelations near the bottom. General Imposters puts Parley Pratt first and the revelations second. All three of my models, the ones that did best on the exam in section 4, are among the six.</p>
@@ -350,6 +365,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <div class="reading" id="js-read"></div>
 </div>
 <figcaption>The 590M column is the uncomfortable one. Jacob Ilive died in 1763. Levi Dowling, reported separately, was born in 1844, fourteen years after the book was printed. Both wrote imitation King James English.</figcaption>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/js_later.py">eval/js_later.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/part2_decoys.py">eval/part2_decoys.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/blind/a45/report.json">data/blind/a45/report.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/tree/master/data/blind/part2">data/blind/part2</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/blind/a54/report.json">data/blind/a54/report.json</a></p>
 </figure>
 
 <p>At the two smaller sizes the result survived everything I threw at it. At the largest size, writers who could not have been the author do as well, which means at that size the model is following the biblical style at least as much as the person. No size has earned more trust than the others on known answers, so I report it as a split.</p>
@@ -361,6 +377,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p>His revelation voice, from 1828 through 1834, is the nearest writing I have to the Book of Mormon. That fits "the same man". It also fits "the same kind of text": a revelation and a scripture are both dictated in a sacred voice, and his later revelations could echo the book. These tools can't separate the two, and I'm not going to pick for you.</p>
 
 <p>One thing the manuscripts do show. The original manuscript was taken down as Joseph Smith spoke, and the printer's manuscript is a copy of it. If the original was written by ear, it should be full of misheard words like <i>there</i> for <i>their</i>. It is: with the same scribe on both, those slips are about nine times as common in the original (30 of 590 against 5 of 837). The book was dictated aloud. An AI read the page photos for that check, not a human expert.</p>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/manuscript/corrections.py">manuscript/corrections.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/manuscript/summary.json">data/manuscript/summary.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/manuscript/handcheck.json">data/manuscript/handcheck.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/docs/manuscript-evidence.md">docs/manuscript-evidence.md</a></p>
 
 <h2 id="others">6. The other candidates</h2>
 
@@ -371,6 +388,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p class="sub">Passages correctly matched, by model size. My bar was 90%.</p>
 <div class="tablewrap" style="margin:0"><table id="xw"></table></div>
 <figcaption>Darker is better. Hover a cell for the share.</figcaption>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/part2_decoys.py">eval/part2_decoys.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/part2/decoys_report.json">data/benchmark/part2/decoys_report.json</a></p>
 </figure>
 
 <p>Only Ethan Smith passes, and he isn't the closest to the Book of Mormon. For Cowdery, Rigdon, Phelps and Pratt, the models learned a book. So a low rank for them means "not shown", and I can't write "ruled out". Spalding and Hunt have one work each, so they can't be checked this way at all.</p>
@@ -380,6 +398,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p>What about people nobody has proposed? I compared the Book of Mormon against all 23,872 authors in the library with at least 10,000 words, using the two methods cheap enough to run that many times. No one stood out. I'd worked out in advance that chance alone should throw up 0.035 false leads. I got zero.</p>
 
 <p>But here's the catch, and it's a big one. On 200 books where I know the author, that same search puts the true author first only 27&ndash;35% of the time. My bar was 70%. So the search can say "nobody jumped out". It can't say "nobody's there". And my best method wasn't in it at all, because it needs one model per author.</p>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/sweep/calibrate.py">sweep/calibrate.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/sweep/older.py">sweep/older.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/calibration.json">data/sweep/calibration.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/older_methods.json">data/sweep/older_methods.json</a></p>
 
 <h2 id="wrong">8. What I got wrong</h2>
 
@@ -405,11 +424,14 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <div class="legend"><span><i style="background:var(--s1)"></i>Random lists</span><span><i style="background:var(--s2)"></i>Lists of the most similar writers</span></div>
 <div id="ch-list"></div>
 <figcaption>From a list of 4 to a list of 55, accuracy drops from 95% to 86%. With eight passages averaged instead of one, a list of 55 comes back up to 97%. The Book of Mormon gives me 168 passages.</figcaption>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/list_size.py">eval/list_size.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/list_size.json">data/benchmark/list_size.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/list_size_tournament.json">data/benchmark/list_size_tournament.json</a></p>
 </figure>
 
 <p>That's better than I feared. It isn't the answer yet: these 55 authors all left plenty of text, and the fast search still has to get the right person onto the shortlist in the first place.</p>
 
 <h2 id="check">10. Check it yourself</h2>
+
+<p>Under each chart and result above there's a line linking to the code that ran it and the file of numbers it produced. The whole thing lives at <a href="https://github.com/lifehug/book-of-mormon-authorship/">github.com/lifehug/book-of-mormon-authorship</a>. <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/README.md">The run guide</a> lists every command, what it needs and how long it takes, and <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/paper/preregistration.md">the plan</a> has every rule and every change to it, dated.</p>
 
 <p>Everything is public: the code, the result tables, the plan and every change to it, and the base and candidate models on Hugging Face. With the candidate models you can rerun the Book of Mormon result without training anything. Four sources I'm not allowed to republish (HathiTrust, Harvard's book collection, the Joseph Smith Papers transcripts, and one purchased book), and for each the repo gives the steps to get the same access I had.</p>
 
