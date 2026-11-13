@@ -165,7 +165,7 @@ his ordinary prose first without the revelations); register explains the closene
 590M only (placebo writers reach the revelations there, not at 125M or 297M). Part 2 asks the next question: with the
 best tools, can we find anyone, or better candidates, in the whole library? (Amendment 57.)
 Stage 0's result (still no method under 5% false matches on 430 tests); Stage 1 on hold.
-**\*TBD (scoped, owner to decide): a library-wide search with our own models**
+**\*TBD (approved 2026-11-12, Amendment 57; step 0 running): a library-wide search with our own models**
 (`docs/part2-library-search-plan.md`): one period model trained on all 23,875 authors' profiles
 with author labels, tested first on the sweep's 200 known books against the registered 70% bar
 (word counting 27%, style encoder 30%); about $15-20 at 297M. Step 0, free: Burrows' Delta, ENSC
