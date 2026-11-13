@@ -10,8 +10,8 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 Be able to say, with a measured number, "if the author left other writing in this corpus, this
 procedure finds him X% of the time", then run it on the Book of Mormon. **Author algorithm** = the
 Phase 1 per-candidate models (built); **sweep algorithm** = the library search (to build). Order:
-BOM-90 (accuracy by list size, running) -> BOM-93 (tournament with fresh evidence) -> BOM-91 (clean
-labels, free) -> BOM-89 (sweep algorithm) -> BOM-94 (end-to-end test on known books: X) -> BOM-95
+BOM-90 (accuracy by list size, running) -> BOM-93 part 1 (tournament simulation, minutes) -> BOM-91 (clean
+labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament) -> BOM-94 (end-to-end test on known books: X) -> BOM-95
 (the Book of Mormon). Experimenting: no amendment before each run.
 
 ## Running
