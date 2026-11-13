@@ -130,6 +130,15 @@ cannot name anyone; it says only that no unproposed author stands out. Our langu
 not run on it (one model per author, 23,872 models). *Gap found 2026-11-12: the sweep was missing
 from version 3 of this outline.*
 
+7.9 **\*TBD (Amendment 57, post hoc; running): the library searched with our own models**
+(`docs/part2-library-search-plan.md`; owner, 2026-11-12: it belongs with 7.8). One period model
+(297M) trained on all 23,875 authors' profiles with author labels, so a single model can score a
+passage against every author. Known answers first: the same 200 books and the registered 70% bar,
+beside every older method run as a sweep (step 0: Cosine Delta 27%, style encoder 30%, Burrows'
+Delta, ENSC and General Imposters now running). Only then the Book of Mormon: who comes closest,
+each lead through the plausibility gate and the register check. Whatever the result, it cannot say
+"none of these".
+
 ## 8. Dating and internal voices
 Language earlier than its period and than period imitations; narrators, dictation order, scribes.
 
@@ -162,11 +171,5 @@ Joseph Smith's revelations; his ordinary prose does not stand out; much of the c
 King James register; our period-trained models are the best tools for the job. Claude's caveats:
 "does not stand out" holds for the language models, not for Burrows' and Cosine Delta (which put
 his ordinary prose first without the revelations); register explains the closeness clearly at
-590M only (placebo writers reach the revelations there, not at 125M or 297M). Part 2 asks the next question: with the
-best tools, can we find anyone, or better candidates, in the whole library? (Amendment 57.)
-Stage 0's result (still no method under 5% false matches on 430 tests); Stage 1 on hold.
-**\*TBD (approved 2026-11-12, Amendment 57; step 0 running): a library-wide search with our own models**
-(`docs/part2-library-search-plan.md`): one period model trained on all 23,875 authors' profiles
-with author labels, tested first on the sweep's 200 known books against the registered 70% bar
-(word counting 27%, style encoder 30%); about $15-20 at 297M. Step 0, free: Burrows' Delta, ENSC
-and General Imposters run as sweeps on the same 200 books.
+590M only (placebo writers reach the revelations there, not at 125M or 297M). Part 2 now holds only what is genuinely later: Stage 1 (on hold; Stage 0's result: no method under
+5% false matches on 430 tests) and the 590M version of the library search (owner's go after 7.9).
