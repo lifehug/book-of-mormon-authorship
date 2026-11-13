@@ -90,9 +90,19 @@ the candidates" study's error swings 80% to 0% with sample length).
   and 297M; at 590M a slice of *The Late War* is ahead on 63% of chunks.
 - **6.3 Writers who could not have written it** (Amendment 51): at 125M and 297M none of 67 slices
   reaches the revelations; at 590M Ilive does on 8 of 12, Dowling (born 1844) 9 of 12.
-- **6.4 \*TBD: his later revelations** (Revelation Book 1, 1830-34, about 64,000 words, on disk):
-  do they also rank near the top? 12 slices, like the placebo writers. Post hoc; written after he
-  had dictated the book (influence possible); the pre-1830 test unchanged.
+- **6.4 His later revelations** (Amendment 54, post hoc; 95 sections of Revelation Book 1,
+  1830-34, 65,222 words; no Book of Mormon quotation of 20+ words, 80 shorter shared runs kept):
+  *equal dose* (12 slices each the 1828-29 sample's length, pool of 36 models): at 125M every
+  slice ranks 2nd (one ties 1st) behind the 1828-29 revelations; at 297M 2nd-3rd; at 590M the
+  pool compresses and 10 of 12 slices are at or above the 1828-29 model (rank 1-5 against its 5),
+  as Ilive and Dowling are there. Unlike the placebo writers, whose slices range widely (Ilive
+  2-22 at 125M), every period 1830-34 lands 2nd-3rd at the two smaller sizes. *Whole sample:*
+  first among people for every language model (166-168 of 168 chunks, but trained on 21 times
+  the 1828-29 dose, so not a fair comparison), for Burrows' Delta and the 590M style encoder;
+  second behind the 1828-29 revelations for Cosine Delta and the 297M style encoder; third for
+  General Imposters (Pratt first). Reading: his revelation voice in general, not just the
+  1828-29 pages, is the closest writing we have; it does not separate "same man" from "same
+  medium", and the book's influence on these later texts cannot be excluded.
 - **6.5 Seeds:** stable, with the caveat that one-batch models cannot vary.
 - **6.6 His prose over time** (BOM-73): no drift toward the book's style.
 - **6.7 Two readings, not decided:** same man, or same revelatory medium; these tools cannot tell.

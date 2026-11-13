@@ -3154,7 +3154,60 @@ we're looking for more writers who wrote both kinds. And no method, ours include
 "none of these" reliably. So the claim is exactly this: at picking the right author from a list, on 430 tests that no method had
 seen, our period-trained models are better than every older method we tested, at every size.
 
+## A correction, and his later revelations
+
+**A correction first.** The 430 tests in the last section aren't 430 independent tests. They come
+from 23 authors, up to 20 passages each, and passages by one author tend to go right or wrong
+together. The research check I asked for (an AI agent, Fable, reading the whole project) caught it,
+and I recounted it myself. Counting authors instead of passages:
+
+| Our models against | Authors where ours wins more / theirs / tied | Holds up? |
+| --- | --- | --- |
+| General Imposters | 15-16 / 0-1 / 6-8 | yes, clearly |
+| ENSC | 14 / 1-2 / 7-8 | yes, clearly |
+| Burrows and Cosine Delta | 10-11 / 2-3 / 9-11 | not yet (p 0.02-0.06, not enough after correcting for twelve comparisons) |
+
+One author, the sermon writer Samuel Spring, supplies 19 of the 297M's 59 wins over Burrows. So the
+honest claim is narrower than what I wrote: clearly better than General Imposters and ENSC; ahead
+of the word-count methods on most authors, but not proven. More authors in the benchmark would
+settle it.
+
+**His later revelations.** Joseph Smith's only revelation text from before the book was printed
+is short: 3,039 tokens, a couple of pages. Is it just those pages that sit close to the Book of
+Mormon, or his revelation voice in general? We already had the rest of Revelation Book 1 on disk:
+95 revelations from 1830 to 1834, 65,222 words. The rule went in first (Amendment 54). The test
+before the book was printed stays as it was; this is a deep dive, and these were written after he
+dictated the book, so its influence on them can't be ruled out. One check on that: they share no
+passage of 20 words or more with the book. They do share 80 shorter runs (the longest 14 words),
+phrases like "behold I say unto you", which stay in, as for every candidate.
+
+The fair comparison is equal dose: twelve slices of the later revelations, each the same size as
+the 1828-29 sample, ranked against the 36 same-size models (every candidate's slices from Amendment 45, the six
+placebo writers, Dowling, and the 1828-29 revelations).
+
+| Size | 1828-29 revelations | Later revelation slices (12, 1830-1834) | Placebo writers' slices |
+| --- | --- | --- | --- |
+| 125M | 1st | 2nd (one ties 1st) | Ilive 2nd to 22nd, others lower |
+| 297M | 1st | 2nd-3rd | Ilive 2nd to 24th, others lower |
+| 590M | 5th | 1st-5th (10 of 12 at or above) | Ilive 1st-12th, Dowling 2nd-7th |
+
+What stands out is how steady it is. Every slice, from April 1830 to 1834, lands right behind the
+1828-29 pages at the two smaller sizes, while the placebo writers' slices bounce all over. At 590M
+everything bunches up, as it did for the placebo writers.
+
+Given the whole 65,000 words instead of a slice, the later revelations come first for every
+language model, but that's 21 times the training text of the 1828-29 sample, so it isn't a fair
+race. The other methods: Burrows puts them first, Cosine and
+the 297M style encoder second behind the 1828-29 pages, the 590M encoder first, General Imposters
+third (Parley Pratt first).
+
+So: the closeness isn't a quirk of two pages. His revelation voice, 1828 through 1834, is the
+nearest writing we have to the book. This still can't tell "the same man" from "the same revelatory
+voice", and the later texts could echo the book. About $1.60 of GPU.
+
 ## Log
+
+- **2026-11-12 (late).** Correction: the 430-test head-to-head is 23 authors, not 430 independent tests. By author, our models are clearly better than General Imposters and ENSC, and ahead of Burrows and Cosine Delta on most authors but not significantly. Amendment 54: Joseph Smith's 95 later revelations (1830-34); at equal dose every slice ranks right behind his 1828-29 revelations at 125M and 297M (10 of 12 at or above them at 590M). About $1.60. Details in "A correction, and his later revelations".
 
 - **2026-11-12.** Amendment 52: the four older methods run on the same 430 tests our models took. Every one of the twelve head-to-heads goes our way (297M against Burrows 59-9, against ENSC 77-3; corrected p < 0.0001), so "ties with the best older methods" becomes "better than every older method we tested at picking the author from a list". The imitation test is too small to say anything (three authors; by author, Burrows 1 of 3, our 297M 2 of 3), so I'm looking for more authors who wrote both plain prose and fake scripture. Details in "Settling the 4-0".
 - **2026-11-11 (late, 3).** Amendment 51's slices done at all three sizes, about $4. At 125M and 297M no placebo slice reaches Joseph Smith's revelations (0 of 67 primary slices at each size). At 590M Jacob Ilive beats or ties them on 8 of 12 slices, and Levi Dowling, born 1844, on 9 of 12, so the "it's the King James style" reading is solid at 590M only. The revelation side is one fixed model and can't be resampled. Details in "Twelve slices of Ilive".
