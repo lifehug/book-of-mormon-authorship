@@ -122,6 +122,14 @@ and he is not closest; for Cowdery, Rigdon, Phelps and Pratt the models learned 
 person. 7.1 Cowdery (the quotation leak), 7.2 Rigdon, 7.3 Spalding, 7.4 Ethan Smith, 7.5 Hunt,
 7.6 Pratt, 7.7 Phelps.
 
+7.8 **Everyone else in the library** (the author sweep, BOM-39/47, Amendments 28 and 40): the
+Book of Mormon against all 23,872 authors of 1780-1830 with 10,000+ words, by Cosine Delta and the
+style encoder: no lead (0, against 0.035 expected by chance). But on 200 books of known authorship
+the true author comes first only 27-35% of the time (the registered bar was 70%), so the sweep
+cannot name anyone; it says only that no unproposed author stands out. Our language models were
+not run on it (one model per author, 23,872 models). *Gap found 2026-11-12: the sweep was missing
+from version 3 of this outline.*
+
 ## 8. Dating and internal voices
 Language earlier than its period and than period imitations; narrators, dictation order, scribes.
 
