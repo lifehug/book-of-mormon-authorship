@@ -18,6 +18,7 @@ Saved scores only; no model is trained and no text is read.
 Writes ``data/benchmark/clustered.json`` and ``data/blind/a55_by_length.json``. Usage::
 
     python -m eval.clustered head-to-head
+    python -m eval.clustered head-to-head --ext   # Amendment 56: all 55 authors
     python -m eval.clustered curve
     python -m eval.clustered by-length
 """
@@ -70,18 +71,25 @@ def _merge(out: dict) -> None:
     OUT.write_text(json.dumps({**old, **stamp(), **out}, indent=1) + "\n")
 
 
-def head_to_head() -> int:
-    cfg = load_config()["prior_work"]["by_author"]
-    classic = [r for rs in json.loads((DIR / "prior_work_classic_tails_p2.json").read_text())[
-        "records"].values() for r in rs]  # fmt: skip
+def _pairs_h2h(size: str, suffix: str) -> list[tuple[str, dict, dict]]:
+    """(task, our record, the classical record) for every test of one benchmark set, in order."""
+    classic = [r for rs in json.loads((DIR / f"prior_work_classic_tails_{suffix}.json")
+               .read_text())["records"].values() for r in rs]  # fmt: skip
+    recs = json.loads((DIR / f"alm_{size}_{suffix}.json").read_text())["records"]
+    tests = [(t, r) for t, rs in recs.items() for r in rs]
+    assert len(tests) == len(classic)
+    assert all(c["author"] == r["author"] for c, (_, r) in zip(classic, tests, strict=True))
+    return [(t, r, c) for (t, r), c in zip(tests, classic, strict=True)]
+
+
+def _h2h(sets: tuple[str, ...], cfg: dict) -> list[dict]:
+    """The 12 comparisons by author over the benchmark sets ``sets``, Holm over the 12."""
     rows = []
     for size in SIZES:
-        tests = _tests(size)
-        assert len(tests) == len(classic)
-        assert all(c["author"] == r["author"] for c, (_, r) in zip(classic, tests, strict=True))
+        pairs = [x for s in sets for x in _pairs_h2h(size, s)]
         for m in METHODS:
             per: dict[tuple, list[int]] = defaultdict(lambda: [0, 0, 0])
-            for c, (task, r) in zip(classic, tests, strict=True):
+            for task, r, c in pairs:
                 ours, theirs = r["predicted"] == r["author"], c[m] == c["author"]
                 a = per[task, r["author"]]
                 a[0] += ours and not theirs
@@ -100,7 +108,7 @@ def head_to_head() -> int:
                          "theirs_ahead": lo, "tied": len(per) - w - lo, "sign_p": sign_p(w, lo),
                          "windows": [sum(v[0] for v in per.values()),
                                      sum(v[1] for v in per.values())],
-                         "accuracy_gap": sum(v[0] - v[1] for v in per.values()) / len(tests),
+                         "accuracy_gap": sum(v[0] - v[1] for v in per.values()) / len(pairs),
                          "gap_95": [float(x) for x in np.quantile(diffs, [0.025, 0.975])],
                          "largest": [[k[1], v[0], v[1]] for k, v in top]})  # fmt: skip
     for r, p in zip(rows, holm([r["sign_p"] for r in rows]), strict=True):
@@ -111,7 +119,21 @@ def head_to_head() -> int:
               f" (tied {r['tied']}), windows {r['windows'][0]}-{r['windows'][1]}, sign p "
               f"{r['sign_p']:.4f}, Holm {p:.4f}, gap {r['accuracy_gap']:+.3f} "
               f"[{r['gap_95'][0]:+.3f}, {r['gap_95'][1]:+.3f}] -> {r['reading']}")  # fmt: skip
-    _merge({"head_to_head_by_author": rows})
+    return rows
+
+
+def head_to_head(ext: bool = False) -> int:
+    """Amendment 55 on BOM-75's 23 authors; with ``ext``, Amendment 56's test on all 55 authors
+    (the decision), with the 32 new and the 23 alone beside it."""
+    cfg = load_config()["prior_work"]["by_author"]
+    if not ext:
+        _merge({"head_to_head_by_author": _h2h(("p2",), cfg)})
+    else:
+        out = {}
+        for label, sets in (("all_55", ("p2", "p3")), ("new_32", ("p3",)), ("bom75_23", ("p2",))):
+            print(f"== {label}")
+            out[label] = _h2h(sets, cfg)
+        _merge({"head_to_head_by_author_a56": out})
     print(f"-> {OUT}")
     return 0
 
@@ -304,8 +326,11 @@ def _a54_scores(bom: set[str], d: Path) -> dict:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("cmd", choices=["head-to-head", "curve", "by-length"])
+    ap.add_argument("--ext", action="store_true", help="Amendment 56: all 55 authors")
     a = ap.parse_args(argv)
-    return {"head-to-head": head_to_head, "curve": curve, "by-length": by_length}[a.cmd]()
+    if a.cmd == "head-to-head":
+        return head_to_head(a.ext)
+    return {"curve": curve, "by-length": by_length}[a.cmd]()
 
 
 if __name__ == "__main__":
