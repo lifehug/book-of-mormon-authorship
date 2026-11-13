@@ -157,9 +157,12 @@ Data tables, base and candidate models (Hugging Face), code, the pre-registratio
 amendment, the simulated reviews; how to obtain the licensed sources.
 
 ## 14. What comes next (Part 2)
-Framing (owner, 2026-11-12): Part 1 ends with "the closest writing is Joseph Smith's revelations;
-his ordinary prose does not stand out; much of the closeness is shared King James register; and
-our period-trained models are the best tools for the job". Part 2 asks the next question: with the
+The owner's reading of the results (2026-11-12; a reading, not a framing): the closest writing is
+Joseph Smith's revelations; his ordinary prose does not stand out; much of the closeness is shared
+King James register; our period-trained models are the best tools for the job. Claude's caveats:
+"does not stand out" holds for the language models, not for Burrows' and Cosine Delta (which put
+his ordinary prose first without the revelations); register explains the closeness clearly at
+590M only (placebo writers reach the revelations there, not at 125M or 297M). Part 2 asks the next question: with the
 best tools, can we find anyone, or better candidates, in the whole library? (Amendment 57.)
 Stage 0's result (still no method under 5% false matches on 430 tests); Stage 1 on hold.
 **\*TBD (scoped, owner to decide): a library-wide search with our own models**
