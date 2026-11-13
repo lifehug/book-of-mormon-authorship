@@ -13,8 +13,9 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 ## Waiting on the owner
 
-- **BOM-90:** test "best at picking the author" at the Book of Mormon's list size (12 samples,
-  8 people)? Classical free; our models ~$5-15. Recommended.
+- **BOM-90 (first, owner 2026-11-13):** how big a candidate list our models can pick the author from, at 125M/297M/590M; random and similar lists of 4-55, then library competitors beyond 55. Older methods free; GPU ~$10-15 (+ ~$20-40 for competitors), cost to be confirmed. Everything else in Phase 2 waits on it.
+- **BOM-91:** Phase 2 stage 0 on the Mac (labels, the 24 shared misses, alive-in-1828 tag, positive control). Free.
+- **BOM-89:** the cascade; on hold until BOM-90 and BOM-91, then an amendment revising Amendment 57.
 
 ## Done 2026-11-12 (details in the blog's Log and the issues)
 
