@@ -2,13 +2,642 @@
  "config_sha256": "092199b6d34a7b87759f8b2bac7a483e1cfbe0ceb21a0a3671e2489c9bf93f3a",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "ce923d4d76db50d33be3fa2a5cc206b37f2cf0ef",
+ "git_commit": "4f706a04e343bc70d626b214c88ebe7cbf8e6801",
  "authors": 55,
  "tests": 1070,
  "methods_scored": [
-  "alm_pilot"
+  "alm_base",
+  "alm_pilot",
+  "burrows_delta",
+  "cosine_delta",
+  "ensc",
+  "general_imposters"
  ],
  "curves": {
+  "burrows_delta": {
+   "random": {
+    "curve": [
+     {
+      "size": 2,
+      "mean_by_author": 0.9286262626262625,
+      "interval": [
+       0.8933232323232324,
+       0.9585959595959597
+      ],
+      "share_of_attributions": 0.9272585669781932
+     },
+     {
+      "size": 4,
+      "mean_by_author": 0.8533131313131314,
+      "interval": [
+       0.7947171717171717,
+       0.9054646464646464
+      ],
+      "share_of_attributions": 0.85
+     },
+     {
+      "size": 8,
+      "mean_by_author": 0.7884343434343435,
+      "interval": [
+       0.7117070707070708,
+       0.8557575757575758
+      ],
+      "share_of_attributions": 0.7829283489096573
+     },
+     {
+      "size": 12,
+      "mean_by_author": 0.7476161616161615,
+      "interval": [
+       0.663151515151515,
+       0.8236161616161616
+      ],
+      "share_of_attributions": 0.7405607476635514
+     },
+     {
+      "size": 20,
+      "mean_by_author": 0.7023131313131313,
+      "interval": [
+       0.6125050505050504,
+       0.784191919191919
+      ],
+      "share_of_attributions": 0.6907165109034268
+     },
+     {
+      "size": 30,
+      "mean_by_author": 0.6700000000000002,
+      "interval": [
+       0.5783939393939392,
+       0.754939393939394
+      ],
+      "share_of_attributions": 0.6566355140186916
+     },
+     {
+      "size": 55,
+      "mean_by_author": 0.6178787878787879,
+      "interval": [
+       0.5196969696969697,
+       0.7109090909090909
+      ],
+      "share_of_attributions": 0.6009345794392523
+     }
+    ],
+    "longest_list": {
+     "0.9": {
+      "mean_at_or_above": 2,
+      "lower_end_at_or_above": null
+     },
+     "0.7": {
+      "mean_at_or_above": 20,
+      "lower_end_at_or_above": 8
+     }
+    }
+   },
+   "similar": {
+    "curve": [
+     {
+      "size": 2,
+      "mean_by_author": 0.8763636363636365,
+      "interval": [
+       0.8163636363636363,
+       0.9290909090909091
+      ],
+      "share_of_attributions": 0.8728971962616823
+     },
+     {
+      "size": 4,
+      "mean_by_author": 0.7845454545454545,
+      "interval": [
+       0.699090909090909,
+       0.8627272727272729
+      ],
+      "share_of_attributions": 0.7822429906542057
+     },
+     {
+      "size": 8,
+      "mean_by_author": 0.6893939393939394,
+      "interval": [
+       0.6015151515151516,
+       0.7700000000000001
+      ],
+      "share_of_attributions": 0.677570093457944
+     },
+     {
+      "size": 12,
+      "mean_by_author": 0.6357575757575756,
+      "interval": [
+       0.5421212121212122,
+       0.7236363636363637
+      ],
+      "share_of_attributions": 0.6205607476635514
+     },
+     {
+      "size": 20,
+      "mean_by_author": 0.6054545454545454,
+      "interval": [
+       0.5072727272727273,
+       0.6972727272727273
+      ],
+      "share_of_attributions": 0.5850467289719626
+     },
+     {
+      "size": 30,
+      "mean_by_author": 0.6078787878787879,
+      "interval": [
+       0.5100000000000001,
+       0.7006060606060607
+      ],
+      "share_of_attributions": 0.5887850467289719
+     },
+     {
+      "size": 55,
+      "mean_by_author": 0.6178787878787879,
+      "interval": [
+       0.5196969696969697,
+       0.7109090909090909
+      ],
+      "share_of_attributions": 0.6009345794392523
+     }
+    ],
+    "longest_list": {
+     "0.9": {
+      "mean_at_or_above": null,
+      "lower_end_at_or_above": null
+     },
+     "0.7": {
+      "mean_at_or_above": 4,
+      "lower_end_at_or_above": 2
+     }
+    }
+   }
+  },
+  "cosine_delta": {
+   "random": {
+    "curve": [
+     {
+      "size": 2,
+      "mean_by_author": 0.9054848484848487,
+      "interval": [
+       0.8698181818181819,
+       0.9368787878787881
+      ],
+      "share_of_attributions": 0.9010280373831776
+     },
+     {
+      "size": 4,
+      "mean_by_author": 0.8503838383838384,
+      "interval": [
+       0.7953838383838385,
+       0.898919191919192
+      ],
+      "share_of_attributions": 0.845981308411215
+     },
+     {
+      "size": 8,
+      "mean_by_author": 0.7737272727272729,
+      "interval": [
+       0.6959393939393942,
+       0.8444545454545457
+      ],
+      "share_of_attributions": 0.7677258566978193
+     },
+     {
+      "size": 12,
+      "mean_by_author": 0.7333737373737375,
+      "interval": [
+       0.6469494949494952,
+       0.8133434343434343
+      ],
+      "share_of_attributions": 0.7258255451713396
+     },
+     {
+      "size": 20,
+      "mean_by_author": 0.6893737373737374,
+      "interval": [
+       0.597848484848485,
+       0.7757777777777777
+      ],
+      "share_of_attributions": 0.6777881619937695
+     },
+     {
+      "size": 30,
+      "mean_by_author": 0.6583939393939395,
+      "interval": [
+       0.5625454545454546,
+       0.748030303030303
+      ],
+      "share_of_attributions": 0.645233644859813
+     },
+     {
+      "size": 55,
+      "mean_by_author": 0.5854545454545456,
+      "interval": [
+       0.4827272727272727,
+       0.6854545454545455
+      ],
+      "share_of_attributions": 0.5869158878504673
+     }
+    ],
+    "longest_list": {
+     "0.9": {
+      "mean_at_or_above": 2,
+      "lower_end_at_or_above": null
+     },
+     "0.7": {
+      "mean_at_or_above": 12,
+      "lower_end_at_or_above": 4
+     }
+    }
+   },
+   "similar": {
+    "curve": [
+     {
+      "size": 2,
+      "mean_by_author": 0.8445454545454546,
+      "interval": [
+       0.7781818181818184,
+       0.9063636363636365
+      ],
+      "share_of_attributions": 0.8383177570093457
+     },
+     {
+      "size": 4,
+      "mean_by_author": 0.7854545454545454,
+      "interval": [
+       0.7054545454545456,
+       0.8563636363636364
+      ],
+      "share_of_attributions": 0.7822429906542057
+     },
+     {
+      "size": 8,
+      "mean_by_author": 0.6818181818181818,
+      "interval": [
+       0.5890909090909091,
+       0.7672727272727273
+      ],
+      "share_of_attributions": 0.6700934579439253
+     },
+     {
+      "size": 12,
+      "mean_by_author": 0.6339393939393939,
+      "interval": [
+       0.5348484848484849,
+       0.7251515151515151
+      ],
+      "share_of_attributions": 0.6196261682242991
+     },
+     {
+      "size": 20,
+      "mean_by_author": 0.6075757575757575,
+      "interval": [
+       0.5063636363636363,
+       0.704848484848485
+      ],
+      "share_of_attributions": 0.5869158878504673
+     },
+     {
+      "size": 30,
+      "mean_by_author": 0.6003030303030303,
+      "interval": [
+       0.4963636363636364,
+       0.6987878787878787
+      ],
+      "share_of_attributions": 0.5813084112149532
+     },
+     {
+      "size": 55,
+      "mean_by_author": 0.5854545454545456,
+      "interval": [
+       0.4827272727272727,
+       0.6854545454545455
+      ],
+      "share_of_attributions": 0.5869158878504673
+     }
+    ],
+    "longest_list": {
+     "0.9": {
+      "mean_at_or_above": null,
+      "lower_end_at_or_above": null
+     },
+     "0.7": {
+      "mean_at_or_above": 4,
+      "lower_end_at_or_above": 4
+     }
+    }
+   }
+  },
+  "ensc": {
+   "random": {
+    "curve": [
+     {
+      "size": 2,
+      "mean_by_author": 0.9099393939393942,
+      "interval": [
+       0.8760000000000001,
+       0.9402727272727274
+      ],
+      "share_of_attributions": 0.9108411214953271
+     },
+     {
+      "size": 4,
+      "mean_by_author": 0.8272626262626264,
+      "interval": [
+       0.7684949494949497,
+       0.882080808080808
+      ],
+      "share_of_attributions": 0.8252336448598131
+     },
+     {
+      "size": 8,
+      "mean_by_author": 0.7537272727272727,
+      "interval": [
+       0.6765757575757577,
+       0.8246666666666667
+      ],
+      "share_of_attributions": 0.7507165109034268
+     },
+     {
+      "size": 12,
+      "mean_by_author": 0.7033737373737374,
+      "interval": [
+       0.6165252525252527,
+       0.7838282828282829
+      ],
+      "share_of_attributions": 0.7008411214953271
+     },
+     {
+      "size": 20,
+      "mean_by_author": 0.6468989898989899,
+      "interval": [
+       0.5542020202020203,
+       0.7345252525252526
+      ],
+      "share_of_attributions": 0.6426479750778816
+     },
+     {
+      "size": 30,
+      "mean_by_author": 0.6084545454545454,
+      "interval": [
+       0.5114444444444445,
+       0.7003333333333334
+      ],
+      "share_of_attributions": 0.6063239875389408
+     },
+     {
+      "size": 55,
+      "mean_by_author": 0.5430303030303031,
+      "interval": [
+       0.44030303030303025,
+       0.6418181818181817
+      ],
+      "share_of_attributions": 0.5495327102803739
+     }
+    ],
+    "longest_list": {
+     "0.9": {
+      "mean_at_or_above": 2,
+      "lower_end_at_or_above": null
+     },
+     "0.7": {
+      "mean_at_or_above": 12,
+      "lower_end_at_or_above": 4
+     }
+    }
+   },
+   "similar": {
+    "curve": [
+     {
+      "size": 2,
+      "mean_by_author": 0.8390909090909089,
+      "interval": [
+       0.7727272727272728,
+       0.8990909090909093
+      ],
+      "share_of_attributions": 0.8560747663551402
+     },
+     {
+      "size": 4,
+      "mean_by_author": 0.7481818181818182,
+      "interval": [
+       0.6627272727272728,
+       0.8281818181818182
+      ],
+      "share_of_attributions": 0.7626168224299066
+     },
+     {
+      "size": 8,
+      "mean_by_author": 0.6493939393939394,
+      "interval": [
+       0.5536363636363636,
+       0.7393939393939395
+      ],
+      "share_of_attributions": 0.6542056074766355
+     },
+     {
+      "size": 12,
+      "mean_by_author": 0.5948484848484848,
+      "interval": [
+       0.49727272727272714,
+       0.6909090909090909
+      ],
+      "share_of_attributions": 0.5981308411214953
+     },
+     {
+      "size": 20,
+      "mean_by_author": 0.556969696969697,
+      "interval": [
+       0.45181818181818184,
+       0.6578787878787878
+      ],
+      "share_of_attributions": 0.5579439252336449
+     },
+     {
+      "size": 30,
+      "mean_by_author": 0.5542424242424243,
+      "interval": [
+       0.4496969696969696,
+       0.6539393939393939
+      ],
+      "share_of_attributions": 0.5551401869158878
+     },
+     {
+      "size": 55,
+      "mean_by_author": 0.5430303030303031,
+      "interval": [
+       0.44030303030303025,
+       0.6418181818181817
+      ],
+      "share_of_attributions": 0.5495327102803739
+     }
+    ],
+    "longest_list": {
+     "0.9": {
+      "mean_at_or_above": null,
+      "lower_end_at_or_above": null
+     },
+     "0.7": {
+      "mean_at_or_above": 4,
+      "lower_end_at_or_above": 2
+     }
+    }
+   }
+  },
+  "general_imposters": {
+   "random": {
+    "curve": [
+     {
+      "size": 2,
+      "mean_by_author": 0.8854444444444444,
+      "interval": [
+       0.8402929292929292,
+       0.9260707070707073
+      ],
+      "share_of_attributions": 0.8828971962616823
+     },
+     {
+      "size": 4,
+      "mean_by_author": 0.8026565656565655,
+      "interval": [
+       0.7399191919191918,
+       0.8598080808080809
+      ],
+      "share_of_attributions": 0.7967289719626168
+     },
+     {
+      "size": 8,
+      "mean_by_author": 0.7283636363636363,
+      "interval": [
+       0.6504545454545455,
+       0.7994545454545455
+      ],
+      "share_of_attributions": 0.7186604361370716
+     },
+     {
+      "size": 12,
+      "mean_by_author": 0.6746767676767678,
+      "interval": [
+       0.5909494949494948,
+       0.7520404040404042
+      ],
+      "share_of_attributions": 0.6653582554517133
+     },
+     {
+      "size": 20,
+      "mean_by_author": 0.610909090909091,
+      "interval": [
+       0.5236363636363636,
+       0.690939393939394
+      ],
+      "share_of_attributions": 0.5930841121495327
+     },
+     {
+      "size": 30,
+      "mean_by_author": 0.561979797979798,
+      "interval": [
+       0.4708181818181818,
+       0.6455353535353534
+      ],
+      "share_of_attributions": 0.5457943925233645
+     },
+     {
+      "size": 55,
+      "mean_by_author": 0.49121212121212116,
+      "interval": [
+       0.39545454545454545,
+       0.5803030303030302
+      ],
+      "share_of_attributions": 0.48130841121495327
+     }
+    ],
+    "longest_list": {
+     "0.9": {
+      "mean_at_or_above": null,
+      "lower_end_at_or_above": null
+     },
+     "0.7": {
+      "mean_at_or_above": 8,
+      "lower_end_at_or_above": 4
+     }
+    }
+   },
+   "similar": {
+    "curve": [
+     {
+      "size": 2,
+      "mean_by_author": 0.7954545454545454,
+      "interval": [
+       0.7281818181818183,
+       0.8581818181818183
+      ],
+      "share_of_attributions": 0.811214953271028
+     },
+     {
+      "size": 4,
+      "mean_by_author": 0.673939393939394,
+      "interval": [
+       0.5945454545454546,
+       0.75
+      ],
+      "share_of_attributions": 0.6878504672897197
+     },
+     {
+      "size": 8,
+      "mean_by_author": 0.5609090909090909,
+      "interval": [
+       0.4718181818181818,
+       0.6445454545454544
+      ],
+      "share_of_attributions": 0.5551401869158878
+     },
+     {
+      "size": 12,
+      "mean_by_author": 0.5157575757575759,
+      "interval": [
+       0.42060606060606065,
+       0.6036363636363636
+      ],
+      "share_of_attributions": 0.5074766355140187
+     },
+     {
+      "size": 20,
+      "mean_by_author": 0.49666666666666665,
+      "interval": [
+       0.40545454545454535,
+       0.5830303030303031
+      ],
+      "share_of_attributions": 0.48598130841121495
+     },
+     {
+      "size": 30,
+      "mean_by_author": 0.4906060606060606,
+      "interval": [
+       0.3960606060606061,
+       0.5775757575757575
+      ],
+      "share_of_attributions": 0.4785046728971963
+     },
+     {
+      "size": 55,
+      "mean_by_author": 0.48424242424242425,
+      "interval": [
+       0.3896969696969697,
+       0.573030303030303
+      ],
+      "share_of_attributions": 0.47289719626168225
+     }
+    ],
+    "longest_list": {
+     "0.9": {
+      "mean_at_or_above": null,
+      "lower_end_at_or_above": null
+     },
+     "0.7": {
+      "mean_at_or_above": 2,
+      "lower_end_at_or_above": 2
+     }
+    }
+   }
+  },
   "alm_pilot": {
    "random": {
     "curve": [
@@ -164,10 +793,247 @@
      }
     }
    }
+  },
+  "alm_base": {
+   "random": {
+    "curve": [
+     {
+      "size": 2,
+      "mean_by_author": 0.9732121212121212,
+      "interval": [
+       0.9536363636363635,
+       0.9896363636363636
+      ],
+      "share_of_attributions": 0.9737694704049844
+     },
+     {
+      "size": 4,
+      "mean_by_author": 0.9496363636363637,
+      "interval": [
+       0.9174848484848485,
+       0.9770606060606061
+      ],
+      "share_of_attributions": 0.9499065420560747
+     },
+     {
+      "size": 8,
+      "mean_by_author": 0.9226666666666667,
+      "interval": [
+       0.8755757575757577,
+       0.9627272727272727
+      ],
+      "share_of_attributions": 0.922367601246106
+     },
+     {
+      "size": 12,
+      "mean_by_author": 0.9076060606060605,
+      "interval": [
+       0.8543636363636364,
+       0.9529090909090908
+      ],
+      "share_of_attributions": 0.9068847352024922
+     },
+     {
+      "size": 20,
+      "mean_by_author": 0.8927575757575759,
+      "interval": [
+       0.8347575757575758,
+       0.9426363636363636
+      ],
+      "share_of_attributions": 0.891619937694704
+     },
+     {
+      "size": 30,
+      "mean_by_author": 0.8790909090909091,
+      "interval": [
+       0.8182121212121212,
+       0.9328484848484848
+      ],
+      "share_of_attributions": 0.8775700934579439
+     },
+     {
+      "size": 55,
+      "mean_by_author": 0.860909090909091,
+      "interval": [
+       0.7963636363636363,
+       0.92
+      ],
+      "share_of_attributions": 0.8588785046728972
+     }
+    ],
+    "longest_list": {
+     "0.9": {
+      "mean_at_or_above": 12,
+      "lower_end_at_or_above": 4
+     },
+     "0.7": {
+      "mean_at_or_above": 55,
+      "lower_end_at_or_above": 55
+     }
+    }
+   },
+   "similar": {
+    "curve": [
+     {
+      "size": 2,
+      "mean_by_author": 0.9581818181818182,
+      "interval": [
+       0.9181818181818182,
+       0.990909090909091
+      ],
+      "share_of_attributions": 0.9570093457943926
+     },
+     {
+      "size": 4,
+      "mean_by_author": 0.9172727272727274,
+      "interval": [
+       0.8681818181818183,
+       0.96
+      ],
+      "share_of_attributions": 0.9158878504672897
+     },
+     {
+      "size": 8,
+      "mean_by_author": 0.900909090909091,
+      "interval": [
+       0.8445454545454546,
+       0.9490909090909091
+      ],
+      "share_of_attributions": 0.9
+     },
+     {
+      "size": 12,
+      "mean_by_author": 0.89,
+      "interval": [
+       0.8300000000000001,
+       0.9427272727272727
+      ],
+      "share_of_attributions": 0.888785046728972
+     },
+     {
+      "size": 20,
+      "mean_by_author": 0.8781818181818182,
+      "interval": [
+       0.8145454545454546,
+       0.9336363636363637
+      ],
+      "share_of_attributions": 0.8766355140186916
+     },
+     {
+      "size": 30,
+      "mean_by_author": 0.8663636363636363,
+      "interval": [
+       0.8018181818181818,
+       0.9254545454545454
+      ],
+      "share_of_attributions": 0.8644859813084113
+     },
+     {
+      "size": 55,
+      "mean_by_author": 0.860909090909091,
+      "interval": [
+       0.7963636363636363,
+       0.92
+      ],
+      "share_of_attributions": 0.8588785046728972
+     }
+    ],
+    "longest_list": {
+     "0.9": {
+      "mean_at_or_above": 8,
+      "lower_end_at_or_above": 2
+     },
+     "0.7": {
+      "mean_at_or_above": 55,
+      "lower_end_at_or_above": 55
+     }
+    }
+   }
   }
  },
  "decision_size": 12,
- "decision": [],
+ "decision": [
+  {
+   "ours": "alm_pilot",
+   "theirs": "burrows_delta",
+   "ours_ahead": 36,
+   "theirs_ahead": 3,
+   "tied": 16,
+   "sign_p": 3.608874976634979e-08,
+   "holm_p": 1.4435499906539917e-07,
+   "ours_better": true
+  },
+  {
+   "ours": "alm_pilot",
+   "theirs": "cosine_delta",
+   "ours_ahead": 37,
+   "theirs_ahead": 4,
+   "tied": 14,
+   "sign_p": 1.0258372640237212e-07,
+   "holm_p": 1.4435499906539917e-07,
+   "ours_better": true
+  },
+  {
+   "ours": "alm_pilot",
+   "theirs": "ensc",
+   "ours_ahead": 41,
+   "theirs_ahead": 4,
+   "tied": 10,
+   "sign_p": 9.334883088740753e-09,
+   "holm_p": 4.6674415443703765e-08,
+   "ours_better": true
+  },
+  {
+   "ours": "alm_pilot",
+   "theirs": "general_imposters",
+   "ours_ahead": 48,
+   "theirs_ahead": 3,
+   "tied": 4,
+   "sign_p": 1.9674928353197174e-11,
+   "holm_p": 1.573994268255774e-10,
+   "ours_better": true
+  },
+  {
+   "ours": "alm_base",
+   "theirs": "burrows_delta",
+   "ours_ahead": 36,
+   "theirs_ahead": 3,
+   "tied": 16,
+   "sign_p": 3.608874976634979e-08,
+   "holm_p": 1.4435499906539917e-07,
+   "ours_better": true
+  },
+  {
+   "ours": "alm_base",
+   "theirs": "cosine_delta",
+   "ours_ahead": 36,
+   "theirs_ahead": 3,
+   "tied": 16,
+   "sign_p": 3.608874976634979e-08,
+   "holm_p": 1.4435499906539917e-07,
+   "ours_better": true
+  },
+  {
+   "ours": "alm_base",
+   "theirs": "ensc",
+   "ours_ahead": 41,
+   "theirs_ahead": 3,
+   "tied": 11,
+   "sign_p": 1.6183321349672042e-09,
+   "holm_p": 9.709992809803225e-09,
+   "ours_better": true
+  },
+  {
+   "ours": "alm_base",
+   "theirs": "general_imposters",
+   "ours_ahead": 47,
+   "theirs_ahead": 3,
+   "tied": 5,
+   "sign_p": 3.708322537931963e-11,
+   "holm_p": 2.595825776552374e-10,
+   "ours_better": true
+  }
+ ],
  "top_k": {
   "alm_pilot": {
    "random": [
@@ -260,6 +1126,98 @@
      "top10": 0.9527272727272729
     }
    ]
+  },
+  "alm_base": {
+   "random": [
+    {
+     "size": 2,
+     "top1": 0.9732121212121212
+    },
+    {
+     "size": 4,
+     "top1": 0.9496363636363637,
+     "top3": 0.9944242424242424
+    },
+    {
+     "size": 8,
+     "top1": 0.9226666666666667,
+     "top3": 0.9738484848484849,
+     "top5": 0.9923030303030304
+    },
+    {
+     "size": 12,
+     "top1": 0.9076060606060605,
+     "top3": 0.954878787878788,
+     "top5": 0.9786363636363635,
+     "top10": 0.9958484848484849
+    },
+    {
+     "size": 20,
+     "top1": 0.8927575757575759,
+     "top3": 0.9385454545454545,
+     "top5": 0.9552121212121211,
+     "top10": 0.9888181818181819
+    },
+    {
+     "size": 30,
+     "top1": 0.8790909090909091,
+     "top3": 0.9242424242424243,
+     "top5": 0.9418787878787879,
+     "top10": 0.9655151515151514
+    },
+    {
+     "size": 55,
+     "top1": 0.860909090909091,
+     "top3": 0.9090909090909091,
+     "top5": 0.9245454545454546,
+     "top10": 0.9454545454545454
+    }
+   ],
+   "similar": [
+    {
+     "size": 2,
+     "top1": 0.9581818181818182
+    },
+    {
+     "size": 4,
+     "top1": 0.9172727272727274,
+     "top3": 0.9918181818181818
+    },
+    {
+     "size": 8,
+     "top1": 0.900909090909091,
+     "top3": 0.9472727272727273,
+     "top5": 0.9872727272727272
+    },
+    {
+     "size": 12,
+     "top1": 0.89,
+     "top3": 0.9354545454545454,
+     "top5": 0.9590909090909091,
+     "top10": 0.9954545454545455
+    },
+    {
+     "size": 20,
+     "top1": 0.8781818181818182,
+     "top3": 0.9254545454545454,
+     "top5": 0.9445454545454545,
+     "top10": 0.9727272727272728
+    },
+    {
+     "size": 30,
+     "top1": 0.8663636363636363,
+     "top3": 0.9154545454545455,
+     "top5": 0.9327272727272728,
+     "top10": 0.9563636363636365
+    },
+    {
+     "size": 55,
+     "top1": 0.860909090909091,
+     "top3": 0.9090909090909091,
+     "top5": 0.9245454545454546,
+     "top10": 0.9454545454545454
+    }
+   ]
   }
  },
  "reproduction": {
@@ -268,6 +1226,12 @@
    "max_abs_diff": 7.153366088918922e-07,
    "median_abs_diff": 9.809577247721357e-08,
    "same_pick_share": 1.0
+  },
+  "alm_base": {
+   "tests": 1070,
+   "max_abs_diff": 0.0047078981430053735,
+   "median_abs_diff": 0.0004736588102167219,
+   "same_pick_share": 0.9953271028037384
   }
  }
 }

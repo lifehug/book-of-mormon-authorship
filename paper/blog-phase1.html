@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who wrote the Book of Mormon? Phase 1</title>
+<style>
+:root{
+  color-scheme: light;
+  --bg:#fbfaf7; --surface:#ffffff; --surface-2:#f3f1ec; --line:#e2dfd7;
+  --text:#16150f; --text-2:#52514e; --text-3:#7b7972;
+  --s1:#2a78d6; --s2:#eb6834; --neutral:#b9b6ac; --accent-bg:#e9f1fc;
+  --seq-lo:#cde2fb; --seq-hi:#256abf;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#131312; --surface:#1a1a19; --surface-2:#242422; --line:#33322f;
+    --text:#f0efec; --text-2:#c3c2b7; --text-3:#8f8d84;
+    --s1:#3987e5; --s2:#d95926; --neutral:#5d5b55; --accent-bg:#162a44;
+    --seq-lo:#184f95; --seq-hi:#6da7ec;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--serif);font-size:19px;line-height:1.62}
+main{max-width:740px;margin:0 auto;padding:40px 20px 96px}
+h1{font-size:2.15rem;line-height:1.15;margin:0 0 12px;text-wrap:balance;letter-spacing:-.01em}
+h2{font-size:1.5rem;line-height:1.25;margin:64px 0 12px;text-wrap:balance}
+h3{font-size:1.1rem;margin:36px 0 8px}
+p{margin:0 0 18px}
+a{color:var(--s1)}
+.kicker,.byline,figcaption,.note,table,.tiles,.btn,.seg,.tip,.legend,.toc,.panel,.bar-row,.draft{font-family:var(--sans)}
+.kicker{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px}
+.byline{font-size:.9rem;color:var(--text-2);margin-bottom:28px}
+.draft{font-size:.85rem;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;color:var(--text-2);margin-bottom:32px}
+.lede{font-size:1.18rem;color:var(--text)}
+blockquote{margin:22px 0;padding:2px 0 2px 18px;border-left:3px solid var(--line);color:var(--text-2);font-style:italic}
+.answer{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:26px 0}
+.answer ol{margin:0;padding-left:22px}
+.answer li{margin-bottom:10px}
+.answer li:last-child{margin-bottom:0}
+.toc{font-size:.9rem;columns:2;column-gap:28px;padding:0;margin:24px 0 0;list-style:none}
+.toc li{margin-bottom:6px;break-inside:avoid}
+.toc a{color:var(--text-2);text-decoration:none;border-bottom:1px solid var(--line)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:24px 0}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 14px 12px}
+.tile b{display:block;font-size:1.5rem;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.tile span{display:block;font-size:.8rem;color:var(--text-2);margin-top:6px;line-height:1.35}
+figure{margin:28px 0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 14px}
+figure h4{font-family:var(--sans);font-size:.95rem;margin:0 0 4px}
+figure .sub{font-family:var(--sans);font-size:.82rem;color:var(--text-2);margin:0 0 14px}
+figcaption{font-size:.8rem;color:var(--text-3);margin-top:12px;line-height:1.45}
+.bar-row{display:grid;grid-template-columns:minmax(120px,34%) 1fr;gap:10px;align-items:center;font-size:.85rem;margin:7px 0}
+.bar-row .lab{color:var(--text-2);line-height:1.25}
+.bar-row .track{position:relative;height:22px}
+.bar{position:absolute;left:0;top:3px;height:16px;border-radius:0 4px 4px 0;background:var(--neutral);min-width:2px;cursor:default}
+.bar.s1{background:var(--s1)} .bar.s2{background:var(--s2)}
+.bar-row .val{position:absolute;top:1px;font-variant-numeric:tabular-nums;color:var(--text);font-weight:600;padding-left:7px;white-space:nowrap}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--text-2);margin:0 0 10px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.tablewrap{overflow-x:auto;margin:22px 0}
+table{border-collapse:collapse;width:100%;font-size:.86rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--text-2);font-size:.78rem;letter-spacing:.02em}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.cell{text-align:center;font-variant-numeric:tabular-nums;border-radius:4px}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.btn{font-size:.82rem;border:1px solid var(--line);background:var(--surface-2);color:var(--text);padding:7px 11px;border-radius:999px;cursor:pointer}
+.btn[aria-pressed="true"]{background:var(--s1);border-color:var(--s1);color:#fff}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;margin:0 0 14px}
+.seg button{font:inherit;font-size:.85rem;border:0;background:var(--surface-2);color:var(--text-2);padding:8px 16px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--s1);color:#fff}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pair>div{background:var(--surface-2);border-radius:8px;padding:12px 14px;font-size:.98rem;line-height:1.5}
+.pair small{display:block;font-family:var(--sans);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px}
+mark{background:var(--accent-bg);color:inherit;padding:1px 3px;border-radius:3px}
+.panel{display:grid;gap:10px}
+.prow{display:grid;grid-template-columns:minmax(130px,36%) 1fr;gap:12px;font-size:.88rem;padding:10px 0;border-top:1px solid var(--line)}
+.prow:first-child{border-top:0}
+.prow .q{color:var(--text-2)}
+.prow .a b{font-size:1.05rem}
+.meter{height:10px;background:var(--surface-2);border-radius:5px;overflow:hidden;margin-top:7px}
+.meter i{display:block;height:100%;background:var(--s1);border-radius:0 4px 4px 0;transition:width .25s}
+.reading{font-family:var(--serif);font-size:1rem;background:var(--accent-bg);border-radius:8px;padding:12px 14px;margin-top:6px}
+.tip{position:fixed;pointer-events:none;background:var(--text);color:var(--bg);font-size:.78rem;padding:6px 9px;border-radius:6px;max-width:260px;line-height:1.35;opacity:0;transition:opacity .1s;z-index:9}
+.note{font-size:.86rem;color:var(--text-2);background:var(--surface-2);border-radius:8px;padding:12px 14px;margin:22px 0;line-height:1.5}
+svg text{font-family:var(--sans);fill:var(--text-2);font-size:12px}
+.wrong li{margin-bottom:12px}
+hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
+@media (max-width:560px){
+  body{font-size:17.5px} h1{font-size:1.75rem} .toc{columns:1} .pair{grid-template-columns:1fr}
+  .prow{grid-template-columns:1fr;gap:4px}
+}
+</style>
+</head>
+<body>
+<main>
+
+<div class="kicker">Phase 1 &middot; the write-up</div>
+<h1>Who wrote the Book of Mormon? I asked the text, and here's what it said.</h1>
+<div class="byline">Dave Taylor &middot; draft of 13 November 2026</div>
+<div class="draft">Draft for my own review. Every number here comes from a results file in the repo. The charts are live: hover or tap the bars, click the buttons.</div>
+
+<p class="lede">In 2016 a friend and I wrote a little Java program that counted the words in the 1830 Book of Mormon and compared them with Joseph Smith's journals. It was a weekend thing. It answered nothing, and the repo sat for ten years.</p>
+
+<p>This year I picked it back up, with better tools and one rule: write down how every test will be judged before I see its result. I'm not a scientist. What I can offer in place of credentials is that everything is public and anyone can run it again.</p>
+
+<p>One thing up front. I'm not arguing about whether the book is inspired. A computer can't answer that, and I won't pretend it can. What it can do is tell me whether the English text looks like a particular person's writing, whether it borrows from particular books, and how far those tools can be trusted.</p>
+
+<div class="answer">
+<ol>
+<li><b>The book copies almost nothing.</b> Set the King James Bible aside and 0.16% of it matches earlier books. The books people name as sources don't stand out from other books of their kind.</li>
+<li><b>Of the eight people usually proposed, the closest writing is Joseph Smith's revelations.</b> His letters and journals aren't close. His revelations are.</li>
+<li><b>I can't tell you the author is one of those eight.</b> None of the methods, mine included, can reliably say "it's nobody on this list". That's what Phase 2 is for.</li>
+</ol>
+</div>
+
+<ul class="toc">
+<li><a href="#library">1. The library</a></li>
+<li><a href="#borrowing">2. Did it borrow?</a></li>
+<li><a href="#earlier">3. The earlier studies, re-run</a></li>
+<li><a href="#tools">4. Are my tools any good?</a></li>
+<li><a href="#joseph">5. Joseph Smith, up close</a></li>
+<li><a href="#others">6. The other candidates</a></li>
+<li><a href="#everyone">7. Everyone else</a></li>
+<li><a href="#wrong">8. What I got wrong</a></li>
+<li><a href="#next">9. What's next</a></li>
+<li><a href="#check">10. Check it yourself</a></li>
+</ul>
+
+<h2 id="library">1. The library</h2>
+
+<p>The first problem with asking a modern AI about the Book of Mormon is that it has already read the Book of Mormon, and everything written about it since. So I built language models that have read only what was in print before 1830.</p>
+
+<div class="tiles">
+<div class="tile"><b>695,021</b><span>books, pamphlets and newspaper pages catalogued, 1780&ndash;1830</span></div>
+<div class="tile"><b>25.7 billion</b><span>tokens of period text the models learned from</span></div>
+<div class="tile"><b>3</b><span>model sizes, trained from scratch: 125M, 297M, 590M</span></div>
+<div class="tile"><b>8</b><span>candidates with writing samples</span></div>
+<div class="tile"><b>168</b><span>passages of the Book of Mormon, sealed from every model until the final run</span></div>
+<div class="tile"><b>58</b><span>dated changes to the plan, each written down before its result</span></div>
+</div>
+
+<p>The eight candidates are the ones people have argued about for two centuries: Joseph Smith, Oliver Cowdery, Sidney Rigdon, Parley Pratt, W. W. Phelps, Solomon Spalding, Ethan Smith and Gilbert Hunt.</p>
+
+<p>The second problem is the Bible. In the 1830 text, the phrase <i>it came to pass that</i> appears 1,290 times. Any method that doesn't deal with that is measuring the King James Version. So King James wording is masked out of every text before any method sees it.</p>
+
+<h2 id="borrowing">2. Did it borrow?</h2>
+
+<p>I started here because it's what the CES Letter and most online arguments are about: <i>The Late War</i>, <i>View of the Hebrews</i>, <i>The First Book of Napoleon</i>. I ran four tests, from the crudest to the subtlest.</p>
+
+<h3>Copied wording</h3>
+<p>I looked for passages the Book of Mormon shares, word for word or nearly, with any of 221,000 earlier books. I ran the same search on two other books so the number would mean something.</p>
+
+<figure>
+<h4>Share of each book's text found in earlier books</h4>
+<p class="sub">King James Bible set aside</p>
+<div id="ch-copy"></div>
+<figcaption><i>The Late War</i> copies the War of 1812's own paperwork, treaties and state papers, at about 90% identity. That's what real borrowing looks like to this test.</figcaption>
+</figure>
+
+<p>The Book of Mormon's 0.16% is 30 books sharing short, loose phrases, the religious talk of the day. "The Lord cannot look upon sin with the least degree of allowance" turns up in Bishop Ravenscroft. Nothing is a lifted page.</p>
+
+<h3>Rare shared phrases: <i>The Late War</i></h3>
+<p>A 2013 study found that Gilbert Hunt's <i>The Late War</i> (1816), a history of the War of 1812 written in Bible style, shares rare four-word phrases with the Book of Mormon. I reran it by their own rule and got 183 phrases. Then I counted how many <i>other</i> books use each one.</p>
+
+<figure>
+<h4>The 183 shared phrases, by how many other books also use them</h4>
+<p class="sub">Out of 221,000 books</p>
+<div id="ch-rare"></div>
+<figcaption>Three in four are stock King James style. "Weapons of war to defend" is in 162 other books.</figcaption>
+</figure>
+
+<p>Six are found nowhere else. Here are five of them, in both books. Click through.</p>
+
+<figure>
+<h4>Phrases only these two books share</h4>
+<div class="btns" id="ph-btns"></div>
+<div class="pair">
+<div><small>Book of Mormon</small><span id="ph-bom"></span></div>
+<div><small>The Late War (1816)</small><span id="ph-lw"></span></div>
+</div>
+<figcaption>Each is short, and a natural thing to write in that style. None is a borrowed sentence. And 36 of the 183 also show up in other imitation-scripture books of the period.</figcaption>
+</figure>
+
+<p><i>The Late War</i> and <i>The First Book of Napoleon</i> both pass the rule I'd written down. But a reprint of Jacob Ilive's <i>Book of Jasher</i>, a 1751 forgery in the same style, shares more than either. So what they share is a genre.</p>
+
+<h3>Same ideas, different words: <i>View of the Hebrews</i></h3>
+<p>Ethan Smith's 1823 book argued that American Indians descend from the lost tribes of Israel. Compared passage by passage, it came out first of 49 books on that subject. That sounds like a hit. But against 500 equally religious books it lands at the 85th percentile, and my bar was the top 1%. Close in what it talks about, and well short of the bar.</p>
+
+<h3>Same story, new names</h3>
+<p>You can borrow a plot without sharing a sentence. So a model read every book in blocks and listed what happens, with the names swapped for roles. Here it is reading Genesis 45:</p>
+
+<blockquote>A ruler cries out for everyone else to leave the room. The ruler reveals himself to his brothers and weeps so loudly that the household hears. ... The father faints, not believing them, until he sees the wagons.</blockquote>
+
+<p>No Joseph, no Pharaoh, and you still know the story. I checked the test first on Josephus, who retold Genesis through Judges in his own words: it found 108 events in the same order. Then I ran it on the Book of Mormon. No book shares its plot.</p>
+
+<div class="note"><b>What this section can't say.</b> I ran the same tests on Macpherson's <i>Ossian</i>, a 1760s book written in its own day and presented as ancient. It copies nothing either (0.00%). So these tests can't tell a real translation from a period book written to sound old. "No borrowing found" describes the text. It says nothing about where it came from.</div>
+
+<h2 id="earlier">3. The earlier studies, re-run</h2>
+
+<p>Computer studies of this question go back to 1980, and they disagree. I rebuilt five of them with their own methods and data. Each reproduces. Each also turns on a choice nobody tested.</p>
+
+<p>The 2008 Stanford study gave 169 chapters to Sidney Rigdon. Swap in other genuine Rigdon writing and it's 92. The 2011 study that allowed "none of the candidates" has an error rate that swings from 80% to 0% depending on how long the samples are. Same method, same people, different answer.</p>
+
+<p>That's why the next section exists.</p>
+
+<h2 id="tools">4. Are my tools any good?</h2>
+
+<p>Before any method touched the Book of Mormon, it had to pass an exam on books where I know the author. Every method takes the same exam: mine, and the four older ones people have used (Burrows' Delta, Cosine Delta, General Imposters, and a sparse-coding method called ENSC).</p>
+
+<p>My method works like this. For each candidate, take a copy of the period model and let it read that person's writing. Then show it a mystery passage. The score is how much better the copy predicts the passage than the untouched model does. Whoever's copy improves the most is the pick.</p>
+
+<h3>Does training on period text matter?</h3>
+<p>Same test, same settings, only the base model swapped. A false match is the model saying "yes, that's my author" about someone it never read.</p>
+
+<figure>
+<h4>False matches: modern GPT-2 against my period models</h4>
+<p class="sub">Lower is better. 110 known-author tests.</p>
+<div class="legend"><span><i style="background:var(--s2)"></i>GPT-2 (modern internet text)</span><span><i style="background:var(--s1)"></i>Mine (1780&ndash;1830 text only)</span></div>
+<div id="ch-gpt"></div>
+<figcaption>Period training roughly halves the false matches. Still not good enough, as you'll see below.</figcaption>
+</figure>
+
+<h3>Picking the right author from a list</h3>
+<p>On 55 authors and over a thousand passages, my models beat every older method, at every size. I count by author, because twenty passages from one writer tend to go right or wrong together.</p>
+
+<div class="tablewrap">
+<table>
+<thead><tr><th>My models against</th><th class="num">Authors where mine wins</th><th class="num">Theirs wins</th><th class="num">Tied</th><th class="num">Corrected p</th></tr></thead>
+<tbody>
+<tr><td>Burrows' Delta</td><td class="num">24&ndash;25</td><td class="num">3&ndash;4</td><td class="num">26&ndash;27</td><td class="num">under 0.001</td></tr>
+<tr><td>Cosine Delta</td><td class="num">24&ndash;26</td><td class="num">4&ndash;6</td><td class="num">24&ndash;25</td><td class="num">0.0003&ndash;0.0014</td></tr>
+<tr><td>General Imposters</td><td class="num">30&ndash;33</td><td class="num">2&ndash;4</td><td class="num">19&ndash;21</td><td class="num">under 0.0001</td></tr>
+<tr><td>ENSC</td><td class="num">29&ndash;30</td><td class="num">3&ndash;4</td><td class="num">21&ndash;22</td><td class="num">under 0.0001</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Ranges are across the three model sizes. The part I like best: 32 of those authors were added after the rule was written, and nobody had looked at them. On their 640 passages my models get 91&ndash;94% right. The older methods get 76&ndash;78%.</p>
+
+<h3>Saying "none of these"</h3>
+<p>This is where every method fails, mine too. My bar was 5% false matches while still confirming 95% of true authors. Held to that, my models give 51&ndash;57% false matches. Turn it round and aim for 5% false matches, and they confirm only 38&ndash;61% of true authors. I tried the standard fix from voice-ID research. Tested properly, on authors it had never seen, it didn't work.</p>
+
+<p>So these tools are good at "which of these people" and bad at "is it any of these people". Everything below is the first kind of answer.</p>
+
+<h3>The biblical costume</h3>
+<p>One more weakness. I found three 18th-century writers who wrote both ordinary prose and imitation scripture. Trained on their ordinary prose, plain word counts named the right author on 13 of 18 scripture passages. My 297M model got 7 of 17. Three writers is too few to judge either way, and I looked hard for more: across the whole library only about ten people wrote imitation scripture, and three left enough other prose. But it's a warning, because the Book of Mormon wears that costume.</p>
+
+<h2 id="joseph">5. Joseph Smith, up close</h2>
+
+<p>When the seal came off, one sample stood out: the revelations Joseph Smith dictated in 1828 and 1829, before the book was printed. It's small, 3,039 tokens, a couple of pages. So I spent most of the remaining time trying to knock it down. Pick a model size and see how each attempt went.</p>
+
+<figure>
+<h4>Four attempts to knock down "the revelations are closest"</h4>
+<div class="seg" id="size-seg" role="group" aria-label="Model size">
+<button data-s="0" aria-pressed="true">125M</button><button data-s="1" aria-pressed="false">297M</button><button data-s="2" aria-pressed="false">590M</button>
+</div>
+<div class="panel">
+<div class="prow"><div class="q"><b>The basic ranking.</b> Of 168 sealed passages, how many put the revelations first among the candidates?</div><div class="a"><b id="js-first"></b><div class="meter"><i id="js-meter"></i></div></div></div>
+<div class="prow"><div class="q"><b>Equal dose.</b> Bigger samples can win by being bigger. Give every candidate exactly 3,039 tokens.</div><div class="a" id="js-dose"></div></div>
+<div class="prow"><div class="q"><b>People who couldn't have written it.</b> Six writers dead before 1827, twelve slices each. How many slices rank at or above the revelations?</div><div class="a" id="js-placebo"></div></div>
+<div class="prow"><div class="q"><b>His later revelations</b>, 1830&ndash;34, in twelve same-sized slices. Where do they rank among 36 models?</div><div class="a" id="js-later"></div></div>
+<div class="reading" id="js-read"></div>
+</div>
+<figcaption>The 590M column is the uncomfortable one. Jacob Ilive died in 1763. Levi Dowling, reported separately, was born in 1844, fourteen years after the book was printed. Both wrote imitation King James English.</figcaption>
+</figure>
+
+<p>At the two smaller sizes the result survived everything I threw at it. At the largest size, writers who could not have been the author do as well, which means at that size the model is following the biblical style at least as much as the person. No size has earned more trust than the others on known answers, so I report it as a split.</p>
+
+<h3>Without the revelations</h3>
+<p>Take the revelations away and ask about his ordinary writing, the letters and journals. Now it depends on who you ask. The two word-count methods put his prose first. My language models put it mid-pack, with Cowdery, Phelps or his own letters first depending on size. The other methods name Cowdery or Pratt. There's no agreement.</p>
+
+<h3>Two readings</h3>
+<p>His revelation voice, from 1828 through 1834, is the nearest writing I have to the Book of Mormon. That fits "the same man". It also fits "the same kind of text": a revelation and a scripture are both dictated in a sacred voice, and his later revelations could echo the book. These tools can't separate the two, and I'm not going to pick for you.</p>
+
+<p>One thing the manuscripts do show. The original manuscript was taken down as Joseph Smith spoke, and the printer's manuscript is a copy of it. If the original was written by ear, it should be full of misheard words like <i>there</i> for <i>their</i>. It is: with the same scribe on both, those slips are about nine times as common in the original (30 of 590 against 5 of 837). The book was dictated aloud. An AI read the page photos for that check, not a human expert.</p>
+
+<h2 id="others">6. The other candidates</h2>
+
+<p>Before reading anything into a low rank, I asked a simpler question. If a model learns a person from one of their works, does it recognise them in another?</p>
+
+<figure>
+<h4>Recognised in a different work of their own</h4>
+<p class="sub">Passages correctly matched, by model size. My bar was 90%.</p>
+<div class="tablewrap" style="margin:0"><table id="xw"></table></div>
+<figcaption>Darker is better. Hover a cell for the share.</figcaption>
+</figure>
+
+<p>Only Ethan Smith passes, and he isn't the closest to the Book of Mormon. For Cowdery, Rigdon, Phelps and Pratt, the models learned a book. So a low rank for them means "not shown", and I can't write "ruled out". Spalding and Hunt have one work each, so they can't be checked this way at all.</p>
+
+<h2 id="everyone">7. Everyone else</h2>
+
+<p>What about people nobody has proposed? I compared the Book of Mormon against all 23,872 authors in the library with at least 10,000 words, using the two methods cheap enough to run that many times. No one stood out. I'd worked out in advance that chance alone should throw up 0.035 false leads. I got zero.</p>
+
+<p>But here's the catch, and it's a big one. On 200 books where I know the author, that same search puts the true author first only 27&ndash;35% of the time. My bar was 70%. So the search can say "nobody jumped out". It can't say "nobody's there". And my best method wasn't in it at all, because it needs one model per author.</p>
+
+<h2 id="wrong">8. What I got wrong</h2>
+
+<p>I promised to show the wrong turns. These are the ones that changed a result.</p>
+
+<ul class="wrong">
+<li><b>Cowdery's sample quoted the book.</b> His 1829 "Articles of the Church" is 40% Book of Mormon, word for word. Of course it looked close. I now drop any candidate passage that shares 20 or more words with the book and was written after that part was dictated.</li>
+<li><b>I counted passages when I should have counted authors.</b> I'd reported my models beating word counts at p &lt; 0.0001. Counted by author it was p 0.13. The claim only became true after I added 32 more authors, with a rule that I couldn't add any more after that.</li>
+<li><b>A fix that graded its own homework.</b> A quick version of the "none of these" fix looked like a breakthrough: three in four true authors confirmed. It had been learning each author's quirks, then testing on the same author. Done properly, it failed.</li>
+<li><b>"The biggest model sees best."</b> I wrote that, and it's wrong. The sizes tie at picking authors. A fourth, billion-parameter model failed in training and isn't used.</li>
+<li><b>One lucky sample.</b> Early rankings used one or two random slices of each writer. They now use up to twelve, spread evenly.</li>
+</ul>
+
+<h2 id="next">9. What's next</h2>
+
+<p>Phase 1 ends on an open door: the closest of eight, with no way to say whether the author is among the eight. Phase 2 goes after that. The goal is one sentence with a measured number in it: <i>if the author left other writing in this library, this procedure finds him X% of the time.</i></p>
+
+<p>The plan is two steps. A fast search narrows 23,872 authors to a shortlist. Then my per-author models, the ones that won the exam above, pick from the shortlist. The first thing I needed to know was how long that shortlist can be.</p>
+
+<figure>
+<h4>How often the smallest model picks the right author, as the list grows</h4>
+<p class="sub">125M model, 55 authors, one 5,000-word passage. Early result; the larger models are running.</p>
+<div class="legend"><span><i style="background:var(--s1)"></i>Random lists</span><span><i style="background:var(--s2)"></i>Lists of the most similar writers</span></div>
+<div id="ch-list"></div>
+<figcaption>From a list of 4 to a list of 55, accuracy drops from 95% to 86%. With eight passages averaged instead of one, a list of 55 comes back up to 97%. The Book of Mormon gives me 168 passages.</figcaption>
+</figure>
+
+<p>That's better than I feared. It isn't the answer yet: these 55 authors all left plenty of text, and the fast search still has to get the right person onto the shortlist in the first place.</p>
+
+<h2 id="check">10. Check it yourself</h2>
+
+<p>Everything is public: the code, the result tables, the plan and every change to it, and the base and candidate models on Hugging Face. With the candidate models you can rerun the Book of Mormon result without training anything. Four sources I'm not allowed to republish (HathiTrust, Harvard's book collection, the Joseph Smith Papers transcripts, and one purchased book), and for each the repo gives the steps to get the same access I had.</p>
+
+<p>I did this as one person working with AI, and I want that to be plain. The reviews mentioned in the repo are simulated by an AI model and labelled that way. If you find a mistake, I'd like to know.</p>
+
+<hr>
+</main>
+<div class="tip" id="tip" role="status"></div>
+
+<script>
+(function(){
+  var tip=document.getElementById('tip');
+  function show(e,t){tip.textContent=t;tip.style.opacity=1;move(e)}
+  function move(e){var x=Math.min(e.clientX+14,window.innerWidth-270),y=e.clientY+16;tip.style.left=Math.max(8,x)+'px';tip.style.top=y+'px'}
+  function hide(){tip.style.opacity=0}
+  function hover(el,t){el.addEventListener('mouseenter',function(e){show(e,t)});el.addEventListener('mousemove',move);el.addEventListener('mouseleave',hide);
+    el.addEventListener('click',function(e){show(e,t);setTimeout(hide,2200)})}
+
+  function bars(id,rows,max,unit){
+    var root=document.getElementById(id);
+    rows.forEach(function(r){
+      var row=document.createElement('div');row.className='bar-row';
+      var lab=document.createElement('div');lab.className='lab';lab.innerHTML=r.label;
+      var tr=document.createElement('div');tr.className='track';
+      var b=document.createElement('div');b.className='bar '+(r.cls||'');
+      var w=Math.max(.4,r.v/max*82);b.style.width=w+'%';
+      var v=document.createElement('div');v.className='val';v.style.left=w+'%';v.textContent=r.v+unit;
+      tr.appendChild(b);tr.appendChild(v);row.appendChild(lab);row.appendChild(tr);root.appendChild(row);
+      hover(tr,r.tip);
+    });
+  }
+
+  bars('ch-copy',[
+    {label:'<i>The Late War</i> (1816)',v:8.9,tip:'The Late War: 8.9% of its text matches earlier books, mostly treaties and state papers.'},
+    {label:'Newton\'s sermons, vol. 4 (1821)',v:2.4,tip:'John Newton\'s sermons: 2.4%. An ordinary religious book, for scale.'},
+    {label:'<b>Book of Mormon</b>',v:0.16,cls:'s1',tip:'Book of Mormon: 0.16%. Thirty books sharing short stock religious phrases, 9 to 46 words each.'}
+  ],8.9,'%');
+
+  bars('ch-rare',[
+    {label:'No other book',v:6,cls:'s1',tip:'6 phrases appear only in these two books.'},
+    {label:'1 to 4 other books',v:17,tip:'17 phrases appear in 1 to 4 other books.'},
+    {label:'5 to 19 other books',v:25,tip:'25 phrases appear in 5 to 19 other books.'},
+    {label:'20 or more other books',v:135,tip:'135 phrases appear in 20 or more other books: common period style.'}
+  ],135,'');
+
+  bars('ch-gpt',[
+    {label:'GPT-2, 124M',v:92,cls:'s2',tip:'GPT-2 124M: 92% false matches; wrong author on 11 of 110 tests.'},
+    {label:'Mine, 125M',v:47,cls:'s1',tip:'Period model 125M: 47% false matches; wrong author on 7 of 110.'},
+    {label:'GPT-2, 355M',v:86,cls:'s2',tip:'GPT-2 355M: 86% false matches; wrong author on 6 of 110.'},
+    {label:'Mine, 297M',v:38,cls:'s1',tip:'Period model 297M: 38% false matches; wrong author on 1 of 110.'}
+  ],100,'%');
+
+  /* phrase explorer */
+  var PH=[
+    ['and the wilderness round about','in the land of Nephi <mark>and the wilderness round about</mark>','dwelt in the back-woods <mark>and the wilderness round about</mark> the states of Georgia'],
+    ['nevertheless they knew not','<mark>nevertheless they knew not</mark> God','<mark>nevertheless they knew not</mark> that they were to be entrapt'],
+    ['so shall ye fall','<mark>so shall ye fall</mark> to earth except ye will deliver up your weapons','<mark>so shall ye fall</mark> a prey to the folly thereof'],
+    ['pass that they gathered','it came to <mark>pass that they gathered</mark> themselves together','it came to <mark>pass that they gathered</mark> together their army and their navy'],
+    ['pass that the hearts','it came to <mark>pass that the hearts</mark> of the sons of Mosiah','it came to <mark>pass that the hearts</mark> of the lords and the counsellors of Britain']
+  ];
+  var pb=document.getElementById('ph-btns');
+  function pick(i){
+    Array.prototype.forEach.call(pb.children,function(b,j){b.setAttribute('aria-pressed',j===i)});
+    document.getElementById('ph-bom').innerHTML='&ldquo;'+PH[i][1]+'&rdquo;';
+    document.getElementById('ph-lw').innerHTML='&ldquo;'+PH[i][2]+'&rdquo;';
+  }
+  PH.forEach(function(p,i){var b=document.createElement('button');b.className='btn';b.textContent=p[0];b.onclick=function(){pick(i)};pb.appendChild(b)});
+  pick(0);
+
+  /* Joseph Smith size toggle */
+  var JS=[
+    {first:159,dose:'<b>Still first.</b> The revelations beat every same-sized sample.',
+     plc:'<b>0 of 67.</b> Ilive\'s best slice reaches 2nd. Dowling: 0 of 12.',
+     later:'<b>2nd</b>, every slice (one ties 1st), right behind the 1828&ndash;29 pages.',
+     read:'At this size the result holds against every check.'},
+    {first:168,dose:'<b>Still first.</b> The revelations beat every same-sized sample.',
+     plc:'<b>0 of 67.</b> Ilive\'s best slice reaches 2nd. Dowling: 0 of 12.',
+     later:'<b>2nd to 3rd</b>, every slice.',
+     read:'At this size the result holds against every check, on all 168 passages.'},
+    {first:131,dose:'<b>Not first.</b> A slice of <i>The Late War</i> is ahead on 63% of passages.',
+     plc:'<b>Ilive 8 of 12.</b> Dowling, born 1844: 9 of 12. The other five writers: 0.',
+     later:'<b>1st to 5th.</b> Ten of twelve at or above the 1828&ndash;29 pages, which drop to 5th.',
+     read:'At this size the scores bunch together and King James imitators do as well as the revelations. Here "closest" is following the style at least as much as the person.'}
+  ];
+  function setSize(s){
+    var d=JS[s];
+    Array.prototype.forEach.call(document.querySelectorAll('#size-seg button'),function(b){b.setAttribute('aria-pressed',+b.dataset.s===s)});
+    document.getElementById('js-first').textContent=d.first+' of 168';
+    document.getElementById('js-meter').style.width=(d.first/168*100)+'%';
+    document.getElementById('js-dose').innerHTML=d.dose;
+    document.getElementById('js-placebo').innerHTML=d.plc;
+    document.getElementById('js-later').innerHTML=d.later;
+    document.getElementById('js-read').innerHTML=d.read;
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('#size-seg button'),function(b){b.onclick=function(){setSize(+b.dataset.s)}});
+  setSize(0);
+
+  /* cross-work table */
+  var XW=[['Ethan Smith',77,[77,77,74]],['Parley Pratt',52,[45,36,27]],['Oliver Cowdery',22,[2,5,2]],['Sidney Rigdon',12,[0,0,0]],['W. W. Phelps',20,[0,0,0]]];
+  var t=document.getElementById('xw');
+  t.innerHTML='<thead><tr><th>Candidate</th><th style="text-align:center">125M</th><th style="text-align:center">297M</th><th style="text-align:center">590M</th></tr></thead>';
+  var tb=document.createElement('tbody');
+  XW.forEach(function(r){
+    var tr=document.createElement('tr');var td=document.createElement('td');td.textContent=r[0];tr.appendChild(td);
+    r[2].forEach(function(n,i){
+      var c=document.createElement('td');c.className='cell';var f=n/r[1];
+      c.textContent=n+'/'+r[1];
+      c.style.background='color-mix(in srgb, var(--seq-hi) '+Math.round(f*100)+'%, var(--surface-2))';
+      if(f>.55)c.style.color='#fff';
+      hover(c,r[0]+', '+['125M','297M','590M'][i]+': '+Math.round(f*100)+'% recognised'+(f>=.9?' (passes the 90% bar)':' (below the 90% bar)'));
+      tr.appendChild(c);
+    });
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb);
+
+  /* list-size line chart */
+  var N=[2,4,8,12,20,30,55],R=[97.7,95.4,93.1,91.4,89.6,88.2,85.7],S=[95.2,91.1,89.5,88.3,86.8,86.1,85.7];
+  var W=680,H=300,L=44,Rt=92,T=14,B=40,ns='http://www.w3.org/2000/svg';
+  function x(n){return L+(Math.log(n)-Math.log(2))/(Math.log(55)-Math.log(2))*(W-L-Rt)}
+  function y(v){return T+(100-v)/(100-80)*(H-T-B)}
+  function el(n,a,txt){var e=document.createElementNS(ns,n);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e}
+  var svg=el('svg',{viewBox:'0 0 '+W+' '+H,width:'100%',role:'img','aria-label':'Accuracy by list size, random and similar lists'});
+  [80,85,90,95,100].forEach(function(v){
+    svg.appendChild(el('line',{x1:L,x2:W-Rt,y1:y(v),y2:y(v),stroke:'var(--line)','stroke-width':1}));
+    svg.appendChild(el('text',{x:L-8,y:y(v)+4,'text-anchor':'end'},v+'%'));
+  });
+  N.forEach(function(n){svg.appendChild(el('text',{x:x(n),y:H-B+18,'text-anchor':'middle'},n))});
+  svg.appendChild(el('text',{x:(L+W-Rt)/2,y:H-4,'text-anchor':'middle'},'Candidates on the list'));
+  function line(D,col,name,dy){
+    svg.appendChild(el('polyline',{points:N.map(function(n,i){return x(n)+','+y(D[i])}).join(' '),fill:'none',stroke:col,'stroke-width':2,'stroke-linejoin':'round'}));
+    N.forEach(function(n,i){svg.appendChild(el('circle',{cx:x(n),cy:y(D[i]),r:4,fill:col,stroke:'var(--surface)','stroke-width':2}))});
+    svg.appendChild(el('text',{x:x(55)+10,y:y(D[6])+dy,style:'fill:var(--text)'},name));
+  }
+  line(R,'var(--s1)','Random',-6);line(S,'var(--s2)','Similar',14);
+  var cross=el('line',{y1:T,y2:H-B,stroke:'var(--text-3)','stroke-width':1,opacity:0});svg.appendChild(cross);
+  var hit=el('rect',{x:L-10,y:T,width:W-L-Rt+20,height:H-T-B,fill:'transparent'});svg.appendChild(hit);
+  function near(e){var r=svg.getBoundingClientRect(),px=(e.clientX-r.left)/r.width*W,bi=0,bd=1e9;N.forEach(function(n,i){var d=Math.abs(x(n)-px);if(d<bd){bd=d;bi=i}});return bi}
+  function ev(e){var i=near(e);cross.setAttribute('x1',x(N[i]));cross.setAttribute('x2',x(N[i]));cross.setAttribute('opacity',1);
+    show(e,'List of '+N[i]+': random '+R[i]+'%, similar '+S[i]+'%')}
+  hit.addEventListener('mousemove',ev);hit.addEventListener('click',ev);
+  hit.addEventListener('mouseleave',function(){cross.setAttribute('opacity',0);hide()});
+  document.getElementById('ch-list').appendChild(svg);
+})();
+</script>
+</body>
+</html>
