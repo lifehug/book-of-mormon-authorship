@@ -56,16 +56,15 @@ Five studies reproduced with their own methods and data; their answers follow un
 the candidates" study's error swings 80% to 0% with sample length).
 
 ## 5. How good is each method? A scorecard on known answers
-- **5.1 Picking the right author from a list:** on BOM-75's 430 tests, every size is ahead of
-  every older method (297M vs Burrows 59-9 windows, vs ENSC 77-3; Holm p < 0.0001 counted by
-  window, Amendment 52). But the 430 tests are 23 authors, and windows of one author are not
-  independent. Counted by author (correction, 2026-11-12): ahead of General Imposters (15-16
-  authors to 0-1) and ENSC (14 to 1-2) at every size, sign p 0.0003-0.004; ahead of Burrows and
-  Cosine Delta on 10-11 authors, behind on 2-3, the rest tied, sign p 0.02-0.06, which does not
-  survive the Holm correction. One author (Spring) supplies 19 of 297M's 59 wins over Burrows.
-  So: clearly better than GI and ENSC; ahead of the Deltas on most authors, not yet shown
-  significantly. **\*TBD (proposed, owner to decide):** more benchmark authors would settle the
-  Delta comparison. On Part 1's 110 tests the disagreements were too few to call (4-0).
+- **5.1 Picking the right author from a list:** on BOM-75's 430 tests every size is ahead of
+  every older method, but the tests are 23 authors, so the author is the unit (Amendment 55,
+  correcting Amendment 52's window count). *Better than General Imposters* (15-16 authors to 0-1,
+  Holm p 0.0004-0.003) *and ENSC* (14 to 1-2, Holm p 0.009-0.03) at every size. *Against
+  Burrows' and Cosine Delta:* ahead on 10-11 authors, behind on 2-3, the rest tied; accuracy gap
+  +10 to +13 points with an author-resampled 95% range above zero, but the sign test does not
+  survive Holm (p 0.13-0.15): "ahead, not shown significantly". One author (Spring) gives 19 of
+  297M's 59 window wins over Burrows. **\*TBD (proposed, owner to decide):** more benchmark
+  authors would settle the Delta comparison. Part 1's 110 tests: too few disagreements (4-0).
 - **5.2 Period training matters:** GPT-2 86-92% false matches against ours 22-47%.
 - **5.3 Writing in biblical style:** the imitation test is three authors (by author Burrows 1 of 3,
   297M 2 of 3; by passage 13/18 vs 7/17), too small either way; the 430 exam's pseudo-biblical
@@ -75,8 +74,14 @@ the candidates" study's error swings 80% to 0% with sample length).
   either way. A larger register-shift test (553 authors' sermons vs their other prose) was
   considered and not run (owner, 2026-11-12): the worry it addresses, that models follow biblical
   style rather than the person, is tested directly on the Book of Mormon in 6.2 and 6.3.
-- **5.4 "None of these":** no method passes; 63-75% false matches on 430 tests. Why the opening
-  statement is limited; said here once.
+- **5.4 "None of these":** no method passes the registered bar (5% false matches at 95% of true
+  authors); at that point our models give 51-57% false matches (Amendment 55, leave one author
+  out). Read the other way round: at a 5% false-match target they confirm 38-61% of true authors
+  (area under the curve 0.89-0.91). The standard fix from speaker verification, score
+  normalisation (z-norm, z-margin), was tested properly, split by author: it does not carry to
+  new authors (held-out false matches 17-26% against a 5% target), so it is not a better
+  algorithm here; an exploratory split by test had suggested it was. Why the opening statement
+  is limited; said here once.
 - **5.5 Model size:** sizes tie on picking the author; bigger is better only at "none of these",
   and not good enough there.
 
@@ -103,6 +108,9 @@ the candidates" study's error swings 80% to 0% with sample length).
   General Imposters (Pratt first). Reading: his revelation voice in general, not just the
   1828-29 pages, is the closest writing we have; it does not separate "same man" from "same
   medium", and the book's influence on these later texts cannot be excluded.
+- **6.4a Chunk length:** the 168 chunks are the book cut twice (121 of 2,000 words, 47 of
+  5,000); every count is also given per length; the two agree (e.g. 297M: revelations first on
+  121/121 and 47/47).
 - **6.5 Seeds:** stable, with the caveat that one-batch models cannot vary.
 - **6.6 His prose over time** (BOM-73): no drift toward the book's style.
 - **6.7 Two readings, not decided:** same man, or same revelatory medium; these tools cannot tell.
@@ -119,7 +127,7 @@ Language earlier than its period and than period imitations; narrators, dictatio
 ## 9. Corrections and robustness
 Every post hoc step in one table: the quotation leak (A43), equal dose (A45), seeds (A50), slices
 (A51), the 430-test head-to-head (A52), the whole ranking with and without revelations (A53), the
-V2 seed fluke, the imitation-test correction (2026-11-12).
+later revelations (A54), counting by author and the normalised curve (A55), the V2 seed fluke, the imitation-test correction (2026-11-12).
 
 ## 10. Public claims
 Seventeen claims, from every side, judged by rules written before any result.

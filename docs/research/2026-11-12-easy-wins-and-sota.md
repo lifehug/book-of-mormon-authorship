@@ -485,9 +485,12 @@ Run from the repository root with `uv run --no-sync python <file>`. They read on
 ```python
 """Exploratory peek (2026-11-12): can score normalisation on SAVED benchmark scores
 improve the open-set false-match rate? Reads only data/benchmark/alm_*_p2.json. No text."""
+
 import json, sys, random
 import numpy as np
+
 R = "/Users/ea/Workspace/book-of-mormon-authorship/data/benchmark/"
+
 
 def load(size):
     d = json.load(open(R + f"alm_{size}_p2.json"))
@@ -496,6 +499,7 @@ def load(size):
         for r in rs:
             tests.append((task, r["author"], {k: -v for k, v in r["scores"].items()}))
     return d, tests
+
 
 def znorm_stats(tests):
     # per (task, model): mean/sd of its score on tests by OTHER authors (impostor trials)
@@ -511,6 +515,7 @@ def znorm_stats(tests):
             for m in s:
                 out.setdefault((task, m), (np.mean(allv), np.std(allv) + 1e-9))
     return out
+
 
 def stat(kind, task, s, zs):
     """decision statistic for the top candidate among the models in s"""
@@ -532,6 +537,7 @@ def stat(kind, task, s, zs):
         return (srt[0] - np.mean(rest)) / (np.std(rest) + 0.01)
     raise ValueError(kind)
 
+
 def trials(tests, kind):
     zs = znorm_stats(tests)
     pos, neg, tasks = [], [], []
@@ -542,21 +548,27 @@ def trials(tests, kind):
         if len(s2) < 2 and kind not in ("raw", "znorm"):
             continue
         n = stat(kind, task, s2, zs)
-        pos.append(p); neg.append(n); tasks.append(task)
+        pos.append(p)
+        neg.append(n)
+        tasks.append(task)
     return np.array(pos), np.array(neg), tasks
+
 
 def auc(pos, neg):
     pos = np.where(np.isinf(pos), -1e18, pos)
     return float(np.mean([(p > neg).mean() + 0.5 * (p == neg).mean() for p in pos]))
+
 
 def fpr_at_tpr(pos, neg, tpr=0.95):
     p = np.where(np.isinf(pos), -1e18, pos)
     t = np.quantile(p, 1 - tpr)
     return float((neg >= t).mean())
 
+
 def tpr_at_fpr(pos, neg, fpr=0.05):
     t = np.quantile(neg, 1 - fpr)
     return float((pos > t).mean())
+
 
 def eer(pos, neg):
     p = np.where(np.isinf(pos), -1e18, pos)
@@ -566,6 +578,7 @@ def eer(pos, neg):
         best = min(best, max(fr, fa))
     return float(best)
 
+
 def pertask_fpr(pos, neg, tasks, tpr=0.95):
     out = []
     for t in sorted(set(tasks)):
@@ -573,23 +586,34 @@ def pertask_fpr(pos, neg, tasks, tpr=0.95):
         out.append(fpr_at_tpr(pos[i], neg[i], tpr) * len(i))
     return sum(out) / len(tasks)
 
+
 import sys
+
 STRICT = len(sys.argv) > 1
-print('STRICT positives (wrong top counts as miss):', STRICT)
+print("STRICT positives (wrong top counts as miss):", STRICT)
 for size in ("pilot", "base", "mid"):
     d, tests = load(size)
     print(f"== {size}: {len(tests)} tests; registered FPR {d['verdict']['open_set_fpr']:.3f}")
-    print(f"{'stat':8} {'n':>4} {'AUC':>6} {'EER':>6} {'FPR@95':>7} {'FPR@90':>7} {'FPR@80':>7} {'TPR@5%FPR':>9} {'TPR@1%':>7} {'FPR@95 per-task thr':>20}")
+    print(
+        f"{'stat':8} {'n':>4} {'AUC':>6} {'EER':>6} {'FPR@95':>7} {'FPR@90':>7} {'FPR@80':>7} {'TPR@5%FPR':>9} {'TPR@1%':>7} {'FPR@95 per-task thr':>20}"
+    )
     for kind in ("raw", "znorm", "margin", "ratio", "zmargin", "tnorm"):
         pos, neg, tasks = trials(tests, kind)
-        print(f"{kind:8} {len(pos):4d} {auc(pos,neg):6.3f} {eer(pos,neg):6.3f} {fpr_at_tpr(pos,neg):7.3f} {fpr_at_tpr(pos,neg,.9):7.3f} {fpr_at_tpr(pos,neg,.8):7.3f} {tpr_at_fpr(pos,neg):9.3f} {tpr_at_fpr(pos,neg,.01):7.3f} {pertask_fpr(pos,neg,tasks):20.3f}")
+        print(
+            f"{kind:8} {len(pos):4d} {auc(pos, neg):6.3f} {eer(pos, neg):6.3f} {fpr_at_tpr(pos, neg):7.3f} {fpr_at_tpr(pos, neg, 0.9):7.3f} {fpr_at_tpr(pos, neg, 0.8):7.3f} {tpr_at_fpr(pos, neg):9.3f} {tpr_at_fpr(pos, neg, 0.01):7.3f} {pertask_fpr(pos, neg, tasks):20.3f}"
+        )
     # candidates per task and dose correlation
     tr = d["training"]
     xs, ys = [], []
     for task, a, s in tests:
-        xs.append(np.log(tr[task][a]["train_tokens"])); ys.append(s[a])
-    print("  corr(log train tokens, positive score) =", round(float(np.corrcoef(xs, ys)[0, 1]), 3),
-          "| candidates per task:", {t: len(v) for t, v in tr.items()})
+        xs.append(np.log(tr[task][a]["train_tokens"]))
+        ys.append(s[a])
+    print(
+        "  corr(log train tokens, positive score) =",
+        round(float(np.corrcoef(xs, ys)[0, 1]), 3),
+        "| candidates per task:",
+        {t: len(v) for t, v in tr.items()},
+    )
 ```
 
 </details>
@@ -599,62 +623,99 @@ for size in ("pilot", "base", "mid"):
 ```python
 """Exploratory peek 2 (2026-11-12). (a) cross-validated z-norm verifier; (b) leave-one-task-out;
 (c) author-clustered view of Amendment 52's head-to-head. Saved scores only, no text."""
+
 import json, random, sys
 import numpy as np
 from math import comb
+
 sys.path.insert(0, "<this folder>")
 R = "/Users/ea/Workspace/book-of-mormon-authorship/data/benchmark/"
+
+
 def load(size):
     d = json.load(open(R + f"alm_{size}_p2.json"))
-    return [(task, r["author"], {k: -v for k, v in r["scores"].items()}, r["predicted"]) for task, rs in d["records"].items() for r in rs]
+    return [
+        (task, r["author"], {k: -v for k, v in r["scores"].items()}, r["predicted"])
+        for task, rs in d["records"].items()
+        for r in rs
+    ]
+
+
 def zstats(tests):
     acc = {}
     for task, a, s, _ in tests:
         for m, v in s.items():
-            if m != a: acc.setdefault((task, m), []).append(v)
+            if m != a:
+                acc.setdefault((task, m), []).append(v)
     out = {k: (np.mean(v), np.std(v) + 1e-9) for k, v in acc.items() if len(v) >= 5}
     pool = {}
-    for (t, m), v in acc.items(): pool.setdefault(t, []).extend(v)
+    for (t, m), v in acc.items():
+        pool.setdefault(t, []).extend(v)
     return out, {t: (np.mean(v), np.std(v) + 1e-9) for t, v in pool.items()}
+
+
 def zm(task, s, zs, kind):
     st, pool = zs
-    z = sorted(((v - st.get((task, m), pool[task])[0]) / st.get((task, m), pool[task])[1] for m, v in s.items()), reverse=True)
+    z = sorted(
+        (
+            (v - st.get((task, m), pool[task])[0]) / st.get((task, m), pool[task])[1]
+            for m, v in s.items()
+        ),
+        reverse=True,
+    )
     return z[0] if kind == "znorm" else z[0] - z[1]
+
+
 def trial(tests, zs, kind):
     pos, neg = [], []
     for task, a, s, _ in tests:
         if kind == "raw":
-            pos.append(s[a]); neg.append(max(v for m, v in s.items() if m != a)); continue
+            pos.append(s[a])
+            neg.append(max(v for m, v in s.items() if m != a))
+            continue
         top = max(s, key=s.get)
         # positive: statistic of the top candidate if it is the true author, else a miss
         pos.append(zm(task, s, zs, kind) if top == a else -1e9)
         neg.append(zm(task, {m: v for m, v in s.items() if m != a}, zs, kind))
     return np.array(pos), np.array(neg)
+
+
 for size in ("pilot", "base", "mid"):
     tests = load(size)
     print("==", size)
     for kind in ("raw", "znorm", "zmargin"):
         res = {0.05: [], 0.01: []}
         for rep in range(50):
-            idx = list(range(len(tests))); random.Random(rep).shuffle(idx); h = len(idx) // 2
+            idx = list(range(len(tests)))
+            random.Random(rep).shuffle(idx)
+            h = len(idx) // 2
             for cal, ev in ((idx[:h], idx[h:]), (idx[h:], idx[:h])):
-                C = [tests[i] for i in cal]; E = [tests[i] for i in ev]
+                C = [tests[i] for i in cal]
+                E = [tests[i] for i in ev]
                 zs = zstats(C)
-                _, cn = trial(C, zs, kind); ep, en = trial(E, zs, kind)
+                _, cn = trial(C, zs, kind)
+                ep, en = trial(E, zs, kind)
                 for f in res:
                     t = np.quantile(cn, 1 - f)
                     res[f].append(((en > t).mean(), (ep > t).mean()))
-        out = "  ".join(f"target FPR {f}: held-out FPR {np.mean([x[0] for x in v]):.3f}, correct-match rate {np.mean([x[1] for x in v]):.3f}" for f, v in res.items())
+        out = "  ".join(
+            f"target FPR {f}: held-out FPR {np.mean([x[0] for x in v]):.3f}, correct-match rate {np.mean([x[1] for x in v]):.3f}"
+            for f, v in res.items()
+        )
         print(f"  2-fold x50 {kind:8} {out}")
     # leave one task out: z-stats are within the held-out task (they need only impostor texts), threshold from other tasks
     for kind in ("znorm", "zmargin"):
         zs = zstats(tests)
         rows = []
         for task in sorted({t[0] for t in tests}):
-            C = [t for t in tests if t[0] != task]; E = [t for t in tests if t[0] == task]
-            _, cn = trial(C, zs, kind); ep, en = trial(E, zs, kind)
+            C = [t for t in tests if t[0] != task]
+            E = [t for t in tests if t[0] == task]
+            _, cn = trial(C, zs, kind)
+            ep, en = trial(E, zs, kind)
             t = np.quantile(cn, 0.95)
-            rows.append(f"{task.replace('p2_','')[:10]} FPR {(en > t).mean():.2f} TPR {(ep > t).mean():.2f}")
+            rows.append(
+                f"{task.replace('p2_', '')[:10]} FPR {(en > t).mean():.2f} TPR {(ep > t).mean():.2f}"
+            )
         print(f"  leave-task-out {kind:8} | " + " | ".join(rows))
 # (c) clustered head-to-head
 c = json.load(open(R + "prior_work_classic_tails_p2.json"))["records"]
@@ -667,19 +728,27 @@ for size in ("pilot", "base", "mid"):
         for f, t in zip(flat, tests):
             a = per.setdefault((t[0], t[1]), [0, 0, 0])
             ours, theirs = t[3] == t[1], f[meth] == f["author"]
-            a[0] += ours and not theirs; a[1] += theirs and not ours; a[2] += 1
-        w = sum(1 for v in per.values() if v[0] > v[1]); l = sum(1 for v in per.values() if v[1] > v[0]); n = w + l
-        p = min(1.0, 2 * sum(comb(n, k) for k in range(0, min(w, l) + 1)) / 2 ** n)
+            a[0] += ours and not theirs
+            a[1] += theirs and not ours
+            a[2] += 1
+        w = sum(1 for v in per.values() if v[0] > v[1])
+        l = sum(1 for v in per.values() if v[1] > v[0])
+        n = w + l
+        p = min(1.0, 2 * sum(comb(n, k) for k in range(0, min(w, l) + 1)) / 2**n)
         # author-cluster bootstrap of the accuracy difference
-        keys = list(per); rng = random.Random(1); diffs = []
+        keys = list(per)
+        rng = random.Random(1)
+        diffs = []
         for _ in range(5000):
             ks = [keys[rng.randrange(len(keys))] for _ in keys]
             diffs.append(sum(per[k][0] - per[k][1] for k in ks) / sum(per[k][2] for k in ks))
         lo, hi = np.quantile(diffs, [0.025, 0.975])
         top = sorted(per.items(), key=lambda kv: -(kv[1][0] - kv[1][1]))[:3]
-        print(f"{size} vs {meth}: authors {len(per)}; ours ahead on {w}, theirs on {l}, tied {len(per)-n}; sign test p={p:.4f}; "
-              f"accuracy gap {sum(v[0]-v[1] for v in per.values())/len(tests):.3f} author-bootstrap 95% [{lo:.3f}, {hi:.3f}]; biggest: "
-              + ", ".join(f"{k[1].split(',')[0]} {v[0]}-{v[1]}" for k, v in top))
+        print(
+            f"{size} vs {meth}: authors {len(per)}; ours ahead on {w}, theirs on {l}, tied {len(per) - n}; sign test p={p:.4f}; "
+            f"accuracy gap {sum(v[0] - v[1] for v in per.values()) / len(tests):.3f} author-bootstrap 95% [{lo:.3f}, {hi:.3f}]; biggest: "
+            + ", ".join(f"{k[1].split(',')[0]} {v[0]}-{v[1]}" for k, v in top)
+        )
 ```
 
 </details>

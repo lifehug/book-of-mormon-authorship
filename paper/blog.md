@@ -3205,7 +3205,37 @@ So: the closeness isn't a quirk of two pages. His revelation voice, 1828 through
 nearest writing we have to the book. This still can't tell "the same man" from "the same revelatory
 voice", and the later texts could echo the book. About $1.60 of GPU.
 
+## Is there a better "none of these"? We tried the standard one
+
+The research check (an AI agent, labelled as such) suggested two cheap things. Both ran today on
+saved scores, no GPU, with the rules written down first (Amendment 55).
+
+**Counting by author.** Done properly, our models are clearly better than General Imposters (ahead
+on 15-16 of 23 authors, behind on at most 1) and ENSC (14 to 1-2). Against Burrows and Cosine Delta
+they're ahead on 10-11 authors and behind on 2-3, about 10-13 points more accurate, but with 23
+authors that doesn't clear the bar once you correct for twelve comparisons. Ahead, not proven.
+
+**A better match threshold.** Speaker verification (the voice-ID field) has a standard trick:
+before deciding "this is a match", put every model's score on a common scale by how it scores
+strangers. On a quick split by test it looked like a big win: three in four true authors confirmed
+at about 2% false matches, instead of one in five. Done properly, holding each author out entirely,
+it falls apart: aim for 5% false matches and you get 17-26% on authors the threshold never saw. The
+quick version had been learning each author's quirks and then grading itself on the same author.
+So no, that isn't a better algorithm for us. Two disclosures: the Federalist task (two test authors)
+also dropped out of the normalised version by the same rule as the dictated task, which I'd only
+named for the dictated one; and the plain score at least holds its target (about 6% false matches
+when aiming at 5%), confirming 38-61% of true authors there.
+
+What this changes in the paper: "no method can say none of these" stays, now with the full curve
+behind it instead of one failed bar, and with the standard fix tried and shown not to work.
+
+One more cleanup: the 168 Book of Mormon chunks are the book cut twice, 121 pieces of 2,000 words
+and 47 of 5,000. Every count is now also given per length. They agree (the 297M puts the 1828-29
+revelations first on all 121 and all 47).
+
 ## Log
+
+- **2026-11-12 (night).** Amendment 55: counted by author, our models are clearly better than General Imposters and ENSC, ahead of Burrows and Cosine Delta but not significantly. The standard score-normalisation fix for "none of these" does not hold up when each author is held out (17-26% false matches against a 5% target). Chunk counts now given per length. Details in "Is there a better 'none of these'?".
 
 - **2026-11-12 (late).** Correction: the 430-test head-to-head is 23 authors, not 430 independent tests. By author, our models are clearly better than General Imposters and ENSC, and ahead of Burrows and Cosine Delta on most authors but not significantly. Amendment 54: Joseph Smith's 95 later revelations (1830-34); at equal dose every slice ranks right behind his 1828-29 revelations at 125M and 297M (10 of 12 at or above them at 590M). About $1.60. Details in "A correction, and his later revelations".
 
