@@ -20,6 +20,8 @@ Usage::
     python -m alm.benchmark <size> --part2          # BOM-75: all seven tasks -> alm_<size>_p2
     python -m alm.benchmark bundle --ext            # Amendment 56: new tasks packed
     python -m alm.benchmark <size> --ext            # Amendment 56 -> alm_<size>_p3
+    python -m alm.benchmark bundle --pool           # Amendment 58: the 55 tested authors packed
+    python -m alm.benchmark <size> --pool           # Amendment 58 -> alm_<size>_pool
 
 ``--save-weights`` keeps every fine-tuned copy (``<work>/weights/<task>__<author>.pt``) for
 publication (owner, 2026-11-09: no trained model is discarded).
@@ -217,6 +219,97 @@ def window_loss(model: GPT, ids: list[int], window: int, dev: str) -> list[float
     return nll.view(n, window - 1).mean(dim=1).tolist()
 
 
+@torch.no_grad()
+def window_losses(model: GPT, tests: list[list[int]], window: int, dev: str,
+                  rows: int = 64) -> list[list[float]]:  # fmt: skip
+    """``window_loss`` for many tests, their windows run ``rows`` at a time (same numbers, the
+    GPU kept busy)."""
+    wins, owner = [], []
+    for k, ids in enumerate(tests):
+        n = len(ids) // window
+        wins += [ids[i * window : (i + 1) * window] for i in range(n)]
+        owner += [k] * n
+    out: list[list[float]] = [[] for _ in tests]
+    for s in range(0, len(wins), rows):
+        x = torch.tensor(wins[s : s + rows], dtype=torch.long, device=dev)
+        logits = model(x[:, :-1])
+        nll = F.cross_entropy(logits.flatten(0, 1).float(), x[:, 1:].flatten(), reduction="none")
+        for k, v in zip(owner[s : s + rows], nll.view(len(x), window - 1).mean(dim=1).tolist(),
+                        strict=True):  # fmt: skip
+            out[k].append(v)
+    return out
+
+
+POOL_BUNDLE = WORK / "pool_plan.json.gz"  # Amendment 58 (licensed text: never in git)
+
+
+def pool_plan(cfg: dict) -> dict:
+    """Amendment 58: the 55 tested authors' training words (with their registered task, which
+    fixes their seed) and all 1,070 tests in benchmark order."""
+    if POOL_BUNDLE.exists() and not Path("data/corpus/internet_archive").exists():
+        with gzip.open(POOL_BUNDLE, "rt") as fh:
+            return json.load(fh)
+    from eval.list_size import merged_plan, tested_authors
+
+    p = merged_plan(cfg)
+    who = tested_authors(p)
+    return {"train": {a: {"task": t, "works": p[t]["train"][a]} for a, t in sorted(who.items())},
+            "tests": [{**x, "task": t} for t, tp in p.items() for x in tp["tests"]]}  # fmt: skip
+
+
+def run_pool(size: str, micro: int) -> int:
+    """Amendment 58: every tested author's model, trained as registered, scores every test."""
+    from tokenizers import Tokenizer
+
+    cfg = load_config()
+    a = cfg["alm"]
+    dev = _device()
+    tok = Tokenizer.from_file(str(TOKENIZER))
+    eot = tok.token_to_id(EOT)
+    lr = cfg["timelocked_lm"]["finetune_lr"]
+    work = WORK / f"{size}_pool"
+    work.mkdir(parents=True, exist_ok=True)
+    p = pool_plan(cfg)
+    tests = p["tests"]
+    for x in tests:
+        x["ids"] = _encode(tok, x["words"])
+    base = _base(size, cfg).to(dev).eval()
+    state = {k: v.clone() for k, v in base.state_dict().items()}
+    bpath = work / "base.json"
+    if not bpath.exists():
+        bpath.write_text(json.dumps(window_losses(base, [x["ids"] for x in tests],
+                                                  a["score_window"], dev)))  # fmt: skip
+    print(f"pool: {len(p['train'])} authors, {len(tests)} tests", flush=True)
+    for author, info in p["train"].items():
+        path = work / f"{author.replace('/', '_')}.json"
+        if path.exists():
+            continue
+        ids = np.array([i for ws in info["works"] for i in [*_encode(tok, ws), eot]],
+                       dtype=np.int32)  # fmt: skip
+        base.load_state_dict(state)
+        seed = derive_seed(f"{a['train_seed']}:{info['task']}:{author}", cfg)  # as registered
+        torch.manual_seed(seed)
+        t0 = time.time()
+        info_t = finetune(base, ids, cfg, seed, micro, dev, lr)
+        losses = window_losses(base, [x["ids"] for x in tests], a["score_window"], dev)
+        path.write_text(json.dumps({"train_tokens": len(ids), **info_t, "lr": lr, "seed": seed,
+                                    "losses": losses}))  # fmt: skip
+        print(f"  {size} pool {author}: {len(ids):,} tokens, {info_t['steps']} steps, "
+              f"{(time.time() - t0) / 60:.1f} min", flush=True)  # fmt: skip
+    bl = json.loads(bpath.read_text())
+    got = {b: json.loads((work / f"{b.replace('/', '_')}.json").read_text())["losses"]
+           for b in p["train"]}  # fmt: skip
+    recs = [{"author": x["author"], "task": x["task"], "where": x["where"],
+             "scores": {b: float(np.mean(np.array(g[i]) - np.array(bl[i])))
+                        for b, g in got.items()}}
+            for i, x in enumerate(tests)]  # fmt: skip
+    out = OUT / f"alm_{size}_pool.json"
+    out.write_text(json.dumps({**stamp(), "run": f"{size}_pool", "authors": len(got),
+                               "tests": len(recs), "records": recs}, indent=1) + "\n")  # fmt: skip
+    print(f"{len(recs)} tests x {len(got)} authors -> {out}", flush=True)
+    return 0
+
+
 def run(size: str, micro: int, variant: str = "", lr: float | None = None,
         tag: str | None = None, save: bool = False, part2: bool = False,
         ext: bool = False) -> int:  # fmt: skip
@@ -326,7 +419,18 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--save-weights", action="store_true", help="keep every fine-tuned copy")
     ap.add_argument("--part2", action="store_true", help="Amendment 48: add the four corpus tasks")
     ap.add_argument("--ext", action="store_true", help="Amendment 56: only the eight new tasks")
+    ap.add_argument("--pool", action="store_true", help="Amendment 58: 55 authors x 1,070 tests")
     a = ap.parse_args(argv)
+    if a.pool:
+        if a.size != "bundle":
+            return run_pool(a.size, a.micro_batch)
+        pp = pool_plan(load_config())
+        POOL_BUNDLE.parent.mkdir(parents=True, exist_ok=True)
+        with gzip.open(POOL_BUNDLE, "wt") as fh:
+            json.dump(pp, fh)
+        print(f"{len(pp['train'])} authors, {len(pp['tests'])} tests -> {POOL_BUNDLE} "
+              f"({POOL_BUNDLE.stat().st_size / 1e6:.1f} MB)")  # fmt: skip
+        return 0
     if a.size == "bundle":
         p = plan(load_config(), ext=True)
         BUNDLE.parent.mkdir(parents=True, exist_ok=True)

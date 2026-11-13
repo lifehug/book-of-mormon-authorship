@@ -45,3 +45,18 @@ def test_similar_order_excludes_self_and_covers_all():
     near = similar_order(au, cfg)
     for name, order in near.items():
         assert name not in order and sorted(order) == sorted(set(au) - {name})
+
+
+def test_window_losses_matches_window_loss():
+    import torch
+
+    from alm.benchmark import window_loss, window_losses
+    from timelocked_lm.train import GPT
+
+    torch.manual_seed(0)
+    m = GPT(50, 16, 1, 16, 2).eval()
+    g = torch.Generator().manual_seed(1)
+    tests = [torch.randint(0, 50, (n,), generator=g).tolist() for n in (40, 17, 9, 33)]
+    many = window_losses(m, tests, 8, "cpu", rows=3)
+    for ids, got in zip(tests, many, strict=True):
+        assert np.allclose(got, window_loss(m, ids, 8, "cpu"), atol=1e-5)

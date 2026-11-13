@@ -245,9 +245,41 @@ def _alm_tables(data: dict) -> dict[str, dict[str, list[dict[str, float]]]]:
             continue
         by: dict[str, list] = {}
         for r in json.loads(f.read_text())["records"]:
-            by.setdefault(r["author"], []).append(r["scores"])
-        assert all(len(by[a]) == len(data["authors"][a]["tests"]) for a in data["authors"])
+            by.setdefault(r["author"], []).append((r["where"], r["scores"]))
+        for a, v in data["authors"].items():  # same tests in the same order
+            assert [w for w, _ in by[a]] == [w for w, _ in v["tests"]], a
+        by = {a: [s for _, s in v] for a, v in by.items()}
         out[f"alm_{z}"] = by
+    return out
+
+
+def reproduction() -> dict[str, dict]:
+    """Per size: the new pool scores against the saved Amendment 22/56 records on each author's
+    own-task tests (largest absolute difference, and agreement of the predicted author)."""
+    out = {}
+    for z in SIZES_ALM:
+        f = Path(f"data/benchmark/alm_{z}_pool.json")
+        if not f.exists():
+            continue
+        old = {}
+        for s in ("p2", "p3"):
+            for task, rs in json.loads(Path(f"data/benchmark/alm_{z}_{s}.json").read_text())[
+                "records"
+            ].items():
+                for r in rs:
+                    old[task, r["author"], r["where"]] = r["scores"]
+        diffs, same, n = [], 0, 0
+        for r in json.loads(f.read_text())["records"]:
+            o = old[r["task"], r["author"], r["where"]]
+            shared = [b for b in o if b in r["scores"]]
+            diffs += [abs(r["scores"][b] - o[b]) for b in shared]
+            same += min(shared, key=lambda b: (o[b], b)) == min(
+                shared, key=lambda b: (r["scores"][b], b)
+            )
+            n += 1
+        out[f"alm_{z}"] = {"tests": n, "max_abs_diff": max(diffs),
+                           "median_abs_diff": float(np.median(diffs)),
+                           "same_pick_share": same / n}  # fmt: skip
     return out
 
 
@@ -328,7 +360,8 @@ def report() -> int:
     out.write_text(json.dumps({**stamp(), "authors": len(names),
                                "tests": sum(len(v["tests"]) for v in data["authors"].values()),
                                "methods_scored": sorted(curves), "curves": curves,
-                               "decision_size": n, "decision": decision},
+                               "decision_size": n, "decision": decision,
+                               "reproduction": reproduction()},
                               indent=1) + "\n")  # fmt: skip
     for m, by_t in curves.items():
         for typ, v in by_t.items():
