@@ -7,22 +7,28 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 ## Running
 
-- **Nothing on GPU.** Stage 0's GPU work is done (2026-11-11, about $17.50 in all): BOM-75 closed
-  (590M false matches 0.635 [0.588, 0.679]; no method passes), BOM-76 closed (only Ethan Smith
-  recognized across works; register rule triggered at 590M by Jacob Ilive), BOM-77 seeds done.
-  The Hugging Face upload finished (BOM-72/73, 8e64552).
-- **Amendment 51 slices done** (2026-11-11, about $4): register placebo on 12 slices per writer.
-  125M/297M: no primary slice reaches the revelations (0/67). 590M: Ilive 8/12, Dowling (secondary)
-  9/12; register reading slice-stable at 590M only. Revelation side is one fixed model.
-- **Skipped (owner, 2026-11-11: "skip if not needed"):** BOM-77's larger samples (BOM-77 closed),
-  and Stage 1 (BOM-78 on; owner: "let's wait on stage one"). Ilive's *Jasher* borrowing results already
-  existed (in every Part 1 search; summary on BOM-76).
-  Next: BOM-36, the paper.
-- **Then:** commit the HF manifest and `data/kjv_mask/js_time/`.
+- **BOM-89 step 0 (Mac, tmux `a57older`, log `logs/a57_older.log`):** `python -m sweep.older`, the
+  older methods as library sweeps on the 200 calibration books -> `data/sweep/older_methods.json`
+  (a few hours; if the Mac restarts, rerun the command from scratch). Then BOM-89 step 1 (code not
+  yet written): the author-labelled training set. Amendment 57 governs every step.
+- **Nothing on GPU.** Done 2026-11-12: Amendment 54 (later revelations, $1.57), Amendment 56 (32
+  more benchmark authors, $6.83). Balance about $31; the owner will top up if BOM-89 needs it.
+
+## Waiting on the owner
+
+- **BOM-90:** test "best at picking the author" at the Book of Mormon's list size (12 samples,
+  8 people)? Classical free; our models ~$5-15. Recommended.
+
+## Done 2026-11-12 (details in the blog's Log and the issues)
+
+- Amendments 52-56: head-to-head settled by author on 55 authors (ours better than all four older
+  methods at every size); "none of these" normalisation tried and failed; later revelations;
+  chunks by length. Outline v3 (`paper/outline.md`), method record (`docs/method-improvements.md`),
+  holdings index (`docs/holdings.md`), research check (`docs/research/2026-11-12-easy-wins-and-sota.md`).
 
 ## Next, in order (owner, 2026-11-10: the paper first, written in full, before any Part 2 stage)
 
-1. **BOM-36: rewrite the paper on outline version 2** (`paper/outline.md`, sections 1-13): per-model
+1. **BOM-36: rewrite the paper on outline version 3** (`paper/outline.md`; after BOM-90 is decided): per-model
    "best at" tables; ranking vs matching; post-1830 samples; the Joseph Smith deep dive; the CES
    Letter books one by one (confirm the Letter's book list first); model size (4.x); Part 2 (13).
    Then the explainers and results docs to match, and the 46 pending review-response rows.
