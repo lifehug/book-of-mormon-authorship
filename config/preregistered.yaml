@@ -616,6 +616,10 @@ part2_benchmark:
   dup_sample_mod: 8               # ... judged on a fixed 1-in-8 sample (CRC-32) of its 5-word sequences ...
   dup_share: 0.15                 # ... is dropped when over 15% were seen (OCR noise: copies share 12-56%)
   screen: data/benchmark/part2/screen.json   # AI screening of each drawn author, reasons recorded
+  extension:                      # Amendment 56 (post hoc): more authors down the same seeded order
+    authors_per_genre: 8          # kept after every Amendment 48 rule and the screen
+    tasks_per_genre: 2            # first 4 kept -> p3_<genre>_1, next 4 -> p3_<genre>_2
+    out: data/benchmark/part2/authors_ext.json
   pools:                          # [imposter list, genre filter or null]; registered pairings
     fiction_narrative: [general_prose, fiction_narrative]
     legal_political: [history, null]
