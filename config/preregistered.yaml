@@ -543,6 +543,12 @@ list_size:                        # Amendment 58 (BOM-90): accuracy against cand
     draws: 20                     # random heat assignments per passage
     pooled: [1, 2, 3, 5, 8]       # non-overlapping passages averaged
     seed: bom93-tournament
+  normalised:                     # BOM-90 follow-up (exploratory, post hoc): each model's score on its own scale
+    later_prefix: p3_             # Amendment 56's 32 authors; the rest are BOM-75's 23
+    pooled: [1, 2, 3, 5, 8]
+    draws: 40
+    seed: bom90-normalised
+    out: data/benchmark/list_size_normalised.json
   decision_size: 12               # the Book of Mormon's list; sign test by author, Holm over 12
   resamples: 5000
   resample_seed: a58-authors

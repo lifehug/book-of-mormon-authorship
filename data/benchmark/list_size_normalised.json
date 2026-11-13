@@ -1,0 +1,584 @@
+{
+ "config_sha256": "aa638f0c245b0282c723909c44aaf1b922da40e1626df95e7efca2be6ee0a380",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "df7887ba94eb0ad74223d56079c637354fc15d46",
+ "list": 55,
+ "exploratory": true,
+ "post_hoc": true,
+ "results": {
+  "alm_pilot": {
+   "test_later_32_scale_from_first_23": {
+    "raw": {
+     "one": {
+      "authors": 32,
+      "mean_by_author": 0.8546875
+     },
+     "all": {
+      "authors": 32,
+      "mean_by_author": 1.0
+     },
+     "pooled_1": {
+      "authors": 32,
+      "mean_by_author": 0.83671875
+     },
+     "pooled_2": {
+      "authors": 32,
+      "mean_by_author": 0.9195312499999999
+     },
+     "pooled_3": {
+      "authors": 32,
+      "mean_by_author": 0.9320312500000001
+     },
+     "pooled_5": {
+      "authors": 32,
+      "mean_by_author": 0.9609375
+     },
+     "pooled_8": {
+      "authors": 26,
+      "mean_by_author": 0.9759615384615384
+     }
+    },
+    "scaled": {
+     "one": {
+      "authors": 32,
+      "mean_by_author": 0.8484375
+     },
+     "all": {
+      "authors": 32,
+      "mean_by_author": 0.9375
+     },
+     "pooled_1": {
+      "authors": 32,
+      "mean_by_author": 0.8335937499999999
+     },
+     "pooled_2": {
+      "authors": 32,
+      "mean_by_author": 0.90390625
+     },
+     "pooled_3": {
+      "authors": 32,
+      "mean_by_author": 0.91328125
+     },
+     "pooled_5": {
+      "authors": 32,
+      "mean_by_author": 0.9203125
+     },
+     "pooled_8": {
+      "authors": 26,
+      "mean_by_author": 0.9009615384615384
+     }
+    }
+   },
+   "test_first_23_scale_from_later_32": {
+    "raw": {
+     "one": {
+      "authors": 23,
+      "mean_by_author": 0.8608695652173912
+     },
+     "all": {
+      "authors": 23,
+      "mean_by_author": 0.8695652173913043
+     },
+     "pooled_1": {
+      "authors": 23,
+      "mean_by_author": 0.8749999999999999
+     },
+     "pooled_2": {
+      "authors": 21,
+      "mean_by_author": 0.8666666666666666
+     },
+     "pooled_3": {
+      "authors": 19,
+      "mean_by_author": 0.9039473684210527
+     },
+     "pooled_5": {
+      "authors": 18,
+      "mean_by_author": 0.8916666666666667
+     },
+     "pooled_8": {
+      "authors": 14,
+      "mean_by_author": 0.9285714285714286
+     }
+    },
+    "scaled": {
+     "one": {
+      "authors": 23,
+      "mean_by_author": 0.85
+     },
+     "all": {
+      "authors": 23,
+      "mean_by_author": 0.9130434782608695
+     },
+     "pooled_1": {
+      "authors": 23,
+      "mean_by_author": 0.8228260869565216
+     },
+     "pooled_2": {
+      "authors": 21,
+      "mean_by_author": 0.8714285714285713
+     },
+     "pooled_3": {
+      "authors": 19,
+      "mean_by_author": 0.9302631578947369
+     },
+     "pooled_5": {
+      "authors": 18,
+      "mean_by_author": 0.9236111111111112
+     },
+     "pooled_8": {
+      "authors": 14,
+      "mean_by_author": 1.0
+     }
+    }
+   },
+   "both_directions": {
+    "all": {
+     "authors": 55,
+     "raw": 0.9454545454545454,
+     "scaled": 0.9272727272727272,
+     "scaled_ahead": 1,
+     "raw_ahead": 2,
+     "tied": 52,
+     "sign_p": 1.0
+    },
+    "one": {
+     "authors": 55,
+     "raw": 0.8572727272727273,
+     "scaled": 0.8490909090909091,
+     "scaled_ahead": 8,
+     "raw_ahead": 10,
+     "tied": 37,
+     "sign_p": 0.8145294189453125
+    },
+    "pooled_1": {
+     "authors": 55,
+     "raw": 0.8527272727272728,
+     "scaled": 0.8290909090909092,
+     "scaled_ahead": 7,
+     "raw_ahead": 10,
+     "tied": 38,
+     "sign_p": 0.629058837890625
+    },
+    "pooled_2": {
+     "authors": 53,
+     "raw": 0.8985849056603774,
+     "scaled": 0.8910377358490567,
+     "scaled_ahead": 5,
+     "raw_ahead": 7,
+     "tied": 41,
+     "sign_p": 0.7744140625
+    },
+    "pooled_3": {
+     "authors": 51,
+     "raw": 0.9215686274509803,
+     "scaled": 0.919607843137255,
+     "scaled_ahead": 6,
+     "raw_ahead": 5,
+     "tied": 40,
+     "sign_p": 1.0
+    },
+    "pooled_5": {
+     "authors": 50,
+     "raw": 0.9359999999999999,
+     "scaled": 0.9215000000000001,
+     "scaled_ahead": 3,
+     "raw_ahead": 4,
+     "tied": 43,
+     "sign_p": 1.0
+    },
+    "pooled_8": {
+     "authors": 40,
+     "raw": 0.959375,
+     "scaled": 0.9356249999999999,
+     "scaled_ahead": 2,
+     "raw_ahead": 3,
+     "tied": 35,
+     "sign_p": 1.0
+    }
+   }
+  },
+  "alm_base": {
+   "test_later_32_scale_from_first_23": {
+    "raw": {
+     "one": {
+      "authors": 32,
+      "mean_by_author": 0.840625
+     },
+     "all": {
+      "authors": 32,
+      "mean_by_author": 0.9375
+     },
+     "pooled_1": {
+      "authors": 32,
+      "mean_by_author": 0.828125
+     },
+     "pooled_2": {
+      "authors": 32,
+      "mean_by_author": 0.8921874999999999
+     },
+     "pooled_3": {
+      "authors": 32,
+      "mean_by_author": 0.93046875
+     },
+     "pooled_5": {
+      "authors": 32,
+      "mean_by_author": 0.94375
+     },
+     "pooled_8": {
+      "authors": 26,
+      "mean_by_author": 0.9057692307692307
+     }
+    },
+    "scaled": {
+     "one": {
+      "authors": 32,
+      "mean_by_author": 0.8578125
+     },
+     "all": {
+      "authors": 32,
+      "mean_by_author": 0.96875
+     },
+     "pooled_1": {
+      "authors": 32,
+      "mean_by_author": 0.84609375
+     },
+     "pooled_2": {
+      "authors": 32,
+      "mean_by_author": 0.91328125
+     },
+     "pooled_3": {
+      "authors": 32,
+      "mean_by_author": 0.93828125
+     },
+     "pooled_5": {
+      "authors": 32,
+      "mean_by_author": 0.9421875
+     },
+     "pooled_8": {
+      "authors": 26,
+      "mean_by_author": 0.9451923076923078
+     }
+    }
+   },
+   "test_first_23_scale_from_later_32": {
+    "raw": {
+     "one": {
+      "authors": 23,
+      "mean_by_author": 0.8891304347826088
+     },
+     "all": {
+      "authors": 23,
+      "mean_by_author": 0.9130434782608695
+     },
+     "pooled_1": {
+      "authors": 23,
+      "mean_by_author": 0.907608695652174
+     },
+     "pooled_2": {
+      "authors": 21,
+      "mean_by_author": 0.9107142857142857
+     },
+     "pooled_3": {
+      "authors": 19,
+      "mean_by_author": 0.881578947368421
+     },
+     "pooled_5": {
+      "authors": 18,
+      "mean_by_author": 0.8694444444444445
+     },
+     "pooled_8": {
+      "authors": 14,
+      "mean_by_author": 0.9285714285714286
+     }
+    },
+    "scaled": {
+     "one": {
+      "authors": 23,
+      "mean_by_author": 0.9021739130434783
+     },
+     "all": {
+      "authors": 23,
+      "mean_by_author": 0.9565217391304348
+     },
+     "pooled_1": {
+      "authors": 23,
+      "mean_by_author": 0.9065217391304349
+     },
+     "pooled_2": {
+      "authors": 21,
+      "mean_by_author": 0.930952380952381
+     },
+     "pooled_3": {
+      "authors": 19,
+      "mean_by_author": 0.9328947368421053
+     },
+     "pooled_5": {
+      "authors": 18,
+      "mean_by_author": 0.9388888888888888
+     },
+     "pooled_8": {
+      "authors": 14,
+      "mean_by_author": 1.0
+     }
+    }
+   },
+   "both_directions": {
+    "all": {
+     "authors": 55,
+     "raw": 0.9272727272727272,
+     "scaled": 0.9636363636363636,
+     "scaled_ahead": 3,
+     "raw_ahead": 1,
+     "tied": 51,
+     "sign_p": 0.625
+    },
+    "one": {
+     "authors": 55,
+     "raw": 0.860909090909091,
+     "scaled": 0.8763636363636365,
+     "scaled_ahead": 12,
+     "raw_ahead": 7,
+     "tied": 36,
+     "sign_p": 0.359283447265625
+    },
+    "pooled_1": {
+     "authors": 55,
+     "raw": 0.8613636363636363,
+     "scaled": 0.8713636363636363,
+     "scaled_ahead": 9,
+     "raw_ahead": 7,
+     "tied": 39,
+     "sign_p": 0.803619384765625
+    },
+    "pooled_2": {
+     "authors": 53,
+     "raw": 0.8995283018867924,
+     "scaled": 0.9202830188679246,
+     "scaled_ahead": 12,
+     "raw_ahead": 5,
+     "tied": 36,
+     "sign_p": 0.143463134765625
+    },
+    "pooled_3": {
+     "authors": 51,
+     "raw": 0.9122549019607844,
+     "scaled": 0.9362745098039216,
+     "scaled_ahead": 9,
+     "raw_ahead": 1,
+     "tied": 41,
+     "sign_p": 0.021484375
+    },
+    "pooled_5": {
+     "authors": 50,
+     "raw": 0.917,
+     "scaled": 0.941,
+     "scaled_ahead": 6,
+     "raw_ahead": 1,
+     "tied": 43,
+     "sign_p": 0.125
+    },
+    "pooled_8": {
+     "authors": 40,
+     "raw": 0.9137500000000001,
+     "scaled": 0.9643750000000001,
+     "scaled_ahead": 5,
+     "raw_ahead": 1,
+     "tied": 34,
+     "sign_p": 0.21875
+    }
+   }
+  },
+  "alm_mid": {
+   "test_later_32_scale_from_first_23": {
+    "raw": {
+     "one": {
+      "authors": 32,
+      "mean_by_author": 0.7796875
+     },
+     "all": {
+      "authors": 32,
+      "mean_by_author": 0.875
+     },
+     "pooled_1": {
+      "authors": 32,
+      "mean_by_author": 0.77734375
+     },
+     "pooled_2": {
+      "authors": 32,
+      "mean_by_author": 0.81875
+     },
+     "pooled_3": {
+      "authors": 32,
+      "mean_by_author": 0.84609375
+     },
+     "pooled_5": {
+      "authors": 32,
+      "mean_by_author": 0.859375
+     },
+     "pooled_8": {
+      "authors": 26,
+      "mean_by_author": 0.8278846153846153
+     }
+    },
+    "scaled": {
+     "one": {
+      "authors": 32,
+      "mean_by_author": 0.803125
+     },
+     "all": {
+      "authors": 32,
+      "mean_by_author": 0.9375
+     },
+     "pooled_1": {
+      "authors": 32,
+      "mean_by_author": 0.8078124999999999
+     },
+     "pooled_2": {
+      "authors": 32,
+      "mean_by_author": 0.8671875
+     },
+     "pooled_3": {
+      "authors": 32,
+      "mean_by_author": 0.890625
+     },
+     "pooled_5": {
+      "authors": 32,
+      "mean_by_author": 0.91171875
+     },
+     "pooled_8": {
+      "authors": 26,
+      "mean_by_author": 0.9355769230769231
+     }
+    }
+   },
+   "test_first_23_scale_from_later_32": {
+    "raw": {
+     "one": {
+      "authors": 23,
+      "mean_by_author": 0.8826086956521739
+     },
+     "all": {
+      "authors": 23,
+      "mean_by_author": 0.8695652173913043
+     },
+     "pooled_1": {
+      "authors": 23,
+      "mean_by_author": 0.9097826086956521
+     },
+     "pooled_2": {
+      "authors": 21,
+      "mean_by_author": 0.9011904761904761
+     },
+     "pooled_3": {
+      "authors": 19,
+      "mean_by_author": 0.8855263157894736
+     },
+     "pooled_5": {
+      "authors": 18,
+      "mean_by_author": 0.8569444444444445
+     },
+     "pooled_8": {
+      "authors": 14,
+      "mean_by_author": 0.8660714285714286
+     }
+    },
+    "scaled": {
+     "one": {
+      "authors": 23,
+      "mean_by_author": 0.8978260869565217
+     },
+     "all": {
+      "authors": 23,
+      "mean_by_author": 0.9565217391304348
+     },
+     "pooled_1": {
+      "authors": 23,
+      "mean_by_author": 0.898913043478261
+     },
+     "pooled_2": {
+      "authors": 21,
+      "mean_by_author": 0.9238095238095237
+     },
+     "pooled_3": {
+      "authors": 19,
+      "mean_by_author": 0.9328947368421053
+     },
+     "pooled_5": {
+      "authors": 18,
+      "mean_by_author": 0.9305555555555556
+     },
+     "pooled_8": {
+      "authors": 14,
+      "mean_by_author": 1.0
+     }
+    }
+   },
+   "both_directions": {
+    "all": {
+     "authors": 55,
+     "raw": 0.8727272727272727,
+     "scaled": 0.9454545454545454,
+     "scaled_ahead": 6,
+     "raw_ahead": 2,
+     "tied": 47,
+     "sign_p": 0.2890625
+    },
+    "one": {
+     "authors": 55,
+     "raw": 0.8227272727272729,
+     "scaled": 0.8427272727272728,
+     "scaled_ahead": 14,
+     "raw_ahead": 10,
+     "tied": 31,
+     "sign_p": 0.5412561893463135
+    },
+    "pooled_1": {
+     "authors": 55,
+     "raw": 0.8327272727272726,
+     "scaled": 0.845909090909091,
+     "scaled_ahead": 7,
+     "raw_ahead": 7,
+     "tied": 41,
+     "sign_p": 1.0
+    },
+    "pooled_2": {
+     "authors": 53,
+     "raw": 0.8514150943396228,
+     "scaled": 0.8896226415094339,
+     "scaled_ahead": 12,
+     "raw_ahead": 5,
+     "tied": 36,
+     "sign_p": 0.143463134765625
+    },
+    "pooled_3": {
+     "authors": 51,
+     "raw": 0.8607843137254904,
+     "scaled": 0.9063725490196078,
+     "scaled_ahead": 11,
+     "raw_ahead": 5,
+     "tied": 35,
+     "sign_p": 0.210113525390625
+    },
+    "pooled_5": {
+     "authors": 50,
+     "raw": 0.8584999999999999,
+     "scaled": 0.9185,
+     "scaled_ahead": 9,
+     "raw_ahead": 3,
+     "tied": 38,
+     "sign_p": 0.14599609375
+    },
+    "pooled_8": {
+     "authors": 40,
+     "raw": 0.8412500000000002,
+     "scaled": 0.9581250000000001,
+     "scaled_ahead": 7,
+     "raw_ahead": 2,
+     "tied": 31,
+     "sign_p": 0.1796875
+    }
+   }
+  }
+ }
+}

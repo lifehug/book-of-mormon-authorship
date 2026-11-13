@@ -25,6 +25,7 @@ Usage::
     python -m eval.list_size classic [--workers 8]   # Mac, resumes per author (a few hours)
     python -m eval.list_size report           # -> data/benchmark/list_size.json
     python -m eval.list_size tournament       # BOM-93 -> data/benchmark/list_size_tournament.json
+    python -m eval.list_size normalised       # BOM-90 -> data/benchmark/list_size_normalised.json
 """
 
 from __future__ import annotations
@@ -491,6 +492,75 @@ def tournament() -> int:
     return 0
 
 
+def scale_scores(X: np.ndarray, cohort: np.ndarray) -> np.ndarray:
+    """Each model's column put on its own scale: minus its mean, over its spread, on the cohort
+    rows (passages by other authors). NaN cohort entries (the model's own passages) are skipped."""
+    return (X - np.nanmean(cohort, axis=0)) / np.nanstd(cohort, axis=0)
+
+
+def normalised() -> int:
+    """BOM-90 follow-up (exploratory, post hoc): do a few models win everywhere, and does putting
+    each model's score on its own scale fix it? Strict version: the scale comes from one group of
+    authors' passages (BOM-75's 23 or Amendment 56's 32), the test from the other group, both
+    directions, on the full 55-author list; raw and scaled read on the same draws."""
+    from eval.clustered import sign_p
+
+    cfg = load_config()
+    nc = cfg["list_size"]["normalised"]
+    data = _load()
+    names = sorted(data["authors"])
+    late = {a for a in names if data["authors"][a]["task"].startswith(nc["later_prefix"])}
+    groups = {"first_23": [a for a in names if a not in late], "later_32": sorted(late)}
+    out: dict = {}
+    for m, tab in _alm_tables(data).items():
+        rng = random.Random(derive_seed(f"{nc['seed']}:{m}", cfg))
+        S = {a: np.array([[s[b] for b in names] for s in tab[a]]) for a in names}
+        res: dict = {}
+        per: dict[str, dict[str, list[float]]] = {}
+        for test_g, cohort_g in (("later_32", "first_23"), ("first_23", "later_32")):
+            rows = []
+            for c in groups[cohort_g]:  # a model never sets its scale on its own passages
+                x = S[c].copy()
+                x[:, names.index(c)] = np.nan
+                rows.append(x)
+            cohort = np.vstack(rows)
+            r: dict = {"raw": {}, "scaled": {}}
+            for a in groups[test_g]:
+                t = names.index(a)
+                idx = _disjoint([w for w, _ in data["authors"][a]["tests"]])
+                sets = {k: [rng.sample(idx, k) for _ in range(nc["draws"])]
+                        for k in nc["pooled"] if len(idx) >= k}  # fmt: skip
+                for kind, X in (("raw", S[a]), ("scaled", scale_scores(S[a], cohort))):
+                    v = {"one": float(np.mean(X.argmin(axis=1) == t)),
+                         "all": float(X[idx].mean(axis=0).argmin() == t)}  # fmt: skip
+                    for k, ss in sets.items():
+                        v[f"pooled_{k}"] = float(np.mean([X[x].mean(axis=0).argmin() == t
+                                                          for x in ss]))  # fmt: skip
+                    for q, val in v.items():
+                        r[kind].setdefault(q, []).append(val)
+                        per.setdefault(f"{kind}:{q}", {})[a] = val
+            res[f"test_{test_g}_scale_from_{cohort_g}"] = {
+                kind: {q: {"authors": len(v), "mean_by_author": float(np.mean(v))}
+                       for q, v in qs.items()} for kind, qs in r.items()}  # fmt: skip
+        both: dict = {}
+        for q in sorted({k.split(":")[1] for k in per}):
+            raw, sc = per[f"raw:{q}"], per[f"scaled:{q}"]
+            w = sum(sc[a] > raw[a] for a in raw)
+            lose = sum(sc[a] < raw[a] for a in raw)
+            both[q] = {"authors": len(raw), "raw": float(np.mean(list(raw.values()))),
+                       "scaled": float(np.mean(list(sc.values()))), "scaled_ahead": w,
+                       "raw_ahead": lose, "tied": len(raw) - w - lose,
+                       "sign_p": sign_p(w, lose)}  # fmt: skip
+        res["both_directions"] = both
+        out[m] = res
+        print(m, json.dumps(both, indent=1))
+    path = Path(nc["out"])
+    path.write_text(json.dumps({**stamp(), "list": len(names), "exploratory": True,
+                                "post_hoc": True, "results": out}, indent=1) + "\n")  # fmt: skip
+    print(f"-> {path}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="python -m eval.list_size")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -499,11 +569,14 @@ def main(argv: list[str] | None = None) -> int:
     c.add_argument("--workers", type=int, default=8)
     sub.add_parser("report")
     sub.add_parser("tournament")
+    sub.add_parser("normalised")
     args = ap.parse_args(argv)
     if args.cmd == "prepare":
         return prepare()
     if args.cmd == "tournament":
         return tournament()
+    if args.cmd == "normalised":
+        return normalised()
     if args.cmd == "classic":
         return classic(args.workers)
     return report()

@@ -2,7 +2,7 @@ from collections import Counter
 
 import numpy as np
 
-from eval.list_size import lists, similar_order
+from eval.list_size import lists, scale_scores, similar_order
 from metadata.config import load as load_config
 
 
@@ -75,3 +75,10 @@ def test_disjoint_passages():
 
     w = ["blocks 84-88 of 112", "blocks 85-89 of 112", "blocks 89-93 of 112", "x blocks 1-5"]
     assert sorted(_disjoint(w)) == [0, 2, 3]
+
+
+def test_scale_scores_removes_a_model_that_wins_everywhere():
+    cohort = np.array([[0.0, -1.0], [0.2, -0.8], [np.nan, -0.9]])  # model 1 low on everyone
+    x = np.array([[-0.3, -1.0]])  # model 0 well below its usual; model 1 at its usual
+    assert x.argmin(axis=1)[0] == 1
+    assert scale_scores(x, cohort).argmin(axis=1)[0] == 0
