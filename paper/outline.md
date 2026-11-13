@@ -158,3 +158,8 @@ amendment, the simulated reviews; how to obtain the licensed sources.
 
 ## 14. What comes next (Part 2)
 Stage 0's result (still no method under 5% false matches on 430 tests); Stage 1 on hold.
+**\*TBD (scoped, owner to decide): a library-wide search with our own models**
+(`docs/part2-library-search-plan.md`): one period model trained on all 23,875 authors' profiles
+with author labels, tested first on the sweep's 200 known books against the registered 70% bar
+(word counting 27%, style encoder 30%); about $15-20 at 297M. Step 0, free: Burrows' Delta, ENSC
+and General Imposters run as sweeps on the same 200 books.
