@@ -5,6 +5,15 @@ everything ahead, never sit waiting). A job monitor (`scripts/jobwatch.py`) repo
 stall or finish at once; an hourly check-in walks this file. Rules: never two heavy GPU jobs on the
 Mac at once; rented GPUs within approvals given; the issue comment carries the next action.
 
+## Phase 2 goal (owner, 2026-11-13; tracker BOM-92)
+
+Be able to say, with a measured number, "if the author left other writing in this corpus, this
+procedure finds him X% of the time", then run it on the Book of Mormon. **Author algorithm** = the
+Phase 1 per-candidate models (built); **sweep algorithm** = the library search (to build). Order:
+BOM-90 (accuracy by list size, running) -> BOM-93 (tournament with fresh evidence) -> BOM-91 (clean
+labels, free) -> BOM-89 (sweep algorithm) -> BOM-94 (end-to-end test on known books: X) -> BOM-95
+(the Book of Mormon). Experimenting: no amendment before each run.
+
 ## Running
 
 - **BOM-90 older methods (Mac, tmux `a58classic`, log `logs/a58_classic.log`, ~2.5 h from 2026-11-13):** `python -m eval.list_size classic` (resumes per author). Then `python -m eval.list_size report`. GPU half approved 2026-11-13 (owner tops up for the 590M): tmux `a58pool`, `scripts/a58_pool.sh`, log `logs/a58_chain.log`, one pod per size, 125M first; rerun the script to resume (each size's driver keeps state in `logs/pod_jobs_a58_<size>/`).
@@ -13,9 +22,7 @@ Mac at once; rented GPUs within approvals given; the issue comment carries the n
 
 ## Waiting on the owner
 
-- **BOM-90 (first, owner 2026-11-13):** how big a candidate list our models can pick the author from, at 125M/297M/590M; random and similar lists of 4-55, then library competitors beyond 55. Older methods free; GPU ~$10-15 (+ ~$20-40 for competitors), cost to be confirmed. Everything else in Phase 2 waits on it.
-- **BOM-91:** Phase 2 stage 0 on the Mac (labels, the 24 shared misses, alive-in-1828 tag, positive control). Free.
-- **BOM-89:** the cascade; on hold until BOM-90 and BOM-91, then an amendment revising Amendment 57.
+- Nothing right now; BOM-90's runs are going (see Running). BOM-36 (the paper on outline v3) and its decisions wait behind Phase 2 unless the owner says otherwise.
 
 ## Done 2026-11-12 (details in the blog's Log and the issues)
 

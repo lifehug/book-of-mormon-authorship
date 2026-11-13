@@ -163,7 +163,13 @@ King James register; our period-trained models are the best tools for the job. C
 "does not stand out" holds for the language models, not for Burrows' and Cosine Delta (which put
 his ordinary prose first without the revelations); register explains the closeness clearly at
 590M only (placebo writers reach the revelations there, not at 125M or 297M). Part 2 asks the next question: with the best tools, can we find anyone, or better candidates, in
-the whole library? **\*TBD (Amendment 57, running): the library searched with our own models**
+the whole library? **Goal (owner, 2026-11-13; BOM-92):** to be able to say, with a number measured
+on known books, "if the author left other writing in this corpus, this procedure finds him X% of
+the time", and then run it on the Book of Mormon. The procedure: a *sweep algorithm* (to build)
+narrows the library to a shortlist; the *author algorithm* (Phase 1's per-candidate models) picks
+from it, in heats with a final round on fresh passages. **\*TBD, running: accuracy of the author
+algorithm by list size (2-55) and model size (BOM-90); then the tournament (BOM-93), the sweep
+algorithm (BOM-89), the end-to-end test (BOM-94), the Book of Mormon (BOM-95).** **\*TBD (Amendment 57, running): the library searched with our own models**
 (`docs/part2-library-search-plan.md`): one period model (297M) trained on all 23,875 authors'
 profiles with author labels; known answers first (the sweep's 200 books, the registered 70% bar,
 beside every older method run as a sweep), then the Book of Mormon. Kept in Part 2 (owner,
