@@ -22,7 +22,7 @@ method changes.
 | 12 | The 168 sealed chunks are the book cut twice | Report every count per chunk length (Amendment 55) | The two lengths agree | yes (reporting) |
 | 13 | Only a 3,039-token pre-1830 revelation sample | His 1830-34 revelations as a deep dive, on the same slices (Amendment 54) | Every later slice ranks right behind the 1828-29 sample at 125M and 297M | yes, as a check |
 | 14 | Our best method needs one model per candidate, so it cannot search a library (23,875 authors) | One period model trained on every author's profile with an author label; score = loss under the label minus under "unknown" (Amendment 57) | *running* | *pending* |
-| 15 | ENSC's code looped over classes (fine for 4 authors, hopeless for 23,875) | Same maths vectorised; tested equal to the original (`sweep/older.py`) | Older methods can run as library sweeps | yes (engineering) |
+| 15 | ENSC's code looped over classes (fine for 4 authors, hopeless for 23,875) | Same maths vectorised; tested equal to the original (`sweep/older.py`) | Older methods run as library sweeps on the 200 known books: true author first 20.5-27% (Burrows 25, Cosine 27, ENSC 23, GI 20.5), in the top 1,000 70-78%; none near the 70% bar. Any of the four first: 30%. Cosine reproduces the registered 27% exactly | yes (engineering); the methods themselves: **no** |
 
 ## Lessons
 

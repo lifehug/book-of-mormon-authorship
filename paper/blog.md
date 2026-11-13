@@ -3264,6 +3264,8 @@ GPU. What it still doesn't do is say "none of these".
 
 ## Log
 
+- **2026-11-13.** The four older methods run as library sweeps over all 23,875 authors, on the 200 books whose author we know. The true author comes first 25% of the time for Burrows' Delta, 27% for Cosine Delta (the same as the registered sweep, so the code checks out), 23% for ENSC and 20.5% for General Imposters. None is close to the 70% bar. Even counting a hit when any of the four puts the author first, it's 30%. Free, on the Mac.
+
 - **2026-11-12 (late night).** Amendment 56: 32 more benchmark authors by the same rules. On all 55 authors our models beat Burrows, Cosine, General Imposters and ENSC at every size (all 12 Holm p < 0.002); the 32 new authors alone repeat it. About $6.83. Details in "32 more authors: settled".
 
 - **2026-11-12 (night).** Amendment 55: counted by author, our models are clearly better than General Imposters and ENSC, ahead of Burrows and Cosine Delta but not significantly. The standard score-normalisation fix for "none of these" does not hold up when each author is held out (17-26% false matches against a 5% target). Chunk counts now given per length. Details in "Is there a better 'none of these'?".
