@@ -283,6 +283,28 @@ def reproduction() -> dict[str, dict]:
     return out
 
 
+def _alm_ranks(scores: list[dict[str, float]], a: str, names: list[str]) -> list[int]:
+    """The true author's rank among ``names`` for each test (1 = closest; ties by name)."""
+    return [sorted(names, key=lambda b: (s[b], b)).index(a) + 1 for s in scores]
+
+
+def top_k(alm: dict, lst: dict, names: list[str], ls: dict) -> dict:
+    """Our models: mean over authors of the share of attributions with the true author among the
+    closest k, per list type and size (k below the list size)."""
+    out: dict = {}
+    for m, tab in alm.items():
+        for typ in ("random", "similar"):
+            rows = []
+            for n in ls["sizes"]:
+                per = {a: [r for x in lst[a][typ][n] for r in _alm_ranks(tab[a], a, x)]
+                       for a in names}  # fmt: skip
+                rows.append({"size": n, **{
+                    f"top{k}": float(np.mean([np.mean(np.array(v) <= k) for v in per.values()]))
+                    for k in ls["top_k"] if k < n}})  # fmt: skip
+            out.setdefault(m, {})[typ] = rows
+    return out
+
+
 def _alm_correct(scores: list[dict[str, float]], a: str, names: list[str]) -> int:
     return sum(min(names, key=lambda b: (s[b], b)) == a for s in scores)
 
@@ -361,6 +383,7 @@ def report() -> int:
                                "tests": sum(len(v["tests"]) for v in data["authors"].values()),
                                "methods_scored": sorted(curves), "curves": curves,
                                "decision_size": n, "decision": decision,
+                               "top_k": top_k(alm, lst, names, ls),
                                "reproduction": reproduction()},
                               indent=1) + "\n")  # fmt: skip
     for m, by_t in curves.items():

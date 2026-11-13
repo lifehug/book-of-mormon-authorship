@@ -537,6 +537,7 @@ list_size:                        # Amendment 58 (BOM-90): accuracy against cand
   similar_mfw: 300                # similar lists: nearest by Cosine Delta on training profiles
   gi_seed: a58-gi
   bars: [0.90, 0.70]
+  top_k: [1, 3, 5, 10]            # our models: true author among the closest k (added before their scores)
   decision_size: 12               # the Book of Mormon's list; sign test by author, Holm over 12
   resamples: 5000
   resample_seed: a58-authors

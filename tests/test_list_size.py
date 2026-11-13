@@ -60,3 +60,11 @@ def test_window_losses_matches_window_loss():
     many = window_losses(m, tests, 8, "cpu", rows=3)
     for ids, got in zip(tests, many, strict=True):
         assert np.allclose(got, window_loss(m, ids, 8, "cpu"), atol=1e-5)
+
+
+def test_alm_ranks():
+    from eval.list_size import _alm_ranks
+
+    s = [{"a": -0.3, "b": -0.5, "c": -0.1}, {"a": -0.9, "b": -0.5, "c": -0.1}]
+    assert _alm_ranks(s, "a", ["a", "b", "c"]) == [2, 1]
+    assert _alm_ranks(s, "a", ["a", "c"]) == [1, 1]
