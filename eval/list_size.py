@@ -24,6 +24,7 @@ Usage::
     python -m eval.list_size prepare          # Mac: author blocks, tests, pools -> work dir
     python -m eval.list_size classic [--workers 8]   # Mac, resumes per author (a few hours)
     python -m eval.list_size report           # -> data/benchmark/list_size.json
+    python -m eval.list_size tournament       # BOM-93 -> data/benchmark/list_size_tournament.json
 """
 
 from __future__ import annotations
@@ -34,6 +35,7 @@ import json
 import os
 import pickle
 import random
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -394,6 +396,84 @@ def report() -> int:
     return 0
 
 
+def _span(where: str) -> tuple[str, int, int]:
+    m = re.match(r"(?:(.*) )?blocks (\d+)-(\d+)", where)
+    return m.group(1) or "", int(m.group(2)), int(m.group(3))
+
+
+def _disjoint(wheres: list[str]) -> list[int]:
+    """Indices of a largest set of tests that share no block (greedy by end)."""
+    keep, last = [], {}
+    for i in sorted(range(len(wheres)), key=lambda i: (_span(wheres[i])[0], _span(wheres[i])[2])):
+        w, s, e = _span(wheres[i])
+        if s > last.get(w, -1):
+            keep.append(i)
+            last[w] = e
+    return keep
+
+
+def tournament() -> int:
+    """BOM-93 part 1 (exploratory): on the full 55-author list, per model size and by author:
+    straight ranking on one passage; heats then a final on the **same** passage; heats then a
+    final on a **different**, non-overlapping passage; and straight ranking on several
+    non-overlapping passages averaged (the same extra evidence spent on everyone)."""
+    cfg = load_config()
+    tc = cfg["list_size"]["tournament"]
+    data = _load()
+    names = sorted(data["authors"])
+    alm = _alm_tables(data)
+    out: dict = {}
+    for m, tab in alm.items():
+        rng = random.Random(derive_seed(f"{tc['seed']}:{m}", cfg))
+        S = {a: np.array([[s[b] for b in names] for s in tab[a]]) for a in names}
+        dis = {a: _disjoint([w for w, _ in data["authors"][a]["tests"]]) for a in names}
+        res: dict = {"straight": [], "pooled": {str(k): [] for k in tc["pooled"]}}
+        for h in tc["heats"]:
+            res[f"heats_{h[0]}x{h[1]}_keep{h[2]}"] = {"in_final": [], "same": [], "fresh": []}
+        for a in names:
+            t = names.index(a)
+            idx = dis[a]
+            res["straight"].append(float(np.mean(S[a].argmin(axis=1) == t)))
+            for k in tc["pooled"]:
+                if len(idx) >= k:
+                    sets = [rng.sample(idx, k) for _ in range(tc["draws"])]
+                    hit = [S[a][x].mean(axis=0).argmin() == t for x in sets]
+                    res["pooled"][str(k)].append(float(np.mean(hit)))
+            if len(idx) < 2:
+                continue
+            for nh, hs, kp in tc["heats"]:
+                fin, same, fresh = [], [], []
+                for _ in range(tc["draws"]):
+                    i, j = rng.sample(idx, 2)
+                    order = list(range(len(names)))
+                    rng.shuffle(order)
+                    surv = []
+                    for g in range(nh):
+                        grp = order[g * hs : (g + 1) * hs]
+                        surv += sorted(grp, key=lambda b: S[a][i][b])[:kp]
+                    fin.append(t in surv)
+                    same.append(min(surv, key=lambda b: S[a][i][b]) == t)
+                    fresh.append(min(surv, key=lambda b: S[a][j][b]) == t)
+                r = res[f"heats_{nh}x{hs}_keep{kp}"]
+                r["in_final"].append(float(np.mean(fin)))
+                r["same"].append(float(np.mean(same)))
+                r["fresh"].append(float(np.mean(fresh)))
+
+        def mean(v: list[float]) -> dict:
+            return {"authors": len(v), "mean_by_author": float(np.mean(v))}
+
+        out[m] = {"straight_one_passage": mean(res["straight"]),
+                  "pooled_passages": {k: mean(v) for k, v in res["pooled"].items() if v},
+                  **{k: {q: mean(v) for q, v in r.items()}
+                     for k, r in res.items() if k.startswith("heats")}}  # fmt: skip
+        print(m, json.dumps(out[m], indent=1))
+    path = Path("data/benchmark/list_size_tournament.json")
+    path.write_text(json.dumps({**stamp(), "list": len(names), "exploratory": True,
+                                "results": out}, indent=1) + "\n")  # fmt: skip
+    print(f"-> {path}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="python -m eval.list_size")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -401,9 +481,12 @@ def main(argv: list[str] | None = None) -> int:
     c = sub.add_parser("classic")
     c.add_argument("--workers", type=int, default=8)
     sub.add_parser("report")
+    sub.add_parser("tournament")
     args = ap.parse_args(argv)
     if args.cmd == "prepare":
         return prepare()
+    if args.cmd == "tournament":
+        return tournament()
     if args.cmd == "classic":
         return classic(args.workers)
     return report()

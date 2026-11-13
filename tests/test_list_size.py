@@ -68,3 +68,10 @@ def test_alm_ranks():
     s = [{"a": -0.3, "b": -0.5, "c": -0.1}, {"a": -0.9, "b": -0.5, "c": -0.1}]
     assert _alm_ranks(s, "a", ["a", "b", "c"]) == [2, 1]
     assert _alm_ranks(s, "a", ["a", "c"]) == [1, 1]
+
+
+def test_disjoint_passages():
+    from eval.list_size import _disjoint
+
+    w = ["blocks 84-88 of 112", "blocks 85-89 of 112", "blocks 89-93 of 112", "x blocks 1-5"]
+    assert sorted(_disjoint(w)) == [0, 2, 3]
