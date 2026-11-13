@@ -238,6 +238,23 @@ def classic(workers: int) -> int:
     return 0
 
 
+def pool_records(path: Path) -> list[dict]:
+    """A pool score file's records with ``scores`` as {candidate: score}. Files are kept compact
+    (one candidate list, scores as rows rounded to 7 places); a file as the pod wrote it (a dict
+    per test) is rewritten compact on first read."""
+    d = json.loads(path.read_text())
+    if "candidates" not in d:
+        cands = sorted(d["records"][0]["scores"])
+        d["candidates"] = cands
+        for r in d["records"]:
+            r["scores"] = [round(r["scores"][b], 7) for b in cands]
+        head = {k: v for k, v in d.items() if k != "records"}
+        rows = ",\n".join(json.dumps(r, separators=(",", ":")) for r in d["records"])
+        path.write_text(json.dumps(head, indent=1)[:-2] + ',\n "records": [\n' + rows + "\n]}\n")
+    return [{**r, "scores": dict(zip(d["candidates"], r["scores"], strict=True))}
+            for r in d["records"]]  # fmt: skip
+
+
 def _alm_tables(data: dict) -> dict[str, dict[str, list[dict[str, float]]]]:
     """size -> author -> per test {candidate: score} (lower is closer), where scored."""
     out = {}
@@ -246,7 +263,7 @@ def _alm_tables(data: dict) -> dict[str, dict[str, list[dict[str, float]]]]:
         if not f.exists():
             continue
         by: dict[str, list] = {}
-        for r in json.loads(f.read_text())["records"]:
+        for r in pool_records(f):
             by.setdefault(r["author"], []).append((r["where"], r["scores"]))
         for a, v in data["authors"].items():  # same tests in the same order
             assert [w for w, _ in by[a]] == [w for w, _ in v["tests"]], a
@@ -271,7 +288,7 @@ def reproduction() -> dict[str, dict]:
                 for r in rs:
                     old[task, r["author"], r["where"]] = r["scores"]
         diffs, same, n = [], 0, 0
-        for r in json.loads(f.read_text())["records"]:
+        for r in pool_records(f):
             o = old[r["task"], r["author"], r["where"]]
             shared = [b for b in o if b in r["scores"]]
             diffs += [abs(r["scores"][b] - o[b]) for b in shared]
@@ -370,8 +387,8 @@ def report() -> int:
     n = ls["decision_size"]
     for z in alm:
         for m in METHODS:
-            if m not in acc:
-                continue
+            if m not in acc or len(acc[m]["similar"][n]) < len(names):
+                continue  # the older methods' run is not complete yet
             ours, theirs = acc[z]["similar"][n], acc[m]["similar"][n]
             d = [ours[a][0] / ours[a][1] - theirs[a][0] / theirs[a][1] for a in names]
             w, lose = sum(x > 0 for x in d), sum(x < 0 for x in d)
