@@ -56,9 +56,16 @@ Five studies reproduced with their own methods and data; their answers follow un
 the candidates" study's error swings 80% to 0% with sample length).
 
 ## 5. How good is each method? A scorecard on known answers
-- **5.1 Picking the right author from a list:** on BOM-75's 430 tests, every size beats every
-  older method head to head (297M vs Burrows 59-9, vs ENSC 77-3; all 12 comparisons Holm p <
-  0.0001; Amendment 52). On Part 1's 110 tests the disagreements were too few to call (4-0).
+- **5.1 Picking the right author from a list:** on BOM-75's 430 tests, every size is ahead of
+  every older method (297M vs Burrows 59-9 windows, vs ENSC 77-3; Holm p < 0.0001 counted by
+  window, Amendment 52). But the 430 tests are 23 authors, and windows of one author are not
+  independent. Counted by author (correction, 2026-11-12): ahead of General Imposters (15-16
+  authors to 0-1) and ENSC (14 to 1-2) at every size, sign p 0.0003-0.004; ahead of Burrows and
+  Cosine Delta on 10-11 authors, behind on 2-3, the rest tied, sign p 0.02-0.06, which does not
+  survive the Holm correction. One author (Spring) supplies 19 of 297M's 59 wins over Burrows.
+  So: clearly better than GI and ENSC; ahead of the Deltas on most authors, not yet shown
+  significantly. **\*TBD (proposed, owner to decide):** more benchmark authors would settle the
+  Delta comparison. On Part 1's 110 tests the disagreements were too few to call (4-0).
 - **5.2 Period training matters:** GPT-2 86-92% false matches against ours 22-47%.
 - **5.3 Writing in biblical style:** the imitation test is three authors (by author Burrows 1 of 3,
   297M 2 of 3; by passage 13/18 vs 7/17), too small either way; the 430 exam's pseudo-biblical
