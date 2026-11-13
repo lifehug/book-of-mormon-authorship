@@ -18,6 +18,8 @@ Usage::
     python -m alm.benchmark <size> [--variant v1]   # size pilot|base|mid|large -> alm_<size>[_v1]
     python -m alm.benchmark <size> --variant v1 --lr 3e-5 --tag <size>_v1_lrsel --save-weights
     python -m alm.benchmark <size> --part2          # BOM-75: all seven tasks -> alm_<size>_p2
+    python -m alm.benchmark bundle --ext            # Amendment 56: new tasks packed
+    python -m alm.benchmark <size> --ext            # Amendment 56 -> alm_<size>_p3
 
 ``--save-weights`` keeps every fine-tuned copy (``<work>/weights/<task>__<author>.pt``) for
 publication (owner, 2026-11-09: no trained model is discarded).
@@ -78,10 +80,16 @@ def _words(work_ids: list[str], spans_files: list[Path]) -> dict[str, list[str]]
                               spans.get(w, [])) for w in work_ids}  # fmt: skip
 
 
-def texts(part2: bool = False) -> dict[str, dict]:
+def texts(part2: bool = False, ext: bool = False) -> dict[str, dict]:
     """{task: {"works": {author: [word lists]}, "tests": {work_id: words} (dictated only)}};
-    ``part2`` adds Amendment 48's four corpus-author tasks (``eval.part2_benchmark``)."""
+    ``part2`` adds Amendment 48's four corpus-author tasks (``eval.part2_benchmark``); ``ext`` gives
+    only Amendment 56's eight new tasks."""
     from segment.build import original_words
+
+    if ext:
+        from eval.part2_benchmark import corpus_works
+
+        return {t: {"works": by} for t, by in corpus_works(load_config(), ext=True).items()}
 
     fed: dict[str, list[list[str]]] = {}
     for ln in FEDERALIST.read_text().splitlines():
@@ -107,12 +115,19 @@ def texts(part2: bool = False) -> dict[str, dict]:
     return out
 
 
-def plan(cfg: dict, part2: bool = False) -> dict[str, dict]:
-    """Per task: each author's training words (works kept apart) and the test samples."""
+BUNDLE = WORK / "p3_plan.json.gz"  # Amendment 56's plan as words (licensed text: never in git)
+
+
+def plan(cfg: dict, part2: bool = False, ext: bool = False) -> dict[str, dict]:
+    """Per task: each author's training words (works kept apart) and the test samples. With
+    ``ext`` and no corpus at hand (a rented GPU), the plan is read from ``BUNDLE``."""
+    if ext and BUNDLE.exists() and not Path("data/corpus/internet_archive").exists():
+        with gzip.open(BUNDLE, "rt") as fh:
+            return json.load(fh)
     bm, a = cfg["benchmark"], cfg["alm"]
     k = bm["test_words"] // BLOCK
     out: dict[str, dict] = {}
-    for task, t in texts(part2).items():
+    for task, t in texts(part2, ext).items():
         train, tests = {}, []
         for author, works in sorted(t["works"].items()):
             if task == "dictated":
@@ -203,7 +218,8 @@ def window_loss(model: GPT, ids: list[int], window: int, dev: str) -> list[float
 
 
 def run(size: str, micro: int, variant: str = "", lr: float | None = None,
-        tag: str | None = None, save: bool = False, part2: bool = False) -> int:  # fmt: skip
+        tag: str | None = None, save: bool = False, part2: bool = False,
+        ext: bool = False) -> int:  # fmt: skip
     """Amendment 22's ALMs; ``variant`` "v1" is Amendment 23's V1 (learning rate
     ``alm.v1_finetune_lr``), or ``lr`` where given (Amendment 41's selected rate)."""
     from tokenizers import Tokenizer
@@ -215,10 +231,12 @@ def run(size: str, micro: int, variant: str = "", lr: float | None = None,
     eot = tok.token_to_id(EOT)
     if lr is None:
         lr = a["v1_finetune_lr"] if variant == "v1" else cfg["timelocked_lm"]["finetune_lr"]
-    tag = tag or (f"{size}_{variant}" if variant else size) + ("_p2" if part2 else "")
+    tag = tag or (f"{size}_{variant}" if variant else size) + (
+        "_p3" if ext else "_p2" if part2 else ""
+    )
     work = WORK / tag
     work.mkdir(parents=True, exist_ok=True)
-    p = plan(cfg, part2)
+    p = plan(cfg, part2, ext)
     base = _base(size, cfg).to(dev).eval()
     state = {k: v.clone() for k, v in base.state_dict().items()}
     for task, tp in p.items():
@@ -300,15 +318,24 @@ def write(tag: str, recs_by: dict[str, list[dict]], cfg: dict, extra: dict) -> i
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("size", choices=["pilot", "base", "mid", "large"])
+    ap.add_argument("size", choices=["pilot", "base", "mid", "large", "bundle"])
     ap.add_argument("--variant", choices=["v1"], default="", help="Amendment 23's V1")
     ap.add_argument("--micro-batch", type=int, default=2, help="memory only; same update")
     ap.add_argument("--lr", type=float, help="Amendment 41: a selected learning rate")
     ap.add_argument("--tag", help="result name (alm_<tag>.json); default <size>[_<variant>]")
     ap.add_argument("--save-weights", action="store_true", help="keep every fine-tuned copy")
     ap.add_argument("--part2", action="store_true", help="Amendment 48: add the four corpus tasks")
+    ap.add_argument("--ext", action="store_true", help="Amendment 56: only the eight new tasks")
     a = ap.parse_args(argv)
-    return run(a.size, a.micro_batch, a.variant, a.lr, a.tag, a.save_weights, a.part2)
+    if a.size == "bundle":
+        p = plan(load_config(), ext=True)
+        BUNDLE.parent.mkdir(parents=True, exist_ok=True)
+        with gzip.open(BUNDLE, "wt") as fh:
+            json.dump(p, fh)
+        print(f"{len(p)} tasks, {sum(len(t['tests']) for t in p.values())} tests -> {BUNDLE} "
+              f"({BUNDLE.stat().st_size / 1e6:.1f} MB)")  # fmt: skip
+        return 0
+    return run(a.size, a.micro_batch, a.variant, a.lr, a.tag, a.save_weights, a.part2, a.ext)
 
 
 if __name__ == "__main__":

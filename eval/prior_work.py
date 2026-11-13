@@ -30,6 +30,7 @@ Usage::
     python -m eval.prior_work table                   # -> data/benchmark/prior_work.json
     python -m eval.prior_work classic-tails           # -> prior_work_classic_tails.json
     python -m eval.prior_work classic-tails --part2   # -> prior_work_classic_tails_p2.json
+    python -m eval.prior_work classic-tails --ext     # Amendment 56 -> ..._tails_p3.json
     python -m eval.prior_work ablation gpt2|gpt2-medium [--micro-batch 8]
     python -m eval.prior_work files                   # the ablation's input files, for a pod
 """
@@ -49,6 +50,7 @@ from metadata.config import load as load_config
 
 DIR = Path("data/benchmark")
 P2_TAILS = "prior_work_classic_tails_p2.json"
+P3_TAILS = "prior_work_classic_tails_p3.json"  # Amendment 56's eight new tasks
 CLASSIC = ("burrows_delta", "cosine_delta", "general_imposters")
 REPLICATIONS = {  # file -> keys holding the published counts and ours
     "replication_jockers_data": ("published", "ours"),
@@ -243,7 +245,7 @@ def table() -> int:
     return 0
 
 
-def classic_tails(part2: bool = False) -> int:
+def classic_tails(part2: bool = False, ext: bool = False) -> int:
     """The classical methods on Amendment 22's held-out tails, or with ``part2`` on BOM-75's
     (Amendment 52; see the module docstring)."""
     import random
@@ -258,19 +260,20 @@ def classic_tails(part2: bool = False) -> int:
 
     cfg = load_config()
     spec = json.loads(TASKS.read_text())
-    bench = DIR / "part2" / "benchmark.json" if part2 else DIR / "benchmark.json"
+    bench = DIR / "part2" / "benchmark.json" if part2 or ext else DIR / "benchmark.json"
     ens = json.loads(bench.read_text())["ensc"]  # its calibrated settings
     priors = classic_kwargs(cfg)["ensc"]["priors"]
-    tag = "bom68-classic-tails" + ("-p2" if part2 else "")
+    tag = "bom68-classic-tails" + ("-p3" if ext else "-p2" if part2 else "")
     rng = random.Random(derive_seed(tag, cfg))
     recs_by: dict[str, list[dict]] = {}
-    for name, tp in plan(cfg, part2).items():
+    for name, tp in plan(cfg, part2, ext).items():
         task = {"authors": {a: blocks(tokenize(" ".join(w for ws in works for w in ws)))
                             for a, works in tp["train"].items()},
                 "tests": [(x["author"], tokenize(" ".join(x["words"])), None)
                           for x in tp["tests"]]}  # fmt: skip
-        if name.startswith("p2_"):  # Amendment 48's registered pairings, as eval.benchmark
-            pool_set, pool_genre = cfg["part2_benchmark"]["pools"][name.removeprefix("p2_")]
+        if name.startswith(("p2_", "p3_")):  # Amendment 48's registered pairings by genre
+            g = name.removeprefix("p2_") if name.startswith("p2_") else name[3:].rsplit("_", 1)[0]
+            pool_set, pool_genre = cfg["part2_benchmark"]["pools"][g]
             pool = imposter_pool(pool_set, set(), cfg, pool_genre, tuple(sorted(tp["train"])))
         else:
             sp = spec[name]
@@ -303,7 +306,7 @@ def classic_tails(part2: bool = False) -> int:
                        "passes": (sum(r["ensc"] == r["author"] for r in recs) / n
                                   >= cfg["benchmark"]["pass_closed_set"]
                                   and fm <= cfg["benchmark"]["max_open_set_fpr"])}  # fmt: skip
-    path = DIR / (P2_TAILS if part2 else "prior_work_classic_tails.json")
+    path = DIR / (P3_TAILS if ext else P2_TAILS if part2 else "prior_work_classic_tails.json")
     path.write_text(json.dumps({**stamp(), "tests": n, "ensc_settings": {
         "shrinkage": ens["shrinkage"], "alpha": ens["alpha"]}, "summary": summary,
         "records": recs_by}, indent=1) + "\n")  # fmt: skip
@@ -423,8 +426,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("model", nargs="?", default="gpt2")
     ap.add_argument("--micro-batch", type=int, default=8, help="memory only; same update")
     ap.add_argument("--part2", action="store_true", help="classic-tails on BOM-75's tests")
+    ap.add_argument("--ext", action="store_true", help="classic-tails on Amendment 56's tests")
     a = ap.parse_args(argv)
-    return {"table": table, "classic-tails": lambda: classic_tails(a.part2),
+    return {"table": table, "classic-tails": lambda: classic_tails(a.part2, a.ext),
             "files": ablation_files,
             "ablation": lambda: ablation(a.model, a.micro_batch)}[a.cmd]()  # fmt: skip
 

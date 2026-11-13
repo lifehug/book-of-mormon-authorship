@@ -20,3 +20,17 @@ def test_statistics() -> None:
     assert _stat(x, "raw", None) == 3.0
     assert _stat(x, "znorm", zs) == 2.0
     assert _stat(x, "zmargin", zs) == 1.0
+
+
+def test_extension_tasks_split_in_draw_order(tmp_path, monkeypatch) -> None:
+    import json
+
+    from eval import part2_benchmark as pb
+
+    f = tmp_path / "ext.json"
+    f.write_text(json.dumps({"drawn": {"g": [{"author": str(i)} for i in range(8)]}}))
+    cfg = {"part2_benchmark": {"extension": {"authors_per_genre": 8, "tasks_per_genre": 2,
+                                             "out": str(f)}}}  # fmt: skip
+    t = pb.ext_tasks(cfg)
+    assert [a["author"] for a in t["p3_g_1"]] == ["0", "1", "2", "3"]
+    assert [a["author"] for a in t["p3_g_2"]] == ["4", "5", "6", "7"]

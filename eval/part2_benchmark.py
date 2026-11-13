@@ -19,6 +19,8 @@ counts; never text). ``alm.benchmark --part2`` and ``eval.benchmark --part2`` ad
 Usage::
 
     python -m eval.part2_benchmark      # draw -> data/benchmark/part2/authors.json (seconds)
+    python -m eval.part2_benchmark --ext --queue 20   # Amendment 56: next authors to screen
+    python -m eval.part2_benchmark --ext              # Amendment 56's draw -> authors_ext.json
 """
 
 from __future__ import annotations
@@ -142,9 +144,18 @@ def _order(pool: list[dict], g: str, cfg: dict) -> list[dict]:
     return order
 
 
-def select(cfg: dict) -> dict:
-    """Amendment 48's draw: seeded order, automatic rules, then the recorded screen."""
+def _seen() -> set[str]:
+    """Authors Amendment 48's draw already took or skipped (Amendment 56 continues past them)."""
+    d = json.loads(OUT.read_text())
+    return {r["author"] for k in ("drawn", "skipped") for rows in d[k].values() for r in rows}
+
+
+def select(cfg: dict, ext: bool = False) -> dict:
+    """Amendment 48's draw: seeded order, automatic rules, then the recorded screen; ``ext``
+    continues each genre's order past round one for Amendment 56's extension."""
     p2 = cfg["part2_benchmark"]
+    per = p2["extension"]["authors_per_genre"] if ext else p2["authors_per_genre"]
+    seen = _seen() if ext else set()
     min_works = cfg["classic"]["corpus_run"]["min_works"]
     by_genre, counts, words = _pools(cfg)
     sp = Path(p2["screen"])
@@ -155,8 +166,10 @@ def select(cfg: dict) -> dict:
     for g, pool in by_genre.items():
         drawn[g], skipped[g], pending[g] = [], [], []
         for cand in _order(pool, g, cfg):
-            if len(drawn[g]) >= p2["authors_per_genre"]:
+            if len(drawn[g]) >= per:
                 break
+            if cand["author"] in seen:
+                continue
             sc = screen.get(cand["author"])
             if sc is None:
                 pending[g].append(cand["author"])
@@ -174,21 +187,23 @@ def select(cfg: dict) -> dict:
             drawn[g].append({"author": cand["author"], "works": kept, "words": total,
                              "repeats_dropped": dropped,
                              "screen_dropped": sc.get("drop_works", {})})  # fmt: skip
-        drawn[g].sort(key=lambda r: r["author"])
+        if not ext:
+            drawn[g].sort(key=lambda r: r["author"])
     return {"eligible_by_genre": {g: len(v) for g, v in by_genre.items()},
             "left_out": dict(counts), "skipped": skipped, "awaiting_screen": pending,
             "drawn": drawn}  # fmt: skip
 
 
-def queue(cfg: dict, n: int) -> None:
-    """The first ``n`` authors of each genre's seeded order, works after the automatic repeat
-    check, with titles and years: the list the screen is decided on."""
+def queue(cfg: dict, n: int, ext: bool = False) -> None:
+    """The first ``n`` authors of each genre's seeded order (with ``ext``, past round one), works
+    after the automatic repeat check, with titles and years: the list the screen is decided on."""
     cols = ["work_id", "title", "year"]
     meta = {r["work_id"]: r for r in pq.read_table(CATALOG, columns=cols).to_pylist()}
     by_genre, _, words = _pools(cfg)
+    seen = _seen() if ext else set()
     for g, pool in by_genre.items():
         print(f"== {g}")
-        for cand in _order(pool, g, cfg)[:n]:
+        for cand in [c for c in _order(pool, g, cfg) if c["author"] not in seen][:n]:
             kept, dropped = distinct_works(cand["works"], cfg)
             total = sum(words.get(w, 0) for w in kept)
             print(f"  {cand['author']} ({total:,} words kept; repeats dropped {len(dropped)})")
@@ -196,15 +211,29 @@ def queue(cfg: dict, n: int) -> None:
                 print(f"      {w} {meta[w]['year']} {(meta[w]['title'] or '')[:100]}")
 
 
-def corpus_works(cfg: dict) -> dict[str, dict[str, list[list[str]]]]:
-    """{p2_<genre>: {author: [original words per work]}}, capped at ``max_author_words``."""
+def ext_tasks(cfg: dict) -> dict[str, list[dict]]:
+    """Amendment 56: {p3_<genre>_<k>: drawn authors}, the first 4 kept in a genre's order in task
+    1, the next 4 in task 2."""
+    e = cfg["part2_benchmark"]["extension"]
+    drawn = json.loads(Path(e["out"]).read_text())["drawn"]
+    k = e["authors_per_genre"] // e["tasks_per_genre"]
+    return {f"p3_{g}_{i + 1}": rows[i * k : (i + 1) * k]
+            for g, rows in drawn.items() for i in range(e["tasks_per_genre"])}  # fmt: skip
+
+
+def corpus_works(cfg: dict, ext: bool = False) -> dict[str, dict[str, list[list[str]]]]:
+    """{p2_<genre>: {author: [original words per work]}}, capped at ``max_author_words``; with
+    ``ext``, Amendment 56's {p3_<genre>_<k>: ...} instead."""
     from alm.benchmark import _words
 
-    drawn = json.loads(OUT.read_text())["drawn"]
+    if ext:
+        groups = ext_tasks(cfg)
+    else:
+        groups = {f"p2_{g}": rows for g, rows in json.loads(OUT.read_text())["drawn"].items()}
     cap = cfg["part2_benchmark"]["max_author_words"]
     out: dict[str, dict[str, list[list[str]]]] = {}
-    for g, authors in drawn.items():
-        task = out.setdefault(f"p2_{g}", {})
+    for name, authors in groups.items():
+        task = out.setdefault(name, {})
         for a in authors:
             got = _words(a["works"], [])
             kept, used = [], 0
@@ -221,17 +250,20 @@ def main(argv: list[str] | None = None) -> int:
     if argv is None:
         argv = sys.argv[1:]
     cfg = load_config()
+    ext = "--ext" in argv
+    argv = [a for a in argv if a != "--ext"]
     if argv[:1] == ["--queue"]:
-        queue(cfg, int(argv[1]) if len(argv) > 1 else 8)
+        queue(cfg, int(argv[1]) if len(argv) > 1 else 8, ext)
         return 0
-    res = select(cfg)
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({**stamp(), **res}, indent=1) + "\n")
+    res = select(cfg, ext)
+    out = Path(cfg["part2_benchmark"]["extension"]["out"]) if ext else OUT
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps({**stamp(), **res}, indent=1) + "\n")
     print(f"eligible per genre {res['eligible_by_genre']}; left out {res['left_out']}")
     for g, rows in res["drawn"].items():
         print(f"  {g}: " + "; ".join(f"{r['author']} ({r['words']:,} words, {len(r['works'])} "
                                        f"works)" for r in rows))  # fmt: skip
-    print(f"-> {OUT}")
+    print(f"-> {out}")
     return 0
 
 
