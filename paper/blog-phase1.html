@@ -121,7 +121,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <p class="lede">In 2016 a friend and I wrote a little Java program that counted the words in the 1830 Book of Mormon and compared them with Joseph Smith's journals. It was a weekend thing. It answered nothing, and the repo sat for ten years.</p>
 
-<p>This year I picked it back up, with better tools and one rule: write down how every test will be judged before I see its result. I'm not a scientist. What I can offer in place of credentials is that everything is public and anyone can run it again.</p>
+<p>This year I picked it back up, with better tools and one rule: everything is replicable. Every test, every number and every model is public, and anyone can run it again. I'm not a scientist. That is what I can offer in place of credentials. For the first phase I also wrote down how each test would be judged before I saw its result.</p>
 
 <p>One thing up front. I'm not arguing about whether the book is inspired. A computer can't answer that, and I won't pretend it can. What it can do is tell me whether the English text looks like a particular person's writing, whether it borrows from particular books, and how far those tools can be trusted.</p>
 
@@ -129,8 +129,9 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <ol>
 <li><b>The book copies almost nothing.</b> Set the King James Bible aside and 0.16% of it matches earlier books. The books people name as sources don't stand out from other books of their kind.</li>
 <li><b>Of the eight people usually proposed, the closest writing is Joseph Smith's revelations.</b> Six of eight methods rank them first, including all three of my models. His letters and journals don't stand out the same way.</li>
-<li><b>I can't tell you the author is one of those eight.</b> None of the methods, mine included, can reliably say "it's nobody on this list".</li>
-<li><b>So I checked everybody: 23,872 authors.</b> His revelations come out first in two of the three ways I ran it. In the third, one library author is ahead of them: an English prophet who was dictating his own revelations in the same years. The rest of the top is religious testimony, much of it by people long dead. The closest writing is a voice, and my tools can't tell the man from the voice.</li>
+<li><b>Nobody can tell you the author isn't on that list, and neither can I.</b> No test I know of can reliably say "it's none of these people". I tried the published methods built for exactly that job, and my own. On books where I know the answer they all fail. Set to confirm 95% of true authors, my best model still accepts a stranger's writing one time in five on the easiest test and more than half the time on the hardest. The bar was one in twenty. The published methods do worse.</li>
+<li><b>So I checked everybody: 23,872 authors.</b> His revelations come out first in two of the three ways I ran it. In the third, one man is ahead: an English prophet who was dictating his own revelations in the same years. The rest of the top is religious testimony, and too many of those writers were already dead: 9 of the top 20 in one version, where chance says 5. On books where I know the answer, this search puts the true author in its top 10 about two times in three, and about half the time for a book unlike the author's other writing.</li>
+<li><b>The closest writing is a voice.</b> As far as I can find, no tool that exists today can tell a person from the voice they are writing in. Mine can't.</li>
 </ol>
 </div>
 
@@ -255,6 +256,15 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p>Computer studies of this question go back to 1980, and they disagree. I rebuilt five of them with their own methods and data. Each reproduces. Each also turns on a choice nobody tested.</p>
 
 <p>The 2008 Stanford study gave 169 chapters to Sidney Rigdon. Swap in other genuine Rigdon writing and it's 92. The 2011 study that allowed "none of the candidates" has an error rate that swings from 80% to 0% depending on how long the samples are. Same method, same people, different answer.</p>
+
+<h3>One author or many?</h3>
+
+<p>The first of those studies, in 1980, made a different kind of claim: the book's speakers differ from each other so much that one person couldn't have written them all. That finding reproduces. The 17 speakers do differ.</p>
+
+<p>But "differ" needs a yardstick. I took a classifier that tells real authors apart 96% of the time and asked it to sort the book's passages by narrator: Nephi, Jacob, Mormon, Moroni. It got 74% right, against 28% by chance. So the narrators are different. They are not as different as real people are from each other, and by the rule I set in advance that is not enough to call them separate authors.</p>
+
+<p>There's a catch I can't get around. The narrators' books were dictated at different times, and sorting passages by "dictated early or late" works about as well: 76% against 50% by chance. I can't pull apart who is speaking from when it was dictated.</p>
+<p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/replicate.py">eval/replicate.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/scribes.py">eval/scribes.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/scribes.json">data/benchmark/scribes.json</a></p>
 
 <p>That's why the next section exists.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/replicate.py">eval/replicate.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/tree/master/data/benchmark/replication">data/benchmark/replication</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/docs/prior-studies.md">docs/prior-studies.md</a></p>
