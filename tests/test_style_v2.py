@@ -1,6 +1,7 @@
 """The second style encoder's splits, work genres and pair rule (BOM-89 step 3)."""
 
 import numpy as np
+import pytest
 
 from metadata.config import load
 from style_embed.v2 import Episodes, splits, work_genre
@@ -42,4 +43,5 @@ def test_hard_steps_are_one_genre_with_positives_from_another() -> None:
         first = {eps.pool["train"][a][w1][0] for a, w1, _ in pairs}
         assert len(first) == 1  # the batch's genre
         assert all(eps.pool["train"][a][w2][0] not in first for a, _, w2 in pairs)
+    pytest.importorskip("torch")  # the model extra; CI installs only the base packages
     assert eps.draw("train", 8, 0).shape == (16, p, t)

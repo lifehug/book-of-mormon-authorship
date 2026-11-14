@@ -1,6 +1,7 @@
 from collections import Counter
 
 import numpy as np
+import pytest
 
 from eval.list_size import lists, scale_scores, similar_order
 from metadata.config import load as load_config
@@ -48,7 +49,7 @@ def test_similar_order_excludes_self_and_covers_all():
 
 
 def test_window_losses_matches_window_loss():
-    import torch
+    torch = pytest.importorskip("torch")  # the model extra; CI installs only the base packages
 
     from alm.benchmark import window_loss, window_losses
     from timelocked_lm.train import GPT
