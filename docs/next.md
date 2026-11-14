@@ -16,13 +16,14 @@ labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament)
 
 ## Running
 
-- **BOM-89 further known books (Mac; started 2026-11-14 about 06:30):** tmux `maskext` (`python -m kjv_mask.run sweep_ext`, log `logs/sweep_ext_mask.log`, about 2 h, resumes by batch) then tmux `extchain` (`scripts/sweep_ext_chain.sh`, log `logs/sweep_ext_chain.log`): tokens, per-episode vectors with the second encoder (2-3 h, resumes), coverage on all 727 known books at the full profile and at 2 and 11 episodes. If either session is gone, rerun its command; the chain waits for the masking session to end.
+- **BOM-89 further known books: done 2026-11-14.** 727 known books: true author first 34%, top 10 59%, top 100 76.5%; cross genre (212) 17 / 38 / 56. In the paper, blog and outline. Details on issue #100.
+- **BOM-96 LambdaG (Mac, tmux `lambdag`, log `logs/lambdag.log`; started 2026-11-14 about 11:00, about 2 h at 33 s a book):** `KMP_DUPLICATE_LIB_OK=TRUE RETICULATE_PYTHON=.venv/bin/python Rscript scripts/lambdag.R` (resumes by book). Then `python -m eval.nobody report`, add the author models and two modern neural verifiers, write the section. Details on issue #107.
 - No GPU pods exist (the stopped pod from the failed run was deleted 2026-11-14 with the owner's OK).
 
 ## Now (owner, 2026-11-14): strengthen the paper, then write it. One paper, Phase 1 leads.
 
-1. **More known books** (running, above): the accuracy number on 727 books with a range, not 200.
-2. **A known-answer test in the Book of Mormon's own genre:** code ready (`python -m eval.library_bom genre`); run it after the chain above has rewritten `data/sweep/coverage_episodes_v2.json` (it needs the new `book_genre` field), then put both results into `paper/draft/v3/sec14.md` (replace the provisional 200-book numbers and the CHECK), reassemble (`python scripts/assemble_paper.py`), and update the blog page's table and note.
+1. **More known books:** done (727).
+2. **A known-answer test in the Book of Mormon's own genre:** done (`data/sweep/bom_genre_check.json`).
 3. **Clean the names in the top lists:** done 2026-11-14 (`top_people` in `data/sweep/bom_ranking.json`).
 4. **Write the paper** (BOM-36): first full draft done 2026-11-14 (`paper/paper.md`, assembled from `paper/draft/v3/sec00-sec14.md` and `appendix.md` by `python scripts/assemble_paper.py`; AI-simulated fact-check in `paper/review/v3-factcheck.md`, its corrections applied). Left: the 727-book numbers, the 8 CHECK marks, the "could not verify" list at the end of the fact-check, the appendices (still the 2026-11-10 text), the owner's read.
 
