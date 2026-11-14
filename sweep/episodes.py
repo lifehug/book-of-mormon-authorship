@@ -13,11 +13,15 @@ Two galleries: every swept author, and ``possible`` (authors not known to be dea
 ``sweep.people.year``, from ``data/sweep/people.parquet``; the true author always stays). Groups
 (identity, genre) are those of ``python -m sweep.coverage``.
 
-Writes names and numbers only: ``data/sweep/coverage_episodes<tag>.json``.
+``--profile-episodes N`` cuts every profile to its middle N consecutive episodes (about 1,024
+tokens each), an equal profile size for every author; the whole-unit score is not meaningful
+then (it still uses the full profile) and is to be ignored.
+
+Writes names and numbers only: ``data/sweep/coverage_episodes<tag>[_N].json``.
 
 Usage::
 
-    python -m sweep.episodes [--tag _v2]
+    python -m sweep.episodes [--tag _v2] [--profile-episodes 3]
 """
 
 from __future__ import annotations
@@ -81,13 +85,21 @@ def rank(score: np.ndarray, t: int, keep: np.ndarray) -> int:
     return int((score[k] > score[t]).sum()) + 1
 
 
-def run(tag: str) -> int:
+def cut(v: np.ndarray, n: int | None) -> np.ndarray:
+    """The middle ``n`` consecutive episodes of a profile (all of it when shorter or n is None)."""
+    if n is None or len(v) <= n:
+        return v
+    start = (len(v) - n) // 2
+    return v[start : start + n]
+
+
+def run(tag: str, n: int | None = None) -> int:
     cfg = load_config()
     c, e = cfg["sweep"]["coverage"], cfg["sweep"]["episodes"]
     eps, whole = load(tag)
     swept = sorted(u[len("profile:") :] for u in eps if u.startswith("profile:"))
     pos = {a: i for i, a in enumerate(swept)}
-    G, M = padded([eps[f"profile:{a}"] for a in swept])
+    G, M = padded([cut(eps[f"profile:{a}"], n) for a in swept])
     W = np.stack([whole[f"profile:{a}"] for a in swept])
     people = OUT / "people.parquet"
     possible = np.ones(len(swept), dtype=bool)
@@ -104,7 +116,7 @@ def run(tag: str) -> int:
         t = pos[a]
         qs = sorted(u for u in eps if u.startswith(f"calib_query:{a}:"))
         own, own_m, own_w = G[t].copy(), M[t].copy(), W[t].copy()
-        cp = eps[f"calib_profile:{a}"][: G.shape[1]]
+        cp = cut(eps[f"calib_profile:{a}"], n)[: G.shape[1]]
         G[t], M[t] = 0, False
         G[t, : len(cp)], M[t, : len(cp)] = cp, True
         W[t] = whole[f"calib_profile:{a}"]
@@ -132,7 +144,8 @@ def run(tag: str) -> int:
            "groups": {g: {"n": len(rs), **{m: coverage([r[m] for r in rs], c["ks"])
                                            for m in methods}} for g, rs in groups.items()},
            "records": recs}  # fmt: skip
-    out = OUT / f"coverage_episodes{tag}.json"
+    doc["profile_episodes"] = n
+    out = OUT / f"coverage_episodes{tag}{f'_{n}' if n else ''}.json"
     out.write_text(json.dumps(doc, indent=1) + "\n")
     show = [k for k in c["ks"] if k in c["show"]]
     print(f"gallery {doc['gallery']}; true author within K = {show} (%)")
@@ -147,7 +160,13 @@ def run(tag: str) -> int:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("--tag", default="", help="the encoder's suffix: _gpu (BOM-30's), _v2")
-    return run(ap.parse_args(argv).tag)
+    ap.add_argument(
+        "--profile-episodes",
+        type=int,
+        help="equal profile size: each author's middle N episodes only",
+    )
+    a = ap.parse_args(argv)
+    return run(a.tag, a.profile_episodes)
 
 
 if __name__ == "__main__":
