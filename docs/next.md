@@ -16,13 +16,19 @@ labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament)
 
 ## Running
 
-- **BOM-90 older methods (Mac, tmux `a58classic`, log `logs/a58_classic.log`, ~2.5 h from 2026-11-13):** `python -m eval.list_size classic` (resumes per author). Then `python -m eval.list_size report`. GPU half approved 2026-11-13 (owner tops up for the 590M): tmux `a58pool`, `scripts/a58_pool.sh`, log `logs/a58_chain.log`, one pod per size, 125M first; rerun the script to resume (each size's driver keeps state in `logs/pod_jobs_a58_<size>/`).
-- **Nothing on GPU.** Done 2026-11-12: Amendment 54 (later revelations, $1.57), Amendment 56 (32
-  more benchmark authors, $6.83). Balance about $31; the owner will top up if BOM-89 needs it.
+- **BOM-89 step 2 (Mac, tmux `episodes`, log `logs/sweep_episodes.log`, started 2026-11-13 17:35, about 23 h):** `python -m sweep.index episodes` (one style vector per 8-passage episode for every sweep unit; resumes from `data/corpus/sweep/episodes/part_*.npz`; rerun the same command if the session is gone). Then score by an author's closest episodes and report coverage at K by genre group, as `python -m sweep.coverage` does.
+- **Nothing on GPU; all pods terminated.** BOM-90's list-size runs finished 2026-11-13 (three sizes, about $31.60); its write-up into the blog log, outline and method record is still owed.
+
+## Sweep plan (BOM-89, issue #100; priced 2026-11-13)
+
+1. Coverage by genre (done, `data/sweep/coverage.json`): top 100 of 23,872 holds the true author 83% of the time when the profile is in the book's genre, 56.5% when it is not (the Book of Mormon's case).
+2. Per-episode fingerprints, existing encoder (running, Mac, free).
+3. Retrain the encoder: more data (the BOM-30 log shows it memorised its 7,673 authors; held-out accuracy flat from step 1,000), different-genre positives, same-genre decoys, confirmed-identity authors held out. Data prep on the Mac (free); training about 4.5 H100-hours, about $35-50. **Needs the owner's go.**
+4. Re-ranker on the top 100-500, only if still short: about $45-60. **Needs the owner's go.**
 
 ## Waiting on the owner
 
-- Nothing right now; BOM-90's runs are going (see Running). BOM-36 (the paper on outline v3) and its decisions wait behind Phase 2 unless the owner says otherwise.
+- Go-ahead for step 3's GPU spend (about $35-50). The Phase 1 blog draft (`paper/blog-phase1.html`, on the Desktop) waits for a read-through.
 
 ## Done 2026-11-12 (details in the blog's Log and the issues)
 
