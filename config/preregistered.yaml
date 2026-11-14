@@ -528,6 +528,12 @@ sweep:
   unremarkable_percentile: 95   # of leave-one-out false-lead counts
   gate_sample: 100
   gate_seed: bom47-gate
+  coverage:                     # BOM-89/91 (exploratory): shortlist coverage on the 200 known books
+    ks: [1, 10, 20, 50, 100, 200, 500, 1000, 2000]
+    show: [10, 100, 500, 1000]
+    confirmed: [verified, same_dates_some_undated]   # life dates agree between book and profile
+    same_share: 0.5             # profile blocks in the book's genre: same at or above, cross at zero
+    few_works: 2                # profiles drawn from this many works or fewer, reported apart
 
 # Amendment 57 (Part 2): a library-wide author search (docs/part2-library-search-plan.md)
 list_size:                        # Amendment 58 (BOM-90): accuracy against candidate-list length

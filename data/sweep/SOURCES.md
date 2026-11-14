@@ -7,6 +7,7 @@ only; no text.
 | --- | --- | --- |
 | `authors.parquet` | the 23,875 swept authors: works (title groups), volumes, words, profile blocks, and for the 200 calibration authors the book held out of their profile | `python -m sweep.units build` |
 | `blocks.parquet` | every block: id, author, role (`profile`, `calib_profile`, `calib_query`), volume, start (whitespace word), length | the same |
+| `coverage.json` | shortlist coverage at K on the 200 known books, each tagged by identity class, genre class and profile works (exploratory) | `python -m sweep.coverage` |
 
 Inputs: `data/timelocked_lm/training_set.parquet` (the volumes), `data/catalog/catalog.parquet`
 (authors, titles), `data/catalog/signatures_normalized/` (volume word counts),
