@@ -163,12 +163,14 @@ One library author places ahead of Joseph Smith's revelations at one of the thre
 episodes John Wroe (0.630) is ahead of the 1830-34 revelations (0.615), which are second. At the
 other two sizes a revelation sample is first, and no other library author is ahead of them at
 any size. The library's own head of the list is the same at the two larger sizes: John Wroe
-(1782-1863), then William Bayly (d. 1810), William Savery (d. 1804), John Field (d. 1723), David
-Willson (1778-1866), Elizabeth Stirredge (d. 1706), James Backhouse (1794-1869), with several
-names the catalog does not date. Read against outside biography, which this study did not
-verify, these are an English prophet who published his own revelations in the 1820s, the leader
-of a breakaway sect in Upper Canada, and Quaker ministers' journals and epistles. [CHECK:
-biographical descriptions are from general knowledge, not from the corpus.]
+(1782-1863), then William Bayly, William Savery (d. 1804), John Field (d. 1723), David Willson
+(1778-1866), Elizabeth Stirredge (d. 1706), James Backhouse (1794-1869), with several names the
+catalog does not date. Checked against outside biography (an AI-simulated lookup, 2026-11-14):
+Wroe was an English prophet, founder of the Christian Israelite Church in 1822, whose visions
+were in print from 1820; Willson led the Children of Peace, who broke from the Quakers in Upper
+Canada in 1812; the others are Quaker ministers and their journals and epistles. One catalog
+entry joins two men: the Quaker William Bayly died in 1675, and the dates the catalog gives
+(1737-1810) are those of an astronomer of the same name. Both were dead by 1829.
 
 ### 14.5 The decoy check, and a second opinion
 

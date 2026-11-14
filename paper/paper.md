@@ -913,8 +913,9 @@ these" reliably, and ran what exists (BOM-96, exploratory, 2026-11-14; `eval/nob
 General Imposters (Koppel and Winter 2014) and the open-set classifier of the 2011 study. A newer
 one is LambdaG (Nini and colleagues 2024), which scores a text by how much more likely its
 sentences are under a model of the candidate's grammar than under a model of a reference
-population, after content words are masked; its authors report that it beats their baselines on
-eleven of twelve collections. We ran it from the authors' own package, with its own content
+population, after content words are masked; its authors report it first on 7 of 12
+collections and second on 4, against seven baselines (in the first version of their paper:
+better than four baselines on 11 of 12). We ran it from the authors' own package, with its own content
 masking, and beside it three ready-made style models trained on modern text (among them LUAR,
 Rivera-Soto and colleagues 2021, the design our own encoder follows), our style encoder
 (section 14) and our author models at equal doses (section 14.3).
@@ -940,8 +941,9 @@ real method and does better here than our author models, which at an equal small
 different book are weak (section 14.3); the style encoder does better than LambdaG; LUAR, whose
 design our encoder shares but which was trained on modern internet text, comes third, which
 suggests that what our encoder gains comes from its period training and not from its design; the
-other two modern-text models are weak at the strict setting. The numbers are one benchmark of 200 books, and LambdaG was run with its
-defaults.
+other two modern-text models are weak at the strict setting. The numbers are one benchmark of 200
+books, and LambdaG was run with its package's defaults (models of order 10, 30 repetitions; its
+authors use 100 and report that results settle by 30).
 
 Two things make the question harder than these figures suggest. First, the list. A threshold
 that accepts a wrong author one time in three is asked, for the Book of Mormon, about thousands
@@ -949,15 +951,17 @@ of authors at once: with the style encoder and 999 other authors on the list, at
 stranger clears the threshold that confirms 95% of true authors for every one of the 200 books.
 "Nobody here" over a library would need a false-match rate far below anything measured. Second,
 the kind of writing. The literature treats the separation of a person's habits from the habits
-of a register as open: one account holds that these methods work because authors write in
-subtly different registers (Grieve 2023), a recent survey sets that account beside the
-"idiolect" one without deciding between them and advises comparing only texts of the same kind,
-and in the 2023 shared task on verifying authors across kinds of discourse a system that scored
-0.94 on its own data scored 0.56 on the official test. A book in scriptural register by an
+of a register as open: one account holds that "stylometric methods work because authors write in
+subtly different registers" (Grieve 2023); a recent survey sets that account beside the
+"idiolect" one, says it does "not adjudicate" between them, and advises that a questioned text
+be "roughly aligned with the reference writings in topic, genre, register, mode, and time"
+(Wang 2023); and in the 2023 shared task on verifying authors across kinds of discourse (essays,
+emails, interviews, speeches) the winning system scored 0.62 where 0.5 is chance, and one
+entrant that scored 0.94 on its own split of the training data scored 0.56 on the official test
+(Stamatatos and colleagues 2023; Huang, Kong and Huang 2023). A book in scriptural register by an
 author with no other text in that register is the case these methods are least able to judge.
-(The literature in this paragraph was read in abstracts and summaries, not in full.) [CHECK:
-read Nini et al. 2024, Grieve 2023, the survey arXiv 2310.00436 and the PAN 2023 overview in the
-originals before citing figures.]
+(Checked against the papers by an AI-simulated reading, 2026-11-14; Grieve and Koppel and
+Winter from their abstracts only.)
 
 **What this means for the rest of the paper.** Every method can rank candidates. None can say
 "none of these" with a known, low error. This is why the opening statement of section 1 has two
@@ -2223,12 +2227,14 @@ One library author places ahead of Joseph Smith's revelations at one of the thre
 episodes John Wroe (0.630) is ahead of the 1830-34 revelations (0.615), which are second. At the
 other two sizes a revelation sample is first, and no other library author is ahead of them at
 any size. The library's own head of the list is the same at the two larger sizes: John Wroe
-(1782-1863), then William Bayly (d. 1810), William Savery (d. 1804), John Field (d. 1723), David
-Willson (1778-1866), Elizabeth Stirredge (d. 1706), James Backhouse (1794-1869), with several
-names the catalog does not date. Read against outside biography, which this study did not
-verify, these are an English prophet who published his own revelations in the 1820s, the leader
-of a breakaway sect in Upper Canada, and Quaker ministers' journals and epistles. [CHECK:
-biographical descriptions are from general knowledge, not from the corpus.]
+(1782-1863), then William Bayly, William Savery (d. 1804), John Field (d. 1723), David Willson
+(1778-1866), Elizabeth Stirredge (d. 1706), James Backhouse (1794-1869), with several names the
+catalog does not date. Checked against outside biography (an AI-simulated lookup, 2026-11-14):
+Wroe was an English prophet, founder of the Christian Israelite Church in 1822, whose visions
+were in print from 1820; Willson led the Children of Peace, who broke from the Quakers in Upper
+Canada in 1812; the others are Quaker ministers and their journals and epistles. One catalog
+entry joins two men: the Quaker William Bayly died in 1675, and the dates the catalog gives
+(1737-1810) are those of an astronomer of the same name. Both were dead by 1829.
 
 ### 14.5 The decoy check, and a second opinion
 
