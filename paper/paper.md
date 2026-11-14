@@ -907,6 +907,56 @@ split by passage had let each author's quirks leak into his own threshold. The p
 holds the rate it aims for. Normalisation is therefore not a better algorithm here, and it is not
 used.
 
+**Is there a tool that does this? The state of the field, and a newer method run beside ours.**
+The failure above could be ours alone, so we asked whether any published method answers "none of
+these" reliably, and ran what exists (BOM-96, exploratory, 2026-11-14; `eval/nobody.py`,
+`data/sweep/nobody.json`). The methods already tested here include the two built for the purpose,
+General Imposters (Koppel and Winter 2014) and the open-set classifier of the 2011 study. A newer
+one is LambdaG (Nini and colleagues 2024), which scores a text by how much more likely its
+sentences are under a model of the candidate's grammar than under a model of a reference
+population, after content words are masked; its authors report that it beats their baselines on
+eleven of twelve collections. We ran it from the authors' own package, with its own content
+masking, and beside it two ready-made style models trained on modern text, our style encoder
+(section 14) and our author models at equal doses (section 14.3).
+
+LambdaG needs sentences with punctuation, which the benchmark's stored word lists do not keep, so
+this comparison is on the library's known books: 200 books, each paired with its true author and
+ten other authors drawn at random (2,200 pairs), the questioned text the book's first 5,000
+words, a candidate's known text their profile, rebuilt without the book for the true author.
+Every method scores the same pairs.
+
+| Method | Area under the curve | True authors confirmed when 5% of false pairs are accepted | False pairs accepted when 95% of true authors are confirmed |
+| --- | --- | --- | --- |
+| Style encoder, period-trained (ours) | 0.955 | 88% | 33% |
+| LambdaG (2024), authors' package | 0.895 | 70% | 56% |
+| Author models, 125M, 11,264 tokens (ours) | 0.784 | 37% | 78% |
+| Author models, 125M, 3,039 tokens (ours) | 0.730 | 29% | 88% |
+| StyleDistance, modern text, off the shelf | 0.717 | 29% | 83% |
+| Content-controlled style embedding, modern text, off the shelf | 0.696 | 24% | 88% |
+
+The registered bar is 5% in the last column. Nothing passes; the best is 33%. LambdaG is a
+real method and does better here than our author models, which at an equal small dose and on a
+different book are weak (section 14.3); the style encoder does better than LambdaG; the two
+modern-text models are close to chance at the strict setting, as period English is not what they
+were trained on. The numbers are one benchmark of 200 books, and LambdaG was run with its
+defaults.
+
+Two things make the question harder than these figures suggest. First, the list. A threshold
+that accepts a wrong author one time in three is asked, for the Book of Mormon, about thousands
+of authors at once: with the style encoder and 999 other authors on the list, at least one
+stranger clears the threshold that confirms 95% of true authors for every one of the 200 books.
+"Nobody here" over a library would need a false-match rate far below anything measured. Second,
+the kind of writing. The literature treats the separation of a person's habits from the habits
+of a register as open: one account holds that these methods work because authors write in
+subtly different registers (Grieve 2023), a recent survey sets that account beside the
+"idiolect" one without deciding between them and advises comparing only texts of the same kind,
+and in the 2023 shared task on verifying authors across kinds of discourse a system that scored
+0.94 on its own data scored 0.56 on the official test. A book in scriptural register by an
+author with no other text in that register is the case these methods are least able to judge.
+(The literature in this paragraph was read in abstracts and summaries, not in full.) [CHECK:
+read Nini et al. 2024, Grieve 2023, the survey arXiv 2310.00436 and the PAN 2023 overview in the
+originals before citing figures.]
+
 **What this means for the rest of the paper.** Every method can rank candidates. None can say
 "none of these" with a known, low error. This is why the opening statement of section 1 has two
 halves. The rankings of sections 6 and 7 say whose writing is closest among those tested. They
