@@ -589,6 +589,8 @@ nobody:                           # BOM-96 (exploratory): existing verification 
   books: 200                      # known books used (all of the sweep's first 200)
   others: 10                      # false candidates per book, seeded, from the other known-book authors
   seed: bom96-nobody
+  neural: [AnnaWegmann/Style-Embedding, StyleDistance/styledistance]   # off-the-shelf modern-text style models
+  neural_words: 100               # each text is embedded in 100-word pieces, averaged
 
 closeup:                          # semantic.closeup (exploratory; examples for the reader, no new test)
   show: 5                         # closest pairs, and weakest-matched passages or events, shown per side

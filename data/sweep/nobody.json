@@ -1,0 +1,38 @@
+{
+ "config_sha256": "cf76ef3e0d4079d3677497f10cb8cffabf0b6f40ed5a36630d4dcfd1f2f2db7b",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "c3cd6db9c478c08bc098fc27ec7af320a44ccca3",
+ "exploratory": true,
+ "pairs": 2200,
+ "methods": {
+  "LambdaG (Nini et al. 2024), authors' package": {
+   "true_pairs": 200,
+   "false_pairs": 2000,
+   "auc": 0.895,
+   "true_confirmed_at_5pct_false": 0.7,
+   "false_accepted_at_95pct_true": 0.562
+  },
+  "Second style encoder, closest episode (ours)": {
+   "true_pairs": 200,
+   "false_pairs": 2000,
+   "auc": 0.955,
+   "true_confirmed_at_5pct_false": 0.885,
+   "false_accepted_at_95pct_true": 0.332
+  },
+  "Author models, 125M, 11,264 tokens (ours)": {
+   "true_pairs": 197,
+   "false_pairs": 1976,
+   "auc": 0.784,
+   "true_confirmed_at_5pct_false": 0.371,
+   "false_accepted_at_95pct_true": 0.775
+  },
+  "Author models, 125M, 3,039 tokens, median of 3 (ours)": {
+   "true_pairs": 200,
+   "false_pairs": 2000,
+   "auc": 0.73,
+   "true_confirmed_at_5pct_false": 0.29,
+   "false_accepted_at_95pct_true": 0.875
+  }
+ }
+}

@@ -24,6 +24,7 @@ Usage::
 
     python -m eval.nobody prepare
     KMP_DUPLICATE_LIB_OK=TRUE RETICULATE_PYTHON=.venv/bin/python Rscript scripts/lambdag.R
+    python -m eval.nobody neural      # the off-the-shelf modern style models (downloads them)
     python -m eval.nobody report      # -> data/sweep/nobody.json
 """
 
@@ -101,6 +102,36 @@ def prepare() -> int:
     return 0
 
 
+def neural() -> int:
+    """Ready-made style models trained on modern text (``nobody.neural``, sentence-transformers
+    format), as verifiers: each text is cut into ``nobody.neural_words``-word pieces, the pieces'
+    vectors averaged, and a pair scored by cosine. They have read modern text, so they are for
+    this known-answer comparison only, never for the Book of Mormon."""
+    from sentence_transformers import SentenceTransformer
+
+    cfg = load_config()
+    nb = cfg["nobody"]
+    rows = [json.loads(ln) for ln in (WORK / "texts.jsonl").read_text().splitlines()]
+    for name in nb["neural"]:
+        out = WORK / f"neural_{name.replace('/', '__')}.npz"
+        if out.exists():
+            continue
+        model = SentenceTransformer(name)
+        vecs = []
+        for k, r in enumerate(rows, 1):
+            w = r["text"].split()
+            parts = [" ".join(w[i : i + nb["neural_words"]])
+                     for i in range(0, len(w), nb["neural_words"])]  # fmt: skip
+            v = model.encode(parts, batch_size=64, normalize_embeddings=True,
+                             show_progress_bar=False).mean(axis=0)  # fmt: skip
+            vecs.append(v / np.linalg.norm(v))
+            if k % 100 == 0:
+                print(f"  {name}: {k}/{len(rows)}", flush=True)
+        np.savez(out, ids=np.array([r["id"] for r in rows]), V=np.stack(vecs))
+        print(f"{name} -> {out}", flush=True)
+    return 0
+
+
 def verifier(pos: np.ndarray, neg: np.ndarray) -> dict:
     """AUC and the two operating points; higher score = more likely the same author."""
     both = np.concatenate([pos, neg])
@@ -160,6 +191,13 @@ def report() -> int:
             v = np.array([g[0] for g in got])
             t = np.array([g[1] for g in got])
             doc["methods"][label] = verifier(v[t], v[~t])
+    for f in sorted(WORK.glob("neural_*.npz")):
+        z = np.load(f)
+        vec = dict(zip(z["ids"].tolist(), z["V"], strict=True))
+        v = np.array([float(vec[f"q:{p['book']}"] @ vec[f"k:{p['candidate']}"]) for p in pairs])
+        t = np.array([p["target"] for p in pairs])
+        name = f.stem.removeprefix("neural_").replace("__", "/")
+        doc["methods"][f"{name} (modern-text style model, off the shelf)"] = verifier(v[t], v[~t])
     OUT.write_text(json.dumps(doc, indent=1) + "\n")
     for m, r in doc["methods"].items():
         print(f"{m:55s} AUC {r['auc']:.3f}  true confirmed at 5% false "
@@ -171,8 +209,8 @@ def report() -> int:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["prepare", "report"])
-    return {"prepare": prepare, "report": report}[ap.parse_args(argv).cmd]()
+    ap.add_argument("cmd", choices=["prepare", "neural", "report"])
+    return {"prepare": prepare, "neural": neural, "report": report}[ap.parse_args(argv).cmd]()
 
 
 if __name__ == "__main__":
