@@ -10,6 +10,8 @@ only; no text.
 | `coverage.json` | shortlist coverage at K on the 200 known books, each tagged by identity class, genre class and profile works (exploratory) | `python -m sweep.coverage` |
 | `loc_cache.jsonl` | Library of Congress name authority replies (labels only) for authors without catalog life dates and the 500-author check sample; source `https://id.loc.gov/authorities/names/suggest2` (public data) | `python -m sweep.people lookup` |
 | `people.parquet`, `people.json` | each swept author's life dates, their source and status in 1829; summary and the lookup's known-answer check (exploratory) | `python -m sweep.people build` |
+| `ext_authors.parquet`, `ext_blocks.parquet` | BOM-89 (exploratory): 527 further known books (every other eligible held-out author, one seeded book each), blocks as the 200's | `python -m sweep.units ext` |
+| `coverage_episodes<tag>[_N].json`, `bom_ranking.json`, `bom_second_opinion_<size>.json`, `pool_<name>_<size>.npz`, `pool_report_<size>.json`, `pool_fusion_pilot.json` | BOM-89/94/95 results (exploratory); see `eval/README.md` for each command | as named there |
 
 Inputs: `data/timelocked_lm/training_set.parquet` (the volumes), `data/catalog/catalog.parquet`
 (authors, titles), `data/catalog/signatures_normalized/` (volume word counts),

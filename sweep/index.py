@@ -20,6 +20,7 @@ Usage::
     python -m sweep.index mfw
     python -m sweep.index embed [--model <style.pt> --tag _v2]
     python -m sweep.index episodes [--model <style.pt> --tag _v2]   # BOM-89 (exploratory)
+    python -m sweep.index tokens --ext; python -m sweep.index episodes --ext --model ... --tag _v2
 """
 
 from __future__ import annotations
@@ -44,6 +45,17 @@ from sweep.units import OUT, block_text
 WORK = Path("data/corpus/sweep")
 TOKENS = WORK / "tokens"
 SPANS = Path("data/kjv_mask/sweep/spans.jsonl")
+BLOCKS = "blocks.parquet"
+UNITS = "units.parquet"
+
+
+def use_ext() -> None:
+    """Point the module at BOM-89's further known books (``sweep.units ext``): their blocks,
+    spans and a units index of their own; the registered index is not touched."""
+    global SPANS, BLOCKS, UNITS
+    SPANS = Path("data/kjv_mask/sweep_ext/spans.jsonl")
+    BLOCKS, UNITS = "ext_blocks.parquet", "units_ext.parquet"
+
 
 _spans: dict[str, list] = {}
 _cat: dict[str, dict] = {}
@@ -64,10 +76,15 @@ def _init() -> None:
     for ln in SPANS.read_text().splitlines():
         r = json.loads(ln)
         _spans[r["id"]] = r["spans"]
-    need = set(pq.read_table(OUT / "blocks.parquet", columns=["work_id"]).column(0).to_pylist())
+    need = set(pq.read_table(OUT / BLOCKS, columns=["work_id"]).column(0).to_pylist())
     _cat = {r["work_id"]: r for r in pq.read_table(
         "data/catalog/catalog.parquet", columns=["work_id", "source", "text_path"]
     ).to_pylist() if r["work_id"] in need}  # fmt: skip
+
+
+def _init_ext() -> None:
+    use_ext()
+    _init()
 
 
 def _author(blocks: list[dict]) -> list[tuple[str, int]]:
@@ -94,12 +111,13 @@ def tokens(workers: int) -> int:
     if not SPANS.exists():
         raise SystemExit(f"{SPANS} missing: run python -m kjv_mask.run sweep first")
     by: dict[str, list[dict]] = defaultdict(list)
-    for b in pq.read_table(OUT / "blocks.parquet").to_pylist():
+    for b in pq.read_table(OUT / BLOCKS).to_pylist():
         by[b["author"]].append(b)
-    index = WORK / "units.parquet"
+    index = WORK / UNITS
     done = {}
     jobs = [bs for _, bs in sorted(by.items())]
-    with Pool(workers, initializer=_init) as pool:
+    ext = UNITS != "units.parquet"
+    with Pool(workers, initializer=_init_ext if ext else _init) as pool:
         for k, res in enumerate(pool.imap_unordered(_author, jobs, chunksize=8), 1):
             done.update(res)
             if k % 1000 == 0:
@@ -111,7 +129,7 @@ def tokens(workers: int) -> int:
 
 
 def _units() -> list[dict]:
-    return pq.read_table(WORK / "units.parquet").to_pylist()
+    return pq.read_table(WORK / UNITS).to_pylist()
 
 
 def _read(unit: str) -> list[str]:
@@ -214,7 +232,7 @@ def episodes(model: Path | None = None, tag: str = "") -> int:
         if torch.backends.mps.is_available()
         else "cpu"
     )
-    parts = WORK / f"episodes{tag}"
+    parts = WORK / f"episodes{tag}{'_ext' if UNITS != 'units.parquet' else ''}"
     parts.mkdir(parents=True, exist_ok=True)
     done: set[str] = set()
     for f in sorted(parts.glob("part_*.npz")):
@@ -246,7 +264,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--model", type=Path, help="embed, episodes: another encoder's style.pt")
     ap.add_argument("--tag", default="", help="suffix of that encoder's outputs, e.g. _v2")
+    ap.add_argument(
+        "--ext",
+        action="store_true",
+        help="tokens, episodes: BOM-89's further known books (sweep.units ext)",
+    )
     a = ap.parse_args(argv)
+    if a.ext:
+        use_ext()
     if a.cmd in ("embed", "episodes"):
         return {"embed": embed, "episodes": episodes}[a.cmd](a.model, a.tag)
     return {"tokens": lambda: tokens(a.workers), "mfw": mfw, "embed": embed, "episodes": episodes}[

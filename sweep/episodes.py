@@ -41,9 +41,12 @@ from sweep.units import OUT
 
 
 def load(tag: str) -> tuple[dict[str, np.ndarray], dict[str, np.ndarray]]:
-    """unit -> its episode vectors, unit -> its whole-unit vector."""
+    """unit -> its episode vectors, unit -> its whole-unit vector (the further known books'
+    units too, when ``sweep.index episodes --ext`` has been run for the encoder)."""
     eps, whole = {}, {}
-    for f in sorted((WORK / f"episodes{tag}").glob("part_*.npz")):
+    parts = [*(WORK / f"episodes{tag}").glob("part_*.npz"),
+             *(WORK / f"episodes{tag}_ext").glob("part_*.npz")]  # fmt: skip
+    for f in sorted(parts):
         z = np.load(f)
         cuts = np.cumsum(z["counts"])[:-1]
         for u, v, w in zip(z["units"].tolist(), np.split(z["V"], cuts), z["W"], strict=True):
@@ -107,7 +110,13 @@ def run(tag: str, n: int | None = None) -> int:
         st = dict(zip(*pq.read_table(people, columns=["author", "status"]).to_pydict().values(),
                       strict=True))  # fmt: skip
         possible = np.array([st.get(a) not in ("dead", "too_young") for a in swept])
-    base = {r["author"]: r for r in json.loads((OUT / "coverage.json").read_text())["records"]}
+    from sweep.coverage import tags
+
+    base = {a: {**r, "set": "first"} for a, r in tags(cfg).items()}
+    old = {r["author"]: r.get("style")
+           for r in json.loads((OUT / "coverage.json").read_text())["records"]}  # fmt: skip
+    if (OUT / "ext_blocks.parquet").exists():
+        base.update({a: {**r, "set": "further"} for a, r in tags(cfg, ext=True).items()})
     every = np.ones(len(swept), dtype=bool)
     recs = []
     for k, (a, b) in enumerate(sorted(base.items()), 1):
@@ -123,8 +132,9 @@ def run(tag: str, n: int | None = None) -> int:
         scores = {"whole": (W @ np.stack([whole[u] for u in qs]).T).mean(axis=1)}
         tk = topk_scores(np.concatenate([eps[u] for u in qs]), G, M, e["top"])
         scores.update({f"top{k_}": v for k_, v in tk.items()})
-        rec = {x: b[x] for x in ("author", "book", "identity", "genre", "profile_works")}
-        rec["old_style"] = b["style"]
+        rec = {x: b[x] for x in ("author", "book", "identity", "genre", "book_genre",
+                                 "profile_works", "set")}  # fmt: skip
+        rec["old_style"] = old.get(a)
         for name, s in scores.items():
             rec[name] = rank(s, t, every)
             rec[f"{name}_possible"] = rank(s, t, possible)
@@ -132,13 +142,18 @@ def run(tag: str, n: int | None = None) -> int:
         G[t], M[t], W[t] = own, own_m, own_w
         if k % 20 == 0:
             print(f"  {k}/{len(base)}", flush=True)
-    methods = [m for m in recs[0] if m not in ("author", "book", "identity", "genre",
-                                               "profile_works")]  # fmt: skip
+    meta = ("author", "book", "identity", "genre", "set", "book_genre", "profile_works",
+            "old_style")  # fmt: skip
+    methods = [m for m in recs[0] if m not in meta]
     conf = [r for r in recs if r["identity"] in c["confirmed"]]
     groups = {"all": recs, "confirmed": conf,
               **{f"genre_{g}": [r for r in recs if r["genre"] == g]
                  for g in ("same", "mixed", "cross")},
-              "confirmed_genre_cross": [r for r in conf if r["genre"] == "cross"]}  # fmt: skip
+              "confirmed_genre_cross": [r for r in conf if r["genre"] == "cross"],
+              **{f"set_{x}": [r for r in recs if r["set"] == x] for x in ("first", "further")},
+              **{f"book_genre_{g}": [r for r in recs if r["book_genre"] == g]
+                 for g in sorted({r["book_genre"] for r in recs})}}  # fmt: skip
+    groups = {g: rs for g, rs in groups.items() if rs}
     doc = {**stamp(), "exploratory": True, "encoder": tag or "bom30", "ks": c["ks"],
            "gallery": {"all": int(every.sum()), "possible": int(possible.sum())},
            "groups": {g: {"n": len(rs), **{m: coverage([r[m] for r in rs], c["ks"])

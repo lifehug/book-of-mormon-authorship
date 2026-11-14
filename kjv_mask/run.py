@@ -39,6 +39,7 @@ Usage::
     python -m kjv_mask.run controls
     python -m kjv_mask.run controls --missing-only   # mask only texts that have no spans yet
     python -m kjv_mask.run sweep      # BOM-39's author blocks (sweep.units first)
+    python -m kjv_mask.run sweep_ext  # BOM-89's further known books (sweep.units ext first)
     python -m kjv_mask.run known_answer              # BOM-61's known-answer texts
     python -m kjv_mask.run italics                   # BOM-62's independent translations
     python -m kjv_mask.run js_time                   # BOM-73 (Joseph Smith 1833-44, comparisons)
@@ -172,12 +173,14 @@ def _docs(group: str) -> list[dict]:
             text = norm_path(cat[w]).read_text(encoding="utf-8", errors="replace")
             docs += [_in_memory(f"{w}#{a}", text[a:b]) for a, b in v["ranges"]]
         return docs
-    if group == "sweep":
-        # BOM-39's profile blocks and calibration chunks, each its own text (Amendment 28)
+    if group in ("sweep", "sweep_ext"):
+        # BOM-39's profile blocks and calibration chunks, each its own text (Amendment 28);
+        # sweep_ext: the further known books of BOM-89 (sweep.units ext)
         from sweep.units import OUT as SWEEP
         from sweep.units import block_text
 
-        blocks = pq.read_table(SWEEP / "blocks.parquet").to_pylist()
+        name = "blocks.parquet" if group == "sweep" else "ext_blocks.parquet"
+        blocks = pq.read_table(SWEEP / name).to_pylist()
         need = {b["work_id"] for b in blocks}
         cat = {
             r["work_id"]: r

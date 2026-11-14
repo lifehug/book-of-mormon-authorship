@@ -88,13 +88,13 @@ def table(recs: list[dict], ks: list[int]) -> dict:
                             for s in SIGNALS if recs and s in recs[0]}}  # fmt: skip
 
 
-def run() -> int:
-    cfg = load_config()
+def tags(cfg: dict, ext: bool = False) -> dict[str, dict]:
+    """Known-book author -> book, identity class, genre class and profile works, from the
+    catalog; ``ext`` for BOM-89's further known books (``sweep.units ext``)."""
     c = cfg["sweep"]["coverage"]
-    ks = c["ks"]
     cat = {r["work_id"]: r["author"]
            for r in pq.read_table(CATALOG, columns=["work_id", "author"]).to_pylist()}  # fmt: skip
-    blocks = pq.read_table(OUT / "blocks.parquet").to_pylist()
+    blocks = pq.read_table(OUT / ("ext_blocks.parquet" if ext else "blocks.parquet")).to_pylist()
     need = {b["work_id"] for b in blocks if b["role"] != "profile"}
     genre = {r["work_id"]: primary(r["genre"])
              for r in pq.read_table(GENRE, columns=["work_id", "genre"]).to_pylist()
@@ -106,22 +106,35 @@ def run() -> int:
             q[b["author"]].append(b["work_id"])
         elif b["role"] == "calib_profile":
             p[b["author"]].append(b["work_id"])
+    names = pq.read_table(OUT / ("ext_authors.parquet" if ext else "authors.parquet")).to_pylist()
+    out = {}
+    for row in names:
+        a = row["author"]
+        if not row["calibration_book"]:
+            continue
+        qg = Counter(genre.get(w, "uncertain") for w in q[a]).most_common(1)[0][0]
+        gc, share = genre_class(qg, [genre.get(w, "uncertain") for w in p[a]], c["same_share"])
+        out[a] = {"author": a, "book": row["calibration_book"],
+                  "identity": identity([life(cat[w]) for w in sorted(set(q[a]))],
+                                       [life(cat[w]) for w in sorted(set(p[a]))]),
+                  "book_genre": qg, "genre": gc,
+                  "profile_share_in_genre": None if np.isnan(share) else round(share, 3),
+                  "profile_works": len(set(p[a]))}  # fmt: skip
+    return out
+
+
+def run() -> int:
+    cfg = load_config()
+    c = cfg["sweep"]["coverage"]
+    ks = c["ks"]
     ranks = {r["author"]: r for r in json.loads((OUT / "calibration.json").read_text())["records"]}
     older = OUT / "older_methods.json"
     if older.exists():
         for r in json.loads(older.read_text())["records"]:
             ranks[r["author"]].update(r)
-    recs = []
-    for a, r in sorted(ranks.items()):
-        qg = Counter(genre.get(w, "uncertain") for w in q[a]).most_common(1)[0][0]
-        gc, share = genre_class(qg, [genre.get(w, "uncertain") for w in p[a]], c["same_share"])
-        recs.append({"author": a, "book": r["book"],
-                     "identity": identity([life(cat[w]) for w in sorted(set(q[a]))],
-                                          [life(cat[w]) for w in sorted(set(p[a]))]),
-                     "book_genre": qg, "genre": gc,
-                     "profile_share_in_genre": None if np.isnan(share) else round(share, 3),
-                     "profile_works": len(set(p[a])),
-                     **{s: r[k] for s, k in SIGNALS.items() if k in r}})  # fmt: skip
+    tg = tags(cfg)
+    recs = [{**tg[a], **{s: r[k] for s, k in SIGNALS.items() if k in r}}
+            for a, r in sorted(ranks.items())]  # fmt: skip
     conf = [r for r in recs if r["identity"] in c["confirmed"]]
     groups = {"all": recs, "confirmed": conf}
     for g in ("same", "mixed", "cross", "unknown"):

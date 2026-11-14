@@ -21,6 +21,7 @@ block's text is whitespace word ``start`` to ``start + words`` of the volume's n
 Usage::
 
     python -m sweep.units build
+    python -m sweep.units ext       # BOM-89: further known books -> ext_authors, ext_blocks
 """
 
 from __future__ import annotations
@@ -111,8 +112,8 @@ def chunks(vols: list[tuple[str, int]], size: int, most: int,
     return sorted(rng.sample(every, most)) if len(every) > most else every
 
 
-def calibration(swept: dict, cfg: dict) -> dict[str, str]:
-    """Calibration author -> the book (work key) held out of their profile."""
+def eligible_books(swept: dict, cfg: dict) -> dict[str, list[str]]:
+    """Style-held-out swept author -> the books that could be held out of their profile."""
     s = cfg["sweep"]
     style = pq.read_table(STYLE_AUTHORS).to_pylist()
     held = {r["author"] for r in style if r["split"] == "heldout"}
@@ -125,6 +126,13 @@ def calibration(swept: dict, cfg: dict) -> dict[str, str]:
                  and total - sum(n for _, n in vols) >= s["min_words"]]  # fmt: skip
         if books:
             eligible[a] = books
+    return eligible
+
+
+def calibration(swept: dict, cfg: dict) -> dict[str, str]:
+    """Calibration author -> the book (work key) held out of their profile."""
+    s = cfg["sweep"]
+    eligible = eligible_books(swept, cfg)
     rng = random.Random(derive_seed(s["calibration_seed"], cfg))
     pick = rng.sample(sorted(eligible), min(s["calibration_books"], len(eligible)))
     return {a: rng.choice(eligible[a]) for a in sorted(pick)}
@@ -174,11 +182,44 @@ def build() -> int:
     return 0
 
 
+def ext() -> int:
+    """BOM-89 (exploratory): every further eligible held-out author as a known book, built as
+    the 200 are (one seeded book each, the profile from the other works, up to
+    ``sweep.max_query_chunks`` chunks); the registered files are not touched."""
+    cfg = load_config()
+    s = cfg["sweep"]
+    swept = authors(cfg)
+    used = {a["author"] for a in pq.read_table(OUT / "authors.parquet").to_pylist()
+            if a["calibration_book"]}  # fmt: skip
+    eligible = {a: b for a, b in eligible_books(swept, cfg).items() if a not in used}
+    size, n = s["block_words"], s["max_blocks"]
+    rows, auth = [], []
+    for a in sorted(eligible):
+        rng = random.Random(derive_seed(f"{s['ext_seed']}:{a}", cfg))
+        book = rng.choice(eligible[a])
+        ws = swept[a]
+        others = {k: vols for k, vols in ws.items() if k != book}
+        for i, (v, st) in enumerate(sample(others, n, size, rng)):
+            rows.append({"block_id": f"calib_profile:{a}:{i}", "author": a, "words": size,
+                         "role": "calib_profile", "work_id": v, "start": st})  # fmt: skip
+        q = chunks(ws[book], s["query_chunk_words"], s["max_query_chunks"], rng)
+        for i, (v, st) in enumerate(q):
+            rows.append({"block_id": f"calib_query:{a}:{i}", "author": a, "role": "calib_query",
+                         "work_id": v, "start": st, "words": s["query_chunk_words"]})  # fmt: skip
+        auth.append({"author": a, "calibration_book": book})
+    meta = {b"config_sha256": sha256_of_config().encode()}
+    for name, table in (("ext_authors", auth), ("ext_blocks", rows)):
+        pq.write_table(pa.Table.from_pylist(table).replace_schema_metadata(meta),
+                       OUT / f"{name}.parquet")  # fmt: skip
+    words = sum(r["words"] for r in rows)
+    print(f"{len(auth)} further known books; {len(rows):,} blocks, {words:,} words -> {OUT}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["build"])
-    ap.parse_args(argv)
-    return build()
+    ap.add_argument("cmd", choices=["build", "ext"])
+    return {"build": build, "ext": ext}[ap.parse_args(argv).cmd]()
 
 
 if __name__ == "__main__":

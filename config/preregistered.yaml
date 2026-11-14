@@ -539,6 +539,7 @@ sweep:
   unremarkable_percentile: 95   # of leave-one-out false-lead counts
   gate_sample: 100
   gate_seed: bom47-gate
+  ext_seed: bom89-ext           # BOM-89 (exploratory): the further known books, one seeded book per eligible author
   coverage:                     # BOM-89/91 (exploratory): shortlist coverage on the 200 known books
     ks: [1, 10, 20, 50, 100, 200, 500, 1000, 2000]
     show: [10, 100, 500, 1000]
