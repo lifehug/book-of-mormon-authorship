@@ -16,10 +16,7 @@ labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament)
 
 ## Running
 
-- **BOM-89 steps 2 and 3 (rented H100, pod `bom89-style-v2`; Mac driver in tmux `stylev2`, log `logs/style_pod_v2.log`, state `logs/style_pod_v2/state.json`; started 2026-11-13 evening; owner approved, cap $55, expected $25-35, about 8 h):** `python scripts/style_pod.py --issue 100 --cap 55 --size v2`. Uploads (about 5 GB, throttled to 2 MB/s), then on the pod `scripts/style_v2_job.sh`: per-episode sweep vectors with the BOM-30 encoder, `style_embed.v2 train` (20,000 steps), the same vectors with the new encoder; everything comes home checked and the pod is terminated. **If the driver is gone, rerun the same command** (it resumes from its state). Events are posted on issue #100.
-- **Then (Mac, minutes):** score coverage at K by genre group for (a) the old encoder per episode, (b) the new encoder whole-profile, (c) the new encoder per episode, beside `data/sweep/coverage.json`. The scoring module (`sweep/episodes.py`) is not written yet.
-- The Mac's own step 2 run was stopped at 1,000 units when the owner chose the GPU; its parts in `data/corpus/sweep/episodes/` are kept and unused.
-
+- **BOM-89 steps 2 and 3: done 2026-11-14 ($25.10).** Stopping rule applied: second encoder, closest-episode score, possible gallery; the top 1,000 holds the true author for 90.0% of known books, 82.3% of cross-genre books (first encoder 90.0 and 79.0). Sweep work has stopped. Details on issue #100.
 - **BOM-94 step 3 (rented H100, pod `bom-bom94-pilot`; Mac driver tmux `bom94`, log `logs/bom94_pilot.out`, state `logs/pod_jobs_bom94_pilot/`; started 2026-11-13 night; cap $30, estimate about $18):** `python scripts/pod_jobs.py --name bom94_pilot --issue 104 --files logs/bom94_files.txt --extra data/corpus/timelocked_lm/runs/pilot/model.pt --jobs 'python -m eval.library_pool run pilot' --fetch data/sweep/pool_pilot.npz --cap 30` (rerun to resume). About 4,000 equal-dose 125M models (1,000 authors: three small slices and one large) scored on the 200 known books' 373 test chunks. **Price check:** the pod prints seconds per model every 100 models (`ssh podjobsbom94pilot tail /workspace/jobs.out`); the estimate assumes about 4 s; above about 8 s, stop and tell the owner. **Then:** write `eval.library_pool report` (accuracy and top-N by list size to 1,000, raw and scaled, small against large dose, by genre group; sweep-chosen lists inside the pool).
 - **BOM-91 life dates: done 2026-11-13 night.** 6,016 alive in 1829, 5,584 dead or too young, 12,275 unknown (`data/sweep/people.parquet`); the lookup rule agrees with the catalog on 212 of 219 known answers. Possible gallery: 18,288.
 
@@ -37,9 +34,9 @@ Audit findings behind this (2026-11-13):
 
 | # | Step | Issue | Cost | State |
 | --- | --- | --- | --- | --- |
-| 1 | Better sweep (new encoder, per-episode vectors) and the alive list (life dates) | BOM-89, BOM-91 | about $30 | running 2026-11-13 night |
+| 1 | Better sweep (new encoder, per-episode vectors) and the alive list (life dates) | BOM-89, BOM-91 | $25.10 | **done 2026-11-14**: 90% coverage at 1,000 (82% cross genre); 6,016 alive, 18,288 possible |
 | 2 | Freeze the whole procedure in the config in one commit before the Book of Mormon is touched: gallery (alive, real people), shortlist size, model size, equal dose, passages, raw and scaled scores, decoys, what is reported | BOM-93 | free | to do |
-| 3 | Validate on known books: one shared pool of about 1,000 equal-dose models; accuracy and top-N at list sizes up to 1,000; with the sweep's coverage this gives X | BOM-94 | about $35-70 | to do |
+| 3 | Validate on known books: one shared pool of about 1,000 equal-dose models; accuracy and top-N at list sizes up to 1,000; with the sweep's coverage this gives X | BOM-94 | about $17 | running (see Running) |
 | 4 | The Book of Mormon: shortlist of 1,000 + Phase 1 candidates + dead-author decoys | BOM-95 | about $35-70 | to do |
 | 5 | Write up: the top 20, X, the caveats | BOM-95 | free | to do |
 

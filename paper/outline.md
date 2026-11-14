@@ -174,9 +174,13 @@ Phase 1 candidates ranked beside the library's top; not "one of these wrote it".
 algorithm by list size, 2-55, three sizes (BOM-90: 86% from 55 at 125M and 297M, 82% at 590M;
 bigger models do not raise the list size). Measured: the sweep keeps the true author in the top
 100 of 23,872 for 83% of books when the author's other writing is the same genre, 57% when it is
-not (the Book of Mormon's case); 76% in the top 1,000. **\*TBD, running: a second style encoder
-and per-episode vectors (BOM-89); life dates for the alive list (BOM-91: 5,230 alive from catalog
-dates, 13,973 unknown, Library of Congress lookup running). \*TBD: the procedure frozen in one
+not (the Book of Mormon's case); 76% in the top 1,000. Sweep, final (BOM-89): a second style encoder (more text, one-genre batches, positives from
+another genre) scored on each author's closest episode, over the 18,288 authors not known to be
+dead or under age in 1829, keeps the true author in the top 1,000 for 90% of known books and 82%
+of cross-genre books (first encoder 90% and 79%; the gain is at short lists, 76% to 80.5% at 100).
+Life dates (BOM-91): 6,016 alive in 1829, 5,584 dead or too young, 12,275 unknown; the Library of
+Congress rule agrees with the catalog on 212 of 219 known answers. **\*TBD, running: the shared
+pool (BOM-94).** \*TBD: the procedure frozen in one
 commit (BOM-93); validation on a shared pool of about 1,000 equal-dose models (BOM-94); the Book
 of Mormon with the Phase 1 candidates and dead-author decoys in the ranking (BOM-95).** **\*TBD (Amendment 57, running): the library searched with our own models**
 (`docs/part2-library-search-plan.md`): one period model (297M) trained on all 23,875 authors'
