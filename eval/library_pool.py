@@ -72,10 +72,11 @@ def slices(n_ids: int, n: int, k: int) -> list[int]:
     return sorted({round(i * (n_ids - n) / (k - 1)) for i in range(k)})
 
 
-def models(n_ids: int, author: str, cfg: dict) -> list[tuple[str, int, int]]:
-    """(name, start, length) of an author's equal-dose models."""
+def models(n_ids: int, author: str, cfg: dict, n: int | None = None) -> list[tuple[str, int, int]]:
+    """(name, start, length) of an author's equal-dose models; ``n`` is the small dose (default
+    the revelation sample's registered training tokens)."""
     lp = cfg["library_pool"]
-    n = small_tokens()
+    n = n or small_tokens()
     out = [(f"{author}#small{i}", s, n) for i, s in enumerate(slices(n_ids, n, lp["small_slices"]))]
     big = lp["large_sequences"] * cfg["alm"]["seq"]
     if n_ids >= big:
@@ -142,9 +143,18 @@ def prepare_bom() -> int:
         if key[r["id"]]["kind"] == "bom"
     ]
     WORK.mkdir(parents=True, exist_ok=True)
+    from tokenizers import Tokenizer
+
+    from eval.library_bom import REVELATION
+    from timelocked_lm.release import TOKENIZER
+
+    # the small dose is the revelation sample itself, counted in this word form (lowercased words
+    # tokenise to slightly fewer tokens than Phase 1's cased text: 2,951 against 3,039)
+    small = len(Tokenizer.from_file(str(TOKENIZER)).encode(" ".join(train[REVELATION])).ids)
     with gzip.open(WORK / "plan_bom.json.gz", "wt") as fh:
         json.dump({"config_sha256": sha256_of_config(), "known": [], "train": train,
-                   "tests": tests, "test_tokens": None}, fh)  # fmt: skip
+                   "tests": tests, "test_tokens": None, "small_tokens": small}, fh)  # fmt: skip
+    print(f"small dose {small} tokens")
     print(f"{len(train)} units ({len(top)} library authors), {len(tests)} tests -> "
           f"{WORK / 'plan_bom.json.gz'}")  # fmt: skip
     return 0
@@ -176,13 +186,13 @@ def run(size: str, micro: int, limit: int | None, name: str = "") -> int:
     names, done, t0 = [], 0, time.time()
     for author, words in sorted(p["train"].items()):
         ids = np.array(tok.encode(" ".join(words)).ids, dtype=np.int32)
-        for name, start, n in models(len(ids), author, cfg):
-            names.append(name)
-            path = _path(work, name)
+        for model, start, n in models(len(ids), author, cfg, p.get("small_tokens")):
+            names.append(model)
+            path = _path(work, model)
             if path.exists() or (limit is not None and done >= limit):
                 continue
             base.load_state_dict(state)
-            seed = derive_seed(f"{a['train_seed']}:library:{name}", cfg)
+            seed = derive_seed(f"{a['train_seed']}:library:{model}", cfg)
             torch.manual_seed(seed)
             finetune(base, ids[start : start + n], cfg, seed, micro, dev,
                      cfg["timelocked_lm"]["finetune_lr"])  # fmt: skip
