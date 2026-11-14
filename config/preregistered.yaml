@@ -584,6 +584,14 @@ list_size:                        # Amendment 58 (BOM-90): accuracy against cand
   alpha: 0.05
   out: data/benchmark/list_size.json
 
+library_pool:                     # BOM-94 (exploratory): the author algorithm on one shared pool of library authors
+  pool_size: 1000                 # the 200 known-book authors and 800 seeded others
+  seed: bom94-pool
+  small_slices: 3                 # equal-dose slices of the 1828-29 revelation sample's tokens (Amendment 45's dose)
+  large_sequences: 11             # x alm.seq tokens, about 8,700 words: 99.7% of swept authors have it
+  test_chunks: 2                  # query chunks per known book
+  test_tokens: 1536               # the first three 512-token windows of each
+
 sweep_search:
   gi_shortlist: 100               # step 0: General Imposters on each book's 100 closest (Cosine Delta)
   gi_pool: 500                    # seeded random profiles, the candidate excluded

@@ -45,6 +45,7 @@ DESCRIPTIONS = {
     "data/private/validation": "BOM-12 hand-validation page and its 300-record sample (excerpts include Harvard text)",
     "data/corpus/advantage": "Advantage Preservation newspaper archives (BOM-41): W. W. Phelps's *Lake Light*, 1827-28",
     "data/corpus/alm": "language-model fine-tunes and their inputs: benchmark, candidates (Amendment 43 weights, encoded inputs), A44/A45",
+    "data/corpus/library_pool": "BOM-94 shared pool: 1,000 swept authors' training words and the 200 known books' test chunks (`plan.json.gz`), per-model scores",
     "data/corpus/list_size": "Amendment 58 list-size test: the 55 tested authors' blocks, 1,070 tests and imposter pools (`pool.pkl`), per-author older-method results",
     "data/corpus/blind": "the sealed Book of Mormon and decoy test set (`sealed.jsonl`) and sweep distances",
     "data/corpus/candidates": "Book of Mormon quotations found in candidate samples (Amendment 43 masking input)",
