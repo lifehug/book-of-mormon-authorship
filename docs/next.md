@@ -20,6 +20,8 @@ labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament)
 - **Then (Mac, minutes):** score coverage at K by genre group for (a) the old encoder per episode, (b) the new encoder whole-profile, (c) the new encoder per episode, beside `data/sweep/coverage.json`. The scoring module (`sweep/episodes.py`) is not written yet.
 - The Mac's own step 2 run was stopped at 1,000 units when the owner chose the GPU; its parts in `data/corpus/sweep/episodes/` are kept and unused.
 
+- **BOM-91 life dates (Mac, tmux `people`, log `logs/people_lookup.log`; started 2026-11-13 evening, about 9 h; owner approved the outside lookup):** `python -m sweep.people lookup` (Library of Congress name file for 13,077 undated authors and a 500-author known-answer check; resumes; cache committed every 30 min by tmux `peoplecommit`). Then `python -m sweep.people build`. Catalog dates alone: 5,230 alive in 1829, 4,672 dead or too young, 13,973 unknown. Details on issue #102.
+
 ## Sweep plan (BOM-89, issue #100; priced 2026-11-13)
 
 1. Coverage by genre (done, `data/sweep/coverage.json`): top 100 of 23,872 holds the true author 83% of the time when the profile is in the book's genre, 56.5% when it is not (the Book of Mormon's case).
