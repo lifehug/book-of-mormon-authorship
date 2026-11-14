@@ -22,9 +22,9 @@ labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament)
 ## Now (owner, 2026-11-14): strengthen the paper, then write it. One paper, Phase 1 leads.
 
 1. **More known books** (running, above): the accuracy number on 727 books with a range, not 200.
-2. **A known-answer test in the Book of Mormon's own genre:** among known-book authors who are themselves close to the Book of Mormon in the library ranking (and by book genre: sermon and devotional), how often the search finds the true author. From the same files as item 1; add to `sweep/episodes.py` or a small report.
-3. **Clean the names in the top lists:** one author under two name forms (William Savery), bare surnames ("huntington", "howland"), catalog suffixes ("from old catalog", "n 85352418"); merge and flag, then regenerate `data/sweep/bom_ranking.json`'s lists (ranks of candidates do not change).
-4. **Write the paper** (BOM-36) on `paper/outline.md` version 3: Phase 1 as it stands (the small candidate list), then the library search as "what happens when the same question is asked of every author" (owner: one paper, not two). The bigger author models (297M, 590M second opinion, about $25) are optional and not planned.
+2. **A known-answer test in the Book of Mormon's own genre:** code ready (`python -m eval.library_bom genre`); run it after the chain above has rewritten `data/sweep/coverage_episodes_v2.json` (it needs the new `book_genre` field), then put both results into `paper/draft/v3/sec14.md` (replace the provisional 200-book numbers and the CHECK), reassemble (`python scripts/assemble_paper.py`), and update the blog page's table and note.
+3. **Clean the names in the top lists:** done 2026-11-14 (`top_people` in `data/sweep/bom_ranking.json`).
+4. **Write the paper** (BOM-36): first full draft done 2026-11-14 (`paper/paper.md`, assembled from `paper/draft/v3/sec00-sec14.md` and `appendix.md` by `python scripts/assemble_paper.py`; AI-simulated fact-check in `paper/review/v3-factcheck.md`, its corrections applied). Left: the 727-book numbers, the 8 CHECK marks, the "could not verify" list at the end of the fact-check, the appendices (still the 2026-11-10 text), the owner's read.
 
 ## Phase 2 fixed path: done 2026-11-14 (about $50; tracker #106)
 
