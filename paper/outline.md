@@ -156,7 +156,13 @@ part of this).
 Data tables, base and candidate models (Hugging Face), code, the pre-registration and every
 amendment, the simulated reviews; how to obtain the licensed sources.
 
-## 14. What comes next (Part 2)
+## 14. The whole library (was "What comes next"; owner, 2026-11-14: one paper, not two)
+Phase 1 is the paper's main line: a small list of named candidates. This section asks what happens
+when the same question is put to every author in the library. To be rewritten from the notes below
+into: 14.1 the search and how it was tested on known books; 14.2 who could have written it (life
+dates); 14.3 the author models on long lists, and why the style encoder does the ranking; 14.4 the
+Book of Mormon against 23,872 authors and the candidates; 14.5 the decoy check; 14.6 limits.
+
 The owner's reading of the results (2026-11-12; a reading, not a framing): the closest writing is
 Joseph Smith's revelations; his ordinary prose does not stand out; much of the closeness is shared
 King James register; our period-trained models are the best tools for the job. Claude's caveats:

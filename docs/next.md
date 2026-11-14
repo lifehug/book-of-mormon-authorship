@@ -16,7 +16,15 @@ labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament)
 
 ## Running
 
-- **Nothing.** No GPU pods running. One pod is stopped, not terminated: `bx1f3cj5shymtg` (the failed first second-opinion run; holds the uploaded plan and an unusable result). **Needs the owner's OK to delete.**
+- **BOM-89 further known books (Mac; started 2026-11-14 about 06:30):** tmux `maskext` (`python -m kjv_mask.run sweep_ext`, log `logs/sweep_ext_mask.log`, about 2 h, resumes by batch) then tmux `extchain` (`scripts/sweep_ext_chain.sh`, log `logs/sweep_ext_chain.log`): tokens, per-episode vectors with the second encoder (2-3 h, resumes), coverage on all 727 known books at the full profile and at 2 and 11 episodes. If either session is gone, rerun its command; the chain waits for the masking session to end.
+- No GPU pods running. One pod is stopped, not terminated: `bx1f3cj5shymtg` (the failed first second-opinion run). **Needs the owner's OK to delete.**
+
+## Now (owner, 2026-11-14): strengthen the paper, then write it. One paper, Phase 1 leads.
+
+1. **More known books** (running, above): the accuracy number on 727 books with a range, not 200.
+2. **A known-answer test in the Book of Mormon's own genre:** among known-book authors who are themselves close to the Book of Mormon in the library ranking (and by book genre: sermon and devotional), how often the search finds the true author. From the same files as item 1; add to `sweep/episodes.py` or a small report.
+3. **Clean the names in the top lists:** one author under two name forms (William Savery), bare surnames ("huntington", "howland"), catalog suffixes ("from old catalog", "n 85352418"); merge and flag, then regenerate `data/sweep/bom_ranking.json`'s lists (ranks of candidates do not change).
+4. **Write the paper** (BOM-36) on `paper/outline.md` version 3: Phase 1 as it stands (the small candidate list), then the library search as "what happens when the same question is asked of every author" (owner: one paper, not two). The bigger author models (297M, 590M second opinion, about $25) are optional and not planned.
 
 ## Phase 2 fixed path: done 2026-11-14 (about $50; tracker #106)
 
