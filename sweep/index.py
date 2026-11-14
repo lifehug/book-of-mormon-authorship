@@ -7,6 +7,9 @@ form (``classic.features.tokenize`` of ``segment.build.original_words``). ``mfw`
 ``sweep.mfw`` most frequent words of the author profiles (mean relative frequency, in at least
 ``classic.mfw_min_doc_fraction`` of them) and writes every unit's relative frequencies over them.
 ``embed`` writes every unit's style vector (the BOM-30 encoder, the unit as one episode).
+``episodes`` (BOM-89, exploratory) writes several vectors per unit instead: the unit's passages in
+consecutive episodes of ``style_embed.episode_passages``, the length the encoder was trained on,
+so an author can be matched on their closest stretches of text and not only on their average.
 
 The tokens are licensed text in another form and stay in ``data/corpus/sweep/``, as do the
 matrices (cheap to rebuild from the tokens).
@@ -16,6 +19,7 @@ Usage::
     python -m sweep.index tokens [--workers 8]
     python -m sweep.index mfw
     python -m sweep.index embed
+    python -m sweep.index episodes      # BOM-89 (exploratory): one vector per 8-passage episode
 """
 
 from __future__ import annotations
@@ -170,12 +174,73 @@ def embed() -> int:
     return 0
 
 
+def episode_vectors(enc, ids: list[int], n: int, per: int, dev: str) -> np.ndarray:
+    """(episodes, dim) unit vectors: consecutive episodes of ``per`` passages of ``n`` tokens; a
+    short tail joins the last episode, a unit shorter than one episode is a single episode."""
+    import torch
+
+    k = max(1, len(ids) // n)
+    x = torch.tensor((ids + [0] * n)[: k * n], dtype=torch.long, device=dev).view(k, n)
+    with torch.no_grad():
+        p = torch.cat([enc.passages(x[i : i + 64]) for i in range(0, k, 64)])
+        e = max(1, k // per)
+        cuts = [*range(0, e * per, per)][:e] + [k]
+        v = torch.stack([p[a:b].mean(dim=0) for a, b in zip(cuts[:-1], cuts[1:], strict=True)])
+        z = torch.nn.functional.normalize(enc.head(v).float(), dim=-1)
+    return z.cpu().numpy().astype(np.float16)
+
+
+def episodes() -> int:
+    """Every unit's episode vectors, calibration units first; resumes from its parts."""
+    import torch
+    from tokenizers import Tokenizer
+
+    from style_embed.benchmark import MODEL
+    from style_embed.train import load_encoder
+    from timelocked_lm.release import TOKENIZER
+
+    cfg = load_config()
+    s = cfg["style_embed"]
+    dev = (
+        "cuda"
+        if torch.cuda.is_available()
+        else "mps"
+        if torch.backends.mps.is_available()
+        else "cpu"
+    )
+    parts = WORK / "episodes"
+    parts.mkdir(parents=True, exist_ok=True)
+    done: set[str] = set()
+    for f in sorted(parts.glob("part_*.npz")):
+        done.update(np.load(f)["units"].tolist())
+    names = sorted((u["unit"] for u in _units() if u["tokens"] and u["unit"] not in done),
+                   key=lambda u: (u.startswith("profile:"), u))  # fmt: skip
+    print(f"{len(names):,} units to embed ({len(done):,} done) on {dev}", flush=True)
+    enc = load_encoder(MODEL, cfg).to(dev)
+    tok = Tokenizer.from_file(str(TOKENIZER))
+    step = cfg["sweep"]["episodes"]["part_units"]
+    nxt = len(list(parts.glob("part_*.npz")))
+    for i in range(0, len(names), step):
+        batch = names[i : i + step]
+        vs = [episode_vectors(enc, tok.encode(" ".join(_read(u))).ids, s["passage_tokens"],
+                              s["episode_passages"], dev) for u in batch]  # fmt: skip
+        tmp = parts / "tmp.npz"
+        np.savez(tmp, units=np.array(batch), counts=np.array([len(v) for v in vs]),
+                 V=np.concatenate(vs))  # fmt: skip
+        tmp.replace(parts / f"part_{nxt:04d}.npz")
+        nxt += 1
+        print(f"  {i + len(batch):,}/{len(names):,}", flush=True)
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["tokens", "mfw", "embed"])
+    ap.add_argument("cmd", choices=["tokens", "mfw", "embed", "episodes"])
     ap.add_argument("--workers", type=int, default=8)
     a = ap.parse_args(argv)
-    return {"tokens": lambda: tokens(a.workers), "mfw": mfw, "embed": embed}[a.cmd]()
+    return {"tokens": lambda: tokens(a.workers), "mfw": mfw, "embed": embed, "episodes": episodes}[
+        a.cmd
+    ]()
 
 
 if __name__ == "__main__":
