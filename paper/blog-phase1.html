@@ -653,6 +653,12 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <p>Everything is public: the code, the result tables, the plan and every change to it, and the base and candidate models on Hugging Face. With the candidate models you can rerun the Book of Mormon result without training anything. Four sources I'm not allowed to republish (HathiTrust, Harvard's book collection, the Joseph Smith Papers transcripts, and one purchased book), and for each the repo gives the steps to get the same access I had.</p>
 
+<p>The models are on Hugging Face, free to download:</p>
+<ul>
+<li><a href="https://huggingface.co/etherfuse/timelocked-1830-125m">timelocked-1830-125m</a>, <a href="https://huggingface.co/etherfuse/timelocked-1830-300m">timelocked-1830-300m</a> and <a href="https://huggingface.co/etherfuse/timelocked-1830-590m">timelocked-1830-590m</a>: the three base models, trained only on text printed before 1830. From these you can rebuild every other model here for about $50 to $100 of rented computing.</li>
+<li><a href="https://huggingface.co/etherfuse/bom-authorship-candidate-models">bom-authorship-candidate-models</a>: one model per candidate sample, at all three sizes. These are the ones that produced the ranking in section 5.</li>
+</ul>
+
 <p>I did this as one person working with AI, and I want that to be plain. The reviews mentioned in the repo are simulated by an AI model and labelled that way. If you find a mistake, I'd like to know.</p>
 
 <hr>
