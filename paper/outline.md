@@ -197,8 +197,11 @@ first; his ordinary prose 19th-30th; Pratt 2nd-23rd, Rigdon 27th-65th, Cowdery 1
 30th-140th, Phelps 132nd-1,082nd, Spalding 507th-2,308th, Ethan Smith 189th-6,170th. Library top:
 the prophet John Wroe, then Quaker ministers' journals and David Willson. Dead authors are 23% of
 the library and 6-9 of each top 20: the top is a kind of writing, not a set of possible authors.
-X beside it (known books, true author within K of 18,288): first 38%, top 10 66%, top 100 80.5%
-(cross genre 29%, 52%, 68%; at the small profile size 19%, 32%, 60%). Second opinion (125M
+X beside it (727 known books, true author within K of 18,288): first 34%, top 10 59%, top 100
+76.5% (cross genre, 212 books: 17%, 38%, 56%; at the small profile size 13%, 27%, 50%). On the
+first 200 books alone the figures were higher (38 / 66 / 80.5; cross genre 29 / 52 / 68). Genre
+check: sermon and devotional books (98) 34 / 62 / 81; authors among the 1,000 closest to the Book
+of Mormon (38) 39.5 / 66 / 79. Second opinion (125M
 equal-dose models on the encoder's top 200): the 1830-34 revelations first at both doses, closest
 on 123-150 of 168 chunks; the 1828-29 sample 4th of 212. Reading: Phase 1's finding on a library
 2,000 times larger; the method cannot separate the man from the medium. **\*TBD: the Phase 2

@@ -130,7 +130,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <li><b>The book copies almost nothing.</b> Set the King James Bible aside and 0.16% of it matches earlier books. The books people name as sources don't stand out from other books of their kind.</li>
 <li><b>Of the eight people usually proposed, the closest writing is Joseph Smith's revelations.</b> Six of eight methods rank them first, including all three of my models. His letters and journals don't stand out the same way.</li>
 <li><b>Nobody can tell you the author isn't on that list, and neither can I.</b> No test I know of can reliably say "it's none of these people". I tried the published methods built for exactly that job, and my own. On books where I know the answer they all fail. Set to confirm 95% of true authors, my best model still accepts a stranger's writing one time in five on the easiest test and more than half the time on the hardest. The bar was one in twenty. The published methods do worse.</li>
-<li><b>So I checked everybody: 23,872 authors.</b> His revelations come out first in two of the three ways I ran it. In the third, one man is ahead: an English prophet who was dictating his own revelations in the same years. The rest of the top is religious testimony, and too many of those writers were already dead: 9 of the top 20 in one version, where chance says 5. On books where I know the answer, this search puts the true author in its top 10 about two times in three, and about half the time for a book unlike the author's other writing.</li>
+<li><b>So I checked everybody: 23,872 authors.</b> His revelations come out first in two of the three ways I ran it. In the third, one man is ahead: an English prophet who was dictating his own revelations in the same years. The rest of the top is religious testimony, and too many of those writers were already dead: 9 of the top 20 in one version, where chance says 5. On books where I know the answer, this search puts the true author in its top 10 about six times in ten, and about four times in ten for a book unlike the author's other writing.</li>
 <li><b>The closest writing is a voice.</b> As far as I can find, no tool that exists today can tell a person from the voice they are writing in. Mine can't.</li>
 </ol>
 </div>
@@ -548,7 +548,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <p>I wanted to end with one sentence that has a measured number in it: <i>if the author left other writing in this library, this search puts him near the top X% of the time.</i> And I wanted the eight candidates in the same ranking as everyone else, so I could see whether anybody in the library rates closer than what Phase 1 found.</p>
 
-<div class="draft">This section is exploratory. The rules were not written years in advance like Phase 1's. What I did do: I fixed the whole procedure in one commit before the Book of Mormon was run through it, and I tested every tool on books whose author I know before trusting it. One test is still running (727 known books instead of 200), so the accuracy numbers below may move a little.</div>
+<div class="draft">This section is exploratory. The rules were not written years in advance like Phase 1's. What I did do: I fixed the whole procedure in one commit before the Book of Mormon was run through it, and I tested every tool on books whose author I know before trusting it.</div>
 
 <h3>The plan, and how it broke</h3>
 
@@ -581,20 +581,23 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <p>The fingerprint model reads a writer's text in short stretches and turns each into a point, so that stretches by the same person land near each other. My first one had a flaw I only found by reading its training log: it had memorised its 7,673 training authors. Its error on them fell to almost nothing while its score on new authors never moved. I retrained it with eight times the text and with pairs chosen to be hard: the same author in two different kinds of writing. Then I scored each author by their closest stretch of text, not their average.</p>
 
-<p>Here is what it can do, on books it has never seen by authors it never trained on. The search runs over the 18,288 authors not known to have been dead.</p>
+<p>Here is what it can do, on 727 books it has never seen by authors it never trained on. The search runs over the 18,288 authors not known to have been dead.</p>
 
 <table>
 <thead><tr><th>How much of each author's text is used</th><th>True author first</th><th>In the top 10</th><th>In the top 100</th></tr></thead>
 <tbody>
-<tr><td>Everything (about 20,000 words)</td><td>38%</td><td>66%</td><td>80.5%</td></tr>
-<tr><td>A large equal amount (about 11,000 tokens)</td><td>34.5%</td><td>63%</td><td>80%</td></tr>
-<tr><td>A small equal amount (about 2,000 tokens)</td><td>21.5%</td><td>45.5%</td><td>72%</td></tr>
-<tr><td>Everything, when the book is unlike the author's other writing</td><td>29%</td><td>52%</td><td>68%</td></tr>
+<tr><td>Everything (about 20,000 words)</td><td>34%</td><td>59%</td><td>76.5%</td></tr>
+<tr><td>A large equal amount (about 11,000 tokens)</td><td>31%</td><td>57%</td><td>75%</td></tr>
+<tr><td>A small equal amount (about 2,000 tokens)</td><td>19%</td><td>42%</td><td>66%</td></tr>
+<tr><td>Everything, when the book is unlike the author's other writing (212 books)</td><td>17%</td><td>38%</td><td>56%</td></tr>
+<tr><td>Everything, when the book is a sermon or devotional work (98 books)</td><td>34%</td><td>62%</td><td>81%</td></tr>
 </tbody>
 </table>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/style_embed/v2.py">style_embed/v2.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/sweep/episodes.py">sweep/episodes.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/sweep/coverage.py">sweep/coverage.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/coverage_episodes_v2.json">data/sweep/coverage_episodes_v2.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/coverage_episodes_v2_11.json">data/sweep/coverage_episodes_v2_11.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/coverage_episodes_v2_2.json">data/sweep/coverage_episodes_v2_2.json</a></p>
 
-<p>The last row is the one that matters for the Book of Mormon, because nobody's other writing looks like it. So read everything below with that row in mind: about half the time, the true author of a book like this would be in the top 10. And about one known author in ten is never found at all, even in the top 2,000.</p>
+<p>The last row is the one that matters for the Book of Mormon, because nobody's other writing looks like it. So read everything below with that row in mind: about four times in ten, the true author of a book like this would be in the top 10, and about one time in four he wouldn't even be in the top 1,000. I first measured this on 200 books and got rosier numbers (66% and 52% in the top 10). More books brought them down, which is why I ran more.</p>
+
+<p>One more check, because the top of the Book of Mormon's list turns out to be religious writing. Does the search do worse on that kind of writer? No. On sermon and devotional books it does about as well as on everything else, and for the 38 known authors who themselves sit among the 1,000 closest to the Book of Mormon, the true author is in the top 10 for 66%. That is a small group, so I hold it loosely.</p>
 
 <h3>Who could have written it</h3>
 

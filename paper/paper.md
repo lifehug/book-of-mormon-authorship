@@ -31,8 +31,8 @@ who could not have written the book score as close, so register explains part of
 method can reliably answer "none of these".
 
 **The whole library (exploratory).** A style encoder that places the true author of a known book
-in its top ten 66% of the time among the 18,288 authors not known to have been dead (52% for a
-book unlike its author's other writing) was run on all 23,872 authors with the candidates
+in its top ten 59% of the time among the 18,288 authors not known to have been dead (38% for a
+book unlike its author's other writing; 727 known books) was run on all 23,872 authors with the candidates
 beside them, at three profile sizes. A sample of Joseph Smith's revelations is first at two
 sizes and second at the third, behind one library author, John Wroe, who also published
 revelations. The rest of the head of the list is religious testimony, and dead authors are
@@ -2022,9 +2022,6 @@ library, this search places them near the top X% of the time. And the candidates
 7 were to be ranked in the same list as everyone else, so that it could be seen whether any
 author in the library rates closer than what the small list found.
 
-*The accuracy figures in 14.1 and 14.5 rest on 200 known books; a test on 727 is running and
-these figures will be replaced by it.* [CHECK: replace with the 727-book numbers]
-
 ### 14.1 The search, and how it was tested
 
 The library's authors are the 23,872 catalogued authors of 1780-1830 with at least 10,000 words
@@ -2056,33 +2053,44 @@ A stopping rule was set before the second encoder's result was seen: take the be
 coverage of the cross-genre known books at a shortlist of 1,000 and stop work on the search
 there, whatever the number.
 
-**Known-answer test.** For each of 200 authors held out of both encoders, one book is withheld,
-the author's profile is rebuilt from their other works, and the book is searched against every
-author. Coverage is the share of books whose true author is among the K closest.
+**Known-answer test.** For each author held out of both encoders who has a book that can be
+withheld (727 authors: the 200 of the registered sweep and 527 more, built the same way), one
+book is withheld, the author's profile is rebuilt from their other works, and the book is
+searched against every author. Coverage is the share of books whose true author is among the K
+closest, over the 18,288 authors not known to have been dead or under age in 1829 (14.2). Ranges
+are 95% intervals from resampling books (`data/sweep/coverage_episodes_v2.json`).
 
-| Books | n | Encoder | first | top 10 | top 100 | top 1,000 |
-| --- | --- | --- | --- | --- | --- | --- |
-| all | 200 | first (whole profile, all 23,872 authors) | 30.0% | 58.0% | 71.5% | 86.0% |
-| all | 200 | second (closest episode) | 38.0% | 66.0% | 80.5% | 90.0% |
-| author's other writing in the book's genre | 101 | second | 47.5% | 73.3% | 84.2% | 93.1% |
-| none of it in the book's genre (cross-genre) | 62 | second | 29.0% | 51.6% | 67.7% | 82.3% |
+| Books | n | first | top 10 | top 100 | top 1,000 |
+| --- | --- | --- | --- | --- | --- |
+| all | 727 | 34% (31-38) | 59% (55-62) | 76.5% (73-80) | 89% (86-91) |
+| author's other writing in the book's genre | 403 | 47% (42-52) | 71% (67-76) | 87% (83-90) | 95% (93-97) |
+| partly in the book's genre | 112 | 20.5% | 54.5% | 79% | 94% |
+| none of it in the book's genre (cross-genre) | 212 | 17% (12-22) | 38% (31-44) | 56% (49-62) | 74% (67-80) |
+| identity confirmed by life dates | 204 | 34% | 65% | 84% | 95% |
 
-The second encoder's rows are over the 18,288 authors not known to have been dead or under age in
-1829 (14.2); `data/sweep/coverage_episodes_v2.json`. Book by book against the first encoder
-scored the same way, the second gains 13 books and loses 4 at a shortlist of 100 and gains 4 and
-loses 4 at 1,000: it is better at the head of the list and no different at depth. About one known
-author in ten is not in the top 2,000 under either encoder. The cross-genre row is the one that
-applies to the Book of Mormon.
+The cross-genre row is the one that applies to the Book of Mormon. On the first 200 books alone
+the figures were higher (first 38%, top ten 66%; cross-genre 29% and 52% on 62 books); the
+larger set is the one to quote. On those 200 books the first encoder, scored on whole profiles
+over all 23,872 authors, placed the true author first for 30% and in the top 100 for 71.5%; scored
+the same way as the second, it is 13 books behind and 4 ahead at a shortlist of 100 and level at
+1,000 (4 and 4). About one known author in nine is not in the top 1,000.
 
-Profile size matters, so the test was repeated with every profile cut to an equal size:
+Profile size matters, so the test was repeated with every profile cut to an equal size
+(`data/sweep/coverage_episodes_v2_11.json`, `coverage_episodes_v2_2.json`):
 
 | Profile | first | top 10 | top 100 | cross-genre: first | top 10 | top 100 |
 | --- | --- | --- | --- | --- | --- | --- |
-| full (about 20 episodes) | 38.0% | 66.0% | 80.5% | 29.0% | 51.6% | 67.7% |
-| 11 episodes | 34.5% | 63.0% | 80.0% | 27.4% | 53.2% | 67.7% |
-| 2 episodes (the 1828-29 revelation sample's size) | 21.5% | 45.5% | 72.0% | 19.4% | 32.3% | 59.7% |
+| full (about 20 episodes) | 34% | 59% | 76.5% | 17% | 38% | 56% |
+| 11 episodes | 31% | 57% | 75% | 16% | 39% | 55% |
+| 2 episodes (the 1828-29 revelation sample's size) | 19% | 42% | 66% | 13% | 27% | 50% |
 
-(`data/sweep/coverage_episodes_v2_11.json`, `coverage_episodes_v2_2.json`.)
+**In the Book of Mormon's own neighbourhood.** The head of the Book of Mormon's ranking (14.4) is
+religious testimony, so the search was also scored on the known books closest to that
+(`data/sweep/bom_genre_check.json`). For the 98 sermon and devotional books: first 34%, top ten
+62%, top 100 81%. For known-book authors who are themselves among the 1,000 library authors
+closest to the Book of Mormon (38 books): 39.5%, 66%, 79%; among the 500 closest (17 books): 53%,
+76.5%, 88%. The search does no worse on writers of this kind than on the library at large; the
+numbers of books are small.
 
 ### 14.2 Who could have written it
 
@@ -2193,9 +2201,9 @@ The search of every author returns the finding of section 6 on a list three thou
 longer: the writing closest to the Book of Mormon is Joseph Smith's revelations, first at two of
 three profile sizes and second to one other writer of revelations at the third, and after them
 the revelations and testimonies of other people, many of them long dead. On known books the same
-search places the true author first 38% of the time and in the top ten 66% of the time; for a
-book unlike its author's other writing, 29% and 52%; at the small profile size that admits the
-1828-29 sample, 19% and 32%.
+search places the true author first 34% of the time and in the top ten 59% of the time; for a
+book unlike its author's other writing, 17% and 38%; at the small profile size that admits the
+1828-29 sample, 13% and 27%.
 
 What it cannot do is the same as in section 6.7. It does not separate one man from a kind of
 writing, and the decoy check shows the kind of writing is a large part of what it follows. It

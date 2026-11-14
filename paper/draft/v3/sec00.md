@@ -31,8 +31,8 @@ who could not have written the book score as close, so register explains part of
 method can reliably answer "none of these".
 
 **The whole library (exploratory).** A style encoder that places the true author of a known book
-in its top ten 66% of the time among the 18,288 authors not known to have been dead (52% for a
-book unlike its author's other writing) was run on all 23,872 authors with the candidates
+in its top ten 59% of the time among the 18,288 authors not known to have been dead (38% for a
+book unlike its author's other writing; 727 known books) was run on all 23,872 authors with the candidates
 beside them, at three profile sizes. A sample of Joseph Smith's revelations is first at two
 sizes and second at the third, behind one library author, John Wroe, who also published
 revelations. The rest of the head of the list is religious testimony, and dead authors are
