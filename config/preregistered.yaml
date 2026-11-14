@@ -591,6 +591,8 @@ nobody:                           # BOM-96 (exploratory): existing verification 
   seed: bom96-nobody
   neural: [AnnaWegmann/Style-Embedding, StyleDistance/styledistance]   # off-the-shelf modern-text style models
   neural_words: 100               # each text is embedded in 100-word pieces, averaged
+  luar_pieces: 64                 # LUAR: pieces per text in one episode, evenly spread
+  luar_tokens: 128                # LUAR: tokens per piece
 
 closeup:                          # semantic.closeup (exploratory; examples for the reader, no new test)
   show: 5                         # closest pairs, and weakest-matched passages or events, shown per side

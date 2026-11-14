@@ -25,6 +25,7 @@ Usage::
     python -m eval.nobody prepare
     KMP_DUPLICATE_LIB_OK=TRUE RETICULATE_PYTHON=.venv/bin/python Rscript scripts/lambdag.R
     python -m eval.nobody neural      # the off-the-shelf modern style models (downloads them)
+    python -m eval.nobody luar --local <dir>   # LUAR from a reviewed local copy of its repository
     python -m eval.nobody report      # -> data/sweep/nobody.json
 """
 
@@ -132,6 +133,46 @@ def neural() -> int:
     return 0
 
 
+def luar(local: Path) -> int:
+    """LUAR (Rivera-Soto et al. 2021; ``rrivera1849/LUAR-MUD``, trained on Reddit) as a verifier.
+    Its model class is custom code published with the weights, so it is loaded from ``local``, a
+    folder holding a copy of the repository whose ``model.py`` and ``config.py`` were read first
+    (2026-11-14: model definition only; no file, network or process calls) and the safetensors
+    weights. Each text is one episode of ``nobody.neural_words``-word pieces (at most
+    ``nobody.luar_pieces``, evenly spread), each piece truncated to ``nobody.luar_tokens``."""
+    import torch
+    from transformers import AutoModel, AutoTokenizer
+
+    cfg = load_config()
+    nb = cfg["nobody"]
+    tok = AutoTokenizer.from_pretrained(str(local))
+    model = AutoModel.from_pretrained(str(local), trust_remote_code=True, use_safetensors=True)
+    dev = "cuda" if torch.cuda.is_available() else "cpu"  # its pooling code fails on mps
+    model = model.to(dev).eval()
+    rows = [json.loads(ln) for ln in (WORK / "texts.jsonl").read_text().splitlines()]
+    vecs = []
+    for k, r in enumerate(rows, 1):
+        w = r["text"].split()
+        parts = [" ".join(w[i : i + nb["neural_words"]])
+                 for i in range(0, len(w), nb["neural_words"])]  # fmt: skip
+        if len(parts) > nb["luar_pieces"]:
+            keep = np.linspace(0, len(parts) - 1, nb["luar_pieces"]).round().astype(int)
+            parts = [parts[i] for i in keep]
+        t = tok(parts, max_length=nb["luar_tokens"], padding="max_length", truncation=True,
+                return_tensors="pt")  # fmt: skip
+        with torch.no_grad():
+            v = model(input_ids=t["input_ids"][None].to(dev),
+                      attention_mask=t["attention_mask"][None].to(dev),
+                      document_batch_size=32)[0].float().cpu().numpy()  # fmt: skip
+        vecs.append(v / np.linalg.norm(v))
+        if k % 100 == 0:
+            print(f"  LUAR: {k}/{len(rows)}", flush=True)
+    out = WORK / "neural_rrivera1849__LUAR-MUD.npz"
+    np.savez(out, ids=np.array([r["id"] for r in rows]), V=np.stack(vecs))
+    print(f"LUAR -> {out}", flush=True)
+    return 0
+
+
 def verifier(pos: np.ndarray, neg: np.ndarray) -> dict:
     """AUC and the two operating points; higher score = more likely the same author."""
     both = np.concatenate([pos, neg])
@@ -209,8 +250,14 @@ def report() -> int:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["prepare", "neural", "report"])
-    return {"prepare": prepare, "neural": neural, "report": report}[ap.parse_args(argv).cmd]()
+    ap.add_argument("cmd", choices=["prepare", "neural", "luar", "report"])
+    ap.add_argument("--local", type=Path, help="luar: the folder holding the reviewed LUAR copy")
+    a = ap.parse_args(argv)
+    if a.cmd == "luar":
+        if not a.local:
+            ap.error("luar needs --local")
+        return luar(a.local)
+    return {"prepare": prepare, "neural": neural, "report": report}[a.cmd]()
 
 
 if __name__ == "__main__":

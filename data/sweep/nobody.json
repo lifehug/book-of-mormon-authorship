@@ -1,8 +1,8 @@
 {
- "config_sha256": "cf76ef3e0d4079d3677497f10cb8cffabf0b6f40ed5a36630d4dcfd1f2f2db7b",
+ "config_sha256": "24b33686bd6b62cb2dcf35030113f5a165f7fa19cc2925824923ee3311accb6c",
  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
  "registered": true,
- "git_commit": "acde141be2b60b03b086f141a2dc086d4011e9c7",
+ "git_commit": "ad04a21526e648b5aab06fd557a53c7bcd5c1218",
  "exploratory": true,
  "pairs": 2200,
  "methods": {
@@ -47,6 +47,13 @@
    "auc": 0.717,
    "true_confirmed_at_5pct_false": 0.29,
    "false_accepted_at_95pct_true": 0.834
+  },
+  "rrivera1849/LUAR-MUD (modern-text style model, off the shelf)": {
+   "true_pairs": 200,
+   "false_pairs": 2000,
+   "auc": 0.861,
+   "true_confirmed_at_5pct_false": 0.575,
+   "false_accepted_at_95pct_true": 0.735
   }
  }
 }

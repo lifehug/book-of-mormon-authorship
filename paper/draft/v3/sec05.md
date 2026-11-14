@@ -283,7 +283,8 @@ one is LambdaG (Nini and colleagues 2024), which scores a text by how much more 
 sentences are under a model of the candidate's grammar than under a model of a reference
 population, after content words are masked; its authors report that it beats their baselines on
 eleven of twelve collections. We ran it from the authors' own package, with its own content
-masking, and beside it two ready-made style models trained on modern text, our style encoder
+masking, and beside it three ready-made style models trained on modern text (among them LUAR,
+Rivera-Soto and colleagues 2021, the design our own encoder follows), our style encoder
 (section 14) and our author models at equal doses (section 14.3).
 
 LambdaG needs sentences with punctuation, which the benchmark's stored word lists do not keep, so
@@ -296,6 +297,7 @@ Every method scores the same pairs.
 | --- | --- | --- | --- |
 | Style encoder, period-trained (ours) | 0.955 | 88% | 33% |
 | LambdaG (2024), authors' package | 0.895 | 70% | 56% |
+| LUAR (2021), trained on Reddit, off the shelf | 0.861 | 57% | 74% |
 | Author models, 125M, 11,264 tokens (ours) | 0.784 | 37% | 78% |
 | Author models, 125M, 3,039 tokens (ours) | 0.730 | 29% | 88% |
 | StyleDistance, modern text, off the shelf | 0.717 | 29% | 83% |
@@ -303,9 +305,10 @@ Every method scores the same pairs.
 
 The registered bar is 5% in the last column. Nothing passes; the best is 33%. LambdaG is a
 real method and does better here than our author models, which at an equal small dose and on a
-different book are weak (section 14.3); the style encoder does better than LambdaG; the two
-modern-text models are close to chance at the strict setting, as period English is not what they
-were trained on. The numbers are one benchmark of 200 books, and LambdaG was run with its
+different book are weak (section 14.3); the style encoder does better than LambdaG; LUAR, whose
+design our encoder shares but which was trained on modern internet text, comes third, which
+suggests that what our encoder gains comes from its period training and not from its design; the
+other two modern-text models are weak at the strict setting. The numbers are one benchmark of 200 books, and LambdaG was run with its
 defaults.
 
 Two things make the question harder than these figures suggest. First, the list. A threshold
