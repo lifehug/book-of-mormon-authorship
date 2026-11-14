@@ -545,6 +545,15 @@ sweep:
     confirmed: [verified, same_dates_some_undated]   # life dates agree between book and profile
     same_share: 0.5             # profile blocks in the book's genre: same at or above, cross at zero
     few_works: 2                # profiles drawn from this many works or fewer, reported apart
+  people:                       # BOM-91 (exploratory): who was alive when the book was dictated
+    year: 1829
+    min_age: 15
+    max_age: 90                 # a birth year only: presumed dead when older than this
+    min_age_at_print: 12        # an outside match must be born this long before the author's earliest volume here
+    hits: 50                    # replies kept per request
+    pause: 0.5                  # seconds between requests
+    check_sample: 500           # catalog-dated authors looked up the same way, as a known-answer check
+    check_seed: bom91-people
   episodes:                     # BOM-89 (exploratory): several style vectors per unit, matched on the closest
     part_units: 500             # units per saved part (resume granularity)
     top: [1, 3]                 # an author's score per query episode: mean of their closest 1 or 3 episodes
