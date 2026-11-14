@@ -585,6 +585,12 @@ list_size:                        # Amendment 58 (BOM-90): accuracy against cand
   alpha: 0.05
   out: data/benchmark/list_size.json
 
+closeup:                          # semantic.closeup (exploratory; examples for the reader, no new test)
+  show: 5                         # closest pairs, and weakest-matched passages or events, shown per side
+  words: 60                       # a passage is shown by its first 60 words
+  subject_top: 9                  # leading books of the subject group listed
+  null_bands: [0, 10, 20, 30, 40, 50, 1000]   # score bands of the 500 matched religious books
+
 library_search:                   # BOM-95 (exploratory): the Book of Mormon against the library; frozen 2026-11-14 before its vectors were made
   encoder: data/corpus/style_embed/runs/style_v2/style.pt   # the second style encoder (BOM-89's stopping rule)
   tag: _v2                        # its sweep vectors (data/corpus/sweep/episodes_v2)
