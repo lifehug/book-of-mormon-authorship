@@ -150,6 +150,25 @@ def rank() -> int:
                                "died": people[swept[j]]["died"],
                                "date_source": people[swept[j]]["date_source"]}
                               for i, j in enumerate(order[: ls["top"]])]  # fmt: skip
+                # the same list by person: two name forms of one person merged into the better
+                # placed, bare surnames flagged (BOM-91's label cleanup, added 2026-11-14; the
+                # ranks above are untouched)
+                from sweep.people import bare, same_person
+
+                persons: list[dict] = []
+                for i, j in enumerate(order[: 4 * ls["top"]]):
+                    a_ = swept[j]
+                    hit = next(
+                        (p_ for p_ in persons if same_person(p_["author"], a_, people)), None
+                    )
+                    if hit:
+                        hit["also_listed_as"].append({"author": a_, "rank": i + 1})
+                    elif len(persons) < ls["top"]:
+                        persons.append({"place": len(persons) + 1, "rank": i + 1, "author": a_,
+                                        "status": status[j], "born": people[a_]["born"],
+                                        "died": people[a_]["died"], "bare_surname": bare(a_),
+                                        "also_listed_as": []})  # fmt: skip
+                res["top_people"] = persons
                 if name == "full":  # the authors given author models as a second opinion
                     res["second_opinion"] = [swept[j] for j in order[: ls["second_opinion"]]]
                 dead = status[order] == "dead"

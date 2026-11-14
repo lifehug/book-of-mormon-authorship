@@ -118,6 +118,32 @@ def decide(author: str, labels: list[str], first_year: int | None, gap: int):
     return ("ambiguous", len(cands)) if cands else ("none",)
 
 
+_SUFFIX = re.compile(
+    r"\b(from old catalog|n ?[a-z]? ?\d{4,}|nr ?\d{4,}|no ?\d{4,}|b or \d+|comp|ed|tr)\b.*$"
+)
+
+
+def clean(author: str) -> tuple[str, list[str]]:
+    """(surname, forename tokens) with catalog suffixes ("from old catalog", record numbers,
+    "comp") removed; for showing a name and for telling two forms of one name apart."""
+    return ours(_SUFFIX.sub("", author.lower()).strip())
+
+
+def same_person(a: str, b: str, people: dict[str, dict]) -> bool:
+    """Two swept names for one person: the same surname and first forename, and either the same
+    known life dates or the same cleaned name."""
+    ca, cb = clean(a), clean(b)
+    if ca[0] != cb[0] or not ca[1] or not cb[1] or ca[1][0] != cb[1][0]:
+        return False
+    da, db = (people[a]["born"], people[a]["died"]), (people[b]["born"], people[b]["died"])
+    return (None not in da and da == db) or ca == cb
+
+
+def bare(author: str) -> bool:
+    """No forename at all ("huntington", "howland"): a name too thin to be one person."""
+    return not clean(author)[1]
+
+
 def status(born: int | None, died: int | None, p: dict) -> str:
     if born is None and died is None:
         return "unknown"
