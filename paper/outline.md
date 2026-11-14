@@ -167,9 +167,18 @@ the whole library? **Goal (owner, 2026-11-13; BOM-92):** to be able to say, with
 on known books, "if the author left other writing in this corpus, this procedure finds him X% of
 the time", and then run it on the Book of Mormon. The procedure: a *sweep algorithm* (to build)
 narrows the library to a shortlist; the *author algorithm* (Phase 1's per-candidate models) picks
-from it, in heats with a final round on fresh passages. **\*TBD, running: accuracy of the author
-algorithm by list size (2-55) and model size (BOM-90); then the tournament (BOM-93), the sweep
-algorithm (BOM-89), the end-to-end test (BOM-94), the Book of Mormon (BOM-95).** **\*TBD (Amendment 57, running): the library searched with our own models**
+from it, in heats with a final round on fresh passages. **Fixed path (owner, 2026-11-13 night, after an audit; `docs/next.md`):** the
+conclusion aimed at is "we searched every author alive in 1829 in the library; these rate highest;
+on known books the procedure puts the true author in its top N about X% of the time", with the
+Phase 1 candidates ranked beside the library's top; not "one of these wrote it". Done: the author
+algorithm by list size, 2-55, three sizes (BOM-90: 86% from 55 at 125M and 297M, 82% at 590M;
+bigger models do not raise the list size). Measured: the sweep keeps the true author in the top
+100 of 23,872 for 83% of books when the author's other writing is the same genre, 57% when it is
+not (the Book of Mormon's case); 76% in the top 1,000. **\*TBD, running: a second style encoder
+and per-episode vectors (BOM-89); life dates for the alive list (BOM-91: 5,230 alive from catalog
+dates, 13,973 unknown, Library of Congress lookup running). \*TBD: the procedure frozen in one
+commit (BOM-93); validation on a shared pool of about 1,000 equal-dose models (BOM-94); the Book
+of Mormon with the Phase 1 candidates and dead-author decoys in the ranking (BOM-95).** **\*TBD (Amendment 57, running): the library searched with our own models**
 (`docs/part2-library-search-plan.md`): one period model (297M) trained on all 23,875 authors'
 profiles with author labels; known answers first (the sweep's 200 books, the registered 70% bar,
 beside every older method run as a sweep), then the Book of Mormon. Kept in Part 2 (owner,

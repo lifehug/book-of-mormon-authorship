@@ -22,12 +22,31 @@ labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament)
 
 - **BOM-91 life dates (Mac, tmux `people`, log `logs/people_lookup.log`; started 2026-11-13 evening, about 9 h; owner approved the outside lookup):** `python -m sweep.people lookup` (Library of Congress name file for 13,077 undated authors and a 500-author known-answer check; resumes; cache committed every 30 min by tmux `peoplecommit`). Then `python -m sweep.people build`. Catalog dates alone: 5,230 alive in 1829, 4,672 dead or too young, 13,973 unknown. Details on issue #102.
 
-## Sweep plan (BOM-89, issue #100; priced 2026-11-13)
+## Fixed path to the conclusion (owner approved, 2026-11-13 night; replaces the open-ended order of work)
 
-1. Coverage by genre (done, `data/sweep/coverage.json`): top 100 of 23,872 holds the true author 83% of the time when the profile is in the book's genre, 56.5% when it is not (the Book of Mormon's case).
-2. Per-episode fingerprints, existing encoder (running, Mac, free).
-3. Retrain the encoder: more data (the BOM-30 log shows it memorised its 7,673 authors; held-out accuracy flat from step 1,000), different-genre positives, same-genre decoys, confirmed-identity authors held out. Approved and running (see Running).
-4. Re-ranker on the top 100-500, only if still short: about $45-60. **Needs the owner's go.**
+**The conclusion to reach:** "We searched every author alive in 1829 in the library. These rate highest. On known books this procedure puts the true author in its top N about X% of the time." Beside it: where the Phase 1 candidates (Joseph Smith's revelations and the others) rank against the library's top. It will not say "one of these wrote it".
+
+Audit findings behind this (2026-11-13):
+- The sweep had no stopping rule. A wide shortlist (500-1,000) covers for an imperfect sweep; 1,000 author models cost about $33 at 125M.
+- The Phase 1 candidates are manuscripts and are not in the library; they must be added to the final ranking.
+- Sample size biases the ranking (Phase 1, Amendment 45): every author model is trained on the same amount (equal dose).
+- The top may be a genre, not a person: dead authors stay in as decoys.
+- The author algorithm is measured only up to lists of 55; the plan relies on 500-1,000.
+- Validation needs one shared pool of about 1,000 author models scored against every test book (about $35-70), not a shortlist per book ($300+). Random lists are easier than sweep-chosen ones, so this is an upper bound; say so.
+
+| # | Step | Issue | Cost | State |
+| --- | --- | --- | --- | --- |
+| 1 | Better sweep (new encoder, per-episode vectors) and the alive list (life dates) | BOM-89, BOM-91 | about $30 | running 2026-11-13 night |
+| 2 | Freeze the whole procedure in the config in one commit before the Book of Mormon is touched: gallery (alive, real people), shortlist size, model size, equal dose, passages, raw and scaled scores, decoys, what is reported | BOM-93 | free | to do |
+| 3 | Validate on known books: one shared pool of about 1,000 equal-dose models; accuracy and top-N at list sizes up to 1,000; with the sweep's coverage this gives X | BOM-94 | about $35-70 | to do |
+| 4 | The Book of Mormon: shortlist of 1,000 + Phase 1 candidates + dead-author decoys | BOM-95 | about $35-70 | to do |
+| 5 | Write up: the top 20, X, the caveats | BOM-95 | free | to do |
+
+**Sweep stopping rule:** after tonight's run, measure coverage at 1,000 on the alive-only gallery for the cross-genre known books (now 76% on the full gallery with the old encoder). The best of the three variants (old encoder per episode, new encoder, new encoder per episode) is taken and sweep work stops, whatever the number; it is reported as part of X. Only if it is below the old encoder's own figure does anything more get tried.
+
+**Dropped from this path:** the re-ranker, a model for every author in the library, the 590M size, heats (they equal a straight ranking). Place of publication (American / Northeast) is a free tag if the source records give it easily, not a gate.
+
+Total about $100-170 and a few days. Exploratory throughout; step 2's commit timestamp is the record of what was fixed before the result.
 
 ## Waiting on the owner
 
