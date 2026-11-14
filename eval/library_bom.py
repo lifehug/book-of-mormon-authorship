@@ -35,6 +35,7 @@ Usage::
     python -m eval.library_bom embed     # Mac GPU, minutes
     python -m eval.library_bom rank
     python -m eval.library_bom second pilot    # after eval.library_pool run pilot --name _bom
+    python -m eval.library_bom genre           # known-answer test near the Book of Mormon
 """
 
 from __future__ import annotations
@@ -54,6 +55,7 @@ VECS = WORK / "vectors.npz"
 OUT = Path("data/sweep/bom_ranking.json")
 SEALED = Path("data/corpus/blind/sealed.jsonl")
 KEY = Path("~/.bom-blind/key.json").expanduser()  # Phase 1 is unblinded; read for the bom ids
+RANKS = Path("data/sweep/bom_library_ranks.json")  # every swept author's place, full profile
 REVELATION = "cand__joseph-smith__dictated__pre1830"
 
 
@@ -169,6 +171,10 @@ def rank() -> int:
                                         "died": people[a_]["died"], "bare_surname": bare(a_),
                                         "also_listed_as": []})  # fmt: skip
                 res["top_people"] = persons
+                if name == "full":  # every author's place, for the genre check (``genre``)
+                    place = np.empty(len(swept), dtype=int)
+                    place[order] = np.arange(1, len(swept) + 1)
+                    RANKS.write_text(json.dumps(dict(zip(swept, place.tolist(), strict=True))))
                 if name == "full":  # the authors given author models as a second opinion
                     res["second_opinion"] = [swept[j] for j in order[: ls["second_opinion"]]]
                 dead = status[order] == "dead"
@@ -245,12 +251,51 @@ def second(size: str) -> int:
     return 0
 
 
+def genre() -> int:
+    """A known-answer test inside the Book of Mormon's own neighbourhood (BOM-89/95): the sweep's
+    known books (``data/sweep/coverage_episodes_v2.json``) whose author is among the
+    ``library_search.near`` library authors closest to the Book of Mormon (full profile), and
+    those whose book is sermon or devotional writing; how often the search finds the true author,
+    against all known books."""
+    from sweep.coverage import coverage
+
+    cfg = load_config()
+    ls, ks = cfg["library_search"], cfg["sweep"]["coverage"]["ks"]
+    place = json.loads(RANKS.read_text())
+    recs = json.loads(Path("data/sweep/coverage_episodes_v2.json").read_text())["records"]
+    groups = {"all known books": recs}
+    for n in ls["near"]:
+        groups[f"author among the {n} closest to the Book of Mormon"] = [
+            r for r in recs if place[r["author"]] <= n
+        ]
+    groups["book is sermon or devotional"] = [
+        r for r in recs if r["book_genre"] == "sermon_devotional"
+    ]
+    doc = {**stamp(), "exploratory": True, "ks": ks, "groups": {}}
+    show = cfg["sweep"]["coverage"]["show"]
+    for g, rs in groups.items():
+        cross = [r for r in rs if r["genre"] == "cross"]
+        doc["groups"][g] = {
+            "n": len(rs), "coverage": coverage([r["top1_possible"] for r in rs], ks),
+            "n_cross_genre": len(cross),
+            "coverage_cross_genre": coverage([r["top1_possible"] for r in cross], ks)}  # fmt: skip
+        c = doc["groups"][g]["coverage"]
+        print(f"{g:55s} n={len(rs):4d}  first {100 * c['1']:5.1f}  "
+              + "  ".join(f"top {k} {100 * c[str(k)]:5.1f}" for k in show))  # fmt: skip
+    out = Path("data/sweep/bom_genre_check.json")
+    out.write_text(json.dumps(doc, indent=1) + "\n")
+    print(f"-> {out}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["embed", "rank", "second"])
+    ap.add_argument("cmd", choices=["embed", "rank", "second", "genre"])
     ap.add_argument("size", nargs="?", default="pilot", choices=["pilot", "base", "mid"])
     a = ap.parse_args(argv)
-    return second(a.size) if a.cmd == "second" else {"embed": embed, "rank": rank}[a.cmd]()
+    if a.cmd == "second":
+        return second(a.size)
+    return {"embed": embed, "rank": rank, "genre": genre}[a.cmd]()
 
 
 if __name__ == "__main__":

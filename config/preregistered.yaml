@@ -593,6 +593,7 @@ library_search:                   # BOM-95 (exploratory): the Book of Mormon aga
   dead_k: [20, 100, 1000]         # dead authors counted in the top of each ranking
   overlap_k: 20                   # the two chunk lengths' top lists compared
   second_opinion: 200             # the encoder's top authors given equal-dose author models (GPU)
+  near: [500, 1000, 2000]         # genre check: known-book authors among this many closest to the Book of Mormon
 
 library_pool:                     # BOM-94 (exploratory): the author algorithm on one shared pool of library authors
   pool_size: 1000                 # the 200 known-book authors and 800 seeded others
