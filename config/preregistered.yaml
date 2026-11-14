@@ -584,6 +584,15 @@ list_size:                        # Amendment 58 (BOM-90): accuracy against cand
   alpha: 0.05
   out: data/benchmark/list_size.json
 
+library_search:                   # BOM-95 (exploratory): the Book of Mormon against the library; frozen 2026-11-14 before its vectors were made
+  encoder: data/corpus/style_embed/runs/style_v2/style.pt   # the second style encoder (BOM-89's stopping rule)
+  tag: _v2                        # its sweep vectors (data/corpus/sweep/episodes_v2)
+  large_episodes: 11              # the larger equal profile size; the small one is the 1828-29 revelation sample's own episode count
+  top: 50                         # names listed per ranking
+  dead_k: [20, 100, 1000]         # dead authors counted in the top of each ranking
+  overlap_k: 20                   # the two chunk lengths' top lists compared
+  second_opinion: 200             # the encoder's top authors given equal-dose author models (GPU)
+
 library_pool:                     # BOM-94 (exploratory): the author algorithm on one shared pool of library authors
   pool_size: 1000                 # the 200 known-book authors and 800 seeded others
   seed: bom94-pool
