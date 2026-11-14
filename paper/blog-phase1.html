@@ -352,9 +352,25 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <h2 id="earlier">3. The earlier studies, re-run</h2>
 
-<p>Computer studies of this question go back to 1980, and they disagree. I rebuilt five of them with their own methods and data. Each reproduces. Each also turns on a choice nobody tested.</p>
+<p>Computer studies of this question go back to 1980, and they disagree. Before running anything of my own I rebuilt five of them, each with its own method, and one on the data its authors published. Here they are side by side.</p>
 
-<p>The 2008 Stanford study gave 169 chapters to Sidney Rigdon. Swap in other genuine Rigdon writing and it's 92. The 2011 study that allowed "none of the candidates" has an error rate that swings from 80% to 0% depending on how long the samples are. Same method, same people, different answer.</p>
+<table>
+<thead><tr><th>Study</th><th>How it worked</th><th>What it found</th><th>My rerun</th></tr></thead>
+<tbody>
+<tr><td><b>Larsen, Rencher and Layton</b>, 1980</td><td>Counted the small common words (<i>and</i>, <i>of</i>, <i>unto</i>) that each speaker in the book uses, and asked whether the speakers differ.</td><td>The speakers differ. No passage looks like Joseph Smith or the other candidates.</td><td>Same. The 17 speakers differ, and 4 of 215 passages go to a candidate.</td></tr>
+<tr><td><b>Holmes</b>, 1992</td><td>Measured how rich each text's vocabulary is: how many words it uses once, twice, and so on.</td><td>Joseph Smith's own writing stands apart. The book's prophets don't sort by prophet. His revelations sit with the prophets.</td><td>Same on all three.</td></tr>
+<tr><td><b>Jockers, Witten and Criddle</b>, 2008 (Stanford)</td><td>About 110 common words, and a classifier that must give every chapter to someone on a fixed list.</td><td>Sidney Rigdon is first or second choice for 197 of 239 chapters.</td><td>The method reproduces. The answer doesn't hold: see below.</td></tr>
+<tr><td><b>Schaalje, Fields, Roper and Snow</b>, 2011</td><td>The 2008 classifier, changed so it may answer "none of these".</td><td>175 of 239 chapters belong to nobody on the list.</td><td>225 of 239. But the answer moves with a setting: see below.</td></tr>
+<tr><td><b>Johnson and Johnson</b>, 2013</td><td>Rare four-word phrases shared with each of thousands of books.</td><td><i>The Late War</i> shares more than almost any other book.</td><td>It does, and so do other books written in Bible style. That is section 2.</td></tr>
+</tbody>
+</table>
+<p class="src" style="margin-top:12px">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/replicate.py">eval/replicate.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/tree/master/data/benchmark/replication">data/benchmark/replication</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/paper/replication-report.md">paper/replication-report.md</a></p>
+
+<p>Every one reproduces: run their method their way and you get roughly their answer. Two of the answers then turn on a choice nobody tested.</p>
+
+<p><b>The 2008 study follows whichever texts stand for each man.</b> On their own data, Rigdon is first or second choice for 169 chapters. Their Rigdon sample is mostly a book of his revelations written in 1864, thirty years after the Book of Mormon was printed. Swap in other genuine Rigdon writing, print he signed, and it's 92. Do the same for Parley Pratt and his count goes from 42 to 137. The Book of Mormon didn't change. The samples did. A method that must name someone names whoever's samples sit nearest.</p>
+
+<p><b>The 2011 study's "none of these" follows the sample length.</b> I gave its method a test where "none" is always the right answer. With 1,000-word samples it was wrong 80% of the time. With 10,000-word samples it was wrong 0% of the time. Same method, same people, different answer.</p>
 
 <h3>One author or many?</h3>
 
@@ -365,12 +381,12 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p>There's a catch I can't get around. The narrators' books were dictated at different times, and sorting passages by "dictated early or late" works about as well: 76% against 50% by chance. I can't pull apart who is speaking from when it was dictated.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/replicate.py">eval/replicate.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/scribes.py">eval/scribes.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/scribes.json">data/benchmark/scribes.json</a></p>
 
-<p>That's why the next section exists.</p>
+<p>That's why the next section exists. Two of these methods come back in it as contestants: the 2011 study's classifier is the one called ENSC, and the word-count method the 2008 study also used is Burrows' Delta. There they take the same exam as my own models, on books where the answer is known.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/replicate.py">eval/replicate.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/tree/master/data/benchmark/replication">data/benchmark/replication</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/docs/prior-studies.md">docs/prior-studies.md</a></p>
 
 <h2 id="tools">4. Are my tools any good?</h2>
 
-<p>Before any method touched the Book of Mormon, it had to pass an exam on books where I know the author. Every method takes the same exam: mine, and the four older ones people have used (Burrows' Delta, Cosine Delta, General Imposters, and a sparse-coding method called ENSC).</p>
+<p>Before any method touched the Book of Mormon, it had to pass an exam on books where I know the author. Every method takes the same exam: mine, and the four older ones people have used: Burrows' Delta and Cosine Delta, which compare how often each writer uses the most common words; General Imposters, which was built to answer "is it this person or nobody here"; and ENSC, the classifier from the 2011 study in section 3.</p>
 
 <p>My method works like this. For each candidate, take a copy of the period model and let it read that person's writing. Then show it a mystery passage. The score is how much better the copy predicts the passage than the untouched model does. Whoever's copy improves the most is the pick.</p>
 
