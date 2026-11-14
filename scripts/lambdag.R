@@ -14,10 +14,17 @@ masked_path <- file.path(work, "masked.rds")
 if (file.exists(masked_path)) {
   sents <- readRDS(masked_path)
 } else {
-  x <- corpus(rows$text, docnames = rows$id)
-  docvars(x, "author") <- rows$author
-  docvars(x, "role") <- rows$role
-  sents <- tokenize_sents(contentmask(x))
+  # masked in batches: the whole set at once died without a message (2026-11-14)
+  parts <- list()
+  for (i in seq(1, nrow(rows), by = 20)) {
+    j <- min(i + 19, nrow(rows))
+    x <- corpus(rows$text[i:j], docnames = rows$id[i:j])
+    docvars(x, "author") <- rows$author[i:j]
+    docvars(x, "role") <- rows$role[i:j]
+    parts[[length(parts) + 1]] <- tokenize_sents(contentmask(x))
+    cat(sprintf("masked %d/%d\n", j, nrow(rows)))
+  }
+  sents <- do.call(c, parts)
   saveRDS(sents, masked_path)
 }
 done <- if (file.exists(out)) unique(read.csv(out)$Q) else character(0)
