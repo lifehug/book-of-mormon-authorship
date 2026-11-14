@@ -16,19 +16,20 @@ labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament)
 
 ## Running
 
-- **BOM-89 step 2 (Mac, tmux `episodes`, log `logs/sweep_episodes.log`, started 2026-11-13 17:35, about 23 h):** `python -m sweep.index episodes` (one style vector per 8-passage episode for every sweep unit; resumes from `data/corpus/sweep/episodes/part_*.npz`; rerun the same command if the session is gone). Then score by an author's closest episodes and report coverage at K by genre group, as `python -m sweep.coverage` does.
-- **Nothing on GPU; all pods terminated.** BOM-90's list-size runs finished 2026-11-13 (three sizes, about $31.60); its write-up into the blog log, outline and method record is still owed.
+- **BOM-89 steps 2 and 3 (rented H100, pod `bom89-style-v2`; Mac driver in tmux `stylev2`, log `logs/style_pod_v2.log`, state `logs/style_pod_v2/state.json`; started 2026-11-13 evening; owner approved, cap $55, expected $25-35, about 8 h):** `python scripts/style_pod.py --issue 100 --cap 55 --size v2`. Uploads (about 5 GB, throttled to 2 MB/s), then on the pod `scripts/style_v2_job.sh`: per-episode sweep vectors with the BOM-30 encoder, `style_embed.v2 train` (20,000 steps), the same vectors with the new encoder; everything comes home checked and the pod is terminated. **If the driver is gone, rerun the same command** (it resumes from its state). Events are posted on issue #100.
+- **Then (Mac, minutes):** score coverage at K by genre group for (a) the old encoder per episode, (b) the new encoder whole-profile, (c) the new encoder per episode, beside `data/sweep/coverage.json`. The scoring module (`sweep/episodes.py`) is not written yet.
+- The Mac's own step 2 run was stopped at 1,000 units when the owner chose the GPU; its parts in `data/corpus/sweep/episodes/` are kept and unused.
 
 ## Sweep plan (BOM-89, issue #100; priced 2026-11-13)
 
 1. Coverage by genre (done, `data/sweep/coverage.json`): top 100 of 23,872 holds the true author 83% of the time when the profile is in the book's genre, 56.5% when it is not (the Book of Mormon's case).
 2. Per-episode fingerprints, existing encoder (running, Mac, free).
-3. Retrain the encoder: more data (the BOM-30 log shows it memorised its 7,673 authors; held-out accuracy flat from step 1,000), different-genre positives, same-genre decoys, confirmed-identity authors held out. Data prep on the Mac (free); training about 4.5 H100-hours, about $35-50. **Needs the owner's go.**
+3. Retrain the encoder: more data (the BOM-30 log shows it memorised its 7,673 authors; held-out accuracy flat from step 1,000), different-genre positives, same-genre decoys, confirmed-identity authors held out. Approved and running (see Running).
 4. Re-ranker on the top 100-500, only if still short: about $45-60. **Needs the owner's go.**
 
 ## Waiting on the owner
 
-- Go-ahead for step 3's GPU spend (about $35-50). The Phase 1 blog draft (`paper/blog-phase1.html`, on the Desktop) waits for a read-through.
+- The Phase 1 blog draft (`paper/blog-phase1.html`, on the Desktop) waits for a read-through.
 
 ## Done 2026-11-12 (details in the blog's Log and the issues)
 
