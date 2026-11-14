@@ -18,8 +18,8 @@ Usage::
 
     python -m sweep.index tokens [--workers 8]
     python -m sweep.index mfw
-    python -m sweep.index embed
-    python -m sweep.index episodes      # BOM-89 (exploratory): one vector per 8-passage episode
+    python -m sweep.index embed [--model <style.pt> --tag _v2]
+    python -m sweep.index episodes [--model <style.pt> --tag _v2]   # BOM-89 (exploratory)
 """
 
 from __future__ import annotations
@@ -149,17 +149,17 @@ def mfw() -> int:
     return 0
 
 
-def embed() -> int:
+def embed(model: Path | None = None, tag: str = "") -> int:
     from style_embed.benchmark import MODEL, embedder
 
     cfg = load_config()
-    out = WORK / "style.npz"
-    part = WORK / "style_part.npz"
+    out = WORK / f"style{tag}.npz"
+    part = WORK / f"style{tag}_part.npz"
     got: dict[str, np.ndarray] = {}
     if part.exists():  # resume
         z = np.load(part)
         got = dict(zip(z["units"].tolist(), z["V"], strict=True))
-    f = embedder(MODEL, cfg)
+    f = embedder(model or MODEL, cfg)
     todo = [u["unit"] for u in _units() if u["tokens"] and u["unit"] not in got]
     print(f"{len(todo):,} units to embed ({len(got):,} done)", flush=True)
     for k, u in enumerate(todo, 1):
@@ -174,23 +174,29 @@ def embed() -> int:
     return 0
 
 
-def episode_vectors(enc, ids: list[int], n: int, per: int, dev: str) -> np.ndarray:
-    """(episodes, dim) unit vectors: consecutive episodes of ``per`` passages of ``n`` tokens; a
-    short tail joins the last episode, a unit shorter than one episode is a single episode."""
+def episode_vectors(enc, ids: list[int], n: int, per: int, dev: str):
+    """(episodes, dim) unit vectors and the whole unit's vector: consecutive episodes of ``per``
+    passages of ``n`` tokens; a short tail joins the last episode, a unit shorter than one episode
+    is a single episode. The whole-unit vector is ``embed``'s (all passages as one episode)."""
     import torch
 
     k = max(1, len(ids) // n)
     x = torch.tensor((ids + [0] * n)[: k * n], dtype=torch.long, device=dev).view(k, n)
-    with torch.no_grad():
-        p = torch.cat([enc.passages(x[i : i + 64]) for i in range(0, k, 64)])
+    cuda = dev == "cuda"
+    step = 512 if cuda else 64
+    with torch.no_grad(), torch.autocast("cuda", dtype=torch.bfloat16, enabled=cuda):
+        p = torch.cat([enc.passages(x[i : i + step]).float() for i in range(0, k, step)])
         e = max(1, k // per)
-        cuts = [*range(0, e * per, per)][:e] + [k]
+        cuts = [*range(0, e * per, per), k]
         v = torch.stack([p[a:b].mean(dim=0) for a, b in zip(cuts[:-1], cuts[1:], strict=True)])
-        z = torch.nn.functional.normalize(enc.head(v).float(), dim=-1)
-    return z.cpu().numpy().astype(np.float16)
+        z = torch.nn.functional.normalize(
+            enc.head(torch.cat([v, p.mean(dim=0)[None]])).float(), dim=-1
+        )
+    z = z.cpu().numpy().astype(np.float16)
+    return z[:-1], z[-1]
 
 
-def episodes() -> int:
+def episodes(model: Path | None = None, tag: str = "") -> int:
     """Every unit's episode vectors, calibration units first; resumes from its parts."""
     import torch
     from tokenizers import Tokenizer
@@ -208,7 +214,7 @@ def episodes() -> int:
         if torch.backends.mps.is_available()
         else "cpu"
     )
-    parts = WORK / "episodes"
+    parts = WORK / f"episodes{tag}"
     parts.mkdir(parents=True, exist_ok=True)
     done: set[str] = set()
     for f in sorted(parts.glob("part_*.npz")):
@@ -216,17 +222,18 @@ def episodes() -> int:
     names = sorted((u["unit"] for u in _units() if u["tokens"] and u["unit"] not in done),
                    key=lambda u: (u.startswith("profile:"), u))  # fmt: skip
     print(f"{len(names):,} units to embed ({len(done):,} done) on {dev}", flush=True)
-    enc = load_encoder(MODEL, cfg).to(dev)
+    enc = load_encoder(model or MODEL, cfg).to(dev)
     tok = Tokenizer.from_file(str(TOKENIZER))
     step = cfg["sweep"]["episodes"]["part_units"]
     nxt = len(list(parts.glob("part_*.npz")))
     for i in range(0, len(names), step):
         batch = names[i : i + step]
-        vs = [episode_vectors(enc, tok.encode(" ".join(_read(u))).ids, s["passage_tokens"],
-                              s["episode_passages"], dev) for u in batch]  # fmt: skip
+        got = [episode_vectors(enc, tok.encode(" ".join(_read(u))).ids, s["passage_tokens"],
+                               s["episode_passages"], dev) for u in batch]  # fmt: skip
+        vs = [g[0] for g in got]
         tmp = parts / "tmp.npz"
         np.savez(tmp, units=np.array(batch), counts=np.array([len(v) for v in vs]),
-                 V=np.concatenate(vs))  # fmt: skip
+                 V=np.concatenate(vs), W=np.stack([g[1] for g in got]))  # fmt: skip
         tmp.replace(parts / f"part_{nxt:04d}.npz")
         nxt += 1
         print(f"  {i + len(batch):,}/{len(names):,}", flush=True)
@@ -237,7 +244,11 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("cmd", choices=["tokens", "mfw", "embed", "episodes"])
     ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--model", type=Path, help="embed, episodes: another encoder's style.pt")
+    ap.add_argument("--tag", default="", help="suffix of that encoder's outputs, e.g. _v2")
     a = ap.parse_args(argv)
+    if a.cmd in ("embed", "episodes"):
+        return {"embed": embed, "episodes": episodes}[a.cmd](a.model, a.tag)
     return {"tokens": lambda: tokens(a.workers), "mfw": mfw, "embed": embed, "episodes": episodes}[
         a.cmd
     ]()

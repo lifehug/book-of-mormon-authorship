@@ -12,9 +12,10 @@ config; everything else is BOM-30's:
   it and the author's other episode from a work in a different genre when there is one. The other
   steps are BOM-30's random pairs (mixed decoys, after arXiv 2510.16819).
 - **A validation split**: ``validation_share`` of the training authors are set aside, their
-  retrieval accuracy is logged every ``validate_every`` steps, and the best step's weights are kept
-  as ``style.pt``. BOM-30's held-out authors (the sweep's 200 known books among them) stay held
-  out and are never used to choose anything; their accuracy is logged for comparison only.
+  retrieval accuracy is logged every ``validate_every`` steps, and the best step's weights
+  (``best.pt``) become ``style.pt`` when training ends. BOM-30's held-out authors (the sweep's
+  200 known books among them) stay held out and are never used to choose anything; their accuracy
+  is logged for comparison only.
 
 A work's genre is the commonest primary label of its volumes (``data/catalog/genre.parquet``).
 
@@ -242,8 +243,8 @@ def train(out: Path, tiny: bool, max_steps: int | None, ckpt_minutes: float) -> 
             if rec["validation_top1"] > best:
                 best = rec["validation_top1"]
                 rec["kept"] = True
-                torch.save(enc.state_dict(), out / "style.tmp")
-                (out / "style.tmp").replace(out / "style.pt")
+                torch.save(enc.state_dict(), out / "best.tmp")
+                (out / "best.tmp").replace(out / "best.pt")
             print(json.dumps(rec), flush=True)
         log.write(json.dumps(rec) + "\n")
         log.flush()
@@ -251,6 +252,12 @@ def train(out: Path, tiny: bool, max_steps: int | None, ckpt_minutes: float) -> 
             t1._save(ck, {"model": enc.state_dict(), "optimizer": opt.state_dict(), "step": step,
                           "best": best})  # fmt: skip
             last = time.time()
+    import shutil
+
+    shutil.copyfile(
+        out / "best.pt", out / "style.tmp"
+    )  # style.pt appears only when training is over
+    (out / "style.tmp").replace(out / "style.pt")
     print(f"done: {steps:,} steps, best validation {best:.3f} -> {out / 'style.pt'}", flush=True)
     return 0
 

@@ -12,6 +12,7 @@ BOM-30 issue. State: ``logs/style_pod/state.json``.
 Usage::
 
     python scripts/style_pod.py --issue 40 [--cap 50] [--size mid]
+    python scripts/style_pod.py --issue 100 --cap 60 --size v2     # BOM-89 steps 2 and 3
 
 ``--size mid`` trains the same encoder on the 590M backbone (owner, 2026-11-09; Amendment 37):
 its own state (``logs/style_pod_mid/``), pod and output folder (``runs/style_mid``), so the
@@ -55,13 +56,38 @@ OUT = "data/corpus/style_embed/runs/style"
 HOME = ROOT / OUT
 FETCH = ["style.pt", "log.jsonl", "run.json"]
 TRAIN_ARGS = ""
+TRAIN = "python -m style_embed.train"  # the training command on the pod
+JOB = ""  # a script run on the pod in place of the bare training command (v2)
+DONE = ""  # the file whose presence ends the train phase; default the run's style.pt
+EXTRA_FETCH: list[str] = []  # folders and files under the repo brought home after the model
+BWLIMIT = 0  # KB/s for uploads and downloads; 0 for none
 EVAL = ""  # the size whose encoder is tested on the pod after training ("" for none)
 
 
 def configure(size: str) -> None:
     """Point the driver at another backbone's encoder (see the module docstring)."""
     global STATE, SSH, POD_NAME, UPLOADS, OUT, HOME, TRAIN_ARGS, EVAL
+    global TRAIN, JOB, DONE, EXTRA_FETCH, BWLIMIT, FETCH
     if size == "base":
+        return
+    if size == "v2":  # BOM-89 steps 2 and 3 (exploratory): scripts/style_v2_job.sh
+        STATE = ROOT / "logs/style_pod_v2/state.json"
+        SSH, POD_NAME = "stylepodv2", "bom89-style-v2"
+        base = "data/corpus/timelocked_lm/runs/base/model.pt"
+        v2, sw = "data/corpus/style_embed/v2", "data/corpus/sweep"
+        UPLOADS = {k: k for k in (
+            f"{v2}/passages.bin", f"{v2}/passages.parquet", f"{sw}/units.parquet", f"{sw}/tokens",
+            "data/corpus/style_embed/runs/style/style.pt", base)}  # fmt: skip
+        OUT = "data/corpus/style_embed/runs/style_v2"
+        HOME = ROOT / OUT
+        TRAIN, JOB, DONE = (
+            "python -m style_embed.v2 train",
+            "scripts/style_v2_job.sh",
+            "/workspace/JOB_DONE",
+        )
+        FETCH = ["style.pt", "log.jsonl", "run.json"]
+        EXTRA_FETCH = ["data/corpus/sweep/episodes_gpu", "data/corpus/sweep/episodes_v2"]
+        BWLIMIT = 2000
         return
     STATE = ROOT / f"logs/style_pod_{size}/state.json"
     SSH, POD_NAME = f"stylepod{size}", f"bom30-style-{size}"
@@ -271,6 +297,21 @@ def wait_ssh(s: dict) -> bool:
     return False
 
 
+def start_cmd() -> str:
+    """The tmux session that trains (or runs the job script, which resumes each of its parts)."""
+    run = f"bash {JOB} {R}/{OUT}" if JOB else f"{TRAIN} --out {R}/{OUT}{TRAIN_ARGS}"
+    return f"cd {R} && tmux new-session -d -s train '{run} 2>&1 | tee -a /workspace/train.out'"
+
+
+def tree_sha(root: Path, rel: str) -> str:
+    """One hash over a file's or a folder's files (name and SHA-256), as ``sha256sum`` prints."""
+    base = root / rel
+    files = [p for p in base.rglob("*") if p.is_file()] if base.is_dir() else [base]
+    files.sort(key=lambda p: str(p.relative_to(root)).encode())
+    lines = "".join(f"{sha(p)}  {p.relative_to(root)}\n" for p in files)
+    return hashlib.sha256(lines.encode()).hexdigest()
+
+
 def step(s: dict, issue: int, cap: float) -> bool:
     """Advance one phase; False when finished or stopped."""
     ph = s["phase"]
@@ -308,36 +349,43 @@ def step(s: dict, issue: int, cap: float) -> bool:
     elif ph == "upload":
         b2_prefetch(list(UPLOADS.values()))
         for local, rel in UPLOADS.items():
-            rc, out = pw.sh(["rsync", "-rt", "--no-o", "--no-g", "--partial", str(ROOT / local),
-                             f"{SSH}:{R}/{rel}"], 7200)  # fmt: skip
+            isdir = (ROOT / local).is_dir()
+            remote(f"mkdir -p $(dirname {R}/{rel})")
+            rc, out = pw.sh(["rsync", "-rt", "--no-o", "--no-g", "--partial",
+                             f"--bwlimit={BWLIMIT}", str(ROOT / local) + ("/" if isdir else ""),
+                             f"{SSH}:{R}/{rel}" + ("/" if isdir else "")], 14400)  # fmt: skip
             if rc != 0:
                 log(f"upload {local} failed ({out[-200:]}); retrying")
                 return True
-            rc, out = remote(f"sha256sum {R}/{rel}")
-            if rc != 0 or out.split()[0] != sha(ROOT / local):
+            if isdir:
+                rc, out = remote(f"cd {R} && find {rel} -type f | LC_ALL=C sort | xargs sha256sum "
+                                 "| sha256sum", 3600)  # fmt: skip
+                want = tree_sha(ROOT, local)
+            else:
+                rc, out = remote(f"sha256sum {R}/{rel}")
+                want = sha(ROOT / local)
+            if rc != 0 or out.split()[0] != want:
                 log(f"checksum mismatch on {rel}; re-uploading")
                 return True
         event(s, f"upload verified ({len(UPLOADS)} files, SHA-256).", issue)
         s["phase"] = "smoke"
     elif ph == "smoke":
-        rc, out = remote(f"cd {R} && python -m style_embed.train --out /workspace/runs/tiny "
+        rc, out = remote(f"cd {R} && git pull -q; {TRAIN} --out /workspace/runs/tiny "
                          "--tiny --max-steps 3", 1800)  # fmt: skip
         if rc != 0:
             event(s, f"smoke test failed: {out[-400:]}", issue)
             return False
-        rc, out = remote(f"cd {R} && tmux new-session -d -s train 'python -m style_embed.train "
-                         f"--out {R}/{OUT}{TRAIN_ARGS} 2>&1 | tee -a /workspace/train.out'",
-                         )  # fmt: skip
+        rc, out = remote(start_cmd())
         event(s, "smoke test passed; **training started** (20,000 steps).", issue)
         s["phase"], s["restarts"], s["train_started"] = "train", 0, time.time()
     elif ph == "train":
         rc, out = remote(f"grep heldout {R}/{OUT}/log.jsonl | tail -n 1; "
-                         f"ls {R}/{OUT}/style.pt 2>/dev/null; "
+                         f"ls {DONE or R + '/' + OUT + '/style.pt'} 2>/dev/null; "
                          "tmux has-session -t train 2>/dev/null && echo ALIVE")  # fmt: skip
         if rc not in (0, 1, 2):
             log(f"poll failed: {out[-200:]}")
             return True
-        if "style.pt" in out:
+        if (DONE or "style.pt") in out:
             s["phase"] = "eval_upload" if EVAL and not s.get("eval_home") else "fetch"
         elif "ALIVE" not in out:
             if s["restarts"] >= 3:
@@ -345,8 +393,7 @@ def step(s: dict, issue: int, cap: float) -> bool:
                 pw.rest("POST", f"/pods/{s['pod']}/stop")
                 return False
             s["restarts"] += 1
-            remote(f"cd {R} && tmux new-session -d -s train 'python -m style_embed.train "
-                   f"--out {R}/{OUT}{TRAIN_ARGS} 2>&1 | tee -a /workspace/train.out'")  # fmt: skip
+            remote(start_cmd())
             event(s, f"training process gone; restarted from checkpoint ({s['restarts']}/3). "
                      f"Last: {out[:200]}", issue)  # fmt: skip
         else:
@@ -442,7 +489,18 @@ def step(s: dict, issue: int, cap: float) -> bool:
             if rc or rc2 or out2.split()[0] != sha(HOME / f):
                 log(f"fetch of {f} not verified; retrying")
                 return True
-        event(s, f"model home and verified in `{OUT}` ({', '.join(FETCH)}).", issue)
+        for rel in EXTRA_FETCH:
+            isdir = remote(f"test -d {R}/{rel} && echo DIR")[1].strip() == "DIR"
+            (ROOT / rel).parent.mkdir(parents=True, exist_ok=True)
+            rc, out = pw.sh(["rsync", "-rt", f"--bwlimit={BWLIMIT}",
+                             f"{SSH}:{R}/{rel}" + ("/" if isdir else ""),
+                             str(ROOT / rel) + ("/" if isdir else "")], 14400)  # fmt: skip
+            rc2, out2 = remote(f"cd {R} && find {rel} -type f | LC_ALL=C sort | xargs sha256sum "
+                               "| sha256sum", 3600)  # fmt: skip
+            if rc or rc2 or out2.split()[0] != tree_sha(ROOT, rel):
+                log(f"fetch of {rel} not verified; retrying")
+                return True
+        event(s, f"model home and verified in `{OUT}` ({', '.join(FETCH + EXTRA_FETCH)}).", issue)
         s["phase"] = "cleanup"
     elif ph == "cleanup":
         remote(f"rm -rf {R}/data/corpus {R}/data/private {R}/data/kjv_mask /workspace/runs "
@@ -466,7 +524,12 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     ap.add_argument("--issue", type=int, required=True)
     ap.add_argument("--cap", type=float, default=50.0)
-    ap.add_argument("--size", choices=["base", "mid"], default="base", help="the backbone")
+    ap.add_argument(
+        "--size",
+        choices=["base", "mid", "v2"],
+        default="base",
+        help="the backbone; v2 is BOM-89's second encoder and sweep vectors",
+    )
     a = ap.parse_args(argv)
     configure(a.size)
     STATE.parent.mkdir(parents=True, exist_ok=True)
