@@ -472,6 +472,17 @@ style_embed:
   train_seed: bom30-train
   validate_every: 1000
 
+style_embed_v2:                 # BOM-89 step 3 (exploratory): a second encoder for cross-genre retrieval
+  passages_per_work: 256        # BOM-30 used 32 and memorised them
+  passage_seed: bom89-passages
+  validation_share: 0.05        # of BOM-30's training authors; BOM-30's held-out authors stay held out
+  validation_seed: bom89-validation
+  validation_authors: 256       # per check, the same draw each time
+  validate_every: 500
+  hard_step_share: 0.5          # steps whose batch is one genre, positives from another genre
+  steps: 20000
+  train_seed: bom89-train
+
 dating:
   # 5.3, 6.4; Amendment 2 (multinomial logistic regression over a literature-drawn grammatical
   # feature list, 10,000 permutations); Amendment 17 (BOM-29; OSF revision
