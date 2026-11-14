@@ -236,15 +236,15 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <figcaption>The passages are shown as the search sees them: lower case, no punctuation. Each phrase is short, and a natural thing to write in that style. None is a borrowed sentence. And 36 of the 183 also show up in other imitation-scripture books of the period.</figcaption>
 </figure>
 
-<h3>The rule, and what passes it</h3>
-<p>Counting phrases by hand proves nothing, so before running this I wrote down a rule for when a book counts as sharing "too much":</p>
+<h3>The criteria for borrowing, and what meets them</h3>
+<p>These are the criteria used to decide whether a book shares enough rare wording to count as borrowing:</p>
 <ol>
 <li>Take every four-word phrase in the Book of Mormon.</li>
 <li>Call a phrase <b>rare</b> if no more than 5 texts in the whole library use it.</li>
 <li>For each book, count the rare phrases it shares, per 10,000 of its own words. That way a long book can't win just by being long.</li>
-<li>A book <b>passes</b> if its score is in the top 1% of all 204,520 books. That line works out to 1.09.</li>
+<li>A book <b>meets the criteria</b> if its score is in the top 1% of all 204,520 books. That line works out to 1.09.</li>
 </ol>
-<p><i>The Late War</i> scores 3.86 and <i>The First Book of Napoleon</i> 5.45. Both pass easily, just as the 2013 study said. What that study didn't do is check other books written the same way. There was a whole fashion, from the 1740s on, for writing about current events in mock Bible English: chronicles of kings, of London, of the American Revolution. So I ran those too.</p>
+<p><i>The Late War</i> scores 3.86 and <i>The First Book of Napoleon</i> 5.45. Both meet the criteria easily, just as the 2013 study said. What that study didn't do is check other books written the same way. There was a whole fashion, from the 1740s on, for writing about current events in mock Bible English: chronicles of kings, of London, of the American Revolution. So I ran those too.</p>
 
 <figure>
 <h4>Rare phrases shared with the Book of Mormon, by books written in Bible style</h4>
@@ -253,13 +253,13 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <div id="ch-genre"></div>
 <h4 id="gn-title" style="margin-top:16px"></h4>
 <div class="btns" id="gn-list" style="max-height:150px;overflow:auto"></div>
-<figcaption>The eight imitation-scripture books that share at least five rare phrases. The library has 17 such books in all: 11 clear the line (three of them on a single phrase) and six don't, sharing two phrases or fewer. The <i>Jasher</i> here is an 1829 reprint of Jacob Ilive's 1751 forgery, printed in Bristol; nobody proposes it as a source. I added this comparison after seeing the first result, so it is not part of the rule I wrote in advance.</figcaption>
+<figcaption>The eight imitation-scripture books that share at least five rare phrases. The library has 17 such books in all: 11 clear the line (three of them on a single phrase) and six don't, sharing two phrases or fewer. The <i>Jasher</i> here is an 1829 reprint of Jacob Ilive's 1751 forgery, printed in Bristol; nobody proposes it as a source. I added this comparison after seeing the first result, so it is not part of the criteria above.</figcaption>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/reuse/rare.py">reuse/rare.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/reuse/bom/rare.json">data/reuse/bom/rare.json</a></p>
 </figure>
 
 <p>Look at the phrases themselves. "Was their chief captain." "Captain over the armies." "And he also begat." "To wife the daughters." These are the stock moves of a story about wars and families told in Bible English. "Ruler over this people" is on the <i>Late War</i> list and the <i>Napoleon</i> list both. Anyone who sits down to write history in that style reaches for them.</p>
 
-<p>So the two named books do pass my rule. So do the other books of their kind that share enough phrases to count, eight of eight, and one of them, which nobody has proposed as a source, passes by more. What they share with the Book of Mormon is a genre. This test can't tell a source from a neighbour. In all, 2,044 books in the library pass the same rule.</p>
+<p>So the two named books do meet the criteria. So do the other books of their kind that share enough phrases to count, eight of eight, and one of them, which nobody has proposed as a source, clears them by more. What they share with the Book of Mormon is a genre. This test can't tell a source from a neighbour. In all, 2,044 books in the library meet the same criteria.</p>
 
 <h3>Same ideas, different words</h3>
 <p>You can borrow an idea without sharing a single phrase. So I cut every book in the library into 128-word passages, 163 million of them, and had a model place each one so that passages meaning the same thing land close together. Then, for every passage of the Book of Mormon, I looked for the closest passage in each book. A book that keeps turning up close gets a high score. The book named most often for this kind of borrowing is Ethan Smith's <i>View of the Hebrews</i>. It gets its own close-up at the end of this section.</p>
