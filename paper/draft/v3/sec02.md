@@ -35,8 +35,9 @@ The national newspaper set holds almost nothing from western New York (47 New Yo
 State Historic Newspapers. The *Ontario Phoenix*, which W. W. Phelps edited before 1830, is not
 digitized anywhere. The whole is about 1.1 TB on disk.
 
-**What can be redistributed.** Harvard's and HathiTrust's texts are licensed and the Joseph Smith
-Papers transcripts are copyrighted; none is redistributed. Everything else is public, and for each
+**What can be redistributed.** Harvard's and HathiTrust's texts are licensed, and the Joseph Smith
+Papers transcripts and one purchased book (Rick Grunder's *Mormon Parallels*) are copyrighted;
+none is redistributed. Everything else is public, and for each
 restricted source the numbered steps to obtain the same access are published
 (`docs/replication.md`). Derived tables, labels and a checksum for every file are public, so a
 reader who obtains the sources can apply our labels without rerunning the pipeline. What is held,

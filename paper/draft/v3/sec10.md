@@ -2,7 +2,8 @@
 
 Seventeen public claims about the Book of Mormon's text, taken from critical, apologetic and
 academic sources, were written into a register together with the rule that would decide each one,
-before any result existed (`data/claims/register.yaml`). The verdicts below apply those rules
+(`data/claims/register.yaml`): twelve on 2026-10-18, before any result existed, and five more
+(c13-c17) on 2026-11-06, before the blind run and after the borrowing results. The verdicts below apply those rules
 (`docs/claims-verdicts.md`). Four verdicts are allowed: supported, contradicted, mixed, and not
 addressed. Four claims were marked untestable by text analysis from the start. The register takes
 no side, and an untestable claim is not a contradicted one.

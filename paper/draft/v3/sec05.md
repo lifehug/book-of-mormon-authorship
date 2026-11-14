@@ -144,12 +144,12 @@ text, in place of our base models: same samples, same settings, same 110 tests
 | Base model | Trained on | Right author | False matches |
 | --- | --- | --- | --- |
 | GPT-2, 124M | modern text | 90.0% | 92% |
-| GPT-2, 355M | modern text | 94.5% | 86% |
+| GPT-2, 355M | modern text | 94.5% | 85% |
 | Ours, 125M | 1780-1830 only | 93.6% | 47% |
 | Ours, 297M | 1780-1830 only | 99.1% | 38% |
 | Ours, 590M | 1780-1830 only | 98.2% | 22% |
 
-GPT-2 picks the right author nearly as often. The difference is in false matches: 86-92% for GPT-2
+GPT-2 picks the right author nearly as often. The difference is in false matches: 85-92% for GPT-2
 against 22-47% for the period models. A modern model fine-tuned on any early nineteenth-century
 author learns, first of all, what early nineteenth-century English looks like, and then finds that
 every period text fits. A model that already knows the period's English has only the author left
@@ -221,11 +221,11 @@ sets that threshold where 95% of true authors clear it, and allows at most 5% fa
 | Our models, 125M | 47% | 75% | 56% | 57% |
 | Our models, 297M | 38% | 67% | 58% | 52% |
 | Our models, 590M | 22% | 63% | 62% | 51% |
-| General Imposters | 83% | 79% | | |
-| ENSC (its own "none") | 78% | 76% | | |
+| General Imposters | 83% | 100% | 100% | |
+| ENSC (its own "none") | 78% | 83% | 83% | |
 
-(`data/benchmark/open_set.json`, `part2/open_set.json`, `alm_*_p3.json`, `clustered.json`. The
-older methods' BOM-75 figures are on their own draw of passages.) In the first three columns the
+(`data/benchmark/open_set.json`, `part2/open_set.json`, `alm_*_p3.json`, `clustered.json`. `prior_work.json`, `prior_work_classic_tails_p3.json`. The older methods' figures are on the same
+tests as our models'; on their own registered draw of 500 passages they are 79% and 76%.) In the first three columns the
 threshold is set on one half of the tests and applied to the other. In the last, the threshold for
 each author's tests is set only from other authors, which is the stricter version: 51-57%.
 
@@ -334,6 +334,6 @@ many times the 5% bar.
 | --- | --- | --- |
 | Picking the author from a short list | our models, any size | 92-93% of 1,070 tests on 55 authors, against 72-79% for the older methods; better than each of them counted by author (5.1) |
 | Picking from a list of 55 | our models, 125M or 297M | 86% |
-| Not mistaking period English for a person | period-trained models over a modern one | 22-47% false matches against 86-92% on the same 110 tests (5.2) |
+| Not mistaking period English for a person | period-trained models over a modern one | 22-47% false matches against 85-92% on the same 110 tests (5.2) |
 | Recognising a writer in biblical style | not known | three authors; too small to judge (5.3) |
 | Saying "none of these" | no method | no method near the 5% bar; normalisation did not help (5.4) |

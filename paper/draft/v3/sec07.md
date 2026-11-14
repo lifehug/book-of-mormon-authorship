@@ -9,8 +9,12 @@ where it differs.
 **Every candidate sample, every method.** Mean rank among the candidate samples on the 168 chunks
 (1 is closest) / chunks on which the sample ranks first. This list has 10 samples for the
 classical methods and 10 or 11 for the others; it does not include Joseph Smith's pooled ordinary
-prose, which is why some counts differ slightly from section 6.1. No sample other than Joseph
-Smith's 1828-29 revelations is called a match by any method at any size.
+prose, which is why some counts differ slightly from section 6.1. In this run no sample other
+than Joseph Smith's 1828-29 revelations is called a match by any method at any size. In the
+registered run, before the quotation rule, the candidate models also called 4 chunks for Pratt
+(125M) and 4, 3 and 3 for Cowdery's 1829 sample at the three sizes; all were quotation of the
+book (`data/blind/per_candidate.json`). The word counts in the table are the registered samples',
+before that rule removed quotations.
 
 | Sample (words after King James masking) | Burrows | Cosine | Gen. Imposters | Style 297M | Style 590M | Models 125M | Models 297M | Models 590M |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

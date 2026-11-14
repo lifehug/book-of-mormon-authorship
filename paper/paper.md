@@ -18,22 +18,25 @@ method was first measured on texts of known authorship, the plan was registered 
 results, and each later change is dated and labelled.
 
 **Borrowing.** With King James quotation set aside, 0.16% of the book matches earlier print, all
-of it stock religious phrasing. The books most often named as sources do not stand out from other
-books of their kind, and no book shares its plot. These tests cannot tell a translation from a
+of it stock religious phrasing. Two of the three books most often named as sources pass the registered rare-phrase
+rule, but do not stand out from other imitation scripture (a post hoc comparison), and no book
+shares its plot. These tests cannot tell a translation from a
 period book written to sound ancient, so the finding describes the text and not its origin.
 
 **Authorship among named candidates.** On 55 authors of known work our models pick the right
 author more often than every older method at every size. Among eight proposed candidates the
-closest writing is Joseph Smith's revelations of 1828-29, under six of eight methods; his
+closest writing is Joseph Smith's revelations of 1828-29, in six of eight rankings (five method families at their several sizes); his
 ordinary prose does not stand out under the language models. At the largest model size, writers
 who could not have written the book score as close, so register explains part of the result. No
 method can reliably answer "none of these".
 
-**The whole library (exploratory).** Searching all 23,872 authors with a style encoder that places
-the true author of a known book in its top ten 66% of the time (52% for a book unlike its
-author's other writing), no author rates closer than Joseph Smith's revelations. The nearest are
-other writers of revelation and religious testimony, and dead authors are over-represented among
-them: the head of the list is a kind of writing, not a set of possible authors.
+**The whole library (exploratory).** A style encoder that places the true author of a known book
+in its top ten 66% of the time among the 18,288 authors not known to have been dead (52% for a
+book unlike its author's other writing) was run on all 23,872 authors with the candidates
+beside them, at three profile sizes. A sample of Joseph Smith's revelations is first at two
+sizes and second at the third, behind one library author, John Wroe, who also published
+revelations. The rest of the head of the list is religious testimony, and dead authors are
+over-represented in it: it is a kind of writing, not a set of possible authors.
 
 The study does not argue for or against inspiration. Everything is public and rerunnable.
 
@@ -140,8 +143,9 @@ The national newspaper set holds almost nothing from western New York (47 New Yo
 State Historic Newspapers. The *Ontario Phoenix*, which W. W. Phelps edited before 1830, is not
 digitized anywhere. The whole is about 1.1 TB on disk.
 
-**What can be redistributed.** Harvard's and HathiTrust's texts are licensed and the Joseph Smith
-Papers transcripts are copyrighted; none is redistributed. Everything else is public, and for each
+**What can be redistributed.** Harvard's and HathiTrust's texts are licensed, and the Joseph Smith
+Papers transcripts and one purchased book (Rick Grunder's *Mormon Parallels*) are copyrighted;
+none is redistributed. Everything else is public, and for each
 restricted source the numbered steps to obtain the same access are published
 (`docs/replication.md`). Derived tables, labels and a checksum for every file are public, so a
 reader who obtains the sources can apply our labels without rerunning the pipeline. What is held,
@@ -371,7 +375,7 @@ printings of *The Late War* in the library had made its own phrases look common 
 | --- | --- | --- | --- | --- | --- |
 | *The First Book of Napoleon* (1809) | 12 | 5.45 | 63 | 0.0003 (0.0002-0.0031) | yes |
 | *The Late War* (1816) | 22 | 3.86 | 131 | 0.0006 (0.0004-0.0017) | yes |
-| *View of the Hebrews* (1825) | 2 | 0.37 | 9,496 | 0.046 (0.017-1.0) | no |
+| *View of the Hebrews* (the 1823 edition's text) | 2 | 0.37 | 9,496 | 0.046 (0.017-1.0) | no |
 | Spalding, *Manuscript Story* | 1 | 0.24 | - | 0.068 | no |
 
 *The Late War* and *Napoleon* pass, as Johnson and Johnson reported. But both are imitations of
@@ -421,8 +425,8 @@ large mostly measures biblical register: many period books retell or expound scr
 **Proposed parallels (exploratory, not registered).** Of the 500 parallels proposed in Rick
 Grunder's *Mormon Parallels*, 139 match firmly to works in the catalog. Their sources score
 slightly closer than other volumes (median percentile 91.0 against 87.4, p 0.087), as would be
-expected from how they were chosen, and only Josephus stands out
-(`data/semantic/grunder_ranks.json`).
+expected from how they were chosen, and two firmly matched entries stand out, Josephus and the Owen-Campbell *Debate on the
+Evidences of Christianity* (4 of 99 volumes; `data/semantic/grunder_ranks.json`).
 
 **Reading the surfaced pairs.** Every pair of passages the searches brought up, 1,069 in all, was
 then read and labelled as King James wording, period stock phrasing, or specific to the two texts.
@@ -443,8 +447,10 @@ chance-corrected figure was computed). Two event sequences are then aligned, and
 tested against 1,000 shuffles of the source's order (Amendment 15; `data/semantic/skeleton/`).
 
 **Checked first on a known retelling.** Josephus's *Antiquities* retells Genesis to Judges. The
-test finds 108 events in the same order as the Bible (p 0.001). It can find a retold story when
-there is one.
+test finds 108 events in the same order as the Bible (p 0.001). The registered control had three texts: the test also finds the *Testaments of the
+Twelve Patriarchs* (8 events, p 0.003) and does not find Ilive's *Book of Jasher* (4 events,
+p 0.75; `data/semantic/skeleton/controls.json`). It can find a retold story when the retelling
+is close; it missed one of three.
 
 **Result.** No book shares the Book of Mormon's plot. Among the 20 leading sources of the
 paraphrase search the longest shared run is 9 of its 1,421 events (an edition of Josephus, p 0.24).
@@ -455,16 +461,16 @@ Hebrews* 1823, 3 events (p 0.97) and 1825, 2 (p 1.0); Spalding, 4 (p 0.67); *The
 One book of the 49 in the Indian-origins group does reach the registered level: Benjamin Church's
 *History of Philip's War* (p 0.008). The shared run is six events from one stretch of each book,
 the common shape of military correspondence: a commander writes angrily to a governor, the governor
-replies, troops march. With 49 books tested, one p-value that small arises by chance about 4 times
-in 10. It is reported as it came out and read as chance.
+replies, troops march. With 49 books tested, one p-value that small arises by chance about 1 time in 3. It is reported as it came out and read as chance.
 
 ### 3.5 The Letter's three books, one by one
 
 The *Letter to a CES Director* (Jeremy Runnells, 2013) is the most widely read critical
 compilation. Its Book of Mormon section names three books as sources or parallels: *View of the
 Hebrews*, *The Late War* and *The First Book of Napoleon* (`docs/ces-letter-books.md`, checked
-against the Letter's text). Each claim was registered with its decision rule before any result
-(`data/claims/register.yaml`). Access scores run from 3 (documented within Joseph Smith's reach
+against the Letter's text). Each claim was registered with its decision rule (`data/claims/register.yaml`): claims c01-c12
+on 2026-10-18, before any result; c13-c17, which include Spalding and *The First Book of
+Napoleon*, on 2026-11-06, before the blind run and after the borrowing results existed. Access scores run from 3 (documented within Joseph Smith's reach
 before mid-1829) to 0 (no evidence of circulation in the region); availability is not use
 (`data/access/access_table.csv`).
 
@@ -771,12 +777,12 @@ text, in place of our base models: same samples, same settings, same 110 tests
 | Base model | Trained on | Right author | False matches |
 | --- | --- | --- | --- |
 | GPT-2, 124M | modern text | 90.0% | 92% |
-| GPT-2, 355M | modern text | 94.5% | 86% |
+| GPT-2, 355M | modern text | 94.5% | 85% |
 | Ours, 125M | 1780-1830 only | 93.6% | 47% |
 | Ours, 297M | 1780-1830 only | 99.1% | 38% |
 | Ours, 590M | 1780-1830 only | 98.2% | 22% |
 
-GPT-2 picks the right author nearly as often. The difference is in false matches: 86-92% for GPT-2
+GPT-2 picks the right author nearly as often. The difference is in false matches: 85-92% for GPT-2
 against 22-47% for the period models. A modern model fine-tuned on any early nineteenth-century
 author learns, first of all, what early nineteenth-century English looks like, and then finds that
 every period text fits. A model that already knows the period's English has only the author left
@@ -848,11 +854,11 @@ sets that threshold where 95% of true authors clear it, and allows at most 5% fa
 | Our models, 125M | 47% | 75% | 56% | 57% |
 | Our models, 297M | 38% | 67% | 58% | 52% |
 | Our models, 590M | 22% | 63% | 62% | 51% |
-| General Imposters | 83% | 79% | | |
-| ENSC (its own "none") | 78% | 76% | | |
+| General Imposters | 83% | 100% | 100% | |
+| ENSC (its own "none") | 78% | 83% | 83% | |
 
-(`data/benchmark/open_set.json`, `part2/open_set.json`, `alm_*_p3.json`, `clustered.json`. The
-older methods' BOM-75 figures are on their own draw of passages.) In the first three columns the
+(`data/benchmark/open_set.json`, `part2/open_set.json`, `alm_*_p3.json`, `clustered.json`. `prior_work.json`, `prior_work_classic_tails_p3.json`. The older methods' figures are on the same
+tests as our models'; on their own registered draw of 500 passages they are 79% and 76%.) In the first three columns the
 threshold is set on one half of the tests and applied to the other. In the last, the threshold for
 each author's tests is set only from other authors, which is the stricter version: 51-57%.
 
@@ -961,7 +967,7 @@ many times the 5% bar.
 | --- | --- | --- |
 | Picking the author from a short list | our models, any size | 92-93% of 1,070 tests on 55 authors, against 72-79% for the older methods; better than each of them counted by author (5.1) |
 | Picking from a list of 55 | our models, 125M or 297M | 86% |
-| Not mistaking period English for a person | period-trained models over a modern one | 22-47% false matches against 86-92% on the same 110 tests (5.2) |
+| Not mistaking period English for a person | period-trained models over a modern one | 22-47% false matches against 85-92% on the same 110 tests (5.2) |
 | Recognising a writer in biblical style | not known | three authors; too small to judge (5.3) |
 | Saying "none of these" | no method | no method near the 5% bar; normalisation did not help (5.4) |
 
@@ -1152,7 +1158,8 @@ models; `data/blind/a54/report.json`).
 | 297M | 1 | 2 or 3 for every slice | 0 of 12 | Ilive 2-24; Dowling 3-13 |
 | 590M | 5 (4 in two pools) | 1 to 5 | 10 of 12 | Ilive 1-12; Dowling 2-7 |
 
-At the two smaller sizes every slice, from April 1830 to 1834, lands directly behind the 1828-29
+At the two smaller sizes every slice, from April 1830 to 1834, lands second or third (second at
+125M, except one slice that is first; second or third at 297M), next to the 1828-29
 pages, where the placebo writers' slices range widely. At 590M the pool compresses and ten of the
 twelve slices are at or above the 1828-29 model, as Ilive's and Dowling's are there.
 
@@ -1313,7 +1320,7 @@ revelations share with the book more than a possible author. They share a regist
 King James English), a channel (dictated by Joseph Smith in the same years, taken down by the same
 circle of scribes, unedited) and, for the 1828-29 sample, the same months. At 590M, writing in
 that register by a man who died in 1763 and a man born in 1844 ranks as high. A revelation and a
-book presented as scripture might resemble each other whoever, or whatever, their source.
+book presented as scripture might resemble each other whatever their source.
 
 Neither reading is the study's conclusion. The text was dictated by Joseph Smith on every account
 of its origin, and no stylometric method separates the person who dictated a text from the person
@@ -1332,8 +1339,12 @@ where it differs.
 **Every candidate sample, every method.** Mean rank among the candidate samples on the 168 chunks
 (1 is closest) / chunks on which the sample ranks first. This list has 10 samples for the
 classical methods and 10 or 11 for the others; it does not include Joseph Smith's pooled ordinary
-prose, which is why some counts differ slightly from section 6.1. No sample other than Joseph
-Smith's 1828-29 revelations is called a match by any method at any size.
+prose, which is why some counts differ slightly from section 6.1. In this run no sample other
+than Joseph Smith's 1828-29 revelations is called a match by any method at any size. In the
+registered run, before the quotation rule, the candidate models also called 4 chunks for Pratt
+(125M) and 4, 3 and 3 for Cowdery's 1829 sample at the three sizes; all were quotation of the
+book (`data/blind/per_candidate.json`). The word counts in the table are the registered samples',
+before that rule removed quotations.
 
 | Sample (words after King James masking) | Burrows | Cosine | Gen. Imposters | Style 297M | Style 590M | Models 125M | Models 297M | Models 590M |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1718,7 +1729,8 @@ Reported because the study's guarantee is that everything can be checked.
 
 Seventeen public claims about the Book of Mormon's text, taken from critical, apologetic and
 academic sources, were written into a register together with the rule that would decide each one,
-before any result existed (`data/claims/register.yaml`). The verdicts below apply those rules
+(`data/claims/register.yaml`): twelve on 2026-10-18, before any result existed, and five more
+(c13-c17) on 2026-11-06, before the blind run and after the borrowing results. The verdicts below apply those rules
 (`docs/claims-verdicts.md`). Four verdicts are allowed: supported, contradicted, mixed, and not
 addressed. Four claims were marked untestable by text analysis from the start. The register takes
 no side, and an untestable claim is not a contradicted one.
@@ -1783,15 +1795,15 @@ reached them. Each is stated with the limit that belongs to it.
    of Mormon (Church's *History of Philip's War*, six generic events of military correspondence,
    p 0.008) is about what chance gives among 49 books (section 3).
 
-2. **The named books do not stand out.** *The Late War* and *The First Book of Napoleon* pass the
+2. **The named books do not stand out within their genre (a post hoc comparison).** *The Late War* and *The First Book of Napoleon* pass the
    registered rare-phrase rule, and a reprint of Ilive's *Book of Jasher* shares more: the overlap
    belongs to the genre of imitation scripture, not to a source. *View of the Hebrews* ranks first
    of 49 books on its subject for paraphrase and at the 85th percentile against 500 equally
    religious books, short of the top-1% bar. Spalding's surviving manuscript shares no passage,
    phrase density or plot (section 3).
 
-3. **Earlier authorship studies are fragile.** Five were reproduced with their own methods and
-   data. Their answers follow choices that were not tested: the 2008 study's Rigdon attribution
+3. **Earlier authorship studies are fragile.** Five were reproduced with their own methods, one of
+   them on its authors' own deposited data. Their answers follow choices that were not tested: the 2008 study's Rigdon attribution
    falls from 169 chapters to 92 when other genuine Rigdon text is used, and the error of the
    study that allowed "none of the candidates" swings from 80% to 0% with sample length
    (section 4).
@@ -1803,14 +1815,14 @@ reached them. Each is stated with the limit that belongs to it.
    13 to 21 points of accuracy (Holm-corrected p at most 0.0014). The 32 authors added last
    repeat it on their own. This took a correction to establish: the first count, by test,
    overstated it, and 23 authors were not enough (Amendments 52, 55, 56). Training on the period
-   matters: a modern model (GPT-2) used the same way makes false matches 86-92% of the time on
+   matters: a modern model (GPT-2) used the same way makes false matches 85-92% of the time on
    the first benchmark, the period models 22-47% (section 5).
 
 5. **Among the candidates, the closest writing is Joseph Smith's revelation voice.** His 1828-29
    revelations rank first for the language models at every size (159, 168 and 131 of 168 chunks),
    for both style encoders and for Cosine Delta. With every sample cut to the same size they
    still rank first at 125M and 297M, and no writer who could not have written the book reaches
-   them there; twelve slices of his 1830-34 revelations land directly behind them. Three
+   them there; twelve slices of his 1830-34 revelations land second or third, next to them. Three
    qualifications hold just as firmly. It is his revelations and not, for these methods, his
    ordinary prose. At 590M other imitation scripture ranks as high, including a writer born in
    1844. And Burrows' Delta and General Imposters order the candidates differently. Two readings
@@ -1850,7 +1862,8 @@ what it is or how it came to be.
 **No method can say "none of these".** This is stated once, here, for the whole paper. The
 registered bar for a usable verdict was at most 5% false matches while still recognising 95% of
 true authors. No method passes it. At that point the language models call a stranger's text a
-match 51 to 57% of the time on the 430-test benchmark. Read the other way round, at a 5%
+match 51 to 57% of the time on the 430-test benchmark when each author is held out in turn
+(Amendment 55, post hoc), and 63 to 75% on the registered split. Read the other way round, at a 5%
 false-match target they confirm only 38 to 61% of true authors. The standard remedy from speaker
 verification, score normalisation, does not carry over to authors it has not seen (17 to 26%
 false matches against a 5% target). General Imposters and the style encoders cannot return
@@ -1956,7 +1969,7 @@ What stands behind the results is that every step can be found and rerun.
   made after results were seen are also listed in `paper/deviations.md` and in section 9.1.
 - **Code and configuration.** https://github.com/lifehug/book-of-mormon-authorship. Every
   analytic value (threshold, cutoff, chunk size, seed, model choice) comes from
-  `config/preregistered.yaml`, and every results file records that file's SHA-256 and the git
+  `config/preregistered.yaml`, and every results file cited in this paper records that file's SHA-256 and the git
   commit that produced it. `eval/README.md` lists every command: what it does, what it needs,
   what it writes, and how long it takes.
 - **Results and data tables.** The catalog, genre labels, derived tables and every results file
@@ -2147,8 +2160,10 @@ against other authors' twenty. Where a candidate has more text than the profile 
 slices were scored too: the 1830-34 revelations' 31 two-episode slices range from 1st to 67th
 (median 1st); Pratt's 47 range from 1st to 2,998th (median 221st).
 
-No author in the library scores closer than Joseph Smith's revelations at any size they can
-enter. The library's own head of the list is the same at the two larger sizes: John Wroe
+One library author places ahead of Joseph Smith's revelations at one of the three sizes: at 11
+episodes John Wroe (0.630) is ahead of the 1830-34 revelations (0.615), which are second. At the
+other two sizes a revelation sample is first, and no other library author is ahead of them at
+any size. The library's own head of the list is the same at the two larger sizes: John Wroe
 (1782-1863), then William Bayly (d. 1810), William Savery (d. 1804), John Field (d. 1723), David
 Willson (1778-1866), Elizabeth Stirredge (d. 1706), James Backhouse (1794-1869), with several
 names the catalog does not date. Read against outside biography, which this study did not
@@ -2175,7 +2190,8 @@ place far apart, as in section 6. Given 14.3, this is the weaker of the two inst
 ### 14.6 Reading and limits
 
 The search of every author returns the finding of section 6 on a list three thousand times
-longer: the writing closest to the Book of Mormon is Joseph Smith's revelations, and after them
+longer: the writing closest to the Book of Mormon is Joseph Smith's revelations, first at two of
+three profile sizes and second to one other writer of revelations at the third, and after them
 the revelations and testimonies of other people, many of them long dead. On known books the same
 search places the true author first 38% of the time and in the top ten 66% of the time; for a
 book unlike its author's other writing, 29% and 52%; at the small profile size that admits the

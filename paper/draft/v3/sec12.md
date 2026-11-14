@@ -11,7 +11,8 @@ what it is or how it came to be.
 **No method can say "none of these".** This is stated once, here, for the whole paper. The
 registered bar for a usable verdict was at most 5% false matches while still recognising 95% of
 true authors. No method passes it. At that point the language models call a stranger's text a
-match 51 to 57% of the time on the 430-test benchmark. Read the other way round, at a 5%
+match 51 to 57% of the time on the 430-test benchmark when each author is held out in turn
+(Amendment 55, post hoc), and 63 to 75% on the registered split. Read the other way round, at a 5%
 false-match target they confirm only 38 to 61% of true authors. The standard remedy from speaker
 verification, score normalisation, does not carry over to authors it has not seen (17 to 26%
 false matches against a 5% target). General Imposters and the style encoders cannot return

@@ -11,15 +11,15 @@ reached them. Each is stated with the limit that belongs to it.
    of Mormon (Church's *History of Philip's War*, six generic events of military correspondence,
    p 0.008) is about what chance gives among 49 books (section 3).
 
-2. **The named books do not stand out.** *The Late War* and *The First Book of Napoleon* pass the
+2. **The named books do not stand out within their genre (a post hoc comparison).** *The Late War* and *The First Book of Napoleon* pass the
    registered rare-phrase rule, and a reprint of Ilive's *Book of Jasher* shares more: the overlap
    belongs to the genre of imitation scripture, not to a source. *View of the Hebrews* ranks first
    of 49 books on its subject for paraphrase and at the 85th percentile against 500 equally
    religious books, short of the top-1% bar. Spalding's surviving manuscript shares no passage,
    phrase density or plot (section 3).
 
-3. **Earlier authorship studies are fragile.** Five were reproduced with their own methods and
-   data. Their answers follow choices that were not tested: the 2008 study's Rigdon attribution
+3. **Earlier authorship studies are fragile.** Five were reproduced with their own methods, one of
+   them on its authors' own deposited data. Their answers follow choices that were not tested: the 2008 study's Rigdon attribution
    falls from 169 chapters to 92 when other genuine Rigdon text is used, and the error of the
    study that allowed "none of the candidates" swings from 80% to 0% with sample length
    (section 4).
@@ -31,14 +31,14 @@ reached them. Each is stated with the limit that belongs to it.
    13 to 21 points of accuracy (Holm-corrected p at most 0.0014). The 32 authors added last
    repeat it on their own. This took a correction to establish: the first count, by test,
    overstated it, and 23 authors were not enough (Amendments 52, 55, 56). Training on the period
-   matters: a modern model (GPT-2) used the same way makes false matches 86-92% of the time on
+   matters: a modern model (GPT-2) used the same way makes false matches 85-92% of the time on
    the first benchmark, the period models 22-47% (section 5).
 
 5. **Among the candidates, the closest writing is Joseph Smith's revelation voice.** His 1828-29
    revelations rank first for the language models at every size (159, 168 and 131 of 168 chunks),
    for both style encoders and for Cosine Delta. With every sample cut to the same size they
    still rank first at 125M and 297M, and no writer who could not have written the book reaches
-   them there; twelve slices of his 1830-34 revelations land directly behind them. Three
+   them there; twelve slices of his 1830-34 revelations land second or third, next to them. Three
    qualifications hold just as firmly. It is his revelations and not, for these methods, his
    ordinary prose. At 590M other imitation scripture ranks as high, including a writer born in
    1844. And Burrows' Delta and General Imposters order the candidates differently. Two readings

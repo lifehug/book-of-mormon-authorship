@@ -130,7 +130,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <li><b>The book copies almost nothing.</b> Set the King James Bible aside and 0.16% of it matches earlier books. The books people name as sources don't stand out from other books of their kind.</li>
 <li><b>Of the eight people usually proposed, the closest writing is Joseph Smith's revelations.</b> Six of eight methods rank them first, including all three of my models. His letters and journals don't stand out the same way.</li>
 <li><b>I can't tell you the author is one of those eight.</b> None of the methods, mine included, can reliably say "it's nobody on this list".</li>
-<li><b>So I checked everybody: 23,872 authors.</b> None rates closer than Joseph Smith's revelations. The nearest are other people writing down revelations and religious testimony, many of them long dead. The closest writing is a voice, and my tools can't tell the man from the voice.</li>
+<li><b>So I checked everybody: 23,872 authors.</b> His revelations come out first in two of the three ways I ran it. In the third, one library author is ahead of them: an English prophet who was dictating his own revelations in the same years. The rest of the top is religious testimony, much of it by people long dead. The closest writing is a voice, and my tools can't tell the man from the voice.</li>
 </ol>
 </div>
 
@@ -413,6 +413,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <li><b>One lucky sample.</b> Early rankings used one or two random slices of each writer. They now use up to twelve, spread evenly.</li>
 <li><b>My best method wasn't the best method.</b> I planned the whole-library search around the models that won in section 4. Tested on the real job, a different book and equal amounts of text, a cheaper tool beat them 66% to 44%. I'd have built the wrong thing if I hadn't tested first.</li>
 <li><b>A model that memorised.</b> My first fingerprint model learned its training authors by heart and nothing that carried over. The evidence had been sitting in its own training log for a week.</li>
+<li><b>"Nobody rates closer."</b> That is what my first write-up of section 9 said. A fact-check against the results file caught it: in one of the three versions John Wroe is ahead of the revelations. I'd been reading "first or second" as "first".</li>
 <li><b>A result saved under the wrong name.</b> One run in section 9 wrote its answer to a file nobody was looking for, and skipped the most important sample because it came out 88 tokens short. I paid for it twice.</li>
 </ul>
 
@@ -494,7 +495,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/library_bom.py">eval/library_bom.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/bom_ranking.json">data/sweep/bom_ranking.json</a></p>
 </figure>
 
-<p>Nobody in the library rates closer than Joseph Smith's revelations. In the small version his 1828&ndash;29 revelations are first of 23,872. His 1830&ndash;34 revelations are first, second and first across the three versions. His ordinary prose is around 19th to 30th, which is high but not at the top. Ethan Smith and Solomon Spalding are hundreds or thousands of places down.</p>
+<p>Almost nobody in the library rates closer than Joseph Smith's revelations. In the small version his 1828&ndash;29 revelations are first of 23,872. His 1830&ndash;34 revelations are first, second and first across the three versions. The one time they are second, the man ahead of them is John Wroe. His ordinary prose is around 19th to 30th, which is high but not at the top. Ethan Smith and Solomon Spalding are hundreds or thousands of places down.</p>
 
 <p>Now look at who the library puts at the top. First in two of the three versions is John Wroe, an English prophet who was dictating his own revelations in the 1820s. After him come Quaker ministers' journals and letters: William Savery, Elizabeth Stirredge, Elias Hicks, James Backhouse. And David Willson, who led a breakaway sect in Upper Canada. These are people writing down what they believe God told them, in the first person, in Bible English.</p>
 
@@ -517,7 +518,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <h3>What this says, and what it doesn't</h3>
 
-<p>I searched every author in the library. None rates closer to the Book of Mormon than Joseph Smith's revelations. The nearest library writers are other people writing revelation and religious testimony, many of them long dead.</p>
+<p>I searched every author in the library. Joseph Smith's revelations come out first in two of three versions and second in the third, behind one other man who wrote revelations. The nearest library writers after that are other people writing revelation and religious testimony, many of them long dead.</p>
 
 <p>That is Phase 1's finding again, on a list three thousand times longer. The closest writing I can find anywhere is the revelation voice: his, and other people's. What I can't do is tell the man from the kind of writing. A believer and a sceptic can both read this result and find it unsurprising, for opposite reasons, and nothing in my tools separates them.</p>
 

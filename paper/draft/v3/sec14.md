@@ -151,8 +151,10 @@ against other authors' twenty. Where a candidate has more text than the profile 
 slices were scored too: the 1830-34 revelations' 31 two-episode slices range from 1st to 67th
 (median 1st); Pratt's 47 range from 1st to 2,998th (median 221st).
 
-No author in the library scores closer than Joseph Smith's revelations at any size they can
-enter. The library's own head of the list is the same at the two larger sizes: John Wroe
+One library author places ahead of Joseph Smith's revelations at one of the three sizes: at 11
+episodes John Wroe (0.630) is ahead of the 1830-34 revelations (0.615), which are second. At the
+other two sizes a revelation sample is first, and no other library author is ahead of them at
+any size. The library's own head of the list is the same at the two larger sizes: John Wroe
 (1782-1863), then William Bayly (d. 1810), William Savery (d. 1804), John Field (d. 1723), David
 Willson (1778-1866), Elizabeth Stirredge (d. 1706), James Backhouse (1794-1869), with several
 names the catalog does not date. Read against outside biography, which this study did not
@@ -179,7 +181,8 @@ place far apart, as in section 6. Given 14.3, this is the weaker of the two inst
 ### 14.6 Reading and limits
 
 The search of every author returns the finding of section 6 on a list three thousand times
-longer: the writing closest to the Book of Mormon is Joseph Smith's revelations, and after them
+longer: the writing closest to the Book of Mormon is Joseph Smith's revelations, first at two of
+three profile sizes and second to one other writer of revelations at the third, and after them
 the revelations and testimonies of other people, many of them long dead. On known books the same
 search places the true author first 38% of the time and in the top ten 66% of the time; for a
 book unlike its author's other writing, 29% and 52%; at the small profile size that admits the

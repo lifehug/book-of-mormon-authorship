@@ -185,7 +185,8 @@ models; `data/blind/a54/report.json`).
 | 297M | 1 | 2 or 3 for every slice | 0 of 12 | Ilive 2-24; Dowling 3-13 |
 | 590M | 5 (4 in two pools) | 1 to 5 | 10 of 12 | Ilive 1-12; Dowling 2-7 |
 
-At the two smaller sizes every slice, from April 1830 to 1834, lands directly behind the 1828-29
+At the two smaller sizes every slice, from April 1830 to 1834, lands second or third (second at
+125M, except one slice that is first; second or third at 297M), next to the 1828-29
 pages, where the placebo writers' slices range widely. At 590M the pool compresses and ten of the
 twelve slices are at or above the 1828-29 model, as Ilive's and Dowling's are there.
 
@@ -346,7 +347,7 @@ revelations share with the book more than a possible author. They share a regist
 King James English), a channel (dictated by Joseph Smith in the same years, taken down by the same
 circle of scribes, unedited) and, for the 1828-29 sample, the same months. At 590M, writing in
 that register by a man who died in 1763 and a man born in 1844 ranks as high. A revelation and a
-book presented as scripture might resemble each other whoever, or whatever, their source.
+book presented as scripture might resemble each other whatever their source.
 
 Neither reading is the study's conclusion. The text was dictated by Joseph Smith on every account
 of its origin, and no stylometric method separates the person who dictated a text from the person

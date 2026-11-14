@@ -12,7 +12,7 @@ What stands behind the results is that every step can be found and rerun.
   made after results were seen are also listed in `paper/deviations.md` and in section 9.1.
 - **Code and configuration.** https://github.com/lifehug/book-of-mormon-authorship. Every
   analytic value (threshold, cutoff, chunk size, seed, model choice) comes from
-  `config/preregistered.yaml`, and every results file records that file's SHA-256 and the git
+  `config/preregistered.yaml`, and every results file cited in this paper records that file's SHA-256 and the git
   commit that produced it. `eval/README.md` lists every command: what it does, what it needs,
   what it writes, and how long it takes.
 - **Results and data tables.** The catalog, genre labels, derived tables and every results file

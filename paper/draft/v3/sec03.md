@@ -42,7 +42,7 @@ printings of *The Late War* in the library had made its own phrases look common 
 | --- | --- | --- | --- | --- | --- |
 | *The First Book of Napoleon* (1809) | 12 | 5.45 | 63 | 0.0003 (0.0002-0.0031) | yes |
 | *The Late War* (1816) | 22 | 3.86 | 131 | 0.0006 (0.0004-0.0017) | yes |
-| *View of the Hebrews* (1825) | 2 | 0.37 | 9,496 | 0.046 (0.017-1.0) | no |
+| *View of the Hebrews* (the 1823 edition's text) | 2 | 0.37 | 9,496 | 0.046 (0.017-1.0) | no |
 | Spalding, *Manuscript Story* | 1 | 0.24 | - | 0.068 | no |
 
 *The Late War* and *Napoleon* pass, as Johnson and Johnson reported. But both are imitations of
@@ -92,8 +92,8 @@ large mostly measures biblical register: many period books retell or expound scr
 **Proposed parallels (exploratory, not registered).** Of the 500 parallels proposed in Rick
 Grunder's *Mormon Parallels*, 139 match firmly to works in the catalog. Their sources score
 slightly closer than other volumes (median percentile 91.0 against 87.4, p 0.087), as would be
-expected from how they were chosen, and only Josephus stands out
-(`data/semantic/grunder_ranks.json`).
+expected from how they were chosen, and two firmly matched entries stand out, Josephus and the Owen-Campbell *Debate on the
+Evidences of Christianity* (4 of 99 volumes; `data/semantic/grunder_ranks.json`).
 
 **Reading the surfaced pairs.** Every pair of passages the searches brought up, 1,069 in all, was
 then read and labelled as King James wording, period stock phrasing, or specific to the two texts.
@@ -114,8 +114,10 @@ chance-corrected figure was computed). Two event sequences are then aligned, and
 tested against 1,000 shuffles of the source's order (Amendment 15; `data/semantic/skeleton/`).
 
 **Checked first on a known retelling.** Josephus's *Antiquities* retells Genesis to Judges. The
-test finds 108 events in the same order as the Bible (p 0.001). It can find a retold story when
-there is one.
+test finds 108 events in the same order as the Bible (p 0.001). The registered control had three texts: the test also finds the *Testaments of the
+Twelve Patriarchs* (8 events, p 0.003) and does not find Ilive's *Book of Jasher* (4 events,
+p 0.75; `data/semantic/skeleton/controls.json`). It can find a retold story when the retelling
+is close; it missed one of three.
 
 **Result.** No book shares the Book of Mormon's plot. Among the 20 leading sources of the
 paraphrase search the longest shared run is 9 of its 1,421 events (an edition of Josephus, p 0.24).
@@ -126,16 +128,16 @@ Hebrews* 1823, 3 events (p 0.97) and 1825, 2 (p 1.0); Spalding, 4 (p 0.67); *The
 One book of the 49 in the Indian-origins group does reach the registered level: Benjamin Church's
 *History of Philip's War* (p 0.008). The shared run is six events from one stretch of each book,
 the common shape of military correspondence: a commander writes angrily to a governor, the governor
-replies, troops march. With 49 books tested, one p-value that small arises by chance about 4 times
-in 10. It is reported as it came out and read as chance.
+replies, troops march. With 49 books tested, one p-value that small arises by chance about 1 time in 3. It is reported as it came out and read as chance.
 
 ### 3.5 The Letter's three books, one by one
 
 The *Letter to a CES Director* (Jeremy Runnells, 2013) is the most widely read critical
 compilation. Its Book of Mormon section names three books as sources or parallels: *View of the
 Hebrews*, *The Late War* and *The First Book of Napoleon* (`docs/ces-letter-books.md`, checked
-against the Letter's text). Each claim was registered with its decision rule before any result
-(`data/claims/register.yaml`). Access scores run from 3 (documented within Joseph Smith's reach
+against the Letter's text). Each claim was registered with its decision rule (`data/claims/register.yaml`): claims c01-c12
+on 2026-10-18, before any result; c13-c17, which include Spalding and *The First Book of
+Napoleon*, on 2026-11-06, before the blind run and after the borrowing results existed. Access scores run from 3 (documented within Joseph Smith's reach
 before mid-1829) to 0 (no evidence of circulation in the region); availability is not use
 (`data/access/access_table.csv`).
 
