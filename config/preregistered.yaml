@@ -585,6 +585,11 @@ list_size:                        # Amendment 58 (BOM-90): accuracy against cand
   alpha: 0.05
   out: data/benchmark/list_size.json
 
+nobody:                           # BOM-96 (exploratory): existing verification tools beside ours, on known books
+  books: 200                      # known books used (all of the sweep's first 200)
+  others: 10                      # false candidates per book, seeded, from the other known-book authors
+  seed: bom96-nobody
+
 closeup:                          # semantic.closeup (exploratory; examples for the reader, no new test)
   show: 5                         # closest pairs, and weakest-matched passages or events, shown per side
   words: 60                       # a passage is shown by its first 60 words
