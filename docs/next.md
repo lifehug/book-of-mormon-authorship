@@ -17,7 +17,8 @@ labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament)
 ## Running
 
 - **BOM-89 further known books: done 2026-11-14.** 727 known books: true author first 34%, top 10 59%, top 100 76.5%; cross genre (212) 17 / 38 / 56. In the paper, blog and outline. Details on issue #100.
-- **BOM-96 LambdaG (Mac, tmux `lambdag`, log `logs/lambdag.log`; started 2026-11-14 about 11:00, about 2 h at 33 s a book):** `KMP_DUPLICATE_LIB_OK=TRUE RETICULATE_PYTHON=.venv/bin/python Rscript scripts/lambdag.R` (resumes by book). Then `python -m eval.nobody report`, add the author models and two modern neural verifiers, write the section. Details on issue #107.
+- **BOM-96 "the problem of nobody": done 2026-11-14.** `data/sweep/nobody.json`: at 95% of true authors confirmed, false pairs accepted: second encoder 33%, LambdaG 56%, author models 78-88%, two modern style models 83-88% (bar 5%). In paper 5.4, the blog page (section 4) and the blog log. Left: read the cited papers in the originals; LUAR not run. Issue #107.
+- **Nothing is running.**
 - No GPU pods exist (the stopped pod from the failed run was deleted 2026-11-14 with the owner's OK).
 
 ## Now (owner, 2026-11-14): strengthen the paper, then write it. One paper, Phase 1 leads.
