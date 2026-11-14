@@ -34,6 +34,7 @@ Usage::
 
     python -m eval.library_bom embed     # Mac GPU, minutes
     python -m eval.library_bom rank
+    python -m eval.library_bom second pilot    # after eval.library_pool run pilot --name _bom
 """
 
 from __future__ import annotations
@@ -149,6 +150,8 @@ def rank() -> int:
                                "died": people[swept[j]]["died"],
                                "date_source": people[swept[j]]["date_source"]}
                               for i, j in enumerate(order[: ls["top"]])]  # fmt: skip
+                if name == "full":  # the authors given author models as a second opinion
+                    res["second_opinion"] = [swept[j] for j in order[: ls["second_opinion"]]]
                 dead = status[order] == "dead"
                 res["dead_in_top"] = {str(k): int(dead[:k].sum()) for k in ls["dead_k"]}
                 res["dead_share_of_library"] = round(float((status == "dead").mean()), 4)
@@ -188,10 +191,47 @@ def rank() -> int:
     return 0
 
 
+def second(size: str) -> int:
+    """The second opinion: equal-dose author models (``eval.library_pool run <size> --name
+    _bom``) for the encoder's top library authors and the candidate units, ranked by mean score
+    over the sealed chunks (lower is closer), per dose; and how often each is closest."""
+    import pyarrow.parquet as pq
+
+    from eval.library_pool import dose_tables
+
+    z = np.load(Path("data/sweep") / f"pool_bom_{size}.npz")
+    people = {r["author"]: r for r in pq.read_table("data/sweep/people.parquet").to_pylist()}
+    doc = {**stamp(), "exploratory": True, "size": size, "chunks": int(z["scores"].shape[0]),
+           "doses": {}}  # fmt: skip
+    for dose, (units, X) in dose_tables(
+        z["scores"].astype(np.float64), z["models"].tolist()
+    ).items():
+        mean, first = X.mean(axis=0), np.bincount(X.argmin(axis=1), minlength=len(units))
+        order = np.argsort(mean)
+        doc["doses"][dose] = [
+            {"rank": i + 1, "unit": units[j], "mean_score": round(float(mean[j]), 4),
+             "closest_on_chunks": int(first[j]),
+             "kind": "candidate" if units[j].startswith("cand__") else "library",
+             "status": people.get(units[j], {}).get("status")}
+            for i, j in enumerate(order)]  # fmt: skip
+        print(f"\n== {dose}: {len(units)} units, {X.shape[0]} chunks")
+        for r in doc["doses"][dose]:
+            if r["rank"] <= 15 or r["kind"] == "candidate":
+                tag = r["status"] or r["kind"]
+                print(f"  {r['rank']:3d} {r['mean_score']:+.4f} first on "
+                      f"{r['closest_on_chunks']:3d} {tag:9s} {r['unit']}")  # fmt: skip
+    out = Path("data/sweep") / f"bom_second_opinion_{size}.json"
+    out.write_text(json.dumps(doc, indent=1) + "\n")
+    print(f"-> {out}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["embed", "rank"])
-    return {"embed": embed, "rank": rank}[ap.parse_args(argv).cmd]()
+    ap.add_argument("cmd", choices=["embed", "rank", "second"])
+    ap.add_argument("size", nargs="?", default="pilot", choices=["pilot", "base", "mid"])
+    a = ap.parse_args(argv)
+    return second(a.size) if a.cmd == "second" else {"embed": embed, "rank": rank}[a.cmd]()
 
 
 if __name__ == "__main__":

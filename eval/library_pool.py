@@ -29,6 +29,8 @@ Usage::
     python -m eval.library_pool run pilot [--limit 20] [--micro-batch 8]   # GPU
         -> data/sweep/pool_<size>.npz
     python -m eval.library_pool report pilot          # -> data/sweep/pool_report_<size>.json
+    python -m eval.library_pool prepare-bom           # BOM-95 second opinion: plan_bom.json.gz
+    python -m eval.library_pool run pilot --name _bom # GPU -> data/sweep/pool_bom_<size>.npz
 """
 
 from __future__ import annotations
@@ -119,7 +121,36 @@ def _path(work: Path, name: str) -> Path:
     return work / (hashlib.sha1(name.encode()).hexdigest() + ".npy")
 
 
-def run(size: str, micro: int, limit: int | None) -> int:
+def prepare_bom() -> int:
+    """BOM-95's second opinion: the encoder's top library authors (full-profile ranking) and the
+    Phase 1 candidate units as training text, the sealed Book of Mormon chunks as tests, all in
+    the sweep's word form (``classic.features.tokenize``)."""
+    from classic.features import tokenize
+    from eval.js_later import _refs
+    from eval.library_bom import KEY, SEALED
+    from eval.library_bom import OUT as RANKING
+    from sweep.index import _read
+
+    top = json.loads(RANKING.read_text())["rankings"]["full"]["second_opinion"]
+    train = {a: _read(f"profile:{a}") for a in top}
+    train.update({u: r["tokens"] for u, r in sorted(_refs().items()) if r["tokens"]})
+    key = json.loads(KEY.read_text())
+    rows = [json.loads(ln) for ln in SEALED.read_text().splitlines()]
+    tests = [
+        {"author": "bom", "where": r["id"], "words": tokenize(r["text"])}
+        for r in sorted(rows, key=lambda r: r["id"])
+        if key[r["id"]]["kind"] == "bom"
+    ]
+    WORK.mkdir(parents=True, exist_ok=True)
+    with gzip.open(WORK / "plan_bom.json.gz", "wt") as fh:
+        json.dump({"config_sha256": sha256_of_config(), "known": [], "train": train,
+                   "tests": tests, "test_tokens": None}, fh)  # fmt: skip
+    print(f"{len(train)} units ({len(top)} library authors), {len(tests)} tests -> "
+          f"{WORK / 'plan_bom.json.gz'}")  # fmt: skip
+    return 0
+
+
+def run(size: str, micro: int, limit: int | None, name: str = "") -> int:
     import torch
     from tokenizers import Tokenizer
 
@@ -130,10 +161,11 @@ def run(size: str, micro: int, limit: int | None) -> int:
     a, lp = cfg["alm"], cfg["library_pool"]
     dev = _device()
     tok = Tokenizer.from_file(str(TOKENIZER))
-    with gzip.open(PLAN, "rt") as fh:
+    with gzip.open(WORK / f"plan{name}.json.gz", "rt") as fh:
         p = json.load(fh)
-    tests = [tok.encode(" ".join(x["words"])).ids[: lp["test_tokens"]] for x in p["tests"]]
-    work = WORK / size
+    cap = p.get("test_tokens", lp["test_tokens"])  # None: the whole chunk
+    tests = [tok.encode(" ".join(x["words"])).ids[:cap] for x in p["tests"]]
+    work = WORK / f"{size}{name}"
     work.mkdir(parents=True, exist_ok=True)
     base = _base(size, cfg).to(dev).eval()
     state = {k: v.clone() for k, v in base.state_dict().items()}
@@ -172,7 +204,7 @@ def run(size: str, micro: int, limit: int | None) -> int:
     bl = np.load(work / "base.npy")
     S = np.stack([np.load(_path(work, n)) - bl for n in names], axis=1)
     OUT.mkdir(parents=True, exist_ok=True)
-    out = OUT / f"pool_{size}.npz"
+    out = OUT / f"pool{name}_{size}.npz"
     np.savez_compressed(out, scores=S, models=np.array(names),
                         test_author=np.array([x["author"] for x in p["tests"]]),
                         test_where=np.array([x["where"] for x in p["tests"]]),
@@ -280,18 +312,21 @@ def report(size: str) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["prepare", "run", "report"])
+    ap.add_argument("cmd", choices=["prepare", "prepare-bom", "run", "report"])
+    ap.add_argument("--name", default="", help="run: another plan, e.g. _bom (plan_bom.json.gz)")
     ap.add_argument("size", nargs="?", choices=["pilot", "base", "mid"])
     ap.add_argument("--limit", type=int, help="run: stop after this many new models (price check)")
     ap.add_argument("--micro-batch", type=int, default=8, help="memory only; same update")
     a = ap.parse_args(argv)
     if a.cmd == "prepare":
         return prepare()
+    if a.cmd == "prepare-bom":
+        return prepare_bom()
     if not a.size:
         ap.error("run and report need a size")
     if a.cmd == "report":
         return report(a.size)
-    return run(a.size, a.micro_batch, a.limit)
+    return run(a.size, a.micro_batch, a.limit, a.name)
 
 
 if __name__ == "__main__":
