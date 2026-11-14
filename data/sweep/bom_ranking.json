@@ -1,0 +1,1901 @@
+{
+ "config_sha256": "20c8ac20dad20daad539fe406625f38c95ec17a5af7f1d51fb416c083938be66",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "9ed59409e0fde2481f7e0e522071b7587f79e9dc",
+ "exploratory": true,
+ "encoder": "data/corpus/style_embed/runs/style_v2/style.pt",
+ "query_chunks": 168,
+ "query_episodes": 475,
+ "library_authors": 23872,
+ "status": {
+  "alive": 6016,
+  "dead": 5493,
+  "too_young": 91,
+  "unknown": 12272
+ },
+ "small_episodes": 2,
+ "rankings": {
+  "small": {
+   "profile_episodes": 2,
+   "candidates": {
+    "cand__ethan-smith__printed_by_author__pre1830": {
+     "episodes": 258,
+     "slices": 129,
+     "score": 0.1866,
+     "rank_among_all": 4359,
+     "rank_among_possible": 3553,
+     "slice_ranks_among_all": {
+      "best": 102,
+      "median": 3032.0,
+      "worst": 18751
+     }
+    },
+    "cand__gilbert-j-hunt__printed_by_author__pre1830": {
+     "episodes": 49,
+     "slices": 24,
+     "score": 0.3746,
+     "rank_among_all": 140,
+     "rank_among_possible": 91,
+     "slice_ranks_among_all": {
+      "best": 10,
+      "median": 100.0,
+      "worst": 565
+     }
+    },
+    "cand__joseph-smith__dictated__post1830": {
+     "episodes": 5,
+     "slices": 2,
+     "score": 0.3913,
+     "rank_among_all": 99,
+     "rank_among_possible": 61,
+     "slice_ranks_among_all": {
+      "best": 51,
+      "median": 75.0,
+      "worst": 99
+     }
+    },
+    "cand__joseph-smith__dictated__pre1830": {
+     "episodes": 2,
+     "slices": 1,
+     "score": 0.5439,
+     "rank_among_all": 1,
+     "rank_among_possible": 1,
+     "slice_ranks_among_all": {
+      "best": 1,
+      "median": 1.0,
+      "worst": 1
+     }
+    },
+    "cand__joseph-smith__handwritten__post1830": {
+     "episodes": 7,
+     "slices": 3,
+     "score": 0.543,
+     "rank_among_all": 1,
+     "rank_among_possible": 1,
+     "slice_ranks_among_all": {
+      "best": 1,
+      "median": 4.0,
+      "worst": 2138
+     }
+    },
+    "cand__joseph-smith__nonrevelatory__post1830": {
+     "episodes": 12,
+     "slices": 5,
+     "score": 0.4646,
+     "rank_among_all": 24,
+     "rank_among_possible": 14,
+     "slice_ranks_among_all": {
+      "best": 22,
+      "median": 24.0,
+      "worst": 99
+     }
+    },
+    "cand__joseph-smith__revelations__post1830": {
+     "episodes": 63,
+     "slices": 31,
+     "score": 0.5404,
+     "rank_among_all": 1,
+     "rank_among_possible": 1,
+     "slice_ranks_among_all": {
+      "best": 1,
+      "median": 1.0,
+      "worst": 67
+     }
+    },
+    "cand__oliver-cowdery__printed_by_author__post1830": {
+     "episodes": 42,
+     "slices": 21,
+     "score": 0.3305,
+     "rank_among_all": 347,
+     "rank_among_possible": 240,
+     "slice_ranks_among_all": {
+      "best": 6,
+      "median": 281.0,
+      "worst": 3646
+     }
+    },
+    "cand__parley-p-pratt__printed_by_author__post1830": {
+     "episodes": 96,
+     "slices": 47,
+     "score": 0.465,
+     "rank_among_all": 23,
+     "rank_among_possible": 13,
+     "slice_ranks_among_all": {
+      "best": 1,
+      "median": 221.0,
+      "worst": 2998
+     }
+    },
+    "cand__sidney-rigdon__printed_by_author__post1830": {
+     "episodes": 20,
+     "slices": 9,
+     "score": 0.4094,
+     "rank_among_all": 65,
+     "rank_among_possible": 42,
+     "slice_ranks_among_all": {
+      "best": 4,
+      "median": 202.0,
+      "worst": 802
+     }
+    },
+    "cand__solomon-spalding__posthumous__pre1830": {
+     "episodes": 37,
+     "slices": 18,
+     "score": 0.2706,
+     "rank_among_all": 1099,
+     "rank_among_possible": 869,
+     "slice_ranks_among_all": {
+      "best": 383,
+      "median": 3002.5,
+      "worst": 12395
+     }
+    },
+    "cand__w-w-phelps__printed_by_author__post1830": {
+     "episodes": 30,
+     "slices": 15,
+     "score": 0.2716,
+     "rank_among_all": 1082,
+     "rank_among_possible": 854,
+     "slice_ranks_among_all": {
+      "best": 31,
+      "median": 593.0,
+      "worst": 4885
+     }
+    }
+   },
+   "top": [
+    {
+     "rank": 1,
+     "author": "savery, william dillwyn george sibly job",
+     "score": 0.532,
+     "status": "dead",
+     "born": 1750,
+     "died": 1804,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 2,
+     "author": "stirredge, elizabeth",
+     "score": 0.5238,
+     "status": "dead",
+     "born": 1634,
+     "died": 1706,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 3,
+     "author": "ferris, david",
+     "score": 0.5095,
+     "status": "dead",
+     "born": 1707,
+     "died": 1779,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 4,
+     "author": "wroe, john",
+     "score": 0.5042,
+     "status": "alive",
+     "born": 1782,
+     "died": 1863,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 5,
+     "author": "hubbard, john comp",
+     "score": 0.501,
+     "status": "dead",
+     "born": 1759,
+     "died": 1810,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 6,
+     "author": "howland",
+     "score": 0.4931,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "not_asked"
+    },
+    {
+     "rank": 7,
+     "author": "backhouse, james",
+     "score": 0.49,
+     "status": "alive",
+     "born": 1794,
+     "died": 1869,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 8,
+     "author": "goouch, thomas d",
+     "score": 0.4869,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 9,
+     "author": "huntington",
+     "score": 0.4846,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "not_asked"
+    },
+    {
+     "rank": 10,
+     "author": "fox, george",
+     "score": 0.4801,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "conflict"
+    },
+    {
+     "rank": 11,
+     "author": "hicks, elias",
+     "score": 0.4799,
+     "status": "alive",
+     "born": 1748,
+     "died": 1830,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 12,
+     "author": "sampson, joseph a h",
+     "score": 0.4767,
+     "status": "dead",
+     "born": 1805,
+     "died": 1825,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 13,
+     "author": "rathbun, valentine b",
+     "score": 0.4765,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 14,
+     "author": "sherburne, andrew",
+     "score": 0.4761,
+     "status": "alive",
+     "born": 1765,
+     "died": 1831,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 15,
+     "author": "herr, franz",
+     "score": 0.4739,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 16,
+     "author": "gratton, john",
+     "score": 0.4732,
+     "status": "dead",
+     "born": 1641,
+     "died": 1712,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 17,
+     "author": "chalkley, thomas",
+     "score": 0.4712,
+     "status": "dead",
+     "born": 1675,
+     "died": 1741,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 18,
+     "author": "bayly, william",
+     "score": 0.4711,
+     "status": "dead",
+     "born": 1737,
+     "died": 1810,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 19,
+     "author": "ashbridge, elizabeth sampson",
+     "score": 0.4701,
+     "status": "dead",
+     "born": 1713,
+     "died": 1755,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 20,
+     "author": "wetherald, thomas",
+     "score": 0.4672,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 21,
+     "author": "naylor, james",
+     "score": 0.4664,
+     "status": "dead",
+     "born": 1617,
+     "died": 1660,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 22,
+     "author": "wetherald, thomas from old catalog",
+     "score": 0.4657,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 23,
+     "author": "dagley, john",
+     "score": 0.4647,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 24,
+     "author": "clemmons, peter",
+     "score": 0.4619,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 25,
+     "author": "mackray, william",
+     "score": 0.4613,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 26,
+     "author": "marrant, john",
+     "score": 0.4601,
+     "status": "dead",
+     "born": 1755,
+     "died": 1791,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 27,
+     "author": "komensky, jan amos",
+     "score": 0.4599,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 28,
+     "author": "still, mary from old catalog",
+     "score": 0.4571,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 29,
+     "author": "coke, daniel parker",
+     "score": 0.4553,
+     "status": "dead",
+     "born": 1745,
+     "died": 1825,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 30,
+     "author": "fox, george crawford charles b",
+     "score": 0.4522,
+     "status": "dead",
+     "born": 1624,
+     "died": 1691,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 31,
+     "author": "ward, john",
+     "score": 0.4501,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "conflict"
+    },
+    {
+     "rank": 32,
+     "author": "webb, elizabeth boehme anton wilhelm",
+     "score": 0.4498,
+     "status": "dead",
+     "born": 1673,
+     "died": 1722,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 33,
+     "author": "savery, william n 85352418",
+     "score": 0.4494,
+     "status": "dead",
+     "born": 1750,
+     "died": 1804,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 34,
+     "author": "williams, john",
+     "score": 0.4492,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "conflict"
+    },
+    {
+     "rank": 35,
+     "author": "goouch, thomas d from old catalog",
+     "score": 0.448,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 36,
+     "author": "abbott, benjamin",
+     "score": 0.4456,
+     "status": "dead",
+     "born": 1732,
+     "died": 1796,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 37,
+     "author": "penington, mary proude springett",
+     "score": 0.4453,
+     "status": "dead",
+     "born": 1616,
+     "died": 1682,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 38,
+     "author": "crook, john",
+     "score": 0.4433,
+     "status": "dead",
+     "born": 1617,
+     "died": 1699,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 39,
+     "author": "isaacs, hyam b",
+     "score": 0.4433,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 40,
+     "author": "sherman, eleazer",
+     "score": 0.4422,
+     "status": "alive",
+     "born": 1795,
+     "died": null,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 41,
+     "author": "daut, johann maximilian",
+     "score": 0.4404,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 42,
+     "author": "bates, elisha",
+     "score": 0.4387,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "conflict"
+    },
+    {
+     "rank": 43,
+     "author": "bates, walter",
+     "score": 0.4386,
+     "status": "alive",
+     "born": 1760,
+     "died": 1842,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 44,
+     "author": "foley, thomas p thomas philip",
+     "score": 0.4384,
+     "status": "alive",
+     "born": 1758,
+     "died": 1835,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 45,
+     "author": "underwood, ann",
+     "score": 0.4357,
+     "status": "dead",
+     "born": 1766,
+     "died": 1825,
+     "date_source": "loc"
+    },
+    {
+     "rank": 46,
+     "author": "withy, george",
+     "score": 0.4341,
+     "status": "alive",
+     "born": 1763,
+     "died": 1837,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 47,
+     "author": "vandelure, john",
+     "score": 0.4336,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 48,
+     "author": "underhill, andrew",
+     "score": 0.4332,
+     "status": "dead",
+     "born": 1798,
+     "died": 1823,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 49,
+     "author": "reeve, john",
+     "score": 0.4309,
+     "status": "dead",
+     "born": 1608,
+     "died": 1658,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 50,
+     "author": "fox, george from old catalog",
+     "score": 0.4287,
+     "status": "alive",
+     "born": 1802,
+     "died": 1871,
+     "date_source": "catalog"
+    }
+   ],
+   "dead_in_top": {
+    "20": 9,
+    "100": 39,
+    "1000": 210
+   },
+   "dead_share_of_library": 0.2301,
+   "chunk_lengths": {
+    "2000_words": {
+     "chunks": 121,
+     "top20_shared_with_all": 20,
+     "top5": [
+      "savery, william dillwyn george sibly job",
+      "stirredge, elizabeth",
+      "ferris, david",
+      "wroe, john",
+      "hubbard, john comp"
+     ]
+    },
+    "5000_words": {
+     "chunks": 47,
+     "top20_shared_with_all": 19,
+     "top5": [
+      "savery, william dillwyn george sibly job",
+      "stirredge, elizabeth",
+      "ferris, david",
+      "wroe, john",
+      "hubbard, john comp"
+     ]
+    }
+   },
+   "compared_with": {
+    "library_all": 23872,
+    "library_possible": 18288
+   }
+  },
+  "large": {
+   "profile_episodes": 11,
+   "candidates": {
+    "cand__ethan-smith__printed_by_author__pre1830": {
+     "episodes": 258,
+     "slices": 23,
+     "score": 0.2452,
+     "rank_among_all": 6170,
+     "rank_among_possible": 5058,
+     "slice_ranks_among_all": {
+      "best": 247,
+      "median": 2682.0,
+      "worst": 9359
+     }
+    },
+    "cand__gilbert-j-hunt__printed_by_author__pre1830": {
+     "episodes": 49,
+     "slices": 3,
+     "score": 0.4797,
+     "rank_among_all": 54,
+     "rank_among_possible": 37,
+     "slice_ranks_among_all": {
+      "best": 29,
+      "median": 54.0,
+      "worst": 105
+     }
+    },
+    "cand__joseph-smith__nonrevelatory__post1830": {
+     "episodes": 12,
+     "slices": 1,
+     "score": 0.5201,
+     "rank_among_all": 19,
+     "rank_among_possible": 12,
+     "slice_ranks_among_all": {
+      "best": 19,
+      "median": 19.0,
+      "worst": 19
+     }
+    },
+    "cand__joseph-smith__revelations__post1830": {
+     "episodes": 63,
+     "slices": 5,
+     "score": 0.6148,
+     "rank_among_all": 2,
+     "rank_among_possible": 2,
+     "slice_ranks_among_all": {
+      "best": 1,
+      "median": 2.0,
+      "worst": 2
+     }
+    },
+    "cand__oliver-cowdery__printed_by_author__post1830": {
+     "episodes": 42,
+     "slices": 3,
+     "score": 0.5043,
+     "rank_among_all": 35,
+     "rank_among_possible": 23,
+     "slice_ranks_among_all": {
+      "best": 35,
+      "median": 37.0,
+      "worst": 284
+     }
+    },
+    "cand__parley-p-pratt__printed_by_author__post1830": {
+     "episodes": 96,
+     "slices": 7,
+     "score": 0.5143,
+     "rank_among_all": 22,
+     "rank_among_possible": 14,
+     "slice_ranks_among_all": {
+      "best": 4,
+      "median": 48.0,
+      "worst": 510
+     }
+    },
+    "cand__sidney-rigdon__printed_by_author__post1830": {
+     "episodes": 20,
+     "slices": 1,
+     "score": 0.5096,
+     "rank_among_all": 27,
+     "rank_among_possible": 18,
+     "slice_ranks_among_all": {
+      "best": 27,
+      "median": 27.0,
+      "worst": 27
+     }
+    },
+    "cand__solomon-spalding__posthumous__pre1830": {
+     "episodes": 37,
+     "slices": 3,
+     "score": 0.3042,
+     "rank_among_all": 2308,
+     "rank_among_possible": 1872,
+     "slice_ranks_among_all": {
+      "best": 1316,
+      "median": 1397.0,
+      "worst": 2308
+     }
+    },
+    "cand__w-w-phelps__printed_by_author__post1830": {
+     "episodes": 30,
+     "slices": 1,
+     "score": 0.4301,
+     "rank_among_all": 170,
+     "rank_among_possible": 112,
+     "slice_ranks_among_all": {
+      "best": 170,
+      "median": 170.0,
+      "worst": 170
+     }
+    }
+   },
+   "top": [
+    {
+     "rank": 1,
+     "author": "wroe, john",
+     "score": 0.6297,
+     "status": "alive",
+     "born": 1782,
+     "died": 1863,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 2,
+     "author": "mais, charles",
+     "score": 0.5784,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 3,
+     "author": "bayly, william",
+     "score": 0.5753,
+     "status": "dead",
+     "born": 1737,
+     "died": 1810,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 4,
+     "author": "herr, franz",
+     "score": 0.5571,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 5,
+     "author": "field, john",
+     "score": 0.5513,
+     "status": "dead",
+     "born": 1652,
+     "died": 1723,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 6,
+     "author": "huntington",
+     "score": 0.5512,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "not_asked"
+    },
+    {
+     "rank": 7,
+     "author": "savery, william dillwyn george sibly job",
+     "score": 0.5507,
+     "status": "dead",
+     "born": 1750,
+     "died": 1804,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 8,
+     "author": "willson, david",
+     "score": 0.5368,
+     "status": "alive",
+     "born": 1778,
+     "died": 1866,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 9,
+     "author": "hubbard, john comp",
+     "score": 0.5345,
+     "status": "dead",
+     "born": 1759,
+     "died": 1810,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 10,
+     "author": "savery, william n 85352418",
+     "score": 0.5332,
+     "status": "dead",
+     "born": 1750,
+     "died": 1804,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 11,
+     "author": "wetherald, thomas from old catalog",
+     "score": 0.5324,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 12,
+     "author": "stirredge, elizabeth",
+     "score": 0.5307,
+     "status": "dead",
+     "born": 1634,
+     "died": 1706,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 13,
+     "author": "clemmons, peter",
+     "score": 0.5269,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 14,
+     "author": "twort, charles william",
+     "score": 0.5223,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 15,
+     "author": "goouch, thomas d",
+     "score": 0.5219,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 16,
+     "author": "bennett, thomas seaman",
+     "score": 0.5217,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 17,
+     "author": "atherstone, edwin",
+     "score": 0.5211,
+     "status": "alive",
+     "born": 1788,
+     "died": 1872,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 18,
+     "author": "garrettson, freeborn",
+     "score": 0.5207,
+     "status": "dead",
+     "born": 1752,
+     "died": 1827,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 19,
+     "author": "backhouse, james",
+     "score": 0.5183,
+     "status": "alive",
+     "born": 1794,
+     "died": 1869,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 20,
+     "author": "wetherald, thomas",
+     "score": 0.5171,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 21,
+     "author": "sampson, joseph a h",
+     "score": 0.5163,
+     "status": "dead",
+     "born": 1805,
+     "died": 1825,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 22,
+     "author": "ferris, david",
+     "score": 0.5134,
+     "status": "dead",
+     "born": 1707,
+     "died": 1779,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 23,
+     "author": "komensky, jan amos",
+     "score": 0.5114,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 24,
+     "author": "evans, thomas",
+     "score": 0.5103,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "conflict"
+    },
+    {
+     "rank": 25,
+     "author": "fox, george",
+     "score": 0.5101,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "conflict"
+    },
+    {
+     "rank": 26,
+     "author": "hicks, elias",
+     "score": 0.5097,
+     "status": "alive",
+     "born": 1748,
+     "died": 1830,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 27,
+     "author": "pugh, ellis",
+     "score": 0.5092,
+     "status": "dead",
+     "born": 1656,
+     "died": 1718,
+     "date_source": "loc"
+    },
+    {
+     "rank": 28,
+     "author": "flaxmer, sarah",
+     "score": 0.5081,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 29,
+     "author": "gratton, john",
+     "score": 0.5068,
+     "status": "dead",
+     "born": 1641,
+     "died": 1712,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 30,
+     "author": "tuke, samuel from old catalog",
+     "score": 0.5064,
+     "status": "alive",
+     "born": 1784,
+     "died": 1857,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 31,
+     "author": "underwood, ann",
+     "score": 0.5052,
+     "status": "dead",
+     "born": 1766,
+     "died": 1825,
+     "date_source": "loc"
+    },
+    {
+     "rank": 32,
+     "author": "lewis, evan",
+     "score": 0.505,
+     "status": "alive",
+     "born": 1782,
+     "died": 1834,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 33,
+     "author": "goouch, thomas d from old catalog",
+     "score": 0.5048,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 34,
+     "author": "rathbun, daniel rathbun valentine b",
+     "score": 0.5045,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 35,
+     "author": "ball, gawen",
+     "score": 0.5031,
+     "status": "alive",
+     "born": 1767,
+     "died": 1847,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 36,
+     "author": "tatham, joseph",
+     "score": 0.5023,
+     "status": "alive",
+     "born": 1767,
+     "died": 1843,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 37,
+     "author": "howland",
+     "score": 0.5001,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "not_asked"
+    },
+    {
+     "rank": 38,
+     "author": "naylor, james",
+     "score": 0.4993,
+     "status": "dead",
+     "born": 1617,
+     "died": 1660,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 39,
+     "author": "tuke, samuel",
+     "score": 0.4985,
+     "status": "alive",
+     "born": 1784,
+     "died": 1857,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 40,
+     "author": "savery, william",
+     "score": 0.4975,
+     "status": "dead",
+     "born": 1750,
+     "died": 1804,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 41,
+     "author": "ashbridge, elizabeth sampson",
+     "score": 0.4951,
+     "status": "dead",
+     "born": 1713,
+     "died": 1755,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 42,
+     "author": "vandelure, john",
+     "score": 0.4941,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 43,
+     "author": "jewel, john",
+     "score": 0.494,
+     "status": "dead",
+     "born": 1522,
+     "died": 1571,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 44,
+     "author": "huish, robert",
+     "score": 0.4932,
+     "status": "alive",
+     "born": 1777,
+     "died": 1850,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 45,
+     "author": "marrant, john b",
+     "score": 0.4902,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 46,
+     "author": "downing, james",
+     "score": 0.4893,
+     "status": "alive",
+     "born": 1781,
+     "died": null,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 47,
+     "author": "rathbun, valentine b",
+     "score": 0.4846,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 48,
+     "author": "samuel tuke, stephen crisp",
+     "score": 0.4826,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 49,
+     "author": "chalkley, thomas",
+     "score": 0.482,
+     "status": "dead",
+     "born": 1675,
+     "died": 1741,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 50,
+     "author": "dagley, john",
+     "score": 0.4818,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    }
+   ],
+   "dead_in_top": {
+    "20": 7,
+    "100": 35,
+    "1000": 229
+   },
+   "dead_share_of_library": 0.2301,
+   "chunk_lengths": {
+    "2000_words": {
+     "chunks": 121,
+     "top20_shared_with_all": 20,
+     "top5": [
+      "wroe, john",
+      "mais, charles",
+      "bayly, william",
+      "herr, franz",
+      "field, john"
+     ]
+    },
+    "5000_words": {
+     "chunks": 47,
+     "top20_shared_with_all": 19,
+     "top5": [
+      "wroe, john",
+      "mais, charles",
+      "bayly, william",
+      "herr, franz",
+      "huntington"
+     ]
+    }
+   },
+   "compared_with": {
+    "library_all": 23872,
+    "library_possible": 18288
+   }
+  },
+  "full": {
+   "profile_episodes": null,
+   "candidates": {
+    "cand__ethan-smith__printed_by_author__pre1830": {
+     "episodes": 258,
+     "slices": 1,
+     "score": 0.4433,
+     "rank_among_all": 189,
+     "rank_among_possible": 123,
+     "slice_ranks_among_all": {
+      "best": 189,
+      "median": 189.0,
+      "worst": 189
+     }
+    },
+    "cand__gilbert-j-hunt__printed_by_author__pre1830": {
+     "episodes": 49,
+     "slices": 1,
+     "score": 0.5202,
+     "rank_among_all": 30,
+     "rank_among_possible": 22,
+     "slice_ranks_among_all": {
+      "best": 30,
+      "median": 30.0,
+      "worst": 30
+     }
+    },
+    "cand__joseph-smith__dictated__post1830": {
+     "episodes": 5,
+     "slices": 1,
+     "score": 0.4466,
+     "rank_among_all": 178,
+     "rank_among_possible": 117,
+     "slice_ranks_among_all": {
+      "best": 178,
+      "median": 178.0,
+      "worst": 178
+     }
+    },
+    "cand__joseph-smith__dictated__pre1830": {
+     "episodes": 2,
+     "slices": 1,
+     "score": 0.5439,
+     "rank_among_all": 13,
+     "rank_among_possible": 9,
+     "slice_ranks_among_all": {
+      "best": 13,
+      "median": 13.0,
+      "worst": 13
+     }
+    },
+    "cand__joseph-smith__handwritten__post1830": {
+     "episodes": 7,
+     "slices": 1,
+     "score": 0.5628,
+     "rank_among_all": 7,
+     "rank_among_possible": 5,
+     "slice_ranks_among_all": {
+      "best": 7,
+      "median": 7.0,
+      "worst": 7
+     }
+    },
+    "cand__joseph-smith__nonrevelatory__post1830": {
+     "episodes": 12,
+     "slices": 1,
+     "score": 0.5201,
+     "rank_among_all": 30,
+     "rank_among_possible": 22,
+     "slice_ranks_among_all": {
+      "best": 30,
+      "median": 30.0,
+      "worst": 30
+     }
+    },
+    "cand__joseph-smith__revelations__post1830": {
+     "episodes": 63,
+     "slices": 1,
+     "score": 0.6765,
+     "rank_among_all": 1,
+     "rank_among_possible": 1,
+     "slice_ranks_among_all": {
+      "best": 1,
+      "median": 1.0,
+      "worst": 1
+     }
+    },
+    "cand__oliver-cowdery__handwritten__pre1830": {
+     "episodes": 1,
+     "slices": 1,
+     "score": 0.578,
+     "rank_among_all": 6,
+     "rank_among_possible": 5,
+     "slice_ranks_among_all": {
+      "best": 6,
+      "median": 6.0,
+      "worst": 6
+     }
+    },
+    "cand__oliver-cowdery__printed_by_author__post1830": {
+     "episodes": 42,
+     "slices": 1,
+     "score": 0.5351,
+     "rank_among_all": 17,
+     "rank_among_possible": 12,
+     "slice_ranks_among_all": {
+      "best": 17,
+      "median": 17.0,
+      "worst": 17
+     }
+    },
+    "cand__parley-p-pratt__printed_by_author__post1830": {
+     "episodes": 96,
+     "slices": 1,
+     "score": 0.6052,
+     "rank_among_all": 2,
+     "rank_among_possible": 2,
+     "slice_ranks_among_all": {
+      "best": 2,
+      "median": 2.0,
+      "worst": 2
+     }
+    },
+    "cand__sidney-rigdon__printed_by_author__post1830": {
+     "episodes": 20,
+     "slices": 1,
+     "score": 0.5154,
+     "rank_among_all": 35,
+     "rank_among_possible": 24,
+     "slice_ranks_among_all": {
+      "best": 35,
+      "median": 35.0,
+      "worst": 35
+     }
+    },
+    "cand__solomon-spalding__posthumous__pre1830": {
+     "episodes": 37,
+     "slices": 1,
+     "score": 0.3958,
+     "rank_among_all": 507,
+     "rank_among_possible": 366,
+     "slice_ranks_among_all": {
+      "best": 507,
+      "median": 507.0,
+      "worst": 507
+     }
+    },
+    "cand__w-w-phelps__printed_by_author__post1830": {
+     "episodes": 30,
+     "slices": 1,
+     "score": 0.4619,
+     "rank_among_all": 132,
+     "rank_among_possible": 86,
+     "slice_ranks_among_all": {
+      "best": 132,
+      "median": 132.0,
+      "worst": 132
+     }
+    }
+   },
+   "top": [
+    {
+     "rank": 1,
+     "author": "wroe, john",
+     "score": 0.6369,
+     "status": "alive",
+     "born": 1782,
+     "died": 1863,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 2,
+     "author": "huntington",
+     "score": 0.5981,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "not_asked"
+    },
+    {
+     "rank": 3,
+     "author": "bayly, william",
+     "score": 0.5934,
+     "status": "dead",
+     "born": 1737,
+     "died": 1810,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 4,
+     "author": "backhouse, james",
+     "score": 0.5893,
+     "status": "alive",
+     "born": 1794,
+     "died": 1869,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 5,
+     "author": "mais, charles",
+     "score": 0.5784,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 6,
+     "author": "savery, william dillwyn george sibly job",
+     "score": 0.5715,
+     "status": "dead",
+     "born": 1750,
+     "died": 1804,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 7,
+     "author": "herr, franz",
+     "score": 0.5571,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 8,
+     "author": "daut, johann maximilian",
+     "score": 0.555,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 9,
+     "author": "field, john",
+     "score": 0.5527,
+     "status": "dead",
+     "born": 1652,
+     "died": 1723,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 10,
+     "author": "savery, william n 85352418",
+     "score": 0.5508,
+     "status": "dead",
+     "born": 1750,
+     "died": 1804,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 11,
+     "author": "fox, george",
+     "score": 0.547,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "conflict"
+    },
+    {
+     "rank": 12,
+     "author": "willson, david",
+     "score": 0.5439,
+     "status": "alive",
+     "born": 1778,
+     "died": 1866,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 13,
+     "author": "hubbard, john comp",
+     "score": 0.5396,
+     "status": "dead",
+     "born": 1759,
+     "died": 1810,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 14,
+     "author": "green, ashbel",
+     "score": 0.5387,
+     "status": "alive",
+     "born": 1762,
+     "died": 1848,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 15,
+     "author": "wetherald, thomas from old catalog",
+     "score": 0.5379,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 16,
+     "author": "isaacs, hyam nr 89011902",
+     "score": 0.5352,
+     "status": "alive",
+     "born": 1794,
+     "died": null,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 17,
+     "author": "bennett, thomas seaman",
+     "score": 0.5351,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 18,
+     "author": "howland",
+     "score": 0.532,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "not_asked"
+    },
+    {
+     "rank": 19,
+     "author": "stirredge, elizabeth",
+     "score": 0.5315,
+     "status": "dead",
+     "born": 1634,
+     "died": 1706,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 20,
+     "author": "clemmons, peter",
+     "score": 0.5314,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 21,
+     "author": "wetherald, thomas",
+     "score": 0.5296,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 22,
+     "author": "goouch, thomas d",
+     "score": 0.5245,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 23,
+     "author": "twort, charles william",
+     "score": 0.523,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 24,
+     "author": "komensky, jan amos",
+     "score": 0.5228,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 25,
+     "author": "atherstone, edwin",
+     "score": 0.5216,
+     "status": "alive",
+     "born": 1788,
+     "died": 1872,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 26,
+     "author": "southcott, joanna",
+     "score": 0.5214,
+     "status": "dead",
+     "born": 1750,
+     "died": 1814,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 27,
+     "author": "garrettson, freeborn",
+     "score": 0.5208,
+     "status": "dead",
+     "born": 1752,
+     "died": 1827,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 28,
+     "author": "tuke, samuel from old catalog",
+     "score": 0.5207,
+     "status": "alive",
+     "born": 1784,
+     "died": 1857,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 29,
+     "author": "vandelure, john",
+     "score": 0.5203,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 30,
+     "author": "gratton, john",
+     "score": 0.5197,
+     "status": "dead",
+     "born": 1641,
+     "died": 1712,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 31,
+     "author": "sampson, joseph a h",
+     "score": 0.5179,
+     "status": "dead",
+     "born": 1805,
+     "died": 1825,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 32,
+     "author": "evans, thomas",
+     "score": 0.517,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "conflict"
+    },
+    {
+     "rank": 33,
+     "author": "goouch, thomas d from old catalog",
+     "score": 0.517,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 34,
+     "author": "naylor, james cn",
+     "score": 0.5164,
+     "status": "dead",
+     "born": 1617,
+     "died": 1660,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 35,
+     "author": "rathbun, valentine b",
+     "score": 0.5153,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 36,
+     "author": "ferris, david",
+     "score": 0.5152,
+     "status": "dead",
+     "born": 1707,
+     "died": 1779,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 37,
+     "author": "hicks, elias",
+     "score": 0.5141,
+     "status": "alive",
+     "born": 1748,
+     "died": 1830,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 38,
+     "author": "savery, william",
+     "score": 0.5125,
+     "status": "dead",
+     "born": 1750,
+     "died": 1804,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 39,
+     "author": "nelson, john",
+     "score": 0.5121,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "conflict"
+    },
+    {
+     "rank": 40,
+     "author": "pugh, ellis",
+     "score": 0.5113,
+     "status": "dead",
+     "born": 1656,
+     "died": 1718,
+     "date_source": "loc"
+    },
+    {
+     "rank": 41,
+     "author": "lewis, evan",
+     "score": 0.5113,
+     "status": "alive",
+     "born": 1782,
+     "died": 1834,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 42,
+     "author": "flaxmer, sarah",
+     "score": 0.5103,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 43,
+     "author": "shewen, william",
+     "score": 0.51,
+     "status": "dead",
+     "born": 1631,
+     "died": 1695,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 44,
+     "author": "underwood, ann",
+     "score": 0.5098,
+     "status": "dead",
+     "born": 1766,
+     "died": 1825,
+     "date_source": "loc"
+    },
+    {
+     "rank": 45,
+     "author": "rathbun, daniel rathbun valentine b",
+     "score": 0.5082,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 46,
+     "author": "huttmann, william",
+     "score": 0.508,
+     "status": "unknown",
+     "born": null,
+     "died": null,
+     "date_source": "none"
+    },
+    {
+     "rank": 47,
+     "author": "jewel, john",
+     "score": 0.5075,
+     "status": "dead",
+     "born": 1522,
+     "died": 1571,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 48,
+     "author": "chalkley, thomas",
+     "score": 0.5063,
+     "status": "dead",
+     "born": 1675,
+     "died": 1741,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 49,
+     "author": "fox, george from old catalog",
+     "score": 0.5053,
+     "status": "alive",
+     "born": 1802,
+     "died": 1871,
+     "date_source": "catalog"
+    },
+    {
+     "rank": 50,
+     "author": "ball, gawen",
+     "score": 0.5051,
+     "status": "alive",
+     "born": 1767,
+     "died": 1847,
+     "date_source": "catalog"
+    }
+   ],
+   "dead_in_top": {
+    "20": 6,
+    "100": 36,
+    "1000": 243
+   },
+   "dead_share_of_library": 0.2301,
+   "chunk_lengths": {
+    "2000_words": {
+     "chunks": 121,
+     "top20_shared_with_all": 19,
+     "top5": [
+      "wroe, john",
+      "huntington",
+      "bayly, william",
+      "backhouse, james",
+      "mais, charles"
+     ]
+    },
+    "5000_words": {
+     "chunks": 47,
+     "top20_shared_with_all": 20,
+     "top5": [
+      "wroe, john",
+      "huntington",
+      "bayly, william",
+      "backhouse, james",
+      "mais, charles"
+     ]
+    }
+   },
+   "compared_with": {
+    "library_all": 23872,
+    "library_possible": 18288
+   }
+  }
+ }
+}
