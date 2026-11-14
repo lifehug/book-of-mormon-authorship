@@ -139,6 +139,27 @@ def report() -> int:
         t += [p["target"] for p in cands]
     v, t = np.array(v), np.array(t)
     doc["methods"]["Second style encoder, closest episode (ours)"] = verifier(v[t], v[~t])
+    pool = Path("data/sweep/pool_pilot.npz")
+    if pool.exists():  # BOM-94's equal-dose 125M author models scored these books' first chunks
+        from eval.library_pool import dose_tables
+
+        z = np.load(pool)
+        t_auth, where = z["test_author"].tolist(), z["test_where"].tolist()
+        row = {a: i for i, (a, w) in enumerate(zip(t_auth, where, strict=True))
+               if w.endswith(":0")}  # fmt: skip
+        tables = dose_tables(z["scores"].astype(np.float64), z["models"].tolist())
+        labels = {
+            "large": "Author models, 125M, 11,264 tokens (ours)",
+            "small": "Author models, 125M, 3,039 tokens, median of 3 (ours)",
+        }
+        for dose, label in labels.items():
+            authors, X = tables[dose]
+            col = {a: j for j, a in enumerate(authors)}
+            got = [(-X[row[p["book"]], col[p["candidate"]]], p["target"]) for p in pairs
+                   if p["book"] in row and p["candidate"] in col]  # fmt: skip
+            v = np.array([g[0] for g in got])
+            t = np.array([g[1] for g in got])
+            doc["methods"][label] = verifier(v[t], v[~t])
     OUT.write_text(json.dumps(doc, indent=1) + "\n")
     for m, r in doc["methods"].items():
         print(f"{m:55s} AUC {r['auc']:.3f}  true confirmed at 5% false "
