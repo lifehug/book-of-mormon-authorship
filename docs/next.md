@@ -17,7 +17,7 @@ labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament)
 ## Running
 
 - **BOM-89 further known books (Mac; started 2026-11-14 about 06:30):** tmux `maskext` (`python -m kjv_mask.run sweep_ext`, log `logs/sweep_ext_mask.log`, about 2 h, resumes by batch) then tmux `extchain` (`scripts/sweep_ext_chain.sh`, log `logs/sweep_ext_chain.log`): tokens, per-episode vectors with the second encoder (2-3 h, resumes), coverage on all 727 known books at the full profile and at 2 and 11 episodes. If either session is gone, rerun its command; the chain waits for the masking session to end.
-- No GPU pods running. One pod is stopped, not terminated: `bx1f3cj5shymtg` (the failed first second-opinion run). **Needs the owner's OK to delete.**
+- No GPU pods exist (the stopped pod from the failed run was deleted 2026-11-14 with the owner's OK).
 
 ## Now (owner, 2026-11-14): strengthen the paper, then write it. One paper, Phase 1 leads.
 
@@ -36,7 +36,6 @@ labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament)
 
 ## Waiting on the owner
 
-- OK to delete the stopped pod above.
 - The Phase 1 blog draft (`paper/blog-phase1.html`, on the Desktop) waits for a read-through.
 - Whether to write the Phase 2 blog as its own page or as a section of the Phase 1 page.
 
