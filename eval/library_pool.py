@@ -17,11 +17,18 @@ test words are the sweep's (KJV-masked, benchmark word form; ``sweep.index._read
 one small file per model, resuming; ``--limit N`` stops after N models and prints the time per
 model (the price check). The score table holds names and numbers only.
 
+``report``: for each dose (``small`` the median of an author's small slices, ``small0`` one slice,
+``large``), how often the true author is first and among the closest ``top_n`` of a random list of
+each size in ``sizes``, exactly (from the number of pool authors scoring closer; hypergeometric),
+counted by author; by passage and with a book's chunks averaged; raw scores and each model's
+scores on its own scale (set on the other half of the books); all books and by genre group.
+
 Usage::
 
     python -m eval.library_pool prepare               # Mac -> data/corpus/library_pool/plan.json.gz
     python -m eval.library_pool run pilot [--limit 20] [--micro-batch 8]   # GPU
         -> data/sweep/pool_<size>.npz
+    python -m eval.library_pool report pilot          # -> data/sweep/pool_report_<size>.json
 """
 
 from __future__ import annotations
@@ -174,9 +181,106 @@ def run(size: str, micro: int, limit: int | None) -> int:
     return 0
 
 
+def dose_tables(S: np.ndarray, names: list[str]) -> dict[str, tuple[list[str], np.ndarray]]:
+    """dose -> (authors, tests x authors scores): ``small`` is the median over an author's small
+    slices, ``small0`` the first slice alone, ``large`` the large model."""
+    by: dict[str, dict[str, list[int]]] = {"small": {}, "small0": {}, "large": {}}
+    for j, n in enumerate(names):
+        a, _, kind = n.rpartition("#")
+        if kind == "large":
+            by["large"].setdefault(a, []).append(j)
+        else:
+            by["small"].setdefault(a, []).append(j)
+            if kind == "small0":
+                by["small0"].setdefault(a, []).append(j)
+    return {d: (sorted(m), np.stack([np.median(S[:, m[a]], axis=1) for a in sorted(m)], axis=1))
+            for d, m in by.items() if m}  # fmt: skip
+
+
+def scaled(X: np.ndarray, half: np.ndarray) -> np.ndarray:
+    """Each model's scores on its own scale (z-norm), the scale for a test taken from the tests
+    of the other half of the books, so no test sets its own scale."""
+    out = np.empty_like(X, dtype=np.float64)
+    for h in (False, True):
+        ref = X[half != h]
+        out[half == h] = (X[half == h] - ref.mean(axis=0)) / ref.std(axis=0)
+    return out
+
+
+def in_top(better: np.ndarray, others: int, size: int, n: int) -> np.ndarray:
+    """The chance the true author is among the closest ``n`` of a random list of ``size`` drawn
+    with the true author from ``others`` + 1, when ``better`` of the others score closer."""
+    from scipy.stats import hypergeom
+
+    return hypergeom.cdf(
+        n - 1, others, better, np.minimum(size - 1, others)
+    )  # the whole pool at most
+
+
+def report(size: str) -> int:
+    cfg = load_config()
+    lp = cfg["library_pool"]
+    z = np.load(OUT / f"pool_{size}.npz")
+    S, names = z["scores"].astype(np.float64), z["models"].tolist()
+    t_auth = z["test_author"].tolist()
+    books = sorted(set(t_auth))
+    groups = {r["author"]: r for r in json.loads((OUT / "coverage.json").read_text())["records"]}
+    half_of = {a: int(hashlib.sha256(f"{lp['seed']}:half:{a}".encode()).hexdigest(), 16) % 2 == 1
+               for a in books}  # fmt: skip
+    half = np.array([half_of[a] for a in t_auth])
+    rows = np.array([books.index(a) for a in t_auth])
+    doc = {"config_sha256": sha256_of_config(), "exploratory": True, "size": size,
+           "tests": len(t_auth), "books": len(books), "doses": {}}  # fmt: skip
+    for dose, (authors, X) in dose_tables(S, names).items():
+        col = {a: j for j, a in enumerate(authors)}
+        res = {"pool_authors": len(authors)}
+        for label, M in (("raw", X), ("scaled", scaled(X, half))):
+            # by passage: each test alone; by book: its chunks averaged
+            B = np.stack([M[rows == i].mean(axis=0) for i in range(len(books))])
+            for unit, T, who in (("passage", M, t_auth), ("book", B, books)):
+                ok = [i for i, a in enumerate(who) if a in col]
+                better = np.array([(np.delete(T[i], col[who[i]]) < T[i, col[who[i]]]).sum()
+                                   for i in ok])  # fmt: skip
+                others = len(authors) - 1
+                tab: dict[str, dict] = {}
+                sel = {"all": np.ones(len(ok), dtype=bool)}
+                for g in ("same", "mixed", "cross"):
+                    sel[f"genre_{g}"] = np.array([groups[who[i]]["genre"] == g for i in ok])
+                for g, mask in sel.items():
+                    tab[g] = {
+                        "n": int(mask.sum()),
+                        "median_rank": float(np.median(better[mask]) + 1),
+                    }
+                    for n in lp["top_n"]:
+                        # by author: a book's passages first averaged, then the books
+                        per = in_top(better[:, None], others, np.array(lp["sizes"])[None, :], n)
+                        owners = np.array([books.index(who[i]) for i in ok])[mask]
+                        by_author = np.stack([per[mask][owners == b].mean(axis=0)
+                                              for b in sorted(set(owners))])  # fmt: skip
+                        means = by_author.mean(axis=0)
+                        pairs = zip(lp["sizes"], means, strict=True)
+                        tab[g][f"top{n}"] = {str(s_): round(float(v), 4) for s_, v in pairs}
+                res[f"{label}_{unit}"] = tab
+        doc["doses"][dose] = res
+    out = OUT / f"pool_report_{size}.json"
+    out.write_text(json.dumps(doc, indent=1) + "\n")
+    show = [s_ for s_ in lp["sizes"] if s_ in lp["show"]]
+    for dose, res in doc["doses"].items():
+        print(f"{dose} ({res['pool_authors']} authors); true author first / in top 10, "
+              f"by list size {show} (%)")  # fmt: skip
+        for key in ("raw_passage", "scaled_passage", "raw_book", "scaled_book"):
+            for g in ("all", "genre_cross"):
+                t = res[key][g]
+                print(f"  {key:15s} {g:12s} n={t['n']:3d}  top1 "
+                      + " ".join(f"{100 * t['top1'][str(s_)]:5.1f}" for s_ in show) + "   top10 "
+                      + " ".join(f"{100 * t['top10'][str(s_)]:5.1f}" for s_ in show))  # fmt: skip
+    print(f"-> {out}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["prepare", "run"])
+    ap.add_argument("cmd", choices=["prepare", "run", "report"])
     ap.add_argument("size", nargs="?", choices=["pilot", "base", "mid"])
     ap.add_argument("--limit", type=int, help="run: stop after this many new models (price check)")
     ap.add_argument("--micro-batch", type=int, default=8, help="memory only; same update")
@@ -184,7 +288,9 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "prepare":
         return prepare()
     if not a.size:
-        ap.error("run needs a size")
+        ap.error("run and report need a size")
+    if a.cmd == "report":
+        return report(a.size)
     return run(a.size, a.micro_batch, a.limit)
 
 

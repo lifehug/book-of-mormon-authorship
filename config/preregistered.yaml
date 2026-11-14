@@ -591,6 +591,9 @@ library_pool:                     # BOM-94 (exploratory): the author algorithm o
   large_sequences: 11             # x alm.seq tokens, about 8,700 words: 99.7% of swept authors have it
   test_chunks: 2                  # query chunks per known book
   test_tokens: 1536               # the first three 512-token windows of each
+  sizes: [2, 4, 8, 12, 20, 30, 55, 100, 200, 500, 1000]
+  show: [12, 55, 100, 500, 1000]
+  top_n: [1, 5, 10, 20]
 
 sweep_search:
   gi_shortlist: 100               # step 0: General Imposters on each book's 100 closest (Cosine Delta)
