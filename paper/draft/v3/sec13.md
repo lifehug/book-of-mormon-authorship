@@ -29,9 +29,8 @@ What stands behind the results is that every step can be found and rerun.
   seeds for roughly $50 to $100 of rented GPU. With the candidate models, anyone can check the
   Book of Mormon ranking without any restricted text and without training anything. Other
   fine-tunes publish their scores, not their weights (owner's decision, 2026-11-11). The
-  repository's README also lists a style-encoder, a dating-model and an earlier
-  benchmark-fine-tune repository [CHECK: whether these three stay public after the planned
-  clean-up to base and candidate models (BOM-87); not verifiable offline].
+  style encoder, the dating models and an earlier set of benchmark fine-tunes are also on
+  Hugging Face and stay public (owner, 2026-11-14); the README lists them.
 - **Simulated reviews.** Three simulated peer reviews (a historian, a statistician, a
   stylometrist), the response plan, the adversarial review and the research review of 2026-11-12
   are in `paper/review/`, `paper/adversarial-review.md` and `docs/research/`. All were written by

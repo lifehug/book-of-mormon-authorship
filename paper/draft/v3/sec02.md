@@ -10,7 +10,7 @@ text, the candidates' samples, the known-answer tests, and the language models.
 | --- | --- | --- | --- | --- | --- | --- |
 | Question | do the narrators differ; does a candidate fit | do the prophets differ | which candidate | which candidate, or none | which books share rare phrases | who, what was borrowed, when |
 | Comparison library | candidate samples | candidate and biblical samples | candidate samples | candidate samples | about 100,000 books (unpublished) | 202,816 period volumes for the models; 204,520 for rare phrases; 163 million passages for paraphrase |
-| Candidates | nineteenth-century writers [CHECK: Larsen et al.'s own candidate list is not in our result files; our rerun used nine samples] | Joseph Smith's own writing and his revelations, beside the book's prophets | 4 (Rigdon, Spalding, Cowdery, Pratt) | 5 (the same, and Joseph Smith) | books, not people | 8 named people, then 23,872 library authors |
+| Candidates | 8 (Joseph Smith, Phelps, Cowdery, Pratt, Rigdon, Spalding, and two other texts of the 1830s) | Joseph Smith's own writing and his revelations, beside the book's prophets | 4 (Rigdon, Spalding, Cowdery, Pratt) | 5 (the same, and Joseph Smith) | books, not people | 8 named people, then 23,872 library authors |
 | Controls | none | none | Isaiah-Malachi, Barlow, Longfellow | Isaiah | none | four control groups, placebo writers, decoys |
 | "None of these" allowed | no | no attribution made | no (closed set) | yes | not applicable | yes, every method that has a match score |
 | Error rate on known answers | no | no | cross-validated among candidates | partly | no | right-author rate and false-match rate per method, on 110, 430 and 1,070 held-out tests |

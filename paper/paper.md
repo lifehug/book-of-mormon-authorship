@@ -118,7 +118,7 @@ text, the candidates' samples, the known-answer tests, and the language models.
 | --- | --- | --- | --- | --- | --- | --- |
 | Question | do the narrators differ; does a candidate fit | do the prophets differ | which candidate | which candidate, or none | which books share rare phrases | who, what was borrowed, when |
 | Comparison library | candidate samples | candidate and biblical samples | candidate samples | candidate samples | about 100,000 books (unpublished) | 202,816 period volumes for the models; 204,520 for rare phrases; 163 million passages for paraphrase |
-| Candidates | nineteenth-century writers [CHECK: Larsen et al.'s own candidate list is not in our result files; our rerun used nine samples] | Joseph Smith's own writing and his revelations, beside the book's prophets | 4 (Rigdon, Spalding, Cowdery, Pratt) | 5 (the same, and Joseph Smith) | books, not people | 8 named people, then 23,872 library authors |
+| Candidates | 8 (Joseph Smith, Phelps, Cowdery, Pratt, Rigdon, Spalding, and two other texts of the 1830s) | Joseph Smith's own writing and his revelations, beside the book's prophets | 4 (Rigdon, Spalding, Cowdery, Pratt) | 5 (the same, and Joseph Smith) | books, not people | 8 named people, then 23,872 library authors |
 | Controls | none | none | Isaiah-Malachi, Barlow, Longfellow | Isaiah | none | four control groups, placebo writers, decoys |
 | "None of these" allowed | no | no attribution made | no (closed set) | yes | not applicable | yes, every method that has a match score |
 | Error rate on known answers | no | no | cross-validated among candidates | partly | no | right-author rate and false-match rate per method, on 110, 430 and 1,070 held-out tests |
@@ -829,13 +829,12 @@ training and test) gives a few disagreements, all in our models' favour: against
 corpus-wide search for imitation scripture judged 1,349 candidate works (by two AI models with a
 third breaking ties; a simulated reading) and found 18 works under 10 author names. Only 3 of those
 authors left 10,000 words or more of other prose in the library: the three above
-(`data/benchmark/dual_register.json`). Outside 1780-1830 most imitation scripture is anonymous
-satire [CHECK: no results file found for the search outside the period; stated as in the outline].
+(`data/benchmark/dual_register.json`).
 
 **Reading.** Three authors are too few to judge either way. This paper makes no claim that our
 models, or the older methods, can or cannot see through biblical style on the strength of this
-test. A larger test of the same worry, on 553 authors [CHECK: count as given in the outline; no
-results file] who left both sermons and other prose, was considered and not run (owner's decision,
+test. A larger test of the same worry, on the several hundred authors who left both sermons and other
+prose, was considered and not run (owner's decision,
 2026-11-12). The worry it addresses, that a model follows the biblical style and not the person, is
 instead tested directly on the Book of Mormon in sections 6.2 and 6.3, with samples of equal size
 and with writers who could not have written the book.
@@ -1197,8 +1196,8 @@ general? The 1830-34 revelations are every section of Revelation Book 1 dated af
 whose title begins "Revelation": 95 sections (23 from 1830, 42 from 1831, 16 from 1832, 10 from
 1833, 4 from 1834; `data/blind/a54/plan.json`). They were masked like every candidate sample.
 Amendment 43's rule found no Book of Mormon quotation of 20 or more words in them; 80 shorter
-shared runs were kept, as for every candidate [CHECK: the count of 80 shorter runs, longest 14
-words, is from the blog and outline; no results file under `data/blind/a54/` records it]. The
+shared passages, the longest 14 words, were kept, as for every candidate
+(`data/blind/a54/shared_runs.json`). The
 registered comparison is unchanged: it still uses only text from before the book was published.
 
 **Equal dose.** Twelve non-overlapping slices of the 1830-34 revelations, each the size of the
@@ -2039,9 +2038,8 @@ What stands behind the results is that every step can be found and rerun.
   seeds for roughly $50 to $100 of rented GPU. With the candidate models, anyone can check the
   Book of Mormon ranking without any restricted text and without training anything. Other
   fine-tunes publish their scores, not their weights (owner's decision, 2026-11-11). The
-  repository's README also lists a style-encoder, a dating-model and an earlier
-  benchmark-fine-tune repository [CHECK: whether these three stay public after the planned
-  clean-up to base and candidate models (BOM-87); not verifiable offline].
+  style encoder, the dating models and an earlier set of benchmark fine-tunes are also on
+  Hugging Face and stay public (owner, 2026-11-14); the README lists them.
 - **Simulated reviews.** Three simulated peer reviews (a historian, a statistician, a
   stylometrist), the response plan, the adversarial review and the research review of 2026-11-12
   are in `paper/review/`, `paper/adversarial-review.md` and `docs/research/`. All were written by

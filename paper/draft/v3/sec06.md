@@ -171,8 +171,8 @@ general? The 1830-34 revelations are every section of Revelation Book 1 dated af
 whose title begins "Revelation": 95 sections (23 from 1830, 42 from 1831, 16 from 1832, 10 from
 1833, 4 from 1834; `data/blind/a54/plan.json`). They were masked like every candidate sample.
 Amendment 43's rule found no Book of Mormon quotation of 20 or more words in them; 80 shorter
-shared runs were kept, as for every candidate [CHECK: the count of 80 shorter runs, longest 14
-words, is from the blog and outline; no results file under `data/blind/a54/` records it]. The
+shared passages, the longest 14 words, were kept, as for every candidate
+(`data/blind/a54/shared_runs.json`). The
 registered comparison is unchanged: it still uses only text from before the book was published.
 
 **Equal dose.** Twelve non-overlapping slices of the 1830-34 revelations, each the size of the

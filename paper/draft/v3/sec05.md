@@ -196,13 +196,12 @@ training and test) gives a few disagreements, all in our models' favour: against
 corpus-wide search for imitation scripture judged 1,349 candidate works (by two AI models with a
 third breaking ties; a simulated reading) and found 18 works under 10 author names. Only 3 of those
 authors left 10,000 words or more of other prose in the library: the three above
-(`data/benchmark/dual_register.json`). Outside 1780-1830 most imitation scripture is anonymous
-satire [CHECK: no results file found for the search outside the period; stated as in the outline].
+(`data/benchmark/dual_register.json`).
 
 **Reading.** Three authors are too few to judge either way. This paper makes no claim that our
 models, or the older methods, can or cannot see through biblical style on the strength of this
-test. A larger test of the same worry, on 553 authors [CHECK: count as given in the outline; no
-results file] who left both sermons and other prose, was considered and not run (owner's decision,
+test. A larger test of the same worry, on the several hundred authors who left both sermons and other
+prose, was considered and not run (owner's decision,
 2026-11-12). The worry it addresses, that a model follows the biblical style and not the person, is
 instead tested directly on the Book of Mormon in sections 6.2 and 6.3, with samples of equal size
 and with writers who could not have written the book.

@@ -27,6 +27,7 @@ Usage::
     python -m eval.js_later style base|mid         # Mac: style encoders
     python -m eval.js_later alm pilot|base|mid     # GPU: whole unit + equal-dose slices
     python -m eval.js_later report
+    python -m eval.js_later shared                 # counts of text shared with the Book of Mormon
 """
 
 from __future__ import annotations
@@ -375,9 +376,35 @@ def report() -> int:
     return 0
 
 
+def shared() -> int:
+    """How much the later revelations share with the Book of Mormon under Amendment 43's rule:
+    quotations (dropped) and the shorter shared passages that are kept, as for every candidate
+    (non-biblical runs of ``ngram`` words, merged within ``max_gap``, holding a run that is not
+    stock phrasing). Counts only -> data/blind/a54/shared_runs.json."""
+    q = load_config()["candidates"]["bom_quotation"]
+    sets = _sets(q["ngram"])
+    loose = {**q, "min_words": 0}
+    quotations, shorter, longest = 0, 0, 0
+    for d in docs():
+        for p in quotation_passages(norm(d["load"]()), *sets, loose):
+            if len(p) >= q["min_words"]:
+                quotations += 1
+            else:
+                shorter += 1
+                longest = max(longest, len(p))
+    doc = {**stamp(), "sections": len(docs()), "rule": q, "quotations": quotations,
+           "shorter_shared_passages": shorter, "longest_shorter_words": longest}  # fmt: skip
+    (OUT / "shared_runs.json").write_text(json.dumps(doc, indent=1) + "\n")
+    print(f"{quotations} quotations of {q['min_words']}+ words; {shorter} shorter shared "
+          f"passages, longest {longest} words -> {OUT / 'shared_runs.json'}")  # fmt: skip
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("cmd", choices=["sections", "plan", "classic", "style", "alm", "report"])
+    ap.add_argument(
+        "cmd", choices=["sections", "plan", "classic", "style", "alm", "report", "shared"]
+    )
     ap.add_argument("size", nargs="?")
     ap.add_argument("--micro-batch", type=int, default=8)
     a = ap.parse_args(argv)
@@ -385,7 +412,13 @@ def main(argv: list[str] | None = None) -> int:
         return style(a.size)
     if a.cmd == "alm":
         return alm(a.size, a.micro_batch)
-    return {"sections": sections, "plan": plan, "classic": classic, "report": report}[a.cmd]()
+    return {
+        "sections": sections,
+        "plan": plan,
+        "classic": classic,
+        "report": report,
+        "shared": shared,
+    }[a.cmd]()
 
 
 if __name__ == "__main__":
