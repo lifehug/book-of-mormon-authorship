@@ -179,10 +179,24 @@ another genre) scored on each author's closest episode, over the 18,288 authors 
 dead or under age in 1829, keeps the true author in the top 1,000 for 90% of known books and 82%
 of cross-genre books (first encoder 90% and 79%; the gain is at short lists, 76% to 80.5% at 100).
 Life dates (BOM-91): 6,016 alive in 1829, 5,584 dead or too young, 12,275 unknown; the Library of
-Congress rule agrees with the catalog on 212 of 219 known answers. **\*TBD, running: the shared
-pool (BOM-94).** \*TBD: the procedure frozen in one
-commit (BOM-93); validation on a shared pool of about 1,000 equal-dose models (BOM-94); the Book
-of Mormon with the Phase 1 candidates and dead-author decoys in the ranking (BOM-95).** **\*TBD (Amendment 57, running): the library searched with our own models**
+Congress rule agrees with the catalog on 212 of 219 known answers. **The shared pool (BOM-94):** 3,982 equal-dose 125M author models for 1,000 library
+authors on the 200 known books: true author first of 1,000 for 42-44% (large dose; 28% small),
+against 66% for the style encoder on the same pool (encoder ahead on 96 books, behind on 19;
+adding the models to it does not help). BOM-90's 86% from 55 was with each author's whole text
+and tests from the same works. So the encoder ranks and the author models are a second opinion
+(owner, 2026-11-14). **The Book of Mormon against the library (BOM-95; procedure frozen in
+9ed5940):** of 23,872 authors and the Phase 1 units, at three equal profile sizes: Joseph Smith's
+1828-29 revelations first at the only size they can enter; his 1830-34 revelations first, second,
+first; his ordinary prose 19th-30th; Pratt 2nd-23rd, Rigdon 27th-65th, Cowdery 17th-347th, Hunt
+30th-140th, Phelps 132nd-1,082nd, Spalding 507th-2,308th, Ethan Smith 189th-6,170th. Library top:
+the prophet John Wroe, then Quaker ministers' journals and David Willson. Dead authors are 23% of
+the library and 6-9 of each top 20: the top is a kind of writing, not a set of possible authors.
+X beside it (known books, true author within K of 18,288): first 38%, top 10 66%, top 100 80.5%
+(cross genre 29%, 52%, 68%; at the small profile size 19%, 32%, 60%). Second opinion (125M
+equal-dose models on the encoder's top 200): the 1830-34 revelations first at both doses, closest
+on 123-150 of 168 chunks; the 1828-29 sample 4th of 212. Reading: Phase 1's finding on a library
+2,000 times larger; the method cannot separate the man from the medium. **\*TBD: the Phase 2
+write-up for the paper and blog; label cleanup (two name forms of one author, bare surnames).** **\*TBD (Amendment 57, running): the library searched with our own models**
 (`docs/part2-library-search-plan.md`): one period model (297M) trained on all 23,875 authors'
 profiles with author labels; known answers first (the sweep's 200 books, the registered 70% bar,
 beside every older method run as a sweep), then the Book of Mormon. Kept in Part 2 (owner,

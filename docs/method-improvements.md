@@ -23,6 +23,11 @@ method changes.
 | 13 | Only a 3,039-token pre-1830 revelation sample | His 1830-34 revelations as a deep dive, on the same slices (Amendment 54) | Every later slice ranks right behind the 1828-29 sample at 125M and 297M | yes, as a check |
 | 14 | Our best method needs one model per candidate, so it cannot search a library (23,875 authors) | One period model trained on every author's profile with an author label; score = loss under the label minus under "unknown" (Amendment 57) | *running* | *pending* |
 | 15 | ENSC's code looped over classes (fine for 4 authors, hopeless for 23,875) | Same maths vectorised; tested equal to the original (`sweep/older.py`) | Older methods run as library sweeps on the 200 known books: true author first 20.5-27% (Burrows 25, Cosine 27, ENSC 23, GI 20.5), in the top 1,000 70-78%; none near the 70% bar. Any of the four first: 30%. Cosine reproduces the registered 27% exactly | yes (engineering); the methods themselves: **no** |
+| 16 | Our author models were only tested on lists of 4 | Every list size from 2 to 55, all sizes, one score table (Amendment 58) | 86% from 55 at 125M and 297M, 82% at 590M; older methods 49-62%. Bigger models do not help. A few models score low on everyone's text (the cause of long-list errors) | yes (measurement) |
+| 17 | The library search missed authors whose other writing is a different genre; its encoder had memorised its training authors (loss 0.03, held-out accuracy flat from step 1,000) | A second encoder: 8 times the passages per work, one-genre batches with positives from another genre, a validation split; scored on each author's closest episode; stopping rule set first (`style_embed/v2.py`, `sweep/episodes.py`) | Top 100: 71.5% to 80.5% of known books; top 1,000: 86% to 90% (cross genre 76% to 82%). Better at short lists (13 books gained, 4 lost at 100), no different at 1,000 | partly |
+| 18 | "Could have written it" was not in the data | Life dates from the catalog, then a single plausible Library of Congress match, checked on 500 known answers (`sweep/people.py`) | 6,016 alive, 5,584 dead or too young, 12,275 unknown; the rule agrees with the catalog on 212 of 219. Dates only 13% of undated names | yes, with a large unknown group |
+| 19 | The plan put the author models in charge of the shortlist without testing them there | One shared pool of 1,000 library authors, equal-dose models, tested on the 200 known books before any Book of Mormon run (`eval/library_pool.py`) | Author models first of 1,000: 42-44%; the style encoder on the same pool: 66% (ahead on 96 books, behind on 19). The plan was changed: the encoder ranks, the models are a second opinion | **no** for the author models on this task; yes for testing first |
+| 20 | A top-of-library list could be a genre | The dead stay in the ranking as decoys; every ranking at equal profile sizes; the procedure frozen in one commit first (`eval/library_bom.py`) | Dead authors are 23% of the library and 30-45% of each top 20: the top is first-person religious testimony and revelation | yes, as a check |
 
 ## Lessons
 
@@ -34,3 +39,7 @@ method changes.
   something.
 - **Our approach's cost grows with the number of people** (#2, #14). That is its real limit, and
   the reason for the labelled-model design.
+- **Test the tool on the job before giving it the job** (#19). The author models were the best tool in
+  Phase 1 and the weaker one here; one $17 run on known books showed it before the real run.
+- **An equal-dose rule has a price.** Giving every author the same small amount of text is fair and
+  makes every model weaker; measure how much (#19: 28% against 42-44%).
