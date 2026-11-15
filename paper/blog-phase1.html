@@ -551,7 +551,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <p>Two things about what it can and can't be. It is still a "who is closest" test. It can't say the author is on the list, or isn't; nothing can, as section 4 showed. What I can add is a measured number: <i>when the true author of a book is in this library, this search puts him near the top X% of the time.</i> And I put the eight candidates in the same ranking as everyone else, to see whether anybody in the library rates closer than what the candidate test found.</p>
 
-<p>My first try at this wasn't good enough. It compared the book with all 23,872 authors using two cheap word-count and fingerprint methods, and nobody stood out. But on 200 books where I know the author, it put the true author first only 27&ndash;35% of the time. My bar was 70%. A search that weak can say "nobody jumped out". It can't say much else. So I rebuilt it.</p>
+<p>My first try at this wasn't good enough. It compared the book with all 23,872 authors using a word-count method and an earlier fingerprint model, and nobody stood out. But on 200 books where I know the author, it put the true author first only 27&ndash;35% of the time. My bar was 70%. A search that weak can say "nobody jumped out". It can't say much else. So I rebuilt it.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/sweep/calibrate.py">sweep/calibrate.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/sweep/older.py">sweep/older.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/calibration.json">data/sweep/calibration.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/older_methods.json">data/sweep/older_methods.json</a></p>
 
 <h3>The plan, and how it broke</h3>
@@ -577,9 +577,9 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/library_pool.py">eval/library_pool.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/pool_report_pilot.json">data/sweep/pool_report_pilot.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/pool_fusion_pilot.json">data/sweep/pool_fusion_pilot.json</a></p>
 </figure>
 
-<p>The cheap fingerprint model, the one I'd meant to use only for narrowing, beat my best method from the candidate test by a wide margin. That run cost $17 and it changed the plan. The fingerprint model does the ranking. The author models became a second opinion on its top 200.</p>
+<p>The fingerprint model, the one I'd meant to use only for narrowing, found the true author far more often than my best method from the candidate test. So I used the tool that did better. The fingerprint model does the ranking, and the author models became a second opinion on its top 200.</p>
 
-<p>I'd also asked what it would cost to run the two bigger author models here, for completeness. About $25, plus $105 to test them properly. Then I asked the better question: would it change a sentence? Probably not. What the result was thin on was something free: more known books to test on, and cleaner names. So I did those first.</p>
+<p>I also considered running the two bigger author models here, for completeness. I didn't. Bigger had not helped in the list test above, and the author models were no longer the ones doing the ranking, so a bigger version of them wouldn't change the result. What would make the result stronger was more known books to test the search on, and cleaner names in its lists. So I did those.</p>
 
 <h3>The search, and how far to trust it</h3>
 
