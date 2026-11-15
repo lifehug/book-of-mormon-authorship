@@ -141,7 +141,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <li><a href="#earlier">3. The earlier studies, re-run</a></li>
 <li><a href="#tools">4. Are my tools any good?</a></li>
 <li><a href="#joseph">5. Joseph Smith, up close</a></li>
-<li><a href="#others">6. The other candidates</a></li>
+<li><a href="#others">6. Does that rule the others out?</a></li>
 <li><a href="#everyone">7. Everyone else</a></li>
 <li><a href="#wrong">8. What I got wrong</a></li>
 <li><a href="#next">9. The whole library</a></li>
@@ -525,9 +525,11 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p>One thing the manuscripts do show. The original manuscript was taken down as Joseph Smith spoke, and the printer's manuscript is a copy of it. If the original was written by ear, it should be full of misheard words like <i>there</i> for <i>their</i>. It is: with the same scribe on both, those slips are about nine times as common in the original (30 of 590 against 5 of 837). The book was dictated aloud.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/manuscript/corrections.py">manuscript/corrections.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/manuscript/summary.json">data/manuscript/summary.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/manuscript/handcheck.json">data/manuscript/handcheck.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/docs/manuscript-evidence.md">docs/manuscript-evidence.md</a></p>
 
-<h2 id="others">6. The other candidates</h2>
+<h2 id="others">6. Does that rule the others out?</h2>
 
-<p>Before reading anything into a low rank, I asked a simpler question. If a model learns a person from one of their works, does it recognise them in another?</p>
+<p>Section 5 said Joseph Smith's revelations are the closest of the candidate samples. It is tempting to read the other half of that: Cowdery, Rigdon, Pratt, Phelps and Ethan Smith rank lower, so they're ruled out. This section is here to say that doesn't follow, and to show why.</p>
+
+<p>A low rank only means something if the model really learned the person. So I tested that. Each candidate's model was trained on some of his writing. Then I showed it a <i>different</i> work by the same man, mixed in with other people's, and asked: do you recognise your own author?</p>
 
 <figure>
 <h4>Recognised in a different work of their own</h4>
@@ -537,7 +539,11 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/part2_decoys.py">eval/part2_decoys.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/part2/decoys_report.json">data/benchmark/part2/decoys_report.json</a></p>
 </figure>
 
-<p>Only Ethan Smith passes, and he isn't the closest to the Book of Mormon. For Cowdery, Rigdon, Phelps and Pratt, the models learned a book. So a low rank for them means "not shown", and I can't write "ruled out". Spalding and Hunt have one work each, so they can't be checked this way at all.</p>
+<p>Only Ethan Smith passes. His model knows him in any of his books, so his low rank against the Book of Mormon is real evidence: it doesn't read like him.</p>
+
+<p>For the other four the models failed. Rigdon's and Phelps's models didn't recognise a single passage of their own author's other writing. Those models learned one book, and they couldn't spot the man who wrote it anywhere else. So when they don't light up for the Book of Mormon either, that tells me nothing. For Cowdery, Rigdon, Phelps and Pratt the right word is "not shown". I can't write "ruled out". Spalding and Hunt left one work each, so they can't be checked this way at all.</p>
+
+<p>This is the same weakness that turns up again in section 9: these models are good at recognising more of a text they've seen, and much worse at recognising the same writer in a different book.</p>
 
 <h2 id="everyone">7. Everyone else</h2>
 
