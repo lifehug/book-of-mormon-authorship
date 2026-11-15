@@ -143,9 +143,8 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <li><a href="#joseph">5. Joseph Smith, up close</a></li>
 <li><a href="#others">6. Does that rule the others out?</a></li>
 <li><a href="#everyone">7. Everyone else</a></li>
-<li><a href="#wrong">8. What I got wrong</a></li>
-<li><a href="#next">9. The whole library</a></li>
-<li><a href="#check">10. Check it yourself</a></li>
+<li><a href="#next">8. The whole library</a></li>
+<li><a href="#check">9. Check it yourself</a></li>
 </ul>
 
 <h2 id="library">1. The library</h2>
@@ -428,7 +427,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p>This is where every method fails, mine too. On the exam above, held to that line, my models let in 51&ndash;57% of strangers. Turn it round and let in only 5% of strangers, and they confirm just 38&ndash;61% of true authors. The two older methods built for this exact job, General Imposters and the 2011 study's classifier, let in 78% or more. I tried the standard fix from voice-ID research. Tested properly, on authors it had never seen, it didn't work.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/clustered.py">eval/clustered.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/open_set.py">eval/open_set.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/clustered.json">data/benchmark/clustered.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/open_set.json">data/benchmark/open_set.json</a></p>
 
-<p>That left a fair question. Maybe it's just me. Does a tool exist, anywhere, that can do this? I went looking, and then I ran what I found. The newest published method I could find is from 2024 and is called LambdaG. It asks whether a text's sentences are more likely under a model of this person's grammar than under a model of everybody else's. I ran it with its authors' own software. I also ran three ready-made style models trained on modern writing, my fingerprint model from section 9, and my own author models. One of the three, LUAR, is the design my fingerprint model is built on, trained on Reddit instead of on books printed before 1830. Same 200 books for all of them, each book paired with its true author and ten other people.</p>
+<p>That left a fair question. Maybe it's just me. Does a tool exist, anywhere, that can do this? I went looking, and then I ran what I found. The newest published method I could find is from 2024 and is called LambdaG. It asks whether a text's sentences are more likely under a model of this person's grammar than under a model of everybody else's. I ran it with its authors' own software. I also ran three ready-made style models trained on modern writing, my fingerprint model from section 8, and my own author models. One of the three, LUAR, is the design my fingerprint model is built on, trained on Reddit instead of on books printed before 1830. Same 200 books for all of them, each book paired with its true author and ten other people.</p>
 
 <figure>
 <h4>Strangers let in, when the line is set to confirm 95% of true authors</h4>
@@ -543,32 +542,16 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <p>For the other four the models failed. Rigdon's and Phelps's models didn't recognise a single passage of their own author's other writing. Those models learned one book, and they couldn't spot the man who wrote it anywhere else. So when they don't light up for the Book of Mormon either, that tells me nothing. For Cowdery, Rigdon, Phelps and Pratt the right word is "not shown". I can't write "ruled out". Spalding and Hunt left one work each, so they can't be checked this way at all.</p>
 
-<p>This is the same weakness that turns up again in section 9: these models are good at recognising more of a text they've seen, and much worse at recognising the same writer in a different book.</p>
+<p>This is the same weakness that turns up again in section 8: these models are good at recognising more of a text they've seen, and much worse at recognising the same writer in a different book.</p>
 
 <h2 id="everyone">7. Everyone else</h2>
 
 <p>What about people nobody has proposed? I compared the Book of Mormon against all 23,872 authors in the library with at least 10,000 words, using the two methods cheap enough to run that many times. No one stood out. I'd worked out in advance that chance alone should throw up 0.035 false leads. I got zero.</p>
 
-<p>But here's the catch, and it's a big one. On 200 books where I know the author, that same search puts the true author first only 27&ndash;35% of the time. My bar was 70%. So the search can say "nobody jumped out". It can't say "nobody's there". And my best method wasn't in it at all, because it needs one model per author. Section 9 is where I went back and did this properly.</p>
+<p>But here's the catch, and it's a big one. On 200 books where I know the author, that same search puts the true author first only 27&ndash;35% of the time. My bar was 70%. So the search can say "nobody jumped out". It can't say "nobody's there". And my best method wasn't in it at all, because it needs one model per author. Section 8 is where I went back and did this properly.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/sweep/calibrate.py">sweep/calibrate.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/sweep/older.py">sweep/older.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/calibration.json">data/sweep/calibration.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/older_methods.json">data/sweep/older_methods.json</a></p>
 
-<h2 id="wrong">8. What I got wrong</h2>
-
-<p>I promised to show the wrong turns. These are the ones that changed a result.</p>
-
-<ul class="wrong">
-<li><b>Cowdery's sample quoted the book.</b> His 1829 "Articles of the Church" is 40% Book of Mormon, word for word. Of course it looked close. I now drop any candidate passage that shares 20 or more words with the book and was written after that part was dictated.</li>
-<li><b>I counted passages when I should have counted authors.</b> I'd reported my models beating word counts at p &lt; 0.0001. Counted by author it was p 0.13. The claim only became true after I added 32 more authors, with a rule that I couldn't add any more after that.</li>
-<li><b>A fix that graded its own homework.</b> A quick version of the "none of these" fix looked like a breakthrough: three in four true authors confirmed. It had been learning each author's quirks, then testing on the same author. Done properly, it failed.</li>
-<li><b>"The biggest model sees best."</b> I wrote that, and it's wrong. The sizes tie at picking authors. A fourth, billion-parameter model failed in training and isn't used.</li>
-<li><b>One lucky sample.</b> Early rankings used one or two random slices of each writer. They now use up to twelve, spread evenly.</li>
-<li><b>My best method wasn't the best method.</b> I planned the whole-library search around the models that won in section 4. Tested on the real job, a different book and equal amounts of text, a cheaper tool beat them 66% to 44%. I'd have built the wrong thing if I hadn't tested first.</li>
-<li><b>A model that memorised.</b> My first fingerprint model learned its training authors by heart and nothing that carried over. The evidence had been sitting in its own training log for a week.</li>
-<li><b>"Nobody rates closer."</b> That is what my first write-up of section 9 said. A fact-check against the results file caught it: in one of the three versions John Wroe is ahead of the revelations. I'd been reading "first or second" as "first".</li>
-<li><b>A result saved under the wrong name.</b> One run in section 9 wrote its answer to a file nobody was looking for, and skipped the most important sample because it came out 88 tokens short. I paid for it twice.</li>
-</ul>
-
-<h2 id="next">9. The whole library</h2>
+<h2 id="next">8. The whole library</h2>
 
 <p>Phase 1 ends on an open door: the closest of eight, with no way to say whether the author is among the eight. So I asked the same question of everybody. Not eight people. All 23,872 authors in the library who left at least 10,000 words.</p>
 
@@ -676,7 +659,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <p>That is Phase 1's finding again, on a list three thousand times longer. The closest writing I can find anywhere is the revelation voice: his, and other people's. What I can't do is tell the man from the kind of writing. A believer and a sceptic can both read this result and find it unsurprising, for opposite reasons, and nothing in my tools separates them.</p>
 
-<h2 id="check">10. Check it yourself</h2>
+<h2 id="check">9. Check it yourself</h2>
 
 <p>Under each chart and result above there's a line linking to the code that ran it and the file of numbers it produced. The whole thing lives at <a href="https://github.com/lifehug/book-of-mormon-authorship/">github.com/lifehug/book-of-mormon-authorship</a>. <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/README.md">The run guide</a> lists every command, what it needs and how long it takes, and <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/paper/preregistration.md">the plan</a> has every rule and every change to it, dated.</p>
 
