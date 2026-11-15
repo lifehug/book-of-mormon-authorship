@@ -142,9 +142,8 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <li><a href="#tools">4. Are my tools any good?</a></li>
 <li><a href="#joseph">5. Joseph Smith, up close</a></li>
 <li><a href="#others">6. Does that rule the others out?</a></li>
-<li><a href="#everyone">7. Everyone else</a></li>
-<li><a href="#next">8. The whole library</a></li>
-<li><a href="#check">9. Check it yourself</a></li>
+<li><a href="#next">7. The whole library</a></li>
+<li><a href="#check">8. Check it yourself</a></li>
 </ul>
 
 <h2 id="library">1. The library</h2>
@@ -427,7 +426,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p>This is where every method fails, mine too. On the exam above, held to that line, my models let in 51&ndash;57% of strangers. Turn it round and let in only 5% of strangers, and they confirm just 38&ndash;61% of true authors. The two older methods built for this exact job, General Imposters and the 2011 study's classifier, let in 78% or more. I tried the standard fix from voice-ID research. Tested properly, on authors it had never seen, it didn't work.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/clustered.py">eval/clustered.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/open_set.py">eval/open_set.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/clustered.json">data/benchmark/clustered.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/open_set.json">data/benchmark/open_set.json</a></p>
 
-<p>That left a fair question. Maybe it's just me. Does a tool exist, anywhere, that can do this? I went looking, and then I ran what I found. The newest published method I could find is from 2024 and is called LambdaG. It asks whether a text's sentences are more likely under a model of this person's grammar than under a model of everybody else's. I ran it with its authors' own software. I also ran three ready-made style models trained on modern writing, my fingerprint model from section 8, and my own author models. One of the three, LUAR, is the design my fingerprint model is built on, trained on Reddit instead of on books printed before 1830. Same 200 books for all of them, each book paired with its true author and ten other people.</p>
+<p>That left a fair question. Maybe it's just me. Does a tool exist, anywhere, that can do this? I went looking, and then I ran what I found. The newest published method I could find is from 2024 and is called LambdaG. It asks whether a text's sentences are more likely under a model of this person's grammar than under a model of everybody else's. I ran it with its authors' own software. I also ran three ready-made style models trained on modern writing, my fingerprint model from section 7, and my own author models. One of the three, LUAR, is the design my fingerprint model is built on, trained on Reddit instead of on books printed before 1830. Same 200 books for all of them, each book paired with its true author and ten other people.</p>
 
 <figure>
 <h4>Strangers let in, when the line is set to confirm 95% of true authors</h4>
@@ -542,22 +541,20 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <p>For the other four the models failed. Rigdon's and Phelps's models didn't recognise a single passage of their own author's other writing. Those models learned one book, and they couldn't spot the man who wrote it anywhere else. So when they don't light up for the Book of Mormon either, that tells me nothing. For Cowdery, Rigdon, Phelps and Pratt the right word is "not shown". I can't write "ruled out". Spalding and Hunt left one work each, so they can't be checked this way at all.</p>
 
-<p>This is the same weakness that turns up again in section 8: these models are good at recognising more of a text they've seen, and much worse at recognising the same writer in a different book.</p>
+<p>This is the same weakness that turns up again in section 7: these models are good at recognising more of a text they've seen, and much worse at recognising the same writer in a different book.</p>
 
-<h2 id="everyone">7. Everyone else</h2>
+<h2 id="next">7. The whole library</h2>
 
-<p>What about people nobody has proposed? I compared the Book of Mormon against all 23,872 authors in the library with at least 10,000 words, using the two methods cheap enough to run that many times. No one stood out. I'd worked out in advance that chance alone should throw up 0.035 false leads. I got zero.</p>
+<p>The candidate test in section 5 has a limit built into it. It can only compare the people somebody thought to propose. It tells me which of eight is closest. It can't tell me whether anyone else is closer.</p>
 
-<p>But here's the catch, and it's a big one. On 200 books where I know the author, that same search puts the true author first only 27&ndash;35% of the time. My bar was 70%. So the search can say "nobody jumped out". It can't say "nobody's there". And my best method wasn't in it at all, because it needs one model per author. Section 8 is where I went back and did this properly.</p>
+<p>So the question I really want answered is wider. Out of everyone who left writing in the library, all 23,872 authors with at least 10,000 words, does anyone write more like the Book of Mormon than those eight? That is the library search.</p>
+
+<p>Two things about what it can and can't be. It is still a "who is closest" test. It can't say the author is on the list, or isn't; nothing can, as section 4 showed. What I can add is a measured number: <i>when the true author of a book is in this library, this search puts him near the top X% of the time.</i> And I put the eight candidates in the same ranking as everyone else, to see whether anybody in the library rates closer than what the candidate test found.</p>
+
+<p>My first try at this, the one I'd planned from the start, wasn't good enough. It compared the book with all 23,872 authors using two cheap word-count and fingerprint methods, and nobody stood out. But on 200 books where I know the author, it put the true author first only 27&ndash;35% of the time. My bar was 70%. A search that weak can say "nobody jumped out". It can't say much else. So I rebuilt it.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/sweep/calibrate.py">sweep/calibrate.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/sweep/older.py">sweep/older.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/calibration.json">data/sweep/calibration.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/older_methods.json">data/sweep/older_methods.json</a></p>
 
-<h2 id="next">8. The whole library</h2>
-
-<p>Phase 1 ends on an open door: the closest of eight, with no way to say whether the author is among the eight. So I asked the same question of everybody. Not eight people. All 23,872 authors in the library who left at least 10,000 words.</p>
-
-<p>I wanted to end with one sentence that has a measured number in it: <i>if the author left other writing in this library, this search puts him near the top X% of the time.</i> And I wanted the eight candidates in the same ranking as everyone else, so I could see whether anybody in the library rates closer than what Phase 1 found.</p>
-
-<div class="draft">This section is exploratory. The rules were not written years in advance like Phase 1's. What I did do: I fixed the whole procedure in one commit before the Book of Mormon was run through it, and I tested every tool on books whose author I know before trusting it.</div>
+<div class="draft">This section is exploratory. The rules for it were not written down in advance, the way they were for the earlier sections. What I did do: I fixed the whole procedure in one commit before the Book of Mormon was run through it, and I tested every tool on books whose author I know before trusting it.</div>
 
 <h3>The plan, and how it broke</h3>
 
@@ -582,7 +579,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/library_pool.py">eval/library_pool.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/pool_report_pilot.json">data/sweep/pool_report_pilot.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/pool_fusion_pilot.json">data/sweep/pool_fusion_pilot.json</a></p>
 </figure>
 
-<p>The cheap fingerprint model, the one I'd meant to use only for narrowing, beat my best Phase 1 method by a wide margin. That run cost $17 and it changed the plan. The fingerprint model does the ranking. The author models became a second opinion on its top 200.</p>
+<p>The cheap fingerprint model, the one I'd meant to use only for narrowing, beat my best method from the candidate test by a wide margin. That run cost $17 and it changed the plan. The fingerprint model does the ranking. The author models became a second opinion on its top 200.</p>
 
 <p>I'd also asked what it would cost to run the two bigger author models here, for completeness. About $25, plus $105 to test them properly. Then I asked the better question: would it change a sentence? Probably not. What the result was thin on was something free: more known books to test on, and cleaner names. So I did those first.</p>
 
@@ -617,15 +614,15 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <h3>The result</h3>
 
-<p>Here is the Book of Mormon against the whole library, with the Phase 1 candidates placed where they'd fall. There are three versions, because sample size matters: a writer with 20,000 words has an edge over one with two pages. The small version gives everyone the same amount as Joseph Smith's 1828&ndash;29 revelations, which is the only way that sample can compete fairly.</p>
+<p>Here is the Book of Mormon against the whole library, with the eight candidates' samples placed where they'd fall. There are three versions, because sample size matters: a writer with 20,000 words has an edge over one with two pages. The small version gives everyone the same amount as Joseph Smith's 1828&ndash;29 revelations, which is the only way that sample can compete fairly.</p>
 
 <figure>
-<h4>Closest to the Book of Mormon, of 23,872 library authors and the Phase 1 candidates</h4>
-<p class="sub">Library authors by rank; each Phase 1 sample is shown at the place it would take among them.</p>
+<h4>Closest to the Book of Mormon, of 23,872 library authors and the candidates</h4>
+<p class="sub">Library authors by rank; each candidate sample is shown at the place it would take among them.</p>
 <div class="seg" id="lb-seg" role="group" aria-label="Amount of text per author">
 <button data-k="small" aria-pressed="true">Small equal amount</button><button data-k="large" aria-pressed="false">Large equal amount</button><button data-k="full" aria-pressed="false">Everything each has</button>
 </div>
-<div class="legend"><span><i style="background:var(--s1)"></i>Joseph Smith's samples</span><span><i style="background:var(--s2)"></i>Other Phase 1 candidates</span><span><i style="background:var(--neutral)"></i>Library authors</span></div>
+<div class="legend"><span><i style="background:var(--s1)"></i>Joseph Smith's samples</span><span><i style="background:var(--s2)"></i>Other candidates</span><span><i style="background:var(--neutral)"></i>Library authors</span></div>
 <div id="lb-list"></div>
 <div class="reading" id="lb-read" style="font-family:var(--sans);font-size:.88rem"></div>
 <figcaption>Names and dates are as the catalog has them. Two spellings of one person are merged. One entry joins two men: the Quaker writer William Bayly died in 1675, and the dates shown for him are an astronomer's of the same name. "No dates" means nobody recorded when the person lived. Samples too short for a version are left off it.</figcaption>
@@ -650,16 +647,16 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <h3>A second opinion</h3>
 
-<p>I still ran my Phase 1 method on the fingerprint model's top 200 library authors plus the candidates: about 830 small models, each given the same amount of text. It agrees at the head of the list. Joseph Smith's 1830&ndash;34 revelations come first at both amounts, and are the closest sample on 123 to 150 of the 168 passages. His 1828&ndash;29 revelations are 4th of 212. Behind them: Wroe, Willson, Joanna Southcott (an English prophetess who died in 1814), John Reeve (who died in 1658). Further down the two methods disagree, and I trust this one less here, for the reason in the chart above.</p>
+<p>I still ran my author models, the method from the candidate test, on the fingerprint model's top 200 library authors plus the candidates: about 830 small models, each given the same amount of text. It agrees at the head of the list. Joseph Smith's 1830&ndash;34 revelations come first at both amounts, and are the closest sample on 123 to 150 of the 168 passages. His 1828&ndash;29 revelations are 4th of 212. Behind them: Wroe, Willson, Joanna Southcott (an English prophetess who died in 1814), John Reeve (who died in 1658). Further down the two methods disagree, and I trust this one less here, for the reason in the chart above.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/library_pool.py">eval/library_pool.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/library_bom.py">eval/library_bom.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/bom_second_opinion_pilot.json">data/sweep/bom_second_opinion_pilot.json</a></p>
 
 <h3>What this says, and what it doesn't</h3>
 
 <p>I searched every author in the library. Joseph Smith's revelations come out first in two of three versions and second in the third, behind one other man who wrote revelations. The nearest library writers after that are other people writing revelation and religious testimony, many of them long dead.</p>
 
-<p>That is Phase 1's finding again, on a list three thousand times longer. The closest writing I can find anywhere is the revelation voice: his, and other people's. What I can't do is tell the man from the kind of writing. A believer and a sceptic can both read this result and find it unsurprising, for opposite reasons, and nothing in my tools separates them.</p>
+<p>That is the candidate test's finding again, on a list three thousand times longer. The closest writing I can find anywhere is the revelation voice: his, and other people's. What I can't do is tell the man from the kind of writing. A believer and a sceptic can both read this result and find it unsurprising, for opposite reasons, and nothing in my tools separates them.</p>
 
-<h2 id="check">9. Check it yourself</h2>
+<h2 id="check">8. Check it yourself</h2>
 
 <p>Under each chart and result above there's a line linking to the code that ran it and the file of numbers it produced. The whole thing lives at <a href="https://github.com/lifehug/book-of-mormon-authorship/">github.com/lifehug/book-of-mormon-authorship</a>. <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/README.md">The run guide</a> lists every command, what it needs and how long it takes, and <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/paper/preregistration.md">the plan</a> has every rule and every change to it, dated.</p>
 
@@ -734,7 +731,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
      ['<b>This study</b>, trained on',202816,'202,816','202,816 volumes from 1780 to 1830: 25.7 billion tokens, the text my models learned from.','s1'],
      ['<b>This study</b>, catalogued',695021,'695,021','695,021 items: books from three libraries, 159,146 newspaper pages, and 61,315 older texts for dating.','s1']]},
    people:{sub:'Linear scale. Seven or fewer for every earlier study.',
-    cap:'Eight named candidates got the full treatment, one model each. The other 23,872 are every author in the library with at least 10,000 words, checked with two cheaper methods (section 7).',
+    cap:'Eight named candidates got the full treatment, one model each. The other 23,872 are every author in the library with at least 10,000 words, searched with a fingerprint model (section 7).',
     max:23880,rows:[
      ['Larsen 1980',6,'6','Joseph Smith, Phelps, Cowdery, Pratt, Rigdon, Spalding.'],
      ['Holmes 1992',1,'1','Joseph Smith only.'],
@@ -1026,7 +1023,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
     rows.forEach(function(o){
       var d2=document.createElement('div');d2.className='rk';
       if(o.c){var c=o.c;
-        d2.innerHTML='<div class="n"></div><div class="nm"><b style="color:'+(c[2]?'var(--s1)':'var(--s2)')+'">'+c[1]+'</b><small>Phase 1 sample</small></div><div style="color:var(--text-3)">'+(c[0]>100?'far below this list':'')+'</div><div class="mr">'+c[0].toLocaleString()+'</div>';
+        d2.innerHTML='<div class="n"></div><div class="nm"><b style="color:'+(c[2]?'var(--s1)':'var(--s2)')+'">'+c[1]+'</b><small>candidate sample</small></div><div style="color:var(--text-3)">'+(c[0]>100?'far below this list':'')+'</div><div class="mr">'+c[0].toLocaleString()+'</div>';
       }else{var x=o.lib,st=x[2]==='dead'?'dead by 1829':x[2]==='alive'?'alive in 1829':x[2]==='too_young'?'a child in 1829':'no dates';
         d2.innerHTML='<div class="n"></div><div class="nm">'+x[1]+(x[5]?'<small>a bare surname in the catalog</small>':x[6]?'<small>listed under '+(x[6]+1)+' spellings</small>':'')+'</div><div style="color:'+(x[2]==='dead'?'var(--s2)':'var(--text-2)')+'">'+(x[3]?x[3]+'&ndash;'+(x[4]||''):'')+' <span style="color:var(--text-3)">'+st+'</span></div><div class="mr">'+x[0]+'</div>';
       }
