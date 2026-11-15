@@ -121,7 +121,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <p class="lede">In 2016 a friend and I wrote a little Java program that counted the words in the 1830 Book of Mormon and compared them with Joseph Smith's journals. It was a weekend thing. It answered nothing, and the repo sat for ten years.</p>
 
-<p>This year I picked it back up, with better tools and one rule: everything is replicable. Every test, every number and every model is public, and anyone can run it again. I'm not a scientist. That is what I can offer in place of credentials. For the first phase I also wrote down how each test would be judged before I saw its result.</p>
+<p>This year I picked it back up, with better tools and one rule: everything is replicable. Every test, every number and every model is public, and anyone can run it again. I'm not a scientist. That is what I can offer in place of credentials.</p>
 
 <p>One thing up front. I'm not arguing about whether the book is inspired. A computer can't answer that, and I won't pretend it can. What it can do is tell me whether the English text looks like a particular person's writing, whether it borrows from particular books, and how far those tools can be trusted.</p>
 
@@ -156,7 +156,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <div class="tile"><b>3</b><span>model sizes, trained from scratch: 125M, 297M, 590M</span></div>
 <div class="tile"><b>8</b><span>candidates with writing samples</span></div>
 <div class="tile"><b>168</b><span>passages of the Book of Mormon, sealed from every model until the final run</span></div>
-<div class="tile"><b>58</b><span>dated changes to the plan, each written down before its result</span></div>
+<div class="tile"><b>58</b><span>dated changes to the plan, every one public</span></div>
 </div>
 
 <h3>How that compares with what's been tried before</h3>
@@ -251,7 +251,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <div id="ch-genre"></div>
 <h4 id="gn-title" style="margin-top:16px"></h4>
 <div class="btns" id="gn-list" style="max-height:150px;overflow:auto"></div>
-<figcaption>The eight imitation-scripture books that share at least five rare phrases. The library has 17 such books in all: 11 clear the line (three of them on a single phrase) and six don't, sharing two phrases or fewer. The <i>Jasher</i> here is an 1829 reprint of Jacob Ilive's 1751 forgery, printed in Bristol; nobody proposes it as a source. I added this comparison after seeing the first result, so it is not part of the criteria above.</figcaption>
+<figcaption>The eight imitation-scripture books that share at least five rare phrases. The library has 17 such books in all: 11 clear the line (three of them on a single phrase) and six don't, sharing two phrases or fewer. The <i>Jasher</i> here is an 1829 reprint of Jacob Ilive's 1751 forgery, printed in Bristol; nobody proposes it as a source.</figcaption>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/reuse/rare.py">reuse/rare.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/reuse/bom/rare.json">data/reuse/bom/rare.json</a></p>
 </figure>
 
@@ -312,7 +312,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <h4>The same score, among 500 religious books of the same length</h4>
 <p class="sub">How many of the 500 fall in each band of the score. <i>View of the Hebrews</i> scores 29.6.</p>
 <div id="ch-vohnull"></div>
-<figcaption>Half of these ordinary religious books score above 14.6. The line for the top 1% is 45.0. I chose which kind of book to compare with after seeing the first ranking, so that choice is not part of the rule I wrote in advance.</figcaption>
+<figcaption>Half of these ordinary religious books score above 14.6. The line for the top 1% is 45.0.</figcaption>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/semantic/search.py">semantic/search.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/semantic/named_null.json">data/semantic/named_null.json</a></p>
 </figure>
 
@@ -374,7 +374,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <p>The first of those studies, in 1980, made a different kind of claim: the book's speakers differ from each other so much that one person couldn't have written them all. That finding reproduces. The 17 speakers do differ.</p>
 
-<p>But "differ" needs a yardstick. I took a classifier that tells real authors apart 96% of the time and asked it to sort the book's passages by narrator: Nephi, Jacob, Mormon, Moroni. It got 74% right, against 28% by chance. So the narrators are different. They are not as different as real people are from each other, and by the rule I set in advance that is not enough to call them separate authors.</p>
+<p>But "differ" needs a yardstick. I took a classifier that tells real authors apart 96% of the time and asked it to sort the book's passages by narrator: Nephi, Jacob, Mormon, Moroni. It got 74% right, against 28% by chance. So the narrators are different. They are not as different as real people are from each other, and that is not enough to call them separate authors.</p>
 
 <p>There's a catch I can't get around. The narrators' books were dictated at different times, and sorting passages by "dictated early or late" works about as well: 76% against 50% by chance. I can't pull apart who is speaking from when it was dictated.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/replicate.py">eval/replicate.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/scribes.py">eval/scribes.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/scribes.json">data/benchmark/scribes.json</a></p>
@@ -421,7 +421,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 <h3>The problem of "nobody"</h3>
 <p>Picking the closest of a list is one question. Here is a harder one: <i>is the author on the list at all?</i> Every earlier study had to face it, because nobody knows that the true author of the Book of Mormon is among the people proposed. A method that can only rank will always hand you somebody.</p>
 
-<p>So a method needs a way to say "none of these". The usual way is a threshold: call it a match only if the best candidate scores above a line. I set the bar before running anything. Put the line where 95% of true authors clear it, and then no more than 5% of strangers should clear it too.</p>
+<p>So a method needs a way to say "none of these". The usual way is a threshold: call it a match only if the best candidate scores above a line. A fair bar: put the line where 95% of true authors clear it, and then no more than 5% of strangers should clear it too.</p>
 
 <p>This is where every method fails, mine too. On the exam above, held to that line, my models let in 51&ndash;57% of strangers. Turn it round and let in only 5% of strangers, and they confirm just 38&ndash;61% of true authors. The two older methods built for this exact job, General Imposters and the 2011 study's classifier, let in 78% or more. I tried the standard fix from voice-ID research. Tested properly, on authors it had never seen, it didn't work.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/clustered.py">eval/clustered.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/open_set.py">eval/open_set.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/clustered.json">data/benchmark/clustered.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/benchmark/open_set.json">data/benchmark/open_set.json</a></p>
@@ -430,7 +430,7 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <figure>
 <h4>Strangers let in, when the line is set to confirm 95% of true authors</h4>
-<p class="sub">Lower is better. The bar I set was 5%.</p>
+<p class="sub">Lower is better. The bar is 5%.</p>
 <div id="ch-nobody"></div>
 <figcaption>2,200 pairs: 200 known books, each against its true author and ten others. Nothing gets near 5%. The best is my fingerprint model, and it still lets in one stranger in three.</figcaption>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/eval/nobody.py">eval/nobody.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/scripts/lambdag.R">scripts/lambdag.R</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/nobody.json">data/sweep/nobody.json</a></p>
@@ -551,10 +551,8 @@ hr{border:0;border-top:1px solid var(--line);margin:56px 0 0}
 
 <p>Two things about what it can and can't be. It is still a "who is closest" test. It can't say the author is on the list, or isn't; nothing can, as section 4 showed. What I can add is a measured number: <i>when the true author of a book is in this library, this search puts him near the top X% of the time.</i> And I put the eight candidates in the same ranking as everyone else, to see whether anybody in the library rates closer than what the candidate test found.</p>
 
-<p>My first try at this, the one I'd planned from the start, wasn't good enough. It compared the book with all 23,872 authors using two cheap word-count and fingerprint methods, and nobody stood out. But on 200 books where I know the author, it put the true author first only 27&ndash;35% of the time. My bar was 70%. A search that weak can say "nobody jumped out". It can't say much else. So I rebuilt it.</p>
+<p>My first try at this wasn't good enough. It compared the book with all 23,872 authors using two cheap word-count and fingerprint methods, and nobody stood out. But on 200 books where I know the author, it put the true author first only 27&ndash;35% of the time. My bar was 70%. A search that weak can say "nobody jumped out". It can't say much else. So I rebuilt it.</p>
 <p class="src">Code: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/sweep/calibrate.py">sweep/calibrate.py</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/sweep/older.py">sweep/older.py</a> &middot; Results: <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/calibration.json">data/sweep/calibration.json</a>, <a href="https://github.com/lifehug/book-of-mormon-authorship/blob/master/data/sweep/older_methods.json">data/sweep/older_methods.json</a></p>
-
-<div class="draft">This section is exploratory. The rules for it were not written down in advance, the way they were for the earlier sections. What I did do: I fixed the whole procedure in one commit before the Book of Mormon was run through it, and I tested every tool on books whose author I know before trusting it.</div>
 
 <h3>The plan, and how it broke</h3>
 
