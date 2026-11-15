@@ -66,7 +66,7 @@ collaborative authorship is a common historical hypothesis that this design cann
 large share of real shared phrasing in poor scans (a four-word phrase survives about 41% of the
 time at 80% word accuracy). A negative from poor OCR is not evidence of absence: the 26 June 1829
 *Wayne Sentinel* notice of the book's title page is present on the page image, and none of ten
-search terms is found in its OCR. Training volumes holding 1 to 19 of the text's 12-token strings
+search terms is found in its OCR (`docs/access-evidence.md`, `data/access/SOURCES.md`). Training volumes holding 1 to 19 of the text's 12-token strings
 (below the removal threshold of 20) were kept. Some catalog dates are wrong, and were corrected
 where the text names later years. Author names conflate namesakes and split variants. About 72%
 of the original manuscript is lost. Writers whose work did not survive in print, or who fall

@@ -173,12 +173,14 @@ on 200 books of known authorship, with each author's profile rebuilt without the
 the true author comes first among all the authors, with a bar of 70% for the sweep to count as
 usable. Second, how many false leads the rule produces on those 200 books: 0.035 per query. A
 plausibility gate (right period, and right place or documented access; Amendment 40, fixed before
-any lead was seen) would pass about one random author in ten, so about 0.0035 false leads per query
+any lead was seen) would pass about one random author in ten (10 of 100 drawn at random;
+`data/sweep/gate_sample.csv`), so about 0.0035 false leads per query
 would survive it.
 
 **Result.** No lead: 0, against 0.035 expected by chance (`data/blind/unblinded.json`,
-`data/sweep/calibration.json`). The nearest authors are writers of prophecy and Quaker testimony
-(John Wroe, George Fox, William Sewel), none near either threshold.
+`data/sweep/calibration.json`). The twenty nearest authors (`nearest_20` in the first file)
+include writers of prophecy and Quaker testimony (John Wroe, George Fox, William
+Sewel), none near either threshold.
 
 **What that is worth.** On the 200 known books the true author came first 27% of the time by
 Cosine Delta and 30% by the style encoder (35% by either), against the 70% bar. The sweep failed

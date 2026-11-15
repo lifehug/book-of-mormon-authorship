@@ -47,8 +47,8 @@ used and set aside is listed folder by folder in `docs/holdings.md`.
 
 **Dates.** A catalog date is a claim, and some are wrong. Dates were audited against each volume's
 own text: of 366,580 volumes scanned, 23,859 name a later year and 19,463 were moved past 1830
-(Amendment 12). A model-read check of 100 flagged volumes found 81 truly later, so the correction
-errs toward exclusion; moved volumes are kept in a separate column, not deleted. Another 11,494
+(Amendment 12). A model-read check of 100 flagged volumes found 81 truly later
+(`docs/date-audit-plan.md`), so the correction errs toward exclusion; moved volumes are kept in a separate column, not deleted. Another 11,494
 volumes carried a placeholder date of 1800, and 1,502 of them were printed after 1830. This
 mattered directly: 17 "pre-1830" volumes, among them Congressional serial-set volumes catalogued
 1817 and an "1830" *Millennial Harbinger*, quote the Book of Mormon. Without the audit they would
@@ -59,7 +59,8 @@ similarity (a fast estimate of how many five-word sequences two texts share; thr
 19,920 groups. The second compares title, author and year across sources, giving 4,697 groups
 (Amendment 6). Nothing is deleted; duplicates are flagged (`data/catalog/DEDUP.md`). The text pass
 cannot see one book scanned twice by different libraries, because two noisy scans of the same pages
-share little exact text (median similarity 0.12-0.18 on 300 such pairs). That is why the second
+share little exact text (median similarity 0.12 before cleaning and 0.18 after, on 300 such
+pairs; none reaches 0.8). That is why the second
 pass exists, and copies inside one source with different catalog entries can still escape both.
 
 **OCR.** The texts are machine readings of page scans (optical character recognition, OCR), and
@@ -67,8 +68,8 @@ their quality was measured, not assumed. Against 1,883 volumes that also exist i
 the median character error rate after cleaning is 0.083, and 38% of volumes remain above 0.10.
 Above that cut are 2.5% of Harvard's volumes, 11.9% of HathiTrust's, 24.9% of the Internet
 Archive's and 27.8% of the newspaper pages. At about 80% word accuracy a four-word phrase survives
-OCR about 41% of the time, so the wording searches of section 3 miss more than half of any real
-shared phrasing in poor scans. Correction of OCR by a language model was tried and rejected because
+OCR about 41% of the time (0.8 to the fourth power; `data/catalog/DEDUP.md`), so the wording
+searches of section 3 miss more than half of any real shared phrasing in poor scans. Correction of OCR by a language model was tried and rejected because
 it invented text.
 
 ### 2.3 Labelling
@@ -106,7 +107,8 @@ unmasked text. The borrowing searches read the whole text with the King James sp
 **The quotation rule for candidate samples (Amendment 43, post hoc).** The seal covered training
 data but, as first built, not the candidates' own samples. After unblinding, Oliver Cowdery's 1829
 "Articles of the Church of Christ" was found to be 40% word-for-word Book of Mormon text, and
-Parley P. Pratt's books quote it too (3.6%). Every run of words a sample shares with the text was
+Parley P. Pratt's books quote it too (4.8% of *A Voice of Warning* and 3.1% of *Mormonism
+Unveiled* is shared with it). Every run of words a sample shares with the text was
 then classed by a rule fixed before the matches were read (`docs/bom-overlap-analysis.md`), and
 only **quotations** were removed: passages of 20 or more words written after the matching passage
 existed. Shorter shared idiom stays, for every candidate alike. Joseph Smith's 1828-29 revelations

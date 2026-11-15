@@ -21,7 +21,8 @@ What stands behind the results is that every step can be found and rerun.
   never licensed text. The derived tables that the analyses read (phrase frequencies, feature
   matrices, genre labels, OCR scores) are published so that the statistics can be rerun without
   obtaining any restricted source.
-- **Models.** The three period base models and the candidate models are on Hugging Face:
+- **Models.** The three period base models and the candidate models are published at these
+  Hugging Face addresses:
   `etherfuse/timelocked-1830-125m`, `etherfuse/timelocked-1830-300m` (the 297M),
   `etherfuse/timelocked-1830-590m`, and `etherfuse/bom-authorship-candidate-models`. These two
   sets are enough to replicate. With the base models, every other fine-tune in the paper
@@ -29,8 +30,10 @@ What stands behind the results is that every step can be found and rerun.
   seeds for roughly $50 to $100 of rented GPU. With the candidate models, anyone can check the
   Book of Mormon ranking without any restricted text and without training anything. Other
   fine-tunes publish their scores, not their weights (owner's decision, 2026-11-11). The
-  style encoder, the dating models and an earlier set of benchmark fine-tunes are also on
-  Hugging Face and stay public (owner, 2026-11-14); the README lists them.
+  style encoder, the dating models and an earlier set of benchmark fine-tunes are also published,
+  at `etherfuse/bom-authorship-style-encoder`, `etherfuse/bom-authorship-dating-models` and
+  `etherfuse/bom-authorship-benchmark-finetunes`, and by the owner's decision of 2026-11-14 they
+  are left up; `README.md` lists all seven addresses.
 - **Simulated reviews.** Three simulated peer reviews (a historian, a statistician, a
   stylometrist), the response plan, the adversarial review and the research review of 2026-11-12
   are in `paper/review/`, `paper/adversarial-review.md` and `docs/research/`. All were written by

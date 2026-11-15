@@ -119,7 +119,10 @@ twelve.* If "closest" follows biblical register and not a person, then writers i
 cannot be the author should rank as high as the revelations. Six such writers were taken: authors
 of imitation scripture or prophecy who died before September 1827 (Richard Snowden, Ezra Stiles,
 Jacob Ilive, Joanna Southcott, Richard Brothers, Thomas Reader). A seventh, Levi H. Dowling (born
-1844; *The Aquarian Gospel*, 1908), is reported separately. Each was given the equal dose of 3,039
+1844; *The Aquarian Gospel*, 1908), is reported separately. The death years in the table below
+and Dowling's birth year are as recorded in `data/benchmark/part2/placebo.json`, where they were
+supplied by an AI model and are open to correction; the six death years agree with the library
+catalog's author entries (`data/catalog/catalog.parquet`), which does not hold Dowling. Each was given the equal dose of 3,039
 tokens and ranked on the 168 chunks in one pool with Amendment 45's models and the revelations
 model. The rule written first: if any of the six has a median rank at or better than the
 revelations', "ranked first" is read as measuring register, not person.
@@ -292,7 +295,7 @@ Mean distance by period, 590M style encoder (lower is closer):
 
 | Line | 1831-33 | 1834-36 | 1837-39 | 1840-44 | Blocks |
 | --- | --- | --- | --- | --- | --- |
-| Joseph Smith, own hand | 0.43 | (under the 2,000-word floor) | 0.65 | (under the floor) | 2 |
+| Joseph Smith, own hand | 0.43 | (1,652 words, under the 2,000-word floor) | 0.65 | (957 words, under the floor) | 2 |
 | Joseph Smith, dictated | | | 0.31 | 0.42 | 18 |
 | Cowdery / Phelps / Rigdon | | 0.65 / 0.66 / 0.61 | Rigdon 0.58 | | 44 |
 | Pratt | | | 0.55 | | 44 |

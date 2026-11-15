@@ -24,10 +24,13 @@ What is new here:
    of English printed from 1780 to 1830, with the Book of Mormon and all later text kept out, in
    three sizes (125M, 297M and 590M parameters). To such a model, "ordinary English" means ordinary
    for 1830 (section 2.8).
-2. **The largest corpus and candidate set.** The comparison library is the surviving digitized
-   print of 1780-1830, 695,021 catalogued items, rather than a hand-picked shelf. Eight named
-   candidates are tested, and afterwards every one of 23,872 authors in the library (sections 2,
-   7.8 and 14).
+2. **A larger comparison library and candidate set than the five studies rerun here.** The
+   comparison library is the surviving digitized print of 1780-1830, 695,021 catalogued items,
+   rather than a hand-picked shelf. Of the five earlier studies rerun in section 4, four compared
+   candidates' samples only and the fifth searched about 100,000 books; the models here read
+   202,816 period volumes (section 2.0). Eight named candidates are tested, as many as the
+   largest of those studies, and afterwards every one of 23,872 authors in the library (sections
+   2, 7.8 and 14). The comparison is with those five studies only.
 3. **Every method tested on known answers first.** Before a method is read on the Book of Mormon it
    is scored on texts whose authors are known: how often it picks the right author from a list, and
    how often it wrongly says "match" when the true author is not on the list. Our own models and

@@ -25,8 +25,10 @@ scripture. It does not: the text dates earlier than the 25 pseudo-biblical contr
 1780-1830 (grammar model, mean 1661 against 1734; lexical model, 1738 against 1794; permutation
 p 0.0001 for each). With each book of the text counted as one unit (12 books) the result stands
 (p 0.0025 and 0.0001; `data/dating/h3c.json`). So part of the early date is biblical register, but
-the text is more archaic than the period's other biblical imitations, and the transformer, which
-imitation did not move in validation, still places it before them.
+the text is more archaic than the period's other biblical imitations. The transformer, which
+imitation did not move in validation, dated the 25 control volumes to a median of 1805 there
+(`data/dating/transformer_validation.json`) and dates the text to 1755. That is a comparison of two
+medians; the H3c permutation test was run for the grammar and lexical models only.
 
 **Cautions.** Seven of the 25 period imitations are themselves placed in the early modern window
 by the grammar model, so the genre can reach it. An early modern placement is predicted alike by

@@ -78,8 +78,10 @@ is not significant needs more authors, not a different test. Before any further 
 the rule was written down: continue down the same seeded order in each genre, by the same
 selection rules, until eight more authors per genre are kept; apply the same by-author test to all
 55 authors; and add no authors after that, whatever the result. The stopping rule is what prevents
-drawing until the answer comes out one way. The screen turned down 17 authors on the way
-(translations, two people under one name, anthologies, a state government).
+drawing until the answer comes out one way. On the way 22 authors in the seeded order were passed
+over (`data/benchmark/part2/authors_ext.json`): 14 turned down by the AI screen (translations,
+several people under one name, anthologies and trial records, a state government) and 8 left
+under the word floor once repeated copies were removed.
 
 **All 55 authors** (`data/benchmark/clustered.json`):
 
@@ -277,7 +279,10 @@ used.
 The failure above could be ours alone, so we asked whether any published method answers "none of
 these" reliably, and ran what exists (BOM-96, exploratory, 2026-11-14; `eval/nobody.py`,
 `data/sweep/nobody.json`). The methods already tested here include the two built for the purpose,
-General Imposters (Koppel and Winter 2014) and the open-set classifier of the 2011 study. A newer
+General Imposters (Koppel and Winter 2014) and the open-set classifier of the 2011 study. Koppel
+and Winter state the difficulty themselves: verification "is an open-set problem: we ask if an
+anonymous document was written by a given candidate author or by anybody else", and "the
+verification problem is strictly harder than the attribution problem". A newer
 one is LambdaG (Nini and colleagues 2024), which scores a text by how much more likely its
 sentences are under a model of the candidate's grammar than under a model of a reference
 population, after content words are masked; its authors report it first on 7 of 12
@@ -327,8 +332,8 @@ emails, interviews, speeches) the winning system scored 0.62 where 0.5 is chance
 entrant that scored 0.94 on its own split of the training data scored 0.56 on the official test
 (Stamatatos and colleagues 2023; Huang, Kong and Huang 2023). A book in scriptural register by an
 author with no other text in that register is the case these methods are least able to judge.
-(Checked against the papers by an AI-simulated reading, 2026-11-14; Grieve and Koppel and
-Winter from their abstracts only.)
+(Each source was read in full for these statements, 2026-11-14, by an AI-simulated reading.
+Grieve's evidence is a study of newspaper columns by two writers.)
 
 **What this means for the rest of the paper.** Every method can rank candidates. None can say
 "none of these" with a known, low error. This is why the opening statement of section 1 has two
@@ -380,7 +385,8 @@ Our models lose about 10 points between a list of 4 and a list of 55; the older 
 false matches fall with size, from 47% to 38% to 22%. On BOM-75's 430 they fall from 75% to 67% to
 63%, and the ranges of the 125M (71-79%) and the 590M (59-68%) do not overlap; nearly all of that
 gain is in the first step. On the 32 new authors the order reverses (56%, 58%, 62%), with
-overlapping ranges. So the evidence that size helps at "none of these" is real on the first two
+overlapping ranges (52-60%, 54-62% and 58-65%; 95% Wilson ranges computed by `eval.open_set.wilson`
+from the rates and the 640 tests in `data/benchmark/alm_*_p3.json`, which do not store them). So the evidence that size helps at "none of these" is real on the first two
 sets and is not repeated on the newest and largest one. At every size and on every set the rate is
 many times the 5% bar.
 
