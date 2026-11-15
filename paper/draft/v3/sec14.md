@@ -85,8 +85,9 @@ numbers of books are small.
 
 ### 14.2 Who could have written it
 
-Life dates were taken from the catalog's author field where it carries them and, for the 12,929
-authors it leaves undated, from the Library of Congress name authority file, accepting a match
+Life dates were taken from the catalog's author field where it carries them and, for the 13,077
+authors it leaves undated (12,435 of whom have a forename to look up), from the Library of
+Congress name authority file, accepting a match
 only when exactly one person of that name was born early enough to have written the author's
 earliest volume here (`sweep/people.py`). The rule was checked on 494 authors whose dates the
 catalog does give: it dated 219, and 212 of those agree with the catalog. It dated only 13% of
@@ -114,7 +115,8 @@ the same works. The library asks for something harder: a different book, and an 
 text for every author, since larger samples otherwise win by size (section 6.2). So before any
 run on the Book of Mormon the method was tested on that task (`eval/library_pool.py`): 1,000
 library authors, 200 of them the known-book authors of 14.1 with the book withheld; for each
-author one model on 11,264 tokens and three on 3,039-token slices, 3,982 models at 125M, each
+author one model on 11,264 tokens (982 of the 1,000 have that much text) and three on
+3,039-token slices, 3,982 models at 125M, each
 scoring the known books.
 
 | Method, on the same 1,000 authors | first of 55 | first of 1,000 | top 10 of 1,000 | cross-genre: first of 1,000 | top 10 |
@@ -181,7 +183,7 @@ revelation, and not a set of people who could have written the book. This repeat
 library, what the writers who could not have written it showed at 590M in section 6.3.
 
 As a second opinion the author models were run on the encoder's top 200 library authors and the
-candidate samples (850 models at 125M, equal doses, the 168 sealed chunks;
+candidate samples (832 models at 125M, equal doses, the 168 sealed chunks;
 `data/sweep/bom_second_opinion_pilot.json`). Joseph Smith's 1830-34 revelations are first at both
 doses and the closest sample on 123 to 150 of the 168 chunks; the 1828-29 revelations are fourth
 of 212 at the small dose. Behind them are John Wroe, David Willson, Joanna Southcott (d. 1814)

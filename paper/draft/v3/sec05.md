@@ -296,7 +296,8 @@ LambdaG needs sentences with punctuation, which the benchmark's stored word list
 this comparison is on the library's known books: 200 books, each paired with its true author and
 ten other authors drawn at random (2,200 pairs), the questioned text the book's first 5,000
 words, a candidate's known text their profile, rebuilt without the book for the true author.
-Every method scores the same pairs.
+Every method scores the same pairs, except that the larger-dose author models lack three
+authors with too little text (2,173 pairs).
 
 | Method | Area under the curve | True authors confirmed when 5% of false pairs are accepted | False pairs accepted when 95% of true authors are confirmed |
 | --- | --- | --- | --- |
