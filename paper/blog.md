@@ -3240,7 +3240,9 @@ Delta, or just ahead by luck on 23 authors? Ahead on 11, behind on 2, the rest t
 more authors, so we drew 32 more, by exactly the same rules as before, continuing down the same
 shuffled list in each genre. The rule went in first (Amendment 56), including a stopping rule:
 no more authors after this, whatever happened, so we couldn't keep drawing until it came out one
-way. Along the way the screen turned down 17 for being translations (Virgil, Tacitus, Calvin),
+way. Along the way the screen turned down 14 (corrected 2026-11-14: I first wrote 17; the results
+file has 14, and 8 more passed over for having too few words once repeated copies were removed)
+for being translations (Virgil, Tacitus, Calvin),
 two people under one name (two Samuel Butlers, three John Brands), other people's words
 (anthologies, trial records), or not a person at all (the state of New Hampshire).
 
@@ -3263,6 +3265,8 @@ list, period-trained language models beat every older method we tested, at every
 GPU. What it still doesn't do is say "none of these".
 
 ## Log
+
+- **2026-11-14 (late).** Small correction to an old paragraph: when I added 32 more benchmark authors, I wrote that the screen turned down 17. The results file (`data/benchmark/part2/authors_ext.json`) has 22 passed over: 14 turned down by the screen and 8 left with too few words. Fixed in place, with the date. It came out of a pass over the paper in which every statement the fact-check couldn't verify was traced to a file, corrected, or cut.
 
 - **2026-11-14 (evening).** "None of these" stopped being a failed line in a table and became a section. The question: can any tool say the author is not on the list? Mine can't, and I had reported that as a failure of mine. Then I asked whether a tool exists that can, and if it exists, we should try it. The newest published method I could find is LambdaG (2024). I ran it from its authors' own software, with two ready-made modern style models, my fingerprint model and my author models, all on the same 2,200 pairs: 200 known books, each against its true author and ten others. Set to confirm 95% of true authors, here is how many wrong authors each lets in: my fingerprint model 33%, LambdaG 56%, my author models 78% and 88%, the two modern models 83% and 88%. The bar was 5%. Nothing is close. And over a list of 1,000 people, at least one stranger clears the line for every one of the 200 books. So "nobody can answer none of these" is now something I tested, not something I assumed. Two wrong turns on the way: the first LambdaG run died without a word halfway through its first stage (I found out by looking for the process, not from any error), and the page had been calling one of the older methods "a sparse-coding method" when it is the 2011 study's own classifier. Both fixed. Free, on the Mac. Details: issue BOM-96, `data/sweep/nobody.json`.
 

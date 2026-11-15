@@ -66,10 +66,13 @@ What is new here:
    of English printed from 1780 to 1830, with the Book of Mormon and all later text kept out, in
    three sizes (125M, 297M and 590M parameters). To such a model, "ordinary English" means ordinary
    for 1830 (section 2.8).
-2. **The largest corpus and candidate set.** The comparison library is the surviving digitized
-   print of 1780-1830, 695,021 catalogued items, rather than a hand-picked shelf. Eight named
-   candidates are tested, and afterwards every one of 23,872 authors in the library (sections 2,
-   7.8 and 14).
+2. **A larger comparison library and candidate set than the five studies rerun here.** The
+   comparison library is the surviving digitized print of 1780-1830, 695,021 catalogued items,
+   rather than a hand-picked shelf. Of the five earlier studies rerun in section 4, four compared
+   candidates' samples only and the fifth searched about 100,000 books; the models here read
+   202,816 period volumes (section 2.0). Eight named candidates are tested, as many as the
+   largest of those studies, and afterwards every one of 23,872 authors in the library (sections
+   2, 7.8 and 14). The comparison is with those five studies only.
 3. **Every method tested on known answers first.** Before a method is read on the Book of Mormon it
    is scored on texts whose authors are known: how often it picks the right author from a list, and
    how often it wrongly says "match" when the true author is not on the list. Our own models and
@@ -155,8 +158,8 @@ used and set aside is listed folder by folder in `docs/holdings.md`.
 
 **Dates.** A catalog date is a claim, and some are wrong. Dates were audited against each volume's
 own text: of 366,580 volumes scanned, 23,859 name a later year and 19,463 were moved past 1830
-(Amendment 12). A model-read check of 100 flagged volumes found 81 truly later, so the correction
-errs toward exclusion; moved volumes are kept in a separate column, not deleted. Another 11,494
+(Amendment 12). A model-read check of 100 flagged volumes found 81 truly later
+(`docs/date-audit-plan.md`), so the correction errs toward exclusion; moved volumes are kept in a separate column, not deleted. Another 11,494
 volumes carried a placeholder date of 1800, and 1,502 of them were printed after 1830. This
 mattered directly: 17 "pre-1830" volumes, among them Congressional serial-set volumes catalogued
 1817 and an "1830" *Millennial Harbinger*, quote the Book of Mormon. Without the audit they would
@@ -167,7 +170,8 @@ similarity (a fast estimate of how many five-word sequences two texts share; thr
 19,920 groups. The second compares title, author and year across sources, giving 4,697 groups
 (Amendment 6). Nothing is deleted; duplicates are flagged (`data/catalog/DEDUP.md`). The text pass
 cannot see one book scanned twice by different libraries, because two noisy scans of the same pages
-share little exact text (median similarity 0.12-0.18 on 300 such pairs). That is why the second
+share little exact text (median similarity 0.12 before cleaning and 0.18 after, on 300 such
+pairs; none reaches 0.8). That is why the second
 pass exists, and copies inside one source with different catalog entries can still escape both.
 
 **OCR.** The texts are machine readings of page scans (optical character recognition, OCR), and
@@ -175,8 +179,8 @@ their quality was measured, not assumed. Against 1,883 volumes that also exist i
 the median character error rate after cleaning is 0.083, and 38% of volumes remain above 0.10.
 Above that cut are 2.5% of Harvard's volumes, 11.9% of HathiTrust's, 24.9% of the Internet
 Archive's and 27.8% of the newspaper pages. At about 80% word accuracy a four-word phrase survives
-OCR about 41% of the time, so the wording searches of section 3 miss more than half of any real
-shared phrasing in poor scans. Correction of OCR by a language model was tried and rejected because
+OCR about 41% of the time (0.8 to the fourth power; `data/catalog/DEDUP.md`), so the wording
+searches of section 3 miss more than half of any real shared phrasing in poor scans. Correction of OCR by a language model was tried and rejected because
 it invented text.
 
 ### 2.3 Labelling
@@ -214,7 +218,8 @@ unmasked text. The borrowing searches read the whole text with the King James sp
 **The quotation rule for candidate samples (Amendment 43, post hoc).** The seal covered training
 data but, as first built, not the candidates' own samples. After unblinding, Oliver Cowdery's 1829
 "Articles of the Church of Christ" was found to be 40% word-for-word Book of Mormon text, and
-Parley P. Pratt's books quote it too (3.6%). Every run of words a sample shares with the text was
+Parley P. Pratt's books quote it too (4.8% of *A Voice of Warning* and 3.1% of *Mormonism
+Unveiled* is shared with it). Every run of words a sample shares with the text was
 then classed by a rule fixed before the matches were read (`docs/bom-overlap-analysis.md`), and
 only **quotations** were removed: passages of 20 or more words written after the matching passage
 existed. Shorter shared idiom stays, for every candidate alike. Joseph Smith's 1828-29 revelations
@@ -711,8 +716,10 @@ is not significant needs more authors, not a different test. Before any further 
 the rule was written down: continue down the same seeded order in each genre, by the same
 selection rules, until eight more authors per genre are kept; apply the same by-author test to all
 55 authors; and add no authors after that, whatever the result. The stopping rule is what prevents
-drawing until the answer comes out one way. The screen turned down 17 authors on the way
-(translations, two people under one name, anthologies, a state government).
+drawing until the answer comes out one way. On the way 22 authors in the seeded order were passed
+over (`data/benchmark/part2/authors_ext.json`): 14 turned down by the AI screen (translations,
+several people under one name, anthologies and trial records, a state government) and 8 left
+under the word floor once repeated copies were removed.
 
 **All 55 authors** (`data/benchmark/clustered.json`):
 
@@ -910,7 +917,10 @@ used.
 The failure above could be ours alone, so we asked whether any published method answers "none of
 these" reliably, and ran what exists (BOM-96, exploratory, 2026-11-14; `eval/nobody.py`,
 `data/sweep/nobody.json`). The methods already tested here include the two built for the purpose,
-General Imposters (Koppel and Winter 2014) and the open-set classifier of the 2011 study. A newer
+General Imposters (Koppel and Winter 2014) and the open-set classifier of the 2011 study. Koppel
+and Winter state the difficulty themselves: verification "is an open-set problem: we ask if an
+anonymous document was written by a given candidate author or by anybody else", and "the
+verification problem is strictly harder than the attribution problem". A newer
 one is LambdaG (Nini and colleagues 2024), which scores a text by how much more likely its
 sentences are under a model of the candidate's grammar than under a model of a reference
 population, after content words are masked; its authors report it first on 7 of 12
@@ -960,8 +970,8 @@ emails, interviews, speeches) the winning system scored 0.62 where 0.5 is chance
 entrant that scored 0.94 on its own split of the training data scored 0.56 on the official test
 (Stamatatos and colleagues 2023; Huang, Kong and Huang 2023). A book in scriptural register by an
 author with no other text in that register is the case these methods are least able to judge.
-(Checked against the papers by an AI-simulated reading, 2026-11-14; Grieve and Koppel and
-Winter from their abstracts only.)
+(Each source was read in full for these statements, 2026-11-14, by an AI-simulated reading.
+Grieve's evidence is a study of newspaper columns by two writers.)
 
 **What this means for the rest of the paper.** Every method can rank candidates. None can say
 "none of these" with a known, low error. This is why the opening statement of section 1 has two
@@ -1013,7 +1023,8 @@ Our models lose about 10 points between a list of 4 and a list of 55; the older 
 false matches fall with size, from 47% to 38% to 22%. On BOM-75's 430 they fall from 75% to 67% to
 63%, and the ranges of the 125M (71-79%) and the 590M (59-68%) do not overlap; nearly all of that
 gain is in the first step. On the 32 new authors the order reverses (56%, 58%, 62%), with
-overlapping ranges. So the evidence that size helps at "none of these" is real on the first two
+overlapping ranges (52-60%, 54-62% and 58-65%; 95% Wilson ranges computed by `eval.open_set.wilson`
+from the rates and the 640 tests in `data/benchmark/alm_*_p3.json`, which do not store them). So the evidence that size helps at "none of these" is real on the first two
 sets and is not repeated on the newest and largest one. At every size and on every set the rate is
 many times the 5% bar.
 
@@ -1148,7 +1159,10 @@ twelve.* If "closest" follows biblical register and not a person, then writers i
 cannot be the author should rank as high as the revelations. Six such writers were taken: authors
 of imitation scripture or prophecy who died before September 1827 (Richard Snowden, Ezra Stiles,
 Jacob Ilive, Joanna Southcott, Richard Brothers, Thomas Reader). A seventh, Levi H. Dowling (born
-1844; *The Aquarian Gospel*, 1908), is reported separately. Each was given the equal dose of 3,039
+1844; *The Aquarian Gospel*, 1908), is reported separately. The death years in the table below
+and Dowling's birth year are as recorded in `data/benchmark/part2/placebo.json`, where they were
+supplied by an AI model and are open to correction; the six death years agree with the library
+catalog's author entries (`data/catalog/catalog.parquet`), which does not hold Dowling. Each was given the equal dose of 3,039
 tokens and ranked on the 168 chunks in one pool with Amendment 45's models and the revelations
 model. The rule written first: if any of the six has a median rank at or better than the
 revelations', "ranked first" is read as measuring register, not person.
@@ -1321,7 +1335,7 @@ Mean distance by period, 590M style encoder (lower is closer):
 
 | Line | 1831-33 | 1834-36 | 1837-39 | 1840-44 | Blocks |
 | --- | --- | --- | --- | --- | --- |
-| Joseph Smith, own hand | 0.43 | (under the 2,000-word floor) | 0.65 | (under the floor) | 2 |
+| Joseph Smith, own hand | 0.43 | (1,652 words, under the 2,000-word floor) | 0.65 | (957 words, under the floor) | 2 |
 | Joseph Smith, dictated | | | 0.31 | 0.42 | 18 |
 | Cowdery / Phelps / Rigdon | | 0.65 / 0.66 / 0.61 | Rigdon 0.58 | | 44 |
 | Pratt | | | 0.55 | | 44 |
@@ -1559,12 +1573,14 @@ on 200 books of known authorship, with each author's profile rebuilt without the
 the true author comes first among all the authors, with a bar of 70% for the sweep to count as
 usable. Second, how many false leads the rule produces on those 200 books: 0.035 per query. A
 plausibility gate (right period, and right place or documented access; Amendment 40, fixed before
-any lead was seen) would pass about one random author in ten, so about 0.0035 false leads per query
+any lead was seen) would pass about one random author in ten (10 of 100 drawn at random;
+`data/sweep/gate_sample.csv`), so about 0.0035 false leads per query
 would survive it.
 
 **Result.** No lead: 0, against 0.035 expected by chance (`data/blind/unblinded.json`,
-`data/sweep/calibration.json`). The nearest authors are writers of prophecy and Quaker testimony
-(John Wroe, George Fox, William Sewel), none near either threshold.
+`data/sweep/calibration.json`). The twenty nearest authors (`nearest_20` in the first file)
+include writers of prophecy and Quaker testimony (John Wroe, George Fox, William
+Sewel), none near either threshold.
 
 **What that is worth.** On the 200 known books the true author came first 27% of the time by
 Cosine Delta and 30% by the style encoder (35% by either), against the 70% bar. The sweep failed
@@ -1604,8 +1620,10 @@ scripture. It does not: the text dates earlier than the 25 pseudo-biblical contr
 1780-1830 (grammar model, mean 1661 against 1734; lexical model, 1738 against 1794; permutation
 p 0.0001 for each). With each book of the text counted as one unit (12 books) the result stands
 (p 0.0025 and 0.0001; `data/dating/h3c.json`). So part of the early date is biblical register, but
-the text is more archaic than the period's other biblical imitations, and the transformer, which
-imitation did not move in validation, still places it before them.
+the text is more archaic than the period's other biblical imitations. The transformer, which
+imitation did not move in validation, dated the 25 control volumes to a median of 1805 there
+(`data/dating/transformer_validation.json`) and dates the text to 1755. That is a comparison of two
+medians; the H3c permutation test was run for the grammar and lexical models only.
 
 **Cautions.** Seven of the 25 period imitations are themselves placed in the early modern window
 by the grammar model, so the genre can reach it. An early modern placement is predicted alike by
@@ -1973,7 +1991,7 @@ collaborative authorship is a common historical hypothesis that this design cann
 large share of real shared phrasing in poor scans (a four-word phrase survives about 41% of the
 time at 80% word accuracy). A negative from poor OCR is not evidence of absence: the 26 June 1829
 *Wayne Sentinel* notice of the book's title page is present on the page image, and none of ten
-search terms is found in its OCR. Training volumes holding 1 to 19 of the text's 12-token strings
+search terms is found in its OCR (`docs/access-evidence.md`, `data/access/SOURCES.md`). Training volumes holding 1 to 19 of the text's 12-token strings
 (below the removal threshold of 20) were kept. Some catalog dates are wrong, and were corrected
 where the text names later years. Author names conflate namesakes and split variants. About 72%
 of the original manuscript is lost. Writers whose work did not survive in print, or who fall
@@ -2034,7 +2052,8 @@ What stands behind the results is that every step can be found and rerun.
   never licensed text. The derived tables that the analyses read (phrase frequencies, feature
   matrices, genre labels, OCR scores) are published so that the statistics can be rerun without
   obtaining any restricted source.
-- **Models.** The three period base models and the candidate models are on Hugging Face:
+- **Models.** The three period base models and the candidate models are published at these
+  Hugging Face addresses:
   `etherfuse/timelocked-1830-125m`, `etherfuse/timelocked-1830-300m` (the 297M),
   `etherfuse/timelocked-1830-590m`, and `etherfuse/bom-authorship-candidate-models`. These two
   sets are enough to replicate. With the base models, every other fine-tune in the paper
@@ -2042,8 +2061,10 @@ What stands behind the results is that every step can be found and rerun.
   seeds for roughly $50 to $100 of rented GPU. With the candidate models, anyone can check the
   Book of Mormon ranking without any restricted text and without training anything. Other
   fine-tunes publish their scores, not their weights (owner's decision, 2026-11-11). The
-  style encoder, the dating models and an earlier set of benchmark fine-tunes are also on
-  Hugging Face and stay public (owner, 2026-11-14); the README lists them.
+  style encoder, the dating models and an earlier set of benchmark fine-tunes are also published,
+  at `etherfuse/bom-authorship-style-encoder`, `etherfuse/bom-authorship-dating-models` and
+  `etherfuse/bom-authorship-benchmark-finetunes`, and by the owner's decision of 2026-11-14 they
+  are left up; `README.md` lists all seven addresses.
 - **Simulated reviews.** Three simulated peer reviews (a historian, a statistician, a
   stylometrist), the response plan, the adversarial review and the research review of 2026-11-12
   are in `paper/review/`, `paper/adversarial-review.md` and `docs/research/`. All were written by
