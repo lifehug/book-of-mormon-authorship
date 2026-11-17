@@ -3,8 +3,8 @@
 *Draft on outline version 3, 2026-11-14. Dave Taylor, with analysis by an AI model (Claude). Every
 review step is simulated by an AI model and labelled so; the blinding was simulated (the scoring
 ran without the key; the analyst is an AI model). Sections 1-13 were drafted by an AI model from
-the previous draft and the results files and are under review; items marked [CHECK] are not yet
-verified. Repository: https://github.com/lifehug/book-of-mormon-authorship; pre-registration:
+the previous draft and the results files, checked against those files by an AI model
+(`paper/review/v3-factcheck.md`), and are under the owner's review. Repository: https://github.com/lifehug/book-of-mormon-authorship; pre-registration:
 https://osf.io/6ugxc/ (frozen 2026-10-15; amendments 1-46 filed there, 47-58 recorded in the
 repository; the post hoc ones labelled). Section 14 is exploratory and says so.*
 

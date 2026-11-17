@@ -1,290 +1,145 @@
 # Book of Mormon Authorship
 
-Who wrote the English text of the Book of Mormon, what earlier books does it echo, and
-what era does its language belong to? This project tries to answer those three questions
-with an open, pre-registered, reproducible computational study, built so that it can return
-any answer, including "we can't tell."
+Who wrote the English text of the Book of Mormon, what earlier books does it echo, and what era
+does its language belong to? This repository is a finished, open study of those three questions.
+It holds the plan, the code, the result tables and the write-ups. Everything can be checked and
+rerun.
 
-The repository is the whole project: the plan, the code, the data manifests, the models, and
-eventually the paper. Everything is public as it is produced.
+The study does not argue for or against divine inspiration. A computer cannot answer that. It can
+say whether the text looks like a particular person's writing, whether it borrows from particular
+books, and how far the tools that say so can be trusted.
 
-**Corpus v1.1** (frozen 2026-10-30), the snapshot every analysis from BOM-21 on runs against: [doi:10.5281/zenodo.23819273](https://doi.org/10.5281/zenodo.23819273). It corrects placeholder dates (BOM-56) and adds the curated pseudo-biblical control (BOM-54); index `data/manifests/corpus_v1.1.json`. Corpus v1.0 (frozen 2026-10-28), still citable: [doi:10.5281/zenodo.23740903](https://doi.org/10.5281/zenodo.23740903) (all versions: [10.5281/zenodo.23740902](https://doi.org/10.5281/zenodo.23740902)). Index `data/manifests/corpus_v1.0.json`; coverage and gaps in `docs/datasheet.md`.
+## Start here
 
-## Where we are
+| If you want | Read |
+| --- | --- |
+| The findings in plain words, with live charts (about 30 minutes) | https://lifehug.com/book-of-mormon (source: [`paper/blog-phase1.html`](paper/blog-phase1.html)) |
+| The full paper, with every method and table | [`paper/paper.md`](paper/paper.md) |
+| To rerun something | [`eval/README.md`](eval/README.md): every command, what it needs, what it writes, how long it takes |
+| To get the texts we could not republish | [`docs/replication.md`](docs/replication.md) |
+| The story of how it went, wrong turns included | [`paper/blog.md`](paper/blog.md) |
 
-The work runs in eight phases. This table is kept current as phases close; the plan behind
-each is in `docs/backlog.md`, and the story of how it went is in `paper/blog.md`.
+## What we found
 
-| Phase | In one line | Issues | Status (2026-10-30) |
-| --- | --- | --- | --- |
-| 0. **Set the rules** | Decide the questions and methods publicly, before touching data | BOM-01 to 04 | Done. Pre-registered on OSF; eleven amendments since |
-| 1. **Gather** | Collect every English text from 1780-1830 we can get | BOM-05 to 13, 52 | Done |
-| 2. **Clean** | Fix OCR, spelling, duplicates and dates; freeze a citable corpus | BOM-14 to 19, 50, 53 to 56 | Done, except BOM-50 and BOM-53 (deferred). Corpus v1.1 released |
-| 3. **Test the old tools** | Check them on known authors, rerun the earlier studies, fix what broke | BOM-20 to 22, 40 to 49, 51, 57, 58, 60 | Done. Two tools retired, the Deltas kept for closed-set answers only, one fix (rarity by text) carried forward. BOM-42, 44, 47, 49 stay open by design; BOM-51 deferred |
-| 4. **Look for borrowing** | Find shared wording and stories, test whether they beat chance; known-answer controls for texts claiming to be ancient; the King James italics test | BOM-23 to 26, 61, 62 | **Next**, starting with BOM-61 |
-| 5. **Build new tools** | A language model that has only read pre-1830 text, and what it can tell us; the corpus-wide author sweep; thematic dating | BOM-27 to 30, 39, 63 | Not started |
-| 6. **Put it all together** | The imitation test, the blind run on the Book of Mormon, combining the evidence | BOM-31 to 35 | Not started |
-| 7. **Write it up and open it to review** | Paper, full release, simulated peer review | BOM-36 to 38 | Not started |
+Each line names the results file behind it. The paper gives the detail and the limits.
 
-Publishing is not only at the end: the pre-registration and its amendments, the corpus releases,
-the replication report (`paper/replication-report.md`) and the blog are public as they are made.
-Decisions made after seeing a result are listed in `paper/deviations.md`.
+1. **The book copies almost nothing.** With King James Bible quotation set aside, 0.16% of it
+   matches earlier print, all stock religious phrasing. The books usually named as sources
+   (*The Late War*, *The First Book of Napoleon*, *View of the Hebrews*) do not stand out from
+   other books of their kind, and no book in the library shares its plot
+   (`data/reuse/`, `data/semantic/`).
+2. **Among the eight people usually proposed, the closest writing is Joseph Smith's
+   revelations.** Six of eight rankings put them first, including all three of our model sizes.
+   His letters and journals do not stand out the same way (`data/blind/`).
+3. **No tool can reliably say "it is none of these people."** We ran the published methods built
+   for that job beside our own. Set to confirm 95% of true authors, the best one (ours) still
+   accepts one wrong author in three; the bar was one in twenty (`data/sweep/nobody.json`).
+4. **So we searched everyone: 23,872 authors of 1780-1830.** Joseph Smith's revelations come
+   out first or second at every setting. The one author ahead of them, at one setting, is
+   John Wroe, an English prophet who also published revelations. The rest of the top is
+   religious testimony, and it holds more long-dead authors than chance would give
+   (`data/sweep/bom_ranking.json`).
+5. **The closest writing is a voice, not proof of a person.** Writers who could not have written
+   the book score as close when they write in that voice. No tool we found, ours included, can
+   separate a person from the voice they are writing in.
+6. **The language dates early.** A grammar model places most of the text before 1700 (median
+   1661); two other models say 1736 and 1755. Imitating the King James Bible pulls the grammar
+   model about 53 years early, but the text still dates earlier than the period's other
+   imitation scripture (`data/blind/unblinded.json`, `data/dating/h3c.json`).
 
-## Running the analyses
+## How far to trust it
 
-Every evaluation command, in the order to run it, with what it needs, what it writes and how long
-it takes, is in **[`eval/README.md`](eval/README.md)**. It marks which code reproduces an
-earlier study's published method, which checks our code against published numbers, and which is
-this project's improvement; a test keeps it in step with the code. The reports the commands feed
-are `paper/replication-report.md`, `data/benchmark/BENCHMARK.md`,
-`data/benchmark/fidelity/REPORT.md` and `paper/methods-report.md`.
+- **Every tool was tested first on books whose author is known.** On 55 known authors our models
+  pick the right one more often than each of the four older methods, at every model size
+  (`data/benchmark/`).
+- **The library search is not a lie detector.** On 727 known books it puts the true author first
+  34% of the time and in its top ten 59% of the time. For a book unlike its author's other
+  writing, those fall to 17% and 38% (`data/sweep/coverage_episodes_v2.json`).
+- **Joseph Smith's writing from before 1830 is small**, and dictation and scribes sit between any
+  author and the page.
+- **One person did this with AI assistance.** There were no outside advisors and no journal
+  review. Every review in the repository was written by an AI model and is labelled simulated.
+  Mistakes are possible. The guarantee is that anyone can check and redo all of it; corrections
+  by issue or pull request are welcome and will be recorded unchanged.
 
-## The models
+## Check it yourself
 
-Every model the study trained is public on Hugging Face (CC BY-NC 4.0), weights and the numbers
-they produced, never corpus text. Each file's SHA-256 is in `data/manifests/hf_<repo>.jsonl`.
+There are three levels, from least effort to most.
 
-| Repository | What it holds | Reproduces |
-| --- | --- | --- |
-| [`etherfuse/timelocked-1830-125m`](https://huggingface.co/etherfuse/timelocked-1830-125m), [`-300m`](https://huggingface.co/etherfuse/timelocked-1830-300m) | the 125M and 297M time-locked base models (GPT-2 format) | BOM-27; every model-based test |
-| [`etherfuse/timelocked-1830-590m`](https://huggingface.co/etherfuse/timelocked-1830-590m) | the 590M (QK-norm, own loader), nine milestones, loss curves | BOM-27 (Amendment 39) |
-| [`etherfuse/bom-authorship-candidate-models`](https://huggingface.co/etherfuse/bom-authorship-candidate-models) | candidate and control models at 125M, 297M, 590M | the blind authorial scores (BOM-28, BOM-32) |
-| [`etherfuse/bom-authorship-benchmark-finetunes`](https://huggingface.co/etherfuse/bom-authorship-benchmark-finetunes) | the benchmark's fine-tuned models and result files | the benchmark tables (Amendments 41-42; BOM-72 adds the rest) |
-| [`etherfuse/bom-authorship-style-encoder`](https://huggingface.co/etherfuse/bom-authorship-style-encoder) | the style encoder | BOM-30 and the style blind scores |
-| [`etherfuse/bom-authorship-dating-models`](https://huggingface.co/etherfuse/bom-authorship-dating-models) | the dating classifiers | BOM-29 and the blind dating |
-
-## The three questions
-
-1. **Attribution.** Does the text resemble the writing of any named candidate? The
-   pre-registered list is Joseph Smith, Oliver Cowdery, Sidney Rigdon, Parley P. Pratt,
-   W. W. Phelps, Solomon Spalding, Ethan Smith, and Gilbert Hunt. The test is open-set, so
-   "none of the above" is always an allowed result. A corpus-wide search for stylistically
-   similar authors runs alongside as an exploratory step; anyone it surfaces can be added to
-   the list only by dated public amendment and then tested on data not used to find them.
-2. **Borrowing.** Which earlier texts share wording or ideas with it, and is each overlap more
-   than you would expect by chance from two books in the same genre and period?
-3. **Dating.** When does its grammar and vocabulary come from? Some argue for early modern
-   English features that had died out by 1830; others see 18th and 19th century imitation of
-   the King James Bible.
-
-## Why this is still open
-
-People have run the numbers before, and each study was criticized on grounds the next one
-didn't fully fix.
-
-- **Larsen, Rencher and Layton (1980)** used function-word "wordprints" and found the book's
-  internal narrators distinct from each other and from 19th-century candidates. Critics pointed
-  out that biblical-register words like *unto*, *behold* and *yea* dominated the features. That
-  is genre, not authorship.
-- **Holmes (1992)** measured vocabulary richness and reached different conclusions.
-- **Jockers, Witten and Criddle (2008)** used nearest shrunken centroids and pointed to Rigdon
-  and Spalding. The method was closed-set (it had to pick someone from the list) and the list
-  left out Joseph Smith.
-- **Fields, Schaalje and Roper (2011)** extended that method to allow "nobody on the list" and
-  got a different answer.
-- **Johnson and Johnson (2013)** searched rare four-word phrases across about 110,000
-  pre-1830 books and found *The Late War* (1816) as the closest match. The rebuttal: the same
-  score rates the Gospel of Luke even higher, which means the method had no proper baseline
-  for what "unusually similar" looks like.
-- **Skousen and Carmack** catalog early modern English features in the text; **Shalev** places
-  it in an American pseudo-biblical genre. Carmack's comparison set was four pseudo-biblical
-  texts.
-
-The pattern: small comparison sets, no baseline for chance, closed candidate lists, and
-features that measure the biblical style rather than the person behind it. Every one of
-these is a design problem, and design problems can be fixed in advance.
-
-## What is different now
-
-Three things are possible today that were not in 2013.
-
-- **Corpus scale.** Harvard's Institutional Books release (983,004 public-domain volumes with
-  cleaned OCR), plus HathiTrust, the Internet Archive, Chronicling America newspapers, and
-  EEBO-TCP, make it realistic to compare against most of what was printed in English
-  between 1780 and 1830, with a dated early modern English set for the dating question.
-- **A language model that has never read the Book of Mormon.** Commercial models have
-  memorized the Book of Mormon and the King James Bible, which contaminates any test based on
-  how "surprised" a model is by the text. We will train a small model from scratch on
-  1780-1830 text only, with the Book of Mormon held out, and then fine-tune one copy per
-  candidate author. Attribution then becomes a measurable question: which author's model finds
-  the text least surprising? This follows Huang, Murakami and Grieve's authorial language
-  model work and the 2025 Dartmouth study that confirmed the authorship of the 15th Oz book
-  the same way. As far as we can find, nobody has applied it to the Book of Mormon.
-- **Semantic search.** Sentence embeddings over the whole corpus can find paraphrase and
-  shared story structure, not just identical strings.
-
-## How we intend to do it
-
-The work is 49 issues in eight phases. Each issue has one deliverable and closes only when
-that deliverable is published. The full backlog is in `docs/backlog.md` and mirrored as
-GitHub issues `BOM-01` to `BOM-49`. `docs/audit.md` is a design review of the whole plan,
-written at the end of Phase 1 before any analytical code existed; `BOM-43` to `BOM-49` come
-from it.
-
-**Phase 0, Foundations.** Before touching any data, we write down the questions, the
-methods, and the thresholds that will count as a match, a non-match, or inconclusive, and
-register that plan on OSF with a timestamp. Then we write out the strongest objections a
-sympathetic stylometrist, a critical historian, and a neutral computational linguist would
-raise, answer them, and revise the plan with every change on record. That review is simulated,
-not external, and is labeled as such; real objections are welcome by pull request. Any change after registration is a dated public amendment.
-
-**Phase 1, Build the corpus.** Ingest the earliest Book of Mormon texts (original manuscript,
-printer's manuscript, 1830 edition) from the Joseph Smith Papers, a period King James Bible,
-the big book collections, period newspapers near Palmyra, the early modern English corpus,
-and verified writing samples for each candidate author. Every source gets a manifest with
-checksums. Reprints are deduplicated so one popular book doesn't count twenty times.
-
-**Phase 2, Clean and prepare.** Fix OCR errors and measure how well we fixed them. Normalize
-spelling. Align the Book of Mormon against the King James Bible and mask the quoted and
-closely paraphrased spans, so later tests measure original composition. Segment the text by
-narrator, by dictation order, and by scribe. Build genre-matched control sets, especially
-other pseudo-biblical books, so biblical style can't masquerade as authorship. Freeze the
-whole thing as corpus v1.0 with a DOI.
-
-**Phase 3, Prove the tools work.** Implement the classical methods (Burrows' Delta, General
-Imposters, extended nearest shrunken centroids) and run them on cases with known answers:
-the Federalist Papers, pseudo-biblical texts with known authors, dictated texts, and
-open-set cases where the true author is deliberately left out. Each method gets a pass or
-fail against the pre-registered threshold. Then reproduce every prior Book of Mormon study
-with its original method, so we know where we stand before adding anything new.
-
-**Phase 4, Borrowing.** Run exact and near-exact reuse detection over the masked text against
-the whole corpus. Score rare phrases against a real null distribution built from hundreds of
-random period books, so we can say where Luke and *The Late War* actually fall. Run the
-semantic search the same way. Have a model triage the hits and a human review every
-"specific" one, and report how often they agree.
-
-**Phase 5, New methods.** Train the time-locked language model, with a contamination check
-that searches the training data for Book of Mormon strings. Fine-tune one model per
-candidate and per control group. Build a dating classifier on dated text from 1473 to 1830
-and test whether mere King James imitation shifts its estimate. Build style embeddings as an
-independent cross-check. Build the corpus-wide author sweep: a book this long is rarely its
-author's only writing, so we index every author in the 1780-1830 record to find the closest
-matches, if any, and calibrate how close a false match can look by chance. Every model is
-validated on the Phase 3 benchmark before it ever sees the Book of Mormon.
-
-**Phase 6, Verification and synthesis.** Test whether a writer imitating biblical style can
-fool each method, and down-weight the ones that are fooled. Then run the blind analysis: a
-sealing script relabels the Book of Mormon segments, mixes in decoys from known authors, and
-keeps the key outside the repository; the analysis runs in a fresh session that never sees
-the key, and only after every output is saved and hashed do we unblind. The author sweep runs on a
-pre-designated half of the segments and produces ranked leads; a lead can enter the candidate
-list only by dated amendment, and is then tested on the other half. Add the historical evidence: what
-books were available near Palmyra before 1829, and what the manuscript's dictation errors
-and scribe changes show. Combine every line of evidence in a Bayesian model with sensitivity
-analysis, and report where the methods agree and where they conflict.
-
-**Phase 7, Publish.** Write the paper against the pre-registration, listing every deviation,
-with the simulated reviewers' responses alongside. Post a preprint. Release code, data, and
-models with a one-command reproduction, plus a web explorer where anyone can click a passage
-and see its parallels, scores, and dating estimate. Then put the paper through a simulated
-peer review by an AI model that sees only the released materials, and answer it in public.
-
-## What this can and cannot settle
-
-- Stylometry measures whoever produced the English text. It cannot decide the theological
-  question of translation in either direction, and we will not claim that it does.
-- Joseph Smith's undisputed pre-1830 writing is very small, and attribution gets unreliable
-  below roughly 5,000 to 10,000 words. The pre-registration states this up front.
-- Dictation and multiple scribes sit between any author and the page.
-- Any method that fails the validation benchmark or the imitation test is down-weighted or
-  dropped, whatever answer it would have given.
-- **The corpus is obtainable by anyone, but not redistributed from here.** Harvard
-  Institutional Books and HathiTrust forbid redistribution and the Joseph Smith Papers
-  transcriptions are copyrighted, so this repository ships the catalogs, the checksum
-  manifests and the fetchers instead of the texts. Five of the eight sources need no
-  permission at all; one needs a free account; only HathiTrust requires an application, and
-  `docs/replication.md` records exactly what to send and to whom. The manifests let a
-  replicator prove they obtained the same bytes. `BOM-44` adds a lower bar still — the derived
-  tables the analyses actually read, which are not reconstructable back into readable text and
-  so are published outright (`data/derived/`, the large ones on the GitHub release
-  `derived-v1.0`). With them alone, and no application, anyone can rerun the classical
-  benchmark, the rare-phrase source list and its null, and the grammar dating model.
-  Everything that reads running text (alignment, semantic search, the language models, style
-  embeddings, the author sweep) still needs your own copy of the sources; Amendment 18 lists
-  exactly which results fall on each side.
-
-The design commits us to reporting nulls, conflicts, and "inconclusive" as readily as any
-positive result. The analysis plan itself is `paper/preregistration.md`, and the known gaps in
-it are `docs/audit.md`.
-
-## Every choice in one file, and the multiverse
-
-Every analytic choice the study makes lives in `config/preregistered.yaml`, copied from the
-pre-registration and its amendments, and the code refuses to run if a registered value has been
-edited. `uv run bom run` runs the analysis under that file and stamps every output with the
-file's hash and the git commit. **The official result is the registered config.**
-
-Rerunning our code reproduces our choices, including any bad ones, so `uv run bom multiverse`
-reruns the analysis under every reasonable alternative listed in `config/multiverse.yaml` and
-draws a specification curve: for each conclusion, the share of configurations that agree. That
-is a robustness check, not a second result. Anyone can add a config file by pull request and
-post what it gives. `config/tiers.yaml` says what each kind of change costs to recompute.
-
-## Rules we have bound ourselves to
-
-- **Pre-register first.** The analysis plan is frozen on OSF before analysis begins.
-  Registration: https://osf.io/6ugxc/ (submitted 2026-10-15, public and frozen after OSF's
-  48-hour approval window). OSF project: https://osf.io/ebpcw/.
-- **Adversarial review, simulated.** The protocol is attacked from both sides in writing
-  before results exist (`paper/adversarial-review.md`). No external scholar has approved it;
-  the file says so and stays open to real dissent.
-- **The text is sealed.** The Book of Mormon is excluded from all model training and tuning
-  until the blind run in Phase 6. The one exception is the replication of prior studies, which
-  uses their published methods.
-- **Publish as you go.** Code here, data manifests and models on Hugging Face or Zenodo
-  with DOIs.
-
-## Who is doing this
-
-One person with AI assistance. There are no external advisors, no second analyst, and no
-journal submission. Every review step in the plan is simulated by an AI model and is labeled
-as such wherever it appears. That is a real limit on the independence of the review, and the
-project states it rather than implying otherwise. Anyone who wants to supply the missing
-independent scrutiny can do so by pull request, and their critique will be recorded unchanged.
-
-## Following along
-
-Watch the issues. Each one is titled `BOM-NN`, labeled by phase, and closes with a link to
-its published output. Issues #1 to #10 are from the repository's 2016 incarnation and are
-closed. `docs/background.md` has the prior studies, sources, and limits in more detail.
-A running, informal account of the work with examples, in the owner's voice: `paper/blog.md`.
-
-## Repository layout
-
-Each top-level package owns one stage of the pipeline and its README names the issues it
-serves: `ingest/`, `metadata/`, `ocr_fix/`, `kjv_mask/`, `segment/`, `classic/`,
-`reuse/`, `semantic/`, `timelocked_lm/`, `alm/`, `dating/`, `style_embed/`, `eval/`, `paper/`.
-
-- `data/` holds public source texts, derived tables, and checksum manifests. Licensed texts
-  that cannot be redistributed live in a separate private repo cloned into `data/private/`
-  by `scripts/data_clone.sh`; their checksums are public, so a rebuilt copy can be verified.
-  See `docs/data-versioning.md` and `data/bom/SOURCES.md`.
-- `docs/` holds the backlog, background, and design notes.
-- `scripts/` holds one-off tooling such as the backlog importer.
-- `tests/` holds the test suite.
-- `docs/mac-mini-setup.md` is the one-time setup for the headless machine that holds the data.
-
-## Development
-
-Requires [uv](https://docs.astral.sh/uv/).
+1. **Read the numbers.** Every chart and table in the write-ups names its results file under
+   `data/`. Results files hold names and numbers only.
+2. **Rerun the Book of Mormon ranking without training anything.** Download the candidate models
+   below and follow the model sections of [`eval/README.md`](eval/README.md). No restricted text
+   is needed.
+3. **Rebuild everything.** The base models rebuild every other model from the code and config.
+   Tests that read the books themselves need your own copy of the sources;
+   [`docs/replication.md`](docs/replication.md) gives the steps for each.
 
 ```
 uv sync --dev
-uv run ruff check .
-uv run ruff format --check .
-uv run pytest
+uv run pytest -q
 ```
 
-CI runs the same three checks on every push and pull request.
+Requires [uv](https://docs.astral.sh/uv/). Every analytic choice (threshold, seed, model) lives in
+`config/preregistered.yaml`, and every results file is stamped with that file's hash and the git
+commit that made it.
+
+## The models
+
+On Hugging Face, CC BY-NC 4.0. Weights and the numbers they produced, never corpus text. Each
+file's SHA-256 is in `data/manifests/hf_<repo>.jsonl`.
+
+| Repository | What it holds | Use it for |
+| --- | --- | --- |
+| [`etherfuse/timelocked-1830-125m`](https://huggingface.co/etherfuse/timelocked-1830-125m), [`-300m`](https://huggingface.co/etherfuse/timelocked-1830-300m), [`-590m`](https://huggingface.co/etherfuse/timelocked-1830-590m) | three language models trained only on English printed 1780-1830, the Book of Mormon left out | rebuilding every other model |
+| [`etherfuse/bom-authorship-candidate-models`](https://huggingface.co/etherfuse/bom-authorship-candidate-models) | one model per candidate's writing sample, at all three sizes | checking the candidate ranking (finding 2) |
+| [`etherfuse/bom-authorship-dating-models`](https://huggingface.co/etherfuse/bom-authorship-dating-models) | the dating models | checking the dating result (finding 6) |
+| [`etherfuse/bom-authorship-style-encoder`](https://huggingface.co/etherfuse/bom-authorship-style-encoder) | the first style model | the candidate ranking's style scores |
+| [`etherfuse/bom-authorship-benchmark-finetunes`](https://huggingface.co/etherfuse/bom-authorship-benchmark-finetunes) | an earlier set of known-author test models | checking the benchmark tables |
+
+The second style model, the one behind the library search (finding 4), is not on Hugging Face.
+Rebuild it with `python -m style_embed.v2` (see `eval/README.md`).
+
+## The texts
+
+The library is 695,021 catalogued works of 1780-1830, 533,328 with text, from the Internet
+Archive, Harvard's Institutional Books, HathiTrust, the Text Creation Partnership and period
+newspapers. Anyone can obtain all of it, but four sources cannot be republished from here:
+HathiTrust, Harvard's collection, the Joseph Smith Papers transcripts, and one purchased book.
+For each, [`docs/replication.md`](docs/replication.md) gives numbered steps to get the same
+access we had, and the public checksums in `data/manifests/` let you confirm you hold the same
+files. The tables the statistics read are published outright in `data/`.
+
+**Corpus v1.1** (frozen 2026-10-30), the snapshot every analysis from BOM-21 on runs against: [doi:10.5281/zenodo.23819273](https://doi.org/10.5281/zenodo.23819273). It corrects placeholder dates (BOM-56) and adds the curated pseudo-biblical control (BOM-54); index `data/manifests/corpus_v1.1.json`. Corpus v1.0 (frozen 2026-10-28), still citable: [doi:10.5281/zenodo.23740903](https://doi.org/10.5281/zenodo.23740903) (all versions: [10.5281/zenodo.23740902](https://doi.org/10.5281/zenodo.23740902)). Index `data/manifests/corpus_v1.0.json`; coverage and gaps in `docs/datasheet.md`.
+
+## The plan and its changes
+
+The analysis plan was written and frozen before the results (https://osf.io/6ugxc/, 2026-10-15;
+mirrored in [`paper/preregistration.md`](paper/preregistration.md)). Every later change is a dated
+amendment in its section 11, and the ones made after seeing a result are labelled so. The library
+search (finding 4) and the "none of these" comparison (finding 3) were added after the plan and
+are labelled exploratory in the paper. [`paper/deviations.md`](paper/deviations.md) lists every
+decision made after a result was seen.
+
+## Repository layout
+
+Each top-level package owns one stage and its README says what it does: `ingest/`, `metadata/`,
+`ocr_fix/`, `kjv_mask/`, `segment/`, `classic/`, `reuse/`, `semantic/`, `timelocked_lm/`, `alm/`,
+`dating/`, `style_embed/`, `sweep/`, `eval/`, `paper/`.
+
+- `data/` holds public source texts, result tables and checksum manifests.
+- `docs/` holds the background ([`docs/background.md`](docs/background.md)), the earlier studies
+  ([`docs/prior-studies.md`](docs/prior-studies.md)), the record of what changed in the method
+  ([`docs/method-improvements.md`](docs/method-improvements.md)) and design notes.
+- GitHub issues titled `BOM-NN` are the working record; each closed one carries its evidence.
 
 ## License
 
-Code: MIT (`LICENSE`). Derived data: CC BY 4.0 (`LICENSE-DATA`). Source texts keep their
-original licenses.
+Code: MIT (`LICENSE`). Derived data: CC BY 4.0 (`LICENSE-DATA`). Models: CC BY-NC 4.0. Source
+texts keep their original licenses.
 
 ## History
 
-This repository began in 2016 as a Java frequency-analysis experiment on the 1830 text and
-Joseph Smith's journals (David Taylor and John McConnell). That code is in the git history
-before the October 2026 reset and is not used by the current project.
+This repository began in 2016 as a Java word-counting experiment on the 1830 text and Joseph
+Smith's journals (David Taylor and John McConnell). That code is in the git history before the
+October 2026 reset and is not used by the current project.
