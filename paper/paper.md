@@ -2065,7 +2065,8 @@ What stands behind the results is that every step can be found and rerun.
   style encoder, the dating models and an earlier set of benchmark fine-tunes are also published,
   at `etherfuse/bom-authorship-style-encoder`, `etherfuse/bom-authorship-dating-models` and
   `etherfuse/bom-authorship-benchmark-finetunes`, and by the owner's decision of 2026-11-14 they
-  are left up; `README.md` lists all seven addresses.
+  are left up; `README.md` lists all seven addresses. The second style encoder, which ran the
+  library search of section 14, was added to the style-encoder address on 2026-11-16 (`v2/`).
 - **Simulated reviews.** Three simulated peer reviews (a historian, a statistician, a
   stylometrist), the response plan, the adversarial review and the research review of 2026-11-12
   are in `paper/review/`, `paper/adversarial-review.md` and `docs/research/`. All were written by

@@ -94,11 +94,8 @@ file's SHA-256 is in `data/manifests/hf_<repo>.jsonl`.
 | [`etherfuse/timelocked-1830-125m`](https://huggingface.co/etherfuse/timelocked-1830-125m), [`-300m`](https://huggingface.co/etherfuse/timelocked-1830-300m), [`-590m`](https://huggingface.co/etherfuse/timelocked-1830-590m) | three language models trained only on English printed 1780-1830, the Book of Mormon left out | rebuilding every other model |
 | [`etherfuse/bom-authorship-candidate-models`](https://huggingface.co/etherfuse/bom-authorship-candidate-models) | one model per candidate's writing sample, at all three sizes | checking the candidate ranking (finding 2) |
 | [`etherfuse/bom-authorship-dating-models`](https://huggingface.co/etherfuse/bom-authorship-dating-models) | the dating models | checking the dating result (finding 6) |
-| [`etherfuse/bom-authorship-style-encoder`](https://huggingface.co/etherfuse/bom-authorship-style-encoder) | the first style model | the candidate ranking's style scores |
+| [`etherfuse/bom-authorship-style-encoder`](https://huggingface.co/etherfuse/bom-authorship-style-encoder) | both style models: the first (`297m/`, `590m/`) and the second (`v2/`), which ran the library search | the candidate ranking's style scores; the library search (finding 4) and the "none of these" comparison (finding 3) |
 | [`etherfuse/bom-authorship-benchmark-finetunes`](https://huggingface.co/etherfuse/bom-authorship-benchmark-finetunes) | an earlier set of known-author test models | checking the benchmark tables |
-
-The second style model, the one behind the library search (finding 4), is not on Hugging Face.
-Rebuild it with `python -m style_embed.v2` (see `eval/README.md`).
 
 ## The texts
 

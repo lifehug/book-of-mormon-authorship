@@ -23,7 +23,8 @@ every other fine-tune for about $50-100 of GPU, and the candidate models let any
 Book of Mormon result with no restricted text and no training. Other fine-tunes (benchmark,
 seeds, variants) publish their scores, not their weights, unless the owner asks. The pages already
 on Hugging Face (style encoder, dating models, the earlier benchmark fine-tunes) stay public
-(owner, 2026-11-14: "yes hugging face stays public why wouldn't it be"). The only things held back are the corpus
+(owner, 2026-11-14: "yes hugging face stays public why wouldn't it be"). The second style encoder
+(the library search) was added there on 2026-11-16 at the owner's yes. The only things held back are the corpus
 texts we committed to keep private (see "Where data lives"), and for each of those we publish
 the exact steps to get the same access we had. When a choice trades openness for convenience,
 choose openness, or ask.
