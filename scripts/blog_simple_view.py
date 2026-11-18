@@ -26,13 +26,13 @@ BOXES = {
         (
             FOUND,
             [
-                "<b>Borrowing:</b> apart from the King James Bible, the book copies almost nothing. Only 0.16% of its text matches earlier books. The books most often named as sources, like <i>The Late War</i> and <i>View of the Hebrews</i>, don't stand out from other books of their kind.",
+                "<b>Borrowing:</b> apart from the King James Bible, the book copies almost nothing. Only 0.16% of its text matches earlier books. The books most often named as sources, like <i>The Late War</i> and <i>View of the Hebrews</i>, don't stand out from other books of their kind. It doesn't follow any earlier book's outline either: the test that catches Josephus retelling Genesis in his own words finds no book whose story it follows.",
                 "<b>Authorship:</b> the closest writing is Joseph Smith's revelations, the short texts he dictated in God's voice, among the eight candidates and across the whole library. His ordinary writing, his letters and journals, doesn't stand out the same way. And writers who died long before 1829 also rank near the top, so the tools are matching a style of religious writing, not just a person.",
             ],
         ),
         (
             CANT,
-            "These tests can't detect an idea borrowed and retold in new words. The tools are good at picking the closest match from a list, and bad at telling whether the real author is on the list at all, so nobody is ruled in or out. They also can't tell a person from the style they are writing in, which is why a believer and a skeptic can both read the result as fitting their view.",
+            "The tools are good at picking the closest match from a list, and bad at telling whether the real author is on the list at all, so nobody is ruled in or out. They also can't tell a person from the style they are writing in, which is why a believer and a skeptic can both read the result as fitting their view.",
         ),
     ],
     "library": [
@@ -76,7 +76,10 @@ BOXES = {
             MEANS,
             "The book copies almost nothing. The books usually named as sources look like neighbours in the same genre, and this test can't tell a source from a neighbour.",
         ),
-        (CANT, "Whether an idea was borrowed and retold in new words with a new plot."),
+        (
+            CANT,
+            "Where a single, widely shared idea came from. The ideas it shares with <i>View of the Hebrews</i> are in hundreds of religious books of the time, so they point to no one source.",
+        ),
     ],
     "earlier": [
         (Q, "Do the earlier computer studies, from 1980 to 2013, hold up?"),
