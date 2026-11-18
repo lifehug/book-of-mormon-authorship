@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 # BOM-65: off-site private backup of data/corpus/ (passage index first) to Backblaze B2.
-# Usage: scripts/b2_backup.sh upload|check [path] | restore <file> <dir> | weekly
+# Usage: scripts/b2_backup.sh upload|check [path] | restore <file> <dir> | weekly | status
 #   upload   copy new or changed files under data/corpus/[path] to the bucket (never deletes remote files)
 #   check    compare local and bucket by size and SHA-1; nonzero exit on any difference
 #   restore  download one file (path under data/corpus/) from the bucket into <dir>
-#   weekly   upload . then check . (launchd, docs/backup.md); skips if the corpus drive is absent
+#   weekly   upload . then check . (launchd, docs/backup.md); skips if the corpus drive is absent;
+#            a failure is written to the log as "weekly FAILED" and shown as a desktop notice
+#   status   the last clean check and any failure since; nonzero exit if the last weekly run failed
 # [path] defaults to semantic/index; "." is the whole corpus. Bucket paths mirror data/corpus/.
 # Key: ~/.config/backblaze/credentials (B2_KEY_ID, B2_APP_KEY, B2_BUCKET), mode 600, never in git.
 set -euo pipefail
@@ -40,6 +42,17 @@ case "${1:-}" in
     if [ ! -d data/corpus/semantic ]; then
       echo "$(date -u +%FT%TZ) weekly: corpus drive not mounted, skipped" >>"$log"; exit 0
     fi
-    "$0" upload . && "$0" check . ;;
-  *) sed -n '3,8p' "$0"; exit 2 ;;
+    # BOM-98: a failed run used to leave only a "start" line with no "done"; say so plainly
+    rc=0; { "$0" upload . && "$0" check .; } || rc=$?
+    if [ "$rc" -ne 0 ]; then
+      echo "$(date -u +%FT%TZ) weekly FAILED (exit $rc)" >>"$log"
+      osascript -e 'display notification "The weekly B2 backup failed. See logs/b2_backup.log" with title "bom-authorship backup"' >/dev/null 2>&1 || true
+      exit "$rc"
+    fi ;;
+  status)
+    good=$(grep -E 'check \.: 0 differences' "$log" 2>/dev/null | tail -1 || true)
+    echo "last clean check of everything: ${good:-none on record}"
+    last=$(grep -E 'weekly FAILED|check \.: 0 differences' "$log" 2>/dev/null | tail -1 || true)
+    case "$last" in *FAILED*) echo "since then: $last"; exit 1 ;; esac ;;
+  *) sed -n '3,10p' "$0"; exit 2 ;;
 esac

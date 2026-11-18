@@ -28,6 +28,7 @@ scripts/b2_backup.sh upload [path]          # copy new or changed files; never d
 scripts/b2_backup.sh check [path]           # size + SHA-1 comparison; exits nonzero on any difference
 scripts/b2_backup.sh restore <file> <dir>   # download one file
 scripts/b2_backup.sh weekly                 # upload . then check .; skips if the drive is absent
+scripts/b2_backup.sh status                 # last clean check, and any failed weekly run since (exit 1)
 ```
 
 `path` is relative to `data/corpus/`; it defaults to `semantic/index`, and `.` means everything.
