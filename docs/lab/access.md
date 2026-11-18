@@ -1,8 +1,9 @@
 # Getting access to the data
 
-> **Status: waiting for verification.** The owner has asked HathiTrust to approve adding
-> researchers to the project. Until he confirms that approval, no read-only key is issued and
-> step 3 below is not carried out. Steps 1 and 2 can be done now. (Recorded 2026-11-18.)
+> **Status: approved by HathiTrust, 2026-11-18** (ticket GS-17502): the data may be shared
+> directly with additional researchers, provided each one reads and signs the researcher
+> agreement and is added to the one the owner signed. No key is issued before that signature.
+> The agreement's wording: `docs/hathitrust-researcher-agreement.md`.
 
 The code and results are public. The books themselves are not: they are about 914 GB on the
 owner's machine, with a private copy on Backblaze B2. A researcher works from their own copy,
@@ -14,7 +15,16 @@ Write to the owner (Dave Taylor) with:
 
 1. your name and GitHub username;
 2. what you want to look at, in a sentence or two;
-3. how much disk you have (the minimum set is about 290 GB; everything is 914 GB).
+3. how much disk you have (the minimum set is about 290 GB; everything is 914 GB);
+4. your country and your institution, if you have one. The agreement asks for both, and
+   HathiTrust must be told if either changes.
+
+## What you sign first
+
+Read `docs/hathitrust-researcher-agreement.md` (the eight points, then "What it means in plain
+words"). The owner sends you the form he signed, with a slot for you: name, signature, date,
+institution, title, email and phone. Sign it and send it back to him; he returns it to HathiTrust
+on ticket GS-17502. Your key is made after that.
 
 ## What you get
 
@@ -24,7 +34,7 @@ Write to the owner (Dave Taylor) with:
    `data/private/`). It holds the licensed texts and the lab's notes. Your notes go in
    `data/private/lab/<you>/`.
 3. **A read-only B2 key** for the bucket `bom-authorship-index`, sent to you through a password
-   manager's share link, never by email or chat. *(Waiting for verification, see above.)*
+   manager's share link, never by email or chat. It is made once your signed agreement is back.
 
 ## Using the key
 
@@ -48,6 +58,8 @@ python -m lab.passages status
 
 ## What you agree to
 
+- The HathiTrust researcher agreement you signed, in full. The points below restate the parts
+  that touch daily work and extend them to the other licensed sources.
 - The texts are for this project. Do not pass the files, the key or passages of licensed books
   to anyone else, and do not put them in a public repository, a paper's supplement or a chat
   with a hosted AI service that keeps what it is sent.

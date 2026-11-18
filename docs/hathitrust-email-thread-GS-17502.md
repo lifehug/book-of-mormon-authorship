@@ -214,3 +214,25 @@ This is shared with <requester address, withheld>
 ------------------------------
 Powered by Jira Service Management
 https://www.atlassian.com/software/jira/service-desk/powered-by?utm_medium=jira-in-product&utm_source=jira_service_desk_email_footer&utm_content=hathitrust
+
+
+---
+
+**From:** HathiTrust General Support <support@hathitrust.org>  
+**Date:** 18 Nov 2026  
+**Subject:** GS-17502 Research dataset request: public domain English text, 1780-1830 (ht_text_pd_open_access)
+
+*(Typed out from the owner's screenshot of the message. It answers a message of his, not copied
+here, that shared the study's progress and asked about adding researchers to the project.)*
+
+Janet Marie Swatscheno commented:
+
+Hi Dave,
+
+Thanks for sharing your progress! I'm excited to look through your work.
+
+It's no problem for you to share the data with additional researchers to to do an analysis. You can share the data directly with them. We would just ask that they also look over the research agreement and sign it as well, so you can add them to the one you already signed. Let me know if you have any other questions or need clarification.
+
+Best,
+
+Janet

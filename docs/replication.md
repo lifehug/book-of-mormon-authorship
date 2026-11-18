@@ -52,6 +52,8 @@ A signed researcher agreement. Days, not minutes, and the only item here with a 
 2. Sign and return the researcher agreement they send. We wanted the **non-Google** dataset,
    `ht_text_pd_open_access`; obligations summarised in
    `docs/hathitrust-researcher-agreement.md`.
+   (The other route: join this project. HathiTrust allows its data to be shared with researchers
+   added to the project who sign the same agreement; `docs/lab/access.md`.)
 3. On approval, give them a static IP. A dynamic one can be allow-listed instead if you ask.
 4. Pull with `python3 ingest/hathitrust_rsync/ht_pull.py`. Transfer details in
    `docs/hathitrust-rsync-instructions.md`. Exit code 23 is expected: roughly 76,000 of the ids

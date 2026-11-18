@@ -4,14 +4,17 @@ Say "let's add Steve" in Claude Code and the `lab-add-researcher` skill walks th
 The AI does the steps marked **AI**; the ones marked **Owner** need the owner's hands, because
 they create a credential or change who can see private material.
 
-> **Step 4 is waiting for verification:** no B2 key is created until the owner says HathiTrust
-> has approved adding researchers. Until then, do steps 1-3 and 6-7 and record the key as "pending".
+> **HathiTrust approved adding researchers on 2026-11-18** (ticket GS-17502,
+> `docs/hathitrust-email-thread-GS-17502.md`): the data may be shared directly with them, and each
+> one reads and signs the researcher agreement and is added to the one the owner signed. So the
+> order is fixed: **agreement signed (step 4) before the key (step 5).**
 
 ## Before starting, the AI asks for
 
 - the researcher's full name and GitHub username;
 - what they will work on (one line, for the record);
-- whether HathiTrust's approval has arrived (if not, the key waits).
+- their country and their institution, if any (the agreement asks for both; see the note under
+  step 4).
 
 ## Steps
 
@@ -25,7 +28,19 @@ they create a credential or change who can see private material.
    `gh api -X PUT repos/lifehug/bom-authorship-data/collaborators/<user> -f permission=push`
    This shows them the licensed texts held there. Confirm with the owner each time; an earlier
    yes for another person does not carry over.
-4. **Owner: the read-only B2 key.** *(Waiting for verification.)* In the Backblaze console,
+4. **Owner: the HathiTrust researcher agreement.** Send the researcher the form you signed on
+   2026-10-16 (it has slots for Researchers 2 to 4) and point them at
+   `docs/hathitrust-researcher-agreement.md`. They fill in their slot and sign; you return the
+   form to HathiTrust by replying on ticket GS-17502. File the signed copy in the private
+   repository at `data/private/lab/agreements/` (never in the public one: it carries contact details).
+   The AI records the date in the researcher's row. Two things in the form to check with the
+   person first:
+   - it has three more slots. A fourth added researcher needs a word with HathiTrust;
+   - its point 7 says that if the first researcher is entitled to broader access than another
+     (the form's example is a collaborator outside the United States), the data stays on the first
+     researcher's machines. If the person is outside the United States, ask HathiTrust on the
+     ticket before sending any data.
+5. **Owner, after step 4: the read-only B2 key.** In the Backblaze console,
    https://secure.backblaze.com/app_keys.htm, choose **Add a New Application Key**:
    - Name: `lab-<user>` (one key per person, so one can be revoked alone)
    - Allow access to bucket: `bom-authorship-index`
@@ -34,7 +49,6 @@ they create a credential or change who can see private material.
    Copy the key ID and the key (shown once) into a password manager and send the researcher a
    share link from there. Do not paste either into this conversation, email or chat. The AI
    never sees the key.
-5. **Owner: tell HathiTrust** if their approval requires each researcher to be named.
 6. **AI: send the researcher the start page.** Give the owner a short message to forward: the
    links to `docs/lab/README.md` and `docs/lab/access.md`, and their folder
    `data/private/lab/<user>/`.
@@ -58,5 +72,6 @@ python -m lab.door find "a people led across the sea" --question --top 3
 2. **AI, after the owner says yes:**
    `gh api -X DELETE repos/lifehug/bom-authorship-data/collaborators/<user>` and the same for the
    public repository if wanted.
-3. **Owner:** ask them to delete their copy of the corpus and confirm.
+3. **Owner:** ask them to delete their copy of the corpus and confirm, and tell HathiTrust on
+   ticket GS-17502 that they have left the project.
 4. **AI:** mark the row in `data/private/lab/researchers.md` with the date removed.

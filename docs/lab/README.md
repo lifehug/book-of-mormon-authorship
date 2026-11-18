@@ -47,7 +47,9 @@ With Claude Code open in this repository you can also just ask. Four skills carr
 
 ## Setting up
 
-1. Get access: [access.md](access.md).
+1. Get access: [access.md](access.md). It starts with reading and signing the HathiTrust
+   researcher agreement ([wording](../hathitrust-researcher-agreement.md)); the key to the texts
+   comes after.
 2. `uv sync --dev`, then `scripts/data_clone.sh` (the private repository).
 3. `scripts/lab_fetch.sh minimum` (about 290 GB), then `python -m lab.passages status`.
 4. `uv run pytest -q` should pass.

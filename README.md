@@ -108,6 +108,10 @@ For each, [`docs/replication.md`](docs/replication.md) gives numbered steps to g
 access we had, and the public checksums in `data/manifests/` let you confirm you hold the same
 files. The tables the statistics read are published outright in `data/`.
 
+Researchers can also join this project and work from its copy of the texts. HathiTrust agreed to
+that on 2026-11-18, provided each one signs its researcher agreement first:
+[`docs/lab/access.md`](docs/lab/access.md).
+
 **Corpus v1.1** (frozen 2026-10-30), the snapshot every analysis from BOM-21 on runs against: [doi:10.5281/zenodo.23819273](https://doi.org/10.5281/zenodo.23819273). It corrects placeholder dates (BOM-56) and adds the curated pseudo-biblical control (BOM-54); index `data/manifests/corpus_v1.1.json`. Corpus v1.0 (frozen 2026-10-28), still citable: [doi:10.5281/zenodo.23740903](https://doi.org/10.5281/zenodo.23740903) (all versions: [10.5281/zenodo.23740902](https://doi.org/10.5281/zenodo.23740902)). Index `data/manifests/corpus_v1.0.json`; coverage and gaps in `docs/datasheet.md`.
 
 ## The plan and its changes

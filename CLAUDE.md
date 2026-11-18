@@ -183,8 +183,10 @@ Lab work reads everything and writes only to `data/lab/`, `data/corpus/lab/`, `d
 `logs/lab/` and `docs/lab/` (`lab.paths.out`; `tests/test_lab.py`). It never edits the study's
 results, config values or paper; a lab finding reaches the study only through `lab-promote` and
 the owner's yes. `master` is protected: collaborators work by pull request. Adding or removing a
-researcher follows `docs/lab/adding-a-researcher.md`; the B2 key step waits for the owner's word
-that HathiTrust has approved, and the AI never sees a key.
+researcher follows `docs/lab/adding-a-researcher.md`; HathiTrust approved sharing the data
+with added researchers on 2026-11-18 provided each signs the researcher agreement
+(`docs/hathitrust-researcher-agreement.md`), so the signature comes before the B2 key, and the AI
+never sees a key.
 
 ## Machines
 

@@ -16,7 +16,8 @@ Companion file: `docs/hathitrust-request.md` (the request process and the propos
 | 2026-10-15 | Proposal emailed to support@hathitrust.org |
 | 2026-10-15/16 | HathiTrust opened ticket GS-17502 and sent the non-Google-digitized researcher agreement |
 | 2026-10-16 | Agreement signed (David James Taylor, independent, United States) and returned |
-| pending | Approval, static IP registration, rsync of the volume list |
+| 2026-10-20 | Approved; data pulled (second timeline below) |
+| 2026-11-18 | HathiTrust: the data may be shared directly with additional researchers who sign this agreement |
 
 ## What the form says
 
@@ -50,7 +51,9 @@ Slots for Researchers 2-4 are optional.
 ## What it means in plain words
 
 - The text is a loan for this project, not a gift. When the project ends, it gets deleted.
-- Do not share the files. Point people at HathiTrust and they can ask for the same set.
+- Do not share the files. Point people at HathiTrust and they can ask for the same set. (The
+  one exception HathiTrust has since allowed: researchers added to this project who sign this
+  same agreement. See "Adding researchers" below.)
 - HathiTrust may later say "that volume turned out to be in copyright"; the file is deleted
   and the deletion is confirmed by email.
 - The agreement is tied to the proposal: the 1780-1830 authorship study. A different study
@@ -60,6 +63,20 @@ Slots for Researchers 2-4 are optional.
 - The form assumes a university employee. This project filled in "Independent" as the
   institution and left the title blank; whether that is accepted is what the ticket will
   tell us.
+
+## Adding researchers (HathiTrust, 2026-11-18)
+
+Point 4 says the dataset may not be passed to others. On 2026-11-18 the owner asked on the same
+ticket whether researchers could be added to the project, and HathiTrust answered: "It's no problem
+for you to share the data with additional researchers to do an analysis. You can share the data
+directly with them. We would just ask that they also look over the research agreement and sign it
+as well, so you can add them to the one you already signed." (Full reply in
+`docs/hathitrust-email-thread-GS-17502.md`.)
+
+So an added researcher reads this page, signs a slot on the form the owner signed, and only then
+receives a copy of the data. Every point above binds them as it binds the owner: this project
+only, no passing it on, deletion on notice and at the end. The steps are in
+`docs/lab/adding-a-researcher.md`; what a researcher is told is in `docs/lab/access.md`.
 
 ## How this project complies
 
@@ -80,6 +97,7 @@ Slots for Researchers 2-4 are optional.
 | 2026-10-16 | Non-Google researcher agreement received and signed as an independent researcher |
 | 2026-10-20 | Approved. Dynamic IP allow-listed instead of a static one |
 | 2026-10-20 | Pulled 31,194 volumes, 19 GiB, in 24 minutes |
+| 2026-11-18 | Sharing with additional researchers approved, each to sign this agreement |
 | 2026-11-30 | rsync access removed |
 
 Obligations that outlive the access window: the text stays on this machine and is never
