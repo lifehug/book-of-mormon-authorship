@@ -27,7 +27,7 @@ BOXES = {
             FOUND,
             [
                 "<b>Borrowing:</b> apart from the King James Bible, the book copies almost nothing. Only 0.16% of its text matches earlier books. The books most often named as sources, like <i>The Late War</i> and <i>View of the Hebrews</i>, don't stand out from other books of their kind.",
-                "<b>Authorship:</b> the closest writing is Joseph Smith's revelations, among the eight candidates and across the whole library. But writers who died long before 1829 also rank near the top, so the tools are matching a style of religious writing, not just a person.",
+                "<b>Authorship:</b> the closest writing is Joseph Smith's revelations, the short texts he dictated in God's voice, among the eight candidates and across the whole library. His ordinary writing, his letters and journals, doesn't stand out the same way. And writers who died long before 1829 also rank near the top, so the tools are matching a style of religious writing, not just a person.",
             ],
         ),
         (
@@ -206,7 +206,7 @@ BOXES = {
 LEDE = (
     '<p class="eli5lede">I asked a computer two things. Did this book copy from other books? And whose writing '
     "does it sound like? It copied almost nothing. It sounds most like the revelations Joseph Smith dictated in "
-    "the same months. But the computer can't tell whether that's because one man wrote both, or because both are "
+    "the same months, and not like his everyday letters and journals. But the computer can't tell whether that's because one man wrote both, or because both are "
     "written in the same kind of religious voice. So this doesn't settle who wrote it, for a believer or for a "
     "skeptic.</p>\n"
 )
