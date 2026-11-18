@@ -23,9 +23,11 @@ log=logs/b2_backup.log
 case "${1:-}" in
   upload)
     echo "$(date -u +%FT%TZ) upload $rel start" >>"$log"
-    # weights already on Hugging Face byte for byte (scripts/b2_prune_published.py) are not re-sent
+    # weights already on Hugging Face byte for byte (scripts/b2_prune_published.py) are not re-sent.
+    # ${excl[@]+...}: macOS bash 3.2 under `set -u` calls an empty array unbound (this stopped
+    # every upload from 2026-11-11 to 2026-11-18, the weekly one of 2026-11-15 included)
     excl=(); [ -s data/manifests/b2_published_on_hf.txt ] && excl=(--exclude-from data/manifests/b2_published_on_hf.txt)
-    rclone copy "$src" "$dst" "${excl[@]}" --checksum --transfers 32 --checkers 16 --fast-list --b2-chunk-size 48M --b2-upload-concurrency 1 \
+    rclone copy "$src" "$dst" ${excl[@]+"${excl[@]}"} --checksum --transfers 32 --checkers 16 --fast-list --b2-chunk-size 48M --b2-upload-concurrency 1 \
       --stats 10m --stats-one-line --log-file "$log" --log-level INFO
     echo "$(date -u +%FT%TZ) upload $rel done" >>"$log" ;;
   check)
