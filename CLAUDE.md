@@ -174,6 +174,18 @@ held, used and set aside. Folder names can name only the part first used
 Harvard's Institutional Books text may never be published (terms: noncommercial, no
 redistribution, attribution required). Joseph Smith Papers transcripts are copyrighted.
 
+## The lab (owner, 2026-11-18)
+
+The study is finished and pinned at git tag `study-v1`. New exploration and new tests by the owner
+or by researchers he adds happen in the lab: `docs/lab/README.md` is its start page, `lab/` its
+code, `.claude/skills/lab-*` its skills (explore, new test, replicate, promote, add a researcher).
+Lab work reads everything and writes only to `data/lab/`, `data/corpus/lab/`, `data/private/lab/`,
+`logs/lab/` and `docs/lab/` (`lab.paths.out`; `tests/test_lab.py`). It never edits the study's
+results, config values or paper; a lab finding reaches the study only through `lab-promote` and
+the owner's yes. `master` is protected: collaborators work by pull request. Adding or removing a
+researcher follows `docs/lab/adding-a-researcher.md`; the B2 key step waits for the owner's word
+that HathiTrust has approved, and the AI never sees a key.
+
 ## Machines
 
 The Mac mini is the data machine: `data/corpus/` and long jobs live there, run under tmux

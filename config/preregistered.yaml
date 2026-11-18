@@ -759,3 +759,32 @@ js_time:
   seed: bom73
   exclude_topic: mormon      # any block mentioning the word (any case) is dropped from comparison texts
   periodical_sample: first_issue_of_quarter
+
+lab:                              # the research lab (exploratory tooling; reads everything, writes only to lab folders)
+  candidates: 5000                # passages kept from the fast pass before exact scoring
+  chunk_rows: 4000000             # passages compared per step of the fast pass
+  top: 20                         # passages shown per query
+  phrase_max_works: 20000         # an exact-phrase scan reads every text it covers; more than this needs --all
+  phrase_context: 200             # characters shown either side of a phrase hit
+  phrase_workers: 6
+  show_words: 128                 # a passage is shown whole (semantic.passage_words)
+  query_prefix: "Represent this sentence for searching relevant passages: "   # the index model's own prefix for questions
+  # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
+  # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
+  # value = equal to.
+  views:
+    everything: {}
+    readable: {has_text: true}
+    borrowing:                    # the passage index's own eligibility: what the borrowing tests searched
+      {in_passage_index: true}
+    work-search:                  # any single book of the period, anonymous ones included
+      {has_text: true, kind: work, dup_keeper: true, ocr_excluded: false, year: {min: 1780, max: 1830}, words: {min: 5000}}
+    author-search:                # the library search as run: swept authors not known dead or under age in 1829
+      {author_swept: true, author_life: {any: [alive, unknown]}, training: {any: [train, validation]}}
+    author-search-all-lives:      # the same with dead authors kept in, as decoys
+      {author_swept: true, training: {any: [train, validation]}}
+    known-answer:                 # books by authors no style model was trained on: for measuring accuracy
+      {author_style_split: heldout, has_text: true, dup_keeper: true}
+    unseen-by-models:             # text no language model here was trained on
+      {has_text: true, training: none}
+    newspapers: {kind: newspaper_page, has_text: true}

@@ -1,0 +1,146 @@
+{
+ "config_sha256": "3a87722bfa7de235f48c3d8b41723f6f0f542ae809bcfae888c81d88655be5e7",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "ac591651060fb2527cd6f57886352cf462752fae",
+ "works": 695021,
+ "columns": {
+  "work_id": "the catalog's id (source:source_id)",
+  "source": "where the record came from",
+  "kind": "work (book or pamphlet) or newspaper_page",
+  "has_text": "text is on disk",
+  "year": "the year date-window selections use (title-page and body corrections applied); empty when undated or found to be later than 1830",
+  "year_catalog": "the year as catalogued",
+  "words": "words in the normalised text (empty when not counted)",
+  "genre": "the genre label (data/catalog/genre.parquet)",
+  "dup_keeper": "false for a reprint or second copy that another row stands for",
+  "ocr_excluded": "set aside for unreadable OCR",
+  "author_kind": "person, corporate (an institution or government) or none",
+  "author_swept": "the author is one of the library search's authors (10,000+ words)",
+  "author_life": "alive, dead, too_young or unknown in 1829 (swept authors only)",
+  "author_style_split": "train or heldout: whether the style models were trained on this author",
+  "training": "train, validation or none: whether the language models were trained on this work",
+  "in_passage_index": "the meaning-search index holds this work's passages",
+  "sealed": "a copy of the Book of Mormon, kept out of every model and every search"
+ },
+ "by_column": {
+  "source": {
+   "internet_archive": 307567,
+   "chronicling_america": 159146,
+   "hathitrust": 135035,
+   "tcp": 61315,
+   "institutional_books": 31958
+  },
+  "kind": {
+   "work": 535875,
+   "newspaper_page": 159146
+  },
+  "has_text": {
+   "True": 533328,
+   "False": 161693
+  },
+  "genre": {
+   "newspaper_periodical": 268438,
+   "uncertain": 110722,
+   "fiction_narrative": 31885,
+   "legal_political": 30601,
+   "sermon_devotional": 30063,
+   "history_chronicle": 28990,
+   "newspaper_periodical,scientific_medical": 26541,
+   "history_chronicle,other": 22481,
+   "newspaper_periodical,legal_political": 15408,
+   "scientific_medical,newspaper_periodical": 11822,
+   "scientific_medical,other": 9987,
+   "fiction_narrative,other": 9417
+  },
+  "dup_keeper": {
+   "True": 670242,
+   "False": 24779
+  },
+  "ocr_excluded": {
+   "False": 583990,
+   "True": 111031
+  },
+  "author_kind": {
+   "person": 335554,
+   "none": 328764,
+   "corporate": 30703
+  },
+  "author_swept": {
+   "False": 450073,
+   "True": 244948
+  },
+  "author_life": {
+   "None": 450073,
+   "unknown": 93301,
+   "dead": 83978,
+   "alive": 67284,
+   "too_young": 385
+  },
+  "author_style_split": {
+   "None": 494505,
+   "train": 183424,
+   "heldout": 17092
+  },
+  "training": {
+   "none": 492205,
+   "train": 201827,
+   "validation": 989
+  },
+  "in_passage_index": {
+   "False": 416286,
+   "True": 278735
+  },
+  "sealed": {
+   "False": 695008,
+   "True": 13
+  }
+ },
+ "views": {
+  "everything": {
+   "works": 695021,
+   "with_text": 533328,
+   "words": 28624824366
+  },
+  "readable": {
+   "works": 533328,
+   "with_text": 533328,
+   "words": 28624824366
+  },
+  "borrowing": {
+   "works": 278735,
+   "with_text": 278735,
+   "words": 20869519097
+  },
+  "work-search": {
+   "works": 176584,
+   "with_text": 176584,
+   "words": 14036461859
+  },
+  "author-search": {
+   "works": 68626,
+   "with_text": 68626,
+   "words": 6079215353
+  },
+  "author-search-all-lives": {
+   "works": 101633,
+   "with_text": 101633,
+   "words": 9474322522
+  },
+  "known-answer": {
+   "works": 9236,
+   "with_text": 9236,
+   "words": 763069999
+  },
+  "unseen-by-models": {
+   "works": 330512,
+   "with_text": 330512,
+   "words": 14701124742
+  },
+  "newspapers": {
+   "works": 158960,
+   "with_text": 158960,
+   "words": 781278033
+  }
+ }
+}

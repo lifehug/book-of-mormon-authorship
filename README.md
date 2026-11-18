@@ -18,6 +18,7 @@ books, and how far the tools that say so can be trusted.
 | To rerun something | [`eval/README.md`](eval/README.md): every command, what it needs, what it writes, how long it takes |
 | To get the texts we could not republish | [`docs/replication.md`](docs/replication.md) |
 | The story of how it went, wrong turns included | [`paper/blog.md`](paper/blog.md) |
+| To explore the library yourself or try a new idea | [`docs/lab/README.md`](docs/lab/README.md) |
 
 ## What we found
 
@@ -122,7 +123,7 @@ decision made after a result was seen.
 
 Each top-level package owns one stage and its README says what it does: `ingest/`, `metadata/`,
 `ocr_fix/`, `kjv_mask/`, `segment/`, `classic/`, `reuse/`, `semantic/`, `timelocked_lm/`, `alm/`,
-`dating/`, `style_embed/`, `sweep/`, `eval/`, `paper/`.
+`dating/`, `style_embed/`, `sweep/`, `eval/`, `lab/`, `paper/`.
 
 - `data/` holds public source texts, result tables and checksum manifests.
 - `docs/` holds the background ([`docs/background.md`](docs/background.md)), the earlier studies

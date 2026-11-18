@@ -349,3 +349,21 @@ Plan and results: `docs/manuscript-evidence.md`.
 | --- | --- | --- | --- | --- |
 | `python -m manuscript.corrections build` | the private JSP transcripts (`data/private/bom/`) | every correction marked in the original and printer's manuscripts, typed and credited to its scribe; dictated against copied (homophone share, Fisher), all pages, same passages, same scribe | `data/manuscript/corrections.csv`, `summary.json`; word pairs privately in `data/private/manuscript/` | seconds |
 | `python -m eval.scribes run [--size 2000 --permutations 1000 --min-chunks 3]` | BOM-32 unblinded (`data/blind/unblinded.json`) | 6.3: leave-one-out Cosine Delta accuracy sorting chunks by narrator, scribe and dictation order, permutation nulls, the separability verdict | `data/benchmark/scribes.json` | ~1 h at 1,000 permutations |
+
+## The lab: exploring the corpus and setting up new tests
+
+Exploratory tooling, apart from the study (`docs/lab/README.md`). It reads everything and writes
+only to `data/lab/`, `data/corpus/lab/`, `data/private/lab/`, `logs/lab/` and `docs/lab/`.
+
+| Command | Needs | What it does | Writes | Time |
+| --- | --- | --- | --- | --- |
+| `python -m lab.registry build` | the catalog and the study's published tables; the passage index's shard tables | one row for each catalogued work with the facts a test filters on | `data/lab/registry.parquet`, `registry.json` | seconds |
+| `python -m lab.registry views` | `build` | each rule set (`lab.views` in the config) and how many works it admits | nothing | seconds |
+| `python -m lab.registry map` | `build` | the data map for the docs | `docs/lab/data-map.md` | seconds |
+| `python -m lab.passages build` | the passage index (`data/corpus/semantic/index/`, 119 GB) | the fast companion index: each passage vector's 384 signs and its work | `data/corpus/lab/` (8.5 GB) | one pass over the index |
+| `python -m lab.passages status` | `lab.passages build` | passages and works held; whether the study's index has changed since | nothing | seconds |
+| `python -m lab.door works` | `lab.registry build` | lists works of a rule set by author, title, year or genre | the query log | seconds |
+| `python -m lab.door read` | the normalised texts | prints a work, or numbered 128-word passages of it | the query log | seconds |
+| `python -m lab.door find` | `lab.passages build`; the index model (downloaded once) | nearest passages by meaning to a question or a pasted text, among a rule set's works | the query log; `--save` to `data/private/lab/` | under a minute |
+| `python -m lab.door phrase` | the normalised texts | every occurrence of an exact phrase in a rule set's works | the query log; `--save` | seconds to hours, by how many works |
+| `scripts/lab_fetch.sh minimum` | a read-only B2 key (`docs/lab/access.md`) | copies the texts, the passage index and the fast index to a researcher's machine | `data/corpus/` (about 290 GB) | hours |
