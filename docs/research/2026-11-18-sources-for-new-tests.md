@@ -29,7 +29,7 @@ records each with its address, terms, size and SHA-256. Open material is in
 | `debates/` | *Millennial Harbinger* 1831 and the 1832 *Delusions* pamphlet | BOM-103 |
 | `chiasmus/` | the two published detectors' code | BOM-107 |
 | `papers/` (private) | 16 papers: the translation-detection methods, Tvedtnes 1970 and 1991, *Echoes and Evidences*, Holmes 1992, the chiasmus detectors, the dating precedents | all |
-| `translation_labels/` | `python -m lab.sources marc`: for each of our 62,163 HathiTrust records, the catalog fields that mark a translation | BOM-102 |
+| `translation_labels/` | `python -m lab.sources marc`: for each of our 62,163 HathiTrust records, the catalog fields that mark a translation. Done 2026-11-18: 2,642 marked as translations (041 first indicator 1), 2,007 naming the original language, 2,563 with a uniform title (240), 224 with a language note (546); 56,535 records carry none of the four fields | BOM-102 |
 
 **Not fetched.** One paper refused the request (Kestemont 2015 preprint). Sites that refuse
 programs, to be saved by hand in a browser: the Edwards chiasmus papers, Phipps's thesis, Reynolds
