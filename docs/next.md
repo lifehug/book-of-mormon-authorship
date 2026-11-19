@@ -21,6 +21,7 @@ labels, free) -> BOM-89 (sweep algorithm) -> BOM-93 part 2 (the real tournament)
 - **Release prep, 2026-11-16 (owner posting the blog at lifehug.com/book-of-mormon):** README rewritten for the finished study; the seven Hugging Face cards updated; the second style encoder published at `etherfuse/bom-authorship-style-encoder` `v2/`; repo website field set. A site bundle (page, parts, link list, context file) was handed over as a zip.
 - **BOM-89 further known books: done 2026-11-14.** 727 known books: true author first 34%, top 10 59%, top 100 76.5%; cross genre (212) 17 / 38 / 56. In the paper, blog and outline. Details on issue #100.
 - **BOM-96 "the problem of nobody": done 2026-11-14.** `data/sweep/nobody.json`: at 95% of true authors confirmed, false pairs accepted: second encoder 33%, LambdaG 56%, author models 78-88%, two modern style models 83-88% (bar 5%). In paper 5.4, the blog page (section 4) and the blog log. Left: read the cited papers in the originals; LUAR not run. Issue #107.
+- **Issue clean-up, 2026-11-18:** 15 finished issues closed with their evidence (BOM-27, 28, 30, 31, 32, 35, 39, 47, 66, 68, 89, 92, 94, 95, 96); 29 stay open. BOM-96's two leftovers (cited papers to read in the originals, LUAR not run) moved to BOM-36.
 - **Nothing is running.**
 - No GPU pods exist (the stopped pod from the failed run was deleted 2026-11-14 with the owner's OK).
 
