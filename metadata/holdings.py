@@ -33,8 +33,8 @@ SKIP = {".git"}
 
 # One line per folder: what is in it. Keep it factual; the code column is found automatically.
 DESCRIPTIONS = {
-    "data/private/lab": "the lab: researchers' notes and outputs that may quote text, one folder per person; `researchers.md` records who has access",
-    "data/corpus/lab": "the lab's fast meaning-search index: 48-byte sign codes of the passage vectors and each passage's work (rebuilt by `python -m lab.passages build`)",
+    "data/private/lab": "the lab: researchers' notes and outputs that may quote text, one folder per person; `researchers.md` records who has access; `sources/`: copyrighted outside sources for the new tests (Joseph Smith Papers Moses and Abraham manuscripts, Rigdon's essays, papers), fetched by `python -m lab.sources fetch`",
+    "data/corpus/lab": "the lab's fast meaning-search index: 48-byte sign codes of the passage vectors and each passage's work (rebuilt by `python -m lab.passages build`); `sources/`: open outside sources for the new tests (Old Bailey speech corpus, Bible-style books, prophets' writings, name lists, translation labels), listed in `data/lab/sources.json`",
     "data/private/access": "Rick Grunder, *Mormon Parallels* (2014 PDF, 2,307 pp.; BOM-33 access evidence)",
     "data/private/bom": "Joseph Smith Papers: printer's manuscript (468 pp.) and original manuscript (231 pp.) page JSON and per-page records",
     "data/private/candidates": "Joseph Smith Papers transcripts of every candidate source: Revelation Book 1 *whole* (201 pp., revelations 1828-1834), letters, 1832 history, journals, Letterbook 1, 1838-56 history, Cowdery's 1829 Articles; raw page JSON under `raw/<source id>/`",

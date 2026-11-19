@@ -12,7 +12,34 @@ search was done by three AI research agents and has not been re-checked by a per
 
 Nothing was downloaded. Nothing here changes a result.
 
-## Decisions for the owner before anything is fetched
+## Fetched, 2026-11-18 (owner: "get what you can get and the decision holds")
+
+`python -m lab.sources fetch` fetched 78 of 79 sources, about 1.2 GB; `data/lab/sources.json`
+records each with its address, terms, size and SHA-256. Open material is in
+`data/corpus/lab/sources/`, copyrighted material in `data/private/lab/sources/`.
+
+| Group | What arrived | For |
+| --- | --- | --- |
+| `speech/` | Old Bailey Corpus 2.0 (speech marked, three archives) and the full Old Bailey Online XML; eight hand-keyed short-hand texts from Evans TCP; Whitefield's *Eighteen Sermons* (111,000 words) | BOM-106 |
+| `prophets/` | 18 volumes: Southcott (4; 820,000 words), Wroe (3; 430,000), Brothers, Job Scott's journal, Hicks's journal and letters, Shaker *Testimonies*, Blake's letters, Handsome Lake, Strang's three newspapers and one book, Nat Turner's *Confessions* | BOM-99, BOM-105 |
+| `bible_style/` | seven scans (Dodsley, Ilive, Leacock, Snowden, *First Book of Napoleon*, O'Connor, *Book of Nullification*) and the wordtree transcriptions of 28 texts | BOM-102, 106, 107 |
+| `dictated/` (private) | Old Testament Revision 1 (64 pages) and 2 (127), Visions of Moses (3), Book of Abraham manuscripts A, B, C (4, 6, 10) and the 1842 printing (11) | BOM-104 |
+| `rigdon/` (private) | 1838 oration and 1840 *Appeal* from the Joseph Smith Papers; the "Millennium", "Gospel" and miscellaneous essays, 1833-38, as transcribed at sidneyrigdon.com | BOM-104 |
+| `names/` | the Onomasticon's 377 entries; three Bible name datasets; Neo-Assyrian names; Morse's 1797 gazetteer (490,000 words) | BOM-108 |
+| `debates/` | *Millennial Harbinger* 1831 and the 1832 *Delusions* pamphlet | BOM-103 |
+| `chiasmus/` | the two published detectors' code | BOM-107 |
+| `papers/` (private) | 16 papers: the translation-detection methods, Tvedtnes 1970 and 1991, *Echoes and Evidences*, Holmes 1992, the chiasmus detectors, the dating precedents | all |
+| `translation_labels/` | `python -m lab.sources marc`: for each of our 62,163 HathiTrust records, the catalog fields that mark a translation | BOM-102 |
+
+**Not fetched.** One paper refused the request (Kestemont 2015 preprint). Sites that refuse
+programs, to be saved by hand in a browser: the Edwards chiasmus papers, Phipps's thesis, Reynolds
+2005, Skousen 1994 and 1998, Carmack 2018 and 2021, Welch 1995, Wilcox 2019 (all on
+scholarsarchive.byu.edu or digitalcommons.usu.edu). Left out on purpose: books under copyright
+posted by users on the Internet Archive; Hansard (the Old Bailey corpus covers the need);
+Hebrew names from inscriptions and the Egyptian name sites (no confirmed download). OCR text from
+scans is uncorrected; the wordtree transcriptions are cleaner where both exist.
+
+## Decisions for the owner (answered 2026-11-18: the 25 October decision holds)
 
 1. **Joseph Smith Papers terms.** The site's terms allow viewing, downloading and printing for
    "personal, noncommercial use", forbid "any robot, spider, or other automatic device" without
