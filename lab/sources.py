@@ -126,7 +126,6 @@ _PAPERS = {
     "BOM-105": {
         "holmes_1992.pdf": "https://www.physics.smu.edu/pseudo/ScienceReligion/"
         "MormonStylometric.pdf",
-        "kestemont_2015_preprint.pdf": "https://core.ac.uk/download/55887776.pdf",
     },
     "BOM-107": {
         "dubremetz_nivre_2015.pdf": ACL + "W15-0703.pdf",
@@ -823,8 +822,15 @@ def _complete(s: dict, dest: Path) -> bool:
     return dest.is_file() and dest.stat().st_size > 0
 
 
+BY_HAND = REGISTRY / "sources_by_hand.json"
+
+
 def _load() -> dict:
-    return json.loads(RECORD.read_text()) if RECORD.exists() else {}
+    """The record, with the files the owner saved by hand (sites that refuse programs)."""
+    record = json.loads(RECORD.read_text()) if RECORD.exists() else {}
+    if BY_HAND.exists():
+        record |= json.loads(BY_HAND.read_text())
+    return record
 
 
 def _save(record: dict) -> None:

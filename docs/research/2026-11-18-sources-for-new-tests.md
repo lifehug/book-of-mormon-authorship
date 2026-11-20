@@ -31,6 +31,8 @@ records each with its address, terms, size and SHA-256. Open material is in
 | `papers/` (private) | 16 papers: the translation-detection methods, Tvedtnes 1970 and 1991, *Echoes and Evidences*, Holmes 1992, the chiasmus detectors, the dating precedents | all |
 | `translation_labels/` | `python -m lab.sources marc`: for each of our 62,163 HathiTrust records, the catalog fields that mark a translation. Done 2026-11-18: 2,642 marked as translations (041 first indicator 1), 2,007 naming the original language, 2,563 with a uniform title (240), 224 with a language note (546); 56,535 records carry none of the four fields | BOM-102 |
 
+**Saved by hand by the owner, 2026-11-20** (private repository, `lab/sources/papers/`, listed in `ADDED-2026-11-20.md` there and in `data/lab/sources.json`): Edwards and Edwards 2004 and 2010, Phipps 1977, Reynolds 2005 (the file is the whole journal issue), Hilton 1990, Skousen 1994 and 1998, Welch 1995, Tvedtnes, Gee and Roper 2000, Frederick 2015, Roper, Fields and Schaalje 2012, Kestemont 2015. Still not held: Carmack 2018 and 2021 (to fetch from the Interpreter's own site), Wilcox 2019 is held. The paragraph below is the state before that.
+
 **Not fetched.** One paper refused the request (Kestemont 2015 preprint). Sites that refuse
 programs, to be saved by hand in a browser: the Edwards chiasmus papers, Phipps's thesis, Reynolds
 2005, Skousen 1994 and 1998, Carmack 2018 and 2021, Welch 1995, Wilcox 2019 (all on
