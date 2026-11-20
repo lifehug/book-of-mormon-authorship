@@ -102,7 +102,7 @@ compares against.
 | BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | TBD |
 | BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | TBD |
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | TBD |
-| BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline | Running |
+| BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | TBD |
 | BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions | TBD |
 | BOM-117 | Uto-Aztecan languages carry Hebrew and Egyptian words | Stubbs 2015 | his pairing alone | his rules on unrelated languages | TBD |
@@ -188,6 +188,50 @@ that war mixed in.
 *What it does not show.* It does not rule out a few borrowed sentences or a borrowed plot outline;
 the comparison of story order was not run. Donofrio's and Davis's own lists of parallels were not
 in hand, so their examples were not scored one by one.
+
+### Numbers, and the weights in Alma 11 (BOM-114)
+
+Two questions. The Maya and the Aztecs counted in twenties. Does the Book of Mormon? And Alma 11
+describes a system of weights (a senine, a seon twice that, a shum twice that, a limnah worth all
+of them) that has been matched to ancient Near Eastern systems. Is the match better than a made-up
+system would get?
+
+**Twenties.** Take the round numbers between 20 and 400 in a text and ask what share are multiples
+of twenty.
+
+| Text | Share that are multiples of twenty |
+| --- | --- |
+| Native Mesoamerican texts in English (two of Brinton's translations) | 91% (32 of 35) |
+| Clavigero's *History of Mexico* (1787) | 66% (346 of 527) |
+| Modern English books | 60% (468 of 780) |
+| King James Bible and Josephus | 53% (643 of 1,218) |
+| Book of Mormon | 40% (19 of 47) |
+
+The habit survives translation: the native texts show it plainly, and Clavigero, a European
+writing about Mexico, shows some. The Book of Mormon shows none. It is below both the Bible and
+ordinary English books.
+
+These are small counts: 35 numbers on the Mesoamerican side and 47 in the Book of Mormon.
+
+**The wider number profile did not get an answer.** I also tried to place the book by its whole
+number profile (favourite numbers, how years are counted). The method had to sort held-out texts
+into their own tradition first, and it did not do that well enough: 71% against a bar of 75%, and
+only 3 of 7 Mesoamerican pieces. *The Late War* landed with the Bible seven times out of eight,
+which says the profile was reading Bible style, not counting. So the Book of Mormon was not scored
+on it.
+
+**Alma 11.** The system's values are 1/8, 1/4, 1/2, 1, 1 1/2, 2, 4 and 7. Against a list of real
+systems the best fit is 6 of the 8 values, a tie between English dry and liquid measure and Roman
+coins. Hebrew weights fit 2 of 8. Whether 6 of 8 is impressive depends entirely on what "random"
+means. If random systems are built from the kinds of steps real systems use (halves and
+doublings), 10% of them fit some real system that well. If they are built from arbitrary small
+ratios, none of 20,000 does. The fit is the run of doublings, and doubling is what most systems
+of measure do.
+
+This part is a pilot. The list of real systems was written from memory and has not been sourced.
+
+*What it does not show.* The twenties result is about counting habit only. The Alma 11 result
+says the ratios do not pick out one ancient system; it does not test the names of the units.
 
 ## What I would want a reader to take from the whole set
 
