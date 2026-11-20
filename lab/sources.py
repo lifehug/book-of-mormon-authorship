@@ -253,6 +253,266 @@ _NAMES_PAPERS = {
     + "archive-files/pdf/wilcox/2019-08-12/brad_wilcox_et_al_comparing_phonemic_patterns_2019.pdf",
 }
 
+# The book's setting (BOM-109 to BOM-117) and Native American names (BOM-108, BOM-110), located
+# 2026-11-20 (docs/research/2026-11-20-the-books-setting.md). Books the library already holds
+# (Clavigero, del Rio, Juarros, Atwater, Boudinot, Spafford ...) are not fetched again.
+WP = "https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page="
+WKT = "https://en.wiktionary.org/w/api.php#Category:"
+GEO = "https://download.geonames.org/export/dump/"
+GLYPHS = (
+    "https://aztecglyphs.wired-humanities.org/advsearch-all-grid"
+    "?field_semantic_categories_new_ta_tid={tid}&page={{n}}|{pages}"
+)
+SETTING = "BOM-109 BOM-111 BOM-112 BOM-114 BOM-115"
+_SETTING = {  # name: (group, tests, kind, address, terms)
+    "brinton_maya_chronicles_1882.txt": (
+        "setting",
+        SETTING,
+        "file",
+        PG + "2/0/2/0/20205/20205-0.txt",
+        PD,
+    ),
+    "brinton_annals_cakchiquels_1885.txt": (
+        "setting",
+        SETTING,
+        "file",
+        PG + "2/0/7/7/20775/20775-0.txt",
+        PD,
+    ),
+    "brinton_rig_veda_americanus_1890.txt": (
+        "setting",
+        SETTING,
+        "file",
+        PG + "1/4/9/9/14993/14993.txt",
+        PD,
+    ),
+    "brinton_nahuatl_poetry_1887.txt": (
+        "setting",
+        SETTING,
+        "file",
+        PG + "1/2/2/1/12219/12219-0.txt",
+        PD,
+    ),
+    "popol_vuh_spence_1908.txt": (
+        "setting",
+        SETTING,
+        "file",
+        PG + "5/6/5/5/56550/56550-8.txt",
+        PD + "; a summary",
+    ),
+    "adair_1775_williams_ed.txt": (
+        "setting",
+        SETTING,
+        "file",
+        PG + "6/7/6/9/67699/67699-0.txt",
+        PD,
+    ),
+    "geonames_US.zip": ("places", "BOM-110 BOM-116", "file", GEO + "US.zip", "CC BY 4.0"),
+    "geonames_MX.zip": ("places", "BOM-110 BOM-116", "file", GEO + "MX.zip", "CC BY 4.0"),
+    "geonames_GT.zip": ("places", "BOM-110 BOM-116", "file", GEO + "GT.zip", "CC BY 4.0"),
+    "geonames_allCountries.zip": (
+        "places",
+        "BOM-110 BOM-116",
+        "file",
+        GEO + "allCountries.zip",
+        "CC BY 4.0",
+    ),
+    "geonames_featureCodes_en.txt": (
+        "places",
+        "BOM-110 BOM-116",
+        "file",
+        GEO + "featureCodes_en.txt",
+        "CC BY 4.0",
+    ),
+    "asjp_v21": (
+        "wordlists",
+        "BOM-117",
+        "zenodo",
+        "https://zenodo.org/api/records/16736409",
+        "CC BY 4.0",
+    ),
+    "lexibank_wichmannmixezoquean": (
+        "wordlists",
+        "BOM-117",
+        "git",
+        GH + "lexibank/wichmannmixezoquean",
+        "CC BY 4.0",
+    ),
+    "lexibank_davletshinaztecan": (
+        "wordlists",
+        "BOM-117",
+        "git",
+        GH + "lexibank/davletshinaztecan",
+        "CC BY 4.0",
+    ),
+    "lexibank_utoaztecan": ("wordlists", "BOM-117", "git", GH + "lexibank/utoaztecan", "CC BY 4.0"),
+    "lexibank_felekesemitic": (
+        "wordlists",
+        "BOM-117",
+        "git",
+        GH + "lexibank/felekesemitic",
+        "CC BY 4.0",
+    ),
+    "wp_anachronisms.json": (
+        "setting",
+        "BOM-111 BOM-113",
+        "file",
+        WP + "Anachronisms_in_the_Book_of_Mormon",
+        "CC BY-SA",
+    ),
+    "wp_bom_places.json": (
+        "setting",
+        "BOM-110 BOM-116",
+        "file",
+        WP + "List_of_Book_of_Mormon_places",
+        "CC BY-SA",
+    ),
+    "wp_bom_people.json": (
+        "setting",
+        "BOM-108",
+        "file",
+        WP + "List_of_people_in_the_Book_of_Mormon",
+        "CC BY-SA",
+    ),
+    "wp_mesoamerica_plants.json": (
+        "setting",
+        "BOM-111",
+        "file",
+        WP + "Domesticated_plants_of_Mesoamerica",
+        "CC BY-SA",
+    ),
+    "wp_new_world_crops.json": ("setting", "BOM-111", "file", WP + "New_World_crops", "CC BY-SA"),
+    "wp_mesoamerica_metallurgy.json": (
+        "setting",
+        "BOM-111",
+        "file",
+        WP + "Metallurgy_in_pre-Columbian_Mesoamerica",
+        "CC BY-SA",
+    ),
+    "wp_columbian_exchange.json": (
+        "setting",
+        "BOM-111",
+        "file",
+        WP + "Columbian_exchange",
+        "CC BY-SA",
+    ),
+    "wp_domesticated_animals.json": (
+        "setting",
+        "BOM-111",
+        "file",
+        WP + "List_of_domesticated_animals",
+        "CC BY-SA",
+    ),
+    "wp_maya_monarchs.json": ("native_names", "BOM-108", "file", WP + "Maya_monarchs", "CC BY-SA"),
+    "wp_sapa_inca.json": ("native_names", "BOM-108", "file", WP + "Sapa_Inca", "CC BY-SA"),
+    "wkt_classical_nahuatl.json": (
+        "native_names",
+        "BOM-108",
+        "wiki",
+        WKT + "Classical_Nahuatl_proper_nouns",
+        "CC BY-SA",
+    ),
+    "wkt_central_nahuatl.json": (
+        "native_names",
+        "BOM-108",
+        "wiki",
+        WKT + "Central_Nahuatl_proper_nouns",
+        "CC BY-SA",
+    ),
+    "wkt_quechua.json": (
+        "native_names",
+        "BOM-108",
+        "wiki",
+        WKT + "Quechua_proper_nouns",
+        "CC BY-SA",
+    ),
+    "wkt_yucatec_maya.json": (
+        "native_names",
+        "BOM-108",
+        "wiki",
+        WKT + "Yucatec_Maya_proper_nouns",
+        "CC BY-SA",
+    ),
+    "morelos_census_names_hansen.html": (
+        "native_names",
+        "BOM-108",
+        "file",
+        "https://nahuatlstudies.blogspot.com/2014/11/nahuatl-names-nahuatl-names-in-1544.html",
+        "no licence stated; a list of names",
+    ),
+    "aztec_glyphs_personal": (
+        "native_names",
+        "BOM-108",
+        "pages",
+        GLYPHS.format(tid=129, pages=101),
+        "CC BY-NC-SA 3.0",
+    ),
+    "aztec_glyphs_places": (
+        "native_names",
+        "BOM-108 BOM-110",
+        "pages",
+        GLYPHS.format(tid=128, pages=29),
+        "CC BY-NC-SA 3.0",
+    ),
+    "treaties_okstate": (
+        "native_names",
+        "BOM-108",
+        "sitemap",
+        "https://treaties.okstate.edu/search/site-map.xml#/treaties/",
+        "no licence stated; texts of US treaties (public domain)",
+    ),
+}
+_SETTING_IA = {
+    "setting": (
+        SETTING,
+        [
+            "historyofamerica01roberich",
+            "historyofamerica02roberich",
+            "researchesconcer01humb",
+            "researchesconcer02humb",
+            "truehistoryofcon00dauoft",
+            "historyofconques00sols",
+            "naturalmoralhist60acosrich",
+            "naturalmoralhist61acosrich",
+            "historyofamerica00adairich",
+            "wondersnaturean00priegoog",
+            "americanantiquit01prie",
+            "discoursedel00clinton",
+            "westernpartsstate00clinrich",
+            "Ayer_251_I611_C9_1827",
+            "geniusofoblivion00hale",
+            "behemothlegend00mathrich",
+            "manuscriptfoundo00spau",
+            "drakechiefsbio00drakrich",
+            "narrativeoflifeo00seav",
+        ],
+    ),
+    "places": (
+        "BOM-110",
+        [
+            "geographicaldict01worc",
+            "geographicaldict02worc",
+            "geographdictionary00morsrich",
+            "newuniversalgaze00morsrich",
+        ],
+    ),
+    "native_names": (
+        "BOM-108 BOM-110",
+        [
+            "pen-afiel-nombres-geograficos-de-mexico",
+            "guaman-poma-de-ayala-felipe.-nueva-coronica.-tomo-i-ocr-1980",
+            "vocabulariodelal01gonz",
+            "treatiesbetweenu00unit_0",
+            "handbookamindians01hodgrich",
+            "handbookamindians02hodgrich",
+            "leagueofhodnos00inmorg",
+            "indiannamesinnew00beau",
+            "footprintsofredm00rutt",
+            "nameswhichlennil00heck",
+        ],
+    ),
+}
+
 
 def _sources() -> list[dict]:
     rows = []
@@ -353,6 +613,20 @@ def _sources() -> list[dict]:
         add(name, "names", "BOM-108", kind, url, terms)
     for item in _NAMES_IA:
         add(item, "names", "BOM-108", "ia", f"{IA}/details/{item}", PD + " (scan and OCR text)")
+    for name, (group, tests, kind, url, terms) in _SETTING.items():
+        add(name, group, tests, kind, url, terms)
+    for group, (tests, items) in _SETTING_IA.items():
+        for item in items:
+            add(item, group, tests, "ia", f"{IA}/details/{item}", PD + " (scan and OCR text)")
+    add(
+        "popol_vuh_christenson_2007.pdf",
+        "setting",
+        SETTING,
+        "file",
+        "https://www.mesoweb.com/publications/Christenson/PopolVuh.pdf",
+        "copyright the translator; free to read; private copy for analysis",
+        True,
+    )
     for name, url in _NAMES_PAPERS.items():
         add(name, "papers", "BOM-108", "file", url, "copyright the authors; private copy", True)
     return rows
@@ -457,6 +731,30 @@ def _zenodo(s: dict, dest: Path) -> None:
             time.sleep(PAUSE)
 
 
+def _pages(s: dict, dest: Path) -> None:
+    """Numbered result pages: the address holds ``{n}`` and ends ``|<count>``; 10 s apart."""
+    template, _, count = s["url"].rpartition("|")
+    for n in range(int(count)):
+        page = dest / f"page_{n:03d}.html"
+        if not page.exists():
+            _download(template.format(n=n), out(page))
+            time.sleep(10)
+
+
+def _sitemap(s: dict, dest: Path) -> None:
+    """Every page a site map lists whose address contains the fragment after ``#``."""
+    address, _, part = s["url"].partition("#")
+    locs = re.findall(r"<loc>([^<]+)</loc>", _get(address).decode("utf-8", "replace"))
+    locs = [u for u in locs if part in u]
+    if not locs:
+        raise OSError("no matching addresses in the site map")
+    for u in locs:
+        page = dest / (u.rstrip("/").rsplit("/", 1)[-1] + ".html")
+        if not page.exists():
+            _download(u, out(page))
+            time.sleep(PAUSE)
+
+
 def _links(s: dict, dest: Path) -> None:
     """Every archive (.zip, .gz, .tgz, .xz) linked from the page."""
     page = _get(s["url"]).decode("utf-8", "replace")
@@ -472,17 +770,18 @@ def _links(s: dict, dest: Path) -> None:
 
 def _wiki(s: dict, dest: Path) -> None:
     """Page titles of a MediaWiki category (the Onomasticon's names), following continuation."""
+    api, _, category = s["url"].partition("#")
     titles, cont = [], {}
     while True:
         q = {
             "action": "query",
             "list": "categorymembers",
-            "cmtitle": "Category:Names",
+            "cmtitle": category or "Category:Names",
             "cmlimit": "500",
             "format": "json",
             **cont,
         }
-        reply = json.loads(_get(s["url"] + "?" + urllib.parse.urlencode(q)))
+        reply = json.loads(_get(api + "?" + urllib.parse.urlencode(q)))
         titles += [m["title"] for m in reply["query"]["categorymembers"]]
         cont = reply.get("continue", {})
         if not cont:
@@ -498,6 +797,8 @@ KINDS = {
     "figshare": _figshare,
     "links": _links,
     "zenodo": _zenodo,
+    "pages": _pages,
+    "sitemap": _sitemap,
     "wiki": _wiki,
     "file": lambda s, dest: _download(s["url"], out(dest)),
 }
@@ -508,7 +809,7 @@ DONE = {"ia": "text.txt", "jsp": "pages.jsonl", "git": ".git"}
 def _complete(s: dict, dest: Path) -> bool:
     if s["kind"] in DONE:
         return (dest / DONE[s["kind"]]).exists()
-    if s["kind"] in ("figshare", "links", "zenodo"):
+    if s["kind"] in ("figshare", "links", "zenodo", "pages", "sitemap"):
         return False  # the fetcher itself skips files already held
     return dest.is_file() and dest.stat().st_size > 0
 

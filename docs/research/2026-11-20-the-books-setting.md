@@ -84,3 +84,21 @@ Rappleye and Hansen (*Interpreter* 62, 2024), counts 42 Almas born 1780 to 1820 
 Wayne County, New York, of whom four were male
 (https://interpreterfoundation.org/journal/more-evidence-for-alma-as-a-semitic-name, opened). The
 1850 census full count would settle the rate; not opened.
+
+## Texts and lists to test against (located 2026-11-20; fetch in progress)
+
+A fourth agent opened about 90 sources. Fetched by `python -m lab.sources fetch setting places
+wordlists native_names`; books the library already holds are not fetched again.
+
+| Group | What | Where | Note |
+| --- | --- | --- | --- |
+| Native Mesoamerican texts in English | Brinton: *Maya Chronicles* (1882), *Annals of the Cakchiquels* (1885), *Rig Veda Americanus* (1890), *Ancient Nahuatl Poetry* (1887) | Project Gutenberg 20205, 20775, 14993, 12219 | bilingual: strip the native-language halves |
+| | Popol Vuh, Spence 1908 | Project Gutenberg 56550 | a summary, not a full translation |
+| | Popol Vuh, Christenson 2007 | `https://www.mesoweb.com/publications/Christenson/PopolVuh.pdf` | free to read, copyright the translator: private, analysis only; the only complete Popol Vuh obtainable |
+| | Roys's Chilam Balam (1933), Gates's Landa (1937), Bandelier's Sahagún (1932) | lending-only reprints on archive.org | no copyright renewal found by the agent, but no open scan either: would need a bought or library copy |
+| | Florentine Codex (Getty site) | `https://florentinecodex.getty.edu/` | Anderson and Dibble's English all rights reserved; a newer translation of the Spanish is CC BY 4.0; no bulk download found |
+| English accounts before 1830, not already held | Robertson's *History of America* (1812 US edition); Humboldt's *Researches* (1814); Bernal Díaz (Keatinge 1800); Solís (1724); Acosta in the 1880 reprint; Adair (1775) | archive.org; Adair also Project Gutenberg 67699 | no English of Cortés's letters before 1843 was found |
+| Mound-builder and Indian-origin print, not already held | Priest's *Wonders of Nature* (1826) and *American Antiquities* (1833); Clinton's 1811 discourse and 1818 memoir; Cusick (1827); Hale's *Genius of Oblivion* (1823); Drake (1832); Seaver's Jemison narrative (1826); Mathews's *Behemoth* (1839, a later control) | archive.org | |
+| Places | GeoNames (US, Mexico, Guatemala, all countries); Worcester's gazetteer (1823); Morse (1821, 1823) | `https://download.geonames.org/export/dump/`; archive.org | GeoNames is CC BY 4.0 |
+| Wordlists | ASJP version 21; lexibank sets for Mixe-Zoquean, Aztecan, Uto-Aztecan, Semitic | Zenodo record 16736409; github.com/lexibank | CC BY 4.0; no Mayan, Iroquoian or Egyptian set of its own: ASJP covers those |
+| Lists of things | Wikipedia pages: anachronisms in the Book of Mormon; its places and people; domesticated plants of Mesoamerica; New World crops; metallurgy in pre-Columbian Mesoamerica; the Columbian exchange; domesticated animals | Wikipedia API | prose, to be hand-curated into tables |

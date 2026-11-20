@@ -197,6 +197,17 @@
   "tests": "BOM-99 BOM-105",
   "url": "https://archive.org/details/abridgmentofjohn00wroe"
  },
+ "adair_1775_williams_ed.txt": {
+  "bytes": 1364070,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/adair_1775_williams_ed.txt",
+  "sha256": "60b64e7af3ee1bfc443af9cc17a785fe0d7ee6ae73858ddfbeb0899900722d3f",
+  "state": "fetched",
+  "terms": "public domain",
+  "tests": "BOM-109 BOM-111 BOM-112 BOM-114 BOM-115",
+  "url": "https://aleph.pglaf.org/6/7/6/9/67699/67699-0.txt"
+ },
  "aed_tei": {
   "bytes": 586629601,
   "date": "2026-11-20",
@@ -280,6 +291,16 @@
   "tests": "BOM-108",
   "url": "https://aleph.pglaf.org/5/6/6/5668/5668.txt"
  },
+ "asjp_v21": {
+  "bytes": 16238442,
+  "date": "2026-11-20",
+  "group": "wordlists",
+  "path": "data/corpus/lab/sources/wordlists/asjp_v21",
+  "state": "fetched",
+  "terms": "CC BY 4.0",
+  "tests": "BOM-117",
+  "url": "https://zenodo.org/api/records/16736409"
+ },
  "bib_fict_4103140": {
   "bytes": 227506,
   "date": "2026-11-18",
@@ -329,6 +350,50 @@
   "terms": "public domain (scan and OCR text)",
   "tests": "BOM-102 BOM-106 BOM-107",
   "url": "https://archive.org/details/bookofnullificat00char"
+ },
+ "brinton_annals_cakchiquels_1885.txt": {
+  "bytes": 424559,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/brinton_annals_cakchiquels_1885.txt",
+  "sha256": "344f4697596f231bc2b71972771a817c1a85a2f1b4e5008513756cd2f2f83078",
+  "state": "fetched",
+  "terms": "public domain",
+  "tests": "BOM-109 BOM-111 BOM-112 BOM-114 BOM-115",
+  "url": "https://aleph.pglaf.org/2/0/7/7/20775/20775-0.txt"
+ },
+ "brinton_maya_chronicles_1882.txt": {
+  "bytes": 360669,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/brinton_maya_chronicles_1882.txt",
+  "sha256": "4d9b33cf7da5af7d1dcfef971e9b843ce88b62509bff896ff042f3391e6ef17a",
+  "state": "fetched",
+  "terms": "public domain",
+  "tests": "BOM-109 BOM-111 BOM-112 BOM-114 BOM-115",
+  "url": "https://aleph.pglaf.org/2/0/2/0/20205/20205-0.txt"
+ },
+ "brinton_nahuatl_poetry_1887.txt": {
+  "bytes": 255201,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/brinton_nahuatl_poetry_1887.txt",
+  "sha256": "a37aaf3eae0f13e36c781a040c022154ae01fabb69398892ea367f1cdc9be762",
+  "state": "fetched",
+  "terms": "public domain",
+  "tests": "BOM-109 BOM-111 BOM-112 BOM-114 BOM-115",
+  "url": "https://aleph.pglaf.org/1/2/2/1/12219/12219-0.txt"
+ },
+ "brinton_rig_veda_americanus_1890.txt": {
+  "bytes": 123828,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/brinton_rig_veda_americanus_1890.txt",
+  "sha256": "9b5422c8bfa3ff27920e371ff17cc3d25464a2f7b43c5fb5d31f764b3011723b",
+  "state": "fetched",
+  "terms": "public domain",
+  "tests": "BOM-109 BOM-111 BOM-112 BOM-114 BOM-115",
+  "url": "https://aleph.pglaf.org/1/4/9/9/14993/14993.txt"
  },
  "centuryofpopulat00unit": {
   "bytes": 1587738,
@@ -506,6 +571,61 @@
   "terms": "public domain (scan and OCR text)",
   "tests": "BOM-102 BOM-106 BOM-107",
   "url": "https://archive.org/details/firstbookofameri00unse"
+ },
+ "geonames_GT.zip": {
+  "bytes": 1047270,
+  "date": "2026-11-20",
+  "group": "places",
+  "path": "data/corpus/lab/sources/places/geonames_GT.zip",
+  "sha256": "b3254f445fb72730e6bd5e2984b915f446de7586c61e574d9d54134a0f49221e",
+  "state": "fetched",
+  "terms": "CC BY 4.0",
+  "tests": "BOM-110 BOM-116",
+  "url": "https://download.geonames.org/export/dump/GT.zip"
+ },
+ "geonames_MX.zip": {
+  "bytes": 15122142,
+  "date": "2026-11-20",
+  "group": "places",
+  "path": "data/corpus/lab/sources/places/geonames_MX.zip",
+  "sha256": "f4307989ea3b0fef84b6c301b48ac8395ab4ac3a3a92ed268ea793a981d90810",
+  "state": "fetched",
+  "terms": "CC BY 4.0",
+  "tests": "BOM-110 BOM-116",
+  "url": "https://download.geonames.org/export/dump/MX.zip"
+ },
+ "geonames_US.zip": {
+  "bytes": 71110414,
+  "date": "2026-11-20",
+  "group": "places",
+  "path": "data/corpus/lab/sources/places/geonames_US.zip",
+  "sha256": "e4ae5419d7b4c8e61d32e3c6b529b38bd62d34efb579d490ada94a4aa90ce0ee",
+  "state": "fetched",
+  "terms": "CC BY 4.0",
+  "tests": "BOM-110 BOM-116",
+  "url": "https://download.geonames.org/export/dump/US.zip"
+ },
+ "geonames_allCountries.zip": {
+  "bytes": 422567432,
+  "date": "2026-11-20",
+  "group": "places",
+  "path": "data/corpus/lab/sources/places/geonames_allCountries.zip",
+  "sha256": "4f9d8b0529cdd5179d7a0127d2a30b3e89ffc52b13b1678cec37e7a54b365e47",
+  "state": "fetched",
+  "terms": "CC BY 4.0",
+  "tests": "BOM-110 BOM-116",
+  "url": "https://download.geonames.org/export/dump/allCountries.zip"
+ },
+ "geonames_featureCodes_en.txt": {
+  "bytes": 58642,
+  "date": "2026-11-20",
+  "group": "places",
+  "path": "data/corpus/lab/sources/places/geonames_featureCodes_en.txt",
+  "sha256": "d44f129c1cffdeabf759c99fe7ea5b84f615c7f3e7366fb76ccf990f408f6af7",
+  "state": "fetched",
+  "terms": "CC BY 4.0",
+  "tests": "BOM-110 BOM-116",
+  "url": "https://download.geonames.org/export/dump/featureCodes_en.txt"
  },
  "gnis_national.zip": {
   "bytes": 45930630,
@@ -838,6 +958,46 @@
   "tests": "BOM-99 BOM-105",
   "url": "https://archive.org/details/lettersofwilliam00blak"
  },
+ "lexibank_davletshinaztecan": {
+  "bytes": 426382,
+  "date": "2026-11-20",
+  "group": "wordlists",
+  "path": "data/corpus/lab/sources/wordlists/lexibank_davletshinaztecan",
+  "state": "fetched",
+  "terms": "CC BY 4.0",
+  "tests": "BOM-117",
+  "url": "https://github.com/lexibank/davletshinaztecan"
+ },
+ "lexibank_felekesemitic": {
+  "bytes": 1093837,
+  "date": "2026-11-20",
+  "group": "wordlists",
+  "path": "data/corpus/lab/sources/wordlists/lexibank_felekesemitic",
+  "state": "fetched",
+  "terms": "CC BY 4.0",
+  "tests": "BOM-117",
+  "url": "https://github.com/lexibank/felekesemitic"
+ },
+ "lexibank_utoaztecan": {
+  "bytes": 7743380,
+  "date": "2026-11-20",
+  "group": "wordlists",
+  "path": "data/corpus/lab/sources/wordlists/lexibank_utoaztecan",
+  "state": "fetched",
+  "terms": "CC BY 4.0",
+  "tests": "BOM-117",
+  "url": "https://github.com/lexibank/utoaztecan"
+ },
+ "lexibank_wichmannmixezoquean": {
+  "bytes": 490822,
+  "date": "2026-11-20",
+  "group": "wordlists",
+  "path": "data/corpus/lab/sources/wordlists/lexibank_wichmannmixezoquean",
+  "state": "fetched",
+  "terms": "CC BY 4.0",
+  "tests": "BOM-117",
+  "url": "https://github.com/lexibank/wichmannmixezoquean"
+ },
  "lifeandworksaco00soutgoog": {
   "bytes": 1192205,
   "date": "2026-11-18",
@@ -889,6 +1049,17 @@
   "terms": "public-domain texts in an editor's transcription with his notes; private",
   "tests": "BOM-104",
   "url": "http://www.SidneyRigdon.com/RigWrit/RigWrit3d.htm"
+ },
+ "morelos_census_names_hansen.html": {
+  "bytes": 162908,
+  "date": "2026-11-20",
+  "group": "native_names",
+  "path": "data/corpus/lab/sources/native_names/morelos_census_names_hansen.html",
+  "sha256": "d9d3dbcbcbbfd10d5c63ff83340d07a9dccf61913e37338f4d6830dababc4380",
+  "state": "fetched",
+  "terms": "no licence stated; a list of names",
+  "tests": "BOM-108",
+  "url": "https://nahuatlstudies.blogspot.com/2014/11/nahuatl-names-nahuatl-names-in-1544.html"
  },
  "morgan_freemasonry.txt": {
   "bytes": 681900,
@@ -1067,6 +1238,17 @@
   "terms": "copyright the authors; private copy",
   "tests": "BOM-103",
   "url": "https://aclanthology.org/S15-2147.pdf"
+ },
+ "popol_vuh_spence_1908.txt": {
+  "bytes": 96787,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/popol_vuh_spence_1908.txt",
+  "sha256": "0871776ad348eeecd803cf55bdb41ed4ee91a5a86e16b8f1892d831fce439ff4",
+  "state": "fetched",
+  "terms": "public domain; a summary",
+  "tests": "BOM-109 BOM-111 BOM-112 BOM-114 BOM-115",
+  "url": "https://aleph.pglaf.org/5/6/5/5/56550/56550-8.txt"
  },
  "privatecommunica01wroe": {
   "bytes": 1645962,
@@ -1322,6 +1504,50 @@
   "tests": "BOM-108",
   "url": "https://archive.bookofmormoncentral.org/sites/default/files/archive-files/pdf/wilcox/2019-08-12/brad_wilcox_et_al_comparing_phonemic_patterns_2019.pdf"
  },
+ "wkt_central_nahuatl.json": {
+  "bytes": 3338,
+  "date": "2026-11-20",
+  "group": "native_names",
+  "path": "data/corpus/lab/sources/native_names/wkt_central_nahuatl.json",
+  "sha256": "7bf4565c5ea16d10d2cba1810afe81dd9009a428562fe72484e203de00fa6172",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-108",
+  "url": "https://en.wiktionary.org/w/api.php#Category:Central_Nahuatl_proper_nouns"
+ },
+ "wkt_classical_nahuatl.json": {
+  "bytes": 2522,
+  "date": "2026-11-20",
+  "group": "native_names",
+  "path": "data/corpus/lab/sources/native_names/wkt_classical_nahuatl.json",
+  "sha256": "92b1d26ec20f45dfe5b0a559ae112b27cbf14d1fcd9c94b911274622dfd11645",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-108",
+  "url": "https://en.wiktionary.org/w/api.php#Category:Classical_Nahuatl_proper_nouns"
+ },
+ "wkt_quechua.json": {
+  "bytes": 1078,
+  "date": "2026-11-20",
+  "group": "native_names",
+  "path": "data/corpus/lab/sources/native_names/wkt_quechua.json",
+  "sha256": "13860479471d35af34c478025ca0ddbcc8debd6dca44c3ec83e20dd89a964ae0",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-108",
+  "url": "https://en.wiktionary.org/w/api.php#Category:Quechua_proper_nouns"
+ },
+ "wkt_yucatec_maya.json": {
+  "bytes": 144,
+  "date": "2026-11-20",
+  "group": "native_names",
+  "path": "data/corpus/lab/sources/native_names/wkt_yucatec_maya.json",
+  "sha256": "cd40506245bc104ef486e9b21e749663b99230bd9c018135859ea6a7b99973d8",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-108",
+  "url": "https://en.wiktionary.org/w/api.php#Category:Yucatec_Maya_proper_nouns"
+ },
  "wordtree_books": {
   "bytes": 20541172,
   "date": "2026-11-18",
@@ -1331,5 +1557,115 @@
   "terms": "no licence stated; transcriptions of public-domain books",
   "tests": "BOM-102 BOM-106 BOM-107",
   "url": "https://github.com/wordtreefoundation/books"
+ },
+ "wp_anachronisms.json": {
+  "bytes": 61513,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/wp_anachronisms.json",
+  "sha256": "530368890b23ba65d3ed1ec1cef3f4926dfed3cb3eb7297d5a99cc3c446052cc",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-111 BOM-113",
+  "url": "https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=Anachronisms_in_the_Book_of_Mormon"
+ },
+ "wp_bom_people.json": {
+  "bytes": 108325,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/wp_bom_people.json",
+  "sha256": "9b455ea06802d8b0da0a357299d2b69972adce000490fb631b112156e0c2c80e",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-108",
+  "url": "https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=List_of_people_in_the_Book_of_Mormon"
+ },
+ "wp_bom_places.json": {
+  "bytes": 38990,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/wp_bom_places.json",
+  "sha256": "623b4271d9b1ab191483542524001b8c7309e0f20e7cd093f462859c2e25a254",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-110 BOM-116",
+  "url": "https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=List_of_Book_of_Mormon_places"
+ },
+ "wp_columbian_exchange.json": {
+  "bytes": 52253,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/wp_columbian_exchange.json",
+  "sha256": "a9c8537f9030a3f75adb1ecef69d73c3a6f8667e00ee624d40c2712ed457e9df",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-111",
+  "url": "https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=Columbian_exchange"
+ },
+ "wp_domesticated_animals.json": {
+  "bytes": 183777,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/wp_domesticated_animals.json",
+  "sha256": "6ad421e8d48fd3fcb3bbe74bf3af183e7a5892688775a26a868d85ec448710b5",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-111",
+  "url": "https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=List_of_domesticated_animals"
+ },
+ "wp_maya_monarchs.json": {
+  "bytes": 162328,
+  "date": "2026-11-20",
+  "group": "native_names",
+  "path": "data/corpus/lab/sources/native_names/wp_maya_monarchs.json",
+  "sha256": "82ca76049c2db8441931ae2319d213bf6900de401cd75a33bde4b4fd770abcab",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-108",
+  "url": "https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=Maya_monarchs"
+ },
+ "wp_mesoamerica_metallurgy.json": {
+  "bytes": 12372,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/wp_mesoamerica_metallurgy.json",
+  "sha256": "33e404929d176c08053506026b0ae475965f8646e0b8cebf70a2743e6966947e",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-111",
+  "url": "https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=Metallurgy_in_pre-Columbian_Mesoamerica"
+ },
+ "wp_mesoamerica_plants.json": {
+  "bytes": 26707,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/wp_mesoamerica_plants.json",
+  "sha256": "8e26c168973a1e6b7cfecf9712357faf91935e1c3449b486e5c7684b03c61f04",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-111",
+  "url": "https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=Domesticated_plants_of_Mesoamerica"
+ },
+ "wp_new_world_crops.json": {
+  "bytes": 15638,
+  "date": "2026-11-20",
+  "group": "setting",
+  "path": "data/corpus/lab/sources/setting/wp_new_world_crops.json",
+  "sha256": "3f9d3d7a56491f2a88500628d1456c31045ce5f5e3a05a56fd04fd792d0e0d7e",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-111",
+  "url": "https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=New_World_crops"
+ },
+ "wp_sapa_inca.json": {
+  "bytes": 18413,
+  "date": "2026-11-20",
+  "group": "native_names",
+  "path": "data/corpus/lab/sources/native_names/wp_sapa_inca.json",
+  "sha256": "e789a0796b3f6f146010ae06f0360cf0e1d263884a707293b63bb72de95301b5",
+  "state": "fetched",
+  "terms": "CC BY-SA",
+  "tests": "BOM-108",
+  "url": "https://en.wikipedia.org/w/api.php?action=parse&prop=wikitext&format=json&page=Sapa_Inca"
  }
 }
