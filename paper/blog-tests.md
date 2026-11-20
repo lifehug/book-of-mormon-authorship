@@ -69,7 +69,7 @@ compares against.
 
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
-| BOM-126 | Phrases come from histories of the Revolution; Abinadi follows Bunyan | Donofrio; Davis 2012 | the claimed source alone | the claimed source ranked among 60,000 books | Running |
+| BOM-126 | Phrases come from histories of the Revolution; Abinadi follows Bunyan | Donofrio; Davis 2012 | the claimed source alone | the claimed source ranked among every volume in the library | **Done** |
 | BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held | TBD; 11 passages keyed |
 | BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | TBD |
 | BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1993; replies | examples from each side | every use in print 1780 to 1835, by year | TBD |
@@ -150,6 +150,44 @@ instead. I fixed the check before counting the Book of Mormon.
 one person dictating whose habit changed in the spring of 1829. It also fits any account in which
 the English wording was produced in that order. And the order of dictation is taken from the
 historical record, not tested here.
+
+### Claimed sources, ranked (BOM-126)
+
+Two claims. Thomas Donofrio says phrases in the war chapters come from histories of the American
+Revolution, Mercy Otis Warren's and David Ramsay's above all. William Davis says the story of
+Abinadi before King Noah follows the trial of Faithful in *The Pilgrim's Progress*. Each was made
+by laying the two books side by side.
+
+The first study already had a way to ask this fairly: score every volume in the library the same
+way and see where the claimed book lands. It did that for *The Late War*. Here it is for these.
+
+| Book | Shared rare phrases: rank of 204,520 volumes | Closeness in meaning: rank of 30,994 |
+| --- | --- | --- |
+| Warren's history | none shared | no near passage |
+| Ramsay's *History of the American Revolution* | none shared | 24,650 |
+| *The Pilgrim's Progress* | 1,073 | 511 |
+| Foxe's *Book of Martyrs* | 4,756 | 44 |
+| *Paradise Lost* | 6,034 | 816 |
+| *The Late War*, for scale | 131 | 17,678 |
+| *The First Book of Napoleon*, for scale | 63 | 4,706 |
+
+Warren and Ramsay are in the crowd. For the war chapters, the nearest passages in the whole library
+are almost all Josephus: his editions take every one of the top fifteen places.
+
+Bunyan is more interesting. The book as a whole sits closer in meaning than most. But the trial of
+Faithful, the scene the claim is about, is not among the hundred nearest passages to any part of
+the Abinadi story. Foxe's martyrs are closer for every one of the 44 Abinadi passages, and
+Josephus and printed sermons are closer still.
+
+*The check on the method.* With *The Late War* as the target, its nine other printings came out
+first to ninth of 204,527. The study's published ranks were reproduced exactly. And the Faithful
+scene in one printing of Bunyan found the same scene in other printings 59 times out of 60. One
+check had to be rebuilt first: my list of "known copies" of *The Late War* had other histories of
+that war mixed in.
+
+*What it does not show.* It does not rule out a few borrowed sentences or a borrowed plot outline;
+the comparison of story order was not run. Donofrio's and Davis's own lists of parallels were not
+in hand, so their examples were not scored one by one.
 
 ## What I would want a reader to take from the whole set
 

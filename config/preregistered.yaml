@@ -782,6 +782,60 @@ lab:                              # the research lab (exploratory tooling; reads
     splice_tolerance: 2            # break must fall within this many blocks of the join
     splice_bar: 0.9                # in at least this share of pairs
     unusual_share: 0.05            # "unusual" = fewer than this share of library works switch as sharply
+  claimed_sources:                 # BOM-126 (lab; exploratory): claimed sources looked up in the stored borrowing searches
+    sources:                       # key: [catalogued author pattern, title pattern]; every matching copy is reported
+      warren_history: ['^warren, mercy', 'american revolution']
+      ramsay_american_revolution: ['^ramsay, david', 'history of the american revolution']
+      ramsay_south_carolina_revolution: ['^ramsay, david', 'history of the revolution of south.carolina']
+      ramsay_life_of_washington: ['^ramsay, david', 'life of george washington']
+      ramsay_other_histories: ['^ramsay, david', 'history of south.carolina|universal history|history of the united states']
+      bunyan_pilgrims_progress: ['^bunyan, john', '^\W*(the )?pilgrim.?s progress']
+      foxe_martyrs: ['^foxe?, john', 'martyr|actes? and monuments']
+      milton_paradise_lost: ['^milton, john', 'paradise lost']
+      westminster_confession: ['', '^\W*(the )?confession of faith.{0,80}(larger|assembly of divines)|humble advice of the assembly of divines']
+      apocrypha: ['', '^\W*(the )?(books? of the )?apocrypha\b']
+    scale:                         # the study's named books, through the same code, for scale
+      the_late_war: ['', '^(the )?late war,? between the united states and great britain,? from june|historical reader.{0,40}late war']
+      first_book_of_napoleon: ['', 'first book of napoleon']
+      view_of_the_hebrews: ['', 'view of the hebrews']
+    abinadi_seq: [652, 683]        # 1830 paragraphs: Mosiah VII, VIII and the start of IX (modern Mosiah 11-17)
+    war: {book: Alma, first: 20, last: 29, single: 21}   # 1830 Alma XX-XXIX (modern 43-62); XXI shown alone
+    trial_marker: 'hate.?good'     # the judge at Faithful's trial: passages holding the name are the trial scene
+    foxe_key: foxe_martyrs
+    bunyan_key: bunyan_pilgrims_progress
+    sample_passages: 200000        # gallery passages drawn to place a score among all passages
+    seed: 20261120
+    near_top_share: 0.001          # "near the top" on rare phrases: best copy within this share of the population
+    over_represented: 10           # passage level "yes": share of nearest-100 places at least this many times the share of passages
+    top_works: 15                  # works listed per target among the stored nearest passages
+    ka_late_war: ['^hunt, g', 'late war']   # known answer 1 (revised after its first run): Hunt's own printings, not other histories of that war
+    ka_top: 100                    # known answer 1: every other Late War printing within this rank
+    ka_pair_share: 0.0001          # known answer 3: the other printing's best passage beaten by at most this share of the sample
+    ka_pair_bar: 0.9               # in at least this share of pairs
+  numbers:                         # BOM-114 (lab; exploratory): number profiles and the weights of Alma 11
+    seed: 20261120
+    part_numbers: 100              # numbers per part of a text
+    min_part: 50                   # a shorter text gives one part if it has at least this many
+    year_lo: 1000                  # a number in digits in this range is a calendar year
+    year_hi: 1899
+    english_share: 0.2             # bilingual editions: a paragraph is English if this share of its words are English function words
+    base20_lo: 20                  # the base-twenty measure looks at round values in this range
+    base20_hi: 400
+    base20_min_n: 30               # and needs this many of them
+    bootstrap: 2000
+    classifier_bar: 0.75           # known-answer check: mean of the three traditions' hit rates
+    tradition_bar: 0.5             # and each tradition at least this
+    bom_share: 0.667               # the book "sits with" a tradition if this share of its parts go there
+    clavigero: ["internet_archive:bim_eighteenth-century_the-history-of-mexico-c_clavigero-francesco-sav_1787_1", "internet_archive:bim_eighteenth-century_the-history-of-mexico-c_clavigero-francesco-sav_1787_2"]
+    modern_sample: 12              # library works of narrative and history drawn for the modern tradition
+    modern_genres: [history_chronicle, fiction_narrative]
+    year_min: 1800
+    year_max: 1830
+    min_words: 40000
+    max_words: 300000
+    random_systems: 20000          # Alma 11 baseline: random systems of the same size
+    free_max: 10                   # rule B: steps p/q with p, q up to this and 1 < p/q <= this
+    unusual_share: 0.05            # "closer than a made-up system" = fewer than this share of random systems fit as well
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
