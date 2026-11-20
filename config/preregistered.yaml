@@ -836,6 +836,40 @@ lab:                              # the research lab (exploratory tooling; reads
     random_systems: 20000          # Alma 11 baseline: random systems of the same size
     free_max: 10                   # rule B: steps p/q with p, q up to this and 1 < p/q <= this
     unusual_share: 0.05            # "closer than a made-up system" = fewer than this share of random systems fit as well
+  names:                           # BOM-108 (lab; exploratory): coined names against name lists
+    order: 3                       # character model: trigrams with word boundaries
+    smoothing: 0.1                 # add-k
+    interpolation: [0.6, 0.3, 0.1] # trigram, bigram, single letter
+    len_min_any: 3                 # a name has at least this many letters
+    len_min: 4                     # matched design: names of this many letters ...
+    len_max: 10                    # ... to this many
+    match_n: 120                   # names per set in each draw (set by the smallest lists, Nahuatl and Maya)
+    test_n: 30                     # held-out names per set in each draw
+    min_set: 150                   # a list is a reference set only with this many names of matched length
+    repeats: 200
+    seed: 20261120
+    bar_mean: 0.5                  # known-answer bar: mean own-set rate (and 3/K; every set 2/K)
+    english_match_n: 600           # English-spelled design: its lists are all large, so more names per draw
+    english_test_n: 100
+    skeleton_len_min: 3            # consonant-skeleton design
+    skeleton_len_max: 8
+    skeleton_match_n: 120
+    skeleton_test_n: 30
+    english_min_count: 2           # a lower-case word seen this often in our English texts is English
+    census_min_count: 5            # a census surname must be printed this often (drops OCR slips)
+    census_given_min_count: 25     # and a given name this often (drops abbreviations and slips)
+    invented_min_count: {spalding: 2, swift: 2, ossian: 5, spenser: 3}  # capitalised mid-sentence this often (more where the OCR or the editor's notes are heavy)
+    treaty_year_max: 1830          # treaty signers: treaties up to this year
+    splice_min: 3                  # recombination: each spliced part has at least this many letters
+    recombination_sample: 2000     # names per reference set for the recombination baseline
+    wilcox_positions: 4            # letter analogue of Wilcox: first four positions
+  judge:                           # lab: paced model judging on the owner's Claude subscription (owner, 2026-11-20); simulated judging, labelled so
+    model: haiku                   # the small model; a test may name another for a check
+    per_hour: 300                  # most calls an hour
+    hours: [22, 7]                 # local hours in which it may run (start, end; wraps midnight)
+    hours_poll: 300                # seconds between looks at the clock outside the window
+    outage_after: 5                # this many failed calls in a row = a usage limit or an outage
+    outage_wait: 1800              # seconds to wait before trying again
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
