@@ -1,0 +1,4773 @@
+{
+ "settings": {
+  "order": 3,
+  "smoothing": 0.1,
+  "interpolation": [
+   0.6,
+   0.3,
+   0.1
+  ],
+  "len_min_any": 3,
+  "len_min": 4,
+  "len_max": 10,
+  "match_n": 120,
+  "test_n": 30,
+  "min_set": 150,
+  "repeats": 200,
+  "seed": 20261120,
+  "bar_mean": 0.5,
+  "english_match_n": 600,
+  "english_test_n": 100,
+  "skeleton_len_min": 3,
+  "skeleton_len_max": 8,
+  "skeleton_match_n": 120,
+  "skeleton_test_n": 30,
+  "english_min_count": 2,
+  "census_min_count": 5,
+  "census_given_min_count": 25,
+  "invented_min_count": {
+   "spalding": 2,
+   "swift": 2,
+   "ossian": 5,
+   "spenser": 3
+  },
+  "treaty_year_max": 1830,
+  "splice_min": 3,
+  "recombination_sample": 2000,
+  "wilcox_positions": 4
+ },
+ "conventions": {
+  "kjv": "English Bible spelling of 1611/1769 (Hebrew, Aramaic and Greek names anglicised)",
+  "hebrew_inscr": "DAHPN vocalised scholarly transcription; diacritics folded, aleph/ayin dropped, morpheme marks dropped",
+  "cuneiform_ctij": "ORACC normalised Akkadian-style citation forms; diacritics folded (Judean and Babylonian names mixed; no language tag)",
+  "sumerian": "ORACC ePSD2 citation forms; diacritics and index digits dropped",
+  "egyptian": "Egyptological transliteration: consonants only, no vowels written",
+  "classical": "Greek and Latin names in Latinised English print (Lempriere 1818, OCR)",
+  "census_1790": "surnames and given names in the 1790 census returns (reprint of 1907-08, OCR), King James names removed",
+  "native_places": "Algonquian and Iroquoian place names as spelled by English and Dutch writers (Beauchamp 1907, Trumbull 1881, OCR)",
+  "treaty_signers": "native personal names as spelled by US treaty clerks (Kappler's text)",
+  "nahuatl": "Nahuatl personal names in Spanish-based colonial spelling",
+  "maya": "Classic Maya ruler names in modern epigraphers' spelling",
+  "hebrew_inscr_golub": "Hebrew script mapped letter for letter to consonants (skeleton only)"
+ },
+ "not_attempted": {},
+ "list_sizes": {
+  "kjv": 4673,
+  "hebrew_inscr": 752,
+  "cuneiform_ctij": 1354,
+  "sumerian": 930,
+  "egyptian": 8451,
+  "classical": 2417,
+  "census_1790": 15889,
+  "census_given": 1118,
+  "native_places": 1886,
+  "treaty_signers": 2774,
+  "nahuatl": 209,
+  "maya": 208,
+  "hebrew_inscr_golub": 466
+ },
+ "known_answer": {
+  "all": {
+   "sets": {
+    "census_1790": 15380,
+    "classical": 2279,
+    "cuneiform_ctij": 999,
+    "egyptian": 7413,
+    "hebrew_inscr": 721,
+    "kjv": 4311,
+    "maya": 164,
+    "nahuatl": 163,
+    "native_places": 1292,
+    "sumerian": 746,
+    "treaty_signers": 1896
+   },
+   "chance": 0.091,
+   "held_out_recall": {
+    "census_1790": 0.552,
+    "classical": 0.596,
+    "cuneiform_ctij": 0.64,
+    "egyptian": 0.965,
+    "hebrew_inscr": 0.638,
+    "kjv": 0.518,
+    "maya": 0.665,
+    "nahuatl": 0.955,
+    "native_places": 0.511,
+    "sumerian": 0.665,
+    "treaty_signers": 0.422
+   },
+   "mean_recall": 0.648,
+   "confusion_rows_true_cols_assigned": {
+    "census_1790": {
+     "census_1790": 0.552,
+     "classical": 0.086,
+     "cuneiform_ctij": 0.018,
+     "egyptian": 0.003,
+     "hebrew_inscr": 0.022,
+     "kjv": 0.071,
+     "maya": 0.029,
+     "nahuatl": 0.017,
+     "native_places": 0.08,
+     "sumerian": 0.018,
+     "treaty_signers": 0.103
+    },
+    "classical": {
+     "census_1790": 0.078,
+     "classical": 0.596,
+     "cuneiform_ctij": 0.036,
+     "egyptian": 0.001,
+     "hebrew_inscr": 0.013,
+     "kjv": 0.118,
+     "maya": 0.009,
+     "nahuatl": 0.013,
+     "native_places": 0.052,
+     "sumerian": 0.029,
+     "treaty_signers": 0.056
+    },
+    "cuneiform_ctij": {
+     "census_1790": 0.005,
+     "classical": 0.02,
+     "cuneiform_ctij": 0.64,
+     "egyptian": 0.0,
+     "hebrew_inscr": 0.111,
+     "kjv": 0.029,
+     "maya": 0.009,
+     "nahuatl": 0.007,
+     "native_places": 0.01,
+     "sumerian": 0.154,
+     "treaty_signers": 0.016
+    },
+    "egyptian": {
+     "census_1790": 0.013,
+     "classical": 0.004,
+     "cuneiform_ctij": 0.0,
+     "egyptian": 0.965,
+     "hebrew_inscr": 0.004,
+     "kjv": 0.003,
+     "maya": 0.005,
+     "nahuatl": 0.001,
+     "native_places": 0.003,
+     "sumerian": 0.0,
+     "treaty_signers": 0.002
+    },
+    "hebrew_inscr": {
+     "census_1790": 0.023,
+     "classical": 0.019,
+     "cuneiform_ctij": 0.13,
+     "egyptian": 0.003,
+     "hebrew_inscr": 0.638,
+     "kjv": 0.047,
+     "maya": 0.03,
+     "nahuatl": 0.006,
+     "native_places": 0.019,
+     "sumerian": 0.064,
+     "treaty_signers": 0.02
+    },
+    "kjv": {
+     "census_1790": 0.058,
+     "classical": 0.132,
+     "cuneiform_ctij": 0.048,
+     "egyptian": 0.0,
+     "hebrew_inscr": 0.053,
+     "kjv": 0.518,
+     "maya": 0.035,
+     "nahuatl": 0.017,
+     "native_places": 0.042,
+     "sumerian": 0.038,
+     "treaty_signers": 0.059
+    },
+    "maya": {
+     "census_1790": 0.035,
+     "classical": 0.017,
+     "cuneiform_ctij": 0.029,
+     "egyptian": 0.001,
+     "hebrew_inscr": 0.025,
+     "kjv": 0.037,
+     "maya": 0.665,
+     "nahuatl": 0.043,
+     "native_places": 0.052,
+     "sumerian": 0.034,
+     "treaty_signers": 0.06
+    },
+    "nahuatl": {
+     "census_1790": 0.002,
+     "classical": 0.007,
+     "cuneiform_ctij": 0.004,
+     "egyptian": 0.0,
+     "hebrew_inscr": 0.005,
+     "kjv": 0.006,
+     "maya": 0.003,
+     "nahuatl": 0.955,
+     "native_places": 0.005,
+     "sumerian": 0.0,
+     "treaty_signers": 0.013
+    },
+    "native_places": {
+     "census_1790": 0.072,
+     "classical": 0.063,
+     "cuneiform_ctij": 0.015,
+     "egyptian": 0.001,
+     "hebrew_inscr": 0.021,
+     "kjv": 0.049,
+     "maya": 0.038,
+     "nahuatl": 0.037,
+     "native_places": 0.511,
+     "sumerian": 0.026,
+     "treaty_signers": 0.167
+    },
+    "sumerian": {
+     "census_1790": 0.008,
+     "classical": 0.018,
+     "cuneiform_ctij": 0.197,
+     "egyptian": 0.0,
+     "hebrew_inscr": 0.038,
+     "kjv": 0.019,
+     "maya": 0.017,
+     "nahuatl": 0.002,
+     "native_places": 0.02,
+     "sumerian": 0.665,
+     "treaty_signers": 0.017
+    },
+    "treaty_signers": {
+     "census_1790": 0.127,
+     "classical": 0.056,
+     "cuneiform_ctij": 0.026,
+     "egyptian": 0.0,
+     "hebrew_inscr": 0.021,
+     "kjv": 0.06,
+     "maya": 0.042,
+     "nahuatl": 0.035,
+     "native_places": 0.186,
+     "sumerian": 0.026,
+     "treaty_signers": 0.422
+    }
+   },
+   "passed": true
+  },
+  "english": {
+   "sets": {
+    "census_1790": 15380,
+    "classical": 2279,
+    "kjv": 4311,
+    "native_places": 1292,
+    "treaty_signers": 1896
+   },
+   "chance": 0.2,
+   "held_out_recall": {
+    "census_1790": 0.717,
+    "classical": 0.756,
+    "kjv": 0.688,
+    "native_places": 0.669,
+    "treaty_signers": 0.56
+   },
+   "mean_recall": 0.678,
+   "confusion_rows_true_cols_assigned": {
+    "census_1790": {
+     "census_1790": 0.717,
+     "classical": 0.074,
+     "kjv": 0.064,
+     "native_places": 0.058,
+     "treaty_signers": 0.088
+    },
+    "classical": {
+     "census_1790": 0.059,
+     "classical": 0.756,
+     "kjv": 0.102,
+     "native_places": 0.04,
+     "treaty_signers": 0.044
+    },
+    "kjv": {
+     "census_1790": 0.056,
+     "classical": 0.16,
+     "kjv": 0.688,
+     "native_places": 0.038,
+     "treaty_signers": 0.059
+    },
+    "native_places": {
+     "census_1790": 0.064,
+     "classical": 0.059,
+     "kjv": 0.044,
+     "native_places": 0.669,
+     "treaty_signers": 0.163
+    },
+    "treaty_signers": {
+     "census_1790": 0.133,
+     "classical": 0.05,
+     "kjv": 0.068,
+     "native_places": 0.19,
+     "treaty_signers": 0.56
+    }
+   },
+   "passed": true
+  },
+  "skeleton": {
+   "sets": {
+    "census_1790": 4364,
+    "classical": 1186,
+    "cuneiform_ctij": 861,
+    "egyptian": 2923,
+    "hebrew_inscr": 202,
+    "hebrew_inscr_golub": 154,
+    "kjv": 1523,
+    "native_places": 1157,
+    "sumerian": 711,
+    "treaty_signers": 1517
+   },
+   "chance": 0.1,
+   "held_out_recall": {
+    "census_1790": 0.242,
+    "classical": 0.314,
+    "cuneiform_ctij": 0.345,
+    "egyptian": 0.484,
+    "hebrew_inscr": 0.135,
+    "hebrew_inscr_golub": 0.161,
+    "kjv": 0.161,
+    "native_places": 0.462,
+    "sumerian": 0.337,
+    "treaty_signers": 0.204
+   },
+   "mean_recall": 0.285,
+   "confusion_rows_true_cols_assigned": {
+    "census_1790": {
+     "census_1790": 0.242,
+     "classical": 0.117,
+     "cuneiform_ctij": 0.082,
+     "egyptian": 0.088,
+     "hebrew_inscr": 0.067,
+     "hebrew_inscr_golub": 0.056,
+     "kjv": 0.098,
+     "native_places": 0.081,
+     "sumerian": 0.091,
+     "treaty_signers": 0.078
+    },
+    "classical": {
+     "census_1790": 0.118,
+     "classical": 0.314,
+     "cuneiform_ctij": 0.063,
+     "egyptian": 0.06,
+     "hebrew_inscr": 0.048,
+     "hebrew_inscr_golub": 0.056,
+     "kjv": 0.154,
+     "native_places": 0.062,
+     "sumerian": 0.063,
+     "treaty_signers": 0.063
+    },
+    "cuneiform_ctij": {
+     "census_1790": 0.068,
+     "classical": 0.064,
+     "cuneiform_ctij": 0.345,
+     "egyptian": 0.107,
+     "hebrew_inscr": 0.092,
+     "hebrew_inscr_golub": 0.09,
+     "kjv": 0.081,
+     "native_places": 0.043,
+     "sumerian": 0.064,
+     "treaty_signers": 0.048
+    },
+    "egyptian": {
+     "census_1790": 0.057,
+     "classical": 0.06,
+     "cuneiform_ctij": 0.082,
+     "egyptian": 0.484,
+     "hebrew_inscr": 0.04,
+     "hebrew_inscr_golub": 0.03,
+     "kjv": 0.069,
+     "native_places": 0.056,
+     "sumerian": 0.056,
+     "treaty_signers": 0.067
+    },
+    "hebrew_inscr": {
+     "census_1790": 0.096,
+     "classical": 0.065,
+     "cuneiform_ctij": 0.096,
+     "egyptian": 0.081,
+     "hebrew_inscr": 0.135,
+     "hebrew_inscr_golub": 0.279,
+     "kjv": 0.083,
+     "native_places": 0.058,
+     "sumerian": 0.059,
+     "treaty_signers": 0.049
+    },
+    "hebrew_inscr_golub": {
+     "census_1790": 0.069,
+     "classical": 0.088,
+     "cuneiform_ctij": 0.094,
+     "egyptian": 0.074,
+     "hebrew_inscr": 0.275,
+     "hebrew_inscr_golub": 0.161,
+     "kjv": 0.072,
+     "native_places": 0.044,
+     "sumerian": 0.064,
+     "treaty_signers": 0.058
+    },
+    "kjv": {
+     "census_1790": 0.092,
+     "classical": 0.176,
+     "cuneiform_ctij": 0.102,
+     "egyptian": 0.105,
+     "hebrew_inscr": 0.106,
+     "hebrew_inscr_golub": 0.086,
+     "kjv": 0.161,
+     "native_places": 0.059,
+     "sumerian": 0.057,
+     "treaty_signers": 0.057
+    },
+    "native_places": {
+     "census_1790": 0.059,
+     "classical": 0.065,
+     "cuneiform_ctij": 0.034,
+     "egyptian": 0.051,
+     "hebrew_inscr": 0.032,
+     "hebrew_inscr_golub": 0.023,
+     "kjv": 0.044,
+     "native_places": 0.462,
+     "sumerian": 0.061,
+     "treaty_signers": 0.168
+    },
+    "sumerian": {
+     "census_1790": 0.076,
+     "classical": 0.075,
+     "cuneiform_ctij": 0.086,
+     "egyptian": 0.085,
+     "hebrew_inscr": 0.067,
+     "hebrew_inscr_golub": 0.069,
+     "kjv": 0.06,
+     "native_places": 0.075,
+     "sumerian": 0.337,
+     "treaty_signers": 0.07
+    },
+    "treaty_signers": {
+     "census_1790": 0.089,
+     "classical": 0.081,
+     "cuneiform_ctij": 0.05,
+     "egyptian": 0.091,
+     "hebrew_inscr": 0.053,
+     "hebrew_inscr_golub": 0.056,
+     "kjv": 0.061,
+     "native_places": 0.237,
+     "sumerian": 0.077,
+     "treaty_signers": 0.204
+    }
+   }
+  },
+  "left_out_too_small": {}
+ },
+ "spelling_check": {
+  "kjv_names_in_scholarly_dress_sent_to_kjv": [
+   0.076,
+   0.051,
+   0.102
+  ],
+  "sent_to_hebrew_inscr": [
+   0.469,
+   0.426,
+   0.51
+  ],
+  "same_names_in_german_bible_spelling_sent_to_kjv": [
+   0.371,
+   0.304,
+   0.435
+  ],
+  "design_all_is_a_test_of_spelling": true
+ },
+ "book_of_mormon_list": {
+  "by_rule": 345,
+  "confirmed": 310,
+  "rule_only": [
+   "abin",
+   "alamickiah",
+   "angelah",
+   "antionam",
+   "arabian",
+   "associate",
+   "beaz",
+   "bible",
+   "camenihah",
+   "camorah",
+   "corian",
+   "deniest",
+   "egyptian",
+   "gaddianhi",
+   "gentile",
+   "helama",
+   "irsael",
+   "ismaelitish",
+   "ites",
+   "jeru",
+   "jew",
+   "jocob",
+   "kimmer",
+   "lamanitas",
+   "lasmanites",
+   "morionton",
+   "mulok",
+   "odinah",
+   "sepulcher",
+   "solo",
+   "sprit",
+   "writ",
+   "zeesrom",
+   "zenas",
+   "zenoch"
+  ],
+  "onomasticon_only": [
+   "amnor",
+   "angola",
+   "antion",
+   "baz",
+   "cumenihah",
+   "cumoms",
+   "cumorah",
+   "cureloms",
+   "deseret",
+   "ezrom",
+   "ezrum",
+   "gad",
+   "gadiantons",
+   "gidanah",
+   "hash",
+   "ishmaelitish",
+   "jeneum",
+   "joneum",
+   "kimnor",
+   "lamanitish",
+   "lehinephi",
+   "liahona",
+   "limnah",
+   "mahonri",
+   "nehors",
+   "oneidah",
+   "senine",
+   "senums",
+   "seon",
+   "shalal",
+   "sheum",
+   "shiblon",
+   "shiblum",
+   "shum",
+   "ziff"
+  ],
+  "biblical": [
+   "aaron",
+   "abel",
+   "abraham",
+   "adam",
+   "ahaz",
+   "aiath",
+   "alpha",
+   "aminadab",
+   "ammah",
+   "ammon",
+   "amos",
+   "amoz",
+   "anathoth",
+   "antipas",
+   "arpad",
+   "assyria",
+   "assyrian",
+   "babylon",
+   "bashan",
+   "benjamin",
+   "bethabara",
+   "cain",
+   "calno",
+   "carchemish",
+   "chaldeans",
+   "chaldees",
+   "christ",
+   "christians",
+   "cush",
+   "damascus",
+   "david",
+   "eden",
+   "edom",
+   "egypt",
+   "elam",
+   "elijah",
+   "enos",
+   "ephraim",
+   "esrom",
+   "ether",
+   "eve",
+   "ezias",
+   "galilee",
+   "gallim",
+   "geba",
+   "gebim",
+   "gibeah",
+   "gideon",
+   "gilead",
+   "gilgal",
+   "gomorrah",
+   "hamath",
+   "hebrew",
+   "helam",
+   "helem",
+   "heth",
+   "horeb",
+   "hosanna",
+   "immanuel",
+   "isaac",
+   "isaiah",
+   "ishmael",
+   "israel",
+   "jacob",
+   "jared",
+   "jeberechiah",
+   "jehovah",
+   "jeremiah",
+   "jerusalem",
+   "jesse",
+   "jesus",
+   "john",
+   "jonas",
+   "jordan",
+   "joseph",
+   "joshua",
+   "jotham",
+   "judah",
+   "judea",
+   "kish",
+   "laban",
+   "laish",
+   "lebanon",
+   "lehi",
+   "lemuel",
+   "levi",
+   "lucifer",
+   "madmenah",
+   "maher",
+   "malachi",
+   "manasseh",
+   "mary",
+   "medes",
+   "melchizedek",
+   "messiah",
+   "michmash",
+   "midian",
+   "migron",
+   "moab",
+   "moses",
+   "naphtali",
+   "nazareth",
+   "nephi",
+   "nimrah",
+   "nimrod",
+   "noah",
+   "nob",
+   "omega",
+   "ophir",
+   "oreb",
+   "palestina",
+   "pathros",
+   "pekah",
+   "pharaoh",
+   "philistines",
+   "raca",
+   "rahab",
+   "ramah",
+   "ramath",
+   "remaliah",
+   "rezin",
+   "samaria",
+   "samuel",
+   "sarah",
+   "saul",
+   "seth",
+   "shearjashub",
+   "shem",
+   "shiloah",
+   "shilom",
+   "shinar",
+   "sidon",
+   "sinai",
+   "sinim",
+   "sodom",
+   "solomon",
+   "syria",
+   "syrians",
+   "tabeal",
+   "tarshish",
+   "timothy",
+   "uriah",
+   "uzziah",
+   "zebulun",
+   "zechariah",
+   "zedekiah",
+   "zion"
+  ],
+  "coined": [
+   "abinadi",
+   "abinadom",
+   "abish",
+   "ablom",
+   "agosh",
+   "ahah",
+   "akish",
+   "alma",
+   "amaleki",
+   "amalickiah",
+   "amaron",
+   "amgid",
+   "aminadi",
+   "amlici",
+   "ammaron",
+   "ammonihah",
+   "ammoron",
+   "amnigaddah",
+   "amnihu",
+   "amoron",
+   "amulek",
+   "amulon",
+   "ani",
+   "anti",
+   "antiomno",
+   "antionah",
+   "antionum",
+   "antiparah",
+   "antipus",
+   "antum",
+   "archeantus",
+   "cezoram",
+   "chemish",
+   "cohor",
+   "com",
+   "comnor",
+   "corianton",
+   "coriantor",
+   "coriantum",
+   "coriantumr",
+   "corihor",
+   "corom",
+   "cumeni",
+   "emer",
+   "emron",
+   "ethem",
+   "gaddianton",
+   "gadiandi",
+   "gadianton",
+   "gadiomnah",
+   "gazelem",
+   "gid",
+   "giddianhi",
+   "giddonah",
+   "gidgiddonah",
+   "gidgiddoni",
+   "gilgah",
+   "gimgimno",
+   "hagoth",
+   "hearthom",
+   "helaman",
+   "helorum",
+   "hermounts",
+   "heshlon",
+   "himni",
+   "irreantum",
+   "isabel",
+   "jacobugath",
+   "jacom",
+   "jarom",
+   "jashon",
+   "jershon",
+   "joneam",
+   "josh",
+   "kib",
+   "kim",
+   "kishkumen",
+   "korihor",
+   "kumen",
+   "kumenonhi",
+   "lachoneus",
+   "lamah",
+   "laman",
+   "lamoni",
+   "lehonti",
+   "lib",
+   "limhah",
+   "limher",
+   "limhi",
+   "luram",
+   "mahah",
+   "manti",
+   "mathoni",
+   "mathonihah",
+   "melek",
+   "middoni",
+   "minon",
+   "mocum",
+   "moriancumer",
+   "morianton",
+   "moriantum",
+   "mormon",
+   "moron",
+   "moroni",
+   "moronihah",
+   "mosiah",
+   "mulek",
+   "muloki",
+   "nahom",
+   "nehor",
+   "nephihah",
+   "neum",
+   "ogath",
+   "omner",
+   "omni",
+   "onidah",
+   "onihah",
+   "orihah",
+   "paanchi",
+   "pachus",
+   "pacumeni",
+   "pagag",
+   "pahoran",
+   "rabbanah",
+   "rameumptom",
+   "riplah",
+   "riplakish",
+   "ripliancum",
+   "sam",
+   "sariah",
+   "seantum",
+   "sebus",
+   "seezoram",
+   "shared",
+   "shazer",
+   "shelem",
+   "shemlon",
+   "shemnon",
+   "sherem",
+   "sherrizah",
+   "shez",
+   "shiblom",
+   "shim",
+   "shimnilom",
+   "shiz",
+   "shule",
+   "shurr",
+   "sidom",
+   "siron",
+   "teancum",
+   "teomner",
+   "tubaloth",
+   "zarahemla",
+   "zeezrom",
+   "zemnarihah",
+   "zenephi",
+   "zeniff",
+   "zenock",
+   "zenos",
+   "zerahemnah",
+   "zeram",
+   "zerin",
+   "zoram"
+  ],
+  "groups": {
+   "abinadi": [
+    "nephite"
+   ],
+   "abinadom": [
+    "nephite"
+   ],
+   "abish": [
+    "lamanite"
+   ],
+   "ablom": [
+    "jaredite",
+    "place"
+   ],
+   "agosh": [
+    "jaredite",
+    "place"
+   ],
+   "ahah": [
+    "jaredite"
+   ],
+   "akish": [
+    "jaredite",
+    "place"
+   ],
+   "alma": [
+    "nephite",
+    "place"
+   ],
+   "amaleki": [
+    "nephite"
+   ],
+   "amalickiah": [
+    "nephite"
+   ],
+   "amaron": [
+    "nephite"
+   ],
+   "amgid": [
+    "jaredite"
+   ],
+   "aminadi": [
+    "ungrouped"
+   ],
+   "amlici": [
+    "nephite"
+   ],
+   "ammaron": [
+    "nephite"
+   ],
+   "ammonihah": [
+    "place"
+   ],
+   "ammoron": [
+    "nephite"
+   ],
+   "amnigaddah": [
+    "jaredite"
+   ],
+   "amnihu": [
+    "ungrouped"
+   ],
+   "amoron": [
+    "nephite"
+   ],
+   "amulek": [
+    "nephite"
+   ],
+   "amulon": [
+    "place"
+   ],
+   "ani": [
+    "place"
+   ],
+   "anti": [
+    "lamanite",
+    "place"
+   ],
+   "antiomno": [
+    "lamanite"
+   ],
+   "antionah": [
+    "ungrouped"
+   ],
+   "antionum": [
+    "nephite",
+    "place"
+   ],
+   "antiparah": [
+    "place"
+   ],
+   "antipus": [
+    "nephite"
+   ],
+   "antum": [
+    "place"
+   ],
+   "archeantus": [
+    "nephite"
+   ],
+   "cezoram": [
+    "nephite"
+   ],
+   "chemish": [
+    "nephite"
+   ],
+   "cohor": [
+    "jaredite"
+   ],
+   "com": [
+    "jaredite"
+   ],
+   "comnor": [
+    "jaredite",
+    "place"
+   ],
+   "corianton": [
+    "nephite"
+   ],
+   "coriantor": [
+    "jaredite"
+   ],
+   "coriantum": [
+    "jaredite"
+   ],
+   "coriantumr": [
+    "jaredite"
+   ],
+   "corihor": [
+    "jaredite",
+    "place"
+   ],
+   "corom": [
+    "jaredite"
+   ],
+   "cumeni": [
+    "place"
+   ],
+   "emer": [
+    "jaredite"
+   ],
+   "emron": [
+    "nephite"
+   ],
+   "ethem": [
+    "jaredite"
+   ],
+   "gaddianton": [
+    "ungrouped"
+   ],
+   "gadiandi": [
+    "place"
+   ],
+   "gadianton": [
+    "nephite"
+   ],
+   "gadiomnah": [
+    "place"
+   ],
+   "gazelem": [
+    "ungrouped"
+   ],
+   "gid": [
+    "nephite",
+    "place"
+   ],
+   "giddianhi": [
+    "nephite"
+   ],
+   "giddonah": [
+    "ungrouped"
+   ],
+   "gidgiddonah": [
+    "nephite"
+   ],
+   "gidgiddoni": [
+    "nephite"
+   ],
+   "gilgah": [
+    "jaredite"
+   ],
+   "gimgimno": [
+    "place"
+   ],
+   "hagoth": [
+    "nephite",
+    "place"
+   ],
+   "hearthom": [
+    "jaredite"
+   ],
+   "helaman": [
+    "ungrouped"
+   ],
+   "helorum": [
+    "ungrouped"
+   ],
+   "hermounts": [
+    "place"
+   ],
+   "heshlon": [
+    "jaredite",
+    "place"
+   ],
+   "himni": [
+    "ungrouped"
+   ],
+   "irreantum": [
+    "place"
+   ],
+   "isabel": [
+    "ungrouped"
+   ],
+   "jacobugath": [
+    "place"
+   ],
+   "jacom": [
+    "jaredite"
+   ],
+   "jarom": [
+    "nephite"
+   ],
+   "jashon": [
+    "place"
+   ],
+   "jershon": [
+    "place"
+   ],
+   "joneam": [
+    "ungrouped"
+   ],
+   "josh": [
+    "nephite",
+    "place"
+   ],
+   "kib": [
+    "jaredite"
+   ],
+   "kim": [
+    "jaredite"
+   ],
+   "kishkumen": [
+    "place"
+   ],
+   "korihor": [
+    "ungrouped"
+   ],
+   "kumen": [
+    "nephite"
+   ],
+   "kumenonhi": [
+    "nephite"
+   ],
+   "lachoneus": [
+    "nephite"
+   ],
+   "lamah": [
+    "nephite"
+   ],
+   "laman": [
+    "lamanite",
+    "place"
+   ],
+   "lamoni": [
+    "lamanite"
+   ],
+   "lehonti": [
+    "lamanite"
+   ],
+   "lib": [
+    "jaredite"
+   ],
+   "limhah": [
+    "nephite"
+   ],
+   "limher": [
+    "nephite"
+   ],
+   "limhi": [
+    "nephite"
+   ],
+   "luram": [
+    "nephite"
+   ],
+   "mahah": [
+    "jaredite"
+   ],
+   "manti": [
+    "nephite",
+    "place"
+   ],
+   "mathoni": [
+    "nephite"
+   ],
+   "mathonihah": [
+    "nephite"
+   ],
+   "melek": [
+    "place"
+   ],
+   "middoni": [
+    "place"
+   ],
+   "minon": [
+    "place"
+   ],
+   "mocum": [
+    "place"
+   ],
+   "moriancumer": [
+    "jaredite",
+    "place"
+   ],
+   "morianton": [
+    "jaredite",
+    "place"
+   ],
+   "moriantum": [
+    "place"
+   ],
+   "mormon": [
+    "place"
+   ],
+   "moron": [
+    "jaredite",
+    "place"
+   ],
+   "moroni": [
+    "place"
+   ],
+   "moronihah": [
+    "nephite",
+    "place"
+   ],
+   "mosiah": [
+    "nephite",
+    "place"
+   ],
+   "mulek": [
+    "nephite",
+    "place"
+   ],
+   "muloki": [
+    "nephite"
+   ],
+   "nahom": [
+    "place"
+   ],
+   "nehor": [
+    "nephite",
+    "place"
+   ],
+   "nephihah": [
+    "nephite",
+    "place"
+   ],
+   "neum": [
+    "ungrouped"
+   ],
+   "ogath": [
+    "jaredite",
+    "place"
+   ],
+   "omner": [
+    "place"
+   ],
+   "omni": [
+    "nephite"
+   ],
+   "onidah": [
+    "place"
+   ],
+   "onihah": [
+    "place"
+   ],
+   "orihah": [
+    "jaredite"
+   ],
+   "paanchi": [
+    "nephite"
+   ],
+   "pachus": [
+    "nephite"
+   ],
+   "pacumeni": [
+    "nephite"
+   ],
+   "pagag": [
+    "jaredite"
+   ],
+   "pahoran": [
+    "nephite"
+   ],
+   "rabbanah": [
+    "ungrouped"
+   ],
+   "rameumptom": [
+    "ungrouped"
+   ],
+   "riplah": [
+    "place"
+   ],
+   "riplakish": [
+    "jaredite"
+   ],
+   "ripliancum": [
+    "jaredite",
+    "place"
+   ],
+   "sam": [
+    "ungrouped"
+   ],
+   "sariah": [
+    "ungrouped"
+   ],
+   "seantum": [
+    "nephite"
+   ],
+   "sebus": [
+    "place"
+   ],
+   "seezoram": [
+    "nephite"
+   ],
+   "shared": [
+    "jaredite"
+   ],
+   "shazer": [
+    "place"
+   ],
+   "shelem": [
+    "jaredite",
+    "place"
+   ],
+   "shemlon": [
+    "place"
+   ],
+   "shemnon": [
+    "nephite"
+   ],
+   "sherem": [
+    "ungrouped"
+   ],
+   "sherrizah": [
+    "place"
+   ],
+   "shez": [
+    "jaredite"
+   ],
+   "shiblom": [
+    "jaredite"
+   ],
+   "shim": [
+    "place"
+   ],
+   "shimnilom": [
+    "place"
+   ],
+   "shiz": [
+    "jaredite"
+   ],
+   "shule": [
+    "jaredite"
+   ],
+   "shurr": [
+    "jaredite",
+    "place"
+   ],
+   "sidom": [
+    "place"
+   ],
+   "siron": [
+    "place"
+   ],
+   "teancum": [
+    "nephite",
+    "place"
+   ],
+   "teomner": [
+    "nephite"
+   ],
+   "tubaloth": [
+    "lamanite"
+   ],
+   "zarahemla": [
+    "jaredite",
+    "place"
+   ],
+   "zeezrom": [
+    "nephite",
+    "place"
+   ],
+   "zemnarihah": [
+    "nephite"
+   ],
+   "zenephi": [
+    "ungrouped"
+   ],
+   "zeniff": [
+    "nephite"
+   ],
+   "zenock": [
+    "ungrouped"
+   ],
+   "zenos": [
+    "ungrouped"
+   ],
+   "zerahemnah": [
+    "lamanite"
+   ],
+   "zeram": [
+    "nephite"
+   ],
+   "zerin": [
+    "jaredite",
+    "place"
+   ],
+   "zoram": [
+    "ungrouped"
+   ]
+  }
+ },
+ "invented_lists": {
+  "spalding": [
+   "baska",
+   "boakim",
+   "bombal",
+   "chiauga",
+   "cousen",
+   "delawan",
+   "elseo",
+   "elsion",
+   "emper",
+   "europians",
+   "gaheno",
+   "gamba",
+   "geheno",
+   "golanga",
+   "hadocam",
+   "hadokam",
+   "haliza",
+   "haloon",
+   "hamack",
+   "hamback",
+   "hambock",
+   "hamboon",
+   "hamkol",
+   "hamkoo",
+   "heliza",
+   "kadokam",
+   "kalo",
+   "kentuck",
+   "labanco",
+   "lamesa",
+   "lobaska",
+   "mammoons",
+   "moonrod",
+   "ohians",
+   "ohons",
+   "rambock",
+   "sambul",
+   "sciotan",
+   "siota",
+   "taboon",
+   "talanga",
+   "tolanga",
+   "ulipoon"
+  ],
+  "swift": [
+   "balnibarbi",
+   "balnibarbian",
+   "blefuscu",
+   "blefuscudians",
+   "bolgolam",
+   "descartes",
+   "englishmen",
+   "flimnap",
+   "frelock",
+   "gassendi",
+   "glubbdubdrib",
+   "glumdalclitch",
+   "grildrig",
+   "houyhnhnm",
+   "japanese",
+   "lagado",
+   "langden",
+   "laputa",
+   "laputians",
+   "leyden",
+   "lilliput",
+   "lorbrulgrud",
+   "luggnagg",
+   "madagascar",
+   "maldonada",
+   "mendez",
+   "munodi",
+   "nangasac",
+   "nottinghamshire",
+   "redriff",
+   "reldresal",
+   "rotherhith",
+   "skyresh",
+   "tonquin",
+   "tribnia",
+   "yahoo",
+   "yedo"
+  ],
+  "ossian": [
+   "agandecca",
+   "aldo",
+   "alnecma",
+   "alpin",
+   "althan",
+   "althos",
+   "annir",
+   "arcath",
+   "ardan",
+   "ardven",
+   "armin",
+   "balva",
+   "berrathon",
+   "bolga",
+   "borbar",
+   "bragela",
+   "branno",
+   "cacl",
+   "cairbar",
+   "cairbre",
+   "caithbat",
+   "caledonian",
+   "calmar",
+   "calrbar",
+   "calthon",
+   "caracul",
+   "caraufius",
+   "carbre",
+   "caros",
+   "carril",
+   "carrll",
+   "carthon",
+   "cathba",
+   "cathlin",
+   "cathmol",
+   "cathmor",
+   "cathulla",
+   "clatho",
+   "clefsammor",
+   "clono",
+   "cluba",
+   "clutha",
+   "colgar",
+   "colma",
+   "colmal",
+   "colmar",
+   "colna",
+   "comal",
+   "comala",
+   "comhal",
+   "cona",
+   "conachar",
+   "conar",
+   "congal",
+   "conloch",
+   "conmor",
+   "connal",
+   "connan",
+   "connaught",
+   "cormac",
+   "cormalo",
+   "cormul",
+   "craca",
+   "crathmo",
+   "crimora",
+   "croma",
+   "cromla",
+   "cromleach",
+   "crona",
+   "crothar",
+   "crugal",
+   "cruth",
+   "cuthona",
+   "cuthullin",
+   "cuthullln",
+   "dargo",
+   "darthula",
+   "daura",
+   "dermid",
+   "duchomar",
+   "duchommar",
+   "dunrommath",
+   "dunthalmo",
+   "durstan",
+   "duth",
+   "duthcaron",
+   "erath",
+   "erin",
+   "erragon",
+   "etha",
+   "ferad",
+   "fergus",
+   "fillan",
+   "finthormo",
+   "firbolg",
+   "fithil",
+   "flngal",
+   "foldath",
+   "fonar",
+   "frothal",
+   "fuarfed",
+   "galic",
+   "gormal",
+   "grudar",
+   "grumal",
+   "hibernian",
+   "hidalla",
+   "iball",
+   "ihook",
+   "iniftore",
+   "jlream",
+   "kinfena",
+   "lamderg",
+   "lamor",
+   "lano",
+   "larthmor",
+   "larthon",
+   "lathmon",
+   "lego",
+   "lethmal",
+   "lochlin",
+   "loda",
+   "lodbrog",
+   "lota",
+   "lubar",
+   "lulan",
+   "luno",
+   "lutha",
+   "malthos",
+   "malvina",
+   "matha",
+   "moilena",
+   "moina",
+   "moma",
+   "morna",
+   "morni",
+   "moruth",
+   "morvcn",
+   "morven",
+   "mugruch",
+   "nathos",
+   "nuath",
+   "offian",
+   "ofiian",
+   "oflian",
+   "oftian",
+   "oilian",
+   "oithona",
+   "olfian",
+   "oliian",
+   "ollian",
+   "orla",
+   "oscian",
+   "oscur",
+   "ossian",
+   "rathmor",
+   "rinval",
+   "ronnan",
+   "rothmar",
+   "ryno",
+   "salgar",
+   "sarno",
+   "scandinavian",
+   "sclma",
+   "scottilh",
+   "selama",
+   "selma",
+   "semo",
+   "shilric",
+   "slimora",
+   "starno",
+   "strina",
+   "strumon",
+   "sulmalla",
+   "swaran",
+   "temora",
+   "teutha",
+   "tofcar",
+   "torcul",
+   "torlath",
+   "torman",
+   "trathal",
+   "trcnmor",
+   "trenmor",
+   "tromathon",
+   "truthil",
+   "tuathal",
+   "turthor",
+   "ufnoth",
+   "ullin",
+   "ullln",
+   "utha",
+   "uthal",
+   "vinvela"
+  ],
+  "spenser": [
+   "acrasia",
+   "acrates",
+   "aldebaran",
+   "amarant",
+   "amavia",
+   "amoret",
+   "amphitryton",
+   "aphrodite",
+   "archimago",
+   "argante",
+   "ariosto",
+   "armada",
+   "armorica",
+   "artegall",
+   "arthgallo",
+   "arthure",
+   "asse",
+   "aveugle",
+   "belinus",
+   "bellay",
+   "belph",
+   "belphoebe",
+   "bladud",
+   "braggadocchio",
+   "britanniae",
+   "britomart",
+   "britomartis",
+   "britoness",
+   "brittany",
+   "bryskett",
+   "brythonic",
+   "buckhurst",
+   "buls",
+   "burghley",
+   "busirane",
+   "cador",
+   "cadwalla",
+   "caelia",
+   "caer",
+   "calidore",
+   "cambria",
+   "captaine",
+   "carados",
+   "cassibellaun",
+   "cassiopeia",
+   "castilian",
+   "charissa",
+   "chaucerum",
+   "chorle",
+   "claribella",
+   "cleopolis",
+   "clout",
+   "coel",
+   "colin",
+   "conan",
+   "corceca",
+   "cordelia",
+   "corineus",
+   "coulin",
+   "countess",
+   "cymbeline",
+   "cymbrian",
+   "cymochles",
+   "cymodoc",
+   "cynan",
+   "cyparissus",
+   "cypresse",
+   "cytherea",
+   "cytheron",
+   "damsell",
+   "debon",
+   "deorum",
+   "desmond",
+   "devon",
+   "dha",
+   "dissemblance",
+   "duessa",
+   "easterland",
+   "easterlings",
+   "elficleos",
+   "elfin",
+   "elidure",
+   "elizabethan",
+   "emperour",
+   "eosa",
+   "euboean",
+   "faerie",
+   "ferraugh",
+   "fidelia",
+   "fidessa",
+   "florimell",
+   "fradubio",
+   "fraunce",
+   "furioso",
+   "furor",
+   "gardante",
+   "geaunt",
+   "geauntesse",
+   "genuissa",
+   "georgos",
+   "gloriana",
+   "godfredo",
+   "goneril",
+   "gorboduc",
+   "gorlois",
+   "guendolen",
+   "guithelin",
+   "guyon",
+   "gyant",
+   "haina",
+   "hainaut",
+   "heliconian",
+   "hellenore",
+   "hengest",
+   "hobbinol",
+   "holinesse",
+   "horsa",
+   "hubberds",
+   "huddibras",
+   "humber",
+   "hunsdon",
+   "hynd",
+   "igerna",
+   "iulus",
+   "jutes",
+   "kilcolman",
+   "kirke",
+   "liagore",
+   "liberata",
+   "locrin",
+   "logris",
+   "lordes",
+   "lucifera",
+   "maddan",
+   "maiesties",
+   "malbecco",
+   "malecasta",
+   "marinell",
+   "mempricius",
+   "merlin",
+   "moones",
+   "mordant",
+   "morddure",
+   "munster",
+   "musagetes",
+   "nennius",
+   "nephewes",
+   "noodt",
+   "northerne",
+   "norwegians",
+   "nymphe",
+   "oberon",
+   "ollyphant",
+   "orgoglio",
+   "orsilochus",
+   "ossory",
+   "owle",
+   "palmers",
+   "paradize",
+   "paridell",
+   "parnasso",
+   "penda",
+   "pendragon",
+   "penshurst",
+   "peredure",
+   "phaedria",
+   "phedon",
+   "philosophie",
+   "ponsonby",
+   "porrex",
+   "princesse",
+   "pryene",
+   "pubidius",
+   "pyrochles",
+   "queenes",
+   "rauran",
+   "redcross",
+   "redcrosse",
+   "rosalind",
+   "ryence",
+   "sansfoy",
+   "sansjoy",
+   "sansloy",
+   "sarazin",
+   "satyrane",
+   "satyres",
+   "scudamour",
+   "scuith",
+   "shakspere",
+   "sheriff",
+   "silvius",
+   "sleeveless",
+   "speranza",
+   "spumador",
+   "stanneryes",
+   "stationers",
+   "stonehenge",
+   "sulla",
+   "tasso",
+   "tenuantius",
+   "terwin",
+   "tigre",
+   "timias",
+   "tonans",
+   "tragedie",
+   "trevisan",
+   "trompart",
+   "troynovant",
+   "tygre",
+   "typhoeus",
+   "unthriftihead",
+   "vewe",
+   "vigenius",
+   "vortigern",
+   "wasserman",
+   "wordsworth",
+   "zutphen"
+  ]
+ },
+ "designs": {
+  "all": {
+   "shares": {
+    "kjv_names_scholarly": {
+     "names": 1260,
+     "share": {
+      "census_1790": [
+       0.038,
+       0.022,
+       0.058
+      ],
+      "classical": [
+       0.028,
+       0.015,
+       0.042
+      ],
+      "cuneiform_ctij": [
+       0.17,
+       0.137,
+       0.205
+      ],
+      "egyptian": [
+       0.0,
+       0.0,
+       0.002
+      ],
+      "hebrew_inscr": [
+       0.469,
+       0.426,
+       0.51
+      ],
+      "kjv": [
+       0.076,
+       0.051,
+       0.102
+      ],
+      "maya": [
+       0.059,
+       0.04,
+       0.082
+      ],
+      "nahuatl": [
+       0.013,
+       0.006,
+       0.022
+      ],
+      "native_places": [
+       0.028,
+       0.015,
+       0.043
+      ],
+      "sumerian": [
+       0.086,
+       0.065,
+       0.111
+      ],
+      "treaty_signers": [
+       0.033,
+       0.019,
+       0.052
+      ]
+     }
+    },
+    "kjv_names_german_bible": {
+     "names": 1147,
+     "share": {
+      "census_1790": [
+       0.076,
+       0.039,
+       0.137
+      ],
+      "classical": [
+       0.065,
+       0.033,
+       0.115
+      ],
+      "cuneiform_ctij": [
+       0.097,
+       0.071,
+       0.129
+      ],
+      "egyptian": [
+       0.001,
+       0.0,
+       0.003
+      ],
+      "hebrew_inscr": [
+       0.084,
+       0.059,
+       0.113
+      ],
+      "kjv": [
+       0.371,
+       0.304,
+       0.435
+      ],
+      "maya": [
+       0.066,
+       0.044,
+       0.097
+      ],
+      "nahuatl": [
+       0.022,
+       0.012,
+       0.033
+      ],
+      "native_places": [
+       0.077,
+       0.036,
+       0.126
+      ],
+      "sumerian": [
+       0.06,
+       0.039,
+       0.078
+      ],
+      "treaty_signers": [
+       0.08,
+       0.041,
+       0.132
+      ]
+     }
+    },
+    "book_of_mormon": {
+     "names": 163,
+     "share": {
+      "census_1790": [
+       0.101,
+       0.043,
+       0.178
+      ],
+      "classical": [
+       0.164,
+       0.073,
+       0.258
+      ],
+      "cuneiform_ctij": [
+       0.046,
+       0.006,
+       0.098
+      ],
+      "egyptian": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "hebrew_inscr": [
+       0.078,
+       0.025,
+       0.135
+      ],
+      "kjv": [
+       0.378,
+       0.264,
+       0.497
+      ],
+      "maya": [
+       0.047,
+       0.012,
+       0.098
+      ],
+      "nahuatl": [
+       0.007,
+       0.0,
+       0.037
+      ],
+      "native_places": [
+       0.056,
+       0.018,
+       0.117
+      ],
+      "sumerian": [
+       0.054,
+       0.018,
+       0.11
+      ],
+      "treaty_signers": [
+       0.068,
+       0.024,
+       0.129
+      ]
+     }
+    },
+    "spalding": {
+     "names": 43,
+     "share": {
+      "census_1790": [
+       0.179,
+       0.047,
+       0.349
+      ],
+      "classical": [
+       0.108,
+       0.0,
+       0.233
+      ],
+      "cuneiform_ctij": [
+       0.027,
+       0.0,
+       0.117
+      ],
+      "egyptian": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "hebrew_inscr": [
+       0.062,
+       0.0,
+       0.186
+      ],
+      "kjv": [
+       0.133,
+       0.023,
+       0.279
+      ],
+      "maya": [
+       0.072,
+       0.0,
+       0.163
+      ],
+      "nahuatl": [
+       0.002,
+       0.0,
+       0.047
+      ],
+      "native_places": [
+       0.21,
+       0.07,
+       0.372
+      ],
+      "sumerian": [
+       0.059,
+       0.0,
+       0.186
+      ],
+      "treaty_signers": [
+       0.148,
+       0.0,
+       0.326
+      ]
+     }
+    },
+    "swift": {
+     "names": 37,
+     "share": {
+      "census_1790": [
+       0.235,
+       0.054,
+       0.432
+      ],
+      "classical": [
+       0.115,
+       0.0,
+       0.244
+      ],
+      "cuneiform_ctij": [
+       0.095,
+       0.0,
+       0.217
+      ],
+      "egyptian": [
+       0.018,
+       0.0,
+       0.082
+      ],
+      "hebrew_inscr": [
+       0.077,
+       0.0,
+       0.216
+      ],
+      "kjv": [
+       0.114,
+       0.0,
+       0.243
+      ],
+      "maya": [
+       0.03,
+       0.0,
+       0.108
+      ],
+      "nahuatl": [
+       0.026,
+       0.0,
+       0.081
+      ],
+      "native_places": [
+       0.109,
+       0.0,
+       0.244
+      ],
+      "sumerian": [
+       0.088,
+       0.0,
+       0.243
+      ],
+      "treaty_signers": [
+       0.092,
+       0.0,
+       0.27
+      ]
+     }
+    },
+    "ossian": {
+     "names": 194,
+     "share": {
+      "census_1790": [
+       0.232,
+       0.118,
+       0.33
+      ],
+      "classical": [
+       0.221,
+       0.144,
+       0.325
+      ],
+      "cuneiform_ctij": [
+       0.037,
+       0.01,
+       0.077
+      ],
+      "egyptian": [
+       0.001,
+       0.0,
+       0.005
+      ],
+      "hebrew_inscr": [
+       0.019,
+       0.0,
+       0.047
+      ],
+      "kjv": [
+       0.171,
+       0.088,
+       0.268
+      ],
+      "maya": [
+       0.03,
+       0.005,
+       0.062
+      ],
+      "nahuatl": [
+       0.066,
+       0.021,
+       0.113
+      ],
+      "native_places": [
+       0.08,
+       0.021,
+       0.139
+      ],
+      "sumerian": [
+       0.048,
+       0.015,
+       0.103
+      ],
+      "treaty_signers": [
+       0.095,
+       0.036,
+       0.181
+      ]
+     }
+    },
+    "spenser": {
+     "names": 217,
+     "share": {
+      "census_1790": [
+       0.289,
+       0.194,
+       0.373
+      ],
+      "classical": [
+       0.314,
+       0.23,
+       0.396
+      ],
+      "cuneiform_ctij": [
+       0.034,
+       0.009,
+       0.078
+      ],
+      "egyptian": [
+       0.002,
+       0.0,
+       0.014
+      ],
+      "hebrew_inscr": [
+       0.016,
+       0.0,
+       0.042
+      ],
+      "kjv": [
+       0.115,
+       0.055,
+       0.18
+      ],
+      "maya": [
+       0.008,
+       0.0,
+       0.028
+      ],
+      "nahuatl": [
+       0.018,
+       0.0,
+       0.041
+      ],
+      "native_places": [
+       0.084,
+       0.037,
+       0.134
+      ],
+      "sumerian": [
+       0.027,
+       0.005,
+       0.055
+      ],
+      "treaty_signers": [
+       0.093,
+       0.041,
+       0.148
+      ]
+     }
+    },
+    "invented_pooled": {
+     "names": 274,
+     "share": {
+      "census_1790": [
+       0.23,
+       0.146,
+       0.318
+      ],
+      "classical": [
+       0.186,
+       0.12,
+       0.263
+      ],
+      "cuneiform_ctij": [
+       0.04,
+       0.015,
+       0.073
+      ],
+      "egyptian": [
+       0.003,
+       0.0,
+       0.011
+      ],
+      "hebrew_inscr": [
+       0.033,
+       0.007,
+       0.066
+      ],
+      "kjv": [
+       0.159,
+       0.088,
+       0.252
+      ],
+      "maya": [
+       0.039,
+       0.011,
+       0.073
+      ],
+      "nahuatl": [
+       0.05,
+       0.022,
+       0.08
+      ],
+      "native_places": [
+       0.105,
+       0.058,
+       0.164
+      ],
+      "sumerian": [
+       0.056,
+       0.022,
+       0.095
+      ],
+      "treaty_signers": [
+       0.099,
+       0.047,
+       0.161
+      ]
+     }
+    },
+    "book_of_mormon_jaredite": {
+     "names": 41,
+     "share": {
+      "census_1790": [
+       0.166,
+       0.0,
+       0.366
+      ],
+      "classical": [
+       0.15,
+       0.024,
+       0.341
+      ],
+      "cuneiform_ctij": [
+       0.039,
+       0.0,
+       0.122
+      ],
+      "egyptian": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "hebrew_inscr": [
+       0.065,
+       0.0,
+       0.171
+      ],
+      "kjv": [
+       0.349,
+       0.146,
+       0.537
+      ],
+      "maya": [
+       0.052,
+       0.0,
+       0.146
+      ],
+      "nahuatl": [
+       0.007,
+       0.0,
+       0.049
+      ],
+      "native_places": [
+       0.059,
+       0.0,
+       0.195
+      ],
+      "sumerian": [
+       0.041,
+       0.0,
+       0.123
+      ],
+      "treaty_signers": [
+       0.071,
+       0.0,
+       0.195
+      ]
+     }
+    },
+    "book_of_mormon_lamanite": {
+     "names": 8,
+     "share": {
+      "census_1790": [
+       0.06,
+       0.0,
+       0.375
+      ],
+      "classical": [
+       0.316,
+       0.0,
+       0.75
+      ],
+      "cuneiform_ctij": [
+       0.013,
+       0.0,
+       0.125
+      ],
+      "egyptian": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "hebrew_inscr": [
+       0.022,
+       0.0,
+       0.25
+      ],
+      "kjv": [
+       0.403,
+       0.0,
+       0.753
+      ],
+      "maya": [
+       0.021,
+       0.0,
+       0.25
+      ],
+      "nahuatl": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "native_places": [
+       0.052,
+       0.0,
+       0.375
+      ],
+      "sumerian": [
+       0.027,
+       0.0,
+       0.25
+      ],
+      "treaty_signers": [
+       0.087,
+       0.0,
+       0.5
+      ]
+     }
+    },
+    "book_of_mormon_nephite": {
+     "names": 57,
+     "share": {
+      "census_1790": [
+       0.064,
+       0.0,
+       0.175
+      ],
+      "classical": [
+       0.183,
+       0.07,
+       0.368
+      ],
+      "cuneiform_ctij": [
+       0.052,
+       0.0,
+       0.141
+      ],
+      "egyptian": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "hebrew_inscr": [
+       0.055,
+       0.0,
+       0.158
+      ],
+      "kjv": [
+       0.37,
+       0.211,
+       0.544
+      ],
+      "maya": [
+       0.062,
+       0.0,
+       0.175
+      ],
+      "nahuatl": [
+       0.008,
+       0.0,
+       0.053
+      ],
+      "native_places": [
+       0.046,
+       0.0,
+       0.123
+      ],
+      "sumerian": [
+       0.083,
+       0.0,
+       0.175
+      ],
+      "treaty_signers": [
+       0.077,
+       0.0,
+       0.211
+      ]
+     }
+    },
+    "book_of_mormon_place": {
+     "names": 65,
+     "share": {
+      "census_1790": [
+       0.115,
+       0.015,
+       0.247
+      ],
+      "classical": [
+       0.163,
+       0.046,
+       0.292
+      ],
+      "cuneiform_ctij": [
+       0.029,
+       0.0,
+       0.108
+      ],
+      "egyptian": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "hebrew_inscr": [
+       0.063,
+       0.0,
+       0.169
+      ],
+      "kjv": [
+       0.393,
+       0.23,
+       0.554
+      ],
+      "maya": [
+       0.052,
+       0.0,
+       0.139
+      ],
+      "nahuatl": [
+       0.009,
+       0.0,
+       0.062
+      ],
+      "native_places": [
+       0.06,
+       0.0,
+       0.169
+      ],
+      "sumerian": [
+       0.041,
+       0.0,
+       0.123
+      ],
+      "treaty_signers": [
+       0.075,
+       0.0,
+       0.17
+      ]
+     }
+    },
+    "book_of_mormon_ungrouped": {
+     "names": 22,
+     "share": {
+      "census_1790": [
+       0.082,
+       0.0,
+       0.273
+      ],
+      "classical": [
+       0.091,
+       0.0,
+       0.318
+      ],
+      "cuneiform_ctij": [
+       0.084,
+       0.0,
+       0.228
+      ],
+      "egyptian": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "hebrew_inscr": [
+       0.185,
+       0.044,
+       0.365
+      ],
+      "kjv": [
+       0.417,
+       0.181,
+       0.683
+      ],
+      "maya": [
+       0.009,
+       0.0,
+       0.091
+      ],
+      "nahuatl": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "native_places": [
+       0.081,
+       0.0,
+       0.273
+      ],
+      "sumerian": [
+       0.019,
+       0.0,
+       0.136
+      ],
+      "treaty_signers": [
+       0.031,
+       0.0,
+       0.136
+      ]
+     }
+    },
+    "book_of_mormon_letters_shuffled": {
+     "names": 163,
+     "share": {
+      "census_1790": [
+       0.098,
+       0.043,
+       0.172
+      ],
+      "classical": [
+       0.116,
+       0.055,
+       0.178
+      ],
+      "cuneiform_ctij": [
+       0.06,
+       0.012,
+       0.111
+      ],
+      "egyptian": [
+       0.02,
+       0.0,
+       0.049
+      ],
+      "hebrew_inscr": [
+       0.085,
+       0.031,
+       0.153
+      ],
+      "kjv": [
+       0.205,
+       0.129,
+       0.294
+      ],
+      "maya": [
+       0.094,
+       0.043,
+       0.153
+      ],
+      "nahuatl": [
+       0.033,
+       0.0,
+       0.074
+      ],
+      "native_places": [
+       0.096,
+       0.043,
+       0.166
+      ],
+      "sumerian": [
+       0.088,
+       0.037,
+       0.153
+      ],
+      "treaty_signers": [
+       0.105,
+       0.043,
+       0.178
+      ]
+     }
+    }
+   },
+   "usual_set": {
+    "abinadi": "cuneiform_ctij",
+    "abinadom": "hebrew_inscr",
+    "abish": "kjv",
+    "ablom": "hebrew_inscr",
+    "agosh": "treaty_signers",
+    "ahah": "kjv",
+    "akish": "treaty_signers",
+    "alma": "cuneiform_ctij",
+    "amaleki": "sumerian",
+    "amalickiah": "kjv",
+    "amaron": "kjv",
+    "amgid": "sumerian",
+    "aminadi": "cuneiform_ctij",
+    "amlici": "classical",
+    "ammaron": "kjv",
+    "ammonihah": "kjv",
+    "ammoron": "kjv",
+    "amnigaddah": "hebrew_inscr",
+    "amnihu": "hebrew_inscr",
+    "amoron": "kjv",
+    "amulek": "sumerian",
+    "amulon": "classical",
+    "ani": "sumerian",
+    "anti": "classical",
+    "antiomno": "classical",
+    "antionah": "kjv",
+    "antionum": "classical",
+    "antiparah": "kjv",
+    "antipus": "classical",
+    "antum": "classical",
+    "archeantus": "classical",
+    "cezoram": "kjv",
+    "chemish": "treaty_signers",
+    "cohor": "census_1790",
+    "com": "maya",
+    "comnor": "census_1790",
+    "corianton": "classical",
+    "coriantor": "classical",
+    "coriantum": "classical",
+    "coriantumr": "classical",
+    "corihor": "classical",
+    "corom": "classical",
+    "cumeni": "classical",
+    "emer": "census_1790",
+    "emron": "kjv",
+    "ethem": "kjv",
+    "gaddianton": "census_1790",
+    "gadiandi": "native_places",
+    "gadianton": "native_places",
+    "gadiomnah": "hebrew_inscr",
+    "gazelem": "kjv",
+    "gid": "kjv",
+    "giddianhi": "cuneiform_ctij",
+    "giddonah": "kjv",
+    "gidgiddonah": "kjv",
+    "gidgiddoni": "kjv",
+    "gilgah": "kjv",
+    "gimgimno": "kjv",
+    "hagoth": "kjv",
+    "hearthom": "census_1790",
+    "helaman": "kjv",
+    "helorum": "classical",
+    "hermounts": "census_1790",
+    "heshlon": "kjv",
+    "himni": "hebrew_inscr",
+    "irreantum": "sumerian",
+    "isabel": "cuneiform_ctij",
+    "jacobugath": "kjv",
+    "jacom": "maya",
+    "jarom": "kjv",
+    "jashon": "kjv",
+    "jershon": "kjv",
+    "joneam": "kjv",
+    "josh": "kjv",
+    "kib": "cuneiform_ctij",
+    "kim": "maya",
+    "kishkumen": "treaty_signers",
+    "korihor": "kjv",
+    "kumen": "sumerian",
+    "kumenonhi": "treaty_signers",
+    "lachoneus": "classical",
+    "lamah": "kjv",
+    "laman": "census_1790",
+    "lamoni": "classical",
+    "lehonti": "classical",
+    "lib": "sumerian",
+    "limhah": "kjv",
+    "limher": "census_1790",
+    "limhi": "sumerian",
+    "luram": "sumerian",
+    "mahah": "kjv",
+    "manti": "classical",
+    "mathoni": "kjv",
+    "mathonihah": "kjv",
+    "melek": "kjv",
+    "middoni": "hebrew_inscr",
+    "minon": "native_places",
+    "mocum": "classical",
+    "moriancumer": "classical",
+    "morianton": "classical",
+    "moriantum": "classical",
+    "mormon": "census_1790",
+    "moron": "census_1790",
+    "moroni": "kjv",
+    "moronihah": "kjv",
+    "mosiah": "kjv",
+    "mulek": "maya",
+    "muloki": "maya",
+    "nahom": "maya",
+    "nehor": "kjv",
+    "nephihah": "kjv",
+    "neum": "classical",
+    "ogath": "kjv",
+    "omner": "census_1790",
+    "omni": "classical",
+    "onidah": "kjv",
+    "onihah": "kjv",
+    "orihah": "kjv",
+    "paanchi": "maya",
+    "pachus": "classical",
+    "pacumeni": "classical",
+    "pagag": "native_places",
+    "pahoran": "kjv",
+    "rabbanah": "kjv",
+    "rameumptom": "census_1790",
+    "riplah": "kjv",
+    "riplakish": "kjv",
+    "ripliancum": "classical",
+    "sam": "hebrew_inscr",
+    "sariah": "kjv",
+    "seantum": "sumerian",
+    "sebus": "classical",
+    "seezoram": "kjv",
+    "shared": "kjv",
+    "shazer": "kjv",
+    "shelem": "kjv",
+    "shemlon": "kjv",
+    "shemnon": "kjv",
+    "sherem": "kjv",
+    "sherrizah": "kjv",
+    "shez": "kjv",
+    "shiblom": "kjv",
+    "shim": "kjv",
+    "shimnilom": "kjv",
+    "shiz": "kjv",
+    "shule": "treaty_signers",
+    "shurr": "census_1790",
+    "sidom": "maya",
+    "siron": "kjv",
+    "teancum": "maya",
+    "teomner": "census_1790",
+    "tubaloth": "kjv",
+    "zarahemla": "kjv",
+    "zeezrom": "kjv",
+    "zemnarihah": "kjv",
+    "zenephi": "kjv",
+    "zeniff": "kjv",
+    "zenock": "native_places",
+    "zenos": "kjv",
+    "zerahemnah": "kjv",
+    "zeram": "kjv",
+    "zerin": "kjv",
+    "zoram": "kjv"
+   },
+   "verdict": {
+    "closest_set": "kjv",
+    "invented_names_closest_set": null,
+    "distinct_from_invention": true
+   }
+  },
+  "english": {
+   "shares": {
+    "book_of_mormon": {
+     "names": 163,
+     "share": {
+      "census_1790": [
+       0.113,
+       0.055,
+       0.184
+      ],
+      "classical": [
+       0.199,
+       0.123,
+       0.276
+      ],
+      "kjv": [
+       0.553,
+       0.479,
+       0.644
+      ],
+      "native_places": [
+       0.055,
+       0.018,
+       0.104
+      ],
+      "treaty_signers": [
+       0.08,
+       0.031,
+       0.135
+      ]
+     }
+    },
+    "spalding": {
+     "names": 43,
+     "share": {
+      "census_1790": [
+       0.268,
+       0.116,
+       0.466
+      ],
+      "classical": [
+       0.126,
+       0.023,
+       0.256
+      ],
+      "kjv": [
+       0.16,
+       0.023,
+       0.302
+      ],
+      "native_places": [
+       0.245,
+       0.093,
+       0.419
+      ],
+      "treaty_signers": [
+       0.201,
+       0.07,
+       0.372
+      ]
+     }
+    },
+    "swift": {
+     "names": 37,
+     "share": {
+      "census_1790": [
+       0.36,
+       0.189,
+       0.568
+      ],
+      "classical": [
+       0.125,
+       0.027,
+       0.244
+      ],
+      "kjv": [
+       0.174,
+       0.054,
+       0.351
+      ],
+      "native_places": [
+       0.17,
+       0.027,
+       0.325
+      ],
+      "treaty_signers": [
+       0.171,
+       0.027,
+       0.297
+      ]
+     }
+    },
+    "ossian": {
+     "names": 194,
+     "share": {
+      "census_1790": [
+       0.336,
+       0.237,
+       0.423
+      ],
+      "classical": [
+       0.27,
+       0.18,
+       0.351
+      ],
+      "kjv": [
+       0.204,
+       0.118,
+       0.278
+      ],
+      "native_places": [
+       0.063,
+       0.02,
+       0.114
+      ],
+      "treaty_signers": [
+       0.127,
+       0.062,
+       0.196
+      ]
+     }
+    },
+    "spenser": {
+     "names": 217,
+     "share": {
+      "census_1790": [
+       0.371,
+       0.295,
+       0.447
+      ],
+      "classical": [
+       0.382,
+       0.304,
+       0.452
+      ],
+      "kjv": [
+       0.105,
+       0.055,
+       0.157
+      ],
+      "native_places": [
+       0.07,
+       0.032,
+       0.12
+      ],
+      "treaty_signers": [
+       0.072,
+       0.032,
+       0.129
+      ]
+     }
+    },
+    "invented_pooled": {
+     "names": 274,
+     "share": {
+      "census_1790": [
+       0.329,
+       0.255,
+       0.391
+      ],
+      "classical": [
+       0.228,
+       0.164,
+       0.296
+      ],
+      "kjv": [
+       0.192,
+       0.124,
+       0.259
+      ],
+      "native_places": [
+       0.108,
+       0.055,
+       0.153
+      ],
+      "treaty_signers": [
+       0.143,
+       0.091,
+       0.208
+      ]
+     }
+    },
+    "book_of_mormon_jaredite": {
+     "names": 41,
+     "share": {
+      "census_1790": [
+       0.199,
+       0.073,
+       0.39
+      ],
+      "classical": [
+       0.176,
+       0.049,
+       0.317
+      ],
+      "kjv": [
+       0.519,
+       0.365,
+       0.684
+      ],
+      "native_places": [
+       0.042,
+       0.0,
+       0.146
+      ],
+      "treaty_signers": [
+       0.063,
+       0.0,
+       0.171
+      ]
+     }
+    },
+    "book_of_mormon_lamanite": {
+     "names": 8,
+     "share": {
+      "census_1790": [
+       0.117,
+       0.0,
+       0.375
+      ],
+      "classical": [
+       0.301,
+       0.0,
+       0.75
+      ],
+      "kjv": [
+       0.517,
+       0.125,
+       0.878
+      ],
+      "native_places": [
+       0.037,
+       0.0,
+       0.253
+      ],
+      "treaty_signers": [
+       0.029,
+       0.0,
+       0.25
+      ]
+     }
+    },
+    "book_of_mormon_nephite": {
+     "names": 57,
+     "share": {
+      "census_1790": [
+       0.069,
+       0.0,
+       0.158
+      ],
+      "classical": [
+       0.218,
+       0.105,
+       0.351
+      ],
+      "kjv": [
+       0.565,
+       0.404,
+       0.702
+      ],
+      "native_places": [
+       0.041,
+       0.0,
+       0.123
+      ],
+      "treaty_signers": [
+       0.106,
+       0.018,
+       0.228
+      ]
+     }
+    },
+    "book_of_mormon_place": {
+     "names": 65,
+     "share": {
+      "census_1790": [
+       0.122,
+       0.031,
+       0.2
+      ],
+      "classical": [
+       0.203,
+       0.077,
+       0.323
+      ],
+      "kjv": [
+       0.519,
+       0.369,
+       0.662
+      ],
+      "native_places": [
+       0.07,
+       0.0,
+       0.185
+      ],
+      "treaty_signers": [
+       0.086,
+       0.015,
+       0.169
+      ]
+     }
+    },
+    "book_of_mormon_ungrouped": {
+     "names": 22,
+     "share": {
+      "census_1790": [
+       0.069,
+       0.0,
+       0.227
+      ],
+      "classical": [
+       0.152,
+       0.0,
+       0.319
+      ],
+      "kjv": [
+       0.677,
+       0.453,
+       0.865
+      ],
+      "native_places": [
+       0.071,
+       0.0,
+       0.227
+      ],
+      "treaty_signers": [
+       0.03,
+       0.0,
+       0.182
+      ]
+     }
+    },
+    "book_of_mormon_letters_shuffled": {
+     "names": 163,
+     "share": {
+      "census_1790": [
+       0.137,
+       0.074,
+       0.209
+      ],
+      "classical": [
+       0.16,
+       0.098,
+       0.227
+      ],
+      "kjv": [
+       0.376,
+       0.282,
+       0.473
+      ],
+      "native_places": [
+       0.164,
+       0.086,
+       0.245
+      ],
+      "treaty_signers": [
+       0.163,
+       0.098,
+       0.239
+      ]
+     }
+    }
+   },
+   "usual_set": {
+    "abinadi": "kjv",
+    "abinadom": "kjv",
+    "abish": "kjv",
+    "ablom": "kjv",
+    "agosh": "kjv",
+    "ahah": "kjv",
+    "akish": "kjv",
+    "alma": "classical",
+    "amaleki": "kjv",
+    "amalickiah": "kjv",
+    "amaron": "kjv",
+    "amgid": "kjv",
+    "aminadi": "kjv",
+    "amlici": "classical",
+    "ammaron": "kjv",
+    "ammonihah": "kjv",
+    "ammoron": "kjv",
+    "amnigaddah": "kjv",
+    "amnihu": "kjv",
+    "amoron": "kjv",
+    "amulek": "kjv",
+    "amulon": "classical",
+    "ani": "classical",
+    "anti": "classical",
+    "antiomno": "classical",
+    "antionah": "native_places",
+    "antionum": "classical",
+    "antiparah": "kjv",
+    "antipus": "classical",
+    "antum": "classical",
+    "archeantus": "classical",
+    "cezoram": "kjv",
+    "chemish": "kjv",
+    "cohor": "census_1790",
+    "com": "census_1790",
+    "comnor": "classical",
+    "corianton": "classical",
+    "coriantor": "classical",
+    "coriantum": "classical",
+    "coriantumr": "classical",
+    "corihor": "classical",
+    "corom": "classical",
+    "cumeni": "treaty_signers",
+    "emer": "census_1790",
+    "emron": "kjv",
+    "ethem": "kjv",
+    "gaddianton": "census_1790",
+    "gadiandi": "native_places",
+    "gadianton": "native_places",
+    "gadiomnah": "kjv",
+    "gazelem": "kjv",
+    "gid": "kjv",
+    "giddianhi": "kjv",
+    "giddonah": "kjv",
+    "gidgiddonah": "kjv",
+    "gidgiddoni": "kjv",
+    "gilgah": "kjv",
+    "gimgimno": "kjv",
+    "hagoth": "kjv",
+    "hearthom": "census_1790",
+    "helaman": "kjv",
+    "helorum": "classical",
+    "hermounts": "census_1790",
+    "heshlon": "kjv",
+    "himni": "kjv",
+    "irreantum": "classical",
+    "isabel": "kjv",
+    "jacobugath": "kjv",
+    "jacom": "kjv",
+    "jarom": "kjv",
+    "jashon": "kjv",
+    "jershon": "kjv",
+    "joneam": "kjv",
+    "josh": "kjv",
+    "kib": "kjv",
+    "kim": "kjv",
+    "kishkumen": "treaty_signers",
+    "korihor": "kjv",
+    "kumen": "treaty_signers",
+    "kumenonhi": "treaty_signers",
+    "lachoneus": "classical",
+    "lamah": "kjv",
+    "laman": "census_1790",
+    "lamoni": "classical",
+    "lehonti": "kjv",
+    "lib": "kjv",
+    "limhah": "kjv",
+    "limher": "census_1790",
+    "limhi": "kjv",
+    "luram": "kjv",
+    "mahah": "kjv",
+    "manti": "classical",
+    "mathoni": "kjv",
+    "mathonihah": "kjv",
+    "melek": "kjv",
+    "middoni": "kjv",
+    "minon": "native_places",
+    "mocum": "native_places",
+    "moriancumer": "census_1790",
+    "morianton": "classical",
+    "moriantum": "classical",
+    "mormon": "census_1790",
+    "moron": "kjv",
+    "moroni": "kjv",
+    "moronihah": "kjv",
+    "mosiah": "kjv",
+    "mulek": "treaty_signers",
+    "muloki": "treaty_signers",
+    "nahom": "treaty_signers",
+    "nehor": "kjv",
+    "nephihah": "kjv",
+    "neum": "classical",
+    "ogath": "kjv",
+    "omner": "census_1790",
+    "omni": "classical",
+    "onidah": "kjv",
+    "onihah": "native_places",
+    "orihah": "kjv",
+    "paanchi": "treaty_signers",
+    "pachus": "classical",
+    "pacumeni": "treaty_signers",
+    "pagag": "native_places",
+    "pahoran": "kjv",
+    "rabbanah": "kjv",
+    "rameumptom": "census_1790",
+    "riplah": "kjv",
+    "riplakish": "census_1790",
+    "ripliancum": "classical",
+    "sam": "kjv",
+    "sariah": "kjv",
+    "seantum": "classical",
+    "sebus": "kjv",
+    "seezoram": "kjv",
+    "shared": "kjv",
+    "shazer": "kjv",
+    "shelem": "kjv",
+    "shemlon": "kjv",
+    "shemnon": "kjv",
+    "sherem": "kjv",
+    "sherrizah": "kjv",
+    "shez": "kjv",
+    "shiblom": "kjv",
+    "shim": "kjv",
+    "shimnilom": "kjv",
+    "shiz": "kjv",
+    "shule": "treaty_signers",
+    "shurr": "census_1790",
+    "sidom": "kjv",
+    "siron": "kjv",
+    "teancum": "native_places",
+    "teomner": "classical",
+    "tubaloth": "kjv",
+    "zarahemla": "kjv",
+    "zeezrom": "kjv",
+    "zemnarihah": "kjv",
+    "zenephi": "kjv",
+    "zeniff": "census_1790",
+    "zenock": "native_places",
+    "zenos": "classical",
+    "zerahemnah": "kjv",
+    "zeram": "kjv",
+    "zerin": "kjv",
+    "zoram": "kjv"
+   },
+   "verdict": {
+    "closest_set": "kjv",
+    "invented_names_closest_set": null,
+    "distinct_from_invention": true
+   }
+  },
+  "skeleton": {
+   "shares": {
+    "kjv_names_scholarly": {
+     "names": 581,
+     "share": {
+      "census_1790": [
+       0.09,
+       0.053,
+       0.138
+      ],
+      "classical": [
+       0.047,
+       0.022,
+       0.074
+      ],
+      "cuneiform_ctij": [
+       0.108,
+       0.071,
+       0.158
+      ],
+      "egyptian": [
+       0.099,
+       0.055,
+       0.148
+      ],
+      "hebrew_inscr": [
+       0.229,
+       0.169,
+       0.294
+      ],
+      "hebrew_inscr_golub": [
+       0.197,
+       0.148,
+       0.26
+      ],
+      "kjv": [
+       0.092,
+       0.048,
+       0.138
+      ],
+      "native_places": [
+       0.048,
+       0.024,
+       0.083
+      ],
+      "sumerian": [
+       0.042,
+       0.021,
+       0.071
+      ],
+      "treaty_signers": [
+       0.049,
+       0.022,
+       0.081
+      ]
+     }
+    },
+    "kjv_names_german_bible": {
+     "names": 619,
+     "share": {
+      "census_1790": [
+       0.084,
+       0.048,
+       0.137
+      ],
+      "classical": [
+       0.042,
+       0.018,
+       0.079
+      ],
+      "cuneiform_ctij": [
+       0.082,
+       0.042,
+       0.128
+      ],
+      "egyptian": [
+       0.07,
+       0.04,
+       0.11
+      ],
+      "hebrew_inscr": [
+       0.158,
+       0.111,
+       0.218
+      ],
+      "hebrew_inscr_golub": [
+       0.211,
+       0.142,
+       0.281
+      ],
+      "kjv": [
+       0.084,
+       0.039,
+       0.142
+      ],
+      "native_places": [
+       0.095,
+       0.045,
+       0.163
+      ],
+      "sumerian": [
+       0.065,
+       0.037,
+       0.107
+      ],
+      "treaty_signers": [
+       0.109,
+       0.052,
+       0.188
+      ]
+     }
+    },
+    "book_of_mormon": {
+     "names": 120,
+     "share": {
+      "census_1790": [
+       0.09,
+       0.017,
+       0.192
+      ],
+      "classical": [
+       0.098,
+       0.017,
+       0.209
+      ],
+      "cuneiform_ctij": [
+       0.104,
+       0.033,
+       0.2
+      ],
+      "egyptian": [
+       0.129,
+       0.033,
+       0.259
+      ],
+      "hebrew_inscr": [
+       0.177,
+       0.075,
+       0.283
+      ],
+      "hebrew_inscr_golub": [
+       0.115,
+       0.042,
+       0.2
+      ],
+      "kjv": [
+       0.105,
+       0.025,
+       0.2
+      ],
+      "native_places": [
+       0.079,
+       0.017,
+       0.167
+      ],
+      "sumerian": [
+       0.05,
+       0.008,
+       0.125
+      ],
+      "treaty_signers": [
+       0.054,
+       0.0,
+       0.133
+      ]
+     }
+    },
+    "spalding": {
+     "names": 31,
+     "share": {
+      "census_1790": [
+       0.136,
+       0.0,
+       0.355
+      ],
+      "classical": [
+       0.097,
+       0.0,
+       0.259
+      ],
+      "cuneiform_ctij": [
+       0.034,
+       0.0,
+       0.13
+      ],
+      "egyptian": [
+       0.062,
+       0.0,
+       0.161
+      ],
+      "hebrew_inscr": [
+       0.049,
+       0.0,
+       0.194
+      ],
+      "hebrew_inscr_golub": [
+       0.12,
+       0.0,
+       0.29
+      ],
+      "kjv": [
+       0.067,
+       0.0,
+       0.226
+      ],
+      "native_places": [
+       0.207,
+       0.032,
+       0.387
+      ],
+      "sumerian": [
+       0.079,
+       0.0,
+       0.258
+      ],
+      "treaty_signers": [
+       0.149,
+       0.0,
+       0.355
+      ]
+     }
+    },
+    "swift": {
+     "names": 35,
+     "share": {
+      "census_1790": [
+       0.187,
+       0.057,
+       0.344
+      ],
+      "classical": [
+       0.158,
+       0.029,
+       0.343
+      ],
+      "cuneiform_ctij": [
+       0.076,
+       0.0,
+       0.201
+      ],
+      "egyptian": [
+       0.053,
+       0.0,
+       0.171
+      ],
+      "hebrew_inscr": [
+       0.059,
+       0.0,
+       0.171
+      ],
+      "hebrew_inscr_golub": [
+       0.044,
+       0.0,
+       0.144
+      ],
+      "kjv": [
+       0.118,
+       0.0,
+       0.314
+      ],
+      "native_places": [
+       0.068,
+       0.0,
+       0.2
+      ],
+      "sumerian": [
+       0.15,
+       0.0,
+       0.343
+      ],
+      "treaty_signers": [
+       0.088,
+       0.0,
+       0.229
+      ]
+     }
+    },
+    "ossian": {
+     "names": 166,
+     "share": {
+      "census_1790": [
+       0.205,
+       0.108,
+       0.326
+      ],
+      "classical": [
+       0.112,
+       0.048,
+       0.187
+      ],
+      "cuneiform_ctij": [
+       0.088,
+       0.03,
+       0.163
+      ],
+      "egyptian": [
+       0.065,
+       0.018,
+       0.127
+      ],
+      "hebrew_inscr": [
+       0.121,
+       0.042,
+       0.211
+      ],
+      "hebrew_inscr_golub": [
+       0.118,
+       0.048,
+       0.193
+      ],
+      "kjv": [
+       0.101,
+       0.042,
+       0.175
+      ],
+      "native_places": [
+       0.054,
+       0.018,
+       0.096
+      ],
+      "sumerian": [
+       0.087,
+       0.03,
+       0.151
+      ],
+      "treaty_signers": [
+       0.048,
+       0.006,
+       0.12
+      ]
+     }
+    },
+    "spenser": {
+     "names": 199,
+     "share": {
+      "census_1790": [
+       0.177,
+       0.105,
+       0.256
+      ],
+      "classical": [
+       0.227,
+       0.145,
+       0.312
+      ],
+      "cuneiform_ctij": [
+       0.084,
+       0.04,
+       0.146
+      ],
+      "egyptian": [
+       0.098,
+       0.055,
+       0.156
+      ],
+      "hebrew_inscr": [
+       0.078,
+       0.03,
+       0.131
+      ],
+      "hebrew_inscr_golub": [
+       0.035,
+       0.01,
+       0.07
+      ],
+      "kjv": [
+       0.101,
+       0.045,
+       0.166
+      ],
+      "native_places": [
+       0.073,
+       0.025,
+       0.131
+      ],
+      "sumerian": [
+       0.076,
+       0.03,
+       0.136
+      ],
+      "treaty_signers": [
+       0.051,
+       0.015,
+       0.096
+      ]
+     }
+    },
+    "invented_pooled": {
+     "names": 232,
+     "share": {
+      "census_1790": [
+       0.194,
+       0.116,
+       0.28
+      ],
+      "classical": [
+       0.118,
+       0.06,
+       0.19
+      ],
+      "cuneiform_ctij": [
+       0.08,
+       0.022,
+       0.151
+      ],
+      "egyptian": [
+       0.062,
+       0.021,
+       0.112
+      ],
+      "hebrew_inscr": [
+       0.105,
+       0.052,
+       0.173
+      ],
+      "hebrew_inscr_golub": [
+       0.107,
+       0.056,
+       0.177
+      ],
+      "kjv": [
+       0.103,
+       0.052,
+       0.168
+      ],
+      "native_places": [
+       0.072,
+       0.034,
+       0.121
+      ],
+      "sumerian": [
+       0.092,
+       0.039,
+       0.147
+      ],
+      "treaty_signers": [
+       0.067,
+       0.026,
+       0.121
+      ]
+     }
+    },
+    "book_of_mormon_jaredite": {
+     "names": 24,
+     "share": {
+      "census_1790": [
+       0.122,
+       0.0,
+       0.333
+      ],
+      "classical": [
+       0.097,
+       0.0,
+       0.292
+      ],
+      "cuneiform_ctij": [
+       0.071,
+       0.0,
+       0.292
+      ],
+      "egyptian": [
+       0.104,
+       0.0,
+       0.293
+      ],
+      "hebrew_inscr": [
+       0.139,
+       0.0,
+       0.333
+      ],
+      "hebrew_inscr_golub": [
+       0.099,
+       0.0,
+       0.25
+      ],
+      "kjv": [
+       0.139,
+       0.0,
+       0.334
+      ],
+      "native_places": [
+       0.105,
+       0.0,
+       0.292
+      ],
+      "sumerian": [
+       0.064,
+       0.0,
+       0.208
+      ],
+      "treaty_signers": [
+       0.061,
+       0.0,
+       0.208
+      ]
+     }
+    },
+    "book_of_mormon_lamanite": {
+     "names": 6,
+     "share": {
+      "census_1790": [
+       0.279,
+       0.0,
+       0.833
+      ],
+      "classical": [
+       0.044,
+       0.0,
+       0.5
+      ],
+      "cuneiform_ctij": [
+       0.106,
+       0.0,
+       0.504
+      ],
+      "egyptian": [
+       0.178,
+       0.0,
+       0.5
+      ],
+      "hebrew_inscr": [
+       0.096,
+       0.0,
+       0.5
+      ],
+      "hebrew_inscr_golub": [
+       0.058,
+       0.0,
+       0.5
+      ],
+      "kjv": [
+       0.159,
+       0.0,
+       0.667
+      ],
+      "native_places": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "sumerian": [
+       0.047,
+       0.0,
+       0.5
+      ],
+      "treaty_signers": [
+       0.033,
+       0.0,
+       0.5
+      ]
+     }
+    },
+    "book_of_mormon_nephite": {
+     "names": 45,
+     "share": {
+      "census_1790": [
+       0.078,
+       0.0,
+       0.201
+      ],
+      "classical": [
+       0.115,
+       0.022,
+       0.289
+      ],
+      "cuneiform_ctij": [
+       0.091,
+       0.0,
+       0.222
+      ],
+      "egyptian": [
+       0.126,
+       0.022,
+       0.289
+      ],
+      "hebrew_inscr": [
+       0.206,
+       0.022,
+       0.4
+      ],
+      "hebrew_inscr_golub": [
+       0.157,
+       0.022,
+       0.334
+      ],
+      "kjv": [
+       0.066,
+       0.0,
+       0.222
+      ],
+      "native_places": [
+       0.085,
+       0.0,
+       0.223
+      ],
+      "sumerian": [
+       0.028,
+       0.0,
+       0.111
+      ],
+      "treaty_signers": [
+       0.049,
+       0.0,
+       0.2
+      ]
+     }
+    },
+    "book_of_mormon_place": {
+     "names": 48,
+     "share": {
+      "census_1790": [
+       0.088,
+       0.0,
+       0.229
+      ],
+      "classical": [
+       0.081,
+       0.0,
+       0.229
+      ],
+      "cuneiform_ctij": [
+       0.15,
+       0.042,
+       0.292
+      ],
+      "egyptian": [
+       0.131,
+       0.0,
+       0.333
+      ],
+      "hebrew_inscr": [
+       0.154,
+       0.021,
+       0.312
+      ],
+      "hebrew_inscr_golub": [
+       0.108,
+       0.0,
+       0.251
+      ],
+      "kjv": [
+       0.115,
+       0.0,
+       0.271
+      ],
+      "native_places": [
+       0.052,
+       0.0,
+       0.167
+      ],
+      "sumerian": [
+       0.06,
+       0.0,
+       0.146
+      ],
+      "treaty_signers": [
+       0.061,
+       0.0,
+       0.188
+      ]
+     }
+    },
+    "book_of_mormon_ungrouped": {
+     "names": 16,
+     "share": {
+      "census_1790": [
+       0.068,
+       0.0,
+       0.25
+      ],
+      "classical": [
+       0.024,
+       0.0,
+       0.188
+      ],
+      "cuneiform_ctij": [
+       0.08,
+       0.0,
+       0.375
+      ],
+      "egyptian": [
+       0.13,
+       0.0,
+       0.375
+      ],
+      "hebrew_inscr": [
+       0.283,
+       0.0,
+       0.564
+      ],
+      "hebrew_inscr_golub": [
+       0.153,
+       0.0,
+       0.375
+      ],
+      "kjv": [
+       0.105,
+       0.0,
+       0.375
+      ],
+      "native_places": [
+       0.09,
+       0.0,
+       0.375
+      ],
+      "sumerian": [
+       0.043,
+       0.0,
+       0.188
+      ],
+      "treaty_signers": [
+       0.023,
+       0.0,
+       0.188
+      ]
+     }
+    },
+    "book_of_mormon_letters_shuffled": {
+     "names": 120,
+     "share": {
+      "census_1790": [
+       0.071,
+       0.017,
+       0.142
+      ],
+      "classical": [
+       0.07,
+       0.017,
+       0.142
+      ],
+      "cuneiform_ctij": [
+       0.106,
+       0.041,
+       0.192
+      ],
+      "egyptian": [
+       0.115,
+       0.042,
+       0.2
+      ],
+      "hebrew_inscr": [
+       0.135,
+       0.058,
+       0.225
+      ],
+      "hebrew_inscr_golub": [
+       0.123,
+       0.042,
+       0.209
+      ],
+      "kjv": [
+       0.093,
+       0.025,
+       0.184
+      ],
+      "native_places": [
+       0.088,
+       0.033,
+       0.167
+      ],
+      "sumerian": [
+       0.119,
+       0.05,
+       0.2
+      ],
+      "treaty_signers": [
+       0.081,
+       0.025,
+       0.15
+      ]
+     }
+    }
+   },
+   "usual_set": {
+    "pnt": "egyptian",
+    "pntm": "sumerian",
+    "plm": "hebrew_inscr_golub",
+    "mlk": "hebrew_inscr_golub",
+    "mlkk": "hebrew_inscr",
+    "mrn": "egyptian",
+    "mkt": "treaty_signers",
+    "mnt": "egyptian",
+    "mmrn": "egyptian",
+    "mmn": "hebrew_inscr",
+    "mnktt": "treaty_signers",
+    "mln": "cuneiform_ctij",
+    "ntmn": "egyptian",
+    "ntn": "hebrew_inscr_golub",
+    "ntnm": "hebrew_inscr_golub",
+    "ntpr": "hebrew_inscr_golub",
+    "ntps": "hebrew_inscr_golub",
+    "ntm": "sumerian",
+    "rknts": "classical",
+    "ksrm": "hebrew_inscr_golub",
+    "kms": "hebrew_inscr_golub",
+    "kmnr": "census_1790",
+    "krntn": "census_1790",
+    "krntr": "classical",
+    "krntm": "classical",
+    "krntmr": "egyptian",
+    "krr": "census_1790",
+    "krm": "hebrew_inscr",
+    "kmn": "census_1790",
+    "kttntn": "hebrew_inscr",
+    "ktnt": "native_places",
+    "ktntn": "hebrew_inscr",
+    "ktmn": "kjv",
+    "kslm": "hebrew_inscr_golub",
+    "kttn": "hebrew_inscr",
+    "ktkttn": "native_places",
+    "klk": "hebrew_inscr",
+    "kmkmn": "treaty_signers",
+    "rtm": "sumerian",
+    "lmn": "census_1790",
+    "lrm": "hebrew_inscr_golub",
+    "rmnts": "classical",
+    "sln": "kjv",
+    "rrntm": "egyptian",
+    "spl": "hebrew_inscr_golub",
+    "kpkt": "native_places",
+    "rsn": "sumerian",
+    "kskmn": "treaty_signers",
+    "kmnn": "sumerian",
+    "lkns": "classical",
+    "lnt": "census_1790",
+    "lmr": "hebrew_inscr_golub",
+    "mtn": "hebrew_inscr",
+    "mttn": "cuneiform_ctij",
+    "mnn": "cuneiform_ctij",
+    "mkm": "hebrew_inscr",
+    "mrnkmr": "hebrew_inscr_golub",
+    "mrntn": "egyptian",
+    "mrntm": "egyptian",
+    "mrmn": "egyptian",
+    "mnr": "hebrew_inscr",
+    "pnk": "native_places",
+    "pks": "classical",
+    "pkmn": "egyptian",
+    "pkk": "native_places",
+    "prn": "census_1790",
+    "rppn": "kjv",
+    "rmmptm": "kjv",
+    "rpl": "hebrew_inscr_golub",
+    "rplks": "classical",
+    "rplnkm": "hebrew_inscr",
+    "sntm": "egyptian",
+    "sps": "classical",
+    "ssrm": "cuneiform_ctij",
+    "srt": "egyptian",
+    "ssr": "cuneiform_ctij",
+    "slm": "hebrew_inscr_golub",
+    "smln": "cuneiform_ctij",
+    "smnn": "cuneiform_ctij",
+    "srm": "hebrew_inscr",
+    "srrs": "cuneiform_ctij",
+    "splm": "hebrew_inscr_golub",
+    "smnlm": "sumerian",
+    "srr": "cuneiform_ctij",
+    "stm": "sumerian",
+    "srn": "kjv",
+    "tnkm": "hebrew_inscr",
+    "tmnr": "egyptian",
+    "tplt": "cuneiform_ctij",
+    "srml": "hebrew_inscr",
+    "smnr": "hebrew_inscr",
+    "snp": "egyptian",
+    "snpp": "egyptian",
+    "snkk": "native_places",
+    "sns": "kjv",
+    "srmn": "cuneiform_ctij"
+   },
+   "verdict": {
+    "closest_set": null,
+    "invented_names_closest_set": null,
+    "distinct_from_invention": false
+   }
+  }
+ },
+ "recombination": {
+  "book_of_mormon": {
+   "names": 163,
+   "mean_length": 6.56,
+   "one_edit": [
+    0.368,
+    0.294,
+    0.442
+   ],
+   "splice": [
+    0.307,
+    0.239,
+    0.368
+   ],
+   "either": [
+    0.577,
+    0.509,
+    0.644
+   ]
+  },
+  "spalding": {
+   "names": 43,
+   "mean_length": 6.35,
+   "one_edit": [
+    0.14,
+    0.047,
+    0.233
+   ],
+   "splice": [
+    0.279,
+    0.14,
+    0.442
+   ],
+   "either": [
+    0.349,
+    0.209,
+    0.489
+   ]
+  },
+  "swift": {
+   "names": 37,
+   "mean_length": 8.46,
+   "one_edit": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "splice": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "either": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "ossian": {
+   "names": 194,
+   "mean_length": 6.26,
+   "one_edit": [
+    0.155,
+    0.098,
+    0.196
+   ],
+   "splice": [
+    0.196,
+    0.144,
+    0.268
+   ],
+   "either": [
+    0.33,
+    0.268,
+    0.387
+   ]
+  },
+  "spenser": {
+   "names": 217,
+   "mean_length": 7.51,
+   "one_edit": [
+    0.055,
+    0.028,
+    0.088
+   ],
+   "splice": [
+    0.097,
+    0.064,
+    0.143
+   ],
+   "either": [
+    0.143,
+    0.106,
+    0.189
+   ]
+  },
+  "book_of_mormon_letters_shuffled": {
+   "names": 161,
+   "mean_length": 6.58,
+   "one_edit": [
+    0.099,
+    0.05,
+    0.137
+   ],
+   "splice": [
+    0.037,
+    0.012,
+    0.068
+   ],
+   "either": [
+    0.124,
+    0.075,
+    0.162
+   ]
+  },
+  "kjv": {
+   "names": 2000,
+   "mean_length": 6.9,
+   "one_edit": [
+    0.57,
+    0.546,
+    0.591
+   ],
+   "splice": [
+    0.568,
+    0.548,
+    0.586
+   ],
+   "either": [
+    0.815,
+    0.798,
+    0.833
+   ]
+  },
+  "hebrew_inscr": {
+   "names": 708,
+   "mean_length": 6.33,
+   "one_edit": [
+    0.239,
+    0.206,
+    0.268
+   ],
+   "splice": [
+    0.131,
+    0.107,
+    0.155
+   ],
+   "either": [
+    0.338,
+    0.304,
+    0.374
+   ]
+  },
+  "cuneiform_ctij": {
+   "names": 1347,
+   "mean_length": 8.84,
+   "one_edit": [
+    0.065,
+    0.051,
+    0.079
+   ],
+   "splice": [
+    0.059,
+    0.046,
+    0.071
+   ],
+   "either": [
+    0.117,
+    0.101,
+    0.134
+   ]
+  },
+  "sumerian": {
+   "names": 927,
+   "mean_length": 8.26,
+   "one_edit": [
+    0.059,
+    0.045,
+    0.073
+   ],
+   "splice": [
+    0.057,
+    0.043,
+    0.073
+   ],
+   "either": [
+    0.112,
+    0.088,
+    0.132
+   ]
+  },
+  "egyptian": {
+   "names": 2000,
+   "mean_length": 5.66,
+   "one_edit": [
+    0.018,
+    0.011,
+    0.024
+   ],
+   "splice": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "either": [
+    0.018,
+    0.011,
+    0.024
+   ]
+  },
+  "classical": {
+   "names": 2000,
+   "mean_length": 6.97,
+   "one_edit": [
+    0.154,
+    0.138,
+    0.172
+   ],
+   "splice": [
+    0.257,
+    0.237,
+    0.278
+   ],
+   "either": [
+    0.38,
+    0.36,
+    0.402
+   ]
+  },
+  "census_1790": {
+   "names": 2000,
+   "mean_length": 6.43,
+   "one_edit": [
+    0.105,
+    0.089,
+    0.119
+   ],
+   "splice": [
+    0.113,
+    0.101,
+    0.126
+   ],
+   "either": [
+    0.195,
+    0.176,
+    0.211
+   ]
+  },
+  "native_places": {
+   "names": 1884,
+   "mean_length": 9.15,
+   "one_edit": [
+    0.037,
+    0.029,
+    0.046
+   ],
+   "splice": [
+    0.035,
+    0.027,
+    0.042
+   ],
+   "either": [
+    0.068,
+    0.058,
+    0.081
+   ]
+  },
+  "treaty_signers": {
+   "names": 2000,
+   "mean_length": 9.16,
+   "one_edit": [
+    0.044,
+    0.036,
+    0.052
+   ],
+   "splice": [
+    0.037,
+    0.027,
+    0.043
+   ],
+   "either": [
+    0.077,
+    0.064,
+    0.088
+   ]
+  },
+  "nahuatl": {
+   "names": 209,
+   "mean_length": 8.67,
+   "one_edit": [
+    0.048,
+    0.024,
+    0.077
+   ],
+   "splice": [
+    0.024,
+    0.005,
+    0.043
+   ],
+   "either": [
+    0.072,
+    0.043,
+    0.105
+   ]
+  },
+  "maya": {
+   "names": 207,
+   "mean_length": 4.98,
+   "one_edit": [
+    0.237,
+    0.179,
+    0.3
+   ],
+   "splice": [
+    0.034,
+    0.01,
+    0.058
+   ],
+   "either": [
+    0.266,
+    0.217,
+    0.329
+   ]
+  },
+  "more_recombined_than_invention": true
+ },
+ "skeleton_match_with_hebrew_inscriptions": {
+  "note": "added after the card was written (Tvedtnes, Gee and Roper 2000 arrived mid-run); a coarse consonant skeleton matches often by chance, which the other rows measure",
+  "book_of_mormon": {
+   "names": 120,
+   "share": 0.258
+  },
+  "spalding": {
+   "names": 31,
+   "share": 0.161
+  },
+  "swift": {
+   "names": 35,
+   "share": 0.029
+  },
+  "ossian": {
+   "names": 166,
+   "share": 0.193
+  },
+  "spenser": {
+   "names": 199,
+   "share": 0.131
+  },
+  "book_of_mormon_letters_shuffled": {
+   "names": 120,
+   "share": 0.2
+  },
+  "kjv": {
+   "names": 3098,
+   "share": 0.267
+  },
+  "cuneiform_ctij": {
+   "names": 1075,
+   "share": 0.138
+  },
+  "sumerian": {
+   "names": 794,
+   "share": 0.087
+  },
+  "egyptian": {
+   "names": 6419,
+   "share": 0.117
+  },
+  "classical": {
+   "names": 1972,
+   "share": 0.147
+  },
+  "census_1790": {
+   "names": 13108,
+   "share": 0.143
+  },
+  "native_places": {
+   "names": 1607,
+   "share": 0.065
+  },
+  "treaty_signers": {
+   "names": 2231,
+   "share": 0.1
+  },
+  "nahuatl": {
+   "names": 182,
+   "share": 0.137
+  },
+  "maya": {
+   "names": 62,
+   "share": 0.226
+  },
+  "tvedtnes_2000_names": {
+   "names": 7,
+   "share": 1.0
+  },
+  "tvedtnes_names_matching": [
+   "ammonihah",
+   "chemish",
+   "isabel",
+   "luram",
+   "mathoni",
+   "mathonihah",
+   "muloki"
+  ]
+ },
+ "wilcox_analogue": {
+  "profiles": {
+   "book_of_mormon": {
+    "vector": [
+     0.05281,
+     0.09669,
+     0.06078,
+     0.05923,
+     0.00787,
+     0.00796,
+     0.0051
+    ],
+    "names": 163,
+    "variance_of_name_means": 0.0002747,
+    "mean_length": 6.56
+   },
+   "census_given": {
+    "vector": [
+     0.05043,
+     0.09758,
+     0.06236,
+     0.05931,
+     0.00714,
+     0.00858,
+     0.00512
+    ],
+    "names": 1118,
+    "variance_of_name_means": 0.0003149,
+    "mean_length": 5.9
+   },
+   "spalding": {
+    "vector": [
+     0.04457,
+     0.11249,
+     0.04855,
+     0.05869,
+     0.00775,
+     0.00648,
+     0.0036
+    ],
+    "names": 43,
+    "variance_of_name_means": 0.000155,
+    "mean_length": 6.35
+   }
+  },
+  "distances": {
+   "book_of_mormon ~ census_given": 0.00314,
+   "book_of_mormon ~ spalding": 0.02172,
+   "census_given ~ spalding": 0.02133
+  },
+  "note": "letters, not phonemes; an analogue of Wilcox et al., not a reproduction"
+ },
+ "config_sha256": "2fbee61cf2bf895b84b93b8e5f441dc93267165b3350c3c174da75e8ef16ee9f",
+ "commit": "0ec9bbf18c5e62ec80dc0c7f674e694106f56c42"
+}

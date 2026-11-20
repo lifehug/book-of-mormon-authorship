@@ -97,7 +97,7 @@ compares against.
 
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
-| BOM-108 | The names are Hebrew, or Egyptian, or invented | Tvedtnes and others; Wilcox 2013, 2019 | 124 names against census names, Spalding, Tolkien | Hebrew inscriptions, Egyptian, Maya, Nahuatl, treaty signers, period print, four inventing authors | TBD |
+| BOM-108 | The names are Hebrew, or Egyptian, or invented | Tvedtnes and others; Wilcox 2013, 2019 | 124 names against census names, Spalding, Tolkien | Hebrew inscriptions, Egyptian, Maya, Nahuatl, treaty signers, period print, four inventing authors | **Done**, with a limit |
 | BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | TBD |
 | BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | TBD |
 | BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | TBD |
@@ -232,6 +232,46 @@ This part is a pilot. The list of real systems was written from memory and has n
 
 *What it does not show.* The twenties result is about counting habit only. The Alma 11 result
 says the ratios do not pick out one ancient system; it does not test the names of the units.
+
+### The names (BOM-108)
+
+The book has 163 names that are not in the Bible: Nephi, Moroni, Zarahemla, Coriantumr. People
+have called them Hebrew, Egyptian, and made up. I gathered lists to compare them with: 4,673 King
+James names, 752 Hebrew names from inscriptions, 8,451 Egyptian names, 2,774 names of Native
+American treaty signers, Maya rulers, Aztec names, classical names as printed in English, the
+1790 census, and the names four authors invented (Spalding, Swift, Spenser, Macpherson's Ossian).
+Then a simple model of letter patterns for each list, and the question: which list does each Book
+of Mormon name look most like?
+
+**The limit comes first, because it decides what the test can say.** I took King James names and
+wrote them the way scholars transcribe Hebrew. Only 8% of them were still recognised as King
+James names. 47% went to the Hebrew-inscription list. So a model like this mostly sorts names by
+how they are spelled, not by what language they come from. Comparing "Nephi" in 1830 English
+spelling with a Hebrew name in scholarly transcription is not a fair comparison, and I draw no
+conclusion from it.
+
+What can be compared fairly is lists that are all in English spelling:
+
+| Names | Closest to King James | Closest to classical | Closest to the 1790 census |
+| --- | --- | --- | --- |
+| Book of Mormon, non-biblical | 55% | 20% | 11% |
+| Spalding, Swift and Ossian together | 19% | 23% | 33% |
+| Book of Mormon names with letters shuffled | 38% | 16% | 14% |
+
+The Book of Mormon's names look like King James names far more than three other authors' invented
+names do. Jaredite, Nephite and place names all come out the same, about 52 to 56%.
+
+A second count: how many names are one changed letter or one splice away from a King James name
+(Nephi, Lehi and Laban are that close)? Book of Mormon 58%. Spalding 35%, Ossian 33%, Spenser 14%,
+Swift none. For comparison, real King James names held out of the list score 82%.
+
+*The check on the method.* Held-out names were sorted into their own list 65 to 68% of the time,
+against 9 to 20% by chance. One comparison needed its lists cleaned twice before it passed.
+
+*What it does not show.* Where the names come from. Names that look like King James names fit
+someone steeped in the King James Bible making up names, and fit Hebrew names put into King James
+spelling equally well. This is a test of letters, not of sounds, and the Assyrian list turned out
+to be an empty download.
 
 ## What I would want a reader to take from the whole set
 

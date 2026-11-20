@@ -870,6 +870,35 @@ lab:                              # the research lab (exploratory tooling; reads
     hours_poll: 300                # seconds between looks at the clock outside the window
     outage_after: 5                # this many failed calls in a row = a usage limit or an outage
     outage_wait: 1800              # seconds to wait before trying again
+  archaic:                         # BOM-118 pilot (lab; exploratory): ten archaic items, pattern search + simulated AI judging of the sense
+    year_min: 1740                 # library sample: registry year from
+    year_max: 1830                 # to (1830 counted with the 1820s)
+    per_decade: 300                # works drawn per decade, the same for every item
+    seed: 20261120
+    passages: 5                    # hits judged per item per decade (and per item in the control books), at most one per work
+    window_words: 60               # words shown around a hit
+    early_year_max: 1699           # known answer (b): EEBO-TCP works up to this year
+    early_sample: 400              # early works drawn
+    early_per_item: 3              # early passages judged per item
+    ordinary_years: [1800, 1830]   # known answer (c): plainly ordinary uses from these years
+    ordinary_per_item: 3           # chosen and labelled by hand before judging
+    cited_bar: 8                   # known answer (a): at least this many of the ten cited verses judged A
+    ordinary_a_max: 0.2            # known answer (c): A for at most this share of the ordinary uses
+    max_calls: 600                 # the pilot's cap on judge calls
+    calls_per_night: 2700          # for the full-run estimate
+    full_items: 64                 # NOL's count of items, for the full-run estimate
+    controls: data/controls/pseudo_biblical_primary.jsonl
+    items:                         # name: [index in items_skousen2018_article.json, search pattern, broad pattern, sense A, sense B]
+      break: [0, '\b(?:break|breaks|brake|broke|breaking)\s+(?:them|him|her|us|me|thee|you)\b', '\b(?:break|breaks|brake|broke|broken|breaking)\b', 'to stop, hinder or interrupt someone (in their course or progress)', 'to shatter, damage or destroy; to violate (a law, a promise); any other sense']
+      mar: [1, '\b(?:mar|mars|marr?ed|marring)\s+(?:them|him|her|us|me|thee|you)\b', '\b(?:mars|marr?ed|marring)\b|\bmar\b(?!\.)', 'to hinder or to stop someone', 'to spoil, damage or disfigure; any other sense']
+      belove: [3, '\b(?:had|have|has|having|did|they|we|ye|he|she|i|who|whom)\s+(?:so\s+)?(?:dearly\s+)?beloved\b|\bbeloved\s+(?:him|her|them|us|me|thee)\b', '\bbeloved\b', '"belove" as an active verb meaning to love (someone beloved someone = loved them)', '"beloved" as an adjective or passive participle (dear, loved by someone, a beloved friend); any other sense']
+      counsel: [4, '\bcounsel(?:s|l?ed|l?ing)?\s+(?:the\s+lord|god|him|her|them|us|me|thee|you)\b', '\bcounsel(?:s|l?ed|l?ing)?\b', 'to consult, to ask advice of (the object is the one whose advice is sought)', 'to advise, to give counsel to (the object is the one advised); the noun; any other sense']
+      desirous: [5, '\bdesirous\b(?!\s+(?:of|to|that|for)\b)', '\bdesirous\b', 'desirable (said of a thing that is wanted)', 'wishing or eager (said of the person who wants something); any other sense']
+      about_to: [30, '\babout\s+to\s+(?!(?:the|a|an|his|her|their|our|my|its|this|that)\b)[a-z]+', '\babout\s+to\b', 'engaged in preparations to, busy setting about (an action under way)', 'on the point of, just going to (an action imminent); any other sense']
+      arrive_to: [31, '\barriv(?:e|es|ed|ing)\s+to\s+(?:the|a|an|this|that|his|their|our|my|its)\b', '\barriv(?:e|es|ed|ing)\s+to\b', '"to" marks the place or point arrived at (arrive to = arrive at or in)', '"to" begins an infinitive (arrived to see) or has another role; any other sense']
+      be_aware: [32, '\bbe\s+aware\b(?!\s+(?:of|that|how|what|whether)\b)', '\bbe\s+aware\s+(?:of|that)\b', 'to beware, to take care or be on guard (a warning)', 'to be conscious of or informed about something; any other sense']
+      begin_to: [33, '\b(?:begin|begins|began|begun|beginning)\s+to\s+(?:the|a|an|this|that|his|their|our|my|its)\b', '\b(?:begin|begins|began|begun|beginning)\s+to\b', '"to" marks the starting point (begin to = begin at or begin with, followed by a noun)', '"to" begins an infinitive (began to speak), or marks a person addressed or a limit reached; any other sense']
+      belief_on: [34, '\bbelief\s+on\b', '\bbelief\s+on\b', '"on" marks what is believed in (belief on = belief in)', '"on" has another role (belief on this subject, on good grounds); any other sense']
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
