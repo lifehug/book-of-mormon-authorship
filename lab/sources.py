@@ -627,6 +627,15 @@ def _sources() -> list[dict]:
         "copyright the translator; free to read; private copy for analysis",
         True,
     )
+    add(
+        "jackson2025_reply_to_townsend.pdf",
+        "papers",
+        "BOM-122",
+        "file",
+        "https://cdn.interpreterfoundation.org/jnlpdf/jackson-v66-2025-131-150-PDF.pdf",
+        "copyright the author; open access; private copy",
+        True,
+    )
     for name, url in _NAMES_PAPERS.items():
         add(name, "papers", "BOM-108", "file", url, "copyright the authors; private copy", True)
     return rows
