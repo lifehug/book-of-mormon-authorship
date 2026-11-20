@@ -18,6 +18,7 @@ Usage::
     python -m lab.sources list              # every source: group, test, terms, state
     python -m lab.sources fetch [NAME ...]   # fetch all, or the named sources or groups
     python -m lab.sources marc               # catalog records that mark translations (HathiTrust)
+    python -m lab.sources tm [--last N]      # Trismegistos People, one person a request
 """
 
 from __future__ import annotations
@@ -51,7 +52,8 @@ BMC = "https://archive.bookofmormoncentral.org/sites/default/files/"
 PD = "public domain"
 
 # (name, group, tests, kind, address, terms). Kinds: file, git, ia (Internet Archive full text),
-# jsp (Joseph Smith Papers document), figshare, links (every archive linked from a page), wiki.
+# jsp (Joseph Smith Papers document), figshare, zenodo, links (every archive linked from a
+# page), wiki.
 _IA = {
     "prophets": {
         "BOM-99 BOM-105": [
@@ -165,6 +167,92 @@ _GIT = {
 # Evans TCP texts whose titles say they were taken in short-hand (hand-keyed, free).
 _TCP = ["N25065", "N09159", "N27848", "N27958", "N28782", "N08994", "N15885", "N24754"]
 
+# Name lists for BOM-108, located 2026-11-19 (docs/research/2026-11-19-name-lists-for-bom-108.md).
+# name: (kind, address, terms)
+PG = "https://aleph.pglaf.org/"  # Project Gutenberg's mirror
+TLA = "https://huggingface.co/datasets/thesaurus-linguae-aegyptiae/"
+DAHPN = (
+    "https://www.dahpn.gwi.uni-muenchen.de/wp-content/themes/bootscore-5-child/api/index.php/"
+    "getData?db=261&column="
+)
+GNIS = "https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/"
+_NAMES = {
+    "dahpn_epigraphic.json": ("file", DAHPN + "2", "CC BY-SA 4.0; doi:10.24344/bht-dahpn"),
+    "dahpn_all.json": ("file", DAHPN + "0", "CC BY-SA 4.0; doi:10.24344/bht-dahpn"),
+    "golub_onomasticon_2025-04.json": (
+        "file",
+        "https://www.onomasticon.net/assets/data/data-2025-04.json",
+        "CC BY-NC-SA",
+    ),
+    "oracc_ctij_names.html": (
+        "file",
+        "https://oracc.museum.upenn.edu/ctij/cbd/qpn/onebigfile.html",
+        "CC BY-SA 3.0",
+    ),
+    "prosobab": ("zenodo", "https://zenodo.org/api/records/17244668", "CC BY-NC 4.0"),
+    "hatra_names_marcato": ("zenodo", "https://zenodo.org/api/records/21391494", "CC BY 4.0"),
+    "iip_texts": ("git", GH + "Brown-University-Library/iip-texts", "CC BY-NC 4.0"),
+    "ociana.xml": (
+        "file",
+        "https://ora.ox.ac.uk/objects/uuid:08a60ae8-e61d-486e-9ef1-836ca71d904c/files/"
+        "mc562d7869379fa3570db57cd9ed0c28c",
+        "Oxford University Research Archive terms",
+    ),
+    "pnm_middle_kingdom": ("zenodo", "https://zenodo.org/api/records/15806808", "CC BY 4.0"),
+    "aed_tei": ("git", GH + "simondschweitzer/aed-tei", "CC BY-SA 4.0"),
+    "tla_demotic.jsonl": (
+        "file",
+        TLA + "tla-demotic-v18-premium/resolve/main/train.jsonl",
+        "CC BY-SA 4.0",
+    ),
+    "tla_late_egyptian.jsonl": (
+        "file",
+        TLA + "tla-late_egyptian-v19-premium/resolve/main/train.jsonl",
+        "CC BY-SA 4.0",
+    ),
+    "tla_earlier_egyptian.jsonl": (
+        "file",
+        TLA + "tla-Earlier_Egyptian_original-v18-premium/resolve/main/train.jsonl",
+        "CC BY-SA 4.0",
+    ),
+    "hasitzka_coptic_names.pdf": (
+        "file",
+        "http://web.archive.org/web/20160214175224id_/http://www.onb.ac.at/files/kopt_namen.pdf",
+        "no licence stated; made available by the author through the Austrian National Library",
+    ),
+    "epsd2_names.zip": ("file", "https://oracc.museum.upenn.edu/json/epsd2-names.zip", "CC0"),
+    "gnis_new_york.zip": ("file", GNIS + "DomesticNames_NY_Text.zip", "US government work"),
+    "gnis_national.zip": ("file", GNIS + "DomesticNames_National_Text.zip", "US government work"),
+    "apocrypha_kjv.txt": ("file", PG + "1/2/124/124-0.txt", PD),
+    "josephus_antiquities_whiston.txt": ("file", PG + "2/8/4/2848/2848-0.txt", PD),
+    "josephus_wars_whiston.txt": ("file", PG + "2/8/5/2850/2850.txt", PD),
+    "koran_sale.txt": ("file", PG + "7/4/4/7440/7440.txt", PD),
+    "arabian_nights_scott.txt": ("file", PG + "5/6/6/5668/5668.txt", PD),
+    "morgan_freemasonry.txt": ("file", PG + "1/8/1/3/18136/18136.txt", PD),
+    "swift_gulliver.txt": ("file", PG + "8/2/829/829-0.txt", PD),
+    "spenser_faerie_queene_1.txt": ("file", PG + "6/9/3/6930/6930.txt", PD),
+    "ossian_fragments_1760.txt": ("file", PG + "8/1/6/8161/8161.txt", PD),
+}
+# Internet Archive scans for the same test: period name dictionaries, native place names,
+# single-author invented names, and the twelve volumes of the 1790 census.
+_NAMES_IA = [
+    "akeytoclassical01walkgoog",
+    "classicaldiction00lemp",
+    "aboriginalplacen00beau",
+    "indiannamesofpla00trumiala",
+    "themanuscriptsto00spauuoft",
+    "poemsofossiantra10macp",
+    "poemsofossiantra11macp",
+    "lightonmasonrya00berngoog",
+    "centuryofpopulat00unit",
+    *[f"headsoffamiliesa{n:02d}unit" for n in range(1, 13)],
+]
+_NAMES_PAPERS = {
+    "wilcox2013_phonoprints.pdf": "https://ans-names.pitt.edu/ans/article/download/1980/1979/3980",
+    "wilcox2019_phonemic_patterns.pdf": BMC
+    + "archive-files/pdf/wilcox/2019-08-12/brad_wilcox_et_al_comparing_phonemic_patterns_2019.pdf",
+}
+
 
 def _sources() -> list[dict]:
     rows = []
@@ -261,6 +349,12 @@ def _sources() -> list[dict]:
         "https://onoma.lib.byu.edu/api.php",
         "no licence stated; a list of names only",
     )
+    for name, (kind, url, terms) in _NAMES.items():
+        add(name, "names", "BOM-108", kind, url, terms)
+    for item in _NAMES_IA:
+        add(item, "names", "BOM-108", "ia", f"{IA}/details/{item}", PD + " (scan and OCR text)")
+    for name, url in _NAMES_PAPERS.items():
+        add(name, "papers", "BOM-108", "file", url, "copyright the authors; private copy", True)
     return rows
 
 
@@ -355,6 +449,14 @@ def _figshare(s: dict, dest: Path) -> None:
             _download(f["download_url"], out(dest / f["name"]))
 
 
+def _zenodo(s: dict, dest: Path) -> None:
+    """Every file of a Zenodo record."""
+    for f in json.loads(_get(s["url"]))["files"]:
+        if not (dest / f["key"]).exists():
+            _download(f["links"]["self"], out(dest / f["key"]))
+            time.sleep(PAUSE)
+
+
 def _links(s: dict, dest: Path) -> None:
     """Every archive (.zip, .gz, .tgz, .xz) linked from the page."""
     page = _get(s["url"]).decode("utf-8", "replace")
@@ -395,6 +497,7 @@ KINDS = {
     "git": _git,
     "figshare": _figshare,
     "links": _links,
+    "zenodo": _zenodo,
     "wiki": _wiki,
     "file": lambda s, dest: _download(s["url"], out(dest)),
 }
@@ -405,7 +508,7 @@ DONE = {"ia": "text.txt", "jsp": "pages.jsonl", "git": ".git"}
 def _complete(s: dict, dest: Path) -> bool:
     if s["kind"] in DONE:
         return (dest / DONE[s["kind"]]).exists()
-    if s["kind"] in ("figshare", "links"):
+    if s["kind"] in ("figshare", "links", "zenodo"):
         return False  # the fetcher itself skips files already held
     return dest.is_file() and dest.stat().st_size > 0
 
@@ -486,13 +589,55 @@ def marc(batch: int = 20) -> int:
     return 0
 
 
+TM_PER = "https://www.trismegistos.org/dataservices/rdf/per/?format=json&id="
+TM_PAUSE = 3.2  # the site's robots.txt asks for at most one request every 3 seconds
+
+
+def tm(last: int, part_size: int = 1000) -> int:
+    """Trismegistos People through its open per-person service (CC BY-SA 4.0), ids 1 to ``last``.
+
+    One line an id in ``names/trismegistos_people/part_<n>.jsonl``: the whole reply, or null where
+    the service answers with an empty body (no such person). Anything else (an error status, a
+    reply that is not JSON) is retried with a growing wait and never written, so a rerun resumes
+    at the first id not on disk. The name pages of the site sit behind a browser check and are
+    not touched.
+    """
+    folder = OPEN / "names" / "trismegistos_people"
+    for start in range(1, last + 1, part_size):
+        path = folder / f"part_{start // part_size:04d}.jsonl"
+        have = len(path.read_text().splitlines()) if path.exists() else 0
+        if have >= min(part_size, last - start + 1):
+            continue
+        with out(path).open("a", encoding="utf-8") as fh:
+            for n in range(start + have, min(start + part_size, last + 1)):
+                for attempt in range(8):
+                    try:
+                        body = _get(TM_PER + str(n)).strip()
+                        reply = json.loads(body) if body else None
+                        break
+                    except (OSError, ValueError) as exc:
+                        print(f"  id {n}: {type(exc).__name__}: {exc}; waiting", flush=True)
+                        time.sleep(60 * 2**attempt)
+                else:
+                    print(f"stopped at id {n}: the service kept failing", file=sys.stderr)
+                    return 1
+                fh.write(json.dumps({"id": n, "reply": reply}, ensure_ascii=False) + "\n")
+                fh.flush()
+                time.sleep(TM_PAUSE)
+        print(f"  through id {min(start + part_size - 1, last):,}/{last:,}", flush=True)
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     sp = ap.add_subparsers(dest="cmd", required=True)
     sp.add_parser("list")
     sp.add_parser("fetch").add_argument("names", nargs="*")
     sp.add_parser("marc")
+    sp.add_parser("tm").add_argument("--last", type=int, default=500_000)
     a = ap.parse_args(argv)
+    if a.cmd == "tm":
+        return tm(a.last)
     if a.cmd == "fetch":
         return 1 if fetch(a.names) else 0
     if a.cmd == "marc":
