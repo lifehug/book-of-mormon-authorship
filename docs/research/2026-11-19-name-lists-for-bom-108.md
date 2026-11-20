@@ -94,3 +94,22 @@ their names need extracting, not fetching.
 
 All of group 1 to 5 is open or public domain except two non-commercial licences (Golub, Prosobab):
 usable, recorded in SOURCES.md, text not republished. Trismegistos waits on the owner.
+
+## Fetched, 2026-11-20
+
+`python -m lab.sources fetch names papers`: all 49 name sources arrived (about 2 GB, most of it the
+two git clones and the Mainz database with its earlier versions), into
+`data/corpus/lab/sources/names/`; the two Wilcox papers into the private repository. Record in
+`data/lab/sources.json`; checksums in `data/manifests/lab_sources.jsonl`. Checked by opening:
+DAHPN (874 epigraphic entries), Golub (1,081 records), the Demotic text set, the two papers and the
+Coptic PDF. The scans were checked by word count only. Not fetched: AGÉA (terms not found),
+Tvedtnes, Gee and Roper 2000 (site refuses programs).
+
+**Trismegistos People** is being fetched through the site's open per-person service
+(`python -m lab.sources tm`, started 2026-11-20, about 18 days at one request every 3.2 s, as the
+site's robots.txt asks). It gives each person's name in Greek-style spelling, gender, period,
+century and region; not the language of the name. The owner wrote to the project on 2026-11-20
+asking for an export of the name tables, which would carry that.
+
+**Gap named by the owner, 2026-11-20:** no Native American names beyond the two New York and
+Connecticut place-name books. Being researched (Maya, Nahuatl, Quechua, Iroquois, Delaware).
