@@ -769,6 +769,19 @@ lab:                              # the research lab (exploratory tooling; reads
   phrase_workers: 6
   show_words: 128                 # a passage is shown whole (semantic.passage_words)
   query_prefix: "Represent this sentence for searching relevant passages: "   # the index model's own prefix for questions
+  wherefore:                       # BOM-120 (lab; exploratory): therefore and wherefore, one-break fit
+    block_words: 2000              # words per block
+    min_words: 100000              # a library work must be at least this long
+    min_pair: 100                  # and hold at least this many of the two words together
+    year_min: 1650
+    year_max: 1830
+    sample: 600                    # library works drawn for the baseline
+    seed: 20261120
+    splices: 200                   # known-answer check: joined pairs of works
+    splice_min_gap: 0.4            # whose "wherefore" shares differ by at least this
+    splice_tolerance: 2            # break must fall within this many blocks of the join
+    splice_bar: 0.9                # in at least this share of pairs
+    unusual_share: 0.05            # "unusual" = fewer than this share of library works switch as sharply
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
