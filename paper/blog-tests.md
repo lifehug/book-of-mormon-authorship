@@ -61,7 +61,7 @@ compares against.
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
 | BOM-118 | About 64 word uses and phrases had died out of English before the 1740s | Skousen and Carmack 2018 | dictionary citations, one item at a time | every item searched for its meaning across the whole library, with the same search on Bible-style books | TBD; 48 of 64 items in hand |
-| BOM-119 | The grammar is 1500s English: "did go" past tenses at 20% against under 2% in Bible-style books | Carmack 2015 to 2021 | five Bible-style books | every book in the library | TBD |
+| BOM-119 | The grammar is 1500s English: "did go" past tenses at 20% against under 2% in Bible-style books | Carmack 2015 to 2021 | five Bible-style books | every book in the library | **Done** |
 | BOM-102 | It reads like a translation; it has Hebrew turns of phrase | Tvedtnes, Skousen and others | examples | real translations against Bible-style imitations | TBD |
 | BOM-120 | "Therefore" and "wherefore" switch in the order the book was dictated | Metcalfe 1993 | the book alone | 264 long books by one author | **Done** |
 
@@ -351,6 +351,67 @@ it, outranked every Old Testament book. Sermons outranked non-religious books 88
 author composing with them. What the comparison adds is scale: Whiston and Sale, translating
 ancient non-Christian texts into the same Bible-soaked English, used a third as much. It counts
 exact phrases only, not paraphrase.
+
+### The grammar of the 1500s (BOM-119)
+
+Stanford Carmack's strongest number is about a small word. The Book of Mormon says "they did go"
+and "he did preach" where ordinary English says "they went" and "he preached", and it does so in
+about a fifth of its past tenses. That habit peaked in English around 1550 to 1600 and had mostly
+died by 1700. The King James Bible does it under 2% of the time. So, the argument goes, this is
+not Bible imitation; nobody imitating the Bible would produce it. His comparison was five
+Bible-style books.
+
+First I reproduced his numbers. Book of Mormon: 19.4% (he reports 20.2%). King James Bible: 1.6%
+(he reports 1.7%). Joseph Smith's 1832 history: none in 98 past tenses (he reports none in 88).
+
+Then every book in the library, 207,471 of them.
+
+| Printed | Books at or above the Book of Mormon's rate | Books counted |
+| --- | --- | --- |
+| 1500 to 1549 | 9 | 576 |
+| 1550 to 1599 | 72 | 2,636 |
+| 1600 to 1649 | 75 | 7,767 |
+| 1650 to 1699 | 58 | 16,008 |
+| 1700 to 1749 | 0 | 1,883 |
+| 1750 to 1799 | 14 | 45,013 |
+| 1800 to 1830 | 15 | 132,826 |
+
+Carmack is right about the shape. This is a 1500s and 1600s habit, and after 1700 it nearly
+vanishes: 29 books out of about 180,000.
+
+What are the 29? Fourteen are reprints of books written before 1700. Nine are the articles of
+impeachment against Warren Hastings and Burke's works that contain them, where "did" is the
+language of an indictment ("the said Warren Hastings did receive"). Two are copies of a hymn book,
+one more hymn book, a book of ballads written "in imitation of the antient", a comic poem and a
+short play.
+
+And one more, which matters most. *Chronicles of Eri* (1822) is a book in Bible style presented as
+a translation of ancient Irish records. Its second volume says "did" in 19.3% of its past tenses,
+level with the Book of Mormon. Carmack himself had allowed that it might. So one author writing
+mock-ancient scripture in the 1820s did produce this rate.
+
+But the "did" rate is one feature of ten. *Chronicles of Eri* has none of the others. No book
+printed between 1780 and 1830 matches the Book of Mormon on all ten together; the most any single
+book matches at once is three.
+
+Three more comparisons:
+
+- **Bible-style books:** none of the 20 in the library reaches the rate.
+- **Real translations:** none of the 341 marked as translations reaches it.
+- **Joseph Smith's other dictated texts:** the revelations, the Book of Moses, the Abraham
+  manuscripts, his letters and his 1832 history all sit between 0% and 1.6%.
+
+That last one is the surprise. Whatever produced the "did" in the Book of Mormon, it is absent
+from everything else he dictated, including scripture dictated a year later.
+
+*The check on the method.* The rate separates books of 1540 to 1620 from books of 1760 to 1830
+correctly 89% of the time. I read 60 of the extracted "did" phrases; 59 were right. One bug was
+found and fixed after a first count of the Book of Mormon came out low (the verb list had dropped
+"go" and "bring"); the checks were rerun after the fix.
+
+*What it does not show.* Who composed the text or how. The past-tense count is an approximation.
+Which books are reprints was judged from titles and authors' dates, not by reading them. The
+library is thin for 1700 to 1780.
 
 ## What I would want a reader to take from the whole set
 

@@ -1,0 +1,3764 @@
+{
+ "settings": {
+  "min_words": 5000,
+  "min_past": 50,
+  "year_min": 1500,
+  "year_max": 1830,
+  "match_years": [
+   1780,
+   1830
+  ],
+  "after_years": [
+   1700,
+   1830
+  ],
+  "early_years": [
+   1540,
+   1620
+  ],
+  "late_years": [
+   1760,
+   1830
+  ],
+  "auc_sample": 300,
+  "auc_bar": 0.8,
+  "profile_auc_bar": 0.75,
+  "handcheck": 60,
+  "precision_bar": 0.9,
+  "published": {
+   "bom": 0.202,
+   "kjv": 0.017
+  },
+  "bom_tolerance": 0.03,
+  "kjv_tolerance": 0.007,
+  "did_window": 3,
+  "lexicon_sample": 1500,
+  "lexicon_min": 5,
+  "lexicon_share": 0.005,
+  "reprint_death_before": 1700,
+  "reprint_birth_before": 1650,
+  "workers": 8,
+  "part_size": 500,
+  "seed": 20261120
+ },
+ "lexicon_verbs": 2996,
+ "known_answer_b": {
+  "not_attempted": 0,
+  "early": 300,
+  "late": 300,
+  "auc_did_rate": 0.8921,
+  "auc_did_per10k": 0.8504,
+  "auc_more_part": 0.5417,
+  "auc_cause_finite": 0.5599,
+  "auc_command_finite": 0.5766,
+  "auc_leveled": 0.4286,
+  "auc_plural_was": 0.5018,
+  "auc_personal_which": 0.7038,
+  "auc_if_it_so_be": 0.5183,
+  "auc_impersonal": 0.5566,
+  "auc_profile": 0.8458,
+  "passed_b": true,
+  "median_did_rate": {
+   "early": 0.0287,
+   "late": 0.0024
+  },
+  "handcheck_drawn": 60,
+  "config_sha256": "abfd9cf4b620d6f8fab0680532a49cab95f813ba421645ff0a9c02945926424f"
+ },
+ "known_answer_c": {
+  "read": 60,
+  "correct": 59,
+  "precision": 0.9833
+ },
+ "known_answer_a": {
+  "kjv_did_rate": 0.0163,
+  "kjv_published": 0.017,
+  "bom_did_rate": 0.194,
+  "bom_published": 0.202,
+  "kjv_ok": true,
+  "bom_ok": true,
+  "bom_did_count": 1619,
+  "kjv_did_count": 522,
+  "without_came_to_pass": {
+   "kjv": 0.0165,
+   "bom": 0.2332
+  }
+ },
+ "did_rate_reproduced": true,
+ "verdict_measure": "did_rate",
+ "named": {
+  "kjv": {
+   "counts": {
+    "words": 932227,
+    "past": 31515,
+    "came_to_pass": 478,
+    "did_adjacent": 457,
+    "did_adverbial": 16,
+    "did_subject": 49,
+    "did_neither": 19,
+    "more_part": 2,
+    "if_it_so_be": 0,
+    "impersonal": 11,
+    "plural_was": 0,
+    "leveled": 1,
+    "cause_fin": 2,
+    "cause_inf": 254,
+    "cmd_fin": 45,
+    "cmd_inf": 130,
+    "rel_which": 646,
+    "rel_other": 3644
+   },
+   "rates": {
+    "did_rate": 0.0163,
+    "did_per10k": 5.599,
+    "more_part": 0.021,
+    "cause_finite": 0.0078,
+    "command_finite": 0.2571,
+    "leveled": 0.011,
+    "plural_was": 0.0,
+    "personal_which": 0.1506,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.118
+   }
+  },
+  "book_of_mormon": {
+   "counts": {
+    "words": 265132,
+    "past": 6725,
+    "came_to_pass": 1402,
+    "did_adjacent": 1531,
+    "did_adverbial": 50,
+    "did_subject": 38,
+    "did_neither": 13,
+    "more_part": 26,
+    "if_it_so_be": 41,
+    "impersonal": 22,
+    "plural_was": 5,
+    "leveled": 40,
+    "cause_fin": 112,
+    "cause_inf": 65,
+    "cmd_fin": 105,
+    "cmd_inf": 29,
+    "rel_which": 575,
+    "rel_other": 741
+   },
+   "rates": {
+    "did_rate": 0.194,
+    "did_per10k": 61.064,
+    "more_part": 0.981,
+    "cause_finite": 0.6328,
+    "command_finite": 0.7836,
+    "leveled": 1.509,
+    "plural_was": 0.189,
+    "personal_which": 0.4369,
+    "if_it_so_be": 1.546,
+    "impersonal": 0.83
+   }
+  },
+  "book_of_mormon_without_quoted_chapters": {
+   "counts": {
+    "words": 244408,
+    "past": 6419,
+    "came_to_pass": 1375,
+    "did_adjacent": 1496,
+    "did_adverbial": 50,
+    "did_subject": 37,
+    "did_neither": 13,
+    "more_part": 26,
+    "if_it_so_be": 40,
+    "impersonal": 22,
+    "plural_was": 5,
+    "leveled": 38,
+    "cause_fin": 112,
+    "cause_inf": 57,
+    "cmd_fin": 99,
+    "cmd_inf": 28,
+    "rel_which": 525,
+    "rel_other": 661
+   },
+   "rates": {
+    "did_rate": 0.1978,
+    "did_per10k": 64.769,
+    "more_part": 1.064,
+    "cause_finite": 0.6627,
+    "command_finite": 0.7795,
+    "leveled": 1.555,
+    "plural_was": 0.205,
+    "personal_which": 0.4427,
+    "if_it_so_be": 1.637,
+    "impersonal": 0.9
+   }
+  },
+  "js-1828-1829-revelations": {
+   "counts": {
+    "words": 73180,
+    "past": 606,
+    "came_to_pass": 4,
+    "did_adjacent": 6,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 2,
+    "impersonal": 3,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 2,
+    "cause_inf": 10,
+    "cmd_fin": 9,
+    "cmd_inf": 16,
+    "rel_which": 40,
+    "rel_other": 379
+   },
+   "rates": {
+    "did_rate": 0.0098,
+    "did_per10k": 0.82,
+    "more_part": 0.0,
+    "cause_finite": 0.1667,
+    "command_finite": 0.36,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0955,
+    "if_it_so_be": 0.273,
+    "impersonal": 0.41
+   }
+  },
+  "js-1829-10-22-letter-cowdery": {
+   "counts": {
+    "words": 353,
+    "past": 5,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 2
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "js-1831-03-letter-hyrum": {
+   "counts": {
+    "words": 636,
+    "past": 7,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 1,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 0
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": 1.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": null,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "js-1832-06-06-letter-emma": {
+   "counts": {
+    "words": 693,
+    "past": 6,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 0
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": null,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "js-1832-07-31-letter-phelps": {
+   "counts": {
+    "words": 2775,
+    "past": 48,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 1,
+    "rel_other": 13
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0714,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "js-1832-10-13-letter-emma": {
+   "counts": {
+    "words": 882,
+    "past": 17,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 0
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": null,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "js-1832-11-27-letter-phelps": {
+   "counts": {
+    "words": 1107,
+    "past": 9,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 7
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "js-1832-history": {
+   "counts": {
+    "words": 2034,
+    "past": 98,
+    "came_to_pass": 3,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 2
+   },
+   "rates": {
+    "did_rate": 0.0,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "js-1833-01-04-letter-saxton": {
+   "counts": {
+    "words": 1780,
+    "past": 16,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 1,
+    "cmd_fin": 0,
+    "cmd_inf": 1,
+    "rel_which": 2,
+    "rel_other": 3
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.4,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "js-1833-01-11-letter-phelps": {
+   "counts": {
+    "words": 767,
+    "past": 3,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 1,
+    "rel_which": 0,
+    "rel_other": 4
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": 0.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "js-journal-1832-1834": {
+   "counts": {
+    "words": 7150,
+    "past": 309,
+    "came_to_pass": 0,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 1,
+    "cause_inf": 1,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 17
+   },
+   "rates": {
+    "did_rate": 0.0032,
+    "did_per10k": 1.399,
+    "more_part": 0.0,
+    "cause_finite": 0.5,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "js-letterbook-1": {
+   "counts": {
+    "words": 31537,
+    "past": 468,
+    "came_to_pass": 3,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 1,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 1,
+    "leveled": 1,
+    "cause_fin": 0,
+    "cause_inf": 2,
+    "cmd_fin": 0,
+    "cmd_inf": 7,
+    "rel_which": 6,
+    "rel_other": 79
+   },
+   "rates": {
+    "did_rate": 0.0043,
+    "did_per10k": 0.634,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.0,
+    "leveled": 0.317,
+    "plural_was": 0.317,
+    "personal_which": 0.0706,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "revelations-later-1830": {
+   "counts": {
+    "words": 7539,
+    "past": 62,
+    "came_to_pass": 2,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 1,
+    "impersonal": 2,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 2,
+    "cause_inf": 5,
+    "cmd_fin": 1,
+    "cmd_inf": 3,
+    "rel_which": 4,
+    "rel_other": 18
+   },
+   "rates": {
+    "did_rate": 0.0159,
+    "did_per10k": 1.326,
+    "more_part": 0.0,
+    "cause_finite": 0.2857,
+    "command_finite": 0.25,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.1818,
+    "if_it_so_be": 1.326,
+    "impersonal": 2.653
+   }
+  },
+  "revelations-later-1831": {
+   "counts": {
+    "words": 28965,
+    "past": 189,
+    "came_to_pass": 0,
+    "did_adjacent": 3,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 1,
+    "impersonal": 2,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 1,
+    "cmd_fin": 2,
+    "cmd_inf": 6,
+    "rel_which": 20,
+    "rel_other": 163
+   },
+   "rates": {
+    "did_rate": 0.0156,
+    "did_per10k": 1.036,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.25,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.1093,
+    "if_it_so_be": 0.345,
+    "impersonal": 0.69
+   }
+  },
+  "revelations-later-1832": {
+   "counts": {
+    "words": 11102,
+    "past": 75,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 1,
+    "cmd_inf": 1,
+    "rel_which": 4,
+    "rel_other": 58
+   },
+   "rates": {
+    "did_rate": 0.0,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": 0.5,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0645,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "revelations-later-1833": {
+   "counts": {
+    "words": 9360,
+    "past": 101,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 1,
+    "cmd_fin": 0,
+    "cmd_inf": 3,
+    "rel_which": 3,
+    "rel_other": 38
+   },
+   "rates": {
+    "did_rate": 0.0,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0732,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "revelations-later-1834": {
+   "counts": {
+    "words": 5153,
+    "past": 26,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 2,
+    "rel_which": 0,
+    "rel_other": 17
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": 0.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "dictated-abraham_1842": {
+   "counts": {
+    "words": 6294,
+    "past": 235,
+    "came_to_pass": 15,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 8,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 1,
+    "rel_other": 15
+   },
+   "rates": {
+    "did_rate": 0.0042,
+    "did_per10k": 1.589,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0625,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "dictated-abraham_ms_a": {
+   "counts": {
+    "words": 1510,
+    "past": 63,
+    "came_to_pass": 3,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 1,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 4
+   },
+   "rates": {
+    "did_rate": 0.0,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "dictated-abraham_ms_b": {
+   "counts": {
+    "words": 1262,
+    "past": 44,
+    "came_to_pass": 3,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 1,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 3
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "dictated-abraham_ms_c": {
+   "counts": {
+    "words": 2158,
+    "past": 74,
+    "came_to_pass": 3,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 1,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 6
+   },
+   "rates": {
+    "did_rate": 0.0133,
+    "did_per10k": 4.634,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "dictated-ot_revision_1": {
+   "counts": {
+    "words": 25491,
+    "past": 1254,
+    "came_to_pass": 66,
+    "did_adjacent": 12,
+    "did_adverbial": 2,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 2,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 1,
+    "cause_inf": 5,
+    "cmd_fin": 5,
+    "cmd_inf": 1,
+    "rel_which": 24,
+    "rel_other": 38
+   },
+   "rates": {
+    "did_rate": 0.011,
+    "did_per10k": 5.492,
+    "more_part": 0.0,
+    "cause_finite": 0.1667,
+    "command_finite": 0.8333,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.3871,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.785
+   }
+  },
+  "dictated-ot_revision_2": {
+   "counts": {
+    "words": 41812,
+    "past": 1650,
+    "came_to_pass": 75,
+    "did_adjacent": 20,
+    "did_adverbial": 2,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 1,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 1,
+    "cause_inf": 6,
+    "cmd_fin": 5,
+    "cmd_inf": 7,
+    "rel_which": 31,
+    "rel_other": 98
+   },
+   "rates": {
+    "did_rate": 0.0132,
+    "did_per10k": 5.262,
+    "more_part": 0.0,
+    "cause_finite": 0.1429,
+    "command_finite": 0.4167,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.2403,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.239
+   }
+  },
+  "dictated-visions_of_moses_1830": {
+   "counts": {
+    "words": 1386,
+    "past": 64,
+    "came_to_pass": 10,
+    "did_adjacent": 0,
+    "did_adverbial": 1,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 3,
+    "rel_other": 1
+   },
+   "rates": {
+    "did_rate": 0.0154,
+    "did_per10k": 7.215,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.75,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "js-letters-1829-1833-all": {
+   "counts": {
+    "words": 40530,
+    "past": 579,
+    "came_to_pass": 3,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 1,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 1,
+    "leveled": 1,
+    "cause_fin": 0,
+    "cause_inf": 3,
+    "cmd_fin": 1,
+    "cmd_inf": 9,
+    "rel_which": 9,
+    "rel_other": 108
+   },
+   "rates": {
+    "did_rate": 0.0034,
+    "did_per10k": 0.493,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.1,
+    "leveled": 0.247,
+    "plural_was": 0.247,
+    "personal_which": 0.0769,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "bible_style/americanrevoluti00snow": {
+   "counts": {
+    "words": 66456,
+    "past": 2080,
+    "came_to_pass": 8,
+    "did_adjacent": 2,
+    "did_adverbial": 1,
+    "did_subject": 1,
+    "did_neither": 2,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 3,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 1,
+    "cmd_inf": 3,
+    "rel_which": 0,
+    "rel_other": 126
+   },
+   "rates": {
+    "did_rate": 0.0019,
+    "did_per10k": 0.602,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": 0.25,
+    "leveled": 0.451,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "bible_style/bib_fict_4103140": {
+   "counts": {
+    "words": 39306,
+    "past": 876,
+    "came_to_pass": 0,
+    "did_adjacent": 7,
+    "did_adverbial": 0,
+    "did_subject": 10,
+    "did_neither": 1,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 1,
+    "plural_was": 0,
+    "leveled": 2,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 5,
+    "rel_which": 3,
+    "rel_other": 36
+   },
+   "rates": {
+    "did_rate": 0.019,
+    "did_per10k": 4.325,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": 0.0,
+    "leveled": 0.509,
+    "plural_was": 0.0,
+    "personal_which": 0.0769,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.254
+   }
+  },
+  "bible_style/bim_eighteenth-century_the-chronicle-of-the-kin_dodsley-robert_1741": {
+   "counts": {
+    "words": 7706,
+    "past": 290,
+    "came_to_pass": 7,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 2,
+    "cmd_fin": 1,
+    "cmd_inf": 2,
+    "rel_which": 0,
+    "rel_other": 6
+   },
+   "rates": {
+    "did_rate": 0.0034,
+    "did_per10k": 1.298,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.3333,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "bible_style/bookofnullificat00char": {
+   "counts": {
+    "words": 15130,
+    "past": 691,
+    "came_to_pass": 16,
+    "did_adjacent": 4,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 1,
+    "cause_fin": 0,
+    "cause_inf": 6,
+    "cmd_fin": 2,
+    "cmd_inf": 6,
+    "rel_which": 1,
+    "rel_other": 38
+   },
+   "rates": {
+    "did_rate": 0.0058,
+    "did_per10k": 2.644,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.25,
+    "leveled": 0.661,
+    "plural_was": 0.0,
+    "personal_which": 0.0256,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "bible_style/chroniclesoferib02ocon": {
+   "counts": {
+    "words": 130188,
+    "past": 4454,
+    "came_to_pass": 4,
+    "did_adjacent": 997,
+    "did_adverbial": 7,
+    "did_subject": 48,
+    "did_neither": 4,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 1,
+    "plural_was": 0,
+    "leveled": 3,
+    "cause_fin": 0,
+    "cause_inf": 10,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 2,
+    "rel_other": 129
+   },
+   "rates": {
+    "did_rate": 0.1911,
+    "did_per10k": 80.806,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": null,
+    "leveled": 0.23,
+    "plural_was": 0.0,
+    "personal_which": 0.0153,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.077
+   }
+  },
+  "bible_style/firstbooknapole00gruagoog": {
+   "counts": {
+    "words": 22563,
+    "past": 617,
+    "came_to_pass": 14,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 1,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 3,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 5,
+    "rel_other": 47
+   },
+   "rates": {
+    "did_rate": 0.0016,
+    "did_per10k": 0.443,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0962,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "bible_style/firstbookofameri00unse": {
+   "counts": {
+    "words": 9735,
+    "past": 194,
+    "came_to_pass": 0,
+    "did_adjacent": 2,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 2,
+    "rel_which": 1,
+    "rel_other": 18
+   },
+   "rates": {
+    "did_rate": 0.0102,
+    "did_per10k": 2.054,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": 0.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0526,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/A Chronicle of the Chiefs of Muttonville - White Griswold - 1830": {
+   "counts": {
+    "words": 964,
+    "past": 50,
+    "came_to_pass": 1,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 1,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 1
+   },
+   "rates": {
+    "did_rate": 0.0385,
+    "did_per10k": 20.747,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/Chapter 37th - 1782": {
+   "counts": {
+    "words": 665,
+    "past": 39,
+    "came_to_pass": 2,
+    "did_adjacent": 2,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 1
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 30.075,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/Chronicles - Massachusetts Centinal - 1786": {
+   "counts": {
+    "words": 30,
+    "past": 1,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 0
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": null,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/Chronicles of Andrew - Jesse Denson - 1815": {
+   "counts": {
+    "words": 8130,
+    "past": 303,
+    "came_to_pass": 3,
+    "did_adjacent": 46,
+    "did_adverbial": 1,
+    "did_subject": 0,
+    "did_neither": 1,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 4,
+    "cause_fin": 0,
+    "cause_inf": 5,
+    "cmd_fin": 0,
+    "cmd_inf": 1,
+    "rel_which": 0,
+    "rel_other": 9
+   },
+   "rates": {
+    "did_rate": 0.1343,
+    "did_per10k": 57.811,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.0,
+    "leveled": 4.92,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/Chronicles of Nathan Ben Saddi - 1758": {
+   "counts": {
+    "words": 3153,
+    "past": 131,
+    "came_to_pass": 2,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 1,
+    "did_neither": 1,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 7
+   },
+   "rates": {
+    "did_rate": 0.0076,
+    "did_per10k": 3.172,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/Chronicles, The Maryland Journal - 1766": {
+   "counts": {
+    "words": 43,
+    "past": 3,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 0
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": null,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/History of Anti-Christ - Elias Smith - 1811": {
+   "counts": {
+    "words": 15711,
+    "past": 676,
+    "came_to_pass": 50,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 1,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 5,
+    "cmd_fin": 0,
+    "cmd_inf": 4,
+    "rel_which": 1,
+    "rel_other": 62
+   },
+   "rates": {
+    "did_rate": 0.0,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0159,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/Parable Against Persecution - Benjamin Franklin - 1755": {
+   "counts": {
+    "words": 428,
+    "past": 33,
+    "came_to_pass": 1,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 0
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 23.364,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": null,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/Reformer Chronicles - 1832": {
+   "counts": {
+    "words": 717,
+    "past": 47,
+    "came_to_pass": 2,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 1,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 1
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The American Revolution - Richard Snowden - 1802": {
+   "counts": {
+    "words": 50926,
+    "past": 2329,
+    "came_to_pass": 119,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 1,
+    "did_neither": 2,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 2,
+    "cause_fin": 0,
+    "cause_inf": 11,
+    "cmd_fin": 3,
+    "cmd_inf": 4,
+    "rel_which": 0,
+    "rel_other": 161
+   },
+   "rates": {
+    "did_rate": 0.0009,
+    "did_per10k": 0.393,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.4286,
+    "leveled": 0.393,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The Book of America - 1766": {
+   "counts": {
+    "words": 2716,
+    "past": 73,
+    "came_to_pass": 3,
+    "did_adjacent": 2,
+    "did_adverbial": 0,
+    "did_subject": 2,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 1,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 1,
+    "rel_which": 0,
+    "rel_other": 12
+   },
+   "rates": {
+    "did_rate": 0.0519,
+    "did_per10k": 14.728,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": 0.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 3.682
+   }
+  },
+  "wordtree/The Book of Preferment - Horace Walpole - 1742": {
+   "counts": {
+    "words": 3028,
+    "past": 92,
+    "came_to_pass": 5,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 12
+   },
+   "rates": {
+    "did_rate": 0.0,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744": {
+   "counts": {
+    "words": 8521,
+    "past": 514,
+    "came_to_pass": 13,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 3,
+    "cmd_fin": 1,
+    "cmd_inf": 2,
+    "rel_which": 0,
+    "rel_other": 14
+   },
+   "rates": {
+    "did_rate": 0.0019,
+    "did_per10k": 1.174,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.3333,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744": {
+   "counts": {
+    "words": 8206,
+    "past": 357,
+    "came_to_pass": 17,
+    "did_adjacent": 2,
+    "did_adverbial": 0,
+    "did_subject": 2,
+    "did_neither": 1,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 2,
+    "cmd_fin": 0,
+    "cmd_inf": 4,
+    "rel_which": 1,
+    "rel_other": 13
+   },
+   "rates": {
+    "did_rate": 0.0111,
+    "did_per10k": 4.874,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0714,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The Conquest of Canaan - Timothy Dwight - 1785": {
+   "counts": {
+    "words": 78853,
+    "past": 4417,
+    "came_to_pass": 0,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 1,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 6,
+    "rel_which": 0,
+    "rel_other": 10
+   },
+   "rates": {
+    "did_rate": 0.0005,
+    "did_per10k": 0.254,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": 0.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The Epistles of Ignatius and Polycarp - 1827": {
+   "counts": {
+    "words": 49289,
+    "past": 919,
+    "came_to_pass": 0,
+    "did_adjacent": 6,
+    "did_adverbial": 1,
+    "did_subject": 1,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 1,
+    "cause_fin": 0,
+    "cause_inf": 5,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 12,
+    "rel_other": 129
+   },
+   "rates": {
+    "did_rate": 0.0086,
+    "did_per10k": 1.623,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": null,
+    "leveled": 0.203,
+    "plural_was": 0.0,
+    "personal_which": 0.0851,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The Fall of Samuel the Squomicutite - 1763": {
+   "counts": {
+    "words": 732,
+    "past": 26,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 4
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The Fall of Samuel the Squomicutite ALT - 1763": {
+   "counts": {
+    "words": 543,
+    "past": 17,
+    "came_to_pass": 0,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 2
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The First Book of Napoleon - 1809": {
+   "counts": {
+    "words": 21323,
+    "past": 627,
+    "came_to_pass": 14,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 1,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 3,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 5,
+    "rel_other": 47
+   },
+   "rates": {
+    "did_rate": 0.0,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0962,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The First Book of Napoleon - 1809b": {
+   "counts": {
+    "words": 20969,
+    "past": 649,
+    "came_to_pass": 14,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 1,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 3,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 5,
+    "rel_other": 47
+   },
+   "rates": {
+    "did_rate": 0.0,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0962,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The First Book of the American Chronicles - John Leacock - 1775": {
+   "counts": {
+    "words": 14660,
+    "past": 575,
+    "came_to_pass": 16,
+    "did_adjacent": 12,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 1,
+    "cause_fin": 0,
+    "cause_inf": 10,
+    "cmd_fin": 1,
+    "cmd_inf": 2,
+    "rel_which": 1,
+    "rel_other": 38
+   },
+   "rates": {
+    "did_rate": 0.0204,
+    "did_per10k": 8.186,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.3333,
+    "leveled": 0.682,
+    "plural_was": 0.0,
+    "personal_which": 0.0256,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The First Book of the Chronicles of John - 1812": {
+   "counts": {
+    "words": 867,
+    "past": 35,
+    "came_to_pass": 1,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 1
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The French Gasconade Defeated - 1743": {
+   "counts": {
+    "words": 953,
+    "past": 48,
+    "came_to_pass": 1,
+    "did_adjacent": 0,
+    "did_adverbial": 0,
+    "did_subject": 0,
+    "did_neither": 0,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 0,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 0,
+    "rel_other": 1
+   },
+   "rates": {
+    "did_rate": null,
+    "did_per10k": 0.0,
+    "more_part": 0.0,
+    "cause_finite": null,
+    "command_finite": null,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The Late War - Gilbert Hunt - 1816": {
+   "counts": {
+    "words": 49253,
+    "past": 2199,
+    "came_to_pass": 83,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 6,
+    "did_neither": 2,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 8,
+    "cmd_fin": 0,
+    "cmd_inf": 5,
+    "rel_which": 9,
+    "rel_other": 83
+   },
+   "rates": {
+    "did_rate": 0.0032,
+    "did_per10k": 1.421,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0978,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The Late War - Gilbert Hunt - 1817 (archive.org)": {
+   "counts": {
+    "words": 55081,
+    "past": 1981,
+    "came_to_pass": 70,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 4,
+    "did_neither": 1,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 6,
+    "cmd_fin": 0,
+    "cmd_inf": 3,
+    "rel_which": 6,
+    "rel_other": 69
+   },
+   "rates": {
+    "did_rate": 0.0025,
+    "did_per10k": 0.908,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.08,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/The Late War - Gilbert Hunt - 1819": {
+   "counts": {
+    "words": 49970,
+    "past": 2235,
+    "came_to_pass": 85,
+    "did_adjacent": 1,
+    "did_adverbial": 0,
+    "did_subject": 6,
+    "did_neither": 2,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 0,
+    "leveled": 0,
+    "cause_fin": 0,
+    "cause_inf": 8,
+    "cmd_fin": 0,
+    "cmd_inf": 5,
+    "rel_which": 7,
+    "rel_other": 84
+   },
+   "rates": {
+    "did_rate": 0.0031,
+    "did_per10k": 1.401,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.0,
+    "leveled": 0.0,
+    "plural_was": 0.0,
+    "personal_which": 0.0769,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "wordtree/True Relation of the Holy War - 1806": {
+   "counts": {
+    "words": 109648,
+    "past": 3307,
+    "came_to_pass": 1,
+    "did_adjacent": 49,
+    "did_adverbial": 5,
+    "did_subject": 11,
+    "did_neither": 7,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 1,
+    "plural_was": 1,
+    "leveled": 1,
+    "cause_fin": 6,
+    "cause_inf": 11,
+    "cmd_fin": 23,
+    "cmd_inf": 12,
+    "rel_which": 18,
+    "rel_other": 239
+   },
+   "rates": {
+    "did_rate": 0.0193,
+    "did_per10k": 5.928,
+    "more_part": 0.0,
+    "cause_finite": 0.3529,
+    "command_finite": 0.6571,
+    "leveled": 0.091,
+    "plural_was": 0.091,
+    "personal_which": 0.07,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.091
+   }
+  },
+  "eri/institutional_books:32044086799061": {
+   "counts": {
+    "words": 144956,
+    "past": 3919,
+    "came_to_pass": 8,
+    "did_adjacent": 120,
+    "did_adverbial": 8,
+    "did_subject": 19,
+    "did_neither": 3,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 1,
+    "leveled": 1,
+    "cause_fin": 0,
+    "cause_inf": 11,
+    "cmd_fin": 1,
+    "cmd_inf": 1,
+    "rel_which": 13,
+    "rel_other": 151
+   },
+   "rates": {
+    "did_rate": 0.0362,
+    "did_per10k": 10.141,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.5,
+    "leveled": 0.069,
+    "plural_was": 0.069,
+    "personal_which": 0.0793,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "eri/institutional_books:32044090306911": {
+   "counts": {
+    "words": 128383,
+    "past": 4490,
+    "came_to_pass": 4,
+    "did_adjacent": 1018,
+    "did_adverbial": 8,
+    "did_subject": 48,
+    "did_neither": 4,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 1,
+    "plural_was": 0,
+    "leveled": 3,
+    "cause_fin": 0,
+    "cause_inf": 10,
+    "cmd_fin": 0,
+    "cmd_inf": 0,
+    "rel_which": 2,
+    "rel_other": 132
+   },
+   "rates": {
+    "did_rate": 0.193,
+    "did_per10k": 83.656,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": null,
+    "leveled": 0.234,
+    "plural_was": 0.0,
+    "personal_which": 0.0149,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.078
+   }
+  },
+  "eri/internet_archive:chronicleseri00ocogoog": {
+   "counts": {
+    "words": 141078,
+    "past": 3808,
+    "came_to_pass": 8,
+    "did_adjacent": 124,
+    "did_adverbial": 8,
+    "did_subject": 17,
+    "did_neither": 3,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 1,
+    "leveled": 1,
+    "cause_fin": 0,
+    "cause_inf": 8,
+    "cmd_fin": 0,
+    "cmd_inf": 1,
+    "rel_which": 13,
+    "rel_other": 131
+   },
+   "rates": {
+    "did_rate": 0.0377,
+    "did_per10k": 10.562,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.0,
+    "leveled": 0.071,
+    "plural_was": 0.071,
+    "personal_which": 0.0903,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  },
+  "eri/internet_archive:chronicleserior01ocogoog": {
+   "counts": {
+    "words": 142433,
+    "past": 3451,
+    "came_to_pass": 6,
+    "did_adjacent": 106,
+    "did_adverbial": 6,
+    "did_subject": 15,
+    "did_neither": 3,
+    "more_part": 0,
+    "if_it_so_be": 0,
+    "impersonal": 0,
+    "plural_was": 1,
+    "leveled": 1,
+    "cause_fin": 0,
+    "cause_inf": 5,
+    "cmd_fin": 1,
+    "cmd_inf": 1,
+    "rel_which": 9,
+    "rel_other": 125
+   },
+   "rates": {
+    "did_rate": 0.0355,
+    "did_per10k": 8.916,
+    "more_part": 0.0,
+    "cause_finite": 0.0,
+    "command_finite": 0.5,
+    "leveled": 0.07,
+    "plural_was": 0.07,
+    "personal_which": 0.0672,
+    "if_it_so_be": 0.0,
+    "impersonal": 0.0
+   }
+  }
+ },
+ "library": {
+  "works_in_rule_set": 207471,
+  "works_counted": 207471,
+  "not_attempted": 0,
+  "not_yet_reached": 0,
+  "coverage_by_decade": {
+   "1500": 40,
+   "1510": 30,
+   "1520": 62,
+   "1530": 201,
+   "1540": 272,
+   "1550": 283,
+   "1560": 328,
+   "1570": 498,
+   "1580": 717,
+   "1590": 880,
+   "1600": 1207,
+   "1610": 1250,
+   "1620": 1266,
+   "1630": 1269,
+   "1640": 2873,
+   "1650": 3486,
+   "1660": 2545,
+   "1670": 2678,
+   "1680": 3694,
+   "1690": 3818,
+   "1700": 708,
+   "1710": 282,
+   "1720": 295,
+   "1730": 254,
+   "1740": 379,
+   "1750": 341,
+   "1760": 528,
+   "1770": 710,
+   "1780": 16125,
+   "1790": 27417,
+   "1800": 25349,
+   "1810": 36697,
+   "1820": 63386,
+   "1830": 7603
+  },
+  "by_half_century": {
+   "1500-1549": {
+    "did_rate": {
+     "n": 576,
+     "at_or_above": 9,
+     "percentile": 98.44,
+     "median": 0.0169
+    },
+    "did_per10k": {
+     "n": 605,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 2.658
+    },
+    "more_part": {
+     "n": 605,
+     "at_or_above": 17,
+     "percentile": 97.19,
+     "median": 0.0
+    },
+    "cause_finite": {
+     "n": 476,
+     "at_or_above": 12,
+     "percentile": 97.48,
+     "median": 0.0
+    },
+    "command_finite": {
+     "n": 416,
+     "at_or_above": 17,
+     "percentile": 95.91,
+     "median": 0.0
+    },
+    "leveled": {
+     "n": 605,
+     "at_or_above": 7,
+     "percentile": 98.84,
+     "median": 0.0
+    },
+    "plural_was": {
+     "n": 605,
+     "at_or_above": 10,
+     "percentile": 98.35,
+     "median": 0.0
+    },
+    "personal_which": {
+     "n": 587,
+     "at_or_above": 78,
+     "percentile": 86.71,
+     "median": 0.1667
+    },
+    "if_it_so_be": {
+     "n": 605,
+     "at_or_above": 2,
+     "percentile": 99.67,
+     "median": 0.0
+    },
+    "impersonal": {
+     "n": 605,
+     "at_or_above": 12,
+     "percentile": 98.02,
+     "median": 0.0
+    }
+   },
+   "1550-1599": {
+    "did_rate": {
+     "n": 2636,
+     "at_or_above": 72,
+     "percentile": 97.27,
+     "median": 0.0299
+    },
+    "did_per10k": {
+     "n": 2706,
+     "at_or_above": 43,
+     "percentile": 98.41,
+     "median": 4.863
+    },
+    "more_part": {
+     "n": 2706,
+     "at_or_above": 32,
+     "percentile": 98.82,
+     "median": 0.0
+    },
+    "cause_finite": {
+     "n": 2221,
+     "at_or_above": 24,
+     "percentile": 98.92,
+     "median": 0.0
+    },
+    "command_finite": {
+     "n": 1814,
+     "at_or_above": 73,
+     "percentile": 95.98,
+     "median": 0.0
+    },
+    "leveled": {
+     "n": 2706,
+     "at_or_above": 29,
+     "percentile": 98.93,
+     "median": 0.0
+    },
+    "plural_was": {
+     "n": 2706,
+     "at_or_above": 21,
+     "percentile": 99.22,
+     "median": 0.0
+    },
+    "personal_which": {
+     "n": 2629,
+     "at_or_above": 398,
+     "percentile": 84.86,
+     "median": 0.1927
+    },
+    "if_it_so_be": {
+     "n": 2706,
+     "at_or_above": 2,
+     "percentile": 99.93,
+     "median": 0.0
+    },
+    "impersonal": {
+     "n": 2706,
+     "at_or_above": 64,
+     "percentile": 97.63,
+     "median": 0.0
+    }
+   },
+   "1600-1649": {
+    "did_rate": {
+     "n": 7767,
+     "at_or_above": 75,
+     "percentile": 99.03,
+     "median": 0.0247
+    },
+    "did_per10k": {
+     "n": 7865,
+     "at_or_above": 50,
+     "percentile": 99.36,
+     "median": 3.871
+    },
+    "more_part": {
+     "n": 7865,
+     "at_or_above": 16,
+     "percentile": 99.8,
+     "median": 0.0
+    },
+    "cause_finite": {
+     "n": 5655,
+     "at_or_above": 58,
+     "percentile": 98.97,
+     "median": 0.0
+    },
+    "command_finite": {
+     "n": 4866,
+     "at_or_above": 184,
+     "percentile": 96.22,
+     "median": 0.0
+    },
+    "leveled": {
+     "n": 7865,
+     "at_or_above": 191,
+     "percentile": 97.57,
+     "median": 0.0
+    },
+    "plural_was": {
+     "n": 7865,
+     "at_or_above": 88,
+     "percentile": 98.88,
+     "median": 0.0
+    },
+    "personal_which": {
+     "n": 7775,
+     "at_or_above": 382,
+     "percentile": 95.09,
+     "median": 0.1053
+    },
+    "if_it_so_be": {
+     "n": 7865,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "impersonal": {
+     "n": 7865,
+     "at_or_above": 57,
+     "percentile": 99.28,
+     "median": 0.0
+    }
+   },
+   "1650-1699": {
+    "did_rate": {
+     "n": 16008,
+     "at_or_above": 58,
+     "percentile": 99.64,
+     "median": 0.0183
+    },
+    "did_per10k": {
+     "n": 16221,
+     "at_or_above": 46,
+     "percentile": 99.72,
+     "median": 3.001
+    },
+    "more_part": {
+     "n": 16221,
+     "at_or_above": 9,
+     "percentile": 99.94,
+     "median": 0.0
+    },
+    "cause_finite": {
+     "n": 10898,
+     "at_or_above": 120,
+     "percentile": 98.9,
+     "median": 0.0
+    },
+    "command_finite": {
+     "n": 9540,
+     "at_or_above": 308,
+     "percentile": 96.77,
+     "median": 0.0
+    },
+    "leveled": {
+     "n": 16221,
+     "at_or_above": 536,
+     "percentile": 96.7,
+     "median": 0.0
+    },
+    "plural_was": {
+     "n": 16221,
+     "at_or_above": 297,
+     "percentile": 98.17,
+     "median": 0.0
+    },
+    "personal_which": {
+     "n": 15980,
+     "at_or_above": 266,
+     "percentile": 98.34,
+     "median": 0.0755
+    },
+    "if_it_so_be": {
+     "n": 16221,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "impersonal": {
+     "n": 16221,
+     "at_or_above": 44,
+     "percentile": 99.73,
+     "median": 0.0
+    }
+   },
+   "1700-1749": {
+    "did_rate": {
+     "n": 1883,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0078
+    },
+    "did_per10k": {
+     "n": 1918,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 1.289
+    },
+    "more_part": {
+     "n": 1918,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "cause_finite": {
+     "n": 1082,
+     "at_or_above": 18,
+     "percentile": 98.34,
+     "median": 0.0
+    },
+    "command_finite": {
+     "n": 891,
+     "at_or_above": 36,
+     "percentile": 95.96,
+     "median": 0.0
+    },
+    "leveled": {
+     "n": 1918,
+     "at_or_above": 116,
+     "percentile": 93.95,
+     "median": 0.0
+    },
+    "plural_was": {
+     "n": 1918,
+     "at_or_above": 21,
+     "percentile": 98.91,
+     "median": 0.0
+    },
+    "personal_which": {
+     "n": 1896,
+     "at_or_above": 24,
+     "percentile": 98.73,
+     "median": 0.0606
+    },
+    "if_it_so_be": {
+     "n": 1918,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "impersonal": {
+     "n": 1918,
+     "at_or_above": 8,
+     "percentile": 99.58,
+     "median": 0.0
+    }
+   },
+   "1750-1799": {
+    "did_rate": {
+     "n": 45013,
+     "at_or_above": 14,
+     "percentile": 99.97,
+     "median": 0.0016
+    },
+    "did_per10k": {
+     "n": 45121,
+     "at_or_above": 5,
+     "percentile": 99.99,
+     "median": 0.392
+    },
+    "more_part": {
+     "n": 45121,
+     "at_or_above": 8,
+     "percentile": 99.98,
+     "median": 0.0
+    },
+    "cause_finite": {
+     "n": 28047,
+     "at_or_above": 281,
+     "percentile": 99.0,
+     "median": 0.0
+    },
+    "command_finite": {
+     "n": 19788,
+     "at_or_above": 490,
+     "percentile": 97.52,
+     "median": 0.0
+    },
+    "leveled": {
+     "n": 45121,
+     "at_or_above": 908,
+     "percentile": 97.99,
+     "median": 0.0
+    },
+    "plural_was": {
+     "n": 45121,
+     "at_or_above": 574,
+     "percentile": 98.73,
+     "median": 0.0
+    },
+    "personal_which": {
+     "n": 44820,
+     "at_or_above": 1138,
+     "percentile": 97.46,
+     "median": 0.0734
+    },
+    "if_it_so_be": {
+     "n": 45121,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "impersonal": {
+     "n": 45121,
+     "at_or_above": 38,
+     "percentile": 99.92,
+     "median": 0.0
+    }
+   },
+   "1800-1830": {
+    "did_rate": {
+     "n": 132826,
+     "at_or_above": 15,
+     "percentile": 99.99,
+     "median": 0.0022
+    },
+    "did_per10k": {
+     "n": 133035,
+     "at_or_above": 27,
+     "percentile": 99.98,
+     "median": 0.529
+    },
+    "more_part": {
+     "n": 133035,
+     "at_or_above": 8,
+     "percentile": 99.99,
+     "median": 0.0
+    },
+    "cause_finite": {
+     "n": 92748,
+     "at_or_above": 835,
+     "percentile": 99.1,
+     "median": 0.0
+    },
+    "command_finite": {
+     "n": 58771,
+     "at_or_above": 1746,
+     "percentile": 97.03,
+     "median": 0.0
+    },
+    "leveled": {
+     "n": 133035,
+     "at_or_above": 891,
+     "percentile": 99.33,
+     "median": 0.0
+    },
+    "plural_was": {
+     "n": 133035,
+     "at_or_above": 1718,
+     "percentile": 98.71,
+     "median": 0.0
+    },
+    "personal_which": {
+     "n": 131907,
+     "at_or_above": 3817,
+     "percentile": 97.11,
+     "median": 0.0755
+    },
+    "if_it_so_be": {
+     "n": 133035,
+     "at_or_above": 1,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "impersonal": {
+     "n": 133035,
+     "at_or_above": 83,
+     "percentile": 99.94,
+     "median": 0.0
+    }
+   }
+  },
+  "match_1780_1830": {
+   "did_rate": {
+    "bom": 0.194,
+    "with_data": 176264,
+    "at_or_above": 28
+   },
+   "did_per10k": {
+    "bom": 61.064,
+    "with_data": 176577,
+    "at_or_above": 32
+   },
+   "more_part": {
+    "bom": 0.981,
+    "with_data": 176577,
+    "at_or_above": 16
+   },
+   "cause_finite": {
+    "bom": 0.6328,
+    "with_data": 120025,
+    "at_or_above": 1106
+   },
+   "command_finite": {
+    "bom": 0.7836,
+    "with_data": 77975,
+    "at_or_above": 2216
+   },
+   "leveled": {
+    "bom": 1.509,
+    "with_data": 176577,
+    "at_or_above": 1675
+   },
+   "plural_was": {
+    "bom": 0.189,
+    "with_data": 176577,
+    "at_or_above": 2265
+   },
+   "personal_which": {
+    "bom": 0.4369,
+    "with_data": 175155,
+    "at_or_above": 4927
+   },
+   "if_it_so_be": {
+    "bom": 1.546,
+    "with_data": 176577,
+    "at_or_above": 1
+   },
+   "impersonal": {
+    "bom": 0.83,
+    "with_data": 176577,
+    "at_or_above": 120
+   },
+   "all_features": {
+    "n": 0,
+    "ids": []
+   },
+   "features_at_or_above_histogram": {
+    "0": 164421,
+    "1": 11929,
+    "2": 224,
+    "3": 3
+   }
+  },
+  "top20_1780_1830_did_rate": [
+   {
+    "work_id": "institutional_books:HXGF7C",
+    "year": 1815,
+    "did_rate": 0.3686,
+    "did_per10k": 129.908,
+    "did": 1145,
+    "past": 1961
+   },
+   {
+    "work_id": "institutional_books:AH4EJD",
+    "year": 1830,
+    "did_rate": 0.2835,
+    "did_per10k": 49.165,
+    "did": 960,
+    "past": 2426
+   },
+   {
+    "work_id": "internet_archive:bim_eighteenth-century_articles-of-charge-of-hi_great-britain-parliamen_1786_2",
+    "year": 1786,
+    "did_rate": 0.2719,
+    "did_per10k": 64.734,
+    "did": 90,
+    "past": 241
+   },
+   {
+    "work_id": "internet_archive:bim_eighteenth-century_parliament-house-of-com_great-britain_1788",
+    "year": 1788,
+    "did_rate": 0.2685,
+    "did_per10k": 75.518,
+    "did": 396,
+    "past": 1079
+   },
+   {
+    "work_id": "hathitrust:ia.ark:/13960/t04x8b87g",
+    "year": 1830,
+    "did_rate": 0.2649,
+    "did_per10k": 48.495,
+    "did": 1004,
+    "past": 2786
+   },
+   {
+    "work_id": "internet_archive:bim_eighteenth-century_articles-exhibited-by-t_great-britain_1788",
+    "year": 1788,
+    "did_rate": 0.2564,
+    "did_per10k": 69.029,
+    "did": 390,
+    "past": 1131
+   },
+   {
+    "work_id": "internet_archive:grammarofmassach00elio",
+    "year": 1822,
+    "did_rate": 0.2464,
+    "did_per10k": 39.066,
+    "did": 170,
+    "past": 520
+   },
+   {
+    "work_id": "internet_archive:Ayer_4A_2706",
+    "year": 1822,
+    "did_rate": 0.2411,
+    "did_per10k": 37.678,
+    "did": 162,
+    "past": 510
+   },
+   {
+    "work_id": "internet_archive:bim_eighteenth-century_articles-exhibited-by-t_hastings-warren_1787",
+    "year": 1787,
+    "did_rate": 0.2402,
+    "did_per10k": 64.848,
+    "did": 348,
+    "past": 1101
+   },
+   {
+    "work_id": "institutional_books:HN53F8",
+    "year": 1810,
+    "did_rate": 0.2349,
+    "did_per10k": 37.246,
+    "did": 35,
+    "past": 114
+   },
+   {
+    "work_id": "internet_archive:divinesongsonmug00fros",
+    "year": 1829,
+    "did_rate": 0.2324,
+    "did_per10k": 68.562,
+    "did": 547,
+    "past": 1807
+   },
+   {
+    "work_id": "internet_archive:bim_eighteenth-century_prayers-selected-from-th_church-of-england_1795",
+    "year": 1795,
+    "did_rate": 0.2308,
+    "did_per10k": 23.854,
+    "did": 18,
+    "past": 60
+   },
+   {
+    "work_id": "internet_archive:bim_eighteenth-century_the-whole-book-of-psalms_1791_0",
+    "year": 1791,
+    "did_rate": 0.2274,
+    "did_per10k": 35.325,
+    "did": 224,
+    "past": 761
+   },
+   {
+    "work_id": "internet_archive:richoldbachelord00comb",
+    "year": 1824,
+    "did_rate": 0.2251,
+    "did_per10k": 75.561,
+    "did": 465,
+    "past": 1601
+   },
+   {
+    "work_id": "internet_archive:bim_eighteenth-century_the-whole-book-of-psalms_1780",
+    "year": 1780,
+    "did_rate": 0.2235,
+    "did_per10k": 34.783,
+    "did": 232,
+    "past": 806
+   },
+   {
+    "work_id": "internet_archive:bim_eighteenth-century_the-whole-book-of-psalms_1793",
+    "year": 1793,
+    "did_rate": 0.2223,
+    "did_per10k": 35.4,
+    "did": 235,
+    "past": 822
+   },
+   {
+    "work_id": "internet_archive:bim_eighteenth-century_articles-of-charge-of-hi_hastings-warren_1786",
+    "year": 1786,
+    "did_rate": 0.2209,
+    "did_per10k": 55.391,
+    "did": 148,
+    "past": 522
+   },
+   {
+    "work_id": "institutional_books:32044054763545",
+    "year": 1829,
+    "did_rate": 0.2173,
+    "did_per10k": 68.916,
+    "did": 549,
+    "past": 1978
+   },
+   {
+    "work_id": "internet_archive:bim_eighteenth-century_articles-exhibited-by-th_great-britain-parliamen_1788",
+    "year": 1788,
+    "did_rate": 0.2155,
+    "did_per10k": 58.229,
+    "did": 719,
+    "past": 2618
+   },
+   {
+    "work_id": "internet_archive:battlefloddenfi00bensgoog",
+    "year": 1805,
+    "did_rate": 0.2149,
+    "did_per10k": 71.875,
+    "did": 153,
+    "past": 559
+   }
+  ],
+  "after_1700": {
+   "measure": "did_rate",
+   "works": 179722,
+   "reach_bom": 29,
+   "reach_bom_not_reprint": 15,
+   "by_genre": {
+    "legal_political": 5,
+    "legal_political,newspaper_periodical": 2,
+    "fiction_narrative": 2,
+    "sermon_devotional": 2,
+    "sermon_devotional,pseudo_biblical": 1,
+    "history_chronicle": 1,
+    "history_chronicle,legal_political": 1,
+    "fiction_narrative,other": 1
+   },
+   "translation_marked": 0,
+   "works_reaching": [
+    {
+     "work_id": "institutional_books:HXGF7C",
+     "year": 1815,
+     "did_rate": 0.3686,
+     "did": 1145,
+     "past": 1961,
+     "words": 88139,
+     "genre": "history_chronicle,other",
+     "pre1700_author": false,
+     "title_judgment": "reprint: Mirror for Magistrates (1559-1610)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "institutional_books:AH4EJD",
+     "year": 1830,
+     "did_rate": 0.2835,
+     "did": 960,
+     "past": 2426,
+     "words": 195261,
+     "genre": "sermon_devotional",
+     "pre1700_author": false,
+     "title_judgment": "reprint: Isaac Barrow (d. 1677)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_articles-of-charge-of-hi_great-britain-parliamen_1786_2",
+     "year": 1786,
+     "did_rate": 0.2719,
+     "did": 90,
+     "past": 241,
+     "words": 13903,
+     "genre": "legal_political,newspaper_periodical",
+     "pre1700_author": false,
+     "title_judgment": "later: legal (Hastings impeachment articles)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_parliament-house-of-com_great-britain_1788",
+     "year": 1788,
+     "did_rate": 0.2685,
+     "did": 396,
+     "past": 1079,
+     "words": 52438,
+     "genre": "legal_political",
+     "pre1700_author": false,
+     "title_judgment": "later: legal (Hastings impeachment articles)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "hathitrust:ia.ark:/13960/t04x8b87g",
+     "year": 1830,
+     "did_rate": 0.2649,
+     "did": 1004,
+     "past": 2786,
+     "words": 207033,
+     "genre": "history_chronicle",
+     "pre1700_author": true,
+     "title_judgment": "reprint: Isaac Barrow (d. 1677)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_articles-exhibited-by-t_great-britain_1788",
+     "year": 1788,
+     "did_rate": 0.2564,
+     "did": 390,
+     "past": 1131,
+     "words": 56498,
+     "genre": "legal_political",
+     "pre1700_author": false,
+     "title_judgment": "later: legal (Hastings impeachment articles)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:grammarofmassach00elio",
+     "year": 1822,
+     "did_rate": 0.2464,
+     "did": 170,
+     "past": 520,
+     "words": 43516,
+     "genre": "scientific_medical,other",
+     "pre1700_author": true,
+     "title_judgment": "reprint: Eliot grammar (1666)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:Ayer_4A_2706",
+     "year": 1822,
+     "did_rate": 0.2411,
+     "did": 162,
+     "past": 510,
+     "words": 42996,
+     "genre": "scientific_medical,history_chronicle",
+     "pre1700_author": true,
+     "title_judgment": "reprint: Eliot grammar (1666)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_articles-exhibited-by-t_hastings-warren_1787",
+     "year": 1787,
+     "did_rate": 0.2402,
+     "did": 348,
+     "past": 1101,
+     "words": 53664,
+     "genre": "legal_political,newspaper_periodical",
+     "pre1700_author": false,
+     "title_judgment": "later: legal (Hastings impeachment articles)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "institutional_books:HN53F8",
+     "year": 1810,
+     "did_rate": 0.2349,
+     "did": 35,
+     "past": 114,
+     "words": 9397,
+     "genre": "history_chronicle,other",
+     "pre1700_author": false,
+     "title_judgment": "reprint: Ludus scacchiae (1597)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:divinesongsonmug00fros",
+     "year": 1829,
+     "did_rate": 0.2324,
+     "did": 547,
+     "past": 1807,
+     "words": 79782,
+     "genre": "sermon_devotional,pseudo_biblical",
+     "pre1700_author": false,
+     "title_judgment": "later: Muggletonian hymns (compiled 1829; some older, not checked)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_prayers-selected-from-th_church-of-england_1795",
+     "year": 1795,
+     "did_rate": 0.2308,
+     "did": 18,
+     "past": 60,
+     "words": 7546,
+     "genre": "sermon_devotional",
+     "pre1700_author": false,
+     "title_judgment": "reprint: Book of Common Prayer (1549-1662)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_the-whole-book-of-psalms_1791_0",
+     "year": 1791,
+     "did_rate": 0.2274,
+     "did": 224,
+     "past": 761,
+     "words": 63412,
+     "genre": "sermon_devotional",
+     "pre1700_author": false,
+     "title_judgment": "reprint: Sternhold-Hopkins psalter (1562)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:richoldbachelord00comb",
+     "year": 1824,
+     "did_rate": 0.2251,
+     "did": 465,
+     "past": 1601,
+     "words": 61540,
+     "genre": "fiction_narrative",
+     "pre1700_author": false,
+     "title_judgment": "later: verse tale (Combe; style not checked)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_the-whole-book-of-psalms_1780",
+     "year": 1780,
+     "did_rate": 0.2235,
+     "did": 232,
+     "past": 806,
+     "words": 66699,
+     "genre": "sermon_devotional",
+     "pre1700_author": false,
+     "title_judgment": "reprint: Sternhold-Hopkins psalter (1562)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_the-whole-book-of-psalms_1793",
+     "year": 1793,
+     "did_rate": 0.2223,
+     "did": 235,
+     "past": 822,
+     "words": 66384,
+     "genre": "sermon_devotional",
+     "pre1700_author": false,
+     "title_judgment": "reprint: Sternhold-Hopkins psalter (1562)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_articles-of-charge-of-hi_hastings-warren_1786",
+     "year": 1786,
+     "did_rate": 0.2209,
+     "did": 148,
+     "past": 522,
+     "words": 26719,
+     "genre": "legal_political",
+     "pre1700_author": false,
+     "title_judgment": "later: legal (Hastings impeachment articles)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "institutional_books:32044054763545",
+     "year": 1829,
+     "did_rate": 0.2173,
+     "did": 549,
+     "past": 1978,
+     "words": 79662,
+     "genre": "sermon_devotional",
+     "pre1700_author": false,
+     "title_judgment": "later: Muggletonian hymns (compiled 1829; some older, not checked)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_articles-exhibited-by-th_great-britain-parliamen_1788",
+     "year": 1788,
+     "did_rate": 0.2155,
+     "did": 719,
+     "past": 2618,
+     "words": 123479,
+     "genre": "legal_political",
+     "pre1700_author": false,
+     "title_judgment": "later: legal (Hastings impeachment articles)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:battlefloddenfi00bensgoog",
+     "year": 1805,
+     "did_rate": 0.2149,
+     "did": 153,
+     "past": 559,
+     "words": 21287,
+     "genre": "history_chronicle",
+     "pre1700_author": false,
+     "title_judgment": "reprint: 16th-century poem",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_the-whole-book-of-psalms_1781",
+     "year": 1781,
+     "did_rate": 0.2076,
+     "did": 203,
+     "past": 775,
+     "words": 69062,
+     "genre": "sermon_devotional",
+     "pre1700_author": false,
+     "title_judgment": "reprint: Sternhold-Hopkins psalter (1562)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "tcp:K051765.000",
+     "year": 1755,
+     "did_rate": 0.2031,
+     "did": 13,
+     "past": 51,
+     "words": 5158,
+     "genre": "fiction_narrative",
+     "pre1700_author": false,
+     "title_judgment": "later: comedy (short)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:psalmsofdavidin00chur",
+     "year": 1810,
+     "did_rate": 0.2029,
+     "did": 212,
+     "past": 833,
+     "words": 53217,
+     "genre": "sermon_devotional,pseudo_biblical",
+     "pre1700_author": false,
+     "title_judgment": "reprint: Scottish metrical psalter (1650)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "institutional_books:HXH31W",
+     "year": 1801,
+     "did_rate": 0.1991,
+     "did": 652,
+     "past": 2623,
+     "words": 118207,
+     "genre": "history_chronicle",
+     "pre1700_author": false,
+     "title_judgment": "later: Burke's works (volume with the Hastings articles, not checked)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "institutional_books:HW8SI4",
+     "year": 1808,
+     "did_rate": 0.1987,
+     "did": 648,
+     "past": 2614,
+     "words": 119082,
+     "genre": "history_chronicle,legal_political",
+     "pre1700_author": false,
+     "title_judgment": "later: Burke's works (volume with the Hastings articles, not checked)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_celestial-harmony-or-so_1794",
+     "year": 1794,
+     "did_rate": 0.1985,
+     "did": 54,
+     "past": 218,
+     "words": 9615,
+     "genre": "sermon_devotional",
+     "pre1700_author": false,
+     "title_judgment": "later: hymns (date of composition not checked)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:atrueinterpreta00mugggoog",
+     "year": 1808,
+     "did_rate": 0.1982,
+     "did": 315,
+     "past": 1274,
+     "words": 102029,
+     "genre": "history_chronicle",
+     "pre1700_author": false,
+     "title_judgment": "reprint: Muggleton (d. 1698)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_articles-of-charge-of-hi_great-britain-parliamen_1786_0",
+     "year": 1786,
+     "did_rate": 0.1948,
+     "did": 787,
+     "past": 3254,
+     "words": 149219,
+     "genre": "legal_political",
+     "pre1700_author": false,
+     "title_judgment": "later: legal (Hastings impeachment articles)",
+     "bible_style_list": false,
+     "translation_mark": false
+    },
+    {
+     "work_id": "internet_archive:bib_fict_4103226",
+     "year": 1801,
+     "did_rate": 0.194,
+     "did": 104,
+     "past": 432,
+     "words": 14366,
+     "genre": "fiction_narrative,other",
+     "pre1700_author": false,
+     "title_judgment": "later: imitation of old ballads (W. H. Ireland)",
+     "bible_style_list": false,
+     "translation_mark": false
+    }
+   ],
+   "outside_everything_after_1700": false,
+   "reach_bom_per10k": 32
+  },
+  "groups": {
+   "bible_style_list": {
+    "n": 20,
+    "did_rate": {
+     "n": 20,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0029
+    },
+    "did_per10k": {
+     "n": 20,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.93
+    },
+    "more_part": {
+     "n": 20,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "cause_finite": {
+     "n": 17,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "command_finite": {
+     "n": 14,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "leveled": {
+     "n": 20,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "plural_was": {
+     "n": 20,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "personal_which": {
+     "n": 20,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0952
+    },
+    "if_it_so_be": {
+     "n": 20,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "impersonal": {
+     "n": 20,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "at_or_above_did_rate": [],
+    "works": [
+     {
+      "work_id": "institutional_books:HX4KRL",
+      "year": 1823,
+      "did_rate": 0.0007,
+      "did_per10k": 0.256
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_memoirs-of-the-year-two-_mercier-louis-sbastien_1799",
+      "year": 1799,
+      "did_rate": 0.0008,
+      "did_per10k": 0.199
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_the-united-states-elevat_stiles-ezra_1785",
+      "year": 1785,
+      "did_rate": 0.005,
+      "did_per10k": 0.887
+     },
+     {
+      "work_id": "internet_archive:latewarbetweenun00hunt_0",
+      "year": 1819,
+      "did_rate": 0.0032,
+      "did_per10k": 1.372
+     },
+     {
+      "work_id": "internet_archive:cihm_48806",
+      "year": 1817,
+      "did_rate": 0.0032,
+      "did_per10k": 1.242
+     },
+     {
+      "work_id": "internet_archive:anewselfinterpr01unkngoog",
+      "year": 1827,
+      "did_rate": 0.0113,
+      "did_per10k": 2.11
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_prophecies-delivered-by-_1791",
+      "year": 1791,
+      "did_rate": 0.0085,
+      "did_per10k": 0.963
+     },
+     {
+      "work_id": "internet_archive:micro_IA40244320_0144",
+      "year": 1795,
+      "did_rate": 0.0009,
+      "did_per10k": 0.221
+     },
+     {
+      "work_id": "internet_archive:b19427967",
+      "year": 1820,
+      "did_rate": 0.0148,
+      "did_per10k": 4.728
+     },
+     {
+      "work_id": "institutional_books:HH2NE7",
+      "year": 1809,
+      "did_rate": 0.0,
+      "did_per10k": 0.0
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_the-american-revolution_snowden-richard_1794_2",
+      "year": 1794,
+      "did_rate": 0.0009,
+      "did_per10k": 0.375
+     },
+     {
+      "work_id": "internet_archive:cihm_28205",
+      "year": 1816,
+      "did_rate": 0.0013,
+      "did_per10k": 0.491
+     },
+     {
+      "work_id": "internet_archive:cihm_40934",
+      "year": 1823,
+      "did_rate": 0.0009,
+      "did_per10k": 0.258
+     },
+     {
+      "work_id": "internet_archive:latewarbetweenun00hunt",
+      "year": 1816,
+      "did_rate": 0.0026,
+      "did_per10k": 1.078
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_prophecies-delivered-by-_1791_0",
+      "year": 1791,
+      "did_rate": 0.0078,
+      "did_per10k": 0.93
+     },
+     {
+      "work_id": "hathitrust:yale.39002085614833",
+      "year": 1796,
+      "did_rate": 0.0,
+      "did_per10k": 0.0
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_the-strange-and-wonderfu_love-christopher_1786",
+      "year": 1786,
+      "did_rate": 0.0339,
+      "did_per10k": 3.999
+     },
+     {
+      "work_id": "hathitrust:aeu.ark:/13960/t15m7369r",
+      "year": 1817,
+      "did_rate": 0.0029,
+      "did_per10k": 1.088
+     },
+     {
+      "work_id": "internet_archive:latewarbetween_00hunt",
+      "year": 1816,
+      "did_rate": 0.003,
+      "did_per10k": 1.263
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_the-american-revolution_snowden-richard_1793_1",
+      "year": 1793,
+      "did_rate": 0.0009,
+      "did_per10k": 0.346
+     }
+    ]
+   },
+   "translation_marked_1780_1830": {
+    "n": 341,
+    "did_rate": {
+     "n": 341,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0013
+    },
+    "did_per10k": {
+     "n": 341,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.364
+    },
+    "more_part": {
+     "n": 341,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "cause_finite": {
+     "n": 305,
+     "at_or_above": 2,
+     "percentile": 99.34,
+     "median": 0.0
+    },
+    "command_finite": {
+     "n": 215,
+     "at_or_above": 9,
+     "percentile": 95.81,
+     "median": 0.0
+    },
+    "leveled": {
+     "n": 341,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "plural_was": {
+     "n": 341,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "personal_which": {
+     "n": 341,
+     "at_or_above": 24,
+     "percentile": 92.96,
+     "median": 0.1
+    },
+    "if_it_so_be": {
+     "n": 341,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "impersonal": {
+     "n": 341,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "at_or_above_did_rate": []
+   },
+   "sermons_1780_1830": {
+    "n": 12945,
+    "did_rate": {
+     "n": 12889,
+     "at_or_above": 10,
+     "percentile": 99.92,
+     "median": 0.0049
+    },
+    "did_per10k": {
+     "n": 12945,
+     "at_or_above": 2,
+     "percentile": 99.98,
+     "median": 0.858
+    },
+    "more_part": {
+     "n": 12945,
+     "at_or_above": 1,
+     "percentile": 99.99,
+     "median": 0.0
+    },
+    "cause_finite": {
+     "n": 9431,
+     "at_or_above": 69,
+     "percentile": 99.27,
+     "median": 0.0
+    },
+    "command_finite": {
+     "n": 8352,
+     "at_or_above": 180,
+     "percentile": 97.84,
+     "median": 0.0
+    },
+    "leveled": {
+     "n": 12945,
+     "at_or_above": 137,
+     "percentile": 98.94,
+     "median": 0.0
+    },
+    "plural_was": {
+     "n": 12945,
+     "at_or_above": 55,
+     "percentile": 99.58,
+     "median": 0.0
+    },
+    "personal_which": {
+     "n": 12941,
+     "at_or_above": 72,
+     "percentile": 99.44,
+     "median": 0.0702
+    },
+    "if_it_so_be": {
+     "n": 12945,
+     "at_or_above": 0,
+     "percentile": 100.0,
+     "median": 0.0
+    },
+    "impersonal": {
+     "n": 12945,
+     "at_or_above": 26,
+     "percentile": 99.8,
+     "median": 0.0
+    },
+    "at_or_above_did_rate": [
+     "internet_archive:bim_eighteenth-century_the-whole-book-of-psalms_1780",
+     "institutional_books:32044054763545",
+     "institutional_books:AH4EJD",
+     "internet_archive:bim_eighteenth-century_the-whole-book-of-psalms_1793",
+     "internet_archive:divinesongsonmug00fros",
+     "internet_archive:bim_eighteenth-century_celestial-harmony-or-so_1794",
+     "internet_archive:bim_eighteenth-century_the-whole-book-of-psalms_1781",
+     "internet_archive:bim_eighteenth-century_the-whole-book-of-psalms_1791_0",
+     "internet_archive:psalmsofdavidin00chur",
+     "internet_archive:bim_eighteenth-century_prayers-selected-from-th_church-of-england_1795"
+    ]
+   }
+  }
+ },
+ "config_sha256": "4707ec6f146ff92f66968f93f4d33d98f9bef0bb494321e534fbc4abae8b4430",
+ "commit": "7030e850c2edb2ab911156831864a575d4e34b53"
+}

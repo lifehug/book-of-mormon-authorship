@@ -1100,11 +1100,11 @@ lab:                              # the research lab (exploratory tooling; reads
     did_window: 3                  # most tokens between did and its verb
     lexicon_sample: 1500           # library works read for the verb lexicon
     lexicon_min: 5                 # times after a modal for a word to count as a verb
-    lexicon_share: 0.02            # and that share of all its uses (set after looking at the lexicon, before any rate)
+    lexicon_share: 0.005           # and that share of all its uses (0.02 first; lowered after the first Book of Mormon count, see the card)
     reprint_death_before: 1700     # an author string with a death year before this marks a reprint
     reprint_birth_before: 1650
     workers: 8
-    part_size: 2000                # works per part file of the library pass
+    part_size: 500                 # works per part file of the library pass (order shuffled by seed)
     seed: 20261120
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare

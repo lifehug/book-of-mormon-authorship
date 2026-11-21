@@ -635,6 +635,14 @@ def _sources() -> list[dict]:
         "copyright the author; open access; private copy",
         True,
     )
+    interpreter = "https://cdn.interpreterfoundation.org/jnlpdf/"
+    for name, url in {
+        "carmack2015_past_tense_syntax.pdf": "carmack-v14-2015-pp119-186-PDF.pdf",
+        "carmack2017_1832_history.pdf": "carmack-v25-2017-pp239-259-PDF.pdf",
+        "carmack2018_pseudo_archaic.pdf": "carmack-v28-2018-pp177-232-PDF.pdf",
+    }.items():
+        terms = "copyright the author; open access; private copy"
+        add(name, "papers", "BOM-119", "file", interpreter + url, terms, True)
     for name, url in _NAMES_PAPERS.items():
         add(name, "papers", "BOM-108", "file", url, "copyright the authors; private copy", True)
     return rows
