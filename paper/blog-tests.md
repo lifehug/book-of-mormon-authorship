@@ -71,7 +71,7 @@ compares against.
 | --- | --- | --- | --- | --- | --- |
 | BOM-126 | Phrases come from histories of the Revolution; Abinadi follows Bunyan | Donofrio; Davis 2012 | the claimed source alone | the claimed source ranked among every volume in the library | **Done** |
 | BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held | TBD; 11 passages keyed |
-| BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | TBD |
+| BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | **Done** |
 | BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1993; replies | examples from each side | every use in print 1780 to 1835, by year | TBD |
 | BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | TBD |
 
@@ -309,6 +309,48 @@ and strict, so I report two.
 *What it does not show.* It cannot rule out one or two real borrowings; Oneida and Onidah is a
 single pair and no count can speak to it. It uses today's place names for the regional comparison
 and period gazetteers only for New York. Holley's list came from one web page summarising it.
+
+### New Testament wording before Christ (BOM-124)
+
+Critics point out that Nephi and Alma, centuries before Christ, use phrases from Paul and John.
+Believers answer that a translator reaches for familiar wording. Both sides argue it case by case.
+Nobody had measured how much there is, or compared it with what a translator of the period
+actually did.
+
+The measure: phrases of four or five words that are in the King James New Testament and not in
+the Old Testament, counted per 10,000 words. Chapters that quote Isaiah or the Sermon on the Mount
+at length are set aside.
+
+| Text | New Testament-only phrases per 10,000 words |
+| --- | --- |
+| Ordinary non-religious books, 1800 to 1830 | 14 |
+| Bible-style books (*The Late War* and a dozen more), typical | 54 |
+| Sale's Koran (1734 translation) | 57 |
+| Sermons, 1800 to 1830, typical | 64 |
+| Josephus on Old Testament times (Whiston's translation) | 74 |
+| **Book of Mormon before Christ** (1 Nephi to Helaman, and Ether) | **195** |
+| Book of Moses, the text added to Genesis | 220 |
+| Book of Mormon from 4 Nephi on | 234 |
+| Joseph Smith's revelations | 261 |
+| 3 Nephi | 281 |
+
+The pre-Christian parts of the book carry about three times the New Testament wording of the two
+period translators, and of the Bible-style books. Among 300 sermons they sit at the 93rd
+percentile: high, though some preachers went higher. The closest match in the table is Joseph
+Smith's own addition to Genesis.
+
+Is there a jump when Christ arrives? The rate rises by about a third at 3 Nephi (somewhere
+between 4% and 65%). That is under the bar I set for calling it a step, so: cannot tell.
+
+No one New Testament book dominates. The Gospels, Paul and Hebrews each supply about their share.
+
+*The check on the method.* Every New Testament book, scored against phrase lists built without
+it, outranked every Old Testament book. Sermons outranked non-religious books 88% of the time.
+
+*What it does not show.* Shared wording cannot tell a translator using familiar phrases from an
+author composing with them. What the comparison adds is scale: Whiston and Sale, translating
+ancient non-Christian texts into the same Bible-soaked English, used a third as much. It counts
+exact phrases only, not paraphrase.
 
 ## What I would want a reader to take from the whole set
 

@@ -980,6 +980,132 @@ lab:                              # the research lab (exploratory tooling; reads
       africa: {marks: ["Africa"], english: false}
       spanish_america: {marks: ["Mexico", "Peru", "S. A.", "Brazil", "Guatimala", "Quito"], english: false}
     seed: 20261120
+  new_testament_wording:           # BOM-124 (lab; exploratory): exact New Testament-only phrases, with baselines
+    ngram_sizes: [4, 5]            # word n-grams taken from the King James text
+    bg_year_min: 1700              # background sample of library works (rarity filter)
+    bg_year_max: 1830
+    bg_sample: 400
+    bg_seed: 20261124
+    bg_min_words: 10000
+    bg_max_share: 0.05             # drop an n-gram found in more than this share of background works
+    bg_max_share_sensitivity: [0.01, 0.2, 1.0]   # 1.0 = no filter
+    max_words_per_work: 150000     # a work is read to this length at most
+    sermon_year_min: 1800
+    sermon_year_max: 1830
+    sermon_sample: 300
+    sermon_seed: 20261125
+    nonreligious_sample: 200
+    nonreligious_seed: 20261126
+    baseline_min_words: 10000
+    loo_min_words: 1500            # known-answer (i): a King James book must be this long
+    loo_auc_bar: 0.9
+    sermon_auc_bar: 0.8            # known-answer (ii)
+    sermon_percentile_bar: 95      # above this percentile of sermons = "above sermons"
+    translator_factor: 2           # within this factor of a translator baseline = "like a translator's"
+    step_ratio_bar: 1.5
+    boot: 2000
+    boot_seed: 20261127
+    before_books: [1 Nephi, 2 Nephi, Jacob, Enos, Jarom, Omni, Words of Mormon, Mosiah, Alma, Helaman]
+    ether_books: [Ether]
+    visit_books: [3 Nephi]
+    after_books: [4 Nephi, Mormon, Moroni]
+    bible_style_exclude: ['Book of Mormon', 'Late War', 'ALT', 'First Book of Napoleon', 'American Revolution', 'Chronicle of the Kings', 'Epistles of Ignatius', 'Conquest of Canaan', 'True Relation', 'Wikipedia']
+    bible_style_min_words: 3000    # shorter pieces are listed but not counted in the medians
+    josephus_split: XII            # Antiquities before this book = Old Testament times
+    top_books: 12                  # New Testament books listed as top suppliers
+  archaic_full:                    # BOM-118 full run (lab; exploratory): cited-verse frames, whole-library scan, simulated AI judging (sonnet, whole paragraph; chosen post hoc in the pilot, fixed here)
+    year_min: 1740
+    year_max: 1830                 # 1830 counted with the 1820s
+    seed: 20261121
+    workers: 8                     # scan processes
+    part_size: 2000                # works per resumable scan part
+    window_words: 200              # words shown around a library hit; cited verses get the whole 1830 paragraph
+    model: sonnet
+    frame_cap: 60                  # hits judged per item per decade (and per item per control group), round-robin over works
+    swamp_share: 0.5               # frame test: swamped if frame hits exceed this share of broad hits ...
+    swamp_min_broad: 500           # ... while the broad form has more than this many hits in the pilot sample
+    ordinary_per_item: 2           # per-item check: plainly ordinary uses chosen by hand (where available)
+    ordinary_years: [1800, 1830]
+    persists_min: 2                # persists = at least this many hand-confirmed own-words uses in different works
+    old_author_died_before: 1740   # an author who died before this year marks an older text
+    controls: data/controls/pseudo_biblical_primary.jsonl
+    js_texts: ['data/private/candidates/js-*.jsonl', 'data/private/candidates/later/*.txt']
+    frames_revised: [molten, cross, depressed, rebellion, rent, reserve, tell, begin_to, into_an_effect, somewhat_contentions, arrive_to]  # revised once after the frame test on the pilot sample (empty or swamped), before the full scan
+    items:                         # name: [index, frame (null = cannot test by frame), broad, sense A, sense B, [1830 book, anchor in the cited paragraph], reason if null]
+      break: [0, '\b(?:could|can|cannot|might|may|shall|should|would|will|not)\s+break\s+(?:them|him|her|us|me|thee|you)\b(?!\s+(?:in|to|into|asunder|down|up|off|of|with)\b)', '\b(?:break|breaks|brake|broke|broken|breaking)\b', 'to stop, hinder or interrupt someone (in their course or progress)', 'to shatter, damage or destroy; to violate (a law, a promise); any other sense', [Ether, could break them], null]
+      mar: [1, '\b(?:mar|mars|marr?ed|marring)\s+(?:them|him|her|us|me|thee|you)\b', '\b(?:mars|marr?ed|marring)\b|\bmar\b(?!\.)', 'to hinder or to stop someone', 'to spoil, damage or disfigure; any other sense', [Ether, could mar them], null]
+      sermon: [2, null, '\bsermons?\b', 'conversation, discussion', 'a religious discourse; any other sense', [Mosiah, ended the ceremony], 'form not in the 1830 text: Skousen conjectures sermon where the 1830 text reads ceremony']
+      belove: [3, '\b(?:had|have|has|having|did|they|we|ye|he|she|i|who|whom)\s+(?:so\s+)?(?:dearly\s+)?beloved\b|\bbeloved\s+(?:him|her|them|us|me|thee)\b', '\bbeloved\b', '"belove" as an active verb meaning to love (someone beloved someone = loved them)', '"beloved" as an adjective or passive participle (dear, loved by someone, a beloved friend); any other sense', [Alma, so dearly beloved,], null]
+      counsel: [4, '\bcounsel(?:s|l?ed|l?ing)?\s+(?:the\s+lord|god|the\s+almighty|heaven)\b', '\bcounsel(?:s|l?ed|l?ing)?\b', 'to consult, to ask advice of (the object is the one whose advice is sought)', 'to advise, to give counsel to (the object is the one advised); the noun; any other sense', [Alma, counsel the Lord in all], null]
+      desirous: [5, '\b(?:it|which|this|that)\s+(?:was|is|were|are|be|been)\s+(?:very\s+|most\s+|more\s+|so\s+|exceedingly\s+)?desirous\b(?!\s+(?:of|to|that|for)\b)', '\bdesirous\b', 'desirable (said of a thing that is wanted)', 'wishing or eager (said of the person who wants something); any other sense', [1 Nephi, desirous above all], null]
+      devour: [6, '\bdevour(?:s|ed|ing)?\b(?:\W+\w+){0,4}?\W+(?:grain|provisions?|food|corn|bread|victuals|stores|crops?|harvest)\b', '\bdevour(?:s|ed|ing)?\b', 'to eat up, to use up (food or stores) by eating, said of people consuming their own provisions in the ordinary way', 'to eat greedily or ravenously, to destroy or consume violently (as beasts, fire, enemies); any other sense', [3 Nephi, had not devoured], null]
+      molten: [7, '\b(?:did|do|to|will|shall|would|could|can|must|and)\s+molten\b|\bmolten\s+(?:out\s+of|it|them|the\s+ore)\b', '\bmolten\b', '"molten" as a verb: to melt or smelt (ore, metal)', '"molten" as an adjective (melted, cast: molten lead, a molten image); any other sense', [1 Nephi, did molten out of rock], null]
+      but: [8, '\bfear\s+lest\b[^.;:?!]{0,80}[;,]\s*but\b', '\bbut\b', '"but" meaning unless (the clause after it states the condition that would prevent the outcome)', '"but" meaning however, yet, except, only; any other sense', [Jacob, but I confess unto God], null]
+      call: [9, '\b(?:great|no|little|much|small|any|the)\s+call\s+of\b', '\bcall\b', '"call" as a noun meaning need (the great call of X = the great need of X)', 'a summons, a cry, a visit, a vocation, a demand; any other sense', [Alma, great call of diligence], null]
+      consigned: [10, '\bconsigned\s+that\b', '\bconsign(?:s|ed|ing)?\b', 'assigned, appointed by fate (I am consigned that = it is my lot that)', 'handed over, committed, delivered (goods consigned to a merchant, consigned to the grave); any other sense', [Helaman, I am consigned that], null]
+      course: [11, '\bin\s+the\s+course\s+of\s+the\s+(?:land|city|country|river|sea|wilderness|mountains?|valley|road)\b', '\bcourse\b', 'direction (in the course of the land of X = in the direction of X)', 'the path or progress of something, a series, a period of time (in the course of the year); any other sense', [Alma, in the course of the land of Nephi], null]
+      cross: [12, '\bcross(?:es|ed|ing)?\s+(?:his|their|her|my|your|our|thy|its)\s+(?:own\s+)?(?:words?|sayings?|testimony|statements?|evidence|assertions?)\b|\bmake\s+(?:him|them|her|me|us)\s+cross\b', '\bcross(?:es|ed|ing)?\b', 'to contradict (make him cross his words = make him contradict himself)', 'to go across, to thwart, to mark with a cross; any other sense', [Alma, cross his words], null]
+      depart: [13, null, '\bdepart(?:s|ed|ing)?\b', 'to divide, to part', 'to go away, to leave; any other sense', [Helaman, parted hither and thither], 'form not in the 1830 text: the 1830 text reads parted, not departed']
+      depressed: [14, '\bdepressed\s+(?:both\s+)?in\s+(?:body|bodies|strength|health|mind\s+and\s+body)\b|\b(?:bodily|bodies)\s+(?:\w+\s+)?depressed\b', '\bdepressed\b', 'rendered weaker, weakened (in body or strength)', 'low in spirits, sad; pressed down physically; lowered in value; any other sense', [Alma, depressed in body], null]
+      extinct: [15, '\b(?:ye|you|we|they|he|she|i|thou)\s+(?:\w+\s+){0,2}extinct\b', '\bextinct\b', 'physically dead (of a living person or people: become extinct = be killed)', 'no longer existing as a kind, family, title or institution; put out (of a fire, a volcano); any other sense', [Alma, that ye may become extinct], null]
+      flatter: [16, '\bflatter(?:s|ed|ing)?\s+(?:them|him|her|us|me|you|thee|the\s+\w+)\s+(?:out|away|into|from|down|to)\b', '\bflatter(?:s|ed|ing)?\b', 'to coax or entice (someone out of a place or into an action), not necessarily by praise', 'to praise insincerely, to please by compliment; any other sense', [Alma, flatter them out of], null]
+      give: [17, '\bgave\s+(?:all\s+)?the\s+land\b', '\bgave\b', 'to describe, name or portray (he gave the land = he declared or named the land as something)', 'to hand over, grant, bestow; any other sense', [Alma, gave all the land which was south], null]
+      great: [18, null, '\bgreat\b', 'supreme (the great governor = the chief governor)', 'large, important, much; any other sense', [Alma, embassy to the governor of our land], 'form not in the 1830 text: the 1830 text reads the governor, not the great governor']
+      hail: [19, '\bhail(?:ed|s|ing)?\s+(?:him|them|her|us|me|the\s+\w+)\b', '\bhail(?:ed|s|ing)?\b', 'to challenge someone approaching by calling out (as a guard or sentry does), demanding who they are', 'to greet, salute or acclaim; hail as weather; any other sense', [Alma, they hailed him], null]
+      idleness: [20, '\b(?:refrain|abstain|keep)\s+(?:\w+\s+){0,1}from\s+idleness\b', '\bidleness\b', 'meaningless or vain words or actions, idle talk', 'not working, laziness, inactivity; any other sense', [Alma, refrain from idleness], null]
+      opinion: [21, '\b(?:give|gave|giving|given)\s+it\s+as\s+(?:my|our|his|their|her)\s+(?:own\s+)?opinion\b', '\bopinion\b', 'considered judgment, a formal judgment given with authority', 'a mere view or belief held without certainty; any other sense', [Alma, give it as my opinion], null]
+      raigned: [22, null, '\braigned\b', 'arraigned', 'any other sense', [Alma, be arraigned before], 'form not in the 1830 text: the 1830 text reads arraigned']
+      rebellion: [23, '\b(?:in|to|into)\s+rebellion\s+against\s+(?:the|my|our|their|his|your)\s+(?:people|brethren|neighbou?rs|enemies)\b|\bstir\w*\s+(?:\w+\s+){0,3}up\s+(?:in|to|into)\s+rebellion\b', '\brebellion\b', 'opposition, hostility (against another people or an enemy, not against rightful authority)', 'revolt against rightful authority or government; any other sense', [Mosiah, up in rebellion against my people], null]
+      rent: [24, '\bthe\s+rent\s+of\s+(?:his|her|their|the|my|thy|our)\s+(?:garment|coat|cloak|mantle|robe|clothes|vesture|vest|gown|shirt|banner|flag|veil|sail)\b|\b(?:upon|on)\s+the\s+rent\b', '\brent\b', 'the torn-off part (the rent of his garment = the piece torn from it)', 'a tear or split; payment for land or housing; torn (past participle); any other sense', [Alma, waving the rent of his garment], null]
+      reserve: [25, '\breserve(?:s|d)?\s+(?:the|their|his|our|my|your)\s+(?:flocks?|herds?|cattle|sheep|lives?|people|city|country|land)\b|\breserve(?:s|d)?\s+(?:them|him|us|me|it)\s+(?:alive|safe|unto|from)\b', '\breserve(?:s|d)?\b', 'to preserve, to keep safe (from loss or harm)', 'to keep back for later use, to set aside, to book; any other sense', [Alma, reserve the flocks unto the king], null]
+      tell: [26, '\btell\s+(?:this|these|that|those)\s+things?\s+(?:unto|to)\b|\btell\s+(?:of\s+)?things\s+to\s+come\b', '\btell\b', 'to foretell, to prophesy (something that will happen)', 'to say, relate or inform about something; any other sense', [Helaman, tell this thing unto you], null]
+      views: [27, '\bviews\s+(?:have\s+been|has\s+been|were|are|was|had\s+been)\s+(?:so\s+)?(?:glorious|great|marvellous|marvelous|wonderful|heavenly)\b', '\bviews\b', 'visions (things seen in a vision)', 'opinions, intentions, scenes or prospects; any other sense', [2 Nephi, whose views have been glorious], null]
+      welfare: [28, '\b(?:because\s+of|rejoiced?\s+(?:at|in|for)|joy\s+(?:at|of|in))\s+the\s+welfare\b', '\bwelfare\b', 'success (in an undertaking)', 'well-being, prosperity, health; any other sense', [Alma, because of the welfare], null]
+      whereby: [29, '\bwhereby\s+(?:hath|doth|dost|hast|art|is|are|didst|did|do|does|has|was|were|wilt|will|shall|should)\s+\w+(?:\s+[\w,]+){0,8}\s*\?', '\bwhereby\b', '"whereby" meaning why (in a question)', '"whereby" meaning by which, through which; any other sense', [Ether, Whereby hath my father], null]
+      about_to: [30, null, '\babout\s+to\b', 'engaged in preparations to, busy setting about (an action under way)', 'on the point of, just going to (an action imminent); any other sense', [Helaman, about to flatter away], 'no frame separates the senses: the difference is aspect, not construction (pilot)']
+      arrive_to: [31, '\barriv(?:e|es|ed|ing)\s+to\s+(?:the|a|an|this|that|his|their|our|my|its|such|so)\s+(?:\w+\s+){0,2}?(?:land|city|place|town|country|camp|village|port|island|coast|house|borders?|river|sea|shore|harbou?r|bay|fort|capital|court|perfection|pitch|degree|height|state|point|age|maturity|years?|end|conclusion|knowledge)\b', '\barriv(?:e|es|ed|ing)\s+to\b', '"to" marks the place or point arrived at (arrive to = arrive at or in)', '"to" begins an infinitive (arrived to see) or has another role; any other sense', [Mosiah, arrived to the land of Zarahemla], null]
+      be_aware: [32, '\bbe\s+aware\b(?!\s+(?:of|that|how|what|whether)\b)', '\bbe\s+aware\b', 'to beware, to take care or be on guard (a warning)', 'to be conscious of or informed about something; any other sense', [Mormon, be aware lest], null]
+      begin_to: [33, '\b(?:begin|begins|began|begun|beginning)\s+to\s+(?:the|a|an|this|that|his|their|our|my|its)\b', '\b(?:begin|begins|began|begun|beginning)\s+to\b', '"to" marks the starting point (begin to = begin at or begin with, followed by a noun)', '"to" begins an infinitive (began to speak), or marks a person addressed or a limit reached; any other sense', [Alma, began to the creation], null]
+      belief_on: [34, '\bbelief\s+on\b', '\bbelief\b', '"on" marks what is believed in (belief on = belief in)', '"on" has another role (belief on this subject, on good grounds); any other sense', [Mosiah, belief on the words of Alma], null]
+      but_if: [35, null, '\bbut\s+if\b', '"but if" meaning unless', '"but if" meaning but in case, however if; any other sense', [Mosiah, but if he yieldeth], 'no frame separates the senses: "but if" = unless and "but if" = but in case share every construction']
+      do_away: [36, '\b(?:do|did|doth|done|doeth|doing)\s+(?:these|those|this|them|it|the|that)\s+(?:\w+\s+){0,2}away\b', '\bdo\s+away\b', 'to dismiss, to set aside or reject (do these things away)', 'to abolish or get rid of (do away with); to go away; any other sense', [Moroni, do these things away], null]
+      for_the_cause_of: [37, '\b(?:is|was|are|were|be)\s+for\s+the\s+cause\s+of\b', '\bfor\s+the\s+cause\s+of\b', '"for the cause of" meaning because of (giving a reason)', 'on behalf of, in support of (for the cause of liberty); any other sense', [Alma, for the cause of your love], null]
+      hurl_away: [38, '\bhurl(?:s|ed|ing)?\s+(?:\w+\s+){0,3}away\b', '\bhurl(?:s|ed|ing)?\b', 'to drag or draw away (souls hurled away = dragged off)', 'to throw or fling with force; any other sense', [Helaman, hurl away your souls], null]
+      in_the_favor_of: [39, '\bin\s+the\s+favou?r\s+of\b', '\bfavou?r\s+of\b', '"in the favor of" meaning in favor of (in support of, deciding for)', 'in the good graces of, enjoying the favor of; any other sense', [Alma, came in the favor of the freemen], null]
+      in_the_fourth_day: [40, '\bin\s+the\s+(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth|\w+teenth|twentieth|thirtieth)\s+day\s+of\s+the\s+month\b', '\bday\s+of\s+the\s+month\b', '"in the Nth day" meaning on the Nth day (a date)', 'in the course of, within the period of that day; any other sense', [3 Nephi, in the fourth day of the month], null]
+      into_an_effect: [41, '\binto\s+an?\s+effect\b', '\binto\s+effect\b', '"into an effect" meaning into effect (carry or bring a plan into effect)', 'into a result or consequence (an effect as a thing); any other sense', [Alma, into an effect upon them], null]
+      on_the_seventh_month: [42, '\bon\s+the\s+(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth)\s+month\b', '\bmonth\b', '"on the Nth month" meaning in the Nth month (a date)', 'any other sense', [Alma, on the seventh month], null]
+      search_knowledge: [43, '\bsearch(?:es|ed|ing)?\s+(?:knowledge|wisdom|understanding)\b', '\bsearch(?:es|ed|ing)?\s+(?:for|after|into)\b', '"search" with a direct object meaning seek for (search knowledge = search for knowledge)', 'search a place or thing examined (search the scriptures, search the house); any other sense', [2 Nephi, search knowledge], null]
+      somewhat_contentions: [44, '\bsomewhat\s+(?:contentions?|wars?|troubles?|difficulty|difficulties|disputes?|dissensions?|quarrels?|disturbances?|commotions?|disorders?|tumults?|strifes?|divisions?|murmurings?|disagreements?|differences?)\b', '\bsomewhat\s+of\b', '"somewhat" before a noun meaning some, a certain amount of (somewhat contentions = some contentions)', 'somewhat as an adverb (to some degree); any other sense', [Words of Mormon, somewhat contentions], null]
+      strong_hold: [45, '\bstrong(?:er|est)\s+hold\b', '\bstrong\s*holds?\b', '"strong hold" as an adjective and noun (a hold that is strong; strongest hold = the strongest of the holds)', 'a stronghold as one compound noun (a fortress), or hold as a grip; any other sense', [Helaman, strongest hold in all the land], null]
+      to_that: [46, '\b(?:even\s+)?to\s+that\s+(?:they|he|she|we|ye|i|it|the)\s+(?:did|were|was|had|could|would|should|might)\b', '\bto\s+that\b', '"to that" as a conjunction meaning until, to the point that', '"to" + "that" as a pronoun or determiner (added to that, to that place); any other sense', [1 Nephi, even to that they did forget], null]
+      where_unto: [47, '\bwhere\s?unto\s+(?:thou|ye|you|he|they|we|i)\s+(?:hast|hath|have|has|art|had)\s+not\b', '\bwhere\s?unto\b', '"whereunto" meaning with respect to which, whereas', 'to which, to what place or purpose; any other sense', [Ether, whereunto thou hast not made us], null]
+  emode:                           # BOM-119 (lab; exploratory): Carmack's early modern syntax rates against the library
+    min_words: 5000                # a library work needs this many words
+    min_past: 50                   # and this many past-tense contexts for its did-rate to count
+    year_min: 1500
+    year_max: 1830
+    match_years: [1780, 1830]      # "how many works match or exceed it"
+    after_years: [1700, 1830]      # "outside everything after 1700"
+    early_years: [1540, 1620]      # known answer (b): EEBO-TCP works, high periphrastic did
+    late_years: [1760, 1830]       # known answer (b): library works, low periphrastic did
+    auc_sample: 300                # works drawn for each side of (b)
+    auc_bar: 0.80                  # (b): AUC of the did-rate
+    profile_auc_bar: 0.75          # (b): AUC of the mean per-feature percentile rank
+    handcheck: 60                  # known answer (c): periphrastic hits read by hand
+    precision_bar: 0.90
+    published: {bom: 0.202, kjv: 0.017}   # Skousen and Carmack 2018 (NOL 566, 570)
+    bom_tolerance: 0.03            # known answer (a): absolute, in rate
+    kjv_tolerance: 0.007
+    did_window: 3                  # most tokens between did and its verb
+    lexicon_sample: 1500           # library works read for the verb lexicon
+    lexicon_min: 5                 # times after a modal for a word to count as a verb
+    lexicon_share: 0.02            # and that share of all its uses (set after looking at the lexicon, before any rate)
+    reprint_death_before: 1700     # an author string with a death year before this marks a reprint
+    reprint_birth_before: 1650
+    workers: 8
+    part_size: 2000                # works per part file of the library pass
+    seed: 20261120
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
