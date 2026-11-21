@@ -877,6 +877,8 @@ lab:                              # the research lab (exploratory tooling; reads
     seed: 20261120
     passages: 5                    # hits judged per item per decade (and per item in the control books), at most one per work
     window_words: 60               # words shown around a hit
+    second_window_words: 200       # second attempt at the check (after the first missed): words around a library hit; Book of Mormon verses get the whole 1830 paragraph
+    second_model: sonnet           # second attempt: the judge model (no quotation question)
     early_year_max: 1699           # known answer (b): EEBO-TCP works up to this year
     early_sample: 400              # early works drawn
     early_per_item: 3              # early passages judged per item
@@ -899,6 +901,85 @@ lab:                              # the research lab (exploratory tooling; reads
       be_aware: [32, '\bbe\s+aware\b(?!\s+(?:of|that|how|what|whether)\b)', '\bbe\s+aware\s+(?:of|that)\b', 'to beware, to take care or be on guard (a warning)', 'to be conscious of or informed about something; any other sense']
       begin_to: [33, '\b(?:begin|begins|began|begun|beginning)\s+to\s+(?:the|a|an|this|that|his|their|our|my|its)\b', '\b(?:begin|begins|began|begun|beginning)\s+to\b', '"to" marks the starting point (begin to = begin at or begin with, followed by a noun)', '"to" begins an infinitive (began to speak), or marks a person addressed or a limit reached; any other sense']
       belief_on: [34, '\bbelief\s+on\b', '\bbelief\s+on\b', '"on" marks what is believed in (belief on = belief in)', '"on" has another role (belief on this subject, on good grounds); any other sense']
+    frames:                        # redesign (after the second check): each item cut to the cited verse's frame, for counting the calls a judge-every-hit design needs; null = no frame separates the senses
+      break: '\b(?:could|can|cannot|might|may|shall|should|would|will|not)\s+break\s+(?:them|him|her|us|me|thee|you)\b(?!\s+(?:in|to|into|asunder|down|up|off|of|with)\b)'
+      mar: '\b(?:could|can|cannot|might|may|shall|should|would|will|not)\s+mar\s+(?:them|him|her|us|me|thee|you)\b'
+      belove: '\b(?:had|have|has|having|did|they|we|ye|he|she|i|who|whom)\s+(?:so\s+)?(?:dearly\s+)?beloved\b|\bbeloved\s+(?:him|her|them|us|me|thee)\b'
+      counsel: '\bcounsel(?:s|l?ed|l?ing)?\s+(?:the\s+lord|god|the\s+almighty|heaven)\b'
+      desirous: '\b(?:it|which|this|that)\s+(?:was|is|were|are|be|been)\s+(?:very\s+|most\s+|more\s+|so\s+|exceedingly\s+)?desirous\b(?!\s+(?:of|to|that|for)\b)'
+      about_to: null
+      arrive_to: '\barriv(?:e|es|ed|ing)\s+to\s+the\s+(?:land|city|place|town|country|camp|village|port|island|coast|house|borders?|river|sea|shore)\b'
+      be_aware: '\bbe\s+aware\s*,?\s+lest\b'
+      begin_to: '\b(?:begin|begins|began|begun|beginning)\s+to\s+(?:the|a|an|this|that|his|their|our|my|its)\b'
+      belief_on: '\bbelief\s+on\b'
+    frame_cap: 60                  # redesign: at most this many frame hits judged per item per decade (all, if fewer)
+    frame_rare_share: 0.05         # redesign: power quoted for a claimed sense making up this share of frame hits
+  placenames:                      # BOM-110 (lab; exploratory): the book's place names against regions and control name sets
+    palmyra: [43.06, -77.23]
+    radii_km: [500, 150]           # the reach of Holley's map; a nearer second reading
+    feature_classes: [P, A, H, T]  # GeoNames: settlements, administrative areas, waters, hills
+    english_countries: [US, CA, GB, IE, AU, NZ]
+    english_share: 0.9             # a region counts toward the verdict with this share of entries in those countries
+    grid_deg: [2.0, 2.5]           # centres over English-spelling countries: latitude step, longitude step
+    world_grid_deg: 6.0            # centres elsewhere (reported, not in the verdict)
+    centre_max_km: 60              # a grid point is a centre only with an entry this near (land, not sea)
+    max_region_factor: 3.0         # a region reaching beyond this many radii is dropped and counted
+    far_factor: 2.0                # the verdict's regions have centres more than this many radii from Palmyra
+    named_centres:
+      jerusalem: [31.78, 35.22]
+      mexico_city: [19.43, -99.13]
+      guatemala_city: [14.63, -90.51]
+      merida: [20.97, -89.62]
+      london: [51.51, -0.13]
+      edinburgh: [55.95, -3.19]
+      dublin: [53.35, -6.26]
+    min_word_len: 3                # a word of a place name shorter than this gives no key
+    generic_words: [lake, lakes, river, creek, brook, pond, mount, mountain, mountains, hill, hills, city, town, township, village, county, saint, sainte, san, santa, new, north, south, east, west, upper, lower, old, great, little, big, fort, port, point, cape, bay, island, islands, isle, falls, fork, branch, run, spring, springs, valley, center, centre, corners, junction, station, heights, park, estates, mobile, home, the, and, des, del, las, los, sur]
+    thresholds: [0.0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35]   # edit distance / longer key's length; the loosest passing max_false_rate is used
+    max_false_rate: 0.0001         # random pairs of different places may match this often at most
+    random_pairs: 2000000
+    recall_bar: 0.6                # known answer (a): variant spellings of one Bible place matched this often
+    planted_size: 60               # known answer (b): Spafford headwords, each altered by one letter edit
+    planted_min_len: 5
+    planted_draws: 20
+    planted_percentile: 95
+    planted_bar: 0.9
+    percentile_bar: 95             # "local excess": the Palmyra region at or above this percentile of far English-spelling regions
+    control_bar: 0.95              # and its excess above this share of drawn control sets
+    control_draws: 200
+    ngram_pool: 3000               # distinct names sampled from the character model of King James names
+    ngram_order: 3
+    ngram_smoothing: 0.01
+    invented_min_count: {spalding: 2, swift: 2, spenser: 3}
+    period:                        # library work ids of the period gazetteers
+      spafford_1813: "internet_archive:gazetteerofstate01spaf"
+      spafford_1824: "internet_archive:gazetteerofstate00spaf"
+      morse_1798: "internet_archive:b28772738"
+    period_world: {worcester_1823: [geographicaldict01worc, geographicaldict02worc], morse_1821: [geographdictionary00morsrich], morse_1823: [newuniversalgaze00morsrich]}
+    period_local_group: new_york
+    period_sample: 400             # entries drawn per group; a group with fewer is left out
+    period_draws: 100
+    period_window: 80              # characters after the headword searched for the group's mark
+    period_groups:                 # group -> marks as printed; english: true = named in English by English speakers
+      new_york: {marks: ["N. Y.", "N.Y.", "New York"], english: true}
+      pennsylvania: {marks: ["Pa.", "Penn.", "Pennsylvania"], english: true}
+      ohio: {marks: ["Ohio"], english: true}
+      virginia: {marks: ["Va.", "Virginia"], english: true}
+      new_england: {marks: ["Mass.", "Ct.", "Vt.", "N. H.", "R. I.", "Maine", "Connecticut", "Vermont"], english: true}
+      southern_states: {marks: ["N. C.", "S. C.", "Geo.", "Ken.", "Ten.", "Md.", "Kentucky", "Tennessee", "Maryland"], english: true}
+      england: {marks: ["Eng."], english: true}
+      scotland: {marks: ["Scot.", "Scotland"], english: true}
+      ireland: {marks: ["Ireland"], english: true}
+      france: {marks: ["France"], english: false}
+      spain_portugal: {marks: ["Spain", "Portugal"], english: false}
+      germany: {marks: ["Ger.", "Germany", "Pru.", "Prussia", "Prussian", "Bav.", "Bavaria", "Saxony", "Bohemia", "Austria", "Aust.", "Austrian"], english: false}
+      italy: {marks: ["Italy", "Naples", "Piedmont"], english: false}
+      russia: {marks: ["Russia", "Rus."], english: false}
+      india: {marks: ["Hind.", "Hind", "Bengal", "Bahar"], english: false}
+      near_east: {marks: ["Syria", "Palestine", "Egypt", "Arabia", "Persia", "Turkey", "Natolia"], english: false}
+      africa: {marks: ["Africa"], english: false}
+      spanish_america: {marks: ["Mexico", "Peru", "S. A.", "Brazil", "Guatimala", "Quito"], english: false}
+    seed: 20261120
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

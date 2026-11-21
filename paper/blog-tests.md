@@ -98,7 +98,7 @@ compares against.
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
 | BOM-108 | The names are Hebrew, or Egyptian, or invented | Tvedtnes and others; Wilcox 2013, 2019 | 124 names against census names, Spalding, Tolkien | Hebrew inscriptions, Egyptian, Maya, Nahuatl, treaty signers, period print, four inventing authors | **Done**, with a limit |
-| BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | TBD |
+| BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | **Done** |
 | BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | TBD |
 | BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | TBD |
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | TBD |
@@ -272,6 +272,43 @@ against 9 to 20% by chance. One comparison needed its lists cleaned twice before
 someone steeped in the King James Bible making up names, and fit Hebrew names put into King James
 spelling equally well. This is a test of letters, not of sounds, and the Assyrian list turned out
 to be an empty download.
+
+### The Great Lakes place names (BOM-110)
+
+Vernal Holley drew a map in the 1980s pairing Book of Mormon place names with towns around the
+Great Lakes: Angola, Alma, Oneida and Onidah, Lehigh and Lehi, about 29 pairs. The argument since
+has gone name by name. Did that town exist in 1829? Is that spelling close enough?
+
+The question that was missing is simple. Take the book's 57 place names that are not in the
+Bible. Count how many match a place name within 500 km of Palmyra under one fixed rule. Then do
+the same around a few hundred other points in the English-speaking world, each with as many place
+names to choose from.
+
+| Rule | Matches near Palmyra | Typical far-away region | Where Palmyra ranks |
+| --- | --- | --- | --- |
+| Strict, within 500 km | 6 of 57 | 9 of 57 | 27th percentile of 232 regions |
+| Strict, within 150 km | 2 of 57 | 2 of 57 | 63rd percentile of 374 |
+| Loose, within 500 km | 50 of 57 | 49 of 57 | 77th percentile |
+
+Palmyra is an ordinary region. Under the strict rule it does a little worse than most. Under the
+loose rule nearly every name matches something nearly everywhere, which is the point: with a loose
+enough rule and a big enough map, any list of short names finds partners.
+
+Then the period sources. In the New York gazetteers of 1813 and 1824 and three national ones,
+none of the 57 names has a close match among New York entries.
+
+And Holley's own pairs. Nine of the 29 pass the strict rule. Seven of those are Bible names that
+are identical in both lists (Jerusalem, Jordan). The other two are Angola and Alma, both towns
+named after 1830.
+
+*The check on the method.* A set of New York names with one letter changed was found in 20 of 20
+tries. The first version of the spelling check failed, with only twelve test pairs; I rebuilt it
+on 4,365 variant spellings printed in an 1823 gazetteer. No single threshold was both sensitive
+and strict, so I report two.
+
+*What it does not show.* It cannot rule out one or two real borrowings; Oneida and Onidah is a
+single pair and no count can speak to it. It uses today's place names for the regional comparison
+and period gazetteers only for New York. Holley's list came from one web page summarising it.
 
 ## What I would want a reader to take from the whole set
 

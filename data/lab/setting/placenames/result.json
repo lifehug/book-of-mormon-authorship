@@ -1,0 +1,5815 @@
+{
+ "settings": {
+  "palmyra": [
+   43.06,
+   -77.23
+  ],
+  "radii_km": [
+   500,
+   150
+  ],
+  "feature_classes": [
+   "P",
+   "A",
+   "H",
+   "T"
+  ],
+  "english_countries": [
+   "US",
+   "CA",
+   "GB",
+   "IE",
+   "AU",
+   "NZ"
+  ],
+  "english_share": 0.9,
+  "grid_deg": [
+   2.0,
+   2.5
+  ],
+  "world_grid_deg": 6.0,
+  "centre_max_km": 60,
+  "max_region_factor": 3.0,
+  "far_factor": 2.0,
+  "named_centres": {
+   "jerusalem": [
+    31.78,
+    35.22
+   ],
+   "mexico_city": [
+    19.43,
+    -99.13
+   ],
+   "guatemala_city": [
+    14.63,
+    -90.51
+   ],
+   "merida": [
+    20.97,
+    -89.62
+   ],
+   "london": [
+    51.51,
+    -0.13
+   ],
+   "edinburgh": [
+    55.95,
+    -3.19
+   ],
+   "dublin": [
+    53.35,
+    -6.26
+   ]
+  },
+  "min_word_len": 3,
+  "generic_words": [
+   "lake",
+   "lakes",
+   "river",
+   "creek",
+   "brook",
+   "pond",
+   "mount",
+   "mountain",
+   "mountains",
+   "hill",
+   "hills",
+   "city",
+   "town",
+   "township",
+   "village",
+   "county",
+   "saint",
+   "sainte",
+   "san",
+   "santa",
+   "new",
+   "north",
+   "south",
+   "east",
+   "west",
+   "upper",
+   "lower",
+   "old",
+   "great",
+   "little",
+   "big",
+   "fort",
+   "port",
+   "point",
+   "cape",
+   "bay",
+   "island",
+   "islands",
+   "isle",
+   "falls",
+   "fork",
+   "branch",
+   "run",
+   "spring",
+   "springs",
+   "valley",
+   "center",
+   "centre",
+   "corners",
+   "junction",
+   "station",
+   "heights",
+   "park",
+   "estates",
+   "mobile",
+   "home",
+   "the",
+   "and",
+   "des",
+   "del",
+   "las",
+   "los",
+   "sur"
+  ],
+  "thresholds": [
+   0.0,
+   0.1,
+   0.15,
+   0.2,
+   0.25,
+   0.3,
+   0.35
+  ],
+  "max_false_rate": 0.0001,
+  "random_pairs": 2000000,
+  "recall_bar": 0.6,
+  "planted_size": 60,
+  "planted_min_len": 5,
+  "planted_draws": 20,
+  "planted_percentile": 95,
+  "planted_bar": 0.9,
+  "percentile_bar": 95,
+  "control_bar": 0.95,
+  "control_draws": 200,
+  "ngram_pool": 3000,
+  "ngram_order": 3,
+  "ngram_smoothing": 0.01,
+  "invented_min_count": {
+   "spalding": 2,
+   "swift": 2,
+   "spenser": 3
+  },
+  "period": {
+   "spafford_1813": "internet_archive:gazetteerofstate01spaf",
+   "spafford_1824": "internet_archive:gazetteerofstate00spaf",
+   "morse_1798": "internet_archive:b28772738"
+  },
+  "period_world": {
+   "worcester_1823": [
+    "geographicaldict01worc",
+    "geographicaldict02worc"
+   ],
+   "morse_1821": [
+    "geographdictionary00morsrich"
+   ],
+   "morse_1823": [
+    "newuniversalgaze00morsrich"
+   ]
+  },
+  "period_local_group": "new_york",
+  "period_sample": 400,
+  "period_draws": 100,
+  "period_window": 80,
+  "period_groups": {
+   "new_york": {
+    "marks": [
+     "N. Y.",
+     "N.Y.",
+     "New York"
+    ],
+    "english": true
+   },
+   "pennsylvania": {
+    "marks": [
+     "Pa.",
+     "Penn.",
+     "Pennsylvania"
+    ],
+    "english": true
+   },
+   "ohio": {
+    "marks": [
+     "Ohio"
+    ],
+    "english": true
+   },
+   "virginia": {
+    "marks": [
+     "Va.",
+     "Virginia"
+    ],
+    "english": true
+   },
+   "new_england": {
+    "marks": [
+     "Mass.",
+     "Ct.",
+     "Vt.",
+     "N. H.",
+     "R. I.",
+     "Maine",
+     "Connecticut",
+     "Vermont"
+    ],
+    "english": true
+   },
+   "southern_states": {
+    "marks": [
+     "N. C.",
+     "S. C.",
+     "Geo.",
+     "Ken.",
+     "Ten.",
+     "Md.",
+     "Kentucky",
+     "Tennessee",
+     "Maryland"
+    ],
+    "english": true
+   },
+   "england": {
+    "marks": [
+     "Eng."
+    ],
+    "english": true
+   },
+   "scotland": {
+    "marks": [
+     "Scot.",
+     "Scotland"
+    ],
+    "english": true
+   },
+   "ireland": {
+    "marks": [
+     "Ireland"
+    ],
+    "english": true
+   },
+   "france": {
+    "marks": [
+     "France"
+    ],
+    "english": false
+   },
+   "spain_portugal": {
+    "marks": [
+     "Spain",
+     "Portugal"
+    ],
+    "english": false
+   },
+   "germany": {
+    "marks": [
+     "Ger.",
+     "Germany",
+     "Pru.",
+     "Prussia",
+     "Prussian",
+     "Bav.",
+     "Bavaria",
+     "Saxony",
+     "Bohemia",
+     "Austria",
+     "Aust.",
+     "Austrian"
+    ],
+    "english": false
+   },
+   "italy": {
+    "marks": [
+     "Italy",
+     "Naples",
+     "Piedmont"
+    ],
+    "english": false
+   },
+   "russia": {
+    "marks": [
+     "Russia",
+     "Rus."
+    ],
+    "english": false
+   },
+   "india": {
+    "marks": [
+     "Hind.",
+     "Hind",
+     "Bengal",
+     "Bahar"
+    ],
+    "english": false
+   },
+   "near_east": {
+    "marks": [
+     "Syria",
+     "Palestine",
+     "Egypt",
+     "Arabia",
+     "Persia",
+     "Turkey",
+     "Natolia"
+    ],
+    "english": false
+   },
+   "africa": {
+    "marks": [
+     "Africa"
+    ],
+    "english": false
+   },
+   "spanish_america": {
+    "marks": [
+     "Mexico",
+     "Peru",
+     "S. A.",
+     "Brazil",
+     "Guatimala",
+     "Quito"
+    ],
+    "english": false
+   }
+  },
+  "seed": 20261120
+ },
+ "not_attempted": {},
+ "geonames": {
+  "entries": 10198144,
+  "distinct_keys": 2949895
+ },
+ "known_answer": {
+  "variant_spellings": {
+   "grid": [
+    {
+     "threshold": 0.0,
+     "random_pair_rate": 0.0,
+     "printed_variant_recall": 0.074,
+     "bible_variant_recall": 0.25,
+     "geonames_alternate_recall": 0.1023
+    },
+    {
+     "threshold": 0.1,
+     "random_pair_rate": 5.011220121852828e-07,
+     "printed_variant_recall": 0.0861,
+     "bible_variant_recall": 0.25,
+     "geonames_alternate_recall": 0.1255
+    },
+    {
+     "threshold": 0.15,
+     "random_pair_rate": 1.3029172316817353e-05,
+     "printed_variant_recall": 0.2137,
+     "bible_variant_recall": 0.3333,
+     "geonames_alternate_recall": 0.2588
+    },
+    {
+     "threshold": 0.2,
+     "random_pair_rate": 0.00012678386908287657,
+     "printed_variant_recall": 0.3741,
+     "bible_variant_recall": 0.5833,
+     "geonames_alternate_recall": 0.37
+    },
+    {
+     "threshold": 0.25,
+     "random_pair_rate": 0.0006248991491950477,
+     "printed_variant_recall": 0.4781,
+     "bible_variant_recall": 0.5833,
+     "geonames_alternate_recall": 0.4516
+    },
+    {
+     "threshold": 0.3,
+     "random_pair_rate": 0.0006905461327913197,
+     "printed_variant_recall": 0.5416,
+     "bible_variant_recall": 0.6667,
+     "geonames_alternate_recall": 0.5211
+    },
+    {
+     "threshold": 0.35,
+     "random_pair_rate": 0.0018591626652073993,
+     "printed_variant_recall": 0.6199,
+     "bible_variant_recall": 0.8333,
+     "geonames_alternate_recall": 0.6008
+    }
+   ],
+   "random_pairs": 1995522,
+   "pairs": {
+    "printed_variant_pairs": 4365,
+    "bible_variant_pairs": 12,
+    "geonames_alternate_pairs": 12158
+   },
+   "one_threshold_meets_both_bars": false,
+   "thresholds": {
+    "strict": 0.15,
+    "loose": 0.35
+   }
+  }
+ },
+ "period_new_york_keys": {
+  "worcester_1823": 782,
+  "morse_1821": 641,
+  "morse_1823": 710,
+  "spafford_1813": 986,
+  "spafford_1824": 1669,
+  "morse_1798": 220
+ },
+ "control_lists": {
+  "spalding": [
+   "baska",
+   "boakim",
+   "bombal",
+   "chiauga",
+   "cousen",
+   "delawan",
+   "elseo",
+   "elsion",
+   "emper",
+   "europians",
+   "gaheno",
+   "gamba",
+   "geheno",
+   "golanga",
+   "hadocam",
+   "hadokam",
+   "haliza",
+   "haloon",
+   "hamack",
+   "hamback",
+   "hambock",
+   "hamboon",
+   "hamkol",
+   "hamkoo",
+   "heliza",
+   "kadokam",
+   "kalo",
+   "kentuck",
+   "labanco",
+   "lamesa",
+   "lobaska",
+   "mammoons",
+   "moonrod",
+   "ohians",
+   "ohons",
+   "rambock",
+   "sambul",
+   "sciotan",
+   "siota",
+   "taboon",
+   "talanga",
+   "tolanga",
+   "ulipoon"
+  ],
+  "swift": [
+   "balnibarbi",
+   "balnibarbian",
+   "blefuscu",
+   "blefuscudians",
+   "bolgolam",
+   "descartes",
+   "englishmen",
+   "flimnap",
+   "frelock",
+   "gassendi",
+   "glubbdubdrib",
+   "glumdalclitch",
+   "grildrig",
+   "houyhnhnm",
+   "japanese",
+   "lagado",
+   "langden",
+   "laputa",
+   "laputians",
+   "leyden",
+   "lilliput",
+   "lorbrulgrud",
+   "luggnagg",
+   "madagascar",
+   "maldonada",
+   "mendez",
+   "munodi",
+   "nangasac",
+   "nottinghamshire",
+   "redriff",
+   "reldresal",
+   "rotherhith",
+   "skyresh",
+   "tonquin",
+   "tribnia",
+   "yahoo",
+   "yedo"
+  ],
+  "ossian": [
+   "agandecca",
+   "aldo",
+   "alnecma",
+   "alpin",
+   "althan",
+   "althos",
+   "annir",
+   "arcath",
+   "ardan",
+   "ardven",
+   "armin",
+   "balva",
+   "berrathon",
+   "bolga",
+   "borbar",
+   "bragela",
+   "branno",
+   "cacl",
+   "cairbar",
+   "cairbre",
+   "caithbat",
+   "caledonian",
+   "calmar",
+   "calrbar",
+   "calthon",
+   "caracul",
+   "caraufius",
+   "carbre",
+   "caros",
+   "carril",
+   "carrll",
+   "carthon",
+   "cathba",
+   "cathlin",
+   "cathmol",
+   "cathmor",
+   "cathulla",
+   "clatho",
+   "clefsammor",
+   "clono",
+   "cluba",
+   "clutha",
+   "colgar",
+   "colma",
+   "colmal",
+   "colmar",
+   "colna",
+   "comal",
+   "comala",
+   "comhal",
+   "cona",
+   "conachar",
+   "conar",
+   "congal",
+   "conloch",
+   "conmor",
+   "connal",
+   "connan",
+   "connaught",
+   "cormac",
+   "cormalo",
+   "cormul",
+   "craca",
+   "crathmo",
+   "crimora",
+   "croma",
+   "cromla",
+   "cromleach",
+   "crona",
+   "crothar",
+   "crugal",
+   "cruth",
+   "cuthona",
+   "cuthullin",
+   "cuthullln",
+   "dargo",
+   "darthula",
+   "daura",
+   "dermid",
+   "duchomar",
+   "duchommar",
+   "dunrommath",
+   "dunthalmo",
+   "durstan",
+   "duth",
+   "duthcaron",
+   "erath",
+   "erin",
+   "erragon",
+   "etha",
+   "ferad",
+   "fergus",
+   "fillan",
+   "finthormo",
+   "firbolg",
+   "fithil",
+   "flngal",
+   "foldath",
+   "fonar",
+   "frothal",
+   "fuarfed",
+   "galic",
+   "gormal",
+   "grudar",
+   "grumal",
+   "hibernian",
+   "hidalla",
+   "iball",
+   "ihook",
+   "iniftore",
+   "jlream",
+   "kinfena",
+   "lamderg",
+   "lamor",
+   "lano",
+   "larthmor",
+   "larthon",
+   "lathmon",
+   "lego",
+   "lethmal",
+   "lochlin",
+   "loda",
+   "lodbrog",
+   "lota",
+   "lubar",
+   "lulan",
+   "luno",
+   "lutha",
+   "malthos",
+   "malvina",
+   "matha",
+   "moilena",
+   "moina",
+   "moma",
+   "morna",
+   "morni",
+   "moruth",
+   "morvcn",
+   "morven",
+   "mugruch",
+   "nathos",
+   "nuath",
+   "offian",
+   "ofiian",
+   "oflian",
+   "oftian",
+   "oilian",
+   "oithona",
+   "olfian",
+   "oliian",
+   "ollian",
+   "orla",
+   "oscian",
+   "oscur",
+   "ossian",
+   "rathmor",
+   "rinval",
+   "ronnan",
+   "rothmar",
+   "ryno",
+   "salgar",
+   "sarno",
+   "scandinavian",
+   "sclma",
+   "scottilh",
+   "selama",
+   "selma",
+   "semo",
+   "shilric",
+   "slimora",
+   "starno",
+   "strina",
+   "strumon",
+   "sulmalla",
+   "swaran",
+   "temora",
+   "teutha",
+   "tofcar",
+   "torcul",
+   "torlath",
+   "torman",
+   "trathal",
+   "trcnmor",
+   "trenmor",
+   "tromathon",
+   "truthil",
+   "tuathal",
+   "turthor",
+   "ufnoth",
+   "ullin",
+   "ullln",
+   "utha",
+   "uthal",
+   "vinvela"
+  ],
+  "spenser": [
+   "acrasia",
+   "acrates",
+   "aldebaran",
+   "amarant",
+   "amavia",
+   "amoret",
+   "amphitryton",
+   "aphrodite",
+   "archimago",
+   "argante",
+   "ariosto",
+   "armada",
+   "armorica",
+   "artegall",
+   "arthgallo",
+   "arthure",
+   "asse",
+   "aveugle",
+   "belinus",
+   "bellay",
+   "belph",
+   "belphoebe",
+   "bladud",
+   "braggadocchio",
+   "britanniae",
+   "britomart",
+   "britomartis",
+   "britoness",
+   "brittany",
+   "bryskett",
+   "brythonic",
+   "buckhurst",
+   "buls",
+   "burghley",
+   "busirane",
+   "cador",
+   "cadwalla",
+   "caelia",
+   "caer",
+   "calidore",
+   "cambria",
+   "captaine",
+   "carados",
+   "cassibellaun",
+   "cassiopeia",
+   "castilian",
+   "charissa",
+   "chaucerum",
+   "chorle",
+   "claribella",
+   "cleopolis",
+   "clout",
+   "coel",
+   "colin",
+   "conan",
+   "corceca",
+   "cordelia",
+   "corineus",
+   "coulin",
+   "countess",
+   "cymbeline",
+   "cymbrian",
+   "cymochles",
+   "cymodoc",
+   "cynan",
+   "cyparissus",
+   "cypresse",
+   "cytherea",
+   "cytheron",
+   "damsell",
+   "debon",
+   "deorum",
+   "desmond",
+   "devon",
+   "dha",
+   "dissemblance",
+   "duessa",
+   "easterland",
+   "easterlings",
+   "elficleos",
+   "elfin",
+   "elidure",
+   "elizabethan",
+   "emperour",
+   "eosa",
+   "euboean",
+   "faerie",
+   "ferraugh",
+   "fidelia",
+   "fidessa",
+   "florimell",
+   "fradubio",
+   "fraunce",
+   "furioso",
+   "furor",
+   "gardante",
+   "geaunt",
+   "geauntesse",
+   "genuissa",
+   "georgos",
+   "gloriana",
+   "godfredo",
+   "goneril",
+   "gorboduc",
+   "gorlois",
+   "guendolen",
+   "guithelin",
+   "guyon",
+   "gyant",
+   "haina",
+   "hainaut",
+   "heliconian",
+   "hellenore",
+   "hengest",
+   "hobbinol",
+   "holinesse",
+   "horsa",
+   "hubberds",
+   "huddibras",
+   "humber",
+   "hunsdon",
+   "hynd",
+   "igerna",
+   "iulus",
+   "jutes",
+   "kilcolman",
+   "kirke",
+   "liagore",
+   "liberata",
+   "locrin",
+   "logris",
+   "lordes",
+   "lucifera",
+   "maddan",
+   "maiesties",
+   "malbecco",
+   "malecasta",
+   "marinell",
+   "mempricius",
+   "merlin",
+   "moones",
+   "mordant",
+   "morddure",
+   "munster",
+   "musagetes",
+   "nennius",
+   "nephewes",
+   "noodt",
+   "northerne",
+   "norwegians",
+   "nymphe",
+   "oberon",
+   "ollyphant",
+   "orgoglio",
+   "orsilochus",
+   "ossory",
+   "owle",
+   "palmers",
+   "paradize",
+   "paridell",
+   "parnasso",
+   "penda",
+   "pendragon",
+   "penshurst",
+   "peredure",
+   "phaedria",
+   "phedon",
+   "philosophie",
+   "ponsonby",
+   "porrex",
+   "princesse",
+   "pryene",
+   "pubidius",
+   "pyrochles",
+   "queenes",
+   "rauran",
+   "redcross",
+   "redcrosse",
+   "rosalind",
+   "ryence",
+   "sansfoy",
+   "sansjoy",
+   "sansloy",
+   "sarazin",
+   "satyrane",
+   "satyres",
+   "scudamour",
+   "scuith",
+   "shakspere",
+   "sheriff",
+   "silvius",
+   "sleeveless",
+   "speranza",
+   "spumador",
+   "stanneryes",
+   "stationers",
+   "stonehenge",
+   "sulla",
+   "tasso",
+   "tenuantius",
+   "terwin",
+   "tigre",
+   "timias",
+   "tonans",
+   "tragedie",
+   "trevisan",
+   "trompart",
+   "troynovant",
+   "tygre",
+   "typhoeus",
+   "unthriftihead",
+   "vewe",
+   "vigenius",
+   "vortigern",
+   "wasserman",
+   "wordsworth",
+   "zutphen"
+  ]
+ },
+ "book_of_mormon_list": {
+  "places": [
+   "ablom",
+   "agosh",
+   "akish",
+   "alma",
+   "ammonihah",
+   "amulon",
+   "ani",
+   "antionum",
+   "antiparah",
+   "antum",
+   "comnor",
+   "corihor",
+   "cumeni",
+   "gadiandi",
+   "gadiomnah",
+   "gid",
+   "gimgimno",
+   "heshlon",
+   "jacobugath",
+   "jashon",
+   "jershon",
+   "josh",
+   "kishkumen",
+   "laman",
+   "manti",
+   "melek",
+   "middoni",
+   "minon",
+   "mocum",
+   "moriancumer",
+   "morianton",
+   "mormon",
+   "moron",
+   "moroni",
+   "moronihah",
+   "mulek",
+   "nahom",
+   "nehor",
+   "nephihah",
+   "ogath",
+   "omner",
+   "onidah",
+   "onihah",
+   "riplah",
+   "ripliancum",
+   "sebus",
+   "shazer",
+   "shelem",
+   "shemlon",
+   "shim",
+   "shimnilom",
+   "shurr",
+   "sidom",
+   "siron",
+   "teancum",
+   "zarahemla",
+   "zeezrom"
+  ],
+  "places_without_quoted_chapters": [
+   "ablom",
+   "agosh",
+   "akish",
+   "alma",
+   "ammonihah",
+   "amulon",
+   "ani",
+   "antionum",
+   "antiparah",
+   "antum",
+   "comnor",
+   "corihor",
+   "cumeni",
+   "gadiandi",
+   "gadiomnah",
+   "gid",
+   "gimgimno",
+   "heshlon",
+   "jacobugath",
+   "jashon",
+   "jershon",
+   "josh",
+   "kishkumen",
+   "laman",
+   "manti",
+   "melek",
+   "middoni",
+   "minon",
+   "mocum",
+   "moriancumer",
+   "morianton",
+   "mormon",
+   "moron",
+   "moroni",
+   "moronihah",
+   "mulek",
+   "nahom",
+   "nehor",
+   "nephihah",
+   "ogath",
+   "omner",
+   "onidah",
+   "onihah",
+   "riplah",
+   "ripliancum",
+   "sebus",
+   "shazer",
+   "shelem",
+   "shemlon",
+   "shim",
+   "shimnilom",
+   "shurr",
+   "sidom",
+   "siron",
+   "teancum",
+   "zarahemla",
+   "zeezrom"
+  ],
+  "listed_but_never_after_a_place_word": [
+   "anti",
+   "hagoth",
+   "hermounts",
+   "irreantum",
+   "moriantum",
+   "mosiah",
+   "sherrizah",
+   "zerin"
+  ],
+  "after_a_place_word_but_not_listed_as_place": [
+   "amnihu"
+  ],
+  "biblical_names_set_aside": 147
+ },
+ "control_pool_sizes": {
+  "ngram_kjv": 2906,
+  "kjv_places": 827
+ },
+ "by_threshold": {
+  "strict": {
+   "threshold": 0.15,
+   "modern": {
+    "500": {
+     "local_entries": 163240,
+     "local_distinct_keys": 38957,
+     "centres_scored": 392,
+     "centres_dropped_too_sparse": 503,
+     "known_answer_planted": {
+      "draws": 20,
+      "at_or_above_percentile": 20,
+      "rate": 1.0,
+      "mean_local_share": 0.6975,
+      "mean_median_region_share": 0.5008,
+      "passed": true
+     },
+     "sets": {
+      "spalding": {
+       "names": 42,
+       "local_share": 0.119,
+       "local_count": 5,
+       "regions_compared": 232,
+       "median_region_share": 0.1429,
+       "percentile_among_far_english_regions": 21.6,
+       "regions_at_or_above_local": 204,
+       "excess": -0.0238,
+       "median_share_by_group": {
+        "mexico_guatemala": [
+         11,
+         0.119
+        ],
+        "mixed": [
+         44,
+         0.1429
+        ],
+        "other_english": [
+         53,
+         0.1429
+        ],
+        "rest": [
+         47,
+         0.1429
+        ],
+        "united_states": [
+         179,
+         0.1429
+        ]
+       }
+      },
+      "swift": {
+       "names": 37,
+       "local_share": 0.0811,
+       "local_count": 3,
+       "regions_compared": 232,
+       "median_region_share": 0.1622,
+       "percentile_among_far_english_regions": 1.3,
+       "regions_at_or_above_local": 231,
+       "excess": -0.0811,
+       "median_share_by_group": {
+        "mexico_guatemala": [
+         11,
+         0.1081
+        ],
+        "mixed": [
+         44,
+         0.1892
+        ],
+        "other_english": [
+         53,
+         0.1351
+        ],
+        "rest": [
+         47,
+         0.0811
+        ],
+        "united_states": [
+         179,
+         0.1622
+        ]
+       }
+      },
+      "ossian": {
+       "names": 189,
+       "local_share": 0.1587,
+       "local_count": 30,
+       "regions_compared": 232,
+       "median_region_share": 0.1429,
+       "percentile_among_far_english_regions": 80.0,
+       "regions_at_or_above_local": 60,
+       "excess": 0.0159,
+       "median_share_by_group": {
+        "mexico_guatemala": [
+         11,
+         0.0794
+        ],
+        "mixed": [
+         44,
+         0.1111
+        ],
+        "other_english": [
+         53,
+         0.1587
+        ],
+        "rest": [
+         47,
+         0.1164
+        ],
+        "united_states": [
+         179,
+         0.1376
+        ]
+       }
+      },
+      "spenser": {
+       "names": 215,
+       "local_share": 0.3349,
+       "local_count": 72,
+       "regions_compared": 232,
+       "median_region_share": 0.2698,
+       "percentile_among_far_english_regions": 100.0,
+       "regions_at_or_above_local": 0,
+       "excess": 0.0651,
+       "median_share_by_group": {
+        "mexico_guatemala": [
+         11,
+         0.1814
+        ],
+        "mixed": [
+         44,
+         0.2674
+        ],
+        "other_english": [
+         53,
+         0.3023
+        ],
+        "rest": [
+         47,
+         0.1209
+        ],
+        "united_states": [
+         179,
+         0.2605
+        ]
+       }
+      },
+      "book_of_mormon": {
+       "names": 57,
+       "local_share": 0.1053,
+       "local_count": 6,
+       "regions_compared": 232,
+       "median_region_share": 0.1579,
+       "percentile_among_far_english_regions": 26.5,
+       "regions_at_or_above_local": 178,
+       "excess": -0.0526,
+       "median_share_by_group": {
+        "mexico_guatemala": [
+         11,
+         0.1228
+        ],
+        "mixed": [
+         44,
+         0.1579
+        ],
+        "other_english": [
+         53,
+         0.0877
+        ],
+        "rest": [
+         47,
+         0.1228
+        ],
+        "united_states": [
+         179,
+         0.1579
+        ]
+       }
+      },
+      "book_of_mormon_without_quoted_chapters": {
+       "names": 57,
+       "local_share": 0.1053,
+       "local_count": 6,
+       "regions_compared": 232,
+       "median_region_share": 0.1579,
+       "percentile_among_far_english_regions": 26.5,
+       "regions_at_or_above_local": 178,
+       "excess": -0.0526,
+       "median_share_by_group": {
+        "mexico_guatemala": [
+         11,
+         0.1228
+        ],
+        "mixed": [
+         44,
+         0.1579
+        ],
+        "other_english": [
+         53,
+         0.0877
+        ],
+        "rest": [
+         47,
+         0.1228
+        ],
+        "united_states": [
+         179,
+         0.1579
+        ]
+       }
+      }
+     },
+     "drawn_controls": {
+      "ngram_kjv": {
+       "draws": 200,
+       "mean_local_share": 0.116,
+       "mean_median_region_share": 0.1072,
+       "mean_excess": 0.0088,
+       "mean_percentile": 58.1,
+       "draws_in_top_5_percent": 8,
+       "share_of_draws_with_excess_below_the_books": 0.01
+      },
+      "kjv_places": {
+       "draws": 200,
+       "mean_local_share": 0.2599,
+       "mean_median_region_share": 0.205,
+       "mean_excess": 0.0549,
+       "mean_percentile": 86.0,
+       "draws_in_top_5_percent": 79,
+       "share_of_draws_with_excess_below_the_books": 0.0
+      }
+     },
+     "verdict": "no",
+     "named_regions": {
+      "jerusalem": {
+       "reach_km": 946,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.1754
+      },
+      "mexico_city": {
+       "reach_km": 402,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.0877
+      },
+      "guatemala_city": {
+       "reach_km": 923,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.1404
+      },
+      "merida": {
+       "reach_km": 916,
+       "english_share": 0.003,
+       "book_of_mormon_share": 0.1228
+      },
+      "london": {
+       "reach_km": 533,
+       "english_share": 0.416,
+       "book_of_mormon_share": 0.1053
+      },
+      "edinburgh": {
+       "reach_km": 698,
+       "english_share": 0.639,
+       "book_of_mormon_share": 0.1228
+      },
+      "dublin": {
+       "reach_km": 826,
+       "english_share": 0.635,
+       "book_of_mormon_share": 0.1579
+      }
+     },
+     "local_matches": {
+      "alma": {
+       "modern_keys": [
+        "alma"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "ani": {
+       "modern_keys": [
+        "ani"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "gid": {
+       "modern_keys": [
+        "gid"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "joS": {
+       "modern_keys": [
+        "joS"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "korior": {
+       "modern_keys": [
+        "koridor"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "mormon": {
+       "modern_keys": [
+        "mormon"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      }
+     },
+     "local_matches_in_print_in_new_york_before_1830": 0
+    },
+    "150": {
+     "local_entries": 8354,
+     "local_distinct_keys": 3977,
+     "centres_scored": 442,
+     "centres_dropped_too_sparse": 453,
+     "known_answer_planted": {
+      "draws": 20,
+      "at_or_above_percentile": 20,
+      "rate": 1.0,
+      "mean_local_share": 0.3892,
+      "mean_median_region_share": 0.1366,
+      "passed": true
+     },
+     "sets": {
+      "spalding": {
+       "names": 42,
+       "local_share": 0.0,
+       "local_count": 0,
+       "regions_compared": 374,
+       "median_region_share": 0.0238,
+       "percentile_among_far_english_regions": 19.7,
+       "regions_at_or_above_local": 374,
+       "excess": -0.0238,
+       "median_share_by_group": {
+        "bible_lands": [
+         2,
+         0.0
+        ],
+        "mexico_guatemala": [
+         6,
+         0.0357
+        ],
+        "mixed": [
+         12,
+         0.0238
+        ],
+        "other_english": [
+         186,
+         0.0238
+        ],
+        "rest": [
+         42,
+         0.0238
+        ],
+        "united_states": [
+         188,
+         0.0238
+        ]
+       }
+      },
+      "swift": {
+       "names": 37,
+       "local_share": 0.0541,
+       "local_count": 2,
+       "regions_compared": 374,
+       "median_region_share": 0.027,
+       "percentile_among_far_english_regions": 87.8,
+       "regions_at_or_above_local": 76,
+       "excess": 0.027,
+       "median_share_by_group": {
+        "bible_lands": [
+         2,
+         0.0
+        ],
+        "mexico_guatemala": [
+         6,
+         0.0405
+        ],
+        "mixed": [
+         12,
+         0.027
+        ],
+        "other_english": [
+         186,
+         0.027
+        ],
+        "rest": [
+         42,
+         0.0
+        ],
+        "united_states": [
+         188,
+         0.027
+        ]
+       }
+      },
+      "ossian": {
+       "names": 189,
+       "local_share": 0.0317,
+       "local_count": 6,
+       "regions_compared": 374,
+       "median_region_share": 0.0212,
+       "percentile_among_far_english_regions": 73.0,
+       "regions_at_or_above_local": 118,
+       "excess": 0.0106,
+       "median_share_by_group": {
+        "bible_lands": [
+         2,
+         0.0079
+        ],
+        "mexico_guatemala": [
+         6,
+         0.0185
+        ],
+        "mixed": [
+         12,
+         0.0212
+        ],
+        "other_english": [
+         186,
+         0.0317
+        ],
+        "rest": [
+         42,
+         0.0106
+        ],
+        "united_states": [
+         188,
+         0.0159
+        ]
+       }
+      },
+      "spenser": {
+       "names": 215,
+       "local_share": 0.0512,
+       "local_count": 11,
+       "regions_compared": 374,
+       "median_region_share": 0.0605,
+       "percentile_among_far_english_regions": 32.4,
+       "regions_at_or_above_local": 266,
+       "excess": -0.0093,
+       "median_share_by_group": {
+        "bible_lands": [
+         2,
+         0.0209
+        ],
+        "mexico_guatemala": [
+         6,
+         0.0419
+        ],
+        "mixed": [
+         12,
+         0.0488
+        ],
+        "other_english": [
+         186,
+         0.0698
+        ],
+        "rest": [
+         42,
+         0.014
+        ],
+        "united_states": [
+         188,
+         0.0512
+        ]
+       }
+      },
+      "book_of_mormon": {
+       "names": 57,
+       "local_share": 0.0351,
+       "local_count": 2,
+       "regions_compared": 374,
+       "median_region_share": 0.0351,
+       "percentile_among_far_english_regions": 63.0,
+       "regions_at_or_above_local": 195,
+       "excess": 0.0,
+       "median_share_by_group": {
+        "bible_lands": [
+         2,
+         0.0263
+        ],
+        "mexico_guatemala": [
+         6,
+         0.0175
+        ],
+        "mixed": [
+         12,
+         0.0175
+        ],
+        "other_english": [
+         186,
+         0.0351
+        ],
+        "rest": [
+         42,
+         0.0175
+        ],
+        "united_states": [
+         188,
+         0.0351
+        ]
+       }
+      },
+      "book_of_mormon_without_quoted_chapters": {
+       "names": 57,
+       "local_share": 0.0351,
+       "local_count": 2,
+       "regions_compared": 374,
+       "median_region_share": 0.0351,
+       "percentile_among_far_english_regions": 63.0,
+       "regions_at_or_above_local": 195,
+       "excess": 0.0,
+       "median_share_by_group": {
+        "bible_lands": [
+         2,
+         0.0263
+        ],
+        "mexico_guatemala": [
+         6,
+         0.0175
+        ],
+        "mixed": [
+         12,
+         0.0175
+        ],
+        "other_english": [
+         186,
+         0.0351
+        ],
+        "rest": [
+         42,
+         0.0175
+        ],
+        "united_states": [
+         188,
+         0.0351
+        ]
+       }
+      }
+     },
+     "drawn_controls": {
+      "ngram_kjv": {
+       "draws": 200,
+       "mean_local_share": 0.024,
+       "mean_median_region_share": 0.0221,
+       "mean_excess": 0.0019,
+       "mean_percentile": 49.2,
+       "draws_in_top_5_percent": 8,
+       "share_of_draws_with_excess_below_the_books": 0.255
+      },
+      "kjv_places": {
+       "draws": 200,
+       "mean_local_share": 0.0694,
+       "mean_median_region_share": 0.0364,
+       "mean_excess": 0.0329,
+       "mean_percentile": 78.6,
+       "draws_in_top_5_percent": 52,
+       "share_of_draws_with_excess_below_the_books": 0.07
+      }
+     },
+     "verdict": "no",
+     "named_regions": {
+      "jerusalem": {
+       "reach_km": 94,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.0351
+      },
+      "mexico_city": {
+       "reach_km": 53,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.0
+      },
+      "guatemala_city": {
+       "reach_km": 82,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.0175
+      },
+      "merida": {
+       "reach_km": 227,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.0175
+      },
+      "london": {
+       "reach_km": 80,
+       "english_share": 1.0,
+       "book_of_mormon_share": 0.0
+      },
+      "edinburgh": {
+       "reach_km": 117,
+       "english_share": 1.0,
+       "book_of_mormon_share": 0.0175
+      },
+      "dublin": {
+       "reach_km": 149,
+       "english_share": 0.989,
+       "book_of_mormon_share": 0.0
+      }
+     },
+     "local_matches": {
+      "alma": {
+       "modern_keys": [
+        "alma"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "mormon": {
+       "modern_keys": [
+        "mormon"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      }
+     },
+     "local_matches_in_print_in_new_york_before_1830": 0
+    }
+   },
+   "period": {
+    "worcester_1823": {
+     "entries": 57397,
+     "group_sizes": {
+      "near_east": 3159,
+      "africa": 1304,
+      "germany": 6372,
+      "france": 4911,
+      "pennsylvania": 1006,
+      "spanish_america": 1642,
+      "russia": 2140,
+      "england": 1632,
+      "southern_states": 936,
+      "ireland": 646,
+      "india": 5440,
+      "spain_portugal": 1871,
+      "scotland": 761,
+      "italy": 2206,
+      "virginia": 543,
+      "new_england": 1390,
+      "new_york": 899,
+      "ohio": 981
+     },
+     "known_answer_planted": {
+      "draws": 20,
+      "new_york_first": 20,
+      "passed": true
+     },
+     "sets": {
+      "spalding": {
+       "local_share": 0.031,
+       "english_groups": {
+        "pennsylvania": 0.0152,
+        "england": 0.0,
+        "southern_states": 0.0148,
+        "ireland": 0.0,
+        "scotland": 0.0,
+        "virginia": 0.0188,
+        "new_england": 0.0,
+        "ohio": 0.0224
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0038,
+        "africa": 0.0,
+        "germany": 0.0,
+        "france": 0.0,
+        "spanish_america": 0.0,
+        "russia": 0.0067,
+        "india": 0.0021,
+        "spain_portugal": 0.005,
+        "italy": 0.0
+       },
+       "english_groups_at_or_above_local": 0,
+       "excess": 0.0236,
+       "first_among_english_groups": true
+      },
+      "swift": {
+       "local_share": 0.0116,
+       "english_groups": {
+        "pennsylvania": 0.0,
+        "england": 0.0197,
+        "southern_states": 0.0,
+        "ireland": 0.0,
+        "scotland": 0.0,
+        "virginia": 0.0,
+        "new_england": 0.0065,
+        "ohio": 0.0
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0,
+        "africa": 0.0084,
+        "germany": 0.0016,
+        "france": 0.0027,
+        "spanish_america": 0.0,
+        "russia": 0.0,
+        "india": 0.0016,
+        "spain_portugal": 0.0,
+        "italy": 0.0
+       },
+       "english_groups_at_or_above_local": 1,
+       "excess": 0.0116,
+       "first_among_english_groups": false
+      },
+      "ossian": {
+       "local_share": 0.0048,
+       "english_groups": {
+        "pennsylvania": 0.0,
+        "england": 0.0,
+        "southern_states": 0.0,
+        "ireland": 0.0026,
+        "scotland": 0.0,
+        "virginia": 0.0,
+        "new_england": 0.0011,
+        "ohio": 0.0
+       },
+       "other_spelling_groups": {
+        "near_east": 0.002,
+        "africa": 0.0032,
+        "germany": 0.0003,
+        "france": 0.002,
+        "spanish_america": 0.0033,
+        "russia": 0.0021,
+        "india": 0.0008,
+        "spain_portugal": 0.0,
+        "italy": 0.0021
+       },
+       "english_groups_at_or_above_local": 0,
+       "excess": 0.0048,
+       "first_among_english_groups": true
+      },
+      "spenser": {
+       "local_share": 0.0016,
+       "english_groups": {
+        "pennsylvania": 0.0084,
+        "england": 0.0043,
+        "southern_states": 0.0022,
+        "ireland": 0.0059,
+        "scotland": 0.0071,
+        "virginia": 0.0036,
+        "new_england": 0.0029,
+        "ohio": 0.0015
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0019,
+        "africa": 0.0018,
+        "germany": 0.0034,
+        "france": 0.0046,
+        "spanish_america": 0.0,
+        "russia": 0.003,
+        "india": 0.0013,
+        "spain_portugal": 0.0025,
+        "italy": 0.0034
+       },
+       "english_groups_at_or_above_local": 7,
+       "excess": -0.0024,
+       "first_among_english_groups": false
+      },
+      "book_of_mormon": {
+       "local_share": 0.0,
+       "english_groups": {
+        "pennsylvania": 0.0,
+        "england": 0.0,
+        "southern_states": 0.0,
+        "ireland": 0.0,
+        "scotland": 0.0,
+        "virginia": 0.0,
+        "new_england": 0.0,
+        "ohio": 0.0
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0,
+        "africa": 0.0,
+        "germany": 0.0,
+        "france": 0.003,
+        "spanish_america": 0.0,
+        "russia": 0.0,
+        "india": 0.0,
+        "spain_portugal": 0.006,
+        "italy": 0.004
+       },
+       "english_groups_at_or_above_local": 8,
+       "excess": 0.0,
+       "first_among_english_groups": false
+      },
+      "book_of_mormon_without_quoted_chapters": {
+       "local_share": 0.0,
+       "english_groups": {
+        "pennsylvania": 0.0,
+        "england": 0.0,
+        "southern_states": 0.0,
+        "ireland": 0.0,
+        "scotland": 0.0,
+        "virginia": 0.0,
+        "new_england": 0.0,
+        "ohio": 0.0
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0,
+        "africa": 0.0,
+        "germany": 0.0,
+        "france": 0.003,
+        "spanish_america": 0.0,
+        "russia": 0.0,
+        "india": 0.0,
+        "spain_portugal": 0.006,
+        "italy": 0.004
+       },
+       "english_groups_at_or_above_local": 8,
+       "excess": 0.0,
+       "first_among_english_groups": false
+      },
+      "ngram_kjv_drawn": {
+       "draws": 20,
+       "mean_local_share": 0.0018,
+       "first_among_english_groups": 1,
+       "mean_excess": 0.0011,
+       "draws_with_excess_below_the_books": 1
+      },
+      "kjv_places_drawn": {
+       "draws": 20,
+       "mean_local_share": 0.0106,
+       "first_among_english_groups": 2,
+       "mean_excess": 0.003,
+       "draws_with_excess_below_the_books": 8
+      }
+     }
+    },
+    "morse_1821": {
+     "entries": 22164,
+     "group_sizes": {
+      "near_east": 873,
+      "france": 2076,
+      "pennsylvania": 602,
+      "spanish_america": 352,
+      "africa": 402,
+      "spain_portugal": 712,
+      "russia": 697,
+      "southern_states": 762,
+      "ireland": 362,
+      "scotland": 406,
+      "germany": 2061,
+      "italy": 810,
+      "virginia": 350,
+      "new_england": 1168,
+      "england": 1221,
+      "ohio": 806,
+      "india": 1101,
+      "new_york": 702
+     },
+     "known_answer_planted": {
+      "draws": 20,
+      "new_york_first": 20,
+      "passed": true
+     },
+     "sets": {
+      "spalding": {
+       "local_share": 0.0133,
+       "english_groups": {
+        "pennsylvania": 0.0233,
+        "southern_states": 0.0,
+        "scotland": 0.0,
+        "new_england": 0.0,
+        "england": 0.0074,
+        "ohio": 0.0186
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0136,
+        "france": 0.0,
+        "africa": 0.0,
+        "spain_portugal": 0.0,
+        "russia": 0.0,
+        "germany": 0.0,
+        "italy": 0.0,
+        "india": 0.0
+       },
+       "english_groups_at_or_above_local": 2,
+       "excess": 0.0096,
+       "first_among_english_groups": false
+      },
+      "swift": {
+       "local_share": 0.0165,
+       "english_groups": {
+        "pennsylvania": 0.0,
+        "southern_states": 0.0,
+        "scotland": 0.0,
+        "new_england": 0.0097,
+        "england": 0.0103,
+        "ohio": 0.0
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0138,
+        "france": 0.0,
+        "africa": 0.0265,
+        "spain_portugal": 0.0,
+        "russia": 0.0,
+        "germany": 0.0049,
+        "italy": 0.0,
+        "india": 0.0
+       },
+       "english_groups_at_or_above_local": 0,
+       "excess": 0.0165,
+       "first_among_english_groups": true
+      },
+      "ossian": {
+       "local_share": 0.0032,
+       "english_groups": {
+        "pennsylvania": 0.0,
+        "southern_states": 0.0,
+        "scotland": 0.0052,
+        "new_england": 0.0016,
+        "england": 0.0,
+        "ohio": 0.0025
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0065,
+        "france": 0.001,
+        "africa": 0.0052,
+        "spain_portugal": 0.0,
+        "russia": 0.0,
+        "germany": 0.0,
+        "italy": 0.0025,
+        "india": 0.0
+       },
+       "english_groups_at_or_above_local": 1,
+       "excess": 0.0024,
+       "first_among_english_groups": false
+      },
+      "spenser": {
+       "local_share": 0.0027,
+       "english_groups": {
+        "pennsylvania": 0.0104,
+        "southern_states": 0.0029,
+        "scotland": 0.0092,
+        "new_england": 0.0039,
+        "england": 0.0085,
+        "ohio": 0.0027
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0,
+        "france": 0.0047,
+        "africa": 0.0,
+        "spain_portugal": 0.0052,
+        "russia": 0.0,
+        "germany": 0.0042,
+        "italy": 0.0,
+        "india": 0.0
+       },
+       "english_groups_at_or_above_local": 6,
+       "excess": -0.0035,
+       "first_among_english_groups": false
+      },
+      "book_of_mormon": {
+       "local_share": 0.0,
+       "english_groups": {
+        "pennsylvania": 0.0,
+        "southern_states": 0.0,
+        "scotland": 0.0,
+        "new_england": 0.0,
+        "england": 0.0,
+        "ohio": 0.0
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0,
+        "france": 0.0,
+        "africa": 0.0,
+        "spain_portugal": 0.0,
+        "russia": 0.0,
+        "germany": 0.0,
+        "italy": 0.0,
+        "india": 0.0
+       },
+       "english_groups_at_or_above_local": 6,
+       "excess": 0.0,
+       "first_among_english_groups": false
+      },
+      "book_of_mormon_without_quoted_chapters": {
+       "local_share": 0.0,
+       "english_groups": {
+        "pennsylvania": 0.0,
+        "southern_states": 0.0,
+        "scotland": 0.0,
+        "new_england": 0.0,
+        "england": 0.0,
+        "ohio": 0.0
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0,
+        "france": 0.0,
+        "africa": 0.0,
+        "spain_portugal": 0.0,
+        "russia": 0.0,
+        "germany": 0.0,
+        "italy": 0.0,
+        "india": 0.0
+       },
+       "english_groups_at_or_above_local": 6,
+       "excess": 0.0,
+       "first_among_english_groups": false
+      },
+      "ngram_kjv_drawn": {
+       "draws": 20,
+       "mean_local_share": 0.0012,
+       "first_among_english_groups": 2,
+       "mean_excess": 0.0008,
+       "draws_with_excess_below_the_books": 1
+      },
+      "kjv_places_drawn": {
+       "draws": 20,
+       "mean_local_share": 0.0105,
+       "first_among_english_groups": 2,
+       "mean_excess": -0.0021,
+       "draws_with_excess_below_the_books": 12
+      }
+     }
+    },
+    "morse_1823": {
+     "entries": 21689,
+     "group_sizes": {
+      "near_east": 661,
+      "pennsylvania": 806,
+      "france": 2060,
+      "spanish_america": 327,
+      "russia": 653,
+      "germany": 2043,
+      "southern_states": 864,
+      "ohio": 981,
+      "scotland": 384,
+      "spain_portugal": 674,
+      "virginia": 381,
+      "new_england": 1132,
+      "england": 1172,
+      "italy": 738,
+      "india": 1029,
+      "ireland": 346,
+      "new_york": 798,
+      "africa": 346
+     },
+     "known_answer_planted": {
+      "draws": 20,
+      "new_york_first": 20,
+      "passed": true
+     },
+     "sets": {
+      "spalding": {
+       "local_share": 0.0105,
+       "english_groups": {
+        "pennsylvania": 0.0231,
+        "southern_states": 0.0119,
+        "ohio": 0.0143,
+        "new_england": 0.0,
+        "england": 0.0
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0,
+        "france": 0.0,
+        "russia": 0.0,
+        "germany": 0.0,
+        "spain_portugal": 0.0,
+        "italy": 0.0,
+        "india": 0.0
+       },
+       "english_groups_at_or_above_local": 3,
+       "excess": -0.0014,
+       "first_among_english_groups": false
+      },
+      "swift": {
+       "local_share": 0.0135,
+       "english_groups": {
+        "pennsylvania": 0.0,
+        "southern_states": 0.0,
+        "ohio": 0.0,
+        "new_england": 0.0186,
+        "england": 0.0
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0149,
+        "france": 0.0,
+        "russia": 0.0,
+        "germany": 0.0054,
+        "spain_portugal": 0.0,
+        "italy": 0.0,
+        "india": 0.0
+       },
+       "english_groups_at_or_above_local": 1,
+       "excess": 0.0135,
+       "first_among_english_groups": false
+      },
+      "ossian": {
+       "local_share": 0.0028,
+       "english_groups": {
+        "pennsylvania": 0.0,
+        "southern_states": 0.0,
+        "ohio": 0.002,
+        "new_england": 0.0023,
+        "england": 0.0
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0031,
+        "france": 0.0,
+        "russia": 0.0,
+        "germany": 0.0,
+        "spain_portugal": 0.0,
+        "italy": 0.0025,
+        "india": 0.0
+       },
+       "english_groups_at_or_above_local": 0,
+       "excess": 0.0028,
+       "first_among_english_groups": true
+      },
+      "spenser": {
+       "local_share": 0.0027,
+       "english_groups": {
+        "pennsylvania": 0.0083,
+        "southern_states": 0.0021,
+        "ohio": 0.0,
+        "new_england": 0.0016,
+        "england": 0.0091
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0029,
+        "france": 0.005,
+        "russia": 0.0,
+        "germany": 0.002,
+        "spain_portugal": 0.0024,
+        "italy": 0.0,
+        "india": 0.0
+       },
+       "english_groups_at_or_above_local": 2,
+       "excess": 0.0006,
+       "first_among_english_groups": false
+      },
+      "book_of_mormon": {
+       "local_share": 0.0,
+       "english_groups": {
+        "pennsylvania": 0.0,
+        "southern_states": 0.0,
+        "ohio": 0.0,
+        "new_england": 0.0,
+        "england": 0.0
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0,
+        "france": 0.0,
+        "russia": 0.0,
+        "germany": 0.0,
+        "spain_portugal": 0.0104,
+        "italy": 0.0,
+        "india": 0.0
+       },
+       "english_groups_at_or_above_local": 5,
+       "excess": 0.0,
+       "first_among_english_groups": false
+      },
+      "book_of_mormon_without_quoted_chapters": {
+       "local_share": 0.0,
+       "english_groups": {
+        "pennsylvania": 0.0,
+        "southern_states": 0.0,
+        "ohio": 0.0,
+        "new_england": 0.0,
+        "england": 0.0
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0,
+        "france": 0.0,
+        "russia": 0.0,
+        "germany": 0.0,
+        "spain_portugal": 0.0104,
+        "italy": 0.0,
+        "india": 0.0
+       },
+       "english_groups_at_or_above_local": 5,
+       "excess": 0.0,
+       "first_among_english_groups": false
+      },
+      "ngram_kjv_drawn": {
+       "draws": 20,
+       "mean_local_share": 0.0019,
+       "first_among_english_groups": 0,
+       "mean_excess": 0.0014,
+       "draws_with_excess_below_the_books": 0
+      },
+      "kjv_places_drawn": {
+       "draws": 20,
+       "mean_local_share": 0.0124,
+       "first_among_english_groups": 4,
+       "mean_excess": -0.0006,
+       "draws_with_excess_below_the_books": 10
+      }
+     }
+    }
+   },
+   "holley_pairs": {
+    "source": "FAIR, Book of Mormon place names from North America; read through an AI summary of the page on 2026-11-20, not checked by a person",
+    "pairs": [
+     {
+      "modern": "Tecumseh",
+      "book_of_mormon": "Teancum",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1912)"
+     },
+     {
+      "modern": "Rama",
+      "book_of_mormon": "Ramah",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "yes (1820)"
+     },
+     {
+      "modern": "Morin",
+      "book_of_mormon": "Moron",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1852)"
+     },
+     {
+      "modern": "Sainte-Agathe-des-Monts",
+      "book_of_mormon": "Ogath",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "not stated"
+     },
+     {
+      "modern": "Moraviantown",
+      "book_of_mormon": "Morianton",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "yes (about 1782)"
+     },
+     {
+      "modern": "Angola",
+      "book_of_mormon": "Angola",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (about 1854)"
+     },
+     {
+      "modern": "Oneida",
+      "book_of_mormon": "Onidah",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1798",
+       "morse_1821",
+       "morse_1823",
+       "spafford_1813",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [
+       "morse_1798",
+       "morse_1821",
+       "morse_1823",
+       "spafford_1813",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "fair_before_1830": "yes"
+     },
+     {
+      "modern": "Kiskiminetas",
+      "book_of_mormon": "Kishkumen",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "township no (1832); river name yes (1776)"
+     },
+     {
+      "modern": "Jacobsburg",
+      "book_of_mormon": "Jacobugath",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "yes (laid out 1815)"
+     },
+     {
+      "modern": "Jerusalem",
+      "book_of_mormon": "Jerusalem",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1798",
+       "morse_1821",
+       "morse_1823",
+       "spafford_1813",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [
+       "morse_1798",
+       "morse_1821",
+       "morse_1823",
+       "spafford_1813",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "fair_before_1830": "no (Ohio); New York town 1789"
+     },
+     {
+      "modern": "Alma",
+      "book_of_mormon": "Alma",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no"
+     },
+     {
+      "modern": "Lehigh",
+      "book_of_mormon": "Lehi",
+      "passes_rule": false,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [
+       "spafford_1824"
+      ],
+      "fair_before_1830": "yes"
+     },
+     {
+      "modern": "Ripple Lake",
+      "book_of_mormon": "Ripliancum",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "not established"
+     },
+     {
+      "modern": "Shiloh",
+      "book_of_mormon": "Shilom",
+      "passes_rule": false,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no"
+     },
+     {
+      "modern": "Antrim",
+      "book_of_mormon": "Antum",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "yes (1741)"
+     },
+     {
+      "modern": "Antioch",
+      "book_of_mormon": "Ani-Anti",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1837, 1880)"
+     },
+     {
+      "modern": "Boaz",
+      "book_of_mormon": "Boaz",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1878)"
+     },
+     {
+      "modern": "Connor",
+      "book_of_mormon": "Comnor",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1865)"
+     },
+     {
+      "modern": "Saint-Ephrem",
+      "book_of_mormon": "Ephraim",
+      "passes_rule": false,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1866)"
+     },
+     {
+      "modern": "Hellam",
+      "book_of_mormon": "Helam",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "yes (1739)"
+     },
+     {
+      "modern": "Jordan",
+      "book_of_mormon": "Jordan",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [
+       "worcester_1823"
+      ],
+      "fair_before_1830": "yes (before 1819)"
+     },
+     {
+      "modern": "Mantua",
+      "book_of_mormon": "Manti",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1898)"
+     },
+     {
+      "modern": "Monroe",
+      "book_of_mormon": "Moroni",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [
+       "morse_1823",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "fair_before_1830": "named 1808; absent from 1822 and 1831 maps"
+     },
+     {
+      "modern": "Minoa",
+      "book_of_mormon": "Minon",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1895)"
+     },
+     {
+      "modern": "Oneida Castle",
+      "book_of_mormon": "Onidah",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1798",
+       "morse_1821",
+       "morse_1823",
+       "spafford_1813",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [
+       "morse_1798",
+       "morse_1821",
+       "morse_1823",
+       "spafford_1813",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "fair_before_1830": "yes"
+     },
+     {
+      "modern": "Noah Lakes",
+      "book_of_mormon": "Noah",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no"
+     },
+     {
+      "modern": "Omer",
+      "book_of_mormon": "Omner",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "none found"
+     },
+     {
+      "modern": "Sodom",
+      "book_of_mormon": "Sidom",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "not applicable"
+     },
+     {
+      "modern": "Midian",
+      "book_of_mormon": "Midian",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "none found"
+     }
+    ],
+    "passing_rule": 9,
+    "found_in_period_gazetteers": 15,
+    "among_new_york_headwords": 6,
+    "passing_rule_and_found_and_not_biblical": 2
+   }
+  },
+  "loose": {
+   "threshold": 0.35,
+   "modern": {
+    "500": {
+     "local_entries": 163240,
+     "local_distinct_keys": 38957,
+     "centres_scored": 392,
+     "centres_dropped_too_sparse": 503,
+     "known_answer_planted": {
+      "draws": 20,
+      "at_or_above_percentile": 20,
+      "rate": 1.0,
+      "mean_local_share": 0.9992,
+      "mean_median_region_share": 0.9354,
+      "passed": true
+     },
+     "sets": {
+      "spalding": {
+       "names": 42,
+       "local_share": 1.0,
+       "local_count": 42,
+       "regions_compared": 232,
+       "median_region_share": 0.9762,
+       "percentile_among_far_english_regions": 83.4,
+       "regions_at_or_above_local": 77,
+       "excess": 0.0238,
+       "median_share_by_group": {
+        "mexico_guatemala": [
+         11,
+         0.9524
+        ],
+        "mixed": [
+         44,
+         0.9762
+        ],
+        "other_english": [
+         53,
+         1.0
+        ],
+        "rest": [
+         47,
+         0.9762
+        ],
+        "united_states": [
+         179,
+         0.9762
+        ]
+       }
+      },
+      "swift": {
+       "names": 37,
+       "local_share": 0.7027,
+       "local_count": 26,
+       "regions_compared": 232,
+       "median_region_share": 0.6757,
+       "percentile_among_far_english_regions": 66.8,
+       "regions_at_or_above_local": 104,
+       "excess": 0.027,
+       "median_share_by_group": {
+        "mexico_guatemala": [
+         11,
+         0.6216
+        ],
+        "mixed": [
+         44,
+         0.7027
+        ],
+        "other_english": [
+         53,
+         0.7297
+        ],
+        "rest": [
+         47,
+         0.6757
+        ],
+        "united_states": [
+         179,
+         0.6757
+        ]
+       }
+      },
+      "ossian": {
+       "names": 189,
+       "local_share": 0.9312,
+       "local_count": 176,
+       "regions_compared": 232,
+       "median_region_share": 0.9127,
+       "percentile_among_far_english_regions": 69.6,
+       "regions_at_or_above_local": 81,
+       "excess": 0.0185,
+       "median_share_by_group": {
+        "mexico_guatemala": [
+         11,
+         0.8995
+        ],
+        "mixed": [
+         44,
+         0.9153
+        ],
+        "other_english": [
+         53,
+         0.9206
+        ],
+        "rest": [
+         47,
+         0.9153
+        ],
+        "united_states": [
+         179,
+         0.9101
+        ]
+       }
+      },
+      "spenser": {
+       "names": 215,
+       "local_share": 0.8884,
+       "local_count": 191,
+       "regions_compared": 232,
+       "median_region_share": 0.8558,
+       "percentile_among_far_english_regions": 78.0,
+       "regions_at_or_above_local": 52,
+       "excess": 0.0326,
+       "median_share_by_group": {
+        "mexico_guatemala": [
+         11,
+         0.8233
+        ],
+        "mixed": [
+         44,
+         0.8581
+        ],
+        "other_english": [
+         53,
+         0.9023
+        ],
+        "rest": [
+         47,
+         0.7814
+        ],
+        "united_states": [
+         179,
+         0.8465
+        ]
+       }
+      },
+      "book_of_mormon": {
+       "names": 57,
+       "local_share": 0.8772,
+       "local_count": 50,
+       "regions_compared": 232,
+       "median_region_share": 0.8596,
+       "percentile_among_far_english_regions": 76.7,
+       "regions_at_or_above_local": 79,
+       "excess": 0.0175,
+       "median_share_by_group": {
+        "mexico_guatemala": [
+         11,
+         0.8246
+        ],
+        "mixed": [
+         44,
+         0.8509
+        ],
+        "other_english": [
+         53,
+         0.8772
+        ],
+        "rest": [
+         47,
+         0.8596
+        ],
+        "united_states": [
+         179,
+         0.8246
+        ]
+       }
+      },
+      "book_of_mormon_without_quoted_chapters": {
+       "names": 57,
+       "local_share": 0.8772,
+       "local_count": 50,
+       "regions_compared": 232,
+       "median_region_share": 0.8596,
+       "percentile_among_far_english_regions": 76.7,
+       "regions_at_or_above_local": 79,
+       "excess": 0.0175,
+       "median_share_by_group": {
+        "mexico_guatemala": [
+         11,
+         0.8246
+        ],
+        "mixed": [
+         44,
+         0.8509
+        ],
+        "other_english": [
+         53,
+         0.8772
+        ],
+        "rest": [
+         47,
+         0.8596
+        ],
+        "united_states": [
+         179,
+         0.8246
+        ]
+       }
+      }
+     },
+     "drawn_controls": {
+      "ngram_kjv": {
+       "draws": 200,
+       "mean_local_share": 0.8318,
+       "mean_median_region_share": 0.8216,
+       "mean_excess": 0.0101,
+       "mean_percentile": 60.1,
+       "draws_in_top_5_percent": 16,
+       "share_of_draws_with_excess_below_the_books": 0.515
+      },
+      "kjv_places": {
+       "draws": 200,
+       "mean_local_share": 0.8953,
+       "mean_median_region_share": 0.8656,
+       "mean_excess": 0.0297,
+       "mean_percentile": 79.9,
+       "draws_in_top_5_percent": 62,
+       "share_of_draws_with_excess_below_the_books": 0.215
+      }
+     },
+     "verdict": "no",
+     "named_regions": {
+      "jerusalem": {
+       "reach_km": 946,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.8596
+      },
+      "mexico_city": {
+       "reach_km": 402,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.807
+      },
+      "guatemala_city": {
+       "reach_km": 923,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.8596
+      },
+      "merida": {
+       "reach_km": 916,
+       "english_share": 0.003,
+       "book_of_mormon_share": 0.8596
+      },
+      "london": {
+       "reach_km": 533,
+       "english_share": 0.416,
+       "book_of_mormon_share": 0.8596
+      },
+      "edinburgh": {
+       "reach_km": 698,
+       "english_share": 0.639,
+       "book_of_mormon_share": 0.8596
+      },
+      "dublin": {
+       "reach_km": 826,
+       "english_share": 0.635,
+       "book_of_mormon_share": 0.8596
+      }
+     },
+     "local_matches": {
+      "Saser": {
+       "modern_keys": [
+        "Caseur",
+        "Saefer",
+        "Safer",
+        "Safers",
+        "Safter",
+        "Sagers",
+        "Sailer",
+        "Saker"
+       ],
+       "new_york_before_1830": {
+        "spafford_1824": [
+         "Sakers",
+         "basler"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "Selem": {
+       "modern_keys": [
+        "Selbed",
+        "Selei",
+        "Selter",
+        "Selvei",
+        "Seplei",
+        "Sepler",
+        "Seslei",
+        "Setler"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "beTlem"
+        ],
+        "morse_1821": [
+         "Selter",
+         "beTlem"
+        ],
+        "spafford_1813": [
+         "beTlem"
+        ],
+        "spafford_1824": [
+         "Selter",
+         "beTlem"
+        ],
+        "morse_1798": [
+         "beTlem"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "Semlon": {
+       "modern_keys": [
+        "Cemon",
+        "Sebeon",
+        "Seldon",
+        "Selorn",
+        "Selton",
+        "Septon",
+        "Serlok",
+        "belon"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "Seldon",
+         "hemlok"
+        ],
+        "morse_1821": [
+         "Seldon",
+         "hemlok"
+        ],
+        "morse_1823": [
+         "Seldon",
+         "hemlok"
+        ],
+        "spafford_1813": [
+         "Seldon"
+        ],
+        "spafford_1824": [
+         "Seldon",
+         "hemlok"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "Sim": {
+       "modern_keys": [
+        "Cim",
+        "Si",
+        "Sin",
+        "Sip",
+        "Sir",
+        "aim",
+        "dim",
+        "jim"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "lim"
+        ],
+        "morse_1823": [
+         "lim"
+        ],
+        "spafford_1824": [
+         "Sip",
+         "lim"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "Sur": {
+       "modern_keys": [
+        "Sar",
+        "Sir",
+        "Sor",
+        "Sour",
+        "Su",
+        "Sul",
+        "Sup",
+        "Sut"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "ablom": {
+       "modern_keys": [
+        "ablon",
+        "ambloi",
+        "blom",
+        "dablon",
+        "sablon"
+       ],
+       "new_york_before_1830": {
+        "spafford_1813": [
+         "blom"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "agoS": {
+       "modern_keys": [
+        "agor"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "akiS": {
+       "modern_keys": [
+        "aki",
+        "kiS"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "alma": {
+       "modern_keys": [
+        "Salmar",
+        "alba",
+        "alda",
+        "alfa",
+        "alga",
+        "alma",
+        "alman",
+        "almar"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "amonia": {
+       "modern_keys": [
+        "Samona",
+        "Sonia",
+        "aTenia",
+        "akmetonia",
+        "akonit",
+        "alenia",
+        "amanda",
+        "amelia"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "ionia"
+        ],
+        "morse_1821": [
+         "amenia",
+         "moria"
+        ],
+        "morse_1823": [
+         "anwnia",
+         "armenia",
+         "moria"
+        ],
+        "spafford_1813": [
+         "amenia",
+         "moria"
+        ],
+        "spafford_1824": [
+         "amenia"
+        ],
+        "morse_1798": [
+         "amoenia"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "amulon": {
+       "modern_keys": [
+        "aTlon",
+        "ablon",
+        "akuilon",
+        "amalen",
+        "ambleon",
+        "ambloi",
+        "amelot",
+        "amon"
+       ],
+       "new_york_before_1830": {
+        "spafford_1824": [
+         "malon"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "ani": {
+       "modern_keys": [
+        "abi",
+        "adi",
+        "agi",
+        "agni",
+        "aki",
+        "ali",
+        "ami",
+        "an"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "an"
+        ],
+        "morse_1821": [
+         "ane"
+        ],
+        "morse_1823": [
+         "an"
+        ],
+        "spafford_1813": [
+         "ane",
+         "sani"
+        ],
+        "spafford_1824": [
+         "ane"
+        ],
+        "morse_1798": [
+         "ane"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "antionum": {
+       "modern_keys": [
+        "antion"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "antum": {
+       "modern_keys": [
+        "antram",
+        "antrim",
+        "autumn",
+        "bantam",
+        "fantom",
+        "kartum",
+        "kuantum",
+        "mantua"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "ankrum"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "gadiandi": {
+       "modern_keys": [
+        "garibaldi"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "gid": {
+       "modern_keys": [
+        "aid",
+        "bid",
+        "gib",
+        "gid",
+        "gif",
+        "gig",
+        "gil",
+        "gin"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "hid"
+        ],
+        "spafford_1824": [
+         "gil",
+         "hid",
+         "sid"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "heSlon": {
+       "modern_keys": [
+        "belon",
+        "detlon",
+        "eglon",
+        "felon",
+        "gelon",
+        "hanlon",
+        "heSbon",
+        "heaton"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "hebron",
+         "hemlok"
+        ],
+        "morse_1821": [
+         "hebron",
+         "hemlok"
+        ],
+        "morse_1823": [
+         "hebron",
+         "hemlok"
+        ],
+        "spafford_1813": [
+         "hebron"
+        ],
+        "spafford_1824": [
+         "hemlok"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "jaSon": {
+       "modern_keys": [
+        "baSon",
+        "faSion",
+        "jadon",
+        "jailon",
+        "jaison",
+        "jakson",
+        "jambon",
+        "janson"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "jakson"
+        ],
+        "morse_1821": [
+         "jakson"
+        ],
+        "spafford_1824": [
+         "jakson",
+         "kaSong"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "jakobugaT": {
+       "modern_keys": [
+        "jakobus"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "jerSon": {
+       "modern_keys": [
+        "herbon",
+        "hermon",
+        "heron",
+        "jargon",
+        "jerden",
+        "jerikon",
+        "jermin",
+        "jeroi"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "vernon"
+        ],
+        "morse_1821": [
+         "vernon"
+        ],
+        "morse_1823": [
+         "vernon"
+        ],
+        "spafford_1813": [
+         "Teron"
+        ],
+        "spafford_1824": [
+         "vernon"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "joS": {
+       "modern_keys": [
+        "joS",
+        "job",
+        "joe",
+        "joi",
+        "jok",
+        "jol",
+        "jon",
+        "jos"
+       ],
+       "new_york_before_1830": {
+        "spafford_1824": [
+         "joe"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "kiSkumen": {
+       "modern_keys": [
+        "kiSkadena"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "komnor": {
+       "modern_keys": [
+        "bognor",
+        "honor",
+        "hornor",
+        "komar",
+        "komber",
+        "komer",
+        "komfer",
+        "komfort"
+       ],
+       "new_york_before_1830": {
+        "spafford_1824": [
+         "korner"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "korior": {
+       "modern_keys": [
+        "Cerior",
+        "Corion",
+        "dorion",
+        "frior",
+        "gorion",
+        "hornor",
+        "karier",
+        "kariot"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "korinT"
+        ],
+        "morse_1823": [
+         "korinT"
+        ],
+        "spafford_1824": [
+         "korinT",
+         "korner"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "kumeni": {
+       "modern_keys": [
+        "eugeni",
+        "kameni",
+        "keni",
+        "kueCi",
+        "kuen",
+        "kuend",
+        "kueni",
+        "kuens"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "kuen"
+        ],
+        "spafford_1813": [
+         "kuei",
+         "kuens"
+        ],
+        "spafford_1824": [
+         "kuen",
+         "kuens"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "laman": {
+       "modern_keys": [
+        "Capman",
+        "altman",
+        "asaman",
+        "baCman",
+        "beaman",
+        "blakman",
+        "braman",
+        "daman"
+       ],
+       "new_york_before_1830": {
+        "spafford_1824": [
+         "vlamans"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "manti": {
+       "modern_keys": [
+        "Canti",
+        "Cantri",
+        "Santi",
+        "anti",
+        "dainti",
+        "fantin",
+        "ianti",
+        "iantik"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "maneim"
+        ],
+        "morse_1821": [
+         "maneim"
+        ],
+        "spafford_1813": [
+         "maneim"
+        ],
+        "spafford_1824": [
+         "kantin",
+         "maneim"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "melek": {
+       "modern_keys": [
+        "belek",
+        "ielek",
+        "mealei",
+        "medlei",
+        "meiler",
+        "mekler",
+        "melen",
+        "meles"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "midoni": {
+       "modern_keys": [
+        "doni",
+        "lidon",
+        "limoni",
+        "madona",
+        "medont",
+        "midai",
+        "midmont",
+        "midwai"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "minon": {
+       "modern_keys": [
+        "amignon",
+        "dindon",
+        "einon",
+        "ginson",
+        "hindon",
+        "hinson",
+        "hinton",
+        "kinong"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "mendon",
+         "milton",
+         "minden"
+        ],
+        "morse_1821": [
+         "mendon",
+         "milton",
+         "minden"
+        ],
+        "morse_1823": [
+         "mendon",
+         "milton",
+         "minden"
+        ],
+        "spafford_1813": [
+         "milton"
+        ],
+        "spafford_1824": [
+         "mendon",
+         "milton",
+         "minden",
+         "mkndon"
+        ],
+        "morse_1798": [
+         "milton"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "mokum": {
+       "modern_keys": [
+        "brokum",
+        "ioakum",
+        "iokum",
+        "makuam",
+        "makum",
+        "markum",
+        "mkolum",
+        "mokoma"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "morianton": {
+       "modern_keys": [
+        "Torington",
+        "Tornton",
+        "bointon",
+        "branton",
+        "brianston",
+        "briantown",
+        "brinton",
+        "darinton"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "moristown",
+         "perinton",
+         "roialton"
+        ],
+        "morse_1821": [
+         "roialton"
+        ],
+        "morse_1823": [
+         "korington",
+         "moristown"
+        ],
+        "spafford_1824": [
+         "hopiunton",
+         "moristown"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "mormon": {
+       "modern_keys": [
+        "Corion",
+        "Torton",
+        "borton",
+        "dorion",
+        "dorman",
+        "dormont",
+        "emorton",
+        "forman"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "norman"
+        ],
+        "morse_1823": [
+         "norman"
+        ],
+        "spafford_1824": [
+         "norman"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "moron": {
+       "modern_keys": [
+        "Corion",
+        "Torton",
+        "amorin",
+        "borton",
+        "bouron",
+        "doiron",
+        "dorion",
+        "emorton"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "moroni": {
+       "modern_keys": [
+        "Torni",
+        "baroni",
+        "borni",
+        "dorni",
+        "doroTi",
+        "foron",
+        "groni",
+        "koloni"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "koloni"
+        ],
+        "morse_1821": [
+         "koloni"
+        ],
+        "morse_1823": [
+         "koloni"
+        ],
+        "spafford_1813": [
+         "koloni"
+        ],
+        "spafford_1824": [
+         "koloni",
+         "mori"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "moronia": {
+       "modern_keys": [
+        "aronia",
+        "feronia",
+        "hortonia",
+        "huronia",
+        "ironia",
+        "kolonia",
+        "korona",
+        "mononga"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "moravia"
+        ],
+        "morse_1821": [
+         "moria"
+        ],
+        "morse_1823": [
+         "moria"
+        ],
+        "spafford_1813": [
+         "moria"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "mulek": {
+       "modern_keys": [
+        "amulet",
+        "bulnek",
+        "mkulei",
+        "mkulen",
+        "moulak",
+        "moules",
+        "mudlik",
+        "muflei"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "naom": {
+       "modern_keys": [
+        "naiomi",
+        "nakoma",
+        "naomi",
+        "naon",
+        "naor",
+        "nom"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "nefia": {
+       "modern_keys": [
+        "nebian",
+        "nemia"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "neor": {
+       "modern_keys": [
+        "naor",
+        "near",
+        "nedmor",
+        "negr",
+        "neon",
+        "ner",
+        "nestor",
+        "nor"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "ogaT": {
+       "modern_keys": [
+        "agaT",
+        "gaT",
+        "ogam"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "omner": {
+       "modern_keys": [
+        "downer",
+        "homler",
+        "hopner",
+        "horner",
+        "hosner",
+        "joiner",
+        "komber",
+        "komfer"
+       ],
+       "new_york_before_1830": {
+        "spafford_1824": [
+         "korner"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "onia": {
+       "modern_keys": [
+        "Sonia",
+        "aronia",
+        "avonia",
+        "bonika",
+        "bonila",
+        "bonita",
+        "etonia",
+        "gonia"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "ionia",
+         "oneida"
+        ],
+        "morse_1821": [
+         "oneida"
+        ],
+        "morse_1823": [
+         "oneida"
+        ],
+        "spafford_1813": [
+         "oneida"
+        ],
+        "spafford_1824": [
+         "oneida",
+         "onlida"
+        ],
+        "morse_1798": [
+         "oneida"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "onida": {
+       "modern_keys": [
+        "bonika",
+        "bonila",
+        "bonita",
+        "monika",
+        "olinda",
+        "oneida",
+        "oneidas",
+        "onigam"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "oneida"
+        ],
+        "morse_1821": [
+         "oneida"
+        ],
+        "morse_1823": [
+         "oneida"
+        ],
+        "spafford_1813": [
+         "oneida"
+        ],
+        "spafford_1824": [
+         "oneida",
+         "onlida"
+        ],
+        "morse_1798": [
+         "oneida"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "ripla": {
+       "modern_keys": [
+        "biplan",
+        "ripl",
+        "riplei"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "riplei"
+        ],
+        "morse_1823": [
+         "riplei"
+        ],
+        "spafford_1824": [
+         "riplei"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "sebus": {
+       "modern_keys": [
+        "debrus",
+        "erebus",
+        "iseous",
+        "rebus",
+        "sebas",
+        "sebins",
+        "seburns",
+        "selbis"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "sesrom": {
+       "modern_keys": [
+        "bedrom",
+        "derom",
+        "jerom",
+        "seldom",
+        "seram",
+        "sero",
+        "seron",
+        "sesam"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "sidom": {
+       "modern_keys": [
+        "isidor",
+        "sandom",
+        "seldom",
+        "sidmor",
+        "sidon",
+        "siloam",
+        "siom",
+        "snidam"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "siron": {
+       "modern_keys": [
+        "airon",
+        "biron",
+        "birons",
+        "doiron",
+        "giron",
+        "girond",
+        "iron",
+        "kidron"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "biron",
+         "skron"
+        ],
+        "morse_1821": [
+         "skron"
+        ],
+        "morse_1823": [
+         "skron"
+        ],
+        "spafford_1813": [
+         "skron"
+        ],
+        "spafford_1824": [
+         "biron",
+         "iron",
+         "skaron",
+         "strong",
+         "tiron"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "teankum": {
+       "modern_keys": [
+        "teakup"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      }
+     },
+     "local_matches_in_print_in_new_york_before_1830": 29
+    },
+    "150": {
+     "local_entries": 8354,
+     "local_distinct_keys": 3977,
+     "centres_scored": 442,
+     "centres_dropped_too_sparse": 453,
+     "known_answer_planted": {
+      "draws": 20,
+      "at_or_above_percentile": 20,
+      "rate": 1.0,
+      "mean_local_share": 0.8075,
+      "mean_median_region_share": 0.575,
+      "passed": true
+     },
+     "sets": {
+      "spalding": {
+       "names": 42,
+       "local_share": 0.6905,
+       "local_count": 29,
+       "regions_compared": 374,
+       "median_region_share": 0.7381,
+       "percentile_among_far_english_regions": 29.9,
+       "regions_at_or_above_local": 281,
+       "excess": -0.0476,
+       "median_share_by_group": {
+        "bible_lands": [
+         2,
+         0.619
+        ],
+        "mexico_guatemala": [
+         6,
+         0.7381
+        ],
+        "mixed": [
+         12,
+         0.7262
+        ],
+        "other_english": [
+         186,
+         0.7619
+        ],
+        "rest": [
+         42,
+         0.6905
+        ],
+        "united_states": [
+         188,
+         0.7143
+        ]
+       }
+      },
+      "swift": {
+       "names": 37,
+       "local_share": 0.4595,
+       "local_count": 17,
+       "regions_compared": 374,
+       "median_region_share": 0.3514,
+       "percentile_among_far_english_regions": 88.9,
+       "regions_at_or_above_local": 55,
+       "excess": 0.1081,
+       "median_share_by_group": {
+        "bible_lands": [
+         2,
+         0.1892
+        ],
+        "mexico_guatemala": [
+         6,
+         0.3649
+        ],
+        "mixed": [
+         12,
+         0.3919
+        ],
+        "other_english": [
+         186,
+         0.4054
+        ],
+        "rest": [
+         42,
+         0.2973
+        ],
+        "united_states": [
+         188,
+         0.3514
+        ]
+       }
+      },
+      "ossian": {
+       "names": 189,
+       "local_share": 0.6561,
+       "local_count": 124,
+       "regions_compared": 374,
+       "median_region_share": 0.6561,
+       "percentile_among_far_english_regions": 48.5,
+       "regions_at_or_above_local": 200,
+       "excess": 0.0,
+       "median_share_by_group": {
+        "bible_lands": [
+         2,
+         0.5873
+        ],
+        "mexico_guatemala": [
+         6,
+         0.664
+        ],
+        "mixed": [
+         12,
+         0.6667
+        ],
+        "other_english": [
+         186,
+         0.6958
+        ],
+        "rest": [
+         42,
+         0.5794
+        ],
+        "united_states": [
+         188,
+         0.6323
+        ]
+       }
+      },
+      "spenser": {
+       "names": 215,
+       "local_share": 0.5767,
+       "local_count": 124,
+       "regions_compared": 374,
+       "median_region_share": 0.5395,
+       "percentile_among_far_english_regions": 76.3,
+       "regions_at_or_above_local": 95,
+       "excess": 0.0372,
+       "median_share_by_group": {
+        "bible_lands": [
+         2,
+         0.3465
+        ],
+        "mexico_guatemala": [
+         6,
+         0.4698
+        ],
+        "mixed": [
+         12,
+         0.5558
+        ],
+        "other_english": [
+         186,
+         0.5581
+        ],
+        "rest": [
+         42,
+         0.3674
+        ],
+        "united_states": [
+         188,
+         0.5256
+        ]
+       }
+      },
+      "book_of_mormon": {
+       "names": 57,
+       "local_share": 0.614,
+       "local_count": 35,
+       "regions_compared": 374,
+       "median_region_share": 0.6316,
+       "percentile_among_far_english_regions": 39.7,
+       "regions_at_or_above_local": 247,
+       "excess": -0.0175,
+       "median_share_by_group": {
+        "bible_lands": [
+         2,
+         0.5351
+        ],
+        "mexico_guatemala": [
+         6,
+         0.5526
+        ],
+        "mixed": [
+         12,
+         0.614
+        ],
+        "other_english": [
+         186,
+         0.6316
+        ],
+        "rest": [
+         42,
+         0.4737
+        ],
+        "united_states": [
+         188,
+         0.6316
+        ]
+       }
+      },
+      "book_of_mormon_without_quoted_chapters": {
+       "names": 57,
+       "local_share": 0.614,
+       "local_count": 35,
+       "regions_compared": 374,
+       "median_region_share": 0.6316,
+       "percentile_among_far_english_regions": 39.7,
+       "regions_at_or_above_local": 247,
+       "excess": -0.0175,
+       "median_share_by_group": {
+        "bible_lands": [
+         2,
+         0.5351
+        ],
+        "mexico_guatemala": [
+         6,
+         0.5526
+        ],
+        "mixed": [
+         12,
+         0.614
+        ],
+        "other_english": [
+         186,
+         0.6316
+        ],
+        "rest": [
+         42,
+         0.4737
+        ],
+        "united_states": [
+         188,
+         0.6316
+        ]
+       }
+      }
+     },
+     "drawn_controls": {
+      "ngram_kjv": {
+       "draws": 200,
+       "mean_local_share": 0.5582,
+       "mean_median_region_share": 0.566,
+       "mean_excess": -0.0078,
+       "mean_percentile": 46.5,
+       "draws_in_top_5_percent": 0,
+       "share_of_draws_with_excess_below_the_books": 0.33
+      },
+      "kjv_places": {
+       "draws": 200,
+       "mean_local_share": 0.5839,
+       "mean_median_region_share": 0.5787,
+       "mean_excess": 0.0053,
+       "mean_percentile": 53.8,
+       "draws_in_top_5_percent": 6,
+       "share_of_draws_with_excess_below_the_books": 0.215
+      }
+     },
+     "verdict": "no",
+     "named_regions": {
+      "jerusalem": {
+       "reach_km": 94,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.6491
+      },
+      "mexico_city": {
+       "reach_km": 53,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.5263
+      },
+      "guatemala_city": {
+       "reach_km": 82,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.5263
+      },
+      "merida": {
+       "reach_km": 227,
+       "english_share": 0.0,
+       "book_of_mormon_share": 0.5789
+      },
+      "london": {
+       "reach_km": 80,
+       "english_share": 1.0,
+       "book_of_mormon_share": 0.5088
+      },
+      "edinburgh": {
+       "reach_km": 117,
+       "english_share": 1.0,
+       "book_of_mormon_share": 0.5439
+      },
+      "dublin": {
+       "reach_km": 149,
+       "english_share": 0.989,
+       "book_of_mormon_share": 0.6316
+      }
+     },
+     "local_matches": {
+      "Saser": {
+       "modern_keys": [
+        "Saker",
+        "Saver",
+        "Searer",
+        "fraser",
+        "jasper"
+       ],
+       "new_york_before_1830": {
+        "spafford_1824": [
+         "Sakers",
+         "basler"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "Selem": {
+       "modern_keys": [
+        "Selter"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "beTlem"
+        ],
+        "morse_1821": [
+         "Selter",
+         "beTlem"
+        ],
+        "spafford_1813": [
+         "beTlem"
+        ],
+        "spafford_1824": [
+         "Selter",
+         "beTlem"
+        ],
+        "morse_1798": [
+         "beTlem"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "Semlon": {
+       "modern_keys": [
+        "Seldon",
+        "Serlok",
+        "hemlok"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "Seldon",
+         "hemlok"
+        ],
+        "morse_1821": [
+         "Seldon",
+         "hemlok"
+        ],
+        "morse_1823": [
+         "Seldon",
+         "hemlok"
+        ],
+        "spafford_1813": [
+         "Seldon"
+        ],
+        "spafford_1824": [
+         "Seldon",
+         "hemlok"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "Sim": {
+       "modern_keys": [
+        "Sin",
+        "Sip",
+        "lim"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "lim"
+        ],
+        "morse_1823": [
+         "lim"
+        ],
+        "spafford_1824": [
+         "Sip",
+         "lim"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "Sur": {
+       "modern_keys": [
+        "Sor",
+        "bur"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "ablom": {
+       "modern_keys": [
+        "dablon"
+       ],
+       "new_york_before_1830": {
+        "spafford_1813": [
+         "blom"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "alma": {
+       "modern_keys": [
+        "alma",
+        "altmar",
+        "elma",
+        "walman"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "amonia": {
+       "modern_keys": [
+        "ansonia",
+        "ionia",
+        "ramona"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "ionia"
+        ],
+        "morse_1821": [
+         "amenia",
+         "moria"
+        ],
+        "morse_1823": [
+         "anwnia",
+         "armenia",
+         "moria"
+        ],
+        "spafford_1813": [
+         "amenia",
+         "moria"
+        ],
+        "spafford_1824": [
+         "amenia"
+        ],
+        "morse_1798": [
+         "amoenia"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "amulon": {
+       "modern_keys": [
+        "mulen",
+        "muton"
+       ],
+       "new_york_before_1830": {
+        "spafford_1824": [
+         "malon"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "gid": {
+       "modern_keys": [
+        "gil",
+        "hid",
+        "nid",
+        "sid",
+        "wid"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "hid"
+        ],
+        "spafford_1824": [
+         "gil",
+         "hid",
+         "sid"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "heSlon": {
+       "modern_keys": [
+        "hanlon",
+        "hebron",
+        "hemlok",
+        "henion",
+        "heron"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "hebron",
+         "hemlok"
+        ],
+        "morse_1821": [
+         "hebron",
+         "hemlok"
+        ],
+        "morse_1823": [
+         "hebron",
+         "hemlok"
+        ],
+        "spafford_1813": [
+         "hebron"
+        ],
+        "spafford_1824": [
+         "hemlok"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "jaSon": {
+       "modern_keys": [
+        "jakson",
+        "jason",
+        "kaSong"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "jakson"
+        ],
+        "morse_1821": [
+         "jakson"
+        ],
+        "spafford_1824": [
+         "jakson",
+         "kaSong"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "jerSon": {
+       "modern_keys": [
+        "heron",
+        "jerikon",
+        "jerom",
+        "vernon"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "vernon"
+        ],
+        "morse_1821": [
+         "vernon"
+        ],
+        "morse_1823": [
+         "vernon"
+        ],
+        "spafford_1813": [
+         "Teron"
+        ],
+        "spafford_1824": [
+         "vernon"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "joS": {
+       "modern_keys": [
+        "joi",
+        "jol",
+        "jon"
+       ],
+       "new_york_before_1830": {
+        "spafford_1824": [
+         "joe"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "komnor": {
+       "modern_keys": [
+        "komer",
+        "komfort",
+        "komo",
+        "korner"
+       ],
+       "new_york_before_1830": {
+        "spafford_1824": [
+         "korner"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "korior": {
+       "modern_keys": [
+        "kordori",
+        "kori",
+        "korner"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "korinT"
+        ],
+        "morse_1823": [
+         "korinT"
+        ],
+        "spafford_1824": [
+         "korinT",
+         "korner"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "kumeni": {
+       "modern_keys": [
+        "keni",
+        "kuen",
+        "kuens",
+        "meni"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "kuen"
+        ],
+        "spafford_1813": [
+         "kuei",
+         "kuens"
+        ],
+        "spafford_1824": [
+         "kuen",
+         "kuens"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "laman": {
+       "modern_keys": [
+        "Capman",
+        "beaman",
+        "isaman",
+        "jakman",
+        "karman",
+        "lamont",
+        "lamson",
+        "leman"
+       ],
+       "new_york_before_1830": {
+        "spafford_1824": [
+         "vlamans"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "manti": {
+       "modern_keys": [
+        "Santi",
+        "ianti",
+        "martin",
+        "mkarti",
+        "wantri"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "maneim"
+        ],
+        "morse_1821": [
+         "maneim"
+        ],
+        "spafford_1813": [
+         "maneim"
+        ],
+        "spafford_1824": [
+         "kantin",
+         "maneim"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "midoni": {
+       "modern_keys": [
+        "midwai"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "minon": {
+       "modern_keys": [
+        "lindon",
+        "mendon",
+        "milton",
+        "minoa",
+        "munson",
+        "winona"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "mendon",
+         "milton",
+         "minden"
+        ],
+        "morse_1821": [
+         "mendon",
+         "milton",
+         "minden"
+        ],
+        "morse_1823": [
+         "mendon",
+         "milton",
+         "minden"
+        ],
+        "spafford_1813": [
+         "milton"
+        ],
+        "spafford_1824": [
+         "mendon",
+         "milton",
+         "minden",
+         "mkndon"
+        ],
+        "morse_1798": [
+         "milton"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "mokum": {
+       "modern_keys": [
+        "slokum"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "morianton": {
+       "modern_keys": [
+        "Tornton",
+        "bointon",
+        "morganston",
+        "morison",
+        "morton",
+        "perinton",
+        "roialton",
+        "skranton"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "moristown",
+         "perinton",
+         "roialton"
+        ],
+        "morse_1821": [
+         "roialton"
+        ],
+        "morse_1823": [
+         "korington",
+         "moristown"
+        ],
+        "spafford_1824": [
+         "hopiunton",
+         "moristown"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "mormon": {
+       "modern_keys": [
+        "gordon",
+        "gorton",
+        "horton",
+        "marion",
+        "morain",
+        "moran",
+        "morgan",
+        "morison"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "norman"
+        ],
+        "morse_1823": [
+         "norman"
+        ],
+        "spafford_1824": [
+         "norman"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "moron": {
+       "modern_keys": [
+        "gordon",
+        "gorton",
+        "horton",
+        "marion",
+        "morain",
+        "moran",
+        "morgan",
+        "moring"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "moroni": {
+       "modern_keys": [
+        "moran",
+        "moring",
+        "mormon",
+        "morow",
+        "morton",
+        "orono"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "koloni"
+        ],
+        "morse_1821": [
+         "koloni"
+        ],
+        "morse_1823": [
+         "koloni"
+        ],
+        "spafford_1813": [
+         "koloni"
+        ],
+        "spafford_1824": [
+         "koloni",
+         "mori"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "moronia": {
+       "modern_keys": [
+        "moravia"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "moravia"
+        ],
+        "morse_1821": [
+         "moria"
+        ],
+        "morse_1823": [
+         "moria"
+        ],
+        "spafford_1813": [
+         "moria"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "mulek": {
+       "modern_keys": [
+        "mudlik",
+        "mulen",
+        "muler"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "omner": {
+       "modern_keys": [
+        "korner",
+        "towner"
+       ],
+       "new_york_before_1830": {
+        "spafford_1824": [
+         "korner"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "onia": {
+       "modern_keys": [
+        "ionia",
+        "oneida",
+        "soniea"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "ionia",
+         "oneida"
+        ],
+        "morse_1821": [
+         "oneida"
+        ],
+        "morse_1823": [
+         "oneida"
+        ],
+        "spafford_1813": [
+         "oneida"
+        ],
+        "spafford_1824": [
+         "oneida",
+         "onlida"
+        ],
+        "morse_1798": [
+         "oneida"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "onida": {
+       "modern_keys": [
+        "oneida",
+        "soniea"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "oneida"
+        ],
+        "morse_1821": [
+         "oneida"
+        ],
+        "morse_1823": [
+         "oneida"
+        ],
+        "spafford_1813": [
+         "oneida"
+        ],
+        "spafford_1824": [
+         "oneida",
+         "onlida"
+        ],
+        "morse_1798": [
+         "oneida"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "ripla": {
+       "modern_keys": [
+        "riplei"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "riplei"
+        ],
+        "morse_1823": [
+         "riplei"
+        ],
+        "spafford_1824": [
+         "riplei"
+        ]
+       },
+       "any_new_york_before_1830": true
+      },
+      "sesrom": {
+       "modern_keys": [
+        "jerom"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "sidom": {
+       "modern_keys": [
+        "siloam",
+        "windom"
+       ],
+       "new_york_before_1830": {},
+       "any_new_york_before_1830": false
+      },
+      "siron": {
+       "modern_keys": [
+        "biron",
+        "sion",
+        "siren",
+        "sprong",
+        "strong",
+        "tiron"
+       ],
+       "new_york_before_1830": {
+        "worcester_1823": [
+         "biron",
+         "skron"
+        ],
+        "morse_1821": [
+         "skron"
+        ],
+        "morse_1823": [
+         "skron"
+        ],
+        "spafford_1813": [
+         "skron"
+        ],
+        "spafford_1824": [
+         "biron",
+         "iron",
+         "skaron",
+         "strong",
+         "tiron"
+        ]
+       },
+       "any_new_york_before_1830": true
+      }
+     },
+     "local_matches_in_print_in_new_york_before_1830": 27
+    }
+   },
+   "period": {
+    "worcester_1823": {
+     "entries": 57397,
+     "group_sizes": {
+      "near_east": 3159,
+      "africa": 1304,
+      "germany": 6372,
+      "france": 4911,
+      "pennsylvania": 1006,
+      "spanish_america": 1642,
+      "russia": 2140,
+      "england": 1632,
+      "southern_states": 936,
+      "ireland": 646,
+      "india": 5440,
+      "spain_portugal": 1871,
+      "scotland": 761,
+      "italy": 2206,
+      "virginia": 543,
+      "new_england": 1390,
+      "new_york": 899,
+      "ohio": 981
+     },
+     "known_answer_planted": {
+      "draws": 20,
+      "new_york_first": 20,
+      "passed": true
+     },
+     "sets": {
+      "spalding": {
+       "local_share": 0.2224,
+       "english_groups": {
+        "pennsylvania": 0.1721,
+        "england": 0.141,
+        "southern_states": 0.26,
+        "ireland": 0.1429,
+        "scotland": 0.1229,
+        "virginia": 0.204,
+        "new_england": 0.2776,
+        "ohio": 0.1764
+       },
+       "other_spelling_groups": {
+        "near_east": 0.2029,
+        "africa": 0.384,
+        "germany": 0.1602,
+        "france": 0.2021,
+        "spanish_america": 0.3105,
+        "russia": 0.1348,
+        "india": 0.1636,
+        "spain_portugal": 0.2176,
+        "italy": 0.2281
+       },
+       "english_groups_at_or_above_local": 2,
+       "excess": 0.0481,
+       "first_among_english_groups": false
+      },
+      "swift": {
+       "local_share": 0.0776,
+       "english_groups": {
+        "pennsylvania": 0.0662,
+        "england": 0.0995,
+        "southern_states": 0.0662,
+        "ireland": 0.0335,
+        "scotland": 0.1281,
+        "virginia": 0.0208,
+        "new_england": 0.0695,
+        "ohio": 0.0386
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0686,
+        "africa": 0.0889,
+        "germany": 0.0554,
+        "france": 0.0857,
+        "spanish_america": 0.0662,
+        "russia": 0.0457,
+        "india": 0.0397,
+        "spain_portugal": 0.0735,
+        "italy": 0.0622
+       },
+       "english_groups_at_or_above_local": 2,
+       "excess": 0.0114,
+       "first_among_english_groups": false
+      },
+      "ossian": {
+       "local_share": 0.1587,
+       "english_groups": {
+        "pennsylvania": 0.1312,
+        "england": 0.1418,
+        "southern_states": 0.1225,
+        "ireland": 0.2923,
+        "scotland": 0.2451,
+        "virginia": 0.1293,
+        "new_england": 0.1333,
+        "ohio": 0.1361
+       },
+       "other_spelling_groups": {
+        "near_east": 0.2579,
+        "africa": 0.269,
+        "germany": 0.1092,
+        "france": 0.162,
+        "spanish_america": 0.2311,
+        "russia": 0.146,
+        "india": 0.2139,
+        "spain_portugal": 0.2402,
+        "italy": 0.2392
+       },
+       "english_groups_at_or_above_local": 2,
+       "excess": 0.024,
+       "first_among_english_groups": false
+      },
+      "spenser": {
+       "local_share": 0.11,
+       "english_groups": {
+        "pennsylvania": 0.1209,
+        "england": 0.0882,
+        "southern_states": 0.1184,
+        "ireland": 0.1099,
+        "scotland": 0.113,
+        "virginia": 0.0883,
+        "new_england": 0.0868,
+        "ohio": 0.0817
+       },
+       "other_spelling_groups": {
+        "near_east": 0.1401,
+        "africa": 0.1218,
+        "germany": 0.0777,
+        "france": 0.1357,
+        "spanish_america": 0.1049,
+        "russia": 0.0741,
+        "india": 0.0898,
+        "spain_portugal": 0.1454,
+        "italy": 0.1151
+       },
+       "english_groups_at_or_above_local": 3,
+       "excess": 0.0109,
+       "first_among_english_groups": false
+      },
+      "book_of_mormon": {
+       "local_share": 0.2133,
+       "english_groups": {
+        "pennsylvania": 0.1842,
+        "england": 0.1625,
+        "southern_states": 0.1874,
+        "ireland": 0.1637,
+        "scotland": 0.1577,
+        "virginia": 0.1272,
+        "new_england": 0.193,
+        "ohio": 0.1702
+       },
+       "other_spelling_groups": {
+        "near_east": 0.2037,
+        "africa": 0.1789,
+        "germany": 0.0642,
+        "france": 0.1793,
+        "spanish_america": 0.1133,
+        "russia": 0.1156,
+        "india": 0.1368,
+        "spain_portugal": 0.1758,
+        "italy": 0.2026
+       },
+       "english_groups_at_or_above_local": 0,
+       "excess": 0.0464,
+       "first_among_english_groups": true
+      },
+      "book_of_mormon_without_quoted_chapters": {
+       "local_share": 0.2133,
+       "english_groups": {
+        "pennsylvania": 0.1842,
+        "england": 0.1625,
+        "southern_states": 0.1874,
+        "ireland": 0.1637,
+        "scotland": 0.1577,
+        "virginia": 0.1272,
+        "new_england": 0.193,
+        "ohio": 0.1702
+       },
+       "other_spelling_groups": {
+        "near_east": 0.2037,
+        "africa": 0.1789,
+        "germany": 0.0642,
+        "france": 0.1793,
+        "spanish_america": 0.1133,
+        "russia": 0.1156,
+        "india": 0.1368,
+        "spain_portugal": 0.1758,
+        "italy": 0.2026
+       },
+       "english_groups_at_or_above_local": 0,
+       "excess": 0.0464,
+       "first_among_english_groups": true
+      },
+      "ngram_kjv_drawn": {
+       "draws": 20,
+       "mean_local_share": 0.1483,
+       "first_among_english_groups": 4,
+       "mean_excess": 0.0229,
+       "draws_with_excess_below_the_books": 16
+      },
+      "kjv_places_drawn": {
+       "draws": 20,
+       "mean_local_share": 0.1683,
+       "first_among_english_groups": 4,
+       "mean_excess": 0.0208,
+       "draws_with_excess_below_the_books": 15
+      }
+     }
+    },
+    "morse_1821": {
+     "entries": 22164,
+     "group_sizes": {
+      "near_east": 873,
+      "france": 2076,
+      "pennsylvania": 602,
+      "spanish_america": 352,
+      "africa": 402,
+      "spain_portugal": 712,
+      "russia": 697,
+      "southern_states": 762,
+      "ireland": 362,
+      "scotland": 406,
+      "germany": 2061,
+      "italy": 810,
+      "virginia": 350,
+      "new_england": 1168,
+      "england": 1221,
+      "ohio": 806,
+      "india": 1101,
+      "new_york": 702
+     },
+     "known_answer_planted": {
+      "draws": 20,
+      "new_york_first": 20,
+      "passed": true
+     },
+     "sets": {
+      "spalding": {
+       "local_share": 0.2029,
+       "english_groups": {
+        "pennsylvania": 0.175,
+        "southern_states": 0.195,
+        "scotland": 0.1869,
+        "new_england": 0.2448,
+        "england": 0.1748,
+        "ohio": 0.2183
+       },
+       "other_spelling_groups": {
+        "near_east": 0.2681,
+        "france": 0.2279,
+        "africa": 0.475,
+        "spain_portugal": 0.2729,
+        "russia": 0.1414,
+        "germany": 0.151,
+        "italy": 0.2121,
+        "india": 0.186
+       },
+       "english_groups_at_or_above_local": 2,
+       "excess": 0.0119,
+       "first_among_english_groups": false
+      },
+      "swift": {
+       "local_share": 0.0789,
+       "english_groups": {
+        "pennsylvania": 0.0516,
+        "southern_states": 0.0305,
+        "scotland": 0.027,
+        "new_england": 0.0457,
+        "england": 0.1011,
+        "ohio": 0.0338
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0735,
+        "france": 0.0862,
+        "africa": 0.1351,
+        "spain_portugal": 0.0403,
+        "russia": 0.0495,
+        "germany": 0.0673,
+        "italy": 0.0819,
+        "india": 0.0349
+       },
+       "english_groups_at_or_above_local": 1,
+       "excess": 0.0392,
+       "first_among_english_groups": false
+      },
+      "ossian": {
+       "local_share": 0.1447,
+       "english_groups": {
+        "pennsylvania": 0.0999,
+        "southern_states": 0.1305,
+        "scotland": 0.2355,
+        "new_england": 0.1223,
+        "england": 0.1432,
+        "ohio": 0.1059
+       },
+       "other_spelling_groups": {
+        "near_east": 0.2465,
+        "france": 0.1651,
+        "africa": 0.2743,
+        "spain_portugal": 0.2308,
+        "russia": 0.1554,
+        "germany": 0.1281,
+        "italy": 0.2025,
+        "india": 0.2157
+       },
+       "english_groups_at_or_above_local": 1,
+       "excess": 0.0183,
+       "first_among_english_groups": false
+      },
+      "spenser": {
+       "local_share": 0.1115,
+       "english_groups": {
+        "pennsylvania": 0.1006,
+        "southern_states": 0.0855,
+        "scotland": 0.1377,
+        "new_england": 0.082,
+        "england": 0.1009,
+        "ohio": 0.0766
+       },
+       "other_spelling_groups": {
+        "near_east": 0.1262,
+        "france": 0.1426,
+        "africa": 0.1067,
+        "spain_portugal": 0.1389,
+        "russia": 0.0803,
+        "germany": 0.0788,
+        "italy": 0.1372,
+        "india": 0.0829
+       },
+       "english_groups_at_or_above_local": 1,
+       "excess": 0.0185,
+       "first_among_english_groups": false
+      },
+      "book_of_mormon": {
+       "local_share": 0.1793,
+       "english_groups": {
+        "pennsylvania": 0.1593,
+        "southern_states": 0.1547,
+        "scotland": 0.0863,
+        "new_england": 0.1549,
+        "england": 0.1574,
+        "ohio": 0.156
+       },
+       "other_spelling_groups": {
+        "near_east": 0.1921,
+        "france": 0.2146,
+        "africa": 0.2102,
+        "spain_portugal": 0.1761,
+        "russia": 0.1012,
+        "germany": 0.1149,
+        "italy": 0.226,
+        "india": 0.1465
+       },
+       "english_groups_at_or_above_local": 0,
+       "excess": 0.0238,
+       "first_among_english_groups": true
+      },
+      "book_of_mormon_without_quoted_chapters": {
+       "local_share": 0.1793,
+       "english_groups": {
+        "pennsylvania": 0.1593,
+        "southern_states": 0.1547,
+        "scotland": 0.0863,
+        "new_england": 0.1549,
+        "england": 0.1574,
+        "ohio": 0.156
+       },
+       "other_spelling_groups": {
+        "near_east": 0.1921,
+        "france": 0.2146,
+        "africa": 0.2102,
+        "spain_portugal": 0.1761,
+        "russia": 0.1012,
+        "germany": 0.1149,
+        "italy": 0.226,
+        "india": 0.1465
+       },
+       "english_groups_at_or_above_local": 0,
+       "excess": 0.0238,
+       "first_among_english_groups": true
+      },
+      "ngram_kjv_drawn": {
+       "draws": 20,
+       "mean_local_share": 0.1195,
+       "first_among_english_groups": 5,
+       "mean_excess": 0.0087,
+       "draws_with_excess_below_the_books": 13
+      },
+      "kjv_places_drawn": {
+       "draws": 20,
+       "mean_local_share": 0.1569,
+       "first_among_english_groups": 3,
+       "mean_excess": 0.0241,
+       "draws_with_excess_below_the_books": 11
+      }
+     }
+    },
+    "morse_1823": {
+     "entries": 21689,
+     "group_sizes": {
+      "near_east": 661,
+      "pennsylvania": 806,
+      "france": 2060,
+      "spanish_america": 327,
+      "russia": 653,
+      "germany": 2043,
+      "southern_states": 864,
+      "ohio": 981,
+      "scotland": 384,
+      "spain_portugal": 674,
+      "virginia": 381,
+      "new_england": 1132,
+      "england": 1172,
+      "italy": 738,
+      "india": 1029,
+      "ireland": 346,
+      "new_york": 798,
+      "africa": 346
+     },
+     "known_answer_planted": {
+      "draws": 20,
+      "new_york_first": 20,
+      "passed": true
+     },
+     "sets": {
+      "spalding": {
+       "local_share": 0.2324,
+       "english_groups": {
+        "pennsylvania": 0.1386,
+        "southern_states": 0.2376,
+        "ohio": 0.1948,
+        "new_england": 0.2864,
+        "england": 0.1898
+       },
+       "other_spelling_groups": {
+        "near_east": 0.319,
+        "france": 0.22,
+        "russia": 0.126,
+        "germany": 0.1445,
+        "spain_portugal": 0.2293,
+        "italy": 0.2521,
+        "india": 0.2181
+       },
+       "english_groups_at_or_above_local": 2,
+       "excess": 0.0376,
+       "first_among_english_groups": false
+      },
+      "swift": {
+       "local_share": 0.0843,
+       "english_groups": {
+        "pennsylvania": 0.0405,
+        "southern_states": 0.0365,
+        "ohio": 0.0305,
+        "new_england": 0.0827,
+        "england": 0.0814
+       },
+       "other_spelling_groups": {
+        "near_east": 0.0651,
+        "france": 0.0749,
+        "russia": 0.0319,
+        "germany": 0.0673,
+        "spain_portugal": 0.06,
+        "italy": 0.0797,
+        "india": 0.0408
+       },
+       "english_groups_at_or_above_local": 0,
+       "excess": 0.0438,
+       "first_among_english_groups": true
+      },
+      "ossian": {
+       "local_share": 0.1503,
+       "english_groups": {
+        "pennsylvania": 0.1145,
+        "southern_states": 0.1083,
+        "ohio": 0.1287,
+        "new_england": 0.148,
+        "england": 0.1079
+       },
+       "other_spelling_groups": {
+        "near_east": 0.2156,
+        "france": 0.1394,
+        "russia": 0.1494,
+        "germany": 0.1337,
+        "spain_portugal": 0.2079,
+        "italy": 0.2453,
+        "india": 0.1839
+       },
+       "english_groups_at_or_above_local": 0,
+       "excess": 0.0358,
+       "first_among_english_groups": true
+      },
+      "spenser": {
+       "local_share": 0.1086,
+       "english_groups": {
+        "pennsylvania": 0.1148,
+        "southern_states": 0.1042,
+        "ohio": 0.0683,
+        "new_england": 0.0838,
+        "england": 0.1024
+       },
+       "other_spelling_groups": {
+        "near_east": 0.1517,
+        "france": 0.1404,
+        "russia": 0.0843,
+        "germany": 0.0785,
+        "spain_portugal": 0.1216,
+        "italy": 0.1355,
+        "india": 0.0864
+       },
+       "english_groups_at_or_above_local": 1,
+       "excess": 0.0062,
+       "first_among_english_groups": false
+      },
+      "book_of_mormon": {
+       "local_share": 0.1809,
+       "english_groups": {
+        "pennsylvania": 0.1677,
+        "southern_states": 0.1553,
+        "ohio": 0.1689,
+        "new_england": 0.1421,
+        "england": 0.1975
+       },
+       "other_spelling_groups": {
+        "near_east": 0.2214,
+        "france": 0.1805,
+        "russia": 0.1428,
+        "germany": 0.1091,
+        "spain_portugal": 0.2067,
+        "italy": 0.2344,
+        "india": 0.1751
+       },
+       "english_groups_at_or_above_local": 1,
+       "excess": 0.0132,
+       "first_among_english_groups": false
+      },
+      "book_of_mormon_without_quoted_chapters": {
+       "local_share": 0.1809,
+       "english_groups": {
+        "pennsylvania": 0.1677,
+        "southern_states": 0.1553,
+        "ohio": 0.1689,
+        "new_england": 0.1421,
+        "england": 0.1975
+       },
+       "other_spelling_groups": {
+        "near_east": 0.2214,
+        "france": 0.1805,
+        "russia": 0.1428,
+        "germany": 0.1091,
+        "spain_portugal": 0.2067,
+        "italy": 0.2344,
+        "india": 0.1751
+       },
+       "english_groups_at_or_above_local": 1,
+       "excess": 0.0132,
+       "first_among_english_groups": false
+      },
+      "ngram_kjv_drawn": {
+       "draws": 20,
+       "mean_local_share": 0.1375,
+       "first_among_english_groups": 8,
+       "mean_excess": 0.0288,
+       "draws_with_excess_below_the_books": 6
+      },
+      "kjv_places_drawn": {
+       "draws": 20,
+       "mean_local_share": 0.1618,
+       "first_among_english_groups": 10,
+       "mean_excess": 0.0342,
+       "draws_with_excess_below_the_books": 8
+      }
+     }
+    }
+   },
+   "holley_pairs": {
+    "source": "FAIR, Book of Mormon place names from North America; read through an AI summary of the page on 2026-11-20, not checked by a person",
+    "pairs": [
+     {
+      "modern": "Tecumseh",
+      "book_of_mormon": "Teancum",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1912)"
+     },
+     {
+      "modern": "Rama",
+      "book_of_mormon": "Ramah",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "yes (1820)"
+     },
+     {
+      "modern": "Morin",
+      "book_of_mormon": "Moron",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1852)"
+     },
+     {
+      "modern": "Sainte-Agathe-des-Monts",
+      "book_of_mormon": "Ogath",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "not stated"
+     },
+     {
+      "modern": "Moraviantown",
+      "book_of_mormon": "Morianton",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "yes (about 1782)"
+     },
+     {
+      "modern": "Angola",
+      "book_of_mormon": "Angola",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (about 1854)"
+     },
+     {
+      "modern": "Oneida",
+      "book_of_mormon": "Onidah",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1798",
+       "morse_1821",
+       "morse_1823",
+       "spafford_1813",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [
+       "morse_1798",
+       "morse_1821",
+       "morse_1823",
+       "spafford_1813",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "fair_before_1830": "yes"
+     },
+     {
+      "modern": "Kiskiminetas",
+      "book_of_mormon": "Kishkumen",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "township no (1832); river name yes (1776)"
+     },
+     {
+      "modern": "Jacobsburg",
+      "book_of_mormon": "Jacobugath",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "yes (laid out 1815)"
+     },
+     {
+      "modern": "Jerusalem",
+      "book_of_mormon": "Jerusalem",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1798",
+       "morse_1821",
+       "morse_1823",
+       "spafford_1813",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [
+       "morse_1798",
+       "morse_1821",
+       "morse_1823",
+       "spafford_1813",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "fair_before_1830": "no (Ohio); New York town 1789"
+     },
+     {
+      "modern": "Alma",
+      "book_of_mormon": "Alma",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no"
+     },
+     {
+      "modern": "Lehigh",
+      "book_of_mormon": "Lehi",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [
+       "spafford_1824"
+      ],
+      "fair_before_1830": "yes"
+     },
+     {
+      "modern": "Ripple Lake",
+      "book_of_mormon": "Ripliancum",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "not established"
+     },
+     {
+      "modern": "Shiloh",
+      "book_of_mormon": "Shilom",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no"
+     },
+     {
+      "modern": "Antrim",
+      "book_of_mormon": "Antum",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "yes (1741)"
+     },
+     {
+      "modern": "Antioch",
+      "book_of_mormon": "Ani-Anti",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1837, 1880)"
+     },
+     {
+      "modern": "Boaz",
+      "book_of_mormon": "Boaz",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1878)"
+     },
+     {
+      "modern": "Connor",
+      "book_of_mormon": "Comnor",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1865)"
+     },
+     {
+      "modern": "Saint-Ephrem",
+      "book_of_mormon": "Ephraim",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1866)"
+     },
+     {
+      "modern": "Hellam",
+      "book_of_mormon": "Helam",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "yes (1739)"
+     },
+     {
+      "modern": "Jordan",
+      "book_of_mormon": "Jordan",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [
+       "worcester_1823"
+      ],
+      "fair_before_1830": "yes (before 1819)"
+     },
+     {
+      "modern": "Mantua",
+      "book_of_mormon": "Manti",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1898)"
+     },
+     {
+      "modern": "Monroe",
+      "book_of_mormon": "Moroni",
+      "passes_rule": false,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1821",
+       "morse_1823",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [
+       "morse_1823",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "fair_before_1830": "named 1808; absent from 1822 and 1831 maps"
+     },
+     {
+      "modern": "Minoa",
+      "book_of_mormon": "Minon",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no (1895)"
+     },
+     {
+      "modern": "Oneida Castle",
+      "book_of_mormon": "Onidah",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "morse_1798",
+       "morse_1821",
+       "morse_1823",
+       "spafford_1813",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [
+       "morse_1798",
+       "morse_1821",
+       "morse_1823",
+       "spafford_1813",
+       "spafford_1824",
+       "worcester_1823"
+      ],
+      "fair_before_1830": "yes"
+     },
+     {
+      "modern": "Noah Lakes",
+      "book_of_mormon": "Noah",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "no"
+     },
+     {
+      "modern": "Omer",
+      "book_of_mormon": "Omner",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [
+       "worcester_1823"
+      ],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "none found"
+     },
+     {
+      "modern": "Sodom",
+      "book_of_mormon": "Sidom",
+      "passes_rule": true,
+      "book_name_is_biblical": false,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "not applicable"
+     },
+     {
+      "modern": "Midian",
+      "book_of_mormon": "Midian",
+      "passes_rule": true,
+      "book_name_is_biblical": true,
+      "modern_name_found_in_period_gazetteers": [],
+      "modern_name_among_new_york_headwords": [],
+      "fair_before_1830": "none found"
+     }
+    ],
+    "passing_rule": 24,
+    "found_in_period_gazetteers": 15,
+    "among_new_york_headwords": 6,
+    "passing_rule_and_found_and_not_biblical": 10
+   }
+  }
+ },
+ "config_sha256": "ec11a412743c0eb3954e91a5b2e47c37a52015664fcaece6807bf1c9b0dc6465",
+ "commit": "b74ceb58f4a09610553c1a7b3fb6f5e4f0440a27"
+}
