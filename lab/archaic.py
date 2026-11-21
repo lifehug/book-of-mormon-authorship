@@ -524,7 +524,11 @@ def score(cfg: dict) -> dict:
         "known_answer": check_result(cfg),
         "settings": {k: v for k, v in a.items() if k != "items"},
         "judging": "simulated judging by an AI "
-        "model (lab.judge, model " + cfg["lab"]["judge"]["model"] + ")",
+        "model (lab.judge; first check "
+        + cfg["lab"]["judge"]["model"]
+        + ", second check "
+        + a["second_model"]
+        + ")",
     }
     res["items"] = {
         n: {
@@ -602,6 +606,15 @@ def score(cfg: dict) -> dict:
             "the known-answer check missed its bar; no library or control passage was judged. "
             "Raw hit counts (no model) are reported."
         )
+        s2 = res["known_answer_second_attempt"]
+        if s2 and s2["passed"]:
+            res["stopped"] = (
+                "the first check missed its bar; a second attempt (made after seeing the first: "
+                "whole paragraphs, model " + cfg["lab"]["archaic"]["second_model"] + ", no "
+                "quotation question) passed. Library and control judging was not run, by "
+                "instruction, pending a redesign with more power. Raw hit counts (no model) "
+                "are reported."
+            )
     calls = (
         len(jobs)
         + res["known_answer"]["cited"]["questions"]

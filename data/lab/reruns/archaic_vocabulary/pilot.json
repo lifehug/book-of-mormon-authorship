@@ -1,4 +1,101 @@
 {
+ "known_answer_second_attempt": {
+  "cited": {
+   "questions": 10,
+   "answered": 10,
+   "parsed": 10,
+   "B": 2,
+   "A": 8,
+   "verdicts": {
+    "cited:break": "B",
+    "cited:mar": "B",
+    "cited:belove": "A",
+    "cited:counsel": "A",
+    "cited:desirous": "A",
+    "cited:about_to": "A",
+    "cited:arrive_to": "A",
+    "cited:be_aware": "A",
+    "cited:begin_to": "A",
+    "cited:belief_on": "A"
+   }
+  },
+  "early": {
+   "questions": 25,
+   "answered": 25,
+   "parsed": 25,
+   "B": 16,
+   "A": 9,
+   "verdicts": {
+    "early:break:tcp:A27082": "B",
+    "early:break:tcp:A35632": "B",
+    "early:break:tcp:A15874": "B",
+    "early:mar:tcp:A79464": "B",
+    "early:mar:tcp:A15109": "B",
+    "early:mar:tcp:A21975": "B",
+    "early:belove:tcp:A93404": "B",
+    "early:counsel:tcp:A49593": "B",
+    "early:counsel:tcp:A15109": "B",
+    "early:counsel:tcp:A02121": "B",
+    "early:desirous:tcp:A21975": "B",
+    "early:desirous:tcp:A54864": "B",
+    "early:desirous:tcp:A06472": "B",
+    "early:about_to:tcp:A02536": "A",
+    "early:about_to:tcp:A80235": "B",
+    "early:about_to:tcp:A48821": "A",
+    "early:arrive_to:tcp:A94173": "A",
+    "early:arrive_to:tcp:A12225": "A",
+    "early:arrive_to:tcp:A31329": "A",
+    "early:be_aware:tcp:A12225": "B",
+    "early:be_aware:tcp:A11927": "A",
+    "early:be_aware:tcp:A08936": "A",
+    "early:begin_to:tcp:A27153": "A",
+    "early:begin_to:tcp:A79828": "A",
+    "early:begin_to:tcp:A32862": "B"
+   }
+  },
+  "ordinary": {
+   "questions": 30,
+   "answered": 30,
+   "parsed": 30,
+   "B": 30,
+   "verdicts": {
+    "ordinary:break:hathitrust:loc.ark:/13960/t5t731x72": "B",
+    "ordinary:break:internet_archive:P000174": "B",
+    "ordinary:break:internet_archive:sim_cobbetts-political-register_1816-01-06_30_1": "B",
+    "ordinary:mar:institutional_books:HXJHXP": "B",
+    "ordinary:mar:internet_archive:maidgreekislely00islegoog": "B",
+    "ordinary:mar:institutional_books:HXJICK": "B",
+    "ordinary:belove:hathitrust:mdp.39015080309142": "B",
+    "ordinary:belove:internet_archive:gri_33125012272205": "B",
+    "ordinary:belove:internet_archive:sim_niles-national-register_1815-09-02_9_209": "B",
+    "ordinary:counsel:institutional_books:HN4ZNP": "B",
+    "ordinary:counsel:internet_archive:angelsformanddev01dave": "B",
+    "ordinary:counsel:internet_archive:historycornwall01polwgoog": "B",
+    "ordinary:desirous:internet_archive:sim_repository-and-ladies-weekly-museum_1801-05-02_1_25": "B",
+    "ordinary:desirous:institutional_books:32044038757795": "B",
+    "ordinary:desirous:internet_archive:b22019364": "B",
+    "ordinary:about_to:internet_archive:philosophicaltra119royauoft": "B",
+    "ordinary:about_to:internet_archive:sim_baptist-missionary-magazine_1821-01_3_1": "B",
+    "ordinary:about_to:institutional_books:HXGFA9": "B",
+    "ordinary:arrive_to:internet_archive:gri_33125012249963": "B",
+    "ordinary:arrive_to:internet_archive:omen00galt": "B",
+    "ordinary:arrive_to:internet_archive:P000174": "B",
+    "ordinary:be_aware:institutional_books:HWHFX2": "B",
+    "ordinary:be_aware:institutional_books:HXJ93Z": "B",
+    "ordinary:be_aware:hathitrust:miua.0534625.0040.001": "B",
+    "ordinary:begin_to:internet_archive:memorialdaysren00bretgoog": "B",
+    "ordinary:begin_to:internet_archive:sim_weekly-entertainer-and-west-of-england-miscellany_1808-02-08_48": "B",
+    "ordinary:begin_to:internet_archive:pomonasfrolicorg00mineiala": "B",
+    "ordinary:belief_on:internet_archive:sim_farmers-magazine_1810-03_11_41": "B",
+    "ordinary:belief_on:institutional_books:32044054766795": "B",
+    "ordinary:belief_on:internet_archive:sim_great-britain-parliament-parliamentary-debates_april-13-june-10-1818_38": "B"
+   }
+  },
+  "cited_bar": 8,
+  "ordinary_a_max": 0.2,
+  "complete": true,
+  "passed": true
+ },
  "known_answer": {
   "cited": {
    "questions": 10,
@@ -104,6 +201,8 @@
   "seed": 20261120,
   "passages": 5,
   "window_words": 60,
+  "second_window_words": 200,
+  "second_model": "sonnet",
   "early_year_max": 1699,
   "early_sample": 400,
   "early_per_item": 3,
@@ -117,9 +216,23 @@
   "max_calls": 600,
   "calls_per_night": 2700,
   "full_items": 64,
-  "controls": "data/controls/pseudo_biblical_primary.jsonl"
+  "controls": "data/controls/pseudo_biblical_primary.jsonl",
+  "frames": {
+   "break": "\\b(?:could|can|cannot|might|may|shall|should|would|will|not)\\s+break\\s+(?:them|him|her|us|me|thee|you)\\b(?!\\s+(?:in|to|into|asunder|down|up|off|of|with)\\b)",
+   "mar": "\\b(?:could|can|cannot|might|may|shall|should|would|will|not)\\s+mar\\s+(?:them|him|her|us|me|thee|you)\\b",
+   "belove": "\\b(?:had|have|has|having|did|they|we|ye|he|she|i|who|whom)\\s+(?:so\\s+)?(?:dearly\\s+)?beloved\\b|\\bbeloved\\s+(?:him|her|them|us|me|thee)\\b",
+   "counsel": "\\bcounsel(?:s|l?ed|l?ing)?\\s+(?:the\\s+lord|god|the\\s+almighty|heaven)\\b",
+   "desirous": "\\b(?:it|which|this|that)\\s+(?:was|is|were|are|be|been)\\s+(?:very\\s+|most\\s+|more\\s+|so\\s+|exceedingly\\s+)?desirous\\b(?!\\s+(?:of|to|that|for)\\b)",
+   "about_to": null,
+   "arrive_to": "\\barriv(?:e|es|ed|ing)\\s+to\\s+the\\s+(?:land|city|place|town|country|camp|village|port|island|coast|house|borders?|river|sea|shore)\\b",
+   "be_aware": "\\bbe\\s+aware\\s*,?\\s+lest\\b",
+   "begin_to": "\\b(?:begin|begins|began|begun|beginning)\\s+to\\s+(?:the|a|an|this|that|his|their|our|my|its)\\b",
+   "belief_on": "\\bbelief\\s+on\\b"
+  },
+  "frame_cap": 60,
+  "frame_rare_share": 0.05
  },
- "judging": "simulated judging by an AI model (lab.judge, model haiku)",
+ "judging": "simulated judging by an AI model (lab.judge; first check haiku, second check sonnet)",
  "items": {
   "break": {
    "index": 0,
@@ -1690,14 +1803,694 @@
    "first_look": "not judged: the known-answer check missed its bar"
   }
  },
- "stopped": "the known-answer check missed its bar; no library or control passage was judged. Raw hit counts (no model) are reported.",
+ "redesign_frame_hits": {
+  "break": {
+   "pattern": "\\b(?:could|can|cannot|might|may|shall|should|would|will|not)\\s+break\\s+(?:them|him|her|us|me|thee|you)\\b(?!\\s+(?:in|to|into|asunder|down|up|off|of|with)\\b)",
+   "cells": {
+    "ctl": {
+     "works": 29,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    },
+    "lib:1740": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 2,
+     "hits": 2,
+     "judged_capped": 2
+    },
+    "lib:1750": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 2,
+     "hits": 2,
+     "judged_capped": 2
+    },
+    "lib:1760": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    },
+    "lib:1770": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1780": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 4,
+     "hits": 4,
+     "judged_capped": 4
+    },
+    "lib:1790": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 6,
+     "hits": 6,
+     "judged_capped": 6
+    },
+    "lib:1800": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 6,
+     "hits": 6,
+     "judged_capped": 6
+    },
+    "lib:1810": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 2,
+     "hits": 2,
+     "judged_capped": 2
+    },
+    "lib:1820": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 3,
+     "hits": 3,
+     "judged_capped": 3
+    }
+   }
+  },
+  "mar": {
+   "pattern": "\\b(?:could|can|cannot|might|may|shall|should|would|will|not)\\s+mar\\s+(?:them|him|her|us|me|thee|you)\\b",
+   "cells": {
+    "ctl": {
+     "works": 29,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1740": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1750": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1760": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1770": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1780": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1790": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1800": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1810": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1820": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    }
+   }
+  },
+  "belove": {
+   "pattern": "\\b(?:had|have|has|having|did|they|we|ye|he|she|i|who|whom)\\s+(?:so\\s+)?(?:dearly\\s+)?beloved\\b|\\bbeloved\\s+(?:him|her|them|us|me|thee)\\b",
+   "cells": {
+    "ctl": {
+     "works": 29,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1740": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 4,
+     "hits": 4,
+     "judged_capped": 4
+    },
+    "lib:1750": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 2,
+     "hits": 2,
+     "judged_capped": 2
+    },
+    "lib:1760": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    },
+    "lib:1770": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    },
+    "lib:1780": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    },
+    "lib:1790": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    },
+    "lib:1800": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 3,
+     "hits": 3,
+     "judged_capped": 3
+    },
+    "lib:1810": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1820": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    }
+   }
+  },
+  "counsel": {
+   "pattern": "\\bcounsel(?:s|l?ed|l?ing)?\\s+(?:the\\s+lord|god|the\\s+almighty|heaven)\\b",
+   "cells": {
+    "ctl": {
+     "works": 29,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1740": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1750": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1760": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1770": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1780": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1790": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    },
+    "lib:1800": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1810": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1820": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    }
+   }
+  },
+  "desirous": {
+   "pattern": "\\b(?:it|which|this|that)\\s+(?:was|is|were|are|be|been)\\s+(?:very\\s+|most\\s+|more\\s+|so\\s+|exceedingly\\s+)?desirous\\b(?!\\s+(?:of|to|that|for)\\b)",
+   "cells": {
+    "ctl": {
+     "works": 29,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1740": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    },
+    "lib:1750": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1760": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    },
+    "lib:1770": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1780": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    },
+    "lib:1790": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1800": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1810": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1820": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    }
+   }
+  },
+  "about_to": {
+   "pattern": null
+  },
+  "arrive_to": {
+   "pattern": "\\barriv(?:e|es|ed|ing)\\s+to\\s+the\\s+(?:land|city|place|town|country|camp|village|port|island|coast|house|borders?|river|sea|shore)\\b",
+   "cells": {
+    "ctl": {
+     "works": 29,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1740": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1750": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1760": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    },
+    "lib:1770": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1780": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1790": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1800": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1810": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1820": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    }
+   }
+  },
+  "be_aware": {
+   "pattern": "\\bbe\\s+aware\\s*,?\\s+lest\\b",
+   "cells": {
+    "ctl": {
+     "works": 29,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1740": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1750": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1760": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1770": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1780": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1790": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1800": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1810": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1820": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    }
+   }
+  },
+  "begin_to": {
+   "pattern": "\\b(?:begin|begins|began|begun|beginning)\\s+to\\s+(?:the|a|an|this|that|his|their|our|my|its)\\b",
+   "cells": {
+    "ctl": {
+     "works": 29,
+     "unreadable": 0,
+     "works_with_hit": 6,
+     "hits": 11,
+     "judged_capped": 11
+    },
+    "lib:1740": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 21,
+     "hits": 22,
+     "judged_capped": 22
+    },
+    "lib:1750": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 11,
+     "hits": 13,
+     "judged_capped": 13
+    },
+    "lib:1760": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 7,
+     "hits": 7,
+     "judged_capped": 7
+    },
+    "lib:1770": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 15,
+     "hits": 16,
+     "judged_capped": 16
+    },
+    "lib:1780": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 24,
+     "hits": 34,
+     "judged_capped": 34
+    },
+    "lib:1790": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 19,
+     "hits": 28,
+     "judged_capped": 28
+    },
+    "lib:1800": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 19,
+     "hits": 28,
+     "judged_capped": 28
+    },
+    "lib:1810": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 26,
+     "hits": 33,
+     "judged_capped": 33
+    },
+    "lib:1820": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 26,
+     "hits": 36,
+     "judged_capped": 36
+    }
+   }
+  },
+  "belief_on": {
+   "pattern": "\\bbelief\\s+on\\b",
+   "cells": {
+    "ctl": {
+     "works": 29,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1740": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 3,
+     "hits": 3,
+     "judged_capped": 3
+    },
+    "lib:1750": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 3,
+     "hits": 3,
+     "judged_capped": 3
+    },
+    "lib:1760": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 2,
+     "hits": 2,
+     "judged_capped": 2
+    },
+    "lib:1770": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 1,
+     "hits": 1,
+     "judged_capped": 1
+    },
+    "lib:1780": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 2,
+     "hits": 2,
+     "judged_capped": 2
+    },
+    "lib:1790": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 0,
+     "hits": 0,
+     "judged_capped": 0
+    },
+    "lib:1800": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 2,
+     "hits": 2,
+     "judged_capped": 2
+    },
+    "lib:1810": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 4,
+     "hits": 4,
+     "judged_capped": 4
+    },
+    "lib:1820": {
+     "works": 300,
+     "unreadable": 0,
+     "works_with_hit": 2,
+     "hits": 2,
+     "judged_capped": 2
+    }
+   }
+  }
+ },
+ "stopped": "the first check missed its bar; a second attempt (made after seeing the first: whole paragraphs, model sonnet, no quotation question) passed. Library and control judging was not run, by instruction, pending a redesign with more power. Raw hit counts (no model) are reported.",
  "cost": {
-  "pilot_calls": 65,
+  "pilot_calls": 130,
   "full_items": 64,
   "full_calls_per_item_at_most": 57,
   "full_calls_at_most": 3648,
   "nights_at_calls_per_night": 1.35
  },
- "config_sha256": "bfd0fc68cbf1f9547e4fdf80dc8318adf84ca8e4f476096329679b96c27f1cb0",
- "commit": "79c6752f84df0830efd2f1545784b399bb59663b"
+ "config_sha256": "1818c47a7ee3cc19fae9bcd28dd6e1d0c39f1df3f07784fc4ee698bb32c3be75",
+ "commit": "eb88cf68411002aa9fb2321757bc89ab6ac3a366"
 }
