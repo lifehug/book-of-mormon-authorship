@@ -1154,6 +1154,10 @@ lab:                              # the research lab (exploratory tooling; reads
     handcheck: 5                   # chunks per writer and voice read by hand
     archaic_words: [thou, thee, thy, thine, ye, hath, hast, doth, dost, art, shalt, wilt, canst, didst, hadst, saith, unto]
     seed: 20261120
+  two_voices_enc:                  # BOM-105 follow-up (lab; exploratory): the two_voices set by the study's two style encoders; every other setting is lab.two_voices's
+    encoders:                      # nothing retrained; loaded with style_embed.train.load_encoder (base backbone)
+      bom30: data/corpus/style_embed/runs/style/style.pt      # BOM-30's encoder
+      v2: data/corpus/style_embed/runs/style_v2/style.pt      # the second encoder (library search, BOM-89/95)
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

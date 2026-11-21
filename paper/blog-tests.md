@@ -90,7 +90,7 @@ compares against.
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
 | BOM-104 | The Books of Moses and Abraham share the voice; Rigdon wrote the *Lectures on Faith* | Phipps 1977; Reynolds 2005 | small samples | the study's models and encoders | TBD |
-| BOM-105, BOM-99 | Smith's revelations and his letters look like two different writers | Holmes 1992; the first study | Smith alone | other writers with two voices (Southcott, Wroe, Trapnel, Snowden, Elias Smith) | **Done** with function words; models TBD |
+| BOM-105, BOM-99 | Smith's revelations and his letters look like two different writers | Holmes 1992; the first study | Smith alone | other writers with two voices (Southcott, Wroe, Trapnel, Snowden, Elias Smith) | **Done** with function words and both style encoders; author models TBD |
 | BOM-100, BOM-101 | A model can be taught to see the person and not the scripture voice | this project | | the known-answer set from BOM-99 | TBD |
 
 ### 5. Whose world is it?
@@ -494,9 +494,33 @@ time. A seventh writer, Edward Burrough, was dropped before any cross-voice numb
 none of his passages matched him, and his "ordinary" sample turned out to include a report he may
 not have written alone.
 
-*What it does not show.* This uses common words only. The first study's finding came from language
-models and a style encoder, and those have not been run on this set yet. Four of the six writers
-are read from uncorrected scans. Six is a small group. I labelled the voices myself.
+**Then the same six writers with the first study's own tools.** Common words are a blunt
+instrument, and the first study's finding came from its style encoders. So I ran both encoders on
+the same set.
+
+| | Common words | First encoder | Second encoder |
+| --- | --- | --- | --- |
+| Joseph Smith's gap between voices | 0.92 | 0.58 | 0.64 |
+| The other five writers | 0.86 to 1.22 | 0.37 to 0.75 | 0.31 to 0.82 |
+| His rank of six (1 = largest gap) | 5th | 4th | 3rd |
+| Other writers found across their two voices | 3 of 5 | 5 of 5 | 5 of 5 |
+
+Same answer. His gap sits in the middle of the group under both encoders.
+
+The encoders also do something the common words could not. Every gap is under 1.0, which means
+each writer's two voices are closer to each other than two different writers are. And all five of
+the other writers were found across their voices. So the encoders do keep hold of the person when
+the voice changes. They find Joseph Smith across his too: most of his revelations are matched to
+his letters, and most of his letters to his revelations.
+
+One detail goes the other way. His revelations are slightly closer to John Wroe's prophecies than
+to his own letters (0.75 against 0.73). Scripture voice still pulls scripture voice together.
+
+*What it does not show.* Six writers is a small group, so "typical" is a weak word. Four are read
+from uncorrected scans. An AI helper labelled which passages are which voice. Two of the six
+(Southcott, Elias Smith) had text in the encoders' training; leaving them out does not change
+where Joseph Smith falls. The author language models, the other half of the first study's
+finding, have not been run on this set.
 
 ## What I would want a reader to take from the whole set
 
