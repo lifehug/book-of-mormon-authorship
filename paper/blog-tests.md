@@ -99,7 +99,7 @@ compares against.
 | --- | --- | --- | --- | --- | --- |
 | BOM-108 | The names are Hebrew, or Egyptian, or invented | Tvedtnes and others; Wilcox 2013, 2019 | 124 names against census names, Spalding, Tolkien | Hebrew inscriptions, Egyptian, Maya, Nahuatl, treaty signers, period print, four inventing authors | **Done**, with a limit |
 | BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | **Done** |
-| BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | TBD |
+| BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | **Done** |
 | BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | TBD |
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | TBD |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
@@ -584,6 +584,53 @@ not descriptions of earthworks. The native annals were too short to form a group
 
 *What it does not show.* Words in war passages, not how anyone fought. It cannot tell the top
 three traditions apart.
+
+### The inventory of things (BOM-111)
+
+Every book set somewhere mentions the things of that place: its animals, crops, metals, tools,
+buildings, clothes. I made a list of about 2,000 such things, from the Bible's world, from Mexico
+and Central America, from New England, and counted them in each text.
+
+| World | How close the Book of Mormon's inventory is (1.0 = identical) |
+| --- | --- |
+| Bible and Josephus | 0.50 |
+| Ordinary English books of the period | 0.40 |
+| American writing about Indians and antiquities | 0.28 |
+| Mesoamerica (native texts and Spanish chronicles) | 0.17 |
+
+The Bible's world, clearly, on every version of the test. Ten of the book's twelve large sections
+land there and none lands in Mesoamerica.
+
+The plainest number is this one. Count the words for things that existed only in the Americas
+before Columbus: maize, cacao, turkey, jaguar, jade, obsidian, maguey, tobacco, squash.
+
+| Texts | New World things per 10,000 words |
+| --- | --- |
+| Native Mesoamerican texts and Spanish chronicles | 5 to 49 |
+| American writing about Indians | 0.5 to 9.5 |
+| Bible and Josephus | 0 to 0.13 |
+| Book of Mormon | 0 |
+
+**What about a translator's word choices?** A translator might write "sword" for an obsidian-edged
+club or "corn" for maize. I checked what the real translators of Bernal Díaz, Clavigero and the
+native texts did. They mostly kept the native things visible: Old World stand-in words are 2 to
+10% of their uses. Removing every such word from the Book of Mormon (sword, wine, brass and
+seventeen others) changes the picture by one or two hundredths.
+
+**What is missing.** Nineteen things appear in at least three quarters of the Mesoamerican texts
+and nowhere in the Book of Mormon: maize, feathers, flowers, drums, flutes, deer, eagles, maguey
+among them. But 83 things common in the Bible texts are missing too, so the book is not simply
+the Bible's inventory either. And it has five words nobody can classify: cureloms, cumoms, neas,
+sheum and ziff.
+
+*The check on the method.* Held out one at a time, 154 of 173 comparison texts landed in their
+own world. One check failed: a Mesoamerican profile built only from native texts does not
+recognise the Spanish chronicles, so "Mesoamerica" here partly means "how Spaniards and their
+translators wrote about it".
+
+*What it does not show.* A word is not a thing: many of the book's most frequent items are
+figures of speech (seed, flesh, church). The lists were written from memory. Only eight texts
+stand for Mesoamerica. And this says nothing about archaeology. It compares vocabularies.
 
 ## What I would want a reader to take from the whole set
 

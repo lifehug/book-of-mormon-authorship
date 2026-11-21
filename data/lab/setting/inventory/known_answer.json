@@ -1,0 +1,1181 @@
+{
+ "lexicon": {
+  "items": 1980,
+  "per_category": {
+   "animals": 407,
+   "plants_foods": 433,
+   "metals_materials": 200,
+   "tools_weapons": 411,
+   "buildings": 305,
+   "clothing": 224
+  },
+  "forms": 4346,
+  "origin_tagged": {
+   "OW": 245,
+   "NW": 113,
+   "NE": 45
+  },
+  "allowance_items": [
+   "ass",
+   "brass",
+   "bread",
+   "cattle",
+   "cow",
+   "fig",
+   "fine linen",
+   "hen",
+   "hog",
+   "horse",
+   "iron",
+   "linen",
+   "lion",
+   "ox",
+   "peacock",
+   "sheep",
+   "silk",
+   "steel",
+   "swine",
+   "sword",
+   "tiger",
+   "wine",
+   "wolf"
+  ],
+  "counted_apart": [
+   "corn"
+  ],
+  "collisions": [],
+  "removed_before_counting": [
+   "bath",
+   "bay",
+   "brand",
+   "cap",
+   "cape",
+   "capital",
+   "card",
+   "cardinal",
+   "cope",
+   "creature",
+   "crown",
+   "curb",
+   "dam",
+   "daub",
+   "district",
+   "doe",
+   "down",
+   "exchange",
+   "fat",
+   "fell",
+   "fisher",
+   "flag",
+   "fold",
+   "fort",
+   "gin",
+   "grub",
+   "gut",
+   "habit",
+   "jack",
+   "keep",
+   "kid",
+   "lawn",
+   "level",
+   "loft",
+   "mittens",
+   "nest",
+   "ordinary",
+   "perch",
+   "port",
+   "porter",
+   "pump",
+   "quarter",
+   "ray",
+   "rod",
+   "roll",
+   "sage",
+   "settle",
+   "settlement",
+   "settlements",
+   "skate",
+   "smelt",
+   "sole",
+   "standard",
+   "stays",
+   "steer",
+   "stocks",
+   "stole",
+   "tart",
+   "tick",
+   "tissue",
+   "tow",
+   "trace",
+   "traces",
+   "vice",
+   "watch",
+   "wrap"
+  ],
+  "sha256": "ac91838ea229859160fa0ceceef2ca8ef1fb7b1bc600c76c9add12b4d0da0c33"
+ },
+ "not_attempted": [],
+ "known_answer": {
+  "as_is": {
+   "whole_texts": {
+    "confusion": {
+     "near_east": {
+      "near_east": 5,
+      "mesoamerica": 0,
+      "american": 0,
+      "background": 0
+     },
+     "mesoamerica": {
+      "near_east": 0,
+      "mesoamerica": 8,
+      "american": 0,
+      "background": 0
+     },
+     "american": {
+      "near_east": 0,
+      "mesoamerica": 0,
+      "american": 8,
+      "background": 2
+     },
+     "background": {
+      "near_east": 14,
+      "mesoamerica": 1,
+      "american": 2,
+      "background": 133
+     }
+    },
+    "rate": {
+     "near_east": 1.0,
+     "mesoamerica": 1.0,
+     "american": 0.8,
+     "background": 0.8866666666666667
+    },
+    "pooled": 0.8901734104046243,
+    "mean_over_worlds": 0.9216666666666666,
+    "passed": true
+   },
+   "chunks": {
+    "confusion": {
+     "near_east": {
+      "near_east": 53,
+      "mesoamerica": 0,
+      "american": 0,
+      "background": 7
+     },
+     "mesoamerica": {
+      "near_east": 0,
+      "mesoamerica": 35,
+      "american": 1,
+      "background": 20
+     },
+     "american": {
+      "near_east": 6,
+      "mesoamerica": 1,
+      "american": 55,
+      "background": 25
+     },
+     "background": {
+      "near_east": 144,
+      "mesoamerica": 20,
+      "american": 55,
+      "background": 1418
+     }
+    },
+    "rate_pooled": {
+     "near_east": 0.8833333333333333,
+     "mesoamerica": 0.625,
+     "american": 0.632183908045977,
+     "background": 0.8662186927306048
+    },
+    "rate": {
+     "near_east": 0.8833333333333334,
+     "mesoamerica": 0.7291666666666666,
+     "american": 0.6712121212121211,
+     "background": 0.8643217893217893
+    },
+    "mean_over_worlds": 0.7870084776334776,
+    "passed": true
+   },
+   "register": {
+    "chronicle_placed_by_native_profile": {
+     "texts": {
+      "bernal_diaz_keatinge_1800": {
+       "placed": "background",
+       "scores": {
+        "near_east": 0.20896128103234346,
+        "mesoamerica": 0.2855651756732277,
+        "american": 0.3219397210731065,
+        "background": 0.3791979063172401
+       },
+       "chunks_in_mesoamerica": [
+        0,
+        12
+       ]
+      },
+      "solis_conquest_of_mexico_1724": {
+       "placed": "background",
+       "scores": {
+        "near_east": 0.22881573239536945,
+        "mesoamerica": 0.22232667879373122,
+        "american": 0.34192810539448787,
+        "background": 0.36193914740932365
+       },
+       "chunks_in_mesoamerica": [
+        4,
+        12
+       ]
+      },
+      "clavigero_history_of_mexico_1787": {
+       "placed": "background",
+       "scores": {
+        "near_east": 0.2793981962190099,
+        "mesoamerica": 0.42174479664151115,
+        "american": 0.37963894513920304,
+        "background": 0.45104522009922116
+       },
+       "chunks_in_mesoamerica": [
+        5,
+        12
+       ]
+      }
+     },
+     "in_mesoamerica": [
+      0,
+      3
+     ],
+     "passed": false
+    },
+    "native_placed_by_chronicle_profile": {
+     "texts": {
+      "brinton_maya_chronicles_and_rig_veda": {
+       "placed": "mesoamerica",
+       "scores": {
+        "near_east": 0.09549191874129612,
+        "mesoamerica": 0.2524158919184127,
+        "american": 0.12611991208042908,
+        "background": 0.14777377116141457
+       },
+       "chunks_in_mesoamerica": [
+        1,
+        2
+       ]
+      },
+      "brinton_annals_cakchiquels_1885": {
+       "placed": "mesoamerica",
+       "scores": {
+        "near_east": 0.11686232705006878,
+        "mesoamerica": 0.29927479673933327,
+        "american": 0.16741761090931617,
+        "background": 0.1658449147876505
+       },
+       "chunks_in_mesoamerica": [
+        3,
+        3
+       ]
+      },
+      "brinton_nahuatl_poetry_1887": {
+       "placed": "mesoamerica",
+       "scores": {
+        "near_east": 0.07979386427778891,
+        "mesoamerica": 0.15102520643994483,
+        "american": 0.08178578422099782,
+        "background": 0.09295722854300296
+       },
+       "chunks_in_mesoamerica": [
+        1,
+        1
+       ]
+      },
+      "popol_vuh_spence_1908": {
+       "placed": "mesoamerica",
+       "scores": {
+        "near_east": 0.09948980756582763,
+        "mesoamerica": 0.29812024859967645,
+        "american": 0.23130673227244775,
+        "background": 0.20926368383982175
+       },
+       "chunks_in_mesoamerica": [
+        2,
+        2
+       ]
+      },
+      "popol_vuh_christenson": {
+       "placed": "mesoamerica",
+       "scores": {
+        "near_east": 0.10385974328164399,
+        "mesoamerica": 0.2320134159255952,
+        "american": 0.1671661274471129,
+        "background": 0.16098687194117453
+       },
+       "chunks_in_mesoamerica": [
+        10,
+        12
+       ]
+      }
+     },
+     "in_mesoamerica": [
+      5,
+      5
+     ],
+     "passed": true
+    },
+    "passed": false
+   },
+   "per_text": {
+    "kjv_old_testament": {
+     "world": "near_east",
+     "register": "bible",
+     "words": 612571,
+     "placed": "near_east",
+     "scores": {
+      "near_east": 0.6993830807463348,
+      "mesoamerica": 0.1989931759482757,
+      "american": 0.29845125279306856,
+      "background": 0.4517386420502427
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.8333333333333334
+    },
+    "kjv_new_testament": {
+     "world": "near_east",
+     "register": "bible",
+     "words": 180771,
+     "placed": "near_east",
+     "scores": {
+      "near_east": 0.5076550948010712,
+      "mesoamerica": 0.15720033910832593,
+      "american": 0.23203386987977628,
+      "background": 0.3918866698376065
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.75
+    },
+    "kjv_apocrypha": {
+     "world": "near_east",
+     "register": "bible",
+     "words": 140884,
+     "placed": "near_east",
+     "scores": {
+      "near_east": 0.7057479406435387,
+      "mesoamerica": 0.25281908652571683,
+      "american": 0.3247219183369145,
+      "background": 0.4738726953038201
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.9166666666666666
+    },
+    "josephus_antiquities_whiston": {
+     "world": "near_east",
+     "register": "josephus",
+     "words": 544274,
+     "placed": "near_east",
+     "scores": {
+      "near_east": 0.7739210843289499,
+      "mesoamerica": 0.21665042380598304,
+      "american": 0.2949910742061574,
+      "background": 0.43375268958769375
+     },
+     "chunks": 12,
+     "chunk_own_rate": 1.0
+    },
+    "josephus_wars_whiston": {
+     "world": "near_east",
+     "register": "josephus",
+     "words": 234992,
+     "placed": "near_east",
+     "scores": {
+      "near_east": 0.5221248958024148,
+      "mesoamerica": 0.2049078158695585,
+      "american": 0.26407272471607823,
+      "background": 0.3551022510569415
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.9166666666666666
+    },
+    "brinton_maya_chronicles_and_rig_veda": {
+     "world": "mesoamerica",
+     "register": "native",
+     "words": 10522,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.09549191874129612,
+      "mesoamerica": 0.3844525736702427,
+      "american": 0.12611991208042908,
+      "background": 0.14777377116141457
+     },
+     "chunks": 2,
+     "chunk_own_rate": 0.5
+    },
+    "brinton_annals_cakchiquels_1885": {
+     "world": "mesoamerica",
+     "register": "native",
+     "words": 19432,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.11686232705006878,
+      "mesoamerica": 0.3885533780074515,
+      "american": 0.16741761090931617,
+      "background": 0.1658449147876505
+     },
+     "chunks": 3,
+     "chunk_own_rate": 1.0
+    },
+    "brinton_nahuatl_poetry_1887": {
+     "world": "mesoamerica",
+     "register": "native",
+     "words": 9573,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.07979386427778891,
+      "mesoamerica": 0.29565163489951696,
+      "american": 0.08178578422099782,
+      "background": 0.09295722854300296
+     },
+     "chunks": 1,
+     "chunk_own_rate": 1.0
+    },
+    "popol_vuh_spence_1908": {
+     "world": "mesoamerica",
+     "register": "native",
+     "words": 12827,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.09948980756582763,
+      "mesoamerica": 0.3603477339566583,
+      "american": 0.23130673227244775,
+      "background": 0.20926368383982175
+     },
+     "chunks": 2,
+     "chunk_own_rate": 1.0
+    },
+    "popol_vuh_christenson": {
+     "world": "mesoamerica",
+     "register": "native",
+     "words": 109219,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.10385974328164399,
+      "mesoamerica": 0.41162213988741275,
+      "american": 0.1671661274471129,
+      "background": 0.16098687194117453
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.9166666666666666
+    },
+    "bernal_diaz_keatinge_1800": {
+     "world": "mesoamerica",
+     "register": "chronicle",
+     "words": 239048,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.20896128103234346,
+      "mesoamerica": 0.44898566492097536,
+      "american": 0.3219397210731065,
+      "background": 0.3791979063172401
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.3333333333333333
+    },
+    "solis_conquest_of_mexico_1724": {
+     "world": "mesoamerica",
+     "register": "chronicle",
+     "words": 244003,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.22881573239536945,
+      "mesoamerica": 0.3742262975053995,
+      "american": 0.34192810539448787,
+      "background": 0.36193914740932365
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.4166666666666667
+    },
+    "clavigero_history_of_mexico_1787": {
+     "world": "mesoamerica",
+     "register": "chronicle",
+     "words": 408122,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.2793981962190099,
+      "mesoamerica": 0.5121160381995643,
+      "american": 0.37963894513920304,
+      "background": 0.45104522009922116
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.6666666666666666
+    },
+    "cusick_1827": {
+     "world": "american",
+     "register": "antiquities",
+     "words": 13663,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.10178729352009427,
+      "mesoamerica": 0.19908434920380144,
+      "american": 0.43073481802648084,
+      "background": 0.2488928029006257
+     },
+     "chunks": 2,
+     "chunk_own_rate": 1.0
+    },
+    "priest_american_antiquities_1833": {
+     "world": "american",
+     "register": "antiquities",
+     "words": 158158,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.22515132362728515,
+      "mesoamerica": 0.26067032296051057,
+      "american": 0.5409615873278172,
+      "background": 0.38988133409557063
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.8333333333333334
+    },
+    "priest_wonders_1826": {
+     "world": "american",
+     "register": "antiquities",
+     "words": 284442,
+     "placed": "background",
+     "scores": {
+      "near_east": 0.3065826680401642,
+      "mesoamerica": 0.3208264321383481,
+      "american": 0.41997981004033313,
+      "background": 0.47941670268193154
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.16666666666666666
+    },
+    "clinton_discourse_and_western_new_york": {
+     "world": "american",
+     "register": "antiquities",
+     "words": 26807,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.11698348871983207,
+      "mesoamerica": 0.17491587952577956,
+      "american": 0.4518922930802571,
+      "background": 0.25352510992294375
+     },
+     "chunks": 5,
+     "chunk_own_rate": 1.0
+    },
+    "adair_american_indians_1775": {
+     "world": "american",
+     "register": "antiquities",
+     "words": 202895,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.2927105812729043,
+      "mesoamerica": 0.31328672160274457,
+      "american": 0.5225180444833647,
+      "background": 0.44340587605971893
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.6666666666666666
+    },
+    "seaver_jemison_1826": {
+     "world": "american",
+     "register": "narrative",
+     "words": 51674,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.10470437732621875,
+      "mesoamerica": 0.14512292600147014,
+      "american": 0.4548712378592759,
+      "background": 0.2192343179015756
+     },
+     "chunks": 10,
+     "chunk_own_rate": 1.0
+    },
+    "hale_genius_of_oblivion_1823": {
+     "world": "american",
+     "register": "narrative",
+     "words": 18942,
+     "placed": "background",
+     "scores": {
+      "near_east": 0.17657647016514894,
+      "mesoamerica": 0.19673622277566663,
+      "american": 0.3112284644664772,
+      "background": 0.3473105185047117
+     },
+     "chunks": 3,
+     "chunk_own_rate": 0.3333333333333333
+    },
+    "ss-manuscript-story-1885": {
+     "world": "american",
+     "register": "narrative",
+     "words": 42305,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.184585996459997,
+      "mesoamerica": 0.20664856463500272,
+      "american": 0.3587275834427121,
+      "background": 0.31765850596808437
+     },
+     "chunks": 8,
+     "chunk_own_rate": 0.75
+    },
+    "gh-1816-late-war": {
+     "world": "american",
+     "register": "narrative",
+     "words": 55534,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.21539338128926722,
+      "mesoamerica": 0.151152257260561,
+      "american": 0.30092716629524485,
+      "background": 0.29096448612247083
+     },
+     "chunks": 11,
+     "chunk_own_rate": 0.5454545454545454
+    },
+    "es-1825-view-of-the-hebrews": {
+     "world": "american",
+     "register": "antiquities",
+     "words": 105466,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.3143080412013415,
+      "mesoamerica": 0.25794029467653184,
+      "american": 0.4136598502098062,
+      "background": 0.34206554118158194
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.4166666666666667
+    }
+   }
+  },
+  "with_allowance": {
+   "whole_texts": {
+    "confusion": {
+     "near_east": {
+      "near_east": 5,
+      "mesoamerica": 0,
+      "american": 0,
+      "background": 0
+     },
+     "mesoamerica": {
+      "near_east": 0,
+      "mesoamerica": 8,
+      "american": 0,
+      "background": 0
+     },
+     "american": {
+      "near_east": 0,
+      "mesoamerica": 0,
+      "american": 8,
+      "background": 2
+     },
+     "background": {
+      "near_east": 14,
+      "mesoamerica": 1,
+      "american": 2,
+      "background": 133
+     }
+    },
+    "rate": {
+     "near_east": 1.0,
+     "mesoamerica": 1.0,
+     "american": 0.8,
+     "background": 0.8866666666666667
+    },
+    "pooled": 0.8901734104046243,
+    "mean_over_worlds": 0.9216666666666666,
+    "passed": true
+   },
+   "chunks": {
+    "confusion": {
+     "near_east": {
+      "near_east": 53,
+      "mesoamerica": 0,
+      "american": 0,
+      "background": 7
+     },
+     "mesoamerica": {
+      "near_east": 0,
+      "mesoamerica": 34,
+      "american": 1,
+      "background": 21
+     },
+     "american": {
+      "near_east": 6,
+      "mesoamerica": 1,
+      "american": 55,
+      "background": 25
+     },
+     "background": {
+      "near_east": 147,
+      "mesoamerica": 19,
+      "american": 57,
+      "background": 1414
+     }
+    },
+    "rate_pooled": {
+     "near_east": 0.8833333333333333,
+     "mesoamerica": 0.6071428571428571,
+     "american": 0.632183908045977,
+     "background": 0.8637751985339035
+    },
+    "rate": {
+     "near_east": 0.8833333333333334,
+     "mesoamerica": 0.71875,
+     "american": 0.6712121212121211,
+     "background": 0.8624963924963924
+    },
+    "mean_over_worlds": 0.7839479617604618,
+    "passed": true
+   },
+   "register": {
+    "chronicle_placed_by_native_profile": {
+     "texts": {
+      "bernal_diaz_keatinge_1800": {
+       "placed": "background",
+       "scores": {
+        "near_east": 0.19901005857917653,
+        "mesoamerica": 0.2867731231361062,
+        "american": 0.3185419922048816,
+        "background": 0.374209554174017
+       },
+       "chunks_in_mesoamerica": [
+        0,
+        12
+       ]
+      },
+      "solis_conquest_of_mexico_1724": {
+       "placed": "background",
+       "scores": {
+        "near_east": 0.22698819086125732,
+        "mesoamerica": 0.2245100474937794,
+        "american": 0.34040614242394157,
+        "background": 0.3600204980144062
+       },
+       "chunks_in_mesoamerica": [
+        4,
+        12
+       ]
+      },
+      "clavigero_history_of_mexico_1787": {
+       "placed": "background",
+       "scores": {
+        "near_east": 0.27627734887162836,
+        "mesoamerica": 0.4261665381020311,
+        "american": 0.3752195939808958,
+        "background": 0.446990435289297
+       },
+       "chunks_in_mesoamerica": [
+        5,
+        12
+       ]
+      }
+     },
+     "in_mesoamerica": [
+      0,
+      3
+     ],
+     "passed": false
+    },
+    "native_placed_by_chronicle_profile": {
+     "texts": {
+      "brinton_maya_chronicles_and_rig_veda": {
+       "placed": "mesoamerica",
+       "scores": {
+        "near_east": 0.09748043565212093,
+        "mesoamerica": 0.25340564641541713,
+        "american": 0.12440914235109266,
+        "background": 0.1494381498361686
+       },
+       "chunks_in_mesoamerica": [
+        1,
+        2
+       ]
+      },
+      "brinton_annals_cakchiquels_1885": {
+       "placed": "mesoamerica",
+       "scores": {
+        "near_east": 0.11840924287384248,
+        "mesoamerica": 0.3000007212562492,
+        "american": 0.16462919986668922,
+        "background": 0.1667630769789869
+       },
+       "chunks_in_mesoamerica": [
+        3,
+        3
+       ]
+      },
+      "brinton_nahuatl_poetry_1887": {
+       "placed": "mesoamerica",
+       "scores": {
+        "near_east": 0.08013262609408087,
+        "mesoamerica": 0.1497039398703306,
+        "american": 0.07516452516339119,
+        "background": 0.09114295543353777
+       },
+       "chunks_in_mesoamerica": [
+        1,
+        1
+       ]
+      },
+      "popol_vuh_spence_1908": {
+       "placed": "mesoamerica",
+       "scores": {
+        "near_east": 0.10434388335800855,
+        "mesoamerica": 0.30297662227737593,
+        "american": 0.2268370501694402,
+        "background": 0.21289839862053156
+       },
+       "chunks_in_mesoamerica": [
+        2,
+        2
+       ]
+      },
+      "popol_vuh_christenson": {
+       "placed": "mesoamerica",
+       "scores": {
+        "near_east": 0.10559929904945865,
+        "mesoamerica": 0.23345417959062925,
+        "american": 0.16825939632005785,
+        "background": 0.16327855766675956
+       },
+       "chunks_in_mesoamerica": [
+        10,
+        12
+       ]
+      }
+     },
+     "in_mesoamerica": [
+      5,
+      5
+     ],
+     "passed": true
+    },
+    "passed": false
+   },
+   "per_text": {
+    "kjv_old_testament": {
+     "world": "near_east",
+     "register": "bible",
+     "words": 612571,
+     "placed": "near_east",
+     "scores": {
+      "near_east": 0.6880610265694475,
+      "mesoamerica": 0.19703826576132522,
+      "american": 0.2912472743498919,
+      "background": 0.43904722077372027
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.8333333333333334
+    },
+    "kjv_new_testament": {
+     "world": "near_east",
+     "register": "bible",
+     "words": 180771,
+     "placed": "near_east",
+     "scores": {
+      "near_east": 0.4965660783770459,
+      "mesoamerica": 0.15357822239513164,
+      "american": 0.2264079644005596,
+      "background": 0.3826370448489188
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.75
+    },
+    "kjv_apocrypha": {
+     "world": "near_east",
+     "register": "bible",
+     "words": 140884,
+     "placed": "near_east",
+     "scores": {
+      "near_east": 0.7024540408587725,
+      "mesoamerica": 0.2515122676037038,
+      "american": 0.31644699862917886,
+      "background": 0.4637367362778531
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.9166666666666666
+    },
+    "josephus_antiquities_whiston": {
+     "world": "near_east",
+     "register": "josephus",
+     "words": 544274,
+     "placed": "near_east",
+     "scores": {
+      "near_east": 0.7666490078198162,
+      "mesoamerica": 0.21697930980807242,
+      "american": 0.28915412804614,
+      "background": 0.4250027231315938
+     },
+     "chunks": 12,
+     "chunk_own_rate": 1.0
+    },
+    "josephus_wars_whiston": {
+     "world": "near_east",
+     "register": "josephus",
+     "words": 234992,
+     "placed": "near_east",
+     "scores": {
+      "near_east": 0.5167634158568073,
+      "mesoamerica": 0.20286817308022642,
+      "american": 0.2604338753246839,
+      "background": 0.3510670868254853
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.9166666666666666
+    },
+    "brinton_maya_chronicles_and_rig_veda": {
+     "world": "mesoamerica",
+     "register": "native",
+     "words": 10522,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.09748043565212093,
+      "mesoamerica": 0.381817305357202,
+      "american": 0.12440914235109266,
+      "background": 0.1494381498361686
+     },
+     "chunks": 2,
+     "chunk_own_rate": 0.5
+    },
+    "brinton_annals_cakchiquels_1885": {
+     "world": "mesoamerica",
+     "register": "native",
+     "words": 19432,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.11840924287384248,
+      "mesoamerica": 0.3851027290059916,
+      "american": 0.16462919986668922,
+      "background": 0.1667630769789869
+     },
+     "chunks": 3,
+     "chunk_own_rate": 1.0
+    },
+    "brinton_nahuatl_poetry_1887": {
+     "world": "mesoamerica",
+     "register": "native",
+     "words": 9573,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.08013262609408087,
+      "mesoamerica": 0.2898568313836713,
+      "american": 0.07516452516339119,
+      "background": 0.09114295543353777
+     },
+     "chunks": 1,
+     "chunk_own_rate": 1.0
+    },
+    "popol_vuh_spence_1908": {
+     "world": "mesoamerica",
+     "register": "native",
+     "words": 12827,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.10434388335800855,
+      "mesoamerica": 0.3570660287997972,
+      "american": 0.2268370501694402,
+      "background": 0.21289839862053156
+     },
+     "chunks": 2,
+     "chunk_own_rate": 1.0
+    },
+    "popol_vuh_christenson": {
+     "world": "mesoamerica",
+     "register": "native",
+     "words": 109219,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.10559929904945865,
+      "mesoamerica": 0.4152671485223806,
+      "american": 0.16825939632005785,
+      "background": 0.16327855766675956
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.9166666666666666
+    },
+    "bernal_diaz_keatinge_1800": {
+     "world": "mesoamerica",
+     "register": "chronicle",
+     "words": 239048,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.19901005857917653,
+      "mesoamerica": 0.44914634654082763,
+      "american": 0.3185419922048816,
+      "background": 0.374209554174017
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.25
+    },
+    "solis_conquest_of_mexico_1724": {
+     "world": "mesoamerica",
+     "register": "chronicle",
+     "words": 244003,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.22698819086125732,
+      "mesoamerica": 0.3762768679527477,
+      "american": 0.34040614242394157,
+      "background": 0.3600204980144062
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.4166666666666667
+    },
+    "clavigero_history_of_mexico_1787": {
+     "world": "mesoamerica",
+     "register": "chronicle",
+     "words": 408122,
+     "placed": "mesoamerica",
+     "scores": {
+      "near_east": 0.27627734887162836,
+      "mesoamerica": 0.5139326914751409,
+      "american": 0.3752195939808958,
+      "background": 0.446990435289297
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.6666666666666666
+    },
+    "cusick_1827": {
+     "world": "american",
+     "register": "antiquities",
+     "words": 13663,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.10274177140908716,
+      "mesoamerica": 0.19967596060010265,
+      "american": 0.4326628192299965,
+      "background": 0.25127737914666104
+     },
+     "chunks": 2,
+     "chunk_own_rate": 1.0
+    },
+    "priest_american_antiquities_1833": {
+     "world": "american",
+     "register": "antiquities",
+     "words": 158158,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.2196630962478747,
+      "mesoamerica": 0.2576703412325377,
+      "american": 0.5391570504802878,
+      "background": 0.38485236825159347
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.8333333333333334
+    },
+    "priest_wonders_1826": {
+     "world": "american",
+     "register": "antiquities",
+     "words": 284442,
+     "placed": "background",
+     "scores": {
+      "near_east": 0.3030334462181885,
+      "mesoamerica": 0.31825696596068964,
+      "american": 0.41536224112478365,
+      "background": 0.47587181780840154
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.16666666666666666
+    },
+    "clinton_discourse_and_western_new_york": {
+     "world": "american",
+     "register": "antiquities",
+     "words": 26807,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.1150816072108254,
+      "mesoamerica": 0.1703521816344097,
+      "american": 0.45129271055161563,
+      "background": 0.253681802423699
+     },
+     "chunks": 5,
+     "chunk_own_rate": 1.0
+    },
+    "adair_american_indians_1775": {
+     "world": "american",
+     "register": "antiquities",
+     "words": 202895,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.28585828389348034,
+      "mesoamerica": 0.31317247683650173,
+      "american": 0.5210504149643463,
+      "background": 0.43763838660438353
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.6666666666666666
+    },
+    "seaver_jemison_1826": {
+     "world": "american",
+     "register": "narrative",
+     "words": 51674,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.0964344939555645,
+      "mesoamerica": 0.14363401455109612,
+      "american": 0.4544224468931132,
+      "background": 0.2109411157298758
+     },
+     "chunks": 10,
+     "chunk_own_rate": 1.0
+    },
+    "hale_genius_of_oblivion_1823": {
+     "world": "american",
+     "register": "narrative",
+     "words": 18942,
+     "placed": "background",
+     "scores": {
+      "near_east": 0.179999902750121,
+      "mesoamerica": 0.18901126441816749,
+      "american": 0.30923445895991036,
+      "background": 0.34750375736344474
+     },
+     "chunks": 3,
+     "chunk_own_rate": 0.3333333333333333
+    },
+    "ss-manuscript-story-1885": {
+     "world": "american",
+     "register": "narrative",
+     "words": 42305,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.1793406275484131,
+      "mesoamerica": 0.2004723893415393,
+      "american": 0.352413400768556,
+      "background": 0.3117159137190147
+     },
+     "chunks": 8,
+     "chunk_own_rate": 0.75
+    },
+    "gh-1816-late-war": {
+     "world": "american",
+     "register": "narrative",
+     "words": 55534,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.20523412052599238,
+      "mesoamerica": 0.14354854089848082,
+      "american": 0.29549440292639406,
+      "background": 0.2839570144177524
+     },
+     "chunks": 11,
+     "chunk_own_rate": 0.5454545454545454
+    },
+    "es-1825-view-of-the-hebrews": {
+     "world": "american",
+     "register": "antiquities",
+     "words": 105466,
+     "placed": "american",
+     "scores": {
+      "near_east": 0.3129606327420503,
+      "mesoamerica": 0.2572495043696491,
+      "american": 0.4101607947905111,
+      "background": 0.33886281294022835
+     },
+     "chunks": 12,
+     "chunk_own_rate": 0.4166666666666667
+    }
+   }
+  }
+ },
+ "config_sha256": "3b76783a073c0ee8238afe39972e6474d186f14fb187b5632176c948c15f8b46"
+}
