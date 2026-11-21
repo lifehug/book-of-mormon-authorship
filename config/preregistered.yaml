@@ -1106,6 +1106,54 @@ lab:                              # the research lab (exploratory tooling; reads
     workers: 8
     part_size: 500                 # works per part file of the library pass (order shuffled by seed)
     seed: 20261120
+  manuscript_errors:               # BOM-127 (lab; exploratory): the manuscript's corrections, heard or copied
+    window: 5                      # anticipation / perseveration: the struck word recurs within this many words
+    anticipation_min_len: 4        # struck word at least this many letters (short words recur by chance)
+    context_words: 12              # words kept on each side of a correction
+    spelling_ratio: 0.75           # difflib ratio at which two forms count as one word misspelt
+    visual_pairs: [un, ce, ao, rs, tl, hk, wm, fs]   # letters of similar shape in the scribes' hands
+    min_events: 10                 # a group with fewer classified substitutions is "too few", not a rate
+    ci_z: 1.96                     # Wilson interval
+    plants: 400                    # synthetic check: plants of each type
+    seed: 20261120
+    key_recall_bar: 0.8            # the sound key must join this share of known homophone pairs
+    key_false_bar: 0.1             # and at most this share of known non-homophone pairs
+    plant_recovery_bar: 0.8        # each planted type recovered at least this often
+    plant_contamination_bar: 0.05  # and no other planted type labelled sound-alike more often than this
+    printers_sound_max: 0.1        # known answer (a): sound-alike share of the printer's manuscript substitutions
+    pair_ratio_min: 2.0            # known answer (c): dictated / copied sound-alike rate, OT Revision 1 over 2
+    pair_p: 0.05                   # and one-sided Fisher p at most this
+    pair_min_sound: 5              # fewer sound-alike events than this in the dictated half: "too few"
+    ot_copy_hands: ["John Whitmer"]    # OT Revision 2 pages in these hands copy OT Revision 1
+    names_similarity: 0.75         # a manuscript spelling this close to a printed name is a spelling of it
+    names_min_count: 2             # printed names (not in the King James text) used at least this often
+    names_exclude: ["bible"]       # capitalised in the 1830 text but not a name
+    known_homophones: [["there", "their"], ["son", "sun"], ["straight", "strait"], ["to", "too"], ["to", "two"], ["too", "two"], ["know", "no"], ["knew", "new"], ["write", "right"], ["whole", "hole"], ["which", "witch"], ["our", "hour"], ["by", "buy"], ["sea", "see"], ["way", "weigh"], ["wait", "weight"], ["rain", "reign"], ["pray", "prey"], ["peace", "piece"], ["one", "won"], ["for", "four"], ["heard", "herd"], ["past", "passed"], ["through", "threw"], ["would", "wood"], ["hear", "here"], ["plain", "plane"], ["altar", "alter"], ["meet", "meat"], ["tail", "tale"], ["vain", "vein"], ["made", "maid"], ["sail", "sale"], ["steal", "steel"], ["bare", "bear"], ["hair", "hare"], ["great", "grate"], ["break", "brake"], ["fair", "fare"], ["mail", "male"], ["main", "mane"], ["pair", "pear"], ["road", "rode"], ["soul", "sole"], ["tide", "tied"], ["waste", "waist"], ["weak", "week"], ["stair", "stare"], ["flour", "flower"]]
+    known_not_homophones: [["weed", "reed"], ["gave", "give"], ["come", "gone"], ["men", "man"], ["then", "than"], ["these", "this"], ["of", "off"], ["and", "an"], ["were", "was"], ["hat", "hot"], ["bit", "bat"], ["said", "sad"], ["feed", "fed"], ["hard", "heard"], ["ward", "word"], ["fear", "far"], ["form", "from"], ["hope", "hop"], ["mad", "made"], ["pin", "pine"], ["cut", "cute"], ["rid", "ride"], ["wood", "word"], ["cat", "cap"], ["sing", "sin"], ["there", "these"], ["whole", "while"], ["quite", "quiet"], ["thought", "though"], ["bread", "bead"], ["break", "bread"], ["dear", "dead"], ["sent", "send"], ["lord", "load"], ["ship", "sheep"], ["bed", "bad"], ["land", "lend"], ["fall", "fell"], ["mother", "mouth"], ["kings", "king"]]
+  two_voices:                      # BOM-105 / BOM-99 (lab; exploratory): prophets in two voices, function words only
+    min_words: 5000                # per writer and voice after cleaning, or "too little text"
+    chunk_words: 1000
+    mfw: 150                       # features: the most frequent words of the background sample
+    bg_works: 120                  # background: library works by one personal author, years below
+    bg_min_words: 20000
+    bg_words_per_work: 20000       # a window of this many words from the middle of each
+    year_min: 1780
+    year_max: 1830
+    profile_chunks: 5              # chunks per writer and voice in every profile (equal sizes)
+    train_chunks: 20               # at most this many chunks per writer in a centroid
+    resamples: 500
+    kjv_ngram: 5                   # variant (b): drop tokens covered by a King James word n-gram this long
+    verse_min_lines: 6             # a verse run: this many consecutive lines starting with a capital
+    verse_max_words: 10            # each line of at most this many words
+    header_upper_share: 0.7        # a short line this upper-case is a running header and is dropped
+    header_max_words: 8
+    known_bar: 0.80                # within-voice own-author rate (macro), each voice, Burrows's Delta
+    cross_share: 0.5               # a writer "crosses" if at least this share of chunks go to them
+    larger_than_any_share: 0.95    # Joseph Smith's gap above every other writer's in this share of resamples
+    min_writers: 5                 # writers other than Joseph Smith with both voices, or "cannot tell"
+    handcheck: 5                   # chunks per writer and voice read by hand
+    archaic_words: [thou, thee, thy, thine, ye, hath, hast, doth, dost, art, shalt, wilt, canst, didst, hadst, saith, unto]
+    seed: 20261120
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

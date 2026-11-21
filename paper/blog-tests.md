@@ -80,7 +80,7 @@ compares against.
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
 | BOM-106 | The text carries the marks of speech, not writing | Davis 2020 and others | description | trial transcripts and sermons taken in short-hand | TBD |
-| BOM-127 | Manuscript errors are errors of hearing | Skousen 1998 | one editor's reading | manuscripts known to be copied and known to be dictated | TBD |
+| BOM-127 | Manuscript errors are errors of hearing | Skousen 1998 | one editor's reading | manuscripts known to be copied and known to be dictated | **Done**, fragile |
 | BOM-125 | It is unlike other dictated or "received" books | Hales 2019; Dunn 2002 | length and schooling | the same measures on all of them | TBD |
 | BOM-121 | Its speakers have more distinct voices than a novelist's characters | Fields and others, about 2021 | four novelists after 1830 | plays and letter novels before 1830, by one author | TBD |
 | BOM-107 | It has deliberate chiasmus | Welch 1969; Edwards 2004 | the book and the Bible | the rate in every book | TBD |
@@ -412,6 +412,48 @@ found and fixed after a first count of the Book of Mormon came out low (the verb
 *What it does not show.* Who composed the text or how. The past-tense count is an approximation.
 Which books are reprints was judged from titles and authors' dates, not by reading them. The
 library is thin for 1700 to 1780.
+
+### Heard or copied? The manuscript's corrections (BOM-127)
+
+Royal Skousen argues that the mistakes in the original manuscript are mistakes of the ear. A
+scribe taking dictation writes "their" for "there". A scribe copying from a page skips a line. If
+the corrections are ear mistakes, the text was dictated. His case rests on his own reading of the
+manuscript, with nothing to compare it to.
+
+There is something to compare it to. The printer's manuscript is a copy of the original, made by
+the same scribe, so its mistakes are copying mistakes. I sorted every one-word correction in each
+by rule.
+
+| Manuscript | Sound-alike corrections | One-word corrections |
+| --- | --- | --- |
+| Original manuscript (dictated, by the claim) | 28 (3.9%) | 720 |
+| Printer's manuscript (a copy) | 5 (0.6%) | 854 |
+| Oliver Cowdery in the original | 28 | 615 |
+| Oliver Cowdery in the printer's manuscript | 5 | 759 |
+
+On its face that is Skousen's result: the same scribe makes six times as many ear mistakes in the
+original as in the copy.
+
+Now the weakness. Twenty-three of the 28 are one pair of words, "there" and "their", all in
+Cowdery's hand. Take that pair out and the original has 5 in 720, the copies 6 in 1,114. No
+difference.
+
+So the finding is real and narrow. It is one confusion, made over and over by one scribe, in the
+manuscript he is said to have taken by ear, and hardly at all when he copied it.
+
+Two more things cut against a simple reading. The first draft of the Book of Moses was certainly
+dictated, and it shows almost no ear mistakes (1 in 168). And the original manuscript has
+eye-skips too, 14 of them.
+
+Names: 69 of 86 names are spelled the first time the way they were printed. Of the 17 that are
+not, 10 differ only in a vowel.
+
+*The check on the method.* The sound rule joined 45 of 49 known sound-alike pairs and none of 40
+others. Planted mistakes of each kind were recovered 97 to 100% of the time.
+
+*What it does not show.* Who composed the text; this is only about how words reached the page.
+It reads the published transcripts, not the manuscript pages, so letters written over other
+letters are missed.
 
 ## What I would want a reader to take from the whole set
 

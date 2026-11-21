@@ -1,0 +1,5130 @@
+{
+ "settings": {
+  "window": 5,
+  "anticipation_min_len": 4,
+  "context_words": 12,
+  "spelling_ratio": 0.75,
+  "visual_pairs": [
+   "un",
+   "ce",
+   "ao",
+   "rs",
+   "tl",
+   "hk",
+   "wm",
+   "fs"
+  ],
+  "min_events": 10,
+  "ci_z": 1.96,
+  "plants": 400,
+  "seed": 20261120,
+  "key_recall_bar": 0.8,
+  "key_false_bar": 0.1,
+  "plant_recovery_bar": 0.8,
+  "plant_contamination_bar": 0.05,
+  "printers_sound_max": 0.1,
+  "pair_ratio_min": 2.0,
+  "pair_p": 0.05,
+  "pair_min_sound": 5,
+  "ot_copy_hands": [
+   "John Whitmer"
+  ],
+  "names_similarity": 0.75,
+  "names_min_count": 2,
+  "names_exclude": [
+   "bible"
+  ],
+  "known_homophones": [
+   [
+    "there",
+    "their"
+   ],
+   [
+    "son",
+    "sun"
+   ],
+   [
+    "straight",
+    "strait"
+   ],
+   [
+    "to",
+    "too"
+   ],
+   [
+    "to",
+    "two"
+   ],
+   [
+    "too",
+    "two"
+   ],
+   [
+    "know",
+    "no"
+   ],
+   [
+    "knew",
+    "new"
+   ],
+   [
+    "write",
+    "right"
+   ],
+   [
+    "whole",
+    "hole"
+   ],
+   [
+    "which",
+    "witch"
+   ],
+   [
+    "our",
+    "hour"
+   ],
+   [
+    "by",
+    "buy"
+   ],
+   [
+    "sea",
+    "see"
+   ],
+   [
+    "way",
+    "weigh"
+   ],
+   [
+    "wait",
+    "weight"
+   ],
+   [
+    "rain",
+    "reign"
+   ],
+   [
+    "pray",
+    "prey"
+   ],
+   [
+    "peace",
+    "piece"
+   ],
+   [
+    "one",
+    "won"
+   ],
+   [
+    "for",
+    "four"
+   ],
+   [
+    "heard",
+    "herd"
+   ],
+   [
+    "past",
+    "passed"
+   ],
+   [
+    "through",
+    "threw"
+   ],
+   [
+    "would",
+    "wood"
+   ],
+   [
+    "hear",
+    "here"
+   ],
+   [
+    "plain",
+    "plane"
+   ],
+   [
+    "altar",
+    "alter"
+   ],
+   [
+    "meet",
+    "meat"
+   ],
+   [
+    "tail",
+    "tale"
+   ],
+   [
+    "vain",
+    "vein"
+   ],
+   [
+    "made",
+    "maid"
+   ],
+   [
+    "sail",
+    "sale"
+   ],
+   [
+    "steal",
+    "steel"
+   ],
+   [
+    "bare",
+    "bear"
+   ],
+   [
+    "hair",
+    "hare"
+   ],
+   [
+    "great",
+    "grate"
+   ],
+   [
+    "break",
+    "brake"
+   ],
+   [
+    "fair",
+    "fare"
+   ],
+   [
+    "mail",
+    "male"
+   ],
+   [
+    "main",
+    "mane"
+   ],
+   [
+    "pair",
+    "pear"
+   ],
+   [
+    "road",
+    "rode"
+   ],
+   [
+    "soul",
+    "sole"
+   ],
+   [
+    "tide",
+    "tied"
+   ],
+   [
+    "waste",
+    "waist"
+   ],
+   [
+    "weak",
+    "week"
+   ],
+   [
+    "stair",
+    "stare"
+   ],
+   [
+    "flour",
+    "flower"
+   ]
+  ],
+  "known_not_homophones": [
+   [
+    "weed",
+    "reed"
+   ],
+   [
+    "gave",
+    "give"
+   ],
+   [
+    "come",
+    "gone"
+   ],
+   [
+    "men",
+    "man"
+   ],
+   [
+    "then",
+    "than"
+   ],
+   [
+    "these",
+    "this"
+   ],
+   [
+    "of",
+    "off"
+   ],
+   [
+    "and",
+    "an"
+   ],
+   [
+    "were",
+    "was"
+   ],
+   [
+    "hat",
+    "hot"
+   ],
+   [
+    "bit",
+    "bat"
+   ],
+   [
+    "said",
+    "sad"
+   ],
+   [
+    "feed",
+    "fed"
+   ],
+   [
+    "hard",
+    "heard"
+   ],
+   [
+    "ward",
+    "word"
+   ],
+   [
+    "fear",
+    "far"
+   ],
+   [
+    "form",
+    "from"
+   ],
+   [
+    "hope",
+    "hop"
+   ],
+   [
+    "mad",
+    "made"
+   ],
+   [
+    "pin",
+    "pine"
+   ],
+   [
+    "cut",
+    "cute"
+   ],
+   [
+    "rid",
+    "ride"
+   ],
+   [
+    "wood",
+    "word"
+   ],
+   [
+    "cat",
+    "cap"
+   ],
+   [
+    "sing",
+    "sin"
+   ],
+   [
+    "there",
+    "these"
+   ],
+   [
+    "whole",
+    "while"
+   ],
+   [
+    "quite",
+    "quiet"
+   ],
+   [
+    "thought",
+    "though"
+   ],
+   [
+    "bread",
+    "bead"
+   ],
+   [
+    "break",
+    "bread"
+   ],
+   [
+    "dear",
+    "dead"
+   ],
+   [
+    "sent",
+    "send"
+   ],
+   [
+    "lord",
+    "load"
+   ],
+   [
+    "ship",
+    "sheep"
+   ],
+   [
+    "bed",
+    "bad"
+   ],
+   [
+    "land",
+    "lend"
+   ],
+   [
+    "fall",
+    "fell"
+   ],
+   [
+    "mother",
+    "mouth"
+   ],
+   [
+    "kings",
+    "king"
+   ]
+  ]
+ },
+ "not_attempted": [],
+ "markup_check": {
+  "printers": {
+   "events": 2063,
+   "words": 259375,
+   "pages": 468
+  },
+  "ot_revision_1": {
+   "events": 454,
+   "words": 25837,
+   "pages": 64
+  },
+  "ot_revision_2": {
+   "events": 1022,
+   "words": 41517,
+   "pages": 127
+  },
+  "abraham_ms_a": {
+   "events": 46,
+   "words": 1509,
+   "pages": 4
+  },
+  "abraham_ms_b": {
+   "events": 43,
+   "words": 1304,
+   "pages": 6
+  },
+  "abraham_ms_c": {
+   "events": 44,
+   "words": 2214,
+   "pages": 10
+  },
+  "revelation_book_1": {
+   "events": 635,
+   "words": 72657,
+   "pages": 201
+  },
+  "original": {
+   "events": 1540,
+   "words": 97565,
+   "pages": 231
+  }
+ },
+ "known_answers": {
+  "key": {
+   "homophone_pairs": 49,
+   "joined": 45,
+   "recall": 0.918,
+   "not_joined": [
+    [
+     "straight",
+     "strait"
+    ],
+    [
+     "way",
+     "weigh"
+    ],
+    [
+     "wait",
+     "weight"
+    ],
+    [
+     "flour",
+     "flower"
+    ]
+   ],
+   "non_homophone_pairs": 40,
+   "falsely_joined": 0,
+   "false_rate": 0.0,
+   "falsely_joined_pairs": [],
+   "passed": true
+  },
+  "a_printers_manuscript": {
+   "printers_sound_alike": {
+    "k": 5,
+    "n": 854,
+    "share": 0.0059,
+    "ci": [
+     0.0025,
+     0.0136
+    ]
+   },
+   "bar": 0.1,
+   "passed": true,
+   "printers_classes_one_word_substitutions": {
+    "sound_alike": 5,
+    "visual": 7,
+    "anticipation": 33,
+    "grammar": 180,
+    "spelling": 382,
+    "other": 247
+   }
+  },
+  "b_planted_errors": {
+   "types": {
+    "sound_alike": {
+     "planted": 400,
+     "expected": "sound_alike",
+     "recovered": 391,
+     "rate": 0.978,
+     "labelled": {
+      "sound_alike": 391,
+      "other": 8,
+      "spelling": 1
+     }
+    },
+    "omission": {
+     "planted": 400,
+     "expected": "visual",
+     "recovered": 400,
+     "rate": 1.0,
+     "labelled": {
+      "visual": 400
+     }
+    },
+    "doubled": {
+     "planted": 400,
+     "expected": "visual",
+     "recovered": 398,
+     "rate": 0.995,
+     "labelled": {
+      "visual": 398,
+      "spelling": 2
+     }
+    },
+    "letter_confusion": {
+     "planted": 400,
+     "expected": "visual",
+     "recovered": 400,
+     "rate": 1.0,
+     "labelled": {
+      "visual": 400
+     }
+    },
+    "anticipation": {
+     "planted": 400,
+     "expected": "anticipation",
+     "recovered": 388,
+     "rate": 0.97,
+     "labelled": {
+      "anticipation": 388,
+      "spelling": 12
+     }
+    },
+    "perseveration": {
+     "planted": 400,
+     "expected": "anticipation",
+     "recovered": 393,
+     "rate": 0.983,
+     "labelled": {
+      "anticipation": 393,
+      "spelling": 7
+     }
+    }
+   },
+   "labelled_sound_alike": {
+    "omission": 0.0,
+    "doubled": 0.0,
+    "letter_confusion": 0.0,
+    "anticipation": 0.0,
+    "perseveration": 0.0
+   },
+   "passed": true
+  },
+  "c_old_testament_revision_pair": {
+   "dictated_ot_revision_1": {
+    "k": 1,
+    "n": 168,
+    "share": 0.006,
+    "ci": [
+     0.0011,
+     0.0329
+    ]
+   },
+   "copied_ot_revision_2_pages": {
+    "k": 2,
+    "n": 236,
+    "share": 0.0085,
+    "ci": [
+     0.0023,
+     0.0304
+    ]
+   },
+   "ratio_of_shares": 0.71,
+   "fisher_p_one_sided": 0.80172,
+   "sound_alike_per_1000_words": {
+    "dictated": 0.039,
+    "copied": 0.081
+   },
+   "result": "too few",
+   "ratio_unavailable_because_copied_has_none": false,
+   "passed": true
+  },
+  "all_passed": true,
+  "pair_validated": false
+ },
+ "groups_known": {
+  "printers": {
+   "events": 2063,
+   "words": 259375,
+   "events_per_1000_words": 7.95,
+   "by_event": {
+    "substitution": 913,
+    "false_start": 33,
+    "deletion": 485,
+    "insertion": 632
+   },
+   "classes_all_events": {
+    "sound_alike": 5,
+    "visual": 62,
+    "anticipation": 79,
+    "grammar": 180,
+    "spelling": 579,
+    "other": 1158
+   },
+   "one_word_substitutions": 854,
+   "classes_one_word_substitutions": {
+    "sound_alike": 5,
+    "visual": 7,
+    "anticipation": 33,
+    "grammar": 180,
+    "spelling": 382,
+    "other": 247
+   },
+   "sound_alike": {
+    "k": 5,
+    "n": 854,
+    "share": 0.0059,
+    "ci": [
+     0.0025,
+     0.0136
+    ]
+   },
+   "visual": {
+    "k": 7,
+    "n": 854,
+    "share": 0.0082,
+    "ci": [
+     0.004,
+     0.0168
+    ]
+   },
+   "sound_alike_there_their": 1,
+   "sound_alike_other_pairs": 4,
+   "sound_alike_per_1000_words": 0.019,
+   "visual_events_per_1000_words": 0.239,
+   "sound_alike_anticipation_first": {
+    "k": 5,
+    "n": 854,
+    "share": 0.0059,
+    "ci": [
+     0.0025,
+     0.0136
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "printers"
+   ],
+   "by_hand": {
+    "Hyrum Smith": {
+     "events": 31,
+     "words": 1387,
+     "events_per_1000_words": 22.35,
+     "by_event": {
+      "substitution": 7,
+      "deletion": 15,
+      "insertion": 7,
+      "false_start": 2
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 1,
+      "grammar": 1,
+      "spelling": 10,
+      "other": 19
+     },
+     "one_word_substitutions": 9,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 5,
+      "other": 3
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 9,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2992
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 9,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2992
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 9,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2992
+      ]
+     },
+     "enough": false
+    },
+    "Oliver Cowdery": {
+     "events": 1747,
+     "words": 216019,
+     "events_per_1000_words": 8.09,
+     "by_event": {
+      "substitution": 823,
+      "false_start": 26,
+      "deletion": 334,
+      "insertion": 564
+     },
+     "classes_all_events": {
+      "sound_alike": 5,
+      "visual": 51,
+      "anticipation": 58,
+      "grammar": 158,
+      "spelling": 472,
+      "other": 1003
+     },
+     "one_word_substitutions": 759,
+     "classes_one_word_substitutions": {
+      "sound_alike": 5,
+      "visual": 6,
+      "anticipation": 23,
+      "grammar": 158,
+      "spelling": 339,
+      "other": 228
+     },
+     "sound_alike": {
+      "k": 5,
+      "n": 759,
+      "share": 0.0066,
+      "ci": [
+       0.0028,
+       0.0153
+      ]
+     },
+     "visual": {
+      "k": 6,
+      "n": 759,
+      "share": 0.0079,
+      "ci": [
+       0.0036,
+       0.0171
+      ]
+     },
+     "sound_alike_there_their": 1,
+     "sound_alike_other_pairs": 4,
+     "sound_alike_per_1000_words": 0.023,
+     "visual_events_per_1000_words": 0.236,
+     "sound_alike_anticipation_first": {
+      "k": 5,
+      "n": 759,
+      "share": 0.0066,
+      "ci": [
+       0.0028,
+       0.0153
+      ]
+     },
+     "enough": true
+    },
+    "Scribe 2": {
+     "events": 285,
+     "words": 41969,
+     "events_per_1000_words": 6.79,
+     "by_event": {
+      "deletion": 136,
+      "insertion": 61,
+      "substitution": 83,
+      "false_start": 5
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 11,
+      "anticipation": 20,
+      "grammar": 21,
+      "spelling": 97,
+      "other": 136
+     },
+     "one_word_substitutions": 86,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 1,
+      "anticipation": 10,
+      "grammar": 21,
+      "spelling": 38,
+      "other": 16
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 86,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0428
+      ]
+     },
+     "visual": {
+      "k": 1,
+      "n": 86,
+      "share": 0.0116,
+      "ci": [
+       0.0021,
+       0.063
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.262,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 86,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0428
+      ]
+     },
+     "enough": true
+    }
+   }
+  },
+  "ot1_dictated": {
+   "events": 454,
+   "words": 25837,
+   "events_per_1000_words": 17.57,
+   "by_event": {
+    "substitution": 176,
+    "insertion": 155,
+    "false_start": 7,
+    "deletion": 116
+   },
+   "classes_all_events": {
+    "sound_alike": 1,
+    "visual": 18,
+    "anticipation": 22,
+    "grammar": 41,
+    "spelling": 113,
+    "other": 259
+   },
+   "one_word_substitutions": 168,
+   "classes_one_word_substitutions": {
+    "sound_alike": 1,
+    "visual": 3,
+    "anticipation": 3,
+    "grammar": 41,
+    "spelling": 82,
+    "other": 38
+   },
+   "sound_alike": {
+    "k": 1,
+    "n": 168,
+    "share": 0.006,
+    "ci": [
+     0.0011,
+     0.0329
+    ]
+   },
+   "visual": {
+    "k": 3,
+    "n": 168,
+    "share": 0.0179,
+    "ci": [
+     0.0061,
+     0.0512
+    ]
+   },
+   "sound_alike_there_their": 0,
+   "sound_alike_other_pairs": 1,
+   "sound_alike_per_1000_words": 0.039,
+   "visual_events_per_1000_words": 0.697,
+   "sound_alike_anticipation_first": {
+    "k": 1,
+    "n": 168,
+    "share": 0.006,
+    "ci": [
+     0.0011,
+     0.0329
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "ot_revision_1"
+   ],
+   "by_hand": {
+    "Emma Smith": {
+     "events": 8,
+     "words": 1113,
+     "events_per_1000_words": 7.19,
+     "by_event": {
+      "deletion": 2,
+      "substitution": 5,
+      "insertion": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 3,
+      "spelling": 2,
+      "other": 3
+     },
+     "one_word_substitutions": 5,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 3,
+      "spelling": 1,
+      "other": 1
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 5,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4345
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 5,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4345
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 5,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4345
+      ]
+     },
+     "enough": false
+    },
+    "John Whitmer": {
+     "events": 27,
+     "words": 1549,
+     "events_per_1000_words": 17.43,
+     "by_event": {
+      "deletion": 11,
+      "insertion": 9,
+      "substitution": 7
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 2,
+      "grammar": 1,
+      "spelling": 3,
+      "other": 21
+     },
+     "one_word_substitutions": 5,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 3,
+      "other": 1
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 5,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4345
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 5,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4345
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 5,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4345
+      ]
+     },
+     "enough": false
+    },
+    "Oliver Cowdery": {
+     "events": 34,
+     "words": 5964,
+     "events_per_1000_words": 5.7,
+     "by_event": {
+      "substitution": 13,
+      "insertion": 11,
+      "false_start": 2,
+      "deletion": 8
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 2,
+      "grammar": 2,
+      "spelling": 10,
+      "other": 20
+     },
+     "one_word_substitutions": 14,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 2,
+      "spelling": 8,
+      "other": 4
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 14,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2153
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 14,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2153
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 14,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2153
+      ]
+     },
+     "enough": true
+    },
+    "Sidney Rigdon": {
+     "events": 385,
+     "words": 17211,
+     "events_per_1000_words": 22.37,
+     "by_event": {
+      "insertion": 134,
+      "substitution": 151,
+      "deletion": 95,
+      "false_start": 5
+     },
+     "classes_all_events": {
+      "sound_alike": 1,
+      "visual": 18,
+      "anticipation": 18,
+      "grammar": 35,
+      "spelling": 98,
+      "other": 215
+     },
+     "one_word_substitutions": 144,
+     "classes_one_word_substitutions": {
+      "sound_alike": 1,
+      "visual": 3,
+      "anticipation": 3,
+      "grammar": 35,
+      "spelling": 70,
+      "other": 32
+     },
+     "sound_alike": {
+      "k": 1,
+      "n": 144,
+      "share": 0.0069,
+      "ci": [
+       0.0012,
+       0.0383
+      ]
+     },
+     "visual": {
+      "k": 3,
+      "n": 144,
+      "share": 0.0208,
+      "ci": [
+       0.0071,
+       0.0595
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 1,
+     "sound_alike_per_1000_words": 0.058,
+     "visual_events_per_1000_words": 1.046,
+     "sound_alike_anticipation_first": {
+      "k": 1,
+      "n": 144,
+      "share": 0.0069,
+      "ci": [
+       0.0012,
+       0.0383
+      ]
+     },
+     "enough": true
+    }
+   }
+  },
+  "ot2_copy": {
+   "events": 625,
+   "words": 24577,
+   "events_per_1000_words": 25.43,
+   "by_event": {
+    "insertion": 197,
+    "substitution": 288,
+    "deletion": 139,
+    "false_start": 1
+   },
+   "classes_all_events": {
+    "sound_alike": 2,
+    "visual": 41,
+    "anticipation": 20,
+    "grammar": 74,
+    "spelling": 91,
+    "other": 397
+   },
+   "one_word_substitutions": 236,
+   "classes_one_word_substitutions": {
+    "sound_alike": 2,
+    "visual": 13,
+    "anticipation": 7,
+    "grammar": 74,
+    "spelling": 63,
+    "other": 77
+   },
+   "sound_alike": {
+    "k": 2,
+    "n": 236,
+    "share": 0.0085,
+    "ci": [
+     0.0023,
+     0.0304
+    ]
+   },
+   "visual": {
+    "k": 13,
+    "n": 236,
+    "share": 0.0551,
+    "ci": [
+     0.0325,
+     0.092
+    ]
+   },
+   "sound_alike_there_their": 0,
+   "sound_alike_other_pairs": 2,
+   "sound_alike_per_1000_words": 0.081,
+   "visual_events_per_1000_words": 1.668,
+   "sound_alike_anticipation_first": {
+    "k": 2,
+    "n": 236,
+    "share": 0.0085,
+    "ci": [
+     0.0023,
+     0.0304
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "ot_revision_2"
+   ],
+   "by_hand": {
+    "John Whitmer": {
+     "events": 625,
+     "words": 24577,
+     "events_per_1000_words": 25.43,
+     "by_event": {
+      "insertion": 197,
+      "substitution": 288,
+      "deletion": 139,
+      "false_start": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 2,
+      "visual": 41,
+      "anticipation": 20,
+      "grammar": 74,
+      "spelling": 91,
+      "other": 397
+     },
+     "one_word_substitutions": 236,
+     "classes_one_word_substitutions": {
+      "sound_alike": 2,
+      "visual": 13,
+      "anticipation": 7,
+      "grammar": 74,
+      "spelling": 63,
+      "other": 77
+     },
+     "sound_alike": {
+      "k": 2,
+      "n": 236,
+      "share": 0.0085,
+      "ci": [
+       0.0023,
+       0.0304
+      ]
+     },
+     "visual": {
+      "k": 13,
+      "n": 236,
+      "share": 0.0551,
+      "ci": [
+       0.0325,
+       0.092
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 2,
+     "sound_alike_per_1000_words": 0.081,
+     "visual_events_per_1000_words": 1.668,
+     "sound_alike_anticipation_first": {
+      "k": 2,
+      "n": 236,
+      "share": 0.0085,
+      "ci": [
+       0.0023,
+       0.0304
+      ]
+     },
+     "enough": true
+    }
+   }
+  }
+ },
+ "groups": {
+  "original": {
+   "events": 1540,
+   "words": 97565,
+   "events_per_1000_words": 15.78,
+   "by_event": {
+    "false_start": 80,
+    "insertion": 372,
+    "deletion": 404,
+    "substitution": 684
+   },
+   "classes_all_events": {
+    "sound_alike": 28,
+    "visual": 42,
+    "anticipation": 30,
+    "grammar": 224,
+    "spelling": 604,
+    "other": 612
+   },
+   "one_word_substitutions": 720,
+   "classes_one_word_substitutions": {
+    "sound_alike": 28,
+    "visual": 14,
+    "anticipation": 11,
+    "grammar": 224,
+    "spelling": 263,
+    "other": 180
+   },
+   "sound_alike": {
+    "k": 28,
+    "n": 720,
+    "share": 0.0389,
+    "ci": [
+     0.027,
+     0.0556
+    ]
+   },
+   "visual": {
+    "k": 14,
+    "n": 720,
+    "share": 0.0194,
+    "ci": [
+     0.0116,
+     0.0324
+    ]
+   },
+   "sound_alike_there_their": 23,
+   "sound_alike_other_pairs": 5,
+   "sound_alike_per_1000_words": 0.287,
+   "visual_events_per_1000_words": 0.43,
+   "sound_alike_anticipation_first": {
+    "k": 28,
+    "n": 720,
+    "share": 0.0389,
+    "ci": [
+     0.027,
+     0.0556
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "original"
+   ],
+   "by_hand": {
+    "John Whitmer": {
+     "events": 78,
+     "words": 4907,
+     "events_per_1000_words": 15.9,
+     "by_event": {
+      "substitution": 43,
+      "insertion": 21,
+      "false_start": 3,
+      "deletion": 11
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 3,
+      "anticipation": 1,
+      "grammar": 17,
+      "spelling": 17,
+      "other": 40
+     },
+     "one_word_substitutions": 41,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 1,
+      "anticipation": 0,
+      "grammar": 17,
+      "spelling": 8,
+      "other": 15
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 41,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0857
+      ]
+     },
+     "visual": {
+      "k": 1,
+      "n": 41,
+      "share": 0.0244,
+      "ci": [
+       0.0043,
+       0.126
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.611,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 41,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0857
+      ]
+     },
+     "enough": true
+    },
+    "Joseph Smith Jr.": {
+     "events": 12,
+     "words": 264,
+     "events_per_1000_words": 45.45,
+     "by_event": {
+      "deletion": 5,
+      "insertion": 4,
+      "substitution": 2,
+      "false_start": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 1,
+      "other": 10
+     },
+     "one_word_substitutions": 3,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 1,
+      "other": 1
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "enough": false
+    },
+    "Oliver Cowdery": {
+     "events": 1296,
+     "words": 85118,
+     "events_per_1000_words": 15.23,
+     "by_event": {
+      "false_start": 72,
+      "insertion": 290,
+      "deletion": 353,
+      "substitution": 581
+     },
+     "classes_all_events": {
+      "sound_alike": 28,
+      "visual": 31,
+      "anticipation": 26,
+      "grammar": 182,
+      "spelling": 520,
+      "other": 509
+     },
+     "one_word_substitutions": 615,
+     "classes_one_word_substitutions": {
+      "sound_alike": 28,
+      "visual": 10,
+      "anticipation": 11,
+      "grammar": 182,
+      "spelling": 235,
+      "other": 149
+     },
+     "sound_alike": {
+      "k": 28,
+      "n": 615,
+      "share": 0.0455,
+      "ci": [
+       0.0317,
+       0.065
+      ]
+     },
+     "visual": {
+      "k": 10,
+      "n": 615,
+      "share": 0.0163,
+      "ci": [
+       0.0089,
+       0.0297
+      ]
+     },
+     "sound_alike_there_their": 23,
+     "sound_alike_other_pairs": 5,
+     "sound_alike_per_1000_words": 0.329,
+     "visual_events_per_1000_words": 0.364,
+     "sound_alike_anticipation_first": {
+      "k": 28,
+      "n": 615,
+      "share": 0.0455,
+      "ci": [
+       0.0317,
+       0.065
+      ]
+     },
+     "enough": true
+    },
+    "Scribe 3": {
+     "events": 154,
+     "words": 7276,
+     "events_per_1000_words": 21.17,
+     "by_event": {
+      "deletion": 35,
+      "substitution": 58,
+      "insertion": 57,
+      "false_start": 4
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 8,
+      "anticipation": 3,
+      "grammar": 24,
+      "spelling": 66,
+      "other": 53
+     },
+     "one_word_substitutions": 61,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 3,
+      "anticipation": 0,
+      "grammar": 24,
+      "spelling": 19,
+      "other": 15
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 61,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0592
+      ]
+     },
+     "visual": {
+      "k": 3,
+      "n": 61,
+      "share": 0.0492,
+      "ci": [
+       0.0169,
+       0.1349
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 1.1,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 61,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0592
+      ]
+     },
+     "enough": true
+    }
+   }
+  },
+  "printers": {
+   "events": 2063,
+   "words": 259375,
+   "events_per_1000_words": 7.95,
+   "by_event": {
+    "substitution": 913,
+    "false_start": 33,
+    "deletion": 485,
+    "insertion": 632
+   },
+   "classes_all_events": {
+    "sound_alike": 5,
+    "visual": 62,
+    "anticipation": 79,
+    "grammar": 180,
+    "spelling": 579,
+    "other": 1158
+   },
+   "one_word_substitutions": 854,
+   "classes_one_word_substitutions": {
+    "sound_alike": 5,
+    "visual": 7,
+    "anticipation": 33,
+    "grammar": 180,
+    "spelling": 382,
+    "other": 247
+   },
+   "sound_alike": {
+    "k": 5,
+    "n": 854,
+    "share": 0.0059,
+    "ci": [
+     0.0025,
+     0.0136
+    ]
+   },
+   "visual": {
+    "k": 7,
+    "n": 854,
+    "share": 0.0082,
+    "ci": [
+     0.004,
+     0.0168
+    ]
+   },
+   "sound_alike_there_their": 1,
+   "sound_alike_other_pairs": 4,
+   "sound_alike_per_1000_words": 0.019,
+   "visual_events_per_1000_words": 0.239,
+   "sound_alike_anticipation_first": {
+    "k": 5,
+    "n": 854,
+    "share": 0.0059,
+    "ci": [
+     0.0025,
+     0.0136
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "printers"
+   ],
+   "by_hand": {
+    "Hyrum Smith": {
+     "events": 31,
+     "words": 1387,
+     "events_per_1000_words": 22.35,
+     "by_event": {
+      "substitution": 7,
+      "deletion": 15,
+      "insertion": 7,
+      "false_start": 2
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 1,
+      "grammar": 1,
+      "spelling": 10,
+      "other": 19
+     },
+     "one_word_substitutions": 9,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 5,
+      "other": 3
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 9,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2992
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 9,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2992
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 9,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2992
+      ]
+     },
+     "enough": false
+    },
+    "Oliver Cowdery": {
+     "events": 1747,
+     "words": 216019,
+     "events_per_1000_words": 8.09,
+     "by_event": {
+      "substitution": 823,
+      "false_start": 26,
+      "deletion": 334,
+      "insertion": 564
+     },
+     "classes_all_events": {
+      "sound_alike": 5,
+      "visual": 51,
+      "anticipation": 58,
+      "grammar": 158,
+      "spelling": 472,
+      "other": 1003
+     },
+     "one_word_substitutions": 759,
+     "classes_one_word_substitutions": {
+      "sound_alike": 5,
+      "visual": 6,
+      "anticipation": 23,
+      "grammar": 158,
+      "spelling": 339,
+      "other": 228
+     },
+     "sound_alike": {
+      "k": 5,
+      "n": 759,
+      "share": 0.0066,
+      "ci": [
+       0.0028,
+       0.0153
+      ]
+     },
+     "visual": {
+      "k": 6,
+      "n": 759,
+      "share": 0.0079,
+      "ci": [
+       0.0036,
+       0.0171
+      ]
+     },
+     "sound_alike_there_their": 1,
+     "sound_alike_other_pairs": 4,
+     "sound_alike_per_1000_words": 0.023,
+     "visual_events_per_1000_words": 0.236,
+     "sound_alike_anticipation_first": {
+      "k": 5,
+      "n": 759,
+      "share": 0.0066,
+      "ci": [
+       0.0028,
+       0.0153
+      ]
+     },
+     "enough": true
+    },
+    "Scribe 2": {
+     "events": 285,
+     "words": 41969,
+     "events_per_1000_words": 6.79,
+     "by_event": {
+      "deletion": 136,
+      "insertion": 61,
+      "substitution": 83,
+      "false_start": 5
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 11,
+      "anticipation": 20,
+      "grammar": 21,
+      "spelling": 97,
+      "other": 136
+     },
+     "one_word_substitutions": 86,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 1,
+      "anticipation": 10,
+      "grammar": 21,
+      "spelling": 38,
+      "other": 16
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 86,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0428
+      ]
+     },
+     "visual": {
+      "k": 1,
+      "n": 86,
+      "share": 0.0116,
+      "ci": [
+       0.0021,
+       0.063
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.262,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 86,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0428
+      ]
+     },
+     "enough": true
+    }
+   }
+  },
+  "ot1_dictated": {
+   "events": 454,
+   "words": 25837,
+   "events_per_1000_words": 17.57,
+   "by_event": {
+    "substitution": 176,
+    "insertion": 155,
+    "false_start": 7,
+    "deletion": 116
+   },
+   "classes_all_events": {
+    "sound_alike": 1,
+    "visual": 18,
+    "anticipation": 22,
+    "grammar": 41,
+    "spelling": 113,
+    "other": 259
+   },
+   "one_word_substitutions": 168,
+   "classes_one_word_substitutions": {
+    "sound_alike": 1,
+    "visual": 3,
+    "anticipation": 3,
+    "grammar": 41,
+    "spelling": 82,
+    "other": 38
+   },
+   "sound_alike": {
+    "k": 1,
+    "n": 168,
+    "share": 0.006,
+    "ci": [
+     0.0011,
+     0.0329
+    ]
+   },
+   "visual": {
+    "k": 3,
+    "n": 168,
+    "share": 0.0179,
+    "ci": [
+     0.0061,
+     0.0512
+    ]
+   },
+   "sound_alike_there_their": 0,
+   "sound_alike_other_pairs": 1,
+   "sound_alike_per_1000_words": 0.039,
+   "visual_events_per_1000_words": 0.697,
+   "sound_alike_anticipation_first": {
+    "k": 1,
+    "n": 168,
+    "share": 0.006,
+    "ci": [
+     0.0011,
+     0.0329
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "ot_revision_1"
+   ],
+   "by_hand": {
+    "Emma Smith": {
+     "events": 8,
+     "words": 1113,
+     "events_per_1000_words": 7.19,
+     "by_event": {
+      "deletion": 2,
+      "substitution": 5,
+      "insertion": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 3,
+      "spelling": 2,
+      "other": 3
+     },
+     "one_word_substitutions": 5,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 3,
+      "spelling": 1,
+      "other": 1
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 5,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4345
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 5,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4345
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 5,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4345
+      ]
+     },
+     "enough": false
+    },
+    "John Whitmer": {
+     "events": 27,
+     "words": 1549,
+     "events_per_1000_words": 17.43,
+     "by_event": {
+      "deletion": 11,
+      "insertion": 9,
+      "substitution": 7
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 2,
+      "grammar": 1,
+      "spelling": 3,
+      "other": 21
+     },
+     "one_word_substitutions": 5,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 3,
+      "other": 1
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 5,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4345
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 5,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4345
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 5,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4345
+      ]
+     },
+     "enough": false
+    },
+    "Oliver Cowdery": {
+     "events": 34,
+     "words": 5964,
+     "events_per_1000_words": 5.7,
+     "by_event": {
+      "substitution": 13,
+      "insertion": 11,
+      "false_start": 2,
+      "deletion": 8
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 2,
+      "grammar": 2,
+      "spelling": 10,
+      "other": 20
+     },
+     "one_word_substitutions": 14,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 2,
+      "spelling": 8,
+      "other": 4
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 14,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2153
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 14,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2153
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 14,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2153
+      ]
+     },
+     "enough": true
+    },
+    "Sidney Rigdon": {
+     "events": 385,
+     "words": 17211,
+     "events_per_1000_words": 22.37,
+     "by_event": {
+      "insertion": 134,
+      "substitution": 151,
+      "deletion": 95,
+      "false_start": 5
+     },
+     "classes_all_events": {
+      "sound_alike": 1,
+      "visual": 18,
+      "anticipation": 18,
+      "grammar": 35,
+      "spelling": 98,
+      "other": 215
+     },
+     "one_word_substitutions": 144,
+     "classes_one_word_substitutions": {
+      "sound_alike": 1,
+      "visual": 3,
+      "anticipation": 3,
+      "grammar": 35,
+      "spelling": 70,
+      "other": 32
+     },
+     "sound_alike": {
+      "k": 1,
+      "n": 144,
+      "share": 0.0069,
+      "ci": [
+       0.0012,
+       0.0383
+      ]
+     },
+     "visual": {
+      "k": 3,
+      "n": 144,
+      "share": 0.0208,
+      "ci": [
+       0.0071,
+       0.0595
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 1,
+     "sound_alike_per_1000_words": 0.058,
+     "visual_events_per_1000_words": 1.046,
+     "sound_alike_anticipation_first": {
+      "k": 1,
+      "n": 144,
+      "share": 0.0069,
+      "ci": [
+       0.0012,
+       0.0383
+      ]
+     },
+     "enough": true
+    }
+   }
+  },
+  "ot2_copy": {
+   "events": 625,
+   "words": 24577,
+   "events_per_1000_words": 25.43,
+   "by_event": {
+    "insertion": 197,
+    "substitution": 288,
+    "deletion": 139,
+    "false_start": 1
+   },
+   "classes_all_events": {
+    "sound_alike": 2,
+    "visual": 41,
+    "anticipation": 20,
+    "grammar": 74,
+    "spelling": 91,
+    "other": 397
+   },
+   "one_word_substitutions": 236,
+   "classes_one_word_substitutions": {
+    "sound_alike": 2,
+    "visual": 13,
+    "anticipation": 7,
+    "grammar": 74,
+    "spelling": 63,
+    "other": 77
+   },
+   "sound_alike": {
+    "k": 2,
+    "n": 236,
+    "share": 0.0085,
+    "ci": [
+     0.0023,
+     0.0304
+    ]
+   },
+   "visual": {
+    "k": 13,
+    "n": 236,
+    "share": 0.0551,
+    "ci": [
+     0.0325,
+     0.092
+    ]
+   },
+   "sound_alike_there_their": 0,
+   "sound_alike_other_pairs": 2,
+   "sound_alike_per_1000_words": 0.081,
+   "visual_events_per_1000_words": 1.668,
+   "sound_alike_anticipation_first": {
+    "k": 2,
+    "n": 236,
+    "share": 0.0085,
+    "ci": [
+     0.0023,
+     0.0304
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "ot_revision_2"
+   ],
+   "by_hand": {
+    "John Whitmer": {
+     "events": 625,
+     "words": 24577,
+     "events_per_1000_words": 25.43,
+     "by_event": {
+      "insertion": 197,
+      "substitution": 288,
+      "deletion": 139,
+      "false_start": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 2,
+      "visual": 41,
+      "anticipation": 20,
+      "grammar": 74,
+      "spelling": 91,
+      "other": 397
+     },
+     "one_word_substitutions": 236,
+     "classes_one_word_substitutions": {
+      "sound_alike": 2,
+      "visual": 13,
+      "anticipation": 7,
+      "grammar": 74,
+      "spelling": 63,
+      "other": 77
+     },
+     "sound_alike": {
+      "k": 2,
+      "n": 236,
+      "share": 0.0085,
+      "ci": [
+       0.0023,
+       0.0304
+      ]
+     },
+     "visual": {
+      "k": 13,
+      "n": 236,
+      "share": 0.0551,
+      "ci": [
+       0.0325,
+       0.092
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 2,
+     "sound_alike_per_1000_words": 0.081,
+     "visual_events_per_1000_words": 1.668,
+     "sound_alike_anticipation_first": {
+      "k": 2,
+      "n": 236,
+      "share": 0.0085,
+      "ci": [
+       0.0023,
+       0.0304
+      ]
+     },
+     "enough": true
+    }
+   }
+  },
+  "ot2_other_hands": {
+   "events": 397,
+   "words": 16940,
+   "events_per_1000_words": 23.44,
+   "by_event": {
+    "substitution": 153,
+    "insertion": 126,
+    "deletion": 115,
+    "false_start": 3
+   },
+   "classes_all_events": {
+    "sound_alike": 8,
+    "visual": 11,
+    "anticipation": 22,
+    "grammar": 46,
+    "spelling": 70,
+    "other": 240
+   },
+   "one_word_substitutions": 148,
+   "classes_one_word_substitutions": {
+    "sound_alike": 8,
+    "visual": 1,
+    "anticipation": 3,
+    "grammar": 46,
+    "spelling": 45,
+    "other": 45
+   },
+   "sound_alike": {
+    "k": 8,
+    "n": 148,
+    "share": 0.0541,
+    "ci": [
+     0.0276,
+     0.103
+    ]
+   },
+   "visual": {
+    "k": 1,
+    "n": 148,
+    "share": 0.0068,
+    "ci": [
+     0.0012,
+     0.0373
+    ]
+   },
+   "sound_alike_there_their": 6,
+   "sound_alike_other_pairs": 2,
+   "sound_alike_per_1000_words": 0.472,
+   "visual_events_per_1000_words": 0.649,
+   "sound_alike_anticipation_first": {
+    "k": 6,
+    "n": 148,
+    "share": 0.0405,
+    "ci": [
+     0.0187,
+     0.0856
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "ot_revision_2"
+   ],
+   "by_hand": {
+    "Frederick G. Williams": {
+     "events": 365,
+     "words": 15960,
+     "events_per_1000_words": 22.87,
+     "by_event": {
+      "deletion": 99,
+      "insertion": 114,
+      "substitution": 149,
+      "false_start": 3
+     },
+     "classes_all_events": {
+      "sound_alike": 8,
+      "visual": 11,
+      "anticipation": 21,
+      "grammar": 43,
+      "spelling": 61,
+      "other": 221
+     },
+     "one_word_substitutions": 144,
+     "classes_one_word_substitutions": {
+      "sound_alike": 8,
+      "visual": 1,
+      "anticipation": 3,
+      "grammar": 43,
+      "spelling": 45,
+      "other": 44
+     },
+     "sound_alike": {
+      "k": 8,
+      "n": 144,
+      "share": 0.0556,
+      "ci": [
+       0.0284,
+       0.1058
+      ]
+     },
+     "visual": {
+      "k": 1,
+      "n": 144,
+      "share": 0.0069,
+      "ci": [
+       0.0012,
+       0.0383
+      ]
+     },
+     "sound_alike_there_their": 6,
+     "sound_alike_other_pairs": 2,
+     "sound_alike_per_1000_words": 0.501,
+     "visual_events_per_1000_words": 0.689,
+     "sound_alike_anticipation_first": {
+      "k": 6,
+      "n": 144,
+      "share": 0.0417,
+      "ci": [
+       0.0192,
+       0.0879
+      ]
+     },
+     "enough": true
+    },
+    "Joseph Smith Jr.": {
+     "events": 27,
+     "words": 847,
+     "events_per_1000_words": 31.88,
+     "by_event": {
+      "deletion": 15,
+      "insertion": 10,
+      "substitution": 2
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 1,
+      "grammar": 2,
+      "spelling": 7,
+      "other": 17
+     },
+     "one_word_substitutions": 2,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 2,
+      "spelling": 0,
+      "other": 0
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "enough": false
+    },
+    "Sidney Rigdon": {
+     "events": 5,
+     "words": 133,
+     "events_per_1000_words": 37.59,
+     "by_event": {
+      "substitution": 2,
+      "insertion": 2,
+      "deletion": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 2,
+      "other": 2
+     },
+     "one_word_substitutions": 2,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 0,
+      "other": 1
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "enough": false
+    }
+   }
+  },
+  "js_own_hand": {
+   "events": 440,
+   "words": 15470,
+   "events_per_1000_words": 28.44,
+   "by_event": {
+    "insertion": 229,
+    "deletion": 207,
+    "substitution": 4
+   },
+   "classes_all_events": {
+    "sound_alike": 0,
+    "visual": 27,
+    "anticipation": 18,
+    "grammar": 0,
+    "spelling": 25,
+    "other": 370
+   },
+   "one_word_substitutions": 4,
+   "classes_one_word_substitutions": {
+    "sound_alike": 0,
+    "visual": 0,
+    "anticipation": 0,
+    "grammar": 0,
+    "spelling": 0,
+    "other": 4
+   },
+   "sound_alike": {
+    "k": 0,
+    "n": 4,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.4899
+    ]
+   },
+   "visual": {
+    "k": 0,
+    "n": 4,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.4899
+    ]
+   },
+   "sound_alike_there_their": 0,
+   "sound_alike_other_pairs": 0,
+   "sound_alike_per_1000_words": 0.0,
+   "visual_events_per_1000_words": 1.745,
+   "sound_alike_anticipation_first": {
+    "k": 0,
+    "n": 4,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.4899
+    ]
+   },
+   "enough": false,
+   "sources": [
+    "js-1829-10-22-letter-cowdery",
+    "js-1831-03-letter-hyrum",
+    "js-1832-06-06-letter-emma",
+    "js-1832-07-31-letter-phelps",
+    "js-1832-10-13-letter-emma",
+    "js-1832-11-27-letter-phelps",
+    "js-1833-01-04-letter-saxton",
+    "js-1833-01-11-letter-phelps",
+    "js-journal-1832-1834",
+    "t73-journal-1835-1836",
+    "t73-letter-and-pay-order-to-lucian-adams-2-october-1843",
+    "t73-letter-to-church-leaders-in-jackson-county-missouri-18-augus",
+    "t73-letter-to-emma-smith-1-december-1838",
+    "t73-letter-to-emma-smith-12-november-1838",
+    "t73-letter-to-emma-smith-18-may-1834",
+    "t73-letter-to-emma-smith-19-august-1836",
+    "t73-letter-to-emma-smith-20-25-january-1840",
+    "t73-letter-to-emma-smith-21-march-1839",
+    "t73-letter-to-emma-smith-26-27-june-1844",
+    "t73-letter-to-emma-smith-4-april-1839",
+    "t73-letter-to-emma-smith-4-november-1838",
+    "t73-letter-to-emma-smith-9-november-1839",
+    "t73-letter-to-newel-k-elizabeth-ann-smith-and-sarah-ann-whitney",
+    "t73-letter-to-newel-k-whitney-12-december-1840",
+    "t73-letter-to-sally-waterman-phelps-20-july-1835",
+    "t73-letter-to-the-church-and-edward-partridge-20-march-1839",
+    "t73-letters-to-john-burk-sally-waterman-phelps-and-almira-mack-s",
+    "t73-note-to-newel-k-whitney-circa-october-1833-early-1834",
+    "t73-reflections-and-blessings-16-and-23-august-1842"
+   ],
+   "by_hand": {
+    "Joseph Smith Jr.": {
+     "events": 440,
+     "words": 15470,
+     "events_per_1000_words": 28.44,
+     "by_event": {
+      "insertion": 229,
+      "deletion": 207,
+      "substitution": 4
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 27,
+      "anticipation": 18,
+      "grammar": 0,
+      "spelling": 25,
+      "other": 370
+     },
+     "one_word_substitutions": 4,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 4
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 4,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4899
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 4,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4899
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 1.745,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 4,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4899
+      ]
+     },
+     "enough": false
+    }
+   }
+  },
+  "scribe_hands_letters_journals": {
+   "events": 827,
+   "words": 65831,
+   "events_per_1000_words": 12.56,
+   "by_event": {
+    "insertion": 246,
+    "substitution": 180,
+    "deletion": 397,
+    "false_start": 4
+   },
+   "classes_all_events": {
+    "sound_alike": 1,
+    "visual": 21,
+    "anticipation": 30,
+    "grammar": 43,
+    "spelling": 105,
+    "other": 627
+   },
+   "one_word_substitutions": 161,
+   "classes_one_word_substitutions": {
+    "sound_alike": 1,
+    "visual": 0,
+    "anticipation": 5,
+    "grammar": 43,
+    "spelling": 56,
+    "other": 56
+   },
+   "sound_alike": {
+    "k": 1,
+    "n": 161,
+    "share": 0.0062,
+    "ci": [
+     0.0011,
+     0.0343
+    ]
+   },
+   "visual": {
+    "k": 0,
+    "n": 161,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.0233
+    ]
+   },
+   "sound_alike_there_their": 0,
+   "sound_alike_other_pairs": 1,
+   "sound_alike_per_1000_words": 0.015,
+   "visual_events_per_1000_words": 0.319,
+   "sound_alike_anticipation_first": {
+    "k": 1,
+    "n": 161,
+    "share": 0.0062,
+    "ci": [
+     0.0011,
+     0.0343
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "js-1829-10-22-letter-cowdery",
+    "js-1831-03-letter-hyrum",
+    "js-1832-06-06-letter-emma",
+    "js-1832-07-31-letter-phelps",
+    "js-1832-10-13-letter-emma",
+    "js-1832-11-27-letter-phelps",
+    "js-1833-01-04-letter-saxton",
+    "js-1833-01-11-letter-phelps",
+    "js-journal-1832-1834",
+    "t73-journal-1835-1836",
+    "t73-letter-and-pay-order-to-lucian-adams-2-october-1843",
+    "t73-letter-to-church-leaders-in-jackson-county-missouri-18-augus",
+    "t73-letter-to-emma-smith-1-december-1838",
+    "t73-letter-to-emma-smith-12-november-1838",
+    "t73-letter-to-emma-smith-18-may-1834",
+    "t73-letter-to-emma-smith-19-august-1836",
+    "t73-letter-to-emma-smith-20-25-january-1840",
+    "t73-letter-to-emma-smith-21-march-1839",
+    "t73-letter-to-emma-smith-26-27-june-1844",
+    "t73-letter-to-emma-smith-4-april-1839",
+    "t73-letter-to-emma-smith-4-november-1838",
+    "t73-letter-to-emma-smith-9-november-1839",
+    "t73-letter-to-newel-k-elizabeth-ann-smith-and-sarah-ann-whitney",
+    "t73-letter-to-newel-k-whitney-12-december-1840",
+    "t73-letter-to-sally-waterman-phelps-20-july-1835",
+    "t73-letter-to-the-church-and-edward-partridge-20-march-1839",
+    "t73-letters-to-john-burk-sally-waterman-phelps-and-almira-mack-s",
+    "t73-note-to-newel-k-whitney-circa-october-1833-early-1834",
+    "t73-reflections-and-blessings-16-and-23-august-1842"
+   ],
+   "by_hand": {
+    "Alexander McRae": {
+     "events": 47,
+     "words": 3360,
+     "events_per_1000_words": 13.99,
+     "by_event": {
+      "substitution": 16,
+      "insertion": 13,
+      "deletion": 17,
+      "false_start": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 1,
+      "visual": 3,
+      "anticipation": 1,
+      "grammar": 4,
+      "spelling": 8,
+      "other": 30
+     },
+     "one_word_substitutions": 14,
+     "classes_one_word_substitutions": {
+      "sound_alike": 1,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 4,
+      "spelling": 5,
+      "other": 4
+     },
+     "sound_alike": {
+      "k": 1,
+      "n": 14,
+      "share": 0.0714,
+      "ci": [
+       0.0127,
+       0.3147
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 14,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2153
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 1,
+     "sound_alike_per_1000_words": 0.298,
+     "visual_events_per_1000_words": 0.893,
+     "sound_alike_anticipation_first": {
+      "k": 1,
+      "n": 14,
+      "share": 0.0714,
+      "ci": [
+       0.0127,
+       0.3147
+      ]
+     },
+     "enough": true
+    },
+    "Caleb Baldwin": {
+     "events": 7,
+     "words": 239,
+     "events_per_1000_words": 29.29,
+     "by_event": {
+      "substitution": 4,
+      "insertion": 1,
+      "deletion": 2
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 2,
+      "other": 4
+     },
+     "one_word_substitutions": 3,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 2,
+      "other": 0
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "enough": false
+    },
+    "Frederick G. Williams": {
+     "events": 85,
+     "words": 8318,
+     "events_per_1000_words": 10.22,
+     "by_event": {
+      "insertion": 37,
+      "substitution": 16,
+      "deletion": 32
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 2,
+      "anticipation": 2,
+      "grammar": 3,
+      "spelling": 15,
+      "other": 63
+     },
+     "one_word_substitutions": 15,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 1,
+      "grammar": 3,
+      "spelling": 7,
+      "other": 4
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 15,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2039
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 15,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2039
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.24,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 15,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.2039
+      ]
+     },
+     "enough": true
+    },
+    "Oliver Cowdery": {
+     "events": 28,
+     "words": 2543,
+     "events_per_1000_words": 11.01,
+     "by_event": {
+      "insertion": 8,
+      "false_start": 1,
+      "substitution": 10,
+      "deletion": 9
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 3,
+      "spelling": 3,
+      "other": 22
+     },
+     "one_word_substitutions": 8,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 3,
+      "spelling": 2,
+      "other": 3
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 8,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.3244
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 8,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.3244
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 8,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.3244
+      ]
+     },
+     "enough": false
+    },
+    "Parley P. Pratt": {
+     "events": 10,
+     "words": 417,
+     "events_per_1000_words": 23.98,
+     "by_event": {
+      "deletion": 4,
+      "insertion": 6
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 1,
+      "other": 9
+     },
+     "one_word_substitutions": 0,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 0
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "visual": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "enough": false
+    },
+    "Sidney Rigdon": {
+     "events": 5,
+     "words": 571,
+     "events_per_1000_words": 8.76,
+     "by_event": {
+      "deletion": 3,
+      "substitution": 2
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 2,
+      "other": 3
+     },
+     "one_word_substitutions": 2,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 2,
+      "other": 0
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "enough": false
+    },
+    "Sylvester Smith": {
+     "events": 13,
+     "words": 2683,
+     "events_per_1000_words": 4.85,
+     "by_event": {
+      "insertion": 5,
+      "deletion": 5,
+      "substitution": 3
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 2,
+      "other": 11
+     },
+     "one_word_substitutions": 3,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 1,
+      "other": 2
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "enough": false
+    },
+    "Unidentified": {
+     "events": 32,
+     "words": 5621,
+     "events_per_1000_words": 5.69,
+     "by_event": {
+      "insertion": 7,
+      "substitution": 9,
+      "deletion": 16
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 2,
+      "grammar": 2,
+      "spelling": 4,
+      "other": 24
+     },
+     "one_word_substitutions": 6,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 2,
+      "spelling": 3,
+      "other": 1
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 6,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.3903
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 6,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.3903
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 6,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.3903
+      ]
+     },
+     "enough": false
+    },
+    "Warren A. Cowdery": {
+     "events": 1,
+     "words": 497,
+     "events_per_1000_words": 2.01,
+     "by_event": {
+      "substitution": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 1
+     },
+     "one_word_substitutions": 1,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 1
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 1,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.7935
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 1,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.7935
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 1,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.7935
+      ]
+     },
+     "enough": false
+    },
+    "Warren Parrish": {
+     "events": 544,
+     "words": 36727,
+     "events_per_1000_words": 14.81,
+     "by_event": {
+      "insertion": 136,
+      "substitution": 111,
+      "deletion": 295,
+      "false_start": 2
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 15,
+      "anticipation": 23,
+      "grammar": 30,
+      "spelling": 64,
+      "other": 412
+     },
+     "one_word_substitutions": 103,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 4,
+      "grammar": 30,
+      "spelling": 34,
+      "other": 35
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 103,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.036
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 103,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.036
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.408,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 103,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.036
+      ]
+     },
+     "enough": true
+    },
+    "Willard Richards": {
+     "events": 9,
+     "words": 776,
+     "events_per_1000_words": 11.6,
+     "by_event": {
+      "insertion": 4,
+      "substitution": 2,
+      "deletion": 3
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 9
+     },
+     "one_word_substitutions": 1,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 1
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 1,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.7935
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 1,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.7935
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 1,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.7935
+      ]
+     },
+     "enough": false
+    },
+    "William Clayton": {
+     "events": 8,
+     "words": 2094,
+     "events_per_1000_words": 3.82,
+     "by_event": {
+      "insertion": 3,
+      "substitution": 2,
+      "deletion": 3
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 1,
+      "other": 7
+     },
+     "one_word_substitutions": 2,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 2
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "enough": false
+    },
+    "William W. Phelps": {
+     "events": 38,
+     "words": 1985,
+     "events_per_1000_words": 19.14,
+     "by_event": {
+      "insertion": 26,
+      "substitution": 4,
+      "deletion": 8
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 1,
+      "anticipation": 2,
+      "grammar": 0,
+      "spelling": 3,
+      "other": 32
+     },
+     "one_word_substitutions": 3,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 3
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.504,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "enough": false
+    }
+   }
+  },
+  "letterbook_1": {
+   "events": 270,
+   "words": 31310,
+   "events_per_1000_words": 8.62,
+   "by_event": {
+    "deletion": 118,
+    "insertion": 125,
+    "substitution": 27
+   },
+   "classes_all_events": {
+    "sound_alike": 0,
+    "visual": 13,
+    "anticipation": 16,
+    "grammar": 4,
+    "spelling": 20,
+    "other": 217
+   },
+   "one_word_substitutions": 24,
+   "classes_one_word_substitutions": {
+    "sound_alike": 0,
+    "visual": 0,
+    "anticipation": 3,
+    "grammar": 4,
+    "spelling": 7,
+    "other": 10
+   },
+   "sound_alike": {
+    "k": 0,
+    "n": 24,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.138
+    ]
+   },
+   "visual": {
+    "k": 0,
+    "n": 24,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.138
+    ]
+   },
+   "sound_alike_there_their": 0,
+   "sound_alike_other_pairs": 0,
+   "sound_alike_per_1000_words": 0.0,
+   "visual_events_per_1000_words": 0.415,
+   "sound_alike_anticipation_first": {
+    "k": 0,
+    "n": 24,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.138
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "js-letterbook-1"
+   ],
+   "by_hand": {
+    "Frederick G. Williams": {
+     "events": 150,
+     "words": 22754,
+     "events_per_1000_words": 6.59,
+     "by_event": {
+      "deletion": 62,
+      "insertion": 65,
+      "substitution": 23
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 6,
+      "anticipation": 12,
+      "grammar": 4,
+      "spelling": 15,
+      "other": 113
+     },
+     "one_word_substitutions": 21,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 3,
+      "grammar": 4,
+      "spelling": 5,
+      "other": 9
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 21,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.1546
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 21,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.1546
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.264,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 21,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.1546
+      ]
+     },
+     "enough": true
+    },
+    "John Whitmer": {
+     "events": 0,
+     "words": 1023,
+     "events_per_1000_words": 0.0,
+     "by_event": {},
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 0
+     },
+     "one_word_substitutions": 0,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 0
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "visual": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "enough": false
+    },
+    "Joseph Smith Jr.": {
+     "events": 109,
+     "words": 5198,
+     "events_per_1000_words": 20.97,
+     "by_event": {
+      "insertion": 56,
+      "deletion": 52,
+      "substitution": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 6,
+      "anticipation": 3,
+      "grammar": 0,
+      "spelling": 4,
+      "other": 96
+     },
+     "one_word_substitutions": 1,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 1,
+      "other": 0
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 1,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.7935
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 1,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.7935
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 1.154,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 1,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.7935
+      ]
+     },
+     "enough": false
+    },
+    "Oliver Cowdery": {
+     "events": 7,
+     "words": 1418,
+     "events_per_1000_words": 4.94,
+     "by_event": {
+      "substitution": 2,
+      "deletion": 2,
+      "insertion": 3
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 1,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 1,
+      "other": 5
+     },
+     "one_word_substitutions": 2,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 1,
+      "other": 1
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.705,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "enough": false
+    },
+    "Orson Hyde": {
+     "events": 4,
+     "words": 917,
+     "events_per_1000_words": 4.36,
+     "by_event": {
+      "deletion": 2,
+      "substitution": 1,
+      "insertion": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 1,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 3
+     },
+     "one_word_substitutions": 0,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 0
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "visual": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "enough": false
+    }
+   }
+  },
+  "histories_in_scribe_hands": {
+   "events": 356,
+   "words": 33396,
+   "events_per_1000_words": 10.66,
+   "by_event": {
+    "insertion": 153,
+    "substitution": 74,
+    "deletion": 128,
+    "false_start": 1
+   },
+   "classes_all_events": {
+    "sound_alike": 0,
+    "visual": 14,
+    "anticipation": 20,
+    "grammar": 21,
+    "spelling": 27,
+    "other": 274
+   },
+   "one_word_substitutions": 62,
+   "classes_one_word_substitutions": {
+    "sound_alike": 0,
+    "visual": 0,
+    "anticipation": 7,
+    "grammar": 21,
+    "spelling": 13,
+    "other": 21
+   },
+   "sound_alike": {
+    "k": 0,
+    "n": 62,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.0583
+    ]
+   },
+   "visual": {
+    "k": 0,
+    "n": 62,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.0583
+    ]
+   },
+   "sound_alike_there_their": 0,
+   "sound_alike_other_pairs": 0,
+   "sound_alike_per_1000_words": 0.0,
+   "visual_events_per_1000_words": 0.419,
+   "sound_alike_anticipation_first": {
+    "k": 0,
+    "n": 62,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.0583
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "js-1832-history",
+    "t73-history-1838-1856-volume-a-1-23-december-1805-30-august-1834"
+   ],
+   "by_hand": {
+    "Frederick G. Williams": {
+     "events": 8,
+     "words": 591,
+     "events_per_1000_words": 13.54,
+     "by_event": {
+      "insertion": 2,
+      "substitution": 3,
+      "deletion": 3
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 1,
+      "grammar": 1,
+      "spelling": 1,
+      "other": 5
+     },
+     "one_word_substitutions": 3,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 1,
+      "other": 1
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "enough": false
+    },
+    "James Mulholland": {
+     "events": 305,
+     "words": 31354,
+     "events_per_1000_words": 9.73,
+     "by_event": {
+      "insertion": 126,
+      "substitution": 71,
+      "deletion": 107,
+      "false_start": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 12,
+      "anticipation": 19,
+      "grammar": 20,
+      "spelling": 25,
+      "other": 229
+     },
+     "one_word_substitutions": 59,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 7,
+      "grammar": 20,
+      "spelling": 12,
+      "other": 20
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 59,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0611
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 59,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0611
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.383,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 59,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0611
+      ]
+     },
+     "enough": true
+    },
+    "Joseph Smith Jr.": {
+     "events": 43,
+     "words": 1451,
+     "events_per_1000_words": 29.63,
+     "by_event": {
+      "insertion": 25,
+      "deletion": 18
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 2,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 1,
+      "other": 40
+     },
+     "one_word_substitutions": 0,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 0
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "visual": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 1.378,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "enough": false
+    }
+   }
+  },
+  "revelation_book_1": {
+   "events": 635,
+   "words": 72657,
+   "events_per_1000_words": 8.74,
+   "by_event": {
+    "substitution": 181,
+    "deletion": 322,
+    "insertion": 127,
+    "false_start": 5
+   },
+   "classes_all_events": {
+    "sound_alike": 0,
+    "visual": 29,
+    "anticipation": 38,
+    "grammar": 50,
+    "spelling": 151,
+    "other": 367
+   },
+   "one_word_substitutions": 174,
+   "classes_one_word_substitutions": {
+    "sound_alike": 0,
+    "visual": 2,
+    "anticipation": 5,
+    "grammar": 50,
+    "spelling": 78,
+    "other": 39
+   },
+   "sound_alike": {
+    "k": 0,
+    "n": 174,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.0216
+    ]
+   },
+   "visual": {
+    "k": 2,
+    "n": 174,
+    "share": 0.0115,
+    "ci": [
+     0.0032,
+     0.0409
+    ]
+   },
+   "sound_alike_there_their": 0,
+   "sound_alike_other_pairs": 0,
+   "sound_alike_per_1000_words": 0.0,
+   "visual_events_per_1000_words": 0.399,
+   "sound_alike_anticipation_first": {
+    "k": 0,
+    "n": 174,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.0216
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "revelation_book_1"
+   ],
+   "by_hand": {
+    "John Whitmer": {
+     "events": 600,
+     "words": 68625,
+     "events_per_1000_words": 8.74,
+     "by_event": {
+      "substitution": 172,
+      "deletion": 307,
+      "insertion": 116,
+      "false_start": 5
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 28,
+      "anticipation": 35,
+      "grammar": 48,
+      "spelling": 143,
+      "other": 346
+     },
+     "one_word_substitutions": 165,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 1,
+      "anticipation": 5,
+      "grammar": 48,
+      "spelling": 74,
+      "other": 37
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 165,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0228
+      ]
+     },
+     "visual": {
+      "k": 1,
+      "n": 165,
+      "share": 0.0061,
+      "ci": [
+       0.0011,
+       0.0335
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.408,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 165,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.0228
+      ]
+     },
+     "enough": true
+    },
+    "Oliver Cowdery": {
+     "events": 24,
+     "words": 3034,
+     "events_per_1000_words": 7.91,
+     "by_event": {
+      "deletion": 7,
+      "insertion": 10,
+      "substitution": 7
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 1,
+      "grammar": 2,
+      "spelling": 5,
+      "other": 16
+     },
+     "one_word_substitutions": 7,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 2,
+      "spelling": 3,
+      "other": 2
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 7,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.3543
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 7,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.3543
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 7,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.3543
+      ]
+     },
+     "enough": false
+    },
+    "Zebedee Coltrin": {
+     "events": 11,
+     "words": 998,
+     "events_per_1000_words": 11.02,
+     "by_event": {
+      "deletion": 8,
+      "substitution": 2,
+      "insertion": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 1,
+      "anticipation": 2,
+      "grammar": 0,
+      "spelling": 3,
+      "other": 5
+     },
+     "one_word_substitutions": 2,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 1,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 1,
+      "other": 0
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "visual": {
+      "k": 1,
+      "n": 2,
+      "share": 0.5,
+      "ci": [
+       0.0945,
+       0.9055
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 1.002,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "enough": false
+    }
+   }
+  },
+  "abraham_ms_a": {
+   "events": 46,
+   "words": 1509,
+   "events_per_1000_words": 30.48,
+   "by_event": {
+    "insertion": 14,
+    "substitution": 13,
+    "deletion": 18,
+    "false_start": 1
+   },
+   "classes_all_events": {
+    "sound_alike": 1,
+    "visual": 1,
+    "anticipation": 4,
+    "grammar": 1,
+    "spelling": 15,
+    "other": 24
+   },
+   "one_word_substitutions": 13,
+   "classes_one_word_substitutions": {
+    "sound_alike": 1,
+    "visual": 1,
+    "anticipation": 0,
+    "grammar": 1,
+    "spelling": 5,
+    "other": 5
+   },
+   "sound_alike": {
+    "k": 1,
+    "n": 13,
+    "share": 0.0769,
+    "ci": [
+     0.0137,
+     0.3331
+    ]
+   },
+   "visual": {
+    "k": 1,
+    "n": 13,
+    "share": 0.0769,
+    "ci": [
+     0.0137,
+     0.3331
+    ]
+   },
+   "sound_alike_there_their": 0,
+   "sound_alike_other_pairs": 1,
+   "sound_alike_per_1000_words": 0.663,
+   "visual_events_per_1000_words": 0.663,
+   "sound_alike_anticipation_first": {
+    "k": 1,
+    "n": 13,
+    "share": 0.0769,
+    "ci": [
+     0.0137,
+     0.3331
+    ]
+   },
+   "enough": true,
+   "sources": [
+    "abraham_ms_a"
+   ],
+   "by_hand": {
+    "Frederick G. Williams": {
+     "events": 13,
+     "words": 373,
+     "events_per_1000_words": 34.85,
+     "by_event": {
+      "insertion": 2,
+      "deletion": 8,
+      "substitution": 3
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 4,
+      "grammar": 0,
+      "spelling": 4,
+      "other": 5
+     },
+     "one_word_substitutions": 2,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 2,
+      "other": 0
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 2,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.6576
+      ]
+     },
+     "enough": false
+    },
+    "Unidentified": {
+     "events": 33,
+     "words": 1136,
+     "events_per_1000_words": 29.05,
+     "by_event": {
+      "insertion": 12,
+      "substitution": 10,
+      "deletion": 10,
+      "false_start": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 1,
+      "visual": 1,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 11,
+      "other": 19
+     },
+     "one_word_substitutions": 11,
+     "classes_one_word_substitutions": {
+      "sound_alike": 1,
+      "visual": 1,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 3,
+      "other": 5
+     },
+     "sound_alike": {
+      "k": 1,
+      "n": 11,
+      "share": 0.0909,
+      "ci": [
+       0.0162,
+       0.3774
+      ]
+     },
+     "visual": {
+      "k": 1,
+      "n": 11,
+      "share": 0.0909,
+      "ci": [
+       0.0162,
+       0.3774
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 1,
+     "sound_alike_per_1000_words": 0.88,
+     "visual_events_per_1000_words": 0.88,
+     "sound_alike_anticipation_first": {
+      "k": 1,
+      "n": 11,
+      "share": 0.0909,
+      "ci": [
+       0.0162,
+       0.3774
+      ]
+     },
+     "enough": true
+    }
+   }
+  },
+  "abraham_ms_b": {
+   "events": 43,
+   "words": 1304,
+   "events_per_1000_words": 32.98,
+   "by_event": {
+    "substitution": 7,
+    "insertion": 14,
+    "deletion": 22
+   },
+   "classes_all_events": {
+    "sound_alike": 1,
+    "visual": 0,
+    "anticipation": 1,
+    "grammar": 1,
+    "spelling": 11,
+    "other": 29
+   },
+   "one_word_substitutions": 7,
+   "classes_one_word_substitutions": {
+    "sound_alike": 1,
+    "visual": 0,
+    "anticipation": 0,
+    "grammar": 1,
+    "spelling": 2,
+    "other": 3
+   },
+   "sound_alike": {
+    "k": 1,
+    "n": 7,
+    "share": 0.1429,
+    "ci": [
+     0.0257,
+     0.5131
+    ]
+   },
+   "visual": {
+    "k": 0,
+    "n": 7,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.3543
+    ]
+   },
+   "sound_alike_there_their": 0,
+   "sound_alike_other_pairs": 1,
+   "sound_alike_per_1000_words": 0.767,
+   "visual_events_per_1000_words": 0.0,
+   "sound_alike_anticipation_first": {
+    "k": 1,
+    "n": 7,
+    "share": 0.1429,
+    "ci": [
+     0.0257,
+     0.5131
+    ]
+   },
+   "enough": false,
+   "sources": [
+    "abraham_ms_b"
+   ],
+   "by_hand": {
+    "Unidentified": {
+     "events": 37,
+     "words": 1117,
+     "events_per_1000_words": 33.12,
+     "by_event": {
+      "insertion": 12,
+      "substitution": 4,
+      "deletion": 21
+     },
+     "classes_all_events": {
+      "sound_alike": 1,
+      "visual": 0,
+      "anticipation": 1,
+      "grammar": 1,
+      "spelling": 8,
+      "other": 26
+     },
+     "one_word_substitutions": 4,
+     "classes_one_word_substitutions": {
+      "sound_alike": 1,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 1,
+      "spelling": 1,
+      "other": 1
+     },
+     "sound_alike": {
+      "k": 1,
+      "n": 4,
+      "share": 0.25,
+      "ci": [
+       0.0456,
+       0.6994
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 4,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4899
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 1,
+     "sound_alike_per_1000_words": 0.895,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 1,
+      "n": 4,
+      "share": 0.25,
+      "ci": [
+       0.0456,
+       0.6994
+      ]
+     },
+     "enough": false
+    },
+    "Warren Parrish": {
+     "events": 6,
+     "words": 187,
+     "events_per_1000_words": 32.09,
+     "by_event": {
+      "substitution": 3,
+      "insertion": 2,
+      "deletion": 1
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 3,
+      "other": 3
+     },
+     "one_word_substitutions": 3,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 1,
+      "other": 2
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 0.0,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 3,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.5615
+      ]
+     },
+     "enough": false
+    }
+   }
+  },
+  "abraham_ms_c": {
+   "events": 44,
+   "words": 2214,
+   "events_per_1000_words": 19.87,
+   "by_event": {
+    "insertion": 12,
+    "deletion": 28,
+    "substitution": 4
+   },
+   "classes_all_events": {
+    "sound_alike": 0,
+    "visual": 4,
+    "anticipation": 4,
+    "grammar": 0,
+    "spelling": 7,
+    "other": 29
+   },
+   "one_word_substitutions": 4,
+   "classes_one_word_substitutions": {
+    "sound_alike": 0,
+    "visual": 0,
+    "anticipation": 1,
+    "grammar": 0,
+    "spelling": 1,
+    "other": 2
+   },
+   "sound_alike": {
+    "k": 0,
+    "n": 4,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.4899
+    ]
+   },
+   "visual": {
+    "k": 0,
+    "n": 4,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.4899
+    ]
+   },
+   "sound_alike_there_their": 0,
+   "sound_alike_other_pairs": 0,
+   "sound_alike_per_1000_words": 0.0,
+   "visual_events_per_1000_words": 1.807,
+   "sound_alike_anticipation_first": {
+    "k": 0,
+    "n": 4,
+    "share": 0.0,
+    "ci": [
+     0.0,
+     0.4899
+    ]
+   },
+   "enough": false,
+   "sources": [
+    "abraham_ms_c"
+   ],
+   "by_hand": {
+    "Unidentified": {
+     "events": 5,
+     "words": 269,
+     "events_per_1000_words": 18.59,
+     "by_event": {
+      "insertion": 3,
+      "deletion": 2
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 1,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 2,
+      "other": 2
+     },
+     "one_word_substitutions": 0,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 0,
+      "grammar": 0,
+      "spelling": 0,
+      "other": 0
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "visual": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 3.717,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 0,
+      "share": null,
+      "ci": null
+     },
+     "enough": false
+    },
+    "Warren Parrish": {
+     "events": 39,
+     "words": 1945,
+     "events_per_1000_words": 20.05,
+     "by_event": {
+      "insertion": 9,
+      "deletion": 26,
+      "substitution": 4
+     },
+     "classes_all_events": {
+      "sound_alike": 0,
+      "visual": 3,
+      "anticipation": 4,
+      "grammar": 0,
+      "spelling": 5,
+      "other": 27
+     },
+     "one_word_substitutions": 4,
+     "classes_one_word_substitutions": {
+      "sound_alike": 0,
+      "visual": 0,
+      "anticipation": 1,
+      "grammar": 0,
+      "spelling": 1,
+      "other": 2
+     },
+     "sound_alike": {
+      "k": 0,
+      "n": 4,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4899
+      ]
+     },
+     "visual": {
+      "k": 0,
+      "n": 4,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4899
+      ]
+     },
+     "sound_alike_there_their": 0,
+     "sound_alike_other_pairs": 0,
+     "sound_alike_per_1000_words": 0.0,
+     "visual_events_per_1000_words": 1.542,
+     "sound_alike_anticipation_first": {
+      "k": 0,
+      "n": 4,
+      "share": 0.0,
+      "ci": [
+       0.0,
+       0.4899
+      ]
+     },
+     "enough": false
+    }
+   }
+  }
+ },
+ "verdict": {
+  "verdict": "yes: heard-like",
+  "post_hoc_verdict_without_there_their": {
+   "verdict": "cannot tell",
+   "original": {
+    "k": 5,
+    "n": 720,
+    "share": 0.0069,
+    "ci": [
+     0.003,
+     0.0162
+    ]
+   },
+   "copied_pool": {
+    "k": 6,
+    "n": 1114,
+    "share": 0.0054,
+    "ci": [
+     0.0025,
+     0.0117
+    ]
+   },
+   "dictated_pool": {
+    "k": 1,
+    "n": 168,
+    "share": 0.006,
+    "ci": [
+     0.0011,
+     0.0329
+    ]
+   },
+   "note": "post hoc: the same rule, there/their left out of the sound-alike count"
+  },
+  "same_scribe_cowdery_original_against_printers": {
+   "original": {
+    "k": 28,
+    "n": 615,
+    "share": 0.0455,
+    "ci": [
+     0.0317,
+     0.065
+    ]
+   },
+   "printers": {
+    "k": 5,
+    "n": 759,
+    "share": 0.0066,
+    "ci": [
+     0.0028,
+     0.0153
+    ]
+   },
+   "fisher_p_one_sided": 1.8336498079073938e-06,
+   "per_1000_words": {
+    "original": 0.329,
+    "printers": 0.023
+   },
+   "without_there_their": {
+    "original": [
+     5,
+     615
+    ],
+    "printers": [
+     4,
+     759
+    ]
+   },
+   "note": "added after the first run (not on the card); reported, not part of the rule"
+  },
+  "original_without_there_their": [
+   5,
+   720
+  ],
+  "copied_pool_without_there_their": [
+   6,
+   1114
+  ],
+  "original": {
+   "k": 28,
+   "n": 720,
+   "share": 0.0389,
+   "ci": [
+    0.027,
+    0.0556
+   ]
+  },
+  "copied_pool": {
+   "k": 7,
+   "n": 1114,
+   "share": 0.0063,
+   "ci": [
+    0.003,
+    0.0129
+   ]
+  },
+  "dictated_pool": {
+   "k": 1,
+   "n": 168,
+   "share": 0.006,
+   "ci": [
+    0.0011,
+    0.0329
+   ]
+  },
+  "copied_pool_members": [
+   "printers",
+   "ot2_copy",
+   "letterbook_1"
+  ],
+  "dictated_pool_members": [
+   "ot1_dictated"
+  ],
+  "visual_share": {
+   "original": {
+    "k": 14,
+    "n": 720,
+    "share": 0.0194,
+    "ci": [
+     0.0116,
+     0.0324
+    ]
+   },
+   "copied_pool": {
+    "k": 20,
+    "n": 1114,
+    "share": 0.018,
+    "ci": [
+     0.0117,
+     0.0276
+    ]
+   },
+   "dictated": {
+    "k": 3,
+    "n": 168,
+    "share": 0.0179,
+    "ci": [
+     0.0061,
+     0.0512
+    ]
+   }
+  },
+  "sound_alike_anticipation_first": {
+   "original": {
+    "k": 28,
+    "n": 720,
+    "share": 0.0389,
+    "ci": [
+     0.027,
+     0.0556
+    ]
+   },
+   "copied_pool": {
+    "k": 7,
+    "n": 1114,
+    "share": 0.0063,
+    "ci": [
+     0.003,
+     0.0129
+    ]
+   },
+   "dictated_pool": {
+    "k": 1,
+    "n": 168,
+    "share": 0.006,
+    "ci": [
+     0.0011,
+     0.0329
+    ]
+   }
+  }
+ },
+ "post_hoc_ot2_other_hands_against_ot2_copy": {
+  "note": "post hoc: OT Revision 2 pages not in the copying hand (mode not established here), against the copy pages",
+  "other_hands": {
+   "k": 8,
+   "n": 148,
+   "share": 0.0541,
+   "ci": [
+    0.0276,
+    0.103
+   ]
+  },
+  "copy_pages": {
+   "k": 2,
+   "n": 236,
+   "share": 0.0085,
+   "ci": [
+    0.0023,
+    0.0304
+   ]
+  },
+  "fisher_p_one_sided": 0.008723288500671014
+ },
+ "names": {
+  "printed_names_not_in_king_james": 127,
+  "names_set_aside_not_names": [
+   "bible"
+  ],
+  "fragments_set_aside": 261,
+  "names_found": 86,
+  "spellings_seen": 1236,
+  "first_spelling_equals_printed": 69,
+  "first_spelling_variant": 17,
+  "first_variant_kinds": {
+   "vowels_only": 10,
+   "consonants_differ": 7
+  },
+  "of_variant_first_later_kept_as_printed": 6,
+  "of_variant_first_struck_at_once": 1,
+  "struck_for_kept_name_pairs": 8,
+  "struck_for_kept_kinds": {
+   "similar_shape_letters": 1,
+   "consonants_differ": 7
+  },
+  "struck_for_kept_equal_phonetic_key": 1,
+  "by_order_of_appearance": {
+   "first": {
+    "spellings": 86,
+    "not_printed_spelling": 17,
+    "share": 0.1977
+   },
+   "second": {
+    "spellings": 70,
+    "not_printed_spelling": 12,
+    "share": 0.1714
+   },
+   "third": {
+    "spellings": 58,
+    "not_printed_spelling": 9,
+    "share": 0.1552
+   },
+   "fourth_and_later": {
+    "spellings": 1022,
+    "not_printed_spelling": 100,
+    "share": 0.0978
+   }
+  }
+ },
+ "names_printers_manuscript_control": {
+  "printed_names_not_in_king_james": 127,
+  "names_set_aside_not_names": [
+   "bible"
+  ],
+  "fragments_set_aside": 160,
+  "names_found": 123,
+  "spellings_seen": 2863,
+  "first_spelling_equals_printed": 110,
+  "first_spelling_variant": 13,
+  "first_variant_kinds": {
+   "consonants_differ": 10,
+   "vowels_only": 3
+  },
+  "of_variant_first_later_kept_as_printed": 13,
+  "of_variant_first_struck_at_once": 0,
+  "struck_for_kept_name_pairs": 12,
+  "struck_for_kept_kinds": {
+   "consonants_differ": 11,
+   "vowels_only": 1
+  },
+  "struck_for_kept_equal_phonetic_key": 0,
+  "by_order_of_appearance": {
+   "first": {
+    "spellings": 123,
+    "not_printed_spelling": 13,
+    "share": 0.1057
+   },
+   "second": {
+    "spellings": 122,
+    "not_printed_spelling": 10,
+    "share": 0.082
+   },
+   "third": {
+    "spellings": 108,
+    "not_printed_spelling": 8,
+    "share": 0.0741
+   },
+   "fourth_and_later": {
+    "spellings": 2510,
+    "not_printed_spelling": 85,
+    "share": 0.0339
+   }
+  }
+ },
+ "config_sha256": "af8a6b18a8a5846e428054a6a8c4ab0ea0f77c9ca567e447fc155839838a2e38",
+ "commit": "4eeb315996ba06b31d6c81d90b81daa0a1815896"
+}
