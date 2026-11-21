@@ -1,0 +1,409 @@
+{
+ "writers": {
+  "joseph_smith": {
+   "group": "prophetic",
+   "scribes": "revelations dictated to scribes (Cowdery, Whitmer and others); ordinary: own hand, dictated letters and clerks' copies (the study's samples)",
+   "prophetic": {
+    "rule": "Revelation Book 1, every section the study cut out (1828-1833): the 1828-29 sample and the later sections (eval.js_later)",
+    "sources": [
+     {
+      "kind": "file",
+      "source": "data/private/candidates/samples/joseph-smith__dictated__pre1830.txt",
+      "lines": null,
+      "filter": null,
+      "words": 2758
+     },
+     {
+      "kind": "glob",
+      "source": "data/private/candidates/later/*.txt",
+      "lines": null,
+      "filter": null,
+      "files": 95,
+      "words": 62128
+     }
+    ],
+    "words": 64886,
+    "long_s_repairs": 2
+   },
+   "ordinary": {
+    "rule": "the study's candidate samples other than the revelations: letters, the 1832 history, journal, Letterbook 1 copies",
+    "sources": [
+     {
+      "kind": "file",
+      "source": "data/private/candidates/samples/joseph-smith__handwritten__post1830.txt",
+      "lines": null,
+      "filter": null,
+      "words": 6335
+     },
+     {
+      "kind": "file",
+      "source": "data/private/candidates/samples/joseph-smith__dictated__post1830.txt",
+      "lines": null,
+      "filter": null,
+      "words": 5293
+     },
+     {
+      "kind": "file",
+      "source": "data/private/candidates/samples/joseph-smith__scribal_copy__post1830.txt",
+      "lines": null,
+      "filter": null,
+      "words": 17583
+     },
+     {
+      "kind": "file",
+      "source": "data/private/candidates/samples/joseph-smith__scribal_copy__pre1830.txt",
+      "lines": null,
+      "filter": null,
+      "words": 360
+     }
+    ],
+    "words": 29571,
+    "long_s_repairs": 8
+   },
+   "hand_checked": {
+    "prophetic": {
+     "chunks": [
+      17,
+      27,
+      37,
+      49,
+      56
+     ],
+     "in_voice": 5
+    },
+    "ordinary": {
+     "chunks": [
+      3,
+      4,
+      9,
+      13,
+      27
+     ],
+     "in_voice": 5
+    }
+   }
+  },
+  "john_wroe": {
+   "group": "prophetic",
+   "scribes": "communications 'taken from the mouth of John Wroe' by named scribes (Shand, Tillotson, Lees and others); the 1829 life is first person, scribe not stated",
+   "prophetic": {
+    "rule": "Private Communications vol. II (1846 printing of 1831-1845 communications), from the first dated communication; editors' footnotes not removed",
+    "sources": [
+     {
+      "kind": "file",
+      "source": "data/corpus/lab/sources/prophets/privatecommunica01wroe/text.txt",
+      "lines": [
+       [
+        40,
+        1000000000
+       ]
+      ],
+      "filter": null,
+      "words": 255431
+     }
+    ],
+    "words": 255431,
+    "long_s_repairs": 191
+   },
+   "ordinary": {
+    "rule": "Life and Journal (1829): the paragraphs where Wroe narrates his own life and travels in the first person (birth to illness; journeys of 1820; the corn; the court case of 1822); his vision accounts, the communications and the compilers' third-person paragraphs are left out (a duplicated page run, lines 132-171, skipped)",
+    "sources": [
+     {
+      "kind": "door",
+      "source": "institutional_books:32044081829434",
+      "lines": [
+       [
+        52,
+        112
+       ],
+       [
+        292,
+        358
+       ],
+       [
+        382,
+        396
+       ],
+       [
+        406,
+        426
+       ]
+      ],
+      "filter": null,
+      "words": 6009
+     }
+    ],
+    "words": 6009,
+    "long_s_repairs": 7
+   },
+   "hand_checked": {
+    "prophetic": {
+     "chunks": [
+      55,
+      94,
+      119,
+      218,
+      229
+     ],
+     "in_voice": 5,
+     "note": "218 holds a scribe's line and the next dated heading"
+    },
+    "ordinary": {
+     "chunks": [
+      0,
+      1,
+      2,
+      4,
+      5
+     ],
+     "in_voice": 5,
+     "note": "2 quotes Genesis read to him"
+    }
+   }
+  },
+  "joanna_southcott": {
+   "group": "prophetic",
+   "scribes": "wrote her communications herself; copied by others for the press",
+   "prophetic": {
+    "rule": "The First and Second Book of the Sealed Prophecies (1803): verse runs only (her communications from the Spirit are mostly in verse); her prose letters in the same volume are left out",
+    "sources": [
+     {
+      "kind": "door",
+      "source": "internet_archive:firstsecondbooko00sout",
+      "lines": null,
+      "filter": "verse",
+      "words": 52729
+     }
+    ],
+    "words": 52729,
+    "long_s_repairs": 479
+   },
+   "ordinary": {
+    "rule": "An Account of the Trials on Bills of Exchange (1807): her own prose account; verse runs dropped; short quoted letters from others not removed",
+    "sources": [
+     {
+      "kind": "door",
+      "source": "internet_archive:b22042076",
+      "lines": null,
+      "filter": "prose",
+      "words": 24058
+     }
+    ],
+    "words": 24058,
+    "long_s_repairs": 33
+   },
+   "hand_checked": {
+    "prophetic": {
+     "chunks": [
+      3,
+      7,
+      22,
+      36,
+      45
+     ],
+     "in_voice": 5,
+     "note": "OCR of long s and st left errors the repair misses (mud, drongly)"
+    },
+    "ordinary": {
+     "chunks": [
+      0,
+      10,
+      11,
+      12,
+      22
+     ],
+     "in_voice": 4,
+     "note": "11 is unreadable OCR"
+    }
+   }
+  },
+  "anna_trapnel": {
+   "group": "prophetic",
+   "scribes": "the Cry was taken down by a 'relator' while she spoke in trance; the Report is her own narrative",
+   "prophetic": {
+    "rule": "The Cry of a Stone (1654): visions, prayers and songs uttered in trance, with the relator's framing (not removed)",
+    "sources": [
+     {
+      "kind": "door",
+      "source": "tcp:A94793",
+      "lines": null,
+      "filter": null,
+      "words": 31385
+     }
+    ],
+    "words": 31385,
+    "long_s_repairs": 10
+   },
+   "ordinary": {
+    "rule": "Anna Trapnel's Report and Plea (1654): her narrative of the journey to Cornwall and her trial (quoted speech of others not removed)",
+    "sources": [
+     {
+      "kind": "door",
+      "source": "tcp:A63061",
+      "lines": null,
+      "filter": null,
+      "words": 30782
+     }
+    ],
+    "words": 30782,
+    "long_s_repairs": 8
+   },
+   "hand_checked": {
+    "prophetic": {
+     "chunks": [
+      7,
+      11,
+      17,
+      18,
+      24
+     ],
+     "in_voice": 4,
+     "note": "7 opens with the relator's framing"
+    },
+    "ordinary": {
+     "chunks": [
+      1,
+      7,
+      13,
+      15,
+      23
+     ],
+     "in_voice": 5
+    }
+   }
+  },
+  "richard_snowden": {
+   "group": "bible_style",
+   "scribes": "printed",
+   "prophetic": {
+    "rule": "The American Revolution written in Scriptural or Ancient Historical Style (1802 printing); verse runs (the poems printed with it) dropped after the hand check; chapter summaries and front matter not removed",
+    "sources": [
+     {
+      "kind": "door",
+      "source": "internet_archive:americanrevoluti00snow",
+      "lines": null,
+      "filter": "prose",
+      "words": 55977
+     }
+    ],
+    "words": 55977,
+    "long_s_repairs": 721
+   },
+   "ordinary": {
+    "rule": "The History of North and South America (1805); a compiled history that may draw on others' wording",
+    "sources": [
+     {
+      "kind": "door",
+      "source": "internet_archive:historynorthand00snowgoog",
+      "lines": null,
+      "filter": null,
+      "words": 142071
+     }
+    ],
+    "words": 142071,
+    "long_s_repairs": 138
+   },
+   "hand_checked": {
+    "prophetic": {
+     "chunks": [
+      0,
+      23,
+      25,
+      40,
+      47
+     ],
+     "in_voice": 4,
+     "note": "0 is the title page and contents; first draw (before verse was dropped) also held a poem, 58"
+    },
+    "ordinary": {
+     "chunks": [
+      27,
+      43,
+      52,
+      78,
+      132
+     ],
+     "in_voice": 5
+    }
+   }
+  },
+  "elias_smith": {
+   "group": "bible_style",
+   "scribes": "printed",
+   "prophetic": {
+    "rule": "The History of Anti-Christ, written in Scripture style (1811)",
+    "sources": [
+     {
+      "kind": "file",
+      "source": "data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/History of Anti-Christ - Elias Smith - 1811.md",
+      "lines": null,
+      "filter": null,
+      "words": 15656
+     }
+    ],
+    "words": 15656,
+    "long_s_repairs": 6
+   },
+   "ordinary": {
+    "rule": "The Life, Conversion, Preaching, Travels and Sufferings of Elias Smith (1816)",
+    "sources": [
+     {
+      "kind": "door",
+      "source": "internet_archive:lifecon00smit",
+      "lines": null,
+      "filter": null,
+      "words": 107614
+     }
+    ],
+    "words": 107614,
+    "long_s_repairs": 45
+   },
+   "hand_checked": {
+    "prophetic": {
+     "chunks": [
+      1,
+      2,
+      5,
+      12,
+      13
+     ],
+     "in_voice": 5
+    },
+    "ordinary": {
+     "chunks": [
+      16,
+      36,
+      43,
+      54,
+      92
+     ],
+     "in_voice": 5
+    }
+   }
+  }
+ },
+ "too_little_text": {},
+ "not_attempted": {},
+ "left_out_after_check": {
+  "edward_burrough": "post hoc: 0 of 11 ordinary-voice chunks attributed to him within the voice; his ordinary sample is two unlike documents, one a collective report"
+ },
+ "left_out": {
+  "richard_brothers": "ordinary voice only in unreadable OCR (letter to Stephens, 1795; letter to Miss Cott, 1798); A Revealed Knowledge is mostly his own exposition, not the Lord's words",
+  "james_strang": "after 1830; four revelations located in the newspapers (Voree Herald lines 687, 6405, 8642; Zion's Reveille 1580), estimated well under min_words and OCR'd with columns interleaved (not counted, unverified); ordinary voice: Ancient and Modern Michilimackinac (1854)",
+  "elias_hicks": "journal, letters and sermons: no text in the prophetic voice by the rule",
+  "job_scott": "journal and treatises: no text in the prophetic voice by the rule",
+  "william_blake": "letters only; the prophetic books are not held",
+  "shaker_testimonies": "many speakers and compilers, not one writer",
+  "handsome_lake": "English translation, with the editor's (Parker's) own prose: not one writer",
+  "nat_turner": "taken down and shaped by Thomas Gray; no ordinary voice",
+  "emanuel_swedenborg": "both voices are a translator's English",
+  "jacob_ilive": "Book of Jasher only; no ordinary prose held",
+  "thomas_reader": "prophecy exposition, not the Lord's words or visions; nothing by the rule",
+  "ezra_stiles": "a sermon, not the prophetic voice by the rule; no ordinary prose held",
+  "jemima_wilkinson": "one work",
+  "george_fox": "the journal is held; his prophetic tracts in the library are each under 1,000 words",
+  "gilbert_hunt": "The Late War only (The Historical Reader reprints it)"
+ },
+ "with_both_voices": 6,
+ "config_sha256": "af8a6b18a8a5846e428054a6a8c4ab0ea0f77c9ca567e447fc155839838a2e38"
+}

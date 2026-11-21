@@ -90,7 +90,7 @@ compares against.
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
 | BOM-104 | The Books of Moses and Abraham share the voice; Rigdon wrote the *Lectures on Faith* | Phipps 1977; Reynolds 2005 | small samples | the study's models and encoders | TBD |
-| BOM-105, BOM-99 | Smith's revelations and his letters look like two different writers | Holmes 1992; the first study | Smith alone | other prophets who wrote in two voices (Southcott, Wroe, Brothers) | TBD |
+| BOM-105, BOM-99 | Smith's revelations and his letters look like two different writers | Holmes 1992; the first study | Smith alone | other writers with two voices (Southcott, Wroe, Trapnel, Snowden, Elias Smith) | **Done** with function words; models TBD |
 | BOM-100, BOM-101 | A model can be taught to see the person and not the scripture voice | this project | | the known-answer set from BOM-99 | TBD |
 
 ### 5. Whose world is it?
@@ -454,6 +454,49 @@ others. Planted mistakes of each kind were recovered 97 to 100% of the time.
 *What it does not show.* Who composed the text; this is only about how words reached the page.
 It reads the published transcripts, not the manuscript pages, so letters written over other
 letters are missed.
+
+### Prophets in two voices (BOM-105, BOM-99)
+
+The first study's central finding was awkward. Joseph Smith's revelations look like the Book of
+Mormon. His letters do not look like either. David Holmes found the same split in 1992 and called
+it a "prophetic voice". The obvious question is whether that split is something about Joseph
+Smith, or something that happens to anyone who writes as a prophet on Monday and writes to a
+friend on Tuesday.
+
+So I looked for other people who did both, with enough of each to measure. Six made the cut:
+
+| Writer | Scripture voice | Ordinary voice |
+| --- | --- | --- |
+| Joseph Smith | revelations, 65,000 words | letters and journal, 30,000 |
+| John Wroe (English prophet, 1820s) | 255,000 | 6,000 |
+| Joanna Southcott (English prophet, 1790s on) | 53,000 | 24,000 |
+| Anna Trapnel (English prophet, 1650s) | 31,000 | 31,000 |
+| Richard Snowden (wrote a Bible-style history) | 56,000 | 142,000 |
+| Elias Smith (wrote a Bible-style tract) | 16,000 | 108,000 |
+
+For each I measured how far apart the two voices are, using the small common words (the, of, and,
+that) that writers use without thinking. The yardstick is the distance between two different
+people writing in the same voice. A gap of 1.0 means: this writer's two voices are as far apart
+as two strangers.
+
+Joseph Smith's gap is 0.92. The other five run from 0.86 to 1.22. His is the second smallest.
+
+So on this measure the split is ordinary. Everyone who changes voice looks like a different
+person. Joseph Smith does it no more than Joanna Southcott or a man writing a mock-biblical
+history of the Revolution.
+
+Can you still find the person across the gap? Sometimes. For three of the other five writers,
+most of their scripture-voice passages were matched to their own ordinary writing. That number
+moves when Bible phrases or archaic words are taken out, so I would not lean on it.
+
+*The check on the method.* Within one voice, passages went to their own writer 92 to 93% of the
+time. A seventh writer, Edward Burrough, was dropped before any cross-voice number was computed:
+none of his passages matched him, and his "ordinary" sample turned out to include a report he may
+not have written alone.
+
+*What it does not show.* This uses common words only. The first study's finding came from language
+models and a style encoder, and those have not been run on this set yet. Four of the six writers
+are read from uncorrected scans. Six is a small group. I labelled the voices myself.
 
 ## What I would want a reader to take from the whole set
 

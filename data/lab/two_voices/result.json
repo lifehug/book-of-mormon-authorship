@@ -1,0 +1,1918 @@
+{
+ "set": {
+  "writers": {
+   "joseph_smith": {
+    "group": "prophetic",
+    "scribes": "revelations dictated to scribes (Cowdery, Whitmer and others); ordinary: own hand, dictated letters and clerks' copies (the study's samples)",
+    "prophetic": {
+     "rule": "Revelation Book 1, every section the study cut out (1828-1833): the 1828-29 sample and the later sections (eval.js_later)",
+     "sources": [
+      {
+       "kind": "file",
+       "source": "data/private/candidates/samples/joseph-smith__dictated__pre1830.txt",
+       "lines": null,
+       "filter": null,
+       "words": 2758
+      },
+      {
+       "kind": "glob",
+       "source": "data/private/candidates/later/*.txt",
+       "lines": null,
+       "filter": null,
+       "files": 95,
+       "words": 62128
+      }
+     ],
+     "words": 64886,
+     "long_s_repairs": 2
+    },
+    "ordinary": {
+     "rule": "the study's candidate samples other than the revelations: letters, the 1832 history, journal, Letterbook 1 copies",
+     "sources": [
+      {
+       "kind": "file",
+       "source": "data/private/candidates/samples/joseph-smith__handwritten__post1830.txt",
+       "lines": null,
+       "filter": null,
+       "words": 6335
+      },
+      {
+       "kind": "file",
+       "source": "data/private/candidates/samples/joseph-smith__dictated__post1830.txt",
+       "lines": null,
+       "filter": null,
+       "words": 5293
+      },
+      {
+       "kind": "file",
+       "source": "data/private/candidates/samples/joseph-smith__scribal_copy__post1830.txt",
+       "lines": null,
+       "filter": null,
+       "words": 17583
+      },
+      {
+       "kind": "file",
+       "source": "data/private/candidates/samples/joseph-smith__scribal_copy__pre1830.txt",
+       "lines": null,
+       "filter": null,
+       "words": 360
+      }
+     ],
+     "words": 29571,
+     "long_s_repairs": 8
+    },
+    "hand_checked": {
+     "prophetic": {
+      "chunks": [
+       17,
+       27,
+       37,
+       49,
+       56
+      ],
+      "in_voice": 5
+     },
+     "ordinary": {
+      "chunks": [
+       3,
+       4,
+       9,
+       13,
+       27
+      ],
+      "in_voice": 5
+     }
+    }
+   },
+   "john_wroe": {
+    "group": "prophetic",
+    "scribes": "communications 'taken from the mouth of John Wroe' by named scribes (Shand, Tillotson, Lees and others); the 1829 life is first person, scribe not stated",
+    "prophetic": {
+     "rule": "Private Communications vol. II (1846 printing of 1831-1845 communications), from the first dated communication; editors' footnotes not removed",
+     "sources": [
+      {
+       "kind": "file",
+       "source": "data/corpus/lab/sources/prophets/privatecommunica01wroe/text.txt",
+       "lines": [
+        [
+         40,
+         1000000000
+        ]
+       ],
+       "filter": null,
+       "words": 255431
+      }
+     ],
+     "words": 255431,
+     "long_s_repairs": 191
+    },
+    "ordinary": {
+     "rule": "Life and Journal (1829): the paragraphs where Wroe narrates his own life and travels in the first person (birth to illness; journeys of 1820; the corn; the court case of 1822); his vision accounts, the communications and the compilers' third-person paragraphs are left out (a duplicated page run, lines 132-171, skipped)",
+     "sources": [
+      {
+       "kind": "door",
+       "source": "institutional_books:32044081829434",
+       "lines": [
+        [
+         52,
+         112
+        ],
+        [
+         292,
+         358
+        ],
+        [
+         382,
+         396
+        ],
+        [
+         406,
+         426
+        ]
+       ],
+       "filter": null,
+       "words": 6009
+      }
+     ],
+     "words": 6009,
+     "long_s_repairs": 7
+    },
+    "hand_checked": {
+     "prophetic": {
+      "chunks": [
+       55,
+       94,
+       119,
+       218,
+       229
+      ],
+      "in_voice": 5,
+      "note": "218 holds a scribe's line and the next dated heading"
+     },
+     "ordinary": {
+      "chunks": [
+       0,
+       1,
+       2,
+       4,
+       5
+      ],
+      "in_voice": 5,
+      "note": "2 quotes Genesis read to him"
+     }
+    }
+   },
+   "joanna_southcott": {
+    "group": "prophetic",
+    "scribes": "wrote her communications herself; copied by others for the press",
+    "prophetic": {
+     "rule": "The First and Second Book of the Sealed Prophecies (1803): verse runs only (her communications from the Spirit are mostly in verse); her prose letters in the same volume are left out",
+     "sources": [
+      {
+       "kind": "door",
+       "source": "internet_archive:firstsecondbooko00sout",
+       "lines": null,
+       "filter": "verse",
+       "words": 52729
+      }
+     ],
+     "words": 52729,
+     "long_s_repairs": 479
+    },
+    "ordinary": {
+     "rule": "An Account of the Trials on Bills of Exchange (1807): her own prose account; verse runs dropped; short quoted letters from others not removed",
+     "sources": [
+      {
+       "kind": "door",
+       "source": "internet_archive:b22042076",
+       "lines": null,
+       "filter": "prose",
+       "words": 24058
+      }
+     ],
+     "words": 24058,
+     "long_s_repairs": 33
+    },
+    "hand_checked": {
+     "prophetic": {
+      "chunks": [
+       3,
+       7,
+       22,
+       36,
+       45
+      ],
+      "in_voice": 5,
+      "note": "OCR of long s and st left errors the repair misses (mud, drongly)"
+     },
+     "ordinary": {
+      "chunks": [
+       0,
+       10,
+       11,
+       12,
+       22
+      ],
+      "in_voice": 4,
+      "note": "11 is unreadable OCR"
+     }
+    }
+   },
+   "anna_trapnel": {
+    "group": "prophetic",
+    "scribes": "the Cry was taken down by a 'relator' while she spoke in trance; the Report is her own narrative",
+    "prophetic": {
+     "rule": "The Cry of a Stone (1654): visions, prayers and songs uttered in trance, with the relator's framing (not removed)",
+     "sources": [
+      {
+       "kind": "door",
+       "source": "tcp:A94793",
+       "lines": null,
+       "filter": null,
+       "words": 31385
+      }
+     ],
+     "words": 31385,
+     "long_s_repairs": 10
+    },
+    "ordinary": {
+     "rule": "Anna Trapnel's Report and Plea (1654): her narrative of the journey to Cornwall and her trial (quoted speech of others not removed)",
+     "sources": [
+      {
+       "kind": "door",
+       "source": "tcp:A63061",
+       "lines": null,
+       "filter": null,
+       "words": 30782
+      }
+     ],
+     "words": 30782,
+     "long_s_repairs": 8
+    },
+    "hand_checked": {
+     "prophetic": {
+      "chunks": [
+       7,
+       11,
+       17,
+       18,
+       24
+      ],
+      "in_voice": 4,
+      "note": "7 opens with the relator's framing"
+     },
+     "ordinary": {
+      "chunks": [
+       1,
+       7,
+       13,
+       15,
+       23
+      ],
+      "in_voice": 5
+     }
+    }
+   },
+   "richard_snowden": {
+    "group": "bible_style",
+    "scribes": "printed",
+    "prophetic": {
+     "rule": "The American Revolution written in Scriptural or Ancient Historical Style (1802 printing); verse runs (the poems printed with it) dropped after the hand check; chapter summaries and front matter not removed",
+     "sources": [
+      {
+       "kind": "door",
+       "source": "internet_archive:americanrevoluti00snow",
+       "lines": null,
+       "filter": "prose",
+       "words": 55977
+      }
+     ],
+     "words": 55977,
+     "long_s_repairs": 721
+    },
+    "ordinary": {
+     "rule": "The History of North and South America (1805); a compiled history that may draw on others' wording",
+     "sources": [
+      {
+       "kind": "door",
+       "source": "internet_archive:historynorthand00snowgoog",
+       "lines": null,
+       "filter": null,
+       "words": 142071
+      }
+     ],
+     "words": 142071,
+     "long_s_repairs": 138
+    },
+    "hand_checked": {
+     "prophetic": {
+      "chunks": [
+       0,
+       23,
+       25,
+       40,
+       47
+      ],
+      "in_voice": 4,
+      "note": "0 is the title page and contents; first draw (before verse was dropped) also held a poem, 58"
+     },
+     "ordinary": {
+      "chunks": [
+       27,
+       43,
+       52,
+       78,
+       132
+      ],
+      "in_voice": 5
+     }
+    }
+   },
+   "elias_smith": {
+    "group": "bible_style",
+    "scribes": "printed",
+    "prophetic": {
+     "rule": "The History of Anti-Christ, written in Scripture style (1811)",
+     "sources": [
+      {
+       "kind": "file",
+       "source": "data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/History of Anti-Christ - Elias Smith - 1811.md",
+       "lines": null,
+       "filter": null,
+       "words": 15656
+      }
+     ],
+     "words": 15656,
+     "long_s_repairs": 6
+    },
+    "ordinary": {
+     "rule": "The Life, Conversion, Preaching, Travels and Sufferings of Elias Smith (1816)",
+     "sources": [
+      {
+       "kind": "door",
+       "source": "internet_archive:lifecon00smit",
+       "lines": null,
+       "filter": null,
+       "words": 107614
+      }
+     ],
+     "words": 107614,
+     "long_s_repairs": 45
+    },
+    "hand_checked": {
+     "prophetic": {
+      "chunks": [
+       1,
+       2,
+       5,
+       12,
+       13
+      ],
+      "in_voice": 5
+     },
+     "ordinary": {
+      "chunks": [
+       16,
+       36,
+       43,
+       54,
+       92
+      ],
+      "in_voice": 5
+     }
+    }
+   }
+  },
+  "too_little_text": {},
+  "not_attempted": {},
+  "left_out_after_check": {
+   "edward_burrough": "post hoc: 0 of 11 ordinary-voice chunks attributed to him within the voice; his ordinary sample is two unlike documents, one a collective report"
+  },
+  "with_both_voices": 6
+ },
+ "settings": {
+  "min_words": 5000,
+  "chunk_words": 1000,
+  "mfw": 150,
+  "bg_works": 120,
+  "bg_min_words": 20000,
+  "bg_words_per_work": 20000,
+  "year_min": 1780,
+  "year_max": 1830,
+  "profile_chunks": 5,
+  "train_chunks": 20,
+  "resamples": 500,
+  "kjv_ngram": 5,
+  "verse_min_lines": 6,
+  "verse_max_words": 10,
+  "header_upper_share": 0.7,
+  "header_max_words": 8,
+  "known_bar": 0.8,
+  "cross_share": 0.5,
+  "larger_than_any_share": 0.95,
+  "min_writers": 5,
+  "handcheck": 5,
+  "archaic_words": [
+   "thou",
+   "thee",
+   "thy",
+   "thine",
+   "ye",
+   "hath",
+   "hast",
+   "doth",
+   "dost",
+   "art",
+   "shalt",
+   "wilt",
+   "canst",
+   "didst",
+   "hadst",
+   "saith",
+   "unto"
+  ],
+  "seed": 20261120
+ },
+ "background_works": 120,
+ "known_answer": {
+  "burrows": {
+   "prophetic": {
+    "own_author_rate": {
+     "joseph_smith": 1.0,
+     "john_wroe": 0.973,
+     "joanna_southcott": 1.0,
+     "anna_trapnel": 0.774,
+     "richard_snowden": 0.982,
+     "elias_smith": 0.867
+    },
+    "macro": 0.933,
+    "chance": 0.167
+   },
+   "ordinary": {
+    "own_author_rate": {
+     "joseph_smith": 0.897,
+     "john_wroe": 1.0,
+     "joanna_southcott": 0.875,
+     "anna_trapnel": 0.833,
+     "richard_snowden": 0.986,
+     "elias_smith": 0.944
+    },
+    "macro": 0.922,
+    "chance": 0.167
+   }
+  },
+  "cosine": {
+   "prophetic": {
+    "own_author_rate": {
+     "joseph_smith": 0.969,
+     "john_wroe": 0.855,
+     "joanna_southcott": 1.0,
+     "anna_trapnel": 0.806,
+     "richard_snowden": 0.982,
+     "elias_smith": 0.8
+    },
+    "macro": 0.902,
+    "chance": 0.167
+   },
+   "ordinary": {
+    "own_author_rate": {
+     "joseph_smith": 0.897,
+     "john_wroe": 1.0,
+     "joanna_southcott": 1.0,
+     "anna_trapnel": 0.933,
+     "richard_snowden": 0.951,
+     "elias_smith": 0.935
+    },
+    "macro": 0.953,
+    "chance": 0.167
+   }
+  },
+  "bar": 0.8,
+  "passed": true
+ },
+ "chunks": {
+  "joseph_smith": {
+   "prophetic": 64,
+   "ordinary": 29
+  },
+  "john_wroe": {
+   "prophetic": 255,
+   "ordinary": 6
+  },
+  "joanna_southcott": {
+   "prophetic": 52,
+   "ordinary": 24
+  },
+  "anna_trapnel": {
+   "prophetic": 31,
+   "ordinary": 30
+  },
+  "richard_snowden": {
+   "prophetic": 55,
+   "ordinary": 142
+  },
+  "elias_smith": {
+   "prophetic": 15,
+   "ordinary": 107
+  }
+ },
+ "cross_voice": {
+  "burrows": {
+   "ordinary_to_prophetic": {
+    "joseph_smith": {
+     "chunks": 64,
+     "own": 64,
+     "rate": 1.0,
+     "went_to": {
+      "joseph_smith": 64
+     }
+    },
+    "john_wroe": {
+     "chunks": 255,
+     "own": 1,
+     "rate": 0.004,
+     "went_to": {
+      "joseph_smith": 132,
+      "joanna_southcott": 52,
+      "richard_snowden": 63,
+      "john_wroe": 1,
+      "elias_smith": 7
+     }
+    },
+    "joanna_southcott": {
+     "chunks": 52,
+     "own": 52,
+     "rate": 1.0,
+     "went_to": {
+      "joanna_southcott": 52
+     }
+    },
+    "anna_trapnel": {
+     "chunks": 31,
+     "own": 4,
+     "rate": 0.129,
+     "went_to": {
+      "elias_smith": 4,
+      "anna_trapnel": 4,
+      "joanna_southcott": 11,
+      "joseph_smith": 12
+     }
+    },
+    "richard_snowden": {
+     "chunks": 55,
+     "own": 55,
+     "rate": 1.0,
+     "went_to": {
+      "richard_snowden": 55
+     }
+    },
+    "elias_smith": {
+     "chunks": 15,
+     "own": 1,
+     "rate": 0.067,
+     "went_to": {
+      "richard_snowden": 10,
+      "joanna_southcott": 1,
+      "joseph_smith": 3,
+      "elias_smith": 1
+     }
+    }
+   },
+   "ordinary_to_prophetic_attraction": {
+    "joseph_smith": 0.36,
+    "john_wroe": 0.0,
+    "joanna_southcott": 0.152,
+    "anna_trapnel": 0.0,
+    "richard_snowden": 0.175,
+    "elias_smith": 0.024
+   },
+   "prophetic_to_ordinary": {
+    "joseph_smith": {
+     "chunks": 29,
+     "own": 11,
+     "rate": 0.379,
+     "went_to": {
+      "joseph_smith": 11,
+      "john_wroe": 15,
+      "elias_smith": 2,
+      "richard_snowden": 1
+     }
+    },
+    "john_wroe": {
+     "chunks": 6,
+     "own": 3,
+     "rate": 0.5,
+     "went_to": {
+      "richard_snowden": 3,
+      "john_wroe": 3
+     }
+    },
+    "joanna_southcott": {
+     "chunks": 24,
+     "own": 1,
+     "rate": 0.042,
+     "went_to": {
+      "john_wroe": 12,
+      "joseph_smith": 1,
+      "elias_smith": 5,
+      "richard_snowden": 5,
+      "joanna_southcott": 1
+     }
+    },
+    "anna_trapnel": {
+     "chunks": 30,
+     "own": 11,
+     "rate": 0.367,
+     "went_to": {
+      "john_wroe": 11,
+      "anna_trapnel": 11,
+      "elias_smith": 5,
+      "joseph_smith": 3
+     }
+    },
+    "richard_snowden": {
+     "chunks": 142,
+     "own": 131,
+     "rate": 0.923,
+     "went_to": {
+      "richard_snowden": 131,
+      "elias_smith": 5,
+      "john_wroe": 6
+     }
+    },
+    "elias_smith": {
+     "chunks": 107,
+     "own": 24,
+     "rate": 0.224,
+     "went_to": {
+      "john_wroe": 46,
+      "richard_snowden": 37,
+      "elias_smith": 24
+     }
+    }
+   },
+   "prophetic_to_ordinary_attraction": {
+    "joseph_smith": 0.013,
+    "john_wroe": 0.271,
+    "joanna_southcott": 0.0,
+    "anna_trapnel": 0.0,
+    "richard_snowden": 0.235,
+    "elias_smith": 0.074
+   }
+  },
+  "cosine": {
+   "ordinary_to_prophetic": {
+    "joseph_smith": {
+     "chunks": 64,
+     "own": 63,
+     "rate": 0.984,
+     "went_to": {
+      "joseph_smith": 63,
+      "joanna_southcott": 1
+     }
+    },
+    "john_wroe": {
+     "chunks": 255,
+     "own": 14,
+     "rate": 0.055,
+     "went_to": {
+      "joseph_smith": 71,
+      "joanna_southcott": 126,
+      "john_wroe": 14,
+      "anna_trapnel": 31,
+      "elias_smith": 13
+     }
+    },
+    "joanna_southcott": {
+     "chunks": 52,
+     "own": 52,
+     "rate": 1.0,
+     "went_to": {
+      "joanna_southcott": 52
+     }
+    },
+    "anna_trapnel": {
+     "chunks": 31,
+     "own": 8,
+     "rate": 0.258,
+     "went_to": {
+      "elias_smith": 1,
+      "anna_trapnel": 8,
+      "joanna_southcott": 15,
+      "joseph_smith": 7
+     }
+    },
+    "richard_snowden": {
+     "chunks": 55,
+     "own": 39,
+     "rate": 0.709,
+     "went_to": {
+      "richard_snowden": 39,
+      "joanna_southcott": 7,
+      "elias_smith": 9
+     }
+    },
+    "elias_smith": {
+     "chunks": 15,
+     "own": 5,
+     "rate": 0.333,
+     "went_to": {
+      "elias_smith": 5,
+      "joanna_southcott": 5,
+      "joseph_smith": 3,
+      "richard_snowden": 2
+     }
+    }
+   },
+   "ordinary_to_prophetic_attraction": {
+    "joseph_smith": 0.199,
+    "john_wroe": 0.0,
+    "joanna_southcott": 0.367,
+    "anna_trapnel": 0.07,
+    "richard_snowden": 0.005,
+    "elias_smith": 0.05
+   },
+   "prophetic_to_ordinary": {
+    "joseph_smith": {
+     "chunks": 29,
+     "own": 21,
+     "rate": 0.724,
+     "went_to": {
+      "joseph_smith": 21,
+      "anna_trapnel": 4,
+      "john_wroe": 2,
+      "elias_smith": 1,
+      "richard_snowden": 1
+     }
+    },
+    "john_wroe": {
+     "chunks": 6,
+     "own": 1,
+     "rate": 0.167,
+     "went_to": {
+      "richard_snowden": 3,
+      "joanna_southcott": 1,
+      "john_wroe": 1,
+      "anna_trapnel": 1
+     }
+    },
+    "joanna_southcott": {
+     "chunks": 24,
+     "own": 11,
+     "rate": 0.458,
+     "went_to": {
+      "john_wroe": 2,
+      "anna_trapnel": 4,
+      "joanna_southcott": 11,
+      "joseph_smith": 2,
+      "elias_smith": 4,
+      "richard_snowden": 1
+     }
+    },
+    "anna_trapnel": {
+     "chunks": 30,
+     "own": 27,
+     "rate": 0.9,
+     "went_to": {
+      "anna_trapnel": 27,
+      "john_wroe": 1,
+      "elias_smith": 1,
+      "joseph_smith": 1
+     }
+    },
+    "richard_snowden": {
+     "chunks": 142,
+     "own": 129,
+     "rate": 0.908,
+     "went_to": {
+      "richard_snowden": 129,
+      "elias_smith": 7,
+      "joanna_southcott": 1,
+      "anna_trapnel": 1,
+      "joseph_smith": 4
+     }
+    },
+    "elias_smith": {
+     "chunks": 107,
+     "own": 48,
+     "rate": 0.449,
+     "went_to": {
+      "john_wroe": 14,
+      "richard_snowden": 31,
+      "elias_smith": 48,
+      "joseph_smith": 4,
+      "joanna_southcott": 6,
+      "anna_trapnel": 4
+     }
+    }
+   },
+   "prophetic_to_ordinary_attraction": {
+    "joseph_smith": 0.036,
+    "john_wroe": 0.057,
+    "joanna_southcott": 0.025,
+    "anna_trapnel": 0.045,
+    "richard_snowden": 0.184,
+    "elias_smith": 0.056
+   }
+  }
+ },
+ "gaps": {
+  "per_writer": {
+   "anna_trapnel": {
+    "self_gap": [
+     0.5971,
+     0.7756,
+     0.9872
+    ],
+    "gap_index": [
+     0.8223,
+     1.052,
+     1.3365
+    ],
+    "closer_to_self_share": [
+     0.295,
+     1.0,
+     1.0
+    ],
+    "median_delta_to_other_prophetic": [
+     0.7804,
+     0.8861,
+     0.987
+    ],
+    "median_delta_to_other_ordinary": [
+     0.6652,
+     0.7335,
+     0.8178
+    ]
+   },
+   "elias_smith": {
+    "self_gap": [
+     0.619,
+     0.713,
+     0.8105
+    ],
+    "gap_index": [
+     0.9444,
+     1.0941,
+     1.2631
+    ],
+    "closer_to_self_share": [
+     0.4,
+     0.8,
+     1.0
+    ],
+    "median_delta_to_other_prophetic": [
+     0.7416,
+     0.8232,
+     0.9057
+    ],
+    "median_delta_to_other_ordinary": [
+     0.5956,
+     0.6484,
+     0.7165
+    ]
+   },
+   "joanna_southcott": {
+    "self_gap": [
+     0.7605,
+     0.8695,
+     0.9869
+    ],
+    "gap_index": [
+     1.0098,
+     1.2218,
+     1.442
+    ],
+    "closer_to_self_share": [
+     0.8,
+     1.0,
+     1.0
+    ],
+    "median_delta_to_other_prophetic": [
+     0.961,
+     1.0391,
+     1.1172
+    ],
+    "median_delta_to_other_ordinary": [
+     0.6499,
+     0.715,
+     0.7861
+    ]
+   },
+   "john_wroe": {
+    "self_gap": [
+     0.7321,
+     0.8056,
+     0.8924
+    ],
+    "gap_index": [
+     0.9646,
+     1.0872,
+     1.236
+    ],
+    "closer_to_self_share": [
+     0.0,
+     0.4,
+     0.8
+    ],
+    "median_delta_to_other_prophetic": [
+     0.6893,
+     0.765,
+     0.8512
+    ],
+    "median_delta_to_other_ordinary": [
+     0.6798,
+     0.7398,
+     0.7917
+    ]
+   },
+   "joseph_smith": {
+    "self_gap": [
+     0.5528,
+     0.6387,
+     0.7301
+    ],
+    "gap_index": [
+     0.7685,
+     0.9155,
+     1.0702
+    ],
+    "closer_to_self_share": [
+     0.8,
+     1.0,
+     1.0
+    ],
+    "median_delta_to_other_prophetic": [
+     0.7788,
+     0.8641,
+     0.955
+    ],
+    "median_delta_to_other_ordinary": [
+     0.6211,
+     0.698,
+     0.7713
+    ]
+   },
+   "richard_snowden": {
+    "self_gap": [
+     0.5261,
+     0.6145,
+     0.6986
+    ],
+    "gap_index": [
+     0.7153,
+     0.8639,
+     1.0311
+    ],
+    "closer_to_self_share": [
+     0.8,
+     1.0,
+     1.0
+    ],
+    "median_delta_to_other_prophetic": [
+     0.8091,
+     0.9224,
+     1.0307
+    ],
+    "median_delta_to_other_ordinary": [
+     0.6408,
+     0.7145,
+     0.769
+    ]
+   }
+  },
+  "order_by_gap_index": [
+   "joanna_southcott",
+   "elias_smith",
+   "john_wroe",
+   "anna_trapnel",
+   "joseph_smith",
+   "richard_snowden"
+  ],
+  "joseph_smith_rank": 5,
+  "joseph_smith_above_all_share": 0.002,
+  "writers": 6
+ },
+ "verdicts": {
+  "crosses": {
+   "joseph_smith": true,
+   "john_wroe": true,
+   "joanna_southcott": true,
+   "anna_trapnel": false,
+   "richard_snowden": true,
+   "elias_smith": false
+  },
+  "others_crossing": 3,
+  "others": 5,
+  "genre_effect": false,
+  "joseph_smith_gap": "typical",
+  "joseph_smith_gap_index_median": 0.9155,
+  "others_gap_index_range": [
+   0.8639,
+   1.2218
+  ],
+  "prophetic_others": [
+   "john_wroe",
+   "joanna_southcott",
+   "anna_trapnel"
+  ],
+  "bible_style_others": [
+   "richard_snowden",
+   "elias_smith"
+  ]
+ },
+ "variants": {
+  "no_archaic_words": {
+   "features": 150,
+   "chunks": {
+    "joseph_smith": {
+     "prophetic": 64,
+     "ordinary": 29
+    },
+    "john_wroe": {
+     "prophetic": 255,
+     "ordinary": 6
+    },
+    "joanna_southcott": {
+     "prophetic": 52,
+     "ordinary": 24
+    },
+    "anna_trapnel": {
+     "prophetic": 31,
+     "ordinary": 30
+    },
+    "richard_snowden": {
+     "prophetic": 55,
+     "ordinary": 142
+    },
+    "elias_smith": {
+     "prophetic": 15,
+     "ordinary": 107
+    }
+   },
+   "known_answer": {
+    "burrows": {
+     "prophetic": {
+      "own_author_rate": {
+       "joseph_smith": 1.0,
+       "john_wroe": 0.965,
+       "joanna_southcott": 1.0,
+       "anna_trapnel": 0.774,
+       "richard_snowden": 0.982,
+       "elias_smith": 0.867
+      },
+      "macro": 0.931,
+      "chance": 0.167
+     },
+     "ordinary": {
+      "own_author_rate": {
+       "joseph_smith": 0.897,
+       "john_wroe": 1.0,
+       "joanna_southcott": 0.875,
+       "anna_trapnel": 0.833,
+       "richard_snowden": 0.986,
+       "elias_smith": 0.944
+      },
+      "macro": 0.922,
+      "chance": 0.167
+     }
+    },
+    "cosine": {
+     "prophetic": {
+      "own_author_rate": {
+       "joseph_smith": 1.0,
+       "john_wroe": 0.851,
+       "joanna_southcott": 1.0,
+       "anna_trapnel": 0.806,
+       "richard_snowden": 0.982,
+       "elias_smith": 0.8
+      },
+      "macro": 0.906,
+      "chance": 0.167
+     },
+     "ordinary": {
+      "own_author_rate": {
+       "joseph_smith": 0.897,
+       "john_wroe": 1.0,
+       "joanna_southcott": 1.0,
+       "anna_trapnel": 0.967,
+       "richard_snowden": 0.937,
+       "elias_smith": 0.944
+      },
+      "macro": 0.958,
+      "chance": 0.167
+     }
+    }
+   },
+   "words_after": null,
+   "cross_voice": {
+    "burrows": {
+     "ordinary_to_prophetic": {
+      "joseph_smith": {
+       "chunks": 64,
+       "own": 64,
+       "rate": 1.0,
+       "went_to": {
+        "joseph_smith": 64
+       }
+      },
+      "john_wroe": {
+       "chunks": 255,
+       "own": 1,
+       "rate": 0.004,
+       "went_to": {
+        "joseph_smith": 131,
+        "joanna_southcott": 52,
+        "richard_snowden": 64,
+        "john_wroe": 1,
+        "elias_smith": 7
+       }
+      },
+      "joanna_southcott": {
+       "chunks": 52,
+       "own": 52,
+       "rate": 1.0,
+       "went_to": {
+        "joanna_southcott": 52
+       }
+      },
+      "anna_trapnel": {
+       "chunks": 31,
+       "own": 4,
+       "rate": 0.129,
+       "went_to": {
+        "elias_smith": 4,
+        "anna_trapnel": 4,
+        "joanna_southcott": 11,
+        "joseph_smith": 12
+       }
+      },
+      "richard_snowden": {
+       "chunks": 55,
+       "own": 55,
+       "rate": 1.0,
+       "went_to": {
+        "richard_snowden": 55
+       }
+      },
+      "elias_smith": {
+       "chunks": 15,
+       "own": 2,
+       "rate": 0.133,
+       "went_to": {
+        "elias_smith": 2,
+        "joanna_southcott": 1,
+        "richard_snowden": 8,
+        "joseph_smith": 4
+       }
+      }
+     },
+     "ordinary_to_prophetic_attraction": {
+      "joseph_smith": 0.36,
+      "john_wroe": 0.0,
+      "joanna_southcott": 0.152,
+      "anna_trapnel": 0.0,
+      "richard_snowden": 0.173,
+      "elias_smith": 0.024
+     },
+     "prophetic_to_ordinary": {
+      "joseph_smith": {
+       "chunks": 29,
+       "own": 11,
+       "rate": 0.379,
+       "went_to": {
+        "joseph_smith": 11,
+        "john_wroe": 15,
+        "elias_smith": 2,
+        "richard_snowden": 1
+       }
+      },
+      "john_wroe": {
+       "chunks": 6,
+       "own": 3,
+       "rate": 0.5,
+       "went_to": {
+        "richard_snowden": 3,
+        "john_wroe": 3
+       }
+      },
+      "joanna_southcott": {
+       "chunks": 24,
+       "own": 1,
+       "rate": 0.042,
+       "went_to": {
+        "john_wroe": 12,
+        "joseph_smith": 1,
+        "elias_smith": 5,
+        "richard_snowden": 5,
+        "joanna_southcott": 1
+       }
+      },
+      "anna_trapnel": {
+       "chunks": 30,
+       "own": 17,
+       "rate": 0.567,
+       "went_to": {
+        "anna_trapnel": 17,
+        "john_wroe": 8,
+        "elias_smith": 4,
+        "joseph_smith": 1
+       }
+      },
+      "richard_snowden": {
+       "chunks": 142,
+       "own": 131,
+       "rate": 0.923,
+       "went_to": {
+        "richard_snowden": 131,
+        "elias_smith": 5,
+        "john_wroe": 6
+       }
+      },
+      "elias_smith": {
+       "chunks": 107,
+       "own": 19,
+       "rate": 0.178,
+       "went_to": {
+        "john_wroe": 46,
+        "richard_snowden": 42,
+        "elias_smith": 19
+       }
+      }
+     },
+     "prophetic_to_ordinary_attraction": {
+      "joseph_smith": 0.006,
+      "john_wroe": 0.262,
+      "joanna_southcott": 0.0,
+      "anna_trapnel": 0.0,
+      "richard_snowden": 0.26,
+      "elias_smith": 0.069
+     }
+    }
+   },
+   "gaps": {
+    "per_writer": {
+     "anna_trapnel": {
+      "self_gap": [
+       0.5661,
+       0.7297,
+       0.9267
+      ],
+      "gap_index": [
+       0.7872,
+       0.9939,
+       1.281
+      ],
+      "closer_to_self_share": [
+       0.4,
+       1.0,
+       1.0
+      ],
+      "median_delta_to_other_prophetic": [
+       0.7451,
+       0.8456,
+       0.9389
+      ],
+      "median_delta_to_other_ordinary": [
+       0.6616,
+       0.7293,
+       0.8177
+      ]
+     },
+     "elias_smith": {
+      "self_gap": [
+       0.6194,
+       0.7159,
+       0.814
+      ],
+      "gap_index": [
+       0.9477,
+       1.0988,
+       1.2678
+      ],
+      "closer_to_self_share": [
+       0.4,
+       0.8,
+       1.0
+      ],
+      "median_delta_to_other_prophetic": [
+       0.7239,
+       0.8062,
+       0.8917
+      ],
+      "median_delta_to_other_ordinary": [
+       0.5978,
+       0.6494,
+       0.7195
+      ]
+     },
+     "joanna_southcott": {
+      "self_gap": [
+       0.7389,
+       0.8419,
+       0.952
+      ],
+      "gap_index": [
+       0.9817,
+       1.1883,
+       1.3903
+      ],
+      "closer_to_self_share": [
+       0.8,
+       1.0,
+       1.0
+      ],
+      "median_delta_to_other_prophetic": [
+       0.9357,
+       1.0179,
+       1.0999
+      ],
+      "median_delta_to_other_ordinary": [
+       0.6493,
+       0.7143,
+       0.7822
+      ]
+     },
+     "john_wroe": {
+      "self_gap": [
+       0.7186,
+       0.7986,
+       0.8867
+      ],
+      "gap_index": [
+       0.9474,
+       1.0762,
+       1.2171
+      ],
+      "closer_to_self_share": [
+       0.0,
+       0.4,
+       0.8
+      ],
+      "median_delta_to_other_prophetic": [
+       0.6764,
+       0.7491,
+       0.8247
+      ],
+      "median_delta_to_other_ordinary": [
+       0.6816,
+       0.7431,
+       0.7943
+      ]
+     },
+     "joseph_smith": {
+      "self_gap": [
+       0.5437,
+       0.6304,
+       0.7195
+      ],
+      "gap_index": [
+       0.7585,
+       0.9076,
+       1.0601
+      ],
+      "closer_to_self_share": [
+       0.8,
+       1.0,
+       1.0
+      ],
+      "median_delta_to_other_prophetic": [
+       0.7665,
+       0.8488,
+       0.9345
+      ],
+      "median_delta_to_other_ordinary": [
+       0.6242,
+       0.6979,
+       0.7726
+      ]
+     },
+     "richard_snowden": {
+      "self_gap": [
+       0.5217,
+       0.6152,
+       0.7042
+      ],
+      "gap_index": [
+       0.7116,
+       0.8594,
+       1.0249
+      ],
+      "closer_to_self_share": [
+       0.8,
+       1.0,
+       1.0
+      ],
+      "median_delta_to_other_prophetic": [
+       0.808,
+       0.9129,
+       1.0152
+      ],
+      "median_delta_to_other_ordinary": [
+       0.6407,
+       0.7164,
+       0.7718
+      ]
+     }
+    },
+    "order_by_gap_index": [
+     "joanna_southcott",
+     "elias_smith",
+     "john_wroe",
+     "anna_trapnel",
+     "joseph_smith",
+     "richard_snowden"
+    ],
+    "joseph_smith_rank": 5,
+    "joseph_smith_above_all_share": 0.002,
+    "writers": 6
+   },
+   "verdicts": {
+    "crosses": {
+     "joseph_smith": true,
+     "john_wroe": true,
+     "joanna_southcott": true,
+     "anna_trapnel": true,
+     "richard_snowden": true,
+     "elias_smith": false
+    },
+    "others_crossing": 4,
+    "others": 5,
+    "genre_effect": false,
+    "joseph_smith_gap": "typical",
+    "joseph_smith_gap_index_median": 0.9076,
+    "others_gap_index_range": [
+     0.8594,
+     1.1883
+    ],
+    "prophetic_others": [
+     "john_wroe",
+     "joanna_southcott",
+     "anna_trapnel"
+    ],
+    "bible_style_others": [
+     "richard_snowden",
+     "elias_smith"
+    ]
+   }
+  },
+  "no_kjv_5grams": {
+   "features": 150,
+   "chunks": {
+    "joseph_smith": {
+     "prophetic": 53,
+     "ordinary": 27
+    },
+    "john_wroe": {
+     "prophetic": 220,
+     "ordinary": 5
+    },
+    "joanna_southcott": {
+     "prophetic": 52,
+     "ordinary": 22
+    },
+    "anna_trapnel": {
+     "prophetic": 29,
+     "ordinary": 29
+    },
+    "richard_snowden": {
+     "prophetic": 48,
+     "ordinary": 141
+    },
+    "elias_smith": {
+     "prophetic": 13,
+     "ordinary": 101
+    }
+   },
+   "known_answer": {
+    "burrows": {
+     "prophetic": {
+      "own_author_rate": {
+       "joseph_smith": 0.981,
+       "john_wroe": 0.891,
+       "joanna_southcott": 1.0,
+       "anna_trapnel": 0.759,
+       "richard_snowden": 1.0,
+       "elias_smith": 0.769
+      },
+      "macro": 0.9,
+      "chance": 0.167
+     },
+     "ordinary": {
+      "own_author_rate": {
+       "joseph_smith": 0.926,
+       "john_wroe": 1.0,
+       "joanna_southcott": 0.864,
+       "anna_trapnel": 0.793,
+       "richard_snowden": 0.979,
+       "elias_smith": 0.911
+      },
+      "macro": 0.912,
+      "chance": 0.167
+     }
+    },
+    "cosine": {
+     "prophetic": {
+      "own_author_rate": {
+       "joseph_smith": 0.962,
+       "john_wroe": 0.736,
+       "joanna_southcott": 1.0,
+       "anna_trapnel": 0.862,
+       "richard_snowden": 1.0,
+       "elias_smith": 0.692
+      },
+      "macro": 0.875,
+      "chance": 0.167
+     },
+     "ordinary": {
+      "own_author_rate": {
+       "joseph_smith": 0.852,
+       "john_wroe": 1.0,
+       "joanna_southcott": 1.0,
+       "anna_trapnel": 0.897,
+       "richard_snowden": 0.95,
+       "elias_smith": 0.921
+      },
+      "macro": 0.937,
+      "chance": 0.167
+     }
+    }
+   },
+   "words_after": {
+    "joseph_smith": {
+     "prophetic": 53786,
+     "ordinary": 27260
+    },
+    "john_wroe": {
+     "prophetic": 220743,
+     "ordinary": 5677
+    },
+    "joanna_southcott": {
+     "prophetic": 52260,
+     "ordinary": 22124
+    },
+    "anna_trapnel": {
+     "prophetic": 29986,
+     "ordinary": 29146
+    },
+    "richard_snowden": {
+     "prophetic": 48059,
+     "ordinary": 141116
+    },
+    "elias_smith": {
+     "prophetic": 13343,
+     "ordinary": 101722
+    }
+   },
+   "cross_voice": {
+    "burrows": {
+     "ordinary_to_prophetic": {
+      "joseph_smith": {
+       "chunks": 53,
+       "own": 53,
+       "rate": 1.0,
+       "went_to": {
+        "joseph_smith": 53
+       }
+      },
+      "john_wroe": {
+       "chunks": 220,
+       "own": 0,
+       "rate": 0.0,
+       "went_to": {
+        "joseph_smith": 97,
+        "joanna_southcott": 54,
+        "richard_snowden": 66,
+        "elias_smith": 3
+       }
+      },
+      "joanna_southcott": {
+       "chunks": 52,
+       "own": 52,
+       "rate": 1.0,
+       "went_to": {
+        "joanna_southcott": 52
+       }
+      },
+      "anna_trapnel": {
+       "chunks": 29,
+       "own": 4,
+       "rate": 0.138,
+       "went_to": {
+        "elias_smith": 2,
+        "anna_trapnel": 4,
+        "richard_snowden": 2,
+        "joseph_smith": 14,
+        "joanna_southcott": 7
+       }
+      },
+      "richard_snowden": {
+       "chunks": 48,
+       "own": 48,
+       "rate": 1.0,
+       "went_to": {
+        "richard_snowden": 48
+       }
+      },
+      "elias_smith": {
+       "chunks": 13,
+       "own": 0,
+       "rate": 0.0,
+       "went_to": {
+        "richard_snowden": 9,
+        "joseph_smith": 4
+       }
+      }
+     },
+     "ordinary_to_prophetic_attraction": {
+      "joseph_smith": 0.318,
+      "john_wroe": 0.0,
+      "joanna_southcott": 0.168,
+      "anna_trapnel": 0.0,
+      "richard_snowden": 0.21,
+      "elias_smith": 0.012
+     },
+     "prophetic_to_ordinary": {
+      "joseph_smith": {
+       "chunks": 27,
+       "own": 9,
+       "rate": 0.333,
+       "went_to": {
+        "joseph_smith": 9,
+        "john_wroe": 15,
+        "elias_smith": 3
+       }
+      },
+      "john_wroe": {
+       "chunks": 5,
+       "own": 2,
+       "rate": 0.4,
+       "went_to": {
+        "richard_snowden": 3,
+        "john_wroe": 2
+       }
+      },
+      "joanna_southcott": {
+       "chunks": 22,
+       "own": 1,
+       "rate": 0.045,
+       "went_to": {
+        "john_wroe": 13,
+        "elias_smith": 5,
+        "richard_snowden": 3,
+        "joanna_southcott": 1
+       }
+      },
+      "anna_trapnel": {
+       "chunks": 29,
+       "own": 6,
+       "rate": 0.207,
+       "went_to": {
+        "elias_smith": 11,
+        "anna_trapnel": 6,
+        "john_wroe": 11,
+        "joseph_smith": 1
+       }
+      },
+      "richard_snowden": {
+       "chunks": 141,
+       "own": 123,
+       "rate": 0.872,
+       "went_to": {
+        "richard_snowden": 123,
+        "elias_smith": 7,
+        "john_wroe": 9,
+        "joseph_smith": 2
+       }
+      },
+      "elias_smith": {
+       "chunks": 101,
+       "own": 23,
+       "rate": 0.228,
+       "went_to": {
+        "john_wroe": 33,
+        "richard_snowden": 45,
+        "elias_smith": 23
+       }
+      }
+     },
+     "prophetic_to_ordinary_attraction": {
+      "joseph_smith": 0.01,
+      "john_wroe": 0.253,
+      "joanna_southcott": 0.0,
+      "anna_trapnel": 0.0,
+      "richard_snowden": 0.277,
+      "elias_smith": 0.116
+     }
+    }
+   },
+   "gaps": {
+    "per_writer": {
+     "anna_trapnel": {
+      "self_gap": [
+       0.5974,
+       0.7723,
+       0.9699
+      ],
+      "gap_index": [
+       0.8106,
+       1.05,
+       1.3207
+      ],
+      "closer_to_self_share": [
+       0.2,
+       0.8,
+       1.0
+      ],
+      "median_delta_to_other_prophetic": [
+       0.7657,
+       0.8709,
+       0.9758
+      ],
+      "median_delta_to_other_ordinary": [
+       0.6574,
+       0.7277,
+       0.8158
+      ]
+     },
+     "elias_smith": {
+      "self_gap": [
+       0.6168,
+       0.7271,
+       0.8272
+      ],
+      "gap_index": [
+       0.9596,
+       1.1214,
+       1.2895
+      ],
+      "closer_to_self_share": [
+       0.295,
+       0.6,
+       1.0
+      ],
+      "median_delta_to_other_prophetic": [
+       0.7283,
+       0.8083,
+       0.8961
+      ],
+      "median_delta_to_other_ordinary": [
+       0.5882,
+       0.6453,
+       0.7112
+      ]
+     },
+     "joanna_southcott": {
+      "self_gap": [
+       0.7421,
+       0.8592,
+       0.9811
+      ],
+      "gap_index": [
+       1.0038,
+       1.2119,
+       1.4415
+      ],
+      "closer_to_self_share": [
+       0.6,
+       1.0,
+       1.0
+      ],
+      "median_delta_to_other_prophetic": [
+       0.9479,
+       1.0342,
+       1.1194
+      ],
+      "median_delta_to_other_ordinary": [
+       0.6462,
+       0.71,
+       0.7783
+      ]
+     },
+     "john_wroe": {
+      "self_gap": [
+       0.7617,
+       0.828,
+       0.8986
+      ],
+      "gap_index": [
+       1.0235,
+       1.1287,
+       1.2596
+      ],
+      "closer_to_self_share": [
+       0.0,
+       0.2,
+       0.6
+      ],
+      "median_delta_to_other_prophetic": [
+       0.6875,
+       0.7635,
+       0.8481
+      ],
+      "median_delta_to_other_ordinary": [
+       0.6801,
+       0.7332,
+       0.782
+      ]
+     },
+     "joseph_smith": {
+      "self_gap": [
+       0.558,
+       0.6537,
+       0.7483
+      ],
+      "gap_index": [
+       0.7974,
+       0.9431,
+       1.0992
+      ],
+      "closer_to_self_share": [
+       0.8,
+       1.0,
+       1.0
+      ],
+      "median_delta_to_other_prophetic": [
+       0.7758,
+       0.8636,
+       0.9529
+      ],
+      "median_delta_to_other_ordinary": [
+       0.6275,
+       0.6936,
+       0.7609
+      ]
+     },
+     "richard_snowden": {
+      "self_gap": [
+       0.5049,
+       0.5986,
+       0.6815
+      ],
+      "gap_index": [
+       0.7201,
+       0.8497,
+       1.026
+      ],
+      "closer_to_self_share": [
+       0.8,
+       1.0,
+       1.0
+      ],
+      "median_delta_to_other_prophetic": [
+       0.8029,
+       0.9109,
+       1.0161
+      ],
+      "median_delta_to_other_ordinary": [
+       0.6321,
+       0.7045,
+       0.761
+      ]
+     }
+    },
+    "order_by_gap_index": [
+     "joanna_southcott",
+     "john_wroe",
+     "elias_smith",
+     "anna_trapnel",
+     "joseph_smith",
+     "richard_snowden"
+    ],
+    "joseph_smith_rank": 5,
+    "joseph_smith_above_all_share": 0.002,
+    "writers": 6
+   },
+   "verdicts": {
+    "crosses": {
+     "joseph_smith": true,
+     "john_wroe": false,
+     "joanna_southcott": true,
+     "anna_trapnel": false,
+     "richard_snowden": true,
+     "elias_smith": false
+    },
+    "others_crossing": 2,
+    "others": 5,
+    "genre_effect": true,
+    "joseph_smith_gap": "typical",
+    "joseph_smith_gap_index_median": 0.9431,
+    "others_gap_index_range": [
+     0.8497,
+     1.2119
+    ],
+    "prophetic_others": [
+     "john_wroe",
+     "joanna_southcott",
+     "anna_trapnel"
+    ],
+    "bible_style_others": [
+     "richard_snowden",
+     "elias_smith"
+    ]
+   }
+  }
+ },
+ "config_sha256": "af8a6b18a8a5846e428054a6a8c4ab0ea0f77c9ca567e447fc155839838a2e38",
+ "commit": "4eeb315996ba06b31d6c81d90b81daa0a1815896"
+}
