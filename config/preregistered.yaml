@@ -1158,6 +1158,15 @@ lab:                              # the research lab (exploratory tooling; reads
     encoders:                      # nothing retrained; loaded with style_embed.train.load_encoder (base backbone)
       bom30: data/corpus/style_embed/runs/style/style.pt      # BOM-30's encoder
       v2: data/corpus/style_embed/runs/style_v2/style.pt      # the second encoder (library search, BOM-89/95)
+  two_voices_alm:                  # BOM-105 follow-up (lab; exploratory): the two_voices set by author language models; recipe alm.*/timelocked_lm.finetune_*, every other setting lab.two_voices's
+    size: pilot                    # the 125M time-locked base model (owner's approval, 2026-11-20: Mac GPU only)
+    seed: two_voices               # derive_seed("<alm.train_seed>:<seed>:<run>:<model>")
+    runs:                          # name: King James 5-grams dropped (the recipe's masking, lab form), dose, writers left out
+      masked_small: {kjv_dropped: true, dose: small, drop: []}
+      full_small: {kjv_dropped: false, dose: small, drop: []}
+      masked_larger: {kjv_dropped: true, dose: larger, drop: [john_wroe]}
+    larger_min_heldout_chunks: 5   # the larger dose: most sequences (<= library_pool.large_sequences) leaving this many held-out chunks everywhere
+    min_heldout_chunks: 1          # a writer-voice with fewer held-out chunks than this is "not attempted"
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

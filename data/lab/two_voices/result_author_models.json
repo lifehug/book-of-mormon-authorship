@@ -1,0 +1,2592 @@
+{
+ "exploratory": true,
+ "base_model": "timelocked_lm pilot (data/corpus/timelocked_lm/runs/pilot/model.pt)",
+ "recipe": {
+  "epochs": 3,
+  "lr": 1e-05,
+  "seq": 1024,
+  "batch": 8,
+  "score_window": 512,
+  "adam_betas": [
+   0.9,
+   0.95
+  ],
+  "weight_decay": 0.1,
+  "grad_clip": 1.0,
+  "precision": "fp32",
+  "source": "alm.benchmark.finetune and window_losses, unchanged"
+ },
+ "settings": {
+  "size": "pilot",
+  "seed": "two_voices",
+  "runs": {
+   "masked_small": {
+    "kjv_dropped": true,
+    "dose": "small",
+    "drop": []
+   },
+   "full_small": {
+    "kjv_dropped": false,
+    "dose": "small",
+    "drop": []
+   },
+   "masked_larger": {
+    "kjv_dropped": true,
+    "dose": "larger",
+    "drop": [
+     "john_wroe"
+    ]
+   }
+  },
+  "larger_min_heldout_chunks": 5,
+  "min_heldout_chunks": 1,
+  "chunk_words": 1000,
+  "known_bar": 0.8,
+  "cross_share": 0.5,
+  "min_writers": 5
+ },
+ "plan": {
+  "small_dose": {
+   "amendment45_tokens": 3039,
+   "sequences": 2
+  },
+  "runs": {
+   "masked_small": {
+    "sequences": 2,
+    "train_tokens": 2048,
+    "spec": {
+     "kjv_dropped": true,
+     "dose": "small",
+     "drop": []
+    },
+    "not_attempted": {},
+    "units": {
+     "joseph_smith|prophetic": {
+      "words": 53786,
+      "tokens": 57915,
+      "train_words": 1885,
+      "heldout_chunks": 51
+     },
+     "joseph_smith|ordinary": {
+      "words": 27260,
+      "tokens": 30347,
+      "train_words": 1806,
+      "heldout_chunks": 25
+     },
+     "john_wroe|prophetic": {
+      "words": 220743,
+      "tokens": 247365,
+      "train_words": 1846,
+      "heldout_chunks": 218
+     },
+     "john_wroe|ordinary": {
+      "words": 5677,
+      "tokens": 5917,
+      "train_words": 1962,
+      "heldout_chunks": 3
+     },
+     "joanna_southcott|prophetic": {
+      "words": 52260,
+      "tokens": 54620,
+      "train_words": 1925,
+      "heldout_chunks": 50
+     },
+     "joanna_southcott|ordinary": {
+      "words": 22124,
+      "tokens": 23577,
+      "train_words": 1951,
+      "heldout_chunks": 20
+     },
+     "anna_trapnel|prophetic": {
+      "words": 29986,
+      "tokens": 31451,
+      "train_words": 1931,
+      "heldout_chunks": 28
+     },
+     "anna_trapnel|ordinary": {
+      "words": 29146,
+      "tokens": 30612,
+      "train_words": 1905,
+      "heldout_chunks": 27
+     },
+     "richard_snowden|prophetic": {
+      "words": 48059,
+      "tokens": 57598,
+      "train_words": 1517,
+      "heldout_chunks": 46
+     },
+     "richard_snowden|ordinary": {
+      "words": 141116,
+      "tokens": 166615,
+      "train_words": 1702,
+      "heldout_chunks": 139
+     },
+     "elias_smith|prophetic": {
+      "words": 13343,
+      "tokens": 13961,
+      "train_words": 1959,
+      "heldout_chunks": 11
+     },
+     "elias_smith|ordinary": {
+      "words": 101722,
+      "tokens": 109251,
+      "train_words": 1764,
+      "heldout_chunks": 99
+     }
+    }
+   },
+   "full_small": {
+    "sequences": 2,
+    "train_tokens": 2048,
+    "spec": {
+     "kjv_dropped": false,
+     "dose": "small",
+     "drop": []
+    },
+    "not_attempted": {},
+    "units": {
+     "joseph_smith|prophetic": {
+      "words": 64886,
+      "tokens": 69153,
+      "train_words": 1897,
+      "heldout_chunks": 62
+     },
+     "joseph_smith|ordinary": {
+      "words": 29571,
+      "tokens": 32723,
+      "train_words": 1823,
+      "heldout_chunks": 27
+     },
+     "john_wroe|prophetic": {
+      "words": 255431,
+      "tokens": 283322,
+      "train_words": 1860,
+      "heldout_chunks": 253
+     },
+     "john_wroe|ordinary": {
+      "words": 6009,
+      "tokens": 6257,
+      "train_words": 1962,
+      "heldout_chunks": 4
+     },
+     "joanna_southcott|prophetic": {
+      "words": 52729,
+      "tokens": 55090,
+      "train_words": 1929,
+      "heldout_chunks": 50
+     },
+     "joanna_southcott|ordinary": {
+      "words": 24058,
+      "tokens": 25568,
+      "train_words": 1961,
+      "heldout_chunks": 22
+     },
+     "anna_trapnel|prophetic": {
+      "words": 31385,
+      "tokens": 32866,
+      "train_words": 1930,
+      "heldout_chunks": 29
+     },
+     "anna_trapnel|ordinary": {
+      "words": 30782,
+      "tokens": 32283,
+      "train_words": 1909,
+      "heldout_chunks": 28
+     },
+     "richard_snowden|prophetic": {
+      "words": 55977,
+      "tokens": 65574,
+      "train_words": 1517,
+      "heldout_chunks": 54
+     },
+     "richard_snowden|ordinary": {
+      "words": 142071,
+      "tokens": 167570,
+      "train_words": 1703,
+      "heldout_chunks": 140
+     },
+     "elias_smith|prophetic": {
+      "words": 15656,
+      "tokens": 16315,
+      "train_words": 1952,
+      "heldout_chunks": 13
+     },
+     "elias_smith|ordinary": {
+      "words": 107614,
+      "tokens": 115318,
+      "train_words": 1776,
+      "heldout_chunks": 105
+     }
+    }
+   },
+   "masked_larger": {
+    "sequences": 8,
+    "train_tokens": 8192,
+    "spec": {
+     "kjv_dropped": true,
+     "dose": "larger",
+     "drop": [
+      "john_wroe"
+     ]
+    },
+    "not_attempted": {},
+    "units": {
+     "joseph_smith|prophetic": {
+      "words": 53786,
+      "tokens": 57915,
+      "train_words": 7562,
+      "heldout_chunks": 46
+     },
+     "joseph_smith|ordinary": {
+      "words": 27260,
+      "tokens": 30347,
+      "train_words": 7204,
+      "heldout_chunks": 20
+     },
+     "joanna_southcott|prophetic": {
+      "words": 52260,
+      "tokens": 54620,
+      "train_words": 7788,
+      "heldout_chunks": 44
+     },
+     "joanna_southcott|ordinary": {
+      "words": 22124,
+      "tokens": 23577,
+      "train_words": 7734,
+      "heldout_chunks": 14
+     },
+     "anna_trapnel|prophetic": {
+      "words": 29986,
+      "tokens": 31451,
+      "train_words": 7772,
+      "heldout_chunks": 22
+     },
+     "anna_trapnel|ordinary": {
+      "words": 29146,
+      "tokens": 30612,
+      "train_words": 7771,
+      "heldout_chunks": 21
+     },
+     "richard_snowden|prophetic": {
+      "words": 48059,
+      "tokens": 57598,
+      "train_words": 6739,
+      "heldout_chunks": 41
+     },
+     "richard_snowden|ordinary": {
+      "words": 141116,
+      "tokens": 166615,
+      "train_words": 7135,
+      "heldout_chunks": 133
+     },
+     "elias_smith|prophetic": {
+      "words": 13343,
+      "tokens": 13961,
+      "train_words": 7838,
+      "heldout_chunks": 5
+     },
+     "elias_smith|ordinary": {
+      "words": 101722,
+      "tokens": 109251,
+      "train_words": 7574,
+      "heldout_chunks": 94
+     }
+    }
+   }
+  }
+ },
+ "training_overlap": {
+  "joseph_smith": "none: no text of his is in the catalog or the base model's training set",
+  "john_wroe": "ordinary source in base training: Life and Journal (1829, institutional_books:32044081829434, split train); scripture source (1846) in nothing",
+  "joanna_southcott": "both set volumes in base training (firstsecondbooko00sout, b22042076), with about 25 other Southcott volumes",
+  "anna_trapnel": "none (TCP texts are not in the training set)",
+  "richard_snowden": "ordinary source (historynorthand00snowgoog) not, but two other printings of the same History are (historynorthand01snowgoog 1806, historyofnorthso00snow_0 1811); no printing of the American Revolution is",
+  "elias_smith": "ordinary volume in base training (lifecon00smit), with about ten other works of his; History of Anti-Christ (scripture voice) is not in the library"
+ },
+ "training_overlap_bias": "where the base model already read a text its loss there is already low, so a fine-tune has less to gain and every copy shares the memory: own-writer recognition is expected to be weaker, not stronger, on those chunks",
+ "book_of_mormon": "the Book of Mormon is not read, trained on or scored (lesson 11)",
+ "runs": {
+  "masked_small": {
+   "models": {
+    "anna_trapnel|prophetic": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 2444411412,
+     "weights_sha256": "63384a460fa86270b4fbbe85fbd941e50f0ee754f11edf3eb55b82c5a41b34b7"
+    },
+    "anna_trapnel|ordinary": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 3791683749,
+     "weights_sha256": "26e904531d5ca5a66c628c0e66f4773a2f02ab3d633732bd470f7da8b9424804"
+    },
+    "elias_smith|prophetic": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 2901826237,
+     "weights_sha256": "e932c4d9a63c97a990d7880e3eb076cd96916dfec38e1a47a970ffa130651eaa"
+    },
+    "elias_smith|ordinary": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 1138713517,
+     "weights_sha256": "f087fb67afa2dcd0e322eb73b729a655e36de63a49fed2b8a4f7fb19f7876446"
+    },
+    "joanna_southcott|prophetic": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 4106525249,
+     "weights_sha256": "9474fc1b0c2ad6f2852520378518af7ea60e02193129cfb4fa17438d1333c7d9"
+    },
+    "joanna_southcott|ordinary": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 3588726815,
+     "weights_sha256": "ef7d4f9fece8d77ec798e75ae2b7e79d3f65fd8b5dea64e6813c29d83ca960e8"
+    },
+    "john_wroe|prophetic": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 4084559403,
+     "weights_sha256": "f2e87f16e2427d3b05b15d7db7018f370bd07c501323d8cacd171eebc3c1a6fe"
+    },
+    "john_wroe|ordinary": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 1986818914,
+     "weights_sha256": "c9cdc417c3e3bf3eea615a893c4a61a38e05bdc7924e5aa405fa4a4290955da1"
+    },
+    "joseph_smith|prophetic": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 2972451737,
+     "weights_sha256": "60785306806dc77b3c65f8f29ae472e7903f5dfd1fcf73c1637586d76ce1a1ad"
+    },
+    "joseph_smith|ordinary": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 3970287125,
+     "weights_sha256": "d84470e5dcfc102d50715a3c333b10e027833d8afb1909d8f927cc29db6d37e3"
+    },
+    "richard_snowden|prophetic": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 3852959986,
+     "weights_sha256": "49ba40289bcc0edc28a49b72b9554eae10911256d358d77dd9e9456aaa86b1fe"
+    },
+    "richard_snowden|ordinary": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 1352345312,
+     "weights_sha256": "d9d0f60677a7ac3a761f11dc176e261cd08031261f0181ffd2a276ee7be2b883"
+    }
+   },
+   "raw": {
+    "known_answer": {
+     "prophetic": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 28,
+        "own": 8,
+        "rate": 0.286,
+        "rate_95": [
+         0.153,
+         0.471
+        ],
+        "mean_own_rank": 2.571,
+        "went_to": {
+         "anna_trapnel": 8,
+         "joseph_smith": 1,
+         "joanna_southcott": 7,
+         "john_wroe": 12
+        }
+       },
+       "elias_smith": {
+        "chunks": 11,
+        "own": 11,
+        "rate": 1.0,
+        "rate_95": [
+         0.741,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "elias_smith": 11
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 50,
+        "own": 50,
+        "rate": 1.0,
+        "rate_95": [
+         0.929,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joanna_southcott": 50
+        }
+       },
+       "john_wroe": {
+        "chunks": 218,
+        "own": 218,
+        "rate": 1.0,
+        "rate_95": [
+         0.983,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "john_wroe": 218
+        }
+       },
+       "joseph_smith": {
+        "chunks": 51,
+        "own": 46,
+        "rate": 0.902,
+        "rate_95": [
+         0.79,
+         0.957
+        ],
+        "mean_own_rank": 1.098,
+        "went_to": {
+         "joseph_smith": 46,
+         "john_wroe": 5
+        }
+       },
+       "richard_snowden": {
+        "chunks": 46,
+        "own": 29,
+        "rate": 0.63,
+        "rate_95": [
+         0.486,
+         0.755
+        ],
+        "mean_own_rank": 1.543,
+        "went_to": {
+         "elias_smith": 14,
+         "john_wroe": 3,
+         "richard_snowden": 29
+        }
+       }
+      },
+      "macro": 0.803,
+      "chance": 0.167,
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.036,
+       "joanna_southcott": 0.02,
+       "john_wroe": 0.108,
+       "joseph_smith": 0.003,
+       "richard_snowden": 0.0
+      }
+     },
+     "ordinary": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 27,
+        "own": 27,
+        "rate": 1.0,
+        "rate_95": [
+         0.875,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "anna_trapnel": 27
+        }
+       },
+       "elias_smith": {
+        "chunks": 99,
+        "own": 61,
+        "rate": 0.616,
+        "rate_95": [
+         0.518,
+         0.706
+        ],
+        "mean_own_rank": 1.758,
+        "went_to": {
+         "elias_smith": 61,
+         "john_wroe": 25,
+         "anna_trapnel": 10,
+         "joseph_smith": 3
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 20,
+        "own": 19,
+        "rate": 0.95,
+        "rate_95": [
+         0.764,
+         0.991
+        ],
+        "mean_own_rank": 1.05,
+        "went_to": {
+         "joanna_southcott": 19,
+         "anna_trapnel": 1
+        }
+       },
+       "john_wroe": {
+        "chunks": 3,
+        "own": 3,
+        "rate": 1.0,
+        "rate_95": [
+         0.438,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "john_wroe": 3
+        }
+       },
+       "joseph_smith": {
+        "chunks": 25,
+        "own": 21,
+        "rate": 0.84,
+        "rate_95": [
+         0.653,
+         0.936
+        ],
+        "mean_own_rank": 1.16,
+        "went_to": {
+         "joseph_smith": 21,
+         "richard_snowden": 1,
+         "elias_smith": 1,
+         "anna_trapnel": 2
+        }
+       },
+       "richard_snowden": {
+        "chunks": 139,
+        "own": 133,
+        "rate": 0.957,
+        "rate_95": [
+         0.909,
+         0.98
+        ],
+        "mean_own_rank": 1.115,
+        "went_to": {
+         "richard_snowden": 133,
+         "elias_smith": 2,
+         "joanna_southcott": 2,
+         "john_wroe": 1,
+         "joseph_smith": 1
+        }
+       }
+      },
+      "macro": 0.894,
+      "chance": 0.167,
+      "pull": {
+       "anna_trapnel": 0.045,
+       "elias_smith": 0.014,
+       "joanna_southcott": 0.007,
+       "john_wroe": 0.084,
+       "joseph_smith": 0.014,
+       "richard_snowden": 0.006
+      }
+     },
+     "bar": 0.8,
+     "passed": true
+    },
+    "cross_voice": {
+     "ordinary_models_on_scripture_chunks": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 28,
+        "own": 25,
+        "rate": 0.893,
+        "rate_95": [
+         0.728,
+         0.963
+        ],
+        "mean_own_rank": 1.107,
+        "went_to": {
+         "anna_trapnel": 25,
+         "john_wroe": 1,
+         "richard_snowden": 2
+        }
+       },
+       "elias_smith": {
+        "chunks": 11,
+        "own": 1,
+        "rate": 0.091,
+        "rate_95": [
+         0.016,
+         0.377
+        ],
+        "mean_own_rank": 2.545,
+        "went_to": {
+         "john_wroe": 2,
+         "anna_trapnel": 8,
+         "elias_smith": 1
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 50,
+        "own": 10,
+        "rate": 0.2,
+        "rate_95": [
+         0.112,
+         0.33
+        ],
+        "mean_own_rank": 1.84,
+        "went_to": {
+         "anna_trapnel": 40,
+         "joanna_southcott": 10
+        }
+       },
+       "john_wroe": {
+        "chunks": 218,
+        "own": 25,
+        "rate": 0.115,
+        "rate_95": [
+         0.079,
+         0.164
+        ],
+        "mean_own_rank": 2.326,
+        "went_to": {
+         "richard_snowden": 154,
+         "john_wroe": 25,
+         "anna_trapnel": 27,
+         "joanna_southcott": 6,
+         "elias_smith": 6
+        }
+       },
+       "joseph_smith": {
+        "chunks": 51,
+        "own": 0,
+        "rate": 0.0,
+        "rate_95": [
+         0.0,
+         0.07
+        ],
+        "mean_own_rank": 5.843,
+        "went_to": {
+         "richard_snowden": 48,
+         "john_wroe": 3
+        }
+       },
+       "richard_snowden": {
+        "chunks": 46,
+        "own": 3,
+        "rate": 0.065,
+        "rate_95": [
+         0.022,
+         0.175
+        ],
+        "mean_own_rank": 3.848,
+        "went_to": {
+         "anna_trapnel": 9,
+         "elias_smith": 28,
+         "john_wroe": 1,
+         "joseph_smith": 3,
+         "joanna_southcott": 2,
+         "richard_snowden": 3
+        }
+       }
+      },
+      "macro": 0.227,
+      "chance": 0.167,
+      "pull": {
+       "anna_trapnel": 0.223,
+       "elias_smith": 0.087,
+       "joanna_southcott": 0.023,
+       "john_wroe": 0.038,
+       "joseph_smith": 0.008,
+       "richard_snowden": 0.57
+      }
+     },
+     "scripture_models_on_ordinary_chunks": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 27,
+        "own": 24,
+        "rate": 0.889,
+        "rate_95": [
+         0.719,
+         0.961
+        ],
+        "mean_own_rank": 1.111,
+        "went_to": {
+         "anna_trapnel": 24,
+         "john_wroe": 3
+        }
+       },
+       "elias_smith": {
+        "chunks": 99,
+        "own": 1,
+        "rate": 0.01,
+        "rate_95": [
+         0.002,
+         0.055
+        ],
+        "mean_own_rank": 3.727,
+        "went_to": {
+         "richard_snowden": 2,
+         "john_wroe": 26,
+         "anna_trapnel": 68,
+         "joseph_smith": 2,
+         "elias_smith": 1
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 20,
+        "own": 0,
+        "rate": 0.0,
+        "rate_95": [
+         0.0,
+         0.161
+        ],
+        "mean_own_rank": 4.65,
+        "went_to": {
+         "anna_trapnel": 8,
+         "john_wroe": 11,
+         "joseph_smith": 1
+        }
+       },
+       "john_wroe": {
+        "chunks": 3,
+        "own": 0,
+        "rate": 0.0,
+        "rate_95": [
+         0.0,
+         0.562
+        ],
+        "mean_own_rank": 2.0,
+        "went_to": {
+         "anna_trapnel": 3
+        }
+       },
+       "joseph_smith": {
+        "chunks": 25,
+        "own": 8,
+        "rate": 0.32,
+        "rate_95": [
+         0.172,
+         0.516
+        ],
+        "mean_own_rank": 2.16,
+        "went_to": {
+         "anna_trapnel": 8,
+         "john_wroe": 6,
+         "richard_snowden": 3,
+         "joseph_smith": 8
+        }
+       },
+       "richard_snowden": {
+        "chunks": 139,
+        "own": 67,
+        "rate": 0.482,
+        "rate_95": [
+         0.401,
+         0.564
+        ],
+        "mean_own_rank": 2.302,
+        "went_to": {
+         "john_wroe": 25,
+         "elias_smith": 34,
+         "anna_trapnel": 11,
+         "richard_snowden": 67,
+         "joseph_smith": 2
+        }
+       }
+      },
+      "macro": 0.284,
+      "chance": 0.167,
+      "pull": {
+       "anna_trapnel": 0.343,
+       "elias_smith": 0.159,
+       "joanna_southcott": 0.0,
+       "john_wroe": 0.229,
+       "joseph_smith": 0.017,
+       "richard_snowden": 0.029
+      }
+     }
+    },
+    "voice_or_person": {
+     "per_writer": {
+      "anna_trapnel": {
+       "chunks": 28,
+       "any_other_beats_own_ordinary": 0.5,
+       "typical_other_beats_own_ordinary": 0.036
+      },
+      "elias_smith": {
+       "chunks": 11,
+       "any_other_beats_own_ordinary": 0.818,
+       "typical_other_beats_own_ordinary": 0.364
+      },
+      "joanna_southcott": {
+       "chunks": 50,
+       "any_other_beats_own_ordinary": 0.88,
+       "typical_other_beats_own_ordinary": 0.04
+      },
+      "john_wroe": {
+       "chunks": 218,
+       "any_other_beats_own_ordinary": 0.945,
+       "typical_other_beats_own_ordinary": 0.174
+      },
+      "joseph_smith": {
+       "chunks": 51,
+       "any_other_beats_own_ordinary": 1.0,
+       "typical_other_beats_own_ordinary": 0.98
+      },
+      "richard_snowden": {
+       "chunks": 46,
+       "any_other_beats_own_ordinary": 0.783,
+       "typical_other_beats_own_ordinary": 0.391
+      }
+     },
+     "macro_any_other": 0.821,
+     "macro_typical_other": 0.331,
+     "joseph_smith_place_any_other": "above all"
+    },
+    "verdicts": {
+     "crosses": {
+      "anna_trapnel": true,
+      "elias_smith": false,
+      "joanna_southcott": false,
+      "john_wroe": false,
+      "joseph_smith": false,
+      "richard_snowden": false
+     },
+     "others_crossing": 1,
+     "others": 5,
+     "genre_effect": true,
+     "joseph_smith": {
+      "ordinary_models_on_scripture_chunks": {
+       "rate": "below every other writer",
+       "mean_own_rank": "worse than every other writer",
+       "others_rate_range": [
+        0.065,
+        0.893
+       ]
+      },
+      "scripture_models_on_ordinary_chunks": {
+       "rate": "typical",
+       "mean_own_rank": "typical",
+       "others_rate_range": [
+        0.0,
+        0.889
+       ]
+      }
+     }
+    }
+   },
+   "scaled": {
+    "known_answer": {
+     "prophetic": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 28,
+        "own": 11,
+        "rate": 0.393,
+        "rate_95": [
+         0.236,
+         0.576
+        ],
+        "mean_own_rank": 1.679,
+        "went_to": {
+         "anna_trapnel": 11,
+         "joseph_smith": 1,
+         "joanna_southcott": 14,
+         "john_wroe": 1,
+         "elias_smith": 1
+        }
+       },
+       "elias_smith": {
+        "chunks": 11,
+        "own": 11,
+        "rate": 1.0,
+        "rate_95": [
+         0.741,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "elias_smith": 11
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 50,
+        "own": 50,
+        "rate": 1.0,
+        "rate_95": [
+         0.929,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joanna_southcott": 50
+        }
+       },
+       "john_wroe": {
+        "chunks": 218,
+        "own": 185,
+        "rate": 0.849,
+        "rate_95": [
+         0.795,
+         0.89
+        ],
+        "mean_own_rank": 1.344,
+        "went_to": {
+         "john_wroe": 185,
+         "anna_trapnel": 15,
+         "joanna_southcott": 7,
+         "richard_snowden": 3,
+         "joseph_smith": 6,
+         "elias_smith": 2
+        }
+       },
+       "joseph_smith": {
+        "chunks": 51,
+        "own": 50,
+        "rate": 0.98,
+        "rate_95": [
+         0.897,
+         0.997
+        ],
+        "mean_own_rank": 1.02,
+        "went_to": {
+         "joseph_smith": 50,
+         "john_wroe": 1
+        }
+       },
+       "richard_snowden": {
+        "chunks": 46,
+        "own": 23,
+        "rate": 0.5,
+        "rate_95": [
+         0.361,
+         0.639
+        ],
+        "mean_own_rank": 1.587,
+        "went_to": {
+         "elias_smith": 22,
+         "richard_snowden": 23,
+         "joanna_southcott": 1
+        }
+       }
+      },
+      "macro": 0.787,
+      "chance": 0.167,
+      "pull": {
+       "anna_trapnel": 0.04,
+       "elias_smith": 0.064,
+       "joanna_southcott": 0.062,
+       "john_wroe": 0.011,
+       "joseph_smith": 0.02,
+       "richard_snowden": 0.008
+      }
+     },
+     "ordinary": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 27,
+        "own": 23,
+        "rate": 0.852,
+        "rate_95": [
+         0.675,
+         0.941
+        ],
+        "mean_own_rank": 1.148,
+        "went_to": {
+         "anna_trapnel": 23,
+         "john_wroe": 4
+        }
+       },
+       "elias_smith": {
+        "chunks": 99,
+        "own": 39,
+        "rate": 0.394,
+        "rate_95": [
+         0.303,
+         0.492
+        ],
+        "mean_own_rank": 2.081,
+        "went_to": {
+         "elias_smith": 39,
+         "john_wroe": 46,
+         "joseph_smith": 10,
+         "anna_trapnel": 2,
+         "joanna_southcott": 2
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 20,
+        "own": 19,
+        "rate": 0.95,
+        "rate_95": [
+         0.764,
+         0.991
+        ],
+        "mean_own_rank": 1.05,
+        "went_to": {
+         "joanna_southcott": 19,
+         "joseph_smith": 1
+        }
+       },
+       "john_wroe": {
+        "chunks": 3,
+        "own": 3,
+        "rate": 1.0,
+        "rate_95": [
+         0.438,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "john_wroe": 3
+        }
+       },
+       "joseph_smith": {
+        "chunks": 25,
+        "own": 24,
+        "rate": 0.96,
+        "rate_95": [
+         0.805,
+         0.993
+        ],
+        "mean_own_rank": 1.04,
+        "went_to": {
+         "joseph_smith": 24,
+         "anna_trapnel": 1
+        }
+       },
+       "richard_snowden": {
+        "chunks": 139,
+        "own": 117,
+        "rate": 0.842,
+        "rate_95": [
+         0.772,
+         0.893
+        ],
+        "mean_own_rank": 1.446,
+        "went_to": {
+         "richard_snowden": 117,
+         "elias_smith": 2,
+         "joseph_smith": 15,
+         "joanna_southcott": 4,
+         "john_wroe": 1
+        }
+       }
+      },
+      "macro": 0.833,
+      "chance": 0.167,
+      "pull": {
+       "anna_trapnel": 0.01,
+       "elias_smith": 0.009,
+       "joanna_southcott": 0.02,
+       "john_wroe": 0.165,
+       "joseph_smith": 0.09,
+       "richard_snowden": 0.0
+      }
+     },
+     "bar": 0.8,
+     "passed": false
+    },
+    "stopped": "the within-voice check missed its bar; cross-voice not scored"
+   },
+   "mean_score_by_model": {
+    "anna_trapnel|prophetic": -0.0628,
+    "anna_trapnel|ordinary": -0.0677,
+    "elias_smith|prophetic": -0.0507,
+    "elias_smith|ordinary": -0.0634,
+    "joanna_southcott|prophetic": -0.0505,
+    "joanna_southcott|ordinary": -0.0585,
+    "john_wroe|prophetic": -0.1139,
+    "john_wroe|ordinary": -0.0704,
+    "joseph_smith|prophetic": -0.087,
+    "joseph_smith|ordinary": -0.0427,
+    "richard_snowden|prophetic": -0.0716,
+    "richard_snowden|ordinary": -0.0788
+   }
+  },
+  "full_small": {
+   "models": {
+    "anna_trapnel|prophetic": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 1417488175,
+     "weights_sha256": "2f54cead0d249c7f89065f49d1283d0ded2df0b4596c766724fd4af910f056f1"
+    },
+    "anna_trapnel|ordinary": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 2348543343,
+     "weights_sha256": "d70e28925e0bbdf9ee2eac9ae9a4005c77e982133129e1e38e0ec5763a3b0f08"
+    },
+    "elias_smith|prophetic": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 2140400840,
+     "weights_sha256": "86ed1d0f2103bdb831634be5c4dc8a542f6c3ce1dc4b41e9a9d0896f15710113"
+    },
+    "elias_smith|ordinary": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 1417286759,
+     "weights_sha256": "4dd605e554ae8e17b2f0d41462dcc53f2233134496854faaf8de68367f272494"
+    },
+    "joanna_southcott|prophetic": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 4094217527,
+     "weights_sha256": "5edfbf3770a87ec9abfd2bd2dbd361730abceb1d0fc1c750c1d2ee5c5497b6f1"
+    },
+    "joanna_southcott|ordinary": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 1118731731,
+     "weights_sha256": "bd7cf88dce902381229af501e5ed47e99aa6df1ab0914caca569ae96f44afa73"
+    },
+    "john_wroe|prophetic": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 416050915,
+     "weights_sha256": "1cf6f1156f943800b9ef7dcca167be89bdf710129b69bca68594d0adfae671b0"
+    },
+    "john_wroe|ordinary": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 3874498278,
+     "weights_sha256": "b47d627ce96d49958e4f9ef3aad0d57af4fe7dd84cdc09522d68db0a98a2c16d"
+    },
+    "joseph_smith|prophetic": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 2614491617,
+     "weights_sha256": "8c89d8c961942a0c12f6b4266d664f092058eb67b0091bb6b9c7872cf24778df"
+    },
+    "joseph_smith|ordinary": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 4020566204,
+     "weights_sha256": "7285731663e22e14f093dd602e3bbd709f75fb9600cfdb99b2b2fb1606c4ff49"
+    },
+    "richard_snowden|prophetic": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 4140004114,
+     "weights_sha256": "6217dbb12ba7f27165e5674ad91dbaa057382849ec73a0957c342b6b6cb827e2"
+    },
+    "richard_snowden|ordinary": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 2745267655,
+     "weights_sha256": "251b9d129d7f63889c910baf2704b01bb9f56767bf85c0d47a8a070dec8a63e6"
+    }
+   },
+   "raw": {
+    "known_answer": {
+     "prophetic": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 29,
+        "own": 11,
+        "rate": 0.379,
+        "rate_95": [
+         0.227,
+         0.56
+        ],
+        "mean_own_rank": 2.276,
+        "went_to": {
+         "anna_trapnel": 11,
+         "joanna_southcott": 8,
+         "john_wroe": 10
+        }
+       },
+       "elias_smith": {
+        "chunks": 13,
+        "own": 13,
+        "rate": 1.0,
+        "rate_95": [
+         0.772,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "elias_smith": 13
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 50,
+        "own": 50,
+        "rate": 1.0,
+        "rate_95": [
+         0.929,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joanna_southcott": 50
+        }
+       },
+       "john_wroe": {
+        "chunks": 253,
+        "own": 244,
+        "rate": 0.964,
+        "rate_95": [
+         0.934,
+         0.981
+        ],
+        "mean_own_rank": 1.067,
+        "went_to": {
+         "john_wroe": 244,
+         "richard_snowden": 4,
+         "anna_trapnel": 3,
+         "joseph_smith": 1,
+         "elias_smith": 1
+        }
+       },
+       "joseph_smith": {
+        "chunks": 62,
+        "own": 0,
+        "rate": 0.0,
+        "rate_95": [
+         0.0,
+         0.058
+        ],
+        "mean_own_rank": 3.581,
+        "went_to": {
+         "john_wroe": 62
+        }
+       },
+       "richard_snowden": {
+        "chunks": 54,
+        "own": 23,
+        "rate": 0.426,
+        "rate_95": [
+         0.303,
+         0.558
+        ],
+        "mean_own_rank": 1.722,
+        "went_to": {
+         "john_wroe": 4,
+         "elias_smith": 26,
+         "richard_snowden": 23,
+         "joanna_southcott": 1
+        }
+       }
+      },
+      "macro": 0.628,
+      "chance": 0.167,
+      "pull": {
+       "anna_trapnel": 0.007,
+       "elias_smith": 0.06,
+       "joanna_southcott": 0.022,
+       "john_wroe": 0.365,
+       "joseph_smith": 0.003,
+       "richard_snowden": 0.01
+      }
+     },
+     "ordinary": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 28,
+        "own": 25,
+        "rate": 0.893,
+        "rate_95": [
+         0.728,
+         0.963
+        ],
+        "mean_own_rank": 1.143,
+        "went_to": {
+         "anna_trapnel": 25,
+         "john_wroe": 1,
+         "richard_snowden": 1,
+         "joanna_southcott": 1
+        }
+       },
+       "elias_smith": {
+        "chunks": 105,
+        "own": 59,
+        "rate": 0.562,
+        "rate_95": [
+         0.466,
+         0.653
+        ],
+        "mean_own_rank": 1.752,
+        "went_to": {
+         "elias_smith": 59,
+         "john_wroe": 28,
+         "joanna_southcott": 2,
+         "anna_trapnel": 5,
+         "joseph_smith": 11
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 22,
+        "own": 22,
+        "rate": 1.0,
+        "rate_95": [
+         0.851,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joanna_southcott": 22
+        }
+       },
+       "john_wroe": {
+        "chunks": 4,
+        "own": 4,
+        "rate": 1.0,
+        "rate_95": [
+         0.51,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "john_wroe": 4
+        }
+       },
+       "joseph_smith": {
+        "chunks": 27,
+        "own": 23,
+        "rate": 0.852,
+        "rate_95": [
+         0.675,
+         0.941
+        ],
+        "mean_own_rank": 1.222,
+        "went_to": {
+         "joseph_smith": 23,
+         "richard_snowden": 2,
+         "joanna_southcott": 1,
+         "elias_smith": 1
+        }
+       },
+       "richard_snowden": {
+        "chunks": 140,
+        "own": 124,
+        "rate": 0.886,
+        "rate_95": [
+         0.822,
+         0.928
+        ],
+        "mean_own_rank": 1.229,
+        "went_to": {
+         "richard_snowden": 124,
+         "joanna_southcott": 5,
+         "anna_trapnel": 2,
+         "elias_smith": 8,
+         "john_wroe": 1
+        }
+       }
+      },
+      "macro": 0.865,
+      "chance": 0.167,
+      "pull": {
+       "anna_trapnel": 0.023,
+       "elias_smith": 0.041,
+       "joanna_southcott": 0.03,
+       "john_wroe": 0.093,
+       "joseph_smith": 0.037,
+       "richard_snowden": 0.016
+      }
+     },
+     "bar": 0.8,
+     "passed": false
+    },
+    "stopped": "the within-voice check missed its bar; cross-voice not scored"
+   },
+   "scaled": {
+    "known_answer": {
+     "prophetic": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 29,
+        "own": 17,
+        "rate": 0.586,
+        "rate_95": [
+         0.407,
+         0.745
+        ],
+        "mean_own_rank": 1.552,
+        "went_to": {
+         "anna_trapnel": 17,
+         "joanna_southcott": 9,
+         "joseph_smith": 3
+        }
+       },
+       "elias_smith": {
+        "chunks": 13,
+        "own": 13,
+        "rate": 1.0,
+        "rate_95": [
+         0.772,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "elias_smith": 13
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 50,
+        "own": 50,
+        "rate": 1.0,
+        "rate_95": [
+         0.929,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joanna_southcott": 50
+        }
+       },
+       "john_wroe": {
+        "chunks": 253,
+        "own": 192,
+        "rate": 0.759,
+        "rate_95": [
+         0.703,
+         0.807
+        ],
+        "mean_own_rank": 1.767,
+        "went_to": {
+         "john_wroe": 192,
+         "anna_trapnel": 17,
+         "elias_smith": 14,
+         "richard_snowden": 17,
+         "joanna_southcott": 4,
+         "joseph_smith": 9
+        }
+       },
+       "joseph_smith": {
+        "chunks": 62,
+        "own": 5,
+        "rate": 0.081,
+        "rate_95": [
+         0.035,
+         0.175
+        ],
+        "mean_own_rank": 3.323,
+        "went_to": {
+         "joseph_smith": 5,
+         "john_wroe": 55,
+         "joanna_southcott": 2
+        }
+       },
+       "richard_snowden": {
+        "chunks": 54,
+        "own": 26,
+        "rate": 0.481,
+        "rate_95": [
+         0.354,
+         0.611
+        ],
+        "mean_own_rank": 2.056,
+        "went_to": {
+         "elias_smith": 27,
+         "richard_snowden": 26,
+         "joanna_southcott": 1
+        }
+       }
+      },
+      "macro": 0.651,
+      "chance": 0.167,
+      "pull": {
+       "anna_trapnel": 0.039,
+       "elias_smith": 0.092,
+       "joanna_southcott": 0.039,
+       "john_wroe": 0.264,
+       "joseph_smith": 0.03,
+       "richard_snowden": 0.042
+      }
+     },
+     "ordinary": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 28,
+        "own": 19,
+        "rate": 0.679,
+        "rate_95": [
+         0.493,
+         0.821
+        ],
+        "mean_own_rank": 1.357,
+        "went_to": {
+         "joseph_smith": 4,
+         "anna_trapnel": 19,
+         "john_wroe": 4,
+         "joanna_southcott": 1
+        }
+       },
+       "elias_smith": {
+        "chunks": 105,
+        "own": 41,
+        "rate": 0.39,
+        "rate_95": [
+         0.303,
+         0.486
+        ],
+        "mean_own_rank": 2.219,
+        "went_to": {
+         "elias_smith": 41,
+         "john_wroe": 36,
+         "joanna_southcott": 1,
+         "joseph_smith": 21,
+         "anna_trapnel": 3,
+         "richard_snowden": 3
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 22,
+        "own": 19,
+        "rate": 0.864,
+        "rate_95": [
+         0.667,
+         0.953
+        ],
+        "mean_own_rank": 1.227,
+        "went_to": {
+         "joanna_southcott": 19,
+         "john_wroe": 1,
+         "anna_trapnel": 2
+        }
+       },
+       "john_wroe": {
+        "chunks": 4,
+        "own": 4,
+        "rate": 1.0,
+        "rate_95": [
+         0.51,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "john_wroe": 4
+        }
+       },
+       "joseph_smith": {
+        "chunks": 27,
+        "own": 25,
+        "rate": 0.926,
+        "rate_95": [
+         0.766,
+         0.979
+        ],
+        "mean_own_rank": 1.074,
+        "went_to": {
+         "joseph_smith": 25,
+         "richard_snowden": 1,
+         "elias_smith": 1
+        }
+       },
+       "richard_snowden": {
+        "chunks": 140,
+        "own": 118,
+        "rate": 0.843,
+        "rate_95": [
+         0.774,
+         0.894
+        ],
+        "mean_own_rank": 1.621,
+        "went_to": {
+         "richard_snowden": 118,
+         "john_wroe": 5,
+         "elias_smith": 3,
+         "anna_trapnel": 11,
+         "joanna_southcott": 3
+        }
+       }
+      },
+      "macro": 0.784,
+      "chance": 0.167,
+      "pull": {
+       "anna_trapnel": 0.054,
+       "elias_smith": 0.018,
+       "joanna_southcott": 0.016,
+       "john_wroe": 0.143,
+       "joseph_smith": 0.084,
+       "richard_snowden": 0.022
+      }
+     },
+     "bar": 0.8,
+     "passed": false
+    },
+    "stopped": "the within-voice check missed its bar; cross-voice not scored"
+   },
+   "mean_score_by_model": {
+    "anna_trapnel|prophetic": -0.0416,
+    "anna_trapnel|ordinary": -0.0309,
+    "elias_smith|prophetic": -0.0317,
+    "elias_smith|ordinary": -0.053,
+    "joanna_southcott|prophetic": -0.0496,
+    "joanna_southcott|ordinary": -0.0678,
+    "john_wroe|prophetic": -0.1109,
+    "john_wroe|ordinary": -0.0371,
+    "joseph_smith|prophetic": -0.046,
+    "joseph_smith|ordinary": -0.0487,
+    "richard_snowden|prophetic": -0.0708,
+    "richard_snowden|ordinary": -0.0777
+   }
+  },
+  "masked_larger": {
+   "models": {
+    "anna_trapnel|prophetic": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 1180226482,
+     "weights_sha256": "e4ae95a49aa7aeccf8ce6395aa0fea83a1a5670b5825cb22e54856f383e4ca83"
+    },
+    "anna_trapnel|ordinary": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 1525842623,
+     "weights_sha256": "c603db098646714bf3cc89e72ec8b4163af19fe84285588c3037b9f653e81a44"
+    },
+    "elias_smith|prophetic": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 4120141944,
+     "weights_sha256": "b718ed02b58ff3b33d4d13c8cbfb5aae6bf9b698c954e2e22991dc6471a0f93d"
+    },
+    "elias_smith|ordinary": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 2336597703,
+     "weights_sha256": "af794fb8c2d344a0abbb2c29373d64261b084dbad1fa9c744346129be7903bf1"
+    },
+    "joanna_southcott|prophetic": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 3451489406,
+     "weights_sha256": "968fbffc16b1fde011e12f0fe05f8d49b955b213a10023a5ed88c5f8b988c24e"
+    },
+    "joanna_southcott|ordinary": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 634712845,
+     "weights_sha256": "7cc938202ec4c93d5f834aa1e7222a7e9e0d64ced7130b0750b8f694828e5fda"
+    },
+    "joseph_smith|prophetic": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 4233813205,
+     "weights_sha256": "cda152d7f48791a2678ef2305e36644e2646da3fe98cbe3e1826782ac9c638b4"
+    },
+    "joseph_smith|ordinary": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 1333116678,
+     "weights_sha256": "e1362741df7b3682ebfa1a3f5134f6d38155b8f2a640d50aefccec043c7ce0b3"
+    },
+    "richard_snowden|prophetic": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 2909765772,
+     "weights_sha256": "86abeb02d5ff5ffc6bdbcc5d9e7aa5c501f8c1f67caf51bf6c8de35c7064db46"
+    },
+    "richard_snowden|ordinary": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 2761489240,
+     "weights_sha256": "2cdb389e71fd75d87c66b20f325f12c96773bc2f2c1a35e0ef2864732ed4599a"
+    }
+   },
+   "raw": {
+    "known_answer": {
+     "prophetic": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 22,
+        "own": 18,
+        "rate": 0.818,
+        "rate_95": [
+         0.615,
+         0.927
+        ],
+        "mean_own_rank": 1.182,
+        "went_to": {
+         "anna_trapnel": 18,
+         "joanna_southcott": 4
+        }
+       },
+       "elias_smith": {
+        "chunks": 5,
+        "own": 5,
+        "rate": 1.0,
+        "rate_95": [
+         0.566,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "elias_smith": 5
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 44,
+        "own": 44,
+        "rate": 1.0,
+        "rate_95": [
+         0.92,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joanna_southcott": 44
+        }
+       },
+       "joseph_smith": {
+        "chunks": 46,
+        "own": 46,
+        "rate": 1.0,
+        "rate_95": [
+         0.923,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joseph_smith": 46
+        }
+       },
+       "richard_snowden": {
+        "chunks": 41,
+        "own": 40,
+        "rate": 0.976,
+        "rate_95": [
+         0.874,
+         0.996
+        ],
+        "mean_own_rank": 1.024,
+        "went_to": {
+         "richard_snowden": 40,
+         "joanna_southcott": 1
+        }
+       }
+      },
+      "macro": 0.959,
+      "chance": 0.2,
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.044,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      }
+     },
+     "ordinary": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 21,
+        "own": 21,
+        "rate": 1.0,
+        "rate_95": [
+         0.845,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "anna_trapnel": 21
+        }
+       },
+       "elias_smith": {
+        "chunks": 94,
+        "own": 93,
+        "rate": 0.989,
+        "rate_95": [
+         0.942,
+         0.998
+        ],
+        "mean_own_rank": 1.011,
+        "went_to": {
+         "elias_smith": 93,
+         "joanna_southcott": 1
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 14,
+        "own": 14,
+        "rate": 1.0,
+        "rate_95": [
+         0.785,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joanna_southcott": 14
+        }
+       },
+       "joseph_smith": {
+        "chunks": 20,
+        "own": 20,
+        "rate": 1.0,
+        "rate_95": [
+         0.839,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joseph_smith": 20
+        }
+       },
+       "richard_snowden": {
+        "chunks": 133,
+        "own": 132,
+        "rate": 0.992,
+        "rate_95": [
+         0.959,
+         0.999
+        ],
+        "mean_own_rank": 1.015,
+        "went_to": {
+         "richard_snowden": 132,
+         "elias_smith": 1
+        }
+       }
+      },
+      "macro": 0.996,
+      "chance": 0.2,
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.005,
+       "joanna_southcott": 0.004,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      }
+     },
+     "bar": 0.8,
+     "passed": true
+    },
+    "cross_voice": {
+     "ordinary_models_on_scripture_chunks": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 22,
+        "own": 21,
+        "rate": 0.955,
+        "rate_95": [
+         0.782,
+         0.992
+        ],
+        "mean_own_rank": 1.045,
+        "went_to": {
+         "anna_trapnel": 21,
+         "joseph_smith": 1
+        }
+       },
+       "elias_smith": {
+        "chunks": 5,
+        "own": 3,
+        "rate": 0.6,
+        "rate_95": [
+         0.231,
+         0.882
+        ],
+        "mean_own_rank": 1.6,
+        "went_to": {
+         "anna_trapnel": 2,
+         "elias_smith": 3
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 44,
+        "own": 27,
+        "rate": 0.614,
+        "rate_95": [
+         0.466,
+         0.743
+        ],
+        "mean_own_rank": 1.386,
+        "went_to": {
+         "anna_trapnel": 17,
+         "joanna_southcott": 27
+        }
+       },
+       "joseph_smith": {
+        "chunks": 46,
+        "own": 45,
+        "rate": 0.978,
+        "rate_95": [
+         0.887,
+         0.996
+        ],
+        "mean_own_rank": 1.022,
+        "went_to": {
+         "joseph_smith": 45,
+         "richard_snowden": 1
+        }
+       },
+       "richard_snowden": {
+        "chunks": 41,
+        "own": 18,
+        "rate": 0.439,
+        "rate_95": [
+         0.299,
+         0.59
+        ],
+        "mean_own_rank": 1.732,
+        "went_to": {
+         "elias_smith": 19,
+         "richard_snowden": 18,
+         "joseph_smith": 2,
+         "joanna_southcott": 2
+        }
+       }
+      },
+      "macro": 0.717,
+      "chance": 0.2,
+      "pull": {
+       "anna_trapnel": 0.14,
+       "elias_smith": 0.124,
+       "joanna_southcott": 0.018,
+       "joseph_smith": 0.027,
+       "richard_snowden": 0.009
+      }
+     },
+     "scripture_models_on_ordinary_chunks": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 21,
+        "own": 21,
+        "rate": 1.0,
+        "rate_95": [
+         0.845,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "anna_trapnel": 21
+        }
+       },
+       "elias_smith": {
+        "chunks": 94,
+        "own": 5,
+        "rate": 0.053,
+        "rate_95": [
+         0.023,
+         0.119
+        ],
+        "mean_own_rank": 2.309,
+        "went_to": {
+         "anna_trapnel": 88,
+         "elias_smith": 5,
+         "richard_snowden": 1
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 14,
+        "own": 0,
+        "rate": 0.0,
+        "rate_95": [
+         0.0,
+         0.215
+        ],
+        "mean_own_rank": 3.714,
+        "went_to": {
+         "anna_trapnel": 13,
+         "elias_smith": 1
+        }
+       },
+       "joseph_smith": {
+        "chunks": 20,
+        "own": 7,
+        "rate": 0.35,
+        "rate_95": [
+         0.181,
+         0.567
+        ],
+        "mean_own_rank": 2.0,
+        "went_to": {
+         "anna_trapnel": 13,
+         "joseph_smith": 7
+        }
+       },
+       "richard_snowden": {
+        "chunks": 133,
+        "own": 85,
+        "rate": 0.639,
+        "rate_95": [
+         0.555,
+         0.716
+        ],
+        "mean_own_rank": 1.496,
+        "went_to": {
+         "richard_snowden": 85,
+         "anna_trapnel": 12,
+         "elias_smith": 36
+        }
+       }
+      },
+      "macro": 0.408,
+      "chance": 0.2,
+      "pull": {
+       "anna_trapnel": 0.483,
+       "elias_smith": 0.197,
+       "joanna_southcott": 0.0,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.007
+      }
+     }
+    },
+    "voice_or_person": {
+     "per_writer": {
+      "anna_trapnel": {
+       "chunks": 22,
+       "any_other_beats_own_ordinary": 0.318,
+       "typical_other_beats_own_ordinary": 0.0
+      },
+      "elias_smith": {
+       "chunks": 5,
+       "any_other_beats_own_ordinary": 1.0,
+       "typical_other_beats_own_ordinary": 0.0
+      },
+      "joanna_southcott": {
+       "chunks": 44,
+       "any_other_beats_own_ordinary": 0.068,
+       "typical_other_beats_own_ordinary": 0.0
+      },
+      "joseph_smith": {
+       "chunks": 46,
+       "any_other_beats_own_ordinary": 0.0,
+       "typical_other_beats_own_ordinary": 0.0
+      },
+      "richard_snowden": {
+       "chunks": 41,
+       "any_other_beats_own_ordinary": 0.805,
+       "typical_other_beats_own_ordinary": 0.0
+      }
+     },
+     "macro_any_other": 0.438,
+     "macro_typical_other": 0.0
+    },
+    "verdicts": {
+     "crosses": {
+      "anna_trapnel": true,
+      "elias_smith": true,
+      "joanna_southcott": true,
+      "joseph_smith": true,
+      "richard_snowden": true
+     },
+     "others_crossing": 4,
+     "others": 4,
+     "genre_effect": false,
+     "joseph_smith": {
+      "verdict": "cannot tell (group too small)"
+     }
+    }
+   },
+   "scaled": {
+    "known_answer": {
+     "prophetic": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 22,
+        "own": 18,
+        "rate": 0.818,
+        "rate_95": [
+         0.615,
+         0.927
+        ],
+        "mean_own_rank": 1.182,
+        "went_to": {
+         "anna_trapnel": 18,
+         "joanna_southcott": 4
+        }
+       },
+       "elias_smith": {
+        "chunks": 5,
+        "own": 5,
+        "rate": 1.0,
+        "rate_95": [
+         0.566,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "elias_smith": 5
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 44,
+        "own": 44,
+        "rate": 1.0,
+        "rate_95": [
+         0.92,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joanna_southcott": 44
+        }
+       },
+       "joseph_smith": {
+        "chunks": 46,
+        "own": 46,
+        "rate": 1.0,
+        "rate_95": [
+         0.923,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joseph_smith": 46
+        }
+       },
+       "richard_snowden": {
+        "chunks": 41,
+        "own": 40,
+        "rate": 0.976,
+        "rate_95": [
+         0.874,
+         0.996
+        ],
+        "mean_own_rank": 1.024,
+        "went_to": {
+         "richard_snowden": 40,
+         "joanna_southcott": 1
+        }
+       }
+      },
+      "macro": 0.959,
+      "chance": 0.2,
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.044,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      }
+     },
+     "ordinary": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 21,
+        "own": 21,
+        "rate": 1.0,
+        "rate_95": [
+         0.845,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "anna_trapnel": 21
+        }
+       },
+       "elias_smith": {
+        "chunks": 94,
+        "own": 67,
+        "rate": 0.713,
+        "rate_95": [
+         0.614,
+         0.794
+        ],
+        "mean_own_rank": 1.394,
+        "went_to": {
+         "elias_smith": 67,
+         "anna_trapnel": 7,
+         "joseph_smith": 17,
+         "joanna_southcott": 3
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 14,
+        "own": 14,
+        "rate": 1.0,
+        "rate_95": [
+         0.785,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joanna_southcott": 14
+        }
+       },
+       "joseph_smith": {
+        "chunks": 20,
+        "own": 20,
+        "rate": 1.0,
+        "rate_95": [
+         0.839,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "joseph_smith": 20
+        }
+       },
+       "richard_snowden": {
+        "chunks": 133,
+        "own": 127,
+        "rate": 0.955,
+        "rate_95": [
+         0.905,
+         0.979
+        ],
+        "mean_own_rank": 1.053,
+        "went_to": {
+         "richard_snowden": 127,
+         "joanna_southcott": 1,
+         "elias_smith": 5
+        }
+       }
+      },
+      "macro": 0.934,
+      "chance": 0.2,
+      "pull": {
+       "anna_trapnel": 0.027,
+       "elias_smith": 0.027,
+       "joanna_southcott": 0.015,
+       "joseph_smith": 0.065,
+       "richard_snowden": 0.0
+      }
+     },
+     "bar": 0.8,
+     "passed": true
+    },
+    "cross_voice": {
+     "ordinary_models_on_scripture_chunks": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 22,
+        "own": 21,
+        "rate": 0.955,
+        "rate_95": [
+         0.782,
+         0.992
+        ],
+        "mean_own_rank": 1.045,
+        "went_to": {
+         "anna_trapnel": 21,
+         "joseph_smith": 1
+        }
+       },
+       "elias_smith": {
+        "chunks": 5,
+        "own": 3,
+        "rate": 0.6,
+        "rate_95": [
+         0.231,
+         0.882
+        ],
+        "mean_own_rank": 1.4,
+        "went_to": {
+         "anna_trapnel": 2,
+         "elias_smith": 3
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 44,
+        "own": 37,
+        "rate": 0.841,
+        "rate_95": [
+         0.706,
+         0.921
+        ],
+        "mean_own_rank": 1.159,
+        "went_to": {
+         "anna_trapnel": 6,
+         "joanna_southcott": 37,
+         "elias_smith": 1
+        }
+       },
+       "joseph_smith": {
+        "chunks": 46,
+        "own": 44,
+        "rate": 0.957,
+        "rate_95": [
+         0.855,
+         0.988
+        ],
+        "mean_own_rank": 1.065,
+        "went_to": {
+         "joseph_smith": 44,
+         "richard_snowden": 2
+        }
+       },
+       "richard_snowden": {
+        "chunks": 41,
+        "own": 7,
+        "rate": 0.171,
+        "rate_95": [
+         0.085,
+         0.313
+        ],
+        "mean_own_rank": 2.268,
+        "went_to": {
+         "elias_smith": 26,
+         "joanna_southcott": 4,
+         "joseph_smith": 4,
+         "richard_snowden": 7
+        }
+       }
+      },
+      "macro": 0.705,
+      "chance": 0.2,
+      "pull": {
+       "anna_trapnel": 0.059,
+       "elias_smith": 0.176,
+       "joanna_southcott": 0.035,
+       "joseph_smith": 0.045,
+       "richard_snowden": 0.017
+      }
+     },
+     "scripture_models_on_ordinary_chunks": {
+      "per_writer": {
+       "anna_trapnel": {
+        "chunks": 21,
+        "own": 21,
+        "rate": 1.0,
+        "rate_95": [
+         0.845,
+         1.0
+        ],
+        "mean_own_rank": 1.0,
+        "went_to": {
+         "anna_trapnel": 21
+        }
+       },
+       "elias_smith": {
+        "chunks": 94,
+        "own": 16,
+        "rate": 0.17,
+        "rate_95": [
+         0.108,
+         0.259
+        ],
+        "mean_own_rank": 2.191,
+        "went_to": {
+         "richard_snowden": 9,
+         "anna_trapnel": 68,
+         "elias_smith": 16,
+         "joanna_southcott": 1
+        }
+       },
+       "joanna_southcott": {
+        "chunks": 14,
+        "own": 5,
+        "rate": 0.357,
+        "rate_95": [
+         0.163,
+         0.612
+        ],
+        "mean_own_rank": 2.0,
+        "went_to": {
+         "richard_snowden": 1,
+         "joanna_southcott": 5,
+         "anna_trapnel": 6,
+         "elias_smith": 2
+        }
+       },
+       "joseph_smith": {
+        "chunks": 20,
+        "own": 7,
+        "rate": 0.35,
+        "rate_95": [
+         0.181,
+         0.567
+        ],
+        "mean_own_rank": 2.15,
+        "went_to": {
+         "anna_trapnel": 8,
+         "joseph_smith": 7,
+         "richard_snowden": 4,
+         "elias_smith": 1
+        }
+       },
+       "richard_snowden": {
+        "chunks": 133,
+        "own": 65,
+        "rate": 0.489,
+        "rate_95": [
+         0.405,
+         0.573
+        ],
+        "mean_own_rank": 1.541,
+        "went_to": {
+         "richard_snowden": 65,
+         "elias_smith": 67,
+         "anna_trapnel": 1
+        }
+       }
+      },
+      "macro": 0.473,
+      "chance": 0.2,
+      "pull": {
+       "anna_trapnel": 0.318,
+       "elias_smith": 0.372,
+       "joanna_southcott": 0.004,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.094
+      }
+     }
+    },
+    "voice_or_person": {
+     "per_writer": {
+      "anna_trapnel": {
+       "chunks": 22,
+       "any_other_beats_own_ordinary": 0.545,
+       "typical_other_beats_own_ordinary": 0.0
+      },
+      "elias_smith": {
+       "chunks": 5,
+       "any_other_beats_own_ordinary": 0.8,
+       "typical_other_beats_own_ordinary": 0.0
+      },
+      "joanna_southcott": {
+       "chunks": 44,
+       "any_other_beats_own_ordinary": 0.068,
+       "typical_other_beats_own_ordinary": 0.0
+      },
+      "joseph_smith": {
+       "chunks": 46,
+       "any_other_beats_own_ordinary": 0.217,
+       "typical_other_beats_own_ordinary": 0.0
+      },
+      "richard_snowden": {
+       "chunks": 41,
+       "any_other_beats_own_ordinary": 1.0,
+       "typical_other_beats_own_ordinary": 0.146
+      }
+     },
+     "macro_any_other": 0.526,
+     "macro_typical_other": 0.029
+    },
+    "verdicts": {
+     "crosses": {
+      "anna_trapnel": true,
+      "elias_smith": true,
+      "joanna_southcott": true,
+      "joseph_smith": true,
+      "richard_snowden": false
+     },
+     "others_crossing": 3,
+     "others": 4,
+     "genre_effect": false,
+     "joseph_smith": {
+      "verdict": "cannot tell (group too small)"
+     }
+    }
+   },
+   "mean_score_by_model": {
+    "anna_trapnel|prophetic": -0.1154,
+    "anna_trapnel|ordinary": -0.11,
+    "elias_smith|prophetic": -0.0969,
+    "elias_smith|ordinary": -0.1076,
+    "joanna_southcott|prophetic": -0.0762,
+    "joanna_southcott|ordinary": -0.1099,
+    "joseph_smith|prophetic": -0.1035,
+    "joseph_smith|ordinary": -0.1114,
+    "richard_snowden|prophetic": -0.0954,
+    "richard_snowden|ordinary": -0.1161
+   }
+  }
+ },
+ "not_attempted": {},
+ "side_by_side": {
+  "function_words": {
+   "known_answer": {
+    "prophetic": 0.933,
+    "ordinary": 0.922
+   },
+   "js_ordinary_to_scripture": 1.0,
+   "js_scripture_to_ordinary": 0.379,
+   "others_crossing": 3,
+   "js_gap": "typical"
+  },
+  "encoder_bom30": {
+   "known_answer": {
+    "prophetic": 0.988,
+    "ordinary": 0.986
+   },
+   "js_ordinary_to_scripture": 0.797,
+   "js_scripture_to_ordinary": 0.586,
+   "others_crossing": 5,
+   "js_gap": "typical"
+  },
+  "encoder_v2": {
+   "known_answer": {
+    "prophetic": 0.99,
+    "ordinary": 0.932
+   },
+   "js_ordinary_to_scripture": 0.75,
+   "js_scripture_to_ordinary": 0.69,
+   "others_crossing": 5,
+   "js_gap": "typical"
+  },
+  "author_models_masked_small": {
+   "known_answer": {
+    "prophetic": 0.803,
+    "ordinary": 0.894
+   },
+   "js_ordinary_to_scripture": 0.0,
+   "js_scripture_to_ordinary": 0.32,
+   "others_crossing": 1,
+   "js": {
+    "ordinary_models_on_scripture_chunks": {
+     "rate": "below every other writer",
+     "mean_own_rank": "worse than every other writer",
+     "others_rate_range": [
+      0.065,
+      0.893
+     ]
+    },
+    "scripture_models_on_ordinary_chunks": {
+     "rate": "typical",
+     "mean_own_rank": "typical",
+     "others_rate_range": [
+      0.0,
+      0.889
+     ]
+    }
+   }
+  },
+  "author_models_full_small": {
+   "known_answer": {
+    "prophetic": 0.628,
+    "ordinary": 0.865
+   },
+   "stopped": true
+  },
+  "author_models_masked_larger": {
+   "known_answer": {
+    "prophetic": 0.959,
+    "ordinary": 0.996
+   },
+   "js_ordinary_to_scripture": 0.978,
+   "js_scripture_to_ordinary": 0.35,
+   "others_crossing": 4,
+   "js": {
+    "verdict": "cannot tell (group too small)"
+   }
+  }
+ },
+ "config_sha256": "dc8461e591dc804f8504daded364375b1847a6e43b40253c3353676a14bd0046",
+ "commit": "ca293fd3aec7094b9c62b797a84c009205407132"
+}

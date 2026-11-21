@@ -90,7 +90,7 @@ compares against.
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
 | BOM-104 | The Books of Moses and Abraham share the voice; Rigdon wrote the *Lectures on Faith* | Phipps 1977; Reynolds 2005 | small samples | the study's models and encoders | TBD |
-| BOM-105, BOM-99 | Smith's revelations and his letters look like two different writers | Holmes 1992; the first study | Smith alone | other writers with two voices (Southcott, Wroe, Trapnel, Snowden, Elias Smith) | **Done** with function words and both style encoders; author models TBD |
+| BOM-105, BOM-99 | Smith's revelations and his letters look like two different writers | Holmes 1992; the first study | Smith alone | other writers with two voices (Southcott, Wroe, Trapnel, Snowden, Elias Smith) | **Done** on three measures; the author models do not give a stable answer |
 | BOM-100, BOM-101 | A model can be taught to see the person and not the scripture voice | this project | | the known-answer set from BOM-99 | TBD |
 
 ### 5. Whose world is it?
@@ -519,8 +519,23 @@ to his own letters (0.75 against 0.73). Scripture voice still pulls scripture vo
 *What it does not show.* Six writers is a small group, so "typical" is a weak word. Four are read
 from uncorrected scans. An AI helper labelled which passages are which voice. Two of the six
 (Southcott, Elias Smith) had text in the encoders' training; leaving them out does not change
-where Joseph Smith falls. The author language models, the other half of the first study's
-finding, have not been run on this set.
+where Joseph Smith falls.
+
+**And with the author models, which do not settle it.** The other half of the first study's
+finding came from language models tuned on one author at a time. I tuned the smallest one on each
+writer's ordinary voice and asked whether it recognises that writer's scripture voice.
+
+| Training text per model | Joseph Smith's letters model finds his revelations | Other writers |
+| --- | --- | --- |
+| The study's small dose (about 2,000 tokens) | 0 of 51 | 7% to 89% |
+| Four times that, without Wroe | 45 of 46 | 44% to 95% |
+
+With a little text his letters model finds none of his revelations, the worst of the six. With
+four times as much it finds nearly all of them, the best of the five. The small-dose run only just
+passed its own check, and one writer's model (Snowden's) was soaking up more than half of
+everybody's scripture passages. My reading is that the small-dose result is an artifact of too
+little training text. That reading was made after seeing both runs, so the fair summary is:
+cannot tell, leaning the same way as the encoders.
 
 ## What I would want a reader to take from the whole set
 
