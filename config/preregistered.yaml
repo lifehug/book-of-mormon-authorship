@@ -1167,6 +1167,59 @@ lab:                              # the research lab (exploratory tooling; reads
       masked_larger: {kjv_dropped: true, dose: larger, drop: [john_wroe]}
     larger_min_heldout_chunks: 5   # the larger dose: most sequences (<= library_pool.large_sequences) leaving this many held-out chunks everywhere
     min_heldout_chunks: 1          # a writer-voice with fewer held-out chunks than this is "not attempted"
+  inventory:                       # BOM-111 (lab; exploratory): the inventory of things (animals, plants, metals, tools, buildings, clothing)
+    seed: 20261121
+    chunk_words: 5000              # a text is cut into consecutive chunks of this many words (a shorter tail is dropped)
+    max_chunks: 12                 # at most this many chunks per text are classified (drawn by seed)
+    background_weight_n: 150       # library works whose item counts set the rarity weights
+    background_world_n: 150        # a disjoint set of library works that forms the background world
+    year_min: 1790                 # background works: registry year in this range, books not newspapers
+    year_max: 1830
+    min_words: 30000
+    max_words: 250000
+    english_share: 0.2             # bilingual editions: a paragraph is English if this share of its words are English function words
+    clavigero: ["internet_archive:bim_eighteenth-century_the-history-of-mexico-c_clavigero-francesco-sav_1787_1", "internet_archive:bim_eighteenth-century_the-history-of-mexico-c_clavigero-francesco-sav_1787_2"]
+    bar_texts: 0.75                # known-answer, whole texts held out: share landing in their own world
+    bar_world: 0.5                 # and each world at least this
+    bar_chunks: 0.75               # known-answer, chunks of held-out texts: mean over worlds of the own-world rate
+    bar_chunks_world: 0.5          # and each world at least this
+    bar_register: 0.5              # genre check: share of the held-out register's texts landing in Mesoamerica when the world is built from the other register only
+    absence_share: 0.75            # an item is common to a world if this share of the world's texts name it
+    expected_min: 3                # an absence counts as informative if the world's median rate predicts at least this many in the Book of Mormon
+    bootstrap: 1000                # resamples of the item list
+    gloss_window: 10               # words either side of an Old World word searched for "call", "name", ... (translator's allowance)
+    near_window: 12                # words either side searched for a New World item
+    post_hoc_drop_top: 20          # POST HOC (chosen after seeing the book's counts): drop the book's most frequent items from every vector
+    post_hoc_polysemous: [church, shed, wax, hide, pitch, compass, foundation, seed, fruit, flesh, flock, lamb, vineyard, chain, yoke, grave]  # POST HOC: words whose main sense in the book (and the Bible) is not the thing; dropped from every vector
+    clear_share: 0.9               # the Book of Mormon is clearly closest to a world if that world is closest in at least this share of item resamples
+  warfare:                         # BOM-115 (lab; exploratory): weapons, armour, fortifications, army sizes
+    window_words: 500              # war passages: consecutive windows of this many words
+    seed_words: [battle, battles, army, armies, slain, siege, fought, fight, fighting, enemy, enemies, war, wars, soldier, soldiers, victory, slaughter]
+    density_grid: [0.004, 0.006, 0.008, 0.010, 0.012, 0.015, 0.020, 0.025, 0.030]  # share of words that are seed words
+    fpr_max: 0.05                  # threshold: smallest grid value with at most this share of non-war known windows
+    tpr_min: 0.4                   # and at least this share of war known windows (0.5 until revised after the first check; see the card)
+    part_windows: 30               # war windows per part
+    min_part_windows: 10           # a shorter text gives one part if it has at least this many
+    min_text_war_words: 5000       # a text is placed only with this many war words
+    min_tradition_war_words: 30000 # a tradition needs this many war words pooled, in three texts of the size above
+    classifier_bar: 0.75           # known-answer check: mean of the traditions' hit rates
+    tradition_bar: 0.5             # and each tradition at least this
+    bom_share: 0.667               # "nearest" needs this share of the Book of Mormon's parts
+    min_term_count: 5              # a term is "present" in a tradition with this many pooled war-window counts
+    cluster_stride: 250            # words between cluster windows
+    span_levels: [500, 1000, 2000] # sensitivity: the smallest stretch of words holding the five groups, counted at these sizes
+    part_windows_sensitivity: [15] # sensitivity: parts of this many war windows (the decisive size is part_windows)
+    long_s_per_10k: 5              # long-s repair if marker words reach this per 10,000 words
+    long_s_markers: [moft, fome, fuch, thefe, thofe, fhall, fhould, fhips]
+    casualty_words: [slain, killed, dead, fell, perished, drowned, wounded, lost, died, destroyed]
+    vocab_min_count: 2             # long-s repair vocabulary: words seen this often in the King James text and Josephus
+    figure_span: 8                 # a figure is a casualty (or army) figure if a casualty (or army) word lies within this many words
+    figure_min: 10                 # figures below this value are not kept
+    library_sample: 300            # cluster baseline: works drawn from the library
+    year_min: 1750
+    year_max: 1830
+    min_words: 40000
+    seed: 20261120
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

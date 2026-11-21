@@ -103,7 +103,7 @@ compares against.
 | BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | TBD |
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | TBD |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
-| BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | TBD |
+| BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
 | BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions | TBD |
 | BOM-117 | Uto-Aztecan languages carry Hebrew and Egyptian words | Stubbs 2015 | his pairing alone | his rules on unrelated languages | TBD |
 
@@ -536,6 +536,54 @@ passed its own check, and one writer's model (Snowden's) was soaking up more tha
 everybody's scripture passages. My reading is that the small-dose result is an artifact of too
 little training text. That reading was made after seeing both runs, so the fair summary is:
 cannot tell, leaning the same way as the encoders.
+
+### Warfare (BOM-115)
+
+About a fifth of the Book of Mormon is war. Is it the Bible's kind of war, the American kind its
+first readers knew, the conquest of Mexico, or the earthwork forts that 1820s writers imagined
+the mound builders defending?
+
+I took the war passages of each text by one rule and counted a fixed list of war words: weapons,
+armour, fortifications, how armies are organised.
+
+| Tradition | How close the Book of Mormon's war vocabulary is (1.0 = identical) |
+| --- | --- |
+| Bible and Josephus | 0.66 |
+| Mound-builder and Indian-war writing | 0.62 |
+| Conquest of Mexico | 0.62 |
+| American wars, 1775 to 1815 | 0.40 |
+
+It is nearest the Bible and Josephus, but not by enough to separate the first three. What is
+clear is the last row: it is not the American wars. There are no muskets, cannon, guns, bayonets
+or tomahawks, and no months named.
+
+The controls matter here. *The Late War* is written in Bible style about the War of 1812, and it
+lands with the American wars. Spalding's novel lands with the mound-builder writing. Both sit
+further from the Bible than the Book of Mormon does. So Bible diction does not by itself drag a
+war story to the Bible.
+
+Some words are its own. "Title of liberty", "arm-shield" and "thick clothing" appear in none of
+the comparison traditions. "Cimeter", "heap of earth", "picket" and "decoy" are in it and not in
+the Bible or Josephus. And the Bible has things it lacks: spear, dagger, helmet, trench, garrison,
+ambush, tribute.
+
+**The fortifications.** Alma describes cities fortified with a ditch, a bank of earth, timbers,
+pickets and towers. Dan Vogel and others have pointed to 1820s descriptions of mound-builder forts
+with picketed earth walls. I looked for those five things together. The Book of Mormon has all
+five inside 507 words. The next tightest is Josiah Priest's book, at 1,419 words. In 300 ordinary
+library books the tightest is 3,204. No comparison text packs them as close as the Book of Mormon
+does, though Priest, writing about American antiquities, comes nearest.
+
+**Army sizes.** The typical army figure in the Book of Mormon is 6,000, against 1,000 in the
+Bible and Josephus, 500 in the American wars and 200 in the conquest of Mexico. That rests on
+eleven figures.
+
+*The check on the method.* Held-out texts landed with their own tradition 85% of the time. The
+mound-builder group is weak: five texts, and their war passages are mostly Indian wars and travel,
+not descriptions of earthworks. The native annals were too short to form a group at all.
+
+*What it does not show.* Words in war passages, not how anyone fought. It cannot tell the top
+three traditions apart.
 
 ## What I would want a reader to take from the whole set
 
