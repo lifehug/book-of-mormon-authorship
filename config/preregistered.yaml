@@ -866,7 +866,7 @@ lab:                              # the research lab (exploratory tooling; reads
   judge:                           # lab: paced model judging on the owner's Claude subscription (owner, 2026-11-20); simulated judging, labelled so
     model: haiku                   # the small model; a test may name another for a check
     per_hour: 300                  # most calls an hour
-    hours: [22, 7]                 # local hours in which it may run (start, end; wraps midnight)
+    hours: [0, 24]                 # local hours in which it may run (start, end; wraps midnight). All day: owner, 2026-11-20 ("you can run these all day"); was [22, 7]
     hours_poll: 300                # seconds between looks at the clock outside the window
     outage_after: 5                # this many failed calls in a row = a usage limit or an outage
     outage_wait: 1800              # seconds to wait before trying again

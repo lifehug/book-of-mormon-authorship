@@ -5,8 +5,8 @@ use the word in this sense; what does this phrase refer to). Every such answer i
 judging by an AI model and is labelled so wherever it is reported. A test writes its questions to
 a jobs file, one JSON object a line (``{"id": ..., "prompt": ...}``); this runs them through the
 lean ``claude -p`` call the study used for its story-skeleton test, at most ``lab.judge.per_hour``
-calls an hour and only inside ``lab.judge.hours`` (so it does not use the allowance the owner
-needs by day), and appends each reply to the answers file. It resumes from the answers file. A
+calls an hour and only inside ``lab.judge.hours`` (all day since the owner's word of 2026-11-20),
+and appends each reply to the answers file. It resumes from the answers file. A
 reply lost to a usage limit or an outage is never written: the job stays open and is tried again
 on the next pass, and after ``lab.judge.outage_wait`` seconds when every call in a row fails.
 
