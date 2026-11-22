@@ -248,3 +248,16 @@ def test_dev_table_refs_exist_in_kjv():
     for r in g.dev_tables()["bible_hand"]:
         for ref in r["refs"]:
             assert ref in refs, ref
+
+
+def test_sea_graded_by_water_that_way(cfg):
+    s = s_of(cfg)
+    earth = toy_earth(cfg)
+    f = {"kind": "direction", "a": "west sea", "b": "x", "dir": "W", "cone": 45, "km": [0, 500]}
+    pos = {"x": (0.5, -29.5)}  # just inside the land's west edge
+    g_ = g.grade_feature(f, pos, {}, 0, earth, s, s["their_way"], {"west sea"})
+    assert g_ == "pass"
+    assert (
+        g.grade_feature(f | {"dir": "E"}, pos, {}, 0, earth, s, s["their_way"], {"west sea"})
+        == "fail"
+    )

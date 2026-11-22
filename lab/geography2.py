@@ -31,6 +31,7 @@ Usage::
     python -m lab.geography2 jobs         # judge jobs, check texts first (private folder) (5 min)
     python -m lab.geography2 dev          # Part A counter on hand-built tables, no judge (10-40 min)
     python -m lab.geography2 coverage     # Part C: radiocarbon dates per region (1 min)
+    python -m lab.geography2 grade        # step 2(b): each setting graded on Clark's points (seconds)
     python -m lab.geography2 check        # coded check texts: extractor, kappa, Part A, step-2 check (hours)
     python -m lab.geography2 run          # check, then (if passed) the book and Part B (hours)
 """  # noqa: E501
@@ -1095,11 +1096,15 @@ def grade_setting(setting: dict, rotation: int, earth: ge.Earth, s: dict) -> dic
     rivers = {p: v["river"] for p, v in setting.items() if not p.startswith("_") and "river" in v}
     tw = s["their_way"]
     theta = 45 * rotation
+    # A sea is graded by the water lying that way from the other place, not by a placed point
+    # (changed after the first grading run, 2026-11-22: placed sea points made distances an
+    # artefact of where the point was put; post hoc).
+    water_places = {f["a"] for f in feats if f["kind"] == "water"}
     res = {}
     for point in key["points"]:
         rows = []
         for f in [x for x in feats if x["point"] == point]:
-            g = grade_feature(f, pos, rivers, theta, earth, s, tw)
+            g = grade_feature(f, pos, rivers, theta, earth, s, tw, water_places)
             rows.append(
                 {"kind": f["kind"], "a": f.get("a") or f.get("river"), "b": f.get("b"), "grade": g}
             )
@@ -1116,9 +1121,19 @@ def grade_setting(setting: dict, rotation: int, earth: ge.Earth, s: dict) -> dic
     return res
 
 
-def grade_feature(f, pos, rivers, theta, earth, s, tw) -> str:
+def grade_feature(f, pos, rivers, theta, earth, s, tw, water_places=frozenset()) -> str:
     a = s["part_a"]
     k = f["kind"]
+    if k in ("direction", "days") and f.get("a") in water_places:
+        if f.get("b") not in pos:
+            return "cannot grade"
+        la, lo = pos[f["b"]]
+        dist = earth.water_dist([la], [lo])[:, 0]
+        hi = f["km"][1] if f.get("km") else earth.e["cap_km"] - 1
+        if k == "direction":
+            e = (DIRS.index(f["dir"]) + round(theta / 45)) % 8
+            return "pass" if dist[e] <= hi else "fail"
+        return "pass" if dist.min() <= hi else "fail"
     if k in ("river", "flows"):
         rname = rivers.get(f["river"])
         if rname is None:
@@ -1693,6 +1708,31 @@ def bible_layout_check(table: list[dict], coords: dict, earth: ge.Earth, s: dict
     return res
 
 
+def cmd_grade(cfg: dict) -> dict:
+    """Step 2(b) alone: each setting graded on Clark's ten points at its public placements and
+    authors' rotation(s). Needs no reading; its own check (the Bible's layout) needs the coded
+    Bible table and is reported by ``check``."""
+    s = settings(cfg)
+    earth = ge.Earth(cfg)
+    placements = json.loads(PLACEMENTS.read_text())
+    grades = {
+        name: {str(r): grade_setting(placements[name], r, earth, s) for r in v["rotations"]}
+        for name, v in s["settings"].items()
+    }
+    summary = {
+        name: {rot: {p: g["verdict"] for p, g in pts.items()} for rot, pts in by.items()}
+        for name, by in grades.items()
+    }
+    return {
+        "label": "Clark's ten points (1989) graded at public placements; Sorenson's own placements "
+        "not used (not replicated until bought); step 2's own check not yet run (needs the coded "
+        "Bible table). Seas are graded by the water lying that way from the other place, a change "
+        "made after the first grading run (post hoc; the first run used placed sea points)",
+        "summary": summary,
+        "grades": grades,
+    }
+
+
 def cmd_check(cfg: dict) -> dict:
     res = known_answer(cfg)
     write(OUT / "check.json", res)
@@ -1855,7 +1895,9 @@ def part_b(cfg: dict, panel: dict[str, list[dict]], book: dict[str, list[dict]])
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["earth", "windows", "jobs", "dev", "coverage", "check", "run"])
+    ap.add_argument(
+        "cmd", choices=["earth", "windows", "jobs", "dev", "coverage", "grade", "check", "run"]
+    )
     ap.add_argument("--sizes", type=int, nargs="*")
     a = ap.parse_args(argv)
     cfg = config.load()
@@ -1876,6 +1918,10 @@ def main(argv: list[str] | None = None) -> int:
         res = coverage(cfg)
         write(OUT / "coverage.json", res)
         print(json.dumps(res, indent=1))
+    elif a.cmd == "grade":
+        res = cmd_grade(cfg)
+        write(OUT / "their_way_grades.json", res)
+        print(json.dumps(res["summary"], indent=1))
     elif a.cmd == "check":
         res = cmd_check(cfg)
         print(json.dumps({k: res.get(k) for k in ("passed", "stopped")}, indent=1, default=str))
