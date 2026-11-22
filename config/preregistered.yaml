@@ -1405,6 +1405,104 @@ lab:                              # the research lab (exploratory tooling; reads
       heartland_upper_mississippi: {name: Nauvoo, cc: US, admin1: IL, radius: 500}
       hemispheric_panama: {name: Isthmus of Panama, cc: PA, radius: 3000}
     settings: [mesoamerica_tehuantepec, great_lakes_new_york, heartland_upper_mississippi, hemispheric_panama, palestine]
+  geography2:                      # BOM-116 second design (lab; exploratory): coded statement tables; Clark's key his way; specificity on open physical data (A); consistency, real against invented (B); radiocarbon (C). Card data/private/lab/owner/2026-11-22-geography-redesign/card.md; every value below set at finalisation 2026-11-22, before any table was coded or any window counted
+    seed: 11622
+    judge_model: sonnet            # coding typed relations with references from 400 words; the small model is not trusted with it (choice at finalisation)
+    window_words: 400              # coding windows: whole units (verses, paragraphs) up to this many words; a longer unit is cut
+    min_cues: 1                    # a window is coded when it has at least this many place cues
+    cues: ['\b(north|south|east|west)(ward|wards|erly|ern)?\b', '\bsea(s|shore|side|-shore|-side)?\b', '\b(coast|coasts|shore|shores|bay|gulf|lake|lakes)\b', '\b(river|rivers|stream|creek|brook|fork|ford|waters)\b', '\b(neck|isthmus|strait)\b', '\b(went|go|goeth|going|gone|came|come|cometh|coming|journeyed|travelled|traveled|marched|fled|returned|departed|passed|ascended|descended|climbed)\s+(up|down)\b', '\b(days?|nights?)(''s|'')?\s+journey\b', '\bjourney\s+of\b', '\b(wilderness|mountain|mountains|hill|hills|valley|plain|plains|border|borders|frontier)\b', '\b(miles?|leagues?|furlongs?)\b']
+    second_share: 0.2              # blind second reading: this share of every text's windows, seeded
+    kappa_bar: 0.7                 # agreement of the two readings (Cohen's kappa on kind and value of matched items)
+    traveller_km_per_day:          # straight-line km covered in one stated day, low and high, by who travelled (Clark's allowances widened to a range; none from a source)
+      walker: [15, 40]
+      group_with_flocks: [5, 25]
+      army: [10, 50]
+      messenger: [20, 60]
+      unknown: [5, 60]
+    clark_unit_km: [15, 40]        # one of Clark's "units of standard distance" (a day's normal travel over flat land), as the walker
+    lexicon_min_mentions: 2        # the fixed place list given to the reader: lab.geography's written rule (a name after a place word, verb of motion or preposition at least this often)
+    lat_range: [-56, 72]           # window centres between these latitudes (Antarctica and the high Arctic left out)
+    extractor:                     # check: coded statements scored with true coordinates
+      hold_bar: 0.8                # share of placed statements that hold
+      percentile_bar: 99           # against random placements of the same places in the same disc
+      random_placements: 1000
+    generic_places: [sea, the sea, seas, great deep, deep, wilderness, river, rivers, land, lands, city, cities, country, mountain, mountains, hill, hills, valley, plain, plains, desert, coast, coasts, shore, seashore, island, lake, waters, water, border, borders, north, south, east, west, here, there, home, camp]
+    texts:                         # group: known (Part A check), real (first-hand), real_bible_style, invented, never_visited, control, book. region: how its true region is found (openbible, pleiades, config)
+      kjv_narrative: {source: kjv, books: [GEN, EXO, NUM, DEU, JOS, JDG, 1SA, 2SA, 1KI, 2KI, 1CH, 2CH, EZR, NEH], groups: [known, real], region: openbible}
+      josephus_war: {source: file, path: data/corpus/lab/sources/names/josephus_wars_whiston.txt, groups: [known, real], region: openbible}
+      xenophon_1813: {source: library, work_id: "institutional_books:HXINMQ", groups: [known, real], region: pleiades}
+      lewis_clark_1814: {source: library, work_ids: ["internet_archive:GR_2478-1", "internet_archive:GR_2478-2"], groups: [known, real], region: config}
+      hunt_late_war_1816: {source: library, work_id: "internet_archive:latewarbetweenun00hunt", groups: [known, real_bible_style], region: config}
+      carver_1781: {source: library, work_id: "internet_archive:travelsthroughin00carv", groups: [real]}
+      pike_1810: {source: library, work_id: "internet_archive:b29318129", groups: [real]}
+      mackenzie_1801: {source: library, work_id: "internet_archive:voyagesfrommontr00mack_0", groups: [real]}
+      park_1799: {source: library, work_id: "institutional_books:32044043489004", groups: [real]}
+      napoleon_1809: {source: library, work_id: "institutional_books:HH2NE7", groups: [real_bible_style]}
+      spalding_manuscript: {source: file, path: data/corpus/lab/sources/names/themanuscriptsto00spauuoft/text.txt, groups: [invented]}
+      gulliver: {source: file, path: data/corpus/lab/sources/names/swift_gulliver.txt, groups: [invented]}
+      peter_wilkins_1783: {source: library, work_id: "internet_archive:lifeadventuresof00palt_1", groups: [invented]}
+      niels_klim_1828: {source: library, work_id: "institutional_books:32044088821004", groups: [invented]}
+      utopia_1795: {source: library, work_id: "internet_archive:utopiacontaining1795more", groups: [invented]}
+      treasure_island: {source: library, work_id: "institutional_books:HWP517", groups: [invented]}
+      mysterious_island: {source: file, path: data/corpus/lab/sources/geography2/verne_mysterious_island.txt, groups: [invented]}
+      oz_wizard: {source: file, path: data/corpus/lab/sources/geography2/baum_wonderful_wizard_of_oz.txt, groups: [invented]}
+      oz_land: {source: file, path: data/corpus/lab/sources/geography2/baum_marvelous_land_of_oz.txt, groups: [invented]}
+      princess_of_mars: {source: file, path: data/corpus/lab/sources/geography2/burroughs_princess_of_mars.txt, groups: [invented]}
+      captain_singleton: {source: file, path: data/corpus/lab/sources/geography2/defoe_captain_singleton.txt, groups: [never_visited]}
+      abraham_1842: {source: jsp, path: data/private/lab/sources/dictated/abraham_1842/pages.jsonl, groups: [control]}
+      book_of_mormon: {source: bom, groups: [book]}
+    invented_part_a: [spalding_manuscript, gulliver, treasure_island, mysterious_island]   # invented maps counted for chance fits, no bar
+    spalding_region: {lat: 39.5, lon: -82.0}   # the Ohio mounds country of Spalding's story (centre set at finalisation)
+    part_b_min_statements: 12      # a control text with fewer consistency statements "does not apply"
+    part_b_place_rule: "book's rate below the midpoint of the two groups' medians and inside the real range = more like real; above it and inside the invented range = more like invented; else between"
+    min_refs: 1                    # a coded relation becomes a feature when cited this many times (the card: every feature); 2 is reported as "repeated features only", description
+    earth:
+      raster_deg: 0.05             # global grid (3 arc-minutes)
+      lake_min_km2: 100            # a Natural Earth lake this large counts as water ("sea"); the Sea of Galilee is about 166
+      cap_km: 3000                 # directional distance to water is capped here
+      age_recent_ka: 2             # coastline age: today's sea that was land within this many thousand years (counted per window)
+    part_a:
+      sizes_km: [300, 600, 1200, 2400, 4800, 9600]   # window diameters; results shown across all of them (the scale is a range)
+      grid: 15                     # cells across a window's diameter (about 177 cells in the disc)
+      samples_max: 24              # raster samples per cell side (cells pool their samples)
+      centre_spacing: 0.5          # land window centres every this share of the diameter
+      rotations: 8                 # orientation-free reading: the text's north at each multiple of 45 degrees
+      dir_cone_strong: 45          # "A north of B": bearing from B to A within this many degrees (strong reading)
+      dir_cone_weak: 90            # weak reading: a half-plane
+      flow_cone: 67.5              # "the river runs north": head-to-mouth bearing within this many degrees
+      sea_km: 30                   # "by the sea" / "the sea west of A": water along that direction within this many km (or 0.75 of a cell, if larger)
+      neck_max_km: 250             # a narrow neck with no stated crossing time: at most this wide
+      neck_land_frac: 0.25         # land continues across a neck for at least this share of the window radius, both ways
+      river_km: 15                 # a place on a river: a cell within this many km (or 0.75 of a cell) of its line
+      near_km: 50
+      higher_margin_m: 50          # "up from B to A": A's cell mean elevation above B's by more than this
+      node_limit: 20000            # layout search: nodes before a window is "undecided" (neither pass nor fail)
+      specific_bar: 0.05           # specificity at most this = constraining
+      unspecific_bar: 0.25         # more than this = does not pick out a region
+      region_tolerance: 0.25       # a region passes if a window centred within this share of the diameter of its centre passes
+      known_min_pass: 4            # Part A check: the Bible passes and at least this many of the five known texts
+      true_cover: 0.9              # a known text's size: the smallest diameter whose disc, at the centre of its true coordinates, holds this share of its placed places
+    known_regions:                 # known texts without a coordinate source: centre and diameter set from their routes at finalisation (labelled so in the result)
+      lewis_clark_1814: {lat: 44.0, lon: -104.0, diameter: 4800, note: "St Louis to the mouth of the Columbia"}
+      hunt_late_war_1816: {lat: 40.5, lon: -80.0, diameter: 2400, note: "the War of 1812 theatres: Niagara, Detroit, Washington, Baltimore; New Orleans outside"}
+    settings:                      # proposed settings for the book: centre, authors' rotation(s) (45-degree steps; the text's north at bearing 45 x r), source
+      mesoamerica_tehuantepec: {lat: 16.5, lon: -93.0, rotations: [-1, -2], source: "Sorenson 1985 pp. 35-36 as cited by Wikipedia 'Hypothetical setting of the Book of Mormon'; the turned north (west-northwest) per Matheny 1993 and Sorenson 1994 as summarised in the research note; centre set at finalisation"}
+      great_lakes_niagara: {lat: 43.0, lon: -78.5, rotations: [0], source: "Wikipedia 'Hypothetical setting', Great Lakes table: neck = Niagara peninsula, sea west = Lake Erie, sea east = Lake Ontario, Cumorah = Palmyra"}
+      heartland: {lat: 39.0, lon: -86.0, rotations: [0], source: "Wikipedia 'Hypothetical setting', Heartland: Zarahemla near Montrose, Iowa; Sidon = Mississippi; land of Nephi in east Tennessee; Cumorah in New York; centre set at finalisation"}
+      hemispheric_panama: {lat: 9.0, lon: -79.5, rotations: [0], source: "Wikipedia 'Hypothetical setting', Hemispheric table: neck = Panama, sea west = Pacific, sea east = Atlantic"}
+    their_way:                     # step 2: Clark's ten points graded on real geography at each setting's placements (see clark_key.json for the points)
+      sea_km: 60                   # a placement "near the east sea" etc.: water along that frame direction within this many km
+      lake_km_per_unit: [15, 40]   # "a day or two" from Nephi: water within 2 units
+    part_b:
+      reps: 200                    # subsamples to the book's statement count
+      auc_bar: 0.8
+      min_texts: 6                 # per group
+      triangle_slack: 1.5          # a travel-time triangle is broken when one side's days exceed the other two sides' sum by this factor
+    part_c:
+      min_dates: 200               # a window (or region) with fewer dates in 3000-1000 14C BP is "not attempted"
+      age_window_bp: [1000, 3000]  # uncalibrated 14C years BP counted for coverage (600 BC - AD 400 sits inside it once calibrated)
+      region_km: 600               # coverage disc diameter around each setting centre and around the Levant
+      levant: {lat: 31.8, lon: 35.2}
   dictated:                        # BOM-125 (lab; exploratory): complexity of the book against other long dictated or "received" texts (Hales 2019)
     seed: 20261121
     sample_sizes: [20000, 5000]    # words per window; the first is the main run, the second lets shorter texts and the Joseph Smith dictations in

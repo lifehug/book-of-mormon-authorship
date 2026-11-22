@@ -737,6 +737,52 @@ def _sources() -> list[dict]:
         "er_of_semitic_and_egyptian_in_uto_aztecan_2015_0b7be82eba.pdf",
         "copyright the author; posted free on the Book of Mormon Central archive for "
         "non-commercial, private use; private copy, never redistributed", True)  # fmt: skip
+    # BOM-116 second design (docs/research/2026-11-22-redesign-geography.md): open physical data,
+    # radiocarbon dates, Clark's key (private copy) and four later invented-land novels.
+    # HydroRIVERS is not fetched: its HydroSHEDS v1 licence forbids redistribution as a
+    # stand-alone product, so it is not open; river direction comes from relief instead.
+    ne = raw + "nvkelso/natural-earth-vector/master/geojson/"
+    zen = "https://zenodo.org/api/records/"
+    g116 = "BOM-116"
+    for name, group, kind, url, terms in (
+        *[(f"{f}.geojson", "physical", "file", ne + f"{f}.geojson",
+           PD + " (Natural Earth 1:10m, v5)")
+          for f in ("ne_10m_land", "ne_10m_lakes", "ne_10m_rivers_lake_centerlines",
+                    "ne_10m_coastline")],
+        ("ETOPO_2022_v1_60s_N90W180_surface.tif", "physical", "file",
+         "https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO2022/data/60s/60s_surface_elev_gtif/"
+         "ETOPO_2022_v1_60s_N90W180_surface.tif",
+         PD + " (NOAA NCEI, US government work; cite doi:10.25921/fd45-gt74)"),
+        ("age_2021_coastline_age", "physical", "figshare",
+         "https://api.figshare.com/v2/articles/20029304",
+         "CC BY 4.0 (De Groeve and others 2022, University of Amsterdam, AGE 2021)"),
+        ("pleiades-places-latest.csv.gz", "physical", "file",
+         "https://atlantides.org/downloads/pleiades/dumps/pleiades-places-latest.csv.gz",
+         "CC BY 3.0 (Pleiades gazetteer)"),
+        ("p3k14c", "radiocarbon", "zenodo", zen + "5597795",
+         "open (data CC0 per Bird and others 2022, Scientific Data; code MIT)"),
+        ("nerd_v6", "radiocarbon", "zenodo", zen + "7107507",
+         "CC BY 4.0 (NERD, Near East Radiocarbon Dates, Palmisano and others)"),
+        ("palmisano_2021", "radiocarbon", "zenodo", zen + "4322979",
+         "CC BY 4.0 (Palmisano and others 2021, Quaternary Science Reviews 252)"),
+        ("intcal20.14c", "radiocarbon", "file", "https://intcal.org/curves/intcal20.14c",
+         "open (IntCal20 calibration curve, Reimer and others 2020)"),
+        ("verne_mysterious_island.txt", "geography2", "file", _pg(1268, "-0.txt"), PD),
+        ("baum_wonderful_wizard_of_oz.txt", "geography2", "file", _pg(55, "-0.txt"), PD),
+        ("baum_marvelous_land_of_oz.txt", "geography2", "file", _pg(54, "-0.txt"), PD),
+        ("burroughs_princess_of_mars.txt", "geography2", "file", _pg(62, "-0.txt"), PD),
+        ("defoe_captain_singleton.txt", "geography2", "file", _pg(6422, ".txt"), PD),
+        ("wp_bom_hypothetical_setting.json", "setting", "file",
+         WP + "Hypothetical_setting_of_the_Book_of_Mormon", "CC BY-SA"),
+    ):  # fmt: skip
+        add(name, group, g116, kind, url, terms)
+    # BYU ScholarsArchive refuses programs (403); Scripture Central serves the full text as a page.
+    sc = "https://scripturecentral.org/archive/periodicals/journal-article/"
+    for name, slug in (("clark1989_key.html", "key-evaluating-nephite-geographies"),
+                       ("clark2011_revisiting_key.html",
+                        "revisiting-key-evaluating-nephite-geographies")):  # fmt: skip
+        add(name, "papers", g116, "file", sc + slug,
+            "copyright the author; free to read; private copy", True)  # fmt: skip
     return rows
 
 

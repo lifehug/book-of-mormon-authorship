@@ -1,0 +1,53 @@
+{
+ "_about": "Clark's ten points (J. E. Clark, 'A Key for Evaluating Nephite Geographies', Review of Books on the Book of Mormon 1, 1989; 'Ten Points of Nephite Geography' and his transects) as features for lab.geography2, written by hand 2026-11-22 before any window was counted. Distances are in Clark's units of standard distance (USD, a day's normal travel over flat land); lab.geography2.clark_unit_km turns them into km. Directions are in the text's own frame: Clark writes that he does not know how Nephite north relates to the compass. Where Clark gives a word rather than a number, the reading chosen here is marked 'finalisation'. Places are names in the text; 'east sea' and 'west sea' are water.",
+ "points": {
+  "1_isthmus": {"says": "the narrow neck was an isthmus flanked by an east sea and a west sea, separating the land northward from the land southward; oriented east-west, about 4 USD wide (transect I)",
+   "features": [
+    {"kind": "neck", "a": "narrow neck", "water_sides": "E-W", "width_usd": 4},
+    {"kind": "water", "a": "east sea"}, {"kind": "water", "a": "west sea"},
+    {"kind": "direction", "a": "east sea", "b": "narrow neck", "dir": "E", "usd": [0, 4]},
+    {"kind": "direction", "a": "west sea", "b": "narrow neck", "dir": "W", "usd": [0, 4]},
+    {"kind": "direction", "a": "land northward", "b": "narrow neck", "dir": "N"},
+    {"kind": "direction", "a": "land southward", "b": "narrow neck", "dir": "S"}]},
+  "2_coastlines": {"says": "the west sea bordered the lands of Zarahemla and Nephi; the east sea is known only along Zarahemla; Manti to the west seashore about 6.5 USD",
+   "features": [
+    {"kind": "sea", "a": "Zarahemla", "side": "W", "usd_max": 6.5},
+    {"kind": "sea", "a": "Nephi", "side": "W", "usd_max": 6.5},
+    {"kind": "sea", "a": "Moroni", "side": "E", "usd_max": 1}]},
+  "3_wilderness": {"says": "the eastern wilderness wider and lower than the western; uplands on all sides of Zarahemla; the southern wilderness at least 9 USD wide",
+   "features": [
+    {"kind": "direction", "a": "west wilderness", "b": "Zarahemla", "dir": "W", "usd": [0.5, 4]},
+    {"kind": "direction", "a": "east wilderness", "b": "Zarahemla", "dir": "E", "usd": [1, 4]},
+    {"kind": "higher", "a": "west wilderness", "b": "east wilderness"},
+    {"kind": "higher", "a": "west wilderness", "b": "Zarahemla"},
+    {"kind": "higher", "a": "east wilderness", "b": "Zarahemla"}]},
+  "4_valleys": {"says": "Zarahemla in a large river basin; Nephi in a highland valley",
+   "features": [
+    {"kind": "river", "river": "Sidon", "a": "Zarahemla", "role": "bank"},
+    {"kind": "higher", "a": "Nephi", "b": "Zarahemla"}]},
+  "5_river": {"says": "the Sidon ran northward from its headwaters in the southern wilderness just south of Manti",
+   "features": [
+    {"kind": "river", "river": "Sidon", "a": "Manti", "role": "source"},
+    {"kind": "flows", "river": "Sidon", "toward": "N"},
+    {"kind": "direction", "a": "Manti", "b": "Zarahemla", "dir": "S"}]},
+  "6_lake": {"says": "the waters of Mormon, a highland lake of some size within a day or two (USD) of Nephi",
+   "features": [
+    {"kind": "water", "a": "waters of Mormon"},
+    {"kind": "days", "a": "waters of Mormon", "b": "Nephi", "usd": [0, 2]}]},
+  "7_zarahemla": {"says": "Zarahemla near the centre of the land; Nephi about three weeks' travel south (reduced by Clark to about 9 USD); Bountiful several days' travel north ('several' read as 2 to 10 USD at finalisation)",
+   "features": [
+    {"kind": "direction", "a": "Bountiful", "b": "Zarahemla", "dir": "N", "usd": [2, 10]}]},
+  "8_nephi": {"says": "Nephi three weeks' travel south of Zarahemla (about 9 USD) in a highland valley, near the waters of Mormon",
+   "features": [
+    {"kind": "direction", "a": "Nephi", "b": "Zarahemla", "dir": "S", "usd": [9, 9]}]},
+  "9_bountiful": {"says": "Bountiful north of Zarahemla and near the narrow neck (point Bountiful a day beyond the city); about 5 USD from Moroni",
+   "features": [
+    {"kind": "days", "a": "Bountiful", "b": "narrow neck", "usd": [0, 1.5]},
+    {"kind": "direction", "a": "Moroni", "b": "Bountiful", "dir": "S", "usd": [5, 5]},
+    {"kind": "sea", "a": "Bountiful", "side": "E", "usd_max": 1.5}]},
+  "10_cumorah": {"says": "Cumorah in the land northward near the eastern seashore, probably not more than 6-8 days from Bountiful",
+   "features": [
+    {"kind": "direction", "a": "Cumorah", "b": "Bountiful", "dir": "N", "usd": [0, 8]},
+    {"kind": "sea", "a": "Cumorah", "side": "E", "usd_max": 1.5}]}
+ }
+}
