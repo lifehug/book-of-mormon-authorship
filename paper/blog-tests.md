@@ -79,7 +79,7 @@ compares against.
 
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
-| BOM-106 | The text carries the marks of speech, not writing | Davis 2020 and others | description | trial transcripts and sermons taken in short-hand | TBD |
+| BOM-106 | The text carries the marks of speech, not writing | Davis 2020 and others | description | trial transcripts and sermons taken in short-hand | **Done** |
 | BOM-127 | Manuscript errors are errors of hearing | Skousen 1998 | one editor's reading | manuscripts known to be copied and known to be dictated | **Done**, fragile |
 | BOM-125 | It is unlike other dictated or "received" books | Hales 2019; Dunn 2002 | length and schooling | the same measures on all of them | **Done** |
 | BOM-121 | Its speakers have more distinct voices than a novelist's characters | Fields and others, about 2021 | four novelists after 1830 | plays of 1660 to 1700, by one author | **Done** |
@@ -1012,6 +1012,65 @@ Limits. The rules were checked on planted examples, not on a hand-read sample of
 caught. The imitations add up to only 445,000 words. The "if ... and" construction, the one
 Skousen stresses most, could not be tested: the King James Bible does not have it, so my check
 had nothing to stand on.
+
+### Spoken or written? (BOM-106)
+
+Everyone who was there said the book was spoken aloud to scribes. William Davis argued in 2020
+that it shows the habits of a practised oral performer. Does the text itself read like speech?
+
+I needed speech to compare with, from the time. The best there is: a million answers given by
+witnesses at the Old Bailey in London, taken down in shorthand as they spoke; trials reported
+the same way; and sermons taken down by shorthand writers in the pews. On the other side,
+printed sermons and ordinary written prose. I counted 25 marks of speech in 1,000-word pieces
+(short words, few new words, repeated phrases, "did", "that", restarts like "I say" and "or
+rather") and trained a simple score on them. Zero is the middle of the written texts and one
+is the middle of the spoken ones.
+
+It can tell them apart. Speech from writing overall, 96 times in 100. The hard case, a sermon
+taken down from the pulpit against a sermon written for print, 76 in 100, which just clears the
+75 I had set.
+
+| Text | Score |
+| --- | --- |
+| Old Bailey testimony | 1.09 |
+| **Book of Mormon, 1830** | **0.88** |
+| Book of Mormon, original manuscript | 0.72 |
+| Joseph Smith's Book of Moses | 0.65 |
+| Joseph Smith's revelations | 0.57 |
+| Trials taken in shorthand | 0.50 |
+| King James Bible | 0.46 |
+| Joseph Smith's letters in his own hand | 0.33 |
+| Sermons taken in shorthand | 0.32 |
+| Late Henry James (dictated) | 0.26 to 0.33 |
+| Bible-style imitations | 0.17 |
+| Translations | 0.10 to 0.27 |
+| Printed sermons | 0.04 |
+| Scott's dictated novel | 0.02 |
+| Milton, *Paradise Lost* (dictated) | -0.43 |
+
+By the rule I set, the Book of Mormon reads like speech. It scores higher than anything except
+courtroom testimony, well above the Bible, and far above the imitations of the Bible. Every
+narrator does (0.81 to 1.07), and narration scores as high as the sermons in it.
+
+Now the cautions, which are real.
+
+What lifts the score is mostly repetition: few new words, the same four-word phrases coming
+round again, "that", "did". Those are marks of speech. They are also marks of this particular
+book, as the test on dictated books showed (it has the narrowest vocabulary of 24). The plain
+marks of someone talking, the restarts and "I say", are rare in it. So "like speech" here means
+"repetitive and formulaic the way speech is", not "full of slips".
+
+And dictating does not by itself make a text score as speech. Milton dictated *Paradise Lost*
+and it scores as the most written thing on the list. Henry James and Scott dictated novels that
+score as writing. A composed work stays composed when spoken to a secretary. So the score does
+not measure whether a text was dictated. It measures whether it was put together the way people
+talk, in the moment, leaning on formulas. On that, the Book of Mormon sits with the talkers.
+
+The Bible-style imitations matter here: they copy the Bible's "and"s and its cadence and score
+0.17. Bible style alone does not get a text to 0.88. Taking the "and" marks out changes
+nothing (0.95).
+
+One fix after the first run: the scribes wrote "&" for "and" and my reader was dropping it.
 
 ## What I would want a reader to take from the whole set
 

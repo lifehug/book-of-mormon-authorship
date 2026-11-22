@@ -1662,6 +1662,70 @@ lab:                              # the research lab (exploratory tooling; reads
     poly_max_gap: 10               # (B) with at most this many words between consecutive "and"
     cognate_max_gap: 3             # (B) cognate accusative: at most this many modifier words between verb and noun
     imitation_min_words: 5000      # (B) an imitation counts alone toward "reaches" only with at least this many words
+  spoken:                          # BOM-106 (lab; exploratory): marks of speech taken down against composed prose, punctuation removed
+    seed: 20261121
+    window_words: 1000             # every scored unit is exactly this many letter-words (equal sample sizes)
+    trim_head: 0.03                # library and outside texts: share dropped at the start (title pages, prefaces) and end
+    trim_tail: 0.02
+    max_windows_group: 12          # labelled sets: at most this many evenly spaced windows per held-out group
+    max_windows_target: 400        # scored texts: at most this many windows per text
+    folds: 5                       # grouped cross-validation, whole groups held out
+    c: 1.0                         # logistic regression inverse regularisation (standardised marks)
+    bar_auc_all: 0.85              # (A) held-out AUC, all spoken against all written windows
+    bar_auc_sermons: 0.75          # (B) held-out AUC, short-hand sermons against printed sermons
+    min_spoken_groups: 8           # (C) held-out groups needed on each side of (B)
+    like_speech: 0.75              # position p = (median - written median) / (spoken median - written median), log-odds
+    like_writing: 0.25
+    bible_reading: 0.5             # the King James Bible or the imitations at p >= this: "cannot tell"
+    oldbailey_years: [1780, 1830]
+    oldbailey_roles: [Witness, Victim, Defendant]   # Old Bailey Corpus 2.0 'role' values kept as testimony (lawyers and judges left out)
+    oldbailey_min_session_words: 1000
+    shorthand_years: [1700, 1830]
+    shorthand_title: '(taken|took|written|wrote|copied|transcribed)( down)?( [a-z]+){0,3} in short[- ]?hand|in short[- ]?hand,? by|short[- ]?hand (writer|notes)|taken (down )?verbatim|verbatim (in short|report)'
+    shorthand_exclude: 'system of short|art of short|short[- ]?hand (made|improved|system)|stenography|plays and poems|collated verbatim'
+    shorthand_not_speech: '\b(answer|reply|remarks|animadversions|strictures|observations) (to|on|upon)\b'   # a written reply to a speech is not the speech
+    sermon_title: '\b(sermons?|discourses?|declarations?|exhortations?|addresses|address|preach|preached|prayers|lectures? on (the )?(scripture|gospel))\b'
+    trial_title: '\b(trials?|proceedings|debates?|speech|speeches|lectures?|examination|evidence|tribunal|report of)\b'
+    written_sermon_years: [1740, 1830]
+    written_sermons_tcp: 100       # printed sermons drawn from the hand-keyed TCP texts ...
+    written_sermons_scanned: 100   # ... and from the scanned sources (OCR), so keying is not a class mark
+    written_sermon_min_words: 3000
+    written_prose_years: [1780, 1830]
+    written_prose: 200             # other composed prose (history, fiction, legal and political writing)
+    written_prose_genres: [history_chronicle, fiction_narrative, legal_political]
+    written_prose_min_words: 10000
+    speech_marker_title: '\b(short[- ]?hand|verbatim|extempore|stenograph|taken down|from (his|her) own mouth|as (it was )?delivered|speech|speeches|trial|debates?|sermons?|discourses?|oration|address|lecture|dialogue|conversation|proceedings|evidence|examination|testimony|deposition|report of|charge|preached|delivered|spoken|plays?|comedy|tragedy|poems?)\b'
+    mattr_window: 100
+    recent_window: 100             # recent_3gram: a 3-word string seen in the previous this-many words
+    formula_min: 3                 # formula_4gram: a 4-word string occurring at least this often in the window
+    and_family: [and_rate, and_clause, and_then]   # removed in the and-free variant
+    sermon_speakers: [benjamin, alma, amulek, abinadi, "samuel the lamanite", jesus, "nephi son of helaman", lehi, jacob, mosiah, ammon, "other: aaron", "other: alma the elder", mormon, "other: mormon"]   # the book's sermons: speech (not narration) by these speakers in the study's speaker labelling (simulated)
+    not_speech_labels: [isaiah, "lord quoted by isaiah"]   # quoted King James text: neither narration nor the book's own speech
+    narrators:                     # by book: speaker labels that are the book's own narration; every other label is direct speech
+      1 Nephi: [nephi]
+      2 Nephi: [nephi]
+      Jacob: [jacob]
+      Enos: [enos]
+      Jarom: [jarom, "other: jarom"]
+      Omni: [omni, amaron, chemish, abinadom, amaleki, "other: amaron", "other: chemish", "other: abinadom", "other: amaleki"]
+      Words of Mormon: [mormon]
+      Mosiah: [mormon]
+      Alma: [mormon]
+      Helaman: [mormon]
+      3 Nephi: [mormon]
+      4 Nephi: [mormon]
+      Mormon: [mormon, moroni]
+      Ether: [moroni]
+      Moroni: [moroni]
+    written_sermon_exclude: '(short[- ]?hand|verbatim|extempore|stenograph|taken down|from (his|her) own mouth|notes taken|as (it was )?delivered|substance of)'
+    js_own_hand_skip: [js-letterbook, t73-history, js-1832-history]   # files whose own-hand words are copies or histories (as lab.manuscript_errors)
+    moses_pages: [1, 20]           # Old Testament Revision 1 editorial pages (as lab.dictations)
+    kjv_parts:                     # the King James Bible scored by part: [first book, last book]
+      law_history: [Genesis, Esther]
+      poetry: [Job, Song of Solomon]
+      prophets: [Isaiah, Malachi]
+      gospels_acts: [Matthew, Acts]
+      epistles_revelation: [Romans, Revelation]
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
