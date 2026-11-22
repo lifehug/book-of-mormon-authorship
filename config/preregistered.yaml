@@ -1297,6 +1297,49 @@ lab:                              # the research lab (exploratory tooling; reads
     close_percentile: 5            # "no close neighbours": median top-1 score below this percentile of control queries'
     yes_share: 0.667               # overall yes: at least this share of topics peak 1810s-1820s (no: at most 1 - this)
     seed: 20261121
+  chiasmus:                        # BOM-107 (lab; exploratory): chiasmus rate by a fixed rule, Book of Mormon against the library
+    seed: 20261121
+    scales: [15, 40, 150, 400]     # content tokens each side of a centre (about 35, 90, 330, 900 words)
+    strides: [1, 1, 2, 8]          # centres tried every this many tokens at each scale
+    primary_scale: 40
+    primary_depth: 3               # the verdict counts chiasms of at least this many levels
+    min_depth: 3                   # a candidate chiasm has at least this many levels
+    min_len: 3                     # content tokens: at least this many letters
+    suffixes: [ing, eth, est, ed, es, s]   # light stem: first match stripped, then a final e and a doubled final letter
+    stem_min: 4                    # a word shorter than this loses no suffix (a final e is still dropped); 5 first, 4 after the first look at known passages (eyes/eye), see card
+    max_count: 2                   # an element occurs 2 to this many times in the window (nearest occurrence each side is its pair); 2 is Edwards's exactly-twice rule
+    stopwords: [the, and, that, for, with, was, were, are, not, but, his, her, him, she, you, your, thou, thee, thy, thine, thyself, they, them, their, theirs, who, whom, whose, which, what, when, where, will, shall, would, should, could, may, might, must, can, shalt, wilt, hath, hast, doth, dost, saith, said, say, also, unto, upon, into, from, out, all, any, have, had, has, been, being, did, does, done, one, two, now, then, than, there, thereof, therein, these, those, this, such, yea, behold, wherefore, therefore, thus, even, again, over, under, nor, yet, ever, our, ours, ourselves, myself, himself, themselves, its, off, own, came, come, pass, thereby, whereby, because, until, unless, whether, though, although, saying, go, went, let, how, why, very, just, only, some, much, many, more, most, other, both, each, every, same, too, shalt, art, ere, lest, whosoever, whoso, whatsoever, wheresoever, hereby, herein, hence, thence, thither, hither, thereupon, whence]
+    shuffle_block: 2000            # sentence units are shuffled inside blocks of this many content tokens
+    shuffles: 2                    # shuffled copies per text
+    window_words: 30000            # one window of this many words from the middle of each library work
+    library_n: 360                 # library works drawn
+    translations_n: 120            # marked translations drawn
+    year_min: 1650
+    year_max: 1830
+    min_text_words: 5000           # a named text (Bible-style book, dictation) needs this many words
+    block_tokens: 5000             # a long text is also cut into blocks of this many content tokens to show the spread of its rate
+    check_min_depth: 2             # known-answer check: candidates of at least this depth
+    check_overlap: 0.8             # a famous chiasm is found when a candidate's span lies this share inside the passage
+    check_bar_famous: 4            # at least this many of the famous passages found
+    famous_kjv:                    # book, chapter, first verse, last verse, expected depth
+      leviticus_24_13_23: [LEV, 24, 13, 23, 3]
+      genesis_9_6: [GEN, 9, 6, 6, 2]
+      matthew_10_39: [MAT, 10, 39, 39, 3]
+      isaiah_6_10: [ISA, 6, 10, 10, 3]
+      mark_2_27: [MAR, 2, 27, 27, 2]
+    plants: 100                    # planted chiasms per depth
+    plant_depths: [3, 4, 5]
+    plant_gap: 2                   # most ordinary words between planted elements on one side
+    plant_bar: 0.9
+    plain_ratio_bar: 1.25          # pooled observed/shuffled at the primary scale on plain prose, at most
+    yes_percentile: 97.5
+    no_percentile: 90
+    edwards: {alma_36: [8, 0.00018], leviticus_24: [7, 0.0025]}   # n elements, published P (Edwards and Edwards 2004)
+    famous_blocks: 300             # famous cases: this many blocks, as long as the chapter (in content tokens), cut at random from library windows and from the Bible, run alone
+    famous_bom:                    # 1830 paragraph numbers (seq), first and last
+      alma_36: [927, 929]
+      alma_41: [945, 945]
+    workers: 8
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

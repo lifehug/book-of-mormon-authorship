@@ -73,7 +73,7 @@ compares against.
 | BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held | TBD; 11 passages keyed |
 | BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | **Done** |
 | BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1993; replies | examples from each side | every use in print 1780 to 1835, by year | TBD |
-| BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | TBD |
+| BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed; not scored** |
 
 ### 3. How was it produced?
 
@@ -675,6 +675,38 @@ missed at my first setting (1,000 words a voice) and passed, narrowly, only afte
 length. Plays are verse and dialogue, not prose narrative. Who speaks each verse of the Book of
 Mormon was labelled by an AI model. The published study's own numbers are not available in
 full, so this tests the claim, it does not reproduce the paper.
+
+### Do its debates date to the 1820s? (BOM-103)
+
+Alexander Campbell said in 1831 that the book settles "every error and almost every truth
+discussed in New York for the last ten years": infant baptism, the trinity, the fall, free
+masonry, who may preach for pay. If that is right, the passages nearest in meaning to the book's
+debate passages should have been printed in the 1820s more than elsewhere.
+
+The plan: take the passages on 17 such topics, find the 100 nearest passages among 13 million
+from religious books printed 1640 to 1829, and see which decade they pile up in.
+
+First the same thing on books whose date I know. It did not work.
+
+| Books printed in | Dated to within a decade of the truth |
+| --- | --- |
+| 1650s | 7 of 20 |
+| 1740s | 12 of 20 |
+| 1780s | 10 of 20 |
+| 1820s | 5 of 20 |
+| 1780 to 1799, clean hand-typed text | 0 of 20 |
+
+I had said 12 of 20 in every group. Only one group got there, so I did not run the Book of
+Mormon at all.
+
+Why it failed is worth a line. The library is lopsided: 3.9 million religious passages from the
+1820s and only 22,000 to 49,000 from each decade of the middle 1700s. I divided by each decade's
+size to be fair, and that made the thin decades win on a handful of neighbours. Nearly
+everything in modern spelling got dated to the 1750s. The clean copy of the 1830 text would
+have landed there too, whatever it says.
+
+So this one has no answer yet. The fix is a narrower search, 1780 to 1829 only, where the
+decades are closer in size, and a score a thin decade cannot inflate.
 
 ## What I would want a reader to take from the whole set
 
