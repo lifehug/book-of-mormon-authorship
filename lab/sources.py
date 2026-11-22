@@ -797,7 +797,7 @@ def _sources() -> list[dict]:
          False),
         *[(f"vogel1986_{p}.html", "papers", "file", vogel + f"{p}.htm",
            "copyright 1986 Signature Books, posted with the author's permission; free to read; "
-           "private copy", True) for p in ("vogel1", "vogel3", "vogel4", "vogel5", "vogel6")],
+           "private copy", True) for p in [f"vogel{i}" for i in range(1, 7)]],
         ("paul1982_manchester_library.pdf", "papers", "file",
          "https://storage.googleapis.com/scripturecentral-prod-strapi-uploads/"
          "th_and_the_Manchester_New_York_Library_1982_76ea519637/"

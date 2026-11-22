@@ -2092,6 +2092,13 @@ lab:                              # the research lab (exploratory tooling; reads
       mesoamerica: [native, outsider_eyewitness, outsider_books]
       america_1820s: [s_antiquities, s_origins, s_fiction, s_newspapers]
       contemporary: [sample]
+    # Amendment 1 to the card (2026-11-22, owner's yes, recorded before any three-worlds answer existed)
+    vogel_year_max: 1829           # Vogel step 1 (lab.threeworlds2_vogel; our coding of his prose, not his list): a named source counts as in print before 1830 if a copy printed by this year is held
+    vogel_book_sample: 15          # passages of the 1830 text per motif put to the judge, drawn by seed (the card's sample_per_feature)
+    vogel_source_max: 20           # passages of his named sources per motif, one source at a time, earliest first (the research note's "at most 20 a motif")
+    vogel_min_yes: 1               # a motif is found in a text with this many "yes" answers; with none among the passages judged: "not found among the passages judged"
+    manchester_accession_max: 275  # Manchester library sensitivity (lab.threeworlds2_manchester): Paul 1982's accessions 1-275 are those bought by 1830 (his note 7)
+    manchester_year_max: 1830      # a Manchester title matches a library work printed by this year (any edition)
   voice_encoder:                   # BOM-101 (lab; exploratory): fine-tune the second style encoder so one writer in two registers counts as the same; Mac GPU only; card data/private/lab/owner/2026-11-21-voice-encoder/card.md
     base: data/corpus/style_embed/runs/style_v2/style.pt   # starting weights (the second encoder); never overwritten
     out_dir: data/corpus/lab/voice_encoder
