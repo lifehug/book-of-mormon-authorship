@@ -82,7 +82,7 @@ compares against.
 | BOM-106 | The text carries the marks of speech, not writing | Davis 2020 and others | description | trial transcripts and sermons taken in short-hand | TBD |
 | BOM-127 | Manuscript errors are errors of hearing | Skousen 1998 | one editor's reading | manuscripts known to be copied and known to be dictated | **Done**, fragile |
 | BOM-125 | It is unlike other dictated or "received" books | Hales 2019; Dunn 2002 | length and schooling | the same measures on all of them | TBD |
-| BOM-121 | Its speakers have more distinct voices than a novelist's characters | Fields and others, about 2021 | four novelists after 1830 | plays and letter novels before 1830, by one author | TBD |
+| BOM-121 | Its speakers have more distinct voices than a novelist's characters | Fields and others, about 2021 | four novelists after 1830 | plays of 1660 to 1700, by one author | **Done** |
 | BOM-107 | It has deliberate chiasmus | Welch 1969; Edwards 2004 | the book and the Bible | the rate in every book | TBD |
 
 ### 4. Does the same hand show up elsewhere?
@@ -631,6 +631,50 @@ translators wrote about it".
 *What it does not show.* A word is not a thing: many of the book's most frequent items are
 figures of speech (seed, flesh, church). The lists were written from memory. Only eight texts
 stand for Mesoamerica. And this says nothing about archaeology. It compares vocabularies.
+
+### Do the speakers have their own voices? (BOM-121)
+
+The claim: Nephi, Alma, Mormon and the rest differ from one another, in the small common words
+nobody chooses on purpose, more than a novelist's characters do. The published comparison was
+four novelists who wrote after 1830.
+
+I compared with what a writer of the time could have known: 354 plays printed between 1660 and
+1700, where every speech carries its speaker's name. Each voice is 2,000 words of one speaker.
+The spread of five voices is how far apart they sit on the 150 most common words.
+
+| Five voices taken from | Spread |
+| --- | --- |
+| One play (one author's characters) | 0.72 |
+| The leads of five plays by one author | 0.79 |
+| The leads of five plays by five authors | 0.84 |
+| **The Book of Mormon's five largest speakers** | **1.07** |
+
+So the book's speakers are further apart than the characters of any one playwright, and further
+apart than five different playwrights. Taken alone that would look like the claim confirmed.
+
+It is not that simple, and the next table is why.
+
+| What | Spread |
+| --- | --- |
+| Random 2,000-word stretches of the Book of Mormon, speakers ignored | 0.99 |
+| Random stretches of one play, speakers ignored | 0.67 |
+| Four Bible-style books of 1810 to 1829, by four different people | 0.97 |
+| One writer in two kinds of writing (six writers, Joseph Smith among them) | 0.94 to 1.16 |
+
+Any five stretches of the book are almost as far apart as its five speakers. Knowing who is
+speaking adds 8 percent. The book is simply a varied book: sermon, war story, letter, prophecy,
+quoted scripture. And a spread of about 1.0 is what one person produces by changing the kind of
+writing, as Joseph Smith's own letters against his revelations show (0.97).
+
+What I take from it: the speakers do differ more than a playwright's characters, and most of
+that difference is the book changing subject and kind, not the speaker changing. This test
+cannot tell several hands from one hand writing in several kinds.
+
+Limits. The check that the measure can tell different authors from one author's characters
+missed at my first setting (1,000 words a voice) and passed, narrowly, only after I doubled the
+length. Plays are verse and dialogue, not prose narrative. Who speaks each verse of the Book of
+Mormon was labelled by an AI model. The published study's own numbers are not available in
+full, so this tests the claim, it does not reproduce the paper.
 
 ## What I would want a reader to take from the whole set
 

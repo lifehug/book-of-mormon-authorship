@@ -1,0 +1,1231 @@
+{
+ "settings": {
+  "seed": 20261121,
+  "sample_words": 2000,
+  "k_voices": 5,
+  "draws": 1000,
+  "mfw": 150,
+  "bg_works": 120,
+  "bg_min_words": 20000,
+  "bg_words_per_work": 20000,
+  "year_min": 1780,
+  "year_max": 1830,
+  "kjv_ngram": 5,
+  "pc_count": 3,
+  "play_source": "tcp",
+  "play_year_min": 1660,
+  "play_year_max": 1700,
+  "play_min_words": 12000,
+  "play_title": "\\b(comedy|tragedy|tragi-?comedy|comedie|tragedie|tragaedy|play)\\b",
+  "translation_title": "(translat|englished|written in (french|spanish|italian|greek|latin)|out of the (french|spanish|italian|latin|greek))",
+  "not_speakers": [
+   "finis",
+   "prologue",
+   "epilogue",
+   "song",
+   "chorus",
+   "all",
+   "both",
+   "omnes",
+   "mus",
+   "music"
+  ],
+  "stage_start": "^(Enter|Exit|Exeunt|Re-?enter|Scene|SCENE|ACT|Act|Actus|Manet|Manent|Within|Aside|Dances|Musick|Music|Sings?)\\b",
+  "min_author_plays": 5,
+  "known_bar": 0.7,
+  "known_bar_genre": 0.6,
+  "larger_share": 0.975,
+  "typical_share": 0.9,
+  "variants": [
+   [
+    5,
+    1000
+   ],
+   [
+    8,
+    1000
+   ],
+   [
+    3,
+    2000
+   ]
+  ],
+  "translated_k": 3,
+  "translated_words": 1000,
+  "bible_style_min_words": 5000,
+  "bible_style_files": [
+   "sources/bible_style/wordtree_books/pseudo_biblical/Chronicles of Andrew - Jesse Denson - 1815.md",
+   "sources/bible_style/wordtree_books/pseudo_biblical/History of Anti-Christ - Elias Smith - 1811.md",
+   "sources/bible_style/wordtree_books/pseudo_biblical/The Late War - Gilbert Hunt - 1816.md",
+   "sources/bible_style/chroniclesoferib02ocon/text.txt"
+  ]
+ },
+ "rule_set": "plays: registry source tcp, kind work, kept copy, OCR not excluded, years play_year_min-play_year_max, title match; background: library works by one personal author, years year_min-year_max",
+ "plays_read": 354,
+ "plays_not_attempted": {},
+ "background_works": 120,
+ "plays_translated": 9,
+ "known_answer": {
+  "bar_all_plays": 0.7,
+  "bar_comedies": 0.6,
+  "delta": {
+   "all_plays": {
+    "auc": 0.711,
+    "passed": true
+   },
+   "comedies": {
+    "auc": 0.6813,
+    "passed": true
+   }
+  },
+  "volume": {
+   "all_plays": {
+    "auc": 0.6382,
+    "passed": false
+   },
+   "comedies": {
+    "auc": 0.5812,
+    "passed": false
+   }
+  },
+  "passed": {
+   "delta": true,
+   "volume": false
+  }
+ },
+ "book_speakers_labelled": {
+  "mormon": 97555,
+  "nephi": 29897,
+  "alma": 20724,
+  "moroni": 16812,
+  "lord": 11688,
+  "jesus": 10991,
+  "jacob": 8522,
+  "isaiah": 7332,
+  "helaman": 5523,
+  "lehi": 4695,
+  "zenos": 4282,
+  "benjamin": 4244,
+  "angel": 3631,
+  "lord quoted by isaiah": 3444,
+  "amulek": 3146,
+  "captain moroni": 3021,
+  "samuel the lamanite": 2795,
+  "nephi son of helaman": 2734,
+  "ammon": 2731,
+  "abinadi": 2703
+ },
+ "coverage": {
+  "rule_set": "work-search",
+  "works_by_decade": {
+   "1780": 16125,
+   "1790": 27417,
+   "1800": 25349,
+   "1810": 36697,
+   "1820": 63386,
+   "1830": 7610
+  },
+  "plays_by_decade": {
+   "1660": 65,
+   "1670": 98,
+   "1680": 58,
+   "1690": 111,
+   "1700": 13
+  }
+ },
+ "main": {
+  "k": 5,
+  "words": 2000,
+  "pools": {
+   "all_plays": {
+    "plays_with_k_voices": 64,
+    "authors_with_enough_plays": 16,
+    "plays_with_a_lead": 330
+   },
+   "comedies": {
+    "plays_with_k_voices": 44,
+    "authors_with_enough_plays": 6,
+    "plays_with_a_lead": 167
+   }
+  },
+  "known_answer": {
+   "bar_all_plays": 0.7,
+   "bar_comedies": 0.6,
+   "delta": {
+    "all_plays": {
+     "auc": 0.711,
+     "passed": true
+    },
+    "comedies": {
+     "auc": 0.6813,
+     "passed": true
+    }
+   },
+   "volume": {
+    "all_plays": {
+     "auc": 0.6382,
+     "passed": false
+    },
+    "comedies": {
+     "auc": 0.5812,
+     "passed": false
+    }
+   },
+   "passed": {
+    "delta": true,
+    "volume": false
+   }
+  },
+  "within_play": {
+   "delta": {
+    "n": 1000,
+    "mean": 0.7413,
+    "q2.5": 0.6336,
+    "median": 0.7223,
+    "q97.5": 0.9459
+   },
+   "volume": {
+    "n": 1000,
+    "mean": 2.5061,
+    "q2.5": 0.1254,
+    "median": 0.9182,
+    "q97.5": 17.7685
+   }
+  },
+  "same_author": {
+   "delta": {
+    "n": 1000,
+    "mean": 0.7874,
+    "q2.5": 0.6689,
+    "median": 0.7878,
+    "q97.5": 0.9109
+   },
+   "volume": {
+    "n": 1000,
+    "mean": 1.8401,
+    "q2.5": 0.1872,
+    "median": 1.1731,
+    "q97.5": 6.2949
+   }
+  },
+  "different_authors": {
+   "delta": {
+    "n": 1000,
+    "mean": 0.8383,
+    "q2.5": 0.7418,
+    "median": 0.8347,
+    "q97.5": 0.9741
+   },
+   "volume": {
+    "n": 1000,
+    "mean": 2.6668,
+    "q2.5": 0.3331,
+    "median": 1.6837,
+    "q97.5": 13.8441
+   }
+  },
+  "floor_play": {
+   "delta": {
+    "n": 1000,
+    "mean": 0.678,
+    "q2.5": 0.5236,
+    "median": 0.6666,
+    "q97.5": 0.9096
+   },
+   "volume": {
+    "n": 1000,
+    "mean": 1.6325,
+    "q2.5": 0.0774,
+    "median": 0.6246,
+    "q97.5": 11.1388
+   }
+  },
+  "within_play_comedies": {
+   "delta": {
+    "n": 1000,
+    "mean": 0.7358,
+    "q2.5": 0.6394,
+    "median": 0.7256,
+    "q97.5": 0.8929
+   },
+   "volume": {
+    "n": 1000,
+    "mean": 1.9246,
+    "q2.5": 0.1269,
+    "median": 0.8475,
+    "q97.5": 12.6704
+   }
+  },
+  "same_author_comedies": {
+   "delta": {
+    "n": 1000,
+    "mean": 0.7528,
+    "q2.5": 0.6538,
+    "median": 0.7513,
+    "q97.5": 0.8631
+   },
+   "volume": {
+    "n": 1000,
+    "mean": 1.3007,
+    "q2.5": 0.1619,
+    "median": 0.9569,
+    "q97.5": 3.8168
+   }
+  },
+  "different_authors_comedies": {
+   "delta": {
+    "n": 1000,
+    "mean": 0.7861,
+    "q2.5": 0.7039,
+    "median": 0.7827,
+    "q97.5": 0.8983
+   },
+   "volume": {
+    "n": 1000,
+    "mean": 1.4849,
+    "q2.5": 0.2731,
+    "median": 1.2563,
+    "q97.5": 4.0098
+   }
+  },
+  "book": {
+   "speakers": {
+    "mormon": 97555,
+    "nephi": 29897,
+    "alma": 20724,
+    "moroni": 16812,
+    "lord": 11688
+   },
+   "delta": {
+    "n": 1000,
+    "mean": 1.0702,
+    "q2.5": 0.9586,
+    "median": 1.07,
+    "q97.5": 1.1974
+   },
+   "volume": {
+    "n": 1000,
+    "mean": 12.5226,
+    "q2.5": 3.4848,
+    "median": 12.1379,
+    "q97.5": 23.6793
+   },
+   "floor_delta": {
+    "n": 1000,
+    "mean": 0.9917,
+    "q2.5": 0.8525,
+    "median": 0.9923,
+    "q97.5": 1.1289
+   },
+   "floor_volume": {
+    "n": 1000,
+    "mean": 7.7489,
+    "q2.5": 1.1348,
+    "median": 6.7176,
+    "q97.5": 18.796
+   }
+  },
+  "verdict": {
+   "delta": {
+    "verdict": "beyond",
+    "book_median": 1.07,
+    "share_of_single_author_sets_below_book": {
+     "within_play": 0.991,
+     "same_author": 1.0
+    },
+    "ratio_to_mean_within_play": 1.443,
+    "ratio_to_mean_same_author": 1.359,
+    "ratio_to_median_different_authors": 1.282,
+    "ratio_to_book_floor": 1.078
+   },
+   "volume": "not scored (known-answer check missed)"
+  },
+  "verdict_comedies": {
+   "delta": {
+    "verdict": "beyond",
+    "book_median": 1.07,
+    "share_of_single_author_sets_below_book": {
+     "within_play": 1.0,
+     "same_author": 1.0
+    },
+    "ratio_to_mean_within_play": 1.454,
+    "ratio_to_mean_same_author": 1.421,
+    "ratio_to_median_different_authors": 1.367,
+    "ratio_to_book_floor": 1.078
+   },
+   "volume": "not scored (known-answer check missed)"
+  }
+ },
+ "controls": {
+  "bible_style_1810_1829": {
+   "books": {
+    "Chronicles of Andrew - Jesse Denson - 1815": 8216,
+    "History of Anti-Christ - Elias Smith - 1811": 15656,
+    "The Late War - Gilbert Hunt - 1816": 49079,
+    "chroniclesoferib02ocon": 127710
+   },
+   "not_attempted": {},
+   "k": 4,
+   "floor": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.6257,
+     "q2.5": 0.4279,
+     "median": 0.6111,
+     "q97.5": 0.8865
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.1866,
+     "q2.5": 0.0494,
+     "median": 0.5748,
+     "q97.5": 5.2758
+    }
+   },
+   "between_books": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.9658,
+     "q2.5": 0.8756,
+     "median": 0.9651,
+     "q97.5": 1.0702
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 6.8015,
+     "q2.5": 1.6798,
+     "median": 6.1196,
+     "q97.5": 15.7492
+    }
+   }
+  },
+  "translated_plays": {
+   "k": 3,
+   "words": 1000,
+   "translated_plays": 9,
+   "translated_with_k_voices": 8,
+   "translated_within_play": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7651,
+     "q2.5": 0.6585,
+     "median": 0.761,
+     "q97.5": 0.9009
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.0656,
+     "q2.5": 0.0549,
+     "median": 0.6109,
+     "q97.5": 4.6078
+    }
+   },
+   "original_within_play": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.774,
+     "q2.5": 0.6377,
+     "median": 0.7676,
+     "q97.5": 0.9649
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.2629,
+     "q2.5": 0.0316,
+     "median": 0.5495,
+     "q97.5": 5.9015
+    }
+   }
+  },
+  "joseph_smith_dictations": {
+   "words": 64886,
+   "floor": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7954,
+     "q2.5": 0.6759,
+     "median": 0.7972,
+     "q97.5": 0.9023
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.1659,
+     "q2.5": 0.2057,
+     "median": 1.005,
+     "q97.5": 3.0193
+    }
+   }
+  },
+  "two_voices_one_writer": {
+   "not_attempted": {},
+   "too_little_text": {},
+   "writers": {
+    "joseph_smith": {
+     "group": "prophetic",
+     "n": 1000,
+     "mean": 0.9736,
+     "q2.5": 0.8247,
+     "median": 0.969,
+     "q97.5": 1.15
+    },
+    "john_wroe": {
+     "group": "prophetic",
+     "n": 1000,
+     "mean": 1.1419,
+     "q2.5": 0.9683,
+     "median": 1.146,
+     "q97.5": 1.3009
+    },
+    "joanna_southcott": {
+     "group": "prophetic",
+     "n": 1000,
+     "mean": 1.1387,
+     "q2.5": 0.938,
+     "median": 1.133,
+     "q97.5": 1.3924
+    },
+    "anna_trapnel": {
+     "group": "prophetic",
+     "n": 1000,
+     "mean": 1.1415,
+     "q2.5": 0.8174,
+     "median": 1.16,
+     "q97.5": 1.4363
+    },
+    "richard_snowden": {
+     "group": "bible_style",
+     "n": 1000,
+     "mean": 0.9408,
+     "q2.5": 0.7639,
+     "median": 0.9407,
+     "q97.5": 1.1304
+    },
+    "elias_smith": {
+     "group": "bible_style",
+     "n": 1000,
+     "mean": 1.0678,
+     "q2.5": 0.8589,
+     "median": 1.0671,
+     "q97.5": 1.2759
+    }
+   }
+  }
+ },
+ "variants": {
+  "k5_w1000": {
+   "k": 5,
+   "words": 1000,
+   "pools": {
+    "all_plays": {
+     "plays_with_k_voices": 296,
+     "authors_with_enough_plays": 16,
+     "plays_with_a_lead": 344
+    },
+    "comedies": {
+     "plays_with_k_voices": 164,
+     "authors_with_enough_plays": 6,
+     "plays_with_a_lead": 173
+    }
+   },
+   "known_answer": {
+    "bar_all_plays": 0.7,
+    "bar_comedies": 0.6,
+    "delta": {
+     "all_plays": {
+      "auc": 0.646,
+      "passed": false
+     },
+     "comedies": {
+      "auc": 0.6229,
+      "passed": true
+     }
+    },
+    "volume": {
+     "all_plays": {
+      "auc": 0.592,
+      "passed": false
+     },
+     "comedies": {
+      "auc": 0.5373,
+      "passed": false
+     }
+    },
+    "passed": {
+     "delta": false,
+     "volume": false
+    }
+   },
+   "within_play": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7735,
+     "q2.5": 0.6613,
+     "median": 0.7707,
+     "q97.5": 0.9107
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.5781,
+     "q2.5": 0.1287,
+     "median": 0.9135,
+     "q97.5": 7.7244
+    }
+   },
+   "same_author": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.8185,
+     "q2.5": 0.6915,
+     "median": 0.8202,
+     "q97.5": 0.9472
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.9565,
+     "q2.5": 0.235,
+     "median": 1.2982,
+     "q97.5": 7.8122
+    }
+   },
+   "different_authors": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.851,
+     "q2.5": 0.7642,
+     "median": 0.8482,
+     "q97.5": 0.9596
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 2.5244,
+     "q2.5": 0.3523,
+     "median": 1.6807,
+     "q97.5": 12.7295
+    }
+   },
+   "floor_play": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7383,
+     "q2.5": 0.5759,
+     "median": 0.7398,
+     "q97.5": 0.8857
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.314,
+     "q2.5": 0.1126,
+     "median": 0.7732,
+     "q97.5": 5.9303
+    }
+   },
+   "within_play_comedies": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7782,
+     "q2.5": 0.6771,
+     "median": 0.7738,
+     "q97.5": 0.9023
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.4777,
+     "q2.5": 0.1593,
+     "median": 0.8984,
+     "q97.5": 6.3743
+    }
+   },
+   "same_author_comedies": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7991,
+     "q2.5": 0.7036,
+     "median": 0.7975,
+     "q97.5": 0.9046
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.3986,
+     "q2.5": 0.2236,
+     "median": 1.0963,
+     "q97.5": 4.1358
+    }
+   },
+   "different_authors_comedies": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.8202,
+     "q2.5": 0.7462,
+     "median": 0.818,
+     "q97.5": 0.909
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.5402,
+     "q2.5": 0.2132,
+     "median": 1.231,
+     "q97.5": 4.7205
+    }
+   },
+   "book": {
+    "speakers": {
+     "mormon": 97555,
+     "nephi": 29897,
+     "alma": 20724,
+     "moroni": 16812,
+     "lord": 11688
+    },
+    "delta": {
+     "n": 1000,
+     "mean": 1.0434,
+     "q2.5": 0.9246,
+     "median": 1.041,
+     "q97.5": 1.169
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 9.9605,
+     "q2.5": 2.3557,
+     "median": 9.2286,
+     "q97.5": 22.447
+    },
+    "floor_delta": {
+     "n": 1000,
+     "mean": 1.0025,
+     "q2.5": 0.8721,
+     "median": 1.0027,
+     "q97.5": 1.1407
+    },
+    "floor_volume": {
+     "n": 1000,
+     "mean": 7.63,
+     "q2.5": 1.3559,
+     "median": 6.7168,
+     "q97.5": 19.212
+    }
+   },
+   "verdict": {
+    "delta": "not scored (known-answer check missed)",
+    "volume": "not scored (known-answer check missed)"
+   }
+  },
+  "k8_w1000": {
+   "k": 8,
+   "words": 1000,
+   "pools": {
+    "all_plays": {
+     "plays_with_k_voices": 112,
+     "authors_with_enough_plays": 9,
+     "plays_with_a_lead": 344
+    },
+    "comedies": {
+     "plays_with_k_voices": 78,
+     "authors_with_enough_plays": 5,
+     "plays_with_a_lead": 173
+    }
+   },
+   "known_answer": {
+    "bar_all_plays": 0.7,
+    "bar_comedies": 0.6,
+    "delta": {
+     "all_plays": {
+      "auc": 0.7114,
+      "passed": true
+     },
+     "comedies": {
+      "auc": null,
+      "passed": false,
+      "not_attempted": "pool too small"
+     }
+    },
+    "volume": {
+     "all_plays": {
+      "auc": 0.5957,
+      "passed": false
+     },
+     "comedies": {
+      "auc": null,
+      "passed": false,
+      "not_attempted": "pool too small"
+     }
+    },
+    "passed": {
+     "delta": false,
+     "volume": false
+    }
+   },
+   "within_play": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7985,
+     "q2.5": 0.7081,
+     "median": 0.7931,
+     "q97.5": 0.934
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 2.0954,
+     "q2.5": 0.3297,
+     "median": 1.2422,
+     "q97.5": 8.857
+    }
+   },
+   "same_author": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.8218,
+     "q2.5": 0.7297,
+     "median": 0.8222,
+     "q97.5": 0.9292
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 2.3947,
+     "q2.5": 0.4171,
+     "median": 1.5808,
+     "q97.5": 12.3124
+    }
+   },
+   "different_authors": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.8582,
+     "q2.5": 0.7883,
+     "median": 0.8569,
+     "q97.5": 0.9475
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 2.7064,
+     "q2.5": 0.5698,
+     "median": 1.9214,
+     "q97.5": 10.4349
+    }
+   },
+   "floor_play": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7634,
+     "q2.5": 0.6567,
+     "median": 0.7583,
+     "q97.5": 0.9142
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.6962,
+     "q2.5": 0.2667,
+     "median": 1.0393,
+     "q97.5": 7.3805
+    }
+   },
+   "within_play_comedies": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7859,
+     "q2.5": 0.7003,
+     "median": 0.7824,
+     "q97.5": 0.8904
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.6952,
+     "q2.5": 0.3169,
+     "median": 1.2354,
+     "q97.5": 5.4764
+    }
+   },
+   "same_author_comedies": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7939,
+     "q2.5": 0.7238,
+     "median": 0.7936,
+     "q97.5": 0.8637
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.4822,
+     "q2.5": 0.3963,
+     "median": 1.2437,
+     "q97.5": 3.6276
+    }
+   },
+   "book": {
+    "speakers": {
+     "mormon": 97555,
+     "nephi": 29897,
+     "alma": 20724,
+     "moroni": 16812,
+     "lord": 11688,
+     "jesus": 10991,
+     "jacob": 8522,
+     "isaiah": 7332
+    },
+    "delta": {
+     "n": 1000,
+     "mean": 1.0313,
+     "q2.5": 0.9442,
+     "median": 1.031,
+     "q97.5": 1.1301
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 9.0594,
+     "q2.5": 3.2676,
+     "median": 8.691,
+     "q97.5": 16.6539
+    },
+    "floor_delta": {
+     "n": 1000,
+     "mean": 1.0031,
+     "q2.5": 0.9092,
+     "median": 1.0026,
+     "q97.5": 1.1023
+    },
+    "floor_volume": {
+     "n": 1000,
+     "mean": 8.0407,
+     "q2.5": 2.7483,
+     "median": 7.5674,
+     "q97.5": 16.1662
+    }
+   },
+   "verdict": {
+    "delta": "not scored (known-answer check missed)",
+    "volume": "not scored (known-answer check missed)"
+   }
+  },
+  "k3_w2000": {
+   "k": 3,
+   "words": 2000,
+   "pools": {
+    "all_plays": {
+     "plays_with_k_voices": 222,
+     "authors_with_enough_plays": 16,
+     "plays_with_a_lead": 330
+    },
+    "comedies": {
+     "plays_with_k_voices": 124,
+     "authors_with_enough_plays": 6,
+     "plays_with_a_lead": 167
+    }
+   },
+   "known_answer": {
+    "bar_all_plays": 0.7,
+    "bar_comedies": 0.6,
+    "delta": {
+     "all_plays": {
+      "auc": 0.6821,
+      "passed": false
+     },
+     "comedies": {
+      "auc": 0.6462,
+      "passed": true
+     }
+    },
+    "volume": {
+     "all_plays": {
+      "auc": 0.5626,
+      "passed": false
+     },
+     "comedies": {
+      "auc": 0.5387,
+      "passed": false
+     }
+    },
+    "passed": {
+     "delta": false,
+     "volume": false
+    }
+   },
+   "within_play": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7153,
+     "q2.5": 0.6018,
+     "median": 0.6998,
+     "q97.5": 0.9506
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.2648,
+     "q2.5": 0.0252,
+     "median": 0.4088,
+     "q97.5": 7.4195
+    }
+   },
+   "same_author": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7858,
+     "q2.5": 0.6387,
+     "median": 0.7779,
+     "q97.5": 0.9721
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 2.026,
+     "q2.5": 0.0427,
+     "median": 0.7962,
+     "q97.5": 8.8378
+    }
+   },
+   "different_authors": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.8373,
+     "q2.5": 0.7028,
+     "median": 0.8302,
+     "q97.5": 1.0139
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 2.4512,
+     "q2.5": 0.0702,
+     "median": 1.1243,
+     "q97.5": 14.4086
+    }
+   },
+   "floor_play": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.6475,
+     "q2.5": 0.4142,
+     "median": 0.6532,
+     "q97.5": 0.8437
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 0.9532,
+     "q2.5": 0.0115,
+     "median": 0.2972,
+     "q97.5": 6.4874
+    }
+   },
+   "within_play_comedies": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.718,
+     "q2.5": 0.6127,
+     "median": 0.7064,
+     "q97.5": 0.9121
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.2663,
+     "q2.5": 0.0235,
+     "median": 0.4543,
+     "q97.5": 5.471
+    }
+   },
+   "same_author_comedies": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7524,
+     "q2.5": 0.6379,
+     "median": 0.7467,
+     "q97.5": 0.9077
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.1069,
+     "q2.5": 0.0353,
+     "median": 0.6626,
+     "q97.5": 4.3578
+    }
+   },
+   "different_authors_comedies": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7857,
+     "q2.5": 0.6875,
+     "median": 0.7763,
+     "q97.5": 0.974
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.1886,
+     "q2.5": 0.0587,
+     "median": 0.8324,
+     "q97.5": 4.3945
+    }
+   },
+   "book": {
+    "speakers": {
+     "mormon": 97555,
+     "nephi": 29897,
+     "alma": 20724
+    },
+    "delta": {
+     "n": 1000,
+     "mean": 1.0922,
+     "q2.5": 0.9165,
+     "median": 1.0907,
+     "q97.5": 1.2659
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 13.5491,
+     "q2.5": 0.6709,
+     "median": 11.7341,
+     "q97.5": 37.3392
+    },
+    "floor_delta": {
+     "n": 1000,
+     "mean": 0.9955,
+     "q2.5": 0.7819,
+     "median": 0.9963,
+     "q97.5": 1.2107
+    },
+    "floor_volume": {
+     "n": 1000,
+     "mean": 6.8474,
+     "q2.5": 0.2403,
+     "median": 4.5071,
+     "q97.5": 25.9816
+    }
+   },
+   "verdict": {
+    "delta": "not scored (known-answer check missed)",
+    "volume": "not scored (known-answer check missed)"
+   }
+  },
+  "kjv_5grams_dropped": {
+   "known_answer": {
+    "bar_all_plays": 0.7,
+    "bar_comedies": 0.6,
+    "delta": {
+     "all_plays": {
+      "auc": 0.7022,
+      "passed": true
+     },
+     "comedies": {
+      "auc": 0.6606,
+      "passed": true
+     }
+    },
+    "volume": {
+     "all_plays": {
+      "auc": 0.6347,
+      "passed": false
+     },
+     "comedies": {
+      "auc": 0.5585,
+      "passed": false
+     }
+    },
+    "passed": {
+     "delta": true,
+     "volume": false
+    }
+   },
+   "pools": {
+    "plays_with_k_voices": 63,
+    "authors_with_enough_plays": 16,
+    "plays_with_a_lead": 330
+   },
+   "book": {
+    "speakers": {
+     "mormon": 77792,
+     "nephi": 22553,
+     "alma": 17666,
+     "moroni": 12896,
+     "lord": 7448
+    },
+    "delta": {
+     "n": 1000,
+     "mean": 1.0921,
+     "q2.5": 0.9772,
+     "median": 1.0883,
+     "q97.5": 1.2188
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 11.0939,
+     "q2.5": 2.6594,
+     "median": 10.5181,
+     "q97.5": 22.9601
+    },
+    "floor_delta": {
+     "n": 1000,
+     "mean": 1.0108,
+     "q2.5": 0.8691,
+     "median": 1.011,
+     "q97.5": 1.1497
+    },
+    "floor_volume": {
+     "n": 1000,
+     "mean": 7.2066,
+     "q2.5": 1.2595,
+     "median": 6.3973,
+     "q97.5": 17.8822
+    }
+   },
+   "within_play": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.744,
+     "q2.5": 0.6362,
+     "median": 0.7246,
+     "q97.5": 0.9625
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 2.6416,
+     "q2.5": 0.1284,
+     "median": 0.9122,
+     "q97.5": 18.3292
+    }
+   },
+   "same_author": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.7856,
+     "q2.5": 0.6655,
+     "median": 0.7894,
+     "q97.5": 0.9166
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 1.8704,
+     "q2.5": 0.1821,
+     "median": 1.1561,
+     "q97.5": 6.9704
+    }
+   },
+   "different_authors": {
+    "delta": {
+     "n": 1000,
+     "mean": 0.8347,
+     "q2.5": 0.7366,
+     "median": 0.831,
+     "q97.5": 0.9532
+    },
+    "volume": {
+     "n": 1000,
+     "mean": 2.4289,
+     "q2.5": 0.3234,
+     "median": 1.6574,
+     "q97.5": 11.7674
+    }
+   },
+   "verdict": {
+    "delta": {
+     "verdict": "beyond",
+     "book_median": 1.0883,
+     "share_of_single_author_sets_below_book": {
+      "within_play": 0.995,
+      "same_author": 0.999
+     },
+     "ratio_to_mean_within_play": 1.463,
+     "ratio_to_mean_same_author": 1.385,
+     "ratio_to_median_different_authors": 1.31,
+     "ratio_to_book_floor": 1.076
+    },
+    "volume": "not scored (known-answer check missed)"
+   }
+  }
+ },
+ "config_sha256": "623e95c5702d1b881e7599f4e1a6d60b1292069d052b7dcae8d971f479b05d21",
+ "commit": "3228cc934f6ddf3162379938575cc54319c7ec39"
+}

@@ -1220,6 +1220,83 @@ lab:                              # the research lab (exploratory tooling; reads
     year_max: 1830
     min_words: 40000
     seed: 20261120
+  voices:                          # BOM-121 (lab; exploratory): voice diversity among the book's speakers against single-author multi-speaker works
+    seed: 20261121
+    sample_words: 2000             # every voice is one window of this many words (equal sizes); 1000 first, changed after the known-answer check missed (card, post hoc)
+    k_voices: 5                    # voices per set (the book's top speakers; a play's top speakers; leads of K plays)
+    draws: 1000                    # random sets per kind of comparison set, and windows per BoM score
+    mfw: 150                       # features: the most frequent words of a neutral library sample
+    bg_works: 120                  # background (for features and z-scores): library works by one personal author
+    bg_min_words: 20000
+    bg_words_per_work: 20000
+    year_min: 1780
+    year_max: 1830
+    kjv_ngram: 5                   # variant: drop tokens covered by a King James word n-gram this long
+    pc_count: 3                    # volume measure: product of the spreads on this many background principal components
+    play_source: tcp               # comparison works: registry source
+    play_year_min: 1660            # spelling is regular and OCR is hand-keyed in this range
+    play_year_max: 1700
+    play_min_words: 12000
+    play_title: '\b(comedy|tragedy|tragi-?comedy|comedie|tragedie|tragaedy|play)\b'
+    translation_title: '(translat|englished|written in (french|spanish|italian|greek|latin)|out of the (french|spanish|italian|latin|greek))'
+    not_speakers: [finis, prologue, epilogue, song, chorus, all, both, omnes, mus, music]
+    stage_start: '^(Enter|Exit|Exeunt|Re-?enter|Scene|SCENE|ACT|Act|Actus|Manet|Manent|Within|Aside|Dances|Musick|Music|Sings?)\b'
+    min_author_plays: 5            # an author's plays count only if this many qualify (needed for same-author sets)
+    known_bar: 0.70                # known answer: share of draws where K different authors' leads spread more than K of one author's leads
+    known_bar_genre: 0.60          # the same, comedies only
+    larger_share: 0.975            # book above this share of single-author sets: "beyond"
+    typical_share: 0.90            # book at or below this share of single-author sets: "within the range"
+    variants: [[5, 1000], [8, 1000], [3, 2000]]   # (voices, words) other settings; every comparison rebuilt for each
+    translated_k: 3                # control 2 (translated plays) needs a smaller set: this many voices of translated_words words, compared with original plays at the same setting
+    translated_words: 1000
+    bible_style_min_words: 5000    # a Bible-style book needs this many words to be a voice
+    bible_style_files:             # printed 1810-1829, paths under data/corpus/lab (the 1812 Chronicles of John is under 1,000 words and is left out)
+      - "sources/bible_style/wordtree_books/pseudo_biblical/Chronicles of Andrew - Jesse Denson - 1815.md"
+      - "sources/bible_style/wordtree_books/pseudo_biblical/History of Anti-Christ - Elias Smith - 1811.md"
+      - "sources/bible_style/wordtree_books/pseudo_biblical/The Late War - Gilbert Hunt - 1816.md"
+      - "sources/bible_style/chroniclesoferib02ocon/text.txt"
+  debates:                         # BOM-103 (lab; exploratory): print dates of the nearest passages to the debate passages
+    year_min: 1640                 # gallery: religious works printed in these years
+    year_max: 1829
+    gallery_genre: sermon_devotional   # a work's genre labels must include this
+    bible_title: '^\W*(the )?(holy )?(bible|new testament|old testament|book of psalms|psalms of david|whole book of psalms)\b'
+    neighbours: 100                # nearest gallery passages per query
+    candidates: 3000               # passages kept from the sign-code pass before exact scoring
+    min_hits: 2                    # a passage is on a topic if every term group matches and all terms match this often
+    topics:                        # topic: list of term groups (regexes on lower-cased text); every group must match
+      infant_baptism: ['\bbapti[sz]', '\binfan(t|ts|cy)\b|little child|young children']
+      universal_salvation: ['universal(ist|ism|ists)?\b|restoration of all|all (men|mankind) (shall|will|must|should) be saved|no hell\b|no devil\b|endless (torment|misery|punishment)', '\bsaved?\b|salvation|\bhell\b|damn|punish|torment']
+      eternal_punishment: ['\b(endless|eternal|everlasting|never.?ending)\b', 'torment|punishment|misery|\bfire\b|burning|damnation|\bhell\b']
+      fall_atonement: ['\bfall\b|\bfallen\b|transgression|\badam\b', 'aton(e|ed|ement)|\bredeem|redemption|\bransom']
+      free_will: ['free.?(will|agency|agents?)\b|free to (choose|act)|act for (them|him|your|our)sel|choose (life|death|eternal)|predestinat|\belect(ion|ed)?\b|\bdecrees?\b|foreordain']
+      paid_clergy: ['priestcraft|hireling|for hire\b|for gain\b|get gain|for money|\bsalar(y|ies)\b|\btithes?\b|own hands|popularity|praise of (the )?(world|men)', '\bpriests?\b|\bpreach|\bministers?\b|\bteachers?\b|clergy']
+      secret_combinations: ['secret (combination|societ|oath|band|work|plan|abomination)|free.?mason|\bmason(ry|ic)\b|\blodges?\b', '\boaths?\b|covenant|murder|plunder|\bgain\b|combination|\bsecret']
+      godhead: ['godhead|trinity|three persons|\bone god\b|eternal father|father and (the )?son|son of the (eternal )?father|three in one|unity of (the )?god']
+      revelation_ceased: ['revelations?\b|miracles?\b|gifts? of the (holy )?(spirit|ghost)|prophes(y|ying)|\btongues\b|visions?\b', '\bcease[ds]?\b|done away|no more\b|at an end|\bdeny|\bdenieth']
+      gathering_israel: ['\bgather(ed|ing)?\b|\brestor(e|ed|ation)\b', '\bisrael|\bjews?\b|remnant|lost tribes|\btribes\b']
+      ordination_authority: ['\bordain|ordination|\bauthority\b|(laying|lay|imposition) (on )?of hands|holy order|priesthood', '\bpriests?\b|\belders?\b|\bteachers?\b|\bbapti[sz]|\bministers?\b|\bchurch']
+      resurrection: ['resurrection|(rise|risen|raised) from the dead', '\bbod(y|ies)\b|\bdead\b|\bgrave\b|judg']
+      regeneration: ['born again|born of (god|the spirit)|new creatures?|mighty change|regenerat|change of heart|justif|sanctif']
+      lords_supper: ['sacrament|lord.?s supper|bread and (the )?wine|\bemblems?\b|flesh and blood|in remembrance|transubstantiat']
+      fasting: ['\bfast(ing|ed|s)\b|to fast\b|fast and pray', '\bpray']
+      church_government: ['\bchurch', 'discipline|govern(ment|ed)?\b|cast out|blotted out|excommunicat|numbered among|names? (were|was) (taken|blotted)']
+      kings_government: ['\bkings?\b|monarch|kingdom', '\bjudges?\b|voice of the people|liberty|freedom|republic|tyran|\brights\b']
+    control_decades: [1650, 1740, 1780, 1820]   # known-answer groups by print decade
+    keyed_years: [1780, 1799]      # plus a group of keyed (TCP) works printed in these years
+    keyed_source: tcp
+    control_works: 20              # works per control group
+    control_min_words: 10000
+    control_min_passages: 3        # topic passages a control work must have
+    control_max_queries: 40        # topic passages queried per control work (seeded sample)
+    old_reprint_years: [1780, 1829]   # decoy control: printed in these years
+    old_died_before: 1760          # by an author whose catalogued death year is before this
+    smooth: 1                      # decades either side summed when finding the peak
+    tolerance: 1                   # a control hits if its peak is within this many decades of its own
+    group_bar: 0.6                 # known-answer bar: share of hits in every control group
+    bom_min_passages: 5            # a topic is scored with at least this many passages
+    close_percentile: 5            # "no close neighbours": median top-1 score below this percentile of control queries'
+    yes_share: 0.667               # overall yes: at least this share of topics peak 1810s-1820s (no: at most 1 - this)
+    seed: 20261121
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
