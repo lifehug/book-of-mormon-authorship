@@ -72,7 +72,7 @@ compares against.
 | BOM-126 | Phrases come from histories of the Revolution; Abinadi follows Bunyan | Donofrio; Davis 2012 | the claimed source alone | the claimed source ranked among every volume in the library | **Done** |
 | BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held | TBD; 11 passages keyed |
 | BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | **Done** |
-| BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1993; replies | examples from each side | every use in print 1780 to 1835, by year | TBD |
+| BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1993; replies | examples from each side | every use in print 1780 to 1835, by year | **Counts done; meaning step waiting** |
 | BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed twice; not scored** |
 
 ### 3. How was it produced?
@@ -858,6 +858,47 @@ true at once on a flat map. But they are few, and the rule misses the long descr
 
 A fair test needs each model's own published placements (Sorenson's map, the Heartland maps),
 scored against random placements of the same places, the way the Bible check worked.
+
+### "Secret combinations" (BOM-123)
+
+The Book of Mormon calls the Gadianton robbers a "secret combination". In September 1826 William
+Morgan vanished in western New York after threatening to print the Masons' secrets, and the
+anti-Masonic movement began. Dan Vogel and others say that in those years the phrase meant
+Freemasonry. Daniel Peterson and others say it was an ordinary phrase for any conspiracy.
+
+I counted every use in 209,467 books printed 1700 to 1830 and 114,633 newspaper pages from 1800
+to 1830. There are 926.
+
+| Years | Uses in books, per million words | Uses in newspapers, per million words |
+| --- | --- | --- |
+| 1780 to 1799 | 0.068 | none held |
+| 1800 to 1819 | 0.036 | 0.050 |
+| 1820 to 1825 | 0.084 | 0.039 |
+| 1827 | 0.069 | (2 uses) |
+| 1828 | 0.105 | 0.59 |
+| 1829 | 0.060 | 0.54 |
+| 1830 | 0.082 | 0.15 |
+
+For scale, over the same years the word "anti-masonic" goes from 0.001 per million words to
+3.5, more than three thousand times.
+
+Two things are plain from the counts. The phrase was not new: it is in print through the whole
+century before, and in books its rate does not move when the Morgan affair breaks. And in
+newspapers it does jump, about tenfold, in 1828 and 1829.
+
+What the counts cannot say is what each use is about, and that is the whole dispute. I wrote a
+rule: call a use Masonic if a word like "mason" or "lodge" stands within 30 words. Then I
+checked the rule on books whose titles settle the subject. In books about Freemasonry it found
+only 16 of 37 uses. Anti-Masonic writers used "secret combination" as a name for Masonry
+without saying "Mason" anywhere near it. So the rule undercounts exactly the uses that matter,
+and I did not use it, and I did not go on to the Book of Mormon's own uses.
+
+The next step is to have each of 826 uses read in its paragraph and labelled (by an AI model,
+which I will say is simulated judging), after the same check on the titled books. It is in the
+queue.
+
+Limits. The newspapers held are mostly from Rhode Island, Virginia and Washington, none from New
+York. The catalogue does not say where a book was printed. Reprints count once a copy.
 
 ## What I would want a reader to take from the whole set
 

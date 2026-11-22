@@ -1478,6 +1478,95 @@ lab:                              # the research lab (exploratory tooling; reads
     plant_hosts: [gibbon_vol1, mcguffey_sixth]
     theographic: data/corpus/lab/sources/names/theographic/json
     hales: {words: 269528, grade: 11, unique_words: [5600, 5900], names: 337}   # as reported in Hales (2019), see docs/research/2026-11-20-studies-to-rerun.md
+  combinations:                    # BOM-123 (lab; exploratory): "secret combination(s)" in print by year, and what it referred to
+    year_min: 1700                 # library works and newspaper pages counted (registry year)
+    year_max: 1830
+    phrase: '\b[sf]ecret,?\s+(?:[a-z]+,?\s+){0,2}combinations?\b'   # the phrase and variants with up to two words between ("secret and unlawful combinations")
+    exact: '\b[sf]ecret\s+combinations?\b'   # a hit is "exact" when it matches this too
+    window_words: 30               # words kept each side of a hit; a Masonic term anywhere in this window makes the use Masonic
+    near_words: 10                 # sensitivity: Masonic term within this many words
+    morgan_date: '1826-09-12'      # the Morgan affair (abduction, September 1826); newspaper pages carry exact dates
+    categories:                    # referent rules on lower-cased words around a hit; Freemasonry by the window rule, the rest by the nearest term (ties: this order)
+      freemasonry: '\bma[sf]ons?\b|\bma[sf]onry\b|\bma[sf]onic\b|\bma[sf]onick\b|free[\s-]?ma[sf]on|anti[\s-]?ma[sf]on|grand lodges?|lodge[\s-]?rooms?|lodges of|\blodges\b|\bmorgan\b|royal arch|knights? templars?|cable.?tow|entered apprentice|master ma[sf]on|eleusin'
+      other_society: 'illuminat|illuminism|jacobin|bavarian|carbonari|tugendbund|odd.?fellows?|tammany|cincinnati|rosicrucian|\bclubs?\b|conventicle|secret societ|united irishmen|white.?boys|ribbon.?men|vehmic|\bsocieties\b'
+      commercial: '\bmerchants?\b|\bprices?\b|\bworkmen\b|journeymen|\btrades?\b|monopol|engross|forestall|\bwages\b|manufactur|\bbakers?\b|\bbankers?\b|\bbanks?\b|\bdealers?\b|\bmarkets?\b|commerc|\bshipping\b|\bmasters\b'
+      political: 'faction|\bpart(?:y|ies)\b|cabal|government|treason|sedition|conspir|rebel|republic|\bkings?\b|parliament|ministry|congress|federalist|democrat|tyran|usurp|constitution|politic|election|\bcrown\b|revolution|\bnations?\b|\bstates?\b|\bliberty\b|\bpowers?\b'
+      crime: 'robber|pirate|\bthie(?:f|ves)\b|murder|banditti|bandit|plunder|\bgangs?\b|assassin|smuggl|burglar|counterfeit|felon|crimin|villain|highwaymen|\bcrimes?\b|\boaths?\b'
+      religious: '\bchurch|\bpriest|jesuit|popish|papist|popery|heresy|heretic|clergy|\bsects?\b|bishop|presbyter|dissent|sacrament|religio'
+    ka_titles:                     # known-answer sample: hits in works whose catalogued title makes the subject certain
+      masonic: '\bma[sf]on|\bma[sf]onic|\bma[sf]onry|anti[\s-]?ma[sf]on'
+      trade: '\b(trade|commerce|commercial|merchants?|manufactures?|manufacturing|journeymen|workmen|wages|prices|monopolies|monopoly|banks?|banking|tariff|customs|navigation|exports?|imports?)\b'
+      politics: '\b(treason|conspiracy|conspiracies|parliament|parliamentary|rebellion|sedition|political|politics|constitution|revolution|jacobins?|congress|government|ministry|ministers|state trials)\b'
+    ka_per_work: 3                 # at most this many hits from one work enter the sample
+    ka_max: 200                    # at most this many hits per sample class (seeded draw)
+    ka_min: 30                     # a sample class needs at least this many hits, or the check is not attempted
+    ka_bar_masonic: 0.75           # known answer: share of Masonic-titled hits labelled Freemasonry
+    ka_bar_not_masonic: 0.90       # share of trade- and politics-titled hits not labelled Freemasonry
+    ka_bar_trade: 0.50             # share of trade-titled hits labelled commercial
+    ka_bar_politics: 0.50          # share of politics-titled hits labelled political
+    count_phrases:                 # literal phrases counted on whitespace-normalised lower-case text (the yearly counter's own check)
+      anti_masonic: ['anti-mason', 'antimason', 'anti mason']   # non-overlapping stems (anti-mason also covers -masonic, -masonry)
+      freemasonry: ['free-mason', 'freemason', 'free mason']
+      steady_of_the: [' of the ']
+      steady_in_the_course_of: [' in the course of ']
+    anti_before: [1780, 1825]      # counter check, "anti-masonic": the rate in these years must be below
+    anti_after: [1827, 1830]       # this share of the rate in these years ...
+    anti_ratio: 0.05
+    anti_min_after: 20             # ... which must hold at least this many occurrences
+    steady_period: 5               # steady phrase: rates by periods of this many years, 1780-1829
+    steady_band: 1.5               # every period within this factor of the median period (both ways)
+    steady_min_words: 5000000      # a period with fewer counted words is left out of that check
+    periods: [[1700, 1779], [1780, 1799], [1800, 1819], [1820, 1825], [1826, 1826], [1827, 1827], [1828, 1828], [1829, 1829], [1830, 1830]]
+    controls_min_words: 5000       # a Bible-style or Joseph Smith text needs this many words
+    judge_per_year: 40             # judging jobs (prepared only if the check misses): uses sampled per year
+    workers: 8
+    seed: 20261121
+  isaiah:                          # BOM-122 (lab; exploratory): the Book of Mormon's Isaiah variants against every work printed before 1830
+    year_max: 1829                 # library works searched: registry year up to this (works, dup_keeper, not sealed, not ocr_excluded)
+    seed: 3                        # alignment: a matching run of at least this many words is an anchor
+    max_gap: 25                    # anchors join into one quoted segment when the gap on both sides is at most this many words
+    max_gap_one_side: 60           # ... or when one side of the gap is empty and the other at most this many (an addition or a drop)
+    min_segment: 12                # a segment needs this many matched words, or it is a chance match and is dropped
+    neighbours: 1                  # a paragraph is aligned to the mask's chapter(s) and this many chapters either side
+    max_edit_words: 6              # a variant with more words than this on either side is "long": listed, not searched
+    ctx: 2                         # searchable reading: aligned words kept each side of the variant
+    ctx_max: 4                     # widened one word a side at a time while the string occurs in the King James Bible
+    min_ngram: 4                   # a reading string needs at least this many words
+    window: 40                     # words either side of a hit searched for the verse's own words
+    min_context: 2                 # distinct content words of the verse and its neighbours (not in the string) needed in that window
+    content_min_len: 4             # a content word has at least this many letters and is not in stop_words
+    stop_words: [shall, that, this, them, they, their, there, which, with, from, have, hath, unto, upon, will, were, when, then, thee, thou, thy, your, what, whom, also, even, into, been, said, saith, came, come, against, before, because, therefore, behold]
+    decoys_per_variant: 3          # made-up variants: the same edit at another place where the query keeps the King James words
+    workers: 9
+    random_seed: 20261121
+    query_ka: internet_archive:isaiahnewtransla01lowt   # known answer: Lowth's 1795 translation volume as the query (range from data/italics/translation_ranges.json); held out
+    lowth_title: 'isaiah\W+a\s+new\s+translation(?!.{0,80}supplementary)'   # other printings of Lowth's Isaiah (catalog title); Dodson's 1790 "supplementary" translation excluded
+    clarke_isaiah: internet_archive:holybiblecontain0003adam   # Clarke's commentary volume holding Isaiah (1825 New York printing)
+    ka_top: 3                      # known answer (a): at least ka_min_lowth Lowth printings among the top ka_top works by readings matched
+    ka_min_lowth: 2
+    ka_ratio_bar: 5                # (b): best Lowth printing's reading share at least this many times its decoy share
+    ka_decoy_any_bar: 0.10         # (c): share of decoys found in any work at most this
+    special_ratio: 3               # Clarke "stands out": first by readings matched, reading share >= this x decoy share,
+    special_p: 0.01                # and one-sided Fisher p below this; above chance but not first = "one of many"
+    commentary_title: ['\b(commentar|expositi|expositor|annotation|notes|paraphrase|lectures)', '\b(bible|scripture|testament|isaiah|esaias|prophe)']   # both must match the title
+    translation_title: ['\b(translat|version)', '\b(isaiah|esaias|prophe|bible|old testament)']
+    judge_top_works: 12            # judge jobs (prepared, not run): the commentaries and translations with most verse quotations
+    judge_window: 120              # words of the work shown either side of its quotation of the verse
+    ka_chunk_words: 250            # known answer: Lowth's translation cut into pieces of this many words, each aligned like a paragraph
+    ka_min_shared: 2               # a piece is aligned to the Isaiah chapter sharing most word 4-grams with it, if at least this many
+    list_cap: 100                  # result: work ids listed per reading when at most this many works have it (else the earliest this many)
+    townsend_1830:                 # Townsend's 11 items (townsend_items.json, by n): the 1830 book and chapter holding the Book of Mormon verse
+      1: [2 Nephi, 12]
+      2: [2 Nephi, 12]
+      3: [2 Nephi, 5]
+      4: [2 Nephi, 8]
+      5: [2 Nephi, 8]
+      6: [2 Nephi, 9]
+      7: [2 Nephi, 10]
+      8: [2 Nephi, 10]
+      9: [1 Nephi, 6]
+      10: [1 Nephi, 6]
+      11: [2 Nephi, 11]
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
