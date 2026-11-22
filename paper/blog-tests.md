@@ -1210,8 +1210,8 @@ confirm. That guess was wrong.
 | Item is named in the King James Bible | 86 | 21 |
 | Item is not | 26 | 11 |
 
-77 percent against 70. That difference is what chance gives. Being biblical does not explain
-his confirmations.
+Bible things are confirmed 80 percent of the time and the rest 70. That difference is what
+chance gives. Being biblical does not explain his confirmations.
 
 What his own headings do show is where the confirmations are thin. For 40 items the heading
 says what kind of evidence he means. Those he ties to the New World are confirmed less often
