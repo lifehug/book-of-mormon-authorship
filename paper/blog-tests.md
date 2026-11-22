@@ -89,7 +89,7 @@ compares against.
 
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
-| BOM-104 | The Books of Moses and Abraham share the voice; Rigdon wrote the *Lectures on Faith* | Phipps 1977; Reynolds 2005 | small samples | the study's models and encoders | **Check failed; not scored** |
+| BOM-104 | The Books of Moses and Abraham share the voice; Rigdon wrote the *Lectures on Faith* | Phipps 1977; Reynolds 2005 | small samples | the study's models and encoders | **Done, weak** |
 | BOM-105, BOM-99 | Smith's revelations and his letters look like two different writers | Holmes 1992; the first study | Smith alone | other writers with two voices (Southcott, Wroe, Trapnel, Snowden, Elias Smith) | **Done** on three measures; the author models do not give a stable answer |
 | BOM-100, BOM-101 | A model can be taught to see the person and not the scripture voice | this project | | the known-answer set from BOM-99 | TBD |
 
@@ -932,6 +932,34 @@ One thing I got wrong in the procedure: the author-model program scored every te
 pass, so numbers for the Book of Mormon and the Lectures were computed and saved before the
 check had been read. I did not look at them, and the program now refuses to read them when the
 check fails. It should have been two passes.
+
+I tried once more with more text: 18 more of Smith's letters, and two long series from the 1833
+to 1835 church paper that the editor of Rigdon's collected writings gives to Rigdon (they are
+unsigned). Phelps had too little and was dropped. This time one measure of six just passed,
+common words, at exactly 8 in 10. Move one piece and it fails. So read the rest as a lean.
+
+| Lecture | Closest | Next | Earlier studies say Rigdon |
+| --- | --- | --- | --- |
+| 1 | Rigdon | Pratt | agrees |
+| 2 | Smith | Pratt | differs |
+| 3 | Rigdon | Pratt | agrees |
+| 4 | Rigdon | Pratt | agrees |
+| 5 | Pratt | Smith | differs |
+| 6 | Rigdon | Pratt | agrees |
+| 7 | Rigdon | Pratt | agrees |
+
+Five of seven go to Rigdon, as the earlier studies said. Every margin is thin, and the runner-up
+is nearly always Parley Pratt, who was not at the school where the Lectures were given. Pratt is
+in the test as a decoy. A decoy that keeps coming second is the measure recognising a kind of
+writing, the doctrinal essay of the 1830s, more than a man. And the Rigdon text I added is that
+same kind, from those same years.
+
+For the dictated texts, the same measure puts the revelations of 1828 to 1834 with Smith's own
+letters (47 of 52 pieces), the Book of Moses nearest the Book of Mormon, and the Book of Abraham
+nearest Pratt. None of it is firm enough to call, and Rigdon is never the closest to any of
+them. I see no drift away from the Book of Mormon over the years.
+
+So: a lean toward Rigdon for most of the Lectures, on one measure that barely qualified.
 
 ## What I would want a reader to take from the whole set
 

@@ -1,0 +1,1152 @@
+{
+ "exploratory": true,
+ "post_hoc_design": true,
+ "stage": "target",
+ "settings": {
+  "candidates": [
+   "joseph_smith",
+   "sidney_rigdon",
+   "oliver_cowdery",
+   "ww_phelps",
+   "parley_pratt"
+  ],
+  "train_chunks": 20,
+  "test_chunks": 10,
+  "profile_chunks": 4,
+  "resamples": 500,
+  "min_piece_words": 500,
+  "known_bar": 0.8,
+  "min_each": 0.5,
+  "clear_share": 0.95,
+  "doses": {
+   "small": 2,
+   "larger": 8
+  },
+  "size": "pilot",
+  "seed": 20261121,
+  "lectures_pages": [
+   5,
+   74
+  ],
+  "moses_pages": [
+   1,
+   20
+  ],
+  "periods": {
+   "1828-30": [
+    1828,
+    1830
+   ],
+   "1831": [
+    1831,
+    1831
+   ],
+   "1832": [
+    1832,
+    1832
+   ],
+   "1833-34": [
+    1833,
+    1834
+   ]
+  },
+  "rigdon_series": [
+   "millennium_1833_35.htm",
+   "gospel_1833_35.htm"
+  ],
+  "smith_t73_kinds": [
+   "letter",
+   "note",
+   "reflections"
+  ],
+  "quote_ngram": 8
+ },
+ "candidates": {
+  "joseph_smith": {
+   "sources": "lab.twovoices.SPEC joseph_smith ordinary (4 samples)",
+   "words": 29571,
+   "words_masked": 43099,
+   "added": {
+    "files": [
+     "t73-letter-and-pay-order-to-lucian-adams-2-october-1843.jsonl",
+     "t73-letter-to-church-leaders-in-jackson-county-missouri-18-augus.jsonl",
+     "t73-letter-to-emma-smith-1-december-1838.jsonl",
+     "t73-letter-to-emma-smith-12-november-1838.jsonl",
+     "t73-letter-to-emma-smith-18-may-1834.jsonl",
+     "t73-letter-to-emma-smith-19-august-1836.jsonl",
+     "t73-letter-to-emma-smith-20-25-january-1840.jsonl",
+     "t73-letter-to-emma-smith-21-march-1839.jsonl",
+     "t73-letter-to-emma-smith-26-27-june-1844.jsonl",
+     "t73-letter-to-emma-smith-4-april-1839.jsonl",
+     "t73-letter-to-emma-smith-4-november-1838.jsonl",
+     "t73-letter-to-emma-smith-9-november-1839.jsonl",
+     "t73-letter-to-newel-k-elizabeth-ann-smith-and-sarah-ann-whitney.jsonl",
+     "t73-letter-to-newel-k-whitney-12-december-1840.jsonl",
+     "t73-letter-to-sally-waterman-phelps-20-july-1835.jsonl",
+     "t73-letter-to-the-church-and-edward-partridge-20-march-1839.jsonl",
+     "t73-letters-to-john-burk-sally-waterman-phelps-and-almira-mack-s.jsonl",
+     "t73-note-to-newel-k-whitney-circa-october-1833-early-1834.jsonl",
+     "t73-reflections-and-blessings-16-and-23-august-1842.jsonl"
+    ],
+    "words_masked": 15971
+   },
+   "scripture_quote_tokens_dropped": 132,
+   "chunks": 43,
+   "test_chunk_index": [
+    20,
+    22,
+    25,
+    28,
+    30,
+    31,
+    34,
+    36,
+    38,
+    42
+   ]
+  },
+  "sidney_rigdon": {
+   "sources": [
+    "wwp-evening-morning-star__27937-27973.txt",
+    "oc-messenger-advocate__34667-35271.txt",
+    "oc-messenger-advocate__42671-42999.txt",
+    "oc-messenger-advocate__46700-47164.txt",
+    "oc-messenger-advocate__47890-47972.txt",
+    "oc-messenger-advocate__59630-60509.txt",
+    "oc-messenger-advocate__62411-62880.txt",
+    "sr-1838-oration.txt"
+   ],
+   "words": 22845,
+   "words_masked": 53865,
+   "added_before": {
+    "files": [
+     "millennium_1833_35.htm",
+     "gospel_1833_35.htm"
+    ],
+    "words_masked": 34884,
+    "attribution": "the sidneyrigdon.com editor's; the articles are unsigned"
+   },
+   "scripture_quote_tokens_dropped": 1521,
+   "chunks": 53,
+   "test_chunk_index": [
+    25,
+    31,
+    32,
+    39,
+    42,
+    43,
+    45,
+    47,
+    48,
+    50
+   ]
+  },
+  "oliver_cowdery": {
+   "sources": [
+    "wwp-evening-morning-star__34321-34533.txt",
+    "wwp-evening-morning-star__35147-35424.txt",
+    "oc-messenger-advocate__7-226.txt",
+    "oc-messenger-advocate__298-790.txt",
+    "oc-messenger-advocate__1769-2053.txt",
+    "oc-messenger-advocate__3812-4364.txt",
+    "oc-messenger-advocate__5777-6016.txt",
+    "oc-messenger-advocate__10945-11321.txt",
+    "oc-messenger-advocate__13486-13760.txt",
+    "oc-messenger-advocate__15698-16246.txt",
+    "oc-messenger-advocate__17352-17582.txt",
+    "oc-messenger-advocate__22250-22855.txt",
+    "oc-messenger-advocate__28490-29274.txt",
+    "oc-messenger-advocate__33620-34086.txt",
+    "oc-messenger-advocate__55195-55352.txt",
+    "oc-messenger-advocate__55361-56470.txt",
+    "oc-messenger-advocate__78204-78359.txt"
+   ],
+   "words": 46116,
+   "words_masked": 42541,
+   "scripture_quote_tokens_dropped": 8,
+   "chunks": 42,
+   "test_chunk_index": [
+    21,
+    22,
+    23,
+    27,
+    30,
+    33,
+    35,
+    36,
+    38,
+    41
+   ]
+  },
+  "parley_pratt": {
+   "sources": [
+    "ppp-1837-voice-of-warning.txt"
+   ],
+   "words": 50817,
+   "words_masked": 36623,
+   "scripture_quote_tokens_dropped": 1373,
+   "chunks": 36,
+   "test_chunk_index": [
+    20,
+    21,
+    23,
+    25,
+    26,
+    28,
+    30,
+    33,
+    34,
+    35
+   ]
+  }
+ },
+ "dropped": {
+  "ww_phelps": "26 masked chunks, under 30 (20 training + 10 test)"
+ },
+ "measures": {
+  "function_words_burrows": {
+   "known_answer": {
+    "own_rate": {
+     "joseph_smith": 0.9,
+     "sidney_rigdon": 0.5,
+     "oliver_cowdery": 0.9,
+     "parley_pratt": 0.9
+    },
+    "macro": 0.8,
+    "went_to": {
+     "joseph_smith": {
+      "joseph_smith": 9,
+      "parley_pratt": 1
+     },
+     "sidney_rigdon": {
+      "sidney_rigdon": 5,
+      "parley_pratt": 5
+     },
+     "oliver_cowdery": {
+      "oliver_cowdery": 9,
+      "parley_pratt": 1
+     },
+     "parley_pratt": {
+      "parley_pratt": 9,
+      "oliver_cowdery": 1
+     }
+    },
+    "pull": {
+     "joseph_smith": 0.0,
+     "sidney_rigdon": 0.0,
+     "oliver_cowdery": 0.033,
+     "parley_pratt": 0.233
+    },
+    "chance": 0.25,
+    "passed": true
+   },
+   "lectures": {
+    "1": {
+     "winner": "sidney_rigdon",
+     "runner_up": "parley_pratt",
+     "margin": 0.0185,
+     "distance": {
+      "joseph_smith": 0.9149,
+      "sidney_rigdon": 0.8543,
+      "oliver_cowdery": 0.9207,
+      "parley_pratt": 0.8727
+     },
+     "piece_votes": {
+      "sidney_rigdon": 1
+     }
+    },
+    "2": {
+     "winner": "joseph_smith",
+     "runner_up": "parley_pratt",
+     "margin": 0.0205,
+     "distance": {
+      "joseph_smith": 0.6543,
+      "sidney_rigdon": 0.7248,
+      "oliver_cowdery": 0.7136,
+      "parley_pratt": 0.6748
+     },
+     "piece_votes": {
+      "joseph_smith": 2,
+      "sidney_rigdon": 1
+     }
+    },
+    "3": {
+     "winner": "sidney_rigdon",
+     "runner_up": "parley_pratt",
+     "margin": 0.0346,
+     "distance": {
+      "joseph_smith": 0.8277,
+      "sidney_rigdon": 0.7516,
+      "oliver_cowdery": 0.7921,
+      "parley_pratt": 0.7862
+     },
+     "piece_votes": {
+      "parley_pratt": 1
+     }
+    },
+    "4": {
+     "winner": "sidney_rigdon",
+     "runner_up": "parley_pratt",
+     "margin": 0.0107,
+     "distance": {
+      "joseph_smith": 0.7723,
+      "sidney_rigdon": 0.743,
+      "oliver_cowdery": 0.7586,
+      "parley_pratt": 0.7538
+     },
+     "piece_votes": {
+      "parley_pratt": 2
+     }
+    },
+    "5": {
+     "winner": "parley_pratt",
+     "runner_up": "joseph_smith",
+     "margin": 0.0445,
+     "distance": {
+      "joseph_smith": 1.0677,
+      "sidney_rigdon": 1.1442,
+      "oliver_cowdery": 1.0785,
+      "parley_pratt": 1.0232
+     },
+     "piece_votes": {
+      "parley_pratt": 1
+     }
+    },
+    "6": {
+     "winner": "sidney_rigdon",
+     "runner_up": "parley_pratt",
+     "margin": 0.0333,
+     "distance": {
+      "joseph_smith": 0.8464,
+      "sidney_rigdon": 0.7428,
+      "oliver_cowdery": 0.8098,
+      "parley_pratt": 0.7761
+     },
+     "piece_votes": {
+      "sidney_rigdon": 1
+     }
+    },
+    "7": {
+     "winner": "sidney_rigdon",
+     "runner_up": "parley_pratt",
+     "margin": 0.0539,
+     "distance": {
+      "joseph_smith": 0.6908,
+      "sidney_rigdon": 0.551,
+      "oliver_cowdery": 0.6352,
+      "parley_pratt": 0.6049
+     },
+     "piece_votes": {
+      "sidney_rigdon": 2,
+      "parley_pratt": 1
+     }
+    },
+    "qa_pooled_piece_votes": {
+     "oliver_cowdery": 2,
+     "joseph_smith": 1,
+     "parley_pratt": 1
+    }
+   },
+   "chunk_nearest_with_bom": {
+    "moses": {
+     "book_of_mormon": 6,
+     "joseph_smith": 1
+    },
+    "abraham": {
+     "parley_pratt": 2,
+     "joseph_smith": 1,
+     "book_of_mormon": 1
+    },
+    "rev_1828-30": {
+     "book_of_mormon": 2,
+     "joseph_smith": 6
+    },
+    "rev_1831": {
+     "joseph_smith": 19,
+     "book_of_mormon": 5
+    },
+    "rev_1832": {
+     "joseph_smith": 6,
+     "book_of_mormon": 1,
+     "parley_pratt": 2
+    },
+    "rev_1833-34": {
+     "joseph_smith": 9,
+     "book_of_mormon": 2
+    },
+    "lectures_pooled": {
+     "sidney_rigdon": 5,
+     "joseph_smith": 2,
+     "parley_pratt": 5
+    }
+   },
+   "bom_reference_chunks": [
+    1,
+    18,
+    21,
+    29,
+    41,
+    42,
+    43,
+    44,
+    46,
+    71,
+    86,
+    88,
+    89,
+    92,
+    93,
+    100,
+    134,
+    152,
+    154,
+    155
+   ],
+   "chunk_nearest_candidate": {
+    "moses": {
+     "joseph_smith": 4,
+     "parley_pratt": 3
+    },
+    "abraham": {
+     "parley_pratt": 3,
+     "joseph_smith": 1
+    },
+    "rev_1828-30": {
+     "joseph_smith": 8
+    },
+    "rev_1831": {
+     "joseph_smith": 23,
+     "parley_pratt": 1
+    },
+    "rev_1832": {
+     "joseph_smith": 7,
+     "parley_pratt": 2
+    },
+    "rev_1833-34": {
+     "joseph_smith": 9,
+     "parley_pratt": 2
+    },
+    "book_of_mormon": {
+     "parley_pratt": 117,
+     "joseph_smith": 74,
+     "sidney_rigdon": 4,
+     "oliver_cowdery": 4
+    },
+    "lectures_pooled": {
+     "sidney_rigdon": 5,
+     "joseph_smith": 2,
+     "parley_pratt": 5
+    }
+   },
+   "profiles": {
+    "groups": {
+     "moses": {
+      "distance": {
+       "book_of_mormon": [
+        0.5946,
+        0.7387,
+        0.9189
+       ],
+       "joseph_smith": [
+        0.6853,
+        0.7935,
+        0.9054
+       ],
+       "sidney_rigdon": [
+        0.7939,
+        0.8907,
+        0.9925
+       ],
+       "oliver_cowdery": [
+        0.7383,
+        0.826,
+        0.9343
+       ],
+       "parley_pratt": [
+        0.6929,
+        0.7865,
+        0.8813
+       ]
+      },
+      "nearest_reference": "book_of_mormon",
+      "share_bom_closer_than_ordinary": 0.722,
+      "verdict_bom_vs_ordinary": "cannot tell"
+     },
+     "abraham": {
+      "distance": {
+       "book_of_mormon": [
+        0.6457,
+        0.7419,
+        0.863
+       ],
+       "joseph_smith": [
+        0.6338,
+        0.7071,
+        0.804
+       ],
+       "sidney_rigdon": [
+        0.7233,
+        0.7973,
+        0.8748
+       ],
+       "oliver_cowdery": [
+        0.6786,
+        0.7367,
+        0.7981
+       ],
+       "parley_pratt": [
+        0.6192,
+        0.6842,
+        0.7674
+       ]
+      },
+      "nearest_reference": "parley_pratt",
+      "share_bom_closer_than_ordinary": 0.312,
+      "verdict_bom_vs_ordinary": "cannot tell"
+     },
+     "rev_1828-30": {
+      "distance": {
+       "book_of_mormon": [
+        0.6432,
+        0.8126,
+        1.0344
+       ],
+       "joseph_smith": [
+        0.6331,
+        0.7029,
+        0.7781
+       ],
+       "sidney_rigdon": [
+        0.7885,
+        0.8677,
+        0.9639
+       ],
+       "oliver_cowdery": [
+        0.7412,
+        0.8239,
+        0.9102
+       ],
+       "parley_pratt": [
+        0.7131,
+        0.7936,
+        0.8927
+       ]
+      },
+      "nearest_reference": "joseph_smith",
+      "share_bom_closer_than_ordinary": 0.118,
+      "verdict_bom_vs_ordinary": "cannot tell"
+     },
+     "rev_1831": {
+      "distance": {
+       "book_of_mormon": [
+        0.6849,
+        0.8281,
+        1.0206
+       ],
+       "joseph_smith": [
+        0.6577,
+        0.7292,
+        0.8089
+       ],
+       "sidney_rigdon": [
+        0.7849,
+        0.8693,
+        0.9506
+       ],
+       "oliver_cowdery": [
+        0.7665,
+        0.8474,
+        0.9466
+       ],
+       "parley_pratt": [
+        0.7174,
+        0.8083,
+        0.8962
+       ]
+      },
+      "nearest_reference": "joseph_smith",
+      "share_bom_closer_than_ordinary": 0.122,
+      "verdict_bom_vs_ordinary": "cannot tell"
+     },
+     "rev_1832": {
+      "distance": {
+       "book_of_mormon": [
+        0.6812,
+        0.8145,
+        0.996
+       ],
+       "joseph_smith": [
+        0.6147,
+        0.6978,
+        0.7742
+       ],
+       "sidney_rigdon": [
+        0.7652,
+        0.837,
+        0.9247
+       ],
+       "oliver_cowdery": [
+        0.7549,
+        0.8118,
+        0.8809
+       ],
+       "parley_pratt": [
+        0.6729,
+        0.7545,
+        0.8346
+       ]
+      },
+      "nearest_reference": "joseph_smith",
+      "share_bom_closer_than_ordinary": 0.06,
+      "verdict_bom_vs_ordinary": "cannot tell"
+     },
+     "rev_1833-34": {
+      "distance": {
+       "book_of_mormon": [
+        0.6456,
+        0.7959,
+        0.9739
+       ],
+       "joseph_smith": [
+        0.5995,
+        0.6751,
+        0.7609
+       ],
+       "sidney_rigdon": [
+        0.7475,
+        0.8302,
+        0.9272
+       ],
+       "oliver_cowdery": [
+        0.7248,
+        0.7992,
+        0.8984
+       ],
+       "parley_pratt": [
+        0.664,
+        0.7458,
+        0.8481
+       ]
+      },
+      "nearest_reference": "joseph_smith",
+      "share_bom_closer_than_ordinary": 0.086,
+      "verdict_bom_vs_ordinary": "cannot tell"
+     }
+    },
+    "too_few_chunks": [],
+    "years_revelations_to_bom": {
+     "order": [
+      "rev_1828-30",
+      "rev_1831",
+      "rev_1832",
+      "rev_1833-34"
+     ],
+     "spearman": [
+      -1.0,
+      -0.4,
+      0.905
+     ],
+     "share_above_0": 0.32,
+     "share_below_0": 0.632,
+     "verdict": "no clear trend"
+    },
+    "years_revelations_to_ordinary": {
+     "order": [
+      "rev_1828-30",
+      "rev_1831",
+      "rev_1832",
+      "rev_1833-34"
+     ],
+     "spearman": [
+      -1.0,
+      -0.4,
+      0.6
+     ],
+     "share_above_0": 0.198,
+     "share_below_0": 0.732,
+     "verdict": "no clear trend",
+     "note": "descriptive"
+    },
+    "years_all_dictated_to_bom": {
+     "order": [
+      "rev_1828-30",
+      "moses",
+      "rev_1831",
+      "rev_1832",
+      "rev_1833-34",
+      "abraham"
+     ],
+     "spearman": [
+      -0.8286,
+      -0.2571,
+      0.5729
+     ],
+     "share_above_0": 0.278,
+     "share_below_0": 0.722,
+     "verdict": "no clear trend",
+     "note": "secondary, descriptive"
+    }
+   },
+   "moses_positions": {
+    "note": "chunks of the Book of Moses in text order; the scribe of each page is not in the data: see the card",
+    "votes_by_chunk": {
+     "grp|moses|0": "joseph_smith",
+     "grp|moses|1": "parley_pratt",
+     "grp|moses|2": "joseph_smith",
+     "grp|moses|3": "parley_pratt",
+     "grp|moses|4": "joseph_smith",
+     "grp|moses|5": "parley_pratt",
+     "grp|moses|6": "joseph_smith"
+    }
+   }
+  },
+  "function_words_cosine": {
+   "known_answer": {
+    "own_rate": {
+     "joseph_smith": 0.9,
+     "sidney_rigdon": 0.6,
+     "oliver_cowdery": 0.8,
+     "parley_pratt": 0.7
+    },
+    "macro": 0.75,
+    "went_to": {
+     "joseph_smith": {
+      "joseph_smith": 9,
+      "parley_pratt": 1
+     },
+     "sidney_rigdon": {
+      "sidney_rigdon": 6,
+      "oliver_cowdery": 2,
+      "parley_pratt": 2
+     },
+     "oliver_cowdery": {
+      "sidney_rigdon": 1,
+      "oliver_cowdery": 8,
+      "parley_pratt": 1
+     },
+     "parley_pratt": {
+      "parley_pratt": 7,
+      "sidney_rigdon": 2,
+      "oliver_cowdery": 1
+     }
+    },
+    "pull": {
+     "joseph_smith": 0.0,
+     "sidney_rigdon": 0.1,
+     "oliver_cowdery": 0.1,
+     "parley_pratt": 0.133
+    },
+    "chance": 0.25,
+    "passed": false
+   }
+  },
+  "encoder_bom30": {
+   "known_answer": {
+    "own_rate": {
+     "joseph_smith": 0.6,
+     "sidney_rigdon": 0.5,
+     "oliver_cowdery": 0.6,
+     "parley_pratt": 0.7
+    },
+    "macro": 0.6,
+    "went_to": {
+     "joseph_smith": {
+      "oliver_cowdery": 3,
+      "joseph_smith": 6,
+      "sidney_rigdon": 1
+     },
+     "sidney_rigdon": {
+      "sidney_rigdon": 5,
+      "parley_pratt": 4,
+      "oliver_cowdery": 1
+     },
+     "oliver_cowdery": {
+      "sidney_rigdon": 1,
+      "joseph_smith": 3,
+      "oliver_cowdery": 6
+     },
+     "parley_pratt": {
+      "parley_pratt": 7,
+      "sidney_rigdon": 2,
+      "joseph_smith": 1
+     }
+    },
+    "pull": {
+     "joseph_smith": 0.133,
+     "sidney_rigdon": 0.133,
+     "oliver_cowdery": 0.133,
+     "parley_pratt": 0.133
+    },
+    "chance": 0.25,
+    "passed": false
+   }
+  },
+  "encoder_v2": {
+   "known_answer": {
+    "own_rate": {
+     "joseph_smith": 0.7,
+     "sidney_rigdon": 0.6,
+     "oliver_cowdery": 0.7,
+     "parley_pratt": 0.8
+    },
+    "macro": 0.7,
+    "went_to": {
+     "joseph_smith": {
+      "joseph_smith": 7,
+      "sidney_rigdon": 2,
+      "oliver_cowdery": 1
+     },
+     "sidney_rigdon": {
+      "sidney_rigdon": 6,
+      "parley_pratt": 4
+     },
+     "oliver_cowdery": {
+      "parley_pratt": 1,
+      "oliver_cowdery": 7,
+      "joseph_smith": 1,
+      "sidney_rigdon": 1
+     },
+     "parley_pratt": {
+      "parley_pratt": 8,
+      "sidney_rigdon": 2
+     }
+    },
+    "pull": {
+     "joseph_smith": 0.033,
+     "sidney_rigdon": 0.167,
+     "oliver_cowdery": 0.033,
+     "parley_pratt": 0.167
+    },
+    "chance": 0.25,
+    "passed": false
+   }
+  },
+  "author_models": {
+   "doses": {
+    "small": {
+     "train_tokens": 2048,
+     "known_answer": {
+      "own_rate": {
+       "joseph_smith": 0.8,
+       "sidney_rigdon": 0.8,
+       "oliver_cowdery": 0.5,
+       "parley_pratt": 0.0
+      },
+      "macro": 0.525,
+      "went_to": {
+       "joseph_smith": {
+        "joseph_smith": 8,
+        "oliver_cowdery": 2
+       },
+       "sidney_rigdon": {
+        "sidney_rigdon": 8,
+        "oliver_cowdery": 2
+       },
+       "oliver_cowdery": {
+        "oliver_cowdery": 5,
+        "joseph_smith": 3,
+        "parley_pratt": 1,
+        "sidney_rigdon": 1
+       },
+       "parley_pratt": {
+        "sidney_rigdon": 3,
+        "oliver_cowdery": 7
+       }
+      },
+      "pull": {
+       "joseph_smith": 0.1,
+       "sidney_rigdon": 0.133,
+       "oliver_cowdery": 0.367,
+       "parley_pratt": 0.033
+      },
+      "chance": 0.25,
+      "passed": false
+     }
+    },
+    "larger": {
+     "train_tokens": 8192,
+     "known_answer": {
+      "own_rate": {
+       "joseph_smith": 1.0,
+       "sidney_rigdon": 0.7,
+       "oliver_cowdery": 0.8,
+       "parley_pratt": 0.4
+      },
+      "macro": 0.725,
+      "went_to": {
+       "joseph_smith": {
+        "joseph_smith": 10
+       },
+       "sidney_rigdon": {
+        "sidney_rigdon": 7,
+        "oliver_cowdery": 1,
+        "parley_pratt": 2
+       },
+       "oliver_cowdery": {
+        "oliver_cowdery": 8,
+        "joseph_smith": 2
+       },
+       "parley_pratt": {
+        "parley_pratt": 4,
+        "oliver_cowdery": 1,
+        "sidney_rigdon": 5
+       }
+      },
+      "pull": {
+       "joseph_smith": 0.067,
+       "sidney_rigdon": 0.167,
+       "oliver_cowdery": 0.067,
+       "parley_pratt": 0.067
+      },
+      "chance": 0.25,
+      "passed": false
+     }
+    }
+   },
+   "models": {
+    "small|joseph_smith": {
+     "train_tokens": 2048,
+     "steps": 3,
+     "seed": 3970287125,
+     "reused": "data/corpus/lab/two_voices_alm/masked_small/joseph_smith__ordinary.pt"
+    },
+    "small|sidney_rigdon": {
+     "train_tokens": 2048,
+     "steps": 3,
+     "seed": 2841114302,
+     "reused": null
+    },
+    "small|oliver_cowdery": {
+     "train_tokens": 2048,
+     "steps": 3,
+     "seed": 2440417388,
+     "reused": null
+    },
+    "small|parley_pratt": {
+     "train_tokens": 2048,
+     "steps": 3,
+     "seed": 1732046164,
+     "reused": null
+    },
+    "larger|joseph_smith": {
+     "train_tokens": 8192,
+     "steps": 3,
+     "seed": 1333116678,
+     "reused": "data/corpus/lab/two_voices_alm/masked_larger/joseph_smith__ordinary.pt"
+    },
+    "larger|sidney_rigdon": {
+     "train_tokens": 8192,
+     "steps": 3,
+     "seed": 1694775829,
+     "reused": null
+    },
+    "larger|oliver_cowdery": {
+     "train_tokens": 8192,
+     "steps": 3,
+     "seed": 2916609794,
+     "reused": null
+    },
+    "larger|parley_pratt": {
+     "train_tokens": 8192,
+     "steps": 3,
+     "seed": 3247505344,
+     "reused": null
+    }
+   },
+   "passed_both": false,
+   "known_answer": {
+    "passed": false,
+    "passed_doses": []
+   }
+  }
+ },
+ "not_attempted": {},
+ "function_words_background": {
+  "background_works": 120,
+  "features": 150
+ },
+ "passed_check": [
+  "function_words_burrows"
+ ],
+ "texts": {
+  "lectures": {
+   "1": {
+    "body_words_masked": 1181,
+    "pieces": 1,
+    "qa_words_masked": 439
+   },
+   "2": {
+    "body_words_masked": 3208,
+    "pieces": 3,
+    "qa_words_masked": 2813
+   },
+   "3": {
+    "body_words_masked": 1438,
+    "pieces": 1,
+    "qa_words_masked": 1097
+   },
+   "4": {
+    "body_words_masked": 1887,
+    "pieces": 2,
+    "qa_words_masked": 384
+   },
+   "5": {
+    "body_words_masked": 650,
+    "pieces": 1,
+    "qa_words_masked": 442
+   },
+   "6": {
+    "body_words_masked": 1195,
+    "pieces": 1,
+    "qa_words_masked": 0
+   },
+   "7": {
+    "body_words_masked": 3052,
+    "pieces": 3,
+    "qa_words_masked": 0
+   }
+  },
+  "groups": {
+   "moses": {
+    "source": "ot_revision_1",
+    "pages": [
+     1,
+     20
+    ],
+    "dates": "1830-06 to 1831-03",
+    "scribes": "Cowdery, Whitmer, Emma Smith, Rigdon (issue research)",
+    "words_masked": 7517,
+    "chunks": 7
+   },
+   "abraham": {
+    "source": "abraham_1842",
+    "pages": 11,
+    "dates": "1835-1842",
+    "words_masked": 4272,
+    "chunks": 4
+   },
+   "rev_1828-30": {
+    "source": "Revelation Book 1 (1828-29 sample + later sections)",
+    "sections": 24,
+    "words_masked": 8768,
+    "chunks": 8
+   },
+   "rev_1831": {
+    "source": "Revelation Book 1 (1828-29 sample + later sections)",
+    "sections": 42,
+    "words_masked": 24024,
+    "chunks": 24
+   },
+   "rev_1832": {
+    "source": "Revelation Book 1 (1828-29 sample + later sections)",
+    "sections": 16,
+    "words_masked": 9084,
+    "chunks": 9
+   },
+   "rev_1833-34": {
+    "source": "Revelation Book 1 (1828-29 sample + later sections)",
+    "sections": 14,
+    "words_masked": 11910,
+    "chunks": 11
+   }
+  },
+  "book_of_mormon": {
+   "chunks": 199,
+   "use": "scored only; never trained or tuned"
+  },
+  "not_attempted": {}
+ },
+ "left_out": {
+  "visions_of_moses_1830": "a second copy of Moses 1, which Old Testament Revision 1 holds",
+  "ot_revision_2": "a copy of Revision 1, then a Bible revision that is mostly King James text",
+  "ot_revision_1_after_p20": "Genesis revision after Moses 8: under 25% non-King James a page",
+  "abraham_ms_a_b_c": "1835 copies of part of the text printed in 1842",
+  "rigdon_appeal_1840": "unsigned",
+  "rigdon_sidneyrigdon_com": "series attributed by a modern editor, not signed"
+ },
+ "question_b": {
+  "measures_used": [
+   "function_words_burrows"
+  ],
+  "per_lecture": {
+   "1": {
+    "by_measure": {
+     "function_words_burrows": "sidney_rigdon"
+    },
+    "attributed": "sidney_rigdon"
+   },
+   "2": {
+    "by_measure": {
+     "function_words_burrows": "joseph_smith"
+    },
+    "attributed": "joseph_smith"
+   },
+   "3": {
+    "by_measure": {
+     "function_words_burrows": "sidney_rigdon"
+    },
+    "attributed": "sidney_rigdon"
+   },
+   "4": {
+    "by_measure": {
+     "function_words_burrows": "sidney_rigdon"
+    },
+    "attributed": "sidney_rigdon"
+   },
+   "5": {
+    "by_measure": {
+     "function_words_burrows": "parley_pratt"
+    },
+    "attributed": "parley_pratt"
+   },
+   "6": {
+    "by_measure": {
+     "function_words_burrows": "sidney_rigdon"
+    },
+    "attributed": "sidney_rigdon"
+   },
+   "7": {
+    "by_measure": {
+     "function_words_burrows": "sidney_rigdon"
+    },
+    "attributed": "sidney_rigdon"
+   }
+  },
+  "agreement_with_published": {
+   "phipps_1977": {
+    "combined": 5,
+    "function_words_burrows": 5
+   },
+   "reynolds_2005": {
+    "combined": 5,
+    "function_words_burrows": 5
+   }
+  },
+  "published": {
+   "phipps_1977": {
+    "1": "sidney_rigdon",
+    "2": "sidney_rigdon",
+    "3": "sidney_rigdon",
+    "4": "sidney_rigdon",
+    "5": "joseph_smith",
+    "6": "sidney_rigdon",
+    "7": "sidney_rigdon"
+   },
+   "reynolds_2005": {
+    "1": "sidney_rigdon",
+    "2": "sidney_rigdon",
+    "3": "sidney_rigdon",
+    "4": "sidney_rigdon",
+    "5": "sidney_rigdon",
+    "6": "sidney_rigdon",
+    "7": "sidney_rigdon"
+   }
+  },
+  "published_note": "from the issue's summaries (record page; abstract), unverified against the originals; the summaries disagree on whether Phipps gave lecture 2 or 5 to Smith",
+  "measures_passed": [
+   "function_words_burrows"
+  ]
+ },
+ "config_sha256": "d82f6913f1c86b770603554e0079ef4b698628af47e205402a2a111ef5e882cd",
+ "commit": "51652810dd776e276b5ca7ffe589b359bbfd21a4"
+}

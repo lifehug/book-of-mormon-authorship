@@ -98,3 +98,24 @@ def test_author_models_score_everything_but_training_chunks():
     b = {"items": {"cand|a|train|0": [], "cand|a|test|0": [], "bom|0": []},
          "whole": {"lecw|1": []}}  # fmt: skip
     assert scored_keys(b) == ["bom|0", "cand|a|test|0", "lecw|1"]
+
+
+def test_v2_series_rule_keeps_blockquotes_only():
+    from lab.dictations_v2 import series_text
+
+    raw = (
+        "<p>Editor's introduction</p><blockquote><center>Vol. II. Kirtland</center>"
+        "<p align=center>MILLENIUM. No. I.</p>T<small>HE</small> subject [Isa. LII. 8] is "
+        "{Continued from our last.} plain. TO BE CONTINUED.</blockquote><p>Editor's note</p>"
+    )
+    words = series_text(raw).split()
+    assert words == ["THE", "subject", "is", "plain."]
+
+
+def test_v2_settings_override_the_first_attempt():
+    from lab.dictations_v2 import settings
+
+    cfg = {"lab": {"dictations": {"train_chunks": 8, "known_bar": 0.8,
+                                  "v2": {"train_chunks": 20}}}}  # fmt: skip
+    t = settings(cfg)
+    assert t["train_chunks"] == 20 and t["known_bar"] == 0.8 and "v2" not in t
