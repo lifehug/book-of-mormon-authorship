@@ -82,7 +82,7 @@ compares against.
 | BOM-106 | The text carries the marks of speech, not writing | Davis 2020 and others | description | trial transcripts and sermons taken in short-hand | **Done** |
 | BOM-127 | Manuscript errors are errors of hearing | Skousen 1998 | one editor's reading | manuscripts known to be copied and known to be dictated | **Done**, fragile |
 | BOM-125 | It is unlike other dictated or "received" books | Hales 2019; Dunn 2002 | length and schooling | the same measures on all of them | **Done** |
-| BOM-121 | Its speakers have more distinct voices than a novelist's characters | Fields and others, about 2021 | four novelists after 1830 | plays of 1660 to 1700, by one author | **Done** |
+| BOM-121 | Its speakers have more distinct voices than a novelist's characters | Fields and others, about 2021 | four novelists (Austen, Cooper, Dickens, Twain) | plays of 1660 to 1700, by one author | **Done** |
 | BOM-107 | It has deliberate chiasmus | Welch 1969; Edwards 2004 | the book and the Bible | the rate in every book | **Done** |
 
 ### 4. Does the same hand show up elsewhere?
@@ -394,6 +394,12 @@ But the "did" rate is one feature of ten. *Chronicles of Eri* has none of the ot
 printed between 1780 and 1830 matches the Book of Mormon on all ten together; the most any single
 book matches at once is three.
 
+Two cautions on that. Nine of the ten features, as I counted them, barely separate early books
+from late ones in the first place, so "no book matches all ten" is a weaker statement than it
+sounds. And the "did" rate I reproduced, 19.4 percent, matches the 20.2 in a published summary
+of Carmack's work, but the abstract of his 2015 article says 27 percent. I have not worked out
+which way of counting gives which, so call that one partly reproduced.
+
 Three more comparisons:
 
 - **Bible-style books:** none of the 20 in the library reaches the rate.
@@ -636,7 +642,8 @@ stand for Mesoamerica. And this says nothing about archaeology. It compares voca
 
 The claim: Nephi, Alma, Mormon and the rest differ from one another, in the small common words
 nobody chooses on purpose, more than a novelist's characters do. The published comparison was
-four novelists who wrote after 1830.
+four novelists: Austen, Cooper, Dickens and Twain. Their titles, word list and values are not
+published, so I could not rerun it their way; what follows is the same claim tested my way.
 
 I compared with what a writer of the time could have known: 354 plays printed between 1660 and
 1700, where every speech carries its speaker's name. Each voice is 2,000 words of one speaker.
