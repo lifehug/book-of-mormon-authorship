@@ -1977,6 +1977,121 @@ lab:                              # the research lab (exploratory tooling; reads
       boudinot_star_1816: "internet_archive:starinwestorhumb00boud"
       rafinesque_annals_kentucky_1824: "internet_archive:ancienthistoryor00rafi"
       mcculloh_researches_1829: "institutional_books:32044009908534"
+  three_worlds2:                   # BOM-109 second design (lab; exploratory): attributed mentions read by the judge (simulated); card data/private/lab/owner/2026-11-22-three-worlds-redesign/card.md; every value set at finalisation 2026-11-22, before any mention was read or counted
+    seed: 20261122
+    judge_model: sonnet            # attribution with traps (similes, glosses, prophecies, quotations); the small model is not trusted with it (choice at finalisation, as BOM-116)
+    context_words: 60              # a mention is the marked word with this many words either side
+    sample_per_feature: 15         # at most this many mentions per feature per text, drawn by seed (research note's estimate)
+    present_min_attr: 2            # stated present: at least this many mentions the judge gives to the text's own people, "have", main setting
+    absent_min_words: 30000        # stated absent without a "lack" statement: the text has at least this many words,
+    topic_min: 3                   # at least this many own-people "have" mentions of other features of the same topic, and none of this feature
+    count_unclear_place: true      # a mention whose place the judge cannot tell counts as main setting (most passages do not name a change of scene)
+    world_min_stating: 2           # a row's value needs this many of its texts stating the feature
+    world_majority: 0.6            # and this share of them agreeing (an even split is unsettled); the pooled value weights the rows equally
+    margin: 2                      # known answer: own world leads the next world by at least this many agreements
+    known_resample_share: 0.9      # and leads alone in at least this share of feature resamples
+    bootstrap: 2000                # feature resamples
+    composite_min: 3               # composite: sole agreements in each of two worlds at least this many
+    judge_bar_whose: 0.85          # judge check (i): made-up passages, share right on whose
+    judge_bar_what: 0.85           # and on what
+    judge_bar_real: 0.8            # real mentions: agreement between the first reading and a second reading in another format, on whose and on what
+    synthetic_n: 150               # made-up passages (15 things x 10 frames)
+    real_check_n: 100              # real mentions from the known texts read twice
+    subject_words: 400             # subject question for the rule-drawn 1820s candidates: title and this many opening words
+    rule_years: [1775, 1829]       # rule-drawn 1820s candidates: registry year
+    rule_title_place: 'americ|indian|aborigin|western (country|states)|\bwest\b|ohio|mississippi|mexic|palenque|tennessee|kentucky|new.york|savage|n(orth|ew).world|western hemisphere'
+    rule_title_topic: 'antiquit|aborigin|ancient (inhabitants|nations|history|america|state|cit)|origin of the|lost tribes|ten tribes|tribes of israel|israelites|\bhebrews\b|\bmounds\b|fortifications|\bruins\b|traits of|indian (history|nations|tribes)|history of the indians|american indians|manners and customs'
+    rule_min_words: 3000           # candidates shorter than this are left out (acts, petitions)
+    newspaper_years: [1815, 1829]  # Chronicling America stratum
+    newspaper_terms: '\bmounds?\b|\btumul[iu]s?\b|ancient (fortifications?|works|inhabitants|nations|forts?)|\bantiquities\b|\baborigines\b'
+    newspaper_min_terms: 2         # a page qualifies with at least this many term hits
+    newspaper_pages: 40            # pages drawn by seed from those that qualify
+    newspaper_window_words: 1000   # a page's text is the stretch of this many words around its term hits (the rest is other news)
+    contemporary_n: 12             # contemporary column: works drawn by seed
+    contemporary_years: [1800, 1829]
+    contemporary_words: [30000, 300000]
+    contemporary_genre: history_chronicle   # first genre label; the title must name an American place and not match rule_title_topic
+    contemporary_title_place: 'americ|united states|western (country|states)|ohio|mississippi|mexic|tennessee|kentucky|new.york|virginia|carolina|pennsylvania|massachusetts|new.england|canada|louisiana|west.indies|n(orth|ew).world'
+    partb_max_hits: 20             # Part B: earliest hits per feature (one a work) put to the judge
+    partb_year_max: 1829
+    partb_context: 40              # a hit: a marker within this many words of an America term
+    partb_america: '\bameric|\bmexic|\bperu|\bindians?\b|\baborigin|\bnatives?\b|montezuma|\baztec|\btoltec|\binca\b|\byucatan|guatimala|guatemala|new spain'
+    partb_min_words: 1000
+    known_kjv: [1KI, 2KI]
+    kjv_units: {kjv_pentateuch: [GEN, EXO, LEV, NUM, DEU], kjv_joshua_ruth: [JOS, JDG, RUT], kjv_samuel: [1SA, 2SA], kjv_chronicles_esther: [1CH, 2CH, EZR, NEH, EST], kjv_job_song: [JOB, PSA, PRO, ECC, SOL], kjv_prophets: [ISA, JER, LAM, EZE, DAN, HOS, JOE, AMO, OBA, JON, MIC, NAH, HAB, ZEP, HAG, ZEC, MAL], kjv_apocrypha: [TOB, JDT, ESG, WIS, SIR, BAR, PRA, SUS, BEL, 1MA, 2MA, 1ES, PRM, 4ES], kjv_gospels_acts: [MAT, MAR, LUK, JOH, ACT], kjv_epistles_revelation: [ROM, 1CO, 2CO, GAL, EPH, PHI, COL, 1TH, 2TH, 1TI, 2TI, TIT, PHM, HEB, JAM, 1PE, 2PE, 1JO, 2JO, 3JO, JUD, REV]}
+    subjects:                      # who "the people the book is about" are, as the judge is told (no title, no world named)
+      israel: "the Israelites (the people of Israel and Judah) and their kings"
+      israel_books: "the ancient Israelites and the peoples of the Bible lands, whose customs the book explains"
+      jews: "the Jews of the land of Judea"
+      maya: "the native people whose history, songs or myths the text gives"
+      mexico_outsider: "the native peoples of Mexico and Central America before and at the coming of the Spaniards"
+      conquest: "the native peoples of Mexico (the Mexicans and their neighbours)"
+      gage: "the native peoples (Indians) of New Spain and Guatemala"
+      ancient_america: "the ancient inhabitants of America (the peoples who built the old works and mounds)"
+      ancient_america_story: "the ancient American peoples whose history the story tells"
+      indians_now: "the Indians of North America"
+      contemporary: "the people this book is mainly about"
+      americans: "the Americans (the people of the United States) and their enemies"
+      napoleon: "the French and the nations of Europe in the time of Napoleon"
+      eri: "the ancient Irish people (the Gaal Sciot Iber) whose chronicle it is"
+      formosa: "the people of the island of Formosa"
+      ossian: "the ancient Caledonians (the people of Fingal)"
+      levant: "the people of Syria and the Holy Land whom the traveller meets"
+      patriarchs: "the patriarchs and the peoples of the earliest times whom the text describes"
+      bom: "the peoples whose history the book tells"
+    texts:                         # name: [role, world, row, source, subject]; role reference / known / control / book; row = standpoint row (strata for the 1820s)
+      kjv_kings: [known, near_east, native, "kjv:1KI,2KI", israel]
+      josephus_antiquities_whiston: [reference, near_east, native, "inv:josephus_antiquities_whiston", israel]
+      josephus_wars_whiston: [known, near_east, native, "inv:josephus_wars_whiston", jews]
+      calmet_dictionary_1812: [reference, near_east, outsider_books, "lib:institutional_books:HN2KMK", israel_books]
+      harmer_observations_1808: [reference, near_east, outsider_books, "lib:institutional_books:AH54MM", israel_books]
+      burder_oriental_customs_1807: [reference, near_east, outsider_books, "lib:institutional_books:AH5425", israel_books]
+      popol_vuh_christenson: [reference, mesoamerica, native, "inv:popol_vuh_christenson", maya]
+      brinton_maya_chronicles_1882: [reference, mesoamerica, native, "bilingual:maya", maya]
+      brinton_rig_veda_americanus_1890: [reference, mesoamerica, native, "bilingual:rigveda", maya]
+      brinton_nahuatl_poetry_1887: [reference, mesoamerica, native, "inv:brinton_nahuatl_poetry_1887", maya]
+      brinton_annals_cakchiquels_1885: [known, mesoamerica, native, "inv:brinton_annals_cakchiquels_1885", maya]
+      solis_conquest_of_mexico_1724: [reference, mesoamerica, outsider_eyewitness, "inv:solis_conquest_of_mexico_1724", conquest]
+      clavigero_1787_vol1: [reference, mesoamerica, outsider_books, "lib:internet_archive:bim_eighteenth-century_the-history-of-mexico-c_clavigero-francesco-sav_1787_1", mexico_outsider]
+      robertson_history_of_america: [reference, mesoamerica, outsider_books, "inv:robertson_history_of_america", mexico_outsider]
+      humboldt_researches_1814: [reference, mesoamerica, outsider_books, "inv:humboldt_researches_1814", mexico_outsider]
+      spinden_ancient_civilizations_1917: [reference, mesoamerica, outsider_books, "pg:setting/spinden_ancient_civilizations_1917.txt", mexico_outsider]
+      bernal_diaz_keatinge_1800: [known, mesoamerica, outsider_eyewitness, "inv:bernal_diaz_keatinge_1800", conquest]
+      gage_english_american_1648: [known, mesoamerica, outsider_eyewitness, "lib:tcp:A41427", gage]
+      atwater_archaeologia_1820: [reference, america_1820s, s_antiquities, "atwater", ancient_america]
+      clinton_discourse_and_western_new_york: [reference, america_1820s, s_antiquities, "inv:clinton_discourse_and_western_new_york", ancient_america]
+      harris_tour_1805: [reference, america_1820s, s_antiquities, "lib:institutional_books:32044043051507", ancient_america]
+      madison_fortifications_1809: [reference, america_1820s, s_antiquities, "lib:internet_archive:jstor-1004782", ancient_america]
+      brackenridge_tumuli_1818: [reference, america_1820s, s_antiquities, "lib:internet_archive:onpopulationtumu00brac", ancient_america]
+      mcculloh_researches_1817: [reference, america_1820s, s_antiquities, "lib:institutional_books:HXJ3DI", ancient_america]
+      mcculloh_researches_1829: [reference, america_1820s, s_antiquities, "lib:institutional_books:32044009908534", ancient_america]
+      haywood_tennessee_1823: [reference, america_1820s, s_antiquities, "lib:internet_archive:naturalaborigina00hayw", ancient_america]
+      del_rio_palenque_1822: [reference, america_1820s, s_antiquities, "lib:institutional_books:32044009806381", ancient_america]
+      adair_american_indians_1775: [reference, america_1820s, s_origins, "inv:adair_american_indians_1775", ancient_america]
+      ingram_ten_tribes_1792: [reference, america_1820s, s_origins, "lib:internet_archive:bim_eighteenth-century_accounts-of-the-ten-trib_ingram-robert_1792", ancient_america]
+      boudinot_star_1816: [reference, america_1820s, s_origins, "lib:internet_archive:starinwestorhumb00boud", ancient_america]
+      hale_genius_of_oblivion_1823: [reference, america_1820s, s_fiction, "inv:hale_genius_of_oblivion_1823", ancient_america_story]
+      sigourney_traits_1822: [reference, america_1820s, s_fiction, "lib:institutional_books:32044014470371", ancient_america_story]
+      seaver_jemison_1826: [reference, america_1820s, s_contemporary_indians, "inv:seaver_jemison_1826", indians_now]
+      heckewelder_indian_nations_1819: [reference, america_1820s, s_contemporary_indians, "lib:internet_archive:bp_1335822", indians_now]
+      spalding_manuscript_story: [known, america_1820s, imitation, "cand:ss-manuscript-story-1885.txt", ancient_america_story]
+      view_of_the_hebrews_1825: [known, america_1820s, s_origins, "cand:es-1825-view-of-the-hebrews.txt", ancient_america]
+      mathews_behemoth_1839: [known, america_1820s, s_fiction, "inv:mathews_behemoth_1839", ancient_america_story]
+      late_war_1816: [control, contemporary, bible_style, "cand:gh-1816-late-war.txt", americans]
+      first_book_of_napoleon_1809: [control, contemporary, bible_style, "lib:institutional_books:HH2NE7", napoleon]
+      snowden_american_revolution_1823: [control, contemporary, bible_style, "lib:institutional_books:HX4KRL", americans]
+      chronicles_of_eri_1822: [control, null, bible_style, "lab:sources/bible_style/chroniclesoferib02ocon/text.txt", eri]
+      book_of_abraham_1842: [control, near_east, dictation, "abraham", patriarchs]
+      book_of_moses_1830: [control, near_east, dictation, "moses", patriarchs]
+      psalmanazar_formosa_1704: [control, null, imitation_other, "lib:tcp:K010899.000", formosa]
+      ossian_1799: [control, null, imitation_other, "lib:institutional_books:HN6NCS", ossian]
+      maundrell_journey_1823: [control, null, place_not_period, "lib:internet_archive:journeyfromalepp00maunrich", levant]
+      book_of_mormon: [book, null, book, "bom", bom]
+    rows_pooled:                   # rows pooled into each world's profile (equal weight); other rows reported only
+      near_east: [native, outsider_books]
+      mesoamerica: [native, outsider_eyewitness, outsider_books]
+      america_1820s: [s_antiquities, s_origins, s_fiction, s_newspapers]
+      contemporary: [sample]
   voice_encoder:                   # BOM-101 (lab; exploratory): fine-tune the second style encoder so one writer in two registers counts as the same; Mac GPU only; card data/private/lab/owner/2026-11-21-voice-encoder/card.md
     base: data/corpus/style_embed/runs/style_v2/style.pt   # starting weights (the second encoder); never overwritten
     out_dir: data/corpus/lab/voice_encoder

@@ -1,0 +1,164 @@
+{
+ "label": "development run on hand-made answers; not the check",
+ "judge_check_with_key": {
+  "asked": 150,
+  "answered": 150,
+  "open": 0,
+  "unparseable": 0,
+  "whose_right": 150,
+  "what_right": 150,
+  "whose_share": 1.0,
+  "what_share": 1.0,
+  "whose_by_frame": {
+   "author": "15/15",
+   "brought": "15/15",
+   "elsewhere": "15/15",
+   "figure": "15/15",
+   "future": "15/15",
+   "have": "15/15",
+   "lack": "15/15",
+   "nobody": "15/15",
+   "outsiders": "15/15",
+   "quoted": "15/15"
+  }
+ },
+ "judge_check_naive": {
+  "asked": 150,
+  "answered": 150,
+  "open": 0,
+  "unparseable": 0,
+  "whose_right": 60,
+  "what_right": 45,
+  "whose_share": 0.4,
+  "what_share": 0.3,
+  "whose_by_frame": {
+   "author": "0/15",
+   "brought": "15/15",
+   "elsewhere": "15/15",
+   "figure": "0/15",
+   "future": "0/15",
+   "have": "15/15",
+   "lack": "15/15",
+   "nobody": "0/15",
+   "outsiders": "0/15",
+   "quoted": "0/15"
+  }
+ },
+ "toy_grid": {
+  "kept": [
+   "horses",
+   "wheat_barley",
+   "iron_steel",
+   "maize",
+   "mounds",
+   "firearms"
+  ],
+  "dropped": {
+   "concordant": 0,
+   "unsettled": 39
+  },
+  "values": {
+   "horses": {
+    "near_east": "present",
+    "mesoamerica": "absent",
+    "america_1820s": "absent",
+    "contemporary": "present"
+   },
+   "wheat_barley": {
+    "near_east": "present",
+    "mesoamerica": "absent",
+    "america_1820s": "absent",
+    "contemporary": "present"
+   },
+   "iron_steel": {
+    "near_east": "present",
+    "mesoamerica": "absent",
+    "america_1820s": "present",
+    "contemporary": "present"
+   },
+   "maize": {
+    "near_east": "absent",
+    "mesoamerica": "present",
+    "america_1820s": "present",
+    "contemporary": "present"
+   },
+   "mounds": {
+    "near_east": "absent",
+    "mesoamerica": "absent",
+    "america_1820s": "present",
+    "contemporary": "absent"
+   },
+   "firearms": {
+    "near_east": "absent",
+    "mesoamerica": "absent",
+    "america_1820s": "absent",
+    "contemporary": "present"
+   }
+  },
+  "texts": {
+   "chronicle": {
+    "agree": {
+     "near_east": 2,
+     "mesoamerica": 6,
+     "america_1820s": 4,
+     "contemporary": 2
+    },
+    "sole": {
+     "near_east": 0,
+     "mesoamerica": 1,
+     "america_1820s": 0,
+     "contemporary": 0
+    },
+    "sides_with": "mesoamerica",
+    "lead": 2,
+    "resample_lead_share": {
+     "mesoamerica": 0.9115,
+     "tie": 0.0885
+    }
+   },
+   "chronicle_word_count": {
+    "agree": {
+     "near_east": 4,
+     "mesoamerica": 2,
+     "america_1820s": 2,
+     "contemporary": 6
+    },
+    "sole": {
+     "near_east": 0,
+     "mesoamerica": 0,
+     "america_1820s": 0,
+     "contemporary": 1
+    },
+    "sides_with": "contemporary",
+    "lead": 2,
+    "resample_lead_share": {
+     "contemporary": 0.9015,
+     "tie": 0.0985
+    }
+   },
+   "bible_book": {
+    "agree": {
+     "near_east": 6,
+     "mesoamerica": 2,
+     "america_1820s": 2,
+     "contemporary": 4
+    },
+    "sole": {
+     "near_east": 1,
+     "mesoamerica": 0,
+     "america_1820s": 0,
+     "contemporary": 0
+    },
+    "sides_with": "near_east",
+    "lead": 2,
+    "resample_lead_share": {
+     "near_east": 0.902,
+     "tie": 0.098
+    }
+   }
+  }
+ },
+ "config_sha256": "ae1b0188ecda0c408d3f65a5ddd69f2612602930ed6f14450a0cbf3b4598d33c",
+ "markers_sha256": "4f28cb55c72f54098c1ff23f6dd3ebc1c40bddca409053f1291455fc140c202e",
+ "git_commit": "c6e7cbbe151804afde78e4c7ea780ba331df2325"
+}

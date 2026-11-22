@@ -783,6 +783,28 @@ def _sources() -> list[dict]:
                         "revisiting-key-evaluating-nephite-geographies")):  # fmt: skip
         add(name, "papers", g116, "file", sc + slug,
             "copyright the author; free to read; private copy", True)  # fmt: skip
+    # BOM-109 second design (docs/research/2026-11-22-redesign-three-worlds.md). Kirchhoff 1943
+    # is not fetched (no reachable copy on 2026-11-22); Roys's Chumayel is not fetched (its
+    # public-domain status rests on the hosting site's notice; the renewal database refuses
+    # programs). Vogel's chapters and Paul 1982 are copyrighted and free to read: private copies.
+    g109 = "BOM-109"
+    vogel = "https://user.xmission.com/~research/central/"
+    for name, group, kind, url, terms, private in (
+        ("spinden_ancient_civilizations_1917.txt", "setting", "file", _pg(54550, "-0.txt"),
+         PD, False),
+        ("dplace_sccs", "setting", "git", GH + "D-PLACE/dplace-dataset-sccs",
+         "CC BY-NC 4.0 (D-PLACE; Standard Cross-Cultural Sample codes, Murdock and White)",
+         False),
+        *[(f"vogel1986_{p}.html", "papers", "file", vogel + f"{p}.htm",
+           "copyright 1986 Signature Books, posted with the author's permission; free to read; "
+           "private copy", True) for p in ("vogel1", "vogel3", "vogel4", "vogel5", "vogel6")],
+        ("paul1982_manchester_library.pdf", "papers", "file",
+         "https://storage.googleapis.com/scripturecentral-prod-strapi-uploads/"
+         "th_and_the_Manchester_New_York_Library_1982_76ea519637/"
+         "th_and_the_Manchester_New_York_Library_1982_76ea519637.pdf",
+         "copyright BYU Studies; free to read; private copy", True),
+    ):  # fmt: skip
+        add(name, group, g109, kind, url, terms, private)
     return rows
 
 

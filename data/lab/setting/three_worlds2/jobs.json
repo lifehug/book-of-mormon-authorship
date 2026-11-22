@@ -1,0 +1,31 @@
+{
+ "questions": {
+  "jobs_check.jsonl": 350,
+  "jobs_subject.jsonl": 102,
+  "jobs_known.jsonl": 1492,
+  "jobs_reference.jsonl": 9981,
+  "jobs_rule.jsonl": 0,
+  "jobs_control.jsonl": 802,
+  "jobs_book.jsonl": 250,
+  "jobs_partb.jsonl": 0
+ },
+ "hours_at_per_hour": {
+  "jobs_check.jsonl": 1.2,
+  "jobs_subject.jsonl": 0.3,
+  "jobs_known.jsonl": 5.0,
+  "jobs_reference.jsonl": 33.3,
+  "jobs_rule.jsonl": 0.0,
+  "jobs_control.jsonl": 2.7,
+  "jobs_book.jsonl": 0.8,
+  "jobs_partb.jsonl": 0.0
+ },
+ "rule_upper_bound_if_all_candidates_qualify": 16001,
+ "partb_scan_done": false,
+ "per_hour": 300,
+ "model": "sonnet",
+ "order": "check, subject, known + reference + rule, control, book, partb",
+ "labelled": "SIMULATED JUDGING BY AN AI MODEL (lab.judge; BOM-109 second design); prepared, not run",
+ "config_sha256": "ae1b0188ecda0c408d3f65a5ddd69f2612602930ed6f14450a0cbf3b4598d33c",
+ "markers_sha256": "4f28cb55c72f54098c1ff23f6dd3ebc1c40bddca409053f1291455fc140c202e",
+ "git_commit": "c6e7cbbe151804afde78e4c7ea780ba331df2325"
+}
