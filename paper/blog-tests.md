@@ -72,7 +72,7 @@ compares against.
 | BOM-126 | Phrases come from histories of the Revolution; Abinadi follows Bunyan | Donofrio; Davis 2012 | the claimed source alone | the claimed source ranked among every volume in the library | **Done** |
 | BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held | **Done** |
 | BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | **Done** |
-| BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1993; replies | examples from each side | every use in print 1780 to 1835, by year | **Counts done; meaning step waiting** |
+| BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1993; replies | examples from each side | every use in print 1780 to 1835, by year | **Done: Masonic in about 4 of 10 uses by 1827-1830, not almost all** |
 | BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed twice; not scored** |
 
 ### 3. How was it produced?
@@ -936,6 +936,28 @@ queue.
 
 Limits. The newspapers held are mostly from Rhode Island, Virginia and Washington, none from New
 York. The catalogue does not say where a book was printed. Reprints count once a copy.
+
+**The reading, done.** The model (sonnet; simulated judging) first read the uses in books whose
+titles settle the subject. It called 21 of 26 passages in Masonic-titled books Freemasonry,
+above the bar of 75 percent, and none of the passages in trade or politics books. So it passed,
+and I let it read the 826-use sample.
+
+Vogel's claim, as I wrote the bar down beforehand: at least 9 in 10 uses Masonic in 1827 to 1830
+would be a yes, half or fewer a no. The answer is a no. Pooled, the Masonic share was 0 in 1800 to
+1825, then 14 percent in 1826, 19 in 1827, 33 in 1828, 50 in 1829 and 45 in 1830: 38 percent
+across the four years, on 157 uses. Before 1826 the phrase was almost always political, a faction
+or a plot against a government.
+
+Newspapers look different: 0 of 18 uses Masonic before Morgan disappeared in September 1826, 28
+of 34 after. That would be Vogel's pattern. But when I looked at where they came from, 23 of the
+28 are from one paper, the *Pawtucket Herald and Independent Inquirer*, started in September 1828,
+with anti-Masonry on 202 of the 279 pages we hold. So the newspaper jump I reported above is mostly
+one anti-Masonic weekly. We hold no New York paper from those years, and that is where the
+question really sits: the Palmyra papers are the ones to find.
+
+The Book of Mormon's own 20 uses read as robber bands (15), some other secret society (3) or
+political plots (2), none as Freemasonry. That is what the text says on its face. It cannot tell
+whether whoever wrote it had Masons in mind by analogy, which is the actual argument.
 
 ### Joseph Smith's other dictated texts, and the Lectures on Faith (BOM-104)
 

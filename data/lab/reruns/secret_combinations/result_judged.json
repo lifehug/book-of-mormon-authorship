@@ -1,0 +1,5263 @@
+{
+ "judging": "simulated judging by an AI model (lab.judge, model sonnet)",
+ "v2_sha256": "bab847ce5a47611ea743dd36613a4c4e30da50a220b75162ee12865ae6687a18",
+ "settings_sha256": "75cb46a465fd5ff09007483d38a1b65897d8fe04de8d1733bcd03ec3ab359db0",
+ "config_sha256": "87a37c4c02446039db7bebf1a08f502323655d87065d9f13f9bc11d1c6658036",
+ "commit": "1c41b5a9eb597d65c33c892f667133b921b8881a",
+ "known_answer": {
+  "classes": {
+   "masonic": {
+    "uses": 37,
+    "uses_labelled": 37,
+    "labels_raw": {
+     "freemasonry": 30,
+     "other_society": 4,
+     "political": 1,
+     "trade": 2,
+     "crime": 0,
+     "religious": 0,
+     "other": 0,
+     "unclear": 0
+    },
+    "passages": 26,
+    "passages_labelled": 26,
+    "labels_dedup": {
+     "freemasonry": 21,
+     "other_society": 3,
+     "political": 1,
+     "trade": 1,
+     "crime": 0,
+     "religious": 0,
+     "other": 0,
+     "unclear": 0
+    }
+   },
+   "trade": {
+    "uses": 20,
+    "uses_labelled": 20,
+    "labels_raw": {
+     "freemasonry": 0,
+     "other_society": 0,
+     "political": 1,
+     "trade": 1,
+     "crime": 4,
+     "religious": 0,
+     "other": 14,
+     "unclear": 0
+    },
+    "passages": 4,
+    "passages_labelled": 4,
+    "labels_dedup": {
+     "freemasonry": 0,
+     "other_society": 0,
+     "political": 1,
+     "trade": 0,
+     "crime": 1,
+     "religious": 0,
+     "other": 2,
+     "unclear": 0
+    }
+   },
+   "politics": {
+    "uses": 170,
+    "uses_labelled": 170,
+    "labels_raw": {
+     "freemasonry": 0,
+     "other_society": 12,
+     "political": 139,
+     "trade": 6,
+     "crime": 1,
+     "religious": 6,
+     "other": 6,
+     "unclear": 0
+    },
+    "passages": 71,
+    "passages_labelled": 71,
+    "labels_dedup": {
+     "freemasonry": 0,
+     "other_society": 8,
+     "political": 52,
+     "trade": 4,
+     "crime": 0,
+     "religious": 4,
+     "other": 3,
+     "unclear": 0
+    }
+   }
+  },
+  "dedup_rule": {
+   "words": 10,
+   "overlap": 0.8
+  },
+  "questions": 227,
+  "not_yet_answered": 0,
+  "unparsed": 0,
+  "measures_raw": {
+   "masonic_titled_labelled_freemasonry": 0.8108,
+   "trade_politics_titled_not_freemasonry": 1.0,
+   "trade_titled_labelled_trade": 0.05,
+   "politics_titled_labelled_political": 0.8176
+  },
+  "measures_dedup": {
+   "masonic_titled_labelled_freemasonry": 0.8077,
+   "trade_politics_titled_not_freemasonry": 1.0,
+   "trade_titled_labelled_trade": 0.0,
+   "politics_titled_labelled_political": 0.7324
+  },
+  "sizes_dedup": {
+   "masonic": 26,
+   "trade_politics": 75
+  },
+  "minimums": {
+   "masonic": 20,
+   "trade_politics": 30
+  },
+  "bars_required": {
+   "masonic_titled_labelled_freemasonry": 0.75,
+   "trade_politics_titled_not_freemasonry": 0.9
+  },
+  "bars_reported_not_required": {
+   "trade_titled_labelled_trade": 0.5,
+   "politics_titled_labelled_political": 0.5
+  },
+  "met": {
+   "masonic_titled_labelled_freemasonry": true,
+   "trade_politics_titled_not_freemasonry": true
+  },
+  "reported_met": {
+   "trade_titled_labelled_trade": false,
+   "politics_titled_labelled_political": true
+  },
+  "attempted": true,
+  "passed": true,
+  "models": [
+   "sonnet"
+  ],
+  "judging": "simulated judging by an AI model (lab.judge)"
+ },
+ "sample": {
+  "questions": 826,
+  "labelled": 825,
+  "not_yet_answered": 0,
+  "unparsed": 1,
+  "uses_by_year": {
+   "1700": 2,
+   "1747": 1,
+   "1762": 1,
+   "1766": 1,
+   "1771": 1,
+   "1775": 1,
+   "1780": 4,
+   "1781": 2,
+   "1782": 6,
+   "1783": 1,
+   "1784": 5,
+   "1785": 2,
+   "1786": 6,
+   "1787": 6,
+   "1788": 7,
+   "1789": 12,
+   "1790": 12,
+   "1791": 14,
+   "1792": 11,
+   "1793": 17,
+   "1794": 17,
+   "1795": 19,
+   "1796": 21,
+   "1797": 17,
+   "1798": 16,
+   "1799": 20,
+   "1800": 4,
+   "1801": 4,
+   "1802": 8,
+   "1803": 11,
+   "1804": 6,
+   "1805": 14,
+   "1806": 11,
+   "1807": 17,
+   "1808": 6,
+   "1809": 7,
+   "1810": 11,
+   "1811": 5,
+   "1812": 11,
+   "1813": 19,
+   "1814": 8,
+   "1815": 16,
+   "1816": 18,
+   "1817": 4,
+   "1818": 14,
+   "1819": 13,
+   "1820": 30,
+   "1821": 24,
+   "1822": 37,
+   "1823": 57,
+   "1824": 45,
+   "1825": 46,
+   "1826": 29,
+   "1827": 37,
+   "1828": 76,
+   "1829": 58,
+   "1830": 58
+  },
+  "judged_by_year": {
+   "1700": 2,
+   "1747": 1,
+   "1762": 1,
+   "1766": 1,
+   "1771": 1,
+   "1775": 1,
+   "1780": 4,
+   "1781": 2,
+   "1782": 6,
+   "1783": 1,
+   "1784": 5,
+   "1785": 2,
+   "1786": 6,
+   "1787": 6,
+   "1788": 7,
+   "1789": 12,
+   "1790": 12,
+   "1791": 14,
+   "1792": 11,
+   "1793": 17,
+   "1794": 17,
+   "1795": 19,
+   "1796": 21,
+   "1797": 17,
+   "1798": 16,
+   "1799": 20,
+   "1800": 4,
+   "1801": 4,
+   "1802": 8,
+   "1803": 11,
+   "1804": 6,
+   "1805": 14,
+   "1806": 11,
+   "1807": 17,
+   "1808": 6,
+   "1809": 7,
+   "1810": 11,
+   "1811": 5,
+   "1812": 11,
+   "1813": 19,
+   "1814": 7,
+   "1815": 16,
+   "1816": 18,
+   "1817": 4,
+   "1818": 14,
+   "1819": 13,
+   "1820": 30,
+   "1821": 24,
+   "1822": 37,
+   "1823": 40,
+   "1824": 40,
+   "1825": 40,
+   "1826": 29,
+   "1827": 37,
+   "1828": 40,
+   "1829": 40,
+   "1830": 40
+  }
+ },
+ "by_period": {
+  "books": {
+   "1700-1779": {
+    "judged": 7,
+    "labels": {
+     "freemasonry": 0,
+     "other_society": 0,
+     "political": 2,
+     "trade": 1,
+     "crime": 1,
+     "religious": 1,
+     "other": 2,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.0,
+    "share_freemasonry_excl_unclear": 0.0,
+    "weighted_uses": 7.0,
+    "weighted_share_freemasonry": 0.0,
+    "weighted_share_freemasonry_excl_unclear": 0.0
+   },
+   "1780-1799": {
+    "judged": 215,
+    "labels": {
+     "freemasonry": 1,
+     "other_society": 1,
+     "political": 172,
+     "trade": 4,
+     "crime": 2,
+     "religious": 6,
+     "other": 26,
+     "unclear": 3
+    },
+    "share_freemasonry": 0.0047,
+    "share_freemasonry_excl_unclear": 0.0047,
+    "weighted_uses": 215.0,
+    "weighted_share_freemasonry": 0.0047,
+    "weighted_share_freemasonry_excl_unclear": 0.0047
+   },
+   "1800-1819": {
+    "judged": 195,
+    "labels": {
+     "freemasonry": 0,
+     "other_society": 8,
+     "political": 117,
+     "trade": 19,
+     "crime": 9,
+     "religious": 11,
+     "other": 29,
+     "unclear": 2
+    },
+    "share_freemasonry": 0.0,
+    "share_freemasonry_excl_unclear": 0.0,
+    "weighted_uses": 196.0,
+    "weighted_share_freemasonry": 0.0,
+    "weighted_share_freemasonry_excl_unclear": 0.0
+   },
+   "1820-1825": {
+    "judged": 205,
+    "labels": {
+     "freemasonry": 0,
+     "other_society": 35,
+     "political": 104,
+     "trade": 12,
+     "crime": 3,
+     "religious": 7,
+     "other": 42,
+     "unclear": 2
+    },
+    "share_freemasonry": 0.0,
+    "share_freemasonry_excl_unclear": 0.0,
+    "weighted_uses": 232.2,
+    "weighted_share_freemasonry": 0.0,
+    "weighted_share_freemasonry_excl_unclear": 0.0
+   },
+   "1826": {
+    "judged": 28,
+    "labels": {
+     "freemasonry": 4,
+     "other_society": 3,
+     "political": 7,
+     "trade": 4,
+     "crime": 2,
+     "religious": 2,
+     "other": 6,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.1429,
+    "share_freemasonry_excl_unclear": 0.1429,
+    "weighted_uses": 28.0,
+    "weighted_share_freemasonry": 0.1429,
+    "weighted_share_freemasonry_excl_unclear": 0.1429
+   },
+   "1827": {
+    "judged": 35,
+    "labels": {
+     "freemasonry": 7,
+     "other_society": 1,
+     "political": 13,
+     "trade": 5,
+     "crime": 3,
+     "religious": 4,
+     "other": 2,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.2,
+    "share_freemasonry_excl_unclear": 0.2,
+    "weighted_uses": 35.0,
+    "weighted_share_freemasonry": 0.2,
+    "weighted_share_freemasonry_excl_unclear": 0.2
+   },
+   "1828": {
+    "judged": 29,
+    "labels": {
+     "freemasonry": 4,
+     "other_society": 1,
+     "political": 17,
+     "trade": 1,
+     "crime": 0,
+     "religious": 3,
+     "other": 3,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.1379,
+    "share_freemasonry_excl_unclear": 0.1379,
+    "weighted_uses": 55.1,
+    "weighted_share_freemasonry": 0.1379,
+    "weighted_share_freemasonry_excl_unclear": 0.1379
+   },
+   "1829": {
+    "judged": 25,
+    "labels": {
+     "freemasonry": 6,
+     "other_society": 9,
+     "political": 5,
+     "trade": 0,
+     "crime": 1,
+     "religious": 1,
+     "other": 3,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.24,
+    "share_freemasonry_excl_unclear": 0.24,
+    "weighted_uses": 36.25,
+    "weighted_share_freemasonry": 0.24,
+    "weighted_share_freemasonry_excl_unclear": 0.24
+   },
+   "1830": {
+    "judged": 34,
+    "labels": {
+     "freemasonry": 13,
+     "other_society": 5,
+     "political": 8,
+     "trade": 1,
+     "crime": 1,
+     "religious": 3,
+     "other": 3,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.3824,
+    "share_freemasonry_excl_unclear": 0.3824,
+    "weighted_uses": 49.3,
+    "weighted_share_freemasonry": 0.3824,
+    "weighted_share_freemasonry_excl_unclear": 0.3824
+   },
+   "spans": {
+    "1700-1799": {
+     "judged": 222,
+     "labels": {
+      "freemasonry": 1,
+      "other_society": 1,
+      "political": 174,
+      "trade": 5,
+      "crime": 3,
+      "religious": 7,
+      "other": 28,
+      "unclear": 3
+     },
+     "share_freemasonry": 0.0045,
+     "share_freemasonry_excl_unclear": 0.0046,
+     "weighted_uses": 222.0,
+     "weighted_share_freemasonry": 0.0045,
+     "weighted_share_freemasonry_excl_unclear": 0.0046
+    },
+    "1800-1825": {
+     "judged": 400,
+     "labels": {
+      "freemasonry": 0,
+      "other_society": 43,
+      "political": 221,
+      "trade": 31,
+      "crime": 12,
+      "religious": 18,
+      "other": 71,
+      "unclear": 4
+     },
+     "share_freemasonry": 0.0,
+     "share_freemasonry_excl_unclear": 0.0,
+     "weighted_uses": 428.2,
+     "weighted_share_freemasonry": 0.0,
+     "weighted_share_freemasonry_excl_unclear": 0.0
+    },
+    "1827-1830": {
+     "judged": 123,
+     "labels": {
+      "freemasonry": 30,
+      "other_society": 16,
+      "political": 43,
+      "trade": 7,
+      "crime": 5,
+      "religious": 11,
+      "other": 11,
+      "unclear": 0
+     },
+     "share_freemasonry": 0.2439,
+     "share_freemasonry_excl_unclear": 0.2439,
+     "weighted_uses": 175.65,
+     "weighted_share_freemasonry": 0.24,
+     "weighted_share_freemasonry_excl_unclear": 0.24
+    }
+   }
+  },
+  "newspapers": {
+   "1700-1779": {
+    "judged": 0,
+    "labels": {
+     "freemasonry": 0,
+     "other_society": 0,
+     "political": 0,
+     "trade": 0,
+     "crime": 0,
+     "religious": 0,
+     "other": 0,
+     "unclear": 0
+    },
+    "share_freemasonry": null,
+    "share_freemasonry_excl_unclear": null,
+    "weighted_uses": 0,
+    "weighted_share_freemasonry": null,
+    "weighted_share_freemasonry_excl_unclear": null
+   },
+   "1780-1799": {
+    "judged": 0,
+    "labels": {
+     "freemasonry": 0,
+     "other_society": 0,
+     "political": 0,
+     "trade": 0,
+     "crime": 0,
+     "religious": 0,
+     "other": 0,
+     "unclear": 0
+    },
+    "share_freemasonry": null,
+    "share_freemasonry_excl_unclear": null,
+    "weighted_uses": 0,
+    "weighted_share_freemasonry": null,
+    "weighted_share_freemasonry_excl_unclear": null
+   },
+   "1800-1819": {
+    "judged": 11,
+    "labels": {
+     "freemasonry": 0,
+     "other_society": 0,
+     "political": 10,
+     "trade": 0,
+     "crime": 1,
+     "religious": 0,
+     "other": 0,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.0,
+    "share_freemasonry_excl_unclear": 0.0,
+    "weighted_uses": 11.0,
+    "weighted_share_freemasonry": 0.0,
+    "weighted_share_freemasonry_excl_unclear": 0.0
+   },
+   "1820-1825": {
+    "judged": 6,
+    "labels": {
+     "freemasonry": 0,
+     "other_society": 0,
+     "political": 4,
+     "trade": 0,
+     "crime": 1,
+     "religious": 0,
+     "other": 1,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.0,
+    "share_freemasonry_excl_unclear": 0.0,
+    "weighted_uses": 6.8,
+    "weighted_share_freemasonry": 0.0,
+    "weighted_share_freemasonry_excl_unclear": 0.0
+   },
+   "1826": {
+    "judged": 1,
+    "labels": {
+     "freemasonry": 0,
+     "other_society": 0,
+     "political": 0,
+     "trade": 0,
+     "crime": 1,
+     "religious": 0,
+     "other": 0,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.0,
+    "share_freemasonry_excl_unclear": 0.0,
+    "weighted_uses": 1.0,
+    "weighted_share_freemasonry": 0.0,
+    "weighted_share_freemasonry_excl_unclear": 0.0
+   },
+   "1827": {
+    "judged": 2,
+    "labels": {
+     "freemasonry": 0,
+     "other_society": 0,
+     "political": 2,
+     "trade": 0,
+     "crime": 0,
+     "religious": 0,
+     "other": 0,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.0,
+    "share_freemasonry_excl_unclear": 0.0,
+    "weighted_uses": 2.0,
+    "weighted_share_freemasonry": 0.0,
+    "weighted_share_freemasonry_excl_unclear": 0.0
+   },
+   "1828": {
+    "judged": 11,
+    "labels": {
+     "freemasonry": 9,
+     "other_society": 0,
+     "political": 1,
+     "trade": 0,
+     "crime": 0,
+     "religious": 0,
+     "other": 1,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.8182,
+    "share_freemasonry_excl_unclear": 0.8182,
+    "weighted_uses": 20.9,
+    "weighted_share_freemasonry": 0.8182,
+    "weighted_share_freemasonry_excl_unclear": 0.8182
+   },
+   "1829": {
+    "judged": 15,
+    "labels": {
+     "freemasonry": 14,
+     "other_society": 0,
+     "political": 0,
+     "trade": 0,
+     "crime": 0,
+     "religious": 1,
+     "other": 0,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.9333,
+    "share_freemasonry_excl_unclear": 0.9333,
+    "weighted_uses": 21.75,
+    "weighted_share_freemasonry": 0.9333,
+    "weighted_share_freemasonry_excl_unclear": 0.9333
+   },
+   "1830": {
+    "judged": 6,
+    "labels": {
+     "freemasonry": 5,
+     "other_society": 0,
+     "political": 0,
+     "trade": 0,
+     "crime": 0,
+     "religious": 0,
+     "other": 0,
+     "unclear": 1
+    },
+    "share_freemasonry": 0.8333,
+    "share_freemasonry_excl_unclear": 1.0,
+    "weighted_uses": 8.7,
+    "weighted_share_freemasonry": 0.8333,
+    "weighted_share_freemasonry_excl_unclear": 1.0
+   },
+   "spans": {
+    "1800-1825": {
+     "judged": 17,
+     "labels": {
+      "freemasonry": 0,
+      "other_society": 0,
+      "political": 14,
+      "trade": 0,
+      "crime": 2,
+      "religious": 0,
+      "other": 1,
+      "unclear": 0
+     },
+     "share_freemasonry": 0.0,
+     "share_freemasonry_excl_unclear": 0.0,
+     "weighted_uses": 17.8,
+     "weighted_share_freemasonry": 0.0,
+     "weighted_share_freemasonry_excl_unclear": 0.0
+    },
+    "1827-1830": {
+     "judged": 34,
+     "labels": {
+      "freemasonry": 28,
+      "other_society": 0,
+      "political": 3,
+      "trade": 0,
+      "crime": 0,
+      "religious": 1,
+      "other": 1,
+      "unclear": 1
+     },
+     "share_freemasonry": 0.8235,
+     "share_freemasonry_excl_unclear": 0.8485,
+     "weighted_uses": 53.35,
+     "weighted_share_freemasonry": 0.8369,
+     "weighted_share_freemasonry_excl_unclear": 0.8603
+    }
+   }
+  },
+  "pooled": {
+   "1700-1779": {
+    "judged": 7,
+    "labels": {
+     "freemasonry": 0,
+     "other_society": 0,
+     "political": 2,
+     "trade": 1,
+     "crime": 1,
+     "religious": 1,
+     "other": 2,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.0,
+    "share_freemasonry_excl_unclear": 0.0,
+    "weighted_uses": 7.0,
+    "weighted_share_freemasonry": 0.0,
+    "weighted_share_freemasonry_excl_unclear": 0.0
+   },
+   "1780-1799": {
+    "judged": 215,
+    "labels": {
+     "freemasonry": 1,
+     "other_society": 1,
+     "political": 172,
+     "trade": 4,
+     "crime": 2,
+     "religious": 6,
+     "other": 26,
+     "unclear": 3
+    },
+    "share_freemasonry": 0.0047,
+    "share_freemasonry_excl_unclear": 0.0047,
+    "weighted_uses": 215.0,
+    "weighted_share_freemasonry": 0.0047,
+    "weighted_share_freemasonry_excl_unclear": 0.0047
+   },
+   "1800-1819": {
+    "judged": 206,
+    "labels": {
+     "freemasonry": 0,
+     "other_society": 8,
+     "political": 127,
+     "trade": 19,
+     "crime": 10,
+     "religious": 11,
+     "other": 29,
+     "unclear": 2
+    },
+    "share_freemasonry": 0.0,
+    "share_freemasonry_excl_unclear": 0.0,
+    "weighted_uses": 207.0,
+    "weighted_share_freemasonry": 0.0,
+    "weighted_share_freemasonry_excl_unclear": 0.0
+   },
+   "1820-1825": {
+    "judged": 211,
+    "labels": {
+     "freemasonry": 0,
+     "other_society": 35,
+     "political": 108,
+     "trade": 12,
+     "crime": 4,
+     "religious": 7,
+     "other": 43,
+     "unclear": 2
+    },
+    "share_freemasonry": 0.0,
+    "share_freemasonry_excl_unclear": 0.0,
+    "weighted_uses": 239.0,
+    "weighted_share_freemasonry": 0.0,
+    "weighted_share_freemasonry_excl_unclear": 0.0
+   },
+   "1826": {
+    "judged": 29,
+    "labels": {
+     "freemasonry": 4,
+     "other_society": 3,
+     "political": 7,
+     "trade": 4,
+     "crime": 3,
+     "religious": 2,
+     "other": 6,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.1379,
+    "share_freemasonry_excl_unclear": 0.1379,
+    "weighted_uses": 29.0,
+    "weighted_share_freemasonry": 0.1379,
+    "weighted_share_freemasonry_excl_unclear": 0.1379
+   },
+   "1827": {
+    "judged": 37,
+    "labels": {
+     "freemasonry": 7,
+     "other_society": 1,
+     "political": 15,
+     "trade": 5,
+     "crime": 3,
+     "religious": 4,
+     "other": 2,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.1892,
+    "share_freemasonry_excl_unclear": 0.1892,
+    "weighted_uses": 37.0,
+    "weighted_share_freemasonry": 0.1892,
+    "weighted_share_freemasonry_excl_unclear": 0.1892
+   },
+   "1828": {
+    "judged": 40,
+    "labels": {
+     "freemasonry": 13,
+     "other_society": 1,
+     "political": 18,
+     "trade": 1,
+     "crime": 0,
+     "religious": 3,
+     "other": 4,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.325,
+    "share_freemasonry_excl_unclear": 0.325,
+    "weighted_uses": 76.0,
+    "weighted_share_freemasonry": 0.325,
+    "weighted_share_freemasonry_excl_unclear": 0.325
+   },
+   "1829": {
+    "judged": 40,
+    "labels": {
+     "freemasonry": 20,
+     "other_society": 9,
+     "political": 5,
+     "trade": 0,
+     "crime": 1,
+     "religious": 2,
+     "other": 3,
+     "unclear": 0
+    },
+    "share_freemasonry": 0.5,
+    "share_freemasonry_excl_unclear": 0.5,
+    "weighted_uses": 58.0,
+    "weighted_share_freemasonry": 0.5,
+    "weighted_share_freemasonry_excl_unclear": 0.5
+   },
+   "1830": {
+    "judged": 40,
+    "labels": {
+     "freemasonry": 18,
+     "other_society": 5,
+     "political": 8,
+     "trade": 1,
+     "crime": 1,
+     "religious": 3,
+     "other": 3,
+     "unclear": 1
+    },
+    "share_freemasonry": 0.45,
+    "share_freemasonry_excl_unclear": 0.4615,
+    "weighted_uses": 58.0,
+    "weighted_share_freemasonry": 0.45,
+    "weighted_share_freemasonry_excl_unclear": 0.4615
+   },
+   "spans": {
+    "1700-1799": {
+     "judged": 222,
+     "labels": {
+      "freemasonry": 1,
+      "other_society": 1,
+      "political": 174,
+      "trade": 5,
+      "crime": 3,
+      "religious": 7,
+      "other": 28,
+      "unclear": 3
+     },
+     "share_freemasonry": 0.0045,
+     "share_freemasonry_excl_unclear": 0.0046,
+     "weighted_uses": 222.0,
+     "weighted_share_freemasonry": 0.0045,
+     "weighted_share_freemasonry_excl_unclear": 0.0046
+    },
+    "1800-1825": {
+     "judged": 417,
+     "labels": {
+      "freemasonry": 0,
+      "other_society": 43,
+      "political": 235,
+      "trade": 31,
+      "crime": 14,
+      "religious": 18,
+      "other": 72,
+      "unclear": 4
+     },
+     "share_freemasonry": 0.0,
+     "share_freemasonry_excl_unclear": 0.0,
+     "weighted_uses": 446.0,
+     "weighted_share_freemasonry": 0.0,
+     "weighted_share_freemasonry_excl_unclear": 0.0
+    },
+    "1827-1830": {
+     "judged": 157,
+     "labels": {
+      "freemasonry": 58,
+      "other_society": 16,
+      "political": 46,
+      "trade": 7,
+      "crime": 5,
+      "religious": 12,
+      "other": 12,
+      "unclear": 1
+     },
+     "share_freemasonry": 0.3694,
+     "share_freemasonry_excl_unclear": 0.3718,
+     "weighted_uses": 229.0,
+     "weighted_share_freemasonry": 0.379,
+     "weighted_share_freemasonry_excl_unclear": 0.3815
+    }
+   }
+  }
+ },
+ "newspapers_before_after_morgan": {
+  "date": "1826-09-12",
+  "before": {
+   "judged": 18,
+   "labels": {
+    "freemasonry": 0,
+    "other_society": 0,
+    "political": 14,
+    "trade": 0,
+    "crime": 3,
+    "religious": 0,
+    "other": 1,
+    "unclear": 0
+   },
+   "share_freemasonry": 0.0,
+   "share_freemasonry_excl_unclear": 0.0,
+   "weighted_uses": 18.8,
+   "weighted_share_freemasonry": 0.0,
+   "weighted_share_freemasonry_excl_unclear": 0.0
+  },
+  "after": {
+   "judged": 34,
+   "labels": {
+    "freemasonry": 28,
+    "other_society": 0,
+    "political": 3,
+    "trade": 0,
+    "crime": 0,
+    "religious": 1,
+    "other": 1,
+    "unclear": 1
+   },
+   "share_freemasonry": 0.8235,
+   "share_freemasonry_excl_unclear": 0.8485,
+   "weighted_uses": 53.35,
+   "weighted_share_freemasonry": 0.8369,
+   "weighted_share_freemasonry_excl_unclear": 0.8603
+  }
+ },
+ "verdict": {
+  "judged_1827_1830": 157,
+  "weighted_share_1827_1830": 0.379,
+  "weighted_share_1800_1825": 0.0,
+  "answer": "no (general term): the Masonic share stays at or below half"
+ },
+ "book_of_mormon": {
+  "uses": 20,
+  "not_yet_answered": 0,
+  "unparsed": 0,
+  "judged": 20,
+  "labels": {
+   "freemasonry": 0,
+   "other_society": 3,
+   "political": 2,
+   "trade": 0,
+   "crime": 15,
+   "religious": 0,
+   "other": 0,
+   "unclear": 0
+  },
+  "share_freemasonry": 0.0,
+  "share_freemasonry_excl_unclear": 0.0,
+  "weighted_uses": 20.0,
+  "weighted_share_freemasonry": 0.0,
+  "weighted_share_freemasonry_excl_unclear": 0.0,
+  "uses_by_label": [
+   {
+    "id": "bom|1126|4",
+    "seq": 1126,
+    "label": "crime"
+   },
+   {
+    "id": "bom|1153|5",
+    "seq": 1153,
+    "label": "crime"
+   },
+   {
+    "id": "bom|1204|6",
+    "seq": 1204,
+    "label": "crime"
+   },
+   {
+    "id": "bom|1205|7",
+    "seq": 1205,
+    "label": "crime"
+   },
+   {
+    "id": "bom|1208|8",
+    "seq": 1208,
+    "label": "political"
+   },
+   {
+    "id": "bom|1219|9",
+    "seq": 1219,
+    "label": "crime"
+   },
+   {
+    "id": "bom|1297|10",
+    "seq": 1297,
+    "label": "crime"
+   },
+   {
+    "id": "bom|1337|11",
+    "seq": 1337,
+    "label": "crime"
+   },
+   {
+    "id": "bom|1337|12",
+    "seq": 1337,
+    "label": "crime"
+   },
+   {
+    "id": "bom|1337|13",
+    "seq": 1337,
+    "label": "crime"
+   },
+   {
+    "id": "bom|1337|14",
+    "seq": 1337,
+    "label": "crime"
+   },
+   {
+    "id": "bom|1338|15",
+    "seq": 1338,
+    "label": "other_society"
+   },
+   {
+    "id": "bom|1345|16",
+    "seq": 1345,
+    "label": "crime"
+   },
+   {
+    "id": "bom|1350|17",
+    "seq": 1350,
+    "label": "political"
+   },
+   {
+    "id": "bom|1350|18",
+    "seq": 1350,
+    "label": "crime"
+   },
+   {
+    "id": "bom|1350|19",
+    "seq": 1350,
+    "label": "other_society"
+   },
+   {
+    "id": "bom|401|0",
+    "seq": 401,
+    "label": "crime"
+   },
+   {
+    "id": "bom|480|1",
+    "seq": 480,
+    "label": "crime"
+   },
+   {
+    "id": "bom|934|2",
+    "seq": 934,
+    "label": "crime"
+   },
+   {
+    "id": "bom|934|3",
+    "seq": 934,
+    "label": "other_society"
+   }
+  ]
+ },
+ "controls": {
+  "control_bible_style": {
+   "uses": 0,
+   "not_yet_answered": 0,
+   "judged": 0,
+   "labels": {
+    "freemasonry": 0,
+    "other_society": 0,
+    "political": 0,
+    "trade": 0,
+    "crime": 0,
+    "religious": 0,
+    "other": 0,
+    "unclear": 0
+   },
+   "share_freemasonry": null,
+   "share_freemasonry_excl_unclear": null,
+   "weighted_uses": 0,
+   "weighted_share_freemasonry": null,
+   "weighted_share_freemasonry_excl_unclear": null
+  },
+  "control_js": {
+   "uses": 4,
+   "not_yet_answered": 0,
+   "judged": 4,
+   "labels": {
+    "freemasonry": 0,
+    "other_society": 1,
+    "political": 0,
+    "trade": 0,
+    "crime": 3,
+    "religious": 0,
+    "other": 0,
+    "unclear": 0
+   },
+   "share_freemasonry": 0.0,
+   "share_freemasonry_excl_unclear": 0.0,
+   "weighted_uses": 4.0,
+   "weighted_share_freemasonry": 0.0,
+   "weighted_share_freemasonry_excl_unclear": 0.0
+  },
+  "translations": {
+   "uses": 4,
+   "not_yet_answered": 0,
+   "judged": 4,
+   "labels": {
+    "freemasonry": 0,
+    "other_society": 0,
+    "political": 3,
+    "trade": 0,
+    "crime": 0,
+    "religious": 0,
+    "other": 0,
+    "unclear": 1
+   },
+   "share_freemasonry": 0.0,
+   "share_freemasonry_excl_unclear": 0.0,
+   "weighted_uses": 4.0,
+   "weighted_share_freemasonry": 0.0,
+   "weighted_share_freemasonry_excl_unclear": 0.0
+  }
+ },
+ "labels_by_id": {
+  "chronicling_america:sn83020874/1830-02-03-ed1-seq4|801": [
+   1830,
+   "newspapers",
+   "unclear"
+  ],
+  "chronicling_america:sn83021206/1827-10-24-ed1-seq3|802": [
+   1827,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn83021385/1826-08-29-ed1-seq2|803": [
+   1826,
+   "newspapers",
+   "crime"
+  ],
+  "chronicling_america:sn83021402/1830-10-08-ed1-seq1|804": [
+   1830,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021402/1830-11-19-ed1-seq2|806": [
+   1830,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021402/1830-11-23-ed1-seq4|807": [
+   1830,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021402/1830-12-28-ed1-seq2|808": [
+   1830,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1828-09-10-ed1-seq2|809": [
+   1828,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1828-09-17-ed1-seq2|811": [
+   1828,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1828-09-17-ed1-seq3|812": [
+   1828,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1828-10-15-ed1-seq3|814": [
+   1828,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1828-10-22-ed1-seq2|816": [
+   1828,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1828-10-29-ed1-seq1|817": [
+   1828,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1828-10-29-ed1-seq2|818": [
+   1828,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1828-11-19-ed1-seq2|820": [
+   1828,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1828-12-03-ed1-seq2|822": [
+   1828,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-03-18-ed1-seq2|827": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-03-25-ed1-seq2|828": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-04-01-ed1-seq1|829": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-05-20-ed1-seq2|831": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-06-03-ed1-seq2|832": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-07-08-ed1-seq1|833": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-08-05-ed1-seq1|834": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-09-02-ed1-seq2|836": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-09-16-ed1-seq1|838": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-09-23-ed1-seq2|839": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-11-18-ed1-seq3|842": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-11-25-ed1-seq1|843": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-12-30-ed1-seq2|844": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83021574/1829-12-30-ed1-seq2|845": [
+   1829,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83025442/1815-08-08-ed1-seq1|846": [
+   1815,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn83025442/1815-08-08-ed1-seq1|847": [
+   1815,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn83025442/1815-08-08-ed1-seq1|848": [
+   1815,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn83025545/1803-10-15-ed1-seq1|849": [
+   1803,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn83025588/1815-09-12-ed1-seq2|850": [
+   1815,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn83026172/1820-03-16-ed1-seq2|851": [
+   1820,
+   "newspapers",
+   "crime"
+  ],
+  "chronicling_america:sn83026172/1820-05-22-ed1-seq3|852": [
+   1820,
+   "newspapers",
+   "other"
+  ],
+  "chronicling_america:sn83026172/1823-08-14-ed1-seq2|853": [
+   1823,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn83026172/1824-01-29-ed1-seq2|854": [
+   1824,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn83026172/1824-03-16-ed1-seq2|855": [
+   1824,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn83026172/1824-03-24-ed1-seq2|856": [
+   1824,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn83026172/1828-07-26-ed1-seq3|857": [
+   1828,
+   "newspapers",
+   "other"
+  ],
+  "chronicling_america:sn83026172/1829-03-23-ed1-seq2|858": [
+   1829,
+   "newspapers",
+   "religious"
+  ],
+  "chronicling_america:sn83045110/1827-03-16-ed1-seq2|859": [
+   1827,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn83045110/1830-09-17-ed1-seq3|860": [
+   1830,
+   "newspapers",
+   "freemasonry"
+  ],
+  "chronicling_america:sn83045242/1804-02-01-ed1-seq2|861": [
+   1804,
+   "newspapers",
+   "crime"
+  ],
+  "chronicling_america:sn84024710/1807-03-24-ed1-seq2|863": [
+   1807,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn84024710/1811-07-08-ed1-seq3|864": [
+   1811,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn84038147/1808-07-12-ed1-seq2|867": [
+   1808,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn85025006/1828-10-07-ed1-seq2|868": [
+   1828,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn85025609/1807-04-02-ed1-seq2|869": [
+   1807,
+   "newspapers",
+   "political"
+  ],
+  "chronicling_america:sn85059525/1806-08-29-ed1-seq1|870": [
+   1806,
+   "newspapers",
+   "political"
+  ],
+  "hathitrust:aeu.ark:/13960/t6n027j5k|924": [
+   1822,
+   "works",
+   "other_society"
+  ],
+  "hathitrust:aeu.ark:/13960/t6pz60s97|921": [
+   1824,
+   "works",
+   "political"
+  ],
+  "hathitrust:aeu.ark:/13960/t7tm8223k|922": [
+   1796,
+   "works",
+   "political"
+  ],
+  "hathitrust:aeu.ark:/13960/t9w105c8j|923": [
+   1825,
+   "works",
+   "trade"
+  ],
+  "hathitrust:dul1.ark:/13960/t1fj30r51|917": [
+   1830,
+   "works",
+   "other"
+  ],
+  "hathitrust:dul1.ark:/13960/t1hh7hq43|891": [
+   1816,
+   "works",
+   "political"
+  ],
+  "hathitrust:ia.ark:/13960/t0ks6sp36|897": [
+   1824,
+   "works",
+   "political"
+  ],
+  "hathitrust:ia.ark:/13960/t28919f58|898": [
+   1824,
+   "works",
+   "political"
+  ],
+  "hathitrust:ia.ark:/13960/t2m61p014|911": [
+   1808,
+   "works",
+   "other"
+  ],
+  "hathitrust:ia.ark:/13960/t2n58pj1x|900": [
+   1824,
+   "works",
+   "political"
+  ],
+  "hathitrust:ia.ark:/13960/t35144x6p|899": [
+   1824,
+   "works",
+   "political"
+  ],
+  "hathitrust:ia.ark:/13960/t35171n3j|908": [
+   1828,
+   "works",
+   "political"
+  ],
+  "hathitrust:ia.ark:/13960/t3sv2jn7n|901": [
+   1829,
+   "works",
+   "other"
+  ],
+  "hathitrust:loc.ark:/13960/t6n01nf3v|906": [
+   1828,
+   "works",
+   "political"
+  ],
+  "hathitrust:loc.ark:/13960/t6n01nf3v|907": [
+   1828,
+   "works",
+   "political"
+  ],
+  "hathitrust:mdp.39015016761291|878": [
+   1827,
+   "works",
+   "political"
+  ],
+  "hathitrust:mdp.39015018405624|887": [
+   1791,
+   "works",
+   "unclear"
+  ],
+  "hathitrust:mdp.39015033416424|886": [
+   1786,
+   "works",
+   "other"
+  ],
+  "hathitrust:mdp.39015055244399|873": [
+   1824,
+   "works",
+   "political"
+  ],
+  "hathitrust:mdp.39015063546686|881": [
+   1822,
+   "works",
+   "other"
+  ],
+  "hathitrust:mdp.39015065448162|885": [
+   1784,
+   "works",
+   "political"
+  ],
+  "hathitrust:mdp.39015069808098|872": [
+   1830,
+   "works",
+   "trade"
+  ],
+  "hathitrust:mdp.39015070512473|874": [
+   1825,
+   "works",
+   "political"
+  ],
+  "hathitrust:mdp.39015073381744|893": [
+   1816,
+   "works",
+   "political"
+  ],
+  "hathitrust:mdp.39015073755418|890": [
+   1810,
+   "works",
+   "trade"
+  ],
+  "hathitrust:mdp.39015082611669|892": [
+   1807,
+   "works",
+   "political"
+  ],
+  "hathitrust:mdp.69015000000758|918": [
+   1810,
+   "works",
+   "other"
+  ],
+  "hathitrust:uc2.ark:/13960/t07w6bd92|876": [
+   1825,
+   "works",
+   "political"
+  ],
+  "hathitrust:uc2.ark:/13960/t0ht2j942|903": [
+   1821,
+   "works",
+   "other_society"
+  ],
+  "hathitrust:uc2.ark:/13960/t37082z25|904": [
+   1822,
+   "works",
+   "political"
+  ],
+  "hathitrust:uc2.ark:/13960/t5t727v0w|882": [
+   1823,
+   "works",
+   "crime"
+  ],
+  "hathitrust:uc2.ark:/13960/t6b27q52s|902": [
+   1796,
+   "works",
+   "political"
+  ],
+  "hathitrust:uc2.ark:/13960/t6k073m91|875": [
+   1828,
+   "works",
+   "trade"
+  ],
+  "hathitrust:uc2.ark:/13960/t6vx06t8m|884": [
+   1807,
+   "works",
+   "political"
+  ],
+  "hathitrust:uc2.ark:/13960/t77s7q55t|905": [
+   1830,
+   "works",
+   "political"
+  ],
+  "hathitrust:uc2.ark:/13960/t84j0qs55|880": [
+   1816,
+   "works",
+   "political"
+  ],
+  "hathitrust:uc2.ark:/13960/t86h4dj72|883": [
+   1827,
+   "works",
+   "political"
+  ],
+  "hathitrust:uc2.ark:/13960/t9f47jg9k|888": [
+   1796,
+   "works",
+   "political"
+  ],
+  "hathitrust:uiuo.ark:/13960/t3423tq5f|925": [
+   1827,
+   "works",
+   "religious"
+  ],
+  "hathitrust:yale.39002004574415|916": [
+   1790,
+   "works",
+   "unclear"
+  ],
+  "hathitrust:yale.39002005446357|896": [
+   1824,
+   "works",
+   "religious"
+  ],
+  "hathitrust:yale.39002006541107|915": [
+   1822,
+   "works",
+   "political"
+  ],
+  "hathitrust:yale.39002009494270|894": [
+   1813,
+   "works",
+   "religious"
+  ],
+  "hathitrust:yale.39002013260840|879": [
+   1816,
+   "works",
+   "political"
+  ],
+  "hathitrust:yale.39002030279799|914": [
+   1819,
+   "works",
+   "political"
+  ],
+  "hathitrust:yale.39002031988844|913": [
+   1822,
+   "works",
+   "trade"
+  ],
+  "hathitrust:yale.39002032312127|909": [
+   1807,
+   "works",
+   "political"
+  ],
+  "hathitrust:yale.39002088379038|912": [
+   1797,
+   "works",
+   "political"
+  ],
+  "hathitrust:yale.39002088379186|910": [
+   1808,
+   "works",
+   "other"
+  ],
+  "institutional_books:32044005539150|95": [
+   1822,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044010165876|162": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "institutional_books:32044010181113|87": [
+   1821,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044010275048|134": [
+   1827,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044012578068|120": [
+   1825,
+   "works",
+   "other"
+  ],
+  "institutional_books:32044012578068|121": [
+   1825,
+   "works",
+   "other"
+  ],
+  "institutional_books:32044014165674|135": [
+   1827,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044019317395|136": [
+   1827,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044024054439|163": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "institutional_books:32044024149429|153": [
+   1829,
+   "works",
+   "freemasonry"
+  ],
+  "institutional_books:32044031571433|137": [
+   1827,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044036455707|138": [
+   1827,
+   "works",
+   "trade"
+  ],
+  "institutional_books:32044036455707|139": [
+   1827,
+   "works",
+   "trade"
+  ],
+  "institutional_books:32044038421541|62": [
+   1815,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044044499424|113": [
+   1824,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044044499424|114": [
+   1824,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044054765235|154": [
+   1829,
+   "works",
+   "freemasonry"
+  ],
+  "institutional_books:32044054765235|155": [
+   1829,
+   "works",
+   "freemasonry"
+  ],
+  "institutional_books:32044055027775|115": [
+   1824,
+   "works",
+   "other"
+  ],
+  "institutional_books:32044055313134|96": [
+   1822,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044073508962|51": [
+   1810,
+   "works",
+   "other"
+  ],
+  "institutional_books:32044079202586|123": [
+   1825,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044079834883|47": [
+   1809,
+   "works",
+   "other"
+  ],
+  "institutional_books:32044080531726|131": [
+   1826,
+   "works",
+   "other"
+  ],
+  "institutional_books:32044086660370|124": [
+   1825,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044087954749|125": [
+   1825,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044090333246|126": [
+   1825,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044092530914|78": [
+   1820,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044092547819|68": [
+   1827,
+   "works",
+   "trade"
+  ],
+  "institutional_books:32044092624923|48": [
+   1820,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044092629559|74": [
+   1826,
+   "works",
+   "trade"
+  ],
+  "institutional_books:32044092629559|75": [
+   1826,
+   "works",
+   "freemasonry"
+  ],
+  "institutional_books:32044092629559|76": [
+   1826,
+   "works",
+   "freemasonry"
+  ],
+  "institutional_books:32044092793454|166": [
+   1830,
+   "works",
+   "other"
+  ],
+  "institutional_books:32044094406485|167": [
+   1830,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044106509375|35": [
+   1806,
+   "works",
+   "religious"
+  ],
+  "institutional_books:32044106509607|36": [
+   1806,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044106509987|79": [
+   1820,
+   "works",
+   "other_society"
+  ],
+  "institutional_books:32044106510001|80": [
+   1820,
+   "works",
+   "other_society"
+  ],
+  "institutional_books:32044106510043|81": [
+   1826,
+   "works",
+   "political"
+  ],
+  "institutional_books:32044106510050|82": [
+   1827,
+   "works",
+   "political"
+  ],
+  "institutional_books:AH43AS|25": [
+   1803,
+   "works",
+   "other"
+  ],
+  "institutional_books:AH449Y|43": [
+   1807,
+   "works",
+   "other"
+  ],
+  "institutional_books:AH4EJP|146": [
+   1828,
+   "works",
+   "political"
+  ],
+  "institutional_books:AH54IL|70": [
+   1818,
+   "works",
+   "other"
+  ],
+  "institutional_books:AH5LHG|31": [
+   1805,
+   "works",
+   "political"
+  ],
+  "institutional_books:AH6E7K|140": [
+   1827,
+   "works",
+   "religious"
+  ],
+  "institutional_books:AH6EYG|141": [
+   1827,
+   "works",
+   "religious"
+  ],
+  "institutional_books:AH6HIF|142": [
+   1827,
+   "works",
+   "religious"
+  ],
+  "institutional_books:AH6LNB|37": [
+   1815,
+   "works",
+   "political"
+  ],
+  "institutional_books:AH6LP9|38": [
+   1826,
+   "works",
+   "other_society"
+  ],
+  "institutional_books:AH6LSQ|11": [
+   1799,
+   "works",
+   "religious"
+  ],
+  "institutional_books:AH6MAS|168": [
+   1830,
+   "works",
+   "religious"
+  ],
+  "institutional_books:HC1GG3|105": [
+   1823,
+   "works",
+   "other"
+  ],
+  "institutional_books:HN2HCA|106": [
+   1823,
+   "works",
+   "other"
+  ],
+  "institutional_books:HN2PM7|26": [
+   1803,
+   "works",
+   "political"
+  ],
+  "institutional_books:HN2PM7|27": [
+   1803,
+   "works",
+   "political"
+  ],
+  "institutional_books:HN2XLY|44": [
+   1807,
+   "works",
+   "political"
+  ],
+  "institutional_books:HN2ZDN|148": [
+   1828,
+   "works",
+   "political"
+  ],
+  "institutional_books:HN312X|55": [
+   1813,
+   "works",
+   "political"
+  ],
+  "institutional_books:HN331R|15": [
+   1796,
+   "works",
+   "political"
+  ],
+  "institutional_books:HN3LGP|170": [
+   1830,
+   "works",
+   "other_society"
+  ],
+  "institutional_books:HN58BI|63": [
+   1816,
+   "works",
+   "other"
+  ],
+  "institutional_books:HN5IH4|39": [
+   1806,
+   "works",
+   "political"
+  ],
+  "institutional_books:HN5NW5|156": [
+   1829,
+   "works",
+   "political"
+  ],
+  "institutional_books:HN5NW9|157": [
+   1829,
+   "works",
+   "political"
+  ],
+  "institutional_books:HNF23U|12": [
+   1798,
+   "works",
+   "political"
+  ],
+  "institutional_books:HNME6R|107": [
+   1823,
+   "works",
+   "political"
+  ],
+  "institutional_books:HNPP2F|171": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "institutional_books:HNPP2F|172": [
+   1830,
+   "works",
+   "other_society"
+  ],
+  "institutional_books:HNPP2F|174": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "institutional_books:HNQP87|128": [
+   1825,
+   "works",
+   "crime"
+  ],
+  "institutional_books:HNT52G|108": [
+   1823,
+   "works",
+   "unclear"
+  ],
+  "institutional_books:HNTFLN|175": [
+   1830,
+   "works",
+   "religious"
+  ],
+  "institutional_books:HNYN27|129": [
+   1825,
+   "works",
+   "other"
+  ],
+  "institutional_books:HNZREA|45": [
+   1807,
+   "works",
+   "other"
+  ],
+  "institutional_books:HNZSQY|46": [
+   1807,
+   "works",
+   "political"
+  ],
+  "institutional_books:HNZSR3|98": [
+   1822,
+   "works",
+   "political"
+  ],
+  "institutional_books:HNZTEF|32": [
+   1805,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW1VMS|88": [
+   1821,
+   "works",
+   "other_society"
+  ],
+  "institutional_books:HW1ZOL|71": [
+   1818,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW22IV|49": [
+   1809,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW2884|16": [
+   1796,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW2884|17": [
+   1796,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW28GZ|33": [
+   1811,
+   "works",
+   "other_society"
+  ],
+  "institutional_books:HW2BE1|0": [
+   1799,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW2GUW|132": [
+   1826,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW3CD7|83": [
+   1820,
+   "works",
+   "trade"
+  ],
+  "institutional_books:HW3MOU|20": [
+   1802,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW3MRC|21": [
+   1818,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW3MRI|22": [
+   1823,
+   "works",
+   "other_society"
+  ],
+  "institutional_books:HW3MRL|23": [
+   1824,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW3MRL|24": [
+   1824,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW3PC8|10": [
+   1792,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW3PC8|9": [
+   1792,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW3PCN|13": [
+   1795,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW3PCN|14": [
+   1795,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW3PZQ|2": [
+   1781,
+   "works",
+   "political"
+  ],
+  "institutional_books:HW3Q0V|7": [
+   1791,
+   "works",
+   "political"
+  ],
+  "institutional_books:HWADVG|159": [
+   1829,
+   "works",
+   "other_society"
+  ],
+  "institutional_books:HWB44V|34": [
+   1805,
+   "works",
+   "political"
+  ],
+  "institutional_books:HWB45H|29": [
+   1804,
+   "works",
+   "political"
+  ],
+  "institutional_books:HWB6PS|72": [
+   1818,
+   "works",
+   "other"
+  ],
+  "institutional_books:HWBB21|84": [
+   1820,
+   "works",
+   "political"
+  ],
+  "institutional_books:HWKD5Z|133": [
+   1826,
+   "works",
+   "other"
+  ],
+  "institutional_books:HWKFEP|110": [
+   1823,
+   "works",
+   "political"
+  ],
+  "institutional_books:HWKFYR|116": [
+   1824,
+   "works",
+   "political"
+  ],
+  "institutional_books:HWKFYR|117": [
+   1824,
+   "works",
+   "political"
+  ],
+  "institutional_books:HWRIXR|152": [
+   1828,
+   "works",
+   "political"
+  ],
+  "institutional_books:HWX4ZS|99": [
+   1822,
+   "works",
+   "political"
+  ],
+  "institutional_books:HX15LX|40": [
+   1806,
+   "works",
+   "political"
+  ],
+  "institutional_books:HX1E58|143": [
+   1827,
+   "works",
+   "political"
+  ],
+  "institutional_books:HX1FIQ|130": [
+   1825,
+   "works",
+   "religious"
+  ],
+  "institutional_books:HX3L33|89": [
+   1821,
+   "works",
+   "political"
+  ],
+  "institutional_books:HX3L33|90": [
+   1821,
+   "works",
+   "political"
+  ],
+  "institutional_books:HX3SQB|112": [
+   1823,
+   "works",
+   "trade"
+  ],
+  "institutional_books:HX4K6I|176": [
+   1830,
+   "works",
+   "other_society"
+  ],
+  "institutional_books:HX4K6I|177": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "institutional_books:HX5PWN|73": [
+   1818,
+   "works",
+   "political"
+  ],
+  "institutional_books:HX66NR|64": [
+   1816,
+   "works",
+   "political"
+  ],
+  "institutional_books:HX6HCD|178": [
+   1830,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXG97B|56": [
+   1813,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXG97B|57": [
+   1813,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXG97B|58": [
+   1813,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXGFA5|59": [
+   1820,
+   "works",
+   "trade"
+  ],
+  "institutional_books:HXH2YF|100": [
+   1822,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXIGV7|91": [
+   1821,
+   "works",
+   "other_society"
+  ],
+  "institutional_books:HXJ2EL|65": [
+   1816,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJ2EZ|66": [
+   1816,
+   "works",
+   "other"
+  ],
+  "institutional_books:HXJ2IF|41": [
+   1806,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJ2IK|42": [
+   1806,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJ3J8|101": [
+   1822,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJ44Q|61": [
+   1814,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJ8UZ|92": [
+   1828,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJ8V3|93": [
+   1821,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJ8Y2|1": [
+   1799,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJ92B|77": [
+   1819,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJ9II|52": [
+   1810,
+   "works",
+   "trade"
+  ],
+  "institutional_books:HXJF9W|50": [
+   1809,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJFEZ|28": [
+   1803,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJG6L|4": [
+   1788,
+   "works",
+   "other"
+  ],
+  "institutional_books:HXJGC9|144": [
+   1827,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJHTR|85": [
+   1820,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJNJV|67": [
+   1816,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJPCU|53": [
+   1812,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJPFV|94": [
+   1821,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJU9J|5": [
+   1799,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJU9J|6": [
+   1799,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXJUH9|30": [
+   1804,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXKCGF|18": [
+   1797,
+   "works",
+   "other"
+  ],
+  "institutional_books:HXKCGR|54": [
+   1812,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXKCH2|86": [
+   1820,
+   "works",
+   "other"
+  ],
+  "institutional_books:HXKIQP|3": [
+   1785,
+   "works",
+   "other"
+  ],
+  "institutional_books:HXQ4FW|102": [
+   1822,
+   "works",
+   "political"
+  ],
+  "institutional_books:HXQ6W4|69": [
+   1820,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:10000113bsb|403": [
+   1807,
+   "works",
+   "political"
+  ],
+  "internet_archive:10064862bsb|539": [
+   1822,
+   "works",
+   "other"
+  ],
+  "internet_archive:10065734bsb|460": [
+   1815,
+   "works",
+   "crime"
+  ],
+  "internet_archive:10213428bsb|439": [
+   1813,
+   "works",
+   "trade"
+  ],
+  "internet_archive:10215682bsb|319": [
+   1797,
+   "works",
+   "political"
+  ],
+  "internet_archive:10215682bsb|320": [
+   1797,
+   "works",
+   "political"
+  ],
+  "internet_archive:10215682bsb|321": [
+   1797,
+   "works",
+   "political"
+  ],
+  "internet_archive:10225363bsb|378": [
+   1803,
+   "works",
+   "political"
+  ],
+  "internet_archive:10227454bsb|388": [
+   1805,
+   "works",
+   "crime"
+  ],
+  "internet_archive:10278384bsb|565": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:10278552bsb|288": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:10279119bsb|430": [
+   1812,
+   "works",
+   "political"
+  ],
+  "internet_archive:10279142bsb|492": [
+   1819,
+   "works",
+   "political"
+  ],
+  "internet_archive:10279143bsb|493": [
+   1819,
+   "works",
+   "political"
+  ],
+  "internet_archive:10280300bsb|211": [
+   1789,
+   "works",
+   "political"
+  ],
+  "internet_archive:10280300bsb|212": [
+   1789,
+   "works",
+   "political"
+  ],
+  "internet_archive:10280311bsb|760": [
+   1830,
+   "works",
+   "political"
+  ],
+  "internet_archive:10280544bsb|494": [
+   1819,
+   "works",
+   "political"
+  ],
+  "internet_archive:10281546bsb|234": [
+   1791,
+   "works",
+   "political"
+  ],
+  "internet_archive:10281687bsb|523": [
+   1821,
+   "works",
+   "political"
+  ],
+  "internet_archive:10282340bsb|431": [
+   1812,
+   "works",
+   "political"
+  ],
+  "internet_archive:10282812bsb|661": [
+   1826,
+   "works",
+   "political"
+  ],
+  "internet_archive:10359653bsb|271": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:10394028bsb|440": [
+   1813,
+   "works",
+   "other"
+  ],
+  "internet_archive:10410277bsb|479": [
+   1817,
+   "works",
+   "other"
+  ],
+  "internet_archive:10722682bsb|213": [
+   1789,
+   "works",
+   "political"
+  ],
+  "internet_archive:10722748bsb|540": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:10722889bsb|235": [
+   1791,
+   "works",
+   "political"
+  ],
+  "internet_archive:10865778bsb|503": [
+   1820,
+   "works",
+   "political"
+  ],
+  "internet_archive:10887921bsb|470": [
+   1816,
+   "works",
+   "political"
+  ],
+  "internet_archive:10936856bsb|441": [
+   1813,
+   "works",
+   "trade"
+  ],
+  "internet_archive:11121546bsb|214": [
+   1789,
+   "works",
+   "political"
+  ],
+  "internet_archive:11121546bsb|215": [
+   1789,
+   "works",
+   "political"
+  ],
+  "internet_archive:11683418bsb|524": [
+   1821,
+   "works",
+   "political"
+  ],
+  "internet_archive:11690794bsb|367": [
+   1801,
+   "works",
+   "unclear"
+  ],
+  "internet_archive:31383040982756|677": [
+   1827,
+   "works",
+   "other"
+  ],
+  "internet_archive:PUVE011092_TO0324_PNI-14494_000003|223": [
+   1790,
+   "works",
+   "other"
+  ],
+  "internet_archive:WilhelmMeistersApprenticeshipandTravelsVolII|606": [
+   1824,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:WilhelmMeistersApprenticeshipandTravelsVolII|607": [
+   1824,
+   "works",
+   "trade"
+  ],
+  "internet_archive:a603107100panzuoft|254": [
+   1793,
+   "works",
+   "other"
+  ],
+  "internet_archive:acompletecollec05cobbgoog|414": [
+   1809,
+   "works",
+   "other"
+  ],
+  "internet_archive:addressadoptedat00unse|737": [
+   1829,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:adigestlawsengl06cruigoog|608": [
+   1824,
+   "works",
+   "other"
+  ],
+  "internet_archive:adigestlawsengl07cruigoog|411": [
+   1808,
+   "works",
+   "crime"
+  ],
+  "internet_archive:adigestlawsengl10cruigoog|412": [
+   1808,
+   "works",
+   "crime"
+  ],
+  "internet_archive:adigestlawsengl11cruigoog|678": [
+   1827,
+   "works",
+   "crime"
+  ],
+  "internet_archive:americanannualr05unkngoog|662": [
+   1826,
+   "works",
+   "crime"
+  ],
+  "internet_archive:americanspeeches00bell|631": [
+   1825,
+   "works",
+   "political"
+  ],
+  "internet_archive:americantracts00unkngoog|679": [
+   1827,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:aninquiryintopr00thomgoog|609": [
+   1824,
+   "works",
+   "political"
+  ],
+  "internet_archive:anintroductiont01ohgoog|379": [
+   1803,
+   "works",
+   "political"
+  ],
+  "internet_archive:annalsofcommerc04macp|389": [
+   1805,
+   "works",
+   "trade"
+  ],
+  "internet_archive:annalsofcommerce04macp|390": [
+   1805,
+   "works",
+   "trade"
+  ],
+  "internet_archive:annegeiersteino01scotgoog|738": [
+   1829,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:annegeiersteino06scotgoog|739": [
+   1829,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:anneofgeierstein02scot|740": [
+   1829,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:aphilosophicala02justgoog|206": [
+   1788,
+   "works",
+   "political"
+  ],
+  "internet_archive:areplytomrbalfo01hudsgoog|698": [
+   1828,
+   "works",
+   "religious"
+  ],
+  "internet_archive:areviewecclesia00willgoog|483": [
+   1818,
+   "works",
+   "religious"
+  ],
+  "internet_archive:aristotlesethics02aris|322": [
+   1797,
+   "works",
+   "political"
+  ],
+  "internet_archive:aristotlesethics02aris|323": [
+   1797,
+   "works",
+   "political"
+  ],
+  "internet_archive:asolemnwarninga00murdgoog|680": [
+   1827,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:asolemnwarninga00murdgoog|681": [
+   1827,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:asolemnwarninga00murdgoog|682": [
+   1827,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:asolemnwarninga00murdgoog|683": [
+   1827,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:asolemnwarninga00murdgoog|684": [
+   1827,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:asolemnwarninga00murdgoog|685": [
+   1827,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:asolemnwarninga00murdgoog|686": [
+   1827,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:atreatiselawcon00jonegoog|687": [
+   1827,
+   "works",
+   "crime"
+  ],
+  "internet_archive:atreatiselawcon01jonegoog|688": [
+   1827,
+   "works",
+   "crime"
+  ],
+  "internet_archive:b21300173_0001|541": [
+   1822,
+   "works",
+   "other"
+  ],
+  "internet_archive:b21469556|504": [
+   1820,
+   "works",
+   "other"
+  ],
+  "internet_archive:b21960392|505": [
+   1820,
+   "works",
+   "other"
+  ],
+  "internet_archive:b22011900_0003|442": [
+   1813,
+   "works",
+   "political"
+  ],
+  "internet_archive:b28739723|432": [
+   1812,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:b28769260|272": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:b28771059_0003|224": [
+   1790,
+   "works",
+   "other"
+  ],
+  "internet_archive:b28774073_0003|207": [
+   1788,
+   "works",
+   "other"
+  ],
+  "internet_archive:b29317046|699": [
+   1828,
+   "works",
+   "other"
+  ],
+  "internet_archive:b2932323x|506": [
+   1820,
+   "works",
+   "other"
+  ],
+  "internet_archive:b29330208_0009|443": [
+   1813,
+   "works",
+   "other"
+  ],
+  "internet_archive:b29332965_0001|542": [
+   1822,
+   "works",
+   "other"
+  ],
+  "internet_archive:b29333027_0001|741": [
+   1829,
+   "works",
+   "other"
+  ],
+  "internet_archive:b29349527|663": [
+   1826,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:b3302926x_0003|764": [
+   1830,
+   "works",
+   "political"
+  ],
+  "internet_archive:b33092382_0003|633": [
+   1825,
+   "works",
+   "other"
+  ],
+  "internet_archive:b33519730_0004|391": [
+   1805,
+   "works",
+   "crime"
+  ],
+  "internet_archive:biblicalreperto00unkngoog|742": [
+   1829,
+   "works",
+   "other"
+  ],
+  "internet_archive:bim_eighteenth-century_a-letter-from-a-father-t_publicola_1797|324": [
+   1797,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_a-liberal-version-of-the_1793_1|255": [
+   1793,
+   "works",
+   "crime"
+  ],
+  "internet_archive:bim_eighteenth-century_a-philosophical-and-poli_raynal-abb_1782_4|184": [
+   1782,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_a-philosophical-and-poli_raynal-abb_1784_4|192": [
+   1784,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_a-philosophical-and-poli_raynal-abb_1798_4|333": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_a-sermon-on-the-present-_poulter-edmund_1793|256": [
+   1793,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_a-sermon-preached-before_magee-william_1796|304": [
+   1796,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_a-short-and-plain-exposi_1791_1|236": [
+   1791,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_a-vindication-of-the-cha_de-courcy-richard_1796|305": [
+   1796,
+   "works",
+   "other"
+  ],
+  "internet_archive:bim_eighteenth-century_acts-of-the-council-and-_new-jersey_1784|193": [
+   1784,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_an-essay-on-cutaneous-di_dickinson-robert-of-55-_1800|362": [
+   1800,
+   "works",
+   "other"
+  ],
+  "internet_archive:bim_eighteenth-century_an-impartial-journal-of-_brown-robert-corporal-_1795|289": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_aristotles-ethics-and-p_aristotle_1797_2|325": [
+   1797,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_aristotles-ethics-and-p_aristotle_1797_2|326": [
+   1797,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_aristotles-ethics-and-p_aristotle_1797_2|327": [
+   1797,
+   "works",
+   "trade"
+  ],
+  "internet_archive:bim_eighteenth-century_aristotles-ethics-and-p_aristotle_1797_2|328": [
+   1797,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_constitutions-des-princ_delacroix-jacques-vince_1792_2|245": [
+   1792,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_experiments-and-observat_priestley-joseph-lld_1790_3|225": [
+   1790,
+   "works",
+   "other"
+  ],
+  "internet_archive:bim_eighteenth-century_ferishtas-history-of-de_firishtah-muhammad-kasi_1794_2|273": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_ferishtas-history-of-de_firishtah-muhammad-qasi_1794_2|274": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_hard-measure-or-a-real-_hill-richard-sir_1795|290": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_histoire-dangleterre-_smollett-tobias-george_1789_3|216": [
+   1789,
+   "works",
+   "religious"
+  ],
+  "internet_archive:bim_eighteenth-century_historical-collections-_hazard-ebenezer_1792_1|246": [
+   1792,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_historical-sketches-of-c_1788|208": [
+   1788,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_humes-history-of-englan_hume-david_1793|257": [
+   1793,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_interesting-views-of-chr_bonnet-charles_1787|201": [
+   1787,
+   "works",
+   "other"
+  ],
+  "internet_archive:bim_eighteenth-century_laws-etccollections_vermont_1787|202": [
+   1787,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_letters-written-to-an-of_seddon-thomas_1786_2|197": [
+   1786,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_measure-for-measure-an-_clarke-edward-daniel_1796|306": [
+   1796,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_memoir-of-the-operations_jourdan-jean-baptiste_1799|348": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_montserrat-code-of-laws_montserrat_1790|226": [
+   1790,
+   "works",
+   "other"
+  ],
+  "internet_archive:bim_eighteenth-century_parliament-house-of-com_great-britain_1799|349": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_peace-reasons-why-terms_raithby-john_1795|291": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_proceedings-1798-08-21_ireland-parliament-hou_1798|334": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_rapins-impartial-histor_rapin-de-thoyras-m-pa_1784_3|194": [
+   1784,
+   "works",
+   "religious"
+  ],
+  "internet_archive:bim_eighteenth-century_report-of-committee-of-s_great-britain-parliamen_1799_0|351": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_report-of-committee-of-s_great-britain-parliamen_1799|350": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_report-of-the-committee-_great-britain-parliamen_1799|352": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_report-of-the-secret-com_great-britain-parliamen_1799_0|353": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_rerum-sooticarum-histor_buchanan-george_1799_1|354": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_seculum-davidicum-redivi_fleming-robert_1793|258": [
+   1793,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_sermons-by-the-rev-tho_harwood-thomas_1794_1-2|275": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-annual-register-or-_1798|335": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-celebrated-speech-of_sheridan-richard-brinsl_1788|209": [
+   1788,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-duty-of-citizens-in-_1793_0|260": [
+   1793,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-duty-of-citizens-in-_1793|259": [
+   1793,
+   "works",
+   "other"
+  ],
+  "internet_archive:bim_eighteenth-century_the-happiness-of-a-free-_lathrop-joseph_1794|276": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-hilliad-or-hard-m_w-n-j_1796|307": [
+   1796,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_barlow-joel_1795_3|292": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_barlow-joel_1795_3|293": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_barlow-joel_1795_3|294": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david-the-histori_1791_2|237": [
+   1791,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david-the-histori_1791_2|238": [
+   1791,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david_1782_2|185": [
+   1782,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david_1782_2|186": [
+   1782,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david_1786_2|198": [
+   1786,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david_1789_2|217": [
+   1789,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david_1789_2|218": [
+   1789,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david_1791_2_0|241": [
+   1791,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david_1791_2_0|242": [
+   1791,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david_1791_2|239": [
+   1791,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david_1791_2|240": [
+   1791,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david_1793_2|261": [
+   1793,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david_1793_2|262": [
+   1793,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-_hume-david_1796_1|308": [
+   1796,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-f_gifford-john_1790_1|227": [
+   1790,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-england-f_gifford-john_1790_2|228": [
+   1790,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-france-f_beckford-william_1794_2|277": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-france-f_gifford-john_1793_1|263": [
+   1793,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-france-f_gifford-john_1793_3|264": [
+   1793,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-modern-eu_russell-william_1786_3|199": [
+   1786,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-scotland-_robertson-william_1787_1|203": [
+   1787,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-scotland-_robertson-william_1791_2|243": [
+   1791,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-scotland-_robertson-william_1793_1|265": [
+   1793,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-scotland-_robertson-william_1797_2|329": [
+   1797,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-scotland-_stuart-gilbert_1784_1|195": [
+   1784,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-the-distr_sullivan-james_1795|295": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-the-reign_1795|296": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-history-of-the-reign_1795|297": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-holy-bible-containi_1792_2_0|248": [
+   1792,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-holy-bible-containi_1792_2|247": [
+   1792,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-letters-from-and-to-_dorchester-dudley-carle_1780|179": [
+   1780,
+   "works",
+   "religious"
+  ],
+  "internet_archive:bim_eighteenth-century_the-letters-from-and-to-_dorchester-dudley-carle_1780|180": [
+   1780,
+   "works",
+   "religious"
+  ],
+  "internet_archive:bim_eighteenth-century_the-letters-from-and-to-_dorchester-dudley-carle_1780|181": [
+   1780,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-memoirs-of-gregorio-_panzani-gregorio_1793|266": [
+   1793,
+   "works",
+   "other"
+  ],
+  "internet_archive:bim_eighteenth-century_the-new-annual-register-_1799|355": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-origin-and-insidious_wollaston-francis_1799|356": [
+   1799,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:bim_eighteenth-century_the-political-progress-o_1795|298": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:bim_eighteenth-century_the-progress-of-reason-i_bignicourt-simon-de_1785|196": [
+   1785,
+   "works",
+   "other"
+  ],
+  "internet_archive:bim_eighteenth-century_the-spirit-of-masonry-in_hutchinson-william_1796|309": [
+   1796,
+   "works",
+   "trade"
+  ],
+  "internet_archive:bim_eighteenth-century_the-system-of-nature-or_holbach-paul-henri-thir_1797_1|330": [
+   1797,
+   "works",
+   "other"
+  ],
+  "internet_archive:bim_eighteenth-century_trial-by-jury-and-liber_1793|267": [
+   1793,
+   "works",
+   "political"
+  ],
+  "internet_archive:boynewateratale01banigoog|664": [
+   1826,
+   "works",
+   "political"
+  ],
+  "internet_archive:boynewatertale00bani_3|665": [
+   1826,
+   "works",
+   "political"
+  ],
+  "internet_archive:boynewatertale02bani|666": [
+   1826,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:bp_996060|568": [
+   1823,
+   "works",
+   "other"
+  ],
+  "internet_archive:bub_gb_4cMPAAAAQAAJ|187": [
+   1782,
+   "works",
+   "other"
+  ],
+  "internet_archive:bub_gb_5R42AAAAMAAJ|357": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:bub_gb_BmVRx18VPNYC|419": [
+   1810,
+   "works",
+   "political"
+  ],
+  "internet_archive:bub_gb_BmVRx18VPNYC|420": [
+   1810,
+   "works",
+   "political"
+  ],
+  "internet_archive:bub_gb_JvtKAAAAYAAJ|495": [
+   1819,
+   "works",
+   "crime"
+  ],
+  "internet_archive:bub_gb_LYEDAAAAQAAJ|765": [
+   1830,
+   "works",
+   "political"
+  ],
+  "internet_archive:bub_gb_NKMDAAAAYAAJ|525": [
+   1821,
+   "works",
+   "other"
+  ],
+  "internet_archive:bub_gb_O6DtIA8brboC|336": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:bub_gb_R3ZMAAAAMAAJ|766": [
+   1830,
+   "works",
+   "political"
+  ],
+  "internet_archive:bub_gb_V_LIdUYH9vYC|200": [
+   1786,
+   "works",
+   "political"
+  ],
+  "internet_archive:bub_gb_oARAAQAAMAAJ|700": [
+   1828,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:bub_gb_oARAAQAAMAAJ|701": [
+   1828,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:bub_gb_oARAAQAAMAAJ|704": [
+   1828,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:bub_gb_oARAAQAAMAAJ|706": [
+   1828,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:bub_gb_xd8RAAAAYAAJ|404": [
+   1807,
+   "works",
+   "trade"
+  ],
+  "internet_archive:bub_gb_xd8RAAAAYAAJ|405": [
+   1807,
+   "works",
+   "trade"
+  ],
+  "internet_archive:bub_gb_xd8RAAAAYAAJ|406": [
+   1807,
+   "works",
+   "trade"
+  ],
+  "internet_archive:bub_gb_zT4OAAAAQAAJ|407": [
+   1807,
+   "works",
+   "political"
+  ],
+  "internet_archive:bwb_S0-BMC-329|358": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:bwb_S0-BMC-331_40|337": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:bwb_S0-BMC-332|363": [
+   1800,
+   "works",
+   "political"
+  ],
+  "internet_archive:caseofmaryqueeno00camp|634": [
+   1825,
+   "works",
+   "political"
+  ],
+  "internet_archive:christianmesseng2182unse|667": [
+   1826,
+   "works",
+   "religious"
+  ],
+  "internet_archive:cihm_20617|183": [
+   1781,
+   "works",
+   "political"
+  ],
+  "internet_archive:cihm_20802|299": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:cihm_32006|569": [
+   1823,
+   "works",
+   "other"
+  ],
+  "internet_archive:cihm_37944|570": [
+   1823,
+   "works",
+   "other"
+  ],
+  "internet_archive:cihm_43309|310": [
+   1796,
+   "works",
+   "political"
+  ],
+  "internet_archive:cihm_43335|249": [
+   1792,
+   "works",
+   "political"
+  ],
+  "internet_archive:cihm_64176|392": [
+   1805,
+   "works",
+   "crime"
+  ],
+  "internet_archive:citizanofphilade00philrich|461": [
+   1815,
+   "works",
+   "other"
+  ],
+  "internet_archive:cobbettscomplet04jardgoog|415": [
+   1809,
+   "works",
+   "other"
+  ],
+  "internet_archive:collectionofstat0007vari|359": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:collectionofstat0008vari|364": [
+   1800,
+   "works",
+   "political"
+  ],
+  "internet_archive:collectionss3v2mass|250": [
+   1829,
+   "works",
+   "political"
+  ],
+  "internet_archive:congregationalm00unkngoog|635": [
+   1825,
+   "works",
+   "religious"
+  ],
+  "internet_archive:congressionalgl01blaigoog|767": [
+   1830,
+   "works",
+   "religious"
+  ],
+  "internet_archive:criticalpronounc00walk_0|668": [
+   1826,
+   "works",
+   "political"
+  ],
+  "internet_archive:debatesinseveral0002elli|204": [
+   1787,
+   "works",
+   "political"
+  ],
+  "internet_archive:desultorythought00lloy|526": [
+   1821,
+   "works",
+   "other"
+  ],
+  "internet_archive:dictionaryofengl18192john|496": [
+   1819,
+   "works",
+   "political"
+  ],
+  "internet_archive:digestoflawsofen04cruiuoft|610": [
+   1824,
+   "works",
+   "other"
+  ],
+  "internet_archive:dublinlondonmaga02londuoft|636": [
+   1825,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:dutyofcitizensin00londiala|268": [
+   1793,
+   "works",
+   "other"
+  ],
+  "internet_archive:edinburghencyclo07brew|768": [
+   1830,
+   "works",
+   "political"
+  ],
+  "internet_archive:edinburghreview01unkngoog|371": [
+   1802,
+   "works",
+   "political"
+  ],
+  "internet_archive:edinburghreviewo01macauoft|380": [
+   1803,
+   "works",
+   "political"
+  ],
+  "internet_archive:edinburghreviewo37londuoft|384": [
+   1823,
+   "works",
+   "crime"
+  ],
+  "internet_archive:essayondoctrineo00kidd|462": [
+   1815,
+   "works",
+   "trade"
+  ],
+  "internet_archive:essayonplanofsal00shin|444": [
+   1813,
+   "works",
+   "religious"
+  ],
+  "internet_archive:essayonplanofsal01shin|453": [
+   1814,
+   "works",
+   "religious"
+  ],
+  "internet_archive:essaysonprofessi00edgeuoft|433": [
+   1812,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:europeamericain01prad|543": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:europeandameric00frgoog|544": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:europeanmagazine19londuoft|188": [
+   1791,
+   "works",
+   "unclear"
+  ],
+  "internet_archive:experimentsando01priegoog|229": [
+   1790,
+   "works",
+   "other"
+  ],
+  "internet_archive:expositionofoldt01orto|545": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:ferishtashistory02firi_0|279": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:ferishtashistory02firi|278": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:fornottak00reasonsshrerich|709": [
+   1828,
+   "works",
+   "political"
+  ],
+  "internet_archive:germanromancego00tiecgoog|689": [
+   1827,
+   "works",
+   "trade"
+  ],
+  "internet_archive:germanromancesp00unkngoog|690": [
+   1827,
+   "works",
+   "trade"
+  ],
+  "internet_archive:goetheswilhelmme0000thom|611": [
+   1824,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:goetheswilhelmme0000thom|612": [
+   1824,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:gospelswithmoral03ques|769": [
+   1830,
+   "works",
+   "other"
+  ],
+  "internet_archive:greatgeneralsbyg01arno|365": [
+   1786,
+   "works",
+   "political"
+  ],
+  "internet_archive:heartssteelanir00mhegoog|637": [
+   1825,
+   "works",
+   "political"
+  ],
+  "internet_archive:historicalandpo01soulgoog|372": [
+   1802,
+   "works",
+   "political"
+  ],
+  "internet_archive:historicalcollec01haza|251": [
+   1792,
+   "works",
+   "political"
+  ],
+  "internet_archive:historicalnotice00dubl|546": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:historicalreview004plow|393": [
+   1805,
+   "works",
+   "political"
+  ],
+  "internet_archive:historicalreview00plow_1|381": [
+   1803,
+   "works",
+   "political"
+  ],
+  "internet_archive:historicalreview04plowiala|395": [
+   1805,
+   "works",
+   "political"
+  ],
+  "internet_archive:historicalreview04plowuoft|396": [
+   1805,
+   "works",
+   "political"
+  ],
+  "internet_archive:historicalreview04plow|394": [
+   1805,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:historicalreview41805plow|397": [
+   1805,
+   "works",
+   "political"
+  ],
+  "internet_archive:historicalsketc00wysegoog|744": [
+   1829,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:historicalsketc00wysegoog|745": [
+   1829,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:historicalsketc01wysegoog|747": [
+   1829,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:historicalsketch01wyse|748": [
+   1829,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:historicalsketch01wyse|749": [
+   1829,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:historyengland04unkngoog|710": [
+   1828,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyengland10unkngoog|219": [
+   1789,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyenglandf01humegoog|471": [
+   1816,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyenglandf04smolgoog|638": [
+   1825,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyenglandf04smolgoog|639": [
+   1825,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyenglandf12humegoog|472": [
+   1816,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyenglandf19humegoog|220": [
+   1789,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyenglandf19humegoog|221": [
+   1789,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyenglandf32humegoog|473": [
+   1816,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyenglandf33humegoog|474": [
+   1816,
+   "works",
+   "political"
+  ],
+  "internet_archive:historygreatbri00millgoog|640": [
+   1825,
+   "works",
+   "political"
+  ],
+  "internet_archive:historygreatbri00millgoog|641": [
+   1825,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyhelvetic00naylgoog|416": [
+   1809,
+   "works",
+   "other"
+  ],
+  "internet_archive:historyofameri02robe|480": [
+   1817,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofancient027279mbp|463": [
+   1815,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofancient03russuoft|464": [
+   1815,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofdistric00sull|300": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofenglan02hume|230": [
+   1790,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofenglan02hume|231": [
+   1790,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofenglan03robi|614": [
+   1824,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofengland962hume|311": [
+   1796,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofengland962hume|312": [
+   1796,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyoffrancef01giff|313": [
+   1796,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyoffrancef03giff|314": [
+   1796,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofireland01gord|399": [
+   1806,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofrebel0304claruoft|338": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofrevolto0000schi|210": [
+   1788,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofscotlan01buch|360": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofscotlan01robeuoft|507": [
+   1820,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofscotlan03lain|497": [
+   1819,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofwarinpe0004majo|454": [
+   1814,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofwarsoff01bainuoft|481": [
+   1817,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyofwarsoff01bain|498": [
+   1819,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyrevoluti00unkngoog|385": [
+   1804,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyscotland00robegoog|712": [
+   1828,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyscotland03robegoog|426": [
+   1811,
+   "works",
+   "political"
+  ],
+  "internet_archive:historyscotland04robegoog|427": [
+   1811,
+   "works",
+   "political"
+  ],
+  "internet_archive:historywarsfren02baingoog|484": [
+   1818,
+   "works",
+   "political"
+  ],
+  "internet_archive:holybiblecontain03scot|455": [
+   1814,
+   "works",
+   "political"
+  ],
+  "internet_archive:illustrationsofe00richrich|466": [
+   1815,
+   "works",
+   "other"
+  ],
+  "internet_archive:illustrationsofe00rich|669": [
+   1826,
+   "works",
+   "other"
+  ],
+  "internet_archive:illustrationsofe00ric|465": [
+   1815,
+   "works",
+   "other"
+  ],
+  "internet_archive:impartialjournal00browiala|301": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:imperialhistoryo00camduoft|421": [
+   1810,
+   "works",
+   "political"
+  ],
+  "internet_archive:inquiryintoprinc00thomuoft|615": [
+   1824,
+   "works",
+   "political"
+  ],
+  "internet_archive:journalllewelli01ficgoog|467": [
+   1815,
+   "works",
+   "crime"
+  ],
+  "internet_archive:jstor-30074693|445": [
+   1813,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:jstor-30075328|456": [
+   1814,
+   "works",
+   "political"
+  ],
+  "internet_archive:ldpd_6451108_000|205": [
+   1787,
+   "works",
+   "political"
+  ],
+  "internet_archive:lecturesonprogr00bour|572": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:lettersindefence00otis|616": [
+   1824,
+   "works",
+   "political"
+  ],
+  "internet_archive:lettersindefence00otis|617": [
+   1824,
+   "works",
+   "political"
+  ],
+  "internet_archive:lifeandvoyagesc11irvigoog|770": [
+   1830,
+   "works",
+   "crime"
+  ],
+  "internet_archive:lifeofjohnphilpo01curr|547": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:mannerscustoms00huntrich|574": [
+   1823,
+   "works",
+   "other"
+  ],
+  "internet_archive:memoirsacaptivi02huntgoog|575": [
+   1823,
+   "works",
+   "other"
+  ],
+  "internet_archive:memoirscourtkin08aikigoog|548": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:memoirsgregorio00panzgoog|269": [
+   1793,
+   "works",
+   "religious"
+  ],
+  "internet_archive:memoirsofcourtof01aiki|549": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:memoirsrichardl01edgegoog|508": [
+   1820,
+   "works",
+   "other"
+  ],
+  "internet_archive:memoirsrichardl11edgegoog|527": [
+   1821,
+   "works",
+   "other"
+  ],
+  "internet_archive:memooirsofcourto0002lucy|550": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:modernhistoryofh00maur|373": [
+   1802,
+   "works",
+   "political"
+  ],
+  "internet_archive:modernprecedent05bartgoog|528": [
+   1821,
+   "works",
+   "other"
+  ],
+  "internet_archive:monthlyrepositor09londuoft|434": [
+   1812,
+   "works",
+   "political"
+  ],
+  "internet_archive:narrativeofpolit00prin|509": [
+   1820,
+   "works",
+   "political"
+  ],
+  "internet_archive:newannualregiste1798kipp|339": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:newsystemofmoder01guth|280": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:newyorkmedicalph4182unse|642": [
+   1825,
+   "works",
+   "other"
+  ],
+  "internet_archive:nilesweeklyregis1418balt|457": [
+   1826,
+   "works",
+   "trade"
+  ],
+  "internet_archive:nilesweeklyregis14balt|428": [
+   1820,
+   "works",
+   "trade"
+  ],
+  "internet_archive:notionsonreligio00bost|670": [
+   1826,
+   "works",
+   "religious"
+  ],
+  "internet_archive:oates71079097|435": [
+   1812,
+   "works",
+   "political"
+  ],
+  "internet_archive:op1242554-1001|368": [
+   1801,
+   "works",
+   "political"
+  ],
+  "internet_archive:op1243991-1001|576": [
+   1823,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:orientalmemoirss03forb|446": [
+   1813,
+   "works",
+   "political"
+  ],
+  "internet_archive:originesorremar01mattgoog|618": [
+   1824,
+   "works",
+   "political"
+  ],
+  "internet_archive:outlinesofphilos00jarduoft|485": [
+   1818,
+   "works",
+   "other"
+  ],
+  "internet_archive:parliamentary-debates_february-april-1822_6|551": [
+   1822,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:parliamentary-debates_february-april-1823_8|577": [
+   1823,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:parliamentary-debates_february-april-1823_8|578": [
+   1823,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:parliamentary-debates_february-april-1823_8|579": [
+   1823,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:parliamentary-debates_february-april-1825_12|643": [
+   1825,
+   "works",
+   "unclear"
+  ],
+  "internet_archive:parliamentary-debates_march-june-1824_11|619": [
+   1824,
+   "works",
+   "political"
+  ],
+  "internet_archive:parliamentary-debates_march-may-1810_16|422": [
+   1810,
+   "works",
+   "other"
+  ],
+  "internet_archive:peacereasonswhy00raitgoog|302": [
+   1795,
+   "works",
+   "political"
+  ],
+  "internet_archive:per-western-carolinian-salisbury_western-carolinian_1823-09-09_4_170|580": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:per_pennsylvania-gazette_the-pennsylvania-gazette_1789-12-16_3107|222": [
+   1789,
+   "works",
+   "political"
+  ],
+  "internet_archive:pharmacologia00pari|644": [
+   1825,
+   "works",
+   "other"
+  ],
+  "internet_archive:pharmacologia01pari|645": [
+   1825,
+   "works",
+   "other"
+  ],
+  "internet_archive:pharmacologiaal00parigoog|646": [
+   1825,
+   "works",
+   "other"
+  ],
+  "internet_archive:pharmacologiacor01pari|647": [
+   1825,
+   "works",
+   "other"
+  ],
+  "internet_archive:philadelphiajour5182chap|552": [
+   1822,
+   "works",
+   "other"
+  ],
+  "internet_archive:philosophicalpo04rayn|447": [
+   1813,
+   "works",
+   "political"
+  ],
+  "internet_archive:pli.kerala.rare.11888|423": [
+   1810,
+   "works",
+   "political"
+  ],
+  "internet_archive:pli.kerala.rare.11911|510": [
+   1820,
+   "works",
+   "political"
+  ],
+  "internet_archive:pli.kerala.rare.12959|281": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:practicalexposit02guys|331": [
+   1797,
+   "works",
+   "political"
+  ],
+  "internet_archive:proceedingsunit00hollgoog|773": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:proceedingsunit00hollgoog|774": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:proceedingsunit01hollgoog|778": [
+   1830,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:proceedingsunit01hollgoog|779": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:proceedingsunit01hollgoog|780": [
+   1830,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:proceedingsunit01hollgoog|781": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:proceedingsunit01hollgoog|782": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:pts_ferishtashistory_3720-1110|282": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:publicandprivat00huisgoog|529": [
+   1821,
+   "works",
+   "political"
+  ],
+  "internet_archive:publicprivatelif00huisuoft|530": [
+   1821,
+   "works",
+   "political"
+  ],
+  "internet_archive:publicprivatelif00huisuoft|531": [
+   1821,
+   "works",
+   "political"
+  ],
+  "internet_archive:quentindurwardvo029441mbp|532": [
+   1821,
+   "works",
+   "political"
+  ],
+  "internet_archive:quentinduward0000walt|581": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:ramblersmagazin01unkngoog|417": [
+   1822,
+   "works",
+   "other"
+  ],
+  "internet_archive:reasonsfornottak0000shre|714": [
+   1828,
+   "works",
+   "political"
+  ],
+  "internet_archive:refutationofcalu00holl|553": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:reportfromcommit00irel|340": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:reportfromsecret00grea|341": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:reportscasesdet11appegoog|554": [
+   1829,
+   "works",
+   "crime"
+  ],
+  "internet_archive:republican01unkngoog|511": [
+   1826,
+   "works",
+   "trade"
+  ],
+  "internet_archive:republican01unkngoog|512": [
+   1826,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:republican01unkngoog|513": [
+   1826,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:retrospectionor01piozgoog|369": [
+   1801,
+   "works",
+   "unclear"
+  ],
+  "internet_archive:reviewofecclesia00cong|486": [
+   1818,
+   "works",
+   "religious"
+  ],
+  "internet_archive:s25id13211340|252": [
+   1792,
+   "works",
+   "political"
+  ],
+  "internet_archive:s25id13211610|342": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:s25id13211620|361": [
+   1799,
+   "works",
+   "political"
+  ],
+  "internet_archive:s25id13211650|366": [
+   1800,
+   "works",
+   "political"
+  ],
+  "internet_archive:s25id13211660|370": [
+   1801,
+   "works",
+   "political"
+  ],
+  "internet_archive:s25id13211780|400": [
+   1806,
+   "works",
+   "political"
+  ],
+  "internet_archive:s2id13276700|315": [
+   1796,
+   "works",
+   "other"
+  ],
+  "internet_archive:s2id13654510|671": [
+   1826,
+   "works",
+   "other"
+  ],
+  "internet_archive:s7343id1398710|514": [
+   1820,
+   "works",
+   "other"
+  ],
+  "internet_archive:sacredbiographyv04hunt|487": [
+   1818,
+   "works",
+   "other"
+  ],
+  "internet_archive:scourgeormonthly03crui|429": [
+   1811,
+   "works",
+   "political"
+  ],
+  "internet_archive:secondcrisisofam00john|468": [
+   1815,
+   "works",
+   "other"
+  ],
+  "internet_archive:selectionofspeec00hazliala|533": [
+   1821,
+   "works",
+   "political"
+  ],
+  "internet_archive:sermondelivereda00kend|448": [
+   1813,
+   "works",
+   "religious"
+  ],
+  "internet_archive:sermondelivereda01kend|449": [
+   1813,
+   "works",
+   "religious"
+  ],
+  "internet_archive:sermonsonvariou00farqgoog|253": [
+   1792,
+   "works",
+   "crime"
+  ],
+  "internet_archive:sermonsonvarious00farq|189": [
+   1782,
+   "works",
+   "political"
+  ],
+  "internet_archive:shortplainexposi01orto|244": [
+   1791,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_american-annual-register_1826-1827_2|672": [
+   1826,
+   "works",
+   "crime"
+  ],
+  "internet_archive:sim_american-medical-recorder_1823-01_6_1|583": [
+   1823,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_american-monthly-magazine-1829_the-american-monthly-mag_1830-07_2_4|783": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:sim_american-museum-or-universal-magazine_1790-12_8|232": [
+   1790,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_american-quarterly-review_1829-03_5_9|750": [
+   1829,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_analytical-review-or-history-of-literature-domestic_1790-12_8|233": [
+   1790,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_analytical-review-or-history-of-literature-domestic_1794-09_20|283": [
+   1794,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_analytical-review-or-history-of-literature-domestic_1798-09_28|343": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_analytical-review-or-history-of-literature-domestic_1798-12_28|344": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_anti-masonic-review-and-magazine_1828-03_1_3|717": [
+   1828,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:sim_anti-masonic-review-and-magazine_1830-03_2_3|784": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:sim_anti-masonic-review-and-magazine_1830-09_2_9|785": [
+   1830,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:sim_archaeologia-tracts-relating-to-antiquity_1796_12|316": [
+   1796,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_athenaeum-magazine_1807-07-01_2_7|408": [
+   1807,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_athenaeum-magazine_1807-07-01_2_7|409": [
+   1807,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_athenaeum-magazine_1807-09-01_2_9|410": [
+   1807,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_balance-and-state-journal_1808-08-09_7_32|413": [
+   1808,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_belfast-monthly-magazine_1813-11-30_11_64|450": [
+   1813,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_belfast-monthly-magazine_1814-02-28_12_67|458": [
+   1814,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_black-dwarf_1819-03-10_3_10|499": [
+   1819,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_black-dwarf_1823-09-17_11_12|584": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_blackwoods-magazine_1823-03_13_74|585": [
+   1823,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_blackwoods-magazine_1825-10_18_105|648": [
+   1825,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_boston-masonic-mirror_1825-02-19_1_9|649": [
+   1825,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_boston-pearl-and-galaxy_1829-02-13_12_592|751": [
+   1829,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_calcutta-journal-political-commercial-literary-gazette_1822-04-05_2_82|555": [
+   1822,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_calcutta-journal-political-commercial-literary-gazette_1822-12-18_6_302|556": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_calcutta-journal-political-commercial-literary-gazette_1823-03-04_2_54|586": [
+   1823,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-09-01_4_1|691": [
+   1827,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_cobbetts-weekly-political-register_1824-12-11_52_11|620": [
+   1824,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_congregational-magazine_1824-03_7_75|621": [
+   1824,
+   "works",
+   "religious"
+  ],
+  "internet_archive:sim_corrector_1828-04-14_6|721": [
+   1828,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_critical-review-or-annals-of-literature_1782-12_54|190": [
+   1782,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_critical-review-or-annals-of-literature_1794-08_11|284": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_critical-review-or-annals-of-literature_1796-12_18|317": [
+   1796,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_edinburgh-annual-register_1823_16_0|588": [
+   1823,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_edinburgh-review-critical-journal_1802-10_1_1|374": [
+   1802,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_edinburgh-review-critical-journal_1818-06_30_59|488": [
+   1818,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_edinburgh-review-critical-journal_1822-06_37_73|557": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_edinburgh-review-critical-journal_1824-07_40_80|622": [
+   1824,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_evangelical-magazine-and-gospel-advocate_1828-09-06_2_12|722": [
+   1828,
+   "works",
+   "religious"
+  ],
+  "internet_archive:sim_examiner-a-weekly-paper-on-politics-literature-music_1821-02-25_686|534": [
+   1821,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_examiner-a-weekly-paper-on-politics-literature-music_1822-07-14_758|558": [
+   1822,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_examiner-a-weekly-paper-on-politics-literature-music_1824-12-12_880|623": [
+   1824,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_examiner-a-weekly-paper-on-politics-literature-music_1825-11-27_929|650": [
+   1825,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_german-correspondent_1820-03-27_1_3|515": [
+   1820,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_great-britain-house-of-commons-journal_december-15-1806-december-17-1807_62|401": [
+   1806,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_great-britain-house-of-commons-journal_february-3-1825-january-5-1826_80|651": [
+   1825,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_great-britain-house-of-commons-journal_november-20-1798-august-27-1799_54|345": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_great-britain-house-of-commons-journal_november-23-1819-november-23-1820_75|500": [
+   1819,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_great-britain-house-of-commons-journal_november-23-1819-november-23-1820_75|501": [
+   1819,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_great-britain-house-of-commons-journal_november-23-1819-november-23-1820_75|502": [
+   1819,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_great-britain-parliament-parliamentary-debates_february-03-april-18-1825_12|652": [
+   1825,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_great-britain-parliament-parliamentary-debates_february-04-april-30-1823_8|590": [
+   1823,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_great-britain-parliament-parliamentary-debates_february-04-april-30-1823_8|592": [
+   1823,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_great-britain-parliament-parliamentary-debates_february-05-april-22-1822_6|559": [
+   1822,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_great-britain-parliament-parliamentary-debates_january-23-april-02-1821_4|535": [
+   1821,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_great-britain-parliament-parliamentary-debates_january-23-march-01-1810_15|424": [
+   1810,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_great-britain-parliament-parliamentary-debates_march-30-june-25-1824_11|624": [
+   1824,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_literary-and-scientific-repository-and-critical-review_1820-06_1_1|516": [
+   1820,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_london-co-operative-magazine_1828-10_3_6|724": [
+   1828,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_london-magazine_1828-09_2_6|727": [
+   1828,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_monthly-magazine_1818-06-01_45_312|489": [
+   1818,
+   "works",
+   "crime"
+  ],
+  "internet_archive:sim_monthly-repository_1814-06_9_102|459": [
+   1814,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_monthly-repository_1825-07_20_235|653": [
+   1825,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_museum-of-foreign-literature-science-and-art_1822_1_4|560": [
+   1822,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_national-register-a-weekly-the-proceedings-of-congress_1818-05-30_5_22|490": [
+   1818,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_new-annual-register_1822|561": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_new-york-literary-journal-and-belles-lettres-repository_1820-10_3_6|517": [
+   1820,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_new-york-medical-and-physical-journal_january-march-1825_4_1|654": [
+   1825,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_new-york-telescope_1826-04-01_2_44|673": [
+   1826,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_niles-national-register_1818-06-06_14_353|491": [
+   1818,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_oriental-herald-and-journal-of-general-literature_1824-02_1_2|625": [
+   1824,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_oriental-herald-and-journal-of-general-literature_1825-08_6_20|655": [
+   1825,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_pamphleteer-dedicated-to-both-houses-of-parliament_1820_16|518": [
+   1820,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_philadelphia-journal-of-medical-and-physical-sciences_1822_5|562": [
+   1822,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_quarterly-review-1809_1820-01_22_44|519": [
+   1820,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_reformer-and-christian_1825-05_6_65|656": [
+   1825,
+   "works",
+   "religious"
+  ],
+  "internet_archive:sim_reformer-and-christian_1825-07_6_67|657": [
+   1825,
+   "works",
+   "religious"
+  ],
+  "internet_archive:sim_reformer-and-christian_1828-10_9_106|728": [
+   1828,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_reformer-and-christian_1829-11_10_119|754": [
+   1829,
+   "works",
+   "religious"
+  ],
+  "internet_archive:sim_republican_1825-07-08_12_1|658": [
+   1825,
+   "works",
+   "trade"
+  ],
+  "internet_archive:sim_sentimental-and-literary-magazine_1795-08-19_1_8|303": [
+   1795,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_the-antijacobin-review-and-protestant-advocate_1798-09_1|346": [
+   1798,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_the-antijacobin-review-and-protestant-advocate_1815-02_48|469": [
+   1815,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_the-antijacobin-review-and-protestant-advocate_1820-03_58|520": [
+   1820,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_the-antijacobin-review-and-protestant-advocate_1820-06_58|521": [
+   1820,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_the-monthly-review_1798-12_27|347": [
+   1798,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:sim_the-monthly-review_1823-11_102|593": [
+   1823,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_time-piece_1797-09-27_2_6|332": [
+   1797,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_town-and-country-magazine-or-universal-repository_1780-10_12|182": [
+   1780,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_united-states-congress-debates-and-proceedings_1823-12|594": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_united-states-congress-debates-and-proceedings_1823-12|595": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_united-states-congress-debates-and-proceedings_1823-12|596": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_united-states-congress-debates-and-proceedings_annals-of-the_december-1823-february-1824_18|598": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_united-states-congress-debates-and-proceedings_october-17-1803-march-3-1805|382": [
+   1803,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_united-states-congress-register-of-debates-in-congress_december-16-1828-february-12-1829_5|730": [
+   1828,
+   "works",
+   "religious"
+  ],
+  "internet_archive:sim_universalist_1825-07-09_7_3|660": [
+   1825,
+   "works",
+   "religious"
+  ],
+  "internet_archive:sim_walkers-hibernian-magazine_1803-01|383": [
+   1803,
+   "works",
+   "political"
+  ],
+  "internet_archive:sim_watchman-examiner_1829-09-04_10_36|755": [
+   1829,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:sim_watchman-examiner_1829-09-04_10_36|756": [
+   1829,
+   "works",
+   "freemasonry"
+  ],
+  "internet_archive:sim_weekly-entertainer-and-west-of-england-miscellany_1783-04-28_1_17|191": [
+   1783,
+   "works",
+   "other"
+  ],
+  "internet_archive:sim_weekly-entertainer-and-west-of-england-miscellany_1802-12-06_40|375": [
+   1802,
+   "works",
+   "trade"
+  ],
+  "internet_archive:speechesinparlia01winduoft|436": [
+   1812,
+   "works",
+   "political"
+  ],
+  "internet_archive:speechesrightho01thergoog|731": [
+   1828,
+   "works",
+   "political"
+  ],
+  "internet_archive:supplementtomod00maurgoog|425": [
+   1810,
+   "works",
+   "political"
+  ],
+  "internet_archive:systemofnatureor13holb|522": [
+   1820,
+   "works",
+   "other"
+  ],
+  "internet_archive:tenyearsexile00sta|536": [
+   1821,
+   "works",
+   "political"
+  ],
+  "internet_archive:tenyearsexile00unkngoog|537": [
+   1821,
+   "works",
+   "political"
+  ],
+  "internet_archive:tractsinprosean00lowngoog|692": [
+   1827,
+   "works",
+   "political"
+  ],
+  "internet_archive:tractsinprosean01lowngoog|693": [
+   1827,
+   "works",
+   "political"
+  ],
+  "internet_archive:tractsinprosean04lowngoog|694": [
+   1827,
+   "works",
+   "political"
+  ],
+  "internet_archive:translationsbye00seilgoog|437": [
+   1812,
+   "works",
+   "religious"
+  ],
+  "internet_archive:translationsfro00seilgoog|438": [
+   1812,
+   "works",
+   "other"
+  ],
+  "internet_archive:travelspolyclet00thgoog|674": [
+   1826,
+   "works",
+   "trade"
+  ],
+  "internet_archive:trent_0116401838770|626": [
+   1824,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:truestateofquest00speaiala|475": [
+   1816,
+   "works",
+   "religious"
+  ],
+  "internet_archive:truestateofquest00speaiala|476": [
+   1816,
+   "works",
+   "political"
+  ],
+  "internet_archive:unitedstatestele02wash|732": [
+   1828,
+   "works",
+   "political"
+  ],
+  "internet_archive:uticaevangelical00utic|735": [
+   1828,
+   "works",
+   "political"
+  ],
+  "internet_archive:vermontstatepap00statgoog|600": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:vermontstatepape00verm|601": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:vermontstatepape1779verm|602": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:viewsofirelandmo01odri|603": [
+   1823,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:vindicationofpr00howt|477": [
+   1816,
+   "works",
+   "religious"
+  ],
+  "internet_archive:vindicationofpro00howt|478": [
+   1816,
+   "works",
+   "political"
+  ],
+  "internet_archive:visittocolombiai01duan|675": [
+   1826,
+   "works",
+   "other"
+  ],
+  "internet_archive:vol2historyoffra00beck|285": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:vol2historyofsco00robe|386": [
+   1804,
+   "works",
+   "political"
+  ],
+  "internet_archive:vol3historyofeng00turn|604": [
+   1823,
+   "works",
+   "political"
+  ],
+  "internet_archive:vol5speechofrigh00cann|736": [
+   1828,
+   "works",
+   "political"
+  ],
+  "internet_archive:vol7lifeofnapole00vane|418": [
+   1809,
+   "works",
+   "political"
+  ],
+  "internet_archive:waverleynovels06scotgoog|563": [
+   1822,
+   "works",
+   "political"
+  ],
+  "internet_archive:wilhelmmeistersa025225mbp|627": [
+   1824,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:wilhelmmeistersa025225mbp|628": [
+   1824,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:wilhelmmeistersa025225mbp|629": [
+   1824,
+   "works",
+   "trade"
+  ],
+  "internet_archive:wilhelmmeisterst0000goet|318": [
+   1796,
+   "works",
+   "trade"
+  ],
+  "internet_archive:workscorneliust00tacigoog|451": [
+   1813,
+   "works",
+   "political"
+  ],
+  "internet_archive:workscorneliust05tacigoog|452": [
+   1813,
+   "works",
+   "political"
+  ],
+  "internet_archive:worksofcornelius0000unse|286": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:worksofcornelius03taci_0|270": [
+   1793,
+   "works",
+   "political"
+  ],
+  "internet_archive:worksofcornelius03taci|287": [
+   1794,
+   "works",
+   "political"
+  ],
+  "internet_archive:worksofcornelius05taci|398": [
+   1805,
+   "works",
+   "political"
+  ],
+  "internet_archive:worksoflatewilli01robeuoft|676": [
+   1826,
+   "works",
+   "political"
+  ],
+  "internet_archive:worksofrevpdoddr0006vari|387": [
+   1804,
+   "works",
+   "other"
+  ],
+  "internet_archive:worksrevpdoddri05doddgoog|376": [
+   1802,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:workstowhichispr02robe|482": [
+   1817,
+   "works",
+   "political"
+  ],
+  "internet_archive:workswilliamrob14stewgoog|695": [
+   1827,
+   "works",
+   "political"
+  ],
+  "internet_archive:workswilliamrob15stewgoog|538": [
+   1821,
+   "works",
+   "political"
+  ],
+  "internet_archive:xt76ww76tj2n|377": [
+   1802,
+   "works",
+   "other_society"
+  ],
+  "internet_archive:xt7dfn10pp7c|402": [
+   1806,
+   "works",
+   "political"
+  ],
+  "tcp:A36034|788": [
+   1700,
+   "works",
+   "crime"
+  ],
+  "tcp:A51674|789": [
+   1700,
+   "works",
+   "other"
+  ],
+  "tcp:K014927.000|790": [
+   1788,
+   "works",
+   "political"
+  ],
+  "tcp:K035393.000|791": [
+   1766,
+   "works",
+   "other"
+  ],
+  "tcp:K051252.000|792": [
+   1792,
+   "works",
+   "other"
+  ],
+  "tcp:K067383.001|793": [
+   1762,
+   "works",
+   "political"
+  ],
+  "tcp:K080051.000|794": [
+   1775,
+   "works",
+   "trade"
+  ],
+  "tcp:N04858|795": [
+   1747,
+   "works",
+   "political"
+  ],
+  "tcp:N09422|796": [
+   1771,
+   "works",
+   "religious"
+  ],
+  "tcp:N15944|797": [
+   1787,
+   "works",
+   "political"
+  ],
+  "tcp:N21591|798": [
+   1795,
+   "works",
+   "political"
+  ],
+  "tcp:N24327|799": [
+   1797,
+   "works",
+   "political"
+  ],
+  "tcp:N26644|800": [
+   1799,
+   "works",
+   "political"
+  ]
+ }
+}
