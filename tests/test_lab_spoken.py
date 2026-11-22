@@ -97,6 +97,7 @@ def _rows(seed: int, gap: float) -> list[dict]:
 
 
 def test_check_passes_when_separable_and_misses_when_not():
+    pytest.importorskip("sklearn")  # the model extra; CI installs only the base packages
     good = spoken.check(_rows(1, 4.0), spoken.FEATURES, T)["result"]
     assert good["passed"] and good["auc_all"] > 0.95
     bad = spoken.check(_rows(2, 0.0), spoken.FEATURES, T)["result"]
@@ -104,6 +105,7 @@ def test_check_passes_when_separable_and_misses_when_not():
 
 
 def test_contributions_sum_to_total():
+    pytest.importorskip("sklearn")  # the model extra; CI installs only the base packages
     rows = _rows(3, 3.0)
     ck = spoken.check(rows, spoken.FEATURES, T)
     spk = [r for r in rows if r["label"] == 1]

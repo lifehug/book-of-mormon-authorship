@@ -1,5 +1,7 @@
 """BOM-102: the chunker, features, MARC reading and Hebraism rules behave as the card says."""
 
+import pytest
+
 from lab import translation as T
 
 B = {"cognate_max_gap": 3, "if_and_max_words": 25, "poly_min_ands": 4, "poly_max_gap": 10}
@@ -58,5 +60,6 @@ def test_rates_are_per_ten_thousand_words():
 
 
 def test_equal_error_and_auc():
+    pytest.importorskip("sklearn")  # the model extra; CI installs only the base packages
     assert T.auc([0.9, 0.8], [0.1, 0.2]) == 1.0
     assert 0.2 < T.equal_error([0.9, 0.8, 0.7], [0.1, 0.2, 0.3]) <= 0.7

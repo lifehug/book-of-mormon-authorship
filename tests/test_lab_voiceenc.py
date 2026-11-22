@@ -6,6 +6,7 @@ from collections import Counter
 import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
+import pytest
 
 from lab import voiceenc as ve
 from lab import voiceenc_eval as vee
@@ -97,6 +98,7 @@ def _draws(tmp_path):
 
 
 def test_cross_steps_put_one_register_on_each_side(tmp_path):
+    pytest.importorskip("torch")  # the model extra; CI installs only the base packages
     dr = _draws(tmp_path)
     kind, picks = dr.plan(3, 4)
     assert kind.startswith("cross")
