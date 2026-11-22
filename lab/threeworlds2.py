@@ -1235,9 +1235,13 @@ def _init_vocab(vocab: dict) -> None:
     inv.VOCAB.update(vocab)
 
 
+MISS = "not found among the earliest hits judged"
+
+
 def partb_dates(answers: dict[str, str]) -> dict[str, dict]:
     """Per feature: the earliest print year of a passage the judge says states it of ancient
-    Americans; "not found" if no hit says so (not found in the library, never "unknown")."""
+    Americans. With no "yes" among the earliest ``partb_max_hits`` hits the state says only that:
+    later hits (thousands for most features) were not judged, so it is not "not in print"."""
     pb = CACHE / "partb_hits.json"
     if not pb.exists():
         return {}
@@ -1257,8 +1261,7 @@ def partb_dates(answers: dict[str, str]) -> dict[str, dict]:
                 yes.append((h["year"], h["work_id"]))
         res[fid] = {"hits": len(rows), "open": n_open,
                     "earliest": min(yes) if yes else None,
-                    "state": "open" if n_open else ("found" if yes else
-                                                    "not found in the library")}  # fmt: skip
+                    "state": "open" if n_open else ("found" if yes else MISS)}  # fmt: skip
     return res
 
 
