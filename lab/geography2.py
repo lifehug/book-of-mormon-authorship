@@ -909,7 +909,16 @@ def part_a_verdict(spec: float, spec_upper: float, inside: bool, a: dict) -> str
 
 
 def openbible_coords() -> dict[str, tuple[float, float]]:
-    return {norm(k): v for k, v in g1.openbible().items()}
+    """OpenBible.info places, folded; homonyms ("Bethel 1", "Bethel 2") give the name to the
+    lowest number."""
+    got: dict[str, tuple[int, tuple[float, float]]] = {}
+    for k, v in g1.openbible().items():
+        m = re.fullmatch(r"(.*?)\s+(\d+)", k)
+        name, n = (m.group(1), int(m.group(2))) if m else (k, 0)
+        key = norm(name)
+        if key not in got or n < got[key][0]:
+            got[key] = (n, v)
+    return {k: v for k, (_n, v) in got.items()}
 
 
 def pleiades_coords() -> dict[str, tuple[float, float]]:
