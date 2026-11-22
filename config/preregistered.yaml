@@ -1600,6 +1600,13 @@ lab:                              # the research lab (exploratory tooling; reads
       control_bible_style: data/controls/pseudo_biblical_curated.txt
       control_sermons_list: data/controls/sermons_1820s.txt
       control_pad_chars: 300       # characters added each side of a control's masked Isaiah span before alignment (mask edges run short)
+      judging:                     # 2026-11-22 (card 2026-11-22-isaiah-judging): the by-meaning step, simulated judging by an AI model; written before any answer
+        model: sonnet
+        check_decoys_clarke: 60    # made-up readings asked about Clarke's volume (expected answer: no)
+        check_decoys_other: 140    # and about the other 11 works
+        bar_decoy_no: 0.90         # judge's check: share of made-up readings answered NO
+        bar_verbatim_yes: 0.80     # and share of readings printed word for word answered YES
+        alpha: 0.05                # Clarke stands out only if first among the 12 works and above the rest at this level (one-sided Fisher)
   dictations:                    # BOM-104 (lab; exploratory): Joseph Smith's other dictated texts, and the Lectures on Faith; measures and word form are lab.two_voices*'s
     candidates: [joseph_smith, sidney_rigdon, oliver_cowdery, ww_phelps, parley_pratt]
     train_chunks: 8                # each candidate's first chunks (masked text): centroids and the author models' training slices
