@@ -62,7 +62,7 @@ compares against.
 | --- | --- | --- | --- | --- | --- |
 | BOM-118 | About 64 word uses and phrases had died out of English before the 1740s | Skousen and Carmack 2018 | dictionary citations, one item at a time | every item searched for its meaning across the whole library, with the same search on Bible-style books | TBD; 48 of 64 items in hand |
 | BOM-119 | The grammar is 1500s English: "did go" past tenses at 20% against under 2% in Bible-style books | Carmack 2015 to 2021 | five Bible-style books | every book in the library | **Done** |
-| BOM-102 | It reads like a translation; it has Hebrew turns of phrase | Tvedtnes, Skousen and others | examples | real translations against Bible-style imitations | TBD |
+| BOM-102 | It reads like a translation; it has Hebrew turns of phrase | Tvedtnes, Skousen and others | examples | real translations against Bible-style imitations | **Hebraisms done; translation check failed** |
 | BOM-120 | "Therefore" and "wherefore" switch in the order the book was dictated | Metcalfe 1993 | the book alone | 264 long books by one author | **Done** |
 
 ### 2. Where did the words and ideas come from?
@@ -960,6 +960,58 @@ nearest Pratt. None of it is firm enough to call, and Rigdon is never the closes
 them. I see no drift away from the Book of Mormon over the years.
 
 So: a lean toward Rigdon for most of the Lectures, on one measure that barely qualified.
+
+### Does it read like a translation? (BOM-102)
+
+Two versions of one claim. The broad one: translated books carry marks of translation, and the
+Book of Mormon has them. The narrow one: it has particular Hebrew turns of phrase, "plates of
+brass" for "brass plates", "dreamed a dream", "and it came to pass".
+
+The hard part of both is the same. Plenty of Americans before 1830 wrote whole books in Bible
+style on purpose: *The Late War*, the *Chronicles of Eri*, *The First Book of Napoleon*. None
+had a Hebrew original. A test that cannot tell those from real translations only detects Bible
+style.
+
+**The broad version failed its check.** I trained a classifier on 695 books the library
+catalogue marks as translations and 1,387 written in English. On books it had not seen it was
+right 88 percent of the time. But it had to do two more things at once: call the King James
+Bible, Sale's Koran and Whiston's Josephus translations, and not call the imitations
+translations. No version did both. One scored *The Late War*, a history of the War of 1812, as
+more of a translation than the Bible. So I did not score the Book of Mormon.
+
+**The narrow version ran.** Ten rules, one per construction. Seven passed their check (at least
+twice as common in the King James Old Testament as in ordinary prose). Per 10,000 words:
+
+| Construction | Book of Mormon | King James Old Testament | Highest Bible-style imitation | Other translations from Hebrew | Ordinary prose |
+| --- | --- | --- | --- | --- | --- |
+| "it came to pass" | 59.3 | 8.7 | 38.8 | 0.6 | 0.1 |
+| "of" + material ("rod of iron") | 2.8 | 5.7 | 4.7 | 1.3 | 1.0 |
+| "dreamed a dream" kind | 0.36 | 0.54 | 1.36 | 0.07 | 0.05 |
+| "by the hand of", "from before" | 4.5 | 3.6 | 4.2 | 0.5 | 0.1 |
+| "and ... and ... and" | 13.3 | 18.2 | 47.1 | 1.6 | 2.4 |
+| "his ... and his ... and his" | 11.9 | 9.1 | 19.1 | 1.7 | 1.2 |
+| "because that" | 1.2 | 0.25 | 0.64 | 0.02 | 0.06 |
+
+On four of the seven, some English imitator with no Hebrew in front of him uses the
+construction as much as the Book of Mormon does, or more. On the other three ("it came to
+pass", the compound prepositions, "because that") none quite does.
+
+Look at the fifth column, though. Translations from Hebrew other than the King James Bible
+barely have any of these, less than a tenth of the Bible's rate. So they are not marks of
+Hebrew coming through into English. They are marks of the King James Bible's English. And the
+Book of Mormon overshoots the Bible on three of them: "it came to pass" at seven times the Old
+Testament's rate. Joseph Smith's Book of Moses does the same (27.8), and has "because that"
+at a higher rate than the Book of Mormon.
+
+What I take from it: these constructions show closeness to King James English, which nobody
+disputes. They do not separate a translation from Hebrew from an English writer steeped in the
+Bible, because such writers produce most of them freely and other Hebrew translations do not
+produce them at all.
+
+Limits. The rules were checked on planted examples, not on a hand-read sample of what they
+caught. The imitations add up to only 445,000 words. The "if ... and" construction, the one
+Skousen stresses most, could not be tested: the King James Bible does not have it, so my check
+had nothing to stand on.
 
 ## What I would want a reader to take from the whole set
 

@@ -1601,6 +1601,67 @@ lab:                              # the research lab (exploratory tooling; reads
       rigdon_series: [millennium_1833_35.htm, gospel_1833_35.htm]   # data/private/lab/sources/rigdon/; attribution the editor's
       smith_t73_kinds: [letter, note, reflections]                   # data/private/candidates/t73-<kind>-*.jsonl
       quote_ngram: 8                 # candidates' tokens covered by a word 8-gram of the scripture targets (Book of Mormon, revelations, Moses, Abraham) are dropped
+  translation:                     # BOM-102 (lab; exploratory): translation marks (A) and claimed Hebraisms (B)
+    year_min: 1700                 # labelled HathiTrust books printed in these years (registry year)
+    year_max: 1830
+    min_words: 10000               # a labelled book needs at least this many words
+    chunk_words: 2000              # words per chunk, for training books and for every scored text
+    chunks_per_book: 5             # evenly spaced chunks taken from each training book
+    trim_share: 0.1                # skip this share of a book's words at each end (front matter, index)
+    originals_ratio: 2             # originals drawn per translation, in each (decade, first genre) cell
+    exclude_genre: pseudo_biblical # books with this genre label kept out of training on both sides
+    exclude_title: '\b(bible|testament|koran|alcoran|coran|josephus|psalms?|gospels?|scriptures?|apocrypha|isaiah|jeremiah|job|proverbs|ecclesiastes|canticles|solomon.s song|song of songs|hosea|chronicles? of eri|late war|napoleon|anti-?christ)\b'   # scripture, the named targets and the imitations: never training books
+    translation_title: '\btranslat|\b(from|out of) the (original )?(french|german|latin|greek|spanish|italian|hebrew|arabic|dutch|persian|portuguese|danish|swedish|high.dutch|low.dutch)\b|\bdone into english|\bmade english|\benglished|\brendered into english|\bfrom the [a-z]+ of (m\.|mons|monsieur|madame|the abbe|herr|signor)'   # catalog title or author field says the book is a translation
+    seed: 20261121
+    folds: 5                       # cross-validation folds, whole authors held out together
+    c: 1.0                         # logistic regression inverse regularisation
+    auc_bar: 0.80                  # (A) known answer: held-out book-level AUC, translations against originals
+    imitation_share_below: 0.5     # (A) at least this share of the imitations (2+ chunks) must score below the threshold
+    min_lang_books: 30             # a source language is reported on its own when it has this many translated books
+    hand_check: 100                # catalogue records read by hand on each side of the labelled set
+    hand_check_bar: 0.85           # label accuracy each side must reach, or part A stops
+    known_translations:            # (A) must score as translations (mean chunk score at or above the threshold)
+      kjv: data/kjv/kjv.jsonl
+      koran_sale: data/corpus/lab/sources/names/koran_sale.txt
+      josephus_antiquities_whiston: data/corpus/lab/sources/names/josephus_antiquities_whiston.txt
+      josephus_wars_whiston: data/corpus/lab/sources/names/josephus_wars_whiston.txt
+    imitations:                    # Bible-style books written in English, one copy per title (wordtree transcriptions where held)
+      late_war_1816: 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/The Late War - Gilbert Hunt - 1816.md'
+      snowden_american_revolution_1802: 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/The American Revolution - Richard Snowden - 1802.md'
+      first_book_of_napoleon_1809: 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/The First Book of Napoleon - 1809.md'
+      history_of_anti_christ_1811: 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/History of Anti-Christ - Elias Smith - 1811.md'
+      chronicles_of_eri_1822: data/corpus/lab/sources/bible_style/chroniclesoferib02ocon/text.txt
+      leacock_american_chronicles_1775: 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/The First Book of the American Chronicles - John Leacock - 1775.md'
+      dodsley_chronicle_kings_1744: ['data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md', 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md']
+      chronicles_of_andrew_1815: 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/Chronicles of Andrew - Jesse Denson - 1815.md'
+      true_relation_holy_war_1806: 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/True Relation of the Holy War - 1806.md'
+      book_of_nullification_1830: data/corpus/lab/sources/bible_style/bookofnullificat00char/text.txt
+      chronicles_nathan_ben_saddi_1758: 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/Chronicles of Nathan Ben Saddi - 1758.md'
+      book_of_america_1766: 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/The Book of America - 1766.md'
+      walpole_book_of_preferment_1742: 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/The Book of Preferment - Horace Walpole - 1742.md'
+      short_pieces: ['data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/A Chronicle of the Chiefs of Muttonville - White Griswold - 1830.md', 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/Chapter 37th - 1782.md', 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/Parable Against Persecution - Benjamin Franklin - 1755.md', 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/The Fall of Samuel the Squomicutite - 1763.md', 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/The First Book of the Chronicles of John - 1812.md', 'data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical/The French Gasconade Defeated - 1743.md']   # pieces under 1,100 words, pooled (part B only)
+    hebrew_translations:           # (B) English translations from Hebrew other than the King James Bible (library work ids; notes and prefaces included)
+      lowth_isaiah_1815: institutional_books:AH6S4S
+      blayney_jeremiah_1784: internet_archive:bim_eighteenth-century_jeremiah-and-lamentation_blayney-benjamin_1784
+      horsley_hosea_1801: internet_archive:hoseatranslatedf00hors
+      smith_job_1810: internet_archive:bookofjobtransla00smit
+      good_job_1812: internet_archive:bookofjobliteral00good
+      horsley_psalms_1815: institutional_books:AH4EGC
+      holden_proverbs_1819: institutional_books:AH5KPA
+      hodgson_ecclesiastes_1790: internet_archive:bim_eighteenth-century_ecclesiastes-a-new-trans_1790
+      benjamin_of_tudela_1783: internet_archive:bim_eighteenth-century_travels-of-rabbi-benjami_benjamin-ben-jonah-of-t_1783
+    prose_sample: 300              # (B) ordinary period prose: library works drawn at random
+    prose_year_min: 1780
+    prose_year_max: 1830
+    prose_min_words: 20000
+    max_words: 100000              # (B) words counted per library work at most (from the middle)
+    non_semitic_sample: 60         # (B) labelled translations from French, German, Latin, Greek, Italian, Spanish drawn at random
+    ot_ratio_bar: 2.0              # (B) known answer: rule's rate in the King James Old Testament at least this times ordinary prose
+    if_and_max_words: 25           # (B) if-and: "if" clause at most this many words before ", and <subject> <modal>"
+    poly_min_ands: 4               # (B) polysyndeton: a run of at least this many "and" in one sentence
+    poly_max_gap: 10               # (B) with at most this many words between consecutive "and"
+    cognate_max_gap: 3             # (B) cognate accusative: at most this many modifier words between verb and noun
+    imitation_min_words: 5000      # (B) an imitation counts alone toward "reaches" only with at least this many words
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
