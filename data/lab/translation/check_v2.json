@@ -1,0 +1,4773 @@
+{
+ "config_sha256": "3770f75a084a2384cff2ac091eddccfea686d7c1c85a5652b2b26d8c33fc229e",
+ "commit": "901ef5c67b856fbdf4cb0e10a9f95c86d6f98d2d",
+ "settings": {
+  "seed": 20261122,
+  "verse_ngram": 4,
+  "verse_match_min": 0.5,
+  "if_then_window": 25,
+  "retention_sample": 100,
+  "retention_hand": 20,
+  "suppressed_max": 0.2,
+  "carried_max": 0.5,
+  "literal_ratio": 3.0,
+  "min_features": 3,
+  "min_words": 30000,
+  "floor_ratio": 1.5,
+  "precision_hand": 50,
+  "precision_bar": 0.8,
+  "unit_words": 20000,
+  "auc_bar": 0.9,
+  "ot_floor": 0.05,
+  "min_candidates": 10,
+  "doubled_gap": 3,
+  "if_and_max_words": 40,
+  "judge_check_bar": 0.9,
+  "judge_cap_per_text": 150,
+  "max_words": 100000,
+  "emode_sample": 100,
+  "emode_years": [
+   1550,
+   1650
+  ],
+  "emode_min_words": 20000,
+  "oldbailey_years": [
+   1780,
+   1830
+  ],
+  "pseudo_translations": [
+   "ossian_1819",
+   "otranto_1764",
+   "ilive_jasher_1751",
+   "psalmanazar_formosa_1704",
+   "chronicles_of_eri_1822"
+  ],
+  "js_dictated": [
+   "js-1828-1829-revelations",
+   "revelations-later-1830",
+   "revelations-later-1831",
+   "dictated-visions_of_moses_1830",
+   "dictated-ot_revision_1",
+   "dictated-abraham_1842"
+  ],
+  "js_own_hand": [
+   "js-letters-1829-1833-all",
+   "js-1832-history"
+  ]
+ },
+ "book_of_mormon": "not scored: K3 (hand check, judge) is pending; see the card",
+ "inventory": {
+  "doubled_verb": {
+   "claimed": false,
+   "hebrew_instances": 468,
+   "partial_verse_skipped": 0,
+   "sampled": 100,
+   "kjv_kept": 1,
+   "retention_kjv": 0.01,
+   "retention_young": 0.06,
+   "young_read": 100,
+   "class": "suppressed"
+  },
+  "if_and": {
+   "claimed": true,
+   "hebrew_instances": 230,
+   "partial_verse_skipped": 0,
+   "sampled": 100,
+   "kjv_kept": 1,
+   "retention_kjv": 0.01,
+   "retention_young": 0.02,
+   "young_read": 100,
+   "class": "suppressed"
+  },
+  "possessive_infinitive": {
+   "claimed": false,
+   "hebrew_instances": 557,
+   "partial_verse_skipped": 0,
+   "sampled": 100,
+   "kjv_kept": 0,
+   "retention_kjv": 0.0,
+   "retention_young": 0.74,
+   "young_read": 100,
+   "class": "suppressed"
+  },
+  "came_to_pass": {
+   "claimed": true,
+   "hebrew_instances": 784,
+   "partial_verse_skipped": 0,
+   "sampled": 100,
+   "kjv_kept": 47,
+   "retention_kjv": 0.47,
+   "retention_young": 0.55,
+   "young_read": 100,
+   "class": "between"
+  },
+  "by_the_hand_of": {
+   "claimed": true,
+   "hebrew_instances": 566,
+   "partial_verse_skipped": 0,
+   "sampled": 100,
+   "kjv_kept": 9,
+   "retention_kjv": 0.09,
+   "retention_young": 0.21,
+   "young_read": 100,
+   "class": "suppressed"
+  },
+  "from_before": {
+   "claimed": true,
+   "hebrew_instances": 75,
+   "partial_verse_skipped": 0,
+   "sampled": 75,
+   "kjv_kept": 21,
+   "retention_kjv": 0.28,
+   "retention_young": 0.5867,
+   "young_read": 75,
+   "class": "between"
+  },
+  "of_material": {
+   "claimed": true,
+   "hebrew_instances": 587,
+   "partial_verse_skipped": 0,
+   "sampled": 100,
+   "kjv_kept": 42,
+   "retention_kjv": 0.42,
+   "retention_young": 0.47,
+   "young_read": 100,
+   "class": "between"
+  },
+  "called_the_name": {
+   "claimed": true,
+   "hebrew_instances": 169,
+   "partial_verse_skipped": 0,
+   "sampled": 100,
+   "kjv_kept": 46,
+   "retention_kjv": 0.46,
+   "retention_young": 0.55,
+   "young_read": 100,
+   "class": "between"
+  }
+ },
+ "check": {
+  "counts": "raw",
+  "kjv_ot_rates": {
+   "doubled_verb": 0.1796,
+   "if_and": 0.2449,
+   "possessive_infinitive": 0.3428,
+   "came_to_pass": 8.7337,
+   "by_the_hand_of": 1.1427,
+   "from_before": 1.2733,
+   "of_material": 5.7136,
+   "called_the_name": 1.208
+  },
+  "K1": {
+   "features": {
+    "doubled_verb": {
+     "claimed": false,
+     "retention_kjv": 0.01,
+     "suppressed": true,
+     "kjv_ot_per10k": 0.1796,
+     "kjv_ot_ci": [
+      0.0896,
+      0.3213
+     ],
+     "literal": {
+      "ainsworth_1627": {
+       "per10k": 6.3361,
+       "ci": [
+        5.1771,
+        7.6773
+       ],
+       "ratio": 35.285,
+       "passes": true
+      },
+      "young_ot": {
+       "per10k": 0.578,
+       "ci": [
+        0.4026,
+        0.8039
+       ],
+       "ratio": 3.219,
+       "passes": true
+      }
+     },
+     "kept": true
+    },
+    "if_and": {
+     "claimed": true,
+     "retention_kjv": 0.01,
+     "suppressed": true,
+     "kjv_ot_per10k": 0.2449,
+     "kjv_ot_ci": [
+      0.1371,
+      0.4039
+     ],
+     "literal": {
+      "ainsworth_1627": {
+       "per10k": 0.2437,
+       "ci": [
+        0.0664,
+        0.624
+       ],
+       "ratio": 0.995,
+       "passes": false
+      },
+      "young_ot": {
+       "per10k": 0.2973,
+       "ci": [
+        0.1762,
+        0.4698
+       ],
+       "ratio": 1.214,
+       "passes": false
+      }
+     },
+     "kept": false
+    },
+    "possessive_infinitive": {
+     "claimed": false,
+     "retention_kjv": 0.0,
+     "suppressed": true,
+     "kjv_ot_per10k": 0.3428,
+     "kjv_ot_ci": [
+      0.2122,
+      0.524
+     ],
+     "literal": {
+      "ainsworth_1627": {
+       "per10k": 0.5483,
+       "ci": [
+        0.2507,
+        1.0409
+       ],
+       "ratio": 1.599,
+       "passes": false
+      },
+      "young_ot": {
+       "per10k": 9.0996,
+       "ci": [
+        8.3556,
+        9.8922
+       ],
+       "ratio": 26.544,
+       "passes": true
+      }
+     },
+     "kept": true
+    }
+   },
+   "kept": [
+    "doubled_verb",
+    "possessive_infinitive"
+   ],
+   "passes": false
+  },
+  "K2": {
+   "groups": {
+    "imitations_pooled": {
+     "words": 445210,
+     "composite": 0.9768,
+     "checked": true,
+     "passes": true
+    },
+    "ossian_1819": {
+     "words": 166568,
+     "composite": 3.7652,
+     "checked": true,
+     "passes": false
+    },
+    "otranto_1764": {
+     "words": 38966,
+     "composite": 0.7486,
+     "checked": true,
+     "passes": true
+    },
+    "ilive_jasher_1751": {
+     "words": 37900,
+     "composite": 3.0087,
+     "checked": true,
+     "passes": false
+    },
+    "psalmanazar_formosa_1704": {
+     "words": 73408,
+     "composite": 0.9934,
+     "checked": true,
+     "passes": true
+    },
+    "chronicles_of_eri_1822": {
+     "words": 130188,
+     "composite": 0.2241,
+     "checked": true,
+     "passes": true
+    },
+    "late_war": {
+     "words": 49253,
+     "composite": 0.8884,
+     "checked": true,
+     "passes": true
+    }
+   },
+   "passes": false
+  },
+  "K4": {
+   "literal_units": 38,
+   "decoy_units": 29,
+   "auc": 0.9687,
+   "passes": true
+  },
+  "K3": {
+   "decided": false,
+   "reason": "hand check of precision and the judge are pending"
+  },
+  "planted": {
+   "doubled_verb": true,
+   "if_and": true,
+   "possessive_infinitive": true,
+   "came_to_pass": true,
+   "by_the_hand_of": true,
+   "from_before": true,
+   "of_material": true,
+   "called_the_name": true
+  },
+  "rule_check_passes_K1_K2_K4": false
+ },
+ "groups": {
+  "ainsworth_1627": {
+   "words": 164138,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 104,
+    "per10k": 6.3361,
+    "ci": [
+     5.1771,
+     7.6773
+    ]
+   },
+   "if_and": {
+    "n": 4,
+    "per10k": 0.2437,
+    "ci": [
+     0.0664,
+     0.624
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 9,
+    "per10k": 0.5483,
+    "ci": [
+     0.2507,
+     1.0409
+    ]
+   },
+   "came_to_pass": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2247
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 20,
+    "per10k": 1.2185,
+    "ci": [
+     0.7443,
+     1.8819
+    ]
+   },
+   "from_before": {
+    "n": 37,
+    "per10k": 2.2542,
+    "ci": [
+     1.5872,
+     3.1071
+    ]
+   },
+   "of_material": {
+    "n": 128,
+    "per10k": 7.7983,
+    "ci": [
+     6.5059,
+     9.2722
+    ]
+   },
+   "called_the_name": {
+    "n": 54,
+    "per10k": 3.2899,
+    "ci": [
+     2.4715,
+     4.2926
+    ]
+   },
+   "composite": 18.4421,
+   "composite_ci": [
+    14.7808,
+    22.8949
+   ]
+  },
+  "challoner_1821": {
+   "words": 1013254,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 26,
+    "per10k": 0.2566,
+    "ci": [
+     0.1676,
+     0.376
+    ]
+   },
+   "if_and": {
+    "n": 16,
+    "per10k": 0.1579,
+    "ci": [
+     0.0903,
+     0.2564
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 67,
+    "per10k": 0.6612,
+    "ci": [
+     0.5124,
+     0.8397
+    ]
+   },
+   "came_to_pass": {
+    "n": 267,
+    "per10k": 2.6351,
+    "ci": [
+     2.3285,
+     2.9708
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 64,
+    "per10k": 0.6316,
+    "ci": [
+     0.4864,
+     0.8066
+    ]
+   },
+   "from_before": {
+    "n": 32,
+    "per10k": 0.3158,
+    "ci": [
+     0.216,
+     0.4458
+    ]
+   },
+   "of_material": {
+    "n": 486,
+    "per10k": 4.7964,
+    "ci": [
+     4.3794,
+     5.2424
+    ]
+   },
+   "called_the_name": {
+    "n": 58,
+    "per10k": 0.5724,
+    "ci": [
+     0.4347,
+     0.74
+    ]
+   },
+   "composite": 1.6789,
+   "composite_ci": [
+    1.214,
+    2.2716
+   ]
+  },
+  "chronicles_of_eri_1822": {
+   "words": 130188,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2834
+    ]
+   },
+   "if_and": {
+    "n": 1,
+    "per10k": 0.0768,
+    "ci": [
+     0.0019,
+     0.428
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 2,
+    "per10k": 0.1536,
+    "ci": [
+     0.0186,
+     0.5549
+    ]
+   },
+   "came_to_pass": {
+    "n": 6,
+    "per10k": 0.4609,
+    "ci": [
+     0.1691,
+     1.0031
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 16,
+    "per10k": 1.229,
+    "ci": [
+     0.7025,
+     1.9958
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2834
+    ]
+   },
+   "of_material": {
+    "n": 4,
+    "per10k": 0.3072,
+    "ci": [
+     0.0837,
+     0.7867
+    ]
+   },
+   "called_the_name": {
+    "n": 2,
+    "per10k": 0.1536,
+    "ci": [
+     0.0186,
+     0.5549
+    ]
+   },
+   "composite": 0.2241,
+   "composite_ci": [
+    0.0271,
+    1.5984
+   ]
+  },
+  "douay_1609": {
+   "words": 1075132,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 97,
+    "per10k": 0.9022,
+    "ci": [
+     0.7316,
+     1.1006
+    ]
+   },
+   "if_and": {
+    "n": 22,
+    "per10k": 0.2046,
+    "ci": [
+     0.1282,
+     0.3098
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 43,
+    "per10k": 0.4,
+    "ci": [
+     0.2894,
+     0.5387
+    ]
+   },
+   "came_to_pass": {
+    "n": 177,
+    "per10k": 1.6463,
+    "ci": [
+     1.4127,
+     1.9075
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 64,
+    "per10k": 0.5953,
+    "ci": [
+     0.4584,
+     0.7602
+    ]
+   },
+   "from_before": {
+    "n": 6,
+    "per10k": 0.0558,
+    "ci": [
+     0.0205,
+     0.1215
+    ]
+   },
+   "of_material": {
+    "n": 425,
+    "per10k": 3.953,
+    "ci": [
+     3.5861,
+     4.3473
+    ]
+   },
+   "called_the_name": {
+    "n": 61,
+    "per10k": 0.5674,
+    "ci": [
+     0.434,
+     0.7288
+    ]
+   },
+   "composite": 3.0955,
+   "composite_ci": [
+    2.4592,
+    3.8502
+   ]
+  },
+  "emode_pooled": {
+   "words": 5061647,
+   "texts": 100,
+   "doubled_verb": {
+    "n": 21,
+    "per10k": 0.0415,
+    "ci": [
+     0.0257,
+     0.0634
+    ]
+   },
+   "if_and": {
+    "n": 53,
+    "per10k": 0.1047,
+    "ci": [
+     0.0784,
+     0.137
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 469,
+    "per10k": 0.9266,
+    "ci": [
+     0.8446,
+     1.0144
+    ]
+   },
+   "came_to_pass": {
+    "n": 163,
+    "per10k": 0.322,
+    "ci": [
+     0.2745,
+     0.3754
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 65,
+    "per10k": 0.1284,
+    "ci": [
+     0.0991,
+     0.1637
+    ]
+   },
+   "from_before": {
+    "n": 10,
+    "per10k": 0.0198,
+    "ci": [
+     0.0095,
+     0.0363
+    ]
+   },
+   "of_material": {
+    "n": 365,
+    "per10k": 0.7211,
+    "ci": [
+     0.649,
+     0.799
+    ]
+   },
+   "called_the_name": {
+    "n": 12,
+    "per10k": 0.0237,
+    "ci": [
+     0.0123,
+     0.0414
+    ]
+   },
+   "composite": 1.4669,
+   "composite_ci": [
+    1.3034,
+    1.656
+   ]
+  },
+  "heb:benjamin_of_tudela_1783": {
+   "words": 48239,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.7647
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.7647
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 2,
+    "per10k": 0.4146,
+    "ci": [
+     0.0502,
+     1.4977
+    ]
+   },
+   "came_to_pass": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.7647
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.7647
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.7647
+    ]
+   },
+   "of_material": {
+    "n": 6,
+    "per10k": 1.2438,
+    "ci": [
+     0.4565,
+     2.7072
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.7647
+    ]
+   },
+   "composite": 0.6047,
+   "composite_ci": [
+    0.0732,
+    4.3136
+   ]
+  },
+  "heb:blayney_jeremiah_1784": {
+   "words": 210843,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 1,
+    "per10k": 0.0474,
+    "ci": [
+     0.0012,
+     0.2643
+    ]
+   },
+   "if_and": {
+    "n": 2,
+    "per10k": 0.0949,
+    "ci": [
+     0.0115,
+     0.3427
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 10,
+    "per10k": 0.4743,
+    "ci": [
+     0.2274,
+     0.8722
+    ]
+   },
+   "came_to_pass": {
+    "n": 25,
+    "per10k": 1.1857,
+    "ci": [
+     0.7673,
+     1.7504
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 7,
+    "per10k": 0.332,
+    "ci": [
+     0.1335,
+     0.684
+    ]
+   },
+   "from_before": {
+    "n": 9,
+    "per10k": 0.4269,
+    "ci": [
+     0.1952,
+     0.8103
+    ]
+   },
+   "of_material": {
+    "n": 28,
+    "per10k": 1.328,
+    "ci": [
+     0.8824,
+     1.9193
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.175
+    ]
+   },
+   "composite": 0.8238,
+   "composite_ci": [
+    0.335,
+    2.008
+   ]
+  },
+  "heb:good_job_1812": {
+   "words": 228417,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 2,
+    "per10k": 0.0876,
+    "ci": [
+     0.0106,
+     0.3163
+    ]
+   },
+   "if_and": {
+    "n": 3,
+    "per10k": 0.1313,
+    "ci": [
+     0.0271,
+     0.3838
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 18,
+    "per10k": 0.788,
+    "ci": [
+     0.467,
+     1.2454
+    ]
+   },
+   "came_to_pass": {
+    "n": 6,
+    "per10k": 0.2627,
+    "ci": [
+     0.0964,
+     0.5717
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 6,
+    "per10k": 0.2627,
+    "ci": [
+     0.0964,
+     0.5717
+    ]
+   },
+   "from_before": {
+    "n": 1,
+    "per10k": 0.0438,
+    "ci": [
+     0.0011,
+     0.2439
+    ]
+   },
+   "of_material": {
+    "n": 21,
+    "per10k": 0.9194,
+    "ci": [
+     0.5691,
+     1.4054
+    ]
+   },
+   "called_the_name": {
+    "n": 2,
+    "per10k": 0.0876,
+    "ci": [
+     0.0106,
+     0.3163
+    ]
+   },
+   "composite": 1.3931,
+   "composite_ci": [
+    0.7106,
+    2.6971
+   ]
+  },
+  "heb:hodgson_ecclesiastes_1790": {
+   "words": 15343,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4043
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4043
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4043
+    ]
+   },
+   "came_to_pass": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4043
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4043
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4043
+    ]
+   },
+   "of_material": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4043
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4043
+    ]
+   },
+   "composite": 0.0,
+   "composite_ci": [
+    0.0,
+    10.2012
+   ]
+  },
+  "heb:holden_proverbs_1819": {
+   "words": 133382,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2766
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2766
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 2,
+    "per10k": 0.1499,
+    "ci": [
+     0.0182,
+     0.5417
+    ]
+   },
+   "came_to_pass": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2766
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 2,
+    "per10k": 0.1499,
+    "ci": [
+     0.0182,
+     0.5417
+    ]
+   },
+   "from_before": {
+    "n": 1,
+    "per10k": 0.075,
+    "ci": [
+     0.0019,
+     0.4177
+    ]
+   },
+   "of_material": {
+    "n": 13,
+    "per10k": 0.9746,
+    "ci": [
+     0.519,
+     1.6667
+    ]
+   },
+   "called_the_name": {
+    "n": 1,
+    "per10k": 0.075,
+    "ci": [
+     0.0019,
+     0.4177
+    ]
+   },
+   "composite": 0.2187,
+   "composite_ci": [
+    0.0265,
+    1.5602
+   ]
+  },
+  "heb:horsley_hosea_1801": {
+   "words": 110011,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.3353
+    ]
+   },
+   "if_and": {
+    "n": 1,
+    "per10k": 0.0909,
+    "ci": [
+     0.0023,
+     0.5065
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 3,
+    "per10k": 0.2727,
+    "ci": [
+     0.0562,
+     0.7969
+    ]
+   },
+   "came_to_pass": {
+    "n": 2,
+    "per10k": 0.1818,
+    "ci": [
+     0.022,
+     0.6567
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 3,
+    "per10k": 0.2727,
+    "ci": [
+     0.0562,
+     0.7969
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.3353
+    ]
+   },
+   "of_material": {
+    "n": 13,
+    "per10k": 1.1817,
+    "ci": [
+     0.6292,
+     2.0207
+    ]
+   },
+   "called_the_name": {
+    "n": 8,
+    "per10k": 0.7272,
+    "ci": [
+     0.314,
+     1.4329
+    ]
+   },
+   "composite": 0.3977,
+   "composite_ci": [
+    0.082,
+    2.0959
+   ]
+  },
+  "heb:horsley_psalms_1815": {
+   "words": 52975,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.6963
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.6963
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 3,
+    "per10k": 0.5663,
+    "ci": [
+     0.1168,
+     1.655
+    ]
+   },
+   "came_to_pass": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.6963
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.6963
+    ]
+   },
+   "from_before": {
+    "n": 1,
+    "per10k": 0.1888,
+    "ci": [
+     0.0048,
+     1.0517
+    ]
+   },
+   "of_material": {
+    "n": 3,
+    "per10k": 0.5663,
+    "ci": [
+     0.1168,
+     1.655
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.6963
+    ]
+   },
+   "composite": 0.826,
+   "composite_ci": [
+    0.1704,
+    4.3526
+   ]
+  },
+  "heb:lowth_isaiah_1815": {
+   "words": 172255,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2142
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2142
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 12,
+    "per10k": 0.6966,
+    "ci": [
+     0.36,
+     1.2169
+    ]
+   },
+   "came_to_pass": {
+    "n": 25,
+    "per10k": 1.4513,
+    "ci": [
+     0.9392,
+     2.1425
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 3,
+    "per10k": 0.1742,
+    "ci": [
+     0.0359,
+     0.509
+    ]
+   },
+   "from_before": {
+    "n": 3,
+    "per10k": 0.1742,
+    "ci": [
+     0.0359,
+     0.509
+    ]
+   },
+   "of_material": {
+    "n": 34,
+    "per10k": 1.9738,
+    "ci": [
+     1.3669,
+     2.7582
+    ]
+   },
+   "called_the_name": {
+    "n": 4,
+    "per10k": 0.2322,
+    "ci": [
+     0.0633,
+     0.5946
+    ]
+   },
+   "composite": 1.0161,
+   "composite_ci": [
+    0.5251,
+    2.3713
+   ]
+  },
+  "heb:smith_job_1810": {
+   "words": 33922,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.0875
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.0875
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 3,
+    "per10k": 0.8844,
+    "ci": [
+     0.1824,
+     2.5845
+    ]
+   },
+   "came_to_pass": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.0875
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 2,
+    "per10k": 0.5896,
+    "ci": [
+     0.0714,
+     2.1298
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.0875
+    ]
+   },
+   "of_material": {
+    "n": 9,
+    "per10k": 2.6531,
+    "ci": [
+     1.2132,
+     5.0365
+    ]
+   },
+   "called_the_name": {
+    "n": 1,
+    "per10k": 0.2948,
+    "ci": [
+     0.0075,
+     1.6425
+    ]
+   },
+   "composite": 1.2899,
+   "composite_ci": [
+    0.266,
+    6.7975
+   ]
+  },
+  "ilive_jasher_1751": {
+   "words": 37900,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 2,
+    "per10k": 0.5277,
+    "ci": [
+     0.0639,
+     1.9063
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.9733
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 4,
+    "per10k": 1.0554,
+    "ci": [
+     0.2876,
+     2.7023
+    ]
+   },
+   "came_to_pass": {
+    "n": 66,
+    "per10k": 17.4142,
+    "ci": [
+     13.4682,
+     22.1552
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.9733
+    ]
+   },
+   "from_before": {
+    "n": 1,
+    "per10k": 0.2639,
+    "ci": [
+     0.0067,
+     1.4701
+    ]
+   },
+   "of_material": {
+    "n": 14,
+    "per10k": 3.6939,
+    "ci": [
+     2.0195,
+     6.1978
+    ]
+   },
+   "called_the_name": {
+    "n": 2,
+    "per10k": 0.5277,
+    "ci": [
+     0.0639,
+     1.9063
+    ]
+   },
+   "composite": 3.0087,
+   "composite_ci": [
+    0.5974,
+    9.2492
+   ]
+  },
+  "imit:book_of_america_1766": {
+   "words": 2716,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     13.582
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     13.582
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     13.582
+    ]
+   },
+   "came_to_pass": {
+    "n": 3,
+    "per10k": 11.0457,
+    "ci": [
+     2.2779,
+     32.2801
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     13.582
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     13.582
+    ]
+   },
+   "of_material": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     13.582
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     13.582
+    ]
+   },
+   "composite": 0.0,
+   "composite_ci": [
+    0.0,
+    57.6273
+   ]
+  },
+  "imit:book_of_nullification_1830": {
+   "words": 15130,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4381
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4381
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4381
+    ]
+   },
+   "came_to_pass": {
+    "n": 21,
+    "per10k": 13.8797,
+    "ci": [
+     8.5918,
+     21.2166
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4381
+    ]
+   },
+   "from_before": {
+    "n": 1,
+    "per10k": 0.6609,
+    "ci": [
+     0.0167,
+     3.6825
+    ]
+   },
+   "of_material": {
+    "n": 3,
+    "per10k": 1.9828,
+    "ci": [
+     0.4089,
+     5.7946
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.4381
+    ]
+   },
+   "composite": 0.0,
+   "composite_ci": [
+    0.0,
+    10.3447
+   ]
+  },
+  "imit:chronicles_nathan_ben_saddi_1758": {
+   "words": 3153,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     11.6996
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     11.6996
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     11.6996
+    ]
+   },
+   "came_to_pass": {
+    "n": 4,
+    "per10k": 12.6863,
+    "ci": [
+     3.4566,
+     32.482
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     11.6996
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     11.6996
+    ]
+   },
+   "of_material": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     11.6996
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     11.6996
+    ]
+   },
+   "composite": 0.0,
+   "composite_ci": [
+    0.0,
+    49.6404
+   ]
+  },
+  "imit:chronicles_of_andrew_1815": {
+   "words": 8131,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     4.5368
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     4.5368
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     4.5368
+    ]
+   },
+   "came_to_pass": {
+    "n": 4,
+    "per10k": 4.9194,
+    "ci": [
+     1.3404,
+     12.5957
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 1,
+    "per10k": 1.2299,
+    "ci": [
+     0.0311,
+     6.8523
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     4.5368
+    ]
+   },
+   "of_material": {
+    "n": 1,
+    "per10k": 1.2299,
+    "ci": [
+     0.0311,
+     6.8523
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     4.5368
+    ]
+   },
+   "composite": 0.0,
+   "composite_ci": [
+    0.0,
+    19.2493
+   ]
+  },
+  "imit:chronicles_of_eri_1822": {
+   "words": 130188,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2834
+    ]
+   },
+   "if_and": {
+    "n": 1,
+    "per10k": 0.0768,
+    "ci": [
+     0.0019,
+     0.428
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 2,
+    "per10k": 0.1536,
+    "ci": [
+     0.0186,
+     0.5549
+    ]
+   },
+   "came_to_pass": {
+    "n": 6,
+    "per10k": 0.4609,
+    "ci": [
+     0.1691,
+     1.0031
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 16,
+    "per10k": 1.229,
+    "ci": [
+     0.7025,
+     1.9958
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2834
+    ]
+   },
+   "of_material": {
+    "n": 4,
+    "per10k": 0.3072,
+    "ci": [
+     0.0837,
+     0.7867
+    ]
+   },
+   "called_the_name": {
+    "n": 2,
+    "per10k": 0.1536,
+    "ci": [
+     0.0186,
+     0.5549
+    ]
+   },
+   "composite": 0.2241,
+   "composite_ci": [
+    0.0271,
+    1.5984
+   ]
+  },
+  "imit:dodsley_chronicle_kings_1744": {
+   "words": 16733,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.2046
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.2046
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.2046
+    ]
+   },
+   "came_to_pass": {
+    "n": 33,
+    "per10k": 19.7215,
+    "ci": [
+     13.5754,
+     27.6963
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 2,
+    "per10k": 1.1952,
+    "ci": [
+     0.1447,
+     4.3176
+    ]
+   },
+   "from_before": {
+    "n": 2,
+    "per10k": 1.1952,
+    "ci": [
+     0.1447,
+     4.3176
+    ]
+   },
+   "of_material": {
+    "n": 4,
+    "per10k": 2.3905,
+    "ci": [
+     0.6513,
+     6.1206
+    ]
+   },
+   "called_the_name": {
+    "n": 2,
+    "per10k": 1.1952,
+    "ci": [
+     0.1447,
+     4.3176
+    ]
+   },
+   "composite": 0.0,
+   "composite_ci": [
+    0.0,
+    9.3539
+   ]
+  },
+  "imit:first_book_of_napoleon_1809": {
+   "words": 21323,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.73
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.73
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 2,
+    "per10k": 0.938,
+    "ci": [
+     0.1136,
+     3.3882
+    ]
+   },
+   "came_to_pass": {
+    "n": 15,
+    "per10k": 7.0347,
+    "ci": [
+     3.9372,
+     11.6026
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 2,
+    "per10k": 0.938,
+    "ci": [
+     0.1136,
+     3.3882
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.73
+    ]
+   },
+   "of_material": {
+    "n": 9,
+    "per10k": 4.2208,
+    "ci": [
+     1.93,
+     8.0124
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.73
+    ]
+   },
+   "composite": 1.368,
+   "composite_ci": [
+    0.1657,
+    9.7587
+   ]
+  },
+  "imit:history_of_anti_christ_1811": {
+   "words": 15711,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.348
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.348
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.348
+    ]
+   },
+   "came_to_pass": {
+    "n": 61,
+    "per10k": 38.8263,
+    "ci": [
+     29.699,
+     49.874
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.348
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.348
+    ]
+   },
+   "of_material": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.348
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.348
+    ]
+   },
+   "composite": 0.0,
+   "composite_ci": [
+    0.0,
+    9.9624
+   ]
+  },
+  "imit:late_war_1816": {
+   "words": 49253,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.749
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.749
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 3,
+    "per10k": 0.6091,
+    "ci": [
+     0.1256,
+     1.78
+    ]
+   },
+   "came_to_pass": {
+    "n": 86,
+    "per10k": 17.4609,
+    "ci": [
+     13.9664,
+     21.564
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 1,
+    "per10k": 0.203,
+    "ci": [
+     0.0051,
+     1.1312
+    ]
+   },
+   "from_before": {
+    "n": 7,
+    "per10k": 1.4212,
+    "ci": [
+     0.5714,
+     2.9283
+    ]
+   },
+   "of_material": {
+    "n": 23,
+    "per10k": 4.6698,
+    "ci": [
+     2.9602,
+     7.0069
+    ]
+   },
+   "called_the_name": {
+    "n": 2,
+    "per10k": 0.4061,
+    "ci": [
+     0.0492,
+     1.4669
+    ]
+   },
+   "composite": 0.8884,
+   "composite_ci": [
+    0.1832,
+    4.6817
+   ]
+  },
+  "imit:leacock_american_chronicles_1775": {
+   "words": 14660,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.5163
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.5163
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 1,
+    "per10k": 0.6821,
+    "ci": [
+     0.0173,
+     3.8006
+    ]
+   },
+   "came_to_pass": {
+    "n": 21,
+    "per10k": 14.3247,
+    "ci": [
+     8.8672,
+     21.8968
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 2,
+    "per10k": 1.3643,
+    "ci": [
+     0.1652,
+     4.9282
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.5163
+    ]
+   },
+   "of_material": {
+    "n": 2,
+    "per10k": 1.3643,
+    "ci": [
+     0.1652,
+     4.9282
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     2.5163
+    ]
+   },
+   "composite": 0.9949,
+   "composite_ci": [
+    0.0252,
+    12.5496
+   ]
+  },
+  "imit:short_pieces": {
+   "words": 4610,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     8.0019
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     8.0019
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     8.0019
+    ]
+   },
+   "came_to_pass": {
+    "n": 6,
+    "per10k": 13.0152,
+    "ci": [
+     4.7763,
+     28.3286
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     8.0019
+    ]
+   },
+   "from_before": {
+    "n": 1,
+    "per10k": 2.1692,
+    "ci": [
+     0.0549,
+     12.086
+    ]
+   },
+   "of_material": {
+    "n": 2,
+    "per10k": 4.3384,
+    "ci": [
+     0.5254,
+     15.6718
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     8.0019
+    ]
+   },
+   "composite": 0.0,
+   "composite_ci": [
+    0.0,
+    33.9514
+   ]
+  },
+  "imit:snowden_american_revolution_1802": {
+   "words": 50926,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.7244
+    ]
+   },
+   "if_and": {
+    "n": 1,
+    "per10k": 0.1964,
+    "ci": [
+     0.005,
+     1.0941
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 2,
+    "per10k": 0.3927,
+    "ci": [
+     0.0476,
+     1.4187
+    ]
+   },
+   "came_to_pass": {
+    "n": 120,
+    "per10k": 23.5636,
+    "ci": [
+     19.5366,
+     28.1763
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 4,
+    "per10k": 0.7855,
+    "ci": [
+     0.214,
+     2.0111
+    ]
+   },
+   "from_before": {
+    "n": 1,
+    "per10k": 0.1964,
+    "ci": [
+     0.005,
+     1.0941
+    ]
+   },
+   "of_material": {
+    "n": 9,
+    "per10k": 1.7673,
+    "ci": [
+     0.8081,
+     3.3548
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.7244
+    ]
+   },
+   "composite": 0.5728,
+   "composite_ci": [
+    0.0694,
+    4.0862
+   ]
+  },
+  "imit:true_relation_holy_war_1806": {
+   "words": 109648,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 2,
+    "per10k": 0.1824,
+    "ci": [
+     0.0221,
+     0.6589
+    ]
+   },
+   "if_and": {
+    "n": 1,
+    "per10k": 0.0912,
+    "ci": [
+     0.0023,
+     0.5081
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 16,
+    "per10k": 1.4592,
+    "ci": [
+     0.8341,
+     2.3697
+    ]
+   },
+   "came_to_pass": {
+    "n": 5,
+    "per10k": 0.456,
+    "ci": [
+     0.1481,
+     1.0642
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 23,
+    "per10k": 2.0976,
+    "ci": [
+     1.3297,
+     3.1475
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.3364
+    ]
+   },
+   "of_material": {
+    "n": 16,
+    "per10k": 1.4592,
+    "ci": [
+     0.8341,
+     2.3697
+    ]
+   },
+   "called_the_name": {
+    "n": 1,
+    "per10k": 0.0912,
+    "ci": [
+     0.0023,
+     0.5081
+    ]
+   },
+   "composite": 2.6362,
+   "composite_ci": [
+    1.2781,
+    5.2909
+   ]
+  },
+  "imit:walpole_book_of_preferment_1742": {
+   "words": 3028,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     12.1826
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     12.1826
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     12.1826
+    ]
+   },
+   "came_to_pass": {
+    "n": 5,
+    "per10k": 16.5125,
+    "ci": [
+     5.3616,
+     38.5348
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     12.1826
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     12.1826
+    ]
+   },
+   "of_material": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     12.1826
+    ]
+   },
+   "called_the_name": {
+    "n": 1,
+    "per10k": 3.3025,
+    "ci": [
+     0.0836,
+     18.4004
+    ]
+   },
+   "composite": 0.0,
+   "composite_ci": [
+    0.0,
+    51.6897
+   ]
+  },
+  "jasher_noah_1840": {
+   "words": 166480,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2216
+    ]
+   },
+   "if_and": {
+    "n": 8,
+    "per10k": 0.4805,
+    "ci": [
+     0.2075,
+     0.9469
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 19,
+    "per10k": 1.1413,
+    "ci": [
+     0.6871,
+     1.7822
+    ]
+   },
+   "came_to_pass": {
+    "n": 44,
+    "per10k": 2.643,
+    "ci": [
+     1.9204,
+     3.5481
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 14,
+    "per10k": 0.8409,
+    "ci": [
+     0.4598,
+     1.411
+    ]
+   },
+   "from_before": {
+    "n": 32,
+    "per10k": 1.9222,
+    "ci": [
+     1.3148,
+     2.7135
+    ]
+   },
+   "of_material": {
+    "n": 41,
+    "per10k": 2.4628,
+    "ci": [
+     1.7673,
+     3.341
+    ]
+   },
+   "called_the_name": {
+    "n": 77,
+    "per10k": 4.6252,
+    "ci": [
+     3.6501,
+     5.7807
+    ]
+   },
+   "composite": 1.6646,
+   "composite_ci": [
+    1.0021,
+    3.2164
+   ]
+  },
+  "js:dictated-abraham_1842": {
+   "words": 6308,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     5.8479
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     5.8479
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 1,
+    "per10k": 1.5853,
+    "ci": [
+     0.0401,
+     8.8327
+    ]
+   },
+   "came_to_pass": {
+    "n": 17,
+    "per10k": 26.9499,
+    "ci": [
+     15.6993,
+     43.1494
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 1,
+    "per10k": 1.5853,
+    "ci": [
+     0.0401,
+     8.8327
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     5.8479
+    ]
+   },
+   "of_material": {
+    "n": 1,
+    "per10k": 1.5853,
+    "ci": [
+     0.0401,
+     8.8327
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     5.8479
+    ]
+   },
+   "composite": 2.3121,
+   "composite_ci": [
+    0.0585,
+    29.1655
+   ]
+  },
+  "js:dictated-ot_revision_1": {
+   "words": 25520,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 4,
+    "per10k": 1.5674,
+    "ci": [
+     0.4271,
+     4.0132
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.4455
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 1,
+    "per10k": 0.3918,
+    "ci": [
+     0.0099,
+     2.1832
+    ]
+   },
+   "came_to_pass": {
+    "n": 71,
+    "per10k": 27.8213,
+    "ci": [
+     21.7287,
+     35.0928
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.4455
+    ]
+   },
+   "from_before": {
+    "n": 3,
+    "per10k": 1.1755,
+    "ci": [
+     0.2424,
+     3.4355
+    ]
+   },
+   "of_material": {
+    "n": 1,
+    "per10k": 0.3918,
+    "ci": [
+     0.0099,
+     2.1832
+    ]
+   },
+   "called_the_name": {
+    "n": 16,
+    "per10k": 6.2696,
+    "ci": [
+     3.5836,
+     10.1814
+    ]
+   },
+   "composite": 4.9358,
+   "composite_ci": [
+    1.2037,
+    14.3586
+   ]
+  },
+  "js:dictated-visions_of_moses_1830": {
+   "words": 1386,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     26.6153
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     26.6153
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     26.6153
+    ]
+   },
+   "came_to_pass": {
+    "n": 10,
+    "per10k": 72.1501,
+    "ci": [
+     34.5988,
+     132.6866
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     26.6153
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     26.6153
+    ]
+   },
+   "of_material": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     26.6153
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     26.6153
+    ]
+   },
+   "composite": 0.0,
+   "composite_ci": [
+    0.0,
+    112.9265
+   ]
+  },
+  "js:js-1828-1829-revelations": {
+   "words": 73190,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 1,
+    "per10k": 0.1366,
+    "ci": [
+     0.0035,
+     0.7613
+    ]
+   },
+   "if_and": {
+    "n": 1,
+    "per10k": 0.1366,
+    "ci": [
+     0.0035,
+     0.7613
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 7,
+    "per10k": 0.9564,
+    "ci": [
+     0.3845,
+     1.9706
+    ]
+   },
+   "came_to_pass": {
+    "n": 43,
+    "per10k": 5.8751,
+    "ci": [
+     4.2519,
+     7.9137
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 11,
+    "per10k": 1.5029,
+    "ci": [
+     0.7503,
+     2.6892
+    ]
+   },
+   "from_before": {
+    "n": 2,
+    "per10k": 0.2733,
+    "ci": [
+     0.0331,
+     0.9871
+    ]
+   },
+   "of_material": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.504
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.504
+    ]
+   },
+   "composite": 1.7754,
+   "composite_ci": [
+    0.5705,
+    4.9939
+   ]
+  },
+  "js:js-1832-history": {
+   "words": 2034,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     18.1361
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     18.1361
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     18.1361
+    ]
+   },
+   "came_to_pass": {
+    "n": 3,
+    "per10k": 14.7493,
+    "ci": [
+     3.0417,
+     43.1036
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     18.1361
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     18.1361
+    ]
+   },
+   "of_material": {
+    "n": 1,
+    "per10k": 4.9164,
+    "ci": [
+     0.1245,
+     27.3925
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     18.1361
+    ]
+   },
+   "composite": 0.0,
+   "composite_ci": [
+    0.0,
+    76.9499
+   ]
+  },
+  "js:js-letters-1829-1833-all": {
+   "words": 40540,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 1,
+    "per10k": 0.2467,
+    "ci": [
+     0.0062,
+     1.3744
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.9099
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 1,
+    "per10k": 0.2467,
+    "ci": [
+     0.0062,
+     1.3744
+    ]
+   },
+   "came_to_pass": {
+    "n": 6,
+    "per10k": 1.48,
+    "ci": [
+     0.5431,
+     3.2214
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 5,
+    "per10k": 1.2333,
+    "ci": [
+     0.4005,
+     2.8782
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.9099
+    ]
+   },
+   "of_material": {
+    "n": 4,
+    "per10k": 0.9867,
+    "ci": [
+     0.2688,
+     2.5263
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.9099
+    ]
+   },
+   "composite": 1.0466,
+   "composite_ci": [
+    0.0263,
+    5.8315
+   ]
+  },
+  "js:revelations-later-1830": {
+   "words": 7539,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     4.8931
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     4.8931
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 5,
+    "per10k": 6.6322,
+    "ci": [
+     2.1535,
+     15.4773
+    ]
+   },
+   "came_to_pass": {
+    "n": 8,
+    "per10k": 10.6115,
+    "ci": [
+     4.5813,
+     20.9089
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 2,
+    "per10k": 2.6529,
+    "ci": [
+     0.3213,
+     9.5831
+    ]
+   },
+   "from_before": {
+    "n": 1,
+    "per10k": 1.3264,
+    "ci": [
+     0.0336,
+     7.3904
+    ]
+   },
+   "of_material": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     4.8931
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     4.8931
+    ]
+   },
+   "composite": 9.673,
+   "composite_ci": [
+    3.1409,
+    36.1981
+   ]
+  },
+  "js:revelations-later-1831": {
+   "words": 28965,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 1,
+    "per10k": 0.3452,
+    "ci": [
+     0.0087,
+     1.9236
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.2736
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.2736
+    ]
+   },
+   "came_to_pass": {
+    "n": 22,
+    "per10k": 7.5954,
+    "ci": [
+     4.76,
+     11.4995
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 3,
+    "per10k": 1.0357,
+    "ci": [
+     0.2136,
+     3.0269
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.2736
+    ]
+   },
+   "of_material": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.2736
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     1.2736
+    ]
+   },
+   "composite": 0.9613,
+   "composite_ci": [
+    0.0242,
+    7.2136
+   ]
+  },
+  "kjv_nt": {
+   "words": 180771,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 12,
+    "per10k": 0.6638,
+    "ci": [
+     0.343,
+     1.1596
+    ]
+   },
+   "if_and": {
+    "n": 3,
+    "per10k": 0.166,
+    "ci": [
+     0.0342,
+     0.485
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 16,
+    "per10k": 0.8851,
+    "ci": [
+     0.5059,
+     1.4373
+    ]
+   },
+   "came_to_pass": {
+    "n": 87,
+    "per10k": 4.8127,
+    "ci": [
+     3.8548,
+     5.9365
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 6,
+    "per10k": 0.3319,
+    "ci": [
+     0.1218,
+     0.7224
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2041
+    ]
+   },
+   "of_material": {
+    "n": 14,
+    "per10k": 0.7745,
+    "ci": [
+     0.4234,
+     1.2994
+    ]
+   },
+   "called_the_name": {
+    "n": 5,
+    "per10k": 0.2766,
+    "ci": [
+     0.0898,
+     0.6455
+    ]
+   },
+   "composite": 3.1393,
+   "composite_ci": [
+    1.6929,
+    5.3251
+   ]
+  },
+  "kjv_ot": {
+   "words": 612571,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 11,
+    "per10k": 0.1796,
+    "ci": [
+     0.0896,
+     0.3213
+    ]
+   },
+   "if_and": {
+    "n": 15,
+    "per10k": 0.2449,
+    "ci": [
+     0.1371,
+     0.4039
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 21,
+    "per10k": 0.3428,
+    "ci": [
+     0.2122,
+     0.524
+    ]
+   },
+   "came_to_pass": {
+    "n": 535,
+    "per10k": 8.7337,
+    "ci": [
+     8.0092,
+     9.5061
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 70,
+    "per10k": 1.1427,
+    "ci": [
+     0.8908,
+     1.4438
+    ]
+   },
+   "from_before": {
+    "n": 78,
+    "per10k": 1.2733,
+    "ci": [
+     1.0065,
+     1.5892
+    ]
+   },
+   "of_material": {
+    "n": 350,
+    "per10k": 5.7136,
+    "ci": [
+     5.1306,
+     6.3447
+    ]
+   },
+   "called_the_name": {
+    "n": 74,
+    "per10k": 1.208,
+    "ci": [
+     0.9486,
+     1.5166
+    ]
+   },
+   "composite": 1.0,
+   "composite_ci": [
+    0.559,
+    1.6589
+   ]
+  },
+  "koran_sale_1734": {
+   "words": 423465,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 2,
+    "per10k": 0.0472,
+    "ci": [
+     0.0057,
+     0.1706
+    ]
+   },
+   "if_and": {
+    "n": 17,
+    "per10k": 0.4014,
+    "ci": [
+     0.2339,
+     0.6428
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 40,
+    "per10k": 0.9446,
+    "ci": [
+     0.6748,
+     1.2863
+    ]
+   },
+   "came_to_pass": {
+    "n": 18,
+    "per10k": 0.4251,
+    "ci": [
+     0.2519,
+     0.6718
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 3,
+    "per10k": 0.0708,
+    "ci": [
+     0.0146,
+     0.207
+    ]
+   },
+   "from_before": {
+    "n": 11,
+    "per10k": 0.2598,
+    "ci": [
+     0.1297,
+     0.4648
+    ]
+   },
+   "of_material": {
+    "n": 60,
+    "per10k": 1.4169,
+    "ci": [
+     1.0812,
+     1.8238
+    ]
+   },
+   "called_the_name": {
+    "n": 1,
+    "per10k": 0.0236,
+    "ci": [
+     0.0006,
+     0.1316
+    ]
+   },
+   "composite": 1.5092,
+   "composite_ci": [
+    1.0001,
+    2.3511
+   ]
+  },
+  "non_semitic_pooled": {
+   "words": 3536940,
+   "texts": 60,
+   "doubled_verb": {
+    "n": 11,
+    "per10k": 0.0311,
+    "ci": [
+     0.0155,
+     0.0556
+    ]
+   },
+   "if_and": {
+    "n": 34,
+    "per10k": 0.0961,
+    "ci": [
+     0.0666,
+     0.1343
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 162,
+    "per10k": 0.458,
+    "ci": [
+     0.3902,
+     0.5342
+    ]
+   },
+   "came_to_pass": {
+    "n": 22,
+    "per10k": 0.0622,
+    "ci": [
+     0.039,
+     0.0942
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 23,
+    "per10k": 0.065,
+    "ci": [
+     0.0412,
+     0.0976
+    ]
+   },
+   "from_before": {
+    "n": 2,
+    "per10k": 0.0057,
+    "ci": [
+     0.0007,
+     0.0204
+    ]
+   },
+   "of_material": {
+    "n": 659,
+    "per10k": 1.8632,
+    "ci": [
+     1.7236,
+     2.011
+    ]
+   },
+   "called_the_name": {
+    "n": 1,
+    "per10k": 0.0028,
+    "ci": [
+     0.0001,
+     0.0158
+    ]
+   },
+   "composite": 0.7546,
+   "composite_ci": [
+    0.6123,
+    0.9339
+   ]
+  },
+  "old_bailey": {
+   "words": 12727877,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 5,
+    "per10k": 0.0039,
+    "ci": [
+     0.0013,
+     0.0092
+    ]
+   },
+   "if_and": {
+    "n": 90,
+    "per10k": 0.0707,
+    "ci": [
+     0.0569,
+     0.0869
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 541,
+    "per10k": 0.4251,
+    "ci": [
+     0.39,
+     0.4624
+    ]
+   },
+   "came_to_pass": {
+    "n": 1,
+    "per10k": 0.0008,
+    "ci": [
+     0.0,
+     0.0044
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 4,
+    "per10k": 0.0031,
+    "ci": [
+     0.0009,
+     0.008
+    ]
+   },
+   "from_before": {
+    "n": 4,
+    "per10k": 0.0031,
+    "ci": [
+     0.0009,
+     0.008
+    ]
+   },
+   "of_material": {
+    "n": 300,
+    "per10k": 0.2357,
+    "ci": [
+     0.2098,
+     0.2639
+    ]
+   },
+   "called_the_name": {
+    "n": 1,
+    "per10k": 0.0008,
+    "ci": [
+     0.0,
+     0.0044
+    ]
+   },
+   "composite": 0.6309,
+   "composite_ci": [
+    0.5724,
+    0.7
+   ]
+  },
+  "ossian_1819": {
+   "words": 166568,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2215
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2215
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 43,
+    "per10k": 2.5815,
+    "ci": [
+     1.8683,
+     3.4773
+    ]
+   },
+   "came_to_pass": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2215
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 5,
+    "per10k": 0.3002,
+    "ci": [
+     0.0975,
+     0.7005
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.2215
+    ]
+   },
+   "of_material": {
+    "n": 29,
+    "per10k": 1.741,
+    "ci": [
+     1.166,
+     2.5004
+    ]
+   },
+   "called_the_name": {
+    "n": 1,
+    "per10k": 0.06,
+    "ci": [
+     0.0015,
+     0.3345
+    ]
+   },
+   "composite": 3.7652,
+   "composite_ci": [
+    2.7249,
+    5.6884
+   ]
+  },
+  "otranto_1764": {
+   "words": 38966,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.9467
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.9467
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 2,
+    "per10k": 0.5133,
+    "ci": [
+     0.0622,
+     1.8541
+    ]
+   },
+   "came_to_pass": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.9467
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.9467
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.9467
+    ]
+   },
+   "of_material": {
+    "n": 2,
+    "per10k": 0.5133,
+    "ci": [
+     0.0622,
+     1.8541
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.9467
+    ]
+   },
+   "composite": 0.7486,
+   "composite_ci": [
+    0.0907,
+    5.3402
+   ]
+  },
+  "prose_pooled": {
+   "words": 21840602,
+   "texts": 300,
+   "doubled_verb": {
+    "n": 70,
+    "per10k": 0.0321,
+    "ci": [
+     0.025,
+     0.0405
+    ]
+   },
+   "if_and": {
+    "n": 178,
+    "per10k": 0.0815,
+    "ci": [
+     0.07,
+     0.0944
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 1598,
+    "per10k": 0.7317,
+    "ci": [
+     0.6962,
+     0.7684
+    ]
+   },
+   "came_to_pass": {
+    "n": 178,
+    "per10k": 0.0815,
+    "ci": [
+     0.07,
+     0.0944
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 188,
+    "per10k": 0.0861,
+    "ci": [
+     0.0742,
+     0.0993
+    ]
+   },
+   "from_before": {
+    "n": 33,
+    "per10k": 0.0151,
+    "ci": [
+     0.0104,
+     0.0212
+    ]
+   },
+   "of_material": {
+    "n": 2089,
+    "per10k": 0.9565,
+    "ci": [
+     0.9159,
+     0.9984
+    ]
+   },
+   "called_the_name": {
+    "n": 5,
+    "per10k": 0.0023,
+    "ci": [
+     0.0007,
+     0.0053
+    ]
+   },
+   "composite": 1.1564,
+   "composite_ci": [
+    1.085,
+    1.2335
+   ]
+  },
+  "psalmanazar_formosa_1704": {
+   "words": 73408,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.5025
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.5025
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 5,
+    "per10k": 0.6811,
+    "ci": [
+     0.2212,
+     1.5895
+    ]
+   },
+   "came_to_pass": {
+    "n": 2,
+    "per10k": 0.2724,
+    "ci": [
+     0.033,
+     0.9842
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 1,
+    "per10k": 0.1362,
+    "ci": [
+     0.0034,
+     0.759
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.5025
+    ]
+   },
+   "of_material": {
+    "n": 15,
+    "per10k": 2.0434,
+    "ci": [
+     1.1437,
+     3.3702
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.5025
+    ]
+   },
+   "composite": 0.9934,
+   "composite_ci": [
+    0.3226,
+    3.7175
+   ]
+  },
+  "thomson_1808_nt": {
+   "words": 190404,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 11,
+    "per10k": 0.5777,
+    "ci": [
+     0.2884,
+     1.0337
+    ]
+   },
+   "if_and": {
+    "n": 7,
+    "per10k": 0.3676,
+    "ci": [
+     0.1478,
+     0.7575
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 21,
+    "per10k": 1.1029,
+    "ci": [
+     0.6827,
+     1.6859
+    ]
+   },
+   "came_to_pass": {
+    "n": 29,
+    "per10k": 1.5231,
+    "ci": [
+     1.02,
+     2.1874
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 7,
+    "per10k": 0.3676,
+    "ci": [
+     0.1478,
+     0.7575
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.1937
+    ]
+   },
+   "of_material": {
+    "n": 14,
+    "per10k": 0.7353,
+    "ci": [
+     0.402,
+     1.2337
+    ]
+   },
+   "called_the_name": {
+    "n": 5,
+    "per10k": 0.2626,
+    "ci": [
+     0.0853,
+     0.6128
+    ]
+   },
+   "composite": 3.2172,
+   "composite_ci": [
+    1.7987,
+    5.3371
+   ]
+  },
+  "thomson_1808_ot": {
+   "words": 618087,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 5,
+    "per10k": 0.0809,
+    "ci": [
+     0.0263,
+     0.1888
+    ]
+   },
+   "if_and": {
+    "n": 18,
+    "per10k": 0.2912,
+    "ci": [
+     0.1726,
+     0.4603
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 47,
+    "per10k": 0.7604,
+    "ci": [
+     0.5587,
+     1.0112
+    ]
+   },
+   "came_to_pass": {
+    "n": 124,
+    "per10k": 2.0062,
+    "ci": [
+     1.6686,
+     2.392
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 36,
+    "per10k": 0.5824,
+    "ci": [
+     0.4079,
+     0.8063
+    ]
+   },
+   "from_before": {
+    "n": 72,
+    "per10k": 1.1649,
+    "ci": [
+     0.9115,
+     1.467
+    ]
+   },
+   "of_material": {
+    "n": 310,
+    "per10k": 5.0155,
+    "ci": [
+     4.4726,
+     5.606
+    ]
+   },
+   "called_the_name": {
+    "n": 83,
+    "per10k": 1.3429,
+    "ci": [
+     1.0696,
+     1.6647
+    ]
+   },
+   "composite": 1.3343,
+   "composite_ci": [
+    0.8881,
+    2.0005
+   ]
+  },
+  "young_nt": {
+   "words": 185405,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 21,
+    "per10k": 1.1327,
+    "ci": [
+     0.7011,
+     1.7314
+    ]
+   },
+   "if_and": {
+    "n": 12,
+    "per10k": 0.6472,
+    "ci": [
+     0.3344,
+     1.1306
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 49,
+    "per10k": 2.6429,
+    "ci": [
+     1.9552,
+     3.494
+    ]
+   },
+   "came_to_pass": {
+    "n": 110,
+    "per10k": 5.933,
+    "ci": [
+     4.8762,
+     7.1508
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 4,
+    "per10k": 0.2157,
+    "ci": [
+     0.0588,
+     0.5524
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.199
+    ]
+   },
+   "of_material": {
+    "n": 19,
+    "per10k": 1.0248,
+    "ci": [
+     0.617,
+     1.6003
+    ]
+   },
+   "called_the_name": {
+    "n": 5,
+    "per10k": 0.2697,
+    "ci": [
+     0.0876,
+     0.6293
+    ]
+   },
+   "composite": 7.0084,
+   "composite_ci": [
+    4.8038,
+    9.9169
+   ]
+  },
+  "young_ot": {
+   "words": 605518,
+   "texts": 1,
+   "doubled_verb": {
+    "n": 35,
+    "per10k": 0.578,
+    "ci": [
+     0.4026,
+     0.8039
+    ]
+   },
+   "if_and": {
+    "n": 18,
+    "per10k": 0.2973,
+    "ci": [
+     0.1762,
+     0.4698
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 551,
+    "per10k": 9.0996,
+    "ci": [
+     8.3556,
+     9.8922
+    ]
+   },
+   "came_to_pass": {
+    "n": 532,
+    "per10k": 8.7859,
+    "ci": [
+     8.055,
+     9.5652
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 123,
+    "per10k": 2.0313,
+    "ci": [
+     1.6882,
+     2.4237
+    ]
+   },
+   "from_before": {
+    "n": 91,
+    "per10k": 1.5028,
+    "ci": [
+     1.21,
+     1.8452
+    ]
+   },
+   "of_material": {
+    "n": 357,
+    "per10k": 5.8958,
+    "ci": [
+     5.3,
+     6.5402
+    ]
+   },
+   "called_the_name": {
+    "n": 93,
+    "per10k": 1.5359,
+    "ci": [
+     1.2396,
+     1.8816
+    ]
+   },
+   "composite": 14.8813,
+   "composite_ci": [
+    13.3077,
+    16.6662
+   ]
+  },
+  "imitations_pooled": {
+   "words": 445210,
+   "texts": 14,
+   "doubled_verb": {
+    "n": 2,
+    "per10k": 0.0449,
+    "ci": [
+     0.0054,
+     0.1623
+    ]
+   },
+   "if_and": {
+    "n": 3,
+    "per10k": 0.0674,
+    "ci": [
+     0.0139,
+     0.1969
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 26,
+    "per10k": 0.584,
+    "ci": [
+     0.3815,
+     0.8557
+    ]
+   },
+   "came_to_pass": {
+    "n": 390,
+    "per10k": 8.7599,
+    "ci": [
+     7.912,
+     9.674
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 51,
+    "per10k": 1.1455,
+    "ci": [
+     0.8529,
+     1.5062
+    ]
+   },
+   "from_before": {
+    "n": 12,
+    "per10k": 0.2695,
+    "ci": [
+     0.1393,
+     0.4708
+    ]
+   },
+   "of_material": {
+    "n": 73,
+    "per10k": 1.6397,
+    "ci": [
+     1.2852,
+     2.0616
+    ]
+   },
+   "called_the_name": {
+    "n": 8,
+    "per10k": 0.1797,
+    "ci": [
+     0.0776,
+     0.3541
+    ]
+   },
+   "composite": 0.9768,
+   "composite_ci": [
+    0.5715,
+    1.7
+   ]
+  },
+  "js_dictated_pooled": {
+   "words": 142908,
+   "texts": 6,
+   "doubled_verb": {
+    "n": 6,
+    "per10k": 0.4199,
+    "ci": [
+     0.1541,
+     0.9138
+    ]
+   },
+   "if_and": {
+    "n": 1,
+    "per10k": 0.07,
+    "ci": [
+     0.0018,
+     0.3899
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 14,
+    "per10k": 0.9797,
+    "ci": [
+     0.5356,
+     1.6437
+    ]
+   },
+   "came_to_pass": {
+    "n": 171,
+    "per10k": 11.9657,
+    "ci": [
+     10.2395,
+     13.8997
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 17,
+    "per10k": 1.1896,
+    "ci": [
+     0.693,
+     1.9046
+    ]
+   },
+   "from_before": {
+    "n": 6,
+    "per10k": 0.4199,
+    "ci": [
+     0.1541,
+     0.9138
+    ]
+   },
+   "of_material": {
+    "n": 2,
+    "per10k": 0.14,
+    "ci": [
+     0.0169,
+     0.5055
+    ]
+   },
+   "called_the_name": {
+    "n": 16,
+    "per10k": 1.1196,
+    "ci": [
+     0.6399,
+     1.8182
+    ]
+   },
+   "composite": 2.5979,
+   "composite_ci": [
+    1.2103,
+    4.9417
+   ]
+  },
+  "js_own_hand_pooled": {
+   "words": 42574,
+   "texts": 2,
+   "doubled_verb": {
+    "n": 1,
+    "per10k": 0.2349,
+    "ci": [
+     0.0059,
+     1.3087
+    ]
+   },
+   "if_and": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.8665
+    ]
+   },
+   "possessive_infinitive": {
+    "n": 1,
+    "per10k": 0.2349,
+    "ci": [
+     0.0059,
+     1.3087
+    ]
+   },
+   "came_to_pass": {
+    "n": 9,
+    "per10k": 2.114,
+    "ci": [
+     0.9666,
+     4.013
+    ]
+   },
+   "by_the_hand_of": {
+    "n": 5,
+    "per10k": 1.1744,
+    "ci": [
+     0.3813,
+     2.7407
+    ]
+   },
+   "from_before": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.8665
+    ]
+   },
+   "of_material": {
+    "n": 5,
+    "per10k": 1.1744,
+    "ci": [
+     0.3813,
+     2.7407
+    ]
+   },
+   "called_the_name": {
+    "n": 0,
+    "per10k": 0.0,
+    "ci": [
+     0.0,
+     0.8665
+    ]
+   },
+   "composite": 0.9966,
+   "composite_ci": [
+    0.025,
+    5.5527
+   ]
+  }
+ },
+ "prose_per_work_median": {
+  "doubled_verb": 0.0,
+  "if_and": 0.0,
+  "possessive_infinitive": 0.5379,
+  "came_to_pass": 0.0,
+  "by_the_hand_of": 0.0,
+  "from_before": 0.0,
+  "of_material": 0.4025,
+  "called_the_name": 0.0
+ },
+ "ids": {
+  "prose": [
+   "hathitrust:mdp.39015078550681",
+   "hathitrust:nc01.ark:/13960/t6wx01q52",
+   "internet_archive:travelstoseatwa00alexgoog",
+   "internet_archive:acompendiumprac00taplgoog",
+   "hathitrust:uc2.ark:/13960/t1kh0g32m",
+   "hathitrust:uc2.ark:/13960/t7vm4639c",
+   "internet_archive:bim_eighteenth-century_a-select-collection-of-m_1788",
+   "internet_archive:b21300082",
+   "internet_archive:op1243363-1001",
+   "internet_archive:b28751309",
+   "internet_archive:b33518981",
+   "internet_archive:debateatgeneralc00east",
+   "hathitrust:aeu.ark:/13960/t1tf0bv29",
+   "internet_archive:everynightbooko00conggoog",
+   "internet_archive:onknowledgeofchr00hale",
+   "internet_archive:b33279020_0001",
+   "institutional_books:HXG8WZ",
+   "institutional_books:HN8NRR",
+   "institutional_books:32044029834413",
+   "internet_archive:poemsintwovolume02grahiala",
+   "internet_archive:bim_eighteenth-century_an-account-of-the-gallan_wolseley-john-rogerson_1786",
+   "internet_archive:historynorthcar00martgoog",
+   "hathitrust:yale.39002009217291",
+   "internet_archive:spiritof00peck",
+   "internet_archive:historyofhighope00carp",
+   "internet_archive:b21291895",
+   "internet_archive:expositorynotesw0000will",
+   "hathitrust:loc.ark:/13960/t43r1gr89",
+   "institutional_books:HN6N35",
+   "institutional_books:32044086351863",
+   "internet_archive:b22013635_0002",
+   "internet_archive:wondersnaturean00priegoog",
+   "internet_archive:essaysonmenandm00shengoog",
+   "internet_archive:dialoguesonvario00gilpuoft",
+   "institutional_books:HWB3A6",
+   "internet_archive:husbandhuntingor01sljn",
+   "internet_archive:bim_eighteenth-century_a-remedy-for-the-distill_campbell-thomas_1783",
+   "internet_archive:topographyofgrea19cook",
+   "internet_archive:conla02lack",
+   "internet_archive:talesfancy02burngoog",
+   "internet_archive:11252977bsb",
+   "institutional_books:HH2FMI",
+   "institutional_books:32044026012591",
+   "institutional_books:HWX51N",
+   "institutional_books:HXJ2IR",
+   "internet_archive:catechismofchur00calv",
+   "internet_archive:bim_eighteenth-century_histoire-naturelle-eng_leclerc-georges-louis-_1791",
+   "internet_archive:DescriptionOfWestminsterAbbey",
+   "institutional_books:HXG9Y5",
+   "internet_archive:bim_eighteenth-century_sentimental-excursions-t_macnally-leonard_1781",
+   "internet_archive:bim_eighteenth-century_tales-of-the-hermitage-_pilkington-mrs-mary_1800",
+   "internet_archive:topographyofgrea21cook",
+   "institutional_books:32044085112548",
+   "hathitrust:mdp.39015024249628",
+   "institutional_books:HN6EPR",
+   "internet_archive:adigestlawsengl22cruigoog",
+   "institutional_books:AH4ZS5",
+   "internet_archive:anhistoricaladd00ocogoog",
+   "institutional_books:HC1GXN",
+   "internet_archive:10449482bsb",
+   "internet_archive:bim_eighteenth-century_proceedings-1782-06-25_great-britain-parliamen_1783",
+   "internet_archive:mostremarkableye00kotz",
+   "internet_archive:younggeometrici00turngoog",
+   "internet_archive:historyfictionb03dunlgoog",
+   "internet_archive:songsscotlandan00unkngoog",
+   "internet_archive:bim_eighteenth-century_the-case-of-the-agent-to_white-robert-agent-to_1793",
+   "institutional_books:32044019318070",
+   "internet_archive:creation00ballgoog",
+   "internet_archive:emigrants00emiggoog",
+   "internet_archive:modernpartofuniv31londuoft",
+   "internet_archive:specimensearlye00elligoog",
+   "institutional_books:HN5WW5",
+   "internet_archive:practicaltreatis00sugd",
+   "internet_archive:workssamueljohn100murpgoog",
+   "internet_archive:voyagesofchristc01irvirich",
+   "internet_archive:manresponsiblefo00ward_0",
+   "internet_archive:innight00harr",
+   "internet_archive:historygreecefr04goldgoog",
+   "institutional_books:HXJ2GS",
+   "internet_archive:trgiulipoema00montgoog",
+   "institutional_books:32044025059817",
+   "internet_archive:b33519511",
+   "institutional_books:32044038392700",
+   "internet_archive:b33279731",
+   "internet_archive:10595288bsb",
+   "internet_archive:thingsastheyareo02godw",
+   "internet_archive:ruinsorsurveyofr01voln",
+   "internet_archive:historyoffrancef01adoluoft",
+   "internet_archive:ursulaorinsuffic00sandiala",
+   "internet_archive:bim_eighteenth-century_the-natural-history-of-e_hablitz-karl-ivanovich_1789",
+   "internet_archive:newreportscases06bliggoog",
+   "internet_archive:reportscasesarg00ingrgoog",
+   "internet_archive:acatalogueprint01kerrgoog",
+   "internet_archive:viewstateeurope44hallgoog",
+   "internet_archive:b20443602",
+   "internet_archive:adigestedindext00changoog",
+   "internet_archive:b33093428_0005",
+   "internet_archive:elementshindula01stragoog",
+   "institutional_books:HXJNJ9",
+   "internet_archive:greatimportance02melmgoog",
+   "internet_archive:b21529607",
+   "internet_archive:essaysbiographi00unkngoog",
+   "internet_archive:10023975bsb",
+   "institutional_books:HNZM97",
+   "internet_archive:elementsofastron00vinc",
+   "internet_archive:historyofshrewsb02owen",
+   "internet_archive:cihm_12553",
+   "institutional_books:HXINQ8",
+   "institutional_books:32044033817115",
+   "internet_archive:presentstatetur03thorgoog",
+   "hathitrust:aeu.ark:/13960/t5bc4r123",
+   "institutional_books:AH5EH7",
+   "internet_archive:ladyjanegreyhert00lair",
+   "internet_archive:anewsystemdomes02rundgoog",
+   "internet_archive:newgeneralbiogra12took",
+   "internet_archive:compendiouscompl00morsrich",
+   "internet_archive:hymnsonlordssupp00wesl",
+   "internet_archive:b22026885",
+   "internet_archive:bim_eighteenth-century_the-two-trials-of-john-f_fries-john_1800",
+   "internet_archive:10280747bsb",
+   "internet_archive:poeticalworkscon00parn",
+   "internet_archive:ashortsystempra01kinngoog",
+   "internet_archive:memoirsrearadmi00jonegoog",
+   "institutional_books:HXIGTU",
+   "internet_archive:metricalhistoryo01dibdiala",
+   "internet_archive:bim_eighteenth-century_salivation-exploded-or-_swift-charles_1795",
+   "internet_archive:10467140bsb",
+   "internet_archive:grammarofgermanl00beck",
+   "internet_archive:bub_gb_RfzyEPeEDSgC",
+   "hathitrust:aeu.ark:/13960/t0ft9qj3t",
+   "internet_archive:newforestanovel04smitgoog",
+   "institutional_books:32044024425423",
+   "internet_archive:dametm00chur",
+   "internet_archive:paroledocumentar00penn",
+   "internet_archive:tensermonsonvari00winc",
+   "internet_archive:fiftytwosermonso00wal",
+   "institutional_books:32044090309352",
+   "internet_archive:essays01tempgoog",
+   "institutional_books:32044029917622",
+   "internet_archive:lifeandadventur09defogoog",
+   "hathitrust:mdp.39015078550244",
+   "institutional_books:32044028993707",
+   "internet_archive:memoirsarchibal00napigoog",
+   "internet_archive:b21987464",
+   "internet_archive:bim_eighteenth-century_the-whole-book-of-psalms_1793",
+   "internet_archive:travelsalibeyps00beygoog",
+   "internet_archive:accountcaptivit00knoxgoog",
+   "internet_archive:onattentionduet00fletgoog",
+   "internet_archive:b33286012",
+   "internet_archive:travelsthroughc04websgoog",
+   "internet_archive:bim_eighteenth-century_experiments-and-observat_milner-thomas-md_1783",
+   "institutional_books:32044097914444",
+   "internet_archive:eightsermonsprea00barr",
+   "internet_archive:lawsdisposalape01lovegoog",
+   "internet_archive:atreatiseoncaus00maccgoog",
+   "internet_archive:wanderingschild05bedfgoog",
+   "internet_archive:illustrationsofj00tits",
+   "internet_archive:elegantextractso00knox_0",
+   "institutional_books:HNYGZM",
+   "internet_archive:b3328054x",
+   "internet_archive:cihm_44191",
+   "internet_archive:malpasorlepoursu02benn",
+   "tcp:K075501.002",
+   "internet_archive:collectionoftheo03watsuoft",
+   "hathitrust:uc2.ark:/13960/t3qv3fz19",
+   "internet_archive:10748873bsb",
+   "internet_archive:generalbiograph55chalgoog",
+   "institutional_books:HW3CRX",
+   "internet_archive:bim_eighteenth-century_the-habitable-world-desc_trusler-john_1788_1",
+   "institutional_books:32044105325757",
+   "internet_archive:merceinscitydire00merc",
+   "internet_archive:b21974469_0001",
+   "hathitrust:mdp.39015085862723",
+   "internet_archive:observationsrel00gilpgoog",
+   "internet_archive:travelsandadven00greegoog",
+   "internet_archive:10281324bsb",
+   "institutional_books:HXG9NG",
+   "internet_archive:analysisofegypti00pric",
+   "internet_archive:ahistoryearthan28goldgoog",
+   "institutional_books:HN4QKF",
+   "internet_archive:b21525006_0002",
+   "internet_archive:cihm_20919",
+   "hathitrust:yale.39002070862165",
+   "internet_archive:b21532059",
+   "institutional_books:HWE4J8",
+   "internet_archive:bim_eighteenth-century_the-sportsmans-director_montagu-george_1792",
+   "internet_archive:lifeofjeremytayl00bonn",
+   "internet_archive:bim_eighteenth-century_the-effects-of-the-frenc_somerville-thomas_1793",
+   "internet_archive:politicalhistori00late",
+   "hathitrust:loc.ark:/13960/t21c2qz5v",
+   "hathitrust:uc2.ark:/13960/t1zc7v289",
+   "institutional_books:HXJF8K",
+   "hathitrust:aeu.ark:/13960/t2p56f68g",
+   "internet_archive:bim_eighteenth-century_sermons-on-interesting-s_buchanan-allan_1791",
+   "internet_archive:lifeofcelebrated00camp",
+   "internet_archive:introductiontoan01cumm",
+   "internet_archive:bim_eighteenth-century_1780_10",
+   "internet_archive:worksoflaterevst03char",
+   "internet_archive:11715894bsb",
+   "institutional_books:HXG9WA",
+   "institutional_books:32044096987854",
+   "internet_archive:10069454bsb",
+   "internet_archive:jeremiahandlame00jeregoog",
+   "internet_archive:theologyexplai03dwig",
+   "internet_archive:bim_eighteenth-century_a-convention-the-only-me_gerrald-joseph_1794",
+   "internet_archive:b28757403",
+   "institutional_books:HN5DRE",
+   "institutional_books:32044097903884",
+   "internet_archive:10521971bsb",
+   "internet_archive:ladyspoeticalmag01londuoft",
+   "internet_archive:b29311925_0001",
+   "internet_archive:bim_eighteenth-century_friendly-and-seasonable-_comber-thomas_1786",
+   "institutional_books:32044014224984",
+   "institutional_books:HWECM5",
+   "internet_archive:anoutlinelawten00ramgoog",
+   "internet_archive:wholeworksedwar00reyngoog",
+   "internet_archive:travelsinfrenchr00bugg",
+   "internet_archive:defenceofdrprice00wyviuoft",
+   "internet_archive:lettersfromfathe00aiki",
+   "internet_archive:cihm_29206",
+   "institutional_books:AH48TW",
+   "internet_archive:b21946280",
+   "internet_archive:miscellaneouswor05smol",
+   "tcp:N18014",
+   "internet_archive:11425626bsb",
+   "internet_archive:topographyofgrea01cook",
+   "internet_archive:provincialglossa00gros",
+   "internet_archive:bim_eighteenth-century_the-broken-cistern-and-_huntington-william_1800_0",
+   "internet_archive:lettersfrompales00jolluoft",
+   "internet_archive:b22023859_0001",
+   "internet_archive:britishessayists07ferguoft",
+   "institutional_books:HW21IE",
+   "internet_archive:proceedingofpres00pres",
+   "institutional_books:32044038416392",
+   "internet_archive:discardedsonorh03rochgoog",
+   "internet_archive:millenialpraise00tallgoog",
+   "internet_archive:10746890bsb",
+   "internet_archive:velvetcushionby00cunngoog",
+   "internet_archive:statementsofpers00cobi",
+   "hathitrust:uiuo.ark:/13960/t9h42fv33",
+   "internet_archive:worksrevgeorgec00crabgoog",
+   "internet_archive:journeyoverlandt00camp",
+   "internet_archive:amanualessaysse00manugoog",
+   "internet_archive:poeticalworksnew03burnuoft",
+   "internet_archive:b21901314",
+   "institutional_books:AH4VFJ",
+   "institutional_books:32044072033624",
+   "internet_archive:bim_eighteenth-century_the-hive-of-modern-liter_1799",
+   "hathitrust:mcg.ark:/13960/t3d00309x",
+   "internet_archive:bim_eighteenth-century_laws-etc-selections_pennsylvania_1796",
+   "hathitrust:uc2.ark:/13960/t5fb4z11p",
+   "internet_archive:MN5132ucmf_3",
+   "internet_archive:studiesofnature04sain",
+   "internet_archive:sensesensibility0000jane_j9p4",
+   "internet_archive:b33288525",
+   "internet_archive:ansterfairpoemin01tenn",
+   "internet_archive:talesfromshakes03lambgoog",
+   "internet_archive:familiarintroduc00broorich",
+   "internet_archive:minutesofannuals5760chow",
+   "internet_archive:b21353827",
+   "institutional_books:HN39IN",
+   "internet_archive:newenglishdramaw06oxbe",
+   "internet_archive:eightlecturesonc00thor",
+   "internet_archive:lettersconcernin00mill",
+   "internet_archive:peterfaultlessto00elli",
+   "internet_archive:b28769909_0001",
+   "internet_archive:lecturessirastl00coopgoog",
+   "internet_archive:memoirsoflifewor00elmeuoft",
+   "institutional_books:32044019777242",
+   "internet_archive:seriesofpopulare01hamiuoft",
+   "internet_archive:b21727296",
+   "internet_archive:thebotanicgarden00darwrich",
+   "hathitrust:loc.ark:/13960/t03x8v30r",
+   "hathitrust:gri.ark:/13960/t01z6nv22",
+   "internet_archive:worksofcorneliu03taci",
+   "internet_archive:bim_eighteenth-century_an-extract-from-the-jour_nelson-john_1798",
+   "institutional_books:HXG8TH",
+   "institutional_books:HWKDBJ",
+   "internet_archive:doctrineoflifean00bailuoft",
+   "internet_archive:bim_eighteenth-century_a-treatise-upon-the-law-_1793",
+   "internet_archive:proceedingsaddre00demo_0",
+   "institutional_books:HW2RWQ",
+   "internet_archive:anessayonlifeho00cincgoog",
+   "internet_archive:continuationofhi01mino",
+   "internet_archive:b3308497x",
+   "internet_archive:liturgyour00newj",
+   "internet_archive:treatiseonmilita00will",
+   "institutional_books:32044054116009",
+   "internet_archive:10529002bsb",
+   "hathitrust:nc01.ark:/13960/t7kp88t6w",
+   "internet_archive:dayversusdayque00britgoog",
+   "internet_archive:stricturesonmrh00blaigoog",
+   "hathitrust:mdp.39015063453776",
+   "institutional_books:32044024251944",
+   "internet_archive:reportscasesarg15vesegoog",
+   "internet_archive:selectcollection07dods",
+   "internet_archive:10759202bsb",
+   "internet_archive:bim_eighteenth-century_the-proceedings-at-large_showers-samuel-howe_1796",
+   "internet_archive:bim_eighteenth-century_the-effects-of-property-_patton-charles_1797",
+   "internet_archive:gri_33125012248544"
+  ],
+  "emode": [
+   "tcp:A65106",
+   "tcp:A73425",
+   "tcp:A14856",
+   "tcp:A86659",
+   "tcp:A68718",
+   "tcp:A92862",
+   "tcp:A13341",
+   "tcp:B00812",
+   "tcp:A09133",
+   "tcp:A18097",
+   "tcp:A03696",
+   "tcp:A72059",
+   "tcp:A15082",
+   "tcp:A03128",
+   "tcp:A10556",
+   "tcp:A18369",
+   "tcp:A46779",
+   "tcp:A17129",
+   "tcp:A21497",
+   "tcp:A68659",
+   "tcp:A07190",
+   "tcp:A73585",
+   "tcp:A29823",
+   "tcp:A70084",
+   "tcp:A18592",
+   "tcp:A68048",
+   "tcp:A43441",
+   "tcp:A50348",
+   "tcp:A73859",
+   "tcp:A14316",
+   "tcp:A15606",
+   "tcp:A03064",
+   "tcp:A15509",
+   "tcp:A16309",
+   "tcp:A11051",
+   "tcp:A69006",
+   "tcp:A17412",
+   "tcp:A09465",
+   "tcp:A17294",
+   "tcp:A11110",
+   "tcp:A16439",
+   "tcp:A67551",
+   "tcp:A19479",
+   "tcp:A12258",
+   "tcp:A19712",
+   "tcp:A69752",
+   "tcp:A11909",
+   "tcp:A16685",
+   "tcp:A77357",
+   "tcp:A18174",
+   "tcp:A15505",
+   "tcp:A68078",
+   "tcp:A02454",
+   "tcp:B10300",
+   "tcp:A17589",
+   "tcp:A64950",
+   "tcp:A14155",
+   "tcp:A89518",
+   "tcp:A13187",
+   "tcp:A57675",
+   "tcp:A28541",
+   "tcp:A11766",
+   "tcp:A04194",
+   "tcp:A38109",
+   "tcp:A50368",
+   "tcp:A11899",
+   "tcp:A17591",
+   "tcp:A13819",
+   "tcp:A07067",
+   "tcp:A10213",
+   "tcp:A10915",
+   "tcp:A57222",
+   "tcp:A76088",
+   "tcp:A18403",
+   "tcp:A51725",
+   "tcp:A21108",
+   "tcp:A96763",
+   "tcp:A01754",
+   "tcp:A17888",
+   "tcp:A69028",
+   "tcp:A02131",
+   "tcp:A01594",
+   "tcp:A15487",
+   "tcp:A16279",
+   "tcp:A05651",
+   "tcp:A18052",
+   "tcp:A01979",
+   "tcp:A16643",
+   "tcp:A20578",
+   "tcp:A20850",
+   "tcp:A20950",
+   "tcp:A80640",
+   "tcp:A15397",
+   "tcp:A11116",
+   "tcp:A23301",
+   "tcp:A09620",
+   "tcp:A14868",
+   "tcp:A20732",
+   "tcp:A41015",
+   "tcp:A69196"
+  ],
+  "non_semitic": [
+   "hathitrust:uc2.ark:/13960/t0rr1sd7v",
+   "hathitrust:gri.ark:/13960/t1pg58k79",
+   "hathitrust:ia.ark:/13960/t4th8nt9h",
+   "hathitrust:loc.ark:/13960/t6543v77c",
+   "hathitrust:udel.31741114436688",
+   "hathitrust:uc2.ark:/13960/t3st7qp5r",
+   "hathitrust:dul1.ark:/13960/t1vd9df1n",
+   "hathitrust:loc.ark:/13960/t30306835",
+   "hathitrust:dul1.ark:/13960/t16m5th34",
+   "hathitrust:aeu.ark:/13960/t0bv8858z",
+   "hathitrust:gri.ark:/13960/t2d83774x",
+   "hathitrust:gri.ark:/13960/t10p4pd9g",
+   "hathitrust:loc.ark:/13960/t7rn4dx15",
+   "hathitrust:loc.ark:/13960/t6737hn1h",
+   "hathitrust:gri.ark:/13960/t1fj3cw1f",
+   "hathitrust:gri.ark:/13960/t16n14f5r",
+   "hathitrust:uc2.ark:/13960/t38056c9r",
+   "hathitrust:loc.ark:/13960/t85h8dc0n",
+   "hathitrust:mdp.39015013470904",
+   "hathitrust:loc.ark:/13960/t4rj5q44j",
+   "hathitrust:uc2.ark:/13960/t3kw5bs1p",
+   "hathitrust:dul1.ark:/13960/t6155j742",
+   "hathitrust:ia.ark:/13960/t00013c86",
+   "hathitrust:mdp.39015063466935",
+   "hathitrust:dul1.ark:/13960/t1dj6471v",
+   "hathitrust:ncs1.ark:/13960/t2s479h7b",
+   "hathitrust:dul1.ark:/13960/t1qf9pk9q",
+   "hathitrust:loc.ark:/13960/t1pg2zb0x",
+   "hathitrust:gri.ark:/13960/t0ft8v72k",
+   "hathitrust:dul1.ark:/13960/t3225m16m",
+   "hathitrust:gri.ark:/13960/t9c56ms6b",
+   "hathitrust:uc2.ark:/13960/t5w66dg19",
+   "hathitrust:gri.ark:/13960/t6349tj9m",
+   "hathitrust:loc.ark:/13960/t9k36d108",
+   "hathitrust:aeu.ark:/13960/t06x0758z",
+   "hathitrust:uc2.ark:/13960/t0ms3p70v",
+   "hathitrust:uc2.ark:/13960/t8pc3024z",
+   "hathitrust:uc2.ark:/13960/t4pk1137g",
+   "hathitrust:mdp.39015073766746",
+   "hathitrust:aeu.ark:/13960/t5k93zf9f",
+   "hathitrust:gri.ark:/13960/t6vx3s55t",
+   "hathitrust:gri.ark:/13960/t5fb8pr0t",
+   "hathitrust:uc2.ark:/13960/t41r6qr2k",
+   "hathitrust:dul1.ark:/13960/t8qc0xr0b",
+   "hathitrust:ia.ark:/13960/t1xd1661m",
+   "hathitrust:uc2.ark:/13960/t43r0tx1x",
+   "hathitrust:uc2.ark:/13960/t7dr2qw61",
+   "hathitrust:yale.39002030329578",
+   "hathitrust:loc.ark:/13960/t9t169j83",
+   "hathitrust:mdp.39015008799705",
+   "hathitrust:mdp.39015076682817",
+   "hathitrust:uc2.ark:/13960/t2s46mb21",
+   "hathitrust:uc2.ark:/13960/t5bc3x85c",
+   "hathitrust:nc01.ark:/13960/t5t74q331",
+   "hathitrust:mdp.39015074623573",
+   "hathitrust:ia.ark:/13960/t22b96403",
+   "hathitrust:uc2.ark:/13960/t0js9z52w",
+   "hathitrust:aeu.ark:/13960/t46q2rc56",
+   "hathitrust:gri.ark:/13960/t71w28s87",
+   "hathitrust:uc2.ark:/13960/t3bz6300w"
+  ]
+ },
+ "unreadable": {
+  "prose": 0,
+  "emode": 0,
+  "non_semitic": 0
+ },
+ "not_attempted": [],
+ "judge_jobs": {
+  "questions": 514,
+  "check_items": 60,
+  "by_feature": {
+   "possessive_infinitive": 280,
+   "doubled_verb": 174,
+   "if_and": 60
+  }
+ },
+ "hand_sheets": {
+  "retention": 160,
+  "precision": 140
+ }
+}

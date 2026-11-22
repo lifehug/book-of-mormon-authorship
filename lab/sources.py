@@ -664,6 +664,28 @@ def _sources() -> list[dict]:
         "copyright the translator; free to read; private copy for analysis",
         True,
     )
+    # BOM-102 second design (docs/research/2026-11-22-redesign-translation.md).
+    for name, kind, url, terms in (
+        ("morphhb", "git", GH + "openscriptures/morphhb",
+         "CC BY 4.0 (Open Scriptures Hebrew Bible: WLC text, lemma, morphology)"),
+        ("ylt_txt.tar", "file", f"{IA}/download/ylt_20220401/YLT_txt.tar",
+         PD + " (Young's Literal Translation; digital text from bible4u.net, likely the 1898 "
+         "revision, not the 1862 first edition)"),
+        ("bookofjasherrefe00sefe", "ia", f"{IA}/details/bookofjasherrefe00sefe",
+         PD + " (scan and OCR text; Noah and Gould, New York 1840)"),
+        *[(f"holybiblecontain0{v}thom", "ia", f"{IA}/details/holybiblecontain0{v}thom",
+           PD + " (scan and OCR text; Thomson 1808, from the Septuagint)") for v in (1, 2, 3, 4)],
+        ("bom_gutenberg_versified.txt", "file", _pg(17, "-0.txt"),
+         PD + "; Project Gutenberg #17 (modern chapters and verses: a lookup index only)"),
+    ):  # fmt: skip
+        add(name, "translation", "BOM-102", kind, url, terms)
+    for name, url in (
+        ("fair_if_and_conditionals.html", "https://www.fairlatterdaysaints.org/answers/"
+         "Book_of_Mormon/Evidences/Hebraisms/If-and_conditionals"),
+        ("rsc_conditional_clauses.html", "https://rsc.byu.edu/preserved-translation/"
+         "conditional-clauses"),
+    ):  # fmt: skip
+        add(name, "papers", "BOM-102", "file", url, "copyright the authors; private copy", True)
     add(
         "jackson2025_reply_to_townsend.pdf",
         "papers",

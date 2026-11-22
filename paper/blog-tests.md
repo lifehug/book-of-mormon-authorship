@@ -1020,6 +1020,53 @@ caught. The imitations add up to only 445,000 words. The "if ... and" constructi
 Skousen stresses most, could not be tested: the King James Bible does not have it, so my check
 had nothing to stand on.
 
+**A second design, after going back to the claim.** The first design had not reproduced
+anybody's work first, so this one starts there. I keyed every verse that Tvedtnes (1970, 1991),
+Parry (2002), Peterson and Skousen cite for a Hebraism, 170 items, and checked each in the
+1830 text.
+
+| Source | Found as cited | Reads differently in 1830 | Not found |
+| --- | --- | --- | --- |
+| Tvedtnes 1991 | 80 | 11 | 2 |
+| Tvedtnes 1970 | 6 | 0 | 0 |
+| Parry 2002 | 47 | 5 | 3 |
+| Skousen 1994 and the if-and lists | 12 | 0 | 0 |
+
+So their examples are there, nearly all of them. "Land of promise" is 22 times, as claimed;
+"promised land" is 20, not the 10 claimed. The eleven "if ... and" sentences are in the 1830
+text and the printer's manuscript. A fourteenth case needs Skousen's volume, which I have not
+bought, so that one is not replicated.
+
+Finding the examples is the easy half. The claim is that an English author would not have
+produced them. The seven features I counted the first time turned out to be King James
+English, which any imitator copies. So the new test looks only at Hebrew constructions the
+King James translators *removed*: an imitator of the King James could not have picked those
+up from it. I built the list from the Hebrew text itself. The doubled verb is the clear case
+("dying thou shalt die"): the King James keeps it in about 1 percent of places.
+
+The known-answer check had four parts and two missed.
+
+Very literal translations from Hebrew were supposed to show these constructions at three
+times the King James rate. Two of three features did (Ainsworth's 1627 translation has the
+doubled verb 35 times as often). The third did not, and it is the one that matters most to
+the claim: the "if ... and" sentence. Ainsworth and Young, the two most literal English
+translations I have, use it no more than the King James does. English translators of Hebrew,
+even stubborn ones, just did not write it. My rule also finds only 4 of the 11 cited cases in
+the Book of Mormon, so the rule is weak too.
+
+And books that only pretend to be translations were supposed to score like the King James.
+*The Late War* did, the hard case from the first design. But Macpherson's *Ossian* scored 3.8
+times the King James level and the fake *Book of Jasher* of 1751 scored 3.0. Neither came
+from Hebrew. One came from an imagined Gaelic and one from nothing.
+
+So I did not score the Book of Mormon. What the miss says, as far as raw counts go: English
+writers reaching for an ancient sound produce some of these constructions on their own, which
+is a point against using them as marks of Hebrew; and the star example, if-and, is so rare
+even in literal translation that there is nothing to compare the book's eleven cases to. That
+cuts both ways. It means I cannot show an imitator would write it, and I cannot show a
+translator would. The counts above are from rules nobody has checked by hand yet; 514
+questions for the judge are prepared to do that.
+
 ### Spoken or written? (BOM-106)
 
 Everyone who was there said the book was spoken aloud to scribes. William Davis argued in 2020

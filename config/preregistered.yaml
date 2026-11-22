@@ -1909,6 +1909,50 @@ lab:                              # the research lab (exploratory tooling; reads
     resamples: 1000
     within_voice_tolerance: 0.03
     seed: bom101
+  translation2:                    # BOM-102 second design (lab; exploratory): Hebrew constructions the King James Bible removed; card 2026-11-22-translation-redesign
+    seed: 20261122
+    verse_ngram: 4                 # step 1: a cited verse is found in the 1830 text by shared word 4-grams
+    verse_match_min: 0.5           # step 1: share of the verse's 4-grams that must sit in one place of the 1830 book (or manuscript)
+    if_then_window: 25             # step 1: "if" followed by "then" within this many words counts as an if-then (manuscripts have no punctuation)
+    retention_sample: 100          # Hebrew instances drawn per construction (all when fewer)
+    retention_hand: 20             # of those, read by hand (owner) against the rule's call
+    suppressed_max: 0.2            # King James retention at most this: suppressed (tested)
+    carried_max: 0.5               # at least this: carried (reported only)
+    literal_ratio: 3.0             # K1: Ainsworth or Young at least this times the King James Old Testament rate, 95% intervals apart
+    min_features: 3                # K1: features that must survive, at least one unclaimed
+    min_words: 30000               # K2: a pseudo-translation is checked alone only with this many words
+    floor_ratio: 1.5               # K2: composite at most this for the imitations pooled, each such pseudo-translation, The Late War and Ossian
+    precision_hand: 50             # K3: candidates per feature read by hand (owner)
+    precision_bar: 0.8             # K3: hand-checked precision per feature, else dropped
+    unit_words: 20000              # K4 and the target: units of this many words
+    auc_bar: 0.9                   # K4: composite AUC, literal-Hebrew units against imitation and pseudo-translation units
+    ot_floor: 0.05                 # composite: a King James Old Testament rate below this (per 10,000 words) is taken as this
+    min_candidates: 10             # "cannot tell" when target and floor groups together have fewer verified instances
+    doubled_gap: 3                 # doubled verb: at most this many pronoun or auxiliary words between the two forms, no punctuation
+    if_and_max_words: 40           # if-and: protasis at most this many words before ", and"
+    judge_check_bar: 0.9           # the judge's own known-answer check: share of made-up items answered right, per feature
+    judge_cap_per_text: 150        # judge questions per feature and text at most (seeded sample above it); gating texts are all below it in practice
+    max_words: 100000              # library works counted from the middle, at most this many words (as the first design)
+    emode_sample: 100              # Early Modern English prose: TCP works drawn at random
+    emode_years: [1550, 1650]
+    emode_min_words: 20000
+    oldbailey_years: [1780, 1830]
+    texts:                         # named texts (library ids or paths); imitations, Hebrew translations and period prose are the first design's lists (lab.translation)
+      ainsworth_1627: tcp:A11649   # translation only: TEI divs of type chapter and prose_version_of_psalm; annotations left out
+      young_literal: data/corpus/lab/sources/translation/ylt_txt.tar
+      jasher_noah_1840: data/corpus/lab/sources/translation/bookofjasherrefe00sefe/text.txt
+      koran_sale_1734: data/corpus/lab/sources/names/koran_sale.txt
+      douay_1609: tcp:A11777
+      challoner_1821: internet_archive:holybibletransla00chalrich
+      thomson_1808_ot: [data/corpus/lab/sources/translation/holybiblecontain01thom/text.txt, data/corpus/lab/sources/translation/holybiblecontain02thom/text.txt, data/corpus/lab/sources/translation/holybiblecontain03thom/text.txt]
+      thomson_1808_nt: data/corpus/lab/sources/translation/holybiblecontain04thom/text.txt
+      ossian_1819: institutional_books:HXQ93I
+      otranto_1764: internet_archive:10750813bsb
+      ilive_jasher_1751: internet_archive:bookofjasherwith00iliv
+      psalmanazar_formosa_1704: tcp:K010899.000
+    pseudo_translations: [ossian_1819, otranto_1764, ilive_jasher_1751, psalmanazar_formosa_1704, chronicles_of_eri_1822]
+    js_dictated: [js-1828-1829-revelations, revelations-later-1830, revelations-later-1831, dictated-visions_of_moses_1830, dictated-ot_revision_1, dictated-abraham_1842]
+    js_own_hand: [js-letters-1829-1833-all, js-1832-history]
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
