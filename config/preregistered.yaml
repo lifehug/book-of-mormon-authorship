@@ -1297,6 +1297,21 @@ lab:                              # the research lab (exploratory tooling; reads
     close_percentile: 5            # "no close neighbours": median top-1 score below this percentile of control queries'
     yes_share: 0.667               # overall yes: at least this share of topics peak 1810s-1820s (no: at most 1 - this)
     seed: 20261121
+    v2:                            # second design (post hoc, after the first check missed; card 2026-11-21-debates-2); overrides the values above
+      year_min: 1780               # gallery: OCR religious works printed 1780-1829 only
+      year_max: 1829
+      gallery_exclude_source: tcp  # keyed text is used only as queries
+      draws: 3                     # balanced galleries: each decade gets the smallest decade's passage count
+      control_decades: [1780, 1790, 1800, 1810, 1820]   # OCR control groups
+      keyed_years: [1780, 1809]    # the clean keyed control group
+      adjacent_bar: 0.8            # every group: own-or-adjacent peak rate at least this
+      exact_bar: 0.4               # and exact-decade rate at least this (chance 0.2)
+      late_decades: [1810, 1820]   # a topic is "late" if it peaks in one of these
+      phrases: ['infinite atonement', 'plan of salvation', 'probationary state', 'demands? of justice', 'fall of man']
+      phrase_year_min: 1640        # phrase counts: religious works of these years (keyed and OCR)
+      phrase_year_max: 1829
+      phrase_workers: 6
+      seed: 20261122
   chiasmus:                        # BOM-107 (lab; exploratory): chiasmus rate by a fixed rule, Book of Mormon against the library
     seed: 20261121
     scales: [15, 40, 150, 400]     # content tokens each side of a centre (about 35, 90, 330, 900 words)

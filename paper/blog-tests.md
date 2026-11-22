@@ -83,7 +83,7 @@ compares against.
 | BOM-127 | Manuscript errors are errors of hearing | Skousen 1998 | one editor's reading | manuscripts known to be copied and known to be dictated | **Done**, fragile |
 | BOM-125 | It is unlike other dictated or "received" books | Hales 2019; Dunn 2002 | length and schooling | the same measures on all of them | TBD |
 | BOM-121 | Its speakers have more distinct voices than a novelist's characters | Fields and others, about 2021 | four novelists after 1830 | plays of 1660 to 1700, by one author | **Done** |
-| BOM-107 | It has deliberate chiasmus | Welch 1969; Edwards 2004 | the book and the Bible | the rate in every book | TBD |
+| BOM-107 | It has deliberate chiasmus | Welch 1969; Edwards 2004 | the book and the Bible | the rate in every book | **Done** |
 
 ### 4. Does the same hand show up elsewhere?
 
@@ -707,6 +707,46 @@ have landed there too, whatever it says.
 
 So this one has no answer yet. The fix is a narrower search, 1780 to 1829 only, where the
 decades are closer in size, and a score a thin decade cannot inflate.
+
+### Chiasmus, with something to compare it to (BOM-107)
+
+A chiasm says things and then says them again in reverse order: A, B, C, then C, B, A. Welch
+found them in the Book of Mormon in 1969 and they have been offered ever since as a mark of
+ancient Hebrew writing. What nobody had was the rate in everything else.
+
+I wrote one fixed rule: reduce the text to its content words, and count every place where three
+or more words repeat in mirror order around a centre. Then I ran it on the Book of Mormon, the
+King James Bible, 360 library books, 120 translations, 25 Bible-style books and Joseph Smith's
+other dictations.
+
+| Text | Chiasms per 10,000 words (three levels or more, 40 words each side) |
+| --- | --- |
+| Book of Mormon | 34.7 |
+| King James Bible | 36.4 |
+| Library books | 34.7 |
+| Translations | 36.6 |
+| Bible-style books | 37.4 |
+| Joseph Smith's other dictations | 37.4 |
+
+The Book of Mormon sits in the middle of the library, at the 48th percentile. Then the control
+that matters: count the same repeated words in the same places but in plain repeated order (A,
+B, C, A, B, C). If mirror order were being used on purpose, it should beat plain order. In the
+Book of Mormon mirror order comes out at 0.88 of plain order, in the King James Bible 0.94, in
+the library 0.95. Nothing is above 1.
+
+Alma 36 is the famous one. By this rule its deepest mirror run is 5 levels in a tight window,
+and only 3 library passages in 1,000 of the same length do that. But the same chapter read in
+plain order reaches 6. It is a very repetitive chapter, in both directions.
+
+What I take from it: counted by repeated words, the Book of Mormon has no more chiasmus than an
+ordinary book of its time, and neither does the Bible. That second half is the limit. A rule
+that cannot tell the Bible from ordinary prose is counting word repetition, not the idea-level
+patterns Welch meant. So this says the word-level counts do not set the book apart. It does not
+say the hand-identified chiasms are not there.
+
+The rule found 4 of 5 well-known Bible chiasms and 300 of 300 planted ones. I changed two things
+after the first check failed and before the Book of Mormon was counted: a fix to how words are
+reduced, and the plain-order control in place of shuffling sentences.
 
 ## What I would want a reader to take from the whole set
 

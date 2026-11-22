@@ -1,0 +1,7692 @@
+{
+ "settings": {
+  "seed": 20261121,
+  "scales": [
+   15,
+   40,
+   150,
+   400
+  ],
+  "strides": [
+   1,
+   1,
+   2,
+   8
+  ],
+  "primary_scale": 40,
+  "primary_depth": 3,
+  "min_depth": 3,
+  "min_len": 3,
+  "suffixes": [
+   "ing",
+   "eth",
+   "est",
+   "ed",
+   "es",
+   "s"
+  ],
+  "stem_min": 4,
+  "max_count": 2,
+  "stopwords": [
+   "the",
+   "and",
+   "that",
+   "for",
+   "with",
+   "was",
+   "were",
+   "are",
+   "not",
+   "but",
+   "his",
+   "her",
+   "him",
+   "she",
+   "you",
+   "your",
+   "thou",
+   "thee",
+   "thy",
+   "thine",
+   "thyself",
+   "they",
+   "them",
+   "their",
+   "theirs",
+   "who",
+   "whom",
+   "whose",
+   "which",
+   "what",
+   "when",
+   "where",
+   "will",
+   "shall",
+   "would",
+   "should",
+   "could",
+   "may",
+   "might",
+   "must",
+   "can",
+   "shalt",
+   "wilt",
+   "hath",
+   "hast",
+   "doth",
+   "dost",
+   "saith",
+   "said",
+   "say",
+   "also",
+   "unto",
+   "upon",
+   "into",
+   "from",
+   "out",
+   "all",
+   "any",
+   "have",
+   "had",
+   "has",
+   "been",
+   "being",
+   "did",
+   "does",
+   "done",
+   "one",
+   "two",
+   "now",
+   "then",
+   "than",
+   "there",
+   "thereof",
+   "therein",
+   "these",
+   "those",
+   "this",
+   "such",
+   "yea",
+   "behold",
+   "wherefore",
+   "therefore",
+   "thus",
+   "even",
+   "again",
+   "over",
+   "under",
+   "nor",
+   "yet",
+   "ever",
+   "our",
+   "ours",
+   "ourselves",
+   "myself",
+   "himself",
+   "themselves",
+   "its",
+   false,
+   "own",
+   "came",
+   "come",
+   "pass",
+   "thereby",
+   "whereby",
+   "because",
+   "until",
+   "unless",
+   "whether",
+   "though",
+   "although",
+   "saying",
+   "go",
+   "went",
+   "let",
+   "how",
+   "why",
+   "very",
+   "just",
+   "only",
+   "some",
+   "much",
+   "many",
+   "more",
+   "most",
+   "other",
+   "both",
+   "each",
+   "every",
+   "same",
+   "too",
+   "shalt",
+   "art",
+   "ere",
+   "lest",
+   "whosoever",
+   "whoso",
+   "whatsoever",
+   "wheresoever",
+   "hereby",
+   "herein",
+   "hence",
+   "thence",
+   "thither",
+   "hither",
+   "thereupon",
+   "whence"
+  ],
+  "shuffle_block": 2000,
+  "shuffles": 2,
+  "window_words": 30000,
+  "library_n": 360,
+  "translations_n": 120,
+  "year_min": 1650,
+  "year_max": 1830,
+  "min_text_words": 5000,
+  "block_tokens": 5000,
+  "check_min_depth": 2,
+  "check_overlap": 0.8,
+  "check_bar_famous": 4,
+  "famous_kjv": {
+   "leviticus_24_13_23": [
+    "LEV",
+    24,
+    13,
+    23,
+    3
+   ],
+   "genesis_9_6": [
+    "GEN",
+    9,
+    6,
+    6,
+    2
+   ],
+   "matthew_10_39": [
+    "MAT",
+    10,
+    39,
+    39,
+    3
+   ],
+   "isaiah_6_10": [
+    "ISA",
+    6,
+    10,
+    10,
+    3
+   ],
+   "mark_2_27": [
+    "MAR",
+    2,
+    27,
+    27,
+    2
+   ]
+  },
+  "plants": 100,
+  "plant_depths": [
+   3,
+   4,
+   5
+  ],
+  "plant_gap": 2,
+  "plant_bar": 0.9,
+  "plain_ratio_bar": 1.25,
+  "yes_percentile": 97.5,
+  "no_percentile": 90,
+  "edwards": {
+   "alma_36": [
+    8,
+    0.00018
+   ],
+   "leviticus_24": [
+    7,
+    0.0025
+   ]
+  },
+  "famous_blocks": 300,
+  "famous_bom": {
+   "alma_36": [
+    927,
+    929
+   ],
+   "alma_41": [
+    945,
+    945
+   ]
+  },
+  "workers": 8
+ },
+ "library": {
+  "drawn": 360,
+  "measured": 360,
+  "not_attempted": []
+ },
+ "translations": {
+  "drawn": 120,
+  "measured": 120,
+  "not_attempted": []
+ },
+ "known_answer": {
+  "famous_kjv": {
+   "leviticus_24_13_23": {
+    "expected_depth": 3,
+    "deepest_inside_by_scale": {
+     "15": 3,
+     "40": 5,
+     "150": 5,
+     "400": 0
+    },
+    "found": true
+   },
+   "genesis_9_6": {
+    "expected_depth": 2,
+    "deepest_inside_by_scale": {
+     "15": 2,
+     "40": 0,
+     "150": 0,
+     "400": 0
+    },
+    "found": true
+   },
+   "matthew_10_39": {
+    "expected_depth": 3,
+    "deepest_inside_by_scale": {
+     "15": 3,
+     "40": 2,
+     "150": 0,
+     "400": 0
+    },
+    "found": true
+   },
+   "isaiah_6_10": {
+    "expected_depth": 3,
+    "deepest_inside_by_scale": {
+     "15": 3,
+     "40": 0,
+     "150": 0,
+     "400": 0
+    },
+    "found": true
+   },
+   "mark_2_27": {
+    "expected_depth": 2,
+    "deepest_inside_by_scale": {
+     "15": 0,
+     "40": 0,
+     "150": 0,
+     "400": 0
+    },
+    "found": false
+   },
+   "found": 4,
+   "of": 5,
+   "passed": true
+  },
+  "planted": {
+   "3": {
+    "planted": 100,
+    "found": 100,
+    "rate": 1.0
+   },
+   "4": {
+    "planted": 100,
+    "found": 100,
+    "rate": 1.0
+   },
+   "5": {
+    "planted": 100,
+    "found": 100,
+    "rate": 1.0
+   },
+   "overall": 1.0,
+   "passed": true
+  },
+  "plain_prose": {
+   "observed": 36441,
+   "parallel_order": 38440,
+   "ratio_to_parallel": 0.948,
+   "shuffled_mean": 28053.5,
+   "ratio_to_shuffled": 1.299,
+   "passed": true
+  },
+  "passed": true
+ },
+ "named": {
+  "king_james_ot": {
+   "words": 611079,
+   "tokens": 234440,
+   "15": {
+    "observed_per_10k": 28.2778,
+    "shuffled_per_10k": 13.9753,
+    "ratio": 2.023,
+    "parallel_per_10k": 44.986,
+    "ratio_to_parallel": 0.629,
+    "observed_by_depth": {
+     "3": 1497,
+     "4": 208,
+     "5": 23,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 24.4977,
+     "4": 3.4038,
+     "5": 0.3764,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 1679,
+     "4": 656,
+     "5": 261,
+     "6+": 153
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 27.476,
+     "4": 10.7351,
+     "5": 4.2711,
+     "6+": 2.5038
+    },
+    "shuffled_by_depth": {
+     "3": 784.5,
+     "4": 66.5,
+     "5": 3.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 36.8692,
+    "shuffled_per_10k": 36.861,
+    "ratio": 1.0,
+    "parallel_per_10k": 39.5203,
+    "ratio_to_parallel": 0.933,
+    "observed_by_depth": {
+     "3": 1091,
+     "4": 843,
+     "5": 271,
+     "6+": 48
+    },
+    "observed_by_depth_per_10k": {
+     "3": 17.8537,
+     "4": 13.7953,
+     "5": 4.4348,
+     "6+": 0.7855
+    },
+    "parallel_by_depth": {
+     "3": 947,
+     "4": 710,
+     "5": 387,
+     "6+": 371
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 15.4972,
+     "4": 11.6188,
+     "5": 6.3331,
+     "6+": 6.0712
+    },
+    "shuffled_by_depth": {
+     "3": 1038.5,
+     "4": 891.5,
+     "5": 273.0,
+     "6+": 49.5
+    }
+   },
+   "150": {
+    "observed_per_10k": 12.2079,
+    "shuffled_per_10k": 11.6433,
+    "ratio": 1.048,
+    "parallel_per_10k": 14.2862,
+    "ratio_to_parallel": 0.855,
+    "observed_by_depth": {
+     "3": 49,
+     "4": 75,
+     "5": 139,
+     "6+": 483
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.8019,
+     "4": 1.2273,
+     "5": 2.2747,
+     "6+": 7.9041
+    },
+    "parallel_by_depth": {
+     "3": 108,
+     "4": 132,
+     "5": 167,
+     "6+": 466
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.7674,
+     "4": 2.1601,
+     "5": 2.7329,
+     "6+": 7.6259
+    },
+    "shuffled_by_depth": {
+     "3": 13.0,
+     "4": 29.5,
+     "5": 38.0,
+     "6+": 631.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.3366,
+    "shuffled_per_10k": 4.1648,
+    "ratio": 1.041,
+    "parallel_per_10k": 4.7457,
+    "ratio_to_parallel": 0.914,
+    "observed_by_depth": {
+     "3": 5,
+     "4": 7,
+     "5": 12,
+     "6+": 241
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0818,
+     "4": 0.1146,
+     "5": 0.1964,
+     "6+": 3.9438
+    },
+    "parallel_by_depth": {
+     "3": 8,
+     "4": 12,
+     "5": 20,
+     "6+": 250
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.1309,
+     "4": 0.1964,
+     "5": 0.3273,
+     "6+": 4.0911
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 1.0,
+     "5": 1.0,
+     "6+": 252.5
+    }
+   }
+  },
+  "king_james_nt": {
+   "words": 180498,
+   "tokens": 65827,
+   "15": {
+    "observed_per_10k": 21.1637,
+    "shuffled_per_10k": 8.6428,
+    "ratio": 2.449,
+    "parallel_per_10k": 34.1278,
+    "ratio_to_parallel": 0.62,
+    "observed_by_depth": {
+     "3": 337,
+     "4": 39,
+     "5": 6,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 18.6706,
+     "4": 2.1607,
+     "5": 0.3324,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 428,
+     "4": 126,
+     "5": 38,
+     "6+": 24
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 23.7122,
+     "4": 6.9807,
+     "5": 2.1053,
+     "6+": 1.3297
+    },
+    "shuffled_by_depth": {
+     "3": 147.0,
+     "4": 8.5,
+     "5": 0.5,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 35.0142,
+    "shuffled_per_10k": 34.3494,
+    "ratio": 1.019,
+    "parallel_per_10k": 37.1749,
+    "ratio_to_parallel": 0.942,
+    "observed_by_depth": {
+     "3": 264,
+     "4": 277,
+     "5": 79,
+     "6+": 12
+    },
+    "observed_by_depth_per_10k": {
+     "3": 14.6262,
+     "4": 15.3464,
+     "5": 4.3768,
+     "6+": 0.6648
+    },
+    "parallel_by_depth": {
+     "3": 302,
+     "4": 228,
+     "5": 92,
+     "6+": 49
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 16.7315,
+     "4": 12.6317,
+     "5": 5.097,
+     "6+": 2.7147
+    },
+    "shuffled_by_depth": {
+     "3": 301.5,
+     "4": 241.0,
+     "5": 67.5,
+     "6+": 10.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 11.3575,
+    "shuffled_per_10k": 10.8311,
+    "ratio": 1.049,
+    "parallel_per_10k": 13.2411,
+    "ratio_to_parallel": 0.858,
+    "observed_by_depth": {
+     "3": 10,
+     "4": 16,
+     "5": 20,
+     "6+": 159
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.554,
+     "4": 0.8864,
+     "5": 1.108,
+     "6+": 8.809
+    },
+    "parallel_by_depth": {
+     "3": 25,
+     "4": 34,
+     "5": 38,
+     "6+": 142
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.3851,
+     "4": 1.8837,
+     "5": 2.1053,
+     "6+": 7.8671
+    },
+    "shuffled_by_depth": {
+     "3": 2.5,
+     "4": 4.5,
+     "5": 9.0,
+     "6+": 179.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 3.989,
+    "shuffled_per_10k": 3.8505,
+    "ratio": 1.036,
+    "parallel_per_10k": 4.3214,
+    "ratio_to_parallel": 0.923,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 1,
+     "5": 1,
+     "6+": 69
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0554,
+     "4": 0.0554,
+     "5": 0.0554,
+     "6+": 3.8228
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 4,
+     "5": 3,
+     "6+": 71
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.2216,
+     "5": 0.1662,
+     "6+": 3.9336
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.0,
+     "5": 0.5,
+     "6+": 68.5
+    }
+   }
+  },
+  "king_james_all": {
+   "words": 791577,
+   "tokens": 300267,
+   "15": {
+    "observed_per_10k": 26.6557,
+    "shuffled_per_10k": 12.7467,
+    "ratio": 2.091,
+    "parallel_per_10k": 42.5101,
+    "ratio_to_parallel": 0.627,
+    "observed_by_depth": {
+     "3": 1834,
+     "4": 247,
+     "5": 29,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 23.1689,
+     "4": 3.1204,
+     "5": 0.3664,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 2107,
+     "4": 782,
+     "5": 299,
+     "6+": 177
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 26.6178,
+     "4": 9.879,
+     "5": 3.7773,
+     "6+": 2.236
+    },
+    "shuffled_by_depth": {
+     "3": 921.5,
+     "4": 83.5,
+     "5": 4.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 36.4462,
+    "shuffled_per_10k": 36.1683,
+    "ratio": 1.008,
+    "parallel_per_10k": 38.9855,
+    "ratio_to_parallel": 0.935,
+    "observed_by_depth": {
+     "3": 1355,
+     "4": 1120,
+     "5": 350,
+     "6+": 60
+    },
+    "observed_by_depth_per_10k": {
+     "3": 17.1177,
+     "4": 14.149,
+     "5": 4.4216,
+     "6+": 0.758
+    },
+    "parallel_by_depth": {
+     "3": 1249,
+     "4": 938,
+     "5": 479,
+     "6+": 420
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 15.7786,
+     "4": 11.8498,
+     "5": 6.0512,
+     "6+": 5.3059
+    },
+    "shuffled_by_depth": {
+     "3": 1353.5,
+     "4": 1102.5,
+     "5": 350.0,
+     "6+": 57.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 12.014,
+    "shuffled_per_10k": 11.515,
+    "ratio": 1.043,
+    "parallel_per_10k": 14.0479,
+    "ratio_to_parallel": 0.855,
+    "observed_by_depth": {
+     "3": 59,
+     "4": 91,
+     "5": 159,
+     "6+": 642
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.7453,
+     "4": 1.1496,
+     "5": 2.0086,
+     "6+": 8.1104
+    },
+    "parallel_by_depth": {
+     "3": 132,
+     "4": 167,
+     "5": 205,
+     "6+": 608
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.6676,
+     "4": 2.1097,
+     "5": 2.5898,
+     "6+": 7.6809
+    },
+    "shuffled_by_depth": {
+     "3": 15.5,
+     "4": 32.5,
+     "5": 54.5,
+     "6+": 809.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.2447,
+    "shuffled_per_10k": 4.0552,
+    "ratio": 1.047,
+    "parallel_per_10k": 4.6489,
+    "ratio_to_parallel": 0.913,
+    "observed_by_depth": {
+     "3": 4,
+     "4": 8,
+     "5": 14,
+     "6+": 310
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0505,
+     "4": 0.1011,
+     "5": 0.1769,
+     "6+": 3.9162
+    },
+    "parallel_by_depth": {
+     "3": 8,
+     "4": 15,
+     "5": 23,
+     "6+": 322
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.1011,
+     "4": 0.1895,
+     "5": 0.2906,
+     "6+": 4.0678
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.0,
+     "5": 3.0,
+     "6+": 317.5
+    }
+   }
+  },
+  "book_of_mormon": {
+   "words": 265132,
+   "tokens": 91640,
+   "15": {
+    "observed_per_10k": 28.4387,
+    "shuffled_per_10k": 11.6357,
+    "ratio": 2.444,
+    "parallel_per_10k": 48.4664,
+    "ratio_to_parallel": 0.587,
+    "observed_by_depth": {
+     "3": 659,
+     "4": 86,
+     "5": 8,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 24.8555,
+     "4": 3.2437,
+     "5": 0.3017,
+     "6+": 0.0377
+    },
+    "parallel_by_depth": {
+     "3": 766,
+     "4": 342,
+     "5": 111,
+     "6+": 66
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 28.8913,
+     "4": 12.8992,
+     "5": 4.1866,
+     "6+": 2.4893
+    },
+    "shuffled_by_depth": {
+     "3": 280.5,
+     "4": 26.5,
+     "5": 1.5,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 34.7374,
+    "shuffled_per_10k": 35.0014,
+    "ratio": 0.992,
+    "parallel_per_10k": 39.3389,
+    "ratio_to_parallel": 0.883,
+    "observed_by_depth": {
+     "3": 404,
+     "4": 369,
+     "5": 123,
+     "6+": 25
+    },
+    "observed_by_depth_per_10k": {
+     "3": 15.2377,
+     "4": 13.9176,
+     "5": 4.6392,
+     "6+": 0.9429
+    },
+    "parallel_by_depth": {
+     "3": 384,
+     "4": 338,
+     "5": 195,
+     "6+": 126
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 14.4834,
+     "4": 12.7484,
+     "5": 7.3548,
+     "6+": 4.7523
+    },
+    "shuffled_by_depth": {
+     "3": 378.5,
+     "4": 398.0,
+     "5": 129.5,
+     "6+": 22.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 11.0511,
+    "shuffled_per_10k": 10.3156,
+    "ratio": 1.071,
+    "parallel_per_10k": 13.465,
+    "ratio_to_parallel": 0.821,
+    "observed_by_depth": {
+     "3": 14,
+     "4": 32,
+     "5": 52,
+     "6+": 195
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.528,
+     "4": 1.2069,
+     "5": 1.9613,
+     "6+": 7.3548
+    },
+    "parallel_by_depth": {
+     "3": 48,
+     "4": 63,
+     "5": 66,
+     "6+": 180
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.8104,
+     "4": 2.3762,
+     "5": 2.4893,
+     "6+": 6.7891
+    },
+    "shuffled_by_depth": {
+     "3": 2.5,
+     "4": 7.5,
+     "5": 15.5,
+     "6+": 248.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 3.8849,
+    "shuffled_per_10k": 3.6963,
+    "ratio": 1.051,
+    "parallel_per_10k": 4.4883,
+    "ratio_to_parallel": 0.866,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 3,
+     "5": 3,
+     "6+": 97
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.1132,
+     "5": 0.1132,
+     "6+": 3.6586
+    },
+    "parallel_by_depth": {
+     "3": 1,
+     "4": 8,
+     "5": 11,
+     "6+": 99
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0377,
+     "4": 0.3017,
+     "5": 0.4149,
+     "6+": 3.734
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 98.0
+    }
+   }
+  },
+  "book_of_mormon_without_quoted_chapters": {
+   "words": 244408,
+   "tokens": 84286,
+   "15": {
+    "observed_per_10k": 29.3362,
+    "shuffled_per_10k": 12.8678,
+    "ratio": 2.28,
+    "parallel_per_10k": 49.6301,
+    "ratio_to_parallel": 0.591,
+    "observed_by_depth": {
+     "3": 629,
+     "4": 79,
+     "5": 8,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 25.7357,
+     "4": 3.2323,
+     "5": 0.3273,
+     "6+": 0.0409
+    },
+    "parallel_by_depth": {
+     "3": 727,
+     "4": 325,
+     "5": 101,
+     "6+": 60
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 29.7453,
+     "4": 13.2974,
+     "5": 4.1324,
+     "6+": 2.4549
+    },
+    "shuffled_by_depth": {
+     "3": 284.5,
+     "4": 28.0,
+     "5": 2.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 34.7779,
+    "shuffled_per_10k": 34.6143,
+    "ratio": 1.005,
+    "parallel_per_10k": 39.7287,
+    "ratio_to_parallel": 0.875,
+    "observed_by_depth": {
+     "3": 373,
+     "4": 335,
+     "5": 118,
+     "6+": 24
+    },
+    "observed_by_depth_per_10k": {
+     "3": 15.2614,
+     "4": 13.7066,
+     "5": 4.828,
+     "6+": 0.982
+    },
+    "parallel_by_depth": {
+     "3": 359,
+     "4": 316,
+     "5": 179,
+     "6+": 117
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 14.6886,
+     "4": 12.9292,
+     "5": 7.3238,
+     "6+": 4.7871
+    },
+    "shuffled_by_depth": {
+     "3": 312.5,
+     "4": 368.5,
+     "5": 143.5,
+     "6+": 21.5
+    }
+   },
+   "150": {
+    "observed_per_10k": 10.8834,
+    "shuffled_per_10k": 10.2493,
+    "ratio": 1.062,
+    "parallel_per_10k": 13.3793,
+    "ratio_to_parallel": 0.813,
+    "observed_by_depth": {
+     "3": 10,
+     "4": 28,
+     "5": 51,
+     "6+": 177
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.4092,
+     "4": 1.1456,
+     "5": 2.0867,
+     "6+": 7.242
+    },
+    "parallel_by_depth": {
+     "3": 42,
+     "4": 59,
+     "5": 64,
+     "6+": 162
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.7184,
+     "4": 2.414,
+     "5": 2.6186,
+     "6+": 6.6283
+    },
+    "shuffled_by_depth": {
+     "3": 2.5,
+     "4": 6.0,
+     "5": 12.5,
+     "6+": 229.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.0506,
+    "shuffled_per_10k": 3.7642,
+    "ratio": 1.076,
+    "parallel_per_10k": 4.2552,
+    "ratio_to_parallel": 0.952,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 2,
+     "5": 4,
+     "6+": 92
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0409,
+     "4": 0.0818,
+     "5": 0.1637,
+     "6+": 3.7642
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 5,
+     "5": 7,
+     "6+": 92
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.2046,
+     "5": 0.2864,
+     "6+": 3.7642
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 1.0,
+     "5": 0.0,
+     "6+": 91.0
+    }
+   }
+  },
+  "joseph_smith/js-1828-1829-revelations": {
+   "words": 73180,
+   "tokens": 27659,
+   "15": {
+    "observed_per_10k": 25.0068,
+    "shuffled_per_10k": 18.7893,
+    "ratio": 1.331,
+    "parallel_per_10k": 41.6781,
+    "ratio_to_parallel": 0.6,
+    "observed_by_depth": {
+     "3": 154,
+     "4": 29,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 21.044,
+     "4": 3.9628,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 192,
+     "4": 74,
+     "5": 27,
+     "6+": 12
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 26.2367,
+     "4": 10.1121,
+     "5": 3.6895,
+     "6+": 1.6398
+    },
+    "shuffled_by_depth": {
+     "3": 120.0,
+     "4": 17.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 36.0754,
+    "shuffled_per_10k": 36.4171,
+    "ratio": 0.991,
+    "parallel_per_10k": 40.3116,
+    "ratio_to_parallel": 0.895,
+    "observed_by_depth": {
+     "3": 113,
+     "4": 112,
+     "5": 35,
+     "6+": 4
+    },
+    "observed_by_depth_per_10k": {
+     "3": 15.4414,
+     "4": 15.3047,
+     "5": 4.7827,
+     "6+": 0.5466
+    },
+    "parallel_by_depth": {
+     "3": 129,
+     "4": 90,
+     "5": 38,
+     "6+": 38
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 17.6278,
+     "4": 12.2984,
+     "5": 5.1927,
+     "6+": 5.1927
+    },
+    "shuffled_by_depth": {
+     "3": 135.0,
+     "4": 100.0,
+     "5": 27.0,
+     "6+": 4.5
+    }
+   },
+   "150": {
+    "observed_per_10k": 11.3419,
+    "shuffled_per_10k": 11.9568,
+    "ratio": 0.949,
+    "parallel_per_10k": 13.9382,
+    "ratio_to_parallel": 0.814,
+    "observed_by_depth": {
+     "3": 4,
+     "4": 5,
+     "5": 12,
+     "6+": 62
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.5466,
+     "4": 0.6832,
+     "5": 1.6398,
+     "6+": 8.4723
+    },
+    "parallel_by_depth": {
+     "3": 15,
+     "4": 7,
+     "5": 18,
+     "6+": 62
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 2.0497,
+     "4": 0.9565,
+     "5": 2.4597,
+     "6+": 8.4723
+    },
+    "shuffled_by_depth": {
+     "3": 2.5,
+     "4": 4.0,
+     "5": 9.5,
+     "6+": 71.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.2361,
+    "shuffled_per_10k": 4.0995,
+    "ratio": 1.033,
+    "parallel_per_10k": 4.5094,
+    "ratio_to_parallel": 0.939,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 30
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.1366,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.0995
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 2,
+     "6+": 31
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.2733,
+     "6+": 4.2361
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 30.0
+    }
+   }
+  },
+  "joseph_smith/js-journal-1832-1834": {
+   "words": 7150,
+   "tokens": 3464,
+   "15": {
+    "observed_per_10k": 16.7832,
+    "shuffled_per_10k": 9.7902,
+    "ratio": 1.714,
+    "parallel_per_10k": 44.7552,
+    "ratio_to_parallel": 0.375,
+    "observed_by_depth": {
+     "3": 10,
+     "4": 2,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 13.986,
+     "4": 2.7972,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 21,
+     "4": 9,
+     "5": 1,
+     "6+": 1
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 29.3706,
+     "4": 12.5874,
+     "5": 1.3986,
+     "6+": 1.3986
+    },
+    "shuffled_by_depth": {
+     "3": 7.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 44.7552,
+    "shuffled_per_10k": 46.8531,
+    "ratio": 0.955,
+    "parallel_per_10k": 54.5455,
+    "ratio_to_parallel": 0.821,
+    "observed_by_depth": {
+     "3": 14,
+     "4": 14,
+     "5": 3,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 19.5804,
+     "4": 19.5804,
+     "5": 4.1958,
+     "6+": 1.3986
+    },
+    "parallel_by_depth": {
+     "3": 11,
+     "4": 15,
+     "5": 5,
+     "6+": 8
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 15.3846,
+     "4": 20.979,
+     "5": 6.993,
+     "6+": 11.1888
+    },
+    "shuffled_by_depth": {
+     "3": 22.5,
+     "4": 9.0,
+     "5": 2.0,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 16.7832,
+    "shuffled_per_10k": 14.6853,
+    "ratio": 1.143,
+    "parallel_per_10k": 19.5804,
+    "ratio_to_parallel": 0.857,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 3,
+     "6+": 8
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.3986,
+     "4": 0.0,
+     "5": 4.1958,
+     "6+": 11.1888
+    },
+    "parallel_by_depth": {
+     "3": 1,
+     "4": 1,
+     "5": 3,
+     "6+": 9
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.3986,
+     "4": 1.3986,
+     "5": 4.1958,
+     "6+": 12.5874
+    },
+    "shuffled_by_depth": {
+     "3": 1.0,
+     "4": 0.0,
+     "5": 1.5,
+     "6+": 8.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 5.5944,
+    "shuffled_per_10k": 6.2937,
+    "ratio": 0.889,
+    "parallel_per_10k": 6.993,
+    "ratio_to_parallel": 0.8,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 4
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.5944
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 4
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 1.3986,
+     "6+": 5.5944
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.5,
+     "5": 0.0,
+     "6+": 3.5
+    }
+   }
+  },
+  "joseph_smith/js-letterbook-1": {
+   "words": 31537,
+   "tokens": 13188,
+   "15": {
+    "observed_per_10k": 15.5373,
+    "shuffled_per_10k": 10.9395,
+    "ratio": 1.42,
+    "parallel_per_10k": 23.4645,
+    "ratio_to_parallel": 0.662,
+    "observed_by_depth": {
+     "3": 48,
+     "4": 1,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 15.2202,
+     "4": 0.3171,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 58,
+     "4": 9,
+     "5": 4,
+     "6+": 3
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 18.3911,
+     "4": 2.8538,
+     "5": 1.2684,
+     "6+": 0.9513
+    },
+    "shuffled_by_depth": {
+     "3": 33.0,
+     "4": 1.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 38.3676,
+    "shuffled_per_10k": 37.0993,
+    "ratio": 1.034,
+    "parallel_per_10k": 38.3676,
+    "ratio_to_parallel": 1.0,
+    "observed_by_depth": {
+     "3": 68,
+     "4": 45,
+     "5": 8,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 21.562,
+     "4": 14.269,
+     "5": 2.5367,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 54,
+     "4": 36,
+     "5": 21,
+     "6+": 10
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 17.1227,
+     "4": 11.4152,
+     "5": 6.6588,
+     "6+": 3.1709
+    },
+    "shuffled_by_depth": {
+     "3": 71.0,
+     "4": 34.5,
+     "5": 11.5,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 13.3177,
+    "shuffled_per_10k": 13.9519,
+    "ratio": 0.955,
+    "parallel_per_10k": 15.2202,
+    "ratio_to_parallel": 0.875,
+    "observed_by_depth": {
+     "3": 2,
+     "4": 3,
+     "5": 5,
+     "6+": 32
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.6342,
+     "4": 0.9513,
+     "5": 1.5854,
+     "6+": 10.1468
+    },
+    "parallel_by_depth": {
+     "3": 2,
+     "4": 4,
+     "5": 9,
+     "6+": 33
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.6342,
+     "4": 1.2684,
+     "5": 2.8538,
+     "6+": 10.4639
+    },
+    "shuffled_by_depth": {
+     "3": 2.5,
+     "4": 2.0,
+     "5": 4.5,
+     "6+": 35.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 5.0734,
+    "shuffled_per_10k": 4.2807,
+    "ratio": 1.185,
+    "parallel_per_10k": 4.4392,
+    "ratio_to_parallel": 1.143,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 15
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.3171,
+     "6+": 4.7563
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 14
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.4392
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 13.5
+    }
+   }
+  },
+  "joseph_smith/revelations-later-1830": {
+   "words": 7539,
+   "tokens": 2876,
+   "15": {
+    "observed_per_10k": 22.5494,
+    "shuffled_per_10k": 19.2333,
+    "ratio": 1.172,
+    "parallel_per_10k": 31.8345,
+    "ratio_to_parallel": 0.708,
+    "observed_by_depth": {
+     "3": 15,
+     "4": 2,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 19.8965,
+     "4": 2.6529,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 15,
+     "4": 8,
+     "5": 1,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 19.8965,
+     "4": 10.6115,
+     "5": 1.3264,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 12.5,
+     "4": 2.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 37.1402,
+    "shuffled_per_10k": 33.8241,
+    "ratio": 1.098,
+    "parallel_per_10k": 39.7931,
+    "ratio_to_parallel": 0.933,
+    "observed_by_depth": {
+     "3": 9,
+     "4": 16,
+     "5": 2,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 11.9379,
+     "4": 21.223,
+     "5": 2.6529,
+     "6+": 1.3264
+    },
+    "parallel_by_depth": {
+     "3": 12,
+     "4": 7,
+     "5": 5,
+     "6+": 6
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 15.9172,
+     "4": 9.2851,
+     "5": 6.6322,
+     "6+": 7.9586
+    },
+    "shuffled_by_depth": {
+     "3": 10.0,
+     "4": 13.5,
+     "5": 1.0,
+     "6+": 1.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 13.2644,
+    "shuffled_per_10k": 11.9379,
+    "ratio": 1.111,
+    "parallel_per_10k": 13.2644,
+    "ratio_to_parallel": 1.0,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 1,
+     "5": 1,
+     "6+": 7
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.3264,
+     "4": 1.3264,
+     "5": 1.3264,
+     "6+": 9.2851
+    },
+    "parallel_by_depth": {
+     "3": 1,
+     "4": 1,
+     "5": 1,
+     "6+": 7
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.3264,
+     "4": 1.3264,
+     "5": 1.3264,
+     "6+": 9.2851
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.5,
+     "5": 0.5,
+     "6+": 7.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 6.6322,
+    "shuffled_per_10k": 5.3057,
+    "ratio": 1.25,
+    "parallel_per_10k": 5.3057,
+    "ratio_to_parallel": 1.25,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 2,
+     "5": 0,
+     "6+": 3
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 2.6529,
+     "5": 0.0,
+     "6+": 3.9793
+    },
+    "parallel_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 3
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.3264,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 3.9793
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.0,
+     "5": 0.5,
+     "6+": 3.0
+    }
+   }
+  },
+  "joseph_smith/revelations-later-1831": {
+   "words": 28965,
+   "tokens": 10827,
+   "15": {
+    "observed_per_10k": 25.5481,
+    "shuffled_per_10k": 22.4409,
+    "ratio": 1.138,
+    "parallel_per_10k": 39.7031,
+    "ratio_to_parallel": 0.643,
+    "observed_by_depth": {
+     "3": 62,
+     "4": 12,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 21.4051,
+     "4": 4.1429,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 75,
+     "4": 26,
+     "5": 9,
+     "6+": 5
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 25.8933,
+     "4": 8.9764,
+     "5": 3.1072,
+     "6+": 1.7262
+    },
+    "shuffled_by_depth": {
+     "3": 56.5,
+     "4": 8.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 37.9769,
+    "shuffled_per_10k": 38.4947,
+    "ratio": 0.987,
+    "parallel_per_10k": 39.3578,
+    "ratio_to_parallel": 0.965,
+    "observed_by_depth": {
+     "3": 40,
+     "4": 51,
+     "5": 19,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 13.8098,
+     "4": 17.6075,
+     "5": 6.5596,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 50,
+     "4": 42,
+     "5": 12,
+     "6+": 10
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 17.2622,
+     "4": 14.5003,
+     "5": 4.1429,
+     "6+": 3.4524
+    },
+    "shuffled_by_depth": {
+     "3": 51.5,
+     "4": 45.5,
+     "5": 13.5,
+     "6+": 1.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 12.0835,
+    "shuffled_per_10k": 12.0835,
+    "ratio": 1.0,
+    "parallel_per_10k": 13.8098,
+    "ratio_to_parallel": 0.875,
+    "observed_by_depth": {
+     "3": 4,
+     "4": 2,
+     "5": 5,
+     "6+": 24
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.381,
+     "4": 0.6905,
+     "5": 1.7262,
+     "6+": 8.2859
+    },
+    "parallel_by_depth": {
+     "3": 4,
+     "4": 5,
+     "5": 8,
+     "6+": 23
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.381,
+     "4": 1.7262,
+     "5": 2.762,
+     "6+": 7.9406
+    },
+    "shuffled_by_depth": {
+     "3": 2.5,
+     "4": 1.0,
+     "5": 4.5,
+     "6+": 27.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.1429,
+    "shuffled_per_10k": 4.1429,
+    "ratio": 1.0,
+    "parallel_per_10k": 4.4882,
+    "ratio_to_parallel": 0.923,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 12
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.1429
+    },
+    "parallel_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 12
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.3452,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.1429
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.5,
+     "6+": 11.5
+    }
+   }
+  },
+  "joseph_smith/revelations-later-1832": {
+   "words": 11102,
+   "tokens": 4300,
+   "15": {
+    "observed_per_10k": 16.2133,
+    "shuffled_per_10k": 17.114,
+    "ratio": 0.947,
+    "parallel_per_10k": 32.4266,
+    "ratio_to_parallel": 0.5,
+    "observed_by_depth": {
+     "3": 14,
+     "4": 4,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 12.6103,
+     "4": 3.603,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 20,
+     "4": 11,
+     "5": 3,
+     "6+": 2
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 18.0148,
+     "4": 9.9081,
+     "5": 2.7022,
+     "6+": 1.8015
+    },
+    "shuffled_by_depth": {
+     "3": 14.0,
+     "4": 5.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 30.6251,
+    "shuffled_per_10k": 32.877,
+    "ratio": 0.932,
+    "parallel_per_10k": 36.9303,
+    "ratio_to_parallel": 0.829,
+    "observed_by_depth": {
+     "3": 18,
+     "4": 11,
+     "5": 5,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 16.2133,
+     "4": 9.9081,
+     "5": 4.5037,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 22,
+     "4": 10,
+     "5": 4,
+     "6+": 5
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 19.8162,
+     "4": 9.0074,
+     "5": 3.603,
+     "6+": 4.5037
+    },
+    "shuffled_by_depth": {
+     "3": 16.0,
+     "4": 16.5,
+     "5": 4.0,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 10.8089,
+    "shuffled_per_10k": 12.16,
+    "ratio": 0.889,
+    "parallel_per_10k": 15.3126,
+    "ratio_to_parallel": 0.706,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 1,
+     "5": 0,
+     "6+": 11
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.9007,
+     "5": 0.0,
+     "6+": 9.9081
+    },
+    "parallel_by_depth": {
+     "3": 4,
+     "4": 0,
+     "5": 4,
+     "6+": 9
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 3.603,
+     "4": 0.0,
+     "5": 3.603,
+     "6+": 8.1066
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 1.5,
+     "5": 2.5,
+     "6+": 9.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.5037,
+    "shuffled_per_10k": 4.9541,
+    "ratio": 0.909,
+    "parallel_per_10k": 4.5037,
+    "ratio_to_parallel": 1.0,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 4
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.9007,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 3.603
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 5
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.5037
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 1.0,
+     "5": 0.0,
+     "6+": 4.5
+    }
+   }
+  },
+  "joseph_smith/revelations-later-1833": {
+   "words": 9360,
+   "tokens": 3496,
+   "15": {
+    "observed_per_10k": 23.5043,
+    "shuffled_per_10k": 9.6154,
+    "ratio": 2.444,
+    "parallel_per_10k": 53.4188,
+    "ratio_to_parallel": 0.44,
+    "observed_by_depth": {
+     "3": 18,
+     "4": 4,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 19.2308,
+     "4": 4.2735,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 32,
+     "4": 10,
+     "5": 6,
+     "6+": 2
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 34.188,
+     "4": 10.6838,
+     "5": 6.4103,
+     "6+": 2.1368
+    },
+    "shuffled_by_depth": {
+     "3": 8.5,
+     "4": 0.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 33.1197,
+    "shuffled_per_10k": 35.7906,
+    "ratio": 0.925,
+    "parallel_per_10k": 40.5983,
+    "ratio_to_parallel": 0.816,
+    "observed_by_depth": {
+     "3": 14,
+     "4": 11,
+     "5": 4,
+     "6+": 2
+    },
+    "observed_by_depth_per_10k": {
+     "3": 14.9573,
+     "4": 11.7521,
+     "5": 4.2735,
+     "6+": 2.1368
+    },
+    "parallel_by_depth": {
+     "3": 15,
+     "4": 14,
+     "5": 5,
+     "6+": 4
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 16.0256,
+     "4": 14.9573,
+     "5": 5.3419,
+     "6+": 4.2735
+    },
+    "shuffled_by_depth": {
+     "3": 19.5,
+     "4": 11.5,
+     "5": 2.5,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 11.7521,
+    "shuffled_per_10k": 11.2179,
+    "ratio": 1.048,
+    "parallel_per_10k": 14.9573,
+    "ratio_to_parallel": 0.786,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 1,
+     "5": 3,
+     "6+": 7
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 1.0684,
+     "5": 3.2051,
+     "6+": 7.4786
+    },
+    "parallel_by_depth": {
+     "3": 2,
+     "4": 2,
+     "5": 5,
+     "6+": 5
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 2.1368,
+     "4": 2.1368,
+     "5": 5.3419,
+     "6+": 5.3419
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.5,
+     "5": 1.0,
+     "6+": 8.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.2735,
+    "shuffled_per_10k": 4.2735,
+    "ratio": 1.0,
+    "parallel_per_10k": 5.3419,
+    "ratio_to_parallel": 0.8,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 3
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 1.0684,
+     "6+": 3.2051
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 5
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.3419
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 3.5
+    }
+   }
+  },
+  "joseph_smith/revelations-later-1834": {
+   "words": 5153,
+   "tokens": 1788,
+   "15": {
+    "observed_per_10k": 34.9311,
+    "shuffled_per_10k": 10.6734,
+    "ratio": 3.273,
+    "parallel_per_10k": 60.1591,
+    "ratio_to_parallel": 0.581,
+    "observed_by_depth": {
+     "3": 16,
+     "4": 2,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 31.0499,
+     "4": 3.8812,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 18,
+     "4": 8,
+     "5": 5,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 34.9311,
+     "4": 15.5249,
+     "5": 9.7031,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 4.5,
+     "4": 1.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 38.8123,
+    "shuffled_per_10k": 35.9014,
+    "ratio": 1.081,
+    "parallel_per_10k": 50.456,
+    "ratio_to_parallel": 0.769,
+    "observed_by_depth": {
+     "3": 9,
+     "4": 8,
+     "5": 3,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 17.4656,
+     "4": 15.5249,
+     "5": 5.8219,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 12,
+     "4": 7,
+     "5": 4,
+     "6+": 3
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 23.2874,
+     "4": 13.5843,
+     "5": 7.7625,
+     "6+": 5.8219
+    },
+    "shuffled_by_depth": {
+     "3": 8.0,
+     "4": 7.0,
+     "5": 3.0,
+     "6+": 0.5
+    }
+   },
+   "150": {
+    "observed_per_10k": 13.5843,
+    "shuffled_per_10k": 11.6437,
+    "ratio": 1.167,
+    "parallel_per_10k": 9.7031,
+    "ratio_to_parallel": 1.4,
+    "observed_by_depth": {
+     "3": 3,
+     "4": 0,
+     "5": 0,
+     "6+": 4
+    },
+    "observed_by_depth_per_10k": {
+     "3": 5.8219,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 7.7625
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 5
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 9.7031
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.5,
+     "5": 1.5,
+     "6+": 4.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 3.8812,
+    "shuffled_per_10k": 4.8515,
+    "ratio": 0.8,
+    "parallel_per_10k": 5.8219,
+    "ratio_to_parallel": 0.667,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 2
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 3.8812
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 3
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.8219
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.5,
+     "5": 0.0,
+     "6+": 2.0
+    }
+   }
+  },
+  "joseph_smith/dictated-abraham_1842": {
+   "words": 6294,
+   "tokens": 2393,
+   "15": {
+    "observed_per_10k": 52.4309,
+    "shuffled_per_10k": 14.2993,
+    "ratio": 3.667,
+    "parallel_per_10k": 54.0197,
+    "ratio_to_parallel": 0.971,
+    "observed_by_depth": {
+     "3": 25,
+     "4": 7,
+     "5": 1,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 39.7204,
+     "4": 11.1217,
+     "5": 1.5888,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 25,
+     "4": 3,
+     "5": 4,
+     "6+": 2
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 39.7204,
+     "4": 4.7664,
+     "5": 6.3553,
+     "6+": 3.1776
+    },
+    "shuffled_by_depth": {
+     "3": 6.5,
+     "4": 2.0,
+     "5": 0.5,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 41.3092,
+    "shuffled_per_10k": 37.3371,
+    "ratio": 1.106,
+    "parallel_per_10k": 39.7204,
+    "ratio_to_parallel": 1.04,
+    "observed_by_depth": {
+     "3": 15,
+     "4": 5,
+     "5": 5,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 23.8322,
+     "4": 7.9441,
+     "5": 7.9441,
+     "6+": 1.5888
+    },
+    "parallel_by_depth": {
+     "3": 9,
+     "4": 6,
+     "5": 8,
+     "6+": 2
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 14.2993,
+     "4": 9.5329,
+     "5": 12.7105,
+     "6+": 3.1776
+    },
+    "shuffled_by_depth": {
+     "3": 10.0,
+     "4": 8.5,
+     "5": 2.5,
+     "6+": 2.5
+    }
+   },
+   "150": {
+    "observed_per_10k": 11.1217,
+    "shuffled_per_10k": 11.1217,
+    "ratio": 1.0,
+    "parallel_per_10k": 19.0658,
+    "ratio_to_parallel": 0.583,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 1,
+     "5": 1,
+     "6+": 4
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.5888,
+     "4": 1.5888,
+     "5": 1.5888,
+     "6+": 6.3553
+    },
+    "parallel_by_depth": {
+     "3": 3,
+     "4": 6,
+     "5": 1,
+     "6+": 2
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 4.7664,
+     "4": 9.5329,
+     "5": 1.5888,
+     "6+": 3.1776
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 1.0,
+     "6+": 6.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.7664,
+    "shuffled_per_10k": 3.972,
+    "ratio": 1.2,
+    "parallel_per_10k": 7.9441,
+    "ratio_to_parallel": 0.6,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 1,
+     "5": 0,
+     "6+": 2
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 1.5888,
+     "5": 0.0,
+     "6+": 3.1776
+    },
+    "parallel_by_depth": {
+     "3": 3,
+     "4": 0,
+     "5": 1,
+     "6+": 1
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 4.7664,
+     "4": 0.0,
+     "5": 1.5888,
+     "6+": 1.5888
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.5,
+     "6+": 2.0
+    }
+   }
+  },
+  "joseph_smith/dictated-ot_revision_1": {
+   "words": 25491,
+   "tokens": 9829,
+   "15": {
+    "observed_per_10k": 41.9756,
+    "shuffled_per_10k": 37.4642,
+    "ratio": 1.12,
+    "parallel_per_10k": 56.4905,
+    "ratio_to_parallel": 0.743,
+    "observed_by_depth": {
+     "3": 88,
+     "4": 17,
+     "5": 1,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 34.522,
+     "4": 6.669,
+     "5": 0.3923,
+     "6+": 0.3923
+    },
+    "parallel_by_depth": {
+     "3": 96,
+     "4": 33,
+     "5": 15,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 37.6604,
+     "4": 12.9457,
+     "5": 5.8844,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 80.0,
+     "4": 14.5,
+     "5": 1.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 40.4064,
+    "shuffled_per_10k": 40.0141,
+    "ratio": 1.01,
+    "parallel_per_10k": 42.3679,
+    "ratio_to_parallel": 0.954,
+    "observed_by_depth": {
+     "3": 46,
+     "4": 38,
+     "5": 17,
+     "6+": 2
+    },
+    "observed_by_depth_per_10k": {
+     "3": 18.0456,
+     "4": 14.9072,
+     "5": 6.669,
+     "6+": 0.7846
+    },
+    "parallel_by_depth": {
+     "3": 46,
+     "4": 34,
+     "5": 18,
+     "6+": 10
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 18.0456,
+     "4": 13.338,
+     "5": 7.0613,
+     "6+": 3.923
+    },
+    "shuffled_by_depth": {
+     "3": 52.5,
+     "4": 32.0,
+     "5": 13.5,
+     "6+": 4.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 13.338,
+    "shuffled_per_10k": 13.338,
+    "ratio": 1.0,
+    "parallel_per_10k": 14.9072,
+    "ratio_to_parallel": 0.895,
+    "observed_by_depth": {
+     "3": 4,
+     "4": 4,
+     "5": 6,
+     "6+": 20
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.5692,
+     "4": 1.5692,
+     "5": 2.3538,
+     "6+": 7.8459
+    },
+    "parallel_by_depth": {
+     "3": 6,
+     "4": 5,
+     "5": 13,
+     "6+": 14
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 2.3538,
+     "4": 1.9615,
+     "5": 5.0998,
+     "6+": 5.4921
+    },
+    "shuffled_by_depth": {
+     "3": 3.5,
+     "4": 4.0,
+     "5": 4.5,
+     "6+": 22.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.3152,
+    "shuffled_per_10k": 4.7075,
+    "ratio": 0.917,
+    "parallel_per_10k": 4.7075,
+    "ratio_to_parallel": 0.917,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 10
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.3923,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 3.923
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 11
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.3923,
+     "6+": 4.3152
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 1.0,
+     "6+": 11.0
+    }
+   }
+  },
+  "joseph_smith/dictated-ot_revision_2": {
+   "words": 41812,
+   "tokens": 17131,
+   "15": {
+    "observed_per_10k": 33.9615,
+    "shuffled_per_10k": 17.9374,
+    "ratio": 1.893,
+    "parallel_per_10k": 47.3548,
+    "ratio_to_parallel": 0.717,
+    "observed_by_depth": {
+     "3": 120,
+     "4": 20,
+     "5": 1,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 28.6999,
+     "4": 4.7833,
+     "5": 0.2392,
+     "6+": 0.2392
+    },
+    "parallel_by_depth": {
+     "3": 116,
+     "4": 59,
+     "5": 19,
+     "6+": 4
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 27.7432,
+     "4": 14.1108,
+     "5": 4.5442,
+     "6+": 0.9567
+    },
+    "shuffled_by_depth": {
+     "3": 68.5,
+     "4": 6.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 36.3532,
+    "shuffled_per_10k": 37.7882,
+    "ratio": 0.962,
+    "parallel_per_10k": 40.8974,
+    "ratio_to_parallel": 0.889,
+    "observed_by_depth": {
+     "3": 72,
+     "4": 58,
+     "5": 20,
+     "6+": 2
+    },
+    "observed_by_depth_per_10k": {
+     "3": 17.2199,
+     "4": 13.8716,
+     "5": 4.7833,
+     "6+": 0.4783
+    },
+    "parallel_by_depth": {
+     "3": 78,
+     "4": 52,
+     "5": 24,
+     "6+": 17
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 18.6549,
+     "4": 12.4366,
+     "5": 5.74,
+     "6+": 4.0658
+    },
+    "shuffled_by_depth": {
+     "3": 75.0,
+     "4": 60.5,
+     "5": 16.5,
+     "6+": 6.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 13.3933,
+    "shuffled_per_10k": 12.5562,
+    "ratio": 1.067,
+    "parallel_per_10k": 14.3499,
+    "ratio_to_parallel": 0.933,
+    "observed_by_depth": {
+     "3": 5,
+     "4": 9,
+     "5": 17,
+     "6+": 25
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.1958,
+     "4": 2.1525,
+     "5": 4.0658,
+     "6+": 5.9791
+    },
+    "parallel_by_depth": {
+     "3": 10,
+     "4": 10,
+     "5": 14,
+     "6+": 26
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 2.3917,
+     "4": 2.3917,
+     "5": 3.3483,
+     "6+": 6.2183
+    },
+    "shuffled_by_depth": {
+     "3": 1.0,
+     "4": 3.0,
+     "5": 6.0,
+     "6+": 42.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.5442,
+    "shuffled_per_10k": 4.1854,
+    "ratio": 1.086,
+    "parallel_per_10k": 5.0225,
+    "ratio_to_parallel": 0.905,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 1,
+     "6+": 17
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.2392,
+     "4": 0.0,
+     "5": 0.2392,
+     "6+": 4.0658
+    },
+    "parallel_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 3,
+     "6+": 17
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.2392,
+     "4": 0.0,
+     "5": 0.7175,
+     "6+": 4.0658
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 17.5
+    }
+   }
+  },
+  "joseph_smith/js-letters-1829-1833-all": {
+   "words": 40530,
+   "tokens": 17024,
+   "15": {
+    "observed_per_10k": 14.0637,
+    "shuffled_per_10k": 9.7459,
+    "ratio": 1.443,
+    "parallel_per_10k": 22.4525,
+    "ratio_to_parallel": 0.626,
+    "observed_by_depth": {
+     "3": 56,
+     "4": 1,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 13.8169,
+     "4": 0.2467,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 73,
+     "4": 10,
+     "5": 5,
+     "6+": 3
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 18.0113,
+     "4": 2.4673,
+     "5": 1.2337,
+     "6+": 0.7402
+    },
+    "shuffled_by_depth": {
+     "3": 37.5,
+     "4": 2.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 38.49,
+    "shuffled_per_10k": 35.6526,
+    "ratio": 1.08,
+    "parallel_per_10k": 38.2433,
+    "ratio_to_parallel": 1.006,
+    "observed_by_depth": {
+     "3": 88,
+     "4": 59,
+     "5": 8,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 21.7123,
+     "4": 14.5571,
+     "5": 1.9738,
+     "6+": 0.2467
+    },
+    "parallel_by_depth": {
+     "3": 69,
+     "4": 47,
+     "5": 26,
+     "6+": 13
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 17.0244,
+     "4": 11.5963,
+     "5": 6.415,
+     "6+": 3.2075
+    },
+    "shuffled_by_depth": {
+     "3": 79.5,
+     "4": 55.5,
+     "5": 9.5,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 13.0767,
+    "shuffled_per_10k": 12.83,
+    "ratio": 1.019,
+    "parallel_per_10k": 15.0506,
+    "ratio_to_parallel": 0.869,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 5,
+     "5": 6,
+     "6+": 41
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.2467,
+     "4": 1.2337,
+     "5": 1.4804,
+     "6+": 10.116
+    },
+    "parallel_by_depth": {
+     "3": 3,
+     "4": 4,
+     "5": 10,
+     "6+": 44
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.7402,
+     "4": 0.9869,
+     "5": 2.4673,
+     "6+": 10.8562
+    },
+    "shuffled_by_depth": {
+     "3": 2.5,
+     "4": 2.0,
+     "5": 1.5,
+     "6+": 46.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.6879,
+    "shuffled_per_10k": 4.1944,
+    "ratio": 1.118,
+    "parallel_per_10k": 4.4412,
+    "ratio_to_parallel": 1.056,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 19
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.6879
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 18
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.4412
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 17.0
+    }
+   }
+  },
+  "bible_style/bible_style/americanrevoluti00snow": {
+   "words": 66456,
+   "tokens": 32181,
+   "15": {
+    "observed_per_10k": 8.5771,
+    "shuffled_per_10k": 4.6647,
+    "ratio": 1.839,
+    "parallel_per_10k": 24.377,
+    "ratio_to_parallel": 0.352,
+    "observed_by_depth": {
+     "3": 56,
+     "4": 1,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 8.4266,
+     "4": 0.1505,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 111,
+     "4": 42,
+     "5": 4,
+     "6+": 5
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 16.7028,
+     "4": 6.32,
+     "5": 0.6019,
+     "6+": 0.7524
+    },
+    "shuffled_by_depth": {
+     "3": 28.5,
+     "4": 2.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 36.4151,
+    "shuffled_per_10k": 35.0608,
+    "ratio": 1.039,
+    "parallel_per_10k": 40.7789,
+    "ratio_to_parallel": 0.893,
+    "observed_by_depth": {
+     "3": 121,
+     "4": 92,
+     "5": 25,
+     "6+": 4
+    },
+    "observed_by_depth_per_10k": {
+     "3": 18.2075,
+     "4": 13.8437,
+     "5": 3.7619,
+     "6+": 0.6019
+    },
+    "parallel_by_depth": {
+     "3": 129,
+     "4": 80,
+     "5": 42,
+     "6+": 20
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 19.4113,
+     "4": 12.038,
+     "5": 6.32,
+     "6+": 3.0095
+    },
+    "shuffled_by_depth": {
+     "3": 153.0,
+     "4": 68.5,
+     "5": 11.5,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 15.198,
+    "shuffled_per_10k": 15.0476,
+    "ratio": 1.01,
+    "parallel_per_10k": 15.6495,
+    "ratio_to_parallel": 0.971,
+    "observed_by_depth": {
+     "3": 3,
+     "4": 9,
+     "5": 12,
+     "6+": 77
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.4514,
+     "4": 1.3543,
+     "5": 1.8057,
+     "6+": 11.5866
+    },
+    "parallel_by_depth": {
+     "3": 4,
+     "4": 13,
+     "5": 29,
+     "6+": 58
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.6019,
+     "4": 1.9562,
+     "5": 4.3638,
+     "6+": 8.7276
+    },
+    "shuffled_by_depth": {
+     "3": 3.0,
+     "4": 7.5,
+     "5": 14.5,
+     "6+": 75.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 5.2666,
+    "shuffled_per_10k": 5.4171,
+    "ratio": 0.972,
+    "parallel_per_10k": 5.1162,
+    "ratio_to_parallel": 1.029,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 34
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.1505,
+     "6+": 5.1162
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 34
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.1162
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 36.0
+    }
+   }
+  },
+  "bible_style/bible_style/bib_fict_4103140": {
+   "words": 39306,
+   "tokens": 17453,
+   "15": {
+    "observed_per_10k": 17.3002,
+    "shuffled_per_10k": 8.014,
+    "ratio": 2.159,
+    "parallel_per_10k": 31.5473,
+    "ratio_to_parallel": 0.548,
+    "observed_by_depth": {
+     "3": 63,
+     "4": 5,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 16.0281,
+     "4": 1.2721,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 83,
+     "4": 32,
+     "5": 7,
+     "6+": 2
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 21.1164,
+     "4": 8.1413,
+     "5": 1.7809,
+     "6+": 0.5088
+    },
+    "shuffled_by_depth": {
+     "3": 31.0,
+     "4": 0.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 37.3989,
+    "shuffled_per_10k": 38.0349,
+    "ratio": 0.983,
+    "parallel_per_10k": 43.5048,
+    "ratio_to_parallel": 0.86,
+    "observed_by_depth": {
+     "3": 68,
+     "4": 63,
+     "5": 14,
+     "6+": 2
+    },
+    "observed_by_depth_per_10k": {
+     "3": 17.3002,
+     "4": 16.0281,
+     "5": 3.5618,
+     "6+": 0.5088
+    },
+    "parallel_by_depth": {
+     "3": 62,
+     "4": 48,
+     "5": 32,
+     "6+": 29
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 15.7737,
+     "4": 12.2119,
+     "5": 8.1413,
+     "6+": 7.378
+    },
+    "shuffled_by_depth": {
+     "3": 84.0,
+     "4": 53.0,
+     "5": 9.0,
+     "6+": 3.5
+    }
+   },
+   "150": {
+    "observed_per_10k": 13.7384,
+    "shuffled_per_10k": 13.6112,
+    "ratio": 1.009,
+    "parallel_per_10k": 17.3002,
+    "ratio_to_parallel": 0.794,
+    "observed_by_depth": {
+     "3": 4,
+     "4": 5,
+     "5": 9,
+     "6+": 36
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.0177,
+     "4": 1.2721,
+     "5": 2.2897,
+     "6+": 9.1589
+    },
+    "parallel_by_depth": {
+     "3": 6,
+     "4": 8,
+     "5": 17,
+     "6+": 37
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.5265,
+     "4": 2.0353,
+     "5": 4.325,
+     "6+": 9.4133
+    },
+    "shuffled_by_depth": {
+     "3": 1.0,
+     "4": 3.0,
+     "5": 6.5,
+     "6+": 43.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.5795,
+    "shuffled_per_10k": 4.7067,
+    "ratio": 0.973,
+    "parallel_per_10k": 4.8339,
+    "ratio_to_parallel": 0.947,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 17
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.2544,
+     "6+": 4.325
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 19
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.8339
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 18.5
+    }
+   }
+  },
+  "bible_style/bible_style/bim_eighteenth-century_the-chronicle-of-the-kin_dodsley-robert_1741": {
+   "words": 8110,
+   "tokens": 2942,
+   "15": {
+    "observed_per_10k": 1.233,
+    "shuffled_per_10k": 0.6165,
+    "ratio": 2.0,
+    "parallel_per_10k": 7.3983,
+    "ratio_to_parallel": 0.167,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.233,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 5,
+     "4": 0,
+     "5": 1,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 6.1652,
+     "4": 0.0,
+     "5": 1.233,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 22.1948,
+    "shuffled_per_10k": 20.9618,
+    "ratio": 1.059,
+    "parallel_per_10k": 25.894,
+    "ratio_to_parallel": 0.857,
+    "observed_by_depth": {
+     "3": 13,
+     "4": 5,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 16.0296,
+     "4": 6.1652,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 14,
+     "4": 6,
+     "5": 1,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 17.2626,
+     "4": 7.3983,
+     "5": 1.233,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 11.5,
+     "4": 4.5,
+     "5": 1.0,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 12.3305,
+    "shuffled_per_10k": 11.0974,
+    "ratio": 1.111,
+    "parallel_per_10k": 12.3305,
+    "ratio_to_parallel": 1.0,
+    "observed_by_depth": {
+     "3": 2,
+     "4": 2,
+     "5": 0,
+     "6+": 6
+    },
+    "observed_by_depth_per_10k": {
+     "3": 2.4661,
+     "4": 2.4661,
+     "5": 0.0,
+     "6+": 7.3983
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 1,
+     "5": 2,
+     "6+": 7
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 1.233,
+     "5": 2.4661,
+     "6+": 8.6313
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 2.5,
+     "5": 0.0,
+     "6+": 6.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 3.6991,
+    "shuffled_per_10k": 3.6991,
+    "ratio": 1.0,
+    "parallel_per_10k": 3.6991,
+    "ratio_to_parallel": 1.0,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 3
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 3.6991
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 3
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 3.6991
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 3.0
+    }
+   }
+  },
+  "bible_style/bible_style/bookofnullificat00char": {
+   "words": 15130,
+   "tokens": 6345,
+   "15": {
+    "observed_per_10k": 15.8625,
+    "shuffled_per_10k": 8.2617,
+    "ratio": 1.92,
+    "parallel_per_10k": 37.0126,
+    "ratio_to_parallel": 0.429,
+    "observed_by_depth": {
+     "3": 20,
+     "4": 3,
+     "5": 1,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 13.2188,
+     "4": 1.9828,
+     "5": 0.6609,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 40,
+     "4": 8,
+     "5": 8,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 26.4375,
+     "4": 5.2875,
+     "5": 5.2875,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 12.0,
+     "4": 0.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 41.6391,
+    "shuffled_per_10k": 40.6477,
+    "ratio": 1.024,
+    "parallel_per_10k": 45.6048,
+    "ratio_to_parallel": 0.913,
+    "observed_by_depth": {
+     "3": 26,
+     "4": 23,
+     "5": 12,
+     "6+": 2
+    },
+    "observed_by_depth_per_10k": {
+     "3": 17.1844,
+     "4": 15.2016,
+     "5": 7.9313,
+     "6+": 1.3219
+    },
+    "parallel_by_depth": {
+     "3": 17,
+     "4": 28,
+     "5": 11,
+     "6+": 13
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 11.236,
+     "4": 18.5063,
+     "5": 7.2703,
+     "6+": 8.5922
+    },
+    "shuffled_by_depth": {
+     "3": 31.5,
+     "4": 20.5,
+     "5": 9.5,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 13.2188,
+    "shuffled_per_10k": 13.2188,
+    "ratio": 1.0,
+    "parallel_per_10k": 13.2188,
+    "ratio_to_parallel": 1.0,
+    "observed_by_depth": {
+     "3": 2,
+     "4": 1,
+     "5": 2,
+     "6+": 15
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.3219,
+     "4": 0.6609,
+     "5": 1.3219,
+     "6+": 9.9141
+    },
+    "parallel_by_depth": {
+     "3": 1,
+     "4": 1,
+     "5": 2,
+     "6+": 16
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.6609,
+     "4": 0.6609,
+     "5": 1.3219,
+     "6+": 10.575
+    },
+    "shuffled_by_depth": {
+     "3": 2.0,
+     "4": 0.0,
+     "5": 2.0,
+     "6+": 16.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 5.2875,
+    "shuffled_per_10k": 4.6266,
+    "ratio": 1.143,
+    "parallel_per_10k": 5.9484,
+    "ratio_to_parallel": 0.889,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 7
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.6609,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.6266
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 1,
+     "5": 0,
+     "6+": 8
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.6609,
+     "5": 0.0,
+     "6+": 5.2875
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 6.5
+    }
+   }
+  },
+  "bible_style/bible_style/chroniclesoferib02ocon": {
+   "words": 130188,
+   "tokens": 57730,
+   "15": {
+    "observed_per_10k": 20.8161,
+    "shuffled_per_10k": 9.9087,
+    "ratio": 2.101,
+    "parallel_per_10k": 34.4886,
+    "ratio_to_parallel": 0.604,
+    "observed_by_depth": {
+     "3": 243,
+     "4": 27,
+     "5": 1,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 18.6653,
+     "4": 2.0739,
+     "5": 0.0768,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 320,
+     "4": 100,
+     "5": 21,
+     "6+": 8
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 24.5798,
+     "4": 7.6812,
+     "5": 1.6131,
+     "6+": 0.6145
+    },
+    "shuffled_by_depth": {
+     "3": 121.5,
+     "4": 7.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 42.9379,
+    "shuffled_per_10k": 41.4017,
+    "ratio": 1.037,
+    "parallel_per_10k": 44.2437,
+    "ratio_to_parallel": 0.97,
+    "observed_by_depth": {
+     "3": 266,
+     "4": 211,
+     "5": 74,
+     "6+": 8
+    },
+    "observed_by_depth_per_10k": {
+     "3": 20.432,
+     "4": 16.2073,
+     "5": 5.6841,
+     "6+": 0.6145
+    },
+    "parallel_by_depth": {
+     "3": 224,
+     "4": 201,
+     "5": 101,
+     "6+": 50
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 17.2059,
+     "4": 15.4392,
+     "5": 7.758,
+     "6+": 3.8406
+    },
+    "shuffled_by_depth": {
+     "3": 265.5,
+     "4": 204.5,
+     "5": 59.5,
+     "6+": 9.5
+    }
+   },
+   "150": {
+    "observed_per_10k": 14.2102,
+    "shuffled_per_10k": 13.7109,
+    "ratio": 1.036,
+    "parallel_per_10k": 14.5943,
+    "ratio_to_parallel": 0.974,
+    "observed_by_depth": {
+     "3": 12,
+     "4": 13,
+     "5": 24,
+     "6+": 136
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.9217,
+     "4": 0.9986,
+     "5": 1.8435,
+     "6+": 10.4464
+    },
+    "parallel_by_depth": {
+     "3": 6,
+     "4": 24,
+     "5": 23,
+     "6+": 137
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.4609,
+     "4": 1.8435,
+     "5": 1.7667,
+     "6+": 10.5232
+    },
+    "shuffled_by_depth": {
+     "3": 4.5,
+     "4": 8.0,
+     "5": 17.0,
+     "6+": 149.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.8392,
+    "shuffled_per_10k": 4.6471,
+    "ratio": 1.041,
+    "parallel_per_10k": 4.916,
+    "ratio_to_parallel": 0.984,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 2,
+     "6+": 61
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.1536,
+     "6+": 4.6855
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 63
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0768,
+     "6+": 4.8392
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 60.5
+    }
+   }
+  },
+  "bible_style/bible_style/firstbooknapole00gruagoog": {
+   "words": 22563,
+   "tokens": 10292,
+   "15": {
+    "observed_per_10k": 7.5345,
+    "shuffled_per_10k": 3.5456,
+    "ratio": 2.125,
+    "parallel_per_10k": 19.501,
+    "ratio_to_parallel": 0.386,
+    "observed_by_depth": {
+     "3": 15,
+     "4": 2,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 6.6481,
+     "4": 0.8864,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 32,
+     "4": 7,
+     "5": 5,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 14.1825,
+     "4": 3.1024,
+     "5": 2.216,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 8.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 39.8883,
+    "shuffled_per_10k": 32.5755,
+    "ratio": 1.224,
+    "parallel_per_10k": 43.8771,
+    "ratio_to_parallel": 0.909,
+    "observed_by_depth": {
+     "3": 37,
+     "4": 38,
+     "5": 13,
+     "6+": 2
+    },
+    "observed_by_depth_per_10k": {
+     "3": 16.3985,
+     "4": 16.8417,
+     "5": 5.7616,
+     "6+": 0.8864
+    },
+    "parallel_by_depth": {
+     "3": 38,
+     "4": 32,
+     "5": 18,
+     "6+": 11
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 16.8417,
+     "4": 14.1825,
+     "5": 7.9777,
+     "6+": 4.8752
+    },
+    "shuffled_by_depth": {
+     "3": 53.0,
+     "4": 15.0,
+     "5": 5.0,
+     "6+": 0.5
+    }
+   },
+   "150": {
+    "observed_per_10k": 15.0689,
+    "shuffled_per_10k": 13.0745,
+    "ratio": 1.153,
+    "parallel_per_10k": 15.9553,
+    "ratio_to_parallel": 0.944,
+    "observed_by_depth": {
+     "3": 2,
+     "4": 3,
+     "5": 5,
+     "6+": 24
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.8864,
+     "4": 1.3296,
+     "5": 2.216,
+     "6+": 10.6369
+    },
+    "parallel_by_depth": {
+     "3": 2,
+     "4": 3,
+     "5": 6,
+     "6+": 25
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.8864,
+     "4": 1.3296,
+     "5": 2.6592,
+     "6+": 11.0801
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 1.0,
+     "5": 2.5,
+     "6+": 26.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.8752,
+    "shuffled_per_10k": 4.8752,
+    "ratio": 1.0,
+    "parallel_per_10k": 5.7616,
+    "ratio_to_parallel": 0.846,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 11
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.8752
+    },
+    "parallel_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 12
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.4432,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.3184
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 11.0
+    }
+   }
+  },
+  "bible_style/bible_style/firstbookofameri00unse": {
+   "words": 9735,
+   "tokens": 4443,
+   "15": {
+    "observed_per_10k": 6.1633,
+    "shuffled_per_10k": 4.6225,
+    "ratio": 1.333,
+    "parallel_per_10k": 10.2722,
+    "ratio_to_parallel": 0.6,
+    "observed_by_depth": {
+     "3": 5,
+     "4": 1,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 5.1361,
+     "4": 1.0272,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 7,
+     "4": 2,
+     "5": 1,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 7.1905,
+     "4": 2.0544,
+     "5": 1.0272,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 4.5,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 35.9527,
+    "shuffled_per_10k": 25.6805,
+    "ratio": 1.4,
+    "parallel_per_10k": 28.7622,
+    "ratio_to_parallel": 1.25,
+    "observed_by_depth": {
+     "3": 28,
+     "4": 6,
+     "5": 1,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 28.7622,
+     "4": 6.1633,
+     "5": 1.0272,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 18,
+     "4": 4,
+     "5": 4,
+     "6+": 2
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 18.49,
+     "4": 4.1089,
+     "5": 4.1089,
+     "6+": 2.0544
+    },
+    "shuffled_by_depth": {
+     "3": 19.0,
+     "4": 6.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 12.3267,
+    "shuffled_per_10k": 13.8675,
+    "ratio": 0.889,
+    "parallel_per_10k": 14.3811,
+    "ratio_to_parallel": 0.857,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 11
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 1.0272,
+     "6+": 11.2994
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 14
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 14.3811
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.5,
+     "5": 3.0,
+     "6+": 9.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 6.1633,
+    "shuffled_per_10k": 5.1361,
+    "ratio": 1.2,
+    "parallel_per_10k": 6.1633,
+    "ratio_to_parallel": 1.0,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 5
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.0272,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.1361
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 5
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 1.0272,
+     "6+": 5.1361
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.0
+    }
+   }
+  },
+  "bible_style/wordtree/Chronicles of Andrew - Jesse Denson - 1815": {
+   "words": 8130,
+   "tokens": 4058,
+   "15": {
+    "observed_per_10k": 11.0701,
+    "shuffled_per_10k": 6.7651,
+    "ratio": 1.636,
+    "parallel_per_10k": 12.3001,
+    "ratio_to_parallel": 0.9,
+    "observed_by_depth": {
+     "3": 7,
+     "4": 2,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 8.6101,
+     "4": 2.46,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 8,
+     "4": 2,
+     "5": 0,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 9.8401,
+     "4": 2.46,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 4.0,
+     "4": 1.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 44.2804,
+    "shuffled_per_10k": 36.9004,
+    "ratio": 1.2,
+    "parallel_per_10k": 46.7405,
+    "ratio_to_parallel": 0.947,
+    "observed_by_depth": {
+     "3": 25,
+     "4": 9,
+     "5": 2,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 30.7503,
+     "4": 11.0701,
+     "5": 2.46,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 17,
+     "4": 13,
+     "5": 6,
+     "6+": 2
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 20.9102,
+     "4": 15.9902,
+     "5": 7.3801,
+     "6+": 2.46
+    },
+    "shuffled_by_depth": {
+     "3": 18.0,
+     "4": 11.0,
+     "5": 1.0,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 14.7601,
+    "shuffled_per_10k": 14.7601,
+    "ratio": 1.0,
+    "parallel_per_10k": 19.6802,
+    "ratio_to_parallel": 0.75,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 1,
+     "6+": 10
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.23,
+     "4": 0.0,
+     "5": 1.23,
+     "6+": 12.3001
+    },
+    "parallel_by_depth": {
+     "3": 1,
+     "4": 4,
+     "5": 1,
+     "6+": 10
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.23,
+     "4": 4.92,
+     "5": 1.23,
+     "6+": 12.3001
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.5,
+     "5": 1.5,
+     "6+": 10.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.92,
+    "shuffled_per_10k": 5.5351,
+    "ratio": 0.889,
+    "parallel_per_10k": 8.6101,
+    "ratio_to_parallel": 0.571,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 4
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.92
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 6
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 1.23,
+     "6+": 7.3801
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.5
+    }
+   }
+  },
+  "bible_style/wordtree/History of Anti-Christ - Elias Smith - 1811": {
+   "words": 15711,
+   "tokens": 6447,
+   "15": {
+    "observed_per_10k": 24.8234,
+    "shuffled_per_10k": 14.6394,
+    "ratio": 1.696,
+    "parallel_per_10k": 46.4643,
+    "ratio_to_parallel": 0.534,
+    "observed_by_depth": {
+     "3": 33,
+     "4": 6,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 21.0044,
+     "4": 3.819,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 45,
+     "4": 21,
+     "5": 4,
+     "6+": 3
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 28.6424,
+     "4": 13.3664,
+     "5": 2.546,
+     "6+": 1.9095
+    },
+    "shuffled_by_depth": {
+     "3": 21.5,
+     "4": 1.0,
+     "5": 0.5,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 32.4613,
+    "shuffled_per_10k": 34.0526,
+    "ratio": 0.953,
+    "parallel_per_10k": 39.4628,
+    "ratio_to_parallel": 0.823,
+    "observed_by_depth": {
+     "3": 22,
+     "4": 24,
+     "5": 4,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 14.0029,
+     "4": 15.2759,
+     "5": 2.546,
+     "6+": 0.6365
+    },
+    "parallel_by_depth": {
+     "3": 33,
+     "4": 15,
+     "5": 7,
+     "6+": 7
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 21.0044,
+     "4": 9.5475,
+     "5": 4.4555,
+     "6+": 4.4555
+    },
+    "shuffled_by_depth": {
+     "3": 30.5,
+     "4": 18.0,
+     "5": 5.0,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 12.7299,
+    "shuffled_per_10k": 12.4117,
+    "ratio": 1.026,
+    "parallel_per_10k": 14.6394,
+    "ratio_to_parallel": 0.87,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 1,
+     "5": 1,
+     "6+": 17
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.6365,
+     "4": 0.6365,
+     "5": 0.6365,
+     "6+": 10.8204
+    },
+    "parallel_by_depth": {
+     "3": 2,
+     "4": 2,
+     "5": 6,
+     "6+": 13
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.273,
+     "4": 1.273,
+     "5": 3.819,
+     "6+": 8.2745
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.5,
+     "5": 2.5,
+     "6+": 16.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 3.819,
+    "shuffled_per_10k": 4.4555,
+    "ratio": 0.857,
+    "parallel_per_10k": 7.0015,
+    "ratio_to_parallel": 0.545,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 6
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 3.819
+    },
+    "parallel_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 1,
+     "6+": 9
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.6365,
+     "4": 0.0,
+     "5": 0.6365,
+     "6+": 5.7285
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 7.0
+    }
+   }
+  },
+  "bible_style/wordtree/The American Revolution - Richard Snowden - 1802": {
+   "words": 50926,
+   "tokens": 21847,
+   "15": {
+    "observed_per_10k": 23.1709,
+    "shuffled_per_10k": 15.0218,
+    "ratio": 1.542,
+    "parallel_per_10k": 43.1999,
+    "ratio_to_parallel": 0.536,
+    "observed_by_depth": {
+     "3": 112,
+     "4": 6,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 21.9927,
+     "4": 1.1782,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 136,
+     "4": 65,
+     "5": 16,
+     "6+": 3
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 26.7054,
+     "4": 12.7636,
+     "5": 3.1418,
+     "6+": 0.5891
+    },
+    "shuffled_by_depth": {
+     "3": 70.5,
+     "4": 5.0,
+     "5": 1.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 39.0763,
+    "shuffled_per_10k": 39.8618,
+    "ratio": 0.98,
+    "parallel_per_10k": 44.7708,
+    "ratio_to_parallel": 0.873,
+    "observed_by_depth": {
+     "3": 86,
+     "4": 78,
+     "5": 28,
+     "6+": 7
+    },
+    "observed_by_depth_per_10k": {
+     "3": 16.8872,
+     "4": 15.3163,
+     "5": 5.4982,
+     "6+": 1.3745
+    },
+    "parallel_by_depth": {
+     "3": 76,
+     "4": 79,
+     "5": 46,
+     "6+": 27
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 14.9236,
+     "4": 15.5127,
+     "5": 9.0327,
+     "6+": 5.3018
+    },
+    "shuffled_by_depth": {
+     "3": 97.0,
+     "4": 73.0,
+     "5": 30.0,
+     "6+": 3.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 13.5491,
+    "shuffled_per_10k": 13.6473,
+    "ratio": 0.993,
+    "parallel_per_10k": 13.9418,
+    "ratio_to_parallel": 0.972,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 5,
+     "5": 9,
+     "6+": 54
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.1964,
+     "4": 0.9818,
+     "5": 1.7673,
+     "6+": 10.6036
+    },
+    "parallel_by_depth": {
+     "3": 4,
+     "4": 5,
+     "5": 11,
+     "6+": 51
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.7855,
+     "4": 0.9818,
+     "5": 2.16,
+     "6+": 10.0145
+    },
+    "shuffled_by_depth": {
+     "3": 3.5,
+     "4": 4.0,
+     "5": 4.0,
+     "6+": 58.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.9091,
+    "shuffled_per_10k": 4.7127,
+    "ratio": 1.042,
+    "parallel_per_10k": 5.1054,
+    "ratio_to_parallel": 0.962,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 24
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.1964,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.7127
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 26
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.1054
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 24.0
+    }
+   }
+  },
+  "bible_style/wordtree/The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744": {
+   "words": 8521,
+   "tokens": 3741,
+   "15": {
+    "observed_per_10k": 15.2564,
+    "shuffled_per_10k": 7.0414,
+    "ratio": 2.167,
+    "parallel_per_10k": 23.4714,
+    "ratio_to_parallel": 0.65,
+    "observed_by_depth": {
+     "3": 12,
+     "4": 1,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 14.0829,
+     "4": 1.1736,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 15,
+     "4": 4,
+     "5": 1,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 17.6036,
+     "4": 4.6943,
+     "5": 1.1736,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 5.5,
+     "4": 0.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 35.2071,
+    "shuffled_per_10k": 34.6203,
+    "ratio": 1.017,
+    "parallel_per_10k": 38.7278,
+    "ratio_to_parallel": 0.909,
+    "observed_by_depth": {
+     "3": 20,
+     "4": 7,
+     "5": 2,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 23.4714,
+     "4": 8.215,
+     "5": 2.3471,
+     "6+": 1.1736
+    },
+    "parallel_by_depth": {
+     "3": 18,
+     "4": 6,
+     "5": 6,
+     "6+": 3
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 21.1243,
+     "4": 7.0414,
+     "5": 7.0414,
+     "6+": 3.5207
+    },
+    "shuffled_by_depth": {
+     "3": 18.5,
+     "4": 10.0,
+     "5": 1.0,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 14.0829,
+    "shuffled_per_10k": 14.0829,
+    "ratio": 1.0,
+    "parallel_per_10k": 16.43,
+    "ratio_to_parallel": 0.857,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 2,
+     "6+": 10
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 2.3471,
+     "6+": 11.7357
+    },
+    "parallel_by_depth": {
+     "3": 2,
+     "4": 1,
+     "5": 0,
+     "6+": 11
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 2.3471,
+     "4": 1.1736,
+     "5": 0.0,
+     "6+": 12.9093
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 1.0,
+     "5": 1.0,
+     "6+": 9.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.6943,
+    "shuffled_per_10k": 4.6943,
+    "ratio": 1.0,
+    "parallel_per_10k": 5.8679,
+    "ratio_to_parallel": 0.8,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 4
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.6943
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 5
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.8679
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.0
+    }
+   }
+  },
+  "bible_style/wordtree/The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744": {
+   "words": 8206,
+   "tokens": 3553,
+   "15": {
+    "observed_per_10k": 9.749,
+    "shuffled_per_10k": 5.4838,
+    "ratio": 1.778,
+    "parallel_per_10k": 17.0607,
+    "ratio_to_parallel": 0.571,
+    "observed_by_depth": {
+     "3": 8,
+     "4": 0,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 9.749,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 10,
+     "4": 3,
+     "5": 1,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 12.1862,
+     "4": 3.6559,
+     "5": 1.2186,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 4.5,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 36.5586,
+    "shuffled_per_10k": 27.419,
+    "ratio": 1.333,
+    "parallel_per_10k": 38.9959,
+    "ratio_to_parallel": 0.938,
+    "observed_by_depth": {
+     "3": 17,
+     "4": 12,
+     "5": 1,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 20.7165,
+     "4": 14.6234,
+     "5": 1.2186,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 23,
+     "4": 5,
+     "5": 4,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 28.0283,
+     "4": 6.0931,
+     "5": 4.8745,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 17.5,
+     "4": 4.5,
+     "5": 0.5,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 14.6234,
+    "shuffled_per_10k": 12.7955,
+    "ratio": 1.143,
+    "parallel_per_10k": 14.6234,
+    "ratio_to_parallel": 1.0,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 4,
+     "6+": 8
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 4.8745,
+     "6+": 9.749
+    },
+    "parallel_by_depth": {
+     "3": 2,
+     "4": 1,
+     "5": 1,
+     "6+": 8
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 2.4372,
+     "4": 1.2186,
+     "5": 1.2186,
+     "6+": 9.749
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 2.0,
+     "5": 1.0,
+     "6+": 7.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 6.0931,
+    "shuffled_per_10k": 4.8745,
+    "ratio": 1.25,
+    "parallel_per_10k": 6.0931,
+    "ratio_to_parallel": 1.0,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 5
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 6.0931
+    },
+    "parallel_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 4
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.2186,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.8745
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 3.5
+    }
+   }
+  },
+  "bible_style/wordtree/The Conquest of Canaan - Timothy Dwight - 1785": {
+   "words": 78853,
+   "tokens": 49443,
+   "15": {
+    "observed_per_10k": 1.395,
+    "shuffled_per_10k": 1.078,
+    "ratio": 1.294,
+    "parallel_per_10k": 1.2682,
+    "ratio_to_parallel": 1.1,
+    "observed_by_depth": {
+     "3": 10,
+     "4": 1,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.2682,
+     "4": 0.1268,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 9,
+     "4": 1,
+     "5": 0,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.1414,
+     "4": 0.1268,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 8.0,
+     "4": 0.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 44.5132,
+    "shuffled_per_10k": 38.9332,
+    "ratio": 1.143,
+    "parallel_per_10k": 44.3864,
+    "ratio_to_parallel": 1.003,
+    "observed_by_depth": {
+     "3": 215,
+     "4": 118,
+     "5": 18,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 27.2659,
+     "4": 14.9646,
+     "5": 2.2827,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 215,
+     "4": 104,
+     "5": 26,
+     "6+": 5
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 27.2659,
+     "4": 13.1891,
+     "5": 3.2973,
+     "6+": 0.6341
+    },
+    "shuffled_by_depth": {
+     "3": 234.0,
+     "4": 62.5,
+     "5": 9.0,
+     "6+": 1.5
+    }
+   },
+   "150": {
+    "observed_per_10k": 18.8959,
+    "shuffled_per_10k": 18.5155,
+    "ratio": 1.021,
+    "parallel_per_10k": 19.2764,
+    "ratio_to_parallel": 0.98,
+    "observed_by_depth": {
+     "3": 2,
+     "4": 4,
+     "5": 7,
+     "6+": 136
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.2536,
+     "4": 0.5073,
+     "5": 0.8877,
+     "6+": 17.2473
+    },
+    "parallel_by_depth": {
+     "3": 2,
+     "4": 2,
+     "5": 8,
+     "6+": 140
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.2536,
+     "4": 0.2536,
+     "5": 1.0145,
+     "6+": 17.7546
+    },
+    "shuffled_by_depth": {
+     "3": 2.5,
+     "4": 6.0,
+     "5": 7.0,
+     "6+": 130.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 6.8482,
+    "shuffled_per_10k": 6.5311,
+    "ratio": 1.049,
+    "parallel_per_10k": 7.1018,
+    "ratio_to_parallel": 0.964,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 53
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.1268,
+     "6+": 6.7214
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 56
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 7.1018
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.5,
+     "5": 0.0,
+     "6+": 51.0
+    }
+   }
+  },
+  "bible_style/wordtree/The Epistles of Ignatius and Polycarp - 1827": {
+   "words": 49289,
+   "tokens": 21902,
+   "15": {
+    "observed_per_10k": 7.101,
+    "shuffled_per_10k": 2.1303,
+    "ratio": 3.333,
+    "parallel_per_10k": 12.1731,
+    "ratio_to_parallel": 0.583,
+    "observed_by_depth": {
+     "3": 30,
+     "4": 5,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 6.0866,
+     "4": 1.0144,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 51,
+     "4": 7,
+     "5": 2,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 10.3471,
+     "4": 1.4202,
+     "5": 0.4058,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 10.5,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 27.5924,
+    "shuffled_per_10k": 20.2885,
+    "ratio": 1.36,
+    "parallel_per_10k": 26.1722,
+    "ratio_to_parallel": 1.054,
+    "observed_by_depth": {
+     "3": 95,
+     "4": 32,
+     "5": 7,
+     "6+": 2
+    },
+    "observed_by_depth_per_10k": {
+     "3": 19.2741,
+     "4": 6.4923,
+     "5": 1.4202,
+     "6+": 0.4058
+    },
+    "parallel_by_depth": {
+     "3": 70,
+     "4": 39,
+     "5": 17,
+     "6+": 3
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 14.202,
+     "4": 7.9125,
+     "5": 3.449,
+     "6+": 0.6087
+    },
+    "shuffled_by_depth": {
+     "3": 73.5,
+     "4": 25.5,
+     "5": 1.0,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 14.4048,
+    "shuffled_per_10k": 13.6947,
+    "ratio": 1.052,
+    "parallel_per_10k": 15.2164,
+    "ratio_to_parallel": 0.947,
+    "observed_by_depth": {
+     "3": 7,
+     "4": 9,
+     "5": 15,
+     "6+": 40
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.4202,
+     "4": 1.826,
+     "5": 3.0433,
+     "6+": 8.1154
+    },
+    "parallel_by_depth": {
+     "3": 9,
+     "4": 14,
+     "5": 26,
+     "6+": 26
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.826,
+     "4": 2.8404,
+     "5": 5.275,
+     "6+": 5.275
+    },
+    "shuffled_by_depth": {
+     "3": 2.5,
+     "4": 6.5,
+     "5": 13.0,
+     "6+": 45.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.8692,
+    "shuffled_per_10k": 4.7678,
+    "ratio": 1.021,
+    "parallel_per_10k": 4.6664,
+    "ratio_to_parallel": 1.043,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 24
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.8692
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 23
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.6664
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 23.5
+    }
+   }
+  },
+  "bible_style/wordtree/The First Book of Napoleon - 1809": {
+   "words": 21323,
+   "tokens": 9547,
+   "15": {
+    "observed_per_10k": 7.0347,
+    "shuffled_per_10k": 3.7518,
+    "ratio": 1.875,
+    "parallel_per_10k": 19.2281,
+    "ratio_to_parallel": 0.366,
+    "observed_by_depth": {
+     "3": 13,
+     "4": 2,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 6.0967,
+     "4": 0.938,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 28,
+     "4": 10,
+     "5": 3,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 13.1314,
+     "4": 4.6898,
+     "5": 1.4069,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 8.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 38.9251,
+    "shuffled_per_10k": 32.1249,
+    "ratio": 1.212,
+    "parallel_per_10k": 46.8977,
+    "ratio_to_parallel": 0.83,
+    "observed_by_depth": {
+     "3": 42,
+     "4": 34,
+     "5": 6,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 19.697,
+     "4": 15.9452,
+     "5": 2.8139,
+     "6+": 0.469
+    },
+    "parallel_by_depth": {
+     "3": 41,
+     "4": 30,
+     "5": 19,
+     "6+": 10
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 19.2281,
+     "4": 14.0693,
+     "5": 8.9106,
+     "6+": 4.6898
+    },
+    "shuffled_by_depth": {
+     "3": 44.5,
+     "4": 21.0,
+     "5": 3.0,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 14.5383,
+    "shuffled_per_10k": 13.3658,
+    "ratio": 1.088,
+    "parallel_per_10k": 14.0693,
+    "ratio_to_parallel": 1.033,
+    "observed_by_depth": {
+     "3": 4,
+     "4": 0,
+     "5": 4,
+     "6+": 23
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.8759,
+     "4": 0.0,
+     "5": 1.8759,
+     "6+": 10.7865
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 1,
+     "5": 4,
+     "6+": 25
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.469,
+     "5": 1.8759,
+     "6+": 11.7244
+    },
+    "shuffled_by_depth": {
+     "3": 1.0,
+     "4": 1.5,
+     "5": 2.5,
+     "6+": 23.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 5.1587,
+    "shuffled_per_10k": 4.9243,
+    "ratio": 1.048,
+    "parallel_per_10k": 5.6277,
+    "ratio_to_parallel": 0.917,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 1,
+     "5": 0,
+     "6+": 10
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.469,
+     "5": 0.0,
+     "6+": 4.6898
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 12
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.6277
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.5,
+     "5": 0.0,
+     "6+": 10.0
+    }
+   }
+  },
+  "bible_style/wordtree/The First Book of Napoleon - 1809b": {
+   "words": 20969,
+   "tokens": 9349,
+   "15": {
+    "observed_per_10k": 8.5841,
+    "shuffled_per_10k": 4.5305,
+    "ratio": 1.895,
+    "parallel_per_10k": 22.414,
+    "ratio_to_parallel": 0.383,
+    "observed_by_depth": {
+     "3": 16,
+     "4": 2,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 7.6303,
+     "4": 0.9538,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 29,
+     "4": 12,
+     "5": 6,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 13.8299,
+     "4": 5.7227,
+     "5": 2.8614,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 9.5,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 40.536,
+    "shuffled_per_10k": 32.1904,
+    "ratio": 1.259,
+    "parallel_per_10k": 46.7357,
+    "ratio_to_parallel": 0.867,
+    "observed_by_depth": {
+     "3": 42,
+     "4": 30,
+     "5": 12,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 20.0296,
+     "4": 14.3068,
+     "5": 5.7227,
+     "6+": 0.4769
+    },
+    "parallel_by_depth": {
+     "3": 32,
+     "4": 28,
+     "5": 22,
+     "6+": 16
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 15.2606,
+     "4": 13.353,
+     "5": 10.4917,
+     "6+": 7.6303
+    },
+    "shuffled_by_depth": {
+     "3": 45.5,
+     "4": 19.0,
+     "5": 3.0,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 14.7837,
+    "shuffled_per_10k": 13.5915,
+    "ratio": 1.088,
+    "parallel_per_10k": 15.2606,
+    "ratio_to_parallel": 0.969,
+    "observed_by_depth": {
+     "3": 3,
+     "4": 0,
+     "5": 6,
+     "6+": 22
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.4307,
+     "4": 0.0,
+     "5": 2.8614,
+     "6+": 10.4917
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 2,
+     "5": 3,
+     "6+": 27
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.9538,
+     "5": 1.4307,
+     "6+": 12.8762
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 1.0,
+     "5": 3.5,
+     "6+": 23.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.7689,
+    "shuffled_per_10k": 5.2458,
+    "ratio": 0.909,
+    "parallel_per_10k": 5.2458,
+    "ratio_to_parallel": 0.909,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 9
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.4769,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.2921
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 11
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.2458
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.5,
+     "5": 0.0,
+     "6+": 10.5
+    }
+   }
+  },
+  "bible_style/wordtree/The First Book of the American Chronicles - John Leacock - 1775": {
+   "words": 14660,
+   "tokens": 6218,
+   "15": {
+    "observed_per_10k": 6.8213,
+    "shuffled_per_10k": 3.7517,
+    "ratio": 1.818,
+    "parallel_per_10k": 16.3711,
+    "ratio_to_parallel": 0.417,
+    "observed_by_depth": {
+     "3": 9,
+     "4": 1,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 6.1392,
+     "4": 0.6821,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 18,
+     "4": 2,
+     "5": 4,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 12.2783,
+     "4": 1.3643,
+     "5": 2.7285,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 5.5,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 29.3315,
+    "shuffled_per_10k": 27.9673,
+    "ratio": 1.049,
+    "parallel_per_10k": 33.4243,
+    "ratio_to_parallel": 0.878,
+    "observed_by_depth": {
+     "3": 27,
+     "4": 14,
+     "5": 2,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 18.4175,
+     "4": 9.5498,
+     "5": 1.3643,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 29,
+     "4": 10,
+     "5": 5,
+     "6+": 5
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 19.7817,
+     "4": 6.8213,
+     "5": 3.4106,
+     "6+": 3.4106
+    },
+    "shuffled_by_depth": {
+     "3": 32.5,
+     "4": 5.5,
+     "5": 3.0,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 12.9604,
+    "shuffled_per_10k": 13.9836,
+    "ratio": 0.927,
+    "parallel_per_10k": 14.3247,
+    "ratio_to_parallel": 0.905,
+    "observed_by_depth": {
+     "3": 2,
+     "4": 0,
+     "5": 3,
+     "6+": 14
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.3643,
+     "4": 0.0,
+     "5": 2.0464,
+     "6+": 9.5498
+    },
+    "parallel_by_depth": {
+     "3": 2,
+     "4": 1,
+     "5": 4,
+     "6+": 14
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.3643,
+     "4": 0.6821,
+     "5": 2.7285,
+     "6+": 9.5498
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 1.0,
+     "5": 3.0,
+     "6+": 16.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.7749,
+    "shuffled_per_10k": 5.116,
+    "ratio": 0.933,
+    "parallel_per_10k": 5.457,
+    "ratio_to_parallel": 0.875,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 7
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.7749
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 1,
+     "5": 0,
+     "6+": 7
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.6821,
+     "5": 0.0,
+     "6+": 4.7749
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 7.0
+    }
+   }
+  },
+  "bible_style/wordtree/The Late War - Gilbert Hunt - 1816": {
+   "words": 49253,
+   "tokens": 22882,
+   "15": {
+    "observed_per_10k": 18.8821,
+    "shuffled_per_10k": 5.5834,
+    "ratio": 3.382,
+    "parallel_per_10k": 28.4247,
+    "ratio_to_parallel": 0.664,
+    "observed_by_depth": {
+     "3": 87,
+     "4": 5,
+     "5": 1,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 17.6639,
+     "4": 1.0152,
+     "5": 0.203,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 108,
+     "4": 24,
+     "5": 7,
+     "6+": 1
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 21.9276,
+     "4": 4.8728,
+     "5": 1.4212,
+     "6+": 0.203
+    },
+    "shuffled_by_depth": {
+     "3": 24.5,
+     "4": 3.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 45.0734,
+    "shuffled_per_10k": 41.6218,
+    "ratio": 1.083,
+    "parallel_per_10k": 46.2916,
+    "ratio_to_parallel": 0.974,
+    "observed_by_depth": {
+     "3": 83,
+     "4": 107,
+     "5": 29,
+     "6+": 3
+    },
+    "observed_by_depth_per_10k": {
+     "3": 16.8518,
+     "4": 21.7246,
+     "5": 5.888,
+     "6+": 0.6091
+    },
+    "parallel_by_depth": {
+     "3": 83,
+     "4": 74,
+     "5": 51,
+     "6+": 20
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 16.8518,
+     "4": 15.0245,
+     "5": 10.3547,
+     "6+": 4.0607
+    },
+    "shuffled_by_depth": {
+     "3": 112.0,
+     "4": 73.5,
+     "5": 16.5,
+     "6+": 3.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 14.0093,
+    "shuffled_per_10k": 14.4154,
+    "ratio": 0.972,
+    "parallel_per_10k": 15.2275,
+    "ratio_to_parallel": 0.92,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 3,
+     "5": 7,
+     "6+": 58
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.203,
+     "4": 0.6091,
+     "5": 1.4212,
+     "6+": 11.7759
+    },
+    "parallel_by_depth": {
+     "3": 3,
+     "4": 6,
+     "5": 5,
+     "6+": 61
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.6091,
+     "4": 1.2182,
+     "5": 1.0152,
+     "6+": 12.385
+    },
+    "shuffled_by_depth": {
+     "3": 2.5,
+     "4": 1.5,
+     "5": 5.5,
+     "6+": 61.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 5.4819,
+    "shuffled_per_10k": 4.8728,
+    "ratio": 1.125,
+    "parallel_per_10k": 4.8728,
+    "ratio_to_parallel": 1.125,
+    "observed_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 0,
+     "6+": 26
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.203,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.2789
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 24
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.8728
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 1.0,
+     "6+": 23.0
+    }
+   }
+  },
+  "bible_style/wordtree/The Late War - Gilbert Hunt - 1817 (archive.org)": {
+   "words": 55081,
+   "tokens": 25765,
+   "15": {
+    "observed_per_10k": 4.9019,
+    "shuffled_per_10k": 1.3616,
+    "ratio": 3.6,
+    "parallel_per_10k": 10.893,
+    "ratio_to_parallel": 0.45,
+    "observed_by_depth": {
+     "3": 25,
+     "4": 2,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 4.5388,
+     "4": 0.3631,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 54,
+     "4": 6,
+     "5": 0,
+     "6+": 0
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 9.8037,
+     "4": 1.0893,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "shuffled_by_depth": {
+     "3": 7.5,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 31.7714,
+    "shuffled_per_10k": 28.3219,
+    "ratio": 1.122,
+    "parallel_per_10k": 35.9471,
+    "ratio_to_parallel": 0.884,
+    "observed_by_depth": {
+     "3": 112,
+     "4": 47,
+     "5": 15,
+     "6+": 1
+    },
+    "observed_by_depth_per_10k": {
+     "3": 20.3337,
+     "4": 8.5329,
+     "5": 2.7233,
+     "6+": 0.1816
+    },
+    "parallel_by_depth": {
+     "3": 97,
+     "4": 52,
+     "5": 28,
+     "6+": 21
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 17.6104,
+     "4": 9.4406,
+     "5": 5.0834,
+     "6+": 3.8126
+    },
+    "shuffled_by_depth": {
+     "3": 114.5,
+     "4": 34.5,
+     "5": 7.0,
+     "6+": 0.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 15.0687,
+    "shuffled_per_10k": 14.4333,
+    "ratio": 1.044,
+    "parallel_per_10k": 16.8842,
+    "ratio_to_parallel": 0.892,
+    "observed_by_depth": {
+     "3": 2,
+     "4": 9,
+     "5": 14,
+     "6+": 58
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.3631,
+     "4": 1.634,
+     "5": 2.5417,
+     "6+": 10.5299
+    },
+    "parallel_by_depth": {
+     "3": 5,
+     "4": 8,
+     "5": 15,
+     "6+": 65
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.9078,
+     "4": 1.4524,
+     "5": 2.7233,
+     "6+": 11.8008
+    },
+    "shuffled_by_depth": {
+     "3": 2.0,
+     "4": 8.5,
+     "5": 10.0,
+     "6+": 59.0
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.9019,
+    "shuffled_per_10k": 4.9019,
+    "ratio": 1.0,
+    "parallel_per_10k": 6.3543,
+    "ratio_to_parallel": 0.771,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 27
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 4.9019
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 34
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.1816,
+     "6+": 6.1727
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.5,
+     "5": 0.0,
+     "6+": 26.5
+    }
+   }
+  },
+  "bible_style/wordtree/The Late War - Gilbert Hunt - 1819": {
+   "words": 49970,
+   "tokens": 23193,
+   "15": {
+    "observed_per_10k": 18.2109,
+    "shuffled_per_10k": 6.3038,
+    "ratio": 2.889,
+    "parallel_per_10k": 28.4171,
+    "ratio_to_parallel": 0.641,
+    "observed_by_depth": {
+     "3": 84,
+     "4": 6,
+     "5": 1,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 16.8101,
+     "4": 1.2007,
+     "5": 0.2001,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 116,
+     "4": 22,
+     "5": 3,
+     "6+": 1
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 23.2139,
+     "4": 4.4026,
+     "5": 0.6004,
+     "6+": 0.2001
+    },
+    "shuffled_by_depth": {
+     "3": 30.0,
+     "4": 1.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 44.6268,
+    "shuffled_per_10k": 39.924,
+    "ratio": 1.118,
+    "parallel_per_10k": 47.2283,
+    "ratio_to_parallel": 0.945,
+    "observed_by_depth": {
+     "3": 93,
+     "4": 94,
+     "5": 33,
+     "6+": 3
+    },
+    "observed_by_depth_per_10k": {
+     "3": 18.6112,
+     "4": 18.8113,
+     "5": 6.604,
+     "6+": 0.6004
+    },
+    "parallel_by_depth": {
+     "3": 90,
+     "4": 74,
+     "5": 53,
+     "6+": 19
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 18.0108,
+     "4": 14.8089,
+     "5": 10.6064,
+     "6+": 3.8023
+    },
+    "shuffled_by_depth": {
+     "3": 104.5,
+     "4": 74.0,
+     "5": 19.0,
+     "6+": 2.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 14.6088,
+    "shuffled_per_10k": 14.0084,
+    "ratio": 1.043,
+    "parallel_per_10k": 14.8089,
+    "ratio_to_parallel": 0.986,
+    "observed_by_depth": {
+     "3": 2,
+     "4": 6,
+     "5": 8,
+     "6+": 57
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.4002,
+     "4": 1.2007,
+     "5": 1.601,
+     "6+": 11.4068
+    },
+    "parallel_by_depth": {
+     "3": 3,
+     "4": 5,
+     "5": 4,
+     "6+": 62
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.6004,
+     "4": 1.0006,
+     "5": 0.8005,
+     "6+": 12.4074
+    },
+    "shuffled_by_depth": {
+     "3": 2.0,
+     "4": 3.0,
+     "5": 5.5,
+     "6+": 59.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 5.2031,
+    "shuffled_per_10k": 4.7028,
+    "ratio": 1.106,
+    "parallel_per_10k": 5.6034,
+    "ratio_to_parallel": 0.929,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 26
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.2031
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 28
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.6034
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 23.5
+    }
+   }
+  },
+  "bible_style/wordtree/True Relation of the Holy War - 1806": {
+   "words": 109648,
+   "tokens": 43835,
+   "15": {
+    "observed_per_10k": 12.4033,
+    "shuffled_per_10k": 4.6056,
+    "ratio": 2.693,
+    "parallel_per_10k": 22.6178,
+    "ratio_to_parallel": 0.548,
+    "observed_by_depth": {
+     "3": 123,
+     "4": 13,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 11.2177,
+     "4": 1.1856,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 185,
+     "4": 48,
+     "5": 11,
+     "6+": 4
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 16.8722,
+     "4": 4.3776,
+     "5": 1.0032,
+     "6+": 0.3648
+    },
+    "shuffled_by_depth": {
+     "3": 48.5,
+     "4": 2.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 34.8388,
+    "shuffled_per_10k": 32.6043,
+    "ratio": 1.069,
+    "parallel_per_10k": 37.666,
+    "ratio_to_parallel": 0.925,
+    "observed_by_depth": {
+     "3": 190,
+     "4": 147,
+     "5": 41,
+     "6+": 4
+    },
+    "observed_by_depth_per_10k": {
+     "3": 17.3282,
+     "4": 13.4065,
+     "5": 3.7392,
+     "6+": 0.3648
+    },
+    "parallel_by_depth": {
+     "3": 200,
+     "4": 138,
+     "5": 44,
+     "6+": 31
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 18.2402,
+     "4": 12.5857,
+     "5": 4.0128,
+     "6+": 2.8272
+    },
+    "shuffled_by_depth": {
+     "3": 218.5,
+     "4": 113.0,
+     "5": 24.5,
+     "6+": 1.5
+    }
+   },
+   "150": {
+    "observed_per_10k": 13.1329,
+    "shuffled_per_10k": 12.1753,
+    "ratio": 1.079,
+    "parallel_per_10k": 13.3153,
+    "ratio_to_parallel": 0.986,
+    "observed_by_depth": {
+     "3": 8,
+     "4": 11,
+     "5": 22,
+     "6+": 103
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.7296,
+     "4": 1.0032,
+     "5": 2.0064,
+     "6+": 9.3937
+    },
+    "parallel_by_depth": {
+     "3": 9,
+     "4": 13,
+     "5": 14,
+     "6+": 110
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.8208,
+     "4": 1.1856,
+     "5": 1.2768,
+     "6+": 10.0321
+    },
+    "shuffled_by_depth": {
+     "3": 4.5,
+     "4": 5.5,
+     "5": 12.0,
+     "6+": 111.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.4688,
+    "shuffled_per_10k": 4.332,
+    "ratio": 1.032,
+    "parallel_per_10k": 4.56,
+    "ratio_to_parallel": 0.98,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 48
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0912,
+     "6+": 4.3776
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 3,
+     "6+": 47
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.2736,
+     "6+": 4.2864
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 47.5
+    }
+   }
+  },
+  "bible_style/eri/institutional_books:32044086799061": {
+   "words": 144956,
+   "tokens": 67144,
+   "15": {
+    "observed_per_10k": 12.4865,
+    "shuffled_per_10k": 6.2433,
+    "ratio": 2.0,
+    "parallel_per_10k": 21.9377,
+    "ratio_to_parallel": 0.569,
+    "observed_by_depth": {
+     "3": 169,
+     "4": 11,
+     "5": 1,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 11.6587,
+     "4": 0.7589,
+     "5": 0.069,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 235,
+     "4": 57,
+     "5": 22,
+     "6+": 4
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 16.2118,
+     "4": 3.9322,
+     "5": 1.5177,
+     "6+": 0.2759
+    },
+    "shuffled_by_depth": {
+     "3": 83.0,
+     "4": 7.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 37.1837,
+    "shuffled_per_10k": 32.4236,
+    "ratio": 1.147,
+    "parallel_per_10k": 39.8742,
+    "ratio_to_parallel": 0.933,
+    "observed_by_depth": {
+     "3": 263,
+     "4": 218,
+     "5": 43,
+     "6+": 15
+    },
+    "observed_by_depth_per_10k": {
+     "3": 18.1434,
+     "4": 15.039,
+     "5": 2.9664,
+     "6+": 1.0348
+    },
+    "parallel_by_depth": {
+     "3": 268,
+     "4": 183,
+     "5": 85,
+     "6+": 42
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 18.4884,
+     "4": 12.6245,
+     "5": 5.8638,
+     "6+": 2.8974
+    },
+    "shuffled_by_depth": {
+     "3": 282.5,
+     "4": 153.5,
+     "5": 29.5,
+     "6+": 4.5
+    }
+   },
+   "150": {
+    "observed_per_10k": 14.6941,
+    "shuffled_per_10k": 14.2112,
+    "ratio": 1.034,
+    "parallel_per_10k": 16.3498,
+    "ratio_to_parallel": 0.899,
+    "observed_by_depth": {
+     "3": 8,
+     "4": 13,
+     "5": 29,
+     "6+": 163
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.5519,
+     "4": 0.8968,
+     "5": 2.0006,
+     "6+": 11.2448
+    },
+    "parallel_by_depth": {
+     "3": 16,
+     "4": 25,
+     "5": 37,
+     "6+": 159
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.1038,
+     "4": 1.7247,
+     "5": 2.5525,
+     "6+": 10.9688
+    },
+    "shuffled_by_depth": {
+     "3": 9.0,
+     "4": 12.5,
+     "5": 20.0,
+     "6+": 164.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 5.036,
+    "shuffled_per_10k": 4.967,
+    "ratio": 1.014,
+    "parallel_per_10k": 5.312,
+    "ratio_to_parallel": 0.948,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 73
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.036
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 77
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.312
+    },
+    "shuffled_by_depth": {
+     "3": 0.5,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 71.5
+    }
+   }
+  },
+  "bible_style/eri/institutional_books:32044090306911": {
+   "words": 128383,
+   "tokens": 56778,
+   "15": {
+    "observed_per_10k": 24.6139,
+    "shuffled_per_10k": 12.0732,
+    "ratio": 2.039,
+    "parallel_per_10k": 41.2048,
+    "ratio_to_parallel": 0.597,
+    "observed_by_depth": {
+     "3": 279,
+     "4": 34,
+     "5": 3,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 21.7318,
+     "4": 2.6483,
+     "5": 0.2337,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 371,
+     "4": 113,
+     "5": 35,
+     "6+": 10
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 28.8979,
+     "4": 8.8018,
+     "5": 2.7262,
+     "6+": 0.7789
+    },
+    "shuffled_by_depth": {
+     "3": 143.0,
+     "4": 12.0,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 42.9963,
+    "shuffled_per_10k": 43.1521,
+    "ratio": 0.996,
+    "parallel_per_10k": 45.6447,
+    "ratio_to_parallel": 0.942,
+    "observed_by_depth": {
+     "3": 241,
+     "4": 216,
+     "5": 79,
+     "6+": 16
+    },
+    "observed_by_depth_per_10k": {
+     "3": 18.772,
+     "4": 16.8247,
+     "5": 6.1535,
+     "6+": 1.2463
+    },
+    "parallel_by_depth": {
+     "3": 216,
+     "4": 191,
+     "5": 117,
+     "6+": 62
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 16.8247,
+     "4": 14.8774,
+     "5": 9.1134,
+     "6+": 4.8293
+    },
+    "shuffled_by_depth": {
+     "3": 248.0,
+     "4": 222.0,
+     "5": 70.0,
+     "6+": 14.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 13.8648,
+    "shuffled_per_10k": 13.5921,
+    "ratio": 1.02,
+    "parallel_per_10k": 15.2668,
+    "ratio_to_parallel": 0.908,
+    "observed_by_depth": {
+     "3": 5,
+     "4": 19,
+     "5": 13,
+     "6+": 141
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.3895,
+     "4": 1.4799,
+     "5": 1.0126,
+     "6+": 10.9828
+    },
+    "parallel_by_depth": {
+     "3": 12,
+     "4": 14,
+     "5": 34,
+     "6+": 136
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.9347,
+     "4": 1.0905,
+     "5": 2.6483,
+     "6+": 10.5933
+    },
+    "shuffled_by_depth": {
+     "3": 4.0,
+     "4": 5.0,
+     "5": 8.0,
+     "6+": 157.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 4.9851,
+    "shuffled_per_10k": 4.7514,
+    "ratio": 1.049,
+    "parallel_per_10k": 4.9851,
+    "ratio_to_parallel": 1.0,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 4,
+     "6+": 60
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.3116,
+     "6+": 4.6735
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 1,
+     "6+": 63
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0779,
+     "6+": 4.9072
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 1.0,
+     "5": 0.0,
+     "6+": 60.0
+    }
+   }
+  },
+  "bible_style/eri/internet_archive:chronicleseri00ocogoog": {
+   "words": 141078,
+   "tokens": 66211,
+   "15": {
+    "observed_per_10k": 10.5615,
+    "shuffled_per_10k": 4.6428,
+    "ratio": 2.275,
+    "parallel_per_10k": 17.4372,
+    "ratio_to_parallel": 0.606,
+    "observed_by_depth": {
+     "3": 143,
+     "4": 6,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 10.1362,
+     "4": 0.4253,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 184,
+     "4": 45,
+     "5": 15,
+     "6+": 2
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 13.0424,
+     "4": 3.1897,
+     "5": 1.0632,
+     "6+": 0.1418
+    },
+    "shuffled_by_depth": {
+     "3": 63.0,
+     "4": 2.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 35.087,
+    "shuffled_per_10k": 29.5936,
+    "ratio": 1.186,
+    "parallel_per_10k": 37.2843,
+    "ratio_to_parallel": 0.941,
+    "observed_by_depth": {
+     "3": 266,
+     "4": 177,
+     "5": 42,
+     "6+": 10
+    },
+    "observed_by_depth_per_10k": {
+     "3": 18.8548,
+     "4": 12.5463,
+     "5": 2.9771,
+     "6+": 0.7088
+    },
+    "parallel_by_depth": {
+     "3": 267,
+     "4": 169,
+     "5": 62,
+     "6+": 28
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 18.9257,
+     "4": 11.9792,
+     "5": 4.3947,
+     "6+": 1.9847
+    },
+    "shuffled_by_depth": {
+     "3": 270.5,
+     "4": 118.5,
+     "5": 24.5,
+     "6+": 4.0
+    }
+   },
+   "150": {
+    "observed_per_10k": 14.8145,
+    "shuffled_per_10k": 14.7082,
+    "ratio": 1.007,
+    "parallel_per_10k": 16.1613,
+    "ratio_to_parallel": 0.917,
+    "observed_by_depth": {
+     "3": 11,
+     "4": 21,
+     "5": 28,
+     "6+": 149
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.7797,
+     "4": 1.4885,
+     "5": 1.9847,
+     "6+": 10.5615
+    },
+    "parallel_by_depth": {
+     "3": 24,
+     "4": 25,
+     "5": 31,
+     "6+": 148
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.7012,
+     "4": 1.7721,
+     "5": 2.1974,
+     "6+": 10.4907
+    },
+    "shuffled_by_depth": {
+     "3": 10.0,
+     "4": 11.0,
+     "5": 27.0,
+     "6+": 159.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 5.0327,
+    "shuffled_per_10k": 5.1036,
+    "ratio": 0.986,
+    "parallel_per_10k": 5.3871,
+    "ratio_to_parallel": 0.934,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 0,
+     "5": 0,
+     "6+": 71
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0,
+     "6+": 5.0327
+    },
+    "parallel_by_depth": {
+     "3": 1,
+     "4": 0,
+     "5": 1,
+     "6+": 74
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0709,
+     "4": 0.0,
+     "5": 0.0709,
+     "6+": 5.2453
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.5,
+     "5": 0.5,
+     "6+": 71.0
+    }
+   }
+  },
+  "bible_style/eri/internet_archive:chronicleserior01ocogoog": {
+   "words": 142433,
+   "tokens": 68568,
+   "15": {
+    "observed_per_10k": 6.8102,
+    "shuffled_per_10k": 2.8434,
+    "ratio": 2.395,
+    "parallel_per_10k": 10.6015,
+    "ratio_to_parallel": 0.642,
+    "observed_by_depth": {
+     "3": 95,
+     "4": 2,
+     "5": 0,
+     "6+": 0
+    },
+    "observed_by_depth_per_10k": {
+     "3": 6.6698,
+     "4": 0.1404,
+     "5": 0.0,
+     "6+": 0.0
+    },
+    "parallel_by_depth": {
+     "3": 113,
+     "4": 31,
+     "5": 5,
+     "6+": 2
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 7.9336,
+     "4": 2.1765,
+     "5": 0.351,
+     "6+": 0.1404
+    },
+    "shuffled_by_depth": {
+     "3": 39.0,
+     "4": 1.5,
+     "5": 0.0,
+     "6+": 0.0
+    }
+   },
+   "40": {
+    "observed_per_10k": 28.2238,
+    "shuffled_per_10k": 22.7475,
+    "ratio": 1.241,
+    "parallel_per_10k": 29.4173,
+    "ratio_to_parallel": 0.959,
+    "observed_by_depth": {
+     "3": 250,
+     "4": 119,
+     "5": 27,
+     "6+": 6
+    },
+    "observed_by_depth_per_10k": {
+     "3": 17.5521,
+     "4": 8.3548,
+     "5": 1.8956,
+     "6+": 0.4213
+    },
+    "parallel_by_depth": {
+     "3": 249,
+     "4": 109,
+     "5": 46,
+     "6+": 15
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 17.4819,
+     "4": 7.6527,
+     "5": 3.2296,
+     "6+": 1.0531
+    },
+    "shuffled_by_depth": {
+     "3": 248.0,
+     "4": 60.5,
+     "5": 14.0,
+     "6+": 1.5
+    }
+   },
+   "150": {
+    "observed_per_10k": 15.2352,
+    "shuffled_per_10k": 14.9895,
+    "ratio": 1.016,
+    "parallel_per_10k": 16.2884,
+    "ratio_to_parallel": 0.935,
+    "observed_by_depth": {
+     "3": 19,
+     "4": 28,
+     "5": 43,
+     "6+": 127
+    },
+    "observed_by_depth_per_10k": {
+     "3": 1.334,
+     "4": 1.9658,
+     "5": 3.019,
+     "6+": 8.9165
+    },
+    "parallel_by_depth": {
+     "3": 27,
+     "4": 38,
+     "5": 43,
+     "6+": 124
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 1.8956,
+     "4": 2.6679,
+     "5": 3.019,
+     "6+": 8.7058
+    },
+    "shuffled_by_depth": {
+     "3": 13.5,
+     "4": 21.5,
+     "5": 37.0,
+     "6+": 141.5
+    }
+   },
+   "400": {
+    "observed_per_10k": 5.4061,
+    "shuffled_per_10k": 5.2305,
+    "ratio": 1.034,
+    "parallel_per_10k": 5.4763,
+    "ratio_to_parallel": 0.987,
+    "observed_by_depth": {
+     "3": 0,
+     "4": 3,
+     "5": 0,
+     "6+": 74
+    },
+    "observed_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.2106,
+     "5": 0.0,
+     "6+": 5.1954
+    },
+    "parallel_by_depth": {
+     "3": 0,
+     "4": 1,
+     "5": 2,
+     "6+": 75
+    },
+    "parallel_by_depth_per_10k": {
+     "3": 0.0,
+     "4": 0.0702,
+     "5": 0.1404,
+     "6+": 5.2656
+    },
+    "shuffled_by_depth": {
+     "3": 0.0,
+     "4": 0.0,
+     "5": 1.5,
+     "6+": 73.0
+    }
+   }
+  }
+ },
+ "edwards": {
+  "L": {
+   "2": 0.3333333333333333,
+   "3": 0.06666666666666667,
+   "4": 0.009523809523809525,
+   "5": 0.0010582010582010583,
+   "6": 9.62000962000962e-05,
+   "7": 7.4000074000074e-06,
+   "8": 4.9333382666716e-07,
+   "9": 2.901963686277412e-08,
+   "10": 1.5273493085670588e-09
+  },
+  "alma_36": {
+   "n": 8,
+   "published_P": 0.00018,
+   "implied_N": 364.9
+  },
+  "leviticus_24": {
+   "n": 7,
+   "published_P": 0.0025,
+   "implied_N": 338.3
+  },
+  "P_for_second_with_first_N": 0.0027
+ },
+ "verdict": {
+  "scale": "40",
+  "depth": 3,
+  "book_rate_per_10k": 34.7374,
+  "book_ratio_to_parallel": 0.883,
+  "book_ratio_to_shuffled": 0.992,
+  "percentile_of_rate_in_library": 48.1,
+  "percentile_of_ratio_to_parallel_in_library": 18.3,
+  "percentile_of_ratio_to_shuffled_in_library": 4.4,
+  "answer": "no (within the library)"
+ },
+ "verdict_without_quoted_chapters": {
+  "scale": "40",
+  "depth": 3,
+  "book_rate_per_10k": 34.7779,
+  "book_ratio_to_parallel": 0.875,
+  "book_ratio_to_shuffled": 1.005,
+  "percentile_of_rate_in_library": 48.1,
+  "percentile_of_ratio_to_parallel_in_library": 16.9,
+  "percentile_of_ratio_to_shuffled_in_library": 5.6,
+  "answer": "no (within the library)"
+ },
+ "blocks_of_long_texts": {
+  "king_james_all": {
+   "blocks": 60,
+   "block_tokens": 5000,
+   "rate_primary": {
+    "5": 81.9508,
+    "25": 91.9816,
+    "50": 95.9808,
+    "75": 100.0,
+    "90": 103.9584,
+    "97.5": 106.0
+   },
+   "ratio_primary": {
+    "5": 0.84,
+    "25": 0.943,
+    "50": 1.0,
+    "75": 1.074,
+    "90": 1.129,
+    "97.5": 1.205
+   }
+  },
+  "book_of_mormon": {
+   "blocks": 18,
+   "block_tokens": 5000,
+   "rate_primary": {
+    "5": 89.964,
+    "25": 91.9816,
+    "50": 99.94,
+    "75": 106.0,
+    "90": 109.956,
+    "97.5": 113.7952
+   },
+   "ratio_primary": {
+    "5": 0.832,
+    "25": 0.916,
+    "50": 0.98,
+    "75": 1.069,
+    "90": 1.096,
+    "97.5": 1.143
+   }
+  }
+ },
+ "groups": {
+  "library": {
+   "n": 360,
+   "15": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 9.1369,
+     "4": 0.7348,
+     "5": 0.0315,
+     "6+": 0.0
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 13.5362,
+     "4": 3.8665,
+     "5": 1.0493,
+     "6+": 0.6252
+    },
+    "pooled_parallel_per_10k": 19.0773,
+    "pooled_ratio_to_parallel": 0.519,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.284,
+     "25": 0.423,
+     "50": 0.526,
+     "75": 0.627,
+     "90": 0.733,
+     "97.5": 1.0
+    },
+    "pooled_observed_per_10k": 9.9032,
+    "pooled_shuffled_per_10k": 3.4829,
+    "pooled_ratio": 2.843,
+    "rate_quantiles": {
+     "5": 1.6654,
+     "25": 4.1341,
+     "50": 7.4214,
+     "75": 13.1304,
+     "90": 21.2795,
+     "97.5": 34.8915
+    },
+    "ratio_quantiles": {
+     "5": 1.5,
+     "25": 2.489,
+     "50": 3.6,
+     "75": 5.273,
+     "90": 8.0,
+     "97.5": 12.667
+    }
+   },
+   "40": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 20.7118,
+     "4": 11.0678,
+     "5": 2.5685,
+     "6+": 0.3822
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 18.7847,
+     "4": 10.9325,
+     "5": 4.2611,
+     "6+": 2.6571
+    },
+    "pooled_parallel_per_10k": 36.6354,
+    "pooled_ratio_to_parallel": 0.948,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.816,
+     "25": 0.901,
+     "50": 0.951,
+     "75": 1.014,
+     "90": 1.079,
+     "97.5": 1.175
+    },
+    "pooled_observed_per_10k": 34.7302,
+    "pooled_shuffled_per_10k": 26.7365,
+    "pooled_ratio": 1.299,
+    "rate_quantiles": {
+     "5": 23.244,
+     "25": 29.4995,
+     "50": 35.0842,
+     "75": 39.8057,
+     "90": 43.0643,
+     "97.5": 47.0402
+    },
+    "ratio_quantiles": {
+     "5": 1.0,
+     "25": 1.137,
+     "50": 1.325,
+     "75": 1.6,
+     "90": 1.841,
+     "97.5": 2.226
+    }
+   },
+   "150": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 0.7329,
+     "4": 1.1503,
+     "5": 2.0338,
+     "6+": 10.7647
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 1.2933,
+     "4": 1.888,
+     "5": 2.7867,
+     "6+": 10.2663
+    },
+    "pooled_parallel_per_10k": 16.2343,
+    "pooled_ratio_to_parallel": 0.904,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.8,
+     "25": 0.857,
+     "50": 0.909,
+     "75": 0.957,
+     "90": 1.022,
+     "97.5": 1.054
+    },
+    "pooled_observed_per_10k": 14.6818,
+    "pooled_shuffled_per_10k": 14.2748,
+    "pooled_ratio": 1.029,
+    "rate_quantiles": {
+     "5": 12.6422,
+     "25": 13.8856,
+     "50": 14.552,
+     "75": 15.4292,
+     "90": 16.2811,
+     "97.5": 17.975
+    },
+    "ratio_quantiles": {
+     "5": 0.941,
+     "25": 0.989,
+     "50": 1.028,
+     "75": 1.063,
+     "90": 1.109,
+     "97.5": 1.154
+    }
+   },
+   "400": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 0.0457,
+     "4": 0.0677,
+     "5": 0.0982,
+     "6+": 5.0274
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 0.0782,
+     "4": 0.0982,
+     "5": 0.1125,
+     "6+": 5.2437
+    },
+    "pooled_parallel_per_10k": 5.5325,
+    "pooled_ratio_to_parallel": 0.947,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.8,
+     "25": 0.882,
+     "50": 0.941,
+     "75": 1.0,
+     "90": 1.067,
+     "97.5": 1.154
+    },
+    "pooled_observed_per_10k": 5.2389,
+    "pooled_shuffled_per_10k": 5.0798,
+    "pooled_ratio": 1.031,
+    "rate_quantiles": {
+     "5": 4.3885,
+     "25": 4.8326,
+     "50": 5.1758,
+     "75": 5.5321,
+     "90": 5.9183,
+     "97.5": 6.4178
+    },
+    "ratio_quantiles": {
+     "5": 0.903,
+     "25": 0.97,
+     "50": 1.034,
+     "75": 1.097,
+     "90": 1.133,
+     "97.5": 1.185
+    }
+   }
+  },
+  "translations": {
+   "n": 120,
+   "15": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 8.7252,
+     "4": 0.6821,
+     "5": 0.0227,
+     "6+": 0.0
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 13.4431,
+     "4": 3.1547,
+     "5": 0.6736,
+     "6+": 0.3524
+    },
+    "pooled_parallel_per_10k": 17.6238,
+    "pooled_ratio_to_parallel": 0.535,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.259,
+     "25": 0.429,
+     "50": 0.535,
+     "75": 0.632,
+     "90": 0.747,
+     "97.5": 0.857
+    },
+    "pooled_observed_per_10k": 9.43,
+    "pooled_shuffled_per_10k": 2.9757,
+    "pooled_ratio": 3.169,
+    "rate_quantiles": {
+     "5": 2.0573,
+     "25": 5.3183,
+     "50": 8.0273,
+     "75": 11.7968,
+     "90": 17.5073,
+     "97.5": 25.0203
+    },
+    "ratio_quantiles": {
+     "5": 1.622,
+     "25": 2.444,
+     "50": 3.538,
+     "75": 5.0,
+     "90": 7.667,
+     "97.5": 15.333
+    }
+   },
+   "40": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 21.1906,
+     "4": 12.167,
+     "5": 2.7796,
+     "6+": 0.4604
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 19.707,
+     "4": 11.3826,
+     "5": 4.5019,
+     "6+": 2.2111
+    },
+    "pooled_parallel_per_10k": 37.8026,
+    "pooled_ratio_to_parallel": 0.968,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.855,
+     "25": 0.934,
+     "50": 0.973,
+     "75": 1.033,
+     "90": 1.07,
+     "97.5": 1.138
+    },
+    "pooled_observed_per_10k": 36.5976,
+    "pooled_shuffled_per_10k": 28.4933,
+    "pooled_ratio": 1.284,
+    "rate_quantiles": {
+     "5": 27.6896,
+     "25": 34.0217,
+     "50": 36.9319,
+     "75": 39.8687,
+     "90": 42.3012,
+     "97.5": 45.5852
+    },
+    "ratio_quantiles": {
+     "5": 1.071,
+     "25": 1.18,
+     "50": 1.307,
+     "75": 1.457,
+     "90": 1.554,
+     "97.5": 1.943
+    }
+   },
+   "150": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 0.6139,
+     "4": 1.0743,
+     "5": 1.7223,
+     "6+": 11.428
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 1.0828,
+     "4": 1.7251,
+     "5": 2.4726,
+     "6+": 11.0046
+    },
+    "pooled_parallel_per_10k": 16.2852,
+    "pooled_ratio_to_parallel": 0.911,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.82,
+     "25": 0.875,
+     "50": 0.915,
+     "75": 0.975,
+     "90": 1.0,
+     "97.5": 1.045
+    },
+    "pooled_observed_per_10k": 14.8385,
+    "pooled_shuffled_per_10k": 14.3554,
+    "pooled_ratio": 1.034,
+    "rate_quantiles": {
+     "5": 13.0271,
+     "25": 13.8588,
+     "50": 14.5447,
+     "75": 15.3285,
+     "90": 17.1161,
+     "97.5": 19.8988
+    },
+    "ratio_quantiles": {
+     "5": 0.933,
+     "25": 1.0,
+     "50": 1.035,
+     "75": 1.063,
+     "90": 1.109,
+     "97.5": 1.147
+    }
+   },
+   "400": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 0.0512,
+     "4": 0.0369,
+     "5": 0.0853,
+     "6+": 5.1186
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 0.0938,
+     "4": 0.0654,
+     "5": 0.0881,
+     "6+": 5.3374
+    },
+    "pooled_parallel_per_10k": 5.5847,
+    "pooled_ratio_to_parallel": 0.948,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.81,
+     "25": 0.882,
+     "50": 0.941,
+     "75": 1.0,
+     "90": 1.1,
+     "97.5": 1.167
+    },
+    "pooled_observed_per_10k": 5.292,
+    "pooled_shuffled_per_10k": 5.0745,
+    "pooled_ratio": 1.043,
+    "rate_quantiles": {
+     "5": 4.4484,
+     "25": 4.8069,
+     "50": 5.1305,
+     "75": 5.5024,
+     "90": 6.1593,
+     "97.5": 7.3481
+    },
+    "ratio_quantiles": {
+     "5": 0.929,
+     "25": 0.968,
+     "50": 1.034,
+     "75": 1.111,
+     "90": 1.154,
+     "97.5": 1.267
+    }
+   }
+  },
+  "joseph_smith": {
+   "n": 12,
+   "15": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 21.7276,
+     "4": 3.5056,
+     "5": 0.1041,
+     "6+": 0.0694
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 25.7191,
+     "4": 9.0242,
+     "5": 3.4362,
+     "6+": 1.1801
+    },
+    "pooled_parallel_per_10k": 39.3596,
+    "pooled_ratio_to_parallel": 0.646,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.375,
+     "25": 0.581,
+     "50": 0.643,
+     "75": 0.717,
+     "90": 0.743,
+     "97.5": 0.971
+    },
+    "pooled_observed_per_10k": 25.4067,
+    "pooled_shuffled_per_10k": 17.7361,
+    "pooled_ratio": 1.432,
+    "rate_quantiles": {
+     "5": 14.0637,
+     "25": 16.7832,
+     "50": 25.0068,
+     "75": 34.9311,
+     "90": 41.9756,
+     "97.5": 52.4309
+    },
+    "ratio_quantiles": {
+     "5": 0.947,
+     "25": 1.172,
+     "50": 1.443,
+     "75": 2.444,
+     "90": 3.273,
+     "97.5": 3.667
+    }
+   },
+   "40": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 17.5626,
+     "4": 14.8553,
+     "5": 4.4774,
+     "6+": 0.4859
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 17.5973,
+     "4": 12.4951,
+     "5": 5.9005,
+     "6+": 4.3733
+    },
+    "pooled_parallel_per_10k": 40.3661,
+    "pooled_ratio_to_parallel": 0.926,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.769,
+     "25": 0.829,
+     "50": 0.933,
+     "75": 1.0,
+     "90": 1.006,
+     "97.5": 1.04
+    },
+    "pooled_observed_per_10k": 37.3812,
+    "pooled_shuffled_per_10k": 37.1556,
+    "pooled_ratio": 1.006,
+    "rate_quantiles": {
+     "5": 30.6251,
+     "25": 36.3532,
+     "50": 38.3676,
+     "75": 40.4064,
+     "90": 41.3092,
+     "97.5": 44.7552
+    },
+    "ratio_quantiles": {
+     "5": 0.925,
+     "25": 0.962,
+     "50": 1.01,
+     "75": 1.081,
+     "90": 1.098,
+     "97.5": 1.106
+    }
+   },
+   "150": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 0.9024,
+     "4": 1.1107,
+     "5": 2.0478,
+     "6+": 8.5036
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 1.7701,
+     "4": 1.5619,
+     "5": 2.9849,
+     "6+": 8.2954
+    },
+    "pooled_parallel_per_10k": 14.6123,
+    "pooled_ratio_to_parallel": 0.86,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.583,
+     "25": 0.814,
+     "50": 0.875,
+     "75": 0.933,
+     "90": 1.0,
+     "97.5": 1.4
+    },
+    "pooled_observed_per_10k": 12.5645,
+    "pooled_shuffled_per_10k": 12.5472,
+    "pooled_ratio": 1.001,
+    "rate_quantiles": {
+     "5": 10.8089,
+     "25": 11.7521,
+     "50": 13.2644,
+     "75": 13.3933,
+     "90": 13.5843,
+     "97.5": 16.7832
+    },
+    "ratio_quantiles": {
+     "5": 0.889,
+     "25": 1.0,
+     "50": 1.019,
+     "75": 1.111,
+     "90": 1.143,
+     "97.5": 1.167
+    }
+   },
+   "400": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 0.1388,
+     "4": 0.1041,
+     "5": 0.1041,
+     "6+": 4.1997
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 0.2083,
+     "4": 0.0,
+     "5": 0.2777,
+     "6+": 4.3039
+    },
+    "pooled_parallel_per_10k": 4.7898,
+    "pooled_ratio_to_parallel": 0.949,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.6,
+     "25": 0.8,
+     "50": 0.923,
+     "75": 1.056,
+     "90": 1.143,
+     "97.5": 1.25
+    },
+    "pooled_observed_per_10k": 4.5468,
+    "pooled_shuffled_per_10k": 4.3386,
+    "pooled_ratio": 1.048,
+    "rate_quantiles": {
+     "5": 3.8812,
+     "25": 4.2735,
+     "50": 4.5442,
+     "75": 5.0734,
+     "90": 5.5944,
+     "97.5": 6.6322
+    },
+    "ratio_quantiles": {
+     "5": 0.8,
+     "25": 0.917,
+     "50": 1.033,
+     "75": 1.185,
+     "90": 1.2,
+     "97.5": 1.25
+    }
+   }
+  },
+  "bible_style": {
+   "n": 25,
+   "15": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 11.9377,
+     "4": 1.0368,
+     "5": 0.0576,
+     "6+": 0.0
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 16.6537,
+     "4": 4.7808,
+     "5": 1.3104,
+     "6+": 0.324
+    },
+    "pooled_parallel_per_10k": 23.069,
+    "pooled_ratio_to_parallel": 0.565,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.352,
+     "25": 0.429,
+     "50": 0.569,
+     "75": 0.606,
+     "90": 0.664,
+     "97.5": 1.1
+    },
+    "pooled_observed_per_10k": 13.0321,
+    "pooled_shuffled_per_10k": 6.0696,
+    "pooled_ratio": 2.147,
+    "rate_quantiles": {
+     "5": 1.395,
+     "25": 7.0347,
+     "50": 10.5615,
+     "75": 17.3002,
+     "90": 23.1709,
+     "97.5": 24.8234
+    },
+    "ratio_quantiles": {
+     "5": 1.333,
+     "25": 1.818,
+     "50": 2.0,
+     "75": 2.275,
+     "90": 3.333,
+     "97.5": 3.6
+    }
+   },
+   "40": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 19.0657,
+     "4": 13.8313,
+     "5": 3.816,
+     "6+": 0.6408
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 18.1873,
+     "4": 12.3697,
+     "5": 6.1416,
+     "6+": 3.1752
+    },
+    "pooled_parallel_per_10k": 39.8739,
+    "pooled_ratio_to_parallel": 0.937,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.83,
+     "25": 0.878,
+     "50": 0.925,
+     "75": 0.947,
+     "90": 1.003,
+     "97.5": 1.25
+    },
+    "pooled_observed_per_10k": 37.3539,
+    "pooled_shuffled_per_10k": 33.8727,
+    "pooled_ratio": 1.103,
+    "rate_quantiles": {
+     "5": 27.5924,
+     "25": 34.8388,
+     "50": 37.1837,
+     "75": 41.6391,
+     "90": 44.5132,
+     "97.5": 45.0734
+    },
+    "ratio_quantiles": {
+     "5": 0.98,
+     "25": 1.037,
+     "50": 1.118,
+     "75": 1.212,
+     "90": 1.333,
+     "97.5": 1.4
+    }
+   },
+   "150": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 0.7344,
+     "4": 1.1664,
+     "5": 1.9368,
+     "6+": 10.7641
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 1.0224,
+     "4": 1.5624,
+     "5": 2.3472,
+     "6+": 10.6849
+    },
+    "pooled_parallel_per_10k": 15.6169,
+    "pooled_ratio_to_parallel": 0.935,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.794,
+     "25": 0.899,
+     "50": 0.944,
+     "75": 0.98,
+     "90": 1.0,
+     "97.5": 1.033
+    },
+    "pooled_observed_per_10k": 14.6017,
+    "pooled_shuffled_per_10k": 14.2129,
+    "pooled_ratio": 1.027,
+    "rate_quantiles": {
+     "5": 12.3305,
+     "25": 13.5491,
+     "50": 14.4048,
+     "75": 14.7837,
+     "90": 15.198,
+     "97.5": 18.8959
+    },
+    "ratio_quantiles": {
+     "5": 0.927,
+     "25": 1.0,
+     "50": 1.021,
+     "75": 1.052,
+     "90": 1.111,
+     "97.5": 1.153
+    }
+   },
+   "400": {
+    "pooled_observed_by_depth_per_10k": {
+     "3": 0.036,
+     "4": 0.0288,
+     "5": 0.072,
+     "6+": 4.9608
+    },
+    "pooled_parallel_by_depth_per_10k": {
+     "3": 0.0288,
+     "4": 0.0216,
+     "5": 0.0864,
+     "6+": 5.22
+    },
+    "pooled_parallel_per_10k": 5.3568,
+    "pooled_ratio_to_parallel": 0.952,
+    "ratio_to_parallel_quantiles": {
+     "5": 0.571,
+     "25": 0.889,
+     "50": 0.948,
+     "75": 1.0,
+     "90": 1.029,
+     "97.5": 1.125
+    },
+    "pooled_observed_per_10k": 5.0976,
+    "pooled_shuffled_per_10k": 4.968,
+    "pooled_ratio": 1.026,
+    "rate_quantiles": {
+     "5": 3.819,
+     "25": 4.7749,
+     "50": 4.92,
+     "75": 5.2666,
+     "90": 6.0931,
+     "97.5": 6.8482
+    },
+    "ratio_quantiles": {
+     "5": 0.889,
+     "25": 0.986,
+     "50": 1.021,
+     "75": 1.049,
+     "90": 1.143,
+     "97.5": 1.25
+    }
+   }
+  }
+ },
+ "famous_cases": {
+  "alma_36": {
+   "words": 1235,
+   "tokens": 407,
+   "by_scale": {
+    "15": {
+     "deepest_inverted": 5,
+     "deepest_parallel": 6,
+     "library": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.0033,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.1367,
+      "median_deepest_inverted": 3,
+      "max_deepest_inverted": 5
+     },
+     "king_james": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.04,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.4233,
+      "median_deepest_inverted": 3,
+      "max_deepest_inverted": 5
+     }
+    },
+    "40": {
+     "deepest_inverted": 4,
+     "deepest_parallel": 4,
+     "library": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.7033,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.7867,
+      "median_deepest_inverted": 4,
+      "max_deepest_inverted": 7
+     },
+     "king_james": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.9333,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.9533,
+      "median_deepest_inverted": 4,
+      "max_deepest_inverted": 6
+     }
+    },
+    "150": {
+     "deepest_inverted": 6,
+     "deepest_parallel": 6,
+     "library": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.8,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.7267,
+      "median_deepest_inverted": 6,
+      "max_deepest_inverted": 11
+     },
+     "king_james": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.7167,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.7233,
+      "median_deepest_inverted": 6,
+      "max_deepest_inverted": 11
+     }
+    },
+    "400": {
+     "deepest_inverted": 8,
+     "deepest_parallel": 7,
+     "library": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.27,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.2833,
+      "median_deepest_inverted": 7,
+      "max_deepest_inverted": 14
+     },
+     "king_james": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.18,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.23,
+      "median_deepest_inverted": 6,
+      "max_deepest_inverted": 12
+     }
+    }
+   }
+  },
+  "alma_41": {
+   "words": 701,
+   "tokens": 241,
+   "by_scale": {
+    "15": {
+     "deepest_inverted": 3,
+     "deepest_parallel": 4,
+     "library": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.3133,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.5133,
+      "median_deepest_inverted": 2,
+      "max_deepest_inverted": 4
+     },
+     "king_james": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.8067,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.9133,
+      "median_deepest_inverted": 3,
+      "max_deepest_inverted": 5
+     }
+    },
+    "40": {
+     "deepest_inverted": 4,
+     "deepest_parallel": 4,
+     "library": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.5067,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.6033,
+      "median_deepest_inverted": 4,
+      "max_deepest_inverted": 6
+     },
+     "king_james": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.75,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.82,
+      "median_deepest_inverted": 4,
+      "max_deepest_inverted": 6
+     }
+    },
+    "150": {
+     "deepest_inverted": 4,
+     "deepest_parallel": 3,
+     "library": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.9167,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.9067,
+      "median_deepest_inverted": 5,
+      "max_deepest_inverted": 9
+     },
+     "king_james": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.8867,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.8833,
+      "median_deepest_inverted": 5,
+      "max_deepest_inverted": 10
+     }
+    },
+    "400": {
+     "deepest_inverted": 4,
+     "deepest_parallel": 3,
+     "library": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.9067,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.8933,
+      "median_deepest_inverted": 5,
+      "max_deepest_inverted": 9
+     },
+     "king_james": {
+      "blocks": 300,
+      "inverted_at_least_as_deep": 0.86,
+      "parallel_at_least_as_deep_as_the_chapter_inverted": 0.8733,
+      "median_deepest_inverted": 5,
+      "max_deepest_inverted": 10
+     }
+    }
+   }
+  }
+ },
+ "config_sha256": "1b0afd2d373388e8f0cd697e4a01ece37b48ebf39629aa60848bc842f4f94a75",
+ "commit": "feaec179788d30e75db9839c469c1f2075b154f0"
+}
