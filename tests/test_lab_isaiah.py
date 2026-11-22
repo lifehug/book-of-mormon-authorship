@@ -58,3 +58,26 @@ def test_match_needs_the_verse_context():
     bare = ("answer the messengers of the nations " + "and so on " * 20 + "zion").split()
     assert I.match(near) == {0: 7}
     assert I.match(bare) == {}
+
+
+def test_v2_split_word_is_spelling_not_a_variant(setup):
+    isa, d = setup
+    a, b = isa.span([14])
+    q = list(isa.words[a:b])
+    i = q.index("nation")
+    q[i : i + 1] = ["na", "tion"]
+    found, kept, touched = I.variants_of("test", q, [14], isa, d | {"join_spelling": True})
+    assert [v["kind"] for v in found] == ["spelling"]
+    assert a + i in kept and a + i not in touched
+
+
+def test_v2_each_work_against_its_own_decoys():
+    d = {"ci": 0.95, "special_p": 0.01}
+    works = [
+        {"work_id": "copy", "readings": 60, "decoys": 1, "excess": 59.0},
+        {"work_id": "paraphrase", "readings": 20, "decoys": 40, "excess": 0.0},
+    ]
+    res = {w["work_id"]: w for w in I.judged(works, 100, 200, d)}
+    assert res["copy"]["clears"] and res["copy"]["rank_excess"] == 1
+    assert res["copy"]["ratio_ci"][0] > 1
+    assert not res["paraphrase"]["clears"]

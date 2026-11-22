@@ -22,6 +22,16 @@ Usage::
     python -m lab.isaiah check      # known answer (Lowth) -> .../isaiah_variants/check.json
     python -m lab.isaiah run        # check, then the Book of Mormon -> .../result.json
     python -m lab.isaiah judge      # judge jobs (prepared, not run) -> data/private/lab/owner/...
+
+Second design (post hoc, after the first check missed bar c; ``lab.isaiah.v2``; card
+``data/private/lab/owner/2026-11-21-isaiah-variants-2/card.md``): spelling splits are not
+variants, two reading sets (all, and strict = 6+ words, the primary), each work against its own
+decoys, bar (c) on the strict set, controls (Bible-style books, 1820s sermons) in the same scan::
+
+    python -m lab.isaiah variants2  # -> data/lab/reruns/isaiah_variants/variants_v2.json
+    python -m lab.isaiah check2     # -> .../isaiah_variants/check_v2.json
+    python -m lab.isaiah run2       # check2, then the book and controls -> .../result_v2.json
+    python -m lab.isaiah judge2     # judge jobs (prepared, not run) -> <card 2>/judge_jobs_v2.jsonl
 """
 
 from __future__ import annotations
@@ -169,6 +179,17 @@ def variants_of(
                 kept.update(range(a + i1, a + i2))
                 continue
             g1, g2 = a + i1, a + i2
+            same = "".join(k[i1:i2]) == "".join(q[j1:j2])
+            if op == "replace" and d.get("join_spelling") and same:
+                # split or joined words ("poll uted", "for ever"/"forever"): spelling, kept text
+                kept.update(range(g1, g2))
+                ch, vs = isa.where[g1]
+                found.append({"query": query, "ref": f"{ch}:{vs}", "chapter": ch, "verse": vs,
+                              "also_ref": None, "kind": "spelling", "kjv": " ".join(k[i1:i2]),
+                              "new": " ".join(q[j1:j2]), "kjv_italic": [], "kjv_pos": g1,
+                              "long": False, "searchable": False,
+                              "why_not": "spelling"})  # fmt: skip
+                continue
             touched.update(range(g1, g2) if g2 > g1 else (g1 - 1, g1))
             if op == "insert":
                 ch, vs = isa.where[g1 - 1] if g1 > a else isa.where[g1]
@@ -593,7 +614,9 @@ def check(cfg: dict, isa: Isaiah) -> dict:
 
 
 # ------------------------------------------------------------------------------------ run
-def townsend(found: list[dict], readings: list[dict], s: dict, d: dict) -> list[dict]:
+def townsend(
+    found: list[dict], readings: list[dict], s: dict, d: dict, clears: set | None = None
+) -> list[dict]:
     items = json.loads(TOWNSEND.read_text())["items"]
     book_ch = {
         r["seq"]: (r["book"], r["chapter_1830"])
@@ -628,6 +651,10 @@ def townsend(found: list[dict], readings: list[dict], s: dict, d: dict) -> list[
                    "why_not": v.get("why_not"), "works": len(ws),
                    "in_clarke": "clarke_isaiah" in cls, "in_lowth": "lowth" in cls,
                    "in_commentary": "commentary" in cls}  # fmt: skip
+            if clears is not None:
+                det["in_clearing_work"] = any(w in clears for w in ws)
+                det["in_clarke_clearing"] = det["in_clarke"] and d["clarke_isaiah"] in clears
+                row["in_clearing_work"] = row.get("in_clearing_work", 0) + det["in_clearing_work"]
             row["detail"].append(det)
             row["searchable"] += rid is not None
             row["in_clarke"] += det["in_clarke"]
@@ -769,6 +796,10 @@ def judge(cfg: dict, isa: Isaiah) -> dict:
     by = {r["work_id"]: r for r in rows}
     sc = scan(rows, patterns(rd, built["decoys"], d), isa.freq, d, "bom")
     s = score(sc, rd, built["decoys"], rows, d)
+    return _judge_jobs(rd, s, by, isa, d, CARD / "judge_jobs.jsonl")
+
+
+def _judge_jobs(rd: list[dict], s: dict, by: dict, isa: Isaiah, d: dict, path: Path) -> dict:
     cand = [w for w in s["works"] if {"commentary", "translation", "lowth",
                                        "clarke_isaiah"} & set(w["class"])]  # fmt: skip
     cand.sort(key=lambda w: (w["work_id"] != d["clarke_isaiah"], -w["kjv_forms"]))
@@ -798,14 +829,415 @@ def judge(cfg: dict, isa: Isaiah) -> dict:
                     "on the first line YES, NO or UNCLEAR, then one sentence.\n\n" + win
                 ),
             })  # fmt: skip
-    path = CARD / "judge_jobs.jsonl"
     out(path).write_text("".join(json.dumps(j) + "\n" for j in jobs))
     return {"jobs": len(jobs), "works": [w["work_id"] for w in chosen], "path": str(path)}
 
 
+# ------------------------------------------------------------------------------------ v2
+# Second design (post hoc, after the first check missed bar c): spelling splits are not variants;
+# two reading sets (all >= min_ngram words; strict >= strict_min_ngram, the primary); every work
+# judged against its own decoys; bar (c) on the strict set; controls in the book's scan.
+OUT2 = {"variants": OUT / "variants_v2.json", "check": OUT / "check_v2.json",
+        "result": OUT / "result_v2.json"}  # fmt: skip
+CARD2 = NOTES / "owner" / "2026-11-21-isaiah-variants-2"
+
+
+def v2_settings(cfg: dict) -> dict:
+    base = {k: v for k, v in cfg["lab"]["isaiah"].items() if k != "v2"}
+    return base | cfg["lab"]["isaiah"]["v2"]
+
+
+def settings_hash_v2(cfg: dict) -> str:
+    return hashlib.sha256(json.dumps(v2_settings(cfg), sort_keys=True).encode()).hexdigest()
+
+
+def two_sets(queries: list, isa: Isaiah, d: dict) -> dict:
+    """The all set (``min_ngram``) and the strict set (``strict_min_ngram``), spelling apart."""
+    res = {}
+    for name, dd in (("all", d), ("strict", d | {"min_ngram": d["strict_min_ngram"]})):
+        b = build(queries, isa, dd)
+        b["spelling"] = [v for v in b["variants"] if v["kind"] == "spelling"]
+        b["variants"] = [v for v in b["variants"] if v["kind"] != "spelling"]
+        res[name] = b
+    return res
+
+
+def patterns_v2(sets: dict[str, tuple[list, list]], d: dict) -> dict:
+    """Patterns of several reading sets in one scan; ids are prefix + type + number."""
+    items = []
+    for pre, (rd, dec) in sets.items():
+        for r in rd:
+            items.append((f"{pre}r{r['rid']}", r["reading"], r["context"]))
+            items.append((f"{pre}k{r['rid']}", r["kjv_form"], r["context"]))
+        for n, x in enumerate(dec):
+            items.append((f"{pre}d{n}", x["reading"], x["context"]))
+    return {"items": items, "window": d["window"], "min_context": d["min_context"]}
+
+
+def sub_scan(sc: dict, pre: str, rd: list[dict] | None = None, dec: list | None = None) -> dict:
+    """One set's hits, prefix removed; with ``rd``, a control's own works are left out of the
+    search for its own readings and decoys."""
+    own = {}
+    if rd is not None:
+        own = {r["rid"]: {q.split("#")[0] for q in r["queries"]} for r in rd}
+    hits = {}
+    for w, ids in sc["hits"].items():
+        keep = []
+        for x in ids:
+            if x[0] != pre:
+                continue
+            t, n = x[1], int(x[2:])
+            rid = dec[n]["rid"] if (t == "d" and dec is not None) else n
+            if own and w in own.get(rid, ()):
+                continue
+            keep.append(x[1:])
+        if keep:
+            hits[w] = keep
+    return {**sc, "hits": hits}
+
+
+def judged(works: list[dict], N: int, M: int, d: dict) -> list[dict]:
+    """Each work against its own decoys: ratio with a Katz log interval, Fisher p, clears."""
+    import math
+
+    from scipy.stats import norm
+
+    z = float(norm.ppf(0.5 + d["ci"] / 2))
+    for w in works:
+        a, b = w["readings"], w["decoys"]
+        w["fisher_p_greater"] = fisher_greater(a, N, b, M) if N and M else None
+        w["clears"] = w["fisher_p_greater"] is not None and w["fisher_p_greater"] < d["special_p"]
+        if N and M:
+            aa, bb = (a + 0.5, b + 0.5) if (a == 0 or b == 0) else (a, b)
+            r = (aa / N) / (bb / M)
+            se = math.sqrt(max(1 / aa - 1 / N + 1 / bb - 1 / M, 0))
+            w["ratio"] = round(r, 3)
+            w["ratio_ci"] = [round(r * math.exp(-z * se), 3), round(r * math.exp(z * se), 3)]
+    works.sort(key=lambda w: (-(w["excess"] or 0), w["work_id"]))
+    for n, w in enumerate(works):
+        w["rank_excess"] = n + 1
+    return works
+
+
+def by_length(rd: list[dict], dec: list[dict], s: dict) -> dict:
+    """Readings and decoys found in any work, by reading length (4, 5, 6+ words)."""
+
+    def band(x):
+        return "6+" if len(x["reading"]) >= 6 else str(len(x["reading"]))
+
+    out_ = {}
+    for name, xs, table in (("readings", rd, s["per_reading"]),
+                            ("decoys", dec, s["per_decoy"])):  # fmt: skip
+        c, f = Counter(), Counter()
+        for i, x in enumerate(xs):
+            key = x["rid"] if name == "readings" else i
+            c[band(x)] += 1
+            f[band(x)] += bool(table.get(key))
+        out_[name] = {k: {"n": c[k], "found_anywhere": f[k],
+                          "share": round(f[k] / c[k], 4) if c[k] else None}
+                      for k in sorted(c)}  # fmt: skip
+    return out_
+
+
+def set_report(sc: dict, pre: str, b: dict, rows: list[dict], d: dict, own: bool = False) -> dict:
+    """Scores of one reading set: groups raw and in works that clear their decoys, top works."""
+    rd, dec = b["readings"], b["decoys"]
+    sub = sub_scan(sc, pre, rd if own else None, dec if own else None)
+    s = score(sub, rd, dec, rows, d)
+    N, M = len(rd), len(dec)
+    works = judged(s["works"], N, M, d)
+    clears = {w["work_id"] for w in works if w["clears"]}
+    groups = s["groups"]
+    for cls in ("clarke_isaiah", "lowth", "commentary", "translation", None):
+        name = cls or "any_work"
+
+        def hit(ws, cls=cls):
+            return any(w in clears and (cls is None or cls in s["klass"](w)) for w in ws)
+
+        groups[name]["readings_in_clearing_works"] = sum(
+            hit(ws) for ws in s["per_reading"].values()
+        )
+        groups[name]["decoys_in_clearing_works"] = sum(hit(ws) for ws in s["per_decoy"].values())
+    keys = ("work_id", "year", "readings", "decoys", "excess", "ratio", "ratio_ci",
+            "fisher_p_greater", "clears", "rank", "rank_excess", "class", "title")  # fmt: skip
+    clarke = next((w for w in works if w["work_id"] == d["clarke_isaiah"]), None)
+    return {"readings": N, "decoys": M, "groups": groups, "by_length": by_length(rd, dec, s),
+            "works_with_any_match": len(works), "works_clearing": len(clears),
+            "top_by_excess": [{k: w.get(k) for k in keys} for w in works[:30]],
+            "clarke": {k: clarke.get(k) for k in keys} if clarke else None,
+            "_s": s, "_works": works, "_clears": clears}  # fmt: skip
+
+
+def public(rep: dict) -> dict:
+    return {k: v for k, v in rep.items() if not k.startswith("_")}
+
+
+def check_v2(cfg: dict, isa: Isaiah) -> dict:
+    d = v2_settings(cfg)
+    sets = two_sets(lowth_queries(isa, d), isa, d)
+    rows = library(d, {d["query_ka"]})
+    p = patterns_v2({"a": (sets["all"]["readings"], sets["all"]["decoys"]),
+                     "s": (sets["strict"]["readings"], sets["strict"]["decoys"])}, d)  # fmt: skip
+    sc = scan(rows, p, isa.freq, d, "lowth_v2")
+    res = {"query": d["query_ka"], "library_works": sc["works"],
+           "unreadable_not_attempted": len(sc["unreadable"]), "scan_seconds": sc.get("seconds"),
+           "spelling_only": len(sets["all"]["spelling"])}  # fmt: skip
+    bars = {}
+    for name, pre in (("all", "a"), ("strict", "s")):
+        rep = set_report(sc, pre, sets[name], rows, d)
+        works = sorted(rep["_works"], key=lambda w: (-w["readings"], w["decoys"], w["work_id"]))
+        top = works[: d["ka_top"]]
+        lowth = [w for w in works if "lowth" in w["class"]]
+        best = lowth[0] if lowth else None
+        a = sum("lowth" in w["class"] for w in top) >= d["ka_min_lowth"]
+        b = bool(best) and best.get("ratio") is not None and best["ratio"] >= d["ka_ratio_bar"]
+        c = rep["groups"]["any_work"]["decoy_share"] <= d["ka_decoy_strict_bar"]
+        keys = ("work_id", "year", "readings", "decoys", "ratio", "ratio_ci", "clears", "title")
+        res[name] = public(rep) | {
+            "variants": len(sets[name]["variants"]),
+            "top_by_readings": [{k: w.get(k) for k in keys} for w in works[:10]],
+            "lowth_printings": [{k: w.get(k) for k in keys} for w in lowth],
+            "bars": {"a_lowth_in_top": a, "b_ratio": b, "c_decoys_low": c},
+        }
+        bars[name] = (a, b, c)
+    a, b, c = bars["strict"]
+    res["passed"] = a and b and c
+    res["rule"] = ("bars (a) and (b) as in the first design and (c) strict-set decoys found in any "
+                   "work at most ka_decoy_strict_bar, all on the strict (primary) set")  # fmt: skip
+    return res
+
+
+def control_queries(ids: list[str], isa: Isaiah, d: dict) -> list:
+    """Isaiah quotations of control works, as found by the study's mask, with a margin."""
+    import gzip
+
+    want, spans = set(ids), {}
+    with gzip.open("data/kjv_mask/controls/spans.jsonl.gz", "rt") as fh:
+        for line in fh:
+            r = json.loads(line)
+            if r["id"] in want:
+                isa_sp = [x for x in r["spans"] if x["ref"].startswith("kjv:ISA.")]
+                if isa_sp:
+                    spans[r["id"]] = isa_sp
+    cat = door.catalog(set(spans))
+    qs = []
+    for w in sorted(spans):
+        try:
+            text = door.text_of(cat[w])
+        except (OSError, KeyError):
+            continue  # unreadable: not attempted
+        for x in spans[w]:
+            c = int(x["ref"][8:])
+            a, b = max(0, x["start"] - d["control_pad_chars"]), x["end"] + d["control_pad_chars"]
+            chs = [y for y in range(c - d["neighbours"], c + d["neighbours"] + 1)
+                   if y in isa.chapter_start]  # fmt: skip
+            qs.append((f"{w}#{x['start']}", tokens(text[a:b]), runs(chs)))
+    return qs
+
+
+def control_ids(d: dict) -> dict[str, list[str]]:
+    import gzip
+
+    def read(path):
+        return [x.strip() for x in Path(path).read_text().splitlines() if x.strip()]
+
+    sermons = set(read(d["control_sermons_list"]))
+    with_isa = []
+    with gzip.open("data/kjv_mask/controls/spans.jsonl.gz", "rt") as fh:
+        for line in fh:
+            r = json.loads(line)
+            if r["id"] in sermons and any(x["ref"].startswith("kjv:ISA.") for x in r["spans"]):
+                with_isa.append(r["id"])
+    rng = random.Random(d["random_seed"])
+    drawn = rng.sample(sorted(with_isa), min(d["control_sermons"], len(with_isa)))
+    return {"bible_style": read(d["control_bible_style"]), "sermons_1820s": sorted(drawn)}
+
+
+def reading_rows(b: dict, rep: dict, rows: list[dict], d: dict) -> list[dict]:
+    s, clears = rep["_s"], rep["_clears"]
+    year = {r["work_id"]: r["year"] for r in rows}
+    lowth = re.compile(d["lowth_title"], re.I)
+    by = {r["work_id"]: r for r in rows}
+    out_ = []
+    for r in b["readings"]:
+        ws = sorted(s["per_reading"].get(r["rid"], []), key=lambda w: (year.get(w) or 0, w))
+        out_.append({
+            "rid": r["rid"], "ref": r["ref"], "kind": r["kind"], "kjv": r["kjv"], "new": r["new"],
+            "reading": " ".join(r["reading"]), "words": len(r["reading"]),
+            "queries": r["queries"], "works": len(ws),
+            "wording": ("common" if len(ws) >= d["common_works"] else "rare") if ws else "none",
+            "earliest_year": year.get(ws[0]) if ws else None,
+            "works_quoting_kjv_form": s["per_kjv"].get(r["rid"], 0),
+            "in_clarke": d["clarke_isaiah"] in ws,
+            "in_lowth": any(lowth.search(" ".join((by[w]["title"] or "").split())) for w in ws),
+            "in_commentary": any("commentary" in s["klass"](w) for w in ws),
+            "in_clearing_work": any(w in clears for w in ws),
+            "work_ids": [[w, year.get(w)] for w in ws[: d["list_cap"]]],
+        })  # fmt: skip
+    return out_
+
+
+def held_isaiah_sources(rows: list[dict], reps: dict, d: dict) -> dict:
+    """Isaiah commentaries and translations held (title rules), with their scores per set."""
+    com = [re.compile(x, re.I) for x in d["commentary_title"]]
+    tra = [re.compile(x, re.I) for x in d["translation_title"]]
+    isa_t = re.compile(r"isaiah|esaias|prophe|old testament|bible|scripture", re.I)
+    lowth = re.compile(d["lowth_title"], re.I)
+    held = []
+    for r in rows:
+        t = " ".join((r["title"] or "").split())
+        is_c, is_t = all(x.search(t) for x in com), all(x.search(t) for x in tra)
+        if (is_c or is_t or lowth.search(t)) and isa_t.search(t):
+            held.append((r, t))
+    score_of = {name: {w["work_id"]: w for w in rep["_works"]} for name, rep in reps.items()}
+    out_ = []
+    for r, t in sorted(held, key=lambda x: (x[0]["year"], x[0]["work_id"])):
+        row = {"work_id": r["work_id"], "year": r["year"], "title": t[:90]}
+        for name, sc in score_of.items():
+            w = sc.get(r["work_id"])
+            row[name] = ({k: w.get(k) for k in ("readings", "decoys", "ratio", "clears")}
+                         if w else {"readings": 0, "decoys": 0})  # fmt: skip
+        out_.append(row)
+    return {"held": len(out_), "rule": "title matches the commentary or translation rule, or "
+            "Lowth's, and names Isaiah, the prophets, the Old Testament, the Bible or scripture",
+            "works": out_}  # fmt: skip
+
+
+def run_v2(cfg: dict, isa: Isaiah, chk: dict) -> dict:
+    d = v2_settings(cfg)
+    bom = two_sets(bom_queries(isa, d), isa, d)
+    ctl_ids = control_ids(d)
+    ctl_q = {name: control_queries(ids, isa, d) for name, ids in ctl_ids.items()}
+    ctl = {name: two_sets(q, isa, d) for name, q in ctl_q.items()}
+    pre = {("bom", "all"): "a", ("bom", "strict"): "s",
+           ("bible_style", "all"): "b", ("bible_style", "strict"): "c",
+           ("sermons_1820s", "all"): "e", ("sermons_1820s", "strict"): "f"}  # fmt: skip
+    src = {"bom": bom, **ctl}
+    p = patterns_v2({pre[(g, n)]: (src[g][n]["readings"], src[g][n]["decoys"])
+                     for g, n in pre}, d)  # fmt: skip
+    rows = library(d)
+    sc = scan(rows, p, isa.freq, d, "bom_v2")
+    res = {"library_works": sc["works"], "unreadable_not_attempted": len(sc["unreadable"]),
+           "scan_seconds": sc.get("seconds"), "primary": "strict",
+           "variant_list": summary(bom["all"]["variants"])
+           | {"spelling_only": len(bom["all"]["spelling"]),
+              "isaiah_verses_quoted": len({isa.where[x] for x in bom["all"]["kept"]})},
+           "italics": italics(bom["all"]["variants"], bom["all"]["kept"], isa)}  # fmt: skip
+    reps = {}
+    for name in ("all", "strict"):
+        rep = set_report(sc, pre[("bom", name)], bom[name], rows, d)
+        reps[name] = rep
+        c = rep["clarke"] or {}
+        if not c.get("clears"):
+            verdict = "Clarke at chance"
+        elif c.get("rank_excess") == 1 and (c.get("ratio") or 0) >= d["special_ratio"]:
+            verdict = "Clarke stands out"
+        else:
+            verdict = "Clarke one of many"
+        found = bom[name]["variants"]
+        res[name] = public(rep) | {
+            "verdict": verdict,
+            "townsend": townsend(found, bom[name]["readings"], rep["_s"], d, rep["_clears"]),
+            "readings_detail": reading_rows(bom[name], rep, rows, d),
+            "wording": dict(Counter(x["wording"] for x in reading_rows(bom[name], rep, rows, d))),
+        }
+    res["isaiah_sources_held"] = held_isaiah_sources(rows, reps, d)
+    res["controls"] = {}
+    for g, ids in ctl_ids.items():
+        cq = ctl_q[g]
+        res["controls"][g] = {
+            "works_listed": len(ids),
+            "works_with_isaiah_quotations": len({q[0].split("#")[0] for q in cq}),
+        }
+        for name in ("all", "strict"):
+            rep = set_report(sc, pre[(g, name)], ctl[g][name], rows, d, own=True)
+            res["controls"][g][name] = {k: v for k, v in public(rep).items()
+                                        if k in ("readings", "decoys", "groups", "clarke",
+                                                 "works_clearing", "by_length")}  # fmt: skip
+            res["controls"][g][name]["variants"] = len(ctl[g][name]["variants"])
+    res["known_answer_passed"] = chk["passed"]
+    return res
+
+
+def judge_v2(cfg: dict, isa: Isaiah) -> dict:
+    d = v2_settings(cfg)
+    res = json.loads(OUT2["result"].read_text())
+    if "book_of_mormon" not in res:
+        raise SystemExit("result_v2.json has no scored readings (check missed or not run)")
+    rows = library(d)
+    by = {r["work_id"]: r for r in rows}
+    # the run's own scan, from its cache (same patterns), gives each work's class and quotations
+    bom = two_sets(bom_queries(isa, d), isa, d)
+    ctl_ids = control_ids(d)
+    ctl = {name: two_sets(control_queries(ids, isa, d), isa, d) for name, ids in ctl_ids.items()}
+    src = {"a": bom["all"], "s": bom["strict"], "b": ctl["bible_style"]["all"],
+           "c": ctl["bible_style"]["strict"], "e": ctl["sermons_1820s"]["all"],
+           "f": ctl["sermons_1820s"]["strict"]}  # fmt: skip
+    p = patterns_v2({k: (v["readings"], v["decoys"]) for k, v in src.items()}, d)
+    sc = scan(rows, p, isa.freq, d, "bom_v2")
+    rd = bom["strict"]["readings"]
+    s = score(sub_scan(sc, "s"), rd, bom["strict"]["decoys"], rows, d)
+    return _judge_jobs(rd, s, by, isa, d, CARD2 / "judge_jobs_v2.jsonl")
+
+
+def main_v2(cmd: str, cfg: dict, isa: Isaiah) -> int:
+    d = v2_settings(cfg)
+
+    def stamp2(res):
+        return stamp(res, cfg) | {"settings_sha256_v2": settings_hash_v2(cfg)}
+
+    if cmd == "variants2":
+        sets = two_sets(bom_queries(isa, d), isa, d)
+        b = sets["all"]
+        res = {"summary": summary(b["variants"]), "spelling_only": len(b["spelling"]),
+               "spelling": [{k: v[k] for k in ("query", "ref", "kjv", "new")}
+                            for v in b["spelling"]],
+               "italics": italics(b["variants"], b["kept"], isa),
+               "isaiah_verses_quoted": len({isa.where[p] for p in b["kept"]}),
+               "searchable_readings": {n: len(x["readings"]) for n, x in sets.items()},
+               "decoys": {n: len(x["decoys"]) for n, x in sets.items()},
+               "variants": variant_rows(b["variants"]),
+               "strict_readings": [{"ref": r["ref"], "reading": " ".join(r["reading"])}
+                                   for r in sets["strict"]["readings"]]}  # fmt: skip
+        out(OUT2["variants"]).write_text(json.dumps(stamp2(res), indent=1) + "\n")
+        hide = ("variants", "strict_readings", "spelling")
+        print(json.dumps({k: v for k, v in res.items() if k not in hide}, indent=1))
+        return 0
+    if cmd == "judge2":
+        print(json.dumps(judge_v2(cfg, isa), indent=1))
+        return 0
+    chk = None
+    if cmd == "run2" and OUT2["check"].exists():
+        old = json.loads(OUT2["check"].read_text())
+        if old.get("settings_sha256_v2") == settings_hash_v2(cfg):
+            chk = old["known_answer"]
+            print("known-answer check reused from check_v2.json (same settings)", flush=True)
+    if chk is None:
+        chk = check_v2(cfg, isa)
+        out(OUT2["check"]).write_text(json.dumps(stamp2({"known_answer": chk}), indent=1) + "\n")
+    print(json.dumps({n: {"bars": chk[n]["bars"], "decoy_any": chk[n]["groups"]["any_work"],
+                          "lowth": chk[n]["lowth_printings"][:3]} for n in ("all", "strict")}
+                     | {"passed": chk["passed"]}, indent=1))  # fmt: skip
+    if cmd == "check2":
+        return 0
+    res = {"settings": d, "known_answer": chk}
+    if not chk["passed"]:
+        res["stopped"] = "the known-answer check missed its bar; the Book of Mormon was not scored"
+    else:
+        res["book_of_mormon"] = run_v2(cfg, isa, chk)
+        b = res["book_of_mormon"]
+        print(json.dumps({n: {"verdict": b[n]["verdict"], "clarke": b[n]["clarke"],
+                              "groups": b[n]["groups"]} for n in ("all", "strict")},
+                         indent=1))  # fmt: skip
+    out(OUT2["result"]).write_text(json.dumps(stamp2(res), indent=1) + "\n")
+    return 0
+
+
 # ------------------------------------------------------------------------------------ driver
 def settings_hash(cfg: dict) -> str:
-    return hashlib.sha256(json.dumps(cfg["lab"]["isaiah"], sort_keys=True).encode()).hexdigest()
+    """The first design's settings (without ``v2``, so its check stays reusable)."""
+    first = {k: v for k, v in cfg["lab"]["isaiah"].items() if k != "v2"}
+    return hashlib.sha256(json.dumps(first, sort_keys=True).encode()).hexdigest()
 
 
 def stamp(res: dict, cfg: dict) -> dict:
@@ -819,11 +1251,16 @@ def stamp(res: dict, cfg: dict) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["variants", "check", "run", "judge"])
+    ap.add_argument(
+        "cmd",
+        choices=["variants", "check", "run", "judge", "variants2", "check2", "run2", "judge2"],
+    )
     a = ap.parse_args(argv)
     cfg = config.load()
-    d = cfg["lab"]["isaiah"]
+    d = {k: v for k, v in cfg["lab"]["isaiah"].items() if k != "v2"}
     isa = Isaiah()
+    if a.cmd.endswith("2"):
+        return main_v2(a.cmd, cfg, isa)
     if a.cmd == "variants":
         built = build(bom_queries(isa, d), isa, d)
         res = {"summary": summary(built["variants"]),
