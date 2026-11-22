@@ -104,7 +104,7 @@ compares against.
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | TBD |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
-| BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions | TBD |
+| BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions | **Check failed; not scored** |
 | BOM-117 | Uto-Aztecan languages carry Hebrew and Egyptian words | Stubbs 2015 | his pairing alone | his rules on unrelated languages | TBD |
 
 ## Results so far
@@ -819,6 +819,45 @@ together across 265,000 words, the flashbacks, the calendar, the speed. Counting
 nothing about whether a story is consistent. And I could not get his own table of sixteen
 texts, so this is his question with my list. Not included, because they are under copyright:
 *A Course in Miracles* and the Seth books. *Oahspe* is the first volume only.
+
+### The geography (BOM-116)
+
+People have fitted the book's lands to southern Mexico, to western New York, to the Mississippi
+valley and to the whole hemisphere. Each map looks reasonable to the person who drew it. What I
+wanted to know is whether any real region fits the book's own directions better than a random
+patch of the earth does.
+
+One fixed rule pulls out every sentence that places one named place against another: north of,
+east of, by the sea, near, so many days' journey. Then, for a region, a program looks for the
+best real sites for each place, and I compare the region's score with 400 random regions.
+
+First the texts where I know the answer. Step one worked. Put the Bible's places at their true
+coordinates and 71 percent of its statements hold, against 29 percent when the same places are
+scattered at random. So the sentences do carry real geography.
+
+Step two did not work.
+
+| Text | Its real region | Random regions that fit as well or better |
+| --- | --- | --- |
+| The Bible's narrative | Palestine | 149 of 398 |
+| Josephus, *Antiquities* | Palestine | 119 |
+| Josephus, *War* | Palestine | 296 |
+| Clavigero's history of Mexico | Mexico | 50 |
+| Ramsay's American Revolution | Philadelphia | 327 |
+
+If the method cannot find Palestine from the Bible, it cannot find anything from the Book of
+Mormon. Given a few hundred towns to choose from, the program can make almost any set of
+directions fit almost anywhere. Which is, I think, the real finding: it is easy to fit a map,
+and a good-looking fit to one region is not evidence until someone shows how badly the same
+text fits everywhere else. I did not score the Book of Mormon against any region.
+
+What I can say about the book's own statements: the rule found 33 of them about 23 places (14
+directions, 12 by the sea, 6 near, 1 narrow neck), and none contradicts another. They can all be
+true at once on a flat map. But they are few, and the rule misses the long description in Alma
+22 because it runs across sentences.
+
+A fair test needs each model's own published placements (Sorenson's map, the Heartland maps),
+scored against random placements of the same places, the way the Bible check worked.
 
 ## What I would want a reader to take from the whole set
 

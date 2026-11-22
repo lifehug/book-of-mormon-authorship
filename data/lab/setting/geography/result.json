@@ -1,0 +1,3675 @@
+{
+ "settings": {
+  "seed": 116,
+  "min_mentions": 2,
+  "max_gap_chars": 60,
+  "sentence_max_chars": 1500,
+  "unit_km": {
+   "furlong": 0.201,
+   "mile": 1.609,
+   "league": 4.83
+  },
+  "cone_deg": 67.5,
+  "higher_margin_m": 0,
+  "km_per_day": [
+   8,
+   40
+  ],
+  "distance_factor": 1.6,
+  "near_km": 50,
+  "coast_km": 25,
+  "side_km": 75,
+  "coast_codes": [
+   "BAY",
+   "BAYS",
+   "BGHT",
+   "COVE",
+   "GULF",
+   "INLT",
+   "LGN",
+   "SEA",
+   "OCN",
+   "STRT",
+   "SD",
+   "HBR",
+   "ESTY",
+   "FJD",
+   "CHNM",
+   "CAPE",
+   "PT",
+   "PTS",
+   "BCH",
+   "BCHS",
+   "SPIT",
+   "PEN",
+   "ISTH",
+   "LTHSE",
+   "PRT"
+  ],
+  "elevation_snap_km": 20,
+  "cells_per_radius": 12,
+  "min_sites": 100,
+  "radii_km": [
+   500,
+   3000
+  ],
+  "decoys": 400,
+  "restarts": 4,
+  "max_sweeps": 15,
+  "random_assignments": 1000,
+  "extractor_bar": 95,
+  "percentile_bar": 95,
+  "min_constraints": 12,
+  "min_known_texts": 3,
+  "texts": {
+   "kjv_ot_narrative": {
+    "source": "kjv",
+    "books": [
+     "GEN",
+     "EXO",
+     "NUM",
+     "DEU",
+     "JOS",
+     "JDG",
+     "1SA",
+     "2SA",
+     "1KI",
+     "2KI",
+     "1CH",
+     "2CH",
+     "EZR",
+     "NEH"
+    ],
+    "anchor": "palestine"
+   },
+   "josephus_wars": {
+    "source": "file",
+    "path": "data/corpus/lab/sources/names/josephus_wars_whiston.txt",
+    "anchor": "palestine"
+   },
+   "josephus_antiquities": {
+    "source": "file",
+    "path": "data/corpus/lab/sources/names/josephus_antiquities_whiston.txt",
+    "anchor": "palestine"
+   },
+   "clavigero_mexico_1807": {
+    "source": "library",
+    "work_id": "internet_archive:historyofmexicoc01clav",
+    "anchor": "mexico"
+   },
+   "ramsay_revolution_1789": {
+    "source": "library",
+    "work_id": "internet_archive:TheHistoryOfTheAmericanRevolution",
+    "anchor": "philadelphia"
+   },
+   "thomson_late_war_1816": {
+    "source": "library",
+    "work_id": "internet_archive:historicalsketch00thom",
+    "anchor": "niagara"
+   },
+   "hunt_late_war_1816": {
+    "source": "library",
+    "work_id": "internet_archive:latewarbetweenun00hunt",
+    "anchor": "niagara"
+   },
+   "spalding_manuscript": {
+    "source": "file",
+    "path": "data/corpus/lab/sources/names/themanuscriptsto00spauuoft/text.txt",
+    "anchor": null
+   }
+  },
+  "book": {
+   "book_of_mormon": {
+    "source": "bom"
+   },
+   "book_of_mormon_without_quoted_chapters": {
+    "source": "bom",
+    "without_quoted": true
+   }
+  },
+  "anchors": {
+   "palestine": {
+    "name": "Jerusalem",
+    "cc": "IL",
+    "radius": 500
+   },
+   "mexico": {
+    "name": "Mexico City",
+    "cc": "MX",
+    "radius": 500
+   },
+   "philadelphia": {
+    "name": "Philadelphia",
+    "cc": "US",
+    "admin1": "PA",
+    "radius": 500
+   },
+   "niagara": {
+    "name": "Buffalo",
+    "cc": "US",
+    "admin1": "NY",
+    "radius": 500
+   },
+   "mesoamerica_tehuantepec": {
+    "name": "Istmo de Tehuantepec",
+    "cc": "MX",
+    "radius": 500
+   },
+   "great_lakes_new_york": {
+    "name": "Palmyra",
+    "cc": "US",
+    "admin1": "NY",
+    "radius": 500
+   },
+   "heartland_upper_mississippi": {
+    "name": "Nauvoo",
+    "cc": "US",
+    "admin1": "IL",
+    "radius": 500
+   },
+   "hemispheric_panama": {
+    "name": "Isthmus of Panama",
+    "cc": "PA",
+    "radius": 3000
+   }
+  },
+  "settings": [
+   "mesoamerica_tehuantepec",
+   "great_lakes_new_york",
+   "heartland_upper_mississippi",
+   "hemispheric_panama",
+   "palestine"
+  ]
+ },
+ "not_attempted": {},
+ "geonames": {
+  "settlements": 5225186,
+  "coastal_features": 341826
+ },
+ "anchors": {
+  "palestine": {
+   "geonameid": 281184,
+   "name": "Jerusalem",
+   "lat": 31.76904,
+   "lon": 35.21633,
+   "fclass": "P",
+   "code": "PPLA",
+   "cc": "IL",
+   "admin1": "06",
+   "population": 971800,
+   "radius": 500,
+   "sites": 228
+  },
+  "mexico": {
+   "geonameid": 3530597,
+   "name": "Mexico City",
+   "lat": 19.42847,
+   "lon": -99.12766,
+   "fclass": "P",
+   "code": "PPLC",
+   "cc": "MX",
+   "admin1": "09",
+   "population": 12294193,
+   "radius": 500,
+   "sites": 349
+  },
+  "philadelphia": {
+   "geonameid": 4560349,
+   "name": "Philadelphia",
+   "lat": 39.95238,
+   "lon": -75.16362,
+   "fclass": "P",
+   "code": "PPLA2",
+   "cc": "US",
+   "admin1": "PA",
+   "population": 1573916,
+   "radius": 500,
+   "sites": 337
+  },
+  "niagara": {
+   "geonameid": 5110629,
+   "name": "Buffalo",
+   "lat": 42.88645,
+   "lon": -78.87837,
+   "fclass": "P",
+   "code": "PPLA2",
+   "cc": "US",
+   "admin1": "NY",
+   "population": 258071,
+   "radius": 500,
+   "sites": 450
+  },
+  "mesoamerica_tehuantepec": {
+   "geonameid": 3516105,
+   "name": "Istmo de Tehuantepec",
+   "lat": 17.0,
+   "lon": -95.0,
+   "fclass": "T",
+   "code": "ISTH",
+   "cc": "MX",
+   "admin1": "00",
+   "population": 0,
+   "radius": 500,
+   "sites": 257
+  },
+  "great_lakes_new_york": {
+   "geonameid": 5130441,
+   "name": "Palmyra",
+   "lat": 43.06395,
+   "lon": -77.23332,
+   "fclass": "P",
+   "code": "PPL",
+   "cc": "US",
+   "admin1": "NY",
+   "population": 3413,
+   "radius": 500,
+   "sites": 436
+  },
+  "heartland_upper_mississippi": {
+   "geonameid": 4903330,
+   "name": "Nauvoo",
+   "lat": 40.55004,
+   "lon": -91.38487,
+   "fclass": "P",
+   "code": "PPL",
+   "cc": "US",
+   "admin1": "IL",
+   "population": 1108,
+   "radius": 500,
+   "sites": 474
+  },
+  "hemispheric_panama": {
+   "geonameid": 3703437,
+   "name": "Isthmus of Panama",
+   "lat": 9.0,
+   "lon": -80.0,
+   "fclass": "T",
+   "code": "ISTH",
+   "cc": "PA",
+   "admin1": "00",
+   "population": 0,
+   "radius": 3000,
+   "sites": 241
+  }
+ },
+ "known_texts": {
+  "kjv_ot_narrative": {
+   "summary": {
+    "lexicon_size": 306,
+    "places_in_constraints": 77,
+    "constraints": 75,
+    "by_kind": {
+     "days": 1,
+     "direction": 17,
+     "higher": 14,
+     "near": 30,
+     "sea": 13
+    }
+   },
+   "consistency": {
+    "north_south": {
+     "statements": 13,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "east_west": {
+     "statements": 4,
+     "in_a_cycle": 2,
+     "cycles": [
+      {
+       "a": "David",
+       "b": "Gihon",
+       "value": "west",
+       "refs": [
+        "2 Chronicles 33:14"
+       ]
+      },
+      {
+       "a": "Gihon",
+       "b": "David",
+       "value": "west",
+       "refs": [
+        "2 Chronicles 32:30"
+       ]
+      }
+     ]
+    },
+    "elevation": {
+     "statements": 14,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "places": 77,
+    "groups_of_linked_places": 22,
+    "largest_group": 36,
+    "places_with_one_statement": 51
+   },
+   "constraints": [
+    {
+     "kind": "days",
+     "a": "Horeb",
+     "b": "Kadesh",
+     "value": 11.0,
+     "refs": [
+      "Deuteronomy 1:2"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Adummim",
+     "b": "En",
+     "value": "south",
+     "refs": [
+      "Joshua 15:7"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Ataroth",
+     "b": "Beth",
+     "value": "south",
+     "refs": [
+      "Joshua 18:13"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Canaanites",
+     "b": "Judah",
+     "value": "south",
+     "refs": [
+      "2 Samuel 24:7"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "David",
+     "b": "Gihon",
+     "value": "west",
+     "refs": [
+      "2 Chronicles 33:14"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "David",
+     "b": "Judah",
+     "value": "south",
+     "refs": [
+      "1 Samuel 27:10"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Ephraim",
+     "b": "Gaash",
+     "value": "north",
+     "refs": [
+      "Joshua 24:30",
+      "Judges 2:9"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Gihon",
+     "b": "David",
+     "value": "west",
+     "refs": [
+      "2 Chronicles 32:30"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Gilgal",
+     "b": "Jericho",
+     "value": "east",
+     "refs": [
+      "Joshua 4:19"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Hachilah",
+     "b": "Jeshimon",
+     "value": "south",
+     "refs": [
+      "1 Samuel 23:19"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Jericho",
+     "b": "Jordan",
+     "value": "east",
+     "refs": [
+      "1 Chronicles 6:78"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Jiphthah",
+     "b": "Beth",
+     "value": "north",
+     "refs": [
+      "Joshua 19:27"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Judah",
+     "b": "Kenites",
+     "value": "south",
+     "refs": [
+      "1 Samuel 27:10"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Judah",
+     "b": "Ziklag",
+     "value": "south",
+     "refs": [
+      "1 Samuel 30:14"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Kanah",
+     "b": "Ephraim",
+     "value": "south",
+     "refs": [
+      "Joshua 17:9"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Maon",
+     "b": "Jeshimon",
+     "value": "south",
+     "refs": [
+      "1 Samuel 23:24"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Philistines",
+     "b": "Judah",
+     "value": "south",
+     "refs": [
+      "2 Chronicles 28:18"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Shiloh",
+     "b": "Beth",
+     "value": "north",
+     "refs": [
+      "Judges 21:19"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Abraham",
+     "b": "Egypt",
+     "value": null,
+     "refs": [
+      "Exodus 33:1",
+      "Exodus 33:1",
+      "Numbers 32:11"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Canaan",
+     "b": "Egypt",
+     "value": null,
+     "refs": [
+      "Genesis 45:25"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Debir",
+     "b": "Achor",
+     "value": null,
+     "refs": [
+      "Joshua 15:7"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Hamath",
+     "b": "Zin",
+     "value": null,
+     "refs": [
+      "Numbers 13:21"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Hebron",
+     "b": "Eglon",
+     "value": null,
+     "refs": [
+      "Joshua 10:36"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Jabbok",
+     "b": "Egypt",
+     "value": null,
+     "refs": [
+      "Judges 11:13"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Janohah",
+     "b": "Ataroth",
+     "value": null,
+     "refs": [
+      "Joshua 16:7"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Jerusalem",
+     "b": "Babylon",
+     "value": null,
+     "refs": [
+      "Ezra 1:11",
+      "Ezra 7:9"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Jerusalem",
+     "b": "Egypt",
+     "value": null,
+     "refs": [
+      "1 Kings 12:28"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Red",
+     "b": "Egypt",
+     "value": null,
+     "refs": [
+      "Judges 11:16"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Samaria",
+     "b": "Tirzah",
+     "value": null,
+     "refs": [
+      "2 Kings 15:14"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Seir",
+     "b": "Halak",
+     "value": null,
+     "refs": [
+      "Joshua 11:17"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Shechem",
+     "b": "Beth",
+     "value": null,
+     "refs": [
+      "Judges 21:19"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Shepham",
+     "b": "Riblah",
+     "value": null,
+     "refs": [
+      "Numbers 34:11"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Abraham",
+     "b": "Elijah",
+     "value": null,
+     "refs": [
+      "1 Kings 18:36"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Adummim",
+     "b": "Geliloth",
+     "value": null,
+     "refs": [
+      "Joshua 18:17"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Ai",
+     "b": "Beth",
+     "value": null,
+     "refs": [
+      "Joshua 7:2",
+      "Joshua 12:9"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Aphek",
+     "b": "Canaanites",
+     "value": null,
+     "refs": [
+      "Joshua 13:4"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Ashdod",
+     "b": "Ekron",
+     "value": null,
+     "refs": [
+      "Joshua 15:46"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Ataroth",
+     "b": "Beth",
+     "value": null,
+     "refs": [
+      "Joshua 18:13"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Baal",
+     "b": "Ephraim",
+     "value": null,
+     "refs": [
+      "2 Samuel 13:23"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Bashan",
+     "b": "Gad",
+     "value": null,
+     "refs": [
+      "1 Chronicles 5:11"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Benjamin",
+     "b": "Samuel",
+     "value": null,
+     "refs": [
+      "1 Samuel 10:20"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Benjamin",
+     "b": "Saul",
+     "value": null,
+     "refs": [
+      "1 Samuel 10:21"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Beth",
+     "b": "David",
+     "value": null,
+     "refs": [
+      "Nehemiah 3:16"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Beth",
+     "b": "Jordan",
+     "value": null,
+     "refs": [
+      "Deuteronomy 4:46"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Beth",
+     "b": "Moab",
+     "value": null,
+     "refs": [
+      "Deuteronomy 34:6"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Canaan",
+     "b": "Manasseh",
+     "value": null,
+     "refs": [
+      "Joshua 22:11"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Canaanites",
+     "b": "Gilgal",
+     "value": null,
+     "refs": [
+      "Deuteronomy 11:30"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "David",
+     "b": "Solomon",
+     "value": null,
+     "refs": [
+      "1 Kings 2:1"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "David",
+     "b": "Tamar",
+     "value": null,
+     "refs": [
+      "1 Chronicles 3:9"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Ebal",
+     "b": "Gerizim",
+     "value": null,
+     "refs": [
+      "Joshua 8:33"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Egypt",
+     "b": "Shur",
+     "value": null,
+     "refs": [
+      "1 Samuel 15:7"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Ezion",
+     "b": "Red",
+     "value": null,
+     "refs": [
+      "1 Kings 9:26"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Gibeah",
+     "b": "Michmash",
+     "value": null,
+     "refs": [
+      "1 Samuel 14:5"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Gilead",
+     "b": "Manasseh",
+     "value": null,
+     "refs": [
+      "Joshua 17:5"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Gilgal",
+     "b": "Moreh",
+     "value": null,
+     "refs": [
+      "Deuteronomy 11:30"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Horeb",
+     "b": "Moab",
+     "value": null,
+     "refs": [
+      "Deuteronomy 29:1"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Isaac",
+     "b": "Jacob",
+     "value": null,
+     "refs": [
+      "Genesis 27:22"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jericho",
+     "b": "Jordan",
+     "value": null,
+     "refs": [
+      "Numbers 26:3",
+      "Numbers 26:63",
+      "Numbers 31:12",
+      "Numbers 33:48",
+      "Numbers 33:50",
+      "Numbers 34:15",
+      "Numbers 35:1",
+      "Numbers 36:13"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jericho",
+     "b": "Moab",
+     "value": null,
+     "refs": [
+      "Deuteronomy 32:49",
+      "Deuteronomy 34:1"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jerusalem",
+     "b": "Judah",
+     "value": null,
+     "refs": [
+      "2 Kings 21:16"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jordan",
+     "b": "Red",
+     "value": null,
+     "refs": [
+      "Deuteronomy 1:1"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Samuel",
+     "b": "Saul",
+     "value": null,
+     "refs": [
+      "1 Samuel 9:18"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Asher",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Judges 5:17"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Baal",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Exodus 14:2",
+      "Exodus 14:9"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Beer",
+     "b": null,
+     "value": null,
+     "refs": [
+      "2 Samuel 17:11"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Canaanites",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Numbers 13:29",
+      "Deuteronomy 1:7",
+      "Joshua 5:1"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Egypt",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Joshua 24:6"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Egyptians",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Exodus 14:30"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Ekron",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Joshua 15:46"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Hittites",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Joshua 1:4"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Jordan",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Joshua 23:4"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Judah",
+     "b": null,
+     "value": null,
+     "refs": [
+      "1 Kings 4:20"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Lebanon",
+     "b": null,
+     "value": null,
+     "refs": [
+      "1 Kings 5:9"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Michmash",
+     "b": null,
+     "value": null,
+     "refs": [
+      "1 Samuel 13:5"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Michmethah",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Joshua 16:6"
+     ]
+    }
+   ]
+  },
+  "josephus_wars": {
+   "summary": {
+    "lexicon_size": 195,
+    "places_in_constraints": 47,
+    "constraints": 38,
+    "by_kind": {
+     "direction": 4,
+     "distance": 3,
+     "higher": 4,
+     "isthmus": 1,
+     "near": 16,
+     "sea": 10
+    }
+   },
+   "consistency": {
+    "north_south": {
+     "statements": 4,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "east_west": {
+     "statements": 0,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "elevation": {
+     "statements": 4,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "places": 47,
+    "groups_of_linked_places": 21,
+    "largest_group": 9,
+    "places_with_one_statement": 37
+   },
+   "constraints": [
+    {
+     "kind": "direction",
+     "a": "Josephus",
+     "b": "Antonia",
+     "value": "north",
+     "refs": [
+      "para 704"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Josephus",
+     "b": "Sodom",
+     "value": "south",
+     "refs": [
+      "para 951"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Syrians",
+     "b": "Syria",
+     "value": "south",
+     "refs": [
+      "para 1076"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Titus",
+     "b": "Castor",
+     "value": "north",
+     "refs": [
+      "para 1018"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Alexandria",
+     "b": "Titus",
+     "value": 4.0,
+     "refs": [
+      "para 937"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Cesarea",
+     "b": "Trachonitis",
+     "value": 4.0,
+     "refs": [
+      "para 821"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Greek",
+     "b": "Jerusalem",
+     "value": 12.1,
+     "refs": [
+      "para 1273"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Jerusalem",
+     "b": "Lydda",
+     "value": null,
+     "refs": [
+      "para 581"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Judea",
+     "b": "Antiochus",
+     "value": null,
+     "refs": [
+      "para 161"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Mesopotamia",
+     "b": "Egypt",
+     "value": null,
+     "refs": [
+      "para 916"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Trachonitis",
+     "b": "Cesarea",
+     "value": null,
+     "refs": [
+      "para 821"
+     ]
+    },
+    {
+     "kind": "isthmus",
+     "a": "Narrowneck",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 824"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Antigonus",
+     "b": "Jerusalem",
+     "value": null,
+     "refs": [
+      "para 286"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Antipatris",
+     "b": "Joppa",
+     "value": null,
+     "refs": [
+      "para 190"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Antonia",
+     "b": "John",
+     "value": null,
+     "refs": [
+      "para 1041"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Arabia",
+     "b": "Judea",
+     "value": null,
+     "refs": [
+      "para 737"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Asphaltites",
+     "b": "Tacitus",
+     "value": null,
+     "refs": [
+      "para 1079"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Caesar",
+     "b": "Cassius",
+     "value": null,
+     "refs": [
+      "para 260"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Cesarea",
+     "b": "Greek",
+     "value": null,
+     "refs": [
+      "para 598"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Cilicia",
+     "b": "Sebaste",
+     "value": null,
+     "refs": [
+      "para 480"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Daphne",
+     "b": "Great Jordan",
+     "value": null,
+     "refs": [
+      "para 939"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Galilee",
+     "b": "Ptolemais",
+     "value": null,
+     "refs": [
+      "para 521"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Galilee",
+     "b": "Sepphoris",
+     "value": null,
+     "refs": [
+      "para 643"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Gamala",
+     "b": "Taricheae",
+     "value": null,
+     "refs": [
+      "para 840"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jericho",
+     "b": "Jerusalem",
+     "value": null,
+     "refs": [
+      "para 905"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jerusalem",
+     "b": "Vespasian",
+     "value": null,
+     "refs": [
+      "para 925"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jotapata",
+     "b": "Vespasian",
+     "value": null,
+     "refs": [
+      "para 787"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Sosius",
+     "b": "Titus",
+     "value": null,
+     "refs": [
+      "para 1028"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Antiq",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 949"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Archelaus",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 501"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Ascalon",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 342"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Barzapharnes",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 266"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Caius",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 565"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Cesarea",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 180",
+      "para 805",
+      "para 811",
+      "para 1198",
+      "para 1201",
+      "para 1201"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Galilee",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 805"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Hyrcanus",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 263"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Josephus",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 815"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Varus",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 522"
+     ]
+    }
+   ]
+  },
+  "josephus_antiquities": {
+   "summary": {
+    "lexicon_size": 444,
+    "places_in_constraints": 72,
+    "constraints": 59,
+    "by_kind": {
+     "direction": 1,
+     "distance": 13,
+     "higher": 1,
+     "isthmus": 1,
+     "near": 32,
+     "sea": 11
+    }
+   },
+   "consistency": {
+    "north_south": {
+     "statements": 1,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "east_west": {
+     "statements": 0,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "elevation": {
+     "statements": 1,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "places": 72,
+    "groups_of_linked_places": 25,
+    "largest_group": 14,
+    "places_with_one_statement": 52
+   },
+   "constraints": [
+    {
+     "kind": "direction",
+     "a": "Jericho",
+     "b": "Alexander",
+     "value": "north",
+     "refs": [
+      "para 2063"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Alexander",
+     "b": "Celesyria",
+     "value": 4.8,
+     "refs": [
+      "para 1863"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Alexander",
+     "b": "Ptolemy",
+     "value": 4.8,
+     "refs": [
+      "para 1857"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Arabians",
+     "b": "Idumea",
+     "value": 4.8,
+     "refs": [
+      "para 1935"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Artabanus",
+     "b": "Tiberius",
+     "value": 4.8,
+     "refs": [
+      "para 2409"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Artabanus",
+     "b": "Vitellius",
+     "value": 4.8,
+     "refs": [
+      "para 2408"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Asphaltiris",
+     "b": "Jerusalem",
+     "value": 60.3,
+     "refs": [
+      "para 1392"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Bethlehem",
+     "b": "Jerusalem",
+     "value": 4.0,
+     "refs": [
+      "para 1174"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Bethoron",
+     "b": "Judas",
+     "value": 6.0,
+     "refs": [
+      "para 1743"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Campania",
+     "b": "Dicearchia",
+     "value": 1.0,
+     "refs": [
+      "para 2430"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Capreae",
+     "b": "Rome",
+     "value": 20.1,
+     "refs": [
+      "para 2422"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Etham",
+     "b": "Jerusalem",
+     "value": 9.7,
+     "refs": [
+      "para 1362"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Gibeon",
+     "b": "Jerusalem",
+     "value": 8.0,
+     "refs": [
+      "para 1168"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Jerusalem",
+     "b": "Ramah",
+     "value": 8.0,
+     "refs": [
+      "para 1318"
+     ]
+    },
+    {
+     "kind": "higher",
+     "a": "Jerusalem",
+     "b": "Cyrus",
+     "value": null,
+     "refs": [
+      "para 1599"
+     ]
+    },
+    {
+     "kind": "isthmus",
+     "a": "Narrowneck",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 1350"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Abram",
+     "b": "Canaan",
+     "value": null,
+     "refs": [
+      "para 361"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Adiabene",
+     "b": "Jerusalem",
+     "value": null,
+     "refs": [
+      "para 2643"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Alexandrium",
+     "b": "Corem",
+     "value": null,
+     "refs": [
+      "para 1954"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Ammonites",
+     "b": "Hebrews",
+     "value": null,
+     "refs": [
+      "para 1132"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Antigonus",
+     "b": "Jerusalem",
+     "value": null,
+     "refs": [
+      "para 2038"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Arabia",
+     "b": "Macherus",
+     "value": null,
+     "refs": [
+      "para 1954"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Arabians",
+     "b": "Ethiopia",
+     "value": null,
+     "refs": [
+      "para 1411"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Ashdod",
+     "b": "Gaza",
+     "value": null,
+     "refs": [
+      "para 879"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Assyrians",
+     "b": "Dan",
+     "value": null,
+     "refs": [
+      "para 358"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Canaanites",
+     "b": "Hebrews",
+     "value": null,
+     "refs": [
+      "para 674"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Cilicia",
+     "b": "Herod",
+     "value": null,
+     "refs": [
+      "para 2215"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Ctesiphon",
+     "b": "Seleucia",
+     "value": null,
+     "refs": [
+      "para 2450"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Cyrus",
+     "b": "Xenophon",
+     "value": null,
+     "refs": [
+      "para 1642"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Dan",
+     "b": "Jordan",
+     "value": null,
+     "refs": [
+      "para 1368"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "David",
+     "b": "Josephus",
+     "value": null,
+     "refs": [
+      "para 1206"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "David",
+     "b": "Saul",
+     "value": null,
+     "refs": [
+      "para 1057"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Egyptians",
+     "b": "Pharaoh",
+     "value": null,
+     "refs": [
+      "para 539"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Elisha",
+     "b": "Jericho",
+     "value": null,
+     "refs": [
+      "para 684"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Galilee",
+     "b": "Jordan",
+     "value": null,
+     "refs": [
+      "para 1443"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Great Plain",
+     "b": "Joab",
+     "value": null,
+     "refs": [
+      "para 1157"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Greeks",
+     "b": "Jordan",
+     "value": null,
+     "refs": [
+      "para 1728"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Herod",
+     "b": "Jerusalem",
+     "value": null,
+     "refs": [
+      "para 2053"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Idumea",
+     "b": "Rhinocolura",
+     "value": null,
+     "refs": [
+      "para 1875"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jericho",
+     "b": "Jordan",
+     "value": null,
+     "refs": [
+      "para 738"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jezreel",
+     "b": "Joram",
+     "value": null,
+     "refs": [
+      "para 1415"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jordan",
+     "b": "Josephus",
+     "value": null,
+     "refs": [
+      "para 1368"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jordan",
+     "b": "Moses",
+     "value": null,
+     "refs": [
+      "para 758"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Judea",
+     "b": "Phoenicia",
+     "value": null,
+     "refs": [
+      "para 1558"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Marissa",
+     "b": "Samaria",
+     "value": null,
+     "refs": [
+      "para 1875"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Mount Gerizzim",
+     "b": "Samaria",
+     "value": null,
+     "refs": [
+      "para 1664"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Narrowneck",
+     "b": "Solomon",
+     "value": null,
+     "refs": [
+      "para 1350"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Philistines",
+     "b": "Shunem",
+     "value": null,
+     "refs": [
+      "para 1066"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Arabia",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 1360"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Archelaus",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 2329"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Ashdod",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 879"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Campania",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 2491"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Egypt",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 2104"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Jordan",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 867"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Moses",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 547",
+      "para 547"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Phasaelus",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 2026"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Phaselis",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 586"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Ptolemy",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 1802"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Varus",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 2343"
+     ]
+    }
+   ]
+  },
+  "clavigero_mexico_1807": {
+   "summary": {
+    "lexicon_size": 147,
+    "places_in_constraints": 20,
+    "constraints": 15,
+    "by_kind": {
+     "direction": 7,
+     "distance": 5,
+     "isthmus": 1,
+     "near": 1,
+     "sea": 1
+    }
+   },
+   "consistency": {
+    "north_south": {
+     "statements": 2,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "east_west": {
+     "statements": 5,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "elevation": {
+     "statements": 0,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "places": 20,
+    "groups_of_linked_places": 7,
+    "largest_group": 8,
+    "places_with_one_statement": 16
+   },
+   "constraints": [
+    {
+     "kind": "direction",
+     "a": "Acolhuacan",
+     "b": "Tlascala",
+     "value": "west",
+     "refs": [
+      "para 348"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Avhich",
+     "b": "Huexotzinco",
+     "value": "west",
+     "refs": [
+      "para 1724"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Azcapozalco",
+     "b": "Tezcuco",
+     "value": "west",
+     "refs": [
+      "para 1028"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Cohuixcas",
+     "b": "Mexico",
+     "value": "south",
+     "refs": [
+      "para 1486"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Matlatzincas",
+     "b": "Cohuixcas",
+     "value": "north",
+     "refs": [
+      "para 375"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Mixtecas",
+     "b": "Matlatzincas",
+     "value": "west",
+     "refs": [
+      "para 375"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Onohualco",
+     "b": "Coatzacualco",
+     "value": "east",
+     "refs": [
+      "para 386"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Chalco",
+     "b": "Xochimilco",
+     "value": 19.3,
+     "refs": [
+      "para 397"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Chapoltepec",
+     "b": "Mexico",
+     "value": 3.2,
+     "refs": [
+      "para 1697"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Guatemala",
+     "b": "Mexico",
+     "value": 1448.1,
+     "refs": [
+      "para 1740"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Gulf",
+     "b": "Mexico",
+     "value": 128.7,
+     "refs": [
+      "para 382"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Mexico",
+     "b": "Tenayuca",
+     "value": 9.7,
+     "refs": [
+      "para 1014"
+     ]
+    },
+    {
+     "kind": "isthmus",
+     "a": "Narrowneck",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 420"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Avhich",
+     "b": "Cojoacan",
+     "value": null,
+     "refs": [
+      "para 1822"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Mexico",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 627"
+     ]
+    }
+   ]
+  },
+  "ramsay_revolution_1789": {
+   "summary": {
+    "lexicon_size": 115,
+    "places_in_constraints": 25,
+    "constraints": 17,
+    "by_kind": {
+     "direction": 5,
+     "distance": 4,
+     "isthmus": 1,
+     "near": 7
+    }
+   },
+   "consistency": {
+    "north_south": {
+     "statements": 5,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "east_west": {
+     "statements": 0,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "elevation": {
+     "statements": 0,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "places": 25,
+    "groups_of_linked_places": 10,
+    "largest_group": 4,
+    "places_with_one_statement": 19
+   },
+   "constraints": [
+    {
+     "kind": "direction",
+     "a": "Canada",
+     "b": "Ticonderoga",
+     "value": "north",
+     "refs": [
+      "para 1564"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Delaware",
+     "b": "Pennsylvania",
+     "value": "south",
+     "refs": [
+      "para 100"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Gilliland",
+     "b": "Ticonderoga",
+     "value": "north",
+     "refs": [
+      "para 702"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "South-Carolina",
+     "b": "New-England",
+     "value": "south",
+     "refs": [
+      "para 888"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Ticonderoga",
+     "b": "George",
+     "value": "south",
+     "refs": [
+      "para 1556"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Boston",
+     "b": "Concord",
+     "value": 32.2,
+     "refs": [
+      "para 1389"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Boston",
+     "b": "Massachusetts",
+     "value": 160.9,
+     "refs": [
+      "para 1525"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Charlestown",
+     "b": "Concord",
+     "value": 32.2,
+     "refs": [
+      "para 1141"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Dobbs",
+     "b": "New-York",
+     "value": 57.9,
+     "refs": [
+      "para 369"
+     ]
+    },
+    {
+     "kind": "isthmus",
+     "a": "Narrowneck",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 1133"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Albany",
+     "b": "Burgoyne",
+     "value": null,
+     "refs": [
+      "para 705"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "American",
+     "b": "Skenesborough",
+     "value": null,
+     "refs": [
+      "para 703"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Bordenton",
+     "b": "Trenton",
+     "value": null,
+     "refs": [
+      "para 430"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Boston",
+     "b": "Massachusetts",
+     "value": null,
+     "refs": [
+      "para 764"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Burgoyne",
+     "b": "Fort Anne",
+     "value": null,
+     "refs": [
+      "para 703"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Delaware",
+     "b": "Princeton",
+     "value": null,
+     "refs": [
+      "para 434"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "French",
+     "b": "Ohio",
+     "value": null,
+     "refs": [
+      "para 173"
+     ]
+    }
+   ]
+  },
+  "thomson_late_war_1816": {
+   "summary": {
+    "lexicon_size": 152,
+    "places_in_constraints": 25,
+    "constraints": 14,
+    "by_kind": {
+     "direction": 3,
+     "distance": 7,
+     "isthmus": 1,
+     "near": 3
+    }
+   },
+   "consistency": {
+    "north_south": {
+     "statements": 1,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "east_west": {
+     "statements": 2,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "elevation": {
+     "statements": 0,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "places": 25,
+    "groups_of_linked_places": 12,
+    "largest_group": 3,
+    "places_with_one_statement": 23
+   },
+   "constraints": [
+    {
+     "kind": "direction",
+     "a": "Chicago",
+     "b": "Detroit",
+     "value": "west",
+     "refs": [
+      "para 127"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Lundy",
+     "b": "Queenstown",
+     "value": "south",
+     "refs": [
+      "para 898"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Stonington",
+     "b": "Castine",
+     "value": "east",
+     "refs": [
+      "para 74"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Aux Canards",
+     "b": "Maiden",
+     "value": 6.4,
+     "refs": [
+      "para 128"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Batavia",
+     "b": "Buffaloe",
+     "value": 12.9,
+     "refs": [
+      "para 618"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Bladensburg",
+     "b": "Washington",
+     "value": 9.7,
+     "refs": [
+      "para 1019"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Canadian",
+     "b": "Erie",
+     "value": 25.7,
+     "refs": [
+      "para 296"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "France",
+     "b": "Rock",
+     "value": 48.3,
+     "refs": [
+      "para 195"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "George",
+     "b": "Stoney Creek",
+     "value": 12.9,
+     "refs": [
+      "para 413"
+     ]
+    },
+    {
+     "kind": "distance",
+     "a": "Hampton",
+     "b": "Norfolk",
+     "value": 29.0,
+     "refs": [
+      "para 697"
+     ]
+    },
+    {
+     "kind": "isthmus",
+     "a": "Narrowneck",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 576"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Aux Canards",
+     "b": "Michilimackinac",
+     "value": null,
+     "refs": [
+      "para 94"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Burlington Heights",
+     "b": "Stoney Creek",
+     "value": null,
+     "refs": [
+      "para 413"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Lewistown",
+     "b": "Morris River",
+     "value": null,
+     "refs": [
+      "para 70"
+     ]
+    }
+   ]
+  },
+  "hunt_late_war_1816": {
+   "summary": {
+    "lexicon_size": 67,
+    "places_in_constraints": 11,
+    "constraints": 9,
+    "by_kind": {
+     "direction": 2,
+     "near": 5,
+     "sea": 2
+    }
+   },
+   "consistency": {
+    "north_south": {
+     "statements": 0,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "east_west": {
+     "statements": 2,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "elevation": {
+     "statements": 0,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "places": 11,
+    "groups_of_linked_places": 5,
+    "largest_group": 3,
+    "places_with_one_statement": 7
+   },
+   "constraints": [
+    {
+     "kind": "direction",
+     "a": "Hampton",
+     "b": "London",
+     "value": "east",
+     "refs": [
+      "para 1985"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Sackett",
+     "b": "Ontario",
+     "value": "east",
+     "refs": [
+      "para 1445"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Britain",
+     "b": "Columbia",
+     "value": null,
+     "refs": [
+      "para 1688"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Britain",
+     "b": "Fort George",
+     "value": null,
+     "refs": [
+      "para 1085"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Buffalo",
+     "b": "Niagara",
+     "value": null,
+     "refs": [
+      "para 1351"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Hampton",
+     "b": "London",
+     "value": null,
+     "refs": [
+      "para 1985"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Moravian",
+     "b": "Thames",
+     "value": null,
+     "refs": [
+      "para 1288"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Britain",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 225"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Columbia",
+     "b": null,
+     "value": null,
+     "refs": [
+      "para 1153"
+     ]
+    }
+   ]
+  },
+  "spalding_manuscript": {
+   "summary": {
+    "lexicon_size": 19,
+    "places_in_constraints": 2,
+    "constraints": 1,
+    "by_kind": {
+     "direction": 1
+    }
+   },
+   "consistency": {
+    "north_south": {
+     "statements": 1,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "east_west": {
+     "statements": 0,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "elevation": {
+     "statements": 0,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "places": 2,
+    "groups_of_linked_places": 1,
+    "largest_group": 2,
+    "places_with_one_statement": 2
+   },
+   "constraints": [
+    {
+     "kind": "direction",
+     "a": "Empire",
+     "b": "Ohio",
+     "value": "south",
+     "refs": [
+      "para 309"
+     ]
+    }
+   ]
+  }
+ },
+ "known_answer_extractor": {
+  "kjv_ot_narrative": {
+   "places_with_coordinates": 17,
+   "statements_scored": 14,
+   "true_share": 0.7143,
+   "random_median_share": 0.2857,
+   "random_p95_share": 0.5714,
+   "percentile": 99.7,
+   "passed": true
+  },
+  "reported_not_counted": {
+   "josephus_wars": {
+    "places_with_coordinates": 2,
+    "statements_scored": 1,
+    "true_share": 1.0,
+    "random_median_share": 1.0,
+    "random_p95_share": 1.0,
+    "percentile": 74.7,
+    "passed": false
+   },
+   "josephus_antiquities": {
+    "places_with_coordinates": 8,
+    "statements_scored": 7,
+    "true_share": 0.7143,
+    "random_median_share": 0.1429,
+    "random_p95_share": 0.4286,
+    "percentile": 100.0,
+    "passed": true
+   }
+  }
+ },
+ "decoy_windows": {
+  "500": {
+   "windows": 400,
+   "skipped_too_few_sites": 15,
+   "median_sites": 375,
+   "share_with_a_coastal_site": 0.93
+  },
+  "3000": {
+   "windows": 400,
+   "skipped_too_few_sites": 1,
+   "median_sites": 324,
+   "share_with_a_coastal_site": 1.0
+  }
+ },
+ "known_answer_region": {
+  "every_kind": {
+   "kjv_ot_narrative": {
+    "share": 0.92,
+    "satisfied": 69,
+    "statements": 75,
+    "by_kind": {
+     "days": "1/1",
+     "direction": "16/17",
+     "higher": "14/14",
+     "near": "25/30",
+     "sea": "13/13"
+    },
+    "decoys": 398,
+    "decoy_median_share": 0.9067,
+    "decoy_p95_share": 0.9467,
+    "decoys_at_or_above": 149,
+    "percentile": 70.4,
+    "at_bar": false,
+    "counted": true
+   },
+   "josephus_wars": {
+    "share": 0.8947,
+    "satisfied": 34,
+    "statements": 38,
+    "by_kind": {
+     "direction": "4/4",
+     "distance": "0/3",
+     "higher": "4/4",
+     "isthmus": "1/1",
+     "near": "15/16",
+     "sea": "10/10"
+    },
+    "decoys": 398,
+    "decoy_median_share": 0.8947,
+    "decoy_p95_share": 0.925,
+    "decoys_at_or_above": 296,
+    "percentile": 44.2,
+    "at_bar": false,
+    "counted": true
+   },
+   "josephus_antiquities": {
+    "share": 0.7966,
+    "satisfied": 47,
+    "statements": 59,
+    "by_kind": {
+     "direction": "1/1",
+     "distance": "3/13",
+     "higher": "1/1",
+     "isthmus": "1/1",
+     "near": "30/32",
+     "sea": "11/11"
+    },
+    "decoys": 398,
+    "decoy_median_share": 0.7627,
+    "decoy_p95_share": 0.8305,
+    "decoys_at_or_above": 119,
+    "percentile": 77.1,
+    "at_bar": false,
+    "counted": true
+   },
+   "clavigero_mexico_1807": {
+    "share": 0.9333,
+    "satisfied": 14,
+    "statements": 15,
+    "by_kind": {
+     "direction": "7/7",
+     "distance": "4/5",
+     "isthmus": "1/1",
+     "near": "1/1",
+     "sea": "1/1"
+    },
+    "decoys": 396,
+    "decoy_median_share": 0.8667,
+    "decoy_p95_share": 0.9333,
+    "decoys_at_or_above": 50,
+    "percentile": 93.6,
+    "at_bar": false,
+    "counted": true
+   },
+   "ramsay_revolution_1789": {
+    "share": 0.9412,
+    "satisfied": 16,
+    "statements": 17,
+    "by_kind": {
+     "direction": "5/5",
+     "distance": "4/4",
+     "isthmus": "1/1",
+     "near": "6/7"
+    },
+    "decoys": 398,
+    "decoy_median_share": 0.9412,
+    "decoy_p95_share": 0.9412,
+    "decoys_at_or_above": 327,
+    "percentile": 58.9,
+    "at_bar": false,
+    "counted": true
+   },
+   "thomson_late_war_1816": {
+    "share": 0.8571,
+    "satisfied": 12,
+    "statements": 14,
+    "by_kind": {
+     "direction": "3/3",
+     "distance": "5/7",
+     "isthmus": "1/1",
+     "near": "3/3"
+    },
+    "decoys": 399,
+    "decoy_median_share": 0.8571,
+    "decoy_p95_share": 0.9286,
+    "decoys_at_or_above": 279,
+    "percentile": 54.5,
+    "at_bar": false,
+    "counted": true
+   },
+   "hunt_late_war_1816": {
+    "share": 1.0,
+    "satisfied": 9,
+    "statements": 9,
+    "by_kind": {
+     "direction": "2/2",
+     "near": "5/5",
+     "sea": "2/2"
+    },
+    "decoys": 399,
+    "decoy_median_share": 1.0,
+    "decoy_p95_share": 1.0,
+    "decoys_at_or_above": 366,
+    "percentile": 54.1,
+    "at_bar": false,
+    "counted": false
+   },
+   "_check": {
+    "texts_counted": 6,
+    "at_bar": 0,
+    "passed": false
+   }
+  },
+  "without_distance": {
+   "kjv_ot_narrative": {
+    "share": 0.92,
+    "satisfied": 69,
+    "statements": 75,
+    "by_kind": {
+     "days": "1/1",
+     "direction": "16/17",
+     "higher": "14/14",
+     "near": "25/30",
+     "sea": "13/13"
+    },
+    "decoys": 398,
+    "decoy_median_share": 0.9067,
+    "decoy_p95_share": 0.9467,
+    "decoys_at_or_above": 149,
+    "percentile": 70.4,
+    "at_bar": false,
+    "counted": true
+   },
+   "josephus_wars": {
+    "share": 1.0,
+    "satisfied": 35,
+    "statements": 35,
+    "by_kind": {
+     "direction": "4/4",
+     "higher": "4/4",
+     "isthmus": "1/1",
+     "near": "16/16",
+     "sea": "10/10"
+    },
+    "decoys": 398,
+    "decoy_median_share": 0.9714,
+    "decoy_p95_share": 1.0,
+    "decoys_at_or_above": 125,
+    "percentile": 84.3,
+    "at_bar": false,
+    "counted": true
+   },
+   "josephus_antiquities": {
+    "share": 0.9565,
+    "satisfied": 44,
+    "statements": 46,
+    "by_kind": {
+     "direction": "1/1",
+     "higher": "1/1",
+     "isthmus": "1/1",
+     "near": "30/32",
+     "sea": "11/11"
+    },
+    "decoys": 398,
+    "decoy_median_share": 0.913,
+    "decoy_p95_share": 0.9783,
+    "decoys_at_or_above": 93,
+    "percentile": 85.1,
+    "at_bar": false,
+    "counted": true
+   },
+   "clavigero_mexico_1807": {
+    "share": 1.0,
+    "satisfied": 10,
+    "statements": 10,
+    "by_kind": {
+     "direction": "7/7",
+     "isthmus": "1/1",
+     "near": "1/1",
+     "sea": "1/1"
+    },
+    "decoys": 396,
+    "decoy_median_share": 1.0,
+    "decoy_p95_share": 1.0,
+    "decoys_at_or_above": 346,
+    "percentile": 56.3,
+    "at_bar": false,
+    "counted": false
+   },
+   "ramsay_revolution_1789": {
+    "share": 1.0,
+    "satisfied": 13,
+    "statements": 13,
+    "by_kind": {
+     "direction": "5/5",
+     "isthmus": "1/1",
+     "near": "7/7"
+    },
+    "decoys": 398,
+    "decoy_median_share": 1.0,
+    "decoy_p95_share": 1.0,
+    "decoys_at_or_above": 349,
+    "percentile": 56.2,
+    "at_bar": false,
+    "counted": true
+   },
+   "thomson_late_war_1816": {
+    "share": 1.0,
+    "satisfied": 7,
+    "statements": 7,
+    "by_kind": {
+     "direction": "3/3",
+     "isthmus": "1/1",
+     "near": "3/3"
+    },
+    "decoys": 399,
+    "decoy_median_share": 1.0,
+    "decoy_p95_share": 1.0,
+    "decoys_at_or_above": 350,
+    "percentile": 56.1,
+    "at_bar": false,
+    "counted": false
+   },
+   "hunt_late_war_1816": {
+    "share": 1.0,
+    "satisfied": 9,
+    "statements": 9,
+    "by_kind": {
+     "direction": "2/2",
+     "near": "5/5",
+     "sea": "2/2"
+    },
+    "decoys": 399,
+    "decoy_median_share": 1.0,
+    "decoy_p95_share": 1.0,
+    "decoys_at_or_above": 366,
+    "percentile": 54.1,
+    "at_bar": false,
+    "counted": false
+   },
+   "_check": {
+    "texts_counted": 4,
+    "at_bar": 0,
+    "passed": false
+   }
+  }
+ },
+ "known_answer_passed": {
+  "extractor": true,
+  "region_every_kind": false,
+  "region_without_distance": false
+ },
+ "stopped": "the known-answer check missed its bar; the Book of Mormon's statements were extracted and checked for internal consistency only, not scored against any region",
+ "book": {
+  "book_of_mormon": {
+   "summary": {
+    "lexicon_size": 80,
+    "places_in_constraints": 23,
+    "constraints": 33,
+    "by_kind": {
+     "direction": 14,
+     "isthmus": 1,
+     "near": 6,
+     "sea": 12
+    }
+   },
+   "consistency": {
+    "north_south": {
+     "statements": 5,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "east_west": {
+     "statements": 9,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "elevation": {
+     "statements": 0,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "places": 23,
+    "groups_of_linked_places": 7,
+    "largest_group": 16,
+    "places_with_one_statement": 12
+   },
+   "constraints": [
+    {
+     "kind": "direction",
+     "a": "Antionum",
+     "b": "Zarahemla",
+     "value": "east",
+     "refs": [
+      "Alma 16 para 905"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Bountiful",
+     "b": "Jershon",
+     "value": "east",
+     "refs": [
+      "Alma 15 para 891"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Landnorthward",
+     "b": "Bountiful",
+     "value": "north",
+     "refs": [
+      "Alma 22 para 999"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Landnorthward",
+     "b": "Landsouthward",
+     "value": "north",
+     "refs": [
+      "implied by the two names"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Lehi",
+     "b": "Sidon",
+     "value": "east",
+     "refs": [
+      "Alma 20 para 957",
+      "Alma 21 para 995"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Manti",
+     "b": "Sidon",
+     "value": "east",
+     "refs": [
+      "Alma 11 para 826"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Melek",
+     "b": "Sidon",
+     "value": "west",
+     "refs": [
+      "Alma 6 para 778"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Moroni",
+     "b": "Bountiful",
+     "value": "west",
+     "refs": [
+      "Alma 24 para 1022"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Moroni",
+     "b": "Sidon",
+     "value": "west",
+     "refs": [
+      "Alma 20 para 957"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Nephi",
+     "b": "Shilom",
+     "value": "south",
+     "refs": [
+      "Mosiah 6 para 641"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Nephi",
+     "b": "Zarahemla",
+     "value": "west",
+     "refs": [
+      "Alma 13 para 871"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Sidon",
+     "b": "Lehi",
+     "value": "south",
+     "refs": [
+      "Alma 20 para 954"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Zarahemla",
+     "b": "Jershon",
+     "value": "south",
+     "refs": [
+      "Alma 16 para 905"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Zarahemla",
+     "b": "Sidon",
+     "value": "east",
+     "refs": [
+      "Alma 4 para 772"
+     ]
+    },
+    {
+     "kind": "isthmus",
+     "a": "Narrowneck",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 13 para 871"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Bountiful",
+     "b": "Teancum",
+     "value": null,
+     "refs": [
+      "Alma 24 para 1029"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Comnor",
+     "b": "Shurr",
+     "value": null,
+     "refs": [
+      "Ether 6 para 1350"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Desolation",
+     "b": "Moron",
+     "value": null,
+     "refs": [
+      "Ether 3 para 1333"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Desolation",
+     "b": "Teancum",
+     "value": null,
+     "refs": [
+      "Mormon 2 para 1307"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jershon",
+     "b": "Zarahemla",
+     "value": null,
+     "refs": [
+      "Alma 16 para 905"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Moroni",
+     "b": "Teancum",
+     "value": null,
+     "refs": [
+      "Alma 24 para 1026"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Antiparah",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 26 para 1050"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Bountiful",
+     "b": null,
+     "value": null,
+     "refs": [
+      "1 Nephi 5 para 328"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Egypt",
+     "b": null,
+     "value": null,
+     "refs": [
+      "2 Nephi 9 para 457"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Jershon",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 15 para 891"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Landnorthward",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 22 para 1002"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Lehi",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 22 para 1001"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Moroni",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 23 para 1011",
+      "Alma 29 para 1096"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Mulek",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 23 para 1013"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Narrowneck",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 22 para 1002"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Nephihah",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 23 para 1013"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Teancum",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 24 para 1026",
+      "Alma 29 para 1099",
+      "Mormon 2 para 1307"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Zarahemla",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 13 para 871",
+      "Alma 16 para 905"
+     ]
+    }
+   ],
+   "settings": "not scored: the known-answer region check missed its bar"
+  },
+  "book_of_mormon_without_quoted_chapters": {
+   "summary": {
+    "lexicon_size": 77,
+    "places_in_constraints": 22,
+    "constraints": 32,
+    "by_kind": {
+     "direction": 14,
+     "isthmus": 1,
+     "near": 6,
+     "sea": 11
+    }
+   },
+   "consistency": {
+    "north_south": {
+     "statements": 5,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "east_west": {
+     "statements": 9,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "elevation": {
+     "statements": 0,
+     "in_a_cycle": 0,
+     "cycles": []
+    },
+    "places": 22,
+    "groups_of_linked_places": 6,
+    "largest_group": 16,
+    "places_with_one_statement": 11
+   },
+   "constraints": [
+    {
+     "kind": "direction",
+     "a": "Antionum",
+     "b": "Zarahemla",
+     "value": "east",
+     "refs": [
+      "Alma 16 para 905"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Bountiful",
+     "b": "Jershon",
+     "value": "east",
+     "refs": [
+      "Alma 15 para 891"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Landnorthward",
+     "b": "Bountiful",
+     "value": "north",
+     "refs": [
+      "Alma 22 para 999"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Landnorthward",
+     "b": "Landsouthward",
+     "value": "north",
+     "refs": [
+      "implied by the two names"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Lehi",
+     "b": "Sidon",
+     "value": "east",
+     "refs": [
+      "Alma 20 para 957",
+      "Alma 21 para 995"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Manti",
+     "b": "Sidon",
+     "value": "east",
+     "refs": [
+      "Alma 11 para 826"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Melek",
+     "b": "Sidon",
+     "value": "west",
+     "refs": [
+      "Alma 6 para 778"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Moroni",
+     "b": "Bountiful",
+     "value": "west",
+     "refs": [
+      "Alma 24 para 1022"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Moroni",
+     "b": "Sidon",
+     "value": "west",
+     "refs": [
+      "Alma 20 para 957"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Nephi",
+     "b": "Shilom",
+     "value": "south",
+     "refs": [
+      "Mosiah 6 para 641"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Nephi",
+     "b": "Zarahemla",
+     "value": "west",
+     "refs": [
+      "Alma 13 para 871"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Sidon",
+     "b": "Lehi",
+     "value": "south",
+     "refs": [
+      "Alma 20 para 954"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Zarahemla",
+     "b": "Jershon",
+     "value": "south",
+     "refs": [
+      "Alma 16 para 905"
+     ]
+    },
+    {
+     "kind": "direction",
+     "a": "Zarahemla",
+     "b": "Sidon",
+     "value": "east",
+     "refs": [
+      "Alma 4 para 772"
+     ]
+    },
+    {
+     "kind": "isthmus",
+     "a": "Narrowneck",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 13 para 871"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Bountiful",
+     "b": "Teancum",
+     "value": null,
+     "refs": [
+      "Alma 24 para 1029"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Comnor",
+     "b": "Shurr",
+     "value": null,
+     "refs": [
+      "Ether 6 para 1350"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Desolation",
+     "b": "Moron",
+     "value": null,
+     "refs": [
+      "Ether 3 para 1333"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Desolation",
+     "b": "Teancum",
+     "value": null,
+     "refs": [
+      "Mormon 2 para 1307"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Jershon",
+     "b": "Zarahemla",
+     "value": null,
+     "refs": [
+      "Alma 16 para 905"
+     ]
+    },
+    {
+     "kind": "near",
+     "a": "Moroni",
+     "b": "Teancum",
+     "value": null,
+     "refs": [
+      "Alma 24 para 1026"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Antiparah",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 26 para 1050"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Bountiful",
+     "b": null,
+     "value": null,
+     "refs": [
+      "1 Nephi 5 para 328"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Jershon",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 15 para 891"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Landnorthward",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 22 para 1002"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Lehi",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 22 para 1001"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Moroni",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 23 para 1011",
+      "Alma 29 para 1096"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Mulek",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 23 para 1013"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Narrowneck",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 22 para 1002"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Nephihah",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 23 para 1013"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Teancum",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 24 para 1026",
+      "Alma 29 para 1099",
+      "Mormon 2 para 1307"
+     ]
+    },
+    {
+     "kind": "sea",
+     "a": "Zarahemla",
+     "b": null,
+     "value": null,
+     "refs": [
+      "Alma 13 para 871",
+      "Alma 16 para 905"
+     ]
+    }
+   ],
+   "settings": "not scored: the known-answer region check missed its bar"
+  }
+ },
+ "config_sha256": "d55758cc4c90c4a239bb984a9ba8fbecc836986240f295b7b33eac8512507a5b",
+ "commit": "018ba4f4b19ac5d628a77c5afa3799c8aeda915c"
+}
