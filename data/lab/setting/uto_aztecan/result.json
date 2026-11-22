@@ -1,0 +1,7396 @@
+{
+ "settings": {
+  "seed": 20261122,
+  "his_way": {
+   "sample_sets": 150,
+   "max_positions": 3,
+   "clics_min_families": 3
+  },
+  "shuffles": 10000,
+  "alpha": 0.01,
+  "decoy_alpha": 0.05,
+  "min_meanings": 20,
+  "loan_values": [
+   "1. clearly borrowed",
+   "2. probably borrowed"
+  ],
+  "borrow_parts": 3,
+  "skew_margin": 0.0,
+  "planted": {
+   "plantings": 200,
+   "shuffles": 2000,
+   "bar": 0.8,
+   "fractions": [
+    1.0,
+    0.5,
+    0.25
+   ]
+  },
+  "known_answer": {
+   "inherited": [
+    [
+     "nel:heb",
+     "nel:arb"
+    ]
+   ],
+   "contact": [
+    [
+     "nel:fin",
+     "nel:lit"
+    ],
+    [
+     "nel:fin",
+     "nel:lav"
+    ],
+    [
+     "nel:fin",
+     "nel:swe"
+    ],
+    [
+     "nel:eus",
+     "nel:spa"
+    ],
+    [
+     "nel:eng",
+     "nel:fra"
+    ],
+    [
+     "wold:Yaqui+loans",
+     "nel:spa"
+    ]
+   ],
+   "finnish": [
+    0,
+    1,
+    2
+   ],
+   "contact_needed": 4,
+   "negative": [
+    [
+     "wold:Yaqui",
+     "nel:fin"
+    ],
+    [
+     "wold:Yaqui",
+     "nel:jpn"
+    ],
+    [
+     "wold:Yaqui",
+     "nel:tam"
+    ],
+    [
+     "wold:Yaqui",
+     "nel:eus"
+    ],
+    [
+     "wold:Yaqui",
+     "nel:kat"
+    ],
+    [
+     "wold:Yaqui",
+     "nel:hun"
+    ],
+    [
+     "wold:Yaqui",
+     "nel:kor"
+    ],
+    [
+     "wold:Yaqui",
+     "wold:ImbaburaQuechua"
+    ]
+   ],
+   "negative_max": 1,
+   "decoys": [
+    [
+     "nel:jpn",
+     "nel:heb"
+    ],
+    [
+     "nel:jpn",
+     "nel:tam"
+    ]
+   ]
+  },
+  "targets": {
+   "yaqui_biblical_hebrew": [
+    "wold:Yaqui",
+    "oshl:heb"
+   ],
+   "yaqui_coptic": [
+    "wold:Yaqui",
+    "cdo:cop"
+   ],
+   "yaqui_late_egyptian": [
+    "wold:Yaqui",
+    "asjp:LATE_EGYPTIAN"
+   ],
+   "greenhill_biblical_hebrew": [
+    "gh:*",
+    "oshl:heb"
+   ],
+   "greenhill_arabic": [
+    "gh:*",
+    "nel:arb"
+   ],
+   "greenhill_aramaic": [
+    "gh:*",
+    "asjp:ARAMAIC_ANCIENT"
+   ],
+   "greenhill_late_egyptian": [
+    "gh:*",
+    "asjp:LATE_EGYPTIAN"
+   ],
+   "greenhill_coptic": [
+    "gh:*",
+    "asjp:COPTIC"
+   ],
+   "pua_biblical_hebrew": [
+    "asjp:PROTO_UTO_AZTECAN",
+    "asjp:BIBLICAL_HEBREW"
+   ],
+   "pua_aramaic": [
+    "asjp:PROTO_UTO_AZTECAN",
+    "asjp:ARAMAIC_ANCIENT"
+   ],
+   "pua_late_egyptian": [
+    "asjp:PROTO_UTO_AZTECAN",
+    "asjp:LATE_EGYPTIAN"
+   ],
+   "pua_coptic": [
+    "asjp:PROTO_UTO_AZTECAN",
+    "asjp:COPTIC"
+   ]
+  },
+  "trap": [
+   "wold:Yaqui+loans",
+   "oshl:heb"
+  ]
+ },
+ "his_way": {
+  "sets_found": 1522,
+  "sample": 150,
+  "sample_set_numbers": [
+   7,
+   17,
+   36,
+   50,
+   51,
+   53,
+   62,
+   63,
+   65,
+   81,
+   84,
+   99,
+   120,
+   132,
+   136,
+   137,
+   147,
+   149,
+   150,
+   160,
+   164,
+   192,
+   203,
+   205,
+   209,
+   217,
+   229,
+   249,
+   250,
+   261,
+   290,
+   297,
+   313,
+   317,
+   318,
+   323,
+   334,
+   342,
+   358,
+   374,
+   381,
+   384,
+   386,
+   388,
+   415,
+   443,
+   444,
+   445,
+   449,
+   454,
+   473,
+   480,
+   488,
+   499,
+   512,
+   519,
+   525,
+   541,
+   576,
+   586,
+   594,
+   626,
+   641,
+   647,
+   687,
+   689,
+   696,
+   699,
+   716,
+   717,
+   737,
+   738,
+   743,
+   748,
+   749,
+   753,
+   792,
+   802,
+   805,
+   819,
+   831,
+   835,
+   838,
+   844,
+   845,
+   849,
+   852,
+   862,
+   874,
+   876,
+   890,
+   894,
+   903,
+   909,
+   927,
+   936,
+   938,
+   964,
+   980,
+   986,
+   990,
+   1028,
+   1041,
+   1053,
+   1055,
+   1068,
+   1075,
+   1083,
+   1086,
+   1103,
+   1114,
+   1133,
+   1137,
+   1141,
+   1143,
+   1161,
+   1172,
+   1179,
+   1181,
+   1199,
+   1206,
+   1212,
+   1218,
+   1223,
+   1230,
+   1233,
+   1250,
+   1254,
+   1258,
+   1267,
+   1279,
+   1297,
+   1302,
+   1309,
+   1316,
+   1323,
+   1341,
+   1351,
+   1362,
+   1417,
+   1428,
+   1431,
+   1433,
+   1434,
+   1444,
+   1465,
+   1469,
+   1511,
+   1518,
+   1525
+  ],
+  "by_stratum": {
+   "kw": 21,
+   "e": 47,
+   "none": 61,
+   "p": 21
+  },
+  "in_english_index": 129,
+  "with_his_tags": 59,
+  "machine_readable": 71,
+  "machine_readable_from_tags": 49,
+  "obey_table_all_positions": 41,
+  "obey_table_first_consonant": 62,
+  "obey_table_final_loss_allowed": 44,
+  "obey_by_source": {
+   "his tags": [
+    27,
+    49
+   ],
+   "his form": [
+    14,
+    22
+   ]
+  },
+  "meaning_levels": {
+   "0": 42,
+   "2": 20,
+   "1": 9
+  },
+  "alternatives_median": 1,
+  "alternatives_quartiles": [
+   0,
+   10
+  ],
+  "alternatives_sound_only_median": 44,
+  "sets_with_no_alternative": 34,
+  "sets_with_10_or_more": 19,
+  "final_loss_allowed": {
+   "alternatives_median": 1,
+   "alternatives_sound_only_median": 59
+  },
+  "alternatives_median_where_his_obeys": 1,
+  "lexicon_entries": {
+   "oshl": 5319,
+   "cdo": 7779
+  },
+  "per_set": [
+   {
+    "set": 7,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 61,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 17,
+    "stratum": "kw",
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 36,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 2,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 61,
+    "alternatives": 61,
+    "alternatives_final_loss": 83
+   },
+   {
+    "set": 50,
+    "stratum": "kw",
+    "machine_readable": false,
+    "skeleton_from": "his tags",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 51,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 41,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 53,
+    "stratum": "kw",
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 62,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 184,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 63,
+    "stratum": "kw",
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 65,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 332,
+    "alternatives": 1,
+    "alternatives_final_loss": 1
+   },
+   {
+    "set": 81,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 2,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 29,
+    "alternatives": 29,
+    "alternatives_final_loss": 52
+   },
+   {
+    "set": 84,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 93,
+    "alternatives": 0,
+    "alternatives_final_loss": 2
+   },
+   {
+    "set": 99,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 44,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 120,
+    "stratum": "e",
+    "machine_readable": false,
+    "skeleton_from": "his tags",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 132,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 26,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 136,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 2,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 10,
+    "alternatives": 10,
+    "alternatives_final_loss": 20
+   },
+   {
+    "set": 137,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 13,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 147,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 11,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 149,
+    "stratum": "e",
+    "machine_readable": false,
+    "skeleton_from": "his tags",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 150,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 1,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 207,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 160,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 1,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 1,
+    "alternatives": 1,
+    "alternatives_final_loss": 31
+   },
+   {
+    "set": 164,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 2,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 244,
+    "alternatives": 244,
+    "alternatives_final_loss": 244
+   },
+   {
+    "set": 192,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 15,
+    "alternatives": 1,
+    "alternatives_final_loss": 1
+   },
+   {
+    "set": 203,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 2,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 257,
+    "alternatives": 257,
+    "alternatives_final_loss": 257
+   },
+   {
+    "set": 205,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 2,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 209,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 2,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 39,
+    "alternatives": 39,
+    "alternatives_final_loss": 39
+   },
+   {
+    "set": 217,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 141,
+    "alternatives": 1,
+    "alternatives_final_loss": 1
+   },
+   {
+    "set": 229,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 1,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 133,
+    "alternatives": 1,
+    "alternatives_final_loss": 1
+   },
+   {
+    "set": 249,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 2,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 250,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 2,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 2,
+    "alternatives": 2,
+    "alternatives_final_loss": 10
+   },
+   {
+    "set": 261,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 2,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 290,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 2,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 6,
+    "alternatives": 6,
+    "alternatives_final_loss": 6
+   },
+   {
+    "set": 297,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": false,
+    "obeys_first": false,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 34,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 313,
+    "stratum": "e",
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 317,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 14,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 318,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 14,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 323,
+    "stratum": "e",
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 334,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": false,
+    "obeys_final_loss": false,
+    "meaning_level": 1,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 326,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 342,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 12,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 358,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 2,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 3,
+    "alternatives": 3,
+    "alternatives_final_loss": 3
+   },
+   {
+    "set": 374,
+    "stratum": "e",
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 381,
+    "stratum": "e",
+    "machine_readable": false,
+    "skeleton_from": "his tags",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 384,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 83,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 386,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 31,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 388,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 40,
+    "alternatives": 2,
+    "alternatives_final_loss": 2
+   },
+   {
+    "set": 415,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 19,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 443,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 2,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 6,
+    "alternatives": 6,
+    "alternatives_final_loss": 6
+   },
+   {
+    "set": 444,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": false,
+    "obeys_first": false,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 12,
+    "alternatives": 0,
+    "alternatives_final_loss": 3
+   },
+   {
+    "set": 445,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 115,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 449,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 2,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 1133,
+    "alternatives": 1133,
+    "alternatives_final_loss": 1133
+   },
+   {
+    "set": 454,
+    "stratum": "e",
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 473,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 2,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 6,
+    "alternatives": 6,
+    "alternatives_final_loss": 28
+   },
+   {
+    "set": 480,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 133,
+    "alternatives": 2,
+    "alternatives_final_loss": 2
+   },
+   {
+    "set": 488,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 1254,
+    "alternatives": 18,
+    "alternatives_final_loss": 18
+   },
+   {
+    "set": 499,
+    "stratum": "e",
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 512,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 2,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 663,
+    "alternatives": 663,
+    "alternatives_final_loss": 663
+   },
+   {
+    "set": 519,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 73,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 525,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his form",
+    "obeys_table": false,
+    "obeys_first": false,
+    "obeys_final_loss": false,
+    "meaning_level": 1,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 99,
+    "alternatives": 10,
+    "alternatives_final_loss": 48
+   },
+   {
+    "set": 541,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 576,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 21,
+    "alternatives": 1,
+    "alternatives_final_loss": 1
+   },
+   {
+    "set": 586,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 2,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 78,
+    "alternatives": 78,
+    "alternatives_final_loss": 122
+   },
+   {
+    "set": 594,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": false,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 33,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 626,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 641,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 647,
+    "stratum": "kw",
+    "machine_readable": false,
+    "skeleton_from": "his tags",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 687,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 689,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 34,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 696,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": false,
+    "obeys_final_loss": false,
+    "meaning_level": 2,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 32,
+    "alternatives": 32,
+    "alternatives_final_loss": 32
+   },
+   {
+    "set": 699,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 716,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 717,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 70,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 737,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 2,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 23,
+    "alternatives": 23,
+    "alternatives_final_loss": 23
+   },
+   {
+    "set": 738,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 45,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 743,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 28,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 748,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 749,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": false,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 1431,
+    "alternatives": 10,
+    "alternatives_final_loss": 10
+   },
+   {
+    "set": 753,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 792,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 802,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 805,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 1,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 6,
+    "alternatives": 1,
+    "alternatives_final_loss": 1
+   },
+   {
+    "set": 819,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 172,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 831,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 199,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 835,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 838,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 844,
+    "stratum": "p",
+    "machine_readable": false,
+    "skeleton_from": "his tags",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 845,
+    "stratum": "p",
+    "machine_readable": false,
+    "skeleton_from": "his tags",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 849,
+    "stratum": "p",
+    "machine_readable": false,
+    "skeleton_from": "his tags",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 852,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 900,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 862,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 2,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 19,
+    "alternatives": 19,
+    "alternatives_final_loss": 19
+   },
+   {
+    "set": 874,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 876,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 890,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 894,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 903,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 909,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 2,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 37,
+    "alternatives": 37,
+    "alternatives_final_loss": 44
+   },
+   {
+    "set": 927,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 55,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 936,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 2,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 1093,
+    "alternatives": 1093,
+    "alternatives_final_loss": 1093
+   },
+   {
+    "set": 938,
+    "stratum": "p",
+    "machine_readable": false,
+    "skeleton_from": "his tags",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 964,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 980,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 986,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 1,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 211,
+    "alternatives": 1,
+    "alternatives_final_loss": 6
+   },
+   {
+    "set": 990,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 1480,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 1028,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1041,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1053,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1055,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1068,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1075,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1083,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1086,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1103,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1114,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1133,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1137,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1141,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1143,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1161,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1172,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1179,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "obeys_final_loss": false,
+    "meaning_level": 2,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 47,
+    "alternatives": 47,
+    "alternatives_final_loss": 47
+   },
+   {
+    "set": 1181,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1199,
+    "stratum": "kw",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 1339,
+    "alternatives": 17,
+    "alternatives_final_loss": 17
+   },
+   {
+    "set": 1206,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1212,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1218,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1223,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1230,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1233,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1250,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1254,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1258,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1267,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1279,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1297,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1302,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1309,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1316,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1323,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1341,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1351,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 1,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 902,
+    "alternatives": 8,
+    "alternatives_final_loss": 8
+   },
+   {
+    "set": 1362,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1417,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1428,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1431,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1433,
+    "stratum": "p",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "obeys_final_loss": true,
+    "meaning_level": 0,
+    "alternatives_lexicon": "oshl",
+    "alternatives_sound": 465,
+    "alternatives": 5,
+    "alternatives_final_loss": 5
+   },
+   {
+    "set": 1434,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1444,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1465,
+    "stratum": "kw",
+    "machine_readable": false,
+    "skeleton_from": "his tags",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1469,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1511,
+    "stratum": null,
+    "machine_readable": false,
+    "skeleton_from": "his form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "obeys_final_loss": null,
+    "meaning_level": null,
+    "alternatives_lexicon": null,
+    "alternatives_sound": null,
+    "alternatives": null,
+    "alternatives_final_loss": null
+   },
+   {
+    "set": 1518,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": false,
+    "obeys_final_loss": false,
+    "meaning_level": 0,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 11,
+    "alternatives": 0,
+    "alternatives_final_loss": 0
+   },
+   {
+    "set": 1525,
+    "stratum": "e",
+    "machine_readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": false,
+    "obeys_final_loss": false,
+    "meaning_level": 1,
+    "alternatives_lexicon": "cdo",
+    "alternatives_sound": 184,
+    "alternatives": 1,
+    "alternatives_final_loss": 1
+   }
+  ]
+ },
+ "known_answer": {
+  "frames": {
+   "yaqui_biblical_hebrew": {
+    "pair": [
+     "wold:Yaqui",
+     "oshl:heb"
+    ],
+    "multi": false,
+    "n": 629,
+    "k_claimed": 328
+   },
+   "yaqui_coptic": {
+    "pair": [
+     "wold:Yaqui",
+     "cdo:cop"
+    ],
+    "multi": false,
+    "n": 663,
+    "k_claimed": 340
+   },
+   "yaqui_late_egyptian": {
+    "pair": [
+     "wold:Yaqui",
+     "asjp:LATE_EGYPTIAN"
+    ],
+    "multi": false,
+    "n": 34,
+    "k_claimed": 23
+   },
+   "greenhill_biblical_hebrew": {
+    "pair": [
+     "gh:*",
+     "oshl:heb"
+    ],
+    "multi": true,
+    "n": 87,
+    "k_claimed": 77
+   },
+   "greenhill_arabic": {
+    "pair": [
+     "gh:*",
+     "nel:arb"
+    ],
+    "multi": true,
+    "n": 115,
+    "k_claimed": 78
+   },
+   "greenhill_aramaic": {
+    "pair": [
+     "gh:*",
+     "asjp:ARAMAIC_ANCIENT"
+    ],
+    "multi": true,
+    "n": 38,
+    "k_claimed": 25
+   },
+   "greenhill_late_egyptian": {
+    "pair": [
+     "gh:*",
+     "asjp:LATE_EGYPTIAN"
+    ],
+    "multi": true,
+    "n": 34,
+    "k_claimed": 23
+   },
+   "greenhill_coptic": {
+    "pair": [
+     "gh:*",
+     "asjp:COPTIC"
+    ],
+    "multi": true,
+    "n": 35,
+    "k_claimed": 24
+   },
+   "pua_biblical_hebrew": {
+    "pair": [
+     "asjp:PROTO_UTO_AZTECAN",
+     "asjp:BIBLICAL_HEBREW"
+    ],
+    "multi": false,
+    "n": 26,
+    "k_claimed": 18
+   },
+   "pua_aramaic": {
+    "pair": [
+     "asjp:PROTO_UTO_AZTECAN",
+     "asjp:ARAMAIC_ANCIENT"
+    ],
+    "multi": false,
+    "n": 33,
+    "k_claimed": 22
+   },
+   "pua_late_egyptian": {
+    "pair": [
+     "asjp:PROTO_UTO_AZTECAN",
+     "asjp:LATE_EGYPTIAN"
+    ],
+    "multi": false,
+    "n": 29,
+    "k_claimed": 20
+   },
+   "pua_coptic": {
+    "pair": [
+     "asjp:PROTO_UTO_AZTECAN",
+     "asjp:COPTIC"
+    ],
+    "multi": false,
+    "n": 32,
+    "k_claimed": 21
+   }
+  },
+  "claims_read": true,
+  "by_size": {
+   "26": {
+    "n": 26,
+    "k_planted": 18,
+    "inherited": [
+     {
+      "pair": [
+       "nel:heb",
+       "nel:arb"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 46.862,
+      "p": 0.31316868313168683,
+      "null_mean": 43.643,
+      "null_sd": 8.382,
+      "z": 0.384,
+      "score_two": 113.306,
+      "p_two": 0.1616838316168383,
+      "skew": {
+       "scored": 18,
+       "per_third": 6,
+       "z_most": -0.562,
+       "z_least": 1.86,
+       "skew": -2.422,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "contact": [
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lit"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 59.039,
+      "p": 0.4233576642335766,
+      "null_mean": 58.22,
+      "null_sd": 8.788,
+      "z": 0.093,
+      "score_two": 111.526,
+      "p_two": 0.22407759224077592,
+      "skew": {
+       "scored": 16,
+       "per_third": 5,
+       "z_most": 0.0,
+       "z_least": -0.002,
+       "skew": 0.002,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lav"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 34.157,
+      "p": 0.9103089691030897,
+      "null_mean": 43.655,
+      "null_sd": 7.775,
+      "z": -1.222,
+      "score_two": 89.328,
+      "p_two": 0.6183381661833817,
+      "skew": {
+       "scored": 19,
+       "per_third": 6,
+       "z_most": 0.203,
+       "z_least": 0.0,
+       "skew": 0.203,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:swe"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 43.137,
+      "p": 0.8374162583741626,
+      "null_mean": 49.913,
+      "null_sd": 7.009,
+      "z": -0.967,
+      "score_two": 111.078,
+      "p_two": 0.6397360263973603,
+      "skew": {
+       "scored": 17,
+       "per_third": 5,
+       "z_most": 0.015,
+       "z_least": 1.453,
+       "skew": -1.438,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:eus",
+       "nel:spa"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 37.399,
+      "p": 0.36306369363063695,
+      "null_mean": 36.418,
+      "null_sd": 8.278,
+      "z": 0.119,
+      "score_two": 62.694,
+      "p_two": 0.619038096190381,
+      "skew": {
+       "scored": 18,
+       "per_third": 6,
+       "z_most": -0.135,
+       "z_least": -0.555,
+       "skew": 0.42,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eng",
+       "nel:fra"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 58.871,
+      "p": 0.11028897110288971,
+      "null_mean": 49.824,
+      "null_sd": 7.303,
+      "z": 1.239,
+      "score_two": 109.896,
+      "p_two": 0.21797820217978203,
+      "skew": {
+       "scored": 18,
+       "per_third": 6,
+       "z_most": 0.205,
+       "z_least": -1.298,
+       "skew": 1.503,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui+loans",
+       "nel:spa"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 76.592,
+      "p": 0.13978602139786023,
+      "null_mean": 65.551,
+      "null_sd": 9.754,
+      "z": 1.132,
+      "score_two": 163.644,
+      "p_two": 0.0678932106789321,
+      "skew": {
+       "scored": 26,
+       "per_third": 8,
+       "z_most": -1.28,
+       "z_least": 0.078,
+       "skew": -1.358,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "negative": [
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:fin"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 35.941,
+      "p": 0.7994200579942006,
+      "null_mean": 41.654,
+      "null_sd": 6.759,
+      "z": -0.845,
+      "score_two": 90.809,
+      "p_two": 0.9811018898110189,
+      "skew": {
+       "scored": 26,
+       "per_third": 8,
+       "z_most": -1.407,
+       "z_least": 0.448,
+       "skew": -1.855,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:jpn"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 61.66,
+      "p": 0.6313368663133687,
+      "null_mean": 65.546,
+      "null_sd": 9.522,
+      "z": -0.408,
+      "score_two": 114.256,
+      "p_two": 0.51994800519948,
+      "skew": {
+       "scored": 26,
+       "per_third": 8,
+       "z_most": 2.411,
+       "z_least": -0.341,
+       "skew": 2.752,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:tam"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 39.91,
+      "p": 0.6579342065793421,
+      "null_mean": 43.638,
+      "null_sd": 7.688,
+      "z": -0.485,
+      "score_two": 112.248,
+      "p_two": 0.14208579142085792,
+      "skew": {
+       "scored": 26,
+       "per_third": 8,
+       "z_most": -0.048,
+       "z_least": -1.314,
+       "skew": 1.266,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:eus"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 44.604,
+      "p": 0.5612438756124387,
+      "null_mean": 46.863,
+      "null_sd": 8.899,
+      "z": -0.254,
+      "score_two": 117.769,
+      "p_two": 0.36296370362963704,
+      "skew": {
+       "scored": 26,
+       "per_third": 8,
+       "z_most": -1.697,
+       "z_least": 1.143,
+       "skew": -2.84,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kat"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 44.596,
+      "p": 0.6655334466553344,
+      "null_mean": 49.936,
+      "null_sd": 10.023,
+      "z": -0.533,
+      "score_two": 100.748,
+      "p_two": 0.7916208379162084,
+      "skew": {
+       "scored": 26,
+       "per_third": 8,
+       "z_most": -0.648,
+       "z_least": 0.146,
+       "skew": -0.794,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:hun"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 54.755,
+      "p": 0.6081391860813918,
+      "null_mean": 58.236,
+      "null_sd": 9.192,
+      "z": -0.379,
+      "score_two": 102.494,
+      "p_two": 0.7167283271672833,
+      "skew": {
+       "scored": 26,
+       "per_third": 8,
+       "z_most": -0.339,
+       "z_least": 1.28,
+       "skew": -1.619,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kor"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 48.335,
+      "p": 0.26787321267873215,
+      "null_mean": 43.783,
+      "null_sd": 7.79,
+      "z": 0.584,
+      "score_two": 110.886,
+      "p_two": 0.23327667233276672,
+      "skew": {
+       "scored": 26,
+       "per_third": 8,
+       "z_most": 0.278,
+       "z_least": 0.138,
+       "skew": 0.14,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "wold:ImbaburaQuechua"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 39.124,
+      "p": 0.37006299370062995,
+      "null_mean": 37.533,
+      "null_sd": 6.495,
+      "z": 0.245,
+      "score_two": 101.312,
+      "p_two": 0.2643735626437356,
+      "skew": {
+       "scored": 26,
+       "per_third": 8,
+       "z_most": -0.234,
+       "z_least": -1.021,
+       "skew": 0.787,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "decoys": [
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:heb"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 41.82,
+      "p": 0.2745725427457254,
+      "null_mean": 37.405,
+      "null_sd": 8.654,
+      "z": 0.51,
+      "score_two": 86.285,
+      "p_two": 0.3134686531346865,
+      "skew": {
+       "scored": 15,
+       "per_third": 5,
+       "z_most": -0.491,
+       "z_least": 0.734,
+       "skew": -1.225,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:tam"
+      ],
+      "shared_used": 26,
+      "n": 26,
+      "score": 45.655,
+      "p": 0.35596440355964404,
+      "null_mean": 43.584,
+      "null_sd": 8.189,
+      "z": 0.253,
+      "score_two": 97.675,
+      "p_two": 0.5967403259674032,
+      "skew": {
+       "scored": 14,
+       "skew": null
+      }
+     }
+    ],
+    "inherited_ok": false,
+    "contact_passing": 0,
+    "contact_detected_without_skew": 0,
+    "contact_ok": false,
+    "finnish_ok": false,
+    "negative_hits": 0,
+    "negative_ok": true,
+    "decoys_ok": true,
+    "planted": {
+     "1.0": {
+      "k": 18,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.5": {
+      "k": 9,
+      "plantings": 1600,
+      "detected": 269,
+      "rate": 0.168
+     },
+     "0.25": {
+      "k": 4,
+      "plantings": 1600,
+      "detected": 8,
+      "rate": 0.005
+     },
+     "power_ok": true
+    },
+    "passed": false
+   },
+   "29": {
+    "n": 29,
+    "k_planted": 20,
+    "inherited": [
+     {
+      "pair": [
+       "nel:heb",
+       "nel:arb"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 61.504,
+      "p": 0.12738726127387262,
+      "null_mean": 50.716,
+      "null_sd": 9.382,
+      "z": 1.15,
+      "score_two": 113.437,
+      "p_two": 0.3330666933306669,
+      "skew": {
+       "scored": 19,
+       "per_third": 6,
+       "z_most": 0.0,
+       "z_least": -1.232,
+       "skew": 1.232,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "contact": [
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lit"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 61.391,
+      "p": 0.30726927307269275,
+      "null_mean": 58.089,
+      "null_sd": 7.777,
+      "z": 0.425,
+      "score_two": 104.553,
+      "p_two": 0.6327367263273672,
+      "skew": {
+       "scored": 15,
+       "per_third": 5,
+       "z_most": 1.474,
+       "z_least": 0.0,
+       "skew": 1.474,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lav"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 30.27,
+      "p": 0.9635036496350365,
+      "null_mean": 41.374,
+      "null_sd": 7.073,
+      "z": -1.57,
+      "score_two": 96.841,
+      "p_two": 0.30896910308969106,
+      "skew": {
+       "scored": 18,
+       "per_third": 6,
+       "z_most": 0.0,
+       "z_least": -0.548,
+       "skew": 0.548,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:swe"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 52.012,
+      "p": 0.6585341465853415,
+      "null_mean": 57.854,
+      "null_sd": 11.392,
+      "z": -0.513,
+      "score_two": 102.295,
+      "p_two": 0.7888211178882112,
+      "skew": {
+       "scored": 21,
+       "per_third": 7,
+       "z_most": -0.938,
+       "z_least": -1.056,
+       "skew": 0.118,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eus",
+       "nel:spa"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 35.411,
+      "p": 0.2686731326867313,
+      "null_mean": 31.001,
+      "null_sd": 7.779,
+      "z": 0.567,
+      "score_two": 67.108,
+      "p_two": 0.6584341565843416,
+      "skew": {
+       "scored": 20,
+       "per_third": 6,
+       "z_most": -0.053,
+       "z_least": 0.719,
+       "skew": -0.772,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:eng",
+       "nel:fra"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 86.259,
+      "p": 0.005699430056994301,
+      "null_mean": 57.994,
+      "null_sd": 9.137,
+      "z": 3.093,
+      "score_two": 134.037,
+      "p_two": 0.1151884811518848,
+      "skew": {
+       "scored": 18,
+       "per_third": 6,
+       "z_most": -0.568,
+       "z_least": 0.606,
+       "skew": -1.174,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui+loans",
+       "nel:spa"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 62.301,
+      "p": 0.22027797220277973,
+      "null_mean": 55.949,
+      "null_sd": 9.233,
+      "z": 0.688,
+      "score_two": 117.501,
+      "p_two": 0.3545645435456454,
+      "skew": {
+       "scored": 29,
+       "per_third": 9,
+       "z_most": 0.005,
+       "z_least": -0.148,
+       "skew": 0.153,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "negative": [
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:fin"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 91.707,
+      "p": 0.0098990100989901,
+      "null_mean": 66.416,
+      "null_sd": 9.334,
+      "z": 2.71,
+      "score_two": 159.091,
+      "p_two": 0.1075892410758924,
+      "skew": {
+       "scored": 29,
+       "per_third": 9,
+       "z_most": 1.694,
+       "z_least": 0.768,
+       "skew": 0.926,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:jpn"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 59.009,
+      "p": 0.22897710228977103,
+      "null_mean": 50.75,
+      "null_sd": 11.762,
+      "z": 0.702,
+      "score_two": 136.423,
+      "p_two": 0.22307769223077692,
+      "skew": {
+       "scored": 29,
+       "per_third": 9,
+       "z_most": -0.225,
+       "z_least": -0.278,
+       "skew": 0.053,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:tam"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 78.162,
+      "p": 0.04409559044095591,
+      "null_mean": 56.054,
+      "null_sd": 11.818,
+      "z": 1.871,
+      "score_two": 132.146,
+      "p_two": 0.11548845115488451,
+      "skew": {
+       "scored": 29,
+       "per_third": 9,
+       "z_most": 0.375,
+       "z_least": 1.105,
+       "skew": -0.73,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:eus"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 58.669,
+      "p": 0.1491850814918508,
+      "null_mean": 49.665,
+      "null_sd": 8.836,
+      "z": 1.019,
+      "score_two": 117.253,
+      "p_two": 0.40205979402059794,
+      "skew": {
+       "scored": 29,
+       "per_third": 9,
+       "z_most": -0.247,
+       "z_least": -0.004,
+       "skew": -0.243,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kat"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 36.025,
+      "p": 0.7088291170882912,
+      "null_mean": 41.441,
+      "null_sd": 8.931,
+      "z": -0.606,
+      "score_two": 94.826,
+      "p_two": 0.20707929207079293,
+      "skew": {
+       "scored": 29,
+       "per_third": 9,
+       "z_most": 0.068,
+       "z_least": 1.125,
+       "skew": -1.057,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:hun"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 45.91,
+      "p": 0.6666333366663334,
+      "null_mean": 50.728,
+      "null_sd": 9.366,
+      "z": -0.514,
+      "score_two": 129.524,
+      "p_two": 0.7966203379662034,
+      "skew": {
+       "scored": 29,
+       "per_third": 9,
+       "z_most": -0.972,
+       "z_least": 0.615,
+       "skew": -1.587,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kor"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 80.087,
+      "p": 0.008999100089991,
+      "null_mean": 49.801,
+      "null_sd": 10.67,
+      "z": 2.839,
+      "score_two": 143.959,
+      "p_two": 0.09269073092690731,
+      "skew": {
+       "scored": 29,
+       "per_third": 9,
+       "z_most": -0.384,
+       "z_least": -0.276,
+       "skew": -0.108,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "wold:ImbaburaQuechua"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 48.36,
+      "p": 0.5703429657034297,
+      "null_mean": 50.712,
+      "null_sd": 8.681,
+      "z": -0.271,
+      "score_two": 116.012,
+      "p_two": 0.8885111488851115,
+      "skew": {
+       "scored": 29,
+       "per_third": 9,
+       "z_most": 2.017,
+       "z_least": 2.25,
+       "skew": -0.233,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "decoys": [
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:heb"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 54.874,
+      "p": 0.22867713228677133,
+      "null_mean": 49.73,
+      "null_sd": 7.715,
+      "z": 0.667,
+      "score_two": 127.739,
+      "p_two": 0.1765823417658234,
+      "skew": {
+       "scored": 21,
+       "per_third": 7,
+       "z_most": 2.522,
+       "z_least": 0.264,
+       "skew": 2.258,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:tam"
+      ],
+      "shared_used": 29,
+      "n": 29,
+      "score": 46.078,
+      "p": 0.6551344865513449,
+      "null_mean": 50.93,
+      "null_sd": 9.433,
+      "z": -0.514,
+      "score_two": 96.491,
+      "p_two": 0.36236376362363765,
+      "skew": {
+       "scored": 17,
+       "per_third": 5,
+       "z_most": -0.494,
+       "z_least": 0.0,
+       "skew": -0.494,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "inherited_ok": false,
+    "contact_passing": 0,
+    "contact_detected_without_skew": 1,
+    "contact_ok": false,
+    "finnish_ok": false,
+    "negative_hits": 2,
+    "negative_ok": false,
+    "decoys_ok": true,
+    "planted": {
+     "1.0": {
+      "k": 20,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.5": {
+      "k": 10,
+      "plantings": 1600,
+      "detected": 511,
+      "rate": 0.319
+     },
+     "0.25": {
+      "k": 5,
+      "plantings": 1600,
+      "detected": 160,
+      "rate": 0.1
+     },
+     "power_ok": true
+    },
+    "passed": false
+   },
+   "32": {
+    "n": 32,
+    "k_planted": 21,
+    "inherited": [
+     {
+      "pair": [
+       "nel:heb",
+       "nel:arb"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 44.779,
+      "p": 0.7150284971502849,
+      "null_mean": 49.633,
+      "null_sd": 7.896,
+      "z": -0.615,
+      "score_two": 116.512,
+      "p_two": 0.22037796220377961,
+      "skew": {
+       "scored": 23,
+       "per_third": 7,
+       "z_most": -1.24,
+       "z_least": 0.405,
+       "skew": -1.645,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "contact": [
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lit"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 40.478,
+      "p": 0.9905009499050095,
+      "null_mean": 57.803,
+      "null_sd": 9.44,
+      "z": -1.835,
+      "score_two": 84.834,
+      "p_two": 0.9837016298370163,
+      "skew": {
+       "scored": 22,
+       "per_third": 7,
+       "z_most": -0.332,
+       "z_least": 0.662,
+       "skew": -0.994,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lav"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 49.939,
+      "p": 0.9204079592040796,
+      "null_mean": 65.169,
+      "null_sd": 11.567,
+      "z": -1.317,
+      "score_two": 112.417,
+      "p_two": 0.5243475652434757,
+      "skew": {
+       "scored": 25,
+       "per_third": 8,
+       "z_most": 0.294,
+       "z_least": -0.738,
+       "skew": 1.032,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:swe"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 77.639,
+      "p": 0.12408759124087591,
+      "null_mean": 65.164,
+      "null_sd": 10.69,
+      "z": 1.167,
+      "score_two": 134.689,
+      "p_two": 0.3725627437256274,
+      "skew": {
+       "scored": 18,
+       "per_third": 6,
+       "z_most": 0.42,
+       "z_least": 0.0,
+       "skew": 0.42,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eus",
+       "nel:spa"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 46.524,
+      "p": 0.31256874312568744,
+      "null_mean": 43.222,
+      "null_sd": 12.239,
+      "z": 0.27,
+      "score_two": 106.769,
+      "p_two": 0.3217678232176782,
+      "skew": {
+       "scored": 20,
+       "per_third": 6,
+       "z_most": 0.586,
+       "z_least": -0.695,
+       "skew": 1.281,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eng",
+       "nel:fra"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 71.321,
+      "p": 0.2440755924407559,
+      "null_mean": 64.954,
+      "null_sd": 10.707,
+      "z": 0.595,
+      "score_two": 127.968,
+      "p_two": 0.5494450554944506,
+      "skew": {
+       "scored": 23,
+       "per_third": 7,
+       "z_most": 0.283,
+       "z_least": -0.326,
+       "skew": 0.609,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui+loans",
+       "nel:spa"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 52.251,
+      "p": 0.32456754324567544,
+      "null_mean": 49.404,
+      "null_sd": 9.996,
+      "z": 0.285,
+      "score_two": 121.171,
+      "p_two": 0.5353464653534646,
+      "skew": {
+       "scored": 32,
+       "per_third": 10,
+       "z_most": -0.717,
+       "z_least": -1.504,
+       "skew": 0.787,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "negative": [
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:fin"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 58.899,
+      "p": 0.9672032796720328,
+      "null_mean": 83.628,
+      "null_sd": 15.935,
+      "z": -1.552,
+      "score_two": 159.844,
+      "p_two": 0.7902209779022098,
+      "skew": {
+       "scored": 32,
+       "per_third": 10,
+       "z_most": -0.755,
+       "z_least": -1.42,
+       "skew": 0.665,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:jpn"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 51.279,
+      "p": 0.8818118188181182,
+      "null_mean": 66.21,
+      "null_sd": 13.681,
+      "z": -1.091,
+      "score_two": 128.479,
+      "p_two": 0.8912108789121088,
+      "skew": {
+       "scored": 32,
+       "per_third": 10,
+       "z_most": 0.589,
+       "z_least": -0.243,
+       "skew": 0.832,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:tam"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 37.591,
+      "p": 0.9506049395060494,
+      "null_mean": 50.526,
+      "null_sd": 8.594,
+      "z": -1.505,
+      "score_two": 94.169,
+      "p_two": 0.8892110788921108,
+      "skew": {
+       "scored": 32,
+       "per_third": 10,
+       "z_most": 0.486,
+       "z_least": -1.159,
+       "skew": 1.645,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:eus"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 35.847,
+      "p": 0.6478352164783522,
+      "null_mean": 41.264,
+      "null_sd": 10.593,
+      "z": -0.511,
+      "score_two": 104.89,
+      "p_two": 0.7165283471652835,
+      "skew": {
+       "scored": 32,
+       "per_third": 10,
+       "z_most": -0.716,
+       "z_least": 0.579,
+       "skew": -1.295,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kat"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 54.967,
+      "p": 0.22357764223577642,
+      "null_mean": 49.502,
+      "null_sd": 7.694,
+      "z": 0.71,
+      "score_two": 111.678,
+      "p_two": 0.28047195280471954,
+      "skew": {
+       "scored": 32,
+       "per_third": 10,
+       "z_most": 1.928,
+       "z_least": -0.068,
+       "skew": 1.996,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:hun"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 59.847,
+      "p": 0.37796220377962203,
+      "null_mean": 57.957,
+      "null_sd": 9.217,
+      "z": 0.205,
+      "score_two": 127.803,
+      "p_two": 0.23347665233476653,
+      "skew": {
+       "scored": 32,
+       "per_third": 10,
+       "z_most": 0.13,
+       "z_least": 2.16,
+       "skew": -2.03,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kor"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 71.547,
+      "p": 0.5816418358164184,
+      "null_mean": 74.478,
+      "null_sd": 9.911,
+      "z": -0.296,
+      "score_two": 165.815,
+      "p_two": 0.05419458054194581,
+      "skew": {
+       "scored": 32,
+       "per_third": 10,
+       "z_most": -0.465,
+       "z_least": -0.174,
+       "skew": -0.291,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "wold:ImbaburaQuechua"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 47.358,
+      "p": 0.21277872212778723,
+      "null_mean": 41.179,
+      "null_sd": 9.148,
+      "z": 0.675,
+      "score_two": 144.215,
+      "p_two": 0.08029197080291971,
+      "skew": {
+       "scored": 32,
+       "per_third": 10,
+       "z_most": 0.445,
+       "z_least": -1.168,
+       "skew": 1.613,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "decoys": [
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:heb"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 68.434,
+      "p": 0.21877812218778123,
+      "null_mean": 58.068,
+      "null_sd": 13.351,
+      "z": 0.777,
+      "score_two": 142.594,
+      "p_two": 0.420957904209579,
+      "skew": {
+       "scored": 19,
+       "per_third": 6,
+       "z_most": -0.253,
+       "z_least": 0.189,
+       "skew": -0.442,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:tam"
+      ],
+      "shared_used": 32,
+      "n": 32,
+      "score": 46.84,
+      "p": 0.6502349765023497,
+      "null_mean": 50.58,
+      "null_sd": 8.219,
+      "z": -0.455,
+      "score_two": 107.021,
+      "p_two": 0.708929107089291,
+      "skew": {
+       "scored": 17,
+       "per_third": 5,
+       "z_most": 0.004,
+       "z_least": 1.458,
+       "skew": -1.454,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "inherited_ok": false,
+    "contact_passing": 0,
+    "contact_detected_without_skew": 0,
+    "contact_ok": false,
+    "finnish_ok": false,
+    "negative_hits": 0,
+    "negative_ok": true,
+    "decoys_ok": true,
+    "planted": {
+     "1.0": {
+      "k": 21,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.5": {
+      "k": 10,
+      "plantings": 1600,
+      "detected": 224,
+      "rate": 0.14
+     },
+     "0.25": {
+      "k": 5,
+      "plantings": 1600,
+      "detected": 19,
+      "rate": 0.012
+     },
+     "power_ok": true
+    },
+    "passed": false
+   },
+   "33": {
+    "n": 33,
+    "k_planted": 22,
+    "inherited": [
+     {
+      "pair": [
+       "nel:heb",
+       "nel:arb"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 89.222,
+      "p": 0.1272872712728727,
+      "null_mean": 74.173,
+      "null_sd": 13.077,
+      "z": 1.151,
+      "score_two": 169.715,
+      "p_two": 0.044495550444955505,
+      "skew": {
+       "scored": 22,
+       "per_third": 7,
+       "z_most": -0.96,
+       "z_least": 2.653,
+       "skew": -3.613,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "contact": [
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lit"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 53.773,
+      "p": 0.6076392360763924,
+      "null_mean": 57.706,
+      "null_sd": 11.026,
+      "z": -0.357,
+      "score_two": 118.726,
+      "p_two": 0.7498250174982501,
+      "skew": {
+       "scored": 21,
+       "per_third": 7,
+       "z_most": -1.067,
+       "z_least": -0.02,
+       "skew": -1.047,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lav"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 49.333,
+      "p": 0.6661333866613338,
+      "null_mean": 57.578,
+      "null_sd": 14.806,
+      "z": -0.557,
+      "score_two": 83.643,
+      "p_two": 0.7986201379862014,
+      "skew": {
+       "scored": 21,
+       "per_third": 7,
+       "z_most": 0.307,
+       "z_least": -0.247,
+       "skew": 0.554,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:swe"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 49.178,
+      "p": 0.4824517548245176,
+      "null_mean": 49.547,
+      "null_sd": 8.561,
+      "z": -0.043,
+      "score_two": 131.296,
+      "p_two": 0.4884511548845116,
+      "skew": {
+       "scored": 20,
+       "per_third": 6,
+       "z_most": 0.639,
+       "z_least": 0.708,
+       "skew": -0.069,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:eus",
+       "nel:spa"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 57.883,
+      "p": 0.2622737726227377,
+      "null_mean": 50.488,
+      "null_sd": 13.085,
+      "z": 0.565,
+      "score_two": 101.753,
+      "p_two": 0.626937306269373,
+      "skew": {
+       "scored": 24,
+       "per_third": 8,
+       "z_most": 2.004,
+       "z_least": 1.592,
+       "skew": 0.412,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eng",
+       "nel:fra"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 84.65,
+      "p": 0.021497850214978503,
+      "null_mean": 57.682,
+      "null_sd": 11.446,
+      "z": 2.356,
+      "score_two": 145.122,
+      "p_two": 0.0847915208479152,
+      "skew": {
+       "scored": 24,
+       "per_third": 8,
+       "z_most": 0.18,
+       "z_least": -0.36,
+       "skew": 0.54,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui+loans",
+       "nel:spa"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 69.231,
+      "p": 0.15648435156484353,
+      "null_mean": 56.018,
+      "null_sd": 12.321,
+      "z": 1.072,
+      "score_two": 130.795,
+      "p_two": 0.6696330366963303,
+      "skew": {
+       "scored": 33,
+       "per_third": 11,
+       "z_most": -0.188,
+       "z_least": -0.131,
+       "skew": -0.057,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "negative": [
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:fin"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 62.782,
+      "p": 0.24037596240375964,
+      "null_mean": 57.694,
+      "null_sd": 8.059,
+      "z": 0.631,
+      "score_two": 135.928,
+      "p_two": 0.8602139786021398,
+      "skew": {
+       "scored": 33,
+       "per_third": 11,
+       "z_most": -0.1,
+       "z_least": -0.666,
+       "skew": 0.566,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:jpn"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 79.01,
+      "p": 0.2763723627637236,
+      "null_mean": 74.327,
+      "null_sd": 8.959,
+      "z": 0.523,
+      "score_two": 159.631,
+      "p_two": 0.17668233176682333,
+      "skew": {
+       "scored": 33,
+       "per_third": 11,
+       "z_most": 0.122,
+       "z_least": 0.048,
+       "skew": 0.074,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:tam"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 62.731,
+      "p": 0.565943405659434,
+      "null_mean": 64.919,
+      "null_sd": 9.362,
+      "z": -0.234,
+      "score_two": 105.015,
+      "p_two": 0.8986101389861014,
+      "skew": {
+       "scored": 33,
+       "per_third": 11,
+       "z_most": -0.188,
+       "z_least": 0.2,
+       "skew": -0.388,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:eus"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 54.049,
+      "p": 0.30546945305469453,
+      "null_mean": 49.645,
+      "null_sd": 12.641,
+      "z": 0.348,
+      "score_two": 96.506,
+      "p_two": 0.31826817318268175,
+      "skew": {
+       "scored": 33,
+       "per_third": 11,
+       "z_most": 0.255,
+       "z_least": 2.332,
+       "skew": -2.077,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kat"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 83.752,
+      "p": 0.008099190080991902,
+      "null_mean": 55.796,
+      "null_sd": 9.107,
+      "z": 3.07,
+      "score_two": 149.047,
+      "p_two": 0.0212978702129787,
+      "skew": {
+       "scored": 33,
+       "per_third": 11,
+       "z_most": 0.551,
+       "z_least": -0.99,
+       "skew": 1.541,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:hun"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 51.29,
+      "p": 0.7703229677032297,
+      "null_mean": 57.617,
+      "null_sd": 8.393,
+      "z": -0.754,
+      "score_two": 114.666,
+      "p_two": 0.7294270572942706,
+      "skew": {
+       "scored": 33,
+       "per_third": 11,
+       "z_most": 0.508,
+       "z_least": -0.219,
+       "skew": 0.727,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kor"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 51.611,
+      "p": 0.3518648135186481,
+      "null_mean": 49.429,
+      "null_sd": 8.543,
+      "z": 0.255,
+      "score_two": 148.306,
+      "p_two": 0.3350664933506649,
+      "skew": {
+       "scored": 33,
+       "per_third": 11,
+       "z_most": 1.036,
+       "z_least": -1.537,
+       "skew": 2.573,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "wold:ImbaburaQuechua"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 52.341,
+      "p": 0.6751324867513249,
+      "null_mean": 57.777,
+      "null_sd": 10.141,
+      "z": -0.536,
+      "score_two": 162.205,
+      "p_two": 0.0953904609539046,
+      "skew": {
+       "scored": 33,
+       "per_third": 11,
+       "z_most": 0.216,
+       "z_least": -0.834,
+       "skew": 1.05,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "decoys": [
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:heb"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 51.958,
+      "p": 0.6459354064593541,
+      "null_mean": 57.856,
+      "null_sd": 12.733,
+      "z": -0.463,
+      "score_two": 94.179,
+      "p_two": 0.8321167883211679,
+      "skew": {
+       "scored": 23,
+       "per_third": 7,
+       "z_most": 1.201,
+       "z_least": -0.956,
+       "skew": 2.157,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:tam"
+      ],
+      "shared_used": 33,
+      "n": 33,
+      "score": 61.609,
+      "p": 0.6177382261773823,
+      "null_mean": 66.176,
+      "null_sd": 11.713,
+      "z": -0.39,
+      "score_two": 107.364,
+      "p_two": 0.46755324467553244,
+      "skew": {
+       "scored": 21,
+       "per_third": 7,
+       "z_most": -1.287,
+       "z_least": -0.315,
+       "skew": -0.972,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "inherited_ok": false,
+    "contact_passing": 0,
+    "contact_detected_without_skew": 0,
+    "contact_ok": false,
+    "finnish_ok": false,
+    "negative_hits": 1,
+    "negative_ok": true,
+    "decoys_ok": true,
+    "planted": {
+     "1.0": {
+      "k": 22,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.5": {
+      "k": 11,
+      "plantings": 1600,
+      "detected": 469,
+      "rate": 0.293
+     },
+     "0.25": {
+      "k": 6,
+      "plantings": 1600,
+      "detected": 77,
+      "rate": 0.048
+     },
+     "power_ok": true
+    },
+    "passed": false
+   },
+   "34": {
+    "n": 34,
+    "k_planted": 23,
+    "inherited": [
+     {
+      "pair": [
+       "nel:heb",
+       "nel:arb"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 37.797,
+      "p": 0.14378562143785623,
+      "null_mean": 30.863,
+      "null_sd": 6.535,
+      "z": 1.061,
+      "score_two": 139.233,
+      "p_two": 0.008599140085991401,
+      "skew": {
+       "scored": 19,
+       "per_third": 6,
+       "z_most": 0.622,
+       "z_least": -0.055,
+       "skew": 0.677,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "contact": [
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lit"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 74.235,
+      "p": 0.48735126487351266,
+      "null_mean": 74.367,
+      "null_sd": 10.227,
+      "z": -0.013,
+      "score_two": 140.667,
+      "p_two": 0.27717228277172284,
+      "skew": {
+       "scored": 17,
+       "per_third": 5,
+       "z_most": 0.003,
+       "z_least": -1.134,
+       "skew": 1.137,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lav"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 55.351,
+      "p": 0.2820717928207179,
+      "null_mean": 50.485,
+      "null_sd": 9.9,
+      "z": 0.492,
+      "score_two": 101.884,
+      "p_two": 0.40385961403859616,
+      "skew": {
+       "scored": 21,
+       "per_third": 7,
+       "z_most": 1.222,
+       "z_least": -0.342,
+       "skew": 1.564,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:swe"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 50.29,
+      "p": 0.6659334066593341,
+      "null_mean": 57.561,
+      "null_sd": 13.488,
+      "z": -0.539,
+      "score_two": 81.007,
+      "p_two": 0.944005599440056,
+      "skew": {
+       "scored": 23,
+       "per_third": 7,
+       "z_most": 1.155,
+       "z_least": -0.404,
+       "skew": 1.559,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eus",
+       "nel:spa"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 35.945,
+      "p": 0.7528247175282472,
+      "null_mean": 43.196,
+      "null_sd": 10.285,
+      "z": -0.705,
+      "score_two": 96.558,
+      "p_two": 0.9544045595440456,
+      "skew": {
+       "scored": 24,
+       "per_third": 8,
+       "z_most": 0.637,
+       "z_least": 1.516,
+       "skew": -0.879,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:eng",
+       "nel:fra"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 49.556,
+      "p": 0.5162483751624838,
+      "null_mean": 50.392,
+      "null_sd": 8.486,
+      "z": -0.098,
+      "score_two": 119.563,
+      "p_two": 0.16898310168983102,
+      "skew": {
+       "scored": 16,
+       "per_third": 5,
+       "z_most": 0.0,
+       "z_least": 0.007,
+       "skew": -0.007,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui+loans",
+       "nel:spa"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 52.487,
+      "p": 0.9485051494850515,
+      "null_mean": 64.862,
+      "null_sd": 8.571,
+      "z": -1.444,
+      "score_two": 123.55,
+      "p_two": 0.9703029697030296,
+      "skew": {
+       "scored": 34,
+       "per_third": 11,
+       "z_most": -1.128,
+       "z_least": -0.699,
+       "skew": -0.429,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "negative": [
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:fin"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 82.261,
+      "p": 0.18788121187881213,
+      "null_mean": 74.118,
+      "null_sd": 9.737,
+      "z": 0.836,
+      "score_two": 152.924,
+      "p_two": 0.587041295870413,
+      "skew": {
+       "scored": 34,
+       "per_third": 11,
+       "z_most": 1.066,
+       "z_least": 1.02,
+       "skew": 0.046,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:jpn"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 71.39,
+      "p": 0.3371662833716628,
+      "null_mean": 65.759,
+      "null_sd": 16.032,
+      "z": 0.351,
+      "score_two": 158.729,
+      "p_two": 0.30956904309569044,
+      "skew": {
+       "scored": 34,
+       "per_third": 11,
+       "z_most": -1.236,
+       "z_least": 0.963,
+       "skew": -2.199,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:tam"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 54.293,
+      "p": 0.628937106289371,
+      "null_mean": 57.597,
+      "null_sd": 8.605,
+      "z": -0.384,
+      "score_two": 91.084,
+      "p_two": 0.7828217178282172,
+      "skew": {
+       "scored": 34,
+       "per_third": 11,
+       "z_most": 1.371,
+       "z_least": 1.003,
+       "skew": 0.368,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:eus"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 37.661,
+      "p": 0.6333366663333667,
+      "null_mean": 41.122,
+      "null_sd": 8.443,
+      "z": -0.41,
+      "score_two": 110.625,
+      "p_two": 0.5322467753224678,
+      "skew": {
+       "scored": 34,
+       "per_third": 11,
+       "z_most": -1.241,
+       "z_least": 0.284,
+       "skew": -1.525,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kat"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 47.379,
+      "p": 0.8580141985801419,
+      "null_mean": 57.767,
+      "null_sd": 10.249,
+      "z": -1.014,
+      "score_two": 111.446,
+      "p_two": 0.5208479152084792,
+      "skew": {
+       "scored": 34,
+       "per_third": 11,
+       "z_most": -0.052,
+       "z_least": 0.074,
+       "skew": -0.126,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:hun"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 38.463,
+      "p": 0.9484051594840516,
+      "null_mean": 50.4,
+      "null_sd": 8.2,
+      "z": -1.456,
+      "score_two": 119.58,
+      "p_two": 0.7914208579142086,
+      "skew": {
+       "scored": 34,
+       "per_third": 11,
+       "z_most": 0.505,
+       "z_least": -1.288,
+       "skew": 1.793,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kor"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 71.157,
+      "p": 0.5761423857614238,
+      "null_mean": 74.252,
+      "null_sd": 10.823,
+      "z": -0.286,
+      "score_two": 158.552,
+      "p_two": 0.24937506249375063,
+      "skew": {
+       "scored": 34,
+       "per_third": 11,
+       "z_most": -1.024,
+       "z_least": 2.375,
+       "skew": -3.399,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "wold:ImbaburaQuechua"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 58.054,
+      "p": 0.44915508449155084,
+      "null_mean": 57.925,
+      "null_sd": 11.85,
+      "z": 0.011,
+      "score_two": 141.685,
+      "p_two": 0.4313568643135686,
+      "skew": {
+       "scored": 34,
+       "per_third": 11,
+       "z_most": 0.45,
+       "z_least": -0.424,
+       "skew": 0.874,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "decoys": [
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:heb"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 41.351,
+      "p": 0.7957204279572043,
+      "null_mean": 49.654,
+      "null_sd": 10.069,
+      "z": -0.825,
+      "score_two": 101.546,
+      "p_two": 0.6223377662233777,
+      "skew": {
+       "scored": 24,
+       "per_third": 8,
+       "z_most": 0.623,
+       "z_least": -0.205,
+       "skew": 0.828,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:tam"
+      ],
+      "shared_used": 34,
+      "n": 34,
+      "score": 61.106,
+      "p": 0.05959404059594041,
+      "null_mean": 49.486,
+      "null_sd": 7.079,
+      "z": 1.641,
+      "score_two": 121.859,
+      "p_two": 0.5174482551744826,
+      "skew": {
+       "scored": 19,
+       "per_third": 6,
+       "z_most": 1.587,
+       "z_least": 1.827,
+       "skew": -0.24,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "inherited_ok": false,
+    "contact_passing": 0,
+    "contact_detected_without_skew": 0,
+    "contact_ok": false,
+    "finnish_ok": false,
+    "negative_hits": 0,
+    "negative_ok": true,
+    "decoys_ok": true,
+    "planted": {
+     "1.0": {
+      "k": 23,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.5": {
+      "k": 12,
+      "plantings": 1600,
+      "detected": 550,
+      "rate": 0.344
+     },
+     "0.25": {
+      "k": 6,
+      "plantings": 1600,
+      "detected": 22,
+      "rate": 0.014
+     },
+     "power_ok": true
+    },
+    "passed": false
+   },
+   "35": {
+    "n": 35,
+    "k_planted": 24,
+    "inherited": [
+     {
+      "pair": [
+       "nel:heb",
+       "nel:arb"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 62.455,
+      "p": 0.0744925507449255,
+      "null_mean": 50.328,
+      "null_sd": 8.007,
+      "z": 1.515,
+      "score_two": 110.58,
+      "p_two": 0.22797720227977203,
+      "skew": {
+       "scored": 24,
+       "per_third": 8,
+       "z_most": 0.829,
+       "z_least": 0.872,
+       "skew": -0.043,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "contact": [
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lit"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 57.4,
+      "p": 0.982001799820018,
+      "null_mean": 74.132,
+      "null_sd": 9.723,
+      "z": -1.721,
+      "score_two": 126.661,
+      "p_two": 0.9379062093790621,
+      "skew": {
+       "scored": 25,
+       "per_third": 8,
+       "z_most": -1.493,
+       "z_least": -1.774,
+       "skew": 0.281,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lav"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 55.435,
+      "p": 0.5592440755924407,
+      "null_mean": 57.542,
+      "null_sd": 8.474,
+      "z": -0.249,
+      "score_two": 102.733,
+      "p_two": 0.7958204179582041,
+      "skew": {
+       "scored": 20,
+       "per_third": 6,
+       "z_most": -0.81,
+       "z_least": 0.211,
+       "skew": -1.021,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:swe"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 68.359,
+      "p": 0.38306169383061695,
+      "null_mean": 65.663,
+      "null_sd": 14.973,
+      "z": 0.18,
+      "score_two": 116.852,
+      "p_two": 0.5946405359464053,
+      "skew": {
+       "scored": 23,
+       "per_third": 7,
+       "z_most": 0.011,
+       "z_least": 0.0,
+       "skew": 0.011,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eus",
+       "nel:spa"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 25.99,
+      "p": 0.9651034896510349,
+      "null_mean": 37.029,
+      "null_sd": 7.156,
+      "z": -1.543,
+      "score_two": 98.294,
+      "p_two": 0.3518648135186481,
+      "skew": {
+       "scored": 20,
+       "per_third": 6,
+       "z_most": -1.228,
+       "z_least": -0.548,
+       "skew": -0.68,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:eng",
+       "nel:fra"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 50.431,
+      "p": 0.39876012398760124,
+      "null_mean": 49.396,
+      "null_sd": 9.814,
+      "z": 0.106,
+      "score_two": 117.844,
+      "p_two": 0.14878512148785122,
+      "skew": {
+       "scored": 21,
+       "per_third": 7,
+       "z_most": -1.056,
+       "z_least": -0.31,
+       "skew": -0.746,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui+loans",
+       "nel:spa"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 50.823,
+      "p": 0.7217278272172782,
+      "null_mean": 57.578,
+      "null_sd": 10.623,
+      "z": -0.636,
+      "score_two": 135.225,
+      "p_two": 0.33696630336966304,
+      "skew": {
+       "scored": 35,
+       "per_third": 11,
+       "z_most": 3.264,
+       "z_least": -1.206,
+       "skew": 4.47,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "negative": [
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:fin"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 75.347,
+      "p": 0.744025597440256,
+      "null_mean": 83.306,
+      "null_sd": 11.434,
+      "z": -0.696,
+      "score_two": 154.625,
+      "p_two": 0.5506449355064493,
+      "skew": {
+       "scored": 35,
+       "per_third": 11,
+       "z_most": 0.879,
+       "z_least": 0.746,
+       "skew": 0.133,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:jpn"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 32.706,
+      "p": 0.8264173582641736,
+      "null_mean": 41.207,
+      "null_sd": 8.911,
+      "z": -0.954,
+      "score_two": 92.159,
+      "p_two": 0.9582041795820418,
+      "skew": {
+       "scored": 35,
+       "per_third": 11,
+       "z_most": -0.089,
+       "z_least": 2.435,
+       "skew": -2.524,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:tam"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 35.963,
+      "p": 0.7912208779122087,
+      "null_mean": 43.111,
+      "null_sd": 9.207,
+      "z": -0.776,
+      "score_two": 100.002,
+      "p_two": 0.7639236076392361,
+      "skew": {
+       "scored": 35,
+       "per_third": 11,
+       "z_most": 0.514,
+       "z_least": -0.828,
+       "skew": 1.342,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:eus"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 40.352,
+      "p": 0.7826217378262174,
+      "null_mean": 49.612,
+      "null_sd": 11.32,
+      "z": -0.818,
+      "score_two": 154.676,
+      "p_two": 0.25777422257774224,
+      "skew": {
+       "scored": 35,
+       "per_third": 11,
+       "z_most": 1.49,
+       "z_least": -1.353,
+       "skew": 2.843,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kat"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 50.404,
+      "p": 0.6355364463553644,
+      "null_mean": 55.551,
+      "null_sd": 11.601,
+      "z": -0.444,
+      "score_two": 89.021,
+      "p_two": 0.8224177582241776,
+      "skew": {
+       "scored": 35,
+       "per_third": 11,
+       "z_most": -0.355,
+       "z_least": 0.16,
+       "skew": -0.515,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:hun"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 46.966,
+      "p": 0.7772222777722227,
+      "null_mean": 55.649,
+      "null_sd": 11.169,
+      "z": -0.777,
+      "score_two": 99.681,
+      "p_two": 0.6602339766023397,
+      "skew": {
+       "scored": 35,
+       "per_third": 11,
+       "z_most": 0.697,
+       "z_least": 1.199,
+       "skew": -0.502,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kor"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 80.358,
+      "p": 0.16058394160583941,
+      "null_mean": 66.031,
+      "null_sd": 13.804,
+      "z": 1.038,
+      "score_two": 160.587,
+      "p_two": 0.23207679232076792,
+      "skew": {
+       "scored": 35,
+       "per_third": 11,
+       "z_most": -0.077,
+       "z_least": 0.845,
+       "skew": -0.922,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "wold:ImbaburaQuechua"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 64.677,
+      "p": 0.7715228477152285,
+      "null_mean": 74.191,
+      "null_sd": 12.122,
+      "z": -0.785,
+      "score_two": 158.878,
+      "p_two": 0.43455654434556545,
+      "skew": {
+       "scored": 35,
+       "per_third": 11,
+       "z_most": -0.369,
+       "z_least": 1.32,
+       "skew": -1.689,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "decoys": [
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:heb"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 76.717,
+      "p": 0.05069493050694931,
+      "null_mean": 57.432,
+      "null_sd": 10.516,
+      "z": 1.834,
+      "score_two": 134.886,
+      "p_two": 0.21107889211078892,
+      "skew": {
+       "scored": 16,
+       "per_third": 5,
+       "z_most": -0.904,
+       "z_least": -0.001,
+       "skew": -0.903,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:tam"
+      ],
+      "shared_used": 35,
+      "n": 35,
+      "score": 71.075,
+      "p": 0.041995800419958006,
+      "null_mean": 50.267,
+      "null_sd": 10.063,
+      "z": 2.068,
+      "score_two": 130.585,
+      "p_two": 0.0143985601439856,
+      "skew": {
+       "scored": 25,
+       "per_third": 8,
+       "z_most": -0.313,
+       "z_least": 0.198,
+       "skew": -0.511,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "inherited_ok": false,
+    "contact_passing": 0,
+    "contact_detected_without_skew": 0,
+    "contact_ok": false,
+    "finnish_ok": false,
+    "negative_hits": 0,
+    "negative_ok": true,
+    "decoys_ok": false,
+    "planted": {
+     "1.0": {
+      "k": 24,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.5": {
+      "k": 12,
+      "plantings": 1600,
+      "detected": 448,
+      "rate": 0.28
+     },
+     "0.25": {
+      "k": 6,
+      "plantings": 1600,
+      "detected": 16,
+      "rate": 0.01
+     },
+     "power_ok": true
+    },
+    "passed": false
+   },
+   "38": {
+    "n": 38,
+    "k_planted": 25,
+    "inherited": [
+     {
+      "pair": [
+       "nel:heb",
+       "nel:arb"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 79.34,
+      "p": 0.05879412058794121,
+      "null_mean": 57.483,
+      "null_sd": 12.036,
+      "z": 1.816,
+      "score_two": 135.734,
+      "p_two": 0.1351864813518648,
+      "skew": {
+       "scored": 19,
+       "per_third": 6,
+       "z_most": -0.497,
+       "z_least": 2.362,
+       "skew": -2.859,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "contact": [
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lit"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 71.471,
+      "p": 0.2515748425157484,
+      "null_mean": 65.522,
+      "null_sd": 12.058,
+      "z": 0.493,
+      "score_two": 128.267,
+      "p_two": 0.533046695330467,
+      "skew": {
+       "scored": 19,
+       "per_third": 6,
+       "z_most": 0.356,
+       "z_least": 1.565,
+       "skew": -1.209,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lav"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 69.076,
+      "p": 0.2956704329567043,
+      "null_mean": 64.602,
+      "null_sd": 9.506,
+      "z": 0.471,
+      "score_two": 95.664,
+      "p_two": 0.6776322367763223,
+      "skew": {
+       "scored": 23,
+       "per_third": 7,
+       "z_most": -0.322,
+       "z_least": 0.0,
+       "skew": -0.322,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:swe"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 61.535,
+      "p": 0.2706729327067293,
+      "null_mean": 57.357,
+      "null_sd": 7.812,
+      "z": 0.535,
+      "score_two": 137.403,
+      "p_two": 0.12758724127587243,
+      "skew": {
+       "scored": 25,
+       "per_third": 8,
+       "z_most": -0.785,
+       "z_least": -0.811,
+       "skew": 0.026,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eus",
+       "nel:spa"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 35.576,
+      "p": 0.6827317268273173,
+      "null_mean": 41.043,
+      "null_sd": 10.688,
+      "z": -0.512,
+      "score_two": 83.291,
+      "p_two": 0.5934406559344065,
+      "skew": {
+       "scored": 20,
+       "per_third": 6,
+       "z_most": -0.672,
+       "z_least": 0.0,
+       "skew": -0.672,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:eng",
+       "nel:fra"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 28.488,
+      "p": 0.538046195380462,
+      "null_mean": 30.86,
+      "null_sd": 9.468,
+      "z": -0.251,
+      "score_two": 114.062,
+      "p_two": 0.0532946705329467,
+      "skew": {
+       "scored": 27,
+       "per_third": 9,
+       "z_most": -0.594,
+       "z_least": 1.179,
+       "skew": -1.773,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui+loans",
+       "nel:spa"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 52.351,
+      "p": 0.7088291170882912,
+      "null_mean": 57.47,
+      "null_sd": 8.894,
+      "z": -0.576,
+      "score_two": 143.761,
+      "p_two": 0.18838116188381163,
+      "skew": {
+       "scored": 38,
+       "per_third": 12,
+       "z_most": 0.129,
+       "z_least": 0.15,
+       "skew": -0.021,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "negative": [
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:fin"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 72.113,
+      "p": 0.8672132786721328,
+      "null_mean": 83.23,
+      "null_sd": 10.472,
+      "z": -1.062,
+      "score_two": 185.69,
+      "p_two": 0.11958804119588042,
+      "skew": {
+       "scored": 38,
+       "per_third": 12,
+       "z_most": 0.219,
+       "z_least": -1.256,
+       "skew": 1.475,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:jpn"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 63.198,
+      "p": 0.5278472152784721,
+      "null_mean": 64.682,
+      "null_sd": 9.05,
+      "z": -0.164,
+      "score_two": 152.325,
+      "p_two": 0.16148385161483853,
+      "skew": {
+       "scored": 38,
+       "per_third": 12,
+       "z_most": 0.053,
+       "z_least": -0.958,
+       "skew": 1.011,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:tam"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 75.583,
+      "p": 0.11908809119088092,
+      "null_mean": 64.716,
+      "null_sd": 9.131,
+      "z": 1.19,
+      "score_two": 112.357,
+      "p_two": 0.418958104189581,
+      "skew": {
+       "scored": 38,
+       "per_third": 12,
+       "z_most": -0.567,
+       "z_least": 0.126,
+       "skew": -0.693,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:eus"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 40.749,
+      "p": 0.46695330466953305,
+      "null_mean": 41.287,
+      "null_sd": 9.638,
+      "z": -0.056,
+      "score_two": 109.338,
+      "p_two": 0.37336266373362664,
+      "skew": {
+       "scored": 38,
+       "per_third": 12,
+       "z_most": -0.554,
+       "z_least": 0.847,
+       "skew": -1.401,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kat"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 26.428,
+      "p": 0.9978002199780022,
+      "null_mean": 43.134,
+      "null_sd": 7.71,
+      "z": -2.167,
+      "score_two": 109.008,
+      "p_two": 0.42215778422157785,
+      "skew": {
+       "scored": 38,
+       "per_third": 12,
+       "z_most": -1.024,
+       "z_least": -1.533,
+       "skew": 0.509,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:hun"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 34.453,
+      "p": 0.9757024297570243,
+      "null_mean": 50.367,
+      "null_sd": 10.432,
+      "z": -1.526,
+      "score_two": 102.084,
+      "p_two": 0.9959004099590041,
+      "skew": {
+       "scored": 38,
+       "per_third": 12,
+       "z_most": -0.041,
+       "z_least": -0.634,
+       "skew": 0.593,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kor"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 54.383,
+      "p": 0.8313168683131686,
+      "null_mean": 64.745,
+      "null_sd": 11.219,
+      "z": -0.924,
+      "score_two": 132.274,
+      "p_two": 0.8025197480251974,
+      "skew": {
+       "scored": 38,
+       "per_third": 12,
+       "z_most": 1.783,
+       "z_least": -0.323,
+       "skew": 2.106,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "wold:ImbaburaQuechua"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 67.515,
+      "p": 0.39786021397860216,
+      "null_mean": 65.658,
+      "null_sd": 12.226,
+      "z": 0.152,
+      "score_two": 163.357,
+      "p_two": 0.35926407359264073,
+      "skew": {
+       "scored": 38,
+       "per_third": 12,
+       "z_most": -0.876,
+       "z_least": 1.313,
+       "skew": -2.189,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "decoys": [
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:heb"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 48.188,
+      "p": 0.7447255274472553,
+      "null_mean": 57.608,
+      "null_sd": 12.919,
+      "z": -0.729,
+      "score_two": 119.626,
+      "p_two": 0.7378262173782622,
+      "skew": {
+       "scored": 20,
+       "per_third": 6,
+       "z_most": -0.706,
+       "z_least": 0.373,
+       "skew": -1.079,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:tam"
+      ],
+      "shared_used": 38,
+      "n": 38,
+      "score": 53.926,
+      "p": 0.5835416458354165,
+      "null_mean": 57.572,
+      "null_sd": 11.376,
+      "z": -0.321,
+      "score_two": 115.081,
+      "p_two": 0.6374362563743625,
+      "skew": {
+       "scored": 25,
+       "per_third": 8,
+       "z_most": -1.583,
+       "z_least": -1.162,
+       "skew": -0.421,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "inherited_ok": false,
+    "contact_passing": 0,
+    "contact_detected_without_skew": 0,
+    "contact_ok": false,
+    "finnish_ok": false,
+    "negative_hits": 0,
+    "negative_ok": true,
+    "decoys_ok": true,
+    "planted": {
+     "1.0": {
+      "k": 25,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.5": {
+      "k": 12,
+      "plantings": 1600,
+      "detected": 419,
+      "rate": 0.262
+     },
+     "0.25": {
+      "k": 6,
+      "plantings": 1600,
+      "detected": 31,
+      "rate": 0.019
+     },
+     "power_ok": true
+    },
+    "passed": false
+   },
+   "87": {
+    "n": 87,
+    "k_planted": 77,
+    "inherited": [
+     {
+      "pair": [
+       "nel:heb",
+       "nel:arb"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 122.575,
+      "p": 0.0024997500249975004,
+      "null_mean": 72.688,
+      "null_sd": 12.961,
+      "z": 3.849,
+      "score_two": 209.648,
+      "p_two": 0.016198380161983803,
+      "skew": {
+       "scored": 55,
+       "per_third": 18,
+       "z_most": 0.484,
+       "z_least": 2.349,
+       "skew": -1.865,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "contact": [
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lit"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 76.113,
+      "p": 0.37046295370462956,
+      "null_mean": 73.059,
+      "null_sd": 11.204,
+      "z": 0.273,
+      "score_two": 153.187,
+      "p_two": 0.3154684531546845,
+      "skew": {
+       "scored": 55,
+       "per_third": 18,
+       "z_most": -1.265,
+       "z_least": -0.544,
+       "skew": -0.721,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lav"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 66.36,
+      "p": 0.3544645535446455,
+      "null_mean": 63.645,
+      "null_sd": 11.019,
+      "z": 0.246,
+      "score_two": 155.962,
+      "p_two": 0.07529247075292471,
+      "skew": {
+       "scored": 57,
+       "per_third": 19,
+       "z_most": -1.398,
+       "z_least": 2.049,
+       "skew": -3.447,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:swe"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 85.28,
+      "p": 0.16318368163183683,
+      "null_mean": 72.515,
+      "null_sd": 14.196,
+      "z": 0.899,
+      "score_two": 146.68,
+      "p_two": 0.5568443155684432,
+      "skew": {
+       "scored": 54,
+       "per_third": 18,
+       "z_most": -0.914,
+       "z_least": -0.024,
+       "skew": -0.89,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:eus",
+       "nel:spa"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 48.464,
+      "p": 0.6772322767723228,
+      "null_mean": 56.791,
+      "null_sd": 16.109,
+      "z": -0.517,
+      "score_two": 128.472,
+      "p_two": 0.6693330666933307,
+      "skew": {
+       "scored": 47,
+       "per_third": 15,
+       "z_most": 0.536,
+       "z_least": -0.968,
+       "skew": 1.504,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eng",
+       "nel:fra"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 115.398,
+      "p": 0.0390960903909609,
+      "null_mean": 72.807,
+      "null_sd": 19.82,
+      "z": 2.149,
+      "score_two": 203.702,
+      "p_two": 0.029597040295970403,
+      "skew": {
+       "scored": 52,
+       "per_third": 17,
+       "z_most": 2.246,
+       "z_least": 0.614,
+       "skew": 1.632,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui+loans",
+       "nel:spa"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 65.569,
+      "p": 0.6461353864613538,
+      "null_mean": 72.704,
+      "null_sd": 15.496,
+      "z": -0.46,
+      "score_two": 160.606,
+      "p_two": 0.523947605239476,
+      "skew": {
+       "scored": 87,
+       "per_third": 29,
+       "z_most": 0.499,
+       "z_least": -0.66,
+       "skew": 1.159,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "negative": [
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:fin"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 73.88,
+      "p": 0.43195680431956807,
+      "null_mean": 72.939,
+      "null_sd": 11.414,
+      "z": 0.083,
+      "score_two": 160.437,
+      "p_two": 0.7734226577342266,
+      "skew": {
+       "scored": 87,
+       "per_third": 29,
+       "z_most": 0.376,
+       "z_least": 0.299,
+       "skew": 0.077,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:jpn"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 68.141,
+      "p": 0.6263373662633737,
+      "null_mean": 72.733,
+      "null_sd": 11.755,
+      "z": -0.391,
+      "score_two": 159.854,
+      "p_two": 0.5709429057094291,
+      "skew": {
+       "scored": 87,
+       "per_third": 29,
+       "z_most": 0.818,
+       "z_least": -1.434,
+       "skew": 2.252,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:tam"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 67.373,
+      "p": 0.6767323267673233,
+      "null_mean": 73.032,
+      "null_sd": 10.961,
+      "z": -0.516,
+      "score_two": 138.859,
+      "p_two": 0.5671432856714329,
+      "skew": {
+       "scored": 87,
+       "per_third": 29,
+       "z_most": -0.784,
+       "z_least": -1.13,
+       "skew": 0.346,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:eus"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 70.627,
+      "p": 0.25877412258774124,
+      "null_mean": 63.759,
+      "null_sd": 11.781,
+      "z": 0.583,
+      "score_two": 170.345,
+      "p_two": 0.18988101189881013,
+      "skew": {
+       "scored": 87,
+       "per_third": 29,
+       "z_most": 0.468,
+       "z_least": -0.197,
+       "skew": 0.665,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kat"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 77.005,
+      "p": 0.12198780121987801,
+      "null_mean": 63.795,
+      "null_sd": 11.423,
+      "z": 1.156,
+      "score_two": 131.316,
+      "p_two": 0.30396960303969606,
+      "skew": {
+       "scored": 87,
+       "per_third": 29,
+       "z_most": 1.531,
+       "z_least": -0.471,
+       "skew": 2.002,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:hun"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 68.551,
+      "p": 0.6211378862113789,
+      "null_mean": 72.851,
+      "null_sd": 11.542,
+      "z": -0.373,
+      "score_two": 173.18,
+      "p_two": 0.28247175282471754,
+      "skew": {
+       "scored": 87,
+       "per_third": 29,
+       "z_most": 0.644,
+       "z_least": -0.806,
+       "skew": 1.45,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kor"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 99.001,
+      "p": 0.025397460253974602,
+      "null_mean": 72.704,
+      "null_sd": 12.077,
+      "z": 2.177,
+      "score_two": 201.324,
+      "p_two": 0.0872912708729127,
+      "skew": {
+       "scored": 87,
+       "per_third": 29,
+       "z_most": -0.416,
+       "z_least": 0.805,
+       "skew": -1.221,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "wold:ImbaburaQuechua"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 76.419,
+      "p": 0.6645335466453355,
+      "null_mean": 82.018,
+      "null_sd": 11.629,
+      "z": -0.481,
+      "score_two": 162.421,
+      "p_two": 0.7161283871612839,
+      "skew": {
+       "scored": 87,
+       "per_third": 29,
+       "z_most": -1.088,
+       "z_least": 1.071,
+       "skew": -2.159,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "decoys": [
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:heb"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 95.713,
+      "p": 0.12208779122087791,
+      "null_mean": 72.69,
+      "null_sd": 17.992,
+      "z": 1.28,
+      "score_two": 174.305,
+      "p_two": 0.10598940105989402,
+      "skew": {
+       "scored": 53,
+       "per_third": 17,
+       "z_most": -0.853,
+       "z_least": -0.227,
+       "skew": -0.626,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:tam"
+      ],
+      "shared_used": 87,
+      "n": 87,
+      "score": 42.031,
+      "p": 0.9989001099890011,
+      "null_mean": 72.938,
+      "null_sd": 15.666,
+      "z": -1.973,
+      "score_two": 121.3,
+      "p_two": 0.8874112588741125,
+      "skew": {
+       "scored": 58,
+       "per_third": 19,
+       "z_most": 0.023,
+       "z_least": 0.338,
+       "skew": -0.315,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "inherited_ok": true,
+    "contact_passing": 0,
+    "contact_detected_without_skew": 0,
+    "contact_ok": false,
+    "finnish_ok": false,
+    "negative_hits": 0,
+    "negative_ok": true,
+    "decoys_ok": true,
+    "planted": {
+     "1.0": {
+      "k": 77,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.5": {
+      "k": 38,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.25": {
+      "k": 19,
+      "plantings": 1600,
+      "detected": 1036,
+      "rate": 0.647
+     },
+     "power_ok": true
+    },
+    "passed": false
+   },
+   "115": {
+    "n": 115,
+    "k_planted": 78,
+    "inherited": [
+     {
+      "pair": [
+       "nel:heb",
+       "nel:arb"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 71.257,
+      "p": 0.4704529547045295,
+      "null_mean": 72.552,
+      "null_sd": 15.229,
+      "z": -0.085,
+      "score_two": 268.909,
+      "p_two": 0.0064993500649935,
+      "skew": {
+       "scored": 75,
+       "per_third": 25,
+       "z_most": 0.674,
+       "z_least": -0.048,
+       "skew": 0.722,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "contact": [
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lit"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 92.156,
+      "p": 0.18998100189981001,
+      "null_mean": 81.538,
+      "null_sd": 17.489,
+      "z": 0.607,
+      "score_two": 167.728,
+      "p_two": 0.4998500149985001,
+      "skew": {
+       "scored": 62,
+       "per_third": 20,
+       "z_most": -1.572,
+       "z_least": 1.07,
+       "skew": -2.642,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lav"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 81.385,
+      "p": 0.20827917208279173,
+      "null_mean": 72.608,
+      "null_sd": 11.491,
+      "z": 0.764,
+      "score_two": 192.011,
+      "p_two": 0.058694130586941305,
+      "skew": {
+       "scored": 77,
+       "per_third": 25,
+       "z_most": 0.411,
+       "z_least": -1.154,
+       "skew": 1.565,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:swe"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 63.371,
+      "p": 0.46855314468553144,
+      "null_mean": 63.504,
+      "null_sd": 10.93,
+      "z": -0.012,
+      "score_two": 141.924,
+      "p_two": 0.29747025297470253,
+      "skew": {
+       "scored": 70,
+       "per_third": 23,
+       "z_most": -0.138,
+       "z_least": -0.826,
+       "skew": 0.688,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eus",
+       "nel:spa"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 47.729,
+      "p": 0.6933306669333067,
+      "null_mean": 56.357,
+      "null_sd": 14.641,
+      "z": -0.589,
+      "score_two": 141.925,
+      "p_two": 0.38276172382761725,
+      "skew": {
+       "scored": 77,
+       "per_third": 25,
+       "z_most": -1.268,
+       "z_least": -0.404,
+       "skew": -0.864,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:eng",
+       "nel:fra"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 66.684,
+      "p": 0.16918308169183083,
+      "null_mean": 56.423,
+      "null_sd": 11.06,
+      "z": 0.928,
+      "score_two": 156.168,
+      "p_two": 0.017198280171982803,
+      "skew": {
+       "scored": 76,
+       "per_third": 25,
+       "z_most": 0.244,
+       "z_least": 1.614,
+       "skew": -1.37,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui+loans",
+       "nel:spa"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 65.201,
+      "p": 0.7245275472452755,
+      "null_mean": 72.623,
+      "null_sd": 11.769,
+      "z": -0.631,
+      "score_two": 144.99,
+      "p_two": 0.8414158584141586,
+      "skew": {
+       "scored": 115,
+       "per_third": 38,
+       "z_most": -1.665,
+       "z_least": 0.651,
+       "skew": -2.316,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "negative": [
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:fin"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 86.062,
+      "p": 0.3344665533446655,
+      "null_mean": 81.746,
+      "null_sd": 12.025,
+      "z": 0.359,
+      "score_two": 174.126,
+      "p_two": 0.6678332166783322,
+      "skew": {
+       "scored": 115,
+       "per_third": 38,
+       "z_most": -0.136,
+       "z_least": 0.005,
+       "skew": -0.141,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:jpn"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 48.816,
+      "p": 0.9404059594040596,
+      "null_mean": 64.798,
+      "null_sd": 11.15,
+      "z": -1.433,
+      "score_two": 172.046,
+      "p_two": 0.3388661133886611,
+      "skew": {
+       "scored": 115,
+       "per_third": 38,
+       "z_most": -0.225,
+       "z_least": -0.94,
+       "skew": 0.715,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:tam"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 73.91,
+      "p": 0.42175782421757824,
+      "null_mean": 72.709,
+      "null_sd": 12.491,
+      "z": 0.096,
+      "score_two": 179.115,
+      "p_two": 0.1877812218778122,
+      "skew": {
+       "scored": 115,
+       "per_third": 38,
+       "z_most": 0.725,
+       "z_least": 1.518,
+       "skew": -0.793,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:eus"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 56.746,
+      "p": 0.692030796920308,
+      "null_mean": 63.365,
+      "null_sd": 11.818,
+      "z": -0.56,
+      "score_two": 149.122,
+      "p_two": 0.5803419658034197,
+      "skew": {
+       "scored": 115,
+       "per_third": 38,
+       "z_most": -0.723,
+       "z_least": -0.496,
+       "skew": -0.227,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kat"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 82.59,
+      "p": 0.0471952804719528,
+      "null_mean": 63.507,
+      "null_sd": 10.907,
+      "z": 1.75,
+      "score_two": 161.166,
+      "p_two": 0.1556844315568443,
+      "skew": {
+       "scored": 115,
+       "per_third": 38,
+       "z_most": 0.618,
+       "z_least": 0.137,
+       "skew": 0.481,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:hun"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 59.323,
+      "p": 0.8711128887111289,
+      "null_mean": 72.847,
+      "null_sd": 12.843,
+      "z": -1.053,
+      "score_two": 155.437,
+      "p_two": 0.6515348465153484,
+      "skew": {
+       "scored": 115,
+       "per_third": 38,
+       "z_most": 0.036,
+       "z_least": 0.842,
+       "skew": -0.806,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kor"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 67.309,
+      "p": 0.665033496650335,
+      "null_mean": 72.701,
+      "null_sd": 11.332,
+      "z": -0.476,
+      "score_two": 170.245,
+      "p_two": 0.5432456754324567,
+      "skew": {
+       "scored": 115,
+       "per_third": 38,
+       "z_most": -0.057,
+       "z_least": 0.502,
+       "skew": -0.559,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "wold:ImbaburaQuechua"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 79.776,
+      "p": 0.24277572242775722,
+      "null_mean": 72.583,
+      "null_sd": 11.347,
+      "z": 0.634,
+      "score_two": 152.783,
+      "p_two": 0.48475152484751527,
+      "skew": {
+       "scored": 115,
+       "per_third": 38,
+       "z_most": -0.029,
+       "z_least": -0.461,
+       "skew": 0.432,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "decoys": [
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:heb"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 97.821,
+      "p": 0.048995100489951,
+      "null_mean": 72.572,
+      "null_sd": 13.891,
+      "z": 1.818,
+      "score_two": 207.249,
+      "p_two": 0.0331966803319668,
+      "skew": {
+       "scored": 81,
+       "per_third": 27,
+       "z_most": 0.79,
+       "z_least": 0.814,
+       "skew": -0.024,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:tam"
+      ],
+      "shared_used": 115,
+      "n": 115,
+      "score": 57.423,
+      "p": 0.8955104489551045,
+      "null_mean": 72.646,
+      "null_sd": 13.737,
+      "z": -1.108,
+      "score_two": 130.765,
+      "p_two": 0.9737026297370263,
+      "skew": {
+       "scored": 80,
+       "per_third": 26,
+       "z_most": -0.514,
+       "z_least": -0.312,
+       "skew": -0.202,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "inherited_ok": false,
+    "contact_passing": 0,
+    "contact_detected_without_skew": 0,
+    "contact_ok": false,
+    "finnish_ok": false,
+    "negative_hits": 0,
+    "negative_ok": true,
+    "decoys_ok": false,
+    "planted": {
+     "1.0": {
+      "k": 78,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.5": {
+      "k": 39,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.25": {
+      "k": 20,
+      "plantings": 1600,
+      "detected": 835,
+      "rate": 0.522
+     },
+     "power_ok": true
+    },
+    "passed": false
+   },
+   "629": {
+    "n": 629,
+    "k_planted": 328,
+    "inherited": [
+     {
+      "pair": [
+       "nel:heb",
+       "nel:arb"
+      ],
+      "shared_used": 629,
+      "n": 629,
+      "score": 386.655,
+      "p": 9.999000099990002e-05,
+      "null_mean": 72.145,
+      "null_sd": 11.971,
+      "z": 26.273,
+      "score_two": 854.511,
+      "p_two": 9.999000099990002e-05,
+      "skew": {
+       "scored": 397,
+       "per_third": 132,
+       "z_most": 7.403,
+       "z_least": 4.552,
+       "skew": 2.851,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "contact": [
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lit"
+      ],
+      "shared_used": 629,
+      "n": 629,
+      "score": 91.541,
+      "p": 0.19708029197080293,
+      "null_mean": 81.144,
+      "null_sd": 12.469,
+      "z": 0.834,
+      "score_two": 224.362,
+      "p_two": 0.007899210078992101,
+      "skew": {
+       "scored": 405,
+       "per_third": 135,
+       "z_most": 0.034,
+       "z_least": 0.915,
+       "skew": -0.881,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lav"
+      ],
+      "shared_used": 629,
+      "n": 629,
+      "score": 66.8,
+      "p": 0.657034296570343,
+      "null_mean": 72.265,
+      "null_sd": 12.042,
+      "z": -0.454,
+      "score_two": 177.86,
+      "p_two": 0.08659134086591341,
+      "skew": {
+       "scored": 390,
+       "per_third": 130,
+       "z_most": 1.291,
+       "z_least": 0.791,
+       "skew": 0.5,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:swe"
+      ],
+      "shared_used": 629,
+      "n": 629,
+      "score": 129.13,
+      "p": 0.00019998000199980003,
+      "null_mean": 71.877,
+      "null_sd": 11.904,
+      "z": 4.809,
+      "score_two": 218.051,
+      "p_two": 0.0098990100989901,
+      "skew": {
+       "scored": 408,
+       "per_third": 136,
+       "z_most": 3.311,
+       "z_least": 0.341,
+       "skew": 2.97,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eus",
+       "nel:spa"
+      ],
+      "shared_used": 629,
+      "n": 629,
+      "score": 122.513,
+      "p": 0.00019998000199980003,
+      "null_mean": 63.06,
+      "null_sd": 11.869,
+      "z": 5.009,
+      "score_two": 269.607,
+      "p_two": 9.999000099990002e-05,
+      "skew": {
+       "scored": 388,
+       "per_third": 129,
+       "z_most": -0.225,
+       "z_least": -0.657,
+       "skew": 0.432,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eng",
+       "nel:fra"
+      ],
+      "shared_used": 629,
+      "n": 629,
+      "score": 512.592,
+      "p": 9.999000099990002e-05,
+      "null_mean": 81.171,
+      "null_sd": 18.961,
+      "z": 22.753,
+      "score_two": 713.618,
+      "p_two": 9.999000099990002e-05,
+      "skew": {
+       "scored": 404,
+       "per_third": 134,
+       "z_most": 4.288,
+       "z_least": 10.514,
+       "skew": -6.226,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui+loans",
+       "nel:spa"
+      ],
+      "shared_used": 598,
+      "n": 598,
+      "score": 173.746,
+      "p": 9.999000099990002e-05,
+      "null_mean": 81.117,
+      "null_sd": 12.595,
+      "z": 7.355,
+      "score_two": 287.952,
+      "p_two": 9.999000099990002e-05,
+      "skew": {
+       "scored": 598,
+       "per_third": 199,
+       "z_most": 6.288,
+       "z_least": 1.569,
+       "skew": 4.719,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "negative": [
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:fin"
+      ],
+      "shared_used": 511,
+      "n": 511,
+      "score": 78.394,
+      "p": 0.5678432156784322,
+      "null_mean": 81.325,
+      "null_sd": 12.642,
+      "z": -0.232,
+      "score_two": 184.452,
+      "p_two": 0.41885811418858115,
+      "skew": {
+       "scored": 511,
+       "per_third": 170,
+       "z_most": -1.258,
+       "z_least": -0.134,
+       "skew": -1.124,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:jpn"
+      ],
+      "shared_used": 511,
+      "n": 511,
+      "score": 103.223,
+      "p": 0.04939506049395061,
+      "null_mean": 81.151,
+      "null_sd": 12.636,
+      "z": 1.747,
+      "score_two": 211.683,
+      "p_two": 0.0627937206279372,
+      "skew": {
+       "scored": 511,
+       "per_third": 170,
+       "z_most": 2.33,
+       "z_least": 0.319,
+       "skew": 2.011,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:tam"
+      ],
+      "shared_used": 511,
+      "n": 511,
+      "score": 79.387,
+      "p": 0.5267473252674733,
+      "null_mean": 81.343,
+      "null_sd": 13.694,
+      "z": -0.143,
+      "score_two": 207.663,
+      "p_two": 0.09909009099090091,
+      "skew": {
+       "scored": 511,
+       "per_third": 170,
+       "z_most": -0.447,
+       "z_least": 0.461,
+       "skew": -0.908,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:eus"
+      ],
+      "shared_used": 511,
+      "n": 511,
+      "score": 72.86,
+      "p": 0.18218178182181782,
+      "null_mean": 63.045,
+      "null_sd": 11.275,
+      "z": 0.871,
+      "score_two": 173.093,
+      "p_two": 0.13008699130086993,
+      "skew": {
+       "scored": 511,
+       "per_third": 170,
+       "z_most": -0.471,
+       "z_least": 0.49,
+       "skew": -0.961,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kat"
+      ],
+      "shared_used": 511,
+      "n": 511,
+      "score": 68.491,
+      "p": 0.2976702329767023,
+      "null_mean": 63.077,
+      "null_sd": 11.262,
+      "z": 0.481,
+      "score_two": 141.774,
+      "p_two": 0.5155484451554845,
+      "skew": {
+       "scored": 511,
+       "per_third": 170,
+       "z_most": 0.372,
+       "z_least": 0.52,
+       "skew": -0.148,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:hun"
+      ],
+      "shared_used": 511,
+      "n": 511,
+      "score": 83.065,
+      "p": 0.17598240175982402,
+      "null_mean": 72.158,
+      "null_sd": 11.848,
+      "z": 0.921,
+      "score_two": 182.669,
+      "p_two": 0.1304869513048695,
+      "skew": {
+       "scored": 511,
+       "per_third": 170,
+       "z_most": -0.341,
+       "z_least": 0.792,
+       "skew": -1.133,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kor"
+      ],
+      "shared_used": 510,
+      "n": 510,
+      "score": 79.379,
+      "p": 0.25347465253474655,
+      "null_mean": 72.252,
+      "null_sd": 11.838,
+      "z": 0.602,
+      "score_two": 199.22,
+      "p_two": 0.0801919808019198,
+      "skew": {
+       "scored": 510,
+       "per_third": 170,
+       "z_most": 1.234,
+       "z_least": -0.899,
+       "skew": 2.133,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "wold:ImbaburaQuechua"
+      ],
+      "shared_used": 629,
+      "n": 629,
+      "score": 105.196,
+      "p": 0.039396060393960604,
+      "null_mean": 81.249,
+      "null_sd": 12.892,
+      "z": 1.857,
+      "score_two": 239.389,
+      "p_two": 0.000999900009999,
+      "skew": {
+       "scored": 629,
+       "per_third": 209,
+       "z_most": 0.225,
+       "z_least": 0.18,
+       "skew": 0.045,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "decoys": [
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:heb"
+      ],
+      "shared_used": 629,
+      "n": 629,
+      "score": 75.842,
+      "p": 0.3548645135486451,
+      "null_mean": 72.071,
+      "null_sd": 12.011,
+      "z": 0.314,
+      "score_two": 158.311,
+      "p_two": 0.557044295570443,
+      "skew": {
+       "scored": 407,
+       "per_third": 135,
+       "z_most": -0.443,
+       "z_least": -1.741,
+       "skew": 1.298,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:tam"
+      ],
+      "shared_used": 629,
+      "n": 629,
+      "score": 102.496,
+      "p": 0.09669033096690331,
+      "null_mean": 81.048,
+      "null_sd": 15.995,
+      "z": 1.341,
+      "score_two": 199.681,
+      "p_two": 0.20117988201179882,
+      "skew": {
+       "scored": 404,
+       "per_third": 134,
+       "z_most": -0.175,
+       "z_least": 0.628,
+       "skew": -0.803,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "inherited_ok": true,
+    "contact_passing": 3,
+    "contact_detected_without_skew": 4,
+    "contact_ok": false,
+    "finnish_ok": true,
+    "negative_hits": 0,
+    "negative_ok": true,
+    "decoys_ok": true,
+    "planted": {
+     "1.0": {
+      "k": 328,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.5": {
+      "k": 164,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.25": {
+      "k": 82,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "power_ok": true
+    },
+    "passed": false
+   },
+   "663": {
+    "n": 663,
+    "k_planted": 340,
+    "inherited": [
+     {
+      "pair": [
+       "nel:heb",
+       "nel:arb"
+      ],
+      "shared_used": 663,
+      "n": 663,
+      "score": 313.397,
+      "p": 9.999000099990002e-05,
+      "null_mean": 72.092,
+      "null_sd": 12.063,
+      "z": 20.004,
+      "score_two": 672.284,
+      "p_two": 9.999000099990002e-05,
+      "skew": {
+       "scored": 424,
+       "per_third": 141,
+       "z_most": 3.092,
+       "z_least": 3.468,
+       "skew": -0.376,
+       "borrowable_end": false
+      }
+     }
+    ],
+    "contact": [
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lit"
+      ],
+      "shared_used": 663,
+      "n": 663,
+      "score": 84.328,
+      "p": 0.38776122387761225,
+      "null_mean": 81.435,
+      "null_sd": 12.794,
+      "z": 0.226,
+      "score_two": 213.661,
+      "p_two": 0.0201979802019798,
+      "skew": {
+       "scored": 422,
+       "per_third": 140,
+       "z_most": -0.443,
+       "z_least": 0.982,
+       "skew": -1.425,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:lav"
+      ],
+      "shared_used": 663,
+      "n": 663,
+      "score": 76.914,
+      "p": 0.3230676932306769,
+      "null_mean": 72.227,
+      "null_sd": 12.02,
+      "z": 0.39,
+      "score_two": 179.293,
+      "p_two": 0.0741925807419258,
+      "skew": {
+       "scored": 420,
+       "per_third": 140,
+       "z_most": 2.119,
+       "z_least": 0.286,
+       "skew": 1.833,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:fin",
+       "nel:swe"
+      ],
+      "shared_used": 663,
+      "n": 663,
+      "score": 160.952,
+      "p": 9.999000099990002e-05,
+      "null_mean": 72.149,
+      "null_sd": 12.236,
+      "z": 7.258,
+      "score_two": 245.807,
+      "p_two": 0.0051994800519948,
+      "skew": {
+       "scored": 411,
+       "per_third": 137,
+       "z_most": 5.048,
+       "z_least": 1.865,
+       "skew": 3.183,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eus",
+       "nel:spa"
+      ],
+      "shared_used": 663,
+      "n": 663,
+      "score": 142.517,
+      "p": 0.00029997000299970003,
+      "null_mean": 62.973,
+      "null_sd": 13.015,
+      "z": 6.112,
+      "score_two": 305.595,
+      "p_two": 9.999000099990002e-05,
+      "skew": {
+       "scored": 405,
+       "per_third": 135,
+       "z_most": 1.658,
+       "z_least": -0.978,
+       "skew": 2.636,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:eng",
+       "nel:fra"
+      ],
+      "shared_used": 663,
+      "n": 663,
+      "score": 494.543,
+      "p": 9.999000099990002e-05,
+      "null_mean": 81.145,
+      "null_sd": 16.613,
+      "z": 24.885,
+      "score_two": 737.737,
+      "p_two": 0.0016998300169983002,
+      "skew": {
+       "scored": 416,
+       "per_third": 138,
+       "z_most": 9.085,
+       "z_least": 6.883,
+       "skew": 2.202,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui+loans",
+       "nel:spa"
+      ],
+      "shared_used": 598,
+      "n": 598,
+      "score": 173.746,
+      "p": 9.999000099990002e-05,
+      "null_mean": 81.117,
+      "null_sd": 12.595,
+      "z": 7.355,
+      "score_two": 287.952,
+      "p_two": 9.999000099990002e-05,
+      "skew": {
+       "scored": 598,
+       "per_third": 199,
+       "z_most": 6.288,
+       "z_least": 1.569,
+       "skew": 4.719,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "negative": [
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:fin"
+      ],
+      "shared_used": 511,
+      "n": 511,
+      "score": 78.394,
+      "p": 0.5678432156784322,
+      "null_mean": 81.325,
+      "null_sd": 12.642,
+      "z": -0.232,
+      "score_two": 184.452,
+      "p_two": 0.41885811418858115,
+      "skew": {
+       "scored": 511,
+       "per_third": 170,
+       "z_most": -1.258,
+       "z_least": -0.134,
+       "skew": -1.124,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:jpn"
+      ],
+      "shared_used": 511,
+      "n": 511,
+      "score": 103.223,
+      "p": 0.04939506049395061,
+      "null_mean": 81.151,
+      "null_sd": 12.636,
+      "z": 1.747,
+      "score_two": 211.683,
+      "p_two": 0.0627937206279372,
+      "skew": {
+       "scored": 511,
+       "per_third": 170,
+       "z_most": 2.33,
+       "z_least": 0.319,
+       "skew": 2.011,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:tam"
+      ],
+      "shared_used": 511,
+      "n": 511,
+      "score": 79.387,
+      "p": 0.5267473252674733,
+      "null_mean": 81.343,
+      "null_sd": 13.694,
+      "z": -0.143,
+      "score_two": 207.663,
+      "p_two": 0.09909009099090091,
+      "skew": {
+       "scored": 511,
+       "per_third": 170,
+       "z_most": -0.447,
+       "z_least": 0.461,
+       "skew": -0.908,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:eus"
+      ],
+      "shared_used": 511,
+      "n": 511,
+      "score": 72.86,
+      "p": 0.18218178182181782,
+      "null_mean": 63.045,
+      "null_sd": 11.275,
+      "z": 0.871,
+      "score_two": 173.093,
+      "p_two": 0.13008699130086993,
+      "skew": {
+       "scored": 511,
+       "per_third": 170,
+       "z_most": -0.471,
+       "z_least": 0.49,
+       "skew": -0.961,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kat"
+      ],
+      "shared_used": 511,
+      "n": 511,
+      "score": 68.491,
+      "p": 0.2976702329767023,
+      "null_mean": 63.077,
+      "null_sd": 11.262,
+      "z": 0.481,
+      "score_two": 141.774,
+      "p_two": 0.5155484451554845,
+      "skew": {
+       "scored": 511,
+       "per_third": 170,
+       "z_most": 0.372,
+       "z_least": 0.52,
+       "skew": -0.148,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:hun"
+      ],
+      "shared_used": 511,
+      "n": 511,
+      "score": 83.065,
+      "p": 0.17598240175982402,
+      "null_mean": 72.158,
+      "null_sd": 11.848,
+      "z": 0.921,
+      "score_two": 182.669,
+      "p_two": 0.1304869513048695,
+      "skew": {
+       "scored": 511,
+       "per_third": 170,
+       "z_most": -0.341,
+       "z_least": 0.792,
+       "skew": -1.133,
+       "borrowable_end": false
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "nel:kor"
+      ],
+      "shared_used": 510,
+      "n": 510,
+      "score": 79.379,
+      "p": 0.25347465253474655,
+      "null_mean": 72.252,
+      "null_sd": 11.838,
+      "z": 0.602,
+      "score_two": 199.22,
+      "p_two": 0.0801919808019198,
+      "skew": {
+       "scored": 510,
+       "per_third": 170,
+       "z_most": 1.234,
+       "z_least": -0.899,
+       "skew": 2.133,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "wold:Yaqui",
+       "wold:ImbaburaQuechua"
+      ],
+      "shared_used": 663,
+      "n": 663,
+      "score": 129.794,
+      "p": 0.0014998500149985001,
+      "null_mean": 80.995,
+      "null_sd": 13.019,
+      "z": 3.748,
+      "score_two": 272.667,
+      "p_two": 9.999000099990002e-05,
+      "skew": {
+       "scored": 663,
+       "per_third": 221,
+       "z_most": 0.732,
+       "z_least": -0.597,
+       "skew": 1.329,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "decoys": [
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:heb"
+      ],
+      "shared_used": 663,
+      "n": 663,
+      "score": 82.057,
+      "p": 0.19588041195880412,
+      "null_mean": 72.133,
+      "null_sd": 11.971,
+      "z": 0.829,
+      "score_two": 172.474,
+      "p_two": 0.2725727427257274,
+      "skew": {
+       "scored": 425,
+       "per_third": 141,
+       "z_most": -0.063,
+       "z_least": -0.789,
+       "skew": 0.726,
+       "borrowable_end": true
+      }
+     },
+     {
+      "pair": [
+       "nel:jpn",
+       "nel:tam"
+      ],
+      "shared_used": 663,
+      "n": 663,
+      "score": 65.777,
+      "p": 0.828017198280172,
+      "null_mean": 81.215,
+      "null_sd": 18.21,
+      "z": -0.848,
+      "score_two": 156.076,
+      "p_two": 0.8553144685531446,
+      "skew": {
+       "scored": 424,
+       "per_third": 141,
+       "z_most": -0.624,
+       "z_least": -1.11,
+       "skew": 0.486,
+       "borrowable_end": true
+      }
+     }
+    ],
+    "inherited_ok": true,
+    "contact_passing": 4,
+    "contact_detected_without_skew": 4,
+    "contact_ok": true,
+    "finnish_ok": true,
+    "negative_hits": 1,
+    "negative_ok": true,
+    "decoys_ok": true,
+    "planted": {
+     "1.0": {
+      "k": 340,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.5": {
+      "k": 170,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "0.25": {
+      "k": 85,
+      "plantings": 1600,
+      "detected": 1600,
+      "rate": 1.0
+     },
+     "power_ok": true
+    },
+    "passed": true
+   }
+  },
+  "missing": []
+ },
+ "targets": {
+  "yaqui_coptic": {
+   "pair": [
+    "wold:Yaqui",
+    "cdo:cop"
+   ],
+   "n": 663,
+   "score": 80.464,
+   "p": 0.49305069493050696,
+   "null_mean": 81.252,
+   "null_sd": 13.024,
+   "z": -0.061,
+   "score_two": 166.471,
+   "p_two": 0.5855414458554145,
+   "skew": {
+    "scored": 663,
+    "per_third": 221,
+    "z_most": -0.663,
+    "z_least": 0.178,
+    "skew": -0.841,
+    "borrowable_end": false
+   },
+   "p_holm": 1.0,
+   "verdict": "no layer of the size claimed in these lists"
+  }
+ },
+ "targets_not_scored": {
+  "yaqui_biblical_hebrew": "cannot tell (check missed at this list size)",
+  "yaqui_late_egyptian": "cannot tell (check missed at this list size)",
+  "greenhill_biblical_hebrew": "cannot tell (check missed at this list size)",
+  "greenhill_arabic": "cannot tell (check missed at this list size)",
+  "greenhill_aramaic": "cannot tell (check missed at this list size)",
+  "greenhill_late_egyptian": "cannot tell (check missed at this list size)",
+  "greenhill_coptic": "cannot tell (check missed at this list size)",
+  "pua_biblical_hebrew": "cannot tell (check missed at this list size)",
+  "pua_aramaic": "cannot tell (check missed at this list size)",
+  "pua_late_egyptian": "cannot tell (check missed at this list size)",
+  "pua_coptic": "cannot tell (check missed at this list size)"
+ },
+ "trap": {
+  "pair": [
+   "wold:Yaqui+loans",
+   "oshl:heb"
+  ],
+  "n": 781,
+  "state": "not scored (no check at its size)"
+ },
+ "config_sha256": "1de202f53fc890f75ceb3bcd3452507bee0d3306e8f1ef79ca0671dd4ce2a21c",
+ "commit": "67ef7a655c2d5f7d2b6700446cec2222ec46b1b6"
+}

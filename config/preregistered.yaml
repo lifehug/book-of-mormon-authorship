@@ -2117,6 +2117,46 @@ lab:                              # the research lab (exploratory tooling; reads
       judge_bar: 0.85              # the judge's own check: agreement with positions on record, on reference passages
       reference_passages: 15       # reference passages per writer and controversy at most (seeded)
       book_passages: 40            # book passages per controversy at most (seeded)
+  utoaztecan:                      # BOM-117 (lab): Uto-Aztecan against Hebrew, Aramaic, Egyptian (card 2026-11-22-uto-aztecan-redesign); no Book of Mormon text
+    seed: 20261122
+    his_way:                       # step 1: Stubbs 2015 (private copy), his sets checked against his own Appendix A
+      sample_sets: 150             # sets drawn at random from all numbered sets found
+      max_positions: 3             # Near Eastern consonants compared at most (a root's three)
+      clics_min_families: 3        # two meanings "linked" when colexified in at least this many families (CLICS3)
+    shuffles: 10000                # meaning permutations per test (Kessler)
+    alpha: 0.01                    # detection and target bar (one-sided, permutation p)
+    decoy_alpha: 0.05              # hard decoys must give p above this
+    min_meanings: 20               # a list shorter than this is not attempted
+    loan_values: ['1. clearly borrowed', '2. probably borrowed']   # WOLD codes removed as loans (Yaqui's Spanish loans)
+    borrow_parts: 3                # meanings split into thirds by WOLD Borrowed_score; skew = most borrowable minus least
+    skew_margin: 0.0               # z(most borrowable third) - z(least) must exceed this for "the borrowable-end skew"
+    planted:                       # power: synthetic regular non-identical loans planted in each negative pair
+      plantings: 200
+      shuffles: 2000               # permutations per planting
+      bar: 0.8                     # detected (p < alpha) in at least this share
+      fractions: [1.0, 0.5, 0.25]  # of k (k = list meanings Stubbs's Appendix B claims); the bar applies to 1.0
+    known_answer:                  # list sizes matched to each target by seeded subsampling
+      inherited: [[nel:heb, nel:arb]]
+      contact: [[nel:fin, nel:lit], [nel:fin, nel:lav], [nel:fin, nel:swe], [nel:eus, nel:spa], [nel:eng, nel:fra], ['wold:Yaqui+loans', nel:spa]]
+      finnish: [0, 1, 2]           # indexes of the Finnish pairs in contact; at least one must pass
+      contact_needed: 4            # of the six at p < alpha, each with the skew
+      negative: [[wold:Yaqui, nel:fin], [wold:Yaqui, nel:jpn], [wold:Yaqui, nel:tam], [wold:Yaqui, nel:eus], [wold:Yaqui, nel:kat], [wold:Yaqui, nel:hun], [wold:Yaqui, nel:kor], [wold:Yaqui, wold:ImbaburaQuechua]]
+      negative_max: 1              # of the eight at p < alpha
+      decoys: [[nel:jpn, nel:heb], [nel:jpn, nel:tam]]
+    targets:                       # Holm across these; gh:* = the 46 Greenhill et al. varieties together (Kessler-Lehtonen sum)
+      yaqui_biblical_hebrew: [wold:Yaqui, oshl:heb]
+      yaqui_coptic: [wold:Yaqui, cdo:cop]
+      yaqui_late_egyptian: [wold:Yaqui, asjp:LATE_EGYPTIAN]
+      greenhill_biblical_hebrew: ['gh:*', oshl:heb]
+      greenhill_arabic: ['gh:*', nel:arb]
+      greenhill_aramaic: ['gh:*', asjp:ARAMAIC_ANCIENT]
+      greenhill_late_egyptian: ['gh:*', asjp:LATE_EGYPTIAN]
+      greenhill_coptic: ['gh:*', asjp:COPTIC]
+      pua_biblical_hebrew: [asjp:PROTO_UTO_AZTECAN, asjp:BIBLICAL_HEBREW]
+      pua_aramaic: [asjp:PROTO_UTO_AZTECAN, asjp:ARAMAIC_ANCIENT]
+      pua_late_egyptian: [asjp:PROTO_UTO_AZTECAN, asjp:LATE_EGYPTIAN]
+      pua_coptic: [asjp:PROTO_UTO_AZTECAN, asjp:COPTIC]
+    trap: ['wold:Yaqui+loans', oshl:heb]   # leakage trap: Spanish loans left in, reported beside, not in Holm
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

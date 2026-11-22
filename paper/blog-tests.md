@@ -105,7 +105,7 @@ compares against.
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
 | BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions | **Check failed; not scored** |
-| BOM-117 | Uto-Aztecan languages carry Hebrew and Egyptian words | Stubbs 2015 | his pairing alone | his rules on unrelated languages | TBD |
+| BOM-117 | Uto-Aztecan languages carry Hebrew and Egyptian words | Stubbs 2015 | his pairing alone | his sets checked against his own rules; word lists against unrelated and borrowing pairs | **Yaqui-Coptic: no layer of the claimed size; the rest cannot tell** |
 
 ## Results so far
 
@@ -1450,6 +1450,50 @@ of it. The second model was wrong on about a third of the passages I read in the
 and on 8 of the 60 I sampled in the larger ones, so the passage counts in the table are too
 high by some margin, though not by enough to move a large item. The list of all 2,509 is kept
 for anyone who wants to read them.
+
+### Hebrew and Egyptian in the Uto-Aztecan languages (BOM-117)
+
+Brian Stubbs, a linguist, spent decades on the Uto-Aztecan family (Hopi, Yaqui, Nahuatl and
+about thirty more). In 2015 he published about 1,500 sets pairing their words with Hebrew,
+Aramaic and Egyptian words, under a table of sound rules: this Hebrew sound becomes that
+Uto-Aztecan sound. He reads it as a large layer of borrowed words. People cite it beside the
+Book of Mormon. Nobody, as far as I could find, has asked the question every linguist asks first:
+how many matches like these would turn up between languages that never met?
+
+The book is posted free for private reading, so I could check it his way first. I drew 150 of
+his sets at random and had a program read them against his own table. 71 were laid out clearly
+enough for a program to read. Of those, 41 follow his table at every consonant, and 62 at the
+first one. Then the harder question: for the same Uto-Aztecan word, how many *other* Hebrew or
+Coptic dictionary words would pass the same rules? On sound alone, a median of 44. Once the
+meaning has to be at least as close as his, a median of 1. For 34 of the 71 there was no other
+candidate as good. So his meanings do real work; the sound rules alone are loose. This is all by
+rule. Nobody has read the 150 sets by hand.
+
+Then the test linguists use (Kessler's): turn each word into its broad consonant class, count
+how often the classes line up across shared meanings, then shuffle the meanings 10,000 times and
+see if the real lists line up better than the shuffled ones. Before trusting it on Stubbs, it had
+to pass on pairs where the answer is known: Hebrew and Arabic (related), six pairs that borrowed
+heavily (Finnish and Swedish, English and French, Yaqui and Spanish...), and eight pairs that
+never met (Yaqui against Finnish, Japanese, Korean...).
+
+It mostly failed. Open word lists for the ancient languages are short: 26 to 38 meanings for
+Aramaic, Late Egyptian and Stubbs's reconstructed Proto-Uto-Aztecan. At that length the test
+could not even find Hebrew and Arabic, which share a parent. So for ten of the twelve
+comparisons, the answer is "cannot tell". It passed at one size, the long lists (663 meanings),
+and only just: at 629 meanings, 34 fewer, it missed because one borrowing pair came out the wrong
+way. That near miss is why Yaqui against Hebrew, at 629, is also "cannot tell".
+
+The one comparison that could be scored was Yaqui against Coptic, the last stage of Egyptian.
+Nothing. The real lists lined up no better than shuffled ones (p = 0.49), and the meanings where
+loans usually fall (body-part words seldom, trade words often) showed no lean at all. His index
+gives a Semitic or Egyptian source for 340 of those 663 meanings. When I planted fake loans in
+unrelated pairs, the test found a quarter of that, 85, every single time.
+
+Two limits on that "nothing". The 340 counts meanings with a Near Eastern source anywhere in the
+family, not words Yaqui itself carries from Egyptian; if Yaqui has fewer than about 85, this
+test does not speak to it. And my fake loans follow a perfectly regular rule, which real loans
+do not. Coptic is also only a stand-in for the Egyptian of 600 BC. Stubbs's 2011 book and his
+*Changes in Languages* I have not bought, so they are not replicated.
 
 ## What I would want a reader to take from the whole set
 

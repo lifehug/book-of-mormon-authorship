@@ -1292,14 +1292,14 @@
     "kind": "list of examples",
     "replicable_with": "His sets and rules (book under copyright: buy), comparative wordlists for control languages (ASJP, lexibank).",
     "our_issue": "BOM-117",
-    "replicated": "not replicated until the source is bought",
-    "replication_note": "Not run (BOM-117 open, lowest priority of the setting tests).",
+    "replicated": "partly",
+    "replication_note": "Book posted free for private reading; 150 of his 1,522 sets checked by rule against his own Appendix A: 71 readable, 41 obey it at every position, 62 at the first consonant. Not read by hand. Stubbs 2011 and Changes in Languages not replicated until bought.",
     "strengths": "Explicit sound correspondences that can be programmed.",
     "weaknesses": "Reviewers say many source languages and loose meanings make matches easy; no control-language baseline published.",
-    "our_approach": "Planned: his rules as a program on Uto-Aztecan against unrelated languages and with shuffled meanings (BOM-117).",
-    "our_result": null,
-    "what_holds": "Cannot tell yet.",
-    "todo": "Buy the book; obtain wordlists (ASJP v21, lexibank); read Rogers 2019 (JBMS 28)."
+    "our_approach": "Kessler permutation test (Dolgopolsky classes, 10,000 meaning shuffles) of Uto-Aztecan lists against Hebrew, Aramaic, Egyptian and Coptic, after a known-answer check on related, borrowing and unrelated pairs at each list size, with planted loans for power (BOM-117).",
+    "our_result": "Check passed at one list size of eleven (663, marginally). Yaqui against Coptic: p 0.49, no borrowable-end skew; planted loans at a quarter of his implied count found every time. Other eleven comparisons: cannot tell (lists of 26-115 meanings too short for the check). Other lexicon words passing his rules with an equally close meaning: median 1 (sound alone: 44). data/lab/setting/uto_aztecan/result.json.",
+    "what_holds": "For Yaqui and Coptic, no layer of the size his index implies; the open ancient lists are too short to test the rest. A smaller Yaqui-specific layer is not ruled out.",
+    "todo": "Judge questions on the set readings and meaning mappings (prepared); a Yaqui-specific count; a check that works on 40-meaning lists; buy Stubbs 2011."
   },
   {
     "id": "carmack2016morepart",

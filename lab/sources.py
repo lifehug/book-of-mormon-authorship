@@ -716,6 +716,27 @@ def _sources() -> list[dict]:
     for name, (kind, url) in _RECEIVED.items():
         terms = PD + (" (scan and OCR text)" if kind == "ia" else "; Project Gutenberg")
         add(name, "received", "BOM-125", kind, url, terms)
+    # BOM-117 redesign (docs/research/2026-11-22-redesign-uto-aztecan.md): open word lists and
+    # lexicons, and Stubbs 2015, free for non-commercial private use (owner, 2026-11-22).
+    raw = "https://raw.githubusercontent.com/"
+    for name, kind, url, terms in (
+        ("lexibank_wold", "git", GH + "lexibank/wold", "CC BY 4.0"),
+        ("lexibank_northeuralex", "git", GH + "lexibank/northeuralex", "CC BY 4.0"),
+        ("hebrew_lexicon", "git", GH + "openscriptures/HebrewLexicon",
+         "CC BY 4.0 (files); BDB and Strong's text public domain"),
+        ("coptic_lexicon_v1.2_2020.xml", "file",
+         raw + "KELLIA/dictionary/master/xml/Comprehensive_Coptic_Lexicon-v1.2-2020.xml",
+         "CC BY-SA 4.0 (BBAW / Coptic SCRIPTORIUM, doi:10.17169/refubium-2333)"),
+        ("clics3_network.gml.zip", "file", raw + "clics/clics3/master/clics3-network.gml.zip",
+         "CC BY 4.0"),
+    ):  # fmt: skip
+        add(name, "wordlists", "BOM-117", kind, url, terms)
+    add("stubbs2015_exploring.pdf", "stubbs", "BOM-117", "file",
+        "https://storage.googleapis.com/scripturecentral-prod-strapi-uploads/"
+        "er_of_semitic_and_egyptian_in_uto_aztecan_2015_0b7be82eba/"
+        "er_of_semitic_and_egyptian_in_uto_aztecan_2015_0b7be82eba.pdf",
+        "copyright the author; posted free on the Book of Mormon Central archive for "
+        "non-commercial, private use; private copy, never redistributed", True)  # fmt: skip
     return rows
 
 
