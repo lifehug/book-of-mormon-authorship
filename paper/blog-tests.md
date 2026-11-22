@@ -1118,6 +1118,36 @@ Clarke's notes at those verses read for it; that step has not been run.
 This passed its check on the second design. The first had a bar I had set badly, and the
 second card says what changed and why.
 
+### Can the scripture voice be subtracted out? (BOM-100)
+
+The two-voices test showed the weak spot in the first study's main tool. An author model learns
+a person from their ordinary writing and is then asked about a text in scripture voice. The
+voice is so strong that it can swamp the person. The idea here: measure each text against a
+model of the scripture voice in general (learned from Bible-style books by other people), and
+not against a plain model, so that what is left over is the person.
+
+It does not help.
+
+| Tuning | Study's rule, right writer picked across voices | With the voice subtracted |
+| --- | --- | --- |
+| Light | 28.5% | 28.0% |
+| Heavier | 70.5% | 70.3% |
+
+(Chance is 17 to 20 percent.)
+
+Part of this is arithmetic I should have seen sooner. If you ask "which of six author models
+fits this passage best", subtracting the same reference from all six cannot change the winner.
+The reference only matters where scores are compared from one passage to another, and there it
+made no difference either.
+
+Two things stand. The tool does carry a person across voices better than chance, 70 percent at
+the heavier tuning. And how much you tune still matters far more than anything else, 28 against
+70 percent, which is the instability the two-voices test found. That, not the reference, is
+what needs fixing. It also still accepts a writer who is not on the list at all, most of the
+time, which is the first study's "none of these" problem again.
+
+Smallest model size only, one seed. The Book of Mormon was not touched.
+
 ## What I would want a reader to take from the whole set
 
 TBD. This section gets written when enough tests are in to see a pattern, or to see that there

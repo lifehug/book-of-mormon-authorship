@@ -1726,6 +1726,26 @@ lab:                              # the research lab (exploratory tooling; reads
       prophets: [Isaiah, Malachi]
       gospels_acts: [Matthew, Acts]
       epistles_revelation: [Romans, Revelation]
+  voice_reference:                 # BOM-100 (lab; exploratory): author models scored against a scripture-voice reference model instead of the base; author models, chunks and recipe are lab.two_voices_alm's
+    runs: [masked_small, masked_larger]   # lab.two_voices_alm runs reused (the two doses); each reference model gets that run's dose
+    seed: voice_reference          # derive_seed("<alm.train_seed>:<seed>:<run>:<reference>")
+    outside_dir: data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical
+    outside_books:                 # Bible-style books before 1827 by hands outside the six writers, one copy per title (R_out); equal token shares from the middle of each
+      - Chronicles of Andrew - Jesse Denson - 1815.md
+      - Chronicles of Nathan Ben Saddi - 1758.md
+      - The Book of America - 1766.md
+      - The Book of Preferment - Horace Walpole - 1742.md
+      - The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md
+      - The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md
+      - The First Book of Napoleon - 1809.md
+      - The First Book of the American Chronicles - John Leacock - 1775.md
+      - The Late War - Gilbert Hunt - 1816.md
+      - True Relation of the Holy War - 1806.md
+    loo: true                      # also R_loo: outside books + the other writers' scripture-voice training slices, one per writer (secondary)
+    resamples: 1000                # resampling chunks within writer, for intervals
+    interval: 0.95
+    tar: 0.95                      # placebo: threshold accepting this share of true-writer pairs
+    same_voice_tolerance: 0.05     # W3: same-voice ordinary macro may fall at most this far below the base-referenced rule's
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

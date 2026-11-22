@@ -1,0 +1,2498 @@
+{
+ "exploratory": true,
+ "base_model": "timelocked_lm pilot (125M)",
+ "author_models": "lab.twovoices_alm runs, losses reused from data/corpus/lab/two_voices_alm/ (not retrained)",
+ "settings": {
+  "runs": [
+   "masked_small",
+   "masked_larger"
+  ],
+  "seed": "voice_reference",
+  "outside_dir": "data/corpus/lab/sources/bible_style/wordtree_books/pseudo_biblical",
+  "outside_books": [
+   "Chronicles of Andrew - Jesse Denson - 1815.md",
+   "Chronicles of Nathan Ben Saddi - 1758.md",
+   "The Book of America - 1766.md",
+   "The Book of Preferment - Horace Walpole - 1742.md",
+   "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+   "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+   "The First Book of Napoleon - 1809.md",
+   "The First Book of the American Chronicles - John Leacock - 1775.md",
+   "The Late War - Gilbert Hunt - 1816.md",
+   "True Relation of the Holy War - 1806.md"
+  ],
+  "loo": true,
+  "resamples": 1000,
+  "interval": 0.95,
+  "tar": 0.95,
+  "same_voice_tolerance": 0.05
+ },
+ "book_of_mormon": "the Book of Mormon is not read, trained on or scored by this run; a second pass is allowed only on the verdict 'works' (lesson 11)",
+ "runs": {
+  "masked_small": {
+   "chance": 0.167,
+   "scorings": {
+    "raw_unscaled": {
+     "cross_voice": {
+      "macro": 0.227,
+      "micro": 0.158,
+      "per_writer": {
+       "anna_trapnel": 0.893,
+       "elias_smith": 0.091,
+       "joanna_southcott": 0.2,
+       "john_wroe": 0.115,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.065
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.223,
+       "elias_smith": 0.087,
+       "joanna_southcott": 0.023,
+       "john_wroe": 0.038,
+       "joseph_smith": 0.008,
+       "richard_snowden": 0.57
+      },
+      "macro_ci": [
+       0.188,
+       0.27
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.894,
+      "micro": 0.843,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.616,
+       "joanna_southcott": 0.95,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.84,
+       "richard_snowden": 0.957
+      },
+      "chunks": {
+       "anna_trapnel": 27,
+       "elias_smith": 99,
+       "joanna_southcott": 20,
+       "john_wroe": 3,
+       "joseph_smith": 25,
+       "richard_snowden": 139
+      },
+      "pull": {
+       "anna_trapnel": 0.045,
+       "elias_smith": 0.014,
+       "joanna_southcott": 0.007,
+       "john_wroe": 0.084,
+       "joseph_smith": 0.014,
+       "richard_snowden": 0.006
+      },
+      "macro_ci": [
+       0.857,
+       0.925
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.803,
+      "micro": 0.896,
+      "per_writer": {
+       "anna_trapnel": 0.286,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.902,
+       "richard_snowden": 0.63
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.036,
+       "joanna_southcott": 0.02,
+       "john_wroe": 0.108,
+       "joseph_smith": 0.003,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.766,
+       0.839
+      ]
+     }
+    },
+    "base_unscaled": {
+     "cross_voice": {
+      "macro": 0.227,
+      "micro": 0.158,
+      "per_writer": {
+       "anna_trapnel": 0.893,
+       "elias_smith": 0.091,
+       "joanna_southcott": 0.2,
+       "john_wroe": 0.115,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.065
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.223,
+       "elias_smith": 0.087,
+       "joanna_southcott": 0.023,
+       "john_wroe": 0.038,
+       "joseph_smith": 0.008,
+       "richard_snowden": 0.57
+      },
+      "macro_ci": [
+       0.188,
+       0.27
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.894,
+      "micro": 0.843,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.616,
+       "joanna_southcott": 0.95,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.84,
+       "richard_snowden": 0.957
+      },
+      "chunks": {
+       "anna_trapnel": 27,
+       "elias_smith": 99,
+       "joanna_southcott": 20,
+       "john_wroe": 3,
+       "joseph_smith": 25,
+       "richard_snowden": 139
+      },
+      "pull": {
+       "anna_trapnel": 0.045,
+       "elias_smith": 0.014,
+       "joanna_southcott": 0.007,
+       "john_wroe": 0.084,
+       "joseph_smith": 0.014,
+       "richard_snowden": 0.006
+      },
+      "macro_ci": [
+       0.857,
+       0.925
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.803,
+      "micro": 0.896,
+      "per_writer": {
+       "anna_trapnel": 0.286,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.902,
+       "richard_snowden": 0.63
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.036,
+       "joanna_southcott": 0.02,
+       "john_wroe": 0.108,
+       "joseph_smith": 0.003,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.766,
+       0.839
+      ]
+     }
+    },
+    "voice_out_unscaled": {
+     "cross_voice": {
+      "macro": 0.227,
+      "micro": 0.158,
+      "per_writer": {
+       "anna_trapnel": 0.893,
+       "elias_smith": 0.091,
+       "joanna_southcott": 0.2,
+       "john_wroe": 0.115,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.065
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.223,
+       "elias_smith": 0.087,
+       "joanna_southcott": 0.023,
+       "john_wroe": 0.038,
+       "joseph_smith": 0.008,
+       "richard_snowden": 0.57
+      },
+      "macro_ci": [
+       0.188,
+       0.27
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.894,
+      "micro": 0.843,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.616,
+       "joanna_southcott": 0.95,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.84,
+       "richard_snowden": 0.957
+      },
+      "chunks": {
+       "anna_trapnel": 27,
+       "elias_smith": 99,
+       "joanna_southcott": 20,
+       "john_wroe": 3,
+       "joseph_smith": 25,
+       "richard_snowden": 139
+      },
+      "pull": {
+       "anna_trapnel": 0.045,
+       "elias_smith": 0.014,
+       "joanna_southcott": 0.007,
+       "john_wroe": 0.084,
+       "joseph_smith": 0.014,
+       "richard_snowden": 0.006
+      },
+      "macro_ci": [
+       0.857,
+       0.925
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.803,
+      "micro": 0.896,
+      "per_writer": {
+       "anna_trapnel": 0.286,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.902,
+       "richard_snowden": 0.63
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.036,
+       "joanna_southcott": 0.02,
+       "john_wroe": 0.108,
+       "joseph_smith": 0.003,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.766,
+       0.839
+      ]
+     }
+    },
+    "voice_loo_unscaled": {
+     "cross_voice": {
+      "macro": 0.227,
+      "micro": 0.158,
+      "per_writer": {
+       "anna_trapnel": 0.893,
+       "elias_smith": 0.091,
+       "joanna_southcott": 0.2,
+       "john_wroe": 0.115,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.065
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.223,
+       "elias_smith": 0.087,
+       "joanna_southcott": 0.023,
+       "john_wroe": 0.038,
+       "joseph_smith": 0.008,
+       "richard_snowden": 0.57
+      },
+      "macro_ci": [
+       0.188,
+       0.27
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.894,
+      "micro": 0.843,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.616,
+       "joanna_southcott": 0.95,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.84,
+       "richard_snowden": 0.957
+      },
+      "chunks": {
+       "anna_trapnel": 27,
+       "elias_smith": 99,
+       "joanna_southcott": 20,
+       "john_wroe": 3,
+       "joseph_smith": 25,
+       "richard_snowden": 139
+      },
+      "pull": {
+       "anna_trapnel": 0.045,
+       "elias_smith": 0.014,
+       "joanna_southcott": 0.007,
+       "john_wroe": 0.084,
+       "joseph_smith": 0.014,
+       "richard_snowden": 0.006
+      },
+      "macro_ci": [
+       0.857,
+       0.925
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.803,
+      "micro": 0.896,
+      "per_writer": {
+       "anna_trapnel": 0.286,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.902,
+       "richard_snowden": 0.63
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.036,
+       "joanna_southcott": 0.02,
+       "john_wroe": 0.108,
+       "joseph_smith": 0.003,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.766,
+       0.839
+      ]
+     }
+    },
+    "voice_out_chunkz_unscaled": {
+     "cross_voice": {
+      "macro": 0.227,
+      "micro": 0.158,
+      "per_writer": {
+       "anna_trapnel": 0.893,
+       "elias_smith": 0.091,
+       "joanna_southcott": 0.2,
+       "john_wroe": 0.115,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.065
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.223,
+       "elias_smith": 0.087,
+       "joanna_southcott": 0.023,
+       "john_wroe": 0.038,
+       "joseph_smith": 0.008,
+       "richard_snowden": 0.57
+      },
+      "macro_ci": [
+       0.188,
+       0.27
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.894,
+      "micro": 0.843,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.616,
+       "joanna_southcott": 0.95,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.84,
+       "richard_snowden": 0.957
+      },
+      "chunks": {
+       "anna_trapnel": 27,
+       "elias_smith": 99,
+       "joanna_southcott": 20,
+       "john_wroe": 3,
+       "joseph_smith": 25,
+       "richard_snowden": 139
+      },
+      "pull": {
+       "anna_trapnel": 0.045,
+       "elias_smith": 0.014,
+       "joanna_southcott": 0.007,
+       "john_wroe": 0.084,
+       "joseph_smith": 0.014,
+       "richard_snowden": 0.006
+      },
+      "macro_ci": [
+       0.857,
+       0.925
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.803,
+      "micro": 0.896,
+      "per_writer": {
+       "anna_trapnel": 0.286,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.902,
+       "richard_snowden": 0.63
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.036,
+       "joanna_southcott": 0.02,
+       "john_wroe": 0.108,
+       "joseph_smith": 0.003,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.766,
+       0.839
+      ]
+     }
+    },
+    "raw_scaled": {
+     "cross_voice": {
+      "macro": 0.235,
+      "micro": 0.191,
+      "per_writer": {
+       "anna_trapnel": 0.857,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.38,
+       "john_wroe": 0.151,
+       "joseph_smith": 0.02,
+       "richard_snowden": 0.0
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.141,
+       "elias_smith": 0.061,
+       "joanna_southcott": 0.079,
+       "john_wroe": 0.032,
+       "joseph_smith": 0.198,
+       "richard_snowden": 0.408
+      },
+      "macro_ci": [
+       0.202,
+       0.267
+      ],
+      "minus_base_scaled": -0.051,
+      "minus_base_scaled_ci": [
+       -0.091,
+       -0.015
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.797,
+      "micro": 0.572,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.424,
+       "joanna_southcott": 0.9,
+       "john_wroe": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.46
+      },
+      "chunks": {
+       "anna_trapnel": 27,
+       "elias_smith": 99,
+       "joanna_southcott": 20,
+       "john_wroe": 3,
+       "joseph_smith": 25,
+       "richard_snowden": 139
+      },
+      "pull": {
+       "anna_trapnel": 0.038,
+       "elias_smith": 0.037,
+       "joanna_southcott": 0.075,
+       "john_wroe": 0.026,
+       "joseph_smith": 0.295,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.765,
+       0.826
+      ],
+      "minus_base_scaled": -0.036,
+      "minus_base_scaled_ci": [
+       -0.078,
+       0.01
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.767,
+      "micro": 0.743,
+      "per_writer": {
+       "anna_trapnel": 0.5,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 0.72,
+       "joseph_smith": 0.902,
+       "richard_snowden": 0.478
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.082,
+       "elias_smith": 0.099,
+       "joanna_southcott": 0.042,
+       "john_wroe": 0.016,
+       "joseph_smith": 0.028,
+       "richard_snowden": 0.017
+      },
+      "macro_ci": [
+       0.724,
+       0.806
+      ],
+      "minus_base_scaled": -0.02,
+      "minus_base_scaled_ci": [
+       -0.046,
+       0.007
+      ]
+     },
+     "placebo": {
+      "threshold": 1.7558,
+      "confident_share": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 1.0,
+       "joanna_southcott": 0.8,
+       "john_wroe": 0.945,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.978
+      },
+      "macro": 0.954
+     }
+    },
+    "base_scaled": {
+     "cross_voice": {
+      "macro": 0.285,
+      "micro": 0.24,
+      "per_writer": {
+       "anna_trapnel": 0.857,
+       "elias_smith": 0.091,
+       "joanna_southcott": 0.42,
+       "john_wroe": 0.202,
+       "joseph_smith": 0.078,
+       "richard_snowden": 0.065
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.138,
+       "elias_smith": 0.079,
+       "joanna_southcott": 0.121,
+       "john_wroe": 0.048,
+       "joseph_smith": 0.093,
+       "richard_snowden": 0.388
+      },
+      "macro_ci": [
+       0.242,
+       0.331
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.833,
+      "micro": 0.719,
+      "per_writer": {
+       "anna_trapnel": 0.852,
+       "elias_smith": 0.394,
+       "joanna_southcott": 0.95,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.96,
+       "richard_snowden": 0.842
+      },
+      "chunks": {
+       "anna_trapnel": 27,
+       "elias_smith": 99,
+       "joanna_southcott": 20,
+       "john_wroe": 3,
+       "joseph_smith": 25,
+       "richard_snowden": 139
+      },
+      "pull": {
+       "anna_trapnel": 0.01,
+       "elias_smith": 0.009,
+       "joanna_southcott": 0.02,
+       "john_wroe": 0.165,
+       "joseph_smith": 0.09,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.794,
+       0.867
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.787,
+      "micro": 0.817,
+      "per_writer": {
+       "anna_trapnel": 0.393,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 0.849,
+       "joseph_smith": 0.98,
+       "richard_snowden": 0.5
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.04,
+       "elias_smith": 0.064,
+       "joanna_southcott": 0.062,
+       "john_wroe": 0.011,
+       "joseph_smith": 0.02,
+       "richard_snowden": 0.008
+      },
+      "macro_ci": [
+       0.746,
+       0.825
+      ]
+     },
+     "placebo": {
+      "threshold": 2.4364,
+      "confident_share": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 1.0
+      },
+      "macro": 1.0
+     }
+    },
+    "voice_out_scaled": {
+     "cross_voice": {
+      "macro": 0.28,
+      "micro": 0.262,
+      "per_writer": {
+       "anna_trapnel": 0.821,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.6,
+       "john_wroe": 0.239,
+       "joseph_smith": 0.02,
+       "richard_snowden": 0.0
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.112,
+       "elias_smith": 0.051,
+       "joanna_southcott": 0.121,
+       "john_wroe": 0.038,
+       "joseph_smith": 0.181,
+       "richard_snowden": 0.341
+      },
+      "macro_ci": [
+       0.244,
+       0.312
+      ],
+      "minus_base_scaled": -0.006,
+      "minus_base_scaled_ci": [
+       -0.054,
+       0.036
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.819,
+      "micro": 0.604,
+      "per_writer": {
+       "anna_trapnel": 0.963,
+       "elias_smith": 0.687,
+       "joanna_southcott": 0.95,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.96,
+       "richard_snowden": 0.353
+      },
+      "chunks": {
+       "anna_trapnel": 27,
+       "elias_smith": 99,
+       "joanna_southcott": 20,
+       "john_wroe": 3,
+       "joseph_smith": 25,
+       "richard_snowden": 139
+      },
+      "pull": {
+       "anna_trapnel": 0.014,
+       "elias_smith": 0.079,
+       "joanna_southcott": 0.024,
+       "john_wroe": 0.013,
+       "joseph_smith": 0.319,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.786,
+       0.848
+      ],
+      "minus_base_scaled": -0.014,
+      "minus_base_scaled_ci": [
+       -0.047,
+       0.02
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.789,
+      "micro": 0.666,
+      "per_writer": {
+       "anna_trapnel": 0.821,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 0.537,
+       "joseph_smith": 0.941,
+       "richard_snowden": 0.435
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.109,
+       "elias_smith": 0.087,
+       "joanna_southcott": 0.04,
+       "john_wroe": 0.0,
+       "joseph_smith": 0.003,
+       "richard_snowden": 0.126
+      },
+      "macro_ci": [
+       0.751,
+       0.825
+      ],
+      "minus_base_scaled": 0.002,
+      "minus_base_scaled_ci": [
+       -0.032,
+       0.038
+      ]
+     },
+     "placebo": {
+      "threshold": 2.1134,
+      "confident_share": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 1.0
+      },
+      "macro": 1.0
+     }
+    },
+    "voice_loo_scaled": {
+     "cross_voice": {
+      "macro": 0.29,
+      "micro": 0.282,
+      "per_writer": {
+       "anna_trapnel": 0.786,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.6,
+       "john_wroe": 0.266,
+       "joseph_smith": 0.02,
+       "richard_snowden": 0.065
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.112,
+       "elias_smith": 0.079,
+       "joanna_southcott": 0.121,
+       "john_wroe": 0.038,
+       "joseph_smith": 0.184,
+       "richard_snowden": 0.285
+      },
+      "macro_ci": [
+       0.251,
+       0.329
+      ],
+      "minus_base_scaled": 0.004,
+      "minus_base_scaled_ci": [
+       -0.045,
+       0.048
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.811,
+      "micro": 0.569,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.586,
+       "joanna_southcott": 0.95,
+       "john_wroe": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.331
+      },
+      "chunks": {
+       "anna_trapnel": 27,
+       "elias_smith": 99,
+       "joanna_southcott": 20,
+       "john_wroe": 3,
+       "joseph_smith": 25,
+       "richard_snowden": 139
+      },
+      "pull": {
+       "anna_trapnel": 0.017,
+       "elias_smith": 0.089,
+       "joanna_southcott": 0.02,
+       "john_wroe": 0.003,
+       "joseph_smith": 0.361,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.783,
+       0.836
+      ],
+      "minus_base_scaled": -0.022,
+      "minus_base_scaled_ci": [
+       -0.054,
+       0.013
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.77,
+      "micro": 0.626,
+      "per_writer": {
+       "anna_trapnel": 0.75,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 0.468,
+       "joseph_smith": 0.902,
+       "richard_snowden": 0.5
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.133,
+       "elias_smith": 0.104,
+       "joanna_southcott": 0.034,
+       "john_wroe": 0.005,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.131
+      },
+      "macro_ci": [
+       0.73,
+       0.809
+      ],
+      "minus_base_scaled": -0.017,
+      "minus_base_scaled_ci": [
+       -0.054,
+       0.018
+      ]
+     },
+     "placebo": {
+      "threshold": 2.0422,
+      "confident_share": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 1.0
+      },
+      "macro": 1.0
+     }
+    },
+    "voice_out_chunkz_scaled": {
+     "cross_voice": {
+      "macro": 0.28,
+      "micro": 0.262,
+      "per_writer": {
+       "anna_trapnel": 0.821,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.6,
+       "john_wroe": 0.239,
+       "joseph_smith": 0.02,
+       "richard_snowden": 0.0
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.112,
+       "elias_smith": 0.051,
+       "joanna_southcott": 0.121,
+       "john_wroe": 0.038,
+       "joseph_smith": 0.181,
+       "richard_snowden": 0.341
+      },
+      "macro_ci": [
+       0.244,
+       0.312
+      ],
+      "minus_base_scaled": -0.006,
+      "minus_base_scaled_ci": [
+       -0.054,
+       0.036
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.819,
+      "micro": 0.604,
+      "per_writer": {
+       "anna_trapnel": 0.963,
+       "elias_smith": 0.687,
+       "joanna_southcott": 0.95,
+       "john_wroe": 1.0,
+       "joseph_smith": 0.96,
+       "richard_snowden": 0.353
+      },
+      "chunks": {
+       "anna_trapnel": 27,
+       "elias_smith": 99,
+       "joanna_southcott": 20,
+       "john_wroe": 3,
+       "joseph_smith": 25,
+       "richard_snowden": 139
+      },
+      "pull": {
+       "anna_trapnel": 0.014,
+       "elias_smith": 0.079,
+       "joanna_southcott": 0.024,
+       "john_wroe": 0.013,
+       "joseph_smith": 0.319,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.786,
+       0.848
+      ],
+      "minus_base_scaled": -0.014,
+      "minus_base_scaled_ci": [
+       -0.047,
+       0.02
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.789,
+      "micro": 0.666,
+      "per_writer": {
+       "anna_trapnel": 0.821,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 0.537,
+       "joseph_smith": 0.941,
+       "richard_snowden": 0.435
+      },
+      "chunks": {
+       "anna_trapnel": 28,
+       "elias_smith": 11,
+       "joanna_southcott": 50,
+       "john_wroe": 218,
+       "joseph_smith": 51,
+       "richard_snowden": 46
+      },
+      "pull": {
+       "anna_trapnel": 0.109,
+       "elias_smith": 0.087,
+       "joanna_southcott": 0.04,
+       "john_wroe": 0.0,
+       "joseph_smith": 0.003,
+       "richard_snowden": 0.126
+      },
+      "macro_ci": [
+       0.751,
+       0.825
+      ],
+      "minus_base_scaled": 0.002,
+      "minus_base_scaled_ci": [
+       -0.032,
+       0.038
+      ]
+     },
+     "placebo": {
+      "threshold": 1.2783,
+      "confident_share": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "john_wroe": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 1.0
+      },
+      "macro": 1.0
+     }
+    }
+   },
+   "unscaled_identical": {
+    "cross_voice": true,
+    "same_voice_ordinary": true,
+    "same_voice_scripture": true
+   },
+   "sequences": 2,
+   "writers": [
+    "anna_trapnel",
+    "elias_smith",
+    "joanna_southcott",
+    "john_wroe",
+    "joseph_smith",
+    "richard_snowden"
+   ],
+   "references": {
+    "loo__anna_trapnel": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 2836402449,
+     "weights_sha256": "8477772b4e2371658740c43a5b12b3d6666f865ff86157d9b85762b131cce76e",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md",
+      "elias_smith|prophetic train slice",
+      "joanna_southcott|prophetic train slice",
+      "john_wroe|prophetic train slice",
+      "joseph_smith|prophetic train slice",
+      "richard_snowden|prophetic train slice"
+     ]
+    },
+    "loo__elias_smith": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 753584761,
+     "weights_sha256": "5456bc423af51a3dfe8d0fa89440e5fb4f484eb3b9c50da8109aa945194324b3",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md",
+      "anna_trapnel|prophetic train slice",
+      "joanna_southcott|prophetic train slice",
+      "john_wroe|prophetic train slice",
+      "joseph_smith|prophetic train slice",
+      "richard_snowden|prophetic train slice"
+     ]
+    },
+    "loo__joanna_southcott": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 1736449234,
+     "weights_sha256": "ca106d8a161f02b3132f3bcda70e963b56608bc228a481b970f34e3b10daf3bc",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md",
+      "anna_trapnel|prophetic train slice",
+      "elias_smith|prophetic train slice",
+      "john_wroe|prophetic train slice",
+      "joseph_smith|prophetic train slice",
+      "richard_snowden|prophetic train slice"
+     ]
+    },
+    "loo__john_wroe": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 235873072,
+     "weights_sha256": "f8413d56fe6e51f3c099ad6ca55485003b13c518b5029693b17e3a7bf3c57b42",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md",
+      "anna_trapnel|prophetic train slice",
+      "elias_smith|prophetic train slice",
+      "joanna_southcott|prophetic train slice",
+      "joseph_smith|prophetic train slice",
+      "richard_snowden|prophetic train slice"
+     ]
+    },
+    "loo__joseph_smith": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 1352132009,
+     "weights_sha256": "dae3f51a708b4723bd1288814a8490ee23588205acd5bffdb96fab5a59b6acfa",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md",
+      "anna_trapnel|prophetic train slice",
+      "elias_smith|prophetic train slice",
+      "joanna_southcott|prophetic train slice",
+      "john_wroe|prophetic train slice",
+      "richard_snowden|prophetic train slice"
+     ]
+    },
+    "loo__richard_snowden": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 203489534,
+     "weights_sha256": "462d53592df922770ea66dc0efaa256660b24f7fb1532de57277816af0b7fa62",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md",
+      "anna_trapnel|prophetic train slice",
+      "elias_smith|prophetic train slice",
+      "joanna_southcott|prophetic train slice",
+      "john_wroe|prophetic train slice",
+      "joseph_smith|prophetic train slice"
+     ]
+    },
+    "out": {
+     "train_tokens": 2048,
+     "sequences": 2,
+     "steps": 3,
+     "seed": 2161294279,
+     "weights_sha256": "7bbb498476016fe84931dbb83c134a09fdd6754c7c786b7dd5ec7f0546ae7c9b",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md"
+     ]
+    }
+   },
+   "mean_loss": {
+    "base": 4.5867,
+    "voice_out": 4.5201
+   },
+   "criteria": {
+    "W1_above_chance": true,
+    "W2_above_base": false,
+    "W3_same_voice_kept": true
+   }
+  },
+  "masked_larger": {
+   "chance": 0.2,
+   "scorings": {
+    "raw_unscaled": {
+     "cross_voice": {
+      "macro": 0.717,
+      "micro": 0.722,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 0.6,
+       "joanna_southcott": 0.614,
+       "joseph_smith": 0.978,
+       "richard_snowden": 0.439
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.14,
+       "elias_smith": 0.124,
+       "joanna_southcott": 0.018,
+       "joseph_smith": 0.027,
+       "richard_snowden": 0.009
+      },
+      "macro_ci": [
+       0.614,
+       0.811
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.996,
+      "micro": 0.993,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.989,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.992
+      },
+      "chunks": {
+       "anna_trapnel": 21,
+       "elias_smith": 94,
+       "joanna_southcott": 14,
+       "joseph_smith": 20,
+       "richard_snowden": 133
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.005,
+       "joanna_southcott": 0.004,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.991,
+       1.0
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.959,
+      "micro": 0.968,
+      "per_writer": {
+       "anna_trapnel": 0.818,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.976
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.044,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.922,
+       0.991
+      ]
+     }
+    },
+    "base_unscaled": {
+     "cross_voice": {
+      "macro": 0.717,
+      "micro": 0.722,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 0.6,
+       "joanna_southcott": 0.614,
+       "joseph_smith": 0.978,
+       "richard_snowden": 0.439
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.14,
+       "elias_smith": 0.124,
+       "joanna_southcott": 0.018,
+       "joseph_smith": 0.027,
+       "richard_snowden": 0.009
+      },
+      "macro_ci": [
+       0.614,
+       0.811
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.996,
+      "micro": 0.993,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.989,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.992
+      },
+      "chunks": {
+       "anna_trapnel": 21,
+       "elias_smith": 94,
+       "joanna_southcott": 14,
+       "joseph_smith": 20,
+       "richard_snowden": 133
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.005,
+       "joanna_southcott": 0.004,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.991,
+       1.0
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.959,
+      "micro": 0.968,
+      "per_writer": {
+       "anna_trapnel": 0.818,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.976
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.044,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.922,
+       0.991
+      ]
+     }
+    },
+    "voice_out_unscaled": {
+     "cross_voice": {
+      "macro": 0.717,
+      "micro": 0.722,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 0.6,
+       "joanna_southcott": 0.614,
+       "joseph_smith": 0.978,
+       "richard_snowden": 0.439
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.14,
+       "elias_smith": 0.124,
+       "joanna_southcott": 0.018,
+       "joseph_smith": 0.027,
+       "richard_snowden": 0.009
+      },
+      "macro_ci": [
+       0.614,
+       0.811
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.996,
+      "micro": 0.993,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.989,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.992
+      },
+      "chunks": {
+       "anna_trapnel": 21,
+       "elias_smith": 94,
+       "joanna_southcott": 14,
+       "joseph_smith": 20,
+       "richard_snowden": 133
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.005,
+       "joanna_southcott": 0.004,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.991,
+       1.0
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.959,
+      "micro": 0.968,
+      "per_writer": {
+       "anna_trapnel": 0.818,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.976
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.044,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.922,
+       0.991
+      ]
+     }
+    },
+    "voice_loo_unscaled": {
+     "cross_voice": {
+      "macro": 0.717,
+      "micro": 0.722,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 0.6,
+       "joanna_southcott": 0.614,
+       "joseph_smith": 0.978,
+       "richard_snowden": 0.439
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.14,
+       "elias_smith": 0.124,
+       "joanna_southcott": 0.018,
+       "joseph_smith": 0.027,
+       "richard_snowden": 0.009
+      },
+      "macro_ci": [
+       0.614,
+       0.811
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.996,
+      "micro": 0.993,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.989,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.992
+      },
+      "chunks": {
+       "anna_trapnel": 21,
+       "elias_smith": 94,
+       "joanna_southcott": 14,
+       "joseph_smith": 20,
+       "richard_snowden": 133
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.005,
+       "joanna_southcott": 0.004,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.991,
+       1.0
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.959,
+      "micro": 0.968,
+      "per_writer": {
+       "anna_trapnel": 0.818,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.976
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.044,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.922,
+       0.991
+      ]
+     }
+    },
+    "voice_out_chunkz_unscaled": {
+     "cross_voice": {
+      "macro": 0.717,
+      "micro": 0.722,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 0.6,
+       "joanna_southcott": 0.614,
+       "joseph_smith": 0.978,
+       "richard_snowden": 0.439
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.14,
+       "elias_smith": 0.124,
+       "joanna_southcott": 0.018,
+       "joseph_smith": 0.027,
+       "richard_snowden": 0.009
+      },
+      "macro_ci": [
+       0.614,
+       0.811
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.996,
+      "micro": 0.993,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.989,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.992
+      },
+      "chunks": {
+       "anna_trapnel": 21,
+       "elias_smith": 94,
+       "joanna_southcott": 14,
+       "joseph_smith": 20,
+       "richard_snowden": 133
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.005,
+       "joanna_southcott": 0.004,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.991,
+       1.0
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.959,
+      "micro": 0.968,
+      "per_writer": {
+       "anna_trapnel": 0.818,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.976
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.044,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.922,
+       0.991
+      ]
+     }
+    },
+    "raw_scaled": {
+     "cross_voice": {
+      "macro": 0.579,
+      "micro": 0.633,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 0.2,
+       "joanna_southcott": 0.568,
+       "joseph_smith": 0.978,
+       "richard_snowden": 0.195
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.154,
+       "elias_smith": 0.17,
+       "joanna_southcott": 0.026,
+       "joseph_smith": 0.045,
+       "richard_snowden": 0.026
+      },
+      "macro_ci": [
+       0.506,
+       0.669
+      ],
+      "minus_base_scaled": -0.126,
+      "minus_base_scaled_ci": [
+       -0.221,
+       -0.032
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.991,
+      "micro": 0.982,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.979,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.977
+      },
+      "chunks": {
+       "anna_trapnel": 21,
+       "elias_smith": 94,
+       "joanna_southcott": 14,
+       "joseph_smith": 20,
+       "richard_snowden": 133
+      },
+      "pull": {
+       "anna_trapnel": 0.004,
+       "elias_smith": 0.011,
+       "joanna_southcott": 0.007,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.982,
+       0.998
+      ],
+      "minus_base_scaled": 0.057,
+      "minus_base_scaled_ci": [
+       0.037,
+       0.08
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.955,
+      "micro": 0.956,
+      "per_writer": {
+       "anna_trapnel": 0.864,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 0.913,
+       "richard_snowden": 1.0
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.061,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.919,
+       0.987
+      ],
+      "minus_base_scaled": -0.004,
+      "minus_base_scaled_ci": [
+       -0.039,
+       0.032
+      ]
+     },
+     "placebo": {
+      "threshold": 1.9531,
+      "confident_share": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 1.0,
+       "joanna_southcott": 0.818,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.976
+      },
+      "macro": 0.959
+     }
+    },
+    "base_scaled": {
+     "cross_voice": {
+      "macro": 0.705,
+      "micro": 0.709,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 0.6,
+       "joanna_southcott": 0.841,
+       "joseph_smith": 0.957,
+       "richard_snowden": 0.171
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.059,
+       "elias_smith": 0.176,
+       "joanna_southcott": 0.035,
+       "joseph_smith": 0.045,
+       "richard_snowden": 0.017
+      },
+      "macro_ci": [
+       0.61,
+       0.794
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.934,
+      "micro": 0.883,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.713,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.955
+      },
+      "chunks": {
+       "anna_trapnel": 21,
+       "elias_smith": 94,
+       "joanna_southcott": 14,
+       "joseph_smith": 20,
+       "richard_snowden": 133
+      },
+      "pull": {
+       "anna_trapnel": 0.027,
+       "elias_smith": 0.027,
+       "joanna_southcott": 0.015,
+       "joseph_smith": 0.065,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.913,
+       0.952
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.959,
+      "micro": 0.968,
+      "per_writer": {
+       "anna_trapnel": 0.818,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.976
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.044,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.922,
+       0.991
+      ]
+     },
+     "placebo": {
+      "threshold": 0.5773,
+      "confident_share": {
+       "anna_trapnel": 0.5,
+       "elias_smith": 0.8,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 0.391,
+       "richard_snowden": 0.976
+      },
+      "macro": 0.733
+     }
+    },
+    "voice_out_scaled": {
+     "cross_voice": {
+      "macro": 0.703,
+      "micro": 0.709,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 0.6,
+       "joanna_southcott": 0.909,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.049
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.044,
+       "elias_smith": 0.235,
+       "joanna_southcott": 0.009,
+       "joseph_smith": 0.027,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.613,
+       0.792
+      ],
+      "minus_base_scaled": -0.002,
+      "minus_base_scaled_ci": [
+       -0.039,
+       0.031
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.995,
+      "micro": 0.989,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.989,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.985
+      },
+      "chunks": {
+       "anna_trapnel": 21,
+       "elias_smith": 94,
+       "joanna_southcott": 14,
+       "joseph_smith": 20,
+       "richard_snowden": 133
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.005,
+       "joanna_southcott": 0.007,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.988,
+       1.0
+      ],
+      "minus_base_scaled": 0.061,
+      "minus_base_scaled_ci": [
+       0.042,
+       0.082
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.986,
+      "micro": 0.987,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.976
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.018,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.963,
+       1.0
+      ],
+      "minus_base_scaled": 0.027,
+      "minus_base_scaled_ci": [
+       0.0,
+       0.055
+      ]
+     },
+     "placebo": {
+      "threshold": 1.5529,
+      "confident_share": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.902
+      },
+      "macro": 0.98
+     }
+    },
+    "voice_loo_scaled": {
+     "cross_voice": {
+      "macro": 0.727,
+      "micro": 0.741,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 0.6,
+       "joanna_southcott": 0.932,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.146
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.037,
+       "elias_smith": 0.229,
+       "joanna_southcott": 0.0,
+       "joseph_smith": 0.009,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.634,
+       0.816
+      ],
+      "minus_base_scaled": 0.022,
+      "minus_base_scaled_ci": [
+       -0.006,
+       0.05
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.989,
+      "micro": 0.979,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.968,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.977
+      },
+      "chunks": {
+       "anna_trapnel": 21,
+       "elias_smith": 94,
+       "joanna_southcott": 14,
+       "joseph_smith": 20,
+       "richard_snowden": 133
+      },
+      "pull": {
+       "anna_trapnel": 0.004,
+       "elias_smith": 0.005,
+       "joanna_southcott": 0.011,
+       "joseph_smith": 0.004,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.98,
+       0.997
+      ],
+      "minus_base_scaled": 0.055,
+      "minus_base_scaled_ci": [
+       0.035,
+       0.077
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.986,
+      "micro": 0.987,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.976
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.018,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.963,
+       1.0
+      ],
+      "minus_base_scaled": 0.027,
+      "minus_base_scaled_ci": [
+       0.0,
+       0.055
+      ]
+     },
+     "placebo": {
+      "threshold": 1.2314,
+      "confident_share": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.878
+      },
+      "macro": 0.976
+     }
+    },
+    "voice_out_chunkz_scaled": {
+     "cross_voice": {
+      "macro": 0.703,
+      "micro": 0.709,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 0.6,
+       "joanna_southcott": 0.909,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.049
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.044,
+       "elias_smith": 0.235,
+       "joanna_southcott": 0.009,
+       "joseph_smith": 0.027,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.613,
+       0.792
+      ],
+      "minus_base_scaled": -0.002,
+      "minus_base_scaled_ci": [
+       -0.039,
+       0.031
+      ]
+     },
+     "same_voice_ordinary": {
+      "macro": 0.995,
+      "micro": 0.989,
+      "per_writer": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 0.989,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.985
+      },
+      "chunks": {
+       "anna_trapnel": 21,
+       "elias_smith": 94,
+       "joanna_southcott": 14,
+       "joseph_smith": 20,
+       "richard_snowden": 133
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.005,
+       "joanna_southcott": 0.007,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.988,
+       1.0
+      ],
+      "minus_base_scaled": 0.061,
+      "minus_base_scaled_ci": [
+       0.042,
+       0.082
+      ]
+     },
+     "same_voice_scripture": {
+      "macro": 0.986,
+      "micro": 0.987,
+      "per_writer": {
+       "anna_trapnel": 0.955,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 0.976
+      },
+      "chunks": {
+       "anna_trapnel": 22,
+       "elias_smith": 5,
+       "joanna_southcott": 44,
+       "joseph_smith": 46,
+       "richard_snowden": 41
+      },
+      "pull": {
+       "anna_trapnel": 0.0,
+       "elias_smith": 0.0,
+       "joanna_southcott": 0.018,
+       "joseph_smith": 0.0,
+       "richard_snowden": 0.0
+      },
+      "macro_ci": [
+       0.963,
+       1.0
+      ],
+      "minus_base_scaled": 0.027,
+      "minus_base_scaled_ci": [
+       0.0,
+       0.055
+      ]
+     },
+     "placebo": {
+      "threshold": 0.0237,
+      "confident_share": {
+       "anna_trapnel": 1.0,
+       "elias_smith": 1.0,
+       "joanna_southcott": 1.0,
+       "joseph_smith": 1.0,
+       "richard_snowden": 1.0
+      },
+      "macro": 1.0
+     }
+    }
+   },
+   "unscaled_identical": {
+    "cross_voice": true,
+    "same_voice_ordinary": true,
+    "same_voice_scripture": true
+   },
+   "sequences": 8,
+   "writers": [
+    "anna_trapnel",
+    "elias_smith",
+    "joanna_southcott",
+    "joseph_smith",
+    "richard_snowden"
+   ],
+   "references": {
+    "loo__anna_trapnel": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 3193981976,
+     "weights_sha256": "faaf2f99b96c172e136779cd821d0d684f37856cb9b8d756912212bb19608da7",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md",
+      "elias_smith|prophetic train slice",
+      "joanna_southcott|prophetic train slice",
+      "joseph_smith|prophetic train slice",
+      "richard_snowden|prophetic train slice"
+     ]
+    },
+    "loo__elias_smith": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 1053818069,
+     "weights_sha256": "868186405a25690b47ddc443376825a62ec40ad8ea327fec8f5342dc629c553f",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md",
+      "anna_trapnel|prophetic train slice",
+      "joanna_southcott|prophetic train slice",
+      "joseph_smith|prophetic train slice",
+      "richard_snowden|prophetic train slice"
+     ]
+    },
+    "loo__joanna_southcott": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 553851873,
+     "weights_sha256": "ed03f6879508784d7777825992216504d228288be5fc7e6785c47a16dd1f68c4",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md",
+      "anna_trapnel|prophetic train slice",
+      "elias_smith|prophetic train slice",
+      "joseph_smith|prophetic train slice",
+      "richard_snowden|prophetic train slice"
+     ]
+    },
+    "loo__joseph_smith": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 2250240982,
+     "weights_sha256": "69fe4453cf7818453c150b2e280fd407fb693e3518bb99d84ec1e20552c7e749",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md",
+      "anna_trapnel|prophetic train slice",
+      "elias_smith|prophetic train slice",
+      "joanna_southcott|prophetic train slice",
+      "richard_snowden|prophetic train slice"
+     ]
+    },
+    "loo__richard_snowden": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 487650229,
+     "weights_sha256": "54b0204d8054b26061047f87af423d950890083d3275e995ce7a57d067d287ce",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md",
+      "anna_trapnel|prophetic train slice",
+      "elias_smith|prophetic train slice",
+      "joanna_southcott|prophetic train slice",
+      "joseph_smith|prophetic train slice"
+     ]
+    },
+    "out": {
+     "train_tokens": 8192,
+     "sequences": 8,
+     "steps": 3,
+     "seed": 1134358392,
+     "weights_sha256": "898b2407a9b2b11350526bf7f648cdad8696fcc7998d7813061214c4edbbb6bc",
+     "sources": [
+      "Chronicles of Andrew - Jesse Denson - 1815.md",
+      "Chronicles of Nathan Ben Saddi - 1758.md",
+      "The Book of America - 1766.md",
+      "The Book of Preferment - Horace Walpole - 1742.md",
+      "The Chronicle of the Kings of England, 1st Book - Robert Dodsley - 1744.md",
+      "The Chronicle of the Kings of England, 2nd Book - Robert Dodsley - 1744.md",
+      "The First Book of Napoleon - 1809.md",
+      "The First Book of the American Chronicles - John Leacock - 1775.md",
+      "The Late War - Gilbert Hunt - 1816.md",
+      "True Relation of the Holy War - 1806.md"
+     ]
+    }
+   },
+   "mean_loss": {
+    "base": 4.4904,
+    "voice_out": 4.3778
+   },
+   "criteria": {
+    "W1_above_chance": true,
+    "W2_above_base": false,
+    "W3_same_voice_kept": true
+   }
+  }
+ },
+ "not_attempted": {},
+ "verdict": "does not work",
+ "config_sha256": "5c46ea05e091d918ada6cc0a8daa1b08ae7c80e93736eb4f75ad1dc5c1464d65",
+ "commit": "db37df22f42d858c77974c9de455371fdd1826bb"
+}
