@@ -60,7 +60,7 @@ compares against.
 
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
-| BOM-118 | About 64 word uses and phrases had died out of English before the 1740s | Skousen and Carmack 2018 | dictionary citations, one item at a time | every item searched for its meaning across the whole library, with the same search on Bible-style books | TBD; 48 of 64 items in hand |
+| BOM-118 | About 64 word uses and phrases had died out of English before the 1740s | Skousen and Carmack 2018 | dictionary citations, one item at a time | every item searched for its meaning across the whole library, with the same search on Bible-style books | Of 34 items I could test, 21 are still in use in 1740-1830, 2 turn up once, 11 not found; checked by two AI readings and my own, not by a person |
 | BOM-119 | The grammar is 1500s English: "did go" past tenses at 20% against under 2% in Bible-style books | Carmack 2015 to 2021 | five Bible-style books | every book in the library | **Done** |
 | BOM-102 | It reads like a translation; it has Hebrew turns of phrase | Tvedtnes, Skousen and others | examples | real translations against Bible-style imitations | **Hebraisms done; translation check failed** |
 | BOM-120 | "Therefore" and "wherefore" switch in the order the book was dictated | Metcalfe 1993 | the book alone | 264 long books by one author | **Done** |
@@ -1277,6 +1277,64 @@ instrument that flips on one setting is not ready to be pointed at the question.
 here either. Twelve more features need reading and are prepared as questions (succession,
 markets, sacrifice, burial, money and others); for those the 1820s values are from my memory,
 which is its own weakness.
+
+### Words that were supposed to be dead (BOM-118)
+
+Skousen and Carmack list word uses and phrases in the Book of Mormon that, by the dictionary's
+citations, had dropped out of English before the 1740s. "Arrive to" a place. "It was desirous"
+for it was desirable. "Depressed" for weakened in body. If that holds, the vocabulary was out
+of a man's reach in 1829. The dictionary works from the citations its readers happened to
+collect. I have a quarter of a million books, so I searched for each item.
+
+I had 48 of their 64 items in hand. Six I could not turn into a search, four of them because
+the claimed word is Skousen's reconstruction and not what the 1830 edition prints. For the
+other 42 I cut the search down to the construction of the cited verse and scanned all 207,082
+works printed 1740 to 1830. Then a model read up to 60 hits per item per decade and said
+whether each carried the claimed old sense or the ordinary one. That is simulated judging by an
+AI model, 8,444 passages of it.
+
+The known-answer check was per item: the model had to read the Book of Mormon's own verse in
+the claimed sense and two ordinary uses as ordinary. 34 items passed. Eight did not and are
+out.
+
+The model said "claimed sense" 2,509 times. I had planned for a person to check every one of
+those. Nobody has. Instead a second, stronger model read each and sorted it: the writer's own
+words, a quotation or reprint of something older, or not the sense after all. Then I (the AI
+assistant, not Dave) read about 130 of the deciding passages myself, every one for the items
+resting on a handful of books and a sample of four from each larger item.
+
+That last step mattered. Three finds for "to that" meaning until were all the old long s:
+the scanner read "so that" as "to that". Seven finds for "molten" as a verb were one speech by
+the Irish lawyer Curran in seven editions, and it is the ordinary participle anyway. Every
+find for "give" meaning describe was somebody who "gave the land the name of" something.
+Three of five "into a effect" were smudged "into effect". My reading changed 71 verdicts, and
+I now count a passage once however many editions reprint it.
+
+| Outcome | Items | Which |
+| --- | --- | --- |
+| Still in use 1740-1830, in the writer's own words, two or more separate passages | 21 | arrive to (316 passages), flatter into (120), on the Nth month (73), strong hold (55), do away (52), in the favor of (34), devour (24), extinct (23), be aware (18), hail (18), depressed (17), course (11), belief on (10), in the Nth day (10), desirous (7), for the cause of (5), begin to (3), call (3), hurl away (3), belove (2), into an effect (2) |
+| Found once | 2 | counsel (1813), cross (1789) |
+| Not found | 11 | molten as a verb, consigned, give, rebellion, rent, views, welfare, whereby, somewhat contentions, to that, where unto |
+| Could not test | 14 | 6 with no workable search, 8 where the model missed the item's check |
+
+Some of the 21 are everywhere. People "arrived to" an age or a height all through the period.
+A senator in 1827 said "it was desirous they should be performed". Basil Hall in 1829 saw
+houses in Rochester, New York, built on wheels "for the avowed purpose of being hurled away
+when the land should be sold". All but one of the 21 are found as late as the 1820s.
+
+So of the 34 items I could test, about three in five had not died. The dictionary's last
+citation is not the last use. That is the plain result, and it does not surprise anyone who
+has used a big library against a citation dictionary.
+
+What it does not show. Eleven items were not found, and that is real, though "not found"
+means not found by one construction with a cap of 60 passages per decade. The 14 I could not
+test are simply open, and there are 16 more items I do not have. Five of the 21 rest on two or
+three passages (belove, into an effect, begin to, call, hurl away), and for some the sense is
+a judgment call: is "the call of its stomach" a need or a demand? No person has checked any
+of it. The second model was wrong on about a third of the passages I read in the thin items
+and on 8 of the 60 I sampled in the larger ones, so the passage counts in the table are too
+high by some margin, though not by enough to move a large item. The list of all 2,509 is kept
+for anyone who wants to read them.
 
 ## What I would want a reader to take from the whole set
 

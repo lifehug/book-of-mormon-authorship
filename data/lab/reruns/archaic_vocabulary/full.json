@@ -1,0 +1,4048 @@
+{
+ "judging": "simulated judging by an AI model (lab.judge, model sonnet); every A answer checked before it counts. Checked by: a second reading by a different AI model (opus, simulated judging), then the AI assistant's own reading of the passages behind every verdict resting on five passages or fewer; not checked by a person",
+ "settings": {
+  "year_min": 1740,
+  "year_max": 1830,
+  "seed": 20261121,
+  "workers": 8,
+  "part_size": 2000,
+  "window_words": 200,
+  "model": "sonnet",
+  "frame_cap": 60,
+  "swamp_share": 0.5,
+  "swamp_min_broad": 500,
+  "ordinary_per_item": 2,
+  "ordinary_years": [
+   1800,
+   1830
+  ],
+  "persists_min": 2,
+  "old_author_died_before": 1740,
+  "second_model": "opus",
+  "checked_by": "a second reading by a different AI model (opus, simulated judging), then the AI assistant's own reading of the passages behind every verdict resting on five passages or fewer; not checked by a person",
+  "dedup_words": 10,
+  "dedup_overlap": 0.8,
+  "controls": "data/controls/pseudo_biblical_primary.jsonl",
+  "js_texts": [
+   "data/private/candidates/js-*.jsonl",
+   "data/private/candidates/later/*.txt"
+  ],
+  "frames_revised": [
+   "molten",
+   "cross",
+   "depressed",
+   "rebellion",
+   "rent",
+   "reserve",
+   "tell",
+   "begin_to",
+   "into_an_effect",
+   "somewhat_contentions",
+   "arrive_to"
+  ]
+ },
+ "library_works_scanned": 207082,
+ "library_works_unreadable": 0,
+ "control_texts": {
+  "ctl": 29,
+  "js": 107
+ },
+ "verdicts_changed_by_the_assistants_reading": 71,
+ "items": {
+  "break": {
+   "index": 0,
+   "item": "Break",
+   "reference": "Ether 6:10",
+   "verdict": "cannot test (the judge missed this item's check)",
+   "check": {
+    "cited": "B",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": false
+   },
+   "frame_hits_by_decade": {
+    "1740": 6,
+    "1750": 3,
+    "1760": 3,
+    "1770": 6,
+    "1780": 261,
+    "1790": 468,
+    "1800": 459,
+    "1810": 659,
+    "1820": 1283
+   },
+   "judged_by_group": {},
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "mar": {
+   "index": 1,
+   "item": "Mar",
+   "reference": "Ether 6:10",
+   "verdict": "cannot test (the judge missed this item's check)",
+   "check": {
+    "cited": "B",
+    "ordinary": [
+     "B"
+    ],
+    "complete": true,
+    "passed": false
+   },
+   "frame_hits_by_decade": {
+    "1740": 3,
+    "1750": 1,
+    "1760": 1,
+    "1770": 4,
+    "1780": 90,
+    "1790": 199,
+    "1800": 303,
+    "1810": 343,
+    "1820": 827
+   },
+   "judged_by_group": {},
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "sermon": {
+   "index": 2,
+   "item": "Sermon",
+   "reference": "Mosiah 19:24",
+   "verdict": "cannot test",
+   "why": "form not in the 1830 text: Skousen conjectures sermon where the 1830 text reads ceremony"
+  },
+  "belove": {
+   "index": 3,
+   "item": "Belove",
+   "reference": "Alma 27:4",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 7,
+    "1750": 4,
+    "1760": 1,
+    "1770": 1,
+    "1780": 116,
+    "1790": 206,
+    "1800": 248,
+    "1810": 302,
+    "1820": 539
+   },
+   "judged_by_group": {
+    "lib:1740": {
+     "judged": 7,
+     "answered": 7,
+     "sense_B": 7
+    },
+    "lib:1750": {
+     "judged": 4,
+     "answered": 4,
+     "sense_B": 4
+    },
+    "lib:1760": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1770": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 57,
+     "sense_A": 3,
+     "hand_not_claimed": 2,
+     "hand_own_words": 1
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 57,
+     "sense_A": 3,
+     "hand_not_claimed": 3
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 58,
+     "sense_A": 1,
+     "hand_quotation_or_reprint": 1,
+     "sense_U": 1
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 53,
+     "sense_A": 7,
+     "hand_not_claimed": 7
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 53,
+     "sense_A": 7,
+     "hand_not_claimed": 6,
+     "hand_own_words": 1
+    }
+   },
+   "own_words_works": [
+    "internet_archive:bim_eighteenth-century_the-amicable-quixote-or_1788_1",
+    "internet_archive:remarkablebiogra00pind"
+   ],
+   "own_words_passages": 2,
+   "latest_decade": 1820
+  },
+  "counsel": {
+   "index": 4,
+   "item": "Counsel",
+   "reference": "Alma 37:37",
+   "verdict": "attested once",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1780": 16,
+    "1790": 16,
+    "1800": 8,
+    "1810": 45,
+    "1820": 58
+   },
+   "judged_by_group": {
+    "lib:1780": {
+     "judged": 16,
+     "answered": 16,
+     "sense_B": 15,
+     "sense_A": 1,
+     "hand_not_claimed": 1
+    },
+    "lib:1790": {
+     "judged": 16,
+     "answered": 16,
+     "sense_A": 2,
+     "hand_not_claimed": 2,
+     "sense_B": 14
+    },
+    "lib:1800": {
+     "judged": 8,
+     "answered": 8,
+     "sense_B": 8
+    },
+    "lib:1810": {
+     "judged": 45,
+     "answered": 45,
+     "sense_B": 44,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1820": {
+     "judged": 58,
+     "answered": 58,
+     "sense_B": 53,
+     "sense_A": 4,
+     "hand_not_claimed": 4,
+     "sense_U": 1
+    }
+   },
+   "own_words_works": [
+    "internet_archive:baptist-magazine-1809_1813-11_5"
+   ],
+   "own_words_passages": 1,
+   "latest_decade": 1810
+  },
+  "desirous": {
+   "index": 5,
+   "item": "Desirous",
+   "reference": "1 Nephi 8:12",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 1,
+    "1760": 1,
+    "1770": 1,
+    "1780": 26,
+    "1790": 33,
+    "1800": 76,
+    "1810": 48,
+    "1820": 139
+   },
+   "judged_by_group": {
+    "lib:1740": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1760": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1770": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1780": {
+     "judged": 26,
+     "answered": 26,
+     "sense_B": 26
+    },
+    "lib:1790": {
+     "judged": 33,
+     "answered": 33,
+     "sense_B": 33
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 58,
+     "sense_U": 1,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1810": {
+     "judged": 48,
+     "answered": 48,
+     "sense_B": 47,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 53,
+     "sense_A": 7,
+     "hand_own_words": 6,
+     "hand_not_claimed": 1
+    }
+   },
+   "own_words_works": [
+    "institutional_books:32044054994074",
+    "internet_archive:asiaticjournala53unkngoog",
+    "internet_archive:b28148447",
+    "internet_archive:operationsbriti00unkngoog",
+    "internet_archive:sim_great-britain-parliament-parliamentary-debates_march-20-may-31-1826_15",
+    "internet_archive:sim_saturday-evening-post_1824-10-16_3_42",
+    "internet_archive:sim_united-states-congress-register-of-debates-in-congress_december-4-6-1826-march-3-1827_3",
+    "internet_archive:sketchesofpersia01malcuoft"
+   ],
+   "own_words_passages": 7,
+   "latest_decade": 1820
+  },
+  "devour": {
+   "index": 6,
+   "item": "Devour",
+   "reference": "3 Nephi 6:2",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1750": 2,
+    "1760": 3,
+    "1770": 13,
+    "1780": 335,
+    "1790": 776,
+    "1800": 765,
+    "1810": 983,
+    "1820": 1755
+   },
+   "judged_by_group": {
+    "ctl": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1750": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 2
+    },
+    "lib:1760": {
+     "judged": 3,
+     "answered": 3,
+     "sense_B": 3
+    },
+    "lib:1770": {
+     "judged": 13,
+     "answered": 13,
+     "sense_B": 8,
+     "sense_A": 5,
+     "hand_own_words": 3,
+     "hand_not_claimed": 1,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 50,
+     "sense_A": 10,
+     "hand_own_words": 6,
+     "hand_quotation_or_reprint": 1,
+     "hand_not_claimed": 3
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 51,
+     "sense_A": 9,
+     "hand_own_words": 4,
+     "hand_not_claimed": 2,
+     "hand_quotation_or_reprint": 3
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 8,
+     "hand_own_words": 5,
+     "sense_B": 52,
+     "hand_not_claimed": 2,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 48,
+     "sense_A": 12,
+     "hand_own_words": 6,
+     "hand_quotation_or_reprint": 1,
+     "hand_not_claimed": 5
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 49,
+     "sense_A": 10,
+     "hand_own_words": 6,
+     "hand_not_claimed": 4,
+     "sense_U": 1
+    }
+   },
+   "own_words_works": [
+    "hathitrust:aeu.ark:/13960/t39z9r30x",
+    "hathitrust:emu.000011333682",
+    "hathitrust:mdp.39015078563270",
+    "hathitrust:mdp.39015082611669",
+    "institutional_books:32044014557961",
+    "institutional_books:32044086351129",
+    "institutional_books:HW2QFO",
+    "institutional_books:HXH1BV",
+    "internet_archive:10279130bsb",
+    "internet_archive:10724366bsb",
+    "internet_archive:b21440220",
+    "internet_archive:bim_eighteenth-century_a-view-of-society-and-ma_moore-john_1783_2",
+    "internet_archive:bim_eighteenth-century_a-vindication-of-gen-ri_price-joseph_1783_1",
+    "internet_archive:bim_eighteenth-century_an-historical-view-of-th_1796_1",
+    "internet_archive:bim_eighteenth-century_official-letters-to-the-_washington-george_1796_2",
+    "internet_archive:bim_eighteenth-century_the-unfortunate-caledoni_1781",
+    "internet_archive:englishreviewor22unkngoog",
+    "internet_archive:farmerquotsmanu00butl",
+    "internet_archive:micro_IA40244320_0116",
+    "internet_archive:novelistsmagazin12londuoft",
+    "internet_archive:prometheusunboun00shelrich",
+    "internet_archive:sim_analectic-magazine_1818-05_11",
+    "internet_archive:sim_european-magazine-and-london-review_1822-08_82",
+    "internet_archive:sim_literary-magazine-and-american-register_1803-12_1_3",
+    "internet_archive:sim_new-england-farmer-and-horticultural-register_1826-12-01_5_19",
+    "internet_archive:sim_weekly-entertainer-and-west-of-england-miscellany_1809-11-27_49",
+    "internet_archive:sketchesofhistor01kame",
+    "tcp:K059867.001",
+    "tcp:K113606.008",
+    "tcp:N10732"
+   ],
+   "own_words_passages": 24,
+   "latest_decade": 1820
+  },
+  "molten": {
+   "index": 7,
+   "item": "Molten",
+   "reference": "1 Nephi 17:16",
+   "verdict": "not found",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 1,
+    "1760": 3,
+    "1770": 3,
+    "1780": 30,
+    "1790": 93,
+    "1800": 172,
+    "1810": 191,
+    "1820": 370
+   },
+   "judged_by_group": {
+    "ctl": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 1,
+     "sense_A": 1,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1740": {
+     "judged": 1,
+     "answered": 1,
+     "sense_A": 1,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1760": {
+     "judged": 3,
+     "answered": 3,
+     "sense_B": 1,
+     "sense_A": 2,
+     "hand_quotation_or_reprint": 2
+    },
+    "lib:1770": {
+     "judged": 3,
+     "answered": 3,
+     "sense_B": 3
+    },
+    "lib:1780": {
+     "judged": 30,
+     "answered": 30,
+     "sense_B": 24,
+     "sense_A": 6,
+     "hand_quotation_or_reprint": 5,
+     "hand_not_claimed": 1
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 50,
+     "sense_A": 10,
+     "hand_quotation_or_reprint": 8,
+     "hand_not_claimed": 2
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 49,
+     "sense_A": 11,
+     "hand_quotation_or_reprint": 11
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 42,
+     "sense_A": 18,
+     "hand_quotation_or_reprint": 12,
+     "hand_not_claimed": 6
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 48,
+     "sense_A": 12,
+     "hand_not_claimed": 8,
+     "hand_quotation_or_reprint": 4
+    }
+   },
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "but": {
+   "index": 8,
+   "item": "But",
+   "reference": "Jacob 7:19",
+   "verdict": "cannot test (the judge missed this item's check)",
+   "check": {
+    "cited": "B",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": false
+   },
+   "frame_hits_by_decade": {
+    "1770": 1,
+    "1780": 11,
+    "1790": 11,
+    "1800": 24,
+    "1810": 53,
+    "1820": 99
+   },
+   "judged_by_group": {},
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "call": {
+   "index": 9,
+   "item": "Call",
+   "reference": "Alma 28:14",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 79,
+    "1750": 46,
+    "1760": 56,
+    "1770": 65,
+    "1780": 2048,
+    "1790": 4338,
+    "1800": 4539,
+    "1810": 6901,
+    "1820": 13551
+   },
+   "judged_by_group": {
+    "ctl": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 2
+    },
+    "lib:1740": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 60
+    },
+    "lib:1750": {
+     "judged": 46,
+     "answered": 46,
+     "sense_B": 46
+    },
+    "lib:1760": {
+     "judged": 56,
+     "answered": 56,
+     "sense_B": 56
+    },
+    "lib:1770": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 57,
+     "sense_A": 3,
+     "hand_not_claimed": 2,
+     "hand_own_words": 1
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 59,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 58,
+     "sense_A": 2,
+     "hand_own_words": 1,
+     "hand_not_claimed": 1
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 60
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 59,
+     "sense_A": 1,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 59,
+     "sense_A": 1,
+     "hand_not_claimed": 1
+    }
+   },
+   "own_words_works": [
+    "internet_archive:bim_eighteenth-century_humphry-clinker-1792_smollet-tobias-george_1792_2",
+    "internet_archive:bub_gb_qUGxK7D6GB4C",
+    "tcp:N09700"
+   ],
+   "own_words_passages": 3,
+   "latest_decade": 1790
+  },
+  "consigned": {
+   "index": 10,
+   "item": "Consigned",
+   "reference": "Helaman 7:9",
+   "verdict": "not found",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1750": 1,
+    "1770": 1,
+    "1780": 6,
+    "1790": 20,
+    "1800": 17,
+    "1810": 17,
+    "1820": 65
+   },
+   "judged_by_group": {
+    "lib:1750": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1770": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1780": {
+     "judged": 6,
+     "answered": 6,
+     "sense_B": 6
+    },
+    "lib:1790": {
+     "judged": 20,
+     "answered": 20,
+     "sense_B": 20
+    },
+    "lib:1800": {
+     "judged": 17,
+     "answered": 17,
+     "sense_B": 17
+    },
+    "lib:1810": {
+     "judged": 17,
+     "answered": 17,
+     "sense_B": 17
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 60
+    }
+   },
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "course": {
+   "index": 11,
+   "item": "Course",
+   "reference": "Alma 2:24",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1780": 21,
+    "1790": 36,
+    "1800": 89,
+    "1810": 146,
+    "1820": 165
+   },
+   "judged_by_group": {
+    "lib:1780": {
+     "judged": 21,
+     "answered": 21,
+     "sense_B": 21
+    },
+    "lib:1790": {
+     "judged": 36,
+     "answered": 36,
+     "sense_B": 35,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 44,
+     "sense_A": 16,
+     "hand_not_claimed": 9,
+     "hand_own_words": 7
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 44,
+     "sense_A": 16,
+     "hand_not_claimed": 7,
+     "hand_own_words": 9
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 52,
+     "sense_A": 8,
+     "hand_own_words": 1,
+     "hand_not_claimed": 7
+    }
+   },
+   "own_words_works": [
+    "hathitrust:mdp.39015068382947",
+    "hathitrust:uc2.ark:/13960/t66400z3p",
+    "institutional_books:HN3RZI",
+    "institutional_books:HXUIWZ",
+    "internet_archive:Breakenridge",
+    "internet_archive:abridgednarrativ00lacorich",
+    "internet_archive:b28761157",
+    "internet_archive:cihm_32508",
+    "internet_archive:cihm_48864",
+    "internet_archive:geographicalsket00dana",
+    "internet_archive:isbn_9781142036041",
+    "internet_archive:journalofnatural12lond",
+    "internet_archive:s1id13378340",
+    "internet_archive:sim_great-britain-house-of-commons-journal_august-31-1802-november-3-1803_58",
+    "internet_archive:sim_weekly-entertainer-and-west-of-england-miscellany_1805-04-29_45",
+    "internet_archive:sportingmagazin19unkngoog",
+    "internet_archive:treatiseonintern00unse",
+    "internet_archive:worksoftimbobbin00bobb"
+   ],
+   "own_words_passages": 11,
+   "latest_decade": 1820
+  },
+  "cross": {
+   "index": 12,
+   "item": "Cross",
+   "reference": "Alma 10:16",
+   "verdict": "attested once",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1780": 11,
+    "1790": 27,
+    "1800": 35,
+    "1810": 35,
+    "1820": 37
+   },
+   "judged_by_group": {
+    "lib:1780": {
+     "judged": 11,
+     "answered": 11,
+     "sense_B": 9,
+     "sense_A": 2,
+     "hand_own_words": 1,
+     "hand_not_claimed": 1
+    },
+    "lib:1790": {
+     "judged": 27,
+     "answered": 27,
+     "sense_B": 24,
+     "sense_A": 3,
+     "hand_quotation_or_reprint": 3
+    },
+    "lib:1800": {
+     "judged": 35,
+     "answered": 35,
+     "sense_B": 35
+    },
+    "lib:1810": {
+     "judged": 35,
+     "answered": 35,
+     "sense_B": 29,
+     "sense_A": 6,
+     "hand_not_claimed": 1,
+     "hand_quotation_or_reprint": 5
+    },
+    "lib:1820": {
+     "judged": 37,
+     "answered": 37,
+     "sense_A": 3,
+     "hand_not_claimed": 1,
+     "sense_B": 34,
+     "hand_quotation_or_reprint": 2
+    }
+   },
+   "own_words_works": [
+    "internet_archive:bim_eighteenth-century_letters-from-simpkin-the_broome-ralph_1789"
+   ],
+   "own_words_passages": 1,
+   "latest_decade": 1780
+  },
+  "depart": {
+   "index": 13,
+   "item": "Depart",
+   "reference": "Helaman 8:11",
+   "verdict": "cannot test",
+   "why": "form not in the 1830 text: the 1830 text reads parted, not departed"
+  },
+  "depressed": {
+   "index": 14,
+   "item": "Depressed",
+   "reference": "Alma 56:16",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1790": 3,
+    "1800": 1,
+    "1810": 9,
+    "1820": 36
+   },
+   "judged_by_group": {
+    "lib:1790": {
+     "judged": 3,
+     "answered": 3,
+     "sense_A": 2,
+     "hand_own_words": 2,
+     "sense_B": 1
+    },
+    "lib:1800": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1810": {
+     "judged": 9,
+     "answered": 9,
+     "sense_A": 8,
+     "hand_own_words": 7,
+     "sense_B": 1,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1820": {
+     "judged": 36,
+     "answered": 36,
+     "sense_B": 8,
+     "sense_A": 27,
+     "hand_own_words": 27,
+     "sense_U": 1
+    }
+   },
+   "own_words_works": [
+    "hathitrust:mmet.ark:/13960/t47p91x2v",
+    "hathitrust:uc2.ark:/13960/t6057mk59",
+    "hathitrust:yale.39002088660338",
+    "institutional_books:32044092634013",
+    "institutional_books:32044103244331",
+    "institutional_books:HC4KJ6",
+    "institutional_books:HWG1Q5",
+    "institutional_books:HWJN6J",
+    "institutional_books:HXIH4W",
+    "internet_archive:11833917bsb",
+    "internet_archive:39002086347540.med.yale.edu",
+    "internet_archive:ASPC0001910800",
+    "internet_archive:anewuniversalbi00platgoog",
+    "internet_archive:auniversalbiogr00platgoog",
+    "internet_archive:auniversalbiogr00unkngoog",
+    "internet_archive:b21305183_0002",
+    "internet_archive:b21444523",
+    "internet_archive:b28040855_0002",
+    "internet_archive:b29348420",
+    "internet_archive:b30448785",
+    "internet_archive:b33280137",
+    "internet_archive:bib_fict_9877299",
+    "internet_archive:bim_eighteenth-century_a-few-practical-remarks-_sandford-william-surge_1799",
+    "internet_archive:forgetmenotchris00unse_6",
+    "internet_archive:forgetmenotchris00unse_7",
+    "internet_archive:generalbiograph03chalgoog",
+    "internet_archive:generalbiograph28chalgoog",
+    "internet_archive:journal-of-morbid-anatomy-ophthalmic-medicine-and_1828_1_1",
+    "internet_archive:newjerusalemmag00goydgoog",
+    "internet_archive:philadelphiajour1318chap",
+    "internet_archive:s7343id1398718",
+    "internet_archive:sim_examiner-a-weekly-paper-on-politics-literature-music_1830-02-14_1150",
+    "internet_archive:sim_medical-repository_1820_5_1",
+    "internet_archive:sim_philadelphia-journal-of-medical-and-physical-sciences_november-1826-february-1827_4",
+    "internet_archive:sim_the-lancet_1829-04-04_2_292",
+    "internet_archive:vol4universalbio00plat"
+   ],
+   "own_words_passages": 17,
+   "latest_decade": 1820
+  },
+  "extinct": {
+   "index": 15,
+   "item": "Extinct",
+   "reference": "Alma 44:7",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 1,
+    "1750": 1,
+    "1760": 2,
+    "1770": 3,
+    "1780": 55,
+    "1790": 207,
+    "1800": 317,
+    "1810": 496,
+    "1820": 903
+   },
+   "judged_by_group": {
+    "ctl": {
+     "judged": 1,
+     "answered": 1,
+     "sense_A": 1,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1740": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1750": {
+     "judged": 1,
+     "answered": 1,
+     "sense_A": 1,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1760": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 2
+    },
+    "lib:1770": {
+     "judged": 3,
+     "answered": 3,
+     "sense_B": 3
+    },
+    "lib:1780": {
+     "judged": 55,
+     "answered": 55,
+     "sense_B": 41,
+     "sense_A": 13,
+     "hand_quotation_or_reprint": 9,
+     "hand_own_words": 4,
+     "sense_U": 1
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 47,
+     "sense_A": 13,
+     "hand_quotation_or_reprint": 8,
+     "hand_own_words": 4,
+     "hand_not_claimed": 1
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 52,
+     "sense_A": 8,
+     "hand_quotation_or_reprint": 4,
+     "hand_own_words": 4
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 45,
+     "sense_A": 15,
+     "hand_own_words": 9,
+     "hand_not_claimed": 1,
+     "hand_quotation_or_reprint": 5
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 41,
+     "sense_A": 18,
+     "hand_own_words": 11,
+     "hand_not_claimed": 1,
+     "hand_quotation_or_reprint": 6,
+     "sense_U": 1
+    }
+   },
+   "own_words_works": [
+    "hathitrust:loc.ark:/13960/t6h135c4h",
+    "hathitrust:mdp.39015011419051",
+    "institutional_books:32044011890001",
+    "institutional_books:32044014221147",
+    "institutional_books:32044058186214",
+    "institutional_books:HH28W2",
+    "institutional_books:HXJ2LB",
+    "institutional_books:HXJV1Q",
+    "internet_archive:MN41558ucmf_5",
+    "internet_archive:bim_eighteenth-century_miscellaneous-pieces-in_swift-jonathan_1789",
+    "internet_archive:bim_eighteenth-century_romances-by-i-disrael_disraeli-isaac_1799",
+    "internet_archive:bim_eighteenth-century_the-mourner-or-the-aff_grosvenor-b-benjamin_1792",
+    "internet_archive:bim_eighteenth-century_the-wisdom-of-angels-co_swedenborg-emanuel_1788",
+    "internet_archive:bim_eighteenth-century_travels-round-the-world-_pags-monsieur-de-pier_1791_2",
+    "internet_archive:geographicalhist03alce_0",
+    "internet_archive:gpl_648928",
+    "internet_archive:historyjava02raffgoog",
+    "internet_archive:memoirsandrewja02waldgoog",
+    "internet_archive:memoirsofandrewj00wald3",
+    "internet_archive:proceedingsandd00virggoog",
+    "internet_archive:seriousremonstr00brangoog",
+    "internet_archive:sermonsonimportapm02davi",
+    "internet_archive:sim_christian-secretary_1822-03-16_1_7",
+    "internet_archive:sim_london-magazine_1827-07-01_8",
+    "internet_archive:sim_missionary-herald_1819-12_15_12",
+    "internet_archive:sim_port-folio_1819-09_8_3",
+    "internet_archive:sim_religious-inquirer_1824-07-10_3_18",
+    "internet_archive:travelsroundworl02pag",
+    "internet_archive:works02swifgoog",
+    "internet_archive:worksarrbythomas19swifuoft",
+    "internet_archive:worksrevjonatha99nichgoog",
+    "tcp:K057527.003"
+   ],
+   "own_words_passages": 23,
+   "latest_decade": 1820
+  },
+  "flatter": {
+   "index": 16,
+   "item": "Flatter",
+   "reference": "Alma 52:19",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 5,
+    "1750": 4,
+    "1760": 3,
+    "1770": 3,
+    "1780": 171,
+    "1790": 294,
+    "1800": 273,
+    "1810": 379,
+    "1820": 652
+   },
+   "judged_by_group": {
+    "lib:1740": {
+     "judged": 5,
+     "answered": 5,
+     "sense_A": 5,
+     "hand_quotation_or_reprint": 4,
+     "hand_own_words": 1
+    },
+    "lib:1750": {
+     "judged": 4,
+     "answered": 4,
+     "sense_B": 1,
+     "sense_A": 3,
+     "hand_own_words": 3
+    },
+    "lib:1760": {
+     "judged": 3,
+     "answered": 3,
+     "sense_A": 3,
+     "hand_own_words": 2,
+     "hand_not_claimed": 1
+    },
+    "lib:1770": {
+     "judged": 3,
+     "answered": 3,
+     "sense_A": 3,
+     "hand_own_words": 3
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 40,
+     "hand_own_words": 30,
+     "sense_B": 20,
+     "hand_quotation_or_reprint": 10
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 15,
+     "sense_A": 45,
+     "hand_own_words": 39,
+     "hand_quotation_or_reprint": 5,
+     "hand_not_claimed": 1
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 43,
+     "hand_own_words": 30,
+     "sense_B": 17,
+     "hand_quotation_or_reprint": 13
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 40,
+     "hand_quotation_or_reprint": 10,
+     "hand_own_words": 29,
+     "sense_B": 20,
+     "hand_not_claimed": 1
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 43,
+     "hand_own_words": 25,
+     "hand_quotation_or_reprint": 16,
+     "hand_not_claimed": 2,
+     "sense_B": 17
+    }
+   },
+   "own_words_works": [
+    "hathitrust:aeu.ark:/13960/t77s8hw2p",
+    "hathitrust:loc.ark:/13960/t7qn7cj1n",
+    "hathitrust:mdp.39015014676723",
+    "hathitrust:nnc2.ark:/13960/t2p56v66g",
+    "hathitrust:uc2.ark:/13960/t2q52jj3k",
+    "institutional_books:32044004345559",
+    "institutional_books:32044009916586",
+    "institutional_books:32044035013937",
+    "institutional_books:32044052816113",
+    "institutional_books:32044054767546",
+    "institutional_books:32044089242887",
+    "institutional_books:32044090891284",
+    "institutional_books:32044092650423",
+    "institutional_books:HC1G8W",
+    "institutional_books:HC2JX9",
+    "institutional_books:HH2AMC",
+    "institutional_books:HW1VSK",
+    "institutional_books:HW2PTF",
+    "institutional_books:HW2S8U",
+    "institutional_books:HW8SKD",
+    "institutional_books:HWKCXK",
+    "institutional_books:HWLYV4",
+    "institutional_books:HWP3XV",
+    "institutional_books:HWPJRW",
+    "institutional_books:HWRCSK",
+    "institutional_books:HXG6QM",
+    "institutional_books:HXJFR1",
+    "institutional_books:HXQ94A",
+    "institutional_books:HXUA9L",
+    "internet_archive:10604903bsb",
+    "internet_archive:10687196bsb",
+    "internet_archive:10747041bsb",
+    "internet_archive:10747042bsb",
+    "internet_archive:10747269bsb",
+    "internet_archive:10750205bsb",
+    "internet_archive:adventureshajji08morigoog",
+    "internet_archive:adventuresofspec01stev",
+    "internet_archive:adventuresofuncl00fidf",
+    "internet_archive:afullinquiryint00moorgoog",
+    "internet_archive:antijacobinrevi03conggoog",
+    "internet_archive:b21442137",
+    "internet_archive:b21513727",
+    "internet_archive:b22391277",
+    "internet_archive:b2933388x_0002",
+    "internet_archive:b30371260",
+    "internet_archive:b30383018",
+    "internet_archive:bim_eighteenth-century_a-complete-history-of-th_dibdin-charles_1800_5",
+    "internet_archive:bim_eighteenth-century_a-series-of-adventures-i_irwin-eyles_1787_1",
+    "internet_archive:bim_eighteenth-century_advice-from-farmer-truem_hanway-jonas_1792",
+    "internet_archive:bim_eighteenth-century_an-impartial-report-of-t_great-britain-parliamen_1794_1",
+    "internet_archive:bim_eighteenth-century_cecilia-or-memoirs-of-a_burney-fanny_1783_1_0",
+    "internet_archive:bim_eighteenth-century_domestic-divinity-or-a_1791",
+    "internet_archive:bim_eighteenth-century_free-observations-on-the_spilsbury-francis-chem_1788",
+    "internet_archive:bim_eighteenth-century_interesting-anecdotes-m_addison-mr_1797_10",
+    "internet_archive:bim_eighteenth-century_letter-addressed-to-the-_paine-thomas_1793",
+    "internet_archive:bim_eighteenth-century_letter-from-the-hon-har_1798",
+    "internet_archive:bim_eighteenth-century_memoirs-of-emma-courtney_hays-mary_1796_1",
+    "internet_archive:bim_eighteenth-century_memoirs-of-the-ancient-h_1796_1",
+    "internet_archive:bim_eighteenth-century_memorandums-c-c-res_1794",
+    "internet_archive:bim_eighteenth-century_olivia-or-deserted-bri_bonhote-mrs-elizabeth_1787_1",
+    "internet_archive:bim_eighteenth-century_the-adventures-of-david-_fielding-sarah_1782",
+    "internet_archive:bim_eighteenth-century_the-adventures-of-ferdin_smollett-tobias-george_1782_2",
+    "internet_archive:bim_eighteenth-century_the-beauties-of-the-ramb_1787_1",
+    "internet_archive:bim_eighteenth-century_the-coalition-or-family_boys-s-mrs_1785_2",
+    "internet_archive:bim_eighteenth-century_the-conquest-of-quebec-_murphy-henry_1790",
+    "internet_archive:bim_eighteenth-century_the-family-party-in-thr_young-mary-julia_1791_3",
+    "internet_archive:bim_eighteenth-century_the-man-of-feeling_mackenzie-henry_1788",
+    "internet_archive:bim_eighteenth-century_the-miscellaneous-works-_smollett-tobias-george_1796_4",
+    "internet_archive:bim_eighteenth-century_the-rambler-in-three-vo_johnson-samuel_1781_2",
+    "internet_archive:bim_eighteenth-century_the-rambler-in-three-vo_johnson-samuel_1794_2",
+    "internet_archive:bim_eighteenth-century_the-school-for-majesty-_1780",
+    "internet_archive:bim_eighteenth-century_the-works-of-samuel-john_johnson-samuel_1787_6",
+    "internet_archive:bim_eighteenth-century_the-works-of-the-right-h_burke-edmund_1792_3",
+    "internet_archive:bim_eighteenth-century_the-works-of-thomas-pai_paine-thomas_1796",
+    "internet_archive:bim_eighteenth-century_two-words-of-counsel-an_old-englishman_1795",
+    "internet_archive:bim_eighteenth-century_vancenza-or-the-danger_robinson-mary-poetical_1792_1",
+    "internet_archive:britishessayist08essagoog",
+    "internet_archive:britishmagazine04unkngoog",
+    "internet_archive:brothersportrait00barb",
+    "internet_archive:bub_gb_IDpZAAAAIAAJ",
+    "internet_archive:bub_gb_UJMUAAAAQAAJ",
+    "internet_archive:bwb_KU-428-190",
+    "internet_archive:christianalphabe00mcar",
+    "internet_archive:cihm_18276",
+    "internet_archive:cihm_20753",
+    "internet_archive:descriptivecatal00unse_3",
+    "internet_archive:dissertationson00unkngoog",
+    "internet_archive:europeanmagazine73londuoft",
+    "internet_archive:generalbiograph05chalgoog",
+    "internet_archive:guidetochurch00daubrich",
+    "internet_archive:historicalsketch00thoms",
+    "internet_archive:historyofpolitic00some",
+    "internet_archive:interestinganec14addigoog",
+    "internet_archive:journaloflifetra00grif",
+    "internet_archive:lettertoamember01unkngoog",
+    "internet_archive:lifealoverinase00leegoog",
+    "internet_archive:livesofbritishad0004camp",
+    "internet_archive:mathewstheatrica00mathrich",
+    "internet_archive:memoirshonthoma00carpgoog",
+    "internet_archive:memoirsoflifeofr00gill2",
+    "internet_archive:memoirsoflifeofr00gill_2",
+    "internet_archive:miscellaneouswo06andegoog",
+    "internet_archive:miscellaneouswor04smol_0",
+    "internet_archive:navalhistoryofgr04campiala",
+    "internet_archive:northernsketches00smit",
+    "internet_archive:novelistsmagazin07londuoft",
+    "internet_archive:oliviaordeserte01bonhgoog",
+    "internet_archive:parliamentary-debates_january-march-1812_21",
+    "internet_archive:part2publication01orieuoft",
+    "internet_archive:per_pennsylvania-gazette_the-pennsylvania-gazette_1780-04-05_2599",
+    "internet_archive:philadelphiamont00unse_0",
+    "internet_archive:planforconductof00darwrich",
+    "internet_archive:poemsonreligiou00armygoog",
+    "internet_archive:poemsvolume00jamegoog",
+    "internet_archive:rambler0002vari",
+    "internet_archive:richespovertytal00barr",
+    "internet_archive:romanceofpyrenee03cuth7",
+    "internet_archive:rosabellaoramot00cuthgoog",
+    "internet_archive:s25id13211780",
+    "internet_archive:s2id13403350",
+    "internet_archive:santosebastianoo02cuthuoft",
+    "internet_archive:sermonsandother07erskgoog",
+    "internet_archive:sim_american-apollo_1788-07_8",
+    "internet_archive:sim_augustan-review-a-monthly-production_1816-03_2_11",
+    "internet_archive:sim_boston-masonic-mirror_1825-10-08_1_42",
+    "internet_archive:sim_critical-review-or-annals-of-literature_1816-02_3_2",
+    "internet_archive:sim_examiner-a-weekly-paper-on-politics-literature-music_1817-09-28_509",
+    "internet_archive:sim_gospel-advocate-and-impartial-investigator_1829-02-21_7_4",
+    "internet_archive:sim_literary-gazette_1817-09-06_33",
+    "internet_archive:sim_literary-gazette_1828-03-29_584",
+    "internet_archive:sim_monthly-repository_1806-05_1_5",
+    "internet_archive:sim_new-universal-magazine-or-miscellany_1799-07_105",
+    "internet_archive:sim_oxberrys-dramatic-biography-and-histrionic-anecdotes_1826_5",
+    "internet_archive:sim_port-folio_1807-02-21_3_8",
+    "internet_archive:sim_portico-a-repository-of-science-and-literature_1816-11_2_5",
+    "internet_archive:sim_quarterly-christian-spectator_1828-03_2_3",
+    "internet_archive:talesfashionabl17edgegoog",
+    "internet_archive:theologicalandm05jonegoog",
+    "internet_archive:valeofglendororm01west",
+    "internet_archive:vol2historyofeng00turn",
+    "internet_archive:works___00mackuoft",
+    "internet_archive:workssamueljohn01hawkgoog",
+    "internet_archive:workssamueljohn21murpgoog",
+    "internet_archive:zoonomia01darwgoog",
+    "internet_archive:zoonomiaorlawsof02darw",
+    "internet_archive:zoonomiaorlawsof1792v2darw",
+    "internet_archive:zoonomiaorlawsof21darw_0",
+    "tcp:K008295.004",
+    "tcp:K048128.000",
+    "tcp:K056324.002",
+    "tcp:K058430.000",
+    "tcp:K074274.000",
+    "tcp:K108995.005",
+    "tcp:N04586",
+    "tcp:N07843",
+    "tcp:N08535",
+    "tcp:N10485",
+    "tcp:N13926",
+    "tcp:N21496",
+    "tcp:N25420",
+    "tcp:N26015"
+   ],
+   "own_words_passages": 120,
+   "latest_decade": 1820
+  },
+  "give": {
+   "index": 17,
+   "item": "Give",
+   "reference": "Alma 46:17",
+   "verdict": "not found",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1750": 2,
+    "1760": 1,
+    "1770": 3,
+    "1780": 48,
+    "1790": 71,
+    "1800": 58,
+    "1810": 78,
+    "1820": 189
+   },
+   "judged_by_group": {
+    "lib:1750": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 2
+    },
+    "lib:1760": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1770": {
+     "judged": 3,
+     "answered": 3,
+     "sense_B": 1,
+     "sense_A": 2,
+     "hand_not_claimed": 2
+    },
+    "lib:1780": {
+     "judged": 48,
+     "answered": 48,
+     "sense_A": 18,
+     "hand_not_claimed": 18,
+     "sense_B": 30
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 4,
+     "hand_not_claimed": 4,
+     "sense_B": 56
+    },
+    "lib:1800": {
+     "judged": 58,
+     "answered": 58,
+     "sense_B": 49,
+     "sense_A": 9,
+     "hand_not_claimed": 9
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 56,
+     "sense_A": 4,
+     "hand_not_claimed": 4
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 57,
+     "sense_A": 3,
+     "hand_not_claimed": 3
+    }
+   },
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "great": {
+   "index": 18,
+   "item": "Great",
+   "reference": "Alma 58:4",
+   "verdict": "cannot test",
+   "why": "form not in the 1830 text: the 1830 text reads the governor, not the great governor"
+  },
+  "hail": {
+   "index": 19,
+   "item": "Hail",
+   "reference": "Alma 55:8",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 22,
+    "1750": 41,
+    "1760": 65,
+    "1770": 112,
+    "1780": 2520,
+    "1790": 6122,
+    "1800": 7834,
+    "1810": 12954,
+    "1820": 22365
+   },
+   "judged_by_group": {
+    "lib:1740": {
+     "judged": 22,
+     "answered": 22,
+     "sense_B": 20,
+     "sense_A": 2,
+     "hand_not_claimed": 2
+    },
+    "lib:1750": {
+     "judged": 41,
+     "answered": 41,
+     "sense_B": 41
+    },
+    "lib:1760": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 57,
+     "sense_A": 3,
+     "hand_own_words": 3
+    },
+    "lib:1770": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 53,
+     "sense_A": 7,
+     "hand_quotation_or_reprint": 3,
+     "hand_not_claimed": 1,
+     "hand_own_words": 3
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 52,
+     "sense_A": 8,
+     "hand_not_claimed": 3,
+     "hand_own_words": 4,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 58,
+     "sense_A": 2,
+     "hand_own_words": 1,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 52,
+     "sense_A": 7,
+     "hand_own_words": 5,
+     "hand_quotation_or_reprint": 2,
+     "sense_U": 1
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 59,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 59,
+     "sense_A": 1,
+     "hand_own_words": 1
+    }
+   },
+   "own_words_works": [
+    "institutional_books:32044097928188",
+    "internet_archive:afullandcorrect00pophgoog",
+    "internet_archive:anthroplanomenos02bris",
+    "internet_archive:bim_eighteenth-century_a-system-of-the-law-of-m_park-james-allan-sir_1792",
+    "internet_archive:bim_eighteenth-century_the-observer_cumberland-richard-dr_1785",
+    "internet_archive:cihm_48504",
+    "internet_archive:cobbettscomplet11jardgoog",
+    "internet_archive:northamericanrev5181unse",
+    "internet_archive:strugglesthroug00harrgoog",
+    "internet_archive:travelsinupperlo01deno",
+    "tcp:K025532.002",
+    "tcp:K052287.003",
+    "tcp:K053415.001",
+    "tcp:K062748.002",
+    "tcp:K062748.003",
+    "tcp:K111410.000",
+    "tcp:N07054",
+    "tcp:N08267"
+   ],
+   "own_words_passages": 18,
+   "latest_decade": 1820
+  },
+  "idleness": {
+   "index": 20,
+   "item": "Idleness",
+   "reference": "Alma 38:12\u201313",
+   "verdict": "cannot test (the judge missed this item's check)",
+   "check": {
+    "cited": "B",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": false
+   },
+   "frame_hits_by_decade": {
+    "1750": 1,
+    "1780": 7,
+    "1790": 10,
+    "1800": 16,
+    "1810": 47,
+    "1820": 55
+   },
+   "judged_by_group": {},
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "opinion": {
+   "index": 21,
+   "item": "Opinion",
+   "reference": "Alma 40:20",
+   "verdict": "cannot test (the judge missed this item's check)",
+   "check": {
+    "cited": "B",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": false
+   },
+   "frame_hits_by_decade": {
+    "1740": 10,
+    "1750": 11,
+    "1760": 17,
+    "1770": 26,
+    "1780": 1240,
+    "1790": 2290,
+    "1800": 2047,
+    "1810": 3122,
+    "1820": 4826
+   },
+   "judged_by_group": {},
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "raigned": {
+   "index": 22,
+   "item": "Raigned",
+   "reference": "Alma 11:44",
+   "verdict": "cannot test",
+   "why": "form not in the 1830 text: the 1830 text reads arraigned"
+  },
+  "rebellion": {
+   "index": 23,
+   "item": "Rebellion",
+   "reference": "Mosiah 10:6",
+   "verdict": "not found",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1780": 1,
+    "1790": 21,
+    "1800": 29,
+    "1810": 19,
+    "1820": 42
+   },
+   "judged_by_group": {
+    "lib:1780": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1790": {
+     "judged": 21,
+     "answered": 21,
+     "sense_B": 21
+    },
+    "lib:1800": {
+     "judged": 29,
+     "answered": 29,
+     "sense_B": 28,
+     "sense_A": 1,
+     "hand_not_claimed": 1
+    },
+    "lib:1810": {
+     "judged": 19,
+     "answered": 19,
+     "sense_B": 19
+    },
+    "lib:1820": {
+     "judged": 42,
+     "answered": 42,
+     "sense_B": 42
+    }
+   },
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "rent": {
+   "index": 24,
+   "item": "Rent",
+   "reference": "Alma 46:19",
+   "verdict": "not found",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1760": 1,
+    "1770": 25,
+    "1780": 225,
+    "1790": 386,
+    "1800": 347,
+    "1810": 568,
+    "1820": 858
+   },
+   "judged_by_group": {
+    "lib:1760": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1770": {
+     "judged": 25,
+     "answered": 25,
+     "sense_B": 25
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 58,
+     "sense_U": 2
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 60
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 60
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 60
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 58,
+     "sense_A": 1,
+     "hand_not_claimed": 1,
+     "sense_U": 1
+    }
+   },
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "reserve": {
+   "index": 25,
+   "item": "Reserve",
+   "reference": "Alma 17:31",
+   "verdict": "cannot test (the judge missed this item's check)",
+   "check": {
+    "cited": "B",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": false
+   },
+   "frame_hits_by_decade": {
+    "1740": 1,
+    "1770": 1,
+    "1780": 16,
+    "1790": 48,
+    "1800": 43,
+    "1810": 76,
+    "1820": 95
+   },
+   "judged_by_group": {},
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "tell": {
+   "index": 26,
+   "item": "Tell",
+   "reference": "Helaman 14:9",
+   "verdict": "cannot test (the judge missed this item's check)",
+   "check": {
+    "cited": "B",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": false
+   },
+   "frame_hits_by_decade": {
+    "1750": 1,
+    "1760": 1,
+    "1770": 1,
+    "1780": 4,
+    "1790": 20,
+    "1800": 31,
+    "1810": 42,
+    "1820": 79
+   },
+   "judged_by_group": {},
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "views": {
+   "index": 27,
+   "item": "Views",
+   "reference": "2 Nephi 1:24",
+   "verdict": "not found",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1760": 1,
+    "1780": 13,
+    "1790": 10,
+    "1800": 7,
+    "1810": 12,
+    "1820": 15
+   },
+   "judged_by_group": {
+    "lib:1760": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1780": {
+     "judged": 13,
+     "answered": 13,
+     "sense_B": 13
+    },
+    "lib:1790": {
+     "judged": 10,
+     "answered": 10,
+     "sense_B": 10
+    },
+    "lib:1800": {
+     "judged": 7,
+     "answered": 7,
+     "sense_B": 7
+    },
+    "lib:1810": {
+     "judged": 12,
+     "answered": 12,
+     "sense_B": 12
+    },
+    "lib:1820": {
+     "judged": 15,
+     "answered": 15,
+     "sense_B": 15
+    }
+   },
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "welfare": {
+   "index": 28,
+   "item": "Welfare",
+   "reference": "Alma 59:1",
+   "verdict": "not found",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 2,
+    "1780": 2,
+    "1790": 8,
+    "1800": 10,
+    "1810": 19,
+    "1820": 32
+   },
+   "judged_by_group": {
+    "lib:1740": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 2
+    },
+    "lib:1780": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 2
+    },
+    "lib:1790": {
+     "judged": 8,
+     "answered": 8,
+     "sense_B": 8
+    },
+    "lib:1800": {
+     "judged": 10,
+     "answered": 10,
+     "sense_B": 10
+    },
+    "lib:1810": {
+     "judged": 19,
+     "answered": 19,
+     "sense_B": 19
+    },
+    "lib:1820": {
+     "judged": 32,
+     "answered": 32,
+     "sense_B": 32
+    }
+   },
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "whereby": {
+   "index": 29,
+   "item": "Whereby",
+   "reference": "Ether 8:9",
+   "verdict": "not found",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1760": 2,
+    "1780": 15,
+    "1790": 27,
+    "1800": 53,
+    "1810": 125,
+    "1820": 149
+   },
+   "judged_by_group": {
+    "ctl": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1760": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 2
+    },
+    "lib:1780": {
+     "judged": 15,
+     "answered": 15,
+     "sense_B": 8,
+     "sense_A": 7,
+     "hand_not_claimed": 5,
+     "hand_quotation_or_reprint": 2
+    },
+    "lib:1790": {
+     "judged": 27,
+     "answered": 27,
+     "sense_B": 18,
+     "sense_A": 9,
+     "hand_not_claimed": 8,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1800": {
+     "judged": 53,
+     "answered": 53,
+     "sense_B": 43,
+     "sense_A": 10,
+     "hand_not_claimed": 9,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 45,
+     "sense_A": 15,
+     "hand_quotation_or_reprint": 9,
+     "hand_not_claimed": 6
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 41,
+     "sense_A": 19,
+     "hand_quotation_or_reprint": 13,
+     "hand_not_claimed": 6
+    }
+   },
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "about_to": {
+   "index": 30,
+   "item": "About to",
+   "reference": "Helaman 1:7",
+   "verdict": "cannot test",
+   "why": "no frame separates the senses: the difference is aspect, not construction (pilot)"
+  },
+  "arrive_to": {
+   "index": 31,
+   "item": "Arrive to",
+   "reference": "Mosiah 24:25",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 28,
+    "1750": 50,
+    "1760": 20,
+    "1770": 44,
+    "1780": 1356,
+    "1790": 2211,
+    "1800": 1896,
+    "1810": 2635,
+    "1820": 3384
+   },
+   "judged_by_group": {
+    "ctl": {
+     "judged": 2,
+     "answered": 2,
+     "sense_A": 2,
+     "hand_own_words": 2
+    },
+    "js": {
+     "judged": 1,
+     "answered": 1,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1740": {
+     "judged": 28,
+     "answered": 28,
+     "sense_A": 28,
+     "hand_quotation_or_reprint": 7,
+     "hand_own_words": 21,
+     "own_words_but_older_author": 1
+    },
+    "lib:1750": {
+     "judged": 50,
+     "answered": 50,
+     "sense_A": 50,
+     "hand_quotation_or_reprint": 15,
+     "hand_own_words": 35,
+     "own_words_but_older_author": 1
+    },
+    "lib:1760": {
+     "judged": 20,
+     "answered": 20,
+     "sense_A": 20,
+     "hand_quotation_or_reprint": 2,
+     "hand_own_words": 18
+    },
+    "lib:1770": {
+     "judged": 44,
+     "answered": 44,
+     "sense_A": 43,
+     "hand_quotation_or_reprint": 5,
+     "hand_own_words": 38,
+     "own_words_but_older_author": 1,
+     "sense_B": 1
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 58,
+     "hand_own_words": 48,
+     "hand_quotation_or_reprint": 10,
+     "sense_B": 2
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 60,
+     "hand_own_words": 52,
+     "hand_quotation_or_reprint": 8
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 60,
+     "hand_quotation_or_reprint": 15,
+     "hand_own_words": 45
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 59,
+     "hand_own_words": 46,
+     "hand_quotation_or_reprint": 13,
+     "sense_B": 1
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 58,
+     "hand_own_words": 43,
+     "hand_quotation_or_reprint": 15,
+     "sense_B": 2
+    }
+   },
+   "own_words_works": [
+    "hathitrust:emu.010002718914",
+    "hathitrust:gri.ark:/13960/t4vh80s81",
+    "hathitrust:ia.ark:/13960/t22b95f6m",
+    "hathitrust:mdp.39015057241161",
+    "hathitrust:mdp.39015068388266",
+    "hathitrust:ncs1.ark:/13960/t71v6130p",
+    "hathitrust:uc2.ark:/13960/t6zw1hh3v",
+    "hathitrust:ucw.ark:/13960/t44q8qd5w",
+    "hathitrust:uiuc.2345104_001",
+    "hathitrust:yale.39002008580590",
+    "hathitrust:yale.39002008877582",
+    "institutional_books:32044011478104",
+    "institutional_books:32044012916367",
+    "institutional_books:32044038428926",
+    "institutional_books:32044048696801",
+    "institutional_books:32044051731982",
+    "institutional_books:32044054994074",
+    "institutional_books:32044089242994",
+    "institutional_books:32044092528728",
+    "institutional_books:32044092624618",
+    "institutional_books:32044105931042",
+    "institutional_books:32044107260887",
+    "institutional_books:AH49Q2",
+    "institutional_books:AH4UIW",
+    "institutional_books:AH4YH8",
+    "institutional_books:AH5MRB",
+    "institutional_books:AH6E6X",
+    "institutional_books:HC2E41",
+    "institutional_books:HJ1F78",
+    "institutional_books:HN3RYF",
+    "institutional_books:HN65MD",
+    "institutional_books:HNEZX3",
+    "institutional_books:HNG9T4",
+    "institutional_books:HNHY5P",
+    "institutional_books:HNZP3J",
+    "institutional_books:HW1XNC",
+    "institutional_books:HW2BCL",
+    "institutional_books:HW8SHV",
+    "institutional_books:HWJN5L",
+    "institutional_books:HXG7TK",
+    "institutional_books:HXG7U5",
+    "institutional_books:HXG962",
+    "institutional_books:HXIHJC",
+    "institutional_books:HXJ43G",
+    "institutional_books:HXJ8AN",
+    "institutional_books:HXJHYB",
+    "institutional_books:HXJPDD",
+    "institutional_books:HXJUJU",
+    "institutional_books:HXKC16",
+    "institutional_books:HXKM5W",
+    "institutional_books:HXUAB8",
+    "internet_archive:10066264bsb",
+    "internet_archive:10268266bsb",
+    "internet_archive:10279138bsb",
+    "internet_archive:10618497bsb",
+    "internet_archive:11069321bsb",
+    "internet_archive:11258592bsb",
+    "internet_archive:11280872bsb",
+    "internet_archive:acenturysermond00howegoog",
+    "internet_archive:actressofpresent01lond",
+    "internet_archive:actsofle1828flor",
+    "internet_archive:americangeography00mors",
+    "internet_archive:analphabeticalco00adamrich",
+    "internet_archive:anarrativeextra01campgoog",
+    "internet_archive:anecclesiastica06moshgoog",
+    "internet_archive:atheologicaldic06buckgoog",
+    "internet_archive:b21471095",
+    "internet_archive:b21723746_0002",
+    "internet_archive:b22011584_0006",
+    "internet_archive:b22038905_0001",
+    "internet_archive:b24925883",
+    "internet_archive:b24926504_0001",
+    "internet_archive:b24991454_0026",
+    "internet_archive:b24991454_0027",
+    "internet_archive:b28039488",
+    "internet_archive:b2840712x",
+    "internet_archive:b28747033_0003",
+    "internet_archive:b28759266",
+    "internet_archive:b28771254_0001",
+    "internet_archive:b28776999",
+    "internet_archive:b29331675",
+    "internet_archive:b29341048",
+    "internet_archive:b30452508",
+    "internet_archive:b30454797_0002",
+    "internet_archive:b33288252",
+    "internet_archive:b33490259_0001",
+    "internet_archive:b33491495_0004",
+    "internet_archive:biblechristian0002unse",
+    "internet_archive:bibliothecamsst00ashbgoog",
+    "internet_archive:bim_eighteenth-century_a-complete-treatise-on-_foot-jesse_1792",
+    "internet_archive:bim_eighteenth-century_a-discourse-to-sailors-_finch-thomas_1797",
+    "internet_archive:bim_eighteenth-century_a-treatise-on-the-diseas_underwood-michael-md_1799_1",
+    "internet_archive:bim_eighteenth-century_an-ecclesiastical-histor_skinner-john-dean-of-a_1788_1",
+    "internet_archive:bim_eighteenth-century_an-inaugural-dissertatio_north-edward-washington_1797",
+    "internet_archive:bim_eighteenth-century_an-introduction-to-astro_bonny-castle-john_1787",
+    "internet_archive:bim_eighteenth-century_commentaries-on-the-laws_blackstone-sir-william-_1788_2_3",
+    "internet_archive:bim_eighteenth-century_commentaries-on-the-laws_blackstone-sir-william-_1794_2_1",
+    "internet_archive:bim_eighteenth-century_commentaries-on-the-laws_blackstone-william-sir_1787_2",
+    "internet_archive:bim_eighteenth-century_essays-on-the-evidence-_haweis-thomas_1790",
+    "internet_archive:bim_eighteenth-century_every-man-his-own-broker_mortimer-thomas_1782",
+    "internet_archive:bim_eighteenth-century_every-man-his-own-garden_abercrombie-john_1788",
+    "internet_archive:bim_eighteenth-century_harrisons-british-class_1795",
+    "internet_archive:bim_eighteenth-century_histoire-philosophique-_raynal-abbe_1783_7",
+    "internet_archive:bim_eighteenth-century_institutes-of-natural-an_priestley-joseph_1782_1",
+    "internet_archive:bim_eighteenth-century_letters-on-education-wi_macaulay-catharine_1790_0",
+    "internet_archive:bim_eighteenth-century_major-piper-or-the-adve_thomson-james-rev-au_1794_2",
+    "internet_archive:bim_eighteenth-century_miscellaneous-tracts-by_oleary-arthur_1781",
+    "internet_archive:bim_eighteenth-century_observations-on-that-par_1799",
+    "internet_archive:bim_eighteenth-century_proceedings-178605-_great-britain-parliamen_1788",
+    "internet_archive:bim_eighteenth-century_report-to-the-committee-_board-of-agriculture_1795",
+    "internet_archive:bim_eighteenth-century_rights-of-man-part-the-_paine-thomas_1792_1",
+    "internet_archive:bim_eighteenth-century_sacred-history-or-the-h_ellwood-thomas_1794_3",
+    "internet_archive:bim_eighteenth-century_the-annual-register-or-_1789_29",
+    "internet_archive:bim_eighteenth-century_the-beauties-of-history_dodd-william_1800",
+    "internet_archive:bim_eighteenth-century_the-flowers-of-ancient-h_adams-john_1789",
+    "internet_archive:bim_eighteenth-century_the-free-mans-vade-mecu_phileleutheros-pioneer-_1798",
+    "internet_archive:bim_eighteenth-century_the-history-of-captain-a_1787_1_0",
+    "internet_archive:bim_eighteenth-century_the-history-of-tom-jones_fielding-henry-tom-jo_1780_2",
+    "internet_archive:bim_eighteenth-century_the-inquisitor-or-invi_rowson-mrs_1788_2",
+    "internet_archive:bim_eighteenth-century_the-new-and-complete-new_jackson-william_1795_4",
+    "internet_archive:bim_eighteenth-century_the-new-annual-register-_1785",
+    "internet_archive:bim_eighteenth-century_the-philosophical-and-ma_proclus_1789_2",
+    "internet_archive:bim_eighteenth-century_the-spirit-of-laws-tran_montesquieu-charles-de-_1794_1",
+    "internet_archive:bim_eighteenth-century_the-works-of-the-right-h_burke-edmund_1792_3",
+    "internet_archive:bim_eighteenth-century_the-works-of-tobias-smol_smollett-tobias-george_1797_5",
+    "internet_archive:bim_eighteenth-century_the-young-gardeners-best_fullmer-samuel_1786",
+    "internet_archive:bim_eighteenth-century_traite-des-operations-d_le-dran-henri-francois_1781",
+    "internet_archive:bim_eighteenth-century_works-1781-the-works_wilson-thomas-bishop-o_1781_2",
+    "internet_archive:britishessayist10berggoog",
+    "internet_archive:britishessayist18chalgoog",
+    "internet_archive:britishessayists25berguoft",
+    "internet_archive:britishplutarchc04lond",
+    "internet_archive:cabinetmakerupho00sher_0",
+    "internet_archive:capriceoranecdot01unkn",
+    "internet_archive:cihm_18795",
+    "internet_archive:cihm_27101",
+    "internet_archive:cihm_27912",
+    "internet_archive:classicaldiction00lemp",
+    "internet_archive:cobbettspolitic10cobbgoog",
+    "internet_archive:columbiagreeneco00huds",
+    "internet_archive:commentariesonl02blacgoog",
+    "internet_archive:completedictiona02dick",
+    "internet_archive:congressionalreg03unit",
+    "internet_archive:cyclopaediaoruni20rees",
+    "internet_archive:cyclopaediaoruni23rees",
+    "internet_archive:deismnotconsiste00berr",
+    "internet_archive:descriptionuseof00bailuoft",
+    "internet_archive:dormantextinctba03bankuoft",
+    "internet_archive:elementsofselfkn00dall",
+    "internet_archive:encyclopaediaord002akin",
+    "internet_archive:encyclopaediaord05ency",
+    "internet_archive:fablesaesopando02croxgoog",
+    "internet_archive:generalanatomy21bich",
+    "internet_archive:geographicalhist03alce_0",
+    "internet_archive:georgicalessays00wilsgoog",
+    "internet_archive:hermitorunparall00longuoft",
+    "internet_archive:historygreekrev01comsgoog",
+    "internet_archive:historyofchristi02greg",
+    "internet_archive:historyofhouseof00seaciala",
+    "internet_archive:historyofuniteds00butl",
+    "internet_archive:inquiryintopr00tayl",
+    "internet_archive:inquiryintoprin00tayl",
+    "internet_archive:interestinganec10addigoog",
+    "internet_archive:interestinganecd00addi",
+    "internet_archive:juveniliaorcolle00hunt",
+    "internet_archive:lawsofcommonweal1812penn",
+    "internet_archive:lettersfromlondo00aust",
+    "internet_archive:librarianbeinga01savagoog",
+    "internet_archive:lifeofgeorgewash00rams_0",
+    "internet_archive:lifeofgeorgewash01rams",
+    "internet_archive:mannerscustomso00plat",
+    "internet_archive:mannerscustomsof00platrich",
+    "internet_archive:medicalinquirie01rushgoog",
+    "internet_archive:memoirshistoric11penngoog",
+    "internet_archive:memoirsofstephen0002step",
+    "internet_archive:memorialofminist00mudgiala",
+    "internet_archive:monthlyvisitora00unkngoog",
+    "internet_archive:novelistsmagazin03londuoft",
+    "internet_archive:oates71079109",
+    "internet_archive:plantingruralorn01mars",
+    "internet_archive:poemsofcaiusvale01catuiala",
+    "internet_archive:s3id13654400",
+    "internet_archive:salmagun00irvi",
+    "internet_archive:sermonsevangeli00thaygoog",
+    "internet_archive:sim_american-farmer-devoted-to-agriculture-horticulture_1824-03-26_6_1",
+    "internet_archive:sim_american-medical-recorder_1826-07_10_1",
+    "internet_archive:sim_british-critic-and-quarterly-theological-review_1794-10_4",
+    "internet_archive:sim_christian-disciple-and-theological-review_1817-01_5_1",
+    "internet_archive:sim_christian-intelligencer_1828-10-17_8_42",
+    "internet_archive:sim_critical-review-or-annals-of-literature_1810_19_5",
+    "internet_archive:sim_general-magazine-and-impartial-review_1788-07_2",
+    "internet_archive:sim_genius-of-universal-emancipation_1824-03_3_11",
+    "internet_archive:sim_gentlemans-magazine_1787-02_57_2",
+    "internet_archive:sim_guardian-1807_1808-07-30_1_37",
+    "internet_archive:sim_ladies-weekly-museum-or-polite-repository-of-amusement_1792-05-26_5_211",
+    "internet_archive:sim_literary-gazette_1819-01-30_106",
+    "internet_archive:sim_literary-gazette_1822-10-05_298",
+    "internet_archive:sim_massachusetts-magazine-or-monthly-museum_1790-05_2_5",
+    "internet_archive:sim_new-annual-register_1793",
+    "internet_archive:sim_new-universal-magazine-or-miscellany_1794-03_94",
+    "internet_archive:sim_new-york-magazine-or-literary-repository_1790-05_1_5",
+    "internet_archive:sim_niles-national-register_1813-04-24_4_86",
+    "internet_archive:sim_niles-national-register_1824-05-15_26_supplement",
+    "internet_archive:sim_port-folio_1804-05-26_4_21",
+    "internet_archive:sim_port-folio_1813-07_2_1",
+    "internet_archive:sim_port-folio_1818-01_5_1",
+    "internet_archive:sim_repository-and-ladies-weekly-museum_1801-10-03_1_47",
+    "internet_archive:sim_rural-casket_1798-07-31_1_9",
+    "internet_archive:sim_united-states-congress-debates-and-proceedings_december-3-1821-may-8-1822",
+    "internet_archive:sim_western-recorder_western-recorder_1827-05-29_4_152",
+    "internet_archive:sketcheshistoric00stod",
+    "internet_archive:sketchesofhistor01kame",
+    "internet_archive:sketchesofhistor01kameuoft",
+    "internet_archive:sportingmagazine10londuoft",
+    "internet_archive:strangerinameric00injans",
+    "internet_archive:threeyearstravel00carv",
+    "internet_archive:threeyearstravel04carv",
+    "internet_archive:travelsinchinac01barrgoog",
+    "internet_archive:travelsinupperlo03deno",
+    "internet_archive:travelsthrough00bart",
+    "internet_archive:travelsthroughn00bart",
+    "internet_archive:treatiseoncarria01felt",
+    "internet_archive:trropic00mose",
+    "internet_archive:warburtonsworks11warbuoft",
+    "internet_archive:warwithoutdisgui00unse",
+    "internet_archive:workshenryfield01chalgoog",
+    "internet_archive:worksoflatedrben00fran",
+    "internet_archive:worksoflaurences03ster_0",
+    "internet_archive:workssamueljohn40johngoog",
+    "internet_archive:workssirjoshuar00malogoog",
+    "tcp:K005187.000",
+    "tcp:K021151.001",
+    "tcp:K021151.002",
+    "tcp:K021193.000",
+    "tcp:K023264.000",
+    "tcp:K024818.001",
+    "tcp:K029992.000",
+    "tcp:K041548.001",
+    "tcp:K045995.000",
+    "tcp:K048186.000",
+    "tcp:K050477.000",
+    "tcp:K051024.000",
+    "tcp:K052287.002",
+    "tcp:K052287.005",
+    "tcp:K053196.000",
+    "tcp:K053453.000",
+    "tcp:K057526.002",
+    "tcp:K057665.001",
+    "tcp:K058426.000",
+    "tcp:K058430.000",
+    "tcp:K059867.001",
+    "tcp:K059867.004",
+    "tcp:K060946.001",
+    "tcp:K060946.002",
+    "tcp:K064630.001",
+    "tcp:K065650.000",
+    "tcp:K080053.001",
+    "tcp:K089369.003",
+    "tcp:K089849.001",
+    "tcp:K089849.002",
+    "tcp:K091832.000",
+    "tcp:K093988.001",
+    "tcp:K094122.000",
+    "tcp:K102448.002",
+    "tcp:K107298.000",
+    "tcp:K109095.002",
+    "tcp:K113361.000",
+    "tcp:K117548.002",
+    "tcp:K123738.000",
+    "tcp:N03830",
+    "tcp:N03894",
+    "tcp:N03997",
+    "tcp:N04192",
+    "tcp:N04476",
+    "tcp:N04493",
+    "tcp:N04647",
+    "tcp:N04742",
+    "tcp:N04749",
+    "tcp:N04980",
+    "tcp:N05022",
+    "tcp:N05030",
+    "tcp:N05121",
+    "tcp:N05418",
+    "tcp:N05490",
+    "tcp:N05805",
+    "tcp:N06012",
+    "tcp:N06192",
+    "tcp:N06343",
+    "tcp:N06399",
+    "tcp:N06532",
+    "tcp:N06545",
+    "tcp:N06566",
+    "tcp:N06567",
+    "tcp:N06978",
+    "tcp:N07082",
+    "tcp:N07177",
+    "tcp:N07825",
+    "tcp:N07847",
+    "tcp:N07966",
+    "tcp:N08111",
+    "tcp:N08347",
+    "tcp:N08798",
+    "tcp:N08845",
+    "tcp:N08880",
+    "tcp:N09163",
+    "tcp:N09422",
+    "tcp:N09443",
+    "tcp:N09682",
+    "tcp:N09689",
+    "tcp:N09718",
+    "tcp:N09857",
+    "tcp:N10016",
+    "tcp:N10025",
+    "tcp:N10089",
+    "tcp:N10442",
+    "tcp:N10500",
+    "tcp:N10722",
+    "tcp:N10732",
+    "tcp:N10815",
+    "tcp:N10888",
+    "tcp:N10941",
+    "tcp:N11063",
+    "tcp:N11267",
+    "tcp:N11665",
+    "tcp:N11675",
+    "tcp:N12362",
+    "tcp:N12802",
+    "tcp:N12833",
+    "tcp:N16656",
+    "tcp:N31168"
+   ],
+   "own_words_passages": 316,
+   "latest_decade": 1820
+  },
+  "be_aware": {
+   "index": 32,
+   "item": "Be aware",
+   "reference": "Mormon 8:17",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 6,
+    "1760": 4,
+    "1770": 5,
+    "1780": 302,
+    "1790": 699,
+    "1800": 1558,
+    "1810": 2849,
+    "1820": 6228
+   },
+   "judged_by_group": {
+    "js": {
+     "judged": 6,
+     "answered": 6,
+     "sense_A": 6,
+     "hand_own_words": 6
+    },
+    "lib:1740": {
+     "judged": 6,
+     "answered": 6,
+     "sense_A": 1,
+     "hand_quotation_or_reprint": 1,
+     "sense_B": 5
+    },
+    "lib:1760": {
+     "judged": 4,
+     "answered": 4,
+     "sense_B": 3,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1770": {
+     "judged": 5,
+     "answered": 5,
+     "sense_B": 4,
+     "sense_A": 1,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 46,
+     "sense_A": 14,
+     "hand_quotation_or_reprint": 3,
+     "hand_not_claimed": 1,
+     "hand_own_words": 10
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 54,
+     "sense_A": 6,
+     "hand_own_words": 4,
+     "hand_not_claimed": 1,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 59,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 59,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 57,
+     "sense_A": 3,
+     "hand_own_words": 1,
+     "hand_quotation_or_reprint": 2
+    }
+   },
+   "own_words_works": [
+    "hathitrust:ia.ark:/13960/t89g5s55p",
+    "internet_archive:10278620bsb",
+    "internet_archive:anessayondesign00masogoog",
+    "internet_archive:bim_eighteenth-century_an-extract-of-the-rev-m_wesley-john_1788_0",
+    "internet_archive:bim_eighteenth-century_histoire-naturelle-eng_le-clerc-georges-louis-_1792_1",
+    "internet_archive:bim_eighteenth-century_history-of-the-westminst_hartley-j_1785",
+    "internet_archive:bim_eighteenth-century_instinct-divin-english_muralt-beat-louis-de_1781",
+    "internet_archive:bim_eighteenth-century_letters-sermons-and-a-_newton-john_1780_2",
+    "internet_archive:bim_eighteenth-century_the-divine-visions-of-jo_engelbrecht-hans_1780_1",
+    "internet_archive:bim_eighteenth-century_the-new-birth-being-the_cennick-john_1788",
+    "internet_archive:bim_eighteenth-century_the-secret-history-of-th_mirabeau-gabriel-honor_1789_2",
+    "internet_archive:bim_eighteenth-century_the-union-of-prayer-and-_grinfield-thomas_1798",
+    "internet_archive:cu31924029465758",
+    "internet_archive:houseofmorville00lake",
+    "internet_archive:reignofgrace00boot",
+    "internet_archive:sim_new-universal-magazine-or-miscellany_1780-03_66_459",
+    "tcp:K086062.000",
+    "tcp:N06839"
+   ],
+   "own_words_passages": 18,
+   "latest_decade": 1820
+  },
+  "begin_to": {
+   "index": 33,
+   "item": "Begin to",
+   "reference": "Alma 18:36",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 43,
+    "1750": 22,
+    "1760": 21,
+    "1770": 60,
+    "1780": 1914,
+    "1790": 3025,
+    "1800": 3256,
+    "1810": 4753,
+    "1820": 7900
+   },
+   "judged_by_group": {
+    "ctl": {
+     "judged": 11,
+     "answered": 11,
+     "sense_A": 9,
+     "hand_not_claimed": 9,
+     "sense_B": 2
+    },
+    "lib:1740": {
+     "judged": 43,
+     "answered": 43,
+     "sense_B": 17,
+     "sense_A": 26,
+     "hand_not_claimed": 25,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1750": {
+     "judged": 22,
+     "answered": 22,
+     "sense_A": 16,
+     "hand_not_claimed": 15,
+     "sense_B": 6,
+     "hand_own_words": 1
+    },
+    "lib:1760": {
+     "judged": 21,
+     "answered": 21,
+     "sense_B": 7,
+     "sense_A": 14,
+     "hand_not_claimed": 14
+    },
+    "lib:1770": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 32,
+     "sense_A": 28,
+     "hand_not_claimed": 28
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 28,
+     "sense_A": 32,
+     "hand_not_claimed": 32
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 30,
+     "hand_not_claimed": 29,
+     "sense_B": 30,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 19,
+     "sense_A": 40,
+     "hand_not_claimed": 39,
+     "hand_quotation_or_reprint": 1,
+     "sense_U": 1
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 23,
+     "sense_A": 36,
+     "hand_not_claimed": 35,
+     "hand_own_words": 1,
+     "sense_U": 1
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 22,
+     "sense_A": 38,
+     "hand_not_claimed": 36,
+     "hand_quotation_or_reprint": 1,
+     "hand_own_words": 1
+    }
+   },
+   "own_words_works": [
+    "internet_archive:gri_33125011196801",
+    "internet_archive:journalforeignm02unkngoog",
+    "tcp:N05856"
+   ],
+   "own_words_passages": 3,
+   "latest_decade": 1820
+  },
+  "belief_on": {
+   "index": 34,
+   "item": "Belief on",
+   "reference": "Mosiah 25:18",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 3,
+    "1750": 4,
+    "1760": 3,
+    "1770": 3,
+    "1780": 106,
+    "1790": 306,
+    "1800": 342,
+    "1810": 558,
+    "1820": 1678
+   },
+   "judged_by_group": {
+    "lib:1740": {
+     "judged": 3,
+     "answered": 3,
+     "sense_B": 2,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1750": {
+     "judged": 4,
+     "answered": 4,
+     "sense_B": 2,
+     "sense_A": 2,
+     "hand_not_claimed": 2
+    },
+    "lib:1760": {
+     "judged": 3,
+     "answered": 3,
+     "sense_B": 2,
+     "sense_A": 1,
+     "hand_not_claimed": 1
+    },
+    "lib:1770": {
+     "judged": 3,
+     "answered": 3,
+     "sense_B": 2,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 52,
+     "sense_A": 8,
+     "hand_not_claimed": 6,
+     "hand_own_words": 2
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 51,
+     "sense_A": 9,
+     "hand_not_claimed": 6,
+     "hand_own_words": 2,
+     "hand_quotation_or_reprint": 1,
+     "own_words_but_older_author": 1
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 51,
+     "sense_A": 9,
+     "hand_own_words": 5,
+     "hand_not_claimed": 4
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 6,
+     "hand_not_claimed": 5,
+     "sense_B": 54,
+     "hand_own_words": 1
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 59,
+     "sense_A": 1,
+     "hand_own_words": 1
+    }
+   },
+   "own_words_works": [
+    "internet_archive:11690793bsb",
+    "internet_archive:bim_eighteenth-century_israel-a-juvenile-poem_pike-sarah-leigh_1795_2",
+    "internet_archive:bim_eighteenth-century_letters-written-to-an-of_seddon-thomas_1786_1",
+    "internet_archive:bim_eighteenth-century_sermons-speculative-pra_pentycross-thomas_1781",
+    "internet_archive:gospelplanorsyst00davi",
+    "internet_archive:orphansoflissauo01bris",
+    "internet_archive:retrospectionorr00piozrich",
+    "internet_archive:sim_the-antijacobin-review-and-protestant-advocate_1813-09_45",
+    "internet_archive:spiritualtreas01maso",
+    "internet_archive:spiritualtreasur01maso",
+    "tcp:N04153",
+    "tcp:N09388"
+   ],
+   "own_words_passages": 10,
+   "latest_decade": 1820
+  },
+  "but_if": {
+   "index": 35,
+   "item": "But if",
+   "reference": "Mosiah 3:19",
+   "verdict": "cannot test",
+   "why": "no frame separates the senses: \"but if\" = unless and \"but if\" = but in case share every construction"
+  },
+  "do_away": {
+   "index": 36,
+   "item": "Do away",
+   "reference": "Moroni 10:26",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 2,
+    "1760": 2,
+    "1770": 2,
+    "1780": 84,
+    "1790": 274,
+    "1800": 344,
+    "1810": 457,
+    "1820": 833
+   },
+   "judged_by_group": {
+    "lib:1740": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 2
+    },
+    "lib:1760": {
+     "judged": 2,
+     "answered": 2,
+     "sense_A": 1,
+     "hand_not_claimed": 1,
+     "sense_B": 1
+    },
+    "lib:1770": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 2
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 44,
+     "sense_A": 16,
+     "hand_not_claimed": 9,
+     "hand_own_words": 7
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 24,
+     "sense_A": 36,
+     "hand_own_words": 15,
+     "hand_not_claimed": 20,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 26,
+     "hand_own_words": 11,
+     "sense_B": 34,
+     "hand_not_claimed": 15
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 32,
+     "hand_own_words": 11,
+     "sense_B": 27,
+     "hand_not_claimed": 19,
+     "sense_U": 1,
+     "hand_quotation_or_reprint": 2
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 36,
+     "sense_A": 24,
+     "hand_not_claimed": 13,
+     "hand_own_words": 9,
+     "hand_quotation_or_reprint": 2
+    }
+   },
+   "own_words_works": [
+    "hathitrust:aeu.ark:/13960/t72v3bm9n",
+    "hathitrust:mdp.39015082611669",
+    "hathitrust:uiuo.ark:/13960/t1pg28w38",
+    "hathitrust:yale.39002040472707",
+    "institutional_books:32044011202041",
+    "institutional_books:32044054765888",
+    "institutional_books:32044106508096",
+    "institutional_books:32044106509870",
+    "institutional_books:AH4B3E",
+    "institutional_books:AH696P",
+    "institutional_books:HN58BI",
+    "institutional_books:HX62RB",
+    "internet_archive:10279129bsb",
+    "internet_archive:adefencechristi00unkngoog",
+    "internet_archive:album00fema",
+    "internet_archive:b3187146x",
+    "internet_archive:bim_eighteenth-century_a-third-letter-to-the-ri_price-joseph_1782",
+    "internet_archive:bim_eighteenth-century_a-third-letter-to-the-ri_price-joseph_1783",
+    "internet_archive:bim_eighteenth-century_an-impartial-report-of-t_great-britain-parliamen_1795_1",
+    "internet_archive:bim_eighteenth-century_juridical-arguments-and-_hargrave-francis_1797",
+    "internet_archive:bim_eighteenth-century_parliamentary-portraits_chalmers-george_1795_1",
+    "internet_archive:bim_eighteenth-century_the-american-senator-or_1797_3",
+    "internet_archive:bim_eighteenth-century_the-errors-of-education_parsons-eliza_1791_1",
+    "internet_archive:bim_eighteenth-century_the-rival-mothers-or-ca_genlis-stphanie-flici_1800_4",
+    "internet_archive:bim_eighteenth-century_the-trial-of-john-browne_browne-john-18th-cent_1788",
+    "internet_archive:bim_eighteenth-century_the-trial-of-maurice-mar_margarot-maurice_1794",
+    "internet_archive:bim_eighteenth-century_the-trial-of-warren-hast_hastings-warren_1794_2",
+    "internet_archive:bwb_S0-BMC-330_58",
+    "internet_archive:cheaprepository00tracgoog",
+    "internet_archive:comparativeviews01whit",
+    "internet_archive:estimateofreligi00more_0",
+    "internet_archive:europeanmagazine33londuoft",
+    "internet_archive:gospelchurchvind00merr",
+    "internet_archive:journaloflifetra00scot_0",
+    "internet_archive:lawofbillsofexch00glen",
+    "internet_archive:lettertocharlesg00londiala",
+    "internet_archive:novelsofjaneaust0000unse_r7y8",
+    "internet_archive:officialdefenceo00bonn",
+    "internet_archive:outlineofhistory00jack",
+    "internet_archive:parliamentaryre18britgoog",
+    "internet_archive:porcupinesworks00unkngoog",
+    "internet_archive:sensesensibility03aust",
+    "internet_archive:sim_caledonian-mercury_1786-05-08_10088",
+    "internet_archive:sim_christian-intelligencer_1828-11-07_8_45",
+    "internet_archive:sim_christian-magazine_1826-05_3_5",
+    "internet_archive:sim_london-magazine_1825-11-01_3_11",
+    "internet_archive:sim_new-universal-magazine-or-miscellany_1781-02_68_472",
+    "internet_archive:sim_philadelphia-medical-museum_1809_6_3",
+    "internet_archive:sim_town-and-country-magazine-or-universal-repository_1789-02_21",
+    "internet_archive:trialofalexander00addi",
+    "tcp:K023296.000",
+    "tcp:K036193.000",
+    "tcp:N15980"
+   ],
+   "own_words_passages": 52,
+   "latest_decade": 1820
+  },
+  "for_the_cause_of": {
+   "index": 37,
+   "item": "For the cause of",
+   "reference": "Alma 60:32",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1780": 14,
+    "1790": 33,
+    "1800": 27,
+    "1810": 39,
+    "1820": 107
+   },
+   "judged_by_group": {
+    "lib:1780": {
+     "judged": 14,
+     "answered": 14,
+     "sense_B": 11,
+     "sense_A": 3,
+     "hand_quotation_or_reprint": 1,
+     "hand_own_words": 2
+    },
+    "lib:1790": {
+     "judged": 33,
+     "answered": 33,
+     "sense_B": 29,
+     "sense_A": 4,
+     "hand_not_claimed": 3,
+     "hand_own_words": 1
+    },
+    "lib:1800": {
+     "judged": 27,
+     "answered": 27,
+     "sense_B": 22,
+     "sense_A": 5,
+     "hand_own_words": 3,
+     "hand_not_claimed": 2
+    },
+    "lib:1810": {
+     "judged": 39,
+     "answered": 39,
+     "sense_B": 35,
+     "sense_A": 4,
+     "hand_quotation_or_reprint": 2,
+     "hand_own_words": 2
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 53,
+     "sense_A": 7,
+     "hand_quotation_or_reprint": 5,
+     "hand_own_words": 1,
+     "hand_not_claimed": 1
+    }
+   },
+   "own_words_works": [
+    "institutional_books:HXH38S",
+    "institutional_books:HXJ42I",
+    "institutional_books:HXJ42K",
+    "internet_archive:acompendiumandd02massgoog",
+    "internet_archive:bim_eighteenth-century_laws-etc-collections_massachusetts_1788",
+    "internet_archive:bim_eighteenth-century_laws-etc-collections_massachusetts_1789",
+    "internet_archive:generallawsofmas01mass",
+    "internet_archive:lawsofcommonwe_18102penn",
+    "internet_archive:lawsofnorthcarol1796nort"
+   ],
+   "own_words_passages": 5,
+   "latest_decade": 1820
+  },
+  "hurl_away": {
+   "index": 38,
+   "item": "Hurl away",
+   "reference": "Helaman 7:16",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1770": 1,
+    "1780": 8,
+    "1790": 28,
+    "1800": 51,
+    "1810": 48,
+    "1820": 165
+   },
+   "judged_by_group": {
+    "lib:1770": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1780": {
+     "judged": 8,
+     "answered": 8,
+     "sense_B": 8
+    },
+    "lib:1790": {
+     "judged": 28,
+     "answered": 28,
+     "sense_B": 20,
+     "sense_A": 8,
+     "hand_not_claimed": 6,
+     "hand_own_words": 2
+    },
+    "lib:1800": {
+     "judged": 51,
+     "answered": 51,
+     "sense_B": 42,
+     "sense_A": 9,
+     "hand_quotation_or_reprint": 3,
+     "hand_not_claimed": 5,
+     "hand_own_words": 1
+    },
+    "lib:1810": {
+     "judged": 48,
+     "answered": 48,
+     "sense_B": 41,
+     "sense_A": 7,
+     "hand_quotation_or_reprint": 5,
+     "hand_not_claimed": 2
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 14,
+     "hand_own_words": 8,
+     "sense_B": 46,
+     "hand_quotation_or_reprint": 2,
+     "hand_not_claimed": 4
+    }
+   },
+   "own_words_works": [
+    "hathitrust:aeu.ark:/13960/t1jh4bd83",
+    "hathitrust:gri.ark:/13960/t5hb2v195",
+    "hathitrust:mdp.39015073768049",
+    "internet_archive:11248332bsb",
+    "internet_archive:bim_eighteenth-century_a-sketch-of-the-war-with_mackenzie-roderick-maj_1794_2",
+    "internet_archive:bim_eighteenth-century_travels-from-france-to-i_beaumont-albanis_1800",
+    "internet_archive:edinburghreviewo49macauoft",
+    "internet_archive:northamerica00condgoog",
+    "internet_archive:sim_museum-of-foreign-literature-science-and-art_1829-12_15_90",
+    "internet_archive:travelsinnortham00hall_1"
+   ],
+   "own_words_passages": 3,
+   "latest_decade": 1820
+  },
+  "in_the_favor_of": {
+   "index": 39,
+   "item": "In the favor of",
+   "reference": "Alma 51:7",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 25,
+    "1750": 15,
+    "1760": 28,
+    "1770": 19,
+    "1780": 845,
+    "1790": 1677,
+    "1800": 1522,
+    "1810": 2251,
+    "1820": 3971
+   },
+   "judged_by_group": {
+    "lib:1740": {
+     "judged": 25,
+     "answered": 25,
+     "sense_B": 25
+    },
+    "lib:1750": {
+     "judged": 15,
+     "answered": 15,
+     "sense_B": 15
+    },
+    "lib:1760": {
+     "judged": 28,
+     "answered": 28,
+     "sense_B": 21,
+     "sense_A": 7,
+     "hand_quotation_or_reprint": 3,
+     "hand_own_words": 4
+    },
+    "lib:1770": {
+     "judged": 19,
+     "answered": 19,
+     "sense_A": 2,
+     "hand_own_words": 2,
+     "sense_B": 17
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 53,
+     "sense_A": 7,
+     "hand_own_words": 6,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 6,
+     "hand_own_words": 4,
+     "sense_B": 54,
+     "hand_quotation_or_reprint": 1,
+     "hand_not_claimed": 1
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 49,
+     "sense_A": 11,
+     "hand_own_words": 7,
+     "hand_quotation_or_reprint": 4
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 50,
+     "sense_A": 10,
+     "hand_own_words": 9,
+     "hand_quotation_or_reprint": 1
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 4,
+     "hand_own_words": 3,
+     "sense_B": 56,
+     "hand_quotation_or_reprint": 1
+    }
+   },
+   "own_words_works": [
+    "hathitrust:aeu.ark:/13960/t81k00d30",
+    "hathitrust:aeu.ark:/13960/t9280w61k",
+    "institutional_books:32044078903069",
+    "institutional_books:HW2RK0",
+    "institutional_books:HXJNIB",
+    "internet_archive:10279126bsb",
+    "internet_archive:10717446bsb",
+    "internet_archive:10748573bsb",
+    "internet_archive:anabridgmentlaw09selwgoog",
+    "internet_archive:beautiesofgoldsm00goldiala",
+    "internet_archive:bim_eighteenth-century_a-sermon-preached-at-th_jepson-graham_1793",
+    "internet_archive:bim_eighteenth-century_the-british-magazine-and_1782_1",
+    "internet_archive:bim_eighteenth-century_the-history-of-scotland-_stuart-gilbert_1784_1",
+    "internet_archive:bim_eighteenth-century_the-school-of-virtue-a-_gentleman-of-the-temple_1787_2",
+    "internet_archive:casesarguedandd01changoog",
+    "internet_archive:collectionshist00farmgoog",
+    "internet_archive:commentariesonl04blac",
+    "internet_archive:cyclopaediaoruni24rees",
+    "internet_archive:fairytalesnovels00aulm",
+    "internet_archive:historychurchch15milngoog",
+    "internet_archive:impartialhistory02taafiala",
+    "internet_archive:juniusincluding04goodgoog",
+    "internet_archive:medicalguide00reecgoog",
+    "internet_archive:s25id13211340",
+    "internet_archive:sermonsonsomeofd21unse",
+    "internet_archive:sermonsonsomeoff01emmo",
+    "internet_archive:sim_bristol-and-bath-magazine_1783_2",
+    "internet_archive:sim_united-states-congress-debates-and-proceedings_december-5-1796-march-3-1797",
+    "internet_archive:sportingmagazin28unkngoog",
+    "tcp:K038022.000",
+    "tcp:K113610.002",
+    "tcp:N06982",
+    "tcp:N09090"
+   ],
+   "own_words_passages": 34,
+   "latest_decade": 1820
+  },
+  "in_the_fourth_day": {
+   "index": 40,
+   "item": "In the fourth day",
+   "reference": "3 Nephi 8:5",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1770": 2,
+    "1780": 95,
+    "1790": 125,
+    "1800": 118,
+    "1810": 528,
+    "1820": 504
+   },
+   "judged_by_group": {
+    "ctl": {
+     "judged": 22,
+     "answered": 22,
+     "sense_A": 22,
+     "hand_quotation_or_reprint": 21,
+     "hand_own_words": 1
+    },
+    "lib:1770": {
+     "judged": 2,
+     "answered": 2,
+     "sense_A": 2,
+     "hand_quotation_or_reprint": 2
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 60,
+     "hand_quotation_or_reprint": 59,
+     "hand_own_words": 1
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 60,
+     "hand_own_words": 2,
+     "hand_quotation_or_reprint": 58
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 60,
+     "hand_quotation_or_reprint": 55,
+     "hand_own_words": 5
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 60,
+     "hand_quotation_or_reprint": 52,
+     "hand_own_words": 8
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 60,
+     "hand_quotation_or_reprint": 54,
+     "hand_own_words": 3,
+     "hand_not_claimed": 3
+    }
+   },
+   "own_words_works": [
+    "institutional_books:32044092530971",
+    "institutional_books:AH68GG",
+    "institutional_books:HN26YT",
+    "institutional_books:HN273J",
+    "institutional_books:HN2NB6",
+    "institutional_books:HN2P9A",
+    "institutional_books:HN2VCW",
+    "institutional_books:HN2WD6",
+    "institutional_books:HXJH27",
+    "internet_archive:bim_eighteenth-century_plutarchs-lives-transl_plutarch_1798_4",
+    "internet_archive:bim_eighteenth-century_the-history-of-england-_smollett-tobias-george_1785_3",
+    "internet_archive:christiandiscipl0003unse",
+    "internet_archive:plutarchslives00hazzgoog",
+    "internet_archive:plutarchslivestr04plu",
+    "internet_archive:sim_christian-disciple-and-theological-review_1815-12_3_12_0",
+    "internet_archive:sim_christian-observer-from-the-london-ed_1815-06_14_162",
+    "internet_archive:sim_literary-panorama-and-national-register_1808-03_3",
+    "internet_archive:sim_literary-panorama-and-national-register_1815-08_2",
+    "internet_archive:sim_satirist-or-monthly-meteor_1808-01-01_1"
+   ],
+   "own_words_passages": 10,
+   "latest_decade": 1820
+  },
+  "into_an_effect": {
+   "index": 41,
+   "item": "Into an effect",
+   "reference": "Alma 56:30",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1780": 3,
+    "1790": 3,
+    "1800": 5,
+    "1810": 9,
+    "1820": 15
+   },
+   "judged_by_group": {
+    "lib:1780": {
+     "judged": 3,
+     "answered": 3,
+     "sense_B": 2,
+     "sense_A": 1,
+     "hand_not_claimed": 1
+    },
+    "lib:1790": {
+     "judged": 3,
+     "answered": 3,
+     "sense_A": 2,
+     "hand_not_claimed": 2,
+     "sense_B": 1
+    },
+    "lib:1800": {
+     "judged": 5,
+     "answered": 5,
+     "sense_B": 5
+    },
+    "lib:1810": {
+     "judged": 9,
+     "answered": 9,
+     "sense_B": 8,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1820": {
+     "judged": 15,
+     "answered": 15,
+     "sense_A": 3,
+     "hand_quotation_or_reprint": 2,
+     "sense_B": 12,
+     "hand_own_words": 1
+    }
+   },
+   "own_words_works": [
+    "internet_archive:amemoironrisepr00conggoog",
+    "internet_archive:bub_gb_-x06AQAAIAAJ"
+   ],
+   "own_words_passages": 2,
+   "latest_decade": 1820
+  },
+  "on_the_seventh_month": {
+   "index": 42,
+   "item": "On the seventh month",
+   "reference": "Alma 56:42",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 1,
+    "1750": 2,
+    "1760": 2,
+    "1780": 52,
+    "1790": 48,
+    "1800": 53,
+    "1810": 97,
+    "1820": 429
+   },
+   "judged_by_group": {
+    "ctl": {
+     "judged": 2,
+     "answered": 2,
+     "sense_A": 2,
+     "hand_own_words": 2
+    },
+    "lib:1740": {
+     "judged": 1,
+     "answered": 1,
+     "sense_A": 1,
+     "hand_own_words": 1
+    },
+    "lib:1750": {
+     "judged": 2,
+     "answered": 2,
+     "sense_A": 2,
+     "hand_own_words": 2
+    },
+    "lib:1760": {
+     "judged": 2,
+     "answered": 2,
+     "sense_A": 2,
+     "hand_own_words": 2
+    },
+    "lib:1780": {
+     "judged": 52,
+     "answered": 52,
+     "sense_A": 45,
+     "hand_own_words": 32,
+     "sense_B": 7,
+     "hand_quotation_or_reprint": 12,
+     "hand_not_claimed": 1
+    },
+    "lib:1790": {
+     "judged": 48,
+     "answered": 48,
+     "sense_A": 38,
+     "hand_quotation_or_reprint": 25,
+     "hand_own_words": 12,
+     "sense_B": 10,
+     "hand_not_claimed": 1
+    },
+    "lib:1800": {
+     "judged": 53,
+     "answered": 53,
+     "sense_A": 47,
+     "hand_quotation_or_reprint": 31,
+     "sense_B": 6,
+     "hand_own_words": 15,
+     "hand_not_claimed": 1
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 52,
+     "hand_own_words": 24,
+     "sense_B": 8,
+     "hand_quotation_or_reprint": 25,
+     "hand_not_claimed": 3,
+     "own_words_but_older_author": 1
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 4,
+     "sense_A": 56,
+     "hand_own_words": 32,
+     "hand_quotation_or_reprint": 20,
+     "hand_not_claimed": 4
+    }
+   },
+   "own_words_works": [
+    "hathitrust:aeu.ark:/13960/t8z90cz97",
+    "hathitrust:mdp.39015011959619",
+    "hathitrust:mdp.39015038800358",
+    "hathitrust:mdp.39015068382921",
+    "hathitrust:uc2.ark:/13960/t0bv7m210",
+    "hathitrust:yale.39002088663290",
+    "institutional_books:32044011932886",
+    "institutional_books:32044081822058",
+    "institutional_books:AH4D1R",
+    "institutional_books:AH5FYB",
+    "institutional_books:AH6LNX",
+    "institutional_books:HC1GB6",
+    "institutional_books:HN1LEZ",
+    "institutional_books:HN2HF2",
+    "institutional_books:HN58IG",
+    "institutional_books:HN6DGN",
+    "institutional_books:HNYKWP",
+    "institutional_books:HXG7RW",
+    "institutional_books:HXG7U5",
+    "institutional_books:HXJG5W",
+    "institutional_books:RSMCU7",
+    "internet_archive:10522981bsb",
+    "internet_archive:11715517bsb",
+    "internet_archive:MN41781ucmf_2",
+    "internet_archive:accountofgospell00churiala",
+    "internet_archive:acompletehistor00butlgoog",
+    "internet_archive:adventuresofuncl00fidf",
+    "internet_archive:adventuresuncle00augugoog",
+    "internet_archive:advunclesam00fidfrich",
+    "internet_archive:americanmedicalr31826eber",
+    "internet_archive:americanrevoluti00snow",
+    "internet_archive:anaccountgospel00churgoog",
+    "internet_archive:analyticalrevie01unkngoog",
+    "internet_archive:analyticalrevie12chrigoog",
+    "internet_archive:astatisticalacc00masogoog",
+    "internet_archive:b21510465",
+    "internet_archive:b21510726_0002",
+    "internet_archive:b21513818",
+    "internet_archive:b21688801",
+    "internet_archive:b21915374",
+    "internet_archive:b24991454_0004",
+    "internet_archive:b28778388_0007",
+    "internet_archive:b33028448",
+    "internet_archive:b33088500",
+    "internet_archive:b33282146",
+    "internet_archive:b33283175",
+    "internet_archive:b33285391",
+    "internet_archive:b3328913x_0001",
+    "internet_archive:b33290325_0001",
+    "internet_archive:b33290325_0002",
+    "internet_archive:bim_eighteenth-century_a-museum-for-young-gentl_1784",
+    "internet_archive:bim_eighteenth-century_a-museum-for-young-gentl_1790",
+    "internet_archive:bim_eighteenth-century_a-treatise-on-experience_1782_2",
+    "internet_archive:bim_eighteenth-century_an-account-of-the-gospel_churchman-john_1780",
+    "internet_archive:bim_eighteenth-century_an-account-of-the-gospel_churchman-john_1781",
+    "internet_archive:bim_eighteenth-century_bible-english-authorise_1789",
+    "internet_archive:bim_eighteenth-century_secret-history-of-the-fr_pags-franois-xavier_1797_2",
+    "internet_archive:bim_eighteenth-century_the-beauties-of-samuel-j_johnson-samuel_1787",
+    "internet_archive:bim_eighteenth-century_the-beauties-of-samuel-j_johnson-samuel_1792",
+    "internet_archive:bim_eighteenth-century_the-beauties-of-samuel-j_johnson-samuel_1797",
+    "internet_archive:bim_eighteenth-century_the-bible-with-notes-_1781_2",
+    "internet_archive:bim_eighteenth-century_the-fool-of-quality-or-_brooke-henry_1796_2",
+    "internet_archive:bim_eighteenth-century_the-history-of-henry-ear_brooke-henry_1781_1",
+    "internet_archive:bim_eighteenth-century_the-history-of-women-fr_alexander-william_1782_1",
+    "internet_archive:bim_eighteenth-century_the-natural-daughter-wi_robinson-mary_1799_1",
+    "internet_archive:bim_eighteenth-century_the-poetical-works-of-mi_milton-john_1790_1",
+    "internet_archive:bub_gb_Wb9YAAAAcAAJ",
+    "internet_archive:bwb_T3-CBR-178",
+    "internet_archive:cihm_59312",
+    "internet_archive:collectionshist01moorgoog",
+    "internet_archive:congressionalreg03unit",
+    "internet_archive:congressionalreg23unit",
+    "internet_archive:cyclopaediaorun04rees",
+    "internet_archive:cyclopaediaoruni04rees",
+    "internet_archive:foolofqualityorh12broo",
+    "internet_archive:indianantiquiti00maurgoog",
+    "internet_archive:ladymanorbeinga02goog",
+    "internet_archive:manasheisnotorh00bagegoog",
+    "internet_archive:modernpartofuniv07londuoft",
+    "internet_archive:monthlyreposito19unkngoog",
+    "internet_archive:mountainbardcon02hogggoog",
+    "internet_archive:newenglandjourna14bost",
+    "internet_archive:ninebooksofhisto01herdiala",
+    "internet_archive:per_early-baptist_the-youths-magazine-or-_1807_2",
+    "internet_archive:per_early-baptist_the-youths-magazine-or-_1812_7",
+    "internet_archive:per_medical-commentaries_medical-commentaries_1787_1",
+    "internet_archive:pli.kerala.rare.3758",
+    "internet_archive:popularviewofstr00felt",
+    "internet_archive:researchesprinci00hall",
+    "internet_archive:sermonsonvariou02kollgoog",
+    "internet_archive:sermonsonvarious01koll",
+    "internet_archive:sim_american-medical-recorder_1819-01-01_2_1",
+    "internet_archive:sim_american-medical-recorder_1821-01_4_1",
+    "internet_archive:sim_collections-historical-miscellaneous-monthly-journal_1824-03_3_3",
+    "internet_archive:sim_gridiron_1822-10-10_1_7",
+    "internet_archive:sim_london-review-or-monthly-report-of-authors-and-books_1799-03_1_3",
+    "internet_archive:sim_monthly-epitome-and-catalogue-of-new-publications_1804-01_3",
+    "internet_archive:sim_monthly-repository_1816-12_11_132",
+    "internet_archive:sim_presbyterian-magazine_1822-01_2",
+    "internet_archive:sim_the-american-medical-review-and-journal_1826-08_3_2",
+    "internet_archive:sim_united-states-congress-debates-and-proceedings_march-3-1789-march-3-1791_1",
+    "internet_archive:sim_united-states-congress-debates-and-proceedings_march-3-1789-march-3-1791_2",
+    "internet_archive:statisticalaccou03maso",
+    "internet_archive:worksofpresident0009vari",
+    "tcp:K005187.000",
+    "tcp:K006903.000",
+    "tcp:K052287.003",
+    "tcp:K055350.000",
+    "tcp:N03750",
+    "tcp:N18799",
+    "tcp:N22974",
+    "tcp:N23882"
+   ],
+   "own_words_passages": 73,
+   "latest_decade": 1820
+  },
+  "search_knowledge": {
+   "index": 43,
+   "item": "Search knowledge",
+   "reference": "2 Nephi 32:7",
+   "verdict": "cannot test (the judge missed this item's check)",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "A",
+     "A"
+    ],
+    "complete": true,
+    "passed": false
+   },
+   "frame_hits_by_decade": {
+    "1770": 1,
+    "1780": 10,
+    "1790": 22,
+    "1800": 11,
+    "1810": 26,
+    "1820": 36
+   },
+   "judged_by_group": {},
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "somewhat_contentions": {
+   "index": 44,
+   "item": "Somewhat contentions",
+   "reference": "Words of Mormon 1:12",
+   "verdict": "not found",
+   "check": {
+    "cited": "A",
+    "ordinary": [],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1760": 1,
+    "1780": 2,
+    "1790": 7,
+    "1800": 6,
+    "1810": 16,
+    "1820": 42
+   },
+   "judged_by_group": {
+    "lib:1760": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1780": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 2
+    },
+    "lib:1790": {
+     "judged": 7,
+     "answered": 7,
+     "sense_B": 7
+    },
+    "lib:1800": {
+     "judged": 6,
+     "answered": 6,
+     "sense_B": 6
+    },
+    "lib:1810": {
+     "judged": 16,
+     "answered": 16,
+     "sense_B": 15,
+     "sense_A": 1,
+     "hand_not_claimed": 1
+    },
+    "lib:1820": {
+     "judged": 42,
+     "answered": 42,
+     "sense_B": 42
+    }
+   },
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "strong_hold": {
+   "index": 45,
+   "item": "Strong hold",
+   "reference": "Helaman 1:22",
+   "verdict": "persists",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 2,
+    "1750": 2,
+    "1770": 3,
+    "1780": 74,
+    "1790": 159,
+    "1800": 204,
+    "1810": 428,
+    "1820": 1007
+   },
+   "judged_by_group": {
+    "lib:1740": {
+     "judged": 2,
+     "answered": 2,
+     "sense_A": 2,
+     "hand_own_words": 2
+    },
+    "lib:1750": {
+     "judged": 2,
+     "answered": 2,
+     "sense_A": 2,
+     "hand_own_words": 1,
+     "hand_not_claimed": 1
+    },
+    "lib:1770": {
+     "judged": 3,
+     "answered": 3,
+     "sense_B": 2,
+     "sense_A": 1,
+     "hand_not_claimed": 1
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 39,
+     "hand_quotation_or_reprint": 2,
+     "hand_own_words": 20,
+     "hand_not_claimed": 17,
+     "sense_B": 21
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 42,
+     "hand_not_claimed": 20,
+     "sense_B": 18,
+     "hand_quotation_or_reprint": 15,
+     "hand_own_words": 7
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 37,
+     "hand_own_words": 10,
+     "sense_B": 23,
+     "hand_not_claimed": 22,
+     "hand_quotation_or_reprint": 5
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 19,
+     "sense_A": 41,
+     "hand_not_claimed": 22,
+     "hand_own_words": 14,
+     "hand_quotation_or_reprint": 5
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_A": 37,
+     "hand_own_words": 10,
+     "sense_B": 23,
+     "hand_quotation_or_reprint": 1,
+     "hand_not_claimed": 26
+    }
+   },
+   "own_words_works": [
+    "hathitrust:yale.39002040673619",
+    "hathitrust:yale.39002040673924",
+    "institutional_books:32044002064343",
+    "institutional_books:32044014304265",
+    "institutional_books:32044034282046",
+    "institutional_books:32044051050359",
+    "institutional_books:32044089252027",
+    "institutional_books:32044092547462",
+    "institutional_books:AH6FEM",
+    "institutional_books:AH6LNW",
+    "institutional_books:HN2C6J",
+    "institutional_books:HXG9MD",
+    "institutional_books:HXJ3DW",
+    "institutional_books:HXJ8R9",
+    "institutional_books:HXJNDN",
+    "institutional_books:HXQ45A",
+    "internet_archive:10282009bsb",
+    "internet_archive:animpartialhist00taafgoog",
+    "internet_archive:arminianmagazine0011unse",
+    "internet_archive:b28774723_0001",
+    "internet_archive:bim_eighteenth-century_a-letter-to-the-clergy-o_church-of-england-dioce_1786",
+    "internet_archive:bim_eighteenth-century_a-new-and-complete-unive_kimpton-rev-edward_1785",
+    "internet_archive:bim_eighteenth-century_an-essay-on-the-manufact_wallace-thomas_1798",
+    "internet_archive:bim_eighteenth-century_an-humble-attempt-to-inv_purves-james_1780",
+    "internet_archive:bim_eighteenth-century_history-of-new-england_backus-isaac_1784",
+    "internet_archive:bim_eighteenth-century_india-courier-extraordi_1786_4",
+    "internet_archive:bim_eighteenth-century_memoirs-of-the-life-of-d_davies-thomas_1780_1",
+    "internet_archive:bim_eighteenth-century_the-history-of-sir-charl_richardson-samuel_1781_6",
+    "internet_archive:bim_eighteenth-century_the-history-of-the-commo_hale-matthew-sir_1794_1",
+    "internet_archive:bim_eighteenth-century_the-scholar-armed-agains_1780",
+    "internet_archive:bim_eighteenth-century_the-whole-works-of-flavi_josephus-flavius_1785",
+    "internet_archive:britishnovelists14barbuoft",
+    "internet_archive:claimsofthomasje00dick",
+    "internet_archive:classicaldiction00lemp",
+    "internet_archive:collectionoflett00flet",
+    "internet_archive:daysdepartedorb00bowlgoog",
+    "internet_archive:dissertationonpr01smit",
+    "internet_archive:edinburghmagazi26unkngoog",
+    "internet_archive:enquiryconcernin01godw",
+    "internet_archive:flapper1179smit",
+    "internet_archive:historyirelandf05plowgoog",
+    "internet_archive:historyofgreatbr01andr",
+    "internet_archive:lettersfrombarba02jard",
+    "internet_archive:microcosmaperio00grifgoog",
+    "internet_archive:microcosmaperio01frergoog",
+    "internet_archive:monthlyregister00unkngoog",
+    "internet_archive:novelistsmagazin11londuoft",
+    "internet_archive:pastorsfireside01unkngoog",
+    "internet_archive:philologicalbiog04butluoft",
+    "internet_archive:portraitureofrom00nighiala",
+    "internet_archive:sermonsbylatere01logagoog",
+    "internet_archive:sim_belfast-monthly-magazine_1814-11-30_13_76",
+    "internet_archive:sim_edinburgh-magazine-or-literary-miscellany_1788-06_7",
+    "internet_archive:sim_monthly-magazine_1824-03-01_57_393",
+    "internet_archive:sim_new-england-farmer-and-horticultural-register_1825-12-09_4_20",
+    "internet_archive:sim_new-universal-magazine-or-miscellany_1780_66_463",
+    "internet_archive:sim_new-universal-magazine-or-miscellany_1798-07_103",
+    "internet_archive:tourinenglandsco00thomiala",
+    "internet_archive:travelsthroughs00boigoog",
+    "internet_archive:weeklymonitorser00phil",
+    "internet_archive:worksofenglishpo14chaluoft",
+    "tcp:K016527.006",
+    "tcp:N03677",
+    "tcp:N04836"
+   ],
+   "own_words_passages": 55,
+   "latest_decade": 1820
+  },
+  "to_that": {
+   "index": 46,
+   "item": "To that",
+   "reference": "1 Nephi 18:9",
+   "verdict": "not found",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1740": 2,
+    "1750": 6,
+    "1760": 4,
+    "1770": 6,
+    "1780": 421,
+    "1790": 748,
+    "1800": 855,
+    "1810": 1111,
+    "1820": 1808
+   },
+   "judged_by_group": {
+    "lib:1740": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 2
+    },
+    "lib:1750": {
+     "judged": 6,
+     "answered": 6,
+     "sense_B": 6
+    },
+    "lib:1760": {
+     "judged": 4,
+     "answered": 4,
+     "sense_B": 4
+    },
+    "lib:1770": {
+     "judged": 6,
+     "answered": 6,
+     "sense_B": 6
+    },
+    "lib:1780": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 53,
+     "sense_A": 7,
+     "hand_not_claimed": 7
+    },
+    "lib:1790": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 48,
+     "sense_A": 12,
+     "hand_not_claimed": 12
+    },
+    "lib:1800": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 57,
+     "sense_A": 3,
+     "hand_not_claimed": 3
+    },
+    "lib:1810": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 54,
+     "sense_U": 1,
+     "sense_A": 5,
+     "hand_not_claimed": 5
+    },
+    "lib:1820": {
+     "judged": 60,
+     "answered": 60,
+     "sense_B": 58,
+     "sense_U": 1,
+     "sense_A": 1,
+     "hand_not_claimed": 1
+    }
+   },
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  },
+  "where_unto": {
+   "index": 47,
+   "item": "Where unto",
+   "reference": "Ether 12:23",
+   "verdict": "not found",
+   "check": {
+    "cited": "A",
+    "ordinary": [
+     "B",
+     "B"
+    ],
+    "complete": true,
+    "passed": true
+   },
+   "frame_hits_by_decade": {
+    "1770": 1,
+    "1790": 3,
+    "1800": 5,
+    "1810": 2,
+    "1820": 7
+   },
+   "judged_by_group": {
+    "lib:1770": {
+     "judged": 1,
+     "answered": 1,
+     "sense_B": 1
+    },
+    "lib:1790": {
+     "judged": 3,
+     "answered": 3,
+     "sense_B": 3
+    },
+    "lib:1800": {
+     "judged": 5,
+     "answered": 5,
+     "sense_B": 5
+    },
+    "lib:1810": {
+     "judged": 2,
+     "answered": 2,
+     "sense_B": 2
+    },
+    "lib:1820": {
+     "judged": 7,
+     "answered": 7,
+     "sense_B": 7
+    }
+   },
+   "own_words_works": [],
+   "own_words_passages": 0,
+   "latest_decade": null
+  }
+ },
+ "tally": {
+  "cannot test (the judge missed this item's check)": 8,
+  "cannot test": 6,
+  "persists": 21,
+  "attested once": 2,
+  "not found": 11
+ },
+ "config_sha256": "db67dc83ae37d9d2ff4f54f9e126363211f05d8b320b5c83fa9f0a51d87db126",
+ "commit": "2134473fbd1923700173fae8065daf7dde96e1b6"
+}

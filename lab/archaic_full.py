@@ -39,6 +39,7 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 from lab import archaic, door
+from lab.combinations_judge import dedup_key, group_passages
 from lab.paths import FAST, REGISTRY, out
 from metadata import config
 
@@ -599,8 +600,26 @@ def handread() -> dict:
 
 
 def _hand() -> dict[str, str]:
-    p = PRIVATE / "handcheck.json"
-    return json.loads(p.read_text()) if p.exists() else {}
+    """Verdicts by id: the second model's (handcheck.json), with the assistant's own reading of
+    the deciding passages (handcheck_assistant.json) laid over them."""
+    res: dict[str, str] = {}
+    for name in ("handcheck.json", "handcheck_assistant.json"):
+        p = PRIVATE / name
+        if p.exists():
+            res.update(json.loads(p.read_text()))
+    return res
+
+
+def _passage_keys(n: int) -> dict[str, list[str]]:
+    """For every claimed-sense answer, the words each side of the marked use (reprint rule)."""
+    p = PRIVATE / "jobs_hand.jsonl"
+    res = {}
+    for line in p.read_text().splitlines() if p.exists() else []:
+        j = json.loads(line)
+        passage = j["prompt"].split("Passage:\n", 1)[1].split("\n\nReply", 1)[0]
+        left, _, rest = passage.partition("[[")
+        res[j["id"]] = dedup_key(left, rest.partition("]]")[2], n)
+    return res
 
 
 def _meta(cfg: dict) -> dict[str, dict]:
@@ -625,6 +644,8 @@ def score(cfg: dict) -> dict:
     chk = item_check(cfg)
     hand = _hand()
     ans = {**answers("library"), **answers("control")}
+    keys = _passage_keys(a["dedup_words"])
+    mine = PRIVATE / "handcheck_assistant.json"
     jobs_ids = []
     for stage in ("control", "library"):
         p = PRIVATE / f"jobs_{stage}.jsonl"
@@ -636,6 +657,9 @@ def score(cfg: dict) -> dict:
         "library_works_scanned": scanned,
         "library_works_unreadable": len([w for w in lib if w.get("unreadable")]),
         "control_texts": dict(Counter(w["group"] for w in ctl)),
+        "verdicts_changed_by_the_assistants_reading": len(json.loads(mine.read_text()))
+        if mine.exists()
+        else 0,
         "items": {},
     }
     for name, it in its.items():
@@ -673,6 +697,15 @@ def score(cfg: dict) -> dict:
                 and not meta.get(j.split("|")[2], {}).get("older")
             }
         )
+        own_ids = [
+            j
+            for j in ids
+            if j.startswith("lib:")
+            and ans.get(j) == "A"
+            and hand.get(j) == "own_words"
+            and not meta.get(j.split("|")[2], {}).get("older")
+        ]
+        passages = group_passages([(j, keys.get(j, [j])) for j in own_ids], a["dedup_overlap"])
         pending = sum(c.get("hand_pending", 0) for g, c in cells.items() if g.startswith("lib:"))
         decs = [
             int(j.split("|")[0][4:])
@@ -686,9 +719,9 @@ def score(cfg: dict) -> dict:
             verdict = "cannot test (the judge missed this item's check)"
         elif any(ans.get(j) is None for j in ids if j.startswith("lib:")) or pending:
             verdict = "pending (judging or hand check open)"
-        elif len(own) >= a["persists_min"]:
+        elif len(passages) >= a["persists_min"]:
             verdict = "persists"
-        elif own:
+        elif passages:
             verdict = "attested once"
         else:
             verdict = "not found"
@@ -698,6 +731,7 @@ def score(cfg: dict) -> dict:
             frame_hits_by_decade=dict(sorted(hits.items())),
             judged_by_group={g: dict(c) for g, c in sorted(cells.items())},
             own_words_works=own,
+            own_words_passages=len(passages),
             latest_decade=max(decs, default=None),
         )
         res["items"][name] = row

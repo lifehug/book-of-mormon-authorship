@@ -1029,7 +1029,9 @@ lab:                              # the research lab (exploratory tooling; reads
     persists_min: 2                # persists = at least this many hand-confirmed own-words uses in different works
     old_author_died_before: 1740   # an author who died before this year marks an older text
     second_model: opus             # 2026-11-22: the check of every claimed-sense answer is a second reading by this model, not the person the card asked for
-    checked_by: "a second reading by a different AI model (opus, simulated judging); not checked by a person"
+    checked_by: "a second reading by a different AI model (opus, simulated judging), then the AI assistant's own reading of the passages behind every verdict resting on five passages or fewer; not checked by a person"
+    dedup_words: 10                # 2026-11-22, after the first verdicts: one passage reprinted in several editions counts once (words each side compared)
+    dedup_overlap: 0.8             # share of those words shared for two uses to be one passage
     controls: data/controls/pseudo_biblical_primary.jsonl
     js_texts: ['data/private/candidates/js-*.jsonl', 'data/private/candidates/later/*.txt']
     frames_revised: [molten, cross, depressed, rebellion, rent, reserve, tell, begin_to, into_an_effect, somewhat_contentions, arrive_to]  # revised once after the frame test on the pilot sample (empty or swamped), before the full scan
