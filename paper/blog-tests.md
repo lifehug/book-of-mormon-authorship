@@ -100,7 +100,7 @@ compares against.
 | BOM-108 | The names are Hebrew, or Egyptian, or invented | Tvedtnes and others; Wilcox 2013, 2019 | 124 names against census names, Spalding, Tolkien | Hebrew inscriptions, Egyptian, Maya, Nahuatl, treaty signers, period print, four inventing authors | **Done**, with a limit |
 | BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | **Done** |
 | BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | **Done** |
-| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; control queued**; BOM-109 not started |
+| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; control queued**; BOM-109 **check failed; not scored** |
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | **Counts done; reading step queued** |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
@@ -1241,6 +1241,42 @@ are not in doubt.
 What I take from it so far: his list is real and mostly holds as a list, my easy explanation
 for it failed, and the comparison that would say what a 77 percent confirmation rate means has
 not been made by anyone yet.
+
+### Where the three worlds disagree (BOM-109)
+
+This was meant to pull the setting tests together. Take only the features on which three
+worlds differ: the Bible's Near East, ancient Mexico as its own texts and the Spanish
+chroniclers describe it, and ancient America as an American of the 1820s pictured it. Horses or
+no horses. Counting in tens or twenties. Coins or none. Then see which world each text sides
+with.
+
+I ended up with 31 features that can be counted from words and on which the worlds really
+disagree. Then eight texts whose world I know.
+
+| Text | Sides with | Agreements (Near East / Mexico / 1820s) |
+| --- | --- | --- |
+| 1 and 2 Kings | Near East | 29 / 11 / 9 |
+| Josephus, *Antiquities* | Near East | 24 / 8 / 10 |
+| Josephus, *War* | Near East | 25 / 11 / 12 |
+| Annals of the Cakchiquels | Mexico | 14 / 23 / 11 |
+| Bernal Díaz, the conquest of Mexico | **1820s** | 12 / 15 / 24 |
+| Spalding's manuscript | 1820s | 10 / 12 / 22 |
+| *View of the Hebrews* | 1820s | 11 / 9 / 21 |
+| Mathews, *Behemoth* | 1820s | 15 / 11 / 18 |
+
+Seven of eight. I had said eight, so I did not count the Book of Mormon.
+
+The miss is instructive. Bernal Díaz was a Spanish soldier writing about Mexico, and his book
+is full of his own side's things: guns, coins, horses. On a word count he looks like a modern
+European, which he was. A Mesoamerican text and a text about Mesoamerica are not the same
+thing, and the same trouble showed in the inventory test.
+
+There is a setting under which all eight pass (only read "absent" from texts over 50,000
+words), but then Díaz passes by a single feature, and I found it after seeing the result. An
+instrument that flips on one setting is not ready to be pointed at the question. So no answer
+here either. Twelve more features need reading and are prepared as questions (succession,
+markets, sacrifice, burial, money and others); for those the 1820s values are from my memory,
+which is its own weakness.
 
 ## What I would want a reader to take from the whole set
 

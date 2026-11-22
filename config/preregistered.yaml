@@ -1825,6 +1825,31 @@ lab:                              # the research lab (exploratory tooling; reads
       snowden_american_revolution_bible_style: [corpus, bible_style/americanrevoluti00snow]
       chronicles_of_eri_1822_extra: [corpus, bible_style/chroniclesoferib02ocon]
       kjv_historical_books: [kjv, [JOS, JDG, RUT, 1SA, 2SA, 1KI, 2KI, 1CH, 2CH, EZR, NEH, EST]]
+  three_worlds:                    # BOM-109 (lab; exploratory): where the Bible's world, Mesoamerica and the 1820s picture disagree
+    present_min: 3                 # a text states a feature present with at least this many marker hits
+    present_rate: 0.1              # and at least this many per 10,000 words
+    absent_min_words: 10000        # absent: no hit at all in a text of at least this many words
+    vig_share: 0.75                # round numbers 20-400: present (twenties) if this share are multiples of twenty
+    vig_min_n: 15                  # and at least this many such numbers (else not stated)
+    world_min_stating: 2           # a world's value needs this many of its source texts to state the feature
+    world_majority: 0.6            # and this share of them to agree (an even split is unsettled)
+    known_bar_share: 0.6           # known-answer: a known text agrees with its own world on this share of the kept features it states
+    known_pass_share: 1.0          # and more than with either other world; this share of the known texts must pass
+    bootstrap: 2000                # resamples of the Book of Mormon's stated features
+    seed: 20261121
+    refs_per_feature: 5            # verse or paragraph references kept per feature
+    window_words: 150              # judging passages: windows of this many words
+    window_step: 75
+    passages_per_question: 4
+    kjv_units: {kjv_pentateuch: [GEN, EXO, LEV, NUM, DEU], kjv_joshua_ruth: [JOS, JDG, RUT], kjv_samuel: [1SA, 2SA], kjv_chronicles_esther: [1CH, 2CH, EZR, NEH, EST], kjv_job_song: [JOB, PSA, PRO, ECC, SOL], kjv_prophets: [ISA, JER, LAM, EZE, DAN, HOS, JOE, AMO, OBA, JON, MIC, NAH, HAB, ZEP, HAG, ZEC, MAL], kjv_apocrypha: [TOB, JDT, ESG, WIS, SIR, BAR, PRA, SUS, BEL, 1MA, 2MA, 1ES, PRM, 4ES], kjv_gospels_acts: [MAT, MAR, LUK, JOH, ACT], kjv_epistles_revelation: [ROM, 1CO, 2CO, GAL, EPH, PHI, COL, 1TH, 2TH, 1TI, 2TI, TIT, PHM, HEB, JAM, 1PE, 2PE, 1JO, 2JO, 3JO, JUD, REV]}
+    known_kjv: [1KI, 2KI]          # the held-out Old Testament history book (known answer, in no world)
+    library:                       # library works by id
+      clavigero_v1: "internet_archive:bim_eighteenth-century_the-history-of-mexico-c_clavigero-francesco-sav_1787_1"
+      haywood_tennessee_1823: "internet_archive:naturalaborigina00hayw"
+      yates_moulton_new_york_1824: "institutional_books:HX4MJF"
+      boudinot_star_1816: "internet_archive:starinwestorhumb00boud"
+      rafinesque_annals_kentucky_1824: "internet_archive:ancienthistoryor00rafi"
+      mcculloh_researches_1829: "institutional_books:32044009908534"
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

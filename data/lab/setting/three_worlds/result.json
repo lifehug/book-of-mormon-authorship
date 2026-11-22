@@ -1,0 +1,5475 @@
+{
+ "test": "BOM-109 three worlds (lab; exploratory)",
+ "card": "data/private/lab/owner/2026-11-21-three-worlds/card.md",
+ "rule_set": "named texts (no lab.views rule set: the comparison texts are listed by name)",
+ "worlds": {
+  "near_east": "King James Bible (Old Testament, Apocrypha, New Testament), less 1-2 Kings",
+  "mesoamerica": "native Mesoamerican texts in English and Clavigero vol. 1 (before the conquest)",
+  "america_1820s": "American antiquities and Indian-origin books, 1775-1829"
+ },
+ "features": {
+  "rule_countable": 56,
+  "needs_reading": 12,
+  "rule_kept_discordant": 31,
+  "rule_dropped": {
+   "concordant": [
+    "causeways",
+    "gold_silver",
+    "native_weapons",
+    "quilted_armour",
+    "regnal_years",
+    "scrolls",
+    "silk",
+    "synagogues",
+    "temples"
+   ],
+   "unsettled": [
+    "elephants",
+    "hebrew_gods",
+    "hieroglyphs",
+    "human_sacrifice",
+    "idols",
+    "markets",
+    "metal_plates",
+    "new_moons",
+    "ordinal_months",
+    "ow_grains",
+    "picket_forts",
+    "pyramids",
+    "snow_frost",
+    "spears",
+    "vine_olive_fig",
+    "wheeled_vehicles"
+   ],
+   "from_memory": []
+  },
+  "rule_from_memory": [],
+  "reading_from_memory": [
+   "burial",
+   "captives",
+   "city_form",
+   "dress",
+   "markets",
+   "money",
+   "origins",
+   "sacrifice",
+   "succession",
+   "temple",
+   "war_aim",
+   "writing_material"
+  ]
+ },
+ "settings": {
+  "present_min": 3,
+  "present_rate": 0.1,
+  "absent_min_words": 10000,
+  "vig_share": 0.75,
+  "vig_min_n": 15,
+  "world_min_stating": 2,
+  "world_majority": 0.6,
+  "known_bar_share": 0.6,
+  "known_pass_share": 1.0,
+  "bootstrap": 2000,
+  "seed": 20261121,
+  "refs_per_feature": 5,
+  "window_words": 150,
+  "window_step": 75,
+  "passages_per_question": 4,
+  "kjv_units": {
+   "kjv_pentateuch": [
+    "GEN",
+    "EXO",
+    "LEV",
+    "NUM",
+    "DEU"
+   ],
+   "kjv_joshua_ruth": [
+    "JOS",
+    "JDG",
+    "RUT"
+   ],
+   "kjv_samuel": [
+    "1SA",
+    "2SA"
+   ],
+   "kjv_chronicles_esther": [
+    "1CH",
+    "2CH",
+    "EZR",
+    "NEH",
+    "EST"
+   ],
+   "kjv_job_song": [
+    "JOB",
+    "PSA",
+    "PRO",
+    "ECC",
+    "SOL"
+   ],
+   "kjv_prophets": [
+    "ISA",
+    "JER",
+    "LAM",
+    "EZE",
+    "DAN",
+    "HOS",
+    "JOE",
+    "AMO",
+    "OBA",
+    "JON",
+    "MIC",
+    "NAH",
+    "HAB",
+    "ZEP",
+    "HAG",
+    "ZEC",
+    "MAL"
+   ],
+   "kjv_apocrypha": [
+    "TOB",
+    "JDT",
+    "ESG",
+    "WIS",
+    "SIR",
+    "BAR",
+    "PRA",
+    "SUS",
+    "BEL",
+    "1MA",
+    "2MA",
+    "1ES",
+    "PRM",
+    "4ES"
+   ],
+   "kjv_gospels_acts": [
+    "MAT",
+    "MAR",
+    "LUK",
+    "JOH",
+    "ACT"
+   ],
+   "kjv_epistles_revelation": [
+    "ROM",
+    "1CO",
+    "2CO",
+    "GAL",
+    "EPH",
+    "PHI",
+    "COL",
+    "1TH",
+    "2TH",
+    "1TI",
+    "2TI",
+    "TIT",
+    "PHM",
+    "HEB",
+    "JAM",
+    "1PE",
+    "2PE",
+    "1JO",
+    "2JO",
+    "3JO",
+    "JUD",
+    "REV"
+   ]
+  },
+  "known_kjv": [
+   "1KI",
+   "2KI"
+  ],
+  "library": {
+   "clavigero_v1": "internet_archive:bim_eighteenth-century_the-history-of-mexico-c_clavigero-francesco-sav_1787_1",
+   "haywood_tennessee_1823": "internet_archive:naturalaborigina00hayw",
+   "yates_moulton_new_york_1824": "institutional_books:HX4MJF",
+   "boudinot_star_1816": "internet_archive:starinwestorhumb00boud",
+   "rafinesque_annals_kentucky_1824": "internet_archive:ancienthistoryor00rafi",
+   "mcculloh_researches_1829": "institutional_books:32044009908534"
+  }
+ },
+ "not_held": [],
+ "world_values": {
+  "horses": {
+   "near_east": {
+    "measured": "present",
+    "present": 8,
+    "absent": 0,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 2,
+    "absent": 1,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "coded (held): Clavigero, History of Mexico (1787), vol. 1 (lab.three_worlds.library.clavigero_v1), book I: horses among the animals 'transported from the Canaries and Europe' in the sixteenth century",
+    "kind": "held"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 7,
+    "absent": 1,
+    "not_stated": 3,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "wheeled_vehicles": {
+   "near_east": {
+    "measured": "present",
+    "present": 8,
+    "absent": 0,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "unsettled",
+    "present": 4,
+    "absent": 3,
+    "not_stated": 4,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "asses_camels": {
+   "near_east": {
+    "measured": "present",
+    "present": 8,
+    "absent": 0,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 2,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 3,
+    "absent": 7,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "ow_livestock": {
+   "near_east": {
+    "measured": "present",
+    "present": 9,
+    "absent": 0,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 2,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 7,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "nw_animals": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 4,
+    "absent": 0,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 9,
+    "absent": 0,
+    "not_stated": 2,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "elephants": {
+   "near_east": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 8,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "unsettled",
+    "present": 4,
+    "absent": 3,
+    "not_stated": 4,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "ow_grains": {
+   "near_east": {
+    "measured": "present",
+    "present": 9,
+    "absent": 0,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "unsettled",
+    "present": 2,
+    "absent": 2,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "coded (held): Clavigero, History of Mexico (1787), vol. 1 (lab.three_worlds.library.clavigero_v1), book I: wheat and barley are among the grains 'that country had from Europe'",
+    "kind": "held"
+   },
+   "america_1820s": {
+    "measured": "unsettled",
+    "present": 6,
+    "absent": 5,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "maize": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 4,
+    "absent": 0,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 7,
+    "absent": 4,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "nw_plants": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 3,
+    "absent": 0,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 9,
+    "absent": 1,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "vine_olive_fig": {
+   "near_east": {
+    "measured": "present",
+    "present": 9,
+    "absent": 0,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "unsettled",
+    "present": 4,
+    "absent": 3,
+    "not_stated": 4,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "iron_steel": {
+   "near_east": {
+    "measured": "present",
+    "present": 8,
+    "absent": 0,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 8,
+    "absent": 2,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "brass_bronze": {
+   "near_east": {
+    "measured": "present",
+    "present": 8,
+    "absent": 0,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 3,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 4,
+    "absent": 2,
+    "not_stated": 5,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "gold_silver": {
+   "near_east": {
+    "measured": "present",
+    "present": 9,
+    "absent": 0,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 2,
+    "absent": 1,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 9,
+    "absent": 0,
+    "not_stated": 2,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "copper": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 8,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 2,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 7,
+    "absent": 2,
+    "not_stated": 2,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "coins": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 8,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 8,
+    "absent": 2,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "weighed_money": {
+   "near_east": {
+    "measured": "present",
+    "present": 5,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 4,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 11,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "hieroglyphs": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 2,
+    "absent": 1,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "unsettled",
+    "present": 4,
+    "absent": 3,
+    "not_stated": 4,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "scrolls": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 7,
+    "not_stated": 2,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 3,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 8,
+    "not_stated": 3,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "printing": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 8,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 5,
+    "absent": 1,
+    "not_stated": 5,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "metal_plates": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 8,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "unsettled",
+    "present": 3,
+    "absent": 4,
+    "not_stated": 4,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "firearms": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 7,
+    "not_stated": 2,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 2,
+    "not_stated": 3,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 9,
+    "absent": 2,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "swords": {
+   "near_east": {
+    "measured": "present",
+    "present": 9,
+    "absent": 0,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 2,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 8,
+    "absent": 3,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "spears": {
+   "near_east": {
+    "measured": "present",
+    "present": 6,
+    "absent": 1,
+    "not_stated": 2,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 2,
+    "absent": 0,
+    "not_stated": 3,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "unsettled",
+    "present": 5,
+    "absent": 5,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "native_weapons": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 2,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 9,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "metal_armour": {
+   "near_east": {
+    "measured": "present",
+    "present": 6,
+    "absent": 2,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 2,
+    "not_stated": 3,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 2,
+    "absent": 4,
+    "not_stated": 5,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "quilted_armour": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 3,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 2,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "shields": {
+   "near_east": {
+    "measured": "present",
+    "present": 5,
+    "absent": 1,
+    "not_stated": 3,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 3,
+    "absent": 1,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 2,
+    "absent": 6,
+    "not_stated": 3,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "picket_forts": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "unsettled",
+    "present": 2,
+    "absent": 2,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 6,
+    "absent": 3,
+    "not_stated": 2,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "mounds": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 3,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 7,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "indian_war_things": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 8,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 4,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 9,
+    "absent": 2,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "roman_months": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 3,
+    "absent": 0,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 9,
+    "absent": 1,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "ordinal_months": {
+   "near_east": {
+    "measured": "unsettled",
+    "present": 4,
+    "absent": 3,
+    "not_stated": 2,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 3,
+    "absent": 7,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "meso_calendar": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 3,
+    "absent": 0,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 8,
+    "not_stated": 2,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "ad_years": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 4,
+    "absent": 0,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 11,
+    "absent": 0,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "regnal_years": {
+   "near_east": {
+    "measured": "absent",
+    "present": 3,
+    "absent": 5,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 2,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "vigesimal": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 7,
+    "not_stated": 2,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 2,
+    "absent": 1,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "coded (held): data/lab/setting/numbers/result.json (BOM-114): native Mesoamerican texts pooled, 32 of 35 round numbers between 20 and 400 are multiples of twenty",
+    "kind": "held"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 10,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "sabbath": {
+   "near_east": {
+    "measured": "present",
+    "present": 5,
+    "absent": 2,
+    "not_stated": 2,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 3,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 2,
+    "absent": 6,
+    "not_stated": 3,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "new_moons": {
+   "near_east": {
+    "measured": "unsettled",
+    "present": 4,
+    "absent": 3,
+    "not_stated": 2,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 4,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "unsettled",
+    "present": 5,
+    "absent": 5,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "hebrew_gods": {
+   "near_east": {
+    "measured": "present",
+    "present": 7,
+    "absent": 0,
+    "not_stated": 2,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 3,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "unsettled",
+    "present": 5,
+    "absent": 6,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "meso_gods": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 4,
+    "absent": 0,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 2,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "great_spirit": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 4,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 7,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "burnt_offerings": {
+   "near_east": {
+    "measured": "present",
+    "present": 7,
+    "absent": 0,
+    "not_stated": 2,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 2,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 2,
+    "absent": 8,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "human_sacrifice": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 2,
+    "absent": 1,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "unsettled",
+    "present": 5,
+    "absent": 4,
+    "not_stated": 2,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "synagogues": {
+   "near_east": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 6,
+    "not_stated": 2,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 4,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 8,
+    "not_stated": 2,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "idols": {
+   "near_east": {
+    "measured": "present",
+    "present": 7,
+    "absent": 1,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "unsettled",
+    "present": 2,
+    "absent": 2,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 7,
+    "absent": 4,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "temples": {
+   "near_east": {
+    "measured": "present",
+    "present": 8,
+    "absent": 1,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 3,
+    "absent": 0,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 8,
+    "absent": 2,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "pyramids": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 8,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "unsettled",
+    "present": 2,
+    "absent": 2,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "unsettled",
+    "present": 6,
+    "absent": 5,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "snow_frost": {
+   "near_east": {
+    "measured": "present",
+    "present": 4,
+    "absent": 2,
+    "not_stated": 3,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "unsettled",
+    "present": 2,
+    "absent": 2,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 8,
+    "absent": 1,
+    "not_stated": 2,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "canoes": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 3,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 10,
+    "absent": 1,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "causeways": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 8,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 3,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 2,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "markets": {
+   "near_east": {
+    "measured": "absent",
+    "present": 2,
+    "absent": 6,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 2,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "unsettled",
+    "present": 5,
+    "absent": 6,
+    "not_stated": 0,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "unsettled",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "indians": {
+   "near_east": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 8,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 3,
+    "absent": 0,
+    "not_stated": 2,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 10,
+    "absent": 0,
+    "not_stated": 1,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "linen": {
+   "near_east": {
+    "measured": "present",
+    "present": 7,
+    "absent": 1,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 2,
+    "not_stated": 3,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 3,
+    "absent": 5,
+    "not_stated": 3,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "cotton": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 9,
+    "not_stated": 0,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 5,
+    "absent": 3,
+    "not_stated": 3,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "silk": {
+   "near_east": {
+    "measured": "absent",
+    "present": 0,
+    "absent": 5,
+    "not_stated": 4,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "absent",
+    "present": 1,
+    "absent": 3,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "absent",
+    "present": 3,
+    "absent": 5,
+    "not_stated": 3,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   }
+  },
+  "feathers": {
+   "near_east": {
+    "measured": "absent",
+    "present": 3,
+    "absent": 5,
+    "not_stated": 1,
+    "sources_held": 9,
+    "sources_not_held": 0,
+    "value": "absent",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "mesoamerica": {
+    "measured": "present",
+    "present": 4,
+    "absent": 0,
+    "not_stated": 1,
+    "sources_held": 5,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   },
+   "america_1820s": {
+    "measured": "present",
+    "present": 6,
+    "absent": 3,
+    "not_stated": 2,
+    "sources_held": 11,
+    "sources_not_held": 0,
+    "value": "present",
+    "how": "measured: majority of the source texts that state it"
+   }
+  }
+ },
+ "world_citations": {
+  "horses": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 65,
+     "kjv_chronicles_esther": 27,
+     "kjv_epistles_revelation": 17,
+     "kjv_gospels_acts": 2,
+     "kjv_job_song": 11,
+     "kjv_joshua_ruth": 4,
+     "kjv_pentateuch": 20,
+     "kjv_prophets": 84,
+     "kjv_samuel": 7
+    },
+    "kjv_refs": [
+     "Judith 1:13",
+     "Judith 2:5",
+     "Judith 2:19",
+     "Judith 2:22",
+     "Judith 6:3"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 1,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 12,
+     "popol_vuh_christenson": 3,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 103,
+     "atwater_archaeologia_americana_1820": 2,
+     "boudinot_star_1816": 4,
+     "clinton_discourse_and_western_new_york": 2,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 32,
+     "mcculloh_researches_1829": 18,
+     "priest_wonders_1826": 136,
+     "rafinesque_annals_kentucky_1824": 1,
+     "seaver_jemison_1826": 26,
+     "yates_moulton_new_york_1824": 8
+    }
+   }
+  },
+  "wheeled_vehicles": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 15,
+     "kjv_chronicles_esther": 30,
+     "kjv_epistles_revelation": 2,
+     "kjv_gospels_acts": 3,
+     "kjv_job_song": 8,
+     "kjv_joshua_ruth": 16,
+     "kjv_pentateuch": 26,
+     "kjv_prophets": 47,
+     "kjv_samuel": 19
+    },
+    "kjv_refs": [
+     "Judith 1:13",
+     "Judith 2:19",
+     "Judith 2:22",
+     "Judith 7:20",
+     "Judith 15:11"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 3,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 6,
+     "atwater_archaeologia_americana_1820": 1,
+     "boudinot_star_1816": 5,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 8,
+     "mcculloh_researches_1829": 2,
+     "priest_wonders_1826": 12,
+     "rafinesque_annals_kentucky_1824": 1,
+     "seaver_jemison_1826": 1,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "asses_camels": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 9,
+     "kjv_chronicles_esther": 23,
+     "kjv_epistles_revelation": 1,
+     "kjv_gospels_acts": 14,
+     "kjv_job_song": 15,
+     "kjv_joshua_ruth": 21,
+     "kjv_pentateuch": 88,
+     "kjv_prophets": 27,
+     "kjv_samuel": 29
+    },
+    "kjv_refs": [
+     "Tobit 9:2",
+     "Judith 2:17",
+     "Judith 15:11",
+     "Ecclesiasticus (Sirach) 13:19",
+     "Ecclesiasticus (Sirach) 33:24"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 5,
+     "popol_vuh_christenson": 1,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 4,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 1,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 0,
+     "mcculloh_researches_1829": 3,
+     "priest_wonders_1826": 119,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "ow_livestock": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 47,
+     "kjv_chronicles_esther": 63,
+     "kjv_epistles_revelation": 12,
+     "kjv_gospels_acts": 64,
+     "kjv_job_song": 55,
+     "kjv_joshua_ruth": 21,
+     "kjv_pentateuch": 452,
+     "kjv_prophets": 101,
+     "kjv_samuel": 58
+    },
+    "kjv_refs": [
+     "Tobit 1:5",
+     "Tobit 10:10",
+     "Judith 2:17",
+     "Judith 4:10",
+     "Judith 5:9"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 22,
+     "popol_vuh_christenson": 1,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 50,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 9,
+     "clinton_discourse_and_western_new_york": 2,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 37,
+     "mcculloh_researches_1829": 31,
+     "priest_wonders_1826": 55,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 23,
+     "yates_moulton_new_york_1824": 14
+    }
+   }
+  },
+  "nw_animals": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 5,
+     "brinton_nahuatl_poetry_1887": 9,
+     "clavigero_1787_vol1_before_conquest": 18,
+     "popol_vuh_christenson": 205,
+     "popol_vuh_spence_1908": 1
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 45,
+     "atwater_archaeologia_americana_1820": 4,
+     "boudinot_star_1816": 8,
+     "clinton_discourse_and_western_new_york": 1,
+     "cusick_1827": 2,
+     "haywood_tennessee_1823": 26,
+     "mcculloh_researches_1829": 32,
+     "priest_wonders_1826": 61,
+     "rafinesque_annals_kentucky_1824": 3,
+     "seaver_jemison_1826": 10,
+     "yates_moulton_new_york_1824": 7
+    }
+   }
+  },
+  "elephants": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 13,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "1 Maccabees 1:17",
+     "1 Maccabees 3:34",
+     "1 Maccabees 6:30",
+     "1 Maccabees 6:34",
+     "1 Maccabees 6:35"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 5,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 1,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 1,
+     "cusick_1827": 1,
+     "haywood_tennessee_1823": 31,
+     "mcculloh_researches_1829": 2,
+     "priest_wonders_1826": 24,
+     "rafinesque_annals_kentucky_1824": 3,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 5
+    }
+   }
+  },
+  "ow_grains": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 5,
+     "kjv_chronicles_esther": 11,
+     "kjv_epistles_revelation": 4,
+     "kjv_gospels_acts": 11,
+     "kjv_job_song": 6,
+     "kjv_joshua_ruth": 10,
+     "kjv_pentateuch": 11,
+     "kjv_prophets": 23,
+     "kjv_samuel": 7
+    },
+    "kjv_refs": [
+     "Judith 2:27",
+     "Judith 3:3",
+     "Judith 8:2",
+     "Ecclesiasticus (Sirach) 39:26",
+     "1 Esdras 8:20"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 6,
+     "popol_vuh_christenson": 5,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 5,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 4,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 4,
+     "mcculloh_researches_1829": 17,
+     "priest_wonders_1826": 9,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 5
+    }
+   }
+  },
+  "maize": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 3,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 77,
+     "popol_vuh_christenson": 146,
+     "popol_vuh_spence_1908": 14
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 5,
+     "atwater_archaeologia_americana_1820": 3,
+     "boudinot_star_1816": 5,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 4,
+     "mcculloh_researches_1829": 34,
+     "priest_wonders_1826": 6,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 7
+    }
+   }
+  },
+  "nw_plants": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 6,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 83,
+     "popol_vuh_christenson": 74,
+     "popol_vuh_spence_1908": 1
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 28,
+     "atwater_archaeologia_americana_1820": 1,
+     "boudinot_star_1816": 14,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 5,
+     "haywood_tennessee_1823": 37,
+     "mcculloh_researches_1829": 127,
+     "priest_wonders_1826": 15,
+     "rafinesque_annals_kentucky_1824": 3,
+     "seaver_jemison_1826": 4,
+     "yates_moulton_new_york_1824": 39
+    }
+   }
+  },
+  "vine_olive_fig": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 12,
+     "kjv_chronicles_esther": 11,
+     "kjv_epistles_revelation": 12,
+     "kjv_gospels_acts": 51,
+     "kjv_job_song": 20,
+     "kjv_joshua_ruth": 12,
+     "kjv_pentateuch": 33,
+     "kjv_prophets": 68,
+     "kjv_samuel": 5
+    },
+    "kjv_refs": [
+     "Judith 10:5",
+     "Judith 15:13",
+     "Ecclesiasticus (Sirach) 24:14",
+     "Ecclesiasticus (Sirach) 50:10",
+     "1 Maccabees 3:56"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 17,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 2,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 2,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 10,
+     "mcculloh_researches_1829": 11,
+     "priest_wonders_1826": 9,
+     "rafinesque_annals_kentucky_1824": 1,
+     "seaver_jemison_1826": 1,
+     "yates_moulton_new_york_1824": 21
+    }
+   }
+  },
+  "iron_steel": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 10,
+     "kjv_chronicles_esther": 11,
+     "kjv_epistles_revelation": 6,
+     "kjv_gospels_acts": 1,
+     "kjv_job_song": 15,
+     "kjv_joshua_ruth": 10,
+     "kjv_pentateuch": 11,
+     "kjv_prophets": 42,
+     "kjv_samuel": 5
+    },
+    "kjv_refs": [
+     "Wisdom of Solomon 13:15",
+     "Wisdom of Solomon 17:16",
+     "Ecclesiasticus (Sirach) 12:10",
+     "Ecclesiasticus (Sirach) 22:15",
+     "Ecclesiasticus (Sirach) 28:20"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 9,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 11,
+     "atwater_archaeologia_americana_1820": 23,
+     "boudinot_star_1816": 2,
+     "clinton_discourse_and_western_new_york": 7,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 67,
+     "mcculloh_researches_1829": 16,
+     "priest_wonders_1826": 77,
+     "rafinesque_annals_kentucky_1824": 4,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 11
+    }
+   }
+  },
+  "brass_bronze": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 15,
+     "kjv_chronicles_esther": 18,
+     "kjv_epistles_revelation": 5,
+     "kjv_gospels_acts": 1,
+     "kjv_job_song": 5,
+     "kjv_joshua_ruth": 4,
+     "kjv_pentateuch": 40,
+     "kjv_prophets": 29,
+     "kjv_samuel": 8
+    },
+    "kjv_refs": [
+     "Wisdom of Solomon 15:9",
+     "Ecclesiasticus (Sirach) 28:20",
+     "Ecclesiasticus (Sirach) 50:3",
+     "Bel and the Dragon 1:7",
+     "Bel and the Dragon 1:24"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 1,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 9,
+     "atwater_archaeologia_americana_1820": 1,
+     "boudinot_star_1816": 2,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 16,
+     "mcculloh_researches_1829": 7,
+     "priest_wonders_1826": 5,
+     "rafinesque_annals_kentucky_1824": 1,
+     "seaver_jemison_1826": 2,
+     "yates_moulton_new_york_1824": 2
+    }
+   }
+  },
+  "gold_silver": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 176,
+     "kjv_chronicles_esther": 159,
+     "kjv_epistles_revelation": 24,
+     "kjv_gospels_acts": 20,
+     "kjv_job_song": 82,
+     "kjv_joshua_ruth": 22,
+     "kjv_pentateuch": 206,
+     "kjv_prophets": 113,
+     "kjv_samuel": 17
+    },
+    "kjv_refs": [
+     "Tobit 1:14",
+     "Tobit 12:8",
+     "Tobit 13:16",
+     "Judith 2:18",
+     "Judith 5:9"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 1,
+     "clavigero_1787_vol1_before_conquest": 137,
+     "popol_vuh_christenson": 19,
+     "popol_vuh_spence_1908": 1
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 34,
+     "atwater_archaeologia_americana_1820": 14,
+     "boudinot_star_1816": 11,
+     "clinton_discourse_and_western_new_york": 2,
+     "cusick_1827": 1,
+     "haywood_tennessee_1823": 61,
+     "mcculloh_researches_1829": 105,
+     "priest_wonders_1826": 71,
+     "rafinesque_annals_kentucky_1824": 4,
+     "seaver_jemison_1826": 3,
+     "yates_moulton_new_york_1824": 35
+    }
+   }
+  },
+  "copper": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 1,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "Ezra 8:27"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 14,
+     "popol_vuh_christenson": 1,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 10,
+     "atwater_archaeologia_americana_1820": 32,
+     "boudinot_star_1816": 6,
+     "clinton_discourse_and_western_new_york": 1,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 57,
+     "mcculloh_researches_1829": 86,
+     "priest_wonders_1826": 10,
+     "rafinesque_annals_kentucky_1824": 2,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 12
+    }
+   }
+  },
+  "coins": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 1,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "1 Maccabees 15:6"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 12,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 12,
+     "atwater_archaeologia_americana_1820": 7,
+     "boudinot_star_1816": 3,
+     "clinton_discourse_and_western_new_york": 2,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 102,
+     "mcculloh_researches_1829": 15,
+     "priest_wonders_1826": 17,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 11,
+     "yates_moulton_new_york_1824": 26
+    }
+   }
+  },
+  "weighed_money": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 2,
+     "kjv_chronicles_esther": 7,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 7,
+     "kjv_pentateuch": 106,
+     "kjv_prophets": 9,
+     "kjv_samuel": 8
+    },
+    "kjv_refs": [
+     "1 Maccabees 10:40",
+     "1 Maccabees 10:42",
+     "1 Chronicles 21:25",
+     "2 Chronicles 1:17",
+     "2 Chronicles 3:9"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 0,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 0,
+     "mcculloh_researches_1829": 0,
+     "priest_wonders_1826": 0,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "hieroglyphs": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 2,
+     "popol_vuh_christenson": 19,
+     "popol_vuh_spence_1908": 4
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 6,
+     "atwater_archaeologia_americana_1820": 1,
+     "boudinot_star_1816": 1,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 16,
+     "mcculloh_researches_1829": 89,
+     "priest_wonders_1826": 1,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 1,
+     "yates_moulton_new_york_1824": 9
+    }
+   }
+  },
+  "scrolls": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 2,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 1,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "2 Timothy 4:13",
+     "Revelation 6:14",
+     "Isaiah 34:4"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 2,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 1,
+     "atwater_archaeologia_americana_1820": 2,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 0,
+     "mcculloh_researches_1829": 0,
+     "priest_wonders_1826": 0,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 2
+    }
+   }
+  },
+  "printing": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 1,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "Job 19:23"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 26,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 4,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 1,
+     "clinton_discourse_and_western_new_york": 2,
+     "cusick_1827": 1,
+     "haywood_tennessee_1823": 4,
+     "mcculloh_researches_1829": 7,
+     "priest_wonders_1826": 16,
+     "rafinesque_annals_kentucky_1824": 2,
+     "seaver_jemison_1826": 2,
+     "yates_moulton_new_york_1824": 30
+    }
+   }
+  },
+  "metal_plates": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 1,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "Ecclesiasticus (Sirach) 50:3"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 9,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 5,
+     "atwater_archaeologia_americana_1820": 1,
+     "boudinot_star_1816": 2,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 5,
+     "mcculloh_researches_1829": 10,
+     "priest_wonders_1826": 2,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 1
+    }
+   }
+  },
+  "firearms": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 1,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 1
+    },
+    "kjv_refs": [
+     "1 Maccabees 6:51",
+     "1 Samuel 20:40"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 2,
+     "popol_vuh_christenson": 1,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 59,
+     "atwater_archaeologia_americana_1820": 3,
+     "boudinot_star_1816": 10,
+     "clinton_discourse_and_western_new_york": 7,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 17,
+     "mcculloh_researches_1829": 8,
+     "priest_wonders_1826": 113,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 18,
+     "yates_moulton_new_york_1824": 27
+    }
+   }
+  },
+  "swords": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 67,
+     "kjv_chronicles_esther": 23,
+     "kjv_epistles_revelation": 17,
+     "kjv_gospels_acts": 20,
+     "kjv_job_song": 40,
+     "kjv_joshua_ruth": 39,
+     "kjv_pentateuch": 37,
+     "kjv_prophets": 214,
+     "kjv_samuel": 40
+    },
+    "kjv_refs": [
+     "Judith 1:12",
+     "Judith 2:27",
+     "Judith 6:6",
+     "Judith 7:14",
+     "Judith 8:19"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 1,
+     "clavigero_1787_vol1_before_conquest": 18,
+     "popol_vuh_christenson": 2,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 8,
+     "atwater_archaeologia_americana_1820": 13,
+     "boudinot_star_1816": 8,
+     "clinton_discourse_and_western_new_york": 3,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 14,
+     "mcculloh_researches_1829": 16,
+     "priest_wonders_1826": 27,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 7
+    }
+   }
+  },
+  "spears": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 6,
+     "kjv_chronicles_esther": 16,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 1,
+     "kjv_job_song": 7,
+     "kjv_joshua_ruth": 4,
+     "kjv_pentateuch": 1,
+     "kjv_prophets": 9,
+     "kjv_samuel": 31
+    },
+    "kjv_refs": [
+     "Judith 7:10",
+     "Judith 9:7",
+     "Judith 11:2",
+     "Ecclesiasticus (Sirach) 29:13",
+     "2 Maccabees 5:2"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 2,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 9,
+     "popol_vuh_christenson": 3,
+     "popol_vuh_spence_1908": 1
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 1,
+     "atwater_archaeologia_americana_1820": 8,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 9,
+     "mcculloh_researches_1829": 30,
+     "priest_wonders_1826": 36,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 3
+    }
+   }
+  },
+  "native_weapons": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 9,
+     "popol_vuh_christenson": 2,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 0,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 1,
+     "mcculloh_researches_1829": 8,
+     "priest_wonders_1826": 0,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "metal_armour": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 8,
+     "kjv_chronicles_esther": 3,
+     "kjv_epistles_revelation": 7,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 1,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 27,
+     "kjv_prophets": 8,
+     "kjv_samuel": 5
+    },
+    "kjv_refs": [
+     "Wisdom of Solomon 5:18",
+     "Ecclesiasticus (Sirach) 43:20",
+     "Ecclesiasticus (Sirach) 45:10",
+     "1 Maccabees 3:3",
+     "1 Maccabees 6:2"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 1,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 2,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 1,
+     "atwater_archaeologia_americana_1820": 1,
+     "boudinot_star_1816": 1,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 3,
+     "mcculloh_researches_1829": 3,
+     "priest_wonders_1826": 2,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 1
+    }
+   }
+  },
+  "quilted_armour": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 1,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 0,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 0,
+     "mcculloh_researches_1829": 1,
+     "priest_wonders_1826": 1,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "shields": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 13,
+     "kjv_chronicles_esther": 20,
+     "kjv_epistles_revelation": 1,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 27,
+     "kjv_joshua_ruth": 1,
+     "kjv_pentateuch": 2,
+     "kjv_prophets": 18,
+     "kjv_samuel": 9
+    },
+    "kjv_refs": [
+     "Judith 9:7",
+     "Wisdom of Solomon 5:19",
+     "Wisdom of Solomon 18:21",
+     "Ecclesiasticus (Sirach) 29:13",
+     "Ecclesiasticus (Sirach) 37:5"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 2,
+     "brinton_nahuatl_poetry_1887": 9,
+     "clavigero_1787_vol1_before_conquest": 22,
+     "popol_vuh_christenson": 14,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 0,
+     "atwater_archaeologia_americana_1820": 1,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 1,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 2,
+     "mcculloh_researches_1829": 11,
+     "priest_wonders_1826": 7,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "picket_forts": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 6,
+     "popol_vuh_christenson": 8,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 3,
+     "atwater_archaeologia_americana_1820": 5,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 6,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 24,
+     "mcculloh_researches_1829": 33,
+     "priest_wonders_1826": 0,
+     "rafinesque_annals_kentucky_1824": 2,
+     "seaver_jemison_1826": 1,
+     "yates_moulton_new_york_1824": 13
+    }
+   }
+  },
+  "mounds": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 2,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 5,
+     "atwater_archaeologia_americana_1820": 213,
+     "boudinot_star_1816": 1,
+     "clinton_discourse_and_western_new_york": 3,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 334,
+     "mcculloh_researches_1829": 132,
+     "priest_wonders_1826": 0,
+     "rafinesque_annals_kentucky_1824": 56,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 15
+    }
+   }
+  },
+  "indian_war_things": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 1,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "Psalms 68:21"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 19,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 25,
+     "clinton_discourse_and_western_new_york": 19,
+     "cusick_1827": 3,
+     "haywood_tennessee_1823": 27,
+     "mcculloh_researches_1829": 64,
+     "priest_wonders_1826": 19,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 63,
+     "yates_moulton_new_york_1824": 10
+    }
+   }
+  },
+  "roman_months": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 5,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 79,
+     "popol_vuh_christenson": 9,
+     "popol_vuh_spence_1908": 1
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 14,
+     "atwater_archaeologia_americana_1820": 6,
+     "boudinot_star_1816": 28,
+     "clinton_discourse_and_western_new_york": 8,
+     "cusick_1827": 1,
+     "haywood_tennessee_1823": 53,
+     "mcculloh_researches_1829": 24,
+     "priest_wonders_1826": 96,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 28,
+     "yates_moulton_new_york_1824": 110
+    }
+   }
+  },
+  "ordinal_months": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 26,
+     "kjv_chronicles_esther": 49,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 2,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 1,
+     "kjv_pentateuch": 35,
+     "kjv_prophets": 38,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "Judith 2:1",
+     "Additions to Esther 13:6",
+     "Additions to Esther 16:20",
+     "1 Maccabees 4:52",
+     "1 Maccabees 9:3"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 52,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 0,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 5,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 2,
+     "mcculloh_researches_1829": 7,
+     "priest_wonders_1826": 18,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "meso_calendar": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 181,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 24,
+     "popol_vuh_christenson": 28,
+     "popol_vuh_spence_1908": 1
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 0,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 0,
+     "mcculloh_researches_1829": 44,
+     "priest_wonders_1826": 0,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 2,
+     "yates_moulton_new_york_1824": 2
+    }
+   }
+  },
+  "ad_years": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 43,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 186,
+     "popol_vuh_christenson": 90,
+     "popol_vuh_spence_1908": 14
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 23,
+     "atwater_archaeologia_americana_1820": 10,
+     "boudinot_star_1816": 35,
+     "clinton_discourse_and_western_new_york": 24,
+     "cusick_1827": 3,
+     "haywood_tennessee_1823": 183,
+     "mcculloh_researches_1829": 70,
+     "priest_wonders_1826": 51,
+     "rafinesque_annals_kentucky_1824": 66,
+     "seaver_jemison_1826": 29,
+     "yates_moulton_new_york_1824": 440
+    }
+   }
+  },
+  "regnal_years": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 9,
+     "kjv_chronicles_esther": 20,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 1,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 13,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "Judith 1:1",
+     "Additions to Esther 11:1",
+     "Additions to Esther 11:2",
+     "1 Esdras 1:22",
+     "1 Esdras 2:30"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 11,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 0,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 1,
+     "mcculloh_researches_1829": 0,
+     "priest_wonders_1826": 0,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 1
+    }
+   }
+  },
+  "vigesimal": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 0,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 0,
+     "mcculloh_researches_1829": 0,
+     "priest_wonders_1826": 0,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "sabbath": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 25,
+     "kjv_chronicles_esther": 24,
+     "kjv_epistles_revelation": 1,
+     "kjv_gospels_acts": 59,
+     "kjv_job_song": 1,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 48,
+     "kjv_prophets": 33,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "Judith 8:6",
+     "Judith 10:2",
+     "1 Maccabees 1:39",
+     "1 Maccabees 1:43",
+     "1 Maccabees 1:45"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 1,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 4,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 3,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 2,
+     "mcculloh_researches_1829": 1,
+     "priest_wonders_1826": 1,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "new_moons": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 5,
+     "kjv_chronicles_esther": 6,
+     "kjv_epistles_revelation": 1,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 1,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 9,
+     "kjv_samuel": 3
+    },
+    "kjv_refs": [
+     "Judith 8:6",
+     "1 Maccabees 10:34",
+     "1 Esdras 5:52",
+     "2 Esdras 1:31",
+     "1 Chronicles 23:31"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 4,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 5,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 5,
+     "mcculloh_researches_1829": 4,
+     "priest_wonders_1826": 6,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 1,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "hebrew_gods": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 3,
+     "kjv_chronicles_esther": 27,
+     "kjv_epistles_revelation": 1,
+     "kjv_gospels_acts": 1,
+     "kjv_job_song": 3,
+     "kjv_joshua_ruth": 33,
+     "kjv_pentateuch": 20,
+     "kjv_prophets": 28,
+     "kjv_samuel": 20
+    },
+    "kjv_refs": [
+     "Tobit 1:5",
+     "1 Maccabees 10:84",
+     "1 Maccabees 11:4",
+     "1 Chronicles 1:49",
+     "1 Chronicles 1:50"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 1
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 7,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 23,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 16,
+     "mcculloh_researches_1829": 11,
+     "priest_wonders_1826": 26,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "meso_gods": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 10,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 91,
+     "popol_vuh_christenson": 237,
+     "popol_vuh_spence_1908": 64
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 0,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 0,
+     "mcculloh_researches_1829": 53,
+     "priest_wonders_1826": 20,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "great_spirit": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 1,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 55,
+     "clinton_discourse_and_western_new_york": 5,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 25,
+     "mcculloh_researches_1829": 3,
+     "priest_wonders_1826": 24,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 5,
+     "yates_moulton_new_york_1824": 18
+    }
+   }
+  },
+  "burnt_offerings": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 18,
+     "kjv_chronicles_esther": 53,
+     "kjv_epistles_revelation": 2,
+     "kjv_gospels_acts": 1,
+     "kjv_job_song": 10,
+     "kjv_joshua_ruth": 12,
+     "kjv_pentateuch": 149,
+     "kjv_prophets": 34,
+     "kjv_samuel": 15
+    },
+    "kjv_refs": [
+     "Judith 4:14",
+     "Judith 16:16",
+     "Judith 16:18",
+     "Wisdom of Solomon 3:6",
+     "Baruch 1:10"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 3,
+     "popol_vuh_christenson": 2,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 1,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 3,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 0,
+     "mcculloh_researches_1829": 0,
+     "priest_wonders_1826": 3,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "human_sacrifice": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 21,
+     "popol_vuh_christenson": 5,
+     "popol_vuh_spence_1908": 1
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 8,
+     "atwater_archaeologia_americana_1820": 2,
+     "boudinot_star_1816": 4,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 16,
+     "mcculloh_researches_1829": 14,
+     "priest_wonders_1826": 7,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 2
+    }
+   }
+  },
+  "synagogues": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 2,
+     "kjv_gospels_acts": 66,
+     "kjv_job_song": 1,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "Revelation 2:9",
+     "Revelation 3:9",
+     "Matthew 4:23",
+     "Matthew 6:2",
+     "Matthew 6:5"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 2,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 3,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 0,
+     "mcculloh_researches_1829": 0,
+     "priest_wonders_1826": 1,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "idols": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 22,
+     "kjv_chronicles_esther": 9,
+     "kjv_epistles_revelation": 21,
+     "kjv_gospels_acts": 5,
+     "kjv_job_song": 6,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 4,
+     "kjv_prophets": 67,
+     "kjv_samuel": 2
+    },
+    "kjv_refs": [
+     "Tobit 14:6",
+     "Additions to Esther 14:8",
+     "Additions to Esther 14:10",
+     "Wisdom of Solomon 14:11",
+     "Wisdom of Solomon 14:12"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 77,
+     "popol_vuh_christenson": 11,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 35,
+     "atwater_archaeologia_americana_1820": 18,
+     "boudinot_star_1816": 6,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 44,
+     "mcculloh_researches_1829": 98,
+     "priest_wonders_1826": 43,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 5
+    }
+   }
+  },
+  "temples": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 134,
+     "kjv_chronicles_esther": 26,
+     "kjv_epistles_revelation": 27,
+     "kjv_gospels_acts": 92,
+     "kjv_job_song": 12,
+     "kjv_joshua_ruth": 3,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 36,
+     "kjv_samuel": 3
+    },
+    "kjv_refs": [
+     "Tobit 1:4",
+     "Tobit 14:5",
+     "Judith 4:1",
+     "Judith 4:2",
+     "Judith 4:11"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 4,
+     "brinton_nahuatl_poetry_1887": 1,
+     "clavigero_1787_vol1_before_conquest": 277,
+     "popol_vuh_christenson": 40,
+     "popol_vuh_spence_1908": 1
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 70,
+     "atwater_archaeologia_americana_1820": 18,
+     "boudinot_star_1816": 40,
+     "clinton_discourse_and_western_new_york": 1,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 57,
+     "mcculloh_researches_1829": 212,
+     "priest_wonders_1826": 100,
+     "rafinesque_annals_kentucky_1824": 6,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 12
+    }
+   }
+  },
+  "pyramids": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 1,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "1 Maccabees 13:28"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 18,
+     "popol_vuh_christenson": 4,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 0,
+     "atwater_archaeologia_americana_1820": 9,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 45,
+     "mcculloh_researches_1829": 39,
+     "priest_wonders_1826": 6,
+     "rafinesque_annals_kentucky_1824": 34,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 4
+    }
+   }
+  },
+  "snow_frost": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 9,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 1,
+     "kjv_gospels_acts": 2,
+     "kjv_job_song": 15,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 4,
+     "kjv_prophets": 6,
+     "kjv_samuel": 1
+    },
+    "kjv_refs": [
+     "Wisdom of Solomon 16:22",
+     "Wisdom of Solomon 16:29",
+     "Ecclesiasticus (Sirach) 43:13",
+     "Ecclesiasticus (Sirach) 43:17",
+     "Baruch 2:25"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 18,
+     "popol_vuh_christenson": 4,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 11,
+     "atwater_archaeologia_americana_1820": 1,
+     "boudinot_star_1816": 8,
+     "clinton_discourse_and_western_new_york": 2,
+     "cusick_1827": 5,
+     "haywood_tennessee_1823": 30,
+     "mcculloh_researches_1829": 6,
+     "priest_wonders_1826": 30,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 7,
+     "yates_moulton_new_york_1824": 7
+    }
+   }
+  },
+  "canoes": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 1
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 12,
+     "atwater_archaeologia_americana_1820": 3,
+     "boudinot_star_1816": 8,
+     "clinton_discourse_and_western_new_york": 3,
+     "cusick_1827": 6,
+     "haywood_tennessee_1823": 8,
+     "mcculloh_researches_1829": 41,
+     "priest_wonders_1826": 22,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 9,
+     "yates_moulton_new_york_1824": 47
+    }
+   }
+  },
+  "causeways": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 2,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "1 Chronicles 26:16",
+     "1 Chronicles 26:18"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 0,
+     "popol_vuh_christenson": 1,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 0,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 0,
+     "mcculloh_researches_1829": 2,
+     "priest_wonders_1826": 1,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 0
+    }
+   }
+  },
+  "markets": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 2,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 10,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 4,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "Tobit 2:3",
+     "Wisdom of Solomon 15:12",
+     "Matthew 11:16",
+     "Matthew 20:3",
+     "Matthew 23:7"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 83,
+     "popol_vuh_christenson": 1,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 4,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 0,
+     "mcculloh_researches_1829": 25,
+     "priest_wonders_1826": 6,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 3,
+     "yates_moulton_new_york_1824": 6
+    }
+   }
+  },
+  "indians": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 3,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "Wisdom of Solomon 17:19",
+     "1 Maccabees 6:37",
+     "2 Maccabees 4:25"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 1,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 81,
+     "popol_vuh_christenson": 27,
+     "popol_vuh_spence_1908": 16
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 1071,
+     "atwater_archaeologia_americana_1820": 49,
+     "boudinot_star_1816": 499,
+     "clinton_discourse_and_western_new_york": 144,
+     "cusick_1827": 2,
+     "haywood_tennessee_1823": 192,
+     "mcculloh_researches_1829": 756,
+     "priest_wonders_1826": 330,
+     "rafinesque_annals_kentucky_1824": 5,
+     "seaver_jemison_1826": 419,
+     "yates_moulton_new_york_1824": 510
+    }
+   }
+  },
+  "linen": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 3,
+     "kjv_chronicles_esther": 10,
+     "kjv_epistles_revelation": 6,
+     "kjv_gospels_acts": 12,
+     "kjv_job_song": 2,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 51,
+     "kjv_prophets": 18,
+     "kjv_samuel": 3
+    },
+    "kjv_refs": [
+     "Judith 16:8",
+     "Ecclesiasticus (Sirach) 40:4",
+     "1 Esdras 3:6",
+     "1 Chronicles 4:21",
+     "1 Chronicles 15:27"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 2,
+     "popol_vuh_christenson": 1,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 1,
+     "atwater_archaeologia_americana_1820": 1,
+     "boudinot_star_1816": 4,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 0,
+     "mcculloh_researches_1829": 3,
+     "priest_wonders_1826": 6,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 1
+    }
+   }
+  },
+  "cotton": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 0,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 0,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 0,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": []
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 54,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 5,
+     "atwater_archaeologia_americana_1820": 2,
+     "boudinot_star_1816": 0,
+     "clinton_discourse_and_western_new_york": 1,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 3,
+     "mcculloh_researches_1829": 43,
+     "priest_wonders_1826": 10,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 1,
+     "yates_moulton_new_york_1824": 5
+    }
+   }
+  },
+  "silk": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 2,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 1,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 1,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 0,
+     "kjv_prophets": 2,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "Ecclesiasticus (Sirach) 45:10",
+     "1 Maccabees 4:23",
+     "Revelation 18:12",
+     "Proverbs 31:22",
+     "Ezekiel 16:10"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 0,
+     "brinton_nahuatl_poetry_1887": 0,
+     "clavigero_1787_vol1_before_conquest": 12,
+     "popol_vuh_christenson": 0,
+     "popol_vuh_spence_1908": 0
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 10,
+     "atwater_archaeologia_americana_1820": 0,
+     "boudinot_star_1816": 1,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 3,
+     "mcculloh_researches_1829": 4,
+     "priest_wonders_1826": 2,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 0,
+     "yates_moulton_new_york_1824": 1
+    }
+   }
+  },
+  "feathers": {
+   "near_east": {
+    "counts": {
+     "kjv_apocrypha": 16,
+     "kjv_chronicles_esther": 0,
+     "kjv_epistles_revelation": 0,
+     "kjv_gospels_acts": 0,
+     "kjv_job_song": 3,
+     "kjv_joshua_ruth": 0,
+     "kjv_pentateuch": 1,
+     "kjv_prophets": 3,
+     "kjv_samuel": 0
+    },
+    "kjv_refs": [
+     "2 Esdras 11:3",
+     "2 Esdras 11:5",
+     "2 Esdras 11:7",
+     "2 Esdras 11:11",
+     "2 Esdras 11:12"
+    ]
+   },
+   "mesoamerica": {
+    "counts": {
+     "brinton_maya_chronicles_and_rig_veda": 7,
+     "brinton_nahuatl_poetry_1887": 15,
+     "clavigero_1787_vol1_before_conquest": 129,
+     "popol_vuh_christenson": 38,
+     "popol_vuh_spence_1908": 2
+    }
+   },
+   "america_1820s": {
+    "counts": {
+     "adair_american_indians_1775": 24,
+     "atwater_archaeologia_americana_1820": 2,
+     "boudinot_star_1816": 8,
+     "clinton_discourse_and_western_new_york": 0,
+     "cusick_1827": 0,
+     "haywood_tennessee_1823": 19,
+     "mcculloh_researches_1829": 48,
+     "priest_wonders_1826": 25,
+     "rafinesque_annals_kentucky_1824": 0,
+     "seaver_jemison_1826": 1,
+     "yates_moulton_new_york_1824": 3
+    }
+   }
+  }
+ },
+ "known_answer": {
+  "all_features": {
+   "features_kept": 31,
+   "dropped": {
+    "concordant": 9,
+    "unsettled": 16,
+    "from_memory": 0
+   },
+   "texts": {
+    "kjv_kings": {
+     "role": "known",
+     "own_world": "near_east",
+     "words": 48290,
+     "stated": 30,
+     "agree": {
+      "near_east": 29,
+      "mesoamerica": 11,
+      "america_1820s": 9
+     },
+     "sole": {
+      "near_east": 11,
+      "mesoamerica": 0,
+      "america_1820s": 0
+     },
+     "share": {
+      "near_east": 0.9667,
+      "mesoamerica": 0.3667,
+      "america_1820s": 0.3
+     },
+     "sides_with": "near_east",
+     "passes": true
+    },
+    "josephus_antiquities_whiston": {
+     "role": "known",
+     "own_world": "near_east",
+     "words": 544274,
+     "stated": 26,
+     "agree": {
+      "near_east": 24,
+      "mesoamerica": 8,
+      "america_1820s": 10
+     },
+     "sole": {
+      "near_east": 9,
+      "mesoamerica": 0,
+      "america_1820s": 1
+     },
+     "share": {
+      "near_east": 0.9231,
+      "mesoamerica": 0.3077,
+      "america_1820s": 0.3846
+     },
+     "sides_with": "near_east",
+     "passes": true
+    },
+    "josephus_wars_whiston": {
+     "role": "known",
+     "own_world": "near_east",
+     "words": 234992,
+     "stated": 29,
+     "agree": {
+      "near_east": 25,
+      "mesoamerica": 11,
+      "america_1820s": 12
+     },
+     "sole": {
+      "near_east": 9,
+      "mesoamerica": 0,
+      "america_1820s": 1
+     },
+     "share": {
+      "near_east": 0.8621,
+      "mesoamerica": 0.3793,
+      "america_1820s": 0.4138
+     },
+     "sides_with": "near_east",
+     "passes": true
+    },
+    "brinton_annals_cakchiquels_1885": {
+     "role": "known",
+     "own_world": "mesoamerica",
+     "words": 19432,
+     "stated": 27,
+     "agree": {
+      "near_east": 14,
+      "mesoamerica": 23,
+      "america_1820s": 11
+     },
+     "sole": {
+      "near_east": 3,
+      "mesoamerica": 3,
+      "america_1820s": 0
+     },
+     "share": {
+      "near_east": 0.5185,
+      "mesoamerica": 0.8519,
+      "america_1820s": 0.4074
+     },
+     "sides_with": "mesoamerica",
+     "passes": true
+    },
+    "bernal_diaz_keatinge_1800": {
+     "role": "known",
+     "own_world": "mesoamerica",
+     "words": 239048,
+     "stated": 30,
+     "agree": {
+      "near_east": 12,
+      "mesoamerica": 15,
+      "america_1820s": 24
+     },
+     "sole": {
+      "near_east": 2,
+      "mesoamerica": 1,
+      "america_1820s": 6
+     },
+     "share": {
+      "near_east": 0.4,
+      "mesoamerica": 0.5,
+      "america_1820s": 0.8
+     },
+     "sides_with": "america_1820s",
+     "passes": false
+    },
+    "spalding_manuscript_story": {
+     "role": "known",
+     "own_world": "america_1820s",
+     "words": 42305,
+     "stated": 25,
+     "agree": {
+      "near_east": 10,
+      "mesoamerica": 12,
+      "america_1820s": 22
+     },
+     "sole": {
+      "near_east": 1,
+      "mesoamerica": 0,
+      "america_1820s": 5
+     },
+     "share": {
+      "near_east": 0.4,
+      "mesoamerica": 0.48,
+      "america_1820s": 0.88
+     },
+     "sides_with": "america_1820s",
+     "passes": true
+    },
+    "view_of_the_hebrews_1825": {
+     "role": "known",
+     "own_world": "america_1820s",
+     "words": 105466,
+     "stated": 25,
+     "agree": {
+      "near_east": 11,
+      "mesoamerica": 9,
+      "america_1820s": 21
+     },
+     "sole": {
+      "near_east": 3,
+      "mesoamerica": 0,
+      "america_1820s": 6
+     },
+     "share": {
+      "near_east": 0.44,
+      "mesoamerica": 0.36,
+      "america_1820s": 0.84
+     },
+     "sides_with": "america_1820s",
+     "passes": true
+    },
+    "mathews_behemoth_1839": {
+     "role": "known",
+     "own_world": "america_1820s",
+     "words": 43958,
+     "stated": 25,
+     "agree": {
+      "near_east": 15,
+      "mesoamerica": 11,
+      "america_1820s": 18
+     },
+     "sole": {
+      "near_east": 4,
+      "mesoamerica": 0,
+      "america_1820s": 2
+     },
+     "share": {
+      "near_east": 0.6,
+      "mesoamerica": 0.44,
+      "america_1820s": 0.72
+     },
+     "sides_with": "america_1820s",
+     "passes": true
+    },
+    "late_war_1816": {
+     "role": "decoy",
+     "own_world": "america_1820s",
+     "words": 55534,
+     "stated": 25,
+     "agree": {
+      "near_east": 15,
+      "mesoamerica": 11,
+      "america_1820s": 18
+     },
+     "sole": {
+      "near_east": 3,
+      "mesoamerica": 0,
+      "america_1820s": 3
+     },
+     "share": {
+      "near_east": 0.6,
+      "mesoamerica": 0.44,
+      "america_1820s": 0.72
+     },
+     "sides_with": "america_1820s",
+     "passes": null
+    },
+    "solis_conquest_of_mexico_1724": {
+     "role": "extra",
+     "own_world": null,
+     "words": 244003,
+     "stated": 26,
+     "agree": {
+      "near_east": 11,
+      "mesoamerica": 14,
+      "america_1820s": 21
+     },
+     "sole": {
+      "near_east": 2,
+      "mesoamerica": 0,
+      "america_1820s": 4
+     },
+     "share": {
+      "near_east": 0.4231,
+      "mesoamerica": 0.5385,
+      "america_1820s": 0.8077
+     },
+     "sides_with": "america_1820s",
+     "passes": null
+    },
+    "priest_american_antiquities_1833": {
+     "role": "extra",
+     "own_world": null,
+     "words": 158158,
+     "stated": 28,
+     "agree": {
+      "near_east": 10,
+      "mesoamerica": 10,
+      "america_1820s": 22
+     },
+     "sole": {
+      "near_east": 3,
+      "mesoamerica": 2,
+      "america_1820s": 9
+     },
+     "share": {
+      "near_east": 0.3571,
+      "mesoamerica": 0.3571,
+      "america_1820s": 0.7857
+     },
+     "sides_with": "america_1820s",
+     "passes": null
+    }
+   },
+   "known_held": 8,
+   "known_not_held": 0,
+   "known_passing": 7,
+   "passed": false
+  },
+  "without_from_memory": {
+   "features_kept": 31,
+   "dropped": {
+    "concordant": 9,
+    "unsettled": 16,
+    "from_memory": 0
+   },
+   "texts": {
+    "kjv_kings": {
+     "role": "known",
+     "own_world": "near_east",
+     "words": 48290,
+     "stated": 30,
+     "agree": {
+      "near_east": 29,
+      "mesoamerica": 11,
+      "america_1820s": 9
+     },
+     "sole": {
+      "near_east": 11,
+      "mesoamerica": 0,
+      "america_1820s": 0
+     },
+     "share": {
+      "near_east": 0.9667,
+      "mesoamerica": 0.3667,
+      "america_1820s": 0.3
+     },
+     "sides_with": "near_east",
+     "passes": true
+    },
+    "josephus_antiquities_whiston": {
+     "role": "known",
+     "own_world": "near_east",
+     "words": 544274,
+     "stated": 26,
+     "agree": {
+      "near_east": 24,
+      "mesoamerica": 8,
+      "america_1820s": 10
+     },
+     "sole": {
+      "near_east": 9,
+      "mesoamerica": 0,
+      "america_1820s": 1
+     },
+     "share": {
+      "near_east": 0.9231,
+      "mesoamerica": 0.3077,
+      "america_1820s": 0.3846
+     },
+     "sides_with": "near_east",
+     "passes": true
+    },
+    "josephus_wars_whiston": {
+     "role": "known",
+     "own_world": "near_east",
+     "words": 234992,
+     "stated": 29,
+     "agree": {
+      "near_east": 25,
+      "mesoamerica": 11,
+      "america_1820s": 12
+     },
+     "sole": {
+      "near_east": 9,
+      "mesoamerica": 0,
+      "america_1820s": 1
+     },
+     "share": {
+      "near_east": 0.8621,
+      "mesoamerica": 0.3793,
+      "america_1820s": 0.4138
+     },
+     "sides_with": "near_east",
+     "passes": true
+    },
+    "brinton_annals_cakchiquels_1885": {
+     "role": "known",
+     "own_world": "mesoamerica",
+     "words": 19432,
+     "stated": 27,
+     "agree": {
+      "near_east": 14,
+      "mesoamerica": 23,
+      "america_1820s": 11
+     },
+     "sole": {
+      "near_east": 3,
+      "mesoamerica": 3,
+      "america_1820s": 0
+     },
+     "share": {
+      "near_east": 0.5185,
+      "mesoamerica": 0.8519,
+      "america_1820s": 0.4074
+     },
+     "sides_with": "mesoamerica",
+     "passes": true
+    },
+    "bernal_diaz_keatinge_1800": {
+     "role": "known",
+     "own_world": "mesoamerica",
+     "words": 239048,
+     "stated": 30,
+     "agree": {
+      "near_east": 12,
+      "mesoamerica": 15,
+      "america_1820s": 24
+     },
+     "sole": {
+      "near_east": 2,
+      "mesoamerica": 1,
+      "america_1820s": 6
+     },
+     "share": {
+      "near_east": 0.4,
+      "mesoamerica": 0.5,
+      "america_1820s": 0.8
+     },
+     "sides_with": "america_1820s",
+     "passes": false
+    },
+    "spalding_manuscript_story": {
+     "role": "known",
+     "own_world": "america_1820s",
+     "words": 42305,
+     "stated": 25,
+     "agree": {
+      "near_east": 10,
+      "mesoamerica": 12,
+      "america_1820s": 22
+     },
+     "sole": {
+      "near_east": 1,
+      "mesoamerica": 0,
+      "america_1820s": 5
+     },
+     "share": {
+      "near_east": 0.4,
+      "mesoamerica": 0.48,
+      "america_1820s": 0.88
+     },
+     "sides_with": "america_1820s",
+     "passes": true
+    },
+    "view_of_the_hebrews_1825": {
+     "role": "known",
+     "own_world": "america_1820s",
+     "words": 105466,
+     "stated": 25,
+     "agree": {
+      "near_east": 11,
+      "mesoamerica": 9,
+      "america_1820s": 21
+     },
+     "sole": {
+      "near_east": 3,
+      "mesoamerica": 0,
+      "america_1820s": 6
+     },
+     "share": {
+      "near_east": 0.44,
+      "mesoamerica": 0.36,
+      "america_1820s": 0.84
+     },
+     "sides_with": "america_1820s",
+     "passes": true
+    },
+    "mathews_behemoth_1839": {
+     "role": "known",
+     "own_world": "america_1820s",
+     "words": 43958,
+     "stated": 25,
+     "agree": {
+      "near_east": 15,
+      "mesoamerica": 11,
+      "america_1820s": 18
+     },
+     "sole": {
+      "near_east": 4,
+      "mesoamerica": 0,
+      "america_1820s": 2
+     },
+     "share": {
+      "near_east": 0.6,
+      "mesoamerica": 0.44,
+      "america_1820s": 0.72
+     },
+     "sides_with": "america_1820s",
+     "passes": true
+    },
+    "late_war_1816": {
+     "role": "decoy",
+     "own_world": "america_1820s",
+     "words": 55534,
+     "stated": 25,
+     "agree": {
+      "near_east": 15,
+      "mesoamerica": 11,
+      "america_1820s": 18
+     },
+     "sole": {
+      "near_east": 3,
+      "mesoamerica": 0,
+      "america_1820s": 3
+     },
+     "share": {
+      "near_east": 0.6,
+      "mesoamerica": 0.44,
+      "america_1820s": 0.72
+     },
+     "sides_with": "america_1820s",
+     "passes": null
+    },
+    "solis_conquest_of_mexico_1724": {
+     "role": "extra",
+     "own_world": null,
+     "words": 244003,
+     "stated": 26,
+     "agree": {
+      "near_east": 11,
+      "mesoamerica": 14,
+      "america_1820s": 21
+     },
+     "sole": {
+      "near_east": 2,
+      "mesoamerica": 0,
+      "america_1820s": 4
+     },
+     "share": {
+      "near_east": 0.4231,
+      "mesoamerica": 0.5385,
+      "america_1820s": 0.8077
+     },
+     "sides_with": "america_1820s",
+     "passes": null
+    },
+    "priest_american_antiquities_1833": {
+     "role": "extra",
+     "own_world": null,
+     "words": 158158,
+     "stated": 28,
+     "agree": {
+      "near_east": 10,
+      "mesoamerica": 10,
+      "america_1820s": 22
+     },
+     "sole": {
+      "near_east": 3,
+      "mesoamerica": 2,
+      "america_1820s": 9
+     },
+     "share": {
+      "near_east": 0.3571,
+      "mesoamerica": 0.3571,
+      "america_1820s": 0.7857
+     },
+     "sides_with": "america_1820s",
+     "passes": null
+    }
+   },
+   "known_held": 8,
+   "known_not_held": 0,
+   "known_passing": 7,
+   "passed": false
+  },
+  "passed": false
+ },
+ "citations_verified": {
+  "reading": {
+   "succession": {
+    "near_east": {
+     "kind": "kjv",
+     "where": "1 Chronicles 29:28",
+     "verified": true
+    },
+    "mesoamerica": {
+     "kind": "held",
+     "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+     "verified": true
+    },
+    "america_1820s": {
+     "kind": "memory",
+     "where": "memory",
+     "verified": null
+    }
+   },
+   "markets": {
+    "near_east": {
+     "kind": "kjv",
+     "where": "Ezekiel 27:12",
+     "verified": true
+    },
+    "mesoamerica": {
+     "kind": "held",
+     "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+     "verified": true
+    },
+    "america_1820s": {
+     "kind": "memory",
+     "where": "memory",
+     "verified": null
+    }
+   },
+   "sacrifice": {
+    "near_east": {
+     "kind": "kjv",
+     "where": "Leviticus 1:9",
+     "verified": true
+    },
+    "mesoamerica": {
+     "kind": "held",
+     "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+     "verified": true
+    },
+    "america_1820s": {
+     "kind": "memory",
+     "where": "memory",
+     "verified": null
+    }
+   },
+   "captives": {
+    "near_east": {
+     "kind": "kjv",
+     "where": "Jeremiah 52:28",
+     "verified": true
+    },
+    "mesoamerica": {
+     "kind": "held",
+     "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+     "verified": true
+    },
+    "america_1820s": {
+     "kind": "memory",
+     "where": "memory",
+     "verified": null
+    }
+   },
+   "burial": {
+    "near_east": {
+     "kind": "kjv",
+     "where": "Genesis 23:19",
+     "verified": true
+    },
+    "mesoamerica": {
+     "kind": "held",
+     "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+     "verified": true
+    },
+    "america_1820s": {
+     "kind": "memory",
+     "where": "memory",
+     "verified": null
+    }
+   },
+   "temple": {
+    "near_east": {
+     "kind": "kjv",
+     "where": "Deuteronomy 12:5",
+     "verified": true
+    },
+    "mesoamerica": {
+     "kind": "held",
+     "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+     "verified": true
+    },
+    "america_1820s": {
+     "kind": "memory",
+     "where": "memory",
+     "verified": null
+    }
+   },
+   "writing_material": {
+    "near_east": {
+     "kind": "kjv",
+     "where": "Jeremiah 36:2",
+     "verified": true
+    },
+    "mesoamerica": {
+     "kind": "held",
+     "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+     "verified": true
+    },
+    "america_1820s": {
+     "kind": "memory",
+     "where": "memory",
+     "verified": null
+    }
+   },
+   "money": {
+    "near_east": {
+     "kind": "kjv",
+     "where": "Genesis 23:16",
+     "verified": true
+    },
+    "mesoamerica": {
+     "kind": "held",
+     "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+     "verified": true
+    },
+    "america_1820s": {
+     "kind": "memory",
+     "where": "memory",
+     "verified": null
+    }
+   },
+   "dress": {
+    "near_east": {
+     "kind": "kjv",
+     "where": "Exodus 28:4",
+     "verified": true
+    },
+    "mesoamerica": {
+     "kind": "held",
+     "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+     "verified": true
+    },
+    "america_1820s": {
+     "kind": "memory",
+     "where": "memory",
+     "verified": null
+    }
+   },
+   "city_form": {
+    "near_east": {
+     "kind": "kjv",
+     "where": "Deuteronomy 3:5",
+     "verified": true
+    },
+    "mesoamerica": {
+     "kind": "held",
+     "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+     "verified": true
+    },
+    "america_1820s": {
+     "kind": "memory",
+     "where": "memory",
+     "verified": null
+    }
+   },
+   "origins": {
+    "near_east": {
+     "kind": "kjv",
+     "where": "Joshua 24:3",
+     "verified": true
+    },
+    "mesoamerica": {
+     "kind": "held",
+     "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+     "verified": true
+    },
+    "america_1820s": {
+     "kind": "memory",
+     "where": "memory",
+     "verified": null
+    }
+   },
+   "war_aim": {
+    "near_east": {
+     "kind": "kjv",
+     "where": "Deuteronomy 20:16",
+     "verified": true
+    },
+    "mesoamerica": {
+     "kind": "held",
+     "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+     "verified": true
+    },
+    "america_1820s": {
+     "kind": "memory",
+     "where": "memory",
+     "verified": null
+    }
+   }
+  },
+  "coded": {
+   "horses|mesoamerica": {
+    "value": "absent",
+    "kind": "held",
+    "where": "Clavigero, History of Mexico (1787), vol. 1 (lab.three_worlds.library.clavigero_v1), book I: horses among the animals 'transported from the Canaries and Europe' in the sixteenth century",
+    "verified": true
+   },
+   "ow_grains|mesoamerica": {
+    "value": "absent",
+    "kind": "held",
+    "where": "Clavigero, History of Mexico (1787), vol. 1 (lab.three_worlds.library.clavigero_v1), book I: wheat and barley are among the grains 'that country had from Europe'",
+    "verified": true
+   },
+   "vigesimal|mesoamerica": {
+    "value": "present",
+    "kind": "held",
+    "where": "data/lab/setting/numbers/result.json (BOM-114): native Mesoamerican texts pooled, 32 of 35 round numbers between 20 and 400 are multiples of twenty",
+    "verified": null
+   }
+  }
+ },
+ "book_of_mormon": "not recorded: the known-answer check missed (see known_answer)",
+ "config_sha256": "44da729d4344ef0401c8e0aa9fa32630bc789a57b04f1e99053ee6e0a502d461",
+ "markers_sha256": "87848782930a7ec7af3ffecf42d881cdee7e61175d22955a02f0e8beabec2331",
+ "git_commit": "da8e08d09f872c0156525cbd58e7e4d5f40b4610",
+ "judging_jobs": {
+  "questions": 119,
+  "per_text": {
+   "kjv_kings": {
+    "role": "known",
+    "questions": 12
+   },
+   "josephus_antiquities_whiston": {
+    "role": "known",
+    "questions": 12
+   },
+   "josephus_wars_whiston": {
+    "role": "known",
+    "questions": 12
+   },
+   "brinton_annals_cakchiquels_1885": {
+    "role": "known",
+    "questions": 11
+   },
+   "bernal_diaz_keatinge_1800": {
+    "role": "known",
+    "questions": 12
+   },
+   "spalding_manuscript_story": {
+    "role": "known",
+    "questions": 12
+   },
+   "view_of_the_hebrews_1825": {
+    "role": "known",
+    "questions": 12
+   },
+   "mathews_behemoth_1839": {
+    "role": "known",
+    "questions": 12
+   },
+   "late_war_1816": {
+    "role": "decoy",
+    "questions": 12
+   },
+   "book_of_mormon": {
+    "role": "target",
+    "questions": 12
+   }
+  },
+  "known_answer_questions": 107,
+  "book_of_mormon_questions": 12,
+  "jobs_file": "data/private/lab/owner/2026-11-21-three-worlds/jobs.jsonl",
+  "labelled": "SIMULATED JUDGING BY AN AI MODEL (lab.judge; BOM-109). Prepared, not run.",
+  "citations": {
+   "reading": {
+    "succession": {
+     "near_east": {
+      "kind": "kjv",
+      "where": "1 Chronicles 29:28",
+      "verified": true
+     },
+     "mesoamerica": {
+      "kind": "held",
+      "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+      "verified": true
+     },
+     "america_1820s": {
+      "kind": "memory",
+      "where": "memory",
+      "verified": null
+     }
+    },
+    "markets": {
+     "near_east": {
+      "kind": "kjv",
+      "where": "Ezekiel 27:12",
+      "verified": true
+     },
+     "mesoamerica": {
+      "kind": "held",
+      "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+      "verified": true
+     },
+     "america_1820s": {
+      "kind": "memory",
+      "where": "memory",
+      "verified": null
+     }
+    },
+    "sacrifice": {
+     "near_east": {
+      "kind": "kjv",
+      "where": "Leviticus 1:9",
+      "verified": true
+     },
+     "mesoamerica": {
+      "kind": "held",
+      "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+      "verified": true
+     },
+     "america_1820s": {
+      "kind": "memory",
+      "where": "memory",
+      "verified": null
+     }
+    },
+    "captives": {
+     "near_east": {
+      "kind": "kjv",
+      "where": "Jeremiah 52:28",
+      "verified": true
+     },
+     "mesoamerica": {
+      "kind": "held",
+      "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+      "verified": true
+     },
+     "america_1820s": {
+      "kind": "memory",
+      "where": "memory",
+      "verified": null
+     }
+    },
+    "burial": {
+     "near_east": {
+      "kind": "kjv",
+      "where": "Genesis 23:19",
+      "verified": true
+     },
+     "mesoamerica": {
+      "kind": "held",
+      "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+      "verified": true
+     },
+     "america_1820s": {
+      "kind": "memory",
+      "where": "memory",
+      "verified": null
+     }
+    },
+    "temple": {
+     "near_east": {
+      "kind": "kjv",
+      "where": "Deuteronomy 12:5",
+      "verified": true
+     },
+     "mesoamerica": {
+      "kind": "held",
+      "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+      "verified": true
+     },
+     "america_1820s": {
+      "kind": "memory",
+      "where": "memory",
+      "verified": null
+     }
+    },
+    "writing_material": {
+     "near_east": {
+      "kind": "kjv",
+      "where": "Jeremiah 36:2",
+      "verified": true
+     },
+     "mesoamerica": {
+      "kind": "held",
+      "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+      "verified": true
+     },
+     "america_1820s": {
+      "kind": "memory",
+      "where": "memory",
+      "verified": null
+     }
+    },
+    "money": {
+     "near_east": {
+      "kind": "kjv",
+      "where": "Genesis 23:16",
+      "verified": true
+     },
+     "mesoamerica": {
+      "kind": "held",
+      "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+      "verified": true
+     },
+     "america_1820s": {
+      "kind": "memory",
+      "where": "memory",
+      "verified": null
+     }
+    },
+    "dress": {
+     "near_east": {
+      "kind": "kjv",
+      "where": "Exodus 28:4",
+      "verified": true
+     },
+     "mesoamerica": {
+      "kind": "held",
+      "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+      "verified": true
+     },
+     "america_1820s": {
+      "kind": "memory",
+      "where": "memory",
+      "verified": null
+     }
+    },
+    "city_form": {
+     "near_east": {
+      "kind": "kjv",
+      "where": "Deuteronomy 3:5",
+      "verified": true
+     },
+     "mesoamerica": {
+      "kind": "held",
+      "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+      "verified": true
+     },
+     "america_1820s": {
+      "kind": "memory",
+      "where": "memory",
+      "verified": null
+     }
+    },
+    "origins": {
+     "near_east": {
+      "kind": "kjv",
+      "where": "Joshua 24:3",
+      "verified": true
+     },
+     "mesoamerica": {
+      "kind": "held",
+      "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+      "verified": true
+     },
+     "america_1820s": {
+      "kind": "memory",
+      "where": "memory",
+      "verified": null
+     }
+    },
+    "war_aim": {
+     "near_east": {
+      "kind": "kjv",
+      "where": "Deuteronomy 20:16",
+      "verified": true
+     },
+     "mesoamerica": {
+      "kind": "held",
+      "where": "Clavigero 1787 vol. 1 (books I-VII, before the conquest)",
+      "verified": true
+     },
+     "america_1820s": {
+      "kind": "memory",
+      "where": "memory",
+      "verified": null
+     }
+    }
+   },
+   "coded": {
+    "horses|mesoamerica": {
+     "value": "absent",
+     "kind": "held",
+     "where": "Clavigero, History of Mexico (1787), vol. 1 (lab.three_worlds.library.clavigero_v1), book I: horses among the animals 'transported from the Canaries and Europe' in the sixteenth century",
+     "verified": true
+    },
+    "ow_grains|mesoamerica": {
+     "value": "absent",
+     "kind": "held",
+     "where": "Clavigero, History of Mexico (1787), vol. 1 (lab.three_worlds.library.clavigero_v1), book I: wheat and barley are among the grains 'that country had from Europe'",
+     "verified": true
+    },
+    "vigesimal|mesoamerica": {
+     "value": "present",
+     "kind": "held",
+     "where": "data/lab/setting/numbers/result.json (BOM-114): native Mesoamerican texts pooled, 32 of 35 round numbers between 20 and 400 are multiples of twenty",
+     "verified": null
+    }
+   }
+  }
+ }
+}
