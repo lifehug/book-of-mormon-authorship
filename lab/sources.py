@@ -681,6 +681,14 @@ def _sources() -> list[dict]:
     }.items():
         terms = "copyright the author; open access; private copy"
         add(name, "papers", "BOM-119", "file", interpreter + url, terms, True)
+    add("roper2025_anachronisms.pdf", "papers", "BOM-113", "file",
+        interpreter + "roper-v65-2025-1-8-PDF.pdf",
+        "copyright the author; open access (CC BY-NC-ND); private copy", True)  # fmt: skip
+    for ch, pages in enumerate(("9-50", "51-92", "93-112", "113-152", "153-180", "181-202",
+                                "203-222", "223-238", "239-280"), 1):  # fmt: skip
+        add(f"roper2025_anachronisms_ch{ch}.pdf", "papers", "BOM-113", "file",
+            interpreter + f"roper-v65-2025-{pages}-PDF.pdf",
+            "copyright the author; open access (CC BY-NC-ND); private copy", True)  # fmt: skip
     for name, url in _NAMES_PAPERS.items():
         add(name, "papers", "BOM-108", "file", url, "copyright the authors; private copy", True)
     for name, (kind, url) in _RECEIVED.items():

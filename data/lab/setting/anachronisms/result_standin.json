@@ -1,0 +1,2910 @@
+{
+ "list": "standin",
+ "settings": {
+  "items": "data/lab/setting/anachronisms/items.json",
+  "items_standin": "data/lab/setting/anachronisms/items_standin.json",
+  "present_min": 1,
+  "bible_min": 1,
+  "seed": 20261121,
+  "planted_per_item": 5,
+  "bar_planted": 1.0,
+  "documented_present": {
+   "kjv_old_testament": {
+    "horse": 10,
+    "chariot": 10
+   }
+  },
+  "maize_forms": [
+   "maize",
+   "maiz",
+   "mahiz",
+   "indian corn"
+  ],
+  "maize_min": 1,
+  "new_world_probes": [
+   "maize",
+   "cacao",
+   "tobacco",
+   "potato",
+   "tomato",
+   "llama",
+   "jaguar",
+   "tapir",
+   "chocolate"
+  ],
+  "control_share_bar": 0.5,
+  "control_share_low": 0.25,
+  "named_control": "ss-manuscript-story-1885",
+  "alpha": 0.05,
+  "controls": {
+   "antiquity_story": {
+    "ss-manuscript-story-1885": "candidates:ss-manuscript-story-1885.txt",
+    "mathews_behemoth_1839": "setting:behemothlegend00mathrich",
+    "hale_genius_of_oblivion_1823": "setting:geniusofoblivion00hale"
+   },
+   "purported_ancient_chronicle": {
+    "oconnor_chronicles_of_eri_1822": "bible_style:chroniclesoferib02ocon",
+    "ilive_book_of_jasher_1751": "bible_style:bib_fict_4103140"
+   },
+   "bible_style_own_time": {
+    "gh-1816-late-war": "candidates:gh-1816-late-war.txt",
+    "snowden_american_revolution_1823": "bible_style:americanrevoluti00snow"
+   },
+   "about_antiquity_nonfiction": {
+    "es-1825-view-of-the-hebrews": "candidates:es-1825-view-of-the-hebrews.txt"
+   }
+  },
+  "judged_groups": [
+   "antiquity_story",
+   "purported_ancient_chronicle"
+  ],
+  "settings_claimed": {
+   "book_of_mormon": "the Americas, about 2500 BCE to 421 CE (main narrative 600 BCE to 421 CE)",
+   "ss-manuscript-story-1885": "eastern North America, in the time of the Roman emperor Constantine (4th century CE)",
+   "mathews_behemoth_1839": "the Ohio and Mississippi valleys among the mound-builders, before European contact",
+   "hale_genius_of_oblivion_1823": "ancient America, settled from the ancient Mediterranean (from memory; check against the poem)",
+   "oconnor_chronicles_of_eri_1822": "ancient Scythia, Iberia and Ireland, about 1000 BCE",
+   "ilive_book_of_jasher_1751": "the ancient Near East of the Patriarchs and Moses"
+  },
+  "window_words": 60,
+  "windows_per_item": 2,
+  "judge_model": "sonnet",
+  "judge_bar": 0.9,
+  "recode_scale": [
+   "mesoamerica_in_period",
+   "americas_other_time_or_place",
+   "old_world_only",
+   "not_attested"
+  ]
+ },
+ "items_sha256": "f72453f5389da17343facd6b1ce9502d0d471b4eae698d1f36696620f69ad7f7",
+ "known_answer": {
+  "planted": {
+   "things": 35,
+   "per_item": 5,
+   "recovered_share": 1.0,
+   "misses": {},
+   "passed": true
+  },
+  "documented_present": {
+   "kjv_old_testament/horse": {
+    "need": 10,
+    "got": 138,
+    "passed": true
+   },
+   "kjv_old_testament/chariot": {
+    "need": 10,
+    "got": 172,
+    "passed": true
+   }
+  },
+  "maize_in_mesoamerican_native_texts": {
+   "texts": [
+    "brinton_maya_chronicles_and_rig_veda",
+    "brinton_annals_cakchiquels_1885",
+    "brinton_nahuatl_poetry_1887",
+    "popol_vuh_spence_1908",
+    "popol_vuh_christenson"
+   ],
+   "got": 168,
+   "need": 1,
+   "passed": true
+  },
+  "new_world_probes_in_kjv": {
+   "counts": {
+    "kjv_old_testament": {},
+    "kjv_new_testament": {},
+    "kjv_apocrypha": {}
+   },
+   "passed": true
+  },
+  "passed": true
+ },
+ "not_attempted": [],
+ "book_of_mormon": {
+  "all_text": {
+   "words": 265197,
+   "counts": {
+    "horse": 14,
+    "elephant": 2,
+    "cattle": 12,
+    "goat": 6,
+    "swine": 2,
+    "ass": 6,
+    "barley": 4,
+    "wheat": 2,
+    "silk": 6,
+    "chariot": 7,
+    "compass": 6,
+    "window": 3,
+    "dross": 2,
+    "steel": 5,
+    "iron": 18,
+    "brass": 37,
+    "sword": 156,
+    "cimeter": 11,
+    "reformed_egyptian": 1,
+    "christ": 365,
+    "messiah": 31,
+    "greek_names": 42,
+    "church": 250,
+    "synagogue": 26,
+    "isabel": 1,
+    "ships_of_tarshish": 1,
+    "satyr": 1,
+    "baptism": 140,
+    "five_books_of_moses": 1,
+    "cement": 4,
+    "linen": 9,
+    "sheep": 26,
+    "ox": 6,
+    "bee": 3,
+    "wheel": 1
+   },
+   "per_10k": {
+    "ass": 0.226,
+    "baptism": 5.279,
+    "barley": 0.151,
+    "bee": 0.113,
+    "brass": 1.395,
+    "cattle": 0.452,
+    "cement": 0.151,
+    "chariot": 0.264,
+    "christ": 13.763,
+    "church": 9.427,
+    "cimeter": 0.415,
+    "compass": 0.226,
+    "dross": 0.075,
+    "elephant": 0.075,
+    "five_books_of_moses": 0.038,
+    "goat": 0.226,
+    "greek_names": 1.584,
+    "horse": 0.528,
+    "iron": 0.679,
+    "isabel": 0.038,
+    "linen": 0.339,
+    "messiah": 1.169,
+    "ox": 0.226,
+    "reformed_egyptian": 0.038,
+    "satyr": 0.038,
+    "sheep": 0.98,
+    "ships_of_tarshish": 0.038,
+    "silk": 0.226,
+    "steel": 0.189,
+    "swine": 0.075,
+    "sword": 5.882,
+    "synagogue": 0.98,
+    "wheat": 0.075,
+    "wheel": 0.038,
+    "window": 0.113
+   },
+   "items_present": 35,
+   "things_present": 35,
+   "present": [
+    "horse",
+    "elephant",
+    "cattle",
+    "goat",
+    "swine",
+    "ass",
+    "barley",
+    "wheat",
+    "silk",
+    "chariot",
+    "compass",
+    "window",
+    "dross",
+    "steel",
+    "iron",
+    "brass",
+    "sword",
+    "cimeter",
+    "reformed_egyptian",
+    "christ",
+    "messiah",
+    "greek_names",
+    "church",
+    "synagogue",
+    "isabel",
+    "ships_of_tarshish",
+    "satyr",
+    "baptism",
+    "five_books_of_moses",
+    "cement",
+    "linen",
+    "sheep",
+    "ox",
+    "bee",
+    "wheel"
+   ]
+  },
+  "without_quoted_chapters": {
+   "words": 244458,
+   "counts": {
+    "horse": 12,
+    "elephant": 2,
+    "cattle": 9,
+    "goat": 6,
+    "swine": 1,
+    "ass": 6,
+    "barley": 4,
+    "wheat": 2,
+    "silk": 6,
+    "chariot": 6,
+    "compass": 5,
+    "window": 1,
+    "dross": 2,
+    "steel": 5,
+    "iron": 16,
+    "brass": 35,
+    "sword": 149,
+    "cimeter": 11,
+    "reformed_egyptian": 1,
+    "christ": 348,
+    "messiah": 28,
+    "greek_names": 42,
+    "church": 248,
+    "synagogue": 24,
+    "isabel": 1,
+    "baptism": 120,
+    "five_books_of_moses": 1,
+    "cement": 4,
+    "linen": 8,
+    "sheep": 20,
+    "ox": 4,
+    "bee": 2
+   },
+   "per_10k": {
+    "ass": 0.245,
+    "baptism": 4.909,
+    "barley": 0.164,
+    "bee": 0.082,
+    "brass": 1.432,
+    "cattle": 0.368,
+    "cement": 0.164,
+    "chariot": 0.245,
+    "christ": 14.236,
+    "church": 10.145,
+    "cimeter": 0.45,
+    "compass": 0.205,
+    "dross": 0.082,
+    "elephant": 0.082,
+    "five_books_of_moses": 0.041,
+    "goat": 0.245,
+    "greek_names": 1.718,
+    "horse": 0.491,
+    "iron": 0.655,
+    "isabel": 0.041,
+    "linen": 0.327,
+    "messiah": 1.145,
+    "ox": 0.164,
+    "reformed_egyptian": 0.041,
+    "sheep": 0.818,
+    "silk": 0.245,
+    "steel": 0.205,
+    "swine": 0.041,
+    "sword": 6.095,
+    "synagogue": 0.982,
+    "wheat": 0.082,
+    "window": 0.041
+   },
+   "items_present": 32,
+   "things_present": 32,
+   "present": [
+    "horse",
+    "elephant",
+    "cattle",
+    "goat",
+    "swine",
+    "ass",
+    "barley",
+    "wheat",
+    "silk",
+    "chariot",
+    "compass",
+    "window",
+    "dross",
+    "steel",
+    "iron",
+    "brass",
+    "sword",
+    "cimeter",
+    "reformed_egyptian",
+    "christ",
+    "messiah",
+    "greek_names",
+    "church",
+    "synagogue",
+    "isabel",
+    "baptism",
+    "five_books_of_moses",
+    "cement",
+    "linen",
+    "sheep",
+    "ox",
+    "bee"
+   ]
+  }
+ },
+ "controls": {
+  "all_items": {
+   "countable_items": 35,
+   "book_items": 35,
+   "books": {
+    "ss-manuscript-story-1885": {
+     "group": "antiquity_story",
+     "words": 42305,
+     "items_present": 10,
+     "share_of_countable": 0.286,
+     "book_items_present": 10,
+     "share_of_book_items": 0.286,
+     "things_present": [
+      "brass",
+      "cattle",
+      "christ",
+      "church",
+      "elephant",
+      "horse",
+      "iron",
+      "sheep",
+      "sword",
+      "wheat"
+     ],
+     "present": [
+      "horse",
+      "elephant",
+      "cattle",
+      "wheat",
+      "iron",
+      "brass",
+      "sword",
+      "christ",
+      "church",
+      "sheep"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "brass": 0.236,
+      "cattle": 0.709,
+      "christ": 0.473,
+      "church": 0.946,
+      "elephant": 0.236,
+      "horse": 1.182,
+      "iron": 1.655,
+      "sheep": 0.236,
+      "sword": 12.764,
+      "wheat": 0.236
+     }
+    },
+    "mathews_behemoth_1839": {
+     "group": "antiquity_story",
+     "words": 43958,
+     "items_present": 16,
+     "share_of_countable": 0.457,
+     "book_items_present": 16,
+     "share_of_book_items": 0.457,
+     "things_present": [
+      "baptism",
+      "brass",
+      "cattle",
+      "chariot",
+      "cimeter",
+      "elephant",
+      "greek_names",
+      "horse",
+      "iron",
+      "linen",
+      "ox",
+      "sheep",
+      "steel",
+      "sword",
+      "wheel",
+      "window"
+     ],
+     "present": [
+      "horse",
+      "elephant",
+      "cattle",
+      "chariot",
+      "window",
+      "steel",
+      "iron",
+      "brass",
+      "sword",
+      "cimeter",
+      "greek_names",
+      "baptism",
+      "linen",
+      "sheep",
+      "ox",
+      "wheel"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "baptism": 0.227,
+      "brass": 0.91,
+      "cattle": 0.227,
+      "chariot": 1.365,
+      "cimeter": 0.227,
+      "elephant": 5.005,
+      "greek_names": 0.227,
+      "horse": 0.455,
+      "iron": 2.957,
+      "linen": 0.227,
+      "ox": 0.455,
+      "sheep": 0.227,
+      "steel": 1.592,
+      "sword": 4.095,
+      "wheel": 1.137,
+      "window": 1.137
+     }
+    },
+    "hale_genius_of_oblivion_1823": {
+     "group": "antiquity_story",
+     "words": 18942,
+     "items_present": 9,
+     "share_of_countable": 0.257,
+     "book_items_present": 9,
+     "share_of_book_items": 0.257,
+     "things_present": [
+      "cement",
+      "chariot",
+      "compass",
+      "goat",
+      "iron",
+      "steel",
+      "sword",
+      "wheel",
+      "window"
+     ],
+     "present": [
+      "goat",
+      "chariot",
+      "compass",
+      "window",
+      "steel",
+      "iron",
+      "sword",
+      "cement",
+      "wheel"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "cement": 1.056,
+      "chariot": 0.528,
+      "compass": 0.528,
+      "goat": 0.528,
+      "iron": 1.056,
+      "steel": 2.112,
+      "sword": 2.64,
+      "wheel": 1.056,
+      "window": 0.528
+     }
+    },
+    "oconnor_chronicles_of_eri_1822": {
+     "group": "purported_ancient_chronicle",
+     "words": 129193,
+     "items_present": 13,
+     "share_of_countable": 0.371,
+     "book_items_present": 13,
+     "share_of_book_items": 0.371,
+     "things_present": [
+      "ass",
+      "bee",
+      "brass",
+      "cattle",
+      "chariot",
+      "christ",
+      "church",
+      "goat",
+      "greek_names",
+      "horse",
+      "iron",
+      "sheep",
+      "sword"
+     ],
+     "present": [
+      "horse",
+      "cattle",
+      "goat",
+      "ass",
+      "chariot",
+      "iron",
+      "brass",
+      "sword",
+      "christ",
+      "greek_names",
+      "church",
+      "sheep",
+      "bee"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "ass": 0.155,
+      "bee": 0.155,
+      "brass": 0.464,
+      "cattle": 3.174,
+      "chariot": 0.077,
+      "christ": 0.929,
+      "church": 0.155,
+      "goat": 0.077,
+      "greek_names": 0.077,
+      "horse": 4.412,
+      "iron": 0.31,
+      "sheep": 0.464,
+      "sword": 4.257
+     }
+    },
+    "ilive_book_of_jasher_1751": {
+     "group": "purported_ancient_chronicle",
+     "words": 38354,
+     "items_present": 14,
+     "share_of_countable": 0.4,
+     "book_items_present": 14,
+     "share_of_book_items": 0.4,
+     "things_present": [
+      "ass",
+      "brass",
+      "cattle",
+      "chariot",
+      "compass",
+      "five_books_of_moses",
+      "goat",
+      "horse",
+      "iron",
+      "linen",
+      "ox",
+      "sheep",
+      "sword",
+      "synagogue"
+     ],
+     "present": [
+      "horse",
+      "cattle",
+      "goat",
+      "ass",
+      "chariot",
+      "compass",
+      "iron",
+      "brass",
+      "sword",
+      "synagogue",
+      "five_books_of_moses",
+      "linen",
+      "sheep",
+      "ox"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "ass": 0.782,
+      "brass": 2.607,
+      "cattle": 5.997,
+      "chariot": 1.043,
+      "compass": 0.261,
+      "five_books_of_moses": 0.261,
+      "goat": 0.782,
+      "horse": 0.782,
+      "iron": 1.304,
+      "linen": 0.521,
+      "ox": 2.086,
+      "sheep": 3.389,
+      "sword": 2.607,
+      "synagogue": 0.782
+     }
+    },
+    "gh-1816-late-war": {
+     "group": "bible_style_own_time",
+     "words": 55534,
+     "items_present": 16,
+     "share_of_countable": 0.457,
+     "book_items_present": 16,
+     "share_of_book_items": 0.457,
+     "things_present": [
+      "ass",
+      "barley",
+      "brass",
+      "cattle",
+      "chariot",
+      "elephant",
+      "horse",
+      "iron",
+      "linen",
+      "ox",
+      "sheep",
+      "steel",
+      "sword",
+      "wheat",
+      "wheel",
+      "window"
+     ],
+     "present": [
+      "horse",
+      "elephant",
+      "cattle",
+      "ass",
+      "barley",
+      "wheat",
+      "chariot",
+      "window",
+      "steel",
+      "iron",
+      "brass",
+      "sword",
+      "linen",
+      "sheep",
+      "ox",
+      "wheel"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "ass": 0.54,
+      "barley": 0.18,
+      "brass": 1.26,
+      "cattle": 0.54,
+      "chariot": 0.18,
+      "elephant": 0.18,
+      "horse": 1.26,
+      "iron": 2.341,
+      "linen": 0.18,
+      "ox": 0.18,
+      "sheep": 0.72,
+      "steel": 0.18,
+      "sword": 3.601,
+      "wheat": 0.36,
+      "wheel": 0.36,
+      "window": 0.18
+     }
+    },
+    "snowden_american_revolution_1823": {
+     "group": "bible_style_own_time",
+     "words": 66250,
+     "items_present": 14,
+     "share_of_countable": 0.4,
+     "book_items_present": 14,
+     "share_of_book_items": 0.4,
+     "things_present": [
+      "brass",
+      "church",
+      "compass",
+      "horse",
+      "iron",
+      "ox",
+      "sheep",
+      "silk",
+      "swine",
+      "sword",
+      "synagogue",
+      "wheat",
+      "wheel",
+      "window"
+     ],
+     "present": [
+      "horse",
+      "swine",
+      "wheat",
+      "silk",
+      "compass",
+      "window",
+      "iron",
+      "brass",
+      "sword",
+      "church",
+      "synagogue",
+      "sheep",
+      "ox",
+      "wheel"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "brass": 0.302,
+      "church": 0.151,
+      "compass": 0.151,
+      "horse": 1.962,
+      "iron": 1.962,
+      "ox": 0.151,
+      "sheep": 0.453,
+      "silk": 0.151,
+      "swine": 0.453,
+      "sword": 2.415,
+      "synagogue": 0.151,
+      "wheat": 0.151,
+      "wheel": 0.604,
+      "window": 0.151
+     }
+    },
+    "es-1825-view-of-the-hebrews": {
+     "group": "about_antiquity_nonfiction",
+     "words": 105466,
+     "items_present": 18,
+     "share_of_countable": 0.514,
+     "book_items_present": 18,
+     "share_of_book_items": 0.514,
+     "things_present": [
+      "ass",
+      "bee",
+      "brass",
+      "cattle",
+      "chariot",
+      "christ",
+      "church",
+      "compass",
+      "goat",
+      "greek_names",
+      "horse",
+      "iron",
+      "messiah",
+      "ships_of_tarshish",
+      "steel",
+      "sword",
+      "wheel",
+      "window"
+     ],
+     "present": [
+      "horse",
+      "cattle",
+      "goat",
+      "ass",
+      "chariot",
+      "compass",
+      "window",
+      "steel",
+      "iron",
+      "brass",
+      "sword",
+      "christ",
+      "messiah",
+      "greek_names",
+      "church",
+      "ships_of_tarshish",
+      "bee",
+      "wheel"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "ass": 0.284,
+      "bee": 1.517,
+      "brass": 0.19,
+      "cattle": 0.379,
+      "chariot": 0.474,
+      "christ": 6.448,
+      "church": 3.224,
+      "compass": 0.379,
+      "goat": 0.095,
+      "greek_names": 1.233,
+      "horse": 0.759,
+      "iron": 1.327,
+      "messiah": 0.948,
+      "ships_of_tarshish": 0.19,
+      "steel": 0.095,
+      "sword": 3.129,
+      "wheel": 0.095,
+      "window": 0.284
+     }
+    }
+   },
+   "named_control": "ss-manuscript-story-1885",
+   "verdict_named_control": "partly"
+  },
+  "without_memory_items": {
+   "countable_items": 29,
+   "book_items": 29,
+   "books": {
+    "ss-manuscript-story-1885": {
+     "group": "antiquity_story",
+     "words": 42305,
+     "items_present": 9,
+     "share_of_countable": 0.31,
+     "book_items_present": 9,
+     "share_of_book_items": 0.31,
+     "things_present": [
+      "brass",
+      "cattle",
+      "christ",
+      "church",
+      "elephant",
+      "horse",
+      "iron",
+      "sword",
+      "wheat"
+     ],
+     "present": [
+      "horse",
+      "elephant",
+      "cattle",
+      "wheat",
+      "iron",
+      "brass",
+      "sword",
+      "christ",
+      "church"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "brass": 0.236,
+      "cattle": 0.709,
+      "christ": 0.473,
+      "church": 0.946,
+      "elephant": 0.236,
+      "horse": 1.182,
+      "iron": 1.655,
+      "sword": 12.764,
+      "wheat": 0.236
+     }
+    },
+    "mathews_behemoth_1839": {
+     "group": "antiquity_story",
+     "words": 43958,
+     "items_present": 12,
+     "share_of_countable": 0.414,
+     "book_items_present": 12,
+     "share_of_book_items": 0.414,
+     "things_present": [
+      "baptism",
+      "brass",
+      "cattle",
+      "chariot",
+      "cimeter",
+      "elephant",
+      "greek_names",
+      "horse",
+      "iron",
+      "steel",
+      "sword",
+      "window"
+     ],
+     "present": [
+      "horse",
+      "elephant",
+      "cattle",
+      "chariot",
+      "window",
+      "steel",
+      "iron",
+      "brass",
+      "sword",
+      "cimeter",
+      "greek_names",
+      "baptism"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "baptism": 0.227,
+      "brass": 0.91,
+      "cattle": 0.227,
+      "chariot": 1.365,
+      "cimeter": 0.227,
+      "elephant": 5.005,
+      "greek_names": 0.227,
+      "horse": 0.455,
+      "iron": 2.957,
+      "steel": 1.592,
+      "sword": 4.095,
+      "window": 1.137
+     }
+    },
+    "hale_genius_of_oblivion_1823": {
+     "group": "antiquity_story",
+     "words": 18942,
+     "items_present": 7,
+     "share_of_countable": 0.241,
+     "book_items_present": 7,
+     "share_of_book_items": 0.241,
+     "things_present": [
+      "chariot",
+      "compass",
+      "goat",
+      "iron",
+      "steel",
+      "sword",
+      "window"
+     ],
+     "present": [
+      "goat",
+      "chariot",
+      "compass",
+      "window",
+      "steel",
+      "iron",
+      "sword"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "chariot": 0.528,
+      "compass": 0.528,
+      "goat": 0.528,
+      "iron": 1.056,
+      "steel": 2.112,
+      "sword": 2.64,
+      "window": 0.528
+     }
+    },
+    "oconnor_chronicles_of_eri_1822": {
+     "group": "purported_ancient_chronicle",
+     "words": 129193,
+     "items_present": 11,
+     "share_of_countable": 0.379,
+     "book_items_present": 11,
+     "share_of_book_items": 0.379,
+     "things_present": [
+      "ass",
+      "brass",
+      "cattle",
+      "chariot",
+      "christ",
+      "church",
+      "goat",
+      "greek_names",
+      "horse",
+      "iron",
+      "sword"
+     ],
+     "present": [
+      "horse",
+      "cattle",
+      "goat",
+      "ass",
+      "chariot",
+      "iron",
+      "brass",
+      "sword",
+      "christ",
+      "greek_names",
+      "church"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "ass": 0.155,
+      "brass": 0.464,
+      "cattle": 3.174,
+      "chariot": 0.077,
+      "christ": 0.929,
+      "church": 0.155,
+      "goat": 0.077,
+      "greek_names": 0.077,
+      "horse": 4.412,
+      "iron": 0.31,
+      "sword": 4.257
+     }
+    },
+    "ilive_book_of_jasher_1751": {
+     "group": "purported_ancient_chronicle",
+     "words": 38354,
+     "items_present": 11,
+     "share_of_countable": 0.379,
+     "book_items_present": 11,
+     "share_of_book_items": 0.379,
+     "things_present": [
+      "ass",
+      "brass",
+      "cattle",
+      "chariot",
+      "compass",
+      "five_books_of_moses",
+      "goat",
+      "horse",
+      "iron",
+      "sword",
+      "synagogue"
+     ],
+     "present": [
+      "horse",
+      "cattle",
+      "goat",
+      "ass",
+      "chariot",
+      "compass",
+      "iron",
+      "brass",
+      "sword",
+      "synagogue",
+      "five_books_of_moses"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "ass": 0.782,
+      "brass": 2.607,
+      "cattle": 5.997,
+      "chariot": 1.043,
+      "compass": 0.261,
+      "five_books_of_moses": 0.261,
+      "goat": 0.782,
+      "horse": 0.782,
+      "iron": 1.304,
+      "sword": 2.607,
+      "synagogue": 0.782
+     }
+    },
+    "gh-1816-late-war": {
+     "group": "bible_style_own_time",
+     "words": 55534,
+     "items_present": 12,
+     "share_of_countable": 0.414,
+     "book_items_present": 12,
+     "share_of_book_items": 0.414,
+     "things_present": [
+      "ass",
+      "barley",
+      "brass",
+      "cattle",
+      "chariot",
+      "elephant",
+      "horse",
+      "iron",
+      "steel",
+      "sword",
+      "wheat",
+      "window"
+     ],
+     "present": [
+      "horse",
+      "elephant",
+      "cattle",
+      "ass",
+      "barley",
+      "wheat",
+      "chariot",
+      "window",
+      "steel",
+      "iron",
+      "brass",
+      "sword"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "ass": 0.54,
+      "barley": 0.18,
+      "brass": 1.26,
+      "cattle": 0.54,
+      "chariot": 0.18,
+      "elephant": 0.18,
+      "horse": 1.26,
+      "iron": 2.341,
+      "steel": 0.18,
+      "sword": 3.601,
+      "wheat": 0.36,
+      "window": 0.18
+     }
+    },
+    "snowden_american_revolution_1823": {
+     "group": "bible_style_own_time",
+     "words": 66250,
+     "items_present": 11,
+     "share_of_countable": 0.379,
+     "book_items_present": 11,
+     "share_of_book_items": 0.379,
+     "things_present": [
+      "brass",
+      "church",
+      "compass",
+      "horse",
+      "iron",
+      "silk",
+      "swine",
+      "sword",
+      "synagogue",
+      "wheat",
+      "window"
+     ],
+     "present": [
+      "horse",
+      "swine",
+      "wheat",
+      "silk",
+      "compass",
+      "window",
+      "iron",
+      "brass",
+      "sword",
+      "church",
+      "synagogue"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "brass": 0.302,
+      "church": 0.151,
+      "compass": 0.151,
+      "horse": 1.962,
+      "iron": 1.962,
+      "silk": 0.151,
+      "swine": 0.453,
+      "sword": 2.415,
+      "synagogue": 0.151,
+      "wheat": 0.151,
+      "window": 0.151
+     }
+    },
+    "es-1825-view-of-the-hebrews": {
+     "group": "about_antiquity_nonfiction",
+     "words": 105466,
+     "items_present": 16,
+     "share_of_countable": 0.552,
+     "book_items_present": 16,
+     "share_of_book_items": 0.552,
+     "things_present": [
+      "ass",
+      "brass",
+      "cattle",
+      "chariot",
+      "christ",
+      "church",
+      "compass",
+      "goat",
+      "greek_names",
+      "horse",
+      "iron",
+      "messiah",
+      "ships_of_tarshish",
+      "steel",
+      "sword",
+      "window"
+     ],
+     "present": [
+      "horse",
+      "cattle",
+      "goat",
+      "ass",
+      "chariot",
+      "compass",
+      "window",
+      "steel",
+      "iron",
+      "brass",
+      "sword",
+      "christ",
+      "messiah",
+      "greek_names",
+      "church",
+      "ships_of_tarshish"
+     ],
+     "confirmed_items_present": 0,
+     "per_10k": {
+      "ass": 0.284,
+      "brass": 0.19,
+      "cattle": 0.379,
+      "chariot": 0.474,
+      "christ": 6.448,
+      "church": 3.224,
+      "compass": 0.379,
+      "goat": 0.095,
+      "greek_names": 1.233,
+      "horse": 0.759,
+      "iron": 1.327,
+      "messiah": 0.948,
+      "ships_of_tarshish": 0.19,
+      "steel": 0.095,
+      "sword": 3.129,
+      "window": 0.284
+     }
+    }
+   },
+   "named_control": "ss-manuscript-story-1885",
+   "verdict_named_control": "partly"
+  }
+ },
+ "bible": {
+  "kjv_counts": {
+   "kjv_old_testament": {
+    "horse": 138,
+    "cattle": 182,
+    "goat": 126,
+    "swine": 6,
+    "ass": 145,
+    "barley": 34,
+    "wheat": 39,
+    "silk": 3,
+    "chariot": 172,
+    "compass": 10,
+    "window": 44,
+    "dross": 8,
+    "steel": 4,
+    "iron": 94,
+    "brass": 120,
+    "sword": 411,
+    "messiah": 2,
+    "greek_names": 1,
+    "synagogue": 1,
+    "ships_of_tarshish": 7,
+    "satyr": 2,
+    "linen": 86,
+    "sheep": 145,
+    "ox": 156,
+    "bee": 4,
+    "wheel": 48
+   },
+   "kjv_new_testament": {
+    "horse": 16,
+    "cattle": 2,
+    "goat": 6,
+    "swine": 14,
+    "ass": 9,
+    "barley": 3,
+    "wheat": 12,
+    "silk": 1,
+    "chariot": 5,
+    "compass": 1,
+    "window": 2,
+    "iron": 7,
+    "brass": 6,
+    "sword": 37,
+    "christ": 571,
+    "messiah": 2,
+    "greek_names": 23,
+    "church": 114,
+    "synagogue": 68,
+    "baptism": 99,
+    "linen": 18,
+    "sheep": 43,
+    "ox": 10
+   },
+   "kjv_apocrypha": {
+    "horse": 16,
+    "elephant": 13,
+    "cattle": 23,
+    "goat": 3,
+    "swine": 3,
+    "ass": 3,
+    "barley": 1,
+    "wheat": 4,
+    "silk": 2,
+    "chariot": 14,
+    "compass": 3,
+    "window": 3,
+    "dross": 1,
+    "iron": 10,
+    "brass": 15,
+    "sword": 67,
+    "christ": 1,
+    "greek_names": 86,
+    "linen": 3,
+    "sheep": 8,
+    "ox": 3,
+    "bee": 1,
+    "wheel": 1
+   }
+  },
+  "bible_things": [
+   "ass",
+   "baptism",
+   "barley",
+   "bee",
+   "brass",
+   "cattle",
+   "chariot",
+   "christ",
+   "church",
+   "compass",
+   "dross",
+   "goat",
+   "greek_names",
+   "horse",
+   "iron",
+   "linen",
+   "messiah",
+   "ox",
+   "satyr",
+   "sheep",
+   "ships_of_tarshish",
+   "silk",
+   "steel",
+   "swine",
+   "sword",
+   "synagogue",
+   "wheat",
+   "wheel",
+   "window"
+  ],
+  "not_bible_things": [
+   "cement",
+   "cimeter",
+   "elephant",
+   "five_books_of_moses",
+   "isabel",
+   "reformed_egyptian"
+  ],
+  "countable_items": 35,
+  "bible_items": 29,
+  "share_of_countable_items": 0.829,
+  "confirmed_countable_items": 0,
+  "confirmed_that_are_bible_items": 0,
+  "share_of_confirmed_that_are_bible_items": null
+ },
+ "cross_tables": {
+  "confirmed_by_bible_item": {
+   "not_attempted": "Roper's item statuses are not keyed"
+  },
+  "confirmed_or_partial_by_bible_item": {
+   "not_attempted": "Roper's item statuses are not keyed"
+  },
+  "confirmed_by_kind_of_confirmation": {
+   "not_attempted": "no kinds keyed"
+  }
+ },
+ "worlds": {
+  "american": {
+   "texts": 10,
+   "items": {
+    "ass": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.54
+    },
+    "baptism": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.099
+    },
+    "barley": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.18
+    },
+    "bee": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.517
+    },
+    "brass": {
+     "share_of_texts": 0.7,
+     "median_per_10k": 0.192,
+     "max_per_10k": 2.845
+    },
+    "cattle": {
+     "share_of_texts": 0.7,
+     "median_per_10k": 0.46,
+     "max_per_10k": 3.677
+    },
+    "cement": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.056
+    },
+    "chariot": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.185,
+     "max_per_10k": 0.528
+    },
+    "christ": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.31,
+     "max_per_10k": 6.448
+    },
+    "church": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.345,
+     "max_per_10k": 3.224
+    },
+    "cimeter": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "compass": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.632
+    },
+    "dross": {
+     "share_of_texts": 0.1,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.07
+    },
+    "elephant": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.115,
+     "max_per_10k": 0.809
+    },
+    "five_books_of_moses": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "goat": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.142,
+     "max_per_10k": 0.528
+    },
+    "greek_names": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.233
+    },
+    "horse": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 1.192,
+     "max_per_10k": 5.032
+    },
+    "iron": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 1.491,
+     "max_per_10k": 4.742
+    },
+    "isabel": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "linen": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.211
+    },
+    "messiah": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.948
+    },
+    "ox": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.088,
+     "max_per_10k": 0.581
+    },
+    "reformed_egyptian": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "satyr": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "sheep": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.195,
+     "max_per_10k": 0.72
+    },
+    "ships_of_tarshish": {
+     "share_of_texts": 0.1,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.19
+    },
+    "silk": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.493
+    },
+    "steel": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.083,
+     "max_per_10k": 2.112
+    },
+    "swine": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.641
+    },
+    "sword": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 1.382,
+     "max_per_10k": 12.764
+    },
+    "synagogue": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.099
+    },
+    "wheat": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.36
+    },
+    "wheel": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.121,
+     "max_per_10k": 1.056
+    },
+    "window": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.139,
+     "max_per_10k": 0.528
+    }
+   }
+  },
+  "background": {
+   "texts": 150,
+   "items": {
+    "ass": {
+     "share_of_texts": 0.533,
+     "median_per_10k": 0.071,
+     "max_per_10k": 3.138
+    },
+    "baptism": {
+     "share_of_texts": 0.427,
+     "median_per_10k": 0.0,
+     "max_per_10k": 100.22
+    },
+    "barley": {
+     "share_of_texts": 0.28,
+     "median_per_10k": 0.0,
+     "max_per_10k": 9.613
+    },
+    "bee": {
+     "share_of_texts": 0.62,
+     "median_per_10k": 0.121,
+     "max_per_10k": 6.428
+    },
+    "brass": {
+     "share_of_texts": 0.453,
+     "median_per_10k": 0.0,
+     "max_per_10k": 4.026
+    },
+    "cattle": {
+     "share_of_texts": 0.767,
+     "median_per_10k": 0.225,
+     "max_per_10k": 22.215
+    },
+    "cement": {
+     "share_of_texts": 0.253,
+     "median_per_10k": 0.0,
+     "max_per_10k": 5.945
+    },
+    "chariot": {
+     "share_of_texts": 0.387,
+     "median_per_10k": 0.0,
+     "max_per_10k": 8.618
+    },
+    "christ": {
+     "share_of_texts": 0.593,
+     "median_per_10k": 0.165,
+     "max_per_10k": 56.835
+    },
+    "church": {
+     "share_of_texts": 0.88,
+     "median_per_10k": 1.689,
+     "max_per_10k": 67.036
+    },
+    "cimeter": {
+     "share_of_texts": 0.047,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.192
+    },
+    "compass": {
+     "share_of_texts": 0.427,
+     "median_per_10k": 0.0,
+     "max_per_10k": 2.811
+    },
+    "dross": {
+     "share_of_texts": 0.167,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.961
+    },
+    "elephant": {
+     "share_of_texts": 0.24,
+     "median_per_10k": 0.0,
+     "max_per_10k": 2.792
+    },
+    "five_books_of_moses": {
+     "share_of_texts": 0.033,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.149
+    },
+    "goat": {
+     "share_of_texts": 0.44,
+     "median_per_10k": 0.0,
+     "max_per_10k": 5.301
+    },
+    "greek_names": {
+     "share_of_texts": 0.367,
+     "median_per_10k": 0.0,
+     "max_per_10k": 8.102
+    },
+    "horse": {
+     "share_of_texts": 0.873,
+     "median_per_10k": 0.881,
+     "max_per_10k": 11.299
+    },
+    "iron": {
+     "share_of_texts": 0.753,
+     "median_per_10k": 0.273,
+     "max_per_10k": 23.539
+    },
+    "isabel": {
+     "share_of_texts": 0.04,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.733
+    },
+    "linen": {
+     "share_of_texts": 0.52,
+     "median_per_10k": 0.073,
+     "max_per_10k": 7.981
+    },
+    "messiah": {
+     "share_of_texts": 0.207,
+     "median_per_10k": 0.0,
+     "max_per_10k": 46.366
+    },
+    "ox": {
+     "share_of_texts": 0.607,
+     "median_per_10k": 0.108,
+     "max_per_10k": 18.239
+    },
+    "reformed_egyptian": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "satyr": {
+     "share_of_texts": 0.06,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.684
+    },
+    "sheep": {
+     "share_of_texts": 0.68,
+     "median_per_10k": 0.171,
+     "max_per_10k": 31.072
+    },
+    "ships_of_tarshish": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "silk": {
+     "share_of_texts": 0.473,
+     "median_per_10k": 0.0,
+     "max_per_10k": 2.85
+    },
+    "steel": {
+     "share_of_texts": 0.453,
+     "median_per_10k": 0.0,
+     "max_per_10k": 5.983
+    },
+    "swine": {
+     "share_of_texts": 0.267,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.036
+    },
+    "sword": {
+     "share_of_texts": 0.827,
+     "median_per_10k": 0.509,
+     "max_per_10k": 11.111
+    },
+    "synagogue": {
+     "share_of_texts": 0.153,
+     "median_per_10k": 0.0,
+     "max_per_10k": 4.755
+    },
+    "wheat": {
+     "share_of_texts": 0.433,
+     "median_per_10k": 0.0,
+     "max_per_10k": 24.357
+    },
+    "wheel": {
+     "share_of_texts": 0.567,
+     "median_per_10k": 0.089,
+     "max_per_10k": 2.098
+    },
+    "window": {
+     "share_of_texts": 0.727,
+     "median_per_10k": 0.232,
+     "max_per_10k": 6.506
+    }
+   }
+  },
+  "mesoamerica": {
+   "texts": 8,
+   "items": {
+    "ass": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.294
+    },
+    "baptism": {
+     "share_of_texts": 0.625,
+     "median_per_10k": 0.499,
+     "max_per_10k": 10.454
+    },
+    "barley": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.172
+    },
+    "bee": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.063,
+     "max_per_10k": 0.641
+    },
+    "brass": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.125
+    },
+    "cattle": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.041,
+     "max_per_10k": 0.319
+    },
+    "cement": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.02,
+     "max_per_10k": 0.098
+    },
+    "chariot": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.025
+    },
+    "christ": {
+     "share_of_texts": 0.75,
+     "median_per_10k": 0.379,
+     "max_per_10k": 2.089
+    },
+    "church": {
+     "share_of_texts": 0.625,
+     "median_per_10k": 0.577,
+     "max_per_10k": 7.603
+    },
+    "cimeter": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.041
+    },
+    "compass": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.164
+    },
+    "dross": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "elephant": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.613
+    },
+    "five_books_of_moses": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "goat": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.515
+    },
+    "greek_names": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.123
+    },
+    "horse": {
+     "share_of_texts": 0.75,
+     "median_per_10k": 0.99,
+     "max_per_10k": 6.986
+    },
+    "iron": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.98
+    },
+    "isabel": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "linen": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.092
+    },
+    "messiah": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "ox": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.711
+    },
+    "reformed_egyptian": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "satyr": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.172
+    },
+    "sheep": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.76
+    },
+    "ships_of_tarshish": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "silk": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.319
+    },
+    "steel": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.123
+    },
+    "swine": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.084
+    },
+    "sword": {
+     "share_of_texts": 0.75,
+     "median_per_10k": 0.968,
+     "max_per_10k": 2.623
+    },
+    "synagogue": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "wheat": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.042,
+     "max_per_10k": 0.458
+    },
+    "wheel": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.637
+    },
+    "window": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.021,
+     "max_per_10k": 0.492
+    }
+   }
+  },
+  "near_east": {
+   "texts": 5,
+   "items": {
+    "ass": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.498,
+     "max_per_10k": 2.367
+    },
+    "baptism": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 5.477
+    },
+    "barley": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.166,
+     "max_per_10k": 0.555
+    },
+    "bee": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.065,
+     "max_per_10k": 0.073
+    },
+    "brass": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.827,
+     "max_per_10k": 1.959
+    },
+    "cattle": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 1.286,
+     "max_per_10k": 2.971
+    },
+    "cement": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.043
+    },
+    "chariot": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.994,
+     "max_per_10k": 2.808
+    },
+    "christ": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.239,
+     "max_per_10k": 31.587
+    },
+    "church": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 6.306
+    },
+    "cimeter": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "compass": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.163,
+     "max_per_10k": 0.213
+    },
+    "dross": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.131
+    },
+    "elephant": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.17,
+     "max_per_10k": 0.923
+    },
+    "five_books_of_moses": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "goat": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.332,
+     "max_per_10k": 2.057
+    },
+    "greek_names": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 5.702,
+     "max_per_10k": 6.104
+    },
+    "horse": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 1.268,
+     "max_per_10k": 2.253
+    },
+    "iron": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.71,
+     "max_per_10k": 1.535
+    },
+    "isabel": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "linen": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.57,
+     "max_per_10k": 1.404
+    },
+    "messiah": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.043,
+     "max_per_10k": 0.111
+    },
+    "ox": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.553,
+     "max_per_10k": 2.547
+    },
+    "reformed_egyptian": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "satyr": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.033
+    },
+    "sheep": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.568,
+     "max_per_10k": 2.379
+    },
+    "ships_of_tarshish": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.114
+    },
+    "silk": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.049,
+     "max_per_10k": 0.142
+    },
+    "steel": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.065
+    },
+    "swine": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.098,
+     "max_per_10k": 0.774
+    },
+    "sword": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 3.362,
+     "max_per_10k": 6.709
+    },
+    "synagogue": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.129,
+     "max_per_10k": 3.762
+    },
+    "wheat": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.284,
+     "max_per_10k": 0.664
+    },
+    "wheel": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.071,
+     "max_per_10k": 0.784
+    },
+    "window": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.111,
+     "max_per_10k": 0.718
+    }
+   }
+  },
+  "scored_only": {
+   "texts": 5,
+   "items": {
+    "ass": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.245
+    },
+    "baptism": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.227,
+     "max_per_10k": 0.539
+    },
+    "barley": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.147
+    },
+    "bee": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.028,
+     "max_per_10k": 4.798
+    },
+    "brass": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.098,
+     "max_per_10k": 0.91
+    },
+    "cattle": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.496,
+     "max_per_10k": 1.208
+    },
+    "cement": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.055,
+     "max_per_10k": 0.678
+    },
+    "chariot": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.365
+    },
+    "christ": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.193,
+     "max_per_10k": 2.301
+    },
+    "church": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 1.909,
+     "max_per_10k": 14.4
+    },
+    "cimeter": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.227
+    },
+    "compass": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.165,
+     "max_per_10k": 0.441
+    },
+    "dross": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.049
+    },
+    "elephant": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.147,
+     "max_per_10k": 5.005
+    },
+    "five_books_of_moses": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "goat": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.203
+    },
+    "greek_names": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.227
+    },
+    "horse": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 1.424,
+     "max_per_10k": 2.23
+    },
+    "iron": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.385,
+     "max_per_10k": 2.957
+    },
+    "isabel": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.049
+    },
+    "linen": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.227
+    },
+    "messiah": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.049
+    },
+    "ox": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.147,
+     "max_per_10k": 0.678
+    },
+    "reformed_egyptian": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "satyr": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "sheep": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.227,
+     "max_per_10k": 0.392
+    },
+    "ships_of_tarshish": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "silk": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.138
+    },
+    "steel": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.592
+    },
+    "swine": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.392
+    },
+    "sword": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.881,
+     "max_per_10k": 4.095
+    },
+    "synagogue": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "wheat": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.093,
+     "max_per_10k": 0.343
+    },
+    "wheel": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.186,
+     "max_per_10k": 1.137
+    },
+    "window": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.138,
+     "max_per_10k": 1.137
+    }
+   }
+  }
+ },
+ "texts": {
+  "kjv_old_testament": {
+   "world": "near_east",
+   "register": "bible",
+   "words": 612571,
+   "things_present": 26,
+   "counts": {
+    "horse": 138,
+    "cattle": 182,
+    "goat": 126,
+    "swine": 6,
+    "ass": 145,
+    "barley": 34,
+    "wheat": 39,
+    "silk": 3,
+    "chariot": 172,
+    "compass": 10,
+    "window": 44,
+    "dross": 8,
+    "steel": 4,
+    "iron": 94,
+    "brass": 120,
+    "sword": 411,
+    "messiah": 2,
+    "greek_names": 1,
+    "synagogue": 1,
+    "ships_of_tarshish": 7,
+    "satyr": 2,
+    "linen": 86,
+    "sheep": 145,
+    "ox": 156,
+    "bee": 4,
+    "wheel": 48
+   }
+  },
+  "kjv_new_testament": {
+   "world": "near_east",
+   "register": "bible",
+   "words": 180771,
+   "things_present": 23,
+   "counts": {
+    "horse": 16,
+    "cattle": 2,
+    "goat": 6,
+    "swine": 14,
+    "ass": 9,
+    "barley": 3,
+    "wheat": 12,
+    "silk": 1,
+    "chariot": 5,
+    "compass": 1,
+    "window": 2,
+    "iron": 7,
+    "brass": 6,
+    "sword": 37,
+    "christ": 571,
+    "messiah": 2,
+    "greek_names": 23,
+    "church": 114,
+    "synagogue": 68,
+    "baptism": 99,
+    "linen": 18,
+    "sheep": 43,
+    "ox": 10
+   }
+  },
+  "kjv_apocrypha": {
+   "world": "near_east",
+   "register": "bible",
+   "words": 140884,
+   "things_present": 23,
+   "counts": {
+    "horse": 16,
+    "elephant": 13,
+    "cattle": 23,
+    "goat": 3,
+    "swine": 3,
+    "ass": 3,
+    "barley": 1,
+    "wheat": 4,
+    "silk": 2,
+    "chariot": 14,
+    "compass": 3,
+    "window": 3,
+    "dross": 1,
+    "iron": 10,
+    "brass": 15,
+    "sword": 67,
+    "christ": 1,
+    "greek_names": 86,
+    "linen": 3,
+    "sheep": 8,
+    "ox": 3,
+    "bee": 1,
+    "wheel": 1
+   }
+  },
+  "josephus_antiquities_whiston": {
+   "world": "near_east",
+   "register": "josephus",
+   "words": 544274,
+   "things_present": 27,
+   "counts": {
+    "horse": 69,
+    "elephant": 14,
+    "cattle": 70,
+    "goat": 37,
+    "swine": 3,
+    "ass": 31,
+    "barley": 13,
+    "wheat": 14,
+    "chariot": 73,
+    "compass": 9,
+    "window": 2,
+    "iron": 25,
+    "brass": 45,
+    "sword": 67,
+    "christ": 13,
+    "messiah": 6,
+    "greek_names": 315,
+    "church": 9,
+    "synagogue": 7,
+    "ships_of_tarshish": 1,
+    "baptism": 2,
+    "cement": 1,
+    "linen": 31,
+    "sheep": 23,
+    "ox": 39,
+    "bee": 4,
+    "wheel": 3
+   }
+  },
+  "josephus_wars_whiston": {
+   "world": "near_east",
+   "register": "josephus",
+   "words": 234992,
+   "things_present": 23,
+   "counts": {
+    "horse": 46,
+    "elephant": 4,
+    "cattle": 9,
+    "swine": 1,
+    "ass": 2,
+    "barley": 2,
+    "wheat": 2,
+    "chariot": 1,
+    "compass": 2,
+    "window": 1,
+    "iron": 21,
+    "brass": 7,
+    "sword": 79,
+    "christ": 7,
+    "messiah": 1,
+    "greek_names": 134,
+    "synagogue": 6,
+    "cement": 1,
+    "linen": 6,
+    "sheep": 3,
+    "ox": 5,
+    "bee": 1,
+    "wheel": 2
+   }
+  },
+  "brinton_maya_chronicles_and_rig_veda": {
+   "world": "mesoamerica",
+   "register": "native",
+   "words": 10522,
+   "things_present": 4,
+   "counts": {
+    "horse": 1,
+    "christ": 1,
+    "church": 8,
+    "baptism": 11
+   }
+  },
+  "brinton_annals_cakchiquels_1885": {
+   "world": "mesoamerica",
+   "register": "native",
+   "words": 19432,
+   "things_present": 2,
+   "counts": {
+    "horse": 2,
+    "sword": 2
+   }
+  },
+  "brinton_nahuatl_poetry_1887": {
+   "world": "mesoamerica",
+   "register": "native",
+   "words": 9573,
+   "things_present": 2,
+   "counts": {
+    "sword": 1,
+    "christ": 2
+   }
+  },
+  "popol_vuh_spence_1908": {
+   "world": "mesoamerica",
+   "register": "native",
+   "words": 12827,
+   "things_present": 0,
+   "counts": {}
+  },
+  "popol_vuh_christenson": {
+   "world": "mesoamerica",
+   "register": "native",
+   "words": 109219,
+   "things_present": 11,
+   "counts": {
+    "horse": 3,
+    "cattle": 1,
+    "wheat": 5,
+    "window": 2,
+    "sword": 2,
+    "christ": 12,
+    "church": 12,
+    "baptism": 8,
+    "cement": 1,
+    "linen": 1,
+    "bee": 7
+   }
+  },
+  "bernal_diaz_keatinge_1800": {
+   "world": "mesoamerica",
+   "register": "chronicle",
+   "words": 239048,
+   "things_present": 21,
+   "counts": {
+    "horse": 167,
+    "elephant": 1,
+    "cattle": 4,
+    "goat": 2,
+    "swine": 2,
+    "wheat": 2,
+    "silk": 4,
+    "compass": 1,
+    "window": 1,
+    "iron": 13,
+    "brass": 3,
+    "sword": 58,
+    "christ": 14,
+    "greek_names": 1,
+    "church": 51,
+    "baptism": 16,
+    "cement": 1,
+    "sheep": 2,
+    "ox": 1,
+    "bee": 3,
+    "wheel": 2
+   }
+  },
+  "solis_conquest_of_mexico_1724": {
+   "world": "mesoamerica",
+   "register": "chronicle",
+   "words": 244003,
+   "things_present": 20,
+   "counts": {
+    "horse": 109,
+    "cattle": 2,
+    "ass": 3,
+    "wheat": 4,
+    "silk": 1,
+    "compass": 4,
+    "window": 12,
+    "steel": 1,
+    "iron": 11,
+    "brass": 1,
+    "sword": 64,
+    "cimeter": 1,
+    "christ": 1,
+    "church": 15,
+    "baptism": 13,
+    "cement": 1,
+    "sheep": 1,
+    "ox": 4,
+    "bee": 6,
+    "wheel": 3
+   }
+  },
+  "cusick_1827": {
+   "world": "american",
+   "register": "antiquities",
+   "words": 13663,
+   "things_present": 0,
+   "counts": {}
+  },
+  "priest_american_antiquities_1833": {
+   "world": "american",
+   "register": "antiquities",
+   "words": 158158,
+   "things_present": 21,
+   "counts": {
+    "horse": 19,
+    "elephant": 12,
+    "cattle": 2,
+    "goat": 3,
+    "silk": 1,
+    "chariot": 3,
+    "compass": 10,
+    "window": 7,
+    "steel": 17,
+    "iron": 75,
+    "brass": 45,
+    "sword": 26,
+    "christ": 73,
+    "messiah": 9,
+    "greek_names": 3,
+    "church": 5,
+    "cement": 5,
+    "linen": 3,
+    "sheep": 5,
+    "ox": 8,
+    "wheel": 3
+   }
+  },
+  "priest_wonders_1826": {
+   "world": "american",
+   "register": "antiquities",
+   "words": 284442,
+   "things_present": 28,
+   "counts": {
+    "horse": 130,
+    "elephant": 23,
+    "cattle": 26,
+    "goat": 15,
+    "swine": 1,
+    "ass": 13,
+    "barley": 2,
+    "wheat": 3,
+    "silk": 2,
+    "chariot": 9,
+    "compass": 9,
+    "window": 13,
+    "dross": 2,
+    "steel": 2,
+    "iron": 75,
+    "brass": 5,
+    "sword": 27,
+    "christ": 110,
+    "greek_names": 8,
+    "church": 72,
+    "synagogue": 1,
+    "baptism": 2,
+    "cement": 1,
+    "linen": 6,
+    "sheep": 6,
+    "ox": 5,
+    "bee": 5,
+    "wheel": 8
+   }
+  },
+  "clinton_discourse_and_western_new_york": {
+   "world": "american",
+   "register": "antiquities",
+   "words": 26807,
+   "things_present": 7,
+   "counts": {
+    "horse": 2,
+    "elephant": 1,
+    "goat": 1,
+    "swine": 1,
+    "iron": 7,
+    "sword": 3,
+    "church": 1
+   }
+  },
+  "adair_american_indians_1775": {
+   "world": "american",
+   "register": "antiquities",
+   "words": 202895,
+   "things_present": 27,
+   "counts": {
+    "horse": 101,
+    "elephant": 1,
+    "cattle": 23,
+    "goat": 5,
+    "swine": 13,
+    "ass": 3,
+    "barley": 2,
+    "wheat": 2,
+    "silk": 10,
+    "chariot": 6,
+    "window": 2,
+    "steel": 2,
+    "iron": 9,
+    "brass": 8,
+    "sword": 8,
+    "christ": 3,
+    "messiah": 3,
+    "greek_names": 5,
+    "church": 12,
+    "synagogue": 2,
+    "baptism": 2,
+    "cement": 2,
+    "linen": 1,
+    "sheep": 4,
+    "ox": 5,
+    "bee": 5,
+    "wheel": 3
+   }
+  },
+  "seaver_jemison_1826": {
+   "world": "american",
+   "register": "narrative",
+   "words": 51674,
+   "things_present": 6,
+   "counts": {
+    "horse": 26,
+    "cattle": 19,
+    "brass": 1,
+    "christ": 3,
+    "sheep": 1,
+    "ox": 3
+   }
+  },
+  "hale_genius_of_oblivion_1823": {
+   "world": "american",
+   "register": "narrative",
+   "words": 18942,
+   "things_present": 9,
+   "counts": {
+    "goat": 1,
+    "chariot": 1,
+    "compass": 1,
+    "window": 1,
+    "steel": 4,
+    "iron": 2,
+    "sword": 5,
+    "cement": 2,
+    "wheel": 2
+   }
+  },
+  "ss-manuscript-story-1885": {
+   "world": "american",
+   "register": "narrative",
+   "words": 42305,
+   "things_present": 10,
+   "counts": {
+    "horse": 5,
+    "elephant": 1,
+    "cattle": 3,
+    "wheat": 1,
+    "iron": 7,
+    "brass": 1,
+    "sword": 54,
+    "christ": 2,
+    "church": 4,
+    "sheep": 1
+   }
+  },
+  "gh-1816-late-war": {
+   "world": "american",
+   "register": "narrative",
+   "words": 55534,
+   "things_present": 16,
+   "counts": {
+    "horse": 7,
+    "elephant": 1,
+    "cattle": 3,
+    "ass": 3,
+    "barley": 1,
+    "wheat": 2,
+    "chariot": 1,
+    "window": 1,
+    "steel": 1,
+    "iron": 13,
+    "brass": 7,
+    "sword": 20,
+    "linen": 1,
+    "sheep": 4,
+    "ox": 1,
+    "wheel": 2
+   }
+  },
+  "es-1825-view-of-the-hebrews": {
+   "world": "american",
+   "register": "antiquities",
+   "words": 105466,
+   "things_present": 18,
+   "counts": {
+    "horse": 8,
+    "cattle": 4,
+    "goat": 1,
+    "ass": 3,
+    "chariot": 5,
+    "compass": 4,
+    "window": 3,
+    "steel": 1,
+    "iron": 14,
+    "brass": 2,
+    "sword": 33,
+    "christ": 68,
+    "messiah": 10,
+    "greek_names": 13,
+    "church": 34,
+    "ships_of_tarshish": 2,
+    "bee": 16,
+    "wheel": 1
+   }
+  },
+  "robertson_history_of_america": {
+   "world": "scored_only",
+   "register": "extra",
+   "words": 363215,
+   "things_present": 17,
+   "counts": {
+    "horse": 50,
+    "elephant": 4,
+    "cattle": 18,
+    "wheat": 1,
+    "silk": 5,
+    "compass": 6,
+    "window": 5,
+    "iron": 14,
+    "sword": 32,
+    "christ": 7,
+    "church": 95,
+    "baptism": 8,
+    "cement": 2,
+    "sheep": 5,
+    "ox": 2,
+    "bee": 1,
+    "wheel": 2
+   }
+  },
+  "humboldt_researches_1814": {
+   "world": "scored_only",
+   "register": "extra",
+   "words": 147472,
+   "things_present": 20,
+   "counts": {
+    "horse": 21,
+    "elephant": 11,
+    "cattle": 1,
+    "goat": 3,
+    "swine": 1,
+    "ass": 1,
+    "wheat": 2,
+    "window": 5,
+    "steel": 2,
+    "iron": 6,
+    "brass": 7,
+    "sword": 1,
+    "christ": 2,
+    "church": 4,
+    "baptism": 7,
+    "cement": 10,
+    "sheep": 5,
+    "ox": 10,
+    "bee": 1,
+    "wheel": 8
+   }
+  },
+  "acosta_natural_moral_history": {
+   "world": "scored_only",
+   "register": "extra",
+   "words": 204243,
+   "things_present": 25,
+   "counts": {
+    "horse": 37,
+    "elephant": 3,
+    "cattle": 14,
+    "goat": 2,
+    "swine": 8,
+    "ass": 5,
+    "barley": 3,
+    "wheat": 7,
+    "silk": 1,
+    "chariot": 1,
+    "compass": 9,
+    "window": 2,
+    "dross": 1,
+    "iron": 5,
+    "brass": 2,
+    "sword": 11,
+    "christ": 47,
+    "messiah": 1,
+    "church": 39,
+    "isabel": 1,
+    "baptism": 11,
+    "sheep": 8,
+    "ox": 3,
+    "bee": 98,
+    "wheel": 1
+   }
+  },
+  "drake_indian_biography_1832": {
+   "world": "scored_only",
+   "register": "extra",
+   "words": 107639,
+   "things_present": 13,
+   "counts": {
+    "horse": 24,
+    "cattle": 13,
+    "wheat": 1,
+    "compass": 2,
+    "brass": 1,
+    "sword": 20,
+    "christ": 5,
+    "greek_names": 1,
+    "church": 155,
+    "baptism": 1,
+    "cement": 1,
+    "sheep": 1,
+    "wheel": 2
+   }
+  },
+  "mathews_behemoth_1839": {
+   "world": "scored_only",
+   "register": "extra",
+   "words": 43958,
+   "things_present": 16,
+   "counts": {
+    "horse": 2,
+    "elephant": 22,
+    "cattle": 1,
+    "chariot": 6,
+    "window": 5,
+    "steel": 7,
+    "iron": 13,
+    "brass": 4,
+    "sword": 18,
+    "cimeter": 1,
+    "greek_names": 1,
+    "baptism": 1,
+    "linen": 1,
+    "sheep": 1,
+    "ox": 2,
+    "wheel": 5
+   }
+  },
+  "clavigero_history_of_mexico_1787": {
+   "world": "mesoamerica",
+   "register": "chronicle",
+   "words": 408122,
+   "things_present": 25,
+   "counts": {
+    "horse": 110,
+    "elephant": 25,
+    "cattle": 13,
+    "goat": 21,
+    "ass": 12,
+    "barley": 7,
+    "wheat": 17,
+    "silk": 13,
+    "chariot": 1,
+    "compass": 1,
+    "window": 8,
+    "steel": 5,
+    "iron": 40,
+    "sword": 37,
+    "christ": 7,
+    "greek_names": 5,
+    "church": 22,
+    "satyr": 7,
+    "baptism": 19,
+    "cement": 4,
+    "linen": 3,
+    "sheep": 31,
+    "ox": 29,
+    "bee": 20,
+    "wheel": 26
+   }
+  }
+ },
+ "config_sha256": "878c379ffed278f9ade30b3c621d852b74764b37b454fe26defdd741f80447d6",
+ "commit": "841465fcb746015ebd0ab152e7a6a53d9128384d"
+}

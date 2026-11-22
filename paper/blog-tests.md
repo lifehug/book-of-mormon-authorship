@@ -101,7 +101,7 @@ compares against.
 | BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | **Done** |
 | BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | **Done** |
 | BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; control queued**; BOM-109 not started |
-| BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | TBD |
+| BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | **Counts done; reading step queued** |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
 | BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions | **Check failed; not scored** |
@@ -1189,6 +1189,58 @@ we know were written in the 1800s: *View of the Hebrews*, Spalding's manuscript,
 War*. If those "match the Maya" 60 or 80 times as well, the checklist measures how easy it is
 to match, not who wrote the book. 947 questions are prepared for that, starting with the Book
 of Mormon itself to see whether the reader reproduces the Dales' own judgments.
+
+### The anachronism tally (BOM-113)
+
+Matthew Roper's 2025 study lists every thing critics have called out of place in the Book of
+Mormon since 1830: horses, steel, wheat, silk, chariots, and 220 more. He reports that 174 of
+226 have since been confirmed, 31 partly, and 21 not, and that the trend has run the book's way.
+
+I keyed his list from the nine published chapters. The first thing to say is small but should
+be said: I count 227 items in his headings, not 226, with 175 confirmed, and his own charts do
+not agree with each other (the chart for 2024 has 213 labels; three items sit in both the
+confirmed and unconfirmed columns for 1965). I changed nothing to make it fit. It does not
+alter the picture.
+
+My guess going in was that "confirmed" would mostly mean "is in the Bible". A sword is easy to
+confirm. That guess was wrong.
+
+| | Confirmed by his count | Not confirmed |
+| --- | --- | --- |
+| Item is named in the King James Bible | 86 | 21 |
+| Item is not | 26 | 11 |
+
+77 percent against 70. That difference is what chance gives. Being biblical does not explain
+his confirmations.
+
+What his own headings do show is where the confirmations are thin. For 40 items the heading
+says what kind of evidence he means. Those he ties to the New World are confirmed less often
+than the rest: 2 of 6 that he places "in Book of Mormon times" and 20 of 34 where he gives no
+period, against about four in five overall. Eight more are confirmed by reading the word as
+something else (the "horse" that may be a tapir or deer). For the other 168 the kind is not in
+the heading, and those go to a reader.
+
+The control the tally has never had: how would a book known to be from the 1800s do? I could
+count 144 of his items as words.
+
+| Book | Share of his items that appear in it |
+| --- | --- |
+| *View of the Hebrews* (1825) | 58% |
+| Mathews, *Behemoth* (1839, mound builders) | 58% |
+| *The Late War* (Bible style, War of 1812) | 48% |
+| *Chronicles of Eri* (1822) | 44% |
+| *Book of Jasher* (1751) | 42% |
+| Spalding's manuscript | 38% |
+
+So a nineteenth-century book set in antiquity uses 40 to 60 percent of the same things, and so
+does a Bible-style book about 1812. That is only words in a text. Whether those books' horses
+and steel would count as "confirmed" by the standard Roper applies is a judgment about
+evidence, and that is the step still to run: 448 questions, starting with twelve whose answers
+are not in doubt.
+
+What I take from it so far: his list is real and mostly holds as a list, my easy explanation
+for it failed, and the comparison that would say what a 77 percent confirmation rate means has
+not been made by anyone yet.
 
 ## What I would want a reader to take from the whole set
 

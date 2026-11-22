@@ -1,0 +1,7310 @@
+{
+ "list": "roper",
+ "settings": {
+  "items": "data/lab/setting/anachronisms/items.json",
+  "items_standin": "data/lab/setting/anachronisms/items_standin.json",
+  "present_min": 1,
+  "bible_min": 1,
+  "seed": 20261121,
+  "planted_per_item": 5,
+  "bar_planted": 1.0,
+  "documented_present": {
+   "kjv_old_testament": {
+    "horse": 10,
+    "chariot": 10
+   }
+  },
+  "maize_forms": [
+   "maize",
+   "maiz",
+   "mahiz",
+   "indian corn"
+  ],
+  "maize_min": 1,
+  "new_world_probes": [
+   "maize",
+   "cacao",
+   "tobacco",
+   "potato",
+   "tomato",
+   "llama",
+   "jaguar",
+   "tapir",
+   "chocolate"
+  ],
+  "control_share_bar": 0.5,
+  "control_share_low": 0.25,
+  "named_control": "ss-manuscript-story-1885",
+  "alpha": 0.05,
+  "controls": {
+   "antiquity_story": {
+    "ss-manuscript-story-1885": "candidates:ss-manuscript-story-1885.txt",
+    "mathews_behemoth_1839": "setting:behemothlegend00mathrich",
+    "hale_genius_of_oblivion_1823": "setting:geniusofoblivion00hale"
+   },
+   "purported_ancient_chronicle": {
+    "oconnor_chronicles_of_eri_1822": "bible_style:chroniclesoferib02ocon",
+    "ilive_book_of_jasher_1751": "bible_style:bib_fict_4103140"
+   },
+   "bible_style_own_time": {
+    "gh-1816-late-war": "candidates:gh-1816-late-war.txt",
+    "snowden_american_revolution_1823": "bible_style:americanrevoluti00snow"
+   },
+   "about_antiquity_nonfiction": {
+    "es-1825-view-of-the-hebrews": "candidates:es-1825-view-of-the-hebrews.txt"
+   }
+  },
+  "judged_groups": [
+   "antiquity_story",
+   "purported_ancient_chronicle"
+  ],
+  "settings_claimed": {
+   "book_of_mormon": "the Americas, about 2500 BCE to 421 CE (main narrative 600 BCE to 421 CE)",
+   "ss-manuscript-story-1885": "eastern North America, in the time of the Roman emperor Constantine (4th century CE)",
+   "mathews_behemoth_1839": "the Ohio and Mississippi valleys among the mound-builders, before European contact",
+   "hale_genius_of_oblivion_1823": "ancient America, settled from the ancient Mediterranean (from memory; check against the poem)",
+   "oconnor_chronicles_of_eri_1822": "ancient Scythia, Iberia and Ireland, about 1000 BCE",
+   "ilive_book_of_jasher_1751": "the ancient Near East of the Patriarchs and Moses"
+  },
+  "window_words": 60,
+  "windows_per_item": 2,
+  "judge_model": "sonnet",
+  "judge_bar": 0.9,
+  "recode_scale": [
+   "mesoamerica_in_period",
+   "americas_other_time_or_place",
+   "old_world_only",
+   "not_attested"
+  ]
+ },
+ "items_sha256": "e41adb26c0c7b98bc96411e9379432b3b1cc8ae48dbc79cd790c648440a224bb",
+ "known_answer": {
+  "planted": {
+   "things": 113,
+   "per_item": 5,
+   "recovered_share": 1.0,
+   "misses": {},
+   "passed": true
+  },
+  "documented_present": {
+   "kjv_old_testament/horse": {
+    "need": 10,
+    "got": 138,
+    "passed": true
+   },
+   "kjv_old_testament/chariot": {
+    "need": 10,
+    "got": 172,
+    "passed": true
+   }
+  },
+  "maize_in_mesoamerican_native_texts": {
+   "texts": [
+    "brinton_maya_chronicles_and_rig_veda",
+    "brinton_annals_cakchiquels_1885",
+    "brinton_nahuatl_poetry_1887",
+    "popol_vuh_spence_1908",
+    "popol_vuh_christenson"
+   ],
+   "got": 168,
+   "need": 1,
+   "passed": true
+  },
+  "new_world_probes_in_kjv": {
+   "counts": {
+    "kjv_old_testament": {},
+    "kjv_new_testament": {},
+    "kjv_apocrypha": {}
+   },
+   "passed": true
+  },
+  "passed": true
+ },
+ "not_attempted": [],
+ "book_of_mormon": {
+  "all_text": {
+   "words": 265197,
+   "counts": {
+    "horse": 14,
+    "ass": 6,
+    "cow": 5,
+    "ox": 6,
+    "cattle": 7,
+    "goat": 6,
+    "sheep": 26,
+    "flock_herd": 107,
+    "elephant": 2,
+    "swine": 2,
+    "bee": 3,
+    "lion": 13,
+    "moth": 5,
+    "dragon": 4,
+    "chicken": 8,
+    "dog": 5,
+    "serpent": 15,
+    "fortification": 16,
+    "armor": 8,
+    "sword": 156,
+    "scimitar": 11,
+    "dagger": 1,
+    "ax": 4,
+    "javelin": 3,
+    "spear": 2,
+    "arrow": 26,
+    "quiver": 2,
+    "fiery_dart": 1,
+    "sling": 13,
+    "shield": 13,
+    "headplate": 7,
+    "breastplate": 11,
+    "army": 287,
+    "trumpet": 2,
+    "cord": 16,
+    "ladder": 2,
+    "tent": 64,
+    "steel": 5,
+    "brass": 37,
+    "iron": 18,
+    "ore": 12,
+    "furnace": 5,
+    "copper": 8,
+    "chain": 16,
+    "jew": 87,
+    "temple": 30,
+    "synagogue": 26,
+    "city": 385,
+    "king": 547,
+    "palace": 3,
+    "prison": 75,
+    "barn": 1,
+    "glass": 1,
+    "cement": 4,
+    "chariot": 7,
+    "pearl": 2,
+    "silk": 6,
+    "linen": 9,
+    "grain": 28,
+    "wheat": 2,
+    "barley": 4,
+    "corn": 3,
+    "grape": 5,
+    "wine": 41,
+    "salt": 4,
+    "highway": 7,
+    "road": 5,
+    "leprosy": 1,
+    "machinery": 1,
+    "plow": 2,
+    "sickle": 1,
+    "building": 26,
+    "lawyer": 18,
+    "judge": 259,
+    "land_of_jerusalem": 40,
+    "wild_honey": 1,
+    "timber": 5,
+    "bellows": 2,
+    "plate": 153,
+    "reformed_egyptian": 1,
+    "tempest": 14,
+    "whirlwind": 8,
+    "earthquake": 4,
+    "darkness": 88,
+    "sam": 10,
+    "josh": 2,
+    "gid": 17,
+    "giddianhi": 12,
+    "gadianton": 27,
+    "sheum": 1,
+    "neas": 1,
+    "ziff": 2,
+    "onidah": 2,
+    "com": 14,
+    "kim": 5,
+    "nephi": 471,
+    "alma": 252,
+    "moroni": 216,
+    "mormon": 41,
+    "deseret": 1,
+    "liahona": 1,
+    "irreantum": 1,
+    "shazer": 2,
+    "jarom": 3,
+    "jonas": 2,
+    "timothy": 1,
+    "zarahemla": 149,
+    "zeniff": 11,
+    "omni": 2,
+    "mosiah": 78,
+    "helaman": 74,
+    "ether": 19,
+    "rameumptom": 1
+   },
+   "per_10k": {
+    "alma": 9.502,
+    "armor": 0.302,
+    "army": 10.822,
+    "arrow": 0.98,
+    "ass": 0.226,
+    "ax": 0.151,
+    "barley": 0.151,
+    "barn": 0.038,
+    "bee": 0.113,
+    "bellows": 0.075,
+    "brass": 1.395,
+    "breastplate": 0.415,
+    "building": 0.98,
+    "cattle": 0.264,
+    "cement": 0.151,
+    "chain": 0.603,
+    "chariot": 0.264,
+    "chicken": 0.302,
+    "city": 14.518,
+    "com": 0.528,
+    "copper": 0.302,
+    "cord": 0.603,
+    "corn": 0.113,
+    "cow": 0.189,
+    "dagger": 0.038,
+    "darkness": 3.318,
+    "deseret": 0.038,
+    "dog": 0.189,
+    "dragon": 0.151,
+    "earthquake": 0.151,
+    "elephant": 0.075,
+    "ether": 0.716,
+    "fiery_dart": 0.038,
+    "flock_herd": 4.035,
+    "fortification": 0.603,
+    "furnace": 0.189,
+    "gadianton": 1.018,
+    "gid": 0.641,
+    "giddianhi": 0.452,
+    "glass": 0.038,
+    "goat": 0.226,
+    "grain": 1.056,
+    "grape": 0.189,
+    "headplate": 0.264,
+    "helaman": 2.79,
+    "highway": 0.264,
+    "horse": 0.528,
+    "iron": 0.679,
+    "irreantum": 0.038,
+    "jarom": 0.113,
+    "javelin": 0.113,
+    "jew": 3.281,
+    "jonas": 0.075,
+    "josh": 0.075,
+    "judge": 9.766,
+    "kim": 0.189,
+    "king": 20.626,
+    "ladder": 0.075,
+    "land_of_jerusalem": 1.508,
+    "lawyer": 0.679,
+    "leprosy": 0.038,
+    "liahona": 0.038,
+    "linen": 0.339,
+    "lion": 0.49,
+    "machinery": 0.038,
+    "mormon": 1.546,
+    "moroni": 8.145,
+    "mosiah": 2.941,
+    "moth": 0.189,
+    "neas": 0.038,
+    "nephi": 17.76,
+    "omni": 0.075,
+    "onidah": 0.075,
+    "ore": 0.452,
+    "ox": 0.226,
+    "palace": 0.113,
+    "pearl": 0.075,
+    "plate": 5.769,
+    "plow": 0.075,
+    "prison": 2.828,
+    "quiver": 0.075,
+    "rameumptom": 0.038,
+    "reformed_egyptian": 0.038,
+    "road": 0.189,
+    "salt": 0.151,
+    "sam": 0.377,
+    "scimitar": 0.415,
+    "serpent": 0.566,
+    "shazer": 0.075,
+    "sheep": 0.98,
+    "sheum": 0.038,
+    "shield": 0.49,
+    "sickle": 0.038,
+    "silk": 0.226,
+    "sling": 0.49,
+    "spear": 0.075,
+    "steel": 0.189,
+    "swine": 0.075,
+    "sword": 5.882,
+    "synagogue": 0.98,
+    "tempest": 0.528,
+    "temple": 1.131,
+    "tent": 2.413,
+    "timber": 0.189,
+    "timothy": 0.038,
+    "trumpet": 0.075,
+    "wheat": 0.075,
+    "whirlwind": 0.302,
+    "wild_honey": 0.038,
+    "wine": 1.546,
+    "zarahemla": 5.618,
+    "zeniff": 0.415,
+    "ziff": 0.075
+   },
+   "items_present": 144,
+   "things_present": 113,
+   "present": [
+    "roper_001",
+    "roper_002",
+    "roper_003",
+    "roper_004",
+    "roper_005",
+    "roper_006",
+    "roper_007",
+    "roper_008",
+    "roper_009",
+    "roper_010",
+    "roper_011",
+    "roper_012",
+    "roper_013",
+    "roper_014",
+    "roper_015",
+    "roper_016",
+    "roper_017",
+    "roper_018",
+    "roper_019",
+    "roper_020",
+    "roper_021",
+    "roper_022",
+    "roper_024",
+    "roper_025",
+    "roper_026",
+    "roper_027",
+    "roper_028",
+    "roper_029",
+    "roper_032",
+    "roper_033",
+    "roper_034",
+    "roper_035",
+    "roper_036",
+    "roper_037",
+    "roper_038",
+    "roper_039",
+    "roper_040",
+    "roper_041",
+    "roper_042",
+    "roper_043",
+    "roper_044",
+    "roper_045",
+    "roper_046",
+    "roper_047",
+    "roper_048",
+    "roper_049",
+    "roper_050",
+    "roper_051",
+    "roper_052",
+    "roper_053",
+    "roper_054",
+    "roper_062",
+    "roper_063",
+    "roper_064",
+    "roper_065",
+    "roper_068",
+    "roper_069",
+    "roper_071",
+    "roper_072",
+    "roper_073",
+    "roper_074",
+    "roper_075",
+    "roper_076",
+    "roper_077",
+    "roper_078",
+    "roper_082",
+    "roper_083",
+    "roper_084",
+    "roper_091",
+    "roper_093",
+    "roper_094",
+    "roper_097",
+    "roper_099",
+    "roper_100",
+    "roper_101",
+    "roper_102",
+    "roper_103",
+    "roper_104",
+    "roper_108",
+    "roper_110",
+    "roper_111",
+    "roper_112",
+    "roper_113",
+    "roper_114",
+    "roper_115",
+    "roper_116",
+    "roper_117",
+    "roper_118",
+    "roper_119",
+    "roper_120",
+    "roper_121",
+    "roper_122",
+    "roper_123",
+    "roper_124",
+    "roper_125",
+    "roper_131",
+    "roper_132",
+    "roper_133",
+    "roper_136",
+    "roper_137",
+    "roper_138",
+    "roper_139",
+    "roper_140",
+    "roper_141",
+    "roper_142",
+    "roper_144",
+    "roper_145",
+    "roper_146",
+    "roper_148",
+    "roper_149",
+    "roper_150",
+    "roper_151",
+    "roper_152",
+    "roper_153",
+    "roper_154",
+    "roper_155",
+    "roper_156",
+    "roper_157",
+    "roper_158",
+    "roper_159",
+    "roper_160",
+    "roper_161",
+    "roper_162",
+    "roper_165",
+    "roper_166",
+    "roper_167",
+    "roper_168",
+    "roper_169",
+    "roper_170",
+    "roper_172",
+    "roper_185",
+    "roper_186",
+    "roper_187",
+    "roper_188",
+    "roper_196",
+    "roper_199",
+    "roper_202",
+    "roper_214",
+    "roper_216",
+    "roper_217",
+    "roper_218",
+    "roper_220",
+    "roper_221",
+    "roper_222"
+   ]
+  },
+  "without_quoted_chapters": {
+   "words": 244458,
+   "counts": {
+    "horse": 12,
+    "ass": 6,
+    "cow": 3,
+    "ox": 4,
+    "cattle": 6,
+    "goat": 6,
+    "sheep": 20,
+    "flock_herd": 107,
+    "elephant": 2,
+    "swine": 1,
+    "bee": 2,
+    "lion": 9,
+    "moth": 1,
+    "dragon": 2,
+    "chicken": 8,
+    "dog": 4,
+    "serpent": 11,
+    "fortification": 16,
+    "armor": 8,
+    "sword": 149,
+    "scimitar": 11,
+    "dagger": 1,
+    "ax": 3,
+    "javelin": 3,
+    "spear": 1,
+    "arrow": 24,
+    "quiver": 1,
+    "fiery_dart": 1,
+    "sling": 13,
+    "shield": 13,
+    "headplate": 7,
+    "breastplate": 11,
+    "army": 287,
+    "trumpet": 1,
+    "cord": 14,
+    "ladder": 2,
+    "tent": 62,
+    "steel": 5,
+    "brass": 35,
+    "iron": 16,
+    "ore": 12,
+    "furnace": 4,
+    "copper": 8,
+    "chain": 15,
+    "jew": 87,
+    "temple": 27,
+    "synagogue": 24,
+    "city": 374,
+    "king": 525,
+    "palace": 2,
+    "prison": 72,
+    "glass": 1,
+    "cement": 4,
+    "chariot": 6,
+    "pearl": 1,
+    "silk": 6,
+    "linen": 8,
+    "grain": 28,
+    "wheat": 2,
+    "barley": 4,
+    "corn": 3,
+    "wine": 34,
+    "salt": 1,
+    "highway": 4,
+    "road": 5,
+    "leprosy": 1,
+    "machinery": 1,
+    "plow": 1,
+    "sickle": 1,
+    "building": 26,
+    "lawyer": 18,
+    "judge": 250,
+    "land_of_jerusalem": 40,
+    "wild_honey": 1,
+    "timber": 5,
+    "bellows": 2,
+    "plate": 152,
+    "reformed_egyptian": 1,
+    "tempest": 12,
+    "whirlwind": 7,
+    "earthquake": 3,
+    "darkness": 77,
+    "sam": 10,
+    "josh": 2,
+    "gid": 17,
+    "giddianhi": 12,
+    "gadianton": 27,
+    "sheum": 1,
+    "neas": 1,
+    "ziff": 2,
+    "onidah": 2,
+    "com": 14,
+    "kim": 5,
+    "nephi": 458,
+    "alma": 252,
+    "moroni": 216,
+    "mormon": 41,
+    "deseret": 1,
+    "liahona": 1,
+    "irreantum": 1,
+    "shazer": 2,
+    "jarom": 3,
+    "jonas": 2,
+    "timothy": 1,
+    "zarahemla": 149,
+    "zeniff": 11,
+    "omni": 2,
+    "mosiah": 78,
+    "helaman": 74,
+    "ether": 19,
+    "rameumptom": 1
+   },
+   "per_10k": {
+    "alma": 10.309,
+    "armor": 0.327,
+    "army": 11.74,
+    "arrow": 0.982,
+    "ass": 0.245,
+    "ax": 0.123,
+    "barley": 0.164,
+    "bee": 0.082,
+    "bellows": 0.082,
+    "brass": 1.432,
+    "breastplate": 0.45,
+    "building": 1.064,
+    "cattle": 0.245,
+    "cement": 0.164,
+    "chain": 0.614,
+    "chariot": 0.245,
+    "chicken": 0.327,
+    "city": 15.299,
+    "com": 0.573,
+    "copper": 0.327,
+    "cord": 0.573,
+    "corn": 0.123,
+    "cow": 0.123,
+    "dagger": 0.041,
+    "darkness": 3.15,
+    "deseret": 0.041,
+    "dog": 0.164,
+    "dragon": 0.082,
+    "earthquake": 0.123,
+    "elephant": 0.082,
+    "ether": 0.777,
+    "fiery_dart": 0.041,
+    "flock_herd": 4.377,
+    "fortification": 0.655,
+    "furnace": 0.164,
+    "gadianton": 1.104,
+    "gid": 0.695,
+    "giddianhi": 0.491,
+    "glass": 0.041,
+    "goat": 0.245,
+    "grain": 1.145,
+    "headplate": 0.286,
+    "helaman": 3.027,
+    "highway": 0.164,
+    "horse": 0.491,
+    "iron": 0.655,
+    "irreantum": 0.041,
+    "jarom": 0.123,
+    "javelin": 0.123,
+    "jew": 3.559,
+    "jonas": 0.082,
+    "josh": 0.082,
+    "judge": 10.227,
+    "kim": 0.205,
+    "king": 21.476,
+    "ladder": 0.082,
+    "land_of_jerusalem": 1.636,
+    "lawyer": 0.736,
+    "leprosy": 0.041,
+    "liahona": 0.041,
+    "linen": 0.327,
+    "lion": 0.368,
+    "machinery": 0.041,
+    "mormon": 1.677,
+    "moroni": 8.836,
+    "mosiah": 3.191,
+    "moth": 0.041,
+    "neas": 0.041,
+    "nephi": 18.735,
+    "omni": 0.082,
+    "onidah": 0.082,
+    "ore": 0.491,
+    "ox": 0.164,
+    "palace": 0.082,
+    "pearl": 0.041,
+    "plate": 6.218,
+    "plow": 0.041,
+    "prison": 2.945,
+    "quiver": 0.041,
+    "rameumptom": 0.041,
+    "reformed_egyptian": 0.041,
+    "road": 0.205,
+    "salt": 0.041,
+    "sam": 0.409,
+    "scimitar": 0.45,
+    "serpent": 0.45,
+    "shazer": 0.082,
+    "sheep": 0.818,
+    "sheum": 0.041,
+    "shield": 0.532,
+    "sickle": 0.041,
+    "silk": 0.245,
+    "sling": 0.532,
+    "spear": 0.041,
+    "steel": 0.205,
+    "swine": 0.041,
+    "sword": 6.095,
+    "synagogue": 0.982,
+    "tempest": 0.491,
+    "temple": 1.104,
+    "tent": 2.536,
+    "timber": 0.205,
+    "timothy": 0.041,
+    "trumpet": 0.041,
+    "wheat": 0.082,
+    "whirlwind": 0.286,
+    "wild_honey": 0.041,
+    "wine": 1.391,
+    "zarahemla": 6.095,
+    "zeniff": 0.45,
+    "ziff": 0.082
+   },
+   "items_present": 142,
+   "things_present": 111,
+   "present": [
+    "roper_001",
+    "roper_002",
+    "roper_003",
+    "roper_004",
+    "roper_005",
+    "roper_006",
+    "roper_007",
+    "roper_008",
+    "roper_009",
+    "roper_010",
+    "roper_011",
+    "roper_012",
+    "roper_013",
+    "roper_014",
+    "roper_015",
+    "roper_016",
+    "roper_017",
+    "roper_018",
+    "roper_019",
+    "roper_020",
+    "roper_021",
+    "roper_022",
+    "roper_024",
+    "roper_025",
+    "roper_026",
+    "roper_027",
+    "roper_028",
+    "roper_029",
+    "roper_032",
+    "roper_033",
+    "roper_034",
+    "roper_035",
+    "roper_036",
+    "roper_037",
+    "roper_038",
+    "roper_039",
+    "roper_040",
+    "roper_041",
+    "roper_042",
+    "roper_043",
+    "roper_044",
+    "roper_045",
+    "roper_046",
+    "roper_047",
+    "roper_048",
+    "roper_049",
+    "roper_050",
+    "roper_051",
+    "roper_052",
+    "roper_053",
+    "roper_054",
+    "roper_062",
+    "roper_063",
+    "roper_064",
+    "roper_065",
+    "roper_068",
+    "roper_069",
+    "roper_071",
+    "roper_072",
+    "roper_073",
+    "roper_074",
+    "roper_075",
+    "roper_076",
+    "roper_077",
+    "roper_078",
+    "roper_082",
+    "roper_083",
+    "roper_084",
+    "roper_091",
+    "roper_093",
+    "roper_094",
+    "roper_097",
+    "roper_099",
+    "roper_100",
+    "roper_101",
+    "roper_102",
+    "roper_104",
+    "roper_108",
+    "roper_110",
+    "roper_111",
+    "roper_112",
+    "roper_113",
+    "roper_114",
+    "roper_115",
+    "roper_116",
+    "roper_117",
+    "roper_119",
+    "roper_120",
+    "roper_121",
+    "roper_122",
+    "roper_123",
+    "roper_124",
+    "roper_125",
+    "roper_131",
+    "roper_132",
+    "roper_133",
+    "roper_136",
+    "roper_137",
+    "roper_138",
+    "roper_139",
+    "roper_140",
+    "roper_141",
+    "roper_142",
+    "roper_144",
+    "roper_145",
+    "roper_146",
+    "roper_148",
+    "roper_149",
+    "roper_150",
+    "roper_151",
+    "roper_152",
+    "roper_153",
+    "roper_154",
+    "roper_155",
+    "roper_156",
+    "roper_157",
+    "roper_158",
+    "roper_159",
+    "roper_160",
+    "roper_161",
+    "roper_162",
+    "roper_165",
+    "roper_166",
+    "roper_167",
+    "roper_168",
+    "roper_169",
+    "roper_170",
+    "roper_172",
+    "roper_185",
+    "roper_186",
+    "roper_187",
+    "roper_188",
+    "roper_196",
+    "roper_199",
+    "roper_202",
+    "roper_214",
+    "roper_216",
+    "roper_217",
+    "roper_218",
+    "roper_220",
+    "roper_221",
+    "roper_222"
+   ]
+  }
+ },
+ "controls": {
+  "all_items": {
+   "countable_items": 144,
+   "book_items": 144,
+   "books": {
+    "ss-manuscript-story-1885": {
+     "group": "antiquity_story",
+     "words": 42305,
+     "items_present": 55,
+     "share_of_countable": 0.382,
+     "book_items_present": 55,
+     "share_of_book_items": 0.382,
+     "things_present": [
+      "army",
+      "arrow",
+      "ax",
+      "brass",
+      "building",
+      "chain",
+      "city",
+      "com",
+      "copper",
+      "corn",
+      "cow",
+      "dagger",
+      "darkness",
+      "dog",
+      "earthquake",
+      "elephant",
+      "flock_herd",
+      "fortification",
+      "furnace",
+      "horse",
+      "iron",
+      "judge",
+      "king",
+      "mormon",
+      "ore",
+      "palace",
+      "road",
+      "serpent",
+      "sheep",
+      "spear",
+      "sword",
+      "temple",
+      "tent",
+      "timber",
+      "trumpet",
+      "wheat",
+      "wine"
+     ],
+     "present": [
+      "roper_001",
+      "roper_002",
+      "roper_003",
+      "roper_004",
+      "roper_008",
+      "roper_009",
+      "roper_015",
+      "roper_016",
+      "roper_017",
+      "roper_018",
+      "roper_019",
+      "roper_027",
+      "roper_028",
+      "roper_029",
+      "roper_033",
+      "roper_034",
+      "roper_039",
+      "roper_040",
+      "roper_042",
+      "roper_043",
+      "roper_053",
+      "roper_054",
+      "roper_062",
+      "roper_065",
+      "roper_069",
+      "roper_071",
+      "roper_072",
+      "roper_073",
+      "roper_074",
+      "roper_075",
+      "roper_077",
+      "roper_078",
+      "roper_082",
+      "roper_083",
+      "roper_091",
+      "roper_097",
+      "roper_099",
+      "roper_100",
+      "roper_101",
+      "roper_115",
+      "roper_117",
+      "roper_119",
+      "roper_122",
+      "roper_125",
+      "roper_133",
+      "roper_137",
+      "roper_150",
+      "roper_155",
+      "roper_186",
+      "roper_187",
+      "roper_217",
+      "roper_218",
+      "roper_220",
+      "roper_221",
+      "roper_222"
+     ],
+     "confirmed_items_present": 46,
+     "per_10k": {
+      "army": 22.22,
+      "arrow": 1.655,
+      "ax": 0.236,
+      "brass": 0.236,
+      "building": 1.182,
+      "chain": 0.473,
+      "city": 15.601,
+      "com": 3.309,
+      "copper": 0.236,
+      "corn": 1.182,
+      "cow": 0.709,
+      "dagger": 0.236,
+      "darkness": 1.891,
+      "dog": 2.127,
+      "earthquake": 0.473,
+      "elephant": 0.236,
+      "flock_herd": 0.236,
+      "fortification": 10.637,
+      "furnace": 0.473,
+      "horse": 1.182,
+      "iron": 1.655,
+      "judge": 1.182,
+      "king": 16.783,
+      "mormon": 5.437,
+      "ore": 0.236,
+      "palace": 1.418,
+      "road": 0.946,
+      "serpent": 0.473,
+      "sheep": 0.236,
+      "spear": 3.309,
+      "sword": 12.764,
+      "temple": 0.236,
+      "tent": 0.236,
+      "timber": 1.655,
+      "trumpet": 0.236,
+      "wheat": 0.236,
+      "wine": 0.473
+     }
+    },
+    "mathews_behemoth_1839": {
+     "group": "antiquity_story",
+     "words": 43958,
+     "items_present": 83,
+     "share_of_countable": 0.576,
+     "book_items_present": 83,
+     "share_of_book_items": 0.576,
+     "things_present": [
+      "armor",
+      "army",
+      "arrow",
+      "ax",
+      "brass",
+      "breastplate",
+      "building",
+      "cattle",
+      "chain",
+      "chariot",
+      "city",
+      "com",
+      "copper",
+      "corn",
+      "dagger",
+      "darkness",
+      "dog",
+      "earthquake",
+      "elephant",
+      "flock_herd",
+      "fortification",
+      "furnace",
+      "glass",
+      "grain",
+      "horse",
+      "iron",
+      "judge",
+      "king",
+      "ladder",
+      "linen",
+      "lion",
+      "machinery",
+      "moth",
+      "ore",
+      "ox",
+      "palace",
+      "plate",
+      "plow",
+      "prison",
+      "quiver",
+      "road",
+      "salt",
+      "scimitar",
+      "serpent",
+      "sheep",
+      "shield",
+      "sickle",
+      "spear",
+      "steel",
+      "sword",
+      "tempest",
+      "temple",
+      "tent",
+      "timber",
+      "timothy",
+      "trumpet",
+      "whirlwind"
+     ],
+     "present": [
+      "roper_001",
+      "roper_002",
+      "roper_003",
+      "roper_004",
+      "roper_010",
+      "roper_011",
+      "roper_012",
+      "roper_015",
+      "roper_016",
+      "roper_017",
+      "roper_018",
+      "roper_019",
+      "roper_022",
+      "roper_024",
+      "roper_027",
+      "roper_028",
+      "roper_029",
+      "roper_032",
+      "roper_033",
+      "roper_034",
+      "roper_035",
+      "roper_036",
+      "roper_037",
+      "roper_038",
+      "roper_039",
+      "roper_040",
+      "roper_042",
+      "roper_043",
+      "roper_044",
+      "roper_045",
+      "roper_048",
+      "roper_049",
+      "roper_051",
+      "roper_052",
+      "roper_053",
+      "roper_054",
+      "roper_062",
+      "roper_064",
+      "roper_065",
+      "roper_068",
+      "roper_069",
+      "roper_071",
+      "roper_072",
+      "roper_073",
+      "roper_074",
+      "roper_075",
+      "roper_076",
+      "roper_077",
+      "roper_078",
+      "roper_082",
+      "roper_083",
+      "roper_091",
+      "roper_097",
+      "roper_099",
+      "roper_100",
+      "roper_101",
+      "roper_102",
+      "roper_104",
+      "roper_110",
+      "roper_113",
+      "roper_114",
+      "roper_117",
+      "roper_120",
+      "roper_122",
+      "roper_124",
+      "roper_125",
+      "roper_131",
+      "roper_132",
+      "roper_133",
+      "roper_137",
+      "roper_150",
+      "roper_162",
+      "roper_186",
+      "roper_187",
+      "roper_196",
+      "roper_199",
+      "roper_214",
+      "roper_216",
+      "roper_217",
+      "roper_218",
+      "roper_220",
+      "roper_221",
+      "roper_222"
+     ],
+     "confirmed_items_present": 68,
+     "per_10k": {
+      "armor": 0.91,
+      "army": 3.64,
+      "arrow": 1.137,
+      "ax": 0.455,
+      "brass": 0.91,
+      "breastplate": 0.227,
+      "building": 1.137,
+      "cattle": 0.227,
+      "chain": 1.137,
+      "chariot": 1.365,
+      "city": 3.185,
+      "com": 1.82,
+      "copper": 4.55,
+      "corn": 0.455,
+      "dagger": 0.227,
+      "darkness": 2.047,
+      "dog": 0.91,
+      "earthquake": 0.455,
+      "elephant": 5.005,
+      "flock_herd": 1.365,
+      "fortification": 8.19,
+      "furnace": 1.137,
+      "glass": 0.682,
+      "grain": 0.227,
+      "horse": 0.455,
+      "iron": 2.957,
+      "judge": 0.227,
+      "king": 0.682,
+      "ladder": 0.227,
+      "linen": 0.227,
+      "lion": 0.227,
+      "machinery": 0.455,
+      "moth": 2.047,
+      "ore": 0.682,
+      "ox": 0.455,
+      "palace": 0.227,
+      "plate": 2.502,
+      "plow": 0.227,
+      "prison": 0.682,
+      "quiver": 0.455,
+      "road": 1.137,
+      "salt": 0.227,
+      "scimitar": 0.227,
+      "serpent": 0.682,
+      "sheep": 0.227,
+      "shield": 1.365,
+      "sickle": 0.227,
+      "spear": 0.682,
+      "steel": 1.592,
+      "sword": 4.095,
+      "tempest": 0.91,
+      "temple": 0.682,
+      "tent": 0.227,
+      "timber": 0.682,
+      "timothy": 0.227,
+      "trumpet": 1.82,
+      "whirlwind": 0.682
+     }
+    },
+    "hale_genius_of_oblivion_1823": {
+     "group": "antiquity_story",
+     "words": 18942,
+     "items_present": 44,
+     "share_of_countable": 0.306,
+     "book_items_present": 44,
+     "share_of_book_items": 0.306,
+     "things_present": [
+      "armor",
+      "arrow",
+      "building",
+      "cement",
+      "chain",
+      "chariot",
+      "chicken",
+      "city",
+      "copper",
+      "darkness",
+      "earthquake",
+      "ether",
+      "flock_herd",
+      "fortification",
+      "glass",
+      "goat",
+      "iron",
+      "javelin",
+      "judge",
+      "king",
+      "leprosy",
+      "lion",
+      "palace",
+      "shield",
+      "sling",
+      "steel",
+      "sword",
+      "tempest",
+      "temple",
+      "whirlwind"
+     ],
+     "present": [
+      "roper_013",
+      "roper_014",
+      "roper_016",
+      "roper_022",
+      "roper_026",
+      "roper_029",
+      "roper_032",
+      "roper_033",
+      "roper_034",
+      "roper_035",
+      "roper_036",
+      "roper_041",
+      "roper_043",
+      "roper_045",
+      "roper_047",
+      "roper_048",
+      "roper_049",
+      "roper_068",
+      "roper_072",
+      "roper_073",
+      "roper_074",
+      "roper_075",
+      "roper_076",
+      "roper_082",
+      "roper_083",
+      "roper_091",
+      "roper_097",
+      "roper_099",
+      "roper_100",
+      "roper_101",
+      "roper_104",
+      "roper_108",
+      "roper_110",
+      "roper_123",
+      "roper_133",
+      "roper_137",
+      "roper_170",
+      "roper_214",
+      "roper_216",
+      "roper_217",
+      "roper_218",
+      "roper_220",
+      "roper_221",
+      "roper_222"
+     ],
+     "confirmed_items_present": 35,
+     "per_10k": {
+      "armor": 0.528,
+      "arrow": 1.584,
+      "building": 0.528,
+      "cement": 1.056,
+      "chain": 3.168,
+      "chariot": 0.528,
+      "chicken": 0.528,
+      "city": 8.447,
+      "copper": 0.528,
+      "darkness": 2.64,
+      "earthquake": 0.528,
+      "ether": 0.528,
+      "flock_herd": 0.528,
+      "fortification": 10.559,
+      "glass": 0.528,
+      "goat": 0.528,
+      "iron": 1.056,
+      "javelin": 0.528,
+      "judge": 1.584,
+      "king": 4.751,
+      "leprosy": 0.528,
+      "lion": 0.528,
+      "palace": 1.584,
+      "shield": 0.528,
+      "sling": 0.528,
+      "steel": 2.112,
+      "sword": 2.64,
+      "tempest": 3.168,
+      "temple": 2.112,
+      "whirlwind": 1.584
+     }
+    },
+    "oconnor_chronicles_of_eri_1822": {
+     "group": "purported_ancient_chronicle",
+     "words": 129193,
+     "items_present": 64,
+     "share_of_countable": 0.444,
+     "book_items_present": 64,
+     "share_of_book_items": 0.444,
+     "things_present": [
+      "army",
+      "arrow",
+      "ass",
+      "ax",
+      "bee",
+      "brass",
+      "building",
+      "cattle",
+      "chain",
+      "chariot",
+      "chicken",
+      "city",
+      "com",
+      "copper",
+      "cord",
+      "cow",
+      "darkness",
+      "dog",
+      "flock_herd",
+      "goat",
+      "horse",
+      "iron",
+      "judge",
+      "king",
+      "lion",
+      "neas",
+      "ore",
+      "palace",
+      "plate",
+      "quiver",
+      "road",
+      "salt",
+      "serpent",
+      "sheep",
+      "shield",
+      "sling",
+      "spear",
+      "sword",
+      "tempest",
+      "temple",
+      "tent",
+      "timber",
+      "whirlwind",
+      "wine"
+     ],
+     "present": [
+      "roper_001",
+      "roper_002",
+      "roper_003",
+      "roper_004",
+      "roper_005",
+      "roper_006",
+      "roper_007",
+      "roper_008",
+      "roper_009",
+      "roper_012",
+      "roper_013",
+      "roper_014",
+      "roper_015",
+      "roper_016",
+      "roper_021",
+      "roper_022",
+      "roper_026",
+      "roper_027",
+      "roper_028",
+      "roper_033",
+      "roper_034",
+      "roper_040",
+      "roper_042",
+      "roper_043",
+      "roper_044",
+      "roper_047",
+      "roper_048",
+      "roper_049",
+      "roper_053",
+      "roper_054",
+      "roper_063",
+      "roper_065",
+      "roper_069",
+      "roper_071",
+      "roper_072",
+      "roper_073",
+      "roper_074",
+      "roper_075",
+      "roper_077",
+      "roper_082",
+      "roper_083",
+      "roper_091",
+      "roper_097",
+      "roper_099",
+      "roper_100",
+      "roper_101",
+      "roper_110",
+      "roper_119",
+      "roper_120",
+      "roper_122",
+      "roper_125",
+      "roper_133",
+      "roper_137",
+      "roper_145",
+      "roper_150",
+      "roper_186",
+      "roper_187",
+      "roper_196",
+      "roper_199",
+      "roper_214",
+      "roper_216",
+      "roper_220",
+      "roper_221",
+      "roper_222"
+     ],
+     "confirmed_items_present": 52,
+     "per_10k": {
+      "army": 0.077,
+      "arrow": 0.619,
+      "ass": 0.155,
+      "ax": 0.155,
+      "bee": 0.155,
+      "brass": 0.464,
+      "building": 0.929,
+      "cattle": 2.4,
+      "chain": 0.077,
+      "chariot": 0.077,
+      "chicken": 0.31,
+      "city": 0.31,
+      "com": 0.077,
+      "copper": 0.077,
+      "cord": 0.155,
+      "cow": 0.774,
+      "darkness": 0.851,
+      "dog": 1.238,
+      "flock_herd": 1.316,
+      "goat": 0.077,
+      "horse": 4.412,
+      "iron": 0.31,
+      "judge": 8.979,
+      "king": 78.565,
+      "lion": 0.155,
+      "neas": 0.077,
+      "ore": 0.077,
+      "palace": 0.232,
+      "plate": 0.464,
+      "quiver": 0.155,
+      "road": 0.077,
+      "salt": 0.387,
+      "serpent": 0.232,
+      "sheep": 0.464,
+      "shield": 2.322,
+      "sling": 0.542,
+      "spear": 1.006,
+      "sword": 4.257,
+      "tempest": 0.077,
+      "temple": 0.155,
+      "tent": 17.571,
+      "timber": 0.155,
+      "whirlwind": 0.077,
+      "wine": 0.077
+     }
+    },
+    "ilive_book_of_jasher_1751": {
+     "group": "purported_ancient_chronicle",
+     "words": 38354,
+     "items_present": 60,
+     "share_of_countable": 0.417,
+     "book_items_present": 60,
+     "share_of_book_items": 0.417,
+     "things_present": [
+      "army",
+      "arrow",
+      "ass",
+      "ax",
+      "brass",
+      "breastplate",
+      "building",
+      "cattle",
+      "chain",
+      "chariot",
+      "chicken",
+      "city",
+      "corn",
+      "darkness",
+      "ether",
+      "flock_herd",
+      "goat",
+      "grain",
+      "horse",
+      "iron",
+      "javelin",
+      "jew",
+      "judge",
+      "king",
+      "leprosy",
+      "linen",
+      "lion",
+      "moth",
+      "ox",
+      "plate",
+      "plow",
+      "road",
+      "salt",
+      "sam",
+      "serpent",
+      "sheep",
+      "sword",
+      "synagogue",
+      "tent",
+      "trumpet",
+      "wine"
+     ],
+     "present": [
+      "roper_001",
+      "roper_002",
+      "roper_003",
+      "roper_004",
+      "roper_005",
+      "roper_006",
+      "roper_007",
+      "roper_010",
+      "roper_011",
+      "roper_012",
+      "roper_013",
+      "roper_014",
+      "roper_015",
+      "roper_016",
+      "roper_022",
+      "roper_024",
+      "roper_026",
+      "roper_028",
+      "roper_033",
+      "roper_034",
+      "roper_040",
+      "roper_041",
+      "roper_043",
+      "roper_051",
+      "roper_052",
+      "roper_053",
+      "roper_054",
+      "roper_062",
+      "roper_065",
+      "roper_069",
+      "roper_071",
+      "roper_072",
+      "roper_073",
+      "roper_074",
+      "roper_075",
+      "roper_083",
+      "roper_084",
+      "roper_093",
+      "roper_094",
+      "roper_097",
+      "roper_100",
+      "roper_110",
+      "roper_113",
+      "roper_114",
+      "roper_117",
+      "roper_119",
+      "roper_120",
+      "roper_122",
+      "roper_123",
+      "roper_125",
+      "roper_131",
+      "roper_133",
+      "roper_137",
+      "roper_138",
+      "roper_170",
+      "roper_196",
+      "roper_199",
+      "roper_220",
+      "roper_221",
+      "roper_222"
+     ],
+     "confirmed_items_present": 48,
+     "per_10k": {
+      "army": 1.564,
+      "arrow": 0.782,
+      "ass": 0.782,
+      "ax": 0.782,
+      "brass": 2.607,
+      "breastplate": 0.261,
+      "building": 0.261,
+      "cattle": 5.997,
+      "chain": 0.261,
+      "chariot": 1.043,
+      "chicken": 0.261,
+      "city": 17.469,
+      "corn": 2.086,
+      "darkness": 0.782,
+      "ether": 0.261,
+      "flock_herd": 15.122,
+      "goat": 0.782,
+      "grain": 0.782,
+      "horse": 0.782,
+      "iron": 1.304,
+      "javelin": 0.521,
+      "jew": 0.261,
+      "judge": 5.215,
+      "king": 20.858,
+      "leprosy": 0.521,
+      "linen": 0.521,
+      "lion": 0.521,
+      "moth": 0.261,
+      "ox": 2.086,
+      "plate": 0.261,
+      "plow": 0.261,
+      "road": 0.261,
+      "salt": 0.782,
+      "sam": 0.261,
+      "serpent": 1.825,
+      "sheep": 3.389,
+      "sword": 2.607,
+      "synagogue": 0.782,
+      "tent": 3.129,
+      "trumpet": 4.693,
+      "wine": 0.782
+     }
+    },
+    "gh-1816-late-war": {
+     "group": "bible_style_own_time",
+     "words": 55534,
+     "items_present": 69,
+     "share_of_countable": 0.479,
+     "book_items_present": 69,
+     "share_of_book_items": 0.479,
+     "things_present": [
+      "army",
+      "arrow",
+      "ass",
+      "barley",
+      "brass",
+      "building",
+      "cattle",
+      "chariot",
+      "city",
+      "com",
+      "corn",
+      "darkness",
+      "dog",
+      "dragon",
+      "earthquake",
+      "elephant",
+      "flock_herd",
+      "fortification",
+      "furnace",
+      "glass",
+      "horse",
+      "iron",
+      "judge",
+      "king",
+      "ladder",
+      "linen",
+      "lion",
+      "ox",
+      "palace",
+      "plate",
+      "plow",
+      "road",
+      "salt",
+      "sheep",
+      "shield",
+      "sling",
+      "spear",
+      "steel",
+      "sword",
+      "temple",
+      "tent",
+      "trumpet",
+      "wheat",
+      "whirlwind",
+      "wine"
+     ],
+     "present": [
+      "roper_001",
+      "roper_002",
+      "roper_003",
+      "roper_004",
+      "roper_005",
+      "roper_006",
+      "roper_007",
+      "roper_010",
+      "roper_011",
+      "roper_012",
+      "roper_015",
+      "roper_016",
+      "roper_017",
+      "roper_018",
+      "roper_019",
+      "roper_022",
+      "roper_025",
+      "roper_027",
+      "roper_029",
+      "roper_033",
+      "roper_034",
+      "roper_035",
+      "roper_036",
+      "roper_042",
+      "roper_043",
+      "roper_045",
+      "roper_047",
+      "roper_048",
+      "roper_049",
+      "roper_053",
+      "roper_054",
+      "roper_062",
+      "roper_064",
+      "roper_065",
+      "roper_068",
+      "roper_069",
+      "roper_071",
+      "roper_072",
+      "roper_073",
+      "roper_074",
+      "roper_075",
+      "roper_076",
+      "roper_078",
+      "roper_091",
+      "roper_097",
+      "roper_099",
+      "roper_100",
+      "roper_101",
+      "roper_104",
+      "roper_110",
+      "roper_113",
+      "roper_115",
+      "roper_116",
+      "roper_117",
+      "roper_119",
+      "roper_120",
+      "roper_122",
+      "roper_131",
+      "roper_133",
+      "roper_137",
+      "roper_150",
+      "roper_196",
+      "roper_199",
+      "roper_216",
+      "roper_217",
+      "roper_218",
+      "roper_220",
+      "roper_221",
+      "roper_222"
+     ],
+     "confirmed_items_present": 54,
+     "per_10k": {
+      "army": 30.432,
+      "arrow": 0.18,
+      "ass": 0.54,
+      "barley": 0.18,
+      "brass": 1.26,
+      "building": 0.18,
+      "cattle": 0.54,
+      "chariot": 0.18,
+      "city": 11.705,
+      "com": 3.061,
+      "corn": 0.36,
+      "darkness": 0.72,
+      "dog": 0.72,
+      "dragon": 0.18,
+      "earthquake": 0.54,
+      "elephant": 0.18,
+      "flock_herd": 0.18,
+      "fortification": 14.946,
+      "furnace": 0.9,
+      "glass": 0.18,
+      "horse": 1.26,
+      "iron": 2.341,
+      "judge": 0.36,
+      "king": 53.661,
+      "ladder": 0.18,
+      "linen": 0.18,
+      "lion": 2.341,
+      "ox": 0.18,
+      "palace": 0.36,
+      "plate": 0.18,
+      "plow": 0.18,
+      "road": 0.18,
+      "salt": 0.18,
+      "sheep": 0.72,
+      "shield": 0.18,
+      "sling": 0.18,
+      "spear": 0.18,
+      "steel": 0.18,
+      "sword": 3.601,
+      "temple": 0.72,
+      "tent": 1.621,
+      "trumpet": 0.72,
+      "wheat": 0.36,
+      "whirlwind": 0.18,
+      "wine": 1.621
+     }
+    },
+    "snowden_american_revolution_1823": {
+     "group": "bible_style_own_time",
+     "words": 66250,
+     "items_present": 56,
+     "share_of_countable": 0.389,
+     "book_items_present": 56,
+     "share_of_book_items": 0.389,
+     "things_present": [
+      "armor",
+      "army",
+      "arrow",
+      "ax",
+      "bellows",
+      "brass",
+      "building",
+      "chain",
+      "chicken",
+      "city",
+      "com",
+      "corn",
+      "dog",
+      "flock_herd",
+      "fortification",
+      "furnace",
+      "highway",
+      "horse",
+      "iron",
+      "jew",
+      "judge",
+      "king",
+      "lion",
+      "ore",
+      "ox",
+      "palace",
+      "plow",
+      "serpent",
+      "sheep",
+      "sickle",
+      "silk",
+      "spear",
+      "swine",
+      "sword",
+      "synagogue",
+      "tempest",
+      "temple",
+      "tent",
+      "timber",
+      "trumpet",
+      "wheat",
+      "wine"
+     ],
+     "present": [
+      "roper_001",
+      "roper_002",
+      "roper_003",
+      "roper_004",
+      "roper_010",
+      "roper_011",
+      "roper_015",
+      "roper_016",
+      "roper_020",
+      "roper_022",
+      "roper_026",
+      "roper_027",
+      "roper_028",
+      "roper_029",
+      "roper_032",
+      "roper_033",
+      "roper_034",
+      "roper_040",
+      "roper_042",
+      "roper_043",
+      "roper_053",
+      "roper_054",
+      "roper_062",
+      "roper_065",
+      "roper_069",
+      "roper_071",
+      "roper_072",
+      "roper_073",
+      "roper_074",
+      "roper_075",
+      "roper_077",
+      "roper_078",
+      "roper_083",
+      "roper_084",
+      "roper_091",
+      "roper_093",
+      "roper_094",
+      "roper_097",
+      "roper_099",
+      "roper_100",
+      "roper_101",
+      "roper_112",
+      "roper_115",
+      "roper_117",
+      "roper_119",
+      "roper_121",
+      "roper_125",
+      "roper_131",
+      "roper_132",
+      "roper_133",
+      "roper_137",
+      "roper_150",
+      "roper_186",
+      "roper_187",
+      "roper_188",
+      "roper_214"
+     ],
+     "confirmed_items_present": 48,
+     "per_10k": {
+      "armor": 0.755,
+      "army": 29.585,
+      "arrow": 0.151,
+      "ax": 0.151,
+      "bellows": 0.151,
+      "brass": 0.302,
+      "building": 0.604,
+      "chain": 0.453,
+      "chicken": 2.868,
+      "city": 13.283,
+      "com": 0.453,
+      "corn": 1.208,
+      "dog": 0.604,
+      "flock_herd": 2.566,
+      "fortification": 4.981,
+      "furnace": 0.755,
+      "highway": 1.208,
+      "horse": 1.962,
+      "iron": 1.962,
+      "jew": 0.151,
+      "judge": 0.453,
+      "king": 60.679,
+      "lion": 1.208,
+      "ore": 0.604,
+      "ox": 0.151,
+      "palace": 0.151,
+      "plow": 0.302,
+      "serpent": 0.151,
+      "sheep": 0.453,
+      "sickle": 0.151,
+      "silk": 0.151,
+      "spear": 0.604,
+      "swine": 0.453,
+      "sword": 2.415,
+      "synagogue": 0.151,
+      "tempest": 0.151,
+      "temple": 0.151,
+      "tent": 2.415,
+      "timber": 0.151,
+      "trumpet": 0.453,
+      "wheat": 0.151,
+      "wine": 0.453
+     }
+    },
+    "es-1825-view-of-the-hebrews": {
+     "group": "about_antiquity_nonfiction",
+     "words": 105466,
+     "items_present": 83,
+     "share_of_countable": 0.576,
+     "book_items_present": 83,
+     "share_of_book_items": 0.576,
+     "things_present": [
+      "army",
+      "arrow",
+      "ass",
+      "ax",
+      "bee",
+      "brass",
+      "breastplate",
+      "building",
+      "cattle",
+      "chain",
+      "chariot",
+      "chicken",
+      "city",
+      "com",
+      "copper",
+      "corn",
+      "cow",
+      "dagger",
+      "darkness",
+      "dog",
+      "dragon",
+      "earthquake",
+      "ether",
+      "flock_herd",
+      "fortification",
+      "furnace",
+      "glass",
+      "goat",
+      "grain",
+      "grape",
+      "highway",
+      "horse",
+      "iron",
+      "jew",
+      "josh",
+      "judge",
+      "king",
+      "leprosy",
+      "lion",
+      "ore",
+      "palace",
+      "plate",
+      "plow",
+      "prison",
+      "road",
+      "sam",
+      "serpent",
+      "shield",
+      "spear",
+      "steel",
+      "sword",
+      "tempest",
+      "temple",
+      "tent",
+      "trumpet",
+      "whirlwind",
+      "wine"
+     ],
+     "present": [
+      "roper_001",
+      "roper_002",
+      "roper_003",
+      "roper_004",
+      "roper_005",
+      "roper_006",
+      "roper_007",
+      "roper_008",
+      "roper_009",
+      "roper_012",
+      "roper_013",
+      "roper_014",
+      "roper_016",
+      "roper_021",
+      "roper_022",
+      "roper_025",
+      "roper_026",
+      "roper_027",
+      "roper_028",
+      "roper_029",
+      "roper_033",
+      "roper_034",
+      "roper_035",
+      "roper_036",
+      "roper_039",
+      "roper_040",
+      "roper_042",
+      "roper_043",
+      "roper_045",
+      "roper_048",
+      "roper_049",
+      "roper_051",
+      "roper_052",
+      "roper_053",
+      "roper_054",
+      "roper_062",
+      "roper_065",
+      "roper_068",
+      "roper_069",
+      "roper_071",
+      "roper_072",
+      "roper_073",
+      "roper_074",
+      "roper_075",
+      "roper_076",
+      "roper_077",
+      "roper_078",
+      "roper_082",
+      "roper_083",
+      "roper_084",
+      "roper_091",
+      "roper_097",
+      "roper_099",
+      "roper_100",
+      "roper_101",
+      "roper_102",
+      "roper_104",
+      "roper_110",
+      "roper_114",
+      "roper_117",
+      "roper_118",
+      "roper_119",
+      "roper_121",
+      "roper_122",
+      "roper_123",
+      "roper_125",
+      "roper_131",
+      "roper_133",
+      "roper_137",
+      "roper_138",
+      "roper_139",
+      "roper_150",
+      "roper_170",
+      "roper_187",
+      "roper_196",
+      "roper_199",
+      "roper_214",
+      "roper_216",
+      "roper_217",
+      "roper_218",
+      "roper_220",
+      "roper_221",
+      "roper_222"
+     ],
+     "confirmed_items_present": 66,
+     "per_10k": {
+      "army": 1.802,
+      "arrow": 0.474,
+      "ass": 0.284,
+      "ax": 0.095,
+      "bee": 1.517,
+      "brass": 0.19,
+      "breastplate": 0.664,
+      "building": 1.612,
+      "cattle": 0.284,
+      "chain": 0.379,
+      "chariot": 0.474,
+      "chicken": 0.19,
+      "city": 9.008,
+      "com": 0.474,
+      "copper": 1.896,
+      "corn": 1.707,
+      "cow": 0.095,
+      "dagger": 0.095,
+      "darkness": 0.474,
+      "dog": 0.19,
+      "dragon": 0.19,
+      "earthquake": 0.19,
+      "ether": 0.095,
+      "flock_herd": 0.474,
+      "fortification": 4.267,
+      "furnace": 0.095,
+      "glass": 0.284,
+      "goat": 0.095,
+      "grain": 0.095,
+      "grape": 0.474,
+      "highway": 0.569,
+      "horse": 0.759,
+      "iron": 1.327,
+      "jew": 27.876,
+      "josh": 0.095,
+      "judge": 0.664,
+      "king": 5.499,
+      "leprosy": 0.095,
+      "lion": 0.19,
+      "ore": 0.474,
+      "palace": 0.474,
+      "plate": 1.612,
+      "plow": 0.095,
+      "prison": 0.095,
+      "road": 0.284,
+      "sam": 0.379,
+      "serpent": 0.948,
+      "shield": 0.19,
+      "spear": 0.284,
+      "steel": 0.095,
+      "sword": 3.129,
+      "tempest": 0.19,
+      "temple": 7.965,
+      "tent": 0.474,
+      "trumpet": 0.664,
+      "whirlwind": 0.19,
+      "wine": 0.664
+     }
+    }
+   },
+   "named_control": "ss-manuscript-story-1885",
+   "verdict_named_control": "partly"
+  }
+ },
+ "bible": {
+  "kjv_counts": {
+   "kjv_old_testament": {
+    "horse": 138,
+    "ass": 145,
+    "cow": 31,
+    "ox": 156,
+    "cattle": 151,
+    "goat": 126,
+    "sheep": 145,
+    "flock_herd": 229,
+    "swine": 6,
+    "bee": 4,
+    "lion": 141,
+    "moth": 7,
+    "dragon": 22,
+    "chicken": 1,
+    "dog": 32,
+    "serpent": 38,
+    "fortification": 12,
+    "armor": 19,
+    "sword": 411,
+    "dagger": 3,
+    "ax": 16,
+    "javelin": 7,
+    "spear": 61,
+    "arrow": 57,
+    "quiver": 7,
+    "sling": 9,
+    "shield": 67,
+    "breastplate": 26,
+    "army": 117,
+    "trumpet": 101,
+    "cord": 31,
+    "ladder": 1,
+    "tent": 164,
+    "steel": 4,
+    "brass": 120,
+    "iron": 94,
+    "furnace": 28,
+    "copper": 1,
+    "chain": 38,
+    "jew": 92,
+    "temple": 94,
+    "synagogue": 1,
+    "city": 1145,
+    "king": 2752,
+    "palace": 73,
+    "prison": 47,
+    "barn": 4,
+    "glass": 1,
+    "chariot": 172,
+    "pearl": 1,
+    "silk": 3,
+    "linen": 86,
+    "grain": 1,
+    "wheat": 39,
+    "barley": 34,
+    "corn": 91,
+    "grape": 42,
+    "wine": 196,
+    "salt": 31,
+    "highway": 22,
+    "road": 1,
+    "leprosy": 41,
+    "plow": 7,
+    "sickle": 4,
+    "building": 30,
+    "judge": 172,
+    "timber": 26,
+    "bellows": 1,
+    "plate": 9,
+    "tempest": 13,
+    "whirlwind": 29,
+    "earthquake": 6,
+    "darkness": 111,
+    "ether": 2
+   },
+   "kjv_new_testament": {
+    "horse": 16,
+    "ass": 9,
+    "ox": 10,
+    "cattle": 2,
+    "goat": 6,
+    "sheep": 43,
+    "flock_herd": 17,
+    "swine": 14,
+    "lion": 9,
+    "moth": 3,
+    "dragon": 13,
+    "chicken": 3,
+    "dog": 9,
+    "serpent": 15,
+    "armor": 5,
+    "sword": 37,
+    "ax": 2,
+    "spear": 1,
+    "fiery_dart": 1,
+    "shield": 1,
+    "breastplate": 5,
+    "army": 8,
+    "trumpet": 11,
+    "cord": 1,
+    "brass": 6,
+    "iron": 7,
+    "furnace": 4,
+    "chain": 12,
+    "jew": 197,
+    "temple": 119,
+    "synagogue": 68,
+    "city": 171,
+    "king": 122,
+    "palace": 8,
+    "prison": 46,
+    "barn": 4,
+    "glass": 8,
+    "chariot": 5,
+    "pearl": 9,
+    "silk": 1,
+    "linen": 18,
+    "grain": 7,
+    "wheat": 12,
+    "barley": 3,
+    "corn": 11,
+    "grape": 3,
+    "wine": 37,
+    "salt": 10,
+    "highway": 4,
+    "leprosy": 4,
+    "plow": 2,
+    "sickle": 8,
+    "building": 10,
+    "lawyer": 8,
+    "judge": 71,
+    "wild_honey": 2,
+    "tempest": 5,
+    "earthquake": 13,
+    "darkness": 51,
+    "neas": 2,
+    "jonas": 12,
+    "timothy": 7
+   },
+   "kjv_apocrypha": {
+    "horse": 16,
+    "ass": 3,
+    "cow": 1,
+    "ox": 3,
+    "cattle": 22,
+    "goat": 3,
+    "sheep": 8,
+    "flock_herd": 10,
+    "elephant": 13,
+    "swine": 3,
+    "bee": 1,
+    "lion": 22,
+    "moth": 4,
+    "dragon": 11,
+    "chicken": 2,
+    "dog": 5,
+    "serpent": 7,
+    "fortification": 3,
+    "armor": 18,
+    "sword": 67,
+    "dagger": 1,
+    "ax": 1,
+    "spear": 5,
+    "arrow": 7,
+    "quiver": 1,
+    "sling": 4,
+    "shield": 12,
+    "breastplate": 5,
+    "army": 64,
+    "trumpet": 19,
+    "cord": 2,
+    "ladder": 2,
+    "tent": 45,
+    "brass": 15,
+    "iron": 10,
+    "furnace": 14,
+    "chain": 6,
+    "jew": 125,
+    "temple": 134,
+    "city": 257,
+    "king": 534,
+    "palace": 4,
+    "prison": 3,
+    "chariot": 14,
+    "silk": 2,
+    "linen": 3,
+    "grain": 3,
+    "wheat": 4,
+    "barley": 1,
+    "corn": 4,
+    "grape": 9,
+    "wine": 39,
+    "salt": 8,
+    "plow": 1,
+    "building": 24,
+    "judge": 48,
+    "timber": 3,
+    "plate": 4,
+    "tempest": 6,
+    "whirlwind": 3,
+    "earthquake": 3,
+    "darkness": 20,
+    "nephi": 1,
+    "jonas": 4
+   }
+  },
+  "bible_things": [
+   "armor",
+   "army",
+   "arrow",
+   "ass",
+   "ax",
+   "barley",
+   "barn",
+   "bee",
+   "bellows",
+   "brass",
+   "breastplate",
+   "building",
+   "cattle",
+   "chain",
+   "chariot",
+   "chicken",
+   "city",
+   "copper",
+   "cord",
+   "corn",
+   "cow",
+   "dagger",
+   "darkness",
+   "dog",
+   "dragon",
+   "earthquake",
+   "ether",
+   "fiery_dart",
+   "flock_herd",
+   "fortification",
+   "furnace",
+   "glass",
+   "goat",
+   "grain",
+   "grape",
+   "highway",
+   "horse",
+   "iron",
+   "javelin",
+   "jew",
+   "jonas",
+   "judge",
+   "king",
+   "ladder",
+   "lawyer",
+   "leprosy",
+   "linen",
+   "lion",
+   "moth",
+   "neas",
+   "ox",
+   "palace",
+   "pearl",
+   "plate",
+   "plow",
+   "prison",
+   "quiver",
+   "road",
+   "salt",
+   "serpent",
+   "sheep",
+   "shield",
+   "sickle",
+   "silk",
+   "sling",
+   "spear",
+   "steel",
+   "swine",
+   "sword",
+   "synagogue",
+   "tempest",
+   "temple",
+   "tent",
+   "timber",
+   "timothy",
+   "trumpet",
+   "wheat",
+   "whirlwind",
+   "wild_honey",
+   "wine"
+  ],
+  "not_bible_things": [
+   "alma",
+   "cement",
+   "com",
+   "deseret",
+   "elephant",
+   "gadianton",
+   "gid",
+   "giddianhi",
+   "headplate",
+   "helaman",
+   "irreantum",
+   "jarom",
+   "josh",
+   "kim",
+   "land_of_jerusalem",
+   "liahona",
+   "machinery",
+   "mormon",
+   "moroni",
+   "mosiah",
+   "nephi",
+   "omni",
+   "onidah",
+   "ore",
+   "rameumptom",
+   "reformed_egyptian",
+   "sam",
+   "scimitar",
+   "shazer",
+   "sheum",
+   "zarahemla",
+   "zeniff",
+   "ziff"
+  ],
+  "countable_items": 144,
+  "bible_items": 107,
+  "share_of_countable_items": 0.743,
+  "confirmed_countable_items": 112,
+  "confirmed_that_are_bible_items": 86,
+  "share_of_confirmed_that_are_bible_items": 0.768
+ },
+ "cross_tables": {
+  "confirmed_by_bible_item": {
+   "items": 144,
+   "rows": "confirmed, not",
+   "cols": "bible_item, not",
+   "table": [
+    [
+     86,
+     26
+    ],
+    [
+     21,
+     11
+    ]
+   ],
+   "fisher_p": 0.2514428995824922,
+   "share_flagged_among_confirmed": 0.7678571428571429,
+   "share_flagged_among_other": 0.65625,
+   "verdict": "no"
+  },
+  "confirmed_or_partial_by_bible_item": {
+   "items": 144,
+   "rows": "confirmed_or_partial, not",
+   "cols": "bible_item, not",
+   "table": [
+    [
+     97,
+     35
+    ],
+    [
+     10,
+     2
+    ]
+   ],
+   "fisher_p": 0.7311416036480461,
+   "share_flagged_among_confirmed": 0.7348484848484849,
+   "share_flagged_among_other": 0.8333333333333334,
+   "verdict": "no"
+  },
+  "confirmed_by_kind_of_confirmation": {
+   "linguistic_reading": {
+    "items": 227,
+    "rows": "confirmed, not",
+    "cols": "is_kind, not",
+    "table": [
+     [
+      8,
+      167
+     ],
+     [
+      0,
+      52
+     ]
+    ],
+    "fisher_p": 0.20332503830721455,
+    "share_flagged_among_confirmed": 0.045714285714285714,
+    "share_flagged_among_other": 0.0,
+    "verdict": "no",
+    "items_of_kind": 8
+   },
+   "new_world_in_period": {
+    "items": 227,
+    "rows": "confirmed, not",
+    "cols": "is_kind, not",
+    "table": [
+     [
+      2,
+      173
+     ],
+     [
+      4,
+      48
+     ]
+    ],
+    "fisher_p": 0.025857169942300764,
+    "share_flagged_among_confirmed": 0.011428571428571429,
+    "share_flagged_among_other": 0.07692307692307693,
+    "verdict": "no",
+    "items_of_kind": 6
+   },
+   "new_world_period_unstated": {
+    "items": 227,
+    "rows": "confirmed, not",
+    "cols": "is_kind, not",
+    "table": [
+     [
+      20,
+      155
+     ],
+     [
+      14,
+      38
+     ]
+    ],
+    "fisher_p": 0.013161128571850908,
+    "share_flagged_among_confirmed": 0.11428571428571428,
+    "share_flagged_among_other": 0.2692307692307692,
+    "verdict": "no",
+    "items_of_kind": 34
+   },
+   "not_stated": {
+    "items": 227,
+    "rows": "confirmed, not",
+    "cols": "is_kind, not",
+    "table": [
+     [
+      135,
+      40
+     ],
+     [
+      33,
+      19
+     ]
+    ],
+    "fisher_p": 0.07054309292441521,
+    "share_flagged_among_confirmed": 0.7714285714285715,
+    "share_flagged_among_other": 0.6346153846153846,
+    "verdict": "no",
+    "items_of_kind": 168
+   },
+   "old_and_new_world": {
+    "items": 227,
+    "rows": "confirmed, not",
+    "cols": "is_kind, not",
+    "table": [
+     [
+      1,
+      174
+     ],
+     [
+      0,
+      52
+     ]
+    ],
+    "fisher_p": 1.0,
+    "share_flagged_among_confirmed": 0.005714285714285714,
+    "share_flagged_among_other": 0.0,
+    "verdict": "no",
+    "items_of_kind": 1
+   },
+   "old_world": {
+    "items": 227,
+    "rows": "confirmed, not",
+    "cols": "is_kind, not",
+    "table": [
+     [
+      9,
+      166
+     ],
+     [
+      1,
+      51
+     ]
+    ],
+    "fisher_p": 0.4612484167901064,
+    "share_flagged_among_confirmed": 0.05142857142857143,
+    "share_flagged_among_other": 0.019230769230769232,
+    "verdict": "no",
+    "items_of_kind": 10
+   }
+  }
+ },
+ "worlds": {
+  "american": {
+   "texts": 10,
+   "items": {
+    "alma": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "armor": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.528
+    },
+    "army": {
+     "share_of_texts": 0.9,
+     "median_per_10k": 2.952,
+     "max_per_10k": 30.432
+    },
+    "arrow": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 1.388,
+     "max_per_10k": 4.391
+    },
+    "ass": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.54
+    },
+    "ax": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.215,
+     "max_per_10k": 1.897
+    },
+    "barley": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.18
+    },
+    "barn": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.774
+    },
+    "bee": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.517
+    },
+    "bellows": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.07
+    },
+    "brass": {
+     "share_of_texts": 0.7,
+     "median_per_10k": 0.192,
+     "max_per_10k": 2.845
+    },
+    "breastplate": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.664
+    },
+    "building": {
+     "share_of_texts": 0.9,
+     "median_per_10k": 0.554,
+     "max_per_10k": 3.351
+    },
+    "cattle": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.205,
+     "max_per_10k": 1.742
+    },
+    "cement": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.056
+    },
+    "chain": {
+     "share_of_texts": 0.9,
+     "median_per_10k": 1.066,
+     "max_per_10k": 3.73
+    },
+    "chariot": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.185,
+     "max_per_10k": 0.528
+    },
+    "chicken": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.119,
+     "max_per_10k": 0.528
+    },
+    "city": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 5.534,
+     "max_per_10k": 15.601
+    },
+    "com": {
+     "share_of_texts": 0.9,
+     "median_per_10k": 0.969,
+     "max_per_10k": 3.309
+    },
+    "copper": {
+     "share_of_texts": 0.7,
+     "median_per_10k": 0.362,
+     "max_per_10k": 4.426
+    },
+    "cord": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.387
+    },
+    "corn": {
+     "share_of_texts": 0.9,
+     "median_per_10k": 0.964,
+     "max_per_10k": 8.515
+    },
+    "cow": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.047,
+     "max_per_10k": 1.935
+    },
+    "dagger": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.236
+    },
+    "darkness": {
+     "share_of_texts": 0.9,
+     "median_per_10k": 0.733,
+     "max_per_10k": 2.64
+    },
+    "deseret": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "dog": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.681,
+     "max_per_10k": 6.587
+    },
+    "dragon": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.195
+    },
+    "earthquake": {
+     "share_of_texts": 0.7,
+     "median_per_10k": 0.5,
+     "max_per_10k": 1.582
+    },
+    "elephant": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.115,
+     "max_per_10k": 0.809
+    },
+    "ether": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.018,
+     "max_per_10k": 0.528
+    },
+    "fiery_dart": {
+     "share_of_texts": 0.1,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.035
+    },
+    "flock_herd": {
+     "share_of_texts": 0.7,
+     "median_per_10k": 0.276,
+     "max_per_10k": 0.738
+    },
+    "fortification": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 10.598,
+     "max_per_10k": 32.936
+    },
+    "furnace": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.047,
+     "max_per_10k": 0.9
+    },
+    "gadianton": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "gid": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "giddianhi": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "glass": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.232,
+     "max_per_10k": 1.23
+    },
+    "goat": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.142,
+     "max_per_10k": 0.528
+    },
+    "grain": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.237,
+     "max_per_10k": 0.984
+    },
+    "grape": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.018,
+     "max_per_10k": 0.739
+    },
+    "headplate": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "helaman": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "highway": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.569
+    },
+    "horse": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 1.192,
+     "max_per_10k": 5.032
+    },
+    "iron": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 1.491,
+     "max_per_10k": 4.742
+    },
+    "irreantum": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "jarom": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "javelin": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.528
+    },
+    "jew": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 27.876
+    },
+    "jonas": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.176
+    },
+    "josh": {
+     "share_of_texts": 0.1,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.095
+    },
+    "judge": {
+     "share_of_texts": 0.9,
+     "median_per_10k": 0.726,
+     "max_per_10k": 1.865
+    },
+    "kim": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.197
+    },
+    "king": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 4.968,
+     "max_per_10k": 53.661
+    },
+    "ladder": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.373
+    },
+    "land_of_jerusalem": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "lawyer": {
+     "share_of_texts": 0.1,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.099
+    },
+    "leprosy": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.528
+    },
+    "liahona": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "linen": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.211
+    },
+    "lion": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.481,
+     "max_per_10k": 2.341
+    },
+    "machinery": {
+     "share_of_texts": 0.1,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.126
+    },
+    "mormon": {
+     "share_of_texts": 0.1,
+     "median_per_10k": 0.0,
+     "max_per_10k": 5.437
+    },
+    "moroni": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "mosiah": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "moth": {
+     "share_of_texts": 0.1,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.035
+    },
+    "neas": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "nephi": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "omni": {
+     "share_of_texts": 0.1,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.099
+    },
+    "onidah": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "ore": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.074,
+     "max_per_10k": 1.265
+    },
+    "ox": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.088,
+     "max_per_10k": 0.581
+    },
+    "palace": {
+     "share_of_texts": 0.7,
+     "median_per_10k": 0.417,
+     "max_per_10k": 1.584
+    },
+    "pearl": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.316
+    },
+    "plate": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.09,
+     "max_per_10k": 3.161
+    },
+    "plow": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.06,
+     "max_per_10k": 0.316
+    },
+    "prison": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.072,
+     "max_per_10k": 0.773
+    },
+    "quiver": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.148
+    },
+    "rameumptom": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "reformed_egyptian": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "road": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.433,
+     "max_per_10k": 2.466
+    },
+    "salt": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.139,
+     "max_per_10k": 0.738
+    },
+    "sam": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.379
+    },
+    "scimitar": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "serpent": {
+     "share_of_texts": 0.7,
+     "median_per_10k": 1.581,
+     "max_per_10k": 18.298
+    },
+    "shazer": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "sheep": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.195,
+     "max_per_10k": 0.72
+    },
+    "sheum": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "shield": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.185,
+     "max_per_10k": 0.528
+    },
+    "sickle": {
+     "share_of_texts": 0.1,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.444
+    },
+    "silk": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.493
+    },
+    "sling": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.454
+    },
+    "spear": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.09,
+     "max_per_10k": 3.309
+    },
+    "steel": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.083,
+     "max_per_10k": 2.112
+    },
+    "swine": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.641
+    },
+    "sword": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 1.382,
+     "max_per_10k": 12.764
+    },
+    "synagogue": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.099
+    },
+    "tempest": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 3.168
+    },
+    "temple": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 1.416,
+     "max_per_10k": 7.965
+    },
+    "tent": {
+     "share_of_texts": 0.7,
+     "median_per_10k": 0.266,
+     "max_per_10k": 1.621
+    },
+    "timber": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.458,
+     "max_per_10k": 1.834
+    },
+    "timothy": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "trumpet": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.137,
+     "max_per_10k": 0.72
+    },
+    "wheat": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.36
+    },
+    "whirlwind": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.139,
+     "max_per_10k": 1.584
+    },
+    "wild_honey": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "wine": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.331,
+     "max_per_10k": 1.621
+    },
+    "zarahemla": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "zeniff": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "ziff": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    }
+   }
+  },
+  "background": {
+   "texts": 150,
+   "items": {
+    "alma": {
+     "share_of_texts": 0.06,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.298
+    },
+    "armor": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 2.877
+    },
+    "army": {
+     "share_of_texts": 0.86,
+     "median_per_10k": 0.723,
+     "max_per_10k": 44.163
+    },
+    "arrow": {
+     "share_of_texts": 0.453,
+     "median_per_10k": 0.0,
+     "max_per_10k": 2.944
+    },
+    "ass": {
+     "share_of_texts": 0.533,
+     "median_per_10k": 0.071,
+     "max_per_10k": 3.138
+    },
+    "ax": {
+     "share_of_texts": 0.533,
+     "median_per_10k": 0.073,
+     "max_per_10k": 1.373
+    },
+    "barley": {
+     "share_of_texts": 0.28,
+     "median_per_10k": 0.0,
+     "max_per_10k": 9.613
+    },
+    "barn": {
+     "share_of_texts": 0.287,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.812
+    },
+    "bee": {
+     "share_of_texts": 0.62,
+     "median_per_10k": 0.121,
+     "max_per_10k": 6.428
+    },
+    "bellows": {
+     "share_of_texts": 0.12,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.814
+    },
+    "brass": {
+     "share_of_texts": 0.453,
+     "median_per_10k": 0.0,
+     "max_per_10k": 4.026
+    },
+    "breastplate": {
+     "share_of_texts": 0.107,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.422
+    },
+    "building": {
+     "share_of_texts": 0.827,
+     "median_per_10k": 0.358,
+     "max_per_10k": 12.541
+    },
+    "cattle": {
+     "share_of_texts": 0.58,
+     "median_per_10k": 0.096,
+     "max_per_10k": 15.154
+    },
+    "cement": {
+     "share_of_texts": 0.253,
+     "median_per_10k": 0.0,
+     "max_per_10k": 5.945
+    },
+    "chain": {
+     "share_of_texts": 0.82,
+     "median_per_10k": 0.336,
+     "max_per_10k": 3.865
+    },
+    "chariot": {
+     "share_of_texts": 0.387,
+     "median_per_10k": 0.0,
+     "max_per_10k": 8.618
+    },
+    "chicken": {
+     "share_of_texts": 0.713,
+     "median_per_10k": 0.204,
+     "max_per_10k": 29.598
+    },
+    "city": {
+     "share_of_texts": 0.947,
+     "median_per_10k": 1.515,
+     "max_per_10k": 20.984
+    },
+    "com": {
+     "share_of_texts": 0.92,
+     "median_per_10k": 0.448,
+     "max_per_10k": 4.002
+    },
+    "copper": {
+     "share_of_texts": 0.407,
+     "median_per_10k": 0.0,
+     "max_per_10k": 10.252
+    },
+    "cord": {
+     "share_of_texts": 0.447,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.457
+    },
+    "corn": {
+     "share_of_texts": 0.66,
+     "median_per_10k": 0.175,
+     "max_per_10k": 8.151
+    },
+    "cow": {
+     "share_of_texts": 0.573,
+     "median_per_10k": 0.083,
+     "max_per_10k": 7.425
+    },
+    "dagger": {
+     "share_of_texts": 0.32,
+     "median_per_10k": 0.0,
+     "max_per_10k": 4.392
+    },
+    "darkness": {
+     "share_of_texts": 0.793,
+     "median_per_10k": 0.318,
+     "max_per_10k": 5.974
+    },
+    "deseret": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "dog": {
+     "share_of_texts": 0.693,
+     "median_per_10k": 0.183,
+     "max_per_10k": 4.859
+    },
+    "dragon": {
+     "share_of_texts": 0.307,
+     "median_per_10k": 0.0,
+     "max_per_10k": 18.687
+    },
+    "earthquake": {
+     "share_of_texts": 0.3,
+     "median_per_10k": 0.0,
+     "max_per_10k": 5.077
+    },
+    "elephant": {
+     "share_of_texts": 0.24,
+     "median_per_10k": 0.0,
+     "max_per_10k": 2.792
+    },
+    "ether": {
+     "share_of_texts": 0.333,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.935
+    },
+    "fiery_dart": {
+     "share_of_texts": 0.033,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.142
+    },
+    "flock_herd": {
+     "share_of_texts": 0.76,
+     "median_per_10k": 0.29,
+     "max_per_10k": 11.137
+    },
+    "fortification": {
+     "share_of_texts": 0.66,
+     "median_per_10k": 0.198,
+     "max_per_10k": 14.004
+    },
+    "furnace": {
+     "share_of_texts": 0.427,
+     "median_per_10k": 0.0,
+     "max_per_10k": 3.138
+    },
+    "gadianton": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "gid": {
+     "share_of_texts": 0.027,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.192
+    },
+    "giddianhi": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "glass": {
+     "share_of_texts": 0.713,
+     "median_per_10k": 0.197,
+     "max_per_10k": 14.594
+    },
+    "goat": {
+     "share_of_texts": 0.44,
+     "median_per_10k": 0.0,
+     "max_per_10k": 5.301
+    },
+    "grain": {
+     "share_of_texts": 0.62,
+     "median_per_10k": 0.114,
+     "max_per_10k": 7.405
+    },
+    "grape": {
+     "share_of_texts": 0.373,
+     "median_per_10k": 0.0,
+     "max_per_10k": 2.199
+    },
+    "headplate": {
+     "share_of_texts": 0.007,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.256
+    },
+    "helaman": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "highway": {
+     "share_of_texts": 0.24,
+     "median_per_10k": 0.0,
+     "max_per_10k": 7.097
+    },
+    "horse": {
+     "share_of_texts": 0.873,
+     "median_per_10k": 0.881,
+     "max_per_10k": 11.299
+    },
+    "iron": {
+     "share_of_texts": 0.753,
+     "median_per_10k": 0.273,
+     "max_per_10k": 23.539
+    },
+    "irreantum": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "jarom": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "javelin": {
+     "share_of_texts": 0.093,
+     "median_per_10k": 0.0,
+     "max_per_10k": 4.613
+    },
+    "jew": {
+     "share_of_texts": 0.64,
+     "median_per_10k": 0.174,
+     "max_per_10k": 26.598
+    },
+    "jonas": {
+     "share_of_texts": 0.1,
+     "median_per_10k": 0.0,
+     "max_per_10k": 5.757
+    },
+    "josh": {
+     "share_of_texts": 0.047,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.387
+    },
+    "judge": {
+     "share_of_texts": 0.98,
+     "median_per_10k": 1.305,
+     "max_per_10k": 51.511
+    },
+    "kim": {
+     "share_of_texts": 0.147,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.174
+    },
+    "king": {
+     "share_of_texts": 0.953,
+     "median_per_10k": 3.548,
+     "max_per_10k": 89.341
+    },
+    "ladder": {
+     "share_of_texts": 0.22,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.999
+    },
+    "land_of_jerusalem": {
+     "share_of_texts": 0.007,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.05
+    },
+    "lawyer": {
+     "share_of_texts": 0.453,
+     "median_per_10k": 0.0,
+     "max_per_10k": 3.664
+    },
+    "leprosy": {
+     "share_of_texts": 0.133,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.954
+    },
+    "liahona": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "linen": {
+     "share_of_texts": 0.52,
+     "median_per_10k": 0.073,
+     "max_per_10k": 7.981
+    },
+    "lion": {
+     "share_of_texts": 0.707,
+     "median_per_10k": 0.212,
+     "max_per_10k": 5.942
+    },
+    "machinery": {
+     "share_of_texts": 0.26,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.27
+    },
+    "mormon": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "moroni": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "mosiah": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "moth": {
+     "share_of_texts": 0.213,
+     "median_per_10k": 0.0,
+     "max_per_10k": 4.48
+    },
+    "neas": {
+     "share_of_texts": 0.047,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.728
+    },
+    "nephi": {
+     "share_of_texts": 0.007,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.049
+    },
+    "omni": {
+     "share_of_texts": 0.113,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.722
+    },
+    "onidah": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "ore": {
+     "share_of_texts": 0.56,
+     "median_per_10k": 0.076,
+     "max_per_10k": 6.225
+    },
+    "ox": {
+     "share_of_texts": 0.607,
+     "median_per_10k": 0.108,
+     "max_per_10k": 18.239
+    },
+    "palace": {
+     "share_of_texts": 0.7,
+     "median_per_10k": 0.282,
+     "max_per_10k": 13.691
+    },
+    "pearl": {
+     "share_of_texts": 0.407,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.945
+    },
+    "plate": {
+     "share_of_texts": 0.667,
+     "median_per_10k": 0.171,
+     "max_per_10k": 45.487
+    },
+    "plow": {
+     "share_of_texts": 0.34,
+     "median_per_10k": 0.0,
+     "max_per_10k": 8.071
+    },
+    "prison": {
+     "share_of_texts": 0.773,
+     "median_per_10k": 0.25,
+     "max_per_10k": 7.419
+    },
+    "quiver": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.878
+    },
+    "rameumptom": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "reformed_egyptian": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "road": {
+     "share_of_texts": 0.88,
+     "median_per_10k": 0.413,
+     "max_per_10k": 18.664
+    },
+    "salt": {
+     "share_of_texts": 0.593,
+     "median_per_10k": 0.11,
+     "max_per_10k": 15.222
+    },
+    "sam": {
+     "share_of_texts": 0.34,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.945
+    },
+    "scimitar": {
+     "share_of_texts": 0.047,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.192
+    },
+    "serpent": {
+     "share_of_texts": 0.52,
+     "median_per_10k": 0.063,
+     "max_per_10k": 152.729
+    },
+    "shazer": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "sheep": {
+     "share_of_texts": 0.68,
+     "median_per_10k": 0.171,
+     "max_per_10k": 31.072
+    },
+    "sheum": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "shield": {
+     "share_of_texts": 0.527,
+     "median_per_10k": 0.056,
+     "max_per_10k": 22.734
+    },
+    "sickle": {
+     "share_of_texts": 0.22,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.809
+    },
+    "silk": {
+     "share_of_texts": 0.473,
+     "median_per_10k": 0.0,
+     "max_per_10k": 2.85
+    },
+    "sling": {
+     "share_of_texts": 0.293,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.757
+    },
+    "spear": {
+     "share_of_texts": 0.393,
+     "median_per_10k": 0.0,
+     "max_per_10k": 19.316
+    },
+    "steel": {
+     "share_of_texts": 0.453,
+     "median_per_10k": 0.0,
+     "max_per_10k": 5.983
+    },
+    "swine": {
+     "share_of_texts": 0.267,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.036
+    },
+    "sword": {
+     "share_of_texts": 0.827,
+     "median_per_10k": 0.509,
+     "max_per_10k": 11.111
+    },
+    "synagogue": {
+     "share_of_texts": 0.153,
+     "median_per_10k": 0.0,
+     "max_per_10k": 4.755
+    },
+    "tempest": {
+     "share_of_texts": 0.587,
+     "median_per_10k": 0.082,
+     "max_per_10k": 5.286
+    },
+    "temple": {
+     "share_of_texts": 0.82,
+     "median_per_10k": 0.334,
+     "max_per_10k": 27.539
+    },
+    "tent": {
+     "share_of_texts": 0.62,
+     "median_per_10k": 0.113,
+     "max_per_10k": 5.896
+    },
+    "timber": {
+     "share_of_texts": 0.407,
+     "median_per_10k": 0.0,
+     "max_per_10k": 23.323
+    },
+    "timothy": {
+     "share_of_texts": 0.273,
+     "median_per_10k": 0.0,
+     "max_per_10k": 5.443
+    },
+    "trumpet": {
+     "share_of_texts": 0.44,
+     "median_per_10k": 0.0,
+     "max_per_10k": 6.079
+    },
+    "wheat": {
+     "share_of_texts": 0.433,
+     "median_per_10k": 0.0,
+     "max_per_10k": 24.357
+    },
+    "whirlwind": {
+     "share_of_texts": 0.227,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.276
+    },
+    "wild_honey": {
+     "share_of_texts": 0.013,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.141
+    },
+    "wine": {
+     "share_of_texts": 0.84,
+     "median_per_10k": 0.406,
+     "max_per_10k": 43.788
+    },
+    "zarahemla": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "zeniff": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "ziff": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    }
+   }
+  },
+  "mesoamerica": {
+   "texts": 8,
+   "items": {
+    "alma": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.042
+    },
+    "armor": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.061,
+     "max_per_10k": 1.029
+    },
+    "army": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.092,
+     "max_per_10k": 14.918
+    },
+    "arrow": {
+     "share_of_texts": 0.875,
+     "median_per_10k": 2.428,
+     "max_per_10k": 4.752
+    },
+    "ass": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.294
+    },
+    "ax": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.021,
+     "max_per_10k": 0.916
+    },
+    "barley": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.172
+    },
+    "barn": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.084
+    },
+    "bee": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.063,
+     "max_per_10k": 0.641
+    },
+    "bellows": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "brass": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.125
+    },
+    "breastplate": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.082
+    },
+    "building": {
+     "share_of_texts": 0.875,
+     "median_per_10k": 1.892,
+     "max_per_10k": 2.524
+    },
+    "cattle": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.02,
+     "max_per_10k": 0.167
+    },
+    "cement": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.02,
+     "max_per_10k": 0.098
+    },
+    "chain": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.753
+    },
+    "chariot": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.025
+    },
+    "chicken": {
+     "share_of_texts": 0.625,
+     "median_per_10k": 0.306,
+     "max_per_10k": 1.559
+    },
+    "city": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 9.64,
+     "max_per_10k": 21.614
+    },
+    "com": {
+     "share_of_texts": 0.625,
+     "median_per_10k": 0.192,
+     "max_per_10k": 0.95
+    },
+    "copper": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.046,
+     "max_per_10k": 0.784
+    },
+    "cord": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.146,
+     "max_per_10k": 0.515
+    },
+    "corn": {
+     "share_of_texts": 0.75,
+     "median_per_10k": 0.539,
+     "max_per_10k": 1.465
+    },
+    "cow": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.221
+    },
+    "dagger": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.458
+    },
+    "darkness": {
+     "share_of_texts": 0.75,
+     "median_per_10k": 0.229,
+     "max_per_10k": 3.088
+    },
+    "deseret": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "dog": {
+     "share_of_texts": 0.875,
+     "median_per_10k": 0.99,
+     "max_per_10k": 4.678
+    },
+    "dragon": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.063,
+     "max_per_10k": 0.78
+    },
+    "earthquake": {
+     "share_of_texts": 0.75,
+     "median_per_10k": 0.301,
+     "max_per_10k": 1.007
+    },
+    "elephant": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.613
+    },
+    "ether": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.147
+    },
+    "fiery_dart": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "flock_herd": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.046,
+     "max_per_10k": 0.343
+    },
+    "fortification": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.092,
+     "max_per_10k": 2.582
+    },
+    "furnace": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.183
+    },
+    "gadianton": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "gid": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.025
+    },
+    "giddianhi": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "glass": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.046,
+     "max_per_10k": 0.46
+    },
+    "goat": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.515
+    },
+    "grain": {
+     "share_of_texts": 0.625,
+     "median_per_10k": 0.27,
+     "max_per_10k": 2.339
+    },
+    "grape": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.221
+    },
+    "headplate": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "helaman": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "highway": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.092
+    },
+    "horse": {
+     "share_of_texts": 0.75,
+     "median_per_10k": 0.99,
+     "max_per_10k": 6.986
+    },
+    "iron": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.98
+    },
+    "irreantum": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "jarom": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "javelin": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "jew": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.209
+    },
+    "jonas": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.042
+    },
+    "josh": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "judge": {
+     "share_of_texts": 0.875,
+     "median_per_10k": 0.952,
+     "max_per_10k": 1.901
+    },
+    "kim": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.042
+    },
+    "king": {
+     "share_of_texts": 0.875,
+     "median_per_10k": 8.854,
+     "max_per_10k": 60.21
+    },
+    "ladder": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.074
+    },
+    "land_of_jerusalem": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "lawyer": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.084
+    },
+    "leprosy": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.098
+    },
+    "liahona": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "linen": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.092
+    },
+    "lion": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.046,
+     "max_per_10k": 4.643
+    },
+    "machinery": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.084
+    },
+    "mormon": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "moroni": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "mosiah": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "moth": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "neas": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "nephi": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "omni": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.049
+    },
+    "onidah": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "ore": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.172
+    },
+    "ox": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.711
+    },
+    "palace": {
+     "share_of_texts": 0.875,
+     "median_per_10k": 1.165,
+     "max_per_10k": 3.724
+    },
+    "pearl": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.368
+    },
+    "plate": {
+     "share_of_texts": 0.75,
+     "median_per_10k": 0.664,
+     "max_per_10k": 1.103
+    },
+    "plow": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.092
+    },
+    "prison": {
+     "share_of_texts": 0.625,
+     "median_per_10k": 0.234,
+     "max_per_10k": 2.851
+    },
+    "quiver": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.515
+    },
+    "rameumptom": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "reformed_egyptian": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "road": {
+     "share_of_texts": 0.875,
+     "median_per_10k": 3.123,
+     "max_per_10k": 7.719
+    },
+    "salt": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.092,
+     "max_per_10k": 0.95
+    },
+    "sam": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.275
+    },
+    "scimitar": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.041
+    },
+    "serpent": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 2.025,
+     "max_per_10k": 8.576
+    },
+    "shazer": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "sheep": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.76
+    },
+    "sheum": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "shield": {
+     "share_of_texts": 0.875,
+     "median_per_10k": 1.045,
+     "max_per_10k": 9.401
+    },
+    "sickle": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.042
+    },
+    "silk": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.319
+    },
+    "sling": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.335
+    },
+    "spear": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.901
+    },
+    "steel": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.123
+    },
+    "swine": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.084
+    },
+    "sword": {
+     "share_of_texts": 0.75,
+     "median_per_10k": 0.968,
+     "max_per_10k": 2.623
+    },
+    "synagogue": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "tempest": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.025,
+     "max_per_10k": 0.78
+    },
+    "temple": {
+     "share_of_texts": 0.875,
+     "median_per_10k": 3.732,
+     "max_per_10k": 9.286
+    },
+    "tent": {
+     "share_of_texts": 0.25,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.164
+    },
+    "timber": {
+     "share_of_texts": 0.375,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.506
+    },
+    "timothy": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "trumpet": {
+     "share_of_texts": 0.625,
+     "median_per_10k": 0.375,
+     "max_per_10k": 1.544
+    },
+    "wheat": {
+     "share_of_texts": 0.5,
+     "median_per_10k": 0.042,
+     "max_per_10k": 0.458
+    },
+    "whirlwind": {
+     "share_of_texts": 0.125,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.025
+    },
+    "wild_honey": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "wine": {
+     "share_of_texts": 0.625,
+     "median_per_10k": 0.312,
+     "max_per_10k": 6.268
+    },
+    "zarahemla": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "zeniff": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "ziff": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    }
+   }
+  },
+  "near_east": {
+   "texts": 5,
+   "items": {
+    "alma": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "armor": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 1.231,
+     "max_per_10k": 2.128
+    },
+    "army": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 4.543,
+     "max_per_10k": 13.49
+    },
+    "arrow": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.497,
+     "max_per_10k": 0.931
+    },
+    "ass": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.498,
+     "max_per_10k": 2.367
+    },
+    "ax": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.111,
+     "max_per_10k": 0.261
+    },
+    "barley": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.166,
+     "max_per_10k": 0.555
+    },
+    "barn": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.221
+    },
+    "bee": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.065,
+     "max_per_10k": 0.073
+    },
+    "bellows": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.016
+    },
+    "brass": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.827,
+     "max_per_10k": 1.959
+    },
+    "breastplate": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.355,
+     "max_per_10k": 0.441
+    },
+    "building": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 1.575,
+     "max_per_10k": 2.499
+    },
+    "cattle": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.992,
+     "max_per_10k": 2.465
+    },
+    "cement": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.043
+    },
+    "chain": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.426,
+     "max_per_10k": 0.664
+    },
+    "chariot": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.994,
+     "max_per_10k": 2.808
+    },
+    "chicken": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.016,
+     "max_per_10k": 0.166
+    },
+    "city": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 18.692,
+     "max_per_10k": 41.363
+    },
+    "com": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.018
+    },
+    "copper": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.055
+    },
+    "cord": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.142,
+     "max_per_10k": 0.506
+    },
+    "corn": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 1.106,
+     "max_per_10k": 1.486
+    },
+    "cow": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.071,
+     "max_per_10k": 0.506
+    },
+    "dagger": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.071,
+     "max_per_10k": 0.147
+    },
+    "darkness": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 1.42,
+     "max_per_10k": 2.821
+    },
+    "deseret": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "dog": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.383,
+     "max_per_10k": 0.522
+    },
+    "dragon": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.359,
+     "max_per_10k": 0.781
+    },
+    "earthquake": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.276,
+     "max_per_10k": 0.719
+    },
+    "elephant": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.17,
+     "max_per_10k": 0.923
+    },
+    "ether": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.128
+    },
+    "fiery_dart": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.055
+    },
+    "flock_herd": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.71,
+     "max_per_10k": 3.738
+    },
+    "fortification": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.196,
+     "max_per_10k": 0.979
+    },
+    "furnace": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.221,
+     "max_per_10k": 0.994
+    },
+    "gadianton": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "gid": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "giddianhi": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "glass": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.016,
+     "max_per_10k": 0.443
+    },
+    "goat": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.332,
+     "max_per_10k": 2.057
+    },
+    "grain": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.018,
+     "max_per_10k": 0.387
+    },
+    "grape": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.17,
+     "max_per_10k": 0.686
+    },
+    "headplate": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "helaman": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "highway": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.359
+    },
+    "horse": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 1.268,
+     "max_per_10k": 2.253
+    },
+    "iron": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.71,
+     "max_per_10k": 1.535
+    },
+    "irreantum": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "jarom": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "javelin": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.037,
+     "max_per_10k": 0.34
+    },
+    "jew": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 10.898,
+     "max_per_10k": 29.405
+    },
+    "jonas": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.664
+    },
+    "josh": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "judge": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 2.808,
+     "max_per_10k": 3.928
+    },
+    "kim": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "king": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 37.904,
+     "max_per_10k": 44.925
+    },
+    "ladder": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.129,
+     "max_per_10k": 0.511
+    },
+    "land_of_jerusalem": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.018
+    },
+    "lawyer": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.443
+    },
+    "leprosy": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.17,
+     "max_per_10k": 0.669
+    },
+    "liahona": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "linen": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.57,
+     "max_per_10k": 1.404
+    },
+    "lion": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.661,
+     "max_per_10k": 2.302
+    },
+    "machinery": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "mormon": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "moroni": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "mosiah": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "moth": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.114,
+     "max_per_10k": 0.284
+    },
+    "neas": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.111
+    },
+    "nephi": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.071
+    },
+    "omni": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "onidah": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "ore": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "ox": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.553,
+     "max_per_10k": 2.547
+    },
+    "palace": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 1.192,
+     "max_per_10k": 3.277
+    },
+    "pearl": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.498
+    },
+    "plate": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.239,
+     "max_per_10k": 0.284
+    },
+    "plow": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.111,
+     "max_per_10k": 0.202
+    },
+    "prison": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.772,
+     "max_per_10k": 2.545
+    },
+    "quiver": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.071,
+     "max_per_10k": 0.114
+    },
+    "rameumptom": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "reformed_egyptian": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "road": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.016,
+     "max_per_10k": 1.139
+    },
+    "salt": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.506,
+     "max_per_10k": 0.568
+    },
+    "sam": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "scimitar": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "serpent": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.497,
+     "max_per_10k": 0.83
+    },
+    "shazer": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "sheep": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.568,
+     "max_per_10k": 2.379
+    },
+    "sheum": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "shield": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.809,
+     "max_per_10k": 1.094
+    },
+    "sickle": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.018,
+     "max_per_10k": 0.443
+    },
+    "silk": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.049,
+     "max_per_10k": 0.142
+    },
+    "sling": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.11,
+     "max_per_10k": 0.284
+    },
+    "spear": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.383,
+     "max_per_10k": 0.996
+    },
+    "steel": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.065
+    },
+    "swine": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.098,
+     "max_per_10k": 0.774
+    },
+    "sword": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 3.362,
+     "max_per_10k": 6.709
+    },
+    "synagogue": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.129,
+     "max_per_10k": 3.762
+    },
+    "tempest": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.212,
+     "max_per_10k": 0.426
+    },
+    "temple": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 9.511,
+     "max_per_10k": 15.745
+    },
+    "tent": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.661,
+     "max_per_10k": 3.194
+    },
+    "timber": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.213,
+     "max_per_10k": 0.424
+    },
+    "timothy": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.037,
+     "max_per_10k": 0.387
+    },
+    "trumpet": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.609,
+     "max_per_10k": 1.649
+    },
+    "wheat": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.284,
+     "max_per_10k": 0.664
+    },
+    "whirlwind": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.018,
+     "max_per_10k": 0.473
+    },
+    "wild_honey": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.111
+    },
+    "wine": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 2.047,
+     "max_per_10k": 3.2
+    },
+    "zarahemla": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "zeniff": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "ziff": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    }
+   }
+  },
+  "scored_only": {
+   "texts": 5,
+   "items": {
+    "alma": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.055
+    },
+    "armor": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.136,
+     "max_per_10k": 0.91
+    },
+    "army": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 2.01,
+     "max_per_10k": 6.225
+    },
+    "arrow": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.882,
+     "max_per_10k": 1.394
+    },
+    "ass": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.245
+    },
+    "ax": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.136,
+     "max_per_10k": 0.455
+    },
+    "barley": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.147
+    },
+    "barn": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.279
+    },
+    "bee": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.028,
+     "max_per_10k": 4.798
+    },
+    "bellows": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.049
+    },
+    "brass": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.098,
+     "max_per_10k": 0.91
+    },
+    "breastplate": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.227
+    },
+    "building": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 1.137,
+     "max_per_10k": 2.306
+    },
+    "cattle": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.227,
+     "max_per_10k": 0.929
+    },
+    "cement": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.055,
+     "max_per_10k": 0.678
+    },
+    "chain": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.551,
+     "max_per_10k": 2.916
+    },
+    "chariot": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.365
+    },
+    "chicken": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.245,
+     "max_per_10k": 0.661
+    },
+    "city": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 3.185,
+     "max_per_10k": 6.374
+    },
+    "com": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 1.82,
+     "max_per_10k": 3.744
+    },
+    "copper": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.979,
+     "max_per_10k": 4.55
+    },
+    "cord": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.193,
+     "max_per_10k": 0.542
+    },
+    "corn": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.455,
+     "max_per_10k": 4.459
+    },
+    "cow": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.055,
+     "max_per_10k": 0.49
+    },
+    "dagger": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.098,
+     "max_per_10k": 0.227
+    },
+    "darkness": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.203,
+     "max_per_10k": 2.047
+    },
+    "deseret": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "dog": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.65,
+     "max_per_10k": 2.17
+    },
+    "dragon": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.475
+    },
+    "earthquake": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.455,
+     "max_per_10k": 1.371
+    },
+    "elephant": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.147,
+     "max_per_10k": 5.005
+    },
+    "ether": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.055
+    },
+    "fiery_dart": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "flock_herd": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.203,
+     "max_per_10k": 1.365
+    },
+    "fortification": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.936,
+     "max_per_10k": 11.241
+    },
+    "furnace": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.055,
+     "max_per_10k": 1.137
+    },
+    "gadianton": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "gid": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "giddianhi": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "glass": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.068,
+     "max_per_10k": 0.682
+    },
+    "goat": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.203
+    },
+    "grain": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.227,
+     "max_per_10k": 0.61
+    },
+    "grape": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.11,
+     "max_per_10k": 0.636
+    },
+    "headplate": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "helaman": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "highway": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.028
+    },
+    "horse": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 1.424,
+     "max_per_10k": 2.23
+    },
+    "iron": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.385,
+     "max_per_10k": 2.957
+    },
+    "irreantum": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "jarom": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "javelin": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.028
+    },
+    "jew": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.186,
+     "max_per_10k": 0.441
+    },
+    "jonas": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "josh": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "judge": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.279,
+     "max_per_10k": 1.624
+    },
+    "kim": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "king": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 5.561,
+     "max_per_10k": 19.829
+    },
+    "ladder": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.068,
+     "max_per_10k": 0.294
+    },
+    "land_of_jerusalem": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "lawyer": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.303
+    },
+    "leprosy": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.028
+    },
+    "liahona": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "linen": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.227
+    },
+    "lion": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.227,
+     "max_per_10k": 0.746
+    },
+    "machinery": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.455
+    },
+    "mormon": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "moroni": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "mosiah": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "moth": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 2.047
+    },
+    "neas": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "nephi": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "omni": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.049
+    },
+    "onidah": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "ore": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.392,
+     "max_per_10k": 0.682
+    },
+    "ox": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.147,
+     "max_per_10k": 0.678
+    },
+    "palace": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.245,
+     "max_per_10k": 2.306
+    },
+    "pearl": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.294,
+     "max_per_10k": 0.542
+    },
+    "plate": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.685,
+     "max_per_10k": 16.003
+    },
+    "plow": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.068,
+     "max_per_10k": 0.227
+    },
+    "prison": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.294,
+     "max_per_10k": 0.682
+    },
+    "quiver": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.455
+    },
+    "rameumptom": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "reformed_egyptian": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "road": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.798,
+     "max_per_10k": 3.255
+    },
+    "salt": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.407,
+     "max_per_10k": 1.028
+    },
+    "sam": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.836
+    },
+    "scimitar": {
+     "share_of_texts": 0.2,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.227
+    },
+    "serpent": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.682,
+     "max_per_10k": 4.475
+    },
+    "shazer": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "sheep": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.227,
+     "max_per_10k": 0.392
+    },
+    "sheum": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "shield": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.093,
+     "max_per_10k": 1.365
+    },
+    "sickle": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.227
+    },
+    "silk": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.138
+    },
+    "sling": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.068,
+     "max_per_10k": 0.147
+    },
+    "spear": {
+     "share_of_texts": 0.6,
+     "median_per_10k": 0.275,
+     "max_per_10k": 0.682
+    },
+    "steel": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 1.592
+    },
+    "swine": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.392
+    },
+    "sword": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.881,
+     "max_per_10k": 4.095
+    },
+    "synagogue": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "tempest": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.49,
+     "max_per_10k": 0.91
+    },
+    "temple": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 1.624,
+     "max_per_10k": 6.442
+    },
+    "tent": {
+     "share_of_texts": 1.0,
+     "median_per_10k": 0.294,
+     "max_per_10k": 0.557
+    },
+    "timber": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.303,
+     "max_per_10k": 0.682
+    },
+    "timothy": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.227
+    },
+    "trumpet": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.186,
+     "max_per_10k": 1.82
+    },
+    "wheat": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.093,
+     "max_per_10k": 0.343
+    },
+    "whirlwind": {
+     "share_of_texts": 0.4,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.682
+    },
+    "wild_honey": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "wine": {
+     "share_of_texts": 0.8,
+     "median_per_10k": 0.186,
+     "max_per_10k": 1.861
+    },
+    "zarahemla": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "zeniff": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    },
+    "ziff": {
+     "share_of_texts": 0.0,
+     "median_per_10k": 0.0,
+     "max_per_10k": 0.0
+    }
+   }
+  }
+ },
+ "texts": {
+  "kjv_old_testament": {
+   "world": "near_east",
+   "register": "bible",
+   "words": 612571,
+   "things_present": 74,
+   "counts": {
+    "horse": 138,
+    "ass": 145,
+    "cow": 31,
+    "ox": 156,
+    "cattle": 151,
+    "goat": 126,
+    "sheep": 145,
+    "flock_herd": 229,
+    "swine": 6,
+    "bee": 4,
+    "lion": 141,
+    "moth": 7,
+    "dragon": 22,
+    "chicken": 1,
+    "dog": 32,
+    "serpent": 38,
+    "fortification": 12,
+    "armor": 19,
+    "sword": 411,
+    "dagger": 3,
+    "ax": 16,
+    "javelin": 7,
+    "spear": 61,
+    "arrow": 57,
+    "quiver": 7,
+    "sling": 9,
+    "shield": 67,
+    "breastplate": 26,
+    "army": 117,
+    "trumpet": 101,
+    "cord": 31,
+    "ladder": 1,
+    "tent": 164,
+    "steel": 4,
+    "brass": 120,
+    "iron": 94,
+    "furnace": 28,
+    "copper": 1,
+    "chain": 38,
+    "jew": 92,
+    "temple": 94,
+    "synagogue": 1,
+    "city": 1145,
+    "king": 2752,
+    "palace": 73,
+    "prison": 47,
+    "barn": 4,
+    "glass": 1,
+    "chariot": 172,
+    "pearl": 1,
+    "silk": 3,
+    "linen": 86,
+    "grain": 1,
+    "wheat": 39,
+    "barley": 34,
+    "corn": 91,
+    "grape": 42,
+    "wine": 196,
+    "salt": 31,
+    "highway": 22,
+    "road": 1,
+    "leprosy": 41,
+    "plow": 7,
+    "sickle": 4,
+    "building": 30,
+    "judge": 172,
+    "timber": 26,
+    "bellows": 1,
+    "plate": 9,
+    "tempest": 13,
+    "whirlwind": 29,
+    "earthquake": 6,
+    "darkness": 111,
+    "ether": 2
+   }
+  },
+  "kjv_new_testament": {
+   "world": "near_east",
+   "register": "bible",
+   "words": 180771,
+   "things_present": 62,
+   "counts": {
+    "horse": 16,
+    "ass": 9,
+    "ox": 10,
+    "cattle": 2,
+    "goat": 6,
+    "sheep": 43,
+    "flock_herd": 17,
+    "swine": 14,
+    "lion": 9,
+    "moth": 3,
+    "dragon": 13,
+    "chicken": 3,
+    "dog": 9,
+    "serpent": 15,
+    "armor": 5,
+    "sword": 37,
+    "ax": 2,
+    "spear": 1,
+    "fiery_dart": 1,
+    "shield": 1,
+    "breastplate": 5,
+    "army": 8,
+    "trumpet": 11,
+    "cord": 1,
+    "brass": 6,
+    "iron": 7,
+    "furnace": 4,
+    "chain": 12,
+    "jew": 197,
+    "temple": 119,
+    "synagogue": 68,
+    "city": 171,
+    "king": 122,
+    "palace": 8,
+    "prison": 46,
+    "barn": 4,
+    "glass": 8,
+    "chariot": 5,
+    "pearl": 9,
+    "silk": 1,
+    "linen": 18,
+    "grain": 7,
+    "wheat": 12,
+    "barley": 3,
+    "corn": 11,
+    "grape": 3,
+    "wine": 37,
+    "salt": 10,
+    "highway": 4,
+    "leprosy": 4,
+    "plow": 2,
+    "sickle": 8,
+    "building": 10,
+    "lawyer": 8,
+    "judge": 71,
+    "wild_honey": 2,
+    "tempest": 5,
+    "earthquake": 13,
+    "darkness": 51,
+    "neas": 2,
+    "jonas": 12,
+    "timothy": 7
+   }
+  },
+  "kjv_apocrypha": {
+   "world": "near_east",
+   "register": "bible",
+   "words": 140884,
+   "things_present": 64,
+   "counts": {
+    "horse": 16,
+    "ass": 3,
+    "cow": 1,
+    "ox": 3,
+    "cattle": 22,
+    "goat": 3,
+    "sheep": 8,
+    "flock_herd": 10,
+    "elephant": 13,
+    "swine": 3,
+    "bee": 1,
+    "lion": 22,
+    "moth": 4,
+    "dragon": 11,
+    "chicken": 2,
+    "dog": 5,
+    "serpent": 7,
+    "fortification": 3,
+    "armor": 18,
+    "sword": 67,
+    "dagger": 1,
+    "ax": 1,
+    "spear": 5,
+    "arrow": 7,
+    "quiver": 1,
+    "sling": 4,
+    "shield": 12,
+    "breastplate": 5,
+    "army": 64,
+    "trumpet": 19,
+    "cord": 2,
+    "ladder": 2,
+    "tent": 45,
+    "brass": 15,
+    "iron": 10,
+    "furnace": 14,
+    "chain": 6,
+    "jew": 125,
+    "temple": 134,
+    "city": 257,
+    "king": 534,
+    "palace": 4,
+    "prison": 3,
+    "chariot": 14,
+    "silk": 2,
+    "linen": 3,
+    "grain": 3,
+    "wheat": 4,
+    "barley": 1,
+    "corn": 4,
+    "grape": 9,
+    "wine": 39,
+    "salt": 8,
+    "plow": 1,
+    "building": 24,
+    "judge": 48,
+    "timber": 3,
+    "plate": 4,
+    "tempest": 6,
+    "whirlwind": 3,
+    "earthquake": 3,
+    "darkness": 20,
+    "nephi": 1,
+    "jonas": 4
+   }
+  },
+  "josephus_antiquities_whiston": {
+   "world": "near_east",
+   "register": "josephus",
+   "words": 544274,
+   "things_present": 69,
+   "counts": {
+    "horse": 69,
+    "ass": 31,
+    "cow": 16,
+    "ox": 39,
+    "cattle": 54,
+    "goat": 37,
+    "sheep": 23,
+    "flock_herd": 33,
+    "elephant": 14,
+    "swine": 3,
+    "bee": 4,
+    "lion": 36,
+    "dragon": 2,
+    "dog": 14,
+    "serpent": 15,
+    "fortification": 10,
+    "armor": 67,
+    "sword": 67,
+    "dagger": 8,
+    "ax": 5,
+    "javelin": 2,
+    "spear": 24,
+    "arrow": 13,
+    "quiver": 3,
+    "sling": 6,
+    "shield": 19,
+    "breastplate": 24,
+    "army": 696,
+    "trumpet": 26,
+    "cord": 10,
+    "ladder": 7,
+    "tent": 36,
+    "brass": 45,
+    "iron": 25,
+    "furnace": 3,
+    "copper": 3,
+    "chain": 19,
+    "jew": 898,
+    "temple": 699,
+    "synagogue": 7,
+    "city": 1168,
+    "king": 2418,
+    "palace": 122,
+    "prison": 42,
+    "cement": 1,
+    "chariot": 73,
+    "linen": 31,
+    "grain": 1,
+    "wheat": 14,
+    "barley": 13,
+    "corn": 70,
+    "grape": 9,
+    "wine": 43,
+    "salt": 9,
+    "road": 62,
+    "leprosy": 6,
+    "plow": 11,
+    "sickle": 1,
+    "building": 136,
+    "judge": 83,
+    "land_of_jerusalem": 1,
+    "timber": 13,
+    "plate": 13,
+    "tempest": 2,
+    "whirlwind": 1,
+    "earthquake": 15,
+    "darkness": 8,
+    "com": 1,
+    "timothy": 2
+   }
+  },
+  "josephus_wars_whiston": {
+   "world": "near_east",
+   "register": "josephus",
+   "words": 234992,
+   "things_present": 60,
+   "counts": {
+    "horse": 46,
+    "ass": 2,
+    "ox": 5,
+    "cattle": 9,
+    "sheep": 3,
+    "flock_herd": 2,
+    "elephant": 4,
+    "swine": 1,
+    "bee": 1,
+    "dog": 9,
+    "serpent": 4,
+    "fortification": 23,
+    "armor": 50,
+    "sword": 79,
+    "dagger": 2,
+    "ax": 4,
+    "javelin": 8,
+    "spear": 9,
+    "arrow": 12,
+    "quiver": 2,
+    "sling": 1,
+    "shield": 19,
+    "breastplate": 7,
+    "army": 317,
+    "trumpet": 11,
+    "cord": 3,
+    "ladder": 12,
+    "tent": 10,
+    "brass": 7,
+    "iron": 21,
+    "furnace": 1,
+    "chain": 4,
+    "jew": 691,
+    "temple": 370,
+    "synagogue": 6,
+    "city": 972,
+    "king": 396,
+    "palace": 77,
+    "prison": 30,
+    "glass": 2,
+    "cement": 1,
+    "chariot": 1,
+    "linen": 6,
+    "wheat": 2,
+    "barley": 2,
+    "corn": 26,
+    "grape": 4,
+    "wine": 5,
+    "salt": 2,
+    "road": 24,
+    "leprosy": 4,
+    "building": 37,
+    "judge": 24,
+    "timber": 5,
+    "plate": 6,
+    "tempest": 1,
+    "earthquake": 9,
+    "darkness": 1,
+    "timothy": 2,
+    "ether": 3
+   }
+  },
+  "brinton_maya_chronicles_and_rig_veda": {
+   "world": "mesoamerica",
+   "register": "native",
+   "words": 10522,
+   "things_present": 18,
+   "counts": {
+    "horse": 1,
+    "dog": 1,
+    "serpent": 3,
+    "spear": 2,
+    "arrow": 5,
+    "shield": 2,
+    "trumpet": 1,
+    "temple": 4,
+    "city": 11,
+    "king": 29,
+    "palace": 1,
+    "prison": 3,
+    "wine": 1,
+    "salt": 1,
+    "road": 5,
+    "building": 2,
+    "judge": 2,
+    "com": 1
+   }
+  },
+  "brinton_annals_cakchiquels_1885": {
+   "world": "mesoamerica",
+   "register": "native",
+   "words": 19432,
+   "things_present": 19,
+   "counts": {
+    "horse": 2,
+    "dog": 2,
+    "serpent": 1,
+    "armor": 2,
+    "sword": 2,
+    "arrow": 9,
+    "quiver": 1,
+    "shield": 18,
+    "trumpet": 3,
+    "cord": 1,
+    "city": 42,
+    "king": 117,
+    "palace": 1,
+    "corn": 1,
+    "road": 15,
+    "building": 1,
+    "judge": 1,
+    "earthquake": 1,
+    "darkness": 6
+   }
+  },
+  "brinton_nahuatl_poetry_1887": {
+   "world": "mesoamerica",
+   "register": "native",
+   "words": 9573,
+   "things_present": 10,
+   "counts": {
+    "serpent": 2,
+    "sword": 1,
+    "arrow": 3,
+    "shield": 9,
+    "trumpet": 1,
+    "temple": 1,
+    "city": 1,
+    "wine": 6,
+    "judge": 1,
+    "plate": 1
+   }
+  },
+  "popol_vuh_spence_1908": {
+   "world": "mesoamerica",
+   "register": "native",
+   "words": 12827,
+   "things_present": 16,
+   "counts": {
+    "dragon": 1,
+    "chicken": 2,
+    "dog": 6,
+    "serpent": 11,
+    "temple": 1,
+    "city": 8,
+    "king": 8,
+    "palace": 2,
+    "grain": 3,
+    "corn": 1,
+    "road": 1,
+    "building": 3,
+    "plate": 1,
+    "tempest": 1,
+    "earthquake": 1,
+    "darkness": 3
+   }
+  },
+  "popol_vuh_christenson": {
+   "world": "mesoamerica",
+   "register": "native",
+   "words": 109219,
+   "things_present": 41,
+   "counts": {
+    "horse": 3,
+    "cattle": 1,
+    "flock_herd": 1,
+    "bee": 7,
+    "lion": 1,
+    "dragon": 2,
+    "chicken": 4,
+    "dog": 21,
+    "serpent": 71,
+    "fortification": 2,
+    "sword": 2,
+    "dagger": 5,
+    "ax": 10,
+    "arrow": 27,
+    "shield": 14,
+    "army": 2,
+    "cord": 5,
+    "furnace": 2,
+    "copper": 1,
+    "temple": 40,
+    "city": 45,
+    "king": 30,
+    "palace": 9,
+    "prison": 1,
+    "glass": 1,
+    "cement": 1,
+    "linen": 1,
+    "grain": 19,
+    "wheat": 5,
+    "corn": 16,
+    "salt": 2,
+    "highway": 1,
+    "road": 48,
+    "plow": 1,
+    "building": 12,
+    "judge": 7,
+    "plate": 6,
+    "earthquake": 11,
+    "darkness": 30,
+    "sam": 3,
+    "com": 1
+   }
+  },
+  "bernal_diaz_keatinge_1800": {
+   "world": "mesoamerica",
+   "register": "chronicle",
+   "words": 239048,
+   "things_present": 62,
+   "counts": {
+    "horse": 167,
+    "ox": 1,
+    "cattle": 4,
+    "goat": 2,
+    "sheep": 2,
+    "flock_herd": 8,
+    "elephant": 1,
+    "swine": 2,
+    "bee": 3,
+    "lion": 111,
+    "dragon": 3,
+    "chicken": 9,
+    "dog": 22,
+    "serpent": 10,
+    "fortification": 11,
+    "armor": 17,
+    "sword": 58,
+    "ax": 1,
+    "arrow": 57,
+    "sling": 8,
+    "shield": 7,
+    "breastplate": 1,
+    "army": 115,
+    "trumpet": 15,
+    "cord": 7,
+    "ladder": 1,
+    "brass": 3,
+    "iron": 13,
+    "ore": 1,
+    "copper": 12,
+    "chain": 18,
+    "jew": 5,
+    "temple": 134,
+    "city": 211,
+    "king": 198,
+    "palace": 33,
+    "prison": 9,
+    "barn": 2,
+    "glass": 11,
+    "cement": 1,
+    "pearl": 7,
+    "silk": 4,
+    "grain": 9,
+    "wheat": 2,
+    "corn": 16,
+    "wine": 11,
+    "road": 67,
+    "machinery": 2,
+    "plow": 1,
+    "sickle": 1,
+    "building": 45,
+    "lawyer": 2,
+    "judge": 22,
+    "timber": 36,
+    "plate": 24,
+    "tempest": 3,
+    "earthquake": 5,
+    "darkness": 2,
+    "com": 7,
+    "kim": 1,
+    "alma": 1,
+    "jonas": 1
+   }
+  },
+  "solis_conquest_of_mexico_1724": {
+   "world": "mesoamerica",
+   "register": "chronicle",
+   "words": 244003,
+   "things_present": 60,
+   "counts": {
+    "horse": 109,
+    "ass": 3,
+    "cow": 1,
+    "ox": 4,
+    "cattle": 1,
+    "sheep": 1,
+    "flock_herd": 4,
+    "bee": 6,
+    "lion": 4,
+    "chicken": 6,
+    "dog": 1,
+    "serpent": 6,
+    "fortification": 63,
+    "armor": 3,
+    "sword": 64,
+    "scimitar": 1,
+    "dagger": 1,
+    "ax": 4,
+    "spear": 4,
+    "arrow": 57,
+    "quiver": 2,
+    "sling": 8,
+    "shield": 11,
+    "breastplate": 2,
+    "army": 364,
+    "trumpet": 3,
+    "ladder": 1,
+    "tent": 4,
+    "steel": 1,
+    "brass": 1,
+    "iron": 11,
+    "ore": 4,
+    "furnace": 2,
+    "copper": 4,
+    "chain": 5,
+    "temple": 113,
+    "city": 303,
+    "king": 230,
+    "palace": 59,
+    "prison": 11,
+    "glass": 11,
+    "cement": 1,
+    "pearl": 1,
+    "silk": 1,
+    "grain": 4,
+    "wheat": 4,
+    "corn": 5,
+    "wine": 4,
+    "salt": 7,
+    "road": 84,
+    "sickle": 1,
+    "building": 59,
+    "judge": 24,
+    "timber": 5,
+    "plate": 8,
+    "tempest": 3,
+    "earthquake": 1,
+    "darkness": 7,
+    "com": 12,
+    "ether": 1
+   }
+  },
+  "cusick_1827": {
+   "world": "american",
+   "register": "antiquities",
+   "words": 13663,
+   "things_present": 16,
+   "counts": {
+    "lion": 2,
+    "dog": 9,
+    "serpent": 25,
+    "fortification": 45,
+    "ax": 1,
+    "arrow": 6,
+    "army": 10,
+    "chain": 2,
+    "city": 1,
+    "king": 17,
+    "corn": 4,
+    "grape": 1,
+    "salt": 1,
+    "whirlwind": 1,
+    "darkness": 3,
+    "com": 2
+   }
+  },
+  "priest_american_antiquities_1833": {
+   "world": "american",
+   "register": "antiquities",
+   "words": 158158,
+   "things_present": 65,
+   "counts": {
+    "horse": 19,
+    "ox": 8,
+    "cattle": 2,
+    "goat": 3,
+    "sheep": 5,
+    "flock_herd": 5,
+    "elephant": 12,
+    "lion": 8,
+    "dragon": 4,
+    "chicken": 6,
+    "dog": 17,
+    "serpent": 35,
+    "fortification": 122,
+    "armor": 5,
+    "sword": 26,
+    "ax": 30,
+    "javelin": 1,
+    "spear": 9,
+    "arrow": 25,
+    "quiver": 2,
+    "sling": 23,
+    "shield": 3,
+    "breastplate": 1,
+    "army": 7,
+    "trumpet": 2,
+    "cord": 1,
+    "tent": 13,
+    "steel": 17,
+    "brass": 45,
+    "iron": 75,
+    "ore": 20,
+    "furnace": 3,
+    "copper": 70,
+    "chain": 36,
+    "jew": 71,
+    "temple": 72,
+    "city": 110,
+    "king": 82,
+    "palace": 12,
+    "prison": 8,
+    "barn": 1,
+    "glass": 15,
+    "cement": 5,
+    "chariot": 3,
+    "pearl": 5,
+    "silk": 1,
+    "linen": 3,
+    "grain": 6,
+    "corn": 6,
+    "grape": 8,
+    "wine": 3,
+    "salt": 10,
+    "highway": 4,
+    "road": 39,
+    "machinery": 2,
+    "plow": 5,
+    "building": 53,
+    "judge": 9,
+    "timber": 29,
+    "plate": 50,
+    "tempest": 3,
+    "earthquake": 24,
+    "com": 3,
+    "kim": 2,
+    "ether": 3
+   }
+  },
+  "priest_wonders_1826": {
+   "world": "american",
+   "register": "antiquities",
+   "words": 284442,
+   "things_present": 79,
+   "counts": {
+    "horse": 130,
+    "ass": 13,
+    "cow": 10,
+    "ox": 5,
+    "cattle": 16,
+    "goat": 15,
+    "sheep": 6,
+    "flock_herd": 21,
+    "elephant": 23,
+    "swine": 1,
+    "bee": 5,
+    "lion": 13,
+    "moth": 1,
+    "dragon": 34,
+    "chicken": 13,
+    "dog": 16,
+    "serpent": 199,
+    "fortification": 13,
+    "armor": 4,
+    "sword": 27,
+    "dagger": 2,
+    "ax": 4,
+    "javelin": 6,
+    "spear": 14,
+    "arrow": 34,
+    "fiery_dart": 1,
+    "sling": 7,
+    "shield": 7,
+    "breastplate": 4,
+    "army": 36,
+    "trumpet": 5,
+    "cord": 11,
+    "ladder": 4,
+    "tent": 25,
+    "steel": 2,
+    "brass": 5,
+    "iron": 75,
+    "ore": 11,
+    "furnace": 9,
+    "copper": 10,
+    "chain": 19,
+    "jew": 55,
+    "temple": 100,
+    "synagogue": 1,
+    "city": 117,
+    "king": 129,
+    "palace": 28,
+    "prison": 22,
+    "barn": 2,
+    "glass": 35,
+    "cement": 1,
+    "chariot": 9,
+    "pearl": 7,
+    "silk": 2,
+    "linen": 6,
+    "grain": 28,
+    "wheat": 3,
+    "barley": 2,
+    "corn": 16,
+    "grape": 1,
+    "wine": 25,
+    "salt": 21,
+    "highway": 2,
+    "road": 52,
+    "leprosy": 1,
+    "plow": 2,
+    "building": 19,
+    "judge": 51,
+    "timber": 5,
+    "bellows": 2,
+    "plate": 15,
+    "tempest": 5,
+    "whirlwind": 7,
+    "earthquake": 45,
+    "darkness": 40,
+    "sam": 2,
+    "com": 11,
+    "jonas": 5,
+    "ether": 1
+   }
+  },
+  "clinton_discourse_and_western_new_york": {
+   "world": "american",
+   "register": "antiquities",
+   "words": 26807,
+   "things_present": 30,
+   "counts": {
+    "horse": 2,
+    "goat": 1,
+    "elephant": 1,
+    "swine": 1,
+    "lion": 1,
+    "fortification": 60,
+    "sword": 3,
+    "ax": 4,
+    "arrow": 3,
+    "shield": 1,
+    "army": 11,
+    "ladder": 1,
+    "iron": 7,
+    "copper": 1,
+    "chain": 10,
+    "temple": 1,
+    "city": 3,
+    "king": 6,
+    "prison": 1,
+    "grain": 2,
+    "corn": 2,
+    "salt": 1,
+    "road": 5,
+    "building": 1,
+    "judge": 5,
+    "timber": 2,
+    "earthquake": 2,
+    "darkness": 2,
+    "com": 1,
+    "ether": 1
+   }
+  },
+  "adair_american_indians_1775": {
+   "world": "american",
+   "register": "antiquities",
+   "words": 202895,
+   "things_present": 68,
+   "counts": {
+    "horse": 101,
+    "ass": 3,
+    "cow": 6,
+    "ox": 5,
+    "cattle": 17,
+    "goat": 5,
+    "sheep": 4,
+    "flock_herd": 11,
+    "elephant": 1,
+    "swine": 13,
+    "bee": 5,
+    "lion": 21,
+    "chicken": 1,
+    "dog": 13,
+    "serpent": 59,
+    "fortification": 146,
+    "sword": 8,
+    "ax": 8,
+    "javelin": 1,
+    "arrow": 33,
+    "quiver": 3,
+    "breastplate": 4,
+    "army": 18,
+    "trumpet": 3,
+    "cord": 1,
+    "ladder": 3,
+    "tent": 6,
+    "steel": 2,
+    "brass": 8,
+    "iron": 9,
+    "ore": 3,
+    "copper": 10,
+    "chain": 12,
+    "jew": 132,
+    "temple": 70,
+    "synagogue": 2,
+    "city": 15,
+    "king": 40,
+    "palace": 5,
+    "prison": 1,
+    "glass": 6,
+    "cement": 2,
+    "chariot": 6,
+    "silk": 10,
+    "linen": 1,
+    "grain": 12,
+    "wheat": 2,
+    "barley": 2,
+    "corn": 45,
+    "grape": 15,
+    "wine": 17,
+    "salt": 2,
+    "road": 5,
+    "plow": 1,
+    "sickle": 9,
+    "building": 9,
+    "lawyer": 2,
+    "judge": 16,
+    "timber": 15,
+    "bellows": 1,
+    "plate": 20,
+    "whirlwind": 2,
+    "darkness": 14,
+    "sam": 5,
+    "com": 42,
+    "kim": 4,
+    "jonas": 1,
+    "omni": 2
+   }
+  },
+  "seaver_jemison_1826": {
+   "world": "american",
+   "register": "narrative",
+   "words": 51674,
+   "things_present": 29,
+   "counts": {
+    "horse": 26,
+    "cow": 10,
+    "ox": 3,
+    "cattle": 9,
+    "sheep": 1,
+    "chicken": 2,
+    "dog": 6,
+    "serpent": 13,
+    "fortification": 66,
+    "ax": 1,
+    "arrow": 6,
+    "army": 46,
+    "cord": 2,
+    "tent": 1,
+    "brass": 1,
+    "chain": 8,
+    "city": 1,
+    "king": 22,
+    "prison": 1,
+    "barn": 4,
+    "grain": 2,
+    "corn": 44,
+    "road": 3,
+    "plow": 1,
+    "building": 3,
+    "judge": 2,
+    "timber": 9,
+    "darkness": 1,
+    "com": 9
+   }
+  },
+  "hale_genius_of_oblivion_1823": {
+   "world": "american",
+   "register": "narrative",
+   "words": 18942,
+   "things_present": 30,
+   "counts": {
+    "goat": 1,
+    "flock_herd": 1,
+    "lion": 1,
+    "chicken": 1,
+    "fortification": 20,
+    "armor": 1,
+    "sword": 5,
+    "javelin": 1,
+    "arrow": 3,
+    "sling": 1,
+    "shield": 1,
+    "steel": 4,
+    "iron": 2,
+    "copper": 1,
+    "chain": 6,
+    "temple": 4,
+    "city": 16,
+    "king": 9,
+    "palace": 3,
+    "glass": 1,
+    "cement": 2,
+    "chariot": 1,
+    "leprosy": 1,
+    "building": 1,
+    "judge": 3,
+    "tempest": 6,
+    "whirlwind": 3,
+    "earthquake": 1,
+    "darkness": 5,
+    "ether": 1
+   }
+  },
+  "ss-manuscript-story-1885": {
+   "world": "american",
+   "register": "narrative",
+   "words": 42305,
+   "things_present": 37,
+   "counts": {
+    "horse": 5,
+    "cow": 3,
+    "sheep": 1,
+    "flock_herd": 1,
+    "elephant": 1,
+    "dog": 9,
+    "serpent": 2,
+    "fortification": 45,
+    "sword": 54,
+    "dagger": 1,
+    "ax": 1,
+    "spear": 14,
+    "arrow": 7,
+    "army": 94,
+    "trumpet": 1,
+    "tent": 1,
+    "brass": 1,
+    "iron": 7,
+    "ore": 1,
+    "furnace": 2,
+    "copper": 1,
+    "chain": 2,
+    "temple": 1,
+    "city": 66,
+    "king": 71,
+    "palace": 6,
+    "wheat": 1,
+    "corn": 5,
+    "wine": 2,
+    "road": 4,
+    "building": 5,
+    "judge": 5,
+    "timber": 7,
+    "earthquake": 2,
+    "darkness": 8,
+    "com": 14,
+    "mormon": 23
+   }
+  },
+  "gh-1816-late-war": {
+   "world": "american",
+   "register": "narrative",
+   "words": 55534,
+   "things_present": 45,
+   "counts": {
+    "horse": 7,
+    "ass": 3,
+    "ox": 1,
+    "cattle": 3,
+    "sheep": 4,
+    "flock_herd": 1,
+    "elephant": 1,
+    "lion": 13,
+    "dragon": 1,
+    "dog": 4,
+    "fortification": 83,
+    "sword": 20,
+    "spear": 1,
+    "arrow": 1,
+    "sling": 1,
+    "shield": 1,
+    "army": 169,
+    "trumpet": 4,
+    "ladder": 1,
+    "tent": 9,
+    "steel": 1,
+    "brass": 7,
+    "iron": 13,
+    "furnace": 5,
+    "temple": 4,
+    "city": 65,
+    "king": 298,
+    "palace": 2,
+    "glass": 1,
+    "chariot": 1,
+    "linen": 1,
+    "wheat": 2,
+    "barley": 1,
+    "corn": 2,
+    "wine": 9,
+    "salt": 1,
+    "road": 1,
+    "plow": 1,
+    "building": 1,
+    "judge": 2,
+    "plate": 1,
+    "whirlwind": 1,
+    "earthquake": 3,
+    "darkness": 4,
+    "com": 17
+   }
+  },
+  "es-1825-view-of-the-hebrews": {
+   "world": "american",
+   "register": "antiquities",
+   "words": 105466,
+   "things_present": 57,
+   "counts": {
+    "horse": 8,
+    "ass": 3,
+    "cow": 1,
+    "cattle": 3,
+    "goat": 1,
+    "flock_herd": 5,
+    "bee": 16,
+    "lion": 2,
+    "dragon": 2,
+    "chicken": 2,
+    "dog": 2,
+    "serpent": 10,
+    "fortification": 45,
+    "sword": 33,
+    "dagger": 1,
+    "ax": 1,
+    "spear": 3,
+    "arrow": 5,
+    "shield": 2,
+    "breastplate": 7,
+    "army": 19,
+    "trumpet": 7,
+    "tent": 5,
+    "steel": 1,
+    "brass": 2,
+    "iron": 14,
+    "ore": 5,
+    "furnace": 1,
+    "copper": 20,
+    "chain": 4,
+    "jew": 294,
+    "temple": 84,
+    "city": 95,
+    "king": 58,
+    "palace": 5,
+    "prison": 1,
+    "glass": 3,
+    "chariot": 5,
+    "grain": 1,
+    "corn": 18,
+    "grape": 5,
+    "wine": 7,
+    "highway": 6,
+    "road": 3,
+    "leprosy": 1,
+    "plow": 1,
+    "building": 17,
+    "judge": 7,
+    "plate": 17,
+    "tempest": 2,
+    "whirlwind": 2,
+    "earthquake": 2,
+    "darkness": 5,
+    "sam": 4,
+    "josh": 1,
+    "com": 5,
+    "ether": 1
+   }
+  },
+  "robertson_history_of_america": {
+   "world": "scored_only",
+   "register": "extra",
+   "words": 363215,
+   "things_present": 63,
+   "counts": {
+    "horse": 50,
+    "cow": 2,
+    "ox": 2,
+    "cattle": 16,
+    "sheep": 5,
+    "flock_herd": 17,
+    "elephant": 4,
+    "bee": 1,
+    "lion": 7,
+    "dragon": 1,
+    "chicken": 24,
+    "dog": 14,
+    "serpent": 4,
+    "fortification": 34,
+    "armor": 6,
+    "sword": 32,
+    "dagger": 4,
+    "javelin": 1,
+    "spear": 10,
+    "arrow": 18,
+    "sling": 1,
+    "army": 73,
+    "trumpet": 1,
+    "cord": 7,
+    "tent": 14,
+    "iron": 14,
+    "ore": 16,
+    "furnace": 2,
+    "copper": 16,
+    "chain": 20,
+    "jew": 16,
+    "temple": 59,
+    "city": 128,
+    "king": 202,
+    "palace": 16,
+    "prison": 8,
+    "barn": 1,
+    "glass": 1,
+    "cement": 2,
+    "pearl": 18,
+    "silk": 5,
+    "grain": 12,
+    "wheat": 1,
+    "corn": 6,
+    "grape": 4,
+    "wine": 7,
+    "salt": 6,
+    "highway": 1,
+    "road": 29,
+    "leprosy": 1,
+    "plow": 3,
+    "building": 41,
+    "lawyer": 11,
+    "judge": 59,
+    "timber": 11,
+    "bellows": 1,
+    "plate": 23,
+    "tempest": 3,
+    "earthquake": 1,
+    "darkness": 6,
+    "com": 136,
+    "alma": 2,
+    "ether": 2
+   }
+  },
+  "humboldt_researches_1814": {
+   "world": "scored_only",
+   "register": "extra",
+   "words": 147472,
+   "things_present": 56,
+   "counts": {
+    "horse": 21,
+    "ass": 1,
+    "ox": 10,
+    "cattle": 1,
+    "goat": 3,
+    "sheep": 5,
+    "flock_herd": 3,
+    "elephant": 11,
+    "swine": 1,
+    "bee": 1,
+    "lion": 11,
+    "dragon": 7,
+    "dog": 32,
+    "serpent": 66,
+    "fortification": 5,
+    "armor": 2,
+    "sword": 1,
+    "ax": 2,
+    "arrow": 13,
+    "sling": 1,
+    "shield": 3,
+    "army": 10,
+    "cord": 8,
+    "ladder": 1,
+    "tent": 3,
+    "steel": 2,
+    "brass": 7,
+    "iron": 6,
+    "ore": 2,
+    "copper": 17,
+    "chain": 43,
+    "jew": 3,
+    "temple": 95,
+    "city": 94,
+    "king": 119,
+    "palace": 34,
+    "prison": 1,
+    "glass": 1,
+    "cement": 10,
+    "pearl": 8,
+    "grain": 9,
+    "wheat": 2,
+    "corn": 7,
+    "wine": 1,
+    "salt": 6,
+    "road": 48,
+    "plow": 1,
+    "sickle": 2,
+    "building": 34,
+    "lawyer": 2,
+    "judge": 15,
+    "timber": 1,
+    "plate": 236,
+    "tempest": 10,
+    "earthquake": 13,
+    "darkness": 3
+   }
+  },
+  "acosta_natural_moral_history": {
+   "world": "scored_only",
+   "register": "extra",
+   "words": 204243,
+   "things_present": 64,
+   "counts": {
+    "horse": 37,
+    "ass": 5,
+    "cow": 10,
+    "ox": 3,
+    "cattle": 4,
+    "goat": 2,
+    "sheep": 8,
+    "flock_herd": 4,
+    "elephant": 3,
+    "swine": 8,
+    "bee": 98,
+    "lion": 12,
+    "chicken": 5,
+    "dog": 8,
+    "serpent": 19,
+    "fortification": 3,
+    "armor": 1,
+    "sword": 11,
+    "dagger": 2,
+    "ax": 1,
+    "arrow": 4,
+    "sling": 3,
+    "breastplate": 1,
+    "army": 16,
+    "trumpet": 5,
+    "cord": 6,
+    "ladder": 6,
+    "tent": 6,
+    "brass": 2,
+    "iron": 5,
+    "ore": 8,
+    "furnace": 18,
+    "copper": 20,
+    "chain": 3,
+    "jew": 2,
+    "temple": 130,
+    "city": 21,
+    "king": 405,
+    "palace": 5,
+    "prison": 6,
+    "chariot": 1,
+    "pearl": 6,
+    "silk": 1,
+    "grain": 2,
+    "wheat": 7,
+    "barley": 3,
+    "corn": 4,
+    "grape": 13,
+    "wine": 38,
+    "salt": 21,
+    "road": 3,
+    "machinery": 2,
+    "building": 35,
+    "judge": 5,
+    "timber": 9,
+    "bellows": 1,
+    "plate": 14,
+    "tempest": 10,
+    "earthquake": 28,
+    "darkness": 4,
+    "sam": 1,
+    "com": 25,
+    "omni": 1,
+    "ether": 1
+   }
+  },
+  "drake_indian_biography_1832": {
+   "world": "scored_only",
+   "register": "extra",
+   "words": 107639,
+   "things_present": 45,
+   "counts": {
+    "horse": 24,
+    "cow": 3,
+    "cattle": 10,
+    "sheep": 1,
+    "lion": 1,
+    "moth": 1,
+    "chicken": 3,
+    "dog": 7,
+    "serpent": 2,
+    "fortification": 121,
+    "sword": 20,
+    "ax": 3,
+    "spear": 3,
+    "arrow": 15,
+    "quiver": 1,
+    "sling": 1,
+    "shield": 1,
+    "army": 67,
+    "trumpet": 2,
+    "tent": 6,
+    "brass": 1,
+    "copper": 5,
+    "chain": 5,
+    "jew": 2,
+    "city": 3,
+    "king": 48,
+    "prison": 5,
+    "barn": 3,
+    "glass": 3,
+    "cement": 1,
+    "pearl": 2,
+    "grain": 2,
+    "wheat": 1,
+    "corn": 48,
+    "grape": 3,
+    "wine": 2,
+    "salt": 5,
+    "road": 5,
+    "building": 6,
+    "judge": 3,
+    "whirlwind": 1,
+    "darkness": 4,
+    "sam": 9,
+    "com": 21,
+    "timothy": 1
+   }
+  },
+  "mathews_behemoth_1839": {
+   "world": "scored_only",
+   "register": "extra",
+   "words": 43958,
+   "things_present": 57,
+   "counts": {
+    "horse": 2,
+    "ox": 2,
+    "cattle": 1,
+    "sheep": 1,
+    "flock_herd": 6,
+    "elephant": 22,
+    "lion": 1,
+    "moth": 9,
+    "dog": 4,
+    "serpent": 3,
+    "fortification": 36,
+    "armor": 4,
+    "sword": 18,
+    "scimitar": 1,
+    "dagger": 1,
+    "ax": 2,
+    "spear": 3,
+    "arrow": 5,
+    "quiver": 2,
+    "shield": 6,
+    "breastplate": 1,
+    "army": 16,
+    "trumpet": 8,
+    "ladder": 1,
+    "tent": 1,
+    "steel": 7,
+    "brass": 4,
+    "iron": 13,
+    "ore": 3,
+    "furnace": 5,
+    "copper": 20,
+    "chain": 5,
+    "temple": 3,
+    "city": 14,
+    "king": 3,
+    "palace": 1,
+    "prison": 3,
+    "glass": 3,
+    "chariot": 6,
+    "linen": 1,
+    "grain": 1,
+    "corn": 2,
+    "salt": 1,
+    "road": 5,
+    "machinery": 2,
+    "plow": 1,
+    "sickle": 1,
+    "building": 5,
+    "judge": 1,
+    "timber": 3,
+    "plate": 11,
+    "tempest": 4,
+    "whirlwind": 3,
+    "earthquake": 2,
+    "darkness": 9,
+    "com": 8,
+    "timothy": 1
+   }
+  },
+  "clavigero_history_of_mexico_1787": {
+   "world": "mesoamerica",
+   "register": "chronicle",
+   "words": 408122,
+   "things_present": 74,
+   "counts": {
+    "horse": 110,
+    "ass": 12,
+    "cow": 9,
+    "ox": 29,
+    "cattle": 4,
+    "goat": 21,
+    "sheep": 31,
+    "flock_herd": 14,
+    "elephant": 25,
+    "bee": 20,
+    "lion": 38,
+    "dragon": 6,
+    "chicken": 15,
+    "dog": 80,
+    "serpent": 80,
+    "fortification": 36,
+    "armor": 16,
+    "sword": 37,
+    "dagger": 2,
+    "ax": 19,
+    "spear": 5,
+    "arrow": 57,
+    "sling": 4,
+    "shield": 33,
+    "breastplate": 3,
+    "army": 257,
+    "cord": 19,
+    "ladder": 3,
+    "tent": 2,
+    "steel": 5,
+    "iron": 40,
+    "ore": 7,
+    "furnace": 7,
+    "copper": 32,
+    "chain": 12,
+    "jew": 1,
+    "temple": 379,
+    "city": 698,
+    "king": 1186,
+    "palace": 152,
+    "prison": 32,
+    "barn": 3,
+    "glass": 6,
+    "cement": 4,
+    "chariot": 1,
+    "pearl": 15,
+    "silk": 13,
+    "linen": 3,
+    "grain": 46,
+    "wheat": 17,
+    "barley": 7,
+    "corn": 23,
+    "grape": 9,
+    "wine": 36,
+    "salt": 16,
+    "highway": 3,
+    "road": 112,
+    "leprosy": 4,
+    "plow": 3,
+    "building": 103,
+    "lawyer": 2,
+    "judge": 47,
+    "timber": 10,
+    "plate": 45,
+    "tempest": 2,
+    "whirlwind": 1,
+    "earthquake": 16,
+    "darkness": 7,
+    "sam": 1,
+    "gid": 1,
+    "com": 37,
+    "kim": 1,
+    "omni": 2,
+    "ether": 6
+   }
+  }
+ },
+ "roper_totals": {
+  "all": {
+   "confirmed": 175,
+   "partial": 31,
+   "unconfirmed": 21,
+   "total": 227
+  },
+  "stated": {
+   "confirmed": 174,
+   "partial": 31,
+   "unconfirmed": 21,
+   "total": 226
+  },
+  "by_chapter": {
+   "Book of Mormon Animals": {
+    "confirmed": 23,
+    "partial": 4,
+    "unconfirmed": 1,
+    "total": 28
+   },
+   "Warfare in the Book of Mormon": {
+    "confirmed": 32,
+    "partial": 5,
+    "unconfirmed": 2,
+    "total": 39
+   },
+   "Metals and Metallurgy": {
+    "confirmed": 8,
+    "partial": 5,
+    "unconfirmed": 3,
+    "total": 16
+   },
+   "Ancient Culture": {
+    "confirmed": 47,
+    "partial": 2,
+    "unconfirmed": 5,
+    "total": 54
+   },
+   "Book of Mormon Names": {
+    "confirmed": 19,
+    "partial": 10,
+    "unconfirmed": 5,
+    "total": 34
+   },
+   "Old World Journeys by Land and Sea": {
+    "confirmed": 21,
+    "partial": 0,
+    "unconfirmed": 0,
+    "total": 21
+   },
+   "Records, Writing, and Language": {
+    "confirmed": 11,
+    "partial": 3,
+    "unconfirmed": 5,
+    "total": 19
+   },
+   "Events in Third Nephi": {
+    "confirmed": 14,
+    "partial": 2,
+    "unconfirmed": 0,
+    "total": 16
+   }
+  },
+  "by_era_first_raised": {
+   "1830-1844": {
+    "confirmed": 75,
+    "partial": 19,
+    "unconfirmed": 7,
+    "total": 101
+   },
+   "1845-1965": {
+    "confirmed": 48,
+    "partial": 9,
+    "unconfirmed": 9,
+    "total": 66
+   },
+   "1966-2024 (by elimination: absent from figures 64-67)": {
+    "confirmed": 52,
+    "partial": 3,
+    "unconfirmed": 5,
+    "total": 60
+   }
+  },
+  "by_kind": {
+   "linguistic_reading": {
+    "confirmed": 8,
+    "partial": 0,
+    "unconfirmed": 0,
+    "total": 8
+   },
+   "new_world_in_period": {
+    "confirmed": 2,
+    "partial": 4,
+    "unconfirmed": 0,
+    "total": 6
+   },
+   "new_world_period_unstated": {
+    "confirmed": 20,
+    "partial": 5,
+    "unconfirmed": 9,
+    "total": 34
+   },
+   "not_stated": {
+    "confirmed": 135,
+    "partial": 21,
+    "unconfirmed": 12,
+    "total": 168
+   },
+   "old_and_new_world": {
+    "confirmed": 1,
+    "partial": 0,
+    "unconfirmed": 0,
+    "total": 1
+   },
+   "old_world": {
+    "confirmed": 9,
+    "partial": 1,
+    "unconfirmed": 0,
+    "total": 10
+   }
+  },
+  "status_1844_from_figures": {
+   "unconfirmed": 92,
+   "confirmed": 7,
+   "partial": 2
+  },
+  "status_1965_from_figures": {
+   "confirmed": 33,
+   "unconfirmed": 118,
+   "conflict": 3,
+   "partial": 10
+  }
+ },
+ "config_sha256": "878c379ffed278f9ade30b3c621d852b74764b37b454fe26defdd741f80447d6",
+ "commit": "841465fcb746015ebd0ab152e7a6a53d9128384d"
+}

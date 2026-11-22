@@ -1747,7 +1747,8 @@ lab:                              # the research lab (exploratory tooling; reads
     tar: 0.95                      # placebo: threshold accepting this share of true-writer pairs
     same_voice_tolerance: 0.05     # W3: same-voice ordinary macro may fall at most this far below the base-referenced rule's
   anachronisms:                    # BOM-113 (lab; exploratory): Roper's anachronism tally with a control; rule-based counts now, simulated AI judging prepared only
-    items: data/lab/setting/anachronisms/items.json   # written by `python -m lab.anachronisms items` from the module's keyed list
+    items: data/lab/setting/anachronisms/items.json   # Roper 2025's own items, written by `python -m lab.anachronisms items` from his held chapters
+    items_standin: data/lab/setting/anachronisms/items_standin.json   # the stand-in list used before his chapters were held (Wikipedia, Coe via the note, memory)
     present_min: 1                 # an item "appears" in a text if counted at least this many times
     bible_min: 1                   # an item is a Bible item if counted at least this many times in the KJV Old + New Testaments (Apocrypha reported apart)
     seed: 20261121
