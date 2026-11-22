@@ -70,7 +70,7 @@ compares against.
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
 | BOM-126 | Phrases come from histories of the Revolution; Abinadi follows Bunyan | Donofrio; Davis 2012 | the claimed source alone | the claimed source ranked among every volume in the library | **Done** |
-| BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held | TBD; 11 passages keyed |
+| BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held | **Done** |
 | BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | **Done** |
 | BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1993; replies | examples from each side | every use in print 1780 to 1835, by year | **Counts done; meaning step waiting** |
 | BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed twice; not scored** |
@@ -1071,6 +1071,52 @@ The Bible-style imitations matter here: they copy the Bible's "and"s and its cad
 nothing (0.95).
 
 One fix after the first run: the scribes wrote "&" for "and" and my reader was dropping it.
+
+### The Isaiah chapters and Adam Clarke (BOM-122)
+
+About a third of Isaiah is quoted in the Book of Mormon, mostly word for word from the King
+James Bible, but not entirely. Colby Townsend argued in 2025 that some of the changes follow
+Adam Clarke's commentary, the big Methodist Bible commentary that was coming out in the 1820s.
+Kent Jackson replied that they do not. Both argued from a handful of verses.
+
+I lined up every quoted verse against the King James text. There are 552 changes in 263 of the
+420 verses. One thing shows at once, and it is not new but it is stark: 30 percent of the King
+James words the book changes or drops are words the King James printers put in italics (words
+the translators supplied). Of the words it keeps, 2 percent are italic.
+
+Then I searched all 252,431 books in the library printed before 1830 for each changed reading,
+in its verse. To know what a match is worth, I also made up 1,080 changes the Book of Mormon
+does not make, and searched for those too. A book that reworded Isaiah freely will "match" by
+accident, and the made-up changes measure how much.
+
+First, on a case with a known answer. Bishop Lowth published his own translation of Isaiah in
+1778. Given Lowth's changes, the search ranked the other printings of Lowth first, second,
+third and fourth among a quarter of a million books. So it can find a real source.
+
+| | Book of Mormon's real changes (523) | Made-up changes (1,080) |
+| --- | --- | --- |
+| Found in Clarke's commentary | 2 | 4 |
+| Found in any printing of Lowth | 13 | 4 |
+| Found in some book somewhere | 36% | 17% |
+| Found nowhere | 333 | |
+
+Clarke matches 2 of the real changes and 4 of the made-up ones. That is chance. By matches he
+ranks about 3,300th among the books in the library. The two he matches are small and common
+("briers" spelled "briars" is in 45 books). At the verses Townsend names, Clarke's volume has
+none of the Book of Mormon's wording.
+
+So by wording, Clarke is not a source of the Isaiah changes, and neither is any other single
+book: the best any one book does is 16 of 523. About two thirds of the changes are in no book
+I hold. The ones that are found are mostly either common ways of misquoting a famous verse or
+readings in older annotated family Bibles.
+
+One real limit. This finds shared wording. Two of Townsend's examples are a different kind of
+claim: that Clarke's note argues for a reading in his own words and the Book of Mormon then has
+that reading. A word search cannot see that. There are questions prepared to have each of
+Clarke's notes at those verses read for it; that step has not been run.
+
+This passed its check on the second design. The first had a bar I had set badly, and the
+second card says what changed and why.
 
 ## What I would want a reader to take from the whole set
 
