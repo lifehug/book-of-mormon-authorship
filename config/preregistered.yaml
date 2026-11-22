@@ -1028,6 +1028,8 @@ lab:                              # the research lab (exploratory tooling; reads
     ordinary_years: [1800, 1830]
     persists_min: 2                # persists = at least this many hand-confirmed own-words uses in different works
     old_author_died_before: 1740   # an author who died before this year marks an older text
+    second_model: opus             # 2026-11-22: the check of every claimed-sense answer is a second reading by this model, not the person the card asked for
+    checked_by: "a second reading by a different AI model (opus, simulated judging); not checked by a person"
     controls: data/controls/pseudo_biblical_primary.jsonl
     js_texts: ['data/private/candidates/js-*.jsonl', 'data/private/candidates/later/*.txt']
     frames_revised: [molten, cross, depressed, rebellion, rent, reserve, tell, begin_to, into_an_effect, somewhat_contentions, arrive_to]  # revised once after the frame test on the pilot sample (empty or swamped), before the full scan
@@ -1850,6 +1852,36 @@ lab:                              # the research lab (exploratory tooling; reads
       boudinot_star_1816: "internet_archive:starinwestorhumb00boud"
       rafinesque_annals_kentucky_1824: "internet_archive:ancienthistoryor00rafi"
       mcculloh_researches_1829: "institutional_books:32044009908534"
+  voice_encoder:                   # BOM-101 (lab; exploratory): fine-tune the second style encoder so one writer in two registers counts as the same; Mac GPU only; card data/private/lab/owner/2026-11-21-voice-encoder/card.md
+    base: data/corpus/style_embed/runs/style_v2/style.pt   # starting weights (the second encoder); never overwritten
+    out_dir: data/corpus/lab/voice_encoder
+    held_out_writers: ["southcott, joanna", "smith, elias"]  # BOM-99 writers among encoder authors (name prefix); Wroe, Snowden, Trapnel, Joseph Smith are none
+    exclude_genres: [uncertain, PARSE_FAIL, other]           # not registers
+    religious_genres: [sermon_devotional, pseudo_biblical]
+    title_jaccard_max: 0.5        # title keys this alike (word Jaccard), or one inside the other: same book
+    ngram: 10                     # text check: token run shared between two works' passages
+    ngram_share_max: 0.05         # this share of one work's passages sharing a run with the other's: same text
+    spot_sample: 200              # passing pairs listed by id for a reader
+    min_train_authors: 1000       # check (1) bar
+    max_text_flag_share: 0.05     # check (1) bar: pairs passing registry + title rules that the text check flags
+    authors_per_step: 16          # set by the step-0 trial (memory and speed on the Mac)
+    cross_step_share: 0.75        # steps with one register per side; the rest random non-duplicate pairs
+    religious_step_share: 0.5     # of cross-register steps, register A religious
+    steps: 1600                   # step-0 trial: 24 s a step at 16 authors (bf16; fp32 27 s) -> about 11 h on the Mac
+    warmup_steps: 100
+    lr_encoder: 1.0e-5
+    lr_head: 1.0e-4
+    min_lr_share: 0.1
+    precision: bf16               # MPS autocast; fp32 if the trial shows bf16 unstable
+    validate_every: 250
+    validation_authors: 300       # from the second encoder's validation split, fixed draw
+    test_authors: 400             # from BOM-30's held-out split, fixed draw
+    negatives_per_positive: 10
+    checkpoint_minutes: 20
+    trial_steps: 200
+    resamples: 1000
+    within_voice_tolerance: 0.03
+    seed: bom101
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
