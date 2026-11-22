@@ -1567,6 +1567,22 @@ lab:                              # the research lab (exploratory tooling; reads
       9: [1 Nephi, 6]
       10: [1 Nephi, 6]
       11: [2 Nephi, 11]
+  dictations:                      # BOM-104 (lab; exploratory): Joseph Smith's other dictated texts, and the Lectures on Faith; measures and word form are lab.two_voices*'s
+    candidates: [joseph_smith, sidney_rigdon, oliver_cowdery, ww_phelps, parley_pratt]
+    train_chunks: 8                # each candidate's first chunks (masked text): centroids and the author models' training slices
+    test_chunks: 10                # held-out chunks per candidate, drawn by seed, equal for all (all drop to the smallest if one has fewer)
+    profile_chunks: 4              # equal profiles for the distances of question A
+    resamples: 500
+    min_piece_words: 500           # a lecture's last piece is kept if at least this long
+    known_bar: 0.80                # macro own-author rate on held-out known writing, five candidates
+    min_each: 0.50                 # and every candidate at least this
+    clear_share: 0.95              # "closer to X than Y" / "grows" in at least this share of resamples
+    doses: {small: 2, larger: 8}   # author models: sequences of alm.seq tokens (the two_voices run's doses)
+    size: pilot                    # the 125M time-locked base model (Mac GPU only)
+    seed: 20261121
+    lectures_pages: [5, 74]        # 1835 Doctrine and Covenants printed pages
+    moses_pages: [1, 20]           # Old Testament Revision 1 editorial pages: Moses 1 to Moses 8 (Genesis 6:13)
+    periods: {"1828-30": [1828, 1830], "1831": [1831, 1831], "1832": [1832, 1832], "1833-34": [1833, 1834]}
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

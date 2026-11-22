@@ -89,7 +89,7 @@ compares against.
 
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
-| BOM-104 | The Books of Moses and Abraham share the voice; Rigdon wrote the *Lectures on Faith* | Phipps 1977; Reynolds 2005 | small samples | the study's models and encoders | TBD |
+| BOM-104 | The Books of Moses and Abraham share the voice; Rigdon wrote the *Lectures on Faith* | Phipps 1977; Reynolds 2005 | small samples | the study's models and encoders | **Check failed; not scored** |
 | BOM-105, BOM-99 | Smith's revelations and his letters look like two different writers | Holmes 1992; the first study | Smith alone | other writers with two voices (Southcott, Wroe, Trapnel, Snowden, Elias Smith) | **Done** on three measures; the author models do not give a stable answer |
 | BOM-100, BOM-101 | A model can be taught to see the person and not the scripture voice | this project | | the known-answer set from BOM-99 | TBD |
 
@@ -899,6 +899,39 @@ queue.
 
 Limits. The newspapers held are mostly from Rhode Island, Virginia and Washington, none from New
 York. The catalogue does not say where a book was printed. Reprints count once a copy.
+
+### Joseph Smith's other dictated texts, and the Lectures on Faith (BOM-104)
+
+Two questions. Do the Book of Moses, the Book of Abraham and the later revelations sit near the
+Book of Mormon, near Joseph Smith's ordinary writing, or near somebody else? And who wrote the
+1835 Lectures on Faith, which earlier studies give mostly to Sidney Rigdon?
+
+Both need the same thing first: a measure that can tell Smith, Rigdon, Cowdery, Phelps and
+Parley Pratt apart on writing I know is theirs. I held back ten 1,000-word pieces from each and
+asked every measure whose they were. Guessing gets 2 in 10.
+
+| Measure | Smith | Rigdon | Cowdery | Phelps | Pratt |
+| --- | --- | --- | --- | --- | --- |
+| Common words | 5 | 1 | 6 | 6 | 7 |
+| Common words, second way | 9 | 2 | 7 | 6 | 6 |
+| Style encoder one | 6 | 3 | 8 | 0 | 8 |
+| Style encoder two | 7 | 6 | 6 | 1 | 8 |
+| Author models, light tuning | 6 | 1 | 7 | 1 | 2 |
+| Author models, heavier tuning | 10 | 4 | 8 | 1 | 6 |
+
+I had said 8 in 10 on average and no one below 5. Nothing reached it. Rigdon, the man the
+published studies name, is the one hardest to recognise, and Phelps is nearly invisible. So I
+scored neither the dictated texts nor the Lectures, and this can neither confirm nor contradict
+the Rigdon attribution.
+
+The likely reason is the samples. Rigdon's signed writing here comes to 20,000 words. Four of
+the five men were printed in the same two church papers, perhaps through the same editor's
+pen. Smith's known writing is letters and a history, not doctrine.
+
+One thing I got wrong in the procedure: the author-model program scored every text in one
+pass, so numbers for the Book of Mormon and the Lectures were computed and saved before the
+check had been read. I did not look at them, and the program now refuses to read them when the
+check fails. It should have been two passes.
 
 ## What I would want a reader to take from the whole set
 
