@@ -1746,6 +1746,84 @@ lab:                              # the research lab (exploratory tooling; reads
     interval: 0.95
     tar: 0.95                      # placebo: threshold accepting this share of true-writer pairs
     same_voice_tolerance: 0.05     # W3: same-voice ordinary macro may fall at most this far below the base-referenced rule's
+  anachronisms:                    # BOM-113 (lab; exploratory): Roper's anachronism tally with a control; rule-based counts now, simulated AI judging prepared only
+    items: data/lab/setting/anachronisms/items.json   # written by `python -m lab.anachronisms items` from the module's keyed list
+    present_min: 1                 # an item "appears" in a text if counted at least this many times
+    bible_min: 1                   # an item is a Bible item if counted at least this many times in the KJV Old + New Testaments (Apocrypha reported apart)
+    seed: 20261121
+    planted_per_item: 5            # known-answer: copies of each countable item's first form planted at seeded positions in the KJV New Testament
+    bar_planted: 1.0               # share of items whose planted copies must all be recovered
+    documented_present: {kjv_old_testament: {horse: 10, chariot: 10}}   # known-answer: at least this many mentions
+    maize_forms: [maize, maiz, mahiz, indian corn]
+    maize_min: 1                   # known-answer: maize at least this often, summed over the Mesoamerican native texts
+    new_world_probes: [maize, cacao, tobacco, potato, tomato, llama, jaguar, tapir, chocolate]   # known-answer: none may occur in the KJV (OT, NT, Apocrypha); probes, not items
+    control_share_bar: 0.5         # yes: the named control holds at least this share of the countable items that occur in the Book of Mormon
+    control_share_low: 0.25        # no: below this share; between is "partly"
+    named_control: ss-manuscript-story-1885
+    alpha: 0.05                    # Fisher's exact test on the cross-tables (attempted only when Roper's statuses are keyed)
+    controls:                      # fixed before counting: modern books set in or claiming antiquity; then Bible-style books set in their own time (diction only); then a non-story
+      antiquity_story: {ss-manuscript-story-1885: "candidates:ss-manuscript-story-1885.txt", mathews_behemoth_1839: "setting:behemothlegend00mathrich", hale_genius_of_oblivion_1823: "setting:geniusofoblivion00hale"}
+      purported_ancient_chronicle: {oconnor_chronicles_of_eri_1822: "bible_style:chroniclesoferib02ocon", ilive_book_of_jasher_1751: "bible_style:bib_fict_4103140"}
+      bible_style_own_time: {gh-1816-late-war: "candidates:gh-1816-late-war.txt", snowden_american_revolution_1823: "bible_style:americanrevoluti00snow"}
+      about_antiquity_nonfiction: {es-1825-view-of-the-hebrews: "candidates:es-1825-view-of-the-hebrews.txt"}
+    judged_groups: [antiquity_story, purported_ancient_chronicle]   # control groups whose items are put to the judge (a setting in antiquity is claimed)
+    settings_claimed:              # the time and place each judged book claims, for the judging prompt (summaries written from memory by the AI; labelled so)
+      book_of_mormon: "the Americas, about 2500 BCE to 421 CE (main narrative 600 BCE to 421 CE)"
+      ss-manuscript-story-1885: "eastern North America, in the time of the Roman emperor Constantine (4th century CE)"
+      mathews_behemoth_1839: "the Ohio and Mississippi valleys among the mound-builders, before European contact"
+      hale_genius_of_oblivion_1823: "ancient America, settled from the ancient Mediterranean (from memory; check against the poem)"
+      oconnor_chronicles_of_eri_1822: "ancient Scythia, Iberia and Ireland, about 1000 BCE"
+      ilive_book_of_jasher_1751: "the ancient Near East of the Patriarchs and Moses"
+    window_words: 60               # judging prompts: words either side of a mention
+    windows_per_item: 2            # at most this many mentions per item per book shown to the judge (first ones, then seeded)
+    judge_model: sonnet            # a model that knows archaeology; the queue's default (haiku) is for word-sense calls
+    judge_bar: 0.9                 # the judge's known-answer subset: share of codes it must match before its other answers are read
+    recode_scale: [mesoamerica_in_period, americas_other_time_or_place, old_world_only, not_attested]   # the issue's fixed scale
+  dale_checklist:                  # BOM-112 first part (lab; exploratory): Dale and Dale 2019 keyed; arithmetic redone; control questions prepared (simulated AI judging, not run)
+    source: "Dale and Dale 2019, Joseph Smith: The World's Greatest Guesser, Interpreter (header: 31 (2019); file name: v32), pp. 77-186; https://cdn.interpreterfoundation.org/jnlpdf/dale-v32-2019-pp77-186-PDF.pdf"
+    first_pdf_page_journal: 75     # the PDF's n-th page (0-based) is journal page 75 + n (PDF page 3 carries header 78)
+    categories: [political, cultural_social, religious, military, physical_geographical, technological_misc]  # Appendix A's six sections, in order
+    b_first_part: 6                # Appendix B: the first six items come from The Maya, the other twelve from Coe's article and podcasts
+    label_chars: 70                # public labels: the paper's heading cut to this many characters
+    published:                     # their printed figures (known-answer check)
+      n_positive: 131
+      by_category: [33, 31, 19, 12, 13, 23]
+      by_ratio: [23, 57, 51]       # at 0.5, 0.1, 0.02
+      n_negative: 18
+      spalding: [19, 21]
+      view_of_the_hebrews: [15, 9]
+      category_products: [4.99e-33, 3.21e-35, 1.28e-24, 2.0e-13, 1.28e-18, 5.12e-30]
+      positive_product: 2.69e-151
+      headline: 1.03e-111
+      all_half: 3.7e-40
+      b_maya_cumulative: 1.25e+8
+      b_podcast_cumulative: 3.13e+15
+      spalding_positive_product: 3.91e-14
+      spalding_negative_product: 1.91e+34
+      vothe_positive_product: 1.00e-15
+      vothe_negative_product: 1.56e+13
+      category_tallies: [[9, 16, 8], [5, 16, 10], [2, 8, 9], [3, 5, 4], [1, 4, 8], [3, 8, 12]]  # their "Calculation" paragraphs: items at 0.5, 0.1, 0.02 per category (added 2026-11-21 after the first check; see the card)
+    tolerance: 0.005               # reproduction must equal the printed figure within this relative difference (three significant figures)
+    toy: [0.5, 0.1, 0.02]          # their own in-text example
+    toy_product: 0.001
+    prior_against: 1.0e+9          # their skeptical prior odds
+    headline_negative: 50          # their headline weight for each of the 18 negatives
+    cap_ratio: 2                   # alternative (a): no item worth more than this
+    fragile_within: 3              # fragile: |log10 posterior| within this of even, or reversed
+    robust_beyond: 9               # robust: still at least 10^this in their favour
+    n_eff_grid: [131, 100, 66, 33, 20, 17, 10, 6, 3, 1]
+    window_words: 120              # control half: candidate passages are windows of this many words
+    window_step: 60
+    passages_per_question: 3       # at most this many candidate passages per item and text
+    judge_bar_positive: 0.75       # known-answer (judging, later): share of their 131 positives the judge must call SUPPORTS in the Book of Mormon
+    judge_bar_negative: 0.75       # and of their 18 negatives
+    controls:                      # name: [kind, where]; the Book of Mormon (known-answer) is always included
+      view_of_the_hebrews_1825: [candidate, es-1825-view-of-the-hebrews]
+      spalding_manuscript_story: [candidate, ss-manuscript-story-1885]
+      late_war_1816: [candidate, gh-1816-late-war]
+      snowden_american_revolution_bible_style: [corpus, bible_style/americanrevoluti00snow]
+      chronicles_of_eri_1822_extra: [corpus, bible_style/chroniclesoferib02ocon]
+      kjv_historical_books: [kjv, [JOS, JDG, RUT, 1SA, 2SA, 1KI, 2KI, 1CH, 2CH, EZR, NEH, EST]]
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

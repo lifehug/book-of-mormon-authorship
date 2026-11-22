@@ -100,7 +100,7 @@ compares against.
 | BOM-108 | The names are Hebrew, or Egyptian, or invented | Tvedtnes and others; Wilcox 2013, 2019 | 124 names against census names, Spalding, Tolkien | Hebrew inscriptions, Egyptian, Maya, Nahuatl, treaty signers, period print, four inventing authors | **Done**, with a limit |
 | BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | **Done** |
 | BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | **Done** |
-| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | TBD |
+| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; control queued**; BOM-109 not started |
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | TBD |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
@@ -1147,6 +1147,48 @@ what needs fixing. It also still accepts a writer who is not on the list at all,
 time, which is the first study's "none of these" problem again.
 
 Smallest model size only, one seed. The Book of Mormon was not touched.
+
+### The 131 correspondences (BOM-112)
+
+In 2019 Bruce and Brian Dale took Michael Coe's textbook on the Maya, found 131 statements in it
+that they judged the Book of Mormon gets right and 18 it gets wrong, gave each a weight (2, 10
+or 50 to one, by how specific), multiplied them all together, and reported odds against the
+book being fiction of a number with 111 zeros.
+
+I keyed all 149 from their appendices and redid the sum. It comes out as they printed it, once
+two slips of theirs are allowed for (one tally in the summary is a single item off from their
+own list, and one rounding). So the arithmetic is honest. The question is what it rests on.
+
+It rests on two things: that the weights are right, and that 131 items are 131 separate pieces
+of evidence. Here is what happens to the headline when each is relaxed. The first column is the
+odds that the book is fiction: a tiny number favours an ancient origin, a number above 1
+favours fiction.
+
+| Change | Odds of fiction |
+| --- | --- |
+| As they published | 1 in 10^111 |
+| Every weight capped at 2 to one, for and against | 1 in 10^25 |
+| Hits capped at 2 to one, misses left at their 50 | about even |
+| Drop the items that are also true of the Bible's world (39 of 131 left) | 1 in 10^11 |
+| Drop the items true of most farming kingdoms anywhere (75 left) | 1 in 10^59 |
+| Drop both, and the unclear ones (8 left) | 10^29 the other way |
+| Count each of their six categories once | 400,000 the other way |
+
+The answer swings across 140 orders of magnitude, in both directions, depending on choices no
+one can settle by arithmetic. If the items are independent and the weights fair, the result is
+overwhelming. If "had kings", "kings were hereditary" and "some kings were wicked" are one
+observation and not three, it is not. The whole result turns on about ten truly independent
+items: with fewer than that, the odds cross even.
+
+Which items are "also true of the Bible's world" is my coding, from memory, with no second
+reader: I marked 92 of the 131 yes. That is the weakest part of this and I would not lean on
+the exact rows. The swing is the finding.
+
+The real test is still to come. Apply the same 131 items, by the same loose standard, to books
+we know were written in the 1800s: *View of the Hebrews*, Spalding's manuscript, *The Late
+War*. If those "match the Maya" 60 or 80 times as well, the checklist measures how easy it is
+to match, not who wrote the book. 947 questions are prepared for that, starting with the Book
+of Mormon itself to see whether the reader reproduces the Dales' own judgments.
 
 ## What I would want a reader to take from the whole set
 

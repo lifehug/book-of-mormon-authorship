@@ -1,0 +1,464 @@
+{
+ "test": "BOM-112 Dale and Dale checklist: arithmetic (lab; exploratory)",
+ "config_sha256": "6ef908f4d9689563a3bd344dc9b5bda4affd5a23049e4317276357ce3abfe98b",
+ "source": "Dale and Dale 2019, Joseph Smith: The World's Greatest Guesser, Interpreter (header: 31 (2019); file name: v32), pp. 77-186; https://cdn.interpreterfoundation.org/jnlpdf/dale-v32-2019-pp77-186-PDF.pdf",
+ "known_answer": {
+  "counts": {
+   "A": 131,
+   "A_by_category": {
+    "political": 33,
+    "cultural_social": 31,
+    "religious": 19,
+    "military": 12,
+    "physical_geographical": 13,
+    "technological_misc": 23
+   },
+   "A_missing_ratio": 0,
+   "B": 18,
+   "C_pos": 19,
+   "C_neg": 21,
+   "D_pos": 15,
+   "D_neg": 9
+  },
+  "counts_ok": {
+   "A": true,
+   "A_by_category": true,
+   "A_missing_ratio": true,
+   "B": true,
+   "C_pos": true,
+   "C_neg": true,
+   "D_pos": true,
+   "D_neg": true
+  },
+  "arithmetic": {
+   "their_ratio_totals": {
+    "printed": [
+     23,
+     57,
+     51
+    ],
+    "sum_of_their_tallies": [
+     23,
+     57,
+     51
+    ],
+    "ok": true
+   },
+   "positive_product": {
+    "printed": 2.69e-151,
+    "from_their_tallies": "2.68e-151",
+    "ok": true,
+    "from_items_as_keyed": "5.37e-152"
+   },
+   "headline": {
+    "printed": 1.03e-111,
+    "from_their_tallies": "1.02e-111",
+    "exact_within_tolerance": false,
+    "from_their_printed_positive_product": "1.03e-111",
+    "ok": true,
+    "from_items_as_keyed": "2.05e-112"
+   },
+   "by_category": {
+    "political": {
+     "printed": 4.99e-33,
+     "from_their_tally": "5.00e-33",
+     "ok": true,
+     "their_tally": [
+      9,
+      16,
+      8
+     ],
+     "items_as_keyed": [
+      9,
+      16,
+      8
+     ],
+     "from_items_as_keyed": "5.00e-33"
+    },
+    "cultural_social": {
+     "printed": 3.21e-35,
+     "from_their_tally": "3.20e-35",
+     "ok": true,
+     "their_tally": [
+      5,
+      16,
+      10
+     ],
+     "items_as_keyed": [
+      5,
+      16,
+      10
+     ],
+     "from_items_as_keyed": "3.20e-35"
+    },
+    "religious": {
+     "printed": 1.28e-24,
+     "from_their_tally": "1.28e-24",
+     "ok": true,
+     "their_tally": [
+      2,
+      8,
+      9
+     ],
+     "items_as_keyed": [
+      2,
+      8,
+      9
+     ],
+     "from_items_as_keyed": "1.28e-24"
+    },
+    "military": {
+     "printed": 2e-13,
+     "from_their_tally": "2.00e-13",
+     "ok": true,
+     "their_tally": [
+      3,
+      5,
+      4
+     ],
+     "items_as_keyed": [
+      3,
+      4,
+      5
+     ],
+     "from_items_as_keyed": "4.00e-14"
+    },
+    "physical_geographical": {
+     "printed": 1.28e-18,
+     "from_their_tally": "1.28e-18",
+     "ok": true,
+     "their_tally": [
+      1,
+      4,
+      8
+     ],
+     "items_as_keyed": [
+      1,
+      4,
+      8
+     ],
+     "from_items_as_keyed": "1.28e-18"
+    },
+    "technological_misc": {
+     "printed": 5.12e-30,
+     "from_their_tally": "5.12e-30",
+     "ok": true,
+     "their_tally": [
+      3,
+      8,
+      12
+     ],
+     "items_as_keyed": [
+      3,
+      8,
+      12
+     ],
+     "from_items_as_keyed": "5.12e-30"
+    }
+   }
+  },
+  "toy": {
+   "their_example": {
+    "ratios": [
+     0.5,
+     0.1,
+     0.02
+    ],
+    "product": 0.001,
+    "expected": 0.001,
+    "ok": true
+   },
+   "all_half": {
+    "reproduced": "3.67e-40",
+    "printed": 3.7e-40,
+    "ok": true
+   }
+  },
+  "discrepancies_in_the_paper": {
+   "military": {
+    "their_tally": [
+     3,
+     5,
+     4
+    ],
+    "items_as_keyed": [
+     3,
+     4,
+     5
+    ]
+   }
+  },
+  "their_other_sums": {
+   "B6": {
+    "what": "B, the six from The Maya",
+    "printed": 125000000.0,
+    "from_items_as_keyed": "1.25e8",
+    "ok": true
+   },
+   "B12": {
+    "what": "B, the twelve from article and podcasts",
+    "printed": 3130000000000000.0,
+    "from_items_as_keyed": "4.00e10",
+    "ok": false
+   },
+   "C_pos": {
+    "what": "Spalding positives",
+    "printed": 3.91e-14,
+    "from_items_as_keyed": "3.91e-14",
+    "ok": true
+   },
+   "C_neg": {
+    "what": "Spalding negatives",
+    "printed": 1.91e+34,
+    "from_items_as_keyed": "1.91e34",
+    "ok": true
+   },
+   "D_pos": {
+    "what": "View of the Hebrews positives",
+    "printed": 1e-15,
+    "from_items_as_keyed": "1.00e-15",
+    "ok": true
+   },
+   "D_neg": {
+    "what": "View of the Hebrews negatives",
+    "printed": 15600000000000.0,
+    "from_items_as_keyed": "1.56e13",
+    "ok": true
+   }
+  },
+  "passed": true
+ },
+ "coding_note": "coded by the AI agent (Claude) from memory by the rules in lab/dalechecklist_coding.py; no handbook or source text was consulted",
+ "coded_counts": {
+  "near_east": {
+   "yes": 92,
+   "no": 9,
+   "unclear": 30,
+   "null": 0
+  },
+  "generic": {
+   "yes": 56,
+   "no": 31,
+   "unclear": 44,
+   "null": 0
+  }
+ },
+ "alternatives": {
+  "headline_as_printed": {
+   "what": "their headline from their printed tallies",
+   "n_positive": 131,
+   "n_negative": 18,
+   "log10_positive": 150.57,
+   "log10_negative": 30.58,
+   "log10_probability_fiction": -110.99,
+   "probability_fiction": "1.02e-111",
+   "verdict": "robust"
+  },
+  "headline": {
+   "what": "their headline from the 131 item ratios as keyed (the base below)",
+   "n_positive": 131,
+   "n_negative": 18,
+   "log10_positive": 151.27,
+   "log10_negative": 30.58,
+   "log10_probability_fiction": -111.69,
+   "probability_fiction": "2.05e-112",
+   "verdict": "robust"
+  },
+  "negatives_as_itemised": {
+   "what": "their item ratios for the 18 negatives instead of 50 each",
+   "n_positive": 131,
+   "n_negative": 18,
+   "log10_positive": 151.27,
+   "log10_negative": 18.7,
+   "log10_probability_fiction": -123.57,
+   "probability_fiction": "2.68e-124",
+   "verdict": "robust"
+  },
+  "cap_positive": {
+   "what": "every positive ratio capped at 2 (0.5); negatives at 50",
+   "n_positive": 131,
+   "n_negative": 18,
+   "log10_positive": 39.43,
+   "log10_negative": 30.58,
+   "log10_probability_fiction": 0.15,
+   "probability_fiction": "1.40e0",
+   "verdict": "fragile"
+  },
+  "cap_both": {
+   "what": "every ratio, positive and negative, capped at 2",
+   "n_positive": 131,
+   "n_negative": 18,
+   "log10_positive": 39.43,
+   "log10_negative": 5.42,
+   "log10_probability_fiction": -25.02,
+   "probability_fiction": "9.63e-26",
+   "verdict": "robust"
+  },
+  "drop_near_east": {
+   "what": "drop positive items coded also true of the Bible's world (near_east yes)",
+   "n_positive": 39,
+   "n_negative": 18,
+   "log10_positive": 50.18,
+   "log10_negative": 30.58,
+   "log10_probability_fiction": -10.6,
+   "probability_fiction": "2.50e-11",
+   "verdict": "robust",
+   "coded": "coded by the AI agent (Claude) from memory by the rules in lab/dalechecklist_coding.py; no handbook or source text was consulted"
+  },
+  "drop_generic": {
+   "what": "drop positive items coded generic to agrarian states (generic yes)",
+   "n_positive": 75,
+   "n_negative": 18,
+   "log10_positive": 98.07,
+   "log10_negative": 30.58,
+   "log10_probability_fiction": -58.48,
+   "probability_fiction": "3.28e-59",
+   "verdict": "robust",
+   "coded": "coded by the AI agent (Claude) from memory by the rules in lab/dalechecklist_coding.py; no handbook or source text was consulted"
+  },
+  "drop_either": {
+   "what": "drop positive items coded near_east yes or generic yes",
+   "n_positive": 39,
+   "n_negative": 18,
+   "log10_positive": 50.18,
+   "log10_negative": 30.58,
+   "log10_probability_fiction": -10.6,
+   "probability_fiction": "2.50e-11",
+   "verdict": "robust",
+   "coded": "coded by the AI agent (Claude) from memory by the rules in lab/dalechecklist_coding.py; no handbook or source text was consulted"
+  },
+  "drop_either_or_unclear": {
+   "what": "as drop_either, unclear also dropped",
+   "n_positive": 8,
+   "n_negative": 18,
+   "log10_positive": 10.1,
+   "log10_negative": 30.58,
+   "log10_probability_fiction": 29.48,
+   "probability_fiction": "3.05e29",
+   "verdict": "fragile",
+   "coded": "coded by the AI agent (Claude) from memory by the rules in lab/dalechecklist_coding.py; no handbook or source text was consulted"
+  },
+  "one_per_category": {
+   "what": "each of the six categories counted once at its strongest item; negatives once per group",
+   "n_positive": 6,
+   "n_negative": 4,
+   "log10_positive": 10.19,
+   "log10_negative": 6.8,
+   "log10_probability_fiction": 5.6,
+   "probability_fiction": "4.00e5",
+   "verdict": "fragile",
+   "negative_groups": {
+    "animals": 8,
+    "metals": 5,
+    "crops": 3,
+    "other": 2
+   },
+   "grouped": "coded by the AI agent (Claude) from memory by the rules in lab/dalechecklist_coding.py; no handbook or source text was consulted"
+  },
+  "dependence_curve": {
+   "what": "summed log ratios scaled by n_eff / 131; negatives scaled in the same proportion",
+   "points": [
+    {
+     "n_eff": 131,
+     "log10_probability_fiction": -111.69,
+     "verdict": "robust"
+    },
+    {
+     "n_eff": 100,
+     "log10_probability_fiction": -83.13,
+     "verdict": "robust"
+    },
+    {
+     "n_eff": 66,
+     "log10_probability_fiction": -51.8,
+     "verdict": "robust"
+    },
+    {
+     "n_eff": 33,
+     "log10_probability_fiction": -21.4,
+     "verdict": "robust"
+    },
+    {
+     "n_eff": 20,
+     "log10_probability_fiction": -9.43,
+     "verdict": "robust"
+    },
+    {
+     "n_eff": 17,
+     "log10_probability_fiction": -6.66,
+     "verdict": "between"
+    },
+    {
+     "n_eff": 10,
+     "log10_probability_fiction": -0.21,
+     "verdict": "fragile"
+    },
+    {
+     "n_eff": 6,
+     "log10_probability_fiction": 3.77,
+     "verdict": "fragile"
+    },
+    {
+     "n_eff": 3,
+     "log10_probability_fiction": 7.23,
+     "verdict": "fragile"
+    },
+    {
+     "n_eff": 1,
+     "log10_probability_fiction": 9.54,
+     "verdict": "fragile"
+    }
+   ],
+   "n_eff_for_even_odds": 9.8
+  }
+ },
+ "control_jobs": {
+  "questions": 947,
+  "per_text": {
+   "book_of_mormon": {
+    "words": 272220,
+    "questions": 149,
+    "no_keyword_hit_or_no_rule": 0,
+    "known_answer": true
+   },
+   "view_of_the_hebrews_1825": {
+    "words": 110607,
+    "questions": 143,
+    "no_keyword_hit_or_no_rule": 6,
+    "known_answer": false
+   },
+   "spalding_manuscript_story": {
+    "words": 44279,
+    "questions": 128,
+    "no_keyword_hit_or_no_rule": 21,
+    "known_answer": false
+   },
+   "late_war_1816": {
+    "words": 59611,
+    "questions": 131,
+    "no_keyword_hit_or_no_rule": 18,
+    "known_answer": false
+   },
+   "snowden_american_revolution_bible_style": {
+    "words": 69255,
+    "questions": 121,
+    "no_keyword_hit_or_no_rule": 28,
+    "known_answer": false
+   },
+   "chronicles_of_eri_1822_extra": {
+    "words": 134834,
+    "questions": 135,
+    "no_keyword_hit_or_no_rule": 14,
+    "known_answer": false
+   },
+   "kjv_historical_books": {
+    "words": 205034,
+    "questions": 140,
+    "no_keyword_hit_or_no_rule": 9,
+    "known_answer": false
+   }
+  },
+  "known_answer_questions": 149,
+  "labelled": "simulated judging by an AI model (not run)"
+ }
+}
