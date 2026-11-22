@@ -1953,6 +1953,170 @@ lab:                              # the research lab (exploratory tooling; reads
     pseudo_translations: [ossian_1819, otranto_1764, ilive_jasher_1751, psalmanazar_formosa_1704, chronicles_of_eri_1822]
     js_dictated: [js-1828-1829-revelations, revelations-later-1830, revelations-later-1831, dictated-visions_of_moses_1830, dictated-ot_revision_1, dictated-abraham_1842]
     js_own_hand: [js-letters-1829-1833-all, js-1832-history]
+  debates3:                        # BOM-103 third design (lab; exploratory; post hoc after designs 1 and 2 missed): the agenda of controversy as a bundle of topic shares against eras of religious print; card data/private/lab/owner/2026-11-22-debates-redesign/card.md
+    year_min: 1640                 # religious works (genre lab.debates.gallery_genre, Bible editions out by lab.debates.bible_title) printed in these registry years
+    year_max: 1829
+    eras: {E1: [1640, 1659], E2: [1660, 1699], E3: [1700, 1769], E4: [1770, 1799], E5: [1800, 1814], E6: [1815, 1829]}
+    unbarred_eras: [E3]            # thin (keyed text mostly): its control group is reported with no bar
+    reprint_gap: 30                # a work whose catalogued author died more than this many years before printing is a reprint: never in an era reference or era control group
+    min_hits: 2                    # a 128-word passage is on a topic if every term group matches and all terms match at least this often
+    unit_passages: 100             # a text's profile: this many of its topic passages, drawn without replacement (with replacement, flagged, if it has fewer)
+    repeats: 20                    # seeded draws of the text's passages and of the era references
+    alpha: 0.5                     # added to every topic count before shares are taken
+    ref_min_passages: 20           # an era reference work needs this many topic passages
+    ref_passages: 20               # and gives this many (seeded) to its era's reference
+    ref_works_max: 200             # works per era reference: the smallest barred era's count of eligible works, at most this; every era gets the same number (E3 at most the same)
+    group_works: 20                # known-answer texts per group
+    own_bar: 0.55                  # every barred era group: share placed in its own era at least this (chance about 1/6)
+    adjacent_bar: 0.80             # and share placed in its own or an adjacent era at least this
+    decoy1_years: [1815, 1829]     # decoy 1: works printed in these years by an author dead before decoy1_died_before
+    decoy1_died_before: 1760
+    decoy1_e6_max: 0.25            # bar: at most this share placed in E6
+    decoy1_life_min: 0.5           # bar: at least this share placed in an era of the author's writing life
+    writing_years: 40              # an author's writing life: the 40 years up to the catalogued death year (death before 1640: E1 counts)
+    decoy2_named: ['tcp:A54528', 'tcp:A38109']   # decoy 2: Pagitt, Heresiography (1645); Edwards, Gangraena parts 1-2 (1646)
+    decoy2_min_campbell: 6         # plus E1 works carrying at least this many of Campbell's twenty topics (present_min rule), drawn to group_works in all
+    decoy2_early_eras: [E1, E2]
+    decoy2_early_min: 0.70         # bar: at least this share placed in E1 or E2
+    decoy2_e6_max: 0               # bar: at most this many placed in E6
+    register_blocks: 4             # register control: Revelation Book 1 (1828-1835) cut into this many blocks of equal words
+    register_eras: [E5, E6]
+    register_min_blocks: 3         # bar: at least this many blocks placed in E5 or E6
+    yes_share: 0.8                 # yes: nearest era E6 in at least this share of repeats
+    yes_gap_share: 0.95            # and E6 nearer than every era outside E5 (gap above zero) in at least this share of repeats
+    no_share: 0.8                  # no: nearest era in E1-E4 in at least this share of repeats
+    no_rank: 3                     # or E6 ranks this or lower by median distance
+    fits_no_era_percentile: 95     # "fits no era": nearest median distance above this percentile of era-group controls' median distances to their own era
+    present_min: 3                 # step 1: a topic is present at this many topic passages per 100,000 words
+    replication_words: 300000      # step 1: each comparison body has this many words
+    replication_window_passages: 40   # drawn as a run of this many consecutive passages (seeded start) from each of a seeded order of works
+    replication_draws: 5           # comparison bodies drawn per era
+    replication_bodies:            # step 1 comparison bodies (reprints left out); tcp_collection from data/catalog/tcp.jsonl
+      england_1640_1659: {years: [1640, 1659]}
+      print_1740_1769: {years: [1740, 1769]}
+      evans_1770_1799: {years: [1770, 1799], tcp_collection: evans}
+      ocr_1815_1829: {years: [1815, 1829], not_source: tcp}
+    precision_sample: 20           # rule precision: hits per topic per era drawn (seeded) for reading
+    precision_min: 0.8             # a rule below this is rewritten once or dropped, recorded, and Part A rerun
+    translation_years: [1815, 1829]   # control: catalog-marked translations (lab.translation.translation_title) printed in these years
+    translation_written_before: 1700  # whose catalogued author died before this year
+    translations_n: 20
+    markers: [temperance, missions_bible_societies, sabbath, revivals, antitrinitarian, slavery]   # 1820s markers reported beside the E6 controls' range
+    workers: 8
+    seed: 20261122
+    campbell:                      # Campbell, Delusions (1831), point 7, his twenty in his order -> our topic
+      infant baptism: infant_baptism
+      ordination: ordination
+      the trinity: trinity
+      regeneration: regeneration
+      repentance: repentance
+      justification: justification
+      the fall of man: fall_of_man
+      the atonement: atonement
+      transubstantiation: transubstantiation
+      fasting: fasting
+      penance: penance
+      church government: church_government
+      religious experience: religious_experience
+      the call to the ministry: call_to_ministry
+      the general resurrection: general_resurrection
+      eternal punishment: eternal_punishment
+      who may baptize: who_may_baptize
+      freemasonry: freemasonry
+      republican government: republican_government
+      the rights of man: rights_of_man
+    topics:                        # topic: term groups (regexes on lower-cased, whitespace-joined text); every group must match. Where a lab.debates rule fits, it is copied unchanged (noted)
+      infant_baptism: ['\bbapti[sz]|\bpa?edobapt|anabapt', '\binfan(t|ts|cy)\b|little child|young children|\bpa?edobapt|anabapt']
+      ordination: ['\bordain|\bordination|(laying|lay|imposition) (on )?of (the )?hands|holy order|consecrat', '\bpriests?\b|\belders?\b|\bteachers?\b|\bministers?\b|\bdeacons?\b|\bbishops?\b|\bpastors?\b|\bchurch|\bpresbyter']
+      trinity: ['godhead|trinity|three persons|\bone god\b|eternal father|father and (the )?son|son of the (eternal )?father|three in one|unity of (the )?god']   # lab.debates godhead
+      regeneration: ['born again|born of (god|the spirit|water)|new creatures?|mighty change|regenerat|change of heart|new birth|new heart']
+      repentance: ['\brepent', '\bsins?\b|\bforgive|\bremission|\bmercy|\bbapti[sz]|\bpardon|\bconfess|\bsorrow']
+      justification: ['\bjustif|antinomian|imputed righteousness|imputation', '\bfaith\b|\bworks?\b|\bgrace\b|righteous|\blaw\b|imput|merit']
+      fall_of_man: ['fall of (man|adam|our first parents|mankind)|\bfallen (state|nature|man|men|condition|race|creatures?)|original sin|first parents|\badam\b|transgression of (our|adam)|\bthe fall\b', '\bfall\b|\bfallen\b|\bsin\b|\bdeath\b|original|transgress|nature|corrupt|deprav']
+      atonement: ['aton(e|ed|ement|ing)\b|propitiat|expiat|satisfaction (for|to|of) (sin|divine|justice)|\bransom', 'blood|sacrific|\bdied\b|\bdeath\b|suffer|\bsins?\b|redeem|redemption|justice|mercy|aton(e|ed|ement|ing)\b']
+      transubstantiation: ['transubstantiat|real presence|sacrament|lord.?s supper|eucharist|bread and (the )?wine|(eat|eaten|eateth|partake|partook) (of )?(the )?(bread|flesh)|drink (of )?(the )?(wine|cup|blood)', 'bread|wine|\bbody\b|blood|flesh|emblem|remembrance|\bcup\b|altar|\bhost\b|presence']
+      fasting: ['\bfast(ing|ed|s)\b|to fast\b|fast and pray', '\bpray']   # lab.debates fasting
+      penance: ['\bpenances?\b|mortification|sackcloth|absolution|\babsolve|pilgrimage|indulgences?\b|purgatory|confess(ion|ed|ing)? (to|of) (a |the )?priest|auricular', '\bsins?\b|\bsoul|forgive|pardon|priest|church|penitent|\bgod\b']
+      church_government: ['\bchurch|episcopa|presbyter|prelac|independen|congregation', 'discipline|govern(ment|ed)?\b|cast out|blotted out|excommunicat|numbered among|names? (were|was) (taken|blotted)|episcopa|prelac|prelate|presbyter(ian|y)|independen(cy|ts)|synod|classis']   # lab.debates church_government with episcopacy, presbytery and independency added (the period's form of the controversy)
+      religious_experience: ['experimental religion|religious experience|christian experience|experience of (grace|religion|the (love|power|mercy) of god)|\bconver(sion|ted)\b|born again|felt (the|his|my|our|their) (love|power|spirit|pardon|joy)|sins? (were|was|are|is) forgiven|joy unspeakable|exceeding(ly)? great joy|filled with (joy|the holy (spirit|ghost)|love)|overcome (with|by) (the )?(spirit|joy)|(fell|sunk) (to|unto|upon) the (earth|ground)|ecsta|\bvisions?\b|\btrance\b']
+      call_to_ministry: ['call(ed|ing)? (of god )?(to|unto) (the ministry|preach|the work|the office|the holy)|called (of|by) god|inward call|sent (forth )?to preach|call to preach|holy calling|called (to be|unto) (a |an )?(minister|preacher|priest|apostle|teacher)', '\bpreach|\bminist|\bpriests?\b|\bapostles?\b|\bteach|\bgospel|\bword\b']
+      general_resurrection: ['resurrection|(rise|risen|raised) from the dead', '\bbod(y|ies)\b|\bdead\b|\bgrave\b|judg']   # lab.debates resurrection
+      eternal_punishment: ['\b(endless|eternal|everlasting|never.?ending)\b', 'torment|punishment|misery|\bfire\b|burning|damnation|\bhell\b']   # lab.debates eternal_punishment
+      who_may_baptize: ['\bbapti[sz]', 'authority|authoriz|\bordained|\bordination|\blay(man|men)\b|commission|administrator|(power|right) to bapti|lawful|valid|\bpriests?\b|\bministers?\b']
+      freemasonry: ['secret (combination|societ|oath|band|work|plan|abomination)|free.?mason|\bmason(ry|ic)\b|\blodges?\b', '\boaths?\b|covenant|murder|plunder|\bgain\b|combination|\bsecret']   # lab.debates secret_combinations
+      republican_government: ['\bkings?\b|monarch|kingdom', '\bjudges?\b|voice of the people|liberty|freedom|republic|tyran|\brights\b']   # lab.debates kings_government
+      rights_of_man: ['\brights\b|\bliberty\b|\bliberties\b|\bfreedom\b|\bprivileges\b|\bequality\b|tolerat|inalienable|unalienable|liberty of conscience|natural rights']
+      universal_salvation: ['universal(ist|ism|ists)?\b|restoration of all|all (men|mankind) (shall|will|must|should) be saved|no hell\b|no devil\b|endless (torment|misery|punishment)', '\bsaved?\b|salvation|\bhell\b|damn|punish|torment']   # lab.debates
+      free_will_predestination: ['free.?(will|agency|agents?)\b|free to (choose|act)|act for (them|him|your|our)sel|choose (life|death|eternal)|predestinat|\belect(ion|ed)?\b|\bdecrees?\b|foreordain']   # lab.debates free_will
+      paid_clergy: ['priestcraft|hireling|for hire\b|for gain\b|get gain|for money|\bsalar(y|ies)\b|\btithes?\b|own hands|popularity|praise of (the )?(world|men)', '\bpriests?\b|\bpreach|\bministers?\b|\bteachers?\b|clergy']   # lab.debates
+      revelation_ceased: ['revelations?\b|miracles?\b|gifts? of the (holy )?(spirit|ghost)|prophes(y|ying)|\btongues\b|visions?\b', '\bcease[ds]?\b|done away|no more\b|at an end|\bdeny|\bdenieth']   # lab.debates
+      gathering_israel: ['\bgather(ed|ing)?\b|\brestor(e|ed|ation)\b', '\bisrael|\bjews?\b|remnant|lost tribes|\btribes\b']   # lab.debates
+      millennium: ['millenni|millenar|chiliast|thousand years|second (coming|advent)|fifth monarchy|personal reign|reign (of christ )?(up)?on (the )?earth|coming of (christ|the (son of man|lord|messiah))', 'reign|earth|kingdom|christ|\blord|come|coming|advent|\bday\b|thousand']
+      antitrinitarian: ['unitarian|socinian|\barr?ian(s|ism)?\b|antitrinitar|divinity of (christ|the son|jesus|our saviour)|deity of (christ|the son|jesus)|mere (man|creature)|god himself|very god|equal (with|to) (god|the father)|subordinat|eternal son']
+      inner_light: ['\bquakers?\b|light within|inward light|inner light|light of christ|spirit of christ|(given|giveth|lighteth) (to |unto )?every man|familist']
+      popery: ['popery|popish|papist|papacy|\bpope\b|romish|church of rome|jesuit|antichrist|man of sin|whore|mother of (harlots|abominations)|church of the devil|idolatr|superstition']
+      sabbath: ['sabbath|lord.?s day|seventh day|first day of the week', 'keep|kept|holy|profan|break|work|labou?r|\brest|observ|mail|sanctif']
+      oaths_war: ['lawful(ness)? (of|to|for) (a christian|christians|war|swear|oaths?|bear arms|fight)|bear(ing)? arms|take up (their |the |our |his )?(arms|weapons)|lay(ing)? down (their |the |our |his )?(arms|weapons)|non.?resist|defensive war|swear not at all|unlawful to swear|refus(e|ed|ing) to (swear|fight|take up)|(would|will|should) not (take up|fight|shed blood)']
+      soul_state: ['soul.?sleep|mortalis|annihilat|destructionist|intermediate state|between death and (the )?(resurrection|judgment)|state of (the )?(soul|souls|spirits?|dead) (between|after death|after this life)|separate state|paradise', 'soul|spirit|\bdead\b|death|resurrection|sleep|paradise|state|\bbody\b']
+      deism_infidelity: ['\bdeis(m|ts?|tical)\b|infidel|atheis|free.?think|age of reason|natural religion|light of nature|there is no (god|christ|devil)|(deny|denieth|denied|denying) (the being of |the existence of )?(god|christ|a god|revelation)|reason alone']
+      temperance: ['intemperan|\btemperance|ardent spirits|strong drink|drunken|\bdrunk(ard|ards)?\b|spirituous|\brum\b|whiske?y|distill|tippl|tavern']
+      missions_bible_societies: ['missionar|bible societ|tract societ|\bmissions?\b|\bheathen|propagat(e|ion|ing) (of )?the gospel|(sent|send|go|went|going) (forth )?(to|that they might) preach|preach(ed|ing)? (the (word|gospel) )?(to|unto|among) (the )?(heathen|gentiles|nations|natives|indians|people)|convert(ing|ed)? (the )?(heathen|gentiles|indians|natives)']
+      revivals: ['\brevivals?\b|camp.?meetings?|protracted meeting|anxious (seat|bench)|awaken(ing|ed)|outpouring of the (holy )?spirit|(work|outpouring|pouring out) of (god|grace|the spirit)|(many|great numbers?|multitudes|thousands) (were|was) (converted|baptized|added|brought)|added (to|unto) the church|(were|was) (converted|baptized) (unto|to) the lord']
+      slavery: ['\bslave(s|ry)?\b|slave.?trade|slaveholder|\bnegro|\bafricans?\b|emancipat|abolition|man.?stealing|\bservitude\b|bond.?(men|servants?|women)|traffic in (men|human)']
+      marriage_divorce: ['divorc|put(ting)? away (his |her |their |a )?wi(fe|ves)|polygam|plurality of wives|many wives|concubines?|second marriage|marry(ing)? (again|another)', 'wi(fe|ves)|husband|marr|divorc|concubine|whoredom']
+      lay_preaching: ['lay.?preach|mechanicks?\b|women (may |to |should |ought to )?preach|(tradesmen|cobblers|shoemakers|taylors|tailors|weavers) (preach|turned)|unlearned (men|preachers|ministers)|(every|any) (man|one|member) may (preach|teach|prophesy)|gifted brethren|human learning|learned ministry|learning (is|be|was) (not )?(necessary|required)', 'preach|minist|teach|prophes|pulpit|learning|learned']
+    surveys:                       # period surveys of sects whose headings the topic list is checked against (library copies, public domain)
+      pagitt_heresiography_1645: tcp:A54528
+      edwards_gangraena_1646: tcp:A38109
+      edwards_gangraena_part3_1646: tcp:A83515
+      adams_view_of_religions_1801: institutional_books:RSMCSI
+      adams_dictionary_1817: internet_archive:dictionaryofallr00adam
+      evans_sketch_1807: internet_archive:sketchofdenomin00evan
+    survey_terms:                  # the heading words (sect or controversy names) each topic answers to, counted in each survey to record its support; the list is fixed whatever the counts
+      infant_baptism: 'anabaptist|pa?edobaptist|\bbaptists\b'
+      ordination: 'ordination'
+      trinity: 'trinitarian|tritheist|sabellian|athanasian|\btrinity\b'
+      regeneration: 'regenerat|new birth'
+      repentance: '\brepentance'
+      justification: 'justification|antinomian'
+      fall_of_man: 'original sin|fall of man|pelagian'
+      atonement: 'atonement'
+      transubstantiation: 'transubstantiation|real presence'
+      fasting: '\bfasting'
+      penance: '\bpenance'
+      church_government: 'episcopalian|presbyterian|independents|brownist|congregational|church government'
+      religious_experience: 'enthusias|conversion|experience'
+      call_to_ministry: 'call to the ministry|inward call|called to preach'
+      general_resurrection: 'resurrection'
+      eternal_punishment: 'eternal punishment|everlasting punishment|endless (misery|punishment|torment)'
+      who_may_baptize: 'administrator of baptism|lay baptism|right to baptize'
+      freemasonry: 'free.?mason'
+      republican_government: 'fifth.?monarch|republican|monarchy'
+      rights_of_man: 'toleration|liberty of conscience|rights of'
+      universal_salvation: 'universalist|universal (salvation|restoration)|restorationist'
+      free_will_predestination: 'calvinist|arminian|lapsarian|predestinat|free.?will|necessarian'
+      paid_clergy: '\btithes|hireling'
+      revelation_ceased: 'seekers|enthusiast|new revelation|miracles'
+      gathering_israel: 'restoration of the jews|conversion of the jews|lost tribes'
+      millennium: 'millenar|millenni|chiliast'
+      antitrinitarian: 'socinian|\barr?ians?\b|unitarian|antitrinitarian'
+      inner_light: 'quaker|familist|light within'
+      popery: 'papist|jesuit|popery|roman catholic'
+      sabbath: 'sabbatarian|traskite|sabbath'
+      oaths_war: 'swearing|\boaths\b|lawfulness of war'
+      soul_state: 'soul.?sleeper|mortalist|destructionist|materialist|intermediate state'
+      deism_infidelity: '\bdeists?\b|atheists?|theophilanthropist|infidel'
+      temperance: 'temperance'
+      missions_bible_societies: 'missionar|bible societ'
+      revivals: '\brevivals?\b|camp.?meeting|methodist|jumpers'
+      slavery: '\bslaves?\b|slavery'
+      marriage_divorce: 'divorc|polygam'
+      lay_preaching: 'lay.?preach|women preach|mechanick'
+    part_b:                        # Part B (only after Part A's check passes): stance by the paced judge (simulated judging); prepared, not run
+      controversies: [infant_baptism, universal_salvation, free_will_predestination, paid_clergy, revelation_ceased, trinity, church_government, republican_government]
+      judge_bar: 0.85              # the judge's own check: agreement with positions on record, on reference passages
+      reference_passages: 15       # reference passages per writer and controversy at most (seeded)
+      book_passages: 40            # book passages per controversy at most (seeded)
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

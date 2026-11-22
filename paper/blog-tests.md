@@ -749,6 +749,36 @@ arguments of his day, not that it coined their words.
 So Campbell's claim is untested here. It needs a different tool, and any new one has to show
 first that an old reprint does not come out looking new.
 
+**A third design, after going back to the claim.** Alexander Campbell wrote in 1831 that the
+book decides "every error and almost every truth discussed in New York for the last ten
+years" and named twenty. He compared them with nothing. So first his list, his way: is each
+topic in the book, and was it any less discussed in other times?
+
+Thirteen of his twenty are in the 1830 text by my search rules. Seven are not there at any
+real rate: infant baptism, the trinity, regeneration, justification, transubstantiation,
+penance and the call to the ministry all come in under 3 mentions per 100,000 words. Then the
+comparison he did not make. Of his twenty topics, English religious print of the 1640s
+discusses 13, the 1740s to 60s 15, the late 1700s 11, and American print of 1815 to 1829, 13.
+The 1640s cover his list as fully as the 1820s do. One topic is different: oath-bound secret
+societies, which he called freemasonry, are in the book and in none of the earlier bodies.
+That fits the "secret combinations" test, where the newspapers jump in 1828.
+
+So the list, as a list, is not a fingerprint of the 1820s. Most of it is what Protestants
+argued about for two hundred years.
+
+Then my own test: take the topics from surveys of sects written in each period, not from the
+book, and ask whether a text's mix of topics places it in its era. It does not. Known texts
+landed in their own era 20 to 50 percent of the time, and I had set 55. The old reprints no
+longer land late, which was the fault of the second design, but they scatter. Joseph Smith's
+own revelations of 1828 to 1835 were pulled early by their King James wording, one block of
+four landing where it should. Three designs now, three misses, and I did not score the book.
+
+I think that is itself the finding, and it is about the claim more than about my tools. If
+texts whose dates I know cannot be placed by which doctrines they discuss, then "it discusses
+the questions of the 1820s" cannot carry the weight Campbell put on it, and neither can "these
+are timeless questions" be shown this way. What is left that could be tested is narrower:
+which side the book takes on each question, and the one topic that really is new.
+
 ### Chiasmus, with something to compare it to (BOM-107)
 
 A chiasm says things and then says them again in reverse order: A, B, C, then C, B, A. Welch
