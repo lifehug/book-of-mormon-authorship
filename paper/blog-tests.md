@@ -73,7 +73,7 @@ compares against.
 | BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held | TBD; 11 passages keyed |
 | BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | **Done** |
 | BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1993; replies | examples from each side | every use in print 1780 to 1835, by year | TBD |
-| BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed; not scored** |
+| BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed twice; not scored** |
 
 ### 3. How was it produced?
 
@@ -705,8 +705,42 @@ size to be fair, and that made the thin decades win on a handful of neighbours. 
 everything in modern spelling got dated to the 1750s. The clean copy of the 1830 text would
 have landed there too, whatever it says.
 
-So this one has no answer yet. The fix is a narrower search, 1780 to 1829 only, where the
-decades are closer in size, and a score a thin decade cannot inflate.
+So I tried once more, and said beforehand it would be the last try: search 1780 to 1829 only,
+and give every decade the same number of passages.
+
+| Books printed in | Dated to their own or the next-door decade | Chance |
+| --- | --- | --- |
+| 1780s | 8 of 20 | 8 |
+| 1790s | 11 of 20 | 12 |
+| 1800s | 10 of 20 | 12 |
+| 1810s | 20 of 20 | 12 |
+| 1820s | 18 of 20 | 8 |
+| 1780 to 1809, clean hand-typed text | 3 of 20 | 10 |
+| Written before 1760, reprinted 1780 to 1829 | 15 of 20 land in the 1810s | |
+
+Now everything lands late instead of in the 1750s. The 1810s and 1820s books "pass" only because
+all books land there, including ones written a century earlier. Had I run the Book of Mormon it
+would have come out 1810s or 1820s, and so would a reprint of a sermon from 1700. Finding the
+nearest passages by meaning does not tell you when something was printed. I did not run the Book
+of Mormon.
+
+One small thing did work, because it is only counting. Five of the book's doctrinal phrases, by
+decade, in 31,901 religious books:
+
+| Phrase (times in the Book of Mormon) | First seen | In the 1820s |
+| --- | --- | --- |
+| infinite atonement (3) | 1730s | about as common as in any decade since |
+| plan of salvation (3) | 1740s | steady since the 1750s |
+| probationary state (3) | 1740s | steady since 1800 |
+| demands of justice (4) | 1640s | commonest in the 1720s and 1740s |
+| fall of man (5) | throughout | |
+
+None of the five is new in the 1820s. They were all in print before Joseph Smith's grandparents
+were born. That neither supports nor undoes Campbell: he said the book took sides in the
+arguments of his day, not that it coined their words.
+
+So Campbell's claim is untested here. It needs a different tool, and any new one has to show
+first that an old reprint does not come out looking new.
 
 ### Chiasmus, with something to compare it to (BOM-107)
 

@@ -42,3 +42,32 @@ def test_hit_window_and_death_years():
     assert death_year("Bunyan, John, 1628-1688.") == 1688
     assert death_year("Watts, Isaac, d. 1748") == 1748
     assert death_year("Smith, Ethan") is None
+
+
+def test_second_design_settings_override_the_first():
+    from lab.debates import v2_settings
+
+    cfg = load()
+    d = v2_settings(cfg)
+    assert d["year_min"] == 1780 and decades(d) == [1780, 1790, 1800, 1810, 1820]
+    assert d["topics"] == cfg["lab"]["debates"]["topics"] and "v2" not in d
+    assert cfg["lab"]["debates"]["year_min"] == 1640  # the first design is left as it was
+
+
+def test_flat_profile_and_chance():
+    from lab.debates import chance_adjacent, flat_profile
+
+    decs = [1780, 1790, 1800, 1810, 1820]
+    p = flat_profile(np.array([10.0, 10, 10, 10, 60]), decs)
+    assert p["peak_decade"] == 1820 and p["share"]["1820"] == 0.6
+    assert chance_adjacent(1780, decs) == 0.4 and chance_adjacent(1800, decs) == 0.6
+
+
+def test_phrase_patterns_cross_line_breaks():
+    import re
+
+    from lab.debates import phrase_patterns
+
+    pat = phrase_patterns(["demands? of justice"])[0]
+    assert len(re.findall(pat, "the demands of  justice and the demand of justice")) == 2
+    assert not re.findall(phrase_patterns(["fall of man"])[0], "the fall of mankind")

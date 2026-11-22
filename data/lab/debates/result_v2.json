@@ -1,0 +1,4553 @@
+{
+ "gallery": {
+  "works": 15282,
+  "passages": 9244022,
+  "passages_by_decade": {
+   "1780": 570805,
+   "1790": 1267732,
+   "1800": 1306884,
+   "1810": 2235492,
+   "1820": 3863109
+  },
+  "balanced_passages_per_decade": 570805,
+  "draws": 3
+ },
+ "settings": {
+  "year_min": 1780,
+  "year_max": 1829,
+  "gallery_genre": "sermon_devotional",
+  "bible_title": "^\\W*(the )?(holy )?(bible|new testament|old testament|book of psalms|psalms of david|whole book of psalms)\\b",
+  "neighbours": 100,
+  "candidates": 3000,
+  "min_hits": 2,
+  "topics": {
+   "infant_baptism": [
+    "\\bbapti[sz]",
+    "\\binfan(t|ts|cy)\\b|little child|young children"
+   ],
+   "universal_salvation": [
+    "universal(ist|ism|ists)?\\b|restoration of all|all (men|mankind) (shall|will|must|should) be saved|no hell\\b|no devil\\b|endless (torment|misery|punishment)",
+    "\\bsaved?\\b|salvation|\\bhell\\b|damn|punish|torment"
+   ],
+   "eternal_punishment": [
+    "\\b(endless|eternal|everlasting|never.?ending)\\b",
+    "torment|punishment|misery|\\bfire\\b|burning|damnation|\\bhell\\b"
+   ],
+   "fall_atonement": [
+    "\\bfall\\b|\\bfallen\\b|transgression|\\badam\\b",
+    "aton(e|ed|ement)|\\bredeem|redemption|\\bransom"
+   ],
+   "free_will": [
+    "free.?(will|agency|agents?)\\b|free to (choose|act)|act for (them|him|your|our)sel|choose (life|death|eternal)|predestinat|\\belect(ion|ed)?\\b|\\bdecrees?\\b|foreordain"
+   ],
+   "paid_clergy": [
+    "priestcraft|hireling|for hire\\b|for gain\\b|get gain|for money|\\bsalar(y|ies)\\b|\\btithes?\\b|own hands|popularity|praise of (the )?(world|men)",
+    "\\bpriests?\\b|\\bpreach|\\bministers?\\b|\\bteachers?\\b|clergy"
+   ],
+   "secret_combinations": [
+    "secret (combination|societ|oath|band|work|plan|abomination)|free.?mason|\\bmason(ry|ic)\\b|\\blodges?\\b",
+    "\\boaths?\\b|covenant|murder|plunder|\\bgain\\b|combination|\\bsecret"
+   ],
+   "godhead": [
+    "godhead|trinity|three persons|\\bone god\\b|eternal father|father and (the )?son|son of the (eternal )?father|three in one|unity of (the )?god"
+   ],
+   "revelation_ceased": [
+    "revelations?\\b|miracles?\\b|gifts? of the (holy )?(spirit|ghost)|prophes(y|ying)|\\btongues\\b|visions?\\b",
+    "\\bcease[ds]?\\b|done away|no more\\b|at an end|\\bdeny|\\bdenieth"
+   ],
+   "gathering_israel": [
+    "\\bgather(ed|ing)?\\b|\\brestor(e|ed|ation)\\b",
+    "\\bisrael|\\bjews?\\b|remnant|lost tribes|\\btribes\\b"
+   ],
+   "ordination_authority": [
+    "\\bordain|ordination|\\bauthority\\b|(laying|lay|imposition) (on )?of hands|holy order|priesthood",
+    "\\bpriests?\\b|\\belders?\\b|\\bteachers?\\b|\\bbapti[sz]|\\bministers?\\b|\\bchurch"
+   ],
+   "resurrection": [
+    "resurrection|(rise|risen|raised) from the dead",
+    "\\bbod(y|ies)\\b|\\bdead\\b|\\bgrave\\b|judg"
+   ],
+   "regeneration": [
+    "born again|born of (god|the spirit)|new creatures?|mighty change|regenerat|change of heart|justif|sanctif"
+   ],
+   "lords_supper": [
+    "sacrament|lord.?s supper|bread and (the )?wine|\\bemblems?\\b|flesh and blood|in remembrance|transubstantiat"
+   ],
+   "fasting": [
+    "\\bfast(ing|ed|s)\\b|to fast\\b|fast and pray",
+    "\\bpray"
+   ],
+   "church_government": [
+    "\\bchurch",
+    "discipline|govern(ment|ed)?\\b|cast out|blotted out|excommunicat|numbered among|names? (were|was) (taken|blotted)"
+   ],
+   "kings_government": [
+    "\\bkings?\\b|monarch|kingdom",
+    "\\bjudges?\\b|voice of the people|liberty|freedom|republic|tyran|\\brights\\b"
+   ]
+  },
+  "control_decades": [
+   1780,
+   1790,
+   1800,
+   1810,
+   1820
+  ],
+  "keyed_years": [
+   1780,
+   1809
+  ],
+  "keyed_source": "tcp",
+  "control_works": 20,
+  "control_min_words": 10000,
+  "control_min_passages": 3,
+  "control_max_queries": 40,
+  "old_reprint_years": [
+   1780,
+   1829
+  ],
+  "old_died_before": 1760,
+  "smooth": 1,
+  "tolerance": 1,
+  "group_bar": 0.6,
+  "bom_min_passages": 5,
+  "close_percentile": 5,
+  "yes_share": 0.667,
+  "seed": 20261122,
+  "gallery_exclude_source": "tcp",
+  "draws": 3,
+  "adjacent_bar": 0.8,
+  "exact_bar": 0.4,
+  "late_decades": [
+   1810,
+   1820
+  ],
+  "phrases": [
+   "infinite atonement",
+   "plan of salvation",
+   "probationary state",
+   "demands? of justice",
+   "fall of man"
+  ],
+  "phrase_year_min": 1640,
+  "phrase_year_max": 1829,
+  "phrase_workers": 6
+ },
+ "known_answer": {
+  "groups": {
+   "ocr_1780s": {
+    "works": [
+     {
+      "work_id": "hathitrust:coo.31924026429401",
+      "year": 1785,
+      "source": "hathitrust",
+      "died": null,
+      "queries": 27,
+      "left_out_works": 4,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1978,
+       "1790": 0.1943,
+       "1800": 0.2074,
+       "1810": 0.2057,
+       "1820": 0.1948
+      },
+      "mean_top1": 0.8963,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:collectionoftheo031785wats",
+      "year": 1785,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 80,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1392,
+       "1790": 0.1656,
+       "1800": 0.2327,
+       "1810": 0.2439,
+       "1820": 0.2187
+      },
+      "mean_top1": 0.8731,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:from00bayl",
+      "year": 1789,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 5,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2292,
+       "1790": 0.2095,
+       "1800": 0.2046,
+       "1810": 0.1927,
+       "1820": 0.164
+      },
+      "mean_top1": 0.8894,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:asermonincommem00stengoog",
+      "year": 1788,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 7,
+      "left_out_works": 1,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.2533,
+       "1790": 0.2629,
+       "1800": 0.2052,
+       "1810": 0.1514,
+       "1820": 0.1271
+      },
+      "mean_top1": 0.8651,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_a-farther-appeal-to-men-_wesley-john_1786",
+      "year": 1786,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 259,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1513,
+       "1790": 0.1639,
+       "1800": 0.2251,
+       "1810": 0.2571,
+       "1820": 0.2027
+      },
+      "mean_top1": 0.8774,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_the-way-and-the-fare-of-_huntington-william_1788",
+      "year": 1788,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 4,
+      "left_out_works": 76,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1675,
+       "1790": 0.1792,
+       "1800": 0.2,
+       "1810": 0.2383,
+       "1820": 0.215
+      },
+      "mean_top1": 0.835,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_an-essay-to-lay-open-th_triebner-christopher-fr_1788",
+      "year": 1788,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 37,
+      "left_out_works": 3,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.2111,
+       "1790": 0.191,
+       "1800": 0.1932,
+       "1810": 0.2241,
+       "1820": 0.1806
+      },
+      "mean_top1": 0.839,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:sermonspreachedb00newt",
+      "year": 1784,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 22,
+      "left_out_works": 1,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.1948,
+       "1790": 0.2298,
+       "1800": 0.1945,
+       "1810": 0.1945,
+       "1820": 0.1862
+      },
+      "mean_top1": 0.8581,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_sermons-upon-the-followi_bellamy-joseph_1787",
+      "year": 1787,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 13,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1951,
+       "1790": 0.2098,
+       "1800": 0.1927,
+       "1810": 0.2222,
+       "1820": 0.1803
+      },
+      "mean_top1": 0.8431,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_the-christian-life-suppo_flexman-roger_1781",
+      "year": 1781,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 10,
+      "left_out_works": 1,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.1817,
+       "1790": 0.2403,
+       "1800": 0.2027,
+       "1810": 0.1983,
+       "1820": 0.177
+      },
+      "mean_top1": 0.8237,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_a-discourse-upon-the-rem_ross-walter_1782",
+      "year": 1782,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 15,
+      "left_out_works": 1,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.2169,
+       "1790": 0.1658,
+       "1800": 0.156,
+       "1810": 0.2227,
+       "1820": 0.2387
+      },
+      "mean_top1": 0.8093,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_the-last-check-to-antino_fletcher-john_1787",
+      "year": 1787,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 26,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1813,
+       "1790": 0.1717,
+       "1800": 0.2084,
+       "1810": 0.2296,
+       "1820": 0.209
+      },
+      "mean_top1": 0.8528,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:institutesnatur02priegoog",
+      "year": 1782,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 32,
+      "left_out_works": 83,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.2242,
+       "1790": 0.2283,
+       "1800": 0.2195,
+       "1810": 0.1816,
+       "1820": 0.1465
+      },
+      "mean_top1": 0.8869,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_god-the-poor-mans-guar_huntington-william_1784",
+      "year": 1784,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 8,
+      "left_out_works": 76,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2167,
+       "1790": 0.1787,
+       "1800": 0.1996,
+       "1810": 0.2142,
+       "1820": 0.1908
+      },
+      "mean_top1": 0.8757,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:addresstodrpries00brya",
+      "year": 1780,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 11,
+      "left_out_works": 8,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.2239,
+       "1790": 0.2358,
+       "1800": 0.2215,
+       "1810": 0.1727,
+       "1820": 0.1461
+      },
+      "mean_top1": 0.8522,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_an-alarm-to-unconverted-_alleine-joseph_1783",
+      "year": 1783,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 21,
+      "left_out_works": 11,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1835,
+       "1790": 0.1806,
+       "1800": 0.211,
+       "1810": 0.2362,
+       "1820": 0.1887
+      },
+      "mean_top1": 0.8897,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_the-grounds-of-a-holy-li_turford-hugh_1784",
+      "year": 1784,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 6,
+      "left_out_works": 7,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.16,
+       "1790": 0.1517,
+       "1800": 0.215,
+       "1810": 0.2617,
+       "1820": 0.2117
+      },
+      "mean_top1": 0.8355,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "hathitrust:uc2.ark:/13960/t9c53k627",
+      "year": 1788,
+      "source": "hathitrust",
+      "died": null,
+      "queries": 31,
+      "left_out_works": 6,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.2399,
+       "1790": 0.2398,
+       "1800": 0.2425,
+       "1810": 0.159,
+       "1820": 0.1188
+      },
+      "mean_top1": 0.8543,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "hathitrust:yale.39002088446720",
+      "year": 1785,
+      "source": "hathitrust",
+      "died": null,
+      "queries": 24,
+      "left_out_works": 4,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1899,
+       "1790": 0.1974,
+       "1800": 0.2042,
+       "1810": 0.2164,
+       "1820": 0.1922
+      },
+      "mean_top1": 0.8799,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:lapseofsoulsinst00berr",
+      "year": 1780,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 18,
+      "left_out_works": 3,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2737,
+       "1790": 0.2452,
+       "1800": 0.2183,
+       "1810": 0.1606,
+       "1820": 0.1022
+      },
+      "mean_top1": 0.8542,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     }
+    ],
+    "drawn": 20,
+    "unreadable_not_attempted": 0,
+    "too_few_topic_passages": 3,
+    "adjacent_hits": 8,
+    "adjacent_rate": 0.4,
+    "exact_hits": 3,
+    "exact_rate": 0.15,
+    "chance_adjacent": 0.4,
+    "chance_exact": 0.2,
+    "pooled": {
+     "neighbours": 47300.0,
+     "peak_decade": 1810,
+     "share": {
+      "1780": 0.1985,
+      "1790": 0.1993,
+      "1800": 0.2099,
+      "1810": 0.2119,
+      "1820": 0.1804
+     }
+    },
+    "by_topic": {
+     "church_government": {
+      "neighbours": 2000.0,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.189,
+       "1790": 0.218,
+       "1800": 0.1792,
+       "1810": 0.214,
+       "1820": 0.1998
+      },
+      "passages": 20
+     },
+     "eternal_punishment": {
+      "neighbours": 10700.0,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2138,
+       "1790": 0.2063,
+       "1800": 0.2092,
+       "1810": 0.2024,
+       "1820": 0.1684
+      },
+      "passages": 107
+     },
+     "fall_atonement": {
+      "neighbours": 3800.0,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2422,
+       "1790": 0.2202,
+       "1800": 0.1994,
+       "1810": 0.1877,
+       "1820": 0.1505
+      },
+      "passages": 38
+     },
+     "fasting": {
+      "neighbours": 100.0,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2833,
+       "1790": 0.2733,
+       "1800": 0.1633,
+       "1810": 0.1267,
+       "1820": 0.1533
+      },
+      "passages": 1
+     },
+     "free_will": {
+      "neighbours": 2400.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.2007,
+       "1790": 0.1971,
+       "1800": 0.2021,
+       "1810": 0.2199,
+       "1820": 0.1803
+      },
+      "passages": 24
+     },
+     "gathering_israel": {
+      "neighbours": 1200.0,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.19,
+       "1790": 0.2194,
+       "1800": 0.2183,
+       "1810": 0.1931,
+       "1820": 0.1792
+      },
+      "passages": 12
+     },
+     "godhead": {
+      "neighbours": 1400.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1948,
+       "1790": 0.1971,
+       "1800": 0.1743,
+       "1810": 0.2357,
+       "1820": 0.1981
+      },
+      "passages": 14
+     },
+     "infant_baptism": {
+      "neighbours": 1300.0,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1774,
+       "1790": 0.1587,
+       "1800": 0.2592,
+       "1810": 0.2379,
+       "1820": 0.1667
+      },
+      "passages": 13
+     },
+     "kings_government": {
+      "neighbours": 6700.0,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.1915,
+       "1790": 0.2119,
+       "1800": 0.2116,
+       "1810": 0.2005,
+       "1820": 0.1843
+      },
+      "passages": 67
+     },
+     "lords_supper": {
+      "neighbours": 600.0,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2156,
+       "1790": 0.1961,
+       "1800": 0.1933,
+       "1810": 0.2011,
+       "1820": 0.1939
+      },
+      "passages": 6
+     },
+     "ordination_authority": {
+      "neighbours": 4000.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1732,
+       "1790": 0.1727,
+       "1800": 0.2207,
+       "1810": 0.2278,
+       "1820": 0.2056
+      },
+      "passages": 40
+     },
+     "paid_clergy": {
+      "neighbours": 600.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.2094,
+       "1790": 0.1789,
+       "1800": 0.1961,
+       "1810": 0.2306,
+       "1820": 0.185
+      },
+      "passages": 6
+     },
+     "regeneration": {
+      "neighbours": 7100.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.178,
+       "1790": 0.168,
+       "1800": 0.2191,
+       "1810": 0.2446,
+       "1820": 0.1903
+      },
+      "passages": 71
+     },
+     "resurrection": {
+      "neighbours": 3000.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1823,
+       "1790": 0.1831,
+       "1800": 0.2094,
+       "1810": 0.2229,
+       "1820": 0.2022
+      },
+      "passages": 30
+     },
+     "revelation_ceased": {
+      "neighbours": 1900.0,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.2049,
+       "1790": 0.2432,
+       "1800": 0.2161,
+       "1810": 0.1818,
+       "1820": 0.154
+      },
+      "passages": 19
+     },
+     "secret_combinations": {
+      "neighbours": 300.0,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.1844,
+       "1790": 0.2389,
+       "1800": 0.22,
+       "1810": 0.1844,
+       "1820": 0.1722
+      },
+      "passages": 3
+     },
+     "universal_salvation": {
+      "neighbours": 2400.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.21,
+       "1790": 0.19,
+       "1800": 0.1954,
+       "1810": 0.2101,
+       "1820": 0.1944
+      },
+      "passages": 24
+     }
+    }
+   },
+   "ocr_1790s": {
+    "works": [
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_a-discourse-delivered-at_whitehead-john_1791",
+      "year": 1791,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 4,
+      "left_out_works": 4,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1092,
+       "1790": 0.1225,
+       "1800": 0.2425,
+       "1810": 0.2817,
+       "1820": 0.2442
+      },
+      "mean_top1": 0.8996,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:shortplainexposi02orto",
+      "year": 1791,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 24,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2329,
+       "1790": 0.1848,
+       "1800": 0.1805,
+       "1810": 0.2006,
+       "1820": 0.2012
+      },
+      "mean_top1": 0.8659,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_the-christian-parent-or_serle-ambrose_1793",
+      "year": 1793,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 30,
+      "left_out_works": 11,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1653,
+       "1790": 0.1689,
+       "1800": 0.1878,
+       "1810": 0.2476,
+       "1820": 0.2304
+      },
+      "mean_top1": 0.8564,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_a-caveat-against-unsound_toplady-augustus_1793",
+      "year": 1793,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 23,
+      "left_out_works": 6,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.178,
+       "1790": 0.1923,
+       "1800": 0.1997,
+       "1810": 0.2601,
+       "1820": 0.1699
+      },
+      "mean_top1": 0.8864,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_the-duty-of-americans-a_dwight-timothy_1798",
+      "year": 1798,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 5,
+      "left_out_works": 63,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.1787,
+       "1790": 0.2453,
+       "1800": 0.1953,
+       "1810": 0.202,
+       "1820": 0.1787
+      },
+      "mean_top1": 0.8441,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_twenty-nine-miscellaneou_mdonald-a-andrew_1793",
+      "year": 1793,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 16,
+      "left_out_works": 1,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1352,
+       "1790": 0.1792,
+       "1800": 0.2135,
+       "1810": 0.2415,
+       "1820": 0.2306
+      },
+      "mean_top1": 0.8475,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "hathitrust:yale.39002085615319",
+      "year": 1792,
+      "source": "hathitrust",
+      "died": null,
+      "queries": 18,
+      "left_out_works": 1,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.2061,
+       "1790": 0.238,
+       "1800": 0.1615,
+       "1810": 0.1874,
+       "1820": 0.207
+      },
+      "mean_top1": 0.8344,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_the-protestant-dissenter_palmer-samuel_1792",
+      "year": 1792,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 11,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1887,
+       "1790": 0.1957,
+       "1800": 0.1937,
+       "1810": 0.2159,
+       "1820": 0.206
+      },
+      "mean_top1": 0.8418,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:sermonsandother09erskgoog",
+      "year": 1794,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 26,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.2116,
+       "1790": 0.2122,
+       "1800": 0.2092,
+       "1810": 0.2106,
+       "1820": 0.1564
+      },
+      "mean_top1": 0.8484,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:10604897bsb",
+      "year": 1790,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 23,
+      "left_out_works": 5,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.1846,
+       "1790": 0.2233,
+       "1800": 0.1906,
+       "1810": 0.2132,
+       "1820": 0.1883
+      },
+      "mean_top1": 0.8603,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:letterstomember00conggoog",
+      "year": 1791,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 18,
+      "left_out_works": 83,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1593,
+       "1790": 0.185,
+       "1800": 0.1696,
+       "1810": 0.2407,
+       "1820": 0.2454
+      },
+      "mean_top1": 0.8518,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:cu31924026429484",
+      "year": 1796,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 10,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.2301,
+       "1790": 0.2512,
+       "1800": 0.2185,
+       "1810": 0.1593,
+       "1820": 0.141
+      },
+      "mean_top1": 0.837,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "institutional_books:AH53ES",
+      "year": 1799,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 7,
+      "left_out_works": 1,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1738,
+       "1790": 0.1829,
+       "1800": 0.2467,
+       "1810": 0.2124,
+       "1820": 0.1843
+      },
+      "mean_top1": 0.844,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:sermonsbyrightr02wilsgoog",
+      "year": 1796,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 25,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1744,
+       "1790": 0.1867,
+       "1800": 0.2126,
+       "1810": 0.2267,
+       "1820": 0.1997
+      },
+      "mean_top1": 0.85,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:lettersdialogues00bell",
+      "year": 1792,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 13,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1999,
+       "1790": 0.2141,
+       "1800": 0.2183,
+       "1810": 0.2028,
+       "1820": 0.1649
+      },
+      "mean_top1": 0.853,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:dissertationonsc00emmo",
+      "year": 1793,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 1,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1438,
+       "1790": 0.216,
+       "1800": 0.2238,
+       "1810": 0.2024,
+       "1820": 0.214
+      },
+      "mean_top1": 0.9009,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_the-visions-of-john-buny_larkin-george_1792",
+      "year": 1792,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 3,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1993,
+       "1790": 0.1958,
+       "1800": 0.2097,
+       "1810": 0.2102,
+       "1820": 0.185
+      },
+      "mean_top1": 0.8724,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_moses-unveiled-in-the-fa_huntington-william_1798",
+      "year": 1798,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 18,
+      "left_out_works": 76,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1454,
+       "1790": 0.1535,
+       "1800": 0.2104,
+       "1810": 0.2709,
+       "1820": 0.2198
+      },
+      "mean_top1": 0.8485,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_address-to-the-roman-cat_mckenna-theobald_1792",
+      "year": 1792,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 5,
+      "left_out_works": 2,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.176,
+       "1790": 0.3393,
+       "1800": 0.1273,
+       "1810": 0.1567,
+       "1820": 0.2007
+      },
+      "mean_top1": 0.8271,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:sspiritualso00alli",
+      "year": 1797,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 2,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2546,
+       "1790": 0.247,
+       "1800": 0.2395,
+       "1810": 0.1613,
+       "1820": 0.0977
+      },
+      "mean_top1": 0.8424,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     }
+    ],
+    "drawn": 20,
+    "unreadable_not_attempted": 0,
+    "too_few_topic_passages": 1,
+    "adjacent_hits": 11,
+    "adjacent_rate": 0.55,
+    "exact_hits": 6,
+    "exact_rate": 0.3,
+    "chance_adjacent": 0.6,
+    "chance_exact": 0.2,
+    "pooled": {
+     "neighbours": 52700.0,
+     "peak_decade": 1810,
+     "share": {
+      "1780": 0.1926,
+      "1790": 0.2063,
+      "1800": 0.2055,
+      "1810": 0.2102,
+      "1820": 0.1855
+     }
+    },
+    "by_topic": {
+     "church_government": {
+      "neighbours": 6600.0,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.1848,
+       "1790": 0.2352,
+       "1800": 0.194,
+       "1810": 0.2006,
+       "1820": 0.1854
+      },
+      "passages": 66
+     },
+     "eternal_punishment": {
+      "neighbours": 11500.0,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.2098,
+       "1790": 0.2103,
+       "1800": 0.2237,
+       "1810": 0.1983,
+       "1820": 0.1579
+      },
+      "passages": 115
+     },
+     "fall_atonement": {
+      "neighbours": 2600.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1929,
+       "1790": 0.1746,
+       "1800": 0.2224,
+       "1810": 0.2332,
+       "1820": 0.1768
+      },
+      "passages": 26
+     },
+     "free_will": {
+      "neighbours": 1700.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1802,
+       "1790": 0.2025,
+       "1800": 0.1943,
+       "1810": 0.2516,
+       "1820": 0.1714
+      },
+      "passages": 17
+     },
+     "gathering_israel": {
+      "neighbours": 2800.0,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.217,
+       "1790": 0.1936,
+       "1800": 0.1883,
+       "1810": 0.2038,
+       "1820": 0.1973
+      },
+      "passages": 28
+     },
+     "godhead": {
+      "neighbours": 2400.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1771,
+       "1790": 0.1889,
+       "1800": 0.1537,
+       "1810": 0.2517,
+       "1820": 0.2286
+      },
+      "passages": 24
+     },
+     "infant_baptism": {
+      "neighbours": 1400.0,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1305,
+       "1790": 0.1693,
+       "1800": 0.2774,
+       "1810": 0.195,
+       "1820": 0.2279
+      },
+      "passages": 14
+     },
+     "kings_government": {
+      "neighbours": 5400.0,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.1848,
+       "1790": 0.2182,
+       "1800": 0.1943,
+       "1810": 0.2109,
+       "1820": 0.1919
+      },
+      "passages": 54
+     },
+     "lords_supper": {
+      "neighbours": 3100.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1733,
+       "1790": 0.1901,
+       "1800": 0.1989,
+       "1810": 0.2129,
+       "1820": 0.2247
+      },
+      "passages": 31
+     },
+     "ordination_authority": {
+      "neighbours": 8700.0,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.1965,
+       "1790": 0.2127,
+       "1800": 0.2076,
+       "1810": 0.2021,
+       "1820": 0.1811
+      },
+      "passages": 87
+     },
+     "paid_clergy": {
+      "neighbours": 300.0,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2767,
+       "1790": 0.1711,
+       "1800": 0.1389,
+       "1810": 0.1867,
+       "1820": 0.2267
+      },
+      "passages": 3
+     },
+     "regeneration": {
+      "neighbours": 3700.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1727,
+       "1790": 0.1822,
+       "1800": 0.224,
+       "1810": 0.232,
+       "1820": 0.1892
+      },
+      "passages": 37
+     },
+     "resurrection": {
+      "neighbours": 2200.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1564,
+       "1790": 0.1502,
+       "1800": 0.2056,
+       "1810": 0.2502,
+       "1820": 0.2377
+      },
+      "passages": 22
+     },
+     "revelation_ceased": {
+      "neighbours": 1700.0,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.2116,
+       "1790": 0.2427,
+       "1800": 0.2084,
+       "1810": 0.1776,
+       "1820": 0.1596
+      },
+      "passages": 17
+     },
+     "secret_combinations": {
+      "neighbours": 200.0,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2467,
+       "1790": 0.205,
+       "1800": 0.2,
+       "1810": 0.185,
+       "1820": 0.1633
+      },
+      "passages": 2
+     },
+     "universal_salvation": {
+      "neighbours": 1600.0,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.2054,
+       "1790": 0.2308,
+       "1800": 0.1821,
+       "1810": 0.2042,
+       "1820": 0.1775
+      },
+      "passages": 16
+     }
+    }
+   },
+   "ocr_1800s": {
+    "works": [
+     {
+      "work_id": "internet_archive:11775973bsb",
+      "year": 1805,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 4,
+      "left_out_works": 85,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1467,
+       "1790": 0.16,
+       "1800": 0.2583,
+       "1810": 0.2283,
+       "1820": 0.2067
+      },
+      "mean_top1": 0.9266,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_summaria-expositio-se-n_swedenborg-emanuel_1800",
+      "year": 1800,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 15,
+      "left_out_works": 38,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1949,
+       "1790": 0.2167,
+       "1800": 0.2011,
+       "1810": 0.226,
+       "1820": 0.1613
+      },
+      "mean_top1": 0.8944,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:anessayonpropaga00crawrich",
+      "year": 1801,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 4,
+      "left_out_works": 1,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.0775,
+       "1790": 0.1208,
+       "1800": 0.2875,
+       "1810": 0.235,
+       "1820": 0.2792
+      },
+      "mean_top1": 0.8414,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "institutional_books:32044054144860",
+      "year": 1808,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 11,
+      "left_out_works": 3,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.0933,
+       "1790": 0.1352,
+       "1800": 0.1645,
+       "1810": 0.3012,
+       "1820": 0.3058
+      },
+      "mean_top1": 0.8307,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "institutional_books:AH449T",
+      "year": 1807,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 80,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1582,
+       "1790": 0.1503,
+       "1800": 0.2129,
+       "1810": 0.2498,
+       "1820": 0.2289
+      },
+      "mean_top1": 0.8555,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "institutional_books:32044054764584",
+      "year": 1805,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 12,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1479,
+       "1790": 0.1664,
+       "1800": 0.1918,
+       "1810": 0.2357,
+       "1820": 0.2582
+      },
+      "mean_top1": 0.8522,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:saintseverlastin00baxtiala",
+      "year": 1802,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 47,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.196,
+       "1790": 0.1894,
+       "1800": 0.2238,
+       "1810": 0.2143,
+       "1820": 0.1764
+      },
+      "mean_top1": 0.8725,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:bim_eighteenth-century_sermons-on-various-subje_waters-edward-pye_1800",
+      "year": 1800,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 6,
+      "left_out_works": 1,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1994,
+       "1790": 0.2089,
+       "1800": 0.1867,
+       "1810": 0.2144,
+       "1820": 0.1906
+      },
+      "mean_top1": 0.8343,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:qualificationsfo0000char",
+      "year": 1805,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 1,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1038,
+       "1790": 0.152,
+       "1800": 0.1919,
+       "1810": 0.2414,
+       "1820": 0.3108
+      },
+      "mean_top1": 0.8428,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:massachusettsbap13bald",
+      "year": 1804,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 16,
+      "left_out_works": 53,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1065,
+       "1790": 0.1092,
+       "1800": 0.1813,
+       "1810": 0.2742,
+       "1820": 0.329
+      },
+      "mean_top1": 0.8287,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "institutional_books:32044054764758",
+      "year": 1808,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 1,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1145,
+       "1790": 0.1458,
+       "1800": 0.1959,
+       "1810": 0.2701,
+       "1820": 0.2737
+      },
+      "mean_top1": 0.8502,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:lettertoalexande00walk",
+      "year": 1803,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 25,
+      "left_out_works": 8,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1928,
+       "1790": 0.2191,
+       "1800": 0.2529,
+       "1810": 0.1756,
+       "1820": 0.1596
+      },
+      "mean_top1": 0.8672,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:newdutyofman0000vari",
+      "year": 1809,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 45,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.177,
+       "1790": 0.1482,
+       "1800": 0.1858,
+       "1810": 0.2507,
+       "1820": 0.2382
+      },
+      "mean_top1": 0.9021,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:remarksonanaddre00nort",
+      "year": 1809,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 5,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1373,
+       "1790": 0.1415,
+       "1800": 0.2052,
+       "1810": 0.2226,
+       "1820": 0.2935
+      },
+      "mean_top1": 0.8633,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:massachusettsbap110bald",
+      "year": 1807,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 10,
+      "left_out_works": 53,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1483,
+       "1790": 0.1593,
+       "1800": 0.2007,
+       "1810": 0.241,
+       "1820": 0.2507
+      },
+      "mean_top1": 0.847,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:thoughtsonreligi00pascrich",
+      "year": 1806,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 32,
+      "left_out_works": 3,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.127,
+       "1790": 0.136,
+       "1800": 0.2096,
+       "1810": 0.2602,
+       "1820": 0.2672
+      },
+      "mean_top1": 0.8691,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:bim_early-english-books-1641-1700_the-wrath-to-come-_george-strebeck_1803",
+      "year": 1803,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 38,
+      "left_out_works": 2,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2503,
+       "1790": 0.1947,
+       "1800": 0.1954,
+       "1810": 0.1682,
+       "1820": 0.1915
+      },
+      "mean_top1": 0.8557,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "institutional_books:AH53E2",
+      "year": 1800,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 11,
+      "left_out_works": 23,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1385,
+       "1790": 0.1736,
+       "1800": 0.1973,
+       "1810": 0.2167,
+       "1820": 0.2739
+      },
+      "mean_top1": 0.8537,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "institutional_books:AH5GLG",
+      "year": 1800,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 27,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1568,
+       "1790": 0.1747,
+       "1800": 0.2283,
+       "1810": 0.2258,
+       "1820": 0.2144
+      },
+      "mean_top1": 0.8624,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "institutional_books:AH65X8",
+      "year": 1808,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 97,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.102,
+       "1790": 0.1236,
+       "1800": 0.2027,
+       "1810": 0.2935,
+       "1820": 0.2782
+      },
+      "mean_top1": 0.8892,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     }
+    ],
+    "drawn": 20,
+    "unreadable_not_attempted": 0,
+    "too_few_topic_passages": 0,
+    "adjacent_hits": 10,
+    "adjacent_rate": 0.5,
+    "exact_hits": 5,
+    "exact_rate": 0.25,
+    "chance_adjacent": 0.6,
+    "chance_exact": 0.2,
+    "pooled": {
+     "neighbours": 53200.0,
+     "peak_decade": 1820,
+     "share": {
+      "1780": 0.152,
+      "1790": 0.1603,
+      "1800": 0.2053,
+      "1810": 0.2374,
+      "1820": 0.2451
+     }
+    },
+    "by_topic": {
+     "church_government": {
+      "neighbours": 4800.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1408,
+       "1790": 0.1697,
+       "1800": 0.1983,
+       "1810": 0.2358,
+       "1820": 0.2554
+      },
+      "passages": 48
+     },
+     "eternal_punishment": {
+      "neighbours": 11300.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1901,
+       "1790": 0.1673,
+       "1800": 0.2075,
+       "1810": 0.203,
+       "1820": 0.232
+      },
+      "passages": 113
+     },
+     "fall_atonement": {
+      "neighbours": 1900.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1337,
+       "1790": 0.1591,
+       "1800": 0.2219,
+       "1810": 0.2607,
+       "1820": 0.2246
+      },
+      "passages": 19
+     },
+     "fasting": {
+      "neighbours": 900.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1693,
+       "1790": 0.1707,
+       "1800": 0.1911,
+       "1810": 0.2341,
+       "1820": 0.2348
+      },
+      "passages": 9
+     },
+     "free_will": {
+      "neighbours": 500.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.154,
+       "1790": 0.1587,
+       "1800": 0.194,
+       "1810": 0.2367,
+       "1820": 0.2567
+      },
+      "passages": 5
+     },
+     "gathering_israel": {
+      "neighbours": 1400.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1317,
+       "1790": 0.1495,
+       "1800": 0.2352,
+       "1810": 0.249,
+       "1820": 0.2345
+      },
+      "passages": 14
+     },
+     "godhead": {
+      "neighbours": 1600.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1294,
+       "1790": 0.1525,
+       "1800": 0.1877,
+       "1810": 0.2631,
+       "1820": 0.2673
+      },
+      "passages": 16
+     },
+     "infant_baptism": {
+      "neighbours": 600.0,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1744,
+       "1790": 0.1639,
+       "1800": 0.2344,
+       "1810": 0.2117,
+       "1820": 0.2156
+      },
+      "passages": 6
+     },
+     "kings_government": {
+      "neighbours": 4200.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1606,
+       "1790": 0.1887,
+       "1800": 0.211,
+       "1810": 0.2302,
+       "1820": 0.2096
+      },
+      "passages": 42
+     },
+     "lords_supper": {
+      "neighbours": 900.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1263,
+       "1790": 0.1489,
+       "1800": 0.1778,
+       "1810": 0.29,
+       "1820": 0.257
+      },
+      "passages": 9
+     },
+     "ordination_authority": {
+      "neighbours": 9700.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1319,
+       "1790": 0.1569,
+       "1800": 0.1917,
+       "1810": 0.2486,
+       "1820": 0.2709
+      },
+      "passages": 97
+     },
+     "paid_clergy": {
+      "neighbours": 900.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1619,
+       "1790": 0.1522,
+       "1800": 0.2293,
+       "1810": 0.2189,
+       "1820": 0.2378
+      },
+      "passages": 9
+     },
+     "regeneration": {
+      "neighbours": 6400.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1367,
+       "1790": 0.1514,
+       "1800": 0.2188,
+       "1810": 0.2588,
+       "1820": 0.2343
+      },
+      "passages": 64
+     },
+     "resurrection": {
+      "neighbours": 5900.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1414,
+       "1790": 0.1323,
+       "1800": 0.1988,
+       "1810": 0.2606,
+       "1820": 0.2671
+      },
+      "passages": 59
+     },
+     "revelation_ceased": {
+      "neighbours": 1900.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1293,
+       "1790": 0.1651,
+       "1800": 0.2221,
+       "1810": 0.236,
+       "1820": 0.2475
+      },
+      "passages": 19
+     },
+     "secret_combinations": {
+      "neighbours": 100.0,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.1733,
+       "1790": 0.2967,
+       "1800": 0.1967,
+       "1810": 0.2,
+       "1820": 0.1333
+      },
+      "passages": 1
+     },
+     "universal_salvation": {
+      "neighbours": 4000.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1686,
+       "1790": 0.1588,
+       "1800": 0.1959,
+       "1810": 0.2212,
+       "1820": 0.2556
+      },
+      "passages": 40
+     }
+    }
+   },
+   "ocr_1810s": {
+    "works": [
+     {
+      "work_id": "internet_archive:carefullys00watt",
+      "year": 1817,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 119,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1661,
+       "1790": 0.1714,
+       "1800": 0.2121,
+       "1810": 0.2667,
+       "1820": 0.1837
+      },
+      "mean_top1": 0.8987,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:cardiphoniaorut03newtgoog",
+      "year": 1814,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 12,
+      "left_out_works": 50,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1511,
+       "1790": 0.1789,
+       "1800": 0.2183,
+       "1810": 0.2483,
+       "1820": 0.2033
+      },
+      "mean_top1": 0.8587,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:theologicalwork03scotgoog",
+      "year": 1810,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 78,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1712,
+       "1790": 0.1872,
+       "1800": 0.2173,
+       "1810": 0.2173,
+       "1820": 0.2069
+      },
+      "mean_top1": 0.8673,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:sermonondeathofr00bogu",
+      "year": 1811,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 4,
+      "left_out_works": 9,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.0942,
+       "1790": 0.1533,
+       "1800": 0.2183,
+       "1810": 0.2742,
+       "1820": 0.26
+      },
+      "mean_top1": 0.8407,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:greatimportance02melmgoog",
+      "year": 1812,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 36,
+      "left_out_works": 5,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.2156,
+       "1790": 0.1863,
+       "1800": 0.2182,
+       "1810": 0.2115,
+       "1820": 0.1683
+      },
+      "mean_top1": 0.8848,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:theologicalworks05scot",
+      "year": 1810,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 78,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1263,
+       "1790": 0.1397,
+       "1800": 0.2245,
+       "1810": 0.2676,
+       "1820": 0.2419
+      },
+      "mean_top1": 0.9009,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:10786759bsb",
+      "year": 1810,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 37,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1396,
+       "1790": 0.1517,
+       "1800": 0.2003,
+       "1810": 0.2671,
+       "1820": 0.2413
+      },
+      "mean_top1": 0.867,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "institutional_books:HN2RQT",
+      "year": 1813,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 12,
+      "left_out_works": 36,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1778,
+       "1790": 0.2017,
+       "1800": 0.2036,
+       "1810": 0.2036,
+       "1820": 0.2133
+      },
+      "mean_top1": 0.8451,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:sermonstranslate08saur",
+      "year": 1813,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 25,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1347,
+       "1790": 0.1434,
+       "1800": 0.2067,
+       "1810": 0.2672,
+       "1820": 0.2479
+      },
+      "mean_top1": 0.8708,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:discoursedel00clinton",
+      "year": 1811,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 4,
+      "left_out_works": 2,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1075,
+       "1790": 0.1733,
+       "1800": 0.1117,
+       "1810": 0.295,
+       "1820": 0.3125
+      },
+      "mean_top1": 0.8387,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:sacramentalselec00wils",
+      "year": 1812,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 3,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1434,
+       "1790": 0.1488,
+       "1800": 0.2074,
+       "1810": 0.2605,
+       "1820": 0.2399
+      },
+      "mean_top1": 0.8715,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:sacramentlordss01gibsgoog",
+      "year": 1813,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 34,
+      "left_out_works": 4,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.2027,
+       "1790": 0.1785,
+       "1800": 0.1985,
+       "1810": 0.2203,
+       "1820": 0.1999
+      },
+      "mean_top1": 0.8596,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:themessiah0000klop",
+      "year": 1811,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 2,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1812,
+       "1790": 0.1913,
+       "1800": 0.2238,
+       "1810": 0.2086,
+       "1820": 0.1952
+      },
+      "mean_top1": 0.8265,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:clarkescommentar00clar",
+      "year": 1817,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 2,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1452,
+       "1790": 0.1373,
+       "1800": 0.2187,
+       "1810": 0.2457,
+       "1820": 0.2531
+      },
+      "mean_top1": 0.8452,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:christianinstit01gastgoog",
+      "year": 1812,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 1,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.188,
+       "1790": 0.1803,
+       "1800": 0.2197,
+       "1810": 0.2369,
+       "1820": 0.1751
+      },
+      "mean_top1": 0.8656,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:10071267bsb",
+      "year": 1810,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 12,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1489,
+       "1790": 0.144,
+       "1800": 0.2193,
+       "1810": 0.2423,
+       "1820": 0.2454
+      },
+      "mean_top1": 0.8813,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "hathitrust:ia.ark:/13960/t9862mz4h",
+      "year": 1817,
+      "source": "hathitrust",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 78,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1435,
+       "1790": 0.1357,
+       "1800": 0.2001,
+       "1810": 0.2825,
+       "1820": 0.2383
+      },
+      "mean_top1": 0.8613,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "institutional_books:HWJSHF",
+      "year": 1815,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 1,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.154,
+       "1790": 0.1623,
+       "1800": 0.1986,
+       "1810": 0.2533,
+       "1820": 0.2318
+      },
+      "mean_top1": 0.8675,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:reformerreformed00bang",
+      "year": 1818,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 6,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1298,
+       "1790": 0.127,
+       "1800": 0.2098,
+       "1810": 0.2802,
+       "1820": 0.2532
+      },
+      "mean_top1": 0.8633,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:akeytobibledoct00whitgoog",
+      "year": 1814,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 7,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1678,
+       "1790": 0.1755,
+       "1800": 0.2033,
+       "1810": 0.2559,
+       "1820": 0.1974
+      },
+      "mean_top1": 0.8644,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     }
+    ],
+    "drawn": 20,
+    "unreadable_not_attempted": 0,
+    "too_few_topic_passages": 2,
+    "adjacent_hits": 20,
+    "adjacent_rate": 1.0,
+    "exact_hits": 14,
+    "exact_rate": 0.7,
+    "chance_adjacent": 0.6,
+    "chance_exact": 0.2,
+    "pooled": {
+     "neighbours": 66200.0,
+     "peak_decade": 1810,
+     "share": {
+      "1780": 0.1586,
+      "1790": 0.1608,
+      "1800": 0.2107,
+      "1810": 0.2491,
+      "1820": 0.2208
+     }
+    },
+    "by_topic": {
+     "church_government": {
+      "neighbours": 2600.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1671,
+       "1790": 0.1672,
+       "1800": 0.1942,
+       "1810": 0.2432,
+       "1820": 0.2283
+      },
+      "passages": 26
+     },
+     "eternal_punishment": {
+      "neighbours": 11900.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1749,
+       "1790": 0.1738,
+       "1800": 0.2179,
+       "1810": 0.2283,
+       "1820": 0.2051
+      },
+      "passages": 119
+     },
+     "fall_atonement": {
+      "neighbours": 3700.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1698,
+       "1790": 0.1725,
+       "1800": 0.1923,
+       "1810": 0.2584,
+       "1820": 0.2069
+      },
+      "passages": 37
+     },
+     "fasting": {
+      "neighbours": 1100.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1742,
+       "1790": 0.1512,
+       "1800": 0.2179,
+       "1810": 0.227,
+       "1820": 0.2297
+      },
+      "passages": 11
+     },
+     "free_will": {
+      "neighbours": 5200.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.136,
+       "1790": 0.1399,
+       "1800": 0.2049,
+       "1810": 0.2824,
+       "1820": 0.2368
+      },
+      "passages": 52
+     },
+     "gathering_israel": {
+      "neighbours": 2800.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1619,
+       "1790": 0.1561,
+       "1800": 0.2155,
+       "1810": 0.2424,
+       "1820": 0.2242
+      },
+      "passages": 28
+     },
+     "godhead": {
+      "neighbours": 1300.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1262,
+       "1790": 0.1421,
+       "1800": 0.18,
+       "1810": 0.2997,
+       "1820": 0.2521
+      },
+      "passages": 13
+     },
+     "infant_baptism": {
+      "neighbours": 1400.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.134,
+       "1790": 0.1374,
+       "1800": 0.2217,
+       "1810": 0.2829,
+       "1820": 0.224
+      },
+      "passages": 14
+     },
+     "kings_government": {
+      "neighbours": 5700.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1718,
+       "1790": 0.1875,
+       "1800": 0.2016,
+       "1810": 0.2308,
+       "1820": 0.2084
+      },
+      "passages": 57
+     },
+     "lords_supper": {
+      "neighbours": 8000.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1727,
+       "1790": 0.1587,
+       "1800": 0.1996,
+       "1810": 0.2443,
+       "1820": 0.2246
+      },
+      "passages": 80
+     },
+     "ordination_authority": {
+      "neighbours": 7300.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1527,
+       "1790": 0.1732,
+       "1800": 0.2184,
+       "1810": 0.2387,
+       "1820": 0.217
+      },
+      "passages": 73
+     },
+     "paid_clergy": {
+      "neighbours": 700.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1605,
+       "1790": 0.1419,
+       "1800": 0.1919,
+       "1810": 0.2443,
+       "1820": 0.2614
+      },
+      "passages": 7
+     },
+     "regeneration": {
+      "neighbours": 9600.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1331,
+       "1790": 0.1456,
+       "1800": 0.2186,
+       "1810": 0.2809,
+       "1820": 0.2218
+      },
+      "passages": 96
+     },
+     "resurrection": {
+      "neighbours": 5600.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1477,
+       "1790": 0.1339,
+       "1800": 0.2089,
+       "1810": 0.2578,
+       "1820": 0.2517
+      },
+      "passages": 56
+     },
+     "revelation_ceased": {
+      "neighbours": 1800.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1559,
+       "1790": 0.1524,
+       "1800": 0.2198,
+       "1810": 0.2381,
+       "1820": 0.2337
+      },
+      "passages": 18
+     },
+     "secret_combinations": {
+      "neighbours": 100.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1267,
+       "1790": 0.1733,
+       "1800": 0.1633,
+       "1810": 0.3167,
+       "1820": 0.22
+      },
+      "passages": 1
+     },
+     "universal_salvation": {
+      "neighbours": 1400.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1812,
+       "1790": 0.1719,
+       "1800": 0.2195,
+       "1810": 0.224,
+       "1820": 0.2033
+      },
+      "passages": 14
+     }
+    }
+   },
+   "ocr_1820s": {
+    "works": [
+     {
+      "work_id": "institutional_books:HX3X3H",
+      "year": 1822,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 4,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1443,
+       "1790": 0.1618,
+       "1800": 0.2036,
+       "1810": 0.2373,
+       "1820": 0.2529
+      },
+      "mean_top1": 0.8359,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "institutional_books:HN2GFY",
+      "year": 1825,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 28,
+      "left_out_works": 119,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1551,
+       "1790": 0.1358,
+       "1800": 0.1974,
+       "1810": 0.3006,
+       "1820": 0.2111
+      },
+      "mean_top1": 0.9146,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:sermonschieflyp00dealgoog",
+      "year": 1827,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 2,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1456,
+       "1790": 0.1546,
+       "1800": 0.2021,
+       "1810": 0.2577,
+       "1820": 0.2401
+      },
+      "mean_top1": 0.8583,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:10398182bsb",
+      "year": 1829,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 11,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1297,
+       "1790": 0.154,
+       "1800": 0.2171,
+       "1810": 0.2416,
+       "1820": 0.2577
+      },
+      "mean_top1": 0.8483,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:sermonspreachedo00shre",
+      "year": 1825,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 1,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1329,
+       "1790": 0.1354,
+       "1800": 0.2142,
+       "1810": 0.2475,
+       "1820": 0.2699
+      },
+      "mean_top1": 0.8578,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:turkishnewtestam00hen",
+      "year": 1825,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 27,
+      "left_out_works": 1,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1405,
+       "1790": 0.1441,
+       "1800": 0.2137,
+       "1810": 0.2516,
+       "1820": 0.2501
+      },
+      "mean_top1": 0.8713,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:christiandiscipl0002unse_d5p6",
+      "year": 1820,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 7,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1052,
+       "1790": 0.1273,
+       "1800": 0.2038,
+       "1810": 0.2696,
+       "1820": 0.2942
+      },
+      "mean_top1": 0.888,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "hathitrust:mdp.39015033484125",
+      "year": 1825,
+      "source": "hathitrust",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 2,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.106,
+       "1790": 0.1293,
+       "1800": 0.1756,
+       "1810": 0.286,
+       "1820": 0.3031
+      },
+      "mean_top1": 0.8356,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:essaysonallscrip01good",
+      "year": 1822,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 12,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1197,
+       "1790": 0.128,
+       "1800": 0.213,
+       "1810": 0.2851,
+       "1820": 0.2542
+      },
+      "mean_top1": 0.8557,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:remarksonintern00leslgoog",
+      "year": 1826,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 33,
+      "left_out_works": 1,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1122,
+       "1790": 0.1373,
+       "1800": 0.213,
+       "1810": 0.2581,
+       "1820": 0.2794
+      },
+      "mean_top1": 0.9289,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:sermonsfordiffe00whitgoog",
+      "year": 1828,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 2,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1457,
+       "1790": 0.1641,
+       "1800": 0.2136,
+       "1810": 0.2382,
+       "1820": 0.2384
+      },
+      "mean_top1": 0.857,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:wholeworkstowhic05flavuoft",
+      "year": 1820,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 17,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1809,
+       "1790": 0.1874,
+       "1800": 0.2088,
+       "1810": 0.2357,
+       "1820": 0.1872
+      },
+      "mean_top1": 0.8568,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "institutional_books:AH4DJS",
+      "year": 1825,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 15,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1798,
+       "1790": 0.1954,
+       "1800": 0.1828,
+       "1810": 0.2229,
+       "1820": 0.2192
+      },
+      "mean_top1": 0.8485,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:discussionofchri01mcca",
+      "year": 1828,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 3,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1476,
+       "1790": 0.1207,
+       "1800": 0.2493,
+       "1810": 0.246,
+       "1820": 0.2365
+      },
+      "mean_top1": 0.8674,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:lecturesexposit00culbgoog",
+      "year": 1826,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 2,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1573,
+       "1790": 0.1618,
+       "1800": 0.234,
+       "1810": 0.2259,
+       "1820": 0.2209
+      },
+      "mean_top1": 0.8432,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:sermonspreached03gilpgoog",
+      "year": 1822,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 23,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1617,
+       "1790": 0.1607,
+       "1800": 0.1938,
+       "1810": 0.2524,
+       "1820": 0.2314
+      },
+      "mean_top1": 0.856,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:practicalviewofwi00wilb",
+      "year": 1820,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 25,
+      "left_out_works": 21,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1281,
+       "1790": 0.1524,
+       "1800": 0.2019,
+       "1810": 0.2608,
+       "1820": 0.2568
+      },
+      "mean_top1": 0.8962,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:criticalcommenta02pitmuoft",
+      "year": 1822,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 6,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1815,
+       "1790": 0.1792,
+       "1800": 0.1989,
+       "1810": 0.2199,
+       "1820": 0.2205
+      },
+      "mean_top1": 0.8456,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:10411208bsb",
+      "year": 1827,
+      "source": "internet_archive",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 25,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1258,
+       "1790": 0.1497,
+       "1800": 0.2221,
+       "1810": 0.2479,
+       "1820": 0.2544
+      },
+      "mean_top1": 0.8522,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "institutional_books:AH45LE",
+      "year": 1825,
+      "source": "institutional_books",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 63,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1168,
+       "1790": 0.1242,
+       "1800": 0.2239,
+       "1810": 0.2662,
+       "1820": 0.269
+      },
+      "mean_top1": 0.8632,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     }
+    ],
+    "drawn": 20,
+    "unreadable_not_attempted": 0,
+    "too_few_topic_passages": 0,
+    "adjacent_hits": 18,
+    "adjacent_rate": 0.9,
+    "exact_hits": 10,
+    "exact_rate": 0.5,
+    "chance_adjacent": 0.4,
+    "chance_exact": 0.2,
+    "pooled": {
+     "neighbours": 75300.0,
+     "peak_decade": 1810,
+     "share": {
+      "1780": 0.1411,
+      "1790": 0.1506,
+      "1800": 0.2093,
+      "1810": 0.2516,
+      "1820": 0.2474
+     }
+    },
+    "by_topic": {
+     "church_government": {
+      "neighbours": 6900.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1228,
+       "1790": 0.1483,
+       "1800": 0.1971,
+       "1810": 0.262,
+       "1820": 0.2699
+      },
+      "passages": 69
+     },
+     "eternal_punishment": {
+      "neighbours": 8600.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.145,
+       "1790": 0.15,
+       "1800": 0.21,
+       "1810": 0.2458,
+       "1820": 0.2491
+      },
+      "passages": 86
+     },
+     "fall_atonement": {
+      "neighbours": 4200.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1365,
+       "1790": 0.1393,
+       "1800": 0.2093,
+       "1810": 0.2559,
+       "1820": 0.259
+      },
+      "passages": 42
+     },
+     "fasting": {
+      "neighbours": 1200.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1447,
+       "1790": 0.1381,
+       "1800": 0.2139,
+       "1810": 0.2522,
+       "1820": 0.2511
+      },
+      "passages": 12
+     },
+     "free_will": {
+      "neighbours": 2200.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1492,
+       "1790": 0.1733,
+       "1800": 0.2073,
+       "1810": 0.2655,
+       "1820": 0.2047
+      },
+      "passages": 22
+     },
+     "gathering_israel": {
+      "neighbours": 4900.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1639,
+       "1790": 0.175,
+       "1800": 0.2005,
+       "1810": 0.2284,
+       "1820": 0.2322
+      },
+      "passages": 49
+     },
+     "godhead": {
+      "neighbours": 2600.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1092,
+       "1790": 0.1321,
+       "1800": 0.1638,
+       "1810": 0.2837,
+       "1820": 0.3112
+      },
+      "passages": 26
+     },
+     "infant_baptism": {
+      "neighbours": 2800.0,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1524,
+       "1790": 0.1071,
+       "1800": 0.2527,
+       "1810": 0.2418,
+       "1820": 0.246
+      },
+      "passages": 28
+     },
+     "kings_government": {
+      "neighbours": 6300.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1753,
+       "1790": 0.2008,
+       "1800": 0.1963,
+       "1810": 0.2134,
+       "1820": 0.2141
+      },
+      "passages": 63
+     },
+     "lords_supper": {
+      "neighbours": 4400.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1528,
+       "1790": 0.1398,
+       "1800": 0.2041,
+       "1810": 0.272,
+       "1820": 0.2313
+      },
+      "passages": 44
+     },
+     "ordination_authority": {
+      "neighbours": 12300.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1279,
+       "1790": 0.141,
+       "1800": 0.2181,
+       "1810": 0.2531,
+       "1820": 0.2599
+      },
+      "passages": 123
+     },
+     "paid_clergy": {
+      "neighbours": 2800.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.131,
+       "1790": 0.1479,
+       "1800": 0.2061,
+       "1810": 0.257,
+       "1820": 0.2581
+      },
+      "passages": 28
+     },
+     "regeneration": {
+      "neighbours": 9000.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1345,
+       "1790": 0.1393,
+       "1800": 0.222,
+       "1810": 0.2708,
+       "1820": 0.2334
+      },
+      "passages": 90
+     },
+     "resurrection": {
+      "neighbours": 7800.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1458,
+       "1790": 0.1447,
+       "1800": 0.2094,
+       "1810": 0.2507,
+       "1820": 0.2494
+      },
+      "passages": 78
+     },
+     "revelation_ceased": {
+      "neighbours": 3800.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1423,
+       "1790": 0.173,
+       "1800": 0.2075,
+       "1810": 0.2398,
+       "1820": 0.2374
+      },
+      "passages": 38
+     },
+     "secret_combinations": {
+      "neighbours": 300.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1111,
+       "1790": 0.0989,
+       "1800": 0.1978,
+       "1810": 0.2922,
+       "1820": 0.3
+      },
+      "passages": 3
+     },
+     "universal_salvation": {
+      "neighbours": 1300.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1118,
+       "1790": 0.1523,
+       "1800": 0.2167,
+       "1810": 0.2592,
+       "1820": 0.26
+      },
+      "passages": 13
+     }
+    }
+   },
+   "keyed_1780_1809": {
+    "works": [
+     {
+      "work_id": "tcp:N13864",
+      "year": 1782,
+      "source": "tcp",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 1,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2528,
+       "1790": 0.1912,
+       "1800": 0.1758,
+       "1810": 0.1889,
+       "1820": 0.1912
+      },
+      "mean_top1": 0.9456,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "tcp:N18482",
+      "year": 1791,
+      "source": "tcp",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 259,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1475,
+       "1790": 0.1511,
+       "1800": 0.2265,
+       "1810": 0.246,
+       "1820": 0.2289
+      },
+      "mean_top1": 0.8737,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:N23157",
+      "year": 1796,
+      "source": "tcp",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 76,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1376,
+       "1790": 0.1408,
+       "1800": 0.2033,
+       "1810": 0.2584,
+       "1820": 0.2598
+      },
+      "mean_top1": 0.8492,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:K003643.002",
+      "year": 1783,
+      "source": "tcp",
+      "died": null,
+      "queries": 6,
+      "left_out_works": 87,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1161,
+       "1790": 0.1583,
+       "1800": 0.2156,
+       "1810": 0.2406,
+       "1820": 0.2694
+      },
+      "mean_top1": 0.8612,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "tcp:N14926",
+      "year": 1785,
+      "source": "tcp",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 1,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.2077,
+       "1790": 0.1711,
+       "1800": 0.1843,
+       "1810": 0.2601,
+       "1820": 0.1768
+      },
+      "mean_top1": 0.9341,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "tcp:N15491",
+      "year": 1786,
+      "source": "tcp",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 3,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.0949,
+       "1790": 0.1017,
+       "1800": 0.2178,
+       "1810": 0.2637,
+       "1820": 0.3218
+      },
+      "mean_top1": 0.8703,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "tcp:N15809",
+      "year": 1787,
+      "source": "tcp",
+      "died": null,
+      "queries": 32,
+      "left_out_works": 1,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1219,
+       "1790": 0.1273,
+       "1800": 0.1913,
+       "1810": 0.2649,
+       "1820": 0.2947
+      },
+      "mean_top1": 0.8654,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "tcp:N17436",
+      "year": 1790,
+      "source": "tcp",
+      "died": null,
+      "queries": 4,
+      "left_out_works": 5,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1942,
+       "1790": 0.1083,
+       "1800": 0.2108,
+       "1810": 0.2275,
+       "1820": 0.2592
+      },
+      "mean_top1": 0.8552,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:N16981",
+      "year": 1789,
+      "source": "tcp",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 1,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1601,
+       "1790": 0.1886,
+       "1800": 0.2215,
+       "1810": 0.2157,
+       "1820": 0.2141
+      },
+      "mean_top1": 0.9134,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "tcp:N28914",
+      "year": 1800,
+      "source": "tcp",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 1,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1394,
+       "1790": 0.1326,
+       "1800": 0.2123,
+       "1810": 0.258,
+       "1820": 0.2577
+      },
+      "mean_top1": 0.8532,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:N22862",
+      "year": 1796,
+      "source": "tcp",
+      "died": null,
+      "queries": 16,
+      "left_out_works": 1,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1277,
+       "1790": 0.1894,
+       "1800": 0.2025,
+       "1810": 0.2258,
+       "1820": 0.2546
+      },
+      "mean_top1": 0.8203,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:K112277.000",
+      "year": 1792,
+      "source": "tcp",
+      "died": null,
+      "queries": 5,
+      "left_out_works": 6,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.114,
+       "1790": 0.1527,
+       "1800": 0.1727,
+       "1810": 0.2287,
+       "1820": 0.332
+      },
+      "mean_top1": 0.8961,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:N25065",
+      "year": 1797,
+      "source": "tcp",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 1,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1334,
+       "1790": 0.1358,
+       "1800": 0.2238,
+       "1810": 0.2552,
+       "1820": 0.2519
+      },
+      "mean_top1": 0.9239,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:N15583",
+      "year": 1786,
+      "source": "tcp",
+      "died": null,
+      "queries": 18,
+      "left_out_works": 2,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1306,
+       "1790": 0.1531,
+       "1800": 0.2594,
+       "1810": 0.2217,
+       "1820": 0.2352
+      },
+      "mean_top1": 0.89,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "tcp:N14020",
+      "year": 1782,
+      "source": "tcp",
+      "died": null,
+      "queries": 19,
+      "left_out_works": 1,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1563,
+       "1790": 0.1479,
+       "1800": 0.1991,
+       "1810": 0.2274,
+       "1820": 0.2693
+      },
+      "mean_top1": 0.8535,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "tcp:N23021",
+      "year": 1796,
+      "source": "tcp",
+      "died": null,
+      "queries": 7,
+      "left_out_works": 1,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1048,
+       "1790": 0.1586,
+       "1800": 0.1933,
+       "1810": 0.26,
+       "1820": 0.2833
+      },
+      "mean_top1": 0.8534,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:N20980",
+      "year": 1794,
+      "source": "tcp",
+      "died": null,
+      "queries": 22,
+      "left_out_works": 1,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1162,
+       "1790": 0.1762,
+       "1800": 0.2112,
+       "1810": 0.2323,
+       "1820": 0.2641
+      },
+      "mean_top1": 0.9283,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:N21501",
+      "year": 1795,
+      "source": "tcp",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 5,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1248,
+       "1790": 0.1615,
+       "1800": 0.1997,
+       "1810": 0.2397,
+       "1820": 0.2743
+      },
+      "mean_top1": 0.864,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:N22855",
+      "year": 1796,
+      "source": "tcp",
+      "died": null,
+      "queries": 17,
+      "left_out_works": 1,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1386,
+       "1790": 0.1427,
+       "1800": 0.1992,
+       "1810": 0.2465,
+       "1820": 0.2729
+      },
+      "mean_top1": 0.851,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:N23891",
+      "year": 1796,
+      "source": "tcp",
+      "died": null,
+      "queries": 40,
+      "left_out_works": 1,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1034,
+       "1790": 0.1113,
+       "1800": 0.2918,
+       "1810": 0.2393,
+       "1820": 0.2541
+      },
+      "mean_top1": 0.8577,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     }
+    ],
+    "drawn": 20,
+    "unreadable_not_attempted": 0,
+    "too_few_topic_passages": 0,
+    "adjacent_hits": 3,
+    "adjacent_rate": 0.15,
+    "exact_hits": 1,
+    "exact_rate": 0.05,
+    "chance_adjacent": 0.52,
+    "chance_exact": 0.2,
+    "pooled": {
+     "neighbours": 54600.0,
+     "peak_decade": 1820,
+     "share": {
+      "1780": 0.1447,
+      "1790": 0.1496,
+      "1800": 0.2133,
+      "1810": 0.2418,
+      "1820": 0.2506
+     }
+    },
+    "by_topic": {
+     "church_government": {
+      "neighbours": 3400.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1351,
+       "1790": 0.1552,
+       "1800": 0.2281,
+       "1810": 0.2301,
+       "1820": 0.2515
+      },
+      "passages": 34
+     },
+     "eternal_punishment": {
+      "neighbours": 12800.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.151,
+       "1790": 0.1453,
+       "1800": 0.2065,
+       "1810": 0.234,
+       "1820": 0.2633
+      },
+      "passages": 128
+     },
+     "fall_atonement": {
+      "neighbours": 4600.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.2006,
+       "1790": 0.1744,
+       "1800": 0.1933,
+       "1810": 0.2201,
+       "1820": 0.2117
+      },
+      "passages": 46
+     },
+     "fasting": {
+      "neighbours": 800.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.155,
+       "1790": 0.1633,
+       "1800": 0.2046,
+       "1810": 0.2254,
+       "1820": 0.2517
+      },
+      "passages": 8
+     },
+     "free_will": {
+      "neighbours": 1400.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1388,
+       "1790": 0.1502,
+       "1800": 0.2088,
+       "1810": 0.2698,
+       "1820": 0.2324
+      },
+      "passages": 14
+     },
+     "gathering_israel": {
+      "neighbours": 3100.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1354,
+       "1790": 0.1718,
+       "1800": 0.2303,
+       "1810": 0.2345,
+       "1820": 0.228
+      },
+      "passages": 31
+     },
+     "godhead": {
+      "neighbours": 1000.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.078,
+       "1790": 0.1153,
+       "1800": 0.1727,
+       "1810": 0.32,
+       "1820": 0.314
+      },
+      "passages": 10
+     },
+     "infant_baptism": {
+      "neighbours": 500.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1593,
+       "1790": 0.1307,
+       "1800": 0.216,
+       "1810": 0.2647,
+       "1820": 0.2293
+      },
+      "passages": 5
+     },
+     "kings_government": {
+      "neighbours": 5300.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1356,
+       "1790": 0.1748,
+       "1800": 0.2007,
+       "1810": 0.2416,
+       "1820": 0.2473
+      },
+      "passages": 53
+     },
+     "lords_supper": {
+      "neighbours": 900.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1689,
+       "1790": 0.147,
+       "1800": 0.197,
+       "1810": 0.2456,
+       "1820": 0.2415
+      },
+      "passages": 9
+     },
+     "ordination_authority": {
+      "neighbours": 8300.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1382,
+       "1790": 0.1411,
+       "1800": 0.2392,
+       "1810": 0.2365,
+       "1820": 0.2449
+      },
+      "passages": 83
+     },
+     "paid_clergy": {
+      "neighbours": 800.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1533,
+       "1790": 0.1483,
+       "1800": 0.2137,
+       "1810": 0.2433,
+       "1820": 0.2413
+      },
+      "passages": 8
+     },
+     "regeneration": {
+      "neighbours": 4100.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1256,
+       "1790": 0.1324,
+       "1800": 0.2105,
+       "1810": 0.2805,
+       "1820": 0.2511
+      },
+      "passages": 41
+     },
+     "resurrection": {
+      "neighbours": 6400.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1436,
+       "1790": 0.1387,
+       "1800": 0.2096,
+       "1810": 0.25,
+       "1820": 0.2581
+      },
+      "passages": 64
+     },
+     "revelation_ceased": {
+      "neighbours": 3000.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1446,
+       "1790": 0.1591,
+       "1800": 0.2056,
+       "1810": 0.2389,
+       "1820": 0.2519
+      },
+      "passages": 30
+     },
+     "secret_combinations": {
+      "neighbours": 100.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.12,
+       "1790": 0.1867,
+       "1800": 0.2167,
+       "1810": 0.2633,
+       "1820": 0.2133
+      },
+      "passages": 1
+     },
+     "universal_salvation": {
+      "neighbours": 3400.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1346,
+       "1790": 0.1333,
+       "1800": 0.2082,
+       "1810": 0.2379,
+       "1820": 0.2859
+      },
+      "passages": 34
+     }
+    }
+   },
+   "old_reprints": {
+    "works": [
+     {
+      "work_id": "internet_archive:defenceofchurchg00ande",
+      "year": 1820,
+      "source": "internet_archive",
+      "died": 1721,
+      "queries": 40,
+      "left_out_works": 6,
+      "peak_decade": 1800,
+      "share": {
+       "1780": 0.1467,
+       "1790": 0.1584,
+       "1800": 0.236,
+       "1810": 0.2346,
+       "1820": 0.2243
+      },
+      "mean_top1": 0.8614,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:christianincompl00gurn",
+      "year": 1803,
+      "source": "internet_archive",
+      "died": 1679,
+      "queries": 37,
+      "left_out_works": 5,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1402,
+       "1790": 0.1558,
+       "1800": 0.224,
+       "1810": 0.2514,
+       "1820": 0.2286
+      },
+      "mean_top1": 0.8406,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:N35786",
+      "year": 1793,
+      "source": "tcp",
+      "died": 1751,
+      "queries": 21,
+      "left_out_works": 80,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1695,
+       "1790": 0.1867,
+       "1800": 0.2211,
+       "1810": 0.2217,
+       "1820": 0.201
+      },
+      "mean_top1": 0.8798,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:TheDevoutCompanion",
+      "year": 1821,
+      "source": "internet_archive",
+      "died": 1705,
+      "queries": 19,
+      "left_out_works": 1,
+      "peak_decade": 1780,
+      "share": {
+       "1780": 0.2447,
+       "1790": 0.1539,
+       "1800": 0.1793,
+       "1810": 0.2142,
+       "1820": 0.2079
+      },
+      "mean_top1": 0.8664,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "tcp:N19482",
+      "year": 1793,
+      "source": "tcp",
+      "died": 1731,
+      "queries": 4,
+      "left_out_works": 1,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1275,
+       "1790": 0.1183,
+       "1800": 0.265,
+       "1810": 0.2225,
+       "1820": 0.2667
+      },
+      "mean_top1": 0.8332,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:treatiseonchrist01miltuoft",
+      "year": 1825,
+      "source": "internet_archive",
+      "died": 1674,
+      "queries": 40,
+      "left_out_works": 15,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1363,
+       "1790": 0.1313,
+       "1800": 0.1798,
+       "1810": 0.2895,
+       "1820": 0.263
+      },
+      "mean_top1": 0.8632,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:lmsefullys00watt",
+      "year": 1793,
+      "source": "internet_archive",
+      "died": 1748,
+      "queries": 37,
+      "left_out_works": 119,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.2009,
+       "1790": 0.2112,
+       "1800": 0.2229,
+       "1810": 0.2361,
+       "1820": 0.1289
+      },
+      "mean_top1": 0.8887,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "hathitrust:yale.39002034497793",
+      "year": 1820,
+      "source": "hathitrust",
+      "died": 1694,
+      "queries": 40,
+      "left_out_works": 21,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1513,
+       "1790": 0.1388,
+       "1800": 0.1978,
+       "1810": 0.2458,
+       "1820": 0.2663
+      },
+      "mean_top1": 0.8789,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:ecclesiasticalco02massuoft",
+      "year": 1825,
+      "source": "internet_archive",
+      "died": 1742,
+      "queries": 40,
+      "left_out_works": 22,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.185,
+       "1790": 0.1842,
+       "1800": 0.2013,
+       "1810": 0.2172,
+       "1820": 0.2123
+      },
+      "mean_top1": 0.8333,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:christstearsover00nashrich",
+      "year": 1815,
+      "source": "internet_archive",
+      "died": 1601,
+      "queries": 27,
+      "left_out_works": 1,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1915,
+       "1790": 0.1878,
+       "1800": 0.2058,
+       "1810": 0.2165,
+       "1820": 0.1984
+      },
+      "mean_top1": 0.8375,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "hathitrust:yale.39002088376075",
+      "year": 1812,
+      "source": "hathitrust",
+      "died": 1683,
+      "queries": 40,
+      "left_out_works": 70,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.152,
+       "1790": 0.1566,
+       "1800": 0.2189,
+       "1810": 0.2635,
+       "1820": 0.209
+      },
+      "mean_top1": 0.8512,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:sacreddissertati02wits",
+      "year": 1823,
+      "source": "internet_archive",
+      "died": 1708,
+      "queries": 40,
+      "left_out_works": 16,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1458,
+       "1790": 0.1328,
+       "1800": 0.1849,
+       "1810": 0.2907,
+       "1820": 0.2459
+      },
+      "mean_top1": 0.8497,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:magnaliachristia02math_0",
+      "year": 1820,
+      "source": "internet_archive",
+      "died": 1728,
+      "queries": 40,
+      "left_out_works": 2,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1565,
+       "1790": 0.1746,
+       "1800": 0.1928,
+       "1810": 0.2475,
+       "1820": 0.2287
+      },
+      "mean_top1": 0.8836,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:greatconcernofsa02haly",
+      "year": 1814,
+      "source": "internet_archive",
+      "died": 1712,
+      "queries": 40,
+      "left_out_works": 6,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1415,
+       "1790": 0.1428,
+       "1800": 0.2083,
+       "1810": 0.2615,
+       "1820": 0.2459
+      },
+      "mean_top1": 0.8525,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "hathitrust:ia.ark:/13960/t14m9cd1b",
+      "year": 1815,
+      "source": "hathitrust",
+      "died": 1734,
+      "queries": 40,
+      "left_out_works": 16,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1339,
+       "1790": 0.1337,
+       "1800": 0.2301,
+       "1810": 0.2596,
+       "1820": 0.2428
+      },
+      "mean_top1": 0.8784,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "hathitrust:yale.39002088677381",
+      "year": 1816,
+      "source": "hathitrust",
+      "died": 1584,
+      "queries": 18,
+      "left_out_works": 4,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1604,
+       "1790": 0.1569,
+       "1800": 0.2244,
+       "1810": 0.2306,
+       "1820": 0.2278
+      },
+      "mean_top1": 0.8493,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:familyexpositoro1825dodd",
+      "year": 1825,
+      "source": "internet_archive",
+      "died": 1751,
+      "queries": 40,
+      "left_out_works": 80,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1876,
+       "1790": 0.1972,
+       "1800": 0.2157,
+       "1810": 0.2268,
+       "1820": 0.1728
+      },
+      "mean_top1": 0.8535,
+      "exact": false,
+      "adjacent": true,
+      "chance_adjacent": 0.4
+     },
+     {
+      "work_id": "internet_archive:someremarkablepa00dodd",
+      "year": 1795,
+      "source": "internet_archive",
+      "died": 1751,
+      "queries": 10,
+      "left_out_works": 1,
+      "peak_decade": 1790,
+      "share": {
+       "1780": 0.2243,
+       "1790": 0.2577,
+       "1800": 0.2057,
+       "1810": 0.1727,
+       "1820": 0.1397
+      },
+      "mean_top1": 0.8299,
+      "exact": true,
+      "adjacent": true,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "internet_archive:works___19owenuoft",
+      "year": 1790,
+      "source": "internet_archive",
+      "died": 1683,
+      "queries": 40,
+      "left_out_works": 70,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1277,
+       "1790": 0.1333,
+       "1800": 0.2015,
+       "1810": 0.2758,
+       "1820": 0.2616
+      },
+      "mean_top1": 0.8498,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     },
+     {
+      "work_id": "tcp:N18748",
+      "year": 1792,
+      "source": "tcp",
+      "died": 1687,
+      "queries": 22,
+      "left_out_works": 1,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.087,
+       "1790": 0.1141,
+       "1800": 0.1835,
+       "1810": 0.312,
+       "1820": 0.3035
+      },
+      "mean_top1": 0.8304,
+      "exact": false,
+      "adjacent": false,
+      "chance_adjacent": 0.6
+     }
+    ],
+    "drawn": 20,
+    "unreadable_not_attempted": 0,
+    "too_few_topic_passages": 3,
+    "adjacent_hits": 13,
+    "adjacent_rate": 0.65,
+    "exact_hits": 7,
+    "exact_rate": 0.35,
+    "chance_adjacent": 0.52,
+    "chance_exact": 0.2,
+    "pooled": {
+     "neighbours": 63500.0,
+     "peak_decade": 1810,
+     "share": {
+      "1780": 0.1577,
+      "1790": 0.1594,
+      "1800": 0.2079,
+      "1810": 0.25,
+      "1820": 0.225
+     }
+    },
+    "by_topic": {
+     "church_government": {
+      "neighbours": 7200.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1537,
+       "1790": 0.1701,
+       "1800": 0.2015,
+       "1810": 0.2372,
+       "1820": 0.2375
+      },
+      "passages": 72
+     },
+     "eternal_punishment": {
+      "neighbours": 9800.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1798,
+       "1790": 0.1714,
+       "1800": 0.2129,
+       "1810": 0.2282,
+       "1820": 0.2078
+      },
+      "passages": 98
+     },
+     "fall_atonement": {
+      "neighbours": 2400.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1661,
+       "1790": 0.1717,
+       "1800": 0.1997,
+       "1810": 0.2578,
+       "1820": 0.2047
+      },
+      "passages": 24
+     },
+     "fasting": {
+      "neighbours": 1300.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.18,
+       "1790": 0.1756,
+       "1800": 0.2146,
+       "1810": 0.2228,
+       "1820": 0.2069
+      },
+      "passages": 13
+     },
+     "free_will": {
+      "neighbours": 3700.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1345,
+       "1790": 0.1441,
+       "1800": 0.2023,
+       "1810": 0.2817,
+       "1820": 0.2374
+      },
+      "passages": 37
+     },
+     "gathering_israel": {
+      "neighbours": 1100.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1361,
+       "1790": 0.1433,
+       "1800": 0.2115,
+       "1810": 0.2527,
+       "1820": 0.2564
+      },
+      "passages": 11
+     },
+     "godhead": {
+      "neighbours": 1100.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1342,
+       "1790": 0.1273,
+       "1800": 0.1539,
+       "1810": 0.3112,
+       "1820": 0.2733
+      },
+      "passages": 11
+     },
+     "infant_baptism": {
+      "neighbours": 2400.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1044,
+       "1790": 0.1047,
+       "1800": 0.2331,
+       "1810": 0.2918,
+       "1820": 0.266
+      },
+      "passages": 24
+     },
+     "kings_government": {
+      "neighbours": 5000.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1667,
+       "1790": 0.1823,
+       "1800": 0.2117,
+       "1810": 0.2371,
+       "1820": 0.2023
+      },
+      "passages": 50
+     },
+     "lords_supper": {
+      "neighbours": 4600.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1669,
+       "1790": 0.1444,
+       "1800": 0.2039,
+       "1810": 0.2439,
+       "1820": 0.2409
+      },
+      "passages": 46
+     },
+     "ordination_authority": {
+      "neighbours": 13600.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1567,
+       "1790": 0.1674,
+       "1800": 0.2186,
+       "1810": 0.2395,
+       "1820": 0.2179
+      },
+      "passages": 136
+     },
+     "paid_clergy": {
+      "neighbours": 1300.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1495,
+       "1790": 0.1418,
+       "1800": 0.2021,
+       "1810": 0.2572,
+       "1820": 0.2495
+      },
+      "passages": 13
+     },
+     "regeneration": {
+      "neighbours": 4500.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1361,
+       "1790": 0.139,
+       "1800": 0.2054,
+       "1810": 0.2883,
+       "1820": 0.2312
+      },
+      "passages": 45
+     },
+     "resurrection": {
+      "neighbours": 5900.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1653,
+       "1790": 0.1392,
+       "1800": 0.1903,
+       "1810": 0.2608,
+       "1820": 0.2444
+      },
+      "passages": 59
+     },
+     "revelation_ceased": {
+      "neighbours": 1900.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.1423,
+       "1790": 0.1716,
+       "1800": 0.2111,
+       "1810": 0.2672,
+       "1820": 0.2079
+      },
+      "passages": 19
+     },
+     "secret_combinations": {
+      "neighbours": 300.0,
+      "peak_decade": 1820,
+      "share": {
+       "1780": 0.1444,
+       "1790": 0.1833,
+       "1800": 0.1611,
+       "1810": 0.2489,
+       "1820": 0.2622
+      },
+      "passages": 3
+     },
+     "universal_salvation": {
+      "neighbours": 1300.0,
+      "peak_decade": 1810,
+      "share": {
+       "1780": 0.171,
+       "1790": 0.1485,
+       "1800": 0.1992,
+       "1810": 0.2564,
+       "1820": 0.2249
+      },
+      "passages": 13
+     }
+    }
+   }
+  },
+  "bar_groups": [
+   "ocr_1780s",
+   "ocr_1790s",
+   "ocr_1800s",
+   "ocr_1810s",
+   "ocr_1820s",
+   "keyed_1780_1809"
+  ],
+  "passed": false,
+  "close_top1_bar": 0.8137
+ },
+ "stopped": "the known-answer check missed its bar; the Book of Mormon was not scored",
+ "settings_sha256": "8cb899eb8abbab2e6797907669a54ae10e22e06bafa7fe840007403363424a23",
+ "config_sha256": "1b0afd2d373388e8f0cd697e4a01ece37b48ebf39629aa60848bc842f4f94a75",
+ "commit": "7ad2d6df8ef30b1beed2b6f513869d6a114a8b4b",
+ "settings_sha256_v2": "c12c410a505018f6ad4aa6ae83aa40104e20bab8f802c052a24ef7e12697d7b1"
+}

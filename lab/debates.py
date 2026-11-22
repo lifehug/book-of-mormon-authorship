@@ -16,6 +16,14 @@ Usage::
 
     python -m lab.debates check     # known-answer controls only -> data/lab/debates/check.json
     python -m lab.debates run       # check, then the Book of Mormon -> data/lab/debates/result.json
+
+Second design (post hoc, after the first check missed; ``lab.debates.v2``; card
+``data/private/lab/owner/2026-11-21-debates-2/card.md``): OCR religious works of 1780-1829 only,
+balanced so every decade gives the same number of passages, controls kept apart by text kind::
+
+    python -m lab.debates check2    # -> data/lab/debates/check_v2.json
+    python -m lab.debates run2      # check2, then the book -> data/lab/debates/result_v2.json
+    python -m lab.debates phrases   # phrase counts by decade -> data/lab/debates/phrases_v2.json
 """
 
 from __future__ import annotations
@@ -98,9 +106,9 @@ def hit(peak: int, own: int, tolerance: int) -> bool:
 
 
 # ------------------------------------------------------------------------------------ gallery
-def gallery_rows(cfg: dict) -> list[dict]:
+def gallery_rows(cfg: dict, d: dict | None = None) -> list[dict]:
     """Registry rows (with catalog fields) of the religious works searched."""
-    d = cfg["lab"]["debates"]
+    d = d or cfg["lab"]["debates"]
     bible = re.compile(d["bible_title"], re.IGNORECASE)
     t = registry.load().to_pylist()
     rows = [
@@ -115,6 +123,7 @@ def gallery_rows(cfg: dict) -> list[dict]:
         and r["year"]
         and d["year_min"] <= r["year"] <= d["year_max"]
         and d["gallery_genre"] in (r["genre"] or "").split(",")
+        and r["source"] != d.get("gallery_exclude_source")
     ]
     cat = door.catalog({r["work_id"] for r in rows})
     keep = []
@@ -129,11 +138,11 @@ def gallery_rows(cfg: dict) -> list[dict]:
 class Gallery:
     """The gallery's sign codes in memory, with each passage's work, decade and source."""
 
-    def __init__(self, rows: list[dict], cfg: dict) -> None:
+    def __init__(self, rows: list[dict], cfg: dict, d: dict | None = None) -> None:
         from lab.passages import Index
 
-        d = cfg["lab"]["debates"]
-        self.cfg, self.decs = cfg, decades(d)
+        d = d or cfg["lab"]["debates"]
+        self.cfg, self.d, self.decs = cfg, d, decades(d)
         self.ix = Index()
         by_id = {r["work_id"]: r for r in rows}
         widx = {w: i for i, w in enumerate(self.ix.works)}
@@ -187,15 +196,31 @@ class Gallery:
             scores[sel] = (vec @ q)[order]
         return scores
 
-    def search(self, q: np.ndarray, skip: np.ndarray | None) -> dict:
-        """Decade counts of the ``neighbours`` nearest gallery passages, top score, keyed share."""
-        d = self.cfg["lab"]["debates"]
+    def balanced_draws(self, n: int, seed: int) -> None:
+        """``n`` balanced galleries: each decade gives the smallest decade's passage count."""
+        size = int(np.bincount(self.dec, minlength=len(self.decs)).min())
+        self.draws = []
+        for k in range(n):
+            rng = np.random.default_rng([seed, k])
+            parts = [rng.choice(np.flatnonzero(self.dec == i), size, replace=False)
+                     for i in range(len(self.decs))]  # fmt: skip
+            idx = np.sort(np.concatenate(parts))
+            self.draws.append((idx, np.ascontiguousarray(self.codes[idx])))
+        self.draw_size = size
+
+    def search(self, q: np.ndarray, skip: np.ndarray | None, draw: tuple | None = None) -> dict:
+        """Decade counts of the ``neighbours`` nearest gallery passages, top score, keyed share.
+        With ``draw`` (positions, codes), only that balanced gallery is searched."""
+        d = self.d
+        codes = self.codes if draw is None else draw[1]
         code = np.packbits(q > 0).view(np.uint64)
-        dist = np.bitwise_count(self.codes ^ code).sum(axis=1, dtype=np.uint16)
+        dist = np.bitwise_count(codes ^ code).sum(axis=1, dtype=np.uint16)
         if skip is not None:
-            dist[skip] = np.iinfo(np.uint16).max
+            dist[skip if draw is None else skip[draw[0]]] = np.iinfo(np.uint16).max
         cand = np.argpartition(dist, d["candidates"])[: d["candidates"]]
         cand = cand[dist[cand] < np.iinfo(np.uint16).max]
+        if draw is not None:
+            cand = draw[0][cand]
         scores = self.exact(q, cand)
         top = cand[np.argsort(-scores)[: d["neighbours"]]]
         return {
@@ -251,11 +276,13 @@ def control_pools(rows: list[dict], cfg: dict) -> dict[str, list[dict]]:
     return pools
 
 
-def control_queries(row: dict, cfg: dict, topics: dict) -> list[tuple[str, list[str]]] | None:
+def control_queries(
+    row: dict, cfg: dict, topics: dict, d: dict | None = None
+) -> list[tuple[str, list[str]]] | None:
     """(passage text, topics) for a control work's topic passages; None if unreadable."""
     from semantic.index import spans
 
-    d, s = cfg["lab"]["debates"], cfg["semantic"]
+    d, s = d or cfg["lab"]["debates"], cfg["semantic"]
     try:
         text = door.text_of(row)
     except OSError:
@@ -421,9 +448,316 @@ def run_bom(g: Gallery, embed, cfg: dict, controls: dict) -> dict:
     }
 
 
+# ------------------------------------------------------------------------------------ second design
+def v2_settings(cfg: dict) -> dict:
+    """The first design's settings with the second design's (``lab.debates.v2``) over them."""
+    d = {k: v for k, v in cfg["lab"]["debates"].items() if k != "v2"}
+    return d | cfg["lab"]["debates"]["v2"]
+
+
+def flat_profile(counts: np.ndarray, decs: list[int]) -> dict:
+    """Decade shares of neighbours in balanced galleries (chance: equal shares) and the peak."""
+    n = float(counts.sum())
+    if n == 0:
+        return {"neighbours": 0}
+    share = counts / n
+    return {
+        "neighbours": round(n, 1),
+        "peak_decade": decs[int(np.argmax(share))],
+        "share": {str(x): round(float(c), 4) for x, c in zip(decs, share, strict=True)},
+    }
+
+
+def chance_adjacent(own: int, decs: list[int]) -> float:
+    """Share of decades that are ``own`` or next to it: a random peak's chance of a hit."""
+    return sum(abs(x - own) <= 10 for x in decs) / len(decs)
+
+
+def control_pools_v2(rows: list[dict], d: dict) -> dict[str, list[dict]]:
+    """OCR groups by decade, the keyed group and the decoy, each shuffled with the seed."""
+    base = [r for r in rows if r["author_kind"] == "person"
+            and (r["words"] or 0) >= d["control_min_words"]]  # fmt: skip
+    keyed = d["gallery_exclude_source"]
+    pools: dict[str, list[dict]] = {}
+    for dec in d["control_decades"]:
+        pools[f"ocr_{dec}s"] = [
+            dict(r, own=dec) for r in base if dec <= r["year"] <= dec + 9 and r["source"] != keyed
+        ]
+    lo, hi = d["keyed_years"]
+    pools[f"keyed_{lo}_{hi}"] = [dict(r, own=r["year"] // 10 * 10) for r in base
+                                 if lo <= r["year"] <= hi and r["source"] == keyed]  # fmt: skip
+    lo, hi = d["old_reprint_years"]
+    pools["old_reprints"] = [
+        dict(r, own=r["year"] // 10 * 10, died=death_year(r["author"]))
+        for r in base
+        if lo <= r["year"] <= hi and (death_year(r["author"]) or 9999) < d["old_died_before"]
+    ]
+    for name, pool in pools.items():
+        random.Random(f"{d['seed']}:{name}").shuffle(pool)
+    return pools
+
+
+def search_balanced(g: Gallery, v: np.ndarray, skip: np.ndarray | None) -> dict:
+    """Decade counts averaged over the balanced draws; top-1 score over all draws."""
+    rs = [g.search(v, skip, draw) for draw in g.draws]
+    return {"decades": sum(r["decades"] for r in rs) / len(rs),
+            "top1": max(r["top1"] for r in rs)}  # fmt: skip
+
+
+def run_controls_v2(g: Gallery, everyone: list[dict], embed, cfg: dict, d: dict) -> dict:
+    topics = compile_topics(d)
+    by_author: dict[str, set[str]] = {}
+    for r in everyone:
+        if r["author_norm"]:
+            by_author.setdefault(r["author_norm"], set()).add(r["work_id"])
+    groups: dict[str, dict] = {}
+    top1_all: list[float] = []
+    for name, pool in control_pools_v2(everyone, d).items():
+        works, unreadable, too_few, t0 = [], 0, 0, time.time()
+        topic_counts: dict[str, np.ndarray] = {}
+        topic_n: dict[str, int] = {}
+        all_counts = np.zeros(len(g.decs))
+        for row in pool:
+            if len(works) == d["control_works"]:
+                break
+            qs = control_queries(row, cfg, topics, d)
+            if qs is None:
+                unreadable += 1  # not attempted, never a result
+                continue
+            if len(qs) < d["control_min_passages"]:
+                too_few += 1
+                continue
+            leave = {row["work_id"]} | by_author.get(row["author_norm"] or "", set())
+            skip = g.excluded(leave)
+            counts = np.zeros(len(g.decs))
+            top1 = 0.0
+            for (_, on), v in zip(qs, embed([p for p, _ in qs]), strict=True):
+                r = search_balanced(g, v, skip)
+                counts += r["decades"]
+                top1 += r["top1"]
+                top1_all.append(r["top1"])
+                for t in on:
+                    topic_counts.setdefault(t, np.zeros(len(g.decs)))
+                    topic_counts[t] += r["decades"]
+                    topic_n[t] = topic_n.get(t, 0) + 1
+            all_counts += counts
+            prof = flat_profile(counts, g.decs)
+            works.append({
+                "work_id": row["work_id"], "year": row["year"], "source": row["source"],
+                "died": row.get("died"), "queries": len(qs), "left_out_works": len(leave),
+                "peak_decade": prof["peak_decade"], "share": prof["share"],
+                "mean_top1": round(top1 / len(qs), 4),
+                "exact": prof["peak_decade"] == row["own"],
+                "adjacent": hit(prof["peak_decade"], row["own"], d["tolerance"]),
+                "chance_adjacent": chance_adjacent(row["own"], g.decs),
+            })  # fmt: skip
+        n = max(len(works), 1)
+        adj, exact = sum(w["adjacent"] for w in works), sum(w["exact"] for w in works)
+        groups[name] = {
+            "works": works,
+            "drawn": len(works),
+            "unreadable_not_attempted": unreadable,
+            "too_few_topic_passages": too_few,
+            "adjacent_hits": adj,
+            "adjacent_rate": round(adj / n, 3),
+            "exact_hits": exact,
+            "exact_rate": round(exact / n, 3),
+            "chance_adjacent": round(sum(w["chance_adjacent"] for w in works) / n, 3),
+            "chance_exact": round(1 / len(g.decs), 3),
+            "pooled": flat_profile(all_counts, g.decs),
+            "by_topic": {
+                t: flat_profile(c, g.decs) | {"passages": topic_n[t]}
+                for t, c in sorted(topic_counts.items())
+            },  # fmt: skip
+        }
+        print(f"{name}: adjacent {adj}/{len(works)}, exact {exact}/{len(works)} "
+              f"({time.time() - t0:.0f} s)", flush=True)  # fmt: skip
+    bar_groups = [n for n in groups if n != "old_reprints"]
+    passed = all(
+        groups[n]["drawn"] >= d["control_works"] // 2
+        and groups[n]["adjacent_rate"] >= d["adjacent_bar"]
+        and groups[n]["exact_rate"] >= d["exact_bar"]
+        for n in bar_groups
+    )
+    close = float(np.percentile(top1_all, d["close_percentile"])) if top1_all else None
+    return {"groups": groups, "bar_groups": bar_groups, "passed": passed,
+            "close_top1_bar": round(close, 4) if close else None}  # fmt: skip
+
+
+def run_bom_v2(g: Gallery, embed, cfg: dict, d: dict, controls: dict) -> dict:
+    from semantic.search import bom_queries
+
+    s = cfg["semantic"]
+    topics = compile_topics(d)
+    qs = [q for q in bom_queries(s["passage_words"]) if q["words"] >= s["min_passage_words"]]
+    scored = [q for q in qs if q["kjv_share"] <= s["max_query_kjv_share"]]
+    per = []
+    for q, v in zip(scored, embed([q["text"] for q in scored]), strict=True):
+        r = search_balanced(g, v, None)
+        r["topics"] = topics_of(q["text"], topics, d["min_hits"])
+        per.append(r)
+    sets = {"all_passages": per} | {t: [r for r in per if t in r["topics"]] for t in d["topics"]}
+    res = {}
+    for name, rs in sets.items():
+        entry: dict = {"passages": len(rs)}
+        if len(rs) < d["bom_min_passages"]:
+            res[name] = entry | {"scored": False}
+            continue
+        prof = flat_profile(sum(r["decades"] for r in rs), g.decs)
+        med = statistics.median(r["top1"] for r in rs)
+        nearest = {}
+        for n, grp in controls["groups"].items():
+            ref = grp["by_topic"].get(name)
+            if ref is None or ref.get("passages", 0) < d["bom_min_passages"]:
+                ref = grp["pooled"]
+            if ref.get("neighbours"):
+                nearest[n] = l1(prof, ref)
+        entry.update({
+            "scored": True, **prof,
+            "late": prof["peak_decade"] in d["late_decades"],
+            "median_top1": round(med, 4),
+            "no_close_neighbours": controls["close_top1_bar"] is not None
+            and med < controls["close_top1_bar"],
+            "distance_to_controls": nearest,
+            "nearest_control": min(nearest, key=nearest.get) if nearest else None,
+        })  # fmt: skip
+        res[name] = entry
+    topical = [n for n in d["topics"] if res[n].get("scored")]
+    late = [n for n in topical if res[n]["late"]]
+    share = len(late) / max(len(topical), 1)
+    allp = res["all_passages"].get("late", False)
+    verdict = ("yes" if share >= d["yes_share"] and allp
+               else "no" if share <= 1 - d["yes_share"] else "cannot tell")  # fmt: skip
+    return {
+        "passages": len(qs),
+        "scored_passages": len(scored),
+        "dropped_king_james": len(qs) - len(scored),
+        "sets": res,
+        "verdict": {
+            "answer": verdict,
+            "topics_scored": len(topical),
+            "topics_late": late,
+            "share_late": round(share, 3),
+            "chance_late": round(len(d["late_decades"]) / len(g.decs), 3),
+            "all_passages_peak": res["all_passages"].get("peak_decade"),
+            "topics_not_scored": [n for n in d["topics"] if not res[n].get("scored")],
+            "topics_no_close_neighbours": [n for n in topical if res[n]["no_close_neighbours"]],
+        },
+    }
+
+
+def _count_phrases(job: tuple[dict, list[str]]) -> tuple[str, list[int] | None]:
+    row, patterns = job
+    try:
+        low = " ".join(door.text_of(row).lower().split())
+    except OSError:
+        return row["work_id"], None  # unreadable: not attempted
+    return row["work_id"], [len(re.findall(p, low)) for p in patterns]
+
+
+def phrase_patterns(phrases: list[str]) -> list[str]:
+    return [r"\b" + r"\s+".join(p.split()) + r"\b" for p in phrases]
+
+
+def run_phrases(cfg: dict, d: dict) -> dict:
+    """Each phrase per decade in the religious works of 1640-1829, and in the 1830 text."""
+    from concurrent.futures import ProcessPoolExecutor
+
+    from semantic.search import bom_queries
+
+    span = {"year_min": d["phrase_year_min"], "year_max": d["phrase_year_max"],
+            "gallery_exclude_source": None}  # fmt: skip
+    rows = gallery_rows(cfg, d | span)
+    pats = phrase_patterns(d["phrases"])
+    decs = decades(span)
+    occ = {p: [0] * len(decs) for p in d["phrases"]}
+    works_with = {p: [0] * len(decs) for p in d["phrases"]}
+    words, works, unreadable = [0] * len(decs), [0] * len(decs), 0
+    by = {r["work_id"]: r for r in rows}
+    with ProcessPoolExecutor(d["phrase_workers"]) as pool:
+        jobs = [(r, pats) for r in rows]
+        for wid, counts in pool.map(_count_phrases, jobs, chunksize=32):
+            if counts is None:
+                unreadable += 1
+                continue
+            i = decs.index(by[wid]["year"] // 10 * 10)
+            words[i] += by[wid]["words"] or 0
+            works[i] += 1
+            for p, c in zip(d["phrases"], counts, strict=True):
+                occ[p][i] += c
+                works_with[p][i] += c > 0
+    bom = " ".join(q["text"] for q in bom_queries(cfg["semantic"]["passage_words"])).lower()
+    bom = " ".join(bom.split())
+    curves = {}
+    for p, pat in zip(d["phrases"], pats, strict=True):
+        curves[p] = {
+            "book_of_mormon_count": len(re.findall(pat, bom)),
+            "per_million_words": {str(x): round(o / w * 1e6, 3) if w else None
+                                  for x, o, w in zip(decs, occ[p], words, strict=True)},
+            "share_of_works": {str(x): round(k / n, 4) if n else None
+                               for x, k, n in zip(decs, works_with[p], works, strict=True)},
+            "occurrences": dict(zip(map(str, decs), occ[p], strict=True)),
+        }  # fmt: skip
+    return {"works": sum(works), "unreadable_not_attempted": unreadable,
+            "works_by_decade": dict(zip(map(str, decs), works, strict=True)),
+            "words_by_decade": dict(zip(map(str, decs), words, strict=True)),
+            "book_of_mormon_words": len(bom.split()), "phrases": curves}  # fmt: skip
+
+
+def main_v2(cmd: str, cfg: dict) -> int:
+    d = v2_settings(cfg)
+    if cmd == "phrases":
+        res = stamp(run_phrases(cfg, d), cfg) | {"settings_sha256_v2": settings_hash_v2(cfg)}
+        out(OUT / "phrases_v2.json").write_text(json.dumps(res, indent=1) + "\n")
+        print(json.dumps({p: [c["book_of_mormon_count"], c["per_million_words"]]
+                          for p, c in res["phrases"].items()}, indent=1))  # fmt: skip
+        return 0
+    rows = gallery_rows(cfg, d)
+    everyone = gallery_rows(cfg, d | {"gallery_exclude_source": None})
+    g = Gallery(rows, cfg, d)
+    g.balanced_draws(d["draws"], d["seed"])
+    embed = embedder(cfg)
+    gallery = {"works": len(rows), "passages": len(g.pos),
+               "passages_by_decade": g.passages_by_decade,
+               "balanced_passages_per_decade": g.draw_size, "draws": d["draws"]}  # fmt: skip
+    path = OUT / "check_v2.json"
+    chk = None
+    if cmd == "run2" and path.exists():
+        old = json.loads(path.read_text())
+        if old.get("settings_sha256_v2") == settings_hash_v2(cfg):
+            chk = old["known_answer"]
+            print("known-answer check reused from check_v2.json (same settings)", flush=True)
+    if chk is None:
+        chk = run_controls_v2(g, everyone, embed, cfg, d)
+        res = stamp({"gallery": gallery, "known_answer": chk}, cfg)
+        res["settings_sha256_v2"] = settings_hash_v2(cfg)
+        out(path).write_text(json.dumps(res, indent=1) + "\n")
+    print(json.dumps({n: [x["adjacent_hits"], x["exact_hits"], x["drawn"]]
+                      for n, x in chk["groups"].items()}))  # fmt: skip
+    print("passed" if chk["passed"] else "MISSED: the Book of Mormon is not scored")
+    if cmd == "check2":
+        return 0
+    res = {"gallery": gallery, "settings": d, "known_answer": chk}
+    if not chk["passed"]:
+        res["stopped"] = "the known-answer check missed its bar; the Book of Mormon was not scored"
+    else:
+        res["book_of_mormon"] = run_bom_v2(g, embed, cfg, d, chk)
+        print(json.dumps(res["book_of_mormon"]["verdict"], indent=1))
+    res = stamp(res, cfg) | {"settings_sha256_v2": settings_hash_v2(cfg)}
+    out(OUT / "result_v2.json").write_text(json.dumps(res, indent=1) + "\n")
+    return 0
+
+
 # ------------------------------------------------------------------------------------ driver
 def settings_hash(cfg: dict) -> str:
-    keys = {"debates": cfg["lab"]["debates"], "semantic": cfg["semantic"]}
+    """The first design's settings (without the ``v2`` key, so its check stays reusable)."""
+    first = {k: v for k, v in cfg["lab"]["debates"].items() if k != "v2"}
+    keys = {"debates": first, "semantic": cfg["semantic"]}
+    return hashlib.sha256(json.dumps(keys, sort_keys=True).encode()).hexdigest()
+
+
+def settings_hash_v2(cfg: dict) -> str:
+    keys = {"debates": v2_settings(cfg), "semantic": cfg["semantic"]}
     return hashlib.sha256(json.dumps(keys, sort_keys=True).encode()).hexdigest()
 
 
@@ -438,9 +772,11 @@ def stamp(res: dict, cfg: dict) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["check", "run"])
+    ap.add_argument("cmd", choices=["check", "run", "check2", "run2", "phrases"])
     a = ap.parse_args(argv)
     cfg = config.load()
+    if a.cmd in ("check2", "run2", "phrases"):
+        return main_v2(a.cmd, cfg)
     rows = gallery_rows(cfg)
     g = Gallery(rows, cfg)
     embed = embedder(cfg)
@@ -461,7 +797,8 @@ def main(argv: list[str] | None = None) -> int:
     print("passed" if chk["passed"] else "MISSED: the Book of Mormon is not scored")
     if a.cmd == "check":
         return 0
-    res = {"gallery": gallery, "settings": cfg["lab"]["debates"], "known_answer": chk}
+    first = {k: v for k, v in cfg["lab"]["debates"].items() if k != "v2"}
+    res = {"gallery": gallery, "settings": first, "known_answer": chk}
     if not chk["passed"]:
         res["stopped"] = "the known-answer check missed its bar; the Book of Mormon was not scored"
     else:
