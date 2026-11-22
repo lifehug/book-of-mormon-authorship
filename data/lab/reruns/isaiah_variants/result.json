@@ -1,0 +1,363 @@
+{
+ "settings": {
+  "year_max": 1829,
+  "seed": 3,
+  "max_gap": 25,
+  "max_gap_one_side": 60,
+  "min_segment": 12,
+  "neighbours": 1,
+  "max_edit_words": 6,
+  "ctx": 2,
+  "ctx_max": 4,
+  "min_ngram": 4,
+  "window": 40,
+  "min_context": 2,
+  "content_min_len": 4,
+  "stop_words": [
+   "shall",
+   "that",
+   "this",
+   "them",
+   "they",
+   "their",
+   "there",
+   "which",
+   "with",
+   "from",
+   "have",
+   "hath",
+   "unto",
+   "upon",
+   "will",
+   "were",
+   "when",
+   "then",
+   "thee",
+   "thou",
+   "thy",
+   "your",
+   "what",
+   "whom",
+   "also",
+   "even",
+   "into",
+   "been",
+   "said",
+   "saith",
+   "came",
+   "come",
+   "against",
+   "before",
+   "because",
+   "therefore",
+   "behold"
+  ],
+  "decoys_per_variant": 3,
+  "workers": 9,
+  "random_seed": 20261121,
+  "query_ka": "internet_archive:isaiahnewtransla01lowt",
+  "lowth_title": "isaiah\\W+a\\s+new\\s+translation(?!.{0,80}supplementary)",
+  "clarke_isaiah": "internet_archive:holybiblecontain0003adam",
+  "ka_top": 3,
+  "ka_min_lowth": 2,
+  "ka_ratio_bar": 5,
+  "ka_decoy_any_bar": 0.1,
+  "special_ratio": 3,
+  "special_p": 0.01,
+  "commentary_title": [
+   "\\b(commentar|expositi|expositor|annotation|notes|paraphrase|lectures)",
+   "\\b(bible|scripture|testament|isaiah|esaias|prophe)"
+  ],
+  "translation_title": [
+   "\\b(translat|version)",
+   "\\b(isaiah|esaias|prophe|bible|old testament)"
+  ],
+  "judge_top_works": 12,
+  "judge_window": 120,
+  "ka_chunk_words": 250,
+  "ka_min_shared": 2,
+  "list_cap": 100,
+  "townsend_1830": {
+   "1": [
+    "2 Nephi",
+    12
+   ],
+   "2": [
+    "2 Nephi",
+    12
+   ],
+   "3": [
+    "2 Nephi",
+    5
+   ],
+   "4": [
+    "2 Nephi",
+    8
+   ],
+   "5": [
+    "2 Nephi",
+    8
+   ],
+   "6": [
+    "2 Nephi",
+    9
+   ],
+   "7": [
+    "2 Nephi",
+    10
+   ],
+   "8": [
+    "2 Nephi",
+    10
+   ],
+   "9": [
+    "1 Nephi",
+    6
+   ],
+   "10": [
+    "1 Nephi",
+    6
+   ],
+   "11": [
+    "2 Nephi",
+    11
+   ]
+  }
+ },
+ "known_answer": {
+  "query": "internet_archive:isaiahnewtransla01lowt",
+  "variants": 6232,
+  "long": 299,
+  "searchable_readings": 5920,
+  "decoys": 4748,
+  "library_works": 252431,
+  "unreadable_not_attempted": 0,
+  "scan_seconds": 1440,
+  "top": [
+   {
+    "work_id": "institutional_books:AH6S4S",
+    "year": 1815,
+    "readings": 3819,
+    "decoys": 3,
+    "class": [
+     "lowth",
+     "commentary",
+     "translation"
+    ],
+    "title": "Isaiah a new translation : with a preliminary dissertation and notes, critical, philologic"
+   },
+   {
+    "work_id": "internet_archive:isaiahanewtrans01lowtgoog",
+    "year": 1822,
+    "readings": 2998,
+    "decoys": 3,
+    "class": [
+     "lowth",
+     "commentary",
+     "translation"
+    ],
+    "title": "Isaiah: A New Translation: with a Preliminary Dissertation and Notes ..."
+   },
+   {
+    "work_id": "internet_archive:isaiahnewtransla0000unse_n6j8",
+    "year": 1807,
+    "readings": 2996,
+    "decoys": 4,
+    "class": [
+     "lowth",
+     "translation"
+    ],
+    "title": "Isaiah : a new translation"
+   },
+   {
+    "work_id": "internet_archive:isaiahanewtrans01isaigoog",
+    "year": 1825,
+    "readings": 2923,
+    "decoys": 2,
+    "class": [
+     "lowth",
+     "commentary",
+     "translation"
+    ],
+    "title": "Isaiah. A new translation; with a preliminary dissertation, and notes, by R. Lowth"
+   },
+   {
+    "work_id": "hathitrust:yale.39002005843546",
+    "year": 1807,
+    "readings": 2872,
+    "decoys": 3,
+    "class": [
+     "lowth",
+     "commentary",
+     "translation"
+    ],
+    "title": "Isaiah, a new translation : with a preliminary dissertation and notes, critical, philologi"
+   },
+   {
+    "work_id": "internet_archive:isaiahanewtrans00isaigoog",
+    "year": 1791,
+    "readings": 2531,
+    "decoys": 8,
+    "class": [
+     "lowth",
+     "translation"
+    ],
+    "title": "Isaiah. A new translation by R. Lowth. With a summary view, by J. Smith"
+   },
+   {
+    "work_id": "hathitrust:uc2.ark:/13960/t5r789132",
+    "year": 1817,
+    "readings": 639,
+    "decoys": 2,
+    "class": [],
+    "title": "Dissertations on the prophecies of the Old Testament : containing all such prophecies as a"
+   },
+   {
+    "work_id": "internet_archive:dissertationsonp00leviiala",
+    "year": 1817,
+    "readings": 585,
+    "decoys": 1,
+    "class": [],
+    "title": "Dissertations on the prophecies of the Old Testament : containing all such prophecies as a"
+   },
+   {
+    "work_id": "institutional_books:HW3CY1",
+    "year": 1817,
+    "readings": 396,
+    "decoys": 0,
+    "class": [],
+    "title": "The theological and miscellaneous works of Joseph Priestley"
+   },
+   {
+    "work_id": "internet_archive:dissertationsonp01levy",
+    "year": 1817,
+    "readings": 390,
+    "decoys": 0,
+    "class": [],
+    "title": "Dissertations on the prophecies of the Old Testament, by D. Levi : containing all such pro"
+   }
+  ],
+  "lowth_printings": [
+   {
+    "work_id": "institutional_books:AH6S4S",
+    "year": 1815,
+    "readings": 3819,
+    "decoys": 3,
+    "rank": 1
+   },
+   {
+    "work_id": "internet_archive:isaiahanewtrans01lowtgoog",
+    "year": 1822,
+    "readings": 2998,
+    "decoys": 3,
+    "rank": 2
+   },
+   {
+    "work_id": "internet_archive:isaiahnewtransla0000unse_n6j8",
+    "year": 1807,
+    "readings": 2996,
+    "decoys": 4,
+    "rank": 3
+   },
+   {
+    "work_id": "internet_archive:isaiahanewtrans01isaigoog",
+    "year": 1825,
+    "readings": 2923,
+    "decoys": 2,
+    "rank": 4
+   },
+   {
+    "work_id": "hathitrust:yale.39002005843546",
+    "year": 1807,
+    "readings": 2872,
+    "decoys": 3,
+    "rank": 5
+   },
+   {
+    "work_id": "internet_archive:isaiahanewtrans00isaigoog",
+    "year": 1791,
+    "readings": 2531,
+    "decoys": 8,
+    "rank": 6
+   },
+   {
+    "work_id": "hathitrust:yale.39002002361245",
+    "year": 1807,
+    "readings": 75,
+    "decoys": 1,
+    "rank": 64
+   },
+   {
+    "work_id": "internet_archive:isaiahnewtransla0000unse",
+    "year": 1807,
+    "readings": 72,
+    "decoys": 1,
+    "rank": 68
+   },
+   {
+    "work_id": "internet_archive:isaiahanewtrans03lowtgoog",
+    "year": 1822,
+    "readings": 53,
+    "decoys": 0,
+    "rank": 99
+   }
+  ],
+  "best_lowth_ratio": 1020.98,
+  "groups": {
+   "clarke_isaiah": {
+    "readings_found": 162,
+    "of_readings": 5920,
+    "decoys_found": 10,
+    "of_decoys": 4748,
+    "reading_share": 0.0274,
+    "decoy_share": 0.0021
+   },
+   "lowth": {
+    "readings_found": 4366,
+    "of_readings": 5920,
+    "decoys_found": 11,
+    "of_decoys": 4748,
+    "reading_share": 0.7375,
+    "decoy_share": 0.0023
+   },
+   "commentary": {
+    "readings_found": 4182,
+    "of_readings": 5920,
+    "decoys_found": 206,
+    "of_decoys": 4748,
+    "reading_share": 0.7064,
+    "decoy_share": 0.0434
+   },
+   "translation": {
+    "readings_found": 4413,
+    "of_readings": 5920,
+    "decoys_found": 165,
+    "of_decoys": 4748,
+    "reading_share": 0.7454,
+    "decoy_share": 0.0348
+   },
+   "any_work": {
+    "readings_found": 4541,
+    "of_readings": 5920,
+    "decoys_found": 640,
+    "of_decoys": 4748,
+    "reading_share": 0.7671,
+    "decoy_share": 0.1348
+   },
+   "none": {
+    "readings_found": 1379,
+    "of": 5920
+   }
+  },
+  "bars": {
+   "a_lowth_in_top": true,
+   "b_ratio": true,
+   "c_decoys_low": false
+  },
+  "passed": false
+ },
+ "stopped": "the known-answer check missed its bar; the Book of Mormon was not scored",
+ "settings_sha256": "14211d352a42384527ec13b8f37c4ae3071d323c03d175030701e283b5ea95fd",
+ "config_sha256": "17f17bc50213cc918c12ecd2273d6b8d7bc28b16dce88fe3b4db3670b40a1334",
+ "commit": "2a755ebb65da472ab6005212dd8da1955591ba66"
+}
