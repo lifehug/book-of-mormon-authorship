@@ -1523,6 +1523,24 @@ lab:                              # the research lab (exploratory tooling; reads
     judge_per_year: 40             # judging jobs (prepared only if the check misses): uses sampled per year
     workers: 8
     seed: 20261121
+    v2:                            # second design, post hoc and the last allowed (card 2026-11-22-secret-combinations-2): simulated judging by an AI model of a wider passage
+      window_words: 150            # words each side given to the judge (no title, no year in the prompt)
+      per_year: 40                 # library and newspaper uses judged per year (seeded; same rule as the first design's 826)
+      seed: 20261121               # same seed as the first design, so the sample is the same
+      model: sonnet                # lab.judge --model
+      dedup_words: 10              # dedup key: this many normalised words each side of the phrase
+      dedup_overlap: 0.8           # two uses in a class are one passage if this share of their key words is shared
+      ka_min_masonic: 20           # Masonic-titled passages (deduplicated) needed, or the check is not attempted
+      ka_min_not_masonic: 30       # trade- and politics-titled passages, pooled (deduplicated)
+      ka_bar_masonic: 0.75         # required: Masonic-titled labelled freemasonry ("unclear" is a miss)
+      ka_bar_not_masonic: 0.90     # required: trade- and politics-titled, pooled, not labelled freemasonry
+      ka_report_trade: 0.50        # reported, not required: trade-titled labelled trade
+      ka_report_politics: 0.50     # reported, not required: politics-titled labelled political
+      max_unparsed: 0.05           # more unparsed check replies than this share: check not attempted
+      vogel_yes: 0.9               # weighted Masonic share 1827-1830 at least this ...
+      vogel_rise: 0.4              # ... and this much above 1800-1825: yes (Vogel)
+      vogel_no: 0.5                # 1827-1830 share at most this: no (general term)
+      vogel_min_uses: 20           # fewer judged uses in 1827-1830: cannot tell
   isaiah:                          # BOM-122 (lab; exploratory): the Book of Mormon's Isaiah variants against every work printed before 1830
     year_max: 1829                 # library works searched: registry year up to this (works, dup_keeper, not sealed, not ocr_excluded)
     seed: 3                        # alignment: a matching run of at least this many words is an anchor

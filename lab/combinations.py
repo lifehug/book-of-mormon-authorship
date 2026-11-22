@@ -63,7 +63,9 @@ def settings(cfg: dict) -> dict:
 
 
 def settings_hash(cfg: dict) -> str:
-    return hashlib.sha256(json.dumps(settings(cfg), sort_keys=True).encode()).hexdigest()
+    # the second design's settings (``v2``, lab.combinations_judge) do not bear on the scan
+    d = {k: v for k, v in settings(cfg).items() if k != "v2"}
+    return hashlib.sha256(json.dumps(d, sort_keys=True).encode()).hexdigest()
 
 
 def normalise(text: str) -> str:
