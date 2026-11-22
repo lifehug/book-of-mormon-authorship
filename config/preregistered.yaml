@@ -1355,6 +1355,129 @@ lab:                              # the research lab (exploratory tooling; reads
       alma_36: [927, 929]
       alma_41: [945, 945]
     workers: 8
+  geography:                       # BOM-116 (lab; exploratory): the book's directions and distances against real regions and decoy regions
+    seed: 116
+    min_mentions: 2                # a capitalised name is a place after this many mentions after a place word, verb of motion or preposition of place
+    max_gap_chars: 60              # a relation's place is at most this many characters from its cue
+    sentence_max_chars: 1500       # longer "sentences" (run-on OCR) are skipped
+    unit_km: {furlong: 0.201, mile: 1.609, league: 4.83}   # conventional English values (statute mile; league = 3 miles), not from a source file
+    cone_deg: 67.5                 # "A north of B": the bearing from B to A within this many degrees of north
+    higher_margin_m: 0             # "up from A to B": B's GeoNames elevation above A's by more than this
+    km_per_day: [8, 40]            # a day's journey on foot, lowest and highest
+    distance_factor: 1.6           # a stated distance holds within this factor either way
+    near_km: 50
+    coast_km: 25                   # "by the sea": a GeoNames coastal feature within this distance
+    side_km: 75                    # "the sea west" of a place, and either side of a narrow neck: a coastal feature in that quadrant within this distance
+    coast_codes: [BAY, BAYS, BGHT, COVE, GULF, INLT, LGN, SEA, OCN, STRT, SD, HBR, ESTY, FJD, CHNM, CAPE, PT, PTS, BCH, BCHS, SPIT, PEN, ISTH, LTHSE, PRT]
+    elevation_snap_km: 20          # a true coordinate takes the elevation of the nearest GeoNames settlement this near
+    cells_per_radius: 12           # window sites: the most populous GeoNames settlement in each grid cell of radius / this
+    min_sites: 100                 # a decoy window with fewer sites is skipped and counted
+    radii_km: [500, 3000]          # 500: regional settings and the known answers; 3000: the hemispheric setting
+    decoys: 400                    # decoy windows per radius, centred on random land settlements (uniform over 1-degree cells)
+    restarts: 4                    # optimiser: random starts, each improved one place at a time until no gain
+    max_sweeps: 15
+    random_assignments: 1000       # extractor check: random placements of the Bible's places in the Palestine window
+    extractor_bar: 95              # the true placement at or above this percentile of random placements
+    percentile_bar: 95             # a region "fits better than chance" at or above this percentile of decoy windows
+    min_constraints: 12            # a text with fewer constraints is reported, not counted in the check
+    min_known_texts: 3             # the region check needs this many known texts that qualify, every one at the bar
+    texts:                         # known-geography texts; anchor = the window centre for its own region
+      kjv_ot_narrative: {source: kjv, books: [GEN, EXO, NUM, DEU, JOS, JDG, 1SA, 2SA, 1KI, 2KI, 1CH, 2CH, EZR, NEH], anchor: palestine}
+      josephus_wars: {source: file, path: data/corpus/lab/sources/names/josephus_wars_whiston.txt, anchor: palestine}
+      josephus_antiquities: {source: file, path: data/corpus/lab/sources/names/josephus_antiquities_whiston.txt, anchor: palestine}
+      clavigero_mexico_1807: {source: library, work_id: "internet_archive:historyofmexicoc01clav", anchor: mexico}
+      ramsay_revolution_1789: {source: library, work_id: "internet_archive:TheHistoryOfTheAmericanRevolution", anchor: philadelphia}
+      thomson_late_war_1816: {source: library, work_id: "internet_archive:historicalsketch00thom", anchor: niagara}
+      hunt_late_war_1816: {source: library, work_id: "internet_archive:latewarbetweenun00hunt", anchor: niagara}
+      spalding_manuscript: {source: file, path: data/corpus/lab/sources/names/themanuscriptsto00spauuoft/text.txt, anchor: null}
+    book: {book_of_mormon: {source: bom}, book_of_mormon_without_quoted_chapters: {source: bom, without_quoted: true}}
+    anchors:                       # GeoNames lookups (asciiname, country, admin1, radius); which name stands for each setting was chosen from memory, not from a published map
+      palestine: {name: Jerusalem, cc: IL, radius: 500}
+      mexico: {name: Mexico City, cc: MX, radius: 500}
+      philadelphia: {name: Philadelphia, cc: US, admin1: PA, radius: 500}
+      niagara: {name: Buffalo, cc: US, admin1: NY, radius: 500}
+      mesoamerica_tehuantepec: {name: Istmo de Tehuantepec, cc: MX, radius: 500}
+      great_lakes_new_york: {name: Palmyra, cc: US, admin1: NY, radius: 500}
+      heartland_upper_mississippi: {name: Nauvoo, cc: US, admin1: IL, radius: 500}
+      hemispheric_panama: {name: Isthmus of Panama, cc: PA, radius: 3000}
+    settings: [mesoamerica_tehuantepec, great_lakes_new_york, heartland_upper_mississippi, hemispheric_panama, palestine]
+  dictated:                        # BOM-125 (lab; exploratory): complexity of the book against other long dictated or "received" texts (Hales 2019)
+    seed: 20261121
+    sample_sizes: [20000, 5000]    # words per window; the first is the main run, the second lets shorter texts and the Joseph Smith dictations in
+    max_windows: 12                # non-overlapping windows per text (evenly spaced)
+    library_max_windows: 4         # per library background work
+    trim_head: 0.03                # scans and Project Gutenberg files: share of the text dropped at the start (title pages, prefaces) and end
+    trim_tail: 0.02
+    types_at: [5000, 10000, 20000] # the vocabulary growth curve: distinct words in the first k words of a window
+    mattr_window: 500
+    name_min_len: 3
+    name_min_repeats: 2            # the second name count: only names seen at least this often in the window
+    callback_gram: 6               # a word position is a call-back if a string of this many words covering it occurs earlier in the window's first half
+    kjv_ngram: 5                   # borrowing: share of words covered by a King James word string this long
+    header_max_words: 8            # a short line this upper-case is a running head and is dropped
+    header_upper_share: 0.7
+    library_year_min: 1790
+    library_year_max: 1829
+    library_min_words: 60000
+    library_sample: 150
+    check_size: 5000               # known-answer windows
+    check_book_min_words: 5000     # King James books used for the name check
+    bar_order: 0.85                # known answer (a): rank correlation with the McGuffey grade order (Gibbon last)
+    bar_names_rho: 0.80            # known answer (b): rank correlation of name counts with Theographic's, per King James book
+    bar_names_ratio: [0.6, 1.4]    # and the median ours / Theographic inside this range
+    plant_spans: 20                # known answer (c): planted stretches per window
+    plant_len: 12
+    bar_plant: [0.8, 1.2]          # share of the planted words the measure recovers
+    min_received: 8                # received texts scored before an outside / inside verdict is made
+    outside_share: 0.5             # outside the received range on at least this share of the passing measures (and at least 3)
+    inside_share: 0.25             # inside on at least 1 minus this share
+    outside_percentile: [5, 95]    # outside the background if beyond these percentiles
+    roles:                         # labels from the biographical record as generally told; not verified here
+      dictated: Dictated (as the biographies tell it)
+      channelled: Channelled or automatic writing, as claimed
+      revealed: Claimed as revealed or seen
+    received:                      # name: [role, verse (1 = line starts are not sentence starts), files under data/corpus/lab]
+      milton_paradise_lost: [dictated, 1, [sources/received/milton_paradise_lost.txt]]
+      james_ambassadors: [dictated, 0, [sources/received/james_ambassadors.txt]]
+      james_golden_bowl: [dictated, 0, [sources/received/james_golden_bowl.txt]]
+      james_wings_of_the_dove: [dictated, 0, [sources/received/james_wings_of_the_dove_1.txt, sources/received/james_wings_of_the_dove_2.txt]]
+      scott_bride_of_lammermoor: [dictated, 0, [sources/received/scott_bride_of_lammermoor.txt]]
+      davis_principles_of_nature: [channelled, 0, [sources/received/principlesofnatu00davi/text.txt]]
+      oahspe_vol1: [channelled, 0, [sources/received/oahspe0001john/text.txt]]
+      stainton_moses_spirit_teachings: [channelled, 0, [sources/received/spiritteachings00moseiala/text.txt]]
+      patience_worth_sorry_tale: [channelled, 0, [sources/received/sorrytaleastory00currgoog/text.txt]]
+      patience_worth_hope_trueblood: [channelled, 0, [sources/received/hopetrueblood00wort/text.txt]]
+      horn_strange_visitors: [channelled, 0, [sources/received/horn_strange_visitors_1869.txt]]
+      levi_aquarian_gospel: [channelled, 0, [sources/received/aquarian_gospel_levi_1908.txt]]
+      swedenborg_heaven_and_hell: [revealed, 0, [sources/received/swedenborg_heaven_and_hell.txt]]
+      swedenborg_divine_love_wisdom: [revealed, 0, [sources/received/swedenborg_divine_love_wisdom.txt]]
+      swedenborg_divine_providence: [revealed, 0, [sources/received/swedenborg_divine_providence.txt]]
+      swedenborg_conjugial_love: [revealed, 0, [sources/received/swedenborg_conjugial_love.txt]]
+      swedenborg_earths_in_the_universe: [revealed, 0, [sources/received/swedenborg_earths_in_the_universe.txt]]
+      eddy_science_and_health: [revealed, 0, [sources/received/eddy_science_and_health.txt]]
+      koran_sale: [revealed, 0, [sources/names/koran_sale.txt]]
+      southcott_works: [revealed, 0, [sources/prophets/mrssouthcottswor01soutiala/text.txt]]
+      southcott_true_explanation: [revealed, 0, [sources/prophets/trueexplanationo00soutiala/text.txt]]
+      wroe_private_communications: [revealed, 0, [sources/prophets/privatecommunica01wroe/text.txt]]
+      brothers_revealed_knowledge: [revealed, 0, [sources/prophets/ARevealedKnowledgeOfThePropheciesAndTimes/text.txt]]
+    translations:                  # control 2: genuine translations of the period (Koran is also in the received set)
+      josephus_antiquities_whiston: [sources/names/josephus_antiquities_whiston.txt]
+      josephus_wars_whiston: [sources/names/josephus_wars_whiston.txt]
+      arabian_nights_scott: [sources/names/arabian_nights_scott.txt]
+      koran_sale: [sources/names/koran_sale.txt]
+    js_files: [data/private/candidates/samples/joseph-smith__dictated__pre1830.txt, "data/private/candidates/later/*.txt"]   # control 3 (private; numbers only)
+    known_grade_order: [mcguffey_first, mcguffey_second, mcguffey_third, mcguffey_fourth, mcguffey_fifth, mcguffey_sixth, gibbon_vol1]
+    known_files:
+      mcguffey_first: sources/received/mcguffey_first_reader.txt
+      mcguffey_second: sources/received/mcguffey_second_reader.txt
+      mcguffey_third: sources/received/mcguffey_third_reader.txt
+      mcguffey_fourth: sources/received/mcguffey_fourth_reader.txt
+      mcguffey_fifth: sources/received/mcguffey_fifth_reader.txt
+      mcguffey_sixth: sources/received/mcguffey_sixth_reader.txt
+      gibbon_vol1: sources/received/gibbon_decline_and_fall_1.txt
+    plant_hosts: [gibbon_vol1, mcguffey_sixth]
+    theographic: data/corpus/lab/sources/names/theographic/json
+    hales: {words: 269528, grade: 11, unique_words: [5600, 5900], names: 337}   # as reported in Hales (2019), see docs/research/2026-11-20-studies-to-rerun.md
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

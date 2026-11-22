@@ -81,7 +81,7 @@ compares against.
 | --- | --- | --- | --- | --- | --- |
 | BOM-106 | The text carries the marks of speech, not writing | Davis 2020 and others | description | trial transcripts and sermons taken in short-hand | TBD |
 | BOM-127 | Manuscript errors are errors of hearing | Skousen 1998 | one editor's reading | manuscripts known to be copied and known to be dictated | **Done**, fragile |
-| BOM-125 | It is unlike other dictated or "received" books | Hales 2019; Dunn 2002 | length and schooling | the same measures on all of them | TBD |
+| BOM-125 | It is unlike other dictated or "received" books | Hales 2019; Dunn 2002 | length and schooling | the same measures on all of them | **Done** |
 | BOM-121 | Its speakers have more distinct voices than a novelist's characters | Fields and others, about 2021 | four novelists after 1830 | plays of 1660 to 1700, by one author | **Done** |
 | BOM-107 | It has deliberate chiasmus | Welch 1969; Edwards 2004 | the book and the Bible | the rate in every book | **Done** |
 
@@ -781,6 +781,44 @@ say the hand-identified chiasms are not there.
 The rule found 4 of 5 well-known Bible chiasms and 300 of 300 planted ones. I changed two things
 after the first check failed and before the Book of Mormon was counted: a fix to how words are
 reduced, and the plain-order control in place of shuffling sentences.
+
+### Other books that were dictated or "received" (BOM-125)
+
+The claim, made most fully by Brian Hales: the Book of Mormon is too long and too complex to
+have been dictated in a few months by a farmhand with little schooling. The usual comparison is
+to what an ordinary writer can do. A fairer one is to other long books that were dictated, or
+that their makers said were given to them.
+
+I collected 23: Milton's *Paradise Lost* (dictated blind), five works of Swedenborg, Andrew
+Jackson Davis's *Principles of Nature* (dictated in trance by a man of 19 with a few months of
+school), *Oahspe*, the Koran in Sale's English, Mary Baker Eddy, the Patience Worth novels (a
+St. Louis housewife at a ouija board), three late novels Henry James dictated, and the English
+prophets Southcott, Brothers and Wroe. Then I measured every one the same way, 20,000 words at
+a time.
+
+| Measure | Book of Mormon | The 23, middle | The 23, lowest to highest |
+| --- | --- | --- | --- |
+| Different words in 20,000 | 1,679 | 2,625 | 1,672 to 4,226 |
+| Words per sentence | 39.9 | 24.4 | 11.3 to 44.8 |
+| School grade needed to read it | 15.8 | 10.3 | 4.1 to 18.3 |
+| Names in 20,000 words | 75 | 106 | 30 to 442 |
+| Share of words in King James phrases | 24% | 2% | 0.4% to 26% |
+| Share that repeats its own earlier phrases | 7.0% | 0.9% | 0 to 4.5% |
+
+On eight of ten measures the Book of Mormon is inside the range of the other received books. On
+two it is outside, and both point the same way: it has the narrowest vocabulary of all 24 but
+one, and it repeats its own six-word phrases more than any of them. A typical book of the
+period uses 3,753 different words in 20,000. The Book of Mormon uses 1,679. Its long sentences
+are mostly the 1830 printer's punctuation.
+
+So by these measures it is not more complex than other dictated and received books. It is a
+long book made from few words, much repeated, with a quarter of it in the Bible's phrasing.
+
+That does not answer Hales. His case rests on things this cannot count: the plot holding
+together across 265,000 words, the flashbacks, the calendar, the speed. Counting words says
+nothing about whether a story is consistent. And I could not get his own table of sixteen
+texts, so this is his question with my list. Not included, because they are under copyright:
+*A Course in Miracles* and the Seth books. *Oahspe* is the first volume only.
 
 ## What I would want a reader to take from the whole set
 

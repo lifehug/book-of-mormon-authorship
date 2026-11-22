@@ -513,6 +513,44 @@ _SETTING_IA = {
 }
 
 
+# Long texts dictated, spoken or claimed as received, and their controls, for BOM-125 (located
+# 2026-11-21; Project Gutenberg catalogue and Internet Archive search). Printed before 1930, so
+# public domain in the United States. name: (kind, address)
+def _pg(i: int, suffix: str) -> str:
+    digits = str(i)
+    return f"{PG}{'/'.join(digits[:-1]) if len(digits) > 1 else '0'}/{digits}/{digits}{suffix}"
+
+
+_RECEIVED = {
+    "milton_paradise_lost.txt": ("file", _pg(26, "-0.txt")),
+    "swedenborg_heaven_and_hell.txt": ("file", _pg(17368, ".txt")),
+    "swedenborg_divine_love_wisdom.txt": ("file", _pg(16627, ".txt")),
+    "swedenborg_divine_providence.txt": ("file", _pg(18507, ".txt")),
+    "swedenborg_conjugial_love.txt": ("file", _pg(11248, "-0.txt")),
+    "swedenborg_earths_in_the_universe.txt": ("file", _pg(16044, ".txt")),
+    "aquarian_gospel_levi_1908.txt": ("file", _pg(44073, "-0.txt")),
+    "eddy_science_and_health.txt": ("file", _pg(3458, ".txt")),
+    "horn_strange_visitors_1869.txt": ("file", _pg(13237, "-0.txt")),
+    "james_ambassadors.txt": ("file", _pg(432, "-0.txt")),
+    "james_golden_bowl.txt": ("file", _pg(4264, "-0.txt")),
+    "james_wings_of_the_dove_1.txt": ("file", _pg(29452, ".txt")),
+    "james_wings_of_the_dove_2.txt": ("file", _pg(30059, "-0.txt")),
+    "scott_bride_of_lammermoor.txt": ("file", _pg(471, "-0.txt")),
+    "gibbon_decline_and_fall_1.txt": ("file", _pg(731, "-0.txt")),
+    "mcguffey_first_reader.txt": ("file", _pg(14640, "-0.txt")),
+    "mcguffey_second_reader.txt": ("file", _pg(14668, "-0.txt")),
+    "mcguffey_third_reader.txt": ("file", _pg(14766, "-0.txt")),
+    "mcguffey_fourth_reader.txt": ("file", _pg(14880, ".txt")),
+    "mcguffey_fifth_reader.txt": ("file", _pg(15040, "-0.txt")),
+    "mcguffey_sixth_reader.txt": ("file", _pg(16751, ".txt")),
+    "oahspe0001john": ("ia", f"{IA}/details/oahspe0001john"),
+    "principlesofnatu00davi": ("ia", f"{IA}/details/principlesofnatu00davi"),
+    "spiritteachings00moseiala": ("ia", f"{IA}/details/spiritteachings00moseiala"),
+    "sorrytaleastory00currgoog": ("ia", f"{IA}/details/sorrytaleastory00currgoog"),
+    "hopetrueblood00wort": ("ia", f"{IA}/details/hopetrueblood00wort"),
+}
+
+
 def _sources() -> list[dict]:
     rows = []
 
@@ -645,6 +683,9 @@ def _sources() -> list[dict]:
         add(name, "papers", "BOM-119", "file", interpreter + url, terms, True)
     for name, url in _NAMES_PAPERS.items():
         add(name, "papers", "BOM-108", "file", url, "copyright the authors; private copy", True)
+    for name, (kind, url) in _RECEIVED.items():
+        terms = PD + (" (scan and OCR text)" if kind == "ia" else "; Project Gutenberg")
+        add(name, "received", "BOM-125", kind, url, terms)
     return rows
 
 

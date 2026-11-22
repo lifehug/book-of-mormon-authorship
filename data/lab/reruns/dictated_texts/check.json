@@ -1,0 +1,472 @@
+{
+ "known_answer": {
+  "order": {
+   "texts": {
+    "mcguffey_first": {
+     "words": 7548,
+     "mean": {
+      "types_5000": 807.0,
+      "types_10000": null,
+      "types_20000": null,
+      "mattr": 0.4207629415685403,
+      "names_all": 42.0,
+      "names_rep2": 24.0,
+      "sentence_len": 10.095141700404858,
+      "clause_len": 8.6280276816609,
+      "fk_grade": 1.8769139393939405,
+      "callbacks": 0.0024,
+      "kjv_share": 0.0074
+     }
+    },
+    "mcguffey_second": {
+     "words": 17074,
+     "mean": {
+      "types_5000": 1242.3333333333333,
+      "types_10000": null,
+      "types_20000": null,
+      "mattr": 0.4967414648596608,
+      "names_all": 61.333333333333336,
+      "names_rep2": 20.333333333333332,
+      "sentence_len": 12.921370322452992,
+      "clause_len": 10.616492601896558,
+      "fk_grade": 3.861524685789597,
+      "callbacks": 0.004666666666666667,
+      "kjv_share": 0.008
+     }
+    },
+    "mcguffey_third": {
+     "words": 25921,
+     "mean": {
+      "types_5000": 1171.75,
+      "types_10000": null,
+      "types_20000": null,
+      "mattr": 0.47051133081537433,
+      "names_all": 42.0,
+      "names_rep2": 14.75,
+      "sentence_len": 14.15980940855528,
+      "clause_len": 11.89320277950392,
+      "fk_grade": 4.662882871874775,
+      "callbacks": 0.0,
+      "kjv_share": 0.013900000000000001
+     }
+    },
+    "mcguffey_fourth": {
+     "words": 63787,
+     "mean": {
+      "types_5000": 1500.4166666666667,
+      "types_10000": null,
+      "types_20000": null,
+      "mattr": 0.519299414944827,
+      "names_all": 55.166666666666664,
+      "names_rep2": 16.416666666666668,
+      "sentence_len": 14.128576171115325,
+      "clause_len": 12.022211679641325,
+      "fk_grade": 5.542126379160472,
+      "callbacks": 0.0007999999999999999,
+      "kjv_share": 0.026616666666666667
+     }
+    },
+    "mcguffey_fifth": {
+     "words": 98577,
+     "mean": {
+      "types_5000": 1608.0,
+      "types_10000": null,
+      "types_20000": null,
+      "mattr": 0.5337287269495667,
+      "names_all": 99.25,
+      "names_rep2": 20.583333333333332,
+      "sentence_len": 15.336025169054722,
+      "clause_len": 12.312216194622742,
+      "fk_grade": 6.901954638546606,
+      "callbacks": 0.0004333333333333333,
+      "kjv_share": 0.0212
+     }
+    },
+    "mcguffey_sixth": {
+     "words": 137333,
+     "mean": {
+      "types_5000": 1673.1666666666667,
+      "types_10000": null,
+      "types_20000": null,
+      "mattr": 0.5376525586906613,
+      "names_all": 126.75,
+      "names_rep2": 30.166666666666668,
+      "sentence_len": 18.755221865662495,
+      "clause_len": 14.093447340940793,
+      "fk_grade": 9.08634731617262,
+      "callbacks": 0.0014666666666666665,
+      "kjv_share": 0.027516666666666665
+     }
+    },
+    "gibbon_vol1": {
+     "words": 262654,
+     "mean": {
+      "types_5000": 1636.9166666666667,
+      "types_10000": null,
+      "types_20000": null,
+      "mattr": 0.5502246537806413,
+      "names_all": 174.66666666666666,
+      "names_rep2": 48.083333333333336,
+      "sentence_len": 16.37115318901939,
+      "clause_len": 13.926503823957285,
+      "fk_grade": 10.326757149656302,
+      "callbacks": 0.004566666666666667,
+      "kjv_share": 0.01065
+     }
+    }
+   },
+   "not_attempted": {},
+   "spearman": {
+    "types_5000": 0.9286,
+    "mattr": 0.9643,
+    "sentence_len": 0.9286,
+    "clause_len": 0.9643,
+    "fk_grade": 1.0
+   },
+   "passes": {
+    "types_5000": true,
+    "mattr": true,
+    "sentence_len": true,
+    "clause_len": true,
+    "fk_grade": true
+   }
+  },
+  "names": {
+   "books": 36,
+   "variants": {
+    "names_all": {
+     "spearman": 0.9882,
+     "median_ratio": 1.1241,
+     "passes": true
+    },
+    "names_rep2": {
+     "spearman": 0.9705,
+     "median_ratio": 0.5153,
+     "passes": false
+    }
+   },
+   "per_book": {
+    "1 Chronicles": {
+     "words": 20490,
+     "ours_all": 1136,
+     "ours_rep2": 456,
+     "theographic": 1501
+    },
+    "1 Corinthians": {
+     "words": 9489,
+     "ours_all": 39,
+     "ours_rep2": 19,
+     "theographic": 28
+    },
+    "1 Kings": {
+     "words": 24645,
+     "ours_all": 258,
+     "ours_rep2": 132,
+     "theographic": 266
+    },
+    "1 Samuel": {
+     "words": 25194,
+     "ours_all": 198,
+     "ours_rep2": 99,
+     "theographic": 181
+    },
+    "2 Chronicles": {
+     "words": 26156,
+     "ours_all": 309,
+     "ours_rep2": 147,
+     "theographic": 378
+    },
+    "2 Corinthians": {
+     "words": 6077,
+     "ours_all": 32,
+     "ours_rep2": 12,
+     "theographic": 20
+    },
+    "2 Kings": {
+     "words": 23645,
+     "ours_all": 271,
+     "ours_rep2": 138,
+     "theographic": 260
+    },
+    "2 Samuel": {
+     "words": 20771,
+     "ours_all": 261,
+     "ours_rep2": 132,
+     "theographic": 257
+    },
+    "Acts": {
+     "words": 24326,
+     "ours_all": 267,
+     "ours_rep2": 131,
+     "theographic": 225
+    },
+    "Daniel": {
+     "words": 11645,
+     "ours_all": 56,
+     "ours_rep2": 33,
+     "theographic": 38
+    },
+    "Deuteronomy": {
+     "words": 28418,
+     "ours_all": 153,
+     "ours_rep2": 77,
+     "theographic": 138
+    },
+    "Ecclesiastes": {
+     "words": 5590,
+     "ours_all": 5,
+     "ours_rep2": 2,
+     "theographic": 3
+    },
+    "Esther": {
+     "words": 5715,
+     "ours_all": 69,
+     "ours_rep2": 24,
+     "theographic": 50
+    },
+    "Exodus": {
+     "words": 32774,
+     "ours_all": 127,
+     "ours_rep2": 65,
+     "theographic": 117
+    },
+    "Ezekiel": {
+     "words": 39451,
+     "ours_all": 139,
+     "ours_rep2": 80,
+     "theographic": 157
+    },
+    "Ezra": {
+     "words": 7466,
+     "ours_all": 303,
+     "ours_rep2": 104,
+     "theographic": 365
+    },
+    "Genesis": {
+     "words": 38574,
+     "ours_all": 444,
+     "ours_rep2": 204,
+     "theographic": 471
+    },
+    "Hebrews": {
+     "words": 6903,
+     "ours_all": 46,
+     "ours_rep2": 21,
+     "theographic": 35
+    },
+    "Hosea": {
+     "words": 5186,
+     "ours_all": 47,
+     "ours_rep2": 17,
+     "theographic": 44
+    },
+    "Isaiah": {
+     "words": 37088,
+     "ours_all": 184,
+     "ours_rep2": 79,
+     "theographic": 183
+    },
+    "Jeremiah": {
+     "words": 42768,
+     "ours_all": 235,
+     "ours_rep2": 128,
+     "theographic": 267
+    },
+    "Job": {
+     "words": 18125,
+     "ours_all": 32,
+     "ours_rep2": 17,
+     "theographic": 20
+    },
+    "John": {
+     "words": 19135,
+     "ours_all": 98,
+     "ours_rep2": 56,
+     "theographic": 69
+    },
+    "Joshua": {
+     "words": 18991,
+     "ours_all": 419,
+     "ours_rep2": 192,
+     "theographic": 521
+    },
+    "Judges": {
+     "words": 19071,
+     "ours_all": 229,
+     "ours_rep2": 136,
+     "theographic": 234
+    },
+    "Leviticus": {
+     "words": 24621,
+     "ours_all": 27,
+     "ours_rep2": 12,
+     "theographic": 24
+    },
+    "Luke": {
+     "words": 26011,
+     "ours_all": 185,
+     "ours_rep2": 66,
+     "theographic": 178
+    },
+    "Mark": {
+     "words": 15199,
+     "ours_all": 102,
+     "ours_rep2": 46,
+     "theographic": 79
+    },
+    "Matthew": {
+     "words": 23731,
+     "ours_all": 154,
+     "ours_rep2": 96,
+     "theographic": 137
+    },
+    "Nehemiah": {
+     "words": 10517,
+     "ours_all": 375,
+     "ours_rep2": 150,
+     "theographic": 548
+    },
+    "Numbers": {
+     "words": 32980,
+     "ours_all": 407,
+     "ours_rep2": 185,
+     "theographic": 359
+    },
+    "Proverbs": {
+     "words": 15076,
+     "ours_all": 12,
+     "ours_rep2": 4,
+     "theographic": 10
+    },
+    "Psalms": {
+     "words": 43773,
+     "ours_all": 119,
+     "ours_rep2": 52,
+     "theographic": 89
+    },
+    "Revelation": {
+     "words": 12003,
+     "ours_all": 65,
+     "ours_rep2": 28,
+     "theographic": 44
+    },
+    "Romans": {
+     "words": 9436,
+     "ours_all": 81,
+     "ours_rep2": 24,
+     "theographic": 67
+    },
+    "Zechariah": {
+     "words": 6448,
+     "ours_all": 68,
+     "ours_rep2": 28,
+     "theographic": 58
+    }
+   }
+  },
+  "planted": {
+   "hosts": {
+    "gibbon_vol1": {
+     "callbacks": {
+      "recovered_median": 1.0042,
+      "runs": [
+       1.004,
+       1.004,
+       1.004,
+       1.0,
+       1.008,
+       1.0,
+       0.975,
+       1.004,
+       0.971,
+       1.004
+      ]
+     },
+     "kjv_share": {
+      "recovered_median": 1.0042,
+      "runs": [
+       1.004,
+       1.004,
+       0.983,
+       1.004,
+       1.0,
+       1.004,
+       1.0,
+       1.0,
+       1.008,
+       1.004
+      ]
+     }
+    },
+    "mcguffey_sixth": {
+     "callbacks": {
+      "recovered_median": 1.0,
+      "runs": [
+       1.0,
+       1.0,
+       1.0,
+       1.0,
+       0.967,
+       1.004,
+       1.0,
+       1.0,
+       0.967,
+       1.0
+      ]
+     },
+     "kjv_share": {
+      "recovered_median": 1.0,
+      "runs": [
+       1.004,
+       1.004,
+       0.958,
+       0.983,
+       1.0,
+       1.0,
+       1.0,
+       1.008,
+       0.946,
+       0.954
+      ]
+     }
+    }
+   },
+   "passes": {
+    "callbacks": true,
+    "kjv_share": true
+   }
+  },
+  "measure_passes": {
+   "types_5000": true,
+   "types_10000": true,
+   "types_20000": true,
+   "mattr": true,
+   "sentence_len": true,
+   "clause_len": true,
+   "fk_grade": true,
+   "names_all": true,
+   "names_rep2": false,
+   "callbacks": true,
+   "kjv_share": true
+  },
+  "kept": [
+   "types_5000",
+   "types_10000",
+   "types_20000",
+   "mattr",
+   "sentence_len",
+   "clause_len",
+   "fk_grade",
+   "names_all",
+   "callbacks",
+   "kjv_share"
+  ],
+  "dropped": [
+   "names_rep2"
+  ]
+ },
+ "scored": false,
+ "config_sha256": "d55758cc4c90c4a239bb984a9ba8fbecc836986240f295b7b33eac8512507a5b",
+ "git_commit": "54afb44",
+ "rule_set": "everything (named texts); library background by registry filter"
+}
