@@ -1,6 +1,6 @@
 """BOM-118 full run: frames catch their cited verses, round-robin draws, older-author flag."""
 
-from lab.archaic_full import _round_robin, cited, decade, died, items
+from lab.archaic_full import _round_robin, cited, decade, died, items, parse_hand
 from metadata.config import load
 
 
@@ -33,3 +33,10 @@ def test_died_reads_the_catalogued_author():
 def test_1830_counts_with_the_1820s():
     cfg = load()
     assert decade(1830, cfg) == 1820 and decade(1745, cfg) == 1740
+
+
+def test_second_reading_reply_is_read_from_its_first_word():
+    assert parse_hand("OWN\nthe writer's own sentence") == "own_words"
+    assert parse_hand("**QUOTE** - Isaiah") == "quotation_or_reprint"
+    assert parse_hand("NOT\nordinary sense") == "not_claimed"
+    assert parse_hand("Possibly own words") is None

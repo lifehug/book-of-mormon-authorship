@@ -20,6 +20,8 @@ Usage::
     python -m lab.archaic_full jobs         # one jobs file per stage (needs ordinary.json)
     python -m lab.archaic_full status       # answered / open per stage
     python -m lab.archaic_full handlist     # every A answer, for the hand check
+    python -m lab.archaic_full handjobs     # the same answers as questions for a second AI reading
+    python -m lab.archaic_full handread     # that reading's replies -> handcheck.json
     python -m lab.archaic_full score        # -> data/lab/reruns/archaic_vocabulary/full.json
 """
 
@@ -526,6 +528,76 @@ def handlist(cfg: dict) -> int:
     return len(lines) - 1
 
 
+PROMPT_HAND = """A passage from a book printed between 1740 and 1830 is below. It uses \
+"{form}". A first reader judged that it is used in this sense: {a}. (The other sense is: {b}.)
+
+Decide which one of these is true of that use in the passage:
+OWN - the claimed sense, in the writer's own words, written after 1740.
+QUOTE - the claimed sense, but the words are quoted, reprinted or closely paraphrased from an \
+older text (the King James Bible, or any writer before 1740), or the passage is itself a reprint \
+of an older work.
+NOT - not the claimed sense after all, or too garbled to tell.
+
+Passage:
+{passage}
+
+Reply with one word on the first line: OWN, QUOTE or NOT. Then one short line of reason."""
+_HAND_WORD = {"OWN": "own_words", "QUOTE": "quotation_or_reprint", "NOT": "not_claimed"}
+
+
+def handjobs(cfg: dict) -> int:
+    """Every A answer as a question for a second reading by a different model (lab.judge)."""
+    its = items(cfg)
+    js = []
+    for stage in ("control", "library"):
+        prompts = {
+            j["id"]: j["prompt"]
+            for j in map(json.loads, (PRIVATE / f"jobs_{stage}.jsonl").read_text().splitlines())
+        }
+        for jid, v in answers(stage).items():
+            if v != "A":
+                continue
+            it = its[jid.split("|")[1]]
+            passage = prompts[jid].split("Passage:\n", 1)[1].split("\n\nReply", 1)[0]
+            js.append(
+                {
+                    "id": jid,
+                    "prompt": PROMPT_HAND.format(
+                        form=it["item"].lower(), a=it["a"], b=it["b"], passage=passage
+                    ),
+                }
+            )
+    out(PRIVATE / "jobs_hand.jsonl").write_text(
+        "".join(json.dumps(j, ensure_ascii=False) + "\n" for j in js)
+    )
+    print(f"{len(js)} questions -> {PRIVATE / 'jobs_hand.jsonl'}")
+    return len(js)
+
+
+def parse_hand(reply: str) -> str | None:
+    m = re.match(r"\W*(OWN|QUOTE|NOT)\b", reply.strip())
+    return _HAND_WORD[m.group(1)] if m else None
+
+
+def handread() -> dict:
+    """Second-reading replies -> handcheck.json. A verdict already there (a person's) is kept."""
+    hand = _hand()
+    p = PRIVATE / "answers_hand.jsonl"
+    new = unparsed = 0
+    for line in p.read_text().splitlines() if p.exists() else []:
+        r = json.loads(line)
+        v = parse_hand(r["reply"])
+        if v is None:
+            unparsed += 1
+        elif r["id"] not in hand:
+            hand[r["id"]] = v
+            new += 1
+    out(PRIVATE / "handcheck.json").write_text(json.dumps(hand, indent=1, sort_keys=True) + "\n")
+    res = {"verdicts": len(hand), "added": new, "unparsed": unparsed}
+    print(json.dumps(res))
+    return res
+
+
 def _hand() -> dict[str, str]:
     p = PRIVATE / "handcheck.json"
     return json.loads(p.read_text()) if p.exists() else {}
@@ -559,7 +631,7 @@ def score(cfg: dict) -> dict:
         jobs_ids += [json.loads(x)["id"] for x in p.read_text().splitlines()] if p.exists() else []
     res: dict = {
         "judging": f"simulated judging by an AI model (lab.judge, model {a['model']}); every A "
-        "answer hand-checked before it counts",
+        f"answer checked before it counts. Checked by: {a['checked_by']}",
         "settings": {k: v for k, v in a.items() if k != "items"},
         "library_works_scanned": scanned,
         "library_works_unreadable": len([w for w in lib if w.get("unreadable")]),
@@ -635,7 +707,19 @@ def score(cfg: dict) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["frametest", "scan", "jobs", "status", "handlist", "score"])
+    ap.add_argument(
+        "cmd",
+        choices=[
+            "frametest",
+            "scan",
+            "jobs",
+            "status",
+            "handlist",
+            "handjobs",
+            "handread",
+            "score",
+        ],
+    )
     ap.add_argument("--check-only", action="store_true", help="jobs: write the check stage only")
     a = ap.parse_args(argv)
     cfg = config.load()
@@ -654,6 +738,10 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(status(), indent=1))
     elif a.cmd == "handlist":
         handlist(cfg)
+    elif a.cmd == "handjobs":
+        handjobs(cfg)
+    elif a.cmd == "handread":
+        handread()
     else:
         res = score(cfg)
         res["config_sha256"] = config.sha256_of_config()
