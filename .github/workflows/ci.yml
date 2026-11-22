@@ -17,9 +17,16 @@ jobs:
         run: uv python install
       - name: Install dependencies
         run: uv sync --dev
+      # The model extra, at the locked versions, so the tests that need torch or scikit-learn run
+      # here too. torch comes from the CPU index: the locked Linux build pulls about 3 GB of CUDA
+      # libraries the runner cannot use.
+      - name: Install the model libraries (CPU)
+        run: |
+          uv pip install torch==2.15.0 --index-url https://download.pytorch.org/whl/cpu
+          uv pip install scikit-learn==1.9.1 transformers==5.22.1 sentence-transformers==6.2.0 faiss-cpu==1.15.1
       - name: Lint
         run: uv run ruff check .
       - name: Format check
         run: uv run ruff format --check .
       - name: Test
-        run: uv run pytest
+        run: uv run --no-sync pytest
