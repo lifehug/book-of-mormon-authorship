@@ -1,0 +1,3273 @@
+{
+ "exploratory": true,
+ "issue": "BOM-101",
+ "card": "data/private/lab/owner/2026-11-21-voice-encoder/card.md",
+ "settings": {
+  "base": "data/corpus/style_embed/runs/style_v2/style.pt",
+  "out_dir": "data/corpus/lab/voice_encoder",
+  "held_out_writers": [
+   "southcott, joanna",
+   "smith, elias"
+  ],
+  "exclude_genres": [
+   "uncertain",
+   "PARSE_FAIL",
+   "other"
+  ],
+  "religious_genres": [
+   "sermon_devotional",
+   "pseudo_biblical"
+  ],
+  "title_jaccard_max": 0.5,
+  "ngram": 10,
+  "ngram_share_max": 0.05,
+  "spot_sample": 200,
+  "min_train_authors": 1000,
+  "max_text_flag_share": 0.05,
+  "authors_per_step": 16,
+  "cross_step_share": 0.75,
+  "religious_step_share": 0.5,
+  "steps": 1600,
+  "warmup_steps": 100,
+  "lr_encoder": 1e-05,
+  "lr_head": 0.0001,
+  "min_lr_share": 0.1,
+  "precision": "bf16",
+  "validate_every": 250,
+  "validation_authors": 300,
+  "test_authors": 400,
+  "negatives_per_positive": 10,
+  "checkpoint_minutes": 20,
+  "trial_steps": 200,
+  "resamples": 1000,
+  "within_voice_tolerance": 0.03,
+  "seed": "bom101"
+ },
+ "encoders": {
+  "bom30": "data/corpus/style_embed/runs/style/style.pt",
+  "v2": "data/corpus/style_embed/runs/style_v2/style.pt",
+  "voice": "data/corpus/lab/voice_encoder/run/style.pt"
+ },
+ "pairs": {
+  "exploratory": true,
+  "counts_by_rule": {
+   "cross:kept": 45364,
+   "cross:text_check": 4343,
+   "cross:title": 1261,
+   "same:kept": 35978,
+   "same:text_check": 10159,
+   "same:title": 4141
+  },
+  "cross_candidate_pairs": 50968,
+  "cross_removed": {
+   "registry_duplicate_group": 0,
+   "title": 1261,
+   "text_check": 4343
+  },
+  "text_check_share_after_registry_and_title": 0.0874,
+  "per_split": {
+   "train": {
+    "authors_with_cross_pair": 3836,
+    "cross_pairs": 38511,
+    "religious_pairs": 10908,
+    "authors_with_religious_pair": 1319,
+    "register_pairs": {
+     "history_chronicle|newspaper_periodical": 5116,
+     "fiction_narrative|history_chronicle": 4023,
+     "history_chronicle|sermon_devotional": 3699,
+     "legal_political|newspaper_periodical": 3605,
+     "newspaper_periodical|scientific_medical": 3602,
+     "fiction_narrative|newspaper_periodical": 3553,
+     "history_chronicle|legal_political": 2977,
+     "newspaper_periodical|sermon_devotional": 2613,
+     "legal_political|sermon_devotional": 2499,
+     "history_chronicle|scientific_medical": 1931,
+     "fiction_narrative|sermon_devotional": 1313,
+     "legal_political|scientific_medical": 1213,
+     "fiction_narrative|legal_political": 1036,
+     "scientific_medical|sermon_devotional": 782,
+     "fiction_narrative|scientific_medical": 546,
+     "pseudo_biblical|sermon_devotional": 1,
+     "legal_political|pseudo_biblical": 1,
+     "newspaper_periodical|pseudo_biblical": 1
+    }
+   },
+   "validation": {
+    "authors_with_cross_pair": 209,
+    "cross_pairs": 2628,
+    "religious_pairs": 639,
+    "authors_with_religious_pair": 64,
+    "register_pairs": {
+     "fiction_narrative|history_chronicle": 407,
+     "fiction_narrative|newspaper_periodical": 343,
+     "history_chronicle|newspaper_periodical": 327,
+     "newspaper_periodical|scientific_medical": 304,
+     "history_chronicle|sermon_devotional": 289,
+     "legal_political|newspaper_periodical": 237,
+     "newspaper_periodical|sermon_devotional": 187,
+     "history_chronicle|legal_political": 141,
+     "history_chronicle|scientific_medical": 86,
+     "fiction_narrative|sermon_devotional": 83,
+     "fiction_narrative|legal_political": 67,
+     "legal_political|sermon_devotional": 42,
+     "legal_political|scientific_medical": 42,
+     "scientific_medical|sermon_devotional": 38,
+     "fiction_narrative|scientific_medical": 35
+    }
+   },
+   "heldout": {
+    "authors_with_cross_pair": 457,
+    "cross_pairs": 4225,
+    "religious_pairs": 1169,
+    "authors_with_religious_pair": 145,
+    "register_pairs": {
+     "history_chronicle|newspaper_periodical": 629,
+     "legal_political|newspaper_periodical": 444,
+     "history_chronicle|sermon_devotional": 392,
+     "history_chronicle|legal_political": 370,
+     "fiction_narrative|newspaper_periodical": 368,
+     "fiction_narrative|history_chronicle": 367,
+     "newspaper_periodical|scientific_medical": 350,
+     "newspaper_periodical|sermon_devotional": 272,
+     "legal_political|sermon_devotional": 258,
+     "history_chronicle|scientific_medical": 209,
+     "fiction_narrative|sermon_devotional": 163,
+     "legal_political|scientific_medical": 140,
+     "fiction_narrative|legal_political": 129,
+     "scientific_medical|sermon_devotional": 75,
+     "fiction_narrative|scientific_medical": 47,
+     "history_chronicle|pseudo_biblical": 7,
+     "pseudo_biblical|sermon_devotional": 3,
+     "legal_political|pseudo_biblical": 2
+    }
+   }
+  },
+  "registers": [
+   "fiction_narrative",
+   "history_chronicle",
+   "legal_political",
+   "newspaper_periodical",
+   "pseudo_biblical",
+   "scientific_medical",
+   "sermon_devotional"
+  ],
+  "check": {
+   "train_authors": 3836,
+   "bar_train_authors": 1000,
+   "text_flag_share": 0.0874,
+   "bar_text_flag_share": 0.05,
+   "passed": false
+  },
+  "spot_sample": [
+   {
+    "author": "bernard, thomas",
+    "w1": "account of britton abbot s cottage",
+    "w2": "a letter to he honourable and",
+    "g1": "history_chronicle",
+    "g2": "legal_political"
+   },
+   {
+    "author": "hamilton, francis",
+    "w1": "an account of the kingdom of",
+    "w2": "a commentary on the third part",
+    "g1": "history_chronicle",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "blizard, william",
+    "w1": "desultory reflections on police with an",
+    "w2": "an oration delivered on thursday february",
+    "g1": "newspaper_periodical",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "hook, theodore edward",
+    "w1": "the man of sorrow a novel",
+    "w2": "tekeli",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "pilkington",
+    "w1": "the budget or moral and entertaining",
+    "w2": "tales of the cottage or stories",
+    "g1": "newspaper_periodical",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "weston, stephen",
+    "w1": "viaggiana or detached remarks on the",
+    "w2": "the englishman abroad",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "cobbett, william",
+    "w1": "a history of the protestant reformation",
+    "w2": "the soldier s friend or considerations",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "smith, james no 89008618",
+    "w1": "the panorama of science and art",
+    "w2": "the mechanic or compendium of practical",
+    "g1": "newspaper_periodical",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "webster, noah",
+    "w1": "a collection of essays and fugitiv",
+    "w2": "a letter to the governors instructors",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "walker, timothy",
+    "w1": "two letters addressed to general william",
+    "w2": "elements of geometry with practical applications",
+    "g1": "legal_political",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "bisset, robert",
+    "w1": "the history of the reign of",
+    "w2": "a plain reply to the pamphlet",
+    "g1": "history_chronicle",
+    "g2": "legal_political"
+   },
+   {
+    "author": "virgil",
+    "w1": "the georgics of virgil translated into",
+    "w2": "the lyfe of virgilius from the",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "vince, samuel",
+    "w1": "on the divisions among christians a",
+    "w2": "the principles of fluxions designed for",
+    "g1": "sermon_devotional",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "ware, henry",
+    "w1": "memoir of the rev benjamin goodier",
+    "w2": "a sermon occasioned by the death",
+    "g1": "history_chronicle",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "kirby, william",
+    "w1": "monographia apum angli or an attempt",
+    "w2": "entomology vol",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "ferriar, john",
+    "w1": "the bibliomania an epistle to richard",
+    "w2": "an essay on the medical properties",
+    "g1": "fiction_narrative",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "morse, jedidiah",
+    "w1": "american geography the american universal geography",
+    "w2": "the true reasons on which the",
+    "g1": "newspaper_periodical",
+    "g2": "legal_political"
+   },
+   {
+    "author": "simpson, david",
+    "w1": "a discourse on the late royal",
+    "w2": "a plea for the deity of",
+    "g1": "legal_political",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "bicheno, j james",
+    "w1": "the signs of the times part",
+    "w2": "the restoration of the jews the",
+    "g1": "newspaper_periodical",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "wilson, james",
+    "w1": "letters to the rev ezra stiles",
+    "w2": "the fire eater",
+    "g1": "newspaper_periodical",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "wyvill, christopher",
+    "w1": "preached at richmond in yorkshire the",
+    "w2": "the secession from parliament vindicated",
+    "g1": "sermon_devotional",
+    "g2": "legal_political"
+   },
+   {
+    "author": "dibdin, thomas frognall",
+    "w1": "a bibliographical antiquarian and picturesque tour",
+    "w2": "sermons",
+    "g1": "history_chronicle",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "newnham, william",
+    "w1": "an essay on the symptoms causes",
+    "w2": "the principles of physical intellectual moral",
+    "g1": "scientific_medical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "ireland, w h william henry",
+    "w1": "ireland s shaksperiana manuscript",
+    "w2": "chalcographimania",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "hamilton, robert",
+    "w1": "the duties of a regimental surgeon",
+    "w2": "letters on the cause and treatment",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "hack, maria",
+    "w1": "stories of animals intended for children",
+    "w2": "oriental fragments",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "sterne, laurence",
+    "w1": "the life and opinions of tristam",
+    "w2": "letters of the late rev mr",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "cavallo, tiberius",
+    "w1": "the elements of natural or experimental",
+    "w2": "account of a luminous appearance in",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "sinclair, john",
+    "w1": "letters written to the governor and",
+    "w2": "hints regarding the agricultural state of",
+    "g1": "newspaper_periodical",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "fenelon, francois de salignac de la mothe",
+    "w1": "a treatise on the education of",
+    "w2": "les aventures de t l maque",
+    "g1": "legal_political",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "zimmermann, johann georg",
+    "w1": "solitude considered with respect to its",
+    "w2": "a treatise on experience in physic",
+    "g1": "history_chronicle",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "berzelius, jons jakob friherre n 79065879",
+    "w1": "the use of the blowpipe in",
+    "w2": "instructions for the use of the",
+    "g1": "newspaper_periodical",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "west, jane",
+    "w1": "the advantages of education or the",
+    "w2": "a gossip s story and a",
+    "g1": "newspaper_periodical",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "buchan, william n 82060399",
+    "w1": "domestic medicine or the family physician",
+    "w2": "advice to mothers on the subject",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "blane, gilbert",
+    "w1": "account of the nardus indica or",
+    "w2": "a serious address to the public",
+    "g1": "newspaper_periodical",
+    "g2": "legal_political"
+   },
+   {
+    "author": "southey, robert",
+    "w1": "specimens of the later english poets",
+    "w2": "the complete works of henry kirke",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "thomson, james",
+    "w1": "works with his last corrections and",
+    "w2": "on the mummy cloth of egypt",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "hall, james",
+    "w1": "a narrative of a most extraordinary",
+    "w2": "suggestions for establishing a telegraphic intercourse",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "humphrey, heman",
+    "w1": "essays upon the perpetuity change and",
+    "w2": "parallel between intemperance and the slave",
+    "g1": "sermon_devotional",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "rafinesque, c s constantine samuel",
+    "w1": "thoughts on atmospheric dust",
+    "w2": "medical flora electronic resource or manual",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "knox, vicesimus",
+    "w1": "the works of vicesimus knox d",
+    "w2": "a narrative of transactions relative to",
+    "g1": "history_chronicle",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "janeway, james",
+    "w1": "a token for children being an",
+    "w2": "an extract of the life and",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "kilham, alexander",
+    "w1": "the hypocrite detected and exposed and",
+    "w2": "the life of mr alexander kilham",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "berkeley, george monck",
+    "w1": "heloise or the siege of rhodes",
+    "w2": "spanish memoirs in a series of",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "haines, charles g charles glidden",
+    "w1": "considerations on the great western canal",
+    "w2": "memoir of thomas addis emmet",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "richardson, samuel",
+    "w1": "sir charles grandison",
+    "w2": "the history of pamela or virtue",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "penn, william",
+    "w1": "the sandy foundation shaken or those",
+    "w2": "a letter from william penn to",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "phillips, r",
+    "w1": "the universal preceptor being a general",
+    "w2": "a grammar of natural and experimental",
+    "g1": "newspaper_periodical",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "walker, a adam",
+    "w1": "syllabus of a course of lectures",
+    "w2": "remarks made in a tour from",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "draper, william",
+    "w1": "the child s friend being an",
+    "w2": "twenty sermons on various subjects preached",
+    "g1": "scientific_medical",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "polwhele, richard",
+    "w1": "traditions and recollections domestic clerical and",
+    "w2": "the art of eloquence",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "lyttelton, george lyttelton",
+    "w1": "observations on the conversion and apostleship",
+    "w2": "a history of england in a",
+    "g1": "sermon_devotional",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "walker, robert",
+    "w1": "analysis of researches into the origin",
+    "w2": "the elements of the theory of",
+    "g1": "history_chronicle",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "paulding, james kirke",
+    "w1": "koningsmarke the long finne a story",
+    "w2": "chronicles of the city of gotham",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "adams, john",
+    "w1": "correspondence of the late president adams",
+    "w2": "correspondence between the hon john adams",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "wardrop, james",
+    "w1": "observations on fungus h matodes or",
+    "w2": "case of a lady born blind",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "fielding, henry",
+    "w1": "amelia by henry fielding in three",
+    "w2": "works with an essay on his",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "various",
+    "w1": "camilla a picture of youth",
+    "w2": "the christian s magazine on a",
+    "g1": "fiction_narrative",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "cecil, richard",
+    "w1": "memoirs of the rev john newton",
+    "w2": "a sermon preached at the parish",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "leslie, john",
+    "w1": "a short account of experiments and",
+    "w2": "the philosophy of arithmetic exhibiting a",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "foot, jesse",
+    "w1": "dialogues between a pupil of the",
+    "w2": "a review of mr everard home",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "doddridge, philip",
+    "w1": "the connecticut evangelical magazine and religious",
+    "w2": "sermons on various subjects by philip",
+    "g1": "newspaper_periodical",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "evans, john",
+    "w1": "the christian temper being thirty eight",
+    "w2": "the golden centenary",
+    "g1": "sermon_devotional",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "playfair, william",
+    "w1": "a fair and candid address to",
+    "w2": "political portraits in this new ra",
+    "g1": "legal_political",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "milman, henry hart",
+    "w1": "the character and conduct of the",
+    "w2": "the history of the jews",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "benezet, anthony",
+    "w1": "a short account of the people",
+    "w2": "the plainness and innocent simplicity of",
+    "g1": "history_chronicle",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "kendall, john",
+    "w1": "letters on religious subjects",
+    "w2": "the life of thomas story carefully",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "montgomery, james",
+    "w1": "verses to the memory of the",
+    "w2": "greenland",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "combe, william",
+    "w1": "a letter from a country gentleman",
+    "w2": "a word in season to the",
+    "g1": "legal_political",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "thornton, robert john",
+    "w1": "medical extracts on the nature of",
+    "w2": "temple of flora or garden of",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "barrett, eaton stannard",
+    "w1": "the rising sun by cervantes hogg",
+    "w2": "the miss led general a serio",
+    "g1": "newspaper_periodical",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "herbert, william",
+    "w1": "helga a poem in seven cantos",
+    "w2": "translations from the german danish c",
+    "g1": "fiction_narrative",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "burns, robert",
+    "w1": "reliques consisting chiefly of original letters",
+    "w2": "poems by robert burns with an",
+    "g1": "history_chronicle",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "malcolm, john",
+    "w1": "the history of persia from the",
+    "w2": "essay on the bhills",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "warner, richard",
+    "w1": "a tour through the northern counties",
+    "w2": "evangelical preaching commonly so denominated its",
+    "g1": "history_chronicle",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "lady",
+    "w1": "female restoration by a moral and",
+    "w2": "poems on various subjects by a",
+    "g1": "newspaper_periodical",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "owen, john",
+    "w1": "the death of death in the",
+    "w2": "the retrospect or reflections on the",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "bowring, john",
+    "w1": "rossiskaia antologiia specimens of russian poets",
+    "w2": "some account of the state of",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "wright, william",
+    "w1": "an address to persons afflicted with",
+    "w2": "memoir of the late william wright",
+    "g1": "history_chronicle",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "milner, joseph",
+    "w1": "practical sermons",
+    "w2": "some remarkable passages in the life",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "plowden, charles",
+    "w1": "observations on the oath proposed to",
+    "w2": "remarks on the writings of the",
+    "g1": "legal_political",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "hamilton, elizabeth",
+    "w1": "memoirs of modern philosophers in three",
+    "w2": "works",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "preston, william",
+    "w1": "poems on several occasions by william",
+    "w2": "the siege of ismail or a",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "onderdonk, henry u",
+    "w1": "an answer to the letter addressed",
+    "w2": "address at the anniversary meeting of",
+    "g1": "legal_political",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "swain, joseph",
+    "w1": "redemption a poem in five books",
+    "w2": "experimental essays on divine subjects in",
+    "g1": "fiction_narrative",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "bannatyne club, edinburgh scotland",
+    "w1": "auld robin gray a ballad",
+    "w2": "the history of the troubles and",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "hamilton, james",
+    "w1": "history of a case of convulsions",
+    "w2": "outline of midwifery for the use",
+    "g1": "history_chronicle",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "sherwood, mary martha",
+    "w1": "the infant s progress from the",
+    "w2": "the millennium or twelve stories designed",
+    "g1": "fiction_narrative",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "johnson, r richard or 4",
+    "w1": "juvenile trials for telling fibs robbing",
+    "w2": "the history of tommy careless or",
+    "g1": "newspaper_periodical",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "barrett, eaton stannard",
+    "w1": "the setting sun or devil amongst",
+    "w2": "the heroine or adventures of a",
+    "g1": "newspaper_periodical",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "states, united",
+    "w1": "report on government deposits in the",
+    "w2": "selections from several literary works comprising",
+    "g1": "legal_political",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "jebb, john",
+    "w1": "an address to the freeholders of",
+    "w2": "religious patriotism nurtured in the house",
+    "g1": "legal_political",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "hicks, elias",
+    "w1": "a series of extemporaneous discourses",
+    "w2": "letters and observations relating to the",
+    "g1": "sermon_devotional",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "gibson, benjamin",
+    "w1": "description of an extraordinary human f",
+    "w2": "observations on the effect of madder",
+    "g1": "newspaper_periodical",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "nicholson, william",
+    "w1": "tales in verse and miscellaneous poems",
+    "w2": "published monthly in quarto numbers at",
+    "g1": "fiction_narrative",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "white, joseph blanco",
+    "w1": "practical and internal evidence against catholicism",
+    "w2": "a letter to protestants converted from",
+    "g1": "legal_political",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "miller, george",
+    "w1": "a sermon preached before his excellency",
+    "w2": "observations on the theory of electric",
+    "g1": "sermon_devotional",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "hunter, a alexander",
+    "w1": "original letters",
+    "w2": "culina famulatrix medicinae or receipts in",
+    "g1": "history_chronicle",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "lockhart, j g",
+    "w1": "some passages in the life of",
+    "w2": "reginald dalton by the author of",
+    "g1": "history_chronicle",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "edgeworth, maria",
+    "w1": "the parent s assistant or stories",
+    "w2": "frank a sequel to frank in",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "buck, charles from old catalog",
+    "w1": "a theological dictionary containing definitions of",
+    "w2": "the practical expositor",
+    "g1": "history_chronicle",
+    "g2": "legal_political"
+   },
+   {
+    "author": "edgeworth, richard lovell",
+    "w1": "supplement to mr edgeworth s essay",
+    "w2": "the substance of three speeches delivered",
+    "g1": "newspaper_periodical",
+    "g2": "legal_political"
+   },
+   {
+    "author": "priestley, joseph",
+    "w1": "a discourse on occasion of the",
+    "w2": "a letter to an antip dobaptist",
+    "g1": "sermon_devotional",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "martin, john",
+    "w1": "the substance of a sermon preached",
+    "w2": "an account of the natives of",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "reece, richard",
+    "w1": "the monthly gazette of health",
+    "w2": "a practical treatise on the anti",
+    "g1": "newspaper_periodical",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "jones, john",
+    "w1": "account of several houses in philadelphia",
+    "w2": "a sermon preached at the general",
+    "g1": "newspaper_periodical",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "anderson, james",
+    "w1": "a practical treatise on draining bogs",
+    "w2": "a disquisition on wool bearing animals",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "weyland, john",
+    "w1": "a short inquiry into the policy",
+    "w2": "observations on mr whitbread s poor",
+    "g1": "newspaper_periodical",
+    "g2": "legal_political"
+   },
+   {
+    "author": "rennell, james",
+    "w1": "on the rate of travelling as",
+    "w2": "the geographical system of herodotus examined",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "ritson, joseph",
+    "w1": "cursory criticisms on the edition of",
+    "w2": "law tracts by joseph ritson",
+    "g1": "newspaper_periodical",
+    "g2": "legal_political"
+   },
+   {
+    "author": "smollett, t",
+    "w1": "the history of england",
+    "w2": "the adventures of peregrine pickle with",
+    "g1": "history_chronicle",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "worcester, noah",
+    "w1": "a solemn review of the custom",
+    "w2": "the substance of two sermons",
+    "g1": "legal_political",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "wood, thomas",
+    "w1": "a standard for the nations or",
+    "w2": "a short account of the life",
+    "g1": "legal_political",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "smollett, t",
+    "w1": "the miscellaneous works of tobias smollett",
+    "w2": "the novels of tobias smollett to",
+    "g1": "history_chronicle",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "douglas, niel",
+    "w1": "messiahs proper deity argued from scripture",
+    "w2": "the african slave trade or a",
+    "g1": "sermon_devotional",
+    "g2": "legal_political"
+   },
+   {
+    "author": "agg, john",
+    "w1": "the london bazaar or where to",
+    "w2": "the pavilion or a month in",
+    "g1": "fiction_narrative",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "truth, friend to",
+    "w1": "an essay on the atonement being",
+    "w2": "a correct view of the controversy",
+    "g1": "fiction_narrative",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "boswell, james",
+    "w1": "ode by dr samuel johnson to",
+    "w2": "the life of samuel johnson ed",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "buckingham, james silk",
+    "w1": "a copius report of lectures on",
+    "w2": "history of the public proceedings on",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "maurice, thomas",
+    "w1": "select poems",
+    "w2": "indian antiquities or dissertations of hindostan",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "stuart, james",
+    "w1": "a dissertation on the salutary effects",
+    "w2": "woman",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "langhorne, john",
+    "w1": "plutarch s lives",
+    "w2": "poetical works to which are prefixed",
+    "g1": "history_chronicle",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "hunter, william",
+    "w1": "two introductory lectures delivered by dr",
+    "w2": "travels in the year through france",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "brydges, egerton",
+    "w1": "letters from the continent",
+    "w2": "travels of my nightcap or reveries",
+    "g1": "history_chronicle",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "brinkley, john",
+    "w1": "considerations on the silver currency relative",
+    "w2": "investigations in physical astronomy principally relative",
+    "g1": "legal_political",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "babbage, charles",
+    "w1": "a letter to sir humphry davy",
+    "w2": "reflections on the decline of science",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "cumberland, richard",
+    "w1": "the observer being a collection of",
+    "w2": "the brothers a comedy by richard",
+    "g1": "newspaper_periodical",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "johnson, r richard or 4",
+    "w1": "the adventures of a silver penny",
+    "w2": "the history of south america containing",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "kilner, dorothy",
+    "w1": "poems on various subjects for the",
+    "w2": "the life and perambulation of a",
+    "g1": "fiction_narrative",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "beddoes, thomas",
+    "w1": "further observations on the process for",
+    "w2": "considerations on the medicinal use and",
+    "g1": "newspaper_periodical",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "graham, james",
+    "w1": "corn and currency in an address",
+    "w2": "the guardian goddess of health or",
+    "g1": "history_chronicle",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "ireland, w h william henry",
+    "w1": "the catholic an historical romance",
+    "w2": "stultifera navis",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "forsyth, william",
+    "w1": "a treatise on the culture and",
+    "w2": "a botanical nomenclator containing a systematical",
+    "g1": "scientific_medical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "boaden, james",
+    "w1": "cambro britons an historical play in",
+    "w2": "memories of the life of john",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "duncumb, john",
+    "w1": "a sermon preached in the cathedral",
+    "w2": "collections towards the history and antiquities",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "erskine, thomas erskine baron",
+    "w1": "an attempt to explain define and",
+    "w2": "christianity vindicated in the admirable speech",
+    "g1": "legal_political",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "coleridge, samuel taylor",
+    "w1": "poetical works reprinted from the early",
+    "w2": "on the constitution of the church",
+    "g1": "fiction_narrative",
+    "g2": "legal_political"
+   },
+   {
+    "author": "burke, edmund",
+    "w1": "a letter from the rt honourable",
+    "w2": "the beauties of burke consisting of",
+    "g1": "legal_political",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "cole, john",
+    "w1": "the history and antiqvities of filey",
+    "w2": "a month s excursion",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "xenophon",
+    "w1": "cyrop dia or the institution of",
+    "w2": "the minor works of xenophon viz",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "locke, john",
+    "w1": "an essay on enthusiasm being the",
+    "w2": "a paraphrase and notes on the",
+    "g1": "history_chronicle",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "blair, hugh",
+    "w1": "sermons",
+    "w2": "an abridgment of lectures on rhetoric",
+    "g1": "sermon_devotional",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "wilson, james patriot",
+    "w1": "sacramental selections or the nature and",
+    "w2": "a free conversation on the unpardonable",
+    "g1": "sermon_devotional",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "newman, jeremiah whitaker",
+    "w1": "the lounger s common place book",
+    "w2": "a short enquiry into the merit",
+    "g1": "newspaper_periodical",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "saint pierre, bernardin de",
+    "w1": "paul and mary an indian story",
+    "w2": "tudes de la nature english abridgments",
+    "g1": "fiction_narrative",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "freeholder",
+    "w1": "the source of the evil or",
+    "w2": "a letter to the electors of",
+    "g1": "newspaper_periodical",
+    "g2": "legal_political"
+   },
+   {
+    "author": "brown, john",
+    "w1": "a brief concordance to the holy",
+    "w2": "memoirs of george the third late",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "adams, john quincy",
+    "w1": "an oration delivered at plymouth december",
+    "w2": "letters on silesia written during a",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "buffon, georges louis leclerc comte de",
+    "w1": "the natural history of oviparous quadrupeds",
+    "w2": "natural history of birds fish insects",
+    "g1": "history_chronicle",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "dyer, george",
+    "w1": "memoirs of the life and writings",
+    "w2": "academic unity the substance of a",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "sterne, laurence",
+    "w1": "sermons",
+    "w2": "the life and opinions of tristam",
+    "g1": "sermon_devotional",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "smith, william",
+    "w1": "speech of mr smith of south",
+    "w2": "the yeoman s second letter to",
+    "g1": "legal_political",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "gray, robert",
+    "w1": "letters during the course of a",
+    "w2": "sermons on the principles upon which",
+    "g1": "history_chronicle",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "horne, george",
+    "w1": "letters on infidelity",
+    "w2": "memoirs of the life studies and",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "irwin, eyles",
+    "w1": "ode to robert brooke esquire occasioned",
+    "w2": "the failure of the french crusade",
+    "g1": "fiction_narrative",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "young, thomas",
+    "w1": "a course of lectures on natural",
+    "w2": "remarks on the probabilities of error",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "coke, thomas",
+    "w1": "a history of the west indies",
+    "w2": "the substance of a sermon on",
+    "g1": "history_chronicle",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "addison, joseph",
+    "w1": "addisoniana",
+    "w2": "cato a tragedy in five acts",
+    "g1": "newspaper_periodical",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "wrangham, francis",
+    "w1": "the pleiad a series of adbrigements",
+    "w2": "thirteen practical sermons founded upon doddridge",
+    "g1": "newspaper_periodical",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "ryland, john",
+    "w1": "the dependance of the whole law",
+    "w2": "pastoral memorials selected from the manuscripts",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "heber, reginald",
+    "w1": "sermons preached in india",
+    "w2": "the life of reginald heber by",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "mirabeau, gabriel honore de riquetti comte de",
+    "w1": "considerations sur l ordre de cincinnatus",
+    "w2": "collection complete des travaux de m",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "ballou, hosea",
+    "w1": "a treatise on atonement in which",
+    "w2": "the ancient history of universalism from",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "pratt",
+    "w1": "shenstone green or the new paradise",
+    "w2": "pity s gift a collection of",
+    "g1": "history_chronicle",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "pearson, george n 88635361",
+    "w1": "experiments and observations to investigate the",
+    "w2": "principles of physic to be explained",
+    "g1": "newspaper_periodical",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "jackson, william",
+    "w1": "cautions and advice to the public",
+    "w2": "the new complete newgate calendar or",
+    "g1": "legal_political",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "michaelis, johann david",
+    "w1": "introduction to the new testament",
+    "w2": "commentaries on the laws of moses",
+    "g1": "scientific_medical",
+    "g2": "legal_political"
+   },
+   {
+    "author": "cropper, james",
+    "w1": "relief for west indian distress shewing",
+    "w2": "present state of ireland with a",
+    "g1": "newspaper_periodical",
+    "g2": "legal_political"
+   },
+   {
+    "author": "worcester, noah",
+    "w1": "some difficulties proposed for solution in",
+    "w2": "the christian disciple and theological review",
+    "g1": "legal_political",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "macpherson, david",
+    "w1": "annals of commerce manufactures fisheries and",
+    "w2": "the history of the european commerce",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "taylor, isaac",
+    "w1": "scenes in europe for the amusement",
+    "w2": "elements of thought or first lessons",
+    "g1": "history_chronicle",
+    "g2": "scientific_medical"
+   },
+   {
+    "author": "trusler, john",
+    "w1": "a list of books published by",
+    "w2": "proverbs exemplified and illustrated by pictures",
+    "g1": "newspaper_periodical",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "richards, george",
+    "w1": "the aboriginal britons a poem by",
+    "w2": "modern france a poem by george",
+    "g1": "newspaper_periodical",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "wraxall, nathaniel william",
+    "w1": "a tour through the western southern",
+    "w2": "memoirs of the courts of berlin",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "stewart, john",
+    "w1": "the moral state of nations or",
+    "w2": "an account of jamaica and its",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "warner, richard",
+    "w1": "second walk through wales",
+    "w2": "illustrations critical historical biographical and miscellaneous",
+    "g1": "history_chronicle",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "pratt, samuel jackson",
+    "w1": "emma corbett vol",
+    "w2": "family secrets literary and domestic by",
+    "g1": "newspaper_periodical",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "bowen, abel",
+    "w1": "the boston news letter and city",
+    "w2": "early impressions",
+    "g1": "newspaper_periodical",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "walker, george",
+    "w1": "theodore cyphon or the benevolent jew",
+    "w2": "the vagabond a novel in two",
+    "g1": "fiction_narrative",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "maxwell, james",
+    "w1": "paisley a poem being a general",
+    "w2": "the shunamite a sacred essay on",
+    "g1": "fiction_narrative",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "fessenden, thomas green",
+    "w1": "an essay on the law of",
+    "w2": "the register of arts or a",
+    "g1": "legal_political",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "thornton, robert john",
+    "w1": "the philosophy of medicine or medical",
+    "w2": "the politician s creed",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "brydges, egerton",
+    "w1": "the british bibliographer by sir egerton",
+    "w2": "letters from the continent",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "smith, william",
+    "w1": "a guide and encouragement to charity",
+    "w2": "continuation of the history of new",
+    "g1": "sermon_devotional",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "manby, george william",
+    "w1": "an essay on saving persons from",
+    "w2": "journal of a voyage to greenland",
+    "g1": "sermon_devotional",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "smith, charles",
+    "w1": "songs duetts chorusses c in a",
+    "w2": "the ancient and present state of",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "kirwan, richard",
+    "w1": "elements of mineralogy",
+    "w2": "an illustration and confirmation of some",
+    "g1": "scientific_medical",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "burnet, james lord monboddo",
+    "w1": "of the origin and progress of",
+    "w2": "antient metaphysics volume fifth containing the",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "kelty, mary ann",
+    "w1": "the story of isabel",
+    "w2": "religious thoughts microform",
+    "g1": "fiction_narrative",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "ferriar, john",
+    "w1": "the bibliomania an epistle to richard",
+    "w2": "medical histories and reflections vol iii",
+    "g1": "fiction_narrative",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "caulfield, james",
+    "w1": "the history of the gunpowder plot",
+    "w2": "the high court of justice comprising",
+    "g1": "history_chronicle",
+    "g2": "legal_political"
+   },
+   {
+    "author": "cobbett, william",
+    "w1": "elements of reform or an account",
+    "w2": "a history of the reformation in",
+    "g1": "legal_political",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "ballou, hosea",
+    "w1": "a series of lecture sermons delivered",
+    "w2": "a treatise on atonement in which",
+    "g1": "sermon_devotional",
+    "g2": "fiction_narrative"
+   },
+   {
+    "author": "broome, ralph d",
+    "w1": "the letters of simkin the second",
+    "w2": "strictures on mr burke s two",
+    "g1": "fiction_narrative",
+    "g2": "legal_political"
+   },
+   {
+    "author": "bailey, ebenezer",
+    "w1": "triumphs of liberty the prize ode",
+    "w2": "a funeral elegy or an elegiac",
+    "g1": "newspaper_periodical",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "luther, martin",
+    "w1": "martin luther on the bondage of",
+    "w2": "a commentary on the galatians by",
+    "g1": "legal_political",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "scott, thomas",
+    "w1": "the rights of god",
+    "w2": "the divine inspiration of the holy",
+    "g1": "legal_political",
+    "g2": "sermon_devotional"
+   },
+   {
+    "author": "starke, mariana",
+    "w1": "the tournament a tragedy imitated from",
+    "w2": "letters from italy containing a view",
+    "g1": "fiction_narrative",
+    "g2": "newspaper_periodical"
+   },
+   {
+    "author": "kett, henry",
+    "w1": "an essay on wastes in general",
+    "w2": "the flowers of wit by henry",
+    "g1": "fiction_narrative",
+    "g2": "history_chronicle"
+   },
+   {
+    "author": "white, william",
+    "w1": "the case of the episcopal churches",
+    "w2": "further observations on strictures of the",
+    "g1": "legal_political",
+    "g2": "scientific_medical"
+   }
+  ],
+  "works": 39264,
+  "seconds": 691
+ },
+ "trial": {
+  "trial_16": {
+   "steps": 25,
+   "authors_per_step": 16,
+   "sec_per_step_median": 24.0,
+   "sec_per_step_mean": 23.97,
+   "wall_seconds": 784,
+   "projected_hours_for_config_steps": 13.33
+  }
+ },
+ "training": {
+  "config_sha256": "87c3a55dbf4086a8b5e99b1f22cf09a405bd60e62bcfd226373237f4dc52c2e6",
+  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+  "registered": true,
+  "git_commit": "700509d3fc6092932fdbe015f4137a2d184e0b03",
+  "exploratory": true,
+  "device": "mps",
+  "steps": 1600,
+  "authors_per_step": 16,
+  "precision": "bf16",
+  "base": "data/corpus/style_embed/runs/style_v2/style.pt",
+  "train_authors": 5643,
+  "validation_items": 209
+ },
+ "training_log_validations": [
+  {
+   "step": 0,
+   "validation_auc": 0.8455,
+   "validation_cross_top1": 0.2536
+  },
+  {
+   "step": 250,
+   "kind": "cross_decade:religious",
+   "loss": 0.39637,
+   "sec": 6322.3,
+   "validation_auc": 0.8329,
+   "validation_cross_top1": 0.201,
+   "kept": true
+  },
+  {
+   "step": 500,
+   "kind": "cross_decade:any",
+   "loss": 0.80551,
+   "sec": 12448.2,
+   "validation_auc": 0.824,
+   "validation_cross_top1": 0.2584
+  },
+  {
+   "step": 750,
+   "kind": "cross_decade:religious",
+   "loss": 0.96562,
+   "sec": 18564.5,
+   "validation_auc": 0.8252,
+   "validation_cross_top1": 0.2392
+  },
+  {
+   "step": 1000,
+   "kind": "cross_decade:religious",
+   "loss": 0.67517,
+   "sec": 24960.0,
+   "validation_auc": 0.8193,
+   "validation_cross_top1": 0.2344
+  },
+  {
+   "step": 1250,
+   "kind": "random",
+   "loss": 0.04488,
+   "sec": 31112.5,
+   "validation_auc": 0.8257,
+   "validation_cross_top1": 0.244
+  },
+  {
+   "step": 1500,
+   "kind": "cross_decade:religious",
+   "loss": 0.30711,
+   "sec": 37236.2,
+   "validation_auc": 0.8278,
+   "validation_cross_top1": 0.2297
+  },
+  {
+   "step": 1600,
+   "kind": "cross_decade:any",
+   "loss": 1.36562,
+   "sec": 39741.6,
+   "validation_auc": 0.8272,
+   "validation_cross_top1": 0.244
+  }
+ ],
+ "six_writers": {
+  "encoders": {
+   "bom30": {
+    "chunks": {
+     "joseph_smith": {
+      "prophetic": 64,
+      "ordinary": 29
+     },
+     "john_wroe": {
+      "prophetic": 255,
+      "ordinary": 6
+     },
+     "joanna_southcott": {
+      "prophetic": 52,
+      "ordinary": 24
+     },
+     "anna_trapnel": {
+      "prophetic": 31,
+      "ordinary": 30
+     },
+     "richard_snowden": {
+      "prophetic": 55,
+      "ordinary": 142
+     },
+     "elias_smith": {
+      "prophetic": 15,
+      "ordinary": 107
+     }
+    },
+    "known_answer": {
+     "cosine": {
+      "prophetic": {
+       "own_author_rate": {
+        "joseph_smith": 0.953,
+        "john_wroe": 0.973,
+        "joanna_southcott": 1.0,
+        "anna_trapnel": 1.0,
+        "richard_snowden": 1.0,
+        "elias_smith": 1.0
+       },
+       "macro": 0.988,
+       "chance": 0.167
+      },
+      "ordinary": {
+       "own_author_rate": {
+        "joseph_smith": 0.966,
+        "john_wroe": 1.0,
+        "joanna_southcott": 1.0,
+        "anna_trapnel": 1.0,
+        "richard_snowden": 0.979,
+        "elias_smith": 0.972
+       },
+       "macro": 0.986,
+       "chance": 0.167
+      }
+     },
+     "bar": 0.8,
+     "passed": true
+    },
+    "cross_voice": {
+     "ordinary_to_prophetic": {
+      "joseph_smith": {
+       "chunks": 64,
+       "own": 51,
+       "rate": 0.797,
+       "went_to": {
+        "joanna_southcott": 10,
+        "joseph_smith": 51,
+        "anna_trapnel": 3
+       }
+      },
+      "john_wroe": {
+       "chunks": 255,
+       "own": 5,
+       "rate": 0.02,
+       "went_to": {
+        "anna_trapnel": 3,
+        "joanna_southcott": 217,
+        "joseph_smith": 25,
+        "john_wroe": 5,
+        "elias_smith": 5
+       }
+      },
+      "joanna_southcott": {
+       "chunks": 52,
+       "own": 51,
+       "rate": 0.981,
+       "went_to": {
+        "joanna_southcott": 51,
+        "anna_trapnel": 1
+       }
+      },
+      "anna_trapnel": {
+       "chunks": 31,
+       "own": 31,
+       "rate": 1.0,
+       "went_to": {
+        "anna_trapnel": 31
+       }
+      },
+      "richard_snowden": {
+       "chunks": 55,
+       "own": 19,
+       "rate": 0.345,
+       "went_to": {
+        "richard_snowden": 19,
+        "joanna_southcott": 11,
+        "elias_smith": 3,
+        "anna_trapnel": 14,
+        "joseph_smith": 7,
+        "john_wroe": 1
+       }
+      },
+      "elias_smith": {
+       "chunks": 15,
+       "own": 13,
+       "rate": 0.867,
+       "went_to": {
+        "elias_smith": 13,
+        "joanna_southcott": 2
+       }
+      }
+     },
+     "ordinary_to_prophetic_attraction": {
+      "joseph_smith": 0.078,
+      "john_wroe": 0.005,
+      "joanna_southcott": 0.571,
+      "anna_trapnel": 0.048,
+      "richard_snowden": 0.0,
+      "elias_smith": 0.018
+     },
+     "prophetic_to_ordinary": {
+      "joseph_smith": {
+       "chunks": 29,
+       "own": 17,
+       "rate": 0.586,
+       "went_to": {
+        "joseph_smith": 17,
+        "john_wroe": 7,
+        "joanna_southcott": 5
+       }
+      },
+      "john_wroe": {
+       "chunks": 6,
+       "own": 3,
+       "rate": 0.5,
+       "went_to": {
+        "joanna_southcott": 3,
+        "john_wroe": 3
+       }
+      },
+      "joanna_southcott": {
+       "chunks": 24,
+       "own": 17,
+       "rate": 0.708,
+       "went_to": {
+        "john_wroe": 7,
+        "joanna_southcott": 17
+       }
+      },
+      "anna_trapnel": {
+       "chunks": 30,
+       "own": 30,
+       "rate": 1.0,
+       "went_to": {
+        "anna_trapnel": 30
+       }
+      },
+      "richard_snowden": {
+       "chunks": 142,
+       "own": 133,
+       "rate": 0.937,
+       "went_to": {
+        "richard_snowden": 133,
+        "elias_smith": 8,
+        "john_wroe": 1
+       }
+      },
+      "elias_smith": {
+       "chunks": 107,
+       "own": 71,
+       "rate": 0.664,
+       "went_to": {
+        "john_wroe": 11,
+        "elias_smith": 71,
+        "joanna_southcott": 24,
+        "richard_snowden": 1
+       }
+      }
+     },
+     "prophetic_to_ordinary_attraction": {
+      "joseph_smith": 0.0,
+      "john_wroe": 0.078,
+      "joanna_southcott": 0.102,
+      "anna_trapnel": 0.0,
+      "richard_snowden": 0.005,
+      "elias_smith": 0.035
+     }
+    },
+    "gaps": {
+     "per_writer": {
+      "anna_trapnel": {
+       "self_gap": [
+        0.1317,
+        0.2532,
+        0.391
+       ],
+       "gap_index": [
+        0.1842,
+        0.3652,
+        0.5909
+       ],
+       "closer_to_self_share": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.476,
+        0.5613,
+        0.6568
+       ],
+       "median_dist_to_other_ordinary": [
+        0.5666,
+        0.7084,
+        0.8374
+       ]
+      },
+      "elias_smith": {
+       "self_gap": [
+        0.3638,
+        0.4549,
+        0.5448
+       ],
+       "gap_index": [
+        0.5569,
+        0.7547,
+        1.0336
+       ],
+       "closer_to_self_share": [
+        0.4,
+        0.8,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.4725,
+        0.557,
+        0.6433
+       ],
+       "median_dist_to_other_ordinary": [
+        0.4642,
+        0.6051,
+        0.7431
+       ]
+      },
+      "joanna_southcott": {
+       "self_gap": [
+        0.1612,
+        0.2408,
+        0.3548
+       ],
+       "gap_index": [
+        0.3002,
+        0.4369,
+        0.623
+       ],
+       "closer_to_self_share": [
+        0.8,
+        1.0,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.4728,
+        0.5481,
+        0.6302
+       ],
+       "median_dist_to_other_ordinary": [
+        0.4453,
+        0.5565,
+        0.6636
+       ]
+      },
+      "john_wroe": {
+       "self_gap": [
+        0.304,
+        0.3992,
+        0.4973
+       ],
+       "gap_index": [
+        0.525,
+        0.692,
+        0.8925
+       ],
+       "closer_to_self_share": [
+        0.4,
+        0.6,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.391,
+        0.4921,
+        0.5974
+       ],
+       "median_dist_to_other_ordinary": [
+        0.4927,
+        0.5787,
+        0.6746
+       ]
+      },
+      "joseph_smith": {
+       "self_gap": [
+        0.247,
+        0.3535,
+        0.4809
+       ],
+       "gap_index": [
+        0.405,
+        0.5762,
+        0.7693
+       ],
+       "closer_to_self_share": [
+        0.6,
+        0.8,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.4517,
+        0.5326,
+        0.6145
+       ],
+       "median_dist_to_other_ordinary": [
+        0.4814,
+        0.6202,
+        0.7526
+       ]
+      },
+      "richard_snowden": {
+       "self_gap": [
+        0.5552,
+        0.7041,
+        0.8975
+       ],
+       "gap_index": [
+        0.5105,
+        0.6658,
+        0.8249
+       ],
+       "closer_to_self_share": [
+        0.0,
+        0.2,
+        0.8
+       ],
+       "median_dist_to_other_prophetic": [
+        0.5133,
+        0.6234,
+        0.741
+       ],
+       "median_dist_to_other_ordinary": [
+        0.9489,
+        1.0748,
+        1.1768
+       ]
+      }
+     },
+     "order_by_gap_index": [
+      "elias_smith",
+      "john_wroe",
+      "richard_snowden",
+      "joseph_smith",
+      "joanna_southcott",
+      "anna_trapnel"
+     ],
+     "writers": 6,
+     "joseph_smith_rank": 4,
+     "joseph_smith_above_all_share": 0.046
+    },
+    "verdicts": {
+     "crosses": {
+      "joseph_smith": true,
+      "john_wroe": true,
+      "joanna_southcott": true,
+      "anna_trapnel": true,
+      "richard_snowden": true,
+      "elias_smith": true
+     },
+     "others_crossing": 5,
+     "others": 5,
+     "genre_effect": false,
+     "joseph_smith_gap": "typical",
+     "joseph_smith_gap_index_median": 0.5762,
+     "others_gap_index_range": [
+      0.3652,
+      0.7547
+     ],
+     "prophetic_others": [
+      "john_wroe",
+      "joanna_southcott",
+      "anna_trapnel"
+     ],
+     "bible_style_others": [
+      "richard_snowden",
+      "elias_smith"
+     ]
+    },
+    "addition_voice_or_person": {
+     "per_writer": {
+      "anna_trapnel": {
+       "cos_to_own_ordinary": 0.8024,
+       "mean_cos_to_other_prophetic": 0.4747,
+       "max_cos_to_other_prophetic": 0.5477,
+       "by_voice_mean": false,
+       "by_voice_closest": false
+      },
+      "elias_smith": {
+       "cos_to_own_ordinary": 0.5922,
+       "mean_cos_to_other_prophetic": 0.4902,
+       "max_cos_to_other_prophetic": 0.6198,
+       "by_voice_mean": false,
+       "by_voice_closest": true
+      },
+      "joanna_southcott": {
+       "cos_to_own_ordinary": 0.8061,
+       "mean_cos_to_other_prophetic": 0.4812,
+       "max_cos_to_other_prophetic": 0.7128,
+       "by_voice_mean": false,
+       "by_voice_closest": false
+      },
+      "john_wroe": {
+       "cos_to_own_ordinary": 0.6409,
+       "mean_cos_to_other_prophetic": 0.5631,
+       "max_cos_to_other_prophetic": 0.748,
+       "by_voice_mean": false,
+       "by_voice_closest": true
+      },
+      "joseph_smith": {
+       "cos_to_own_ordinary": 0.7317,
+       "mean_cos_to_other_prophetic": 0.5413,
+       "max_cos_to_other_prophetic": 0.748,
+       "by_voice_mean": false,
+       "by_voice_closest": true
+      },
+      "richard_snowden": {
+       "cos_to_own_ordinary": 0.3268,
+       "mean_cos_to_other_prophetic": 0.4293,
+       "max_cos_to_other_prophetic": 0.6198,
+       "by_voice_mean": true,
+       "by_voice_closest": true
+      }
+     },
+     "share_by_voice_mean": 0.167,
+     "share_by_voice_closest": 0.667
+    },
+    "cross_voice_macro": 0.7004
+   },
+   "v2": {
+    "chunks": {
+     "joseph_smith": {
+      "prophetic": 64,
+      "ordinary": 29
+     },
+     "john_wroe": {
+      "prophetic": 255,
+      "ordinary": 6
+     },
+     "joanna_southcott": {
+      "prophetic": 52,
+      "ordinary": 24
+     },
+     "anna_trapnel": {
+      "prophetic": 31,
+      "ordinary": 30
+     },
+     "richard_snowden": {
+      "prophetic": 55,
+      "ordinary": 142
+     },
+     "elias_smith": {
+      "prophetic": 15,
+      "ordinary": 107
+     }
+    },
+    "known_answer": {
+     "cosine": {
+      "prophetic": {
+       "own_author_rate": {
+        "joseph_smith": 1.0,
+        "john_wroe": 0.973,
+        "joanna_southcott": 1.0,
+        "anna_trapnel": 0.968,
+        "richard_snowden": 1.0,
+        "elias_smith": 1.0
+       },
+       "macro": 0.99,
+       "chance": 0.167
+      },
+      "ordinary": {
+       "own_author_rate": {
+        "joseph_smith": 0.966,
+        "john_wroe": 0.833,
+        "joanna_southcott": 0.833,
+        "anna_trapnel": 1.0,
+        "richard_snowden": 0.979,
+        "elias_smith": 0.981
+       },
+       "macro": 0.932,
+       "chance": 0.167
+      }
+     },
+     "bar": 0.8,
+     "passed": true
+    },
+    "cross_voice": {
+     "ordinary_to_prophetic": {
+      "joseph_smith": {
+       "chunks": 64,
+       "own": 48,
+       "rate": 0.75,
+       "went_to": {
+        "joanna_southcott": 14,
+        "joseph_smith": 48,
+        "john_wroe": 1,
+        "anna_trapnel": 1
+       }
+      },
+      "john_wroe": {
+       "chunks": 255,
+       "own": 2,
+       "rate": 0.008,
+       "went_to": {
+        "joanna_southcott": 229,
+        "anna_trapnel": 6,
+        "joseph_smith": 12,
+        "john_wroe": 2,
+        "elias_smith": 6
+       }
+      },
+      "joanna_southcott": {
+       "chunks": 52,
+       "own": 52,
+       "rate": 1.0,
+       "went_to": {
+        "joanna_southcott": 52
+       }
+      },
+      "anna_trapnel": {
+       "chunks": 31,
+       "own": 31,
+       "rate": 1.0,
+       "went_to": {
+        "anna_trapnel": 31
+       }
+      },
+      "richard_snowden": {
+       "chunks": 55,
+       "own": 14,
+       "rate": 0.255,
+       "went_to": {
+        "richard_snowden": 14,
+        "joanna_southcott": 4,
+        "joseph_smith": 18,
+        "anna_trapnel": 13,
+        "john_wroe": 2,
+        "elias_smith": 4
+       }
+      },
+      "elias_smith": {
+       "chunks": 15,
+       "own": 11,
+       "rate": 0.733,
+       "went_to": {
+        "elias_smith": 11,
+        "joanna_southcott": 4
+       }
+      }
+     },
+     "ordinary_to_prophetic_attraction": {
+      "joseph_smith": 0.074,
+      "john_wroe": 0.014,
+      "joanna_southcott": 0.598,
+      "anna_trapnel": 0.045,
+      "richard_snowden": 0.0,
+      "elias_smith": 0.022
+     },
+     "prophetic_to_ordinary": {
+      "joseph_smith": {
+       "chunks": 29,
+       "own": 20,
+       "rate": 0.69,
+       "went_to": {
+        "joseph_smith": 20,
+        "elias_smith": 6,
+        "richard_snowden": 1,
+        "john_wroe": 2
+       }
+      },
+      "john_wroe": {
+       "chunks": 6,
+       "own": 6,
+       "rate": 1.0,
+       "went_to": {
+        "john_wroe": 6
+       }
+      },
+      "joanna_southcott": {
+       "chunks": 24,
+       "own": 20,
+       "rate": 0.833,
+       "went_to": {
+        "joanna_southcott": 20,
+        "john_wroe": 4
+       }
+      },
+      "anna_trapnel": {
+       "chunks": 30,
+       "own": 30,
+       "rate": 1.0,
+       "went_to": {
+        "anna_trapnel": 30
+       }
+      },
+      "richard_snowden": {
+       "chunks": 142,
+       "own": 108,
+       "rate": 0.761,
+       "went_to": {
+        "richard_snowden": 108,
+        "joseph_smith": 20,
+        "john_wroe": 10,
+        "elias_smith": 4
+       }
+      },
+      "elias_smith": {
+       "chunks": 107,
+       "own": 103,
+       "rate": 0.963,
+       "went_to": {
+        "elias_smith": 103,
+        "john_wroe": 2,
+        "joseph_smith": 1,
+        "richard_snowden": 1
+       }
+      }
+     },
+     "prophetic_to_ordinary_attraction": {
+      "joseph_smith": 0.068,
+      "john_wroe": 0.054,
+      "joanna_southcott": 0.0,
+      "anna_trapnel": 0.0,
+      "richard_snowden": 0.01,
+      "elias_smith": 0.043
+     }
+    },
+    "gaps": {
+     "per_writer": {
+      "anna_trapnel": {
+       "self_gap": [
+        0.1055,
+        0.2392,
+        0.3729
+       ],
+       "gap_index": [
+        0.1392,
+        0.3127,
+        0.525
+       ],
+       "closer_to_self_share": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.5078,
+        0.6157,
+        0.7093
+       ],
+       "median_dist_to_other_ordinary": [
+        0.6363,
+        0.7653,
+        0.8841
+       ]
+      },
+      "elias_smith": {
+       "self_gap": [
+        0.2371,
+        0.308,
+        0.3901
+       ],
+       "gap_index": [
+        0.3925,
+        0.536,
+        0.761
+       ],
+       "closer_to_self_share": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.4626,
+        0.5341,
+        0.6093
+       ],
+       "median_dist_to_other_ordinary": [
+        0.4464,
+        0.576,
+        0.7296
+       ]
+      },
+      "joanna_southcott": {
+       "self_gap": [
+        0.1122,
+        0.1756,
+        0.2857
+       ],
+       "gap_index": [
+        0.2123,
+        0.3464,
+        0.5505
+       ],
+       "closer_to_self_share": [
+        0.8,
+        1.0,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.4067,
+        0.4806,
+        0.5633
+       ],
+       "median_dist_to_other_ordinary": [
+        0.427,
+        0.5084,
+        0.633
+       ]
+      },
+      "john_wroe": {
+       "self_gap": [
+        0.3233,
+        0.3813,
+        0.4618
+       ],
+       "gap_index": [
+        0.6433,
+        0.8244,
+        1.0337
+       ],
+       "closer_to_self_share": [
+        0.2,
+        0.4,
+        0.8
+       ],
+       "median_dist_to_other_prophetic": [
+        0.3,
+        0.3824,
+        0.4757
+       ],
+       "median_dist_to_other_ordinary": [
+        0.3836,
+        0.4635,
+        0.5606
+       ]
+      },
+      "joseph_smith": {
+       "self_gap": [
+        0.2471,
+        0.3554,
+        0.5064
+       ],
+       "gap_index": [
+        0.463,
+        0.6352,
+        0.8641
+       ],
+       "closer_to_self_share": [
+        0.4,
+        0.8,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.4303,
+        0.5062,
+        0.5882
+       ],
+       "median_dist_to_other_ordinary": [
+        0.4533,
+        0.5619,
+        0.6788
+       ]
+      },
+      "richard_snowden": {
+       "self_gap": [
+        0.4964,
+        0.6564,
+        0.8114
+       ],
+       "gap_index": [
+        0.5363,
+        0.6963,
+        0.8653
+       ],
+       "closer_to_self_share": [
+        0.0,
+        0.4,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.5104,
+        0.6176,
+        0.7348
+       ],
+       "median_dist_to_other_ordinary": [
+        0.8642,
+        0.9409,
+        1.0282
+       ]
+      }
+     },
+     "order_by_gap_index": [
+      "john_wroe",
+      "richard_snowden",
+      "joseph_smith",
+      "elias_smith",
+      "joanna_southcott",
+      "anna_trapnel"
+     ],
+     "writers": 6,
+     "joseph_smith_rank": 3,
+     "joseph_smith_above_all_share": 0.078
+    },
+    "verdicts": {
+     "crosses": {
+      "joseph_smith": true,
+      "john_wroe": true,
+      "joanna_southcott": true,
+      "anna_trapnel": true,
+      "richard_snowden": true,
+      "elias_smith": true
+     },
+     "others_crossing": 5,
+     "others": 5,
+     "genre_effect": false,
+     "joseph_smith_gap": "typical",
+     "joseph_smith_gap_index_median": 0.6352,
+     "others_gap_index_range": [
+      0.3127,
+      0.8244
+     ],
+     "prophetic_others": [
+      "john_wroe",
+      "joanna_southcott",
+      "anna_trapnel"
+     ],
+     "bible_style_others": [
+      "richard_snowden",
+      "elias_smith"
+     ]
+    },
+    "addition_voice_or_person": {
+     "per_writer": {
+      "anna_trapnel": {
+       "cos_to_own_ordinary": 0.8074,
+       "mean_cos_to_other_prophetic": 0.4774,
+       "max_cos_to_other_prophetic": 0.6624,
+       "by_voice_mean": false,
+       "by_voice_closest": false
+      },
+      "elias_smith": {
+       "cos_to_own_ordinary": 0.7303,
+       "mean_cos_to_other_prophetic": 0.4752,
+       "max_cos_to_other_prophetic": 0.5697,
+       "by_voice_mean": false,
+       "by_voice_closest": false
+      },
+      "joanna_southcott": {
+       "cos_to_own_ordinary": 0.8611,
+       "mean_cos_to_other_prophetic": 0.543,
+       "max_cos_to_other_prophetic": 0.7771,
+       "by_voice_mean": false,
+       "by_voice_closest": false
+      },
+      "john_wroe": {
+       "cos_to_own_ordinary": 0.6471,
+       "mean_cos_to_other_prophetic": 0.6365,
+       "max_cos_to_other_prophetic": 0.7771,
+       "by_voice_mean": false,
+       "by_voice_closest": true
+      },
+      "joseph_smith": {
+       "cos_to_own_ordinary": 0.7063,
+       "mean_cos_to_other_prophetic": 0.5468,
+       "max_cos_to_other_prophetic": 0.7702,
+       "by_voice_mean": false,
+       "by_voice_closest": true
+      },
+      "richard_snowden": {
+       "cos_to_own_ordinary": 0.3774,
+       "mean_cos_to_other_prophetic": 0.4257,
+       "max_cos_to_other_prophetic": 0.5681,
+       "by_voice_mean": true,
+       "by_voice_closest": true
+      }
+     },
+     "share_by_voice_mean": 0.167,
+     "share_by_voice_closest": 0.5
+    },
+    "cross_voice_macro": 0.7494
+   },
+   "voice": {
+    "chunks": {
+     "joseph_smith": {
+      "prophetic": 64,
+      "ordinary": 29
+     },
+     "john_wroe": {
+      "prophetic": 255,
+      "ordinary": 6
+     },
+     "joanna_southcott": {
+      "prophetic": 52,
+      "ordinary": 24
+     },
+     "anna_trapnel": {
+      "prophetic": 31,
+      "ordinary": 30
+     },
+     "richard_snowden": {
+      "prophetic": 55,
+      "ordinary": 142
+     },
+     "elias_smith": {
+      "prophetic": 15,
+      "ordinary": 107
+     }
+    },
+    "known_answer": {
+     "cosine": {
+      "prophetic": {
+       "own_author_rate": {
+        "joseph_smith": 0.984,
+        "john_wroe": 0.988,
+        "joanna_southcott": 1.0,
+        "anna_trapnel": 0.968,
+        "richard_snowden": 1.0,
+        "elias_smith": 1.0
+       },
+       "macro": 0.99,
+       "chance": 0.167
+      },
+      "ordinary": {
+       "own_author_rate": {
+        "joseph_smith": 0.897,
+        "john_wroe": 0.833,
+        "joanna_southcott": 0.875,
+        "anna_trapnel": 1.0,
+        "richard_snowden": 0.986,
+        "elias_smith": 0.963
+       },
+       "macro": 0.926,
+       "chance": 0.167
+      }
+     },
+     "bar": 0.8,
+     "passed": true
+    },
+    "cross_voice": {
+     "ordinary_to_prophetic": {
+      "joseph_smith": {
+       "chunks": 64,
+       "own": 39,
+       "rate": 0.609,
+       "went_to": {
+        "joanna_southcott": 10,
+        "joseph_smith": 39,
+        "john_wroe": 12,
+        "anna_trapnel": 3
+       }
+      },
+      "john_wroe": {
+       "chunks": 255,
+       "own": 16,
+       "rate": 0.063,
+       "went_to": {
+        "joanna_southcott": 225,
+        "anna_trapnel": 7,
+        "john_wroe": 16,
+        "elias_smith": 6,
+        "joseph_smith": 1
+       }
+      },
+      "joanna_southcott": {
+       "chunks": 52,
+       "own": 51,
+       "rate": 0.981,
+       "went_to": {
+        "joanna_southcott": 51,
+        "anna_trapnel": 1
+       }
+      },
+      "anna_trapnel": {
+       "chunks": 31,
+       "own": 31,
+       "rate": 1.0,
+       "went_to": {
+        "anna_trapnel": 31
+       }
+      },
+      "richard_snowden": {
+       "chunks": 55,
+       "own": 13,
+       "rate": 0.236,
+       "went_to": {
+        "richard_snowden": 13,
+        "john_wroe": 21,
+        "joanna_southcott": 1,
+        "anna_trapnel": 18,
+        "joseph_smith": 2
+       }
+      },
+      "elias_smith": {
+       "chunks": 15,
+       "own": 11,
+       "rate": 0.733,
+       "went_to": {
+        "elias_smith": 11,
+        "joanna_southcott": 4
+       }
+      }
+     },
+     "ordinary_to_prophetic_attraction": {
+      "joseph_smith": 0.007,
+      "john_wroe": 0.152,
+      "joanna_southcott": 0.571,
+      "anna_trapnel": 0.066,
+      "richard_snowden": 0.0,
+      "elias_smith": 0.013
+     },
+     "prophetic_to_ordinary": {
+      "joseph_smith": {
+       "chunks": 29,
+       "own": 27,
+       "rate": 0.931,
+       "went_to": {
+        "joseph_smith": 27,
+        "richard_snowden": 1,
+        "john_wroe": 1
+       }
+      },
+      "john_wroe": {
+       "chunks": 6,
+       "own": 6,
+       "rate": 1.0,
+       "went_to": {
+        "john_wroe": 6
+       }
+      },
+      "joanna_southcott": {
+       "chunks": 24,
+       "own": 12,
+       "rate": 0.5,
+       "went_to": {
+        "john_wroe": 11,
+        "joanna_southcott": 12,
+        "elias_smith": 1
+       }
+      },
+      "anna_trapnel": {
+       "chunks": 30,
+       "own": 29,
+       "rate": 0.967,
+       "went_to": {
+        "anna_trapnel": 29,
+        "joseph_smith": 1
+       }
+      },
+      "richard_snowden": {
+       "chunks": 142,
+       "own": 133,
+       "rate": 0.937,
+       "went_to": {
+        "richard_snowden": 133,
+        "joseph_smith": 9
+       }
+      },
+      "elias_smith": {
+       "chunks": 107,
+       "own": 92,
+       "rate": 0.86,
+       "went_to": {
+        "elias_smith": 92,
+        "joseph_smith": 8,
+        "richard_snowden": 3,
+        "joanna_southcott": 1,
+        "john_wroe": 3
+       }
+      }
+     },
+     "prophetic_to_ordinary_attraction": {
+      "joseph_smith": 0.058,
+      "john_wroe": 0.045,
+      "joanna_southcott": 0.003,
+      "anna_trapnel": 0.0,
+      "richard_snowden": 0.02,
+      "elias_smith": 0.004
+     }
+    },
+    "gaps": {
+     "per_writer": {
+      "anna_trapnel": {
+       "self_gap": [
+        0.0876,
+        0.207,
+        0.3281
+       ],
+       "gap_index": [
+        0.1476,
+        0.3498,
+        0.6219
+       ],
+       "closer_to_self_share": [
+        0.8,
+        1.0,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.3801,
+        0.4852,
+        0.6156
+       ],
+       "median_dist_to_other_ordinary": [
+        0.479,
+        0.6018,
+        0.7112
+       ]
+      },
+      "elias_smith": {
+       "self_gap": [
+        0.2533,
+        0.3213,
+        0.3953
+       ],
+       "gap_index": [
+        0.4647,
+        0.6319,
+        0.8843
+       ],
+       "closer_to_self_share": [
+        0.8,
+        1.0,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.4378,
+        0.5141,
+        0.5851
+       ],
+       "median_dist_to_other_ordinary": [
+        0.3906,
+        0.5083,
+        0.6428
+       ]
+      },
+      "joanna_southcott": {
+       "self_gap": [
+        0.1326,
+        0.1992,
+        0.2979
+       ],
+       "gap_index": [
+        0.2672,
+        0.4462,
+        0.7039
+       ],
+       "closer_to_self_share": [
+        0.8,
+        1.0,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.3687,
+        0.4404,
+        0.5222
+       ],
+       "median_dist_to_other_ordinary": [
+        0.3567,
+        0.4491,
+        0.564
+       ]
+      },
+      "john_wroe": {
+       "self_gap": [
+        0.2247,
+        0.2782,
+        0.3478
+       ],
+       "gap_index": [
+        0.5846,
+        0.7873,
+        1.0441
+       ],
+       "closer_to_self_share": [
+        0.4,
+        0.6,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.2539,
+        0.3279,
+        0.4143
+       ],
+       "median_dist_to_other_ordinary": [
+        0.2858,
+        0.3529,
+        0.4436
+       ]
+      },
+      "joseph_smith": {
+       "self_gap": [
+        0.2104,
+        0.3161,
+        0.4413
+       ],
+       "gap_index": [
+        0.4628,
+        0.656,
+        0.9218
+       ],
+       "closer_to_self_share": [
+        0.6,
+        0.8,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.3988,
+        0.4655,
+        0.5427
+       ],
+       "median_dist_to_other_ordinary": [
+        0.3616,
+        0.4762,
+        0.5956
+       ]
+      },
+      "richard_snowden": {
+       "self_gap": [
+        0.474,
+        0.5993,
+        0.7304
+       ],
+       "gap_index": [
+        0.5348,
+        0.6806,
+        0.829
+       ],
+       "closer_to_self_share": [
+        0.0,
+        0.4,
+        1.0
+       ],
+       "median_dist_to_other_prophetic": [
+        0.4718,
+        0.5552,
+        0.6737
+       ],
+       "median_dist_to_other_ordinary": [
+        0.7875,
+        0.8745,
+        0.9817
+       ]
+      }
+     },
+     "order_by_gap_index": [
+      "john_wroe",
+      "richard_snowden",
+      "joseph_smith",
+      "elias_smith",
+      "joanna_southcott",
+      "anna_trapnel"
+     ],
+     "writers": 6,
+     "joseph_smith_rank": 3,
+     "joseph_smith_above_all_share": 0.192
+    },
+    "verdicts": {
+     "crosses": {
+      "joseph_smith": true,
+      "john_wroe": true,
+      "joanna_southcott": true,
+      "anna_trapnel": true,
+      "richard_snowden": true,
+      "elias_smith": true
+     },
+     "others_crossing": 5,
+     "others": 5,
+     "genre_effect": false,
+     "joseph_smith_gap": "typical",
+     "joseph_smith_gap_index_median": 0.656,
+     "others_gap_index_range": [
+      0.3498,
+      0.7873
+     ],
+     "prophetic_others": [
+      "john_wroe",
+      "joanna_southcott",
+      "anna_trapnel"
+     ],
+     "bible_style_others": [
+      "richard_snowden",
+      "elias_smith"
+     ]
+    },
+    "addition_voice_or_person": {
+     "per_writer": {
+      "anna_trapnel": {
+       "cos_to_own_ordinary": 0.8309,
+       "mean_cos_to_other_prophetic": 0.5573,
+       "max_cos_to_other_prophetic": 0.725,
+       "by_voice_mean": false,
+       "by_voice_closest": false
+      },
+      "elias_smith": {
+       "cos_to_own_ordinary": 0.7179,
+       "mean_cos_to_other_prophetic": 0.5023,
+       "max_cos_to_other_prophetic": 0.6052,
+       "by_voice_mean": false,
+       "by_voice_closest": false
+      },
+      "joanna_southcott": {
+       "cos_to_own_ordinary": 0.8344,
+       "mean_cos_to_other_prophetic": 0.5808,
+       "max_cos_to_other_prophetic": 0.7793,
+       "by_voice_mean": false,
+       "by_voice_closest": false
+      },
+      "john_wroe": {
+       "cos_to_own_ordinary": 0.7497,
+       "mean_cos_to_other_prophetic": 0.671,
+       "max_cos_to_other_prophetic": 0.7941,
+       "by_voice_mean": false,
+       "by_voice_closest": true
+      },
+      "joseph_smith": {
+       "cos_to_own_ordinary": 0.7456,
+       "mean_cos_to_other_prophetic": 0.5952,
+       "max_cos_to_other_prophetic": 0.7941,
+       "by_voice_mean": false,
+       "by_voice_closest": true
+      },
+      "richard_snowden": {
+       "cos_to_own_ordinary": 0.4451,
+       "mean_cos_to_other_prophetic": 0.4692,
+       "max_cos_to_other_prophetic": 0.573,
+       "by_voice_mean": true,
+       "by_voice_closest": true
+      }
+     },
+     "share_by_voice_mean": 0.167,
+     "share_by_voice_closest": 0.5
+    },
+    "cross_voice_macro": 0.7347
+   }
+  },
+  "not_attempted": {},
+  "paired": {
+   "resamples": 1000,
+   "macro": {
+    "bom30": [
+     0.5768,
+     0.6451,
+     0.709
+    ],
+    "v2": [
+     0.6762,
+     0.7322,
+     0.7772
+    ],
+    "voice": [
+     0.6744,
+     0.7254,
+     0.7683
+    ]
+   },
+   "macro_four_unseen": {
+    "bom30": [
+     0.5603,
+     0.6394,
+     0.7172
+    ],
+    "v2": [
+     0.5787,
+     0.6571,
+     0.7136
+    ],
+    "voice": [
+     0.6446,
+     0.71,
+     0.7516
+    ]
+   },
+   "difference": {
+    "voice-bom30": [
+     0.01,
+     0.0807,
+     0.1475
+    ],
+    "voice-bom30 (four unseen)": [
+     -0.0099,
+     0.0664,
+     0.138
+    ],
+    "voice-v2": [
+     -0.0519,
+     -0.0071,
+     0.0401
+    ],
+    "voice-v2 (four unseen)": [
+     -0.005,
+     0.0506,
+     0.114
+    ]
+   }
+  }
+ },
+ "heldout_verification": {
+  "items": 400,
+  "religious_items": 103,
+  "encoders": {
+   "bom30": {
+    "all": {
+     "true_pairs": 400,
+     "false_pairs": 3990,
+     "auc": 0.8011
+    },
+    "religious": {
+     "true_pairs": 103,
+     "false_pairs": 1030,
+     "auc": 0.7535
+    },
+    "not_religious": {
+     "true_pairs": 297,
+     "false_pairs": 2960,
+     "auc": 0.8175
+    },
+    "cross_top1": 0.1475
+   },
+   "v2": {
+    "all": {
+     "true_pairs": 400,
+     "false_pairs": 3990,
+     "auc": 0.8085
+    },
+    "religious": {
+     "true_pairs": 103,
+     "false_pairs": 1030,
+     "auc": 0.7825
+    },
+    "not_religious": {
+     "true_pairs": 297,
+     "false_pairs": 2960,
+     "auc": 0.8177
+    },
+    "cross_top1": 0.19
+   },
+   "voice": {
+    "all": {
+     "true_pairs": 400,
+     "false_pairs": 3990,
+     "auc": 0.7958
+    },
+    "religious": {
+     "true_pairs": 103,
+     "false_pairs": 1030,
+     "auc": 0.7535
+    },
+    "not_religious": {
+     "true_pairs": 297,
+     "false_pairs": 2960,
+     "auc": 0.8108
+    },
+    "cross_top1": 0.185
+   }
+  },
+  "not_attempted": {},
+  "auc_difference_by_author_resampling": {
+   "voice-bom30": [
+    -0.0268,
+    -0.0053,
+    0.0139
+   ],
+   "voice-v2": [
+    -0.0222,
+    -0.0124,
+    -0.0033
+   ]
+  }
+ },
+ "none_of_these": {
+  "pairs": 2200,
+  "encoders": {
+   "bom30": {
+    "all": {
+     "true_pairs": 200,
+     "false_pairs": 2000,
+     "auc": 0.954,
+     "true_confirmed_at_5pct_false": 0.885,
+     "false_accepted_at_95pct_true": 0.305
+    },
+    "genre_cross": {
+     "true_pairs": 62,
+     "false_pairs": 620,
+     "auc": 0.897,
+     "true_confirmed_at_5pct_false": 0.758,
+     "false_accepted_at_95pct_true": 0.705
+    },
+    "genre_mixed": {
+     "true_pairs": 37,
+     "false_pairs": 370,
+     "auc": 0.98,
+     "true_confirmed_at_5pct_false": 0.946,
+     "false_accepted_at_95pct_true": 0.041
+    },
+    "genre_same": {
+     "true_pairs": 101,
+     "false_pairs": 1010,
+     "auc": 0.978,
+     "true_confirmed_at_5pct_false": 0.941,
+     "false_accepted_at_95pct_true": 0.074
+    }
+   },
+   "v2": {
+    "all": {
+     "true_pairs": 200,
+     "false_pairs": 2000,
+     "auc": 0.955,
+     "true_confirmed_at_5pct_false": 0.885,
+     "false_accepted_at_95pct_true": 0.332
+    },
+    "genre_cross": {
+     "true_pairs": 62,
+     "false_pairs": 620,
+     "auc": 0.897,
+     "true_confirmed_at_5pct_false": 0.774,
+     "false_accepted_at_95pct_true": 0.674
+    },
+    "genre_mixed": {
+     "true_pairs": 37,
+     "false_pairs": 370,
+     "auc": 0.986,
+     "true_confirmed_at_5pct_false": 0.919,
+     "false_accepted_at_95pct_true": 0.095
+    },
+    "genre_same": {
+     "true_pairs": 101,
+     "false_pairs": 1010,
+     "auc": 0.979,
+     "true_confirmed_at_5pct_false": 0.931,
+     "false_accepted_at_95pct_true": 0.064
+    }
+   },
+   "voice": {
+    "all": {
+     "true_pairs": 200,
+     "false_pairs": 2000,
+     "auc": 0.954,
+     "true_confirmed_at_5pct_false": 0.865,
+     "false_accepted_at_95pct_true": 0.282
+    },
+    "genre_cross": {
+     "true_pairs": 62,
+     "false_pairs": 620,
+     "auc": 0.905,
+     "true_confirmed_at_5pct_false": 0.742,
+     "false_accepted_at_95pct_true": 0.431
+    },
+    "genre_mixed": {
+     "true_pairs": 37,
+     "false_pairs": 370,
+     "auc": 0.983,
+     "true_confirmed_at_5pct_false": 0.919,
+     "false_accepted_at_95pct_true": 0.097
+    },
+    "genre_same": {
+     "true_pairs": 101,
+     "false_pairs": 1010,
+     "auc": 0.975,
+     "true_confirmed_at_5pct_false": 0.941,
+     "false_accepted_at_95pct_true": 0.061
+    }
+   }
+  },
+  "not_attempted": {}
+ },
+ "not_run": {
+  "727_known_books_cross_genre_row": "needs every swept unit re-embedded with the new encoder (sweep.index episodes: about 23 h on the Mac GPU, under 1 h on an H100); the card runs it only if the rule says better and the owner wants it"
+ },
+ "training_overlap": "the six writers and both evaluation pools are out of the new training; the starting weights are the second encoder's, which trained on Southcott and Elias Smith",
+ "verdict": {
+  "answer": "no",
+  "A_point_above_both": false,
+  "A_interval_above_both": false,
+  "B_within_voice_not_worse": false,
+  "C_heldout_auc_not_below_v2": false,
+  "within_voice": {
+   "bom30": {
+    "prophetic": 0.988,
+    "ordinary": 0.986
+   },
+   "v2": {
+    "prophetic": 0.99,
+    "ordinary": 0.932
+   },
+   "voice": {
+    "prophetic": 0.99,
+    "ordinary": 0.926
+   }
+  }
+ },
+ "book_of_mormon": "not read or scored: the card scores it only when the rule says better",
+ "config_sha256": "db67dc83ae37d9d2ff4f54f9e126363211f05d8b320b5c83fa9f0a51d87db126",
+ "commit": "0dedd9656aa4f571181bc4a569e5295e9585c31e"
+}

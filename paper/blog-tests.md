@@ -91,7 +91,7 @@ compares against.
 | --- | --- | --- | --- | --- | --- |
 | BOM-104 | The Books of Moses and Abraham share the voice; Rigdon wrote the *Lectures on Faith* | Phipps 1977; Reynolds 2005 | small samples | the study's models and encoders | **Done, weak** |
 | BOM-105, BOM-99 | Smith's revelations and his letters look like two different writers | Holmes 1992; the first study | Smith alone | other writers with two voices (Southcott, Wroe, Trapnel, Snowden, Elias Smith) | **Done** on three measures; the author models do not give a stable answer |
-| BOM-100, BOM-101 | A model can be taught to see the person and not the scripture voice | this project | | the known-answer set from BOM-99 | BOM-100 **done: no gain**; BOM-101 not started |
+| BOM-100, BOM-101 | A model can be taught to see the person and not the scripture voice | this project | | the known-answer set from BOM-99 | BOM-100 **done: no gain**; BOM-101 **done: no gain at the size I could train** |
 
 ### 5. Whose world is it?
 
@@ -1147,6 +1147,37 @@ what needs fixing. It also still accepts a writer who is not on the list at all,
 time, which is the first study's "none of these" problem again.
 
 Smallest model size only, one seed. The Book of Mormon was not touched.
+
+### Can a model be trained to ignore the voice? (BOM-101)
+
+The other idea. The style encoder is the tool that turns a passage into a fingerprint of its
+writer. Train it on pairs where the same person writes in two registers, a sermon and a
+letter, a history and a poem, so that it learns to keep the person and drop the register.
+
+The library gave 45,364 such pairs from about 4,500 authors, after removing pairs where one
+book contains the other (collected works were the main culprit, 8.7 percent of pairs). I
+trained on the Mac for eleven hours, starting from the second encoder.
+
+| Measure | First encoder | Second | New |
+| --- | --- | --- | --- |
+| Six writers, found across their two voices | 0.700 | 0.749 | 0.735 |
+| Held-out authors, across registers | 0.801 | 0.809 | 0.796 |
+| "None of these", all books | 0.954 | 0.955 | 0.954 |
+
+No gain. I had set three conditions for "better" and it met none, so I did not point it at
+the Book of Mormon. The training made the encoder slightly worse on its own validation set
+from the first snapshot on, and the best snapshot was the least trained one.
+
+Two things leaned the other way, and I looked at both after the rule had failed, so they are
+leads and nothing more. On the four writers no encoder had seen in training, the new one does
+a little better, 0.71 against 0.66, mostly because Joseph Smith's revelations now find his
+letters (0.93 against 0.69). And it accepts fewer false pairs across genres, 43 percent
+against 67. Against that, Joanna Southcott got worse.
+
+The honest limit is size. Eleven hours on the Mac is about 2 percent of the training the
+second encoder had. A full-size run needs a rented GPU for about five hours, roughly 15 to 20
+dollars. I have not done that. Also, "religious" here means sermons: the library has almost
+no writers with a scripture-voice book and an ordinary one, which is the exact case in point.
 
 ### The 131 correspondences (BOM-112)
 
