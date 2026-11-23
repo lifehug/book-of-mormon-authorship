@@ -91,7 +91,7 @@ compares against.
 | BOM-126 | Phrases come from histories of the Revolution; Abinadi follows Bunyan | Donofrio; Davis 2012 | the claimed source alone | the claimed source ranked among every volume in the library | **Done** |
 | BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held | **Done** |
 | BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | **Done** |
-| BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1993; replies | examples from each side | every use in print 1780 to 1835, by year | **Done: Masonic in about 4 of 10 uses by 1827-1830, not almost all** |
+| BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1989; replies | examples from each side | every use in print 1780 to 1835, by year | **Done: Masonic in about 4 of 10 uses by 1827-1830, not almost all** |
 | BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed twice; not scored** |
 
 ### 3. How was it produced?
@@ -130,11 +130,19 @@ compares against.
 
 ### "Therefore" and "wherefore" (BOM-120)
 
-Brent Metcalfe noticed in 1993 that the book says "therefore" in one long stretch and "wherefore"
-in another, and that the stretches follow the order of dictation, not the order of the pages.
-Mosiah was dictated first, after the first 116 pages were lost. 1 Nephi was dictated last.
+**The claim.** Brent Metcalfe noticed in 1993 that the book says "therefore" in one long stretch
+and "wherefore" in another, and that the stretches follow the order of dictation, not the order
+of the pages. Mosiah was dictated first, after the first 116 pages were lost. 1 Nephi was dictated
+last. Metcalfe read it as a sign of one writer whose habit changed. Later, Eccel (2018) reported a
+sharp break rather than a slow drift, and Wunderli (2013) used the same switch as evidence for
+Joseph Smith. It is an argument for a nineteenth-century
+author, but it rests on a fact anyone can count.
 
-Here are the counts, in dictation order:
+**Their way first.** Metcalfe's own table is not in my files; I had his pattern only from a
+summary. Eccel's normalised figures are on pages 351 to 356 of *Mormon Genesis*, which I have not
+bought. So this is not replicated number for number until those books are in hand. What I could
+do was count the two words myself in the 1830 text, book by book, and see whether his pattern
+comes back. It does. Here are the counts, in dictation order:
 
 | Book | wherefore | therefore |
 | --- | --- | --- |
@@ -150,35 +158,98 @@ Here are the counts, in dictation order:
 | Jacob | 53 | 1 |
 | Words of Mormon | 5 | 0 |
 
-One break explains it. Before the break "wherefore" is 2% of the two words. After it, 88%. The
-break falls partway through Ether.
+**What I tried.** Metcalfe stopped at the counts. Two questions were left open. Could the
+narrators explain it as well as dictation order does? And how often does any long book by one
+author switch a habit this sharply? So I cut the text into blocks, found the single break that
+best splits it into a "before" rate and an "after" rate, and compared three explanations: one
+break in dictation order, one break in printed order, and one rate per narrator (Mormon, Moroni,
+the small-plates writers). Then I ran the same break-finder on long single-author books from the
+library, which is the comparison nobody had.
 
-Could it be the narrators? Mormon wrote the middle of the book and Nephi the start, so maybe each
-had a favourite word. The counts say no. The flip happens inside Moroni's own writing. And Words
-of Mormon, which Mormon wrote but which was dictated last, is all "wherefore".
+**The check.** Before trusting the break-finder, I gave it a case with a known answer. I took
+pairs of library books that favour different words, joined them end to end, and asked it to find
+the join. The bar was 90 percent.
 
-Then the comparison. I ran the same measurement on 264 long books by single authors from the
-library. None switches this sharply.
+**When it failed.** The first version of that check found the join in 147 of 200 pairs, 73.5
+percent. Under the bar. Looking at the misses told me why. Only 6 of 281 library books use
+"wherefore" for 40 percent or more of the two words, so the 200 pairs kept reusing the same few
+books, and three of those have a switch of their own inside them. The method was finding a real
+switch, just not the one I had planted. That is exactly what the library comparison is supposed
+to measure, so it is not a failure to find breaks. I changed the check: each book's blocks are
+shuffled before the join, so the join is the only break in the pair. I made that change after
+seeing the first check fail, but before anything about the Book of Mormon had been counted. The
+revised check found the join in 186 of 200 pairs, 93 percent, and passed.
 
-*The check on the method.* I joined pairs of library books that favour different words and asked
-the method to find the join. It found it 93% of the time. My first version of this check failed,
-because a few library books have a switch of their own inside them and the method found that
-instead. I fixed the check before counting the Book of Mormon.
+**The result.** One break explains the book. Before it, "wherefore" is 2 percent of the two words.
+After it, 88 percent. The break falls partway through Ether. Taking out the long Bible-quoting
+chapters makes it sharper still (0.9 percent before, 89.9 after).
 
-*What it does not show.* Who was choosing the words. A habit that changes in dictation order fits
-one person dictating whose habit changed in the spring of 1829. It also fits any account in which
-the English wording was produced in that order. And the order of dictation is taken from the
-historical record, not tested here.
+Dictation order beats the narrators. On the score I set beforehand (a difference of 10 or more
+decides it), the dictation-order break scores 485, one rate per narrator 529, and one break in
+printed order 902. Lower is better. The plainest evidence is inside single narrators. Ether's
+first 1830 chapter has 7 "wherefore" and 13 "therefore"; its later chapters 55 and 11. Words of
+Mormon, which Mormon wrote but which was dictated last, has 5 and 0.
+
+Then the comparison. I sampled 600 long single-author books and kept the 264 that use the two
+words at least 100 times. None of the 264 switches as sharply and as strongly as the Book of
+Mormon. Five switch as sharply, but on very few uses. The nearest is a collection of Thomas
+Paine's political pieces, and its switch is weaker on both counts.
+
+**What it means, and what it doesn't.** The habit really does change in dictation order, and a
+change that clean is unusual for a long book. That part of Metcalfe's argument holds. What it
+cannot tell you is who was choosing the words. A habit that changes in dictation order fits one
+person dictating whose habit changed in the spring of 1829. It fits just as well any account in
+which the English wording was produced in that order, whoever or whatever produced it. And the
+dictation order itself comes from the historical record; it is taken as given here, not tested.
+The library comparison is printed books by one author, not other dictated texts.
+
+**What's left.** The same count in Joseph Smith's revelations of 1828 to 1830 by date, to see if
+they switch at the same time; the other near-synonym pairs (whoso and whosoever); and Metcalfe's
+and Eccel's own tables, for a count-for-count comparison once the books are bought.
 
 ### Claimed sources, ranked (BOM-126)
 
-Two claims. Thomas Donofrio says phrases in the war chapters come from histories of the American
-Revolution, Mercy Otis Warren's and David Ramsay's above all. William Davis says the story of
-Abinadi before King Noah follows the trial of Faithful in *The Pilgrim's Progress*. Each was made
-by laying the two books side by side.
+**The claim.** Two claims, both for a nineteenth-century source. Thomas Donofrio says phrases in
+the war chapters come from histories of the American Revolution, Mercy Otis Warren's and David
+Ramsay's above all, with shared phrases like "the cause of liberty". William Davis, in 2012, says
+the story of Abinadi before King Noah follows the trial of Faithful in *The Pilgrim's Progress*
+point by point: arrested, tried before an assembly, accused of slandering the rulers, speaks
+boldly, condemned, burned, and a witness converted. Each was made by laying two books side by side.
+Replies say parallels like these turn up between any two long books.
 
-The first study already had a way to ask this fairly: score every volume in the library the same
-way and see where the claimed book lands. It did that for *The Late War*. Here it is for these.
+**Their way first.** I could not rerun either one their way. Donofrio's own pages were not in hand
+when I ran this. Davis's list of parallels (14 elements, as the census later found) was not in
+hand either. So neither author's examples were scored one by one. That is not replicated yet.
+
+**What I tried.** The first study already had a fair way to ask this, and used it on *The Late
+War*: score every volume in the library the same way and see where the claimed book lands. A
+claimed source in the top handful of 200,000 volumes is a lead. One in the crowd says the
+parallels are what any book of its kind would give. So I looked up each claimed book on the
+study's two borrowing measures (rare shared phrases, and closeness in meaning), and then went down
+to the passages: for the Abinadi story and the war chapters, which works in the whole library hold
+the nearest passages? I added *Paradise Lost*, the Westminster Confession and Foxe's *Book of
+Martyrs* to the table, and *The Late War* and *The First Book of Napoleon* for scale.
+
+**The check.** Three parts, all before I looked anything up about the Book of Mormon. First, a
+known borrower: with *The Late War* as the target, its other printings should come out at the top.
+Second, the study's own published ranks had to be reproduced exactly. Third, the passage search
+had to find the trial of Faithful in one printing of Bunyan when given the same scene from
+another printing.
+
+**When it failed.** The first part failed. Of 104 "other printings" of *The Late War*, 9 came out
+at ranks 1 to 9 and the rest were scattered as far down as 201,922. The ranking was fine. My list
+was wrong. I had borrowed the study's list of volumes to keep out of the phrase counts, and that
+list holds every history of the War of 1812, not just Hunt's book: Brackenridge, Thomson, a poem
+called *The Fredoniad*. The nine that really are Hunt's book are exactly the nine at the top. I
+fixed the list to "author Hunt, 'late war' in the title", kept the bar the same, and recorded that
+I changed it after seeing the first try fail. The best-placed other history of that war came out
+66th, which is itself useful: a book on the same subject does not rank like a reprint.
+
+After that, all three parts passed. Hunt's nine printings ranked 1 to 9 of 204,527. The study's
+published ranks came back exactly (131 for *The Late War*, 63 for *Napoleon*, all 139 of the
+Grunder entries). And Faithful's trial found itself in another printing in 59 of 60 pairs.
+
+**The result.**
 
 | Book | Shared rare phrases: rank of 204,520 volumes | Closeness in meaning: rank of 30,994 |
 | --- | --- | --- |
@@ -190,33 +261,68 @@ way and see where the claimed book lands. It did that for *The Late War*. Here i
 | *The Late War*, for scale | 131 | 17,678 |
 | *The First Book of Napoleon*, for scale | 63 | 4,706 |
 
-Warren and Ramsay are in the crowd. For the war chapters, the nearest passages in the whole library
-are almost all Josephus: his editions take every one of the top fifteen places.
+Warren and Ramsay are in the crowd on every measure. Warren has no passage among the nearest
+hundred to anything in the war chapters. For the war chapters, the works with the most nearest
+passages are editions of Josephus: they take all fifteen of the top fifteen places.
 
-Bunyan is more interesting. The book as a whole sits closer in meaning than most. But the trial of
-Faithful, the scene the claim is about, is not among the hundred nearest passages to any part of
-the Abinadi story. Foxe's martyrs are closer for every one of the 44 Abinadi passages, and
-Josephus and printed sermons are closer still.
+Bunyan is more interesting, and not in the way the claim says. The book as a whole sits closer in
+meaning than most, and its passages turn up near the war chapters about twelve times as often as
+its size would predict. But the trial of Faithful, the scene the claim is about, is not among the
+hundred nearest passages to any part of the Abinadi story. For every one of the 44 Abinadi
+passages, Foxe's martyrs have a closer passage, and Josephus and printed sermons are closer still.
+One caution on Bunyan's good meaning rank: the flag compares him with fiction of the same length,
+not with religious books, so it is weaker than it looks.
 
-*The check on the method.* With *The Late War* as the target, its nine other printings came out
-first to ninth of 204,527. The study's published ranks were reproduced exactly. And the Faithful
-scene in one printing of Bunyan found the same scene in other printings 59 times out of 60. One
-check had to be rebuilt first: my list of "known copies" of *The Late War* had other histories of
-that war mixed in.
+**What it means, and what it doesn't.** The histories of the Revolution are not special neighbours
+of the war chapters; Josephus is. Bunyan's trial scene is not the nearest thing in print to
+Abinadi; martyr stories in general, Foxe above all, are nearer. That cuts against both claims as
+made. It does not rule out a few borrowed sentences, which whole-book ranks would not see, or a
+borrowed plot outline, which this search is not built to see.
 
-*What it does not show.* It does not rule out a few borrowed sentences or a borrowed plot outline;
-the comparison of story order was not run. Donofrio's and Davis's own lists of parallels were not
-in hand, so their examples were not scored one by one.
+**What's left.** Davis's 14 elements scored in the Abinadi story, in Faithful's trial and in Foxe's
+martyrs, and the study's story-order comparison run on them (it needs paid model time, so it waits
+on my yes). Donofrio's original pages found and his phrases scored by rarity.
 
 ### Numbers, and the weights in Alma 11 (BOM-114)
 
-Two questions. The Maya and the Aztecs counted in twenties. Does the Book of Mormon? And Alma 11
-describes a system of weights (a senine, a seon twice that, a shum twice that, a limnah worth all
-of them) that has been matched to ancient Near Eastern systems. Is the match better than a made-up
-system would get?
+**The claim.** Two questions sit together here. The first has no published claimant that I found:
+nobody seems to have counted the book's numbers. But if the book is set in ancient Mesoamerica, as
+many defenders argue, it is fair to ask whether it counts the way the Maya and the Aztecs did, in
+twenties. The second is John Welch's, from 1999. Alma 11 describes a system of weights (a senine,
+a seon twice that, a shum twice that, a limnah worth all of them), and Welch matched its features
+with five ancient Near Eastern systems, nine parallels in all. Nobody had asked how often a
+made-up system would match one of them as well.
 
-**Twenties.** Take the round numbers between 20 and 400 in a text and ask what share are multiples
-of twenty.
+**Their way first.** For the twenties there is nothing to reproduce. For Welch, I have not read the
+article itself; his nine parallels came to me from a summary page, and I did not redo his
+five-system search. So his result is not replicated yet.
+
+**What I tried.** For the twenties: take the round numbers between 20 and 400 in a text and ask what
+share are multiples of twenty. Then compare the Book of Mormon with native Mesoamerican texts in
+English, the Bible and Josephus, and modern books. I also tried something more ambitious: place the
+book by its whole number profile (favourite numbers like 7, 12, 40 or 13, 20, 52, how years are
+counted, how numbers are written). For Alma 11: write its values as ratios (1/8, 1/4, 1/2, 1,
+1 1/2, 2, 4 and 7), score the fit against a list of real systems under one rule, and then do the
+same for 20,000 random systems to see how often chance does as well.
+
+**The check.** Two checks, one for each idea. For the twenties: the native texts had to come out
+clearly above the Bible and the modern books, or the measure cannot see base twenty through an
+English translation at all. For the whole profile: hold each known text out in turn and see whether
+the method puts it back in its own tradition, 75 percent of the time overall and at least half in
+each tradition.
+
+**When it failed.** The twenties check passed. The profile check did not: 71 percent against a bar
+of 75, and only 3 of 7 Mesoamerican pieces went home. The Mesoamerican side was too small, 694
+numbers in four texts, and one of them (a 1908 summary of the Popol Vuh) sorted with modern writing.
+The decoy told me something worse. *The Late War*, a modern book written in Bible style, landed with
+the Bible in 7 of 8 parts. So the profile was reading Bible style, not counting. I did not redesign
+the check after it failed, and I did not score the Book of Mormon on the profile.
+
+There was one fix before the count: the loader read almost nothing from one native text, because
+only its first hymn was headed "Translation". I fixed that on the native text alone; it did not
+change either check's outcome.
+
+**The result.** The twenties:
 
 | Text | Share that are multiples of twenty |
 | --- | --- |
@@ -226,50 +332,80 @@ of twenty.
 | King James Bible and Josephus | 53% (643 of 1,218) |
 | Book of Mormon | 40% (19 of 47) |
 
-The habit survives translation: the native texts show it plainly, and Clavigero, a European
-writing about Mexico, shows some. The Book of Mormon shows none. It is below both the Bible and
-ordinary English books.
+The habit survives translation: the native texts show it plainly, and Clavigero, a European writing
+about Mexico, carries some of it. The Book of Mormon shows none. It sits below both the Bible and
+ordinary English books. These are small counts, 35 numbers on one side and 47 on the other, and
+much of the native figure is one turn of phrase ("four score years" for four of their twenty-year
+periods).
 
-These are small counts: 35 numbers on the Mesoamerican side and 47 in the Book of Mormon.
+Alma 11. Against my list of real systems the best fit is 6 of the 8 values, a tie between English
+dry and liquid measure and Roman coins. Hebrew weights fit 2 of 8. The best Mesoamerican fit is far
+lower. Whether 6 of 8 is impressive depends entirely on what "random" means. I had fixed one rule
+to decide: random systems built from the kinds of steps real systems use. Under that rule, 10
+percent of random systems fit some real system that well, against a bar of 5 percent, so by my own
+rule it is no closer than a made-up system. Under a second rule, random steps of any small ratio,
+none of 20,000 does. The two disagree because the whole fit is the run of doublings, from 1/8 up to
+4, and doubling is what most systems of measure do. The 1 1/2 and the 7 match almost nothing.
 
-**The wider number profile did not get an answer.** I also tried to place the book by its whole
-number profile (favourite numbers, how years are counted). The method had to sort held-out texts
-into their own tradition first, and it did not do that well enough: 71% against a bar of 75%, and
-only 3 of 7 Mesoamerican pieces. *The Late War* landed with the Bible seven times out of eight,
-which says the profile was reading Bible style, not counting. So the Book of Mormon was not scored
-on it.
+This part is a pilot. My list of real systems was written from memory and has not been sourced.
 
-**Alma 11.** The system's values are 1/8, 1/4, 1/2, 1, 1 1/2, 2, 4 and 7. Against a list of real
-systems the best fit is 6 of the 8 values, a tie between English dry and liquid measure and Roman
-coins. Hebrew weights fit 2 of 8. Whether 6 of 8 is impressive depends entirely on what "random"
-means. If random systems are built from the kinds of steps real systems use (halves and
-doublings), 10% of them fit some real system that well. If they are built from arbitrary small
-ratios, none of 20,000 does. The fit is the run of doublings, and doubling is what most systems
-of measure do.
+**What it means, and what it doesn't.** The book's round numbers do not lean to twenties. That is a
+fact about its counting habit in English, on small counts. It does not show that a book from a
+base-twenty world could not come out base-ten in translation. On Alma 11, the ratios do not pick out
+one ancient system: English measures fit as well as anything Near Eastern. That says the match is
+mostly doubling. It does not test Welch's other points, like the names of the units.
 
-This part is a pilot. The list of real systems was written from memory and has not been sourced.
-
-*What it does not show.* The twenties result is about counting habit only. The Alma 11 result
-says the ratios do not pick out one ancient system; it does not test the names of the units.
+**What's left.** A sourced list of weight and coin systems, each with a citation, and the Alma 11
+part run again on it. More native Mesoamerican text (Christenson's Popol Vuh, the Chilam Balam), so
+the profile check has a chance of passing.
 
 ### The names (BOM-108)
 
-The book has 163 names that are not in the Bible: Nephi, Moroni, Zarahemla, Coriantumr. People
-have called them Hebrew, Egyptian, and made up. I gathered lists to compare them with: 4,673 King
-James names, 752 Hebrew names from inscriptions, 8,451 Egyptian names, 2,774 names of Native
-American treaty signers, Maya rulers, Aztec names, classical names as printed in English, the
-1790 census, and the names four authors invented (Spalding, Swift, Spenser, Macpherson's Ossian).
-Then a simple model of letter patterns for each list, and the question: which list does each Book
-of Mormon name look most like?
+**The claim.** The book has 163 names that are not in the Bible: Nephi, Moroni, Zarahemla,
+Coriantumr. People on one side call them Hebrew or Egyptian, name by name. Hugh Nibley paired
+Paanchi and Korihor with Egyptian names. Tvedtnes, Gee and Roper in 2000 found 16 of the names in
+ancient Hebrew inscriptions. Black and Wilcox in 2011 said the names break the habits fiction
+writers follow. And Wilcox and colleagues, in 2013 and 2019, compared the sounds of 124 names with
+100 census names, Spalding's invented names and Tolkien's, and found the book's names patterned like
+real names, not one author's inventions. On the other side, people say they are made up.
 
-**The limit comes first, because it decides what the test can say.** I took King James names and
-wrote them the way scholars transcribe Hebrew. Only 8% of them were still recognised as King
-James names. 47% went to the Hebrew-inscription list. So a model like this mostly sorts names by
-how they are spelled, not by what language they come from. Comparing "Nephi" in 1830 English
-spelling with a Hebrew name in scholarly transcription is not a fair comparison, and I draw no
-conclusion from it.
+**Their way first.** Wilcox's study cannot be rerun. It needs a hand transcription of every name
+into sounds and a particular online calculator, and the authors released no data. So I built a
+rough stand-in with letters instead of sounds, and labelled it a stand-in. It points the same way
+they did: the book's names sit closer to 1790 census names than to Spalding's. For Tvedtnes, Gee
+and Roper, I reduced names to a rough skeleton of consonants. All 7 of their 16 names that I could
+test match a Hebrew inscription name that way. But the same rule matches 26 percent of all the
+book's names, 27 percent of King James names, and 20 percent of the book's names with their
+letters shuffled. So their matches come back, and so do matches for almost anything.
 
-What can be compared fairly is lists that are all in English spelling:
+**What I tried.** I gathered lists to compare with: 4,673 King James names, 752 Hebrew names from
+inscriptions, 8,451 Egyptian names, 2,774 Native American treaty signers, Maya rulers, Aztec names,
+classical names as printed in English, the 1790 census, and names four authors invented (Spalding,
+Swift, Spenser, Macpherson's *Ossian*). For each list, a simple model of letter patterns. Then the
+question: which list does each Book of Mormon name look most like? The invented names, scored the
+same way, are the comparison the earlier work did not have at this size.
+
+**The check.** Two. Names held out of each list had to be sorted back into their own list well
+above chance. And a spelling check, which turned out to matter more. I took King James names and
+wrote them the way scholars transcribe Hebrew. If the method sorts by language, they should still
+go to the King James list.
+
+**When it failed.** The held-out check missed twice on the English-spelled lists before it passed.
+The first time (49 percent against a bar of 50), census given names kept going to King James and to
+census surnames. That is fair enough: a given name in 1790 is very often a Bible name, and a surname
+is often a given name. I merged the two census lists. The second time (58 percent against 60), the
+lists had been cut to 120 names each, only to keep two tiny lists in that are not in this design;
+I let the English lists use 600. The third run passed at 68 percent. Both changes were made after
+seeing a result on known cases, and before any Book of Mormon name was scored.
+
+The spelling check gave the same answer every time, and it decides what this test can say. Only 8
+percent of the King James names in scholarly dress were still recognised as King James names. 47
+percent went to the Hebrew-inscription list. So a model like this mostly sorts names by how they are
+spelled, not by what language they come from. Comparing "Nephi" in 1830 English spelling with a
+Hebrew name in scholarly transcription is not a fair comparison, and I draw no conclusion from it
+about Hebrew, Egyptian, Maya or Aztec. Stripping names down to consonants did not rescue it either.
+
+**The result.** What can be compared fairly is lists that are all in English spelling:
 
 | Names | Closest to King James | Closest to classical | Closest to the 1790 census |
 | --- | --- | --- | --- |
@@ -277,31 +413,65 @@ What can be compared fairly is lists that are all in English spelling:
 | Spalding, Swift and Ossian together | 19% | 23% | 33% |
 | Book of Mormon names with letters shuffled | 38% | 16% | 14% |
 
-The Book of Mormon's names look like King James names far more than three other authors' invented
-names do. Jaredite, Nephite and place names all come out the same, about 52 to 56%.
+The book's names look like King James names far more than three other authors' invented names do.
+The shuffled row matters: the letters alone, in any order, already send 38 percent to King James;
+their order adds the rest. Jaredite, Nephite and place names all come out the same, 52 to 56
+percent.
 
-A second count: how many names are one changed letter or one splice away from a King James name
-(Nephi, Lehi and Laban are that close)? Book of Mormon 58%. Spalding 35%, Ossian 33%, Spenser 14%,
-Swift none. For comparison, real King James names held out of the list score 82%.
+A second count: how many names are one changed letter or one splice away from a King James name?
+Nephi, Lehi and Laban are that close. Book of Mormon 58 percent. Spalding 35, Ossian 33, Spenser
+14, Swift none. For scale, real King James names held out of the list score 82.
 
-*The check on the method.* Held-out names were sorted into their own list 65 to 68% of the time,
-against 9 to 20% by chance. One comparison needed its lists cleaned twice before it passed.
+**What it means, and what it doesn't.** It cuts against the idea that the names are unlike anything
+a fiction writer would choose: they follow one clear habit, closeness to King James names, more
+than other inventors' names do. But that habit fits two stories equally well. Someone steeped in
+the King James Bible making up names would give this. So would Hebrew names put into King James
+spelling. The test cannot tell those apart, because King James spelling is both. It is a test of
+letters, not sounds. And the Assyrian list I thought I had turned out to be an empty download.
 
-*What it does not show.* Where the names come from. Names that look like King James names fit
-someone steeped in the King James Bible making up names, and fit Hebrew names put into King James
-spelling equally well. This is a test of letters, not of sounds, and the Assyrian list turned out
-to be an empty download.
+**What's left.** Put every list into one spelling, or into sounds, so the ancient lists can be
+compared fairly. The made-up names in the Bible-style books I hold are a better invention baseline
+than Swift's.
 
 ### The Great Lakes place names (BOM-110)
 
-Vernal Holley drew a map in the 1980s pairing Book of Mormon place names with towns around the
-Great Lakes: Angola, Alma, Oneida and Onidah, Lehigh and Lehi, about 29 pairs. The argument since
-has gone name by name. Did that town exist in 1829? Is that spelling close enough?
+**The claim.** Vernal Holley drew a map in the 1980s pairing Book of Mormon place names with towns
+around the Great Lakes: Angola, Alma, Oneida and Onidah, Lehigh and Lehi, about 29 pairs. The point
+was that the names came from Joseph Smith's surroundings. The argument since has gone name by name.
+Did that town exist in 1829? Is that spelling close enough? One review judged 17 of the 29 invalid,
+mostly because the place was named after 1829. Nobody, on either side, had counted how many such
+pairs chance gives.
 
-The question that was missing is simple. Take the book's 57 place names that are not in the
-Bible. Count how many match a place name within 500 km of Palmyra under one fixed rule. Then do
-the same around a few hundred other points in the English-speaking world, each with as many place
-names to choose from.
+**Their way first.** I did not have Holley's own booklet. His 29 pairs came to me from one web
+summary, read through an AI summary and not checked by a person. I scored them anyway under one
+fixed rule. Nine pass. Seven of the nine are Bible names spelled the same in both lists (Jerusalem,
+Jordan, Boaz, Midian). The other two are Angola and Alma, both towns named after 1830 by the dates
+on the reply page. Under a loose rule 24 pass; five fail even then, among them Tecumseh and Teancum,
+and Monroe and Moroni.
+
+**What I tried.** The missing question is simple. Take the book's 57 place names that are not in
+the Bible. Count how many match a place name within 500 km of Palmyra under one rule. Then do the
+same around a few hundred other points in the English-speaking world, each with as many place names
+to choose from. If Palmyra stands out, that means something. If it is ordinary, the map is what any
+region gives. I added control name sets too (Spalding's, Swift's, invented King James-like names)
+and the New York gazetteers printed before 1830.
+
+**The check.** Two parts. The matching rule had to find real variant spellings of the same place
+while almost never matching two different places. And a planted case: New York names, each with one
+letter changed, had to make the Palmyra region stand out.
+
+**When it failed.** The planted case passed every time, 20 of 20. The spelling check failed in its
+first form. I had tested it on twelve pairs of Bible place names spelled two ways, and several of
+those were not spellings at all but different names (Hiddekel and Tigris). It found 4 of the 12.
+A much better test set was already on disk: Worcester's 1823 gazetteer prints its own variant
+spellings ("Delfino, or Delvino"), 4,365 of them. On those, the rule had a real problem. No single
+setting does both jobs. Strict enough to keep random matches under 1 in 10,000, it finds 21 percent
+of real variants. Loose enough to find 60 percent, it matches random pairs about 2 times in 1,000.
+That is a result in itself. So I report two settings, strict and loose, both fixed before the book
+was scored, and kept the strict one as the verdict, as first written. I changed this after seeing
+the first check, and the card says so.
+
+**The result.**
 
 | Rule | Matches near Palmyra | Typical far-away region | Where Palmyra ranks |
 | --- | --- | --- | --- |
@@ -309,36 +479,58 @@ names to choose from.
 | Strict, within 150 km | 2 of 57 | 2 of 57 | 63rd percentile of 374 |
 | Loose, within 500 km | 50 of 57 | 49 of 57 | 77th percentile |
 
-Palmyra is an ordinary region. Under the strict rule it does a little worse than most. Under the
-loose rule nearly every name matches something nearly everywhere, which is the point: with a loose
-enough rule and a big enough map, any list of short names finds partners.
+Palmyra is an ordinary region. Under the strict rule it does a little worse than most: 178 regions
+do as well or better. The six local matches are Alma, Ani, Gid, Josh, Corihor (against "Corridor")
+and Mormon. Under the loose rule nearly every name matches something nearly everywhere, which is the
+point: with a loose enough rule and a big enough map, any list of short names finds partners. The
+controls agree. Swift's invented names put Palmyra at the 1st percentile, Spalding's at the 22nd;
+real King James place names put it at the 86th, because the north-east is full of Bible-named towns.
 
-Then the period sources. In the New York gazetteers of 1813 and 1824 and three national ones,
-none of the 57 names has a close match among New York entries.
+Then the period sources. In the New York gazetteers of 1813 and 1824 and three national ones, none of
+the 57 names has a close match among New York entries under the strict rule. Under the loose rule
+New York leads the other states in two of three gazetteers, but control name sets put New York
+first about as often.
 
-And Holley's own pairs. Nine of the 29 pass the strict rule. Seven of those are Bible names that
-are identical in both lists (Jerusalem, Jordan). The other two are Angola and Alma, both towns
-named after 1830.
+**What it means, and what it doesn't.** As a whole, the map is what chance gives; the Great Lakes
+are not special for these names. That does not hold for every pair. One or two real borrowings would
+be invisible in a count like this, and Oneida and Onidah is a single pair that no count can speak
+to. The regional comparison uses today's place names, with period gazetteers only for New York. And
+the matching is spelling reduced to sound, by one rule.
 
-*The check on the method.* A set of New York names with one letter changed was found in 20 of 20
-tries. The first version of the spelling check failed, with only twelve test pairs; I rebuilt it
-on 4,365 variant spellings printed in an 1823 gazetteer. No single threshold was both sensitive
-and strict, so I report two.
-
-*What it does not show.* It cannot rule out one or two real borrowings; Oneida and Onidah is a
-single pair and no count can speak to it. It uses today's place names for the regional comparison
-and period gazetteers only for New York. Holley's list came from one web page summarising it.
+**What's left.** Holley's own list, checked by a person against his map. Period gazetteers for the
+comparison regions, not only New York.
 
 ### New Testament wording before Christ (BOM-124)
 
-Critics point out that Nephi and Alma, centuries before Christ, use phrases from Paul and John.
-Believers answer that a translator reaches for familiar wording. Both sides argue it case by case.
-Nobody had measured how much there is, or compared it with what a translator of the period
-actually did.
+**The claim.** Critics point out that Nephi and Alma, centuries before Christ, use phrases from Paul
+and John. Defenders answer that a translator reaches for familiar wording. Both sides argue it case
+by case. Nicholas Frederick in 2015 and others have proposed careful ways to grade single cases:
+quotation, allusion, echo. Nobody had measured how much there is, or compared it with what a real
+translator of the period did.
 
-The measure: phrases of four or five words that are in the King James New Testament and not in
-the Old Testament, counted per 10,000 words. Chapters that quote Isaiah or the Sermon on the Mount
-at length are set aside.
+**Their way first.** There is no published number to reproduce. The claims are single cases, and the
+grading schemes are methods, not counts. I did not apply Frederick's grades here, so his part is not
+replicated yet.
+
+**What I tried.** Count phrases of four or five words that are in the King James New Testament and
+not in the Old Testament or the Apocrypha, per 10,000 words. Chapters that quote Isaiah or the
+Sermon on the Mount at length are set aside. Then put the book's pre-Christian parts (1 Nephi to
+Helaman, and Ether) beside four kinds of comparison: period sermons, Bible-style books on other
+subjects, real translators of ancient non-Christian texts into Bible-soaked English (Whiston's
+Josephus, Sale's Koran), and Joseph Smith's other dictated texts. And ask whether there is a jump
+when Christ arrives in 3 Nephi.
+
+**The check.** Two known answers. Each New Testament book, scored against phrase lists built without
+it, had to outscore the Old Testament books. And sermons had to outscore non-religious books.
+
+**When it failed.** It didn't, this time. Every New Testament book outranked every Old Testament
+book, and sermons beat non-religious books 88 percent of the time against a bar of 80. Nothing was
+changed after any result. There was one surprise in the check worth saying. I expected an Old
+Testament book held out of the lists to score near zero. It scored 66, because the measure also
+picks up ordinary biblical phrases that happen to be in the New Testament. So the numbers below are
+only good for comparing texts with each other. They are not counts of "New Testament quotations".
+
+**The result.**
 
 | Text | New Testament-only phrases per 10,000 words |
 | --- | --- |
@@ -354,36 +546,68 @@ at length are set aside.
 | 3 Nephi | 281 |
 
 The pre-Christian parts of the book carry about three times the New Testament wording of the two
-period translators, and of the Bible-style books. Among 300 sermons they sit at the 93rd
-percentile: high, though some preachers went higher. The closest match in the table is Joseph
-Smith's own addition to Genesis.
+period translators, and of the Bible-style books. Among 300 sermons they sit at the 93rd percentile:
+high, though some preachers went higher, and under the 95th that I had set for "above sermons". The
+closest match in the table is Joseph Smith's own addition to Genesis.
 
-Is there a jump when Christ arrives? The rate rises by about a third at 3 Nephi (somewhere
-between 4% and 65%). That is under the bar I set for calling it a step, so: cannot tell.
+Is there a jump when Christ arrives? The rate rises by about a third at 3 Nephi, somewhere between 4
+and 65 percent. I had set 50 percent as the bar for calling it a step, so: cannot tell. A modest
+rise, not a clean step.
 
-No one New Testament book dominates. The Gospels, Paul and Hebrews each supply about their share.
+No one New Testament book dominates. The Gospels and Acts, Paul, Hebrews and Revelation each supply
+about their share of the New Testament's words.
 
-*The check on the method.* Every New Testament book, scored against phrase lists built without
-it, outranked every Old Testament book. Sermons outranked non-religious books 88% of the time.
+**What it means, and what it doesn't.** For critics: the amount is real and large, far more than two
+real translators of ancient texts used, in the same kind of English. For defenders: shared wording
+cannot tell a translator using familiar phrases from an author composing with them, and the rate is
+inside the range of a busy preacher. What the comparison adds is scale, and one neighbour: the text
+nearest the book here is Joseph Smith's own addition to Genesis. It counts exact phrases only, not
+paraphrase.
 
-*What it does not show.* Shared wording cannot tell a translator using familiar phrases from an
-author composing with them. What the comparison adds is scale: Whiston and Sale, translating
-ancient non-Christian texts into the same Bible-soaked English, used a third as much. It counts
-exact phrases only, not paraphrase.
+**What's left.** A paraphrase count with the meaning index. A sample of the 4,043 pre-Christian hits
+graded by Frederick's criteria, to separate quotation from echo. A checked list of quotation
+chapters; the one used is approximate.
 
 ### The grammar of the 1500s (BOM-119)
 
-Stanford Carmack's strongest number is about a small word. The Book of Mormon says "they did go"
-and "he did preach" where ordinary English says "they went" and "he preached", and it does so in
-about a fifth of its past tenses. That habit peaked in English around 1550 to 1600 and had mostly
-died by 1700. The King James Bible does it under 2% of the time. So, the argument goes, this is
-not Bible imitation; nobody imitating the Bible would produce it. His comparison was five
-Bible-style books.
+**The claim.** Stanford Carmack's strongest number is about a small word. The Book of Mormon says
+"they did go" and "he did preach" where ordinary English says "they went" and "he preached", and it
+does so in about a fifth of its past tenses. That habit peaked in English around 1550 to 1600 and
+had mostly died by 1700. The King James Bible does it under 2 percent of the time. So, the argument
+goes, this is not Bible imitation; nobody imitating the Bible would produce it. His comparison was
+five Bible-style books, plus a 700-million-word database of early printed English. In later papers
+he added about nine more features of the same kind.
 
-First I reproduced his numbers. Book of Mormon: 19.4% (he reports 20.2%). King James Bible: 1.6%
-(he reports 1.7%). Joseph Smith's 1832 history: none in 98 past tenses (he reports none in 88).
+**Their way first.** I reproduced his numbers before anything else. Book of Mormon: 19.4 percent (he
+reports 20.2). King James Bible: 1.6 percent (he reports 1.7). Joseph Smith's 1832 history: none in
+98 past tenses (he reports none in 88). Those were the figures I had set out to match, within a
+stated margin, and they match.
 
-Then every book in the library, 207,471 of them.
+There is a catch I have to own. The 20.2 percent is from his later book with Royal Skousen, as quoted
+in a summary. His own 2015 article says 27.2 percent, from a smaller count of past tenses. If I leave
+"came to pass" out of my past-tense count I get 23.3, closer but not 27. I have not worked out which
+way of counting gives which, so call that one partly reproduced.
+
+**What I tried.** Then every book in the library, 207,471 of them printed from 1500 to 1830, counted
+the same way. The question: does any book printed after 1700, that is not a reprint of an older one,
+reach the Book of Mormon's rate? And on Carmack's other features, does any book of 1780 to 1830
+match on all of them together?
+
+**The check.** Three parts. Reproduce the published rates, as above. Show that the "did" rate
+separates books of 1540 to 1620 from books of 1760 to 1830 (bar 80 percent). And read 60 of the
+extracted "did" phrases to see whether the program finds the right thing (bar 90 percent).
+
+**When it failed.** The first version passed every check. The Book of Mormon came out at 17.8
+percent, inside my margin. But the raw count, 1,408 uses, was well short of Carmack's "over 1,700",
+so I looked at what was missing, and "did go" was not being counted at all. Two bugs in the verb
+list: it dropped two-letter words (losing "go") and every word ending in -ing (losing "bring" and
+"sing"). I fixed both. At the same time I loosened one setting that decides what counts as a verb,
+which let in words like "march" and "minister". That one was a judgment, not a bug, and I made it
+after seeing the Book of Mormon count, so it counts for less. Then I reran all three checks. The rate
+separates early from late books 89 percent of the time. I read 60 fresh "did" phrases and 59 were
+right.
+
+**The result.**
 
 | Printed | Books at or above the Book of Mormon's rate | Books counted |
 | --- | --- | --- |
@@ -396,132 +620,190 @@ Then every book in the library, 207,471 of them.
 | 1800 to 1830 | 15 | 132,826 |
 
 Carmack is right about the shape. This is a 1500s and 1600s habit, and after 1700 it nearly
-vanishes: 29 books out of about 180,000.
+vanishes: 29 books out of about 180,000. Even in its peak years the Book of Mormon is in the top 3
+percent.
 
-What are the 29? Fourteen are reprints of books written before 1700. Nine are the articles of
-impeachment against Warren Hastings and Burke's works that contain them, where "did" is the
-language of an indictment ("the said Warren Hastings did receive"). Two are copies of a hymn book,
-one more hymn book, a book of ballads written "in imitation of the antient", a comic poem and a
-short play.
+What are the 29? Fourteen are reprints of books written before 1700: psalters, a prayer book, old
+sermons. Nine are the articles of impeachment against Warren Hastings and Burke's works that contain
+them, where "did" is the language of an indictment ("the said Warren Hastings did receive"). The
+rest are hymn books, a book of ballads written "in imitation of the antient", a book by William Combe
+of 1824 and a short comedy.
 
-And one more, which matters most. *Chronicles of Eri* (1822) is a book in Bible style presented as
-a translation of ancient Irish records. Its second volume says "did" in 19.3% of its past tenses,
-level with the Book of Mormon. Carmack himself had allowed that it might. So one author writing
-mock-ancient scripture in the 1820s did produce this rate.
+And one more book, which matters most. *Chronicles of Eri* (1822) is written in Bible style and
+presented as a translation of ancient Irish records. Its second volume says "did" in 19.3 percent of
+its past tenses, level with the Book of Mormon. A summary of Carmack's work had already granted that
+it probably might. So one author writing mock-ancient scripture in the 1820s did produce this rate.
+Another, *The Chronicles of Andrew* (1815), reaches 13.4 percent on a short text.
 
-But the "did" rate is one feature of ten. *Chronicles of Eri* has none of the others. No book
+But the "did" rate is one feature of ten, and *Chronicles of Eri* has none of the others. No book
 printed between 1780 and 1830 matches the Book of Mormon on all ten together; the most any single
-book matches at once is three.
-
-Two cautions on that. Nine of the ten features, as I counted them, barely separate early books
-from late ones in the first place, so "no book matches all ten" is a weaker statement than it
-sounds. And the "did" rate I reproduced, 19.4 percent, matches the 20.2 in a published summary
-of Carmack's work, but the abstract of his 2015 article says 27 percent. I have not worked out
-which way of counting gives which, so call that one partly reproduced.
+book manages is three. That sounds stronger than it is. In my check, nine of the ten features barely
+told early books from late ones in the first place. Only the "did" rate really dates a book.
 
 Three more comparisons:
 
-- **Bible-style books:** none of the 20 in the library reaches the rate.
+- **Bible-style books:** none of the 20 in the library list reaches the rate.
 - **Real translations:** none of the 341 marked as translations reaches it.
-- **Joseph Smith's other dictated texts:** the revelations, the Book of Moses, the Abraham
-  manuscripts, his letters and his 1832 history all sit between 0% and 1.6%.
+- **Joseph Smith's other texts:** the revelations, the Book of Moses, the Abraham manuscripts, his
+  letters and his 1832 history all sit between 0 and 1.6 percent.
 
-That last one is the surprise. Whatever produced the "did" in the Book of Mormon, it is absent
-from everything else he dictated, including scripture dictated a year later.
+That last one is the surprise. Whatever produced the "did" in the Book of Mormon, it is absent from
+everything else he dictated, including scripture dictated a year later.
 
-*The check on the method.* The rate separates books of 1540 to 1620 from books of 1760 to 1830
-correctly 89% of the time. I read 60 of the extracted "did" phrases; 59 were right. One bug was
-found and fixed after a first count of the Book of Mormon came out low (the verb list had dropped
-"go" and "bring"); the checks were rerun after the fix.
+**What it means, and what it doesn't.** For defenders, the core holds: this is an old habit, rare
+after 1700, absent from Bible imitations as a group and from Joseph Smith's own other writing. For
+critics, the strongest form of the claim does not: an 1820s author of mock-ancient scripture reached
+the same rate, so it could be done. It says nothing about who composed the text or how. The
+past-tense count is an approximation, my count is about 5 percent short of Carmack's hand count, and
+which books are reprints was judged from titles and authors' dates, not by reading them. The library
+is thin for 1700 to 1780.
 
-*What it does not show.* Who composed the text or how. The past-tense count is an approximation.
-Which books are reprints was judged from titles and authors' dates, not by reading them. The
-library is thin for 1700 to 1780.
+**What's left.** Read the 15 later books that reach the rate, and *Chronicles of Eri*, to say what
+their "did" is. Compare Carmack's other features with his own published numbers, feature by feature.
 
 ### Heard or copied? The manuscript's corrections (BOM-127)
 
-Royal Skousen argues that the mistakes in the original manuscript are mistakes of the ear. A
-scribe taking dictation writes "their" for "there". A scribe copying from a page skips a line. If
-the corrections are ear mistakes, the text was dictated. His case rests on his own reading of the
-manuscript, with nothing to compare it to.
+**The claim.** Royal Skousen, the editor of the critical text, argued in 1998 ("How Joseph Smith
+Translated the Book of Mormon", *Journal of Book of Mormon Studies* 7/1) that the mistakes in the
+original manuscript are mistakes of the ear. A scribe taking dictation writes "their" for "there".
+A scribe copying from a page skips a line. If the corrections are ear mistakes, the text was
+dictated. His case is his own reading of the manuscript, one editor classifying one manuscript,
+with nothing to compare it to.
 
-There is something to compare it to. The printer's manuscript is a copy of the original, made by
-the same scribe, so its mistakes are copying mistakes. I sorted every one-word correction in each
-by rule.
+**Their way first.** I can't rerun Skousen's reading event by event. It is an expert's judgement,
+not a rule, and his full typology is in his 2001 facsimile volumes, which I haven't bought. So his
+way is not replicated until that book is bought. The first study did a rough version (BOM-34): a
+fixed list of sound-alike word pairs, counted in the original manuscript and in the printer's
+manuscript. It found 36 in the original against 8 in the copy, which agreed with him.
+
+**What I tried.** Two things the earlier count lacked. First, a written rule that sorts every
+correction into a kind: spelling, sound-alike, a slip of the eye (letters of similar shape, a
+doubled run, a line skipped between two copies of the same word), a word jumped ahead to or
+repeated from just before, grammar, other. Second, known cases from outside the Book of Mormon.
+The printer's manuscript is a copy of the original, made mostly by the same scribe, Oliver Cowdery,
+so its mistakes are copying mistakes. And the first draft of Joseph Smith's Bible revision (the
+Book of Moses and early Genesis) was dictated, while a second draft of the same chapters, in John
+Whitmer's hand, is a copy of it. That pair should be the cleanest test there is.
+
+**The check.** Four parts had to pass before the original was scored.
+
+- The sound rule had to join known sound-alike pairs and not join others. It joined 45 of 49 and
+  none of 40.
+- The printer's manuscript, a copy, had to come out at no more than 10% sound-alike. It came out
+  at 0.6% (5 of 854).
+- Mistakes I planted in clean King James text had to be recovered. Each kind was found 97 to 100%
+  of the time. For the eye-slip kinds that is close to circular, since the rule was written to
+  find exactly what I planted.
+- The dictated draft had to show at least twice the copied draft's share of sound-alikes.
+
+The last one didn't work. The dictated draft has 1 sound-alike in 168 one-word corrections, the
+copy 2 in 236. That is too few to test anything. The card said in that case the run goes ahead but
+is flagged. So the one known dictated manuscript I hold doesn't show the signature at all. That
+matters for everything below.
+
+**The result.**
 
 | Manuscript | Sound-alike corrections | One-word corrections |
 | --- | --- | --- |
 | Original manuscript (dictated, by the claim) | 28 (3.9%) | 720 |
 | Printer's manuscript (a copy) | 5 (0.6%) | 854 |
+| All copied text pooled (printer's, the copied Bible draft, a letterbook of copies) | 7 (0.6%) | 1,114 |
 | Oliver Cowdery in the original | 28 | 615 |
 | Oliver Cowdery in the printer's manuscript | 5 | 759 |
 
-On its face that is Skousen's result: the same scribe makes six times as many ear mistakes in the
-original as in the copy.
+By the rule on the card, that is "heard-like". The same scribe makes six times as many ear
+mistakes in the original as in his own copy, and that difference would turn up by chance about
+twice in a million tries.
 
-Now the weakness. Twenty-three of the 28 are one pair of words, "there" and "their", all in
-Cowdery's hand. Take that pair out and the original has 5 in 720, the copies 6 in 1,114. No
-difference.
+**Then I looked at what the 28 actually are.** I did this after seeing the first result, so it
+counts for less. Twenty-three of the 28 are one pair of words, "there" and "their", all in
+Cowdery's hand: 21 "there" for "their" and 2 the other way. Take that pair out and the original
+has 5 in 720, the copies 6 in 1,114. No difference. Within Cowdery alone it is 5 of 615 against 4
+of 759.
 
-So the finding is real and narrow. It is one confusion, made over and over by one scribe, in the
-manuscript he is said to have taken by ear, and hardly at all when he copied it.
+Two more things cut against a simple reading. The dictated Bible draft shows almost no ear
+mistakes (1 in 168). And the original has eye-type corrections too: 14 of its 720 (1.9%), against
+7 of 854 in the printer's manuscript and about the same share in the copy pool. Testing the rules
+in a different order (jumped-ahead words before sounds) changed no count.
 
-Two more things cut against a simple reading. The first draft of the Book of Moses was certainly
-dictated, and it shows almost no ear mistakes (1 in 168). And the original manuscript has
-eye-skips too, 14 of them.
+The names gave a small, separate picture. Of 86 printed names found on the surviving pages, 69 are
+spelled the first time the way they were printed. Of the 17 that aren't, 10 differ only in a vowel.
+Names start a little less settled and then settle, but the copy shows 13 such first variants too,
+so the counts are small.
 
-Names: 69 of 86 names are spelled the first time the way they were printed. Of the 17 that are
-not, 10 differ only in a vowel.
+**What it means, and what it doesn't.** For the dictation side: there is a real signal, and it
+sits exactly where the claim says it should. One scribe makes one confusion over and over in the
+manuscript he is said to have taken by ear, and hardly at all when he copied it. Against a strong
+reading: it is one pair of words. Outside that pair the original looks like a copy, and the one
+manuscript known to be dictated doesn't show the pattern either. And a "there" for "their" shows a
+word was held as a sound at that moment. That could come from a speaker, or from a scribe reading
+a page aloud to himself. None of this says who composed the text. It is about how words reached
+the page. It reads the published transcripts, not the page photographs, so letters written over
+other letters are missed.
 
-*The check on the method.* The sound rule joined 45 of 49 known sound-alike pairs and none of 40
-others. Planted mistakes of each kind were recovered 97 to 100% of the time.
-
-*What it does not show.* Who composed the text; this is only about how words reached the page.
-It reads the published transcripts, not the manuscript pages, so letters written over other
-letters are missed.
+**What's left.** A dictated text with a scribe who wasn't copying a known page (the Doctrine and
+Covenants manuscripts in Cowdery's or Whitmer's hand), to give "dictated" a real reference.
+Skousen's facsimile volumes, to check the automatic sorting against his, event by event.
 
 ### Prophets in two voices (BOM-105, BOM-99)
 
-The first study's central finding was awkward. Joseph Smith's revelations look like the Book of
-Mormon. His letters do not look like either. David Holmes found the same split in 1992 and called
-it a "prophetic voice". The obvious question is whether that split is something about Joseph
-Smith, or something that happens to anyone who writes as a prophet on Monday and writes to a
-friend on Tuesday.
+**The claim.** In 1992 David Holmes measured vocabulary richness and found that Joseph Smith's
+personal writing sits apart, while his revelations, the Book of Abraham and the Book of Mormon sit
+together. He called it a "prophetic voice". The first study found the same split with far heavier
+tools: the revelations look like the Book of Mormon, the letters don't look like either.
 
-So I looked for other people who did both, with enough of each to measure. Six made the cut:
+**Their way first.** The first study reproduced Holmes (BOM-22) with all five of his measures on
+10,000-word samples, and got all three of his findings back: Joseph Smith's own writing stands
+alone, the prophets don't separate from each other, and the revelations sit with the prophets. So
+the split is solid. The question is what it means. Is it something about Joseph Smith, or
+something that happens to anyone who writes as a prophet on Monday and to a friend on Tuesday?
+Nobody had checked, because nobody had put other two-voice writers beside him.
+
+**What I tried.** Find other people who did both, with enough of each to measure. I read volumes
+to choose them before measuring anything. Seven made the first cut:
 
 | Writer | Scripture voice | Ordinary voice |
 | --- | --- | --- |
-| Joseph Smith | revelations, 65,000 words | letters and journal, 30,000 |
+| Joseph Smith | revelations, 65,000 words | letters, journal and histories, 30,000 |
 | John Wroe (English prophet, 1820s) | 255,000 | 6,000 |
 | Joanna Southcott (English prophet, 1790s on) | 53,000 | 24,000 |
 | Anna Trapnel (English prophet, 1650s) | 31,000 | 31,000 |
+| Edward Burrough (Quaker, 1650s) | dropped, see below | |
 | Richard Snowden (wrote a Bible-style history) | 56,000 | 142,000 |
 | Elias Smith (wrote a Bible-style tract) | 16,000 | 108,000 |
 
-For each I measured how far apart the two voices are, using the small common words (the, of, and,
-that) that writers use without thinking. The yardstick is the distance between two different
-people writing in the same voice. A gap of 1.0 means: this writer's two voices are as far apart
-as two strangers.
+For each I measured how far apart the two voices are, using the 150 small common words (the, of,
+and, that) that writers use without thinking. The yardstick is the distance between two different
+people writing in the same voice. A gap of 1.0 means this writer's two voices are as far apart as
+two strangers. Before any measuring, an AI helper (not a person) read five sample passages per
+writer and voice to see the labels were right. One fix came out of that: Snowden's book had a
+poem printed with it, so verse was dropped from his scripture-style text.
 
-Joseph Smith's gap is 0.92. The other five run from 0.86 to 1.22. His is the second smallest.
+**The check.** Within one voice, the measure had to send passages back to their own writer at
+least 80% of the time. Chance was about one in seven.
 
-So on this measure the split is ordinary. Everyone who changes voice looks like a different
-person. Joseph Smith does it no more than Joanna Southcott or a man writing a mock-biblical
-history of the Revolution.
+**When it failed.** It missed. In the ordinary voice it came out at 0.79. All of the shortfall was
+Edward Burrough: none of his 11 ordinary-voice passages went to him. Looking at why, his
+"ordinary" sample was two unlike documents, a short spiritual autobiography and a long report on
+the sufferings of London Quakers written as "we", which he may not have written alone. If the
+method can't recognise him inside one voice, it can't say anything about him across two. I dropped
+him. I did that after seeing the check fail, but before any cross-voice number or any Joseph Smith
+number existed. The check then passed: 0.93 and 0.92. It left exactly five writers beside him, the
+minimum the card allowed.
 
-Can you still find the person across the gap? Sometimes. For three of the other five writers,
-most of their scripture-voice passages were matched to their own ordinary writing. That number
-moves when Bible phrases or archaic words are taken out, so I would not lean on it.
+**The result, common words.** Joseph Smith's gap is 0.92. The other five run from 0.86 to 1.22.
+His is the second smallest. The same holds with King James phrases taken out (0.94) and with the
+thee-and-thou words taken out (0.91). On this measure the split is ordinary. Everyone who changes
+voice looks like a different person.
 
-*The check on the method.* Within one voice, passages went to their own writer 92 to 93% of the
-time. A seventh writer, Edward Burrough, was dropped before any cross-voice number was computed:
-none of his passages matched him, and his "ordinary" sample turned out to include a report he may
-not have written alone.
+Can you still find the person across the gap? It wobbles. Three of the other five are found
+across it, two of five with King James phrases dropped, four of five without archaic words. And
+Joseph Smith's own perfect score is partly fake: his letters are the most scripture-like ordinary
+writing in the set, so they pulled in 36% of everybody's scripture passages.
 
-**Then the same six writers with the first study's own tools.** Common words are a blunt
-instrument, and the first study's finding came from its style encoders. So I ran both encoders on
-the same set.
+**Then the first study's own tools.** Common words are a blunt instrument, and the first study's
+finding came from its two style encoders. So I ran both on the same six writers, with the same
+check and the same rule. Both passed the check easily (0.93 to 0.99).
 
 | | Common words | First encoder | Second encoder |
 | --- | --- | --- | --- |
@@ -529,47 +811,96 @@ the same set.
 | The other five writers | 0.86 to 1.22 | 0.37 to 0.75 | 0.31 to 0.82 |
 | His rank of six (1 = largest gap) | 5th | 4th | 3rd |
 | Other writers found across their two voices | 3 of 5 | 5 of 5 | 5 of 5 |
+| His letters' pull on others' scripture passages | 36% | 8% | 7% |
 
-Same answer. His gap sits in the middle of the group under both encoders.
+Same answer: his gap sits in the middle of the group. The encoders also do something common words
+couldn't. Every gap is under 1.0, so each writer's two voices are closer to each other than two
+different writers are, and all five others are found across their voices. The encoders keep hold
+of the person when the voice changes. They find Joseph Smith across his too: 51 of 64 revelation
+passages go to his letters under the first encoder, 17 of 29 letter passages to his revelations.
 
-The encoders also do something the common words could not. Every gap is under 1.0, which means
-each writer's two voices are closer to each other than two different writers are. And all five of
-the other writers were found across their voices. So the encoders do keep hold of the person when
-the voice changes. They find Joseph Smith across his too: most of his revelations are matched to
-his letters, and most of his letters to his revelations.
+One detail goes the other way. Pair by pair, his revelations are a shade closer to John Wroe's
+prophecies than to his own letters (0.75 against 0.73). Scripture voice still pulls scripture
+voice together. And two writers (Southcott, Elias Smith) had text in the encoders' training, which
+pulls their two voices together. Leaving them out doesn't change where Joseph Smith falls.
 
-One detail goes the other way. His revelations are slightly closer to John Wroe's prophecies than
-to his own letters (0.75 against 0.73). Scripture voice still pulls scripture voice together.
-
-*What it does not show.* Six writers is a small group, so "typical" is a weak word. Four are read
-from uncorrected scans. An AI helper labelled which passages are which voice. Two of the six
-(Southcott, Elias Smith) had text in the encoders' training; leaving them out does not change
-where Joseph Smith falls.
-
-**And with the author models, which do not settle it.** The other half of the first study's
-finding came from language models tuned on one author at a time. I tuned the smallest one on each
-writer's ordinary voice and asked whether it recognises that writer's scripture voice.
+**Then the author models, which do not settle it.** The other half of the first study's finding
+came from language models tuned on one author at a time. With the owner's yes for an overnight Mac
+run, I tuned the smallest one (125M) on each writer's ordinary voice and asked whether it
+recognises the scripture voice, with King James phrases masked as the study did.
 
 | Training text per model | Joseph Smith's letters model finds his revelations | Other writers |
 | --- | --- | --- |
 | The study's small dose (about 2,000 tokens) | 0 of 51 | 7% to 89% |
 | Four times that, without Wroe | 45 of 46 | 44% to 95% |
 
-With a little text his letters model finds none of his revelations, the worst of the six. With
-four times as much it finds nearly all of them, the best of the five. The small-dose run only just
-passed its own check, and one writer's model (Snowden's) was soaking up more than half of
-everybody's scripture passages. My reading is that the small-dose result is an artifact of too
-little training text. That reading was made after seeing both runs, so the fair summary is:
-cannot tell, leaning the same way as the encoders.
+The small-dose run only just passed its check (0.803 against 0.80). A version without the King
+James masking failed its check outright (0.63): unmasked, everyone's revelations drifted to Wroe's
+model. In the small-dose run, Snowden's letters model soaked up 57% of everybody's scripture
+passages, including 48 of Joseph Smith's 51. With four times the text, every writer is found, and
+he is found best of all. But Wroe has too little ordinary text for that run, so it has only four
+others, one short of what the card needs for a verdict on him.
+
+My reading is that the small-dose zero is an artifact of too little training text. I came to that
+after seeing both runs, so it counts for less. The fair summary: the author models cannot tell,
+and they lean the same way as the encoders.
+
+**What it means, and what it doesn't.** The split the first study found, revelations one way and
+letters the other, is not peculiar to Joseph Smith. On common words and on both encoders his gap is
+typical of people who wrote in both voices. That makes "his revelations look like the Book of
+Mormon" a weaker clue about a person than it first looked, because scripture voice pulls scripture
+voice together for everyone. It doesn't say the Book of Mormon is or isn't his: the book was not
+read or scored here. Six writers is a small group, so "typical" is a weak word. Four are read from
+uncorrected scans. Trapnel wrote 150 years before the rest.
+
+**What's left.** More two-voice writers with at least 15,000 words a side, so the larger-dose run
+has enough of them for a verdict. More seeds and a dose in between. Two human readers for the voice
+labels. The larger model sizes would need a priced GPU run.
 
 ### Warfare (BOM-115)
 
-About a fifth of the Book of Mormon is war. Is it the Bible's kind of war, the American kind its
-first readers knew, the conquest of Mexico, or the earthwork forts that 1820s writers imagined
-the mound builders defending?
+**The claim.** About a fifth of the Book of Mormon is war, and both sides have read it as
+evidence. Dan Vogel (*Indian Origins and the Book of Mormon*, 1986) listed about 27 motifs that
+1820s Americans already believed about the mound builders, among them forts of earth walls topped
+with pickets. On the other side, the 1990 volume *Warfare in the Book of Mormon* (Ricks and
+Hamblin, editors) reads its wars as ancient. Both are lists of examples. Neither gives a rate for
+anything else.
 
-I took the war passages of each text by one rule and counted a fixed list of war words: weapons,
-armour, fortifications, how armies are organised.
+**Their way first.** There is nothing to rerun. A list of parallels has no count to reproduce. So
+this is not a replication. I set the question up so that every tradition the two sides point at
+gets measured the same way: the Bible and Josephus; the American wars of 1775 to 1815, which the
+book's first readers knew; the conquest of Mexico; and the 1810s and 1820s writing about
+mound-builder forts and Indian wars.
+
+**What I tried.** Take the war passages of every text by one rule: cut it into 500-word stretches
+and keep a stretch if enough of its words are war words (battle, army, slain, siege, enemy and so
+on). Then count a fixed list of war terms in those stretches: weapons, armour,
+fortifications, how armies are organised, what happens to prisoners, months and seasons. Place
+each text with the tradition whose word profile is closest. *The Late War* (Bible style, about the
+War of 1812) and Spalding's novel ride along as controls. If Bible diction alone drags a war story
+to the Bible, they will show it.
+
+**The check.** Two parts. The war-passage rule had to pass at most 5% of stretches from plainly
+non-war books (Job to the Song of Solomon, the New Testament) and at least half of the stretches of
+plainly war books (Josephus's *Wars*, Ramsay's history of the Revolution). Then each text, held out
+in turn, had to land with its own tradition: 75% on average and at least half in every tradition.
+
+**When it failed: why, and what I changed.** The first part failed. The rule passed 2.6% of non-war
+stretches, fine, but only 42.5% of war-book stretches. Looking at those books, Ramsay's first
+volume is half the political road to the war. No war-word rule can pass half of it without also
+passing the Psalms. So the bar of one half was badly set for books that aren't war from first page
+to last. I lowered it to 0.4. I did that after seeing the miss, but before any Book of Mormon
+passage was cut, and the threshold itself didn't move, so nothing downstream changed except
+whether the check counted as passed. Then I found a bug (short end pieces were merged into the
+wrong piece) and fixed it, and the check was rerun.
+
+The second part passed: 85% of held-out pieces landed with their own tradition (American wars
+100%, conquest 95%, Bible and Josephus 84%, mound-builder writing 60%). Two weak spots. The
+mound-builder group only just formed: five texts, and their war passages are mostly Indian wars
+and travel, not descriptions of earthworks. And the native annals in English were too short to
+form a group at all.
+
+**The result.** The Book of Mormon has 103 war stretches, about 51,500 words.
 
 | Tradition | How close the Book of Mormon's war vocabulary is (1.0 = identical) |
 | --- | --- |
@@ -578,43 +909,97 @@ armour, fortifications, how armies are organised.
 | Conquest of Mexico | 0.62 |
 | American wars, 1775 to 1815 | 0.40 |
 
-It is nearest the Bible and Josephus, but not by enough to separate the first three. What is
-clear is the last row: it is not the American wars. There are no muskets, cannon, guns, bayonets
-or tomahawks, and no months named.
+It is nearest the Bible and Josephus, but the gap to second place (0.04) is smaller than the gap
+any held-out Bible text shows to its own runner-up (0.07 at the least). So the first three are not
+separated. What is clear is the last row. There are no muskets, cannon, guns, bayonets or
+tomahawks, and no months named.
 
-The controls matter here. *The Late War* is written in Bible style about the War of 1812, and it
-lands with the American wars. Spalding's novel lands with the mound-builder writing. Both sit
-further from the Bible than the Book of Mormon does. So Bible diction does not by itself drag a
-war story to the Bible.
+The controls matter here. *The Late War* lands with the American wars (0.665). Spalding's novel
+lands with the mound-builder writing (0.69, from one piece). Both sit further from the Bible
+(0.58, 0.59) than the Book of Mormon does. So Bible diction does not by itself drag a war story to
+the Bible.
 
-Some words are its own. "Title of liberty", "arm-shield" and "thick clothing" appear in none of
-the comparison traditions. "Cimeter", "heap of earth", "picket" and "decoy" are in it and not in
-the Bible or Josephus. And the Bible has things it lacks: spear, dagger, helmet, trench, garrison,
-ambush, tribute.
+Some words are its own. "Title of liberty", "arm-shield" and "thick clothing" appear in no
+comparison tradition. "Cimeter", "heap of earth", "picket" and "decoy" are in it and not in the
+Bible or Josephus. The Bible has things it lacks: spear, dagger, helmet, trench, garrison, ambush,
+tribute.
 
-**The fortifications.** Alma describes cities fortified with a ditch, a bank of earth, timbers,
-pickets and towers. Dan Vogel and others have pointed to 1820s descriptions of mound-builder forts
-with picketed earth walls. I looked for those five things together. The Book of Mormon has all
-five inside 507 words. The next tightest is Josiah Priest's book, at 1,419 words. In 300 ordinary
-library books the tightest is 3,204. No comparison text packs them as close as the Book of Mormon
-does, though Priest, writing about American antiquities, comes nearest.
+**The fortifications, and a second wrong turn.** Alma describes cities fortified with a ditch, a
+bank of earth, timbers, pickets and towers, the very features Vogel pointed to in 1820s
+descriptions. I looked for those five together. The measure on the card was 500-word windows, and
+it found none anywhere: not in the Book of Mormon, not in any comparison text, not in 300 library
+books. Everything scored zero, which says nothing. So after that first run I added a second
+measure, the same for every text: the shortest stretch of words that holds all five.
 
-**Army sizes.** The typical army figure in the Book of Mormon is 6,000, against 1,000 in the
-Bible and Josephus, 500 in the American wars and 200 in the conquest of Mexico. That rests on
-eleven figures.
+| Text | Shortest stretch with all five |
+| --- | --- |
+| Book of Mormon (Alma, 1830 chapters 21 and 22) | 507 words |
+| Josiah Priest, *American Antiquities* (1833) | 1,419 |
+| John Haywood on Tennessee (1823) | 1,888 |
+| Tightest of 300 ordinary library books | 3,204 (only 14 of the 300 have all five at all) |
 
-*The check on the method.* Held-out texts landed with their own tradition 85% of the time. The
-mound-builder group is weak: five texts, and their war passages are mostly Indian wars and travel,
-not descriptions of earthworks. The native annals were too short to form a group at all.
+No comparison text packs them as close. The nearest is writing about American antiquities, and the
+very nearest, Priest, was printed three years after the Book of Mormon. The nearest from before
+1830 is Haywood.
 
-*What it does not show.* Words in war passages, not how anyone fought. It cannot tell the top
-three traditions apart.
+**Army sizes.** The typical army figure in the Book of Mormon is 6,000, against 1,000 in the Bible
+and Josephus, 500 in the American wars and 200 in the conquest of Mexico. Large round thousands,
+like the Bible. That rests on eleven figures.
+
+**What it means, and what it doesn't.** It is not the American wars of its own day, and Bible-style
+writing about those wars does not look like it. Beyond that, its war vocabulary is about equally
+close to the Bible, the mound-builder writing and the conquest of Mexico. The fortification
+cluster is the one place it lines up with something unusual, and that something is American
+antiquities writing, though the comparison group for it is thin. This is words in war passages,
+not how anyone fought.
+
+**What's left.** Real earthwork descriptions as their own group (Atwater's full text, the Ohio
+surveys). A native war text of real size. Sorenson's 1990 seasons-of-war count, rerun against an
+even spread. The nearest library passages to the fortification chapters, with their print dates.
 
 ### The inventory of things (BOM-111)
 
-Every book set somewhere mentions the things of that place: its animals, crops, metals, tools,
-buildings, clothes. I made a list of about 2,000 such things, from the Bible's world, from Mexico
-and Central America, from New England, and counted them in each text.
+**The claim.** Every book set somewhere mentions the things of that place. In 1973 Michael Coe, a
+Maya archaeologist, listed the Book of Mormon's horses, chariots, wheat, barley, cattle and metal
+working as things that don't belong in ancient America. John Sorenson (*An Ancient American
+Setting*, 1985; *Mormon's Codex*, 2013) argues the book fits Mesoamerica once its words are read
+right. Both sides argue item by item.
+
+**Their way first.** Coe's is a short list, not a method; I can only say whether the words are
+there, and they are. Sorenson's correspondences are in a book I haven't bought, so his side is not
+replicated until the book is bought.
+
+**What I tried.** Put every item on one footing. An AI wrote, from memory, a list of about 2,000
+things in six kinds: animals, plants and foods, metals and materials, tools and weapons, buildings,
+clothing. It covers the Bible's world, Mexico and Central America, and New England. I counted them
+in each text, weighted rare things more, and asked which of four worlds the Book of Mormon's
+inventory is closest to: the Bible and Josephus; Mesoamerica (native texts in English and the
+Spanish chronicles); American writing of the 1810s and 1820s about Indians and antiquities; and
+ordinary English books of the period.
+
+**The check.** Each comparison text, held out in turn, had to land in its own world: at least 75%
+overall and at least half in each world. It passed: 154 of 173 (89%). Every Mesoamerican and every
+Bible-world text landed home. *The Late War* went to the American world, Josephus to the Bible's.
+Cut into 5,000-word pieces, 79% landed home.
+
+**When it failed: why, and what I changed.** Three things. First, a bug. Seven words claimed by two
+lists (jade as a horse and as a stone, among others) had been removed from both, so jade the stone
+was missing. I found it when a test file failed, not from the book's counts. I fixed it, reran
+everything, and nothing in the answer moved. The book has no jade either way.
+
+Second, one check missed. A Mesoamerican profile built only from native texts doesn't recognise the
+Spanish chronicles: 0 of 3. Built from chronicles only, it takes in all five native texts. The
+native texts are full of feathers, flowers, maize, birds and flutes. The chronicles are full of
+horses, ships, swords, artillery and gold. So "Mesoamerica" here partly means "how Spaniards and
+their translators wrote about it", and any Mesoamerican verdict depends on which kind of text you
+compare with.
+
+Third, after I saw the book's counts, I noticed many of its commonest items aren't things in the
+book at all: church, seed, fruit, flesh, wax. So I added two runs, one dropping the book's 20 most
+frequent items everywhere and one dropping 16 words whose main sense isn't the thing. I chose those
+after seeing the counts, so they count for less. Both still put the book with the Bible.
+
+**The result.**
 
 | World | How close the Book of Mormon's inventory is (1.0 = identical) |
 | --- | --- |
@@ -623,11 +1008,13 @@ and Central America, from New England, and counted them in each text.
 | American writing about Indians and antiquities | 0.28 |
 | Mesoamerica (native texts and Spanish chronicles) | 0.17 |
 
-The Bible's world, clearly, on every version of the test. Ten of the book's twelve large sections
-land there and none lands in Mesoamerica.
+The Bible's world, clearly, in at least 99.8% of resamples, with and without the chapters that
+quote the Bible. Ten of the book's twelve large pieces land there and none lands in Mesoamerica.
+By kind of thing it is clear for plants and foods, buildings and clothing, and not clear for
+animals, metals or tools and weapons.
 
-The plainest number is this one. Count the words for things that existed only in the Americas
-before Columbus: maize, cacao, turkey, jaguar, jade, obsidian, maguey, tobacco, squash.
+The plainest number: things that existed only in the Americas before Columbus, like maize, cacao,
+turkey, jaguar, jade, obsidian, maguey, tobacco and squash.
 
 | Texts | New World things per 10,000 words |
 | --- | --- |
@@ -637,36 +1024,68 @@ before Columbus: maize, cacao, turkey, jaguar, jade, obsidian, maguey, tobacco, 
 | Book of Mormon | 0 |
 
 **What about a translator's word choices?** A translator might write "sword" for an obsidian-edged
-club or "corn" for maize. I checked what the real translators of Bernal Díaz, Clavigero and the
-native texts did. They mostly kept the native things visible: Old World stand-in words are 2 to
-10% of their uses. Removing every such word from the Book of Mormon (sword, wine, brass and
-seventeen others) changes the picture by one or two hundredths.
+club or "corn" for maize. I measured what the real translators of Bernal Díaz, Clavigero and the
+native texts did. When they used an Old World word, they almost never flagged it as standing for
+something else ("a kind of sword which they call..."): 4% of the time in the chronicles, 10% in
+the native texts, about the same as in books with no translating to do (2 to 4%). The Old World
+words in the chronicles mostly mean the real Old World things: Bernal Díaz's horses are horses.
+Then the stronger test: remove every such stand-in word from the Book of Mormon (sword, wine,
+brass and seventeen others, 10% of its item words). Each closeness figure moves by one or two
+hundredths and the order doesn't change. Mesoamerica gets slightly further away, not closer.
 
-**What is missing.** Nineteen things appear in at least three quarters of the Mesoamerican texts
-and nowhere in the Book of Mormon: maize, feathers, flowers, drums, flutes, deer, eagles, maguey
-among them. But 83 things common in the Bible texts are missing too, so the book is not simply
-the Bible's inventory either. And it has five words nobody can classify: cureloms, cumoms, neas,
-sheum and ziff.
+**What is missing.** Eighteen things appear in at least three quarters of the Mesoamerican texts
+often enough that their absence means something, and are nowhere in the book: birds, feathers,
+maize, flowers, drums, flutes, deer, maguey among them. But 35 things common in the Bible texts
+are missing too (fortress, oil, lamp, camel, incense), so the book is not simply the Bible's
+inventory either. And five words nobody can classify: cureloms, cumoms, neas, sheum and ziff.
 
-*The check on the method.* Held out one at a time, 154 of 173 comparison texts landed in their
-own world. One check failed: a Mesoamerican profile built only from native texts does not
-recognise the Spanish chronicles, so "Mesoamerica" here partly means "how Spaniards and their
-translators wrote about it".
+**What it means, and what it doesn't.** The book's vocabulary of things is the Bible's, with no
+New World items at all, and a translator's habits don't explain the gap. That is Coe's point, held
+up across 2,000 items instead of six. But a word is not a thing, and this compares vocabularies,
+not archaeology. The book's Bible style is itself a reason it would use the Bible's nouns. The
+lists were written from memory by a model, not taken from a source. Only eight texts stand for
+Mesoamerica, and that group splits by register.
 
-*What it does not show.* A word is not a thing: many of the book's most frequent items are
-figures of speech (seed, flesh, church). The lists were written from memory. Only eight texts
-stand for Mesoamerica. And this says nothing about archaeology. It compares vocabularies.
+**What's left.** Lists from published sources instead of memory. A third kind of Mesoamerican text
+(Landa, Sahagún) to settle the register split. The book's figurative items sorted by hand.
 
 ### Do the speakers have their own voices? (BOM-121)
 
-The claim: Nephi, Alma, Mormon and the rest differ from one another, in the small common words
-nobody chooses on purpose, more than a novelist's characters do. The published comparison was
-four novelists: Austen, Cooper, Dickens and Twain. Their titles, word list and values are not
-published, so I could not rerun it their way; what follows is the same claim tested my way.
+**The claim.** Nephi, Alma, Mormon and the rest differ from one another, in the small common words
+nobody chooses on purpose, more than a novelist's characters do. The older form of this is Larsen,
+Rencher and Layton in 1980. The newer one is Fields, Bassist and Roper, about 2021, reported by
+Scripture Central: 28 distinct voices, and a spread of voices more than twice the average of eight
+novels by Austen, Cooper, Dickens and Twain.
 
-I compared with what a writer of the time could have known: 354 plays printed between 1660 and
-1700, where every speech carries its speaker's name. Each voice is 2,000 words of one speaker.
-The spread of five voices is how far apart they sit on the 150 most common words.
+**Their way first.** The first study reproduced Larsen (BOM-22): with the speakers relabelled, 17
+speakers differ, with odds against chance as extreme as theirs. The newer claim I could not rerun.
+Its titles, word list and values are not published. So what follows tests the same claim my way;
+it does not reproduce the paper.
+
+**What I tried.** The question that matters is what one author writing many characters produces.
+Novels of the right age with labelled speakers aren't in the library, but plays are, and in a play
+every speech carries its speaker's name. I took 354 plays printed between 1660 and 1700. A voice is
+a stretch of one speaker's words. The spread of five voices is how far apart they sit on the 150
+most common words. Then compare the Book of Mormon's five largest speakers (Mormon, Nephi, Alma,
+Moroni and the Lord, as labelled by an AI model in the first study and checked against Larsen's
+word counts) with five characters from one play, five leads by one playwright, and five leads by
+five playwrights.
+
+**The check.** Before the book, the measure had to tell five different playwrights from one
+playwright's five leads: the many-author set had to spread wider at least 70% of the time across
+all plays, and 60% in comedies only. Two ways of measuring spread were on the card: the average
+distance between voices, and the "volume" of the spread, which is the published study's own
+description.
+
+**When it failed: why, and what I changed.** At the card's setting, 1,000 words a voice, it missed:
+0.66 against 0.70 on all plays. The volume measure missed everywhere. So the book was not scored.
+A thousand words is short for this kind of measure, so I looked at longer voices on the plays only,
+with the book untouched. At 2,000 words it passed, narrowly: 0.71 on all plays, 0.68 on comedies. I
+made that change after seeing the miss, so it counts for less. I didn't take 3,000 words because
+only five plays have five speakers that long. The volume measure never passed and isn't used. Even
+passing, this is a weak instrument: at best it ranks five authors above one author 71% of the time.
+
+**The result.**
 
 | Five voices taken from | Spread |
 | --- | --- |
@@ -675,8 +1094,9 @@ The spread of five voices is how far apart they sit on the 150 most common words
 | The leads of five plays by five authors | 0.84 |
 | **The Book of Mormon's five largest speakers** | **1.07** |
 
-So the book's speakers are further apart than the characters of any one playwright, and further
-apart than five different playwrights. Taken alone that would look like the claim confirmed.
+The book's speakers are further apart than the characters of any one playwright, and further apart
+than five different playwrights. By the card's rule, "beyond". Taken alone that would look like the
+claim confirmed. It holds with King James phrases taken out too (1.09).
 
 It is not that simple, and the next table is why.
 
@@ -684,7 +1104,7 @@ It is not that simple, and the next table is why.
 | --- | --- |
 | Random 2,000-word stretches of the Book of Mormon, speakers ignored | 0.99 |
 | Random stretches of one play, speakers ignored | 0.67 |
-| Four Bible-style books of 1810 to 1829, by four different people | 0.97 |
+| Four Bible-style books of 1811 to 1822, by four different people | 0.97 |
 | One writer in two kinds of writing (six writers, Joseph Smith among them) | 0.94 to 1.16 |
 
 Any five stretches of the book are almost as far apart as its five speakers. Knowing who is
@@ -692,29 +1112,43 @@ speaking adds 8 percent. The book is simply a varied book: sermon, war story, le
 quoted scripture. And a spread of about 1.0 is what one person produces by changing the kind of
 writing, as Joseph Smith's own letters against his revelations show (0.97).
 
-What I take from it: the speakers do differ more than a playwright's characters, and most of
-that difference is the book changing subject and kind, not the speaker changing. This test
-cannot tell several hands from one hand writing in several kinds.
+**What it means, and what it doesn't.** The speakers do differ more than a playwright's characters.
+That part of the claim survives a fairer comparison. But most of the difference is the book
+changing subject and kind, not the speaker changing. This test cannot tell several hands from one
+hand writing in several kinds. Plays are verse and dialogue, not prose narrative, and a century and
+a half older. The book's speaker labels are a model's labelling.
 
-Limits. The check that the measure can tell different authors from one author's characters
-missed at my first setting (1,000 words a voice) and passed, narrowly, only after I doubled the
-length. Plays are verse and dialogue, not prose narrative. Who speaks each verse of the Book of
-Mormon was labelled by an AI model. The published study's own numbers are not available in
-full, so this tests the claim, it does not reproduce the paper.
+**What's left.** Compare windows within one narrator (Mormon across books) with windows across
+narrators, to split "speaker" from "part of the book". A prose comparison with labelled speakers,
+such as letter novels. The style encoders and author models on the same sets. Hilton's speaker
+database as a second labelling.
 
 ### Do its debates date to the 1820s? (BOM-103)
 
-Alexander Campbell said in 1831 that the book settles "every error and almost every truth
-discussed in New York for the last ten years": infant baptism, the trinity, the fall, free
-masonry, who may preach for pay. If that is right, the passages nearest in meaning to the book's
-debate passages should have been printed in the 1820s more than elsewhere.
+**The claim.** In February 1831 Alexander Campbell reviewed the book in the *Millennial Harbinger*.
+He said it decides "every error and almost every truth discussed in N. York for the last ten years",
+and named twenty: infant baptism, ordination, the trinity, regeneration, repentance, justification,
+the fall of man, the atonement, transubstantiation, fasting, penance, church government, religious
+experience, the call to the ministry, the general resurrection, eternal punishment, who may
+baptize, freemasonry, republican government and the rights of man. Dan Vogel (1993) made a
+narrower form of it: the book's answers to universal salvation repeat the anti-Universalist talk of
+early nineteenth-century America. The reply, from Martin Tanner and others, is that these are old
+Christian questions, argued since the Reformation and before.
 
-The plan: take the passages on 17 such topics, find the 100 nearest passages among 13 million
-from religious books printed 1640 to 1829, and see which decade they pile up in.
+**Their way first, except I didn't do it first.** Campbell gave no method. He read the list off the
+book and asserted it was New York's agenda, with no comparison to any other time. The honest order
+would have been: check his list his way, then build something better. I did it the other way
+round, and it took three designs to get back to him. Vogel's chapter I haven't bought, so his
+version is not replicated until the book is bought.
 
-First the same thing on books whose date I know. It did not work.
+**Design one: the nearest passages, by decade.** Take the book's passages on 17 debate topics. Find
+the 100 nearest passages in meaning among 13 million from religious books printed 1640 to 1829.
+See which decade they pile up in, corrected for how much each decade printed.
 
-| Books printed in | Dated to within a decade of the truth |
+*The check.* First the same thing on books whose date I know, 20 in each group. At least 12 of 20
+had to land within a decade of their print date, in every group.
+
+| Books printed in | Dated to within a decade |
 | --- | --- |
 | 1650s | 7 of 20 |
 | 1740s | 12 of 20 |
@@ -722,19 +1156,21 @@ First the same thing on books whose date I know. It did not work.
 | 1820s | 5 of 20 |
 | 1780 to 1799, clean hand-typed text | 0 of 20 |
 
-I had said 12 of 20 in every group. Only one group got there, so I did not run the Book of
-Mormon at all.
+Only one group made it. I did not run the Book of Mormon.
 
-Why it failed is worth a line. The library is lopsided: 3.9 million religious passages from the
-1820s and only 22,000 to 49,000 from each decade of the middle 1700s. I divided by each decade's
-size to be fair, and that made the thin decades win on a handful of neighbours. Nearly
-everything in modern spelling got dated to the 1750s. The clean copy of the 1830 text would
-have landed there too, whatever it says.
+*Why it failed.* The library is lopsided: 3.9 million religious passages from the 1820s, and only
+22,000 to 49,000 from each decade of the middle 1700s. Correcting for size made the thin decades
+win on a handful of neighbours. Nearly everything in modern spelling got dated to the 1750s, and
+the clean hand-typed texts were pulled there hardest. The 1830 text I hold is clean too. It would
+have landed in the 1750s whatever it says.
 
-So I tried once more, and said beforehand it would be the last try: search 1780 to 1829 only,
-and give every decade the same number of passages.
+**Design two: an even library.** Those two causes, and nothing else, got fixed. Search 1780 to 1829
+only, the issue's own scope. Use scanned text only in the library, so clean and scanned text aren't
+mixed. Give every decade exactly the same number of passages, so chance is a flat 20% per decade.
+I raised the bar (own or next-door decade at least 80%, own decade at least 40%) and said before
+running that if it missed, this way of doing it was finished.
 
-| Books printed in | Dated to their own or the next-door decade | Chance |
+| Books printed in | Own or next-door decade | Chance |
 | --- | --- | --- |
 | 1780s | 8 of 20 | 8 |
 | 1790s | 11 of 20 | 12 |
@@ -746,68 +1182,111 @@ and give every decade the same number of passages.
 
 Now everything lands late instead of in the 1750s. The 1810s and 1820s books "pass" only because
 all books land there, including ones written a century earlier. Had I run the Book of Mormon it
-would have come out 1810s or 1820s, and so would a reprint of a sermon from 1700. Finding the
-nearest passages by meaning does not tell you when something was printed. I did not run the Book
-of Mormon.
+would have come out 1810s or 1820s, and so would a reprint of a sermon from 1700. The lean moved
+with the shape of the library; the date signal never showed up. Finding the nearest passages by
+meaning does not tell you when something was printed. I did not run the Book of Mormon, and that
+method was done.
 
 One small thing did work, because it is only counting. Five of the book's doctrinal phrases, by
 decade, in 31,901 religious books:
 
-| Phrase (times in the Book of Mormon) | First seen | In the 1820s |
+| Phrase (times in the Book of Mormon) | In print from | In the 1820s |
 | --- | --- | --- |
-| infinite atonement (3) | 1730s | about as common as in any decade since |
+| infinite atonement (3) | one book in the 1670s, then the 1730s on | a little above earlier decades |
 | plan of salvation (3) | 1740s | steady since the 1750s |
 | probationary state (3) | 1740s | steady since 1800 |
 | demands of justice (4) | 1640s | commonest in the 1720s and 1740s |
 | fall of man (5) | throughout | |
 
-None of the five is new in the 1820s. They were all in print before Joseph Smith's grandparents
-were born. That neither supports nor undoes Campbell: he said the book took sides in the
-arguments of his day, not that it coined their words.
+None of the five is new in the 1820s. That neither supports nor undoes Campbell. He said the book
+took sides in the arguments of his day, not that it coined their words.
 
-So Campbell's claim is untested here. It needs a different tool, and any new one has to show
-first that an old reprint does not come out looking new.
+**Design three: back to the claim.** After two misses the owner asked me to go back to what
+Campbell actually said. A research pass by an AI agent read his review again and made the point I
+had skipped: he dated the book's *agenda*, the mix of questions, and every side agrees each question
+on its own is old. So two parts: first his list his way, then a test of the mix.
 
-**A third design, after going back to the claim.** Alexander Campbell wrote in 1831 that the
-book decides "every error and almost every truth discussed in New York for the last ten
-years" and named twenty. He compared them with nothing. So first his list, his way: is each
-topic in the book, and was it any less discussed in other times?
+*His list, his way.* Is each of his twenty topics in the 1830 text, by a written rule? Thirteen are.
+Seven are not there at any real rate (under 3 mentions per 100,000 words): infant baptism, the
+trinity, regeneration, justification, transubstantiation, penance and the call to the ministry.
+Then the comparison he didn't make. Of his twenty, religious print of the 1640s holds 13, the 1740s
+to 60s 15, the late 1700s 11, and American print of 1815 to 1829, 13. The 1640s cover his list as
+fully as the 1820s do. One topic is different: oath-bound secret societies, which he called
+freemasonry. The book has 14.5 per 100,000 words; no earlier body has more than 1.3. That fits the
+"secret combinations" test, where the newspapers jump in 1828.
 
-Thirteen of his twenty are in the 1830 text by my search rules. Seven are not there at any
-real rate: infant baptism, the trinity, regeneration, justification, transubstantiation,
-penance and the call to the ministry all come in under 3 mentions per 100,000 words. Then the
-comparison he did not make. Of his twenty topics, English religious print of the 1640s
-discusses 13, the 1740s to 60s 15, the late 1700s 11, and American print of 1815 to 1829, 13.
-The 1640s cover his list as fully as the 1820s do. One topic is different: oath-bound secret
-societies, which he called freemasonry, are in the book and in none of the earlier bodies.
-That fits the "secret combinations" test, where the newspapers jump in 1828.
+*The mix.* Take 39 topics from surveys of sects written at the time (1645, 1646, 1801, 1807, 1817),
+not from the book, silences included. Ask whether a text's mix of topics places it in its era, with
+six eras from 1640 to 1829 instead of decades, because a first look showed the 1810s and 1820s
+can't be told apart. Its check was tougher than before: own era at least 55% in every era, old
+reprints must not land late, the 1640s heresy catalogues must land early, and Joseph Smith's own
+revelations of 1828 to 1835 must land late.
 
-So the list, as a list, is not a fingerprint of the 1820s. Most of it is what Protestants
-argued about for two hundred years.
+It missed every bar. Known texts landed in their own era 20 to 50 percent of the time; chance was
+about 17%. The old reprints no longer landed late (1 of 20, against 15 of 20 before), which fixed
+the second design's fault, but they scattered instead of landing in their authors' eras. Joseph
+Smith's revelations were pulled early by their King James wording, one block of four landing where
+it should. One thing I should say plainly: the topic rules were run as written, not first checked
+by reading samples of what they catch. Those 4,680 readings are prepared and haven't been done.
+Whether checked rules would pass is unknown. I didn't score the book.
 
-Then my own test: take the topics from surveys of sects written in each period, not from the
-book, and ask whether a text's mix of topics places it in its era. It does not. Known texts
-landed in their own era 20 to 50 percent of the time, and I had set 55. The old reprints no
-longer land late, which was the fault of the second design, but they scatter. Joseph Smith's
-own revelations of 1828 to 1835 were pulled early by their King James wording, one block of
-four landing where it should. Three designs now, three misses, and I did not score the book.
+**What it means, and what it doesn't.** Three designs, three misses. I think that is itself the
+finding, and it is about the claim more than about my tools. If texts whose dates I know can't be
+placed by which doctrines they discuss, then "it discusses the questions of the 1820s" can't carry
+the weight Campbell put on it. Neither can "these are timeless questions" be shown this way. His
+list, as a list, is not a fingerprint of the 1820s; most of it is what Protestants argued about for
+two hundred years. The one topic that really is new in the book's era is the secret societies.
 
-I think that is itself the finding, and it is about the claim more than about my tools. If
-texts whose dates I know cannot be placed by which doctrines they discuss, then "it discusses
-the questions of the 1820s" cannot carry the weight Campbell put on it, and neither can "these
-are timeless questions" be shown this way. What is left that could be tested is narrower:
-which side the book takes on each question, and the one topic that really is new.
+**What's left.** Which side the book takes on each question, read against writers whose positions
+are on record (a simulated model reading, not built yet). The prepared rule-checking readings.
+Vogel's chapter, once bought.
 
 ### Chiasmus, with something to compare it to (BOM-107)
 
-A chiasm says things and then says them again in reverse order: A, B, C, then C, B, A. Welch
-found them in the Book of Mormon in 1969 and they have been offered ever since as a mark of
-ancient Hebrew writing. What nobody had was the rate in everything else.
+**The claim.** A chiasm says things and then says them again in reverse order: A, B, C, then C, B,
+A. John Welch found them in the Book of Mormon in 1969, and they have been offered ever since as a
+mark of ancient Hebrew writing. The reply has been that chiasms turn up anywhere if you look. Boyd
+and Farrell Edwards, two physicists, put a number on it in 2004: for a chiasm of n elements, the
+chance of that order is one in a very large number, and they gave figures for famous cases (Alma 36,
+with eight elements, at 0.00018). They argue the number shows design, not that it shows ancient
+origin. What nobody had was the rate in ordinary books.
 
-I wrote one fixed rule: reduce the text to its content words, and count every place where three
-or more words repeat in mirror order around a centre. Then I ran it on the Book of Mormon, the
-King James Bible, 360 library books, 120 translations, 25 Bible-style books and Joseph Smith's
-other dictations.
+**Their way first.** Welch's chiasms are found by reading, so there is nothing to rerun. Edwards
+and Edwards's formula I could check. Their program is no longer online, so I worked backwards: their
+published chances for Alma 36 and Leviticus 24 each imply how many "opportunities" they counted
+(365 and 338). One number reproduces both within 8%. So their arithmetic holds together, but I
+couldn't reproduce how they counted.
+
+**What I tried.** One fixed rule, run on everything. Reduce the text to its content words. Around
+every point, count how many words repeat in mirror order going outward, each word exactly twice, one
+on each side. Three or more levels is a chiasm. Then run it on the Book of Mormon, the King James
+Bible, 360 library books, 120 translations, 25 Bible-style books and Joseph Smith's other
+dictations. To control for how repetitive a text is, the card compared each text with a shuffled
+copy of itself.
+
+**The check.** Three parts, before the Book of Mormon was counted. Find at least 4 of 5 well-known
+Bible chiasms (in Leviticus, Genesis, Matthew, Isaiah, Mark). Find at least 90% of chiasms I
+planted in ordinary prose. And on ordinary library prose, don't fire much above the shuffled copy
+(at most 1.25 times).
+
+**When it failed: why, and what I changed.** It failed twice, and both fixes came before the book
+was counted. First it found only 2 of the 5 Bible chiasms. Looking at them, short words kept their
+endings ("lose" didn't match "loseth"), and a chiasm's span was measured to the wrong word, so every
+famous case "spilled" outside its passage. I fixed both. I also tried letting a word repeat three
+times, then put it back to exactly twice, because the two fixes alone reached 4 of 5. The miss is
+Mark 2:27, where the next verse says "sabbath" and "man" a third time.
+
+Then the plain-prose part failed: ordinary books came out at 1.30 times their shuffled copies,
+over the bar. The reason is that shuffling sentences also breaks the way ordinary prose echoes a
+word in the next sentence or two, so any real text beats its shuffle. The shuffle wasn't a fair
+baseline. I replaced it with a better one: count the same repeated words at the same distances, but
+in plain repeated order (A, B, C, A, B, C). For any set of repeated words, mirror order and plain
+order are equally likely unless someone prefers one. I wrote the bar for that control before
+looking at its number. Ordinary prose came out at 0.95, and the check passed: 4 of 5 Bible
+chiasms, 300 of 300 planted ones. I changed this after the first check failed, so the plain-order
+comparison counts for a little less than if I'd thought of it first.
+
+**The result.**
 
 | Text | Chiasms per 10,000 words (three levels or more, 40 words each side) |
 | --- | --- |
@@ -818,39 +1297,78 @@ other dictations.
 | Bible-style books | 37.4 |
 | Joseph Smith's other dictations | 37.4 |
 
-The Book of Mormon sits in the middle of the library, at the 48th percentile. Then the control
-that matters: count the same repeated words in the same places but in plain repeated order (A,
-B, C, A, B, C). If mirror order were being used on purpose, it should beat plain order. In the
-Book of Mormon mirror order comes out at 0.88 of plain order, in the King James Bible 0.94, in
-the library 0.95. Nothing is above 1.
+The Book of Mormon sits in the middle of the library, at the 48th percentile. Against plain order,
+mirror order comes out at 0.88 of plain order in the Book of Mormon, 0.94 in the King James Bible
+and 0.95 in the library. If mirror order were being used on purpose, it should beat plain order.
+Nothing is above 1. The same holds with the quoted Bible chapters taken out (0.88).
 
-Alma 36 is the famous one. By this rule its deepest mirror run is 5 levels in a tight window,
-and only 3 library passages in 1,000 of the same length do that. But the same chapter read in
-plain order reaches 6. It is a very repetitive chapter, in both directions.
+Alma 36 is the famous one. By this rule, in a tight window, its deepest mirror run is 5 levels, and
+only 3 library passages in 1,000 of the same length do that. But the same chapter read in plain
+order reaches 6. It is a very repetitive chapter, in both directions. And Edwards's eight-element
+odds don't survive a wide window: by this rule, eight levels at the widest setting turn up in about
+27% of library passages of the same length, because a wide window holds many repeated words.
 
-What I take from it: counted by repeated words, the Book of Mormon has no more chiasmus than an
-ordinary book of its time, and neither does the Bible. That second half is the limit. A rule
-that cannot tell the Bible from ordinary prose is counting word repetition, not the idea-level
-patterns Welch meant. So this says the word-level counts do not set the book apart. It does not
-say the hand-identified chiasms are not there.
+**What it means, and what it doesn't.** Counted by repeated words, the Book of Mormon has no more
+chiasmus than an ordinary book of its time, and neither does the Bible. That second half is the
+limit. A rule that can't tell the Bible from ordinary prose is counting word repetition, not the
+idea-level patterns Welch meant. So this says the word-level counts don't set the book apart, and
+that odds computed for a single passage need the rate in other books beside them. It does not say
+the chiasms people have found by hand aren't there.
 
-The rule found 4 of 5 well-known Bible chiasms and 300 of 300 planted ones. I changed two things
-after the first check failed and before the Book of Mormon was counted: a fix to how words are
-reduced, and the plain-order control in place of shuffling sentences.
+**What's left.** Type up Welch's and Parry's published chiasms as test items, each scored against
+library passages of the same length. Run the two published automatic detectors (Dubremetz and
+Nivre; Schneider and others) as a second rule.
 
 ### Other books that were dictated or "received" (BOM-125)
 
-The claim, made most fully by Brian Hales: the Book of Mormon is too long and too complex to
-have been dictated in a few months by a farmhand with little schooling. The usual comparison is
-to what an ordinary writer can do. A fairer one is to other long books that were dictated, or
-that their makers said were given to them.
+**The claim.** Brian Hales made the case most fully in 2019, in *Dialogue* and again in
+*Interpreter*: the Book of Mormon is unlike other books that were dictated, channelled or said to
+be given by a spirit. It is longer, more complex, and was produced faster by a man with less
+schooling. His figures for the book: 269,528 words, a reading level of about grade 11, 5,600 to
+5,900 different words, 337 names. Scott Dunn argued the other side in 2002: automatic writing and
+trance dictation do produce long, complex books from people with little schooling, so the Book of
+Mormon is not unique in that way.
 
-I collected 23: Milton's *Paradise Lost* (dictated blind), five works of Swedenborg, Andrew
-Jackson Davis's *Principles of Nature* (dictated in trance by a man of 19 with a few months of
-school), *Oahspe*, the Koran in Sale's English, Mary Baker Eddy, the Patience Worth novels (a
-St. Louis housewife at a ouija board), three late novels Henry James dictated, and the English
-prophets Southcott, Brothers and Wroe. Then I measured every one the same way, 20,000 words at
-a time.
+**Their way first.** Hales compared sixteen channelled texts by length, by how they were produced,
+and by their makers' schooling. I could not get his table of sixteen, only his summary figures, so
+his comparison itself is not rerun. What I could do was count his numbers for the Book of Mormon
+again, on the 1830 text, with the rules written down:
+
+| | Hales | Counted here |
+| --- | --- | --- |
+| Words | 269,528 | 265,197 |
+| Different words | 5,600 to 5,900 | 5,818 |
+| Names | 337 | 381 (a different rule) |
+| Reading grade | about 11 | 15.6 |
+
+The first three come out close. The reading grade does not, and the reason is printing, not
+writing. The 1830 printer ran clauses together into very long sentences, 39.9 words on average,
+and reading-grade formulas count sentence length. Hales used a modern edition.
+
+**What I tried.** Hales's comparison is length and schooling. Dunn's is a list of cases. Neither
+puts the books on one scale. So I collected 23 long books that were dictated or said to be
+received, and measured every one the same way, 20,000 words at a time: Milton's *Paradise Lost*
+(dictated blind), five works of Swedenborg, Andrew Jackson Davis's *Principles of Nature*, the
+first volume of *Oahspe*, the Koran in Sale's English, Mary Baker Eddy, two Patience Worth novels,
+three late novels Henry James dictated, Scott's *Bride of Lammermoor*, and the English prophets
+Southcott, Brothers and Wroe, among others. The measures: how many different words, sentence
+length, reading grade, names, how often the text repeats its own six-word phrases, and how much of
+it is in King James phrasing.
+
+**The check.** Before the Book of Mormon was measured, each measure had to get known cases right.
+The six McGuffey readers, graded first to sixth by their compiler, plus Gibbon above them, had to
+come out in order. They did, on every vocabulary and sentence measure (rank correlation 0.93 to
+1.00, bar 0.85). The name count had to track the number of people and places a Bible
+reference database gives for each book of the King James Bible; it did (0.99). And when I planted
+repeated phrases and King James verses into Gibbon and the sixth reader, the measures had to find
+them; they recovered 97 to 101 percent.
+
+**What failed, and what I did about it.** One measure missed. I had a second way of counting
+names, counting only names that turn up at least twice. It tracked the Bible database in order
+but came out at about half its totals, short of the bar I had written down. So I dropped it. I did
+not adjust it until it passed. Ten measures were left.
+
+**The result.**
 
 | Measure | Book of Mormon | The 23, middle | The 23, lowest to highest |
 | --- | --- | --- | --- |
@@ -862,36 +1380,63 @@ a time.
 | Share that repeats its own earlier phrases | 7.0% | 0.9% | 0 to 4.5% |
 
 On eight of ten measures the Book of Mormon is inside the range of the other received books. On
-two it is outside, and both point the same way: it has the narrowest vocabulary of all 24 but
-one, and it repeats its own six-word phrases more than any of them. A typical book of the
-period uses 3,753 different words in 20,000. The Book of Mormon uses 1,679. Its long sentences
-are mostly the 1830 printer's punctuation.
+two it is outside, and both point the same way. Its vocabulary is the second narrowest of all 24,
+next to Swedenborg's *Divine Love and Wisdom* (1,672). On one version of the vocabulary count it
+falls below the lowest received book by two and a half words. And it repeats its own six-word
+phrases more than any of them. A typical book in the library uses 3,753 different words in 20,000.
+The Book of Mormon uses 1,679. Its King James share is second only to Richard Brothers.
 
-So by these measures it is not more complex than other dictated and received books. It is a
-long book made from few words, much repeated, with a quarter of it in the Bible's phrasing.
+For scale: two Bible-style books of the 1810s and 1820s that were long enough use 2,387 to 2,555
+different words in 20,000. Joseph Smith's other dictated texts, pooled, use 1,918, with 17 percent
+King James phrasing.
 
-That does not answer Hales. His case rests on things this cannot count: the plot holding
-together across 265,000 words, the flashbacks, the calendar, the speed. Counting words says
-nothing about whether a story is consistent. And I could not get his own table of sixteen
-texts, so this is his question with my list. Not included, because they are under copyright:
-*A Course in Miracles* and the Seth books. *Oahspe* is the first volume only.
+**What it means, and what it doesn't.** By these counts the book is not more complex than other
+dictated and received books. It is a long book made from few words, much repeated, with a quarter
+of it in the Bible's phrasing. That cuts against the part of Hales's case that rests on
+complexity of vocabulary and sentences.
+
+It does not answer the rest of his case. His strongest points are things this cannot count: the
+plot holding together across 265,000 words, the flashbacks, the speed of dictation. I did not
+compute speed; no dated record was given to the test, and I won't take one from memory. Ten
+measures are also really about five families of measure, so "eight of ten" is less independent
+than it sounds. And the 23 are my list, not his sixteen. *A Course in Miracles* and the Seth books
+are under copyright and not held. *The Urantia Book* is left out until I decide about it. *Oahspe*
+is the first of seven volumes.
+
+**What's left.** Hales's own table of sixteen, the rest of *Oahspe*, a modern-punctuated Book of
+Mormon for the sentence measures, and the same measures on the book's own parts.
 
 ### The geography (BOM-116)
 
-People have fitted the book's lands to southern Mexico, to western New York, to the Mississippi
-valley and to the whole hemisphere. Each map looks reasonable to the person who drew it. What I
-wanted to know is whether any real region fits the book's own directions better than a random
-patch of the earth does.
+**The claim.** People have fitted the book's lands to southern Mexico and Guatemala (John
+Sorenson, 1985 and after, with the Isthmus of Tehuantepec as the narrow neck), to western New York,
+to the Mississippi valley (the "Heartland"), and to the whole hemisphere with Panama as the neck.
+Behind all of them sits a second claim. John Clark in 1989 and Sorenson in 2000 built a map from the
+text alone, before putting it on any real ground. Clark boiled it down to ten points: a narrow neck
+between an east sea and a west sea, the river Sidon running from a southern wilderness, Nephi
+in a highland about three weeks' travel south of Zarahemla, and so on. Their point is that hundreds
+of scattered passages in a long dictated book never contradict that map. Critics answer that a
+careful storyteller can keep an invented map straight, and that the Mexican fit needs the book's
+"north" turned by 45 to 90 degrees.
 
-One fixed rule pulls out every sentence that places one named place against another: north of,
-east of, by the sea, near, so many days' journey. Then, for a region, a program looks for the
-best real sites for each place, and I compare the region's score with 400 random regions.
+**Their way first.** There is no number to rerun here. On every side, the method is to read the
+verses, draw a map, and compare it with a region point by point. Nobody has counted how many other
+regions would fit as well. Sorenson's place-by-place placements are in books I have not bought, so
+his model is not replicated until those are bought. Clark's ten points I keyed by hand from his
+1989 article, and I come back to them below.
 
-First the texts where I know the answer. Step one worked. Put the Bible's places at their true
-coordinates and 71 percent of its statements hold, against 29 percent when the same places are
-scattered at random. So the sentences do carry real geography.
+**What I tried first.** One fixed rule pulled out every sentence that places one named place
+against another: north of, up from, by the sea, near, so many days' journey. Then, for a region, a
+program found the best real towns for each place, and I compared the region's score with about 400
+random patches of the earth. If Mexico or New York beat nearly all the random patches, that would
+mean something.
 
-Step two did not work.
+**The check.** First, texts where I know the answer. Step one worked. Put the Bible's places at
+their true coordinates and 71 percent of its statements hold, against 29 percent when the same
+places are scattered at random. So the sentences do carry real geography.
+
+Step two did not work. Each text had to pick out its own region ahead of 95 percent of the random
+ones.
 
 | Text | Its real region | Random regions that fit as well or better |
 | --- | --- | --- |
@@ -901,62 +1446,93 @@ Step two did not work.
 | Clavigero's history of Mexico | Mexico | 50 |
 | Ramsay's American Revolution | Philadelphia | 327 |
 
-If the method cannot find Palestine from the Bible, it cannot find anything from the Book of
-Mormon. Given a few hundred towns to choose from, the program can make almost any set of
-directions fit almost anywhere. Which is, I think, the real finding: it is easy to fit a map,
-and a good-looking fit to one region is not evidence until someone shows how badly the same
-text fits everywhere else. I did not score the Book of Mormon against any region.
+**Why it failed, and what I changed.** With a few hundred towns to choose from, the program could
+make almost any set of directions fit almost anywhere. The random patches scored about as well as
+the true region in every text. I didn't loosen the bar until the Bible passed; that would have been
+fitting the check to its answer. (Tests written after the first run did find a bug, "from the land
+of A" being missed, and I fixed it and reran. It missed by the same margin.) So the Book of Mormon
+was not scored against any region.
 
-What I can say about the book's own statements: the rule found 33 of them about 23 places (14
-directions, 12 by the sea, 6 near, 1 narrow neck), and none contradicts another. They can all be
-true at once on a flat map. But they are few, and the rule misses the long description in Alma
-22 because it runs across sentences.
+What I could still say about the book's own statements: the rule found 33 of them about 23 places,
+and none contradicts another. But they are few. The rule only reads sentences that name both
+places, so it misses the long description in Alma 22. It also took Teancum and Moroni for places.
+And the book is thin on directions to start with: 8.4 compass words per 10,000, against 23 to 37
+in Lewis and Clark, Pike and Carver.
 
-A fair test needs each model's own published placements (Sorenson's map, the Heartland maps),
-scored against random placements of the same places, the way the Bible check worked.
+That told me what was wrong. Too few statements, read too crudely, against a map of towns that
+gave the program too much freedom. So I tried again.
 
-**A second design, with real terrain.** The first try used 33 short statements. This time a model
-read every passage with a place in it (simulated reading) and turned each into a typed statement:
-north of, up from, by the sea, a river running from here to there, so many days' travel. Then a
-program laid the places out on real coastlines, rivers and elevation (Natural Earth and NOAA's
-ETOPO, both public), on circles of land the size the text covers. The question was how many
-circles on Earth could hold the whole map at once. If almost none can, a fit means something.
+**A second design, on real terrain.** This time a model read every passage with a place in it
+(simulated reading) and turned each into a typed statement: north of, up from, by the sea on which
+side, a river running from here to there, so many days' travel. Then a program laid the places out
+on real coastlines, rivers and elevation (Natural Earth and NOAA's ETOPO, both public), on circles of
+land the size the text covers. The question changed slightly, and on purpose: not "which region
+fits best" but "how many circles on Earth could hold the whole map at once?" If almost none can, a
+fit means something. If a quarter of the earth can, a fit is cheap. That still answers the
+original question, because it is exactly what a "fits region X" claim needs and never reports.
 
-Before the Book of Mormon, five texts whose real setting is known had to pass: the Bible's
-narrative books, Josephus, Xenophon's march, Lewis and Clark, and *The Late War*. None did.
+Before the Book of Mormon, five texts whose setting is known had to pass: the Bible's narrative
+books, Josephus, Xenophon's march, Lewis and Clark, and *The Late War*. Each had to fit its own
+region and fit at most 5 percent of the earth. And Clark's own method, tried on the Bible, had to
+rebuild three plain features of Palestine.
 
-The Bible's places spread across about 1,200 km. At that size its stated geography fits 58
-percent of the circles of land on Earth, Palestine among them. Josephus fits 96 percent, *The
-Late War* 93. Lewis and Clark, with 338 statements, fits none at all, not even the Missouri and
-the Columbia. The more a text says, the more chances for one misread statement to rule out every
-place; the less it says, the more places it fits. So the count measured how much each text says,
-not where it is set. And when the model read the same passages twice in different formats, the
-two readings agreed barely more than chance would give (kappa 0.26).
+None passed.
 
-I also tried John Clark's 1989 method on the Bible: build the internal map first, then compare.
-Of three plain features of Palestine (sea to the west, Jordan south into the Salt Sea, hill
-country up from Jericho), it rebuilt one.
+| Text | Circle size | Share of the earth's circles it fits | Its own region? |
+| --- | --- | --- | --- |
+| The Bible's narrative | 1,200 km | 58% | yes |
+| Josephus, *War* | 4,800 km | 96% | yes |
+| *The Late War* | 2,400 km | 93% | yes |
+| Xenophon | 4,800 km | 12% | no |
+| Lewis and Clark (338 statements) | 4,800 km | 0 of 25 | no |
 
-So the Book of Mormon was not scored on fit. What I take from it: "the geography fits region X"
-needs two things nobody has shown, for any region, on any side. One is a reading of the book's
-statements that two readers agree on. The other is a scale at which even the Bible picks out
-Palestine from the rest of the world. The other half of this test asks whether real maps
-contradict themselves less than invented ones (*Gulliver*, *Treasure Island*, Oz). It has its own
-check, and its reading is queued.
+Two more things failed. When the model read the same passages twice in different formats, the two
+readings agreed barely better than chance (kappa 0.26, against a bar of 0.7). And Clark's method on
+the Bible rebuilt one of the three Palestine features (the Jordan running south into the Salt Sea),
+not the sea to the west or the hill country up from Jericho.
 
-A side result from the radiocarbon data: within 300 km of the Isthmus of Tehuantepec, the open
-databases hold 5 dates from 1000 BC to AD 1000; Panama 0; the Great Lakes 398. So dated occupation
-cannot be compared fairly between the proposed settings with open data.
+**The result.** The Book of Mormon was not scored on fit, either way. I got some side facts without
+needing the reading. On Clark's own scale for the narrow neck, about 4 days' travel at 15 to 40 km a
+day, no proposed isthmus fits across his east-west axis: Tehuantepec is 245 km across, Panama 231
+km east to west, Niagara 272. Most of Clark's points cannot be graded at all without Sorenson's
+placements. And the radiocarbon databases hold 5 dates from 1000 BC to AD 1000 within 300 km of
+Tehuantepec, 0 near Panama and 398 near the Great Lakes, so dated occupation cannot be compared
+fairly between the settings with open data.
+
+**What it means, and what it doesn't.** I think the two failures are the finding. The more a text
+says, the more chances one misread statement has to rule out every place, its own included. That is
+what happened to Lewis and Clark. The less it says, the more places it fits. So the count measured
+how much each text says and how well it was read, not where it is set.
+
+For the debate: "the geography fits region X" needs two things nobody has shown, for any region, on
+any side. One is a reading of the book's statements that two readers agree on. The other is a scale
+at which even the Bible picks out Palestine from the rest of the world. That applies equally to the
+claim that it fits nowhere.
+
+**What's left, and in progress.** The second design has one more part, and it is running now. It
+asks a different question: do real maps contradict themselves less often than invented ones
+(*Gulliver*, *Treasure Island*, *The Mysterious Island*, Spalding's manuscript)? It has its own
+check: real and invented maps have to separate cleanly before the Book of Mormon is placed between
+them. A model is reading those texts now (3,687 questions, then 467 on the book). After that,
+Sorenson's placements, once the books are bought.
 
 ### "Secret combinations" (BOM-123)
 
-The Book of Mormon calls the Gadianton robbers a "secret combination". In September 1826 William
-Morgan vanished in western New York after threatening to print the Masons' secrets, and the
-anti-Masonic movement began. Dan Vogel and others say that in those years the phrase meant
-Freemasonry. Daniel Peterson and others say it was an ordinary phrase for any conspiracy.
+**The claim.** The Book of Mormon calls the Gadianton robbers a "secret combination". In September
+1826 William Morgan vanished in western New York after threatening to print the Masons' secrets,
+and the anti-Masonic movement began. Dan Vogel argued in 1989 that around 1830 the phrase meant
+Freemasonry "almost exclusively", so the robbers echo the anti-Masonic years. Daniel Peterson
+(1990, 1992), Paul Mouritsen (2003) and others replied that it was an ordinary phrase for any
+conspiracy. Peterson's example: Andrew Jackson, himself a Mason, used it of Henry Clay's
+supporters in December 1826.
 
-I counted every use in 209,467 books printed 1700 to 1830 and 114,633 newspaper pages from 1800
-to 1830. There are 926.
+**Their way first.** Both sides argue from examples. Vogel quotes anti-Masonic newspapers using the
+phrase of the Masons. Peterson and Mouritsen quote uses that have nothing to do with Masons. Nobody
+reports a share by year, and that is the thing the dispute turns on. I have not read Vogel's article
+itself, so his examples are not rechecked here. I went straight to the count both sides needed.
+
+**What I tried.** I counted every use in 209,467 books printed 1700 to 1830 and 114,633 newspaper
+pages from 1800 to 1830. There are 926.
 
 | Years | Uses in books, per million words | Uses in newspapers, per million words |
 | --- | --- | --- |
@@ -968,58 +1544,106 @@ to 1830. There are 926.
 | 1829 | 0.060 | 0.54 |
 | 1830 | 0.082 | 0.15 |
 
-For scale, over the same years the word "anti-masonic" goes from 0.001 per million words to
-3.5, more than three thousand times.
+**The check, part one.** A counter has to see a real change when there is one. The word
+"anti-masonic" had to rise; it went from 0.001 per million words before 1826 to 3.5 in 1827 to
+1830, more than three thousand times. Steady phrases had to stay steady; "of the" and "in the course
+of" stayed within 1.2 times their middle rate. Passed.
 
-Two things are plain from the counts. The phrase was not new: it is in print through the whole
-century before, and in books its rate does not move when the Morgan affair breaks. And in
-newspapers it does jump, about tenfold, in 1828 and 1829.
+So two things are plain from the counts. The phrase was not new: it is in print through the whole
+century before. In books its rate does not move when the Morgan affair breaks. In newspapers it
+does jump, about tenfold, in 1828 and 1829.
 
-What the counts cannot say is what each use is about, and that is the whole dispute. I wrote a
-rule: call a use Masonic if a word like "mason" or "lodge" stands within 30 words. Then I
-checked the rule on books whose titles settle the subject. In books about Freemasonry it found
-only 16 of 37 uses. Anti-Masonic writers used "secret combination" as a name for Masonry
-without saying "Mason" anywhere near it. So the rule undercounts exactly the uses that matter,
-and I did not use it, and I did not go on to the Book of Mormon's own uses.
+**When it failed: the word rule.** The counts cannot say what each use is about, and that is the
+whole dispute. My first try was a rule: call a use Masonic if a word like "mason" or "lodge" stands
+within 30 words of it. I tested the rule on books whose titles settle the subject. In books about
+Freemasonry it found only 16 of 37 uses, against a bar of 75 percent.
 
-The next step is to have each of 826 uses read in its paragraph and labelled (by an AI model,
-which I will say is simulated judging), after the same check on the titled books. It is in the
-queue.
+Reading the misses showed why. Anti-Masonic writers used "secret combination" as a *name* for
+Masonry: "a powerful, secret combination", with no "Mason" anywhere near it, because the whole book
+was about Masons. So the rule undercounts exactly the uses that matter. It also turned out that one
+passage was reprinted in four or five books, so it counted four or five times. I did not use the
+rule and did not go on to the Book of Mormon.
 
-Limits. The newspapers held are mostly from Rhode Island, Virginia and Washington, none from New
-York. The catalogue does not say where a book was printed. Reprints count once a copy.
+**What I changed, and why it still answers the question.** I changed this after seeing the first
+result, so it counts for a bit less, and I allowed myself only one more try. A model (sonnet; this
+is simulated judging) now reads 150 words each side of each use, enough to see what an epithet
+refers to. It is not told the book's title or the year, since the title is how the check sample was
+chosen and every Masonic-titled use is from 1827 on. Reprints count once. Two other changes: the
+trade-titled check group had only 20 uses, so trade and politics were pooled, and the Masonic group's
+minimum came down to 20 because counting reprints once shrinks it. I wrote all of that down before
+asking the model anything.
 
-**The reading, done.** The model (sonnet; simulated judging) first read the uses in books whose
-titles settle the subject. It called 21 of 26 passages in Masonic-titled books Freemasonry,
-above the bar of 75 percent, and none of the passages in trade or politics books. So it passed,
-and I let it read the 826-use sample.
+On the way I found a flaw in my own title list: 13 of the 20 "trade" uses came from one captivity
+memoir, there only because its title says "manners and customs". It doesn't matter for the check,
+which only asks "not Masonic", but it is the kind of thing that hides in a word list.
 
-Vogel's claim, as I wrote the bar down beforehand: at least 9 in 10 uses Masonic in 1827 to 1830
-would be a yes, half or fewer a no. The answer is a no. Pooled, the Masonic share was 0 in 1800 to
-1825, then 14 percent in 1826, 19 in 1827, 33 in 1828, 50 in 1829 and 45 in 1830: 38 percent
-across the four years, on 157 uses. Before 1826 the phrase was almost always political, a faction
-or a plot against a government.
+**The check, part two.** The model called 21 of 26 passages in Masonic-titled books Freemasonry
+(bar 75 percent), and none of the passages in trade or politics books. Passed. Then it read a sample
+of 826 uses, up to 40 a year. That run was cut at 575 by a machine shutdown and picked up where it
+stopped.
 
-Newspapers look different: 0 of 18 uses Masonic before Morgan disappeared in September 1826, 28
-of 34 after. That would be Vogel's pattern. But when I looked at where they came from, 23 of the
-28 are from one paper, the *Pawtucket Herald and Independent Inquirer*, started in September 1828,
-with anti-Masonry on 202 of the 279 pages we hold. So the newspaper jump I reported above is mostly
-one anti-Masonic weekly. We hold no New York paper from those years, and that is where the
-question really sits: the Palmyra papers are the ones to find.
+**The result.** Vogel's bar, written down before anything was read: at least 9 in 10 uses Masonic in
+1827 to 1830 would be a yes; half or fewer a no.
+
+| Years | Share of uses that mean Freemasonry |
+| --- | --- |
+| 1800 to 1825 | 0 |
+| 1826 | 14% |
+| 1827 | 19% |
+| 1828 | 33% |
+| 1829 | 50% |
+| 1830 | 45% |
+| 1827 to 1830, together | 38% (157 uses) |
+
+The answer is a no. Before 1826 the phrase was almost always political: a faction, or a plot
+against a government. After Morgan, a Masonic meaning grows, but it never becomes most uses.
+
+Newspapers look different at first. Of 18 uses before Morgan disappeared, none are Masonic. Of 34
+after, 28 are. That would be Vogel's pattern. But when I looked at where they came from, 23 of the 28
+are from one paper, the *Pawtucket Herald and Independent Inquirer*, which we hold from September
+1828 on. It is about anti-Masonry on 202 of the 279 pages we have. So the newspaper jump in the
+table above is mostly one anti-Masonic weekly in a thin sample of seven titles. None of them is from
+New York.
 
 The Book of Mormon's own 20 uses read as robber bands (15), some other secret society (3) or
-political plots (2), none as Freemasonry. That is what the text says on its face. It cannot tell
-whether whoever wrote it had Masons in mind by analogy, which is the actual argument.
+political plots (2), none as Freemasonry. Joseph Smith's other texts have 4, all crime or a society.
+The Bible-style books have none at all.
+
+**What it means, and what it doesn't.** Peterson's side is right that the phrase was old and
+general. Vogel's side is right that a Masonic meaning rose after 1826, to about half the uses by
+1829. "Almost exclusively" does not hold in the print we have.
+
+What this cannot do is say what the writer of the Book of Mormon had in mind. The model reads the
+literal referent. A writer describing robber bands bound by oaths, and meaning the Masons by
+analogy, gets labelled "crime". That analogy is the actual argument, and counting cannot reach it.
+Nobody has read the model's labels by hand yet.
+
+**What's left.** A hand check of a sample of labels. New York papers of 1827 to 1830, which we do not
+hold; the *Wayne Sentinel* and the Palmyra *Reflector* are the ones to find, and that is where the
+question really sits.
 
 ### Joseph Smith's other dictated texts, and the Lectures on Faith (BOM-104)
 
-Two questions. Do the Book of Moses, the Book of Abraham and the later revelations sit near the
-Book of Mormon, near Joseph Smith's ordinary writing, or near somebody else? And who wrote the
-1835 Lectures on Faith, which earlier studies give mostly to Sidney Rigdon?
+**The claim.** Two questions that need the same tool. First: who wrote the seven Lectures on Faith,
+printed in 1835? Alan Phipps's 1977 study gave most of them to Sidney Rigdon and one to Joseph Smith
+(the summaries I have disagree on whether it is Lecture 2 or 5). Larsen and Rencher in 1982 largely
+agreed. Noel Reynolds in 2005 gave all seven to Rigdon. Second: do Smith's later dictated texts,
+the Book of Moses, the Book of Abraham and the revelations, sit near the Book of Mormon, near his
+ordinary writing, or near someone else?
 
-Both need the same thing first: a measure that can tell Smith, Rigdon, Cowdery, Phelps and
-Parley Pratt apart on writing I know is theirs. I held back ten 1,000-word pieces from each and
-asked every measure whose they were. Guessing gets 2 in 10.
+**Their way first.** Not replicated. Phipps's method I have not read (his thesis is held privately
+and not yet read), and Reynolds's paper is a historical argument with nothing to rerun. What I have
+of their answers is the summaries. So the comparison at the end is with what they are said to have
+found.
+
+**What I tried.** Before asking who wrote the Lectures, I asked whether any measure could tell the
+candidates apart on writing I know is theirs. Five men: Smith, Rigdon, Oliver Cowdery, W. W. Phelps
+and Parley Pratt. Pratt is in as a decoy; no published study names him. Six measures: common words
+counted two ways, the study's two style encoders, and small author models at two training sizes.
+King James phrases were cut out of everything first.
+
+**The check.** Ten held-back 1,000-word pieces from each man; every measure had to say whose they
+were. Guessing gets 2 in 10. The bar was 8 in 10 on average, and no one below 5.
 
 | Measure | Smith | Rigdon | Cowdery | Phelps | Pratt |
 | --- | --- | --- | --- | --- | --- |
@@ -1030,24 +1654,35 @@ asked every measure whose they were. Guessing gets 2 in 10.
 | Author models, light tuning | 6 | 1 | 7 | 1 | 2 |
 | Author models, heavier tuning | 10 | 4 | 8 | 1 | 6 |
 
-I had said 8 in 10 on average and no one below 5. Nothing reached it. Rigdon, the man the
-published studies name, is the one hardest to recognise, and Phelps is nearly invisible. So I
-scored neither the dictated texts nor the Lectures, and this can neither confirm nor contradict
-the Rigdon attribution.
+**When it failed, and why.** Nothing reached the bar. Rigdon, the man the published studies name,
+was the hardest to recognise, and Phelps was nearly invisible. So I scored neither the Lectures nor
+the dictated texts, and at that point this could neither confirm nor contradict the Rigdon
+attribution.
 
-The likely reason is the samples. Rigdon's signed writing here comes to 20,000 words. Four of
-the five men were printed in the same two church papers, perhaps through the same editor's
-pen. Smith's known writing is letters and a history, not doctrine.
+The likely reason was the samples. Rigdon's signed writing here came to about 20,000 words. Four of
+the five men were printed in the same two church papers, perhaps through the same editor's pen.
+Smith's known writing is letters and a history, not doctrine.
 
-One thing I got wrong in the procedure: the author-model program scored every text in one
-pass, so numbers for the Book of Mormon and the Lectures were computed and saved before the
-check had been read. I did not look at them, and the program now refuses to read them when the
-check fails. It should have been two passes.
+I also got one thing wrong in the procedure. The author-model program scored every text in one
+pass, so numbers for the Book of Mormon and the Lectures were computed and saved before the check
+had been read. I have not looked at them, and the program now refuses to read them when the check
+fails. It should have been two passes, and in the second design it was.
 
-I tried once more with more text: 18 more of Smith's letters, and two long series from the 1833
-to 1835 church paper that the editor of Rigdon's collected writings gives to Rigdon (they are
-unsigned). Phelps had too little and was dropped. This time one measure of six just passed,
-common words, at exactly 8 in 10. Move one piece and it fails. So read the rest as a lean.
+**What I changed.** I changed this after seeing the first check fail, so it counts for less, and I
+allowed one more try only. The change was the one the failure pointed to: more text. I added 18
+more of Smith's letters and notes, and two long series from the 1833 to 1835 church paper that the
+editor of Rigdon's collected writings gives to Rigdon. They are unsigned, so that attribution is the
+editor's, not the paper's. Phelps had too little text to meet the new size rule and was dropped.
+Every man got 20 training pieces instead of 8. And because Rigdon's series quote the revelations, I
+cut any eight-word run a candidate shares with the scripture texts, so nobody looks close to a
+target just by quoting it.
+
+**The check, again.** One measure of six passed: common words, counted the first way, at exactly 8 in
+10 (Smith 9, Rigdon 5, Cowdery 9, Pratt 9). Move one piece and it fails. The encoders and the author
+models, the tools behind the main study's findings, all missed again. So everything below rests on
+one measure that barely qualified. Read it as a lean.
+
+**The result.**
 
 | Lecture | Closest | Next | Earlier studies say Rigdon |
 | --- | --- | --- | --- |
@@ -1059,39 +1694,64 @@ common words, at exactly 8 in 10. Move one piece and it fails. So read the rest 
 | 6 | Rigdon | Pratt | agrees |
 | 7 | Rigdon | Pratt | agrees |
 
-Five of seven go to Rigdon, as the earlier studies said. Every margin is thin, and the runner-up
-is nearly always Parley Pratt, who was not at the school where the Lectures were given. Pratt is
-in the test as a decoy. A decoy that keeps coming second is the measure recognising a kind of
-writing, the doctrinal essay of the 1830s, more than a man. And the Rigdon text I added is that
-same kind, from those same years.
+Five of seven go to Rigdon, as the earlier studies said. Lecture 2 going to Smith matches one of
+the two readings of Phipps. But every margin is thin, and in Lectures 3 and 4 the 1,000-word pieces
+vote for Pratt even though the whole lecture goes to Rigdon. The runner-up is nearly always Pratt,
+the decoy, and Pratt also takes Lecture 5, the shortest at 650 words.
 
 For the dictated texts, the same measure puts the revelations of 1828 to 1834 with Smith's own
 letters (47 of 52 pieces), the Book of Moses nearest the Book of Mormon, and the Book of Abraham
-nearest Pratt. None of it is firm enough to call, and Rigdon is never the closest to any of
-them. I see no drift away from the Book of Mormon over the years.
+nearest Pratt. None of these is firm enough to call by the rule I set. I see no drift away from the
+Book of Mormon over the years. Rigdon is never the closest to any of them.
 
-So: a lean toward Rigdon for most of the Lectures, on one measure that barely qualified.
+**What it means, and what it doesn't.** A decoy that keeps coming second is the measure recognising a
+kind of writing, the doctrinal essay of the 1830s, more than a man. And the Rigdon text I added is
+that same kind, from those same years, which favours him on genre as much as on person. So: a lean
+toward Rigdon for most of the Lectures, on one measure that barely qualified. It neither settles the
+question nor overturns the earlier studies.
+
+On the dictated texts, the revelations sitting with Smith's letters by common words does not
+contradict the main study, which put the revelations with the Book of Mormon. That finding came
+from the encoders and author models, and those did not pass this check.
+
+**What's left.** Read Phipps, Larsen and Rencher, and Reynolds in the original. Put an interval on
+each lecture's winner by resampling, which is minutes of computer time. No further redesign of this
+test.
 
 ### Does it read like a translation? (BOM-102)
 
-Two versions of one claim. The broad one: translated books carry marks of translation, and the
-Book of Mormon has them. The narrow one: it has particular Hebrew turns of phrase, "plates of
-brass" for "brass plates", "dreamed a dream", "and it came to pass".
+**The claim.** Two versions of one claim. The broad one: translated books carry marks of
+translation, and the Book of Mormon has them. The narrow one, made by John Tvedtnes (1970, 1991),
+Donald Parry (2002), Daniel Peterson (2002) and Royal Skousen (1994): it has particular Hebrew turns
+of phrase. "Plates of brass" for "brass plates", "dreamed a dream", "and it came to pass". And the
+one Skousen stresses most: "if ... and" sentences, like "if ye will ..., and ye shall ...", which he
+says the original text had and later editions removed. Tvedtnes gave a count too: "land of promise"
+22 times against "promised land" 10.
 
-The hard part of both is the same. Plenty of Americans before 1830 wrote whole books in Bible
-style on purpose: *The Late War*, the *Chronicles of Eri*, *The First Book of Napoleon*. None
+The hard part of both versions is the same. Plenty of Americans before 1830 wrote whole books in
+Bible style on purpose: *The Late War*, the *Chronicles of Eri*, *The First Book of Napoleon*. None
 had a Hebrew original. A test that cannot tell those from real translations only detects Bible
 style.
 
-**The broad version failed its check.** I trained a classifier on 695 books the library
-catalogue marks as translations and 1,387 written in English. On books it had not seen it was
-right 88 percent of the time. But it had to do two more things at once: call the King James
-Bible, Sale's Koran and Whiston's Josephus translations, and not call the imitations
-translations. No version did both. One scored *The Late War*, a history of the War of 1812, as
-more of a translation than the Bible. So I did not score the Book of Mormon.
+**What I tried first.** I skipped their way at first, which was a mistake I fixed later. Two parts.
 
-**The narrow version ran.** Ten rules, one per construction. Seven passed their check (at least
-twice as common in the King James Old Testament as in ordinary prose). Per 10,000 words:
+The broad part: I trained a classifier on 695 books the library catalogue marks as translations and
+1,387 written in English. To pass, it had to be right on books it had not seen, call the King James
+Bible, Sale's Koran and Whiston's Josephus translations, and *not* call the Bible-style imitations
+translations.
+
+The narrow part: ten rules, one for each claimed construction. A rule was kept if the construction
+is at least twice as common in the King James Old Testament as in ordinary prose of the time.
+
+**The check, and the first failure.** The classifier was right 88 percent of the time on unseen
+books. But no version did all three things at once. As written, it called all the real translations
+translations but let most imitations through as well: it scored *The Late War*, a history of the War
+of 1812, as more of a translation than the King James Bible. I tried one fix, after seeing that
+result: train only on the books whose catalogue record is firmest. That pushed every imitation below
+the line, but it pushed both Josephus translations below the line too. Missed again. So I did not
+score the Book of Mormon on "reads like a translation".
+
+The narrow part did run. Seven of ten rules passed their check. Per 10,000 words:
 
 | Construction | Book of Mormon | King James Old Testament | Highest Bible-style imitation | Other translations from Hebrew | Ordinary prose |
 | --- | --- | --- | --- | --- | --- |
@@ -1103,90 +1763,116 @@ twice as common in the King James Old Testament as in ordinary prose). Per 10,00
 | "his ... and his ... and his" | 11.9 | 9.1 | 19.1 | 1.7 | 1.2 |
 | "because that" | 1.2 | 0.25 | 0.64 | 0.02 | 0.06 |
 
-On four of the seven, some English imitator with no Hebrew in front of him uses the
-construction as much as the Book of Mormon does, or more. On the other three ("it came to
-pass", the compound prepositions, "because that") none quite does.
+On four of the seven, some English imitator with no Hebrew in front of him uses the construction as
+much as the Book of Mormon does, or more. On the other three ("it came to pass", the compound
+prepositions, "because that") none quite does.
 
-Look at the fifth column, though. Translations from Hebrew other than the King James Bible
-barely have any of these, less than a tenth of the Bible's rate. So they are not marks of
-Hebrew coming through into English. They are marks of the King James Bible's English. And the
-Book of Mormon overshoots the Bible on three of them: "it came to pass" at seven times the Old
-Testament's rate. Joseph Smith's Book of Moses does the same (27.8), and has "because that"
-at a higher rate than the Book of Mormon.
+Look at the fifth column, though. Translations from Hebrew other than the King James Bible barely
+have any of these. So they are not marks of Hebrew coming through into English. They are marks of
+the King James Bible's English. The Book of Mormon overshoots the Bible on three of them: "it came to
+pass" at seven times the Old Testament's rate. Joseph Smith's Book of Moses does the same (27.8).
 
-What I take from it: these constructions show closeness to King James English, which nobody
-disputes. They do not separate a translation from Hebrew from an English writer steeped in the
-Bible, because such writers produce most of them freely and other Hebrew translations do not
-produce them at all.
+And the rule Skousen cares about most, "if ... and", could not be tested at all. The King James
+Bible does not have it (it is said to have been translated away), so my check, which leaned on the
+King James rate, had nothing to stand on.
 
-Limits. The rules were checked on planted examples, not on a hand-read sample of what they
-caught. The imitations add up to only 445,000 words. The "if ... and" construction, the one
-Skousen stresses most, could not be tested: the King James Bible does not have it, so my check
-had nothing to stand on.
+**What that told me, and what I changed.** Two things. First, I had not gone back to the claim and
+checked their own examples, which is where every test should start. Second, any feature the King
+James Bible carries is useless for this question, because an imitator copies it straight from the
+Bible. The one route left is constructions the King James translators *removed*. An imitator of the
+King James could not have picked those up from it. I built the second design after seeing the
+first results, so it counts for less.
 
-**A second design, after going back to the claim.** The first design had not reproduced
-anybody's work first, so this one starts there. I keyed every verse that Tvedtnes (1970, 1991),
-Parry (2002), Peterson and Skousen cite for a Hebraism, 170 items, and checked each in the
-1830 text.
+**Their way, this time.** I keyed every verse that Tvedtnes, Parry, Peterson and Skousen cite for a
+Hebraism, 170 items, and checked each in the 1830 text.
 
 | Source | Found as cited | Reads differently in 1830 | Not found |
 | --- | --- | --- | --- |
 | Tvedtnes 1991 | 80 | 11 | 2 |
 | Tvedtnes 1970 | 6 | 0 | 0 |
 | Parry 2002 | 47 | 5 | 3 |
-| Skousen 1994 and the if-and lists | 12 | 0 | 0 |
+| The if-and lists (Skousen 1994, Parry 2007) | 12 | 0 | 0 |
 
-So their examples are there, nearly all of them. "Land of promise" is 22 times, as claimed;
-"promised land" is 20, not the 10 claimed. The eleven "if ... and" sentences are in the 1830
-text and the printer's manuscript. A fourteenth case needs Skousen's volume, which I have not
-bought, so that one is not replicated.
+So their examples are there, nearly all of them. Most of the "reads differently" are spelling
+("marvellous"). "Land of promise" is 22 times, as claimed; "promised land" is 20, not 10. Parry's
+counts of "and"s in his long verses are exact. One if-and case (Helaman 12:13) I could not locate.
+The eleven that should be in the 1830 text are there, and all eleven are in the printer's manuscript.
+Peterson's point that English Bibles do not have if-and at his Genesis verses holds: the King James
+and Young's translations read "then" or nothing. A fourteenth case needs Skousen's *Analysis of
+Textual Variants*, which I have not bought, so that one is not replicated until the book is bought.
 
-Finding the examples is the easy half. The claim is that an English author would not have
-produced them. The seven features I counted the first time turned out to be King James
-English, which any imitator copies. So the new test looks only at Hebrew constructions the
-King James translators *removed*: an imitator of the King James could not have picked those
-up from it. I built the list from the Hebrew text itself. The doubled verb is the clear case
-("dying thou shalt die"): the King James keeps it in about 1 percent of places.
+**The second check.** I built the list of removed constructions from the Hebrew text itself. The
+King James keeps the doubled verb ("dying thou shalt die") in about 1 percent of the Hebrew places,
+the "in his eating" kind in none, and if-and in about 1 percent. Four parts had to pass, and two
+missed.
 
-The known-answer check had four parts and two missed.
+Very literal English translations from Hebrew were supposed to show these constructions at three
+times the King James rate. Two of three did: Ainsworth's 1627 translation has the doubled verb 35
+times as often; Young's has "in his eating" 27 times as often. The third did not, and it is the one
+that matters most to the claim. Ainsworth and Young, the two most literal English translations I
+have, use if-and no more than the King James does. English translators of Hebrew, even stubborn
+ones, just did not write it. My if-and rule also finds only 4 of the 11 cited cases in the Book of
+Mormon, so the rule is weak too.
 
-Very literal translations from Hebrew were supposed to show these constructions at three
-times the King James rate. Two of three features did (Ainsworth's 1627 translation has the
-doubled verb 35 times as often). The third did not, and it is the one that matters most to
-the claim: the "if ... and" sentence. Ainsworth and Young, the two most literal English
-translations I have, use it no more than the King James does. English translators of Hebrew,
-even stubborn ones, just did not write it. My rule also finds only 4 of the 11 cited cases in
-the Book of Mormon, so the rule is weak too.
+And books that only pretend to be translations were supposed to score like the King James. *The Late
+War* did, the hard case from the first design. But Macpherson's *Ossian* scored 3.8 times the King
+James level, and the fake *Book of Jasher* of 1751 scored 3.0. Neither came from Hebrew. One came
+from an imagined Gaelic, and one from nothing.
 
-And books that only pretend to be translations were supposed to score like the King James.
-*The Late War* did, the hard case from the first design. But Macpherson's *Ossian* scored 3.8
-times the King James level and the fake *Book of Jasher* of 1751 scored 3.0. Neither came
-from Hebrew. One came from an imagined Gaelic and one from nothing.
+So I did not score the Book of Mormon.
 
-So I did not score the Book of Mormon. What the miss says, as far as raw counts go: English
-writers reaching for an ancient sound produce some of these constructions on their own, which
-is a point against using them as marks of Hebrew; and the star example, if-and, is so rare
-even in literal translation that there is nothing to compare the book's eleven cases to. That
-cuts both ways. It means I cannot show an imitator would write it, and I cannot show a
-translator would. The counts above are from rules nobody has checked by hand yet; 514
-questions for the judge are prepared to do that.
+**What it means, and what it doesn't.** Their examples check out, almost to the verse. Finding the
+examples is the easy half, though. The claim is that an English author would not have produced them,
+and on that the two designs say:
+
+- The features people usually cite are King James English. Imitators produce most of them, and other
+  translations from Hebrew don't. They show closeness to the King James Bible, which nobody disputes.
+- English writers reaching for an ancient sound produce some of the removed constructions on their own.
+  That is a point against using them as marks of Hebrew.
+- If-and, the star example, is so rare even in literal translation that there is nothing to compare
+  the book's eleven cases to. That cuts both ways. I cannot show an imitator would write it, and I
+  cannot show a translator would.
+
+**What's left, in progress.** All the second-design counts are from rules nobody has checked by hand.
+514 questions for a model to judge whether each rule's hits are real are queued now (simulated
+judging; 60 of them are the model's own check). They could change which features survive. They
+cannot rescue if-and, because that miss is in the literal translations, not in the rule.
 
 ### Spoken or written? (BOM-106)
 
-Everyone who was there said the book was spoken aloud to scribes. William Davis argued in 2020
-that it shows the habits of a practised oral performer. Does the text itself read like speech?
+**The claim.** Everyone who was there said the book was spoken aloud to scribes. William Davis argued
+in 2020 that it shows the habits of a practised oral performer, especially "laying down heads": the
+preacher's trick of announcing an outline, then expanding each point.
 
-I needed speech to compare with, from the time. The best there is: a million answers given by
-witnesses at the Old Bailey in London, taken down in shorthand as they spoke; trials reported
-the same way; and sermons taken down by shorthand writers in the pews. On the other side,
-printed sermons and ordinary written prose. I counted 25 marks of speech in 1,000-word pieces
-(short words, few new words, repeated phrases, "did", "that", restarts like "I say" and "or
-rather") and trained a simple score on them. Zero is the middle of the written texts and one
-is the middle of the spoken ones.
+**Their way first.** Davis gives examples, not a rate. I have not bought his book, so his "heads"
+passages are not keyed and his examples are not checked. Not replicated until the book is bought. I
+could count one simple version, numbered heads like "firstly ... secondly", and I did (below). But the
+broader question, does the text itself read like speech, needed something nobody had built: speech
+from the time to compare with.
 
-It can tell them apart. Speech from writing overall, 96 times in 100. The hard case, a sermon
-taken down from the pulpit against a sermon written for print, 76 in 100, which just clears the
-75 I had set.
+**What I tried.** The best spoken English there is from the period: a million answers given by
+witnesses at the Old Bailey in London, taken down in shorthand as they spoke; trials reported the same
+way; and sermons taken down by shorthand writers in the pews. On the other side, printed sermons and
+ordinary written prose. I counted 25 marks of speech in 1,000-word pieces (short words, few new
+words, repeated phrases, "did", "that", restarts like "I say" and "or rather") and trained a simple
+score on them. Zero is the middle of the written texts and one is the middle of the spoken ones. All
+punctuation was stripped first, since the original manuscript has none.
+
+**The check.** It had to tell speech from writing on texts it had not seen, at least 85 times in 100.
+It did, 96. The hard case was a sermon taken down from the pulpit against a sermon written for print.
+The bar was 75. It got 76, which just clears. I set one more rule before
+looking at the book. If the King James Bible or the Bible-style imitations scored as speech, the score
+would only be reading Bible manner, and the answer would be "cannot tell" whatever the book did.
+
+**What went wrong on the way.** After the first full run I found a reading bug. The scribes wrote "&"
+for "and", and my reader was dropping it. The original manuscript came out with 4.4 "and"s per 1,000
+words, which is impossible for this text. I fixed it and reran everything, the check included. The
+check barely moved (96 and 76 both times). Only the manuscripts and Smith's revelations changed much.
+
+I also added two things after seeing the check, so they are extra, not part of the verdict: a scale
+set by the sermons alone, and a breakdown of which marks lift each score.
+
+**The result.**
 
 | Text | Score |
 | --- | --- |
@@ -1207,49 +1893,89 @@ taken down from the pulpit against a sermon written for print, 76 in 100, which 
 | Milton, *Paradise Lost* (dictated) | -0.43 |
 
 By the rule I set, the Book of Mormon reads like speech. It scores higher than anything except
-courtroom testimony, well above the Bible, and far above the imitations of the Bible. Every
-narrator does (0.81 to 1.07), and narration scores as high as the sermons in it.
+courtroom testimony, well above the Bible, and far above the imitations of the Bible. Every main
+narrator does (Nephi 0.98, Jacob 0.81, Mormon 0.85, Moroni 1.07), and the book's sermons score about
+the same as its narration (0.82 against 0.90). Taking the "and" marks out changes nothing (0.95).
 
-Now the cautions, which are real.
+Davis's heads, counted the simple way: the book announces numbered points 0.03 times per 1,000 words.
+Printed sermons do it 0.19 times. So on that narrow version, the book does it less than written
+sermons do. That doesn't test his fuller claim, an outline announced in plain words and then filled
+in, which needs his passages.
 
-What lifts the score is mostly repetition: few new words, the same four-word phrases coming
-round again, "that", "did". Those are marks of speech. They are also marks of this particular
-book, as the test on dictated books showed (it has the narrowest vocabulary of 24). The plain
-marks of someone talking, the restarts and "I say", are rare in it. So "like speech" here means
-"repetitive and formulaic the way speech is", not "full of slips".
+**What it means, and what it doesn't.** What lifts the score is mostly repetition: few new words, the
+same four-word phrases coming round again, "that", "did". Those are marks of speech. They are also
+marks of this particular book, as the test on dictated books showed (it has nearly the narrowest
+vocabulary of 24). The plain marks of someone talking, the restarts and "I say", are rare in it. So
+"like speech" here means "repetitive and formulaic the way speech is", not "full of slips".
 
-And dictating does not by itself make a text score as speech. Milton dictated *Paradise Lost*
-and it scores as the most written thing on the list. Henry James and Scott dictated novels that
-score as writing. A composed work stays composed when spoken to a secretary. So the score does
-not measure whether a text was dictated. It measures whether it was put together the way people
-talk, in the moment, leaning on formulas. On that, the Book of Mormon sits with the talkers.
+And dictating does not by itself make a text score as speech. Milton dictated *Paradise Lost* and it
+scores as the most written thing on the list. Henry James and Scott dictated novels that score as
+writing. A composed work stays composed when spoken to a secretary. So the score does not measure
+whether a text was dictated. It measures whether it was put together the way people talk, in the
+moment, leaning on formulas. On that, the Book of Mormon sits with the talkers.
 
-The Bible-style imitations matter here: they copy the Bible's "and"s and its cadence and score
-0.17. Bible style alone does not get a text to 0.88. Taking the "and" marks out changes
-nothing (0.95).
+Bible style alone does not get a text to 0.88. The imitations copy the Bible's "and"s and its cadence
+and score 0.17. But the King James Bible itself sits at 0.46, just under the line I drew at 0.5, so
+the score does read part of the Bible's manner. And the check passed narrowly on the case that matters
+most, sermons against sermons. The score tells courtroom talk from print far better than it tells
+preached speech from print.
 
-One fix after the first run: the scribes wrote "&" for "and" and my reader was dropping it.
+**What's left.** Refit with the repetition marks and "did" taken out, to see whether the book still
+clears the Bible. More shorthand sermons for the weak side of the check. A person to read the list of
+titles the rule sorted (nobody has yet). And Davis's heads, counted properly, once his book is bought.
 
 ### The Isaiah chapters and Adam Clarke (BOM-122)
 
-About a third of Isaiah is quoted in the Book of Mormon, mostly word for word from the King
-James Bible, but not entirely. Colby Townsend argued in 2025 that some of the changes follow
-Adam Clarke's commentary, the big Methodist Bible commentary that was coming out in the 1820s.
-Kent Jackson replied that they do not. Both argued from a handful of verses.
+**The claim.** About a third of Isaiah is quoted in the Book of Mormon, mostly word for word from the
+King James Bible, but not entirely. Colby Townsend argued in 2025 that some of the changes follow Adam
+Clarke's commentary, the big Methodist Bible commentary that was coming out in the 1820s. Kent
+Jackson replied the same year that none of Townsend's cases shows dependence on Clarke. Both argued
+from about a dozen verses.
 
-I lined up every quoted verse against the King James text. There are 552 changes in 263 of the
-420 verses. One thing shows at once, and it is not new but it is stark: 30 percent of the King
-James words the book changes or drops are words the King James printers put in italics (words
-the translators supplied). Of the words it keeps, 2 percent are italic.
+**Their way first.** Townsend's article is behind a paywall and I have not bought it, so his full list
+(his appendix) is not replicated until the article is bought. Jackson's reply is open and goes through
+eleven of Townsend's passages one by one. I keyed those eleven from Jackson and checked each against
+what Clarke's 1825 Isaiah volume actually prints at that verse. Clarke's volume has none of the Book
+of Mormon's wording at any of them.
 
-Then I searched all 252,431 books in the library printed before 1830 for each changed reading,
-in its verse. To know what a match is worth, I also made up 1,080 changes the Book of Mormon
-does not make, and searched for those too. A book that reworded Isaiah freely will "match" by
-accident, and the made-up changes measure how much.
+**What I tried.** One commentary checked alone tells you nothing. The question is whether Clarke has
+more of the book's changes than any other book does, beyond chance. So I lined up every quoted verse
+against the King James text and found 552 changes in 263 of the 420 verses. One thing shows at once,
+and it is not new but it is stark: 30 percent of the King James words the book changes or drops are
+words the King James printers put in italics (words the translators supplied). Of the words it keeps,
+2 percent are italic.
 
-First, on a case with a known answer. Bishop Lowth published his own translation of Isaiah in
-1778. Given Lowth's changes, the search ranked the other printings of Lowth first, second,
-third and fourth among a quarter of a million books. So it can find a real source.
+Then I searched all 252,431 books in the library printed before 1830 for each changed reading, in its
+verse. To know what a match is worth, I also made up changes the Book of Mormon does not make, and
+searched for those too. A book that reworded Isaiah freely will "match" by accident, and the made-up
+changes measure how much.
+
+**The check.** Bishop Lowth published his own translation of Isaiah in 1778. Given Lowth's changes as
+if they were the Book of Mormon's, the search had to find the other printings of Lowth at the top,
+with real changes far ahead of made-up ones, and the made-up changes had to turn up somewhere in the
+library less than 10 percent of the time.
+
+**When it failed, and what I changed.** The first two parts passed by a mile. The top six books in
+the whole library were all other printings of Lowth, and the best matched about a thousand times more
+real changes than made-up ones. The third part missed. 13.5 percent of Lowth's made-up changes turned
+up somewhere.
+
+Looking at which ones, the reason was plain. They were short, ordinary strings: "is born to us a"
+was in 285 books, "the leopard lie down" in 220. With a quarter of a million books, a four-word
+made-up change often matches somebody's ordinary English or a common misquotation of a famous verse.
+Four-word made-up changes matched somewhere 56 percent of the time, six-word ones about 1 percent. So
+the bar was measuring how common a phrase is, not whether the search can find a source, which parts
+one and two had already shown. I had set that bar badly.
+
+I changed it after seeing that result, so it counts for less, and I allowed no third try. The
+changes: readings are widened to at least six words; every book is judged against its own rate of
+made-up matches, not the library's; and words merely split or joined ("for ever" and "forever") count
+as spelling, not changes. The Book of Mormon had not been searched yet when I made them.
+
+**The check, again.** Passed. Given Lowth, the top four books were printings of Lowth, the best with
+3,533 real matches and no made-up ones, and 6 percent of made-up changes turned up anywhere.
+
+**The result.**
 
 | | Book of Mormon's real changes (523) | Made-up changes (1,080) |
 | --- | --- | --- |
@@ -1258,167 +1984,320 @@ third and fourth among a quarter of a million books. So it can find a real sourc
 | Found in some book somewhere | 36% | 17% |
 | Found nowhere | 333 | |
 
-Clarke matches 2 of the real changes and 4 of the made-up ones. That is chance. By matches he
-ranks about 3,300th among the books in the library. The two he matches are small and common
-("briers" spelled "briars" is in 45 books). At the verses Townsend names, Clarke's volume has
-none of the Book of Mormon's wording.
+Clarke matches 2 of the real changes and 4 of the made-up ones. That is chance. By matches net of
+made-up ones he ranks about 3,300th among the books in the library. The two he matches are small and
+common: "in the generations of old" dropped, and "briers" spelled "briars", which is in 45 books.
 
-So by wording, Clarke is not a source of the Isaiah changes, and neither is any other single
-book: the best any one book does is 16 of 523. About two thirds of the changes are in no book
-I hold. The ones that are found are mostly either common ways of misquoting a famous verse or
-readings in older annotated family Bibles.
+No other single book stands out either. The best any one book does is 16 of 523, and the books near
+the top are annotated family Bibles and old commentaries, like a *Complete Family Bible* of 1785 and
+Day on Isaiah of 1654. About two thirds of the changes are in no book I hold.
 
-One real limit. This finds shared wording. Two of Townsend's examples are a different kind of
-claim: that Clarke's note argues for a reading in his own words and the Book of Mormon then has
-that reading. A word search cannot see that. There are questions prepared to have each of
-Clarke's notes at those verses read for it; that step has not been run.
+There is a useful comparison. I put 60 sermons of the 1820s through the same steps, using their own
+Isaiah quotations. Their changes are found in print 71 percent of the time, against 36 percent for
+the Book of Mormon's. Preachers misquoting Isaiah mostly misquote it the way others already had. The
+Book of Mormon's changes mostly are not in print anywhere I can see. Clarke is at chance for the
+sermons too.
 
-This passed its check on the second design. The first had a bar I had set badly, and the
-second card says what changed and why.
+**What it means, and what it doesn't.** By wording, Clarke is not a source of the Isaiah changes, and
+neither is any other single book. For Townsend's case, that is a no on the part that can be counted.
+For Jackson's, it agrees.
+
+One real limit, and it matters. This finds shared wording. Two of Townsend's examples (at Isaiah 9:3
+and 50:2) are a different kind of claim: that Clarke's note *argues* for a reading in his own words,
+and the Book of Mormon then has that reading. A word search cannot see that.
+
+**What's left, in progress.** That step is queued now. A model will read Clarke's notes, and those of
+eleven other commentaries and annotated Bibles, at each verse, and say whether the note proposes the
+book's reading (simulated judging). Before any of it counts, the model must say no to 200 made-up
+readings and yes to the 76 readings that are printed word for word. If Clarke's notes propose the
+book's readings more often than the other eleven do, that would be the first measured support for
+Townsend. Then his article, once it is bought.
 
 ### Can the scripture voice be subtracted out? (BOM-100)
 
-The two-voices test showed the weak spot in the first study's main tool. An author model learns
-a person from their ordinary writing and is then asked about a text in scripture voice. The
-voice is so strong that it can swamp the person. The idea here: measure each text against a
-model of the scripture voice in general (learned from Bible-style books by other people), and
-not against a plain model, so that what is left over is the person.
+**The claim.** This one is ours, not anybody's published argument. The two-voices test (BOM-99)
+had shown the weak spot in the first study's main tool. An author model learns a person from their
+ordinary writing and is then asked about a text in scripture voice. The voice is so strong that it
+can swamp the person. My idea, raised on 18 November: measure each author model not against the
+plain, untuned model, as the study did, but against a model of scripture voice in general,
+learned from Bible-style books by other people. Whatever is left over should be the person.
 
-It does not help.
+**Their way first.** Here "their way" is the study's own rule. Before changing anything I reran
+the study's scoring on the same six writers, the same passages and the same author models from the
+two-voices test, with the plain model in the slot where the new reference would go. It gave back
+the earlier numbers exactly. So any difference below comes from the reference and nothing else.
 
-| Tuning | Study's rule, right writer picked across voices | With the voice subtracted |
-| --- | --- | --- |
-| Light | 28.5% | 28.0% |
-| Heavier | 70.5% | 70.3% |
+**What I tried.** I tuned a scripture-voice reference on equal shares of nine Bible-style books
+printed before 1827 by people outside the six writers: *The Late War*, *The First Book of
+Napoleon*, the *Chronicles of Andrew*, Dodsley's *Chronicle of the Kings of England* and others.
+It got exactly as much training as each author model, at both training sizes the two-voices test
+had used. A second version left out only the writer being tested and used everyone else's
+scripture voice. Thirteen reference models in all, 15 minutes on the Mac.
 
-(Chance is 17 to 20 percent.)
+**The check.** The test is the check here, because the answers are known. Each writer's
+scripture-voice passages go to the six ordinary-voice author models, and the right writer has to
+win. Chance is 17 to 20 percent. To count as working, the new scoring had to beat the study's rule
+at both training sizes, with the gap clear of zero, and not lose ground on ordinary passages. I
+wrote that down before training anything.
 
-Part of this is arithmetic I should have seen sooner. If you ask "which of six author models
-fits this passage best", subtracting the same reference from all six cannot change the winner.
-The reference only matters where scores are compared from one passage to another, and there it
-made no difference either.
+**What went wrong on the way.** Nothing broke. But part of the answer is arithmetic I should have
+seen sooner, and I wrote it on the card before running. The study's rule asks "which of six author
+models fits this passage best". Subtracting the same reference from all six cannot change which
+one wins. So for the study's own pick-the-best rule, the reference could never matter. It can only
+matter where scores are compared from one passage to another, which the study does when it puts
+each model on its own scale. That is where I measured it.
 
-Two things stand. The tool does carry a person across voices better than chance, 70 percent at
-the heavier tuning. And how much you tune still matters far more than anything else, 28 against
-70 percent, which is the instability the two-voices test found. That, not the reference, is
-what needs fixing. It also still accepts a writer who is not on the list at all, most of the
-time, which is the first study's "none of these" problem again.
+**The result.** It does not help.
 
-Smallest model size only, one seed. The Book of Mormon was not touched.
+| Training size | Study's rule, right writer picked across voices | With the voice subtracted | Leaving out only the writer tested |
+| --- | --- | --- | --- |
+| Small | 28.5% | 28.0% | 29.0% |
+| Four times larger | 70.5% | 70.3% | 72.7% |
+
+Every difference sits inside its own range of error, which runs across zero. Writer by writer the
+reference moved people both ways: Joanna Southcott's scripture passages found her more often,
+Richard Snowden's less. Ordinary passages were not harmed.
+
+There was also a decoy step. Take a writer's own model out of the line-up and see whether the
+other models still "confidently" claim that writer's passages. They did, 73 to 100 percent of the
+time, under every scoring. So the tool still accepts a writer who is not on the list at all, which
+is the first study's "none of these" problem again. It did not separate the scorings.
+
+**What it means, and what it doesn't.** Two things stand. The tool does carry a person across
+voices better than chance: 70 percent at the larger training size. And how much each model is
+trained matters far more than anything I did to the reference: 28 percent against 70. That
+instability, found in the two-voices test, is what needs fixing. The reference was a fix for the
+wrong part.
+
+It does not show that no reference could work. Mine was tuned lightly, at the same small dose as
+the author models, and its scores were only a little below the plain model's. Its books are mostly
+eighteenth-century political satire in Bible style, not revelation. Smallest model size only, one
+seed. The Book of Mormon was not touched, because the check said no.
+
+**What's left.** The dose question, in its own issue. Optionally one reference trained to the full
+on a large sample of scripture-voice writers who died before 1827, about 20 minutes on the Mac.
+The check against the 55 benchmark authors was not run.
 
 ### Can a model be trained to ignore the voice? (BOM-101)
 
-The other idea. The style encoder is the tool that turns a passage into a fingerprint of its
-writer. Train it on pairs where the same person writes in two registers, a sermon and a
-letter, a history and a poem, so that it learns to keep the person and drop the register.
+**The claim.** Also ours, the other half of the same idea. The style encoder is the tool that
+turns a passage into a fingerprint of its writer. Train it on pairs where the same person writes in
+two registers, a sermon and a letter, a history and a poem, and tell it those are the same. Pair
+different people writing in the same register and tell it those are different. It should learn to
+keep the person and drop the register.
 
-The library gave 45,364 such pairs from about 4,500 authors, after removing pairs where one
-book contains the other (collected works were the main culprit, 8.7 percent of pairs). I
-trained on the Mac for eleven hours, starting from the second encoder.
+**Their way first.** The baseline is the two encoders the study already has. Before training I
+reran both on the same six writers from the two-voices test and on the study's "none of these"
+check. The second encoder gave 0.955 on "none of these", the number already published for it, so
+the measuring stick was the same one.
+
+**What I tried.** First I had to find the pairs. The library gave 50,968 candidate pairs of one
+author's books in two different registers. Then I threw out every pair where one book contains the
+other. The first rule I planned, the library's own list of duplicates, removed none. A text check
+that looks for long runs of shared words removed 4,343, 8.7 percent. They were mostly collected
+"Works" volumes holding another of the author's books, and extracts and reprints under new titles:
+Hopkins's *Exposition of the Ten Commandments* against his *Works*, for example. I had set a bar of
+5 percent for what the duplicate rule could miss, so the plan's rule alone failed that bar. The text
+check was part of the plan from the start and catches all of them, so I kept going with the three
+rules together. I decided that after seeing the 8.7 percent, and the card says so.
+
+That left 45,364 pairs from about 4,500 authors. I trained on the Mac for eleven hours, starting
+from the second encoder. Southcott and Elias Smith were kept out of the new training so they
+could be tested on.
+
+**The check.** Three conditions, written before the first training step. The new encoder had to
+find the six writers across their two voices better than both old encoders, with the difference
+clear of zero. It had to keep finding writers within one voice. And on library authors it had never
+seen, it had to match people across registers at least as well as the second encoder.
+
+**The result.**
 
 | Measure | First encoder | Second | New |
 | --- | --- | --- | --- |
 | Six writers, found across their two voices | 0.700 | 0.749 | 0.735 |
-| Held-out authors, across registers | 0.801 | 0.809 | 0.796 |
+| Held-out library authors, across registers | 0.801 | 0.809 | 0.796 |
 | "None of these", all books | 0.954 | 0.955 | 0.954 |
 
-No gain. I had set three conditions for "better" and it met none, so I did not point it at
-the Book of Mormon. The training made the encoder slightly worse on its own validation set
-from the first snapshot on, and the best snapshot was the least trained one.
+It met none of the three. So I did not point it at the Book of Mormon. Worse, it got slightly worse
+on its own practice set from the very first snapshot and never recovered. The best snapshot was
+the least trained one, after 250 of 1,600 steps.
 
-Two things leaned the other way, and I looked at both after the rule had failed, so they are
-leads and nothing more. On the four writers no encoder had seen in training, the new one does
-a little better, 0.71 against 0.66, mostly because Joseph Smith's revelations now find his
-letters (0.93 against 0.69). And it accepts fewer false pairs across genres, 43 percent
-against 67. Against that, Joanna Southcott got worse.
+**The leads, and why they are only leads.** Two things leaned the other way. I looked at both
+after the rule had already failed, so they count for less. On the four writers no encoder had ever
+trained on, the new one does a little better, 0.71 against 0.66, mostly because Joseph Smith's
+revelations now find his letters (0.93 against 0.69). And on 62 known books written across genres,
+it accepts fewer false matches, 43 percent against 67. Against that, Joanna Southcott got worse:
+her scripture passages found her ordinary writing half the time, down from 0.83.
 
-The honest limit is size. Eleven hours on the Mac is about 2 percent of the training the
-second encoder had. A full-size run needs a rented GPU for about five hours, roughly 15 to 20
-dollars. I have not done that. Also, "religious" here means sermons: the library has almost
-no writers with a scripture-voice book and an ordinary one, which is the exact case in point.
+**What it means, and what it doesn't.** At the size I could afford, training against the voice
+did not help. It does not show that it cannot. Eleven hours on the Mac is about 2 percent of the
+training the second encoder had, with 15 decoy writers in each batch instead of 63. And
+"religious" in the library's labels means sermons: the library has almost no writers with a
+scripture-voice book and an ordinary one, which is the exact case in point. Only three of the
+pairs had a Bible-style book in them.
+
+**What's left.** A full-size run needs a rented GPU for about five hours, roughly 15 to 20 dollars.
+I have not done that. The cheaper way to test the Joseph Smith lead is to score more writers
+neither encoder has seen with the snapshots I already have, no new training. Every snapshot is
+kept.
 
 ### The 131 correspondences (BOM-112)
 
-In 2019 Bruce and Brian Dale took Michael Coe's textbook on the Maya, found 131 statements in it
-that they judged the Book of Mormon gets right and 18 it gets wrong, gave each a weight (2, 10
-or 50 to one, by how specific), multiplied them all together, and reported odds against the
-book being fiction of a number with 111 zeros.
+**The claim.** In 2019 Bruce and Brian Dale took Michael Coe's textbook *The Maya* and found 131
+statements in it that they judged the Book of Mormon gets right. They also found 18 things Coe
+says the Maya lacked that the book has. They gave each hit a weight of 2, 10 or 50 to one, by how
+specific it was and how unknown in 1830, and each miss 50 to one the other way. Then they
+multiplied them all together. With a starting assumption of a billion to one against, they
+reported odds against the book being fiction of a number with 111 zeros. They also scored two
+control books themselves: Spalding's manuscript (19 hits, 21 misses) and *View of the Hebrews*
+(15, 9). Critics answered that the weights are arbitrary and that 131 items are not 131 separate
+pieces of evidence.
 
-I keyed all 149 from their appendices and redid the sum. It comes out as they printed it, once
-two slips of theirs are allowed for (one tally in the summary is a single item off from their
-own list, and one rounding). So the arithmetic is honest. The question is what it rests on.
+**Their way first.** The paper is open access, so I keyed all 149 items from their appendices,
+with each item's weight, category and page. I don't hold Coe's book, so every Coe statement is as
+they quote it. Then I redid their sum. My first check asked for an exact match, and it missed
+twice. Both misses were theirs, not the parser's. In the military category their summary counts
+3, 5 and 4 items at the three weights, but their own list of twelve items has 3, 4 and 5. And
+their headline rounds a middle step before the last multiplication. I changed the check to follow
+their printed tallies and their rounding, after seeing the first result, and said so on the card.
+Then it comes out as they printed it: 1 in 10^111. From their items as listed, it is about five
+times stronger. So the arithmetic is honest. The question is what it rests on.
 
-It rests on two things: that the weights are right, and that 131 items are 131 separate pieces
-of evidence. Here is what happens to the headline when each is relaxed. The first column is the
-odds that the book is fiction: a tiny number favours an ancient origin, a number above 1
-favours fiction.
+**What I tried.** It rests on two things: that the weights are right, and that the items are
+independent. So I changed one assumption at a time and watched the headline. The column is the
+odds that the book is fiction: a tiny number favours an ancient origin, a number above 1 favours
+fiction.
 
 | Change | Odds of fiction |
 | --- | --- |
 | As they published | 1 in 10^111 |
 | Every weight capped at 2 to one, for and against | 1 in 10^25 |
 | Hits capped at 2 to one, misses left at their 50 | about even |
-| Drop the items that are also true of the Bible's world (39 of 131 left) | 1 in 10^11 |
+| Drop the items also true of the Bible's world (39 of 131 left) | 1 in 10^11 |
 | Drop the items true of most farming kingdoms anywhere (75 left) | 1 in 10^59 |
 | Drop both, and the unclear ones (8 left) | 10^29 the other way |
 | Count each of their six categories once | 400,000 the other way |
 
-The answer swings across 140 orders of magnitude, in both directions, depending on choices no
-one can settle by arithmetic. If the items are independent and the weights fair, the result is
-overwhelming. If "had kings", "kings were hereditary" and "some kings were wicked" are one
-observation and not three, it is not. The whole result turns on about ten truly independent
-items: with fewer than that, the odds cross even.
+The answer swings across 140 orders of magnitude, in both directions, on choices no one can settle
+by arithmetic. If "had kings", "kings were hereditary" and "some kings were wicked" are one
+observation and not three, the result shrinks fast. It crosses even odds at about ten truly
+independent items. By the rule I had set, that makes the headline fragile.
 
-Which items are "also true of the Bible's world" is my coding, from memory, with no second
-reader: I marked 92 of the 131 yes. That is the weakest part of this and I would not lean on
-the exact rows. The swing is the finding.
+Which items are "also true of the Bible's world" was coded by the AI assistant from memory, with no
+second reader: 92 of the 131 marked yes. That is the weakest part, and I would not lean on the
+exact rows. The swing is the finding.
 
-The real test is still to come. Apply the same 131 items, by the same loose standard, to books
-we know were written in the 1800s: *View of the Hebrews*, Spalding's manuscript, *The Late
-War*. If those "match the Maya" 60 or 80 times as well, the checklist measures how easy it is
-to match, not who wrote the book. 947 questions are prepared for that, starting with the Book
-of Mormon itself to see whether the reader reproduces the Dales' own judgments.
+**The check.** The real test is the comparison the Dales did only for their own two controls.
+Apply the same 131 items, by the same standard, to books we know were written in the 1800s: *View
+of the Hebrews*, Spalding, *The Late War*, Snowden's Bible-style history, *Chronicles of Eri*, and
+the Bible's own histories. Before a model judges any of those, it has to reproduce the Dales on
+the Book of Mormon itself: say "the book plainly states this" for at least three quarters of
+their 131 hits and three quarters of their 18 misses. All judging here is simulated: a model
+reads, not a person.
 
-**That first step missed.** The reader saw, for each of the Dales' 131 positive items, the
-passages my keyword search pulled from the Book of Mormon, and was asked whether they plainly
-state the feature. It said yes for 70, 53 percent; the bar was 75. For the 18 negative items
-(things Coe says the Maya lacked and the book has) it said yes for 17. Every item had some
-passages, so the search never came up empty, but it may have pulled the wrong ones. Or the Dales
-counted things the book only hints at. I cannot tell those apart without reading the 61 by hand
-against the whole book, so the control books were not judged.
+**When it failed, the first time.** It missed. For each item the model saw three passages my
+keyword search had pulled from the book. It said yes to 70 of the 131 hits, 53 percent. It said
+yes to 17 of the 18 misses. So the control books were not judged.
+
+Was it my search finding the wrong passages, or the Dales counting things the book only hints at?
+The AI assistant read 15 of the 61 "no" items against the whole book, drawn at random. For 9 of
+the 10 it looked up closely, the book does state the thing, and the passage was not among the three
+my search had pulled. The king-men. Benjamin consecrating his son king. Reformed Egyptian. "Little
+timber upon the face of the land." So the miss was mainly the search, not the reader. That
+reading came after the result.
+
+**When it failed, the second time.** So I changed only how passages are found, after seeing the
+miss. Keep the three keyword passages and add the five passages closest to the item by meaning,
+using the same "search by meaning" model the lab already uses. Same bars. Before asking any
+questions, a smaller check: of the 8 items where the stating passage was known, the new search
+had to show it for at least 6.
+
+It showed 4. It found the king-men, "save it be upon plates", the little timber and the language
+of Nephi taught among the Lamanites. It missed the rest by a long way: the coronation ranked 310th
+of 4,536 passages by meaning, reformed Egyptian 866th, the list of tribal names 1,426th. That told
+me something about the Dales' list. Many of their items are not stated in a sentence. They are
+shown through names and events, and no passage search reaches those. The 149 questions of this
+design were never asked.
+
+**The third design: reading the whole book.** I asked whether to stop or to read the whole book,
+and on 23 November the answer was to read it. This is also a change made after seeing a result, the
+second one, so a pass will count for less, and the write-up will say that. Every text is cut into
+equal sections of at most 12,000 words, 23 for the Book of Mormon, and the model reads every
+section against every item. One sentence was added to the standard, because of what the diagnosis
+found: a feature can be plainly described by the story, through named people, places or events,
+and not only by a general statement.
+
+Two guards were added, because reading 23 sections gives each item 23 chances to be accepted. I
+wrote 20 made-up items in the same style that the book does not contain: blowguns, llamas,
+hammocks, a sign for zero, knotted-cord records. The reader is not told which items are real. It
+may accept at most 2 of the 20, anywhere. And a second, stronger model rereads three sections, and
+the two readers have to agree well beyond chance. The bars for the Book of Mormon are unchanged.
+The controls are read only if all of that passes.
+
+**The result so far.** The arithmetic is done and reproduced. The third design is built and its
+104 check questions are in the queue. Nothing in it has been asked yet. In progress.
+
+**What it means, and what it doesn't.** So far, only that the headline is fragile: it turns on
+how you weight and group the items, and nobody can settle that by arithmetic. Nothing yet on
+whether 131 is many or few. If the 1800s books "match the Maya" nearly as well, the checklist
+measures how easy it is to match. If they match far less, the Dales' list picks out something
+real about this book. Neither is known yet. Coe's book itself was not read, so whether each item
+is a fair reading of Coe is untested.
+
+**What's left.** The third design's check, then the six controls (244 questions) if it passes. A
+second coder for the Bible-world field. A checklist drawn from ancient Israel, run the same way.
 
 ### The anachronism tally (BOM-113)
 
-Matthew Roper's 2025 study lists every thing critics have called out of place in the Book of
-Mormon since 1830: horses, steel, wheat, silk, chariots, and 220 more. He reports that 174 of
-226 have since been confirmed, 31 partly, and 21 not, and that the trend has run the book's way.
+**The claim.** Matthew Roper's 2025 study lists everything critics have called out of place in
+the Book of Mormon since 1830: horses, steel, wheat, silk, chariots, and about 220 more. He reports
+that 174 of 226 have since been confirmed, 31 partly, and 21 not. And he reports the trend: of the
+items raised by 1844, 7 confirmed; by 1965, 36; by 2024, 174. The list of problems shrinks as
+archaeology goes on. It is one coder's tally, with no control.
 
-I keyed his list from the nine published chapters. The first thing to say is small but should
-be said: I count 227 items in his headings, not 226, with 175 confirmed, and his own charts do
-not agree with each other (the chart for 2024 has 213 labels; three items sit in both the
-confirmed and unconfirmed columns for 1965). I changed nothing to make it fit. It does not
-alter the picture.
+**Their way first.** I did not hold his paper when I started. So the first run used a stand-in
+list from Wikipedia, Coe and a few items from memory, with no statuses, just to build the counter.
+That was a detour, and the stand-in is kept apart. Then I fetched his introduction and nine
+chapters, which are open access, and keyed his own list.
 
-My guess going in was that "confirmed" would mostly mean "is in the Bible". A sword is easy to
-confirm. That guess was wrong.
+I count 227 items in his headings, not 226, with 175 confirmed. The extra one is a "confirmed", and
+the paper does not show which. His own charts do not agree with each other either. The chart for
+2024 has only 213 labels. The 1844 chart, as the AI keyed it from the images, gives 101 of his 102;
+the 1965 one gives 164 of 168, and three items sit in both the confirmed and unconfirmed columns. I
+changed nothing to make it fit. It does not alter the picture.
+
+**What I tried.** Two things his tally never had. First: is "confirmed" just "is in the Bible"? A
+sword is easy to confirm. My guess going in was yes. Second: a control. How would books known to
+be from the 1800s, set in antiquity, do on the same list?
+
+**The check.** Before counting anything, the counter had to find words I planted: 113 of 113 found.
+It had to find horses and chariots in the King James Old Testament (138 and 172), maize in the
+Mexican native texts (168), and no New World word anywhere in the King James Bible (none). All
+passed.
+
+**A slip, and the fix.** On the first count, five items came out zero in the Book of Mormon though
+the book names them. The 1830 spellings were missing: "firy darts", "breast-plates", "bellowses",
+"leprous". I added those forms and reran. I made that change after seeing the count. No form was
+added or removed because of a control book's count.
+
+**The result, part one: the Bible guess was wrong.**
 
 | | Confirmed by his count | Not confirmed |
 | --- | --- | --- |
 | Item is named in the King James Bible | 86 | 21 |
 | Item is not | 26 | 11 |
 
-Bible things are confirmed 80 percent of the time and the rest 70. That difference is what
-chance gives. Being biblical does not explain his confirmations.
+Bible things are confirmed 80 percent of the time and the rest 70. That difference is what chance
+gives (p = 0.25). Being biblical does not explain his confirmations.
 
-What his own headings do show is where the confirmations are thin. For 40 items the heading
-says what kind of evidence he means. Those he ties to the New World are confirmed less often
-than the rest: 2 of 6 that he places "in Book of Mormon times" and 20 of 34 where he gives no
-period, against about four in five overall. Eight more are confirmed by reading the word as
-something else (the "horse" that may be a tapir or deer). For the other 168 the kind is not in
-the heading, and those go to a reader.
+What his own headings do show is where the confirmations are thin. For 59 items the heading says
+what kind of evidence he means. The ones he ties to the New World are confirmed less often than the
+rest: 2 of 6 that he places "in Book of Mormon times", and 20 of 34 where he names the New World
+but no period. Against that, 9 of 10 Old World items are confirmed, and all 8 he confirms by reading
+the word as something else (the "horse" that may be a tapir or deer). For the other 168 the kind
+is not in the heading. Those go to a reader.
 
-The control the tally has never had: how would a book known to be from the 1800s do? I could
-count 144 of his items as words.
+**The result, part two: the control.** I could count 144 of his items as words.
 
 | Book | Share of his items that appear in it |
 | --- | --- |
@@ -1427,34 +2306,70 @@ count 144 of his items as words.
 | *The Late War* (Bible style, War of 1812) | 48% |
 | *Chronicles of Eri* (1822) | 44% |
 | *Book of Jasher* (1751) | 42% |
+| Snowden (Bible style, the Revolution) | 39% |
 | Spalding's manuscript | 38% |
+| Hale, *Genius of Oblivion* | 31% |
 
-So a nineteenth-century book set in antiquity uses 40 to 60 percent of the same things, and so
-does a Bible-style book about 1812. That is only words in a text. Whether those books' horses
-and steel would count as "confirmed" by the standard Roper applies is a judgment about
-evidence, and that is the step still to run: 448 questions, starting with twelve whose answers
-are not in doubt.
+So a nineteenth-century book set in antiquity uses 30 to 60 percent of the same things. The two
+Bible-style books about their own day were put in as decoys. If they scored as high as the antiquity
+books, the count would be following Bible diction, not setting. They do. That is only words in a
+text. Whether those books' horses and steel would count as "confirmed" by Roper's standard is a
+judgment about evidence, and that needs a reader.
 
-What I take from it so far: his list is real and mostly holds as a list, my easy explanation
-for it failed, and the comparison that would say what a 77 percent confirmation rate means has
-not been made by anyone yet.
+**The reader's check passed.** Before a model reads Roper's items, it had to code 12 things whose
+answer is not in dispute. Maize, cacao, turkey and jaguar in ancient Mesoamerica. Llama and potato
+in the Americas but elsewhere. Wheat, war chariots and silk in the Old World only. Gunpowder, the
+telescope and movable type nowhere before AD 421. It got all 12. That is simulated judging, a model
+reading, not a person.
 
-**The reader's check passed.** Before it reads Roper's items, the model had to code 12 things
-whose answer is not in dispute: maize, cacao, turkey and jaguar in ancient Mesoamerica; llama and
-potato in the Americas but elsewhere; wheat, war chariots and silk in the Old World only;
-gunpowder, the telescope and movable type nowhere before AD 421. It got all 12. Roper's 227 items
-and the things in the five control books are next in the queue.
+**A flaw found before the answers, and the change.** Before any answer came back I wrote how they
+would be scored. Roper's tally "holds strictly" if at least three quarters of his 175 confirmed
+items are coded as found in Mesoamerica in the book's period. Writing that showed me a flaw. The
+control questions asked about Mesoamerica for every book, but Spalding and *Behemoth* are set in
+Ohio country, and *Eri* and *Jasher* in the Old World. Asking whether Spalding's things are
+confirmed in Mesoamerica is a harsh test for a book that never claims to be there. I asked whether
+to rewrite the questions. The answer on 23 November was "can we do both?" So the controls are now
+asked twice: once against Mesoamerica, as first written, and once against each book's own claimed
+region and period. Both are reported side by side, and neither replaces the other. That was settled
+before any control answer existed.
+
+**What it means, and what it doesn't.** So far: his list is real and mostly holds as a list. My
+easy explanation for it failed. The items tied to the New World are the thin ones, on 40 items. And
+books of the 1800s set in antiquity carry a third to over half of the same things. Nobody, Roper
+included, has yet made the comparison that would say what a 77 percent confirmation rate means.
+
+**What's left.** The reading is queued: his 227 items on the book, then 209 control-book things,
+then the same 209 against their own regions. Then the scoring. Then a person's check of a sample of
+the codes. In progress.
 
 ### Where the three worlds disagree (BOM-109)
 
-This was meant to pull the setting tests together. Take only the features on which three
-worlds differ: the Bible's Near East, ancient Mexico as its own texts and the Spanish
-chroniclers describe it, and ancient America as an American of the 1820s pictured it. Horses or
-no horses. Counting in tens or twenties. Coins or none. Then see which world each text sides
-with.
+**The claim.** This one is my own pulling-together of several claims, each of which looks at one
+world. The Dales and Sorenson count matches with ancient Mesoamerica. Roper counts confirmations.
+Vogel in 1986 argued the book's picture of ancient America is the one Americans of the 1820s already
+had in print: mounds, forts, a fallen civilised race, Hebrew Indians. A match all three worlds share
+tells nothing. Horses, coins and counting in tens are where the worlds disagree. So: take only those
+features, and see which world each text sides with. The Bible's Near East, ancient Mexico as its
+own texts and the Spanish chroniclers describe it, or ancient America as an 1820s American pictured
+it.
 
-I ended up with 31 features that can be counted from words and on which the worlds really
-disagree. Then eight texts whose world I know.
+**Their way first.** Each published list credits an item when the word or idea is in the book. None
+asks whose it is. The plan is to rerun each list its author's way first. The Dales' and Roper's lists
+are being read in BOM-112 and BOM-113. Vogel prints no list of motifs, so his way cannot be rerun as
+he did it. With a yes on 22 November, we keyed 42 of his ideas from his chapters. That is our coding
+of his prose, not his list, and it is labelled so. 66 of the 81 earlier sources he cites are in the
+library. 1,301 questions for that are prepared, not run.
+
+**What I tried first.** Count words. I built 56 features that can be counted, with each world's
+value measured from its own books. After dropping the ones the worlds agree on or are split on, 31
+were left. Before testing anything, the source texts made Mesoamerica "have" horses and wheat.
+Those hits were Clavigero comparing Mexican animals with European ones, and he says plainly that
+horses and wheat came from Europe in the 1500s. So I coded those two as absent from his own
+sentence. I made that change after measuring the source books, before any test text was scored,
+and labelled it.
+
+**The check.** Eight texts whose world I know, none used to build the worlds. All eight had to side
+with their own world.
 
 | Text | Sides with | Agreements (Near East / Mexico / 1820s) |
 | --- | --- | --- |
@@ -1469,71 +2384,123 @@ disagree. Then eight texts whose world I know.
 
 Seven of eight. I had said eight, so I did not count the Book of Mormon.
 
-The miss is instructive. Bernal Díaz was a Spanish soldier writing about Mexico, and his book
-is full of his own side's things: guns, coins, horses. On a word count he looks like a modern
-European, which he was. A Mesoamerican text and a text about Mesoamerica are not the same
-thing, and the same trouble showed in the inventory test.
+**Why it failed, and what I changed.** Bernal Díaz was a Spanish soldier writing about Mexico. His
+book is full of his own side's things: guns, coins, horses. He also mentions copper, canoes and
+cotton, which are Mexican things the short native poems and myths never happen to name. On a word
+count he looks like the 1820s picture, which mixes Old World and New World things the same way. A
+Mesoamerican text and a text about Mesoamerica are not the same thing. The inventory test hit the
+same wall.
 
-There is a setting under which all eight pass (only read "absent" from texts over 50,000
-words), but then Díaz passes by a single feature, and I found it after seeing the result. An
-instrument that flips on one setting is not ready to be pointed at the question. So no answer
-here either. Twelve more features need reading and are prepared as questions (succession,
-markets, sacrifice, burial, money and others); for those the 1820s values are from my memory,
-which is its own weakness.
+There was a setting under which all eight pass: only read "absent" from texts over 50,000 words.
+But then Díaz passes by a single feature, and I found it after seeing the result. An instrument
+that flips on one setting is not ready to be pointed at the question. I did not adopt it.
 
-**A second design: whose is it?** The first design counted a horse for whoever's book it was in.
-But in Bernal Díaz most horses are the Spaniards'. So this time a model reads each mention and
-says whose it is (the book's own people, outsiders, the author's own world, a figure of speech,
-a prophecy) and what the passage says (they have it, lack it, it was brought). Before any real
-reading, the model had to pass a check on 150 made-up passages with known answers, and two
-readings of 100 real mentions had to agree.
+**The second design: whose is it?** The word count gave a horse to whoever's book it was in. In
+Díaz most horses are the Spaniards'. Could a simple rule tell them apart, by looking at nearby
+words? I tried. Of 87 firearm mentions in Díaz, 30 could not be placed either way. Nearness is not
+ownership. So this time a model reads each mention and says whose it is (the book's own people,
+outsiders, the author's own world, a figure of speech, a prophecy) and what the passage says (they
+have it, lack it, it was brought). The features were rebuilt, 45 of them, each from a published
+source: the Dales, Roper, Coe, Vogel, a world ethnographic database. Díaz had to pass this time, or
+the run stopped. Before any real reading, the model had to pass a check on 150 made-up passages with
+known answers. And two readings of 100 real mentions had to agree.
 
-It missed, in two ways. On "whose", the made-up passages were perfect: 150 of 150. On "what" it
-got 109 of 150, under the bar of 85 percent. When I looked, every miss was a passage where my
-answer key was arguable: "strangers would bring horses into the land" I had keyed as saying
-nothing; the model said "brought from outside", which is fair. Where the thing belongs to the
-book's own people, which is the only place the score uses it, it was 60 of 60. That is my key's
-fault, not the reader's, but I found it after the result.
+**It missed, in two ways.** On "whose", the made-up passages were perfect: 150 of 150. On "what" it
+got 109 of 150, under the bar of 85 percent. When I looked, every miss was a passage where my answer
+key was arguable. "Strangers would bring horses into the land" I had keyed as saying nothing; the
+model said "brought from outside", which is fair. Where the thing belongs to the book's own people,
+which is the only place the score uses it, it was 60 of 60. That is my key's fault, not the
+reader's, but I found it after the result.
 
 The other miss is real. Two readings of the same 98 real mentions agreed on whose it is only 76
 percent of the time (bar 80). Most of the disagreement is between "the people the book is about"
-and "the author's own world", and much of it comes from *View of the Hebrews*, an essay where
-the author talks about the Indians in his own voice. That line is hard to draw, and it is the line
-the test turns on.
+and "the author's own world". Much of it comes from *View of the Hebrews*, an essay where the author
+talks about the Indians in his own voice. That line is hard to draw, and it is the line the test
+turns on. So the Book of Mormon was not scored, and I did not spend the 45 hours of reading behind
+it.
 
-So the Book of Mormon was not scored, and I did not spend the 45 hours of reading behind it.
+**The third design, being built.** On 23 November the choice was to try again rather than stop.
+This is a change made after seeing the second check, so whatever it finds counts for less. What
+changes, aimed straight at the two misses:
+
+- The reader is graded the way the score uses it: is this the book's own people, yes or no. And on
+  "what" only where the answer is yes. The key accepts every fair answer.
+- A sharper written rule, with worked examples, for the line between the book's own people and the
+  author's own world. 130 new made-up passages aimed at that line, none reused.
+- The real mentions are read by two different models, not one model twice. They must agree on 80
+  percent and well beyond chance.
+- Two Mesoamerican sources that were out of reach before are in. Kirchhoff's 1943 list of
+  Mesoamerican traits is now held. Roys's 1933 translation of the Chilam Balam of Chumayel is in too,
+  since the copyright renewal records show it was never renewed.
+
+Its settings are being written down before any answer exists.
+
+**What it means, and what it doesn't.** No answer yet on the Book of Mormon. What the failures show
+is about the method, and it applies to every list on both sides: a word in a text is not a thing
+its people had, and nobody's list has asked whose the thing is.
+
+**What's left.** The third design's check. Only if it passes, the long reading (about 45 hours),
+then Vogel's ideas and the Manchester library list alongside. In progress.
 
 ### Words that were supposed to be dead (BOM-118)
 
-Skousen and Carmack list word uses and phrases in the Book of Mormon that, by the dictionary's
-citations, had dropped out of English before the 1740s. "Arrive to" a place. "It was desirous"
-for it was desirable. "Depressed" for weakened in body. If that holds, the vocabulary was out
-of a man's reach in 1829. The dictionary works from the citations its readers happened to
-collect. I have a quarter of a million books, so I searched for each item.
+**The claim.** Royal Skousen and Stanford Carmack list word uses and phrases in the Book of Mormon
+that, by the dictionary's citations, had dropped out of English before the 1740s. "Arrive to" a
+place. "It was desirous" for it was desirable. "Depressed" for weakened in body. Skousen's 2018
+summary article puts it at 64 such items, 39 words and 25 phrases. If that holds, the vocabulary was
+out of a man's reach in 1829. Their own 2020 recount, after wider searches, already moved some of
+them later.
 
-I had 48 of their 64 items in hand. Six I could not turn into a search, four of them because
-the claimed word is Skousen's reconstruction and not what the 1830 edition prints. For the
-other 42 I cut the search down to the construction of the cited verse and scanned all 207,082
-works printed 1740 to 1830. Then a model read up to 60 hits per item per decade and said
-whether each carried the claimed old sense or the ordinary one. That is simulated judging by an
-AI model, 8,444 passages of it.
+**Their way first.** Their evidence is the Oxford dictionary's dated citations, collected by its
+readers, plus their own searches. The full list with their dates is in Skousen's book *The Nature
+of the Original Language*, which I have not bought. So their dated citations are not replicated
+until the book is bought. What I had was the open 2018 article: 48 of the 64 items, each with its
+claimed sense and the verse it cites.
 
-The known-answer check was per item: the model had to read the Book of Mormon's own verse in
-the claimed sense and two ordinary uses as ordinary. 34 items passed. Eight did not and are
-out.
+What I could check their way was the verses themselves. Four of the items rest on Skousen's
+reconstruction of the original text, not on what the 1830 edition prints. Where he reads "sermon",
+"depart", "great" and "raigned", the 1830 printing has "ceremony", "parted", "the governor" and
+"arraigned". So those four, and two more that no search can separate from the ordinary sense ("about
+to" and "but if"), could not be tested.
 
-The model said "claimed sense" 2,509 times. I had planned for a person to check every one of
-those. Nobody has. Instead a second, stronger model read each and sorted it: the writer's own
-words, a quotation or reprint of something older, or not the sense after all. Then I (the AI
-assistant, not Dave) read about 130 of the deciding passages myself, every one for the items
-resting on a handful of books and a sample of four from each larger item.
+**What I tried.** The dictionary works from the citations its readers happened to collect. I have a
+quarter of a million books. So: for each item, search the books of 1740 to 1830 and have a model read
+the hits and say whether each carries the claimed old sense or the ordinary one. That is simulated
+judging, a model reading, not a person.
 
-That last step mattered. Three finds for "to that" meaning until were all the old long s:
-the scanner read "so that" as "to that". Seven finds for "molten" as a verb were one speech by
-the Irish lawyer Curran in seven editions, and it is the ordinary participle anyway. Every
-find for "give" meaning describe was somebody who "gave the land the name of" something.
-Three of five "into a effect" were smudged "into effect". My reading changed 71 verdicts, and
-I now count a passage once however many editions reprint it.
+**When it failed: the pilot.** I tried ten items first. The check was that the model read each item's
+own verse in the claimed sense, and ordinary uses as ordinary. With a small model and 60 words of
+context it read 7 of the 10 verses right, under my bar of 8. With a stronger model and the whole
+paragraph it read 8. That change came after the first result, so the setting counts for less. The
+bars were not changed. The pilot had a second, bigger lesson. Five random hits a decade never once
+showed the old sense for five of the items. A rare sense does not turn up by chance. So the full run
+had to aim.
+
+**What I changed.** I cut each search down to the construction of the cited verse ("arrived to"
+followed by a place, not every "to"), tested the patterns on a sample, widened the ten that found
+nothing and narrowed the one that found too much. Then I scanned all 207,082 works printed 1740 to
+1830 and had the model read up to 60 hits per item per decade: 8,444 passages.
+
+**The check.** Per item, before any library passage was read: the model had to read the Book of
+Mormon's own verse in the claimed sense and two ordinary uses as ordinary. 34 of 42 items passed.
+Eight did not, "break" and "mar" among them, and are out.
+
+**When the checking fell short.** The model said "claimed sense" 2,509 times. I had planned for a
+person to check every one of those. Nobody has. I decided after the answers were in that a second,
+stronger model would read each and sort it: the writer's own words, a quotation or reprint of
+something older, or not the sense after all. Then the AI assistant, not Dave, read about 130 of the
+deciding passages. That was every one for the items resting on a handful of books, and four from each
+larger item.
+
+That last step mattered. Three finds for "to that" meaning until were all the old long s: the
+scanner read "so that" as "to that". Seven finds for "molten" as a verb were one speech by the Irish
+lawyer Curran in seven editions, and it is the ordinary participle anyway. Every find for "give"
+meaning describe was somebody who "gave the land the name of" something. Three of five "into a
+effect" were smudged "into effect". That reading changed 71 verdicts. After it I also decided to
+count a passage once however many editions reprint it, so "still in use" needs two separate
+passages, not two books.
+
+**The result.**
 
 | Outcome | Items | Which |
 | --- | --- | --- |
@@ -1542,68 +2509,109 @@ I now count a passage once however many editions reprint it.
 | Not found | 11 | molten as a verb, consigned, give, rebellion, rent, views, welfare, whereby, somewhat contentions, to that, where unto |
 | Could not test | 14 | 6 with no workable search, 8 where the model missed the item's check |
 
-Some of the 21 are everywhere. People "arrived to" an age or a height all through the period.
-A senator in 1827 said "it was desirous they should be performed". Basil Hall in 1829 saw
-houses in Rochester, New York, built on wheels "for the avowed purpose of being hurled away
-when the land should be sold". All but one of the 21 are found as late as the 1820s.
+Some of the 21 are everywhere. People "arrived to" an age or a height all through the period. A
+senator in 1827 said "it was desirous they should be performed". Basil Hall in 1829 saw houses in
+Rochester, New York, built on wheels "for the avowed purpose of being hurled away when the land
+should be sold". All but one of the 21 are found as late as the 1820s.
 
-So of the 34 items I could test, about three in five had not died. The dictionary's last
-citation is not the last use. That is the plain result, and it does not surprise anyone who
-has used a big library against a citation dictionary.
+The control books were thin. Only 10 items had any hits in the Bible-style books or Joseph Smith's
+other texts. "In the fourth day" turns up 22 times in the Bible-style books, almost all quoting
+scripture. By the two models' reading, Joseph Smith's own texts use "be aware" in the claimed sense
+six times.
 
-What it does not show. Eleven items were not found, and that is real, though "not found"
-means not found by one construction with a cap of 60 passages per decade. The 14 I could not
-test are simply open, and there are 16 more items I do not have. Five of the 21 rest on two or
-three passages (belove, into an effect, begin to, call, hurl away), and for some the sense is
-a judgment call: is "the call of its stomach" a need or a demand? No person has checked any
-of it. The second model was wrong on about a third of the passages I read in the thin items
-and on 8 of the 60 I sampled in the larger ones, so the passage counts in the table are too
-high by some margin, though not by enough to move a large item. The list of all 2,509 is kept
-for anyone who wants to read them.
+**What it means, and what it doesn't.** Of the 34 items I could test, about three in five had not
+died. The dictionary's last citation is not the last use. That is the plain result, and it will not
+surprise anyone who has used a big library against a citation dictionary. For the argument, it
+means the list as a whole does not show vocabulary out of reach in 1829. It does not mean every
+item was common.
+
+Eleven items were not found, and that is real. But "not found" means not found by one construction,
+with a cap of 60 passages a decade. The 14 I could not test are simply open, and there are 16 more
+items I do not have. Five of the 21 rest on two or three passages (belove, into an effect, begin to,
+call, hurl away), and for some the sense is a judgment call. Is "the call of its stomach" a need or
+a demand? No person has checked any of it. The second model was wrong on about a third of the
+passages the assistant read in the thin items, and on 8 of the 60 sampled in the larger ones. So the
+passage counts in the table are too high by some margin, though not by enough to move a large item.
+The list of all 2,509 is kept for anyone who wants to read them.
+
+**What's left.** A person's check from the list. The 16 items and the dated citations, when the book
+is bought. Wider searches for the 11 not found, and new checks for the 8 the model missed.
 
 ### Hebrew and Egyptian in the Uto-Aztecan languages (BOM-117)
 
-Brian Stubbs, a linguist, spent decades on the Uto-Aztecan family (Hopi, Yaqui, Nahuatl and
-about thirty more). In 2015 he published about 1,500 sets pairing their words with Hebrew,
-Aramaic and Egyptian words, under a table of sound rules: this Hebrew sound becomes that
-Uto-Aztecan sound. He reads it as a large layer of borrowed words. People cite it beside the
-Book of Mormon. Nobody, as far as I could find, has asked the question every linguist asks first:
-how many matches like these would turn up between languages that never met?
+**The claim.** Brian Stubbs, a linguist, spent decades on the Uto-Aztecan family: Hopi, Yaqui,
+Nahuatl and about thirty more. In 2015 he published about 1,500 sets pairing their words with Hebrew,
+Aramaic and Egyptian words, under a table of sound rules: this Hebrew sound becomes that Uto-Aztecan
+sound. He reads it as a large layer of borrowed words from contact, not a shared ancestor. People
+cite it beside the Book of Mormon. Critics, Chris Rogers and Magnus Pharao Hansen among them, said
+the comparative method was not properly applied and that matches this loose turn up by chance.
+Nobody, as far as I could find, had asked the question every linguist asks first: how many matches
+like these turn up between languages that never met?
 
-The book is posted free for private reading, so I could check it his way first. I drew 150 of
-his sets at random and had a program read them against his own table. 71 were laid out clearly
-enough for a program to read. Of those, 41 follow his table at every consonant, and 62 at the
-first one. Then the harder question: for the same Uto-Aztecan word, how many *other* Hebrew or
-Coptic dictionary words would pass the same rules? On sound alone, a median of 44. Once the
-meaning has to be at least as close as his, a median of 1. For 34 of the 71 there was no other
-candidate as good. So his meanings do real work; the sound rules alone are loose. This is all by
-rule. Nobody has read the 150 sets by hand.
+**Their way first.** The 2015 book is posted free for private reading, so I could check it his way.
+I drew 150 of his sets at random and had a program read them against his own table. 71 were laid out
+clearly enough for a program to read. Of those, 41 follow his table at every consonant, and 62 at the
+first one.
 
-Then the test linguists use (Kessler's): turn each word into its broad consonant class, count
-how often the classes line up across shared meanings, then shuffle the meanings 10,000 times and
-see if the real lists line up better than the shuffled ones. Before trusting it on Stubbs, it had
-to pass on pairs where the answer is known: Hebrew and Arabic (related), six pairs that borrowed
-heavily (Finnish and Swedish, English and French, Yaqui and Spanish...), and eight pairs that
-never met (Yaqui against Finnish, Japanese, Korean...).
+Then a harder question, still on his terms. For the same Uto-Aztecan word, how many *other* Hebrew or
+Coptic dictionary words would pass the same rules? On sound alone, a median of 44. Once the meaning
+has to be at least as close as his, a median of 1. For 34 of the 71 there was no other candidate as
+good. So his meanings do real work. The sound rules alone are loose. This is all by rule. Nobody has
+read the 150 sets by hand, and the other 79 sets went into questions for a model reader, not yet run.
+His 2011 dictionary and his *Changes in Languages* are not replicated until bought.
 
-It mostly failed. Open word lists for the ancient languages are short: 26 to 38 meanings for
-Aramaic, Late Egyptian and Stubbs's reconstructed Proto-Uto-Aztecan. At that length the test
-could not even find Hebrew and Arabic, which share a parent. So for ten of the twelve
-comparisons, the answer is "cannot tell". It passed at one size, the long lists (663 meanings),
-and only just: at 629 meanings, 34 fewer, it missed because one borrowing pair came out the wrong
-way. That near miss is why Yaqui against Hebrew, at 629, is also "cannot tell".
+**What I tried.** The test linguists use, Kessler's. Turn each word into its broad consonant class.
+Count how often the classes line up across shared meanings. Then shuffle the meanings 10,000 times
+and see if the real lists line up better than the shuffled ones. Real loans should also show up more
+in the meanings that are usually borrowed (trade words) than in the ones seldom borrowed (body
+parts). And his own index says how big the layer should be: for Yaqui's 663 meanings, it gives a
+Semitic or Egyptian source for 340.
 
-The one comparison that could be scored was Yaqui against Coptic, the last stage of Egyptian.
-Nothing. The real lists lined up no better than shuffled ones (p = 0.49), and the meanings where
-loans usually fall (body-part words seldom, trade words often) showed no lean at all. His index
-gives a Semitic or Egyptian source for 340 of those 663 meanings. When I planted fake loans in
-unrelated pairs, the test found a quarter of that, 85, every single time.
+**The check.** Before trusting it on Stubbs, it had to pass on pairs where the answer is known.
+Hebrew and Arabic, which share a parent. Six pairs that borrowed heavily: Finnish and Swedish, English
+and French, Yaqui and Spanish and others. And eight pairs that never met: Yaqui against Finnish,
+Japanese, Korean and more. It had to pass at each list size I meant to use.
 
-Two limits on that "nothing". The 340 counts meanings with a Near Eastern source anywhere in the
-family, not words Yaqui itself carries from Egyptian; if Yaqui has fewer than about 85, this
-test does not speak to it. And my fake loans follow a perfectly regular rule, which real loans
-do not. Coptic is also only a stand-in for the Egyptian of 600 BC. Stubbs's 2011 book and his
-*Changes in Languages* I have not bought, so they are not replicated.
+I wrote the card and fixed the settings minutes before the run, but did not commit them first. A
+machine shutdown followed. So the file times are the only record that the rules came before the
+numbers.
+
+**It mostly failed.** Open word lists for the ancient languages are short: 26 to 38 meanings for
+Aramaic, Late Egyptian and Stubbs's reconstructed Proto-Uto-Aztecan. At those sizes, and up to 115,
+the test could not even find Hebrew and Arabic, except once at 87. It passed at one size, the long
+lists (663 meanings), and only just. At 629 meanings, 34 fewer, it missed, because English and French
+came out with the borrowing lean the wrong way. And at 663 one never-met pair, Yaqui and a Quechua
+dialect, did come out as related. That was within the one allowed, and the likely cause is Spanish
+loans left in the Quechua list, though I have not checked.
+
+So I did not change the test after it failed. I did what the card said: score only at the size
+where the check passed, and say "cannot tell" everywhere else. That is eleven of the twelve
+comparisons, Yaqui against Hebrew at 629 among them.
+
+**The result.** The one comparison that could be scored was Yaqui against Coptic, the last stage of
+Egyptian. Nothing. The real lists lined up no better than shuffled ones (p = 0.49). The meanings
+where loans usually fall showed no lean at all. When I planted fake loans in unrelated pairs at a
+quarter of his predicted size, 85, the test found them every single time.
+
+| Comparison | List size | Check at that size | Answer |
+| --- | --- | --- | --- |
+| Yaqui against Coptic | 663 | passed, barely | no layer of the size his index implies |
+| Yaqui against Biblical Hebrew | 629 | missed | cannot tell |
+| The other ten (Late Egyptian, Aramaic, Proto-Uto-Aztecan, the family together) | 26 to 115 | missed | cannot tell |
+
+**What it means, and what it doesn't.** A layer of hundreds of Egyptian words in Yaqui, the size his
+index implies, should have shown up, and it did not. That is the one firm thing. Two limits on it.
+The 340 counts meanings with a Near Eastern source anywhere in the family, not words Yaqui itself
+carries from Egyptian. If Yaqui has fewer than about 85, this test does not speak to it. And my fake
+loans follow a perfectly regular rule, which real loans do not, so finding them every time
+overstates how well the test would find real ones. Coptic is also only a stand-in for the Egyptian of
+600 BC, and its words were matched to meanings by gloss without a reader's check. Even a positive
+result would not have said who, when, or by what route. For the other eleven, the honest answer is
+that open word lists this short cannot settle the claim either way.
+
+**What's left.** The prepared model questions on his sets and on the word matching. A Yaqui-only
+count of his sets, and fake loans planted at that size. A check that works on 40-word lists. His 2011
+and popular books, when bought.
 
 ## What I would want a reader to take from the whole set
 

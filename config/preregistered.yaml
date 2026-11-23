@@ -2132,6 +2132,26 @@ lab:                              # the research lab (exploratory tooling; reads
     vogel_min_yes: 1               # a motif is found in a text with this many "yes" answers; with none among the passages judged: "not found among the passages judged"
     manchester_accession_max: 275  # Manchester library sensitivity (lab.threeworlds2_manchester): Paul 1982's accessions 1-275 are those bought by 1830 (his note 7)
     manchester_year_max: 1830      # a Manchester title matches a library work printed by this year (any edition)
+  three_worlds3:                   # BOM-109 third design (lab; exploratory; post hoc where it follows the second design's missed check): card data/private/lab/owner/2026-11-23-three-worlds-third/card.md; every value set 2026-11-23 before any answer of this design existed. Values not named here are the second design's (lab.three_worlds2), overlaid by lab.threeworlds3.cfg3
+    check_seed: 20261123           # the made-up passages and the draw of the real mentions (the mention samples keep the second design's seed, so the long run reads the same passages)
+    second_reader: opus            # the second, independent reader of the real mentions: another model, same prompt, same format (the second design used one model in two formats)
+    synthetic_things: 10           # made-up passages: 10 things x 13 frames = 130, none of the second design's 150
+    real_check_n: 100              # real mentions read by both readers, drawn by check_seed from the known, reference and rule-drawn texts (never the book), none of the second design's 100
+    real_check_roles: [known, reference, rule]
+    judge_bar_whose: 0.85          # made-up passages, all 130: share right on whose, read as the score reads it (the book's people S against everything else)
+    judge_bar_what: 0.85           # made-up passages keyed S (80): share whose what is in the frame's set of fair answers
+    judge_bar_place: 0.85          # made-up passages keyed S (80): main setting or cannot tell (both counted as main) against elsewhere, as the score reads it
+    real_bar_whose: 0.8            # real mentions: the two readers agree on S against not-S, at least this share
+    real_kappa_whose: 0.6          # and Cohen's kappa on S against not-S at least this (binary agreement is easy when nearly every mention is S; 0.6 is the conventional lower bound of "substantial", Landis and Koch 1977)
+    real_bar_what: 0.8             # real mentions both readers give to S: agree on have / lack / anything else (the score reads only have and lack)
+    real_min_both_s: 20            # fewer real mentions given to S by both readers than this: the what bar cannot be judged and counts as missed
+    roys_start: "(THE RITUAL OF THE FOUR WORLD-QUARTERS)"   # Roys's Chumayel: the translation runs from his chapter I heading to Appendix A; his introduction, notes and appendices are left out (an outsider's commentary, not the native text)
+    roys_end: "APPENDIX A"
+    texts_add:                     # added to lab.three_worlds2.texts
+      roys_chumayel_1933: [reference, mesoamerica, native, "roys:sources/setting/book-of-chilam-balam-the-of-chumayel/text.txt", maya]
+    long_files: [known, reference, rule, control, book]   # this design's long files (its prompt), in the order to run once its check passes
+    reused_files: [partb, vogel, manchester_subject]       # then the second design's files whose prompt does not depend on the attribution prompt (jobs and answers stay in that card's folder)
+    late_files: [manchester, rule_reported]   # last: Manchester mentions with this design's prompt (written once the Manchester subject answers exist); then the rule-drawn works answered D (contemporary Indians), reported and not pooled, so not needed for any check or score
   voice_encoder:                   # BOM-101 (lab; exploratory): fine-tune the second style encoder so one writer in two registers counts as the same; Mac GPU only; card data/private/lab/owner/2026-11-21-voice-encoder/card.md
     base: data/corpus/style_embed/runs/style_v2/style.pt   # starting weights (the second encoder); never overwritten
     out_dir: data/corpus/lab/voice_encoder

@@ -1,0 +1,49 @@
+{
+ "questions": {
+  "jobs_check.jsonl": 230,
+  "jobs_check_opus.jsonl": 100,
+  "jobs_known.jsonl": 1573,
+  "jobs_reference.jsonl": 10071,
+  "jobs_rule.jsonl": 852,
+  "jobs_control.jsonl": 802,
+  "jobs_book.jsonl": 250,
+  "jobs_rule_reported.jsonl": 4721,
+  "jobs_manchester.jsonl": 0
+ },
+ "hours_at_per_hour": {
+  "jobs_check.jsonl": 0.77,
+  "jobs_check_opus.jsonl": 0.33,
+  "jobs_known.jsonl": 5.24,
+  "jobs_reference.jsonl": 33.57,
+  "jobs_rule.jsonl": 2.84,
+  "jobs_control.jsonl": 2.67,
+  "jobs_book.jsonl": 0.83,
+  "jobs_rule_reported.jsonl": 15.74,
+  "jobs_manchester.jsonl": 0.0
+ },
+ "check_questions": 330,
+ "check_hours": 1.1,
+ "synthetic": 130,
+ "real_check": 100,
+ "long_questions_this_design": 13548,
+ "long_hours_this_design": 45.2,
+ "late_questions_this_design": 4721,
+ "late_hours_this_design": 15.7,
+ "reused_second_design_files": {
+  "data/private/lab/owner/2026-11-22-three-worlds-redesign/jobs_partb.jsonl": 520,
+  "data/private/lab/owner/2026-11-22-three-worlds-redesign/jobs_vogel.jsonl": 1301,
+  "data/private/lab/owner/2026-11-22-three-worlds-redesign/jobs_manchester_subject.jsonl": 142
+ },
+ "reused_hours": 6.5,
+ "manchester_subject_open": 142,
+ "per_hour": 300,
+ "models": {
+  "main": "sonnet",
+  "second": "opus"
+ },
+ "order": "check (main) and check_opus (second reader); judge-check; then known, reference, rule, control, book; then the second design's partb, vogel, manchester_subject; then manchester, rule_reported",
+ "labelled": "SIMULATED JUDGING BY AN AI MODEL (lab.judge; BOM-109 third design); prepared, not run",
+ "config_sha256": "99c72b04ddb51715ddc8da39b149373d26f4cdb0bd70357d9a3acecc8827372b",
+ "markers_sha256": "7f5af1a7568ef8cf2a119cec355435e2db3995497a66a7917587cc4ec2047752",
+ "git_commit": "22e47c22eb61d830f3167d3907967464735213d9"
+}

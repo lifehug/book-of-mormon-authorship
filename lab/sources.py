@@ -821,6 +821,14 @@ def _sources() -> list[dict]:
          "copyright BYU Studies; free to read; private copy", True),
     ):  # fmt: skip
         add(name, group, g109, kind, url, terms, private)
+    # BOM-109 third design: Roys's Chumayel (Carnegie Institution, 1933), not renewed (Stanford
+    # renewal data, checked 2026-11-23), so public domain. sacred-texts.com answers programs with
+    # a Cloudflare check (403, 2026-11-23); the same sacred-texts edition (J.B. Hare, 2003,
+    # footnotes excluded) is mirrored on the Internet Archive, which accepts identified fetchers.
+    add("book-of-chilam-balam-the-of-chumayel", "setting", g109, "ia",
+        f"{IA}/details/book-of-chilam-balam-the-of-chumayel",
+        PD + " (Roys 1933, copyright not renewed; sacred-texts edition, J.B. Hare 2003, "
+        "mirrored on the Internet Archive)")  # fmt: skip
     return rows
 
 

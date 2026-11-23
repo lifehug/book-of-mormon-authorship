@@ -1,0 +1,1257 @@
+{
+ "label": "step 1 (their way first), read from BOM-112, BOM-113 and amendment 1 outputs; SIMULATED JUDGING BY AN AI MODEL (lab.judge; BOM-109 third design) where a judge read anything",
+ "dale_and_dale_2019": {
+  "source": "BOM-112, data/lab/setting/dale_checklist/result.json",
+  "their_counts_reproduced": {
+   "A": true,
+   "A_by_category": true,
+   "A_missing_ratio": true,
+   "B": true,
+   "C_pos": true,
+   "C_neg": true,
+   "D_pos": true,
+   "D_neg": true
+  },
+  "headline_as_printed": {
+   "what": "their headline from their printed tallies",
+   "n_positive": 131,
+   "n_negative": 18,
+   "log10_positive": 150.57,
+   "log10_negative": 30.58,
+   "log10_probability_fiction": -110.99,
+   "probability_fiction": "1.02e-111",
+   "verdict": "robust"
+  },
+  "their_book_codings_second_reader": {
+   "check_c_first_design": {
+    "design": "first",
+    "jobs": 149,
+    "answered": 149,
+    "open": 0,
+    "unreadable": [],
+    "label": "simulated judging by an AI model",
+    "positive": {
+     "items": 131,
+     "supports": 70,
+     "share": 0.534,
+     "bar": 0.75,
+     "met": false,
+     "verdicts": {
+      "SUPPORTS": 70,
+      "CONTRADICTS": 0,
+      "NOT_ADDRESSED": 61
+     },
+     "not_supported": [
+      "A:1.1",
+      "A:1.10",
+      "A:1.12",
+      "A:1.13",
+      "A:1.14",
+      "A:1.15",
+      "A:1.16",
+      "A:1.17",
+      "A:1.18",
+      "A:1.19",
+      "A:1.21",
+      "A:1.22",
+      "A:1.23",
+      "A:1.28",
+      "A:1.29",
+      "A:1.31",
+      "A:1.32",
+      "A:1.33",
+      "A:1.6",
+      "A:1.7",
+      "A:2.1",
+      "A:2.11",
+      "A:2.12",
+      "A:2.14",
+      "A:2.15",
+      "A:2.18",
+      "A:2.19",
+      "A:2.2",
+      "A:2.20",
+      "A:2.21",
+      "A:2.26",
+      "A:2.27",
+      "A:2.28",
+      "A:2.3",
+      "A:2.31",
+      "A:2.5",
+      "A:2.6",
+      "A:2.8",
+      "A:3.11",
+      "A:3.15",
+      "A:3.17",
+      "A:3.18",
+      "A:3.3",
+      "A:3.4",
+      "A:3.6",
+      "A:4.11",
+      "A:4.6",
+      "A:5.1",
+      "A:5.12",
+      "A:5.2",
+      "A:5.5",
+      "A:5.6",
+      "A:5.8",
+      "A:6.1",
+      "A:6.14",
+      "A:6.19",
+      "A:6.20",
+      "A:6.22",
+      "A:6.3",
+      "A:6.5",
+      "A:6.6"
+     ]
+    },
+    "negative": {
+     "items": 18,
+     "supports": 17,
+     "share": 0.944,
+     "bar": 0.75,
+     "met": true,
+     "verdicts": {
+      "SUPPORTS": 17,
+      "CONTRADICTS": 0,
+      "NOT_ADDRESSED": 1
+     },
+     "not_supported": [
+      "B:3"
+     ]
+    },
+    "passed": false,
+    "config_sha256": "c94ca5e794a0a6db10cb9b147973ffda0ef9cb00f42a480ce68c21adb24abb52"
+   }
+  },
+  "their_controls": "open (refused until check C passes)"
+ },
+ "roper_2025": {
+  "source": "BOM-113, data/lab/setting/anachronisms/result.json",
+  "tally_reproduced": {
+   "confirmed": 175,
+   "partial": 31,
+   "unconfirmed": 21,
+   "total": 227
+  },
+  "tally_stated": {
+   "confirmed": 174,
+   "partial": 31,
+   "unconfirmed": 21,
+   "total": 226
+  },
+  "his_verdicts_second_reader": "open"
+ },
+ "coe_1973": {
+  "source": "his short list of things missing from ancient America; counted by BOM-113",
+  "book_of_mormon": {
+   "horses": {
+    "horse": 14
+   },
+   "chariots": {
+    "chariot": 7
+   },
+   "wheat_barley": {
+    "wheat": 2,
+    "barley": 4
+   },
+   "cattle": {
+    "cattle": 7,
+    "cow": 5,
+    "ox": 6
+   },
+   "iron_steel": {
+    "iron": 18,
+    "steel": 5
+   }
+  },
+  "controls": {
+   "bernal_diaz_keatinge_1800": {
+    "horses": 167,
+    "chariots": 0,
+    "wheat_barley": 2,
+    "cattle": 5,
+    "iron_steel": 13
+   },
+   "ss-manuscript-story-1885": {
+    "horses": 5,
+    "chariots": 0,
+    "wheat_barley": 1,
+    "cattle": 3,
+    "iron_steel": 7
+   },
+   "gh-1816-late-war": {
+    "horses": 7,
+    "chariots": 1,
+    "wheat_barley": 3,
+    "cattle": 4,
+    "iron_steel": 14
+   },
+   "es-1825-view-of-the-hebrews": {
+    "horses": 8,
+    "chariots": 5,
+    "wheat_barley": 0,
+    "cattle": 4,
+    "iron_steel": 15
+   }
+  }
+ },
+ "vogel_1986": "open: jobs_vogel.jsonl (amendment 1, our coding of his prose) not yet answered",
+ "kirchhoff_1943": {
+  "group_I_traits": 37,
+  "group_I_keyed": 18,
+  "group_I_keyed_codes": [
+   "I.2",
+   "I.4",
+   "I.5",
+   "I.8",
+   "I.12",
+   "I.13",
+   "I.16",
+   "I.17",
+   "I.18",
+   "I.19",
+   "I.20",
+   "I.21",
+   "I.22",
+   "I.23",
+   "I.24",
+   "I.27",
+   "I.28",
+   "I.37"
+  ],
+  "group_I_not_keyed": [
+   "a digging stick of a particular shape (coa)",
+   "chia grown for drink and for an oil used in paint",
+   "maize ground after cooking with ash or lime",
+   "clay pellets for blowguns, lip plugs and other small clay objects",
+   "pyrite mirrors",
+   "copper tubes for drilling stone",
+   "rabbit hair woven into cloth",
+   "shields with two handles",
+   "turbans; sandals with heels; one-piece suits for warriors",
+   "ritual use of paper and rubber",
+   "sacrifice of quails",
+   "the volador rite",
+   "13 as a ritual number",
+   "a set of gods (Tlaloc among them)",
+   "several other worlds of the dead and a hard journey to them",
+   "drinking the water a dead kinsman was washed in",
+   "markets divided by speciality",
+   "merchants who are also spies",
+   "military orders (eagle and jaguar knights)"
+  ],
+  "features_with_kirchhoff": [
+   "ball_game",
+   "beans_squash_chili",
+   "bloodletting",
+   "cacao",
+   "causeways",
+   "cement",
+   "chinampas",
+   "codices",
+   "cotton",
+   "dogs_eaten",
+   "human_sacrifice",
+   "maguey_pulque",
+   "maize",
+   "meso_calendar",
+   "obsidian",
+   "pyramids"
+  ],
+  "mesoamerica_features_without_kirchhoff": [
+   "canoes",
+   "feathers",
+   "jade_greenstone",
+   "turkeys"
+  ]
+ },
+ "by_feature": {
+  "horses": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Coe 1973",
+     "reads": "missing from ancient America; the book has it"
+    },
+    {
+     "source": "Roper",
+     "thing": "horse",
+     "status": [
+      "confirmed",
+      "partial"
+     ]
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:1",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    }
+   ]
+  },
+  "chariots": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Coe 1973",
+     "reads": "missing from ancient America; the book has it"
+    },
+    {
+     "source": "Roper",
+     "thing": "chariot",
+     "status": [
+      "partial"
+     ]
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:p2",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    }
+   ]
+  },
+  "asses_camels": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Roper",
+     "thing": "ass",
+     "status": [
+      "partial",
+      "unconfirmed"
+     ]
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:p10",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    }
+   ]
+  },
+  "cattle": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Coe 1973",
+     "reads": "missing from ancient America; the book has it"
+    },
+    {
+     "source": "Roper",
+     "thing": "cattle",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Roper",
+     "thing": "cow",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Roper",
+     "thing": "ox",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:p8",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    }
+   ]
+  },
+  "sheep_goats": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Roper",
+     "thing": "sheep",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Roper",
+     "thing": "goat",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:p3",
+     "direction": "negative",
+     "ratio": 2.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:p4",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    }
+   ]
+  },
+  "swine": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Roper",
+     "thing": "swine",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:p5",
+     "direction": "negative",
+     "ratio": 2.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    }
+   ]
+  },
+  "wheat_barley": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Coe 1973",
+     "reads": "missing from ancient America; the book has it"
+    },
+    {
+     "source": "Roper",
+     "thing": "wheat",
+     "status": [
+      "unconfirmed"
+     ]
+    },
+    {
+     "source": "Roper",
+     "thing": "barley",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:p6",
+     "direction": "negative",
+     "ratio": 2.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:p7",
+     "direction": "negative",
+     "ratio": 2.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "C_neg:5",
+     "direction": "negative",
+     "ratio": 10.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    }
+   ]
+  },
+  "vine_olive_fig": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Roper",
+     "thing": "grape",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Roper",
+     "thing": "wine",
+     "status": [
+      "confirmed"
+     ]
+    }
+   ]
+  },
+  "iron_steel": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Coe 1973",
+     "reads": "missing from ancient America; the book has it"
+    },
+    {
+     "source": "Roper",
+     "thing": "iron",
+     "status": [
+      "confirmed",
+      "unconfirmed"
+     ]
+    },
+    {
+     "source": "Roper",
+     "thing": "steel",
+     "status": [
+      "confirmed",
+      "partial",
+      "unconfirmed"
+     ]
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:3",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:4",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "C_neg:7",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Vogel 1986",
+     "chapter": "ch2",
+     "reads": "an 1820s idea the book shares"
+    }
+   ]
+  },
+  "brass_bronze": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Roper",
+     "thing": "brass",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:p1",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    }
+   ]
+  },
+  "silk_linen": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Roper",
+     "thing": "silk",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Roper",
+     "thing": "linen",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:p9",
+     "direction": "negative",
+     "ratio": 2.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    }
+   ]
+  },
+  "coins": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "C_neg:15",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    }
+   ]
+  },
+  "plough": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Roper",
+     "thing": "plow",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "C_neg:6",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    }
+   ]
+  },
+  "hebrew_rites": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "D_neg:1",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "D_neg:3",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Vogel 1986",
+     "chapter": "ch3",
+     "reads": "an 1820s idea the book shares"
+    }
+   ]
+  },
+  "tents": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Roper",
+     "thing": "tent",
+     "status": [
+      "confirmed"
+     ]
+    }
+   ]
+  },
+  "synagogues": {
+   "kind": "near_east",
+   "published": [
+    {
+     "source": "Roper",
+     "thing": "synagogue",
+     "status": [
+      "confirmed",
+      "unconfirmed"
+     ]
+    }
+   ]
+  },
+  "maize": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "A:2.22",
+     "direction": "positive",
+     "ratio": 0.1,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "C_pos:7",
+     "direction": "positive",
+     "ratio": 0.5,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "D_pos:5",
+     "direction": "positive",
+     "ratio": 0.5,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "II.b"
+    }
+   ]
+  },
+  "beans_squash_chili": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "C_pos:7",
+     "direction": "positive",
+     "ratio": 0.5,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "II.b"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "II.j"
+    }
+   ]
+  },
+  "cacao": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.5"
+    }
+   ]
+  },
+  "maguey_pulque": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.4"
+    }
+   ]
+  },
+  "cotton": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "C_pos:9",
+     "direction": "positive",
+     "ratio": 0.5,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "D_pos:5",
+     "direction": "positive",
+     "ratio": 0.5,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "A:4.4",
+     "direction": "positive",
+     "ratio": 0.02,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.13"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "II.h"
+    }
+   ]
+  },
+  "feathers": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "C_pos:6",
+     "direction": "positive",
+     "ratio": 0.5,
+     "reads": "book matches Mesoamerica"
+    }
+   ]
+  },
+  "jade_greenstone": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "A:5.10",
+     "direction": "positive",
+     "ratio": 0.02,
+     "reads": "book matches Mesoamerica"
+    }
+   ]
+  },
+  "obsidian": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.8"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.12"
+    }
+   ]
+  },
+  "turkeys": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "C_pos:8",
+     "direction": "positive",
+     "ratio": 0.5,
+     "reads": "book matches Mesoamerica"
+    }
+   ]
+  },
+  "dogs_eaten": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "C_pos:2",
+     "direction": "positive",
+     "ratio": 0.5,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "C_pos:3",
+     "direction": "positive",
+     "ratio": 0.1,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "II.j"
+    }
+   ]
+  },
+  "pyramids": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "A:3.4",
+     "direction": "positive",
+     "ratio": 0.02,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "D_pos:15",
+     "direction": "positive",
+     "ratio": 0.1,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Vogel 1986",
+     "chapter": "ch2",
+     "reads": "an 1820s idea the book shares"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.16"
+    }
+   ]
+  },
+  "cement": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "A:6.16",
+     "direction": "positive",
+     "ratio": 0.02,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "A:6.17",
+     "direction": "positive",
+     "ratio": 0.02,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Roper",
+     "thing": "cement",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.17"
+    }
+   ]
+  },
+  "causeways": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "A:6.12",
+     "direction": "positive",
+     "ratio": 0.1,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "D_pos:6",
+     "direction": "positive",
+     "ratio": 0.1,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Roper",
+     "thing": "highway",
+     "status": [
+      "confirmed"
+     ]
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "II.j"
+    }
+   ]
+  },
+  "human_sacrifice": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "A:2.10",
+     "direction": "positive",
+     "ratio": 0.1,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.27"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.37"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "II.c"
+    }
+   ]
+  },
+  "bloodletting": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "A:3.6",
+     "direction": "positive",
+     "ratio": 0.5,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.28"
+    }
+   ]
+  },
+  "meso_calendar": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "A:6.2",
+     "direction": "positive",
+     "ratio": 0.02,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "A:6.3",
+     "direction": "positive",
+     "ratio": 0.02,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "A:3.18",
+     "direction": "positive",
+     "ratio": 0.1,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.21"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.22"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.23"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.24"
+    }
+   ]
+  },
+  "codices": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "A:5.12",
+     "direction": "positive",
+     "ratio": 0.1,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "A:6.9",
+     "direction": "positive",
+     "ratio": 0.02,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.19"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.20"
+    }
+   ]
+  },
+  "canoes": {
+   "kind": "mesoamerica",
+   "published": []
+  },
+  "mounds": {
+   "kind": "america_1820s",
+   "published": [
+    {
+     "source": "Vogel 1986",
+     "chapter": "ch2",
+     "reads": "an 1820s idea the book shares"
+    }
+   ]
+  },
+  "picket_forts": {
+   "kind": "america_1820s",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "A:4.2",
+     "direction": "positive",
+     "ratio": 0.02,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "C_pos:17",
+     "direction": "positive",
+     "ratio": 0.1,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "D_pos:8",
+     "direction": "positive",
+     "ratio": 0.02,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Vogel 1986",
+     "chapter": "ch2",
+     "reads": "an 1820s idea the book shares"
+    },
+    {
+     "source": "Roper",
+     "thing": "fortification",
+     "status": [
+      "confirmed"
+     ]
+    }
+   ]
+  },
+  "elephants": {
+   "kind": "america_1820s",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "B:2",
+     "direction": "negative",
+     "ratio": 10.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Roper",
+     "thing": "elephant",
+     "status": [
+      "confirmed",
+      "partial"
+     ]
+    }
+   ]
+  },
+  "vanished_race": {
+   "kind": "america_1820s",
+   "published": [
+    {
+     "source": "Vogel 1986",
+     "chapter": "ch4",
+     "reads": "an 1820s idea the book shares"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "A:2.8",
+     "direction": "positive",
+     "ratio": 0.02,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "A:4.6",
+     "direction": "positive",
+     "ratio": 0.02,
+     "reads": "book matches Mesoamerica"
+    }
+   ]
+  },
+  "israelite_descent": {
+   "kind": "america_1820s",
+   "published": [
+    {
+     "source": "Vogel 1986",
+     "chapter": "ch3",
+     "reads": "an 1820s idea the book shares"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "D_neg:1",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "D_neg:2",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    }
+   ]
+  },
+  "metal_plates": {
+   "kind": "america_1820s",
+   "published": [
+    {
+     "source": "Roper",
+     "thing": "plate",
+     "status": [
+      "confirmed",
+      "unconfirmed"
+     ]
+    }
+   ]
+  },
+  "hebrew_language": {
+   "kind": "america_1820s",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "D_neg:2",
+     "direction": "negative",
+     "ratio": 50.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "B:p11",
+     "direction": "negative",
+     "ratio": 2.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Vogel 1986",
+     "chapter": "ch3",
+     "reads": "an 1820s idea the book shares"
+    }
+   ]
+  },
+  "egyptian_script": {
+   "kind": "america_1820s",
+   "published": [
+    {
+     "source": "Dale and Dale",
+     "item": "B:p11",
+     "direction": "negative",
+     "ratio": 2.0,
+     "reads": "book has a thing Mesoamerica lacked"
+    },
+    {
+     "source": "Dale and Dale",
+     "item": "A:2.11",
+     "direction": "positive",
+     "ratio": 0.5,
+     "reads": "book matches Mesoamerica"
+    },
+    {
+     "source": "Vogel 1986",
+     "chapter": "ch2",
+     "reads": "an 1820s idea the book shares"
+    }
+   ]
+  },
+  "firearms": {
+   "kind": "contemporary",
+   "published": []
+  },
+  "printing": {
+   "kind": "contemporary",
+   "published": []
+  },
+  "modern_money": {
+   "kind": "contemporary",
+   "published": []
+  },
+  "ball_game": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.18"
+    },
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "II.l"
+    }
+   ]
+  },
+  "chinampas": {
+   "kind": "mesoamerica",
+   "published": [
+    {
+     "source": "Kirchhoff 1943",
+     "trait": "I.2"
+    }
+   ]
+  }
+ },
+ "ours_state": "not scored yet: the third design's checks have not passed or not run",
+ "config_sha256": "99c72b04ddb51715ddc8da39b149373d26f4cdb0bd70357d9a3acecc8827372b",
+ "markers_sha256": "7f5af1a7568ef8cf2a119cec355435e2db3995497a66a7917587cc4ec2047752",
+ "git_commit": "22e47c22eb61d830f3167d3907967464735213d9"
+}
