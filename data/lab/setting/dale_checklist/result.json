@@ -694,5 +694,129 @@
   },
   "labelled": "simulated judging by an AI model (not run)",
   "config_sha256": "c94ca5e794a0a6db10cb9b147973ffda0ef9cb00f42a480ce68c21adb24abb52"
+ },
+ "control_jobs_third_design": {
+  "design": "third: whole-book reading (2026-11-23, post hoc: after check C missed and the second design's retrieval check missed)",
+  "batches": [
+   43,
+   42,
+   42,
+   42
+  ],
+  "decoys_per_batch": [
+   5,
+   5,
+   5,
+   5
+  ],
+  "files": {
+   "jobs3_check.jsonl": {
+    "questions": 92,
+    "approx_input_tokens": 1549572,
+    "hours_at_per_hour": 0.31
+   },
+   "jobs3_check_second.jsonl": {
+    "questions": 12,
+    "approx_input_tokens": 202311,
+    "hours_at_per_hour": 0.04
+   },
+   "jobs3_controls.jsonl": {
+    "questions": 220,
+    "approx_input_tokens": 3641522,
+    "hours_at_per_hour": 0.73
+   },
+   "jobs3_controls_second.jsonl": {
+    "questions": 24,
+    "approx_input_tokens": 405564,
+    "hours_at_per_hour": 0.08
+   }
+  },
+  "per_text": {
+   "book_of_mormon": {
+    "words": 272220,
+    "sections": 23,
+    "questions": 92,
+    "second_reader_sections": [
+     3,
+     4,
+     16
+    ],
+    "approx_input_tokens": 1549572,
+    "known_answer": true
+   },
+   "view_of_the_hebrews_1825": {
+    "words": 110607,
+    "sections": 10,
+    "questions": 40,
+    "second_reader_sections": [
+     7
+    ],
+    "approx_input_tokens": 670752,
+    "known_answer": false
+   },
+   "spalding_manuscript_story": {
+    "words": 44279,
+    "sections": 4,
+    "questions": 16,
+    "second_reader_sections": [
+     1
+    ],
+    "approx_input_tokens": 271273,
+    "known_answer": false
+   },
+   "late_war_1816": {
+    "words": 59611,
+    "sections": 5,
+    "questions": 20,
+    "second_reader_sections": [
+     3
+    ],
+    "approx_input_tokens": 347431,
+    "known_answer": false
+   },
+   "snowden_american_revolution_bible_style": {
+    "words": 69255,
+    "sections": 6,
+    "questions": 24,
+    "second_reader_sections": [
+     6
+    ],
+    "approx_input_tokens": 406058,
+    "known_answer": false
+   },
+   "chronicles_of_eri_1822_extra": {
+    "words": 134834,
+    "sections": 12,
+    "questions": 48,
+    "second_reader_sections": [
+     4
+    ],
+    "approx_input_tokens": 763385,
+    "known_answer": false
+   },
+   "kjv_historical_books": {
+    "words": 205034,
+    "sections": 18,
+    "questions": 72,
+    "second_reader_sections": [
+     2
+    ],
+    "approx_input_tokens": 1182622,
+    "known_answer": false
+   }
+  },
+  "decoy_keyword_hits": {
+   "book_of_mormon": {},
+   "view_of_the_hebrews_1825": {},
+   "spalding_manuscript_story": {},
+   "late_war_1816": {},
+   "snowden_american_revolution_bible_style": {},
+   "chronicles_of_eri_1822_extra": {},
+   "kjv_historical_books": {}
+  },
+  "reader": "sonnet",
+  "second_reader": "opus",
+  "labelled": "simulated judging by an AI model (not run)",
+  "config_sha256": "3cad8f579f8531b8fe9917a2f84202056f7bfc26674b7b0d11236385a2f9dd99"
  }
 }
