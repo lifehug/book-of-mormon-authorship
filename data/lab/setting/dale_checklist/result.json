@@ -460,5 +460,239 @@
   },
   "known_answer_questions": 149,
   "labelled": "simulated judging by an AI model (not run)"
+ },
+ "check_c_first_design": {
+  "design": "first",
+  "jobs": 149,
+  "answered": 149,
+  "open": 0,
+  "unreadable": [],
+  "label": "simulated judging by an AI model",
+  "positive": {
+   "items": 131,
+   "supports": 70,
+   "share": 0.534,
+   "bar": 0.75,
+   "met": false,
+   "verdicts": {
+    "SUPPORTS": 70,
+    "CONTRADICTS": 0,
+    "NOT_ADDRESSED": 61
+   },
+   "not_supported": [
+    "A:1.1",
+    "A:1.10",
+    "A:1.12",
+    "A:1.13",
+    "A:1.14",
+    "A:1.15",
+    "A:1.16",
+    "A:1.17",
+    "A:1.18",
+    "A:1.19",
+    "A:1.21",
+    "A:1.22",
+    "A:1.23",
+    "A:1.28",
+    "A:1.29",
+    "A:1.31",
+    "A:1.32",
+    "A:1.33",
+    "A:1.6",
+    "A:1.7",
+    "A:2.1",
+    "A:2.11",
+    "A:2.12",
+    "A:2.14",
+    "A:2.15",
+    "A:2.18",
+    "A:2.19",
+    "A:2.2",
+    "A:2.20",
+    "A:2.21",
+    "A:2.26",
+    "A:2.27",
+    "A:2.28",
+    "A:2.3",
+    "A:2.31",
+    "A:2.5",
+    "A:2.6",
+    "A:2.8",
+    "A:3.11",
+    "A:3.15",
+    "A:3.17",
+    "A:3.18",
+    "A:3.3",
+    "A:3.4",
+    "A:3.6",
+    "A:4.11",
+    "A:4.6",
+    "A:5.1",
+    "A:5.12",
+    "A:5.2",
+    "A:5.5",
+    "A:5.6",
+    "A:5.8",
+    "A:6.1",
+    "A:6.14",
+    "A:6.19",
+    "A:6.20",
+    "A:6.22",
+    "A:6.3",
+    "A:6.5",
+    "A:6.6"
+   ]
+  },
+  "negative": {
+   "items": 18,
+   "supports": 17,
+   "share": 0.944,
+   "bar": 0.75,
+   "met": true,
+   "verdicts": {
+    "SUPPORTS": 17,
+    "CONTRADICTS": 0,
+    "NOT_ADDRESSED": 1
+   },
+   "not_supported": [
+    "B:3"
+   ]
+  },
+  "passed": false,
+  "config_sha256": "c94ca5e794a0a6db10cb9b147973ffda0ef9cb00f42a480ce68c21adb24abb52"
+ },
+ "control_jobs_second_design": {
+  "design": "second (2026-11-23, post hoc: after check C missed)",
+  "retrieval": {
+   "keyword_passages": 3,
+   "meaning_passages": 5,
+   "model": "BAAI/bge-small-en-v1.5"
+  },
+  "check_questions": 149,
+  "control_questions": 894,
+  "per_text": {
+   "book_of_mormon": {
+    "words": 272220,
+    "windows": 4536,
+    "questions": 149,
+    "passages_by": {
+     "keyword": 441,
+     "meaning": 745
+    },
+    "known_answer": true
+   },
+   "view_of_the_hebrews_1825": {
+    "words": 110607,
+    "windows": 1843,
+    "questions": 149,
+    "passages_by": {
+     "keyword": 413,
+     "meaning": 745
+    },
+    "known_answer": false
+   },
+   "spalding_manuscript_story": {
+    "words": 44279,
+    "windows": 737,
+    "questions": 149,
+    "passages_by": {
+     "keyword": 337,
+     "meaning": 745
+    },
+    "known_answer": false
+   },
+   "late_war_1816": {
+    "words": 59611,
+    "windows": 993,
+    "questions": 149,
+    "passages_by": {
+     "keyword": 359,
+     "meaning": 745
+    },
+    "known_answer": false
+   },
+   "snowden_american_revolution_bible_style": {
+    "words": 69255,
+    "windows": 1154,
+    "questions": 149,
+    "passages_by": {
+     "keyword": 322,
+     "meaning": 745
+    },
+    "known_answer": false
+   },
+   "chronicles_of_eri_1822_extra": {
+    "words": 134834,
+    "windows": 2247,
+    "questions": 149,
+    "passages_by": {
+     "keyword": 368,
+     "meaning": 745
+    },
+    "known_answer": false
+   },
+   "kjv_historical_books": {
+    "words": 205034,
+    "windows": 3417,
+    "questions": 149,
+    "passages_by": {
+     "keyword": 411,
+     "meaning": 745
+    },
+    "known_answer": false
+   }
+  },
+  "retrieval_check": {
+   "items": 8,
+   "shown": 4,
+   "shown_by_keyword": 0,
+   "share": 0.5,
+   "bar": 0.75,
+   "passed": false,
+   "per_item": {
+    "A:1.15": {
+     "shown": true,
+     "by": [
+      "meaning"
+     ]
+    },
+    "A:1.21": {
+     "shown": false,
+     "by": []
+    },
+    "A:1.22": {
+     "shown": false,
+     "by": []
+    },
+    "A:2.27": {
+     "shown": false,
+     "by": []
+    },
+    "A:2.5": {
+     "shown": false,
+     "by": []
+    },
+    "A:5.12": {
+     "shown": true,
+     "by": [
+      "meaning"
+     ]
+    },
+    "A:5.8": {
+     "shown": true,
+     "by": [
+      "meaning"
+     ]
+    },
+    "A:6.14": {
+     "shown": true,
+     "by": [
+      "meaning"
+     ]
+    }
+   }
+  },
+  "labelled": "simulated judging by an AI model (not run)",
+  "config_sha256": "c94ca5e794a0a6db10cb9b147973ffda0ef9cb00f42a480ce68c21adb24abb52"
  }
 }
