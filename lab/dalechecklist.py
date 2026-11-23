@@ -21,6 +21,12 @@ Usage::
     python -m lab.dalechecklist keys     # paper -> data/lab/setting/dale_checklist/items.json
     python -m lab.dalechecklist arith    # known-answer check + alternatives -> result.json
     python -m lab.dalechecklist jobs     # candidate passages + judging questions (private)
+    python -m lab.dalechecklist jobs2    # second design: keyword + meaning passages (private)
+    python -m lab.dalechecklist checkc [--design first|second]   # score check C from answers
+    python -m lab.dalechecklist controls # score the controls (refused unless check C passed)
+
+The second design (2026-11-23, post hoc, after check C missed) keeps the bars and adds windows
+found by meaning (the passage index's own model) to the keyword windows, for every text alike.
 """
 
 from __future__ import annotations
@@ -34,7 +40,7 @@ from pathlib import Path
 
 from lab import dalechecklist_coding as coding
 from lab.numbers import CAND, KJV, SRC, _file, bom_text, gutenberg
-from lab.paths import REGISTRY, out
+from lab.paths import LOGS, REGISTRY, out
 from metadata import config
 
 PRIVATE = Path("data/private/lab/owner/2026-11-21-dale-checklist")
@@ -518,23 +524,33 @@ def windows(text: str, size: int, step: int) -> list[str]:
     return [" ".join(w[a : a + size]) for a in starts]
 
 
-def candidates(text: str, pattern: re.Pattern, size: int, step: int, keep: int) -> list[str]:
-    """The ``keep`` windows with most keyword hits (distinct terms first), in text order."""
+def _overlaps(k: int, used, size: int, step: int) -> bool:
+    return any(abs(k - u) * step < size for u in used)
+
+
+def keyword_picks(wins: list[str], pattern: re.Pattern, size: int, step: int,
+                  keep: int) -> list[int]:  # fmt: skip
+    """Indices of the ``keep`` windows with most keyword hits (distinct terms first), no overlap."""
     scored = []
-    for k, win in enumerate(windows(text, size, step)):
+    for k, win in enumerate(wins):
         hits = [m.group(0).lower() for m in pattern.finditer(win)]
         if hits:
-            scored.append((-len(set(hits)), -len(hits), k, win))
+            scored.append((-len(set(hits)), -len(hits), k))
     scored.sort()
-    chosen, used = [], set()
-    for _, _, k, win in scored:
-        if any(abs(k - u) * step < size for u in used):  # no overlapping windows
+    used: list[int] = []
+    for _, _, k in scored:
+        if _overlaps(k, used, size, step):  # no overlapping windows
             continue
-        chosen.append((k, win))
-        used.add(k)
-        if len(chosen) == keep:
+        used.append(k)
+        if len(used) == keep:
             break
-    return [w for _, w in sorted(chosen)]
+    return sorted(used)
+
+
+def candidates(text: str, pattern: re.Pattern, size: int, step: int, keep: int) -> list[str]:
+    """The ``keep`` windows with most keyword hits (distinct terms first), in text order."""
+    wins = windows(text, size, step)
+    return [wins[k] for k in keyword_picks(wins, pattern, size, step, keep)]
 
 
 PROMPT = """You are checking one feature against passages from one book. This is part of a \
@@ -607,12 +623,301 @@ def build_jobs(cfg: dict) -> dict | None:
             "labelled": "simulated judging by an AI model (not run)"}  # fmt: skip
 
 
+# ------------------------------------------------------------------------------ second design
+# 2026-11-23, post hoc (decided after check C missed; see the card). Candidate passages are the
+# keyword windows as before plus windows found by meaning with the passage index's own model;
+# the same retrieval for every text. The bars are unchanged.
+
+JOBS2_CHECK = PRIVATE / "jobs2_check.jsonl"
+JOBS2_CONTROLS = PRIVATE / "jobs2_controls.jsonl"
+PASSAGES2 = PRIVATE / "passages2.jsonl"
+ANSWERS = {  # design -> (jobs, answers) for the known-answer check C
+    "first": (PRIVATE / "jobs_first.jsonl", PRIVATE / "answers_first.jsonl"),
+    "second": (JOBS2_CHECK, PRIVATE / "answers2_check.jsonl"),
+}
+ANSWERS2_CONTROLS = PRIVATE / "answers2_controls.jsonl"
+VERDICTS = ("SUPPORTS", "CONTRADICTS", "NOT_ADDRESSED")
+BOM = "book_of_mormon"
+
+PROMPT2 = PROMPT.replace(
+    "Passages (found by keyword search; they may be irrelevant):",
+    "Passages (found by keyword search and by search by meaning; they may be irrelevant):",
+)
+
+
+def second(cfg: dict) -> dict:
+    return settings(cfg)["second_design"]
+
+
+def meaning_picks(scores, size: int, step: int, keep: int, taken: list[int]) -> list[int]:
+    """Indices of the ``keep`` best-scoring windows overlapping neither each other nor ``taken``."""
+    chosen: list[int] = []
+    for k in sorted(range(len(scores)), key=lambda i: (-float(scores[i]), i)):
+        if _overlaps(k, taken + chosen, size, step):
+            continue
+        chosen.append(k)
+        if len(chosen) == keep:
+            break
+    return chosen
+
+
+def retrieve(wins: list[str], vecs, query_vec, pattern: re.Pattern | None, cfg: dict) -> list[dict]:
+    """The second design's passages for one item in one text, in text order: the keyword picks
+    (first design) and then the picks by meaning, none overlapping."""
+    st, s2 = settings(cfg), second(cfg)
+    size, step = st["window_words"], st["window_step"]
+    kw = [] if pattern is None else keyword_picks(wins, pattern, size, step,
+                                                   s2["keyword_passages"])  # fmt: skip
+    mn = meaning_picks(vecs @ query_vec, size, step, s2["meaning_passages"], kw)
+    how = {**{k: "keyword" for k in kw}, **{k: "meaning" for k in mn}}
+    return [{"window": k, "how": how[k], "text": wins[k]} for k in sorted(how)]
+
+
+def _embedder(cfg: dict):
+    """Vectors from the passage index's own model (``semantic.index_model``), normalised."""
+    import numpy as np
+
+    from semantic.index import _model
+
+    model = _model(cfg)
+
+    def embed(texts: list[str], question: bool = False):
+        prefix = cfg["lab"]["query_prefix"] if question else ""
+        v = model.encode([prefix + " ".join(t.split()) for t in texts],
+                         batch_size=cfg["semantic"]["batch_size"], normalize_embeddings=True,
+                         convert_to_numpy=True, show_progress_bar=False)  # fmt: skip
+        return np.asarray(v, dtype=np.float32)
+
+    return embed
+
+
+def _norm(s: str) -> str:
+    return " ".join(s.lower().split())
+
+
+def retrieval_check(shown: dict[str, list[dict]], cfg: dict) -> dict:
+    """Of the items where the diagnosis found the stating passage, how many have it shown now
+    (and how many by the keyword picks alone, the first design)."""
+    s2 = second(cfg)
+    per = {}
+    for iid, marker in s2["retrieval_markers"].items():
+        ps = shown.get(iid, [])
+        hit = [p["how"] for p in ps if _norm(marker) in _norm(p["text"])]
+        per[iid] = {"shown": bool(hit), "by": sorted(set(hit))}
+    n = len(per)
+    k = sum(v["shown"] for v in per.values())
+    by_kw = sum("keyword" in v["by"] for v in per.values())
+    return {"items": n, "shown": k, "shown_by_keyword": by_kw,
+            "share": round(k / n, 3) if n else None, "bar": s2["retrieval_bar"],
+            "passed": bool(n) and k / n >= s2["retrieval_bar"], "per_item": per}  # fmt: skip
+
+
+def build_jobs2(cfg: dict, embed=None) -> dict | None:
+    """Write the second design's questions: the 149 check questions in their own file, then the
+    controls; every item gets a question in every text (meaning always finds passages)."""
+    k = keyed(cfg)
+    if k is None:
+        return None
+    st = settings(cfg)
+    items = [i for i in k["items"] if i["appendix"] in ("A", "B")]
+    texts = control_texts(cfg)
+    embed = embed or _embedder(cfg)
+    qvecs = embed([coding.FEATURE.get(i["id"], i["label"]) for i in items], question=True)
+    unquoted = _norm(bom_text(drop_quotes=True))
+    check, controls, passages, per_text, shown_bom = [], [], [], {}, {}
+    for name, text in texts.items():
+        if text is None:
+            per_text[name] = {"state": "not attempted (text not held)"}
+            continue
+        wins = windows(text, st["window_words"], st["window_step"])
+        vecs = embed(wins)
+        quoted = [_norm(w) not in unquoted for w in wins] if name == BOM else None
+        how = {"keyword": 0, "meaning": 0}
+        for it, q in zip(items, qvecs, strict=True):
+            pat = coding.KEYWORDS.get(it["id"])
+            got = retrieve(wins, vecs, q, None if pat is None else re.compile(pat, re.I), cfg)
+            qid = f"{name}|{it['id']}"
+            rec = {"id": qid, "windows": [p["window"] for p in got], "how": [p["how"] for p in got],
+                   "passages": [p["text"] for p in got]}  # fmt: skip
+            if quoted is not None:
+                rec["in_quoted_chapters"] = [quoted[p["window"]] for p in got]
+                shown_bom[it["id"]] = got
+            passages.append(rec)
+            for p in got:
+                how[p["how"]] += 1
+            direction = (
+                "The checklist scores this as something the book should say (a positive item)."
+                if it["direction"] == "positive"
+                else "Here the question is whether the book asserts this thing existed."
+            )
+            body = "\n\n".join(f"[{n}] {p['text']}" for n, p in enumerate(got, 1))
+            job = {"id": qid, "prompt": PROMPT2.format(
+                feature=coding.FEATURE.get(it["id"], it["label"]), direction=direction,
+                passages=body)}  # fmt: skip
+            (check if name == BOM else controls).append(job)
+        per_text[name] = {"words": len(text.split()), "windows": len(wins),
+                          "questions": len(items), "passages_by": how,
+                          "known_answer": name == BOM}  # fmt: skip
+    for path, rows in ((JOBS2_CHECK, check), (JOBS2_CONTROLS, controls), (PASSAGES2, passages)):
+        with out(path).open("w", encoding="utf-8") as fh:
+            for r in rows:
+                fh.write(json.dumps(r, ensure_ascii=False) + "\n")
+    s2 = second(cfg)
+    return {"design": "second (2026-11-23, post hoc: after check C missed)",
+            "retrieval": {"keyword_passages": s2["keyword_passages"],
+                          "meaning_passages": s2["meaning_passages"],
+                          "model": cfg["semantic"]["index_model"]},
+            "check_questions": len(check), "control_questions": len(controls),
+            "per_text": per_text, "retrieval_check": retrieval_check(shown_bom, cfg),
+            "labelled": "simulated judging by an AI model (not run)"}  # fmt: skip
+
+
+def parse_reply(reply: str) -> dict | None:
+    """First line: the verdict; third line: the passage relied on. None if unreadable."""
+    lines = [ln.strip().strip("*`#. ").upper() for ln in (reply or "").strip().splitlines()]
+    lines = [ln for ln in lines if ln]
+    if not lines or lines[0] not in VERDICTS:
+        return None
+    m = re.match(r"\[?(\d+)", lines[2]) if len(lines) > 2 else None
+    return {"verdict": lines[0], "passage": int(m.group(1)) if m else 0}
+
+
+def read_answers(jobs: Path, answers: Path, stage: str) -> dict:
+    """Answers by id; open ids (no answer yet) and unreadable ones (raw text logged) apart.
+    An unreadable reply is never counted as an answer."""
+    ids = [json.loads(ln)["id"] for ln in jobs.read_text().splitlines() if ln.strip()]
+    got: dict[str, dict] = {}
+    bad: list[dict] = []
+    if answers.exists():
+        for ln in answers.read_text().splitlines():
+            if not ln.strip():
+                continue
+            r = json.loads(ln)
+            p = parse_reply(r.get("reply", ""))
+            if p is None:
+                bad.append({"id": r["id"], "reply": r.get("reply")})
+            else:
+                got[r["id"]] = p
+    unread = sorted({b["id"] for b in bad} - set(got))
+    if unread:
+        log = out(LOGS / f"dalechecklist_unparsed_{stage}.jsonl")
+        log.write_text("".join(json.dumps(b, ensure_ascii=False) + "\n" for b in bad
+                               if b["id"] in unread))  # fmt: skip
+    return {"answers": {i: got[i] for i in ids if i in got},
+            "open": [i for i in ids if i not in got and i not in unread], "unreadable": unread,
+            "jobs": len(ids)}  # fmt: skip
+
+
+def score_check(cfg: dict, design: str) -> dict:
+    """Known-answer check C from the judge's answers: SUPPORTS on the Book of Mormon for at
+    least the bar share of their positives (``book_of_mormon|A:*``) and negatives (``|B:*``)."""
+    st = settings(cfg)
+    jobs, answers = ANSWERS[design]
+    if not jobs.exists():
+        return {"design": design, "refused": f"no jobs file {jobs}"}
+    r = read_answers(jobs, answers, f"check_{design}")
+    res = {"design": design, "jobs": r["jobs"], "answered": len(r["answers"]),
+           "open": len(r["open"]), "unreadable": r["unreadable"],
+           "label": "simulated judging by an AI model"}  # fmt: skip
+    if r["open"] or r["unreadable"]:
+        res["refused"] = "answers still open or unreadable; nothing scored"
+        return res
+    parts = {}
+    for side, tag, bar in (("positive", "A:", st["judge_bar_positive"]),
+                           ("negative", "B:", st["judge_bar_negative"])):  # fmt: skip
+        mine = {i: a for i, a in r["answers"].items() if i.startswith(f"{BOM}|{tag}")}
+        sup = sorted(i.split("|", 1)[1] for i, a in mine.items() if a["verdict"] == "SUPPORTS")
+        n = len(mine)
+        parts[side] = {"items": n, "supports": len(sup),
+                       "share": round(len(sup) / n, 3) if n else None, "bar": bar,
+                       "met": bool(n) and len(sup) / n >= bar,
+                       "verdicts": {v: sum(a["verdict"] == v for a in mine.values())
+                                    for v in VERDICTS},
+                       "not_supported": sorted(i.split("|", 1)[1] for i, a in mine.items()
+                                               if a["verdict"] != "SUPPORTS")}  # fmt: skip
+    res.update(parts)
+    res["passed"] = all(p["met"] for p in parts.values())
+    return res
+
+
+def score_controls(cfg: dict) -> dict:
+    """Each text's supported items scored with the Dales' own ratios; refused unless check C
+    (second design) passed and every control answer is in."""
+    st, s2 = settings(cfg), second(cfg)
+    c = score_check(cfg, "second")
+    if not c.get("passed"):
+        return {"refused": "check C (second design) has not passed: control scores are not "
+                "reported", "check_c": c}  # fmt: skip
+    if not JOBS2_CONTROLS.exists():
+        return {"refused": f"no jobs file {JOBS2_CONTROLS}"}
+    r = read_answers(JOBS2_CONTROLS, ANSWERS2_CONTROLS, "controls")
+    if r["open"] or r["unreadable"]:
+        return {"refused": "control answers still open or unreadable; nothing scored",
+                "jobs": r["jobs"], "answered": len(r["answers"]), "open": len(r["open"]),
+                "unreadable": r["unreadable"]}  # fmt: skip
+    k = keyed(cfg)
+    ratio = {i["id"]: i["ratio"] for i in k["items"]}
+    quoted = {}
+    for ln in PASSAGES2.read_text().splitlines():
+        p = json.loads(ln)
+        if "in_quoted_chapters" in p:
+            quoted[p["id"]] = p["in_quoted_chapters"]
+    every = {
+        **read_answers(JOBS2_CHECK, ANSWERS["second"][1], "check_second")["answers"],
+        **r["answers"],
+    }
+    texts = sorted({i.split("|", 1)[0] for i in every})
+
+    def summary(ids: list[str]) -> dict:
+        pos = [i for i in ids if i.startswith("A:")]
+        neg = [i for i in ids if i.startswith("B:")]
+        return {"positive_supported": len(pos), "negative_supported": len(neg),
+                "log10_positive_product": round(log10_product([ratio[i] for i in pos]), 2),
+                "log10_negative_product": round(log10_product([ratio[i] for i in neg]), 2),
+                "positive_by_ratio": {str(x): sum(ratio[i] == x for i in pos)
+                                      for x in (0.5, 0.1, 0.02)},
+                "items": sorted(ids)}  # fmt: skip
+
+    per = {}
+    for t in texts:
+        sup = [i.split("|", 1)[1] for i, a in every.items()
+               if i.startswith(t + "|") and a["verdict"] == "SUPPORTS"]  # fmt: skip
+        per[t] = summary(sup)
+        if t == BOM:  # without the quotation chapters: the passage relied on lies outside them
+            keep = [i for i in sup
+                    if 0 < every[f"{t}|{i}"]["passage"] <= len(quoted.get(f"{t}|{i}", []))
+                    and not quoted[f"{t}|{i}"][every[f"{t}|{i}"]["passage"] - 1]]  # fmt: skip
+            per[t + "_without_quoted_chapters"] = summary(keep)
+    lo = max(
+        per[BOM]["log10_positive_product"],
+        per[BOM + "_without_quoted_chapters"]["log10_positive_product"],
+    )
+    reach = {t: {"log10_positive_product": v["log10_positive_product"],
+                 "reaches_book_of_mormon": v["log10_positive_product"] <= lo}
+             for t, v in per.items() if not t.startswith(BOM)}  # fmt: skip
+    return {"check_c": {k_: c[k_] for k_ in ("passed", "positive", "negative")},
+            "texts": per, "book_of_mormon_weaker_end": lo, "reach": reach,
+            "reach_rule": s2["reach_rule"],
+            "theirs": {"spalding": st["published"]["spalding"],
+                       "view_of_the_hebrews": st["published"]["view_of_the_hebrews"]},
+            "label": "simulated judging by an AI model"}  # fmt: skip
+
+
+def _save(key: str, value: dict) -> Path:
+    prev = PUBLIC / "result.json"
+    old = json.loads(prev.read_text()) if prev.exists() else {}
+    old[key] = {**value, "config_sha256": config.sha256_of_config()}
+    out(prev).write_text(json.dumps(old, indent=1) + "\n")
+    return prev
+
+
 # ------------------------------------------------------------------------------ command line
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("cmd", choices=["keys", "arith", "jobs"])
+    ap.add_argument("cmd", choices=["keys", "arith", "jobs", "jobs2", "checkc", "controls"])
+    ap.add_argument("--design", choices=["first", "second"], default="second")
     a = ap.parse_args()
     cfg = config.load()
     if a.cmd == "keys":
@@ -636,6 +941,27 @@ def main() -> None:
         old.update(res)
         out(prev).write_text(json.dumps(old, indent=1) + "\n")
         print(json.dumps(res["known_answer"]["passed"]), "->", prev)
+    elif a.cmd == "jobs2":
+        res = build_jobs2(cfg)
+        if res is None:
+            print("not attempted: the paper is not held at", PDF)
+            return
+        print(json.dumps({k: v for k, v in res.items() if k != "per_text"}, indent=1),
+              "->", _save("control_jobs_second_design", res))  # fmt: skip
+    elif a.cmd == "checkc":
+        res = score_check(cfg, a.design)
+        print(json.dumps({k: v for k, v in res.items() if k not in ("positive", "negative")}),
+              json.dumps({s: {k: v for k, v in res[s].items() if k != "not_supported"}
+                          for s in ("positive", "negative") if s in res}, indent=1))  # fmt: skip
+        if "refused" in res:
+            raise SystemExit(1)
+        print("->", _save(f"check_c_{a.design}_design", res))
+    elif a.cmd == "controls":
+        res = score_controls(cfg)
+        if "refused" in res:
+            print("refused:", res["refused"])
+            raise SystemExit(1)
+        print(json.dumps(res["reach"], indent=1), "->", _save("controls_second_design", res))
     else:
         res = build_jobs(cfg)
         if res is None:

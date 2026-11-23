@@ -1,7 +1,9 @@
 """BOM-112: the Dale and Dale checklist is keyed by rule and its arithmetic reproduced."""
 
+import json
 import math
 import re
+from pathlib import Path
 
 import pytest
 
@@ -88,3 +90,108 @@ def test_known_answer_on_the_paper():
     assert ka["passed"]
     assert all(ka["counts_ok"].values())
     assert set(ka["discrepancies_in_the_paper"]) == {"military"}
+
+
+# ------------------------------------------------------------------------------ second design
+
+
+def _cfg(meaning=2, keyword=1):
+    cfg = config.load()
+    st = cfg["lab"]["dale_checklist"]
+    st = {**st, "window_words": 10, "window_step": 5,
+          "second_design": {**st["second_design"], "meaning_passages": meaning,
+                            "keyword_passages": keyword}}  # fmt: skip
+    return {**cfg, "lab": {**cfg["lab"], "dale_checklist": st}}
+
+
+def test_second_design_settings_are_in_the_config():
+    s2 = config.load()["lab"]["dale_checklist"]["second_design"]
+    assert s2["keyword_passages"] == config.load()["lab"]["dale_checklist"]["passages_per_question"]
+    assert s2["meaning_passages"] > 0 and 0 < s2["retrieval_bar"] <= 1
+    assert set(s2["retrieval_markers"]) <= set(coding.FEATURE)
+
+
+def test_meaning_picks_skip_overlaps_and_the_keyword_windows():
+    scores = [0.9, 0.95, 0.1, 0.8, 0.2, 0.7]
+    # size 10, step 5: neighbours overlap, two apart do not
+    got = d.meaning_picks(scores, 10, 5, 2, taken=[3])
+    assert got == [1, 5]  # 1 best; 0 and 2 overlap 1; 3 taken; 4 overlaps 3 and 5
+    assert d.meaning_picks(scores, 10, 5, 5, taken=[]) == [1, 3, 5]
+
+
+def test_retrieve_keeps_keyword_windows_and_adds_meaning_in_text_order():
+    import numpy as np
+
+    wins = [f"w{i} king" if i == 4 else f"w{i}" for i in range(8)]
+    vecs = np.eye(8, dtype=np.float32)
+    q = np.zeros(8, dtype=np.float32)
+    q[0], q[7] = 1.0, 0.5
+    got = d.retrieve(wins, vecs, q, re.compile(r"\bking\b"), _cfg())
+    assert [(p["window"], p["how"]) for p in got] == [(0, "meaning"), (4, "keyword"),
+                                                      (7, "meaning")]  # fmt: skip
+    # no keyword rule: meaning alone
+    assert [p["how"] for p in d.retrieve(wins, vecs, q, None, _cfg())] == ["meaning", "meaning"]
+
+
+def test_retrieval_check_counts_marked_passages():
+    cfg = _cfg()
+    marks = cfg["lab"]["dale_checklist"]["second_design"]["retrieval_markers"]
+    first, second_ = list(marks)[:2]
+    shown = {first: [{"how": "meaning", "text": "x " + marks[first].upper() + " y"}],
+             second_: [{"how": "keyword", "text": "nothing here"}]}  # fmt: skip
+    r = d.retrieval_check(shown, cfg)
+    assert r["shown"] == 1 and r["shown_by_keyword"] == 0 and r["items"] == len(marks)
+
+
+def test_parse_reply():
+    assert d.parse_reply("SUPPORTS\nSPECIFIC\n3") == {"verdict": "SUPPORTS", "passage": 3}
+    assert d.parse_reply("**NOT_ADDRESSED**\nNONE\n0")["verdict"] == "NOT_ADDRESSED"
+    assert d.parse_reply("CONTRADICTS") == {"verdict": "CONTRADICTS", "passage": 0}
+    assert d.parse_reply("I think it supports") is None
+    assert d.parse_reply("") is None
+
+
+def _write(path, rows):
+    path.write_text("".join(json.dumps(r) + "\n" for r in rows))
+
+
+def _fake_out(tmp_path, monkeypatch):
+    def fake(p):
+        p = tmp_path / Path(p).name
+        return p
+
+    monkeypatch.setattr(d, "out", fake)
+
+
+def test_check_c_scored_from_hand_made_answers(tmp_path, monkeypatch):
+    _fake_out(tmp_path, monkeypatch)
+    pos = [f"book_of_mormon|A:1.{i}" for i in range(1, 5)]
+    neg = ["book_of_mormon|B:1", "book_of_mormon|B:2"]
+    jobs, ans = tmp_path / "jobs.jsonl", tmp_path / "answers.jsonl"
+    _write(jobs, [{"id": i, "prompt": "q"} for i in pos + neg])
+    monkeypatch.setitem(d.ANSWERS, "second", (jobs, ans))
+    replies = ["SUPPORTS\nSPECIFIC\n1"] * 3 + ["NOT_ADDRESSED\nNONE\n0"]
+    _write(ans, [{"id": i, "reply": r} for i, r in zip(pos, replies, strict=True)])
+    r = d.score_check(config.load(), "second")
+    assert "refused" in r and r["open"] == 2  # negatives not answered yet
+    with ans.open("a") as fh:
+        fh.write(json.dumps({"id": neg[0], "reply": "SUPPORTS\nNONE\n2"}) + "\n")
+        fh.write(json.dumps({"id": neg[1], "reply": "garbled"}) + "\n")
+    r = d.score_check(config.load(), "second")
+    assert "refused" in r and r["unreadable"] == [neg[1]]  # never counted as an answer
+    assert (tmp_path / "dalechecklist_unparsed_check_second.jsonl").exists()
+    with ans.open("a") as fh:  # the rerun's readable answer supersedes the logged one
+        fh.write(json.dumps({"id": neg[1], "reply": "NOT_ADDRESSED\nNONE\n0"}) + "\n")
+    r = d.score_check(config.load(), "second")
+    assert r["positive"]["supports"] == 3 and r["positive"]["share"] == 0.75
+    assert r["positive"]["met"] and not r["negative"]["met"] and not r["passed"]
+    assert r["positive"]["not_supported"] == ["A:1.4"]
+
+
+def test_controls_refused_until_check_c_passes(tmp_path, monkeypatch):
+    _fake_out(tmp_path, monkeypatch)
+    jobs = tmp_path / "jobs.jsonl"
+    _write(jobs, [{"id": "book_of_mormon|A:1.1", "prompt": "q"}])
+    monkeypatch.setitem(d.ANSWERS, "second", (jobs, tmp_path / "none.jsonl"))
+    r = d.score_controls(config.load())
+    assert r["refused"].startswith("check C")

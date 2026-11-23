@@ -1952,6 +1952,20 @@ lab:                              # the research lab (exploratory tooling; reads
       snowden_american_revolution_bible_style: [corpus, bible_style/americanrevoluti00snow]
       chronicles_of_eri_1822_extra: [corpus, bible_style/chroniclesoferib02ocon]
       kjv_historical_books: [kjv, [JOS, JDG, RUT, 1SA, 2SA, 1KI, 2KI, 1CH, 2CH, EZR, NEH, EST]]
+    second_design:                 # 2026-11-23, POST HOC (decided after check C missed: 70 of 131 positives); bars above unchanged; card section "Second design"
+      keyword_passages: 3          # the first design's keyword windows, kept as they were
+      meaning_passages: 5          # plus this many windows nearest the feature by meaning (semantic.index_model, lab.query_prefix), not overlapping each other or the keyword windows; same for every text
+      retrieval_markers:           # retrieval check (no judging): a phrase from the stating passage the diagnosis found and the first design never showed (8 of the 9 found; the flood is left out: its passage does not state the feature)
+        "A:1.15": "were called king-men"
+        "A:1.21": "nephites, jacobites, josephites"
+        "A:1.22": "consecrated his son mosiah"
+        "A:2.27": "the reformed egyptian"
+        "A:2.5": "their language had become corrupted"
+        "A:5.12": "save it be upon plates"
+        "A:5.8": "little timber upon the face of the land"
+        "A:6.14": "the language of nephi began to be taught"
+      retrieval_bar: 0.75          # the passages shown must include the marked passage for at least this share; reported before the 149 are queued (the lead decides)
+      reach_rule: "a control reaches the Book of Mormon if the log10 product of the Dales' ratios over its SUPPORTS positives is at or below the weaker (larger) of the Book of Mormon's two values (all text; without the Bible-quotation chapters, judged by the passage the judge relied on). The card's 'within the range' is read so; set 2026-11-23 before any control answer exists"
   three_worlds:                    # BOM-109 (lab; exploratory): where the Bible's world, Mesoamerica and the 1820s picture disagree
     present_min: 3                 # a text states a feature present with at least this many marker hits
     present_rate: 0.1              # and at least this many per 10,000 words
