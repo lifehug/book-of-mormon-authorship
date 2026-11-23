@@ -13,6 +13,8 @@ fields coded by the AI agent **from memory** by written rules (``lab.dalecheckli
 the total under stated alternatives. ``jobs`` applies the same checklist to control texts: keyword
 rules pull candidate passages (private) and one question per item and text is written for
 ``lab.judge``; every answer will be **simulated judging by an AI model**. Nothing is judged here.
+``jobs3`` (third design, 2026-11-23, post hoc) drops retrieval: each text is cut into consecutive
+sections and every item, with planted decoy features, is asked of every section in batches.
 The test card is ``data/private/lab/owner/2026-11-21-dale-checklist/card.md``. Public files hold
 labels, numbers and page numbers, never text from the paper or any book.
 
@@ -22,8 +24,10 @@ Usage::
     python -m lab.dalechecklist arith    # known-answer check + alternatives -> result.json
     python -m lab.dalechecklist jobs     # candidate passages + judging questions (private)
     python -m lab.dalechecklist jobs2    # second design: keyword + meaning passages (private)
-    python -m lab.dalechecklist checkc [--design first|second]   # score check C from answers
-    python -m lab.dalechecklist controls # score the controls (refused unless check C passed)
+    python -m lab.dalechecklist jobs3    # third design: whole texts in sections (private jobs)
+    python -m lab.dalechecklist checkc [--design first|second|third]   # score check C
+    python -m lab.dalechecklist controls [--design second|third]  # refused unless check C passed
+    python -m lab.dalechecklist retry3 [--which check|controls]  # re-ask unreadable replies
 
 The second design (2026-11-23, post hoc, after check C missed) keeps the bars and adds windows
 found by meaning (the passage index's own model) to the keyword windows, for every text alike.
@@ -903,6 +907,458 @@ def score_controls(cfg: dict) -> dict:
             "label": "simulated judging by an AI model"}  # fmt: skip
 
 
+# ------------------------------------------------------------------------------ third design
+# 2026-11-23, post hoc (decided after check C missed and the second design's retrieval check
+# missed; owner: "read the whole book"). No retrieval: every text is cut into consecutive
+# sections and every item is asked of every section, in batches with planted decoys. The bars
+# are unchanged; two guards against a reader who says yes too easily are added.
+
+JOBS3_CHECK = PRIVATE / "jobs3_check.jsonl"
+JOBS3_CHECK_SECOND = PRIVATE / "jobs3_check_second.jsonl"
+JOBS3_CONTROLS = PRIVATE / "jobs3_controls.jsonl"
+JOBS3_CONTROLS_SECOND = PRIVATE / "jobs3_controls_second.jsonl"
+SECTIONS3 = PRIVATE / "sections3.jsonl"
+
+
+def answers_for(jobs: Path) -> Path:
+    """jobs3_x.jsonl -> answers3_x.jsonl (retry rounds: answers3_x.retryN.jsonl)."""
+    return jobs.with_name(jobs.name.replace("jobs3_", "answers3_"))
+
+
+def third(cfg: dict) -> dict:
+    return settings(cfg)["third_design"]
+
+
+def sections(text: str, size: int, overlap: int) -> list[tuple[int, int]]:
+    """(start, end) word offsets: the fewest equal consecutive cores of at most ``size`` words,
+    each section also carrying the last ``overlap`` words of the core before it."""
+    n = len(text.split())
+    k = max(1, math.ceil(n / size))
+    cuts = [round(i * n / k) for i in range(k + 1)]
+    return [(max(0, cuts[i] - overlap) if i else 0, cuts[i + 1]) for i in range(k)]
+
+
+def batches(item_ids: list[str], decoy_ids: list[str], max_items: int, seed: int) -> list[list]:
+    """The fixed batches: real items and decoys each shuffled with the seed, dealt round-robin so
+    decoys spread evenly, then each batch shuffled; the same batches for every section and text."""
+    import random
+
+    rng = random.Random(seed)
+    real, dec = list(item_ids), list(decoy_ids)
+    rng.shuffle(real)
+    rng.shuffle(dec)
+    n = math.ceil((len(real) + len(dec)) / max_items)
+    out_: list[list[str]] = [[] for _ in range(n)]
+    for k, i in enumerate(dec):
+        out_[k % n].append(i)
+    for k, i in enumerate(real):
+        out_[(k + len(dec)) % n].append(i)
+    for b in out_:
+        rng.shuffle(b)
+    return out_
+
+
+PROMPT3 = """Below is one section of a book (part {part} of {parts}, about {words:,} words). \
+After it comes a list of features to check against it. This is part of a study; your answers \
+are recorded as simulated judging by an AI model.
+
+<section>
+{text}
+</section>
+
+Read the whole section. For each feature in the list below decide:
+
+- SUPPORTS: the section states or plainly describes the feature as a fact about the people or \
+land the book describes. A feature can be plainly described by the narrative (named persons, \
+places, groups or events) as well as by a general statement: a story in which travellers cross \
+a river by ferry plainly describes ferries.
+- CONTRADICTS: the section plainly states the opposite about those people or land.
+- NOT_ADDRESSED: otherwise. Silence, a vague hint, a figure of speech, or a statement about \
+some other people does not count. Most features will not be in any given section.
+
+Judge each feature on its own.
+
+Features:
+{features}
+
+Answer with exactly one line per feature, in the order given, and nothing else:
+CODE | VERDICT | LOCATION
+where VERDICT is SUPPORTS, CONTRADICTS or NOT_ADDRESSED, and LOCATION is, for SUPPORTS or \
+CONTRADICTS, up to {loc} consecutive words copied exactly from the section where it is stated \
+(leave it empty for NOT_ADDRESSED)."""
+
+
+def _feature(i: str) -> str:
+    return coding.DECOY_FEATURE[i] if i.startswith("D:") else coding.FEATURE[i]
+
+
+def decoy_hits(texts: dict[str, str | None]) -> dict[str, dict[str, int]]:
+    """Keyword hits of each decoy's rule in each text (all should be 0)."""
+    return {name: {d_: len(re.findall(p, t, re.I)) for d_, p in coding.DECOY_KEYWORDS.items()}
+            for name, t in texts.items() if t is not None}  # fmt: skip
+
+
+def _sample(n_sections: int, k: int, seed: int, name: str) -> list[int]:
+    import random
+
+    rng = random.Random(f"{seed}|{name}")
+    return sorted(rng.sample(range(n_sections), min(k, n_sections)))
+
+
+def build_jobs3(cfg: dict) -> dict | None:
+    """Write the third design's questions: the Book of Mormon check (its own file), its second-
+    reader sample, then the controls and theirs. Nothing is asked here."""
+    k = keyed(cfg)
+    if k is None:
+        return None
+    s3 = third(cfg)
+    items = [i["id"] for i in k["items"] if i["appendix"] in ("A", "B")]
+    decoys = list(coding.DECOY_FEATURE)
+    groups = batches(items, decoys, s3["max_items_per_question"], s3["seed"])
+    texts = control_texts(cfg)
+    files: dict[Path, list[dict]] = {JOBS3_CHECK: [], JOBS3_CHECK_SECOND: [], JOBS3_CONTROLS: [],
+                                     JOBS3_CONTROLS_SECOND: []}  # fmt: skip
+    secs, per_text = [], {}
+    for name, text in texts.items():
+        if text is None:
+            per_text[name] = {"state": "not attempted (text not held)"}
+            continue
+        w = text.split()
+        cut = sections(text, s3["section_words"], s3["section_overlap_words"])
+        n_second = s3["second_reader_sections"][BOM if name == BOM else "control"]
+        sample = _sample(len(cut), n_second, s3["seed"], name)
+        main_f, second_f = ((JOBS3_CHECK, JOBS3_CHECK_SECOND) if name == BOM
+                            else (JOBS3_CONTROLS, JOBS3_CONTROLS_SECOND))  # fmt: skip
+        chars = 0
+        for s, (a, b) in enumerate(cut, 1):
+            secs.append({"text": name, "section": s, "start_word": a, "end_word": b})
+            body = " ".join(w[a:b])
+            for g, group in enumerate(groups, 1):
+                feats = "\n".join(f"F{n:02d}. {_feature(i)}" for n, i in enumerate(group, 1))
+                prompt = PROMPT3.format(part=s, parts=len(cut), words=b - a, text=body,
+                                        features=feats, loc=s3["location_words"])  # fmt: skip
+                job = {"id": f"{name}|s{s:02d}|b{g}", "prompt": prompt, "items": group}
+                files[main_f].append(job)
+                chars += len(prompt)
+                if s - 1 in sample:
+                    files[second_f].append(job)
+        per_text[name] = {"words": len(w), "sections": len(cut),
+                          "questions": len(cut) * len(groups),
+                          "second_reader_sections": [x + 1 for x in sample],
+                          "approx_input_tokens": round(chars * s3["tokens_per_char"]),
+                          "known_answer": name == BOM}  # fmt: skip
+    for path, rows in files.items():
+        with out(path).open("w", encoding="utf-8") as fh:
+            for r in rows:
+                fh.write(json.dumps(r, ensure_ascii=False) + "\n")
+    with out(SECTIONS3).open("w", encoding="utf-8") as fh:
+        for r in secs:
+            fh.write(json.dumps(r) + "\n")
+    tok = s3["tokens_per_char"]
+    size = {p.name: {"questions": len(r), "approx_input_tokens":
+                     round(sum(len(j["prompt"]) for j in r) * tok),
+                     "hours_at_per_hour": round(len(r) / cfg["lab"]["judge"]["per_hour"], 2)}
+            for p, r in files.items()}  # fmt: skip
+    hits = decoy_hits(texts)
+    return {"design": "third: whole-book reading (2026-11-23, post hoc: after check C missed "
+                      "and the second design's retrieval check missed)",
+            "batches": [len(g) for g in groups],
+            "decoys_per_batch": [sum(i.startswith("D:") for i in g) for g in groups],
+            "files": size, "per_text": per_text,
+            "decoy_keyword_hits": {t: {d_: n for d_, n in h.items() if n}
+                                   for t, h in hits.items()},
+            "reader": s3["reader_model"], "second_reader": s3["second_reader_model"],
+            "labelled": "simulated judging by an AI model (not run)"}  # fmt: skip
+
+
+_LINE3 = re.compile(
+    r"^\W*F(\d{1,3})\W*\|\s*\**(SUPPORTS|CONTRADICTS|NOT[_ ]ADDRESSED)\**\s*(?:\|\s*(.*))?$",
+    re.I,
+)
+
+
+def parse_reply3(reply: str, n: int) -> list[dict] | None:
+    """One verdict (and location words) per feature F01..Fn; None unless every code is answered
+    once, or twice the same way."""
+    got: dict[int, dict] = {}
+    for ln in (reply or "").splitlines():
+        m = _LINE3.match(ln.strip())
+        if not m:
+            continue
+        k = int(m.group(1))
+        v = {"verdict": m.group(2).upper().replace(" ", "_"),
+             "location": (m.group(3) or "").strip().strip('"“”').strip()}  # fmt: skip
+        if k in got and got[k]["verdict"] != v["verdict"]:
+            return None
+        got.setdefault(k, v)
+    if sorted(got) != list(range(1, n + 1)):
+        return None
+    return [got[k] for k in range(1, n + 1)]
+
+
+def read_answers3(jobs: Path, stage: str) -> dict:
+    """Answers per question from ``answers3_*.jsonl`` and its retry rounds (a readable reply
+    supersedes an unreadable one); open and unreadable questions apart, raw text logged."""
+    js = {j["id"]: j for j in (json.loads(x) for x in jobs.read_text().splitlines() if x.strip())}
+    ans = answers_for(jobs)
+    got: dict[str, list[dict]] = {}
+    bad: dict[str, str] = {}
+    model: dict[str, str] = {}
+    for f in (ans, *_retry_answers(jobs)):
+        if not f.exists():
+            continue
+        for ln in f.read_text().splitlines():
+            if not ln.strip():
+                continue
+            r = json.loads(ln)
+            if r["id"] not in js:
+                continue
+            p = parse_reply3(r.get("reply", ""), len(js[r["id"]]["items"]))
+            if p is None:
+                bad.setdefault(r["id"], r.get("reply"))
+            else:
+                got[r["id"]] = p
+                model[r["id"]] = r.get("model", "")
+    unread = sorted(set(bad) - set(got))
+    if unread:
+        log = out(LOGS / f"dalechecklist_unparsed_{stage}.jsonl")
+        log.write_text("".join(json.dumps({"id": i, "reply": bad[i]}, ensure_ascii=False) + "\n"
+                               for i in unread))  # fmt: skip
+    return {"jobs": js, "answers": got, "open": [i for i in js if i not in got and i not in bad],
+            "unreadable": unread, "models": sorted(set(model.values()))}  # fmt: skip
+
+
+def _norm3(s: str) -> str:
+    return " ".join(re.sub(r"[^a-z0-9]+", " ", s.lower()).split())
+
+
+def per_item(r: dict) -> dict[str, dict]:
+    """text|item -> sections that SUPPORT (with location words) and that CONTRADICT."""
+    res: dict[str, dict] = {}
+    for qid, verdicts in r["answers"].items():
+        text, sec, _ = qid.split("|")
+        for item, v in zip(r["jobs"][qid]["items"], verdicts, strict=True):
+            e = res.setdefault(f"{text}|{item}", {"supports": [], "contradicts": []})
+            if v["verdict"] == "SUPPORTS":
+                e["supports"].append((sec, v["location"]))
+            elif v["verdict"] == "CONTRADICTS":
+                e["contradicts"].append(sec)
+    return res
+
+
+def kappa(a: list[bool], b: list[bool]) -> float | None:
+    """Cohen's kappa for two yes/no readings of the same units."""
+    n = len(a)
+    if not n:
+        return None
+    po = sum(x == y for x, y in zip(a, b, strict=True)) / n
+    pa, pb = sum(a) / n, sum(b) / n
+    pe = pa * pb + (1 - pa) * (1 - pb)
+    if pe == 1:  # both readers gave one answer throughout: agreement is total but uninformative
+        return 1.0 if po == 1 else 0.0
+    return round((po - pe) / (1 - pe), 3)
+
+
+def agreement(main: dict, second_: dict, text_prefix: str | None = None) -> dict:
+    """Reader against second reader on the same questions: kappa over (real item x section)
+    units, SUPPORTS against anything else; decoys counted apart."""
+    a, b, dec = [], [], {"reader": 0, "second_reader": 0, "units": 0}
+    for qid, v2 in second_["answers"].items():
+        if text_prefix and not qid.startswith(text_prefix + "|"):
+            continue
+        v1 = main["answers"].get(qid)
+        if v1 is None:
+            continue
+        for item, x, y in zip(main["jobs"][qid]["items"], v1, v2, strict=True):
+            if item.startswith("D:"):
+                dec["units"] += 1
+                dec["reader"] += x["verdict"] == "SUPPORTS"
+                dec["second_reader"] += y["verdict"] == "SUPPORTS"
+            else:
+                a.append(x["verdict"] == "SUPPORTS")
+                b.append(y["verdict"] == "SUPPORTS")
+    return {"units": len(a), "reader_supports": sum(a), "second_reader_supports": sum(b),
+            "agree": sum(x == y for x, y in zip(a, b, strict=True)), "kappa": kappa(a, b),
+            "decoy_supports": dec}  # fmt: skip
+
+
+def text_summary(name: str, items: dict[str, dict], ratio: dict, cfg: dict) -> dict:
+    """One text's tally: supported positives, negatives, decoys (any-section rule)."""
+    s3 = third(cfg)
+    mine = {k.split("|", 1)[1]: v for k, v in items.items() if k.startswith(name + "|")}
+    sup = sorted(i for i, v in mine.items() if v["supports"])
+    pos = [i for i in sup if i.startswith("A:")]
+    neg = [i for i in sup if i.startswith("B:")]
+    dec = [i for i in sup if i.startswith("D:")]
+    n_dec = sum(i.startswith("D:") for i in mine)
+    rejected = (n_dec - len(dec)) / n_dec if n_dec else None
+    both = sorted(i for i, v in mine.items() if v["supports"] and v["contradicts"])
+    return {"positive_supported": len(pos), "negative_supported": len(neg),
+            "decoys_supported": dec, "decoy_rejection": None if rejected is None
+            else round(rejected, 3), "decoy_bar": s3["decoy_bar"],
+            "decoy_guard_met": rejected is not None and rejected >= s3["decoy_bar"],
+            "supported_and_contradicted": both,
+            "log10_positive_product": round(log10_product([ratio[i] for i in pos]), 2),
+            "log10_negative_product": round(log10_product([ratio[i] for i in neg]), 2),
+            "positive_by_ratio": {str(x): sum(ratio[i] == x for i in pos)
+                                  for x in (0.5, 0.1, 0.02)},
+            "items": pos + neg}  # fmt: skip
+
+
+def _refuse_open(stage: str, r: dict) -> dict | None:
+    if r["open"] or r["unreadable"]:
+        return {"refused": f"{stage}: answers still open or unreadable; nothing scored",
+                "questions": len(r["jobs"]), "answered": len(r["answers"]),
+                "open": len(r["open"]), "unreadable": r["unreadable"]}  # fmt: skip
+    return None
+
+
+def score_check3(cfg: dict) -> dict:
+    """Check C, third design: SUPPORTS (in any section) for the bar share of the 131 positives
+    and of the 18 negatives, the decoys rejected at their bar, and the second reader agreeing
+    at its bar on the sampled sections. Refuses while any of these answers is open."""
+    st, s3 = settings(cfg), third(cfg)
+    for f in (JOBS3_CHECK, JOBS3_CHECK_SECOND):
+        if not f.exists():
+            return {"design": "third", "refused": f"no jobs file {f}"}
+    r = read_answers3(JOBS3_CHECK, "check_third")
+    r2 = read_answers3(JOBS3_CHECK_SECOND, "check_third_second")
+    for stage, x in (("check", r), ("second reader", r2)):
+        no = _refuse_open(stage, x)
+        if no:
+            return {"design": "third", **no, "label": "simulated judging by an AI model"}
+    items = per_item(r)
+    ratio = {i["id"]: i["ratio"] for i in keyed(cfg)["items"]}
+    summ = text_summary(BOM, items, ratio, cfg)
+    n_pos = sum(k.startswith(f"{BOM}|A:") for k in items)
+    n_neg = sum(k.startswith(f"{BOM}|B:") for k in items)
+    parts = {}
+    for side, n, k_, bar in (("positive", n_pos, summ["positive_supported"],
+                              st["judge_bar_positive"]),
+                             ("negative", n_neg, summ["negative_supported"],
+                              st["judge_bar_negative"])):  # fmt: skip
+        parts[side] = {"items": n, "supports": k_, "share": round(k_ / n, 3) if n else None,
+                       "bar": bar, "met": bool(n) and k_ / n >= bar}  # fmt: skip
+    agr = agreement(r, r2)
+    parts["decoys"] = {"items": len(coding.DECOY_FEATURE),
+                       "supported": summ["decoys_supported"],
+                       "rejection": summ["decoy_rejection"], "bar": s3["decoy_bar"],
+                       "met": summ["decoy_guard_met"]}  # fmt: skip
+    parts["second_reader"] = {**agr, "bar": s3["second_reader_kappa_bar"],
+                              "met": agr["kappa"] is not None
+                              and agr["kappa"] >= s3["second_reader_kappa_bar"],
+                              "models": {"reader": r["models"],
+                                         "second_reader": r2["models"]}}  # fmt: skip
+    real = [k.split("|", 1)[1] for k in items if k.startswith(BOM + "|") and "|D:" not in k]
+    return {"design": "third (whole-book reading; post hoc)", "questions": len(r["jobs"]),
+            **parts, "passed": all(p["met"] for p in parts.values()),
+            "not_supported": sorted(i for i in real if not items[f"{BOM}|{i}"]["supports"]),
+            "supported_and_contradicted": summ["supported_and_contradicted"],
+            "rule": s3["rule"], "label": "simulated judging by an AI model"}  # fmt: skip
+
+
+def outside_quotes(items: dict[str, dict], unquoted: str) -> dict[str, str]:
+    """For each supported Book of Mormon item: 'outside' if any supporting location's words are
+    found in the text without the Bible-quotation chapters, else 'inside' or 'unlocated' (the
+    words found in no section: not counted outside)."""
+    res = {}
+    full = _norm3(bom_text(drop_quotes=False))
+    for k, v in items.items():
+        if not k.startswith(BOM + "|") or not v["supports"]:
+            continue
+        locs = [_norm3(loc) for _, loc in v["supports"] if _norm3(loc)]
+        if any(loc in unquoted for loc in locs):
+            res[k.split("|", 1)[1]] = "outside"
+        elif any(loc in full for loc in locs):
+            res[k.split("|", 1)[1]] = "inside"
+        else:
+            res[k.split("|", 1)[1]] = "unlocated"
+    return res
+
+
+def score_controls3(cfg: dict) -> dict:
+    """Each control scored as the Book of Mormon was; refused unless check C (third design)
+    passed and every control answer (both readers) is in. A control whose own decoys are not
+    rejected at the bar is not compared."""
+    s2, s3 = second(cfg), third(cfg)
+    c = score_check3(cfg)
+    if not c.get("passed"):
+        return {"refused": "check C (third design) has not passed: control scores are not "
+                "reported", "check_c": c}  # fmt: skip
+    for f in (JOBS3_CONTROLS, JOBS3_CONTROLS_SECOND):
+        if not f.exists():
+            return {"refused": f"no jobs file {f}"}
+    r = read_answers3(JOBS3_CONTROLS, "controls_third")
+    r2 = read_answers3(JOBS3_CONTROLS_SECOND, "controls_third_second")
+    for stage, x in (("controls", r), ("controls second reader", r2)):
+        no = _refuse_open(stage, x)
+        if no:
+            return no
+    rb = read_answers3(JOBS3_CHECK, "check_third")
+    ratio = {i["id"]: i["ratio"] for i in keyed(cfg)["items"]}
+    items = {**per_item(rb), **per_item(r)}
+    texts = sorted({k.split("|", 1)[0] for k in items})
+    per = {t: text_summary(t, items, ratio, cfg) for t in texts}
+    where = outside_quotes(items, _norm3(bom_text(drop_quotes=True)))
+    b = per[BOM]
+    keep = [i for i in b["items"] if where.get(i) == "outside"]
+    per[BOM + "_without_quoted_chapters"] = {
+        "positive_supported": sum(i.startswith("A:") for i in keep),
+        "negative_supported": sum(i.startswith("B:") for i in keep),
+        "log10_positive_product": round(log10_product([ratio[i] for i in keep
+                                                       if i.startswith("A:")]), 2),
+        "located": {s: sum(v == s for v in where.values())
+                    for s in ("outside", "inside", "unlocated")}, "items": keep}  # fmt: skip
+    lo = max(b["log10_positive_product"],
+             per[BOM + "_without_quoted_chapters"]["log10_positive_product"])  # fmt: skip
+    reach = {}
+    for t, v in per.items():
+        if t.startswith(BOM):
+            continue
+        reach[t] = {"log10_positive_product": v["log10_positive_product"],
+                    "decoy_guard_met": v["decoy_guard_met"],
+                    "second_reader": agreement(r, r2, t),
+                    "reaches_book_of_mormon": (
+                        v["log10_positive_product"] <= lo if v["decoy_guard_met"]
+                        else "not compared: decoys not rejected at the bar")}  # fmt: skip
+    st = settings(cfg)
+    return {"check_c": {k_: c[k_] for k_ in ("passed", "positive", "negative", "decoys",
+                                             "second_reader")},
+            "texts": per, "book_of_mormon_weaker_end": lo, "reach": reach,
+            "reach_rule": s2["reach_rule"], "rule": s3["rule"],
+            "theirs": {"spalding": st["published"]["spalding"],
+                       "view_of_the_hebrews": st["published"]["view_of_the_hebrews"]},
+            "label": "simulated judging by an AI model"}  # fmt: skip
+
+
+def _retry_answers(jobs: Path) -> list[Path]:
+    ans = answers_for(jobs)
+    return sorted(ans.parent.glob(ans.stem + ".retry*.jsonl"))
+
+
+def write_retry3(which: str) -> dict:
+    """Questions whose every reply so far was unreadable, to a new retry round: jobs file
+    ``jobs3_x.retryN.jsonl``, answers to ``answers3_x.retryN.jsonl`` (the judge skips ids already
+    in an answers file, so each round has its own). Nothing earlier is overwritten."""
+    res = {}
+    for jobs in ((JOBS3_CHECK, JOBS3_CHECK_SECOND) if which == "check"
+                 else (JOBS3_CONTROLS, JOBS3_CONTROLS_SECOND)):  # fmt: skip
+        if not jobs.exists():
+            continue
+        r = read_answers3(jobs, f"retry_{jobs.stem}")
+        if not r["unreadable"]:
+            continue
+        n = len(_retry_answers(jobs)) + 1
+        retry_jobs = jobs.with_suffix(f".retry{n}.jsonl")
+        with out(retry_jobs).open("w", encoding="utf-8") as fh:
+            for i in r["unreadable"]:
+                fh.write(json.dumps(r["jobs"][i], ensure_ascii=False) + "\n")
+        retry_ans = answers_for(jobs).with_suffix(f".retry{n}.jsonl")
+        out(retry_ans).touch()
+        res[retry_jobs.name] = {"questions": len(r["unreadable"]), "answers_to": retry_ans.name}
+    return res
+
+
 def _save(key: str, value: dict) -> Path:
     prev = PUBLIC / "result.json"
     old = json.loads(prev.read_text()) if prev.exists() else {}
@@ -916,8 +1372,10 @@ def _save(key: str, value: dict) -> Path:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("cmd", choices=["keys", "arith", "jobs", "jobs2", "checkc", "controls"])
-    ap.add_argument("--design", choices=["first", "second"], default="second")
+    ap.add_argument("cmd", choices=["keys", "arith", "jobs", "jobs2", "jobs3", "checkc", "controls",
+                                    "retry3"])  # fmt: skip
+    ap.add_argument("--design", choices=["first", "second", "third"], default="second")
+    ap.add_argument("--which", choices=["check", "controls"], default="check")
     a = ap.parse_args()
     cfg = config.load()
     if a.cmd == "keys":
@@ -948,6 +1406,27 @@ def main() -> None:
             return
         print(json.dumps({k: v for k, v in res.items() if k != "per_text"}, indent=1),
               "->", _save("control_jobs_second_design", res))  # fmt: skip
+    elif a.cmd == "jobs3":
+        res = build_jobs3(cfg)
+        if res is None:
+            print("not attempted: the paper is not held at", PDF)
+            return
+        print(json.dumps({k: v for k, v in res.items() if k != "per_text"}, indent=1),
+              "->", _save("control_jobs_third_design", res))  # fmt: skip
+    elif a.cmd == "retry3":
+        print(json.dumps(write_retry3(a.which), indent=1))
+    elif a.cmd == "checkc" and a.design == "third":
+        res = score_check3(cfg)
+        print(json.dumps({k: v for k, v in res.items() if k != "not_supported"}, indent=1))
+        if "refused" in res:
+            raise SystemExit(1)
+        print("->", _save("check_c_third_design", res))
+    elif a.cmd == "controls" and a.design == "third":
+        res = score_controls3(cfg)
+        if "refused" in res:
+            print("refused:", res["refused"])
+            raise SystemExit(1)
+        print(json.dumps(res["reach"], indent=1), "->", _save("controls_third_design", res))
     elif a.cmd == "checkc":
         res = score_check(cfg, a.design)
         print(json.dumps({k: v for k, v in res.items() if k not in ("positive", "negative")}),

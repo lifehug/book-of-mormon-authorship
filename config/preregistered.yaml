@@ -1972,6 +1972,19 @@ lab:                              # the research lab (exploratory tooling; reads
         "A:6.14": "the language of nephi began to be taught"
       retrieval_bar: 0.75          # the passages shown must include the marked passage for at least this share; reported before the 149 are queued (the lead decides)
       reach_rule: "a control reaches the Book of Mormon if the log10 product of the Dales' ratios over its SUPPORTS positives is at or below the weaker (larger) of the Book of Mormon's two values (all text; without the Bible-quotation chapters, judged by the passage the judge relied on). The card's 'within the range' is read so; set 2026-11-23 before any control answer exists"
+    third_design:                  # 2026-11-23, POST HOC (decided after check C missed, 70 of 131, and the second design's retrieval check missed, 4 of 8; owner: "read the whole book"); bars above and second_design.reach_rule unchanged; card section "Third design"; set before any question of this design was asked
+      section_words: 12000         # each text cut into the fewest equal consecutive sections of at most this many words (the Book of Mormon: 23), read whole
+      section_overlap_words: 500   # each section also carries the last this-many words of the one before, so nothing is cut at a boundary unseen
+      max_items_per_question: 45   # items and decoys asked together per question: 169 in 4 batches of 42-43, the same batches for every section and text
+      location_words: 8            # a SUPPORTS or CONTRADICTS gives up to this many words copied from the section (private answers only; used to place it in or outside the Bible-quotation chapters)
+      seed: 20261123               # the batch shuffle and the second reader's sections
+      reader_model: sonnet         # the reader for every question (as check C's first run)
+      decoy_bar: 0.9               # guard 1: of the 20 decoys (lab.dalechecklist_coding._D; made up, absent from every text by keyword and from the 1830 text by the agent's knowledge) at least this share NOT supported in any section, by the same any-section rule; required for check C, and for a control to be compared
+      second_reader_model: opus    # guard 2: a second reader on a seeded sample of sections, same questions
+      second_reader_sections: {book_of_mormon: 3, control: 1}   # sections per text read again by the second reader
+      second_reader_kappa_bar: 0.6 # Cohen's kappa, reader against second reader, SUPPORTS against anything else, over (real item x sampled section); required for check C; reported for controls (one section is too few to gate)
+      tokens_per_char: 0.25        # rough input size for sizing the queue only (no tokenizer held)
+      rule: "an item is supported in a text if any section says SUPPORTS; a CONTRADICTS in another section is reported beside it and does not cancel it; NOT_ADDRESSED everywhere is not supported. Without the Bible-quotation chapters (Book of Mormon only): a supported item counts if any supporting location's words are found in the text without those chapters; words found nowhere are reported as unlocated and not counted"
   three_worlds:                    # BOM-109 (lab; exploratory): where the Bible's world, Mesoamerica and the 1820s picture disagree
     present_min: 3                 # a text states a feature present with at least this many marker hits
     present_rate: 0.1              # and at least this many per 10,000 words

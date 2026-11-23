@@ -195,3 +195,109 @@ def test_controls_refused_until_check_c_passes(tmp_path, monkeypatch):
     monkeypatch.setitem(d.ANSWERS, "second", (jobs, tmp_path / "none.jsonl"))
     r = d.score_controls(config.load())
     assert r["refused"].startswith("check C")
+
+
+# ------------------------------------------------------------------ third design (whole-book)
+
+
+def test_third_design_settings_are_in_the_config():
+    s3 = config.load()["lab"]["dale_checklist"]["third_design"]
+    for key in ("section_words", "section_overlap_words", "max_items_per_question", "seed",
+                "decoy_bar", "second_reader_kappa_bar", "reader_model", "second_reader_model",
+                "location_words", "rule"):  # fmt: skip
+        assert key in s3
+
+
+def test_decoys_match_their_own_rule_and_are_not_checklist_items():
+    assert len(coding.DECOY_FEATURE) == 20
+    for i, feat in coding.DECOY_FEATURE.items():
+        assert re.search(coding.DECOY_KEYWORDS[i], feat, re.I), i
+        assert feat not in coding.FEATURE.values()
+
+
+def test_sections_cover_the_text_with_overlap():
+    text = " ".join(f"w{i}" for i in range(25_001))
+    cut = d.sections(text, 10_000, 500)
+    assert len(cut) == 3 and cut[0][0] == 0 and cut[-1][1] == 25_001
+    for (_a0, b0), (a1, b1) in zip(cut, cut[1:], strict=False):
+        assert a1 == b0 - 500 and b1 - a1 <= 10_500
+    assert d.sections("a b c", 10, 2) == [(0, 3)]
+
+
+def test_batches_hold_every_item_once_with_decoys_spread():
+    real = [f"A:{i}" for i in range(149)]
+    dec = [f"D:{i}" for i in range(20)]
+    g = d.batches(real, dec, 45, 7)
+    assert sorted(sum(g, [])) == sorted(real + dec) and len(g) == 4
+    assert all(len(b) <= 45 for b in g)
+    assert [sum(i.startswith("D:") for i in b) for b in g] == [5, 5, 5, 5]
+    assert g == d.batches(real, dec, 45, 7)  # fixed by the seed
+
+
+def test_parse_reply3():
+    ok = "F01 | SUPPORTS | and they did build ships\nF02 | NOT_ADDRESSED |\nF03|contradicts|x y"
+    p = d.parse_reply3(ok, 3)
+    assert [v["verdict"] for v in p] == ["SUPPORTS", "NOT_ADDRESSED", "CONTRADICTS"]
+    assert p[0]["location"] == "and they did build ships"
+    assert d.parse_reply3("**F1** | **NOT ADDRESSED**", 1)[0]["verdict"] == "NOT_ADDRESSED"
+    assert d.parse_reply3("F01 | SUPPORTS | x", 2) is None  # a feature left out
+    assert d.parse_reply3("F01 | SUPPORTS | x\nF01 | NOT_ADDRESSED |", 1) is None
+    assert d.parse_reply3("", 1) is None
+
+
+def test_kappa():
+    assert d.kappa([True, False, True, False], [True, False, True, False]) == 1.0
+    assert d.kappa([True, True, False, False], [True, False, True, False]) == 0.0
+    assert d.kappa([], []) is None
+
+
+def _third_files(tmp_path, monkeypatch):
+    _fake_out(tmp_path, monkeypatch)
+    paths = {}
+    for name in ("JOBS3_CHECK", "JOBS3_CHECK_SECOND", "JOBS3_CONTROLS", "JOBS3_CONTROLS_SECOND"):
+        paths[name] = tmp_path / (name.lower() + ".jsonl")
+        monkeypatch.setattr(d, name, paths[name])
+    items = [{"id": "A:1.1", "ratio": 0.1, "appendix": "A"},
+             {"id": "A:1.2", "ratio": 0.5, "appendix": "A"},
+             {"id": "B:1", "ratio": 50, "appendix": "B"}]  # fmt: skip
+    monkeypatch.setattr(d, "keyed", lambda cfg: {"items": items})
+    return paths
+
+
+def _reply(verdicts):
+    return "\n".join(f"F{n:02d} | {v} | {'some words' if v != 'NOT_ADDRESSED' else ''}"
+                     for n, v in enumerate(verdicts, 1))  # fmt: skip
+
+
+def test_check_c_third_design_rule_and_guards(tmp_path, monkeypatch):
+    p = _third_files(tmp_path, monkeypatch)
+    batch = ["A:1.1", "D:1", "A:1.2", "B:1"]
+    jobs = [{"id": f"book_of_mormon|s0{s}|b1", "prompt": "q", "items": batch} for s in (1, 2)]
+    _write(p["JOBS3_CHECK"], jobs)
+    _write(p["JOBS3_CHECK_SECOND"], jobs[:1])
+    cfg = config.load()
+    r = d.score_check3(cfg)
+    assert "refused" in r and r["open"] == 2
+    S, N, C = "SUPPORTS", "NOT_ADDRESSED", "CONTRADICTS"
+    # section 1: A:1.1 yes, decoy no, A:1.2 no, B:1 contradicts; section 2: A:1.2 yes, B:1 yes
+    _write(d.answers_for(p["JOBS3_CHECK"]),
+           [{"id": jobs[0]["id"], "reply": _reply([S, N, N, C])},
+            {"id": jobs[1]["id"], "reply": "garbled"}])  # fmt: skip
+    r = d.score_check3(cfg)
+    assert r["unreadable"] == [jobs[1]["id"]]
+    assert d.write_retry3("check")["jobs3_check.retry1.jsonl"]["questions"] == 1
+    _write(d.answers_for(p["JOBS3_CHECK"]).with_suffix(".retry1.jsonl"),
+           [{"id": jobs[1]["id"], "reply": _reply([N, N, S, S])}])  # fmt: skip
+    _write(d.answers_for(p["JOBS3_CHECK_SECOND"]),
+           [{"id": jobs[0]["id"], "reply": _reply([S, N, N, N])}])  # fmt: skip
+    r = d.score_check3(cfg)
+    assert r["positive"]["supports"] == 2 and r["positive"]["met"]  # any section
+    assert r["negative"]["supports"] == 1 and r["supported_and_contradicted"] == ["B:1"]
+    assert r["decoys"]["rejection"] == 1.0 and r["decoys"]["met"]
+    assert r["second_reader"]["kappa"] == 1.0 and r["passed"]
+    # a reader who says yes to the decoy misses guard 1
+    _write(d.answers_for(p["JOBS3_CHECK"]).with_suffix(".retry1.jsonl"),
+           [{"id": jobs[1]["id"], "reply": _reply([N, S, S, S])}])  # fmt: skip
+    r = d.score_check3(cfg)
+    assert not r["decoys"]["met"] and not r["passed"]
+    assert d.score_controls3(cfg)["refused"].startswith("check C")

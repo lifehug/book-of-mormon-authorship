@@ -182,6 +182,38 @@ B:p11 :: other :: \b(egyptian|hebrew|reformed|characters|language)\b :: The peop
 B:p12 :: other :: \b(israel\w*|jews?|hebrews?|jerusalem|descend\w*|seed of)\b :: The native people descend from migrants from the Middle East (Israel).
 """
 
+# Decoys for the third design (whole-book reading; 2026-11-23, post hoc: after check C missed
+# twice). Made-up features written by the AI agent, planted among the real items in the same
+# batches and worded the same way, so that a reader who says yes too easily is caught. Chosen
+# before any whole-book question was asked: each is absent from the 1830 text by the agent's own
+# knowledge of it, and its keyword rule (second column) found no hit in any of the seven texts
+# (search of 2026-11-23, recorded again by ``jobs3``). Candidates dropped before the choice: a
+# keyword hit in some text (feathers, tobacco, mirrors, turkeys, canoes ...), or a Book of Mormon
+# passage a reader could fairly take for them (cannibalism, Moroni 9; an eclipse, the three days
+# of darkness; tattoos, the Lamanites' red mark; human sacrifice).
+_D = r"""
+D:1 :: \b(cacao|cocoa|chocolate)\b :: Cacao beans are used as money in trade.
+D:2 :: \bblow-?(guns?|pipes?)\b :: Hunters and warriors use blowguns.
+D:3 :: \bjade\b :: Ornaments and offerings are carved from jade.
+D:4 :: \bmatch-?mak\w*\b :: Marriages are arranged by professional matchmakers.
+D:5 :: \bpotato\w*\b :: Potatoes are a staple crop.
+D:6 :: \bhammocks?\b :: People sleep in hammocks.
+D:7 :: \bllamas?\b :: Llamas are kept as pack animals.
+D:8 :: \brubber\b :: Rubber is gathered from trees and made into goods.
+D:9 :: \bvanilla\b :: Vanilla is used to flavour food and drink.
+D:10 :: \bvenus\b :: Priests track the movements of the planet Venus.
+D:11 :: \b(parrots?|macaws?)\b :: Parrots are kept and their feathers prized.
+D:12 :: \b(zero|cipher)\b :: The people write numbers with a sign for zero.
+D:13 :: \bturquoise\b :: Turquoise is mined and worked into mosaics.
+D:14 :: \b(manioc|cassava)\b :: Manioc (cassava) is a staple root crop.
+D:15 :: \b(umbrellas?|parasols?)\b :: Nobles are shaded by parasols carried by servants.
+D:16 :: \b(knotted|quipus?)\b :: Records and accounts are kept on knotted cords.
+D:17 :: \b(palanquins?|litters?)\b :: Rulers are carried about in palanquins.
+D:18 :: \b(dice|gambl\w*)\b :: People gamble with dice.
+D:19 :: \bmasks?\b :: The dead are buried wearing masks.
+D:20 :: \b(pine-?apples?|ananas)\b :: Pineapples are grown and eaten.
+"""
+
 
 def _rows(table: str, n: int) -> list[list[str]]:
     rows = [[c.strip() for c in line.split(" :: ")] for line in table.strip().splitlines()]
@@ -204,4 +236,9 @@ for _id, _grp, _kw, _feat in _rows(_B, 4):
     NEG_GROUP[_id] = _grp
     KEYWORDS[_id] = _kw
     FEATURE[_id] = _feat
+DECOY_KEYWORDS: dict[str, str] = {}
+DECOY_FEATURE: dict[str, str] = {}
+for _id, _kw, _feat in _rows(_D, 3):
+    DECOY_KEYWORDS[_id] = _kw
+    DECOY_FEATURE[_id] = _feat
 VALUES = ("yes", "no", "unclear")
