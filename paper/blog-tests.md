@@ -100,7 +100,7 @@ compares against.
 | BOM-108 | The names are Hebrew, or Egyptian, or invented | Tvedtnes and others; Wilcox 2013, 2019 | 124 names against census names, Spalding, Tolkien | Hebrew inscriptions, Egyptian, Maya, Nahuatl, treaty signers, period print, four inventing authors | **Done**, with a limit |
 | BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | **Done** |
 | BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | **Done** |
-| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; control queued**; BOM-109 **check failed; not scored** |
+| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; control queued**; BOM-109 **both designs' checks failed; not scored** |
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | **Counts done; reading step queued** |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
@@ -1447,6 +1447,28 @@ instrument that flips on one setting is not ready to be pointed at the question.
 here either. Twelve more features need reading and are prepared as questions (succession,
 markets, sacrifice, burial, money and others); for those the 1820s values are from my memory,
 which is its own weakness.
+
+**A second design: whose is it?** The first design counted a horse for whoever's book it was in.
+But in Bernal Díaz most horses are the Spaniards'. So this time a model reads each mention and
+says whose it is (the book's own people, outsiders, the author's own world, a figure of speech,
+a prophecy) and what the passage says (they have it, lack it, it was brought). Before any real
+reading, the model had to pass a check on 150 made-up passages with known answers, and two
+readings of 100 real mentions had to agree.
+
+It missed, in two ways. On "whose", the made-up passages were perfect: 150 of 150. On "what" it
+got 109 of 150, under the bar of 85 percent. When I looked, every miss was a passage where my
+answer key was arguable: "strangers would bring horses into the land" I had keyed as saying
+nothing; the model said "brought from outside", which is fair. Where the thing belongs to the
+book's own people, which is the only place the score uses it, it was 60 of 60. That is my key's
+fault, not the reader's, but I found it after the result.
+
+The other miss is real. Two readings of the same 98 real mentions agreed on whose it is only 76
+percent of the time (bar 80). Most of the disagreement is between "the people the book is about"
+and "the author's own world", and much of it comes from *View of the Hebrews*, an essay where
+the author talks about the Indians in his own voice. That line is hard to draw, and it is the line
+the test turns on.
+
+So the Book of Mormon was not scored, and I did not spend the 45 hours of reading behind it.
 
 ### Words that were supposed to be dead (BOM-118)
 
