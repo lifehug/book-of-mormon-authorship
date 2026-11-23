@@ -100,8 +100,8 @@ compares against.
 | BOM-108 | The names are Hebrew, or Egyptian, or invented | Tvedtnes and others; Wilcox 2013, 2019 | 124 names against census names, Spalding, Tolkien | Hebrew inscriptions, Egyptian, Maya, Nahuatl, treaty signers, period print, four inventing authors | **Done**, with a limit |
 | BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | **Done** |
 | BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | **Done** |
-| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; control queued**; BOM-109 **both designs' checks failed; not scored** |
-| BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | **Counts done; reading step queued** |
+| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; reader's check missed, controls not judged**; BOM-109 **both designs' checks failed; not scored** |
+| BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | **Counts done; reader's check passed; reading queued** |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
 | BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions; second design on real terrain | **Both designs' checks failed; not scored on fit; consistency part queued** |
@@ -1360,6 +1360,14 @@ War*. If those "match the Maya" 60 or 80 times as well, the checklist measures h
 to match, not who wrote the book. 947 questions are prepared for that, starting with the Book
 of Mormon itself to see whether the reader reproduces the Dales' own judgments.
 
+**That first step missed.** The reader saw, for each of the Dales' 131 positive items, the
+passages my keyword search pulled from the Book of Mormon, and was asked whether they plainly
+state the feature. It said yes for 70, 53 percent; the bar was 75. For the 18 negative items
+(things Coe says the Maya lacked and the book has) it said yes for 17. Every item had some
+passages, so the search never came up empty, but it may have pulled the wrong ones. Or the Dales
+counted things the book only hints at. I cannot tell those apart without reading the 61 by hand
+against the whole book, so the control books were not judged.
+
 ### The anachronism tally (BOM-113)
 
 Matthew Roper's 2025 study lists every thing critics have called out of place in the Book of
@@ -1411,6 +1419,12 @@ are not in doubt.
 What I take from it so far: his list is real and mostly holds as a list, my easy explanation
 for it failed, and the comparison that would say what a 77 percent confirmation rate means has
 not been made by anyone yet.
+
+**The reader's check passed.** Before it reads Roper's items, the model had to code 12 things
+whose answer is not in dispute: maize, cacao, turkey and jaguar in ancient Mesoamerica; llama and
+potato in the Americas but elsewhere; wheat, war chariots and silk in the Old World only;
+gunpowder, the telescope and movable type nowhere before AD 421. It got all 12. Roper's 227 items
+and the things in the five control books are next in the queue.
 
 ### Where the three worlds disagree (BOM-109)
 
