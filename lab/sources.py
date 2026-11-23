@@ -731,6 +731,22 @@ def _sources() -> list[dict]:
          "CC BY 4.0"),
     ):  # fmt: skip
         add(name, "wordlists", "BOM-117", kind, url, terms)
+    # BOM-109: Kirchhoff's 1943 essay, 1960 Tlatoani reprint, as posted by UNAM's CCH portal
+    add("kirchhoff1943_mesoamerica_tlatoani1960.pdf", "kirchhoff", "BOM-109", "file",
+        "https://portalacademico.cch.unam.mx/materiales/al/cont/hist/mex/mex1/histMexU2OA01/"
+        "docs/paulKirchhoff_mesoamerica.pdf",
+        "copyright the author's estate (Kirchhoff d. 1972); posted free by UNAM for teaching; "
+        "private copy, never redistributed", True)  # fmt: skip
+    # BOM-109: copyright-renewal check for Roys's Chumayel (1933) and other 1926-1963 sources
+    add(
+        "stanford_copyright_renewals_20170427.csv.zip",
+        "copyright",
+        "BOM-109",
+        "file",
+        "https://web.stanford.edu/dept/SUL/collections/copyrightrenewals/files/"
+        "20170427-copyright-renewals-records.csv.zip",
+        "Stanford University Libraries; offered for reuse (Copyright Renewal Database page)",
+    )
     add("stubbs2015_exploring.pdf", "stubbs", "BOM-117", "file",
         "https://storage.googleapis.com/scripturecentral-prod-strapi-uploads/"
         "er_of_semitic_and_egyptian_in_uto_aztecan_2015_0b7be82eba/"
