@@ -751,6 +751,11 @@ def _sources() -> list[dict]:
         "20170427-copyright-renewals-records.csv.zip",
         "Stanford University Libraries; offered for reuse (Copyright Renewal Database page)",
     )
+    add("sorenson2000_mormons_map.pdf", "sorenson", "BOM-116", "file",
+        "https://storage.googleapis.com/scripturecentral-prod-strapi-uploads/"
+        "john_l_sorenson_mormons_map_2000_3cfee21d8b/john_l_sorenson_mormons_map_2000_3cfee21d8b.pdf",
+        "copyright FARMS / the author; posted free on the Scripture Central archive for "
+        "non-commercial, private use; private copy, never redistributed", True)  # fmt: skip
     add("stubbs2015_exploring.pdf", "stubbs", "BOM-117", "file",
         "https://storage.googleapis.com/scripturecentral-prod-strapi-uploads/"
         "er_of_semitic_and_egyptian_in_uto_aztecan_2015_0b7be82eba/"
