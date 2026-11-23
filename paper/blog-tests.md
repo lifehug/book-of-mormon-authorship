@@ -2431,9 +2431,15 @@ changes, aimed straight at the two misses:
   percent and well beyond chance.
 - Two Mesoamerican sources that were out of reach before are in. Kirchhoff's 1943 list of
   Mesoamerican traits is now held. Roys's 1933 translation of the Chilam Balam of Chumayel is in too,
-  since the copyright renewal records show it was never renewed.
+  since the copyright renewal records show it was never renewed. Kirchhoff's list maps onto 18 of
+  our features; two of his traits nobody else listed, the ball game and raised-field farming
+  (chinampas), are added, though they are so rarely mentioned they may not count for much.
+- A new first step, the published readings their own way: for each feature, what the Dales, Coe,
+  Roper, Vogel (as I keyed his prose) and Kirchhoff say, beside what our reading finds, so the
+  places where we part ways are visible one by one.
 
-Its settings are being written down before any answer exists.
+It was built and its settings written down on 23 November, before any answer existed. The check
+is 330 questions, about an hour, and it is queued.
 
 **What it means, and what it doesn't.** No answer yet on the Book of Mormon. What the failures show
 is about the method, and it applies to every list on both sides: a word in a text is not a thing
