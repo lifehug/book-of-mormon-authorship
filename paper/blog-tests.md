@@ -51,6 +51,25 @@ the run. Tests about the book's setting score all three candidate worlds togethe
 America, the Bible's world, the United States of the 1820s), never one alone. And every file that
 came from outside is recorded with its address, so anyone can fetch the same thing and rerun it.
 
+### How each test is told
+
+Most of these tests did not work the first time. I would rather show that than hide it, because
+the failures say as much about the original arguments as the successes do. So every test below is
+told in the order it happened:
+
+1. **The claim**, as the person made it.
+2. **Their way first**: their method, and whether I could reproduce their number or check their
+   examples. Where I have not bought their book, it says so.
+3. **What I tried**: the comparison they did not have.
+4. **The check**: the known cases that had to come out right before the Book of Mormon was
+   measured.
+5. **When it failed: why, and what I changed.** Each wrong turn in order: what went wrong, what
+   that told me, what I changed, and why the change still asks the same question. Where I changed
+   something after seeing a result, I say so, because that kind of change counts for less.
+6. **The result**, always next to what it is compared with.
+7. **What it means, and what it doesn't.**
+8. **What's left.**
+
 ## The arguments, side by side
 
 Five groups. "Before" is what the earlier work compared against. "Here" is what this project
