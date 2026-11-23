@@ -26,6 +26,13 @@ Usage::
     python -m lab.anachronisms check [--list standin]   # known-answer check -> known_answer*.json
     python -m lab.anachronisms run [--list standin]     # check, then counts -> result*.json
     python -m lab.anachronisms jobs [--list standin]    # judging questions (private; not run)
+    python -m lab.anachronisms judged  # score the judge's answers -> .../judged.json
+
+``judged`` reads ``answers_known``, ``answers_bom`` and ``answers_control`` (``lab.judge``
+output beside the jobs) and refuses while any answer is open or unreadable (raw text logged to
+``logs/lab/``) or the known-answer subset is below its bar. It reports Roper's items recoded by
+place and period, the strict standard against the loose one (``lab.anachronisms.judged``), the
+control books' things under the same codes, and each control against the book.
 """
 
 from __future__ import annotations
@@ -42,7 +49,7 @@ from statistics import median
 from lab import anachronisms_roper as roper
 from lab import inventory as inv
 from lab.numbers import CAND, _file, _library, bom_text
-from lab.paths import FAST, NOTES, REGISTRY, out
+from lab.paths import FAST, LOGS, NOTES, REGISTRY, out
 from metadata import config
 
 OUT = REGISTRY / "setting" / "anachronisms"
@@ -631,6 +638,192 @@ def jobs(cfg: dict, items: list[dict], forms: dict, res: dict, which: str) -> di
     return files
 
 
+# ------------------------------------------------------------------------------ judged answers
+# Reads the judge's answers (simulated judging by an AI model) once every question is answered.
+# Settings: ``lab.anachronisms.judged`` (set 2026-11-23, before any answer below was read).
+
+CODES = (
+    "mesoamerica_in_period",
+    "americas_other_time_or_place",
+    "old_world_only",
+    "not_attested",
+    "not_applicable",
+)  # fmt: skip  (the prompt's scale, SCALE_TEXT)
+JUDGED = OUT / "judged.json"
+
+
+def parse_judged(reply: str) -> dict | None:
+    """One line of JSON with code and loose_confirmed; None if it cannot be read as an answer."""
+    s = (reply or "").strip()
+    a, b = s.find("{"), s.rfind("}")
+    if a < 0 or b < a:
+        return None
+    try:
+        r = json.loads(s[a : b + 1])
+    except json.JSONDecodeError:
+        return None
+    if not isinstance(r, dict):
+        return None
+    code = str(r.get("code", "")).strip().lower()
+    loose = str(r.get("loose_confirmed", "")).strip().lower()
+    if code not in CODES or loose not in ("yes", "no"):
+        return None
+    return {"code": code, "loose": loose == "yes"}
+
+
+def read_judged(stage: str, which: str = "roper") -> dict:
+    """Answers of one stage (known, bom, control) by id; open and unreadable ids apart. An
+    unreadable reply is logged with its raw text and never counted as an answer."""
+    jobs = PRIVATE / f"{JOBS_NAME[which]}_{stage}.jsonl"
+    answers = PRIVATE / f"answers{'' if which == 'roper' else '_standin'}_{stage}.jsonl"
+    ids = [json.loads(ln)["id"] for ln in jobs.read_text().splitlines() if ln.strip()]
+    got: dict[str, dict] = {}
+    bad: list[dict] = []
+    if answers.exists():
+        for ln in answers.read_text().splitlines():
+            if ln.strip():
+                r = json.loads(ln)
+                p = parse_judged(r.get("reply", ""))
+                if p is None:
+                    bad.append({"id": r["id"], "reply": r.get("reply")})
+                else:
+                    got[r["id"]] = p
+    unread = sorted({b["id"] for b in bad} - set(got))
+    if unread:
+        out(LOGS / f"anachronisms_unparsed_{stage}.jsonl").write_text(
+            "".join(json.dumps(b, ensure_ascii=False) + "\n" for b in bad if b["id"] in unread)
+        )
+    return {"answers": got, "jobs": len(ids), "answered": sum(i in got for i in ids),
+            "open": [i for i in ids if i not in got and i not in unread],
+            "unreadable": unread}  # fmt: skip
+
+
+def _share(k: int, n: int) -> float | None:
+    return round(k / n, 3) if n else None
+
+
+def code_summary(codes: list[dict], strict: str) -> dict:
+    n = len(codes)
+    st = sum(c["code"] == strict for c in codes)
+    lo = sum(c["loose"] for c in codes)
+    return {"n": n, "codes": {c: sum(x["code"] == c for x in codes) for c in CODES},
+            "strict_confirmed": st, "strict_share": _share(st, n),
+            "loose_confirmed": lo, "loose_share": _share(lo, n)}  # fmt: skip
+
+
+def holds(items: list[dict], ans: dict[str, dict], cfg: dict) -> dict:
+    """Of Roper's confirmed items, the share each standard keeps; the verdict by ``holds_bar``."""
+    j = cfg["lab"]["anachronisms"]["judged"]
+    conf = [ans[it["id"]] for it in items if it["roper_status"] == "confirmed"]
+    s = code_summary(conf, j["strict_code"])
+    bar = j["holds_bar"]
+    verdict = ("holds under the strict rule" if (s["strict_share"] or 0) >= bar
+               else "holds only under the loose rule" if (s["loose_share"] or 0) >= bar
+               else "does not hold under either rule")  # fmt: skip
+    return {"roper_confirmed": s, "bar": bar, "verdict": verdict}
+
+
+def compare(ctl: list[dict], book: list[dict], key: str, alpha: float) -> dict:
+    """Fisher's exact test: share confirmed (by ``key``) in a control against the book."""
+    k1, k2 = sum(c[key] for c in ctl), sum(b[key] for b in book)
+    t = [[k1, len(ctl) - k1], [k2, len(book) - k2]]
+    p = fisher(t)
+    s1, s2 = _share(k1, len(ctl)), _share(k2, len(book))
+    verdict = ("cannot tell" if p is None else "same" if p >= alpha
+               else "control lower" if s1 < s2 else "control higher")  # fmt: skip
+    return {"control": [k1, len(ctl)], "book": [k2, len(book)], "control_share": s1,
+            "book_share": s2, "fisher_p": p, "verdict": verdict}  # fmt: skip
+
+
+def score_judged(cfg: dict, items: list[dict], result: dict) -> dict:
+    """The judged half, from the answers; refused while any answer is open or unreadable, or if
+    the judge's known-answer subset is below its bar. ``result`` is the counting run's result."""
+    a = cfg["lab"]["anachronisms"]
+    j = a["judged"]
+    stages = {s: read_judged(s) for s in ("known", "bom", "control")}
+    state = {s: {"jobs": r["jobs"], "answered": r["answered"], "open": len(r["open"]),
+                 "unreadable": r["unreadable"]} for s, r in stages.items()}  # fmt: skip
+    if any(r["open"] or r["unreadable"] for r in stages.values()):
+        return {"refused": "answers still open or unreadable; nothing scored", "answers": state}
+    kn = stages["known"]["answers"]
+    hit = sum(kn[f"known|{k}"]["code"] == v for k, v in KNOWN_JUDGE.items())
+    known = {"matched": hit, "of": len(KNOWN_JUDGE), "bar": a["judge_bar"],
+             "passed": hit / len(KNOWN_JUDGE) >= a["judge_bar"]}  # fmt: skip
+    if not known["passed"]:
+        return {"refused": "the judge's known-answer subset is below its bar", "known": known,
+                "answers": state}  # fmt: skip
+    bom = {k.split("|", 1)[1]: v for k, v in stages["bom"]["answers"].items()}
+    strict = j["strict_code"]
+    only_quoted = set(result["book_of_mormon"]["all_text"]["present"]) - set(
+        result["book_of_mormon"]["without_quoted_chapters"]["present"]
+    )
+    subsets = {"all_items": items,
+               "without_items_only_in_quoted_chapters":
+               [it for it in items if it["id"] not in only_quoted]}  # fmt: skip
+    statuses = ("confirmed", "partial", "unconfirmed")
+    book: dict = {}
+    for name, its in subsets.items():
+        by_status = {s: code_summary([bom[it["id"]] for it in its if it["roper_status"] == s],
+                                     strict) for s in statuses}  # fmt: skip
+        book[name] = {"all": code_summary([bom[it["id"]] for it in its], strict),
+                      **holds(its, bom, cfg), "by_roper_status": by_status}  # fmt: skip
+    book["by_era_first_raised"] = {
+        e: {**code_summary([bom[it["id"]] for it in items if it["era_first_raised"] == e], strict),
+            "roper_confirmed": sum(it["roper_status"] == "confirmed" for it in items
+                                   if it["era_first_raised"] == e)}
+        for e in sorted({str(it["era_first_raised"]) for it in items})
+    }  # fmt: skip
+    book["by_category"] = {c: code_summary([bom[it["id"]] for it in items
+                                            if it["category"] == c], strict)
+                           for c in sorted({it["category"] for it in items})}  # fmt: skip
+    book["loose_against_roper"] = {s: {"loose_yes": sum(bom[it["id"]]["loose"] for it in items
+                                                        if it["roper_status"] == s),
+                                       "items": sum(it["roper_status"] == s for it in items)}
+                                   for s in ("confirmed", "partial", "unconfirmed")}  # fmt: skip
+    book["items"] = {it["id"]: bom[it["id"]] for it in items}
+    # the controls: each judged book's things against the book's countable items, same codes
+    base = (
+        [it for it in items if it.get("thing")] if j["compare_book_items"] == "countable" else items
+    )
+    bvals = [{**bom[it["id"]], "strict": bom[it["id"]]["code"] == strict} for it in base]
+    ctl_ans: dict[str, dict[str, dict]] = {}
+    for k, v in stages["control"]["answers"].items():
+        _, name, thing = k.split("|", 2)
+        ctl_ans.setdefault(name, {})[thing] = v
+    groups = result["controls"]["all_items"]["books"]
+    controls = {}
+    for name, things in sorted(ctl_ans.items()):
+        vals = [{**v, "strict": v["code"] == strict} for v in things.values()]
+        row = {
+            "group": groups.get(name, {}).get("group"),
+            **code_summary(vals, strict),
+            "loose_vs_book": compare(vals, bvals, "loose", a["alpha"]),
+            "things": things,
+        }
+        if name in j["strict_defined_for"]:
+            row["strict_vs_book"] = compare(vals, bvals, "strict", a["alpha"])
+        else:
+            row["strict_vs_book"] = "not defined: the book is not set in the Americas"
+        controls[name] = row
+    named = controls.get(a["named_control"])
+    named_v = ("not attempted" if named is None else
+               "the control shows the same under the loose rule"
+               if named["loose_vs_book"]["verdict"] in ("same", "control higher")
+               else "the control is confirmed less often under the loose rule")  # fmt: skip
+    return {
+        "label": "simulated judging by an AI model (" + a["judge_model"] + ")",
+        "answers": state, "known": known, "settings": j,
+        "book_of_mormon": book,
+        "book_items_compared": {"which": j["compare_book_items"], "n": len(bvals),
+                                **code_summary(bvals, strict)},
+        "controls": controls,
+        "named_control": a["named_control"], "named_control_verdict": named_v,
+        "verdict_book": book["all_items"]["verdict"],
+        "trend_in_control": "not attempted: the control books' things have no dates first "
+                            "raised, so no change over time can be built",
+    }  # fmt: skip
+
+
 # ------------------------------------------------------------------------------ commands
 
 
@@ -687,7 +880,7 @@ def _stamp(res: dict) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["items", "check", "run", "jobs"])
+    ap.add_argument("cmd", choices=["items", "check", "run", "jobs", "judged"])
     ap.add_argument("--list", dest="which", choices=["roper", "standin"], default="roper")
     ap.add_argument("--no-background", action="store_true", help="skip the library sample")
     a = ap.parse_args(argv)
@@ -696,6 +889,20 @@ def main(argv: list[str] | None = None) -> int:
         print("wrote", *write_items(cfg))
         return 0
     items, things = load_list(cfg, a.which)
+    if a.cmd == "judged":
+        if a.which != "roper":
+            raise SystemExit("judged: Roper's list only (the stand-in was never judged)")
+        res_path = OUT / "result.json"
+        if not res_path.exists():
+            raise SystemExit("judged: run `python -m lab.anachronisms run` first")
+        got = score_judged(cfg, items, json.loads(res_path.read_text()))
+        if "refused" in got:
+            print("refused:", got["refused"])
+            print(json.dumps(got.get("answers"), indent=1))
+            return 1
+        out(JUDGED).write_text(json.dumps(_stamp(got), indent=1) + "\n")
+        print(got["verdict_book"], "|", got["named_control_verdict"], "->", JUDGED)
+        return 0
     forms = compile_forms(things)
     suffix = "" if a.which == "roper" else "_standin"
     data = gather(cfg, forms, with_background=not a.no_background and a.cmd == "run")

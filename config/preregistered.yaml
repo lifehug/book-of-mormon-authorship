@@ -1907,6 +1907,11 @@ lab:                              # the research lab (exploratory tooling; reads
     judge_model: sonnet            # a model that knows archaeology; the queue's default (haiku) is for word-sense calls
     judge_bar: 0.9                 # the judge's known-answer subset: share of codes it must match before its other answers are read
     recode_scale: [mesoamerica_in_period, americas_other_time_or_place, old_world_only, not_attested]   # the issue's fixed scale
+    judged:                        # scoring the judge's answers (`python -m lab.anachronisms judged`). The card left these open: set 2026-11-23 by the agent, committed before any Book of Mormon or control answer was read; the owner may change them until then
+      strict_code: mesoamerica_in_period   # "confirmed" under the strict rule: attested in Mesoamerica within the claimed period (the issue's place and period)
+      holds_bar: 0.75              # of the items Roper calls confirmed, the share a standard must keep confirmed for the tally to "hold" under it (strict first, then loose); 0.75 as the lab's other judging bars
+      strict_defined_for: [book_of_mormon, ss-manuscript-story-1885, mathews_behemoth_1839, hale_genius_of_oblivion_1823]   # books set in the Americas: the scale's place code means something for them; for the Old World chronicles only the loose standard and the code counts are compared
+      compare_book_items: countable  # control things are compared with the Book of Mormon's countable items (each names a thing found in the text, like a control thing); all 227 reported beside
   dale_checklist:                  # BOM-112 first part (lab; exploratory): Dale and Dale 2019 keyed; arithmetic redone; control questions prepared (simulated AI judging, not run)
     source: "Dale and Dale 2019, Joseph Smith: The World's Greatest Guesser, Interpreter (header: 31 (2019); file name: v32), pp. 77-186; https://cdn.interpreterfoundation.org/jnlpdf/dale-v32-2019-pp77-186-PDF.pdf"
     first_pdf_page_journal: 75     # the PDF's n-th page (0-based) is journal page 75 + n (PDF page 3 carries header 78)
