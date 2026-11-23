@@ -138,6 +138,10 @@ def _setup(tmp_path, monkeypatch, n_control_answered=2):
         tmp_path / "answers_control.jsonl",
         [{"id": i, "reply": _ans("old_world_only", "yes")} for i in ctl[:n_control_answered]],
     )
+    _w(tmp_path / "jobs_control_own.jsonl", [{"id": i} for i in ctl])
+    own_codes = ["region_in_period", "other_place_or_time"]
+    own = [{"id": i, "reply": _ans(c, "yes")} for i, c in zip(ctl, own_codes, strict=True)]
+    _w(tmp_path / "answers_control_own.jsonl", own)
     result = {"book_of_mormon": {"all_text": {"present": ["r1", "r2", "r3", "r4"]},
                                  "without_quoted_chapters": {"present": ["r1", "r2", "r3"]}},
               "controls": {"all_items": {"books": {
@@ -175,4 +179,16 @@ def test_judged_scores_hand_made_answers(tmp_path, monkeypatch):
     assert c["n"] == 2 and c["loose_share"] == 1.0 and c["strict_confirmed"] == 0
     assert c["loose_vs_book"]["book"] == [3, 4]  # the book's countable items r1..r4
     assert got["named_control_verdict"].startswith("the control shows the same")
+    own = got["controls_own_region"]["ss-manuscript-story-1885"]
+    assert own["strict_confirmed"] == 1 and own["codes"]["other_place_or_time"] == 1
     assert "basis" not in json.dumps(got)  # the judge's words are not kept
+
+
+def test_own_region_codes_parse_apart():
+    from lab.anachronisms import CODES_OWN, parse_judged
+
+    own = '{"code": "region_in_period", "loose_confirmed": "yes", "basis": "x"}'
+    assert parse_judged(own) is None  # not a code on the book's scale
+    assert parse_judged(own, CODES_OWN) == {"code": "region_in_period", "loose": True}
+    meso = '{"code": "mesoamerica_in_period", "loose_confirmed": "no"}'
+    assert parse_judged(meso, CODES_OWN) is None

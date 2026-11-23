@@ -1909,6 +1909,7 @@ lab:                              # the research lab (exploratory tooling; reads
     recode_scale: [mesoamerica_in_period, americas_other_time_or_place, old_world_only, not_attested]   # the issue's fixed scale
     judged:                        # scoring the judge's answers (`python -m lab.anachronisms judged`). The card left these open: set 2026-11-23 by the agent, committed before any Book of Mormon or control answer was read; the owner may change them until then
       strict_code: mesoamerica_in_period   # "confirmed" under the strict rule: attested in Mesoamerica within the claimed period (the issue's place and period)
+      strict_code_own: region_in_period    # the controls' second version (owner, 2026-11-23, before any control answer): confirmed = attested in the control's own claimed region within its period
       holds_bar: 0.75              # of the items Roper calls confirmed, the share a standard must keep confirmed for the tally to "hold" under it (strict first, then loose); 0.75 as the lab's other judging bars
       strict_defined_for: [book_of_mormon, ss-manuscript-story-1885, mathews_behemoth_1839, hale_genius_of_oblivion_1823]   # books set in the Americas: the scale's place code means something for them; for the Old World chronicles only the loose standard and the code counts are compared
       compare_book_items: countable  # control things are compared with the Book of Mormon's countable items (each names a thing found in the text, like a control thing); all 227 reported beside

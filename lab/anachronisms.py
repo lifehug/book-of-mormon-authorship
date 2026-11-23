@@ -26,13 +26,15 @@ Usage::
     python -m lab.anachronisms check [--list standin]   # known-answer check -> known_answer*.json
     python -m lab.anachronisms run [--list standin]     # check, then counts -> result*.json
     python -m lab.anachronisms jobs [--list standin]    # judging questions (private; not run)
+    python -m lab.anachronisms jobs-own   # the controls asked on their own region (not run)
     python -m lab.anachronisms judged  # score the judge's answers -> .../judged.json
 
-``judged`` reads ``answers_known``, ``answers_bom`` and ``answers_control`` (``lab.judge``
-output beside the jobs) and refuses while any answer is open or unreadable (raw text logged to
-``logs/lab/``) or the known-answer subset is below its bar. It reports Roper's items recoded by
-place and period, the strict standard against the loose one (``lab.anachronisms.judged``), the
-control books' things under the same codes, and each control against the book.
+``judged`` reads ``answers_known``, ``answers_bom``, ``answers_control`` and
+``answers_control_own`` (``lab.judge`` output beside the jobs) and refuses while any answer is
+open or unreadable (raw text logged to ``logs/lab/``) or the known-answer subset is below its
+bar. It reports Roper's items recoded by place and period, the strict standard against the loose
+one (``lab.anachronisms.judged``), the control books' things under the same codes, and each
+control against the book.
 """
 
 from __future__ import annotations
@@ -574,13 +576,23 @@ SCALE_TEXT = (
 )
 
 
-def _prompt(setting: str, item: str, passages: list[str]) -> str:
+SCALE_OWN_TEXT = (  # the controls' second version (owner, 2026-11-23): their own claimed region
+    "region_in_period = attested in the book's claimed region (as stated above) within the "
+    "claimed period; other_place_or_time = attested somewhere before the end of the claimed "
+    "period, but not in the claimed region within it; not_attested = not attested anywhere "
+    "before the end of the claimed period; not_applicable = not a physical thing or practice "
+    "that archaeology could attest."
+)
+CODES_OWN = ("region_in_period", "other_place_or_time", "not_attested", "not_applicable")
+
+
+def _prompt(setting: str, item: str, passages: list[str], scale: str = SCALE_TEXT) -> str:
     shown = "\n\n".join(f"Passage {i + 1}: ...{p}..." for i, p in enumerate(passages))
     return (
         SIMULATED + "You are coding claimed anachronisms. A book claims this setting: "
         f"{setting}.\nThe item: {item}.\n" + (shown + "\n" if shown else "")
         + "Question 1: code the item as the book uses it, for the claimed setting, on this "
-        f"scale: {SCALE_TEXT}\n"
+        f"scale: {scale}\n"
         "Question 2 (the loose standard): would it count as 'confirmed' if confirmed meant "
         "attested anywhere in the ancient world before the end of the claimed period? yes or no.\n"
         'Reply with one line of JSON only: {"code": "...", "loose_confirmed": "yes|no", '
@@ -642,6 +654,28 @@ def jobs(cfg: dict, items: list[dict], forms: dict, res: dict, which: str) -> di
 # Reads the judge's answers (simulated judging by an AI model) once every question is answered.
 # Settings: ``lab.anachronisms.judged`` (set 2026-11-23, before any answer below was read).
 
+
+def jobs_own(cfg: dict, forms: dict, res: dict) -> dict:
+    """The controls' second version: the same things and passages as ``jobs_control.jsonl``,
+    asked on the own-region scale (``SCALE_OWN_TEXT``). Writes only ``jobs_control_own.jsonl``;
+    the files already prepared are not rewritten."""
+    a = cfg["lab"]["anachronisms"]
+    texts = {n: t for n, _, t in controls(cfg)}
+    js = []
+    for name, c in res["controls"]["all_items"]["books"].items():
+        if c["group"] not in a["judged_groups"]:
+            continue
+        for t in c["things_present"]:
+            js.append({"id": f"control|{name}|{t}",
+                       "prompt": _prompt(a["settings_claimed"][name], t.replace("_", " "),
+                                         windows(texts[name], t, forms, cfg),
+                                         SCALE_OWN_TEXT)})  # fmt: skip
+    path = out(PRIVATE / "jobs_control_own.jsonl")
+    path.write_text("".join(json.dumps(j, ensure_ascii=False) + "\n" for j in js))
+    return {"path": str(path), "questions": len(js),
+            "label": "simulated judging by an AI model; prepared, not run"}  # fmt: skip
+
+
 CODES = (
     "mesoamerica_in_period",
     "americas_other_time_or_place",
@@ -652,7 +686,7 @@ CODES = (
 JUDGED = OUT / "judged.json"
 
 
-def parse_judged(reply: str) -> dict | None:
+def parse_judged(reply: str, codes: tuple[str, ...] = CODES) -> dict | None:
     """One line of JSON with code and loose_confirmed; None if it cannot be read as an answer."""
     s = (reply or "").strip()
     a, b = s.find("{"), s.rfind("}")
@@ -666,7 +700,7 @@ def parse_judged(reply: str) -> dict | None:
         return None
     code = str(r.get("code", "")).strip().lower()
     loose = str(r.get("loose_confirmed", "")).strip().lower()
-    if code not in CODES or loose not in ("yes", "no"):
+    if code not in codes or loose not in ("yes", "no"):
         return None
     return {"code": code, "loose": loose == "yes"}
 
@@ -683,7 +717,7 @@ def read_judged(stage: str, which: str = "roper") -> dict:
         for ln in answers.read_text().splitlines():
             if ln.strip():
                 r = json.loads(ln)
-                p = parse_judged(r.get("reply", ""))
+                p = parse_judged(r.get("reply", ""), CODES_OWN if stage == "control_own" else CODES)
                 if p is None:
                     bad.append({"id": r["id"], "reply": r.get("reply")})
                 else:
@@ -702,11 +736,11 @@ def _share(k: int, n: int) -> float | None:
     return round(k / n, 3) if n else None
 
 
-def code_summary(codes: list[dict], strict: str) -> dict:
+def code_summary(codes: list[dict], strict: str, scale: tuple[str, ...] = CODES) -> dict:
     n = len(codes)
     st = sum(c["code"] == strict for c in codes)
     lo = sum(c["loose"] for c in codes)
-    return {"n": n, "codes": {c: sum(x["code"] == c for x in codes) for c in CODES},
+    return {"n": n, "codes": {c: sum(x["code"] == c for x in codes) for c in scale},
             "strict_confirmed": st, "strict_share": _share(st, n),
             "loose_confirmed": lo, "loose_share": _share(lo, n)}  # fmt: skip
 
@@ -740,7 +774,7 @@ def score_judged(cfg: dict, items: list[dict], result: dict) -> dict:
     the judge's known-answer subset is below its bar. ``result`` is the counting run's result."""
     a = cfg["lab"]["anachronisms"]
     j = a["judged"]
-    stages = {s: read_judged(s) for s in ("known", "bom", "control")}
+    stages = {s: read_judged(s) for s in ("known", "bom", "control", "control_own")}
     state = {s: {"jobs": r["jobs"], "answered": r["answered"], "open": len(r["open"]),
                  "unreadable": r["unreadable"]} for s, r in stages.items()}  # fmt: skip
     if any(r["open"] or r["unreadable"] for r in stages.values()):
@@ -805,6 +839,23 @@ def score_judged(cfg: dict, items: list[dict], result: dict) -> dict:
         else:
             row["strict_vs_book"] = "not defined: the book is not set in the Americas"
         controls[name] = row
+    # the controls' second version: each judged on its own claimed region (owner, 2026-11-23);
+    # strict = region_in_period for every control, against the book's strict (its own region)
+    own_ans: dict[str, dict[str, dict]] = {}
+    for k, v in stages["control_own"]["answers"].items():
+        _, name, thing = k.split("|", 2)
+        own_ans.setdefault(name, {})[thing] = v
+    strict_own = j["strict_code_own"]
+    controls_own = {}
+    for name, things in sorted(own_ans.items()):
+        vals = [{**v, "strict": v["code"] == strict_own} for v in things.values()]
+        controls_own[name] = {
+            "group": groups.get(name, {}).get("group"),
+            **code_summary(vals, strict_own, CODES_OWN),
+            "loose_vs_book": compare(vals, bvals, "loose", a["alpha"]),
+            "strict_vs_book": compare(vals, bvals, "strict", a["alpha"]),
+            "things": things,
+        }
     named = controls.get(a["named_control"])
     named_v = ("not attempted" if named is None else
                "the control shows the same under the loose rule"
@@ -817,7 +868,17 @@ def score_judged(cfg: dict, items: list[dict], result: dict) -> dict:
         "book_items_compared": {"which": j["compare_book_items"], "n": len(bvals),
                                 **code_summary(bvals, strict)},
         "controls": controls,
+        "controls_own_region": controls_own,
+        "controls_note": "controls asked twice: 'controls' on the book's scale (Mesoamerica "
+                         "named as the strict code); 'controls_own_region' on each control's "
+                         "own claimed region (owner, 2026-11-23, before any control answer)",
         "named_control": a["named_control"], "named_control_verdict": named_v,
+        "named_control_verdict_own_region": (
+            "not attempted" if a["named_control"] not in controls_own else
+            "the control shows the same under the strict own-region rule"
+            if controls_own[a["named_control"]]["strict_vs_book"]["verdict"]
+            in ("same", "control higher")
+            else "the control is confirmed less often under the strict own-region rule"),
         "verdict_book": book["all_items"]["verdict"],
         "trend_in_control": "not attempted: the control books' things have no dates first "
                             "raised, so no change over time can be built",
@@ -880,7 +941,7 @@ def _stamp(res: dict) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["items", "check", "run", "jobs", "judged"])
+    ap.add_argument("cmd", choices=["items", "check", "run", "jobs", "jobs-own", "judged"])
     ap.add_argument("--list", dest="which", choices=["roper", "standin"], default="roper")
     ap.add_argument("--no-background", action="store_true", help="skip the library sample")
     a = ap.parse_args(argv)
@@ -920,6 +981,11 @@ def main(argv: list[str] | None = None) -> int:
     res = tally(cfg, items, forms, data)
     if a.cmd == "jobs":
         print(json.dumps(jobs(cfg, items, forms, res, a.which), indent=1))
+        return 0
+    if a.cmd == "jobs-own":
+        if a.which != "roper":
+            raise SystemExit("jobs-own: Roper's list only")
+        print(json.dumps(jobs_own(cfg, forms, res), indent=1))
         return 0
     full = {"list": a.which, "settings": cfg["lab"]["anachronisms"],
             "items_sha256": items_sha(forms), "known_answer": ka,
