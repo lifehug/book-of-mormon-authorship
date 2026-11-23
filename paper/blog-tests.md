@@ -104,7 +104,7 @@ compares against.
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | **Counts done; reading step queued** |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
-| BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions | **Check failed; not scored** |
+| BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions; second design on real terrain | **Both designs' checks failed; not scored on fit; consistency part queued** |
 | BOM-117 | Uto-Aztecan languages carry Hebrew and Egyptian words | Stubbs 2015 | his pairing alone | his sets checked against his own rules; word lists against unrelated and borrowing pairs | **Yaqui-Coptic: no layer of the claimed size; the rest cannot tell** |
 
 ## Results so far
@@ -895,6 +895,39 @@ true at once on a flat map. But they are few, and the rule misses the long descr
 
 A fair test needs each model's own published placements (Sorenson's map, the Heartland maps),
 scored against random placements of the same places, the way the Bible check worked.
+
+**A second design, with real terrain.** The first try used 33 short statements. This time a model
+read every passage with a place in it (simulated reading) and turned each into a typed statement:
+north of, up from, by the sea, a river running from here to there, so many days' travel. Then a
+program laid the places out on real coastlines, rivers and elevation (Natural Earth and NOAA's
+ETOPO, both public), on circles of land the size the text covers. The question was how many
+circles on Earth could hold the whole map at once. If almost none can, a fit means something.
+
+Before the Book of Mormon, five texts whose real setting is known had to pass: the Bible's
+narrative books, Josephus, Xenophon's march, Lewis and Clark, and *The Late War*. None did.
+
+The Bible's places spread across about 1,200 km. At that size its stated geography fits 58
+percent of the circles of land on Earth, Palestine among them. Josephus fits 96 percent, *The
+Late War* 93. Lewis and Clark, with 338 statements, fits none at all, not even the Missouri and
+the Columbia. The more a text says, the more chances for one misread statement to rule out every
+place; the less it says, the more places it fits. So the count measured how much each text says,
+not where it is set. And when the model read the same passages twice in different formats, the
+two readings agreed barely more than chance would give (kappa 0.26).
+
+I also tried John Clark's 1989 method on the Bible: build the internal map first, then compare.
+Of three plain features of Palestine (sea to the west, Jordan south into the Salt Sea, hill
+country up from Jericho), it rebuilt one.
+
+So the Book of Mormon was not scored on fit. What I take from it: "the geography fits region X"
+needs two things nobody has shown, for any region, on any side. One is a reading of the book's
+statements that two readers agree on. The other is a scale at which even the Bible picks out
+Palestine from the rest of the world. The other half of this test asks whether real maps
+contradict themselves less than invented ones (*Gulliver*, *Treasure Island*, Oz). It has its own
+check, and its reading is queued.
+
+A side result from the radiocarbon data: within 300 km of the Isthmus of Tehuantepec, the open
+databases hold 5 dates from 1000 BC to AD 1000; Panama 0; the Great Lakes 398. So dated occupation
+cannot be compared fairly between the proposed settings with open data.
 
 ### "Secret combinations" (BOM-123)
 
