@@ -20,6 +20,7 @@ Usage::
 
     python -m lab.dictated check    # known-answer check only (prints it)
     python -m lab.dictated run      # -> data/lab/reruns/dictated_texts/result.json
+    python -m lab.dictated run-added  # with the texts added later -> result_added.json
 """
 
 from __future__ import annotations
@@ -562,7 +563,7 @@ def position(book: dict, received: dict, measure: str) -> dict:
     }
 
 
-def run(cfg: dict, check_only: bool = False) -> dict:
+def run(cfg: dict, check_only: bool = False, added: bool = False) -> dict:
     t = cfg["lab"]["dictated"]
     vocab, grams = twovoices.kjv_vocab_and_grams(t["kjv_ngram"])
     ka = known_answer(cfg, vocab, grams)
@@ -571,7 +572,10 @@ def run(cfg: dict, check_only: bool = False) -> dict:
     book = book_doc(cfg, vocab)
     bom_full = whole_book(book, cfg)
     docs, missing = {}, {}
-    for name, (role, verse, files) in t["received"].items():
+    received = dict(t["received"])
+    if added:
+        received.update(t.get("received_added", {}))
+    for name, (role, verse, files) in received.items():
         try:
             docs[name] = (role, load_doc(files, cfg, vocab, bool(verse)))
         except (OSError, ValueError) as e:
@@ -748,10 +752,10 @@ def _commit() -> str:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("command", choices=["check", "run"])
+    ap.add_argument("command", choices=["check", "run", "run-added"])
     a = ap.parse_args(argv)
     cfg = config.load()
-    res = run(cfg, check_only=a.command == "check")
+    res = run(cfg, check_only=a.command == "check", added=a.command == "run-added")
     res["config_sha256"] = config.sha256_of_config()
     res["git_commit"] = _commit()
     res["rule_set"] = "everything (named texts); library background by registry filter"
@@ -760,8 +764,15 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(_strip(res["known_answer"]["measure_passes"]), indent=1))
         out(OUT / "check.json").write_text(text)
         return 0
-    out(OUT / "result.json").write_text(text)
-    print(f"wrote {OUT / 'result.json'}; verdict: {res.get('verdict', {}).get('answer')}")
+    name = "result_added.json" if a.command == "run-added" else "result.json"
+    if a.command == "run-added":
+        res["added_texts"] = sorted(cfg["lab"]["dictated"].get("received_added", {}))
+        res["added_note"] = (
+            "texts added after the first result (owner, 2026-11-23); result.json unchanged"
+        )
+        text = json.dumps(_strip(res), indent=1, ensure_ascii=False)
+    out(OUT / name).write_text(text)
+    print(f"wrote {OUT / name}; verdict: {res.get('verdict', {}).get('answer')}")
     return 0
 
 

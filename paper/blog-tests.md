@@ -1403,6 +1403,13 @@ than it sounds. And the 23 are my list, not his sixteen. *A Course in Miracles* 
 are under copyright and not held. *The Urantia Book* is left out until I decide about it. *Oahspe*
 is the first of seven volumes.
 
+**One more text, added later.** *The Urantia Book* (1955) was left out at first because its copyright
+was disputed. A US court held it invalid, and the foundation that publishes it gives it away, so
+in November I added it, after the first result. It changed nothing. It is the richest vocabulary in
+the set, 3,042 different words in a 20,000-word stretch against the Book of Mormon's 1,679, so it
+widens the range on the far side. The book stays inside on the same eight measures and outside on
+the same two. The first result is kept as it was; this one sits beside it.
+
 **What's left.** Hales's own table of sixteen, the rest of *Oahspe*, a modern-punctuated Book of
 Mormon for the sentence measures, and the same measures on the book's own parts.
 

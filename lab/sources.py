@@ -716,6 +716,10 @@ def _sources() -> list[dict]:
     for name, (kind, url) in _RECEIVED.items():
         terms = PD + (" (scan and OCR text)" if kind == "ia" else "; Project Gutenberg")
         add(name, "received", "BOM-125", kind, url, terms)
+    add("urantia_book_1955_v1.22_txt.zip", "received", "BOM-125", "file",
+        "https://www.urantia.org/sites/default/files/book/en/uf-eng-001-1955-1.22-txt.zip",
+        "Urantia Foundation, offered free; the US copyright was held invalid (Michael Foundation, "
+        "2001); local copy only, not redistributed (owner's yes, 2026-11-23)")  # fmt: skip
     # BOM-117 redesign (docs/research/2026-11-22-redesign-uto-aztecan.md): open word lists and
     # lexicons, and Stubbs 2015, free for non-commercial private use (owner, 2026-11-22).
     raw = "https://raw.githubusercontent.com/"
