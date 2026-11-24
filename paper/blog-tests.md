@@ -138,28 +138,73 @@ sharp break rather than a slow drift, and Wunderli (2013) used the same switch a
 Joseph Smith. It is an argument for a nineteenth-century
 author, but it rests on a fact anyone can count.
 
-**Their way first.** Metcalfe's own table is not in my files; I had his pattern only from a
-summary. Eccel's normalised figures are on pages 351 to 356 of *Mormon Genesis*, which I have not
-bought. So this is not replicated number for number until those books are in hand. What I could
-do was count the two words myself in the 1830 text, book by book, and see whether his pattern
-comes back. It does. Here are the counts, in dictation order:
+**Their way first.** I now have Metcalfe's chapter, "The Priority of Mosiah", in *New Approaches
+to the Book of Mormon* (1993), pages 395 to 444. His method is simple. He counted the two words
+book by book. Then he printed the counts twice: once in page order, once starting from Mosiah
+(Tables 1 and 2, page 410). In page order the "wherefore" books sit at both ends with a
+"therefore" stretch in the middle. Starting from Mosiah, it becomes one change, from "therefore"
+to "wherefore". He set those counts beside Joseph Smith's revelations from the same months, which
+also go from all "therefore" to all "wherefore". Then he refined the counts (Table 3, page 413).
+He took out the uses copied from the King James Bible, 42 of them, each listed by verse, and put
+back eight that the manuscripts had and later printings dropped. He also split Ether into thirds
+(page 412) and counted eleven passages he takes as Mormon's own (page 415). No blocks, no
+statistics, no other books. His conclusion: dictation began at Mosiah, Ether was the turning
+point in late May 1829, and the habit was Smith's.
 
-| Book | wherefore | therefore |
-| --- | --- | --- |
-| Mosiah | 1 | 114 |
-| Alma | 3 | 288 |
-| Helaman | 0 | 63 |
-| 3 Nephi | 1 | 77 |
-| Mormon | 0 | 19 |
-| Ether | 62 | 24 |
-| Moroni | 38 | 0 |
-| 1 Nephi | 98 | 14 |
-| 2 Nephi | 128 | 8 |
-| Jacob | 53 | 1 |
-| Words of Mormon | 5 | 0 |
+Do his numbers come back? Yes, and more closely than I expected. One thing surprised me. His
+book table matches the 1920 edition exactly, every book. So he counted a modern text, not the
+1830, even though the totals he cites on page 409 (668 and 420) are for the 1830. In the 1830
+text every book is within 2 of his, and the gaps are differences between editions. Later
+printings dropped or swapped a word in 14 chapters.
 
-**What I tried.** Metcalfe stopped at the counts. Two questions were left open. Could the
-narrators explain it as well as dictation order does? And how often does any long book by one
+| Book (dictation order) | his "therefore", "wherefore" | 1920 text | 1830 text |
+| --- | --- | --- | --- |
+| Mosiah | 123, 1 | 123, 1 | 123, 1 |
+| Alma | 286, 3 | 286, 3 | 288, 3 |
+| Helaman | 63, 0 | 63, 0 | 63, 0 |
+| 3 Nephi | 98, 3 | 98, 3 | 98, 3 |
+| 4 Nephi | 5, 0 | 5, 0 | 5, 0 |
+| Mormon | 22, 0 | 22, 0 | 22, 0 |
+| Ether | 24, 63 | 24, 63 | 24, 62 |
+| Title Page | 0, 2 | (1830) | 0, 2 |
+| Moroni | 0, 38 | 0, 38 | 0, 38 |
+| 1 Nephi | 13, 98 | 13, 98 | 14, 100 |
+| 2 Nephi | 28, 138 | 28, 138 | 29, 139 |
+| Jacob | 1, 52 | 1, 52 | 1, 53 |
+| Enos, Jarom, Omni | 0, 15 | 0, 15 | 0, 15 |
+| Words of Mormon | 0, 4 | 0, 4 | 0, 5 |
+
+His refined table comes back too. Following his own steps on the 1920 text, every cell matches
+but one. He has 289 for Alma, but his own starting count plus his own two additions makes 288.
+Of his 42 Bible verses, 41 hold the word where he says. The other is a misprint ("14:14" for
+2 Nephi 15:14, which does hold it). Ether by thirds matches exactly in the 1920 text and is one "wherefore"
+short in the last third of the 1830. His list of Mormon's
+passages, ten of eleven exactly and the last off by one.
+
+Two corrections came out of this, both mine. First, the table I printed here before was the
+count *without* the long Bible chapters, labelled as if it were the whole count. That is why it
+had 2 Nephi at 8 "therefore" when the book has 29. Second, my count for Mormon was 3 short,
+19 against his 22. The cause was in the project's own 1830 table. One long passage of 3,152
+words, where Moroni takes over his father's record, is labelled as a chapter heading. Any count
+of "body text only" leaves it out. Counting all the book's text fixes it. I reran my break-finder
+that way too. The break stays in the same place inside Ether, the before and after shares move
+by about a point, and no library book matches it. My first attempt at his refined table also had
+a mistake, and I found it only from the result. I added his eight restored words to the 1830
+count, but seven of those eight are already in the 1830 text. They are the words later printings
+dropped, so that counted them twice. I redid it his way, on the text he actually used.
+
+I did not redo his revelation column. Our copy of Revelation Book 1 is stored page by page,
+not revelation by revelation, so I can't yet date each count.
+
+One more thing I had wrong. I wrote that Metcalfe "stopped at the counts" and left the narrator
+question open. He didn't. His Figures 2 to 4 take the passages written in Mormon's own voice
+and show they switch in dictation order too. That answers the narrator explanation in its own
+way. What he did not have is a formal comparison of the two explanations, or any other book to
+compare against.
+
+**What I tried.** Before I had his chapter, I thought Metcalfe stopped at the counts. He didn't
+quite, as above, but two questions were still open. Could the narrators explain it as well as
+dictation order does, in a formal comparison? And how often does any long book by one
 author switch a habit this sharply? So I cut the text into blocks, found the single break that
 best splits it into a "before" rate and an "after" rate, and compared three explanations: one
 break in dictation order, one break in printed order, and one rate per narrator (Mormon, Moroni,
@@ -203,9 +248,10 @@ which the English wording was produced in that order, whoever or whatever produc
 dictation order itself comes from the historical record; it is taken as given here, not tested.
 The library comparison is printed books by one author, not other dictated texts.
 
-**What's left.** The same count in Joseph Smith's revelations of 1828 to 1830 by date, to see if
-they switch at the same time; the other near-synonym pairs (whoso and whosoever); and Metcalfe's
-and Eccel's own tables, for a count-for-count comparison once the books are bought.
+**What's left.** His revelation column, which needs a table of the 1828-1830 revelations by
+date. The whoso/whosoever pair (his page 408, from Foster 1983). Eccel's figures in *Mormon
+Genesis*, which I still haven't bought. And the mislabelled 3,152-word passage in the project's
+1830 table, which is the study's to fix, not the lab's.
 
 ### Claimed sources, ranked (BOM-126)
 
