@@ -75,6 +75,10 @@ def join_lines(lines: list[str]) -> str:
     return out.replace("­", "")
 
 
+# Rows the flush-left rule labels "synopsis" that are body text: (book, chapter, para, kind).
+NOT_SYNOPSIS = {("Mormon", 4, 1, "synopsis")}
+
+
 def parse(text: str) -> list[dict]:
     pages = text.split("\f")
     records: list[dict] = []
@@ -189,6 +193,12 @@ def parse(text: str) -> list[dict]:
             buf.append(line)
     flush()
     records = [r for r in records if r["book"] is not None or r["kind"] == "preface"]
+    # Mormon chapter IV (Moroni takes over his father's record) has no synopsis: its first
+    # paragraph starts flush left in the reproduction and was read as one. Found by lab BOM-120,
+    # corrected at the owner's word 2026-11-24 (lab-promote). Paragraph cuts are unchanged.
+    for r in records:
+        if (r["book"], r["chapter"], r["para"], r["kind"]) in NOT_SYNOPSIS:
+            r["kind"] = "body"
     # Opening pages carry no running header; count back from the first numbered page.
     known = [r["page_start"] for r in records if r["page_start"] is not None]
     if known:

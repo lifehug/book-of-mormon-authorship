@@ -49,3 +49,14 @@ def test_parse_structure() -> None:
     assert body[-1]["page_start"] == 7
     # testimonies after THE END are excluded
     assert not any("Be it known" in r["text"] for r in recs)
+
+
+def test_mormon_iv_opening_is_body_not_synopsis():
+    """Mormon ch. IV has no synopsis; its flush-left first paragraph is body text (2026-11-24)."""
+    import json
+    from pathlib import Path
+
+    rows = [json.loads(ln) for ln in Path("data/bom/1830/edition_1830.jsonl").open()]
+    row = next(r for r in rows if r["book"] == "Mormon" and r["chapter"] == 4 and r["para"] == 1)
+    assert row["kind"] == "body"
+    assert sum(r["kind"] == "synopsis" for r in rows) == 16
