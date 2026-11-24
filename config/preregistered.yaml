@@ -1730,6 +1730,62 @@ lab:                              # the research lab (exploratory tooling; reads
       rigdon_series: [millennium_1833_35.htm, gospel_1833_35.htm]   # data/private/lab/sources/rigdon/; attribution the editor's
       smith_t73_kinds: [letter, note, reflections]                   # data/private/candidates/t73-<kind>-*.jsonl
       quote_ngram: 8                 # candidates' tokens covered by a word 8-gram of the scripture targets (Book of Mormon, revelations, Moses, Abraham) are dropped
+  lectures_theirway:               # BOM-104 (lab; exploratory) "their way first": Larsen-Rencher-Layton 1980, Phipps 1977 and Reynolds 2005 rerun approximately; card section "Their way, rerun (2026-11-23)"
+    block_words: 2000              # Larsen's and Phipps's block size
+    blocks: 6                      # blocks per man (his first 12,000 masked words)
+    smith_class_blocks: {articles: 4, letters: 5, journal: 3}   # Smith's 12 blocks; adjacent pairs averaged to six for Phipps (p. 27 n. 2)
+    heldout_blocks: 4              # extra blocks per man from his held text outside the six: the known-answer checks
+    larsen_words: [and, the, of, that, to, unto, in, it, for, be, which, a, not, came, pass, behold, all, this, now, with, yea, should, by, as, upon, but, also, from, there, because, these, therefore, when, if, even, into, would, forth]   # Appendix C, p. 247, frequent words
+    larsen_select: 8               # words chosen by forward stepwise Wilks's lambda (Appendix E: "eight words")
+    larsen_min_agree: 6            # reproduced if the first choice matches Appendix E on at least this many of 7 lectures
+    phipps_words: [the, of, and, in, a, it, with, from, or, upon, at, on, would, if, things, an, its, should, great, into, can, unto, must, let]   # the 24 uncoded words of Table 13
+    phipps_skip_within: 1          # a word is skipped for a pair when the median is less than this (per 1,000) from the lectures' rate (p. 34)
+    phipps_floor_cell: 1           # "no odds were multiplied by less than one" (p. 32): each cell floored at 1
+    phipps_strong: 2               # tests 4 and 8: a word discriminates strongly when its single-word odds exceed this
+    phipps_min_odds: 10            # reproduced if test 1 gives Rigdon over Smith above this
+    reynolds_factor: 1.5           # reproduced if Rigdon's and the Lectures' rates are within this factor of 2.1 and 4.1 per 1,000
+    reynolds_smith_max: 0.2        # and Smith's under this per 1,000
+    reynolds_control_share: 0.5    # a control writer at this share of Rigdon's rate or more: the phrases mark the period, not Rigdon
+    reynolds_broad: [calculated, are_extant, rational_beings, science, never_had_was, facts, candid]   # regexes that find a common word; also reported without them
+    reynolds_phrases:              # Appendix 2 (pp. 37-41), written from the quoted words; matched on lower-case words joined by single spaces
+      sacred_writers: '\bsacred writers?\b'
+      are_extant: '\b(are|is) extant\b'
+      former_day_saints: '\bsaints of former days\b|\bformer day saints\b'
+      calculated: '\bcalculated\b'
+      clearly_set_forth: '\bclearly set forth\b'
+      the_historian: '\bthe historian\b'
+      in_the_first_instance: '\bin the first instance\b'
+      fishermen_of_galilee: '\bfishermen of galilee\b'
+      righteous_abel: '\brighteous abel\b'
+      scheme_of_life_and_salvation: '\bscheme of life and salvation\b'
+      if_the_question_is_asked: '\bif the question (is|be|should be) (asked|put)\b'
+      rational_beings: '\brational beings?\b'
+      science: '\bscience\b'
+      putting_together: '\bputting (\w+ ){1,4}together\b'
+      future_felicity: '\b(future|eternal) felicity\b'
+      seeing_him_invisible: '\bseeing him who is invisible\b'
+      acceptable_to_god: '\bacceptable (to|unto|before) god\b'
+      ministering_spirits: '\bministering spirits?( \w+){0,6} heirs of salvation\b'
+      life_and_godliness: '\bpertain(s|eth)? (un)?to life and godliness\b'
+      mouths_of_lions: '\bstopped the mouths of lions\b'
+      spoiling_of_goods: '\bspoiling of (their|your|our|his) goods\b'
+      need_mistake: '\b(need|could|can) mistake\b'
+      never_had_was: '\bnever (had|was)\b'
+      facts: '\bfacts?\b'
+      plainer_than_this: '\bplainer than this\b'
+      no_mistake: '\bno mistake\b'
+      no_doubt: '\bthere can be no doubt\b'
+      no_dispute: '\bthere (will|can) be no dispute\b'
+      candid: '\bcandid\b'
+      who_cannot_see: '\bwho (can ?not|could not) see\b'
+      not_to_our_purpose: '\bwould not be to our purpose\b'
+      let_us_here_observe: '\blet us here observe\b'
+      necessary_to_go_back: '\bnecessary to go back\b'
+      belief_in_the_bible: '\bbelief (in|of) the bible\b'
+      proceed_to_show: '\bwe shall (now )?(proceed to (show|notice|examine)|notice)\b'
+      reader_mark: '\blet the (reader|class|student) mark\b'
+      reader_reflect: '\blet the (reader|mind) (reflect|notice)\b'
+      necessary_to_observe: '\bis (not )?necessary (here )?to (observe|go back)\b|\blet us here observe\b'
   translation:                     # BOM-102 (lab; exploratory): translation marks (A) and claimed Hebraisms (B)
     year_min: 1700                 # labelled HathiTrust books printed in these years (registry year)
     year_max: 1830

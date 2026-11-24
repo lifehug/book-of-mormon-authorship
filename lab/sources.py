@@ -140,6 +140,19 @@ _RIGDON = {
     "gospel_1833_35.htm": "http://www.SidneyRigdon.com/RigWrit/RigWrit3b.htm",
     "misc_1834_38.htm": "http://www.SidneyRigdon.com/RigWrit/RigWrit3d.htm",
 }
+# BOM-104 "their way first": the 1832-36 church papers' issues that carry the Phipps (1977) and
+# Reynolds (2005) samples, in the centerplace.org transcription (one page an issue). The held OCR
+# of the same runs interleaves columns, which breaks the phrases Reynolds counted.
+_CP = "http://centerplace.org/history/"
+_PAPERS_1830S = {
+    f"{paper}_{issue}.htm": f"{_CP}{paper}/{issue}.htm"
+    for paper, issues in {
+        "ems": ["v1n01", "v2n17", "v2n19", "v2n20", "v2n21", "v2n22", "v2n23", "v2n24"],
+        "ma": ["v1n01", "v1n02", "v1n03", "v1n04", "v1n05", "v1n06", "v1n07", "v1n08", "v1n09",
+               "v1n10", "v1n11", "v1n12", "v2n01", "v2n02", "v2n03", "v2n07", "v2n10"],
+    }.items()
+    for issue in issues
+}  # fmt: skip
 _GIT = {
     "wordtree_books": (
         "bible_style",
@@ -593,6 +606,16 @@ def _sources() -> list[dict]:
             "file",
             url,
             "public-domain texts in an editor's transcription with his notes; private",
+            True,
+        )
+    for name, url in _PAPERS_1830S.items():
+        add(
+            name,
+            "church_papers",
+            "BOM-104",
+            "file",
+            url,
+            "public-domain newspapers (1832-36) in the centerplace.org transcription; private",
             True,
         )
     for name, (group, tests, repo, terms) in _GIT.items():

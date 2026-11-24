@@ -1,0 +1,1504 @@
+{
+ "exploratory": true,
+ "settings": {
+  "block_words": 2000,
+  "blocks": 6,
+  "smith_class_blocks": {
+   "articles": 4,
+   "letters": 5,
+   "journal": 3
+  },
+  "heldout_blocks": 4,
+  "larsen_words": [
+   "and",
+   "the",
+   "of",
+   "that",
+   "to",
+   "unto",
+   "in",
+   "it",
+   "for",
+   "be",
+   "which",
+   "a",
+   "not",
+   "came",
+   "pass",
+   "behold",
+   "all",
+   "this",
+   "now",
+   "with",
+   "yea",
+   "should",
+   "by",
+   "as",
+   "upon",
+   "but",
+   "also",
+   "from",
+   "there",
+   "because",
+   "these",
+   "therefore",
+   "when",
+   "if",
+   "even",
+   "into",
+   "would",
+   "forth"
+  ],
+  "larsen_select": 8,
+  "larsen_min_agree": 6,
+  "phipps_words": [
+   "the",
+   "of",
+   "and",
+   "in",
+   "a",
+   "it",
+   "with",
+   "from",
+   "or",
+   "upon",
+   "at",
+   true,
+   "would",
+   "if",
+   "things",
+   "an",
+   "its",
+   "should",
+   "great",
+   "into",
+   "can",
+   "unto",
+   "must",
+   "let"
+  ],
+  "phipps_skip_within": 1,
+  "phipps_floor_cell": 1,
+  "phipps_strong": 2,
+  "phipps_min_odds": 10,
+  "reynolds_factor": 1.5,
+  "reynolds_smith_max": 0.2,
+  "reynolds_control_share": 0.5,
+  "reynolds_broad": [
+   "calculated",
+   "are_extant",
+   "rational_beings",
+   "science",
+   "never_had_was",
+   "facts",
+   "candid"
+  ]
+ },
+ "samples": {
+  "items": {
+   "js_youth_1834_12": {
+    "man": "joseph_smith",
+    "class": "articles",
+    "words_raw": 505,
+    "words_masked": 496
+   },
+   "js_elders_1835_09": {
+    "man": "joseph_smith",
+    "class": "articles",
+    "words_raw": 2971,
+    "words_masked": 1273
+   },
+   "js_elders_1835_11": {
+    "man": "joseph_smith",
+    "class": "articles",
+    "words_raw": 2508,
+    "words_masked": 1656
+   },
+   "js_elders_1835_12": {
+    "man": "joseph_smith",
+    "class": "articles",
+    "words_raw": 4118,
+    "words_masked": 2529
+   },
+   "js_abolition_1836_04": {
+    "man": "joseph_smith",
+    "class": "articles",
+    "words_raw": 2232,
+    "words_masked": 1874
+   },
+   "js-1831-03-letter-hyrum.jsonl": {
+    "man": "joseph_smith",
+    "class": "letters",
+    "words_raw": 644,
+    "words_masked": 590
+   },
+   "t73-letter-to-church-leaders-in-jackson-county-missouri-18-augus.jsonl": {
+    "man": "joseph_smith",
+    "class": "letters",
+    "words_raw": 2229,
+    "words_masked": 2034
+   },
+   "t73-letter-to-emma-smith-18-may-1834.jsonl": {
+    "man": "joseph_smith",
+    "class": "letters",
+    "words_raw": 340,
+    "words_masked": 332
+   },
+   "t73-letters-to-john-burk-sally-waterman-phelps-and-almira-mack-s.jsonl": {
+    "man": "joseph_smith",
+    "class": "letters",
+    "words_raw": 2272,
+    "words_masked": 2110
+   },
+   "t73-letter-to-sally-waterman-phelps-20-july-1835.jsonl": {
+    "man": "joseph_smith",
+    "class": "letters",
+    "words_raw": 302,
+    "words_masked": 266
+   },
+   "t73-letter-to-emma-smith-4-november-1838.jsonl": {
+    "man": "joseph_smith",
+    "class": "letters",
+    "words_raw": 608,
+    "words_masked": 578
+   },
+   "t73-letter-to-emma-smith-12-november-1838.jsonl": {
+    "man": "joseph_smith",
+    "class": "letters",
+    "words_raw": 579,
+    "words_masked": 565
+   },
+   "t73-letter-to-the-church-and-edward-partridge-20-march-1839.jsonl": {
+    "man": "joseph_smith",
+    "class": "letters",
+    "words_raw": 4309,
+    "words_masked": 4016
+   },
+   "t73-letter-to-emma-smith-21-march-1839.jsonl": {
+    "man": "joseph_smith",
+    "class": "letters",
+    "words_raw": 605,
+    "words_masked": 600
+   },
+   "t73-letter-to-emma-smith-9-november-1839.jsonl": {
+    "man": "joseph_smith",
+    "class": "letters",
+    "words_raw": 324,
+    "words_masked": 311
+   },
+   "t73-reflections-and-blessings-16-and-23-august-1842.jsonl": {
+    "man": "joseph_smith",
+    "class": "letters",
+    "words_raw": 2766,
+    "words_masked": 2519
+   },
+   "t73-letter-to-emma-smith-26-27-june-1844.jsonl": {
+    "man": "joseph_smith",
+    "class": "letters",
+    "words_raw": 390,
+    "words_masked": 365
+   },
+   "js-journal-1832-1834.jsonl": {
+    "man": "joseph_smith",
+    "class": "journal",
+    "words_raw": 7613,
+    "words_masked": 6491
+   },
+   "js-1829-10-22-letter-cowdery.jsonl": {
+    "man": "joseph_smith",
+    "class": "extra",
+    "words_raw": 356,
+    "words_masked": 347
+   },
+   "js-1832-06-06-letter-emma.jsonl": {
+    "man": "joseph_smith",
+    "class": "extra",
+    "words_raw": 693,
+    "words_masked": 660
+   },
+   "js-1832-07-31-letter-phelps.jsonl": {
+    "man": "joseph_smith",
+    "class": "extra",
+    "words_raw": 2835,
+    "words_masked": 2627
+   },
+   "js-1832-10-13-letter-emma.jsonl": {
+    "man": "joseph_smith",
+    "class": "extra",
+    "words_raw": 886,
+    "words_masked": 866
+   },
+   "js-1832-11-27-letter-phelps.jsonl": {
+    "man": "joseph_smith",
+    "class": "extra",
+    "words_raw": 1103,
+    "words_masked": 970
+   },
+   "js-1833-01-04-letter-saxton.jsonl": {
+    "man": "joseph_smith",
+    "class": "extra",
+    "words_raw": 1816,
+    "words_masked": 1402
+   },
+   "js-1833-01-11-letter-phelps.jsonl": {
+    "man": "joseph_smith",
+    "class": "extra",
+    "words_raw": 791,
+    "words_masked": 723
+   },
+   "gospel1": {
+    "man": "sidney_rigdon",
+    "class": "sample",
+    "words_raw": 6812,
+    "words_masked": 2977
+   },
+   "fc08": {
+    "man": "sidney_rigdon",
+    "class": "sample",
+    "words_raw": 1592,
+    "words_masked": 998
+   },
+   "gospel2": {
+    "man": "sidney_rigdon",
+    "class": "sample",
+    "words_raw": 3196,
+    "words_masked": 2477
+   },
+   "gospel3": {
+    "man": "sidney_rigdon",
+    "class": "sample",
+    "words_raw": 661,
+    "words_masked": 416
+   },
+   "gospel4": {
+    "man": "sidney_rigdon",
+    "class": "sample",
+    "words_raw": 1155,
+    "words_masked": 700
+   },
+   "gospel5": {
+    "man": "sidney_rigdon",
+    "class": "sample",
+    "words_raw": 1217,
+    "words_masked": 1123
+   },
+   "gospel6": {
+    "man": "sidney_rigdon",
+    "class": "sample",
+    "words_raw": 3074,
+    "words_masked": 1665
+   },
+   "gospel7": {
+    "man": "sidney_rigdon",
+    "class": "sample",
+    "words_raw": 1638,
+    "words_masked": 1451
+   },
+   "gospel8": {
+    "man": "sidney_rigdon",
+    "class": "sample",
+    "words_raw": 1382,
+    "words_masked": 1293
+   },
+   "fc01": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 2792,
+    "words_masked": 2043
+   },
+   "fc02": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 3032,
+    "words_masked": 2704
+   },
+   "fc03": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 3365,
+    "words_masked": 3194
+   },
+   "fc04": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 2997,
+    "words_masked": 2795
+   },
+   "fc05": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 2751,
+    "words_masked": 2551
+   },
+   "fc06": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 2392,
+    "words_masked": 2044
+   },
+   "fc07": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 3071,
+    "words_masked": 2423
+   },
+   "fc09": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 2304,
+    "words_masked": 1807
+   },
+   "fc10": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 1257,
+    "words_masked": 1168
+   },
+   "fc11": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 1877,
+    "words_masked": 1171
+   },
+   "fc12": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 1553,
+    "words_masked": 1052
+   },
+   "fc13": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 1800,
+    "words_masked": 1436
+   },
+   "fc14": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 1653,
+    "words_masked": 1543
+   },
+   "fc15": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 1512,
+    "words_masked": 1259
+   },
+   "millennium1": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 18585,
+    "words_masked": 12712
+   },
+   "millennium2": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 3360,
+    "words_masked": 2618
+   },
+   "millennium3": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 2591,
+    "words_masked": 2000
+   },
+   "millennium4": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 1162,
+    "words_masked": 1021
+   },
+   "millennium5": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 1305,
+    "words_masked": 894
+   },
+   "millennium6": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 1272,
+    "words_masked": 749
+   },
+   "millennium7": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 659,
+    "words_masked": 145
+   },
+   "millennium8": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 281,
+    "words_masked": 6
+   },
+   "millennium9": {
+    "man": "sidney_rigdon",
+    "class": "extra",
+    "words_raw": 1306,
+    "words_masked": 1116
+   },
+   "voice_of_warning_1837_from_p_iii": {
+    "man": "parley_pratt",
+    "class": "sample",
+    "words_raw": 51615,
+    "words_masked": 36531
+   },
+   "oc01": {
+    "man": "oliver_cowdery",
+    "class": "sample",
+    "words_raw": 1767,
+    "words_masked": 1661
+   },
+   "oc02": {
+    "man": "oliver_cowdery",
+    "class": "sample",
+    "words_raw": 3073,
+    "words_masked": 2922
+   },
+   "oc03": {
+    "man": "oliver_cowdery",
+    "class": "sample",
+    "words_raw": 1271,
+    "words_masked": 1270
+   },
+   "oc04": {
+    "man": "oliver_cowdery",
+    "class": "sample",
+    "words_raw": 2050,
+    "words_masked": 1837
+   },
+   "oc06": {
+    "man": "oliver_cowdery",
+    "class": "sample",
+    "words_raw": 3316,
+    "words_masked": 2110
+   },
+   "oc07": {
+    "man": "oliver_cowdery",
+    "class": "sample",
+    "words_raw": 3502,
+    "words_masked": 3349
+   },
+   "oc05": {
+    "man": "oliver_cowdery",
+    "class": "extra",
+    "words_raw": 2097,
+    "words_masked": 1706
+   },
+   "oc08": {
+    "man": "oliver_cowdery",
+    "class": "extra",
+    "words_raw": 5094,
+    "words_masked": 4786
+   },
+   "wp_to_man": {
+    "man": "ww_phelps",
+    "class": "sample",
+    "words_raw": 1127,
+    "words_masked": 874
+   },
+   "wp04": {
+    "man": "ww_phelps",
+    "class": "sample",
+    "words_raw": 1884,
+    "words_masked": 1765
+   },
+   "wp08": {
+    "man": "ww_phelps",
+    "class": "sample",
+    "words_raw": 2069,
+    "words_masked": 1435
+   },
+   "wp_saints": {
+    "man": "ww_phelps",
+    "class": "sample",
+    "words_raw": 858,
+    "words_masked": 726
+   },
+   "wp09": {
+    "man": "ww_phelps",
+    "class": "sample",
+    "words_raw": 2028,
+    "words_masked": 1575
+   },
+   "wp10": {
+    "man": "ww_phelps",
+    "class": "sample",
+    "words_raw": 2283,
+    "words_masked": 1810
+   },
+   "wp11": {
+    "man": "ww_phelps",
+    "class": "sample",
+    "words_raw": 2117,
+    "words_masked": 1911
+   },
+   "wp12": {
+    "man": "ww_phelps",
+    "class": "sample",
+    "words_raw": 2329,
+    "words_masked": 1636
+   },
+   "wp2s01": {
+    "man": "ww_phelps",
+    "class": "sample",
+    "words_raw": 789,
+    "words_masked": 777
+   },
+   "wp01": {
+    "man": "ww_phelps",
+    "class": "extra",
+    "words_raw": 2043,
+    "words_masked": 1954
+   },
+   "wp02": {
+    "man": "ww_phelps",
+    "class": "extra",
+    "words_raw": 1989,
+    "words_masked": 1919
+   },
+   "wp03": {
+    "man": "ww_phelps",
+    "class": "extra",
+    "words_raw": 1911,
+    "words_masked": 1865
+   },
+   "wp05": {
+    "man": "ww_phelps",
+    "class": "extra",
+    "words_raw": 2236,
+    "words_masked": 2097
+   },
+   "wp06": {
+    "man": "ww_phelps",
+    "class": "extra",
+    "words_raw": 1139,
+    "words_masked": 1029
+   },
+   "wp07": {
+    "man": "ww_phelps",
+    "class": "extra",
+    "words_raw": 1335,
+    "words_masked": 1172
+   }
+  },
+  "substituted": {
+   "joseph_smith": "not held: Harris 22 Feb 1831, Partridge 1 May 1833, 'Sister' 4 Sep 1833, the church 16 Dec 1838, Emma 23 Jun 1844, Browning 27 Jun 1844; the 20 Mar 1839 letter to the church and Partridge stands in for 16 Dec 1838; the Burk/Phelps/Scobey file and the 16 and 23 Aug 1842 file are taken whole (Phipps took the postscripts and 16 Aug only)",
+   "parley_pratt": "Shameful Outrage (1835, 3,058 words) not held; A Voice of Warning after p. 61 stands in for it",
+   "all": "quotations: King James 5-gram and scripture 8-gram drops in place of Phipps's hand removal; quotations from other sources stay in; Phelps's letter poems not removed"
+  },
+  "rigdon_sample_order": "gospel 1 (Star), fc08, gospel 2-8 (date order of Table 3)",
+  "smith_blocks_by_class": {
+   "articles": 3,
+   "letters": 6,
+   "journal": 3
+  },
+  "men": {
+   "joseph_smith": {
+    "masked_words": {
+     "articles": 7828,
+     "letters": 14286,
+     "journal": 6491,
+     "extra": 7595
+    },
+    "blocks": 12,
+    "heldout_blocks": 4
+   },
+   "sidney_rigdon": {
+    "masked_words": {
+     "sample": 13100,
+     "extra": 48451
+    },
+    "blocks": 6,
+    "heldout_blocks": 4
+   },
+   "parley_pratt": {
+    "masked_words": {
+     "sample": 36531,
+     "extra": 0
+    },
+    "blocks": 6,
+    "heldout_blocks": 4
+   },
+   "oliver_cowdery": {
+    "masked_words": {
+     "sample": 13149,
+     "extra": 6492
+    },
+    "blocks": 6,
+    "heldout_blocks": 3
+   },
+   "ww_phelps": {
+    "masked_words": {
+     "sample": 12509,
+     "extra": 10036
+    },
+    "blocks": 6,
+    "heldout_blocks": 4
+   }
+  },
+  "lectures_masked_words": {
+   "1": 1181,
+   "2": 3208,
+   "3": 1438,
+   "4": 1887,
+   "5": 650,
+   "6": 1195,
+   "7": 3052
+  }
+ },
+ "larsen": {
+  "blocks": {
+   "joseph_smith": 12,
+   "sidney_rigdon": 6,
+   "parley_pratt": 6,
+   "oliver_cowdery": 6,
+   "ww_phelps": 6
+  },
+  "selected_words": [
+   "when",
+   "upon",
+   "unto",
+   "the",
+   "it",
+   "now",
+   "that",
+   "yea"
+  ],
+  "resubstitution": 0.972,
+  "resubstitution_published": 0.889,
+  "leave_one_block_out": 0.667,
+  "leave_one_block_out_fixed_words": 0.833,
+  "heldout": {
+   "joseph_smith": {
+    "blocks": 4,
+    "correct": 4,
+    "assigned": [
+     "joseph_smith",
+     "joseph_smith",
+     "joseph_smith",
+     "joseph_smith"
+    ]
+   },
+   "sidney_rigdon": {
+    "blocks": 4,
+    "correct": 2,
+    "assigned": [
+     "sidney_rigdon",
+     "ww_phelps",
+     "parley_pratt",
+     "sidney_rigdon"
+    ]
+   },
+   "parley_pratt": {
+    "blocks": 4,
+    "correct": 2,
+    "assigned": [
+     "ww_phelps",
+     "parley_pratt",
+     "parley_pratt",
+     "joseph_smith"
+    ]
+   },
+   "oliver_cowdery": {
+    "blocks": 3,
+    "correct": 1,
+    "assigned": [
+     "parley_pratt",
+     "oliver_cowdery",
+     "ww_phelps"
+    ]
+   },
+   "ww_phelps": {
+    "blocks": 4,
+    "correct": 1,
+    "assigned": [
+     "parley_pratt",
+     "parley_pratt",
+     "ww_phelps",
+     "parley_pratt"
+    ]
+   }
+  },
+  "heldout_accuracy": 0.526,
+  "chance": 0.2,
+  "lectures": {
+   "1": {
+    "first": "sidney_rigdon",
+    "p": 0.994,
+    "second": "oliver_cowdery",
+    "p2": 0.005,
+    "published_first": "sidney_rigdon",
+    "published_p": 1.0,
+    "agree": true
+   },
+   "2": {
+    "first": "ww_phelps",
+    "p": 0.998,
+    "second": "oliver_cowdery",
+    "p2": 0.002,
+    "published_first": "joseph_smith",
+    "published_p": 0.524,
+    "agree": false
+   },
+   "3": {
+    "first": "sidney_rigdon",
+    "p": 1.0,
+    "second": "ww_phelps",
+    "p2": 0.0,
+    "published_first": "sidney_rigdon",
+    "published_p": 1.0,
+    "agree": true
+   },
+   "4": {
+    "first": "sidney_rigdon",
+    "p": 0.996,
+    "second": "ww_phelps",
+    "p2": 0.004,
+    "published_first": "sidney_rigdon",
+    "published_p": 0.988,
+    "agree": true
+   },
+   "5": {
+    "first": "joseph_smith",
+    "p": 0.753,
+    "second": "sidney_rigdon",
+    "p2": 0.247,
+    "published_first": "ww_phelps",
+    "published_p": 0.461,
+    "agree": false
+   },
+   "6": {
+    "first": "ww_phelps",
+    "p": 0.497,
+    "second": "joseph_smith",
+    "p2": 0.317,
+    "published_first": "sidney_rigdon",
+    "published_p": 1.0,
+    "agree": false
+   },
+   "7": {
+    "first": "ww_phelps",
+    "p": 0.896,
+    "second": "sidney_rigdon",
+    "p2": 0.089,
+    "published_first": "sidney_rigdon",
+    "published_p": 0.995,
+    "agree": false
+   }
+  },
+  "agree_of_7": 3,
+  "reproduced": false
+ },
+ "phipps": {
+  "words": [
+   "the",
+   "of",
+   "and",
+   "in",
+   "a",
+   "it",
+   "with",
+   "from",
+   "or",
+   "upon",
+   "at",
+   true,
+   "would",
+   "if",
+   "things",
+   "an",
+   "its",
+   "should",
+   "great",
+   "into",
+   "can",
+   "unto",
+   "must",
+   "let"
+  ],
+  "test1": {
+   "JS-SR": {
+    "favours": "sidney_rigdon",
+    "over": "joseph_smith",
+    "odds": 1581.75,
+    "words_used": 16
+   },
+   "JS-PP": {
+    "favours": "parley_pratt",
+    "over": "joseph_smith",
+    "odds": 12.72,
+    "words_used": 16
+   },
+   "JS-OC": {
+    "favours": "joseph_smith",
+    "over": "oliver_cowdery",
+    "odds": 5.26,
+    "words_used": 17
+   },
+   "JS-WP": {
+    "favours": "ww_phelps",
+    "over": "joseph_smith",
+    "odds": 11.22,
+    "words_used": 15
+   },
+   "SR-PP": {
+    "favours": "sidney_rigdon",
+    "over": "parley_pratt",
+    "odds": 7.39,
+    "words_used": 20
+   },
+   "SR-OC": {
+    "favours": "sidney_rigdon",
+    "over": "oliver_cowdery",
+    "odds": 117.97,
+    "words_used": 20
+   },
+   "SR-WP": {
+    "favours": "sidney_rigdon",
+    "over": "ww_phelps",
+    "odds": 27.44,
+    "words_used": 18
+   },
+   "PP-OC": {
+    "favours": "parley_pratt",
+    "over": "oliver_cowdery",
+    "odds": 3.54,
+    "words_used": 16
+   },
+   "PP-WP": {
+    "favours": "parley_pratt",
+    "over": "ww_phelps",
+    "odds": 1.96,
+    "words_used": 16
+   },
+   "OC-WP": {
+    "favours": "ww_phelps",
+    "over": "oliver_cowdery",
+    "odds": 1.57,
+    "words_used": 17
+   }
+  },
+  "test4": {
+   "JS-SR": {
+    "favours": "sidney_rigdon",
+    "over": "joseph_smith",
+    "odds": 8.01,
+    "words_used": 5
+   },
+   "JS-PP": {
+    "favours": "parley_pratt",
+    "over": "joseph_smith",
+    "odds": 5.1,
+    "words_used": 6
+   },
+   "JS-OC": {
+    "favours": "oliver_cowdery",
+    "over": "joseph_smith",
+    "odds": 1.15,
+    "words_used": 4
+   },
+   "JS-WP": {
+    "favours": "ww_phelps",
+    "over": "joseph_smith",
+    "odds": 7.14,
+    "words_used": 5
+   },
+   "SR-PP": {
+    "favours": "sidney_rigdon",
+    "over": "parley_pratt",
+    "odds": 6.22,
+    "words_used": 5
+   },
+   "SR-OC": {
+    "favours": "sidney_rigdon",
+    "over": "oliver_cowdery",
+    "odds": 85.8,
+    "words_used": 9
+   },
+   "SR-WP": {
+    "favours": "sidney_rigdon",
+    "over": "ww_phelps",
+    "odds": 4.43,
+    "words_used": 7
+   },
+   "PP-OC": {
+    "favours": "parley_pratt",
+    "over": "oliver_cowdery",
+    "odds": 1.12,
+    "words_used": 2
+   },
+   "PP-WP": {
+    "favours": "parley_pratt",
+    "over": "ww_phelps",
+    "odds": 2.6,
+    "words_used": 1
+   },
+   "OC-WP": {
+    "favours": "oliver_cowdery",
+    "over": "ww_phelps",
+    "odds": 8.33,
+    "words_used": 3
+   }
+  },
+  "rigdon_over_smith_test1": 1581.75,
+  "rigdon_dominates_all_test1": true,
+  "test8_words": [
+   "the",
+   "it",
+   "upon",
+   "its",
+   "should",
+   "into",
+   "can"
+  ],
+  "test8": {
+   "1": {
+    "favours": "sidney_rigdon",
+    "over": "joseph_smith",
+    "odds": 10.83,
+    "words_used": 6,
+    "table20": {
+     "favours": "sidney_rigdon",
+     "odds": 2623830
+    },
+    "same_direction": true
+   },
+   "2": {
+    "favours": "joseph_smith",
+    "over": "sidney_rigdon",
+    "odds": 75.0,
+    "words_used": 5,
+    "table20": {
+     "favours": "joseph_smith",
+     "odds": 14
+    },
+    "same_direction": true
+   },
+   "3": {
+    "favours": "sidney_rigdon",
+    "over": "joseph_smith",
+    "odds": 9.62,
+    "words_used": 3,
+    "table20": {
+     "favours": "sidney_rigdon",
+     "odds": 10
+    },
+    "same_direction": true
+   },
+   "4": {
+    "favours": "sidney_rigdon",
+    "over": "joseph_smith",
+    "odds": 4.81,
+    "words_used": 5,
+    "table20": {
+     "favours": "joseph_smith",
+     "odds": 13
+    },
+    "same_direction": false
+   },
+   "5": {
+    "favours": "joseph_smith",
+    "over": "sidney_rigdon",
+    "odds": 39.0,
+    "words_used": 5,
+    "table20": {
+     "favours": "joseph_smith",
+     "odds": 556700
+    },
+    "same_direction": true
+   },
+   "6": {
+    "favours": "joseph_smith",
+    "over": "sidney_rigdon",
+    "odds": 39.0,
+    "words_used": 5,
+    "table20": {
+     "favours": "joseph_smith",
+     "odds": 31
+    },
+    "same_direction": true
+   },
+   "7": {
+    "favours": "sidney_rigdon",
+    "over": "joseph_smith",
+    "odds": 7.5,
+    "words_used": 6,
+    "table20": {
+     "favours": "sidney_rigdon",
+     "odds": 7413299
+    },
+    "same_direction": true
+   }
+  },
+  "test8_same_direction_of_7": 6,
+  "reproduced_test1": true,
+  "published": {
+   "test1_table13": {
+    "SR>JS": 291,
+    "SR>PP": 174883,
+    "SR>OC": 1694,
+    "SR>WP": 37154
+   },
+   "test4_table16": {
+    "SR>JS": 206,
+    "SR>PP": 3158452,
+    "SR>OC": 16991,
+    "SR>WP": 85357
+   },
+   "final_table28": {
+    "1": "sidney_rigdon",
+    "2": "sidney_rigdon",
+    "3": "sidney_rigdon",
+    "4": "sidney_rigdon",
+    "5": "joseph_smith",
+    "6": "sidney_rigdon",
+    "7": "sidney_rigdon"
+   }
+  },
+  "known_answer": {
+   "per_man": {
+    "joseph_smith": {
+     "blocks": 4,
+     "pairs": 16,
+     "true_author_wins": 14,
+     "share": 0.875
+    },
+    "sidney_rigdon": {
+     "blocks": 4,
+     "pairs": 16,
+     "true_author_wins": 11,
+     "share": 0.688
+    },
+    "parley_pratt": {
+     "blocks": 4,
+     "pairs": 16,
+     "true_author_wins": 11,
+     "share": 0.688
+    },
+    "oliver_cowdery": {
+     "blocks": 3,
+     "pairs": 12,
+     "true_author_wins": 8,
+     "share": 0.667
+    },
+    "ww_phelps": {
+     "blocks": 4,
+     "pairs": 16,
+     "true_author_wins": 14,
+     "share": 0.875
+    }
+   },
+   "share_all": 0.763,
+   "smith_vs_rigdon": {
+    "blocks": 8,
+    "correct": 8
+   }
+  }
+ },
+ "reynolds": {
+  "corpora": {
+   "rigdon": {
+    "items": [
+     "fc01",
+     "fc02",
+     "fc03",
+     "fc04",
+     "fc05",
+     "fc06",
+     "fc07",
+     "fc08",
+     "fc09",
+     "fc10",
+     "fc11",
+     "fc12",
+     "fc13",
+     "fc14",
+     "fc15",
+     "millennium",
+     "gospel"
+    ],
+    "words": 83298,
+    "count": 135,
+    "rate_per_1000": 1.62,
+    "count_without_broad": 81,
+    "rate_without_broad": 0.97,
+    "phrases_found": 34,
+    "per_phrase": {
+     "sacred_writers": 13,
+     "are_extant": 2,
+     "former_day_saints": 5,
+     "calculated": 1,
+     "clearly_set_forth": 4,
+     "the_historian": 2,
+     "in_the_first_instance": 2,
+     "fishermen_of_galilee": 3,
+     "righteous_abel": 5,
+     "scheme_of_life_and_salvation": 5,
+     "if_the_question_is_asked": 1,
+     "rational_beings": 5,
+     "science": 3,
+     "putting_together": 1,
+     "future_felicity": 1,
+     "seeing_him_invisible": 1,
+     "acceptable_to_god": 5,
+     "ministering_spirits": 1,
+     "life_and_godliness": 5,
+     "mouths_of_lions": 1,
+     "spoiling_of_goods": 2,
+     "need_mistake": 5,
+     "never_had_was": 16,
+     "facts": 19,
+     "plainer_than_this": 2,
+     "no_mistake": 2,
+     "no_doubt": 3,
+     "no_dispute": 0,
+     "candid": 8,
+     "who_cannot_see": 3,
+     "not_to_our_purpose": 1,
+     "let_us_here_observe": 0,
+     "necessary_to_go_back": 1,
+     "belief_in_the_bible": 1,
+     "proceed_to_show": 0,
+     "reader_mark": 0,
+     "reader_reflect": 3,
+     "necessary_to_observe": 3
+    }
+   },
+   "joseph_smith": {
+    "items": [
+     "js-1829-10-22-letter-cowdery.jsonl",
+     "js-1831-03-letter-hyrum.jsonl",
+     "js-1832-06-06-letter-emma.jsonl",
+     "js-1832-07-31-letter-phelps.jsonl",
+     "js-1832-10-13-letter-emma.jsonl",
+     "js-1832-11-27-letter-phelps.jsonl",
+     "js-1833-01-04-letter-saxton.jsonl",
+     "js-1833-01-11-letter-phelps.jsonl",
+     "t73-letter-to-church-leaders-in-jackson-county-missouri-18-augus.jsonl",
+     "t73-note-to-newel-k-whitney-circa-october-1833-early-1834.jsonl",
+     "t73-letter-to-emma-smith-18-may-1834.jsonl",
+     "js-letterbook-1.jsonl",
+     "js-journal-1832-1834.jsonl",
+     "t73-journal-1835-1836.jsonl"
+    ],
+    "words": 96977,
+    "count": 28,
+    "rate_per_1000": 0.29,
+    "count_without_broad": 0,
+    "rate_without_broad": 0.0,
+    "phrases_found": 5,
+    "per_phrase": {
+     "sacred_writers": 0,
+     "are_extant": 0,
+     "former_day_saints": 0,
+     "calculated": 8,
+     "clearly_set_forth": 0,
+     "the_historian": 0,
+     "in_the_first_instance": 0,
+     "fishermen_of_galilee": 0,
+     "righteous_abel": 0,
+     "scheme_of_life_and_salvation": 0,
+     "if_the_question_is_asked": 0,
+     "rational_beings": 0,
+     "science": 1,
+     "putting_together": 0,
+     "future_felicity": 0,
+     "seeing_him_invisible": 0,
+     "acceptable_to_god": 0,
+     "ministering_spirits": 0,
+     "life_and_godliness": 0,
+     "mouths_of_lions": 0,
+     "spoiling_of_goods": 0,
+     "need_mistake": 0,
+     "never_had_was": 2,
+     "facts": 15,
+     "plainer_than_this": 0,
+     "no_mistake": 0,
+     "no_doubt": 0,
+     "no_dispute": 0,
+     "candid": 2,
+     "who_cannot_see": 0,
+     "not_to_our_purpose": 0,
+     "let_us_here_observe": 0,
+     "necessary_to_go_back": 0,
+     "belief_in_the_bible": 0,
+     "proceed_to_show": 0,
+     "reader_mark": 0,
+     "reader_reflect": 0,
+     "necessary_to_observe": 0
+    }
+   },
+   "lectures": {
+    "items": [
+     "lectures_1835_with_catechism"
+    ],
+    "words": 23362,
+    "count": 96,
+    "rate_per_1000": 4.11,
+    "count_without_broad": 71,
+    "rate_without_broad": 3.04,
+    "phrases_found": 27,
+    "per_phrase": {
+     "sacred_writers": 3,
+     "are_extant": 1,
+     "former_day_saints": 10,
+     "calculated": 3,
+     "clearly_set_forth": 1,
+     "the_historian": 1,
+     "in_the_first_instance": 11,
+     "fishermen_of_galilee": 0,
+     "righteous_abel": 1,
+     "scheme_of_life_and_salvation": 1,
+     "if_the_question_is_asked": 1,
+     "rational_beings": 7,
+     "science": 4,
+     "putting_together": 0,
+     "future_felicity": 0,
+     "seeing_him_invisible": 3,
+     "acceptable_to_god": 1,
+     "ministering_spirits": 2,
+     "life_and_godliness": 7,
+     "mouths_of_lions": 2,
+     "spoiling_of_goods": 2,
+     "need_mistake": 0,
+     "never_had_was": 0,
+     "facts": 10,
+     "plainer_than_this": 1,
+     "no_mistake": 1,
+     "no_doubt": 0,
+     "no_dispute": 1,
+     "candid": 0,
+     "who_cannot_see": 4,
+     "not_to_our_purpose": 0,
+     "let_us_here_observe": 5,
+     "necessary_to_go_back": 2,
+     "belief_in_the_bible": 0,
+     "proceed_to_show": 5,
+     "reader_mark": 0,
+     "reader_reflect": 0,
+     "necessary_to_observe": 6
+    }
+   },
+   "oliver_cowdery": {
+    "items": [
+     "oc01",
+     "oc02",
+     "oc03",
+     "oc04",
+     "oc06",
+     "oc07",
+     "oc05",
+     "oc08"
+    ],
+    "words": 22346,
+    "count": 34,
+    "rate_per_1000": 1.52,
+    "count_without_broad": 3,
+    "rate_without_broad": 0.13,
+    "phrases_found": 7,
+    "per_phrase": {
+     "sacred_writers": 0,
+     "are_extant": 0,
+     "former_day_saints": 0,
+     "calculated": 3,
+     "clearly_set_forth": 1,
+     "the_historian": 0,
+     "in_the_first_instance": 0,
+     "fishermen_of_galilee": 0,
+     "righteous_abel": 0,
+     "scheme_of_life_and_salvation": 0,
+     "if_the_question_is_asked": 0,
+     "rational_beings": 0,
+     "science": 0,
+     "putting_together": 0,
+     "future_felicity": 0,
+     "seeing_him_invisible": 0,
+     "acceptable_to_god": 0,
+     "ministering_spirits": 0,
+     "life_and_godliness": 0,
+     "mouths_of_lions": 0,
+     "spoiling_of_goods": 0,
+     "need_mistake": 0,
+     "never_had_was": 1,
+     "facts": 26,
+     "plainer_than_this": 0,
+     "no_mistake": 0,
+     "no_doubt": 1,
+     "no_dispute": 0,
+     "candid": 1,
+     "who_cannot_see": 0,
+     "not_to_our_purpose": 0,
+     "let_us_here_observe": 0,
+     "necessary_to_go_back": 0,
+     "belief_in_the_bible": 0,
+     "proceed_to_show": 0,
+     "reader_mark": 0,
+     "reader_reflect": 0,
+     "necessary_to_observe": 1
+    }
+   },
+   "ww_phelps": {
+    "items": [
+     "wp_to_man",
+     "wp04",
+     "wp08",
+     "wp_saints",
+     "wp09",
+     "wp10",
+     "wp11",
+     "wp12",
+     "wp2s01",
+     "wp01",
+     "wp02",
+     "wp03",
+     "wp05",
+     "wp06",
+     "wp07"
+    ],
+    "words": 26312,
+    "count": 22,
+    "rate_per_1000": 0.84,
+    "count_without_broad": 3,
+    "rate_without_broad": 0.11,
+    "phrases_found": 6,
+    "per_phrase": {
+     "sacred_writers": 0,
+     "are_extant": 0,
+     "former_day_saints": 2,
+     "calculated": 2,
+     "clearly_set_forth": 0,
+     "the_historian": 0,
+     "in_the_first_instance": 0,
+     "fishermen_of_galilee": 0,
+     "righteous_abel": 0,
+     "scheme_of_life_and_salvation": 0,
+     "if_the_question_is_asked": 0,
+     "rational_beings": 0,
+     "science": 0,
+     "putting_together": 0,
+     "future_felicity": 0,
+     "seeing_him_invisible": 0,
+     "acceptable_to_god": 0,
+     "ministering_spirits": 0,
+     "life_and_godliness": 0,
+     "mouths_of_lions": 0,
+     "spoiling_of_goods": 0,
+     "need_mistake": 1,
+     "never_had_was": 3,
+     "facts": 12,
+     "plainer_than_this": 0,
+     "no_mistake": 0,
+     "no_doubt": 0,
+     "no_dispute": 0,
+     "candid": 2,
+     "who_cannot_see": 0,
+     "not_to_our_purpose": 0,
+     "let_us_here_observe": 0,
+     "necessary_to_go_back": 0,
+     "belief_in_the_bible": 0,
+     "proceed_to_show": 0,
+     "reader_mark": 0,
+     "reader_reflect": 0,
+     "necessary_to_observe": 0
+    }
+   },
+   "parley_pratt": {
+    "items": [
+     "voice_of_warning_1837"
+    ],
+    "words": 50696,
+    "count": 25,
+    "rate_per_1000": 0.49,
+    "count_without_broad": 5,
+    "rate_without_broad": 0.1,
+    "phrases_found": 8,
+    "per_phrase": {
+     "sacred_writers": 0,
+     "are_extant": 0,
+     "former_day_saints": 0,
+     "calculated": 6,
+     "clearly_set_forth": 1,
+     "the_historian": 0,
+     "in_the_first_instance": 1,
+     "fishermen_of_galilee": 0,
+     "righteous_abel": 0,
+     "scheme_of_life_and_salvation": 0,
+     "if_the_question_is_asked": 0,
+     "rational_beings": 0,
+     "science": 0,
+     "putting_together": 0,
+     "future_felicity": 0,
+     "seeing_him_invisible": 0,
+     "acceptable_to_god": 0,
+     "ministering_spirits": 0,
+     "life_and_godliness": 0,
+     "mouths_of_lions": 0,
+     "spoiling_of_goods": 1,
+     "need_mistake": 1,
+     "never_had_was": 2,
+     "facts": 12,
+     "plainer_than_this": 0,
+     "no_mistake": 0,
+     "no_doubt": 0,
+     "no_dispute": 0,
+     "candid": 0,
+     "who_cannot_see": 0,
+     "not_to_our_purpose": 0,
+     "let_us_here_observe": 0,
+     "necessary_to_go_back": 0,
+     "belief_in_the_bible": 0,
+     "proceed_to_show": 1,
+     "reader_mark": 0,
+     "reader_reflect": 0,
+     "necessary_to_observe": 0
+    }
+   }
+  },
+  "published": {
+   "rigdon": {
+    "count": 163,
+    "words": 77013,
+    "rate": 2.1
+   },
+   "lectures": {
+    "count": 98,
+    "words": 23750,
+    "rate": 4.1
+   },
+   "joseph_smith": {
+    "count": 0,
+    "words": 78587,
+    "rate": 0.0
+   }
+  },
+  "reproduced": false,
+  "control": {
+   "oliver_cowdery": {
+    "share_of_rigdon_rate": 0.94,
+    "share_of_rigdon_rate_without_broad": 0.13
+   },
+   "ww_phelps": {
+    "share_of_rigdon_rate": 0.52,
+    "share_of_rigdon_rate_without_broad": 0.11
+   },
+   "parley_pratt": {
+    "share_of_rigdon_rate": 0.3,
+    "share_of_rigdon_rate_without_broad": 0.1
+   }
+  },
+  "control_reaches_share": true,
+  "broad_phrases": [
+   "are_extant",
+   "calculated",
+   "candid",
+   "facts",
+   "never_had_was",
+   "rational_beings",
+   "science"
+  ]
+ },
+ "config_sha256": "7a654e58bff4404f232a8fc65ab4ed452b230acdc9b8caf540e62bc3a3faac05",
+ "commit": "6a1f1368fed288e81f4cf1104b61179f170255e2"
+}
