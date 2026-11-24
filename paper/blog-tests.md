@@ -124,7 +124,7 @@ compares against.
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
 | BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions; second design on real terrain | **Both designs' checks failed; not scored on fit; consistency cannot be compared (invented stories state too little geography)** |
-| BOM-117 | Uto-Aztecan languages carry Hebrew and Egyptian words | Stubbs 2015 | his pairing alone | his sets checked against his own rules; word lists against unrelated and borrowing pairs | **Yaqui-Coptic: no layer of the claimed size; the rest cannot tell** |
+| BOM-117 | Uto-Aztecan languages carry Hebrew and Egyptian words | Stubbs 2015 | his pairing alone | his sets checked against his own rules and his 2011 vocabulary; his rules on 8 languages that never met; word lists against unrelated and borrowing pairs | **Yaqui-Coptic: no layer of the claimed size; his rules find Biblical Hebrew no more than unrelated languages; a Modern Hebrew lead** |
 
 ## Results so far
 
@@ -2760,17 +2760,7 @@ the comparative method was not properly applied and that matches this loose turn
 Nobody, as far as I could find, had asked the question every linguist asks first: how many matches
 like these turn up between languages that never met?
 
-**Their way first.** The 2015 book is posted free for private reading, so I could check it his way.
-I drew 150 of his sets at random and had a program read them against his own table. 71 were laid out
-clearly enough for a program to read. Of those, 41 follow his table at every consonant, and 62 at the
-first one.
 
-Then a harder question, still on his terms. For the same Uto-Aztecan word, how many *other* Hebrew or
-Coptic dictionary words would pass the same rules? On sound alone, a median of 44. Once the meaning
-has to be at least as close as his, a median of 1. For 34 of the 71 there was no other candidate as
-good. So his meanings do real work. The sound rules alone are loose. This is all by rule. Nobody has
-read the 150 sets by hand, and the other 79 sets went into questions for a model reader, not yet run.
-His 2011 dictionary and his *Changes in Languages* are not replicated until bought.
 
 **What I tried.** The test linguists use, Kessler's. Turn each word into its broad consonant class.
 Count how often the classes line up across shared meanings. Then shuffle the meanings 10,000 times
@@ -2821,9 +2811,88 @@ overstates how well the test would find real ones. Coptic is also only a stand-i
 result would not have said who, when, or by what route. For the other eleven, the honest answer is
 that open word lists this short cannot settle the claim either way.
 
-**What's left.** The prepared model questions on his sets and on the word matching. A Yaqui-only
-count of his sets, and fake loans planted at that size. A check that works on 40-word lists. His 2011
-and popular books, when bought.
+**What's left.**" paragraph of
+`### Hebrew and Egyptian in the Uto-Aztecan languages (BOM-117)` in `paper/blog-tests.md`. The
+other paragraphs (claim, what I tried, the check, it mostly failed, result, what it means) can
+stay; one sentence in the claim paragraph may want a touch (see NOTES 1).
+
+---
+
+**Their way first.** Stubbs wrote two books that matter here, and I now have both.
+
+The first is his life's work on the family itself: *Uto-Aztecan: A Comparative Vocabulary*. It
+came out in 2011. The copy I bought is the revised online edition from 2020, so that is the one I
+am describing. It has nothing about Hebrew or Egypt in it. It is the ordinary linguist's job: about
+2,700 numbered sets, each one a reconstructed ancestor word (Proto-Uto-Aztecan) with the words in
+the daughter languages that come from it, and a table of which sound in the ancestor becomes which
+sound in Hopi, Yaqui, Nahuatl and the rest. He is careful in it. He says a set found in only one
+branch of the family "can hardly be considered" an ancestor word until another branch turns up
+(p. 1). He marks his own doubt in numbers: probable is 60-99%, possible 20-60%, less likely under
+20% (p. 2). And he lists the ancestor's consonants he thinks are mostly secure: thirteen of them
+(p. 12).
+
+The second is the 2015 book, which is posted free for private reading. That is where the roughly
+1,500 Hebrew, Aramaic and Egyptian sets are, with their own table of sound rules: this Hebrew sound
+becomes that Uto-Aztecan sound. The 2015 sets point back to the vocabulary by number. 1,068 of the
+1,522 sets I found cite at least one vocabulary set, 1,126 different ones in all. So the vocabulary
+is the ground the Near Eastern claims stand on, and I could check the claims against it.
+
+I did it his way, in three steps.
+
+First, the 2015 book alone. I drew 150 of his sets at random and had a program read them against
+his 2015 table. 71 were laid out clearly enough for a program to read. Of those, 41 follow his
+table at every consonant, and 62 at the first one. Then a harder question, still on his terms: for
+the same Uto-Aztecan word, how many *other* Hebrew or Coptic dictionary words would pass the same
+rules? On sound alone, a median of 44. Once the meaning has to be at least as close as his, a
+median of 1, and for 34 of the 71 there was no other candidate as good. So his meanings do real
+work. The sound rules alone are loose.
+
+Second, the same sets against his own vocabulary. About one in five of the vocabulary sets that
+the 2015 claims cite is found in only one branch of the family (19.4%, against 26.1% across the
+whole vocabulary). By his own rule in the vocabulary, those are not yet ancestor words. His 2015
+table also sends some Hebrew sounds to b, q and ŋ. None of those is among his own thirteen ancestor
+consonants; in his vocabulary they turn up only in particular daughter languages. And when I swapped
+in the vocabulary's own reconstruction for the form the 2015 book compares, fewer sets followed his
+2015 table, not more: 25 of 56, against 30 of the same 56 with the 2015 forms. 38 of the 71 use the
+vocabulary's headword form as it stands. The rest use a different form.
+
+Third, the test his rules had never had. I took every ancestor word in the vocabulary that has a
+meaning I could match to a standard word list. That came to 1,888 pairs. Then I asked how often his
+2015 rules turn up a Hebrew word of the same meaning. And, the part nobody had done, how often the
+same rules turn up a Finnish, Japanese, Tamil, Basque, Georgian, Hungarian, Korean or Quechua word
+of the same meaning. These eight languages never met Uto-Aztecan. Each language was also compared
+against itself with the meanings shuffled 10,000 times, because a language with lots of p's and
+t's passes loose rules more often for no reason at all.
+
+| List | Rules | Matches on the same meaning | With meanings shuffled | p |
+| --- | --- | --- | --- | --- |
+| Biblical Hebrew (Strong's), the one I picked in advance | his Semitic | 4.4% | 3.8% | 0.076 |
+| Modern Hebrew (a standard word list) | his Semitic | 4.1% | 2.2% | 0.0002 |
+| Arabic | his Semitic | 4.4% | 3.4% | 0.018 |
+| Eight languages that never met Uto-Aztecan | his Semitic | 1.2% to 4.2% | | 0.064 to 0.85 |
+| Coptic (late Egyptian), picked in advance | his Egyptian | 1.7% | 1.5% | 0.25 |
+| The same eight | his Egyptian | 0.2% to 2.3% | | 0.060 to 0.80 |
+
+By the rule I wrote down before running it, the answer is that his rules find look-alikes in
+languages that never met Uto-Aztecan about as often as in Hebrew. Biblical Hebrew came out 0.58
+points above its shuffled self. The best of the eight controls came out 0.56 points above its own.
+That is a tie. Coptic showed nothing. None of the eight controls reached the bar either.
+
+But one thing did not come out flat. The Modern Hebrew list stands out: 1.9 points above its
+shuffled self, more than three times the best control, at p = 0.0002. Arabic leans the same way.
+I only looked closely at this after I saw the numbers, so it counts for less, and what I saw cuts
+both ways. Several of the matches are loose. One Hebrew word for "like" passes against four
+different Uto-Aztecan "like" sets. Most of the gap comes from Modern Hebrew's low shuffled rate,
+not from a high match rate. And my copy of the vocabulary is the 2020 revision, made after the
+2015 book, so some of its reconstructions may already lean toward the Semitic reading. It is a lead,
+not a finding. All of this is by rule; nobody has read the sets by hand.
+
+**What's left.** The model questions already prepared on his sets and on the word matching (a
+model reading, simulated; one batch is running now). For the Modern Hebrew lead, a rerun with one
+pair per meaning and only sets found in two or more branches, stated before it runs. The 2011
+printing's reconstructions, from before the 2015 book, if I can get a copy. A Yaqui-only count of
+his sets, with fake loans planted at that size. A check that works on 40-word lists. *Changes in
+Languages* is not replicated until bought.
 
 ## What I would want a reader to take from the whole set
 
