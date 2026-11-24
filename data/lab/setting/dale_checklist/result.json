@@ -818,5 +818,85 @@
   "second_reader": "opus",
   "labelled": "simulated judging by an AI model (not run)",
   "config_sha256": "3cad8f579f8531b8fe9917a2f84202056f7bfc26674b7b0d11236385a2f9dd99"
+ },
+ "check_c_third_design": {
+  "design": "third (whole-book reading; post hoc)",
+  "questions": 92,
+  "positive": {
+   "items": 131,
+   "supports": 107,
+   "share": 0.817,
+   "bar": 0.75,
+   "met": true
+  },
+  "negative": {
+   "items": 18,
+   "supports": 18,
+   "share": 1.0,
+   "bar": 0.75,
+   "met": true
+  },
+  "decoys": {
+   "items": 20,
+   "supported": [],
+   "rejection": 1.0,
+   "bar": 0.9,
+   "met": true
+  },
+  "second_reader": {
+   "units": 447,
+   "reader_supports": 56,
+   "second_reader_supports": 54,
+   "agree": 421,
+   "kappa": 0.73,
+   "decoy_supports": {
+    "reader": 0,
+    "second_reader": 0,
+    "units": 60
+   },
+   "bar": 0.6,
+   "met": true,
+   "models": {
+    "reader": [
+     "sonnet"
+    ],
+    "second_reader": [
+     "opus"
+    ]
+   }
+  },
+  "passed": true,
+  "not_supported": [
+   "A:1.1",
+   "A:1.14",
+   "A:1.17",
+   "A:1.21",
+   "A:1.29",
+   "A:1.30",
+   "A:1.31",
+   "A:2.18",
+   "A:2.2",
+   "A:2.22",
+   "A:2.25",
+   "A:2.26",
+   "A:2.5",
+   "A:2.6",
+   "A:3.15",
+   "A:3.17",
+   "A:3.18",
+   "A:3.3",
+   "A:3.6",
+   "A:5.1",
+   "A:5.2",
+   "A:5.8",
+   "A:6.20",
+   "A:6.3"
+  ],
+  "supported_and_contradicted": [
+   "A:2.13"
+  ],
+  "rule": "an item is supported in a text if any section says SUPPORTS; a CONTRADICTS in another section is reported beside it and does not cancel it; NOT_ADDRESSED everywhere is not supported. Without the Bible-quotation chapters (Book of Mormon only): a supported item counts if any supporting location's words are found in the text without those chapters; words found nowhere are reported as unlocated and not counted",
+  "label": "simulated judging by an AI model",
+  "config_sha256": "16c0ce501b381fda8e9e1e2d6279c76d129dec4adf4f6ddc8bbb199c3b104b9d"
  }
 }

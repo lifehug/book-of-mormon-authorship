@@ -119,7 +119,7 @@ compares against.
 | BOM-108 | The names are Hebrew, or Egyptian, or invented | Tvedtnes and others; Wilcox 2013, 2019 | 124 names against census names, Spalding, Tolkien | Hebrew inscriptions, Egyptian, Maya, Nahuatl, treaty signers, period print, four inventing authors | **Done**, with a limit |
 | BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | **Done** |
 | BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | **Done** |
-| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; reader's check missed, controls not judged**; BOM-109 **both designs' checks failed; not scored** |
+| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; third design's reader check passed (107 of 131, decoys 0 of 20, kappa 0.73); controls queued**; BOM-109 **both designs' checks failed; not scored** |
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | **Done: holds only loosely (31% strict, 85% loose); the controls match it loosely** |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
@@ -2423,8 +2423,21 @@ may accept at most 2 of the 20, anywhere. And a second, stronger model rereads t
 the two readers have to agree well beyond chance. The bars for the Book of Mormon are unchanged.
 The controls are read only if all of that passes.
 
-**The result so far.** The arithmetic is done and reproduced. The third design is built and its
-104 check questions are in the queue. Nothing in it has been asked yet. In progress.
+**The check, third time: passed.** The model read the whole book, all 23 sections, against every
+item (simulated judging; a second, stronger model reread three sections). It found 107 of the Dales'
+131 items, 82 percent, against a bar of 75. It found all 18 of the items Coe and the Dales agree are
+absent as absent, which here means the reader saw the book's own statements that they are not there.
+It accepted none of the 20 made-up items, against an allowance of 2. And the two readers agreed on
+421 of 447 section-and-item pairs, a kappa of 0.73 against a bar of 0.6. Neither reader accepted a
+made-up item in any of the 60 places it was asked.
+
+Because this is the third design, and the last two changes came after seeing results, a pass counts
+for less than a first-time pass would. One item, A:2.13, is read as supported in one section and
+contradicted in another; by the rule written beforehand the support stands and the contradiction is
+reported beside it.
+
+**The result so far.** The arithmetic is done and reproduced. The check passed, so the six control
+books (244 questions) are queued now. In progress.
 
 **What it means, and what it doesn't.** So far, only that the headline is fragile: it turns on
 how you weight and group the items, and nobody can settle that by arithmetic. Nothing yet on
@@ -2433,7 +2446,7 @@ measures how easy it is to match. If they match far less, the Dales' list picks 
 real about this book. Neither is known yet. Coe's book itself was not read, so whether each item
 is a fair reading of Coe is untested.
 
-**What's left.** The third design's check, then the six controls (244 questions) if it passes. A
+**What's left, in progress.** The six controls, read the same way (queued). A
 second coder for the Bible-world field. A checklist drawn from ancient Israel, run the same way.
 
 ### The anachronism tally (BOM-113)
