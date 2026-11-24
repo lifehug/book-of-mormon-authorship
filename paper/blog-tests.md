@@ -120,7 +120,7 @@ compares against.
 | BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | **Done** |
 | BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | **Done** |
 | BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; reader's check missed, controls not judged**; BOM-109 **both designs' checks failed; not scored** |
-| BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | **Counts done; reader's check passed; reading queued** |
+| BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | **Done: holds only loosely (31% strict, 85% loose); the controls match it loosely** |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
 | BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions; second design on real terrain | **Both designs' checks failed; not scored on fit; consistency cannot be compared (invented stories state too little geography)** |
@@ -2441,14 +2441,66 @@ asked twice: once against Mesoamerica, as first written, and once against each b
 region and period. Both are reported side by side, and neither replaces the other. That was settled
 before any control answer existed.
 
-**What it means, and what it doesn't.** So far: his list is real and mostly holds as a list. My
-easy explanation for it failed. The items tied to the New World are the thin ones, on 40 items. And
-books of the 1800s set in antiquity carry a third to over half of the same things. Nobody, Roper
-included, has yet made the comparison that would say what a 77 percent confirmation rate means.
+**The result, part three: the reading.** A model (sonnet) read every item in the passages where
+the book uses it, and said where and when that thing is attested: in Mesoamerica in the book's
+period, in the Americas at another time or place, only in the Old World, nowhere, or that the
+question does not apply. It also said yes or no to a looser question: is it attested anywhere
+before the book's period ends, in any sense of the word? That is simulated judging, all 227 items,
+and every answer was read. One control answer gave two different codes in the same reply, so I
+threw it out and asked again before scoring.
 
-**What's left.** The reading is queued: his 227 items on the book, then 209 control-book things,
-then the same 209 against their own regions. Then the scoring. Then a person's check of a sample of
-the codes. In progress.
+| Roper's items | Mesoamerica, in period (strict) | Attested somewhere, some sense (loose) |
+| --- | --- | --- |
+| The 175 he calls confirmed | 54 (31%) | 148 (85%) |
+| The 31 he calls partly confirmed | 2 (6%) | 19 (61%) |
+| The 21 he calls not confirmed | 0 | 14 (67%) |
+
+By the rule I wrote down, his tally **holds only under the loose rule**: 85 percent of his
+confirmed items pass that, but only 31 percent pass the strict one, far below the three quarters I
+set. The most common code for his confirmed items is "Old World only" (60 of 175), and 39 more are
+coded as not that kind of thing at all, mostly names and phrases. And the loose rule is generous: it passes two thirds of the items Roper himself calls not
+confirmed.
+
+By topic the pattern is plain. Animals: 28 of 28 pass loosely, 3 strictly. Metals: 16 of 16
+loosely, none strictly. Customs and "other" things do best on the strict rule (41 and 33 percent).
+By when the criticism was first raised, the newest ones are confirmed most, as Roper says: 93
+percent loosely and 37 percent strictly for items first raised after 1965, against 72 and 24
+percent for those raised by 1844. (The newest group is found by elimination from his charts, so
+take its edges loosely.)
+
+**The result, part four: the controls, read the same way.** The same reader coded 209 things from
+five books of the 1800s set in antiquity. Each is compared with the book's 144 countable items:
+20 percent strict, 82 percent loose.
+
+| Control book | Loose, book's scale | Strict, Mesoamerica | Strict, its own claimed region |
+| --- | --- | --- | --- |
+| Spalding's manuscript (named in advance) | 89%, same | 32%, same | 30%, same |
+| Mathews, *Behemoth* | 93%, same | 35%, higher | 40%, higher |
+| Hale, *Genius of Oblivion* | 80%, same | 20%, same | 33%, same |
+| *Chronicles of Eri* | 91%, same | (not set in the Americas) | 61%, higher |
+| *Book of Jasher* | 83%, same | (not set in the Americas) | 76%, higher |
+
+"Same" means Fisher's test finds no difference at the 0.05 level. Under the loose rule every control
+book is confirmed as often as the Book of Mormon. Spalding, the control I named in advance, comes
+out at 89 percent against the book's 82. On the strict rules the controls are as good or better:
+the two Old World books do much better on their own region, because swords, kings and goats really
+are attested in ancient Ireland and Israel. Asking the controls both ways, as Dave chose, made no
+difference to the answer on Spalding.
+
+**What it means, and what it doesn't.** Roper's list is real, and his trend is real in this
+reading too: the later criticisms are the ones most often met. But "confirmed" in his sense is
+mostly the loose kind: a thing attested somewhere, or in some sense of the word. Only about a third
+of his confirmed items are attested in Mesoamerica in the book's period. And the loose kind of
+confirmation comes just as easily to books written in the 1800s and set in antiquity: Spalding's
+story gets it as often as the Book of Mormon does. So a high confirmation rate of that kind does
+not tell an ancient record from a modern one. It cuts both ways. It does not count against the
+book either: by the same reading, the Book of Mormon has no more out-of-place things than the
+controls, and 54 of Roper's items do meet the strict test. What this test removes is the tally as
+evidence either way. A model read every item; a person has not checked them.
+
+**What's left.** A person's check of a sample of the codes, especially the "Old World only" ones and
+the generous loose yeses. The strict rule against other proposed settings for the book (the Great
+Lakes, Baja), which would need their own questions.
 
 ### Where the three worlds disagree (BOM-109)
 

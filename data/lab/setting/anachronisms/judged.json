@@ -1,0 +1,3432 @@
+{
+ "label": "simulated judging by an AI model (sonnet)",
+ "answers": {
+  "known": {
+   "jobs": 12,
+   "answered": 12,
+   "open": 0,
+   "unreadable": []
+  },
+  "bom": {
+   "jobs": 227,
+   "answered": 227,
+   "open": 0,
+   "unreadable": []
+  },
+  "control": {
+   "jobs": 209,
+   "answered": 209,
+   "open": 0,
+   "unreadable": []
+  },
+  "control_own": {
+   "jobs": 209,
+   "answered": 209,
+   "open": 0,
+   "unreadable": []
+  }
+ },
+ "known": {
+  "matched": 12,
+  "of": 12,
+  "bar": 0.9,
+  "passed": true
+ },
+ "settings": {
+  "strict_code": "mesoamerica_in_period",
+  "strict_code_own": "region_in_period",
+  "holds_bar": 0.75,
+  "strict_defined_for": [
+   "book_of_mormon",
+   "ss-manuscript-story-1885",
+   "mathews_behemoth_1839",
+   "hale_genius_of_oblivion_1823"
+  ],
+  "compare_book_items": "countable"
+ },
+ "book_of_mormon": {
+  "all_items": {
+   "all": {
+    "n": 227,
+    "codes": {
+     "mesoamerica_in_period": 56,
+     "americas_other_time_or_place": 17,
+     "old_world_only": 85,
+     "not_attested": 17,
+     "not_applicable": 52
+    },
+    "strict_confirmed": 56,
+    "strict_share": 0.247,
+    "loose_confirmed": 181,
+    "loose_share": 0.797
+   },
+   "roper_confirmed": {
+    "n": 175,
+    "codes": {
+     "mesoamerica_in_period": 54,
+     "americas_other_time_or_place": 13,
+     "old_world_only": 60,
+     "not_attested": 9,
+     "not_applicable": 39
+    },
+    "strict_confirmed": 54,
+    "strict_share": 0.309,
+    "loose_confirmed": 148,
+    "loose_share": 0.846
+   },
+   "bar": 0.75,
+   "verdict": "holds only under the loose rule",
+   "by_roper_status": {
+    "confirmed": {
+     "n": 175,
+     "codes": {
+      "mesoamerica_in_period": 54,
+      "americas_other_time_or_place": 13,
+      "old_world_only": 60,
+      "not_attested": 9,
+      "not_applicable": 39
+     },
+     "strict_confirmed": 54,
+     "strict_share": 0.309,
+     "loose_confirmed": 148,
+     "loose_share": 0.846
+    },
+    "partial": {
+     "n": 31,
+     "codes": {
+      "mesoamerica_in_period": 2,
+      "americas_other_time_or_place": 4,
+      "old_world_only": 12,
+      "not_attested": 5,
+      "not_applicable": 8
+     },
+     "strict_confirmed": 2,
+     "strict_share": 0.065,
+     "loose_confirmed": 19,
+     "loose_share": 0.613
+    },
+    "unconfirmed": {
+     "n": 21,
+     "codes": {
+      "mesoamerica_in_period": 0,
+      "americas_other_time_or_place": 0,
+      "old_world_only": 13,
+      "not_attested": 3,
+      "not_applicable": 5
+     },
+     "strict_confirmed": 0,
+     "strict_share": 0.0,
+     "loose_confirmed": 14,
+     "loose_share": 0.667
+    }
+   }
+  },
+  "without_items_only_in_quoted_chapters": {
+   "all": {
+    "n": 225,
+    "codes": {
+     "mesoamerica_in_period": 56,
+     "americas_other_time_or_place": 17,
+     "old_world_only": 83,
+     "not_attested": 17,
+     "not_applicable": 52
+    },
+    "strict_confirmed": 56,
+    "strict_share": 0.249,
+    "loose_confirmed": 179,
+    "loose_share": 0.796
+   },
+   "roper_confirmed": {
+    "n": 173,
+    "codes": {
+     "mesoamerica_in_period": 54,
+     "americas_other_time_or_place": 13,
+     "old_world_only": 58,
+     "not_attested": 9,
+     "not_applicable": 39
+    },
+    "strict_confirmed": 54,
+    "strict_share": 0.312,
+    "loose_confirmed": 146,
+    "loose_share": 0.844
+   },
+   "bar": 0.75,
+   "verdict": "holds only under the loose rule",
+   "by_roper_status": {
+    "confirmed": {
+     "n": 173,
+     "codes": {
+      "mesoamerica_in_period": 54,
+      "americas_other_time_or_place": 13,
+      "old_world_only": 58,
+      "not_attested": 9,
+      "not_applicable": 39
+     },
+     "strict_confirmed": 54,
+     "strict_share": 0.312,
+     "loose_confirmed": 146,
+     "loose_share": 0.844
+    },
+    "partial": {
+     "n": 31,
+     "codes": {
+      "mesoamerica_in_period": 2,
+      "americas_other_time_or_place": 4,
+      "old_world_only": 12,
+      "not_attested": 5,
+      "not_applicable": 8
+     },
+     "strict_confirmed": 2,
+     "strict_share": 0.065,
+     "loose_confirmed": 19,
+     "loose_share": 0.613
+    },
+    "unconfirmed": {
+     "n": 21,
+     "codes": {
+      "mesoamerica_in_period": 0,
+      "americas_other_time_or_place": 0,
+      "old_world_only": 13,
+      "not_attested": 3,
+      "not_applicable": 5
+     },
+     "strict_confirmed": 0,
+     "strict_share": 0.0,
+     "loose_confirmed": 14,
+     "loose_share": 0.667
+    }
+   }
+  },
+  "by_era_first_raised": {
+   "1830-1844": {
+    "n": 101,
+    "codes": {
+     "mesoamerica_in_period": 24,
+     "americas_other_time_or_place": 3,
+     "old_world_only": 34,
+     "not_attested": 9,
+     "not_applicable": 31
+    },
+    "strict_confirmed": 24,
+    "strict_share": 0.238,
+    "loose_confirmed": 73,
+    "loose_share": 0.723,
+    "roper_confirmed": 75
+   },
+   "1845-1965": {
+    "n": 66,
+    "codes": {
+     "mesoamerica_in_period": 10,
+     "americas_other_time_or_place": 9,
+     "old_world_only": 28,
+     "not_attested": 6,
+     "not_applicable": 13
+    },
+    "strict_confirmed": 10,
+    "strict_share": 0.152,
+    "loose_confirmed": 52,
+    "loose_share": 0.788,
+    "roper_confirmed": 48
+   },
+   "1966-2024 (by elimination: absent from figures 64-67)": {
+    "n": 60,
+    "codes": {
+     "mesoamerica_in_period": 22,
+     "americas_other_time_or_place": 5,
+     "old_world_only": 23,
+     "not_attested": 2,
+     "not_applicable": 8
+    },
+    "strict_confirmed": 22,
+    "strict_share": 0.367,
+    "loose_confirmed": 56,
+    "loose_share": 0.933,
+    "roper_confirmed": 52
+   }
+  },
+  "by_category": {
+   "animal": {
+    "n": 28,
+    "codes": {
+     "mesoamerica_in_period": 3,
+     "americas_other_time_or_place": 7,
+     "old_world_only": 15,
+     "not_attested": 0,
+     "not_applicable": 3
+    },
+    "strict_confirmed": 3,
+    "strict_share": 0.107,
+    "loose_confirmed": 28,
+    "loose_share": 1.0
+   },
+   "custom": {
+    "n": 27,
+    "codes": {
+     "mesoamerica_in_period": 11,
+     "americas_other_time_or_place": 1,
+     "old_world_only": 8,
+     "not_attested": 0,
+     "not_applicable": 7
+    },
+    "strict_confirmed": 11,
+    "strict_share": 0.407,
+    "loose_confirmed": 21,
+    "loose_share": 0.778
+   },
+   "metal": {
+    "n": 16,
+    "codes": {
+     "mesoamerica_in_period": 0,
+     "americas_other_time_or_place": 3,
+     "old_world_only": 10,
+     "not_attested": 0,
+     "not_applicable": 3
+    },
+    "strict_confirmed": 0,
+    "strict_share": 0.0,
+    "loose_confirmed": 16,
+    "loose_share": 1.0
+   },
+   "name": {
+    "n": 34,
+    "codes": {
+     "mesoamerica_in_period": 0,
+     "americas_other_time_or_place": 0,
+     "old_world_only": 9,
+     "not_attested": 8,
+     "not_applicable": 17
+    },
+    "strict_confirmed": 0,
+    "strict_share": 0.0,
+    "loose_confirmed": 9,
+    "loose_share": 0.265
+   },
+   "other": {
+    "n": 40,
+    "codes": {
+     "mesoamerica_in_period": 13,
+     "americas_other_time_or_place": 1,
+     "old_world_only": 4,
+     "not_attested": 5,
+     "not_applicable": 17
+    },
+    "strict_confirmed": 13,
+    "strict_share": 0.325,
+    "loose_confirmed": 29,
+    "loose_share": 0.725
+   },
+   "plant": {
+    "n": 6,
+    "codes": {
+     "mesoamerica_in_period": 2,
+     "americas_other_time_or_place": 1,
+     "old_world_only": 3,
+     "not_attested": 0,
+     "not_applicable": 0
+    },
+    "strict_confirmed": 2,
+    "strict_share": 0.333,
+    "loose_confirmed": 6,
+    "loose_share": 1.0
+   },
+   "technology": {
+    "n": 15,
+    "codes": {
+     "mesoamerica_in_period": 7,
+     "americas_other_time_or_place": 0,
+     "old_world_only": 8,
+     "not_attested": 0,
+     "not_applicable": 0
+    },
+    "strict_confirmed": 7,
+    "strict_share": 0.467,
+    "loose_confirmed": 15,
+    "loose_share": 1.0
+   },
+   "textile": {
+    "n": 3,
+    "codes": {
+     "mesoamerica_in_period": 1,
+     "americas_other_time_or_place": 0,
+     "old_world_only": 2,
+     "not_attested": 0,
+     "not_applicable": 0
+    },
+    "strict_confirmed": 1,
+    "strict_share": 0.333,
+    "loose_confirmed": 3,
+    "loose_share": 1.0
+   },
+   "warfare": {
+    "n": 39,
+    "codes": {
+     "mesoamerica_in_period": 16,
+     "americas_other_time_or_place": 4,
+     "old_world_only": 12,
+     "not_attested": 2,
+     "not_applicable": 5
+    },
+    "strict_confirmed": 16,
+    "strict_share": 0.41,
+    "loose_confirmed": 37,
+    "loose_share": 0.949
+   },
+   "writing": {
+    "n": 19,
+    "codes": {
+     "mesoamerica_in_period": 3,
+     "americas_other_time_or_place": 0,
+     "old_world_only": 14,
+     "not_attested": 2,
+     "not_applicable": 0
+    },
+    "strict_confirmed": 3,
+    "strict_share": 0.158,
+    "loose_confirmed": 17,
+    "loose_share": 0.895
+   }
+  },
+  "loose_against_roper": {
+   "confirmed": {
+    "loose_yes": 148,
+    "items": 175
+   },
+   "partial": {
+    "loose_yes": 19,
+    "items": 31
+   },
+   "unconfirmed": {
+    "loose_yes": 14,
+    "items": 21
+   }
+  },
+  "items": {
+   "roper_001": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_002": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_003": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_004": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_005": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_006": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_007": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_008": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_009": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_010": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_011": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_012": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_013": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_014": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_015": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_016": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_017": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_018": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_019": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_020": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_021": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_022": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_023": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_024": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_025": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_026": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_027": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_028": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_029": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_030": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_031": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_032": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_033": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_034": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_035": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_036": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_037": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_038": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_039": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_040": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_041": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_042": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_043": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_044": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_045": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_046": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_047": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_048": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_049": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_050": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_051": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_052": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_053": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_054": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_055": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_056": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_057": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_058": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_059": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_060": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_061": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_062": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_063": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_064": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_065": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_066": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_067": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_068": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_069": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_070": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_071": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_072": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_073": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_074": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_075": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_076": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_077": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_078": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_079": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_080": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_081": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_082": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_083": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_084": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_085": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_086": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_087": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_088": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_089": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_090": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_091": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_092": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_093": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_094": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_095": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_096": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_097": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_098": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_099": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_100": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_101": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_102": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_103": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_104": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_105": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_106": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_107": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_108": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_109": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_110": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_111": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_112": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_113": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_114": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_115": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_116": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_117": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_118": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_119": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_120": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_121": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_122": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_123": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_124": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_125": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_126": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_127": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_128": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_129": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_130": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_131": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_132": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_133": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_134": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_135": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_136": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_137": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_138": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_139": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_140": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_141": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_142": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_143": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_144": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_145": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_146": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_147": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_148": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_149": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_150": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_151": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_152": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_153": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_154": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_155": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_156": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_157": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_158": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_159": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_160": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_161": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_162": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_163": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_164": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_165": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_166": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_167": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_168": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_169": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_170": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_171": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_172": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_173": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_174": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_175": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_176": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_177": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_178": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_179": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_180": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_181": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_182": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_183": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_184": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_185": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_186": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_187": {
+    "code": "americas_other_time_or_place",
+    "loose": true
+   },
+   "roper_188": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_189": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_190": {
+    "code": "not_attested",
+    "loose": true
+   },
+   "roper_191": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_192": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_193": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_194": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_195": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_196": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_197": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_198": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_199": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_200": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_201": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_202": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_203": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_204": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_205": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_206": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_207": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_208": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_209": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_210": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_211": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_212": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_213": {
+    "code": "old_world_only",
+    "loose": true
+   },
+   "roper_214": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_215": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_216": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_217": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_218": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_219": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_220": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_221": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_222": {
+    "code": "not_applicable",
+    "loose": false
+   },
+   "roper_223": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_224": {
+    "code": "mesoamerica_in_period",
+    "loose": true
+   },
+   "roper_225": {
+    "code": "not_applicable",
+    "loose": true
+   },
+   "roper_226": {
+    "code": "not_attested",
+    "loose": false
+   },
+   "roper_227": {
+    "code": "not_applicable",
+    "loose": false
+   }
+  }
+ },
+ "book_items_compared": {
+  "which": "countable",
+  "n": 144,
+  "codes": {
+   "mesoamerica_in_period": 29,
+   "americas_other_time_or_place": 15,
+   "old_world_only": 61,
+   "not_attested": 8,
+   "not_applicable": 31
+  },
+  "strict_confirmed": 29,
+  "strict_share": 0.201,
+  "loose_confirmed": 118,
+  "loose_share": 0.819
+ },
+ "controls": {
+  "hale_genius_of_oblivion_1823": {
+   "group": "antiquity_story",
+   "n": 30,
+   "codes": {
+    "mesoamerica_in_period": 6,
+    "americas_other_time_or_place": 1,
+    "old_world_only": 7,
+    "not_attested": 0,
+    "not_applicable": 16
+   },
+   "strict_confirmed": 6,
+   "strict_share": 0.2,
+   "loose_confirmed": 24,
+   "loose_share": 0.8,
+   "loose_vs_book": {
+    "control": [
+     24,
+     30
+    ],
+    "book": [
+     118,
+     144
+    ],
+    "control_share": 0.8,
+    "book_share": 0.819,
+    "fisher_p": 0.7980378472933485,
+    "verdict": "same"
+   },
+   "things": {
+    "armor": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "arrow": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "building": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "cement": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "chain": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "chariot": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "chicken": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "copper": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "darkness": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "earthquake": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "ether": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "flock_herd": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "fortification": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "glass": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "goat": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "iron": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "javelin": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "judge": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "king": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "leprosy": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "lion": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "palace": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "shield": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "sling": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "steel": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "sword": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "tempest": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "temple": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "whirlwind": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "city": {
+     "code": "old_world_only",
+     "loose": true
+    }
+   },
+   "strict_vs_book": {
+    "control": [
+     6,
+     30
+    ],
+    "book": [
+     29,
+     144
+    ],
+    "control_share": 0.2,
+    "book_share": 0.201,
+    "fisher_p": 1.0,
+    "verdict": "same"
+   }
+  },
+  "ilive_book_of_jasher_1751": {
+   "group": "purported_ancient_chronicle",
+   "n": 41,
+   "codes": {
+    "mesoamerica_in_period": 1,
+    "americas_other_time_or_place": 1,
+    "old_world_only": 32,
+    "not_attested": 2,
+    "not_applicable": 5
+   },
+   "strict_confirmed": 1,
+   "strict_share": 0.024,
+   "loose_confirmed": 34,
+   "loose_share": 0.829,
+   "loose_vs_book": {
+    "control": [
+     34,
+     41
+    ],
+    "book": [
+     118,
+     144
+    ],
+    "control_share": 0.829,
+    "book_share": 0.819,
+    "fisher_p": 1.0,
+    "verdict": "same"
+   },
+   "things": {
+    "army": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "arrow": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "ass": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "ax": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "brass": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "breastplate": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "building": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "cattle": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "chain": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "chariot": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "chicken": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "city": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "corn": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "darkness": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "ether": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "flock_herd": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "goat": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "grain": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "horse": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "iron": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "javelin": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "jew": {
+     "code": "not_attested",
+     "loose": false
+    },
+    "judge": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "king": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "leprosy": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "linen": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "lion": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "moth": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "ox": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "plate": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "plow": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "road": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "salt": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "sam": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "serpent": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "sheep": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "sword": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "synagogue": {
+     "code": "not_attested",
+     "loose": false
+    },
+    "tent": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "trumpet": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "wine": {
+     "code": "old_world_only",
+     "loose": true
+    }
+   },
+   "strict_vs_book": "not defined: the book is not set in the Americas"
+  },
+  "mathews_behemoth_1839": {
+   "group": "antiquity_story",
+   "n": 57,
+   "codes": {
+    "mesoamerica_in_period": 20,
+    "americas_other_time_or_place": 10,
+    "old_world_only": 16,
+    "not_attested": 0,
+    "not_applicable": 11
+   },
+   "strict_confirmed": 20,
+   "strict_share": 0.351,
+   "loose_confirmed": 53,
+   "loose_share": 0.93,
+   "loose_vs_book": {
+    "control": [
+     53,
+     57
+    ],
+    "book": [
+     118,
+     144
+    ],
+    "control_share": 0.93,
+    "book_share": 0.819,
+    "fisher_p": 0.05041991962661739,
+    "verdict": "same"
+   },
+   "things": {
+    "armor": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "army": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "arrow": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "ax": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "brass": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "breastplate": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "building": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "cattle": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "chain": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "chariot": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "city": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "com": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "copper": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "corn": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "dagger": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "darkness": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "dog": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "earthquake": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "elephant": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "flock_herd": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "fortification": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "furnace": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "glass": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "grain": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "horse": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "iron": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "judge": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "king": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "ladder": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "linen": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "lion": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "machinery": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "moth": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "ore": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "ox": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "palace": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "plate": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "plow": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "prison": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "quiver": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "road": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "salt": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "scimitar": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "serpent": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "sheep": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "shield": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "sickle": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "spear": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "steel": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "sword": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "tempest": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "temple": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "tent": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "timber": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "timothy": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "trumpet": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "whirlwind": {
+     "code": "not_applicable",
+     "loose": true
+    }
+   },
+   "strict_vs_book": {
+    "control": [
+     20,
+     57
+    ],
+    "book": [
+     29,
+     144
+    ],
+    "control_share": 0.351,
+    "book_share": 0.201,
+    "fisher_p": 0.030029602399840226,
+    "verdict": "control higher"
+   }
+  },
+  "oconnor_chronicles_of_eri_1822": {
+   "group": "purported_ancient_chronicle",
+   "n": 44,
+   "codes": {
+    "mesoamerica_in_period": 1,
+    "americas_other_time_or_place": 0,
+    "old_world_only": 35,
+    "not_attested": 0,
+    "not_applicable": 8
+   },
+   "strict_confirmed": 1,
+   "strict_share": 0.023,
+   "loose_confirmed": 40,
+   "loose_share": 0.909,
+   "loose_vs_book": {
+    "control": [
+     40,
+     44
+    ],
+    "book": [
+     118,
+     144
+    ],
+    "control_share": 0.909,
+    "book_share": 0.819,
+    "fisher_p": 0.23814430958776356,
+    "verdict": "same"
+   },
+   "things": {
+    "army": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "arrow": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "ass": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "ax": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "bee": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "brass": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "building": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "cattle": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "chain": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "chariot": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "chicken": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "city": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "com": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "copper": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "cord": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "cow": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "darkness": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "dog": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "flock_herd": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "goat": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "horse": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "iron": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "judge": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "king": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "lion": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "neas": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "ore": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "palace": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "plate": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "quiver": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "road": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "salt": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "serpent": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "sheep": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "shield": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "sling": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "spear": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "sword": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "tempest": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "temple": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "tent": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "timber": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "whirlwind": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "wine": {
+     "code": "old_world_only",
+     "loose": true
+    }
+   },
+   "strict_vs_book": "not defined: the book is not set in the Americas"
+  },
+  "ss-manuscript-story-1885": {
+   "group": "antiquity_story",
+   "n": 37,
+   "codes": {
+    "mesoamerica_in_period": 12,
+    "americas_other_time_or_place": 3,
+    "old_world_only": 13,
+    "not_attested": 0,
+    "not_applicable": 9
+   },
+   "strict_confirmed": 12,
+   "strict_share": 0.324,
+   "loose_confirmed": 33,
+   "loose_share": 0.892,
+   "loose_vs_book": {
+    "control": [
+     33,
+     37
+    ],
+    "book": [
+     118,
+     144
+    ],
+    "control_share": 0.892,
+    "book_share": 0.819,
+    "fisher_p": 0.45640759040973505,
+    "verdict": "same"
+   },
+   "things": {
+    "army": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "arrow": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "ax": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "brass": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "building": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "chain": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "city": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "com": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "copper": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "corn": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "cow": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "dagger": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "darkness": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "dog": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "earthquake": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "elephant": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "flock_herd": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "fortification": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "furnace": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "horse": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "iron": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "judge": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "king": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "mormon": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "ore": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "palace": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "road": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "serpent": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "sheep": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "spear": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "sword": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "temple": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "tent": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "timber": {
+     "code": "americas_other_time_or_place",
+     "loose": true
+    },
+    "trumpet": {
+     "code": "mesoamerica_in_period",
+     "loose": true
+    },
+    "wheat": {
+     "code": "old_world_only",
+     "loose": true
+    },
+    "wine": {
+     "code": "old_world_only",
+     "loose": true
+    }
+   },
+   "strict_vs_book": {
+    "control": [
+     12,
+     37
+    ],
+    "book": [
+     29,
+     144
+    ],
+    "control_share": 0.324,
+    "book_share": 0.201,
+    "fisher_p": 0.12558332928842697,
+    "verdict": "same"
+   }
+  }
+ },
+ "controls_own_region": {
+  "hale_genius_of_oblivion_1823": {
+   "group": "antiquity_story",
+   "n": 30,
+   "codes": {
+    "region_in_period": 10,
+    "other_place_or_time": 6,
+    "not_attested": 0,
+    "not_applicable": 14
+   },
+   "strict_confirmed": 10,
+   "strict_share": 0.333,
+   "loose_confirmed": 20,
+   "loose_share": 0.667,
+   "loose_vs_book": {
+    "control": [
+     20,
+     30
+    ],
+    "book": [
+     118,
+     144
+    ],
+    "control_share": 0.667,
+    "book_share": 0.819,
+    "fisher_p": 0.08119837110549105,
+    "verdict": "same"
+   },
+   "strict_vs_book": {
+    "control": [
+     10,
+     30
+    ],
+    "book": [
+     29,
+     144
+    ],
+    "control_share": 0.333,
+    "book_share": 0.201,
+    "fisher_p": 0.14746773088478687,
+    "verdict": "same"
+   },
+   "things": {
+    "armor": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "arrow": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "building": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "cement": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "chain": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "chariot": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "chicken": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "city": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "copper": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "darkness": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "earthquake": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "ether": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "flock_herd": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "fortification": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "glass": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "goat": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "iron": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "javelin": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "judge": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "king": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "leprosy": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "lion": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "palace": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "shield": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "sling": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "steel": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "sword": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "tempest": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "temple": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "whirlwind": {
+     "code": "not_applicable",
+     "loose": true
+    }
+   }
+  },
+  "ilive_book_of_jasher_1751": {
+   "group": "purported_ancient_chronicle",
+   "n": 41,
+   "codes": {
+    "region_in_period": 31,
+    "other_place_or_time": 3,
+    "not_attested": 4,
+    "not_applicable": 3
+   },
+   "strict_confirmed": 31,
+   "strict_share": 0.756,
+   "loose_confirmed": 34,
+   "loose_share": 0.829,
+   "loose_vs_book": {
+    "control": [
+     34,
+     41
+    ],
+    "book": [
+     118,
+     144
+    ],
+    "control_share": 0.829,
+    "book_share": 0.819,
+    "fisher_p": 1.0,
+    "verdict": "same"
+   },
+   "strict_vs_book": {
+    "control": [
+     31,
+     41
+    ],
+    "book": [
+     29,
+     144
+    ],
+    "control_share": 0.756,
+    "book_share": 0.201,
+    "fisher_p": 9.906118231124042e-11,
+    "verdict": "control higher"
+   },
+   "things": {
+    "army": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "arrow": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "ass": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "ax": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "brass": {
+     "code": "not_attested",
+     "loose": false
+    },
+    "breastplate": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "building": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "cattle": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "chain": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "chariot": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "chicken": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "city": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "corn": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "darkness": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "ether": {
+     "code": "not_attested",
+     "loose": false
+    },
+    "flock_herd": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "goat": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "grain": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "horse": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "iron": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "javelin": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "jew": {
+     "code": "not_attested",
+     "loose": false
+    },
+    "judge": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "king": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "leprosy": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "linen": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "lion": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "moth": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "ox": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "plate": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "plow": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "road": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "salt": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "sam": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "serpent": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "sheep": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "sword": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "synagogue": {
+     "code": "not_attested",
+     "loose": false
+    },
+    "tent": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "trumpet": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "wine": {
+     "code": "region_in_period",
+     "loose": true
+    }
+   }
+  },
+  "mathews_behemoth_1839": {
+   "group": "antiquity_story",
+   "n": 57,
+   "codes": {
+    "region_in_period": 23,
+    "other_place_or_time": 25,
+    "not_attested": 0,
+    "not_applicable": 9
+   },
+   "strict_confirmed": 23,
+   "strict_share": 0.404,
+   "loose_confirmed": 52,
+   "loose_share": 0.912,
+   "loose_vs_book": {
+    "control": [
+     52,
+     57
+    ],
+    "book": [
+     118,
+     144
+    ],
+    "control_share": 0.912,
+    "book_share": 0.819,
+    "fisher_p": 0.12971865840147723,
+    "verdict": "same"
+   },
+   "strict_vs_book": {
+    "control": [
+     23,
+     57
+    ],
+    "book": [
+     29,
+     144
+    ],
+    "control_share": 0.404,
+    "book_share": 0.201,
+    "fisher_p": 0.004303189132003392,
+    "verdict": "control higher"
+   },
+   "things": {
+    "armor": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "army": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "arrow": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "ax": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "brass": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "breastplate": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "building": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "cattle": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "chain": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "chariot": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "city": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "com": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "copper": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "corn": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "dagger": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "darkness": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "dog": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "earthquake": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "elephant": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "flock_herd": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "fortification": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "furnace": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "glass": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "grain": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "horse": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "iron": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "judge": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "king": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "ladder": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "linen": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "lion": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "machinery": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "moth": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "ore": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "ox": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "palace": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "plate": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "plow": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "prison": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "quiver": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "road": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "salt": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "scimitar": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "serpent": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "sheep": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "shield": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "sickle": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "spear": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "steel": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "sword": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "tempest": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "temple": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "tent": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "timber": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "timothy": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "trumpet": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "whirlwind": {
+     "code": "not_applicable",
+     "loose": true
+    }
+   }
+  },
+  "oconnor_chronicles_of_eri_1822": {
+   "group": "purported_ancient_chronicle",
+   "n": 44,
+   "codes": {
+    "region_in_period": 27,
+    "other_place_or_time": 11,
+    "not_attested": 1,
+    "not_applicable": 5
+   },
+   "strict_confirmed": 27,
+   "strict_share": 0.614,
+   "loose_confirmed": 40,
+   "loose_share": 0.909,
+   "loose_vs_book": {
+    "control": [
+     40,
+     44
+    ],
+    "book": [
+     118,
+     144
+    ],
+    "control_share": 0.909,
+    "book_share": 0.819,
+    "fisher_p": 0.23814430958776356,
+    "verdict": "same"
+   },
+   "strict_vs_book": {
+    "control": [
+     27,
+     44
+    ],
+    "book": [
+     29,
+     144
+    ],
+    "control_share": 0.614,
+    "book_share": 0.201,
+    "fisher_p": 8.662498273138732e-07,
+    "verdict": "control higher"
+   },
+   "things": {
+    "army": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "arrow": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "ass": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "ax": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "bee": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "brass": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "building": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "cattle": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "chain": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "chariot": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "chicken": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "city": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "com": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "copper": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "cord": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "cow": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "darkness": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "dog": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "flock_herd": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "goat": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "horse": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "iron": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "judge": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "king": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "lion": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "neas": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "ore": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "palace": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "plate": {
+     "code": "not_attested",
+     "loose": false
+    },
+    "quiver": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "road": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "salt": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "serpent": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "sheep": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "shield": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "sling": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "spear": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "sword": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "tempest": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "temple": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "tent": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "timber": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "whirlwind": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "wine": {
+     "code": "other_place_or_time",
+     "loose": true
+    }
+   }
+  },
+  "ss-manuscript-story-1885": {
+   "group": "antiquity_story",
+   "n": 37,
+   "codes": {
+    "region_in_period": 11,
+    "other_place_or_time": 17,
+    "not_attested": 0,
+    "not_applicable": 9
+   },
+   "strict_confirmed": 11,
+   "strict_share": 0.297,
+   "loose_confirmed": 29,
+   "loose_share": 0.784,
+   "loose_vs_book": {
+    "control": [
+     29,
+     37
+    ],
+    "book": [
+     118,
+     144
+    ],
+    "control_share": 0.784,
+    "book_share": 0.819,
+    "fisher_p": 0.639703582817678,
+    "verdict": "same"
+   },
+   "strict_vs_book": {
+    "control": [
+     11,
+     37
+    ],
+    "book": [
+     29,
+     144
+    ],
+    "control_share": 0.297,
+    "book_share": 0.201,
+    "fisher_p": 0.26580376239200204,
+    "verdict": "same"
+   },
+   "things": {
+    "army": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "arrow": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "ax": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "brass": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "building": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "chain": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "city": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "com": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "copper": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "corn": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "cow": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "dagger": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "darkness": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "dog": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "earthquake": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "elephant": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "flock_herd": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "fortification": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "furnace": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "horse": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "iron": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "judge": {
+     "code": "not_applicable",
+     "loose": true
+    },
+    "king": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "mormon": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "ore": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "palace": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "road": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "serpent": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "sheep": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "spear": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "sword": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "temple": {
+     "code": "not_applicable",
+     "loose": false
+    },
+    "tent": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "timber": {
+     "code": "region_in_period",
+     "loose": true
+    },
+    "trumpet": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "wheat": {
+     "code": "other_place_or_time",
+     "loose": true
+    },
+    "wine": {
+     "code": "other_place_or_time",
+     "loose": true
+    }
+   }
+  }
+ },
+ "controls_note": "controls asked twice: 'controls' on the book's scale (Mesoamerica named as the strict code); 'controls_own_region' on each control's own claimed region (owner, 2026-11-23, before any control answer)",
+ "named_control": "ss-manuscript-story-1885",
+ "named_control_verdict": "the control shows the same under the loose rule",
+ "named_control_verdict_own_region": "the control shows the same under the strict own-region rule",
+ "verdict_book": "holds only under the loose rule",
+ "trend_in_control": "not attempted: the control books' things have no dates first raised, so no change over time can be built",
+ "config_sha256": "7a654e58bff4404f232a8fc65ab4ed452b230acdc9b8caf540e62bc3a3faac05",
+ "commit": "44ec686c24a1576ad6e0fe3437567eb1d84c1355"
+}
