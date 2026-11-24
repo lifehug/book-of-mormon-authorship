@@ -1,0 +1,943 @@
+{
+ "label": "simulated judging: a model (sonnet, lab.judge) read the sets, not a person",
+ "answers": 150,
+ "unparsed": [],
+ "judged_sets": {
+  "asked": 79,
+  "answered": 79,
+  "read": 42,
+  "not_read": {
+   "Near Eastern consonants not in his table": 1,
+   "no stratum (model: unclear or none)": 36
+  },
+  "model_stratum": {
+   "kw": 15,
+   "unclear": 38,
+   "e": 9,
+   "p": 17
+  },
+  "stratum_used": {
+   "kw": 16,
+   "e": 9,
+   "p": 18,
+   "none": 36
+  },
+  "skeleton_from": {
+   "model form": 32,
+   "his tags": 10
+  },
+  "rule_and_model_stratum_both": 16,
+  "rule_and_model_stratum_agree": 16,
+  "sets": 42,
+  "obey_every_position": 12,
+  "obey_first_consonant": 30,
+  "meaning_levels": {
+   "2": 22,
+   "0": 11,
+   "1": 9
+  },
+  "alternatives": {
+   "n": 42,
+   "median": 15,
+   "quartiles": [
+    0,
+    121
+   ],
+   "none": 15,
+   "ten_or_more": 22
+  },
+  "per_set": [
+   {
+    "set": 17,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 566
+   },
+   {
+    "set": 50,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": false,
+    "meaning_level": 2,
+    "alternatives": 90
+   },
+   {
+    "set": 53,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 197
+   },
+   {
+    "set": 63,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 0,
+    "alternatives": 0
+   },
+   {
+    "set": 120,
+    "stratum": "e",
+    "readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "meaning_level": 0,
+    "alternatives": 3
+   },
+   {
+    "set": 149,
+    "stratum": "e",
+    "readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 9
+   },
+   {
+    "set": 313,
+    "stratum": "e",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "meaning_level": 0,
+    "alternatives": 0
+   },
+   {
+    "set": 323,
+    "stratum": "e",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "meaning_level": 1,
+    "alternatives": 0
+   },
+   {
+    "set": 374,
+    "stratum": "e",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": false,
+    "meaning_level": 2,
+    "alternatives": 1119
+   },
+   {
+    "set": 381,
+    "stratum": "e",
+    "readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "meaning_level": 1,
+    "alternatives": 0
+   },
+   {
+    "set": 454,
+    "stratum": "e",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 0,
+    "alternatives": 6
+   },
+   {
+    "set": 499,
+    "stratum": "e",
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 541,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 41
+   },
+   {
+    "set": 626,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 641,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 647,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 205
+   },
+   {
+    "set": 687,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 699,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 716,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 748,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 1,
+    "alternatives": 0
+   },
+   {
+    "set": 753,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 1,
+    "alternatives": 0
+   },
+   {
+    "set": 792,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 154
+   },
+   {
+    "set": 802,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 15
+   },
+   {
+    "set": 835,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": false,
+    "meaning_level": 1,
+    "alternatives": 0
+   },
+   {
+    "set": 838,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": false,
+    "meaning_level": 0,
+    "alternatives": 0
+   },
+   {
+    "set": 844,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 41
+   },
+   {
+    "set": 845,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": false,
+    "meaning_level": 1,
+    "alternatives": 0
+   },
+   {
+    "set": 849,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": true,
+    "obeys_first": true,
+    "meaning_level": 1,
+    "alternatives": 5
+   },
+   {
+    "set": 874,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 876,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 890,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 894,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 903,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 224
+   },
+   {
+    "set": 938,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": false,
+    "meaning_level": 2,
+    "alternatives": 1093
+   },
+   {
+    "set": 964,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 62
+   },
+   {
+    "set": 980,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1028,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1041,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1053,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": false,
+    "meaning_level": 0,
+    "alternatives": 0
+   },
+   {
+    "set": 1055,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1068,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1075,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 231
+   },
+   {
+    "set": 1083,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1086,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1103,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1114,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1133,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 0,
+    "alternatives": 0
+   },
+   {
+    "set": 1137,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 322
+   },
+   {
+    "set": 1141,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1143,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": false,
+    "meaning_level": 2,
+    "alternatives": 121
+   },
+   {
+    "set": 1161,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 1,
+    "alternatives": 0
+   },
+   {
+    "set": 1172,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1181,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1206,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 0,
+    "alternatives": 0
+   },
+   {
+    "set": 1212,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 231
+   },
+   {
+    "set": 1218,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 0,
+    "alternatives": 1
+   },
+   {
+    "set": 1223,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1230,
+    "stratum": "e",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 120
+   },
+   {
+    "set": 1233,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1250,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1254,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1258,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1267,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1279,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1297,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 63
+   },
+   {
+    "set": 1302,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": false,
+    "meaning_level": 2,
+    "alternatives": 11
+   },
+   {
+    "set": 1309,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": true,
+    "meaning_level": 0,
+    "alternatives": 0
+   },
+   {
+    "set": 1316,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1323,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": false,
+    "meaning_level": 2,
+    "alternatives": 110
+   },
+   {
+    "set": 1341,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1362,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1417,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1428,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1431,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": false,
+    "obeys_first": false,
+    "meaning_level": 0,
+    "alternatives": 0
+   },
+   {
+    "set": 1434,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1444,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   },
+   {
+    "set": 1465,
+    "stratum": "kw",
+    "readable": true,
+    "skeleton_from": "his tags",
+    "obeys_table": false,
+    "obeys_first": false,
+    "meaning_level": 1,
+    "alternatives": 28
+   },
+   {
+    "set": 1469,
+    "stratum": "p",
+    "readable": true,
+    "skeleton_from": "model form",
+    "obeys_table": true,
+    "obeys_first": true,
+    "meaning_level": 2,
+    "alternatives": 40
+   },
+   {
+    "set": 1511,
+    "stratum": null,
+    "readable": false,
+    "skeleton_from": "model form",
+    "obeys_table": null,
+    "obeys_first": null,
+    "meaning_level": null,
+    "alternatives": null
+   }
+  ]
+ },
+ "by_rule": {
+  "sets": 71,
+  "obey_every_position": 41,
+  "obey_first_consonant": 62,
+  "alternatives": {
+   "n": 71,
+   "median": 1,
+   "quartiles": [
+    0,
+    10
+   ],
+   "none": 34,
+   "ten_or_more": 19
+  }
+ },
+ "all_readable": {
+  "sets": 113,
+  "obey_every_position": 53,
+  "obey_first_consonant": 92,
+  "alternatives": {
+   "n": 113,
+   "median": 1,
+   "quartiles": [
+    0,
+    37
+   ],
+   "none": 49,
+   "ten_or_more": 41
+  }
+ },
+ "unclear_beside": {
+  "sets": 36,
+  "checkable_under_a_semitic_column": 34,
+  "obey_under_either_semitic_column": 18
+ },
+ "gloss_ratings": {
+  "counts": {
+   "SAME": 37,
+   "RELATED": 33,
+   "DISTANT": 1
+  },
+  "rating_level": {
+   "SAME": 0,
+   "RELATED": 1,
+   "DISTANT": 2
+  },
+  "rule_level_by_rating": {
+   "0": {
+    "SAME": 32,
+    "RELATED": 10,
+    "DISTANT": 0
+   },
+   "1": {
+    "SAME": 1,
+    "RELATED": 8,
+    "DISTANT": 0
+   },
+   "2": {
+    "SAME": 4,
+    "RELATED": 15,
+    "DISTANT": 1
+   }
+  },
+  "model_closer_than_rule": 20,
+  "model_same_as_rule": 41,
+  "model_looser_than_rule": 10,
+  "alternatives_with_closer_of_rule_and_model": {
+   "n": 71,
+   "median": 0,
+   "quartiles": [
+    0,
+    1
+   ],
+   "none": 47,
+   "ten_or_more": 6
+  },
+  "sets_tightened": [
+   36,
+   81,
+   136,
+   164,
+   203,
+   209,
+   250,
+   290,
+   334,
+   358,
+   443,
+   449,
+   473,
+   586,
+   696,
+   737,
+   862,
+   909,
+   936,
+   1179
+  ]
+ },
+ "config_sha256": "16c0ce501b381fda8e9e1e2d6279c76d129dec4adf4f6ddc8bbb199c3b104b9d",
+ "commit": "a34c1d6ea4d32c410c1bb3457d7883ca9790c9f0"
+}
