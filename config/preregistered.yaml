@@ -782,6 +782,10 @@ lab:                              # the research lab (exploratory tooling; reads
     splice_tolerance: 2            # break must fall within this many blocks of the join
     splice_bar: 0.9                # in at least this share of pairs
     unusual_share: 0.05            # "unusual" = fewer than this share of library works switch as sharply
+    metcalfe:                      # their way first (Metcalfe 1993, Tables 1-3): when our count agrees with his
+      tol_abs: 2                   # a (book, word) cell agrees within this many occurrences
+      tol_rel: 0.03                # or this share of his count, whichever is larger
+      total_tol: 0.01              # whole-book totals agree within this share of his 668 and 420
   claimed_sources:                 # BOM-126 (lab; exploratory): claimed sources looked up in the stored borrowing searches
     sources:                       # key: [catalogued author pattern, title pattern]; every matching copy is reported
       warren_history: ['^warren, mercy', 'american revolution']
@@ -2488,6 +2492,32 @@ lab:                              # the research lab (exploratory tooling; reads
       pua_late_egyptian: [asjp:PROTO_UTO_AZTECAN, asjp:LATE_EGYPTIAN]
       pua_coptic: [asjp:PROTO_UTO_AZTECAN, asjp:COPTIC]
     trap: ['wold:Yaqui+loans', oshl:heb]   # leakage trap: Spanish loans left in, reported beside, not in Holm
+    vocabulary:                    # their way from Stubbs's Comparative Vocabulary (2011; revised online ed. 2020), card section 2026-11-23
+      pua_consonants: [p, t, k, kw, "’", h, s, c, m, n, L, w, y]   # his "mostly secure" PUA consonants, printed p. 12
+      branches:                    # his Table 3 (printed p. 3): language abbreviation -> branch
+        Num: [Mn, NP, TSh, Sh, WSh, Cm, Kw, Ch, SP, WMU, CU, NU]
+        Hp: [Hp]
+        Tb: [Tb]
+        Tak: [Ls, Ca, Cp, Sr, Gb, Ktn]
+        Tep: [TO, UP, Nv, LP, PYp, PYc, NT, ST]
+        Opn: [Eu, Op]
+        Tbr: [Tbr]
+        Cah: [Yq, AYq, My]
+        Trn: [Wr, Tr, WTr]
+        CrC: [Cr, Wc]
+        Azt: [CN, Pl, HN]
+      min_consonants: 2            # a word with fewer mapped consonants is not scored (step 3)
+      semitic_columns: [kw, p]     # his Appendix A (2015) columns applied to Semitic lists and controls
+      egyptian_columns: [e]
+      semitic_lists: ['oshl:heb', 'nel:heb', 'nel:arb']   # the first is primary
+      egyptian_lists: ['cdo:cop']
+      control_lists: ['nel:fin', 'nel:jpn', 'nel:tam', 'nel:eus', 'nel:kat', 'nel:hun', 'nel:kor', 'wold:ImbaburaQuechua']
+      ipa_symbols:                 # IPA consonant (modifiers stripped except ˤ) -> his Semitic symbol; same for every language; unlisted = word not scored
+        {p: p, f: p, ɸ: p, b: b, v: b, β: b, t: t, ʈ: t, d: d, ɖ: d, tˤ: ṭ, ðˤ: ṭ, dˤ: ṣ, sˤ: ṣ,
+         k: k, c: k, g: g, ɟ: g, q: q, x: x, χ: x, ç: x, ɣ: ġ, ħ: ђ, ʕ: ʕ, ʔ: ’, h: h, ɦ: h,
+         m: m, n: n, ɲ: n, ɳ: n, ŋ: n, ɴ: n, l: l, ɭ: l, ʎ: l, ɫ: l, r: r, ɾ: r, ɻ: r, ɹ: r, ʀ: r, ʁ: r,
+         s: s, ɕ: s, z: z, ʑ: z, ʒ: z, ʐ: z, ʃ: š, ʂ: š, θ: θ, ð: đ, ts: ṣ, dz: z, tʃ: š, tɕ: š,
+         dʒ: g, dʑ: g, j: y, ʝ: y, w: w, ʋ: w, ɥ: w}
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

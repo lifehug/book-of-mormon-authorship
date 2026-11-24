@@ -23,6 +23,7 @@ Usage::
     python -m lab.utoaztecan his-way    # step 1 -> private sample file and public counts
     python -m lab.utoaztecan check      # known-answer check at every target list size
     python -m lab.utoaztecan run        # both, then targets -> data/lab/setting/uto_aztecan
+    python -m lab.utoaztecan vocabulary # his Comparative Vocabulary (lab.utoaztecan_vocab)
 """
 
 from __future__ import annotations
@@ -1438,8 +1439,12 @@ def _stamp(res: dict) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["his-way", "check", "run"])
+    ap.add_argument("cmd", choices=["his-way", "check", "run", "vocabulary"])
     a = ap.parse_args(argv)
+    if a.cmd == "vocabulary":
+        from lab import utoaztecan_vocab
+
+        return utoaztecan_vocab.main()
     cfg = config.load()
     if a.cmd == "his-way":
         public, records, jobs = his_way(cfg)
