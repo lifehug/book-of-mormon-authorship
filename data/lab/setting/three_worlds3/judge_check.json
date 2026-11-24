@@ -1,0 +1,202 @@
+{
+ "label": "SIMULATED JUDGING BY AN AI MODEL (lab.judge; BOM-109 third design)",
+ "readers": {
+  "main": "sonnet",
+  "second": "opus"
+ },
+ "synthetic": {
+  "asked": 130,
+  "answered": 130,
+  "open": 0,
+  "unparseable": 0,
+  "keyed_s": 80,
+  "whose_binary_right": 130,
+  "whose_binary_share": 1.0,
+  "what_fair_right": 80,
+  "what_fair_share": 1.0,
+  "place_right": 80,
+  "place_share": 1.0,
+  "full_whose_six_way_share": 0.9231,
+  "full_what_five_way_share": 0.8308,
+  "by_frame": {
+   "e_author_own": {
+    "n": 10,
+    "whose_binary": 10,
+    "answer A,X,U": 3,
+    "answer A,X,E": 7
+   },
+   "e_compare_have": {
+    "n": 10,
+    "whose_binary": 10,
+    "what_fair": 10,
+    "place": 10,
+    "answer S,H,M": 10
+   },
+   "e_gloss_lack": {
+    "n": 10,
+    "whose_binary": 10,
+    "what_fair": 10,
+    "place": 10,
+    "answer S,L,M": 10
+   },
+   "e_have": {
+    "n": 10,
+    "whose_binary": 10,
+    "what_fair": 10,
+    "place": 10,
+    "answer S,H,M": 10
+   },
+   "e_lack": {
+    "n": 10,
+    "whose_binary": 10,
+    "what_fair": 10,
+    "place": 10,
+    "answer S,L,U": 1,
+    "answer S,L,M": 9
+   },
+   "n_brought": {
+    "n": 10,
+    "whose_binary": 10,
+    "what_fair": 10,
+    "place": 10,
+    "answer S,B,M": 10
+   },
+   "n_elsewhere": {
+    "n": 10,
+    "whose_binary": 10,
+    "what_fair": 10,
+    "place": 10,
+    "answer S,H,E": 10
+   },
+   "n_figure": {
+    "n": 10,
+    "whose_binary": 10,
+    "answer F,X,U": 10
+   },
+   "n_future": {
+    "n": 10,
+    "whose_binary": 10,
+    "answer P,B,M": 10
+   },
+   "n_have": {
+    "n": 10,
+    "whose_binary": 10,
+    "what_fair": 10,
+    "place": 10,
+    "answer S,H,M": 10
+   },
+   "n_lack": {
+    "n": 10,
+    "whose_binary": 10,
+    "what_fair": 10,
+    "place": 10,
+    "answer S,L,M": 10
+   },
+   "n_outsiders": {
+    "n": 10,
+    "whose_binary": 10,
+    "answer O,H,M": 8,
+    "answer O,B,M": 2
+   },
+   "n_quoted": {
+    "n": 10,
+    "whose_binary": 10,
+    "answer O,H,E": 10
+   }
+  }
+ },
+ "real": {
+  "main": {
+   "asked": 100,
+   "answered": 100,
+   "open": 0,
+   "unparseable": 0
+  },
+  "second": {
+   "asked": 100,
+   "answered": 100,
+   "open": 0,
+   "unparseable": 0
+  },
+  "both": 100,
+  "whose_binary_agree": 0.89,
+  "whose_binary_kappa": 0.7718,
+  "both_s": 54,
+  "what_agree_both_s": 0.9815,
+  "full_whose_six_way_agree": 0.87,
+  "full_what_five_way_agree": 0.85,
+  "whose_disagreements": {
+   "F/S": 3,
+   "S/A": 2,
+   "O/A": 1,
+   "S/N": 1,
+   "N/S": 1,
+   "S/F": 1,
+   "S/O": 1,
+   "S/P": 1,
+   "P/S": 1,
+   "N/F": 1
+  },
+  "whose_binary_agree_by_text": {
+   "adair_american_indians_1775": "3/3",
+   "bernal_diaz_keatinge_1800": "4/5",
+   "brackenridge_tumuli_1818": "1/1",
+   "brinton_annals_cakchiquels_1885": "1/2",
+   "burder_oriental_customs_1807": "1/4",
+   "calmet_dictionary_1812": "3/3",
+   "clavigero_1787_vol1": "4/4",
+   "clinton_discourse_and_western_new_york": "1/1",
+   "contemp|hathitrust:aeu.ark:/13960/t2t44rg02": "1/1",
+   "contemp|hathitrust:aeu.ark:/13960/t4gm92c4j": "1/1",
+   "contemp|institutional_books:32044010452944": "1/1",
+   "contemp|institutional_books:32044107273757": "1/1",
+   "contemp|institutional_books:HH28W2": "1/1",
+   "contemp|institutional_books:HXJW47": "1/1",
+   "contemp|internet_archive:bim_eighteenth-century_the-history-of-north-ame_oliphant-edward_1800": "2/3",
+   "del_rio_palenque_1822": "2/2",
+   "gage_english_american_1648": "4/4",
+   "hale_genius_of_oblivion_1823": "1/1",
+   "harmer_observations_1808": "2/2",
+   "harris_tour_1805": "1/1",
+   "haywood_tennessee_1823": "1/2",
+   "humboldt_researches_1814": "2/2",
+   "josephus_antiquities_whiston": "3/3",
+   "kjv_chronicles_esther": "1/1",
+   "kjv_gospels_acts": "3/3",
+   "kjv_job_song": "1/1",
+   "kjv_joshua_ruth": "1/1",
+   "kjv_kings": "2/2",
+   "kjv_pentateuch": "2/2",
+   "kjv_prophets": "2/2",
+   "kjv_samuel": "1/3",
+   "mathews_behemoth_1839": "3/4",
+   "mcculloh_researches_1817": "2/2",
+   "mcculloh_researches_1829": "7/7",
+   "popol_vuh_christenson": "1/2",
+   "robertson_history_of_america": "3/3",
+   "roys_chumayel_1933": "1/1",
+   "rule|hathitrust:ia.ark:/13960/t78s4vb0g": "1/1",
+   "rule|internet_archive:ancienthistoryor00rafirich": "3/3",
+   "rule|internet_archive:cihm_59538": "2/2",
+   "sigourney_traits_1822": "2/2",
+   "solis_conquest_of_mexico_1724": "4/4",
+   "spalding_manuscript_story": "1/1",
+   "spinden_ancient_civilizations_1917": "3/3",
+   "view_of_the_hebrews_1825": "1/1"
+  }
+ },
+ "bars": {
+  "synthetic_whose": true,
+  "synthetic_what": true,
+  "synthetic_place": true,
+  "real_whose": true,
+  "real_whose_kappa": true,
+  "real_what": true
+ },
+ "complete": true,
+ "passed": true,
+ "state": "passed",
+ "config_sha256": "16c0ce501b381fda8e9e1e2d6279c76d129dec4adf4f6ddc8bbb199c3b104b9d",
+ "markers_sha256": "7f5af1a7568ef8cf2a119cec355435e2db3995497a66a7917587cc4ec2047752",
+ "git_commit": "361e49decd39edd85e37a08fbbda5078825e1e4f"
+}

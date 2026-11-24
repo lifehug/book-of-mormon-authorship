@@ -119,7 +119,7 @@ compares against.
 | BOM-108 | The names are Hebrew, or Egyptian, or invented | Tvedtnes and others; Wilcox 2013, 2019 | 124 names against census names, Spalding, Tolkien | Hebrew inscriptions, Egyptian, Maya, Nahuatl, treaty signers, period print, four inventing authors | **Done**, with a limit |
 | BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | **Done** |
 | BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | **Done** |
-| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; third design's reader check passed (107 of 131, decoys 0 of 20, kappa 0.73); controls queued**; BOM-109 **both designs' checks failed; not scored** |
+| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; third design's reader check passed (107 of 131, decoys 0 of 20, kappa 0.73); controls queued**; BOM-109 **third design's check passed (whose 130/130; two readers kappa 0.77); long reading queued** |
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | **Done: holds only loosely (31% strict, 85% loose); the controls match it loosely** |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
@@ -2692,15 +2692,26 @@ changes, aimed straight at the two misses:
   Roper, Vogel (as I keyed his prose) and Kirchhoff say, beside what our reading finds, so the
   places where we part ways are visible one by one.
 
-It was built and its settings written down on 23 November, before any answer existed. The check
-is 330 questions, about an hour, and it is queued.
+It was built and its settings written down on 23 November, before any answer existed.
+
+**The check, third time: passed.** On the 130 made-up passages the reader said whose correctly
+every time, 130 of 130, and got "what" and "where" right on all 80 that have an answer. The bars
+were 85 percent. On 100 real mentions, read by sonnet and again by opus (simulated judging, two
+models), the two agreed on whose 89 times in 100, a kappa of 0.77, against bars of 80 percent and
+0.6. Where both said the book's own people, they agreed on what the thing was 53 times in 54. The
+line between the book's own people and the author's own world, the one that sank the second design,
+held this time: of the 13 places where the two readers named different worlds, 2 were on that line. Because this is the third design, two
+changes made after seeing results, the pass counts for less.
+
+So the long reading goes ahead: about 13,500 questions, roughly 45 hours, queued behind the other
+tests.
 
 **What it means, and what it doesn't.** No answer yet on the Book of Mormon. What the failures show
 is about the method, and it applies to every list on both sides: a word in a text is not a thing
 its people had, and nobody's list has asked whose the thing is.
 
-**What's left.** The third design's check. Only if it passes, the long reading (about 45 hours),
-then Vogel's ideas and the Manchester library list alongside. In progress.
+**What's left, in progress.** The long reading (queued), then Vogel's ideas and the Manchester
+library list alongside.
 
 ### Words that were supposed to be dead (BOM-118)
 
