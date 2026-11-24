@@ -149,3 +149,82 @@ def test_subsample_is_seeded_and_bounded():
     a = u.subsample(ms, 30, "x", 1)
     assert a == u.subsample(ms, 30, "x", 1) and len(a) == 30
     assert u.subsample(ms, 300, "x", 1) == ms
+
+
+# --- step 1 with judged readings (card 2026-11-23; synthetic table, lexicon and answers) ---
+
+_TABLE = {
+    "kw": {
+        "b": {"initial": {"p"}, "medial": {"kw"}},
+        "z": {"initial": {"s"}, "medial": {"s"}},
+        "d": {"initial": {"s"}, "medial": {"t"}},
+    },
+    "p": {"b": {"initial": {"p"}, "medial": {"p"}}, "z": {"initial": {"s"}, "medial": {"s"}}},
+    "e": {"n": {"initial": {"n"}, "medial": {"n"}}},
+}
+_H = {"max_positions": 3, "judged": {"rating_level": {"SAME": 0, "RELATED": 1, "DISTANT": 2}}}
+
+
+def _ans(sid, reply):
+    return {"id": sid, "reply": reply}
+
+
+def test_parse_answer_reads_ratings_and_json_and_refuses_junk():
+    assert u.parse_answer(_ans("gloss-1", " Same.")) == "SAME"
+    assert u.parse_answer(_ans("gloss-1", "I am out of usage")) is None
+    full = '{"ne_language": "Hebrew", "ne_form": "zb", "ne_gloss": "fly", "ua_form": "*sikwo",'
+    full += ' "ua_gloss": "fly", "stratum": "Semitic-kw"}'
+    assert u.parse_answer(_ans("set-1", "Here: " + full))["stratum"] == "Semitic-kw"
+    assert u.parse_answer(_ans("set-1", '{"ne_form": "zb"}')) is None
+    assert u.parse_answer(_ans("set-1", "{not json")) is None
+
+
+def test_judged_record_uses_rule_stratum_and_tags_first():
+    reading = {"ne_form": "zab", "ne_gloss": "fly", "ua_form": "*sikwo", "ua_gloss": "fly",
+               "stratum": "Semitic-p"}  # fmt: skip
+    rec = {"set": 1, "stratum": "kw", "codes": {}}
+    j = u.judged_record(rec, reading, _TABLE, 3)
+    assert j["stratum"] == "kw" and j["model_stratum"] == "p"
+    assert j["readable"] and j["obeys_table"] and j["obeys_first"]  # z>s initial, b>kw medial
+    rec = {"set": 2, "stratum": None, "codes": {"1": "z", "2": "b"}}
+    j = u.judged_record(rec, reading, _TABLE, 3)
+    assert j["stratum"] == "p" and j["skeleton_from"] == "his tags"
+    assert j["obeys_first"] and not j["obeys_table"]  # p column wants medial p, not kw
+
+
+def test_judged_record_unclear_is_unread_but_checked_beside():
+    reading = {"ne_form": "zab", "ne_gloss": "fly", "ua_form": "*sikwo", "ua_gloss": "fly",
+               "stratum": "unclear"}  # fmt: skip
+    j = u.judged_record({"set": 3, "stratum": None, "codes": {}}, reading, _TABLE, 3)
+    assert not j["readable"] and j["unclear_checkable_semitic"]
+    assert j["unclear_obeys_either_semitic"]  # obeys under kw, not under p
+
+
+def test_judged_summary_counts_and_gloss_table():
+    rule = {"set": 10, "machine_readable": True, "stratum": "kw", "ne_rows": ["z", "b"],
+            "ua_symbols": ["s", "kw"], "ua_gloss": "fly", "meaning_level": 2,
+            "obeys_table": True, "obeys_first": True, "alternatives": 1}  # fmt: skip
+    unread = {"set": 11, "machine_readable": False, "stratum": None, "codes": {}}
+    reading = '{"ne_language": "Egyptian", "ne_form": "nan", "ne_gloss": "water",'
+    reading += ' "ua_form": "*nam", "ua_gloss": "water", "stratum": "Egyptian"}'
+    answers = [_ans("gloss-10", "SAME"), _ans("set-11", reading)]
+    lex = {
+        "oshl": [{"symbols": ["z", "b"], "glosses": ["fly"]},  # his own root: skipped
+                 {"symbols": ["d", "b", "z"], "glosses": ["stone"]},  # sound passes, meaning not
+                 {"symbols": ["d", "b"], "glosses": ["a fly"]}],
+        "cdo": [{"symbols": ["n"], "glosses": ["water"]}],
+    }  # fmt: skip
+    pub, priv = u.judged_summary([rule, unread], answers, _TABLE, lex, {}, {}, _H)
+    js = pub["judged_sets"]
+    assert js["read"] == 1 and js["obey_every_position"] == 1 and js["meaning_levels"] == {0: 1}
+    assert pub["all_readable"]["sets"] == 2 and pub["all_readable"]["obey_every_position"] == 2
+    g = pub["gloss_ratings"]
+    assert g["counts"]["SAME"] == 1 and g["rule_level_by_rating"]["2"]["SAME"] == 1
+    assert g["model_closer_than_rule"] == 1 and g["sets_tightened"] == [10]
+    # rule level 2 lets "stone" count; at the model's SAME only a gloss sharing "fly" does
+    column = _TABLE["kw"]
+    assert (
+        u.alternatives(["z", "b"], ["s", "kw"], column, 2, "fly", lex["oshl"], {}, {})["both"] == 2
+    )
+    assert g["alternatives_with_closer_of_rule_and_model"]["median"] == 1
+    assert pub["unparsed"] == [] and priv[0]["set"] == 11

@@ -21,6 +21,7 @@ list size before any target pair is scored there.
 Usage::
 
     python -m lab.utoaztecan his-way    # step 1 -> private sample file and public counts
+    python -m lab.utoaztecan his-way-judged  # step 1 with the model's readings (simulated)
     python -m lab.utoaztecan check      # known-answer check at every target list size
     python -m lab.utoaztecan run        # both, then targets -> data/lab/setting/uto_aztecan
     python -m lab.utoaztecan vocabulary # his Comparative Vocabulary (lab.utoaztecan_vocab)
@@ -927,6 +928,31 @@ def ne_symbols(form: str) -> list[str]:
     return out_
 
 
+def alternatives(rows, ua, column, level, ua_gloss, entries, keyed, links) -> Counter:
+    """Other lexicon entries passing his table for this UA form with a meaning at least as close.
+
+    ``sound``: strict table only; ``both``: strict and the meaning bar; the ``_final_loss`` pair
+    the same with a missing last consonant allowed. Level 2 (neither) lets any gloss count.
+    """
+    counts: Counter = Counter()
+    for e in entries:
+        erows = [table_row(c, column) for c in e["symbols"]][: len(rows)]
+        if len(erows) < len(rows) or None in erows or erows == rows:
+            continue  # too short to test at his positions, unreadable, or his own root
+        strict = obeys(erows, ua, column)
+        loose = strict or obeys(erows, ua, column, final_loss=True)
+        if not loose:
+            continue
+        near = (
+            level == 2 or min(closeness(g, ua_gloss, keyed, links) for g in e["glosses"]) <= level
+        )
+        counts["sound"] += strict
+        counts["both"] += strict and near
+        counts["sound_final_loss"] += 1
+        counts["both_final_loss"] += near
+    return counts
+
+
 def his_way(cfg: dict) -> tuple[dict, list[dict], list[dict]]:
     """Step 1: (public counts, private per-set records, private judge questions)."""
     u = cfg["lab"]["utoaztecan"]
@@ -1004,24 +1030,7 @@ def his_way(cfg: dict) -> tuple[dict, list[dict], list[dict]]:
         rec["meaning_level"] = level
         jobs.append(_gloss_job(num, rec["ne_gloss"], rec["ua_gloss"]))
         source = "cdo" if stratum == "e" else "oshl"
-        own = rows
-        counts = Counter()
-        for e in lex[source]:
-            erows = [table_row(c, column) for c in e["symbols"]][: len(rows)]
-            if len(erows) < len(rows) or None in erows or erows == own:
-                continue  # too short to test at his positions, unreadable, or his own root
-            strict = obeys(erows, ua, column)
-            loose = strict or obeys(erows, ua, column, final_loss=True)
-            if not loose:
-                continue
-            near = (
-                level == 2
-                or min(closeness(g, rec["ua_gloss"], keyed, links) for g in e["glosses"]) <= level
-            )
-            counts["sound"] += strict
-            counts["both"] += strict and near
-            counts["sound_final_loss"] += 1
-            counts["both_final_loss"] += near
+        counts = alternatives(rows, ua, column, level, rec["ua_gloss"], lex[source], keyed, links)
         rec["alternatives_lexicon"] = source
         rec["alternatives_sound"] = counts["sound"]
         rec["alternatives"] = counts["both"]
@@ -1122,6 +1131,236 @@ def _his_way_summary(records: list[dict], found: int, frame: int, lex: dict) -> 
             for r in records
         ],  # fmt: skip
     }
+
+
+# ---------------------------------------------------------------------------------------------
+# Step 1 with the judged readings (card section 2026-11-23; simulated judging)
+
+_MODEL_STRATUM = {"semitic-kw": "kw", "semitic-p": "p", "egyptian": "e"}
+_RATINGS = ("SAME", "RELATED", "DISTANT")
+
+
+def parse_answer(row: dict) -> dict | str | None:
+    """A judge reply: a set reading (dict), a rating (str), or None when it cannot be read."""
+    text = (row.get("reply") or "").strip()
+    if row["id"].startswith("gloss-"):
+        word = re.sub(r"[^A-Z]", "", text.upper())
+        return word if word in _RATINGS else None
+    m = re.search(r"\{.*\}", text, re.S)
+    try:
+        obj = json.loads(m.group(0)) if m else None
+    except json.JSONDecodeError:
+        return None
+    keys = ("ne_language", "ne_form", "ne_gloss", "ua_form", "ua_gloss", "stratum")
+    if not isinstance(obj, dict) or not all(k in obj for k in keys):
+        return None
+    return obj
+
+
+def judged_record(rec: dict, reading: dict, table: dict, max_positions: int) -> dict:
+    """Step 1's rule check on a set as the model read it (his tags and rule stratum first)."""
+    said = str(reading.get("stratum") or "").strip().lower()
+    model_stratum = _MODEL_STRATUM.get(said)
+    stratum = rec.get("stratum") or model_stratum
+    res = {
+        "set": rec["set"],
+        "rule_stratum": rec.get("stratum"),
+        "model_stratum": model_stratum,
+        "stratum": stratum,
+        "ne_gloss": reading.get("ne_gloss") or "",
+        "ua_gloss": reading.get("ua_gloss") or "",
+    }
+    codes = {int(k): v for k, v in (rec.get("codes") or {}).items()}
+
+    def skeleton(column: dict) -> list[str | None]:
+        if codes:
+            return [table_row(codes[q], column) for q in sorted(codes) if q <= max_positions]
+        syms = ne_symbols(str(reading.get("ne_form") or ""))
+        return [table_row(c, column) for c in syms][:max_positions]
+
+    column = table.get(stratum or "", {})
+    rows = skeleton(column)
+    res["skeleton_from"] = "his tags" if codes else "model form"
+    ua = ua_symbols(str(reading.get("ua_form") or ""))
+    res["ne_rows"], res["ua_symbols"] = rows, ua
+    readable = bool(stratum and column and rows and ua and res["ne_gloss"] and res["ua_gloss"])
+    res["readable"] = readable and None not in rows
+    if res["readable"]:
+        res["obeys_table"] = obeys(rows, ua, column)
+        res["obeys_first"] = obeys(rows[:1], ua, column)
+    elif stratum is None and said == "unclear" and ua:
+        # Beside, the reading most generous to him: either Semitic column.
+        either = [
+            obeys(r, ua, table[col])
+            for col in ("kw", "p")
+            if (r := skeleton(table[col])) and None not in r
+        ]
+        res["unclear_checkable_semitic"] = bool(either)
+        res["unclear_obeys_either_semitic"] = any(either)
+    return res
+
+
+def _spread(xs: list[int]) -> dict:
+    xs = sorted(xs)
+    if not xs:
+        return {"n": 0}
+    return {
+        "n": len(xs),
+        "median": xs[len(xs) // 2],
+        "quartiles": [xs[len(xs) // 4], xs[3 * len(xs) // 4]],
+        "none": sum(x == 0 for x in xs),
+        "ten_or_more": sum(x >= 10 for x in xs),
+    }
+
+
+def judged_summary(records, answers, table, lex, keyed, links, h) -> tuple[dict, list[dict]]:
+    """Public counts and private per-set rows for the judged readings (card 2026-11-23)."""
+    level_of = h["judged"]["rating_level"]
+    parsed = {a["id"]: parse_answer(a) for a in answers}
+    unparsed = sorted(k for k, v in parsed.items() if v is None)
+    rule = [r for r in records if r["machine_readable"]]
+    judged, private = [], []
+    for rec in records:
+        if rec["machine_readable"]:
+            continue
+        reading = parsed.get(f"set-{rec['set']}")
+        if not isinstance(reading, dict):
+            continue
+        j = judged_record(rec, reading, table, h["max_positions"])
+        if j["readable"]:
+            column = table[j["stratum"]]
+            j["meaning_level"] = closeness(j["ne_gloss"], j["ua_gloss"], keyed, links)
+            source = "cdo" if j["stratum"] == "e" else "oshl"
+            c = alternatives(
+                j["ne_rows"], j["ua_symbols"], column, j["meaning_level"], j["ua_gloss"],
+                lex[source], keyed, links,
+            )  # fmt: skip
+            j["alternatives_lexicon"], j["alternatives"] = source, c["both"]
+        judged.append(j)
+        private.append(j)
+    read = [j for j in judged if j["readable"]]
+    both = rule + read
+
+    def obey(rs):
+        return {
+            "sets": len(rs),
+            "obey_every_position": sum(bool(r["obeys_table"]) for r in rs),
+            "obey_first_consonant": sum(bool(r["obeys_first"]) for r in rs),
+        }
+
+    agree = [j for j in judged if j["rule_stratum"] and j["model_stratum"]]
+    unclear = [j for j in judged if "unclear_checkable_semitic" in j]
+    why = Counter()
+    for j in judged:
+        if j["readable"]:
+            continue
+        if not j["stratum"]:
+            why["no stratum (model: unclear or none)"] += 1
+        elif not j["ne_rows"] or None in j["ne_rows"]:
+            why["Near Eastern consonants not in his table"] += 1
+        elif not j["ua_symbols"]:
+            why["no Uto-Aztecan consonants"] += 1
+        else:
+            why["a gloss missing"] += 1
+    # The 71 gloss ratings against the rule's levels.
+    cross: dict[str, dict[str, int]] = {str(lv): dict.fromkeys(_RATINGS, 0) for lv in (0, 1, 2)}
+    closer = same = looser = 0
+    tightened, tightened_rows = [], []
+    for r in rule:
+        rating = parsed.get(f"gloss-{r['set']}")
+        if not isinstance(rating, str):
+            continue
+        cross[str(r["meaning_level"])][rating] += 1
+        mapped = level_of[rating]
+        closer += mapped < r["meaning_level"]
+        same += mapped == r["meaning_level"]
+        looser += mapped > r["meaning_level"]
+        level = min(mapped, r["meaning_level"])
+        if level == r["meaning_level"]:
+            tightened.append(r["alternatives"])
+            continue
+        column = table[r["stratum"]]
+        source = "cdo" if r["stratum"] == "e" else "oshl"
+        c = alternatives(
+            r["ne_rows"], r["ua_symbols"], column, level, r["ua_gloss"], lex[source], keyed, links
+        )
+        tightened.append(c["both"])
+        tightened_rows.append({"set": r["set"], "level": level, "alternatives": c["both"]})
+    ratings = Counter(v for k, v in parsed.items() if k.startswith("gloss-") and isinstance(v, str))
+    public = {
+        "label": "simulated judging: a model (sonnet, lab.judge) read the sets, not a person",
+        "answers": len(answers),
+        "unparsed": unparsed,
+        "judged_sets": {
+            "asked": sum(1 for r in records if not r["machine_readable"]),
+            "answered": len(judged),
+            "read": len(read),
+            "not_read": dict(why),
+            "model_stratum": dict(Counter(j["model_stratum"] or "unclear" for j in judged)),
+            "stratum_used": dict(Counter(j["stratum"] or "none" for j in judged)),
+            "skeleton_from": dict(Counter(j["skeleton_from"] for j in read)),
+            "rule_and_model_stratum_both": len(agree),
+            "rule_and_model_stratum_agree": sum(
+                j["rule_stratum"] == j["model_stratum"] for j in agree
+            ),
+            **obey(read),
+            "meaning_levels": dict(Counter(j["meaning_level"] for j in read)),
+            "alternatives": _spread([j["alternatives"] for j in read]),
+            "per_set": [
+                {
+                    k: j.get(k)
+                    for k in (
+                        "set",
+                        "stratum",
+                        "readable",
+                        "skeleton_from",
+                        "obeys_table",
+                        "obeys_first",
+                        "meaning_level",
+                        "alternatives",
+                    )
+                }
+                for j in judged
+            ],  # fmt: skip
+        },
+        "by_rule": obey(rule) | {"alternatives": _spread([r["alternatives"] for r in rule])},
+        "all_readable": obey(both) | {"alternatives": _spread([r["alternatives"] for r in both])},
+        "unclear_beside": {
+            "sets": len(unclear),
+            "checkable_under_a_semitic_column": sum(
+                j["unclear_checkable_semitic"] for j in unclear
+            ),
+            "obey_under_either_semitic_column": sum(
+                j["unclear_obeys_either_semitic"] for j in unclear
+            ),
+        },
+        "gloss_ratings": {
+            "counts": {k: ratings.get(k, 0) for k in _RATINGS},
+            "rating_level": level_of,
+            "rule_level_by_rating": cross,
+            "model_closer_than_rule": closer,
+            "model_same_as_rule": same,
+            "model_looser_than_rule": looser,
+            "alternatives_with_closer_of_rule_and_model": _spread(tightened),
+            "sets_tightened": [t["set"] for t in tightened_rows],
+        },
+    }
+    return public, private
+
+
+def his_way_judged(cfg: dict) -> tuple[dict, list[dict]]:
+    """Load the step-1 records, the judge answers and the lexicons; summarise (card 2026-11-23)."""
+    h = cfg["lab"]["utoaztecan"]["his_way"]
+    records = [json.loads(x) for x in (PRIV / "his_way_sample.jsonl").read_text().splitlines() if x]
+    answers = [
+        json.loads(x)
+        for x in (PRIV / "answers_his_way.jsonl").read_text().splitlines()
+        if x.strip()
+    ]
+    table = parse_table(stubbs_text())
+    keyed, links = clics_graph(h["clics_min_families"])
+    lex = {"oshl": strong_entries(), "cdo": coptic_entries()}
+    return judged_summary(records, answers, table, lex, keyed, links, h)
 
 
 def claimed_meanings(lines: list[str], data: Data) -> set[str]:
@@ -1440,7 +1679,10 @@ def _stamp(res: dict) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["his-way", "check", "run", "vocabulary", "vocabulary-rerun"])
+    ap.add_argument(
+        "cmd",
+        choices=["his-way", "his-way-judged", "check", "run", "vocabulary", "vocabulary-rerun"],
+    )
     a = ap.parse_args(argv)
     if a.cmd == "vocabulary":
         from lab import utoaztecan_vocab
@@ -1456,6 +1698,15 @@ def main(argv: list[str] | None = None) -> int:
         _write_private(records, jobs)
         out(OUT / "his_way.json").write_text(json.dumps(_stamp(public), indent=1) + "\n")
         print(json.dumps({k: v for k, v in public.items() if k not in ("per_set",)}, indent=1))
+        return 0
+    if a.cmd == "his-way-judged":
+        public, private = his_way_judged(cfg)
+        lines = "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in private)
+        out(PRIV / "his_way_judged.jsonl").write_text(lines, encoding="utf-8")
+        out(OUT / "his_way_judged.json").write_text(json.dumps(_stamp(public), indent=1) + "\n")
+        brief = {k: v for k, v in public.items() if k != "judged_sets"}
+        print(json.dumps(brief | {"judged": {k: v for k, v in public["judged_sets"].items()
+                                             if k != "per_set"}}, indent=1))  # fmt: skip
         return 0
     if a.cmd == "check":
         res = _stamp(check(cfg))

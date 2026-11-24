@@ -2458,6 +2458,8 @@ lab:                              # the research lab (exploratory tooling; reads
       sample_sets: 150             # sets drawn at random from all numbered sets found
       max_positions: 3             # Near Eastern consonants compared at most (a root's three)
       clics_min_families: 3        # two meanings "linked" when colexified in at least this many families (CLICS3)
+      judged:                      # the model's readings of step 1 (simulated judging; card section 2026-11-23, written before scoring)
+        rating_level: {SAME: 0, RELATED: 1, DISTANT: 2}   # model's gloss rating set beside the rule's meaning level
     shuffles: 10000                # meaning permutations per test (Kessler)
     alpha: 0.01                    # detection and target bar (one-sided, permutation p)
     decoy_alpha: 0.05              # hard decoys must give p above this
