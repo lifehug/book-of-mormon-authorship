@@ -1,0 +1,2083 @@
+{
+ "check": {
+  "passed": {
+   "extractor": false,
+   "part_a": false,
+   "their_way": false
+  },
+  "agreement": {
+   "items": 522,
+   "observed_agreement": 0.387,
+   "kappa": 0.2594,
+   "bar": 0.7,
+   "passed": false
+  },
+  "part_a_check": {
+   "bible_passes": false,
+   "known_texts_passing": 0,
+   "weak_only_unspecific": true,
+   "rotation_check": false,
+   "passed": false
+  }
+ },
+ "their_way": {
+  "own_check_passed": false,
+  "rebuilt_from_book": {
+   "points_rebuilt": 2,
+   "points": {
+    "1_isthmus": {
+     "rebuilt": false,
+     "features_found": 3,
+     "features": 7,
+     "found": [
+      {
+       "feature": {
+        "kind": "neck",
+        "a": "narrow neck",
+        "water_sides": "E-W",
+        "width_usd": 4
+       },
+       "refs": [
+        "Alma 13 para 871 #2",
+        "Alma 30 para 1108",
+        "Ether 4 para 1341 #1"
+       ]
+      },
+      {
+       "feature": {
+        "kind": "water",
+        "a": "east sea"
+       },
+       "refs": [
+        "Alma 13 para 871 #2",
+        "Alma 22 para 1000 #1",
+        "Alma 22 para 999",
+        "Alma 24 para 1021"
+       ]
+      },
+      {
+       "feature": {
+        "kind": "water",
+        "a": "west sea"
+       },
+       "refs": [
+        "Alma 13 para 871 #2",
+        "Alma 22 para 999",
+        "Alma 24 para 1020",
+        "Alma 24 para 1021",
+        "Alma 24 para 1035",
+        "Alma 24 para 1039",
+        "Alma 30 para 1108",
+        "Helaman 2 para 1129"
+       ]
+      }
+     ],
+     "missing": [
+      {
+       "feature": {
+        "kind": "direction",
+        "a": "east sea",
+        "b": "narrow neck",
+        "dir": "E",
+        "usd": [
+         0,
+         4
+        ]
+       },
+       "refs": []
+      },
+      {
+       "feature": {
+        "kind": "direction",
+        "a": "west sea",
+        "b": "narrow neck",
+        "dir": "W",
+        "usd": [
+         0,
+         4
+        ]
+       },
+       "refs": []
+      },
+      {
+       "feature": {
+        "kind": "direction",
+        "a": "land northward",
+        "b": "narrow neck",
+        "dir": "N"
+       },
+       "refs": []
+      },
+      {
+       "feature": {
+        "kind": "direction",
+        "a": "land southward",
+        "b": "narrow neck",
+        "dir": "S"
+       },
+       "refs": []
+      }
+     ]
+    },
+    "2_coastlines": {
+     "rebuilt": true,
+     "features_found": 3,
+     "features": 3,
+     "found": [
+      {
+       "feature": {
+        "kind": "sea",
+        "a": "Zarahemla",
+        "side": "W",
+        "usd_max": 6.5
+       },
+       "refs": [
+        "Alma 13 para 871 #2"
+       ]
+      },
+      {
+       "feature": {
+        "kind": "sea",
+        "a": "Nephi",
+        "side": "W",
+        "usd_max": 6.5
+       },
+       "refs": [
+        "Alma 13 para 871 #1",
+        "Alma 13 para 871 #2"
+       ]
+      },
+      {
+       "feature": {
+        "kind": "sea",
+        "a": "Moroni",
+        "side": "E",
+        "usd_max": 1
+       },
+       "refs": [
+        "3 Nephi 4 para 1215",
+        "3 Nephi 4 para 1219 #1",
+        "Alma 22 para 1000 #1",
+        "Alma 23 para 1011",
+        "Alma 29 para 1096"
+       ]
+      }
+     ],
+     "missing": []
+    },
+    "3_wilderness": {
+     "rebuilt": false,
+     "features_found": 0,
+     "features": 5,
+     "found": [],
+     "missing": [
+      {
+       "feature": {
+        "kind": "direction",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "dir": "W",
+        "usd": [
+         0.5,
+         4
+        ]
+       },
+       "refs": []
+      },
+      {
+       "feature": {
+        "kind": "direction",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "dir": "E",
+        "usd": [
+         1,
+         4
+        ]
+       },
+       "refs": []
+      },
+      {
+       "feature": {
+        "kind": "higher",
+        "a": "west wilderness",
+        "b": "east wilderness"
+       },
+       "refs": []
+      },
+      {
+       "feature": {
+        "kind": "higher",
+        "a": "west wilderness",
+        "b": "Zarahemla"
+       },
+       "refs": []
+      },
+      {
+       "feature": {
+        "kind": "higher",
+        "a": "east wilderness",
+        "b": "Zarahemla"
+       },
+       "refs": []
+      }
+     ]
+    },
+    "4_valleys": {
+     "rebuilt": true,
+     "features_found": 2,
+     "features": 2,
+     "found": [
+      {
+       "feature": {
+        "kind": "river",
+        "river": "Sidon",
+        "a": "Zarahemla",
+        "role": "bank"
+       },
+       "refs": [
+        "Alma 1 para 752",
+        "Mormon 1 para 1301 #1"
+       ]
+      },
+      {
+       "feature": {
+        "kind": "higher",
+        "a": "Nephi",
+        "b": "Zarahemla"
+       },
+       "refs": [
+        "Alma 12 para 831",
+        "Alma 14 para 884 #2",
+        "Mosiah 6 para 638",
+        "Omni 1 para 588"
+       ]
+      }
+     ],
+     "missing": []
+    },
+    "5_river": {
+     "rebuilt": false,
+     "features_found": 1,
+     "features": 3,
+     "found": [
+      {
+       "feature": {
+        "kind": "river",
+        "river": "Sidon",
+        "a": "Manti",
+        "role": "source"
+       },
+       "refs": [
+        "Alma 13 para 871 #1"
+       ]
+      }
+     ],
+     "missing": [
+      {
+       "feature": {
+        "kind": "flows",
+        "river": "Sidon",
+        "toward": "N"
+       },
+       "refs": []
+      },
+      {
+       "feature": {
+        "kind": "direction",
+        "a": "Manti",
+        "b": "Zarahemla",
+        "dir": "S"
+       },
+       "refs": []
+      }
+     ]
+    },
+    "6_lake": {
+     "rebuilt": false,
+     "features_found": 1,
+     "features": 2,
+     "found": [
+      {
+       "feature": {
+        "kind": "water",
+        "a": "waters of Mormon"
+       },
+       "refs": [
+        "Mosiah 9 para 689"
+       ]
+      }
+     ],
+     "missing": [
+      {
+       "feature": {
+        "kind": "days",
+        "a": "waters of Mormon",
+        "b": "Nephi",
+        "usd": [
+         0,
+         2
+        ]
+       },
+       "refs": []
+      }
+     ]
+    },
+    "7_zarahemla": {
+     "rebuilt": false,
+     "features_found": 0,
+     "features": 1,
+     "found": [],
+     "missing": [
+      {
+       "feature": {
+        "kind": "direction",
+        "a": "Bountiful",
+        "b": "Zarahemla",
+        "dir": "N",
+        "usd": [
+         2,
+         10
+        ]
+       },
+       "refs": []
+      }
+     ]
+    },
+    "8_nephi": {
+     "rebuilt": false,
+     "features_found": 0,
+     "features": 1,
+     "found": [],
+     "missing": [
+      {
+       "feature": {
+        "kind": "direction",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "dir": "S",
+        "usd": [
+         9,
+         9
+        ]
+       },
+       "refs": []
+      }
+     ]
+    },
+    "9_bountiful": {
+     "rebuilt": false,
+     "features_found": 1,
+     "features": 3,
+     "found": [
+      {
+       "feature": {
+        "kind": "sea",
+        "a": "Bountiful",
+        "side": "E",
+        "usd_max": 1.5
+       },
+       "refs": [
+        "1 Nephi 5 para 328",
+        "Alma 13 para 872"
+       ]
+      }
+     ],
+     "missing": [
+      {
+       "feature": {
+        "kind": "days",
+        "a": "Bountiful",
+        "b": "narrow neck",
+        "usd": [
+         0,
+         1.5
+        ]
+       },
+       "refs": []
+      },
+      {
+       "feature": {
+        "kind": "direction",
+        "a": "Moroni",
+        "b": "Bountiful",
+        "dir": "S",
+        "usd": [
+         5,
+         5
+        ]
+       },
+       "refs": []
+      }
+     ]
+    },
+    "10_cumorah": {
+     "rebuilt": false,
+     "features_found": 0,
+     "features": 2,
+     "found": [],
+     "missing": [
+      {
+       "feature": {
+        "kind": "direction",
+        "a": "Cumorah",
+        "b": "Bountiful",
+        "dir": "N",
+        "usd": [
+         0,
+         8
+        ]
+       },
+       "refs": []
+      },
+      {
+       "feature": {
+        "kind": "sea",
+        "a": "Cumorah",
+        "side": "E",
+        "usd_max": 1.5
+       },
+       "refs": []
+      }
+     ]
+    }
+   }
+  },
+  "grades": {
+   "mesoamerica_tehuantepec": {
+    "-1": {
+     "1_isthmus": {
+      "verdict": "fail",
+      "features": [
+       {
+        "kind": "neck",
+        "a": "narrow neck",
+        "b": null,
+        "grade": "fail"
+       },
+       {
+        "kind": "water",
+        "a": "east sea",
+        "b": null,
+        "grade": "pass"
+       },
+       {
+        "kind": "water",
+        "a": "west sea",
+        "b": null,
+        "grade": "pass"
+       },
+       {
+        "kind": "days",
+        "a": "east sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "east sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "days",
+        "a": "west sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "west sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "land northward",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "land southward",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "2_coastlines": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "sea",
+        "a": "Zarahemla",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Nephi",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Moroni",
+        "b": null,
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "3_wilderness": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "west wilderness",
+        "b": "east wilderness",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "4_valleys": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "river",
+        "a": "Zarahemla",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "5_river": {
+      "verdict": "pass on what can be graded",
+      "features": [
+       {
+        "kind": "river",
+        "a": "Manti",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "flows",
+        "a": "Sidon",
+        "b": null,
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "Manti",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "6_lake": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "water",
+        "a": "waters of Mormon",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "waters of Mormon",
+        "b": "Nephi",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "7_zarahemla": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Bountiful",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Bountiful",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "8_nephi": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "9_bountiful": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Bountiful",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "Moroni",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Moroni",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Bountiful",
+        "b": null,
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "10_cumorah": {
+      "verdict": "pass on what can be graded",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Cumorah",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Cumorah",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Cumorah",
+        "b": null,
+        "grade": "pass"
+       }
+      ]
+     }
+    },
+    "-2": {
+     "1_isthmus": {
+      "verdict": "fail",
+      "features": [
+       {
+        "kind": "neck",
+        "a": "narrow neck",
+        "b": null,
+        "grade": "fail"
+       },
+       {
+        "kind": "water",
+        "a": "east sea",
+        "b": null,
+        "grade": "pass"
+       },
+       {
+        "kind": "water",
+        "a": "west sea",
+        "b": null,
+        "grade": "pass"
+       },
+       {
+        "kind": "days",
+        "a": "east sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "east sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "days",
+        "a": "west sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "west sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "land northward",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "land southward",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "2_coastlines": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "sea",
+        "a": "Zarahemla",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Nephi",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Moroni",
+        "b": null,
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "3_wilderness": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "west wilderness",
+        "b": "east wilderness",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "4_valleys": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "river",
+        "a": "Zarahemla",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "5_river": {
+      "verdict": "fail",
+      "features": [
+       {
+        "kind": "river",
+        "a": "Manti",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "flows",
+        "a": "Sidon",
+        "b": null,
+        "grade": "fail"
+       },
+       {
+        "kind": "direction",
+        "a": "Manti",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "6_lake": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "water",
+        "a": "waters of Mormon",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "waters of Mormon",
+        "b": "Nephi",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "7_zarahemla": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Bountiful",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Bountiful",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "8_nephi": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "9_bountiful": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Bountiful",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "Moroni",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Moroni",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Bountiful",
+        "b": null,
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "10_cumorah": {
+      "verdict": "pass on what can be graded",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Cumorah",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Cumorah",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Cumorah",
+        "b": null,
+        "grade": "pass"
+       }
+      ]
+     }
+    }
+   },
+   "great_lakes_niagara": {
+    "0": {
+     "1_isthmus": {
+      "verdict": "fail",
+      "features": [
+       {
+        "kind": "neck",
+        "a": "narrow neck",
+        "b": null,
+        "grade": "fail"
+       },
+       {
+        "kind": "water",
+        "a": "east sea",
+        "b": null,
+        "grade": "pass"
+       },
+       {
+        "kind": "water",
+        "a": "west sea",
+        "b": null,
+        "grade": "pass"
+       },
+       {
+        "kind": "days",
+        "a": "east sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "east sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "days",
+        "a": "west sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "west sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "land northward",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "land southward",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "2_coastlines": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "sea",
+        "a": "Zarahemla",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Nephi",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Moroni",
+        "b": null,
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "3_wilderness": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "west wilderness",
+        "b": "east wilderness",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "4_valleys": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "river",
+        "a": "Zarahemla",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "5_river": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "river",
+        "a": "Manti",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "flows",
+        "a": "Sidon",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Manti",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "6_lake": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "water",
+        "a": "waters of Mormon",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "waters of Mormon",
+        "b": "Nephi",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "7_zarahemla": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Bountiful",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Bountiful",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "8_nephi": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "9_bountiful": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Bountiful",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "Moroni",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Moroni",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Bountiful",
+        "b": null,
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "10_cumorah": {
+      "verdict": "fail",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Cumorah",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Cumorah",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Cumorah",
+        "b": null,
+        "grade": "fail"
+       }
+      ]
+     }
+    }
+   },
+   "heartland": {
+    "0": {
+     "1_isthmus": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "neck",
+        "a": "narrow neck",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "water",
+        "a": "east sea",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "water",
+        "a": "west sea",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "east sea",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "east sea",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "west sea",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "west sea",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "land northward",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "land southward",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "2_coastlines": {
+      "verdict": "fail",
+      "features": [
+       {
+        "kind": "sea",
+        "a": "Zarahemla",
+        "b": null,
+        "grade": "fail"
+       },
+       {
+        "kind": "sea",
+        "a": "Nephi",
+        "b": null,
+        "grade": "fail"
+       },
+       {
+        "kind": "sea",
+        "a": "Moroni",
+        "b": null,
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "3_wilderness": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "west wilderness",
+        "b": "east wilderness",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "4_valleys": {
+      "verdict": "pass",
+      "features": [
+       {
+        "kind": "river",
+        "a": "Zarahemla",
+        "b": null,
+        "grade": "pass"
+       },
+       {
+        "kind": "higher",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "pass"
+       }
+      ]
+     },
+     "5_river": {
+      "verdict": "fail",
+      "features": [
+       {
+        "kind": "river",
+        "a": "Manti",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "flows",
+        "a": "Sidon",
+        "b": null,
+        "grade": "fail"
+       },
+       {
+        "kind": "direction",
+        "a": "Manti",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "6_lake": {
+      "verdict": "fail",
+      "features": [
+       {
+        "kind": "water",
+        "a": "waters of Mormon",
+        "b": null,
+        "grade": "fail"
+       },
+       {
+        "kind": "days",
+        "a": "waters of Mormon",
+        "b": "Nephi",
+        "grade": "fail"
+       }
+      ]
+     },
+     "7_zarahemla": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Bountiful",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Bountiful",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "8_nephi": {
+      "verdict": "fail",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "fail"
+       },
+       {
+        "kind": "direction",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "fail"
+       }
+      ]
+     },
+     "9_bountiful": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Bountiful",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "Moroni",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Moroni",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Bountiful",
+        "b": null,
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "10_cumorah": {
+      "verdict": "fail",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Cumorah",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Cumorah",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Cumorah",
+        "b": null,
+        "grade": "fail"
+       }
+      ]
+     }
+    }
+   },
+   "hemispheric_panama": {
+    "0": {
+     "1_isthmus": {
+      "verdict": "fail",
+      "features": [
+       {
+        "kind": "neck",
+        "a": "narrow neck",
+        "b": null,
+        "grade": "fail"
+       },
+       {
+        "kind": "water",
+        "a": "east sea",
+        "b": null,
+        "grade": "pass"
+       },
+       {
+        "kind": "water",
+        "a": "west sea",
+        "b": null,
+        "grade": "pass"
+       },
+       {
+        "kind": "days",
+        "a": "east sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "east sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "days",
+        "a": "west sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "west sea",
+        "b": "narrow neck",
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "land northward",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "land southward",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "2_coastlines": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "sea",
+        "a": "Zarahemla",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Nephi",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Moroni",
+        "b": null,
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "3_wilderness": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "west wilderness",
+        "b": "east wilderness",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "west wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "east wilderness",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "4_valleys": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "river",
+        "a": "Zarahemla",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "higher",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "5_river": {
+      "verdict": "pass on what can be graded",
+      "features": [
+       {
+        "kind": "river",
+        "a": "Manti",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "flows",
+        "a": "Sidon",
+        "b": null,
+        "grade": "pass"
+       },
+       {
+        "kind": "direction",
+        "a": "Manti",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "6_lake": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "water",
+        "a": "waters of Mormon",
+        "b": null,
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "waters of Mormon",
+        "b": "Nephi",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "7_zarahemla": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Bountiful",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Bountiful",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "8_nephi": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Nephi",
+        "b": "Zarahemla",
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "9_bountiful": {
+      "verdict": "cannot grade",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Bountiful",
+        "b": "narrow neck",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "days",
+        "a": "Moroni",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Moroni",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Bountiful",
+        "b": null,
+        "grade": "cannot grade"
+       }
+      ]
+     },
+     "10_cumorah": {
+      "verdict": "fail",
+      "features": [
+       {
+        "kind": "days",
+        "a": "Cumorah",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "direction",
+        "a": "Cumorah",
+        "b": "Bountiful",
+        "grade": "cannot grade"
+       },
+       {
+        "kind": "sea",
+        "a": "Cumorah",
+        "b": null,
+        "grade": "fail"
+       }
+      ]
+     }
+    }
+   }
+  }
+ },
+ "part_a": "not scored: the extractor or Part A known-answer check missed its bar",
+ "part_b": {
+  "book_statements": 28,
+  "texts": {
+   "kjv_narrative": {
+    "statements": 104,
+    "rate": 0.0,
+    "rigidity": 0.14636532739397964,
+    "opportunities": 0.035,
+    "subsampled": true,
+    "groups": [
+     "known",
+     "real"
+    ]
+   },
+   "josephus_war": {
+    "statements": 60,
+    "rate": null,
+    "rigidity": 0.08694886113725193,
+    "opportunities": 0.0,
+    "subsampled": true,
+    "groups": [
+     "known",
+     "real"
+    ]
+   },
+   "xenophon_1813": {
+    "statements": 49,
+    "rate": 0.7294117647058823,
+    "rigidity": 0.16674584184693997,
+    "opportunities": 0.815,
+    "subsampled": true,
+    "groups": [
+     "known",
+     "real"
+    ]
+   },
+   "lewis_clark_1814": {
+    "statements": 91,
+    "rate": 1.0,
+    "rigidity": 0.08918013142906585,
+    "opportunities": 0.15,
+    "subsampled": true,
+    "groups": [
+     "known",
+     "real"
+    ]
+   },
+   "hunt_late_war_1816": {
+    "statements": 22,
+    "rate": null,
+    "rigidity": 0.0781758957654723,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "known",
+     "real_bible_style"
+    ]
+   },
+   "carver_1781": {
+    "statements": 67,
+    "rate": 0.0,
+    "rigidity": 0.04738696558538709,
+    "opportunities": 0.595,
+    "subsampled": true,
+    "groups": [
+     "real"
+    ]
+   },
+   "pike_1810": {
+    "statements": 158,
+    "rate": 0.06547619047619048,
+    "rigidity": 0.0704626081140838,
+    "opportunities": 0.975,
+    "subsampled": true,
+    "groups": [
+     "real"
+    ]
+   },
+   "mackenzie_1801": {
+    "statements": 42,
+    "rate": 0.0,
+    "rigidity": 0.051947247058549265,
+    "opportunities": 0.95,
+    "subsampled": true,
+    "groups": [
+     "real"
+    ]
+   },
+   "park_1799": {
+    "statements": 308,
+    "rate": 0.0,
+    "rigidity": 0.06844560084059007,
+    "opportunities": 0.23,
+    "subsampled": true,
+    "groups": [
+     "real"
+    ]
+   },
+   "napoleon_1809": {
+    "statements": 0,
+    "rate": null,
+    "rigidity": null,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "real_bible_style"
+    ]
+   },
+   "spalding_manuscript": {
+    "statements": 4,
+    "rate": null,
+    "rigidity": 0.75,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "invented"
+    ]
+   },
+   "gulliver": {
+    "statements": 9,
+    "rate": null,
+    "rigidity": 0.15555555555555556,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "invented"
+    ]
+   },
+   "peter_wilkins_1783": {
+    "statements": 1,
+    "rate": null,
+    "rigidity": 1.0,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "invented"
+    ]
+   },
+   "niels_klim_1828": {
+    "statements": 1,
+    "rate": null,
+    "rigidity": null,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "invented"
+    ]
+   },
+   "utopia_1795": {
+    "statements": 3,
+    "rate": null,
+    "rigidity": 0.75,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "invented"
+    ]
+   },
+   "treasure_island": {
+    "statements": 2,
+    "rate": null,
+    "rigidity": 0.3333333333333333,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "invented"
+    ]
+   },
+   "mysterious_island": {
+    "statements": 16,
+    "rate": 1.0,
+    "rigidity": 0.2602739726027397,
+    "opportunities": 6,
+    "subsampled": false,
+    "groups": [
+     "invented"
+    ]
+   },
+   "oz_wizard": {
+    "statements": 2,
+    "rate": null,
+    "rigidity": 1.0,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "invented"
+    ]
+   },
+   "oz_land": {
+    "statements": 1,
+    "rate": null,
+    "rigidity": 1.0,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "invented"
+    ]
+   },
+   "princess_of_mars": {
+    "statements": 1,
+    "rate": null,
+    "rigidity": 1.0,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "invented"
+    ]
+   },
+   "captain_singleton": {
+    "statements": 14,
+    "rate": null,
+    "rigidity": 0.09929078014184398,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "never_visited"
+    ]
+   },
+   "abraham_1842": {
+    "statements": 1,
+    "rate": null,
+    "rigidity": 1.0,
+    "opportunities": 0,
+    "subsampled": false,
+    "groups": [
+     "control"
+    ]
+   }
+  },
+  "real_texts": 7,
+  "invented_texts": 1,
+  "auc": 0.9285714285714286,
+  "discriminates": false,
+  "book": {
+   "book_of_mormon": {
+    "statements": 29,
+    "opportunities": 2,
+    "contradictions": 0,
+    "rate": 0.0,
+    "rigidity": 0.13227513227513227,
+    "placed": "no verdict: Part B does not discriminate in this panel"
+   },
+   "book_of_mormon_without_quoted": {
+    "statements": 29,
+    "opportunities": 2,
+    "contradictions": 0,
+    "rate": 0.0,
+    "rigidity": 0.13227513227513227,
+    "placed": "no verdict: Part B does not discriminate in this panel"
+   }
+  }
+ },
+ "config_sha256": "7b1deccf3e3c4102cb0620c382e6787bff683eaaa83f49b87f12eef0004edfac",
+ "commit": "54e91996267a23c9577e20adb8f1d45587424cc3",
+ "date": "2026-11-23"
+}

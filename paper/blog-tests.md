@@ -123,7 +123,7 @@ compares against.
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | **Counts done; reader's check passed; reading queued** |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
-| BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions; second design on real terrain | **Both designs' checks failed; not scored on fit; consistency part queued** |
+| BOM-116 | Its geography fits Mesoamerica, or the Great Lakes | Sorenson and others | argued from verses | every model against random regions; second design on real terrain | **Both designs' checks failed; not scored on fit; consistency cannot be compared (invented stories state too little geography)** |
 | BOM-117 | Uto-Aztecan languages carry Hebrew and Egyptian words | Stubbs 2015 | his pairing alone | his sets checked against his own rules; word lists against unrelated and borrowing pairs | **Yaqui-Coptic: no layer of the claimed size; the rest cannot tell** |
 
 ## Results so far
@@ -1521,7 +1521,23 @@ asks a different question: do real maps contradict themselves less often than in
 (*Gulliver*, *Treasure Island*, *The Mysterious Island*, Spalding's manuscript)? It has its own
 check: real and invented maps have to separate cleanly before the Book of Mormon is placed between
 them. A model is reading those texts now (3,687 questions, then 467 on the book). After that,
-Sorenson's placements, once the books are bought.
+Sorenson's placements, once the books are bought.**The consistency half, read.** The other half of the second design asked a different question:
+do real maps contradict themselves less than invented ones? Supporters often say the book's
+geography is remarkably consistent. That only means something if invented geographies are not.
+
+The model read every place passage in seven real first-hand travel accounts and ten invented
+stories. The real ones gave plenty: Park's African travels 308 statements, Pike 158, the Bible
+narrative 104. The invented ones gave almost nothing. *Gulliver* 9 statements. *Treasure Island*
+2. The Oz books 2 and 1. Spalding's manuscript 4. Only *The Mysterious Island*, with 16, gave
+enough for even one chance to contradict itself. The check needed six of each with a measurable
+rate and got seven real and one invented, so it gives no verdict.
+
+That is the finding. Invented stories in this set barely describe their geography at all, so
+"the Book of Mormon's geography never contradicts itself" has nothing to be compared with here. The
+book gave 29 statements, 2 chances to contradict, and 0 contradictions. A real comparison needs
+invented worlds that are described in detail, the kind built on purpose with maps.
+
+
 
 ### "Secret combinations" (BOM-123)
 
