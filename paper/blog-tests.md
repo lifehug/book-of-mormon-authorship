@@ -108,7 +108,7 @@ compares against.
 
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
-| BOM-104 | The Books of Moses and Abraham share the voice; Rigdon wrote the *Lectures on Faith* | Phipps 1977; Reynolds 2005 | small samples | the study's models and encoders | **Done, weak** |
+| BOM-104 | The Books of Moses and Abraham share the voice; Rigdon wrote the *Lectures on Faith* | Phipps 1977; Larsen, Rencher and Layton 1980; Reynolds 2005 | Phipps's samples (all three); read in the original, not yet rerun | the study's models and encoders | **Done, weak** |
 | BOM-105, BOM-99 | Smith's revelations and his letters look like two different writers | Holmes 1992; the first study | Smith alone | other writers with two voices (Southcott, Wroe, Trapnel, Snowden, Elias Smith) | **Done** on three measures; the author models do not give a stable answer |
 | BOM-100, BOM-101 | A model can be taught to see the person and not the scripture voice | this project | | the known-answer set from BOM-99 | BOM-100 **done: no gain**; BOM-101 **done: no gain at the size I could train** |
 
@@ -1647,21 +1647,56 @@ question really sits.
 
 ### Joseph Smith's other dictated texts, and the Lectures on Faith (BOM-104)
 
-**The claim.** Two questions that need the same tool. First: who wrote the seven Lectures on Faith,
-printed in 1835? Alan Phipps's 1977 study gave most of them to Sidney Rigdon and one to Joseph Smith
-(the summaries I have disagree on whether it is Lecture 2 or 5). Larsen and Rencher in 1982 largely
-agreed. Noel Reynolds in 2005 gave all seven to Rigdon. Second: do Smith's later dictated texts,
+**The claim.** Two questions that need the same tool. First: who wrote the
+seven Lectures on Faith, printed in 1835? Alan Phipps's 1977 master's thesis gave six of them to
+Sidney Rigdon, four of those with Joseph Smith editing, and Lecture 5 to Smith. Wayne Larsen, Alvin
+Rencher and Tim Layton in 1980 gave five to Rigdon, Lecture 2 to Smith and Lecture 5 to W. W. Phelps.
+So the "Lecture 2 or 5" puzzle I had from the summaries was really two studies giving different
+answers. Noel Reynolds in 2005 gave all seven to Rigdon. Second: do Smith's later dictated texts,
 the Book of Moses, the Book of Abraham and the revelations, sit near the Book of Mormon, near his
 ordinary writing, or near someone else?
 
-**Their way first.** Not replicated. Phipps's method I have not read (his thesis is held privately
-and not yet read), and Reynolds's paper is a historical argument with nothing to rerun. What I have
-of their answers is the summaries. So the comparison at the end is with what they are said to have
-found.
+**Their way first.** I now have all three studies in the original, and they are more alike than I
+thought.
+
+Phipps used the same five men I did: Smith, Rigdon, Oliver Cowdery, W. W. Phelps and Parley Pratt.
+A historian, Peter Crawley, had proposed them to him. He took about 12,000 words from each man (twice
+that for Smith) and cut the quotations out by hand. That left 12,006 words of lectures. He counted
+738 small words and phrases and used the 50 commonest. For each word and each pair of men, the
+question was simple: is the lectures' rate above or below the middle of the two men's 2,000-word
+blocks? Then he multiplied the odds together. Taken as one text, the lectures went to Rigdon over
+everyone: 291 to 1 over Smith, 1,694 to 1 over Cowdery, 174,883 to 1 over Pratt. Lecture by lecture
+it came apart. On Lecture 2, five of his six tests named Smith, but his final table still gives it
+to Rigdon, with Smith editing. As far as I can see, he never tried the method on writing whose
+author he already knew.
+
+Larsen's paper is mostly about the Book of Mormon, but a one-page appendix takes up the Lectures.
+They used Phipps's own computer disk for the five men, so the texts are his. The method was
+different: a discriminant analysis on eight words the computer picked from their list of 38. Their
+answer: Rigdon for 1, 3, 4, 6 and 7, at probabilities of .988 to 1.0. Smith for 2 at .524, with
+Rigdon second at .339. Phelps for 5 at .461, with Pratt next at .367. They put 88.9% of the men's
+own blocks back with the right man, but those were the blocks the method was built from. None was
+held back.
+
+Reynolds is mostly history, but not only that. He paid a reader to go through Rigdon's essays and
+pick out his habits of phrase. The reader found 38, things like "the sacred writers" and "saints of former
+days". They come 163 times in about 77,000 words of Rigdon, 98 times in the Lectures, and never in
+about 79,000 words of Smith's letters and diaries.
+
+Reading them taught me two things. Pratt was never a decoy. Phipps and Larsen both had him as a
+candidate, and he is Larsen's second choice for Lecture 5. And the "Rigdon" in all three studies is
+the same unsigned 1833 to 1835 newspaper series I added in my second try: Phipps's whole Rigdon
+sample, and the core of Reynolds's. Everyone, me included, takes that attribution on trust.
+
+So did I reproduce them? Not their numbers. I haven't rerun either method yet. But my answer reads
+almost exactly like Larsen's: Rigdon for 1, 3, 4, 6 and 7, and Smith for 2. For Lecture 5 I get
+Pratt, which is Larsen's second choice once Phelps, whom I had to drop, is out of the race. Against
+Phipps's final answer I agree on five of seven. That is a different method reaching a similar
+answer, partly from the same texts. It is not a second, independent confirmation.
 
 **What I tried.** Before asking who wrote the Lectures, I asked whether any measure could tell the
 candidates apart on writing I know is theirs. Five men: Smith, Rigdon, Oliver Cowdery, W. W. Phelps
-and Parley Pratt. Pratt is in as a decoy; no published study names him. Six measures: common words
+and Parley Pratt. Pratt I first called a decoy, thinking no published study named him; reading the originals later showed that Phipps and Larsen both had him as a candidate. Six measures: common words
 counted two ways, the study's two style encoders, and small author models at two training sizes.
 King James phrases were cut out of everything first.
 
@@ -1707,27 +1742,29 @@ one measure that barely qualified. Read it as a lean.
 
 **The result.**
 
-| Lecture | Closest | Next | Earlier studies say Rigdon |
-| --- | --- | --- | --- |
-| 1 | Rigdon | Pratt | agrees |
-| 2 | Smith | Pratt | differs |
-| 3 | Rigdon | Pratt | agrees |
-| 4 | Rigdon | Pratt | agrees |
-| 5 | Pratt | Smith | differs |
-| 6 | Rigdon | Pratt | agrees |
-| 7 | Rigdon | Pratt | agrees |
+| Lecture | Closest | Next | Phipps 1977 | Larsen 1980 |
+| --- | --- | --- | --- | --- |
+| 1 | Rigdon | Pratt | Rigdon | Rigdon |
+| 2 | Smith | Pratt | Rigdon, Smith editing | Smith (Rigdon close) |
+| 3 | Rigdon | Pratt | Rigdon, Smith editing? | Rigdon |
+| 4 | Rigdon | Pratt | Rigdon, Smith editing? | Rigdon |
+| 5 | Pratt | Smith | Smith | Phelps, then Pratt |
+| 6 | Rigdon | Pratt | Rigdon, Smith editing | Rigdon |
+| 7 | Rigdon | Pratt | Rigdon | Rigdon |
 
-Five of seven go to Rigdon, as the earlier studies said. Lecture 2 going to Smith matches one of
-the two readings of Phipps. But every margin is thin, and in Lectures 3 and 4 the 1,000-word pieces
+(Reynolds: Rigdon for all seven.)
+
+Five of seven go to Rigdon, as both earlier studies said. Lecture 2 going to Smith matches Larsen,
+and five of Phipps's six lecture-by-lecture tests, though not Phipps's final answer. But every margin is thin, and in Lectures 3 and 4 the 1,000-word pieces
 vote for Pratt even though the whole lecture goes to Rigdon. The runner-up is nearly always Pratt,
-the decoy, and Pratt also takes Lecture 5, the shortest at 650 words.
+whom no study chose for any lecture, and Pratt also takes Lecture 5, the shortest at 650 words.
 
 For the dictated texts, the same measure puts the revelations of 1828 to 1834 with Smith's own
 letters (47 of 52 pieces), the Book of Moses nearest the Book of Mormon, and the Book of Abraham
 nearest Pratt. None of these is firm enough to call by the rule I set. I see no drift away from the
 Book of Mormon over the years. Rigdon is never the closest to any of them.
 
-**What it means, and what it doesn't.** A decoy that keeps coming second is the measure recognising a
+**What it means, and what it doesn't.** A man no study chose who keeps coming second is the measure recognising a
 kind of writing, the doctrinal essay of the 1830s, more than a man. And the Rigdon text I added is
 that same kind, from those same years, which favours him on genre as much as on person. So: a lean
 toward Rigdon for most of the Lectures, on one measure that barely qualified. It neither settles the
@@ -1737,9 +1774,12 @@ On the dictated texts, the revelations sitting with Smith's letters by common wo
 contradict the main study, which put the revelations with the Book of Mormon. That finding came
 from the encoders and author models, and those did not pass this check.
 
-**What's left.** Read Phipps, Larsen and Rencher, and Reynolds in the original. Put an interval on
-each lecture's winner by resampling, which is minutes of computer time. No further redesign of this
-test.
+**What's left.** Rerun Larsen's way and Phipps's way on their own samples, which I can mostly
+rebuild. Everything is held except Pratt's 1835 pamphlet and a few of Smith's letters. Larsen never
+names his eight words, so I'd let the computer pick them from his 38, the way they did. And I'd add
+the step they skipped: test it on held-back blocks first. Then count Reynolds's 38 phrases in
+Cowdery, Phelps and Pratt too. If they turn up there, they mark the 1830s sermon, not Rigdon. Then
+put an interval on each lecture's winner. All of it is minutes of computer time with no model.
 
 ### Does it read like a translation? (BOM-102)
 
