@@ -441,15 +441,13 @@ def rerun(cfg: dict) -> dict:
     check: dict = {"state": "not attempted"}
     if lists.get(r["lead"]) and "matched_sets" in lead:
         entries = ua.strong_entries()
-        by_set = {}
-        for n, cid, _ in pairs:
-            by_set.setdefault(n, []).append(cid)
+        maxpos = u["his_way"]["max_positions"]
         era = Counter()
-        for n in lead["matched_sets"]:
-            for cid in by_set[n]:
-                word = lists[r["lead"]].get(cid)
-                if not word or len(word) < v["min_consonants"]:
-                    continue
+        for _n, cid, ua_syms in pairs:
+            word = lists[r["lead"]].get(cid)
+            if not word or len(word) < v["min_consonants"]:
+                continue
+            if passes(word, ua_syms, v["semitic_columns"], table, maxpos):  # a matched pair only
                 name = data.concept_names.get(cid, "")
                 k = min(len(word), u["his_way"]["max_positions"])
                 era["biblical_era" if biblical_era(word, name, entries, r["modern_merge"], k)
