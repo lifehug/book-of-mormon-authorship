@@ -119,7 +119,7 @@ compares against.
 | BOM-108 | The names are Hebrew, or Egyptian, or invented | Tvedtnes and others; Wilcox 2013, 2019 | 124 names against census names, Spalding, Tolkien | Hebrew inscriptions, Egyptian, Maya, Nahuatl, treaty signers, period print, four inventing authors | **Done**, with a limit |
 | BOM-110 | Place names come from towns around the Great Lakes | Holley; replies | name by name | the same match rule on every other region | **Done** |
 | BOM-111 | Its animals, plants and metals do or do not fit ancient America | Coe 1973; Sorenson | lists | Bible, 1820s writing, native texts, Spanish chronicles | **Done** |
-| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **arithmetic done; third design's reader check passed (107 of 131, decoys 0 of 20, kappa 0.73); controls queued**; BOM-109 **third design's check passed (whose 130/130; two readers kappa 0.77); long reading queued** |
+| BOM-109, BOM-112 | 131 details match the ancient Maya | Dale and Dale 2019; critics | one book, coded by the authors | three checklists, ten texts, coded blind | BOM-112 **done on the third design: the book has 107 of 131, more than any control; the King James histories have 88**; BOM-109 **third design's check passed (whose 130/130; two readers kappa 0.77); long reading queued** |
 | BOM-113 | 174 of 226 claimed anachronisms are now confirmed | Roper 2025 | one coder, no control | place and period required; Spalding as control | **Done: holds only loosely (31% strict, 85% loose); the controls match it loosely** |
 | BOM-114 | The weights in Alma 11 match ancient systems | Welch 1999 | five systems searched | random systems as the baseline; number habits against Bible, modern and Mesoamerican texts | **Part done** |
 | BOM-115 | Its warfare is ancient, or it is mound-builder forts | Vogel 1986 and others | examples | Bible, Josephus, American wars, conquest accounts | **Done** |
@@ -2436,18 +2436,47 @@ for less than a first-time pass would. One item, A:2.13, is read as supported in
 contradicted in another; by the rule written beforehand the support stands and the contradiction is
 reported beside it.
 
-**The result so far.** The arithmetic is done and reproduced. The check passed, so the six control
-books (244 questions) are queued now. In progress.
+**The result: the controls.** Six books, read the same way, by the same reader, with the same
+made-up items mixed in. Every one of them rejected all 20 made-up items, so every one is compared.
+Two models were asked to reread three sections of each control, and they agreed well (kappa 0.65
+to 0.83) everywhere but the King James historical books, where agreement was just under the check's
+bar (0.59). The score is the Dales' own: multiply their odds for every item a book has.
 
-**What it means, and what it doesn't.** So far, only that the headline is fragile: it turns on
-how you weight and group the items, and nobody can settle that by arithmetic. Nothing yet on
-whether 131 is many or few. If the 1800s books "match the Maya" nearly as well, the checklist
-measures how easy it is to match. If they match far less, the Dales' list picks out something
-real about this book. Neither is known yet. Coe's book itself was not read, so whether each item
-is a fair reading of Coe is untested.
+| Book | The Dales' 131 items it has | Their rarest items (odds 1 in 50) | Dales' odds, as a power of ten |
+| --- | --- | --- | --- |
+| Book of Mormon | 107 | 44 | -125 |
+| King James historical books (Joshua to Esther) | 88 | 31 | -95 |
+| *Chronicles of Eri* (1822) | 63 | 21 | -69 |
+| *View of the Hebrews* (1825) | 56 | 20 | -64 |
+| Spalding's manuscript | 51 | 21 | -57 |
+| *The Late War* (1816) | 29 | 9 | -32 |
+| Snowden, *American Revolution* (Bible style) | 29 | 9 | -30 |
 
-**What's left, in progress.** The six controls, read the same way (queued). A
-second coder for the Bible-world field. A checklist drawn from ancient Israel, run the same way.
+By the rule written before any control was read, no control reaches the Book of Mormon. The book
+has more of the Dales' items than any other text, and the gap in their arithmetic is 30 powers of
+ten to the nearest one. Leaving out the chapters that quote the Bible changes almost nothing (105
+items, -123).
+
+Two things sit beside that. The Dales scored two of these books themselves: Spalding at 19 items and
+*View of the Hebrews* at 15. Read the same way as the Book of Mormon, they have 51 and 56. So the
+controls were undercounted by about three times in the original. And the King James historical
+books, which are not about the Americas at all, have 88 of the 131 "Maya" items, and 31 of the 58
+the Dales rate rarest. The card said that if the Bible matched the rare items at a rate near the
+Book of Mormon's, the "rare" label carries little. It matches about 70 percent as many.
+
+**What it means, and what it doesn't.** The Dales' list does pick out something about this book:
+no other text read here comes close to it, by their own arithmetic. That is the part of their claim
+that survives a fair control. Three things limit it. Most of what the list measures is shared with
+the Bible: the King James histories have two thirds of it, so a long book in Bible style about
+kings, wars and cities starts far up the scale. The controls the Dales used were scored about three
+times too low. And multiplying odds treats the items as independent, which they are not (a book
+with kings has courts and taxes), so the powers of ten overstate every book, the Book of Mormon
+included. What remains is a ranking, not a probability: on this list the Book of Mormon is first,
+the Bible second. All of it is a model's reading, checked against made-up items and a second model,
+not a person's. Coe's book itself was not read, so whether each item is a fair reading of Coe is
+untested.
+
+**What's left.** A second coder for the Bible-world field. A checklist drawn from ancient Israel, run the same way.
 
 ### The anachronism tally (BOM-113)
 
