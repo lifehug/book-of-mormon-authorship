@@ -12,6 +12,7 @@ Usage::
 
     python -m lab.wherefore check     # known-answer check: planted breaks in spliced works
     python -m lab.wherefore run       # -> data/lab/reruns/mosiah_priority/result.json
+    python -m lab.wherefore metcalfe  # his tables recounted -> .../mosiah_priority/metcalfe.json
 """
 
 from __future__ import annotations
@@ -90,9 +91,9 @@ def grouped(groups: dict[str, tuple[int, int]]) -> dict:
     return {"groups": shares, "bic": round(-2 * ll + len(groups) * math.log(max(n, 1)), 2)}
 
 
-def bom(size: int, drop_quotes: bool) -> dict:
+def bom(size: int, drop_quotes: bool, kinds: tuple[str, ...] = ("body",)) -> dict:
     labels = {
-        r["seq"]: r for r in map(json.loads, LABELS.read_text().splitlines()) if r["kind"] == "body"
+        r["seq"]: r for r in map(json.loads, LABELS.read_text().splitlines()) if r["kind"] in kinds
     }
     paras = []
     for r in map(json.loads, EDITION.read_text().splitlines()):
@@ -254,6 +255,314 @@ def run(cfg: dict) -> dict:
     return res
 
 
+# --- Metcalfe 1993, "The Priority of Mosiah", in New Approaches to the Book of Mormon, 395-444.
+# His numbers, transcribed from the page images (book page in each comment); (therefore,
+# wherefore), the order he prints them in.
+MOSIAH_FIRST = [
+    "Mosiah", "Alma", "Helaman", "3 Nephi", "4 Nephi", "Mormon", "Ether", "Title Page", "Moroni",
+    "1 Nephi", "2 Nephi", "Jacob", "Enos", "Jarom", "Omni", "Words of Mormon",
+]  # fmt: skip
+TABLE1 = {  # p. 410, Tables 1 and 2 (the same counts in two orders)
+    "1 Nephi": (13, 98), "2 Nephi": (28, 138), "Jacob": (1, 52), "Enos": (0, 6), "Jarom": (0, 3),
+    "Omni": (0, 6), "Words of Mormon": (0, 4), "Mosiah": (123, 1), "Alma": (286, 3),
+    "Helaman": (63, 0), "3 Nephi": (98, 3), "4 Nephi": (5, 0), "Mormon": (22, 0),
+    "Ether": (24, 63), "Moroni": (0, 38), "Title Page": (0, 2),
+}  # fmt: skip
+TABLE3 = {  # p. 413, Table 3 (KJV occurrences out, O and P readings restored)
+    "Mosiah": (122, 0), "Alma": (289, 3), "Helaman": (63, 0), "3 Nephi": (86, 1),
+    "4 Nephi": (5, 0), "Mormon": (22, 0), "Ether": (25, 63), "Title Page": (0, 2),
+    "Moroni": (0, 38), "1 Nephi": (13, 101), "2 Nephi": (5, 137), "Jacob": (1, 52),
+    "Enos": (0, 6), "Jarom": (0, 3), "Omni": (0, 6), "Words of Mormon": (0, 4),
+    "Three Witnesses": (0, 2), "Preface": (0, 1),
+}  # fmt: skip
+TOTALS = (668, 420)  # p. 409, the 1830 text, from Hilton and Jenkins
+ETHER_THIRDS = {(1, 5): (15, 8), (6, 10): (8, 23), (11, 15): (2, 32)}  # p. 412, incl. Ether 3:1
+# p. 411 n. 22: KJV-derived occurrences removed, (book, chapter, verse, word, times).
+DEDUCTED = [
+    ("Mosiah", 14, 12, "therefore", 1), ("Mosiah", 13, 19, "wherefore", 1),
+    *[("3 Nephi", c, v, "therefore", 1) for c, v in (
+        (12, 23), (13, 2), (13, 8), (13, 9), (13, 22), (13, 23), (13, 25), (13, 31), (13, 34),
+        (14, 12), (14, 24), (24, 6))],
+    ("3 Nephi", 13, 30, "wherefore", 1), ("3 Nephi", 14, 20, "wherefore", 1),
+    ("2 Nephi", 7, 7, "therefore", 2),
+    *[("2 Nephi", c, v, "therefore", 1) for c, v in (
+        (8, 11), (8, 21), (12, 6), (12, 9), (13, 17), (15, 13), (14, 14), (15, 24), (15, 25),
+        (17, 14), (18, 7), (19, 11), (19, 14), (19, 17), (20, 16), (20, 24), (22, 3), (23, 7),
+        (23, 13), (27, 26), (27, 33))],
+    *[("2 Nephi", c, v, "wherefore", 1) for c, v in ((7, 2), (15, 4), (20, 12))],
+]  # fmt: skip
+PREFACE_DROPPED = 1  # p. 411 n. 22: the 1830 Preface's "therefore", which quotes D&C 10:41
+# "Isa. 5:14//14:14" as printed; 2 Nephi 14 has six verses, and Isaiah 5:14 is 2 Nephi 15:14.
+MISPRINTS = {("2 Nephi", 14, 14): (15, 14)}
+# pp. 411-412 n. 22: readings of O or P restored (absent from the 1830 text).
+RESTORED = [
+    ("1 Nephi", 11, 1, "wherefore", 1), ("1 Nephi", 13, 34, "wherefore", 1),
+    ("1 Nephi", 19, 23, "wherefore", 1), ("2 Nephi", 6, 11, "wherefore", 1),
+    ("2 Nephi", 9, 28, "wherefore", 1), ("Alma", 42, 6, "therefore", 1),
+    ("Alma", 42, 9, "therefore", 1), ("Ether", 3, 1, "therefore", 1),
+]  # fmt: skip
+FIGURE2 = [  # p. 415, Figure 2: passages he takes as Mormon's, (book, from, to, his counts)
+    ("Moroni", (7, 2), (7, 48), (0, 21)), ("Mosiah", (1, 15), (2, 9), (3, 0)),
+    ("Alma", (1, 1), (1, 12), (3, 0)), ("Helaman", (1, 1), (2, 8), (15, 0)),
+    ("3 Nephi", (1, 15), (3, 1), (4, 0)), ("4 Nephi", (1, 1), (1, 999), (5, 0)),
+    ("Moroni", (8, 2), (8, 30), (0, 9)), ("Mormon", (1, 1), (5, 999), (15, 0)),
+    ("Moroni", (9, 1), (9, 999), (0, 2)), ("Mormon", (6, 1), (7, 999), (3, 0)),
+    ("Words of Mormon", (1, 1), (1, 999), (0, 4)),
+]  # fmt: skip
+JENSON = Path("data/bom/1830/jenson-reproduction-1830.txt")
+FRONT_BACK = {  # 1830 matter outside the books: (first marker, end marker) in the Jenson text
+    "Title Page": ("BOOK OF MORMON :", "AUTHOR AND PROPRIETOR"),
+    "Three Witnesses": ("THE TESTIMONY OF THREE WITNESSES", "AND ALSO THE TESTIMONY OF EIGHT"),
+}
+CHAPTERS_1830 = Path("data/benchmark/replication/chapters_1830.jsonl")
+
+
+def tw(words: list[str]) -> list[int]:
+    """[therefore, wherefore] in a list of lower-case words (Metcalfe's order)."""
+    return [words.count("therefore"), words.count("wherefore")]
+
+
+def add(a: list[int], b: list[int]) -> list[int]:
+    return [a[0] + b[0], a[1] + b[1]]
+
+
+def agrees(ours: int, his: int, m: dict) -> bool:
+    return abs(ours - his) <= max(m["tol_abs"], m["tol_rel"] * his)
+
+
+def compare(ours: dict, his: dict, m: dict) -> dict:
+    """Cell by cell: ours, his, and whether they agree; the cells that do not, named."""
+    rows, off = {}, []
+    for k, h in his.items():
+        o = ours.get(k)
+        if o is None:
+            rows[k] = {"his": list(h), "ours": None}
+            off.append(f"{k}: not counted")
+            continue
+        ok = [agrees(o[i], h[i], m) for i in (0, 1)]
+        rows[k] = {"his": list(h), "ours": list(o), "agree": all(ok)}
+        off += [f"{k} {w}: {o[i]} vs {h[i]}" for i, w in enumerate(TW) if not ok[i]]
+    return {"rows": rows, "reproduced": not off, "disagree": off}
+
+
+TW = ("therefore", "wherefore")
+
+
+def switch(table: dict) -> dict:
+    """Mosiah-first: a 'therefore' majority from Mosiah to Mormon, 'wherefore' from Ether on."""
+    order = [b for b in MOSIAH_FIRST if b in table]
+    k = order.index("Ether")
+    early = all(table[b][0] > table[b][1] for b in order[:k])
+    late = all(table[b][1] > table[b][0] for b in order[k:])
+    return {"first_wherefore_book": next(b for b in order if table[b][1] > table[b][0]),
+            "holds": early and late}  # fmt: skip
+
+
+def edition_books(kinds: tuple[str, ...]) -> dict:
+    by: dict[str, list[int]] = {}
+    for r in map(json.loads, EDITION.read_text().splitlines()):
+        if r["book"] and r["kind"] in kinds:
+            c = by.setdefault(r["book"], [0, 0])
+            for i, n in enumerate(tw(WORD.findall(r["text"].lower()))):
+                c[i] += n
+    return by
+
+
+def outside_books() -> dict:
+    """Title Page and Three Witnesses from the Jenson text; the Preface from the 1830 table."""
+    t = re.sub(r"\u00ad\s*", "", JENSON.read_text(encoding="utf-8"))
+    res = {}
+    for name, (a, b) in FRONT_BACK.items():
+        i = t.find(a)
+        j = t.find(b, i)
+        res[name] = tw(WORD.findall(t[i:j].lower())) if i >= 0 and j > i else None
+    pre = [0, 0]
+    for r in map(json.loads, EDITION.read_text().splitlines()):
+        if r["book"] is None:
+            pre = add(pre, tw(WORD.findall(r["text"].lower())))
+    res["Preface"] = pre
+    return res
+
+
+def verses_1920(text: str | None = None) -> list[tuple[str, int, int, list[str]]]:
+    """(book, chapter, verse, words) from Project Gutenberg's 1920 text (ebook 17)."""
+    from eval.replicate import _TITLES, BOOKS, GUTENBERG
+
+    t = text if text is not None else GUTENBERG.read_text(encoding="utf-8")
+    if "*** START" in t:
+        t = t[t.find("*** START") : t.find("*** END")]
+    after = t.find("Contents") + 2000 if "Contents" in t else 0
+    starts = []
+    for book in BOOKS:
+        if book in _TITLES:
+            i = t.find(_TITLES[book], after)
+        else:
+            m = re.search(rf"(?m)^{re.escape(book)} Chapter 1\s*$", t)
+            i = m.start() if m else -1
+        if i >= 0:
+            starts.append((i, book))
+    starts.sort()
+    # Gutenberg prints 4 Nephi's verses as "4 Nephi 1:1 ...", every other book's as "1:1 ...".
+    verse = re.compile(r"(?m)^(?:4 Nephi )?(\d+):(\d+) (.+(?:\n(?!(?:4 Nephi )?\d+:\d+ ).+)*)")
+    out_, k = [], -1
+    for m in verse.finditer(t):
+        while k + 1 < len(starts) and starts[k + 1][0] <= m.start():
+            k += 1
+        if k >= 0:
+            words = WORD.findall(m.group(3).lower())
+            out_.append((starts[k][1], int(m.group(1)), int(m.group(2)), words))
+    return out_
+
+
+def in_range(c: int, v: int, a: tuple[int, int], b: tuple[int, int]) -> bool:
+    return a <= (c, v) <= b
+
+
+def metcalfe(cfg: dict) -> dict:
+    """Metcalfe's Tables 1 and 3, Ether by thirds and Figure 2, recounted; see the test card."""
+    m = cfg["lab"]["wherefore"]["metcalfe"]
+    extra = outside_books()
+    body = edition_books(("body",))
+    whole = edition_books(("body", "synopsis"))
+    tp = {"Title Page": extra["Title Page"]}
+    vs = verses_1920()
+    by1920: dict[str, list[int]] = {}
+    where: dict[tuple[str, int, int], list[int]] = {}
+    for b, c, v, words in vs:
+        n = tw(words)
+        by1920[b] = add(by1920.get(b, [0, 0]), n)
+        where[(b, c, v)] = n
+    # Chapter counts in both editions: where the 1830 holds a word the 1920 text lacks.
+    ch1830: dict[tuple[str, int], list[int]] = {}
+    for ln in CHAPTERS_1830.read_text().splitlines():
+        r = json.loads(ln)
+        ch1830[(r["book"], int(r["chapter"]))] = tw(r["text"].split())
+    ch1920: dict[tuple[str, int], list[int]] = {}
+    for b, c, _v, words in vs:
+        ch1920[(b, c)] = add(ch1920.get((b, c), [0, 0]), tw(words))
+    edition_diff = [
+        {"chapter": f"{b} {c}", "1830": n, "1920": ch1920.get((b, c))}
+        for (b, c), n in ch1830.items()
+        if n != ch1920.get((b, c))
+    ]
+    # Table 3 by his own steps: his KJV occurrences out, his O and P readings back in. He worked
+    # from a modern text (Table 1 matches the 1920 text cell for cell), so his steps apply to it.
+    # On the 1830 text a restoration is added only where the 1830 chapter lacks it, since the
+    # 1830 already prints most of the words later editions dropped.
+    t3_1920 = {b: list(v) for b, v in by1920.items()} | {k: list(v) for k, v in extra.items()}
+    t3_1830 = {b: list(v) for b, v in whole.items()} | {k: list(v) for k, v in extra.items()}
+    for t3 in (t3_1920, t3_1830):
+        t3["Preface"][0] -= PREFACE_DROPPED
+    lookups, already = [], []
+    for sign, rows in ((-1, DEDUCTED), (1, RESTORED)):
+        for b, c, v, word, times in rows:
+            i = TW.index(word)
+            t3_1920[b][i] += sign * times
+            gap = ch1830.get((b, c), [0, 0])[i] - ch1920.get((b, c), [0, 0])[i]
+            if sign > 0 and gap >= times:
+                already.append(f"{b} {c}:{v}")
+            else:
+                t3_1830[b][i] += sign * times
+            found = where.get((b, c, v), [None, None])[i]
+            alt = MISPRINTS.get((b, c, v))
+            lookups.append({
+                "verse": f"{b} {c}:{v}", "word": word, "listed": times, "in_1920_text": found,
+                "kind": "removed" if sign < 0 else "restored",
+                **({"parallel": f"{b} {alt[0]}:{alt[1]}",
+                    "in_1920_text_at_parallel": where.get((b, *alt), [None, None])[i]}
+                   if alt else {}),
+            })  # fmt: skip
+    removed = [x for x in lookups if x["kind"] == "removed"]
+    ether: dict[str, list[int]] = {}
+    ether1920: dict[str, list[int]] = {}
+    chs = [json.loads(ln) for ln in CHAPTERS_1830.read_text().splitlines()]
+    for (a, b), _his in ETHER_THIRDS.items():
+        key = f"{a}-{b}"
+        ether[key] = [0, 0]
+        for r in chs:
+            if r["book"] == "Ether" and a <= int(r["chapter"]) <= b:
+                ether[key] = add(ether[key], tw(r["text"].split()))
+        ether1920[key] = [0, 0]
+        for bk, c, _v, words in vs:
+            if bk == "Ether" and a <= c <= b:
+                ether1920[key] = add(ether1920[key], tw(words))
+    # His thirds include the Ether 3:1 restoration; the 1830 text lacks it.
+    ether_his_1830 = {
+        f"{a}-{b}": (h[0] - (a <= 3 <= b), h[1]) for (a, b), h in ETHER_THIRDS.items()
+    }
+    fig2 = {}
+    for b, a, z, his in FIGURE2:
+        n = [0, 0]
+        for bk, c, v, words in vs:
+            if bk == b and in_range(c, v, a, z):
+                n = add(n, tw(words))
+        fig2[f"{b} {a[0]}:{a[1]}-{z[0]}:{z[1] if z[1] < 999 else 'end'}"] = (n, his)
+    # The 2026-11-20 fit counted body paragraphs only; the same fit on all book text, and the
+    # stored library fits (result.json) held against it.
+    whole_fit = bom(cfg["lab"]["wherefore"]["block_words"], False, ("body", "synopsis"))
+    whole_fit = whole_fit["dictation_order"]
+    as_sharp = None
+    if (OUT / "result.json").exists():
+        lib = json.loads((OUT / "result.json").read_text()).get("library", {}).get("works", [])
+        as_sharp = {
+            "of": len(lib),
+            "count": sum(
+                1
+                for b in lib
+                if b["sharpness"] >= whole_fit["sharpness"]
+                and b["deviance_per_occurrence"] >= whole_fit["deviance_per_occurrence"]
+            ),
+        }
+    total = [sum(v[i] for v in whole.values()) for i in (0, 1)]
+    total_all = [total[i] + sum(v[i] for v in extra.values()) for i in (0, 1)]
+    return {
+        "source": "Metcalfe 1993, New Approaches to the Book of Mormon, 395-444",
+        "settings": m,
+        "table1_1830_whole_books": compare(whole | tp, TABLE1, m),
+        "table1_1830_body_only": compare(body | tp, TABLE1, m),
+        "table1_1920_verses": compare(by1920 | tp, TABLE1, m),
+        "switch": {
+            "his_table1": switch(TABLE1),
+            "his_table3": switch(TABLE3),
+            "ours_1830_whole_books": switch(whole | tp),
+            "ours_1830_body_only": switch(body | tp),
+        },
+        "totals": {
+            "his": list(TOTALS),
+            "ours_1830_books": total,
+            "ours_1830_with_title_preface_witnesses": total_all,
+            "agree": [abs(total_all[i] - TOTALS[i]) <= m["total_tol"] * TOTALS[i] for i in (0, 1)],
+            "his_table1_sum": [sum(v[i] for v in TABLE1.values()) for i in (0, 1)],
+        },
+        "table3_1920_his_steps": compare(t3_1920, TABLE3, m),
+        "table3_1830_his_steps": compare(t3_1830, TABLE3, m),
+        "restorations_already_in_1830": already,
+        "edition_differences_by_modern_chapter": edition_diff,
+        "his_lists_checked_in_1920_text": {
+            "removed_listed": sum(x["listed"] for x in removed),
+            "removed_found_at_listed_verse": sum(
+                min(x["listed"], x["in_1920_text"] or 0) for x in removed
+            ),
+            "not_found": [x for x in removed if (x["in_1920_text"] or 0) < x["listed"]],
+        },
+        "ether_thirds_1830": compare(ether, ether_his_1830, m),
+        "ether_thirds_1920": compare(ether1920, ether_his_1830, m),
+        "ether_thirds_his_as_printed": {
+            k: list(v) for k, v in zip(ether_his_1830, ETHER_THIRDS.values(), strict=True)
+        },  # fmt: skip
+        "figure2_1920_verses": compare(
+            {k: v[0] for k, v in fig2.items()}, {k: v[1] for k, v in fig2.items()}, m
+        ),
+        "one_break_1830_whole_books": whole_fit,
+        "library_as_sharp_and_strong_against_whole_books_fit": as_sharp,
+        "edition_note": (
+            "1830 = data/bom/1830/edition_1830.jsonl (Jenson reproduction); body-only leaves out "
+            "seq 1316 (Mormon ch. IV, 3,152 words) because it is labelled synopsis. "
+            "1920 = Project Gutenberg 17, verses only."
+        ),
+    }
+
+
 def _quantiles(xs: list[float]) -> dict:
     xs = sorted(xs)
     return {q: xs[min(len(xs) - 1, int(len(xs) * q / 100))] for q in (50, 90, 95, 99)} if xs else {}
@@ -261,9 +570,15 @@ def _quantiles(xs: list[float]) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["check", "run"])
+    ap.add_argument("cmd", choices=["check", "run", "metcalfe"])
     a = ap.parse_args(argv)
     cfg = config.load()
+    if a.cmd == "metcalfe":
+        res = metcalfe(cfg)
+        res["config_sha256"] = config.sha256_of_config()
+        out(OUT / "metcalfe.json").write_text(json.dumps(res, indent=1) + "\n")
+        print(json.dumps({k: v for k, v in res.items() if k != "settings"}, indent=1))
+        return 0
     if a.cmd == "check":
         print(json.dumps(check(cfg), indent=1))
         return 0
