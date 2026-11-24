@@ -240,7 +240,6 @@ def verdict(primary: dict, controls: dict[str, dict], alpha: float) -> str:
 def run(cfg: dict) -> tuple[dict, list[dict]]:
     u = cfg["lab"]["utoaztecan"]
     v = u["vocabulary"]
-    maxpos = u["his_way"]["max_positions"]
     vocab = parse_vocabulary(vocabulary_text())
     lines15 = ua.stubbs_text()
     sets15 = ua.parse_sets(lines15)
@@ -326,33 +325,8 @@ def run(cfg: dict) -> tuple[dict, list[dict]]:
             data.concept_keys[k] for k in ua.gloss_keys(s["gloss"]) if k in data.concept_keys
         }:
             pairs.append((n, cid, syms))
-    mapping = v["ipa_symbols"]
-    lists = {}
-    for spec in v["semitic_lists"] + v["egyptian_lists"] + v["control_lists"]:
-        try:
-            lists[spec] = word_lists(spec, data, mapping)
-        except (OSError, KeyError) as exc:
-            lists[spec] = None
-            data.missing.append(f"{spec}: {type(exc).__name__}")
-    scores: dict[str, dict] = {}
-    for rules, columns, targets in (
-        ("semitic", v["semitic_columns"], v["semitic_lists"]),
-        ("egyptian", v["egyptian_columns"], v["egyptian_lists"]),
-    ):
-        block = {}
-        for spec in targets + v["control_lists"]:
-            if lists.get(spec) is None:
-                block[spec] = {"state": "not attempted (list missing)"}
-                continue
-            block[spec] = score_list(pairs, lists[spec], columns, table, v, maxpos,
-                                     u["shuffles"], ua._seed("vocab", rules, spec))  # fmt: skip
-            block[spec]["meanings_in_list"] = len(lists[spec])
-        ctrl = {k: block[k] for k in v["control_lists"] if "excess" in block[k]}
-        prim = block[targets[0]]
-        block["verdict"] = verdict(prim, ctrl, u["alpha"]) if "excess" in prim else "not attempted"
-        block["controls_below_alpha"] = sorted(k for k, c in ctrl.items() if c["p"] < u["alpha"])
-        block["largest_control_excess"] = max((c["excess"] for c in ctrl.values()), default=None)
-        scores[rules] = block
+    lists = load_lists(v, data)
+    scores = score_blocks(pairs, lists, table, cfg, "vocab")
     test = {
         "vocabulary_pairs": len(pairs),
         "vocabulary_sets_paired": len({p[0] for p in pairs}),
@@ -361,6 +335,155 @@ def run(cfg: dict) -> tuple[dict, list[dict]]:
         "missing": data.missing,
     }
     return {"bridge": bridge, "sample": sample, "rules_on_meaning_matched_words": test}, private
+
+
+def load_lists(v: dict, data: ua.Data) -> dict[str, dict | None]:
+    """Every list of the card (Semitic, Egyptian, controls) as his symbols; None if missing."""
+    lists: dict[str, dict | None] = {}
+    for spec in v["semitic_lists"] + v["egyptian_lists"] + v["control_lists"]:
+        try:
+            lists[spec] = word_lists(spec, data, v["ipa_symbols"])
+        except (OSError, KeyError) as exc:
+            lists[spec] = None
+            data.missing.append(f"{spec}: {type(exc).__name__}")
+    return lists
+
+
+def score_blocks(pairs, lists: dict, table: dict, cfg: dict, tag: str) -> dict[str, dict]:
+    """Semitic and Egyptian rules over every list, with the card's verdict per block."""
+    u = cfg["lab"]["utoaztecan"]
+    v = u["vocabulary"]
+    maxpos = u["his_way"]["max_positions"]
+    scores: dict[str, dict] = {}
+    for rules, columns, targets in (
+        ("semitic", v["semitic_columns"], v["semitic_lists"]),
+        ("egyptian", v["egyptian_columns"], v["egyptian_lists"]),
+    ):
+        block: dict = {}
+        for spec in targets + v["control_lists"]:
+            if lists.get(spec) is None:
+                block[spec] = {"state": "not attempted (list missing)"}
+                continue
+            block[spec] = score_list(pairs, lists[spec], columns, table, v, maxpos,
+                                     u["shuffles"], ua._seed(tag, rules, spec))  # fmt: skip
+            block[spec]["meanings_in_list"] = len(lists[spec])
+        ctrl = {k: block[k] for k in v["control_lists"] if "excess" in block[k]}
+        prim = block[targets[0]]
+        block["verdict"] = verdict(prim, ctrl, u["alpha"]) if "excess" in prim else "not attempted"
+        block["verdict_each"] = {
+            k: verdict(block[k], ctrl, u["alpha"]) for k in targets if "excess" in block[k]
+        }
+        block["controls_below_alpha"] = sorted(k for k, c in ctrl.items() if c["p"] < u["alpha"])
+        block["largest_control_excess"] = max((c["excess"] for c in ctrl.values()), default=None)
+        scores[rules] = block
+    return scores
+
+
+def one_pair_per_meaning(
+    vocab: dict[int, dict],
+    branch_n: dict[int, int],
+    concept_keys: dict[str, str],
+    min_branches: int,
+) -> list[tuple]:
+    """One (set, meaning, UA symbols) per meaning: multi-branch sets only; the set in the most
+    branches stands for the meaning, ties to the lowest number. Chosen before any list is read."""
+    best: dict[str, tuple] = {}
+    for n, s in sorted(vocab.items()):
+        if branch_n.get(n, 0) < min_branches or not s["form"] or not s["gloss"]:
+            continue
+        syms = ua.ua_symbols(s["form"])
+        if not syms:
+            continue
+        for cid in {concept_keys[k] for k in ua.gloss_keys(s["gloss"]) if k in concept_keys}:
+            key = (-branch_n[n], n)
+            if cid not in best or key < best[cid][0]:
+                best[cid] = (key, (n, cid, syms))
+    return [best[c][1] for c in sorted(best, key=ua._mkey)]
+
+
+def merged(symbols: list[str], merge: dict[str, str], k: int) -> tuple[str, ...]:
+    """First ``k`` consonants with Modern Hebrew's mergers applied (š kept apart from s)."""
+    return tuple(merge.get(x, x) for x in symbols[:k])
+
+
+def biblical_era(word: list[str], meaning: str, entries: list[dict], merge: dict[str, str],
+                 k: int) -> bool:  # fmt: skip
+    """A Strong's entry with the same merged first consonants and a gloss sharing a content
+    word with the meaning's name."""
+    target = merged(word, merge, k)
+    want = ua.content_words(meaning)
+    for e in entries:
+        if merged(e["symbols"], merge, k) != target:
+            continue
+        if any(ua.content_words(g) & want for g in e["glosses"]):
+            return True
+    return False
+
+
+def rerun(cfg: dict) -> dict:
+    """The stated rerun: multi-branch sets, one pair per meaning; the Modern Hebrew decision."""
+    u = cfg["lab"]["utoaztecan"]
+    v = u["vocabulary"]
+    r = v["rerun"]
+    vocab = parse_vocabulary(vocabulary_text())
+    table = ua.parse_table(ua.stubbs_text())
+    branch_n = {n: len(branches_of(s["body"], v["branches"])) for n, s in vocab.items()}
+    data = ua.Data(cfg)
+    pairs = one_pair_per_meaning(vocab, branch_n, data.concept_keys, r["min_branches"])
+    lists = load_lists(v, data)
+    scores = score_blocks(pairs, lists, table, cfg, "vocab-rerun")
+    sem = scores["semitic"]
+    lead = sem.get(r["lead"], {})
+    ctrl = {k: sem[k] for k in v["control_lists"] if "excess" in sem[k]}
+    holds = None
+    if "excess" in lead:
+        holds = verdict(lead, ctrl, u["alpha"]) == "his rules pick it out"
+    check: dict = {"state": "not attempted"}
+    if lists.get(r["lead"]) and "matched_sets" in lead:
+        entries = ua.strong_entries()
+        by_set = {}
+        for n, cid, _ in pairs:
+            by_set.setdefault(n, []).append(cid)
+        era = Counter()
+        for n in lead["matched_sets"]:
+            for cid in by_set[n]:
+                word = lists[r["lead"]].get(cid)
+                if not word or len(word) < v["min_consonants"]:
+                    continue
+                name = data.concept_names.get(cid, "")
+                k = min(len(word), u["his_way"]["max_positions"])
+                era["biblical_era" if biblical_era(word, name, entries, r["modern_merge"], k)
+                    else "not_found_in_strongs"] += 1  # fmt: skip
+        check = dict(era)
+    return {
+        "pairs": len(pairs),
+        "sets_used": len({p[0] for p in pairs}),
+        "multi_branch_sets": sum(x >= r["min_branches"] for x in branch_n.values()),
+        "scores": scores,
+        "modern_hebrew_holds": holds,
+        "modern_hebrew_matches_biblical_era_check": check,
+        "missing": data.missing,
+    }
+
+
+def main_rerun() -> int:
+    from metadata import config
+
+    cfg = config.load()
+    res = rerun(cfg)
+    res["source"] = (
+        "Stubbs, Uto-Aztecan: A Comparative Vocabulary (2011), revised online edition (c) 2020"
+    )
+    res["settings"] = cfg["lab"]["utoaztecan"]["vocabulary"]["rerun"]
+    out(ua.OUT / "vocabulary_rerun.json").write_text(
+        json.dumps(ua._stamp(res), indent=1, ensure_ascii=False) + "\n"
+    )
+    brief = {k: x for k, x in res.items() if k not in ("scores", "settings")}
+    brief["scores"] = {
+        b: {k: _drop_sets(x) for k, x in blk.items()} for b, blk in res["scores"].items()
+    }
+    print(json.dumps(brief, indent=1, ensure_ascii=False))
+    return 0
 
 
 def _drop_sets(x):

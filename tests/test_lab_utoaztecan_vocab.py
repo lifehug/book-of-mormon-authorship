@@ -86,3 +86,29 @@ def test_verdict():
     assert v.verdict(prim, {"a": {"excess": 0.01}}, 0.01) == "his rules pick it out"
     assert v.verdict(prim, {"a": {"excess": 0.06}}, 0.01).startswith("his rules find")
     assert v.verdict({"p": 0.2, "excess": 0.05}, {}, 0.01).startswith("his rules find")
+
+
+def test_one_pair_per_meaning_prefers_most_branches_then_lowest_number():
+    vocab = {
+        1: {"form": "*kasi", "gloss": "tail"},
+        2: {"form": "*pasi", "gloss": "tail"},
+        3: {"form": "*tama", "gloss": "tail"},
+        4: {"form": "*muCi", "gloss": "nose"},
+        5: {"form": "*nono", "gloss": "nose"},
+    }
+    branch_n = {1: 2, 2: 3, 3: 3, 4: 1, 5: 2}
+    keys = {"tail": "100", "nose": "200"}
+    pairs = v.one_pair_per_meaning(vocab, branch_n, keys, 2)
+    assert [(n, cid) for n, cid, _ in pairs] == [(2, "100"), (5, "200")]
+    assert v.one_pair_per_meaning(vocab, branch_n, keys, 4) == []
+
+
+def test_biblical_era_merges_modern_hebrew_sounds():
+    merge = {"ʕ": "’", "ђ": "k", "x": "k", "q": "k", "ṭ": "t", "ś": "s", "w": "b"}
+    entries = [
+        {"symbols": ["ђ", "m", "r"], "glosses": ["he-ass, donkey"]},
+        {"symbols": ["š", "m", "š"], "glosses": ["sun"]},
+    ]
+    assert v.biblical_era(["x", "m", "r"], "DONKEY", entries, merge, 3)
+    assert not v.biblical_era(["x", "m", "r"], "SUN", entries, merge, 3)  # meaning differs
+    assert not v.biblical_era(["s", "m", "š"], "SUN", entries, merge, 3)  # s and š kept apart

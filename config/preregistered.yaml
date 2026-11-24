@@ -2518,6 +2518,11 @@ lab:                              # the research lab (exploratory tooling; reads
          m: m, n: n, ɲ: n, ɳ: n, ŋ: n, ɴ: n, l: l, ɭ: l, ʎ: l, ɫ: l, r: r, ɾ: r, ɻ: r, ɹ: r, ʀ: r, ʁ: r,
          s: s, ɕ: s, z: z, ʑ: z, ʒ: z, ʐ: z, ʃ: š, ʂ: š, θ: θ, ð: đ, ts: ṣ, dz: z, tʃ: š, tɕ: š,
          dʒ: g, dʑ: g, j: y, ʝ: y, w: w, ʋ: w, ɥ: w}
+      rerun:                       # card section "Rerun to settle the Modern Hebrew lead" (2026-11-23)
+        min_branches: 2            # a vocabulary set is used only if attested in at least this many branches
+        pair_choice: most_branches_then_lowest_number   # one UA set per meaning, chosen before any list
+        lead: 'nel:heb'            # holds only if p < alpha and excess above every control's (Semitic rules)
+        modern_merge: {"ʕ": "’", "ђ": k, x: k, q: k, "ṭ": t, "ś": s, w: b}   # Modern Hebrew mergers, for the Biblical-era check
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.

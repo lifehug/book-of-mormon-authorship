@@ -24,6 +24,7 @@ Usage::
     python -m lab.utoaztecan check      # known-answer check at every target list size
     python -m lab.utoaztecan run        # both, then targets -> data/lab/setting/uto_aztecan
     python -m lab.utoaztecan vocabulary # his Comparative Vocabulary (lab.utoaztecan_vocab)
+    python -m lab.utoaztecan vocabulary-rerun  # one pair per meaning, multi-branch sets
 """
 
 from __future__ import annotations
@@ -1439,12 +1440,16 @@ def _stamp(res: dict) -> dict:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["his-way", "check", "run", "vocabulary"])
+    ap.add_argument("cmd", choices=["his-way", "check", "run", "vocabulary", "vocabulary-rerun"])
     a = ap.parse_args(argv)
     if a.cmd == "vocabulary":
         from lab import utoaztecan_vocab
 
         return utoaztecan_vocab.main()
+    if a.cmd == "vocabulary-rerun":
+        from lab import utoaztecan_vocab
+
+        return utoaztecan_vocab.main_rerun()
     cfg = config.load()
     if a.cmd == "his-way":
         public, records, jobs = his_way(cfg)
