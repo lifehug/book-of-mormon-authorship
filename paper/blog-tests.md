@@ -108,7 +108,7 @@ compares against.
 
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
-| BOM-104 | The Books of Moses and Abraham share the voice; Rigdon wrote the *Lectures on Faith* | Phipps 1977; Larsen, Rencher and Layton 1980; Reynolds 2005 | Phipps's samples (all three); read in the original, not yet rerun | the study's models and encoders | **Done, weak** |
+| BOM-104 | The Books of Moses and Abraham share the voice; Rigdon wrote the *Lectures on Faith* | Phipps 1977; Larsen, Rencher and Layton 1980; Reynolds 2005 | Phipps's samples (all three); rerun: Phipps and Reynolds come back, Larsen does not | the study's models and encoders | **Done, weak** |
 | BOM-105, BOM-99 | Smith's revelations and his letters look like two different writers | Holmes 1992; the first study | Smith alone | other writers with two voices (Southcott, Wroe, Trapnel, Snowden, Elias Smith) | **Done** on three measures; the author models do not give a stable answer |
 | BOM-100, BOM-101 | A model can be taught to see the person and not the scripture voice | this project | | the known-answer set from BOM-99 | BOM-100 **done: no gain**; BOM-101 **done: no gain at the size I could train** |
 
@@ -1688,11 +1688,58 @@ candidate, and he is Larsen's second choice for Lecture 5. And the "Rigdon" in a
 the same unsigned 1833 to 1835 newspaper series I added in my second try: Phipps's whole Rigdon
 sample, and the core of Reynolds's. Everyone, me included, takes that attribution on trust.
 
-So did I reproduce them? Not their numbers. I haven't rerun either method yet. But my answer reads
-almost exactly like Larsen's: Rigdon for 1, 3, 4, 6 and 7, and Smith for 2. For Lecture 5 I get
-Pratt, which is Larsen's second choice once Phelps, whom I had to drop, is out of the race. Against
-Phipps's final answer I agree on five of seven. That is a different method reaching a similar
-answer, partly from the same texts. It is not a second, independent confirmation.
+So did I reproduce them? I tried, and wrote down before I started what would count. First I rebuilt
+Phipps's five samples from his tables, because all three studies used them. Most of it is held. The
+church papers I took from a clean transcription of each issue online, because my scan of them runs
+the columns together. Three things I had to fudge, and I'll say so each time. Pratt's 1835 pamphlet
+on the Kirtland outrage, a quarter of his sample, I don't have, so later pages of his *Voice of
+Warning* stand in for it. Six of Smith's letters I don't have, and for the biggest, his December
+1838 letter to the church, I used his March 1839 letter to the church from the same jail. And
+Phipps cut quotations out by hand. I can only cut what matches the King James Bible or the other
+scriptures, so quotations from anywhere else stay in. That made Smith's articles a bit short: three
+2,000-word blocks instead of four.
+
+Larsen's way did not come back. I gave the computer his 38 words and let it pick eight the way his
+did. It picked when, upon, unto, the, it, now, that and yea. Then I put each lecture to it. It agreed
+with Larsen on three of seven: Rigdon for 1, 3 and 4. It gave 2, 6 and 7 to Phelps, and 5 to Smith.
+The bar I set was six of seven. It also showed why their 88.9% says little. Put back on the blocks it
+was built from, mine scores 97%. Hold one block out at a time and pick the eight words again without
+it, and that drops to 67%. On new blocks of each man's writing that it never saw, it got 10 of 19
+right. Guessing gets about 4. So that kind of analysis, on samples this size, can be pushed a long
+way by which texts go in.
+
+Phipps's way held up better. I could only use 24 of his 50 words; the other words he sorted by
+hand into grammar types, and I can't redo that. On the Lectures as one text, Rigdon beats Smith
+1,582 to 1. Phipps had 291 to 1. Rigdon beats everyone else too, but by far less than Phipps found:
+7 to 1 over Pratt where he had 174,883 to 1. Lecture by lecture, Smith against Rigdon comes out the
+same way as his table on six of seven. The one that flips is Lecture 4, which I give to Rigdon at
+about 5 to 1 where he gave it to Smith at 13 to 1. My odds are tens to one, not millions. Then the
+step he skipped. I gave the same test new blocks of each man's own writing, blocks it had never
+seen. The true author won 76% of his match-ups. Smith against Rigdon, it was right eight times out
+of eight.
+
+Reynolds's count came back too, with one catch. His reader's phrases come to 1.6 per 1,000 words in
+Rigdon's three series (Reynolds had 2.1) and 4.1 per 1,000 in the Lectures (he had 4.1). In Smith's
+letters and diaries I don't get his zero: 28 hits in about 97,000 words, 0.29 per 1,000, which
+misses the bar I set of under 0.2. But every one of those
+comes from seven plain words and pairs that I could only search for bare, like "facts" or
+"calculated". A program can't tell when "facts" is a debating trick, as his reader could. Then I
+counted the same phrases in Cowdery,
+Phelps and Pratt, the test he never ran. With every phrase in, Cowdery reaches 94% of Rigdon's rate
+and Phelps 52%, which by my own rule would mean the list marks the 1830s sermon, not Rigdon. I had named the seven plain words before the run and said I'd report them apart, but my rule was
+written on the full list, so what follows counts for less. Take out the seven plain words and the
+picture flips. The other 31 phrases come to about 1.0 per
+1,000 in Rigdon, 3.0 in the Lectures, none in Smith, and only 0.1 in each of the other three men. The
+specific phrases really do mark Rigdon and the Lectures and almost no one else here. One caution:
+they were picked from Rigdon's own essays, so his count is partly built in. The Lectures and the
+other three men were not used to pick them.
+
+So, side by side: Phipps's main answer reproduces, and his method passes a check he never ran.
+Larsen's does not reproduce on rebuilt texts. Reynolds's phrases reproduce, and they pass his
+missing control once the plain words are set aside. My own lean from the second try agrees with my
+rerun of Phipps's Smith-against-Rigdon odds on five lectures (1, 2, 3, 4 and 7) and differs on 5 and
+6. All three studies, and both my tries, lean on the same unsigned Rigdon series, so that shared
+starting point is still taken on trust.
 
 **What I tried.** Before asking who wrote the Lectures, I asked whether any measure could tell the
 candidates apart on writing I know is theirs. Five men: Smith, Rigdon, Oliver Cowdery, W. W. Phelps
@@ -1774,12 +1821,10 @@ On the dictated texts, the revelations sitting with Smith's letters by common wo
 contradict the main study, which put the revelations with the Book of Mormon. That finding came
 from the encoders and author models, and those did not pass this check.
 
-**What's left.** Rerun Larsen's way and Phipps's way on their own samples, which I can mostly
-rebuild. Everything is held except Pratt's 1835 pamphlet and a few of Smith's letters. Larsen never
-names his eight words, so I'd let the computer pick them from his 38, the way they did. And I'd add
-the step they skipped: test it on held-back blocks first. Then count Reynolds's 38 phrases in
-Cowdery, Phelps and Pratt too. If they turn up there, they mark the 1830s sermon, not Rigdon. Then
-put an interval on each lecture's winner. All of it is minutes of computer time with no model.
+**What's left.** An interval on each lecture's winner. Pratt's 1835 pamphlet and the missing Smith
+letters, if a free copy turns up. Phipps's other 25 words, with the grammar coding done by a simple
+tagger. And Reynolds's 31 specific phrases counted across the library's other 1830s preachers,
+not just these five men.
 
 ### Does it read like a translation? (BOM-102)
 
