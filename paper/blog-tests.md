@@ -81,7 +81,7 @@ compares against.
 | --- | --- | --- | --- | --- | --- |
 | BOM-118 | About 64 word uses and phrases had died out of English before the 1740s | Skousen and Carmack 2018 | dictionary citations, one item at a time | every item searched for its meaning across the whole library, with the same search on Bible-style books | Of 34 items I could test, 21 are still in use in 1740-1830, 2 turn up once, 11 not found; checked by two AI readings and my own, not by a person |
 | BOM-119 | The grammar is 1500s English: "did go" past tenses at 20% against under 2% in Bible-style books | Carmack 2015 to 2021 | five Bible-style books | every book in the library | **Done** |
-| BOM-102 | It reads like a translation; it has Hebrew turns of phrase | Tvedtnes, Skousen and others | examples | real translations against Bible-style imitations | **Hebraisms done; translation check failed** |
+| BOM-102 | It reads like a translation; it has Hebrew turns of phrase | Tvedtnes, Skousen and others | examples | real translations against Bible-style imitations | **Hebraisms done; translation check failed (rules' hits read by a model: still fails on if-and)** |
 | BOM-120 | "Therefore" and "wherefore" switch in the order the book was dictated | Metcalfe 1993 | the book alone | 264 long books by one author | **Done** |
 
 ### 2. Where did the words and ideas come from?
@@ -1987,10 +1987,40 @@ and on that the two designs say:
   the book's eleven cases to. That cuts both ways. I cannot show an imitator would write it, and I
   cannot show a translator would.
 
-**What's left, in progress.** All the second-design counts are from rules nobody has checked by hand.
-514 questions for a model to judge whether each rule's hits are real are queued now (simulated
-judging; 60 of them are the model's own check). They could change which features survive. They
-cannot rescue if-and, because that miss is in the literal translations, not in the rule.
+**Checking the rules' hits.** All the second-design counts came from rules nobody had checked. So a
+model read the hits, up to 150 per feature and book, and said whether each is the real construction
+(simulated judging). First it had to pass its own check on made-up sentences with known answers. It
+did: 20 of 20 on the doubled verb, 20 of 20 on if-and, 18 of 20 on "in his eating", against a bar of
+18. Then the hits themselves:
+
+| Feature | Where the rule found it | Real, as the model read them |
+| --- | --- | --- |
+| Doubled verb | Ainsworth | 98 of 104 |
+| Doubled verb | Young | 24 of 35 |
+| Doubled verb | King James | 3 of 11 |
+| "In his eating" | Young | 145 of 150 |
+| "In his eating" | King James | 12 of 21 |
+| "In his eating" | *Ossian* | 2 of 43 |
+| "In his eating" | *A True Relation of the Holy War* | 2 of 16 |
+| If-and | Young | 3 of 18 |
+| If-and | Ainsworth | 0 of 4 |
+| If-and | King James | 0 of 15 |
+
+Two things come out of that. First, *Ossian*'s high score was mostly the rule's mistake: 41 of its 43
+"in his eating" hits are not the construction. So the second part of the check that failed, the fake
+translations scoring high, failed partly on false matches. The rule picked up things that look like
+the construction and aren't.
+
+Second, if-and. The literal translations barely have it, and now even the few hits mostly aren't
+real: 3 of 18 in Young, none of 4 in Ainsworth. That was the part that could not be rescued, and it
+isn't. The test needs three features that literal translators keep and the King James drops, and
+with if-and gone there are only two. So the check still fails, and the Book of Mormon is still not
+scored. The design also asked for a person to check 50 hits per feature by hand. That has not been
+done, so this is the model's reading only.
+
+**What's left.** A person's check of a sample of hits, if wanted. A better if-and rule, and a third
+removed construction that literal translators keep (casus pendens, the cognate split), as a new
+design written before it runs.
 
 ### Spoken or written? (BOM-106)
 
