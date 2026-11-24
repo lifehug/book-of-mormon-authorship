@@ -2160,12 +2160,17 @@ One real limit, and it matters. This finds shared wording. Two of Townsend's exa
 and 50:2) are a different kind of claim: that Clarke's note *argues* for a reading in his own words,
 and the Book of Mormon then has that reading. A word search cannot see that.
 
-**What's left, in progress.** That step is queued now. A model will read Clarke's notes, and those of
-eleven other commentaries and annotated Bibles, at each verse, and say whether the note proposes the
-book's reading (simulated judging). Before any of it counts, the model must say no to 200 made-up
-readings and yes to the 76 readings that are printed word for word. If Clarke's notes propose the
-book's readings more often than the other eleven do, that would be the first measured support for
-Townsend. Then his article, once it is bought.
+**Reading the notes: the check passed.** For that kind of claim a model reads Clarke's notes, and
+those of eleven other commentaries and annotated Bibles, at each verse, and says whether the note
+proposes the book's reading (simulated judging). Before any of it counts, the model had to say no to
+200 made-up readings and yes to 76 readings that are printed word for word, with bars of 90 and 80
+percent. On 23 November it said no to all 200 made-up readings and yes to 63 of the 76 (83 percent).
+So the full reading goes ahead.
+
+**What's left, in progress.** The full reading, 4,680 questions, is queued behind the other tests,
+about 16 hours of model time. If Clarke's notes propose the book's readings more often than the other
+eleven do, that would be the first measured support for Townsend. Then his article, once it is
+bought.
 
 ### Can the scripture voice be subtracted out? (BOM-100)
 
