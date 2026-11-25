@@ -2296,13 +2296,16 @@ asked, 4; outside what a word-by-word test can line up, 4 (11:4, 2:10, 49:1, 29:
 Townsend himself to other books, 1 (2:16). Under the rule as I first wrote it, the counts are 1, 5,
 2, 3 and 1.
 
-**What's left.** Fix the hole first. Find Clarke's note by hand at the four Townsend changes his
-scan lost (11:6, 14:3, 14:32, 48:11) and ask those four questions. Then do the same for the 286
-changes where Clarke was never asked (523 minus 237), so he's read as fully as the other works. Both
-mean new model reading, so they wait for my yes. Separately, the five passages a word-by-word test
-can't line up (the cross-references at 11:4, the long additions at 2:10 and 2:16, the preface at
-49:1, the rewrite of Isaiah 29) are arguments about ideas, not readings, and this test can't settle
-them. And a person should check the model's yeses.
+**What's left.** Fix the hole first, and that's now under way. I'm doing it after seeing the result,
+so it counts for less, and the first result stays as it was. Where Clarke's scan garbles the King
+James line, his verse is now found by matching overlapping three-word runs, so one broken word
+doesn't hide it. That finds 191 of the 286 changes he was never asked about; 95 still can't be
+found. Those 191 go to the same model with the same question, along with 20 made-up readings as a
+check, and all four of Townsend's lost examples (11:6, 14:3, 14:32, 48:11) are among them.
+Separately, the five passages a word-by-word test can't line up (the cross-references at 11:4, the
+long additions at 2:10 and 2:16, the words before 49:1, the rewrite of Isaiah 29) are arguments
+about ideas, not readings, and this test can't settle them. And a person should check the model's
+yeses.
 
 ### Can the scripture voice be subtracted out? (BOM-100)
 
