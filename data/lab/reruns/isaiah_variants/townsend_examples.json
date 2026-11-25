@@ -1,0 +1,512 @@
+{
+ "what": "Townsend's examples (keyed from his article) looked up in the BOM-122 results; no model run. Judged answers are simulated judging by an AI model.",
+ "items_file": "data/lab/reruns/isaiah_variants/townsend_article_items.json",
+ "classes_in_order": [
+  "clarke_by_wording",
+  "clarke_by_note",
+  "not_supported",
+  "not_asked_of_clarke",
+  "outside_variant_set",
+  "townsend_credits_other_works"
+ ],
+ "examples": 12,
+ "classes": {
+  "not_asked_of_clarke": 2,
+  "outside_variant_set": 3,
+  "not_supported": 5,
+  "townsend_credits_other_works": 1,
+  "clarke_by_note": 1
+ },
+ "primary_classes": {
+  "not_asked_of_clarke": 4,
+  "outside_variant_set": 4,
+  "not_supported": 2,
+  "townsend_credits_other_works": 1,
+  "clarke_by_note": 1
+ },
+ "named_changes": 25,
+ "named_changes_in_strict_set": 18,
+ "clarke_asked": 9,
+ "clarke_yes": 1,
+ "clarke_by_wording": 0,
+ "others_asked": 171,
+ "others_yes": 0,
+ "found_in_any_work_by_wording": 3,
+ "rows": [
+  {
+   "n": 1,
+   "isaiah": "11:6",
+   "book_of_mormon": "2 Ne 30:12",
+   "townsend_pages": "66-67",
+   "jackson_pages": "138-139",
+   "class": "not_asked_of_clarke",
+   "primary": 0,
+   "primary_class": "not_asked_of_clarke",
+   "changes": [
+    {
+     "ref": "11:5",
+     "kjv": "",
+     "new": "and then shall",
+     "in_variant_list": true,
+     "rid": 489,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": false,
+     "clarke_answer": null,
+     "others_asked": 10,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": false,
+     "class": "not_asked_of_clarke"
+    },
+    {
+     "ref": "11:6",
+     "kjv": "also shall",
+     "new": "",
+     "in_variant_list": true,
+     "rid": 490,
+     "in_strict_set": true,
+     "works_by_wording": 22,
+     "clarke_by_wording": false,
+     "clarke_asked": false,
+     "clarke_answer": null,
+     "others_asked": 10,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": false,
+     "class": "not_asked_of_clarke"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "isaiah": "11:4",
+   "book_of_mormon": "2 Ne 30:10",
+   "townsend_pages": "67-68",
+   "jackson_pages": "139-140",
+   "class": "outside_variant_set",
+   "primary": 0,
+   "primary_class": "outside_variant_set",
+   "changes": [
+    {
+     "ref": "11:4",
+     "what": "long",
+     "class": "outside_variant_set",
+     "in_variant_list": true
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "isaiah": "50:2",
+   "book_of_mormon": "2 Ne 7:2",
+   "townsend_pages": "68-69",
+   "jackson_pages": "140-141",
+   "class": "not_supported",
+   "primary": 0,
+   "primary_class": "not_supported",
+   "changes": [
+    {
+     "ref": "50:2",
+     "kjv": "there is no water",
+     "new": "the waters are dried up",
+     "in_variant_list": true,
+     "rid": 118,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": true,
+     "clarke_answer": "NO",
+     "others_asked": 8,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": true,
+     "class": "not_supported"
+    },
+    {
+     "ref": "50:2",
+     "kjv": "stinketh",
+     "new": "to stink",
+     "in_variant_list": true,
+     "rid": 117,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": true,
+     "clarke_answer": "NO",
+     "others_asked": 10,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": true,
+     "class": "not_supported"
+    },
+    {
+     "ref": "50:2",
+     "kjv": "dieth for",
+     "new": "they die because of",
+     "in_variant_list": true,
+     "rid": 119,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": false,
+     "clarke_answer": null,
+     "others_asked": 9,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": false,
+     "class": "not_asked_of_clarke"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "isaiah": "2:10 (with 2:19, 2:21)",
+   "book_of_mormon": "2 Ne 12:10, 19, 21",
+   "townsend_pages": "69-70",
+   "jackson_pages": "141-142",
+   "class": "not_supported",
+   "primary": 0,
+   "primary_class": "outside_variant_set",
+   "changes": [
+    {
+     "ref": "2:10",
+     "what": "long",
+     "class": "outside_variant_set",
+     "in_variant_list": true
+    },
+    {
+     "ref": "2:19",
+     "kjv": "",
+     "new": "shall come upon them",
+     "in_variant_list": true,
+     "rid": 194,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": false,
+     "clarke_answer": null,
+     "others_asked": 10,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": false,
+     "class": "not_asked_of_clarke"
+    },
+    {
+     "ref": "2:19",
+     "kjv": "",
+     "new": "shall smite them",
+     "in_variant_list": true,
+     "rid": 196,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": true,
+     "clarke_answer": "NO",
+     "others_asked": 11,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": true,
+     "class": "not_supported"
+    },
+    {
+     "ref": "2:21",
+     "kjv": "",
+     "new": "shall come upon them",
+     "in_variant_list": true,
+     "rid": 200,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": false,
+     "clarke_answer": null,
+     "others_asked": 10,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": false,
+     "class": "not_asked_of_clarke"
+    },
+    {
+     "ref": "2:21",
+     "kjv": "majesty",
+     "new": "glory shall smite them",
+     "in_variant_list": true,
+     "rid": 203,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": true,
+     "clarke_answer": "NO",
+     "others_asked": 11,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": true,
+     "class": "not_supported"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "isaiah": "2:12-14",
+   "book_of_mormon": "2 Ne 12:12-14",
+   "townsend_pages": "71",
+   "jackson_pages": "142",
+   "class": "not_supported",
+   "primary": 2,
+   "primary_class": "not_supported",
+   "changes": [
+    {
+     "ref": "2:12",
+     "kjv": "shall be",
+     "new": "soon cometh upon all nations yea",
+     "in_variant_list": true,
+     "rid": 186,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": true,
+     "clarke_answer": "NO",
+     "others_asked": 7,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": true,
+     "class": "not_supported"
+    },
+    {
+     "ref": "2:13",
+     "what": "long",
+     "class": "outside_variant_set",
+     "in_variant_list": true
+    },
+    {
+     "ref": "2:14",
+     "kjv": "that",
+     "new": "and upon all the nations which",
+     "in_variant_list": true,
+     "rid": 191,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": true,
+     "clarke_answer": "NO",
+     "others_asked": 11,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": true,
+     "class": "not_supported"
+    },
+    {
+     "ref": "2:14",
+     "kjv": "",
+     "new": "and upon every people",
+     "in_variant_list": true,
+     "rid": 192,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": false,
+     "clarke_answer": null,
+     "others_asked": 11,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": false,
+     "class": "not_asked_of_clarke"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "isaiah": "2:16",
+   "book_of_mormon": "2 Ne 12:16",
+   "townsend_pages": "71-73",
+   "jackson_pages": "142",
+   "class": "townsend_credits_other_works",
+   "primary": 0,
+   "primary_class": "townsend_credits_other_works",
+   "changes": [
+    {
+     "ref": "2:15",
+     "what": "long",
+     "class": "outside_variant_set",
+     "in_variant_list": true
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "isaiah": "9:3",
+   "book_of_mormon": "2 Ne 19:3",
+   "townsend_pages": "73-74",
+   "jackson_pages": "143-144",
+   "class": "clarke_by_note",
+   "primary": 0,
+   "primary_class": "clarke_by_note",
+   "changes": [
+    {
+     "ref": "9:3",
+     "kjv": "not",
+     "new": "",
+     "in_variant_list": true,
+     "rid": 337,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": true,
+     "clarke_answer": "YES",
+     "others_asked": 11,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": true,
+     "class": "clarke_by_note"
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "isaiah": "14:3-4",
+   "book_of_mormon": "2 Ne 24:3-4",
+   "townsend_pages": "75",
+   "jackson_pages": "144-145",
+   "class": "not_asked_of_clarke",
+   "primary": 0,
+   "primary_class": "not_asked_of_clarke",
+   "changes": [
+    {
+     "ref": "14:3",
+     "kjv": "the",
+     "new": "that",
+     "in_variant_list": true,
+     "rid": 414,
+     "in_strict_set": true,
+     "works_by_wording": 2,
+     "clarke_by_wording": false,
+     "clarke_asked": false,
+     "clarke_answer": null,
+     "others_asked": 8,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": false,
+     "class": "not_asked_of_clarke"
+    },
+    {
+     "ref": "14:4",
+     "what": "preface",
+     "class": "outside_variant_set",
+     "in_variant_list": false
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "isaiah": "14:32",
+   "book_of_mormon": "2 Ne 24:32",
+   "townsend_pages": "76",
+   "jackson_pages": "145-146",
+   "class": "not_supported",
+   "primary": 0,
+   "primary_class": "not_asked_of_clarke",
+   "changes": [
+    {
+     "ref": "14:32",
+     "kjv": "nation",
+     "new": "nations",
+     "in_variant_list": true,
+     "rid": 441,
+     "in_strict_set": true,
+     "works_by_wording": 16,
+     "clarke_by_wording": false,
+     "clarke_asked": false,
+     "clarke_answer": null,
+     "others_asked": 10,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": false,
+     "class": "not_asked_of_clarke"
+    },
+    {
+     "ref": "14:32",
+     "kjv": "one",
+     "new": "",
+     "in_variant_list": true,
+     "rid": 440,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": true,
+     "clarke_answer": "NO",
+     "others_asked": 11,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": true,
+     "class": "not_supported"
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "isaiah": "48:11",
+   "book_of_mormon": "1 Ne 20:11",
+   "townsend_pages": "76-77",
+   "jackson_pages": "146",
+   "class": "not_supported",
+   "primary": 0,
+   "primary_class": "not_asked_of_clarke",
+   "changes": [
+    {
+     "ref": "48:11",
+     "kjv": "how should",
+     "new": "i will not suffer",
+     "in_variant_list": true,
+     "rid": 31,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": false,
+     "clarke_answer": null,
+     "others_asked": 6,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": false,
+     "class": "not_asked_of_clarke"
+    },
+    {
+     "ref": "48:11",
+     "kjv": "",
+     "new": "to",
+     "in_variant_list": true,
+     "rid": 32,
+     "in_strict_set": true,
+     "works_by_wording": 0,
+     "clarke_by_wording": false,
+     "clarke_asked": true,
+     "clarke_answer": "NO",
+     "others_asked": 7,
+     "others_yes": 0,
+     "kjv_form_in_clarke_ocr": true,
+     "class": "not_supported"
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "isaiah": "49:1",
+   "book_of_mormon": "1 Ne 21:1",
+   "townsend_pages": "77-79",
+   "jackson_pages": "147",
+   "class": "outside_variant_set",
+   "primary": 0,
+   "primary_class": "outside_variant_set",
+   "changes": [
+    {
+     "ref": "49:1",
+     "what": "preface",
+     "class": "outside_variant_set",
+     "in_variant_list": false
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "isaiah": "29:11",
+   "book_of_mormon": "2 Ne 27:8, 18, 22",
+   "townsend_pages": "79-80",
+   "jackson_pages": "147-149",
+   "class": "outside_variant_set",
+   "primary": 0,
+   "primary_class": "outside_variant_set",
+   "changes": [
+    {
+     "ref": "29:11",
+     "what": "paraphrase",
+     "class": "outside_variant_set",
+     "in_variant_list": false
+    }
+   ]
+  }
+ ],
+ "config_sha256": "16c0ce501b381fda8e9e1e2d6279c76d129dec4adf4f6ddc8bbb199c3b104b9d"
+}

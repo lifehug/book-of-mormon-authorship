@@ -17,6 +17,7 @@ Usage::
     python -m lab.isaiah_judge jobs     # decoy questions for the check (seeded sample) + order
     python -m lab.isaiah_judge check    # the judge's known-answer check from the answers so far
     python -m lab.isaiah_judge score    # -> data/lab/reruns/isaiah_variants/result_judged_v2.json
+    python -m lab.isaiah_judge townsend # Townsend's examples looked up -> townsend_examples.json
 """
 
 from __future__ import annotations
@@ -36,6 +37,8 @@ from metadata import config
 CARD = isaiah.NOTES / "owner" / "2026-11-22-isaiah-judging"
 REAL = isaiah.CARD2 / "judge_jobs_v2.jsonl"
 PUBLIC = isaiah.OUT / "result_judged_v2.json"
+TOWNSEND_ITEMS = isaiah.OUT / "townsend_article_items.json"
+TOWNSEND_OUT = isaiah.OUT / "townsend_examples.json"
 
 
 def settings(cfg: dict) -> dict:
@@ -214,9 +217,143 @@ def score(cfg: dict) -> dict:
     return res
 
 
+# ------------------------------------------------------------------ Townsend's examples
+# Each example in Townsend (2025), keyed from the article, looked up in what already exists: the
+# variant list, the wording search and the judged answers. No model is run.
+ORDER = ("clarke_by_wording", "clarke_by_note", "not_supported", "not_asked_of_clarke",
+         "outside_variant_set")  # fmt: skip
+OUTSIDE = {"LONG", "PREFACE", "PARAPHRASE"}
+
+
+def townsend_examples(
+    items: list[dict],
+    detail: list[dict],
+    variants: list[dict],
+    ans: dict[str, str | None],
+    asked: set[str],
+    clarke: str,
+    kjv_in_clarke: dict[int, bool] | None = None,
+) -> dict:
+    """Class each example: the first of ``ORDER`` that any of its named changes reaches (the rule
+    written on the card), and beside it the class of the one change Townsend ties to Clarke
+    (``primary``, added after the first output showed a minor neighbouring change could decide).
+
+    ``detail`` is the strict readings (rid, ref, kjv, new, in_clarke, works), ``variants`` the
+    full variant list (ref, kjv, new, long), ``ans`` the parsed answers by job id, ``asked`` the
+    real job ids, ``kjv_in_clarke`` whether each reading's King James form is in Clarke's OCR."""
+    strict = {(r["ref"], r["kjv"], r["new"]): r for r in detail}
+    full = {(v["ref"], v["kjv"], v["new"]) for v in variants}
+    long_at = Counter(v["ref"] for v in variants if v["long"])
+    by_rid: dict[int, set[str]] = {}
+    for i in asked:
+        w, rid = i.rsplit("|", 1)
+        by_rid.setdefault(int(rid), set()).add(w)
+    rows, tally, tally_main = [], Counter(), Counter()
+    for it in items:
+        ch_rows = []
+        for ref, kjv, new in it["changes"]:
+            c: dict = {"ref": ref}
+            if new in OUTSIDE:
+                c |= {"what": new.lower(), "class": "outside_variant_set",
+                      "in_variant_list": new == "LONG" and long_at[ref] > 0}  # fmt: skip
+                ch_rows.append(c)
+                continue
+            c |= {"kjv": kjv, "new": new, "in_variant_list": (ref, kjv, new) in full}
+            r = strict.get((ref, kjv, new))
+            if r is None:
+                c["class"] = "outside_variant_set"
+                ch_rows.append(c)
+                continue
+            rid = r["rid"]
+            ws = by_rid.get(rid, set())
+            others = ws - {clarke}
+            c |= {
+                "rid": rid,
+                "in_strict_set": True,
+                "works_by_wording": r["works"],
+                "clarke_by_wording": bool(r["in_clarke"]),
+                "clarke_asked": clarke in ws,
+                "clarke_answer": ans.get(f"{clarke}|{rid}") if clarke in ws else None,
+                "others_asked": len(others),
+                "others_yes": sum(ans.get(f"{w}|{rid}") == "YES" for w in others),
+            }
+            if kjv_in_clarke is not None:
+                c["kjv_form_in_clarke_ocr"] = kjv_in_clarke.get(rid)
+            c["class"] = (
+                "clarke_by_wording" if c["clarke_by_wording"]
+                else "clarke_by_note" if c["clarke_answer"] == "YES"
+                else "not_supported" if c["clarke_asked"]
+                else "not_asked_of_clarke"
+            )  # fmt: skip
+            ch_rows.append(c)
+        if it.get("tied_to_clarke", True):
+            cls = min((c["class"] for c in ch_rows), key=ORDER.index)
+            main = ch_rows[it.get("primary", 0)]["class"]
+        else:
+            cls = main = "townsend_credits_other_works"
+        tally[cls] += 1
+        tally_main[main] += 1
+        rows.append({
+            "n": it["n"], "isaiah": it["isaiah"], "book_of_mormon": it["book_of_mormon"],
+            "townsend_pages": it["townsend_pages"], "jackson_pages": it.get("jackson_pages"),
+            "class": cls, "primary": it.get("primary", 0), "primary_class": main,
+            "changes": ch_rows,
+        })  # fmt: skip
+    ins = [c for r in rows for c in r["changes"] if c.get("in_strict_set")]
+    return {
+        "examples": len(rows),
+        "classes": dict(tally),
+        "primary_classes": dict(tally_main),
+        "named_changes": sum(len(r["changes"]) for r in rows),
+        "named_changes_in_strict_set": len(ins),
+        "clarke_asked": sum(c["clarke_asked"] for c in ins),
+        "clarke_yes": sum(c["clarke_answer"] == "YES" for c in ins),
+        "clarke_by_wording": sum(c["clarke_by_wording"] for c in ins),
+        "others_asked": sum(c["others_asked"] for c in ins),
+        "others_yes": sum(c["others_yes"] for c in ins),
+        "found_in_any_work_by_wording": sum(c["works_by_wording"] > 0 for c in ins),
+        "rows": rows,
+    }
+
+
+def _kjv_in_clarke(d: dict) -> dict[int, bool] | None:
+    """Whether each strict reading's King James form occurs in Clarke's OCR text: where it does
+    not, the job list could not place Clarke's quotation of the verse and asked him nothing."""
+    from lab import door, registry
+
+    isa = isaiah.Isaiah()
+    rd = isaiah.two_sets(isaiah.bom_queries(isa, d), isa, d)["strict"]["readings"]
+    reg = [r for r in registry.load().to_pylist() if r["work_id"] == d["clarke_isaiah"]]
+    cat = door.catalog({d["clarke_isaiah"]})
+    if not reg or d["clarke_isaiah"] not in cat:
+        return None
+    text = " " + " ".join(isaiah.tokens(door.text_of(cat[d["clarke_isaiah"]] | reg[0]))) + " "
+    return {r["rid"]: f" {' '.join(r['kjv_form'])} " in text for r in rd}
+
+
+def townsend(cfg: dict) -> dict:
+    d = settings(cfg)
+    items = json.loads(TOWNSEND_ITEMS.read_text())
+    res2 = json.loads(isaiah.OUT2["result"].read_text())["book_of_mormon"]
+    detail = res2["strict"]["readings_detail"]
+    variants = json.loads(isaiah.OUT2["variants"].read_text())["variants"]
+    asked = {j["id"] for n in ("jobs_first.jsonl", "jobs_rest.jsonl") for j in _load(CARD / n)
+             if not j["id"].startswith("decoy|")}  # fmt: skip
+    res = townsend_examples(
+        items["items"], detail, variants, answers(), asked, d["clarke_isaiah"], _kjv_in_clarke(d)
+    )
+    return {
+        "what": "Townsend's examples (keyed from his article) looked up in the BOM-122 results; "
+        "no model run. Judged answers are simulated judging by an AI model.",
+        "items_file": str(TOWNSEND_ITEMS),
+        "classes_in_order": list(ORDER) + ["townsend_credits_other_works"],
+        **res,
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["jobs", "check", "score"])
+    ap.add_argument("cmd", choices=["jobs", "check", "score", "townsend"])
     a = ap.parse_args(argv)
     cfg = config.load()
     if a.cmd == "jobs":
@@ -225,6 +362,11 @@ def main(argv: list[str] | None = None) -> int:
         d = settings(cfg)
         prompts = {j["id"]: j["prompt"] for j in _load(CARD / "jobs_first.jsonl")}
         print(json.dumps(check_of(answers(), prompts, d), indent=1))
+    elif a.cmd == "townsend":
+        res = townsend(cfg)
+        res["config_sha256"] = config.sha256_of_config()
+        out(TOWNSEND_OUT).write_text(json.dumps(res, indent=1) + "\n")
+        print(json.dumps({k: v for k, v in res.items() if k != "rows"}, indent=1))
     else:
         res = score(cfg)
         res["config_sha256"] = config.sha256_of_config()
