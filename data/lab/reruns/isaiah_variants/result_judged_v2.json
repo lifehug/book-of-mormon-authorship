@@ -1,0 +1,129 @@
+{
+ "judging": "simulated judging by an AI model (lab.judge, model sonnet)",
+ "known_answer": {
+  "decoy_questions": 200,
+  "verbatim_questions": 76,
+  "not_yet_answered": 0,
+  "decoys_answered_no": 1.0,
+  "verbatim_answered_yes": 0.8289,
+  "bars": {
+   "decoys_answered_no": 0.9,
+   "verbatim_answered_yes": 0.8
+  },
+  "attempted": true,
+  "passed": true
+ },
+ "unanswered_real": 0,
+ "works": {
+  "hathitrust:ia.ark:/13960/t05x2f80c": {
+   "decoy_asked": 11,
+   "decoy_no": 11,
+   "real_asked": 430,
+   "real_yes": 8,
+   "real_no": 422,
+   "real_yes_not_verbatim": 3
+  },
+  "hathitrust:ia.ark:/13960/t53f4vx8d": {
+   "decoy_asked": 12,
+   "decoy_no": 12,
+   "real_asked": 423,
+   "real_yes": 12,
+   "real_no": 411,
+   "real_yes_not_verbatim": 3
+  },
+  "hathitrust:mdp.39015009053300": {
+   "decoy_asked": 13,
+   "decoy_no": 13,
+   "real_asked": 449,
+   "real_yes": 8,
+   "real_no": 441,
+   "real_yes_not_verbatim": 3
+  },
+  "hathitrust:yale.39002005600409": {
+   "decoy_asked": 17,
+   "decoy_no": 17,
+   "real_asked": 423,
+   "real_yes": 10,
+   "real_no": 413,
+   "real_yes_not_verbatim": 1
+  },
+  "institutional_books:32044048289649": {
+   "decoy_asked": 16,
+   "decoy_no": 16,
+   "real_asked": 484,
+   "real_yes": 4,
+   "real_no": 480,
+   "real_yes_not_verbatim": 3
+  },
+  "institutional_books:AH4DPZ": {
+   "decoy_asked": 6,
+   "decoy_no": 6,
+   "real_asked": 439,
+   "real_yes": 10,
+   "real_no": 429,
+   "real_yes_not_verbatim": 6
+  },
+  "institutional_books:AH578M": {
+   "decoy_asked": 7,
+   "decoy_no": 7,
+   "real_asked": 406,
+   "real_no": 400,
+   "real_yes": 6,
+   "real_yes_not_verbatim": 3
+  },
+  "internet_archive:bim_eighteenth-century_the-holy-bible-containi_1796": {
+   "decoy_asked": 13,
+   "decoy_no": 13,
+   "real_asked": 445,
+   "real_yes": 17,
+   "real_no": 428,
+   "real_yes_not_verbatim": 2
+  },
+  "internet_archive:bub_gb_5RiB7IGBkYQC": {
+   "decoy_asked": 18,
+   "decoy_no": 18,
+   "real_asked": 397,
+   "real_no": 394,
+   "real_yes": 3,
+   "real_yes_not_verbatim": 3
+  },
+  "internet_archive:holybible0000vari_r5n8": {
+   "decoy_asked": 16,
+   "decoy_no": 16,
+   "real_asked": 421,
+   "real_yes": 10,
+   "real_no": 411,
+   "real_yes_not_verbatim": 2
+  },
+  "internet_archive:holybiblecontain0003adam": {
+   "decoy_asked": 60,
+   "decoy_no": 60,
+   "real_asked": 237,
+   "real_no": 235,
+   "real_yes": 2,
+   "real_yes_not_verbatim": 1
+  },
+  "internet_archive:holybiblecontaini02edin": {
+   "decoy_asked": 11,
+   "decoy_no": 11,
+   "real_asked": 437,
+   "real_yes": 5,
+   "real_no": 432,
+   "real_yes_not_verbatim": 2
+  }
+ },
+ "clarke": {
+  "asked": 237,
+  "yes": 2,
+  "rate": 0.008438818565400843,
+  "decoys_asked": 60,
+  "decoys_yes": 0,
+  "others_asked": 4754,
+  "others_yes": 93,
+  "others_rate": 0.019562473706352546,
+  "rank_among_works": 10,
+  "p_above_others": 0.9451769675572448
+ },
+ "verdict": "Clarke does not stand out among the commentaries",
+ "config_sha256": "16c0ce501b381fda8e9e1e2d6279c76d129dec4adf4f6ddc8bbb199c3b104b9d"
+}

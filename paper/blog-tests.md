@@ -89,7 +89,7 @@ compares against.
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
 | BOM-126 | Phrases come from histories of the Revolution; Abinadi follows Bunyan | Donofrio; Davis 2012 | the claimed source alone | the claimed source ranked among every volume in the library | **Done** |
-| BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held | **Done** |
+| BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held, by wording and by reading the notes | **Done: Clarke does not stand out; one real example (Isaiah 9:3)** |
 | BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | **Done** |
 | BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1989; replies | examples from each side | every use in print 1780 to 1835, by year | **Done: Masonic in about 4 of 10 uses by 1827-1830, not almost all** |
 | BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed twice; not scored** |
@@ -2183,7 +2183,8 @@ Book of Mormon's changes mostly are not in print anywhere I can see. Clarke is a
 sermons too.
 
 **What it means, and what it doesn't.** By wording, Clarke is not a source of the Isaiah changes, and
-neither is any other single book. For Townsend's case, that is a no on the part that can be counted.
+neither is any other single book. (The reading of the notes, below, came later and agrees, with one
+exception at Isaiah 9:3.) For Townsend's case, that is a no on the part that can be counted.
 For Jackson's, it agrees.
 
 One real limit, and it matters. This finds shared wording. Two of Townsend's examples (at Isaiah 9:3
@@ -2197,10 +2198,33 @@ proposes the book's reading (simulated judging). Before any of it counts, the mo
 percent. On 23 November it said no to all 200 made-up readings and yes to 63 of the 76 (83 percent).
 So the full reading goes ahead.
 
-**What's left, in progress.** The full reading, 4,680 questions, is queued behind the other tests,
-about 16 hours of model time. If Clarke's notes propose the book's readings more often than the other
-eleven do, that would be the first measured support for Townsend. Then his article, once it is
-bought.
+**The result of reading the notes.** All 4,680 questions were answered, and none were left open. For
+each of the book's Isaiah changes, the model read the note in each of twelve commentaries and
+annotated Bibles at that verse and said whether the note proposes the book's reading (simulated
+judging). It said yes to none of the 60 made-up readings mixed in among Clarke's questions.
+
+| | Notes read | Propose the book's reading |
+| --- | --- | --- |
+| Clarke | 237 | 2 (0.8%) |
+| The other eleven, together | 4,754 | 93 (2.0%) |
+
+Clarke ranks tenth of the twelve. The best is an annotated family Bible of 1796, at 17 of 445. By the
+rule I wrote down first, Clarke does not stand out. If anything his notes propose the book's
+readings less often than the others do.
+
+But one of his two yeses is the one Townsend names. At Isaiah 9:3 the King James says "and not
+increased the joy", and the Book of Mormon drops the "not". Clarke's note, following Lowth and the
+manuscript collations, argues for exactly that reading. None of the other eleven works says so at
+that verse in the passages read. His second named example, Isaiah 50:2, finds no support in Clarke
+or anywhere else. Clarke's other yes is a spelling, "briars" at 5:6, which 45 books share.
+
+So Townsend's case comes back as one real example, not a pattern. Clarke's commentary did contain
+an argument for one of the book's readings that the others lacked. Across the hundreds of other
+changes, his notes are no closer to the book than other commentaries of the time, and most of the
+changes are argued for in none of them.
+
+**What's left.** Townsend's article itself, once it is bought, to check his other examples one by
+one against this. A person's check of the model's yeses.
 
 ### Can the scripture voice be subtracted out? (BOM-100)
 
