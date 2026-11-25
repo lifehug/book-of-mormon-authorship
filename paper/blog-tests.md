@@ -89,7 +89,7 @@ compares against.
 | Test | The claim | Who | Before | Here | Status |
 | --- | --- | --- | --- | --- | --- |
 | BOM-126 | Phrases come from histories of the Revolution; Abinadi follows Bunyan | Donofrio; Davis 2012 | the claimed source alone | the claimed source ranked among every volume in the library | **Done** |
-| BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held, by wording and by reading the notes | **Done: Clarke does not stand out; one real example (Isaiah 9:3)** |
+| BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held, by wording and by reading the notes | **Clarke does not stand out; one real example (Isaiah 9:3); Clarke's scan read at under half the changes, to fix** |
 | BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | **Done** |
 | BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1989; replies | examples from each side | every use in print 1780 to 1835, by year | **Done: Masonic in about 4 of 10 uses by 1827-1830, not almost all** |
 | BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed twice; not scored** |
@@ -2116,11 +2116,59 @@ Clarke's commentary, the big Methodist Bible commentary that was coming out in t
 Jackson replied the same year that none of Townsend's cases shows dependence on Clarke. Both argued
 from about a dozen verses.
 
-**Their way first.** Townsend's article is behind a paywall and I have not bought it, so his full list
-(his appendix) is not replicated until the article is bought. Jackson's reply is open and goes through
-eleven of Townsend's passages one by one. I keyed those eleven from Jackson and checked each against
-what Clarke's 1825 Isaiah volume actually prints at that verse. Clarke's volume has none of the Book
-of Mormon's wording at any of them.
+**Their way first.** I now have Townsend's article itself: "Early Nineteenth-Century Biblical
+Scholarship and the Production of The Book of Mormon", *Journal of the Bible and its Reception* 12
+(2025), pages 57 to 84. Until now I had built his list of examples from Jackson's reply. So I went
+through the article one example at a time.
+
+First, how strong his claim is, in his words. The summary says Smith "likely used" Clarke's
+commentary. On page 66 he says he is "convinced, based on the evidence," that Smith dictated Isaiah
+straight out of Clarke's volume. In the conclusion, Clarke's notes would have been what Smith needed
+"if he ended up using it" (p. 82). He also says Smith did not copy Clarke slavishly. So many of his
+examples are partial on purpose: Clarke's note suggests one thing, and the book does something
+related.
+
+His method is close reading. He gives no counts. He doesn't say how many of the book's changes he
+checked against Clarke, or how many matched, and he doesn't hold any other commentary up beside
+Clarke. He does make one claim I can test: on page 64 he says he could not find these phrases in any
+other English commentary on Isaiah before 1830. He worked from the 1825 New York printing of Clarke,
+which is the same printing I have.
+
+He discusses twelve passages. He ties eleven to Clarke. The twelfth, "ships of the sea" at Isaiah
+2:16, he says Clarke does *not* explain, and he points to Wesley's notes, William Lowth, Thomas
+Scott and others instead. There's no appendix with more. Jackson's reply answers the same eleven, so
+the list I'd built from Jackson was complete.
+
+Then I looked each one up in what I already had: my list of the book's changes, the wording search
+of the whole library, and the model's reading of twelve commentaries' notes at each change
+(simulated judging). I ran no new model. Across his twelve passages he names 25 changes, and 18 of
+them are in the set I searched.
+
+| Isaiah | What Townsend says Clarke has | What I found | Jackson's reply |
+| --- | --- | --- | --- |
+| 11:6 (2 Ne 30:12) | "then shall the wolf" | Clarke never asked (bad scan, below); other works 0 of 10 | "then" is added in four other places too |
+| 11:4 (2 Ne 30:10) | cross-references | not in my set: a 40-word addition, and the claim is about cross-references, not a reading | it's Nephi's own comment |
+| 50:2 | "their fish is dried up" | model read Clarke's note: no. Other works 0 of 8 | in the book the waters dry up, not the fish |
+| 2:10, 19, 21 | a line Clarke restores to verse 10 | verse 10's addition is too long to search; "shall smite them" at 19 and 21: Clarke no, other works 0 of 11 each | no words in common |
+| 2:12-14 | cedars mean princes, hills mean kingdoms | "upon all the nations": Clarke no, other works 0 of 11 | no shared wording |
+| 2:16 | Townsend says not Clarke | too long to search | not discussed |
+| 9:3 | "thou hast increased their joy" | **Clarke yes; the other eleven works all no** | Clarke reads "its joy", which isn't the same as dropping "not" |
+| 14:3-4 | "in that day" | Clarke never asked (bad scan). Printed at this verse by 2 older books, 1669 and 1682 | "in that day" is common in Isaiah |
+| 14:32 | "the ambassadors of nations" | Clarke never asked (bad scan). "Messengers of the nations" is printed at this verse in 16 books before 1830 | the plural is the commoner phrase |
+| 48:11 | "my name be blasphemed"; first person | Clarke never asked (bad scan); other works 0 of 6 | one shared pronoun |
+| 49:1 | "O ye distant lands" | the verse itself is unchanged; the new words sit before it | same point |
+| 29:11 | "I cannot read it; for it is sealed up" | 2 Nephi 27 rewrites Isaiah 29 too freely to line up | "read it" comes after a long insertion |
+
+Of the 18 changes in my set, Clarke prints none of them word for word. The model was asked about
+Clarke's note at 9 of the 18 and said yes once, at 9:3. At those same 18 changes the other eleven
+works were asked 171 times and said yes zero times. So 9:3 still stands as the one real example. At
+50:2 and at the "nations" lines of 2:12-14, the model read Clarke's notes and didn't find the book's
+reading.
+
+Townsend's page 64 claim doesn't hold for two of his examples. "In that day" at 14:3 is printed at
+that verse in Arthur Jackson's *Annotations upon Isaiah* (1682) and in a 1669 book by Increase
+Mather. "Messengers of the nations" at 14:32 is in 16 books before 1830, Catholic Douay Bibles and
+Matthew Henry among them.
 
 **What I tried.** One commentary checked alone tells you nothing. The question is whether Clarke has
 more of the book's changes than any other book does, beyond chance. So I lined up every quoted verse
@@ -2187,9 +2235,9 @@ neither is any other single book. (The reading of the notes, below, came later a
 exception at Isaiah 9:3.) For Townsend's case, that is a no on the part that can be counted.
 For Jackson's, it agrees.
 
-One real limit, and it matters. This finds shared wording. Two of Townsend's examples (at Isaiah 9:3
-and 50:2) are a different kind of claim: that Clarke's note *argues* for a reading in his own words,
-and the Book of Mormon then has that reading. A word search cannot see that.
+One real limit, and it matters. This finds shared wording. Nearly all of Townsend's examples are a
+different kind of claim: that Clarke's note *argues* for a reading in his own words, and the Book of
+Mormon then has that reading. A word search cannot see that.
 
 **Reading the notes: the check passed.** For that kind of claim a model reads Clarke's notes, and
 those of eleven other commentaries and annotated Bibles, at each verse, and says whether the note
@@ -2223,8 +2271,38 @@ an argument for one of the book's readings that the others lacked. Across the hu
 changes, his notes are no closer to the book than other commentaries of the time, and most of the
 changes are argued for in none of them.
 
-**What's left.** Townsend's article itself, once it is bought, to check his other examples one by
-one against this. A person's check of the model's yeses.
+**When it failed: a hole in my own test.** At 9 of the 18 changes, Clarke was never asked at all.
+That surprised me, so I looked. The question list only asks about a book where it can find that book
+printing the verse, and Clarke's scan mangles exactly those lines: "lorp" for "lord" at 14:3 and
+14:32, page-margin dates dropped into the middle of 11:5-6, "zt" for "it" at 48:11. Every time
+Clarke was asked, the King James line was clean in his scan. Every time he wasn't, it wasn't. A
+plain word search of his scan shows his notes do carry several of the readings Townsend quotes, like
+"then shall the wolf" and "I cannot read it". So for four of Townsend's main examples (11:6, 14:3,
+14:32, 48:11), my reading of the notes tells you nothing about Clarke either way.
+
+The hole is bigger than Townsend's list. Clarke's scan has the King James wording for only 239 of
+the book's 523 changes, and he was asked about 237 of them. Every other work was asked about between
+397 and 484. Each work is scored on the share of yeses among the questions it was asked, so the
+comparison isn't simply wrong. But Clarke was read at fewer than half the changes, and I can't tell
+whether the ones his scan lost would have gone his way.
+
+I changed one more thing after seeing the first output, so it counts for less. I'd written down that
+each example would be classed by whichever of its changes came out best. But at 14:32 and 48:11 a
+small change next door ("one" dropped, "to" added) was asked about and got a no, while the change
+Townsend actually ties to Clarke was never asked. Under my first rule, those examples would have
+read "not supported". So beside that rule I also class each example by the one change Townsend ties
+to Clarke. By that change: by Clarke's note, 1 (9:3); not supported, 2 (50:2, 2:12-14); Clarke never
+asked, 4; outside what a word-by-word test can line up, 4 (11:4, 2:10, 49:1, 29:11); credited by
+Townsend himself to other books, 1 (2:16). Under the rule as I first wrote it, the counts are 1, 5,
+2, 3 and 1.
+
+**What's left.** Fix the hole first. Find Clarke's note by hand at the four Townsend changes his
+scan lost (11:6, 14:3, 14:32, 48:11) and ask those four questions. Then do the same for the 286
+changes where Clarke was never asked (523 minus 237), so he's read as fully as the other works. Both
+mean new model reading, so they wait for my yes. Separately, the five passages a word-by-word test
+can't line up (the cross-references at 11:4, the long additions at 2:10 and 2:16, the preface at
+49:1, the rewrite of Isaiah 29) are arguments about ideas, not readings, and this test can't settle
+them. And a person should check the model's yeses.
 
 ### Can the scripture voice be subtracted out? (BOM-100)
 
