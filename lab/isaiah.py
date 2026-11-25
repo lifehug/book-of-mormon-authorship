@@ -799,6 +799,20 @@ def judge(cfg: dict, isa: Isaiah) -> dict:
     return _judge_jobs(rd, s, by, isa, d, CARD / "judge_jobs.jsonl")
 
 
+def judge_prompt(r: dict, win: str) -> str:
+    """The one question every BOM-122 judging job asks (simulated judging by an AI model)."""
+    return (
+        "Simulated judging by an AI model (lab test BOM-122). Isaiah "
+        f"{r['ref']} in the King James Bible reads '{' '.join(r['kjv_form'])}'. "
+        f"The 1830 Book of Mormon reads '{' '.join(r['reading'])}' (King James "
+        f"'{r['kjv']}' -> '{r['new']}', {r['kind']}). Below are words from a work "
+        "printed before 1830 around its quotation of that verse (lower-cased, "
+        "punctuation removed). Does the passage propose, print or explain the Book "
+        "of Mormon's reading, in the same sense, as a reading of this verse? Answer "
+        "on the first line YES, NO or UNCLEAR, then one sentence.\n\n" + win
+    )
+
+
 def _judge_jobs(rd: list[dict], s: dict, by: dict, isa: Isaiah, d: dict, path: Path) -> dict:
     cand = [w for w in s["works"] if {"commentary", "translation", "lowth",
                                        "clarke_isaiah"} & set(w["class"])]  # fmt: skip
@@ -816,19 +830,7 @@ def _judge_jobs(rd: list[dict], s: dict, by: dict, isa: Isaiah, d: dict, path: P
                 continue  # the reading itself was found: one question, about the reading
             r = rd[rid]
             win = " ".join(toks[max(0, pos - d["judge_window"]) : pos + d["judge_window"]])
-            jobs.append({
-                "id": f"{w['work_id']}|{rid}",
-                "prompt": (
-                    "Simulated judging by an AI model (lab test BOM-122). Isaiah "
-                    f"{r['ref']} in the King James Bible reads '{' '.join(r['kjv_form'])}'. "
-                    f"The 1830 Book of Mormon reads '{' '.join(r['reading'])}' (King James "
-                    f"'{r['kjv']}' -> '{r['new']}', {r['kind']}). Below are words from a work "
-                    "printed before 1830 around its quotation of that verse (lower-cased, "
-                    "punctuation removed). Does the passage propose, print or explain the Book "
-                    "of Mormon's reading, in the same sense, as a reading of this verse? Answer "
-                    "on the first line YES, NO or UNCLEAR, then one sentence.\n\n" + win
-                ),
-            })  # fmt: skip
+            jobs.append({"id": f"{w['work_id']}|{rid}", "prompt": judge_prompt(r, win)})
     out(path).write_text("".join(json.dumps(j) + "\n" for j in jobs))
     return {"jobs": len(jobs), "works": [w["work_id"] for w in chosen], "path": str(path)}
 

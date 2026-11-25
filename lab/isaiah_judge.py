@@ -18,6 +18,8 @@ Usage::
     python -m lab.isaiah_judge check    # the judge's known-answer check from the answers so far
     python -m lab.isaiah_judge score    # -> data/lab/reruns/isaiah_variants/result_judged_v2.json
     python -m lab.isaiah_judge townsend # Townsend's examples looked up -> townsend_examples.json
+    python -m lab.isaiah_judge clarke-gap        # post hoc: questions at Clarke's garbled verses
+    python -m lab.isaiah_judge score-clarke-gap  # -> result_clarke_gap.json (main result unchanged)
 """
 
 from __future__ import annotations
@@ -360,9 +362,230 @@ def townsend(cfg: dict) -> dict:
     }
 
 
+# ------------------------------------------------------------- Clarke's lost verses (post hoc)
+# 2026-11-24, after the scored result: Clarke's scan garbles the King James line at many verses,
+# so the job list asked him about 237 of 523 readings. Here his verse is located by overlapping
+# word sequences, tolerant of single damaged words, and the same question is asked there.
+GAP_JOBS = CARD / "jobs_clarke_gap.jsonl"
+GAP_ANSWERS = CARD / "answers_clarke_gap.jsonl"
+GAP_LOCATED = isaiah.OUT / "clarke_gap_located.json"
+GAP_OUT = isaiah.OUT / "result_clarke_gap.json"
+
+
+def shingle_index(text: list[str], n: int) -> dict[tuple, list[int]]:
+    idx: dict[tuple, list[int]] = {}
+    for i in range(len(text) - n + 1):
+        idx.setdefault(tuple(text[i : i + n]), []).append(i)
+    return idx
+
+
+def locate(
+    verse: list[str], idx: dict[tuple, list[int]], g: dict, lo: int = 0, hi: int | None = None
+) -> dict | None:
+    """Best window of ``span_factor`` x the verse's length holding the largest share of the
+    verse's distinct ``shingle``-word sequences, between ``lo`` and ``hi``. None below
+    ``min_share`` or for a verse with fewer than ``min_shingles`` sequences. Earliest on a tie.
+    Returns the window start, the share and the hits (position, index in the verse)."""
+    n = g["shingle"]
+    sh: dict[tuple, int] = {}
+    for i in range(len(verse) - n + 1):
+        sh.setdefault(tuple(verse[i : i + n]), i)
+    if len(sh) < g["min_shingles"]:
+        return None
+    hits = sorted((p, k) for k in sh for p in idx.get(k, ()) if p >= lo and (hi is None or p < hi))
+    width = max(n, round(g["span_factor"] * len(verse)))
+    best, j, have = None, 0, Counter()
+    for i, (p, _) in enumerate(hits):
+        while j < len(hits) and hits[j][0] < p + width:
+            have[hits[j][1]] += 1
+            j += 1
+        share = len(have) / len(sh)
+        if best is None or share > best[1]:
+            best = (i, share, j)
+        have[hits[i][1]] -= 1
+        if not have[hits[i][1]]:
+            del have[hits[i][1]]
+    if best is None or best[1] < g["min_share"]:
+        return None
+    i, share, j = best
+    return {"start": hits[i][0], "share": round(share, 4),
+            "hits": [(p, sh[k]) for p, k in hits[i:j]]}  # fmt: skip
+
+
+def centre(loc: dict, verse: list[str], kjv_form: list[str]) -> int:
+    """Position in the work of the reading's King James words: the hit nearest their place."""
+    at = next((i for i in range(len(verse)) if verse[i : i + len(kjv_form)] == kjv_form), None)
+    if at is None:  # the reading reaches into a neighbouring verse: use its words' first match
+        at = next((verse.index(w) for w in kjv_form if w in verse), len(verse) // 2)
+    p, k = min(loc["hits"], key=lambda h: abs(h[1] - at))
+    return max(0, p + at - k)
+
+
+def _verse(ref: str) -> tuple[int, int]:
+    ch, vs = ref.split(":")
+    return int(ch), int(vs)
+
+
+def gap_jobs(
+    gap: list[dict], decoys: list[dict], verses: dict, text: list[str], d: dict, rng_seed: int
+) -> dict:
+    """Questions for Clarke at ``gap`` readings and ``check_decoys`` made-up ones, each at the
+    verse located in ``text``. Pure: returns jobs and the located / not-located ids."""
+    g = d["clarke_gap"]
+    idx = shingle_index(text, g["shingle"])
+
+    # Isaiah's span: from the first verse of chapter 1 that can be located to the last of 66
+    # (1:1 itself is unreadable in Clarke's scan); the whole volume if either end is not found.
+    def end(keys: list) -> tuple | None:
+        return next(((k, x) for k in keys if (x := locate(verses[k], idx, g))), None)
+
+    first = end(sorted(k for k in verses if k[0] == 1))
+    last = end(sorted((k for k in verses if k[0] == 66), reverse=True))
+    lo, hi = 0, None
+    if first and last and first[1]["start"] < last[1]["start"]:
+        lo = first[1]["start"]
+        hi = last[1]["start"] + round(g["span_factor"] * len(verses[last[0]])) + 1
+
+    def ask(r: dict) -> tuple[str, dict] | None:
+        verse = verses.get(_verse(r["ref"]), [])
+        loc = locate(verse, idx, g, lo, hi)
+        if loc is None:
+            return None
+        c = centre(loc, verse, r["kjv_form"])
+        win = " ".join(text[max(0, c - d["judge_window"]) : c + d["judge_window"]])
+        return isaiah.judge_prompt(r, win), {"share": loc["share"], "at": c}
+
+    jobs_, located, missing = [], [], []
+    for r in gap:
+        got = ask(r)
+        if got is None:
+            missing.append(r["rid"])
+            continue
+        jobs_.append({"id": f"{d['clarke_isaiah']}|{r['rid']}", "prompt": got[0]})
+        located.append({"rid": r["rid"], "ref": r["ref"], **got[1]})
+    pool = []
+    for r in decoys:
+        got = ask(r)
+        if got is not None and not verbatim(got[0]):
+            pool.append({"id": f"decoy|{d['clarke_isaiah']}|{r['rid']}", "prompt": got[0]})
+    random.Random(rng_seed).shuffle(pool)
+    picked = pool[: g["check_decoys"]]
+    return {"jobs": picked + jobs_, "located": located, "not_located": missing,
+            "decoy_pool": len(pool), "decoys": len(picked),
+            "isaiah_span": [lo, hi]}  # fmt: skip
+
+
+def clarke_gap(cfg: dict) -> dict:
+    """Build the post hoc questions (private) and the located ids (public: ids and numbers)."""
+    from lab import door, registry
+
+    d = settings(cfg)
+    isa = isaiah.Isaiah()
+    bom = isaiah.two_sets(isaiah.bom_queries(isa, d), isa, d)["strict"]
+    rd = bom["readings"]
+    asked = {j["id"] for n in ("jobs_first.jsonl", "jobs_rest.jsonl") for j in _load(CARD / n)}
+    clarke = d["clarke_isaiah"]
+    gap = [r for r in rd if f"{clarke}|{r['rid']}" not in asked]
+    used = {int(i.rsplit("|", 1)[1]) for i in asked if i.startswith(f"decoy|{clarke}|")}
+    decoys = [r for r in decoy_readings(bom["decoys"], rd) if r["rid"] not in used]
+    reg = [r for r in registry.load().to_pylist() if r["work_id"] == clarke]
+    text = isaiah.tokens(door.text_of(door.catalog({clarke})[clarke] | reg[0]))
+    res = gap_jobs(gap, decoys, isa.verse_words, text, d, d["random_seed"])
+    out(GAP_JOBS).write_text("".join(json.dumps(j) + "\n" for j in res.pop("jobs")))
+    res = {"post_hoc": "2026-11-24, after the scored result (card: Clarke's lost verses)",
+           "strict_readings": len(rd), "clarke_asked_before": len(rd) - len(gap),
+           "gap": len(gap), **res, "jobs_file": str(GAP_JOBS)}  # fmt: skip
+    out(GAP_LOCATED).write_text(json.dumps(res, indent=1) + "\n")
+    return res
+
+
+def _answers_of(path: Path) -> dict[str, str | None]:
+    return {r["id"]: parse(r["reply"]) for r in (_load(path) if path.exists() else [])}
+
+
+def score_gap(main: dict, located: dict, jobs_: list[dict], ans: dict, detail: list[dict],
+              townsend_rids: list[int], d: dict) -> dict:  # fmt: skip
+    """Beside the main result (unchanged): Clarke's rate over every asked reading, the gap's own
+    made-up-reading check, and the four Townsend changes."""
+    ids = [j["id"] for j in jobs_]
+    dec = [i for i in ids if i.startswith("decoy|")]
+    real = [i for i in ids if not i.startswith("decoy|")]
+    open_ = [i for i in ids if i not in ans]
+    got_d = [ans[i] for i in dec if ans.get(i)]
+    chk = {"decoy_questions": len(dec), "not_yet_answered": len(open_),
+           "decoys_answered_no": round(got_d.count("NO") / len(got_d), 4) if got_d else None,
+           "bar": d["bar_decoy_no"]}  # fmt: skip
+    chk["passed"] = bool(not open_ and got_d and chk["decoys_answered_no"] >= d["bar_decoy_no"])
+    res: dict = {
+        "post_hoc": "2026-11-24, after the scored result; the main result is unchanged",
+        "judging": f"simulated judging by an AI model (lab.judge, model {d['model']})",
+        "main_result_unchanged": {
+            k: main["clarke"][k]
+            for k in ("asked", "yes", "rate", "rank_among_works", "p_above_others")
+        }
+        | {"verdict": main["verdict"]},  # fmt: skip
+        "located": {
+            "gap": located["gap"],
+            "located": len(located["located"]),
+            "not_located": len(located["not_located"]),
+        },  # fmt: skip
+        "check": chk,
+    }
+    if not chk["passed"]:
+        res["stopped"] = "the gap's made-up-reading check is not passed or not complete"
+        return res
+    yes = [int(i.rsplit("|", 1)[1]) for i in real if ans.get(i) == "YES"]
+    k = main["clarke"]
+    asked, n_yes = k["asked"] + len(real), k["yes"] + len(yes)
+    rate = n_yes / asked if asked else None
+    others = [c["real_yes"] / c["real_asked"] for w, c in main["works"].items()
+              if w != d["clarke_isaiah"] and c.get("real_asked")]  # fmt: skip
+    by = {r["rid"]: r for r in detail}
+    res["clarke_all_located"] = {
+        "asked": asked, "yes": n_yes, "rate": rate,
+        "gap_asked": len(real), "gap_yes": len(yes),
+        "others_asked": k["others_asked"], "others_yes": k["others_yes"],
+        "others_rate": k["others_rate"],
+        "rank_among_works": 1 + sum(1 for r in others if r > (rate or 0)),
+        "p_above_others": fisher_greater(n_yes, asked - n_yes, k["others_yes"],
+                                         k["others_asked"] - k["others_yes"]),
+    }  # fmt: skip
+    c = res["clarke_all_located"]
+    res["verdict"] = (
+        "Clarke stands out"
+        if c["rank_among_works"] == 1 and c["p_above_others"] < d["alpha"]
+        else "Clarke does not stand out among the commentaries"
+    )
+    res["gap_yes"] = [{k2: by[r][k2] for k2 in ("rid", "ref", "kind", "kjv", "new")}
+                      for r in sorted(yes) if r in by]  # fmt: skip
+    res["townsend"] = [
+        {"rid": r, "ref": by[r]["ref"], "kjv": by[r]["kjv"], "new": by[r]["new"],
+         "located": f"{d['clarke_isaiah']}|{r}" in real,
+         "clarke_answer": ans.get(f"{d['clarke_isaiah']}|{r}")}
+        for r in townsend_rids if r in by
+    ]  # fmt: skip
+    return res
+
+
+def score_clarke_gap(cfg: dict) -> dict:
+    d = settings(cfg)
+    main_ = json.loads(PUBLIC.read_text())
+    located = json.loads(GAP_LOCATED.read_text())
+    detail = json.loads(isaiah.OUT2["result"].read_text())["book_of_mormon"]["strict"][
+        "readings_detail"
+    ]
+    tw = json.loads(TOWNSEND_OUT.read_text())["rows"]
+    rids = [r["changes"][r["primary"]].get("rid") for r in tw
+            if r["primary_class"] == "not_asked_of_clarke"]  # fmt: skip
+    return score_gap(main_, located, _load(GAP_JOBS), _answers_of(GAP_ANSWERS), detail,
+                     [r for r in rids if r is not None], d)  # fmt: skip
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["jobs", "check", "score", "townsend"])
+    ap.add_argument(
+        "cmd", choices=["jobs", "check", "score", "townsend", "clarke-gap", "score-clarke-gap"]
+    )
     a = ap.parse_args(argv)
     cfg = config.load()
     if a.cmd == "jobs":
@@ -371,6 +594,16 @@ def main(argv: list[str] | None = None) -> int:
         d = settings(cfg)
         prompts = {j["id"]: j["prompt"] for j in _load(CARD / "jobs_first.jsonl")}
         print(json.dumps(check_of(answers(), prompts, d), indent=1))
+    elif a.cmd == "clarke-gap":
+        res = clarke_gap(cfg)
+        print(json.dumps({k: v for k, v in res.items() if k not in ("located", "not_located")}
+                         | {"located": len(res["located"]),
+                            "not_located": len(res["not_located"])}, indent=1))  # fmt: skip
+    elif a.cmd == "score-clarke-gap":
+        res = score_clarke_gap(cfg)
+        res["config_sha256"] = config.sha256_of_config()
+        out(GAP_OUT).write_text(json.dumps(res, indent=1) + "\n")
+        print(json.dumps(res, indent=1))
     elif a.cmd == "townsend":
         res = townsend(cfg)
         res["config_sha256"] = config.sha256_of_config()

@@ -4,7 +4,11 @@ from lab.isaiah_judge import (
     check_of,
     decoy_readings,
     fisher_greater,
+    gap_jobs,
+    locate,
     parse,
+    score_gap,
+    shingle_index,
     townsend_examples,
     verbatim,
 )
@@ -88,3 +92,62 @@ def test_townsend_examples_are_classed_from_existing_answers():
     assert by[6]["changes"][0]["in_variant_list"] is False
     assert res["clarke_yes"] == 1 and res["others_yes"] == 1
     assert res["named_changes_in_strict_set"] == 4 and res["clarke_asked"] == 3
+
+
+G = {"shingle": 3, "min_share": 0.5, "min_shingles": 3, "span_factor": 1.5, "check_decoys": 1}
+VERSE = "and it shall come to pass in the day that the lord shall give thee rest".split()
+
+
+def test_a_verse_is_located_through_a_damaged_word_and_margin_text():
+    bad = "and it shall come to pass in the day that the lorp shall give thee rest".split()
+    text = "x y z".split() * 50 + bad[:8] + ["ann", "mundi"] + bad[8:] + "q r".split() * 50
+    loc = locate(VERSE, shingle_index(text, 3), G)
+    assert loc is not None and loc["share"] >= 0.5
+    assert 150 <= loc["start"] <= 160
+
+
+def test_a_verse_below_the_match_quality_is_not_located():
+    text = "and it shall come to pass xx yy zz ww".split()
+    assert locate(VERSE, shingle_index(text, 3), G) is None
+    assert locate(["too", "short"], shingle_index(text, 3), G) is None
+
+
+def test_gap_jobs_ask_the_same_question_at_located_verses_only():
+    verses = {(1, 1): "in the beginning was isaiah son of amoz".split(), (14, 3): VERSE,
+              (66, 24): "and they shall go forth and look upon the carcases".split(),
+              (14, 4): "that thou shalt take up this proverb against the king".split()}  # fmt: skip
+    text = verses[(1, 1)] + ["n"] * 30 + VERSE + ["n"] * 30 + verses[(66, 24)]
+    r = {"rid": 7, "ref": "14:3", "kjv_form": "in the day that the".split(),
+         "reading": "in that day that the".split(), "kjv": "the", "new": "that",
+         "kind": "changed"}  # fmt: skip
+    lost = dict(r, rid=8, ref="14:4")
+    dec = dict(r, rid=0, reading="in the day which the".split())
+    d = {"clarke_gap": G, "clarke_isaiah": "C", "judge_window": 5}
+    res = gap_jobs([r, lost], [dec], verses, text, d, 1)
+    assert [j["id"] for j in res["jobs"]] == ["decoy|C|0", "C|7"]
+    assert res["not_located"] == [8] and res["located"][0]["rid"] == 7
+    assert "Isaiah 14:3 in the King James Bible" in res["jobs"][1]["prompt"]
+
+
+def test_gap_score_keeps_the_main_result_and_needs_its_own_check():
+    main = {"clarke": {"asked": 10, "yes": 0, "rate": 0.0, "rank_among_works": 3,
+                       "p_above_others": 1.0, "others_asked": 100, "others_yes": 2,
+                       "others_rate": 0.02},
+            "verdict": "Clarke does not stand out among the commentaries",
+            "works": {"C": {"real_asked": 10, "real_yes": 0},
+                      "W": {"real_asked": 100, "real_yes": 2}}}  # fmt: skip
+    located = {"gap": 3, "located": [{"rid": 1}, {"rid": 2}], "not_located": [3]}
+    jobs = [{"id": "decoy|C|0"}, {"id": "C|1"}, {"id": "C|2"}]
+    detail = [{"rid": i, "ref": "1:1", "kind": "changed", "kjv": "a", "new": "b"} for i in range(4)]
+    d = {"bar_decoy_no": 0.9, "model": "m", "clarke_isaiah": "C", "alpha": 0.05}
+    half = score_gap(main, located, jobs, {"decoy|C|0": "NO"}, detail, [1], d)
+    assert "stopped" in half and half["located"]["not_located"] == 1
+    ans = {"decoy|C|0": "NO", "C|1": "YES", "C|2": "NO"}
+    res = score_gap(main, located, jobs, ans, detail, [1], d)
+    assert res["main_result_unchanged"]["asked"] == 10
+    assert res["clarke_all_located"]["asked"] == 12 and res["clarke_all_located"]["yes"] == 1
+    assert res["clarke_all_located"]["rank_among_works"] == 1
+    assert res["townsend"][0]["clarke_answer"] == "YES"
+    assert not score_gap(main, located, jobs, ans | {"decoy|C|0": "YES"}, detail, [1], d)["check"][
+        "passed"
+    ]

@@ -1711,6 +1711,12 @@ lab:                              # the research lab (exploratory tooling; reads
         bar_decoy_no: 0.90         # judge's check: share of made-up readings answered NO
         bar_verbatim_yes: 0.80     # and share of readings printed word for word answered YES
         alpha: 0.05                # Clarke stands out only if first among the 12 works and above the rest at this level (one-sided Fisher)
+        clarke_gap:                # 2026-11-24, POST HOC (after the scored result; card section "Clarke's lost verses"): ask Clarke at the strict readings his garbled scan hid
+          shingle: 3               # the verse is cut into distinct overlapping word sequences of this length
+          min_share: 0.5           # minimum match quality: share of the verse's distinct sequences inside the best window
+          min_shingles: 3          # a verse with fewer distinct sequences is not located
+          span_factor: 1.5         # window length, as a multiple of the verse's length in words
+          check_decoys: 20         # made-up readings asked at located Clarke verses (expected NO; bar bar_decoy_no)
   dictations:                    # BOM-104 (lab; exploratory): Joseph Smith's other dictated texts, and the Lectures on Faith; measures and word form are lab.two_voices*'s
     candidates: [joseph_smith, sidney_rigdon, oliver_cowdery, ww_phelps, parley_pratt]
     train_chunks: 8                # each candidate's first chunks (masked text): centroids and the author models' training slices
