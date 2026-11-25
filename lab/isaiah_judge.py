@@ -339,9 +339,18 @@ def townsend(cfg: dict) -> dict:
     variants = json.loads(isaiah.OUT2["variants"].read_text())["variants"]
     asked = {j["id"] for n in ("jobs_first.jsonl", "jobs_rest.jsonl") for j in _load(CARD / n)
              if not j["id"].startswith("decoy|")}  # fmt: skip
+    kic = _kjv_in_clarke(d)
     res = townsend_examples(
-        items["items"], detail, variants, answers(), asked, d["clarke_isaiah"], _kjv_in_clarke(d)
+        items["items"], detail, variants, answers(), asked, d["clarke_isaiah"], kic
     )
+    per_work = Counter(i.rsplit("|", 1)[0] for i in asked)
+    res["coverage"] = {
+        "strict_readings": len(detail),
+        "kjv_form_in_clarke_ocr": sum(kic.values()) if kic is not None else None,
+        "clarke_asked": per_work[d["clarke_isaiah"]],
+        "others_asked_min": min(v for w, v in per_work.items() if w != d["clarke_isaiah"]),
+        "others_asked_max": max(v for w, v in per_work.items() if w != d["clarke_isaiah"]),
+    }
     return {
         "what": "Townsend's examples (keyed from his article) looked up in the BOM-122 results; "
         "no model run. Judged answers are simulated judging by an AI model.",
