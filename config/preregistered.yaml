@@ -2641,6 +2641,20 @@ lab:                              # the research lab (exploratory tooling; reads
       baxter_saints_rest_1821: {work_id: 'internet_archive:saintseve00baxt', exclude_author: 'baxter, richard', exclude_title: 'everlasting rest'}   # first printed 1650
     workers: 6
     part_size: 2000                # works per resumable part of a library pass
+    design2:                       # BOM-128 design 2 (card section "Design 2 (2026-11-27)"): a stricter phrase finder; these values replace the ones above
+      design: 2
+      nonrel_sample: 1000          # rarity measured on non-religious books of the default set, seeded
+      nonrel_seed: 20261129
+      nonrel_years: [1780, 1829]
+      nonrel_genres: [history_chronicle, scientific_medical, legal_political, fiction_narrative]
+      nonrel_min_words: 5000
+      max_words_per_work: 150000
+      share_grid: [0.0, 0.001, 0.002, 0.005, 0.01, 0.02]   # cutoffs tried on the tuning draw (0.0 = in none of the books)
+      tune_seed: 20261130          # tuning draw of planted and unplanted passages
+      tune_false_target: 0.05      # chosen: the largest cutoff with tuning false share at most this and recall at least recall_bar
+      check_seed: 20261131         # the check's fresh draw (no tuning or rarity-sample work)
+      share: 0.02                  # chosen by `python -m lab.joined tune` (tune_v2.json)
+      function_rule: true          # chosen by the tuning: drop n-grams of function words and at most one other word
   new_senses:                      # BOM-129 (lab; exploratory): New Testament phrases in a new sense against period usage (card 2026-11-27-new-senses); simulated judging
     context_words: 60              # words each side of the phrase in every passage shown to the judge
     max_verses: 3                  # King James verses shown with a phrase

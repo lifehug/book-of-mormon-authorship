@@ -1,0 +1,2590 @@
+{
+ "settings": {
+  "ngram_sizes": [
+   4,
+   5
+  ],
+  "min_phrase_words": 4,
+  "window": 25,
+  "year_min": 1640,
+  "year_max": 1829,
+  "independent_works": 2,
+  "late_from": 1750,
+  "title_key_words": 4,
+  "min_current_joins": 5,
+  "seed": 20261127,
+  "planted": 100,
+  "planted_len": [
+   4,
+   8
+  ],
+  "prose_words": 300,
+  "prose_years": [
+   1780,
+   1829
+  ],
+  "prose_genres": [
+   "history_chronicle",
+   "scientific_medical",
+   "legal_political",
+   "fiction_narrative"
+  ],
+  "prose_min_words": 5000,
+  "recall_bar": 0.9,
+  "false_bar": 0.1,
+  "check_decades": [
+   1650,
+   1740,
+   1820
+  ],
+  "early_decades": [
+   1650,
+   1740
+  ],
+  "check_books": 20,
+  "check_genre": "sermon_devotional",
+  "check_min_words": 10000,
+  "own_decade_bar": 0.5,
+  "early_late_bar": 0.1,
+  "late_percentile": 90,
+  "old_percentile": 75,
+  "seed_chapter": [
+   "2 Nephi",
+   12
+  ],
+  "bom_exclude_title": "book of mormon",
+  "decoys": {
+   "late_war_1816": {
+    "file": "data/candidates/text/gh-1816-late-war.txt",
+    "year": 1816,
+    "exclude_author": "hunt, g",
+    "exclude_title": "late war|historical reader"
+   },
+   "view_of_the_hebrews_1823": {
+    "file": "data/candidates/text/es-1823-view-of-the-hebrews.txt",
+    "year": 1823,
+    "exclude_title": "view of the hebrews"
+   },
+   "baxter_saints_rest_1821": {
+    "work_id": "internet_archive:saintseve00baxt",
+    "exclude_author": "baxter, richard",
+    "exclude_title": "everlasting rest"
+   }
+  },
+  "workers": 6,
+  "part_size": 2000,
+  "design": 2,
+  "nonrel_sample": 1000,
+  "nonrel_seed": 20261129,
+  "nonrel_years": [
+   1780,
+   1829
+  ],
+  "nonrel_genres": [
+   "history_chronicle",
+   "scientific_medical",
+   "legal_political",
+   "fiction_narrative"
+  ],
+  "nonrel_min_words": 5000,
+  "max_words_per_work": 150000,
+  "share_grid": [
+   0.0,
+   0.001,
+   0.002,
+   0.005,
+   0.01,
+   0.02
+  ],
+  "tune_seed": 20261130,
+  "tune_false_target": 0.05,
+  "check_seed": 20261131,
+  "share": 0.02,
+  "function_rule": true
+ },
+ "config_sha256": "03d765c1c52aa8e5f694937dcd3fd48e68841df6e7e922b4087eefed91ff57d5",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "24338a4582242f131e29d19c4daa6187d1cb753a",
+ "what": "joins found by step 1 in 1830 2 Nephi XII (modern 2 Nephi 28); not dated",
+ "book_joins_all_chapters": 10807,
+ "seed_chapter": "2 Nephi 12",
+ "joins": [
+  {
+   "a": "it shall come to pass in that day that",
+   "a_refs": [
+    "Ezekiel 39:11",
+    "Isaiah 10:20",
+    "Isaiah 10:27",
+    "Isaiah 11:11",
+    "Isaiah 22:20",
+    "Isaiah 23:15",
+    "Isaiah 24:21",
+    "Isaiah 27:12",
+    "Isaiah 27:13",
+    "Isaiah 7:18",
+    "Isaiah 7:21",
+    "Isaiah 7:23",
+    "Joel 3:18",
+    "Zechariah 12:9",
+    "Zechariah 13:4",
+    "Zechariah 14:13",
+    "Zechariah 14:6"
+   ],
+   "b": "remnant of the house of israel",
+   "b_refs": [
+    "Isaiah 46:3"
+   ],
+   "times": 1
+  },
+  {
+   "a": "it shall come to pass in that day that",
+   "a_refs": [
+    "Ezekiel 39:11",
+    "Isaiah 10:20",
+    "Isaiah 10:27",
+    "Isaiah 11:11",
+    "Isaiah 22:20",
+    "Isaiah 23:15",
+    "Isaiah 24:21",
+    "Isaiah 27:12",
+    "Isaiah 27:13",
+    "Isaiah 7:18",
+    "Isaiah 7:21",
+    "Isaiah 7:23",
+    "Joel 3:18",
+    "Zechariah 12:9",
+    "Zechariah 13:4",
+    "Zechariah 14:13",
+    "Zechariah 14:6"
+   ],
+   "b": "the house of israel for",
+   "b_refs": [
+    "Amos 5:3",
+    "Ezekiel 12:24",
+    "Ezekiel 6:11"
+   ],
+   "times": 1
+  },
+  {
+   "a": "i am the lord s and",
+   "a_refs": [
+    "Isaiah 44:5"
+   ],
+   "b": "it shall come to pass in that day that",
+   "b_refs": [
+    "Ezekiel 39:11",
+    "Isaiah 10:20",
+    "Isaiah 10:27",
+    "Isaiah 11:11",
+    "Isaiah 22:20",
+    "Isaiah 23:15",
+    "Isaiah 24:21",
+    "Isaiah 27:12",
+    "Isaiah 27:13",
+    "Isaiah 7:18",
+    "Isaiah 7:21",
+    "Isaiah 7:23",
+    "Joel 3:18",
+    "Zechariah 12:9",
+    "Zechariah 13:4",
+    "Zechariah 14:13",
+    "Zechariah 14:6"
+   ],
+   "times": 1
+  },
+  {
+   "a": "it shall come to pass in that day that",
+   "a_refs": [
+    "Ezekiel 39:11",
+    "Isaiah 10:20",
+    "Isaiah 10:27",
+    "Isaiah 11:11",
+    "Isaiah 22:20",
+    "Isaiah 23:15",
+    "Isaiah 24:21",
+    "Isaiah 27:12",
+    "Isaiah 27:13",
+    "Isaiah 7:18",
+    "Isaiah 7:21",
+    "Isaiah 7:23",
+    "Joel 3:18",
+    "Zechariah 12:9",
+    "Zechariah 13:4",
+    "Zechariah 14:13",
+    "Zechariah 14:6"
+   ],
+   "b": "the lord s and the",
+   "b_refs": [
+    "1 Corinthians 10:26",
+    "1 Corinthians 10:28",
+    "Psalms 24:1"
+   ],
+   "times": 1
+  },
+  {
+   "a": "i am the lord s and",
+   "a_refs": [
+    "Isaiah 44:5"
+   ],
+   "b": "the lord s and the",
+   "b_refs": [
+    "1 Corinthians 10:26",
+    "1 Corinthians 10:28",
+    "Psalms 24:1"
+   ],
+   "times": 1
+  },
+  {
+   "a": "of god the holy",
+   "a_refs": [
+    "Psalms 46:4"
+   ],
+   "b": "the holy ghost which",
+   "b_refs": [
+    "1 Corinthians 6:19",
+    "2 Timothy 1:14",
+    "Romans 5:5",
+    "Titus 3:5"
+   ],
+   "times": 1
+  },
+  {
+   "a": "god the holy one of israel",
+   "a_refs": [
+    "Isaiah 30:15",
+    "Isaiah 43:3"
+   ],
+   "b": "the holy ghost which",
+   "b_refs": [
+    "1 Corinthians 6:19",
+    "2 Timothy 1:14",
+    "Romans 5:5",
+    "Titus 3:5"
+   ],
+   "times": 1
+  },
+  {
+   "a": "holy one of israel and",
+   "a_refs": [
+    "Isaiah 17:7",
+    "Isaiah 45:11",
+    "Isaiah 49:7"
+   ],
+   "b": "the holy ghost which",
+   "b_refs": [
+    "1 Corinthians 6:19",
+    "2 Timothy 1:14",
+    "Romans 5:5",
+    "Titus 3:5"
+   ],
+   "times": 1
+  },
+  {
+   "a": "say unto the people",
+   "a_refs": [
+    "Ezekiel 12:19",
+    "Matthew 27:64"
+   ],
+   "b": "the holy ghost which",
+   "b_refs": [
+    "1 Corinthians 6:19",
+    "2 Timothy 1:14",
+    "Romans 5:5",
+    "Titus 3:5"
+   ],
+   "times": 1
+  },
+  {
+   "a": "of god the holy",
+   "a_refs": [
+    "Psalms 46:4"
+   ],
+   "b": "say unto the people",
+   "b_refs": [
+    "Ezekiel 12:19",
+    "Matthew 27:64"
+   ],
+   "times": 1
+  },
+  {
+   "a": "god the holy one of israel",
+   "a_refs": [
+    "Isaiah 30:15",
+    "Isaiah 43:3"
+   ],
+   "b": "say unto the people",
+   "b_refs": [
+    "Ezekiel 12:19",
+    "Matthew 27:64"
+   ],
+   "times": 1
+  },
+  {
+   "a": "holy one of israel and",
+   "a_refs": [
+    "Isaiah 17:7",
+    "Isaiah 45:11",
+    "Isaiah 49:7"
+   ],
+   "b": "say unto the people",
+   "b_refs": [
+    "Ezekiel 12:19",
+    "Matthew 27:64"
+   ],
+   "times": 1
+  },
+  {
+   "a": "eat drink and be merry",
+   "a_refs": [
+    "Luke 12:19"
+   ],
+   "b": "for to morrow we die",
+   "b_refs": [
+    "1 Corinthians 15:32"
+   ],
+   "times": 2
+  },
+  {
+   "a": "dig a pit for",
+   "a_refs": [
+    "Job 6:27"
+   ],
+   "b": "eat drink and be merry",
+   "b_refs": [
+    "Luke 12:19"
+   ],
+   "times": 1
+  },
+  {
+   "a": "dig a pit for",
+   "a_refs": [
+    "Job 6:27"
+   ],
+   "b": "for to morrow we die",
+   "b_refs": [
+    "1 Corinthians 15:32"
+   ],
+   "times": 1
+  },
+  {
+   "a": "for to morrow we die",
+   "a_refs": [
+    "1 Corinthians 15:32"
+   ],
+   "b": "in the kingdom of god",
+   "b_refs": [
+    "Luke 13:28",
+    "Luke 13:29",
+    "Luke 14:15",
+    "Luke 22:16",
+    "Luke 7:28",
+    "Mark 14:25"
+   ],
+   "times": 1
+  },
+  {
+   "a": "seek deep to hide their",
+   "a_refs": [
+    "Isaiah 29:15"
+   ],
+   "b": "the blood of the saints",
+   "b_refs": [
+    "Revelation 17:6"
+   ],
+   "times": 1
+  },
+  {
+   "a": "the blood of the saints",
+   "a_refs": [
+    "Revelation 17:6"
+   ],
+   "b": "the lord and their works",
+   "b_refs": [
+    "Isaiah 29:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "gone out of the way",
+   "a_refs": [
+    "Romans 3:12"
+   ],
+   "b": "the lord and their works",
+   "b_refs": [
+    "Isaiah 29:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "gone out of the way",
+   "a_refs": [
+    "Romans 3:12"
+   ],
+   "b": "the blood of the saints",
+   "b_refs": [
+    "Revelation 17:6"
+   ],
+   "times": 1
+  },
+  {
+   "a": "gone out of the way",
+   "a_refs": [
+    "Romans 3:12"
+   ],
+   "b": "lifted up because of",
+   "b_refs": [
+    "Ezekiel 28:17",
+    "Ezekiel 28:5"
+   ],
+   "times": 1
+  },
+  {
+   "a": "unto them saith the lord",
+   "a_refs": [
+    "Jeremiah 31:32"
+   ],
+   "b": "way of the lord",
+   "b_refs": [
+    "2 Kings 21:22",
+    "Acts 18:25",
+    "Ezekiel 18:25",
+    "Ezekiel 18:29",
+    "Ezekiel 33:17",
+    "Ezekiel 33:20",
+    "Genesis 18:19",
+    "Isaiah 40:3",
+    "Jeremiah 5:4",
+    "Jeremiah 5:5",
+    "John 1:23",
+    "Judges 2:22",
+    "Luke 3:4",
+    "Mark 1:3",
+    "Matthew 3:3",
+    "Proverbs 10:29"
+   ],
+   "times": 1
+  },
+  {
+   "a": "them saith the lord god",
+   "a_refs": [
+    "Ezekiel 39:10",
+    "Ezekiel 44:12",
+    "Ezekiel 45:15"
+   ],
+   "b": "way of the lord",
+   "b_refs": [
+    "2 Kings 21:22",
+    "Acts 18:25",
+    "Ezekiel 18:25",
+    "Ezekiel 18:29",
+    "Ezekiel 33:17",
+    "Ezekiel 33:20",
+    "Genesis 18:19",
+    "Isaiah 40:3",
+    "Jeremiah 5:4",
+    "Jeremiah 5:5",
+    "John 1:23",
+    "Judges 2:22",
+    "Luke 3:4",
+    "Mark 1:3",
+    "Matthew 3:3",
+    "Proverbs 10:29"
+   ],
+   "times": 1
+  },
+  {
+   "a": "the lord god almighty",
+   "a_refs": [
+    "Revelation 21:22"
+   ],
+   "b": "way of the lord",
+   "b_refs": [
+    "2 Kings 21:22",
+    "Acts 18:25",
+    "Ezekiel 18:25",
+    "Ezekiel 18:29",
+    "Ezekiel 33:17",
+    "Ezekiel 33:20",
+    "Genesis 18:19",
+    "Isaiah 40:3",
+    "Jeremiah 5:4",
+    "Jeremiah 5:5",
+    "John 1:23",
+    "Judges 2:22",
+    "Luke 3:4",
+    "Mark 1:3",
+    "Matthew 3:3",
+    "Proverbs 10:29"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be thrust down to hell",
+   "a_refs": [
+    "Luke 10:15"
+   ],
+   "b": "way of the lord",
+   "b_refs": [
+    "2 Kings 21:22",
+    "Acts 18:25",
+    "Ezekiel 18:25",
+    "Ezekiel 18:29",
+    "Ezekiel 33:17",
+    "Ezekiel 33:20",
+    "Genesis 18:19",
+    "Isaiah 40:3",
+    "Jeremiah 5:4",
+    "Jeremiah 5:5",
+    "John 1:23",
+    "Judges 2:22",
+    "Luke 3:4",
+    "Mark 1:3",
+    "Matthew 3:3",
+    "Proverbs 10:29"
+   ],
+   "times": 1
+  },
+  {
+   "a": "them that turn aside",
+   "a_refs": [
+    "Psalms 101:3"
+   ],
+   "b": "way of the lord",
+   "b_refs": [
+    "2 Kings 21:22",
+    "Acts 18:25",
+    "Ezekiel 18:25",
+    "Ezekiel 18:29",
+    "Ezekiel 33:17",
+    "Ezekiel 33:20",
+    "Genesis 18:19",
+    "Isaiah 40:3",
+    "Jeremiah 5:4",
+    "Jeremiah 5:5",
+    "John 1:23",
+    "Judges 2:22",
+    "Luke 3:4",
+    "Mark 1:3",
+    "Matthew 3:3",
+    "Proverbs 10:29"
+   ],
+   "times": 1
+  },
+  {
+   "a": "that turn aside the",
+   "a_refs": [
+    "Malachi 3:5"
+   ],
+   "b": "way of the lord",
+   "b_refs": [
+    "2 Kings 21:22",
+    "Acts 18:25",
+    "Ezekiel 18:25",
+    "Ezekiel 18:29",
+    "Ezekiel 33:17",
+    "Ezekiel 33:20",
+    "Genesis 18:19",
+    "Isaiah 40:3",
+    "Jeremiah 5:4",
+    "Jeremiah 5:5",
+    "John 1:23",
+    "Judges 2:22",
+    "Luke 3:4",
+    "Mark 1:3",
+    "Matthew 3:3",
+    "Proverbs 10:29"
+   ],
+   "times": 1
+  },
+  {
+   "a": "turn aside the just for a thing of nought",
+   "a_refs": [
+    "Isaiah 29:21"
+   ],
+   "b": "way of the lord",
+   "b_refs": [
+    "2 Kings 21:22",
+    "Acts 18:25",
+    "Ezekiel 18:25",
+    "Ezekiel 18:29",
+    "Ezekiel 33:17",
+    "Ezekiel 33:20",
+    "Genesis 18:19",
+    "Isaiah 40:3",
+    "Jeremiah 5:4",
+    "Jeremiah 5:5",
+    "John 1:23",
+    "Judges 2:22",
+    "Luke 3:4",
+    "Mark 1:3",
+    "Matthew 3:3",
+    "Proverbs 10:29"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be thrust down to hell",
+   "a_refs": [
+    "Luke 10:15"
+   ],
+   "b": "unto them saith the lord",
+   "b_refs": [
+    "Jeremiah 31:32"
+   ],
+   "times": 1
+  },
+  {
+   "a": "them that turn aside",
+   "a_refs": [
+    "Psalms 101:3"
+   ],
+   "b": "unto them saith the lord",
+   "b_refs": [
+    "Jeremiah 31:32"
+   ],
+   "times": 1
+  },
+  {
+   "a": "that turn aside the",
+   "a_refs": [
+    "Malachi 3:5"
+   ],
+   "b": "unto them saith the lord",
+   "b_refs": [
+    "Jeremiah 31:32"
+   ],
+   "times": 1
+  },
+  {
+   "a": "turn aside the just for a thing of nought",
+   "a_refs": [
+    "Isaiah 29:21"
+   ],
+   "b": "unto them saith the lord",
+   "b_refs": [
+    "Jeremiah 31:32"
+   ],
+   "times": 1
+  },
+  {
+   "a": "a thing of nought and",
+   "a_refs": [
+    "Jeremiah 14:14"
+   ],
+   "b": "unto them saith the lord",
+   "b_refs": [
+    "Jeremiah 31:32"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be thrust down to hell",
+   "a_refs": [
+    "Luke 10:15"
+   ],
+   "b": "them saith the lord god",
+   "b_refs": [
+    "Ezekiel 39:10",
+    "Ezekiel 44:12",
+    "Ezekiel 45:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "them saith the lord god",
+   "a_refs": [
+    "Ezekiel 39:10",
+    "Ezekiel 44:12",
+    "Ezekiel 45:15"
+   ],
+   "b": "them that turn aside",
+   "b_refs": [
+    "Psalms 101:3"
+   ],
+   "times": 1
+  },
+  {
+   "a": "that turn aside the",
+   "a_refs": [
+    "Malachi 3:5"
+   ],
+   "b": "them saith the lord god",
+   "b_refs": [
+    "Ezekiel 39:10",
+    "Ezekiel 44:12",
+    "Ezekiel 45:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "them saith the lord god",
+   "a_refs": [
+    "Ezekiel 39:10",
+    "Ezekiel 44:12",
+    "Ezekiel 45:15"
+   ],
+   "b": "turn aside the just for a thing of nought",
+   "b_refs": [
+    "Isaiah 29:21"
+   ],
+   "times": 1
+  },
+  {
+   "a": "a thing of nought and",
+   "a_refs": [
+    "Jeremiah 14:14"
+   ],
+   "b": "them saith the lord god",
+   "b_refs": [
+    "Ezekiel 39:10",
+    "Ezekiel 44:12",
+    "Ezekiel 45:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be thrust down to hell",
+   "a_refs": [
+    "Luke 10:15"
+   ],
+   "b": "the lord god almighty",
+   "b_refs": [
+    "Revelation 21:22"
+   ],
+   "times": 1
+  },
+  {
+   "a": "the lord god almighty",
+   "a_refs": [
+    "Revelation 21:22"
+   ],
+   "b": "them that turn aside",
+   "b_refs": [
+    "Psalms 101:3"
+   ],
+   "times": 1
+  },
+  {
+   "a": "that turn aside the",
+   "a_refs": [
+    "Malachi 3:5"
+   ],
+   "b": "the lord god almighty",
+   "b_refs": [
+    "Revelation 21:22"
+   ],
+   "times": 1
+  },
+  {
+   "a": "the lord god almighty",
+   "a_refs": [
+    "Revelation 21:22"
+   ],
+   "b": "turn aside the just for a thing of nought",
+   "b_refs": [
+    "Isaiah 29:21"
+   ],
+   "times": 1
+  },
+  {
+   "a": "a thing of nought and",
+   "a_refs": [
+    "Jeremiah 14:14"
+   ],
+   "b": "the lord god almighty",
+   "b_refs": [
+    "Revelation 21:22"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be thrust down to hell",
+   "a_refs": [
+    "Luke 10:15"
+   ],
+   "b": "them that turn aside",
+   "b_refs": [
+    "Psalms 101:3"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be thrust down to hell",
+   "a_refs": [
+    "Luke 10:15"
+   ],
+   "b": "that turn aside the",
+   "b_refs": [
+    "Malachi 3:5"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be thrust down to hell",
+   "a_refs": [
+    "Luke 10:15"
+   ],
+   "b": "turn aside the just for a thing of nought",
+   "b_refs": [
+    "Isaiah 29:21"
+   ],
+   "times": 1
+  },
+  {
+   "a": "a thing of nought and",
+   "a_refs": [
+    "Jeremiah 14:14"
+   ],
+   "b": "be thrust down to hell",
+   "b_refs": [
+    "Luke 10:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "a thing of nought and",
+   "a_refs": [
+    "Jeremiah 14:14"
+   ],
+   "b": "them that turn aside",
+   "b_refs": [
+    "Psalms 101:3"
+   ],
+   "times": 1
+  },
+  {
+   "a": "a thing of nought and",
+   "a_refs": [
+    "Jeremiah 14:14"
+   ],
+   "b": "that turn aside the",
+   "b_refs": [
+    "Malachi 3:5"
+   ],
+   "times": 1
+  },
+  {
+   "a": "that the lord god",
+   "a_refs": [
+    "2 Chronicles 13:5",
+    "Amos 5:15",
+    "Exodus 4:5",
+    "Genesis 2:4",
+    "Psalms 68:18"
+   ],
+   "b": "that turn aside the",
+   "b_refs": [
+    "Malachi 3:5"
+   ],
+   "times": 1
+  },
+  {
+   "a": "that the lord god",
+   "a_refs": [
+    "2 Chronicles 13:5",
+    "Amos 5:15",
+    "Exodus 4:5",
+    "Genesis 2:4",
+    "Psalms 68:18"
+   ],
+   "b": "turn aside the just for a thing of nought",
+   "b_refs": [
+    "Isaiah 29:21"
+   ],
+   "times": 1
+  },
+  {
+   "a": "the lord god will",
+   "a_refs": [
+    "Amos 3:7",
+    "Isaiah 25:8",
+    "Isaiah 40:10",
+    "Isaiah 50:7",
+    "Isaiah 50:9",
+    "Isaiah 61:11"
+   ],
+   "b": "turn aside the just for a thing of nought",
+   "b_refs": [
+    "Isaiah 29:21"
+   ],
+   "times": 1
+  },
+  {
+   "a": "a thing of nought and",
+   "a_refs": [
+    "Jeremiah 14:14"
+   ],
+   "b": "that the lord god",
+   "b_refs": [
+    "2 Chronicles 13:5",
+    "Amos 5:15",
+    "Exodus 4:5",
+    "Genesis 2:4",
+    "Psalms 68:18"
+   ],
+   "times": 1
+  },
+  {
+   "a": "a thing of nought and",
+   "a_refs": [
+    "Jeremiah 14:14"
+   ],
+   "b": "the lord god will",
+   "b_refs": [
+    "Amos 3:7",
+    "Isaiah 25:8",
+    "Isaiah 40:10",
+    "Isaiah 50:7",
+    "Isaiah 50:9",
+    "Isaiah 61:11"
+   ],
+   "times": 1
+  },
+  {
+   "a": "inhabitants of the earth and",
+   "a_refs": [
+    "Daniel 4:35"
+   ],
+   "b": "that the lord god",
+   "b_refs": [
+    "2 Chronicles 13:5",
+    "Amos 5:15",
+    "Exodus 4:5",
+    "Genesis 2:4",
+    "Psalms 68:18"
+   ],
+   "times": 1
+  },
+  {
+   "a": "inhabitants of the earth and",
+   "a_refs": [
+    "Daniel 4:35"
+   ],
+   "b": "the lord god will",
+   "b_refs": [
+    "Amos 3:7",
+    "Isaiah 25:8",
+    "Isaiah 40:10",
+    "Isaiah 50:7",
+    "Isaiah 50:9",
+    "Isaiah 61:11"
+   ],
+   "times": 1
+  },
+  {
+   "a": "and death and hell",
+   "a_refs": [
+    "Revelation 20:13",
+    "Revelation 20:14"
+   ],
+   "b": "before the throne of god and",
+   "b_refs": [
+    "Revelation 14:5",
+    "Revelation 7:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "and death and hell",
+   "a_refs": [
+    "Revelation 20:13",
+    "Revelation 20:14"
+   ],
+   "b": "be judged according to",
+   "b_refs": [
+    "1 Peter 4:6"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be judged according to",
+   "a_refs": [
+    "1 Peter 4:6"
+   ],
+   "b": "before the throne of god and",
+   "b_refs": [
+    "Revelation 14:5",
+    "Revelation 7:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "according to their works",
+   "a_refs": [
+    "2 Corinthians 11:15",
+    "Revelation 20:12",
+    "Revelation 20:13"
+   ],
+   "b": "before the throne of god and",
+   "b_refs": [
+    "Revelation 14:5",
+    "Revelation 7:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "a lake of fire",
+   "a_refs": [
+    "Revelation 19:20"
+   ],
+   "b": "before the throne of god and",
+   "b_refs": [
+    "Revelation 14:5",
+    "Revelation 7:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "before the throne of god and",
+   "a_refs": [
+    "Revelation 14:5",
+    "Revelation 7:15"
+   ],
+   "b": "lake of fire and brimstone",
+   "b_refs": [
+    "Revelation 20:10"
+   ],
+   "times": 1
+  },
+  {
+   "a": "before the throne of god and",
+   "a_refs": [
+    "Revelation 14:5",
+    "Revelation 7:15"
+   ],
+   "b": "fire and brimstone which is",
+   "b_refs": [
+    "Revelation 21:8"
+   ],
+   "times": 1
+  },
+  {
+   "a": "a lake of fire",
+   "a_refs": [
+    "Revelation 19:20"
+   ],
+   "b": "be judged according to",
+   "b_refs": [
+    "1 Peter 4:6"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be judged according to",
+   "a_refs": [
+    "1 Peter 4:6"
+   ],
+   "b": "lake of fire and brimstone",
+   "b_refs": [
+    "Revelation 20:10"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be judged according to",
+   "a_refs": [
+    "1 Peter 4:6"
+   ],
+   "b": "fire and brimstone which is",
+   "b_refs": [
+    "Revelation 21:8"
+   ],
+   "times": 1
+  },
+  {
+   "a": "a lake of fire",
+   "a_refs": [
+    "Revelation 19:20"
+   ],
+   "b": "according to their works",
+   "b_refs": [
+    "2 Corinthians 11:15",
+    "Revelation 20:12",
+    "Revelation 20:13"
+   ],
+   "times": 1
+  },
+  {
+   "a": "according to their works",
+   "a_refs": [
+    "2 Corinthians 11:15",
+    "Revelation 20:12",
+    "Revelation 20:13"
+   ],
+   "b": "lake of fire and brimstone",
+   "b_refs": [
+    "Revelation 20:10"
+   ],
+   "times": 1
+  },
+  {
+   "a": "according to their works",
+   "a_refs": [
+    "2 Corinthians 11:15",
+    "Revelation 20:12",
+    "Revelation 20:13"
+   ],
+   "b": "fire and brimstone which is",
+   "b_refs": [
+    "Revelation 21:8"
+   ],
+   "times": 1
+  },
+  {
+   "a": "a lake of fire",
+   "a_refs": [
+    "Revelation 19:20"
+   ],
+   "b": "at ease in zion",
+   "b_refs": [
+    "Amos 6:1"
+   ],
+   "times": 1
+  },
+  {
+   "a": "at ease in zion",
+   "a_refs": [
+    "Amos 6:1"
+   ],
+   "b": "lake of fire and brimstone",
+   "b_refs": [
+    "Revelation 20:10"
+   ],
+   "times": 1
+  },
+  {
+   "a": "at ease in zion",
+   "a_refs": [
+    "Amos 6:1"
+   ],
+   "b": "fire and brimstone which is",
+   "b_refs": [
+    "Revelation 21:8"
+   ],
+   "times": 1
+  },
+  {
+   "a": "at ease in zion",
+   "a_refs": [
+    "Amos 6:1"
+   ],
+   "b": "the power of god and the",
+   "b_refs": [
+    "1 Corinthians 1:24"
+   ],
+   "times": 1
+  },
+  {
+   "a": "at ease in zion",
+   "a_refs": [
+    "Amos 6:1"
+   ],
+   "b": "of god and the gift",
+   "b_refs": [
+    "Romans 5:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "received the word of god",
+   "a_refs": [
+    "1 Thessalonians 2:13",
+    "Acts 11:1",
+    "Acts 8:14"
+   ],
+   "b": "thus saith the lord god i will",
+   "b_refs": [
+    "Ezekiel 11:17",
+    "Ezekiel 12:23",
+    "Ezekiel 13:13",
+    "Ezekiel 16:59",
+    "Ezekiel 17:22",
+    "Ezekiel 23:46",
+    "Ezekiel 25:13",
+    "Ezekiel 30:10",
+    "Ezekiel 30:13",
+    "Ezekiel 32:3",
+    "Ezekiel 36:37"
+   ],
+   "times": 1
+  },
+  {
+   "a": "god i will give",
+   "a_refs": [
+    "Psalms 30:12"
+   ],
+   "b": "received the word of god",
+   "b_refs": [
+    "1 Thessalonians 2:13",
+    "Acts 11:1",
+    "Acts 8:14"
+   ],
+   "times": 1
+  },
+  {
+   "a": "give unto the children of",
+   "a_refs": [
+    "Deuteronomy 32:49",
+    "Numbers 13:2"
+   ],
+   "b": "received the word of god",
+   "b_refs": [
+    "1 Thessalonians 2:13",
+    "Acts 11:1",
+    "Acts 8:14"
+   ],
+   "times": 1
+  },
+  {
+   "a": "give unto the children of",
+   "a_refs": [
+    "Deuteronomy 32:49",
+    "Numbers 13:2"
+   ],
+   "b": "thus saith the lord god i will",
+   "b_refs": [
+    "Ezekiel 11:17",
+    "Ezekiel 12:23",
+    "Ezekiel 13:13",
+    "Ezekiel 16:59",
+    "Ezekiel 17:22",
+    "Ezekiel 23:46",
+    "Ezekiel 25:13",
+    "Ezekiel 30:10",
+    "Ezekiel 30:13",
+    "Ezekiel 32:3",
+    "Ezekiel 36:37"
+   ],
+   "times": 1
+  },
+  {
+   "a": "he that putteth his trust in",
+   "a_refs": [
+    "Isaiah 57:13",
+    "Proverbs 28:25"
+   ],
+   "b": "shall be taken away even that which",
+   "b_refs": [
+    "Matthew 25:29"
+   ],
+   "times": 1
+  },
+  {
+   "a": "maketh flesh his arm",
+   "a_refs": [
+    "Jeremiah 17:5"
+   ],
+   "b": "shall be taken away even that which",
+   "b_refs": [
+    "Matthew 25:29"
+   ],
+   "times": 1
+  },
+  {
+   "a": "he that putteth his trust in",
+   "a_refs": [
+    "Isaiah 57:13",
+    "Proverbs 28:25"
+   ],
+   "b": "the power of the holy ghost",
+   "b_refs": [
+    "Romans 15:13"
+   ],
+   "times": 1
+  },
+  {
+   "a": "maketh flesh his arm",
+   "a_refs": [
+    "Jeremiah 17:5"
+   ],
+   "b": "the power of the holy ghost",
+   "b_refs": [
+    "Romans 15:13"
+   ],
+   "times": 1
+  },
+  {
+   "a": "saith the lord god of hosts for",
+   "a_refs": [
+    "Jeremiah 2:19",
+    "Jeremiah 50:31"
+   ],
+   "b": "the power of the holy ghost",
+   "b_refs": [
+    "Romans 15:13"
+   ],
+   "times": 1
+  },
+  {
+   "a": "saith the lord god of hosts for",
+   "a_refs": [
+    "Jeremiah 2:19",
+    "Jeremiah 50:31"
+   ],
+   "b": "unto them saith the lord",
+   "b_refs": [
+    "Jeremiah 31:32"
+   ],
+   "times": 1
+  },
+  {
+   "a": "saith the lord god of hosts for",
+   "a_refs": [
+    "Jeremiah 2:19",
+    "Jeremiah 50:31"
+   ],
+   "b": "them saith the lord god",
+   "b_refs": [
+    "Ezekiel 39:10",
+    "Ezekiel 44:12",
+    "Ezekiel 45:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "saith the lord god if",
+   "a_refs": [
+    "Ezekiel 14:14",
+    "Ezekiel 18:9",
+    "Ezekiel 46:16"
+   ],
+   "b": "saith the lord god of hosts for",
+   "b_refs": [
+    "Jeremiah 2:19",
+    "Jeremiah 50:31"
+   ],
+   "times": 1
+  },
+  {
+   "a": "all the day long",
+   "a_refs": [
+    "Deuteronomy 28:32",
+    "Deuteronomy 33:12",
+    "Proverbs 21:26",
+    "Proverbs 23:17",
+    "Psalms 32:3",
+    "Psalms 35:28",
+    "Psalms 38:12",
+    "Psalms 38:6",
+    "Psalms 44:22",
+    "Psalms 44:8",
+    "Psalms 71:24",
+    "Psalms 73:14",
+    "Romans 8:36"
+   ],
+   "b": "unto them saith the lord",
+   "b_refs": [
+    "Jeremiah 31:32"
+   ],
+   "times": 1
+  },
+  {
+   "a": "saith the lord god of hosts",
+   "a_refs": [
+    "Isaiah 10:24",
+    "Isaiah 22:14",
+    "Isaiah 22:15",
+    "Isaiah 3:15",
+    "Jeremiah 2:19",
+    "Jeremiah 35:17",
+    "Jeremiah 49:5",
+    "Jeremiah 50:31",
+    "Jeremiah 5:14"
+   ],
+   "b": "unto them saith the lord",
+   "b_refs": [
+    "Jeremiah 31:32"
+   ],
+   "times": 1
+  },
+  {
+   "a": "all the day long",
+   "a_refs": [
+    "Deuteronomy 28:32",
+    "Deuteronomy 33:12",
+    "Proverbs 21:26",
+    "Proverbs 23:17",
+    "Psalms 32:3",
+    "Psalms 35:28",
+    "Psalms 38:12",
+    "Psalms 38:6",
+    "Psalms 44:22",
+    "Psalms 44:8",
+    "Psalms 71:24",
+    "Psalms 73:14",
+    "Romans 8:36"
+   ],
+   "b": "them saith the lord god",
+   "b_refs": [
+    "Ezekiel 39:10",
+    "Ezekiel 44:12",
+    "Ezekiel 45:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "saith the lord god of hosts",
+   "a_refs": [
+    "Isaiah 10:24",
+    "Isaiah 22:14",
+    "Isaiah 22:15",
+    "Isaiah 3:15",
+    "Jeremiah 2:19",
+    "Jeremiah 35:17",
+    "Jeremiah 49:5",
+    "Jeremiah 50:31",
+    "Jeremiah 5:14"
+   ],
+   "b": "them saith the lord god",
+   "b_refs": [
+    "Ezekiel 39:10",
+    "Ezekiel 44:12",
+    "Ezekiel 45:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "all the day long",
+   "a_refs": [
+    "Deuteronomy 28:32",
+    "Deuteronomy 33:12",
+    "Proverbs 21:26",
+    "Proverbs 23:17",
+    "Psalms 32:3",
+    "Psalms 35:28",
+    "Psalms 38:12",
+    "Psalms 38:6",
+    "Psalms 44:22",
+    "Psalms 44:8",
+    "Psalms 71:24",
+    "Psalms 73:14",
+    "Romans 8:36"
+   ],
+   "b": "saith the lord god if",
+   "b_refs": [
+    "Ezekiel 14:14",
+    "Ezekiel 18:9",
+    "Ezekiel 46:16"
+   ],
+   "times": 1
+  },
+  {
+   "a": "saith the lord god if",
+   "a_refs": [
+    "Ezekiel 14:14",
+    "Ezekiel 18:9",
+    "Ezekiel 46:16"
+   ],
+   "b": "saith the lord god of hosts",
+   "b_refs": [
+    "Isaiah 10:24",
+    "Isaiah 22:14",
+    "Isaiah 22:15",
+    "Isaiah 3:15",
+    "Jeremiah 2:19",
+    "Jeremiah 35:17",
+    "Jeremiah 49:5",
+    "Jeremiah 50:31",
+    "Jeremiah 5:14"
+   ],
+   "times": 1
+  },
+  {
+   "a": "all the day long",
+   "a_refs": [
+    "Deuteronomy 28:32",
+    "Deuteronomy 33:12",
+    "Proverbs 21:26",
+    "Proverbs 23:17",
+    "Psalms 32:3",
+    "Psalms 35:28",
+    "Psalms 38:12",
+    "Psalms 38:6",
+    "Psalms 44:22",
+    "Psalms 44:8",
+    "Psalms 71:24",
+    "Psalms 73:14",
+    "Romans 8:36"
+   ],
+   "b": "saith the lord god of hosts",
+   "b_refs": [
+    "Isaiah 10:24",
+    "Isaiah 22:14",
+    "Isaiah 22:15",
+    "Isaiah 3:15",
+    "Jeremiah 2:19",
+    "Jeremiah 35:17",
+    "Jeremiah 49:5",
+    "Jeremiah 50:31",
+    "Jeremiah 5:14"
+   ],
+   "times": 1
+  },
+  {
+   "a": "all the day long",
+   "a_refs": [
+    "Deuteronomy 28:32",
+    "Deuteronomy 33:12",
+    "Proverbs 21:26",
+    "Proverbs 23:17",
+    "Psalms 32:3",
+    "Psalms 35:28",
+    "Psalms 38:12",
+    "Psalms 38:6",
+    "Psalms 44:22",
+    "Psalms 44:8",
+    "Psalms 71:24",
+    "Psalms 73:14",
+    "Romans 8:36"
+   ],
+   "b": "proceed to do a marvellous work among",
+   "b_refs": [
+    "Isaiah 29:14"
+   ],
+   "times": 1
+  },
+  {
+   "a": "proceed to do a marvellous work among",
+   "a_refs": [
+    "Isaiah 29:14"
+   ],
+   "b": "saith the lord god of hosts",
+   "b_refs": [
+    "Isaiah 10:24",
+    "Isaiah 22:14",
+    "Isaiah 22:15",
+    "Isaiah 3:15",
+    "Jeremiah 2:19",
+    "Jeremiah 35:17",
+    "Jeremiah 49:5",
+    "Jeremiah 50:31",
+    "Jeremiah 5:14"
+   ],
+   "times": 1
+  },
+  {
+   "a": "hand again the second time to recover",
+   "a_refs": [
+    "Isaiah 11:11"
+   ],
+   "b": "proceed to do a marvellous work among",
+   "b_refs": [
+    "Isaiah 29:14"
+   ],
+   "times": 1
+  },
+  {
+   "a": "hand again the second time to recover",
+   "a_refs": [
+    "Isaiah 11:11"
+   ],
+   "b": "of the house of israel and",
+   "b_refs": [
+    "Ezekiel 4:5",
+    "Ezekiel 8:11",
+    "Ezekiel 9:9",
+    "Hosea 1:4",
+    "Jeremiah 11:17",
+    "Matthew 10:6"
+   ],
+   "times": 1
+  },
+  {
+   "a": "forth out of my mouth",
+   "a_refs": [
+    "Isaiah 48:3",
+    "Isaiah 55:11"
+   ],
+   "b": "the ends of the earth for",
+   "b_refs": [
+    "Isaiah 45:22",
+    "Jeremiah 25:31"
+   ],
+   "times": 1
+  },
+  {
+   "a": "forth out of my mouth",
+   "a_refs": [
+    "Isaiah 48:3",
+    "Isaiah 55:11"
+   ],
+   "b": "of the house of israel and",
+   "b_refs": [
+    "Ezekiel 4:5",
+    "Ezekiel 8:11",
+    "Ezekiel 9:9",
+    "Hosea 1:4",
+    "Jeremiah 11:17",
+    "Matthew 10:6"
+   ],
+   "times": 1
+  },
+  {
+   "a": "of the house of israel and",
+   "a_refs": [
+    "Ezekiel 4:5",
+    "Ezekiel 8:11",
+    "Ezekiel 9:9",
+    "Hosea 1:4",
+    "Jeremiah 11:17",
+    "Matthew 10:6"
+   ],
+   "b": "the ends of the earth for",
+   "b_refs": [
+    "Isaiah 45:22",
+    "Jeremiah 25:31"
+   ],
+   "times": 1
+  },
+  {
+   "a": "of israel and because",
+   "a_refs": [
+    "Exodus 17:7",
+    "Leviticus 16:16"
+   ],
+   "b": "the ends of the earth for",
+   "b_refs": [
+    "Isaiah 45:22",
+    "Jeremiah 25:31"
+   ],
+   "times": 1
+  },
+  {
+   "a": "i the lord your god",
+   "a_refs": [
+    "Leviticus 19:2"
+   ],
+   "b": "the isles of the sea",
+   "b_refs": [
+    "Esther 10:1",
+    "Isaiah 24:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "in the earth beneath",
+   "a_refs": [
+    "Acts 2:19",
+    "Deuteronomy 5:8",
+    "Exodus 20:4"
+   ],
+   "b": "the isles of the sea",
+   "b_refs": [
+    "Esther 10:1",
+    "Isaiah 24:15"
+   ],
+   "times": 1
+  },
+  {
+   "a": "the islands of the sea",
+   "a_refs": [
+    "Isaiah 11:11"
+   ],
+   "b": "will judge the world",
+   "b_refs": [
+    "Acts 17:31"
+   ],
+   "times": 1
+  },
+  {
+   "a": "every man according to their works",
+   "a_refs": [
+    "Revelation 20:13"
+   ],
+   "b": "the islands of the sea",
+   "b_refs": [
+    "Isaiah 11:11"
+   ],
+   "times": 1
+  },
+  {
+   "a": "every man according to their works",
+   "a_refs": [
+    "Revelation 20:13"
+   ],
+   "b": "will judge the world",
+   "b_refs": [
+    "Acts 17:31"
+   ],
+   "times": 1
+  },
+  {
+   "a": "tribes of israel and the",
+   "a_refs": [
+    "1 Chronicles 29:6",
+    "1 Samuel 15:17",
+    "Judges 18:1",
+    "Luke 22:30"
+   ],
+   "b": "tribes of israel shall",
+   "b_refs": [
+    "Numbers 31:4",
+    "Zechariah 9:1"
+   ],
+   "times": 1
+  },
+  {
+   "a": "it shall come to pass that",
+   "a_refs": [
+    "1 Kings 19:17",
+    "1 Samuel 2:36",
+    "Acts 2:21",
+    "Acts 3:23",
+    "Deuteronomy 18:19",
+    "Deuteronomy 28:63",
+    "Exodus 16:5",
+    "Exodus 3:21",
+    "Ezekiel 44:17",
+    "Ezekiel 47:10",
+    "Ezekiel 47:22",
+    "Ezekiel 47:23",
+    "Ezekiel 47:9",
+    "Genesis 24:43",
+    "Genesis 4:14",
+    "Hosea 1:10",
+    "Isaiah 10:12",
+    "Isaiah 17:4",
+    "Isaiah 22:7",
+    "Isaiah 24:18",
+    "Isaiah 3:24",
+    "Isaiah 4:3",
+    "Isaiah 65:24",
+    "Isaiah 66:23",
+    "Isaiah 8:21",
+    "Jeremiah 27:8",
+    "Jeremiah 31:28",
+    "Jeremiah 42:16",
+    "Jeremiah 42:4",
+    "Joel 2:32",
+    "Joshua 23:15",
+    "Joshua 6:5",
+    "Micah 4:1",
+    "Nahum 3:7",
+    "Numbers 17:5",
+    "Numbers 21:8",
+    "Numbers 33:55",
+    "Numbers 33:56",
+    "Numbers 5:27",
+    "Romans 9:26",
+    "Zechariah 13:3",
+    "Zechariah 13:8",
+    "Zechariah 14:16",
+    "Zechariah 14:7",
+    "Zechariah 8:13",
+    "Zechariah 8:23"
+   ],
+   "b": "tribes of israel and the",
+   "b_refs": [
+    "1 Chronicles 29:6",
+    "1 Samuel 15:17",
+    "Judges 18:1",
+    "Luke 22:30"
+   ],
+   "times": 1
+  },
+  {
+   "a": "of the house of israel",
+   "a_refs": [
+    "1 Kings 20:31",
+    "Amos 7:10",
+    "Ezekiel 12:27",
+    "Ezekiel 13:9",
+    "Ezekiel 14:4",
+    "Ezekiel 14:7",
+    "Ezekiel 18:15",
+    "Ezekiel 18:6",
+    "Ezekiel 29:16",
+    "Ezekiel 29:21",
+    "Ezekiel 35:15",
+    "Ezekiel 44:22",
+    "Ezekiel 45:17",
+    "Ezekiel 4:4",
+    "Ezekiel 4:5",
+    "Ezekiel 6:11",
+    "Ezekiel 8:10",
+    "Ezekiel 8:11",
+    "Ezekiel 8:12",
+    "Ezekiel 9:9",
+    "Hosea 1:4",
+    "Isaiah 46:3",
+    "Jeremiah 11:17",
+    "Jeremiah 23:8",
+    "Jeremiah 2:4",
+    "Jeremiah 33:17",
+    "Leviticus 17:10",
+    "Leviticus 17:3",
+    "Leviticus 17:8",
+    "Leviticus 22:18",
+    "Matthew 10:6",
+    "Matthew 15:24",
+    "Micah 1:5",
+    "Micah 3:1",
+    "Micah 3:9"
+   ],
+   "b": "tribes of israel and the",
+   "b_refs": [
+    "1 Chronicles 29:6",
+    "1 Samuel 15:17",
+    "Judges 18:1",
+    "Luke 22:30"
+   ],
+   "times": 1
+  },
+  {
+   "a": "it shall come to pass that",
+   "a_refs": [
+    "1 Kings 19:17",
+    "1 Samuel 2:36",
+    "Acts 2:21",
+    "Acts 3:23",
+    "Deuteronomy 18:19",
+    "Deuteronomy 28:63",
+    "Exodus 16:5",
+    "Exodus 3:21",
+    "Ezekiel 44:17",
+    "Ezekiel 47:10",
+    "Ezekiel 47:22",
+    "Ezekiel 47:23",
+    "Ezekiel 47:9",
+    "Genesis 24:43",
+    "Genesis 4:14",
+    "Hosea 1:10",
+    "Isaiah 10:12",
+    "Isaiah 17:4",
+    "Isaiah 22:7",
+    "Isaiah 24:18",
+    "Isaiah 3:24",
+    "Isaiah 4:3",
+    "Isaiah 65:24",
+    "Isaiah 66:23",
+    "Isaiah 8:21",
+    "Jeremiah 27:8",
+    "Jeremiah 31:28",
+    "Jeremiah 42:16",
+    "Jeremiah 42:4",
+    "Joel 2:32",
+    "Joshua 23:15",
+    "Joshua 6:5",
+    "Micah 4:1",
+    "Nahum 3:7",
+    "Numbers 17:5",
+    "Numbers 21:8",
+    "Numbers 33:55",
+    "Numbers 33:56",
+    "Numbers 5:27",
+    "Romans 9:26",
+    "Zechariah 13:3",
+    "Zechariah 13:8",
+    "Zechariah 14:16",
+    "Zechariah 14:7",
+    "Zechariah 8:13",
+    "Zechariah 8:23"
+   ],
+   "b": "tribes of israel shall",
+   "b_refs": [
+    "Numbers 31:4",
+    "Zechariah 9:1"
+   ],
+   "times": 1
+  },
+  {
+   "a": "of the house of israel",
+   "a_refs": [
+    "1 Kings 20:31",
+    "Amos 7:10",
+    "Ezekiel 12:27",
+    "Ezekiel 13:9",
+    "Ezekiel 14:4",
+    "Ezekiel 14:7",
+    "Ezekiel 18:15",
+    "Ezekiel 18:6",
+    "Ezekiel 29:16",
+    "Ezekiel 29:21",
+    "Ezekiel 35:15",
+    "Ezekiel 44:22",
+    "Ezekiel 45:17",
+    "Ezekiel 4:4",
+    "Ezekiel 4:5",
+    "Ezekiel 6:11",
+    "Ezekiel 8:10",
+    "Ezekiel 8:11",
+    "Ezekiel 8:12",
+    "Ezekiel 9:9",
+    "Hosea 1:4",
+    "Isaiah 46:3",
+    "Jeremiah 11:17",
+    "Jeremiah 23:8",
+    "Jeremiah 2:4",
+    "Jeremiah 33:17",
+    "Leviticus 17:10",
+    "Leviticus 17:3",
+    "Leviticus 17:8",
+    "Leviticus 22:18",
+    "Matthew 10:6",
+    "Matthew 15:24",
+    "Micah 1:5",
+    "Micah 3:1",
+    "Micah 3:9"
+   ],
+   "b": "tribes of israel shall",
+   "b_refs": [
+    "Numbers 31:4",
+    "Zechariah 9:1"
+   ],
+   "times": 1
+  },
+  {
+   "a": "the house of israel shall",
+   "a_refs": [
+    "Ezekiel 39:22",
+    "Isaiah 14:2"
+   ],
+   "b": "tribes of israel shall",
+   "b_refs": [
+    "Numbers 31:4",
+    "Zechariah 9:1"
+   ],
+   "times": 1
+  },
+  {
+   "a": "it shall come to pass that",
+   "a_refs": [
+    "1 Kings 19:17",
+    "1 Samuel 2:36",
+    "Acts 2:21",
+    "Acts 3:23",
+    "Deuteronomy 18:19",
+    "Deuteronomy 28:63",
+    "Exodus 16:5",
+    "Exodus 3:21",
+    "Ezekiel 44:17",
+    "Ezekiel 47:10",
+    "Ezekiel 47:22",
+    "Ezekiel 47:23",
+    "Ezekiel 47:9",
+    "Genesis 24:43",
+    "Genesis 4:14",
+    "Hosea 1:10",
+    "Isaiah 10:12",
+    "Isaiah 17:4",
+    "Isaiah 22:7",
+    "Isaiah 24:18",
+    "Isaiah 3:24",
+    "Isaiah 4:3",
+    "Isaiah 65:24",
+    "Isaiah 66:23",
+    "Isaiah 8:21",
+    "Jeremiah 27:8",
+    "Jeremiah 31:28",
+    "Jeremiah 42:16",
+    "Jeremiah 42:4",
+    "Joel 2:32",
+    "Joshua 23:15",
+    "Joshua 6:5",
+    "Micah 4:1",
+    "Nahum 3:7",
+    "Numbers 17:5",
+    "Numbers 21:8",
+    "Numbers 33:55",
+    "Numbers 33:56",
+    "Numbers 5:27",
+    "Romans 9:26",
+    "Zechariah 13:3",
+    "Zechariah 13:8",
+    "Zechariah 14:16",
+    "Zechariah 14:7",
+    "Zechariah 8:13",
+    "Zechariah 8:23"
+   ],
+   "b": "of the house of israel",
+   "b_refs": [
+    "1 Kings 20:31",
+    "Amos 7:10",
+    "Ezekiel 12:27",
+    "Ezekiel 13:9",
+    "Ezekiel 14:4",
+    "Ezekiel 14:7",
+    "Ezekiel 18:15",
+    "Ezekiel 18:6",
+    "Ezekiel 29:16",
+    "Ezekiel 29:21",
+    "Ezekiel 35:15",
+    "Ezekiel 44:22",
+    "Ezekiel 45:17",
+    "Ezekiel 4:4",
+    "Ezekiel 4:5",
+    "Ezekiel 6:11",
+    "Ezekiel 8:10",
+    "Ezekiel 8:11",
+    "Ezekiel 8:12",
+    "Ezekiel 9:9",
+    "Hosea 1:4",
+    "Isaiah 46:3",
+    "Jeremiah 11:17",
+    "Jeremiah 23:8",
+    "Jeremiah 2:4",
+    "Jeremiah 33:17",
+    "Leviticus 17:10",
+    "Leviticus 17:3",
+    "Leviticus 17:8",
+    "Leviticus 22:18",
+    "Matthew 10:6",
+    "Matthew 15:24",
+    "Micah 1:5",
+    "Micah 3:1",
+    "Micah 3:9"
+   ],
+   "times": 1
+  },
+  {
+   "a": "it shall come to pass that",
+   "a_refs": [
+    "1 Kings 19:17",
+    "1 Samuel 2:36",
+    "Acts 2:21",
+    "Acts 3:23",
+    "Deuteronomy 18:19",
+    "Deuteronomy 28:63",
+    "Exodus 16:5",
+    "Exodus 3:21",
+    "Ezekiel 44:17",
+    "Ezekiel 47:10",
+    "Ezekiel 47:22",
+    "Ezekiel 47:23",
+    "Ezekiel 47:9",
+    "Genesis 24:43",
+    "Genesis 4:14",
+    "Hosea 1:10",
+    "Isaiah 10:12",
+    "Isaiah 17:4",
+    "Isaiah 22:7",
+    "Isaiah 24:18",
+    "Isaiah 3:24",
+    "Isaiah 4:3",
+    "Isaiah 65:24",
+    "Isaiah 66:23",
+    "Isaiah 8:21",
+    "Jeremiah 27:8",
+    "Jeremiah 31:28",
+    "Jeremiah 42:16",
+    "Jeremiah 42:4",
+    "Joel 2:32",
+    "Joshua 23:15",
+    "Joshua 6:5",
+    "Micah 4:1",
+    "Nahum 3:7",
+    "Numbers 17:5",
+    "Numbers 21:8",
+    "Numbers 33:55",
+    "Numbers 33:56",
+    "Numbers 5:27",
+    "Romans 9:26",
+    "Zechariah 13:3",
+    "Zechariah 13:8",
+    "Zechariah 14:16",
+    "Zechariah 14:7",
+    "Zechariah 8:13",
+    "Zechariah 8:23"
+   ],
+   "b": "the house of israel shall",
+   "b_refs": [
+    "Ezekiel 39:22",
+    "Isaiah 14:2"
+   ],
+   "times": 1
+  },
+  {
+   "a": "keep the commandments of god",
+   "a_refs": [
+    "Revelation 12:17",
+    "Revelation 14:12"
+   ],
+   "b": "ye shall all likewise perish",
+   "b_refs": [
+    "Luke 13:3",
+    "Luke 13:5"
+   ],
+   "times": 1
+  },
+  {
+   "a": "and because of the words",
+   "a_refs": [
+    "Jeremiah 23:9"
+   ],
+   "b": "keep the commandments of god",
+   "b_refs": [
+    "Revelation 12:17",
+    "Revelation 14:12"
+   ],
+   "times": 1
+  },
+  {
+   "a": "behold i say unto you",
+   "a_refs": [
+    "John 4:35"
+   ],
+   "b": "keep the commandments of god",
+   "b_refs": [
+    "Revelation 12:17",
+    "Revelation 14:12"
+   ],
+   "times": 1
+  },
+  {
+   "a": "and because of the words",
+   "a_refs": [
+    "Jeremiah 23:9"
+   ],
+   "b": "ye shall all likewise perish",
+   "b_refs": [
+    "Luke 13:3",
+    "Luke 13:5"
+   ],
+   "times": 1
+  },
+  {
+   "a": "behold i say unto you",
+   "a_refs": [
+    "John 4:35"
+   ],
+   "b": "ye shall all likewise perish",
+   "b_refs": [
+    "Luke 13:3",
+    "Luke 13:5"
+   ],
+   "times": 1
+  },
+  {
+   "a": "and because of the words",
+   "a_refs": [
+    "Jeremiah 23:9"
+   ],
+   "b": "behold i say unto you",
+   "b_refs": [
+    "John 4:35"
+   ],
+   "times": 1
+  },
+  {
+   "a": "behold i say unto you",
+   "a_refs": [
+    "John 4:35"
+   ],
+   "b": "people of the lord and",
+   "b_refs": [
+    "2 Samuel 1:12",
+    "Ezekiel 36:20",
+    "Numbers 16:41"
+   ],
+   "times": 1
+  },
+  {
+   "a": "behold i say unto you",
+   "a_refs": [
+    "John 4:35"
+   ],
+   "b": "the lord and as many",
+   "b_refs": [
+    "Acts 13:48"
+   ],
+   "times": 1
+  },
+  {
+   "a": "behold i say unto you",
+   "a_refs": [
+    "John 4:35"
+   ],
+   "b": "many of the jews",
+   "b_refs": [
+    "Acts 13:43",
+    "John 11:19",
+    "John 11:45",
+    "John 12:11",
+    "John 19:20"
+   ],
+   "times": 1
+  },
+  {
+   "a": "many of the jews",
+   "a_refs": [
+    "Acts 13:43",
+    "John 11:19",
+    "John 11:45",
+    "John 12:11",
+    "John 19:20"
+   ],
+   "b": "people of the lord and",
+   "b_refs": [
+    "2 Samuel 1:12",
+    "Ezekiel 36:20",
+    "Numbers 16:41"
+   ],
+   "times": 1
+  },
+  {
+   "a": "shall come forth and",
+   "a_refs": [
+    "Daniel 11:11",
+    "Deuteronomy 21:2",
+    "Matthew 13:49"
+   ],
+   "b": "the holy one of israel and",
+   "b_refs": [
+    "Isaiah 17:7",
+    "Isaiah 45:11",
+    "Isaiah 49:7"
+   ],
+   "times": 1
+  },
+  {
+   "a": "come forth and be",
+   "a_refs": [
+    "1 Samuel 22:3"
+   ],
+   "b": "the holy one of israel and",
+   "b_refs": [
+    "Isaiah 17:7",
+    "Isaiah 45:11",
+    "Isaiah 49:7"
+   ],
+   "times": 1
+  },
+  {
+   "a": "again unto the lord",
+   "a_refs": [
+    "2 Chronicles 24:19",
+    "2 Chronicles 30:6",
+    "2 Chronicles 30:9"
+   ],
+   "b": "shall come forth and",
+   "b_refs": [
+    "Daniel 11:11",
+    "Deuteronomy 21:2",
+    "Matthew 13:49"
+   ],
+   "times": 1
+  },
+  {
+   "a": "again unto the lord",
+   "a_refs": [
+    "2 Chronicles 24:19",
+    "2 Chronicles 30:6",
+    "2 Chronicles 30:9"
+   ],
+   "b": "come forth and be",
+   "b_refs": [
+    "1 Samuel 22:3"
+   ],
+   "times": 1
+  },
+  {
+   "a": "come forth and be",
+   "a_refs": [
+    "1 Samuel 22:3"
+   ],
+   "b": "shall carry them forth",
+   "b_refs": [
+    "Leviticus 14:45"
+   ],
+   "times": 1
+  },
+  {
+   "a": "again unto the lord",
+   "a_refs": [
+    "2 Chronicles 24:19",
+    "2 Chronicles 30:6",
+    "2 Chronicles 30:9"
+   ],
+   "b": "shall carry them forth",
+   "b_refs": [
+    "Leviticus 14:45"
+   ],
+   "times": 1
+  },
+  {
+   "a": "of jesus christ which",
+   "a_refs": [
+    "Revelation 1:1"
+   ],
+   "b": "the gospel of jesus christ",
+   "b_refs": [
+    "Mark 1:1"
+   ],
+   "times": 1
+  },
+  {
+   "a": "from the hand of god",
+   "a_refs": [
+    "Ecclesiastes 2:24"
+   ],
+   "b": "of jesus christ which",
+   "b_refs": [
+    "Revelation 1:1"
+   ],
+   "times": 1
+  },
+  {
+   "a": "of jesus christ which",
+   "a_refs": [
+    "Revelation 1:1"
+   ],
+   "b": "the hand of god and",
+   "b_refs": [
+    "Job 2:10"
+   ],
+   "times": 1
+  },
+  {
+   "a": "from the hand of god",
+   "a_refs": [
+    "Ecclesiastes 2:24"
+   ],
+   "b": "shall not pass away",
+   "b_refs": [
+    "Daniel 7:14",
+    "Luke 21:32",
+    "Luke 21:33",
+    "Mark 13:31",
+    "Matthew 24:35"
+   ],
+   "times": 1
+  },
+  {
+   "a": "shall not pass away",
+   "a_refs": [
+    "Daniel 7:14",
+    "Luke 21:32",
+    "Luke 21:33",
+    "Mark 13:31",
+    "Matthew 24:35"
+   ],
+   "b": "the hand of god and",
+   "b_refs": [
+    "Job 2:10"
+   ],
+   "times": 1
+  },
+  {
+   "a": "it shall come to pass that the",
+   "a_refs": [
+    "Ezekiel 47:10",
+    "Isaiah 17:4",
+    "Jeremiah 27:8",
+    "Jeremiah 42:16",
+    "Micah 4:1",
+    "Numbers 17:5"
+   ],
+   "b": "shall not pass away",
+   "b_refs": [
+    "Daniel 7:14",
+    "Luke 21:32",
+    "Luke 21:33",
+    "Mark 13:31",
+    "Matthew 24:35"
+   ],
+   "times": 1
+  },
+  {
+   "a": "that the lord god",
+   "a_refs": [
+    "2 Chronicles 13:5",
+    "Amos 5:15",
+    "Exodus 4:5",
+    "Genesis 2:4",
+    "Psalms 68:18"
+   ],
+   "b": "with equity for the meek of the earth and he shall smite the earth with the rod of his mouth and with the breath of his lips shall he slay the wicked",
+   "b_refs": [
+    "Isaiah 11:4"
+   ],
+   "times": 1
+  },
+  {
+   "a": "the lord god shall",
+   "a_refs": [
+    "Ezekiel 17:9",
+    "Isaiah 65:15",
+    "Luke 1:32",
+    "Zechariah 9:14"
+   ],
+   "b": "with equity for the meek of the earth and he shall smite the earth with the rod of his mouth and with the breath of his lips shall he slay the wicked",
+   "b_refs": [
+    "Isaiah 11:4"
+   ],
+   "times": 1
+  },
+  {
+   "a": "division among the people",
+   "a_refs": [
+    "John 7:43"
+   ],
+   "b": "with equity for the meek of the earth and he shall smite the earth with the rod of his mouth and with the breath of his lips shall he slay the wicked",
+   "b_refs": [
+    "Isaiah 11:4"
+   ],
+   "times": 1
+  },
+  {
+   "a": "the wicked will he destroy",
+   "a_refs": [
+    "Psalms 145:20"
+   ],
+   "b": "with equity for the meek of the earth and he shall smite the earth with the rod of his mouth and with the breath of his lips shall he slay the wicked",
+   "b_refs": [
+    "Isaiah 11:4"
+   ],
+   "times": 1
+  },
+  {
+   "a": "division among the people",
+   "a_refs": [
+    "John 7:43"
+   ],
+   "b": "that the lord god",
+   "b_refs": [
+    "2 Chronicles 13:5",
+    "Amos 5:15",
+    "Exodus 4:5",
+    "Genesis 2:4",
+    "Psalms 68:18"
+   ],
+   "times": 1
+  },
+  {
+   "a": "that the lord god",
+   "a_refs": [
+    "2 Chronicles 13:5",
+    "Amos 5:15",
+    "Exodus 4:5",
+    "Genesis 2:4",
+    "Psalms 68:18"
+   ],
+   "b": "the wicked will he destroy",
+   "b_refs": [
+    "Psalms 145:20"
+   ],
+   "times": 1
+  },
+  {
+   "a": "division among the people",
+   "a_refs": [
+    "John 7:43"
+   ],
+   "b": "the lord god shall",
+   "b_refs": [
+    "Ezekiel 17:9",
+    "Isaiah 65:15",
+    "Luke 1:32",
+    "Zechariah 9:14"
+   ],
+   "times": 1
+  },
+  {
+   "a": "the lord god shall",
+   "a_refs": [
+    "Ezekiel 17:9",
+    "Isaiah 65:15",
+    "Luke 1:32",
+    "Zechariah 9:14"
+   ],
+   "b": "the wicked will he destroy",
+   "b_refs": [
+    "Psalms 145:20"
+   ],
+   "times": 1
+  },
+  {
+   "a": "division among the people",
+   "a_refs": [
+    "John 7:43"
+   ],
+   "b": "the wicked will he destroy",
+   "b_refs": [
+    "Psalms 145:20"
+   ],
+   "times": 1
+  },
+  {
+   "a": "righteousness shall be the girdle of his loins and faithfulness the girdle of his reins",
+   "a_refs": [
+    "Isaiah 11:5"
+   ],
+   "b": "the wicked will he destroy",
+   "b_refs": [
+    "Psalms 145:20"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be made known unto",
+   "a_refs": [
+    "Philippians 4:6"
+   ],
+   "b": "shall not hurt nor destroy in all my holy mountain for the earth shall be full of the knowledge of the lord as the waters cover the sea",
+   "b_refs": [
+    "Isaiah 11:9"
+   ],
+   "times": 1
+  },
+  {
+   "a": "made known unto the",
+   "a_refs": [
+    "Ephesians 3:5"
+   ],
+   "b": "shall not hurt nor destroy in all my holy mountain for the earth shall be full of the knowledge of the lord as the waters cover the sea",
+   "b_refs": [
+    "Isaiah 11:9"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be made known unto",
+   "a_refs": [
+    "Philippians 4:6"
+   ],
+   "b": "shall be made manifest",
+   "b_refs": [
+    "1 Corinthians 3:13"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be made known unto",
+   "a_refs": [
+    "Philippians 4:6"
+   ],
+   "b": "be made manifest in",
+   "b_refs": [
+    "2 Corinthians 4:10",
+    "2 Corinthians 4:11",
+    "John 9:3"
+   ],
+   "times": 1
+  },
+  {
+   "a": "made known unto the",
+   "a_refs": [
+    "Ephesians 3:5"
+   ],
+   "b": "shall be made manifest",
+   "b_refs": [
+    "1 Corinthians 3:13"
+   ],
+   "times": 1
+  },
+  {
+   "a": "be made manifest in",
+   "a_refs": [
+    "2 Corinthians 4:10",
+    "2 Corinthians 4:11",
+    "John 9:3"
+   ],
+   "b": "made known unto the",
+   "b_refs": [
+    "Ephesians 3:5"
+   ],
+   "times": 1
+  }
+ ]
+}

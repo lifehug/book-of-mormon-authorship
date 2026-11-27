@@ -106,3 +106,20 @@ def test_own_copies():
     assert joined.own_copies(book, rows, D) == {"a", "b", "c"}
     spec = {"exclude_author": "baxter, richard", "exclude_title": "everlasting rest"}
     assert joined.own_copies(spec, rows, D) == {"a", "b"}
+
+
+def test_design2_distinctive_filter():
+    b = bible()
+    df = {("eat", "drink", "and", "be"): 5}
+    kept = joined.distinctive(b, df, 100, 0.02, {"function_rule": False})
+    assert ("eat", "drink", "and", "be") not in kept and ("drink", "and", "be", "merry") in kept
+    kept = joined.distinctive(b, {}, 100, 0.02, {"function_rule": True})
+    assert ("for", "to", "morrow", "we") not in kept  # function words and one other word
+    assert ("to", "morrow", "we", "die") in kept
+
+
+def test_settings_design2_overrides():
+    cfg = {
+        "lab": {"joined_phrases": {"window": 25, "seed": 1, "design2": {"seed": 2, "design": 2}}}
+    }
+    assert joined.settings(cfg) == {"window": 25, "seed": 2, "design": 2}

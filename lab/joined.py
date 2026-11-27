@@ -18,8 +18,10 @@ of the planted check stays in the private folder.
 
 Usage::
 
+    python -m lab.joined tune       # design 2: choose the cutoff on a tuning draw -> tune_v2.json
     python -m lab.joined check      # check (a) planted joins, then (b) the 60 books (library pass)
     python -m lab.joined run        # the check, then the Book of Mormon (second library pass)
+    python -m lab.joined seed       # step 1 only: the joins in 1830 2 Nephi XII, one by one
 """
 
 from __future__ import annotations
@@ -50,7 +52,9 @@ BREAK = 100  # words between pieces of a stream, more than any window, so nothin
 
 
 def settings(cfg: dict) -> dict:
-    return cfg["lab"]["joined_phrases"]
+    """The settings in force: design 2's values (``design2``) over the first design's."""
+    base = cfg["lab"]["joined_phrases"]
+    return {k: v for k, v in base.items() if k != "design2"} | base.get("design2", {})
 
 
 def tokens(text: str) -> list[str]:
@@ -461,15 +465,17 @@ def verdict(share: float | None, early: list[float], late: list[float], d: dict)
 # ------------------------------------------------------------------------ the check
 
 
-def planted_check(bible: Bible, rare: dict, cfg: dict) -> dict:
-    """(a) Random King James phrase pairs put into period prose; other prose for false joins."""
+def prose_passages(cfg: dict, seed: int, exclude: set[str],
+                   rng: random.Random | None = None) -> list[tuple[str, list[str]]]:  # fmt: skip
+    """2 x ``planted`` passages of non-religious period prose (``known-answer`` works), seeded."""
     d = settings(cfg)
-    rng = random.Random(d["seed"])
+    rng = rng or random.Random(seed)
     ka = registry.view("known-answer", cfg).to_pylist()
     pool = [
         r
         for r in ka
-        if r["kind"] == "work"
+        if r["work_id"] not in exclude
+        and r["kind"] == "work"
         and r["year"]
         and d["prose_years"][0] <= r["year"] <= d["prose_years"][1]
         and set((r["genre"] or "").split(",")) & set(d["prose_genres"])
@@ -495,6 +501,20 @@ def planted_check(bible: Bible, rare: dict, cfg: dict) -> dict:
         passages.append((r["work_id"], w[s : s + d["prose_words"]]))
         if len(passages) == 2 * d["planted"]:
             break
+    return passages
+
+
+def planted_check(bible: Bible, rare: dict, cfg: dict, seed: int | None = None,
+                  passages: list | None = None) -> dict:  # fmt: skip
+    """(a) Random King James phrase pairs put into period prose; other prose for false joins.
+    The phrases are drawn from those the finder looks for (every 4-gram in ``rare``)."""
+    d = settings(cfg)
+    seed = d["seed"] if seed is None else seed
+    if passages is None:  # the first design: passages and phrases from one random stream
+        rng = random.Random(seed)
+        passages = prose_passages(cfg, seed, set(), rng)
+    else:
+        rng = random.Random(seed + 7)
     vids = list(bible.verse_words)
 
     def phrase() -> tuple:
@@ -650,19 +670,124 @@ def group_check(books: list[dict], d: dict, field: str = "shares") -> dict:
                      "early_late": d["early_late_bar"]}}  # fmt: skip
 
 
+FUNCTION_WORDS = frozenset(
+    "a an the and or but nor for so yet of in on at to by with from into unto upon over under "
+    "out up down off about after before through against among between within without i me my "
+    "mine we us our ye you your thou thee thy thine he him his she her it its they them their "
+    "this that these those there here which who whom whose what when where whereby wherein "
+    "is are was were be been being am art hast hath have has had do doth did done shall shalt "
+    "will wilt would should could might may must can not no nay yea all any some every each "
+    "as than then if also even more most such very own same other one let".split()
+)
+
+
+def nonreligious_sample(cfg: dict) -> list[dict]:
+    """Design 2's fixed sample of non-religious period books (default set, seeded)."""
+    d = settings(cfg)
+    rows = [
+        r
+        for r in library_rows(d)
+        if d["nonrel_years"][0] <= r["year"] <= d["nonrel_years"][1]
+        and set((r["genre"] or "").split(",")) & set(d["nonrel_genres"])
+        and "sermon_devotional" not in (r["genre"] or "")
+        and "pseudo_biblical" not in (r["genre"] or "")
+        and (r["words"] or 0) >= d["nonrel_min_words"]
+    ]
+    rows.sort(key=lambda r: r["work_id"])
+    random.Random(d["nonrel_seed"]).shuffle(rows)
+    return rows[: d["nonrel_sample"]]
+
+
+def nonreligious_df(bible: Bible, cfg: dict) -> tuple[dict[tuple, int], int, list[str]]:
+    """How many sample books hold each King James 4- and 5-gram; books read; their ids."""
+    d = settings(cfg)
+    df: dict[tuple, int] = defaultdict(int)
+    read, ids = 0, []
+    sizes = d["ngram_sizes"]
+    for r in nonreligious_sample(cfg):
+        try:
+            t = tokens(door.text_of(r))[: d["max_words_per_work"]]
+        except OSError:
+            continue  # unreadable: not attempted
+        read += 1
+        ids.append(r["work_id"])
+        seen = set()
+        for n in sizes:
+            for g in zip(*(t[i:] for i in range(n)), strict=False):
+                if g in bible.grams:
+                    seen.add(g)
+        for g in seen:
+            df[g] += 1
+    return dict(df), read, ids
+
+
+def distinctive(bible: Bible, df: dict, read: int, share: float, d: dict) -> dict:
+    """King James n-grams in at most ``share`` of the non-religious books; with the function-word
+    rule, an n-gram made only of function words and at most one other word is dropped too."""
+    cut = share * read
+    keep = {}
+    for g, v in bible.grams.items():
+        if df.get(g, 0) > cut:
+            continue
+        if d.get("function_rule") and sum(w not in FUNCTION_WORDS for w in g) <= 1:
+            continue
+        keep[g] = v
+    return keep
+
+
 def prepare(cfg: dict) -> dict:
     d = settings(cfg)
     t0 = time.time()
     bible = Bible([json.loads(x) for x in KJV.read_text().splitlines()], d["ngram_sizes"])
-    rare = rare_grams(bible, cfg)
-    print(f"King James: {len(bible.grams):,} n-grams, {len(rare):,} rare "
+    p = {"d": d, "bible": bible, "exclude": set()}
+    if d.get("design") == 2:
+        df, read, ids = nonreligious_df(bible, cfg)
+        p |= {"df": df, "read": read, "exclude": set(ids)}
+        if d.get("share") is None:
+            p["rare"] = None
+            return p
+        p["rare"] = distinctive(bible, df, read, d["share"], d)
+    else:
+        p["rare"] = rare_grams(bible, cfg)
+    print(f"King James: {len(bible.grams):,} n-grams, {len(p['rare']):,} kept "
           f"({time.time() - t0:.0f} s)", flush=True)  # fmt: skip
-    return {"d": d, "bible": bible, "rare": rare}
+    return p
+
+
+def tune(cfg: dict) -> dict:
+    """Design 2: the cutoff, chosen on a tuning draw of planted and unplanted passages."""
+    d = settings(cfg)
+    p = prepare(cfg)
+    passages = prose_passages(cfg, d["tune_seed"], p["exclude"])
+    rows = []
+    for share in d["share_grid"]:
+        for rule in (False, True):
+            dd = d | {"function_rule": rule}
+            kept = distinctive(p["bible"], p["df"], p["read"], share, dd)
+            got = planted_check(p["bible"], kept, cfg, d["tune_seed"], passages)
+            fj = sum(x["joins_found"] for x in got["unplanted_rows"])
+            rows.append({"share": share, "function_rule": rule, "kept_ngrams": len(kept),
+                         "recall": got["recall"], "false_share": got["false_share"],
+                         "false_joins": fj})  # fmt: skip
+            print(json.dumps(rows[-1]), flush=True)
+    ok = [r for r in rows if r["false_share"] <= d["tune_false_target"]
+          and r["recall"] >= d["recall_bar"]]  # fmt: skip
+    # the most permissive passing cutoff; without the function-word rule when that passes too
+    best = max(ok, key=lambda r: (r["share"], not r["function_rule"])) if ok else None
+    return {"nonreligious_books_read": p["read"], "tuning_passages": len(passages),
+            "tuning_works": [w for w, _ in passages], "grid": rows, "chosen": best,
+            "rule": f"largest share with tuning false share <= {d['tune_false_target']} and "
+                    f"recall >= {d['recall_bar']}; function-word rule only if needed"}  # fmt: skip
 
 
 def run_check(cfg: dict, p: dict) -> dict:
     d, bible, rare = p["d"], p["bible"], p["rare"]
-    res: dict = {"planted": planted_check(bible, rare, cfg)}
+    if d.get("design") == 2:  # a fresh draw: none of the tuning works or the rarity sample
+        tuned = {w for w, _ in prose_passages(cfg, d["tune_seed"], p["exclude"])}
+        passages = prose_passages(cfg, d["check_seed"], p["exclude"] | tuned)
+        res: dict = {"planted": planted_check(bible, rare, cfg, d["check_seed"], passages)}
+    else:
+        res = {"planted": planted_check(bible, rare, cfg)}
     print(json.dumps({k: v for k, v in res["planted"].items() if not k.endswith("_rows")}))
     if not res["planted"]["passed"]:
         res["passed"] = False
@@ -784,22 +909,50 @@ def run(cfg: dict) -> dict:
     return res
 
 
+def seed_joins(cfg: dict) -> dict:
+    """Step 1 only (no dating): the joins found in the seed chapter, one by one, with verses."""
+    p = prepare(cfg)
+    d, bible, rare = p["d"], p["bible"], p["rare"]
+    words = bom_words()
+    lo, hi = chapter_spans()[tuple(d["seed_chapter"])]
+    joins = joins_in(words, bible, rare, d)
+    seed = [j for j in joins if lo <= j["at"] < hi]
+    return {
+        "what": "joins found by step 1 in 1830 2 Nephi XII (modern 2 Nephi 28); not dated",
+        "book_joins_all_chapters": len(joins),
+        "seed_chapter": " ".join(map(str, d["seed_chapter"])),
+        "joins": [{"a": " ".join(j["a"]), "a_refs": refs(bible, j["a"]), "b": " ".join(j["b"]),
+                   "b_refs": refs(bible, j["b"]), "times": j["times"]} for j in seed],
+    }  # fmt: skip
+
+
 def write(res: dict, name: str) -> None:
     out(OUT / name).write_text(json.dumps(res, indent=1, default=list) + "\n")
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["check", "run"])
+    ap.add_argument("cmd", choices=["tune", "check", "run", "seed"])
     a = ap.parse_args(argv)
     cfg = config.load()
+    sfx = "_v2" if settings(cfg).get("design") == 2 else ""
+    if a.cmd == "seed":
+        res = {"settings": settings(cfg), **config.stamp(), **seed_joins(cfg)}
+        write(res, f"seed_joins{sfx}.json")
+        print(json.dumps({k: v for k, v in res.items() if k != "settings"}, indent=1))
+        return 0
+    if a.cmd == "tune":
+        res = {"settings": settings(cfg), **config.stamp(), **tune(cfg)}
+        write(res, "tune_v2.json")
+        print(json.dumps(res["chosen"], indent=1))
+        return 0
     if a.cmd == "check":
         p = prepare(cfg)
         res = {"settings": settings(cfg), **config.stamp(), "known_answer": run_check(cfg, p)}
-        write(res, "check.json")
+        write(res, f"check{sfx}.json")
     else:
         res = run(cfg)
-        write(res, "result.json")
+        write(res, f"result{sfx}.json")
     ka = res["known_answer"]
     planted = {k: v for k, v in ka["planted"].items() if not k.endswith("_rows")}
     print(json.dumps({"planted": planted, "books": ka.get("books"), "passed": ka["passed"]},
