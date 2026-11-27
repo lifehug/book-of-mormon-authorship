@@ -2641,6 +2641,35 @@ lab:                              # the research lab (exploratory tooling; reads
       baxter_saints_rest_1821: {work_id: 'internet_archive:saintseve00baxt', exclude_author: 'baxter, richard', exclude_title: 'everlasting rest'}   # first printed 1650
     workers: 6
     part_size: 2000                # works per resumable part of a library pass
+  new_senses:                      # BOM-129 (lab; exploratory): New Testament phrases in a new sense against period usage (card 2026-11-27-new-senses); simulated judging
+    context_words: 60              # words each side of the phrase in every passage shown to the judge
+    max_verses: 3                  # King James verses shown with a phrase
+    year_min: 1640                 # library: the card's default set (as lab.joined_phrases)
+    year_max: 1829
+    title_key_words: 4             # own copies left out (lab.joined.own_copies)
+    eras: {early: [1640, 1779], late: [1780, 1829]}
+    min_uses_per_era: 10           # library works holding the phrase, in each era
+    uses_per_era: 40               # uses read per era (one per work, seeded)
+    named:                         # always asked in step 1 and side-coded in step 2 (card step 3)
+      - {book_form: a few stripes, library_form: few stripes, refs: [Luke 12:47, Luke 12:48]}
+      - {book_form: eat drink and be merry, library_form: eat drink and be merry, refs: [Luke 12:19]}
+    late_war: {file: data/candidates/text/gh-1816-late-war.txt, year: 1816, exclude_author: 'hunt, g', exclude_title: 'late war|historical reader'}
+    sermons: 20                    # decoy: religious works of 10,000+ words printed in these years (seeded)
+    sermons_years: [1650, 1659]
+    sermons_min_words: 10000
+    bom_exclude_title: 'book of mormon'
+    model: sonnet                  # steps 1 and 2 and the 60-item check
+    agreement_model: opus          # the agreement check on real step-1 items
+    agreement_items: 100
+    agreement_min_answered: 0.9    # share of the agreement items both models must have answered
+    check_bar: 0.9                 # right on each kind of the 60 hand-made items
+    kappa_bar: 0.6
+    period_points: 0.15            # period sense: mean late-minus-early YES share at least this, 95% interval above 0
+    older_points: 0.05             # older sense: within this, or reversed
+    boot: 2000
+    seed: 20261128
+    workers: 6
+    part_size: 2000
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
