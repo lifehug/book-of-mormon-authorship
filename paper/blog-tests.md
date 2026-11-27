@@ -92,7 +92,7 @@ compares against.
 | BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held, by wording and by reading the notes | **Clarke does not stand out; one real example (Isaiah 9:3); Clarke's scan read at under half the changes, to fix** |
 | BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | **Done** |
 | BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1989; replies | examples from each side | every use in print 1780 to 1835, by year | **Done: Masonic in about 4 of 10 uses by 1827-1830, not almost all** |
-| BOM-128 | Its Bible blends ("eat, drink, and be merry, for tomorrow we die") are 1820s idiom | a reader of the first paper, 2026 | examples | every joined King James phrase, dated by when print first holds it | TBD |
+| BOM-128 | Its Bible blends ("eat, drink, and be merry, for tomorrow we die") are 1820s idiom | a reader of the first paper, 2026 | examples | every joined King James phrase, dated by when print first holds it | **Dating failed four designs; counted: his pair is in print from 1695, 35 works, most 1790-1829; the chapter's other joins are in no other book** |
 | BOM-129 | "A few stripes" and other New Testament phrases are used in the sense of the 1820s Universalism debate | the same reader | examples | each new sense against 1640-1779 and 1780-1829 print (simulated reading) | TBD |
 | BOM-130 | 2 Nephi 28 draws on *Scripture Inquiry* (1828), a Hillsborough sermon (1809) and others | the same reader | the named books | the named books ranked among the whole library, with sermons on the same topics | **Done for the two held: neither stands out from ordinary Universalism writing; two named books still to get** |
 | BOM-131 | 2 Nephi 28 reads Luke 12 the way Henry and Clarke did | the same reader | two commentaries | every New Testament commentary held (simulated reading) | TBD |
@@ -3285,3 +3285,59 @@ single rare phrase with the chapter. Being close to a debate is not the same as 
 
 **What's left.** The two Google Books volumes, downloaded by hand and run through the same step (the
 scans don't need redoing).
+
+### Joined Bible phrases (BOM-128)
+
+**The claim.** The reader's sharpest example from 2 Nephi 28: "Eat, drink, and be merry, for tomorrow
+we die." The King James Bible keeps those apart. "Eat, drink, and be merry" is the rich fool in Luke
+12. "Let us eat and drink; for to morrow we die" is Isaiah 22 and 1 Corinthians 15. By Joseph
+Smith's day, he wrote, people had already fused them into one saying, and he quoted a war prisoner's
+memoir of the 1810s doing exactly that. So the book is using an English idiom of its own time, not
+the Bible.
+
+**Their way first.** One example, from one book. I couldn't get that book (Google Books stopped my
+download), but the claim is easy to put to the whole library: who joined the two phrases, and when?
+
+**What I tried.** Go further than the one pair. Find every place in the book where two King James
+phrases sit within 25 words of each other but never sit together in the Bible, and date each join by
+when the library's books first carry it. Compare the share of the book's joins that are new after
+1750 with books of the 1650s, 1740s and 1820s.
+
+**The check.** Two parts. Plant 100 joins in ordinary prose: find at least 90, and find a false one in
+no more than 10 of 100 unplanted passages. Then date the joins of known books: 1650s books mostly to
+the 1650s, and fewer than one in ten of their joins to after 1750.
+
+**When it failed: four times, and why.** The first finder treated ordinary English as Bible phrases:
+"to speak evil of", "in the ground at". It found false joins in 22 passages of 100. I kept only
+phrases rare in a thousand non-religious books of the period, and that passed: all 100 planted found,
+false ones in 4 of 100.
+
+The dating never passed. The library holds about 44,000 works from 1640 to 1699, about 5,000 from the
+whole of 1700 to 1779, and about 195,000 from 1780 to 1829. "First seen in our library" mostly tracks
+how much survives from each decade. A 1650 book by Richard Baxter, reprinted in 1821, came out dated
+late. I tried equal samples per decade, then rates per thousand works. Each fixed one part and broke
+another: equal samples were too thin to date anything, and rates still put many 1650s joins in the
+1790s, probably because 1600s divinity was reprinted and collected then. Four designs, four misses. I
+stopped there. Dating every blend in the book is beyond what this library can do.
+
+**The result: just counting.** What can be done is the reader's own question, by counting: which
+books carry his pair, and when? Every one of 240,307 works, word for word, the Book of Mormon's own
+copies left out:
+
+| Join | Books carrying it | When |
+| --- | --- | --- |
+| "eat drink and be merry" + "for to morrow we die" | 35 | first in 1695 (Morland, *The Urim of Conscience*); 1730s 1, 1780s 1, 1790s 5, 1800s 3, 1810s 13, 1820s 11 |
+| "dig a pit for" + either of those | 0 | |
+| "seek deep to hide their" + "the blood of the saints" | 0 | |
+| "be thrust down to hell" + "turn aside the just for a thing of nought" | 0 | |
+
+Per thousand books, the pair runs at about 0.1 to 0.3 from the 1790s on, highest in the 1810s. Two of
+the 1790s holders are copies of a 1792 Bible whose notes set the two verses side by side.
+
+**What it means, and what it doesn't.** The reader is right about his pair: by the 1810s and 1820s it
+was a joined saying in print, and the book uses it that way. But it was not new. It was in print by
+1695, so it fits the 1820s and also fits any time in the century and a half before. The other joins in
+the chapter appear in no other book at all, so they are the chapter's own, not borrowed idiom. Matching
+is word for word: "tomorrow" or "we shall die" are not counted, so the real numbers are higher.
+
+**What's left.** The counts with spelling variants. Casse's memoir, once downloaded by hand.
