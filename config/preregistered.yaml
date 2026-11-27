@@ -1133,6 +1133,7 @@ lab:                              # the research lab (exploratory tooling; reads
       blayney_1797: {translator: Benjamin Blayney, year: 1797, source: hebrew_bible, paths: [data/corpus/internet_archive/text/zechariahnewtran00blay.txt], books: [Zech]}
       newcome_1785: {translator: William Newcome, year: 1785, source: hebrew_bible, paths: [data/corpus/internet_archive/text/bim_eighteenth-century_an-attempt-towards-an-im_1785.txt], books: [Hos, Joel, Amos, Obad, Jonah, Mic, Nah, Hab, Zeph, Hag, Zech, Mal]}
       newcome_1788: {translator: William Newcome, year: 1788, source: hebrew_bible, paths: [data/corpus/internet_archive/text/bim_eighteenth-century_an-attempt-towards-an-im_1788.txt], books: [Ezek]}
+      bellamy_1818: {translator: John Bellamy, year: 1818, source: hebrew_bible, paths: [data/corpus/lab/sources/translation/bellamy1818/text.txt], books: [Gen, Exod, Lev, Num, Deut]}   # the owner's download from Google Books; columns read in order by lab.sources columns
       boothroyd_1824: {translator: Benjamin Boothroyd, year: 1824, source: hebrew_bible, paths: [data/corpus/lab/sources/translation/ENGNFB_DBS_HS/text_1.txt, data/corpus/lab/sources/translation/ENGNFB_DBS_HS/text_2.txt], books: OT}
       boothroyd_1853: {translator: Benjamin Boothroyd (reprint), year: 1853, source: hebrew_bible, paths: [data/corpus/lab/sources/translation/cu31924029268617/text.txt], books: OT, ot_end: '^ST\. MATTHEW\.\s*$'}
       leeser_1853: {translator: Isaac Leeser, year: 1853, source: hebrew_bible, paths: [data/corpus/lab/sources/translation/twentyfourbookso1853lees/text.txt], books: OT}
@@ -1157,8 +1158,10 @@ lab:                              # the research lab (exploratory tooling; reads
       boothroyd_1824 Prov.30.11:parallel: "not the verse: his Reflections"
       boothroyd_1853 Exod.20.12:pair: "not the verse: a note"
       boothroyd_1853 Prov.30.11:parallel: "not the verse: a note"
-    not_fetched:
-      bellamy_1818: "Google Books only (https://books.google.com/books?id=SP1PAAAAYAAJ); its download answers programs with a bot check (2026-11-27); HathiTrust refuses scripted access"
+      bellamy_1818 Exod.21.15:pair: "not the verse: a note"
+      bellamy_1818 Lev.19.3:pair: "not the verse: the same note"
+      bellamy_1818 Gen.49.26:horay: "OTHER: his verse reads my progenitors (as the King James); the locator missed the verse"
+    not_fetched: {}
   archaic_full:                    # BOM-118 full run (lab; exploratory): cited-verse frames, whole-library scan, simulated AI judging (sonnet, whole paragraph; chosen post hoc in the pilot, fixed here)
     year_min: 1740
     year_max: 1830                 # 1830 counted with the 1820s

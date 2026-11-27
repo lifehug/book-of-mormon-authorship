@@ -127,3 +127,16 @@ def test_summary_counts_classes_and_coverage():
     s = H.summary(rows)
     assert s["located"] == 2 and s["coverage"] == 0.667 and s["parents_at_places"] == 1
     assert s["out_of_order"] == 1 and s["pair_and_parallel"] == {"FATHER_AND_MOTHER": 1}
+
+
+def test_page_columns_reads_left_then_right_within_each_block():
+    from lab.sources import page_columns
+
+    w = [
+        (250, 50, 350, 60, "CHAP."),  # a heading across the gutter
+        (40, 100, 90, 110, "left1"), (320, 100, 380, 110, "right1"),
+        (40, 112, 90, 122, "left2"), (320, 112, 380, 122, "right2"),
+        (40, 200, 90, 208, "noteL"), (320, 200, 380, 208, "noteR"),
+    ]  # fmt: skip
+    assert page_columns(w, 600).split("\n") == [
+        "CHAP.", "left1", "left2", "right1", "right2", "noteL", "noteR"]  # fmt: skip

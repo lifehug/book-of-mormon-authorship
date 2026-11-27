@@ -19,6 +19,7 @@ Usage::
     python -m lab.sources fetch [NAME ...]   # fetch all, or the named sources or groups
     python -m lab.sources marc               # catalog records that mark translations (HathiTrust)
     python -m lab.sources tm [--last N]      # Trismegistos People, one person a request
+    python -m lab.sources columns PDF OUT    # a two-column PDF's OCR layer in reading order
 """
 
 from __future__ import annotations
@@ -707,7 +708,8 @@ def _sources() -> list[dict]:
         "https://ebible.org/Scriptures/eng-kjv2006_usfm.zip",
         PD + " (eBible.org, King James 1769 text, protocanon, Strong's numbers)")  # fmt: skip
     # BOM-133: translators from Hebrew (docs/research/2026-11-27-hebrew-parents.md, section 4).
-    # Bellamy 1818 is on Google Books only, which answers programs with a bot check: not fetched.
+    # Bellamy 1818 is on Google Books only, which answers programs with a bot check; the owner
+    # saved it by hand (data/lab/sources_by_hand.json, key bellamy1818).
     for item, kind, what in (
         ("bim_eighteenth-century_isaiah-a-new-translatio_1778", "ia", "Lowth, Isaiah, 1778"),
         ("ENGNFB_DBS_HS", "ia_all", "Boothroyd, A New Family Bible, 1824, vols 1-3"),
@@ -1213,6 +1215,64 @@ def tm(last: int, part_size: int = 1000) -> int:
     return 0
 
 
+WORD_BOX = re.compile(
+    r'<word xMin="([-\d.]+)" yMin="([-\d.]+)" xMax="([-\d.]+)" yMax="([-\d.]+)">(.*?)</word>'
+)
+
+
+def page_columns(words: list[tuple[float, float, float, float, str]], width: float) -> str:
+    """One page's words in reading order: the page cut into blocks at large vertical gaps (text,
+    then notes), each block read left column then right. The gutter is the x near the middle
+    crossed by the fewest words; a line with a word across it (a heading) is read whole."""
+    words = [w for w in words if w[2] > 0.04 * width]  # scanner-edge specks
+    if not words:
+        return ""
+    mid = [x for x in range(int(0.35 * width), int(0.65 * width))]
+    gutter = min(mid, key=lambda x: (sum(w[0] < x < w[2] for w in words), abs(x - width / 2)))
+    lines: dict[float, list] = {}
+    for w in words:
+        lines.setdefault(round(w[1], 0), []).append(w)
+    ys = sorted(lines)
+    gaps = sorted(b - a for a, b in zip(ys, ys[1:], strict=False)) or [0]
+    step = gaps[len(gaps) // 4]  # the usual line step (lower quartile of the gaps)
+    blocks, cur = [], [ys[0]]
+    for a, b in zip(ys, ys[1:], strict=False):
+        if b - a > 2 * step:
+            blocks.append(cur)
+            cur = []
+        cur.append(b)
+    blocks.append(cur)
+    out_lines = []
+    for block in blocks:
+        whole, left, right = [], [], []
+        for y in block:
+            ws = sorted(lines[y])
+            if any(w[0] < gutter < w[2] for w in ws):
+                whole.append(" ".join(w[4] for w in ws))
+                continue
+            left.append(" ".join(w[4] for w in ws if w[2] <= gutter))
+            right.append(" ".join(w[4] for w in ws if w[0] >= gutter))
+        out_lines += whole + [x for x in left if x] + [x for x in right if x]
+    return "\n".join(out_lines)
+
+
+def columns(pdf: str, dest: str) -> int:
+    """A two-column scanned book's OCR text layer (pdftotext -bbox) rewritten in reading order,
+    one page after another (form feed between pages). The PDF is only read."""
+    import html
+
+    raw = subprocess.run(["pdftotext", "-bbox", pdf, "-"], capture_output=True, text=True,
+                         check=True).stdout  # fmt: skip
+    pages = []
+    for m in re.finditer(r'<page width="([\d.]+)"[^>]*>(.*?)</page>', raw, flags=re.S):
+        ws = [(float(a), float(b), float(c), float(d), html.unescape(t))
+              for a, b, c, d, t in WORD_BOX.findall(m.group(2))]  # fmt: skip
+        pages.append(page_columns(ws, float(m.group(1))))
+    out(Path(dest)).write_text("\f\n".join(pages) + "\n")
+    print(f"{len(pages)} pages -> {dest}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
     sp = ap.add_subparsers(dest="cmd", required=True)
@@ -1220,7 +1280,12 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_parser("fetch").add_argument("names", nargs="*")
     sp.add_parser("marc")
     sp.add_parser("tm").add_argument("--last", type=int, default=500_000)
+    c = sp.add_parser("columns")
+    c.add_argument("pdf")
+    c.add_argument("dest")
     a = ap.parse_args(argv)
+    if a.cmd == "columns":
+        return columns(a.pdf, a.dest)
     if a.cmd == "tm":
         return tm(a.last)
     if a.cmd == "fetch":
