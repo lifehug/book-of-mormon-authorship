@@ -1087,10 +1087,6 @@ lab:                              # the research lab (exploratory tooling; reads
     renderings_per_lemma: 8        # part 2: King James renderings listed per lemma
     usfm: data/corpus/lab/sources/translation/eng-kjv2006_usfm.zip
     check_verse: [GEN, 49, 26, progenitors]   # card: Genesis 49:26 "progenitors" for "parents"
-    lemmas_per_word: 8             # part 2: Hebrew lemmas listed per word (most frequent first)
-    renderings_per_lemma: 8        # part 2: King James renderings listed per lemma
-    usfm: data/corpus/lab/sources/translation/eng-kjv2006_usfm.zip
-    check_verse: [GEN, 49, 26, progenitors]   # card: Genesis 49:26 "progenitors" for "parents"
   hebrew_translators:              # BOM-133 (lab): what translators from Hebrew wrote at the Bible's father-and-mother places; card data/private/lab/owner/2026-11-27-hebrew-translators/card.md
     lemma_window: 8                # candidate verses: Strong's H1 'av and H517 'em (Hebrew) within this many words (note: 73 verses)
     places:                        # WLC references (OSIS); the research note's hand sort, docs/research/2026-11-27-hebrew-parents.md
