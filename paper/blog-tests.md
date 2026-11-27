@@ -94,7 +94,7 @@ compares against.
 | BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1989; replies | examples from each side | every use in print 1780 to 1835, by year | **Done: Masonic in about 4 of 10 uses by 1827-1830, not almost all** |
 | BOM-128 | Its Bible blends ("eat, drink, and be merry, for tomorrow we die") are 1820s idiom | a reader of the first paper, 2026 | examples | every joined King James phrase, dated by when print first holds it | **Dating failed four designs; counted: his pair is in print from 1695, 35 works, most 1790-1829; the chapter's other joins are in no other book** |
 | BOM-129 | "A few stripes" and other New Testament phrases are used in the sense of the 1820s Universalism debate | the same reader | examples | each new sense against 1640-1779 and 1780-1829 print (simulated reading) | TBD |
-| BOM-130 | 2 Nephi 28 draws on *Scripture Inquiry* (1828), a Hillsborough sermon (1809) and others | the same reader | the named books | the named books ranked among the whole library, with sermons on the same topics | **Done for the two held: neither stands out from ordinary Universalism writing; two named books still to get** |
+| BOM-130 | 2 Nephi 28 draws on *Scripture Inquiry* (1828), a Hillsborough sermon (1809) and others | the same reader | the named books | the named books ranked among the whole library, with sermons on the same topics | **Done: none of the four stands out from ordinary Universalism writing** |
 | BOM-131 | 2 Nephi 28 reads Luke 12 the way Henry and Clarke did | the same reader | two commentaries | every New Testament commentary held (simulated reading) | TBD |
 | BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed twice; not scored** |
 
@@ -3260,9 +3260,10 @@ every work whose title names universal salvation or endless punishment: 911 of t
 the top 1 percent? All ten did, on both searches, ranks 1 to 33 on rare phrases and 95 to 954 on
 meaning. A window of *The Late War* put Hunt's other nine printings at ranks 1 to 9.
 
-**When it failed.** Two of the four books could not be had. The Hillsborough sermon and Casse's
-narrative are on Google Books only, and both Google and HathiTrust answered with a check meant to
-stop programs. I don't get around those. Two books in, two out.
+**When it failed.** Two of the four books could not be had at first. The Hillsborough sermon and
+Casse's narrative are on Google Books only, and both Google and HathiTrust answered with a check meant
+to stop programs. I don't get around those. Dave opened them in his own browser and passed me the
+download links: Stephen Chapin's sermon (Amherst, 1809) and Casse's narrative (London, 1828).
 
 **The result.**
 
@@ -3270,7 +3271,8 @@ stop programs. I don't get around those. Two books in, two out.
 | --- | --- | --- |
 | *Scripture Inquiry* (1828) | none of the chapter's 128 | top 1.15 percent, rank 2,548 |
 | *Life and Morals of Epicurus* (1822) | none | top 16 percent |
-| Hillsborough sermon (1809), Casse | not held | not held |
+| Chapin, Hillsborough farewell sermon (1809) | none | top 15 percent, below 58 percent of the Universalism works |
+| Casse, *Authentic Narrative* (London, 1828) | none | top 28 percent, below 92 percent of them |
 
 *Scripture Inquiry* is close in meaning, closer than 97 percent of the 911 Universalism works of its
 own time. But 22 of those works are in the top 1 percent too, and the Alma war chapter, which is not
@@ -3280,11 +3282,12 @@ debate as a kind, and *Scripture Inquiry* is an ordinary member of it.
 
 **What it means, and what it doesn't.** For the reader's broader point it is support of a sort: the
 chapter's nearest neighbours in the whole library are works arguing about universal salvation. For
-his specific books, no: neither of the two I hold stands out from that crowd, and neither shares a
-single rare phrase with the chapter. Being close to a debate is not the same as copying a book in it.
+his specific books, no: none of the four stands out from that crowd, and none shares a single rare
+phrase with the chapter. Casse does print the joined saying, "Let us eat, drink, and be merry, for
+tomorrow we die", but that one line is all he has in common with it. Being close to a debate is not the same as copying a book in it.
 
-**What's left.** The two Google Books volumes, downloaded by hand and run through the same step (the
-scans don't need redoing).
+**What's left.** Nothing for these four. The *Universalist* magazine issues of 1824 to 1827 that share
+rare phrases with the chapter probably quote the Book of Mormon; that would be its own question.
 
 ### Joined Bible phrases (BOM-128)
 
@@ -3340,4 +3343,5 @@ was a joined saying in print, and the book uses it that way. But it was not new.
 the chapter appear in no other book at all, so they are the chapter's own, not borrowed idiom. Matching
 is word for word: "tomorrow" or "we shall die" are not counted, so the real numbers are higher.
 
-**What's left.** The counts with spelling variants. Casse's memoir, once downloaded by hand.
+**What's left.** The counts with spelling variants. Casse's memoir (London, 1828), which Dave downloaded, has the
+joined saying with "tomorrow", the spelling this count misses.
