@@ -94,7 +94,7 @@ compares against.
 | BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1989; replies | examples from each side | every use in print 1780 to 1835, by year | **Done: Masonic in about 4 of 10 uses by 1827-1830, not almost all** |
 | BOM-128 | Its Bible blends ("eat, drink, and be merry, for tomorrow we die") are 1820s idiom | a reader of the first paper, 2026 | examples | every joined King James phrase, dated by when print first holds it | TBD |
 | BOM-129 | "A few stripes" and other New Testament phrases are used in the sense of the 1820s Universalism debate | the same reader | examples | each new sense against 1640-1779 and 1780-1829 print (simulated reading) | TBD |
-| BOM-130 | 2 Nephi 28 draws on *Scripture Inquiry* (1828), a Hillsborough sermon (1809) and others | the same reader | the named books | the named books ranked among the whole library, with sermons on the same topics | TBD |
+| BOM-130 | 2 Nephi 28 draws on *Scripture Inquiry* (1828), a Hillsborough sermon (1809) and others | the same reader | the named books | the named books ranked among the whole library, with sermons on the same topics | **Done for the two held: neither stands out from ordinary Universalism writing; two named books still to get** |
 | BOM-131 | 2 Nephi 28 reads Luke 12 the way Henry and Clarke did | the same reader | two commentaries | every New Testament commentary held (simulated reading) | TBD |
 | BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed twice; not scored** |
 
@@ -3204,3 +3204,53 @@ itself an 1840 translation done in King James style.
 **What's left.** A list of every pair-versus-collective habit, not just two. The word table read by
 hand (several entries are spelling or dictionary noise). The same count on the Book of Mormon's
 King James paraphrases set aside by meaning, not only by long quotation.
+
+### 2 Nephi 28 and the books a reader named (BOM-130)
+
+**The claim.** The same reader argued that 2 Nephi 28 is an anti-Universalist tract in King James
+dress, and named books to set it beside: *Scripture Inquiry into the State and Condition of
+Mankind* (1828), a farewell sermon called *The Immoral Tendency of Error in Sentiment* (Hillsborough,
+New Hampshire, 1809), the narrative of George Richard Casse, a war prisoner who quotes "let us eat,
+drink, and be merry, for tomorrow we die", and a book on Epicurus (Joseph Smith later gave one to the
+Nauvoo library).
+
+**Their way first.** He gave the books, not a method: read them side by side and the likeness shows.
+That is a reading, and I can't reproduce a reading. What I can do is ask whether the books he named
+sit closer to the chapter than the rest of the library does.
+
+**What I tried.** The method from the claimed-sources test (BOM-126), pointed at one chapter: modern
+2 Nephi 28, 1,186 words once the King James quotation is set aside. Two searches. One counts rare
+four-word phrases shared with every work in the library, 204,520 of them. The other finds the
+passages nearest in meaning, across 221,327 works. Each named book gets a rank in both, and so does
+every work whose title names universal salvation or endless punishment: 911 of them from 1780 to
+1829, and 41 from 1640 to 1779. As a decoy, a war chapter of Alma goes through the same searches.
+
+**The check.** Plant ten passages from known books into the chapter: does each planted book rise to
+the top 1 percent? All ten did, on both searches, ranks 1 to 33 on rare phrases and 95 to 954 on
+meaning. A window of *The Late War* put Hunt's other nine printings at ranks 1 to 9.
+
+**When it failed.** Two of the four books could not be had. The Hillsborough sermon and Casse's
+narrative are on Google Books only, and both Google and HathiTrust answered with a check meant to
+stop programs. I don't get around those. Two books in, two out.
+
+**The result.**
+
+| Book | Rare phrases shared with the chapter | Nearest in meaning |
+| --- | --- | --- |
+| *Scripture Inquiry* (1828) | none of the chapter's 128 | top 1.15 percent, rank 2,548 |
+| *Life and Morals of Epicurus* (1822) | none | top 16 percent |
+| Hillsborough sermon (1809), Casse | not held | not held |
+
+*Scripture Inquiry* is close in meaning, closer than 97 percent of the 911 Universalism works of its
+own time. But 22 of those works are in the top 1 percent too, and the Alma war chapter, which is not
+about Universalism at all, also puts it in its top 3 percent. So its closeness is to the book's
+religious voice in general, not to this chapter. The chapter's nearest writing is the Universalism
+debate as a kind, and *Scripture Inquiry* is an ordinary member of it.
+
+**What it means, and what it doesn't.** For the reader's broader point it is support of a sort: the
+chapter's nearest neighbours in the whole library are works arguing about universal salvation. For
+his specific books, no: neither of the two I hold stands out from that crowd, and neither shares a
+single rare phrase with the chapter. Being close to a debate is not the same as copying a book in it.
+
+**What's left.** The two Google Books volumes, downloaded by hand and run through the same step (the
+scans don't need redoing).
