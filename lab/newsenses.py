@@ -122,11 +122,19 @@ def bom_docs(w124: dict) -> list[Doc]:
 
 
 def nt_universe(cfg: dict) -> tuple:
-    """BOM-124's New Testament-only n-grams and its rarity filter at its primary threshold."""
+    """BOM-124's New Testament-only n-grams, kept by BOM-124's rarity filter or (design 2,
+    ``phrase_filter: joined_design2``) by BOM-128's design-2 finder: rare in non-religious books
+    and not made of function words and one other word."""
     w = cfg["lab"]["new_testament_wording"]
     sizes = w["ngram_sizes"]
     kjv = ntwording.Kjv([json.loads(x) for x in KJV.read_text().splitlines()])
     uni = ntwording.Universe(kjv, ntwording.build_grams(kjv, sizes))
+    if settings(cfg).get("phrase_filter") == "joined_design2":
+        jd = joined.settings(cfg)
+        bible = joined.Bible([json.loads(x) for x in KJV.read_text().splitlines()], sizes)
+        df, read, _ids = joined.nonreligious_df(bible, cfg)
+        kept = joined.distinctive(bible, df, read, jd["share"], jd)
+        return uni, [tuple(g.split()) in kept for g in uni.grams], sizes
     bg_rows = ntwording.draw(
         ntwording.eligible(
             cfg,
@@ -509,13 +517,18 @@ def jobs(cfg: dict) -> dict:
     agree = rng.sample(bom, min(d["agreement_items"], len(bom)))
     _write(JOBS["check"], [{"id": j["id"], "prompt": j["prompt"]} for j in chk])
     sermons = [j for j in step1 if j["source"] == "sermons_1650s"]
+    all_sermons = len(sermons)
+    if d.get("sermons_step1_match_book"):  # the decoy drawn down to the book's size, seeded
+        sermons = random.Random(d["seed"] + 1).sample(sermons, min(len(bom), len(sermons)))
+        kept["sermons_1650s"] = len(sermons)
+        step1 = [j for j in step1 if j["source"] != "sermons_1650s"] + sermons
     _write(JOBS["step1"], [{"id": j["id"], "prompt": j["prompt"]} for j in step1
                            if j["source"] != "sermons_1650s"])  # fmt: skip
     _write(JOBS["step1_sermons"], [{"id": j["id"], "prompt": j["prompt"]} for j in sermons])
     _write(JOBS["agree"], [{"id": j["id"], "prompt": j["prompt"]} for j in agree])
     _write(CARD / "check_key.jsonl", [{k: v for k, v in j.items() if k != "prompt"} for j in chk])
     res = {"check": len(chk), "step1": len(step1), "step1_by_source": dict(kept),
-           "agreement_opus": len(agree),
+           "agreement_opus": len(agree), "sermons_step1_before_draw": all_sermons,
            "phrases_by_source": dict(Counter(r["source"] for r in recs))}  # fmt: skip
     out(OUT / "jobs.json").write_text(json.dumps(res | config.stamp(), indent=1) + "\n")
     return res
@@ -576,15 +589,19 @@ def check_result(d: dict) -> dict:
 
 
 def step2_sources(d: dict) -> list[dict]:
-    """The step-1 records answered NEW, each with its parsed sense and topic."""
+    """The step-1 records answered NEW, and the book's named phrases whatever the answer, each
+    with its parsed answer, sense and topic."""
     s1 = answers("step1")
     recs = {r["pid"]: r for r in _load(PHRASES)}
+    named = {n["library_form"] for n in d["named"]}
     got = []
     for jid, reply in s1.items():
         p = parse1(reply)
         r = recs.get(jid.split("|", 1)[1])
-        if p and r and p["answer"] == "NEW" and p["sense"]:
-            got.append(r | {"sense": p["sense"], "topic": p["topic"]})
+        if not (p and r and p["sense"]):
+            continue
+        if p["answer"] == "NEW" or (r["source"] == "book_of_mormon" and r["phrase"] in named):
+            got.append(r | {"sense": p["sense"], "topic": p["topic"], "step1_answer": p["answer"]})
     return got
 
 
@@ -601,10 +618,25 @@ def jobs2(cfg: dict, force_unchecked: bool = False) -> dict:
     cache: dict = {}
     plan, docs = [], {}
     side_names = {n["library_form"] for n in d["named"]}
+    cands: dict[str, list] = defaultdict(list)
     for r in step2_sources(d):
         by = eligible_uses(r, uses, rows, meta, d, cache)
-        if not enough(by, d):
-            continue
+        named = r["source"] == "book_of_mormon" and r["phrase"] in side_names
+        if named or (r["step1_answer"] == "NEW" and enough(by, d)):
+            cands[r["source"]].append((r, by))
+    chosen = []
+    cap = d.get("step2_phrases_per_source")
+    for src, items in sorted(cands.items()):
+        items.sort(key=lambda x: x[0]["pid"])
+        must = [x for x in items if src == "book_of_mormon" and x[0]["phrase"] in side_names]
+        rest = [x for x in items if x not in must]
+        if cap is not None:
+            k = max(0, min(len(rest), cap - len(must)))
+            rest = random.Random(f"{d['seed']}|{src}").sample(rest, k)
+        chosen += must + rest
+    named_new = sorted(x[0]["phrase"] for x in chosen if x[0]["phrase"] in side_names
+                       and x[0]["source"] == "book_of_mormon")  # fmt: skip
+    for r, by in chosen:
         side = r["phrase"] in side_names or r.get("topic") == "AFTERLIFE"
         for era, ws in by.items():
             rng = random.Random(f"{d['seed']}|{r['pid']}|{era}")
@@ -630,7 +662,8 @@ def jobs2(cfg: dict, force_unchecked: bool = False) -> dict:
                                              doc.passage(pos, pos + len(p), d["context_words"]),
                                              side)})  # fmt: skip
     _write(JOBS["step2"], jobs_)
-    return {"step2": len(jobs_), "not_attempted": missing,
+    return {"step2": len(jobs_), "not_attempted": missing, "named_new_in_book": named_new,
+            "new_phrases_with_enough_uses": {k: len(v) for k, v in cands.items()},
             "phrases": len({j["id"].split("|")[1] for j in jobs_})}  # fmt: skip
 
 
@@ -705,9 +738,12 @@ def score(cfg: dict) -> dict:
                "refs": r["refs"], "by_era": {e: dict(ec[e]) for e in eras},
                "yes_share": {e: None if v is None else round(v, 4)
                              for e, v in sh.items()}}  # fmt: skip
+        p1 = s1.get(f"s1|{pid}")
+        row["step1_answer"] = p1["answer"] if p1 else None
         if all(v is not None for v in sh.values()):
             row["difference"] = round(sh[eras[1]] - sh[eras[0]], 4)
-            by_src[r["source"]].append(row["difference"])
+            if row["step1_answer"] == "NEW":  # the verdict is over NEW-sense phrases only
+                by_src[r["source"]].append(row["difference"])
         rows.append(row)
     res["phrases"] = sorted(rows, key=lambda x: (x["source"], x["phrase"]))
     res["verdicts"] = {s: verdict(v, d) for s, v in by_src.items()}

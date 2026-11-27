@@ -2663,7 +2663,10 @@ lab:                              # the research lab (exploratory tooling; reads
     title_key_words: 4             # own copies left out (lab.joined.own_copies)
     eras: {early: [1640, 1779], late: [1780, 1829]}
     min_uses_per_era: 10           # library works holding the phrase, in each era
-    uses_per_era: 40               # uses read per era (one per work, seeded)
+    uses_per_era: 20               # uses read per era (one per work, seeded); was 40, capped for size (card, Design 2)
+    phrase_filter: joined_design2  # Design 2: phrases kept by BOM-128 design 2's finder (lab.joined_phrases.design2), not BOM-124's 5% filter
+    sermons_step1_match_book: true # Design 2: the 1650s sermons' step-1 items drawn (seeded) to the book's step-1 count
+    step2_phrases_per_source: 40   # Design 2: NEW-sense phrases read in step 2 per source (seeded); the book's two named phrases always
     named:                         # always asked in step 1 and side-coded in step 2 (card step 3)
       - {book_form: a few stripes, library_form: few stripes, refs: [Luke 12:47, Luke 12:48]}
       - {book_form: eat drink and be merry, library_form: eat drink and be merry, refs: [Luke 12:19]}
