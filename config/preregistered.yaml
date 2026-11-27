@@ -1041,7 +1041,21 @@ lab:                              # the research lab (exploratory tooling; reads
     pairs:                         # amendment 1.6: pair and collective, counted on lower-case text
       parents: ['\b(?:father|fathers)\s+and\s+(?:\w+\s+)?(?:mother|mothers)\b|\b(?:mother|mothers)\s+and\s+(?:\w+\s+)?(?:father|fathers)\b', '\bparents?\b']
       children: ['\bsons\s+and\s+(?:\w+\s+)?daughters\b|\bdaughters\s+and\s+(?:\w+\s+)?sons\b', '\bchildren\b']
-    top_words: 30                  # part 2: the book's most frequent words outside the Old Testament, read word by word
+    top_words: 30                  # part 2 (first design): the book's most frequent words outside the Old Testament, read word by word
+    design2:                       # card "Design 2" (2026-11-27, after the first check's miss; counts for less)
+      block_words: 5000            # contiguous blocks of words (names left out) within one book or text file; remainders dropped
+      auc_bar: 0.95                # OT blocks against NT blocks and against Apocrypha blocks, each
+      below_median_share: 0.9      # share of OT blocks below the NT block median and below the Apocrypha block median
+      alpha: 0.05                  # one-sided Mann-Whitney, the book's blocks against each of Jasher, Thomson OT, Josephus
+      top_words: 50                # part 2: the book's top words outside the Old Testament, word by word
+      ot_groups:                   # reported, not part of the bar
+        narrative: [GEN, EXO, LEV, NUM, DEU, JOS, JDG, RUT, 1SA, 2SA, 1KI, 2KI, 1CH, 2CH, EZR, NEH, EST]
+        poetry_wisdom: [JOB, PSA, PRO, ECC, SOL]
+        prophets: [ISA, JER, LAM, EZE, DAN, HOS, JOE, AMO, OBA, JON, MIC, NAH, HAB, ZEP, HAG, ZEC, MAL]
+    lemmas_per_word: 8             # part 2: Hebrew lemmas listed per word (most frequent first)
+    renderings_per_lemma: 8        # part 2: King James renderings listed per lemma
+    usfm: data/corpus/lab/sources/translation/eng-kjv2006_usfm.zip
+    check_verse: [GEN, 49, 26, progenitors]   # card: Genesis 49:26 "progenitors" for "parents"
     lemmas_per_word: 8             # part 2: Hebrew lemmas listed per word (most frequent first)
     renderings_per_lemma: 8        # part 2: King James renderings listed per lemma
     usfm: data/corpus/lab/sources/translation/eng-kjv2006_usfm.zip

@@ -19,6 +19,8 @@ Usage::
 
     python -m lab.hebrewvocab check   # known-answer check, Hebrew alignment -> .../check.json
     python -m lab.hebrewvocab run     # -> data/lab/translation/hebrew_vocabulary/result.json
+    python -m lab.hebrewvocab check2  # design 2 (5,000-word blocks) check -> .../check2.json
+    python -m lab.hebrewvocab run2    # design 2, book and controls if it passes -> .../result2.json
 """
 
 from __future__ import annotations
@@ -652,9 +654,267 @@ def verdict(res: dict, w: dict, chk: dict) -> dict:
     }
 
 
+# ----------------------------------------------------------------------------- design 2: blocks
+
+
+def block_rates(flag: list[int], size: int) -> list[float]:
+    """Rate per 10,000 words in each whole block of ``size`` words; the remainder is dropped."""
+    return [sum(flag[i : i + size]) / size * 10000 for i in range(0, len(flag) - size + 1, size)]
+
+
+def share_below(xs: list[float], bar: float) -> float:
+    return round(sum(x < bar for x in xs) / len(xs), 4) if xs else float("nan")
+
+
+def check2(ctx: dict, d2: dict) -> dict:
+    """Design 2 known-answer check: 5,000-word blocks of every King James book; an Old
+    Testament block against the Old Testament without its whole book."""
+    conc, size = ctx["conc"], d2["block_words"]
+    blocks, dropped = [], []
+    for c in conc.codes:
+        hold = c if conc.section[c] == "OT" else None
+        kept, flag = marks(conc.words[c], conc, ctx["kjv_names"], ctx["lexicon"], hold)
+        rates = block_rates(flag, size)
+        if not rates:
+            dropped.append({"book": c, "section": conc.section[c], "words": len(kept)})
+        for i, r in enumerate(rates):
+            blocks.append(
+                {"book": c, "section": conc.section[c], "block": i, "per_10k": round(r, 2)}
+            )
+    by = {s: [b["per_10k"] for b in blocks if b["section"] == s] for s in ("OT", "NT", "Apocrypha")}
+    med = {s: statistics.median(v) for s, v in by.items()}
+    auc = {s: round(NT.auc(by[s], by["OT"]), 4) for s in ("NT", "Apocrypha")}
+    below = {s: share_below(by["OT"], med[s]) for s in ("NT", "Apocrypha")}
+    groups = {}
+    for g, codes in d2["ot_groups"].items():
+        xs = [b["per_10k"] for b in blocks if b["book"] in codes]
+        groups[g] = {
+            "blocks": len(xs),
+            "median": statistics.median(xs) if xs else None,
+            "max": max(xs) if xs else None,
+            "below_nt_median": share_below(xs, med["NT"]),
+            "below_apocrypha_median": share_below(xs, med["Apocrypha"]),
+            "auc_nt_over_these": round(NT.auc(by["NT"], xs), 4) if xs else None,
+            "auc_apocrypha_over_these": round(NT.auc(by["Apocrypha"], xs), 4) if xs else None,
+        }
+    passed = all(auc[s] >= d2["auc_bar"] for s in auc) and all(
+        below[s] >= d2["below_median_share"] for s in below
+    )
+    above = [
+        b
+        for b in blocks
+        if b["section"] == "OT" and b["per_10k"] >= min(med["NT"], med["Apocrypha"])
+    ]
+    return {
+        "rule": "OT blocks vs NT and vs Apocrypha blocks: AUC >= bar each, and the share of OT "
+        "blocks below the NT and the Apocrypha block medians >= bar each",
+        "bars": {"auc": d2["auc_bar"], "below_median_share": d2["below_median_share"]},
+        "blocks": {s: len(v) for s, v in by.items()},
+        "medians": med,
+        "auc": auc,
+        "ot_below_median": below,
+        "passed": passed,
+        "ot_groups_reported_not_the_bar": groups,
+        "ot_blocks_at_or_above_lower_nt_apocrypha_median": sorted(
+            Counter(b["book"] for b in above).items(), key=lambda kv: -kv[1]
+        ),
+        "dropped_under_block": dropped,
+        "block_rates": blocks,
+    }
+
+
+def control_pieces(cfg: dict) -> tuple[dict[str, dict[str, list[str]]], list[str]]:
+    """Group -> name -> the text's files (each blocked on its own)."""
+    groups, missing = control_texts(cfg)
+    w = cfg["lab"]["hebrew_vocabulary"]
+    res = {g: {n: [t] for n, t in items.items()} for g, items in groups.items()}
+    for name, paths in w["texts"].items():
+        g = "decoys" if name in w["decoys"] else "translations"
+        if name in res.get(g, {}):
+            res[g][name] = [read_paths([p]) or "" for p in paths]
+    later = sorted((NT.PRIVATE_CAND / "later").glob("*.txt"))
+    if later and "js_later_revelations" in res["revelations"]:
+        res["revelations"]["js_later_revelations"] = [
+            p.read_text("utf-8", "replace") for p in later
+        ]
+    return res, missing
+
+
+def blocks_of(
+    pieces: list[str],
+    ctx: dict,
+    base_names: set[str],
+    size: int,
+    cap: int | None = None,
+    names_from: str | None = None,
+) -> tuple[list[float], Counter, int]:
+    """Block rates over a text's pieces, its outside-word counts, and its words."""
+    rates, outside, words = [], Counter(), 0
+    names = base_names | text_names(names_from or "\n".join(pieces), ctx["webster"])
+    for t in pieces:
+        toks = tokens(t)[:cap] if cap else tokens(t)
+        kept, flag = marks(toks, ctx["conc"], names, ctx["lexicon"])
+        rates += block_rates(flag, size)
+        outside.update(x for x, f in zip(kept, flag, strict=True) if f)
+        words += len(kept)
+    return rates, outside, words
+
+
+def summary(rates: list[float], words: int) -> dict:
+    return {
+        "words": words,
+        "blocks": len(rates),
+        "median": round(statistics.median(rates), 2) if rates else None,
+        "min": round(min(rates), 2) if rates else None,
+        "max": round(max(rates), 2) if rates else None,
+    }
+
+
+def run2(cfg: dict) -> dict:
+    from scipy.stats import mannwhitneyu
+
+    ctx = prepare(cfg)
+    w = ctx["w"]
+    d2 = w["design2"]
+    size = d2["block_words"]
+    chk = check2(ctx, d2)
+    res: dict = {"design": 2, "known_answer": chk, "settings": w}
+    if not chk["passed"]:
+        res["stopped"] = "the known-answer check missed its bar; the Book of Mormon was not scored"
+        return res
+    base = ctx["kjv_names"] | bom_names(cfg)
+    bom = bom_texts(cfg["lab"]["new_testament_wording"])
+    every = bom.pop("_all")
+    pre_books = [k for k in bom if k.startswith("book:")]
+    book_rates, book_out, book_words, by_book = [], Counter(), 0, {}
+    for k in pre_books:
+        r, o, n = blocks_of([bom[k]], ctx, base, size, names_from=every)
+        by_book[k[5:]] = summary(r, n)
+        book_rates += r
+        book_out.update(o)
+        book_words += n
+    res["book_of_mormon"] = {
+        "pre_christian_outside_quotation": summary(book_rates, book_words),
+        "by_book": by_book,
+        "book_block_rates": [round(x, 2) for x in book_rates],
+    }
+    for k in ("3_nephi_outside_quotation", "after_visit_outside_quotation", "quotation_chapters"):
+        r, _o, n = blocks_of([bom[k]], ctx, base, size, names_from=every)
+        res["book_of_mormon"][k] = summary(r, n)
+    pieces, missing = control_pieces(cfg)
+    res["not_attempted"] = missing
+    ctrl_rates: dict[str, list[float]] = {}
+    res["controls"] = {}
+    for g, items in pieces.items():
+        res["controls"][g] = {}
+        for n, ps in items.items():
+            r, o, nw = blocks_of(ps, ctx, base, size)
+            ctrl_rates[n] = r
+            res["controls"][g][n] = summary(r, nw) | {
+                "top_outside_words": [
+                    {"word": x, "count": c, "in_nt_or_apocrypha": ctx["conc"].in_nt_ap(x)}
+                    for x, c in o.most_common(15)
+                ]
+            }
+    ser_med, unreadable, ser_pairs, ser_blocks = {}, 0, Counter(), []
+    for row in sermon_rows(cfg):
+        try:
+            text = NT.door.text_of(row)
+        except OSError:
+            unreadable += 1  # not attempted, never a result
+            continue
+        r, _o, _n = blocks_of([text], ctx, base, size, cap=w["max_words_per_work"])
+        ser_blocks += r
+        if r:
+            ser_med[row["work_id"]] = round(statistics.median(r), 2)
+        for name, p in pairings(text, w["pairs"]).items():
+            ser_pairs[f"{name}_pair"] += p["pair"]
+            ser_pairs[f"{name}_collective"] += p["collective"]
+    res["sermons"] = {
+        "works_with_a_block": len(ser_med),
+        "unreadable": unreadable,
+        "block_medians_by_work": NT.quantiles(list(ser_med.values())),
+        "all_blocks": NT.quantiles(ser_blocks),
+        "pairings_pooled": dict(ser_pairs),
+        "by_work_median": ser_med,
+    }
+    # verdict
+    bm = statistics.median(book_rates)
+    bars = {"jasher": "jasher_1840", "thomson_ot": "thomson_1808_ot", "josephus": w["josephus"]}
+    tests = {}
+    for label, name in bars.items():
+        xs = ctrl_rates.get(name, [])
+        p = float(mannwhitneyu(book_rates, xs, alternative="greater").pvalue) if xs else None
+        tests[label] = {
+            "text": name,
+            "median": round(statistics.median(xs), 2) if xs else None,
+            "blocks": len(xs),
+            "mann_whitney_one_sided_p": p,
+        }
+    meds = [t["median"] for t in tests.values()]
+    if None in meds:
+        answer = "not attempted (a bar text could not be read)"
+    elif bm > max(meds) and all(
+        t["mann_whitney_one_sided_p"] < d2["alpha"] for t in tests.values()
+    ):
+        answer = "more"
+    elif bm <= max(meds):
+        answer = "within their range"
+    else:
+        answer = "cannot tell"
+    top_m = max(m for m in meds if m is not None) if any(m is not None for m in meds) else None
+
+    def med(name):
+        xs = ctrl_rates.get(name)
+        return round(statistics.median(xs), 2) if xs else None
+
+    res["verdict"] = {
+        "answer": answer,
+        "book_block_median": round(bm, 2),
+        "book_blocks": len(book_rates),
+        "bars": tests,
+        "decoys": {n: med(n) for n in w["decoys"]},
+        "decoys_among_translations": [
+            n for n in w["decoys"] if med(n) is not None and top_m is not None and med(n) <= top_m
+        ],
+        "imitation_medians_below_book": sum(
+            1 for n in res["controls"]["imitations"] if (med(n) or 0) < bm and med(n) is not None
+        ),
+        "imitations_with_a_block": sum(1 for n in res["controls"]["imitations"] if med(n)),
+        "percentile_among_sermon_work_medians": NT.percentile_of(bm, list(ser_med.values())),
+        "three_nephi_median": res["book_of_mormon"]["3_nephi_outside_quotation"]["median"],
+    }
+    res["top_outside_words"] = [
+        {"word": x, "count": c, "in_nt_or_apocrypha": ctx["conc"].in_nt_ap(x)}
+        for x, c in book_out.most_common(d2["top_words"])
+    ]
+    pre_text = "\n".join(bom[k] for k in pre_books)
+    res["pairings"] = {
+        "book_pre_christian": pairings(pre_text, w["pairs"]),
+        "book_3_nephi": pairings(bom["3_nephi_outside_quotation"], w["pairs"]),
+        "king_james": {
+            s: pairings(
+                "\n".join(
+                    "\n".join(ctx["conc"].text[c])
+                    for c in ctx["conc"].codes
+                    if ctx["conc"].section[c] == s
+                ),
+                w["pairs"],
+            )
+            for s in ("OT", "NT", "Apocrypha")
+        },  # fmt: skip
+        "controls": {
+            g: {n: pairings("\n".join(ps), w["pairs"]) for n, ps in items.items()}
+            for g, items in pieces.items()
+        },
+    }
+    res["hebrew"] = part2(ctx, [x["word"] for x in res["top_outside_words"]])
+    return res
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["check", "run"])
+    ap.add_argument("cmd", choices=["check", "run", "check2", "run2"])
     a = ap.parse_args(argv)
     cfg = config.load()
     if a.cmd == "check":
@@ -665,6 +925,18 @@ def main(argv: list[str] | None = None) -> int:
         res["stamp"] = config.stamp()
         out(OUT / "check.json").write_text(json.dumps(res, indent=1) + "\n")
         print(json.dumps({k: v for k, v in res.items() if k != "books"}, indent=1))
+        return 0
+    if a.cmd == "check2":
+        res = check2(prepare(cfg), cfg["lab"]["hebrew_vocabulary"]["design2"])
+        res["stamp"] = config.stamp()
+        out(OUT / "check2.json").write_text(json.dumps(res, indent=1) + "\n")
+        print(json.dumps({k: v for k, v in res.items() if k != "block_rates"}, indent=1))
+        return 0
+    if a.cmd == "run2":
+        res = run2(cfg)
+        res["stamp"] = config.stamp()
+        out(OUT / "result2.json").write_text(json.dumps(res, indent=1) + "\n")
+        print(json.dumps(res.get("verdict", res.get("stopped")), indent=1))
         return 0
     res = run(cfg)
     res["stamp"] = config.stamp()

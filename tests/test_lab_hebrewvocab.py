@@ -74,3 +74,20 @@ def test_usfm_word_pattern_reads_nested_words():
     )
     assert H.USFM_WORD.findall(line) == [("progenitors", "H2029"), ("LORD", "H3068")]
     assert H.strong_num("H0430") == 430 and H.strong_num("G2316") is None
+
+
+def test_block_rates_drop_the_remainder():
+    assert H.block_rates([1, 0, 0, 0, 1, 1, 0], 2) == [5000.0, 0.0, 10000.0]
+    assert H.block_rates([1], 2) == []
+    assert H.share_below([1, 2, 3, 4], 3) == 0.5
+
+
+def test_check2_blocks_hold_out_the_whole_book():
+    c = H.Concordance(ROWS, 3)
+    ctx = {"conc": c, "kjv_names": set(), "lexicon": None}
+    d2 = {"block_words": 3, "auc_bar": 0.95, "below_median_share": 0.9,
+          "ot_groups": {"narrative": ["GEN", "EXO"]}}  # fmt: skip
+    res = H.check2(ctx, d2)
+    assert res["blocks"] == {"OT": 3, "NT": 2, "Apocrypha": 1}
+    gen = [b for b in res["block_rates"] if b["book"] == "GEN"]
+    assert gen[1]["per_10k"] > 0  # "his mother" is Genesis's own once Genesis is held out

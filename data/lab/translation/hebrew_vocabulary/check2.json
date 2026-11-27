@@ -1,0 +1,1115 @@
+{
+ "rule": "OT blocks vs NT and vs Apocrypha blocks: AUC >= bar each, and the share of OT blocks below the NT and the Apocrypha block medians >= bar each",
+ "bars": {
+  "auc": 0.95,
+  "below_median_share": 0.9
+ },
+ "blocks": {
+  "OT": 98,
+  "NT": 24,
+  "Apocrypha": 22
+ },
+ "medians": {
+  "OT": 25.0,
+  "NT": 118.0,
+  "Apocrypha": 102.0
+ },
+ "auc": {
+  "NT": 0.9724,
+  "Apocrypha": 0.9381
+ },
+ "ot_below_median": {
+  "NT": 1.0,
+  "Apocrypha": 1.0
+ },
+ "passed": false,
+ "ot_groups_reported_not_the_bar": {
+  "narrative": {
+   "blocks": 59,
+   "median": 22.0,
+   "max": 84.0,
+   "below_nt_median": 1.0,
+   "below_apocrypha_median": 1.0,
+   "auc_nt_over_these": 0.9834,
+   "auc_apocrypha_over_these": 0.9626
+  },
+  "poetry_wisdom": {
+   "blocks": 14,
+   "median": 44.0,
+   "max": 68.0,
+   "below_nt_median": 1.0,
+   "below_apocrypha_median": 1.0,
+   "auc_nt_over_these": 0.9464,
+   "auc_apocrypha_over_these": 0.8571
+  },
+  "prophets": {
+   "blocks": 25,
+   "median": 26.0,
+   "max": 96.0,
+   "below_nt_median": 1.0,
+   "below_apocrypha_median": 1.0,
+   "auc_nt_over_these": 0.9608,
+   "auc_apocrypha_over_these": 0.9255
+  }
+ },
+ "ot_blocks_at_or_above_lower_nt_apocrypha_median": [],
+ "dropped_under_block": [
+  {
+   "book": "RUT",
+   "section": "OT",
+   "words": 2430
+  },
+  {
+   "book": "SOL",
+   "section": "OT",
+   "words": 2568
+  },
+  {
+   "book": "LAM",
+   "section": "OT",
+   "words": 3344
+  },
+  {
+   "book": "HOS",
+   "section": "OT",
+   "words": 4869
+  },
+  {
+   "book": "JOE",
+   "section": "OT",
+   "words": 1978
+  },
+  {
+   "book": "AMO",
+   "section": "OT",
+   "words": 3980
+  },
+  {
+   "book": "OBA",
+   "section": "OT",
+   "words": 638
+  },
+  {
+   "book": "JON",
+   "section": "OT",
+   "words": 1268
+  },
+  {
+   "book": "MIC",
+   "section": "OT",
+   "words": 3013
+  },
+  {
+   "book": "NAH",
+   "section": "OT",
+   "words": 1256
+  },
+  {
+   "book": "HAB",
+   "section": "OT",
+   "words": 1453
+  },
+  {
+   "book": "ZEP",
+   "section": "OT",
+   "words": 1548
+  },
+  {
+   "book": "HAG",
+   "section": "OT",
+   "words": 1075
+  },
+  {
+   "book": "MAL",
+   "section": "OT",
+   "words": 1727
+  },
+  {
+   "book": "ESG",
+   "section": "Apocrypha",
+   "words": 2608
+  },
+  {
+   "book": "BAR",
+   "section": "Apocrypha",
+   "words": 4936
+  },
+  {
+   "book": "PRA",
+   "section": "Apocrypha",
+   "words": 1400
+  },
+  {
+   "book": "SUS",
+   "section": "Apocrypha",
+   "words": 1405
+  },
+  {
+   "book": "BEL",
+   "section": "Apocrypha",
+   "words": 1013
+  },
+  {
+   "book": "PRM",
+   "section": "Apocrypha",
+   "words": 388
+  },
+  {
+   "book": "GAL",
+   "section": "NT",
+   "words": 2901
+  },
+  {
+   "book": "EPH",
+   "section": "NT",
+   "words": 2929
+  },
+  {
+   "book": "PHI",
+   "section": "NT",
+   "words": 2042
+  },
+  {
+   "book": "COL",
+   "section": "NT",
+   "words": 1906
+  },
+  {
+   "book": "1TH",
+   "section": "NT",
+   "words": 1781
+  },
+  {
+   "book": "2TH",
+   "section": "NT",
+   "words": 989
+  },
+  {
+   "book": "1TI",
+   "section": "NT",
+   "words": 2182
+  },
+  {
+   "book": "2TI",
+   "section": "NT",
+   "words": 1571
+  },
+  {
+   "book": "TIT",
+   "section": "NT",
+   "words": 875
+  },
+  {
+   "book": "PHM",
+   "section": "NT",
+   "words": 389
+  },
+  {
+   "book": "JAM",
+   "section": "NT",
+   "words": 2291
+  },
+  {
+   "book": "1PE",
+   "section": "NT",
+   "words": 2427
+  },
+  {
+   "book": "2PE",
+   "section": "NT",
+   "words": 1522
+  },
+  {
+   "book": "1JO",
+   "section": "NT",
+   "words": 2482
+  },
+  {
+   "book": "2JO",
+   "section": "NT",
+   "words": 285
+  },
+  {
+   "book": "3JO",
+   "section": "NT",
+   "words": 280
+  },
+  {
+   "book": "JUD",
+   "section": "NT",
+   "words": 585
+  }
+ ],
+ "block_rates": [
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 18.0
+  },
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 4.0
+  },
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 24.0
+  },
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 62.0
+  },
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 26.0
+  },
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 42.0
+  },
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 6,
+   "per_10k": 22.0
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 38.0
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 12.0
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 34.0
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 66.0
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 50.0
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 78.0
+  },
+  {
+   "book": "LEV",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 10.0
+  },
+  {
+   "book": "LEV",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 50.0
+  },
+  {
+   "book": "LEV",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 84.0
+  },
+  {
+   "book": "LEV",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 26.0
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 4.0
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 10.0
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 20.0
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 14.0
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 12.0
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 18.0
+  },
+  {
+   "book": "DEU",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 18.0
+  },
+  {
+   "book": "DEU",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 8.0
+  },
+  {
+   "book": "DEU",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 26.0
+  },
+  {
+   "book": "DEU",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 22.0
+  },
+  {
+   "book": "DEU",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 24.0
+  },
+  {
+   "book": "JOS",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 4.0
+  },
+  {
+   "book": "JOS",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 8.0
+  },
+  {
+   "book": "JOS",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 6.0
+  },
+  {
+   "book": "JDG",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 40.0
+  },
+  {
+   "book": "JDG",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 14.0
+  },
+  {
+   "book": "JDG",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 18.0
+  },
+  {
+   "book": "1SA",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 34.0
+  },
+  {
+   "book": "1SA",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 26.0
+  },
+  {
+   "book": "1SA",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 24.0
+  },
+  {
+   "book": "1SA",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 24.0
+  },
+  {
+   "book": "2SA",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 48.0
+  },
+  {
+   "book": "2SA",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 20.0
+  },
+  {
+   "book": "2SA",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 32.0
+  },
+  {
+   "book": "1KI",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 18.0
+  },
+  {
+   "book": "1KI",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 46.0
+  },
+  {
+   "book": "1KI",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 26.0
+  },
+  {
+   "book": "1KI",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 16.0
+  },
+  {
+   "book": "2KI",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 26.0
+  },
+  {
+   "book": "2KI",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 24.0
+  },
+  {
+   "book": "2KI",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 8.0
+  },
+  {
+   "book": "2KI",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 22.0
+  },
+  {
+   "book": "1CH",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 6.0
+  },
+  {
+   "book": "1CH",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 8.0
+  },
+  {
+   "book": "1CH",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 10.0
+  },
+  {
+   "book": "2CH",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 16.0
+  },
+  {
+   "book": "2CH",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 24.0
+  },
+  {
+   "book": "2CH",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 14.0
+  },
+  {
+   "book": "2CH",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 8.0
+  },
+  {
+   "book": "EZR",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 38.0
+  },
+  {
+   "book": "NEH",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 14.0
+  },
+  {
+   "book": "EST",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 30.0
+  },
+  {
+   "book": "JOB",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 48.0
+  },
+  {
+   "book": "JOB",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 40.0
+  },
+  {
+   "book": "JOB",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 38.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 60.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 38.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 58.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 60.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 38.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 14.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 6,
+   "per_10k": 26.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 7,
+   "per_10k": 58.0
+  },
+  {
+   "book": "PRO",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 66.0
+  },
+  {
+   "book": "PRO",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 68.0
+  },
+  {
+   "book": "ECC",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 38.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 78.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 26.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 58.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 42.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 24.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 24.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 6,
+   "per_10k": 44.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 36.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 26.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 18.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 14.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 32.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 10.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 6,
+   "per_10k": 18.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 7,
+   "per_10k": 14.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 34.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 38.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 22.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 96.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 6.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 10.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 6,
+   "per_10k": 48.0
+  },
+  {
+   "book": "DAN",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 88.0
+  },
+  {
+   "book": "DAN",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 38.0
+  },
+  {
+   "book": "ZEC",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 14.0
+  },
+  {
+   "book": "TOB",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 104.0
+  },
+  {
+   "book": "JDT",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 46.0
+  },
+  {
+   "book": "JDT",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 84.0
+  },
+  {
+   "book": "WIS",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 192.0
+  },
+  {
+   "book": "WIS",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 226.0
+  },
+  {
+   "book": "SIR",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 120.0
+  },
+  {
+   "book": "SIR",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 106.0
+  },
+  {
+   "book": "SIR",
+   "section": "Apocrypha",
+   "block": 2,
+   "per_10k": 148.0
+  },
+  {
+   "book": "SIR",
+   "section": "Apocrypha",
+   "block": 3,
+   "per_10k": 126.0
+  },
+  {
+   "book": "SIR",
+   "section": "Apocrypha",
+   "block": 4,
+   "per_10k": 100.0
+  },
+  {
+   "book": "1MA",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 62.0
+  },
+  {
+   "book": "1MA",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 36.0
+  },
+  {
+   "book": "1MA",
+   "section": "Apocrypha",
+   "block": 2,
+   "per_10k": 116.0
+  },
+  {
+   "book": "1MA",
+   "section": "Apocrypha",
+   "block": 3,
+   "per_10k": 92.0
+  },
+  {
+   "book": "2MA",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 260.0
+  },
+  {
+   "book": "2MA",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 216.0
+  },
+  {
+   "book": "2MA",
+   "section": "Apocrypha",
+   "block": 2,
+   "per_10k": 210.0
+  },
+  {
+   "book": "1ES",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 60.0
+  },
+  {
+   "book": "1ES",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 46.0
+  },
+  {
+   "book": "4ES",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 50.0
+  },
+  {
+   "book": "4ES",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 86.0
+  },
+  {
+   "book": "4ES",
+   "section": "Apocrypha",
+   "block": 2,
+   "per_10k": 42.0
+  },
+  {
+   "book": "MAT",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 112.0
+  },
+  {
+   "book": "MAT",
+   "section": "NT",
+   "block": 1,
+   "per_10k": 80.0
+  },
+  {
+   "book": "MAT",
+   "section": "NT",
+   "block": 2,
+   "per_10k": 118.0
+  },
+  {
+   "book": "MAT",
+   "section": "NT",
+   "block": 3,
+   "per_10k": 112.0
+  },
+  {
+   "book": "MAR",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 146.0
+  },
+  {
+   "book": "MAR",
+   "section": "NT",
+   "block": 1,
+   "per_10k": 88.0
+  },
+  {
+   "book": "LUK",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 114.0
+  },
+  {
+   "book": "LUK",
+   "section": "NT",
+   "block": 1,
+   "per_10k": 132.0
+  },
+  {
+   "book": "LUK",
+   "section": "NT",
+   "block": 2,
+   "per_10k": 98.0
+  },
+  {
+   "book": "LUK",
+   "section": "NT",
+   "block": 3,
+   "per_10k": 118.0
+  },
+  {
+   "book": "LUK",
+   "section": "NT",
+   "block": 4,
+   "per_10k": 140.0
+  },
+  {
+   "book": "JOH",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 80.0
+  },
+  {
+   "book": "JOH",
+   "section": "NT",
+   "block": 1,
+   "per_10k": 28.0
+  },
+  {
+   "book": "JOH",
+   "section": "NT",
+   "block": 2,
+   "per_10k": 50.0
+  },
+  {
+   "book": "ACT",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 156.0
+  },
+  {
+   "book": "ACT",
+   "section": "NT",
+   "block": 1,
+   "per_10k": 182.0
+  },
+  {
+   "book": "ACT",
+   "section": "NT",
+   "block": 2,
+   "per_10k": 194.0
+  },
+  {
+   "book": "ACT",
+   "section": "NT",
+   "block": 3,
+   "per_10k": 226.0
+  },
+  {
+   "book": "ROM",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 218.0
+  },
+  {
+   "book": "1CO",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 222.0
+  },
+  {
+   "book": "2CO",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 252.0
+  },
+  {
+   "book": "HEB",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 194.0
+  },
+  {
+   "book": "REV",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 114.0
+  },
+  {
+   "book": "REV",
+   "section": "NT",
+   "block": 1,
+   "per_10k": 84.0
+  }
+ ],
+ "stamp": {
+  "config_sha256": "ca6470e3d563757e109c8187d828b173d1fc271119dcedc6fd95cd7b855f3a96",
+  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+  "registered": true,
+  "git_commit": "7924c79d1492e2dbedbe12239eb20c0c91469463"
+ }
+}
