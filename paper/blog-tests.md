@@ -3185,7 +3185,38 @@ But the reader's own word goes the other way. Count the pairs against the collec
 | Sermons, pooled | 331 | 4,726 |
 
 On this one habit the book sits with the Greek-sourced texts and the sermons, not with the Hebrew
-ones. The words it uses most that the Old Testament never does are church, forever, judgement,
+ones.
+
+**Then the obvious follow-up: what did other translators from Hebrew actually do?** Dave asked
+whether a translator facing Hebrew's "father and mother", or its "those who bore him", ever writes
+"parents". So I took every place in the Hebrew Bible where a person's two parents are named, 72 of
+them: 49 verses saying "father and mother", 9 lines setting them in parallel, and 14 uses of the verb
+"to bear" for a parent. Then I found each place in twelve English translations made from the Hebrew
+between 1778 and 1876, and sorted what each translator wrote. The check: the sorting rule had to
+match my own reading of all 72 King James places, and it did.
+
+| Translator, from Hebrew | Places found | Wrote "parents" |
+| --- | --- | --- |
+| King James (1611) | 72 of 72 | 0 |
+| Boothroyd (1824) | 65 of 72 | 0 |
+| Leeser (1853) | 69 of 72 | 0 |
+| Julia Smith (1876) | 55 of 72 | 0 |
+| Geddes (1792-1807), Lowth, Blayney, Newcome, Sharpe (parts of the Bible) | 52 of 62 | 0 |
+| Young (1862) | 72 of 72 | 1 (Zechariah 13:3) |
+| Thomson (1808, from the Greek) | 60 of 72 | 1 (Esther 2:7, where the Greek has its own word for parents) |
+
+At Zechariah 13:3, where the Hebrew says "his father and his mother, those who bore him", everyone but
+Young writes "that begat him" or close to it. Young's literal translation is the one place a
+translator of the Hebrew Bible reaches for "parents".
+
+Translators of later Hebrew are different. By about the third century the rabbis had a noun for
+parents, *horim*, and their English translators use the word freely: Townley's Maimonides (1827),
+21 "parent" to 1 "father and mother"; Wotton's Mishnah (1718), 10 to 5; Levi's prayer book (1795),
+16 each. Jasher, a medieval book in biblical style, goes the Bible's way, 2 to 16.
+
+So the translators of the Bible's Hebrew kept "father and mother", 1 "parents" in about 385 places
+found. The Book of Mormon, presenting a record of Hebrew-speaking people of Jeremiah's time,
+reverses it, 20 to 2, the way translators of much later Hebrew, and English writers, do. The words it uses most that the Old Testament never does are church, forever, judgement,
 resurrection, expedient, baptized: several are spelling ("forever", "judgement", "wo"), and the
 rest are New Testament and church words. For "church", "resurrection", "baptized", "gospel" and
 "charity" no Hebrew word carries that gloss at all.
@@ -3201,7 +3232,7 @@ tell a translator from Hebrew from an author steeped in the Old Testament's Engl
 Bible paraphrase also stays in the book's count, which pulls it toward the King James. Jasher is
 itself an 1840 translation done in King James style.
 
-**What's left.** A list of every pair-versus-collective habit, not just two. The word table read by
+**What's left.** A list of every pair-versus-collective habit, not just two. Bellamy's 1818 translation, on Google Books only. The word table read by
 hand (several entries are spelling or dictionary noise). The same count on the Book of Mormon's
 King James paraphrases set aside by meaning, not only by long quotation.
 
