@@ -702,6 +702,10 @@ def _sources() -> list[dict]:
          PD + "; Project Gutenberg #17 (modern chapters and verses: a lookup index only)"),
     ):  # fmt: skip
         add(name, "translation", "BOM-102", kind, url, terms)
+    # BOM-132: the King James text of 1769 with Strong's numbers on each word (USFM, strong=).
+    add("eng-kjv2006_usfm.zip", "translation", "BOM-132", "file",
+        "https://ebible.org/Scriptures/eng-kjv2006_usfm.zip",
+        PD + " (eBible.org, King James 1769 text, protocanon, Strong's numbers)")  # fmt: skip
     for name, url in (
         ("fair_if_and_conditionals.html", "https://www.fairlatterdaysaints.org/answers/"
          "Book_of_Mormon/Evidences/Hebraisms/If-and_conditionals"),

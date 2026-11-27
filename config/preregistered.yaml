@@ -1017,6 +1017,35 @@ lab:                              # the research lab (exploratory tooling; reads
     bible_style_min_words: 3000    # shorter pieces are listed but not counted in the medians
     josephus_split: XII            # Antiquities before this book = Old Testament times
     top_books: 12                  # New Testament books listed as top suppliers
+  hebrew_vocabulary:               # BOM-132 (lab; exploratory): English words the King James Old Testament never uses; card data/private/lab/owner/2026-11-27-hebrew-vocabulary/card.md (amendment 1)
+    lexicon: data/lexicon/period_words.tsv      # amendment 1.2: only these words count as outside the Old Testament
+    name_lexicon: data/lexicon/english_words.txt  # amendment 1.3: a word capitalised wherever it occurs and not here is a name
+    min_stem: 3                    # amendment 1.1: an inflection's base must have at least this many letters
+    block_words: 1000              # card: 95% interval from blocks of this many words
+    boot: 2000
+    boot_seed: 20261128
+    sermon_year_min: 1800          # card: 300 sermons 1800-1829
+    sermon_year_max: 1829
+    sermon_sample: 300
+    sermon_seed: 20261129
+    sermon_min_words: 10000
+    max_words_per_work: 150000
+    bible_style_min_words: 3000    # imitations under this are listed, not counted in the median
+    josephus: josephus_antiquities_old_testament_times   # amendment 1.4: the bar's Josephus
+    texts:
+      jasher_1840: [data/corpus/lab/sources/translation/bookofjasherrefe00sefe/text.txt]
+      thomson_1808_ot: [data/corpus/lab/sources/translation/holybiblecontain01thom/text.txt, data/corpus/lab/sources/translation/holybiblecontain02thom/text.txt, data/corpus/lab/sources/translation/holybiblecontain03thom/text.txt]
+      thomson_1808_nt: [data/corpus/lab/sources/translation/holybiblecontain04thom/text.txt]
+      view_of_the_hebrews_1825: [data/candidates/text/es-1825-view-of-the-hebrews.txt]
+    decoys: [late_war_1816, view_of_the_hebrews_1825]
+    pairs:                         # amendment 1.6: pair and collective, counted on lower-case text
+      parents: ['\b(?:father|fathers)\s+and\s+(?:\w+\s+)?(?:mother|mothers)\b|\b(?:mother|mothers)\s+and\s+(?:\w+\s+)?(?:father|fathers)\b', '\bparents?\b']
+      children: ['\bsons\s+and\s+(?:\w+\s+)?daughters\b|\bdaughters\s+and\s+(?:\w+\s+)?sons\b', '\bchildren\b']
+    top_words: 30                  # part 2: the book's most frequent words outside the Old Testament, read word by word
+    lemmas_per_word: 8             # part 2: Hebrew lemmas listed per word (most frequent first)
+    renderings_per_lemma: 8        # part 2: King James renderings listed per lemma
+    usfm: data/corpus/lab/sources/translation/eng-kjv2006_usfm.zip
+    check_verse: [GEN, 49, 26, progenitors]   # card: Genesis 49:26 "progenitors" for "parents"
   archaic_full:                    # BOM-118 full run (lab; exploratory): cited-verse frames, whole-library scan, simulated AI judging (sonnet, whole paragraph; chosen post hoc in the pilot, fixed here)
     year_min: 1740
     year_max: 1830                 # 1830 counted with the 1820s

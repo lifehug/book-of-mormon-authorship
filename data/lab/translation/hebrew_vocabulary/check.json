@@ -1,0 +1,688 @@
+{
+ "rule": "every Old Testament book (held out) below every New Testament and Apocrypha book",
+ "ot_held_out_max": {
+  "book": "PRO",
+  "per_10k": 72.69
+ },
+ "nt_apocrypha_min": {
+  "book": "2JO",
+  "per_10k": 35.09
+ },
+ "passed": false,
+ "overlapping_books": {
+  "ot_above_lowest_other": [
+   "EXO",
+   "LEV",
+   "JOB",
+   "PSA",
+   "PRO",
+   "ECC",
+   "SOL",
+   "ISA",
+   "LAM",
+   "DAN",
+   "AMO",
+   "NAH",
+   "HAB",
+   "ZEP",
+   "MAL"
+  ],
+  "others_below_highest_ot": [
+   "JDT",
+   "BAR",
+   "PRA",
+   "SUS",
+   "1ES",
+   "4ES",
+   "JOH",
+   "1JO",
+   "2JO"
+  ]
+ },
+ "unadjusted_counts_would_pass": false,
+ "medians": {
+  "OT": 28.11,
+  "NT": 252.67,
+  "Apocrypha": 79.145
+ },
+ "descriptive_auc_not_the_bar": {
+  "NT": 0.9706,
+  "Apocrypha": 0.9505
+ },
+ "books": [
+  {
+   "book": "GEN",
+   "section": "OT",
+   "words": 35589,
+   "per_10k": 28.94,
+   "word_forms_unfolded_no_filter_per_10k": 57.04
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "words": 31331,
+   "per_10k": 48.2,
+   "word_forms_unfolded_no_filter_per_10k": 100.86
+  },
+  {
+   "book": "LEV",
+   "section": "OT",
+   "words": 24210,
+   "per_10k": 41.72,
+   "word_forms_unfolded_no_filter_per_10k": 63.2
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "words": 30886,
+   "per_10k": 13.27,
+   "word_forms_unfolded_no_filter_per_10k": 36.26
+  },
+  {
+   "book": "DEU",
+   "section": "OT",
+   "words": 27599,
+   "per_10k": 20.29,
+   "word_forms_unfolded_no_filter_per_10k": 44.93
+  },
+  {
+   "book": "JOS",
+   "section": "OT",
+   "words": 17147,
+   "per_10k": 5.83,
+   "word_forms_unfolded_no_filter_per_10k": 37.91
+  },
+  {
+   "book": "JDG",
+   "section": "OT",
+   "words": 17567,
+   "per_10k": 21.06,
+   "word_forms_unfolded_no_filter_per_10k": 51.23
+  },
+  {
+   "book": "RUT",
+   "section": "OT",
+   "words": 2430,
+   "per_10k": 20.58,
+   "word_forms_unfolded_no_filter_per_10k": 53.5
+  },
+  {
+   "book": "1SA",
+   "section": "OT",
+   "words": 23133,
+   "per_10k": 25.07,
+   "word_forms_unfolded_no_filter_per_10k": 49.28
+  },
+  {
+   "book": "2SA",
+   "section": "OT",
+   "words": 18855,
+   "per_10k": 28.11,
+   "word_forms_unfolded_no_filter_per_10k": 44.55
+  },
+  {
+   "book": "1KI",
+   "section": "OT",
+   "words": 22869,
+   "per_10k": 24.05,
+   "word_forms_unfolded_no_filter_per_10k": 41.54
+  },
+  {
+   "book": "2KI",
+   "section": "OT",
+   "words": 21885,
+   "per_10k": 19.65,
+   "word_forms_unfolded_no_filter_per_10k": 33.36
+  },
+  {
+   "book": "1CH",
+   "section": "OT",
+   "words": 17294,
+   "per_10k": 10.99,
+   "word_forms_unfolded_no_filter_per_10k": 19.66
+  },
+  {
+   "book": "2CH",
+   "section": "OT",
+   "words": 24330,
+   "per_10k": 14.39,
+   "word_forms_unfolded_no_filter_per_10k": 30.0
+  },
+  {
+   "book": "EZR",
+   "section": "OT",
+   "words": 6755,
+   "per_10k": 32.57,
+   "word_forms_unfolded_no_filter_per_10k": 59.22
+  },
+  {
+   "book": "NEH",
+   "section": "OT",
+   "words": 9472,
+   "per_10k": 9.5,
+   "word_forms_unfolded_no_filter_per_10k": 45.4
+  },
+  {
+   "book": "EST",
+   "section": "OT",
+   "words": 5318,
+   "per_10k": 30.09,
+   "word_forms_unfolded_no_filter_per_10k": 63.93
+  },
+  {
+   "book": "JOB",
+   "section": "OT",
+   "words": 17659,
+   "per_10k": 44.74,
+   "word_forms_unfolded_no_filter_per_10k": 112.12
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "words": 42382,
+   "per_10k": 43.18,
+   "word_forms_unfolded_no_filter_per_10k": 89.42
+  },
+  {
+   "book": "PRO",
+   "section": "OT",
+   "words": 14996,
+   "per_10k": 72.69,
+   "word_forms_unfolded_no_filter_per_10k": 137.37
+  },
+  {
+   "book": "ECC",
+   "section": "OT",
+   "words": 5496,
+   "per_10k": 43.67,
+   "word_forms_unfolded_no_filter_per_10k": 105.53
+  },
+  {
+   "book": "SOL",
+   "section": "OT",
+   "words": 2568,
+   "per_10k": 58.41,
+   "word_forms_unfolded_no_filter_per_10k": 147.98
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "words": 35776,
+   "per_10k": 42.21,
+   "word_forms_unfolded_no_filter_per_10k": 95.59
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "words": 40323,
+   "per_10k": 21.33,
+   "word_forms_unfolded_no_filter_per_10k": 44.64
+  },
+  {
+   "book": "LAM",
+   "section": "OT",
+   "words": 3344,
+   "per_10k": 44.86,
+   "word_forms_unfolded_no_filter_per_10k": 104.67
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "words": 38059,
+   "per_10k": 34.42,
+   "word_forms_unfolded_no_filter_per_10k": 67.0
+  },
+  {
+   "book": "DAN",
+   "section": "OT",
+   "words": 11213,
+   "per_10k": 60.64,
+   "word_forms_unfolded_no_filter_per_10k": 100.78
+  },
+  {
+   "book": "HOS",
+   "section": "OT",
+   "words": 4869,
+   "per_10k": 24.65,
+   "word_forms_unfolded_no_filter_per_10k": 51.35
+  },
+  {
+   "book": "JOE",
+   "section": "OT",
+   "words": 1978,
+   "per_10k": 25.28,
+   "word_forms_unfolded_no_filter_per_10k": 55.61
+  },
+  {
+   "book": "AMO",
+   "section": "OT",
+   "words": 3980,
+   "per_10k": 40.2,
+   "word_forms_unfolded_no_filter_per_10k": 70.35
+  },
+  {
+   "book": "OBA",
+   "section": "OT",
+   "words": 638,
+   "per_10k": 15.67,
+   "word_forms_unfolded_no_filter_per_10k": 31.35
+  },
+  {
+   "book": "JON",
+   "section": "OT",
+   "words": 1268,
+   "per_10k": 23.66,
+   "word_forms_unfolded_no_filter_per_10k": 110.41
+  },
+  {
+   "book": "MIC",
+   "section": "OT",
+   "words": 3013,
+   "per_10k": 26.55,
+   "word_forms_unfolded_no_filter_per_10k": 46.47
+  },
+  {
+   "book": "NAH",
+   "section": "OT",
+   "words": 1256,
+   "per_10k": 47.77,
+   "word_forms_unfolded_no_filter_per_10k": 159.24
+  },
+  {
+   "book": "HAB",
+   "section": "OT",
+   "words": 1453,
+   "per_10k": 48.18,
+   "word_forms_unfolded_no_filter_per_10k": 117.0
+  },
+  {
+   "book": "ZEP",
+   "section": "OT",
+   "words": 1548,
+   "per_10k": 38.76,
+   "word_forms_unfolded_no_filter_per_10k": 71.06
+  },
+  {
+   "book": "HAG",
+   "section": "OT",
+   "words": 1075,
+   "per_10k": 27.91,
+   "word_forms_unfolded_no_filter_per_10k": 27.91
+  },
+  {
+   "book": "ZEC",
+   "section": "OT",
+   "words": 6156,
+   "per_10k": 13.0,
+   "word_forms_unfolded_no_filter_per_10k": 27.62
+  },
+  {
+   "book": "MAL",
+   "section": "OT",
+   "words": 1727,
+   "per_10k": 63.69,
+   "word_forms_unfolded_no_filter_per_10k": 81.07
+  },
+  {
+   "book": "TOB",
+   "section": "Apocrypha",
+   "words": 6600,
+   "per_10k": 98.48,
+   "word_forms_unfolded_no_filter_per_10k": 130.3
+  },
+  {
+   "book": "JDT",
+   "section": "Apocrypha",
+   "words": 10589,
+   "per_10k": 68.94,
+   "word_forms_unfolded_no_filter_per_10k": 104.83
+  },
+  {
+   "book": "ESG",
+   "section": "Apocrypha",
+   "words": 2608,
+   "per_10k": 145.71,
+   "word_forms_unfolded_no_filter_per_10k": 218.56
+  },
+  {
+   "book": "WIS",
+   "section": "Apocrypha",
+   "words": 10571,
+   "per_10k": 215.68,
+   "word_forms_unfolded_no_filter_per_10k": 344.34
+  },
+  {
+   "book": "SIR",
+   "section": "Apocrypha",
+   "words": 28063,
+   "per_10k": 112.25,
+   "word_forms_unfolded_no_filter_per_10k": 192.78
+  },
+  {
+   "book": "BAR",
+   "section": "Apocrypha",
+   "words": 4936,
+   "per_10k": 62.8,
+   "word_forms_unfolded_no_filter_per_10k": 87.12
+  },
+  {
+   "book": "PRA",
+   "section": "Apocrypha",
+   "words": 1400,
+   "per_10k": 35.71,
+   "word_forms_unfolded_no_filter_per_10k": 64.29
+  },
+  {
+   "book": "SUS",
+   "section": "Apocrypha",
+   "words": 1405,
+   "per_10k": 64.06,
+   "word_forms_unfolded_no_filter_per_10k": 99.64
+  },
+  {
+   "book": "BEL",
+   "section": "Apocrypha",
+   "words": 1013,
+   "per_10k": 78.97,
+   "word_forms_unfolded_no_filter_per_10k": 108.59
+  },
+  {
+   "book": "1MA",
+   "section": "Apocrypha",
+   "words": 21937,
+   "per_10k": 79.32,
+   "word_forms_unfolded_no_filter_per_10k": 140.86
+  },
+  {
+   "book": "2MA",
+   "section": "Apocrypha",
+   "words": 15704,
+   "per_10k": 227.97,
+   "word_forms_unfolded_no_filter_per_10k": 326.67
+  },
+  {
+   "book": "1ES",
+   "section": "Apocrypha",
+   "words": 10837,
+   "per_10k": 53.52,
+   "word_forms_unfolded_no_filter_per_10k": 106.12
+  },
+  {
+   "book": "PRM",
+   "section": "Apocrypha",
+   "words": 388,
+   "per_10k": 128.87,
+   "word_forms_unfolded_no_filter_per_10k": 231.96
+  },
+  {
+   "book": "4ES",
+   "section": "Apocrypha",
+   "words": 19851,
+   "per_10k": 57.43,
+   "word_forms_unfolded_no_filter_per_10k": 95.71
+  },
+  {
+   "book": "MAT",
+   "section": "NT",
+   "words": 22841,
+   "per_10k": 106.39,
+   "word_forms_unfolded_no_filter_per_10k": 165.93
+  },
+  {
+   "book": "MAR",
+   "section": "NT",
+   "words": 14707,
+   "per_10k": 130.55,
+   "word_forms_unfolded_no_filter_per_10k": 197.19
+  },
+  {
+   "book": "LUK",
+   "section": "NT",
+   "words": 25145,
+   "per_10k": 120.5,
+   "word_forms_unfolded_no_filter_per_10k": 193.28
+  },
+  {
+   "book": "JOH",
+   "section": "NT",
+   "words": 17985,
+   "per_10k": 67.83,
+   "word_forms_unfolded_no_filter_per_10k": 115.1
+  },
+  {
+   "book": "ACT",
+   "section": "NT",
+   "words": 22844,
+   "per_10k": 196.11,
+   "word_forms_unfolded_no_filter_per_10k": 283.23
+  },
+  {
+   "book": "ROM",
+   "section": "NT",
+   "words": 9053,
+   "per_10k": 218.71,
+   "word_forms_unfolded_no_filter_per_10k": 299.35
+  },
+  {
+   "book": "1CO",
+   "section": "NT",
+   "words": 9112,
+   "per_10k": 276.56,
+   "word_forms_unfolded_no_filter_per_10k": 346.8
+  },
+  {
+   "book": "2CO",
+   "section": "NT",
+   "words": 5788,
+   "per_10k": 271.25,
+   "word_forms_unfolded_no_filter_per_10k": 416.38
+  },
+  {
+   "book": "GAL",
+   "section": "NT",
+   "words": 2901,
+   "per_10k": 272.32,
+   "word_forms_unfolded_no_filter_per_10k": 348.16
+  },
+  {
+   "book": "EPH",
+   "section": "NT",
+   "words": 2929,
+   "per_10k": 276.54,
+   "word_forms_unfolded_no_filter_per_10k": 361.9
+  },
+  {
+   "book": "PHI",
+   "section": "NT",
+   "words": 2042,
+   "per_10k": 288.93,
+   "word_forms_unfolded_no_filter_per_10k": 352.6
+  },
+  {
+   "book": "COL",
+   "section": "NT",
+   "words": 1906,
+   "per_10k": 330.54,
+   "word_forms_unfolded_no_filter_per_10k": 451.21
+  },
+  {
+   "book": "1TH",
+   "section": "NT",
+   "words": 1781,
+   "per_10k": 252.67,
+   "word_forms_unfolded_no_filter_per_10k": 291.97
+  },
+  {
+   "book": "2TH",
+   "section": "NT",
+   "words": 989,
+   "per_10k": 273.0,
+   "word_forms_unfolded_no_filter_per_10k": 323.56
+  },
+  {
+   "book": "1TI",
+   "section": "NT",
+   "words": 2182,
+   "per_10k": 490.38,
+   "word_forms_unfolded_no_filter_per_10k": 632.45
+  },
+  {
+   "book": "2TI",
+   "section": "NT",
+   "words": 1571,
+   "per_10k": 267.35,
+   "word_forms_unfolded_no_filter_per_10k": 451.94
+  },
+  {
+   "book": "TIT",
+   "section": "NT",
+   "words": 875,
+   "per_10k": 502.86,
+   "word_forms_unfolded_no_filter_per_10k": 685.71
+  },
+  {
+   "book": "PHM",
+   "section": "NT",
+   "words": 389,
+   "per_10k": 231.36,
+   "word_forms_unfolded_no_filter_per_10k": 385.6
+  },
+  {
+   "book": "HEB",
+   "section": "NT",
+   "words": 6754,
+   "per_10k": 196.92,
+   "word_forms_unfolded_no_filter_per_10k": 285.76
+  },
+  {
+   "book": "JAM",
+   "section": "NT",
+   "words": 2291,
+   "per_10k": 205.15,
+   "word_forms_unfolded_no_filter_per_10k": 301.18
+  },
+  {
+   "book": "1PE",
+   "section": "NT",
+   "words": 2427,
+   "per_10k": 329.63,
+   "word_forms_unfolded_no_filter_per_10k": 465.6
+  },
+  {
+   "book": "2PE",
+   "section": "NT",
+   "words": 1522,
+   "per_10k": 295.66,
+   "word_forms_unfolded_no_filter_per_10k": 407.36
+  },
+  {
+   "book": "1JO",
+   "section": "NT",
+   "words": 2482,
+   "per_10k": 36.26,
+   "word_forms_unfolded_no_filter_per_10k": 116.84
+  },
+  {
+   "book": "2JO",
+   "section": "NT",
+   "words": 285,
+   "per_10k": 35.09,
+   "word_forms_unfolded_no_filter_per_10k": 105.26
+  },
+  {
+   "book": "3JO",
+   "section": "NT",
+   "words": 280,
+   "per_10k": 178.57,
+   "word_forms_unfolded_no_filter_per_10k": 250.0
+  },
+  {
+   "book": "JUD",
+   "section": "NT",
+   "words": 585,
+   "per_10k": 273.5,
+   "word_forms_unfolded_no_filter_per_10k": 478.63
+  },
+  {
+   "book": "REV",
+   "section": "NT",
+   "words": 11716,
+   "per_10k": 103.28,
+   "word_forms_unfolded_no_filter_per_10k": 151.93
+  }
+ ],
+ "hebrew_instrument": {
+  "alignment": {
+   "verses": 21632,
+   "tags": 211336,
+   "found_in_wlc_verse": 209796,
+   "share": 0.9927
+  },
+  "genesis_49_26": {
+   "verse": "GEN 49:26",
+   "english": "progenitors",
+   "strong": "H2029",
+   "in_wlc_verse": true,
+   "renderings": {
+    "conceived": 32,
+    "conceive": 4,
+    "child": 2,
+    "again": 2,
+    "progenitors": 1,
+    "bare": 1,
+    "conceiving": 1
+   },
+   "gloss_mentions_parent": false
+  },
+  "words": [
+   {
+    "word": "parents",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 2,
+    "lemmas": [
+     {
+      "strong": "H3205",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 403,
+      "kjv_renderings": {
+       "begat": 179,
+       "bare": 111,
+       "born": 79,
+       "forth": 25,
+       "bear": 17,
+       "beget": 10,
+       "travail": 10,
+       "begotten": 7
+      }
+     },
+     {
+      "strong": "H539",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 102,
+      "kjv_renderings": {
+       "believed": 21,
+       "faithful": 20,
+       "believe": 19,
+       "sure": 11,
+       "established": 7,
+       "up": 4,
+       "trust": 4,
+       "believeth": 4
+      }
+     }
+    ]
+   }
+  ],
+  "note": "hebrew_bible_count is the number of verses holding the lemma"
+ },
+ "stamp": {
+  "config_sha256": "5fa815c8d627442c9b43832ff04d135cc39826aad4dd0d9f067cbc8582b7a831",
+  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+  "registered": true,
+  "git_commit": "b0dcb303c9091d975cedb830fce89dd83539ff30"
+ }
+}
