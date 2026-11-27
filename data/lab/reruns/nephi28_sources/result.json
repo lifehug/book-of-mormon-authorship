@@ -1,0 +1,2502 @@
+{
+ "settings": {
+  "target": [
+   485,
+   489
+  ],
+  "chapter_1830": [
+   485,
+   498
+  ],
+  "decoy": [
+   761,
+   765
+  ],
+  "named": {
+   "scripture_inquiry": [
+    "",
+    "^\\W*scripture inquiry into the state and condition of mankind"
+   ],
+   "epicurus_life_and_morals": [
+    "^epicurus",
+    "life and morals of epicurus"
+   ]
+  },
+  "outside_dir": "data/corpus/lab/sources/nephi28",
+  "outside": {
+   "immoral_tendency_of_error": "https://www.google.com/books/edition/The_Immoral_Tendency_of_Error_in_Sentime/qWeLqf90-_8C",
+   "casse_authentic_narrative": "https://www.google.com/books/edition/Authentic_Narrative_of_the_Sufferings_of/tqNcAAAAcAAJ"
+  },
+  "topic_pattern": "universal (salvation|restoration|redemption)|universalis|restitution of all|salvation of all men|final restoration|(endless|eternal|everlasting|future) (punishment|misery|torment)|eternity of hell|duration of (future )?punishment",
+  "eras": {
+   "late": [
+    1780,
+    1829
+   ],
+   "early": [
+    1640,
+    1779
+   ]
+  },
+  "plants": 10,
+  "plant_min_words": 20000,
+  "plant_middle": [
+   0.1,
+   0.9
+  ],
+  "seed": 20261127,
+  "plant_top_share": 0.01,
+  "plant_bar": 8,
+  "yes_share": 0.01,
+  "no_share": 0.1,
+  "decoy_high_share": 0.1,
+  "cut_tolerance": 0.002,
+  "scan_workers": 6,
+  "scan_part": 10000
+ },
+ "known_answer": {
+  "late_war_window": {
+   "window_words": 1186,
+   "window_grams": 1160,
+   "population": 204527,
+   "other_printings": 9,
+   "printings_sharing_a_window_gram": 9,
+   "ranks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "printings_sharing_none": [],
+   "best_rank_of_any_other_volume": 10,
+   "passed": true
+  },
+  "index_pass_reproduces_stored_cut": {
+   "queries": 30,
+   "max_difference": 1e-06,
+   "tolerance": 0.002,
+   "passed": true
+  },
+  "plants": {
+   "plants": [
+    {
+     "plant": 0,
+     "work_id": "internet_archive:sim_literary-and-evangelical-magazine_1827_10",
+     "passage": 2093,
+     "rare": {
+      "rank": 6,
+      "of": 204520,
+      "top_share": 2.9e-05
+     },
+     "meaning": {
+      "rank": 104,
+      "of": 221327,
+      "top_share": 0.00047
+     }
+    },
+    {
+     "plant": 1,
+     "work_id": "internet_archive:elementsnatural00leslgoog",
+     "passage": 542,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 908,
+      "of": 221327,
+      "top_share": 0.004103
+     }
+    },
+    {
+     "plant": 2,
+     "work_id": "internet_archive:bim_eighteenth-century_a-collection-of-decrees-_great-britain-court-of-_1798_4",
+     "passage": 2283,
+     "rare": {
+      "rank": 4,
+      "of": 204520,
+      "top_share": 2e-05
+     },
+     "meaning": {
+      "rank": 876,
+      "of": 221327,
+      "top_share": 0.003958
+     }
+    },
+    {
+     "plant": 3,
+     "work_id": "internet_archive:secondadventorg00frygoog",
+     "passage": 154,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 95,
+      "of": 221327,
+      "top_share": 0.000429
+     }
+    },
+    {
+     "plant": 4,
+     "work_id": "internet_archive:s5id13407370",
+     "passage": 186,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 912,
+      "of": 221327,
+      "top_share": 0.004121
+     }
+    },
+    {
+     "plant": 5,
+     "work_id": "internet_archive:bp_640945",
+     "passage": 589,
+     "rare": {
+      "rank": 33,
+      "of": 204520,
+      "top_share": 0.000161
+     },
+     "meaning": {
+      "rank": 875,
+      "of": 221327,
+      "top_share": 0.003953
+     }
+    },
+    {
+     "plant": 6,
+     "work_id": "internet_archive:estimateofreligi00more",
+     "passage": 132,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 746,
+      "of": 221327,
+      "top_share": 0.003371
+     }
+    },
+    {
+     "plant": 7,
+     "work_id": "internet_archive:twohundredandni03hogggoog",
+     "passage": 315,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 848,
+      "of": 221327,
+      "top_share": 0.003831
+     }
+    },
+    {
+     "plant": 8,
+     "work_id": "internet_archive:bim_eighteenth-century_two-additional-letters-_andrews-john_1781",
+     "passage": 29,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 954,
+      "of": 221327,
+      "top_share": 0.00431
+     }
+    },
+    {
+     "plant": 9,
+     "work_id": "tcp:K016332.002",
+     "passage": 264,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 940,
+      "of": 221327,
+      "top_share": 0.004247
+     }
+    }
+   ],
+   "in_top_share": {
+    "rare": 10,
+    "meaning": 10
+   },
+   "bar": 8,
+   "passed": true
+  },
+  "passed": true
+ },
+ "populations": {
+  "rare_phrases_kept_copies": 204520,
+  "meaning_gallery_kept_copies": 221327,
+  "topic_controls": {
+   "late": 911,
+   "early": 41
+  }
+ },
+ "targets": {
+  "target": {
+   "paragraphs_1830": [
+    485,
+    489
+   ],
+   "masked_words": 1186,
+   "grams": 1110,
+   "rare_grams": 128,
+   "queries": 10,
+   "queries_scored": 10,
+   "queries_left_out_as_king_james": 0,
+   "rare_top": [
+    {
+     "work_id": "internet_archive:sermonpreachedju00thac",
+     "per_10000_words": 2.7159
+    },
+    {
+     "work_id": "internet_archive:sim_aesculapian-register_1824-09-09_1_13",
+     "per_10000_words": 1.7164
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_reasons-humbly-submitted_greaves-william-of-ful_1780",
+     "per_10000_words": 1.6033
+    },
+    {
+     "work_id": "internet_archive:sim_universalist_1824-11-20_6_22",
+     "per_10000_words": 1.3165
+    },
+    {
+     "work_id": "tcp:N15086",
+     "per_10000_words": 1.2937
+    },
+    {
+     "work_id": "internet_archive:dutyofchristians00hunt",
+     "per_10000_words": 1.1967
+    },
+    {
+     "work_id": "hathitrust:uc2.ark:/13960/t06w9976s",
+     "per_10000_words": 1.1725
+    },
+    {
+     "work_id": "internet_archive:op1243884-1001",
+     "per_10000_words": 1.0681
+    },
+    {
+     "work_id": "internet_archive:sim_weekly-entertainer-and-west-of-england-miscellany_1783-02-24_1_8",
+     "per_10000_words": 1.0408
+    },
+    {
+     "work_id": "internet_archive:sermondeliveredi00dwig",
+     "per_10000_words": 1.0052
+    },
+    {
+     "work_id": "internet_archive:sim_reformer-and-christian_1823-10_4_46",
+     "per_10000_words": 0.9624
+    },
+    {
+     "work_id": "internet_archive:cihm_50441",
+     "per_10000_words": 0.864
+    },
+    {
+     "work_id": "internet_archive:sim_anti-masonic-review-and-magazine_1830-02_2_2",
+     "per_10000_words": 0.8328
+    },
+    {
+     "work_id": "internet_archive:sim_christian-journal-and-literary-register_1818-02_2_4",
+     "per_10000_words": 0.7885
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_a-sermon-preached-at-th_benson-joseph_1798_0",
+     "per_10000_words": 0.7391
+    }
+   ],
+   "meaning_top": [
+    {
+     "work_id": "hathitrust:mdp.39015009053300",
+     "places": 6,
+     "mean_best": 0.8297,
+     "max_best": 0.8503
+    },
+    {
+     "work_id": "hathitrust:yale.39002005600409",
+     "places": 4,
+     "mean_best": 0.83,
+     "max_best": 0.8523
+    },
+    {
+     "work_id": "hathitrust:mdp.39015017669501",
+     "places": 4,
+     "mean_best": 0.8275,
+     "max_best": 0.856
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_the-holy-bible-containi_1792_1_0",
+     "places": 4,
+     "mean_best": 0.8261,
+     "max_best": 0.853
+    },
+    {
+     "work_id": "institutional_books:AH4EKZ",
+     "places": 4,
+     "mean_best": 0.8244,
+     "max_best": 0.8544
+    },
+    {
+     "work_id": "institutional_books:32044010076164",
+     "places": 4,
+     "mean_best": 0.8201,
+     "max_best": 0.8568
+    },
+    {
+     "work_id": "institutional_books:32044081764557",
+     "places": 3,
+     "mean_best": 0.8266,
+     "max_best": 0.8494
+    },
+    {
+     "work_id": "institutional_books:HWJN6I",
+     "places": 3,
+     "mean_best": 0.8242,
+     "max_best": 0.8515
+    },
+    {
+     "work_id": "institutional_books:32044018745133",
+     "places": 3,
+     "mean_best": 0.8224,
+     "max_best": 0.8505
+    },
+    {
+     "work_id": "internet_archive:worksofpresident0003vari",
+     "places": 3,
+     "mean_best": 0.8186,
+     "max_best": 0.85
+    },
+    {
+     "work_id": "hathitrust:yale.39002085616408",
+     "places": 3,
+     "mean_best": 0.8179,
+     "max_best": 0.8517
+    },
+    {
+     "work_id": "internet_archive:familiardiscours00luth",
+     "places": 3,
+     "mean_best": 0.8175,
+     "max_best": 0.8523
+    },
+    {
+     "work_id": "internet_archive:holykorancommonl00londuoft",
+     "places": 2,
+     "mean_best": 0.8268,
+     "max_best": 0.8592
+    },
+    {
+     "work_id": "internet_archive:holykorancommonlnp",
+     "places": 2,
+     "mean_best": 0.8254,
+     "max_best": 0.8466
+    },
+    {
+     "work_id": "tcp:N28090",
+     "places": 2,
+     "mean_best": 0.8246,
+     "max_best": 0.8509
+    }
+   ],
+   "named": {
+    "scripture_inquiry": {
+     "copies": [
+      {
+       "work_id": "hathitrust:hvd.32044077904324",
+       "rare": "unreadable: not attempted",
+       "meaning": "not in the passage index: not attempted",
+       "year": 1828,
+       "kept_copy": true,
+       "controls": {}
+      },
+      {
+       "work_id": "institutional_books:32044077904324",
+       "rare": {
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       "meaning": {
+        "rank": 2548,
+        "of": 221327,
+        "top_share": 0.011512,
+        "places": 0,
+        "mean_best": 0.8039,
+        "max_best": 0.8343,
+        "in_gallery": true
+       },
+       "year": 1828,
+       "kept_copy": true,
+       "controls": {
+        "rare": {
+         "above_every_control": false,
+         "share_of_controls_beaten": 0.0538
+        },
+        "meaning": {
+         "above_every_control": false,
+         "share_of_controls_beaten": 0.9698
+        }
+       }
+      },
+      {
+       "work_id": "internet_archive:scriptureinquir00worrgoog",
+       "rare": "unreadable: not attempted",
+       "meaning": "not in the passage index: not attempted",
+       "year": 1828,
+       "kept_copy": true,
+       "controls": {}
+      }
+     ],
+     "best": {
+      "rare": {
+       "work_id": "institutional_books:32044077904324",
+       "rank": 204520,
+       "of": 204520,
+       "top_share": 1.0,
+       "per_10000_words": 0.0,
+       "shared_rare_grams": 0
+      },
+      "meaning": {
+       "work_id": "institutional_books:32044077904324",
+       "rank": 2548,
+       "of": 221327,
+       "top_share": 0.011512,
+       "places": 0,
+       "mean_best": 0.8039,
+       "max_best": 0.8343,
+       "in_gallery": true
+      }
+     },
+     "verdict": "cannot tell"
+    },
+    "epicurus_life_and_morals": {
+     "copies": [
+      {
+       "work_id": "hathitrust:coo.31924007760006",
+       "rare": "unreadable: not attempted",
+       "meaning": "not in the passage index: not attempted",
+       "year": 1818,
+       "kept_copy": true,
+       "controls": {}
+      },
+      {
+       "work_id": "hathitrust:hvd.32044011010378",
+       "rare": "unreadable: not attempted",
+       "meaning": "not in the passage index: not attempted",
+       "year": 1822,
+       "kept_copy": true,
+       "controls": {}
+      },
+      {
+       "work_id": "institutional_books:32044011010378",
+       "rare": {
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       "meaning": {
+        "rank": 36194,
+        "of": 221327,
+        "top_share": 0.163532,
+        "places": 0,
+        "mean_best": 0.767,
+        "max_best": 0.8124,
+        "in_gallery": true
+       },
+       "year": 1822,
+       "kept_copy": true,
+       "controls": {
+        "rare": {
+         "above_every_control": false,
+         "share_of_controls_beaten": 0.0538
+        },
+        "meaning": {
+         "above_every_control": false,
+         "share_of_controls_beaten": 0.3585
+        }
+       }
+      }
+     ],
+     "best": {
+      "rare": {
+       "work_id": "institutional_books:32044011010378",
+       "rank": 204520,
+       "of": 204520,
+       "top_share": 1.0,
+       "per_10000_words": 0.0,
+       "shared_rare_grams": 0
+      },
+      "meaning": {
+       "work_id": "institutional_books:32044011010378",
+       "rank": 36194,
+       "of": 221327,
+       "top_share": 0.163532,
+       "places": 0,
+       "mean_best": 0.767,
+       "max_best": 0.8124,
+       "in_gallery": true
+      }
+     },
+     "verdict": "no"
+    }
+   },
+   "outside": {
+    "immoral_tendency_of_error": {
+     "status": "not held: not attempted",
+     "link": "https://www.google.com/books/edition/The_Immoral_Tendency_of_Error_in_Sentime/qWeLqf90-_8C"
+    },
+    "casse_authentic_narrative": {
+     "status": "not held: not attempted",
+     "link": "https://www.google.com/books/edition/Authentic_Narrative_of_the_Sufferings_of/tqNcAAAAcAAJ"
+    }
+   },
+   "controls": {
+    "late": {
+     "rare": {
+      "placed": 911,
+      "not_attempted": 0,
+      "best": [
+       {
+        "work_id": "internet_archive:sim_universalist_1824-11-20_6_22",
+        "rank": 4,
+        "of": 204520,
+        "top_share": 2e-05,
+        "per_10000_words": 1.3165,
+        "shared_rare_grams": 1
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t0xp75t11",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t3jw9pg7w",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t3qv4tg0g",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t52f91961",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t5q81x475",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t6640bp0s",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t71v69r10",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t94750d9j",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:mdp.69015000003349",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       }
+      ],
+      "median_top_share": 1.0,
+      "in_top_yes_share": 1,
+      "in_top_no_share": 1
+     },
+     "meaning": {
+      "placed": 862,
+      "not_attempted": 49,
+      "best": [
+       {
+        "work_id": "internet_archive:minutesofdiscuss00knee_0",
+        "rank": 62,
+        "of": 221327,
+        "top_share": 0.00028,
+        "places": 2,
+        "mean_best": 0.8126,
+        "max_best": 0.8542,
+        "in_gallery": true
+       },
+       {
+        "work_id": "tcp:N15491",
+        "rank": 377,
+        "of": 221327,
+        "top_share": 0.001703,
+        "places": 1,
+        "mean_best": 0.8089,
+        "max_best": 0.8387,
+        "in_gallery": true
+       },
+       {
+        "work_id": "internet_archive:gospelheralduniv0000unse",
+        "rank": 556,
+        "of": 221327,
+        "top_share": 0.002512,
+        "places": 1,
+        "mean_best": 0.8042,
+        "max_best": 0.85,
+        "in_gallery": true
+       },
+       {
+        "work_id": "internet_archive:10591799bsb",
+        "rank": 609,
+        "of": 221327,
+        "top_share": 0.002752,
+        "places": 1,
+        "mean_best": 0.8025,
+        "max_best": 0.851,
+        "in_gallery": true
+       },
+       {
+        "work_id": "internet_archive:doctrineofeterna00stro",
+        "rank": 633,
+        "of": 221327,
+        "top_share": 0.00286,
+        "places": 1,
+        "mean_best": 0.8013,
+        "max_best": 0.8383,
+        "in_gallery": true
+       },
+       {
+        "work_id": "internet_archive:bim_eighteenth-century_the-eternity-of-future-p_crouch-isaac_1786",
+        "rank": 803,
+        "of": 221327,
+        "top_share": 0.003628,
+        "places": 1,
+        "mean_best": 0.7904,
+        "max_best": 0.8194,
+        "in_gallery": true
+       },
+       {
+        "work_id": "internet_archive:sim_universalist_1823-10-11_5_16",
+        "rank": 814,
+        "of": 221327,
+        "top_share": 0.003678,
+        "places": 1,
+        "mean_best": 0.7885,
+        "max_best": 0.8499,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:AH6FKE",
+        "rank": 1195,
+        "of": 221327,
+        "top_share": 0.005399,
+        "places": 0,
+        "mean_best": 0.8106,
+        "max_best": 0.8353,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:AH6568",
+        "rank": 1275,
+        "of": 221327,
+        "top_share": 0.005761,
+        "places": 0,
+        "mean_best": 0.8099,
+        "max_best": 0.8349,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:32044073467359",
+        "rank": 1402,
+        "of": 221327,
+        "top_share": 0.006335,
+        "places": 0,
+        "mean_best": 0.8091,
+        "max_best": 0.8332,
+        "in_gallery": true
+       }
+      ],
+      "median_top_share": 0.134234,
+      "in_top_yes_share": 22,
+      "in_top_no_share": 286
+     }
+    },
+    "early": {
+     "rare": {
+      "placed": 41,
+      "not_attempted": 0,
+      "best": [
+       {
+        "work_id": "tcp:A26063",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 7627
+       },
+       {
+        "work_id": "tcp:A26935",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 10030
+       },
+       {
+        "work_id": "tcp:A27064",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 142208
+       },
+       {
+        "work_id": "tcp:A27623",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 107532
+       },
+       {
+        "work_id": "tcp:A29082",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 19517
+       },
+       {
+        "work_id": "tcp:A29219",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 75325
+       },
+       {
+        "work_id": "tcp:A29752",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 325071
+       },
+       {
+        "work_id": "tcp:A31280",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 10071
+       },
+       {
+        "work_id": "tcp:A34189",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 3105
+       },
+       {
+        "work_id": "tcp:A39378",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 3823
+       }
+      ],
+      "median_top_share": 1.000005,
+      "in_top_yes_share": 0,
+      "in_top_no_share": 0
+     },
+     "meaning": {
+      "placed": 41,
+      "not_attempted": 0,
+      "best": [
+       {
+        "work_id": "tcp:A49797",
+        "rank": 1347,
+        "of": 221327,
+        "top_share": 0.006086,
+        "places": 0,
+        "mean_best": 0.8095,
+        "max_best": 0.8385,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A62053",
+        "rank": 2432,
+        "of": 221327,
+        "top_share": 0.010988,
+        "places": 0,
+        "mean_best": 0.8043,
+        "max_best": 0.8275,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A29752",
+        "rank": 3762,
+        "of": 221327,
+        "top_share": 0.016997,
+        "places": 0,
+        "mean_best": 0.8007,
+        "max_best": 0.8248,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A96295",
+        "rank": 4071,
+        "of": 221327,
+        "top_share": 0.018394,
+        "places": 0,
+        "mean_best": 0.8,
+        "max_best": 0.8221,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:N11620",
+        "rank": 4723,
+        "of": 221327,
+        "top_share": 0.021339,
+        "places": 0,
+        "mean_best": 0.7985,
+        "max_best": 0.8316,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A29219",
+        "rank": 4883,
+        "of": 221327,
+        "top_share": 0.022062,
+        "places": 0,
+        "mean_best": 0.7982,
+        "max_best": 0.8321,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A65821",
+        "rank": 5402,
+        "of": 221327,
+        "top_share": 0.024407,
+        "places": 0,
+        "mean_best": 0.7971,
+        "max_best": 0.8335,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A27064",
+        "rank": 6210,
+        "of": 221327,
+        "top_share": 0.028058,
+        "places": 0,
+        "mean_best": 0.7956,
+        "max_best": 0.8158,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A66763",
+        "rank": 6660,
+        "of": 221327,
+        "top_share": 0.030091,
+        "places": 0,
+        "mean_best": 0.7948,
+        "max_best": 0.833,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A93771",
+        "rank": 6930,
+        "of": 221327,
+        "top_share": 0.031311,
+        "places": 0,
+        "mean_best": 0.7943,
+        "max_best": 0.8252,
+        "in_gallery": false
+       }
+      ],
+      "median_top_share": 0.056505,
+      "in_top_yes_share": 1,
+      "in_top_no_share": 31
+     }
+    }
+   }
+  },
+  "chapter_1830": {
+   "paragraphs_1830": [
+    485,
+    498
+   ],
+   "masked_words": 2521,
+   "grams": 2289,
+   "rare_grams": 269,
+   "queries": 22,
+   "queries_scored": 21,
+   "queries_left_out_as_king_james": 1,
+   "rare_top": [
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_to-englishmen-who-praise_1795",
+     "per_10000_words": 9.8232
+    },
+    {
+     "work_id": "internet_archive:sermonpreachedju00thac",
+     "per_10000_words": 2.7159
+    },
+    {
+     "work_id": "internet_archive:sermondeliveredt00smit",
+     "per_10000_words": 1.8355
+    },
+    {
+     "work_id": "internet_archive:b29314781",
+     "per_10000_words": 1.8038
+    },
+    {
+     "work_id": "internet_archive:sim_aesculapian-register_1824-09-09_1_13",
+     "per_10000_words": 1.7164
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_the-sovereignty-of-grace_rodda-richard_1789",
+     "per_10000_words": 1.6179
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_reasons-humbly-submitted_greaves-william-of-ful_1780",
+     "per_10000_words": 1.6033
+    },
+    {
+     "work_id": "internet_archive:sim_universalist_1824-11-20_6_22",
+     "per_10000_words": 1.3165
+    },
+    {
+     "work_id": "tcp:N15086",
+     "per_10000_words": 1.2937
+    },
+    {
+     "work_id": "internet_archive:sim_genius-of-universal-emancipation_1828-06-28_2_19",
+     "per_10000_words": 1.2902
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_the-touchstone-of-the-ne_challoner-richard-bish_1795",
+     "per_10000_words": 1.2612
+    },
+    {
+     "work_id": "internet_archive:sim_sentimental-and-literary-magazine_1796-07-20_2_55",
+     "per_10000_words": 1.2361
+    },
+    {
+     "work_id": "internet_archive:sim_boston-magazine_1804-08-04_2_41",
+     "per_10000_words": 1.2115
+    },
+    {
+     "work_id": "internet_archive:dutyofchristians00hunt",
+     "per_10000_words": 1.1967
+    },
+    {
+     "work_id": "hathitrust:uc2.ark:/13960/t06w9976s",
+     "per_10000_words": 1.1725
+    }
+   ],
+   "meaning_top": [
+    {
+     "work_id": "hathitrust:mdp.39015009053300",
+     "places": 8,
+     "mean_best": 0.8276,
+     "max_best": 0.8658
+    },
+    {
+     "work_id": "institutional_books:32044010076164",
+     "places": 8,
+     "mean_best": 0.8199,
+     "max_best": 0.8568
+    },
+    {
+     "work_id": "hathitrust:yale.39002005600409",
+     "places": 6,
+     "mean_best": 0.8282,
+     "max_best": 0.8544
+    },
+    {
+     "work_id": "internet_archive:holybiblecontain00unse_34",
+     "places": 6,
+     "mean_best": 0.8218,
+     "max_best": 0.8644
+    },
+    {
+     "work_id": "internet_archive:biblicalreaderor00blak",
+     "places": 5,
+     "mean_best": 0.822,
+     "max_best": 0.8501
+    },
+    {
+     "work_id": "internet_archive:friendreligiousl184041smit",
+     "places": 5,
+     "mean_best": 0.8211,
+     "max_best": 0.8592
+    },
+    {
+     "work_id": "internet_archive:gtu_32400007780814_4",
+     "places": 5,
+     "mean_best": 0.8205,
+     "max_best": 0.8596
+    },
+    {
+     "work_id": "institutional_books:HWJN6I",
+     "places": 5,
+     "mean_best": 0.8202,
+     "max_best": 0.8515
+    },
+    {
+     "work_id": "institutional_books:HXJNYL",
+     "places": 5,
+     "mean_best": 0.8167,
+     "max_best": 0.8754
+    },
+    {
+     "work_id": "internet_archive:atreatiseontrut00jaqugoog",
+     "places": 5,
+     "mean_best": 0.8164,
+     "max_best": 0.8689
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_sacred-literature-shewi_simpson-david_1788_3",
+     "places": 5,
+     "mean_best": 0.8151,
+     "max_best": 0.8514
+    },
+    {
+     "work_id": "institutional_books:HW3CY1",
+     "places": 5,
+     "mean_best": 0.8136,
+     "max_best": 0.8594
+    },
+    {
+     "work_id": "hathitrust:yale.39002012646130",
+     "places": 5,
+     "mean_best": 0.8099,
+     "max_best": 0.8633
+    },
+    {
+     "work_id": "hathitrust:ia.ark:/13960/t73v0jw5z",
+     "places": 5,
+     "mean_best": 0.8043,
+     "max_best": 0.8659
+    },
+    {
+     "work_id": "internet_archive:holybiblecontain03scot",
+     "places": 4,
+     "mean_best": 0.8242,
+     "max_best": 0.8682
+    }
+   ],
+   "named": {
+    "scripture_inquiry": {
+     "copies": [
+      {
+       "work_id": "hathitrust:hvd.32044077904324",
+       "rare": "unreadable: not attempted",
+       "meaning": "not in the passage index: not attempted",
+       "year": 1828,
+       "kept_copy": true,
+       "controls": {}
+      },
+      {
+       "work_id": "institutional_books:32044077904324",
+       "rare": {
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       "meaning": {
+        "rank": 1873,
+        "of": 221327,
+        "top_share": 0.008463,
+        "places": 0,
+        "mean_best": 0.8075,
+        "max_best": 0.8431,
+        "in_gallery": true
+       },
+       "year": 1828,
+       "kept_copy": true,
+       "controls": {
+        "rare": {
+         "above_every_control": false,
+         "share_of_controls_beaten": 0.0538
+        },
+        "meaning": {
+         "above_every_control": false,
+         "share_of_controls_beaten": 0.9745
+        }
+       }
+      },
+      {
+       "work_id": "internet_archive:scriptureinquir00worrgoog",
+       "rare": "unreadable: not attempted",
+       "meaning": "not in the passage index: not attempted",
+       "year": 1828,
+       "kept_copy": true,
+       "controls": {}
+      }
+     ],
+     "best": {
+      "rare": {
+       "work_id": "institutional_books:32044077904324",
+       "rank": 204520,
+       "of": 204520,
+       "top_share": 1.0,
+       "per_10000_words": 0.0,
+       "shared_rare_grams": 0
+      },
+      "meaning": {
+       "work_id": "institutional_books:32044077904324",
+       "rank": 1873,
+       "of": 221327,
+       "top_share": 0.008463,
+       "places": 0,
+       "mean_best": 0.8075,
+       "max_best": 0.8431,
+       "in_gallery": true
+      }
+     },
+     "verdict": "cannot tell"
+    },
+    "epicurus_life_and_morals": {
+     "copies": [
+      {
+       "work_id": "hathitrust:coo.31924007760006",
+       "rare": "unreadable: not attempted",
+       "meaning": "not in the passage index: not attempted",
+       "year": 1818,
+       "kept_copy": true,
+       "controls": {}
+      },
+      {
+       "work_id": "hathitrust:hvd.32044011010378",
+       "rare": "unreadable: not attempted",
+       "meaning": "not in the passage index: not attempted",
+       "year": 1822,
+       "kept_copy": true,
+       "controls": {}
+      },
+      {
+       "work_id": "institutional_books:32044011010378",
+       "rare": {
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       "meaning": {
+        "rank": 51012,
+        "of": 221327,
+        "top_share": 0.230482,
+        "places": 0,
+        "mean_best": 0.7541,
+        "max_best": 0.8124,
+        "in_gallery": true
+       },
+       "year": 1822,
+       "kept_copy": true,
+       "controls": {
+        "rare": {
+         "above_every_control": false,
+         "share_of_controls_beaten": 0.0538
+        },
+        "meaning": {
+         "above_every_control": false,
+         "share_of_controls_beaten": 0.1485
+        }
+       }
+      }
+     ],
+     "best": {
+      "rare": {
+       "work_id": "institutional_books:32044011010378",
+       "rank": 204520,
+       "of": 204520,
+       "top_share": 1.0,
+       "per_10000_words": 0.0,
+       "shared_rare_grams": 0
+      },
+      "meaning": {
+       "work_id": "institutional_books:32044011010378",
+       "rank": 51012,
+       "of": 221327,
+       "top_share": 0.230482,
+       "places": 0,
+       "mean_best": 0.7541,
+       "max_best": 0.8124,
+       "in_gallery": true
+      }
+     },
+     "verdict": "no"
+    }
+   },
+   "outside": {
+    "immoral_tendency_of_error": {
+     "status": "not held: not attempted",
+     "link": "https://www.google.com/books/edition/The_Immoral_Tendency_of_Error_in_Sentime/qWeLqf90-_8C"
+    },
+    "casse_authentic_narrative": {
+     "status": "not held: not attempted",
+     "link": "https://www.google.com/books/edition/Authentic_Narrative_of_the_Sufferings_of/tqNcAAAAcAAJ"
+    }
+   },
+   "controls": {
+    "late": {
+     "rare": {
+      "placed": 911,
+      "not_attempted": 0,
+      "best": [
+       {
+        "work_id": "internet_archive:sim_universalist_1824-11-20_6_22",
+        "rank": 8,
+        "of": 204520,
+        "top_share": 3.9e-05,
+        "per_10000_words": 1.3165,
+        "shared_rare_grams": 1
+       },
+       {
+        "work_id": "internet_archive:bim_eighteenth-century_ten-sermons-on-various-s_winchester-elhanan_1799",
+        "rank": 206,
+        "of": 204520,
+        "top_share": 0.001007,
+        "per_10000_words": 0.1247,
+        "shared_rare_grams": 1
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t0xp75t11",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t3jw9pg7w",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t3qv4tg0g",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t52f91961",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t5q81x475",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t6640bp0s",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t71v69r10",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t94750d9j",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       }
+      ],
+      "median_top_share": 1.0,
+      "in_top_yes_share": 2,
+      "in_top_no_share": 2
+     },
+     "meaning": {
+      "placed": 862,
+      "not_attempted": 49,
+      "best": [
+       {
+        "work_id": "internet_archive:minutesofdiscuss00knee_0",
+        "rank": 126,
+        "of": 221327,
+        "top_share": 0.000569,
+        "places": 2,
+        "mean_best": 0.8135,
+        "max_best": 0.8542,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:32044020913000",
+        "rank": 194,
+        "of": 221327,
+        "top_share": 0.000877,
+        "places": 2,
+        "mean_best": 0.8088,
+        "max_best": 0.845,
+        "in_gallery": true
+       },
+       {
+        "work_id": "internet_archive:sim_christian-telescope-and-universalist-miscellany_1826-09-09_3_5",
+        "rank": 262,
+        "of": 221327,
+        "top_share": 0.001184,
+        "places": 2,
+        "mean_best": 0.8006,
+        "max_best": 0.8578,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:AH6568",
+        "rank": 422,
+        "of": 221327,
+        "top_share": 0.001907,
+        "places": 1,
+        "mean_best": 0.8097,
+        "max_best": 0.86,
+        "in_gallery": true
+       },
+       {
+        "work_id": "tcp:N15491",
+        "rank": 447,
+        "of": 221327,
+        "top_share": 0.00202,
+        "places": 1,
+        "mean_best": 0.809,
+        "max_best": 0.8481,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:32044077889657",
+        "rank": 497,
+        "of": 221327,
+        "top_share": 0.002246,
+        "places": 1,
+        "mean_best": 0.8078,
+        "max_best": 0.845,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:AH6JHE",
+        "rank": 509,
+        "of": 221327,
+        "top_share": 0.0023,
+        "places": 1,
+        "mean_best": 0.8076,
+        "max_best": 0.8791,
+        "in_gallery": true
+       },
+       {
+        "work_id": "internet_archive:deathofdeathinde00owen_2",
+        "rank": 625,
+        "of": 221327,
+        "top_share": 0.002824,
+        "places": 1,
+        "mean_best": 0.8052,
+        "max_best": 0.8459,
+        "in_gallery": true
+       },
+       {
+        "work_id": "tcp:N23156",
+        "rank": 737,
+        "of": 221327,
+        "top_share": 0.00333,
+        "places": 1,
+        "mean_best": 0.8031,
+        "max_best": 0.8428,
+        "in_gallery": true
+       },
+       {
+        "work_id": "internet_archive:gospelheralduniv0000unse",
+        "rank": 829,
+        "of": 221327,
+        "top_share": 0.003746,
+        "places": 1,
+        "mean_best": 0.8016,
+        "max_best": 0.85,
+        "in_gallery": true
+       }
+      ],
+      "median_top_share": 0.128437,
+      "in_top_yes_share": 31,
+      "in_top_no_share": 312
+     }
+    },
+    "early": {
+     "rare": {
+      "placed": 41,
+      "not_attempted": 0,
+      "best": [
+       {
+        "work_id": "tcp:A26063",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 7627
+       },
+       {
+        "work_id": "tcp:A26935",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 10030
+       },
+       {
+        "work_id": "tcp:A27064",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 142208
+       },
+       {
+        "work_id": "tcp:A27623",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 107532
+       },
+       {
+        "work_id": "tcp:A29082",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 19517
+       },
+       {
+        "work_id": "tcp:A29219",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 75325
+       },
+       {
+        "work_id": "tcp:A29752",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 325071
+       },
+       {
+        "work_id": "tcp:A31280",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 10071
+       },
+       {
+        "work_id": "tcp:A34189",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 3105
+       },
+       {
+        "work_id": "tcp:A39378",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 3823
+       }
+      ],
+      "median_top_share": 1.000005,
+      "in_top_yes_share": 0,
+      "in_top_no_share": 0
+     },
+     "meaning": {
+      "placed": 41,
+      "not_attempted": 0,
+      "best": [
+       {
+        "work_id": "tcp:A65821",
+        "rank": 224,
+        "of": 221327,
+        "top_share": 0.001012,
+        "places": 2,
+        "mean_best": 0.807,
+        "max_best": 0.8479,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A49797",
+        "rank": 2389,
+        "of": 221327,
+        "top_share": 0.010794,
+        "places": 0,
+        "mean_best": 0.8039,
+        "max_best": 0.8385,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A62053",
+        "rank": 3108,
+        "of": 221327,
+        "top_share": 0.014043,
+        "places": 0,
+        "mean_best": 0.8009,
+        "max_best": 0.8414,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A29752",
+        "rank": 3400,
+        "of": 221327,
+        "top_share": 0.015362,
+        "places": 0,
+        "mean_best": 0.7999,
+        "max_best": 0.8325,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A96295",
+        "rank": 4282,
+        "of": 221327,
+        "top_share": 0.019347,
+        "places": 0,
+        "mean_best": 0.7975,
+        "max_best": 0.8311,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A51262",
+        "rank": 6539,
+        "of": 221327,
+        "top_share": 0.029545,
+        "places": 0,
+        "mean_best": 0.7925,
+        "max_best": 0.8412,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A27064",
+        "rank": 6583,
+        "of": 221327,
+        "top_share": 0.029743,
+        "places": 0,
+        "mean_best": 0.7924,
+        "max_best": 0.8225,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A29219",
+        "rank": 6959,
+        "of": 221327,
+        "top_share": 0.031442,
+        "places": 0,
+        "mean_best": 0.7917,
+        "max_best": 0.8321,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A27623",
+        "rank": 7149,
+        "of": 221327,
+        "top_share": 0.032301,
+        "places": 0,
+        "mean_best": 0.7913,
+        "max_best": 0.8226,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:N11620",
+        "rank": 7289,
+        "of": 221327,
+        "top_share": 0.032933,
+        "places": 0,
+        "mean_best": 0.791,
+        "max_best": 0.8316,
+        "in_gallery": false
+       }
+      ],
+      "median_top_share": 0.060707,
+      "in_top_yes_share": 1,
+      "in_top_no_share": 30
+     }
+    }
+   }
+  },
+  "decoy": {
+   "paragraphs_1830": [
+    761,
+    765
+   ],
+   "masked_words": 1032,
+   "grams": 929,
+   "rare_grams": 107,
+   "queries": 8,
+   "queries_scored": 8,
+   "queries_left_out_as_king_james": 0,
+   "rare_top": [
+    {
+     "work_id": "internet_archive:orationpronounce00fost",
+     "per_10000_words": 3.9588
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_poems-by-a-lady_lady_1798",
+     "per_10000_words": 2.2183
+    },
+    {
+     "work_id": "internet_archive:sim_the-microscope_1825-06-18_2_8",
+     "per_10000_words": 1.8702
+    },
+    {
+     "work_id": "internet_archive:universalist_1827-07-07_9_3",
+     "per_10000_words": 1.4789
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_the-fall-and-redemption_cennick-john_1788",
+     "per_10000_words": 1.4782
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_the-nature-and-importanc_webster-samuel_1784",
+     "per_10000_words": 1.3906
+    },
+    {
+     "work_id": "internet_archive:sim_universalist_1825-06-25_7_1",
+     "per_10000_words": 1.304
+    },
+    {
+     "work_id": "tcp:N37409",
+     "per_10000_words": 1.2995
+    },
+    {
+     "work_id": "internet_archive:sim_black-dwarf_1817-04-30_1_14",
+     "per_10000_words": 1.2549
+    },
+    {
+     "work_id": "internet_archive:sim_christian-journal-and-literary-register_1818-04_2_7",
+     "per_10000_words": 0.8413
+    },
+    {
+     "work_id": "internet_archive:sim_cobbetts-weekly-political-register_1822-12-28_44_13",
+     "per_10000_words": 0.7382
+    },
+    {
+     "work_id": "internet_archive:sim_masonic-miscellany-and-ladies-literary-magazine_1821-09_1_3",
+     "per_10000_words": 0.6659
+    },
+    {
+     "work_id": "internet_archive:sim_boston-pearl-and-galaxy_1828-06-05_11_556",
+     "per_10000_words": 0.6644
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_peters-ethics-and-jose_barrowclough-s_1796",
+     "per_10000_words": 0.6124
+    },
+    {
+     "work_id": "internet_archive:b30375903",
+     "per_10000_words": 0.5629
+    }
+   ],
+   "meaning_top": [
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_the-holy-bible-containi_1792_4",
+     "places": 4,
+     "mean_best": 0.8099,
+     "max_best": 0.8584
+    },
+    {
+     "work_id": "tcp:N28090",
+     "places": 4,
+     "mean_best": 0.8078,
+     "max_best": 0.8369
+    },
+    {
+     "work_id": "hathitrust:mdp.39015080088035",
+     "places": 3,
+     "mean_best": 0.811,
+     "max_best": 0.8668
+    },
+    {
+     "work_id": "internet_archive:criticalcommenta01pitmuoft",
+     "places": 3,
+     "mean_best": 0.8024,
+     "max_best": 0.851
+    },
+    {
+     "work_id": "institutional_books:AH68FC",
+     "places": 3,
+     "mean_best": 0.7922,
+     "max_best": 0.8425
+    },
+    {
+     "work_id": "internet_archive:holybiblecontain05scot",
+     "places": 2,
+     "mean_best": 0.8061,
+     "max_best": 0.8469
+    },
+    {
+     "work_id": "institutional_books:HN33GK",
+     "places": 2,
+     "mean_best": 0.8053,
+     "max_best": 0.8319
+    },
+    {
+     "work_id": "hathitrust:yale.39002005600425",
+     "places": 2,
+     "mean_best": 0.8048,
+     "max_best": 0.8345
+    },
+    {
+     "work_id": "institutional_books:HXQ2K3",
+     "places": 2,
+     "mean_best": 0.8043,
+     "max_best": 0.8282
+    },
+    {
+     "work_id": "institutional_books:HW2J64",
+     "places": 2,
+     "mean_best": 0.8042,
+     "max_best": 0.8393
+    },
+    {
+     "work_id": "hathitrust:yale.39002005600409",
+     "places": 2,
+     "mean_best": 0.8034,
+     "max_best": 0.8453
+    },
+    {
+     "work_id": "hathitrust:mdp.39015009053300",
+     "places": 2,
+     "mean_best": 0.803,
+     "max_best": 0.8433
+    },
+    {
+     "work_id": "tcp:N22644",
+     "places": 2,
+     "mean_best": 0.802,
+     "max_best": 0.8445
+    },
+    {
+     "work_id": "internet_archive:bookpriesthooda00stragoog",
+     "places": 2,
+     "mean_best": 0.8013,
+     "max_best": 0.8402
+    },
+    {
+     "work_id": "internet_archive:wholeworksright23hebegoog",
+     "places": 2,
+     "mean_best": 0.8007,
+     "max_best": 0.8574
+    }
+   ],
+   "named": {
+    "scripture_inquiry": {
+     "copies": [
+      {
+       "work_id": "hathitrust:hvd.32044077904324",
+       "rare": "unreadable: not attempted",
+       "meaning": "not in the passage index: not attempted",
+       "year": 1828,
+       "kept_copy": true,
+       "controls": {}
+      },
+      {
+       "work_id": "institutional_books:32044077904324",
+       "rare": {
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       "meaning": {
+        "rank": 6871,
+        "of": 221327,
+        "top_share": 0.031045,
+        "places": 0,
+        "mean_best": 0.7765,
+        "max_best": 0.8206,
+        "in_gallery": true
+       },
+       "year": 1828,
+       "kept_copy": true,
+       "controls": {
+        "rare": {
+         "above_every_control": false,
+         "share_of_controls_beaten": 0.0538
+        },
+        "meaning": {
+         "above_every_control": false,
+         "share_of_controls_beaten": 0.9571
+        }
+       }
+      },
+      {
+       "work_id": "internet_archive:scriptureinquir00worrgoog",
+       "rare": "unreadable: not attempted",
+       "meaning": "not in the passage index: not attempted",
+       "year": 1828,
+       "kept_copy": true,
+       "controls": {}
+      }
+     ],
+     "best": {
+      "rare": {
+       "work_id": "institutional_books:32044077904324",
+       "rank": 204520,
+       "of": 204520,
+       "top_share": 1.0,
+       "per_10000_words": 0.0,
+       "shared_rare_grams": 0
+      },
+      "meaning": {
+       "work_id": "institutional_books:32044077904324",
+       "rank": 6871,
+       "of": 221327,
+       "top_share": 0.031045,
+       "places": 0,
+       "mean_best": 0.7765,
+       "max_best": 0.8206,
+       "in_gallery": true
+      }
+     },
+     "verdict": "cannot tell"
+    },
+    "epicurus_life_and_morals": {
+     "copies": [
+      {
+       "work_id": "hathitrust:coo.31924007760006",
+       "rare": "unreadable: not attempted",
+       "meaning": "not in the passage index: not attempted",
+       "year": 1818,
+       "kept_copy": true,
+       "controls": {}
+      },
+      {
+       "work_id": "hathitrust:hvd.32044011010378",
+       "rare": "unreadable: not attempted",
+       "meaning": "not in the passage index: not attempted",
+       "year": 1822,
+       "kept_copy": true,
+       "controls": {}
+      },
+      {
+       "work_id": "institutional_books:32044011010378",
+       "rare": {
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       "meaning": {
+        "rank": 47218,
+        "of": 221327,
+        "top_share": 0.21334,
+        "places": 0,
+        "mean_best": 0.75,
+        "max_best": 0.8033,
+        "in_gallery": true
+       },
+       "year": 1822,
+       "kept_copy": true,
+       "controls": {
+        "rare": {
+         "above_every_control": false,
+         "share_of_controls_beaten": 0.0538
+        },
+        "meaning": {
+         "above_every_control": false,
+         "share_of_controls_beaten": 0.529
+        }
+       }
+      }
+     ],
+     "best": {
+      "rare": {
+       "work_id": "institutional_books:32044011010378",
+       "rank": 204520,
+       "of": 204520,
+       "top_share": 1.0,
+       "per_10000_words": 0.0,
+       "shared_rare_grams": 0
+      },
+      "meaning": {
+       "work_id": "institutional_books:32044011010378",
+       "rank": 47218,
+       "of": 221327,
+       "top_share": 0.21334,
+       "places": 0,
+       "mean_best": 0.75,
+       "max_best": 0.8033,
+       "in_gallery": true
+      }
+     },
+     "verdict": "no"
+    }
+   },
+   "outside": {
+    "immoral_tendency_of_error": {
+     "status": "not held: not attempted",
+     "link": "https://www.google.com/books/edition/The_Immoral_Tendency_of_Error_in_Sentime/qWeLqf90-_8C"
+    },
+    "casse_authentic_narrative": {
+     "status": "not held: not attempted",
+     "link": "https://www.google.com/books/edition/Authentic_Narrative_of_the_Sufferings_of/tqNcAAAAcAAJ"
+    }
+   },
+   "controls": {
+    "late": {
+     "rare": {
+      "placed": 911,
+      "not_attempted": 0,
+      "best": [
+       {
+        "work_id": "internet_archive:universalist_1827-07-07_9_3",
+        "rank": 4,
+        "of": 204520,
+        "top_share": 2e-05,
+        "per_10000_words": 1.4789,
+        "shared_rare_grams": 1
+       },
+       {
+        "work_id": "internet_archive:sim_universalist_1825-06-25_7_1",
+        "rank": 7,
+        "of": 204520,
+        "top_share": 3.4e-05,
+        "per_10000_words": 1.304,
+        "shared_rare_grams": 1
+       },
+       {
+        "work_id": "institutional_books:AH3T74",
+        "rank": 273,
+        "of": 204520,
+        "top_share": 0.001335,
+        "per_10000_words": 0.0279,
+        "shared_rare_grams": 1
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t0xp75t11",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t3jw9pg7w",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t3qv4tg0g",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t52f91961",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t5q81x475",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t6640bp0s",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       },
+       {
+        "work_id": "hathitrust:ia.ark:/13960/t71v69r10",
+        "rank": 204520,
+        "of": 204520,
+        "top_share": 1.0,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0
+       }
+      ],
+      "median_top_share": 1.0,
+      "in_top_yes_share": 3,
+      "in_top_no_share": 3
+     },
+     "meaning": {
+      "placed": 862,
+      "not_attempted": 49,
+      "best": [
+       {
+        "work_id": "institutional_books:AH6JH7",
+        "rank": 346,
+        "of": 221327,
+        "top_share": 0.001563,
+        "places": 1,
+        "mean_best": 0.7862,
+        "max_best": 0.8209,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:AH6JHE",
+        "rank": 1058,
+        "of": 221327,
+        "top_share": 0.00478,
+        "places": 0,
+        "mean_best": 0.7908,
+        "max_best": 0.83,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:AH6FHU",
+        "rank": 1131,
+        "of": 221327,
+        "top_share": 0.00511,
+        "places": 0,
+        "mean_best": 0.7902,
+        "max_best": 0.826,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:AH6FKE",
+        "rank": 1846,
+        "of": 221327,
+        "top_share": 0.008341,
+        "places": 0,
+        "mean_best": 0.7866,
+        "max_best": 0.8306,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:32044073467359",
+        "rank": 2221,
+        "of": 221327,
+        "top_share": 0.010035,
+        "places": 0,
+        "mean_best": 0.7854,
+        "max_best": 0.8156,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:AH3T74",
+        "rank": 2247,
+        "of": 221327,
+        "top_share": 0.010152,
+        "places": 0,
+        "mean_best": 0.7853,
+        "max_best": 0.8333,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:AH6E3A",
+        "rank": 2280,
+        "of": 221327,
+        "top_share": 0.010301,
+        "places": 0,
+        "mean_best": 0.7852,
+        "max_best": 0.8218,
+        "in_gallery": true
+       },
+       {
+        "work_id": "internet_archive:discoursesrelati0196prie",
+        "rank": 2657,
+        "of": 221327,
+        "top_share": 0.012005,
+        "places": 0,
+        "mean_best": 0.7841,
+        "max_best": 0.8029,
+        "in_gallery": true
+       },
+       {
+        "work_id": "internet_archive:discoursesrelati01prie",
+        "rank": 2703,
+        "of": 221327,
+        "top_share": 0.012213,
+        "places": 0,
+        "mean_best": 0.784,
+        "max_best": 0.8244,
+        "in_gallery": true
+       },
+       {
+        "work_id": "institutional_books:AH6JHC",
+        "rank": 2838,
+        "of": 221327,
+        "top_share": 0.012823,
+        "places": 0,
+        "mean_best": 0.7837,
+        "max_best": 0.821,
+        "in_gallery": true
+       }
+      ],
+      "median_top_share": 0.223211,
+      "in_top_yes_share": 4,
+      "in_top_no_share": 152
+     }
+    },
+    "early": {
+     "rare": {
+      "placed": 41,
+      "not_attempted": 0,
+      "best": [
+       {
+        "work_id": "tcp:A26063",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 7627
+       },
+       {
+        "work_id": "tcp:A26935",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 10030
+       },
+       {
+        "work_id": "tcp:A27064",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 142208
+       },
+       {
+        "work_id": "tcp:A27623",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 107532
+       },
+       {
+        "work_id": "tcp:A29082",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 19517
+       },
+       {
+        "work_id": "tcp:A29219",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 75325
+       },
+       {
+        "work_id": "tcp:A29752",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 325071
+       },
+       {
+        "work_id": "tcp:A31280",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 10071
+       },
+       {
+        "work_id": "tcp:A34189",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 3105
+       },
+       {
+        "work_id": "tcp:A39378",
+        "rank": 204521,
+        "of": 204520,
+        "top_share": 1.000005,
+        "per_10000_words": 0.0,
+        "shared_rare_grams": 0,
+        "outside_population": true,
+        "words": 3823
+       }
+      ],
+      "median_top_share": 1.000005,
+      "in_top_yes_share": 0,
+      "in_top_no_share": 0
+     },
+     "meaning": {
+      "placed": 41,
+      "not_attempted": 0,
+      "best": [
+       {
+        "work_id": "tcp:A49797",
+        "rank": 368,
+        "of": 221327,
+        "top_share": 0.001663,
+        "places": 1,
+        "mean_best": 0.7854,
+        "max_best": 0.8503,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A27623",
+        "rank": 2465,
+        "of": 221327,
+        "top_share": 0.011137,
+        "places": 0,
+        "mean_best": 0.7846,
+        "max_best": 0.8086,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A65821",
+        "rank": 6192,
+        "of": 221327,
+        "top_share": 0.027977,
+        "places": 0,
+        "mean_best": 0.7775,
+        "max_best": 0.8345,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A29752",
+        "rank": 6276,
+        "of": 221327,
+        "top_share": 0.028356,
+        "places": 0,
+        "mean_best": 0.7774,
+        "max_best": 0.8291,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A27064",
+        "rank": 6422,
+        "of": 221327,
+        "top_share": 0.029016,
+        "places": 0,
+        "mean_best": 0.7772,
+        "max_best": 0.8323,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A96295",
+        "rank": 10649,
+        "of": 221327,
+        "top_share": 0.048114,
+        "places": 0,
+        "mean_best": 0.7719,
+        "max_best": 0.8216,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A93771",
+        "rank": 11281,
+        "of": 221327,
+        "top_share": 0.05097,
+        "places": 0,
+        "mean_best": 0.7713,
+        "max_best": 0.8202,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A59926",
+        "rank": 12227,
+        "of": 221327,
+        "top_share": 0.055244,
+        "places": 0,
+        "mean_best": 0.7703,
+        "max_best": 0.8048,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A85957",
+        "rank": 13889,
+        "of": 221327,
+        "top_share": 0.062753,
+        "places": 0,
+        "mean_best": 0.7687,
+        "max_best": 0.794,
+        "in_gallery": false
+       },
+       {
+        "work_id": "tcp:A56582",
+        "rank": 14768,
+        "of": 221327,
+        "top_share": 0.066725,
+        "places": 0,
+        "mean_best": 0.768,
+        "max_best": 0.8081,
+        "in_gallery": false
+       }
+      ],
+      "median_top_share": 0.12383,
+      "in_top_yes_share": 1,
+      "in_top_no_share": 18
+     }
+    }
+   }
+  }
+ },
+ "decoy_puts_named_high": {
+  "scripture_inquiry": [
+   "meaning"
+  ],
+  "epicurus_life_and_morals": []
+ },
+ "answer": "cannot tell",
+ "not_done": [
+  "immoral_tendency_of_error: not held (Google Books only); link in settings.outside",
+  "casse_authentic_narrative: not held (Google Books only); link in settings.outside"
+ ],
+ "config_sha256": "1b2b3963122651e7f632a5d76194911420d8a2609aa4eda6bc7ce6532eb0b1d2",
+ "commit": "cae82ca10a820f20fb132ef3533b6805eeff27b5"
+}

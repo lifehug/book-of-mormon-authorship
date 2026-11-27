@@ -1,0 +1,249 @@
+{
+ "settings": {
+  "target": [
+   485,
+   489
+  ],
+  "chapter_1830": [
+   485,
+   498
+  ],
+  "decoy": [
+   761,
+   765
+  ],
+  "named": {
+   "scripture_inquiry": [
+    "",
+    "^\\W*scripture inquiry into the state and condition of mankind"
+   ],
+   "epicurus_life_and_morals": [
+    "^epicurus",
+    "life and morals of epicurus"
+   ]
+  },
+  "outside_dir": "data/corpus/lab/sources/nephi28",
+  "outside": {
+   "immoral_tendency_of_error": "https://www.google.com/books/edition/The_Immoral_Tendency_of_Error_in_Sentime/qWeLqf90-_8C",
+   "casse_authentic_narrative": "https://www.google.com/books/edition/Authentic_Narrative_of_the_Sufferings_of/tqNcAAAAcAAJ"
+  },
+  "topic_pattern": "universal (salvation|restoration|redemption)|universalis|restitution of all|salvation of all men|final restoration|(endless|eternal|everlasting|future) (punishment|misery|torment)|eternity of hell|duration of (future )?punishment",
+  "eras": {
+   "late": [
+    1780,
+    1829
+   ],
+   "early": [
+    1640,
+    1779
+   ]
+  },
+  "plants": 10,
+  "plant_min_words": 20000,
+  "plant_middle": [
+   0.1,
+   0.9
+  ],
+  "seed": 20261127,
+  "plant_top_share": 0.01,
+  "plant_bar": 8,
+  "yes_share": 0.01,
+  "no_share": 0.1,
+  "decoy_high_share": 0.1,
+  "cut_tolerance": 0.002,
+  "scan_workers": 6,
+  "scan_part": 10000
+ },
+ "known_answer": {
+  "late_war_window": {
+   "window_words": 1186,
+   "window_grams": 1160,
+   "population": 204527,
+   "other_printings": 9,
+   "printings_sharing_a_window_gram": 9,
+   "ranks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "printings_sharing_none": [],
+   "best_rank_of_any_other_volume": 10,
+   "passed": true
+  },
+  "index_pass_reproduces_stored_cut": {
+   "queries": 30,
+   "max_difference": 1e-06,
+   "tolerance": 0.002,
+   "passed": true
+  },
+  "plants": {
+   "plants": [
+    {
+     "plant": 0,
+     "work_id": "internet_archive:sim_literary-and-evangelical-magazine_1827_10",
+     "passage": 2093,
+     "rare": {
+      "rank": 6,
+      "of": 204520,
+      "top_share": 2.9e-05
+     },
+     "meaning": {
+      "rank": 104,
+      "of": 221327,
+      "top_share": 0.00047
+     }
+    },
+    {
+     "plant": 1,
+     "work_id": "internet_archive:elementsnatural00leslgoog",
+     "passage": 542,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 908,
+      "of": 221327,
+      "top_share": 0.004103
+     }
+    },
+    {
+     "plant": 2,
+     "work_id": "internet_archive:bim_eighteenth-century_a-collection-of-decrees-_great-britain-court-of-_1798_4",
+     "passage": 2283,
+     "rare": {
+      "rank": 4,
+      "of": 204520,
+      "top_share": 2e-05
+     },
+     "meaning": {
+      "rank": 876,
+      "of": 221327,
+      "top_share": 0.003958
+     }
+    },
+    {
+     "plant": 3,
+     "work_id": "internet_archive:secondadventorg00frygoog",
+     "passage": 154,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 95,
+      "of": 221327,
+      "top_share": 0.000429
+     }
+    },
+    {
+     "plant": 4,
+     "work_id": "internet_archive:s5id13407370",
+     "passage": 186,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 912,
+      "of": 221327,
+      "top_share": 0.004121
+     }
+    },
+    {
+     "plant": 5,
+     "work_id": "internet_archive:bp_640945",
+     "passage": 589,
+     "rare": {
+      "rank": 33,
+      "of": 204520,
+      "top_share": 0.000161
+     },
+     "meaning": {
+      "rank": 875,
+      "of": 221327,
+      "top_share": 0.003953
+     }
+    },
+    {
+     "plant": 6,
+     "work_id": "internet_archive:estimateofreligi00more",
+     "passage": 132,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 746,
+      "of": 221327,
+      "top_share": 0.003371
+     }
+    },
+    {
+     "plant": 7,
+     "work_id": "internet_archive:twohundredandni03hogggoog",
+     "passage": 315,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 848,
+      "of": 221327,
+      "top_share": 0.003831
+     }
+    },
+    {
+     "plant": 8,
+     "work_id": "internet_archive:bim_eighteenth-century_two-additional-letters-_andrews-john_1781",
+     "passage": 29,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 954,
+      "of": 221327,
+      "top_share": 0.00431
+     }
+    },
+    {
+     "plant": 9,
+     "work_id": "tcp:K016332.002",
+     "passage": 264,
+     "rare": {
+      "rank": 1,
+      "of": 204520,
+      "top_share": 5e-06
+     },
+     "meaning": {
+      "rank": 940,
+      "of": 221327,
+      "top_share": 0.004247
+     }
+    }
+   ],
+   "in_top_share": {
+    "rare": 10,
+    "meaning": 10
+   },
+   "bar": 8,
+   "passed": true
+  },
+  "passed": true
+ },
+ "config_sha256": "ff13272ed8326fa4784df8a8515975bcf2b5201adadd60aa3cc7472a94b5e6cf",
+ "commit": "27d13431ca0033acc58884f7c901931bd5bb03d0"
+}

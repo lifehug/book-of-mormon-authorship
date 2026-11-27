@@ -648,7 +648,7 @@ def one_target(ctx: dict, t: str, grams: set[int], n_words: int, queries: list[i
         else:
             try:
                 txt = text if text is not None else door.text_of(ctx["cat"][w])
-            except (OSError, KeyError):
+            except (OSError, KeyError, TypeError):  # no text file: not attempted
                 txt = None
             if txt is None:
                 row["rare"] = "unreadable: not attempted"
