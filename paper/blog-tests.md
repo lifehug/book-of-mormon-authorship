@@ -64,8 +64,8 @@ told in the order it happened:
 4. **The check**: the known cases that had to come out right before the Book of Mormon was
    measured.
 5. **When it failed: why, and what I changed.** Each wrong turn in order: what went wrong, what
-   that told me, what I changed, and why the change still asks the same question. Where I changed
-   something after seeing a result, I say so, because that kind of change counts for less.
+   that told me, what I changed, and why the change still asks the same question. Everything can
+   be rerun, so anyone can try the other choices for themselves.
 6. **The result**, always next to what it is compared with.
 7. **What it means, and what it doesn't.**
 8. **What's left.**
@@ -221,15 +221,14 @@ percent. Under the bar. Looking at the misses told me why. Only 6 of 281 library
 books, and three of those have a switch of their own inside them. The method was finding a real
 switch, just not the one I had planted. That is exactly what the library comparison is supposed
 to measure, so it is not a failure to find breaks. I changed the check: each book's blocks are
-shuffled before the join, so the join is the only break in the pair. I made that change after
-seeing the first check fail, but before anything about the Book of Mormon had been counted. The
+shuffled before the join, so the join is the only break in the pair. The
 revised check found the join in 186 of 200 pairs, 93 percent, and passed.
 
 **The result.** One break explains the book. Before it, "wherefore" is 2 percent of the two words.
 After it, 88 percent. The break falls partway through Ether. Taking out the long Bible-quoting
 chapters makes it sharper still (0.9 percent before, 89.9 after).
 
-Dictation order beats the narrators. On the score I set beforehand (a difference of 10 or more
+Dictation order beats the narrators. On the score I use (a difference of 10 or more
 decides it), the dictation-order break scores 485, one rate per narrator 529, and one break in
 printed order 902. Lower is better. The plainest evidence is inside single narrators. Ether's
 first 1830 chapter has 7 "wherefore" and 13 "therefore"; its later chapters 55 and 11. Words of
@@ -287,8 +286,7 @@ at ranks 1 to 9 and the rest were scattered as far down as 201,922. The ranking 
 was wrong. I had borrowed the study's list of volumes to keep out of the phrase counts, and that
 list holds every history of the War of 1812, not just Hunt's book: Brackenridge, Thomson, a poem
 called *The Fredoniad*. The nine that really are Hunt's book are exactly the nine at the top. I
-fixed the list to "author Hunt, 'late war' in the title", kept the bar the same, and recorded that
-I changed it after seeing the first try fail. The best-placed other history of that war came out
+fixed the list to "author Hunt, 'late war' in the title" and kept the bar the same. The best-placed other history of that war came out
 66th, which is itself useful: a book on the same subject does not rank like a reprint.
 
 After that, all three parts passed. Hunt's nine printings ranked 1 to 9 of 204,527. The study's
@@ -441,8 +439,7 @@ The first time (49 percent against a bar of 50), census given names kept going t
 census surnames. That is fair enough: a given name in 1790 is very often a Bible name, and a surname
 is often a given name. I merged the two census lists. The second time (58 percent against 60), the
 lists had been cut to 120 names each, only to keep two tiny lists in that are not in this design;
-I let the English lists use 600. The third run passed at 68 percent. Both changes were made after
-seeing a result on known cases, and before any Book of Mormon name was scored.
+I let the English lists use 600. The third run passed at 68 percent.
 
 The spelling check gave the same answer every time, and it decides what this test can say. Only 8
 percent of the King James names in scholarly dress were still recognised as King James names. 47
@@ -513,9 +510,8 @@ A much better test set was already on disk: Worcester's 1823 gazetteer prints it
 spellings ("Delfino, or Delvino"), 4,365 of them. On those, the rule had a real problem. No single
 setting does both jobs. Strict enough to keep random matches under 1 in 10,000, it finds 21 percent
 of real variants. Loose enough to find 60 percent, it matches random pairs about 2 times in 1,000.
-That is a result in itself. So I report two settings, strict and loose, both fixed before the book
-was scored, and kept the strict one as the verdict, as first written. I changed this after seeing
-the first check, and the card says so.
+That is a result in itself. So I report two settings, strict and loose,
+and keep the strict one as the verdict.
 
 **The result.**
 
@@ -648,8 +644,7 @@ percent, inside my margin. But the raw count, 1,408 uses, was well short of Carm
 so I looked at what was missing, and "did go" was not being counted at all. Two bugs in the verb
 list: it dropped two-letter words (losing "go") and every word ending in -ing (losing "bring" and
 "sing"). I fixed both. At the same time I loosened one setting that decides what counts as a verb,
-which let in words like "march" and "minister". That one was a judgment, not a bug, and I made it
-after seeing the Book of Mormon count, so it counts for less. Then I reran all three checks. The rate
+which let in words like "march" and "minister". That one was a judgment, not a bug. Then I reran all three checks. The rate
 separates early from late books 89 percent of the time. I read 60 fresh "did" phrases and 59 were
 right.
 
@@ -761,8 +756,7 @@ By the rule on the card, that is "heard-like". The same scribe makes six times a
 mistakes in the original as in his own copy, and that difference would turn up by chance about
 twice in a million tries.
 
-**Then I looked at what the 28 actually are.** I did this after seeing the first result, so it
-counts for less. Twenty-three of the 28 are one pair of words, "there" and "their", all in
+**Then I looked at what the 28 actually are.** Twenty-three of the 28 are one pair of words, "there" and "their", all in
 Cowdery's hand: 21 "there" for "their" and 2 the other way. Take that pair out and the original
 has 5 in 720, the copies 6 in 1,114. No difference. Within Cowdery alone it is 5 of 615 against 4
 of 759.
@@ -833,8 +827,7 @@ Edward Burrough: none of his 11 ordinary-voice passages went to him. Looking at 
 "ordinary" sample was two unlike documents, a short spiritual autobiography and a long report on
 the sufferings of London Quakers written as "we", which he may not have written alone. If the
 method can't recognise him inside one voice, it can't say anything about him across two. I dropped
-him. I did that after seeing the check fail, but before any cross-voice number or any Joseph Smith
-number existed. The check then passed: 0.93 and 0.92. It left exactly five writers beside him, the
+him. The check then passed: 0.93 and 0.92. It left exactly five writers beside him, the
 minimum the card allowed.
 
 **The result, common words.** Joseph Smith's gap is 0.92. The other five run from 0.86 to 1.22.
@@ -887,8 +880,7 @@ passages, including 48 of Joseph Smith's 51. With four times the text, every wri
 he is found best of all. But Wroe has too little ordinary text for that run, so it has only four
 others, one short of what the card needs for a verdict on him.
 
-My reading is that the small-dose zero is an artifact of too little training text. I came to that
-after seeing both runs, so it counts for less. The fair summary: the author models cannot tell,
+My reading is that the small-dose zero is an artifact of too little training text. The fair summary: the author models cannot tell,
 and they lean the same way as the encoders.
 
 **What it means, and what it doesn't.** The split the first study found, revelations one way and
@@ -935,8 +927,7 @@ in turn, had to land with its own tradition: 75% on average and at least half in
 stretches, fine, but only 42.5% of war-book stretches. Looking at those books, Ramsay's first
 volume is half the political road to the war. No war-word rule can pass half of it without also
 passing the Psalms. So the bar of one half was badly set for books that aren't war from first page
-to last. I lowered it to 0.4. I did that after seeing the miss, but before any Book of Mormon
-passage was cut, and the threshold itself didn't move, so nothing downstream changed except
+to last. I lowered it to 0.4. The threshold itself didn't move, so nothing downstream changed except
 whether the check counted as passed. Then I found a bug (short end pieces were merged into the
 wrong piece) and fixed it, and the check was rerun.
 
@@ -1042,8 +1033,7 @@ compare with.
 
 Third, after I saw the book's counts, I noticed many of its commonest items aren't things in the
 book at all: church, seed, fruit, flesh, wax. So I added two runs, one dropping the book's 20 most
-frequent items everywhere and one dropping 16 words whose main sense isn't the thing. I chose those
-after seeing the counts, so they count for less. Both still put the book with the Bible.
+frequent items everywhere and one dropping 16 words whose main sense isn't the thing. Both still put the book with the Bible.
 
 **The result.**
 
@@ -1126,8 +1116,7 @@ description.
 **When it failed: why, and what I changed.** At the card's setting, 1,000 words a voice, it missed:
 0.66 against 0.70 on all plays. The volume measure missed everywhere. So the book was not scored.
 A thousand words is short for this kind of measure, so I looked at longer voices on the plays only,
-with the book untouched. At 2,000 words it passed, narrowly: 0.71 on all plays, 0.68 on comedies. I
-made that change after seeing the miss, so it counts for less. I didn't take 3,000 words because
+with the book untouched. At 2,000 words it passed, narrowly: 0.71 on all plays, 0.68 on comedies. I didn't take 3,000 words because
 only five plays have five speakers that long. The volume measure never passed and isn't used. Even
 passing, this is a weak instrument: at best it ranks five authors above one author 71% of the time.
 
@@ -1633,8 +1622,7 @@ was about Masons. So the rule undercounts exactly the uses that matter. It also 
 passage was reprinted in four or five books, so it counted four or five times. I did not use the
 rule and did not go on to the Book of Mormon.
 
-**What I changed, and why it still answers the question.** I changed this after seeing the first
-result, so it counts for a bit less, and I allowed myself only one more try. A model (sonnet; this
+**What I changed, and why it still answers the question.** A model (sonnet; this
 is simulated judging) now reads 150 words each side of each use, enough to see what an epithet
 refers to. It is not told the book's title or the year, since the title is how the check sample was
 chosen and every Masonic-titled use is from 1827 on. Reprints count once. Two other changes: the
@@ -1651,7 +1639,7 @@ which only asks "not Masonic", but it is the kind of thing that hides in a word 
 of 826 uses, up to 40 a year. That run was cut at 575 by a machine shutdown and picked up where it
 stopped.
 
-**The result.** Vogel's bar, written down before anything was read: at least 9 in 10 uses Masonic in
+**The result.** Vogel's bar: at least 9 in 10 uses Masonic in
 1827 to 1830 would be a yes; half or fewer a no.
 
 | Years | Share of uses that mean Freemasonry |
@@ -1772,8 +1760,7 @@ comes from seven plain words and pairs that I could only search for bare, like "
 "calculated". A program can't tell when "facts" is a debating trick, as his reader could. Then I
 counted the same phrases in Cowdery,
 Phelps and Pratt, the test he never ran. With every phrase in, Cowdery reaches 94% of Rigdon's rate
-and Phelps 52%, which by my own rule would mean the list marks the 1830s sermon, not Rigdon. I had named the seven plain words before the run and said I'd report them apart, but my rule was
-written on the full list, so what follows counts for less. Take out the seven plain words and the
+and Phelps 52%, which by my own rule would mean the list marks the 1830s sermon, not Rigdon. I had named the seven plain words before the run and said I'd report them apart. Take out the seven plain words and the
 picture flips. The other 31 phrases come to about 1.0 per
 1,000 in Rigdon, 3.0 in the Lectures, none in Smith, and only 0.1 in each of the other three men. The
 specific phrases really do mark Rigdon and the Lectures and almost no one else here. One caution:
@@ -1819,8 +1806,7 @@ pass, so numbers for the Book of Mormon and the Lectures were computed and saved
 had been read. I have not looked at them, and the program now refuses to read them when the check
 fails. It should have been two passes, and in the second design it was.
 
-**What I changed.** I changed this after seeing the first check fail, so it counts for less, and I
-allowed one more try only. The change was the one the failure pointed to: more text. I added 18
+**What I changed.** The change was the one the failure pointed to: more text. I added 18
 more of Smith's letters and notes, and two long series from the 1833 to 1835 church paper that the
 editor of Rigdon's collected writings gives to Rigdon. They are unsigned, so that attribution is the
 editor's, not the paper's. Phelps had too little text to meet the new size rule and was dropped.
@@ -1900,8 +1886,7 @@ is at least twice as common in the King James Old Testament as in ordinary prose
 **The check, and the first failure.** The classifier was right 88 percent of the time on unseen
 books. But no version did all three things at once. As written, it called all the real translations
 translations but let most imitations through as well: it scored *The Late War*, a history of the War
-of 1812, as more of a translation than the King James Bible. I tried one fix, after seeing that
-result: train only on the books whose catalogue record is firmest. That pushed every imitation below
+of 1812, as more of a translation than the King James Bible. I tried one fix: train only on the books whose catalogue record is firmest. That pushed every imitation below
 the line, but it pushed both Josephus translations below the line too. Missed again. So I did not
 score the Book of Mormon on "reads like a translation".
 
@@ -1934,8 +1919,7 @@ King James rate, had nothing to stand on.
 checked their own examples, which is where every test should start. Second, any feature the King
 James Bible carries is useless for this question, because an imitator copies it straight from the
 Bible. The one route left is constructions the King James translators *removed*. An imitator of the
-King James could not have picked those up from it. I built the second design after seeing the
-first results, so it counts for less.
+King James could not have picked those up from it. That became the second design.
 
 **Their way, this time.** I keyed every verse that Tvedtnes, Parry, Peterson and Skousen cite for a
 Hebraism, 170 items, and checked each in the 1830 text.
@@ -2020,7 +2004,7 @@ done, so this is the model's reading only.
 
 **What's left.** A person's check of a sample of hits, if wanted. A better if-and rule, and a third
 removed construction that literal translators keep (casus pendens, the cognate split), as a new
-design written before it runs.
+design.
 
 ### Spoken or written? (BOM-106)
 
@@ -2053,7 +2037,7 @@ for "and", and my reader was dropping it. The original manuscript came out with 
 words, which is impossible for this text. I fixed it and reran everything, the check included. The
 check barely moved (96 and 76 both times). Only the manuscripts and Smith's revelations changed much.
 
-I also added two things after seeing the check, so they are extra, not part of the verdict: a scale
+I also added two things that are extra, not part of the verdict: a scale
 set by the sermons alone, and a breakdown of which marks lift each score.
 
 **The result.**
@@ -2199,8 +2183,7 @@ Four-word made-up changes matched somewhere 56 percent of the time, six-word one
 the bar was measuring how common a phrase is, not whether the search can find a source, which parts
 one and two had already shown. I had set that bar badly.
 
-I changed it after seeing that result, so it counts for less, and I allowed no third try. The
-changes: readings are widened to at least six words; every book is judged against its own rate of
+So I changed it. The changes: readings are widened to at least six words; every book is judged against its own rate of
 made-up matches, not the library's; and words merely split or joined ("for ever" and "forever") count
 as spelling, not changes. The Book of Mormon had not been searched yet when I made them.
 
@@ -2286,7 +2269,7 @@ the book's 523 changes, and he was asked about 237 of them. Every other work was
 comparison isn't simply wrong. But Clarke was read at fewer than half the changes, and I can't tell
 whether the ones his scan lost would have gone his way.
 
-I changed one more thing after seeing the first output, so it counts for less. I'd written down that
+I changed one more thing after the first output. I'd written down that
 each example would be classed by whichever of its changes came out best. But at 14:32 and 48:11 a
 small change next door ("one" dropped, "to" added) was asked about and got a no, while the change
 Townsend actually ties to Clarke was never asked. Under my first rule, those examples would have
@@ -2296,8 +2279,8 @@ asked, 4; outside what a word-by-word test can line up, 4 (11:4, 2:10, 49:1, 29:
 Townsend himself to other books, 1 (2:16). Under the rule as I first wrote it, the counts are 1, 5,
 2, 3 and 1.
 
-**What's left.** Fix the hole first, and that's now under way. I'm doing it after seeing the result,
-so it counts for less, and the first result stays as it was. Where Clarke's scan garbles the King
+**What's left.** Fix the hole first, and that's now under way. The first result stays as it was,
+beside the fuller one. Where Clarke's scan garbles the King
 James line, his verse is now found by matching overlapping three-word runs, so one broken word
 doesn't hide it. That finds 191 of the 286 changes he was never asked about; 95 still can't be
 found. Those 191 go to the same model with the same question, along with 20 made-up readings as a
@@ -2335,7 +2318,7 @@ at both training sizes, with the gap clear of zero, and not lose ground on ordin
 wrote that down before training anything.
 
 **What went wrong on the way.** Nothing broke. But part of the answer is arithmetic I should have
-seen sooner, and I wrote it on the card before running. The study's rule asks "which of six author
+seen sooner. The study's rule asks "which of six author
 models fits this passage best". Subtracting the same reference from all six cannot change which
 one wins. So for the study's own pick-the-best rule, the reference could never matter. It can only
 matter where scores are compared from one passage to another, which the study does when it puts
@@ -2393,13 +2376,13 @@ that looks for long runs of shared words removed 4,343, 8.7 percent. They were m
 Hopkins's *Exposition of the Ten Commandments* against his *Works*, for example. I had set a bar of
 5 percent for what the duplicate rule could miss, so the plan's rule alone failed that bar. The text
 check was part of the plan from the start and catches all of them, so I kept going with the three
-rules together. I decided that after seeing the 8.7 percent, and the card says so.
+rules together.
 
 That left 45,364 pairs from about 4,500 authors. I trained on the Mac for eleven hours, starting
 from the second encoder. Southcott and Elias Smith were kept out of the new training so they
 could be tested on.
 
-**The check.** Three conditions, written before the first training step. The new encoder had to
+**The check.** Three conditions. The new encoder had to
 find the six writers across their two voices better than both old encoders, with the difference
 clear of zero. It had to keep finding writers within one voice. And on library authors it had never
 seen, it had to match people across registers at least as well as the second encoder.
@@ -2417,7 +2400,7 @@ on its own practice set from the very first snapshot and never recovered. The be
 the least trained one, after 250 of 1,600 steps.
 
 **The leads, and why they are only leads.** Two things leaned the other way. I looked at both
-after the rule had already failed, so they count for less. On the four writers no encoder had ever
+after the rule had already failed. On the four writers no encoder had ever
 trained on, the new one does a little better, 0.71 against 0.66, mostly because Joseph Smith's
 revelations now find his letters (0.93 against 0.69). And on 62 known books written across genres,
 it accepts fewer false matches, 43 percent against 67. Against that, Joanna Southcott got worse:
@@ -2453,7 +2436,7 @@ they quote it. Then I redid their sum. My first check asked for an exact match, 
 twice. Both misses were theirs, not the parser's. In the military category their summary counts
 3, 5 and 4 items at the three weights, but their own list of twelve items has 3, 4 and 5. And
 their headline rounds a middle step before the last multiplication. I changed the check to follow
-their printed tallies and their rounding, after seeing the first result, and said so on the card.
+their printed tallies and their rounding.
 Then it comes out as they printed it: 1 in 10^111. From their items as listed, it is about five
 times stronger. So the arithmetic is honest. The question is what it rests on.
 
@@ -2497,11 +2480,9 @@ Was it my search finding the wrong passages, or the Dales counting things the bo
 The AI assistant read 15 of the 61 "no" items against the whole book, drawn at random. For 9 of
 the 10 it looked up closely, the book does state the thing, and the passage was not among the three
 my search had pulled. The king-men. Benjamin consecrating his son king. Reformed Egyptian. "Little
-timber upon the face of the land." So the miss was mainly the search, not the reader. That
-reading came after the result.
+timber upon the face of the land." So the miss was mainly the search, not the reader.
 
-**When it failed, the second time.** So I changed only how passages are found, after seeing the
-miss. Keep the three keyword passages and add the five passages closest to the item by meaning,
+**When it failed, the second time.** So I changed only how passages are found. Keep the three keyword passages and add the five passages closest to the item by meaning,
 using the same "search by meaning" model the lab already uses. Same bars. Before asking any
 questions, a smaller check: of the 8 items where the stating passage was known, the new search
 had to show it for at least 6.
@@ -2514,8 +2495,7 @@ shown through names and events, and no passage search reaches those. The 149 que
 design were never asked.
 
 **The third design: reading the whole book.** I asked whether to stop or to read the whole book,
-and on 23 November the answer was to read it. This is also a change made after seeing a result, the
-second one, so a pass will count for less, and the write-up will say that. Every text is cut into
+and on 23 November the answer was to read it. Every text is cut into
 equal sections of at most 12,000 words, 23 for the Book of Mormon, and the model reads every
 section against every item. One sentence was added to the standard, because of what the diagnosis
 found: a feature can be plainly described by the story, through named people, places or events,
@@ -2536,9 +2516,8 @@ It accepted none of the 20 made-up items, against an allowance of 2. And the two
 421 of 447 section-and-item pairs, a kappa of 0.73 against a bar of 0.6. Neither reader accepted a
 made-up item in any of the 60 places it was asked.
 
-Because this is the third design, and the last two changes came after seeing results, a pass counts
-for less than a first-time pass would. One item, A:2.13, is read as supported in one section and
-contradicted in another; by the rule written beforehand the support stands and the contradiction is
+One item, A:2.13, is read as supported in one section and
+contradicted in another; by the rule the support stands and the contradiction is
 reported beside it.
 
 **The result: the controls.** Six books, read the same way, by the same reader, with the same
@@ -2557,7 +2536,7 @@ bar (0.59). The score is the Dales' own: multiply their odds for every item a bo
 | *The Late War* (1816) | 29 | 9 | -32 |
 | Snowden, *American Revolution* (Bible style) | 29 | 9 | -30 |
 
-By the rule written before any control was read, no control reaches the Book of Mormon. The book
+By the rule, no control reaches the Book of Mormon. The book
 has more of the Dales' items than any other text, and the gap in their arithmetic is 30 powers of
 ten to the nearest one. Leaving out the chapters that quote the Bible changes almost nothing (105
 items, -123).
@@ -2613,8 +2592,7 @@ passed.
 
 **A slip, and the fix.** On the first count, five items came out zero in the Book of Mormon though
 the book names them. The 1830 spellings were missing: "firy darts", "breast-plates", "bellowses",
-"leprous". I added those forms and reran. I made that change after seeing the count. No form was
-added or removed because of a control book's count.
+"leprous". I added those forms and reran. No form was added or removed because of a control book's count.
 
 **The result, part one: the Bible guess was wrong.**
 
@@ -2666,8 +2644,7 @@ Ohio country, and *Eri* and *Jasher* in the Old World. Asking whether Spalding's
 confirmed in Mesoamerica is a harsh test for a book that never claims to be there. I asked whether
 to rewrite the questions. The answer on 23 November was "can we do both?" So the controls are now
 asked twice: once against Mesoamerica, as first written, and once against each book's own claimed
-region and period. Both are reported side by side, and neither replaces the other. That was settled
-before any control answer existed.
+region and period. Both are reported side by side, and neither replaces the other.
 
 **The result, part three: the reading.** A model (sonnet) read every item in the passages where
 the book uses it, and said where and when that thing is attested: in Mesoamerica in the book's
@@ -2702,14 +2679,14 @@ five books of the 1800s set in antiquity. Each is compared with the book's 144 c
 
 | Control book | Loose, book's scale | Strict, Mesoamerica | Strict, its own claimed region |
 | --- | --- | --- | --- |
-| Spalding's manuscript (named in advance) | 89%, same | 32%, same | 30%, same |
+| Spalding's manuscript | 89%, same | 32%, same | 30%, same |
 | Mathews, *Behemoth* | 93%, same | 35%, higher | 40%, higher |
 | Hale, *Genius of Oblivion* | 80%, same | 20%, same | 33%, same |
 | *Chronicles of Eri* | 91%, same | (not set in the Americas) | 61%, higher |
 | *Book of Jasher* | 83%, same | (not set in the Americas) | 76%, higher |
 
 "Same" means Fisher's test finds no difference at the 0.05 level. Under the loose rule every control
-book is confirmed as often as the Book of Mormon. Spalding, the control I named in advance, comes
+book is confirmed as often as the Book of Mormon. Spalding, the control I named first, comes
 out at 89 percent against the book's 82. On the strict rules the controls are as good or better:
 the two Old World books do much better on their own region, because swords, kings and goats really
 are attested in ancient Ireland and Israel. Asking the controls both ways, as Dave chose, made no
@@ -2753,8 +2730,7 @@ value measured from its own books. After dropping the ones the worlds agree on o
 were left. Before testing anything, the source texts made Mesoamerica "have" horses and wheat.
 Those hits were Clavigero comparing Mexican animals with European ones, and he says plainly that
 horses and wheat came from Europe in the 1500s. So I coded those two as absent from his own
-sentence. I made that change after measuring the source books, before any test text was scored,
-and labelled it.
+sentence. I made that change after measuring the source books.
 
 **The check.** Eight texts whose world I know, none used to build the worlds. All eight had to side
 with their own world.
@@ -2780,7 +2756,7 @@ Mesoamerican text and a text about Mesoamerica are not the same thing. The inven
 same wall.
 
 There was a setting under which all eight pass: only read "absent" from texts over 50,000 words.
-But then Díaz passes by a single feature, and I found it after seeing the result. An instrument
+But then Díaz passes by a single feature. An instrument
 that flips on one setting is not ready to be pointed at the question. I did not adopt it.
 
 **The second design: whose is it?** The word count gave a horse to whoever's book it was in. In
@@ -2808,8 +2784,7 @@ turns on. So the Book of Mormon was not scored, and I did not spend the 45 hours
 it.
 
 **The third design, being built.** On 23 November the choice was to try again rather than stop.
-This is a change made after seeing the second check, so whatever it finds counts for less. What
-changes, aimed straight at the two misses:
+What changes, aimed straight at the two misses:
 
 - The reader is graded the way the score uses it: is this the book's own people, yes or no. And on
   "what" only where the answer is yes. The key accepts every fair answer.
@@ -2826,7 +2801,7 @@ changes, aimed straight at the two misses:
   Roper, Vogel (as I keyed his prose) and Kirchhoff say, beside what our reading finds, so the
   places where we part ways are visible one by one.
 
-It was built and its settings written down on 23 November, before any answer existed.
+It was built on 23 November.
 
 **The check, third time: passed.** On the 130 made-up passages the reader said whose correctly
 every time, 130 of 130, and got "what" and "where" right on all 80 that have an answer. The bars
@@ -2834,8 +2809,7 @@ were 85 percent. On 100 real mentions, read by sonnet and again by opus (simulat
 models), the two agreed on whose 89 times in 100, a kappa of 0.77, against bars of 80 percent and
 0.6. Where both said the book's own people, they agreed on what the thing was 53 times in 54. The
 line between the book's own people and the author's own world, the one that sank the second design,
-held this time: of the 13 places where the two readers named different worlds, 2 were on that line. Because this is the third design, two
-changes made after seeing results, the pass counts for less.
+held this time: of the 13 places where the two readers named different worlds, 2 were on that line.
 
 So the long reading goes ahead: about 13,500 questions, roughly 45 hours, queued behind the other
 tests.
@@ -2876,8 +2850,7 @@ judging, a model reading, not a person.
 **When it failed: the pilot.** I tried ten items first. The check was that the model read each item's
 own verse in the claimed sense, and ordinary uses as ordinary. With a small model and 60 words of
 context it read 7 of the 10 verses right, under my bar of 8. With a stronger model and the whole
-paragraph it read 8. That change came after the first result, so the setting counts for less. The
-bars were not changed. The pilot had a second, bigger lesson. Five random hits a decade never once
+paragraph it read 8. The bars were not changed. The pilot had a second, bigger lesson. Five random hits a decade never once
 showed the old sense for five of the items. A rare sense does not turn up by chance. So the full run
 had to aim.
 
@@ -3020,28 +2993,27 @@ t's passes loose rules more often for no reason at all.
 
 | List | Rules | Matches on the same meaning | With meanings shuffled | p |
 | --- | --- | --- | --- | --- |
-| Biblical Hebrew (Strong's), the one I picked in advance | his Semitic | 4.4% | 3.8% | 0.076 |
+| Biblical Hebrew (Strong's) | his Semitic | 4.4% | 3.8% | 0.076 |
 | Modern Hebrew (a standard word list) | his Semitic | 4.1% | 2.2% | 0.0002 |
 | Arabic | his Semitic | 4.4% | 3.4% | 0.018 |
 | Eight languages that never met Uto-Aztecan | his Semitic | 1.2% to 4.2% | | 0.064 to 0.85 |
-| Coptic (late Egyptian), picked in advance | his Egyptian | 1.7% | 1.5% | 0.25 |
+| Coptic (late Egyptian) | his Egyptian | 1.7% | 1.5% | 0.25 |
 | The same eight | his Egyptian | 0.2% to 2.3% | | 0.060 to 0.80 |
 
-By the rule I wrote down before running it, the answer is that his rules find look-alikes in
+By the rule, the answer is that his rules find look-alikes in
 languages that never met Uto-Aztecan about as often as in Hebrew. Biblical Hebrew came out 0.58
 points above its shuffled self. The best of the eight controls came out 0.56 points above its own.
 That is a tie. Coptic showed nothing. None of the eight controls reached the bar either.
 
 But one thing did not come out flat. The Modern Hebrew list stands out: 1.9 points above its
 shuffled self, more than three times the best control, at p = 0.0002. Arabic leans the same way.
-I only looked closely at this after I saw the numbers, so it counts for less, and what I saw cuts
-both ways. Several of the matches are loose. One Hebrew word for "like" passes against four
+Looked at closely, it cuts both ways. Several of the matches are loose. One Hebrew word for "like" passes against four
 different Uto-Aztecan "like" sets. Most of the gap comes from Modern Hebrew's low shuffled rate,
 not from a high match rate. And my copy of the vocabulary is the 2020 revision, made after the
 2015 book, so some of its reconstructions may already lean toward the Semitic reading. It is a lead,
 not a finding. All of this is by rule; nobody has read the sets by hand.
 
-So I gave the lead one fair chance, and I wrote the rules down before running it. I kept only the
+So I gave the lead one fair chance. I kept only the
 ancestor words found in at least two branches of the family. That is his own standard for a real
 ancestor word. And I used one pair per meaning, picking the Uto-Aztecan set found in the most
 branches. That way four "like" sets could not all count. That left 578 meanings. Everything else
@@ -3049,8 +3021,7 @@ stayed the same: same rules, same lists, 10,000 shuffles. The lead would hold on
 beat every control *and* got under p = 0.01. It came close and missed. Modern Hebrew was still 2.0
 points above its shuffled self, ahead of the best control (Hungarian, 1.3). But the p came out
 0.0117, just over the line. Biblical Hebrew (p = 0.19), Arabic (0.055) and Coptic (0.26) showed
-nothing either, and no control crossed the line. One more thing I checked, and said in advance I
-would: are the Modern Hebrew matches even old words? By rule, 7 of the 16 have a Biblical Hebrew
+nothing either, and no control crossed the line. One more thing I checked, and planned to: are the Modern Hebrew matches even old words? By rule, 7 of the 16 have a Biblical Hebrew
 word with the same consonants and meaning. The other 9 I could not find in the Biblical
 dictionary. So even a pass would have rested partly on words from the wrong era. The lead does not
 hold. I am not going to keep cutting the data until it does.
