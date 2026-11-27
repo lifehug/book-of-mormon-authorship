@@ -46,8 +46,7 @@ Every test here goes through the same steps, so the results can be read side by 
    - Joseph Smith's other dictated texts (the revelations, the Books of Moses and Abraham).
 4. **Say what the result does not show.** Every result gets this line.
 
-Three more habits. The rule for what counts as yes and as no is written on a one-page card before
-the run. Tests about the book's setting score all three candidate worlds together (ancient
+Three more habits. The rule for what counts as yes and as no is written on a one-page card. Tests about the book's setting score all three candidate worlds together (ancient
 America, the Bible's world, the United States of the 1820s), never one alone. And every file that
 came from outside is recorded with its address, so anyone can fetch the same thing and rerun it.
 
@@ -82,6 +81,7 @@ compares against.
 | BOM-118 | About 64 word uses and phrases had died out of English before the 1740s | Skousen and Carmack 2018 | dictionary citations, one item at a time | every item searched for its meaning across the whole library, with the same search on Bible-style books | Of 34 items I could test, 21 are still in use in 1740-1830, 2 turn up once, 11 not found; checked by two AI readings and my own, not by a person |
 | BOM-119 | The grammar is 1500s English: "did go" past tenses at 20% against under 2% in Bible-style books | Carmack 2015 to 2021 | five Bible-style books | every book in the library | **Done** |
 | BOM-102 | It reads like a translation; it has Hebrew turns of phrase | Tvedtnes, Skousen and others | examples | real translations against Bible-style imitations | **Hebraisms done; translation check failed (rules' hits read by a model: still fails on if-and)** |
+| BOM-132 | Words like "parents" could not stand in Nephi's Hebrew | a reader of the first paper, 2026 | single words | every word the King James Old Testament never uses, against real translations from Hebrew and Greek, imitations and sermons; the Hebrew under each word | **Done: the book sits with the translations, near Jasher, far below every imitation; "parents" goes the other way** |
 | BOM-120 | "Therefore" and "wherefore" switch in the order the book was dictated | Metcalfe 1993 | the book alone | 264 long books by one author | **Done** |
 
 ### 2. Where did the words and ideas come from?
@@ -92,6 +92,10 @@ compares against.
 | BOM-122 | Changes to Isaiah follow Adam Clarke's commentary | Townsend 2025; Jackson's reply | Clarke alone | every commentary and annotated Bible held, by wording and by reading the notes | **Clarke does not stand out; one real example (Isaiah 9:3); Clarke's scan read at under half the changes, to fix** |
 | BOM-124 | New Testament wording appears centuries before Christ | many | single cases | the rate by section, against sermons and period translators | **Done** |
 | BOM-123 | "Secret combinations" meant Freemasons in 1830 | Vogel 1989; replies | examples from each side | every use in print 1780 to 1835, by year | **Done: Masonic in about 4 of 10 uses by 1827-1830, not almost all** |
+| BOM-128 | Its Bible blends ("eat, drink, and be merry, for tomorrow we die") are 1820s idiom | a reader of the first paper, 2026 | examples | every joined King James phrase, dated by when print first holds it | TBD |
+| BOM-129 | "A few stripes" and other New Testament phrases are used in the sense of the 1820s Universalism debate | the same reader | examples | each new sense against 1640-1779 and 1780-1829 print (simulated reading) | TBD |
+| BOM-130 | 2 Nephi 28 draws on *Scripture Inquiry* (1828), a Hillsborough sermon (1809) and others | the same reader | the named books | the named books ranked among the whole library, with sermons on the same topics | TBD |
+| BOM-131 | 2 Nephi 28 reads Luke 12 the way Henry and Clarke did | the same reader | two commentaries | every New Testament commentary held (simulated reading) | TBD |
 | BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed twice; not scored** |
 
 ### 3. How was it produced?
@@ -3092,3 +3096,111 @@ Every test has an issue on GitHub with its plan (BOM-99 to BOM-127), a command i
 (`eval/README.md`), and a result file under `data/lab/`. Every outside source is listed with its
 address in `data/lab/sources.json`. The texts under copyright are not published; the steps to
 obtain them are in `docs/replication.md`.
+
+### Hebrew words, and "parents" (BOM-132)
+
+**The claim.** A reader of the first paper, in November 2026, pointed at 2 Nephi 28 and at the
+phrase "our first parents". Ancient Hebrew, he wrote, had no word for "parents". It said "father and
+mother", as in the Ten Commandments. So a line about "parents" could not have stood in Nephi's
+Hebrew, and English words like it show an English author. It is an old kind of argument, usually
+made one word at a time.
+
+**Their way first.** His one example checks out in King James English. "Parents" is in the 39 books
+of the King James Old Testament 0 times. It is in the New Testament 13 times and in the Apocrypha 8,
+all translated from Greek. "Father and mother" is in the Old Testament 20 times. I first guessed that
+Genesis 49:26, "the blessings of my progenitors", hid a Hebrew word for parents. It doesn't. That
+word is a verb meaning "conceive", and the King James gives it as "conceived" 32 times and
+"progenitors" once. Neither of the two standard Hebrew dictionaries I have glosses it "parents". Two
+Hebrew verbs do have "parent" in their definitions: "to bear or beget", and one Strong's gives as "to
+bring up, as a parent". So Hebrew comes at the idea through verbs, not a noun, and his example holds.
+
+**What I tried.** One word proves little either way, so I counted all of them. For any English text,
+how many of its words per 10,000 never appear in the King James Old Testament? The Old Testament is
+the only part of the King James translated from Hebrew. A writer working from Hebrew into Bible
+English should stay close to it. Names are left out, and so are the chapters that quote Isaiah or
+the Sermon on the Mount at length. I put the book's parts set before Christ beside real translations
+(the Book of Jasher, from Hebrew; Thomson's Old Testament of 1808, from Greek; Whiston's Josephus),
+beside imitations written in Bible style (*The Late War*, *View of the Hebrews* and others), beside
+300 sermons of 1800 to 1829, and beside Joseph Smith's other texts. Then, word by word, I asked what
+Hebrew sits under each word in the King James, using a King James text tagged with Strong's numbers
+lined up against the Hebrew Bible. That alignment finds 99.3 percent of 211,336 tags in the right
+Hebrew verse.
+
+**The check.** Before the book could be scored, the measure had to tell Bible English from Hebrew
+apart from Bible English from Greek: each Old Testament book, measured against the rest of the Old
+Testament, had to score below every New Testament and every Apocrypha book.
+
+**When it failed: why, and what I changed.** It missed. As groups the two sides separated well, but
+book by book they overlapped. Proverbs, Job and the prophets have rare words of their own, and the
+lowest Greek-side scores were tiny books like 2 John, 285 words, too short for a steady rate.
+
+So I compared equal blocks of 5,000 words instead of whole books. That missed too, but only on the
+Apocrypha: 0.938 against a bar of 0.95, while the New Testament side passed easily. Looking at which
+Apocrypha blocks scored low, they were 1 Maccabees, Judith, 1 Esdras: books first written in Hebrew
+or Aramaic and only later in Greek. The measure was right about them and my bar was wrong. The
+Apocrypha is not a clean Greek-side group.
+
+The third design drops the Apocrypha from the bar and keeps the New Testament. Since the New
+Testament side had already been seen to pass, I added a second known answer nobody had measured:
+Young's Literal Translation of 1862, a different translator working from the same Hebrew and Greek.
+If the measure tracks the source language, Young's Old Testament has to score low and his New
+Testament high. It did. King James: 0.97, and every Old Testament block below the New Testament
+median. Young: 0.96, and again every Old Testament block below. The Apocrypha, split by the language
+each book was first written in, came out the way the miss suggested: Hebrew or Aramaic originals
+around 86, Greek originals around 216.
+
+**The result.** Words outside the King James Old Testament, per 10,000, median over 5,000-word
+blocks:
+
+| Text | Median |
+| --- | --- |
+| King James Old Testament (each block against the rest) | 25 |
+| King James New Testament | 118 |
+| 3 Nephi, outside the quotation chapters | 150 |
+| Book of Jasher (1840, from Hebrew) | 184 |
+| **Book of Mormon, parts set before Christ (36 blocks)** | **199** |
+| Book of Moses manuscripts | 190 and 240 |
+| Thomson's Old Testament (1808, from Greek) | 320 |
+| Josephus, *Antiquities* I to XI (from Greek) | 450 |
+| Bible-style imitations, all ten with a block | 456 or more |
+| Joseph Smith's 1828-1831 revelations (Revelation Book 1) | 594 |
+| *The Late War* (1816) | 915 |
+| Sermons of 1800 to 1829, median of 300 | 1,389 |
+| *View of the Hebrews* (1825) | 1,397 |
+
+The book sits among the translations, just above Jasher (not a real difference: p = 0.32) and below
+the two from Greek. Every imitation is more than twice as far out, and 298 of 300 sermons are
+further out than the book.
+
+But the reader's own word goes the other way. Count the pairs against the collective:
+
+| Text | "father and mother" | "parents" |
+| --- | --- | --- |
+| King James Old Testament | 20 | 0 |
+| Jasher (from Hebrew) | 16 | 2 |
+| Thomson's Old Testament | 21 | 2 |
+| **Book of Mormon before Christ** | **2** | **20** |
+| Josephus (from Greek) | 5 | 48 |
+| King James New Testament | 12 | 21 |
+| Sermons, pooled | 331 | 4,726 |
+
+On this one habit the book sits with the Greek-sourced texts and the sermons, not with the Hebrew
+ones. The words it uses most that the Old Testament never does are church, forever, judgement,
+resurrection, expedient, baptized: several are spelling ("forever", "judgement", "wo"), and the
+rest are New Testament and church words. For "church", "resurrection", "baptized", "gospel" and
+"charity" no Hebrew word carries that gloss at all.
+
+**What it means, and what it doesn't.** For defenders: on the whole vocabulary, the parts set before
+Christ stay as close to Hebrew-sourced Bible English as a real translation from Hebrew does, much
+closer than anyone imitating the Bible in the period managed. That is not what "an 1820s writer in
+Bible costume" predicts by default; *The Late War* and *View of the Hebrews* are four to seven times
+further out. For critics: the exceptions are pointed. "Parents" where the Hebrew Bible says "father
+and mother", and a run of church words with no Hebrew behind them, are exactly the reader's point.
+And a writer who knew the King James Old Testament deeply would score low too: the measure can't
+tell a translator from Hebrew from an author steeped in the Old Testament's English. Some short
+Bible paraphrase also stays in the book's count, which pulls it toward the King James. Jasher is
+itself an 1840 translation done in King James style.
+
+**What's left.** A list of every pair-versus-collective habit, not just two. The word table read by
+hand (several entries are spelling or dictionary noise). The same count on the Book of Mormon's
+King James paraphrases set aside by meaning, not only by long quotation.
