@@ -1,0 +1,4277 @@
+{
+ "check": {
+  "places": {
+   "candidates": 73,
+   "pair_places": 49,
+   "parallel_places": 9,
+   "participle_places": 14,
+   "set_aside": [
+    "1Kgs.14.31",
+    "2Kgs.4.19",
+    "Deut.27.22",
+    "Gen.20.12",
+    "Gen.27.14",
+    "Gen.28.2",
+    "Gen.44.20",
+    "Job.17.14",
+    "Job.31.18",
+    "Judg.9.1",
+    "Lam.5.3",
+    "Lev.18.9",
+    "Lev.20.17",
+    "Lev.20.19",
+    "Ps.109.14"
+   ],
+   "pair_places_not_candidates": [],
+   "participle_places_without_lemma": [],
+   "english_numbering_differs": {
+    "2Sam.19.38:pair": "2Sam.19.37",
+    "1Kgs.22.53:pair": "1Kgs.22.52",
+    "Hos.2.7:harah": "Hos.2.5"
+   },
+   "pass": true
+  },
+  "king_james_rule_vs_hand": {
+   "places": 72,
+   "agree": 72,
+   "disagree": []
+  },
+  "young_zech_13_3": {
+   "place": "Zech.13.3:yalad",
+   "want": "PARENTS",
+   "got": "PARENTS",
+   "rendering": "mother his parents"
+  },
+  "locator_king_james_stream": {
+   "places": 72,
+   "found_in_true_verse": 72,
+   "found_in_wrong_verse": 0,
+   "missed": []
+  },
+  "locator_young_stream": {
+   "places": 72,
+   "found_in_true_verse": 72,
+   "found_in_wrong_verse": 0,
+   "missed": []
+  },
+  "reported_not_bars": {
+   "locator_king_james_stream_young_words_only": {
+    "places": 72,
+    "found_in_true_verse": 59,
+    "found_in_wrong_verse": 0,
+    "missed": [
+     {
+      "place": "Exod.21.17:pair",
+      "found_elsewhere": false,
+      "cover": 0.478,
+      "context": 1.0
+     },
+     {
+      "place": "Judg.14.4:pair",
+      "found_elsewhere": false,
+      "cover": 0.301,
+      "context": 0.037
+     },
+     {
+      "place": "Judg.14.6:pair",
+      "found_elsewhere": false,
+      "cover": 0.495,
+      "context": 1.0
+     },
+     {
+      "place": "Judg.14.9:pair",
+      "found_elsewhere": false,
+      "cover": 0.419,
+      "context": 0.841
+     },
+     {
+      "place": "2Kgs.3.2:pair",
+      "found_elsewhere": false,
+      "cover": 0.346,
+      "context": 1.0
+     },
+     {
+      "place": "Ps.27.10:pair",
+      "found_elsewhere": false,
+      "cover": 0.431,
+      "context": 1.0
+     },
+     {
+      "place": "Prov.19.26:pair",
+      "found_elsewhere": false,
+      "cover": 0.489,
+      "context": 0.887
+     },
+     {
+      "place": "Prov.20.20:pair",
+      "found_elsewhere": false,
+      "cover": 0.465,
+      "context": 1.0
+     },
+     {
+      "place": "Prov.23.25:pair",
+      "found_elsewhere": false,
+      "cover": 0.435,
+      "context": 0.822
+     },
+     {
+      "place": "Zech.13.3:pair",
+      "found_elsewhere": false,
+      "cover": 0.198,
+      "context": 0.185
+     },
+     {
+      "place": "Zech.13.3:yalad",
+      "found_elsewhere": false,
+      "cover": 0.198,
+      "context": 0.185
+     },
+     {
+      "place": "Prov.17.21:yalad",
+      "found_elsewhere": false,
+      "cover": 0.3,
+      "context": 1.0
+     },
+     {
+      "place": "Prov.23.25:yalad",
+      "found_elsewhere": false,
+      "cover": 0.435,
+      "context": 0.822
+     }
+    ]
+   },
+   "locator_young_stream_king_james_words_only": {
+    "places": 72,
+    "found_in_true_verse": 59,
+    "found_in_wrong_verse": 0,
+    "missed": [
+     {
+      "place": "Deut.21.18:pair",
+      "found_elsewhere": false,
+      "cover": 0.386,
+      "context": 0.071
+     },
+     {
+      "place": "Deut.33.9:pair",
+      "found_elsewhere": false,
+      "cover": 0.234,
+      "context": 0.03
+     },
+     {
+      "place": "Judg.14.3:pair",
+      "found_elsewhere": false,
+      "cover": 0.182,
+      "context": 0.102
+     },
+     {
+      "place": "Judg.14.4:pair",
+      "found_elsewhere": false,
+      "cover": 0.444,
+      "context": 0.176
+     },
+     {
+      "place": "Judg.14.6:pair",
+      "found_elsewhere": false,
+      "cover": 0.208,
+      "context": 0.083
+     },
+     {
+      "place": "Judg.14.9:pair",
+      "found_elsewhere": false,
+      "cover": 0.281,
+      "context": 0.592
+     },
+     {
+      "place": "2Kgs.3.2:pair",
+      "found_elsewhere": false,
+      "cover": 0.263,
+      "context": 0.11
+     },
+     {
+      "place": "Ps.27.10:pair",
+      "found_elsewhere": false,
+      "cover": 0.416,
+      "context": 0.54
+     },
+     {
+      "place": "Prov.19.26:pair",
+      "found_elsewhere": false,
+      "cover": 0.46,
+      "context": 0.671
+     },
+     {
+      "place": "Prov.20.20:pair",
+      "found_elsewhere": false,
+      "cover": 0.358,
+      "context": 0.422
+     },
+     {
+      "place": "Prov.23.25:pair",
+      "found_elsewhere": false,
+      "cover": 1.0,
+      "context": 0.061
+     },
+     {
+      "place": "Prov.17.21:yalad",
+      "found_elsewhere": false,
+      "cover": 0.326,
+      "context": 0.511
+     },
+     {
+      "place": "Prov.23.25:yalad",
+      "found_elsewhere": false,
+      "cover": 1.0,
+      "context": 0.061
+     }
+    ]
+   }
+  },
+  "pass": true
+ },
+ "translators": {
+  "king_james_1611": {
+   "translator": "King James translators",
+   "year": 1611,
+   "source": "hebrew_bible",
+   "text": "clean, verse-numbered (Old Testament only)",
+   "whole_text": {
+    "pair": 20,
+    "collective": 0,
+    "collective_share": 0.0,
+    "words": 612571
+   },
+   "whole_text_ocr_read": {
+    "pair": 20,
+    "collective": 0,
+    "collective_share": 0.0,
+    "words": 612571
+   },
+   "books": "OT",
+   "summary": {
+    "places_in_volume": 72,
+    "located": 72,
+    "coverage": 1.0,
+    "classes": {
+     "FATHER_AND_MOTHER": 58,
+     "PARTICIPLE": 13,
+     "OTHER": 1
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 58
+    },
+    "participle_places": {
+     "PARTICIPLE": 13,
+     "OTHER": 1
+    },
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 0
+   },
+   "places": {
+    "Gen.2.24:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Gen.28.7:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Exod.20.12:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Exod.21.15:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Exod.21.17:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Lev.18.7:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Lev.19.3:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother and his father"
+    },
+    "Lev.20.9:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Lev.21.2:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother and for his father"
+    },
+    "Lev.21.11:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or for his mother"
+    },
+    "Num.6.7:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or for his mother"
+    },
+    "Deut.5.16:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Deut.21.13:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Deut.21.18:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.21.19:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Deut.22.15:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.27.16:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Deut.33.9:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and to his mother"
+    },
+    "Josh.2.13:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Josh.2.18:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Josh.6.23:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Judg.14.2:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.3:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.4:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.5:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.6:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Judg.14.9:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Judg.14.16:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father nor my mother"
+    },
+    "Ruth.2.11:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "1Sam.22.3:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "2Sam.19.38:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and of my mother"
+    },
+    "1Kgs.19.20:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "1Kgs.22.53:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "2Kgs.3.2:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and like his mother"
+    },
+    "2Kgs.3.13:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Esth.2.7:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father nor mother"
+    },
+    "Ps.27.10:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Prov.19.26:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and chaseth away his mother"
+    },
+    "Prov.20.20:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Prov.23.25:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Prov.28.24:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Isa.8.4:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Jer.16.3:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mothers ... fathers"
+    },
+    "Jer.16.7:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or for their mother"
+    },
+    "Ezek.16.3:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Ezek.16.45:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "Ezek.22.7:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Ezek.44.25:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or for mother"
+    },
+    "Zech.13.3:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Prov.1.8:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.4.3:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.6.20:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.10.1:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.15.20:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.23.22:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.30.11:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.30.17:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Mic.7.6:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Zech.13.3:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "mother that begat him"
+    },
+    "Jer.16.3:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "mothers that bare them"
+    },
+    "Prov.17.21:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "he that begetteth a"
+    },
+    "Prov.23.24:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "he that begetteth a"
+    },
+    "Prov.17.25:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "her that bare him"
+    },
+    "Prov.23.25:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "she that bare thee"
+    },
+    "Song.6.9:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "her that bare her"
+    },
+    "Jer.15.9:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "she that hath borne"
+    },
+    "Jer.50.12:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "she that bare you"
+    },
+    "Jer.16.3:molid": {
+     "class": "PARTICIPLE",
+     "rendering": "mothers that bare them"
+    },
+    "Prov.23.22:relative": {
+     "class": "PARTICIPLE",
+     "rendering": "father that begat thee"
+    },
+    "Hos.2.7:harah": {
+     "class": "PARTICIPLE",
+     "rendering": "she that conceived them"
+    },
+    "Song.3.4:harah": {
+     "class": "PARTICIPLE",
+     "rendering": "her that conceived me"
+    },
+    "Gen.49.26:horay": {
+     "class": "OTHER",
+     "rendering": null
+    }
+   }
+  },
+  "young_1862": {
+   "translator": "Robert Young",
+   "year": 1862,
+   "source": "hebrew_bible",
+   "text": "clean, verse-numbered (Old Testament only)",
+   "whole_text": {
+    "pair": 20,
+    "collective": 3,
+    "collective_share": 0.13,
+    "words": 606051
+   },
+   "whole_text_ocr_read": {
+    "pair": 20,
+    "collective": 3,
+    "collective_share": 0.13,
+    "words": 606051
+   },
+   "books": "OT",
+   "summary": {
+    "places_in_volume": 72,
+    "located": 72,
+    "coverage": 1.0,
+    "classes": {
+     "FATHER_AND_MOTHER": 58,
+     "PARENTS": 1,
+     "PARTICIPLE": 12,
+     "OTHER": 1
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 58
+    },
+    "participle_places": {
+     "PARENTS": 1,
+     "PARTICIPLE": 12,
+     "OTHER": 1
+    },
+    "parents_at_places": 1,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 0
+   },
+   "places": {
+    "Gen.2.24:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Gen.28.7:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and unto his mother"
+    },
+    "Exod.20.12:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Exod.21.15:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Exod.21.17:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Lev.18.7:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Lev.19.3:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother and his father"
+    },
+    "Lev.20.9:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Lev.21.2:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother and for his father"
+    },
+    "Lev.21.11:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and for his mother"
+    },
+    "Num.6.7:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or for his mother"
+    },
+    "Deut.5.16:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Deut.21.13:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Deut.21.18:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.21.19:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Deut.22.15:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.27.16:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Deut.33.9:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Josh.2.13:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Josh.2.18:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Josh.6.23:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Judg.14.2:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and to his mother"
+    },
+    "Judg.14.3:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Judg.14.4:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.5:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.6:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and to his mother"
+    },
+    "Judg.14.9:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and unto his mother"
+    },
+    "Judg.14.16:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and to my mother"
+    },
+    "Ruth.2.11:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "1Sam.22.3:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "2Sam.19.38:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and of my mother"
+    },
+    "1Kgs.19.20:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and to my mother"
+    },
+    "1Kgs.22.53:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "2Kgs.3.2:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and like his mother"
+    },
+    "2Kgs.3.13:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Esth.2.7:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father nor mother"
+    },
+    "Ps.27.10:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Prov.19.26:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father causeth a mother"
+    },
+    "Prov.20.20:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Prov.23.25:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Prov.28.24:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Isa.8.4:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Jer.16.3:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mothers ... fathers"
+    },
+    "Jer.16.7:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and for his mother"
+    },
+    "Ezek.16.3:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father the amorite and thy mother"
+    },
+    "Ezek.16.45:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "Ezek.22.7:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Ezek.44.25:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and for mother"
+    },
+    "Zech.13.3:pair": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Prov.1.8:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.4.3:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.6.20:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.10.1:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.15.20:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.23.22:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.30.11:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and their mother"
+    },
+    "Prov.30.17:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Mic.7.6:parallel": {
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Zech.13.3:yalad": {
+     "class": "PARENTS",
+     "rendering": "mother his parents"
+    },
+    "Jer.16.3:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "mothers those bearing them"
+    },
+    "Prov.17.21:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "whoso is begetting a"
+    },
+    "Prov.23.24:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "greatly the begetter of"
+    },
+    "Prov.17.25:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "her that bare him"
+    },
+    "Prov.23.25:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "she that bare thee"
+    },
+    "Song.6.9:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "her that bare her"
+    },
+    "Jer.15.9:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "hath the bearer of"
+    },
+    "Jer.50.12:yalad": {
+     "class": "PARTICIPLE",
+     "rendering": "been that bare you"
+    },
+    "Jer.16.3:molid": {
+     "class": "PARTICIPLE",
+     "rendering": "mothers those bearing them"
+    },
+    "Prov.23.22:relative": {
+     "class": "PARTICIPLE",
+     "rendering": "father who begat thee"
+    },
+    "Hos.2.7:harah": {
+     "class": "PARTICIPLE",
+     "rendering": "hath their conceiver for"
+    },
+    "Song.3.4:harah": {
+     "class": "PARTICIPLE",
+     "rendering": "her that conceived me"
+    },
+    "Gen.49.26:horay": {
+     "class": "OTHER",
+     "rendering": null
+    }
+   }
+  },
+  "geddes_1792": {
+   "translator": "Alexander Geddes",
+   "year": 1792,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [
+    {
+     "place": "Exod.21.15:pair",
+     "cover": 0.73
+    },
+    {
+     "place": "Exod.21.17:pair",
+     "cover": 1.0
+    }
+   ],
+   "whole_text": {
+    "pair": 11,
+    "collective": 9,
+    "collective_share": 0.45,
+    "words": 273706
+   },
+   "whole_text_ocr_read": {
+    "pair": 11,
+    "collective": 9,
+    "collective_share": 0.45,
+    "words": 273706
+   },
+   "books": [
+    "Gen",
+    "Exod",
+    "Lev",
+    "Num",
+    "Deut",
+    "Josh"
+   ],
+   "summary": {
+    "places_in_volume": 22,
+    "located": 18,
+    "coverage": 0.818,
+    "classes": {
+     "FATHER_AND_MOTHER": 16,
+     "OTHER": 2,
+     "NOT_FOUND": 4
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 15,
+     "OTHER": 2,
+     "NOT_FOUND": 4
+    },
+    "participle_places": {
+     "FATHER_AND_MOTHER": 1
+    },
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 1
+   },
+   "places": {
+    "Gen.2.24:pair": {
+     "cover": 0.868,
+     "context": 0.899,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and 4 his mother"
+    },
+    "Gen.28.7:pair": {
+     "cover": 0.559,
+     "context": 0.501,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Exod.20.12:pair": {
+     "cover": 0.749,
+     "context": 0.446,
+     "class": "OTHER",
+     "rendering": null,
+     "one_parent_word": false
+    },
+    "Exod.21.15:pair": {
+     "cover": 0.73,
+     "context": 0.334,
+     "class": "OTHER",
+     "rendering": null,
+     "one_parent_word": true
+    },
+    "Exod.21.17:pair": {
+     "cover": 1.0,
+     "context": 0.0,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Lev.18.7:pair": {
+     "cover": 1.0,
+     "context": 0.912,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Lev.19.3:pair": {
+     "cover": 0.418,
+     "context": 0.765,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Lev.20.9:pair": {
+     "cover": 1.0,
+     "context": 0.785,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Lev.21.2:pair": {
+     "cover": 0.778,
+     "context": 0.731,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father his mother"
+    },
+    "Lev.21.11:pair": {
+     "cover": 0.421,
+     "context": 0.73,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Num.6.7:pair": {
+     "cover": 0.709,
+     "context": 0.303,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Deut.5.16:pair": {
+     "cover": 0.917,
+     "context": 0.349,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Deut.21.13:pair": {
+     "cover": 0.682,
+     "context": 0.558,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Deut.21.18:pair": {
+     "cover": 0.712,
+     "context": 0.743,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Deut.21.19:pair": {
+     "cover": 0.911,
+     "context": 0.724,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Deut.22.15:pair": {
+     "cover": 0.847,
+     "context": 0.684,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and the mother"
+    },
+    "Deut.27.16:pair": {
+     "cover": 0.439,
+     "context": 0.388,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Deut.33.9:pair": {
+     "cover": 0.567,
+     "context": 0.513,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Josh.2.13:pair": {
+     "cover": 0.696,
+     "context": 0.582,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father my mother"
+    },
+    "Josh.2.18:pair": {
+     "cover": 0.717,
+     "context": 0.793,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Josh.6.23:pair": {
+     "cover": 0.698,
+     "context": 0.667,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Gen.49.26:horay": {
+     "cover": 0.591,
+     "context": 0.649,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and of thy mother"
+    }
+   }
+  },
+  "geddes_1797": {
+   "translator": "Alexander Geddes",
+   "year": 1797,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [],
+   "whole_text": {
+    "pair": 9,
+    "collective": 2,
+    "collective_share": 0.182,
+    "words": 230250
+   },
+   "whole_text_ocr_read": {
+    "pair": 9,
+    "collective": 2,
+    "collective_share": 0.182,
+    "words": 230250
+   },
+   "books": [
+    "Judg",
+    "Ruth",
+    "1Sam",
+    "2Sam",
+    "1Kgs",
+    "2Kgs",
+    "1Chr",
+    "2Chr"
+   ],
+   "summary": {
+    "places_in_volume": 14,
+    "located": 11,
+    "coverage": 0.786,
+    "classes": {
+     "FATHER_AND_MOTHER": 11,
+     "NOT_FOUND": 3
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 11,
+     "NOT_FOUND": 3
+    },
+    "participle_places": {},
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 0
+   },
+   "places": {
+    "Judg.14.2:pair": {
+     "cover": 0.595,
+     "context": 0.525,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Judg.14.3:pair": {
+     "cover": 0.687,
+     "context": 0.759,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Judg.14.4:pair": {
+     "cover": 0.932,
+     "context": 0.727,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Judg.14.5:pair": {
+     "cover": 0.937,
+     "context": 0.684,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Judg.14.6:pair": {
+     "cover": 0.437,
+     "context": 0.713,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Judg.14.9:pair": {
+     "cover": 0.893,
+     "context": 0.761,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Judg.14.16:pair": {
+     "cover": 0.796,
+     "context": 0.499,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my 17 mother"
+    },
+    "Ruth.2.11:pair": {
+     "cover": 0.703,
+     "context": 0.582,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "1Sam.22.3:pair": {
+     "cover": 0.751,
+     "context": 0.595,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "2Sam.19.38:pair": {
+     "cover": 0.447,
+     "context": 0.402,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "1Kgs.19.20:pair": {
+     "cover": 0.709,
+     "context": 0.386,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "1Kgs.22.53:pair": {
+     "cover": 0.942,
+     "context": 0.738,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "2Kgs.3.2:pair": {
+     "cover": 0.44,
+     "context": 0.071,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "2Kgs.3.13:pair": {
+     "cover": 0.666,
+     "context": 0.537,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    }
+   }
+  },
+  "geddes_psalms_1807": {
+   "translator": "Alexander Geddes",
+   "year": 1807,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [],
+   "whole_text": {
+    "pair": 1,
+    "collective": 0,
+    "collective_share": 0.0,
+    "words": 70470
+   },
+   "whole_text_ocr_read": {
+    "pair": 1,
+    "collective": 0,
+    "collective_share": 0.0,
+    "words": 70470
+   },
+   "books": [
+    "Ps"
+   ],
+   "summary": {
+    "places_in_volume": 1,
+    "located": 1,
+    "coverage": 1.0,
+    "classes": {
+     "FATHER_AND_MOTHER": 1
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 1
+    },
+    "participle_places": {},
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 0
+   },
+   "places": {
+    "Ps.27.10:pair": {
+     "cover": 0.664,
+     "context": 0.397,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    }
+   }
+  },
+  "lowth_1778": {
+   "translator": "Robert Lowth",
+   "year": 1778,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [],
+   "whole_text": {
+    "pair": 0,
+    "collective": 1,
+    "collective_share": 1.0,
+    "words": 220710
+   },
+   "whole_text_ocr_read": {
+    "pair": 0,
+    "collective": 3,
+    "collective_share": 1.0,
+    "words": 220710
+   },
+   "books": [
+    "Isa"
+   ],
+   "summary": {
+    "places_in_volume": 1,
+    "located": 1,
+    "coverage": 1.0,
+    "classes": {
+     "FATHER_AND_MOTHER": 1
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 1
+    },
+    "participle_places": {},
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 0
+   },
+   "places": {
+    "Isa.8.4:pair": {
+     "cover": 0.82,
+     "context": 0.911,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    }
+   }
+  },
+  "blayney_1784": {
+   "translator": "Benjamin Blayney",
+   "year": 1784,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [],
+   "whole_text": {
+    "pair": 0,
+    "collective": 7,
+    "collective_share": 1.0,
+    "words": 231753
+   },
+   "whole_text_ocr_read": {
+    "pair": 0,
+    "collective": 7,
+    "collective_share": 1.0,
+    "words": 231753
+   },
+   "books": [
+    "Jer",
+    "Lam"
+   ],
+   "summary": {
+    "places_in_volume": 6,
+    "located": 4,
+    "coverage": 0.667,
+    "classes": {
+     "FATHER_AND_MOTHER": 1,
+     "NOT_FOUND": 2,
+     "PARTICIPLE": 3
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 1,
+     "NOT_FOUND": 1
+    },
+    "participle_places": {
+     "PARTICIPLE": 3,
+     "NOT_FOUND": 1
+    },
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 0
+   },
+   "places": {
+    "Jer.16.3:pair": {
+     "cover": 0.851,
+     "context": 0.459,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mothers ... fathers"
+    },
+    "Jer.16.7:pair": {
+     "cover": 0.403,
+     "context": 0.513,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Jer.16.3:yalad": {
+     "cover": 0.851,
+     "context": 0.459,
+     "class": "PARTICIPLE",
+     "rendering": "mothers that bear gem"
+    },
+    "Jer.15.9:yalad": {
+     "cover": 0.543,
+     "context": 0.457,
+     "class": "PARTICIPLE",
+     "rendering": "she that hath borne"
+    },
+    "Jer.50.12:yalad": {
+     "cover": 0.437,
+     "context": 0.333,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Jer.16.3:molid": {
+     "cover": 0.851,
+     "context": 0.459,
+     "class": "PARTICIPLE",
+     "rendering": "mothers that bear gem"
+    }
+   }
+  },
+  "blayney_1797": {
+   "translator": "Benjamin Blayney",
+   "year": 1797,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [],
+   "whole_text": {
+    "pair": 2,
+    "collective": 1,
+    "collective_share": 0.333,
+    "words": 76333
+   },
+   "whole_text_ocr_read": {
+    "pair": 2,
+    "collective": 2,
+    "collective_share": 0.5,
+    "words": 76333
+   },
+   "books": [
+    "Zech"
+   ],
+   "summary": {
+    "places_in_volume": 2,
+    "located": 2,
+    "coverage": 1.0,
+    "classes": {
+     "FATHER_AND_MOTHER": 1,
+     "PARTICIPLE": 1
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 1
+    },
+    "participle_places": {
+     "PARTICIPLE": 1
+    },
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 0
+   },
+   "places": {
+    "Zech.13.3:pair": {
+     "cover": 0.917,
+     "context": 0.643,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Zech.13.3:yalad": {
+     "cover": 0.917,
+     "context": 0.643,
+     "class": "PARTICIPLE",
+     "rendering": "mother who begat him"
+    }
+   }
+  },
+  "newcome_1785": {
+   "translator": "William Newcome",
+   "year": 1785,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [],
+   "whole_text": {
+    "pair": 1,
+    "collective": 0,
+    "collective_share": 0.0,
+    "words": 138732
+   },
+   "whole_text_ocr_read": {
+    "pair": 1,
+    "collective": 1,
+    "collective_share": 0.5,
+    "words": 138732
+   },
+   "books": [
+    "Hos",
+    "Joel",
+    "Amos",
+    "Obad",
+    "Jonah",
+    "Mic",
+    "Nah",
+    "Hab",
+    "Zeph",
+    "Hag",
+    "Zech",
+    "Mal"
+   ],
+   "summary": {
+    "places_in_volume": 4,
+    "located": 4,
+    "coverage": 1.0,
+    "classes": {
+     "FATHER_AND_MOTHER": 2,
+     "PARTICIPLE": 2
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 2
+    },
+    "participle_places": {
+     "PARTICIPLE": 2
+    },
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 0
+   },
+   "places": {
+    "Zech.13.3:pair": {
+     "cover": 0.849,
+     "context": 0.854,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Mic.7.6:parallel": {
+     "cover": 0.675,
+     "context": 0.784,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Zech.13.3:yalad": {
+     "cover": 0.849,
+     "context": 0.854,
+     "class": "PARTICIPLE",
+     "rendering": "those who begat him"
+    },
+    "Hos.2.7:harah": {
+     "cover": 0.643,
+     "context": 0.55,
+     "class": "PARTICIPLE",
+     "rendering": "she that conceived them"
+    }
+   }
+  },
+  "newcome_1788": {
+   "translator": "William Newcome",
+   "year": 1788,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [],
+   "whole_text": {
+    "pair": 1,
+    "collective": 0,
+    "collective_share": 0.0,
+    "words": 132747
+   },
+   "whole_text_ocr_read": {
+    "pair": 1,
+    "collective": 1,
+    "collective_share": 0.5,
+    "words": 132747
+   },
+   "books": [
+    "Ezek"
+   ],
+   "summary": {
+    "places_in_volume": 4,
+    "located": 4,
+    "coverage": 1.0,
+    "classes": {
+     "FATHER_AND_MOTHER": 4
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 4
+    },
+    "participle_places": {},
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 0
+   },
+   "places": {
+    "Ezek.16.3:pair": {
+     "cover": 0.874,
+     "context": 0.948,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Ezek.16.45:pair": {
+     "cover": 0.981,
+     "context": 0.812,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "Ezek.22.7:pair": {
+     "cover": 0.869,
+     "context": 0.696,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Ezek.44.25:pair": {
+     "cover": 0.92,
+     "context": 0.595,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or for mother"
+    }
+   }
+  },
+  "boothroyd_1824": {
+   "translator": "Benjamin Boothroyd",
+   "year": 1824,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [
+    {
+     "place": "Exod.21.17:pair",
+     "cover": 0.692
+    },
+    {
+     "place": "Lev.19.3:pair",
+     "cover": 0.52
+    },
+    {
+     "place": "Lev.21.11:pair",
+     "cover": 0.389
+    },
+    {
+     "place": "Prov.19.26:pair",
+     "cover": 0.539
+    },
+    {
+     "place": "Ezek.16.45:pair",
+     "cover": 0.381
+    },
+    {
+     "place": "Prov.30.11:parallel",
+     "cover": 0.57
+    }
+   ],
+   "whole_text": {
+    "pair": 30,
+    "collective": 138,
+    "collective_share": 0.821,
+    "words": 1475360
+   },
+   "whole_text_ocr_read": {
+    "pair": 30,
+    "collective": 141,
+    "collective_share": 0.825,
+    "words": 1475360
+   },
+   "books": "OT",
+   "summary": {
+    "places_in_volume": 72,
+    "located": 65,
+    "coverage": 0.903,
+    "classes": {
+     "FATHER_AND_MOTHER": 52,
+     "OTHER": 2,
+     "NOT_FOUND": 7,
+     "PARTICIPLE": 11
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 50,
+     "OTHER": 2,
+     "NOT_FOUND": 6
+    },
+    "participle_places": {
+     "PARTICIPLE": 11,
+     "FATHER_AND_MOTHER": 2,
+     "NOT_FOUND": 1
+    },
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 1
+   },
+   "places": {
+    "Gen.2.24:pair": {
+     "cover": 0.87,
+     "context": 0.819,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Gen.28.7:pair": {
+     "cover": 1.0,
+     "context": 1.0,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Exod.20.12:pair": {
+     "cover": 0.871,
+     "context": 0.466,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Exod.21.15:pair": {
+     "cover": 0.729,
+     "context": 0.4,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Exod.21.17:pair": {
+     "cover": 0.589,
+     "context": 0.789,
+     "class": "OTHER",
+     "rendering": null,
+     "one_parent_word": false
+    },
+    "Lev.18.7:pair": {
+     "cover": 1.0,
+     "context": 0.085,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Lev.19.3:pair": {
+     "cover": 0.374,
+     "context": 0.18,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Lev.20.9:pair": {
+     "cover": 1.0,
+     "context": 0.49,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Lev.21.2:pair": {
+     "cover": 0.761,
+     "context": 0.71,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Lev.21.11:pair": {
+     "cover": 0.49,
+     "context": 0.259,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Num.6.7:pair": {
+     "cover": 0.792,
+     "context": 0.58,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or for his mother"
+    },
+    "Deut.5.16:pair": {
+     "cover": 0.893,
+     "context": 0.327,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Deut.21.13:pair": {
+     "cover": 0.985,
+     "context": 0.941,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Deut.21.18:pair": {
+     "cover": 0.917,
+     "context": 0.875,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.21.19:pair": {
+     "cover": 0.878,
+     "context": 0.822,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Deut.22.15:pair": {
+     "cover": 0.88,
+     "context": 0.68,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.27.16:pair": {
+     "cover": 0.446,
+     "context": 0.674,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Deut.33.9:pair": {
+     "cover": 0.654,
+     "context": 0.447,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Josh.2.13:pair": {
+     "cover": 1.0,
+     "context": 0.535,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Josh.2.18:pair": {
+     "cover": 0.866,
+     "context": 0.898,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Josh.6.23:pair": {
+     "cover": 0.854,
+     "context": 0.438,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Judg.14.2:pair": {
+     "cover": 0.931,
+     "context": 0.78,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.3:pair": {
+     "cover": 0.794,
+     "context": 0.874,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.4:pair": {
+     "cover": 0.88,
+     "context": 0.928,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Judg.14.5:pair": {
+     "cover": 1.0,
+     "context": 0.814,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.6:pair": {
+     "cover": 0.871,
+     "context": 1.0,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Judg.14.9:pair": {
+     "cover": 0.986,
+     "context": 0.812,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Judg.14.16:pair": {
+     "cover": 1.0,
+     "context": 0.668,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or my mother"
+    },
+    "Ruth.2.11:pair": {
+     "cover": 0.932,
+     "context": 0.775,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "1Sam.22.3:pair": {
+     "cover": 0.928,
+     "context": 0.549,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "2Sam.19.38:pair": {
+     "cover": 0.706,
+     "context": 0.709,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "1Kgs.19.20:pair": {
+     "cover": 0.682,
+     "context": 0.664,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "1Kgs.22.53:pair": {
+     "cover": 0.995,
+     "context": 0.959,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "2Kgs.3.2:pair": {
+     "cover": 0.663,
+     "context": 0.81,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "2Kgs.3.13:pair": {
+     "cover": 0.96,
+     "context": 0.669,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Esth.2.7:pair": {
+     "cover": 1.0,
+     "context": 0.871,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father nor mother"
+    },
+    "Ps.27.10:pair": {
+     "cover": 0.956,
+     "context": 0.641,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Prov.19.26:pair": {
+     "cover": 0.484,
+     "context": 0.395,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.20.20:pair": {
+     "cover": 0.859,
+     "context": 0.636,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or ne mother"
+    },
+    "Prov.23.25:pair": {
+     "cover": 0.594,
+     "context": 0.833,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Prov.28.24:pair": {
+     "cover": 0.58,
+     "context": 0.646,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Isa.8.4:pair": {
+     "cover": 0.812,
+     "context": 0.747,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Jer.16.3:pair": {
+     "cover": 0.972,
+     "context": 0.668,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mothers ... fathers"
+    },
+    "Jer.16.7:pair": {
+     "cover": 0.592,
+     "context": 0.824,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Ezek.16.3:pair": {
+     "cover": 0.744,
+     "context": 0.791,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Ezek.16.45:pair": {
+     "cover": 0.796,
+     "context": 0.815,
+     "class": "OTHER",
+     "rendering": null,
+     "one_parent_word": true
+    },
+    "Ezek.22.7:pair": {
+     "cover": 0.58,
+     "context": 0.771,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Ezek.44.25:pair": {
+     "cover": 1.0,
+     "context": 0.956,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or for mother"
+    },
+    "Zech.13.3:pair": {
+     "cover": 0.765,
+     "context": 0.425,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Prov.1.8:parallel": {
+     "cover": 0.661,
+     "context": 0.591,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.4.3:parallel": {
+     "cover": 0.651,
+     "context": 0.819,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.6.20:parallel": {
+     "cover": 0.667,
+     "context": 0.704,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.10.1:parallel": {
+     "cover": 0.609,
+     "context": 0.613,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.15.20:parallel": {
+     "cover": 0.899,
+     "context": 0.61,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.23.22:parallel": {
+     "cover": 1.0,
+     "context": 0.701,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.30.11:parallel": {
+     "cover": 0.46,
+     "context": 0.803,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.30.17:parallel": {
+     "cover": 0.562,
+     "context": 0.463,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Mic.7.6:parallel": {
+     "cover": 0.826,
+     "context": 0.771,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Zech.13.3:yalad": {
+     "cover": 0.765,
+     "context": 0.425,
+     "class": "PARTICIPLE",
+     "rendering": "mother that begot him"
+    },
+    "Jer.16.3:yalad": {
+     "cover": 0.972,
+     "context": 0.668,
+     "class": "PARTICIPLE",
+     "rendering": "mothers that bare them"
+    },
+    "Prov.17.21:yalad": {
+     "cover": 0.798,
+     "context": 0.511,
+     "class": "PARTICIPLE",
+     "rendering": "he that begetteth a"
+    },
+    "Prov.23.24:yalad": {
+     "cover": 0.665,
+     "context": 0.553,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.17.25:yalad": {
+     "cover": 1.0,
+     "context": 0.681,
+     "class": "PARTICIPLE",
+     "rendering": "her that bare him"
+    },
+    "Prov.23.25:yalad": {
+     "cover": 0.594,
+     "context": 0.833,
+     "class": "PARTICIPLE",
+     "rendering": "she that bare thee"
+    },
+    "Song.6.9:yalad": {
+     "cover": 0.489,
+     "context": 0.845,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Jer.15.9:yalad": {
+     "cover": 0.922,
+     "context": 0.629,
+     "class": "PARTICIPLE",
+     "rendering": "she that hath borne"
+    },
+    "Jer.50.12:yalad": {
+     "cover": 0.742,
+     "context": 0.468,
+     "class": "PARTICIPLE",
+     "rendering": "she that bare you"
+    },
+    "Jer.16.3:molid": {
+     "cover": 0.972,
+     "context": 0.668,
+     "class": "PARTICIPLE",
+     "rendering": "mothers that bare them"
+    },
+    "Prov.23.22:relative": {
+     "cover": 1.0,
+     "context": 0.701,
+     "class": "PARTICIPLE",
+     "rendering": "father who begot ibee"
+    },
+    "Hos.2.7:harah": {
+     "cover": 0.861,
+     "context": 0.548,
+     "class": "PARTICIPLE",
+     "rendering": "she that conceived them"
+    },
+    "Song.3.4:harah": {
+     "cover": 0.908,
+     "context": 0.87,
+     "class": "PARTICIPLE",
+     "rendering": "her who conceived me"
+    },
+    "Gen.49.26:horay": {
+     "cover": 0.508,
+     "context": 0.385,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    }
+   }
+  },
+  "boothroyd_1853": {
+   "translator": "Benjamin Boothroyd (reprint)",
+   "year": 1853,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [
+    {
+     "place": "Exod.20.12:pair",
+     "cover": 0.386
+    },
+    {
+     "place": "Prov.30.11:parallel",
+     "cover": 0.426
+    }
+   ],
+   "whole_text": {
+    "pair": 24,
+    "collective": 14,
+    "collective_share": 0.368,
+    "words": 993579
+   },
+   "whole_text_ocr_read": {
+    "pair": 24,
+    "collective": 14,
+    "collective_share": 0.368,
+    "words": 993579
+   },
+   "books": "OT",
+   "summary": {
+    "places_in_volume": 72,
+    "located": 67,
+    "coverage": 0.931,
+    "classes": {
+     "FATHER_AND_MOTHER": 52,
+     "OTHER": 3,
+     "NOT_FOUND": 5,
+     "PARTICIPLE": 12
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 51,
+     "OTHER": 2,
+     "NOT_FOUND": 5
+    },
+    "participle_places": {
+     "PARTICIPLE": 12,
+     "OTHER": 1,
+     "FATHER_AND_MOTHER": 1
+    },
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 2
+   },
+   "places": {
+    "Gen.2.24:pair": {
+     "cover": 1.0,
+     "context": 0.947,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Gen.28.7:pair": {
+     "cover": 0.587,
+     "context": 1.0,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Exod.20.12:pair": {
+     "cover": 0.741,
+     "context": 0.465,
+     "class": "OTHER",
+     "rendering": null,
+     "one_parent_word": false
+    },
+    "Exod.21.15:pair": {
+     "cover": 1.0,
+     "context": 0.789,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Exod.21.17:pair": {
+     "cover": 1.0,
+     "context": 0.61,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Lev.18.7:pair": {
+     "cover": 1.0,
+     "context": 0.082,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Lev.19.3:pair": {
+     "cover": 0.681,
+     "context": 0.783,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Lev.20.9:pair": {
+     "cover": 1.0,
+     "context": 0.839,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Lev.21.2:pair": {
+     "cover": 0.753,
+     "context": 0.75,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Lev.21.11:pair": {
+     "cover": 0.735,
+     "context": 0.872,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or for his mother"
+    },
+    "Num.6.7:pair": {
+     "cover": 0.791,
+     "context": 0.574,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or for his mother"
+    },
+    "Deut.5.16:pair": {
+     "cover": 0.888,
+     "context": 0.432,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Deut.21.13:pair": {
+     "cover": 1.0,
+     "context": 0.849,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Deut.21.18:pair": {
+     "cover": 1.0,
+     "context": 0.936,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.21.19:pair": {
+     "cover": 1.0,
+     "context": 0.916,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Deut.22.15:pair": {
+     "cover": 0.876,
+     "context": 0.678,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.27.16:pair": {
+     "cover": 0.522,
+     "context": 0.615,
+     "class": "OTHER",
+     "rendering": null,
+     "one_parent_word": true
+    },
+    "Deut.33.9:pair": {
+     "cover": 0.652,
+     "context": 0.598,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Josh.2.13:pair": {
+     "cover": 1.0,
+     "context": 0.698,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Josh.2.18:pair": {
+     "cover": 0.918,
+     "context": 0.672,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Josh.6.23:pair": {
+     "cover": 0.855,
+     "context": 0.833,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Judg.14.2:pair": {
+     "cover": 0.691,
+     "context": 0.436,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.3:pair": {
+     "cover": 0.852,
+     "context": 0.72,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.4:pair": {
+     "cover": 0.974,
+     "context": 0.926,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.5:pair": {
+     "cover": 1.0,
+     "context": 0.863,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.6:pair": {
+     "cover": 0.866,
+     "context": 1.0,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his 7 mother"
+    },
+    "Judg.14.9:pair": {
+     "cover": 0.987,
+     "context": 0.776,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Judg.14.16:pair": {
+     "cover": 1.0,
+     "context": 0.798,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or my mother"
+    },
+    "Ruth.2.11:pair": {
+     "cover": 0.923,
+     "context": 0.804,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "1Sam.22.3:pair": {
+     "cover": 0.928,
+     "context": 0.735,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "2Sam.19.38:pair": {
+     "cover": 0.708,
+     "context": 0.705,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "1Kgs.19.20:pair": {
+     "cover": 0.848,
+     "context": 0.881,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "1Kgs.22.53:pair": {
+     "cover": 0.986,
+     "context": 0.957,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "2Kgs.3.2:pair": {
+     "cover": 0.741,
+     "context": 0.754,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "2Kgs.3.13:pair": {
+     "cover": 0.667,
+     "context": 0.13,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Esth.2.7:pair": {
+     "cover": 0.949,
+     "context": 0.808,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father nor mother"
+    },
+    "Ps.27.10:pair": {
+     "cover": 0.939,
+     "context": 0.762,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Prov.19.26:pair": {
+     "cover": 0.486,
+     "context": 0.446,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.20.20:pair": {
+     "cover": 0.853,
+     "context": 0.706,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Prov.23.25:pair": {
+     "cover": 0.575,
+     "context": 0.736,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Prov.28.24:pair": {
+     "cover": 0.579,
+     "context": 0.637,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Isa.8.4:pair": {
+     "cover": 0.809,
+     "context": 0.747,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Jer.16.3:pair": {
+     "cover": 0.63,
+     "context": 0.348,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mothers that bare and their fathers"
+    },
+    "Jer.16.7:pair": {
+     "cover": 0.677,
+     "context": 0.821,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or for one s mother"
+    },
+    "Ezek.16.3:pair": {
+     "cover": 0.737,
+     "context": 0.829,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Ezek.16.45:pair": {
+     "cover": 0.785,
+     "context": 0.819,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "Ezek.22.7:pair": {
+     "cover": 0.58,
+     "context": 0.878,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Ezek.44.25:pair": {
+     "cover": 1.0,
+     "context": 0.899,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or for mother"
+    },
+    "Zech.13.3:pair": {
+     "cover": 0.758,
+     "context": 0.711,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Prov.1.8:parallel": {
+     "cover": 0.661,
+     "context": 0.651,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.4.3:parallel": {
+     "cover": 0.634,
+     "context": 0.823,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.6.20:parallel": {
+     "cover": 0.666,
+     "context": 0.701,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.10.1:parallel": {
+     "cover": 0.375,
+     "context": 0.793,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.15.20:parallel": {
+     "cover": 0.901,
+     "context": 0.695,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.23.22:parallel": {
+     "cover": 1.0,
+     "context": 0.773,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.30.11:parallel": {
+     "cover": 0.458,
+     "context": 0.802,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.30.17:parallel": {
+     "cover": 0.56,
+     "context": 0.7,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Mic.7.6:parallel": {
+     "cover": 0.743,
+     "context": 0.866,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Zech.13.3:yalad": {
+     "cover": 0.758,
+     "context": 0.711,
+     "class": "PARTICIPLE",
+     "rendering": "mother that begot shall"
+    },
+    "Jer.16.3:yalad": {
+     "cover": 0.63,
+     "context": 0.348,
+     "class": "PARTICIPLE",
+     "rendering": "mothers that bare and"
+    },
+    "Prov.17.21:yalad": {
+     "cover": 1.0,
+     "context": 0.708,
+     "class": "PARTICIPLE",
+     "rendering": "he that begetteth a"
+    },
+    "Prov.23.24:yalad": {
+     "cover": 0.663,
+     "context": 0.623,
+     "class": "PARTICIPLE",
+     "rendering": "she that bare thee"
+    },
+    "Prov.17.25:yalad": {
+     "cover": 1.0,
+     "context": 0.609,
+     "class": "PARTICIPLE",
+     "rendering": "her that bare him"
+    },
+    "Prov.23.25:yalad": {
+     "cover": 0.575,
+     "context": 0.736,
+     "class": "PARTICIPLE",
+     "rendering": "she that bare thee"
+    },
+    "Song.6.9:yalad": {
+     "cover": 0.65,
+     "context": 0.843,
+     "class": "PARTICIPLE",
+     "rendering": "her who bare her"
+    },
+    "Jer.15.9:yalad": {
+     "cover": 0.887,
+     "context": 0.63,
+     "class": "PARTICIPLE",
+     "rendering": "she that hath borne"
+    },
+    "Jer.50.12:yalad": {
+     "cover": 0.848,
+     "context": 0.514,
+     "class": "PARTICIPLE",
+     "rendering": "she that bare you"
+    },
+    "Jer.16.3:molid": {
+     "cover": 0.63,
+     "context": 0.348,
+     "class": "PARTICIPLE",
+     "rendering": "mothers that bare and"
+    },
+    "Prov.23.22:relative": {
+     "cover": 1.0,
+     "context": 0.773,
+     "class": "PARTICIPLE",
+     "rendering": "father who begot thee"
+    },
+    "Hos.2.7:harah": {
+     "cover": 0.857,
+     "context": 0.783,
+     "class": "PARTICIPLE",
+     "rendering": "she that conceived them"
+    },
+    "Song.3.4:harah": {
+     "cover": 0.914,
+     "context": 0.448,
+     "class": "OTHER",
+     "rendering": null,
+     "one_parent_word": true
+    },
+    "Gen.49.26:horay": {
+     "cover": 0.586,
+     "context": 0.755,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    }
+   }
+  },
+  "leeser_1853": {
+   "translator": "Isaac Leeser",
+   "year": 1853,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [],
+   "whole_text": {
+    "pair": 18,
+    "collective": 5,
+    "collective_share": 0.217,
+    "words": 786236
+   },
+   "whole_text_ocr_read": {
+    "pair": 20,
+    "collective": 6,
+    "collective_share": 0.231,
+    "words": 786236
+   },
+   "books": "OT",
+   "summary": {
+    "places_in_volume": 72,
+    "located": 69,
+    "coverage": 0.958,
+    "classes": {
+     "FATHER_AND_MOTHER": 55,
+     "NOT_FOUND": 3,
+     "PARTICIPLE": 13,
+     "OTHER": 1
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 55,
+     "NOT_FOUND": 3
+    },
+    "participle_places": {
+     "PARTICIPLE": 13,
+     "OTHER": 1
+    },
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 1
+   },
+   "places": {
+    "Gen.2.24:pair": {
+     "cover": 1.0,
+     "context": 0.691,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Gen.28.7:pair": {
+     "cover": 0.818,
+     "context": 0.712,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Exod.20.12:pair": {
+     "cover": 1.0,
+     "context": 0.957,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Exod.21.15:pair": {
+     "cover": 1.0,
+     "context": 0.541,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Exod.21.17:pair": {
+     "cover": 1.0,
+     "context": 0.953,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Lev.18.7:pair": {
+     "cover": 1.0,
+     "context": 1.0,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Lev.19.3:pair": {
+     "cover": 0.902,
+     "context": 0.918,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother and his father"
+    },
+    "Lev.20.9:pair": {
+     "cover": 0.823,
+     "context": 0.887,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Lev.21.2:pair": {
+     "cover": 1.0,
+     "context": 0.837,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother and on his father"
+    },
+    "Lev.21.11:pair": {
+     "cover": 1.0,
+     "context": 0.865,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and on his mother"
+    },
+    "Num.6.7:pair": {
+     "cover": 0.92,
+     "context": 0.671,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or on his mother"
+    },
+    "Deut.5.16:pair": {
+     "cover": 0.815,
+     "context": 0.779,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Deut.21.13:pair": {
+     "cover": 0.615,
+     "context": 0.491,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Deut.21.18:pair": {
+     "cover": 0.839,
+     "context": 0.89,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.21.19:pair": {
+     "cover": 1.0,
+     "context": 0.793,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Deut.22.15:pair": {
+     "cover": 0.604,
+     "context": 0.41,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.27.16:pair": {
+     "cover": 0.793,
+     "context": 1.0,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Deut.33.9:pair": {
+     "cover": 0.719,
+     "context": 0.869,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and of his mother"
+    },
+    "Josh.2.13:pair": {
+     "cover": 0.711,
+     "context": 0.499,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Josh.2.18:pair": {
+     "cover": 0.765,
+     "context": 0.508,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Josh.6.23:pair": {
+     "cover": 0.726,
+     "context": 0.882,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Judg.14.2:pair": {
+     "cover": 0.501,
+     "context": 0.395,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.3:pair": {
+     "cover": 0.597,
+     "context": 0.624,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "Judg.14.4:pair": {
+     "cover": 0.648,
+     "context": 0.449,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.5:pair": {
+     "cover": 0.758,
+     "context": 0.844,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.6:pair": {
+     "cover": 0.947,
+     "context": 0.843,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Judg.14.9:pair": {
+     "cover": 1.0,
+     "context": 0.954,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Judg.14.16:pair": {
+     "cover": 0.847,
+     "context": 0.734,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and to my mother"
+    },
+    "Ruth.2.11:pair": {
+     "cover": 0.655,
+     "context": 0.793,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "1Sam.22.3:pair": {
+     "cover": 0.846,
+     "context": 0.45,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "2Sam.19.38:pair": {
+     "cover": 0.751,
+     "context": 0.592,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and of my mother"
+    },
+    "1Kgs.19.20:pair": {
+     "cover": 0.852,
+     "context": 0.836,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "1Kgs.22.53:pair": {
+     "cover": 0.886,
+     "context": 0.677,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "2Kgs.3.2:pair": {
+     "cover": 0.398,
+     "context": 0.107,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "2Kgs.3.13:pair": {
+     "cover": 0.381,
+     "context": 0.125,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Esth.2.7:pair": {
+     "cover": 0.926,
+     "context": 0.773,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father nor mother"
+    },
+    "Ps.27.10:pair": {
+     "cover": 1.0,
+     "context": 0.483,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Prov.19.26:pair": {
+     "cover": 0.478,
+     "context": 0.676,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.20.20:pair": {
+     "cover": 0.808,
+     "context": 0.809,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Prov.23.25:pair": {
+     "cover": 1.0,
+     "context": 0.807,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Prov.28.24:pair": {
+     "cover": 1.0,
+     "context": 0.397,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Isa.8.4:pair": {
+     "cover": 0.813,
+     "context": 0.49,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Jer.16.3:pair": {
+     "cover": 1.0,
+     "context": 0.84,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mothers ... fathers"
+    },
+    "Jer.16.7:pair": {
+     "cover": 0.679,
+     "context": 0.429,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and for their mother"
+    },
+    "Ezek.16.3:pair": {
+     "cover": 0.648,
+     "context": 0.409,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Ezek.16.45:pair": {
+     "cover": 0.552,
+     "context": 0.553,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "Ezek.22.7:pair": {
+     "cover": 0.573,
+     "context": 0.729,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Ezek.44.25:pair": {
+     "cover": 1.0,
+     "context": 0.697,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or on mother"
+    },
+    "Zech.13.3:pair": {
+     "cover": 0.772,
+     "context": 0.507,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Prov.1.8:parallel": {
+     "cover": 0.631,
+     "context": 0.755,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.4.3:parallel": {
+     "cover": 0.719,
+     "context": 0.589,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.6.20:parallel": {
+     "cover": 0.62,
+     "context": 0.791,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.10.1:parallel": {
+     "cover": 0.812,
+     "context": 0.727,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.15.20:parallel": {
+     "cover": 0.844,
+     "context": 0.616,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.23.22:parallel": {
+     "cover": 1.0,
+     "context": 0.936,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.30.11:parallel": {
+     "cover": 1.0,
+     "context": 0.772,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.30.17:parallel": {
+     "cover": 1.0,
+     "context": 0.792,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Mic.7.6:parallel": {
+     "cover": 0.885,
+     "context": 0.822,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Zech.13.3:yalad": {
+     "cover": 0.772,
+     "context": 0.507,
+     "class": "PARTICIPLE",
+     "rendering": "who have begotten him"
+    },
+    "Jer.16.3:yalad": {
+     "cover": 1.0,
+     "context": 0.84,
+     "class": "PARTICIPLE",
+     "rendering": "mothers that bear them"
+    },
+    "Prov.17.21:yalad": {
+     "cover": 1.0,
+     "context": 0.57,
+     "class": "PARTICIPLE",
+     "rendering": "he that begetteth a"
+    },
+    "Prov.23.24:yalad": {
+     "cover": 0.826,
+     "context": 1.0,
+     "class": "PARTICIPLE",
+     "rendering": "he that begetteth a"
+    },
+    "Prov.17.25:yalad": {
+     "cover": 0.522,
+     "context": 0.925,
+     "class": "PARTICIPLE",
+     "rendering": "her that hath born"
+    },
+    "Prov.23.25:yalad": {
+     "cover": 1.0,
+     "context": 0.807,
+     "class": "PARTICIPLE",
+     "rendering": "her that hath born"
+    },
+    "Song.6.9:yalad": {
+     "cover": 0.649,
+     "context": 0.216,
+     "class": "PARTICIPLE",
+     "rendering": "her that bore her"
+    },
+    "Jer.15.9:yalad": {
+     "cover": 0.67,
+     "context": 0.463,
+     "class": "PARTICIPLE",
+     "rendering": "she that had born"
+    },
+    "Jer.50.12:yalad": {
+     "cover": 0.735,
+     "context": 0.58,
+     "class": "PARTICIPLE",
+     "rendering": "she that bare you"
+    },
+    "Jer.16.3:molid": {
+     "cover": 1.0,
+     "context": 0.84,
+     "class": "PARTICIPLE",
+     "rendering": "mothers that bear them"
+    },
+    "Prov.23.22:relative": {
+     "cover": 1.0,
+     "context": 0.936,
+     "class": "PARTICIPLE",
+     "rendering": "that hath begotten thee"
+    },
+    "Hos.2.7:harah": {
+     "cover": 0.925,
+     "context": 0.661,
+     "class": "PARTICIPLE",
+     "rendering": "she that conceived them"
+    },
+    "Song.3.4:harah": {
+     "cover": 0.803,
+     "context": 0.798,
+     "class": "PARTICIPLE",
+     "rendering": "her that had born"
+    },
+    "Gen.49.26:horay": {
+     "cover": 0.621,
+     "context": 0.825,
+     "class": "OTHER",
+     "rendering": null,
+     "one_parent_word": true
+    }
+   }
+  },
+  "sharpe_1865": {
+   "translator": "Samuel Sharpe",
+   "year": 1865,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [],
+   "whole_text": {
+    "pair": 3,
+    "collective": 0,
+    "collective_share": 0.0,
+    "words": 214809
+   },
+   "whole_text_ocr_read": {
+    "pair": 3,
+    "collective": 0,
+    "collective_share": 0.0,
+    "words": 214809
+   },
+   "books": [
+    "1Sam",
+    "2Sam",
+    "1Kgs",
+    "2Kgs",
+    "1Chr",
+    "2Chr",
+    "Ezra",
+    "Neh",
+    "Esth",
+    "Job",
+    "Ps"
+   ],
+   "summary": {
+    "places_in_volume": 8,
+    "located": 7,
+    "coverage": 0.875,
+    "classes": {
+     "NOT_FOUND": 1,
+     "OTHER": 1,
+     "FATHER_AND_MOTHER": 6
+    },
+    "pair_and_parallel": {
+     "NOT_FOUND": 1,
+     "OTHER": 1,
+     "FATHER_AND_MOTHER": 6
+    },
+    "participle_places": {},
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 1
+   },
+   "places": {
+    "1Sam.22.3:pair": {
+     "cover": 0.342,
+     "context": 0.116,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "2Sam.19.38:pair": {
+     "cover": 0.938,
+     "context": 0.739,
+     "class": "OTHER",
+     "rendering": null,
+     "one_parent_word": true
+    },
+    "1Kgs.19.20:pair": {
+     "cover": 0.929,
+     "context": 0.911,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "1Kgs.22.53:pair": {
+     "cover": 0.789,
+     "context": 0.956,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "2Kgs.3.2:pair": {
+     "cover": 1.0,
+     "context": 0.957,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father but like his mother"
+    },
+    "2Kgs.3.13:pair": {
+     "cover": 0.787,
+     "context": 0.665,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Esth.2.7:pair": {
+     "cover": 0.927,
+     "context": 0.777,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father nor mother"
+    },
+    "Ps.27.10:pair": {
+     "cover": 0.793,
+     "context": 0.905,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    }
+   }
+  },
+  "julia_smith_1876": {
+   "translator": "Julia E. Smith",
+   "year": 1876,
+   "source": "hebrew_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [],
+   "whole_text": {
+    "pair": 29,
+    "collective": 0,
+    "collective_share": 0.0,
+    "words": 634690
+   },
+   "whole_text_ocr_read": {
+    "pair": 29,
+    "collective": 0,
+    "collective_share": 0.0,
+    "words": 634690
+   },
+   "books": "OT",
+   "summary": {
+    "places_in_volume": 72,
+    "located": 55,
+    "coverage": 0.764,
+    "classes": {
+     "FATHER_AND_MOTHER": 44,
+     "NOT_FOUND": 17,
+     "PARTICIPLE": 9,
+     "OTHER": 2
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 44,
+     "NOT_FOUND": 14
+    },
+    "participle_places": {
+     "PARTICIPLE": 9,
+     "OTHER": 2,
+     "NOT_FOUND": 3
+    },
+    "parents_at_places": 0,
+    "out_of_order": 1,
+    "other_with_one_parent_word": 2
+   },
+   "places": {
+    "Gen.2.24:pair": {
+     "cover": 0.705,
+     "context": 0.631,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Gen.28.7:pair": {
+     "cover": 0.578,
+     "context": 0.612,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and to his mother"
+    },
+    "Exod.20.12:pair": {
+     "cover": 0.823,
+     "context": 0.821,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Exod.21.15:pair": {
+     "cover": 0.385,
+     "context": 0.209,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Exod.21.17:pair": {
+     "cover": 0.617,
+     "context": 0.041,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Lev.18.7:pair": {
+     "cover": 1.0,
+     "context": 0.698,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Lev.19.3:pair": {
+     "cover": 0.807,
+     "context": 0.553,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother and his father"
+    },
+    "Lev.20.9:pair": {
+     "cover": 0.518,
+     "context": 0.223,
+     "class": "NOT_FOUND",
+     "rendering": null,
+     "one_parent_word": false,
+     "placed_class": "OTHER",
+     "reason": "out of order within its book"
+    },
+    "Lev.21.2:pair": {
+     "cover": 0.726,
+     "context": 0.643,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother and for his father"
+    },
+    "Lev.21.11:pair": {
+     "cover": 0.333,
+     "context": 0.603,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Num.6.7:pair": {
+     "cover": 0.441,
+     "context": 0.432,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Deut.5.16:pair": {
+     "cover": 0.676,
+     "context": 0.72,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Deut.21.13:pair": {
+     "cover": 0.128,
+     "context": 0.043,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Deut.21.18:pair": {
+     "cover": 0.676,
+     "context": 0.549,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.21.19:pair": {
+     "cover": 0.752,
+     "context": 0.493,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Deut.22.15:pair": {
+     "cover": 0.571,
+     "context": 0.488,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.27.16:pair": {
+     "cover": 0.979,
+     "context": 0.624,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Deut.33.9:pair": {
+     "cover": 0.427,
+     "context": 0.503,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Josh.2.13:pair": {
+     "cover": 0.729,
+     "context": 0.275,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Josh.2.18:pair": {
+     "cover": 0.897,
+     "context": 0.398,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Josh.6.23:pair": {
+     "cover": 0.623,
+     "context": 0.672,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Judg.14.2:pair": {
+     "cover": 0.6,
+     "context": 0.745,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.3:pair": {
+     "cover": 0.727,
+     "context": 0.55,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.4:pair": {
+     "cover": 0.882,
+     "context": 0.726,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.5:pair": {
+     "cover": 0.935,
+     "context": 0.517,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.6:pair": {
+     "cover": 0.547,
+     "context": 0.581,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and to his mother"
+    },
+    "Judg.14.9:pair": {
+     "cover": 0.397,
+     "context": 0.584,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Judg.14.16:pair": {
+     "cover": 0.384,
+     "context": 0.372,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Ruth.2.11:pair": {
+     "cover": 0.185,
+     "context": 0.028,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "1Sam.22.3:pair": {
+     "cover": 0.816,
+     "context": 0.244,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "2Sam.19.38:pair": {
+     "cover": 0.697,
+     "context": 0.342,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "1Kgs.19.20:pair": {
+     "cover": 0.61,
+     "context": 0.533,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and to my mother"
+    },
+    "1Kgs.22.53:pair": {
+     "cover": 0.832,
+     "context": 0.567,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "2Kgs.3.2:pair": {
+     "cover": 0.442,
+     "context": 0.638,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "2Kgs.3.13:pair": {
+     "cover": 0.83,
+     "context": 0.6,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Esth.2.7:pair": {
+     "cover": 0.697,
+     "context": 0.598,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Ps.27.10:pair": {
+     "cover": 0.532,
+     "context": 0.412,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Prov.19.26:pair": {
+     "cover": 0.383,
+     "context": 0.611,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.20.20:pair": {
+     "cover": 0.546,
+     "context": 0.449,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Prov.23.25:pair": {
+     "cover": 0.592,
+     "context": 0.575,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father shall rejoice and thy mother"
+    },
+    "Prov.28.24:pair": {
+     "cover": 0.541,
+     "context": 0.613,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Isa.8.4:pair": {
+     "cover": 0.422,
+     "context": 0.243,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Jer.16.3:pair": {
+     "cover": 0.958,
+     "context": 0.621,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mothers ... fathers"
+    },
+    "Jer.16.7:pair": {
+     "cover": 0.635,
+     "context": 0.564,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and for his mother"
+    },
+    "Ezek.16.3:pair": {
+     "cover": 0.991,
+     "context": 0.724,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father the amorite and thy mother"
+    },
+    "Ezek.16.45:pair": {
+     "cover": 0.907,
+     "context": 0.643,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "Ezek.22.7:pair": {
+     "cover": 0.604,
+     "context": 0.588,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Ezek.44.25:pair": {
+     "cover": 0.711,
+     "context": 0.574,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and for mother"
+    },
+    "Zech.13.3:pair": {
+     "cover": 0.816,
+     "context": 0.369,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Prov.1.8:parallel": {
+     "cover": 0.79,
+     "context": 0.524,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.4.3:parallel": {
+     "cover": 0.728,
+     "context": 0.669,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.6.20:parallel": {
+     "cover": 0.57,
+     "context": 0.498,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.10.1:parallel": {
+     "cover": 0.463,
+     "context": 0.353,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.15.20:parallel": {
+     "cover": 0.699,
+     "context": 0.443,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.23.22:parallel": {
+     "cover": 0.663,
+     "context": 0.705,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.30.11:parallel": {
+     "cover": 0.716,
+     "context": 0.54,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.30.17:parallel": {
+     "cover": 0.695,
+     "context": 0.446,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Mic.7.6:parallel": {
+     "cover": 0.764,
+     "context": 0.558,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Zech.13.3:yalad": {
+     "cover": 0.816,
+     "context": 0.369,
+     "class": "PARTICIPLE",
+     "rendering": "mother who begat him"
+    },
+    "Jer.16.3:yalad": {
+     "cover": 0.958,
+     "context": 0.621,
+     "class": "PARTICIPLE",
+     "rendering": "their mothers bearing them"
+    },
+    "Prov.17.21:yalad": {
+     "cover": 0.511,
+     "context": 0.494,
+     "class": "OTHER",
+     "rendering": null,
+     "one_parent_word": true
+    },
+    "Prov.23.24:yalad": {
+     "cover": 0.418,
+     "context": 0.796,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.17.25:yalad": {
+     "cover": 1.0,
+     "context": 0.64,
+     "class": "PARTICIPLE",
+     "rendering": "to her bringing him"
+    },
+    "Prov.23.25:yalad": {
+     "cover": 0.592,
+     "context": 0.575,
+     "class": "PARTICIPLE",
+     "rendering": "and she begetting thee"
+    },
+    "Song.6.9:yalad": {
+     "cover": 0.782,
+     "context": 0.559,
+     "class": "PARTICIPLE",
+     "rendering": "to her bearing her"
+    },
+    "Jer.15.9:yalad": {
+     "cover": 0.102,
+     "context": 0.096,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Jer.50.12:yalad": {
+     "cover": 0.228,
+     "context": 0.0,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Jer.16.3:molid": {
+     "cover": 0.958,
+     "context": 0.621,
+     "class": "PARTICIPLE",
+     "rendering": "their mothers bearing them"
+    },
+    "Prov.23.22:relative": {
+     "cover": 0.663,
+     "context": 0.705,
+     "class": "PARTICIPLE",
+     "rendering": "father that begat thee"
+    },
+    "Hos.2.7:harah": {
+     "cover": 0.696,
+     "context": 0.346,
+     "class": "PARTICIPLE",
+     "rendering": "fornication she conceiving them"
+    },
+    "Song.3.4:harah": {
+     "cover": 0.968,
+     "context": 0.68,
+     "class": "PARTICIPLE",
+     "rendering": "of her conceiving me"
+    },
+    "Gen.49.26:horay": {
+     "cover": 0.731,
+     "context": 0.697,
+     "class": "OTHER",
+     "rendering": null,
+     "one_parent_word": true
+    }
+   }
+  },
+  "thomson_1808": {
+   "translator": "Charles Thomson",
+   "year": 1808,
+   "source": "greek_bible",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "parents_near_unresolved_places": [
+    {
+     "place": "Esth.2.7:pair",
+     "cover": 0.358
+    }
+   ],
+   "whole_text": {
+    "pair": 21,
+    "collective": 2,
+    "collective_share": 0.087,
+    "words": 624554
+   },
+   "whole_text_ocr_read": {
+    "pair": 21,
+    "collective": 2,
+    "collective_share": 0.087,
+    "words": 624554
+   },
+   "books": "OT",
+   "summary": {
+    "places_in_volume": 72,
+    "located": 60,
+    "coverage": 0.833,
+    "classes": {
+     "FATHER_AND_MOTHER": 49,
+     "NOT_FOUND": 12,
+     "PARTICIPLE": 10,
+     "OTHER": 1
+    },
+    "pair_and_parallel": {
+     "FATHER_AND_MOTHER": 47,
+     "NOT_FOUND": 10,
+     "PARTICIPLE": 1
+    },
+    "participle_places": {
+     "PARTICIPLE": 9,
+     "FATHER_AND_MOTHER": 2,
+     "NOT_FOUND": 2,
+     "OTHER": 1
+    },
+    "parents_at_places": 0,
+    "out_of_order": 0,
+    "other_with_one_parent_word": 1
+   },
+   "places": {
+    "Gen.2.24:pair": {
+     "cover": 1.0,
+     "context": 0.891,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Gen.28.7:pair": {
+     "cover": 0.51,
+     "context": 0.445,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Exod.20.12:pair": {
+     "cover": 0.725,
+     "context": 0.395,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Exod.21.15:pair": {
+     "cover": 0.769,
+     "context": 0.538,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Exod.21.17:pair": {
+     "cover": 0.759,
+     "context": 0.452,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Lev.18.7:pair": {
+     "cover": 1.0,
+     "context": 0.844,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Lev.19.3:pair": {
+     "cover": 0.7,
+     "context": 0.931,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Lev.20.9:pair": {
+     "cover": 0.764,
+     "context": 0.712,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Lev.21.2:pair": {
+     "cover": 1.0,
+     "context": 0.627,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or a mother"
+    },
+    "Lev.21.11:pair": {
+     "cover": 0.835,
+     "context": 0.693,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father nor for his mother"
+    },
+    "Num.6.7:pair": {
+     "cover": 0.53,
+     "context": 0.657,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or a mother"
+    },
+    "Deut.5.16:pair": {
+     "cover": 0.704,
+     "context": 0.358,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Deut.21.13:pair": {
+     "cover": 0.698,
+     "context": 0.629,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Deut.21.18:pair": {
+     "cover": 0.703,
+     "context": 0.637,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Deut.21.19:pair": {
+     "cover": 0.233,
+     "context": 0.123,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Deut.22.15:pair": {
+     "cover": 0.578,
+     "context": 0.475,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "Deut.27.16:pair": {
+     "cover": 0.629,
+     "context": 0.708,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Deut.33.9:pair": {
+     "cover": 0.658,
+     "context": 0.314,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and to his mother"
+    },
+    "Josh.2.13:pair": {
+     "cover": 0.72,
+     "context": 0.421,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Josh.2.18:pair": {
+     "cover": 0.548,
+     "context": 0.345,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and thy mother"
+    },
+    "Josh.6.23:pair": {
+     "cover": 0.649,
+     "context": 0.643,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and her mother"
+    },
+    "Judg.14.2:pair": {
+     "cover": 0.867,
+     "context": 0.494,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.3:pair": {
+     "cover": 0.693,
+     "context": 0.637,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.4:pair": {
+     "cover": 0.683,
+     "context": 0.613,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.5:pair": {
+     "cover": 0.647,
+     "context": 0.624,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.6:pair": {
+     "cover": 0.665,
+     "context": 0.494,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or his mother"
+    },
+    "Judg.14.9:pair": {
+     "cover": 0.892,
+     "context": 0.635,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Judg.14.16:pair": {
+     "cover": 0.908,
+     "context": 0.559,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "Ruth.2.11:pair": {
+     "cover": 0.88,
+     "context": 0.766,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "1Sam.22.3:pair": {
+     "cover": 0.696,
+     "context": 0.36,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and my mother"
+    },
+    "2Sam.19.38:pair": {
+     "cover": 0.587,
+     "context": 0.438,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    },
+    "1Kgs.19.20:pair": {
+     "cover": 0.418,
+     "context": 0.485,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "1Kgs.22.53:pair": {
+     "cover": 0.845,
+     "context": 0.693,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "2Kgs.3.2:pair": {
+     "cover": 0.603,
+     "context": 0.489,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father nor his mother"
+    },
+    "2Kgs.3.13:pair": {
+     "cover": 0.787,
+     "context": 0.418,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Esth.2.7:pair": {
+     "cover": 0.303,
+     "context": 0.396,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Ps.27.10:pair": {
+     "cover": 0.6,
+     "context": 0.142,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.19.26:pair": {
+     "cover": 0.661,
+     "context": 0.245,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and causeth his mother"
+    },
+    "Prov.20.20:pair": {
+     "cover": 0.617,
+     "context": 0.061,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.23.25:pair": {
+     "cover": 0.599,
+     "context": 0.9,
+     "class": "PARTICIPLE",
+     "rendering": "her who bare thee"
+    },
+    "Prov.28.24:pair": {
+     "cover": 0.2,
+     "context": 0.138,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Isa.8.4:pair": {
+     "cover": 0.573,
+     "context": 0.486,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or mother"
+    },
+    "Jer.16.3:pair": {
+     "cover": 1.0,
+     "context": 0.553,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mothers ... fathers"
+    },
+    "Jer.16.7:pair": {
+     "cover": 0.688,
+     "context": 0.549,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or mother"
+    },
+    "Ezek.16.3:pair": {
+     "cover": 0.419,
+     "context": 0.609,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Ezek.16.45:pair": {
+     "cover": 0.629,
+     "context": 0.698,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "mother ... father"
+    },
+    "Ezek.22.7:pair": {
+     "cover": 0.369,
+     "context": 0.831,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Ezek.44.25:pair": {
+     "cover": 0.822,
+     "context": 0.646,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father or fora mother"
+    },
+    "Zech.13.3:pair": {
+     "cover": 0.854,
+     "context": 0.553,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and his mother"
+    },
+    "Prov.1.8:parallel": {
+     "cover": 0.625,
+     "context": 0.601,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.4.3:parallel": {
+     "cover": 0.609,
+     "context": 0.552,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.6.20:parallel": {
+     "cover": 0.629,
+     "context": 0.808,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.10.1:parallel": {
+     "cover": 0.618,
+     "context": 0.422,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.15.20:parallel": {
+     "cover": 0.755,
+     "context": 0.561,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.23.22:parallel": {
+     "cover": 1.0,
+     "context": 0.107,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.30.11:parallel": {
+     "cover": 0.461,
+     "context": 0.337,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Prov.30.17:parallel": {
+     "cover": 0.73,
+     "context": 0.473,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Mic.7.6:parallel": {
+     "cover": 0.676,
+     "context": 0.4,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Zech.13.3:yalad": {
+     "cover": 0.854,
+     "context": 0.553,
+     "class": "PARTICIPLE",
+     "rendering": "mother who begot him"
+    },
+    "Jer.16.3:yalad": {
+     "cover": 1.0,
+     "context": 0.553,
+     "class": "PARTICIPLE",
+     "rendering": "mothers who bare them"
+    },
+    "Prov.17.21:yalad": {
+     "cover": 0.728,
+     "context": 0.356,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father ... mother"
+    },
+    "Prov.23.24:yalad": {
+     "cover": 0.8,
+     "context": 0.3,
+     "class": "PARTICIPLE",
+     "rendering": "her who bare thee"
+    },
+    "Prov.17.25:yalad": {
+     "cover": 0.522,
+     "context": 0.352,
+     "class": "PARTICIPLE",
+     "rendering": "her who bore him"
+    },
+    "Prov.23.25:yalad": {
+     "cover": 0.599,
+     "context": 0.9,
+     "class": "PARTICIPLE",
+     "rendering": "her who bare thee"
+    },
+    "Song.6.9:yalad": {
+     "cover": 0.546,
+     "context": 0.527,
+     "class": "PARTICIPLE",
+     "rendering": "her who bore her"
+    },
+    "Jer.15.9:yalad": {
+     "cover": 0.075,
+     "context": 0.08,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Jer.50.12:yalad": {
+     "cover": 0.585,
+     "context": 0.4,
+     "class": "PARTICIPLE",
+     "rendering": "she who brought you"
+    },
+    "Jer.16.3:molid": {
+     "cover": 1.0,
+     "context": 0.553,
+     "class": "PARTICIPLE",
+     "rendering": "mothers who bare them"
+    },
+    "Prov.23.22:relative": {
+     "cover": 1.0,
+     "context": 0.107,
+     "class": "NOT_FOUND",
+     "rendering": null
+    },
+    "Hos.2.7:harah": {
+     "cover": 0.616,
+     "context": 0.485,
+     "class": "PARTICIPLE",
+     "rendering": "she who brought them"
+    },
+    "Song.3.4:harah": {
+     "cover": 0.797,
+     "context": 0.682,
+     "class": "OTHER",
+     "rendering": null,
+     "one_parent_word": true
+    },
+    "Gen.49.26:horay": {
+     "cover": 0.518,
+     "context": 0.465,
+     "class": "FATHER_AND_MOTHER",
+     "rendering": "father and mother"
+    }
+   }
+  },
+  "levi_mahzor_1794_96": {
+   "translator": "David Levi",
+   "year": 1794,
+   "source": "post_biblical",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "whole_text": {
+    "pair": 16,
+    "collective": 16,
+    "collective_share": 0.5,
+    "words": 496011
+   },
+   "whole_text_ocr_read": {
+    "pair": 17,
+    "collective": 16,
+    "collective_share": 0.485,
+    "words": 496011
+   }
+  },
+  "pinto_prayers_1766": {
+   "translator": "Isaac Pinto (attributed)",
+   "year": 1766,
+   "source": "post_biblical",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "whole_text": {
+    "pair": 0,
+    "collective": 0,
+    "collective_share": null,
+    "words": 79234
+   },
+   "whole_text_ocr_read": {
+    "pair": 0,
+    "collective": 1,
+    "collective_share": 1.0,
+    "words": 79234
+   }
+  },
+  "wotton_mishnah_1718": {
+   "translator": "William Wotton",
+   "year": 1718,
+   "source": "post_biblical",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "whole_text": {
+    "pair": 5,
+    "collective": 10,
+    "collective_share": 0.667,
+    "words": 242873
+   },
+   "whole_text_ocr_read": {
+    "pair": 5,
+    "collective": 10,
+    "collective_share": 0.667,
+    "words": 242873
+   }
+  },
+  "townley_maimonides_1827": {
+   "translator": "James Townley",
+   "year": 1827,
+   "source": "post_biblical",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "whole_text": {
+    "pair": 1,
+    "collective": 21,
+    "collective_share": 0.955,
+    "words": 131136
+   },
+   "whole_text_ocr_read": {
+    "pair": 1,
+    "collective": 21,
+    "collective_share": 0.955,
+    "words": 131136
+   }
+  },
+  "bernard_maimonides_1832": {
+   "translator": "H. H. Bernard",
+   "year": 1832,
+   "source": "post_biblical",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "whole_text": {
+    "pair": 1,
+    "collective": 2,
+    "collective_share": 0.667,
+    "words": 104285
+   },
+   "whole_text_ocr_read": {
+    "pair": 1,
+    "collective": 2,
+    "collective_share": 0.667,
+    "words": 104285
+   }
+  },
+  "jasher_1840": {
+   "translator": "Moses Samuel (uncredited)",
+   "year": 1840,
+   "source": "post_biblical",
+   "text": "OCR volume(s), notes and prefaces included in the whole-text count",
+   "whole_text": {
+    "pair": 16,
+    "collective": 2,
+    "collective_share": 0.111,
+    "words": 168926
+   },
+   "whole_text_ocr_read": {
+    "pair": 16,
+    "collective": 2,
+    "collective_share": 0.111,
+    "words": 168926
+   }
+  }
+ },
+ "not_attempted": [],
+ "not_fetched": {
+  "bellamy_1818": "Google Books only (https://books.google.com/books?id=SP1PAAAAYAAJ); its download answers programs with a bot check (2026-11-27); HathiTrust refuses scripted access"
+ },
+ "recheck_read_by_hand": {
+  "thomson_1808 Esth.2.7:pair": "PARENTS: his rendering ('on the decease of her parents'), from the Greek; the locator missed the verse",
+  "geddes_1792 Exod.21.15:pair": "not the verse: a chapter summary ('reviling of parents')",
+  "geddes_1792 Exod.21.17:pair": "not the verse: the same chapter summary",
+  "boothroyd_1824 Exod.21.17:pair": "not the verse: a chapter summary ('cursing reviling or striking parents')",
+  "boothroyd_1824 Lev.19.3:pair": "not the verse: his Reflections ('our first parents')",
+  "boothroyd_1824 Lev.21.11:pair": "not the verse: his Reflections",
+  "boothroyd_1824 Prov.19.26:pair": "not the verse: his Reflections",
+  "boothroyd_1824 Ezek.16.45:pair": "not the verse: a note on marriage customs",
+  "boothroyd_1824 Prov.30.11:parallel": "not the verse: his Reflections",
+  "boothroyd_1853 Exod.20.12:pair": "not the verse: a note",
+  "boothroyd_1853 Prov.30.11:parallel": "not the verse: a note ('an aged parent')"
+ },
+ "book_of_mormon": {
+  "pre_christian": {
+   "pair": 2,
+   "collective": 20,
+   "collective_share": 0.909
+  },
+  "3_nephi": {
+   "pair": 0,
+   "collective": 0,
+   "collective_share": null
+  },
+  "source": "data/lab/translation/hebrew_vocabulary/result3.json"
+ },
+ "rules": {
+  "pair_place": "FATHER_AND_MOTHER > PARENTS > PARTICIPLE > OTHER",
+  "participle_place": "PARENTS > PARTICIPLE > FATHER_AND_MOTHER > OTHER",
+  "whole_text_pairs": [
+   "\\b(?:father|fathers)\\s+and\\s+(?:\\w+\\s+)?(?:mother|mothers)\\b|\\b(?:mother|mothers)\\s+and\\s+(?:\\w+\\s+)?(?:father|fathers)\\b",
+   "\\bparents?\\b"
+  ]
+ },
+ "stamp": {
+  "config_sha256": "1b2b3963122651e7f632a5d76194911420d8a2609aa4eda6bc7ce6532eb0b1d2",
+  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+  "registered": true,
+  "git_commit": "393b0c78c9986f756b366ba2b98754842878b427"
+ }
+}

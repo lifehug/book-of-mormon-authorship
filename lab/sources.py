@@ -706,6 +706,25 @@ def _sources() -> list[dict]:
     add("eng-kjv2006_usfm.zip", "translation", "BOM-132", "file",
         "https://ebible.org/Scriptures/eng-kjv2006_usfm.zip",
         PD + " (eBible.org, King James 1769 text, protocanon, Strong's numbers)")  # fmt: skip
+    # BOM-133: translators from Hebrew (docs/research/2026-11-27-hebrew-parents.md, section 4).
+    # Bellamy 1818 is on Google Books only, which answers programs with a bot check: not fetched.
+    for item, kind, what in (
+        ("bim_eighteenth-century_isaiah-a-new-translatio_1778", "ia", "Lowth, Isaiah, 1778"),
+        ("ENGNFB_DBS_HS", "ia_all", "Boothroyd, A New Family Bible, 1824, vols 1-3"),
+        ("cu31924029268617", "ia", "Boothroyd's version, one-volume reprint, 1853"),
+        ("twentyfourbookso1853lees", "ia", "Leeser, The Twenty-Four Books, 1853"),
+        ("hebrewscriptures00shar", "ia", "Sharpe, The Hebrew Scriptures, 1865"),
+        ("holybiblecon00smit", "ia", "Julia E. Smith, The Holy Bible, 1876"),
+        ("bim_eighteenth-century_miscellaneous-discourses_wotton-william_1718_1", "ia",
+         "Wotton, Miscellaneous Discourses (Mishnah tracts), 1718, vol. 1"),
+        ("bim_eighteenth-century_miscellaneous-discourses_wotton-william_1718_2", "ia",
+         "Wotton, Miscellaneous Discourses (Mishnah tracts), 1718, vol. 2"),
+        ("mainprinciplesof00maim", "ia", "Bernard, Maimonides' Creed and Ethics, 1832"),
+        ("bim_eighteenth-century_prayers-for-shabbath-ro_1766", "ia",
+         "Pinto (attributed), Prayers for Shabbath, Rosh-Hashanah, and Kippur, 1766"),
+    ):  # fmt: skip
+        add(item, "translation", "BOM-133", kind, f"{IA}/details/{item}",
+            PD + f" (scan and OCR text; {what})")  # fmt: skip
     for name, url in (
         ("fair_if_and_conditionals.html", "https://www.fairlatterdaysaints.org/answers/"
          "Book_of_Mormon/Evidences/Hebraisms/If-and_conditionals"),
@@ -925,6 +944,27 @@ def _ia(s: dict, dest: Path) -> None:
     out(dest / "metadata.json").write_text(json.dumps(meta.get("metadata", {}), indent=1))
 
 
+def _ia_all(s: dict, dest: Path) -> None:
+    """Every OCR full text of an item holding several volumes, in the item's order, as
+    ``text_1.txt`` ... and then ``text.txt`` (all of them joined), and the metadata record."""
+    out(dest / "x")
+    meta = json.loads(_get(f"{IA}/metadata/{s['name']}"))
+    names = sorted(f["name"] for f in meta.get("files", []) if f["name"].endswith("_djvu.txt"))
+    if not names:
+        raise OSError("no OCR text file in the item")
+    for i, n in enumerate(names, 1):
+        part = dest / f"text_{i}.txt"
+        if not part.exists():
+            _download(f"{IA}/download/{s['name']}/{urllib.parse.quote(n)}", part)
+            time.sleep(PAUSE)
+    out(dest / "metadata.json").write_text(
+        json.dumps(meta.get("metadata", {}) | {"ocr_files": names}, indent=1)
+    )
+    joined = "\n".join((dest / f"text_{i}.txt").read_text("utf-8", "replace") for i in
+                       range(1, len(names) + 1))  # fmt: skip
+    out(dest / "text.txt").write_text(joined)
+
+
 def _jsp(s: dict, dest: Path) -> None:
     """Every page of a Joseph Smith Papers document: raw page JSON, then one record a page."""
     slug = s["url"].removeprefix(JSPB).removesuffix("/1")
@@ -1028,6 +1068,7 @@ def _wiki(s: dict, dest: Path) -> None:
 
 KINDS = {
     "ia": _ia,
+    "ia_all": _ia_all,
     "jsp": _jsp,
     "git": _git,
     "figshare": _figshare,
@@ -1039,7 +1080,7 @@ KINDS = {
     "file": lambda s, dest: _download(s["url"], out(dest)),
 }
 # A folder kind is complete only when its last file exists; a half-fetched folder is resumed.
-DONE = {"ia": "text.txt", "jsp": "pages.jsonl", "git": ".git"}
+DONE = {"ia": "text.txt", "ia_all": "text.txt", "jsp": "pages.jsonl", "git": ".git"}
 
 
 def _complete(s: dict, dest: Path) -> bool:

@@ -1091,6 +1091,74 @@ lab:                              # the research lab (exploratory tooling; reads
     renderings_per_lemma: 8        # part 2: King James renderings listed per lemma
     usfm: data/corpus/lab/sources/translation/eng-kjv2006_usfm.zip
     check_verse: [GEN, 49, 26, progenitors]   # card: Genesis 49:26 "progenitors" for "parents"
+  hebrew_translators:              # BOM-133 (lab): what translators from Hebrew wrote at the Bible's father-and-mother places; card data/private/lab/owner/2026-11-27-hebrew-translators/card.md
+    lemma_window: 8                # candidate verses: Strong's H1 'av and H517 'em (Hebrew) within this many words (note: 73 verses)
+    places:                        # WLC references (OSIS); the research note's hand sort, docs/research/2026-11-27-hebrew-parents.md
+      pair: [Gen.2.24, Gen.28.7, Exod.20.12, Exod.21.15, Exod.21.17, Lev.18.7, Lev.19.3, Lev.20.9, Lev.21.2, Lev.21.11, Num.6.7, Deut.5.16, Deut.21.13, Deut.21.18, Deut.21.19, Deut.22.15, Deut.27.16, Deut.33.9, Josh.2.13, Josh.2.18, Josh.6.23, Judg.14.2, Judg.14.3, Judg.14.4, Judg.14.5, Judg.14.6, Judg.14.9, Judg.14.16, Ruth.2.11, 1Sam.22.3, 2Sam.19.38, 1Kgs.19.20, 1Kgs.22.53, 2Kgs.3.2, 2Kgs.3.13, Esth.2.7, Ps.27.10, Prov.19.26, Prov.20.20, Prov.23.25, Prov.28.24, Isa.8.4, Jer.16.3, Jer.16.7, Ezek.16.3, Ezek.16.45, Ezek.22.7, Ezek.44.25, Zech.13.3]   # the note says 48; its list holds these 49
+      parallel: [Prov.1.8, Prov.4.3, Prov.6.20, Prov.10.1, Prov.15.20, Prov.23.22, Prov.30.11, Prov.30.17, Mic.7.6]
+      yalad: [Zech.13.3, Jer.16.3, Prov.17.21, Prov.23.24, Prov.17.25, Prov.23.25, Song.6.9, Jer.15.9, Jer.50.12]   # Qal active participle of H3205 used of a parent
+      molid: [Jer.16.3]            # Hiphil participle of H3205
+      relative: [Prov.23.22]       # zeh yeladekha, H3205 perfect
+      harah: [Hos.2.7, Song.3.4]   # participle of H2029
+      horay: [Gen.49.26]           # H2029 form, "my progenitors" or "my parents"
+    lemmas: {yalad: 3205, molid: 3205, relative: 3205, harah: 2029, horay: 2029}
+    lexicon: data/lexicon/period_words.tsv   # run 2: OCR variants of the parent words read as the words
+    ocr: {max_texts: 30, max_edit: 2, long_s_ratio: 10}   # a variant is in fewer than this many period texts and within this many edits (1 for words under six letters); f read as s when that form is this many times as common
+    kjv_hand:                      # the check: the King James at every place, read by hand (BOM-133, 2026-11-27)
+      OTHER: [Gen.49.26:horay]     # "my progenitors"; every pair and parallel place is FATHER_AND_MOTHER, every other participle place PARTICIPLE
+    young_check: [Zech.13.3:yalad, PARENTS]
+    locator:
+      anchors: 3                   # the verse's rarest content stems whose occurrences are tried as window centres
+      max_candidates: 6000
+      span_factor: 1.3             # the verse window: this times the King James verse's length in words
+      min_cover: 0.5               # share of the King James verse's content weight found in the window
+      min_context: 0.2             # mean share of the neighbouring verses' content weight found next to it
+      context_words: 80            # how far before and after the verse the neighbours are looked for
+      context_weight: 0.5
+      number_bonus: 0.15           # added for the verse's number printed just before it, and again for the next verse's just after (run 2: printed numbers also bound the verse)
+      number_reach: 20             # words searched for those numbers
+      pad_extra: 3                 # words added beyond the King James verse's own leading and trailing function words
+      pad_cap: 12
+      stem_len: 6
+      recheck_reach: 40            # each 'parent(s)' in a volume against the places left NOT_FOUND or OTHER: words either side
+      recheck_cover: 0.35          # share of that verse's content found there at which a PARENTS rendering cannot be ruled out
+    texts:                         # name: translator, year, source (hebrew_bible | greek_bible | post_biblical), paths, books (OSIS, or OT)
+      king_james_1611: {translator: King James translators, year: 1611, source: hebrew_bible, clean: kjv, books: OT}
+      young_1862: {translator: Robert Young, year: 1862, source: hebrew_bible, clean: ylt, books: OT}
+      geddes_1792: {translator: Alexander Geddes, year: 1792, source: hebrew_bible, paths: [data/corpus/internet_archive/text/bim_eighteenth-century_the-holy-bible-or-the-b_1792_1.txt], books: [Gen, Exod, Lev, Num, Deut, Josh]}
+      geddes_1797: {translator: Alexander Geddes, year: 1797, source: hebrew_bible, paths: [data/corpus/internet_archive/text/bim_eighteenth-century_the-holy-bible-or-the-b_1792_2.txt], books: [Judg, Ruth, 1Sam, 2Sam, 1Kgs, 2Kgs, 1Chr, 2Chr]}
+      geddes_psalms_1807: {translator: Alexander Geddes, year: 1807, source: hebrew_bible, paths: [data/corpus/institutional_books/text_gen/AH5KIN.txt], books: [Ps]}
+      lowth_1778: {translator: Robert Lowth, year: 1778, source: hebrew_bible, paths: [data/corpus/lab/sources/translation/bim_eighteenth-century_isaiah-a-new-translatio_1778/text.txt], books: [Isa]}
+      blayney_1784: {translator: Benjamin Blayney, year: 1784, source: hebrew_bible, paths: [data/corpus/internet_archive/text/bim_eighteenth-century_jeremiah-and-lamentation_blayney-benjamin_1784.txt], books: [Jer, Lam]}
+      blayney_1797: {translator: Benjamin Blayney, year: 1797, source: hebrew_bible, paths: [data/corpus/internet_archive/text/zechariahnewtran00blay.txt], books: [Zech]}
+      newcome_1785: {translator: William Newcome, year: 1785, source: hebrew_bible, paths: [data/corpus/internet_archive/text/bim_eighteenth-century_an-attempt-towards-an-im_1785.txt], books: [Hos, Joel, Amos, Obad, Jonah, Mic, Nah, Hab, Zeph, Hag, Zech, Mal]}
+      newcome_1788: {translator: William Newcome, year: 1788, source: hebrew_bible, paths: [data/corpus/internet_archive/text/bim_eighteenth-century_an-attempt-towards-an-im_1788.txt], books: [Ezek]}
+      boothroyd_1824: {translator: Benjamin Boothroyd, year: 1824, source: hebrew_bible, paths: [data/corpus/lab/sources/translation/ENGNFB_DBS_HS/text_1.txt, data/corpus/lab/sources/translation/ENGNFB_DBS_HS/text_2.txt], books: OT}
+      boothroyd_1853: {translator: Benjamin Boothroyd (reprint), year: 1853, source: hebrew_bible, paths: [data/corpus/lab/sources/translation/cu31924029268617/text.txt], books: OT, ot_end: '^ST\. MATTHEW\.\s*$'}
+      leeser_1853: {translator: Isaac Leeser, year: 1853, source: hebrew_bible, paths: [data/corpus/lab/sources/translation/twentyfourbookso1853lees/text.txt], books: OT}
+      sharpe_1865: {translator: Samuel Sharpe, year: 1865, source: hebrew_bible, paths: [data/corpus/lab/sources/translation/hebrewscriptures00shar/text.txt], books: [1Sam, 2Sam, 1Kgs, 2Kgs, 1Chr, 2Chr, Ezra, Neh, Esth, Job, Ps]}
+      julia_smith_1876: {translator: Julia E. Smith, year: 1876, source: hebrew_bible, paths: [data/corpus/lab/sources/translation/holybiblecon00smit/text.txt], books: OT, ot_end: '^NEW TESTAMENT\s*$'}
+      thomson_1808: {translator: Charles Thomson, year: 1808, source: greek_bible, paths: [data/corpus/lab/sources/translation/holybiblecontain01thom/text.txt, data/corpus/lab/sources/translation/holybiblecontain02thom/text.txt, data/corpus/lab/sources/translation/holybiblecontain03thom/text.txt], books: OT}
+      levi_mahzor_1794_96: {translator: David Levi, year: 1794, source: post_biblical, paths: [data/corpus/internet_archive/text/bim_eighteenth-century_mahzor-le-rosh-ha-shana_1794.txt, data/corpus/internet_archive/text/bim_eighteenth-century_mahzor-le-yom-kipur-ke-m_1795.txt, data/corpus/internet_archive/text/bim_eighteenth-century_mahzor-le-sukot-ke-minha_1795.txt, data/corpus/internet_archive/text/bim_eighteenth-century_mahzor-le-shavuot-ke-mi_1796.txt]}
+      pinto_prayers_1766: {translator: Isaac Pinto (attributed), year: 1766, source: post_biblical, paths: [data/corpus/lab/sources/translation/bim_eighteenth-century_prayers-for-shabbath-ro_1766/text.txt]}
+      wotton_mishnah_1718: {translator: William Wotton, year: 1718, source: post_biblical, paths: [data/corpus/lab/sources/translation/bim_eighteenth-century_miscellaneous-discourses_wotton-william_1718_1/text.txt, data/corpus/lab/sources/translation/bim_eighteenth-century_miscellaneous-discourses_wotton-william_1718_2/text.txt]}
+      townley_maimonides_1827: {translator: James Townley, year: 1827, source: post_biblical, paths: [data/corpus/internet_archive/text/reasonsoflawsof00maim.txt]}
+      bernard_maimonides_1832: {translator: H. H. Bernard, year: 1832, source: post_biblical, paths: [data/corpus/lab/sources/translation/mainprinciplesof00maim/text.txt]}
+      jasher_1840: {translator: Moses Samuel (uncredited), year: 1840, source: post_biblical, paths: [data/corpus/lab/sources/translation/bookofjasherrefe00sefe/text.txt]}
+    recheck_read_by_hand:          # 2026-11-27: each 'parent(s)' the recheck flagged, read at its place in the volume
+      thomson_1808 Esth.2.7:pair: "PARENTS: his rendering ('on the decease of her parents'), from the Greek; the locator missed the verse"
+      geddes_1792 Exod.21.15:pair: "not the verse: a chapter summary ('reviling of parents')"
+      geddes_1792 Exod.21.17:pair: "not the verse: the same chapter summary"
+      boothroyd_1824 Exod.21.17:pair: "not the verse: a chapter summary ('cursing reviling or striking parents')"
+      boothroyd_1824 Lev.19.3:pair: "not the verse: his Reflections ('our first parents')"
+      boothroyd_1824 Lev.21.11:pair: "not the verse: his Reflections"
+      boothroyd_1824 Prov.19.26:pair: "not the verse: his Reflections"
+      boothroyd_1824 Ezek.16.45:pair: "not the verse: a note on marriage customs"
+      boothroyd_1824 Prov.30.11:parallel: "not the verse: his Reflections"
+      boothroyd_1853 Exod.20.12:pair: "not the verse: a note"
+      boothroyd_1853 Prov.30.11:parallel: "not the verse: a note ('an aged parent')"
+    not_fetched:
+      bellamy_1818: "Google Books only (https://books.google.com/books?id=SP1PAAAAYAAJ); its download answers programs with a bot check (2026-11-27); HathiTrust refuses scripted access"
   archaic_full:                    # BOM-118 full run (lab; exploratory): cited-verse frames, whole-library scan, simulated AI judging (sonnet, whole paragraph; chosen post hoc in the pilot, fixed here)
     year_min: 1740
     year_max: 1830                 # 1830 counted with the 1820s
