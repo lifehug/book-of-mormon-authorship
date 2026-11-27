@@ -816,6 +816,31 @@ lab:                              # the research lab (exploratory tooling; reads
     ka_top: 100                    # known answer 1: every other Late War printing within this rank
     ka_pair_share: 0.0001          # known answer 3: the other printing's best passage beaten by at most this share of the sample
     ka_pair_bar: 0.9               # in at least this share of pairs
+  nephi28_sources:                 # BOM-130 (lab; exploratory): 2 Nephi 28 against the texts a reader named; card data/private/lab/owner/2026-11-27-2nephi28-sources/card.md (amendment 1)
+    target: [485, 489]             # amendment 1.1: modern 2 Nephi 28 = 1830 2 Nephi XII paragraphs 485-489 (decides)
+    chapter_1830: [485, 498]       # the whole 1830 chapter XII (modern 28-30), reported beside, decides nothing
+    decoy: [761, 765]              # amendment 1.8: 1830 Alma II (modern Alma 2-3, the Amlicite war)
+    named:                         # held texts: [catalogued author pattern, title pattern]; every copy is placed
+      scripture_inquiry: ['', '^\W*scripture inquiry into the state and condition of mankind']
+      epicurus_life_and_morals: ['^epicurus', 'life and morals of epicurus']
+    outside_dir: data/corpus/lab/sources/nephi28   # amendment 1.3: <key>.txt here is scored as a text outside the populations
+    outside:                       # named texts not held (Google Books only; not fetchable without a bot check)
+      immoral_tendency_of_error: 'https://www.google.com/books/edition/The_Immoral_Tendency_of_Error_in_Sentime/qWeLqf90-_8C'
+      casse_authentic_narrative: 'https://www.google.com/books/edition/Authentic_Narrative_of_the_Sufferings_of/tqNcAAAAcAAJ'
+    topic_pattern: 'universal (salvation|restoration|redemption)|universalis|restitution of all|salvation of all men|final restoration|(endless|eternal|everlasting|future) (punishment|misery|torment)|eternity of hell|duration of (future )?punishment'
+    eras: {late: [1780, 1829], early: [1640, 1779]}   # card: topic controls of each era
+    plants: 10                     # amendment 1.6: known-answer plants
+    plant_min_words: 20000
+    plant_middle: [0.1, 0.9]       # plant passage drawn from this part of the work
+    seed: 20261127
+    plant_top_share: 0.01          # card: planted work in the top 1% ...
+    plant_bar: 8                   # ... on at least 8 of the 10 plants (each search)
+    yes_share: 0.01                # card: yes = a named text in the top 1% of library works ...
+    no_share: 0.10                 # ... no = none in the top 10%
+    decoy_high_share: 0.10         # amendment 1.8: the decoy "puts a named text high" at the top 10%
+    cut_tolerance: 0.002           # the index pass must reproduce each stored 100th-nearest score within this
+    scan_workers: 6
+    scan_part: 10000               # volumes per saved part of the plant-gram scan (resumable)
   numbers:                         # BOM-114 (lab; exploratory): number profiles and the weights of Alma 11
     seed: 20261120
     part_numbers: 100              # numbers per part of a text
