@@ -22,6 +22,7 @@ Usage::
     python -m lab.joined check      # check (a) planted joins, then (b) the 60 books (library pass)
     python -m lab.joined run        # the check, then the Book of Mormon (second library pass)
     python -m lab.joined seed       # step 1 only: the joins in 1830 2 Nephi XII, one by one
+    python -m lab.joined table      # counting only: the listed 2 Nephi 28 pairs by decade
 """
 
 from __future__ import annotations
@@ -55,7 +56,8 @@ def settings(cfg: dict) -> dict:
     """The settings in force: design 3's values over design 2's over the first design's."""
     base = cfg["lab"]["joined_phrases"]
     keep = {k: v for k, v in base.items() if k not in ("design2", "design3")}
-    return keep | base.get("design2", {}) | base.get("design3", {})
+    keep = {k: v for k, v in keep.items() if k != "design4"}
+    return keep | base.get("design2", {}) | base.get("design3", {}) | base.get("design4", {})
 
 
 def tokens(text: str) -> list[str]:
@@ -431,6 +433,59 @@ def date_join(key: str, holders: list[str], skip: set[str], meta: dict, d: dict)
     }
 
 
+DECADES = list(range(1640, 1830, 10))
+
+
+def decade_totals(rows: list[dict]) -> dict[int, int]:
+    tot: dict[int, int] = defaultdict(int)
+    for r in rows:
+        tot[r["year"] // 10 * 10] += 1
+    return dict(tot)
+
+
+def onset(counts: dict[int, float], totals: dict[int, float], d: dict) -> tuple:
+    """Design 4: holders per 1,000 works in each decade; the onset is the first decade whose
+    rate reaches ``onset_share`` of the join's peak rate. None when fewer than
+    ``independent_works`` works hold the join in all."""
+    rates = {x: 1000 * counts.get(x, 0) / totals[x] for x in DECADES if totals.get(x)}
+    if sum(counts.values()) < d["independent_works"] or not any(rates.values()):
+        return None, None, rates
+    peak = max(rates, key=lambda x: (rates[x], -x))
+    first = next(x for x in DECADES if rates.get(x, 0) >= d["onset_share"] * rates[peak])
+    return first, peak, rates
+
+
+def rate_dating(holders: list[str], skip: set[str], meta: dict, totals: dict, d: dict,
+                samples: dict | None) -> dict:  # fmt: skip
+    """Onset by rate over the whole library, by distinct authors, and over equal samples."""
+    ws = [w for w in holders if w not in skip and w in meta]
+    own: dict[int, int] = defaultdict(int)
+    for w in skip:
+        if w in meta:
+            own[meta[w]["year"] // 10 * 10] += 1
+    tot = {x: totals[x] - own.get(x, 0) for x in totals}
+    c: dict[int, int] = defaultdict(int)
+    authors: dict[int, set] = defaultdict(set)
+    for w in ws:
+        m = meta[w]
+        x = m["year"] // 10 * 10
+        c[x] += 1
+        authors[x].add(author_key(m["author"]) or "title:" + title_key(m["title"], 4))
+    first, peak, rates = onset(c, tot, d)
+    first_a, _p, _r = onset({x: len(v) for x, v in authors.items()}, tot, d)
+    res = {"onset": first, "peak": peak, "onset_authors": first_a,
+           "per_1000": {str(x): round(v, 4) for x, v in rates.items() if v}}  # fmt: skip
+    if samples is not None:
+        avg: dict[int, float] = defaultdict(float)
+        for s in samples["draws"]:
+            for w in ws:
+                if w in s:
+                    avg[meta[w]["year"] // 10 * 10] += 1 / len(samples["draws"])
+        n = samples["per_decade"]
+        res["onset_equal_samples"], _p, _r = onset(avg, {x: n for x in DECADES}, d)
+    return res
+
+
 def decade_samples(rows: list[dict], d: dict) -> dict:
     """Design 3: ``draws`` seeded samples with the same number of works from every decade (the
     thinnest decade's count, or periods merged to reach ``min_per_decade``)."""
@@ -668,13 +723,24 @@ def text_words(book: dict) -> list[str] | None:
 
 
 def summarise(books: list[dict], meta: dict, by_join: dict, rows: list[dict], d: dict,
-              samples: list[set] | None = None) -> list:  # fmt: skip
+              samples=None) -> list:  # fmt: skip
+    """Each book's joins dated. ``samples``: design 3's draws (a list of sets) or design 4's
+    decade_samples result (a dict, the cross-check)."""
     res = []
+    totals = decade_totals(rows)
     for b in books:
         skip = own_copies(b, rows, d)
         dated = [date_join(join_key(j["a"], j["b"]), by_join.get(join_key(j["a"], j["b"]), []),
                            skip, meta, d) for j in b["joins"]]  # fmt: skip
-        if samples is not None:  # design 3: dated against the equal-size decade samples
+        if d.get("design") == 4:  # design 4: onset by rate per 1,000 works in each decade
+            for x in dated:
+                rd = rate_dating(by_join.get(x["join"], []), skip, meta, totals, d, samples)
+                x["first_current_two_works"] = x["first_current"]
+                x["first_current"] = rd["onset"]
+                x["first_current_distinct_authors"] = rd["onset_authors"]
+                x["onset_equal_samples"] = rd.get("onset_equal_samples")
+                x["peak"], x["per_1000"] = rd["peak"], rd["per_1000"]
+        elif samples is not None:  # design 3: dated against the equal-size decade samples
             for x in dated:
                 hs = by_join.get(x["join"], [])
                 x["first_current_full_library"] = x["first_current"]
@@ -692,6 +758,9 @@ def summarise(books: list[dict], meta: dict, by_join: dict, rows: list[dict], d:
             "own_copies_left_out": len(skip),
             "shares": book_shares(dated, own, d, "first_current"),
             "shares_distinct_authors": book_shares(dated, own, d, "first_current_distinct_authors"),
+            "shares_equal_samples": book_shares(dated, own, d, "onset_equal_samples")
+            if d.get("design") == 4
+            else None,
             "joins": dated,
         })  # fmt: skip
     return res
@@ -701,8 +770,12 @@ def group_check(books: list[dict], d: dict, field: str = "shares") -> dict:
     groups = {}
     for dec in d["check_decades"]:
         bs = [b for b in books if b["check_decade"] == dec]
-        cur = [j["first_current"] if field == "shares" else j["first_current_distinct_authors"]
-               for b in bs for j in b["joins"]]  # fmt: skip
+        jf = {
+            "shares": "first_current",
+            "shares_distinct_authors": "first_current_distinct_authors",
+            "shares_equal_samples": "onset_equal_samples",
+        }[field]
+        cur = [j.get(jf) for b in bs for j in b["joins"]]
         cur = [c for c in cur if c is not None]
         usable = [b[field] for b in bs if b[field].get("usable")]
         groups[str(dec)] = {
@@ -872,15 +945,17 @@ def run_check(cfg: dict, p: dict) -> dict:
     samples = None
     if d.get("design", 1) >= 3:
         ds = decade_samples(rows, d)
-        p["samples"] = samples = ds["draws"]
+        p["samples"] = samples = ds if d["design"] == 4 else ds["draws"]
         res["decade_samples"] = {k: v for k, v in ds.items() if k != "draws"} | {
-            "draws": len(samples),
+            "draws": len(ds["draws"]),
             "majority": d["majority"],
         }
     summ = summarise(books, meta, by_join, rows, d, samples)
     checks = [b for b in summ if b["check_decade"] is not None]
     res["books"] = group_check(checks, d)
     res["books_distinct_authors"] = group_check(checks, d, "shares_distinct_authors")
+    if d.get("design") == 4:
+        res["books_equal_samples"] = group_check(checks, d, "shares_equal_samples")
     res["passed"] = res["books"]["passed"]
     res["library"] = {"works": lp["works"], "unreadable_not_attempted": len(lp["unreadable"]),
                       "pass_folder": lp["folder"]}  # fmt: skip
@@ -1006,16 +1081,53 @@ def seed_joins(cfg: dict) -> dict:
     }  # fmt: skip
 
 
+def pair_table(cfg: dict) -> dict:
+    """Counting only, no verdict: library works holding each listed 2 Nephi 28 pair within the
+    window, by decade, as a count and per 1,000 works, with the earliest holder."""
+    d = settings(cfg)
+    rows = library_rows(d)
+    meta = {r["work_id"]: r for r in rows}
+    totals = decade_totals(rows)
+    pairs = [(tuple(a.split()), tuple(b.split())) for a, b in d["table_pairs"]]
+    lp = library_pass("table", pairs, rows, d)
+    by = holders_by_join(lp["held"])
+    skip = own_copies({"exclude_title": d["bom_exclude_title"]}, rows, d)
+    out_rows = []
+    for a, b in pairs:
+        k = join_key(a, b) if join_key(a, b) in by else join_key(b, a)
+        ws = sorted((meta[w]["year"], w) for w in by.get(k, []) if w not in skip)
+        c: dict[int, int] = defaultdict(int)
+        for y, _w in ws:
+            c[y // 10 * 10] += 1
+        out_rows.append({
+            "a": " ".join(a), "b": " ".join(b), "works": len(ws),
+            "by_decade": {str(x): {"works": c.get(x, 0),
+                                   "per_1000": round(1000 * c.get(x, 0) / totals[x], 3)}
+                          for x in DECADES},
+            "earliest": {"work_id": ws[0][1], "year": ws[0][0]} if ws else None,
+        })  # fmt: skip
+    return {"what": "counting only, no verdict: works holding both phrases within "
+            f"{d['window']} words (default set 1640-1829, Book of Mormon copies out)",
+            "works_by_decade": {str(x): totals.get(x, 0) for x in DECADES},
+            "library_works": lp["works"], "unreadable_not_attempted": len(lp["unreadable"]),
+            "pairs": out_rows}  # fmt: skip
+
+
 def write(res: dict, name: str) -> None:
     out(OUT / name).write_text(json.dumps(res, indent=1, default=list) + "\n")
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["tune", "check", "run", "seed"])
+    ap.add_argument("cmd", choices=["tune", "check", "run", "seed", "table"])
     a = ap.parse_args(argv)
     cfg = config.load()
     sfx = f"_v{settings(cfg)['design']}" if settings(cfg).get("design", 1) >= 2 else ""
+    if a.cmd == "table":
+        res = {**config.stamp(), **pair_table(cfg)}
+        write(res, "pair_table.json")
+        print(json.dumps(res["pairs"], indent=1)[:4000])
+        return 0
     if a.cmd == "seed":
         res = {"settings": settings(cfg), **config.stamp(), **seed_joins(cfg)}
         write(res, f"seed_joins{sfx}.json")

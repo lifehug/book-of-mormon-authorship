@@ -138,3 +138,13 @@ def test_design3_samples_and_majority():
     assert joined.sampled_first(["a", "b", "c"], set(), meta2, draws, dd) == (1780, 1.0)
     assert joined.sampled_first(["a", "b", "c"], {"c"}, meta2, draws, dd) == (None, 0.5)
     assert meta  # rows reach the sampler
+
+
+def test_design4_onset_by_rate():
+    dd = {**D, "onset_share": 0.25}
+    tot = {x: 1000 for x in joined.DECADES} | {1820: 10000}
+    # 1650s: 2 per 1,000; 1820s: 10 per 10,000 = 1 per 1,000 -> peak 1650s, onset 1650s
+    assert joined.onset({1650: 2, 1820: 10}, tot, dd)[:2] == (1650, 1650)
+    # a weak early holder under a quarter of the peak does not set the onset
+    assert joined.onset({1650: 1, 1700: 10}, tot, dd)[:2] == (1700, 1700)
+    assert joined.onset({1650: 1}, tot, dd)[0] is None  # one holder: not dated

@@ -2733,6 +2733,15 @@ lab:                              # the research lab (exploratory tooling; reads
       reprint_decoy: baxter_saints_rest_1821   # extra check bar: must date old (with the 1650s)
       late_decoy: late_war_1816    # extra check bar: must not date old
       seed_pair: 'eat drink and be merry | for to morrow we die'   # reported first among the 2 Nephi 28 joins
+    design4:                       # BOM-128 design 4 (card section "Design 4 (2026-11-27)"): onset by rate per 1,000 works in each decade
+      design: 4
+      onset_share: 0.25            # onset = first decade whose rate reaches this share of the join's peak rate (a join needs 2+ holders)
+    table_pairs:                   # counting only (`python -m lab.joined table`): the 2 Nephi 28 pairs, no verdict
+      - [eat drink and be merry, for to morrow we die]
+      - [dig a pit for, eat drink and be merry]
+      - [dig a pit for, for to morrow we die]
+      - [seek deep to hide their, the blood of the saints]
+      - [be thrust down to hell, turn aside the just for a thing of nought]
   new_senses:                      # BOM-129 (lab; exploratory): New Testament phrases in a new sense against period usage (card 2026-11-27-new-senses); simulated judging
     context_words: 60              # words each side of the phrase in every passage shown to the judge
     max_verses: 3                  # King James verses shown with a phrase
