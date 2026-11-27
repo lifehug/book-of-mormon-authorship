@@ -1,0 +1,1508 @@
+{
+ "settings": {
+  "ngram_sizes": [
+   4,
+   5
+  ],
+  "min_phrase_words": 4,
+  "window": 25,
+  "year_min": 1640,
+  "year_max": 1829,
+  "independent_works": 2,
+  "late_from": 1750,
+  "title_key_words": 4,
+  "min_current_joins": 5,
+  "seed": 20261127,
+  "planted": 100,
+  "planted_len": [
+   4,
+   8
+  ],
+  "prose_words": 300,
+  "prose_years": [
+   1780,
+   1829
+  ],
+  "prose_genres": [
+   "history_chronicle",
+   "scientific_medical",
+   "legal_political",
+   "fiction_narrative"
+  ],
+  "prose_min_words": 5000,
+  "recall_bar": 0.9,
+  "false_bar": 0.1,
+  "check_decades": [
+   1650,
+   1740,
+   1820
+  ],
+  "early_decades": [
+   1650,
+   1740
+  ],
+  "check_books": 20,
+  "check_genre": "sermon_devotional",
+  "check_min_words": 10000,
+  "own_decade_bar": 0.5,
+  "early_late_bar": 0.1,
+  "late_percentile": 90,
+  "old_percentile": 75,
+  "seed_chapter": [
+   "2 Nephi",
+   12
+  ],
+  "bom_exclude_title": "book of mormon",
+  "decoys": {
+   "late_war_1816": {
+    "file": "data/candidates/text/gh-1816-late-war.txt",
+    "year": 1816,
+    "exclude_author": "hunt, g",
+    "exclude_title": "late war|historical reader"
+   },
+   "view_of_the_hebrews_1823": {
+    "file": "data/candidates/text/es-1823-view-of-the-hebrews.txt",
+    "year": 1823,
+    "exclude_title": "view of the hebrews"
+   },
+   "baxter_saints_rest_1821": {
+    "work_id": "internet_archive:saintseve00baxt",
+    "exclude_author": "baxter, richard",
+    "exclude_title": "everlasting rest"
+   }
+  },
+  "workers": 6,
+  "part_size": 2000
+ },
+ "config_sha256": "e7f721e17f010a3ba8be135439a5499f254c7200c76bbc6d01ab0af8e002972c",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "b0dcb303c9091d975cedb830fce89dd83539ff30",
+ "known_answer": {
+  "planted": {
+   "planted": 100,
+   "found": 100,
+   "recall": 1.0,
+   "unplanted": 100,
+   "unplanted_with_a_join": 22,
+   "false_share": 0.22,
+   "bars": {
+    "recall": 0.9,
+    "false_share": 0.1
+   },
+   "passed": false,
+   "planted_rows": [
+    {
+     "work_id": "internet_archive:10750429bsb",
+     "a": "god or what likeness will ye",
+     "b": "fornication and lasciviousness which they have",
+     "gap": 19,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:considerationso00gisbgoog",
+     "a": "also his heavens shall drop down",
+     "b": "from after david and",
+     "gap": 5,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:lettersandcorre00parkgoog",
+     "a": "given unto you to know",
+     "b": "thy mouth to evil",
+     "gap": 3,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_unto-the-right-honourabl_royal-bank-of-scotland_1795",
+     "a": "sprinkle upon the unclean on the third",
+     "b": "grieve me and god granted him",
+     "gap": 16,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "internet_archive:historyromanlit00dunlgoog",
+     "a": "david were come to abigail to carmel they",
+     "b": "sons that went to the battle were eliab",
+     "gap": 20,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:boroughpoe00crab",
+     "a": "keep fast by my young",
+     "b": "my bed and behold a watcher and an",
+     "gap": 20,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "institutional_books:HNQEDN",
+     "a": "measure from hauran and",
+     "b": "to another and shall declare thy mighty",
+     "gap": 3,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "internet_archive:11756921bsb",
+     "a": "this opened job his mouth and",
+     "b": "the lord by haggai the prophet saying",
+     "gap": 23,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:nightthoughtson04youngoog",
+     "a": "david save me o",
+     "b": "was excellent stood before thee and the form",
+     "gap": 24,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:worksjonathansw10swifgoog",
+     "a": "of magbish an hundred fifty and six",
+     "b": "father according as he made thee swear",
+     "gap": 8,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:orphansnormandy00cogoog",
+     "a": "and the lord said these have",
+     "b": "of his skin even the firstborn of death",
+     "gap": 1,
+     "found": true,
+     "joins_found": 10
+    },
+    {
+     "work_id": "internet_archive:10933508bsb",
+     "a": "that no man knew but he himself",
+     "b": "had some white in it",
+     "gap": 8,
+     "found": true,
+     "joins_found": 2
+    },
+    {
+     "work_id": "internet_archive:lawyerormanasheo00watt",
+     "a": "told him said as i happened by chance",
+     "b": "given unto him out",
+     "gap": 15,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:thoughtschieflyo00danb",
+     "a": "israel together to jerusalem to bring up",
+     "b": "chapiters that were upon",
+     "gap": 17,
+     "found": true,
+     "joins_found": 2
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_democratic-rage-or-lou_preston-william_1793",
+     "a": "and i will let the",
+     "b": "but a certain samaritan as he journeyed",
+     "gap": 19,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:b21354583",
+     "a": "said his parents he is",
+     "b": "a great thing if we shall reap your",
+     "gap": 20,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:aveniaortragical00branrich",
+     "a": "all things and how it is written",
+     "b": "unto thee hoping to come unto thee shortly",
+     "gap": 10,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:mariamountain00boswgoog",
+     "a": "ye crucified whom god raised from the",
+     "b": "thee and these things i",
+     "gap": 21,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "internet_archive:americanneposcol00wilm",
+     "a": "the caterpiller and the palmerworm",
+     "b": "hinder end of the spear smote him under",
+     "gap": 21,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:englishinitaly00normgoog",
+     "a": "maids shall lead her as",
+     "b": "of nethaneel the son",
+     "gap": 10,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:memoirsfirstfor01lackgoog",
+     "a": "also shall be my",
+     "b": "the archangel when contending",
+     "gap": 17,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:newbiographicald00jone2",
+     "a": "he made him lord of his house and",
+     "b": "leaves two leaves for the one door and",
+     "gap": 25,
+     "found": true,
+     "joins_found": 2
+    },
+    {
+     "work_id": "institutional_books:HN2F9W",
+     "a": "builded until another commandment shall be given",
+     "b": "the ark of the covenant of the",
+     "gap": 13,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "internet_archive:anessayonantiqu00vallgoog",
+     "a": "and behold all is vanity",
+     "b": "i pray thee have me",
+     "gap": 12,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "institutional_books:HN3QJ5",
+     "a": "they lay wait for",
+     "b": "and thou shalt not cause",
+     "gap": 0,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:pathologicalprac00aber",
+     "a": "and i will dry up",
+     "b": "beloved gone o thou fairest among women whither",
+     "gap": 23,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:elementsofpoliti0002dani",
+     "a": "he left them and went away",
+     "b": "and a talent of",
+     "gap": 23,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:worksofjonathans18swifiala",
+     "a": "next unto them repaired melatiah the",
+     "b": "saw a great tumult",
+     "gap": 8,
+     "found": true,
+     "joins_found": 2
+    },
+    {
+     "work_id": "internet_archive:metricaleffusio00bartgoog",
+     "a": "right shoulder are thine",
+     "b": "said the high priest are these things so",
+     "gap": 16,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "institutional_books:32044080376957",
+     "a": "camp but his servant joshua the son",
+     "b": "had taphath the daughter of",
+     "gap": 20,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_a-treatise-intituled-po_green-james-lieutenant_1798",
+     "a": "shall come against the land of",
+     "b": "smiteth kirjath sepher and taketh it to him",
+     "gap": 21,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:harleianmiscell05oxfogoog",
+     "a": "a false witness rise",
+     "b": "hymn they went out into the",
+     "gap": 6,
+     "found": true,
+     "joins_found": 5
+    },
+    {
+     "work_id": "internet_archive:b21506887_0001",
+     "a": "the wilderness prepare ye the",
+     "b": "all might be damned who",
+     "gap": 4,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "internet_archive:bwb_T3-CBR-178",
+     "a": "god so is thy praise unto",
+     "b": "i you by what authority i",
+     "gap": 15,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "institutional_books:AH6S6T",
+     "a": "shall suddenly be destroyed",
+     "b": "jealous is a jealous god",
+     "gap": 17,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "tcp:K078024.006",
+     "a": "there the lord commanded the blessing",
+     "b": "lord of hosts of",
+     "gap": 4,
+     "found": true,
+     "joins_found": 2
+    },
+    {
+     "work_id": "internet_archive:essaysonmanagem00twamgoog",
+     "a": "her suburbs all their cities throughout their",
+     "b": "reign and he reigned",
+     "gap": 8,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:aedesalthorpiana00spen",
+     "a": "and he made curtains of goats",
+     "b": "this is he others said he is like",
+     "gap": 19,
+     "found": true,
+     "joins_found": 2
+    },
+    {
+     "work_id": "internet_archive:worksofsoamejeny02jeny",
+     "a": "feet shod with the preparation of the gospel",
+     "b": "an high arm brought he them out of",
+     "gap": 25,
+     "found": true,
+     "joins_found": 2
+    },
+    {
+     "work_id": "internet_archive:familiarodesand00parsgoog",
+     "a": "carpenters and meat and",
+     "b": "which are able to make thee wise",
+     "gap": 1,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "institutional_books:32044060041423",
+     "a": "unto pharaoh and to the egyptians for",
+     "b": "be wicked why then labour i in vain",
+     "gap": 20,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_an-attempt-to-explain-th_green-james-lieutenant_1790",
+     "a": "the tribe of juda the root of david",
+     "b": "abraham saying god is",
+     "gap": 16,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:b33089796_0004",
+     "a": "the letters devised by haman the son of",
+     "b": "is joined to idols let him",
+     "gap": 12,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:jstor-25581691",
+     "a": "sycomores are cut down but we will",
+     "b": "said unto me let thine heart",
+     "gap": 6,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:b21305602",
+     "a": "stoopeth their idols were upon the",
+     "b": "seeing peter and john about to go",
+     "gap": 11,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:historyrussiaan00sggoog",
+     "a": "and simon he surnamed",
+     "b": "the west from the",
+     "gap": 15,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "institutional_books:32044097924922",
+     "a": "king of israel said unto jehoshaphat king of",
+     "b": "doth not he see",
+     "gap": 2,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:plutarchslivestr02plu",
+     "a": "i am like a",
+     "b": "plain escape to the mountain",
+     "gap": 21,
+     "found": true,
+     "joins_found": 5
+    },
+    {
+     "work_id": "internet_archive:poems4thedwithad00bart",
+     "a": "destruction and his lips are the snare",
+     "b": "stones and dispatch them with their",
+     "gap": 14,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:elementsofphysio01rich",
+     "a": "tribes and the tribe of judah was",
+     "b": "bring forth the blind people that",
+     "gap": 19,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_a-letter-from-the-right-_gordon-lord-george-175_1787",
+     "a": "for unto me the children",
+     "b": "the nations that are upon",
+     "gap": 19,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_an-appeal-to-the-public_harris-r-raymund_1783",
+     "a": "being paved with love for the",
+     "b": "of my people give",
+     "gap": 12,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "institutional_books:HWPWAP",
+     "a": "at the wine they that",
+     "b": "day and set them a statute and an",
+     "gap": 14,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "institutional_books:AH5QZN",
+     "a": "o lord thou art our",
+     "b": "were ceased he sinned yet",
+     "gap": 16,
+     "found": true,
+     "joins_found": 18
+    },
+    {
+     "work_id": "internet_archive:sectarian01pick",
+     "a": "without and that ye may have lack of",
+     "b": "is their help and",
+     "gap": 0,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "hathitrust:loc.ark:/13960/t9g45z06c",
+     "a": "bring it to pass i have purposed",
+     "b": "an hand broad fastened round",
+     "gap": 2,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:bub_gb_U0ND8c7rpg4C",
+     "a": "commandments and not after the doings of israel",
+     "b": "disposed to go whatsoever",
+     "gap": 8,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:cihm_39993",
+     "a": "which is strongest among beasts and turneth not",
+     "b": "if any man will sue",
+     "gap": 4,
+     "found": true,
+     "joins_found": 4
+    },
+    {
+     "work_id": "internet_archive:exemplarylifean00hamigoog",
+     "a": "i am black astonishment",
+     "b": "of the congregation and aaron and his",
+     "gap": 25,
+     "found": true,
+     "joins_found": 11
+    },
+    {
+     "work_id": "institutional_books:HWJV1M",
+     "a": "let us know among ourselves what is",
+     "b": "bring down the noise",
+     "gap": 19,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "hathitrust:yale.39002002349380",
+     "a": "evil that cannot be eaten they are",
+     "b": "came to the king to hebron and king",
+     "gap": 16,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:10714040bsb",
+     "a": "given her to go with",
+     "b": "abhor myself and repent",
+     "gap": 9,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:b3189656x",
+     "a": "can david say more unto thee for",
+     "b": "ye followers of me",
+     "gap": 4,
+     "found": true,
+     "joins_found": 2
+    },
+    {
+     "work_id": "internet_archive:anessayonlibert00haygoog",
+     "a": "of lords for his",
+     "b": "not hold my peace and for jerusalem",
+     "gap": 2,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:cihm_46049",
+     "a": "come and make me a couple",
+     "b": "of the lord out",
+     "gap": 17,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:cihm_47157",
+     "a": "people since they return not from their",
+     "b": "and his wisdom are they not written",
+     "gap": 1,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "institutional_books:HXG8TK",
+     "a": "ye have heard him",
+     "b": "i will walk at liberty for",
+     "gap": 10,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:practicalexposi00buck",
+     "a": "because they are more than the",
+     "b": "shalt give the levites unto aaron and to",
+     "gap": 9,
+     "found": true,
+     "joins_found": 8
+    },
+    {
+     "work_id": "internet_archive:plutarchs01plut",
+     "a": "she came into the",
+     "b": "and leave them that she",
+     "gap": 20,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "hathitrust:uc2.ark:/13960/t47p8xk56",
+     "a": "mouth and shall destroy with the brightness of",
+     "b": "enjoy it which moses the lord",
+     "gap": 15,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:b33519365",
+     "a": "unto harosheth of the gentiles and all",
+     "b": "amounting to six hundred",
+     "gap": 8,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "institutional_books:32044086912813",
+     "a": "then cometh also contempt and with",
+     "b": "elders of his city shall call him and",
+     "gap": 24,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:irelanditsevils01sadlgoog",
+     "a": "i put my trust let me never",
+     "b": "nigh when thou shalt say",
+     "gap": 3,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "hathitrust:mdp.39015078559898",
+     "a": "which was spoken by esaias the",
+     "b": "and his wife s name",
+     "gap": 3,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "institutional_books:HW3Q3R",
+     "a": "the way to hell going down to",
+     "b": "and a witness of the sufferings of christ",
+     "gap": 17,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:equitydraftsmanb02vanh",
+     "a": "continued with philip and",
+     "b": "to him that sat on the throne",
+     "gap": 0,
+     "found": true,
+     "joins_found": 4
+    },
+    {
+     "work_id": "tcp:N25604",
+     "a": "what the spirit saith",
+     "b": "of ephraim shall be elishama",
+     "gap": 0,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "institutional_books:HNRMB2",
+     "a": "you as god overthrew sodom and",
+     "b": "this i had because i kept thy precepts",
+     "gap": 15,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "internet_archive:poeticalworksto00mantgoog",
+     "a": "god o zion unto all",
+     "b": "of many waters but god",
+     "gap": 10,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:b21689799",
+     "a": "of them shall return the consumption decreed shall",
+     "b": "is come to seek and to save",
+     "gap": 23,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:irelanditsevilst00sadl",
+     "a": "all israel and executed judgment and justice",
+     "b": "solomon and arose and went and",
+     "gap": 22,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_imperfect-hints-toward-a_felton-samuel_1788",
+     "a": "and honour are her clothing",
+     "b": "said unto elijah go down with",
+     "gap": 15,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:memoirsoffortyfi1795lack",
+     "a": "of my mother as",
+     "b": "one would give me drink of the",
+     "gap": 22,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:journalatourina00leakgoog",
+     "a": "as darkness itself and of the",
+     "b": "sun went down upon them when they",
+     "gap": 24,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:addressesofphila00care",
+     "a": "the foot of pride",
+     "b": "fair havens nigh whereunto was the city",
+     "gap": 12,
+     "found": true,
+     "joins_found": 2
+    },
+    {
+     "work_id": "internet_archive:generalhistoryof00beil",
+     "a": "shalt speak unto the children",
+     "b": "you whosoever of you are",
+     "gap": 13,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:biographicalmem00condgoog",
+     "a": "many nations and great",
+     "b": "it yet not ought of",
+     "gap": 10,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "institutional_books:HW3PDT",
+     "a": "will perform it that i",
+     "b": "the levites to appoint their brethren to",
+     "gap": 6,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "institutional_books:HWJTCR",
+     "a": "but a moment in",
+     "b": "verily i say unto",
+     "gap": 11,
+     "found": true,
+     "joins_found": 4
+    },
+    {
+     "work_id": "institutional_books:HN3BZ3",
+     "a": "in the streets they shall justle one against",
+     "b": "i saw as it were",
+     "gap": 8,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:b33487145_0004",
+     "a": "a little slumber a little",
+     "b": "also was corrupt before god and the earth",
+     "gap": 10,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:lettersfrombueno00davirich",
+     "a": "upon them twain and",
+     "b": "no wine all our days we",
+     "gap": 22,
+     "found": true,
+     "joins_found": 3
+    },
+    {
+     "work_id": "internet_archive:dissertationonmi00camp_0",
+     "a": "as at this day",
+     "b": "the church that was at antioch",
+     "gap": 5,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_the-works-of-charles-via_vial-de-sainbel-charles_1795",
+     "a": "man we have defrauded no",
+     "b": "of the manifold grace of",
+     "gap": 17,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:amanualanatomyc00shawgoog",
+     "a": "brass the second pillar",
+     "b": "synagogues throughout all galilee and cast out devils",
+     "gap": 19,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:interestinganecd05addiiala",
+     "a": "malicious words and not content therewith",
+     "b": "commanded the same day",
+     "gap": 19,
+     "found": true,
+     "joins_found": 2
+    },
+    {
+     "work_id": "internet_archive:daughtersofisenb03palm",
+     "a": "and her spirit came again and",
+     "b": "of the lord they gave him the city",
+     "gap": 11,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:worksfrancisbac09bacogoog",
+     "a": "dishonour by evil report and",
+     "b": "heard of your faith",
+     "gap": 24,
+     "found": true,
+     "joins_found": 1
+    },
+    {
+     "work_id": "internet_archive:gpl_2686395",
+     "a": "did write jesus of nazareth the son of",
+     "b": "the wine of helbon and white wool",
+     "gap": 7,
+     "found": true,
+     "joins_found": 5
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_an-essay-on-drainage-and_maxwell-george-surveyo_1792",
+     "a": "at even he went",
+     "b": "the ox shall push",
+     "gap": 9,
+     "found": true,
+     "joins_found": 1
+    }
+   ],
+   "unplanted_rows": [
+    {
+     "work_id": "internet_archive:completeforcingg00aberiala",
+     "joins_found": 1,
+     "joins": [
+      "in the ground at | the four corners of the"
+     ]
+    },
+    {
+     "work_id": "institutional_books:HW2JVW",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:worksofrevjonath13swif",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:HN6DGM",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:worksofrevdaniel0001wate",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "hathitrust:mdp.69015000007407",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:londonmiddlesexo32bray",
+     "joins_found": 1,
+     "joins": [
+      "and as she was | to speak evil of"
+     ]
+    },
+    {
+     "work_id": "internet_archive:bibliothecaspenc01spen",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:displayoffraudul00giba",
+     "joins_found": 8,
+     "joins": [
+      "is a jealous god | to give glory unto",
+      "the iniquity of the fathers upon the children unto the third and fourth generation of them that hate | to give glory unto",
+      "of them that hate him | to give glory unto",
+      "is a jealous god | the iniquity of the fathers upon the children unto the third and fourth generation of them that hate",
+      "is a jealous god | of them that hate him",
+      "not to do this | the iniquity of the fathers upon the children unto the third and fourth generation of them that hate",
+      "not to do this | of them that hate him",
+      "not to do this | people that they may"
+     ]
+    },
+    {
+     "work_id": "internet_archive:10433397bsb",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:ladymanorbeinga00goog",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b30365028",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b28777037",
+     "joins_found": 1,
+     "joins": [
+      "any thing in my | what would become of"
+     ]
+    },
+    {
+     "work_id": "internet_archive:speechesinhouseo05foxcuoft",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:32044034746461",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:10366834bsb",
+     "joins_found": 3,
+     "joins": [
+      "the altar which is | the treasure of the",
+      "in the streets and | some of the people of",
+      "in the streets and | people of the city"
+     ]
+    },
+    {
+     "work_id": "internet_archive:memoirsofgeneral00dumo",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:32044097914220",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:32044054765656",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_a-new-inquiry-into-the-s_fothergill-anthony-md_1795_0",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "hathitrust:yale.39002085619980",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:SusannahOrTheThreeGuardians",
+     "joins_found": 2,
+     "joins": [
+      "an innumerable multitude of | he is the father of",
+      "an innumerable multitude of | is the father of the"
+     ]
+    },
+    {
+     "work_id": "internet_archive:poeticalworksre04youngoog",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:inquiryintonatur00gard",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:redrovertale01coopuoft",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:stateofexpeditio00burg",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:interestinganecd06addiiala",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "hathitrust:uc2.ark:/13960/t6vx09p1p",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:illustrationscr02warngoog",
+     "joins_found": 1,
+     "joins": [
+      "it is he that | said to the young"
+     ]
+    },
+    {
+     "work_id": "internet_archive:b33288471",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:HN2UNB",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "hathitrust:mdp.39015031067880",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_a-letter-to-the-right-ho_dobbs-francis_1780_0",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:10467093bsb",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b29330956_0002",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b31924207",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_a-letter-to-the-rev-mr_darby-samuel_1785",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:elementsofenglis00irvi",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:gri_33125010894711",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:plutarchslivesv01wrangoog",
+     "joins_found": 1,
+     "joins": [
+      "and that he himself | his mother and his"
+     ]
+    },
+    {
+     "work_id": "internet_archive:constitutioneng00lolmgoog",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:thespeech00sadliala",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:naturalhistoryof51803dono",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:peasantboyanoper00dimouoft",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_a-letter-to-jacob-bryant_wakefield-gilbert_1797",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b21530634",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:32044103113767",
+     "joins_found": 1,
+     "joins": [
+      "be raised from the | in the ground at"
+     ]
+    },
+    {
+     "work_id": "institutional_books:HN2IVG",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b21517253",
+     "joins_found": 2,
+     "joins": [
+      "of the breasts and | why should it be",
+      "and why should the | why should it be"
+     ]
+    },
+    {
+     "work_id": "institutional_books:HNZ961",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b33093209",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:atreatiseonprin01huntgoog",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:BRes081274",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:poem00crab",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:victimofmagicald11tsch",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b28747161",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:AH49MM",
+     "joins_found": 3,
+     "joins": [
+      "secrets of the heart | the voice of god",
+      "the voice of god | to tell us our",
+      "secrets of the heart | to tell us our"
+     ]
+    },
+    {
+     "work_id": "internet_archive:gri_33125009332749",
+     "joins_found": 1,
+     "joins": [
+      "in signs and wonders | the miracles which he"
+     ]
+    },
+    {
+     "work_id": "internet_archive:redrovertale01cooprich",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:jstor-107615",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b33030285",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:nationalmilitia00darrgoog",
+     "joins_found": 1,
+     "joins": [
+      "of the sword in the | the hand to the"
+     ]
+    },
+    {
+     "work_id": "internet_archive:10322134bsb",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "hathitrust:uiuo.ark:/13960/t2m623v1p",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:HXJPAR",
+     "joins_found": 3,
+     "joins": [
+      "and was delivered of | they were carried away",
+      "and by what means | and was delivered of",
+      "and by what means | they were carried away"
+     ]
+    },
+    {
+     "work_id": "tcp:K078024.002",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:naturalhistoryof293dono",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b33091468_0004",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b29326801_0001",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:theoryofmoralsen0000adam_s3v1",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:aninquiryintona01gergoog",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:bwb_T3-CBR-692",
+     "joins_found": 19,
+     "joins": [
+      "do the disciples of | into the joy of",
+      "do the disciples of | of your lord and",
+      "do the disciples of | lord and depart from",
+      "depart from me ye cursed | do the disciples of",
+      "do the disciples of | these shall go away into everlasting",
+      "into the joy of | lord and depart from",
+      "depart from me ye cursed | into the joy of",
+      "into the joy of | these shall go away into everlasting",
+      "depart from me ye cursed | of your lord and",
+      "of your lord and | these shall go away into everlasting",
+      "of your lord and | that the day of",
+      "lord and depart from | these shall go away into everlasting",
+      "lord and depart from | that the day of",
+      "depart from me ye cursed | these shall go away into everlasting",
+      "depart from me ye cursed | that the day of",
+      "that the day of | these shall go away into everlasting",
+      "it is said in the | these shall go away into everlasting",
+      "it is said in the | that the day of",
+      "as the waters cover the sea | it is said in the"
+     ]
+    },
+    {
+     "work_id": "internet_archive:b21453032",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:FL1DYH",
+     "joins_found": 1,
+     "joins": [
+      "of egypt and with | the house of dagon"
+     ]
+    },
+    {
+     "work_id": "internet_archive:b33088470_0001",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:naturalhistoryof45dono",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_the-defence-of-louis-xvi_seze-raymond-de_1793",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:AH4DHL",
+     "joins_found": 1,
+     "joins": [
+      "and bring them to | god and his laws"
+     ]
+    },
+    {
+     "work_id": "internet_archive:naturalistsmisce24shaw",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:statebehaviourof00beriiala",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:HN6SAH",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b33284593_0002",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b28744603",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:viviangrey02disra",
+     "joins_found": 1,
+     "joins": [
+      "and he read it | and when he came"
+     ]
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_an-historical-essay-on-d_green-james-lieutenant_1793",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:10067755bsb",
+     "joins_found": 1,
+     "joins": [
+      "me though i have | the siege of jerusalem"
+     ]
+    },
+    {
+     "work_id": "tcp:K082105.000",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:HNUG1A",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:32044029880606",
+     "joins_found": 19,
+     "joins": [
+      "since i came out | the noise of their",
+      "i bless the lord | since i came out",
+      "since i came out | the lord for this",
+      "i bless the lord | the noise of their",
+      "the lord for this | the noise of their",
+      "i go to the | the noise of their",
+      "i bless the lord | i go to the",
+      "i bless the lord | in thee o lord",
+      "i bless the lord | thee o lord and",
+      "i go to the | the lord for this",
+      "in thee o lord | the lord for this",
+      "the lord for this | thee o lord and",
+      "i go to the | in thee o lord",
+      "i go to the | thee o lord and",
+      "about with songs of deliverance | hast done great things",
+      "about with songs of deliverance | done great things for us",
+      "about with songs of deliverance | believe all things are possible",
+      "believe all things are possible | hast done great things",
+      "believe all things are possible | done great things for us"
+     ]
+    },
+    {
+     "work_id": "internet_archive:bim_eighteenth-century_an-extract-of-the-life-a_halyburton-thomas_1797",
+     "joins_found": 12,
+     "joins": [
+      "in the day of his | the god of my fathers",
+      "and i must bear | of my life to",
+      "and i must bear | it was in my",
+      "of god unto salvation to every one that | that the way of",
+      "of god unto salvation to every one that | the way of holiness",
+      "is the way of | of god unto salvation to every one that",
+      "and the ordinances of the | of god unto salvation to every one that",
+      "is the way of | that the way of",
+      "and the ordinances of the | that the way of",
+      "is the way of | the way of holiness",
+      "and the ordinances of the | the way of holiness",
+      "and the ordinances of the | is the way of"
+     ]
+    },
+    {
+     "work_id": "internet_archive:speechofhonorab00foxc",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:historyoflivesof02beri",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:bib_fict_4103604_2",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:10434121bsb",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:HN2C6J",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:b31914494",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:worksadamsmith06stewgoog",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "institutional_books:32044090381286",
+     "joins_found": 1,
+     "joins": [
+      "and to the doctrine | of the fathers to the"
+     ]
+    },
+    {
+     "work_id": "internet_archive:10725310bsb",
+     "joins_found": 0,
+     "joins": []
+    },
+    {
+     "work_id": "internet_archive:cihm_49964",
+     "joins_found": 0,
+     "joins": []
+    }
+   ]
+  },
+  "passed": false,
+  "stopped": "check (a) missed its bar: the 60 books and the Book of Mormon not dated"
+ }
+}

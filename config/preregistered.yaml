@@ -2560,6 +2560,42 @@ lab:                              # the research lab (exploratory tooling; reads
         pair_choice: most_branches_then_lowest_number   # one UA set per meaning, chosen before any list
         lead: 'nel:heb'            # holds only if p < alpha and excess above every control's (Semitic rules)
         modern_merge: {"ʕ": "’", "ђ": k, x: k, q: k, "ṭ": t, "ś": s, w: b}   # Modern Hebrew mergers, for the Biblical-era check
+  joined_phrases:                  # BOM-128 (lab; exploratory): King James phrases the book joins, dated by first appearance in print (card 2026-11-27-joined-phrases)
+    ngram_sizes: [4, 5]            # King James word n-grams; rarity as BOM-124 (lab.new_testament_wording bg_* values)
+    min_phrase_words: 4
+    window: 25                     # two phrases join when at most this many words lie between them
+    year_min: 1640                 # library dated: kept copies, corrected year, OCR not excluded, sealed copies out
+    year_max: 1829
+    independent_works: 2           # a join is current by decade D once this many works hold it by D
+    late_from: 1750                # "first current after 1750" = first current decade 1750 or later
+    title_key_words: 4             # own copies: same author key and the title's first words (anonymous: title alone)
+    min_current_joins: 5           # a book's shares are used in the percentiles only with this many current joins (amendment 1)
+    seed: 20261127
+    planted: 100                   # check (a): planted joins, and as many unplanted texts
+    planted_len: [4, 8]            # words in each planted phrase
+    prose_words: 300
+    prose_years: [1780, 1829]
+    prose_genres: [history_chronicle, scientific_medical, legal_political, fiction_narrative]
+    prose_min_words: 5000
+    recall_bar: 0.9
+    false_bar: 0.1
+    check_decades: [1650, 1740, 1820]   # check (b): religious books of these decades
+    early_decades: [1650, 1740]
+    check_books: 20
+    check_genre: sermon_devotional
+    check_min_words: 10000
+    own_decade_bar: 0.5
+    early_late_bar: 0.1
+    late_percentile: 90            # late: above this percentile of the 1650s and 1740s books, and at least the 1820s median
+    old_percentile: 75             # old: at or under this percentile of the 1650s and 1740s books
+    seed_chapter: [2 Nephi, 12]    # 1830 2 Nephi XII = modern 2 Nephi 28; joins reported one by one
+    bom_exclude_title: 'book of mormon'
+    decoys:
+      late_war_1816: {file: data/candidates/text/gh-1816-late-war.txt, year: 1816, exclude_author: 'hunt, g', exclude_title: 'late war|historical reader'}
+      view_of_the_hebrews_1823: {file: data/candidates/text/es-1823-view-of-the-hebrews.txt, year: 1823, exclude_title: 'view of the hebrews'}
+      baxter_saints_rest_1821: {work_id: 'internet_archive:saintseve00baxt', exclude_author: 'baxter, richard', exclude_title: 'everlasting rest'}   # first printed 1650
+    workers: 6
+    part_size: 2000                # works per resumable part of a library pass
   # Rule sets: what a kind of test may use. Each is a list of conditions on the registry's columns;
   # a test names one, and the results record it. "any" = one of; "min"/"max" = a range; a bare
   # value = equal to.
