@@ -2660,3 +2660,49 @@ lab:                              # the research lab (exploratory tooling; reads
     unseen-by-models:             # text no language model here was trained on
       {has_text: true, training: none}
     newspapers: {kind: newspaper_page, has_text: true}
+  luke12_commentaries:             # BOM-131 (lab; exploratory): does the book's use of Luke 12 follow Henry's or Clarke's note more than other commentaries'? Card data/private/lab/owner/2026-11-27-luke12-commentaries/card.md; values set 2026-11-27 at build
+    ngram: 4                       # reuse: a word 4-gram of the verse found in no other chapter of the King James Bible...
+    min_content: 2                 # ...holding at least this many content words
+    max_pair_word_freq: 60         # or an adjacent content-word pair found in no other chapter, its rarer word at most this often in the King James Bible
+    stop_words: [the, and, of, to, that, in, he, shall, unto, for, i, his, a, they, be, is, him, not, them, it, with, all, ye, you, was, which, but, are, as, have, will, my, me, this, your, their, there, from, by, thou, thee, hath, what, when, then, so, or, if, no, do, we, our, us, on, up, at, an, one, also, yea, behold, say, said, come, came, pass, even, should, would, hast, art, were, had, has, more, than, many, these, those, things, man, men]
+    extra_verses: []               # BOM-129's new-sense verses go here ({book: MAT, chapter: 5, verse: 3}) or in the file below
+    extra_verses_file: data/private/lab/owner/2026-11-27-luke12-commentaries/extra_verses.jsonl
+    use_before: 40                 # words of the book's passage before the matched words
+    use_after: 60                  # and after
+    note_before: 200               # words of the commentary before the located verse (a joint note on the verses before can cover it: Clarke on 12:47-48)
+    note_after: 450                # and after (the note follows, sometimes after the next verses' text)
+    locator:                       # BOM-122's lesson (Clarke's garbled scan): overlapping word sequences, not the whole King James line
+      shingle: 3
+      min_share: 0.5               # share of the verse's distinct sequences inside the best window
+      min_shingles: 3
+      span_factor: 1.5             # window, as a multiple of the verse's length
+      min_anchor_verses: 5         # a volume locating fewer verses of the chapter is taken not to hold it
+      region_words: 40000          # verses searched within this many words of the chapter's median located verse
+    bar_located: 0.90              # check (b): share of the chapter's verses located, per commentary
+    gen_items: 80                  # check (a): pairs of notes sent to the writer (generator_model)...
+    check_items: 40                # ...of which the first this many judged DIFFERENT become made-up uses
+    bar_check: 0.85                # check (a): items with the YES question answered YES and the NO question NO
+    generator_model: opus          # writes the made-up uses (a different model from the judge)
+    judge_model: sonnet            # answers every question (as BOM-122)
+    seed: 20261127
+    named: [henry, clarke]
+    lead_points: 20                # answer: highest YES rate and this many points above the median commentary...
+    min_verses: 10                 # ...on at least this many verses
+    min_commentaries: 8
+    decoy_work: 'internet_archive:latewarbetween_00hunt'
+    decoy_phrases:                 # card, What changed at build: by the reuse rule The Late War has no Luke 12 wording; its one Luke 12 phrase, "many stripes" (Luke 12:47, also Acts 16:23), is the decoy
+      - {phrase: 'many stripes', book: LUK, chapter: 12, verse: 47}
+    commentaries:                  # candidate volumes per commentary; the one locating most verses of the chapter stands for it
+      henry: {label: "Matthew Henry, Exposition", volumes: ['internet_archive:expositionofoldn05inhenr', 'internet_archive:expositionofoldn05henr', 'hathitrust:yale.39002005600417', 'hathitrust:yale.39002005600409', 'hathitrust:yale.39002005600391', 'hathitrust:yale.39002005600425', 'internet_archive:newfamilybibleco00henr_0', 'internet_archive:newfamilybibleco00henr']}
+      clarke: {label: "Adam Clarke, Commentary", volumes: ['internet_archive:clarkescommentar00clar', 'internet_archive:bub_gb_I6kGAAAAQAAJ', 'internet_archive:newtestamentofou0002adam', 'internet_archive:holybiblecontain0003adam', 'internet_archive:holybiblecontain0000adam', 'internet_archive:holybiblecontain0000unse_u6t6', 'internet_archive:holybiblecontain02clar']}
+      doddridge: {label: "Philip Doddridge, Family Expositor", volumes: ['institutional_books:AH449Z', 'institutional_books:AH449T', 'institutional_books:AH449X', 'institutional_books:AH449Y', 'institutional_books:AH44A2', 'institutional_books:AH44A3', 'institutional_books:AH44A4', 'institutional_books:AH44A5', 'institutional_books:AH44A6', 'internet_archive:familyexpositor00doddgoog', 'internet_archive:familyexpositoro1821dodd', 'internet_archive:familyexpositoro1825dodd', 'hathitrust:yale.39002088379145', 'hathitrust:yale.39002088379160', 'hathitrust:yale.39002088379186', 'hathitrust:yale.39002088379137', 'hathitrust:ia.ark:/13960/t4rj4mn2p', 'hathitrust:ia.ark:/13960/t2m61pd20', 'hathitrust:ia.ark:/13960/t2f76hx9q', 'hathitrust:ia.ark:/13960/t0zp46h1k', 'hathitrust:ia.ark:/13960/t9765nn8n', 'hathitrust:ia.ark:/13960/t2m61p014', 'hathitrust:yale.39002088378832', 'hathitrust:yale.39002088378840', 'hathitrust:yale.39002088378824']}
+      scott: {label: "Thomas Scott, Holy Bible with notes", volumes: ['internet_archive:holybiblecontain04scot', 'internet_archive:holybiblecontain05scot', 'internet_archive:newtestamentofou0002thom', 'internet_archive:holybibleconta02scot', 'internet_archive:holybiblecontain0003thom_k9t3', 'internet_archive:holybiblecontain0002thom_e6j1', 'hathitrust:ia.ark:/13960/t8tb1fn5k', 'hathitrust:ia.ark:/13960/t2891j524', 'hathitrust:ia.ark:/13960/t2697gd9g', 'hathitrust:ia.ark:/13960/t8z89k82f']}
+      wesley: {label: "John Wesley, Explanatory Notes", volumes: ['internet_archive:explanatorynote00weslgoog', 'internet_archive:explanatorynote01weslgoog', 'internet_archive:newtestament00agoog', 'internet_archive:notesonnewtestam0000john', 'tcp:N18482', 'institutional_books:HWRQXS']}
+      poole: {label: "Matthew Poole, Annotations", volumes: ['tcp:A55368']}
+      burkitt: {label: "William Burkitt, Expository Notes", volumes: ['internet_archive:expositorynotesw0000will', 'internet_archive:expositorynotesw00burk', 'internet_archive:bim_eighteenth-century_expository-notes-with-p_1789', 'tcp:A30303']}
+      guyse: {label: "John Guyse, Practical Expositor", volumes: ['internet_archive:practicalexposit01guys', 'internet_archive:practicalexposit02guys', 'internet_archive:practicalexposit04guys']}
+      baxter: {label: "Richard Baxter, Paraphrase", volumes: ['tcp:A26981', 'internet_archive:bim_eighteenth-century_a-paraphrase-on-the-new-_bible-nt-english-a_1782']}
+      hammond: {label: "Henry Hammond, Paraphrase and Annotations", volumes: ['tcp:A45436']}
+      pitman: {label: "John Rogers Pitman, Critical Commentary", volumes: ['internet_archive:criticalcommenta05pitmuoft', 'internet_archive:criticalcommenta04pitmuoft', 'internet_archive:criticalcommenta06pitmuoft']}
+      macknight: {label: "James Macknight, Harmony of the Gospels", volumes: ['institutional_books:AH4429', 'institutional_books:AH4428', 'internet_archive:harmonyoffourgos02mack', 'internet_archive:harmonyoffourgos01mack']}
+      brown: {label: "John Brown, Self-Interpreting Bible", volumes: ['internet_archive:gtu_32400000046924', 'internet_archive:holybiblecontain00brow', 'internet_archive:holybiblecontain00brow_1']}
