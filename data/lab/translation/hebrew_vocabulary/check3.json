@@ -1,0 +1,1144 @@
+{
+ "rule": "(a, b) King James NT blocks vs OT blocks and (c, d) Young's NT vs OT blocks: AUC >= bar and share of OT blocks below the NT median >= bar, each",
+ "bars": {
+  "auc": 0.95,
+  "below_median_share": 0.9
+ },
+ "king_james": {
+  "blocks": {
+   "OT": 98,
+   "NT": 24
+  },
+  "medians": {
+   "OT": 25.0,
+   "NT": 118.0
+  },
+  "auc_nt_over_ot": 0.9724,
+  "ot_below_nt_median": 1.0,
+  "passed": true
+ },
+ "young": {
+  "blocks": {
+   "OT": 94,
+   "NT": 24
+  },
+  "medians": {
+   "OT": 54.0,
+   "NT": 193.0
+  },
+  "auc_nt_over_ot": 0.9572,
+  "ot_below_nt_median": 1.0,
+  "passed": true
+ },
+ "passed": true,
+ "reported_not_the_bar": {
+  "young_without_the_dictionary_filter": {
+   "blocks": {
+    "OT": 94,
+    "NT": 24
+   },
+   "medians": {
+    "OT": 58.0,
+    "NT": 196.0
+   },
+   "auc_nt_over_ot": 0.9561,
+   "ot_below_nt_median": 1.0
+  },
+  "young_dropped_under_block": [
+   {
+    "book": "Ruth",
+    "section": "OT",
+    "words": 2430
+   },
+   {
+    "book": "Song",
+    "section": "OT",
+    "words": 2448
+   },
+   {
+    "book": "Lam",
+    "section": "OT",
+    "words": 3264
+   },
+   {
+    "book": "Hos",
+    "section": "OT",
+    "words": 4653
+   },
+   {
+    "book": "Joel",
+    "section": "OT",
+    "words": 1883
+   },
+   {
+    "book": "Amos",
+    "section": "OT",
+    "words": 3758
+   },
+   {
+    "book": "Obad",
+    "section": "OT",
+    "words": 574
+   },
+   {
+    "book": "Jonah",
+    "section": "OT",
+    "words": 1259
+   },
+   {
+    "book": "Mic",
+    "section": "OT",
+    "words": 2820
+   },
+   {
+    "book": "Nah",
+    "section": "OT",
+    "words": 1189
+   },
+   {
+    "book": "Hab",
+    "section": "OT",
+    "words": 1373
+   },
+   {
+    "book": "Zeph",
+    "section": "OT",
+    "words": 1450
+   },
+   {
+    "book": "Hag",
+    "section": "OT",
+    "words": 1042
+   },
+   {
+    "book": "Mal",
+    "section": "OT",
+    "words": 1665
+   },
+   {
+    "book": "Gal",
+    "section": "NT",
+    "words": 2973
+   },
+   {
+    "book": "Eph",
+    "section": "NT",
+    "words": 3086
+   },
+   {
+    "book": "Phil",
+    "section": "NT",
+    "words": 2080
+   },
+   {
+    "book": "Col",
+    "section": "NT",
+    "words": 2002
+   },
+   {
+    "book": "1Thess",
+    "section": "NT",
+    "words": 1838
+   },
+   {
+    "book": "2Thess",
+    "section": "NT",
+    "words": 1028
+   },
+   {
+    "book": "1Tim",
+    "section": "NT",
+    "words": 2202
+   },
+   {
+    "book": "2Tim",
+    "section": "NT",
+    "words": 1594
+   },
+   {
+    "book": "Titus",
+    "section": "NT",
+    "words": 910
+   },
+   {
+    "book": "Phlm",
+    "section": "NT",
+    "words": 400
+   },
+   {
+    "book": "Jas",
+    "section": "NT",
+    "words": 2387
+   },
+   {
+    "book": "1Pet",
+    "section": "NT",
+    "words": 2403
+   },
+   {
+    "book": "2Pet",
+    "section": "NT",
+    "words": 1530
+   },
+   {
+    "book": "1John",
+    "section": "NT",
+    "words": 2732
+   },
+   {
+    "book": "2John",
+    "section": "NT",
+    "words": 304
+   },
+   {
+    "book": "3John",
+    "section": "NT",
+    "words": 297
+   },
+   {
+    "book": "Jude",
+    "section": "NT",
+    "words": 592
+   }
+  ],
+  "apocrypha_by_language_of_composition": {
+   "hebrew_or_aramaic": {
+    "books_with_a_block": [
+     "1ES",
+     "1MA",
+     "4ES",
+     "JDT",
+     "SIR",
+     "TOB"
+    ],
+    "blocks": 17,
+    "median": 86.0,
+    "auc_over_kjv_ot": 0.9199
+   },
+   "greek": {
+    "books_with_a_block": [
+     "2MA",
+     "WIS"
+    ],
+    "blocks": 5,
+    "median": 216.0,
+    "auc_over_kjv_ot": 1.0
+   },
+   "uncertain": {
+    "books_with_a_block": [],
+    "blocks": 0,
+    "median": null,
+    "auc_over_kjv_ot": null
+   }
+  },
+  "thomson": {
+   "ot": {
+    "words": 577204,
+    "blocks": 113,
+    "median": 320.0,
+    "min": 190.0,
+    "max": 542.0
+   },
+   "nt": {
+    "words": 179988,
+    "blocks": 35,
+    "median": 450.0,
+    "min": 256.0,
+    "max": 780.0
+   },
+   "auc_nt_over_ot": 0.8168
+  },
+  "design2_king_james": {
+   "blocks": {
+    "OT": 98,
+    "NT": 24,
+    "Apocrypha": 22
+   },
+   "medians": {
+    "OT": 25.0,
+    "NT": 118.0,
+    "Apocrypha": 102.0
+   },
+   "auc": {
+    "NT": 0.9724,
+    "Apocrypha": 0.9381
+   },
+   "ot_below_median": {
+    "NT": 1.0,
+    "Apocrypha": 1.0
+   }
+  }
+ },
+ "block_rates": [
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 18.0
+  },
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 4.0
+  },
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 24.0
+  },
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 62.0
+  },
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 26.0
+  },
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 42.0
+  },
+  {
+   "book": "GEN",
+   "section": "OT",
+   "block": 6,
+   "per_10k": 22.0
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 38.0
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 12.0
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 34.0
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 66.0
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 50.0
+  },
+  {
+   "book": "EXO",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 78.0
+  },
+  {
+   "book": "LEV",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 10.0
+  },
+  {
+   "book": "LEV",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 50.0
+  },
+  {
+   "book": "LEV",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 84.0
+  },
+  {
+   "book": "LEV",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 26.0
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 4.0
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 10.0
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 20.0
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 14.0
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 12.0
+  },
+  {
+   "book": "NUM",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 18.0
+  },
+  {
+   "book": "DEU",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 18.0
+  },
+  {
+   "book": "DEU",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 8.0
+  },
+  {
+   "book": "DEU",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 26.0
+  },
+  {
+   "book": "DEU",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 22.0
+  },
+  {
+   "book": "DEU",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 24.0
+  },
+  {
+   "book": "JOS",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 4.0
+  },
+  {
+   "book": "JOS",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 8.0
+  },
+  {
+   "book": "JOS",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 6.0
+  },
+  {
+   "book": "JDG",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 40.0
+  },
+  {
+   "book": "JDG",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 14.0
+  },
+  {
+   "book": "JDG",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 18.0
+  },
+  {
+   "book": "1SA",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 34.0
+  },
+  {
+   "book": "1SA",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 26.0
+  },
+  {
+   "book": "1SA",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 24.0
+  },
+  {
+   "book": "1SA",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 24.0
+  },
+  {
+   "book": "2SA",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 48.0
+  },
+  {
+   "book": "2SA",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 20.0
+  },
+  {
+   "book": "2SA",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 32.0
+  },
+  {
+   "book": "1KI",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 18.0
+  },
+  {
+   "book": "1KI",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 46.0
+  },
+  {
+   "book": "1KI",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 26.0
+  },
+  {
+   "book": "1KI",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 16.0
+  },
+  {
+   "book": "2KI",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 26.0
+  },
+  {
+   "book": "2KI",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 24.0
+  },
+  {
+   "book": "2KI",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 8.0
+  },
+  {
+   "book": "2KI",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 22.0
+  },
+  {
+   "book": "1CH",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 6.0
+  },
+  {
+   "book": "1CH",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 8.0
+  },
+  {
+   "book": "1CH",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 10.0
+  },
+  {
+   "book": "2CH",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 16.0
+  },
+  {
+   "book": "2CH",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 24.0
+  },
+  {
+   "book": "2CH",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 14.0
+  },
+  {
+   "book": "2CH",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 8.0
+  },
+  {
+   "book": "EZR",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 38.0
+  },
+  {
+   "book": "NEH",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 14.0
+  },
+  {
+   "book": "EST",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 30.0
+  },
+  {
+   "book": "JOB",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 48.0
+  },
+  {
+   "book": "JOB",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 40.0
+  },
+  {
+   "book": "JOB",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 38.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 60.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 38.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 58.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 60.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 38.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 14.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 6,
+   "per_10k": 26.0
+  },
+  {
+   "book": "PSA",
+   "section": "OT",
+   "block": 7,
+   "per_10k": 58.0
+  },
+  {
+   "book": "PRO",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 66.0
+  },
+  {
+   "book": "PRO",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 68.0
+  },
+  {
+   "book": "ECC",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 38.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 78.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 26.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 58.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 42.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 24.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 24.0
+  },
+  {
+   "book": "ISA",
+   "section": "OT",
+   "block": 6,
+   "per_10k": 44.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 36.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 26.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 18.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 14.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 32.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 10.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 6,
+   "per_10k": 18.0
+  },
+  {
+   "book": "JER",
+   "section": "OT",
+   "block": 7,
+   "per_10k": 14.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 34.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 38.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 2,
+   "per_10k": 22.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 3,
+   "per_10k": 96.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 4,
+   "per_10k": 6.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 5,
+   "per_10k": 10.0
+  },
+  {
+   "book": "EZE",
+   "section": "OT",
+   "block": 6,
+   "per_10k": 48.0
+  },
+  {
+   "book": "DAN",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 88.0
+  },
+  {
+   "book": "DAN",
+   "section": "OT",
+   "block": 1,
+   "per_10k": 38.0
+  },
+  {
+   "book": "ZEC",
+   "section": "OT",
+   "block": 0,
+   "per_10k": 14.0
+  },
+  {
+   "book": "TOB",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 104.0
+  },
+  {
+   "book": "JDT",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 46.0
+  },
+  {
+   "book": "JDT",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 84.0
+  },
+  {
+   "book": "WIS",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 192.0
+  },
+  {
+   "book": "WIS",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 226.0
+  },
+  {
+   "book": "SIR",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 120.0
+  },
+  {
+   "book": "SIR",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 106.0
+  },
+  {
+   "book": "SIR",
+   "section": "Apocrypha",
+   "block": 2,
+   "per_10k": 148.0
+  },
+  {
+   "book": "SIR",
+   "section": "Apocrypha",
+   "block": 3,
+   "per_10k": 126.0
+  },
+  {
+   "book": "SIR",
+   "section": "Apocrypha",
+   "block": 4,
+   "per_10k": 100.0
+  },
+  {
+   "book": "1MA",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 62.0
+  },
+  {
+   "book": "1MA",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 36.0
+  },
+  {
+   "book": "1MA",
+   "section": "Apocrypha",
+   "block": 2,
+   "per_10k": 116.0
+  },
+  {
+   "book": "1MA",
+   "section": "Apocrypha",
+   "block": 3,
+   "per_10k": 92.0
+  },
+  {
+   "book": "2MA",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 260.0
+  },
+  {
+   "book": "2MA",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 216.0
+  },
+  {
+   "book": "2MA",
+   "section": "Apocrypha",
+   "block": 2,
+   "per_10k": 210.0
+  },
+  {
+   "book": "1ES",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 60.0
+  },
+  {
+   "book": "1ES",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 46.0
+  },
+  {
+   "book": "4ES",
+   "section": "Apocrypha",
+   "block": 0,
+   "per_10k": 50.0
+  },
+  {
+   "book": "4ES",
+   "section": "Apocrypha",
+   "block": 1,
+   "per_10k": 86.0
+  },
+  {
+   "book": "4ES",
+   "section": "Apocrypha",
+   "block": 2,
+   "per_10k": 42.0
+  },
+  {
+   "book": "MAT",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 112.0
+  },
+  {
+   "book": "MAT",
+   "section": "NT",
+   "block": 1,
+   "per_10k": 80.0
+  },
+  {
+   "book": "MAT",
+   "section": "NT",
+   "block": 2,
+   "per_10k": 118.0
+  },
+  {
+   "book": "MAT",
+   "section": "NT",
+   "block": 3,
+   "per_10k": 112.0
+  },
+  {
+   "book": "MAR",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 146.0
+  },
+  {
+   "book": "MAR",
+   "section": "NT",
+   "block": 1,
+   "per_10k": 88.0
+  },
+  {
+   "book": "LUK",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 114.0
+  },
+  {
+   "book": "LUK",
+   "section": "NT",
+   "block": 1,
+   "per_10k": 132.0
+  },
+  {
+   "book": "LUK",
+   "section": "NT",
+   "block": 2,
+   "per_10k": 98.0
+  },
+  {
+   "book": "LUK",
+   "section": "NT",
+   "block": 3,
+   "per_10k": 118.0
+  },
+  {
+   "book": "LUK",
+   "section": "NT",
+   "block": 4,
+   "per_10k": 140.0
+  },
+  {
+   "book": "JOH",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 80.0
+  },
+  {
+   "book": "JOH",
+   "section": "NT",
+   "block": 1,
+   "per_10k": 28.0
+  },
+  {
+   "book": "JOH",
+   "section": "NT",
+   "block": 2,
+   "per_10k": 50.0
+  },
+  {
+   "book": "ACT",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 156.0
+  },
+  {
+   "book": "ACT",
+   "section": "NT",
+   "block": 1,
+   "per_10k": 182.0
+  },
+  {
+   "book": "ACT",
+   "section": "NT",
+   "block": 2,
+   "per_10k": 194.0
+  },
+  {
+   "book": "ACT",
+   "section": "NT",
+   "block": 3,
+   "per_10k": 226.0
+  },
+  {
+   "book": "ROM",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 218.0
+  },
+  {
+   "book": "1CO",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 222.0
+  },
+  {
+   "book": "2CO",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 252.0
+  },
+  {
+   "book": "HEB",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 194.0
+  },
+  {
+   "book": "REV",
+   "section": "NT",
+   "block": 0,
+   "per_10k": 114.0
+  },
+  {
+   "book": "REV",
+   "section": "NT",
+   "block": 1,
+   "per_10k": 84.0
+  }
+ ],
+ "stamp": {
+  "config_sha256": "7c28de4d1473539713bcad7863ec279b35ac74af74090eec0f78733ece6d9336",
+  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+  "registered": true,
+  "git_commit": "c9a0a47015aca7bf763ae777cd2e855519ff8e54"
+ }
+}

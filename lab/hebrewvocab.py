@@ -21,6 +21,8 @@ Usage::
     python -m lab.hebrewvocab run     # -> data/lab/translation/hebrew_vocabulary/result.json
     python -m lab.hebrewvocab check2  # design 2 (5,000-word blocks) check -> .../check2.json
     python -m lab.hebrewvocab run2    # design 2, book and controls if it passes -> .../result2.json
+    python -m lab.hebrewvocab check3  # design 3: King James and Young's NT vs OT -> .../check3.json
+    python -m lab.hebrewvocab run3    # design 3, book and controls if it passes -> .../result3.json
 """
 
 from __future__ import annotations
@@ -454,8 +456,13 @@ def lexicon_glosses() -> dict[int, dict[str, str]]:
     for m in re.finditer(r'<entry id="H(\d+)">(.*?)</entry>', text, re.S):
         body = m.group(2)
         pos = re.search(r'<w pos="([^"]*)"', body)
-        parts = re.findall(r"<(meaning|usage)>(.*?)</\1>", body, re.S)
-        res[int(m.group(1))]["strong"] = " ".join(re.sub(r"<[^>]+>", " ", p) for _t, p in parts)
+        # Strong's own glosses (<def>) and King James usage; not the commentary around them,
+        # which made words such as "perhaps" match dozens of entries (design 3, 2026-11-27).
+        meaning = " ".join(re.findall(r"<meaning>(.*?)</meaning>", body, re.S))
+        parts = re.findall(r"<def>(.*?)</def>", meaning) + re.findall(
+            r"<usage>(.*?)</usage>", body, re.S
+        )
+        res[int(m.group(1))]["strong"] = " ".join(re.sub(r"<[^>]+>", " ", p) for p in parts)
         res[int(m.group(1))]["pos"] = pos.group(1) if pos else ""
     idx = (LEX / "LexicalIndex.xml").read_text(encoding="utf-8")
     bdb_of: dict[str, set[int]] = defaultdict(set)
@@ -770,15 +777,15 @@ def summary(rates: list[float], words: int) -> dict:
     }
 
 
-def run2(cfg: dict) -> dict:
+def run2(cfg: dict, design: int = 2) -> dict:
     from scipy.stats import mannwhitneyu
 
     ctx = prepare(cfg)
     w = ctx["w"]
     d2 = w["design2"]
     size = d2["block_words"]
-    chk = check2(ctx, d2)
-    res: dict = {"design": 2, "known_answer": chk, "settings": w}
+    chk = check3(ctx, w) if design == 3 else check2(ctx, d2)
+    res: dict = {"design": design, "known_answer": chk, "settings": w}
     if not chk["passed"]:
         res["stopped"] = "the known-answer check missed its bar; the Book of Mormon was not scored"
         return res
@@ -912,9 +919,111 @@ def run2(cfg: dict) -> dict:
     return res
 
 
+# ----------------------------------------------------------------------------- design 3
+
+
+def ylt_books(path: str) -> dict[str, tuple[str, str]] | None:
+    """Young's text by OSIS book: (section, text); None when the file cannot be read."""
+    from lab import translation2 as T2
+
+    v = T2.ylt_verses(Path(path))
+    if v is None:
+        return None
+    res: dict[str, list[str]] = defaultdict(list)
+    for ref, t in v.items():
+        res[ref.split(".")[0]].append(t)
+    return {b: ("OT" if b in T2.OT_OSIS else "NT", "\n".join(ts)) for b, ts in res.items()}
+
+
+def two_sides(ot: list[float], nt: list[float], d2: dict) -> dict:
+    med = statistics.median(nt) if nt else None
+    auc = round(NT.auc(nt, ot), 4) if ot and nt else None
+    below = share_below(ot, med) if med is not None else None
+    return {
+        "blocks": {"OT": len(ot), "NT": len(nt)},
+        "medians": {"OT": statistics.median(ot) if ot else None, "NT": med},
+        "auc_nt_over_ot": auc,
+        "ot_below_nt_median": below,
+        "passed": auc is not None and auc >= d2["auc_bar"] and below >= d2["below_median_share"],
+    }
+
+
+def check3(ctx: dict, w: dict) -> dict:
+    """Design 3: the King James New Testament against its Old Testament (design 2's two
+    conditions) and Young's New Testament against his Old Testament, same concordance."""
+    d2, d3, size = w["design2"], w["design3"], w["design2"]["block_words"]
+    k = check2(ctx, d2)
+    rates = k["block_rates"]
+    kjv = two_sides(
+        [b["per_10k"] for b in rates if b["section"] == "OT"],
+        [b["per_10k"] for b in rates if b["section"] == "NT"],
+        d2,
+    )
+    books = ylt_books(d3["ylt"])
+    if books is None:
+        return {"passed": False, "stopped": "Young's text could not be read (not attempted)"}
+    ylt = {"OT": [], "NT": []}
+    raw = {"OT": [], "NT": []}
+    section_text = {s: "\n".join(t for sec, t in books.values() if sec == s) for s in ylt}
+    names = {s: ctx["kjv_names"] | text_names(section_text[s], ctx["webster"]) for s in ylt}
+    dropped = []
+    for b, (sec, t) in books.items():
+        toks = tokens(t)
+        kept, flag = marks(toks, ctx["conc"], names[sec], ctx["lexicon"])
+        _k, f_raw = marks(toks, ctx["conc"], names[sec], None)
+        r = block_rates(flag, size)
+        if not r:
+            dropped.append({"book": b, "section": sec, "words": len(kept)})
+        ylt[sec] += r
+        raw[sec] += block_rates(f_raw, size)
+    y = two_sides(ylt["OT"], ylt["NT"], d2)
+    y_raw = two_sides(raw["OT"], raw["NT"], d2)
+    y_raw.pop("passed")
+    apoc = {}
+    kjv_ot = [b["per_10k"] for b in rates if b["section"] == "OT"]
+    for lang, codes in d3["apocrypha_language"].items():
+        xs = [b["per_10k"] for b in rates if b["book"] in codes]
+        apoc[lang] = {
+            "books_with_a_block": sorted({b["book"] for b in rates if b["book"] in codes}),
+            "blocks": len(xs),
+            "median": statistics.median(xs) if xs else None,
+            "auc_over_kjv_ot": round(NT.auc(xs, kjv_ot), 4) if xs else None,
+        }
+    tho = {}
+    for name in ("thomson_1808_ot", "thomson_1808_nt"):
+        r, _o, n = blocks_of(
+            [read_paths([p]) or "" for p in w["texts"][name]], ctx, ctx["kjv_names"], size
+        )
+        tho[name] = summary(r, n) | {"block_rates": [round(x, 2) for x in r]}
+    tho_ot = tho["thomson_1808_ot"]["block_rates"]
+    tho_nt = tho["thomson_1808_nt"]["block_rates"]
+    return {
+        "rule": "(a, b) King James NT blocks vs OT blocks and (c, d) Young's NT vs OT blocks: "
+        "AUC >= bar and share of OT blocks below the NT median >= bar, each",
+        "bars": {"auc": d2["auc_bar"], "below_median_share": d2["below_median_share"]},
+        "king_james": kjv,
+        "young": y,
+        "passed": kjv["passed"] and y["passed"],
+        "reported_not_the_bar": {
+            "young_without_the_dictionary_filter": y_raw,
+            "young_dropped_under_block": dropped,
+            "apocrypha_by_language_of_composition": apoc,
+            "thomson": {
+                "ot": {k2: v for k2, v in tho["thomson_1808_ot"].items() if k2 != "block_rates"},
+                "nt": {k2: v for k2, v in tho["thomson_1808_nt"].items() if k2 != "block_rates"},
+                "auc_nt_over_ot": round(NT.auc(tho_nt, tho_ot), 4) if tho_ot and tho_nt else None,
+            },
+            "design2_king_james": {
+                x: k[x] for x in ("blocks", "medians", "auc", "ot_below_median")
+            },
+        },
+        "block_rates": rates,
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
-    ap.add_argument("cmd", choices=["check", "run", "check2", "run2"])
+    ap.add_argument("cmd", choices=["check", "run", "check2", "run2", "check3", "run3"])
     a = ap.parse_args(argv)
     cfg = config.load()
     if a.cmd == "check":
@@ -931,6 +1040,18 @@ def main(argv: list[str] | None = None) -> int:
         res["stamp"] = config.stamp()
         out(OUT / "check2.json").write_text(json.dumps(res, indent=1) + "\n")
         print(json.dumps({k: v for k, v in res.items() if k != "block_rates"}, indent=1))
+        return 0
+    if a.cmd == "check3":
+        res = check3(prepare(cfg), cfg["lab"]["hebrew_vocabulary"])
+        res["stamp"] = config.stamp()
+        out(OUT / "check3.json").write_text(json.dumps(res, indent=1) + "\n")
+        print(json.dumps({k: v for k, v in res.items() if k != "block_rates"}, indent=1))
+        return 0
+    if a.cmd == "run3":
+        res = run2(cfg, design=3)
+        res["stamp"] = config.stamp()
+        out(OUT / "result3.json").write_text(json.dumps(res, indent=1) + "\n")
+        print(json.dumps(res.get("verdict", res.get("stopped")), indent=1))
         return 0
     if a.cmd == "run2":
         res = run2(cfg)

@@ -1,0 +1,7220 @@
+{
+ "design": 3,
+ "known_answer": {
+  "rule": "(a, b) King James NT blocks vs OT blocks and (c, d) Young's NT vs OT blocks: AUC >= bar and share of OT blocks below the NT median >= bar, each",
+  "bars": {
+   "auc": 0.95,
+   "below_median_share": 0.9
+  },
+  "king_james": {
+   "blocks": {
+    "OT": 98,
+    "NT": 24
+   },
+   "medians": {
+    "OT": 25.0,
+    "NT": 118.0
+   },
+   "auc_nt_over_ot": 0.9724,
+   "ot_below_nt_median": 1.0,
+   "passed": true
+  },
+  "young": {
+   "blocks": {
+    "OT": 94,
+    "NT": 24
+   },
+   "medians": {
+    "OT": 54.0,
+    "NT": 193.0
+   },
+   "auc_nt_over_ot": 0.9572,
+   "ot_below_nt_median": 1.0,
+   "passed": true
+  },
+  "passed": true,
+  "reported_not_the_bar": {
+   "young_without_the_dictionary_filter": {
+    "blocks": {
+     "OT": 94,
+     "NT": 24
+    },
+    "medians": {
+     "OT": 58.0,
+     "NT": 196.0
+    },
+    "auc_nt_over_ot": 0.9561,
+    "ot_below_nt_median": 1.0
+   },
+   "young_dropped_under_block": [
+    {
+     "book": "Ruth",
+     "section": "OT",
+     "words": 2430
+    },
+    {
+     "book": "Song",
+     "section": "OT",
+     "words": 2448
+    },
+    {
+     "book": "Lam",
+     "section": "OT",
+     "words": 3264
+    },
+    {
+     "book": "Hos",
+     "section": "OT",
+     "words": 4653
+    },
+    {
+     "book": "Joel",
+     "section": "OT",
+     "words": 1883
+    },
+    {
+     "book": "Amos",
+     "section": "OT",
+     "words": 3758
+    },
+    {
+     "book": "Obad",
+     "section": "OT",
+     "words": 574
+    },
+    {
+     "book": "Jonah",
+     "section": "OT",
+     "words": 1259
+    },
+    {
+     "book": "Mic",
+     "section": "OT",
+     "words": 2820
+    },
+    {
+     "book": "Nah",
+     "section": "OT",
+     "words": 1189
+    },
+    {
+     "book": "Hab",
+     "section": "OT",
+     "words": 1373
+    },
+    {
+     "book": "Zeph",
+     "section": "OT",
+     "words": 1450
+    },
+    {
+     "book": "Hag",
+     "section": "OT",
+     "words": 1042
+    },
+    {
+     "book": "Mal",
+     "section": "OT",
+     "words": 1665
+    },
+    {
+     "book": "Gal",
+     "section": "NT",
+     "words": 2973
+    },
+    {
+     "book": "Eph",
+     "section": "NT",
+     "words": 3086
+    },
+    {
+     "book": "Phil",
+     "section": "NT",
+     "words": 2080
+    },
+    {
+     "book": "Col",
+     "section": "NT",
+     "words": 2002
+    },
+    {
+     "book": "1Thess",
+     "section": "NT",
+     "words": 1838
+    },
+    {
+     "book": "2Thess",
+     "section": "NT",
+     "words": 1028
+    },
+    {
+     "book": "1Tim",
+     "section": "NT",
+     "words": 2202
+    },
+    {
+     "book": "2Tim",
+     "section": "NT",
+     "words": 1594
+    },
+    {
+     "book": "Titus",
+     "section": "NT",
+     "words": 910
+    },
+    {
+     "book": "Phlm",
+     "section": "NT",
+     "words": 400
+    },
+    {
+     "book": "Jas",
+     "section": "NT",
+     "words": 2387
+    },
+    {
+     "book": "1Pet",
+     "section": "NT",
+     "words": 2403
+    },
+    {
+     "book": "2Pet",
+     "section": "NT",
+     "words": 1530
+    },
+    {
+     "book": "1John",
+     "section": "NT",
+     "words": 2732
+    },
+    {
+     "book": "2John",
+     "section": "NT",
+     "words": 304
+    },
+    {
+     "book": "3John",
+     "section": "NT",
+     "words": 297
+    },
+    {
+     "book": "Jude",
+     "section": "NT",
+     "words": 592
+    }
+   ],
+   "apocrypha_by_language_of_composition": {
+    "hebrew_or_aramaic": {
+     "books_with_a_block": [
+      "1ES",
+      "1MA",
+      "4ES",
+      "JDT",
+      "SIR",
+      "TOB"
+     ],
+     "blocks": 17,
+     "median": 86.0,
+     "auc_over_kjv_ot": 0.9199
+    },
+    "greek": {
+     "books_with_a_block": [
+      "2MA",
+      "WIS"
+     ],
+     "blocks": 5,
+     "median": 216.0,
+     "auc_over_kjv_ot": 1.0
+    },
+    "uncertain": {
+     "books_with_a_block": [],
+     "blocks": 0,
+     "median": null,
+     "auc_over_kjv_ot": null
+    }
+   },
+   "thomson": {
+    "ot": {
+     "words": 577204,
+     "blocks": 113,
+     "median": 320.0,
+     "min": 190.0,
+     "max": 542.0
+    },
+    "nt": {
+     "words": 179988,
+     "blocks": 35,
+     "median": 450.0,
+     "min": 256.0,
+     "max": 780.0
+    },
+    "auc_nt_over_ot": 0.8168
+   },
+   "design2_king_james": {
+    "blocks": {
+     "OT": 98,
+     "NT": 24,
+     "Apocrypha": 22
+    },
+    "medians": {
+     "OT": 25.0,
+     "NT": 118.0,
+     "Apocrypha": 102.0
+    },
+    "auc": {
+     "NT": 0.9724,
+     "Apocrypha": 0.9381
+    },
+    "ot_below_median": {
+     "NT": 1.0,
+     "Apocrypha": 1.0
+    }
+   }
+  },
+  "block_rates": [
+   {
+    "book": "GEN",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 18.0
+   },
+   {
+    "book": "GEN",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 4.0
+   },
+   {
+    "book": "GEN",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 24.0
+   },
+   {
+    "book": "GEN",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 62.0
+   },
+   {
+    "book": "GEN",
+    "section": "OT",
+    "block": 4,
+    "per_10k": 26.0
+   },
+   {
+    "book": "GEN",
+    "section": "OT",
+    "block": 5,
+    "per_10k": 42.0
+   },
+   {
+    "book": "GEN",
+    "section": "OT",
+    "block": 6,
+    "per_10k": 22.0
+   },
+   {
+    "book": "EXO",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 38.0
+   },
+   {
+    "book": "EXO",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 12.0
+   },
+   {
+    "book": "EXO",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 34.0
+   },
+   {
+    "book": "EXO",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 66.0
+   },
+   {
+    "book": "EXO",
+    "section": "OT",
+    "block": 4,
+    "per_10k": 50.0
+   },
+   {
+    "book": "EXO",
+    "section": "OT",
+    "block": 5,
+    "per_10k": 78.0
+   },
+   {
+    "book": "LEV",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 10.0
+   },
+   {
+    "book": "LEV",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 50.0
+   },
+   {
+    "book": "LEV",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 84.0
+   },
+   {
+    "book": "LEV",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 26.0
+   },
+   {
+    "book": "NUM",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 4.0
+   },
+   {
+    "book": "NUM",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 10.0
+   },
+   {
+    "book": "NUM",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 20.0
+   },
+   {
+    "book": "NUM",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 14.0
+   },
+   {
+    "book": "NUM",
+    "section": "OT",
+    "block": 4,
+    "per_10k": 12.0
+   },
+   {
+    "book": "NUM",
+    "section": "OT",
+    "block": 5,
+    "per_10k": 18.0
+   },
+   {
+    "book": "DEU",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 18.0
+   },
+   {
+    "book": "DEU",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 8.0
+   },
+   {
+    "book": "DEU",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 26.0
+   },
+   {
+    "book": "DEU",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 22.0
+   },
+   {
+    "book": "DEU",
+    "section": "OT",
+    "block": 4,
+    "per_10k": 24.0
+   },
+   {
+    "book": "JOS",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 4.0
+   },
+   {
+    "book": "JOS",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 8.0
+   },
+   {
+    "book": "JOS",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 6.0
+   },
+   {
+    "book": "JDG",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 40.0
+   },
+   {
+    "book": "JDG",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 14.0
+   },
+   {
+    "book": "JDG",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 18.0
+   },
+   {
+    "book": "1SA",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 34.0
+   },
+   {
+    "book": "1SA",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 26.0
+   },
+   {
+    "book": "1SA",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 24.0
+   },
+   {
+    "book": "1SA",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 24.0
+   },
+   {
+    "book": "2SA",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 48.0
+   },
+   {
+    "book": "2SA",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 20.0
+   },
+   {
+    "book": "2SA",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 32.0
+   },
+   {
+    "book": "1KI",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 18.0
+   },
+   {
+    "book": "1KI",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 46.0
+   },
+   {
+    "book": "1KI",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 26.0
+   },
+   {
+    "book": "1KI",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 16.0
+   },
+   {
+    "book": "2KI",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 26.0
+   },
+   {
+    "book": "2KI",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 24.0
+   },
+   {
+    "book": "2KI",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 8.0
+   },
+   {
+    "book": "2KI",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 22.0
+   },
+   {
+    "book": "1CH",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 6.0
+   },
+   {
+    "book": "1CH",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 8.0
+   },
+   {
+    "book": "1CH",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 10.0
+   },
+   {
+    "book": "2CH",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 16.0
+   },
+   {
+    "book": "2CH",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 24.0
+   },
+   {
+    "book": "2CH",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 14.0
+   },
+   {
+    "book": "2CH",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 8.0
+   },
+   {
+    "book": "EZR",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 38.0
+   },
+   {
+    "book": "NEH",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 14.0
+   },
+   {
+    "book": "EST",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 30.0
+   },
+   {
+    "book": "JOB",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 48.0
+   },
+   {
+    "book": "JOB",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 40.0
+   },
+   {
+    "book": "JOB",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 38.0
+   },
+   {
+    "book": "PSA",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 60.0
+   },
+   {
+    "book": "PSA",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 38.0
+   },
+   {
+    "book": "PSA",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 58.0
+   },
+   {
+    "book": "PSA",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 60.0
+   },
+   {
+    "book": "PSA",
+    "section": "OT",
+    "block": 4,
+    "per_10k": 38.0
+   },
+   {
+    "book": "PSA",
+    "section": "OT",
+    "block": 5,
+    "per_10k": 14.0
+   },
+   {
+    "book": "PSA",
+    "section": "OT",
+    "block": 6,
+    "per_10k": 26.0
+   },
+   {
+    "book": "PSA",
+    "section": "OT",
+    "block": 7,
+    "per_10k": 58.0
+   },
+   {
+    "book": "PRO",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 66.0
+   },
+   {
+    "book": "PRO",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 68.0
+   },
+   {
+    "book": "ECC",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 38.0
+   },
+   {
+    "book": "ISA",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 78.0
+   },
+   {
+    "book": "ISA",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 26.0
+   },
+   {
+    "book": "ISA",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 58.0
+   },
+   {
+    "book": "ISA",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 42.0
+   },
+   {
+    "book": "ISA",
+    "section": "OT",
+    "block": 4,
+    "per_10k": 24.0
+   },
+   {
+    "book": "ISA",
+    "section": "OT",
+    "block": 5,
+    "per_10k": 24.0
+   },
+   {
+    "book": "ISA",
+    "section": "OT",
+    "block": 6,
+    "per_10k": 44.0
+   },
+   {
+    "book": "JER",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 36.0
+   },
+   {
+    "book": "JER",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 26.0
+   },
+   {
+    "book": "JER",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 18.0
+   },
+   {
+    "book": "JER",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 14.0
+   },
+   {
+    "book": "JER",
+    "section": "OT",
+    "block": 4,
+    "per_10k": 32.0
+   },
+   {
+    "book": "JER",
+    "section": "OT",
+    "block": 5,
+    "per_10k": 10.0
+   },
+   {
+    "book": "JER",
+    "section": "OT",
+    "block": 6,
+    "per_10k": 18.0
+   },
+   {
+    "book": "JER",
+    "section": "OT",
+    "block": 7,
+    "per_10k": 14.0
+   },
+   {
+    "book": "EZE",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 34.0
+   },
+   {
+    "book": "EZE",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 38.0
+   },
+   {
+    "book": "EZE",
+    "section": "OT",
+    "block": 2,
+    "per_10k": 22.0
+   },
+   {
+    "book": "EZE",
+    "section": "OT",
+    "block": 3,
+    "per_10k": 96.0
+   },
+   {
+    "book": "EZE",
+    "section": "OT",
+    "block": 4,
+    "per_10k": 6.0
+   },
+   {
+    "book": "EZE",
+    "section": "OT",
+    "block": 5,
+    "per_10k": 10.0
+   },
+   {
+    "book": "EZE",
+    "section": "OT",
+    "block": 6,
+    "per_10k": 48.0
+   },
+   {
+    "book": "DAN",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 88.0
+   },
+   {
+    "book": "DAN",
+    "section": "OT",
+    "block": 1,
+    "per_10k": 38.0
+   },
+   {
+    "book": "ZEC",
+    "section": "OT",
+    "block": 0,
+    "per_10k": 14.0
+   },
+   {
+    "book": "TOB",
+    "section": "Apocrypha",
+    "block": 0,
+    "per_10k": 104.0
+   },
+   {
+    "book": "JDT",
+    "section": "Apocrypha",
+    "block": 0,
+    "per_10k": 46.0
+   },
+   {
+    "book": "JDT",
+    "section": "Apocrypha",
+    "block": 1,
+    "per_10k": 84.0
+   },
+   {
+    "book": "WIS",
+    "section": "Apocrypha",
+    "block": 0,
+    "per_10k": 192.0
+   },
+   {
+    "book": "WIS",
+    "section": "Apocrypha",
+    "block": 1,
+    "per_10k": 226.0
+   },
+   {
+    "book": "SIR",
+    "section": "Apocrypha",
+    "block": 0,
+    "per_10k": 120.0
+   },
+   {
+    "book": "SIR",
+    "section": "Apocrypha",
+    "block": 1,
+    "per_10k": 106.0
+   },
+   {
+    "book": "SIR",
+    "section": "Apocrypha",
+    "block": 2,
+    "per_10k": 148.0
+   },
+   {
+    "book": "SIR",
+    "section": "Apocrypha",
+    "block": 3,
+    "per_10k": 126.0
+   },
+   {
+    "book": "SIR",
+    "section": "Apocrypha",
+    "block": 4,
+    "per_10k": 100.0
+   },
+   {
+    "book": "1MA",
+    "section": "Apocrypha",
+    "block": 0,
+    "per_10k": 62.0
+   },
+   {
+    "book": "1MA",
+    "section": "Apocrypha",
+    "block": 1,
+    "per_10k": 36.0
+   },
+   {
+    "book": "1MA",
+    "section": "Apocrypha",
+    "block": 2,
+    "per_10k": 116.0
+   },
+   {
+    "book": "1MA",
+    "section": "Apocrypha",
+    "block": 3,
+    "per_10k": 92.0
+   },
+   {
+    "book": "2MA",
+    "section": "Apocrypha",
+    "block": 0,
+    "per_10k": 260.0
+   },
+   {
+    "book": "2MA",
+    "section": "Apocrypha",
+    "block": 1,
+    "per_10k": 216.0
+   },
+   {
+    "book": "2MA",
+    "section": "Apocrypha",
+    "block": 2,
+    "per_10k": 210.0
+   },
+   {
+    "book": "1ES",
+    "section": "Apocrypha",
+    "block": 0,
+    "per_10k": 60.0
+   },
+   {
+    "book": "1ES",
+    "section": "Apocrypha",
+    "block": 1,
+    "per_10k": 46.0
+   },
+   {
+    "book": "4ES",
+    "section": "Apocrypha",
+    "block": 0,
+    "per_10k": 50.0
+   },
+   {
+    "book": "4ES",
+    "section": "Apocrypha",
+    "block": 1,
+    "per_10k": 86.0
+   },
+   {
+    "book": "4ES",
+    "section": "Apocrypha",
+    "block": 2,
+    "per_10k": 42.0
+   },
+   {
+    "book": "MAT",
+    "section": "NT",
+    "block": 0,
+    "per_10k": 112.0
+   },
+   {
+    "book": "MAT",
+    "section": "NT",
+    "block": 1,
+    "per_10k": 80.0
+   },
+   {
+    "book": "MAT",
+    "section": "NT",
+    "block": 2,
+    "per_10k": 118.0
+   },
+   {
+    "book": "MAT",
+    "section": "NT",
+    "block": 3,
+    "per_10k": 112.0
+   },
+   {
+    "book": "MAR",
+    "section": "NT",
+    "block": 0,
+    "per_10k": 146.0
+   },
+   {
+    "book": "MAR",
+    "section": "NT",
+    "block": 1,
+    "per_10k": 88.0
+   },
+   {
+    "book": "LUK",
+    "section": "NT",
+    "block": 0,
+    "per_10k": 114.0
+   },
+   {
+    "book": "LUK",
+    "section": "NT",
+    "block": 1,
+    "per_10k": 132.0
+   },
+   {
+    "book": "LUK",
+    "section": "NT",
+    "block": 2,
+    "per_10k": 98.0
+   },
+   {
+    "book": "LUK",
+    "section": "NT",
+    "block": 3,
+    "per_10k": 118.0
+   },
+   {
+    "book": "LUK",
+    "section": "NT",
+    "block": 4,
+    "per_10k": 140.0
+   },
+   {
+    "book": "JOH",
+    "section": "NT",
+    "block": 0,
+    "per_10k": 80.0
+   },
+   {
+    "book": "JOH",
+    "section": "NT",
+    "block": 1,
+    "per_10k": 28.0
+   },
+   {
+    "book": "JOH",
+    "section": "NT",
+    "block": 2,
+    "per_10k": 50.0
+   },
+   {
+    "book": "ACT",
+    "section": "NT",
+    "block": 0,
+    "per_10k": 156.0
+   },
+   {
+    "book": "ACT",
+    "section": "NT",
+    "block": 1,
+    "per_10k": 182.0
+   },
+   {
+    "book": "ACT",
+    "section": "NT",
+    "block": 2,
+    "per_10k": 194.0
+   },
+   {
+    "book": "ACT",
+    "section": "NT",
+    "block": 3,
+    "per_10k": 226.0
+   },
+   {
+    "book": "ROM",
+    "section": "NT",
+    "block": 0,
+    "per_10k": 218.0
+   },
+   {
+    "book": "1CO",
+    "section": "NT",
+    "block": 0,
+    "per_10k": 222.0
+   },
+   {
+    "book": "2CO",
+    "section": "NT",
+    "block": 0,
+    "per_10k": 252.0
+   },
+   {
+    "book": "HEB",
+    "section": "NT",
+    "block": 0,
+    "per_10k": 194.0
+   },
+   {
+    "book": "REV",
+    "section": "NT",
+    "block": 0,
+    "per_10k": 114.0
+   },
+   {
+    "book": "REV",
+    "section": "NT",
+    "block": 1,
+    "per_10k": 84.0
+   }
+  ]
+ },
+ "settings": {
+  "lexicon": "data/lexicon/period_words.tsv",
+  "name_lexicon": "data/lexicon/english_words.txt",
+  "min_stem": 3,
+  "block_words": 1000,
+  "boot": 2000,
+  "boot_seed": 20261128,
+  "sermon_year_min": 1800,
+  "sermon_year_max": 1829,
+  "sermon_sample": 300,
+  "sermon_seed": 20261129,
+  "sermon_min_words": 10000,
+  "max_words_per_work": 150000,
+  "bible_style_min_words": 3000,
+  "josephus": "josephus_antiquities_old_testament_times",
+  "texts": {
+   "jasher_1840": [
+    "data/corpus/lab/sources/translation/bookofjasherrefe00sefe/text.txt"
+   ],
+   "thomson_1808_ot": [
+    "data/corpus/lab/sources/translation/holybiblecontain01thom/text.txt",
+    "data/corpus/lab/sources/translation/holybiblecontain02thom/text.txt",
+    "data/corpus/lab/sources/translation/holybiblecontain03thom/text.txt"
+   ],
+   "thomson_1808_nt": [
+    "data/corpus/lab/sources/translation/holybiblecontain04thom/text.txt"
+   ],
+   "view_of_the_hebrews_1825": [
+    "data/candidates/text/es-1825-view-of-the-hebrews.txt"
+   ]
+  },
+  "decoys": [
+   "late_war_1816",
+   "view_of_the_hebrews_1825"
+  ],
+  "pairs": {
+   "parents": [
+    "\\b(?:father|fathers)\\s+and\\s+(?:\\w+\\s+)?(?:mother|mothers)\\b|\\b(?:mother|mothers)\\s+and\\s+(?:\\w+\\s+)?(?:father|fathers)\\b",
+    "\\bparents?\\b"
+   ],
+   "children": [
+    "\\bsons\\s+and\\s+(?:\\w+\\s+)?daughters\\b|\\bdaughters\\s+and\\s+(?:\\w+\\s+)?sons\\b",
+    "\\bchildren\\b"
+   ]
+  },
+  "top_words": 30,
+  "design2": {
+   "block_words": 5000,
+   "auc_bar": 0.95,
+   "below_median_share": 0.9,
+   "alpha": 0.05,
+   "top_words": 50,
+   "ot_groups": {
+    "narrative": [
+     "GEN",
+     "EXO",
+     "LEV",
+     "NUM",
+     "DEU",
+     "JOS",
+     "JDG",
+     "RUT",
+     "1SA",
+     "2SA",
+     "1KI",
+     "2KI",
+     "1CH",
+     "2CH",
+     "EZR",
+     "NEH",
+     "EST"
+    ],
+    "poetry_wisdom": [
+     "JOB",
+     "PSA",
+     "PRO",
+     "ECC",
+     "SOL"
+    ],
+    "prophets": [
+     "ISA",
+     "JER",
+     "LAM",
+     "EZE",
+     "DAN",
+     "HOS",
+     "JOE",
+     "AMO",
+     "OBA",
+     "JON",
+     "MIC",
+     "NAH",
+     "HAB",
+     "ZEP",
+     "HAG",
+     "ZEC",
+     "MAL"
+    ]
+   }
+  },
+  "design3": {
+   "ylt": "data/corpus/lab/sources/translation/ylt_txt.tar",
+   "apocrypha_language": {
+    "hebrew_or_aramaic": [
+     "1MA",
+     "SIR",
+     "JDT",
+     "TOB",
+     "1ES",
+     "4ES",
+     "BAR",
+     "PRA"
+    ],
+    "greek": [
+     "WIS",
+     "2MA",
+     "ESG"
+    ],
+    "uncertain": [
+     "SUS",
+     "BEL",
+     "PRM"
+    ]
+   }
+  },
+  "lemmas_per_word": 8,
+  "renderings_per_lemma": 8,
+  "usfm": "data/corpus/lab/sources/translation/eng-kjv2006_usfm.zip",
+  "check_verse": [
+   "GEN",
+   49,
+   26,
+   "progenitors"
+  ]
+ },
+ "book_of_mormon": {
+  "pre_christian_outside_quotation": {
+   "words": 200460,
+   "blocks": 36,
+   "median": 199.0,
+   "min": 112.0,
+   "max": 416.0
+  },
+  "by_book": {
+   "1 Nephi": {
+    "words": 22386,
+    "blocks": 4,
+    "median": 164.0,
+    "min": 128.0,
+    "max": 212.0
+   },
+   "2 Nephi": {
+    "words": 18822,
+    "blocks": 3,
+    "median": 194.0,
+    "min": 158.0,
+    "max": 258.0
+   },
+   "Jacob": {
+    "words": 8842,
+    "blocks": 1,
+    "median": 242.0,
+    "min": 242.0,
+    "max": 242.0
+   },
+   "Enos": {
+    "words": 1106,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null
+   },
+   "Jarom": {
+    "words": 716,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null
+   },
+   "Omni": {
+    "words": 1306,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null
+   },
+   "Words of Mormon": {
+    "words": 808,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null
+   },
+   "Mosiah": {
+    "words": 28011,
+    "blocks": 5,
+    "median": 166.0,
+    "min": 118.0,
+    "max": 244.0
+   },
+   "Alma": {
+    "words": 82490,
+    "blocks": 16,
+    "median": 213.0,
+    "min": 130.0,
+    "max": 416.0
+   },
+   "Helaman": {
+    "words": 20000,
+    "blocks": 4,
+    "median": 194.0,
+    "min": 112.0,
+    "max": 260.0
+   },
+   "Ether": {
+    "words": 15973,
+    "blocks": 3,
+    "median": 134.0,
+    "min": 128.0,
+    "max": 150.0
+   }
+  },
+  "book_block_rates": [
+   128.0,
+   164.0,
+   212.0,
+   164.0,
+   194.0,
+   258.0,
+   158.0,
+   242.0,
+   244.0,
+   166.0,
+   118.0,
+   122.0,
+   222.0,
+   290.0,
+   196.0,
+   202.0,
+   204.0,
+   168.0,
+   130.0,
+   174.0,
+   238.0,
+   188.0,
+   214.0,
+   416.0,
+   212.0,
+   268.0,
+   296.0,
+   270.0,
+   292.0,
+   260.0,
+   212.0,
+   112.0,
+   176.0,
+   150.0,
+   128.0,
+   134.0
+  ],
+  "3_nephi_outside_quotation": {
+   "words": 21523,
+   "blocks": 4,
+   "median": 150.0,
+   "min": 124.0,
+   "max": 178.0
+  },
+  "after_visit_outside_quotation": {
+   "words": 16885,
+   "blocks": 3,
+   "median": 198.0,
+   "min": 192.0,
+   "max": 322.0
+  },
+  "quotation_chapters": {
+   "words": 20057,
+   "blocks": 4,
+   "median": 102.0,
+   "min": 42.0,
+   "max": 176.0
+  }
+ },
+ "not_attempted": [],
+ "controls": {
+  "translations": {
+   "jasher_1840": {
+    "words": 152070,
+    "blocks": 30,
+    "median": 184.0,
+    "min": 100.0,
+    "max": 1706.0,
+    "top_outside_words": [
+     {
+      "word": "has",
+      "count": 220,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "distance",
+      "count": 44,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "t",
+      "count": 41,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "opposite",
+      "count": 37,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "v",
+      "count": 36,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "n",
+      "count": 31,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "resolved",
+      "count": 30,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "assist",
+      "count": 29,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "ch",
+      "count": 28,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "w",
+      "count": 28,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "j",
+      "count": 26,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "l",
+      "count": 25,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "forever",
+      "count": 25,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "subjects",
+      "count": 24,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "m",
+      "count": 24,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "thomson_1808_ot": {
+    "words": 577172,
+    "blocks": 113,
+    "median": 320.0,
+    "min": 190.0,
+    "max": 542.0,
+    "top_outside_words": [
+     {
+      "word": "ch",
+      "count": 1011,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "around",
+      "count": 217,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "forever",
+      "count": 205,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "ii",
+      "count": 196,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "j",
+      "count": 171,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "begot",
+      "count": 165,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "vol",
+      "count": 143,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "il",
+      "count": 139,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "p",
+      "count": 136,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "iv",
+      "count": 120,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "communities",
+      "count": 108,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "community",
+      "count": 104,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "bo",
+      "count": 95,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "boundary",
+      "count": 90,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "whatever",
+      "count": 89,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "thomson_1808_nt": {
+    "words": 179976,
+    "blocks": 35,
+    "median": 450.0,
+    "min": 256.0,
+    "max": 778.0,
+    "top_outside_words": [
+     {
+      "word": "belief",
+      "count": 106,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "reply",
+      "count": 77,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "apostles",
+      "count": 58,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "baptized",
+      "count": 57,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "immediately",
+      "count": 57,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "t",
+      "count": 56,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "vol",
+      "count": 50,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "vi",
+      "count": 50,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "whoever",
+      "count": 49,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "v",
+      "count": 47,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "demons",
+      "count": 47,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "whatever",
+      "count": 44,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "apostle",
+      "count": 44,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "j",
+      "count": 42,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "ps",
+      "count": 41,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "josephus_antiquities_old_testament_times": {
+    "words": 280812,
+    "blocks": 56,
+    "median": 450.0,
+    "min": 248.0,
+    "max": 934.0,
+    "top_outside_words": [
+     {
+      "word": "ch",
+      "count": 163,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "sect",
+      "count": 159,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "however",
+      "count": 149,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "b",
+      "count": 133,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "foretold",
+      "count": 115,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "has",
+      "count": 112,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "assistance",
+      "count": 94,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "expedition",
+      "count": 93,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "nature",
+      "count": 89,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "immediately",
+      "count": 89,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "virtue",
+      "count": 82,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "danger",
+      "count": 72,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "resolved",
+      "count": 69,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "providence",
+      "count": 68,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "entirely",
+      "count": 68,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "josephus_antiquities_later_times": {
+    "words": 228906,
+    "blocks": 45,
+    "median": 688.0,
+    "min": 356.0,
+    "max": 1068.0,
+    "top_outside_words": [
+     {
+      "word": "c",
+      "count": 400,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "sar",
+      "count": 364,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "sect",
+      "count": 202,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "ch",
+      "count": 173,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "however",
+      "count": 153,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "ptolemy",
+      "count": 136,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "b",
+      "count": 124,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "senate",
+      "count": 118,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "antony",
+      "count": 107,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "assistance",
+      "count": 104,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "antigonus",
+      "count": 99,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "public",
+      "count": 97,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "immediately",
+      "count": 92,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "formerly",
+      "count": 78,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "danger",
+      "count": 73,
+      "in_nt_or_apocrypha": true
+     }
+    ]
+   },
+   "josephus_wars": {
+    "words": 225110,
+    "blocks": 45,
+    "median": 614.0,
+    "min": 450.0,
+    "max": 942.0,
+    "top_outside_words": [
+     {
+      "word": "however",
+      "count": 222,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "sect",
+      "count": 163,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "ch",
+      "count": 154,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "b",
+      "count": 121,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "immediately",
+      "count": 118,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "seditious",
+      "count": 111,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "assistance",
+      "count": 85,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "danger",
+      "count": 85,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "antigonus",
+      "count": 80,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "entire",
+      "count": 75,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "furlongs",
+      "count": 75,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "easily",
+      "count": 73,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "security",
+      "count": 71,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "fortune",
+      "count": 67,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "legion",
+      "count": 66,
+      "in_nt_or_apocrypha": true
+     }
+    ]
+   },
+   "koran_sale": {
+    "words": 404878,
+    "blocks": 80,
+    "median": 1034.0,
+    "min": 786.0,
+    "max": 2476.0,
+    "top_outside_words": [
+     {
+      "word": "p",
+      "count": 1847,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "n",
+      "count": 1341,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "c",
+      "count": 1323,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "beid",
+      "count": 640,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "wi",
+      "count": 635,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "e",
+      "count": 586,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "idem",
+      "count": 569,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "kor",
+      "count": 555,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "vide",
+      "count": 528,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "m",
+      "count": 504,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "d",
+      "count": 478,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "religion",
+      "count": 467,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "l",
+      "count": 420,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "r",
+      "count": 400,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "mecca",
+      "count": 399,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   }
+  },
+  "imitations": {
+   "americanrevoluti00snow": {
+    "words": 64124,
+    "blocks": 12,
+    "median": 1205.0,
+    "min": 984.0,
+    "max": 2248.0,
+    "top_outside_words": [
+     {
+      "word": "britain",
+      "count": 519,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "d",
+      "count": 456,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "american",
+      "count": 312,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "revolution",
+      "count": 250,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "v",
+      "count": 186,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "columbia",
+      "count": 153,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "j",
+      "count": 116,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "chap",
+      "count": 102,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fo",
+      "count": 94,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fervants",
+      "count": 87,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fent",
+      "count": 85,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "sanhedrim",
+      "count": 77,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "foldiers",
+      "count": 70,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "whofe",
+      "count": 69,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "george",
+      "count": 68,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "bib_fict_4103140": {
+    "words": 34811,
+    "blocks": 6,
+    "median": 950.0,
+    "min": 870.0,
+    "max": 1380.0,
+    "top_outside_words": [
+     {
+      "word": "fhall",
+      "count": 246,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "m",
+      "count": 118,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "chap",
+      "count": 86,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "pa",
+      "count": 81,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fons",
+      "count": 81,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "y",
+      "count": 67,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fo",
+      "count": 63,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "hall",
+      "count": 58,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "fon",
+      "count": 56,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "e",
+      "count": 54,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "againft",
+      "count": 44,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "thofe",
+      "count": 43,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fent",
+      "count": 41,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fhould",
+      "count": 38,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fhe",
+      "count": 37,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "bim_eighteenth-century_the-chronicle-of-the-kin_dodsley-robert_1741": {
+    "words": 6970,
+    "blocks": 1,
+    "median": 2392.0,
+    "min": 2392.0,
+    "max": 2392.0,
+    "top_outside_words": [
+     {
+      "word": "e",
+      "count": 90,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "n",
+      "count": 87,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "f",
+      "count": 71,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "d",
+      "count": 55,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "r",
+      "count": 38,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "x",
+      "count": 30,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "l",
+      "count": 25,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "t",
+      "count": 24,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "w",
+      "count": 24,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "y",
+      "count": 23,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "g",
+      "count": 20,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "ee",
+      "count": 20,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "henry",
+      "count": 20,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "k",
+      "count": 19,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "p",
+      "count": 17,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "bookofnullificat00char": {
+    "words": 14453,
+    "blocks": 2,
+    "median": 662.0,
+    "min": 608.0,
+    "max": 716.0,
+    "top_outside_words": [
+     {
+      "word": "robert",
+      "count": 90,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "deluded",
+      "count": 48,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "henry",
+      "count": 46,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "nullification",
+      "count": 36,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "charleston",
+      "count": 34,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "followers",
+      "count": 33,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "george",
+      "count": 28,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "william",
+      "count": 27,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "nullifier",
+      "count": 24,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "convention",
+      "count": 24,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "union",
+      "count": 16,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "conjuror",
+      "count": 16,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "courteous",
+      "count": 14,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "conjurer",
+      "count": 13,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "disunion",
+      "count": 13,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "chroniclesoferib02ocon": {
+    "words": 117526,
+    "blocks": 23,
+    "median": 456.0,
+    "min": 360.0,
+    "max": 818.0,
+    "top_outside_words": [
+     {
+      "word": "ardri",
+      "count": 362,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "olam",
+      "count": 270,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "oi",
+      "count": 194,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "dun",
+      "count": 161,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "score",
+      "count": 101,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "chap",
+      "count": 95,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "c",
+      "count": 86,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "b",
+      "count": 63,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "e",
+      "count": 61,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "d",
+      "count": 55,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "bards",
+      "count": 54,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "airt",
+      "count": 52,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "ii",
+      "count": 49,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "vol",
+      "count": 39,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "blat",
+      "count": 38,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "firstbooknapole00gruagoog": {
+    "words": 21776,
+    "blocks": 4,
+    "median": 1072.0,
+    "min": 866.0,
+    "max": 1242.0,
+    "top_outside_words": [
+     {
+      "word": "napoleon",
+      "count": 173,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "chap",
+      "count": 168,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "albion",
+      "count": 65,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "tyrant",
+      "count": 47,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "monkey",
+      "count": 19,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "religion",
+      "count": 18,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "has",
+      "count": 16,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "v",
+      "count": 16,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "gaul",
+      "count": 16,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "admonitions",
+      "count": 15,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "licentiousness",
+      "count": 14,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "virtue",
+      "count": 13,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "happiness",
+      "count": 13,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "around",
+      "count": 13,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "brave",
+      "count": 12,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "firstbookofameri00unse": {
+    "words": 9205,
+    "blocks": 1,
+    "median": 860.0,
+    "min": 860.0,
+    "max": 860.0,
+    "top_outside_words": [
+     {
+      "word": "jedediah",
+      "count": 33,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "thefe",
+      "count": 25,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "againft",
+      "count": 19,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "whofe",
+      "count": 14,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "chap",
+      "count": 14,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "oliver",
+      "count": 14,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "t",
+      "count": 13,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fo",
+      "count": 13,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "themfelves",
+      "count": 13,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fons",
+      "count": 12,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "hall",
+      "count": 12,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "fet",
+      "count": 10,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fent",
+      "count": 10,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "caufe",
+      "count": 10,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fervant",
+      "count": 8,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "A Chronicle of the Chiefs of Muttonville - White Griswold - 1830": {
+    "words": 901,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": [
+     {
+      "word": "dags",
+      "count": 3,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "nabby",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "hut",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "eastern",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "kennel",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "hall",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "hung",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "around",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "skunk",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "tobacco",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "odors",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "woodchuck",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "disturb",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "partook",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "riot",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     }
+    ]
+   },
+   "Chapter 37th - 1782": {
+    "words": 620,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": [
+     {
+      "word": "th",
+      "count": 16,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "albion",
+      "count": 7,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "hispania",
+      "count": 4,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "columbia",
+      "count": 3,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "d",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "verse",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "st",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "george",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "chuse",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "freemen",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "slackened",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "despond",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "apon",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "claimed",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "Chronicles - Massachusetts Centinal - 1786": {
+    "words": 0,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": []
+   },
+   "Chronicles of Andrew - Jesse Denson - 1815": {
+    "words": 7930,
+    "blocks": 1,
+    "median": 1036.0,
+    "min": 1036.0,
+    "max": 1036.0,
+    "top_outside_words": [
+     {
+      "word": "d",
+      "count": 63,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "columbia",
+      "count": 36,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "jackson",
+      "count": 19,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "barbarians",
+      "count": 18,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "ll",
+      "count": 18,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "brave",
+      "count": 17,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "th",
+      "count": 11,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "heroes",
+      "count": 10,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "coffee",
+      "count": 8,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "cannon",
+      "count": 8,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "british",
+      "count": 7,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "sirname",
+      "count": 7,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "pensacola",
+      "count": 7,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "savage",
+      "count": 7,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "has",
+      "count": 7,
+      "in_nt_or_apocrypha": true
+     }
+    ]
+   },
+   "Chronicles of Nathan Ben Saddi - 1758": {
+    "words": 2966,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": [
+     {
+      "word": "hermaphrodite",
+      "count": 8,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "morat",
+      "count": 7,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "d",
+      "count": 6,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "chap",
+      "count": 4,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "tho",
+      "count": 4,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "ii",
+      "count": 3,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "trunks",
+      "count": 3,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fragment",
+      "count": 2,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "original",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "perused",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "translator",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "sirnamed",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "butchers",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "sanhedrim",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "slavery",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "Chronicles, The Maryland Journal - 1766": {
+    "words": 0,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": []
+   },
+   "History of Anti-Christ - Elias Smith - 1811": {
+    "words": 14725,
+    "blocks": 2,
+    "median": 569.0,
+    "min": 390.0,
+    "max": 748.0,
+    "top_outside_words": [
+     {
+      "word": "clergy",
+      "count": 90,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "federal",
+      "count": 33,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "church",
+      "count": 31,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "has",
+      "count": 19,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "martin",
+      "count": 19,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "bishop",
+      "count": 16,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "religion",
+      "count": 14,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "baptism",
+      "count": 13,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "adopted",
+      "count": 8,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "forever",
+      "count": 8,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "heretics",
+      "count": 8,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "clergymen",
+      "count": 7,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "gospel",
+      "count": 7,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "pope",
+      "count": 6,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "resurrection",
+      "count": 5,
+      "in_nt_or_apocrypha": true
+     }
+    ]
+   },
+   "Parable Against Persecution - Benjamin Franklin - 1755": {
+    "words": 376,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": [
+     {
+      "word": "chap",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "xxvii",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "cloathed",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "Reformer Chronicles - 1832": {
+    "words": 676,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": [
+     {
+      "word": "lewis",
+      "count": 3,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "professor",
+      "count": 3,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "sic",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "cholera",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "honest",
+      "count": 2,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "profession",
+      "count": 2,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "doctor",
+      "count": 2,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "th",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "foretelling",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "vast",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "severely",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "judgement",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "demeanour",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "lengthy",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "camphor",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "The Book of America - 1766": {
+    "words": 2633,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": [
+     {
+      "word": "america",
+      "count": 20,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "britain",
+      "count": 9,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "francis",
+      "count": 7,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "george",
+      "count": 6,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "represent",
+      "count": 5,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "sanhedrim",
+      "count": 3,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "across",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "ocean",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "owe",
+      "count": 2,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "councellors",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "unable",
+      "count": 2,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "resolves",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "owed",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "burthen",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "plough",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     }
+    ]
+   },
+   "The Book of Preferment - Horace Walpole - 1742": {
+    "words": 2831,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": [
+     {
+      "word": "d",
+      "count": 18,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "patriotism",
+      "count": 16,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "robert",
+      "count": 10,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "f",
+      "count": 9,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "lites",
+      "count": 8,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "r",
+      "count": 8,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "th",
+      "count": 7,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "p",
+      "count": 7,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "b",
+      "count": 7,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "tho",
+      "count": 7,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "w",
+      "count": 6,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "preferment",
+      "count": 5,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "st",
+      "count": 5,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "c",
+      "count": 5,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "g",
+      "count": 5,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "The Fall of Samuel the Squomicutite - 1763": {
+    "words": 605,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": [
+     {
+      "word": "blunderbuss",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "testy",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "different",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "grey",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "mare",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "wand",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "hickory",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "mammon",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "spade",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "assist",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "withold",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "exclaiming",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "changers",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "hey",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "besmeared",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "The First Book of the American Chronicles - John Leacock - 1775": {
+    "words": 14120,
+    "blocks": 2,
+    "median": 575.0,
+    "min": 348.0,
+    "max": 802.0,
+    "top_outside_words": [
+     {
+      "word": "oliver",
+      "count": 28,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "tea",
+      "count": 18,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "de",
+      "count": 16,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "cromwell",
+      "count": 15,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "congress",
+      "count": 13,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "boston",
+      "count": 12,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "gageite",
+      "count": 11,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "grandfather",
+      "count": 9,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "britain",
+      "count": 8,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "protector",
+      "count": 7,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "chap",
+      "count": 6,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "phineas",
+      "count": 6,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "d",
+      "count": 6,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "real",
+      "count": 6,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "wo",
+      "count": 6,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "The First Book of the Chronicles of John - 1812": {
+    "words": 797,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": [
+     {
+      "word": "columbia",
+      "count": 3,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "albion",
+      "count": 3,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "republic",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "despotic",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "system",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "has",
+      "count": 2,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "commerce",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "barbarians",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "butcher",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "helpless",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "warlike",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "fleets",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "chap",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "ii",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "surround",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "The French Gasconade Defeated - 1743": {
+    "words": 873,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": [
+     {
+      "word": "louis",
+      "count": 5,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "charles",
+      "count": 5,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "george",
+      "count": 4,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "french",
+      "count": 3,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fleury",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "dutch",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "english",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "brave",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "warlike",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "danger",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     }
+    ]
+   }
+  },
+  "decoys": {
+   "view_of_the_hebrews_1825": {
+    "words": 100477,
+    "blocks": 20,
+    "median": 1397.0,
+    "min": 966.0,
+    "max": 2318.0,
+    "top_outside_words": [
+     {
+      "word": "indians",
+      "count": 293,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "has",
+      "count": 189,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "mr",
+      "count": 156,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "restoration",
+      "count": 149,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "america",
+      "count": 106,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "ee",
+      "count": 89,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "tradition",
+      "count": 89,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "ae",
+      "count": 83,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "various",
+      "count": 79,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "origin",
+      "count": 71,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "religious",
+      "count": 71,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "continent",
+      "count": 69,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "relative",
+      "count": 68,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fact",
+      "count": 67,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "american",
+      "count": 60,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "late_war_1816": {
+    "words": 54086,
+    "blocks": 10,
+    "median": 915.0,
+    "min": 846.0,
+    "max": 1762.0,
+    "top_outside_words": [
+     {
+      "word": "columbia",
+      "count": 422,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "britain",
+      "count": 310,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "chap",
+      "count": 103,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "british",
+      "count": 92,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "brave",
+      "count": 82,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "capture",
+      "count": 75,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "savages",
+      "count": 69,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "fleet",
+      "count": 63,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "sanhedrim",
+      "count": 61,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "score",
+      "count": 61,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "gen",
+      "count": 54,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "jackson",
+      "count": 54,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "captured",
+      "count": 48,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "lake",
+      "count": 47,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "f",
+      "count": 39,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   }
+  },
+  "revelations": {
+   "js_revelation_book_1": {
+    "words": 70508,
+    "blocks": 14,
+    "median": 594.0,
+    "min": 368.0,
+    "max": 750.0,
+    "top_outside_words": [
+     {
+      "word": "church",
+      "count": 324,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "revelation",
+      "count": 201,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "p",
+      "count": 201,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "c",
+      "count": 161,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "servent",
+      "count": 132,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "d",
+      "count": 107,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "gospel",
+      "count": 97,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "untill",
+      "count": 71,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "sidney",
+      "count": 67,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "th",
+      "count": 65,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "has",
+      "count": 50,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "oliver",
+      "count": 49,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "bishop",
+      "count": 47,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "kirtland",
+      "count": 45,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "county",
+      "count": 39,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "js_later_revelations": {
+    "words": 59986,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": [
+     {
+      "word": "church",
+      "count": 258,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "revelation",
+      "count": 164,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "servent",
+      "count": 130,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "gospel",
+      "count": 75,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "untill",
+      "count": 68,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "sidney",
+      "count": 58,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "th",
+      "count": 56,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "c",
+      "count": 49,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "bishop",
+      "count": 46,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "has",
+      "count": 45,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "kirtland",
+      "count": 44,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "expedient",
+      "count": 36,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "county",
+      "count": 34,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "oliver",
+      "count": 32,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "trump",
+      "count": 32,
+      "in_nt_or_apocrypha": true
+     }
+    ]
+   }
+  },
+  "book_of_moses": {
+   "visions_of_moses_1830": {
+    "words": 1301,
+    "blocks": 0,
+    "median": null,
+    "min": null,
+    "max": null,
+    "top_outside_words": [
+     {
+      "word": "p",
+      "count": 3,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "endless",
+      "count": 2,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "numberless",
+      "count": 2,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "revelation",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "revelator",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "june",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "afterwords",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "inquire",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "has",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "particle",
+      "count": 1,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "immortality",
+      "count": 1,
+      "in_nt_or_apocrypha": true
+     }
+    ]
+   },
+   "ot_revision_1": {
+    "words": 23747,
+    "blocks": 4,
+    "median": 190.0,
+    "min": 84.0,
+    "max": 246.0,
+    "top_outside_words": [
+     {
+      "word": "p",
+      "count": 60,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "covenent",
+      "count": 33,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "watters",
+      "count": 22,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "servent",
+      "count": 16,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "distroy",
+      "count": 15,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "watter",
+      "count": 14,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "has",
+      "count": 12,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "d",
+      "count": 12,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "forever",
+      "count": 11,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "servents",
+      "count": 10,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "untill",
+      "count": 8,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "feild",
+      "count": 7,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "wo",
+      "count": 5,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "fruitfull",
+      "count": 5,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "th",
+      "count": 4,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   },
+   "ot_revision_2": {
+    "words": 38400,
+    "blocks": 7,
+    "median": 240.0,
+    "min": 174.0,
+    "max": 870.0,
+    "top_outside_words": [
+     {
+      "word": "verse",
+      "count": 240,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "p",
+      "count": 119,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "th",
+      "count": 97,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "evry",
+      "count": 74,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "d",
+      "count": 46,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "c",
+      "count": 32,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "leviticus",
+      "count": 28,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "servent",
+      "count": 20,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "untill",
+      "count": 20,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "forever",
+      "count": 18,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "has",
+      "count": 16,
+      "in_nt_or_apocrypha": true
+     },
+     {
+      "word": "st",
+      "count": 15,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "v",
+      "count": 13,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "servents",
+      "count": 12,
+      "in_nt_or_apocrypha": false
+     },
+     {
+      "word": "vi",
+      "count": 11,
+      "in_nt_or_apocrypha": false
+     }
+    ]
+   }
+  }
+ },
+ "sermons": {
+  "works_with_a_block": 300,
+  "unreadable": 0,
+  "block_medians_by_work": {
+   "n": 300,
+   "p5": 632.0,
+   "p25": 1118.0,
+   "p50": 1389.0,
+   "p75": 1632.0,
+   "p95": 2102.0
+  },
+  "all_blocks": {
+   "n": 4957,
+   "p5": 538.0,
+   "p25": 1002.0,
+   "p50": 1334.0,
+   "p75": 1661.9999999999998,
+   "p95": 2170.0
+  },
+  "pairings_pooled": {
+   "parents_pair": 331,
+   "parents_collective": 4726,
+   "children_pair": 281,
+   "children_collective": 19092
+  },
+  "by_work_median": {
+   "internet_archive:sermonoccasioned01wisn": 1375.0,
+   "internet_archive:moralgallantrydi00mack": 1152.0,
+   "institutional_books:32044020913000": 1345.0,
+   "internet_archive:rationalinquiryi00haly": 1444.0,
+   "internet_archive:seriesofletterso00chap": 1510.0,
+   "institutional_books:HNTZT3": 1603.0,
+   "internet_archive:recensiosynoptic03bloo": 1762.0,
+   "institutional_books:AH5I9H": 328.0,
+   "institutional_books:AH4VGH": 632.0,
+   "internet_archive:sermonschieflyo00bonagoog": 1309.0,
+   "institutional_books:32044084657394": 1877.0,
+   "internet_archive:remarksonlettero01camp": 2300.0,
+   "internet_archive:comprehensivevi00smit": 1701.0,
+   "internet_archive:chargesdelivered00sociuoft": 1506.0,
+   "internet_archive:pswform00refo": 1457.0,
+   "hathitrust:ia.ark:/13960/t6qz76d80": 1945.0,
+   "internet_archive:newtestamentofou00bib": 726.0,
+   "internet_archive:americanmissiona2118unit": 1678.0,
+   "internet_archive:insearchof02moreuoft": 1641.0,
+   "hathitrust:yale.39002007068084": 2078.0,
+   "internet_archive:akeytoshorterca00gallgoog": 1412.0,
+   "internet_archive:shortplaininstru00wilsuoft": 881.0,
+   "hathitrust:ia.ark:/13960/t0ks7p02w": 1459.0,
+   "institutional_books:AH5NLQ": 2188.0,
+   "institutional_books:32044092644814": 1792.0,
+   "institutional_books:HW2EXN": 1610.0,
+   "hathitrust:ia.ark:/13960/t7kp99m41": 1118.0,
+   "internet_archive:portraitureofmet00nigh_0": 1399.0,
+   "internet_archive:cu31924029539776": 2187.0,
+   "internet_archive:christiansmonito00scha": 1134.0,
+   "institutional_books:HWJMZR": 568.0,
+   "institutional_books:32044037907938": 1845.0,
+   "internet_archive:remarksonanaddre00nort": 1250.0,
+   "institutional_books:32044038462883": 1169.0,
+   "internet_archive:christianalphabe00mcar": 1882.0,
+   "internet_archive:bodyofpractical02wats": 870.0,
+   "internet_archive:practicalandfam07coopgoog": 1151.0,
+   "internet_archive:youngpreachersm1829port": 1558.0,
+   "internet_archive:defenceofcatholi00gall": 1648.0,
+   "internet_archive:completeworks11pale": 1578.0,
+   "internet_archive:reviewofprincipa00hick": 1024.0,
+   "institutional_books:RSMCSS": 608.0,
+   "internet_archive:parishchurchorr00woodgoog": 1496.0,
+   "internet_archive:commissionandco00rosegoog": 1536.0,
+   "internet_archive:anexplanatoryvi00tollgoog": 1406.0,
+   "institutional_books:AH4JQG": 1207.0,
+   "internet_archive:ashortbiblicalc01wilbgoog": 884.0,
+   "internet_archive:treatiseconce00edwa": 918.0,
+   "institutional_books:AH4WSW": 1036.0,
+   "institutional_books:32044088935325": 1727.0,
+   "internet_archive:sketchesofsermon0000vari": 1604.0,
+   "internet_archive:letterstodrpries0000hind": 1182.0,
+   "institutional_books:32044023301914": 1548.0,
+   "internet_archive:sermonsonphiloso1829meek": 1302.0,
+   "internet_archive:christiandoctrin01oxle": 2185.0,
+   "internet_archive:originessacraeo00stilgoog": 1325.0,
+   "internet_archive:riseprogressofre00dodd_2": 1037.0,
+   "internet_archive:TheEncyclicalLetterOfPopeLeoTheXI": 1548.0,
+   "hathitrust:ia.ark:/13960/t4mk6kx2q": 1101.0,
+   "institutional_books:HNSQWI": 750.0,
+   "internet_archive:sermondeliveredi00spar_0": 1409.0,
+   "hathitrust:ia.ark:/13960/t1kh1w737": 1266.0,
+   "internet_archive:wholeworksofrigh04tayl": 992.0,
+   "internet_archive:lettersonatone00jane": 1186.0,
+   "institutional_books:AH3ZDB": 1202.0,
+   "internet_archive:selectionoffavor00burk": 1307.0,
+   "internet_archive:addressdelivere00vicigoog": 2057.0,
+   "internet_archive:tractonlawofnatu00sharrich": 1520.0,
+   "internet_archive:religionsofworld00burruoft": 1532.0,
+   "internet_archive:doctrineoflawgra0000john": 872.0,
+   "hathitrust:ia.ark:/13960/t1hh82w1w": 756.0,
+   "internet_archive:godisloveorglimp00gran": 850.0,
+   "internet_archive:hymnsoriginalsel00smit": 1254.0,
+   "internet_archive:mistakesinreligi00ven": 1208.0,
+   "internet_archive:s4britishcritic04londuoft": 1921.0,
+   "hathitrust:loc.ark:/13960/t9765rr5s": 1543.0,
+   "internet_archive:sixsermonsonsom00fresgoog": 1489.0,
+   "internet_archive:apologyforbeliev00hutc": 845.0,
+   "internet_archive:villagehymnsfors0000asah": 1428.0,
+   "internet_archive:b21534925": 2032.0,
+   "internet_archive:connecticutevang0002vari": 1544.0,
+   "hathitrust:bc.ark:/13960/t6840670x": 1350.0,
+   "internet_archive:temperancepamphl00boyn": 1234.0,
+   "hathitrust:yale.39002007493191": 1126.0,
+   "institutional_books:AH4PAP": 782.0,
+   "internet_archive:starineastsermon00buch_0": 1220.0,
+   "institutional_books:AH5RMN": 1444.0,
+   "internet_archive:faithandjustifi00manngoog": 1373.0,
+   "internet_archive:evangelicalhymns00clel": 1258.0,
+   "institutional_books:32044077884732": 1004.0,
+   "internet_archive:theologyexplai04dwig": 1436.0,
+   "institutional_books:32044058240961": 864.0,
+   "internet_archive:psaddress00reel23": 2154.0,
+   "institutional_books:HN6D7P": 1006.0,
+   "internet_archive:10450029bsb": 2131.0,
+   "internet_archive:sermonsonimportasi03davi": 1184.0,
+   "institutional_books:AH58LP": 58.0,
+   "internet_archive:bim_eighteenth-century_summaria-expositio-se-n_swedenborg-emanuel_1800": 410.0,
+   "institutional_books:AH5KPA": 2228.0,
+   "institutional_books:32044052816139": 892.0,
+   "institutional_books:AH4858": 1451.0,
+   "internet_archive:narrativeofreviv00pres": 1422.0,
+   "internet_archive:hormosaicoradis01fabegoog": 1770.0,
+   "internet_archive:sermonsonimportapm02davi": 1150.0,
+   "internet_archive:wholeworkstowhic06flavuoft": 910.0,
+   "institutional_books:AH58LK": 71.0,
+   "internet_archive:grglor00mcew": 964.0,
+   "internet_archive:defenceofpreserv00veys": 1451.0,
+   "internet_archive:extractsfromorig00dowl": 1212.0,
+   "hathitrust:yale.39002002276542": 1050.0,
+   "internet_archive:evidencesofchris0000jose": 1408.0,
+   "internet_archive:10859171bsb": 1428.0,
+   "institutional_books:AH4ZS3": 845.0,
+   "institutional_books:HWJP7R": 2309.0,
+   "internet_archive:commentaryonstpa02luth": 812.0,
+   "institutional_books:32044012980785": 1240.0,
+   "hathitrust:coo1.ark:/13960/t5gb2nt9p": 2076.0,
+   "internet_archive:cihm_39962": 1646.0,
+   "hathitrust:loc.ark:/13960/t8jd6423c": 1244.0,
+   "internet_archive:winterseasonbein0000fish": 1078.0,
+   "institutional_books:32044015522485": 1396.0,
+   "internet_archive:introduction03horn": 1712.0,
+   "internet_archive:cihm_20943": 2000.0,
+   "hathitrust:mdp.69015000047981": 1632.0,
+   "internet_archive:apracticaldisco01shergoog": 964.0,
+   "internet_archive:divinelifeinthre00baxt": 760.0,
+   "internet_archive:bim_early-english-books-1641-1700_an-inaugural-address-_d-f-schaeffer_1825": 2269.0,
+   "internet_archive:collectionoffami00palm": 836.0,
+   "internet_archive:vindicationofete00bear": 1123.0,
+   "institutional_books:HNSPBA": 1671.0,
+   "internet_archive:commonobjections00wils_0": 1400.0,
+   "institutional_books:32044069599520": 1016.0,
+   "internet_archive:cihm_44136": 1906.0,
+   "internet_archive:commentaryonbook00horn": 882.0,
+   "internet_archive:gospelitsownwitn00full_0": 1424.0,
+   "institutional_books:AH5QVL": 1735.0,
+   "institutional_books:32044054766837": 1564.0,
+   "institutional_books:AH6HAY": 1362.0,
+   "internet_archive:anexpositionboo01fowlgoog": 1588.0,
+   "internet_archive:riseandprogress01doddgoog": 1132.0,
+   "internet_archive:americanmissiona5111unit": 1236.0,
+   "internet_archive:sermonstranslateof05saur": 1248.0,
+   "internet_archive:whyamicumberland00bear": 1270.0,
+   "internet_archive:ruleandexercise06taylgoog": 1389.0,
+   "hathitrust:yale.39002040555220": 2192.0,
+   "internet_archive:11257514bsb": 1946.0,
+   "institutional_books:AH4VR9": 1330.0,
+   "hathitrust:yale.39002005409330": 1870.0,
+   "institutional_books:HWJN83": 596.0,
+   "internet_archive:unitedbrethrensm391prot": 1385.0,
+   "internet_archive:asermononjohnvi00andegoog": 1434.0,
+   "internet_archive:institutesofchr02calv": 1274.0,
+   "internet_archive:salvationofallme0000jona": 1303.0,
+   "internet_archive:wholeworksofrigh0viiitayl_o4x5": 1396.0,
+   "institutional_books:AH5UJK": 2102.0,
+   "internet_archive:letterscommunica00sout": 658.0,
+   "institutional_books:AH4X9I": 1316.0,
+   "internet_archive:bunyansgraceab00buny": 582.0,
+   "internet_archive:trialofvirtuesac00leeciala": 1662.0,
+   "internet_archive:historyofsufferi01wodr": 1383.0,
+   "internet_archive:sermonswithmemoi00thac": 1440.0,
+   "institutional_books:32044038392726": 1148.0,
+   "institutional_books:AH5I9K": 307.0,
+   "internet_archive:refutationofaria00paul": 1570.0,
+   "hathitrust:uva.x032038858": 1775.0,
+   "internet_archive:hymnsoriginalan00chapgoog": 1359.0,
+   "internet_archive:massachusettsbap44bald": 1610.0,
+   "hathitrust:mdp.39015074213110": 658.0,
+   "internet_archive:worksoflaurenc04ster": 1272.0,
+   "internet_archive:prayersforchildr00unse": 764.0,
+   "institutional_books:32044081771313": 1308.0,
+   "internet_archive:pleaforafricaser00grif_4": 2152.0,
+   "institutional_books:AH4EG3": 1180.0,
+   "institutional_books:HN5BXB": 1468.0,
+   "hathitrust:yale.39002037389021": 1027.0,
+   "institutional_books:32044102784451": 586.0,
+   "institutional_books:32044097928972": 1756.0,
+   "institutional_books:32044084658806": 1872.0,
+   "hathitrust:yale.39002037389674": 1819.0,
+   "internet_archive:spiritualtreasur0000maso": 943.0,
+   "internet_archive:seasonshymnsodes00thom": 2152.0,
+   "internet_archive:confessionchurc00bartgoog": 1354.0,
+   "internet_archive:defenceofchristi00bain": 1632.0,
+   "internet_archive:newtestamentofou00unse_5": 393.0,
+   "internet_archive:atreatiseonlord00bickgoog": 1232.0,
+   "internet_archive:hymnsforinfantmi00tayluoft": 865.0,
+   "internet_archive:spiritualsteward00prou": 1533.0,
+   "internet_archive:sermonsandtract03wilsgoog": 1569.0,
+   "internet_archive:reportofmissiona00mill": 1584.0,
+   "internet_archive:scripturecharac00unkngoog": 1050.0,
+   "hathitrust:yale.39002012728904": 1128.0,
+   "internet_archive:scriptureaccou00gast": 1356.0,
+   "internet_archive:acompanionforpr01bowegoog": 1228.0,
+   "institutional_books:32044080102940": 1444.0,
+   "institutional_books:AH4ZFT": 420.0,
+   "internet_archive:baptistmagazinem42unse": 1494.0,
+   "internet_archive:selectionofhy1803ripp": 1632.0,
+   "internet_archive:sermonsforevery00massgoog": 1470.0,
+   "institutional_books:HWT7X4": 1179.0,
+   "internet_archive:americanbaptistm610bapt": 1758.0,
+   "internet_archive:bookofjobliteral00good_0": 2008.0,
+   "hathitrust:ia.ark:/13960/t8z89k89t": 1694.0,
+   "internet_archive:hulseanlectures00frangoog": 1450.0,
+   "institutional_books:AH5C82": 2086.0,
+   "hathitrust:emu.010000667184": 1154.0,
+   "institutional_books:HWJQHZ": 2030.0,
+   "internet_archive:worksofpresident71edwa": 1720.0,
+   "internet_archive:essayonfaithitsc00roth": 1356.0,
+   "internet_archive:truthdisplayedin00osbo": 1872.0,
+   "institutional_books:32044020718961": 702.0,
+   "internet_archive:methodisterroror00wesl": 1296.0,
+   "internet_archive:helptozionstrav00hallgoog": 1512.0,
+   "institutional_books:32044086338696": 1398.0,
+   "internet_archive:06969185.10.emory.edu": 862.0,
+   "internet_archive:theologyearlypa00biddgoog": 1556.0,
+   "internet_archive:bim_eighteenth-century_rev-arthur-olearys-ad_oleary-arthur_1800": 1905.0,
+   "institutional_books:HXJHZ7": 1013.0,
+   "hathitrust:yale.39002006215942": 1626.0,
+   "internet_archive:sermon-delivered-before-the-new-york-missionary-society_1802": 1398.0,
+   "internet_archive:asketchdenomina00evangoog": 2078.0,
+   "internet_archive:letteronabolitio00wilb": 1754.0,
+   "internet_archive:sermonspreached03gilpgoog": 1354.0,
+   "internet_archive:bookcommonpraye09unkngoog": 659.0,
+   "internet_archive:familyprayers00cottgoog": 1056.0,
+   "internet_archive:lettersonimporta00buckiala": 1680.0,
+   "institutional_books:AH5NWG": 1066.0,
+   "internet_archive:bwb_S0-BVE-167": 1872.0,
+   "internet_archive:spiritualrecreat00garr": 1396.0,
+   "internet_archive:wholeworksofrigh03reyn": 1474.0,
+   "internet_archive:letterstoafrien01greggoog": 1754.0,
+   "internet_archive:biblicalanecdote01town": 2186.0,
+   "institutional_books:32044020650511": 1498.0,
+   "internet_archive:christiancourseo00walk": 790.0,
+   "internet_archive:horaesolitariaeo181501serl": 1300.0,
+   "institutional_books:AH4MAW": 1484.0,
+   "internet_archive:advicesmeditatio00hasl": 1106.0,
+   "internet_archive:holybible00unse_13": 855.0,
+   "institutional_books:AH67DJ": 1604.0,
+   "institutional_books:32044054204904": 1340.0,
+   "internet_archive:bookcommonpraye00firgoog": 496.0,
+   "internet_archive:akeytobibledoct00whitgoog": 1151.0,
+   "institutional_books:AH5KIN": 1051.0,
+   "institutional_books:AH6LSB": 1723.0,
+   "internet_archive:PastoralAddressOfTheRtRev": 1795.0,
+   "institutional_books:32044019624634": 1767.0,
+   "internet_archive:versilmso00dubl": 1672.0,
+   "internet_archive:11081010bsb": 952.0,
+   "institutional_books:AH69FF": 1152.0,
+   "institutional_books:32044081769853": 1230.0,
+   "hathitrust:uc2.ark:/13960/t80k28r6p": 1793.0,
+   "internet_archive:surveyofwisdomof01weslrich": 1358.0,
+   "internet_archive:wholeworkstowhic03flavuoft": 1106.0,
+   "internet_archive:compendiousintro00horn": 1868.0,
+   "institutional_books:32044014627418": 610.0,
+   "internet_archive:choicese00will": 1240.0,
+   "internet_archive:privatethoughts00adamgoog": 919.0,
+   "internet_archive:psalmshym1823watt": 1322.0,
+   "internet_archive:10461948bsb": 1408.0,
+   "internet_archive:sermonsonvarioused00lath": 996.0,
+   "institutional_books:AH5HTY": 1845.0,
+   "internet_archive:errataofprotesta00ward_0": 1566.0,
+   "institutional_books:AH3ZDE": 1122.0,
+   "institutional_books:AH5QRH": 1499.0,
+   "internet_archive:anaddressdelive00davegoog": 1976.0,
+   "internet_archive:b28407970": 1194.0,
+   "institutional_books:32044054767694": 1369.0,
+   "hathitrust:ia.ark:/13960/t18m0th3v": 1570.0,
+   "internet_archive:historicaldiscou01foot": 1360.0,
+   "internet_archive:christianadvocat0004unse": 1728.0,
+   "internet_archive:christiansdefenc00unse": 1030.0,
+   "internet_archive:devoutmeditation00benn": 1134.0,
+   "internet_archive:discoursedeliver00whar": 1880.0,
+   "institutional_books:AH4A4G": 1444.0,
+   "institutional_books:AH4YV2": 608.0,
+   "internet_archive:scripturalviewof00": 1542.0,
+   "institutional_books:AH63YF": 1951.0,
+   "internet_archive:familiarletterso00fond": 1424.0,
+   "internet_archive:polarstarandcen00shargoog": 1580.0,
+   "internet_archive:practicalessays00biddgoog": 1404.0,
+   "internet_archive:chaptersonchurch00sout_1": 1653.0,
+   "institutional_books:32044054991005": 796.0,
+   "institutional_books:AH4EE6": 896.0,
+   "internet_archive:veono00davi": 888.0,
+   "internet_archive:letterstoafrien00greggoog": 1520.0,
+   "internet_archive:clarkescommentar00clar": 1252.0,
+   "institutional_books:AH3YW9": 1072.0,
+   "hathitrust:yale.39002088446662": 2130.0,
+   "internet_archive:baptistmagazinem412unse": 1603.0,
+   "internet_archive:syllabusoflectur00arms": 1074.0,
+   "institutional_books:AH5L6V": 1538.0,
+   "internet_archive:secondadventorc00boud": 1276.0,
+   "internet_archive:prayersonsevera00johngoog": 1129.0,
+   "hathitrust:yale.39002005500781": 2057.0,
+   "internet_archive:americanbaptistm81bapt": 1832.0,
+   "internet_archive:devotionalverses00bartuoft": 1033.0,
+   "internet_archive:baptistmagazinem410unse": 1630.0,
+   "institutional_books:AH4UTK": 1132.0,
+   "internet_archive:firstripefruits00masogoog": 1687.0,
+   "institutional_books:AH5NC2": 1124.0,
+   "internet_archive:dutyofchristians00port": 1476.0
+  }
+ },
+ "verdict": {
+  "answer": "within their range",
+  "book_block_median": 199.0,
+  "book_blocks": 36,
+  "bars": {
+   "jasher": {
+    "text": "jasher_1840",
+    "median": 184.0,
+    "blocks": 30,
+    "mann_whitney_one_sided_p": 0.3191283953026507
+   },
+   "thomson_ot": {
+    "text": "thomson_1808_ot",
+    "median": 320.0,
+    "blocks": 113,
+    "mann_whitney_one_sided_p": 0.9999999999999404
+   },
+   "josephus": {
+    "text": "josephus_antiquities_old_testament_times",
+    "median": 450.0,
+    "blocks": 56,
+    "mann_whitney_one_sided_p": 0.9999999999999981
+   }
+  },
+  "decoys": {
+   "late_war_1816": 915.0,
+   "view_of_the_hebrews_1825": 1397.0
+  },
+  "decoys_among_translations": [],
+  "imitation_medians_below_book": 0,
+  "imitations_with_a_block": 10,
+  "percentile_among_sermon_work_medians": 0.7,
+  "three_nephi_median": 150.0
+ },
+ "top_outside_words": [
+  {
+   "word": "church",
+   "count": 184,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "forever",
+   "count": 84,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "judgement",
+   "count": 80,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "has",
+   "count": 64,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "wo",
+   "count": 60,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "resurrection",
+   "count": 58,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "expedient",
+   "count": 50,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "numerous",
+   "count": 41,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "perhaps",
+   "count": 40,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "awful",
+   "count": 40,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "baptized",
+   "count": 40,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "support",
+   "count": 38,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "unbelief",
+   "count": 34,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "judgements",
+   "count": 33,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "epistle",
+   "count": 31,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "engraven",
+   "count": 28,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "happiness",
+   "count": 26,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "traditions",
+   "count": 26,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "descendant",
+   "count": 24,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "possible",
+   "count": 23,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "commencement",
+   "count": 22,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "partake",
+   "count": 22,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "seashore",
+   "count": 22,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "temporal",
+   "count": 21,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "churches",
+   "count": 20,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "mysteries",
+   "count": 19,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "cross",
+   "count": 19,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "sacred",
+   "count": 19,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "shewn",
+   "count": 18,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "weakness",
+   "count": 18,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "parents",
+   "count": 17,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "surrounded",
+   "count": 17,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "encircled",
+   "count": 17,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "patience",
+   "count": 17,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "dissenters",
+   "count": 17,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "gospel",
+   "count": 16,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "plainness",
+   "count": 16,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "restoration",
+   "count": 16,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "endless",
+   "count": 16,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "combinations",
+   "count": 16,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "immediately",
+   "count": 16,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "remission",
+   "count": 16,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "c",
+   "count": 16,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "tradition",
+   "count": 16,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "inquire",
+   "count": 15,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "torment",
+   "count": 15,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "dissentions",
+   "count": 15,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "inquired",
+   "count": 14,
+   "in_nt_or_apocrypha": false
+  },
+  {
+   "word": "charity",
+   "count": 14,
+   "in_nt_or_apocrypha": true
+  },
+  {
+   "word": "administer",
+   "count": 14,
+   "in_nt_or_apocrypha": true
+  }
+ ],
+ "pairings": {
+  "book_pre_christian": {
+   "parents": {
+    "pair": 2,
+    "collective": 20,
+    "collective_share": 0.909
+   },
+   "children": {
+    "pair": 33,
+    "collective": 250,
+    "collective_share": 0.883
+   }
+  },
+  "book_3_nephi": {
+   "parents": {
+    "pair": 0,
+    "collective": 0,
+    "collective_share": null
+   },
+   "children": {
+    "pair": 1,
+    "collective": 20,
+    "collective_share": 0.952
+   }
+  },
+  "king_james": {
+   "OT": {
+    "parents": {
+     "pair": 20,
+     "collective": 0,
+     "collective_share": 0.0
+    },
+    "children": {
+     "pair": 58,
+     "collective": 1662,
+     "collective_share": 0.966
+    }
+   },
+   "NT": {
+    "parents": {
+     "pair": 12,
+     "collective": 21,
+     "collective_share": 0.636
+    },
+    "children": {
+     "pair": 2,
+     "collective": 160,
+     "collective_share": 0.988
+    }
+   },
+   "Apocrypha": {
+    "parents": {
+     "pair": 8,
+     "collective": 8,
+     "collective_share": 0.5
+    },
+    "children": {
+     "pair": 6,
+     "collective": 225,
+     "collective_share": 0.974
+    }
+   }
+  },
+  "controls": {
+   "translations": {
+    "jasher_1840": {
+     "parents": {
+      "pair": 16,
+      "collective": 2,
+      "collective_share": 0.111
+     },
+     "children": {
+      "pair": 13,
+      "collective": 1077,
+      "collective_share": 0.988
+     }
+    },
+    "thomson_1808_ot": {
+     "parents": {
+      "pair": 21,
+      "collective": 2,
+      "collective_share": 0.087
+     },
+     "children": {
+      "pair": 62,
+      "collective": 1185,
+      "collective_share": 0.95
+     }
+    },
+    "thomson_1808_nt": {
+     "parents": {
+      "pair": 12,
+      "collective": 22,
+      "collective_share": 0.647
+     },
+     "children": {
+      "pair": 2,
+      "collective": 152,
+      "collective_share": 0.987
+     }
+    },
+    "josephus_antiquities_old_testament_times": {
+     "parents": {
+      "pair": 5,
+      "collective": 48,
+      "collective_share": 0.906
+     },
+     "children": {
+      "pair": 2,
+      "collective": 191,
+      "collective_share": 0.99
+     }
+    },
+    "josephus_antiquities_later_times": {
+     "parents": {
+      "pair": 1,
+      "collective": 3,
+      "collective_share": 0.75
+     },
+     "children": {
+      "pair": 1,
+      "collective": 96,
+      "collective_share": 0.99
+     }
+    },
+    "josephus_wars": {
+     "parents": {
+      "pair": 0,
+      "collective": 2,
+      "collective_share": 1.0
+     },
+     "children": {
+      "pair": 1,
+      "collective": 100,
+      "collective_share": 0.99
+     }
+    },
+    "koran_sale": {
+     "parents": {
+      "pair": 6,
+      "collective": 54,
+      "collective_share": 0.9
+     },
+     "children": {
+      "pair": 1,
+      "collective": 196,
+      "collective_share": 0.995
+     }
+    }
+   },
+   "imitations": {
+    "americanrevoluti00snow": {
+     "parents": {
+      "pair": 0,
+      "collective": 4,
+      "collective_share": 1.0
+     },
+     "children": {
+      "pair": 0,
+      "collective": 23,
+      "collective_share": 1.0
+     }
+    },
+    "bib_fict_4103140": {
+     "parents": {
+      "pair": 0,
+      "collective": 1,
+      "collective_share": 1.0
+     },
+     "children": {
+      "pair": 0,
+      "collective": 172,
+      "collective_share": 1.0
+     }
+    },
+    "bim_eighteenth-century_the-chronicle-of-the-kin_dodsley-robert_1741": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 1,
+      "collective_share": 1.0
+     }
+    },
+    "bookofnullificat00char": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     }
+    },
+    "chroniclesoferib02ocon": {
+     "parents": {
+      "pair": 2,
+      "collective": 3,
+      "collective_share": 0.6
+     },
+     "children": {
+      "pair": 2,
+      "collective": 197,
+      "collective_share": 0.99
+     }
+    },
+    "firstbooknapole00gruagoog": {
+     "parents": {
+      "pair": 0,
+      "collective": 5,
+      "collective_share": 1.0
+     },
+     "children": {
+      "pair": 5,
+      "collective": 15,
+      "collective_share": 0.75
+     }
+    },
+    "firstbookofameri00unse": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 10,
+      "collective_share": 1.0
+     }
+    },
+    "A Chronicle of the Chiefs of Muttonville - White Griswold - 1830": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     }
+    },
+    "Chapter 37th - 1782": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     }
+    },
+    "Chronicles - Massachusetts Centinal - 1786": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     }
+    },
+    "Chronicles of Andrew - Jesse Denson - 1815": {
+     "parents": {
+      "pair": 0,
+      "collective": 1,
+      "collective_share": 1.0
+     },
+     "children": {
+      "pair": 0,
+      "collective": 12,
+      "collective_share": 1.0
+     }
+    },
+    "Chronicles of Nathan Ben Saddi - 1758": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 2,
+      "collective_share": 1.0
+     }
+    },
+    "Chronicles, The Maryland Journal - 1766": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     }
+    },
+    "History of Anti-Christ - Elias Smith - 1811": {
+     "parents": {
+      "pair": 0,
+      "collective": 2,
+      "collective_share": 1.0
+     },
+     "children": {
+      "pair": 0,
+      "collective": 11,
+      "collective_share": 1.0
+     }
+    },
+    "Parable Against Persecution - Benjamin Franklin - 1755": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     }
+    },
+    "Reformer Chronicles - 1832": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     }
+    },
+    "The Book of America - 1766": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 24,
+      "collective_share": 1.0
+     }
+    },
+    "The Book of Preferment - Horace Walpole - 1742": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     }
+    },
+    "The Fall of Samuel the Squomicutite - 1763": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 1,
+      "collective_share": 1.0
+     }
+    },
+    "The First Book of the American Chronicles - John Leacock - 1775": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 15,
+      "collective_share": 1.0
+     }
+    },
+    "The First Book of the Chronicles of John - 1812": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     }
+    },
+    "The French Gasconade Defeated - 1743": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     }
+    }
+   },
+   "decoys": {
+    "view_of_the_hebrews_1825": {
+     "parents": {
+      "pair": 1,
+      "collective": 5,
+      "collective_share": 0.833
+     },
+     "children": {
+      "pair": 0,
+      "collective": 71,
+      "collective_share": 1.0
+     }
+    },
+    "late_war_1816": {
+     "parents": {
+      "pair": 0,
+      "collective": 1,
+      "collective_share": 1.0
+     },
+     "children": {
+      "pair": 0,
+      "collective": 41,
+      "collective_share": 1.0
+     }
+    }
+   },
+   "revelations": {
+    "js_revelation_book_1": {
+     "parents": {
+      "pair": 0,
+      "collective": 3,
+      "collective_share": 1.0
+     },
+     "children": {
+      "pair": 1,
+      "collective": 82,
+      "collective_share": 0.988
+     }
+    },
+    "js_later_revelations": {
+     "parents": {
+      "pair": 0,
+      "collective": 3,
+      "collective_share": 1.0
+     },
+     "children": {
+      "pair": 0,
+      "collective": 70,
+      "collective_share": 1.0
+     }
+    }
+   },
+   "book_of_moses": {
+    "visions_of_moses_1830": {
+     "parents": {
+      "pair": 0,
+      "collective": 0,
+      "collective_share": null
+     },
+     "children": {
+      "pair": 0,
+      "collective": 5,
+      "collective_share": 1.0
+     }
+    },
+    "ot_revision_1": {
+     "parents": {
+      "pair": 0,
+      "collective": 1,
+      "collective_share": 1.0
+     },
+     "children": {
+      "pair": 11,
+      "collective": 45,
+      "collective_share": 0.804
+     }
+    },
+    "ot_revision_2": {
+     "parents": {
+      "pair": 0,
+      "collective": 1,
+      "collective_share": 1.0
+     },
+     "children": {
+      "pair": 1,
+      "collective": 88,
+      "collective_share": 0.989
+     }
+    }
+   }
+  }
+ },
+ "hebrew": {
+  "alignment": {
+   "verses": 21632,
+   "tags": 211336,
+   "found_in_wlc_verse": 209796,
+   "share": 0.9927
+  },
+  "genesis_49_26": {
+   "verse": "GEN 49:26",
+   "english": "progenitors",
+   "strong": "H2029",
+   "in_wlc_verse": true,
+   "renderings": {
+    "conceived": 32,
+    "conceive": 4,
+    "child": 2,
+    "again": 2,
+    "progenitors": 1,
+    "bare": 1,
+    "conceiving": 1
+   },
+   "gloss_mentions_parent": false
+  },
+  "words": [
+   {
+    "word": "church",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "forever",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 2,
+    "lemmas": [
+     {
+      "strong": "H753",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 90,
+      "kjv_renderings": {
+       "length": 70,
+       "long": 21,
+       "ever": 2,
+       "high": 1,
+       "as": 1
+      }
+     },
+     {
+      "strong": "H5957",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 15,
+      "kjv_renderings": {
+       "ever": 12,
+       "everlasting": 4,
+       "old": 2,
+       "never": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "judgement",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 2,
+    "lemmas": [
+     {
+      "strong": "H1779",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 17,
+      "kjv_renderings": {
+       "judgment": 9,
+       "cause": 7,
+       "plea": 2,
+       "strife": 1
+      }
+     },
+     {
+      "strong": "H1780",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 5,
+      "kjv_renderings": {
+       "judgment": 5
+      }
+     }
+    ]
+   },
+   {
+    "word": "has",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 13,
+    "lemmas": [
+     {
+      "strong": "H7725",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 952,
+      "kjv_renderings": {
+       "again": 248,
+       "return": 241,
+       "returned": 145,
+       "turn": 76,
+       "back": 65,
+       "away": 56,
+       "turned": 33,
+       "restore": 24
+      }
+     },
+     {
+      "strong": "H369",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 686,
+      "kjv_renderings": {
+       "not": 3,
+       "never": 2,
+       "no": 2,
+       "gone": 2,
+       "nothing": 2,
+       "else": 1,
+       "without": 1,
+       "except": 1
+      }
+     },
+     {
+      "strong": "H2930",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 142,
+      "kjv_renderings": {
+       "unclean": 74,
+       "defiled": 45,
+       "defile": 25,
+       "polluted": 12,
+       "pollute": 2,
+       "utterly": 1,
+       "uncleanness": 1,
+       "defileth": 1
+      }
+     },
+     {
+      "strong": "H5381",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 47,
+      "kjv_renderings": {
+       "overtake": 14,
+       "overtook": 7,
+       "hold": 5,
+       "get": 3,
+       "reach": 2,
+       "obtain": 2,
+       "attained": 1,
+       "bring": 1
+      }
+     },
+     {
+      "strong": "H974",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 28,
+      "kjv_renderings": {
+       "try": 8,
+       "proved": 6,
+       "tried": 4,
+       "trieth": 4,
+       "triest": 3,
+       "examine": 1,
+       "trial": 1,
+       "prove": 1
+      }
+     },
+     {
+      "strong": "H2963",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 22,
+      "kjv_renderings": {
+       "pieces": 7,
+       "teareth": 3,
+       "tear": 3,
+       "ravening": 3,
+       "catch": 2,
+       "doubt": 1,
+       "surely": 1,
+       "ravin": 1
+      }
+     },
+     {
+      "strong": "H3576",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 18,
+      "kjv_renderings": {
+       "lie": 7,
+       "liar": 2,
+       "lied": 2,
+       "vain": 1,
+       "liars": 1,
+       "lies": 1,
+       "fail": 1,
+       "lying": 1
+      }
+     },
+     {
+      "strong": "H8245",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 11,
+      "kjv_renderings": {
+       "watch": 5,
+       "over": 2,
+       "remain": 1,
+       "waketh": 1,
+       "watching": 1,
+       "hasten": 1,
+       "watched": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "wo",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "resurrection",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "expedient",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "numerous",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 7,
+    "lemmas": [
+     {
+      "strong": "H7227",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 443,
+      "kjv_renderings": {
+       "many": 190,
+       "great": 118,
+       "much": 36,
+       "captain": 24,
+       "more": 12,
+       "long": 10,
+       "enough": 9,
+       "multitude": 7
+      }
+     },
+     {
+      "strong": "H7235",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 215,
+      "kjv_renderings": {
+       "multiply": 41,
+       "much": 29,
+       "multiplied": 29,
+       "many": 28,
+       "increase": 19,
+       "increased": 15,
+       "more": 12,
+       "great": 8
+      }
+     },
+     {
+      "strong": "H3513",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 108,
+      "kjv_renderings": {
+       "honour": 24,
+       "heavy": 16,
+       "honourable": 14,
+       "glorify": 7,
+       "hardened": 6,
+       "glorified": 6,
+       "honoured": 5,
+       "glorious": 5
+      }
+     },
+     {
+      "strong": "H3515",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 38,
+      "kjv_renderings": {
+       "grievous": 8,
+       "great": 8,
+       "heavy": 8,
+       "sore": 4,
+       "slow": 2,
+       "much": 2,
+       "hard": 2,
+       "hardened": 1
+      }
+     },
+     {
+      "strong": "H6099",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 31,
+      "kjv_renderings": {
+       "strong": 12,
+       "mighty": 8,
+       "mightier": 7,
+       "great": 1,
+       "ones": 1,
+       "much": 1,
+       "feeble": 1
+      }
+     },
+     {
+      "strong": "H6105",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 20,
+      "kjv_renderings": {
+       "mighty": 4,
+       "strong": 4,
+       "increased": 4,
+       "more": 2,
+       "mightier": 1,
+       "stronger": 1,
+       "great": 1,
+       "closed": 1
+      }
+     },
+     {
+      "strong": "H1711",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 1,
+      "kjv_renderings": {
+       "grow": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "perhaps",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 2,
+    "lemmas": [
+     {
+      "strong": "H194",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 44,
+      "kjv_renderings": {
+       "peradventure": 4,
+       "be": 4,
+       "may": 1,
+       "unless": 1,
+       "if": 1
+      }
+     },
+     {
+      "strong": "H6209",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 3,
+      "kjv_renderings": {
+       "up": 1,
+       "bare": 1,
+       "utterly": 1,
+       "broken": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "awful",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 2,
+    "lemmas": [
+     {
+      "strong": "H6206",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 15,
+      "kjv_renderings": {
+       "afraid": 3,
+       "dread": 2,
+       "fear": 2,
+       "terribly": 2,
+       "affrighted": 1,
+       "terrified": 1,
+       "break": 1,
+       "oppress": 1
+      }
+     },
+     {
+      "strong": "H4637",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 1,
+      "kjv_renderings": {
+       "terror": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "baptized",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "support",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 21,
+    "lemmas": [
+     {
+      "strong": "H2388",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 266,
+      "kjv_renderings": {
+       "strong": 48,
+       "repaired": 39,
+       "hold": 35,
+       "strengthened": 28,
+       "strengthen": 14,
+       "hardened": 9,
+       "prevailed": 8,
+       "courage": 8
+      }
+     },
+     {
+      "strong": "H4294",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 205,
+      "kjv_renderings": {
+       "tribe": 162,
+       "rod": 42,
+       "tribes": 20,
+       "staff": 15,
+       "rods": 8,
+       "staves": 1
+      }
+     },
+     {
+      "strong": "H539",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 102,
+      "kjv_renderings": {
+       "believed": 21,
+       "faithful": 20,
+       "believe": 19,
+       "sure": 11,
+       "established": 7,
+       "up": 4,
+       "trust": 4,
+       "believeth": 4
+      }
+     },
+     {
+      "strong": "H5564",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 47,
+      "kjv_renderings": {
+       "lay": 12,
+       "laid": 6,
+       "put": 5,
+       "uphold": 5,
+       "sustained": 3,
+       "upholdeth": 3,
+       "up": 2,
+       "lean": 2
+      }
+     },
+     {
+      "strong": "H8172",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 20,
+      "kjv_renderings": {
+       "stay": 5,
+       "lean": 4,
+       "leaned": 4,
+       "relied": 3,
+       "yourselves": 1,
+       "lieth": 1,
+       "leaneth": 1,
+       "rest": 1
+      }
+     },
+     {
+      "strong": "H8551",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 20,
+      "kjv_renderings": {
+       "up": 3,
+       "hold": 3,
+       "uphold": 3,
+       "retaineth": 2,
+       "retain": 2,
+       "holdeth": 2,
+       "maintainest": 1,
+       "upholdest": 1
+      }
+     },
+     {
+      "strong": "H5582",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 12,
+      "kjv_renderings": {
+       "up": 3,
+       "comfort": 2,
+       "strengthen": 2,
+       "ye": 1,
+       "refresh": 1,
+       "strengtheneth": 1,
+       "upholden": 1,
+       "establish": 1
+      }
+     },
+     {
+      "strong": "H8454",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 12,
+      "kjv_renderings": {
+       "wisdom": 7,
+       "is": 2,
+       "enterprise": 1,
+       "substance": 1,
+       "working": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "unbelief",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "judgements",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 2,
+    "lemmas": [
+     {
+      "strong": "H1779",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 17,
+      "kjv_renderings": {
+       "judgment": 9,
+       "cause": 7,
+       "plea": 2,
+       "strife": 1
+      }
+     },
+     {
+      "strong": "H1780",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 5,
+      "kjv_renderings": {
+       "judgment": 5
+      }
+     }
+    ]
+   },
+   {
+    "word": "epistle",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 3,
+    "lemmas": [
+     {
+      "strong": "H107",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 10,
+      "kjv_renderings": {
+       "letters": 6,
+       "letter": 4
+      }
+     },
+     {
+      "strong": "H104",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 3,
+      "kjv_renderings": {
+       "letter": 3
+      }
+     },
+     {
+      "strong": "H5406",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 2,
+      "kjv_renderings": {
+       "letter": 2
+      }
+     }
+    ]
+   },
+   {
+    "word": "engraven",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "happiness",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 3,
+    "lemmas": [
+     {
+      "strong": "H2896",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 521,
+      "kjv_renderings": {
+       "good": 361,
+       "better": 72,
+       "well": 20,
+       "goodness": 16,
+       "goodly": 9,
+       "best": 8,
+       "fair": 7,
+       "merry": 7
+      }
+     },
+     {
+      "strong": "H835",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 42,
+      "kjv_renderings": {
+       "blessed": 27,
+       "happy": 18
+      }
+     },
+     {
+      "strong": "H837",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 1,
+      "kjv_renderings": {
+       "i": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "traditions",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "descendant",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 1,
+    "lemmas": [
+     {
+      "strong": "H5342",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 4,
+      "kjv_renderings": {
+       "branch": 4
+      }
+     }
+    ]
+   },
+   {
+    "word": "possible",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "commencement",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 1,
+    "lemmas": [
+     {
+      "strong": "H8462",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 21,
+      "kjv_renderings": {
+       "beginning": 14,
+       "first": 5,
+       "time": 2,
+       "begin": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "partake",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 1,
+    "lemmas": [
+     {
+      "strong": "H2506",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 63,
+      "kjv_renderings": {
+       "portion": 36,
+       "part": 18,
+       "portions": 4,
+       "parts": 4,
+       "flattery": 1,
+       "inheritance": 1,
+       "partaker": 1,
+       "flattering": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "seashore",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "temporal",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 1,
+    "lemmas": [
+     {
+      "strong": "H227",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 133,
+      "kjv_renderings": {
+       "then": 6,
+       "time": 4,
+       "since": 2,
+       "yet": 2,
+       "beginning": 2,
+       "now": 1,
+       "even": 1,
+       "hitherto": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "churches",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "mysteries",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 3,
+    "lemmas": [
+     {
+      "strong": "H7328",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 8,
+      "kjv_renderings": {
+       "secret": 6,
+       "secrets": 3
+      }
+     },
+     {
+      "strong": "H3909",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 6,
+      "kjv_renderings": {
+       "enchantments": 3,
+       "softly": 1,
+       "secretly": 1,
+       "privily": 1
+      }
+     },
+     {
+      "strong": "H3814",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 1,
+      "kjv_renderings": {
+       "softly": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "cross",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 1,
+    "lemmas": [
+     {
+      "strong": "H5674",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 493,
+      "kjv_renderings": {
+       "over": 174,
+       "through": 58,
+       "pass": 57,
+       "passed": 36,
+       "by": 27,
+       "on": 26,
+       "away": 24,
+       "go": 12
+      }
+     }
+    ]
+   },
+   {
+    "word": "sacred",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 9,
+    "lemmas": [
+     {
+      "strong": "H6944",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 380,
+      "kjv_renderings": {
+       "holy": 262,
+       "sanctuary": 68,
+       "things": 44,
+       "most": 43,
+       "holiness": 30,
+       "thing": 8,
+       "dedicated": 7,
+       "hallowed": 3
+      }
+     },
+     {
+      "strong": "H168",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 314,
+      "kjv_renderings": {
+       "tabernacle": 187,
+       "tent": 91,
+       "tents": 50,
+       "tabernacles": 11,
+       "dwelling": 2,
+       "covering": 1,
+       "home": 1,
+       "places": 1
+      }
+     },
+     {
+      "strong": "H6942",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 154,
+      "kjv_renderings": {
+       "sanctify": 63,
+       "sanctified": 45,
+       "hallow": 15,
+       "hallowed": 10,
+       "holy": 7,
+       "dedicated": 7,
+       "prepare": 7,
+       "dedicate": 3
+      }
+     },
+     {
+      "strong": "H6918",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 108,
+      "kjv_renderings": {
+       "holy": 65,
+       "one": 39,
+       "saints": 9,
+       "saint": 3
+      }
+     },
+     {
+      "strong": "H4720",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 71,
+      "kjv_renderings": {
+       "sanctuary": 64,
+       "sanctuaries": 5,
+       "places": 2,
+       "part": 1,
+       "place": 1,
+       "chapel": 1
+      }
+     },
+     {
+      "strong": "H2885",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 38,
+      "kjv_renderings": {
+       "rings": 40,
+       "ring": 9
+      }
+     },
+     {
+      "strong": "H2689",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 27,
+      "kjv_renderings": {
+       "trumpets": 26,
+       "trumpeters": 2,
+       "trumpet": 1
+      }
+     },
+     {
+      "strong": "H2833",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 21,
+      "kjv_renderings": {
+       "breastplate": 25
+      }
+     }
+    ]
+   },
+   {
+    "word": "shewn",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 7,
+    "lemmas": [
+     {
+      "strong": "H7200",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 1206,
+      "kjv_renderings": {
+       "see": 348,
+       "saw": 301,
+       "seen": 161,
+       "behold": 57,
+       "looked": 54,
+       "look": 46,
+       "appeared": 39,
+       "shewed": 37
+      }
+     },
+     {
+      "strong": "H2603",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 73,
+      "kjv_renderings": {
+       "mercy": 16,
+       "gracious": 13,
+       "merciful": 12,
+       "supplication": 10,
+       "favour": 7,
+       "besought": 4,
+       "pity": 4,
+       "given": 1
+      }
+     },
+     {
+      "strong": "H7503",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 45,
+      "kjv_renderings": {
+       "feeble": 6,
+       "go": 4,
+       "alone": 4,
+       "fail": 4,
+       "idle": 3,
+       "slack": 3,
+       "stay": 3,
+       "forsake": 2
+      }
+     },
+     {
+      "strong": "H7355",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 43,
+      "kjv_renderings": {
+       "mercy": 32,
+       "compassion": 8,
+       "pitieth": 2,
+       "love": 1,
+       "merciful": 1,
+       "pity": 1,
+       "surely": 1,
+       "ru-hamah": 1
+      }
+     },
+     {
+      "strong": "H2856",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 24,
+      "kjv_renderings": {
+       "sealed": 12,
+       "up": 6,
+       "seal": 5,
+       "stopped": 1,
+       "marked": 1,
+       "sealeth": 1
+      }
+     },
+     {
+      "strong": "H2589",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 1,
+      "kjv_renderings": {
+       "intreated": 1,
+       "gracious": 1
+      }
+     },
+     {
+      "strong": "H7207",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 1,
+      "kjv_renderings": {
+       "beholding": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "weakness",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 1,
+    "lemmas": [
+     {
+      "strong": "H2476",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 1,
+      "kjv_renderings": {
+       "overcome": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "parents",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 1,
+    "lemmas": [
+     {
+      "strong": "H3205",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 403,
+      "kjv_renderings": {
+       "begat": 179,
+       "bare": 111,
+       "born": 79,
+       "forth": 25,
+       "bear": 17,
+       "beget": 10,
+       "travail": 10,
+       "begotten": 7
+      }
+     }
+    ]
+   },
+   {
+    "word": "surrounded",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 11,
+    "lemmas": [
+     {
+      "strong": "H5437",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 148,
+      "kjv_renderings": {
+       "about": 55,
+       "turned": 23,
+       "compass": 18,
+       "compassed": 17,
+       "turn": 10,
+       "compasseth": 4,
+       "away": 4,
+       "round": 2
+      }
+     },
+     {
+      "strong": "H5826",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 77,
+      "kjv_renderings": {
+       "help": 44,
+       "helped": 18,
+       "helper": 7,
+       "helpers": 4,
+       "holpen": 3,
+       "succour": 2,
+       "helpeth": 2,
+       "succoured": 1
+      }
+     },
+     {
+      "strong": "H5749",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 40,
+      "kjv_renderings": {
+       "testified": 7,
+       "testify": 6,
+       "witness": 5,
+       "call": 3,
+       "record": 3,
+       "protested": 3,
+       "solemnly": 2,
+       "protest": 2
+      }
+     },
+     {
+      "strong": "H5362",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 19,
+      "kjv_renderings": {
+       "about": 7,
+       "compassed": 4,
+       "compassing": 2,
+       "compass": 2,
+       "round": 1,
+       "destroy": 1,
+       "inclosed": 1,
+       "down": 1
+      }
+     },
+     {
+      "strong": "H1598",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 7,
+      "kjv_renderings": {
+       "defend": 7,
+       "defending": 1
+      }
+     },
+     {
+      "strong": "H5849",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 7,
+      "kjv_renderings": {
+       "crowned": 2,
+       "compassed": 1,
+       "about": 1,
+       "compass": 1,
+       "crownest": 1,
+       "crowneth": 1,
+       "crowning": 1
+      }
+     },
+     {
+      "strong": "H3803",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 6,
+      "kjv_renderings": {
+       "about": 2,
+       "inclosed": 1,
+       "suffer": 1,
+       "round": 1,
+       "crowned": 1,
+       "compass": 1
+      }
+     },
+     {
+      "strong": "H661",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 5,
+      "kjv_renderings": {
+       "compassed": 4,
+       "about": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "encircled",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 1,
+    "lemmas": [
+     {
+      "strong": "H5849",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 7,
+      "kjv_renderings": {
+       "crowned": 2,
+       "compassed": 1,
+       "about": 1,
+       "compass": 1,
+       "crownest": 1,
+       "crowneth": 1,
+       "crowning": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "patience",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "dissenters",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "gospel",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "plainness",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "restoration",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 2,
+    "lemmas": [
+     {
+      "strong": "H724",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 6,
+      "kjv_renderings": {
+       "health": 4,
+       "perfected": 1,
+       "up": 1
+      }
+     },
+     {
+      "strong": "H7870",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 1,
+      "kjv_renderings": {
+       "captivity": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "endless",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "combinations",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 6,
+    "lemmas": [
+     {
+      "strong": "H3318",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 991,
+      "kjv_renderings": {
+       "out": 518,
+       "forth": 409,
+       "brought": 13,
+       "came": 12,
+       "departed": 8,
+       "bring": 8,
+       "proceed": 8,
+       "go": 7
+      }
+     },
+     {
+      "strong": "H3212",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 936,
+      "kjv_renderings": {
+       "go": 332,
+       "went": 259,
+       "walk": 83,
+       "come": 70,
+       "departed": 47,
+       "walked": 30,
+       "away": 20,
+       "depart": 17
+      }
+     },
+     {
+      "strong": "H1980",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 473,
+      "kjv_renderings": {
+       "went": 85,
+       "go": 81,
+       "walked": 64,
+       "walk": 52,
+       "walketh": 31,
+       "gone": 21,
+       "goeth": 14,
+       "on": 11
+      }
+     },
+     {
+      "strong": "H784",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 348,
+      "kjv_renderings": {
+       "fire": 373,
+       "burning": 2,
+       "hot": 1,
+       "fiery": 1,
+       "flaming": 1
+      }
+     },
+     {
+      "strong": "H799",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 1,
+      "kjv_renderings": {
+       "fiery": 1
+      }
+     },
+     {
+      "strong": "H2841",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 1,
+      "kjv_renderings": {
+       "dark": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "immediately",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 1,
+    "lemmas": [
+     {
+      "strong": "H4480",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 1094,
+      "kjv_renderings": {
+       "of": 3,
+       "from": 2,
+       "among": 2,
+       "out": 1,
+       "because": 1,
+       "in": 1,
+       "with": 1,
+       "since": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "remission",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 2,
+    "lemmas": [
+     {
+      "strong": "H5627",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 8,
+      "kjv_renderings": {
+       "revolt": 2,
+       "rebellion": 2,
+       "turn": 1,
+       "wrong": 1,
+       "revolted": 1
+      }
+     },
+     {
+      "strong": "H8059",
+      "found_in": [
+       "strong"
+      ],
+      "hebrew_bible_count": 4,
+      "kjv_renderings": {
+       "release": 5
+      }
+     }
+    ]
+   },
+   {
+    "word": "c",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 17,
+    "lemmas": [
+     {
+      "strong": "H1961",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 3131,
+      "kjv_renderings": {
+       "be": 23,
+       "done": 6,
+       "was": 5,
+       "been": 4,
+       "pass": 3,
+       "had": 2,
+       "am": 2,
+       "is": 2
+      }
+     },
+     {
+      "strong": "H7200",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 1206,
+      "kjv_renderings": {
+       "see": 348,
+       "saw": 301,
+       "seen": 161,
+       "behold": 57,
+       "looked": 54,
+       "look": 46,
+       "appeared": 39,
+       "shewed": 37
+      }
+     },
+     {
+      "strong": "H3212",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 936,
+      "kjv_renderings": {
+       "go": 332,
+       "went": 259,
+       "walk": 83,
+       "come": 70,
+       "departed": 47,
+       "walked": 30,
+       "away": 20,
+       "depart": 17
+      }
+     },
+     {
+      "strong": "H4191",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 695,
+      "kjv_renderings": {
+       "die": 255,
+       "died": 153,
+       "dead": 130,
+       "death": 83,
+       "surely": 50,
+       "slay": 40,
+       "slew": 40,
+       "kill": 23
+      }
+     },
+     {
+      "strong": "H7218",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 547,
+      "kjv_renderings": {
+       "head": 264,
+       "chief": 91,
+       "heads": 85,
+       "top": 65,
+       "beginning": 12,
+       "sum": 9,
+       "tops": 8,
+       "companies": 7
+      }
+     },
+     {
+      "strong": "H2896",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 521,
+      "kjv_renderings": {
+       "good": 361,
+       "better": 72,
+       "well": 20,
+       "goodness": 16,
+       "goodly": 9,
+       "best": 8,
+       "fair": 7,
+       "merry": 7
+      }
+     },
+     {
+      "strong": "H1980",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 473,
+      "kjv_renderings": {
+       "went": 85,
+       "go": 81,
+       "walked": 64,
+       "walk": 52,
+       "walketh": 31,
+       "gone": 21,
+       "goeth": 14,
+       "on": 11
+      }
+     },
+     {
+      "strong": "H6086",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 289,
+      "kjv_renderings": {
+       "wood": 107,
+       "tree": 84,
+       "trees": 78,
+       "timber": 23,
+       "stick": 9,
+       "gallows": 8,
+       "sticks": 5,
+       "staff": 4
+      }
+     }
+    ]
+   },
+   {
+    "word": "tradition",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "inquire",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 6,
+    "lemmas": [
+     {
+      "strong": "H7592",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 157,
+      "kjv_renderings": {
+       "asked": 48,
+       "ask": 39,
+       "enquired": 15,
+       "enquire": 7,
+       "borrow": 4,
+       "lent": 4,
+       "desired": 4,
+       "required": 4
+      }
+     },
+     {
+      "strong": "H1875",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 152,
+      "kjv_renderings": {
+       "seek": 53,
+       "enquire": 32,
+       "sought": 23,
+       "enquired": 11,
+       "require": 10,
+       "seeketh": 5,
+       "out": 4,
+       "search": 4
+      }
+     },
+     {
+      "strong": "H1239",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 7,
+      "kjv_renderings": {
+       "enquire": 2,
+       "out": 2,
+       "seek": 1,
+       "search": 1,
+       "enquiry": 1
+      }
+     },
+     {
+      "strong": "H7593",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 6,
+      "kjv_renderings": {
+       "asked": 3,
+       "require": 1,
+       "requireth": 1,
+       "demanded": 1
+      }
+     },
+     {
+      "strong": "H1240",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 5,
+      "kjv_renderings": {
+       "search": 4,
+       "enquire": 1
+      }
+     },
+     {
+      "strong": "H1158",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 4,
+      "kjv_renderings": {
+       "enquire": 2,
+       "out": 1,
+       "boil": 1,
+       "up": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "torment",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "dissentions",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "inquired",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 6,
+    "lemmas": [
+     {
+      "strong": "H7592",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 157,
+      "kjv_renderings": {
+       "asked": 48,
+       "ask": 39,
+       "enquired": 15,
+       "enquire": 7,
+       "borrow": 4,
+       "lent": 4,
+       "desired": 4,
+       "required": 4
+      }
+     },
+     {
+      "strong": "H1875",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 152,
+      "kjv_renderings": {
+       "seek": 53,
+       "enquire": 32,
+       "sought": 23,
+       "enquired": 11,
+       "require": 10,
+       "seeketh": 5,
+       "out": 4,
+       "search": 4
+      }
+     },
+     {
+      "strong": "H1239",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 7,
+      "kjv_renderings": {
+       "enquire": 2,
+       "out": 2,
+       "seek": 1,
+       "search": 1,
+       "enquiry": 1
+      }
+     },
+     {
+      "strong": "H7593",
+      "found_in": [
+       "bdb"
+      ],
+      "hebrew_bible_count": 6,
+      "kjv_renderings": {
+       "asked": 3,
+       "require": 1,
+       "requireth": 1,
+       "demanded": 1
+      }
+     },
+     {
+      "strong": "H1240",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 5,
+      "kjv_renderings": {
+       "search": 4,
+       "enquire": 1
+      }
+     },
+     {
+      "strong": "H1158",
+      "found_in": [
+       "strong",
+       "bdb"
+      ],
+      "hebrew_bible_count": 4,
+      "kjv_renderings": {
+       "enquire": 2,
+       "out": 1,
+       "boil": 1,
+       "up": 1
+      }
+     }
+    ]
+   },
+   {
+    "word": "charity",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   },
+   {
+    "word": "administer",
+    "kjv_renders_hebrew_with_it": 0,
+    "lemmas_with_this_gloss": 0,
+    "lemmas": []
+   }
+  ],
+  "note": "hebrew_bible_count is the number of verses holding the lemma"
+ },
+ "stamp": {
+  "config_sha256": "98905446dfc1f496a45ce3d4317ee02d434ac2a52e8c201160fd4d9c9d2e116b",
+  "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+  "registered": true,
+  "git_commit": "c9a0a47015aca7bf763ae777cd2e855519ff8e54"
+ }
+}

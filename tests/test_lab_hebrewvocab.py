@@ -91,3 +91,10 @@ def test_check2_blocks_hold_out_the_whole_book():
     assert res["blocks"] == {"OT": 3, "NT": 2, "Apocrypha": 1}
     gen = [b for b in res["block_rates"] if b["book"] == "GEN"]
     assert gen[1]["per_10k"] > 0  # "his mother" is Genesis's own once Genesis is held out
+
+
+def test_two_sides_needs_both_conditions():
+    d2 = {"auc_bar": 0.95, "below_median_share": 0.9}
+    assert H.two_sides([1, 2, 3], [10, 11, 12], d2)["passed"]
+    r = H.two_sides([1, 2, 30], [10, 11, 12], d2)  # one OT block above the NT median
+    assert r["ot_below_nt_median"] < 0.9 and not r["passed"]

@@ -1077,6 +1077,12 @@ lab:                              # the research lab (exploratory tooling; reads
         narrative: [GEN, EXO, LEV, NUM, DEU, JOS, JDG, RUT, 1SA, 2SA, 1KI, 2KI, 1CH, 2CH, EZR, NEH, EST]
         poetry_wisdom: [JOB, PSA, PRO, ECC, SOL]
         prophets: [ISA, JER, LAM, EZE, DAN, HOS, JOE, AMO, OBA, JON, MIC, NAH, HAB, ZEP, HAG, ZEC, MAL]
+    design3:                       # card "Design 3" (2026-11-27): design 2's blocks and scoring; NT-only bar plus Young's text
+      ylt: data/corpus/lab/sources/translation/ylt_txt.tar   # known answer: Young's OT blocks vs his NT blocks, design 2's bars
+      apocrypha_language:          # reported only; Metzger 1957 and the New Oxford Annotated Apocrypha, as recalled (card)
+        hebrew_or_aramaic: [1MA, SIR, JDT, TOB, 1ES, 4ES, BAR, PRA]
+        greek: [WIS, 2MA, ESG]
+        uncertain: [SUS, BEL, PRM]
     lemmas_per_word: 8             # part 2: Hebrew lemmas listed per word (most frequent first)
     renderings_per_lemma: 8        # part 2: King James renderings listed per lemma
     usfm: data/corpus/lab/sources/translation/eng-kjv2006_usfm.zip
