@@ -59,7 +59,8 @@ def run(jobs: Path, answers: Path, model: str, per_hour: float, any_hour: bool) 
             if reply is None:  # transient: left open for the next pass
                 failed_in_a_row += 1
                 if failed_in_a_row >= j["outage_after"]:
-                    print(f"  {failed_in_a_row} failures in a row; waiting", flush=True)
+                    why = skeleton.LAST_FAILURE[0][:200]
+                    print(f"  {failed_in_a_row} failures in a row; waiting ({why})", flush=True)
                     time.sleep(j["outage_wait"])
                     failed_in_a_row = 0
                 continue

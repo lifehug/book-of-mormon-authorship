@@ -23,3 +23,20 @@ def test_done_reads_answered_ids(tmp_path):
     assert judge._done(answers) == set()
     answers.write_text(json.dumps({"id": "x", "reply": "Y"}) + "\n")
     assert judge._done(answers) == {"x"}
+
+
+def test_failed_call_keeps_its_reason(tmp_path, monkeypatch):
+    """An outage that speaks only on stderr is still logged, with a time, and kept for the judge."""
+    import subprocess
+
+    from metadata import genre
+    from semantic import skeleton
+
+    monkeypatch.setattr(genre, "PARSE_LOG", tmp_path / "pf.jsonl")
+    monkeypatch.setattr(skeleton, "_wait_turn", lambda: None)
+    done = subprocess.CompletedProcess([], 1, stdout="", stderr="usage limit reached")
+    monkeypatch.setattr(skeleton.subprocess, "run", lambda *a, **k: done)
+    assert skeleton._claude("q", "sonnet", retries=1) is None
+    assert skeleton.LAST_FAILURE[0] == "usage limit reached"
+    row = json.loads((tmp_path / "pf.jsonl").read_text())
+    assert row["raw"] == "usage limit reached" and row["ts"]

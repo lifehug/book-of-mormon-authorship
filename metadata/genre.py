@@ -215,7 +215,8 @@ def _log_parse_failure(model: str, raw: str) -> None:
     try:
         PARSE_LOG.parent.mkdir(parents=True, exist_ok=True)
         with PARSE_LOG.open("a", encoding="utf-8") as fh:
-            fh.write(json.dumps({"model": model, "raw": raw[:400]}, ensure_ascii=False) + "\n")
+            row = {"ts": time.strftime("%Y-%m-%dT%H:%M:%S"), "model": model, "raw": raw[:400]}
+            fh.write(json.dumps(row, ensure_ascii=False) + "\n")
     except Exception:  # noqa: BLE001
         pass
 

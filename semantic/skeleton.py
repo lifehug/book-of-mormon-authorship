@@ -93,6 +93,10 @@ def _wait_turn() -> None:
     time.sleep(start - now)
 
 
+# What the last failed call said (stdout, else stderr), for a caller that reports an outage.
+LAST_FAILURE: list[str] = [""]
+
+
 def _claude(prompt: str, model: str, retries: int = 3) -> str | None:
     """The model's reply, or None after transient failures (never recorded as an answer)."""
     for _ in range(retries):
@@ -102,11 +106,14 @@ def _claude(prompt: str, model: str, retries: int = 3) -> str | None:
                                   capture_output=True, text=True, timeout=300,
                                   stdin=subprocess.DEVNULL)  # fmt: skip
         except Exception as exc:  # noqa: BLE001
-            _log_parse_failure(model, f"<{type(exc).__name__}: {exc}>")
+            LAST_FAILURE[0] = f"<{type(exc).__name__}: {exc}>"
+            _log_parse_failure(model, LAST_FAILURE[0])
             continue
         text = done.stdout.strip()
         if not text or done.returncode != 0 or (_TRANSIENT.search(text) and len(text) < 300):
-            _log_parse_failure(model, text or f"<rc={done.returncode}>")
+            why = text or done.stderr.strip() or f"<rc={done.returncode}>"
+            _log_parse_failure(model, why)
+            LAST_FAILURE[0] = why
             continue
         return text
     return None
