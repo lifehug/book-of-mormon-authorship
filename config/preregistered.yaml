@@ -2655,6 +2655,16 @@ lab:                              # the research lab (exploratory tooling; reads
       check_seed: 20261131         # the check's fresh draw (no tuning or rarity-sample work)
       share: 0.02                  # chosen by `python -m lab.joined tune` (tune_v2.json)
       function_rule: true          # chosen by the tuning: drop n-grams of function words and at most one other word
+    design3:                       # BOM-128 design 3 (card section "Design 3 (2026-11-27)"): the design-2 finder, dated against equal-size decade samples
+      design: 3
+      draws: 20                    # seeded samples, each with the same number of works from every decade 1640s-1820s
+      per_decade: null             # null = the thinnest decade's count
+      min_per_decade: 100          # below this, decades would have to be merged into periods (not needed: the thinnest has 331)
+      majority: 0.5                # current by D = 2 sampled works by D in more than this share of the draws
+      sample_seed: 20261201
+      reprint_decoy: baxter_saints_rest_1821   # extra check bar: must date old (with the 1650s)
+      late_decoy: late_war_1816    # extra check bar: must not date old
+      seed_pair: 'eat drink and be merry | for to morrow we die'   # reported first among the 2 Nephi 28 joins
   new_senses:                      # BOM-129 (lab; exploratory): New Testament phrases in a new sense against period usage (card 2026-11-27-new-senses); simulated judging
     context_words: 60              # words each side of the phrase in every passage shown to the judge
     max_verses: 3                  # King James verses shown with a phrase

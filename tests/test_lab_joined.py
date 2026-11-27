@@ -123,3 +123,18 @@ def test_settings_design2_overrides():
         "lab": {"joined_phrases": {"window": 25, "seed": 1, "design2": {"seed": 2, "design": 2}}}
     }
     assert joined.settings(cfg) == {"window": 25, "seed": 2, "design": 2}
+
+
+def test_design3_samples_and_majority():
+    rows = [{"work_id": f"w{y}_{i}", "year": y} for y in (1650, 1655, 1780) for i in range(3)]
+    d3 = {"draws": 4, "per_decade": None, "min_per_decade": 1, "sample_seed": 1}
+    ds = joined.decade_samples(rows, d3)
+    assert ds["per_decade"] == 3 and all(len(s) == 6 for s in ds["draws"])
+    meta = {r["work_id"]: {"year": r["year"], "author": r["work_id"], "title": "t"} for r in rows}
+    dd = {**D, "year_min": 1640, "year_max": 1829, "majority": 0.5}
+    draws = [{"a", "b", "c"}, {"a", "b", "c"}, {"a", "c"}, {"a", "c"}]
+    meta2 = {"a": {"year": 1650}, "b": {"year": 1652}, "c": {"year": 1785}}
+    # by 1650 in 2 of 4 draws only (not a majority); by 1780 in all 4
+    assert joined.sampled_first(["a", "b", "c"], set(), meta2, draws, dd) == (1780, 1.0)
+    assert joined.sampled_first(["a", "b", "c"], {"c"}, meta2, draws, dd) == (None, 0.5)
+    assert meta  # rows reach the sampler

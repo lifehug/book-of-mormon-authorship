@@ -52,9 +52,10 @@ BREAK = 100  # words between pieces of a stream, more than any window, so nothin
 
 
 def settings(cfg: dict) -> dict:
-    """The settings in force: design 2's values (``design2``) over the first design's."""
+    """The settings in force: design 3's values over design 2's over the first design's."""
     base = cfg["lab"]["joined_phrases"]
-    return {k: v for k, v in base.items() if k != "design2"} | base.get("design2", {})
+    keep = {k: v for k, v in base.items() if k not in ("design2", "design3")}
+    return keep | base.get("design2", {}) | base.get("design3", {})
 
 
 def tokens(text: str) -> list[str]:
@@ -430,6 +431,56 @@ def date_join(key: str, holders: list[str], skip: set[str], meta: dict, d: dict)
     }
 
 
+def decade_samples(rows: list[dict], d: dict) -> dict:
+    """Design 3: ``draws`` seeded samples with the same number of works from every decade (the
+    thinnest decade's count, or periods merged to reach ``min_per_decade``)."""
+    by: dict[int, list[str]] = defaultdict(list)
+    for r in rows:
+        by[r["year"] // 10 * 10].append(r["work_id"])
+    decs = sorted(by)
+    n = min(len(by[x]) for x in decs)
+    if d.get("per_decade"):
+        n = min(n, d["per_decade"])
+    if n < d["min_per_decade"]:
+        raise SystemExit(f"thinnest decade has {n} works, under {d['min_per_decade']}: merge "
+                         "decades into periods (not built)")  # fmt: skip
+    draws = []
+    for k in range(d["draws"]):
+        rng = random.Random(d["sample_seed"] + k)
+        s: set[str] = set()
+        for x in decs:
+            s.update(rng.sample(sorted(by[x]), n))
+        draws.append(s)
+    return {"per_decade": n, "decades": {str(x): len(by[x]) for x in decs}, "draws": draws}
+
+
+def sampled_first(holders: list[str], skip: set[str], meta: dict, draws: list[set], d: dict,
+                  authors: bool = False) -> tuple[int | None, float]:  # fmt: skip
+    """The first decade by which the join is current (``independent_works`` sampled holders,
+    own copies left out) in more than ``majority`` of the draws; and the share of draws in which
+    it is current at all by 1829."""
+    firsts = []
+    for s in draws:
+        ws = [w for w in holders if w in s and w not in skip]
+        if authors:
+            by_a: dict[str, int] = {}
+            for w in ws:
+                m = meta[w]
+                a = author_key(m["author"]) or "title:" + title_key(
+                    m["title"], d["title_key_words"]
+                )
+                by_a[a] = min(by_a.get(a, 9999), m["year"])
+            ys = list(by_a.values())
+        else:
+            ys = [meta[w]["year"] for w in ws]
+        firsts.append(first_current(ys, d["independent_works"]))
+    got = [f for f in firsts if f is not None]
+    for dec in range(d["year_min"] // 10 * 10, d["year_max"] + 1, 10):
+        if sum(f <= dec for f in got) > d["majority"] * len(draws):
+            return dec, round(len(got) / len(draws), 3)
+    return None, round(len(got) / len(draws), 3)
+
+
 def book_shares(dated: list[dict], own_decade: int | None, d: dict, field: str) -> dict:
     cur = [j[field] for j in dated if j[field] is not None]
     res = {"joins": len(dated), "current": len(cur)}
@@ -616,12 +667,24 @@ def text_words(book: dict) -> list[str] | None:
         return None
 
 
-def summarise(books: list[dict], meta: dict, by_join: dict, rows: list[dict], d: dict) -> list:
+def summarise(books: list[dict], meta: dict, by_join: dict, rows: list[dict], d: dict,
+              samples: list[set] | None = None) -> list:  # fmt: skip
     res = []
     for b in books:
         skip = own_copies(b, rows, d)
         dated = [date_join(join_key(j["a"], j["b"]), by_join.get(join_key(j["a"], j["b"]), []),
                            skip, meta, d) for j in b["joins"]]  # fmt: skip
+        if samples is not None:  # design 3: dated against the equal-size decade samples
+            for x in dated:
+                hs = by_join.get(x["join"], [])
+                x["first_current_full_library"] = x["first_current"]
+                x["first_current_distinct_authors_full_library"] = x[
+                    "first_current_distinct_authors"
+                ]
+                x["first_current"], x["draws_current"] = sampled_first(hs, skip, meta, samples, d)
+                x["first_current_distinct_authors"], _ = sampled_first(
+                    hs, skip, meta, samples, d, authors=True
+                )
         own = b.get("check_decade")
         res.append({
             "name": b.get("name") or b["work_id"], "work_id": b.get("work_id"),
@@ -740,7 +803,7 @@ def prepare(cfg: dict) -> dict:
     t0 = time.time()
     bible = Bible([json.loads(x) for x in KJV.read_text().splitlines()], d["ngram_sizes"])
     p = {"d": d, "bible": bible, "exclude": set()}
-    if d.get("design") == 2:
+    if d.get("design", 1) >= 2:
         df, read, ids = nonreligious_df(bible, cfg)
         p |= {"df": df, "read": read, "exclude": set(ids)}
         if d.get("share") is None:
@@ -782,7 +845,7 @@ def tune(cfg: dict) -> dict:
 
 def run_check(cfg: dict, p: dict) -> dict:
     d, bible, rare = p["d"], p["bible"], p["rare"]
-    if d.get("design") == 2:  # a fresh draw: none of the tuning works or the rarity sample
+    if d.get("design", 1) >= 2:  # a fresh draw: none of the tuning works or the rarity sample
         tuned = {w for w, _ in prose_passages(cfg, d["tune_seed"], p["exclude"])}
         passages = prose_passages(cfg, d["check_seed"], p["exclude"] | tuned)
         res: dict = {"planted": planted_check(bible, rare, cfg, d["check_seed"], passages)}
@@ -806,7 +869,15 @@ def run_check(cfg: dict, p: dict) -> dict:
     lp = library_pass("check", list(allj.values()), rows, d)
     meta = {r["work_id"]: r for r in rows}
     by_join = holders_by_join(lp["held"])
-    summ = summarise(books, meta, by_join, rows, d)
+    samples = None
+    if d.get("design", 1) >= 3:
+        ds = decade_samples(rows, d)
+        p["samples"] = samples = ds["draws"]
+        res["decade_samples"] = {k: v for k, v in ds.items() if k != "draws"} | {
+            "draws": len(samples),
+            "majority": d["majority"],
+        }
+    summ = summarise(books, meta, by_join, rows, d, samples)
     checks = [b for b in summ if b["check_decade"] is not None]
     res["books"] = group_check(checks, d)
     res["books_distinct_authors"] = group_check(checks, d, "shares_distinct_authors")
@@ -863,6 +934,14 @@ def run(cfg: dict) -> dict:
     late = [b["shares"]["share_late"] for b in cb if b["check_decade"] == d["check_decades"][-1]]
     for b in chk.get("decoys_raw", []):
         b["verdict"] = verdict(b["shares"].get("share_late"), early, late, d)
+    if d.get("design", 1) >= 3 and "decoys_raw" in chk:  # design 3's two decoy bars
+        v = {b["name"]: b["verdict"] for b in chk["decoys_raw"]}
+        bars = {
+            "reprint_dates_old": v.get(d["reprint_decoy"]) == "old",
+            "late_war_not_old": v.get(d["late_decoy"]) not in (None, "old"),
+        }
+        chk["decoy_bars"] = bars
+        chk["passed"] = chk["passed"] and all(bars.values())
     res["known_answer"] = chk
     if not chk["passed"]:
         res["stopped"] = "the known-answer check missed its bar; the Book of Mormon was not dated"
@@ -875,7 +954,7 @@ def run(cfg: dict) -> dict:
     book = {"name": "Book of Mormon 1830", "work_id": None, "year": 1830, "joins": joins,
             "words_read": sum(1 for w in words if w),
             "exclude_title": d["bom_exclude_title"]}  # fmt: skip
-    s = summarise([book], meta, holders_by_join(lp["held"]), rows, d)[0]
+    s = summarise([book], meta, holders_by_join(lp["held"]), rows, d, p.get("samples"))[0]
     by_key = {join_key(j["a"], j["b"]): j for j in joins}
     spans = chapter_spans()
     lo, hi = spans[tuple(d["seed_chapter"])]
@@ -886,6 +965,7 @@ def run(cfg: dict) -> dict:
             f"{k[0]} {k[1]}" for k, (x, y) in spans.items() if x <= raw["at"] < y
         )
     seed = [j for j in s["joins"] if lo <= by_key[j["join"]]["at"] < hi]
+    seed.sort(key=lambda j: (j["join"] != d.get("seed_pair"), by_key[j["join"]]["at"]))
     sh = s["shares"]["share_late"]
     res["book_of_mormon"] = {
         "shares": s["shares"],
@@ -935,7 +1015,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("cmd", choices=["tune", "check", "run", "seed"])
     a = ap.parse_args(argv)
     cfg = config.load()
-    sfx = "_v2" if settings(cfg).get("design") == 2 else ""
+    sfx = f"_v{settings(cfg)['design']}" if settings(cfg).get("design", 1) >= 2 else ""
     if a.cmd == "seed":
         res = {"settings": settings(cfg), **config.stamp(), **seed_joins(cfg)}
         write(res, f"seed_joins{sfx}.json")
