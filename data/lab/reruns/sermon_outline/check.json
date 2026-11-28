@@ -1,0 +1,85 @@
+{
+ "rewording": "simulated writing by an AI model (lab.judge, model claude-sonnet-5-5)",
+ "sermon": "internet_archive:addressdelivered00bruc",
+ "variants": {
+  "blocks": {
+   "status": "scored",
+   "threshold": 0.66789,
+   "same": {
+    "rank": 1,
+    "of": 60,
+    "score": 24.5,
+    "matched": 33,
+    "order_p": 0.000999,
+    "span": 48,
+    "p_floor": 0.000999
+   },
+   "scrambled": {
+    "score": 2.5,
+    "matched": 4,
+    "order_p": 1.0,
+    "span": 6,
+    "p_floor": 0.002387
+   },
+   "bar_p": 0.01,
+   "unreadable_outlines": 0,
+   "unanchored_points": 0,
+   "passed": true
+  },
+  "whole": {
+   "status": "scored",
+   "threshold": 0.674836,
+   "same": {
+    "rank": 1,
+    "of": 60,
+    "score": 10.0,
+    "matched": 11,
+    "order_p": 0.000999,
+    "span": 12,
+    "p_floor": 0.000999
+   },
+   "scrambled": {
+    "score": 6.5,
+    "matched": 7,
+    "order_p": 0.002997,
+    "span": 7,
+    "p_floor": 0.001197
+   },
+   "bar_p": 0.01,
+   "unreadable_outlines": 0,
+   "unanchored_points": 0,
+   "passed": false
+  },
+  "anchored": {
+   "status": "scored",
+   "threshold": 0.672751,
+   "same": {
+    "rank": 1,
+    "of": 60,
+    "score": 7.0,
+    "matched": 9,
+    "order_p": 0.002997,
+    "span": 12,
+    "p_floor": 0.000999
+   },
+   "scrambled": {
+    "score": 1.5,
+    "matched": 2,
+    "order_p": 0.828172,
+    "span": 3,
+    "p_floor": 0.167499
+   },
+   "bar_p": 0.01,
+   "unreadable_outlines": 0,
+   "unanchored_points": 0,
+   "passed": true
+  }
+ },
+ "reliability": {
+  "blocks": 20,
+  "compared": 20,
+  "median_agreement": 0.9167
+ },
+ "config_sha256": "1789af68f5f984777237ccca53951a9c131f2afa7d4eba4edda1a2f7c667ae53",
+ "commit": "cd8d7d6a2624b715c7fcb315bb868785f09e80fb"
+}

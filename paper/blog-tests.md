@@ -96,7 +96,7 @@ compares against.
 | BOM-129 | "A few stripes" and other New Testament phrases are used in the sense of the 1820s Universalism debate | the same reader | examples | each new sense against 1640-1779 and 1780-1829 print (simulated reading) | TBD |
 | BOM-130 | 2 Nephi 28 draws on *Scripture Inquiry* (1828), a Hillsborough sermon (1809) and others | the same reader | the named books | the named books ranked among the whole library, with sermons on the same topics | **Done: none of the four stands out from ordinary Universalism writing** |
 | BOM-131 | 2 Nephi 28 reads Luke 12 the way Henry and Clarke did | the same reader | two commentaries | every New Testament commentary held (simulated reading) | TBD |
-| BOM-135 | 2 Nephi 28 follows the order of argument of Chapin's 1809 farewell sermon: three reasons, then seven "improvements" | a reader on Reddit (r/mormon), 2026 | the two read side by side | ordered outlines of both (simulated reading), lined up in order, against about 60 sermons of the time and *Scripture Inquiry* | TBD: test card written, not run |
+| BOM-135 | 2 Nephi 28 follows the order of argument of Chapin's 1809 farewell sermon: three reasons, then seven "improvements" | a reader on Reddit (r/mormon), 2026 | the two read side by side | ordered outlines of both (simulated reading), lined up in order, against 60 sermons of the time and *Scripture Inquiry* | no: Chapin lines up with 1 of the chapter's 12 points, 41st of 61, the group's middle |
 | BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed twice; not scored** |
 
 ### 3. How was it produced?
@@ -3293,9 +3293,6 @@ rare phrases with the chapter probably quote the Book of Mormon; that would be i
 
 ### 2 Nephi 28 and a farewell sermon's outline (BOM-135)
 
-**Not run yet.** The test card was written before any model call. Everything below marked
-**[TO BE FILLED after the run]** waits for the run; nothing here is a result.
-
 **The claim.** A reader on Reddit argued that 2 Nephi 28 follows the same order of argument as
 Stephen Chapin's farewell sermon, *The Immoral Tendency of Error in Sentiment* (Hillsborough, New
 Hampshire, 1809): a doctrine proved three ways, then seven numbered "improvements". The
@@ -3306,43 +3303,88 @@ said he would run this and post the result either way.
 **Their way first.** The reader read the two side by side. Chapin's half of the shape is plain in
 the sermon: "This is evident, 1. From other passages of scripture", "2. There is an invincible
 proneness in man", "3. Facts will confirm our doctrine", then a heading, "IMPROVEMENT", with points
-1 to 7. The reader's matching of those points to verses of the chapter isn't something I have, so
-this run asks the broader question: does the chapter's order of argument match the sermon's more
-than it matches other sermons of the time? If the verse-by-verse mapping turns up, it gets its own
-check.
+1 to 7. I don't have the reader's matching of those points to verses of the chapter, so this run
+asks the broader question: does the chapter's order of argument match the sermon's more than it
+matches other sermons of the time? If the verse-by-verse mapping turns up, it gets its own check.
 
-**What I tried.** An AI model writes an ordered outline of each text (simulated reading): up to 12
-argument points per 2,000 words, names swapped for roles, no titles, and nothing in the prompt
-about the claim, the sermon or the Book of Mormon. The points are compared by meaning and lined up
-in order, the way the story-skeleton test lines up events, and a shuffle test asks how often the
-order would match that well by chance. Chapin goes in a group with about 60 sermons of 1800 to
-1829, half of them from the Universalism debate, and with *Scripture Inquiry* (1828). The sermon
-stands out only if it comes first in that group and the chance of its order is at most 1 in 100.
-As a decoy, a war chapter of Alma goes through the same steps.
+**What I tried.** An AI model writes an ordered outline of each text (simulated reading): at most
+12 argument points, names swapped for roles, no titles, and nothing in the prompt about the claim,
+the sermon or the Book of Mormon. The points are compared by meaning and lined up in order, the way
+the story-skeleton test lines up events, and a shuffle test asks how often the order would match
+that well by chance. Chapin goes in a group with 60 sermons of the time, half of them from the
+Universalism debate, and with *Scripture Inquiry* (1828). The sermon stands out only if it comes
+first in that group and the chance of its order is at most 1 in 100; it is a "no" if it falls
+outside the top tenth. As a decoy, a war chapter of Alma goes through the same steps.
 
-There are two versions. One outline of 12 points for each whole text is nearer the "three plus
-seven" shape of the claim, and Dave chose it as the one that decides, before any outline was
-written. The 2,000-word-block version is reported beside it and decides nothing.
+There were two versions at the start. One outline per whole text, which is nearer the "three plus
+seven" shape of the claim; Dave chose that one to decide. And one outline per 2,000-word block,
+reported beside it.
 
 One thing is plain before any number. "Doctrine, then numbered reasons, then numbered uses" is how
-New England sermons were built. Many of the comparison sermons will have that shape too, which is
-why they are there.
+New England sermons were built. Many of the comparison sermons have that shape too, which is why
+they are there.
 
-**The check.** Planned: one comparison sermon is reworded block by block in the same order
-(simulated), and the reworded copy must find its original first in the group, at 1 in 100 or
-better. The same copy with its paragraphs scrambled must not. If that fails, the run is reported
-without a verdict. Outcome: **[TO BE FILLED after the run]**
+**The check.** One comparison sermon (a Massachusetts address of the period, drawn at random) is
+reworded by the model block by block, in the same order. The reworded copy must find its original
+first among the 60, with the chance of its order at 1 in 100 or better. The same copy with its
+paragraphs scrambled must not get there. A method that passes can see order; one that fails
+can't.
 
-**When it failed.** **[TO BE FILLED after the run]**
+**When it failed: why, and what I changed.** The block version passed cleanly: the reworded copy
+found its original first (p 0.001, 33 points lined up), and the scrambled copy got nowhere (p 1.0).
+The whole-text version, the one meant to decide, failed. The reworded copy found its original
+first, fine, but the scrambled copy *also* matched its original's order, at p 0.003. Asked to
+outline a whole text at once, the model lists the argument in its logical order, not in the order
+the paragraphs stand on the page. Shuffle the paragraphs and you get much the same outline back. So
+that version can't see order at all, and I scored nothing with it.
 
-**The result.** **[TO BE FILLED after the run]**
+The fix keeps the whole-text grain and takes the order from the page. The text goes to the model
+with a numbered marker every 100 words, [1], [2], [3], and each point has to end with the marker
+where the passage makes it. The points are then put in marker order, whatever order the model
+listed them in. A scrambled copy has its paragraphs under different markers, so its order changes.
+Same check, same group, same rule for yes and no. That cost 75 more calls.
 
-**What it means, and what it doesn't.** **[TO BE FILLED after the run]** Known limits, written
-in advance: with only four points lined up there are just 24 orders, so the chance can't drop to 1
-in 100 (about six are needed); the model has surely read 2 Nephi 28 and may barely know Chapin; and
-a "no" can't rule out borrowing the common sermon form, only that Chapin is closer than the form.
+One more wrong turn, mine this time. The first scoring of the new version said "no" with Chapin
+matching nothing. But 56 of the 802 points had been thrown out: the model often names more than one
+section, as in "[3, 4]", and my code only read a single number. I fixed the reader to place such a
+point at its first section and scored again; no new calls, and nothing dropped. The numbers below
+are from the fixed reader.
 
-**What's left.** **[TO BE FILLED after the run]**
+The new version passed its check: the reworded copy found its original first of 60 (p 0.003, 9 of
+12 points lined up), and the scrambled copy did not (p 0.83).
+
+**The result.** In the deciding version, Chapin's outline lines up with 1 of 2 Nephi 28's 12
+points. That puts him 41st of 61, right at the group's middle. No sermon in the group comes near
+the order bar.
+
+| 2 Nephi 28 against | Points lined up | Place of 61 | Order p | Verdict |
+| --- | --- | --- | --- | --- |
+| Chapin, whole text with markers (decides) | 1 of 12 | 41 | 1.0 | no |
+| Chapin, 2,000-word blocks (reported) | 3 of 12 | 4 (three others tie) | 0.17 | cannot tell |
+| *Scripture Inquiry*, with markers | 1 of 12 | 41 | 1.0 | no |
+| Best comparison sermon, with markers | 2 of 12 | 1 | 0.46 | |
+
+The decoy behaves: in the deciding version Chapin comes 5th of 61 for the Alma war chapter, which
+is better than he does for 2 Nephi 28. That tells you how little a placing near the top means at
+this grain. In the block version he is 4th for 2 Nephi 28, tied with three ordinary sermons, and
+three lined-up points can't push the chance below about 1 in 6. When the model outlined the same
+20 blocks a second time, the two outlines agreed on a median of 92% of points.
+
+**What it means, and what it doesn't.** On this measure, 2 Nephi 28 does not follow Chapin's order
+of argument any more than it follows an ordinary sermon of the time. The two make different moves:
+Chapin argues that wrong belief leads to wrong living and proves it from scripture, human nature
+and history; the chapter is a prophecy of proud churches and false teachers, with woes. They share
+a theme, error in doctrine, and that shows up as a point or two in common, as it does with half the
+group.
+
+It does not rule out the general sermon form as a model. "Doctrine, reasons, uses" was everywhere,
+and this test only says Chapin is no closer to the chapter than that common form is. The model has
+surely read 2 Nephi 28 and commentary on it; its outline of the chapter may be tidier than its
+outline of an obscure sermon. And the reader's own verse-by-verse mapping hasn't been tested,
+because I don't have it.
+
+**What's left.** If the reader posts the mapping of Chapin's three proofs and seven improvements to
+verses, it can be checked point by point against the same group.
 
 ### Joined Bible phrases (BOM-128)
 

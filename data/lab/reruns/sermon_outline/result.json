@@ -1,0 +1,1538 @@
+{
+ "outlines": "simulated reading by an AI model (lab.judge, model claude-sonnet-5-5)",
+ "rewording": "simulated writing by an AI model, for the known-answer check only",
+ "settings": {
+  "model": "claude-sonnet-5-5",
+  "block_words": 2000,
+  "max_points": 12,
+  "point_match_quantile": 0.99,
+  "match_score": 1.0,
+  "mismatch_score": -0.5,
+  "gap_score": -0.5,
+  "shuffles": 1000,
+  "shuffle_seed": "bom135-sermon-outline",
+  "max_order_p": 0.01,
+  "target": [
+   485,
+   489
+  ],
+  "chapter_1830": [
+   485,
+   498
+  ],
+  "decoy": [
+   761,
+   765
+  ],
+  "chapin": {
+   "path": "data/corpus/lab/sources/nephi28/immoral_tendency_of_error.txt",
+   "start_marker": "EXODUS XXXII",
+   "end_marker": "FAREWELL"
+  },
+  "scripture_inquiry": "institutional_books:32044077904324",
+  "si_max_blocks": 40,
+  "baseline": {
+   "universalism": 30,
+   "sermons": 30,
+   "min_words": 5000,
+   "max_words": 20000,
+   "year_min": 1800,
+   "year_max": 1829,
+   "seed": 20261130
+  },
+  "ka": {
+   "seed": 20261128,
+   "bar_p": 0.01
+  },
+  "no_share": 0.1,
+  "variants": [
+   "blocks",
+   "whole",
+   "anchored"
+  ],
+  "deciding_variant": "anchored",
+  "anchor_words": 100,
+  "reextract_blocks": 20
+ },
+ "texts": {
+  "target": {
+   "kind": "target",
+   "words": 1282,
+   "status": "read"
+  },
+  "chapter_1830": {
+   "kind": "target",
+   "words": 2841,
+   "status": "read"
+  },
+  "decoy": {
+   "kind": "target",
+   "words": 1052,
+   "status": "read"
+  },
+  "chapin": {
+   "kind": "named",
+   "words": 9570,
+   "status": "read"
+  },
+  "scripture_inquiry": {
+   "kind": "named",
+   "work_id": "institutional_books:32044077904324",
+   "words": 80000,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist_1825-10-15_7_17": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist_1825-10-15_7_17",
+   "group": "universalism",
+   "year": 1825,
+   "words": 8121,
+   "status": "read"
+  },
+  "internet_archive:sim_civil-and-religious-intelligencer-or-the-gleanor_1817-01-06_1_8": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_civil-and-religious-intelligencer-or-the-gleanor_1817-01-06_1_8",
+   "group": "universalism",
+   "year": 1817,
+   "words": 10490,
+   "status": "read"
+  },
+  "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-07-28_3_48": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-07-28_3_48",
+   "group": "universalism",
+   "year": 1827,
+   "words": 10692,
+   "status": "read"
+  },
+  "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-09-15_4_3": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-09-15_4_3",
+   "group": "universalism",
+   "year": 1827,
+   "words": 12013,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist-modern-universalism_1825-11-15_1_16": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist-modern-universalism_1825-11-15_1_16",
+   "group": "universalism",
+   "year": 1825,
+   "words": 8562,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist_1821-09-01_3_10": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist_1821-09-01_3_10",
+   "group": "universalism",
+   "year": 1821,
+   "words": 8306,
+   "status": "read"
+  },
+  "internet_archive:bim_eighteenth-century_the-eternity-of-future-p_crouch-isaac_1786": {
+   "kind": "baseline",
+   "work_id": "internet_archive:bim_eighteenth-century_the-eternity-of-future-p_crouch-isaac_1786",
+   "group": "universalism",
+   "year": 1786,
+   "words": 9079,
+   "status": "read"
+  },
+  "internet_archive:sim_philadelphia-universalist-magazine_1822-06_1_11": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_philadelphia-universalist-magazine_1822-06_1_11",
+   "group": "universalism",
+   "year": 1822,
+   "words": 18342,
+   "status": "read"
+  },
+  "internet_archive:universalist_1826-08-26_8_10": {
+   "kind": "baseline",
+   "work_id": "internet_archive:universalist_1826-08-26_8_10",
+   "group": "universalism",
+   "year": 1826,
+   "words": 7394,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist_1823-03-08_4_37": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist_1823-03-08_4_37",
+   "group": "universalism",
+   "year": 1823,
+   "words": 7590,
+   "status": "read"
+  },
+  "internet_archive:bim_eighteenth-century_the-eternity-of-hell-tor_edwards-jonathan_1788": {
+   "kind": "baseline",
+   "work_id": "internet_archive:bim_eighteenth-century_the-eternity-of-hell-tor_edwards-jonathan_1788",
+   "group": "universalism",
+   "year": 1788,
+   "words": 10517,
+   "status": "read"
+  },
+  "internet_archive:bim_eighteenth-century_second-thoughts-on-the-s_berrow-capel_1782_7": {
+   "kind": "baseline",
+   "work_id": "internet_archive:bim_eighteenth-century_second-thoughts-on-the-s_berrow-capel_1782_7",
+   "group": "universalism",
+   "year": 1782,
+   "words": 15855,
+   "status": "read"
+  },
+  "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-03-17_3_29": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-03-17_3_29",
+   "group": "universalism",
+   "year": 1827,
+   "words": 11724,
+   "status": "read"
+  },
+  "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-06-30_3_44": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-06-30_3_44",
+   "group": "universalism",
+   "year": 1827,
+   "words": 11631,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist_1823-09-27_5_14": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist_1823-09-27_5_14",
+   "group": "universalism",
+   "year": 1823,
+   "words": 8484,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist_1824-02-14_5_34": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist_1824-02-14_5_34",
+   "group": "universalism",
+   "year": 1824,
+   "words": 8264,
+   "status": "read"
+  },
+  "internet_archive:universalist_1826-11-11_8_21": {
+   "kind": "baseline",
+   "work_id": "internet_archive:universalist_1826-11-11_8_21",
+   "group": "universalism",
+   "year": 1826,
+   "words": 7333,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist_1821-08-25_3_9": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist_1821-08-25_3_9",
+   "group": "universalism",
+   "year": 1821,
+   "words": 8506,
+   "status": "read"
+  },
+  "internet_archive:workswordsofjesu00winc": {
+   "kind": "baseline",
+   "work_id": "internet_archive:workswordsofjesu00winc",
+   "group": "universalism",
+   "year": 1788,
+   "words": 18184,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist_1823-02-01_4_32": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist_1823-02-01_4_32",
+   "group": "universalism",
+   "year": 1823,
+   "words": 7201,
+   "status": "read"
+  },
+  "internet_archive:universalist_1828-05-17_9_48": {
+   "kind": "baseline",
+   "work_id": "internet_archive:universalist_1828-05-17_9_48",
+   "group": "universalism",
+   "year": 1828,
+   "words": 7022,
+   "status": "read"
+  },
+  "internet_archive:sim_christian-telescope-and-universalist-miscellany_1826-08-12_3_1": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_christian-telescope-and-universalist-miscellany_1826-08-12_3_1",
+   "group": "universalism",
+   "year": 1826,
+   "words": 11009,
+   "status": "read"
+  },
+  "internet_archive:sim_civil-and-religious-intelligencer-or-the-gleanor_1817-03-10_1_16": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_civil-and-religious-intelligencer-or-the-gleanor_1817-03-10_1_16",
+   "group": "universalism",
+   "year": 1817,
+   "words": 11578,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist_1819-07-10_1_2": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist_1819-07-10_1_2",
+   "group": "universalism",
+   "year": 1819,
+   "words": 8017,
+   "status": "read"
+  },
+  "internet_archive:sim_philadelphia-universalist-magazine_1823-04_2_9": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_philadelphia-universalist-magazine_1823-04_2_9",
+   "group": "universalism",
+   "year": 1823,
+   "words": 18770,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist_1825-02-05_6_33": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist_1825-02-05_6_33",
+   "group": "universalism",
+   "year": 1825,
+   "words": 8520,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist_1825-06-11_6_51": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist_1825-06-11_6_51",
+   "group": "universalism",
+   "year": 1825,
+   "words": 8100,
+   "status": "read"
+  },
+  "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-01-13_3_20": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-01-13_3_20",
+   "group": "universalism",
+   "year": 1827,
+   "words": 11564,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist_1822-02-09_3_33": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist_1822-02-09_3_33",
+   "group": "universalism",
+   "year": 1822,
+   "words": 8831,
+   "status": "read"
+  },
+  "internet_archive:sim_universalist_1823-08-16_5_8": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sim_universalist_1823-08-16_5_8",
+   "group": "universalism",
+   "year": 1823,
+   "words": 8141,
+   "status": "read"
+  },
+  "internet_archive:bim_eighteenth-century_a-sermon-occasioned-by-_alexander-caleb_1800": {
+   "kind": "baseline",
+   "work_id": "internet_archive:bim_eighteenth-century_a-sermon-occasioned-by-_alexander-caleb_1800",
+   "group": "sermons",
+   "year": 1800,
+   "words": 7081,
+   "status": "read"
+  },
+  "institutional_books:32044086340833": {
+   "kind": "baseline",
+   "work_id": "institutional_books:32044086340833",
+   "group": "sermons",
+   "year": 1826,
+   "words": 12203,
+   "status": "read"
+  },
+  "internet_archive:reportoftrustees00hamp": {
+   "kind": "baseline",
+   "work_id": "internet_archive:reportoftrustees00hamp",
+   "group": "sermons",
+   "year": 1806,
+   "words": 11942,
+   "status": "read"
+  },
+  "institutional_books:HWH2AH": {
+   "kind": "baseline",
+   "work_id": "institutional_books:HWH2AH",
+   "group": "sermons",
+   "year": 1827,
+   "words": 9269,
+   "status": "read"
+  },
+  "hathitrust:yale.39002053501772": {
+   "kind": "baseline",
+   "work_id": "hathitrust:yale.39002053501772",
+   "group": "sermons",
+   "year": 1826,
+   "words": 6713,
+   "status": "read"
+  },
+  "tcp:N28496": {
+   "kind": "baseline",
+   "work_id": "tcp:N28496",
+   "group": "sermons",
+   "year": 1800,
+   "words": 8984,
+   "status": "read"
+  },
+  "internet_archive:sermondeliveredn00emmo": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sermondeliveredn00emmo",
+   "group": "sermons",
+   "year": 1807,
+   "words": 5863,
+   "status": "read"
+  },
+  "internet_archive:repentrepentorli00rich": {
+   "kind": "baseline",
+   "work_id": "internet_archive:repentrepentorli00rich",
+   "group": "sermons",
+   "year": 1812,
+   "words": 11804,
+   "status": "read"
+  },
+  "internet_archive:cu31924104014562": {
+   "kind": "baseline",
+   "work_id": "internet_archive:cu31924104014562",
+   "group": "sermons",
+   "year": 1822,
+   "words": 5193,
+   "status": "read"
+  },
+  "internet_archive:addressdelivered05ever": {
+   "kind": "baseline",
+   "work_id": "internet_archive:addressdelivered05ever",
+   "group": "sermons",
+   "year": 1826,
+   "words": 8137,
+   "status": "read"
+  },
+  "internet_archive:bim_eighteenth-century_mercy-triumphant-a-disc_maurice-william_1800": {
+   "kind": "baseline",
+   "work_id": "internet_archive:bim_eighteenth-century_mercy-triumphant-a-disc_maurice-william_1800",
+   "group": "sermons",
+   "year": 1800,
+   "words": 15998,
+   "status": "read"
+  },
+  "hathitrust:yale.39002005586855": {
+   "kind": "baseline",
+   "work_id": "hathitrust:yale.39002005586855",
+   "group": "sermons",
+   "year": 1814,
+   "words": 10106,
+   "status": "read"
+  },
+  "internet_archive:sermondeliveredi00dwig": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sermondeliveredi00dwig",
+   "group": "sermons",
+   "year": 1813,
+   "words": 9917,
+   "status": "read"
+  },
+  "hathitrust:yale.39002089549894": {
+   "kind": "baseline",
+   "work_id": "hathitrust:yale.39002089549894",
+   "group": "sermons",
+   "year": 1818,
+   "words": 5954,
+   "status": "read"
+  },
+  "internet_archive:orationpronounce00bate": {
+   "kind": "baseline",
+   "work_id": "internet_archive:orationpronounce00bate",
+   "group": "sermons",
+   "year": 1812,
+   "words": 7853,
+   "status": "read"
+  },
+  "internet_archive:discoursepreache01baco": {
+   "kind": "baseline",
+   "work_id": "internet_archive:discoursepreache01baco",
+   "group": "sermons",
+   "year": 1828,
+   "words": 11738,
+   "status": "read"
+  },
+  "internet_archive:cihm_21024": {
+   "kind": "baseline",
+   "work_id": "internet_archive:cihm_21024",
+   "group": "sermons",
+   "year": 1816,
+   "words": 14447,
+   "status": "read"
+  },
+  "internet_archive:sermondeliveredi00spar_0": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sermondeliveredi00spar_0",
+   "group": "sermons",
+   "year": 1819,
+   "words": 11223,
+   "status": "read"
+  },
+  "internet_archive:bim_early-english-books-1641-1700_staughton-william_1810": {
+   "kind": "baseline",
+   "work_id": "internet_archive:bim_early-english-books-1641-1700_staughton-william_1810",
+   "group": "sermons",
+   "year": 1810,
+   "words": 11151,
+   "status": "read"
+  },
+  "internet_archive:sermonpreachedat00rock": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sermonpreachedat00rock",
+   "group": "sermons",
+   "year": 1815,
+   "words": 8944,
+   "status": "read"
+  },
+  "internet_archive:sermondeliveredb00bate": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sermondeliveredb00bate",
+   "group": "sermons",
+   "year": 1813,
+   "words": 12401,
+   "status": "read"
+  },
+  "internet_archive:cu31924104014729": {
+   "kind": "baseline",
+   "work_id": "internet_archive:cu31924104014729",
+   "group": "sermons",
+   "year": 1809,
+   "words": 9807,
+   "status": "read"
+  },
+  "internet_archive:discourseoccasio00park_0": {
+   "kind": "baseline",
+   "work_id": "internet_archive:discourseoccasio00park_0",
+   "group": "sermons",
+   "year": 1812,
+   "words": 7156,
+   "status": "read"
+  },
+  "internet_archive:address00maso": {
+   "kind": "baseline",
+   "work_id": "internet_archive:address00maso",
+   "group": "sermons",
+   "year": 1827,
+   "words": 11693,
+   "status": "read"
+  },
+  "internet_archive:addressdelivered00bruc": {
+   "kind": "baseline",
+   "work_id": "internet_archive:addressdelivered00bruc",
+   "group": "sermons",
+   "year": 1828,
+   "words": 6005,
+   "status": "read"
+  },
+  "hathitrust:mdp.39015088374122": {
+   "kind": "baseline",
+   "work_id": "hathitrust:mdp.39015088374122",
+   "group": "sermons",
+   "year": 1814,
+   "words": 9070,
+   "status": "read"
+  },
+  "institutional_books:HNQFAS": {
+   "kind": "baseline",
+   "work_id": "institutional_books:HNQFAS",
+   "group": "sermons",
+   "year": 1824,
+   "words": 8638,
+   "status": "read"
+  },
+  "internet_archive:PastoralAddressOfTheRtRev": {
+   "kind": "baseline",
+   "work_id": "internet_archive:PastoralAddressOfTheRtRev",
+   "group": "sermons",
+   "year": 1826,
+   "words": 12063,
+   "status": "read"
+  },
+  "internet_archive:sermonondeathofr00bogu": {
+   "kind": "baseline",
+   "work_id": "internet_archive:sermonondeathofr00bogu",
+   "group": "sermons",
+   "year": 1811,
+   "words": 10155,
+   "status": "read"
+  },
+  "internet_archive:lectureonusesofa00maca": {
+   "kind": "baseline",
+   "work_id": "internet_archive:lectureonusesofa00maca",
+   "group": "sermons",
+   "year": 1826,
+   "words": 18614,
+   "status": "read"
+  }
+ },
+ "check_sermon": "internet_archive:addressdelivered00bruc",
+ "variants_run": [
+  "blocks",
+  "whole",
+  "anchored"
+ ],
+ "deciding_variant": "anchored",
+ "variants": {
+  "blocks": {
+   "check": {
+    "status": "scored",
+    "threshold": 0.66789,
+    "same": {
+     "rank": 1,
+     "of": 60,
+     "score": 24.5,
+     "matched": 33,
+     "order_p": 0.000999,
+     "span": 48,
+     "p_floor": 0.000999
+    },
+    "scrambled": {
+     "score": 2.5,
+     "matched": 4,
+     "order_p": 1.0,
+     "span": 6,
+     "p_floor": 0.002387
+    },
+    "bar_p": 0.01,
+    "unreadable_outlines": 0,
+    "unanchored_points": 0,
+    "passed": true
+   },
+   "open": {},
+   "unreadable_outlines": 0,
+   "unanchored_points": 0,
+   "threshold": 0.66789,
+   "unrelated_cosines": 7187074,
+   "baseline": 60,
+   "points": {
+    "target": 12,
+    "chapter_1830": 24,
+    "decoy": 12,
+    "chapin": 60,
+    "scripture_inquiry": 480,
+    "internet_archive:sim_universalist_1825-10-15_7_17": 60,
+    "internet_archive:sim_civil-and-religious-intelligencer-or-the-gleanor_1817-01-06_1_8": 56,
+    "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-07-28_3_48": 60,
+    "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-09-15_4_3": 82,
+    "internet_archive:sim_universalist-modern-universalism_1825-11-15_1_16": 60,
+    "internet_archive:sim_universalist_1821-09-01_3_10": 60,
+    "internet_archive:bim_eighteenth-century_the-eternity-of-future-p_crouch-isaac_1786": 60,
+    "internet_archive:sim_philadelphia-universalist-magazine_1822-06_1_11": 120,
+    "internet_archive:universalist_1826-08-26_8_10": 46,
+    "internet_archive:sim_universalist_1823-03-08_4_37": 48,
+    "internet_archive:bim_eighteenth-century_the-eternity-of-hell-tor_edwards-jonathan_1788": 72,
+    "internet_archive:bim_eighteenth-century_second-thoughts-on-the-s_berrow-capel_1782_7": 96,
+    "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-03-17_3_29": 72,
+    "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-06-30_3_44": 72,
+    "internet_archive:sim_universalist_1823-09-27_5_14": 60,
+    "internet_archive:sim_universalist_1824-02-14_5_34": 60,
+    "internet_archive:universalist_1826-11-11_8_21": 48,
+    "internet_archive:sim_universalist_1821-08-25_3_9": 60,
+    "internet_archive:workswordsofjesu00winc": 120,
+    "internet_archive:sim_universalist_1823-02-01_4_32": 48,
+    "internet_archive:universalist_1828-05-17_9_48": 48,
+    "internet_archive:sim_christian-telescope-and-universalist-miscellany_1826-08-12_3_1": 71,
+    "internet_archive:sim_civil-and-religious-intelligencer-or-the-gleanor_1817-03-10_1_16": 48,
+    "internet_archive:sim_universalist_1819-07-10_1_2": 60,
+    "internet_archive:sim_philadelphia-universalist-magazine_1823-04_2_9": 120,
+    "internet_archive:sim_universalist_1825-02-05_6_33": 59,
+    "internet_archive:sim_universalist_1825-06-11_6_51": 60,
+    "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-01-13_3_20": 72,
+    "internet_archive:sim_universalist_1822-02-09_3_33": 60,
+    "internet_archive:sim_universalist_1823-08-16_5_8": 60,
+    "internet_archive:bim_eighteenth-century_a-sermon-occasioned-by-_alexander-caleb_1800": 48,
+    "institutional_books:32044086340833": 36,
+    "internet_archive:reportoftrustees00hamp": 72,
+    "institutional_books:HWH2AH": 60,
+    "hathitrust:yale.39002053501772": 48,
+    "tcp:N28496": 60,
+    "internet_archive:sermondeliveredn00emmo": 36,
+    "internet_archive:repentrepentorli00rich": 72,
+    "internet_archive:cu31924104014562": 36,
+    "internet_archive:addressdelivered05ever": 60,
+    "internet_archive:bim_eighteenth-century_mercy-triumphant-a-disc_maurice-william_1800": 72,
+    "hathitrust:yale.39002005586855": 72,
+    "internet_archive:sermondeliveredi00dwig": 60,
+    "hathitrust:yale.39002089549894": 36,
+    "internet_archive:orationpronounce00bate": 48,
+    "internet_archive:discoursepreache01baco": 48,
+    "internet_archive:cihm_21024": 96,
+    "internet_archive:sermondeliveredi00spar_0": 72,
+    "internet_archive:bim_early-english-books-1641-1700_staughton-william_1810": 72,
+    "internet_archive:sermonpreachedat00rock": 60,
+    "internet_archive:sermondeliveredb00bate": 84,
+    "internet_archive:cu31924104014729": 60,
+    "internet_archive:discourseoccasio00park_0": 46,
+    "internet_archive:address00maso": 71,
+    "internet_archive:addressdelivered00bruc": 48,
+    "hathitrust:mdp.39015088374122": 59,
+    "institutional_books:HNQFAS": 60,
+    "internet_archive:PastoralAddressOfTheRtRev": 84,
+    "internet_archive:sermonondeathofr00bogu": 72,
+    "internet_archive:lectureonusesofa00maca": 60
+   },
+   "targets": {
+    "target": {
+     "named": {
+      "chapin": {
+       "rank": 4,
+       "of": 61,
+       "score": 2.5,
+       "order_p": 0.170829,
+       "aligned_span": 3,
+       "p_floor": 0.167499,
+       "p_can_reach_bar": false,
+       "verdict": "cannot tell",
+       "matched": 3
+      },
+      "scripture_inquiry": {
+       "rank": 11,
+       "of": 61,
+       "score": 2.0,
+       "order_p": 1.0,
+       "aligned_span": 2,
+       "p_floor": 0.5005,
+       "p_can_reach_bar": false,
+       "verdict": "no",
+       "matched": 2
+      }
+     },
+     "baseline_top": [
+      {
+       "work_id": "internet_archive:sermondeliveredb00bate",
+       "group": "sermons",
+       "score": 2.5,
+       "matched": 3,
+       "order_p": 0.448551,
+       "span": 4,
+       "p_floor": 0.042624
+      },
+      {
+       "work_id": "internet_archive:sim_universalist_1821-09-01_3_10",
+       "group": "universalism",
+       "score": 2.5,
+       "matched": 4,
+       "order_p": 0.509491,
+       "span": 7,
+       "p_floor": 0.001197
+      },
+      {
+       "work_id": "internet_archive:sim_universalist_1824-02-14_5_34",
+       "group": "universalism",
+       "score": 2.5,
+       "matched": 3,
+       "order_p": 0.338661,
+       "span": 3,
+       "p_floor": 0.167499
+      },
+      {
+       "work_id": "internet_archive:bim_early-english-books-1641-1700_staughton-william_1810",
+       "group": "sermons",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 0.517483,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:bim_eighteenth-century_mercy-triumphant-a-disc_maurice-william_1800",
+       "group": "sermons",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 0.498501,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:repentrepentorli00rich",
+       "group": "sermons",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 0.484515,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:sermonpreachedat00rock",
+       "group": "sermons",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 0.517483,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:sim_christian-telescope-and-universalist-miscellany_1826-08-12_3_1",
+       "group": "universalism",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 0.515485,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:sim_philadelphia-universalist-magazine_1823-04_2_9",
+       "group": "universalism",
+       "score": 2.0,
+       "matched": 4,
+       "order_p": 0.754246,
+       "span": 8,
+       "p_floor": 0.001024
+      },
+      {
+       "work_id": "internet_archive:sim_universalist_1821-08-25_3_9",
+       "group": "universalism",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 1.0,
+       "span": 2,
+       "p_floor": 0.5005
+      }
+     ],
+     "baseline_median_score": 1.0,
+     "baseline_at_bar": 0
+    },
+    "chapter_1830": {
+     "named": {
+      "chapin": {
+       "rank": 38,
+       "of": 61,
+       "score": 1.5,
+       "order_p": 1.0,
+       "aligned_span": 2,
+       "p_floor": 0.5005,
+       "p_can_reach_bar": false,
+       "verdict": "no",
+       "matched": 2
+      },
+      "scripture_inquiry": {
+       "rank": 2,
+       "of": 61,
+       "score": 4.5,
+       "order_p": 0.093906,
+       "aligned_span": 11,
+       "p_floor": 0.000999,
+       "p_can_reach_bar": true,
+       "verdict": "cannot tell",
+       "matched": 7
+      }
+     },
+     "baseline_top": [
+      {
+       "work_id": "internet_archive:sim_philadelphia-universalist-magazine_1823-04_2_9",
+       "group": "universalism",
+       "score": 5.0,
+       "matched": 6,
+       "order_p": 0.007992,
+       "span": 7,
+       "p_floor": 0.001197
+      },
+      {
+       "work_id": "internet_archive:sim_universalist_1825-10-15_7_17",
+       "group": "universalism",
+       "score": 3.5,
+       "matched": 5,
+       "order_p": 0.207792,
+       "span": 7,
+       "p_floor": 0.001197
+      },
+      {
+       "work_id": "internet_archive:sermondeliveredb00bate",
+       "group": "sermons",
+       "score": 3.0,
+       "matched": 4,
+       "order_p": 0.290709,
+       "span": 6,
+       "p_floor": 0.002387
+      },
+      {
+       "work_id": "internet_archive:sim_universalist_1821-09-01_3_10",
+       "group": "universalism",
+       "score": 3.0,
+       "matched": 5,
+       "order_p": 0.146853,
+       "span": 9,
+       "p_floor": 0.001002
+      },
+      {
+       "work_id": "hathitrust:yale.39002005586855",
+       "group": "sermons",
+       "score": 2.5,
+       "matched": 3,
+       "order_p": 0.173826,
+       "span": 4,
+       "p_floor": 0.042624
+      },
+      {
+       "work_id": "internet_archive:bim_eighteenth-century_the-eternity-of-future-p_crouch-isaac_1786",
+       "group": "universalism",
+       "score": 2.5,
+       "matched": 3,
+       "order_p": 0.887113,
+       "span": 4,
+       "p_floor": 0.042624
+      },
+      {
+       "work_id": "internet_archive:reportoftrustees00hamp",
+       "group": "sermons",
+       "score": 2.5,
+       "matched": 4,
+       "order_p": 0.294705,
+       "span": 7,
+       "p_floor": 0.001197
+      },
+      {
+       "work_id": "internet_archive:sim_universalist_1823-08-16_5_8",
+       "group": "universalism",
+       "score": 2.5,
+       "matched": 3,
+       "order_p": 0.442557,
+       "span": 4,
+       "p_floor": 0.042624
+      },
+      {
+       "work_id": "internet_archive:sim_universalist_1824-02-14_5_34",
+       "group": "universalism",
+       "score": 2.5,
+       "matched": 3,
+       "order_p": 1.0,
+       "span": 3,
+       "p_floor": 0.167499
+      },
+      {
+       "work_id": "internet_archive:workswordsofjesu00winc",
+       "group": "universalism",
+       "score": 2.5,
+       "matched": 3,
+       "order_p": 0.53047,
+       "span": 4,
+       "p_floor": 0.042624
+      }
+     ],
+     "baseline_median_score": 1.5,
+     "baseline_at_bar": 1
+    },
+    "decoy": {
+     "named": {
+      "chapin": {
+       "rank": 59,
+       "of": 61,
+       "score": 1.0,
+       "order_p": 1.0,
+       "aligned_span": 1,
+       "p_floor": 1.0,
+       "p_can_reach_bar": false,
+       "verdict": "no",
+       "matched": 1
+      },
+      "scripture_inquiry": {
+       "rank": 7,
+       "of": 61,
+       "score": 2.0,
+       "order_p": 0.51049,
+       "aligned_span": 2,
+       "p_floor": 0.5005,
+       "p_can_reach_bar": false,
+       "verdict": "no",
+       "matched": 2
+      }
+     },
+     "baseline_top": [
+      {
+       "work_id": "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-09-15_4_3",
+       "group": "universalism",
+       "score": 2.5,
+       "matched": 3,
+       "order_p": 0.398601,
+       "span": 4,
+       "p_floor": 0.042624
+      },
+      {
+       "work_id": "internet_archive:bim_eighteenth-century_a-sermon-occasioned-by-_alexander-caleb_1800",
+       "group": "sermons",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 1.0,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:bim_eighteenth-century_mercy-triumphant-a-disc_maurice-william_1800",
+       "group": "sermons",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 0.497502,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:discourseoccasio00park_0",
+       "group": "sermons",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 1.0,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:reportoftrustees00hamp",
+       "group": "sermons",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 0.480519,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:sermonondeathofr00bogu",
+       "group": "sermons",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 0.495504,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "institutional_books:HNQFAS",
+       "group": "sermons",
+       "score": 1.5,
+       "matched": 2,
+       "order_p": 0.512488,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:bim_early-english-books-1641-1700_staughton-william_1810",
+       "group": "sermons",
+       "score": 1.5,
+       "matched": 2,
+       "order_p": 1.0,
+       "span": 3,
+       "p_floor": 0.167499
+      },
+      {
+       "work_id": "internet_archive:bim_eighteenth-century_the-eternity-of-future-p_crouch-isaac_1786",
+       "group": "universalism",
+       "score": 1.5,
+       "matched": 2,
+       "order_p": 1.0,
+       "span": 3,
+       "p_floor": 0.167499
+      },
+      {
+       "work_id": "internet_archive:discoursepreache01baco",
+       "group": "sermons",
+       "score": 1.5,
+       "matched": 2,
+       "order_p": 0.508492,
+       "span": 3,
+       "p_floor": 0.167499
+      }
+     ],
+     "baseline_median_score": 1.0,
+     "baseline_at_bar": 0
+    }
+   },
+   "decoy_puts_chapin_first": false,
+   "verdict": "cannot tell"
+  },
+  "whole": {
+   "check": {
+    "status": "scored",
+    "threshold": 0.674836,
+    "same": {
+     "rank": 1,
+     "of": 60,
+     "score": 10.0,
+     "matched": 11,
+     "order_p": 0.000999,
+     "span": 12,
+     "p_floor": 0.000999
+    },
+    "scrambled": {
+     "score": 6.5,
+     "matched": 7,
+     "order_p": 0.002997,
+     "span": 7,
+     "p_floor": 0.001197
+    },
+    "bar_p": 0.01,
+    "unreadable_outlines": 0,
+    "unanchored_points": 0,
+    "passed": false
+   },
+   "open": {},
+   "unreadable_outlines": 0,
+   "unanchored_points": 0,
+   "stopped": "the known-answer check is not passed or not complete; nothing scored"
+  },
+  "anchored": {
+   "check": {
+    "status": "scored",
+    "threshold": 0.672751,
+    "same": {
+     "rank": 1,
+     "of": 60,
+     "score": 7.0,
+     "matched": 9,
+     "order_p": 0.002997,
+     "span": 12,
+     "p_floor": 0.000999
+    },
+    "scrambled": {
+     "score": 1.5,
+     "matched": 2,
+     "order_p": 0.828172,
+     "span": 3,
+     "p_floor": 0.167499
+    },
+    "bar_p": 0.01,
+    "unreadable_outlines": 0,
+    "unanchored_points": 0,
+    "passed": true
+   },
+   "open": {},
+   "unreadable_outlines": 0,
+   "unanchored_points": 0,
+   "threshold": 0.672751,
+   "unrelated_cosines": 254880,
+   "baseline": 60,
+   "points": {
+    "target": 12,
+    "chapter_1830": 12,
+    "decoy": 12,
+    "chapin": 12,
+    "scripture_inquiry": 12,
+    "internet_archive:sim_universalist_1825-10-15_7_17": 12,
+    "internet_archive:sim_civil-and-religious-intelligencer-or-the-gleanor_1817-01-06_1_8": 12,
+    "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-07-28_3_48": 12,
+    "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-09-15_4_3": 12,
+    "internet_archive:sim_universalist-modern-universalism_1825-11-15_1_16": 12,
+    "internet_archive:sim_universalist_1821-09-01_3_10": 12,
+    "internet_archive:bim_eighteenth-century_the-eternity-of-future-p_crouch-isaac_1786": 12,
+    "internet_archive:sim_philadelphia-universalist-magazine_1822-06_1_11": 12,
+    "internet_archive:universalist_1826-08-26_8_10": 12,
+    "internet_archive:sim_universalist_1823-03-08_4_37": 12,
+    "internet_archive:bim_eighteenth-century_the-eternity-of-hell-tor_edwards-jonathan_1788": 12,
+    "internet_archive:bim_eighteenth-century_second-thoughts-on-the-s_berrow-capel_1782_7": 12,
+    "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-03-17_3_29": 12,
+    "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-06-30_3_44": 12,
+    "internet_archive:sim_universalist_1823-09-27_5_14": 12,
+    "internet_archive:sim_universalist_1824-02-14_5_34": 12,
+    "internet_archive:universalist_1826-11-11_8_21": 12,
+    "internet_archive:sim_universalist_1821-08-25_3_9": 12,
+    "internet_archive:workswordsofjesu00winc": 12,
+    "internet_archive:sim_universalist_1823-02-01_4_32": 12,
+    "internet_archive:universalist_1828-05-17_9_48": 12,
+    "internet_archive:sim_christian-telescope-and-universalist-miscellany_1826-08-12_3_1": 12,
+    "internet_archive:sim_civil-and-religious-intelligencer-or-the-gleanor_1817-03-10_1_16": 12,
+    "internet_archive:sim_universalist_1819-07-10_1_2": 12,
+    "internet_archive:sim_philadelphia-universalist-magazine_1823-04_2_9": 12,
+    "internet_archive:sim_universalist_1825-02-05_6_33": 12,
+    "internet_archive:sim_universalist_1825-06-11_6_51": 12,
+    "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-01-13_3_20": 12,
+    "internet_archive:sim_universalist_1822-02-09_3_33": 12,
+    "internet_archive:sim_universalist_1823-08-16_5_8": 12,
+    "internet_archive:bim_eighteenth-century_a-sermon-occasioned-by-_alexander-caleb_1800": 12,
+    "institutional_books:32044086340833": 12,
+    "internet_archive:reportoftrustees00hamp": 12,
+    "institutional_books:HWH2AH": 12,
+    "hathitrust:yale.39002053501772": 12,
+    "tcp:N28496": 12,
+    "internet_archive:sermondeliveredn00emmo": 12,
+    "internet_archive:repentrepentorli00rich": 12,
+    "internet_archive:cu31924104014562": 12,
+    "internet_archive:addressdelivered05ever": 12,
+    "internet_archive:bim_eighteenth-century_mercy-triumphant-a-disc_maurice-william_1800": 12,
+    "hathitrust:yale.39002005586855": 12,
+    "internet_archive:sermondeliveredi00dwig": 12,
+    "hathitrust:yale.39002089549894": 12,
+    "internet_archive:orationpronounce00bate": 12,
+    "internet_archive:discoursepreache01baco": 12,
+    "internet_archive:cihm_21024": 12,
+    "internet_archive:sermondeliveredi00spar_0": 12,
+    "internet_archive:bim_early-english-books-1641-1700_staughton-william_1810": 12,
+    "internet_archive:sermonpreachedat00rock": 12,
+    "internet_archive:sermondeliveredb00bate": 12,
+    "internet_archive:cu31924104014729": 12,
+    "internet_archive:discourseoccasio00park_0": 12,
+    "internet_archive:address00maso": 12,
+    "internet_archive:addressdelivered00bruc": 12,
+    "hathitrust:mdp.39015088374122": 12,
+    "institutional_books:HNQFAS": 12,
+    "internet_archive:PastoralAddressOfTheRtRev": 12,
+    "internet_archive:sermonondeathofr00bogu": 12,
+    "internet_archive:lectureonusesofa00maca": 12
+   },
+   "targets": {
+    "target": {
+     "named": {
+      "chapin": {
+       "rank": 41,
+       "of": 61,
+       "score": 1.0,
+       "order_p": 1.0,
+       "aligned_span": 1,
+       "p_floor": 1.0,
+       "p_can_reach_bar": false,
+       "verdict": "no",
+       "matched": 1
+      },
+      "scripture_inquiry": {
+       "rank": 41,
+       "of": 61,
+       "score": 1.0,
+       "order_p": 1.0,
+       "aligned_span": 1,
+       "p_floor": 1.0,
+       "p_can_reach_bar": false,
+       "verdict": "no",
+       "matched": 1
+      }
+     },
+     "baseline_top": [
+      {
+       "work_id": "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-07-28_3_48",
+       "group": "universalism",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 0.501499,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:sim_civil-and-religious-intelligencer-or-the-gleanor_1817-03-10_1_16",
+       "group": "universalism",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 0.457542,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:sim_universalist_1821-09-01_3_10",
+       "group": "universalism",
+       "score": 1.5,
+       "matched": 2,
+       "order_p": 0.518482,
+       "span": 3,
+       "p_floor": 0.167499
+      },
+      {
+       "work_id": "internet_archive:sim_universalist_1825-10-15_7_17",
+       "group": "universalism",
+       "score": 1.5,
+       "matched": 2,
+       "order_p": 0.465534,
+       "span": 3,
+       "p_floor": 0.167499
+      },
+      {
+       "work_id": "institutional_books:32044086340833",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "institutional_books:HNQFAS",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "internet_archive:PastoralAddressOfTheRtRev",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "internet_archive:address00maso",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "internet_archive:bim_early-english-books-1641-1700_staughton-william_1810",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "internet_archive:bim_eighteenth-century_a-sermon-occasioned-by-_alexander-caleb_1800",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      }
+     ],
+     "baseline_median_score": 1.0,
+     "baseline_at_bar": 0
+    },
+    "chapter_1830": {
+     "named": {
+      "chapin": {
+       "rank": 41,
+       "of": 61,
+       "score": 1.0,
+       "order_p": 1.0,
+       "aligned_span": 1,
+       "p_floor": 1.0,
+       "p_can_reach_bar": false,
+       "verdict": "no",
+       "matched": 1
+      },
+      "scripture_inquiry": {
+       "rank": 6,
+       "of": 61,
+       "score": 1.5,
+       "order_p": 0.504496,
+       "aligned_span": 3,
+       "p_floor": 0.167499,
+       "p_can_reach_bar": false,
+       "verdict": "cannot tell",
+       "matched": 2
+      }
+     },
+     "baseline_top": [
+      {
+       "work_id": "internet_archive:sim_universalist_1821-09-01_3_10",
+       "group": "universalism",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 1.0,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:cu31924104014562",
+       "group": "sermons",
+       "score": 1.5,
+       "matched": 2,
+       "order_p": 0.503497,
+       "span": 3,
+       "p_floor": 0.167499
+      },
+      {
+       "work_id": "internet_archive:sim_christian-telescope-and-universalist-miscellany_1827-09-15_4_3",
+       "group": "universalism",
+       "score": 1.5,
+       "matched": 2,
+       "order_p": 0.481518,
+       "span": 3,
+       "p_floor": 0.167499
+      },
+      {
+       "work_id": "internet_archive:sim_universalist_1821-08-25_3_9",
+       "group": "universalism",
+       "score": 1.5,
+       "matched": 2,
+       "order_p": 0.841159,
+       "span": 3,
+       "p_floor": 0.167499
+      },
+      {
+       "work_id": "internet_archive:sim_universalist_1825-10-15_7_17",
+       "group": "universalism",
+       "score": 1.5,
+       "matched": 2,
+       "order_p": 1.0,
+       "span": 3,
+       "p_floor": 0.167499
+      },
+      {
+       "work_id": "hathitrust:mdp.39015088374122",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "hathitrust:yale.39002005586855",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "institutional_books:32044086340833",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "institutional_books:HNQFAS",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "internet_archive:PastoralAddressOfTheRtRev",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      }
+     ],
+     "baseline_median_score": 1.0,
+     "baseline_at_bar": 0
+    },
+    "decoy": {
+     "named": {
+      "chapin": {
+       "rank": 5,
+       "of": 61,
+       "score": 1.5,
+       "order_p": 0.494505,
+       "aligned_span": 2,
+       "p_floor": 0.5005,
+       "p_can_reach_bar": false,
+       "verdict": "cannot tell",
+       "matched": 2
+      },
+      "scripture_inquiry": {
+       "rank": 61,
+       "of": 61,
+       "score": 0.0,
+       "order_p": 1.0,
+       "aligned_span": 0,
+       "p_floor": 1.0,
+       "p_can_reach_bar": false,
+       "verdict": "no",
+       "matched": 0
+      }
+     },
+     "baseline_top": [
+      {
+       "work_id": "internet_archive:bim_eighteenth-century_a-sermon-occasioned-by-_alexander-caleb_1800",
+       "group": "sermons",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 1.0,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:repentrepentorli00rich",
+       "group": "sermons",
+       "score": 2.0,
+       "matched": 3,
+       "order_p": 0.398601,
+       "span": 4,
+       "p_floor": 0.042624
+      },
+      {
+       "work_id": "internet_archive:sim_christian-telescope-and-universalist-miscellany_1826-08-12_3_1",
+       "group": "universalism",
+       "score": 2.0,
+       "matched": 2,
+       "order_p": 1.0,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "internet_archive:sim_civil-and-religious-intelligencer-or-the-gleanor_1817-03-10_1_16",
+       "group": "universalism",
+       "score": 1.5,
+       "matched": 2,
+       "order_p": 1.0,
+       "span": 2,
+       "p_floor": 0.5005
+      },
+      {
+       "work_id": "hathitrust:mdp.39015088374122",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "hathitrust:yale.39002005586855",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "hathitrust:yale.39002089549894",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "institutional_books:32044086340833",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "institutional_books:HNQFAS",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      },
+      {
+       "work_id": "internet_archive:PastoralAddressOfTheRtRev",
+       "group": "sermons",
+       "score": 1.0,
+       "matched": 1,
+       "order_p": 1.0,
+       "span": 1,
+       "p_floor": 1.0
+      }
+     ],
+     "baseline_median_score": 1.0,
+     "baseline_at_bar": 0
+    }
+   },
+   "decoy_puts_chapin_first": false,
+   "verdict": "no"
+  }
+ },
+ "reliability": {
+  "blocks": 20,
+  "compared": 20,
+  "median_agreement": 0.9167
+ },
+ "answer": "no",
+ "config_sha256": "1789af68f5f984777237ccca53951a9c131f2afa7d4eba4edda1a2f7c667ae53",
+ "commit": "cd8d7d6a2624b715c7fcb315bb868785f09e80fb"
+}
