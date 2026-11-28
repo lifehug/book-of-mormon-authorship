@@ -874,8 +874,9 @@ lab:                              # the research lab (exploratory tooling; reads
       seed: 20261128               # draws the baseline sermon that is reworded (simulated) and scrambled
       bar_p: 0.01                  # reworded copy finds its original first at p at most this; the scrambled copy must not reach it
     no_share: 0.10                 # card: "no" if Chapin is outside the top 10% of the group
-    variants: [blocks, whole]      # blocks: 2,000-word blocks; whole: one outline per text, max_points points (nearer the claim's 3 + 7 grain); both always reported
-    deciding_variant: whole        # which variant gives the answer; the owner chose the whole-text variant on 2026-11-27, before any outline call; the blocks variant is reported beside and decides nothing
+    variants: [blocks, whole, anchored]  # blocks: 2,000-word blocks; whole: one outline per text, max_points points (nearer the claim's 3 + 7 grain); anchored: whole text with numbered markers, points put in marker order; all always reported
+    deciding_variant: anchored     # 2026-11-27: whole (the owner's first choice) failed its check, a scrambled copy came out in the original order (p 0.003), so the model's list order is not the text's; anchored keeps the whole-text grain and takes order from the markers
+    anchor_words: 100              # anchored variant: a numbered marker before every this many words
     reextract_blocks: 20           # blocks asked a second time to measure how often the outline repeats
   numbers:                         # BOM-114 (lab; exploratory): number profiles and the weights of Alma 11
     seed: 20261120

@@ -146,3 +146,15 @@ def test_a_planted_outline_in_order_gives_a_small_p_and_reversed_does_not():
     assert bad["matched"] == 1 and bad["order_p"] > 0.01
     empty = order_test(points, np.zeros((0, 64)), 0.9, 7, CARD)
     assert empty["order_p"] is None and empty["span"] == 0
+
+
+def test_anchored_points_follow_their_markers():
+    from lab.sermon_outline import anchor, in_marker_order
+
+    assert anchor([f"w{i}" for i in range(5)], 2) == "[1] w0 w1 [2] w2 w3 [3] w4"
+    pts, lost = in_marker_order(["late point. [9]", "early [2].", "no marker", "also early [2]"])
+    assert pts == ["early", "also early", "late point."] and lost == 1
+    jobs = outline_jobs({"t": "a b c d e"}, "anchored", {**CARD, "anchor_words": 2})
+    assert jobs[0]["id"] == "anchored|t|0|1" and "[3] e" in jobs[0]["prompt"]
+    got = outlines_of(jobs, [{"id": "anchored|t|0|1", "reply": "- second [3]\n- first [1]"}], 12)
+    assert got["points"] == {"t": ["first", "second"]} and got["unanchored"] == 0

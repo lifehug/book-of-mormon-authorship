@@ -16,11 +16,14 @@ index's local model, as ``semantic.skeleton`` does).
    ``baseline.universalism`` seeded works from the BOM-130 topic controls of 1780-1829 and
    ``baseline.sermons`` seeded ``sermon_devotional`` works of ``year_min`` to ``year_max``, all
    kept copies of ``min_words`` to ``max_words`` words.
-2. **Outlines.** Two variants, each its own job file. ``blocks`` (reported, decides
-   nothing under the owner's 2026-11-27 choice): every ``block_words``-word block, at most
-   ``max_points`` points each. ``whole`` (the deciding variant, owner's choice): the whole text at once, at most ``max_points`` points, the grain of the
-   reader's "3 + 7". ``variants`` says which are run and ``deciding_variant`` which one gives the
-   answer; that choice is the owner's and is written on the card before any outline is read.
+2. **Outlines.** Three variants, each its own job file, all reported. ``blocks``: every
+   ``block_words``-word block, at most ``max_points`` points each. ``whole`` (the owner's first
+   choice to decide): the whole text at once, at most ``max_points`` points, the grain of the
+   reader's "3 + 7". ``anchored`` (deciding since 2026-11-27, after ``whole`` failed its check:
+   a scrambled copy came out in its original order, so the model's list order is not the
+   text's): the whole text with a numbered marker every ``anchor_words`` words; each point names
+   the marker where the passage makes it, and the points are put in marker order. ``variants``
+   says which are run and ``deciding_variant`` which one gives the answer.
 3. **Alignment.** Points match when their cosine reaches the ``point_match_quantile`` quantile of
    cosines between points of different baseline texts. Texts are scored by Smith-Waterman, and
    order is tested by ``shuffles`` shuffles of the aligned span (``semantic.skeleton.compare``).
@@ -77,7 +80,7 @@ from semantic import skeleton
 CARD = NOTES / "owner" / "2026-11-27-sermon-outline"  # private: the card and the check's texts
 WORK = FAST / "sermon_outline"  # local: jobs and outlines quote or paraphrase the texts
 OUT = REGISTRY / "reruns" / "sermon_outline"  # public: ids, ranks, p-values, counts
-VARIANTS = ("blocks", "whole")
+VARIANTS = ("blocks", "whole", "anchored")
 TARGETS = ("target", "chapter_1830", "decoy")
 NAMED = ("chapin", "scripture_inquiry")
 FILES = {
@@ -95,6 +98,21 @@ OUTLINE = """Read the passage below and list, in the order the passage makes the
 points of its argument: what it sets out to prove, the reasons and proofs it gives, objections \
 it answers, and the uses or lessons it draws from them. Write each point as one short plain \
 sentence. Replace every personal name, people and place name with a role or description ("a \
+prophet", "the people", "the city"). Do not copy the passage's own numbering. If the passage \
+makes no argument (title page, list, table, index, or a story only), reply with the single word \
+NONE.
+
+Reply with the points only, one per line, each line starting with "- ".
+
+Passage:
+{text}"""
+
+ANCHORED = """Read the passage below. Numbered markers in square brackets, [1], [2], [3] and so \
+on, divide it into sections. List at most {n} points of its argument: what it sets out to prove, \
+the reasons and proofs it gives, objections it answers, and the uses or lessons it draws from \
+them. Write each point as one short plain sentence and end it with the number of the marked \
+section where the passage makes it, in square brackets, as in "- The speaker warns against \
+pride. [7]". Replace every personal name, people and place name with a role or description ("a \
 prophet", "the people", "the city"). Do not copy the passage's own numbering. If the passage \
 makes no argument (title page, list, table, index, or a story only), reply with the single word \
 NONE.
@@ -275,6 +293,28 @@ def split_id(job_id: str) -> tuple[str, str, int, int]:
     return parts[0], "|".join(parts[1:-2]), int(parts[-2]), int(parts[-1])
 
 
+def anchor(words: list[str], every: int) -> str:
+    """The words with a marker ``[1]``, ``[2]``, ... before every ``every``-word section."""
+    secs = [words[i : i + every] for i in range(0, len(words), every)]
+    return " ".join(f"[{k}] " + " ".join(w) for k, w in enumerate(secs, 1))
+
+
+_MARK = re.compile(r"\s*\[(\d+)\]\s*\.?\s*$")
+
+
+def in_marker_order(points: list[str]) -> tuple[list[str], int]:
+    """Anchored points with their markers taken off, put in marker order (ties keep the reply's
+    order), and the number dropped for naming no marker."""
+    got, dropped = [], 0
+    for i, pt in enumerate(points):
+        m = _MARK.search(pt)
+        if not m:
+            dropped += 1
+            continue
+        got.append((int(m.group(1)), i, pt[: m.start()].strip()))
+    return [t for _, _, t in sorted(got)], dropped
+
+
 def outline_jobs(texts: dict[str, str], variant: str, c: dict) -> list[dict]:
     """One outline job per ``block_words`` block (``blocks``) or per whole text (``whole``), ids
     ``variant|name|i|n``. Texts go without titles; the prompt names no claim and no source."""
@@ -287,10 +327,13 @@ def outline_jobs(texts: dict[str, str], variant: str, c: dict) -> list[dict]:
             continue
         if variant == "blocks":
             parts = skeleton.cut(words, c["block_words"])
+        elif variant == "anchored":
+            parts = [anchor(words, c["anchor_words"])]
         else:
             parts = [" ".join(words)]
         for i, part in enumerate(parts):
-            prompt = OUTLINE.format(n=c["max_points"], text=part)
+            form = ANCHORED if variant == "anchored" else OUTLINE
+            prompt = form.format(n=c["max_points"], text=part)
             jobs.append({"id": f"{variant}|{name}|{i}|{len(parts)}", "prompt": prompt})
     return jobs
 
@@ -298,7 +341,8 @@ def outline_jobs(texts: dict[str, str], variant: str, c: dict) -> list[dict]:
 def outlines_of(jobs: list[dict], answers: list[dict], max_points: int) -> dict:
     """Each text's points in order, once every one of its jobs is answered; texts with an open
     job are counted, not scored. A reply that cannot be read is a block with no points, listed
-    in ``unreadable``."""
+    in ``unreadable``. Anchored replies are put in marker order; points naming no marker are
+    dropped and counted in ``unanchored``."""
     order: dict[str, list[str]] = {}
     for j in jobs:
         order.setdefault(split_id(j["id"])[1], []).append(j["id"])
@@ -306,6 +350,7 @@ def outlines_of(jobs: list[dict], answers: list[dict], max_points: int) -> dict:
     points: dict[str, list[str]] = {}
     open_: dict[str, int] = {}
     unreadable: list[str] = []
+    unanchored = 0
     for name, ids in order.items():
         missing = [i for i in ids if i not in reply]
         if missing:
@@ -316,9 +361,12 @@ def outlines_of(jobs: list[dict], answers: list[dict], max_points: int) -> dict:
             pts = skeleton.parse_events(reply[i], max_points)
             if pts is None:
                 unreadable.append(i)
+            elif split_id(i)[0] == "anchored":
+                pts, lost = in_marker_order(pts)
+                unanchored += lost
             got += pts or []
         points[name] = got
-    return {"points": points, "open": open_, "unreadable": unreadable}
+    return {"points": points, "open": open_, "unreadable": unreadable, "unanchored": unanchored}
 
 
 def again_jobs(blocks: list[dict], c: dict) -> list[dict]:
@@ -506,6 +554,7 @@ def prepare(cfg: dict, variant: str, texts: dict) -> dict:
         "variant": variant,
         "open": got["open"],
         "unreadable": got["unreadable"],
+        "unanchored": got["unanchored"],
         "base": base,
     }
     if got["open"]:
@@ -550,6 +599,7 @@ def check_variant(cfg: dict, prep: dict, x: str) -> dict:
         "scrambled": brief(mixed, c),
         "bar_p": bar,
         "unreadable_outlines": len(got["unreadable"]),
+        "unanchored_points": got["unanchored"],
         "passed": ka_passed(rank, same[x]["order_p"], mixed["order_p"], bar),
     }
 
@@ -590,6 +640,7 @@ def run_variant(cfg: dict, prep: dict, x: str, texts: dict) -> dict:
         "check": chk,
         "open": prep["open"],
         "unreadable_outlines": len(prep["unreadable"]),
+        "unanchored_points": prep["unanchored"],
     }
     if not chk["passed"]:
         res["stopped"] = "the known-answer check is not passed or not complete; nothing scored"
