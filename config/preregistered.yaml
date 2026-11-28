@@ -2122,6 +2122,50 @@ lab:                              # the research lab (exploratory tooling; reads
       holds_bar: 0.75              # of the items Roper calls confirmed, the share a standard must keep confirmed for the tally to "hold" under it (strict first, then loose); 0.75 as the lab's other judging bars
       strict_defined_for: [book_of_mormon, ss-manuscript-story-1885, mathews_behemoth_1839, hale_genius_of_oblivion_1823]   # books set in the Americas: the scale's place code means something for them; for the Old World chronicles only the loose standard and the code counts are compared
       compare_book_items: countable  # control things are compared with the Book of Mormon's countable items (each names a thing found in the text, like a control thing); all 227 reported beside
+  ancient_anachronisms:            # BOM-134 (lab): anachronisms in genuine ancient texts and decoys, read the Book of Mormon's way (simulated judging by an AI model); card data/private/lab/owner/2026-11-27-ancient-anachronisms/card.md
+    seed: 20261127
+    passage_words: 300             # a passage: this many whitespace words, on a grid of consecutive windows of the cleaned text
+    passages_per_text: 140         # equal sample per text (42,000 words): the smallest text (Spalding, 147 windows) holds it, and the calls stay near 3,500 in all
+    list_model: sonnet             # step 1: lists the concrete things in a passage
+    code_model: sonnet             # step 2: codes each listed thing against the text's own setting
+    second_coder_model: opus       # check (c): the same coding questions, a second model
+    agreement_items: 100           # check (c): at least this many item codes, from seeded check-stage passages
+    kappa_bar: 0.6                 # check (c): Cohen's kappa, three codes
+    bar_planted: 0.9               # check (a): share of the 40 plants found (listed, and coded NOT_ATTESTED_THERE_THEN)
+    bar_textbook: 6                # check (b): textbook cases caught, of 7
+    reader_bar: 0.9                # check (d): BOM-113's 12-item reader check, share matched (as lab.anachronisms.judge_bar)
+    reader_model: sonnet           # check (d): the model BOM-113's check ran on
+    bootstrap: 2000                # resamples of passages per text for the rate intervals
+    max_items_public: 4            # public results keep an item's name to this many words, lower case
+    planted:                       # check (a): one sentence planted near the middle of a seeded genuine passage; 10 passages per kind
+      per_kind: 10
+      kinds:
+        gunpowder: {sentence: "Then they brought barrels of gunpowder and laid them by the wall.", match: [gunpowder, powder]}
+        printed_book: {sentence: "And he opened a printed book and read aloud from its pages.", match: [print, book]}
+        clock: {sentence: "Meanwhile a clock upon the wall struck the hour of noon.", match: [clock]}
+        pistol: {sentence: "Then he drew a pistol from his belt and fired it into the air.", match: [pistol]}
+    textbook:                      # check (b): a case is caught if, in any of its passages, an item matching `match` is coded NOT_ATTESTED_THERE_THEN (of the kind given, where one is given)
+      camels_with_abraham: {passages: ["kjv:GEN 12:16", "kjv:GEN 24:10"], match: [camel], text: kjv_ot_histories}
+      philistines_with_abraham_and_isaac: {passages: ["kjv:GEN 21:32", "kjv:GEN 26:1"], match: [philistin], text: kjv_ot_histories}
+      ur_of_the_chaldees: {passages: ["kjv:GEN 11:31"], match: [chalde], text: kjv_ot_histories}
+      dan_at_genesis_14_14: {passages: ["kjv:GEN 14:14"], match: [dan], exact: true, text: kjv_ot_histories}
+      kjv_steel: {passages: ["kjv:PSA 18:34", "kjv:2SA 22:35"], match: [steel], kind: TRANSLATION_WORD, text: kjv_ot_histories, setting: {"PSA 18:34": "ancient Israel in the time of King David, about 1000 BC"}}
+      kjv_easter: {passages: ["kjv:ACT 12:4"], match: [easter], kind: TRANSLATION_WORD, setting: {"ACT 12:4": "Judea and the eastern Mediterranean in the time of the apostles, about AD 30-62"}}
+      homer_iron: {passages: ["pope_iliad:Small Stock of Iron", "pope_iliad:knotted Iron-Mace"], match: [iron], text: pope_iliad}
+    pseudo_ancient: [ossian_macpherson, chronicles_of_eri, spalding_manuscript]   # decoys presented as ancient; the Late War is set in its own time and reported apart
+    texts:                         # each text's own claimed setting (region and period; written by the AI from general knowledge) and where its words come from. kinds: kjv (books), josephus (Antiquities before book XII), names (a lab source file, Gutenberg body), library (catalog ids; `keep` = [start, stop] regex segments per volume), control (lab.anachronisms.control_text), native (the BOM-111/113 Mesoamerican native texts), bom
+      kjv_ot_histories: {group: genuine, kind: kjv, books: [GEN, EXO, LEV, NUM, DEU, JOS, JDG, RUT, 1SA, 2SA, 1KI, 2KI], setting: "the ancient Near East (Mesopotamia, Canaan, Egypt), from the patriarchs (as the text dates them, early in the second millennium BC) to the fall of Jerusalem in 586 BC"}
+      josephus_antiquities_1_11: {group: genuine, kind: josephus, setting: "the ancient Near East, from the creation and the patriarchs to Alexander the Great (about 330 BC), as Josephus tells the history of the Jews"}
+      pope_iliad: {group: genuine, kind: library, ids: ["tcp:K052227.001", "tcp:K052227.002", "tcp:K052227.003", "tcp:K052227.004", "tcp:K052227.005", "tcp:K052227.006"], keep: ["(?m)^THE [A-Z-]+ BOOK\\.? OF THE ILIAD", "(?m)^\\s*OBSERVATIONS ON THE"], setting: "Troy and the Greek camp before it, in the Late Bronze Age Aegean (the Trojan War, about 1250-1180 BC, as the poem tells it)"}
+      pope_odyssey: {group: genuine, kind: library, ids: ["internet_archive:11263933bsb", "internet_archive:11263934bsb"], keep: ["(?m)^BOOK (I|XIII)\\.\\s*$", "(?m)^\\s*MR\\. POPE\\."], setting: "the Aegean and Mediterranean world just after the Trojan War, in the Late Bronze Age (about 1200-1170 BC, as the poem tells it)"}
+      herodotus_beloe_1791: {group: genuine, kind: library, ids: ["institutional_books:HW2J4H", "institutional_books:HW2J4I", "institutional_books:HW2J4J", "institutional_books:HW2J4K"], keep: ["(?m)^(CLI ?O\\.|THAL ?I ?A|BOOK VI\\.|CALL ?IOP ?E\\.)\\s*$", "(?m)^\\s*MISCELLANEOUS CRITICISMS"], setting: "the Greek and Persian world (Greece, Asia Minor, Persia, Egypt, Scythia, Libya) from legendary times to the Persian Wars of 490-479 BC"}
+      koran_sale: {group: genuine, kind: names, file: koran_sale.txt, keep: ["(?m)^CHAPTER I\\.\\s*$", null], setting: "Arabia in the lifetime of Muhammad (about AD 610-632); its stories of earlier prophets are set in the ancient Near East at their own times"}
+      mesoamerican_native: {group: genuine, kind: native, setting: "Mesoamerica (the Maya highlands and lowlands, central Mexico) before the Spanish conquest, and the conquest years (to about AD 1560) where a text reaches them"}
+      ossian_macpherson: {group: decoy, kind: library, ids: ["institutional_books:HXQ93I"], keep: ["CATH-LODA, A POEM", null], setting: "Scotland, Ireland and Scandinavia in the third century AD (the age of Fingal, as the poems claim)"}
+      chronicles_of_eri: {group: decoy, kind: control, spec: "bible_style:chroniclesoferib02ocon", setting: "ancient Scythia, Iberia and Ireland, about 1000 BC (as the book claims)"}
+      spalding_manuscript: {group: decoy, kind: control, spec: "candidates:ss-manuscript-story-1885.txt", setting: "eastern North America in the time of the Roman emperor Constantine (4th century AD), as the manuscript claims"}
+      late_war: {group: own_time, kind: control, spec: "candidates:gh-1816-late-war.txt", setting: "the United States and Britain during the War of 1812 (1812-1815)"}
+      book_of_mormon: {group: book, kind: bom, setting: "Mesoamerica, about 600 BC to AD 421 (the book's main narrative; the Jaredite record in Ether begins much earlier)"}
   dale_checklist:                  # BOM-112 first part (lab; exploratory): Dale and Dale 2019 keyed; arithmetic redone; control questions prepared (simulated AI judging, not run)
     source: "Dale and Dale 2019, Joseph Smith: The World's Greatest Guesser, Interpreter (header: 31 (2019); file name: v32), pp. 77-186; https://cdn.interpreterfoundation.org/jnlpdf/dale-v32-2019-pp77-186-PDF.pdf"
     first_pdf_page_journal: 75     # the PDF's n-th page (0-based) is journal page 75 + n (PDF page 3 carries header 78)

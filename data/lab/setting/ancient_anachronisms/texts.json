@@ -1,0 +1,155 @@
+{
+ "texts": {
+  "kjv_ot_histories": {
+   "group": "genuine",
+   "kind": "kjv",
+   "setting": "the ancient Near East (Mesopotamia, Canaan, Egypt), from the patriarchs (as the text dates them, early in the second millennium BC) to the fall of Jerusalem in 586 BC",
+   "source": [
+    "GEN",
+    "EXO",
+    "LEV",
+    "NUM",
+    "DEU",
+    "JOS",
+    "JDG",
+    "RUT",
+    "1SA",
+    "2SA",
+    "1KI",
+    "2KI"
+   ],
+   "words": 292267,
+   "windows": 974,
+   "sampled": 140
+  },
+  "josephus_antiquities_1_11": {
+   "group": "genuine",
+   "kind": "josephus",
+   "setting": "the ancient Near East, from the creation and the patriarchs to Alexander the Great (about 330 BC), as Josephus tells the history of the Jews",
+   "source": "josephus",
+   "words": 295151,
+   "windows": 983,
+   "sampled": 140
+  },
+  "pope_iliad": {
+   "group": "genuine",
+   "kind": "library",
+   "setting": "Troy and the Greek camp before it, in the Late Bronze Age Aegean (the Trojan War, about 1250-1180 BC, as the poem tells it)",
+   "source": [
+    "tcp:K052227.001",
+    "tcp:K052227.002",
+    "tcp:K052227.003",
+    "tcp:K052227.004",
+    "tcp:K052227.005",
+    "tcp:K052227.006"
+   ],
+   "words": 151177,
+   "windows": 503,
+   "sampled": 140
+  },
+  "pope_odyssey": {
+   "group": "genuine",
+   "kind": "library",
+   "setting": "the Aegean and Mediterranean world just after the Trojan War, in the Late Bronze Age (about 1200-1170 BC, as the poem tells it)",
+   "source": [
+    "internet_archive:11263933bsb",
+    "internet_archive:11263934bsb"
+   ],
+   "words": 116553,
+   "windows": 388,
+   "sampled": 140
+  },
+  "herodotus_beloe_1791": {
+   "group": "genuine",
+   "kind": "library",
+   "setting": "the Greek and Persian world (Greece, Asia Minor, Persia, Egypt, Scythia, Libya) from legendary times to the Persian Wars of 490-479 BC",
+   "source": [
+    "institutional_books:HW2J4H",
+    "institutional_books:HW2J4I",
+    "institutional_books:HW2J4J",
+    "institutional_books:HW2J4K"
+   ],
+   "words": 435755,
+   "windows": 1452,
+   "sampled": 140
+  },
+  "koran_sale": {
+   "group": "genuine",
+   "kind": "names",
+   "setting": "Arabia in the lifetime of Muhammad (about AD 610-632); its stories of earlier prophets are set in the ancient Near East at their own times",
+   "source": "koran_sale.txt",
+   "words": 324383,
+   "windows": 1081,
+   "sampled": 140
+  },
+  "mesoamerican_native": {
+   "group": "genuine",
+   "kind": "native",
+   "setting": "Mesoamerica (the Maya highlands and lowlands, central Mexico) before the Spanish conquest, and the conquest years (to about AD 1560) where a text reaches them",
+   "source": "native",
+   "words": 162897,
+   "windows": 542,
+   "sampled": 140
+  },
+  "ossian_macpherson": {
+   "group": "decoy",
+   "kind": "library",
+   "setting": "Scotland, Ireland and Scandinavia in the third century AD (the age of Fingal, as the poems claim)",
+   "source": [
+    "institutional_books:HXQ93I"
+   ],
+   "words": 119153,
+   "windows": 397,
+   "sampled": 140
+  },
+  "chronicles_of_eri": {
+   "group": "decoy",
+   "kind": "control",
+   "setting": "ancient Scythia, Iberia and Ireland, about 1000 BC (as the book claims)",
+   "source": "bible_style:chroniclesoferib02ocon",
+   "words": 133566,
+   "windows": 445,
+   "sampled": 140
+  },
+  "spalding_manuscript": {
+   "group": "decoy",
+   "kind": "control",
+   "setting": "eastern North America in the time of the Roman emperor Constantine (4th century AD), as the manuscript claims",
+   "source": "candidates:ss-manuscript-story-1885.txt",
+   "words": 44191,
+   "windows": 147,
+   "sampled": 140
+  },
+  "late_war": {
+   "group": "own_time",
+   "kind": "control",
+   "setting": "the United States and Britain during the War of 1812 (1812-1815)",
+   "source": "candidates:gh-1816-late-war.txt",
+   "words": 58487,
+   "windows": 194,
+   "sampled": 140
+  },
+  "book_of_mormon": {
+   "group": "book",
+   "kind": "bom",
+   "setting": "Mesoamerica, about 600 BC to AD 421 (the book's main narrative; the Jaredite record in Ether begins much earlier)",
+   "source": "bom",
+   "words": 275372,
+   "windows": 917,
+   "sampled": 140
+  }
+ },
+ "calls": {
+  "reader": 12,
+  "check_list": 51,
+  "check_code_at_most": 51,
+  "agree_about": 13,
+  "list": 1680,
+  "code_at_most": 1680,
+  "total_at_most": 3487
+ },
+ "config_sha256": "f893092a7c8da02b0268beca0abc3df44c26856b9e37e41a345fb7e8a90d36dc",
+ "config_path": "/Users/ea/Workspace/book-of-mormon-authorship/config/preregistered.yaml",
+ "registered": true,
+ "git_commit": "e19724bdaecb130fe737306f9e407038a0e933be"
+}
