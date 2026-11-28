@@ -96,6 +96,7 @@ compares against.
 | BOM-129 | "A few stripes" and other New Testament phrases are used in the sense of the 1820s Universalism debate | the same reader | examples | each new sense against 1640-1779 and 1780-1829 print (simulated reading) | TBD |
 | BOM-130 | 2 Nephi 28 draws on *Scripture Inquiry* (1828), a Hillsborough sermon (1809) and others | the same reader | the named books | the named books ranked among the whole library, with sermons on the same topics | **Done: none of the four stands out from ordinary Universalism writing** |
 | BOM-131 | 2 Nephi 28 reads Luke 12 the way Henry and Clarke did | the same reader | two commentaries | every New Testament commentary held (simulated reading) | TBD |
+| BOM-135 | 2 Nephi 28 follows the order of argument of Chapin's 1809 farewell sermon: three reasons, then seven "improvements" | a reader on Reddit (r/mormon), 2026 | the two read side by side | ordered outlines of both (simulated reading), lined up in order, against about 60 sermons of the time and *Scripture Inquiry* | TBD: test card written, not run |
 | BOM-103 | The book answers the religious debates of 1820s New York | Campbell 1831 | a list | the print dates of the nearest passages, topic by topic | **Check failed twice; not scored** |
 
 ### 3. How was it produced?
@@ -3289,6 +3290,59 @@ tomorrow we die", but that one line is all he has in common with it. Being close
 
 **What's left.** Nothing for these four. The *Universalist* magazine issues of 1824 to 1827 that share
 rare phrases with the chapter probably quote the Book of Mormon; that would be its own question.
+
+### 2 Nephi 28 and a farewell sermon's outline (BOM-135)
+
+**Not run yet.** The test card was written before any model call. Everything below marked
+**[TO BE FILLED after the run]** waits for the run; nothing here is a result.
+
+**The claim.** A reader on Reddit argued that 2 Nephi 28 follows the same order of argument as
+Stephen Chapin's farewell sermon, *The Immoral Tendency of Error in Sentiment* (Hillsborough, New
+Hampshire, 1809): a doctrine proved three ways, then seven numbered "improvements". The
+wording-and-meaning test above (BOM-130) did not single the sermon out. But order is a different
+thing. Two texts can share no rare phrase and still make the same moves in the same sequence. Dave
+said he would run this and post the result either way.
+
+**Their way first.** The reader read the two side by side. Chapin's half of the shape is plain in
+the sermon: "This is evident, 1. From other passages of scripture", "2. There is an invincible
+proneness in man", "3. Facts will confirm our doctrine", then a heading, "IMPROVEMENT", with points
+1 to 7. The reader's matching of those points to verses of the chapter isn't something I have, so
+this run asks the broader question: does the chapter's order of argument match the sermon's more
+than it matches other sermons of the time? If the verse-by-verse mapping turns up, it gets its own
+check.
+
+**What I tried.** An AI model writes an ordered outline of each text (simulated reading): up to 12
+argument points per 2,000 words, names swapped for roles, no titles, and nothing in the prompt
+about the claim, the sermon or the Book of Mormon. The points are compared by meaning and lined up
+in order, the way the story-skeleton test lines up events, and a shuffle test asks how often the
+order would match that well by chance. Chapin goes in a group with about 60 sermons of 1800 to
+1829, half of them from the Universalism debate, and with *Scripture Inquiry* (1828). The sermon
+stands out only if it comes first in that group and the chance of its order is at most 1 in 100.
+As a decoy, a war chapter of Alma goes through the same steps.
+
+There are two versions. One outline of 12 points for each whole text is nearer the "three plus
+seven" shape of the claim, and Dave chose it as the one that decides, before any outline was
+written. The 2,000-word-block version is reported beside it and decides nothing.
+
+One thing is plain before any number. "Doctrine, then numbered reasons, then numbered uses" is how
+New England sermons were built. Many of the comparison sermons will have that shape too, which is
+why they are there.
+
+**The check.** Planned: one comparison sermon is reworded block by block in the same order
+(simulated), and the reworded copy must find its original first in the group, at 1 in 100 or
+better. The same copy with its paragraphs scrambled must not. If that fails, the run is reported
+without a verdict. Outcome: **[TO BE FILLED after the run]**
+
+**When it failed.** **[TO BE FILLED after the run]**
+
+**The result.** **[TO BE FILLED after the run]**
+
+**What it means, and what it doesn't.** **[TO BE FILLED after the run]** Known limits, written
+in advance: with only four points lined up there are just 24 orders, so the chance can't drop to 1
+in 100 (about six are needed); the model has surely read 2 Nephi 28 and may barely know Chapin; and
+a "no" can't rule out borrowing the common sermon form, only that Chapin is closer than the form.
+
+**What's left.** **[TO BE FILLED after the run]**
 
 ### Joined Bible phrases (BOM-128)
 

@@ -841,6 +841,42 @@ lab:                              # the research lab (exploratory tooling; reads
     cut_tolerance: 0.002           # the index pass must reproduce each stored 100th-nearest score within this
     scan_workers: 6
     scan_part: 10000               # volumes per saved part of the plant-gram scan (resumable)
+  sermon_outline:                  # BOM-135 (lab; exploratory): does Chapin's 1809 farewell sermon follow 2 Nephi 28's order of argument? card data/private/lab/owner/2026-11-27-sermon-outline/card.md
+    # outlines are simulated reading by a hosted model through lab.judge; lab.sermon_outline calls no model itself
+    model: claude-sonnet-5-5       # as skeleton.extract_model
+    block_words: 2000              # as skeleton.block_words: every text cut into blocks of at most this (block variant)
+    max_points: 12                 # argument points per block, in order, names replaced by roles
+    point_match_quantile: 0.99     # two points match at this quantile of cosines between points of unrelated baseline pairs (as skeleton.event_match_quantile)
+    match_score: 1.0               # Smith-Waterman, as skeleton
+    mismatch_score: -0.5
+    gap_score: -0.5
+    shuffles: 1000                 # order shuffles of the aligned span
+    shuffle_seed: bom135-sermon-outline
+    max_order_p: 0.01              # card: stands out only if first in the group and order p at most this
+    target: [485, 489]             # 1830 paragraphs of modern 2 Nephi 28, not King James-masked (the quotations are part of the argument); decides
+    chapter_1830: [485, 498]       # the whole 1830 chapter XII (modern 28-30), reported beside, decides nothing
+    decoy: [761, 765]              # 1830 Alma II (the Amlicite war): Chapin must not come first for it
+    chapin:
+      path: data/corpus/lab/sources/nephi28/immoral_tendency_of_error.txt
+      start_marker: 'EXODUS XXXII'                  # kept from here: drops the Google page and the title
+      end_marker: 'FAREWELL'          # kept: the last word of the sermon; the council's minutes follow it and are cut
+    scripture_inquiry: 'institutional_books:32044077904324'   # positive neighbour; the readable copy (the HathiTrust one is not); Harvard text, outlines stay private
+    si_max_blocks: 40              # Scripture Inquiry outlined on at most this many blocks
+    baseline:                      # about 60 period sermons, drawn with lab.ntwording.eligible and draw
+      universalism: 30             # from the 1780-1829 topic controls (lab.nephi28_sources.topic_controls)
+      sermons: 30                  # genre sermon_devotional, year_min to year_max
+      min_words: 5000
+      max_words: 20000
+      year_min: 1800
+      year_max: 1829
+      seed: 20261130
+    ka:                            # known answer, before anything is scored
+      seed: 20261128               # draws the baseline sermon that is reworded (simulated) and scrambled
+      bar_p: 0.01                  # reworded copy finds its original first at p at most this; the scrambled copy must not reach it
+    no_share: 0.10                 # card: "no" if Chapin is outside the top 10% of the group
+    variants: [blocks, whole]      # blocks: 2,000-word blocks; whole: one outline per text, max_points points (nearer the claim's 3 + 7 grain); both always reported
+    deciding_variant: whole        # which variant gives the answer; the owner chose the whole-text variant on 2026-11-27, before any outline call; the blocks variant is reported beside and decides nothing
+    reextract_blocks: 20           # blocks asked a second time to measure how often the outline repeats
   numbers:                         # BOM-114 (lab; exploratory): number profiles and the weights of Alma 11
     seed: 20261120
     part_numbers: 100              # numbers per part of a text
