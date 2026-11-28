@@ -299,12 +299,13 @@ def anchor(words: list[str], every: int) -> str:
     return " ".join(f"[{k}] " + " ".join(w) for k, w in enumerate(secs, 1))
 
 
-_MARK = re.compile(r"\s*\[(\d+)\]\s*\.?\s*$")
+_MARK = re.compile(r"\s*\[(\d+)(?:\s*[,;\-\u2013]\s*\d+)*\]\s*\.?\s*$")
 
 
 def in_marker_order(points: list[str]) -> tuple[list[str], int]:
     """Anchored points with their markers taken off, put in marker order (ties keep the reply's
-    order), and the number dropped for naming no marker."""
+    order), and the number dropped for naming no marker. A point naming several sections
+    ("[3, 4]", "[3-5]") is placed at the first, where it starts."""
     got, dropped = [], 0
     for i, pt in enumerate(points):
         m = _MARK.search(pt)

@@ -154,6 +154,8 @@ def test_anchored_points_follow_their_markers():
     assert anchor([f"w{i}" for i in range(5)], 2) == "[1] w0 w1 [2] w2 w3 [3] w4"
     pts, lost = in_marker_order(["late point. [9]", "early [2].", "no marker", "also early [2]"])
     assert pts == ["early", "also early", "late point."] and lost == 1
+    pts, lost = in_marker_order(["c [6, 7, 8]", "a [1-3]", "b [3 – 4]", "x [2] then"])
+    assert pts == ["a", "b", "c"] and lost == 1
     jobs = outline_jobs({"t": "a b c d e"}, "anchored", {**CARD, "anchor_words": 2})
     assert jobs[0]["id"] == "anchored|t|0|1" and "[3] e" in jobs[0]["prompt"]
     got = outlines_of(jobs, [{"id": "anchored|t|0|1", "reply": "- second [3]\n- first [1]"}], 12)
