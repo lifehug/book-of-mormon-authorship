@@ -142,4 +142,4 @@ repos to the base-and-candidate guideline (benchmark-finetunes weights, 146 GB; 
 - **Register placebo** (BOM-76): primary group died before September 1827; secondary group born
   after 1830 with no exposure, reported separately (owner, 2026-11-10).
 - **Part 2 order**: paper first; Stage 0 committed; Stage 1 only on the owner's go (2026-11-10).
-- BOM-135 sermon outline (Chapin 1809 vs 2 Ne 28): anchored variant running in tmux sermon_anchored (75 calls), then check and run; whole-text check failed, block variant cannot tell.
+- BOM-135 sermon outline: done 2026-11-27, no (Chapin 1 of 12 points, 41st of 61); open only if the reader posts his verse mapping.
